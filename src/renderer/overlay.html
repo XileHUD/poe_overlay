@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PoE2 Modifier Overlay</title>
+    <link rel="stylesheet" href="./styles/overlay.css">
+    <script type="module" src="./overlay-entry.ts"></script>
+</head>
+<body>
+    <!-- App header -->
+    <div id="mainHeader" class="header" style="background: var(--bg-secondary); padding: 8px 12px; border-bottom: 1px solid var(--border-color); display:flex; align-items:center; gap:8px; -webkit-app-region: drag; flex: 0 0 auto;">
+        <div class="item-info">
+            <div class="item-name" id="headerTitle" style="font-weight:600; font-size:14px; user-select:none;">Modifier</div>
+            <div class="item-type" id="headerSubtitle" style="font-size:12px; color:var(--text-muted); user-select:none;"></div>
+        </div>
+        <!-- Merchant header (shown only on History tab) -->
+        <div id="historyHeaderMain" style="display:none; flex:1 1 auto; min-width:0; align-items:center; gap:8px; justify-content:space-between;">
+            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+                <button id="poeLoginBtn" class="pin-btn" style="-webkit-app-region: no-drag;" title="Login to pathofexile.com">Login</button>
+                <button id="accountMaskToggle" class="pin-btn" style="-webkit-app-region: no-drag;" title="Mask account name (for screenshots)">👁</button>
+                <button id="historyRefreshBtn" class="pin-btn" style="-webkit-app-region: no-drag;" title="Refresh history">Refresh</button>
+                <button id="openHistoryWindowBtn" class="pin-btn" style="-webkit-app-region: no-drag;" title="View in browser">View in browser</button>
+                <span id="historyInfoBadge" class="price-badge" style="display:none;">Info</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                <div id="historyTotals" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
+                <span id="historyTradeCount" style="color:var(--text-secondary); font-size:11px;"></span>
+            </div>
+        </div>
+        <div class="header-actions" style="display:flex; align-items:center; gap:6px; margin-left:auto; -webkit-app-region: no-drag; user-select:none;">
+            <button id="pinBtn" class="pin-btn" title="Pin overlay on top">Pin</button>
+            <button id="closeBtn" class="close-btn" title="Close overlay">×</button>
+        </div>
+    </div>
+    <div id="app" style="display:flex; flex-direction:column; flex:1 1 auto; min-height:0;">
+    <div id="controlPanel" class="control-panel" style="-webkit-app-region: no-drag;">
+            <div class="cp-left">
+                <label class="cp-label">Category</label>
+                <select id="categorySelect" class="cp-select"></select>
+            </div>
+            
+            <input id="search-input" class="cp-search" type="text" placeholder="Search...">
+            
+            <div id="domainFilters" class="cp-filters">
+                <span class="cp-filters-label">Show:</span>
+                <button id="toggleAll" class="domain-toggle active" data-domain="all">All</button>
+                <button id="toggleBase" class="domain-toggle" data-domain="base">Base</button>
+                <button id="toggleDesecrated" class="domain-toggle" data-domain="desecrated">Dese</button>
+                <button id="toggleEssence" class="domain-toggle" data-domain="essence">Ess</button>
+                <button id="toggleCorrupted" class="domain-toggle" data-domain="corrupted">Corr</button>
+            </div>
+            
+            <button id="clearFilters" class="pin-btn cp-clear">Clear</button>
+        </div>
+    <div id="content" style="flex:1 1 auto; overflow:auto; padding:16px 12px 12px 12px;">
+            <div class="no-mods">Pick a category from the dropdown to load modifiers.</div>
+        </div>
+    <div id="craftingPanel" style="display:none; position:relative; flex:1 1 auto; overflow:auto; padding:16px 12px 12px 12px;"></div>
+        <!-- History view container (hidden by default, toggled by Merchant History tab) -->
+        <div id="historyContainer" style="display:none; flex:1 1 auto; overflow:hidden;">
+            <!-- History header/filters -->
+            <div id="historyHeader" style="display:flex; flex-direction:column; gap:10px; padding:12px; border-bottom:1px solid var(--border-color); background: var(--bg-secondary); -webkit-app-region: no-drag;">
+                <div id="historyHeaderRow2" style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+                    <input id="histSearch" type="text" placeholder="Search items..." style="width:180px; padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;" />
+                    <label style="color:var(--text-secondary); font-size:11px;">Currency:</label>
+                    <select id="histCurrency" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;">
+                        <option value="exalted">Exalted</option>
+                        <option value="divine">Divine</option>
+                        <option value="annul">Annul</option>
+                    </select>
+                    <label style="color:var(--text-secondary); font-size:11px;">Min:</label>
+                    <input id="histMinValue" type="number" step="1" min="0" value="0" style="width:72px; padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;" />
+                    <label style="color:var(--text-secondary); font-size:11px;">Sort:</label>
+                    <select id="histSort" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;">
+                        <option value="newest">Newest</option>
+                        <option value="oldest">Oldest</option>
+                        <option value="divine-desc">Highest Divine</option>
+                        <option value="divine-asc">Lowest Divine</option>
+                        <option value="exalted-desc">Highest Exalted</option>
+                        <option value="exalted-asc">Lowest Exalted</option>
+                    </select>
+                    <label style="color:var(--text-secondary); font-size:11px;">Type:</label>
+                    <select id="histCategory" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;">
+                        <option value="">All</option>
+                        <option>Helmets</option>
+                        <option>Body Armours</option>
+                        <option>Gloves</option>
+                        <option>Boots</option>
+                        <option>Rings</option>
+                        <option>Amulets</option>
+                        <option>Belts</option>
+                        <option>Weapons</option>
+                        <option>Jewels</option>
+                        <option>Uniques</option>
+                    </select>
+                    <button id="histTopSale" class="pin-btn" title="Jump to highest Divine sale (falls back to selected currency)">Top sale</button>
+                </div>
+                <div id="historyActiveFilters" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
+            </div>
+            <!-- History body (list + details + chart) -->
+            <div style="display:flex; flex:1 1 auto; min-height:0;">
+            <!-- Left list -->
+            <div id="historyList" style="flex: 0 0 55%; border-right:1px solid var(--border-color); overflow-y:auto; min-height:0;">
+                <!-- rows injected here -->
+            </div>
+            <!-- Right details -->
+            <div id="historyRight" style="flex: 1 1 auto; display:flex; flex-direction:column; overflow:hidden; min-height:0;">
+                <div id="historyDetail" style="flex: 1 1 auto; overflow-y:auto; padding: 10px; display:flex; align-items:flex-start; justify-content:center;">
+                    <div class="no-mods">Select a trade to see item details</div>
+                </div>
+                <div id="historyChartWrap" style="flex: 0 0 180px; border-top:1px solid var(--border-color); padding:8px; background: var(--bg-card);">
+                    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;">
+                        <div style="font-weight:600; color:var(--text-secondary);">Totals over time</div>
+                        <div style="display:flex; gap:10px; align-items:center; font-size:11px;">
+                            <span id="chartCur-divine" class="chart-cur active" data-cur="divine"><span class="sw" style="background:#d4af37;"></span> divine</span>
+                            <span id="chartCur-exalted" class="chart-cur" data-cur="exalted"><span class="sw" style="background:#3f6aa1;"></span> exalted</span>
+                            <span id="chartCur-annul" class="chart-cur" data-cur="annul"><span class="sw" style="background:#7b40b3;"></span> annul</span>
+                        </div>
+                    </div>
+                    <canvas id="historyChart" height="150" style="width:100%; min-width:240px; height:150px; display:block;"></canvas>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Footer with tabs and resize handle -->
+    <div class="footer" id="footer" style="background: var(--bg-secondary); border-top: 1px solid var(--border-color); padding: 4px 8px; display: flex; align-items: center; justify-content: space-between; -webkit-app-region: drag; flex: 0 0 auto;">
+        <div class="tabs" style="display: flex; gap: 8px; -webkit-app-region: no-drag;">
+            <button id="tabModifier" class="tab active" style="background: var(--accent-blue); color: #fff; border: 1px solid var(--accent-blue); border-radius: 4px; padding: 3px 8px; font-size: 12px;">Modifier</button>
+            <div class="tab" id="craftingTab" style="position:relative; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px; cursor:pointer;">
+                Crafting ▾
+                <div id="craftingMenu" style="display:none; position:absolute; left:0; bottom:100%; transform: translateY(-4px); background: var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; min-width:160px; box-shadow:0 2px 6px rgba(0,0,0,0.4); z-index:200;">
+                    <div class="crafting-menu-item" data-action="liquid-emotions" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Liquid Emotions</div>
+                    <div class="crafting-menu-item" data-action="annoints" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Annoints</div>
+                    <div class="crafting-menu-item" data-action="essences" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Essences</div>
+                    <div class="crafting-menu-item" data-action="omens" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Omens</div>
+                    <div class="crafting-menu-item" data-action="catalysts" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Catalysts</div>
+                    <div class="crafting-menu-item" data-action="socketables" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Socketables</div>
+                        </div>
+            </div>
+            <div class="tab" id="characterTab" style="position:relative; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px; cursor:pointer;">
+                Character ▾
+                <div id="characterMenu" style="display:none; position:absolute; left:0; bottom:100%; transform: translateY(-4px); background: var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; min-width:160px; box-shadow:0 2px 6px rgba(0,0,0,0.4); z-index:250;">
+                    <div class="character-menu-item" data-action="quest-passives" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Quest Passives</div>
+                    <div class="character-menu-item" data-action="keystones" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Keystones</div>
+                    <div class="character-menu-item" data-action="atlas-nodes" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Atlas Nodes</div>
+                    <div class="character-menu-item" data-action="gems" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Gems</div>
+                </div>
+            </div>
+            <div class="tab" id="itemsTab" style="position:relative; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px; cursor:pointer;">
+                Items ▾
+                <div id="itemsMenu" style="display:none; position:absolute; left:0; bottom:100%; transform: translateY(-4px); background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; padding:4px; z-index:300; min-width:140px; box-shadow:0 4px 14px rgba(0,0,0,0.5);">
+                    <div class="items-menu-item" data-action="uniques" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Uniques</div>
+                    <div class="items-menu-item" data-action="bases" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Bases</div>
+                </div>
+            </div>
+            <button id="tabGlossar" class="tab" style="background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px; cursor:pointer;">Glossar</button>
+            <button id="tabHistory" class="tab" style="background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;">Merchant History</button>
+        </div>
+        <div id="resizeHandle" title="Resize height" style="height: 12px; cursor: ns-resize; display: flex; align-items: center; justify-content: center; gap:2px; padding: 0 6px; -webkit-app-region: no-drag;">
+            <span style="display:inline-block; width: 14px; height: 2px; background: var(--text-muted);"></span>
+            <span style="display:inline-block; width: 14px; height: 2px; background: var(--text-muted);"></span>
+        </div>
+    </div>
+
+    <script>
+
+    // Query commonly used elements (guard undefined usage)
+    const tabMod = document.getElementById('tabModifier');
+    const tabHist = document.getElementById('tabHistory');
+    const craftingTab = document.getElementById('craftingTab');
+    const craftingMenu = document.getElementById('craftingMenu');
+    const characterTab = document.getElementById('characterTab');
+    const characterMenu = document.getElementById('characterMenu');
+    const itemsTab = document.getElementById('itemsTab');
+    const itemsMenu = document.getElementById('itemsMenu');
+    const tabGlossar = document.getElementById('tabGlossar');
+    const historyHeader = document.getElementById('historyHeader') || null;
+    const historyHeaderMain = document.getElementById('historyHeaderMain') || null;
+    const filtersBar = document.getElementById('filtersBar') || null;
+    const contentMod = document.getElementById('content');
+    const contentHist = document.getElementById('historyContainer') || document.createElement('div');
+    const loginBtn = document.getElementById('poeLoginBtn');
+    const refreshBtn = document.getElementById('historyRefreshBtn');
+    const pinBtn = document.getElementById('pinBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const headerTitleEl = document.getElementById('headerTitle');
+    const headerSubtitleEl = document.getElementById('headerSubtitle');
+
+    function setHeader(title, subtitle=''){
+        if (headerTitleEl) headerTitleEl.textContent = title || '';
+        if (headerSubtitleEl) headerSubtitleEl.textContent = subtitle || '';
+    }
+
+    // Footer tab helpers: keep only the current tab blue
+    function setActiveTab(tabId){
+        const tabs = [
+            document.getElementById('tabModifier'),
+            document.getElementById('tabHistory'),
+            document.getElementById('tabGlossar'),
+            document.getElementById('craftingTab'),
+            document.getElementById('characterTab'),
+            document.getElementById('itemsTab')
+        ].filter(Boolean);
+        tabs.forEach(t => {
+            if (!t) return;
+            const active = (t.id === tabId);
+            t.classList.toggle('active', active);
+            t.style.background = active ? 'var(--accent-blue)' : 'var(--bg-tertiary)';
+            t.style.color = active ? '#fff' : 'var(--text-primary)';
+            t.style.borderColor = active ? 'var(--accent-blue)' : 'var(--border-color)';
+        });
+    }
+    function closeAllMenus(){
+        const cm = document.getElementById('craftingMenu'); if (cm) cm.style.display='none';
+        const ch = document.getElementById('characterMenu'); if (ch) ch.style.display='none';
+        const im = document.getElementById('itemsMenu'); if (im) im.style.display='none';
+    }
+
+    // Helper: show/hide Modifiers control panel
+    function setControlPanelVisible(visible){
+        const cpEl = document.getElementById('controlPanel');
+        if (cpEl) cpEl.style.display = visible ? '' : 'none';
+    }
+
+    // Helper: ensure history is hidden when switching away from history view
+    function hideHistoryView(){
+        const hist = document.getElementById('historyContainer');
+        const histHeader = document.getElementById('historyHeaderMain');
+        if (hist) hist.style.display = 'none';
+        if (histHeader) histHeader.style.display = 'none';
+    }
+
+    // Strong view gate: only one of Modifiers, Crafting, History can be visible
+    function setView(view){
+        const content = document.getElementById('content');
+        const crafting = document.getElementById('craftingPanel');
+        const history = document.getElementById('historyContainer');
+        const histHeaderMain = document.getElementById('historyHeaderMain');
+        
+        // Always remove ALL view classes first
+        document.body.classList.remove('crafting-mode', 'view-history', 'view-modifiers');
+        
+        // Hide all containers
+        if (content) content.style.display='none';
+        if (crafting) crafting.style.display='none';
+        if (history) history.style.display='none';
+        if (histHeaderMain) histHeaderMain.style.display='none';
+        
+        // Show only the requested view
+        if (view === 'modifiers'){
+            if (content) content.style.display='';
+            setControlPanelVisible(true);
+            document.body.classList.add('view-modifiers');
+        } else if (view === 'crafting'){
+            if (crafting) { crafting.style.display='block'; crafting.innerHTML=''; }
+            setControlPanelVisible(false);
+            document.body.classList.add('crafting-mode');
+        } else if (view === 'history'){
+            if (history) history.style.display='';
+            if (histHeaderMain) histHeaderMain.style.display='flex';
+            setControlPanelVisible(false);
+            document.body.classList.add('view-history');
+        }
+        
+        console.log('setView:', view, 'body classes:', document.body.className);
+    }
+
+    // debug logger removed
+
+    // Global variables
+    let currentData = null;
+    let allSections = [];
+    // ===== Delegations only; implementations live in TS modules via window.Overlay* facades =====
+    // Catalysts, Socketables, Omens
+    async function showCatalysts(){ if (window.OverlayCatalysts && window.OverlayCatalysts.show) { try { return await window.OverlayCatalysts.show(); } catch {} } }
+    function renderCatalysts(list){ if (window.OverlayCatalysts && window.OverlayCatalysts.render) { try { return window.OverlayCatalysts.render(list); } catch {} } }
+    async function showSocketables(){ if (window.OverlaySocketables && window.OverlaySocketables.show) { try { return await window.OverlaySocketables.show(); } catch {} } }
+    function renderSocketables(list){ if (window.OverlaySocketables && window.OverlaySocketables.render) { try { return window.OverlaySocketables.render(list); } catch {} } }
+    async function showOmens(){ if (window.OverlayOmens && window.OverlayOmens.show) { try { return await window.OverlayOmens.show(); } catch {} } }
+    function renderOmens(list){ if (window.OverlayOmens && window.OverlayOmens.render) { try { return window.OverlayOmens.render(list); } catch {} } }
+    // Uniques, Bases, Glossar
+    async function showUniques(){ if (window.OverlayUniques && window.OverlayUniques.show) { try { return await window.OverlayUniques.show(); } catch {} } }
+    function renderUniques(groups){ if (window.OverlayUniques && window.OverlayUniques.render) { try { return window.OverlayUniques.render(groups); } catch {} } }
+    async function showBases(){ if (window.OverlayBases && window.OverlayBases.show) { try { return await window.OverlayBases.show(); } catch {} } }
+    function renderBases(groups){ if (window.OverlayBases && window.OverlayBases.render) { try { return window.OverlayBases.render(groups); } catch {} } }
+    async function showGlossar(){ if (window.OverlayGlossar && window.OverlayGlossar.show) { try { return await window.OverlayGlossar.show(); } catch {} } }
+    function renderGlossar(list){ if (window.OverlayGlossar && window.OverlayGlossar.render) { try { return window.OverlayGlossar.render(list); } catch {} } }
+    // Annoints, Essences
+    async function showAnnoints(){ if (window.OverlayAnnoints && window.OverlayAnnoints.show) { try { return await window.OverlayAnnoints.show(); } catch {} } }
+    async function showEssences(){ if (window.OverlayEssences && window.OverlayEssences.show) { try { return await window.OverlayEssences.show(); } catch {} } }
+    function renderEssences(list){ if (window.OverlayEssences && window.OverlayEssences.render) { try { return window.OverlayEssences.render(list); } catch {} } }
+    // History aliases and thin wrappers
+    let historyState = null;
+    // Grab history state as soon as possible; refresh on DOMContentLoaded too
+    try { historyState = window.OverlayHistory?.historyState || null; } catch {}
+    window.addEventListener('DOMContentLoaded', () => { try { historyState = window.OverlayHistory?.historyState || historyState; } catch {} });
+    async function updateSessionUI(){ return await window.OverlayHistory?.updateSessionUI?.(); }
+    function keyForRow(r){ return window.OverlayHistory?.keyForRow?.(r); }
+    function addToTotals(p){ return window.OverlayHistory?.addToTotals?.(p); }
+    function renderHistoryTotals(){ return window.OverlayHistory?.renderHistoryTotals?.(); }
+    function renderHistoryActiveFilters(){ return window.OverlayHistory?.renderHistoryActiveFilters?.(); }
+    function renderHistoryList(){ return window.OverlayHistory?.renderHistoryList?.(); }
+    function renderHistoryDetail(i){ return window.OverlayHistory?.renderHistoryDetail?.(i); }
+    function applySort(list){ return window.OverlayHistory?.applySort?.(list) ?? list; }
+    function applyFilters(list){ return window.OverlayHistory?.applyFilters?.(list) ?? list; }
+    async function refreshHistory(){ return await window.OverlayHistory?.refreshHistory?.(); }
+    async function tryFallbackScrapeManual(){ return await window.OverlayHistory?.tryFallbackScrapeManual?.(); }
+    function recomputeChartSeriesFromStore(){ return window.OverlayHistory?.recomputeChartSeriesFromStore?.(); }
+    function updateHistoryChartFromTotals(t){ return window.OverlayHistory?.updateHistoryChartFromTotals?.(t); }
+    function drawHistoryChart(){ return window.OverlayHistory?.drawHistoryChart?.(); }
+    function setChartCurrency(cur){ return window.OverlayHistory?.setChartCurrency?.(cur); }
+    function nextAllowedRefreshAt(){ return window.OverlayHistory?.nextAllowedRefreshAt?.(); }
+    function updateHistoryRefreshButton(){ return window.OverlayHistory?.updateHistoryRefreshButton?.(); }
+    async function refreshHistoryIfAllowed(origin){ return await window.OverlayHistory?.refreshHistoryIfAllowed?.(origin); }
+    function parseRateLimitHeaders(headers, status){ return window.OverlayHistory?.parseRateLimitHeaders?.(headers, status) ?? 0; }
+
+        // Function to render content with current filters applied
+        function renderFilteredContent(data) { try { return window.OverlayModifiers?.renderFilteredContent?.(data); } catch {} }
+
+        // Minimal helpers for panel visibility and category detail
+        function hideAllPanels(){
+            const cp = document.getElementById('craftingPanel'); 
+            if (cp) cp.style.display='none'; 
+            document.body.classList.remove('crafting-mode');
+            hideHistoryView(); // Always hide history when switching views
+        }
+        function prepareCharacterPanel(title){
+            const cp = document.getElementById('craftingPanel'); if (!cp) return;
+            // Hide other views to avoid overlap
+            const mod = document.getElementById('content'); if (mod) mod.style.display='none';
+            hideHistoryView(); // Ensure history is hidden
+            document.body.classList.add('crafting-mode');
+            cp.style.display='block';
+            setControlPanelVisible(false);
+            // Update shared reference used by character subviews
+            craftingPanelEl = cp;
+            cp.innerHTML='';
+            
+        }
+        function renderCategoryDetail(data){
+            try { window.OverlayModifiers?.mechanicsPostProcess?.(data); } catch {}
+            window.originalData = data; currentData = data;
+            try { renderFilteredContent(data); } catch {}
+        }
+        
+
+    // Populate category dropdown on load
+        async function populateCategoryDropdown() {
+            if (!window.electronAPI || !window.electronAPI.getAllCategories) return;
+            try {
+                const categories = await window.electronAPI.getAllCategories();
+                const categorySelect = document.getElementById('categorySelect');
+                const previous = categorySelect.value;
+        // Ensure aggregated pseudo-categories are always known and rendered first
+        const AGGREGATED_CATEGORIES = ['ALL','DESECRATED','ESSENCE','CORRUPTED','SOCKETABLE','SOCKETABLES'];
+        const aggregatedSet = new Set(AGGREGATED_CATEGORIES.map(c => c.toUpperCase()));
+
+                function classify(cat) {
+                    const u = cat.toUpperCase();
+                    if (aggregatedSet.has(u)) return 'aggregated';
+                    if (u.startsWith('WAYSTONES_')) return 'waystones';
+                    if (/(_RELIC)$/.test(u)) return 'relics';
+                    if (u === 'LIFE_FLASKS' || u === 'MANA_FLASKS' || u === 'CHARMS') return 'flasks';
+                    if (u === 'PRECURSOR_TABLET' || /_PRECURSOR_TABLET$/.test(u)) return 'tablets';
+                    if (u === 'JEWELS' || /^RUBY$/.test(u) || /^EMERALD$/.test(u) || /^SAPPHIRE$/.test(u) || /^TIME-LOST_RUBY$/.test(u) || /^TIME-LOST_EMERALD$/.test(u) || /^TIME-LOST_SAPPHIRE$/.test(u)) return 'jewels';
+                    if (u === 'STRONGBOX' || u === 'STRONGBOX_UNIQUES' || u === 'EXPEDITION_LOGBOOK') return 'mechanics';
+                    return 'gear';
+                }
+
+                const buckets = { aggregated:[], gear:[], waystones:[], relics:[], flasks:[], tablets:[], jewels:[], mechanics:[] };
+                const nonModifierCats = new Set([
+                    'LIQUID_EMOTIONS','ANNOINTS','ESSENCES','OMENS','CATALYSTS','SOCKETABLES','GEMS','KEYSTONES','ATLAS_NODES','KEYWORDS','UNIQUES','BASES'
+                ]);
+                // First, put all aggregated explicitly into the aggregated bucket (preserve our preferred order)
+                for (const a of AGGREGATED_CATEGORIES) {
+                    const hit = (categories||[]).find(c => String(c).toUpperCase() === a);
+                    if (hit) buckets.aggregated.push(hit);
+                }
+                // Then, distribute the rest (excluding non-modifier and aggregated)
+                for (const c of categories) {
+                    const u = (c||'').toUpperCase();
+                    if (aggregatedSet.has(u)) continue;
+                    if (nonModifierCats.has(u)) continue;
+                    const g = classify(c);
+                    buckets[g].push(c);
+                }
+
+                // buildOptions builds grouped & filtered list
+                function buildOptions(filterText='') {
+                    categorySelect.innerHTML = `<option value="">${filterText? 'Filter: '+filterText : 'Select category...'}</option>`;
+                    const f = filterText.toLowerCase();
+                    function addGroup(label, list, transform=(c)=>c.replace(/_/g,' '), upper=false) {
+                        const subset = f ? list.filter(c => transform(c).toLowerCase().includes(f)) : list.slice();
+                        if (!subset.length) return;
+                        const groupLabel = document.createElement('option');
+                        groupLabel.textContent = label;
+                        groupLabel.disabled = true;
+                        categorySelect.appendChild(groupLabel);
+                        subset.sort().forEach(c => {
+                            const opt = document.createElement('option');
+                            opt.value = c;
+                            opt.textContent = upper ? c.toUpperCase() : transform(c);
+                            categorySelect.appendChild(opt);
+                        });
+                        const div = document.createElement('option');
+                        div.textContent = '──────────';
+                        div.disabled = true;
+                        categorySelect.appendChild(div);
+                    }
+                    // Ensure aggregated remains first group
+                    addGroup('— Aggregated —', buckets.aggregated, c=>c.toUpperCase(), true);
+                    addGroup('— Gear —', buckets.gear);
+                    addGroup('— Waystones —', buckets.waystones);
+                    addGroup('— Relics —', buckets.relics, c=>c.replace(/_/g,' '));
+                    addGroup('— Flasks & Charms —', buckets.flasks, c=>c.replace(/_/g,' '));
+                    addGroup('— Tablets —', buckets.tablets, c=>c.replace(/_/g,' '));
+                }
+                // initial build with no filter
+                buildOptions('');
+            } catch {}
+        }
+        // Wire initial controls on DOM ready
+        document.addEventListener('DOMContentLoaded', () => {
+            try { populateCategoryDropdown(); } catch {}
+            setHeader('Modifier');
+            // Initial UI state
+            try { setActiveTab('tabModifier'); } catch {}
+            try { closeAllMenus(); } catch {}
+            const select = document.getElementById('categorySelect');
+            if (select) select.addEventListener('change', switchCategory);
+            // Header actions
+            if (closeBtn) closeBtn.addEventListener('click', ()=>{ try { window.electronAPI?.hideOverlay?.(); } catch {} });
+            function updatePinUI(pinned){ if (!pinBtn) return; pinBtn.classList.toggle('active', !!pinned); pinBtn.textContent = pinned ? 'Pinned' : 'Pin'; }
+            if (pinBtn) pinBtn.addEventListener('click', ()=>{ try { const isPinned = pinBtn.classList.contains('active'); window.electronAPI?.setPinned?.(!isPinned); updatePinUI(!isPinned); } catch {} });
+            try { window.electronAPI?.onPinnedChanged?.((p)=> updatePinUI(p)); } catch {}
+            const search = document.getElementById('search-input');
+            if (search) search.addEventListener('input', () => { if (window.originalData) try { renderFilteredContent(window.originalData); } catch {} });
+            const clear = document.getElementById('clearFilters');
+            if (clear) clear.addEventListener('click', () => {
+                const s = document.getElementById('search-input'); if (s) s.value = '';
+                try { window.OverlayModifiers?.clearAllFilters?.(); } catch {}
+                if (window.originalData) try { renderFilteredContent(window.originalData); } catch {}
+            });
+            
+            // Initialize domain toggle buttons (radio button behavior)
+            const domainButtons = ['toggleAll', 'toggleBase', 'toggleDesecrated', 'toggleEssence', 'toggleCorrupted'];
+            domainButtons.forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        // Remove active class from all domain buttons
+                        domainButtons.forEach(otherId => {
+                            const otherBtn = document.getElementById(otherId);
+                            if (otherBtn) otherBtn.classList.remove('active');
+                        });
+                        // Add active class to clicked button
+                        btn.classList.add('active');
+                        // Re-render with new filter
+                        if (window.originalData) try { renderFilteredContent(window.originalData); } catch {}
+                    });
+                }
+            });
+            // Default view: show modifiers content, hide history and crafting
+            const content = document.getElementById('content'); if (content) content.style.display='';
+            hideHistoryView();
+            const cp = document.getElementById('craftingPanel'); if (cp) cp.style.display='none';
+            // Wire clipboard item detection to auto-open correct category
+            if (window.electronAPI && typeof window.electronAPI.onItemData === 'function') {
+                window.electronAPI.onItemData(async (data) => {
+                    try {
+                        if (!data || !data.item) return;
+                        // Always start from a clean state
+                        closeAllMenus();
+                        hideHistoryView();
+
+                        const item = data.item || {};
+                        const rarity = (item.rarity || '').toLowerCase();
+                        const name = item.name || '';
+                        const baseType = item.baseType || '';
+                        const category = (item.category || '').toString();
+                        const blob = `${name} ${baseType} ${category}`.toLowerCase();
+                        const frameType = String(item && item.frameType || '');
+                        const icon = String(item && item.icon || '');
+
+                        console.log('Clipboard item detected:', {
+                            rarity: rarity,
+                            name: name,
+                            baseType: baseType,
+                            category: category,
+                            frameType: frameType,
+                            icon: icon,
+                            isUnique: data.isUnique,
+                            itemClass: item.itemClass || 'unknown',
+                            fullBlob: blob
+                        });
+
+                        // Small helper: prepare crafting view and run a show() with a couple retries
+                        const prepareCrafting = (headerTitle) => {
+                            setView('crafting');
+                            setHeader(headerTitle || '');
+                        };
+                        const retryShow = (readyFn, runFn, attempts = 3) => {
+                            if (readyFn()) { try { runFn(); } catch {} return; }
+                            if (attempts <= 0) return;
+                            setTimeout(() => retryShow(readyFn, runFn, attempts - 1), 120);
+                        };
+
+                        // Route checks - order matters!
+                        // Hard rule: Handle unique items first - use simple text detection like essences
+                        const isUnique = /unique/i.test(name) || /unique/i.test(baseType) || /unique/i.test(blob) || 
+                                        data.isUnique || /unique/i.test(rarity) || frameType === '3' || String(frameType) === '3' ||
+                                        /\bUniques\//i.test(icon);
+                        
+                        if (isUnique) {
+                            console.log('Unique item detected via simple pattern matching like essences:', {
+                                name: name,
+                                baseType: baseType,
+                                blob: blob,
+                                category: category,
+                                rarity: rarity,
+                                frameType: frameType,
+                                icon: icon,
+                                isUniqueFlag: data.isUnique
+                            });
+                            prepareCrafting('Uniques');
+                            retryShow(
+                                () => !!(window.OverlayUniques && typeof window.OverlayUniques.show === 'function'),
+                                async () => {
+                                    try { await showUniques(); } catch {}
+                                    try { window.OverlayUniques?.highlight?.(name, baseType); } catch {}
+                                }
+                            );
+                            return;
+                        }
+
+                        const isEssence = /essence/i.test(name) || /essence/i.test(baseType) || /essences?/i.test(blob);
+                        const isOmen = /omen/i.test(blob);
+                        const isCatalyst = /catalyst/i.test(blob);
+                        const isSocketable = /socketable|socketables|waystone|waystones/i.test(blob);
+                        // Fix: Liquid Emotions detection based on name, not category
+                        const isEmotion = /liquid\s*(emotion|envy|hatred|fear|anguish|despair|suffering|greed|contempt|ire)/i.test(name) || /liquid\s*emotion/i.test(baseType);
+                        // Fix: Gems should route to Character > Gems, not modifiers  
+                        const isGem = /\bgem\b|support|lineage|spirit/i.test(blob) && !/liquid/i.test(name);
+
+                        // (unique via frame/icon was handled above)
+
+                        if (isEssence) {
+                            prepareCrafting('Essences');
+                            retryShow(
+                                () => !!(window.OverlayEssences && typeof window.OverlayEssences.show === 'function'),
+                                async () => { try { await showEssences(); } catch {} }
+                            );
+                            return;
+                        }
+
+                        if (isOmen) {
+                            prepareCrafting('Omens');
+                            retryShow(
+                                () => !!(window.OverlayOmens && typeof window.OverlayOmens.show === 'function'),
+                                async () => { try { await showOmens(); } catch {} }
+                            );
+                            return;
+                        }
+
+                        if (isCatalyst) {
+                            prepareCrafting('Catalysts');
+                            retryShow(
+                                () => !!(window.OverlayCatalysts && typeof window.OverlayCatalysts.show === 'function'),
+                                async () => { try { await showCatalysts(); } catch {} }
+                            );
+                            return;
+                        }
+
+                        if (isSocketable) {
+                            prepareCrafting('Socketables');
+                            retryShow(
+                                () => !!(window.OverlaySocketables && typeof window.OverlaySocketables.show === 'function'),
+                                async () => { try { await showSocketables(); } catch {} }
+                            );
+                            return;
+                        }
+
+                        if (isEmotion) {
+                            prepareCrafting('Liquid Emotions');
+                            retryShow(
+                                () => !!(window.OverlayLiquid && typeof window.OverlayLiquid.show === 'function'),
+                                async () => { try { await showLiquidEmotions(); } catch {} }
+                            );
+                            return;
+                        }
+
+                        if (isGem) {
+                            // Route to Character > Gems directly (no crafting mode)
+                            setView('character');
+                            retryShow(
+                                () => !!(window.OverlayGems && typeof window.OverlayGems.show === 'function'),
+                                async () => { 
+                                    try { 
+                                        await showGems(); 
+                                        setActiveTab('characterTab');
+                                    } catch {} 
+                                }
+                            );
+                            return;
+                        }
+
+                        // Default: Modifiers view
+                        const tabModEl = document.getElementById('tabModifier'); const tabHistEl = document.getElementById('tabHistory');
+                        if (tabModEl && tabHistEl) {
+                            tabModEl.classList.add('active');
+                            tabModEl.setAttribute('style','background: var(--accent-blue); color: #fff; border: 1px solid var(--accent-blue); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
+                            tabHistEl.classList.remove('active');
+                            tabHistEl.setAttribute('style','background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
+                        }
+                        setView('modifiers');
+                        await populateCategoryDropdown();
+                        const categorySelect = document.getElementById('categorySelect');
+                        if (categorySelect && item.category) {
+                            const slug = String(item.category);
+                            console.log('Looking for category option:', slug);
+                            const opt = Array.from(categorySelect.options||[]).find(o=>o.value===slug);
+                            console.log('Found option:', opt);
+                            if (opt) { 
+                                categorySelect.value = slug;
+                                console.log('Set category dropdown to:', slug);
+                                // Trigger change event to load modifiers
+                                const changeEvent = new Event('change', { bubbles: true });
+                                categorySelect.dispatchEvent(changeEvent);
+                            } else {
+                                console.log('Category option not found in dropdown for:', slug);
+                            }
+                        }
+                        window.originalData = data;
+                        try { window.OverlayModifiers?.mechanicsPostProcess?.(data); } catch {}
+                        renderFilteredContent(data);
+                        setHeader('Modifier');
+                    } catch (e) { console.warn('onItemData handling failed', e); }
+                });
+            }
+        });
+            if (tabMod) {
+                tabMod.addEventListener('click', () => {
+                    setActiveTab('tabModifier');
+                    closeAllMenus();
+                    setView('modifiers'); // Ensure history is hidden
+                    // ensure Merchant History tab style resets
+                    const tabHistEl = document.getElementById('tabHistory');
+                    if (tabHistEl) {
+                        tabHistEl.classList.remove('active');
+                        tabHistEl.setAttribute('style','background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
+                    }
+                    contentMod.style.display = '';
+                    hideHistoryView();
+                    // ensure modifier filters bar remains visible when in modifiers view
+                    const fb = document.getElementById('filtersBar'); if (fb) fb.style.display = '';
+                    hideAllPanels();
+                    const leftHist = document.getElementById('historyHeaderLeft'); if (leftHist) leftHist.style.display='none';
+                    document.getElementById('modifierHeaderInfo')?.setAttribute('style','');
+                    document.getElementById('whittlingInfo')?.setAttribute('style','margin-right: 8px; display:none; -webkit-app-region: no-drag;');
+                    setControlPanelVisible(true);
+                    document.body.classList.remove('crafting-mode');
+                    setHeader('Modifier');
+                    
+                });
+            }
+
+            // Crafting dropdown toggle
+            if (craftingTab) {
+                craftingTab.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    setActiveTab('craftingTab');
+                    const tabHistEl = document.getElementById('tabHistory');
+                    if (tabHistEl) {
+                        tabHistEl.classList.remove('active');
+                        tabHistEl.setAttribute('style','background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
+                    }
+                    const vis = craftingMenu.style.display === 'block';
+                    closeAllMenus();
+                    craftingMenu.style.display = vis ? 'none' : 'block';
+                });
+                window.addEventListener('click', () => { craftingMenu.style.display = 'none'; });
+                craftingMenu.addEventListener('click', (e) => { e.stopPropagation(); });
+                craftingMenu.querySelectorAll('.crafting-menu-item').forEach(item => {
+                    item.addEventListener('click', async (e) => {
+                        const action = item.getAttribute('data-action');
+                        craftingMenu.style.display = 'none';
+                        // Switch to crafting view: hide modifiers & history, show crafting panel
+                        setActiveTab('craftingTab');
+                        closeAllMenus();
+                        const content = document.getElementById('content'); if (content) content.style.display='none';
+                        hideHistoryView();
+                        const cp = document.getElementById('craftingPanel'); if (cp) { cp.style.display='block'; cp.innerHTML=''; document.body.classList.add('crafting-mode'); }
+                        setControlPanelVisible(false);
+                        if (action === 'liquid-emotions') {
+                            await showLiquidEmotions();
+                            setHeader('Liquid Emotions');
+                            
+                        } else if (action === 'annoints') {
+                            await showAnnoints();
+                            setHeader('Annoints');
+                            
+                        } else if (action === 'essences') {
+                            await showEssences();
+                            setHeader('Essences');
+                            
+                        } else if (action === 'omens') {
+                            await showOmens();
+                            setHeader('Omens');
+                            
+                        } else if (action === 'catalysts') {
+                            await showCatalysts();
+                            setHeader('Catalysts');
+                            
+                        } else if (action === 'socketables') {
+                            await showSocketables();
+                            setHeader('Socketables');
+                            
+                        }
+                    });
+                });
+            }
+
+            if (loginBtn) {
+                loginBtn.addEventListener('click', async () => {
+                    const res = await window.electronAPI.poeLogin();
+                    if (res?.loggedIn) {
+                        await updateSessionUI();
+                        // Do not auto-refresh on login; user controls refresh explicitly
+                    }
+                });
+            }
+            if (refreshBtn) {
+                refreshBtn.addEventListener('click', async () => {
+                    await (typeof refreshHistoryIfAllowed === 'function' ? refreshHistoryIfAllowed('manual') : refreshHistory());
+                });
+            }
+            const openBtn = document.getElementById('openHistoryWindowBtn');
+            if (openBtn) {
+                openBtn.addEventListener('click', async () => {
+                    await window.electronAPI.poeOpenHistoryWindow();
+                });
+            }
+            if (typeof updateHistoryRefreshButton === 'function') { try { updateHistoryRefreshButton(); } catch {} }
+
+            // History tab toggle: show history container and hide modifiers/crafting
+            if (tabHist) {
+                tabHist.addEventListener('click', () => {
+                    setActiveTab('tabHistory');
+                    closeAllMenus();
+                    // Use strong view gate
+                    setView('history');
+                    // ensure history UI readiness
+                    try { updateSessionUI(); } catch {}
+                    // Ensure mask toggle reflects state
+                    try {
+                        const el = document.getElementById('accountMaskToggle');
+                        if (el) {
+                            const masked = localStorage.getItem('xilehud_mask_account') === '1';
+                            el.classList.toggle('active', masked);
+                            el.setAttribute('title', masked ? 'Show account name' : 'Mask account name (for screenshots)');
+                        }
+                    } catch {}
+                    try { if (typeof refreshHistoryIfAllowed === 'function') refreshHistoryIfAllowed('nav'); } catch {}
+                    // proactively render from store before/while fetching
+                    try { if (typeof renderHistoryTotals === 'function') renderHistoryTotals(); } catch {}
+                    try { if (typeof renderHistoryActiveFilters === 'function') renderHistoryActiveFilters(); } catch {}
+                    try { if (typeof renderHistoryList === 'function') renderHistoryList(); } catch {}
+                    try { if (typeof renderHistoryDetail === 'function') renderHistoryDetail(0); } catch {}
+                    // proactively compute and draw chart from last known data if available
+                    try { if (typeof recomputeChartSeriesFromStore === 'function') recomputeChartSeriesFromStore(); } catch {}
+                    // Draw after container becomes visible – schedule multiple attempts
+                    try {
+                        if (typeof drawHistoryChart === 'function') {
+                            drawHistoryChart(); // immediate
+                            requestAnimationFrame(()=>{ try { drawHistoryChart(); } catch {} });
+                            setTimeout(()=>{ try { drawHistoryChart(); } catch {} }, 50);
+                            setTimeout(()=>{ try { drawHistoryChart(); } catch {} }, 150);
+                            setTimeout(()=>{ try { drawHistoryChart(); } catch {} }, 300);
+                        }
+                    } catch {}
+                    setHeader('Merchant History');
+                    
+                });
+            }
+
+            // Mask toggle
+            const maskBtn = document.getElementById('accountMaskToggle');
+            if (maskBtn) {
+                maskBtn.addEventListener('click', async () => {
+                    try {
+                        const masked = localStorage.getItem('xilehud_mask_account') === '1';
+                        const next = masked ? '0' : '1';
+                        localStorage.setItem('xilehud_mask_account', next);
+                        // Reflect immediately
+                        maskBtn.classList.toggle('active', next === '1');
+                        maskBtn.setAttribute('title', next === '1' ? 'Show account name' : 'Mask account name (for screenshots)');
+                        await updateSessionUI();
+                    } catch {}
+                });
+            }
+
+            // Filters UI wiring
+            const minEl = document.getElementById('histMinValue');
+            const curEl = document.getElementById('histCurrency');
+            const catEl = document.getElementById('histCategory');
+            const sortEl = document.getElementById('histSort');
+            const searchEl = document.getElementById('histSearch');
+            const topBtn = document.getElementById('histTopSale');
+            function applyAndRender(){
+                // Ensure state reference is up-to-date
+                if (!historyState) { try { historyState = window.OverlayHistory?.historyState || historyState; } catch {} }
+                const store = historyState?.store || { entries: [] };
+                const all = (store.entries||[]).slice().reverse();
+                historyState.items = applySort(applyFilters(all));
+                historyState.selectedIndex = 0;
+                // Update list and detail only; totals/chart are overall and unchanged by filters
+                try { renderHistoryList(); } catch {}
+                try { renderHistoryDetail(0); } catch {}
+                try { renderHistoryActiveFilters(); } catch {}
+            }
+            if (minEl) minEl.addEventListener('input', ()=>{ historyState.filters.min = Number(minEl.value||0); applyAndRender(); });
+            if (curEl) curEl.addEventListener('change', ()=>{ historyState.filters.cur = String(curEl.value||'exalted'); applyAndRender(); });
+            if (catEl) catEl.addEventListener('change', ()=>{ historyState.filters.category = String(catEl.value||''); applyAndRender(); });
+            if (sortEl) sortEl.addEventListener('change', ()=>{ historyState.sort = String(sortEl.value||'newest'); applyAndRender(); });
+            if (searchEl) searchEl.addEventListener('input', ()=>{ historyState.filters.search = String(searchEl.value||'').trim().toLowerCase(); applyAndRender(); });
+            if (topBtn) topBtn.addEventListener('click', ()=>{
+                const list = historyState.items;
+                if (!list.length) return;
+                // Prefer Divine as requested; fallback to currently selected currency if no Divine in view
+                const preferCur = 'divine';
+                let bestIdx = -1; let bestAmt = -1;
+                // first pass: divine
+                list.forEach((it, idx)=>{
+                    const cur = normalizeCurrency(it?.price?.currency||'');
+                    const amt = Number(it?.price?.amount||0);
+                    if (cur===preferCur && amt>bestAmt){ bestAmt=amt; bestIdx=idx; }
+                });
+                if (bestIdx < 0) {
+                    // fallback: selected currency
+                    const fallback = historyState.filters.cur || 'exalted';
+                    list.forEach((it, idx)=>{
+                        const cur = normalizeCurrency(it?.price?.currency||'');
+                        const amt = Number(it?.price?.amount||0);
+                        if (cur===fallback && amt>bestAmt){ bestAmt=amt; bestIdx=idx; }
+                    });
+                }
+                if (bestIdx < 0) bestIdx = 0;
+                historyState.selectedIndex = bestIdx;
+                renderHistoryList();
+                renderHistoryDetail(bestIdx);
+            });
+        
+
+        // ===== Crafting: Liquid Emotions (delegation only) =====
+        let craftingPanelEl = null;
+        async function showLiquidEmotions() {
+            if (window.OverlayLiquid && window.OverlayLiquid.show) { try { return await window.OverlayLiquid.show(); } catch {} }
+        }
+
+        function hideCraftingPanel() {
+            const el = document.getElementById('craftingPanel');
+            if (el) el.style.display = 'none';
+        }
+
+        function hideAnnointsPanel() {
+            if (window.OverlayAnnoints && window.OverlayAnnoints.hide) { try { return window.OverlayAnnoints.hide(); } catch {} }
+            const el = document.getElementById('annointsPanel');
+            if (el) el.style.display = 'none';
+        }
+
+        function highlightLiquidEmotion(name) {
+            if (window.OverlayLiquid && window.OverlayLiquid.highlight) { try { return window.OverlayLiquid.highlight(name); } catch {} }
+        }
+
+        async function reloadLiquidEmotions() {
+            if (window.OverlayLiquid && window.OverlayLiquid.reload) { try { return await window.OverlayLiquid.reload(); } catch {} }
+        }
+
+        // History functions are delegated above; fallbacks removed
+
+        // History implementation moved to module
+
+        // History fallback moved to module
+
+        // ===== Simple totals chart (canvas, no external deps) =====
+    // Redraw on resize using module's chart
+        window.addEventListener('resize', ()=> { try { drawHistoryChart(); } catch {} });
+    // Draw again after a brief delay to handle first-layout canvas sizes
+    document.addEventListener('DOMContentLoaded', ()=>{ setTimeout(()=>{ try { drawHistoryChart(); } catch {} }, 50); });
+        // Observe visibility/size changes on the historyRight container
+        document.addEventListener('DOMContentLoaded', ()=>{
+            const right = document.getElementById('historyRight');
+            if (!right || typeof MutationObserver === 'undefined') return;
+            const obs = new MutationObserver(()=>{ try { drawHistoryChart(); } catch {} });
+            obs.observe(right, { attributes:true, attributeFilter:['style','class'] });
+        });
+        // Also observe actual size changes of the chart wrapper if supported
+        document.addEventListener('DOMContentLoaded', ()=>{
+            try {
+                const wrap = document.getElementById('historyChartWrap');
+                if (wrap && typeof ResizeObserver !== 'undefined') {
+                    const ro = new ResizeObserver(() => { try { drawHistoryChart(); } catch {} });
+                    ro.observe(wrap);
+                }
+            } catch {}
+        });
+        // Legend click handlers: delegate to module
+        document.addEventListener('DOMContentLoaded', ()=>{
+            const els = [
+                document.getElementById('chartCur-divine'),
+                document.getElementById('chartCur-exalted'),
+                document.getElementById('chartCur-annul')
+            ].filter(Boolean);
+            els.forEach(el=>{
+                el.addEventListener('click', ()=>{
+                    const cur = el.getAttribute('data-cur')||'divine';
+                    try { setChartCurrency(cur); } catch {}
+                    els.forEach(e=> e.classList.toggle('active', e===el));
+                    drawHistoryChart();
+                });
+            });
+        });
+
+        // Throttle helpers and button state management
+        // Rate limit helpers delegated to module
+
+        // History list/detail/time delegates live in module
+
+        function escapeHtml(str) {
+            if (window.OverlayUtils && window.OverlayUtils.escapeHtml) {
+                try { return window.OverlayUtils.escapeHtml(str); } catch {}
+            }
+            if (str == null) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        // Normalize currency labels to canonical keys used across filters/totals/UI
+        function normalizeCurrency(c) {
+            if (window.OverlayUtils && window.OverlayUtils.normalizeCurrency) {
+                try { return window.OverlayUtils.normalizeCurrency(c); } catch {}
+            }
+            const raw = (c || '').toString().toLowerCase().trim();
+            if (!raw) return '';
+            // common shorthands and plurals
+            const s = raw
+                .replace(/\borbs?\b/g, '')
+                .replace(/\borb\b/g, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+            if (/^(ex|exa|exalt|exalted)/.test(s)) return 'exalted';
+            if (/^(div|divi|divine)/.test(s)) return 'divine';
+            if (/^(ann|annul|annulment)/.test(s)) return 'annul';
+            if (/^(c|chaos)/.test(s)) return 'chaos';
+            if (/altar/.test(s)) return 'altar';
+            return s;
+        }
+
+        // Delegations for modifier helpers now in module
+        const _origCreateModItem = window.createModItem;
+        if (typeof _origCreateModItem === 'function') {
+          try { window.OverlayModifiers?.patchCreateModItem?.(); } catch {}
+        }
+
+// Character menu wiring
+document.addEventListener('DOMContentLoaded', () => {
+        if (characterTab) {
+        characterTab.addEventListener('click', (e) => {
+            e.stopPropagation();
+                setActiveTab('characterTab');
+                const vis = characterMenu && characterMenu.style.display === 'block';
+                closeAllMenus();
+                if (characterMenu) characterMenu.style.display = vis ? 'none' : 'block';
+        });
+        window.addEventListener('click', () => { if (characterMenu) characterMenu.style.display = 'none'; });
+        if (characterMenu) characterMenu.addEventListener('click', (e) => { e.stopPropagation(); });
+        if (characterMenu) characterMenu.querySelectorAll('.character-menu-item').forEach(item => {
+            item.addEventListener('click', async () => {
+                setActiveTab('characterTab');
+                const tabHistEl = document.getElementById('tabHistory');
+                if (tabHistEl) {
+                    tabHistEl.classList.remove('active');
+                    tabHistEl.setAttribute('style','background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
+                }
+                closeAllMenus();
+                const action = item.getAttribute('data-action');
+                if (characterMenu) characterMenu.style.display = 'none';
+                // Switch to crafting/character view
+                const content = document.getElementById('content'); if (content) content.style.display='none';
+                hideHistoryView();
+                const cp = document.getElementById('craftingPanel'); if (cp) { cp.style.display='block'; cp.innerHTML=''; document.body.classList.add('crafting-mode'); }
+                setControlPanelVisible(false);
+                if (action === 'quest-passives') {
+                    if (window.OverlayQuestPassives?.show) { try { await window.OverlayQuestPassives.show(); } catch {} }
+                    setHeader('Quest Passives');
+                    
+                } else if (action === 'keystones') {
+                    await showKeystones();
+                    setHeader('Keystones');
+                    
+                } else if (action === 'atlas-nodes') {
+                    await showAtlasNodes();
+                    setHeader('Atlas Nodes');
+                } else if (action === 'gems') {
+                    await showGems();
+                    setHeader('Gems');
+                }
+            });
+        });
+    }
+    if (tabGlossar) {
+        tabGlossar.addEventListener('click', async () => {
+            setActiveTab('craftingTab');
+            setView('crafting');
+            try { await showGlossar(); } catch {}
+            setHeader('Glossar');
+        });
+    }
+        if (itemsTab) {
+        itemsTab.addEventListener('click', (e) => {
+            e.stopPropagation();
+                setActiveTab('itemsTab');
+                const vis = itemsMenu && itemsMenu.style.display === 'block';
+                closeAllMenus();
+                if (itemsMenu) itemsMenu.style.display = vis ? 'none' : 'block';
+        });
+        window.addEventListener('click', () => { if (itemsMenu) itemsMenu.style.display = 'none'; });
+        if (itemsMenu) itemsMenu.addEventListener('click', (e) => { e.stopPropagation(); });
+        if (itemsMenu) itemsMenu.querySelectorAll('.items-menu-item').forEach(item => {
+            item.addEventListener('click', async () => {
+                setActiveTab('itemsTab');
+                const tabHistEl = document.getElementById('tabHistory');
+                if (tabHistEl) {
+                    tabHistEl.classList.remove('active');
+                    tabHistEl.setAttribute('style','background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
+                }
+                closeAllMenus();
+                const action = item.getAttribute('data-action');
+                if (itemsMenu) itemsMenu.style.display = 'none';
+                // Items render into crafting panel for consistency
+                setView('crafting');
+                if (action === 'uniques') {
+                    await showUniques();
+                    setHeader('Uniques');
+                } else if (action === 'bases') {
+                    await showBases();
+                    setHeader('Bases');
+                }
+            });
+        });
+    }
+});
+
+// Re-added after accidental removal: handles manual category selection in modifier panel
+function switchCategory(){
+    const select=document.getElementById('categorySelect');
+    if(!select) return;
+    const cat=select.value;
+    if(!cat) return;
+    if(!window.electronAPI || !window.electronAPI.getModifierData) return;
+    // Ensure we're in Modifiers view; hide other panels and menus
+    try {
+        setView('modifiers');
+        const tabModEl = document.getElementById('tabModifier');
+        const tabHistEl = document.getElementById('tabHistory');
+        if (tabModEl && tabHistEl) {
+            tabModEl.classList.add('active');
+            tabModEl.setAttribute('style','background: var(--accent-blue); color: #fff; border: 1px solid var(--accent-blue); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
+            tabHistEl.classList.remove('active');
+            tabHistEl.setAttribute('style','background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
+        }
+        // Close any open dropdown menus
+        const craftingMenu = document.getElementById('craftingMenu'); if (craftingMenu) craftingMenu.style.display='none';
+        const characterMenu = document.getElementById('characterMenu'); if (characterMenu) characterMenu.style.display='none';
+        const itemsMenu = document.getElementById('itemsMenu'); if (itemsMenu) itemsMenu.style.display='none';
+        // Hide legacy annoints panel if present
+        const ann = document.getElementById('annointsPanel'); if (ann) ann.style.display='none';
+    } catch {}
+    // Fetch modifier data for chosen category and render a synthetic item context
+    window.electronAPI.getModifierData(cat).then(mods=>{
+        if(!Array.isArray(mods)){
+            console.warn('Category returned non-array', mods);
+            throw new Error('invalid_data');
+        }
+        const data={
+            item:{ name: cat.replace(/_/g,' '), category: cat, baseType: cat.replace(/_/g,' '), itemClass: cat.replace(/_/g,' ') },
+            modifiers: mods
+        };
+    // Apply mechanics post-processing via module (strongbox/logbook formatting, flags)
+    try { window.OverlayModifiers?.mechanicsPostProcess?.(data); } catch {}
+    window.originalData=data;
+    renderCategoryDetail(data);
+    try { setHeader('Modifier', cat.replace(/_/g,' ')); } catch {}
+    }).catch(err=>{
+        console.error('switchCategory error', err);
+        const content=document.getElementById('content');
+        if(content) content.innerHTML=`<div class="no-mods" style="color:var(--accent-red);">Failed to load category (${err?.message||'error'})</div>`;
+    });
+}
+
+// ===== Essences Panel delegated to module =====
+// (Removed duplicate extended crafting menu handler; actions are wired above.)
+
+// ===== Catalysts delegated to module =====
+
+// ===== Socketables delegated to module =====
+
+// ===== Uniques (Items tab) now delegated to module (see top-level wrappers) =====
+
+// ===== Bases (Items tab) now delegated to module (see top-level wrappers) =====
+
+// ===== Omens delegated to module =====
+
+// ===== Glossar (inline removed; delegated via wrappers defined above) =====
+
+// ===== Glossar (inline removed; delegated via wrappers defined above) =====
+
+// ===== Keystones (Character submenu) =====
+async function showKeystones(){
+    window.__lastPanel='keystones';
+    prepareCharacterPanel('Keystones');
+    craftingPanelEl.innerHTML='<div class="no-mods">Loading...</div>';
+    try{
+        const data = await window.electronAPI.getKeystones();
+        if(!data || data.error){ craftingPanelEl.innerHTML=`<div style="color:var(--accent-red);">Failed to load Keystones (${data?.error||'unknown'})</div>`; return; }
+        renderKeystones(data.keystones||[]);
+    }catch(e){ craftingPanelEl.innerHTML='<div style="color:var(--accent-red);">Exception loading Keystones</div>'; }
+}
+function renderKeystones(list){
+    const panel=craftingPanelEl; if(!panel) return;
+    panel.innerHTML=`<div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
+        <input id='keystoneSearch' type='text' placeholder='Search keystones...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
+        <button id='keystoneClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
+    </div>
+    <div id='keystoneTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
+    <div id='keystoneWrap' style='display:flex; flex-wrap:wrap; gap:10px;'></div>`;
+    const searchEl=panel.querySelector('#keystoneSearch');
+    const clearBtn=panel.querySelector('#keystoneClear');
+    const tagWrap=panel.querySelector('#keystoneTagFilters');
+    const wrap=panel.querySelector('#keystoneWrap');
+    // Tag coloring helpers
+    function tagRGB(tag){ const t=(tag||'').toLowerCase();
+        if(t==='fire' || t==='life') return [220,68,61];
+        if(t==='cold' || t==='mana') return [66,165,245];
+        if(t==='lightning') return [255,213,79];
+        if(t==='chaos' || t==='minion') return [156,39,176];
+        if(t==='energy shield' || t==='es') return [38,198,218];
+        if(t==='defences' || t==='armour' || t==='armor') return [109,76,65];
+        if(t==='evasion') return [46,125,50];
+        if(t==='resistances') return [255,112,67];
+        if(t==='projectile') return [255,179,0];
+        if(t==='area') return [171,71,188];
+        if(t==='critical' || t==='crit') return [255,179,0];
+        if(t==='spell') return [92,107,192];
+        if(t==='attack') return [121,85,72];
+        if(t==='damage' || t==='ailments' || t==='mechanics') return [96,125,139];
+        if(t==='movement' || t==='attack speed' || t==='speed') return [67,160,71];
+        if(t==='elemental') return [255,152,0];
+        return [120,144,156]; }
+    function chipCss(tag, active){ const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color};`; }
+    // Curated tag set same as Annoints
+    const curatedTags = ['Damage','Ailments','Attributes','Energy Shield','Defences','Life','Mana','Fire','Cold','Lightning','Chaos','Resistances','Projectile','Area','Critical','Spell','Attack','Minion','Mechanics'];
+    const selected = new Set();
+    // Derive tags from keystone text
+    function deriveTags(k){ const text=`${k.name||''} ${String(k.description||'')}`; const tags=new Set();
+        if(/Damage/i.test(text)) tags.add('Damage');
+        if(/Ailment|Bleed|Ignite|Chill|Freeze|Shock|Poison|Stun|Electrocute/i.test(text)) tags.add('Ailments');
+        if(/Attribute|Strength|Dexterity|Intelligence/i.test(text)) tags.add('Attributes');
+        if(/Energy Shield|\bES\b/i.test(text)) tags.add('Energy Shield');
+        if(/Armour|Armor|Evasion/i.test(text)) tags.add('Defences');
+        if(/\bLife\b/i.test(text)) tags.add('Life');
+        if(/\bMana\b/i.test(text)) tags.add('Mana');
+        if(/\bFire\b/i.test(text)) tags.add('Fire');
+        if(/\bCold\b/i.test(text)) tags.add('Cold');
+        if(/Lightning|Electrocute/i.test(text)) tags.add('Lightning');
+        if(/\bChaos\b/i.test(text)) tags.add('Chaos');
+        if(/Resist/i.test(text)) tags.add('Resistances');
+        if(/Projectile/i.test(text)) tags.add('Projectile');
+        if(/\bArea\b/i.test(text)) tags.add('Area');
+        if(/Critical/i.test(text)) tags.add('Critical');
+        if(/Cast|Spell/i.test(text)) tags.add('Spell');
+        if(/\bAttack\b/i.test(text)) tags.add('Attack');
+        if(/Minion/i.test(text)) tags.add('Minion');
+        if(/Trap|Totem|Trigger/i.test(text)) tags.add('Mechanics');
+        return [...tags]; }
+    // Precompute item tags and counts
+    list.forEach(k=>{ k.__tags = deriveTags(k); });
+    const tagCounts = Object.fromEntries(curatedTags.map(t=>[t,0]));
+    list.forEach(k=> (k.__tags||[]).forEach(t=>{ if(tagCounts[t]!=null) tagCounts[t]++; }));
+    function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; curatedTags.forEach(tag=>{ const active=selected.has(tag.toLowerCase()); const btn=document.createElement('button'); const count=tagCounts[tag]||0; btn.className='key-tag'; btn.setAttribute('data-tag', tag.toLowerCase()); btn.textContent = count? `${tag} (${count})` : tag; btn.style.cssText = `padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; ${chipCss(tag, active)}`; btn.addEventListener('click',()=>{ if(active) selected.delete(tag.toLowerCase()); else selected.add(tag.toLowerCase()); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(btn); }); if(selected.size){ const reset=document.createElement('button'); reset.textContent='Reset'; reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'; reset.addEventListener('click',()=>{ selected.clear(); build(''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
+    function matchTags(k){ if(!selected.size) return true; const lc=(k.__tags||[]).map(t=>t.toLowerCase()); return [...selected].every(t=> lc.includes(t)); }
+    function build(filter=''){
+        wrap.innerHTML='';
+        const f=filter.toLowerCase();
+        list.filter(k=>{ const matchesSearch = !f || k.name.toLowerCase().includes(f) || (k.description||'').toLowerCase().includes(f); return matchesSearch && matchTags(k); }).forEach(k=>{
+            const card=document.createElement('div');
+            card.style.flex='0 0 260px';
+            card.style.background='var(--bg-card)';
+            card.style.border='1px solid var(--border-color)';
+            card.style.borderRadius='6px';
+            card.style.padding='6px';
+            card.style.display='flex';
+            card.style.flexDirection='column';
+            card.style.gap='4px';
+            card.innerHTML=`<div style='display:flex; gap:6px; align-items:center;'>${k.image?`<img src='${k.image}' style='width:30px; height:30px; object-fit:contain;'>`:''}<div style='font-weight:600;'>${k.name}</div></div><div style='font-size:11px;'>${k.description||''}</div>`;
+            wrap.appendChild(card);
+        });
+    }
+    searchEl.addEventListener('input',()=>build(searchEl.value));
+    clearBtn.addEventListener('click',()=>{searchEl.value=''; selected.clear(); build(''); renderTagFilters(); searchEl.focus();});
+    build('');
+    renderTagFilters();
+}
+    // ===== Atlas Nodes (Character submenu) =====
+async function showAtlasNodes(){
+    window.__lastPanel='atlas_nodes';
+    prepareCharacterPanel('Atlas Nodes');
+    craftingPanelEl.innerHTML='<div class="no-mods">Loading...</div>';
+    try{
+        const data = await window.electronAPI.getAtlasNodes();
+        if(!data || data.error){ craftingPanelEl.innerHTML=`<div style="color:var(--accent-red);">Failed to load Atlas Nodes (${data?.error||'unknown'})</div>`; return; }
+        renderAtlasNodes(data.nodes||[]);
+    }catch(e){ craftingPanelEl.innerHTML='<div style="color:var(--accent-red);">Exception loading Atlas Nodes</div>'; }
+}
+function renderAtlasNodes(list){
+    const panel=craftingPanelEl; if(!panel) return;
+    panel.innerHTML=`<div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
+        <input id='atlasSearch' type='text' placeholder='Search atlas nodes...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
+        <button id='atlasClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
+    </div>
+    <div id='atlasTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
+    <div id='atlasWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:10px;'></div>`;
+    const searchEl=panel.querySelector('#atlasSearch');
+    const clearBtn=panel.querySelector('#atlasClear');
+    const tagWrap=panel.querySelector('#atlasTagFilters');
+    const wrap=panel.querySelector('#atlasWrap');
+    function tagRGB(tag){ const t=(tag||'').toLowerCase();
+        if(t==='fire' || t==='life') return [220,68,61];
+        if(t==='cold' || t==='mana') return [66,165,245];
+        if(t==='lightning') return [255,213,79];
+        if(t==='chaos' || t==='minion') return [156,39,176];
+        if(t==='energy shield' || t==='es') return [38,198,218];
+        if(t==='defences' || t==='armour' || t==='armor') return [109,76,65];
+        if(t==='evasion') return [46,125,50];
+        if(t==='resistances') return [255,112,67];
+        if(t==='projectile') return [255,179,0];
+        if(t==='area') return [171,71,188];
+        if(t==='critical' || t==='crit') return [255,179,0];
+        if(t==='spell') return [92,107,192];
+        if(t==='attack') return [121,85,72];
+        if(t==='damage' || t==='ailments' || t==='mechanics') return [96,125,139];
+        if(t==='movement' || t==='attack speed' || t==='speed') return [67,160,71];
+        if(t==='elemental') return [255,152,0];
+        return [120,144,156]; }
+    function chipCss(tag, active){ const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color};`; }
+    // Requested tag set for Atlas Nodes
+    const curatedTags = [
+        'quantity','rarity','explicit','prefix','suffix','delirium','breach','expedition','runic','remnants','spirit','ritual','azmeri','essence','strongbox','shrine','boss','waystone','rogue','biome','monster pack size','rare','magic'
+    ];
+    const selected = new Set();
+    function deriveTags(n){ const text=`${n.name||''} ${String(n.description||'')}`.toLowerCase(); const tags=new Set();
+        if(/\bquantity\b|item\s+quantity/i.test(text)) tags.add('quantity');
+        if(/\brarity\b|item\s+rarity/i.test(text)) tags.add('rarity');
+    if(/\bexplicit\b/i.test(text)) tags.add('explicit');
+    if(/\bprefix(es)?\b/i.test(text)) tags.add('prefix');
+        if(/\bsuffix(es)?\b/i.test(text)) tags.add('suffix');
+        if(/\bdelirium\b/i.test(text)) tags.add('delirium');
+        if(/\bbreach\b/i.test(text)) tags.add('breach');
+        if(/\bexpedition\b/i.test(text)) tags.add('expedition');
+        if(/\brunic\b/i.test(text)) tags.add('runic');
+        if(/\bremnants?\b/i.test(text)) tags.add('remnants');
+        if(/\bspirit\b/i.test(text)) tags.add('spirit');
+        if(/\britual\b/i.test(text)) tags.add('ritual');
+        if(/\bazmeri\b/i.test(text)) tags.add('azmeri');
+        if(/\bessence\b/i.test(text)) tags.add('essence');
+        if(/\bstrongbox\b/i.test(text)) tags.add('strongbox');
+        if(/\bshrine\b/i.test(text)) tags.add('shrine');
+        if(/\bboss\b/i.test(text)) tags.add('boss');
+        if(/\bwaystone\b/i.test(text)) tags.add('waystone');
+        if(/\brogue\b/i.test(text)) tags.add('rogue');
+        if(/\bbiome\b/i.test(text)) tags.add('biome');
+        if(/monster\s+pack\s+size/i.test(text)) tags.add('monster pack size');
+        if(/\brare\b/i.test(text)) tags.add('rare');
+        if(/\bmagic\b/i.test(text)) tags.add('magic');
+        return [...tags]; }
+    list.forEach(n=>{ n.__tags = deriveTags(n); });
+    const tagCounts = Object.fromEntries(curatedTags.map(t=>[t,0]));
+    list.forEach(n=> (n.__tags||[]).forEach(t=>{ if(tagCounts[t]!=null) tagCounts[t]++; }));
+    function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; curatedTags.forEach(tag=>{ const active=selected.has(tag.toLowerCase()); const btn=document.createElement('button'); const count=tagCounts[tag]||0; btn.className='key-tag'; btn.setAttribute('data-tag', tag.toLowerCase()); btn.textContent = count? `${tag} (${count})` : tag; btn.style.cssText = `padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; ${chipCss(tag, active)}`; btn.addEventListener('click',()=>{ if(active) selected.delete(tag.toLowerCase()); else selected.add(tag.toLowerCase()); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(btn); }); if(selected.size){ const reset=document.createElement('button'); reset.textContent='Reset'; reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'; reset.addEventListener('click',()=>{ selected.clear(); build(''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
+    function matchTags(n){ if(!selected.size) return true; const lc=(n.__tags||[]).map(t=>t.toLowerCase()); return [...selected].every(t=> lc.includes(t)); }
+    function build(filter=''){
+        wrap.innerHTML='';
+        const f=filter.toLowerCase();
+        list.filter(n=>{ const matchesSearch = !f || n.name.toLowerCase().includes(f) || (n.description||'').toLowerCase().includes(f); return matchesSearch && matchTags(n); }).forEach(n=>{
+            const card=document.createElement('div');
+            card.style.background='var(--bg-card)';
+            card.style.border='1px solid var(--border-color)';
+            card.style.borderRadius='6px';
+            card.style.padding='8px';
+            card.style.display='flex';
+            card.style.flexDirection='column';
+            card.style.gap='6px';
+            card.style.height='100%';
+            const title=`<div style='display:flex; align-items:center; gap:6px;'><img src='${n.image||''}' onerror="this.style.display='none'" style='width:28px; height:28px; object-fit:contain;'/><div style='font-weight:700; font-size:15px;'>${n.name}</div></div>`;
+            const bodyHtml = (n.description_html || escapeHtml(n.description || '')).trim();
+            const body = `<div style='font-size:12px; line-height:1.35;'>${bodyHtml}</div>`;
+            card.innerHTML=title+body;
+            wrap.appendChild(card);
+        });
+    }
+    searchEl.addEventListener('input',()=>build(searchEl.value));
+    clearBtn.addEventListener('click',()=>{ searchEl.value=''; build(''); searchEl.focus(); });
+    // Prevent any stray anchor clicks inside list
+    panel.addEventListener('click',(e)=>{ const target = e.target && ((e.target)); const a = target && target.closest ? target.closest('a') : null; if(a){ e.preventDefault(); e.stopPropagation(); }});
+    renderTagFilters();
+    build('');
+}
+
+// ===== Gems (Character submenu) =====
+async function showGems(){
+    window.__lastPanel='gems';
+    prepareCharacterPanel('Gems');
+    craftingPanelEl.innerHTML='<div class="no-mods">Loading...</div>';
+    // Reset scroll position to top when showing gems (with delay to ensure content is rendered)
+    setTimeout(() => {
+        if (craftingPanelEl) craftingPanelEl.scrollTop = 0;
+    }, 10);
+    try{
+        const data = await window.electronAPI.getGems();
+        if(!data || data.error){ craftingPanelEl.innerHTML=`<div style=\"color:var(--accent-red);\">Failed to load Gems (${data?.error||'unknown'})</div>`; return; }
+        renderGems(data.gems||{});
+    }catch(e){ craftingPanelEl.innerHTML='<div style=\"color:var(--accent-red);\">Exception loading Gems</div>'; }
+}
+function renderGems(groups){
+    const panel=craftingPanelEl; if(!panel) return;
+    const order=[["skill","Skill Gems"],["support","Support Gems"],["spirit","Spirit Gems"],["lineage","Lineage Supports"]];
+    const skillTags=new Set();
+    order.forEach(([key, label]) => { (groups[key]||[]).forEach(g => { (g.tags||[]).filter(Boolean).forEach(tag => skillTags.add(tag)); }); });
+    const sortedTags=[...skillTags].sort((a,b)=>a.localeCompare(b));
+    const tagCounts = {};
+    order.forEach(([key])=>{ (groups[key]||[]).forEach(g=>{ (g.tags||[]).forEach(t=>{ tagCounts[t] = (tagCounts[t]||0)+1; }); }); });
+    panel.innerHTML=`<div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
+        <input id='gemSearch' type='text' placeholder='Search gems...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
+        <button id='gemClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
+    </div>
+    <div id='gemTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; margin:-2px 0 6px; justify-content:center;'></div>
+    <div id='gemSections' style='display:flex; flex-direction:column; gap:14px;'></div>`;
+    const searchEl=panel.querySelector('#gemSearch');
+    const clearBtn=panel.querySelector('#gemClear');
+    const container=panel.querySelector('#gemSections');
+    const tagWrap=panel.querySelector('#gemTagFilters');
+    const selectedTags=new Set();
+    function tagRGB(tag){ const t=(tag||'').toLowerCase();
+        if(t==='fire' || t==='life') return [220,68,61];
+        if(t==='cold' || t==='mana') return [66,165,245];
+        if(t==='lightning') return [255,213,79];
+        if(t==='chaos' || t==='minion') return [156,39,176];
+        if(t==='energy shield' || t==='es') return [38,198,218];
+        if(t==='armour' || t==='armor' || t==='defences') return [109,76,65];
+        if(t==='evasion') return [46,125,50];
+        if(t==='resistances' || t==='resist') return [255,112,67];
+        if(t==='projectile') return [255,179,0];
+        if(t==='area') return [171,71,188];
+        if(t==='critical' || t==='crit') return [255,179,0];
+        if(t==='spell') return [92,107,192];
+        if(t==='attack') return [121,85,72];
+        if(t==='damage' || t==='ailments' || t==='mechanics') return [96,125,139];
+        if(t==='movement' || t==='attack speed' || t==='speed') return [67,160,71];
+        if(t==='elemental') return [255,152,0];
+        return [120,144,156]; }
+    function chipCss(tag, active){ const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color};`; }
+    function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; sortedTags.forEach(tag=>{ const btn=document.createElement('div'); const active=selectedTags.has(tag); const count = tagCounts[tag]||0; btn.textContent = count ? `${tag} (${count})` : tag; btn.style.cssText = `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:999px; ${chipCss(tag, active)}`; btn.addEventListener('click',()=>{ active?selectedTags.delete(tag):selectedTags.add(tag); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(btn); }); if(selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; reset.style.cursor='pointer'; reset.style.userSelect='none'; reset.style.padding='2px 6px'; reset.style.fontSize='11px'; reset.style.border='1px solid var(--accent-red)'; reset.style.borderRadius='999px'; reset.style.background='var(--accent-red)'; reset.style.color='#fff'; reset.addEventListener('click',()=>{ selectedTags.clear(); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
+    function gemMatches(g){ if(selectedTags.size===0) return true; const desc=(g.description||'').toLowerCase(); return [...selectedTags].every(t=> (g.tags&&g.tags.includes(t)) || desc.includes(t.toLowerCase())); }
+    function build(filter=''){
+        container.innerHTML='';
+        const f=filter.toLowerCase();
+        order.forEach(([key,label])=>{
+            const list=(groups[key]||[]).filter(g=>{
+                const matchesSearch=!f || g.name.toLowerCase().includes(f) || (g.type||'').toLowerCase().includes(f) || (g.description||'').toLowerCase().includes(f);
+                return matchesSearch && gemMatches(g);
+            });
+            if(!list.length) return;
+            const section=document.createElement('div');
+            section.innerHTML=`<div style='font-weight:600; font-size:14px; margin-bottom:4px;'>${label} (${list.length})</div>`;
+            const wrap=document.createElement('div'); wrap.style.display='flex'; wrap.style.flexWrap='wrap'; wrap.style.gap='10px';
+            list.forEach(g=>{
+                const card=document.createElement('div');
+                card.style.flex='0 0 230px'; card.style.background='var(--bg-card)'; card.style.border='1px solid var(--border-color)'; card.style.borderRadius='6px'; card.style.padding='6px'; card.style.display='flex'; card.style.flexDirection='column'; card.style.gap='4px';
+                const base=`<div style='display:flex; gap:6px; align-items:center;'>${g.image?`<img src='${g.image}' style='width:28px; height:28px; object-fit:contain;'>`:''}<div style='font-weight:600;'>${g.name}</div></div><div style='font-size:10px; color:var(--text-muted);'>${g.type||''}</div><div style='font-size:11px; max-height:120px; overflow:auto;'>${g.description||''}</div>`;
+                const tagsRow = `<div style='font-size:10px; display:flex; flex-wrap:wrap; gap:4px;'>${(g.tags||[]).length? (g.tags||[]).map(t=>'<span style="background:var(--bg-tertiary); padding:2px 4px; border-radius:3px; line-height:1;">'+t+'</span>').join('') : '<span style="opacity:.5;">No tags</span>'}</div>`;
+                card.innerHTML=base+tagsRow;
+                wrap.appendChild(card);
+            });
+            section.appendChild(wrap); container.appendChild(section);
+        });
+    }
+    searchEl.addEventListener('input',()=>build(searchEl.value));
+    clearBtn.addEventListener('click',()=>{ searchEl.value=''; build(''); searchEl.focus(); });
+        build('');
+        renderTagFilters();
+}
+
+// Bottom resize handle wiring (vertical resize)
+(function(){
+    const handle = document.getElementById('resizeHandle');
+    if (!handle || !window.electronAPI || typeof window.electronAPI.resizeOverlayHeight !== 'function') return;
+    let startY = 0; let startH = 0; let dragging = false; let raf = 0;
+    const onMove = (ev) => {
+        if (!dragging) return;
+        const dy = ev.clientY - startY;
+        const target = Math.max(200, startH + dy);
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(()=>{ try { window.electronAPI.resizeOverlayHeight(target); } catch {} });
+    };
+    const onUp = () => {
+        dragging = false;
+        window.removeEventListener('mousemove', onMove);
+        window.removeEventListener('mouseup', onUp);
+    };
+    handle.addEventListener('mousedown', (ev)=>{
+        ev.preventDefault(); ev.stopPropagation();
+        startY = ev.clientY; startH = window.innerHeight; dragging = true;
+        window.addEventListener('mousemove', onMove);
+        window.addEventListener('mouseup', onUp);
+    });
+})();
+        </script>
+</body>
+</html>

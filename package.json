@@ -1,0 +1,73 @@
+{
+  "name": "@xilehud/overlay",
+  "version": "1.0.0",
+  "description": "PoE2 Modifier Overlay - In-game modifier lookup tool",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:main\" \"npm run dev:renderer\"",
+    "dev:main": "tsx watch src/main/main.ts",
+    "dev:renderer": "vite",
+    "build": "npm run build:main && npm run build:renderer",
+    "build:main": "tsc",
+    "build:renderer": "vite build",
+    "start": "electron dist/main/main.js",
+    "pack": "electron-builder",
+    "dist": "npm run build && electron-builder"
+  },
+  "keywords": [
+    "poe2",
+    "overlay",
+    "modifiers",
+    "electron"
+  ],
+  "author": "XileHUD",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@vitejs/plugin-vue": "^4.6.2",
+    "concurrently": "^8.0.0",
+    "electron": "^28.0.0",
+  "electron-builder": "^24.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0",
+    "vue": "^3.0.0",
+    "vue-tsc": "^3.0.7"
+  },
+  "dependencies": {
+    "clipboardy": "^4.0.0",
+    "electron-forge": "^5.2.4",
+    "electron-updater": "^6.3.5"
+  },
+  "build": {
+  "appId": "com.xilehud.overlay",
+  "productName": "XileHUD",
+    "directories": {
+      "output": "dist_electron"
+    },
+    "files": [
+      "dist/**",
+      "dist/main/**",
+      "dist/renderer/**",
+      "package.json"
+    ],
+    "extraFiles": [
+      {
+        "from": "data/poe2",
+        "to": "resources/data/poe2",
+        "filter": ["**/*.json"]
+      }
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "private": true
+      }
+    ],
+    "win": {
+      "target": [
+        { "target": "portable", "arch": ["x64"] }
+      ]
+    }
+  }
+}
