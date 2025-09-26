@@ -765,8 +765,45 @@ class OverlayApp {
 
         // Removed: poe-scrape-open-history (deprecated scraping approach)
 
-        // Local merchant history persistence (handlers registered elsewhere if needed)
+        // Local merchant history persistence
         try { ipcMain.removeHandler('history-load'); } catch {}
+        try { ipcMain.removeHandler('history-save'); } catch {}
+        ipcMain.handle('history-load', async () => {
+            try {
+                await this.migrateLegacyMerchantHistory();
+            } catch {}
+            try {
+                const cfgDir = this.getUserConfigDir();
+                const file = path.join(cfgDir, 'merchant-history.json');
+                if (fs.existsSync(file)) {
+                    const raw = fs.readFileSync(file, 'utf8');
+                    const json = JSON.parse(raw);
+                    // Ensure shape
+                    const entries = Array.isArray(json?.entries) ? json.entries : [];
+                    const totals = json?.totals && typeof json.totals === 'object' ? json.totals : {};
+                    const lastSync = Number(json?.lastSync || 0) || 0;
+                    return { entries, totals, lastSync };
+                }
+                // Initialize empty store if missing
+                const empty = { entries: [], totals: {}, lastSync: 0 };
+                try { if (!fs.existsSync(cfgDir)) fs.mkdirSync(cfgDir, { recursive: true }); } catch {}
+                fs.writeFileSync(file, JSON.stringify(empty, null, 2));
+                return empty;
+            } catch (e: any) {
+                return { entries: [], totals: {}, lastSync: 0 };
+            }
+        });
+        ipcMain.handle('history-save', async (_e, store: any) => {
+            try {
+                const cfgDir = this.getUserConfigDir();
+                const file = path.join(cfgDir, 'merchant-history.json');
+                try { if (!fs.existsSync(cfgDir)) fs.mkdirSync(cfgDir, { recursive: true }); } catch {}
+                fs.writeFileSync(file, JSON.stringify(store || { entries: [], totals: {}, lastSync: 0 }, null, 2));
+                return { ok: true };
+            } catch (e: any) {
+                return { ok: false, error: e?.message || 'write_failed' };
+            }
+        });
         // Fallback scraping handlers removed
     }
 
