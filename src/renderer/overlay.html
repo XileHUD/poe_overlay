@@ -258,6 +258,10 @@
         if (crafting) crafting.style.display='none';
         if (history) history.style.display='none';
         if (histHeaderMain) histHeaderMain.style.display='none';
+        // Also hide every merchant history header / control element explicitly (defensive)
+        ['historyHeader','historyHeaderLeft','historyPinned','historyActiveFilters','histMinValue','histCurrency','histCategory','histSort','histSearch','histTopSale','historyRefreshBtn','historyInfoBadge','historyTradeCount','historyTotals','historyChartWrap','historyChart','historyList','historyDetail'].forEach(function(id){
+            var el=document.getElementById(id); if(el) el.style.display='none';
+        });
         
         // Show only the requested view
         if (view === 'modifiers'){
@@ -271,6 +275,10 @@
         } else if (view === 'history'){
             if (history) history.style.display='';
             if (histHeaderMain) histHeaderMain.style.display='flex';
+            // Show core history elements again
+            ['historyHeader','historyHeaderLeft','historyPinned','historyActiveFilters','histMinValue','histCurrency','histCategory','histSort','histSearch','histTopSale','historyRefreshBtn','historyInfoBadge','historyTradeCount','historyTotals','historyChartWrap','historyChart','historyList','historyDetail'].forEach(function(id){
+                var el=document.getElementById(id); if(el) el.style.display='';
+            });
             setControlPanelVisible(false);
             document.body.classList.add('view-history');
         }
