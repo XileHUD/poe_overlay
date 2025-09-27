@@ -106,6 +106,18 @@ class OverlayApp {
             const devPath = path.join(__dirname, '../../../../data/poe2/Rise of the Abyssal');
             if (fs.existsSync(devPath)) return devPath;
         } catch {}
+        try {
+            // 4) Packaged resources (electron-builder extraFiles) under process.resourcesPath
+            const packaged = path.join(process.resourcesPath || '', 'data/poe2');
+            if (fs.existsSync(packaged)) {
+                // If there's only one league folder, pick it; else use root
+                const entries = fs.readdirSync(packaged).map(f => path.join(packaged, f)).filter(p => fs.statSync(p).isDirectory());
+                const abyssal = entries.find(p => /Rise of the Abyssal/i.test(p));
+                if (abyssal) return abyssal;
+                if (entries.length > 0) return entries[0];
+                return packaged; // fall back to root even if empty
+            }
+        } catch {}
         // 4) Fallback to userData/poe2 (user can place JSONs there)
         const fallback = path.join(this.getUserConfigDir(), 'poe2');
         try { if (!fs.existsSync(fallback)) fs.mkdirSync(fallback, { recursive: true }); } catch {}
@@ -170,11 +182,34 @@ class OverlayApp {
         }
     }
     private createTray() {
-        // Placeholder monochrome logo (32x32) - replace with real asset when available
-        const placeholder = Buffer.from(
-            'iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABYUlEQVRYR+2WwQ3CMBBF/4oAUgAJIAGkAAmgABJAAkgAJIAG0qXQm5mQx2tW1vJvce7M9nHfT0S2JgIIYQQQgghhBBCL4A0yX8gJX6AE2A3wE5gDdA3kJmYDTJ17G0Q+u+J6AK6BrV3Q5T6I27wfWZ3vNJTQdD5WWgG1bYx1iZ8AsxQ6L5KbAEOuAvxwD0WwgrXcB2Pyc/B4nWkB8kXgJd3EItgFv6dL+y7JvBButlTB4QXhu7tyeII7wyb+K4HI1EawySGR4p+Hj6xV8Kf6bH0M7d2LZg55i1DYwFKwhbMHDfN9CH8HxtSV/T9OQpB2gXtCfgT6AKqgCqgCqoAqoAqsA5u2p90vUS6oMteYgz1xTsy7soE5FMX57N0w5re2kc4Tkm9Apu1y3bqk8J7Tb9DhK4aN6HuPgS1Bf6GvoM1Ay6R+QSs8g/An0CtMZoZhBBCCCGEEEIIIYT8QvwB6PCXh38XNbcAAAAASUVORK5CYII=','base64');
-        const icon = nativeImage.createFromBuffer(placeholder).resize({ width: 16, height: 16 });
-        this.tray = new Tray(icon);
+        // Try to use packaged icon; fallback to placeholder if missing
+        let trayIcon: Electron.NativeImage | null = null;
+        try {
+            // In prod, process.resourcesPath points to resources folder; the ico is copied beside app as per config
+            // We look relative to __dirname (dist/main) first, then fallback to process.resourcesPath, then project root.
+            const candidatePaths = [
+                path.join(process.resourcesPath || '', 'xile256.ico'),
+                path.join(process.resourcesPath || '', 'xile512.ico'),
+                path.join(process.resourcesPath || '', 'xilehudICO.ico'),
+                path.join(__dirname, '..', '..', 'xile256.ico'),
+                path.join(__dirname, '..', '..', 'xile512.ico'),
+                path.join(__dirname, '..', '..', 'xilehudICO.ico'),
+                path.join(process.cwd(), 'packages', 'overlay', 'xile256.ico'),
+                path.join(process.cwd(), 'packages', 'overlay', 'xile512.ico'),
+                path.join(process.cwd(), 'packages', 'overlay', 'xilehudICO.ico')
+            ].filter(p => !!p);
+            for (const pth of candidatePaths) {
+                try { if (fs.existsSync(pth)) { trayIcon = nativeImage.createFromPath(pth); break; } } catch {}
+            }
+        } catch {}
+        if (!trayIcon || trayIcon.isEmpty()) {
+            const placeholder = Buffer.from(
+                'iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABYUlEQVRYR+2WwQ3CMBBF/4oAUgAJIAGkAAmgABJAAkgAJIAG0qXQm5mQx2tW1vJvce7M9nHfT0S2JgIIYQQQgghhBBCL4A0yX8gJX6AE2A3wE5gDdA3kJmYDTJ17G0Q+u+J6AK6BrV3Q5T6I27wfWZ3vNJTQdD5WWgG1bYx1iZ8AsxQ6L5KbAEOuAvxwD0WwgrXcB2Pyc/B4nWkB8kXgJd3EItgFv6dL+y7JvBButlTB4QXhu7tyeII7wyb+K4HI1EawySGR4p+Hj6xV8Kf6bH0M7d2LZg55i1DYwFKwhbMHDfN9CH8HxtSV/T9OQpB2gXtCfgT6AKqgCqgCqoAqoAqsA5u2p90vUS6oMteYgz1xTsy7soE5FMX57N0w5re2kc4Tkm9Apu1y3bqk8J7Tb9DhK4aN6HuPgS1Bf6GvoM1Ay6R+QSs8g/An0CtMZoZhBBCCCGEEEIIIYT8QvwB6PCXh38XNbcAAAAASUVORK5CYII=', 'base64');
+            trayIcon = nativeImage.createFromBuffer(placeholder);
+        }
+        // Resize for tray use (Windows often expects 16x16 / 24x24); we keep original if square and <=32.
+        if (trayIcon.getSize().width > 32) trayIcon = trayIcon.resize({ width: 24, height: 24 });
+        this.tray = new Tray(trayIcon);
 
         const openAndFocus = (panel: string) => {
             // panel values: 'modifier','crafting','character','items'
@@ -199,7 +234,7 @@ class OverlayApp {
         };
 
         const contextMenu = Menu.buildFromTemplate([
-            { label: 'SYNTH HUD (F12)', enabled: false },
+            { label: 'XileHUD (F12)', enabled: false },
             { type: 'separator' },
             { label: 'Modifier', click: () => openAndFocus('modifier') },
             { label: 'Crafting', click: () => openAndFocus('crafting') },
@@ -220,7 +255,7 @@ class OverlayApp {
             { label: 'Quit', click: () => app.quit() }
         ]);
 
-        this.tray.setToolTip('SYNTH HUD');
+    this.tray.setToolTip('XileHUD');
         this.tray.setContextMenu(contextMenu);
         this.tray.on('double-click', () => this.toggleOverlayWithAllCategory());
     }
@@ -237,6 +272,21 @@ class OverlayApp {
         const defaultX = primaryDisplay.bounds.x + 50;  // Bottom-left corner
         const defaultY = primaryDisplay.bounds.y + primaryDisplay.bounds.height - windowHeight - 100;
         
+        // Resolve icon once
+        const iconPathCandidates = [
+            path.join(process.resourcesPath || '', 'xile256.ico'),
+            path.join(process.resourcesPath || '', 'xile512.ico'),
+            path.join(process.resourcesPath || '', 'xilehudICO.ico'),
+            path.join(__dirname, '..', '..', 'xile256.ico'),
+            path.join(__dirname, '..', '..', 'xile512.ico'),
+            path.join(__dirname, '..', '..', 'xilehudICO.ico'),
+            path.join(process.cwd(), 'packages', 'overlay', 'xile256.ico'),
+            path.join(process.cwd(), 'packages', 'overlay', 'xile512.ico'),
+            path.join(process.cwd(), 'packages', 'overlay', 'xilehudICO.ico')
+        ];
+        let windowIcon: string | undefined = undefined;
+        for (const p of iconPathCandidates) { try { if (fs.existsSync(p)) { windowIcon = p; break; } } catch {} }
+
         this.overlayWindow = new BrowserWindow({
             width: windowWidth,
             height: windowHeight,
@@ -253,7 +303,8 @@ class OverlayApp {
             resizable: true, // allow height-only resize (width constrained below)
             transparent: true,
             show: false,
-            focusable: true  // Changed to true to allow mouse interactions
+            focusable: true,  // Changed to true to allow mouse interactions
+            icon: windowIcon
         });
 
     // Set reasonable min sizes; allow user to resize width now that we persist size
@@ -768,7 +819,18 @@ class OverlayApp {
                 width: 1200,
                 height: 900,
                 title: 'PoE Trade History',
-                webPreferences: { contextIsolation: true, nodeIntegration: false }
+                webPreferences: { contextIsolation: true, nodeIntegration: false },
+                icon: ((): string | undefined => {
+                    for (const p of [
+                        path.join(process.resourcesPath || '', 'build', 'icon.ico'),
+                        path.join(process.resourcesPath || '', 'icon.ico'),
+                        path.join(__dirname, '..', '..', 'build', 'icon.ico'),
+                        path.join(__dirname, '..', '..', 'xilehudICO.ico'),
+                        path.join(process.cwd(), 'packages', 'overlay', 'build', 'icon.ico'),
+                        path.join(process.cwd(), 'packages', 'overlay', 'xilehudICO.ico')
+                    ]) { try { if (fs.existsSync(p)) return p; } catch {} }
+                    return undefined;
+                })()
             });
             this.historyWindow = win;
             win.on('closed', () => { this.historyWindow = null; });
