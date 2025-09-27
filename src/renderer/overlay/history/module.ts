@@ -3,6 +3,46 @@
 
 import { escapeHtml, normalizeCurrency } from "../utils";
 
+// --- View gating helpers ----------------------------------------------------
+// We aggressively guard all render/update functions so that if the user switches
+// away from the History view while async work or deferred timeouts are pending,
+// no DOM for history bleeds into other panels. This solves the "leak" issue
+// where header / filter elements remained visible after switching tabs.
+
+function historyVisible(): boolean {
+  try {
+    if (!document.body.classList.contains('view-history')) return false;
+    const wrap = document.getElementById('historyContainer');
+    if (!wrap) return false;
+    if ((wrap as HTMLElement).style.display === 'none') return false;
+  } catch { return false; }
+  return true;
+}
+
+let _viewGeneration = 0; // increments each time we enter view; async tasks check this
+let _activeGeneration = 0;
+
+export function onEnterView(): void {
+  _viewGeneration += 1;
+  _activeGeneration = _viewGeneration;
+  // When (re)entering, we can lazily re-render if we already have data.
+  try {
+    if (historyState.store.entries.length) {
+      renderHistoryTotals();
+      renderHistoryActiveFilters();
+      renderHistoryList();
+      renderHistoryDetail(historyState.selectedIndex || 0);
+      drawHistoryChart();
+      updateHistoryRefreshButton();
+    }
+  } catch {}
+}
+
+export function onLeaveView(): void {
+  // Invalidate future async callbacks.
+  _activeGeneration = -1;
+}
+
 export type Price = { amount?: number; currency?: string } | undefined;
 
 export interface HistoryEntryRaw {
@@ -122,6 +162,7 @@ export function addToTotals(price?: Price): void {
 }
 
 export function renderHistoryTotals(): void {
+  if (!historyVisible() || _activeGeneration !== _viewGeneration) return;
   const wrap = document.getElementById("historyTotals");
   if (!wrap) return;
   const rawTotals = historyState.store?.totals || {};
@@ -152,6 +193,7 @@ export function renderHistoryTotals(): void {
 }
 
 export function renderHistoryActiveFilters(): void {
+  if (!historyVisible() || _activeGeneration !== _viewGeneration) return;
   const wrap = document.getElementById("historyActiveFilters");
   if (!wrap) return;
   const { min, cur, category, search } = historyState.filters;
@@ -476,6 +518,7 @@ export function recomputeChartSeriesFromStore(): void {
 }
 
 export function updateHistoryChartFromTotals(totals: Record<string, number>): void {
+  if (!historyVisible() || _activeGeneration !== _viewGeneration) return;
   const t = Date.now();
   const d = Number((totals as any).divine || 0),
     e = Number((totals as any).exalted || 0),
@@ -490,6 +533,7 @@ export function updateHistoryChartFromTotals(totals: Record<string, number>): vo
 }
 
 export function drawHistoryChart(): void {
+  if (!historyVisible() || _activeGeneration !== _viewGeneration) return;
   const canvas = document.getElementById("historyChart") as HTMLCanvasElement | null;
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
@@ -509,7 +553,8 @@ export function drawHistoryChart(): void {
   
   // Get dimensions from wrapper or fallback
   let W = chartWrap ? chartWrap.clientWidth - 16 : 400; // subtract padding
-  let H = 150; // fixed height
+  // Dynamic height: if wrapper is flex-sized give it up to 260px, minimum 140
+  let H = chartWrap ? Math.max(140, Math.min(chartWrap.clientHeight - 16, 260)) : 180;
   
   if (W <= 0 || H <= 0) {
     // Still not ready, retry
@@ -609,6 +654,7 @@ export function toRelativeTime(ts: number | string): string {
 }
 
 export function renderHistoryList(): void {
+  if (!historyVisible() || _activeGeneration !== _viewGeneration) return;
   const histList = document.getElementById("historyList");
   if (!histList) return;
   if (!historyState.items || historyState.items.length === 0) {
@@ -656,6 +702,7 @@ export function renderHistoryList(): void {
 }
 
 export function renderHistoryDetail(idx: number): void {
+  if (!historyVisible() || _activeGeneration !== _viewGeneration) return;
   const det = document.getElementById("historyDetail");
   if (!det) return;
   const it: any = historyState.items?.[idx];
@@ -719,6 +766,7 @@ export function nextAllowedRefreshAt(): number {
 
 let _refreshBtnTimer: any = null;
 export function updateHistoryRefreshButton(): void {
+  if (!historyVisible() || _activeGeneration !== _viewGeneration) return;
   const btn = document.getElementById("historyRefreshBtn") as HTMLButtonElement | null;
   if (!btn) return;
   const now = Date.now();
@@ -747,6 +795,7 @@ export function updateHistoryRefreshButton(): void {
 }
 
 export async function refreshHistoryIfAllowed(origin?: string): Promise<boolean | void> {
+  if (!historyVisible()) return;
   const now = Date.now();
   const nextAt = nextAllowedRefreshAt();
   if (now < nextAt) {

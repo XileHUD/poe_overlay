@@ -105,10 +105,10 @@
             </div>
             <!-- Right details -->
             <div id="historyRight" style="flex: 1 1 auto; display:flex; flex-direction:column; overflow:hidden; min-height:0;">
-                <div id="historyDetail" style="flex: 1 1 auto; overflow-y:auto; padding: 10px; display:flex; align-items:flex-start; justify-content:center;">
+                <div id="historyDetail" style="flex: 1 1 55%; overflow-y:auto; padding: 10px; display:flex; align-items:flex-start; justify-content:center; min-height:0;">
                     <div class="no-mods">Select a trade to see item details</div>
                 </div>
-                <div id="historyChartWrap" style="flex: 0 0 180px; border-top:1px solid var(--border-color); padding:8px; background: var(--bg-card);">
+                <div id="historyChartWrap" style="flex: 1 1 45%; border-top:1px solid var(--border-color); padding:8px; background: var(--bg-card); min-height:140px; max-height:260px;">
                     <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;">
                         <div style="font-weight:600; color:var(--text-secondary);">Totals over time</div>
                         <div style="display:flex; gap:10px; align-items:center; font-size:11px;">
@@ -268,10 +268,12 @@
             if (content) content.style.display='';
             setControlPanelVisible(true);
             document.body.classList.add('view-modifiers');
+            try { window.OverlayHistory?.onLeaveView?.(); } catch {}
         } else if (view === 'crafting'){
             if (crafting) { crafting.style.display='block'; crafting.innerHTML=''; }
             setControlPanelVisible(false);
             document.body.classList.add('crafting-mode');
+            try { window.OverlayHistory?.onLeaveView?.(); } catch {}
         } else if (view === 'history'){
             if (history) history.style.display='';
             if (histHeaderMain) histHeaderMain.style.display='flex';
@@ -281,6 +283,7 @@
             });
             setControlPanelVisible(false);
             document.body.classList.add('view-history');
+            try { window.OverlayHistory?.onEnterView?.(); } catch {}
         }
         
         console.log('setView:', view, 'body classes:', document.body.className);
