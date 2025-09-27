@@ -386,11 +386,11 @@ class OverlayApp {
                 const parsed = await this.itemParser.parse(itemText);
                 if (parsed && parsed.category && parsed.category !== 'unknown') {
                     // Unique items: open Uniques panel and attempt to focus the item
-                    if ((parsed.rarity || '').toLowerCase() === 'unique') {
-                        this.showOverlay({ item: parsed, isUnique: true });
-                        this.armedCaptureUntil = 0;
-                        return;
-                    }
+                        if ((parsed.rarity || '').toLowerCase() === 'unique') {
+                            this.showUniqueItem(parsed);
+                            this.armedCaptureUntil = 0;
+                            return;
+                        }
                     let modifiers: any[] = [];
                     try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
                     this.safeSendToOverlay('set-active-category', parsed.category);
@@ -433,11 +433,10 @@ class OverlayApp {
                         if (parsed && parsed.category && parsed.category !== 'unknown') {
                             // Unique shortcut handling
                             if ((parsed.rarity || '').toLowerCase() === 'unique') {
-                                this.showOverlay();
-                                this.safeSendToOverlay('show-unique-item', { name: parsed.name, baseType: parsed.baseType });
-                                handled = true;
-                                break;
-                            }
+                                    this.showUniqueItem(parsed);
+                                    handled = true;
+                                    break;
+                                }
                             let modifiers: any[] = [];
                             try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
                             this.safeSendToOverlay('set-active-category', parsed.category);
@@ -511,6 +510,13 @@ class OverlayApp {
         try { clipboard.clear(); } catch {}
         try { this.clipboardMonitor.resetLastSeen(); } catch {}
         console.log('Overlay hidden');
+    }
+
+    private showUniqueItem(parsed: any) {
+        // Show overlay with item context
+        this.showOverlay({ item: parsed, isUnique: true });
+        // Fire dedicated unique event for renderer unique panel logic
+        this.safeSendToOverlay('show-unique-item', { name: parsed.name, baseType: parsed.baseType });
     }
 
     private toggleOverlayWithAllCategory() {

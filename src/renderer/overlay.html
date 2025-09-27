@@ -548,7 +548,7 @@
                                 () => !!(window.OverlayUniques && typeof window.OverlayUniques.show === 'function'),
                                 async () => {
                                     try { await showUniques(); } catch {}
-                                    try { window.OverlayUniques?.highlight?.(name, baseType); } catch {}
+                                    // Removed auto highlight to prevent unintended scroll movement
                                 }
                             );
                             return;
@@ -1010,6 +1010,40 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Dedicated unique focus event (from main showUniqueItem)
+    if (window.electronAPI && typeof window.electronAPI.onShowUniqueItem !== 'function' && window.electronAPI.on === undefined) {
+        // If preload exposes a generic on(channel, cb) you could hook that instead; here we assume a specific registration helper exists.
+    }
+    // Fallback: poll for a generic API and patch once available
+    const attachUniqueHandler = () => {
+        try {
+            if (window.electronAPI && window.electronAPI.onShowUniqueItem && !window.__xilehudUniqueBound) {
+                window.__xilehudUniqueBound = true;
+                window.electronAPI.onShowUniqueItem((payload) => {
+                    try {
+                        // Ensure crafting view in Uniques mode
+                        setView('crafting');
+                        setHeader('Uniques');
+                        // Reset scroll containers to top to avoid random offset
+                        // Removed forced scroll reset to keep current position
+                        // Attempt to render / show uniques panel if not yet loaded
+                        const ensure = (attempts=5) => {
+                            if (window.OverlayUniques && typeof window.OverlayUniques.show === 'function') {
+                                try { showUniques(); } catch {}
+                                // Removed auto highlight to prevent unintended scroll movement
+                                return;
+                            }
+                            if (attempts>0) setTimeout(()=>ensure(attempts-1),120);
+                        };
+                        ensure();
+                    } catch (e) { console.warn('unique focus failed', e); }
+                });
+            }
+        } catch {}
+        if (!window.__xilehudUniqueBound) setTimeout(attachUniqueHandler, 300);
+    };
+    attachUniqueHandler();
     if (tabGlossar) {
         tabGlossar.addEventListener('click', async () => {
             setActiveTab('craftingTab');
