@@ -42,6 +42,7 @@ function renderSection(section: any, domainId?: string){
               ${mod.tiers && mod.tiers.length > 0 ? '<span class="expand-icon">▼</span>' : ''}
             </div>
             <div class="mod-meta">
+              ${(section.domain === 'ALL' || section.domain === 'CORRUPTED' || section.domain === 'ESSENCE') && mod.category ? `<span class="tag category-tag" data-tag="${mod.category}">${mod.category.replace(/_/g, ' ').toUpperCase()}</span>` : ''}
               ${mod.tags && mod.tags.length ? mod.tags.map((t:string)=>`<span class="tag" data-tag="${t}">${t}</span>`).join('') : ''}
               <span class="spacer"></span>
               ${mod.ilvl ? `<span class="mod-badge badge-ilvl">iLvl ${mod.ilvl}</span>` : ''}

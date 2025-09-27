@@ -377,6 +377,15 @@ body {
 .tag[data-tag="caster"] { background: #4169E1 !important; }
 .tag[data-tag="critical"] { background: #FF1493 !important; }
 
+/* Category tags - item type indicators */
+.category-tag {
+    background: #FF6B35 !important; /* Distinctive orange for item types */
+    color: #fff !important;
+    font-weight: bold !important;
+    border: 1px solid #E55A2B !important;
+    margin-right: 6px !important;
+}
+
 /* Tier list styling - matching verifier exactly */
 .tier-list {
     margin-top: 12px;

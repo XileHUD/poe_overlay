@@ -7,6 +7,7 @@ export interface ModifierData {
     family_name: string;
     section_name: string;
     mods: Array<{
+        category?: string;
         text_html: string;
         text_plain: string;
         tier?: number;
