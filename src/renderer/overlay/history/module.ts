@@ -553,8 +553,9 @@ export function drawHistoryChart(): void {
   
   // Get dimensions from wrapper or fallback
   let W = chartWrap ? chartWrap.clientWidth - 16 : 400; // subtract padding
-  // Dynamic height: if wrapper is flex-sized give it up to 260px, minimum 140
-  let H = chartWrap ? Math.max(140, Math.min(chartWrap.clientHeight - 16, 260)) : 180;
+  // Dynamic height: use available space in flex container minus header and padding
+  const headerHeight = 32; // approximate height of chart header
+  let H = chartWrap ? Math.max(120, chartWrap.clientHeight - headerHeight - 16) : 180;
   
   if (W <= 0 || H <= 0) {
     // Still not ready, retry
