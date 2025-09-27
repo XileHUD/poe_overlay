@@ -68,5 +68,14 @@ declare global {
       show: () => Promise<void>;
       render: (list: any[]) => void;
     };
+    OverlayRegex?: {
+      show: () => Promise<void>;
+      render: () => void;
+      buildRegex: () => string;
+      reset: () => void;
+      saveCurrent: (name: string) => void;
+      loadSaved: (name: string) => void;
+      listSaved: () => string[];
+    };
   }
 }

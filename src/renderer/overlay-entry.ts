@@ -27,3 +27,6 @@ import './overlay/modifiers/globals';
 
 // Character: Quest Passives
 import './overlay/character/quest-passives/globals';
+
+// Tools
+import './overlay/tools/regex/globals';

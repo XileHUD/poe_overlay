@@ -20,7 +20,6 @@
                 <button id="poeLoginBtn" class="pin-btn" style="-webkit-app-region: no-drag;" title="Login to pathofexile.com">Login</button>
                 <button id="accountMaskToggle" class="pin-btn" style="-webkit-app-region: no-drag;" title="Mask account name (for screenshots)">👁</button>
                 <button id="historyRefreshBtn" class="pin-btn" style="-webkit-app-region: no-drag;" title="Refresh history">Refresh</button>
-                <button id="openHistoryWindowBtn" class="pin-btn" style="-webkit-app-region: no-drag;" title="View in browser">View in browser</button>
                 <span id="historyInfoBadge" class="price-badge" style="display:none;">Info</span>
             </div>
             <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
@@ -157,6 +156,12 @@
                     <div class="items-menu-item" data-action="bases" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Bases</div>
                 </div>
             </div>
+            <div class="tab" id="toolsTab" style="position:relative; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px; cursor:pointer;">
+                Tools ▾
+                <div id="toolsMenu" style="display:none; position:absolute; left:0; bottom:100%; transform: translateY(-4px); background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; padding:4px; z-index:320; min-width:140px; box-shadow:0 4px 14px rgba(0,0,0,0.55);">
+                    <div class="tools-menu-item" data-action="regex" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Regex</div>
+                </div>
+            </div>
             <button id="tabGlossar" class="tab" style="background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px; cursor:pointer;">Glossar</button>
             <button id="tabHistory" class="tab" style="background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;">Merchant History</button>
         </div>
@@ -177,6 +182,8 @@
     const characterMenu = document.getElementById('characterMenu');
     const itemsTab = document.getElementById('itemsTab');
     const itemsMenu = document.getElementById('itemsMenu');
+    const toolsTab = document.getElementById('toolsTab');
+    const toolsMenu = document.getElementById('toolsMenu');
     const tabGlossar = document.getElementById('tabGlossar');
     const historyHeader = document.getElementById('historyHeader') || null;
     const historyHeaderMain = document.getElementById('historyHeaderMain') || null;
@@ -203,7 +210,8 @@
             document.getElementById('tabGlossar'),
             document.getElementById('craftingTab'),
             document.getElementById('characterTab'),
-            document.getElementById('itemsTab')
+            document.getElementById('itemsTab'),
+            document.getElementById('toolsTab')
         ].filter(Boolean);
         tabs.forEach(t => {
             if (!t) return;
@@ -218,6 +226,7 @@
         const cm = document.getElementById('craftingMenu'); if (cm) cm.style.display='none';
         const ch = document.getElementById('characterMenu'); if (ch) ch.style.display='none';
         const im = document.getElementById('itemsMenu'); if (im) im.style.display='none';
+        const tm = document.getElementById('toolsMenu'); if (tm) tm.style.display='none';
     }
 
     // Helper: show/hide Modifiers control panel
@@ -726,22 +735,22 @@
 
             if (loginBtn) {
                 loginBtn.addEventListener('click', async () => {
-                    const res = await window.electronAPI.poeLogin();
-                    if (res?.loggedIn) {
-                        await updateSessionUI();
-                        // Do not auto-refresh on login; user controls refresh explicitly
+                    // Check if logged in - if yes, open trade history page; if no, show login window
+                    const session = await window.electronAPI.poeGetSession();
+                    if (session?.loggedIn) {
+                        await window.electronAPI.poeOpenHistoryWindow();
+                    } else {
+                        const res = await window.electronAPI.poeLogin();
+                        if (res?.loggedIn) {
+                            await updateSessionUI();
+                            // Do not auto-refresh on login; user controls refresh explicitly
+                        }
                     }
                 });
             }
             if (refreshBtn) {
                 refreshBtn.addEventListener('click', async () => {
                     await (typeof refreshHistoryIfAllowed === 'function' ? refreshHistoryIfAllowed('manual') : refreshHistory());
-                });
-            }
-            const openBtn = document.getElementById('openHistoryWindowBtn');
-            if (openBtn) {
-                openBtn.addEventListener('click', async () => {
-                    await window.electronAPI.poeOpenHistoryWindow();
                 });
             }
             if (typeof updateHistoryRefreshButton === 'function') { try { updateHistoryRefreshButton(); } catch {} }
@@ -1053,6 +1062,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (action === 'bases') {
                     await showBases();
                     setHeader('Bases');
+                }
+            });
+        });
+    }
+    if (toolsTab) {
+        toolsTab.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setActiveTab('toolsTab');
+            const vis = toolsMenu && toolsMenu.style.display === 'block';
+            closeAllMenus();
+            if (toolsMenu) toolsMenu.style.display = vis ? 'none' : 'block';
+        });
+        window.addEventListener('click', () => { if (toolsMenu) toolsMenu.style.display = 'none'; });
+        if (toolsMenu) toolsMenu.addEventListener('click', (e) => { e.stopPropagation(); });
+        if (toolsMenu) toolsMenu.querySelectorAll('.tools-menu-item').forEach(item => {
+            item.addEventListener('click', async () => {
+                setActiveTab('toolsTab');
+                closeAllMenus();
+                const action = item.getAttribute('data-action');
+                if (toolsMenu) toolsMenu.style.display = 'none';
+                if (action === 'regex') {
+                    // Regex tool occupies crafting panel style container for now
+                    setView('crafting');
+                    if (window.OverlayRegex?.show) { try { await window.OverlayRegex.show(); } catch {} }
+                    setHeader('Regex');
                 }
             });
         });
