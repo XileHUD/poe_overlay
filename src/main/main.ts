@@ -188,15 +188,9 @@ class OverlayApp {
             // In prod, process.resourcesPath points to resources folder; the ico is copied beside app as per config
             // We look relative to __dirname (dist/main) first, then fallback to process.resourcesPath, then project root.
             const candidatePaths = [
-                path.join(process.resourcesPath || '', 'xile256.ico'),
                 path.join(process.resourcesPath || '', 'xile512.ico'),
-                path.join(process.resourcesPath || '', 'xilehudICO.ico'),
-                path.join(__dirname, '..', '..', 'xile256.ico'),
                 path.join(__dirname, '..', '..', 'xile512.ico'),
-                path.join(__dirname, '..', '..', 'xilehudICO.ico'),
-                path.join(process.cwd(), 'packages', 'overlay', 'xile256.ico'),
-                path.join(process.cwd(), 'packages', 'overlay', 'xile512.ico'),
-                path.join(process.cwd(), 'packages', 'overlay', 'xilehudICO.ico')
+                path.join(process.cwd(), 'packages', 'overlay', 'xile512.ico')
             ].filter(p => !!p);
             for (const pth of candidatePaths) {
                 try { if (fs.existsSync(pth)) { trayIcon = nativeImage.createFromPath(pth); break; } } catch {}
@@ -274,15 +268,9 @@ class OverlayApp {
         
         // Resolve icon once
         const iconPathCandidates = [
-            path.join(process.resourcesPath || '', 'xile256.ico'),
             path.join(process.resourcesPath || '', 'xile512.ico'),
-            path.join(process.resourcesPath || '', 'xilehudICO.ico'),
-            path.join(__dirname, '..', '..', 'xile256.ico'),
             path.join(__dirname, '..', '..', 'xile512.ico'),
-            path.join(__dirname, '..', '..', 'xilehudICO.ico'),
-            path.join(process.cwd(), 'packages', 'overlay', 'xile256.ico'),
-            path.join(process.cwd(), 'packages', 'overlay', 'xile512.ico'),
-            path.join(process.cwd(), 'packages', 'overlay', 'xilehudICO.ico')
+            path.join(process.cwd(), 'packages', 'overlay', 'xile512.ico')
         ];
         let windowIcon: string | undefined = undefined;
         for (const p of iconPathCandidates) { try { if (fs.existsSync(p)) { windowIcon = p; break; } } catch {} }
