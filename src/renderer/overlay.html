@@ -1340,11 +1340,17 @@ function renderAtlasNodes(list){
             card.style.flexDirection='column';
             card.style.gap='6px';
             card.style.height='100%';
-            const title=`<div style='display:flex; align-items:center; gap:6px;'><img src='${n.image||''}' onerror="this.style.display='none'" style='width:28px; height:28px; object-fit:contain;'/><div style='font-weight:700; font-size:15px;'>${n.name}</div></div>`;
+            const title=`<div style='display:flex; align-items:center; gap:6px;'><img src='${n.image||''}' class='atlas-img' style='width:28px; height:28px; object-fit:contain;'/><div style='font-weight:700; font-size:15px;'>${n.name}</div></div>`;
             const bodyHtml = (n.description_html || escapeHtml(n.description || '')).trim();
             const body = `<div style='font-size:12px; line-height:1.35;'>${bodyHtml}</div>`;
             card.innerHTML=title+body;
             wrap.appendChild(card);
+        });
+        // Add image fallback for atlas nodes
+        const placeholderSvg = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><rect width='28' height='28' rx='6' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='8' font-family='sans-serif'>?</text></svg>`)}`;
+        wrap.querySelectorAll('img.atlas-img').forEach(function(img){
+            if(img._fb) return; img._fb=true; img.loading='lazy'; img.decoding='async';
+            img.addEventListener('error', function(){ img.src=placeholderSvg; img.style.opacity='0.5'; img.style.filter='grayscale(1)'; }, {once:true});
         });
     }
     searchEl.addEventListener('input',()=>build(searchEl.value));

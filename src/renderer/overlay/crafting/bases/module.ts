@@ -224,6 +224,20 @@ export function render(groups: BaseGroups): void {
       </div>`;
       card.innerHTML = imgBlock + right; listEl.appendChild(card); });
 
+    // Add image fallback for bases
+    const placeholder = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='110' height='110' viewBox='0 0 110 110'><rect width='110' height='110' rx='8' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='12' font-family='sans-serif'>?</text></svg>`)}`;
+    listEl.querySelectorAll('img').forEach((img: HTMLImageElement) => {
+      if ((img as any)._fb) return;
+      (img as any)._fb = true;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.addEventListener('error', () => {
+        img.src = placeholder;
+        img.style.opacity = '0.5';
+        img.style.filter = 'grayscale(1)';
+      }, { once: true });
+    });
+
     listEl.querySelectorAll('[data-sort-tag]').forEach(el=>{
       el.addEventListener('click',(e)=>{
         e.stopPropagation();

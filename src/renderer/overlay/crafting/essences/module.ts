@@ -234,6 +234,20 @@ export function render(list: Essence[]): void {
         ${modsHtml}`;
       listEl.appendChild(card);
     });
+    
+    // Add image fallback for essences
+    const placeholder = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><rect width='28' height='28' rx='4' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='8' font-family='sans-serif'>?</text></svg>`)}`;
+    listEl.querySelectorAll('img').forEach((img: HTMLImageElement) => {
+      if ((img as any)._fb) return;
+      (img as any)._fb = true;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.addEventListener('error', () => {
+        img.src = placeholder;
+        img.style.opacity = '0.5';
+        img.style.filter = 'grayscale(1)';
+      }, { once: true });
+    });
   }
 
   state.input?.addEventListener('input', () => apply(state.input?.value || ''));

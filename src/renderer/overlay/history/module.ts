@@ -736,7 +736,7 @@ export function renderHistoryDetail(idx: number): void {
                     </div>
                     <div class="grid">
                         <div>
-                            ${icon ? `<img src="${icon}" alt="icon" class="history-item-icon"/>` : ""}
+                            ${icon ? `<img src="${icon}" alt="icon" class="history-item-icon" loading="lazy" decoding="async"/>` : ""}
                         </div>
                         <div>
                             <div class="card-sub">${escapeHtml(base)}${ilvl ? ` • iLvl ${ilvl}` : ""}${
@@ -757,6 +757,19 @@ export function renderHistoryDetail(idx: number): void {
                 </div>
                 </div>
             `;
+            
+  // Add image fallback for history item icons
+  const placeholder = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><rect width='60' height='60' rx='8' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='10' font-family='sans-serif'>?</text></svg>`)}`;
+  det.querySelectorAll('img.history-item-icon').forEach((element) => {
+    const img = element as HTMLImageElement;
+    if ((img as any)._fb) return;
+    (img as any)._fb = true;
+    img.addEventListener('error', () => {
+      img.src = placeholder;
+      img.style.opacity = '0.5';
+      img.style.filter = 'grayscale(1)';
+    }, { once: true });
+  });
 }
 
 export function nextAllowedRefreshAt(): number {
