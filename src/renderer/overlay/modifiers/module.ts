@@ -17,6 +17,14 @@ export type ModifierData = {
 function highlightText(s: string){ return (window as any).OverlayUtils?.highlightText?.(s) ?? s; }
 function formatJoinedModText(s: string){ return (window as any).OverlayUtils?.formatJoinedModText?.(s) ?? s; }
 
+// Check if current category is an aggregated view that should show item type tags
+function isAggregatedCategory(): boolean {
+  const currentCategory = (window as any).currentModifierCategory;
+  if (!currentCategory) return false;
+  const AGGREGATED_CATEGORIES = ['ALL', 'DESECRATED', 'ESSENCE', 'CORRUPTED', 'SOCKETABLE', 'SOCKETABLES'];
+  return AGGREGATED_CATEGORIES.includes(currentCategory.toUpperCase());
+}
+
 function renderSection(section: any, domainId?: string){
   const side = section.side || section.type || 'none';
   const sectionId = `section-${section.domain}-${side}`;
@@ -42,7 +50,7 @@ function renderSection(section: any, domainId?: string){
               ${mod.tiers && mod.tiers.length > 0 ? '<span class="expand-icon">▼</span>' : ''}
             </div>
             <div class="mod-meta">
-              ${(section.domain === 'ALL' || section.domain === 'CORRUPTED' || section.domain === 'ESSENCE') && mod.category ? `<span class="tag category-tag" data-tag="${mod.category}">${mod.category.replace(/_/g, ' ').toUpperCase()}</span>` : ''}
+              ${isAggregatedCategory() && mod.category ? `<span class="tag category-tag" data-tag="${mod.category}">${mod.category.replace(/_/g, ' ').toUpperCase()}</span>` : ''}
               ${mod.tags && mod.tags.length ? mod.tags.map((t:string)=>`<span class="tag" data-tag="${t}">${t}</span>`).join('') : ''}
               <span class="spacer"></span>
               ${mod.ilvl ? `<span class="mod-badge badge-ilvl">iLvl ${mod.ilvl}</span>` : ''}

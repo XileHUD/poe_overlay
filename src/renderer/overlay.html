@@ -1085,6 +1085,8 @@ function switchCategory(){
     const cat=select.value;
     if(!cat) return;
     if(!window.electronAPI || !window.electronAPI.getModifierData) return;
+    // Store current category globally for use in render functions
+    window.currentModifierCategory = cat;
     // Ensure we're in Modifiers view; hide other panels and menus
     try {
         setView('modifiers');
