@@ -355,10 +355,8 @@ class OverlayApp {
             this.toggleOverlayWithAllCategory();
         });
 
-        // Force hide overlay
-        globalShortcut.register('Escape', () => {
-            this.hideOverlay();
-        });
+        // NOTE: We intentionally do NOT register Escape globally anymore, because that prevented PoE from seeing it.
+        // Overlay can still be hidden by: F12, clicking outside (blur) or future in-window ESC handling via IPC.
 
         // Do NOT register Ctrl+C globally to avoid breaking copy in-game/OS.
 
