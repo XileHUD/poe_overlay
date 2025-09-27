@@ -1175,7 +1175,11 @@ function renderKeystones(list){
         <button id='keystoneClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
     <div id='keystoneTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
-    <div id='keystoneWrap' style='display:flex; flex-wrap:wrap; gap:10px;'></div>`;
+    <div id='keystoneWrap' style='display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; align-items:stretch;'></div>`;
+    // Ensure merchant history UI fully hidden (defensive)
+    document.getElementById('historyHeader')?.setAttribute('style','display:none');
+    document.getElementById('historyHeaderLeft')?.setAttribute('style','display:none');
+    const hh2=document.getElementById('historyHeaderMain'); if(hh2) hh2.style.display='none';
     const searchEl=panel.querySelector('#keystoneSearch');
     const clearBtn=panel.querySelector('#keystoneClear');
     const tagWrap=panel.querySelector('#keystoneTagFilters');
@@ -1236,7 +1240,7 @@ function renderKeystones(list){
         const f=filter.toLowerCase();
         list.filter(k=>{ const matchesSearch = !f || k.name.toLowerCase().includes(f) || (k.description||'').toLowerCase().includes(f); return matchesSearch && matchTags(k); }).forEach(k=>{
             const card=document.createElement('div');
-            card.style.flex='0 0 260px';
+            card.className='keystone-card';
             card.style.background='var(--bg-card)';
             card.style.border='1px solid var(--border-color)';
             card.style.borderRadius='6px';
@@ -1244,8 +1248,16 @@ function renderKeystones(list){
             card.style.display='flex';
             card.style.flexDirection='column';
             card.style.gap='4px';
-            card.innerHTML=`<div style='display:flex; gap:6px; align-items:center;'>${k.image?`<img src='${k.image}' style='width:30px; height:30px; object-fit:contain;'>`:''}<div style='font-weight:600;'>${k.name}</div></div><div style='font-size:11px;'>${k.description||''}</div>`;
+            card.style.height='100%';
+            const imgHtml = k.image ? `<img src='${k.image}' class='keystone-img' style='width:30px; height:30px; object-fit:contain;'>` : `<img src='' class='keystone-img' style='width:30px; height:30px; object-fit:contain;'>`;
+            card.innerHTML=`<div style='display:flex; gap:6px; align-items:center;'>${imgHtml}<div style='font-weight:600;'>${k.name}</div></div><div style='font-size:11px;'>${k.description||''}</div>`;
             wrap.appendChild(card);
+        });
+        // Image fallback placeholder
+        const placeholderSvg = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><rect width='30' height='30' rx='6' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='9' font-family='sans-serif'>?</text></svg>`)}`;
+        wrap.querySelectorAll('img.keystone-img').forEach(function(img){
+            if(img._fb) return; img._fb=true; img.loading= img.loading || 'lazy'; img.decoding='async';
+            img.addEventListener('error', function(){ img.src=placeholderSvg; img.style.opacity='0.5'; img.style.filter='grayscale(1)'; }, {once:true});
         });
     }
     searchEl.addEventListener('input',()=>build(searchEl.value));
@@ -1424,17 +1436,21 @@ function renderGems(groups){
             if(!list.length) return;
             const section=document.createElement('div');
             section.innerHTML=`<div style='font-weight:600; font-size:14px; margin-bottom:4px;'>${label} (${list.length})</div>`;
-            const wrap=document.createElement('div'); wrap.style.display='flex'; wrap.style.flexWrap='wrap'; wrap.style.gap='10px';
+            const wrap=document.createElement('div'); wrap.style.display='grid'; wrap.style.gridTemplateColumns='repeat(auto-fit, minmax(230px, 1fr))'; wrap.style.gap='10px';
             list.forEach(g=>{
                 const card=document.createElement('div');
-                card.style.flex='0 0 230px'; card.style.background='var(--bg-card)'; card.style.border='1px solid var(--border-color)'; card.style.borderRadius='6px'; card.style.padding='6px'; card.style.display='flex'; card.style.flexDirection='column'; card.style.gap='4px';
-                const base=`<div style='display:flex; gap:6px; align-items:center;'>${g.image?`<img src='${g.image}' style='width:28px; height:28px; object-fit:contain;'>`:''}<div style='font-weight:600;'>${g.name}</div></div><div style='font-size:10px; color:var(--text-muted);'>${g.type||''}</div><div style='font-size:11px; max-height:120px; overflow:auto;'>${g.description||''}</div>`;
+                card.style.background='var(--bg-card)'; card.style.border='1px solid var(--border-color)'; card.style.borderRadius='6px'; card.style.padding='6px'; card.style.display='flex'; card.style.flexDirection='column'; card.style.gap='4px';
+                const imgHtml = g.image?`<img class='gem-img' src='${g.image}' loading='lazy' decoding='async' style='width:28px; height:28px; object-fit:contain;'>`:'';
+                const base=`<div style='display:flex; gap:6px; align-items:center;'>${imgHtml}<div style='font-weight:600;'>${g.name}</div></div><div style='font-size:10px; color:var(--text-muted);'>${g.type||''}</div><div style='font-size:11px; max-height:120px; overflow:auto;'>${g.description||''}</div>`;
                 const tagsRow = `<div style='font-size:10px; display:flex; flex-wrap:wrap; gap:4px;'>${(g.tags||[]).length? (g.tags||[]).map(t=>'<span style="background:var(--bg-tertiary); padding:2px 4px; border-radius:3px; line-height:1;">'+t+'</span>').join('') : '<span style="opacity:.5;">No tags</span>'}</div>`;
                 card.innerHTML=base+tagsRow;
                 wrap.appendChild(card);
             });
             section.appendChild(wrap); container.appendChild(section);
         });
+        // Image fallback
+        const placeholder='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><rect width="28" height="28" rx="4" fill="%23222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23555" font-size="8" font-family="sans-serif">?</text></svg>';
+        container.querySelectorAll('img.gem-img').forEach(img=>{ if(img._fb)return; img._fb=true; img.addEventListener('error',()=>{ img.src=placeholder; img.style.opacity='0.55'; img.style.filter='grayscale(1)'; }, { once:true }); });
     }
     searchEl.addEventListener('input',()=>build(searchEl.value));
     clearBtn.addEventListener('click',()=>{ searchEl.value=''; build(''); searchEl.focus(); });

@@ -1,4 +1,5 @@
 // Omens module: encapsulates Omens crafting UI
+import { bindImageFallback } from "../utils/imageFallback";
 
 export type Omen = {
   slug?: string;
@@ -130,7 +131,7 @@ export function render(list: Omen[]): void {
       <button id='omenClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
     <div id='omenTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
-    <div id='omenWrap' style='display:flex; flex-wrap:wrap; gap:10px;'></div>`;
+  <div id='omenWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:10px;'></div>`;
 
   state.input = panel.querySelector('#omenSearch') as HTMLInputElement | null;
   const wrap = panel.querySelector('#omenWrap') as HTMLElement | null;
@@ -213,7 +214,6 @@ export function render(list: Omen[]): void {
     state.filtered = state.cache.filter(o => (!f || (o.name||'').toLowerCase().includes(f) || (o.explicitMods||[]).some(m => (m||'').toLowerCase().includes(f))) && matchesTags(o));
     state.filtered.forEach(o => {
       const card = document.createElement('div');
-      card.style.flex = '0 0 240px';
       card.style.background = 'var(--bg-card)';
       card.style.border = '1px solid var(--border-color)';
       card.style.borderRadius = '6px';
@@ -221,9 +221,10 @@ export function render(list: Omen[]): void {
       card.style.display = 'flex';
       card.style.flexDirection = 'column';
       card.style.gap = '4px';
-      card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>${o.image?`<img src='${o.image}' style='width:28px; height:28px; object-fit:contain;'>`:''}<div style='font-weight:600;'>${o.name}</div></div><div style='font-size:11px; color:var(--text-muted);'>Stack: ${o.stack_current??'?'} / ${o.stack_max??'?'}</div><div style='font-size:11px;'>${(o.explicitMods||[]).map(m=>highlight(m)).join('<br>')}</div>`;
+      card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>${o.image?`<img class='omen-img' src='${o.image}' loading='lazy' decoding='async' style='width:28px; height:28px; object-fit:contain;'>`:''}<div style='font-weight:600;'>${o.name}</div></div><div style='font-size:11px; color:var(--text-muted);'>Stack: ${o.stack_current??'?'} / ${o.stack_max??'?'}</div><div style='font-size:11px;'>${(o.explicitMods||[]).map(m=>highlight(m)).join('<br>')}</div>`;
       wrap.appendChild(card);
     });
+    bindImageFallback(panel, '.omen-img', '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><rect width="28" height="28" rx="4" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="8" font-family="sans-serif">?</text></svg>', 0.5);
   }
 
   state.input?.addEventListener('input', () => apply(state.input?.value || ''));

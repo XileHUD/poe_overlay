@@ -125,39 +125,10 @@ export function render(items: LiquidEmotionItem[]): void {
     return;
   }
 
-  // Build tag stats across emotions based on enchant/explicit text
-  const curated = [
-    'Damage','Ailments','Attributes','Life','Mana','Energy Shield','Armour','Evasion','Resistances',
-    'Fire','Cold','Lightning','Chaos','Spell','Attack','Minion','Projectile','Area','Critical','Speed','Curse','DoT'
+  // Replace previous dynamic tag system with fixed chips requested by user.
+  const fixedChips = [
+    'Additional Modifier', 'Rarity of items', 'Pack size', 'Magic Monsters', 'Splinters', 'Tablets', 'Waystones found', 'Rare Monsters'
   ];
-  state.tagCounts = Object.fromEntries(curated.map(t => [t, 0]));
-  const lowerInc = (k: string) => { state.tagCounts[k] = (state.tagCounts[k] || 0) + 1; };
-  const addTagsFor = (e: LiquidEmotionItem) => {
-    const blob = `${e.name||''} ${(e.enchantMods||[]).join(' ')} ${(e.explicitMods||[]).join(' ')}`.toLowerCase();
-    if (/strength|dexterity|intelligence|attribute/.test(blob)) lowerInc('Attributes');
-    if (/life/.test(blob)) lowerInc('Life');
-    if (/mana/.test(blob)) lowerInc('Mana');
-    if (/energy\s*shield|\bes\b/.test(blob)) lowerInc('Energy Shield');
-    if (/armour|armor/.test(blob)) lowerInc('Armour');
-    if (/evasion/.test(blob)) lowerInc('Evasion');
-    if (/resist/.test(blob)) lowerInc('Resistances');
-    if (/fire/.test(blob)) lowerInc('Fire');
-    if (/cold|freeze|chill/.test(blob)) lowerInc('Cold');
-    if (/lightning|shock|electrocute/.test(blob)) lowerInc('Lightning');
-    if (/chaos|poison/.test(blob)) lowerInc('Chaos');
-    if (/spell/.test(blob)) lowerInc('Spell');
-    if (/attack|weapon/.test(blob)) lowerInc('Attack');
-    if (/minion/.test(blob)) lowerInc('Minion');
-    if (/projectile/.test(blob)) lowerInc('Projectile');
-    if (/area/.test(blob)) lowerInc('Area');
-    if (/critical|crit/.test(blob)) lowerInc('Critical');
-    if (/speed|attack speed|cast speed|movement/.test(blob)) lowerInc('Speed');
-    if (/curse/.test(blob)) lowerInc('Curse');
-    if (/damage over time|degeneration|bleed|ignite/.test(blob)) lowerInc('DoT');
-    if (/damage|increased|more/.test(blob)) lowerInc('Damage');
-    if (/ailment|impale|bleed|ignite|poison|shock|chill|freeze|electrocute/.test(blob)) lowerInc('Ailments');
-  };
-  items.forEach(addTagsFor);
 
   const cards: string[] = [];
   for (const item of items) {
@@ -177,70 +148,29 @@ export function render(items: LiquidEmotionItem[]): void {
     <div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
       <input id='leSearch' type='text' placeholder='Search emotions...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
       <button id='leClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
-      <button id='leReload' style='font-size:11px; padding:2px 6px; background:var(--bg-tertiary); color:var(--text-primary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer;'>Reload</button>
     </div>
-    <div id='leTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
+  <div id='leTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
     <div id='leList' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:10px;'>${cards.join("")}</div>`;
 
-  const reloadBtn = panel.querySelector("#leReload");
-  reloadBtn?.addEventListener("click", () => reload());
+  // Reload button removed per request
   const searchEl = panel.querySelector('#leSearch') as HTMLInputElement | null;
   const clearBtn = panel.querySelector('#leClear') as HTMLButtonElement | null;
   const listEl = panel.querySelector('#leList') as HTMLElement | null;
   const tagWrap = panel.querySelector('#leTagFilters') as HTMLElement | null;
-  function tagRGB(tag: string){
-    const t=(tag||'').toLowerCase();
-    if (t==='fire' || t==='life') return [220,68,61];
-    if (t==='cold' || t==='mana') return [66,165,245];
-    if (t==='lightning') return [255,213,79];
-    if (t==='chaos' || t==='minion') return [156,39,176];
-    if (t==='energy shield' || t==='es') return [38,198,218];
-    if (t==='defences' || t==='armour' || t==='armor') return [109,76,65];
-    if (t==='evasion') return [46,125,50];
-    if (t==='resistances' || t==='resist') return [255,112,67];
-    if (t==='projectile') return [255,179,0];
-    if (t==='area') return [171,71,188];
-    if (t==='critical' || t==='crit') return [255,179,0];
-    if (t==='spell') return [92,107,192];
-    if (t==='attack') return [121,85,72];
-    if (t==='damage' || t==='ailments' || t==='mechanics' || t==='dot') return [96,125,139];
-    if (t==='speed' || t==='movement') return [67,160,71];
-    if (t==='elemental') return [255,152,0];
-    return [120,144,156];
+  function chip(tag: string, active: boolean){
+    return `<button data-chip='${tag}' style='padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; border:1px solid var(--border-color); background:${active? 'var(--accent-blue)' : 'var(--bg-tertiary)'}; color:${active? '#fff':'var(--text-primary)'};'>${tag}</button>`;
   }
-  function chipCss(tag: string, active: boolean){
-    const [r,g,b]=tagRGB(tag);
-    const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
-    const border=`rgba(${r},${g},${b},0.6)`;
-    const luma=0.2126*r+0.7152*g+0.0722*b;
-    const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)';
-    return `border:1px solid ${border}; background:${bg}; color:${color};`;
-  }
-  function renderTagFilters(){
-    if (!tagWrap) return;
-    tagWrap.innerHTML='';
-    curated.forEach(tag=>{
-      const lc = tag.toLowerCase();
-      const active = state.selectedTags.has(lc);
-      const count = state.tagCounts[tag] || 0;
-      if (!count) return;
-      const el = document.createElement('button');
-      el.textContent = count ? `${tag} (${count})` : tag;
-      el.style.cssText = `padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; ${chipCss(tag, active)}`;
-      el.addEventListener('click', ()=>{
-        if (active) state.selectedTags.delete(lc); else state.selectedTags.add(lc);
-        apply(searchEl?.value || '');
-        renderTagFilters();
+  function renderFixedChips(){
+    if(!tagWrap) return; tagWrap.innerHTML = fixedChips.map(c=>chip(c, state.selectedTags.has(c.toLowerCase()))).join(' ')+ (state.selectedTags.size? ` <button id='leChipReset' style='padding:3px 10px; font-size:11px; border-radius:999px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'>Reset</button>` : '');
+    tagWrap.querySelectorAll('button[data-chip]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const name = (btn as HTMLElement).getAttribute('data-chip')||''; const key=name.toLowerCase();
+        if(state.selectedTags.has(key)) state.selectedTags.delete(key); else state.selectedTags.add(key);
+        apply(searchEl?.value||'');
+        renderFixedChips();
       });
-      tagWrap.appendChild(el);
     });
-    if (state.selectedTags.size) {
-      const reset=document.createElement('button');
-      reset.textContent='Reset';
-      reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);';
-      reset.addEventListener('click', ()=>{ state.selectedTags.clear(); apply(''); renderTagFilters(); });
-      tagWrap.appendChild(reset);
-    }
+    tagWrap.querySelector('#leChipReset')?.addEventListener('click', ()=>{ state.selectedTags.clear(); apply(searchEl?.value||''); renderFixedChips(); });
   }
   const apply = (q: string) => {
     const f = (q||'').toLowerCase().trim();
@@ -257,5 +187,5 @@ export function render(items: LiquidEmotionItem[]): void {
   };
   searchEl?.addEventListener('input', ()=> apply(searchEl.value));
   clearBtn?.addEventListener('click', ()=> { if (searchEl) { searchEl.value=''; apply(''); searchEl.focus(); } });
-  renderTagFilters();
+  renderFixedChips();
 }

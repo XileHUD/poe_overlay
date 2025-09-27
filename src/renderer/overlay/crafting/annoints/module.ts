@@ -1,5 +1,6 @@
 // Annoints module: encapsulates Annoints crafting UI
 import { sanitizeCraftingHtml } from "../../utils";
+import { bindImageFallback } from "../utils/imageFallback";
 
 export type Annoint = {
   name: string;
@@ -172,10 +173,13 @@ export function render(): void {
     </div>`;
   }).join('');
 
-  panel.innerHTML = header + `<div id='annointsCards' style='display:flex; flex-wrap:wrap; gap:12px;'>${cardsHtml}</div>`;
+  panel.innerHTML = header + `<div id='annointsCards' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:12px;'>${cardsHtml}</div>`;
 
   state.searchInput = panel.querySelector('#annointsSearch') as HTMLInputElement | null;
   state.cards = Array.from(panel.querySelectorAll('.annoint-card')) as HTMLElement[];
+  // Image fallback for inner emotion icons
+  const placeholderSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><rect width="14" height="14" rx="2" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="6" font-family="sans-serif">?</text></svg>';
+  bindImageFallback(panel, '.annoint-card img', placeholderSvg, 0.5);
   state.searchInput?.addEventListener('input', () => scheduleFilter());
 
   const tagButtons = Array.from(panel.querySelectorAll('.ann-tag')) as HTMLElement[];

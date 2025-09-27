@@ -124,7 +124,7 @@ export function render(list: Catalyst[]): void {
       <button id='catalystClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
     <div id='catalystTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
-    <div id='catalystList' style='display:flex; flex-wrap:wrap; gap:10px;'></div>`;
+  <div id='catalystList' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:10px;'></div>`;
   state.input = panel.querySelector('#catalystSearch') as HTMLInputElement | null;
   const listEl = panel.querySelector('#catalystList') as HTMLElement | null;
   const tagWrap = panel.querySelector('#catalystTagFilters') as HTMLElement | null;
@@ -207,10 +207,10 @@ export function render(list: Catalyst[]): void {
     state.filtered = state.cache.filter((e) =>
       (!f || (e.name && e.name.toLowerCase().includes(f)) || (e.slug||'').toLowerCase().includes(f) || (e.explicitMods||[]).some((m)=>m.toLowerCase().includes(f))) && matchesTags(e)
     );
+    const placeholder = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><rect width="28" height="28" rx="4" fill="%23222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23555" font-size="8" font-family="sans-serif">IMG</text></svg>';
     state.filtered.forEach((e) => {
       const card = document.createElement('div');
       card.className = 'liquid-emotion-card';
-      card.style.flex = '0 0 220px';
       card.style.background = 'var(--bg-card)';
       card.style.border = '1px solid var(--border-color)';
       card.style.borderRadius = '6px';
@@ -219,13 +219,18 @@ export function render(list: Catalyst[]): void {
       card.style.flexDirection = 'column';
       card.style.gap = '4px';
       const modsHtml = (e.explicitMods && e.explicitMods.length) ? `<div style='font-size:11px;'>${e.explicitMods.map((m)=>highlight(m.replace(/<a[^>]*>(.*?)<\/a>/g,'$1'))).join('<br>')}</div>` : '';
+      const imgHtml = e.image ? `<img class='catalyst-img' src='${e.image}' alt='' loading='lazy' decoding='async' style='width:28px; height:28px; object-fit:contain;'>` : `<img src='${placeholder}' style='width:28px; height:28px; opacity:.4;'>`;
       card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>
-          ${e.image ? `<img src='${e.image}' alt='' style='width:28px; height:28px; object-fit:contain;'>` : ''}
+          ${imgHtml}
           <div style='font-weight:600; line-height:1.2;'>${e.name}</div>
         </div>
         <div style='font-size:11px; color:var(--text-muted);'>Stack: ${e.stack_current ?? '?'} / ${e.stack_max ?? '?'}</div>
         ${modsHtml}`;
       listEl.appendChild(card);
+    });
+    listEl.querySelectorAll('img.catalyst-img').forEach((img: any)=>{
+      if (img._fallbackBound) return; img._fallbackBound = true;
+      img.addEventListener('error',()=>{ img.src = placeholder; img.style.opacity='0.55'; img.style.filter='grayscale(1)'; }, { once:true });
     });
   }
 

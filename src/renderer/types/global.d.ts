@@ -71,11 +71,12 @@ declare global {
     OverlayRegex?: {
       show: () => Promise<void>;
       render: () => void;
-      buildRegex: () => string;
       reset: () => void;
       saveCurrent: (name: string) => void;
-      loadSaved: (name: string) => void;
+      loadSavedRegex: (name: string) => void;
       listSaved: () => string[];
+      // Returns the site-style combined quoted OR regex
+      buildSiteRegex?: () => string;
     };
   }
 }

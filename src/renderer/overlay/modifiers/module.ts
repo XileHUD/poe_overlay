@@ -516,15 +516,18 @@ export function renderFilteredContent(data: any){
       const domainId = `domain-${domain}`;
       return `
         <div class="domain-container">
-          <div class="domain-sections" id="${domainId}">
+          <div class="domain-sections open" id="${domainId}">
             ${hasPrefix ? renderSection(hasPrefix, domainId) : '<div></div>'}
             ${hasSuffix ? renderSection(hasSuffix, domainId) : '<div></div>'}
           </div>
         </div>`;
     }
+    const domainId = `domain-${domain}`;
     return `
       <div class="domain-container">
-        ${renderSection((hasNone || ((domainSections as any).list && (domainSections as any).list[0]) || { mods: [] }))}
+        <div class="domain-sections open" id="${domainId}">
+          ${renderSection((hasNone || ((domainSections as any).list && (domainSections as any).list[0]) || { mods: [] }), domainId)}
+        </div>
       </div>`;
   }).join('');
 
@@ -618,10 +621,25 @@ export function toggleDomainFromSection(domainId: string, arrowId: string){
   const isOpen = wrap.classList.contains('open');
   if(isOpen){ wrap.classList.remove('open'); (arrow as any).textContent='►'; }
   else { wrap.classList.add('open'); (arrow as any).textContent='▼'; }
+  ensureDomainCollapseStyles();
 }
 export function toggleTiers(domain: string, side: string, modIndex: number){
   const id = `tiers-${domain}-${side}-${modIndex}`;
   const el = document.getElementById(id) as HTMLElement | null; if(!el) return;
   const isHidden = el.style.display==='none';
   el.style.display = isHidden ? '' : 'none';
+}
+
+function ensureDomainCollapseStyles(){
+  const id = 'modifier-domain-collapse-styles';
+  if (document.getElementById(id)) return;
+  const style = document.createElement('style');
+  style.id = id;
+  style.textContent = `
+    .domain-sections { transition:height .18s ease, padding .18s ease; }
+    .domain-sections:not(.open) .section-content { display:none; }
+    .domain-sections:not(.open) .collapse-arrow { transform:rotate(-90deg); display:inline-block; }
+    .domain-sections .collapse-arrow { transition:transform .18s ease; }
+  `;
+  document.head.appendChild(style);
 }

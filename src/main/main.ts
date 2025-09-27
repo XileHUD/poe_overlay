@@ -1,4 +1,5 @@
 import { app, BrowserWindow, globalShortcut, ipcMain, screen, Tray, Menu, nativeImage, clipboard, session, net, shell } from 'electron';
+import * as os from 'os';
 // Optional updater (will be active in packaged builds)
 let autoUpdater: any = null;
 try { autoUpdater = require('electron-updater').autoUpdater; } catch {}
@@ -9,6 +10,21 @@ import { ClipboardMonitor } from './clipboard-monitor';
 import { ItemParser } from './item-parser';
 import { ModifierDatabase } from './modifier-database';
 import { KeyboardMonitor } from './keyboard-monitor';
+
+// Configure Electron userData and Chromium caches to a writable directory before app is ready
+try {
+    const userDataDir = path.join(app.getPath('appData'), 'XileHUD');
+    try { if (!fs.existsSync(userDataDir)) fs.mkdirSync(userDataDir, { recursive: true }); } catch {}
+    app.setPath('userData', userDataDir);
+    const cacheDir = path.join(userDataDir, 'Cache');
+    try { if (!fs.existsSync(cacheDir)) fs.mkdirSync(cacheDir, { recursive: true }); } catch {}
+    app.setPath('cache', cacheDir);
+    // Ensure Chromium points at our cache dir and avoids shader disk cache issues
+    app.commandLine.appendSwitch('disk-cache-dir', cacheDir);
+    app.commandLine.appendSwitch('media-cache-dir', cacheDir);
+    app.commandLine.appendSwitch('shader-disk-cache-size', '0');
+    app.commandLine.appendSwitch('disable-gpu-shader-disk-cache');
+} catch {}
 
 class OverlayApp {
     private mainWindow: BrowserWindow | null = null;
@@ -215,8 +231,8 @@ class OverlayApp {
         
         // Load saved position or default to bottom-left
         const savedBounds = this.loadWindowBounds();
-    const windowWidth = 1050; // reduced by 25% from 1400 to improve compactness
-        const windowHeight = 675;  // Increased by 35% (500 * 1.35)
+        const windowWidth = savedBounds?.width ?? 1050; // allow restored width
+        const windowHeight = savedBounds?.height ?? 675;  // allow restored height
         
         const defaultX = primaryDisplay.bounds.x + 50;  // Bottom-left corner
         const defaultY = primaryDisplay.bounds.y + primaryDisplay.bounds.height - windowHeight - 100;
@@ -224,8 +240,8 @@ class OverlayApp {
         this.overlayWindow = new BrowserWindow({
             width: windowWidth,
             height: windowHeight,
-            x: savedBounds?.x ?? defaultX,
-            y: savedBounds?.y ?? defaultY,
+            x: (typeof savedBounds?.x === 'number') ? savedBounds!.x : defaultX,
+            y: (typeof savedBounds?.y === 'number') ? savedBounds!.y : defaultY,
             webPreferences: {
                 nodeIntegration: false,
                 contextIsolation: true,
@@ -240,13 +256,12 @@ class OverlayApp {
             focusable: true  // Changed to true to allow mouse interactions
         });
 
-        // Constrain width to a fixed value while allowing height changes
-        this.overlayWindow.setMinimumSize(windowWidth, Math.max(450, Math.floor(windowHeight * 0.6)));
-        const maxH = primaryDisplay.bounds.height - 50;
-        this.overlayWindow.setMaximumSize(windowWidth, Math.max(windowHeight, maxH));
-        // Lock width by setting min/max width equal
-        this.overlayWindow.setMinimumSize(windowWidth, this.overlayWindow.getMinimumSize()[1]);
-        this.overlayWindow.setMaximumSize(windowWidth, this.overlayWindow.getMaximumSize()[1]);
+    // Set reasonable min sizes; allow user to resize width now that we persist size
+    const minW = 860;
+    const minH = 480;
+    this.overlayWindow.setMinimumSize(minW, minH);
+    const maxH = primaryDisplay.bounds.height - 50;
+    this.overlayWindow.setMaximumSize(primaryDisplay.bounds.width, maxH);
 
         // Load the overlay UI
         if (process.env.NODE_ENV === 'development') {

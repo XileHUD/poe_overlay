@@ -128,7 +128,8 @@ export function render(groups: UniqueGroups): void {
   </div>
   <div id='uniqueTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; margin:-2px 0 8px; justify-content:center;'></div>
   <div id='uniqueSections' style='display:flex; flex-direction:column; gap:14px;'></div>`;
-  panel.innerHTML = controls;
+  // Wrap in page-inner for consistent centering like other crafting panels
+  panel.innerHTML = `<div class='page-inner'>${controls}</div>`;
 
   const searchEl = panel.querySelector('#uniqueSearch') as HTMLInputElement;
   const clearBtn = panel.querySelector('#uniqueClear') as HTMLButtonElement;
@@ -220,9 +221,12 @@ export function render(groups: UniqueGroups): void {
       });
       if (!list.length) return;
       const section = document.createElement('div');
-      section.innerHTML = `<div style='font-weight:600; font-size:14px; margin-bottom:4px;'>${sec} (${list.length})</div>`;
+      section.innerHTML = `<div style='font-weight:600; font-size:14px; margin-bottom:4px; text-align:center;'>${sec} (${list.length})</div>`;
       const wrap = document.createElement('div');
-      wrap.style.display='grid'; wrap.style.gridTemplateColumns='1fr 1fr'; wrap.style.gap='12px';
+      // Responsive grid like Essences (fills width, minimal side gaps)
+      wrap.style.display='grid';
+      wrap.style.gridTemplateColumns='repeat(auto-fit, minmax(320px, 1fr))';
+      wrap.style.gap='12px';
       list.forEach((u: UniqueItem)=>{
         const card = document.createElement('div');
         card.style.width='100%';
@@ -233,7 +237,7 @@ export function render(groups: UniqueGroups): void {
         card.style.display='flex';
         card.style.gap='12px';
         card.style.alignItems='flex-start';
-        const imgBlock = u.image ? `<div style='flex:0 0 110px; display:flex; align-items:flex-start; justify-content:center;'><img src='${u.image}' alt='' style='width:110px; height:110px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 110px;'></div>`;
+        const imgBlock = u.image ? `<div style='flex:0 0 110px; display:flex; align-items:flex-start; justify-content:center;'><img class='unique-img' src='${u.image}' alt='' loading='lazy' decoding='async' style='width:110px; height:110px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 110px;'></div>`;
         const modsHtml = `<div style='font-size:11px;'>${(u.explicitMods||[]).map((m: string)=> highlightNumbers(sanitizeCraftingHtml(m)) ).join('<br>')}</div>`;
         const right = `<div style='flex:1; display:flex; flex-direction:column;'>
           <div style='font-weight:600; font-size:15px; margin-bottom:4px;'>${u.name}</div>
@@ -245,6 +249,17 @@ export function render(groups: UniqueGroups): void {
       });
       section.appendChild(wrap);
       container.appendChild(section);
+    });
+    // Image fallback: gray out and remove broken src to avoid endless retries
+    const placeholder = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110"><rect width="110" height="110" rx="8" fill="%23222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23555" font-size="14" font-family="sans-serif">IMG</text></svg>';
+    panel.querySelectorAll('img.unique-img').forEach((img: any)=>{
+      if (img._fallbackBound) return;
+      img._fallbackBound = true;
+      img.addEventListener('error',()=>{
+        img.src = placeholder;
+        img.style.opacity='0.55';
+        img.style.filter='grayscale(1)';
+      }, { once:true });
     });
   }
 

@@ -1,4 +1,5 @@
-// Socketables module: encapsulates socketable crafting UI
+// Socketables module: encapsulates socketable crafting UI (refactored to grid + shared image fallback)
+import { bindImageFallback } from "../utils/imageFallback";
 
 export type Socketable = {
   slug?: string;
@@ -117,12 +118,14 @@ export function render(list: Socketable[]): void {
   });
 
   panel.innerHTML = `
+    <div class='page-inner'>
     <div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
       <input id='socketableSearch' type='text' placeholder='Search...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
       <button id='socketableClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
     <div id='socketableTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
-    <div id='socketableList' style='display:flex; flex-wrap:wrap; gap:10px;'></div>`;
+    <div id='socketableList' style='display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:10px; align-items:stretch;'></div>
+    </div>`;
 
   state.input = panel.querySelector('#socketableSearch') as HTMLInputElement | null;
   const listEl = panel.querySelector('#socketableList') as HTMLElement | null;
@@ -178,8 +181,7 @@ export function render(list: Socketable[]): void {
     });
     state.filtered.forEach((e) => {
       const card = document.createElement('div');
-      card.className = 'liquid-emotion-card';
-      card.style.flex = '0 0 260px';
+      card.className = 'socketable-card';
       card.style.background = 'var(--bg-card)';
       card.style.border = '1px solid var(--border-color)';
       card.style.borderRadius = '6px';
@@ -187,11 +189,12 @@ export function render(list: Socketable[]): void {
       card.style.display = 'flex';
       card.style.flexDirection = 'column';
       card.style.gap = '4px';
+      card.style.height = '100%';
       const modsHtml = (e.implicitMods && e.implicitMods.length) ? `<div style='font-size:11px;'>${e.implicitMods.map((m)=>highlight(m.replace(/<a[^>]*>(.*?)<\/a>/g,'$1'))).join('<br>')}</div>` : '';
       const stackInfo = (e.stack_current!=null || e.stack_max!=null) ? `<div style='font-size:11px; color:var(--text-muted);'>Stack: ${e.stack_current ?? '?'} / ${e.stack_max ?? '?'}</div>` : '';
       const levelInfo = (e.level_req!=null) ? `<div style='font-size:11px; color:var(--text-muted);'>Requires Level ${e.level_req}</div>` : '';
       card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>
-          ${e.image ? `<img src='${e.image}' alt='' style='width:32px; height:32px; object-fit:contain;'>` : ''}
+          ${e.image ? `<img src='${e.image}' alt='' class='socketable-img' style='width:32px; height:32px; object-fit:contain;'>` : `<img src='' alt='' class='socketable-img' style='width:32px; height:32px; object-fit:contain;'>`}
           <div style='font-weight:600; line-height:1.2;'>${e.name}</div>
         </div>
         ${stackInfo}
@@ -199,6 +202,9 @@ export function render(list: Socketable[]): void {
         ${modsHtml}`;
       listEl.appendChild(card);
     });
+    // Shared image fallback with placeholder
+    const placeholder = `<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='10' font-family='sans-serif'>?</text></svg>`;
+    bindImageFallback(listEl, 'img.socketable-img', placeholder, 0.5);
   }
 
   state.input?.addEventListener('input', () => apply(state.input?.value || ''));
