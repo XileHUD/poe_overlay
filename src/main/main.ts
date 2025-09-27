@@ -372,14 +372,17 @@ class OverlayApp {
         this.clipboardMonitor.on('poe2-item-copied', async (itemText: string) => {
             // Only react while we are armed by our own shortcut (Ctrl+Q)
             const now = Date.now();
-            if (!this.armedCaptureUntil || now > this.armedCaptureUntil) {
-                return; // ignore unsolicited clipboard changes (other overlays, apps)
+            const allowPinnedPassive = this.pinned && this.isOverlayVisible;
+            if (!allowPinnedPassive) {
+                if (!this.armedCaptureUntil || now > this.armedCaptureUntil) {
+                    return; // ignore unsolicited clipboard changes (other overlays, apps)
+                }
             }
             // Honor recent Ctrl+C if keyboard monitor active
             if (this.keyboardMonitor?.available) {
                 const now = Date.now();
                 if (!this.lastCopyTimestamp || now - this.lastCopyTimestamp > 1600) {
-                    return; // stale copy event
+                    if (!allowPinnedPassive) return; // stale copy event
                 }
             }
             try {
@@ -387,23 +390,22 @@ class OverlayApp {
                 if (parsed && parsed.category && parsed.category !== 'unknown') {
                     // Unique items: open Uniques panel and attempt to focus the item
                         if ((parsed.rarity || '').toLowerCase() === 'unique') {
-                            this.showUniqueItem(parsed);
+                            this.showUniqueItem(parsed, allowPinnedPassive);
                             this.armedCaptureUntil = 0;
                             return;
                         }
                     let modifiers: any[] = [];
                     try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
                     this.safeSendToOverlay('set-active-category', parsed.category);
-                    this.showOverlay({ item: parsed, modifiers });
+                    this.showOverlay({ item: parsed, modifiers }, { silent: allowPinnedPassive });
                     this.armedCaptureUntil = 0;
                 } else {
-                    // minimal fallback just show overlay
-                    this.showOverlay();
+                    if (!allowPinnedPassive) this.showOverlay();
                     this.armedCaptureUntil = 0;
                 }
             } catch (e) {
                 console.warn('Parse failed, showing overlay generic', e);
-                this.showOverlay();
+                if (!allowPinnedPassive) this.showOverlay();
                 this.armedCaptureUntil = 0;
             }
         });
@@ -481,7 +483,7 @@ class OverlayApp {
         }
     }
 
-    private showOverlay(data?: any) {
+    private showOverlay(data?: any, opts?: { silent?: boolean }) {
         if (!this.overlayWindow) return;
         
         if (data) {
@@ -492,8 +494,13 @@ class OverlayApp {
                 this.pendingItemData = data;
             }
         }
-        
-        // Show overlay and ensure it gets focus for blur events to work
+        if (opts?.silent && this.isOverlayVisible && this.pinned) {
+            // Passive update only (no focus steal)
+            console.log('Overlay passive update (pinned)');
+            return;
+        }
+
+        // Show overlay and ensure it gets focus for blur events to work (active open)
         this.overlayWindow.show();
         this.overlayWindow.focus();
         this.isOverlayVisible = true;
@@ -512,11 +519,11 @@ class OverlayApp {
         console.log('Overlay hidden');
     }
 
-    private showUniqueItem(parsed: any) {
-        // Show overlay with item context
-        this.showOverlay({ item: parsed, isUnique: true });
-        // Fire dedicated unique event for renderer unique panel logic
-        this.safeSendToOverlay('show-unique-item', { name: parsed.name, baseType: parsed.baseType });
+    private showUniqueItem(parsed: any, silent = false) {
+        this.showOverlay({ item: parsed, isUnique: true }, { silent });
+        if (!silent) {
+            this.safeSendToOverlay('show-unique-item', { name: parsed.name, baseType: parsed.baseType });
+        }
     }
 
     private toggleOverlayWithAllCategory() {
