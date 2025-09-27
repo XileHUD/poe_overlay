@@ -153,12 +153,14 @@ export function render(): void {
     return `<button class='ann-tag' data-tag='${key}' style='font-size:11px; padding:2px 10px; border-radius:999px; cursor:pointer; ${chipCss(tag, active)}'>${tag} <span style="opacity:.8">(${count})</span></button>`;
   }).join(' ');
 
-  const header = `<div style='padding:4px 0 8px 0; display:flex; gap:8px; align-items:center;'>
-  <span id='annointsCount'>Annoints (${total})</span>
-      <input id='annointsSearch' type='text' placeholder='Search annoints...' style='flex:0 0 220px; font-size:12px; padding:2px 6px; background:var(--bg-tertiary); color:var(--text-primary); border:1px solid var(--border-color); border-radius:4px;'>
+  const header = `<div style='max-width:980px; margin:0 auto;'>
+    <div style='padding:4px 0 8px 0; display:flex; gap:8px; align-items:center; flex-wrap:wrap;'>
+      <span id='annointsCount'>Annoints (${total})</span>
+      <input id='annointsSearch' type='text' placeholder='Search annoints...' style='flex:1 1 220px; min-width:200px; font-size:12px; padding:2px 6px; background:var(--bg-tertiary); color:var(--text-primary); border:1px solid var(--border-color); border-radius:4px;'>
       <button id='annointsClear' style='font-size:11px; padding:2px 8px; background:var(--bg-tertiary); color:var(--text-primary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer;'>Clear</button>
     </div>
-    <div id='annointsTagBar' style='display:flex; flex-wrap:wrap; gap:6px; margin:2px 0 10px 0;'>${tagsHtml}</div>`;
+    <div id='annointsTagBar' style='display:flex; flex-wrap:wrap; gap:6px; margin:2px 0 10px 0; justify-content:center;'>${tagsHtml}</div>
+  </div>`;
 
   if (!total) { panel.innerHTML = header + `<div class='no-mods'>No annoints.</div>`; return; }
 
@@ -173,7 +175,7 @@ export function render(): void {
     </div>`;
   }).join('');
 
-  panel.innerHTML = header + `<div id='annointsCards' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:12px;'>${cardsHtml}</div>`;
+  panel.innerHTML = header + `<div id='annointsCards' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:12px; max-width:980px; margin:0 auto;'>${cardsHtml}</div>`;
 
   state.searchInput = panel.querySelector('#annointsSearch') as HTMLInputElement | null;
   state.cards = Array.from(panel.querySelectorAll('.annoint-card')) as HTMLElement[];

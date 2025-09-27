@@ -336,6 +336,9 @@
             if (cp) cp.style.display='none'; 
             document.body.classList.remove('crafting-mode');
             hideHistoryView(); // Always hide history when switching views
+            // Explicitly hide merchant history header elements to prevent leakage
+            const mhIds = ['historyHeader','historyHeaderLeft','historyHeaderMain','historyPinned','historyActiveFilters'];
+            mhIds.forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display='none'; });
         }
         function prepareCharacterPanel(title){
             const cp = document.getElementById('craftingPanel'); if (!cp) return;

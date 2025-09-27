@@ -176,10 +176,10 @@ body {
   overflow: hidden; 
 }
 #historyList { 
-  min-height: 0 !important; 
-  overflow-y: auto !important; 
-  flex-shrink: 0 !important;
-  max-height: 600px; /* Ensure it doesn't grow too large */
+    min-height: 0 !important; 
+    overflow-y: auto !important; 
+    flex:1 1 auto !important;
+    max-height: none !important; /* allow to expand with window */
 }
 #historyDetail { 
   min-height: 0 !important; 
@@ -869,6 +869,8 @@ body {
 .history-detail-card .card-sub { color:var(--text-secondary); }
 .history-detail-card .grid { display:grid; grid-template-columns: 128px 1fr; gap:12px; align-items:start; }
 .history-item-icon { width:128px; height:auto; border:1px solid var(--border-color); border-radius:6px; background: #111; object-fit: contain; }
+    body.view-history #historyActiveFilters { padding:6px 0 8px 0; }
+    body.view-history #historyHeader { padding-top:4px; }
 .mod-lines { margin-top:6px; display:flex; flex-direction:column; gap:4px; }
 .mod-line { color: var(--text-primary); }
 .badge-corrupted { display:inline-block; padding:1px 6px; border-radius:999px; font-size:10px; background:#7a2b2b; color:#ffdede; border:1px solid #a33; margin-left:6px; }
