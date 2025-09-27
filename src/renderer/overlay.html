@@ -57,7 +57,8 @@
         </div>
     <div id="craftingPanel" style="display:none; position:relative; flex:1 1 auto; overflow:auto; padding:16px 12px 12px 12px;"></div>
         <!-- History view container (hidden by default, toggled by Merchant History tab) -->
-        <div id="historyContainer" style="display:none; flex:1 1 auto; overflow:hidden;">
+    <!-- History container (normal flow, visibility controlled by data-view) -->
+    <div id="historyContainer" style="display:none; flex:1 1 auto; overflow:hidden;">
             <!-- History header/filters -->
             <div id="historyHeader" style="display:flex; flex-direction:column; gap:10px; padding:12px; border-bottom:1px solid var(--border-color); background: var(--bg-secondary); -webkit-app-region: no-drag;">
                 <div id="historyHeaderRow2" style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
@@ -108,8 +109,8 @@
                 <div id="historyDetail" style="flex: 2 1 auto; overflow-y:auto; padding: 10px; display:flex; align-items:flex-start; justify-content:center; min-height:0;">
                     <div class="no-mods">Select a trade to see item details</div>
                 </div>
-                <div id="historyChartWrap" style="flex: 1 1 auto; border-top:1px solid var(--border-color); padding:8px; background: var(--bg-card); min-height:140px; display:flex; flex-direction:column;">
-                    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px; flex:0 0 auto;">
+                <div id="historyChartWrap" style="flex: 1 1 auto; border-top:1px solid var(--border-color); padding:8px; background: var(--bg-card); min-height:140px;">
+                    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;">
                         <div style="font-weight:600; color:var(--text-secondary);">Totals over time</div>
                         <div style="display:flex; gap:10px; align-items:center; font-size:11px;">
                             <span id="chartCur-divine" class="chart-cur active" data-cur="divine"><span class="sw" style="background:#d4af37;"></span> divine</span>
@@ -117,7 +118,7 @@
                             <span id="chartCur-annul" class="chart-cur" data-cur="annul"><span class="sw" style="background:#7b40b3;"></span> annul</span>
                         </div>
                     </div>
-                    <canvas id="historyChart" style="width:100%; flex:1 1 auto; min-height:120px; display:block;"></canvas>
+                    <canvas id="historyChart" height="150" style="width:100%; min-width:240px; display:block;"></canvas>
                 </div>
             </div>
             </div>
@@ -243,44 +244,39 @@
         if (histHeader) histHeader.style.display = 'none';
     }
 
-    // Strong view gate: only one of Modifiers, Crafting, History can be visible
+    // Clean view switching: only one container visible at a time
     function setView(view){
         const content = document.getElementById('content');
         const crafting = document.getElementById('craftingPanel');
         const history = document.getElementById('historyContainer');
         const histHeaderMain = document.getElementById('historyHeaderMain');
         
-        // Always remove ALL view classes first
+        // ALWAYS remove ALL view classes first
         document.body.classList.remove('crafting-mode', 'view-history', 'view-modifiers');
         
-        // Hide all containers
-        if (content) content.style.display='none';
-        if (crafting) crafting.style.display='none';
-        if (history) history.style.display='none';
-        if (histHeaderMain) histHeaderMain.style.display='none';
-        // Also hide every merchant history header / control element explicitly (defensive)
-        ['historyHeader','historyHeaderLeft','historyPinned','historyActiveFilters','histMinValue','histCurrency','histCategory','histSort','histSearch','histTopSale','historyRefreshBtn','historyInfoBadge','historyTradeCount','historyTotals','historyChartWrap','historyChart','historyList','historyDetail'].forEach(function(id){
-            var el=document.getElementById(id); if(el) el.style.display='none';
-        });
+        // ALWAYS hide ALL containers first
+        if (content) content.style.display = 'none';
+        if (crafting) crafting.style.display = 'none';
+        if (history) history.style.display = 'none';
+        if (histHeaderMain) histHeaderMain.style.display = 'none';
         
         // Show only the requested view
         if (view === 'modifiers'){
-            if (content) content.style.display='';
+            if (content) content.style.display = '';
             setControlPanelVisible(true);
             document.body.classList.add('view-modifiers');
             try { window.OverlayHistory?.onLeaveView?.(); } catch {}
         } else if (view === 'crafting'){
-            if (crafting) { crafting.style.display='block'; crafting.innerHTML=''; }
+            if (crafting) { 
+                crafting.style.display = 'block'; 
+                crafting.innerHTML = ''; 
+            }
             setControlPanelVisible(false);
             document.body.classList.add('crafting-mode');
             try { window.OverlayHistory?.onLeaveView?.(); } catch {}
         } else if (view === 'history'){
-            if (history) history.style.display='';
-            if (histHeaderMain) histHeaderMain.style.display='flex';
-            // Show core history elements again
-            ['historyHeader','historyHeaderLeft','historyPinned','historyActiveFilters','histMinValue','histCurrency','histCategory','histSort','histSearch','histTopSale','historyRefreshBtn','historyInfoBadge','historyTradeCount','historyTotals','historyChartWrap','historyChart','historyList','historyDetail'].forEach(function(id){
-                var el=document.getElementById(id); if(el) el.style.display='';
-            });
+            if (history) history.style.display = 'flex';
+            if (histHeaderMain) histHeaderMain.style.display = 'flex';
             setControlPanelVisible(false);
             document.body.classList.add('view-history');
             try { window.OverlayHistory?.onEnterView?.(); } catch {}
@@ -487,10 +483,8 @@
                     });
                 }
             });
-            // Default view: show modifiers content, hide history and crafting
-            const content = document.getElementById('content'); if (content) content.style.display='';
-            hideHistoryView();
-            const cp = document.getElementById('craftingPanel'); if (cp) cp.style.display='none';
+            // Default view: use single source of truth
+            setView('modifiers');
             // Wire clipboard item detection to auto-open correct category
             if (window.electronAPI && typeof window.electronAPI.onItemData === 'function') {
                 window.electronAPI.onItemData(async (data) => {
@@ -498,7 +492,7 @@
                         if (!data || !data.item) return;
                         // Always start from a clean state
                         closeAllMenus();
-                        hideHistoryView();
+                        setView('modifiers');
 
                         const item = data.item || {};
                         const rarity = (item.rarity || '').toLowerCase();
@@ -669,19 +663,7 @@
                 tabMod.addEventListener('click', () => {
                     setActiveTab('tabModifier');
                     closeAllMenus();
-                    setView('modifiers'); // Ensure history is hidden
-                    // ensure Merchant History tab style resets
-                    const tabHistEl = document.getElementById('tabHistory');
-                    if (tabHistEl) {
-                        tabHistEl.classList.remove('active');
-                        tabHistEl.setAttribute('style','background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
-                    }
-                    contentMod.style.display = '';
-                    hideHistoryView();
-                    // ensure modifier filters bar remains visible when in modifiers view
-                    const fb = document.getElementById('filtersBar'); if (fb) fb.style.display = '';
-                    hideAllPanels();
-                    const leftHist = document.getElementById('historyHeaderLeft'); if (leftHist) leftHist.style.display='none';
+                    setView('modifiers'); // Use single source of truth
                     document.getElementById('modifierHeaderInfo')?.setAttribute('style','');
                     document.getElementById('whittlingInfo')?.setAttribute('style','margin-right: 8px; display:none; -webkit-app-region: no-drag;');
                     setControlPanelVisible(true);
@@ -711,13 +693,10 @@
                     item.addEventListener('click', async (e) => {
                         const action = item.getAttribute('data-action');
                         craftingMenu.style.display = 'none';
-                        // Switch to crafting view: hide modifiers & history, show crafting panel
+                        // Switch to crafting view using the single source of truth
                         setActiveTab('craftingTab');
                         closeAllMenus();
-                        const content = document.getElementById('content'); if (content) content.style.display='none';
-                        hideHistoryView();
-                        const cp = document.getElementById('craftingPanel'); if (cp) { cp.style.display='block'; cp.innerHTML=''; document.body.classList.add('crafting-mode'); }
-                        setControlPanelVisible(false);
+                        setView('crafting');
                         if (action === 'liquid-emotions') {
                             await showLiquidEmotions();
                             setHeader('Liquid Emotions');
@@ -1008,19 +987,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (characterMenu) characterMenu.querySelectorAll('.character-menu-item').forEach(item => {
             item.addEventListener('click', async () => {
                 setActiveTab('characterTab');
-                const tabHistEl = document.getElementById('tabHistory');
-                if (tabHistEl) {
-                    tabHistEl.classList.remove('active');
-                    tabHistEl.setAttribute('style','background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
-                }
                 closeAllMenus();
                 const action = item.getAttribute('data-action');
                 if (characterMenu) characterMenu.style.display = 'none';
-                // Switch to crafting/character view
-                const content = document.getElementById('content'); if (content) content.style.display='none';
-                hideHistoryView();
-                const cp = document.getElementById('craftingPanel'); if (cp) { cp.style.display='block'; cp.innerHTML=''; document.body.classList.add('crafting-mode'); }
-                setControlPanelVisible(false);
+                // Switch to crafting/character view using single source of truth
+                setView('crafting');
                 if (action === 'quest-passives') {
                     if (window.OverlayQuestPassives?.show) { try { await window.OverlayQuestPassives.show(); } catch {} }
                     setHeader('Quest Passives');

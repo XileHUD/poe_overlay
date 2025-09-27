@@ -13,57 +13,11 @@
     --accent-red: #d9534f;
 }
 
-/* NUCLEAR OPTION: Hide ALL history elements unless explicitly on history view */
+/* Clean CSS: Only hide history elements when not in history view */
 body:not(.view-history) #historyContainer,
-body:not(.view-history) #historyHeaderMain,
-body:not(.view-history) #historyHeader,
-body:not(.view-history) #historyHeaderRow2,
-body:not(.view-history) #historyList,
-body:not(.view-history) #historyDetail,
-body:not(.view-history) #historyRight,
-body:not(.view-history) #historyChartWrap,
-body:not(.view-history) #historyChart,
-body:not(.view-history) #historyTotals,
-body:not(.view-history) #historyActiveFilters,
-body:not(.view-history) #histMinValue,
-body:not(.view-history) #histCurrency,
-body:not(.view-history) #histCategory,
-body:not(.view-history) #histSort,
-body:not(.view-history) #histSearch,
-body:not(.view-history) #histTopSale,
-body:not(.view-history) #historyRefreshBtn,
-body:not(.view-history) #historyInfoBadge,
-body:not(.view-history) #historyTradeCount {
+body:not(.view-history) #historyHeaderMain {
     display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
 }
-
-/* Only show history elements when explicitly on history view */
-body.view-history #historyContainer {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-body.view-history #historyHeaderMain {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-/* When in history view, forcibly show all filter controls regardless of inline styles */
-body.view-history #historyHeader,
-body.view-history #histMinValue,
-body.view-history #histCurrency,
-body.view-history #histCategory,
-body.view-history #histSort,
-body.view-history #histSearch,
-body.view-history #histTopSale,
-body.view-history #historyRefreshBtn,
-body.view-history #historyInfoBadge,
-body.view-history #historyTradeCount,
 body.view-history #historyActiveFilters {
     display: initial !important;
     visibility: visible !important;
