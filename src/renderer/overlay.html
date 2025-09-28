@@ -193,6 +193,10 @@
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3 8-7 10-4-2-7-5-7-10V6l7-4z"/></svg></span>
                         <span>Keystones</span>
                     </div>
+                    <div class="character-menu-item" data-action="asc-passives" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></span>
+                        <span>Ascendancy Passives</span>
+                    </div>
                     <div class="character-menu-item" data-action="atlas-nodes" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06A1.65 1.65 0 0015 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0l-.06-.06A1.65 1.65 0 008.6 19.4a1.65 1.65 0 00-1.82-.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 008.6 9a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0l.06.06A1.65 1.65 0 0015 9a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 13c0 .4.16.78.44 1.06z"/></svg></span>
                         <span>Atlas Nodes</span>
@@ -1086,6 +1090,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     await showKeystones();
                     setHeader('Keystones');
                     
+                } else if (action === 'asc-passives') {
+                    await showAscendancyPassives();
+                    setHeader('Ascendancy Passives');
+                    
                 } else if (action === 'atlas-nodes') {
                     await showAtlasNodes();
                     setHeader('Atlas Nodes');
@@ -1269,6 +1277,71 @@ async function showKeystones(){
         if(!data || data.error){ craftingPanelEl.innerHTML=`<div style="color:var(--accent-red);">Failed to load Keystones (${data?.error||'unknown'})</div>`; return; }
         renderKeystones(data.keystones||[]);
     }catch(e){ craftingPanelEl.innerHTML='<div style="color:var(--accent-red);">Exception loading Keystones</div>'; }
+}
+// ===== Ascendancy Passives (Character submenu) =====
+async function showAscendancyPassives(){
+    window.__lastPanel='asc_passives';
+    prepareCharacterPanel('Ascendancy Passives');
+    craftingPanelEl.innerHTML='<div class="no-mods">Loading...</div>';
+    try {
+        const data = await window.electronAPI.getAscendancyPassives();
+        if(!data || data.error){ craftingPanelEl.innerHTML=`<div style="color:var(--accent-red);">Failed to load Ascendancy Passives (${data?.error||'unknown'})</div>`; return; }
+        renderAscendancyPassives(data.passives||[]);
+    } catch(e){ craftingPanelEl.innerHTML='<div style="color:var(--accent-red);">Exception loading Ascendancy Passives</div>'; }
+}
+function renderAscendancyPassives(list){
+    const panel=craftingPanelEl; if(!panel) return;
+    panel.innerHTML=`<div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
+        <input id='ascSearch' type='text' placeholder='Search ascendancy passives...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
+        <button id='ascClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
+    </div>
+    <div id='ascClassFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
+    <div id='ascWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:10px;'></div>`;
+    const searchEl=panel.querySelector('#ascSearch');
+    const clearBtn=panel.querySelector('#ascClear');
+    const filterWrap=panel.querySelector('#ascClassFilters');
+    const wrap=panel.querySelector('#ascWrap');
+    const classes = Array.from(new Set(list.map(p=>p.ascendancy).filter(Boolean))).sort();
+    const selected = new Set();
+    function chipCss(active){ return `padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; border:1px solid var(--border-color); background:${active?'var(--accent-blue)':'var(--bg-tertiary)'}; color:${active?'#fff':'var(--text-primary)'};`; }
+    function renderFilters(){ if(!filterWrap) return; filterWrap.innerHTML=''; classes.forEach(c=>{ const active=selected.has(c); const btn=document.createElement('button'); btn.textContent=c; btn.style.cssText=chipCss(active); btn.addEventListener('click',()=>{ if(active) selected.delete(c); else selected.add(c); build(searchEl.value||''); renderFilters(); }); filterWrap.appendChild(btn); }); if(selected.size){ const reset=document.createElement('button'); reset.textContent='Reset'; reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'; reset.addEventListener('click',()=>{ selected.clear(); build(''); renderFilters(); }); filterWrap.appendChild(reset);} }
+    function highlight(s){ return (s||"")
+       .replace(/(\d+\s*[–-]\s*\d+)/g,'<span class="mod-value">$1</span>')
+       .replace(/(?<![A-Za-z0-9>])([+\-]?\d+)(?![A-Za-z0-9<])/g,'<span class="mod-value">$1</span>')
+       .replace(/(\d+%)/g,'<span class="mod-value">$1</span>'); }
+    function matchesClass(p){ if(!selected.size) return true; return selected.has(p.ascendancy); }
+    function build(filter=''){
+        if(!wrap) return; wrap.innerHTML='';
+        const f=filter.toLowerCase();
+        const filtered = list.filter(p=>{ const blob=`${p.name} ${(p.explicitMods||[]).join(' ')}`.toLowerCase(); const searchOk = !f || blob.includes(f); return searchOk && matchesClass(p); });
+        filtered.forEach(p=>{
+            const card=document.createElement('div');
+            card.style.background='var(--bg-card)';
+            card.style.border='1px solid var(--border-color)';
+            card.style.borderRadius='6px';
+            card.style.padding='6px';
+            card.style.display='flex';
+            card.style.flexDirection='column';
+            card.style.gap='4px';
+            // Clean mods: remove inline skill icons (grantsSkill) then highlight numbers
+            const cleanedMods = (p.explicitMods||[]).map(m=> m.replace(/<img[^>]*grantsSkill[^>]*>/ig,'').replace(/<img[^>]*>/ig,'').trim()).filter(Boolean);
+            const mods = cleanedMods.map(m=>highlight(m)).join('<br>');
+            const imgHtml = p.image ? `<img src='${p.image}' class='asc-img' style='width:46px; height:46px; object-fit:contain; flex:0 0 46px;'>` : '';
+            const metaParts = [];
+            if(p.ascendancy) metaParts.push(`<span style="background:var(--accent-blue); color:#fff; padding:2px 8px; border-radius:12px; font-size:11px; font-weight:600; letter-spacing:0.3px;">${p.ascendancy}</span>`);
+            if(p.character) metaParts.push(`<span style="background:var(--bg-tertiary); color:var(--text-primary); padding:2px 8px; border-radius:12px; font-size:11px;">${p.character}</span>`);
+            if(p.stack_current!=null && p.stack_max!=null) metaParts.push(`<span>Stack: ${p.stack_current} / ${p.stack_max}</span>`);
+            card.innerHTML = `<div style='display:flex; gap:10px; align-items:flex-start;'>${imgHtml}<div style='display:flex; flex-direction:column; gap:6px; flex:1;'><div style='font-weight:600; font-size:13px;'>${p.name}</div><div style='display:flex; gap:6px; flex-wrap:wrap;'>${metaParts.join('')}</div><div style='font-size:11px;'>${mods}</div></div></div>`;
+            wrap.appendChild(card);
+        });
+        const svg = "<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><rect width='30' height='30' rx='6' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='9' font-family='sans-serif'>?</text></svg>";
+        const placeholder = 'data:image/svg+xml;utf8,'+encodeURIComponent(svg);
+    wrap.querySelectorAll('img.asc-img').forEach(img=>{ if(img._fb) return; img._fb=true; img.addEventListener('error',()=>{ img.src=placeholder; img.style.opacity='0.5'; img.style.filter='grayscale(1)'; },{once:true}); });
+    }
+    searchEl.addEventListener('input',()=>build(searchEl.value));
+    clearBtn.addEventListener('click',()=>{ searchEl.value=''; selected.clear(); build(''); renderFilters(); searchEl.focus(); });
+    build('');
+    renderFilters();
 }
 function renderKeystones(list){
     const panel=craftingPanelEl; if(!panel) return;

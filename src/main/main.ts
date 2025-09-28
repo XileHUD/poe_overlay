@@ -824,6 +824,20 @@ class OverlayApp {
             }
         });
 
+        // Ascendancy Passives data
+        ipcMain.handle('get-ascendancy-passives', async () => {
+            try {
+                const filePath = path.join(this.getDataDir(), 'Ascendancy_Passives.json');
+                if (fs.existsSync(filePath)) {
+                    const raw = fs.readFileSync(filePath, 'utf-8');
+                    return JSON.parse(raw);
+                }
+                return { error: 'not_found', filePath };
+            } catch (e: any) {
+                return { error: e?.message || 'unknown_error' };
+            }
+        });
+
         // Atlas Nodes data
         ipcMain.handle('get-atlas-nodes', async () => {
             try {

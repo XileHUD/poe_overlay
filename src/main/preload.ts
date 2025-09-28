@@ -33,6 +33,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     getOmens: () => ipcRenderer.invoke('get-omens'),
     getCurrency: () => ipcRenderer.invoke('get-currency'),
     getKeystones: () => ipcRenderer.invoke('get-keystones'),
+    getAscendancyPassives: () => ipcRenderer.invoke('get-ascendancy-passives'),
     getAtlasNodes: () => ipcRenderer.invoke('get-atlas-nodes'),
     getGems: () => ipcRenderer.invoke('get-gems'),
     getBases: () => ipcRenderer.invoke('get-bases'),

@@ -84,32 +84,34 @@ export function render(groups: UniqueGroups): void {
   const uniqueTags = new Set<string>();
   const tagCounts: Record<string, number> = {};
   const considerTags = (mods: string)=>{
+    // Remove HTML tags & image URLs so regexes only see human-readable text (prevents false Chaos, etc.)
+    const plain = (mods||'').replace(/<img[^>]*>/gi,' ').replace(/<[^>]+>/g,' ').replace(/https?:\/\/\S+/g,' ');
     const addOnce = (set: Set<string>, tag: string)=>{ if(!set.has(tag)) set.add(tag); };
     const tmp = new Set<string>();
-    if(/Attack Speed|Attack/i.test(mods)) addOnce(tmp,'Attack Speed');
-    if(/Minion/i.test(mods)) addOnce(tmp,'Minion');
-    if(/Curse/i.test(mods)) addOnce(tmp,'Curse');
-    if(/Cold Damage|Cold/i.test(mods)) addOnce(tmp,'Cold');
-    if(/Lightning Damage|Lightning/i.test(mods)) addOnce(tmp,'Lightning');
-    if(/Fire Damage|Fire/i.test(mods)) addOnce(tmp,'Fire');
-    if(/Chaos Damage|Chaos/i.test(mods)) addOnce(tmp,'Chaos');
-    if(/Bleed/i.test(mods)) addOnce(tmp,'Bleed');
-    if(/Electrocute/i.test(mods)) addOnce(tmp,'Electrocute');
-    if(/Poison/i.test(mods)) addOnce(tmp,'Poison');
-    if(/Freeze|Frozen/i.test(mods)) addOnce(tmp,'Freeze');
-    if(/Stun/i.test(mods)) addOnce(tmp,'Stun');
-    if(/Critical/i.test(mods)) addOnce(tmp,'Critical');
-    if(/Life|Health/i.test(mods)) addOnce(tmp,'Life');
-    if(/Mana/i.test(mods)) addOnce(tmp,'Mana');
-    if(/Energy Shield/i.test(mods)) addOnce(tmp,'Energy Shield');
-    if(/Armour|Armor/i.test(mods)) addOnce(tmp,'Armour');
-    if(/Evasion/i.test(mods)) addOnce(tmp,'Evasion');
-    if(/Movement Speed|Move/i.test(mods)) addOnce(tmp,'Movement');
-    if(/Aura|Aura Effect/i.test(mods)) addOnce(tmp,'Aura');
-    if(/Cast Speed/i.test(mods)) addOnce(tmp,'Cast Speed');
-    if(/Spell/i.test(mods)) addOnce(tmp,'Spell');
-    if(/Projectile/i.test(mods)) addOnce(tmp,'Projectile');
-    if(/Area/i.test(mods)) addOnce(tmp,'Area');
+    if(/Attack Speed|Attack/i.test(plain)) addOnce(tmp,'Attack Speed');
+    if(/Minion/i.test(plain)) addOnce(tmp,'Minion');
+    if(/Curse/i.test(plain)) addOnce(tmp,'Curse');
+    if(/Cold Damage|Cold/i.test(plain)) addOnce(tmp,'Cold');
+    if(/Lightning Damage|Lightning/i.test(plain)) addOnce(tmp,'Lightning');
+    if(/Fire Damage|Fire/i.test(plain)) addOnce(tmp,'Fire');
+    if(/Chaos Damage|Chaos/i.test(plain)) addOnce(tmp,'Chaos');
+    if(/Bleed/i.test(plain)) addOnce(tmp,'Bleed');
+    if(/Electrocute/i.test(plain)) addOnce(tmp,'Electrocute');
+    if(/Poison/i.test(plain)) addOnce(tmp,'Poison');
+    if(/Freeze|Frozen/i.test(plain)) addOnce(tmp,'Freeze');
+    if(/Stun/i.test(plain)) addOnce(tmp,'Stun');
+    if(/Critical/i.test(plain)) addOnce(tmp,'Critical');
+    if(/Life|Health/i.test(plain)) addOnce(tmp,'Life');
+    if(/Mana/i.test(plain)) addOnce(tmp,'Mana');
+    if(/Energy Shield/i.test(plain)) addOnce(tmp,'Energy Shield');
+    if(/Armour|Armor/i.test(plain)) addOnce(tmp,'Armour');
+    if(/Evasion/i.test(plain)) addOnce(tmp,'Evasion');
+    if(/Movement Speed|Move/i.test(plain)) addOnce(tmp,'Movement');
+    if(/Aura|Aura Effect/i.test(plain)) addOnce(tmp,'Aura');
+    if(/Cast Speed/i.test(plain)) addOnce(tmp,'Cast Speed');
+    if(/Spell/i.test(plain)) addOnce(tmp,'Spell');
+    if(/Projectile/i.test(plain)) addOnce(tmp,'Projectile');
+    if(/Area/i.test(plain)) addOnce(tmp,'Area');
     return tmp;
   };
   order.forEach(sec => {
@@ -178,7 +180,8 @@ export function render(groups: UniqueGroups): void {
 
   function itemMatchesTags(item: UniqueItem): boolean {
     if (selectedTags.size === 0) return true;
-    const mods = (item.explicitMods || []).join(' ');
+    const modsRaw = (item.explicitMods || []).join(' ');
+    const mods = modsRaw.replace(/<img[^>]*>/gi,' ').replace(/<[^>]+>/g,' ').replace(/https?:\/\/\S+/g,' ');
     return [...selectedTags].some(tag => {
       switch(tag) {
         case 'Attack Speed': return /Attack Speed|Attack/i.test(mods);
@@ -237,8 +240,9 @@ export function render(groups: UniqueGroups): void {
         card.style.display='flex';
         card.style.gap='12px';
         card.style.alignItems='flex-start';
-        const imgBlock = u.image ? `<div style='flex:0 0 110px; display:flex; align-items:flex-start; justify-content:center;'><img class='unique-img' src='${u.image}' alt='' loading='lazy' decoding='async' style='width:110px; height:110px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 110px;'></div>`;
-        const modsHtml = `<div style='font-size:11px;'>${(u.explicitMods||[]).map((m: string)=> highlightNumbers(sanitizeCraftingHtml(m)) ).join('<br>')}</div>`;
+  const imgBlock = u.image ? `<div style='flex:0 0 118px; display:flex; align-items:flex-start; justify-content:center;'><img class='unique-img' src='${u.image}' alt='' loading='lazy' decoding='async' style='width:118px; height:118px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 118px;'></div>`;
+  const cleanedMods = (u.explicitMods||[]).map(m=> m.replace(/<img[^>]*>/ig,'').trim()).filter(Boolean);
+  const modsHtml = `<div style='font-size:11px;'>${cleanedMods.map((m: string)=> highlightNumbers(sanitizeCraftingHtml(m)) ).join('<br>')}</div>`;
         const right = `<div style='flex:1; display:flex; flex-direction:column;'>
           <div style='font-weight:600; font-size:15px; margin-bottom:4px;'>${u.name}</div>
           <div style='font-size:11px; color:var(--text-muted); margin-bottom:6px;'>${u.typeLine||''}</div>
