@@ -1,156 +1,162 @@
 <div align="center">
 
-# XileHUD (Beta)
+XileHUD (Beta)
 
-<strong>Local PoE2 overlay: copy an item → structured modifier breakdown (normal, fractured, desecrated, corrupted, essence).</strong> (preserve merch history, crafting helper)<br/>
-<a href="https://github.com/XileHUD/poe_overlay/releases/latest">⬇ Download Latest Release</a><br/>
-<sub>Windows x64 • Portable EXE • Local-first • No telemetry</sub>
+Lightweight PoE2 item & modifier overlay – copy an item, see the data instantly.<br/>
+<a href="https://github.com/XileHUD/poe_overlay/releases/latest">⬇ Download the Latest Release</a><br/>
+<sub>Windows x64 • Portable • Local-First • Privacy Focused</sub>
 
 <br />
-<strong>PoE1 version:</strong> Planned (target: before the late-October league) – data layer reusable; adapter work pending.
+
+
+PoE1 Version: Currently in development, with a planned release before the new league at the end of October.
 
 </div>
 
----
+What is XileHUD?
 
-## Why it exists
-(preserve merchant history, crafting helper)
+I initially created this HUD for my personal use. As a self-employed trader, I spend a lot of time on the PC, and Path of Exile is the perfect game for that. I've been coding as a hobby for some years now, mainly building tools that help me get things done faster. A friend saw the overlay and told me I should release it to the public, so here we are. I hope you find it as useful as I do!
 
----
+✨ Features
 
-## ✨ Key Features
-1. Structured Modifier Breakdown (normal, fractured, desecrated, corrupted, essence – if present)
-2. Merchant History (local archive + filters)
-3. Crafting Currency Helper (in progress)
-4. Character Data (planned)
-5. Quest Passive Helper (planned)
-6. Bases & Uniques Explorer
-7. Regex Tool (maps / filters)
-8. Smart Clipboard (copy item → overlay updates)
+Merchant History: One of the core motivations for this project. In-game, the vendor history is capped at the last 100 items and doesn't show the items themselves. XileHUD provides a local, searchable, and filterable history of your merchant interactions, allowing you to save and analyze more than just the last 100 transactions.
 
----
+Detailed Modifier Overview: Get an in-depth look at item modifiers with advanced filters, weighting, and more. Instantly understand the power of an item.
 
-## 🚀 Quick Start (End Users)
-1. Download portable EXE from Releases.
-2. Run it (unsigned: use “More info → Run anyway”).
-3. Launch PoE2 (windowed/borderless recommended).
-4. Copy an item in inventory (`Ctrl+C`).
-5. Overlay panel populates automatically.
+Crafting Currency Helper: Ever wondered about the different Essences, Omens, or Runes available? Instead of manually searching the trade site, simply press Ctrl+Q on any currency to see a detailed, filterable list of what they do.
 
-Tray:
-- Hide/restore from system tray icon.
-- Quit via tray menu or window close.
+Smart Clipboard: The overlay is intelligent. If you copy a rare Strength-based chestplate, for example, the modifiers page will automatically open with the "STR Chest" category pre-selected. This functionality extends to Omens, Essences, Catalysts, Uniques, Flasks, Relics, and much more, saving you valuable clicks.
 
-Data Override Priority:
-| Priority | Mechanism | Purpose |
-|----------|-----------|---------|
-| 1 | `XILEHUD_DATA_DIR` env var | Point to custom JSON set |
-| 2 | `%APPDATA%/XileHUD/overlay/overlay-config.json` | User-configurable path |
-| 3 | Bundled resources | Default packaged dataset |
+Character Planner: View all available Gems, Atlas Passives, Keystones, and Ascendancy passives. Filter everything to your needs to plan your next build or optimize your current one. A comprehensive glossary is also included.
 
----
+Quest Passives Helper: With the absence of the /passives command in PoE2 and the increased number of campaign rewards, this tool is essential. Track and filter all sources of Spirit, passive points, resistances, and attributes. Check them off as you collect them to ensure you never miss a permanent character boost again.
 
-## � Privacy
-| Action | Network? | Notes |
-|--------|----------|-------|
-| Item parse | ❌ | Pure local processing |
-| Tier lookup | ❌ | JSON / in-memory only |
-| Merchant logging | ❌ | Local SQLite/JSON (export manual) |
-| Telemetry | ❌ | None implemented |
-| Auth | ❌ | Not used in current beta |
+Item Database: Browse all base items and Uniques in the game through a clean, organized interface with powerful filtering options. For instance, find the highest evasion base armor with just two clicks.
 
----
+Map Regex Tool: A simple tool to make juicing maps more straightforward. Select the mods you want or don't want, and copy the generated regex directly into the game.
 
-<!-- Tier logic intentionally omitted here per simplified user-facing feature list. -->
+Focused Gaming: The overlay is designed to be unobtrusive and can be quickly toggled with a hotkey, keeping you focused on the game.
 
----
+Local Database: Most features are fully local and can be used offline. An internet connection and account authentication are only required for the Merchant History to fetch your data from the PoE servers.
 
-## ⚠️ Current Limitations
-| Area | State |
-|------|-------|
-| Code signing | Not yet (SmartScreen warning) |
-| Auto-update | Manual download per release |
-| Settings UI | Pending (hotkeys, layout persistence) |
-| PoE1 Support | Not shipped yet |
-| Data refresh | Requires new release (diff patcher planned) |
+🚀 Quick Start
 
----
+Download the portable EXE from the Releases page.
 
-## 🗺️ Roadmap (Short / Mid)
-- Code signing & incremental updater
-- Configurable hotkeys + overlay profiles
-- Live modifier diff ingestion (no full repackage)
-- Crafting recipe helper / shareable templates
-- Regex tool expansion (influence sets, rune families, atlas passive groups)
-- Spectre database (minion archetype surfacing)
-- PoE1 adapter layer
-- Lightweight local price memory (no external API spam)
+Run the application (as it's unsigned, you may need to click “More info → Run anyway”).
 
-Exploratory: craft simulation sandbox; passive tree diff preview if stable model emerges.
+Launch Path of Exile 2 (Windowed or Borderless Fullscreen is recommended).
 
----
+In-game, hover over an item and press Ctrl+C to copy its data.
 
-## 🐞 Reporting Issues
-Please include:
-1. App version (filename)
-2. Steps to reproduce
-3. Item text (if tier mismatch) + expected reference (e.g. PoE2DB link)
-4. Optional terminal output (run EXE from PowerShell)
+Press Ctrl+Q to toggle the overlay panel and view the item's details.
 
-Create issues: https://github.com/XileHUD/poe_overlay/issues
+System Tray:
 
----
+Hide or restore the overlay from the system tray icon.
 
-## 🛠 Build From Source
-Prereqs: Node 18+, Git, Windows (for portable target)
+Right-click the tray icon to quit the application.
 
-```powershell
+🔒 Privacy
+
+No telemetry or tracking is implemented. Account authentication is only required if you wish to use the Merchant History feature to fetch your data from your Path of Exile account. All other features work offline.
+
+🗺️ Roadmap
+
+I usually add features that I personally think would help me save time, so when you see an update, it's likely something I'm actively using myself.
+
+Spectre Database: A comprehensive list of spectres and their abilities.
+
+Shareable Crafting Recipes: Create and share crafting processes with the community.
+
+Expanded Regex Tool: Add more categories for deeper customization.
+
+PoE1 Version: Complete the Path of Exile 1 adaptation.
+
+And much more!: I have many other ideas in mind to continue making our lives in Wraeclast easier.
+
+🐞 Reporting Issues
+
+If you encounter a bug or have a suggestion, please create an issue on the GitHub Issues page. You can also report issues in the Reddit thread.
+
+When reporting, please include:
+
+The application version.
+
+Steps to reproduce the issue.
+
+The item text (if it's an item parsing issue).
+
+Any relevant output from the console.
+
+🛠️ Build From Source
+
+Prerequisites: Node.js 18+, Git, and Windows.
+
+code
+Powershell
+download
+content_copy
+expand_less
+# Clone the repository
 git clone https://github.com/XileHUD/poe_overlay.git
+
+# Navigate to the overlay package
 cd poe_overlay\packages\overlay
+
+# Install dependencies
 npm install
+
+# Run in development mode
 npm run dev
-```
 
-Production (unsigned portable):
-```powershell
+To build the portable executable:
+
+code
+Powershell
+download
+content_copy
+expand_less
 npm run dist:unsigned
-```
-Output: `dist_electron/XileHUD-<version>-portable.exe`
 
-Just JS bundles:
-```powershell
-npm run build
-```
+The output will be located in dist_electron/XileHUD-<version>-portable.exe.
 
-Packaging notes:
-- Uses electron-builder (portable target)
-- Data falls back to `process.resourcesPath/data/poe2`
+🙌 Contributing
 
----
+Pull requests are welcome! Some helpful areas for contribution include:
 
-## 🙌 Contributing
-Open to PRs now (no “wait until stable” gate). Helpful areas:
-- Tier aggregation edge cases
-- Performance profiling (clipboard loop / render diff)
-- Additional item context panels
+Refining tier aggregation for edge cases.
+
+Performance profiling and optimization.
+
+Developing new item context panels.
 
 Flow:
-1. Fork & branch
-2. Fresh `npm install`
-3. Run dev overlay, reproduce intended change
-4. Commit w/ clear conventional message (feat:, fix:, chore:, docs:)
-5. Open PR with before/after rationale & screenshots if UI
 
----
+Fork the repository and create a new branch.
 
-## 📜 License
-[MIT](./LICENSE) – Not affiliated with or endorsed by Grinding Gear Games.
+Run npm install to get started.
 
-### Credits / Acknowledgements
-- Grinding Gear Games (game + data; all trademarks belong to GGG)
-- Community data sources (PoE2DB, POE2.RE, POEDB) for cross-reference validation
-- OmegaK2, brather1ng, Chriskang – historical tooling & parsing inspiration
+Implement your changes.
 
----
+Commit with a clear, conventional message (e.g., feat:, fix:, docs:).
 
-Built with focus, caffeine, and far too many test items.
+Open a Pull Request with a description of your changes.
+
+📜 License
+
+MIT
+
+This project is not affiliated with or endorsed by Grinding Gear Games.
+
+Acknowledgements
+
+Grinding Gear Games (http://www.grindinggear.com/): For creating the incredible Path of Exile (https://www.pathofexile.com/) and many of the file formats used. Please support them and do not reuse their files without permission.
+
+OmegaK2 (https://github.com/OmegaK2): The original developer of PyPoE.
+
+brather1ng (https://github.com/brather1ng): For the updated PyPoE fork.
+
+Chriskang: For the original VisualGGPK2.
+
+POEDB (http://poedb.tw/us/) & POE2.RE (https://poe2.re/): For invaluable data and references.
