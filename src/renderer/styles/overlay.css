@@ -951,3 +951,71 @@ body.crafting-mode #controlPanel { display: none !important; }
 .qp-tag.movement{background:#163a1f; color:#c9ffd6; border-color:#2e6a3f}
 .qp-tag.strength{background:#3f1f1f; color:#ffd6d6; border-color:#7a3a3a}
 .qp-pill{display:inline-flex; align-items:center; gap:6px; padding:2px 8px; border-radius:999px; background:var(--bg-tertiary); border:1px solid var(--border-color); font-size:11px;}
+
+/* ================= Responsive Enhancements (safe + incremental) ================= */
+/* Breakpoint 1: Slightly constrain list width sooner for medium viewports */
+@media (max-width: 1100px) {
+    #historyList { flex: 0 0 50% !important; }
+}
+
+/* Breakpoint 2: Stack list and detail vertically under narrow width */
+@media (max-width: 860px) {
+    #historyContainer { flex-direction: column !important; }
+    #historyList { flex: 0 0 auto !important; max-height: 38vh; border-right:none !important; border-bottom:1px solid var(--border-color); }
+    #historyRight { flex: 1 1 auto; }
+    #historyChartWrap { min-height: 130px; }
+}
+
+/* Breakpoint 3: Single-column detail card (icon above mods) */
+@media (max-width: 720px) {
+    .history-detail-card .grid { grid-template-columns: 1fr !important; }
+    .history-item-icon { margin: 0 auto 8px auto; }
+}
+
+/* Icon becomes responsive (between 80px and 128px, scaling up to 20vw) */
+.history-item-icon { width: clamp(80px, 20vw, 128px); }
+
+/* Filter row prioritization: reorder essentials first on wrap */
+/* Assign classes in DOM (JS already gives ids; use attribute selectors fallback) */
+#historyHeaderRow2 { align-items: flex-start; }
+#historyHeaderRow2 > * { flex: 0 0 auto; }
+/* Use order hints – lower = earlier. We'll target common control ids if present. */
+#historyHeaderRow2 input[type="search"],
+#historyHeaderRow2 input[type="text"] { order: 1; }
+#historyHeaderRow2 select[name*="currency" i],
+#historyHeaderRow2 .filter-currency { order: 2; }
+#historyHeaderRow2 .filter-min, #historyHeaderRow2 input[min] { order: 3; }
+#historyHeaderRow2 .filter-sort { order: 5; }
+#historyHeaderRow2 .filter-type { order: 6; }
+#historyHeaderRow2 .filter-rarity { order: 7; }
+#historyHeaderRow2 .history-top-sale-btn { order: 8; }
+
+/* Chart minimum height enforcement + graceful shrink */
+#historyChartWrap { min-height: 140px; }
+@media (max-width: 900px) { #historyChartWrap { min-height: 130px; } }
+@media (max-width: 720px) { #historyChartWrap { min-height: 120px; } }
+
+/* Root font scaling for condensed width (small reductions) */
+@media (max-width: 900px) { html { font-size: 15px; } }
+@media (max-width: 780px) { html { font-size: 14.5px; } }
+@media (max-width: 660px) { html { font-size: 14px; } }
+
+/* Ensure mod lines stay readable when font shrinks */
+@media (max-width: 660px) { .mod-line { font-size:11px; } }
+
+/* Prevent overly tall list area when stacked; allow scroll */
+@media (max-width: 860px) { #historyList { overflow-y:auto; } }
+
+/* Minor tightening inside card on very small widths */
+@media (max-width: 520px) { .history-detail-card { padding:10px; } }
+
+/* Allow active filters row to wrap nicely below header when stacked */
+@media (max-width: 860px) { #historyActiveFilters { order: 10; width:100%; } }
+
+/* Safety: Avoid overflow for long item titles on narrow widths */
+@media (max-width: 720px) { .history-detail-card .card-title { font-size:13px; } }
+
+/* Keep currency badges compact on narrow screens */
+@media (max-width: 660px) { .price-badge { font-size:10px; padding:2px 6px; } }
+
+/* End responsive enhancements */
