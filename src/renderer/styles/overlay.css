@@ -876,6 +876,8 @@ body {
 .history-detail-card .grid { display:grid; grid-template-columns: 128px 1fr; gap:12px; align-items:start; }
 .history-item-icon { width:128px; height:auto; border:1px solid var(--border-color); border-radius:6px; background: #111; object-fit: contain; }
     body.view-history #historyActiveFilters { padding:6px 0 8px 0; }
+    /* Ensure active filters always appear on their own line below the control row */
+    #historyActiveFilters { width:100%; flex: 0 0 auto; display:flex; flex-wrap:wrap; gap:6px; }
     body.view-history #historyHeader { padding-top:4px; }
 .mod-lines { margin-top:6px; display:flex; flex-direction:column; gap:0; background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)); border:1px solid var(--border-color); border-radius:6px; overflow:hidden; }
 .mod-section + .mod-section .mod-lines { margin-top:4px; }
@@ -980,15 +982,21 @@ body.crafting-mode #controlPanel { display: none !important; }
 #historyHeaderRow2 { align-items: flex-start; }
 #historyHeaderRow2 > * { flex: 0 0 auto; }
 /* Use order hints – lower = earlier. We'll target common control ids if present. */
-#historyHeaderRow2 input[type="search"],
-#historyHeaderRow2 input[type="text"] { order: 1; }
-#historyHeaderRow2 select[name*="currency" i],
-#historyHeaderRow2 .filter-currency { order: 2; }
-#historyHeaderRow2 .filter-min, #historyHeaderRow2 input[min] { order: 3; }
-#historyHeaderRow2 .filter-sort { order: 5; }
-#historyHeaderRow2 .filter-type { order: 6; }
-#historyHeaderRow2 .filter-rarity { order: 7; }
-#historyHeaderRow2 .history-top-sale-btn { order: 8; }
+/* Explicit ordering groups so labels stay adjacent to their controls */
+#historyHeaderRow2 .lbl-currency { order: 1; }
+#historyHeaderRow2 .sel-currency { order: 2; }
+#historyHeaderRow2 .lbl-min { order: 3; }
+#historyHeaderRow2 .inp-min { order: 4; }
+#historyHeaderRow2 .lbl-time { order: 5; }
+#historyHeaderRow2 .sel-time { order: 6; }
+#historyHeaderRow2 .lbl-sort { order: 7; }
+#historyHeaderRow2 .sel-sort { order: 8; }
+#historyHeaderRow2 .lbl-rarity { order: 9; }
+#historyHeaderRow2 .sel-rarity { order: 10; }
+#historyHeaderRow2 .lbl-type { order: 11; }
+#historyHeaderRow2 .sel-type { order: 12; }
+#historyHeaderRow2 .btn-top-sale { order: 13; }
+#historyHeaderRow2 .inp-search { order: 14; }
 
 /* Chart minimum height enforcement + graceful shrink */
 #historyChartWrap { min-height: 140px; }
