@@ -13,6 +13,20 @@
     --accent-red: #d9534f;
 }
 
+/* Generic menu / tab icon styling */
+.menu-icon, .tab .menu-icon {
+    width: 14px;
+    height: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 4px;
+    flex: 0 0 auto;
+}
+.menu-icon svg { width: 14px; height: 14px; stroke: currentColor; }
+.dropdown-with-icons > div .menu-icon { margin-right: 6px; }
+
+
 /* Clean CSS: Only hide history elements when not in history view */
 body:not(.view-history) #historyContainer,
 body:not(.view-history) #historyHeaderMain {
@@ -156,6 +170,16 @@ body {
 }
 #historyList::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted) !important;
+}
+
+/* Merchant history filter bar spacing */
+#historyHeaderRow2 { 
+    margin-top: 4px; 
+    margin-bottom: 6px; 
+}
+#historyHeaderRow2 > * { 
+    margin-top: 2px; 
+    margin-bottom: 2px; 
 }
 
     /* Ensure dynamically inserted crafting panels stack correctly */

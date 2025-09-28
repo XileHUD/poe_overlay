@@ -580,10 +580,10 @@ export function drawHistoryChart(): void {
   const minVal = 0;
   const key = _chartState.current === "exalted" ? "e" : _chartState.current === "annul" ? "a" : "d";
   const maxVal = Math.max(1, ...pts.map((p) => (p as any)[key] as number));
-  const padL = 30,
-    padR = 6,
-    padT = 6,
-    padB = 16;
+  const padL = 36,
+    padR = 8,
+    padT = 8,
+    padB = 22;
   ctx.strokeStyle = "#444";
   (ctx as any).lineWidth = 1;
   ctx.beginPath();
@@ -591,19 +591,81 @@ export function drawHistoryChart(): void {
   ctx.lineTo(padL, H - padB);
   ctx.lineTo(W - padR, H - padB);
   ctx.stroke();
+
   const X = (t: number) => padL + ((W - padL - padR) * (t - t0)) / Math.max(1, t1 - t0);
   const Y = (v: number) => (H - padB) - ((H - padT - padB) * (v - minVal)) / Math.max(1, maxVal - minVal);
+
+  // --- Y Axis Ticks (Adaptive) ---------------------------------------------
+  const desiredTicks = 4; // excluding 0
+  let yTicks: number[] = [];
+  if (maxVal <= 1) {
+    yTicks = [1];
+  } else {
+    // Determine a 'nice' step size (1,2,5 * 10^n)
+    const rawStep = maxVal / desiredTicks;
+    const pow10 = Math.pow(10, Math.floor(Math.log10(rawStep)));
+    const candidates = [1, 2, 2.5, 5, 10].map(c => c * pow10);
+    let step = candidates[0];
+    for (const c of candidates) { if (rawStep <= c) { step = c; break; } }
+    const maxTick = Math.ceil(maxVal / step) * step;
+    for (let v = step; v < maxTick; v += step) {
+      if (v >= maxVal) break;
+      yTicks.push(v);
+    }
+    if (yTicks.length === 0 && maxVal > 0) yTicks = [maxVal];
+  }
   ctx.strokeStyle = "#2d2d2d";
   (ctx as any).lineWidth = 1;
   (ctx as any).setLineDash?.([3, 3]);
-  for (let i = 1; i <= 3; i++) {
-    const y = padT + ((H - padT - padB) * i) / 4;
+  yTicks.forEach(v => {
+    const y = Y(v);
     ctx.beginPath();
     ctx.moveTo(padL, y);
     ctx.lineTo(W - padR, y);
     ctx.stroke();
-  }
+  });
   (ctx as any).setLineDash?.([]);
+
+  // Y tick labels
+  ctx.fillStyle = "#999" as any;
+  (ctx as any).font = "10px Segoe UI, sans-serif";
+  (ctx as any).textAlign = "right";
+  ctx.fillText("0", padL - 4, H - padB + 10);
+  yTicks.forEach(v => {
+    ctx.fillText(String(v), padL - 4, Y(v) + 3);
+  });
+  ctx.fillText(String(Math.round(maxVal)), padL - 4, padT + 10);
+  // --- X Axis ticks (trade index) ------------------------------------------
+  // Use number of points as 'trades'. We label start=1 and end = total trades.
+  const totalTrades = pts.length - 1; // minus synthetic start point
+  if (totalTrades > 0) {
+    const desiredXTicks = 4; // interior ticks
+    let xStep = Math.ceil(totalTrades / (desiredXTicks + 1));
+    // Round xStep to a nice number (1,2,5 * 10^n)
+    const pow10x = Math.pow(10, Math.floor(Math.log10(xStep)));
+    const candX = [1, 2, 5, 10].map(c => c * pow10x);
+    for (const c of candX) { if (xStep <= c) { xStep = c; break; } }
+    ctx.fillStyle = "#777" as any;
+    (ctx as any).textAlign = "center";
+    (ctx as any).font = "9px Segoe UI, sans-serif";
+    for (let i = xStep; i < totalTrades; i += xStep) {
+      const p = pts[Math.min(i, pts.length - 1)];
+      const x = X(p.t);
+      ctx.beginPath();
+      ctx.strokeStyle = "#2d2d2d";
+      (ctx as any).setLineDash?.([2, 3]);
+      ctx.moveTo(x, padT);
+      ctx.lineTo(x, H - padB);
+      ctx.stroke();
+      (ctx as any).setLineDash?.([]);
+      ctx.fillText(String(i), x, H - padB + 12);
+    }
+    // Start and end labels
+    (ctx as any).textAlign = "left";
+    ctx.fillText("1", padL + 2, H - padB + 12);
+    (ctx as any).textAlign = "right";
+    ctx.fillText(String(totalTrades), W - padR - 2, H - padB + 12);
+  }
   const color = _chartState.current === "exalted" ? "#3f6aa1" : _chartState.current === "annul" ? "#7b40b3" : "#d4af37";
   ctx.strokeStyle = color as any;
   (ctx as any).lineWidth = 2;
@@ -625,11 +687,7 @@ export function drawHistoryChart(): void {
     ctx.arc(x, y, 2, 0, Math.PI * 2);
     ctx.fill();
   }
-  ctx.fillStyle = "#999" as any;
-  (ctx as any).font = "10px Segoe UI, sans-serif";
-  (ctx as any).textAlign = "right";
-  ctx.fillText(String(Math.round(maxVal)), padL - 4, padT + 8);
-  ctx.fillText("0", padL - 4, H - padB);
+  // (Y labels already rendered above)
 }
 
 export function setChartCurrency(cur: "divine" | "exalted" | "annul"): void {
