@@ -295,6 +295,45 @@ class OverlayApp {
             icon: windowIcon
         });
 
+        // --- Image diagnostics instrumentation ---
+        try {
+            const diag: { url: string; status?: number; method: string; error?: string; mime?: string; t: number; phase: string; }[] = [];
+            const MAX = 250;
+            const ses = this.overlayWindow.webContents.session;
+            // Ensure Referer/User-Agent for CDN (some assets may enforce hotlink policy)
+            ses.webRequest.onBeforeSendHeaders((details, cb) => {
+                if (/cdn\.poe2db\.tw\/image\//i.test(details.url)) {
+                    const headers = { ...details.requestHeaders };
+                    // Only add if missing to avoid duplication
+                    if (!headers['Referer'] && !headers['referer']) headers['Referer'] = 'https://poe2db.tw/us';
+                    // Provide a stable UA (some 403s can be UA related when empty)
+                    if (!headers['User-Agent']) headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) XileHUD/1.0 Chrome/118.0.0.0 Safari/537.36';
+                    // Encourage image content negotiation
+                    headers['Accept'] = headers['Accept'] || 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8';
+                    cb({ cancel: false, requestHeaders: headers });
+                    return;
+                }
+                cb({ cancel: false, requestHeaders: details.requestHeaders });
+            });
+            // Capture completed (success or failure) requests for images
+            ses.webRequest.onCompleted((details) => {
+                if (!/\bimage\b/i.test(details.resourceType)) return;
+                diag.push({ url: details.url, status: details.statusCode, method: details.method, mime: (details as any).mimeType, t: Date.now(), phase: 'completed' });
+                if (diag.length > MAX) diag.splice(0, diag.length - MAX);
+            });
+            ses.webRequest.onErrorOccurred((details) => {
+                if (!/\bimage\b/i.test(details.resourceType)) return;
+                diag.push({ url: details.url, error: details.error, method: details.method, t: Date.now(), phase: 'error' });
+                if (diag.length > MAX) diag.splice(0, diag.length - MAX);
+            });
+            // Expose on IPC for renderer pull (no heavy push spam)
+            ipcMain.handle('debug-get-image-log', () => {
+                return diag.slice(-150); // last entries
+            });
+        } catch (e) {
+            console.warn('Image diagnostics setup failed', e);
+        }
+
     // Set reasonable min sizes; allow user to resize width now that we persist size
     const minW = 860;
     const minH = 480;
@@ -686,6 +725,20 @@ class OverlayApp {
         ipcMain.handle('get-omens', async () => {
             try {
                 const filePath = path.join(this.getDataDir(), 'Omens.json');
+                if (fs.existsSync(filePath)) {
+                    const raw = fs.readFileSync(filePath, 'utf-8');
+                    return JSON.parse(raw);
+                }
+                return { error: 'not_found', filePath };
+            } catch (e: any) {
+                return { error: e?.message || 'unknown_error' };
+            }
+        });
+
+        // Currency data
+        ipcMain.handle('get-currency', async () => {
+            try {
+                const filePath = path.join(this.getDataDir(), 'Currency.json');
                 if (fs.existsSync(filePath)) {
                     const raw = fs.readFileSync(filePath, 'utf-8');
                     return JSON.parse(raw);

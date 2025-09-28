@@ -137,6 +137,7 @@
                     <div class="crafting-menu-item" data-action="annoints" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Annoints</div>
                     <div class="crafting-menu-item" data-action="essences" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Essences</div>
                     <div class="crafting-menu-item" data-action="omens" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Omens</div>
+                    <div class="crafting-menu-item" data-action="currency" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Currency</div>
                     <div class="crafting-menu-item" data-action="catalysts" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Catalysts</div>
                     <div class="crafting-menu-item" data-action="socketables" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer;">Socketables</div>
                         </div>
@@ -298,6 +299,8 @@
     function renderSocketables(list){ if (window.OverlaySocketables && window.OverlaySocketables.render) { try { return window.OverlaySocketables.render(list); } catch {} } }
     async function showOmens(){ if (window.OverlayOmens && window.OverlayOmens.show) { try { return await window.OverlayOmens.show(); } catch {} } }
     function renderOmens(list){ if (window.OverlayOmens && window.OverlayOmens.render) { try { return window.OverlayOmens.render(list); } catch {} } }
+    async function showCurrency(){ if (window.OverlayCurrency && window.OverlayCurrency.show) { try { return await window.OverlayCurrency.show(); } catch {} } }
+    function renderCurrency(list){ if (window.OverlayCurrency && window.OverlayCurrency.render) { try { return window.OverlayCurrency.render(list); } catch {} } }
     // Uniques, Bases, Glossar
     async function showUniques(){ if (window.OverlayUniques && window.OverlayUniques.show) { try { return await window.OverlayUniques.show(); } catch {} } }
     function renderUniques(groups){ if (window.OverlayUniques && window.OverlayUniques.render) { try { return window.OverlayUniques.render(groups); } catch {} } }
@@ -712,6 +715,9 @@
                         } else if (action === 'omens') {
                             await showOmens();
                             setHeader('Omens');
+                        } else if (action === 'currency') {
+                            await showCurrency();
+                            setHeader('Currency');
                             
                         } else if (action === 'catalysts') {
                             await showCatalysts();
@@ -1420,16 +1426,23 @@ function renderGems(groups){
     const sortedTags=[...skillTags].sort((a,b)=>a.localeCompare(b));
     const tagCounts = {};
     order.forEach(([key])=>{ (groups[key]||[]).forEach(g=>{ (g.tags||[]).forEach(t=>{ tagCounts[t] = (tagCounts[t]||0)+1; }); }); });
-    panel.innerHTML=`<div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
+    panel.innerHTML=`<div style='display:flex; gap:6px; align-items:center; margin-bottom:6px;'>
         <input id='gemSearch' type='text' placeholder='Search gems...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
         <button id='gemClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-    <div id='gemTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; margin:-2px 0 6px; justify-content:center;'></div>
+    <div style='display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:4px;'>
+      <div id='gemTagFilters' style='display:flex; flex-wrap:wrap; gap:4px;'></div>
+      <button id='gemImgLogBtn' title='Show recent image request log' style='padding:2px 6px; font-size:11px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer;'>Img Log</button>
+    </div>
+    <div id='gemImgDiag' style='display:none; flex-direction:column; gap:4px; margin-bottom:8px;'></div>
     <div id='gemSections' style='display:flex; flex-direction:column; gap:14px;'></div>`;
     const searchEl=panel.querySelector('#gemSearch');
     const clearBtn=panel.querySelector('#gemClear');
     const container=panel.querySelector('#gemSections');
     const tagWrap=panel.querySelector('#gemTagFilters');
+    const imgDiag=panel.querySelector('#gemImgDiag');
+    const imgLogBtn=panel.querySelector('#gemImgLogBtn');
+    if(imgLogBtn) imgLogBtn.style.display='none';
     const selectedTags=new Set();
     function tagRGB(tag){ const t=(tag||'').toLowerCase();
         if(t==='fire' || t==='life') return [220,68,61];
@@ -1476,13 +1489,65 @@ function renderGems(groups){
             section.appendChild(wrap); container.appendChild(section);
         });
         // Image fallback
-        const placeholder='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><rect width="28" height="28" rx="4" fill="%23222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23555" font-size="8" font-family="sans-serif">?</text></svg>';
-        container.querySelectorAll('img.gem-img').forEach(img=>{ if(img._fb)return; img._fb=true; img.addEventListener('error',()=>{ img.src=placeholder; img.style.opacity='0.55'; img.style.filter='grayscale(1)'; }, { once:true }); });
+                const placeholder='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><rect width="28" height="28" rx="4" fill="%23222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23555" font-size="8" font-family="sans-serif">?</text></svg>';
+                container.querySelectorAll('img.gem-img').forEach(img=>{
+                    if(img._fb)return; img._fb=true; const orig=img.getAttribute('data-orig-src')||img.src; img.setAttribute('data-orig-src', orig);
+                    img.addEventListener('error',()=>{
+                        if(!img.dataset.retry){ img.dataset.retry='1'; const bust=orig+(orig.includes('?')?'&':'?')+'r='+Date.now(); img.src=bust; return; }
+                                // Second failure: attempt capitalized path heuristic if not tried
+                                if(!img.dataset.altTried){
+                                    img.dataset.altTried='1';
+                                    try {
+                                        const alt = orig
+                                            .replace('/image/art/','/image/Art/')
+                                            .replace('/2dart/','/2DArt/')
+                                            .replace('/skillicons/','/SkillIcons/');
+                                        if(alt!==orig){ img.src=alt; return; }
+                                    } catch {}
+                                }
+                        img.src=placeholder; img.style.opacity='0.55'; img.style.filter='grayscale(1)';
+                        try { (window).__imageErrorEvents = (window).__imageErrorEvents || []; (window).__imageErrorEvents.push({ ts:Date.now(), phase:'failed', src:orig }); } catch {}
+                    });
+                });
     }
     searchEl.addEventListener('input',()=>build(searchEl.value));
     clearBtn.addEventListener('click',()=>{ searchEl.value=''; build(''); searchEl.focus(); });
+        imgLogBtn.addEventListener('click', async ()=>{
+                try {
+                    const log = await window.electronAPI.getImageLog?.();
+                    if(!imgDiag)return; if(!log||!log.length){ imgDiag.style.display='flex'; imgDiag.innerHTML='<div style="font-size:11px; color:var(--text-muted);">No image log entries.</div>'; return; }
+                    imgDiag.style.display='flex';
+                    imgDiag.innerHTML = `<div style='font-size:11px; font-weight:600;'>Recent Image Requests (${log.length})</div>`+
+                        `<div style='max-height:160px; overflow:auto; font-size:10px; line-height:1.25; background:var(--bg-tertiary); padding:4px; border:1px solid var(--border-color); border-radius:4px;'>`+
+                        log.slice().reverse().map(e=>`<div style='margin-bottom:4px;'>${e.status?`<span style='color:${e.status>=200&&e.status<300?'#6fbf73':'var(--accent-red)'};'>${e.status}</span>`:`<span style='color:var(--accent-red);'>ERR</span>`} <span style='opacity:.7;'>${e.method}</span> <span>${e.url}</span>${e.error?`<div style='color:var(--accent-red);'>${e.error}</div>`:''}</div>`).join('')+
+                        `</div>`;
+                        // Attempt a targeted retry for 403 images (might succeed with new headers)
+                                    const forbidden = (log||[]).filter(e=>e.status===403).map(e=>e.url);
+                                    if(forbidden.length){
+                                        const allImgs = Array.from(document.querySelectorAll('img.gem-img'));
+                                        allImgs.forEach(function(img){
+                                            var orig = img.getAttribute('data-orig-src') || img.src;
+                                            if(forbidden.includes(orig) && !img.dataset.retry403){
+                                                img.dataset.retry403='1';
+                                                setTimeout(function(){ img.src = orig + (orig.includes('?')?'&':'?')+'reh='+Date.now(); }, 100);
+                                            }
+                                        });
+                                    }
+                } catch(err) {
+                    if(imgDiag){ imgDiag.style.display='flex'; imgDiag.innerHTML='<div style="color:var(--accent-red); font-size:11px;">Failed to fetch image log</div>'; }
+                }
+        });
         build('');
         renderTagFilters();
+    // Shared debug hotkey (Ctrl+Shift+I) to toggle gem img log button
+    if(!window.__gemImgDebugHotkey){
+        window.__gemImgDebugHotkey=true;
+        window.addEventListener('keydown',function(e){
+            if(e.ctrlKey && e.shiftKey && e.code==='KeyI'){
+                if(imgLogBtn){ imgLogBtn.style.display = imgLogBtn.style.display==='none' ? '' : 'none'; }
+            }
+        });
+    }
 }
 
 // Bottom resize handle wiring (vertical resize)

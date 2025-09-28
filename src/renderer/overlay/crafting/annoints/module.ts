@@ -28,11 +28,14 @@ const state: State = {
 
 function ensurePanel(): HTMLElement {
   if (state.panelEl && document.body.contains(state.panelEl)) return state.panelEl;
-  const el = document.createElement("div");
-  el.id = "annointsPanel";
-  el.className = "content";
-  el.style.padding = "8px";
-  const footer = document.getElementById("footer");
+  // Reuse generic craftingPanel if it already exists (align behavior with essences/omens/etc.)
+  const existing = document.getElementById('craftingPanel') as HTMLElement | null;
+  if (existing) { state.panelEl = existing; existing.id = 'craftingPanel'; existing.classList.add('content'); return existing; }
+  const el = document.createElement('div');
+  el.id = 'craftingPanel';
+  el.className = 'content';
+  el.style.padding = '8px';
+  const footer = document.getElementById('footer');
   if (footer && footer.parentNode) footer.parentNode.insertBefore(el, footer);
   state.panelEl = el;
   return el;
@@ -60,7 +63,7 @@ export async function show(): Promise<void> {
   if (craft) (craft as HTMLElement).style.display = "none";
 
   const panel = ensurePanel();
-  panel.style.display = "";
+  panel.style.display = '';
   panel.innerHTML = `<div class='no-mods'>Loading...</div>`;
 
   try {
@@ -74,7 +77,7 @@ export async function show(): Promise<void> {
 }
 
 export function hide(): void {
-  if (state.panelEl) state.panelEl.style.display = "none";
+  if (state.panelEl) state.panelEl.style.display = 'none';
 }
 
 function deriveAnnointTags(a: Annoint): string[] {
@@ -243,6 +246,13 @@ export function applyFilter(): void {
   const countEl = document.getElementById('annointsCount');
   const any = !!q || activeTags.length>0;
   if (countEl) (countEl as HTMLElement).textContent = any ? `Annoints (${shown} / ${total})` : `Annoints (${total})`;
+  // When the user has scrolled far down and then narrows results to a few cards,
+  // the old scroll position leaves the visible cards sitting mid / bottom with a big empty gap above.
+  // Always reset to top after a filter action so the header + remaining results start at the top.
+  try {
+    const panel = state.panelEl || document.getElementById('craftingPanel');
+    if (panel) (panel as HTMLElement).scrollTop = 0; // simple top reset like other panels
+  } catch {}
 }
 
 export async function reload(): Promise<void> {

@@ -53,6 +53,11 @@ declare global {
       render: (list: any[]) => void;
       reload: () => Promise<void>;
     };
+    OverlayCurrency?: {
+      show: () => Promise<void>;
+      render: (list: any[]) => void;
+      reload: () => Promise<void>;
+    };
     OverlayUniques?: {
       show: () => Promise<void>;
       render: (groups: any) => void;

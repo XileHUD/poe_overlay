@@ -14,6 +14,7 @@ import './overlay/crafting/essences/globals';
 import './overlay/crafting/catalysts/globals';
 import './overlay/crafting/socketables/globals';
 import './overlay/crafting/omens/globals';
+import './overlay/crafting/currency/globals';
 
 // Items panels
 import './overlay/crafting/uniques/globals';

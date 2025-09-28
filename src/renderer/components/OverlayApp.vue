@@ -67,7 +67,7 @@
           <div v-if="!collapsedSections.has(`${section.domain}-${section.side}`)" class="section-content">
             <div v-for="(mod, index) in section.mods" :key="index" class="mod-item">
               <div class="mod-main" @click="toggleModTiers(section.domain, section.side, index)">
-                <span class="mod-text">{{ mod.text_plain }}</span>
+                <span class="mod-text">{{ cleanModText(mod.text_plain) }}</span>
                 <div class="mod-badges">
                   <span v-if="mod.weight > 0" class="badge weight">{{ mod.weight }}</span>
                   <span v-if="mod.ilvl" class="badge ilvl">iLvl {{ mod.ilvl }}</span>
@@ -89,7 +89,7 @@
                       <span class="badge tier">T{{ mod.tiers.length - tierIndex }}</span>
                     </div>
                   </div>
-                  <div class="tier-text">{{ tier.text_plain }}</div>
+                  <div class="tier-text">{{ cleanModText(tier.text_plain) }}</div>
                 </div>
               </div>
             </div>
@@ -282,6 +282,17 @@ const formatDomainName = (domain: string) => {
 const formatSideName = (side: string) => {
   if (side === 'none') return '';
   return `- ${side.charAt(0).toUpperCase() + side.slice(1)}`;
+};
+
+// Remove leading standalone numbers / iLvl markers from plain text fragments (left-side clutter)
+const cleanModText = (text: string) => {
+  if (!text) return '';
+  return String(text)
+    // remove a line that is just a number (e.g., "1\n+ (10-19) to Life")
+    .replace(/^\s*\d+\s*(?:\r?\n|$)/, '')
+    // remove leading iLvl or tier markers like "iLvl 83 -" or "T1 -"
+    .replace(/^\s*(?:i?l?v?l?\s*\d+|T?\d+)\s*[-:]?\s*/i, '')
+    .trim();
 };
 
 // Lifecycle

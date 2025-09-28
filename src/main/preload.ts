@@ -31,10 +31,13 @@ contextBridge.exposeInMainWorld('electronAPI', {
     getGlossar: () => ipcRenderer.invoke('get-keywords'),
     getUniques: () => ipcRenderer.invoke('get-uniques'),
     getOmens: () => ipcRenderer.invoke('get-omens'),
+    getCurrency: () => ipcRenderer.invoke('get-currency'),
     getKeystones: () => ipcRenderer.invoke('get-keystones'),
     getAtlasNodes: () => ipcRenderer.invoke('get-atlas-nodes'),
     getGems: () => ipcRenderer.invoke('get-gems'),
     getBases: () => ipcRenderer.invoke('get-bases'),
+    // Diagnostics
+    getImageLog: () => ipcRenderer.invoke('debug-get-image-log'),
     // Data updates
     getDataDir: () => ipcRenderer.invoke('get-data-dir'),
     setDataDir: (dir: string) => ipcRenderer.invoke('set-data-dir', dir),
