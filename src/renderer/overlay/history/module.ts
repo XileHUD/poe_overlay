@@ -636,8 +636,12 @@ export function drawHistoryChart(): void {
   });
   ctx.fillText(String(Math.round(maxVal)), padL - 4, padT + 10);
   // --- X Axis ticks (trade index) ------------------------------------------
-  // Use number of points as 'trades'. We label start=1 and end = total trades.
-  const totalTrades = pts.length - 1; // minus synthetic start point
+  // Count only trades relevant to current currency (when value increases)
+  let totalTrades = 0;
+  for (let i=1;i<pts.length;i++){ // skip synthetic first
+    const prev = pts[i-1] as any; const curP = pts[i] as any;
+    if (curP[key] > prev[key]) totalTrades++; // only count when cumulative value increases for that currency
+  }
   if (totalTrades > 0) {
     const desiredXTicks = 4; // interior ticks
     let xStep = Math.ceil(totalTrades / (desiredXTicks + 1));

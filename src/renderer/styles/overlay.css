@@ -13,7 +13,20 @@
     --accent-red: #d9534f;
 }
 
-/* Generic menu / tab icon styling */
+/* Control panel (single row) */
+.control-panel {
+    background: var(--bg-secondary);
+    padding: 12px 14px; /* increased vertical space */
+    border-bottom: 1px solid var(--border-color);
+    font-size: 11px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
 .menu-icon, .tab .menu-icon {
     width: 14px;
     height: 14px;
@@ -61,6 +74,24 @@ body {
     height: 100vh; /* Fill window height */
     display: flex;
     flex-direction: column;
+}
+
+/* Domain toggle buttons uniform sizing */
+.domain-toggle {
+    padding: 2px 0;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    color: var(--text-secondary);
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    white-space: nowrap;
+    width: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header {
@@ -612,13 +643,7 @@ body {
     background: var(--text-muted);
 }
 
-/* Control Panel Styles */
-.control-panel {
-    background: var(--bg-secondary);
-    padding: 6px 10px;  /* Reduced from 8px 12px */
-    border-bottom: 1px solid var(--border-color);
-    font-size: 11px;  /* Reduced from 12px */
-}
+/* (Removed older duplicate .control-panel definition) */
 
 .control-row {
     display: flex;
@@ -694,38 +719,18 @@ body {
     width: 200px;
 }
 
-/* Control panel: single-row responsive grid */
-.control-panel {
-    background: var(--bg-secondary);
-    border-bottom: 1px solid var(--border-color);
-    padding: 10px 16px;
-    display: grid;
-    grid-template-columns: auto 1fr auto auto; /* left | search grows | filters | clear */
-    align-items: center;
-    gap: 12px;
-}
+/* Remove earlier grid approach to prevent unintended wrapping when child count changes */
 .cp-left { display:flex; align-items:center; gap:8px; }
 .cp-label { font-size: 11px; color: var(--text-secondary); }
 .cp-select { width: 180px; padding: 3px 6px; font-size: 11px; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-primary); }
 .cp-search { width: 100%; min-width: 140px; padding: 4px 8px; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-primary); font-size: 11px; }
 .cp-filters { display:flex; align-items:center; gap: 6px; }
 .cp-filters-label { font-size: 10px; color: var(--text-secondary); }
-.cp-clear { padding: 4px 10px; font-size: 11px; }
+.cp-clear { padding: 4px 12px; font-size: 11px; line-height:1; position:relative; top:0; background: var(--accent-red); border:1px solid var(--accent-red); color:#fff; }
+/* Ensure consistent height across controls */
+.cp-select, .cp-search, .domain-toggle, .cp-clear, #ilvl-min, #ilvl-max { height:24px; }
 
-/* Domain filter toggle buttons */
-.domain-toggle {
-    padding: 2px 6px;
-    background: var(--bg-tertiary);
-    border: 1px solid var(--border-color);
-    border-radius: 3px;
-    color: var(--text-secondary);
-    font-size: 9px;
-    cursor: pointer;
-    transition: all 0.2s;
-    user-select: none;
-    white-space: nowrap;
-    min-width: 28px;
-}
+/* (Old domain-toggle definition removed; unified version at top) */
 
 .domain-toggle:hover {
     background: var(--bg-secondary);
@@ -740,8 +745,8 @@ body {
 
 /* Add some global spacing to control panels across all views */
 #controlPanel {
-    margin: 0 !important;
-    padding: 12px 16px !important;
+    margin: 0 0 2px 0 !important; /* small bottom gap before chips */
+    padding: 16px 16px !important; /* back to the good padding that worked */
 }
 
 /* Add spacing to content areas */

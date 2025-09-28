@@ -30,7 +30,10 @@ function renderSection(section: any, domainId?: string){
   const sectionId = `section-${section.domain}-${side}`;
   const arrowId = `arrow-${sectionId}`;
   const mods: any[] = Array.isArray(section.mods) ? section.mods : [];
-  const totalWeight = mods.reduce((sum: number, mod: any) => sum + (mod.weight || 0), 0);
+  // Prefer an effective precomputed total if provided (post-filter recalculation)
+  const totalWeight = typeof section._effectiveTotalWeight === 'number'
+    ? section._effectiveTotalWeight
+    : mods.reduce((sum: number, mod: any) => sum + (mod.weight || 0), 0);
   const maxIlvl = mods.reduce((max: number, mod: any) => Math.max(max, mod.ilvl || 0), 0);
   return `
   <div class="section-group domain-${section.domain}">
@@ -374,6 +377,9 @@ export function computeWhittling(data: ModifierData){
 export function renderFilteredContent(data: any){
   const content = document.getElementById('content');
   const searchTerm = (document.getElementById('search-input') as HTMLInputElement | null)?.value?.toLowerCase() || '';
+  const ilvlMin = Number((document.getElementById('ilvl-min') as HTMLInputElement | null)?.value || 0) || 0;
+  const ilvlMaxRaw = (document.getElementById('ilvl-max') as HTMLInputElement | null)?.value || '';
+  const ilvlMax = ilvlMaxRaw === '' ? null : (Number(ilvlMaxRaw)||0);
   const activeTags = Array.from(document.querySelectorAll('.filter-tag.active')).map(el => el.getAttribute('data-tag') || (el.textContent||'').replace(/ \(\d+\)$/,''));
   
   // Get active domain filter (radio button behavior)
@@ -416,7 +422,14 @@ export function renderFilteredContent(data: any){
     console.log(`Section ${i}: domain="${domain}", side="${side}", mods=${modCount}`);
   });
   
-  const noFilters = (!searchTerm || searchTerm.length === 0) && activeTags.length === 0 && (!currentAttribute || categoryHasAttribute || !attributeMetaAvailable) && activeDomain === 'all';
+  // Determine if ilvl filtering is active
+  const ilvlFilteringActive = (ilvlMin > 0) || (ilvlMax != null && ilvlMax > 0);
+  // noFilters previously ignored ilvl filters causing them to do nothing when used alone
+  const noFilters = (!searchTerm || searchTerm.length === 0)
+    && activeTags.length === 0
+    && (!currentAttribute || categoryHasAttribute || !attributeMetaAvailable)
+    && activeDomain === 'all'
+    && !ilvlFilteringActive; // ensure ilvl filters trigger pipeline
   if (noFilters) {
     filteredData.modifiers = data.modifiers;
   } else {
@@ -440,7 +453,11 @@ export function renderFilteredContent(data: any){
         return true;
       })
       .map((section:any) => {
-        const filteredMods = section.mods.filter((mod:any) => {
+        // Helper to derive tier level consistently
+        const getTierLevel = (t:any) => Number(t?.tier_level ?? t?.ilvl ?? t?.level ?? t?.req_ilvl ?? t?.required_level ?? 0) || 0;
+        const filteredMods = section.mods.map((orig:any) => {
+          // Work on a shallow clone so original dataset isn't mutated across successive filters
+          const mod = { ...orig, tiers: Array.isArray(orig.tiers) ? [...orig.tiers] : undefined } as any;
           const matchesSearch = !searchTerm ||
             (mod.text && String(mod.text).toLowerCase().includes(searchTerm)) ||
             (mod.text_plain && String(mod.text_plain).toLowerCase().includes(searchTerm));
@@ -452,9 +469,43 @@ export function renderFilteredContent(data: any){
               (section.attributes && section.attributes.includes(currentAttribute))
             );
           }
-          return matchesSearch && matchesTags && matchesAttribute;
-        });
-        return { ...section, mods: filteredMods };
+          // iLvl filtering logic (non-mutating; clone per mod)
+          let matchesIlvl = true;
+          let newTiers = Array.isArray(mod.tiers) ? [...mod.tiers] : [];
+          if (ilvlFilteringActive) {
+            const baseIlvl = Number(mod.ilvl ?? mod.level ?? 0) || 0;
+            const maxCap = (ilvlMax == null || ilvlMax <= 0) ? Infinity : ilvlMax;
+            const minCap = ilvlMin || 0;
+            const hasTiers = newTiers.length > 0;
+            if (hasTiers) {
+              const kept = newTiers.filter(t => {
+                const tl = getTierLevel(t);
+                return tl >= minCap && tl <= maxCap;
+              });
+              if (kept.length > 0) {
+                newTiers = kept;
+                matchesIlvl = true;
+              } else {
+                const baseInRange = baseIlvl >= minCap && baseIlvl <= maxCap;
+                matchesIlvl = baseInRange;
+                newTiers = []; // hide all out-of-range tiers visually
+              }
+            } else {
+              matchesIlvl = (baseIlvl >= minCap && baseIlvl <= maxCap);
+            }
+          }
+          if (!(matchesSearch && matchesTags && matchesAttribute && matchesIlvl)) return null;
+          const copy = { ...mod };
+          if (ilvlFilteringActive) copy.tiers = newTiers; // pruned tiers
+          // Recompute mod weight from remaining tiers if tier weights exist
+          if (Array.isArray(copy.tiers) && copy.tiers.length>0) {
+            const tw: number[] = copy.tiers.map((t:any)=> Number(t.weight||0)).filter((v:number)=>v>0);
+            if (tw.length>0) copy.weight = tw.reduce((a:number,b:number)=>a+b,0);
+          }
+          return copy;
+        }).filter(Boolean);
+        const effectiveTotal = filteredMods.reduce((s:number,m:any)=> s + (Number(m.weight||0)||0), 0);
+        return { ...section, mods: filteredMods, _effectiveTotalWeight: effectiveTotal };
       }).filter((section:any) => section.mods.length > 0);
   }
 
@@ -510,7 +561,7 @@ export function renderFilteredContent(data: any){
     return `padding:2px 8px; font-size:11px; border:1px solid ${border}; border-radius:999px; background:${bg}; color:${color}; cursor:pointer;`;
   };
   const filtersHtml = `
-    <div id="filtersBar" style="display:flex; flex-direction:column; gap:8px; margin:6px 0 10px;">
+    <div id="filtersBar" style="display:flex; flex-direction:column; gap:8px; margin:2px 0 8px; padding:0;">
       ${attrButtons.length? `<div style="display:flex; gap:6px; align-items:center;"><span style="font-size:11px; color:var(--text-secondary);">Attribute</span>${attrButtons.map(a=>`<button class="attribute-btn${prevAttr===a?' active':''}" data-attr="${a}" style="padding:2px 8px; font-size:11px; border:1px solid var(--border-color); border-radius:999px; background:${prevAttr===a?'var(--accent-blue)':'var(--bg-tertiary)'}; color:${prevAttr===a?'#fff':'var(--text-primary)'}; cursor:pointer;">${a.toUpperCase()}</button>`).join('')}</div>` : ''}
       <div style="display:flex; flex-wrap:wrap; gap:6px;">
         ${sortedTags.map(t=>`<button class="filter-tag${prevActive.has(t)?' active':''}" data-tag="${t}" style="${chipCss(t, prevActive.has(t))}">${t} (${tagCounts[t]||0})</button>`).join('')}

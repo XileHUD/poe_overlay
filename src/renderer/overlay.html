@@ -34,23 +34,26 @@
     </div>
     <div id="app" style="display:flex; flex-direction:column; flex:1 1 auto; min-height:0;">
     <div id="controlPanel" class="control-panel" style="-webkit-app-region: no-drag;">
-            <div class="cp-left">
-                <label class="cp-label">Category</label>
-                <select id="categorySelect" class="cp-select"></select>
-            </div>
-            
-            <input id="search-input" class="cp-search" type="text" placeholder="Search...">
-            
-            <div id="domainFilters" class="cp-filters">
-                <span class="cp-filters-label">Show:</span>
-                <button id="toggleAll" class="domain-toggle active" data-domain="all">All</button>
-                <button id="toggleBase" class="domain-toggle" data-domain="base">Base</button>
-                <button id="toggleDesecrated" class="domain-toggle" data-domain="desecrated">Dese</button>
-                <button id="toggleEssence" class="domain-toggle" data-domain="essence">Ess</button>
-                <button id="toggleCorrupted" class="domain-toggle" data-domain="corrupted">Corr</button>
-            </div>
-            
-            <button id="clearFilters" class="pin-btn cp-clear">Clear</button>
+        <div class="cp-left" style="display:flex; align-items:center; gap:6px; flex:0 0 auto;">
+            <label class="cp-label" style="font-size:11px; color:var(--text-secondary);">Category</label>
+            <select id="categorySelect" class="cp-select" style="min-width:140px;"></select>
+        </div>
+    <input id="search-input" class="cp-search" type="text" placeholder="Search..." style="width:150px; flex:0 0 auto;" />
+    <div style="display:flex; align-items:center; gap:4px; flex:0 0 auto; white-space:nowrap;">
+            <label style="font-size:11px; color:var(--text-secondary);">iLvl</label>
+            <input id="ilvl-min" type="number" min="0" placeholder="min" style="width:50px; padding:3px 4px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;" />
+            <span style="color:var(--text-secondary); font-size:11px;">-</span>
+            <input id="ilvl-max" type="number" min="0" placeholder="max" style="width:50px; padding:3px 4px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;" />
+        </div>
+    <div id="domainFilters" class="cp-filters" style="display:flex; align-items:center; gap:4px; flex:0 0 auto; white-space:nowrap;">
+            <span class="cp-filters-label" style="font-size:11px; color:var(--text-secondary);">Show:</span>
+            <button id="toggleAll" class="domain-toggle active" data-domain="all">All</button>
+            <button id="toggleBase" class="domain-toggle" data-domain="base">Base</button>
+            <button id="toggleDesecrated" class="domain-toggle" data-domain="desecrated">Dese</button>
+            <button id="toggleEssence" class="domain-toggle" data-domain="essence">Ess</button>
+            <button id="toggleCorrupted" class="domain-toggle" data-domain="corrupted">Corr</button>
+        </div>
+    <button id="clearFilters" class="pin-btn cp-clear" style="margin-left:auto; flex:0 0 auto;">Clear</button>
         </div>
     <div id="content" style="flex:1 1 auto; overflow:auto; padding:16px 12px 12px 12px;">
             <div class="no-mods">Pick a category from the dropdown to load modifiers.</div>
@@ -60,8 +63,8 @@
     <!-- History container (normal flow, visibility controlled by data-view) -->
     <div id="historyContainer" style="display:none; flex:1 1 auto; overflow:hidden;">
             <!-- History header/filters -->
-            <div id="historyHeader" style="display:flex; flex-direction:column; gap:10px; padding:14px 12px 14px 12px; border-bottom:1px solid var(--border-color); background: var(--bg-secondary); -webkit-app-region: no-drag;">
-                <div id="historyHeaderRow2" style="display:flex; gap:6px; align-items:center; flex-wrap:wrap; margin-top:2px; margin-bottom:4px;">
+            <div id="historyHeader" style="display:flex; flex-direction:column; gap:3px; padding:8px 12px 0px 12px; border-bottom:1px solid var(--border-color); background: var(--bg-secondary); -webkit-app-region: no-drag;">
+                <div id="historyHeaderRow2" style="display:flex; gap:6px; align-items:center; flex-wrap:wrap; margin-top:0; margin-bottom:0;">
                     <input id="histSearch" type="text" placeholder="Search items..." style="width:180px; padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;" />
                     <label style="color:var(--text-secondary); font-size:11px;">Currency:</label>
                     <select id="histCurrency" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;">
@@ -198,6 +201,10 @@
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l3 6-9 12L3 9l3-6z"/><path d="M3 9h18"/><path d="M12 3l-3 6 3 12 3-12-3-6z"/></svg></span>
                         <span>Gems</span>
                     </div>
+                    <div class="character-menu-item" data-action="glossar" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M4 4.5A2.5 2.5 0 016.5 7H20"/><path d="M6.5 7v10"/><path d="M12 7v10"/><path d="M17.5 7v10"/></svg></span>
+                        <span>Glossar</span>
+                    </div>
                 </div>
             </div>
             <div class="tab" id="itemsTab" style="position:relative; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px; cursor:pointer; display:inline-flex; align-items:center; gap:4px;">
@@ -224,10 +231,6 @@
                     </div>
                 </div>
             </div>
-            <button id="tabGlossar" class="tab" style="background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px; cursor:pointer; display:inline-flex; align-items:center; gap:4px;">
-                <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M4 4.5A2.5 2.5 0 016.5 7H20"/><path d="M6.5 7v10"/><path d="M12 7v10"/><path d="M17.5 7v10"/></svg></span>
-                <span>Glossar</span>
-            </button>
             <button id="tabHistory" class="tab" style="background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px; display:inline-flex; align-items:center; gap:4px;">
                 <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v4H3z"/><path d="M3 11h18v10H3z"/><path d="M8 7v14"/><path d="M16 7v14"/></svg></span>
                 <span>Merchant History</span>
@@ -252,7 +255,6 @@
     const itemsMenu = document.getElementById('itemsMenu');
     const toolsTab = document.getElementById('toolsTab');
     const toolsMenu = document.getElementById('toolsMenu');
-    const tabGlossar = document.getElementById('tabGlossar');
     const historyHeader = document.getElementById('historyHeader') || null;
     const historyHeaderMain = document.getElementById('historyHeaderMain') || null;
     const filtersBar = document.getElementById('filtersBar') || null;
@@ -275,7 +277,6 @@
         const tabs = [
             document.getElementById('tabModifier'),
             document.getElementById('tabHistory'),
-            document.getElementById('tabGlossar'),
             document.getElementById('craftingTab'),
             document.getElementById('characterTab'),
             document.getElementById('itemsTab'),
@@ -530,6 +531,16 @@
             try { window.electronAPI?.onPinnedChanged?.((p)=> updatePinUI(p)); } catch {}
             const search = document.getElementById('search-input');
             if (search) search.addEventListener('input', () => { if (window.originalData) try { renderFilteredContent(window.originalData); } catch {} });
+            // iLvl filters (debounced 500ms)
+            const ilvlMinEl = document.getElementById('ilvl-min');
+            const ilvlMaxEl = document.getElementById('ilvl-max');
+            let ilvlDebounce = null;
+            function queueIlvlFilter(){
+                if (ilvlDebounce) clearTimeout(ilvlDebounce);
+                ilvlDebounce = setTimeout(()=>{ if(window.originalData) try { renderFilteredContent(window.originalData); } catch {} }, 500);
+            }
+            if (ilvlMinEl) ilvlMinEl.addEventListener('input', queueIlvlFilter);
+            if (ilvlMaxEl) ilvlMaxEl.addEventListener('input', queueIlvlFilter);
             const clear = document.getElementById('clearFilters');
             if (clear) clear.addEventListener('click', () => {
                 const s = document.getElementById('search-input'); if (s) s.value = '';
@@ -1081,6 +1092,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (action === 'gems') {
                     await showGems();
                     setHeader('Gems');
+                } else if (action === 'glossar') {
+                    try { await showGlossar(); } catch {}
+                    setHeader('Glossar');
                 }
             });
         });
@@ -1119,14 +1133,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!window.__xilehudUniqueBound) setTimeout(attachUniqueHandler, 300);
     };
     attachUniqueHandler();
-    if (tabGlossar) {
-        tabGlossar.addEventListener('click', async () => {
-            setActiveTab('craftingTab');
-            setView('crafting');
-            try { await showGlossar(); } catch {}
-            setHeader('Glossar');
-        });
-    }
         if (itemsTab) {
         itemsTab.addEventListener('click', (e) => {
             e.stopPropagation();
