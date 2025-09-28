@@ -778,18 +778,28 @@ export function renderHistoryDetail(idx: number): void {
   const base = item?.baseType || item?.typeLine || "";
   const ilvl = item?.ilvl || item?.itemLevel || "";
   const corrupted = !!(item?.corrupted || (item?.flags && item.flags.corrupted));
+  // Rarity (prefer explicit rarity field, fallback via frameType mapping). Backwards compatible for legacy entries.
+  const frameMap: Record<number, string> = { 0: 'Normal', 1: 'Magic', 2: 'Rare', 3: 'Unique' };
+  const rarityRaw: string | undefined = (item?.rarity && String(item.rarity)) || (item?.frameType != null ? frameMap[item.frameType] : undefined);
+  const rarity = rarityRaw ? String(rarityRaw) : 'Normal';
+  const rarityClass = `rarity-${rarity.toLowerCase()}`;
   const note = it?.note || it?.price?.raw || (it?.price ? `~b/o ${it.price.amount} ${it.price.currency}` : "");
   const explicits = Array.isArray(item?.explicitMods)
     ? item.explicitMods
     : Array.isArray(item?.mods?.explicit)
     ? item.mods.explicit
     : [];
+  const implicits = Array.isArray(item?.implicitMods)
+    ? item.implicitMods
+    : Array.isArray(item?.mods?.implicit)
+    ? item.mods.implicit
+    : [];
   const cur = normalizeCurrency(it?.price?.currency ?? it?.currency ?? "");
   const amt = it?.price?.amount ?? it?.amount ?? "";
   const curClass = cur ? `currency-${cur}` : "";
   (det as HTMLElement).innerHTML = `
                 <div style="width:100%; max-width:820px;">
-                <div class="history-detail-card">
+                <div class="history-detail-card ${rarityClass}">
                     <div class="card-header">
                         <div class="card-title">${escapeHtml(name)}</div>
                         <div>
@@ -801,10 +811,17 @@ export function renderHistoryDetail(idx: number): void {
                             ${icon ? `<img src="${icon}" alt="icon" class="history-item-icon" loading="lazy" decoding="async"/>` : ""}
                         </div>
                         <div>
-                            <div class="card-sub">${escapeHtml(base)}${ilvl ? ` • iLvl ${ilvl}` : ""}${
+                            <div class="card-sub">${escapeHtml(base)}${ilvl ? ` • iLvl ${ilvl}` : ""}${rarity ? ` • <span class="rarity-label ${rarityClass}">${escapeHtml(rarity)}</span>` : ""}${
     corrupted ? ` <span class="badge-corrupted">Corrupted</span>` : ""
   }</div>
                             ${note ? `<div style="margin-top:6px;">${escapeHtml(note)}</div>` : ""}
+                            ${
+                              Array.isArray(implicits) && implicits.length > 0
+                                ? `<div class="mod-section"><div class="mod-section-title">Implicit</div><div class="mod-lines implicit-mods">${(implicits as any[])
+                                    .map((m: any) => `<div class=\"mod-line implicit\" data-field=\"implicit\">${escapeHtml(m)}</div>`)
+                                    .join("")}</div></div>`
+                                : ""
+                            }
                             <div class="mod-lines">
                                 ${
                                   Array.isArray(explicits) && explicits.length > 0

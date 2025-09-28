@@ -859,6 +859,17 @@ body {
     padding: 12px;
     box-shadow: 0 4px 14px rgba(0,0,0,0.25);
 }
+.history-detail-card.rarity-normal { border-color: var(--border-color); }
+.history-detail-card.rarity-magic { border-color:#335d9b; box-shadow:0 0 0 1px #335d9b88, 0 4px 14px rgba(0,0,0,0.25); }
+.history-detail-card.rarity-rare { border-color:#c9a000; box-shadow:0 0 0 1px #c9a00088, 0 4px 14px rgba(0,0,0,0.25); }
+.history-detail-card.rarity-unique { border-color:#ad4900; box-shadow:0 0 0 1px #ad490088, 0 4px 14px rgba(0,0,0,0.25); }
+.rarity-label { font-weight:600; }
+.rarity-label.rarity-magic { color:#6ba8ff; }
+.rarity-label.rarity-rare { color:#ffdf6b; }
+.rarity-label.rarity-unique { color:#ff9436; }
+.implicit-mods .implicit { color:#7fb5ff; }
+.mod-section { margin-top:8px; }
+.mod-section-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; opacity:.8; margin-bottom:4px; }
 .history-detail-card .card-header { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px; }
 .history-detail-card .card-title { font-weight:700; font-size:14px; }
 .history-detail-card .card-sub { color:var(--text-secondary); }
