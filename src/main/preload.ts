@@ -38,6 +38,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
     getBases: () => ipcRenderer.invoke('get-bases'),
     // Diagnostics
     getImageLog: () => ipcRenderer.invoke('debug-get-image-log'),
+    cacheImage: (url: string) => ipcRenderer.invoke('cache-image', url),
+    getCachedImage: (url: string) => ipcRenderer.invoke('get-cached-image', url),
     // Data updates
     getDataDir: () => ipcRenderer.invoke('get-data-dir'),
     setDataDir: (dir: string) => ipcRenderer.invoke('set-data-dir', dir),

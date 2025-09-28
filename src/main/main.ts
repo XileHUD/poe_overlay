@@ -44,6 +44,8 @@ class OverlayApp {
     private keyboardMonitor: KeyboardMonitor | null = null;
     private armedCaptureUntil: number = 0; // time window (ms epoch) during which clipboard events are accepted
     private dataDirCache: string | null = null;
+    private imageCacheMap: Record<string, string> = {};
+    private imageCachePath: string | null = null;
 
     constructor() {
         app.whenReady().then(async () => {
@@ -62,6 +64,7 @@ class OverlayApp {
             this.registerShortcuts();
             this.setupIPC();
             this.setupClipboardMonitoring();
+            this.initImageCache();
             try { (this.clipboardMonitor as any).start?.(); } catch {}
 
             // Auto-update (best-effort)
@@ -122,6 +125,48 @@ class OverlayApp {
         const fallback = path.join(this.getUserConfigDir(), 'poe2');
         try { if (!fs.existsSync(fallback)) fs.mkdirSync(fallback, { recursive: true }); } catch {}
         return fallback;
+    }
+
+    private initImageCache() {
+        try {
+            const dir = path.join(app.getPath('userData'), 'image-cache');
+            if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+            this.imageCachePath = path.join(app.getPath('userData'), 'image-cache-index.json');
+            if (fs.existsSync(this.imageCachePath)) {
+                try {
+                    const raw = JSON.parse(fs.readFileSync(this.imageCachePath, 'utf8'));
+                    if (raw && typeof raw === 'object') this.imageCacheMap = raw;
+                } catch {}
+            }
+        } catch {}
+    }
+
+    private persistImageCacheMap() {
+        try {
+            if (!this.imageCachePath) return;
+            fs.writeFileSync(this.imageCachePath, JSON.stringify(this.imageCacheMap, null, 0));
+        } catch {}
+    }
+
+    private async downloadImageToCache(url: string): Promise<string | null> {
+        return new Promise(resolve => {
+            try {
+                if (!this.imageCachePath) this.initImageCache();
+                const cacheDir = path.join(app.getPath('userData'), 'image-cache');
+                const fname = Buffer.from(url).toString('base64').replace(/[/+=]/g,'').slice(0,48) + path.extname(new URL(url).pathname || '.img');
+                const target = path.join(cacheDir, fname || 'img.bin');
+                if (fs.existsSync(target) && fs.statSync(target).size > 0) { resolve(target); return; }
+                const mod = url.startsWith('https:') ? require('https') : require('http');
+                const req = mod.get(url, (res: any) => {
+                    if (res.statusCode !== 200) { try { res.resume(); } catch {}; resolve(null); return; }
+                    const out = fs.createWriteStream(target);
+                    res.pipe(out);
+                    out.on('finish', () => { out.close(()=> resolve(target)); });
+                    out.on('error', () => { try { fs.unlinkSync(target); } catch {}; resolve(null); });
+                });
+                req.on('error', () => resolve(null));
+            } catch { resolve(null); }
+        });
     }
 
     private getDataDir(): string {
@@ -329,6 +374,22 @@ class OverlayApp {
             // Expose on IPC for renderer pull (no heavy push spam)
             ipcMain.handle('debug-get-image-log', () => {
                 return diag.slice(-150); // last entries
+            });
+            // Image caching (renderer will explicitly invoke to cache successes)
+            ipcMain.handle('cache-image', async (_e, url: string) => {
+                try {
+                    if (!url || typeof url !== 'string') return { ok: false, reason: 'bad_url' };
+                    if (this.imageCacheMap[url]) return { ok: true, cached: this.imageCacheMap[url] };
+                    const dest = await this.downloadImageToCache(url);
+                    if (dest) { this.imageCacheMap[url] = dest; this.persistImageCacheMap(); return { ok: true, cached: dest }; }
+                    return { ok: false };
+                } catch (e) { return { ok: false, error: (e as Error).message }; }
+            });
+            ipcMain.handle('get-cached-image', (_e, url: string) => {
+                if (url && this.imageCacheMap[url] && fs.existsSync(this.imageCacheMap[url])) {
+                    return { path: this.imageCacheMap[url] };
+                }
+                return { path: null };
             });
         } catch (e) {
             console.warn('Image diagnostics setup failed', e);

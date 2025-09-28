@@ -28,5 +28,33 @@ export function bindImageFallback(root: ParentNode, selector: string, placeholde
       img.removeEventListener('error', onError);
     };
     img.addEventListener('error', onError);
+    img.addEventListener('load', async () => {
+      try {
+        const url = img.getAttribute('data-orig-src') || img.src;
+        if(!url || url.startsWith('file://') || url.startsWith('data:')) return;
+        // Ask main for cached file first
+        const cached = await (window as any).electronAPI?.getCachedImage?.(url);
+        if (cached && cached.path) {
+          // Already cached; ensure using it if network version ever fails later
+          (img as any)._cachedPath = cached.path;
+          return;
+        }
+        const res = await (window as any).electronAPI?.cacheImage?.(url);
+        if (res && res.ok && res.cached) {
+          (img as any)._cachedPath = res.cached;
+          // Optionally swap to file path on next paint (keep original for cache bust chain if needed)
+          setTimeout(()=>{
+            try {
+              if(img.complete && (img as any)._cachedPath && img.naturalWidth>0){
+                // Keep original in data-orig-src; only swap displayed source if not already placeholder
+                if(!img.src.startsWith('file://')){
+                  img.src = 'file://'+ (img as any)._cachedPath.replace(/\\/g,'/');
+                }
+              }
+            } catch {}
+          }, 30);
+        }
+      } catch {}
+    }, { once: true });
   });
 }

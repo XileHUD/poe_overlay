@@ -1494,17 +1494,6 @@ function renderGems(groups){
                     if(img._fb)return; img._fb=true; const orig=img.getAttribute('data-orig-src')||img.src; img.setAttribute('data-orig-src', orig);
                     img.addEventListener('error',()=>{
                         if(!img.dataset.retry){ img.dataset.retry='1'; const bust=orig+(orig.includes('?')?'&':'?')+'r='+Date.now(); img.src=bust; return; }
-                                // Second failure: attempt capitalized path heuristic if not tried
-                                if(!img.dataset.altTried){
-                                    img.dataset.altTried='1';
-                                    try {
-                                        const alt = orig
-                                            .replace('/image/art/','/image/Art/')
-                                            .replace('/2dart/','/2DArt/')
-                                            .replace('/skillicons/','/SkillIcons/');
-                                        if(alt!==orig){ img.src=alt; return; }
-                                    } catch {}
-                                }
                         img.src=placeholder; img.style.opacity='0.55'; img.style.filter='grayscale(1)';
                         try { (window).__imageErrorEvents = (window).__imageErrorEvents || []; (window).__imageErrorEvents.push({ ts:Date.now(), phase:'failed', src:orig }); } catch {}
                     });
