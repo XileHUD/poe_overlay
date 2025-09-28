@@ -2,7 +2,7 @@
 
 # XileHUD (Beta)
 
-<strong>Low-latency local PoE2 overlay + modifier intelligence. Copy an item → structured breakdown, tiers, fractured / desecrated emphasis, sockets & runes.</strong><br/>
+<strong>Local PoE2 overlay: copy an item → structured modifier breakdown (normal, fractured, desecrated, corrupted, essence).</strong> (preserve merch history, crafting helper)<br/>
 <a href="https://github.com/XileHUD/poe_overlay/releases/latest">⬇ Download Latest Release</a><br/>
 <sub>Windows x64 • Portable EXE • Local-first • No telemetry</sub>
 
@@ -14,21 +14,19 @@
 ---
 
 ## Why it exists
-Built as a personal efficiency tool (speed-check fractured value, identify chase tiers, preserve merchant sale history) – released because others asked for the same data clarity without remote round‑trips.
+(preserve merchant history, crafting helper)
 
 ---
 
 ## ✨ Key Features
-1. Instant Item Parsing (clipboard driven: copy → overlay updates)
-2. Tier Inference Engine (aggregates combined stats; hides tiers on uniques to reduce noise)
-3. Fractured & Desecrated Highlighting (prioritized ordering at top)
-4. Sockets + Rune Visualization inline
-5. Merchant History (local archive, fast filters: timeframe, class, fractured/desecrated, runes, search)
-6. Smart Clipboard (only active when needed; no constant global polling spam)
-7. Local Modifier Dataset (bundled JSON; optional external override)
-8. Offline Operation (no network calls for core flows)
-9. Future Helpers: crafting currency guidance, regex builder expansion, PoE1 parity
-10. Hotkey Toggle (`Ctrl+Q` planned; current builds rely on window focus + copy trigger)
+1. Structured Modifier Breakdown (normal, fractured, desecrated, corrupted, essence – if present)
+2. Merchant History (local archive + filters)
+3. Crafting Currency Helper (in progress)
+4. Character Data (planned)
+5. Quest Passive Helper (planned)
+6. Bases & Uniques Explorer
+7. Regex Tool (maps / filters)
+8. Smart Clipboard (copy item → overlay updates)
 
 ---
 
@@ -63,14 +61,7 @@ Data Override Priority:
 
 ---
 
-## 🧪 Tier Logic (Summary)
-1. Extract extended hash groups (explicit/fractured/desecrated)
-2. Aggregate magnitudes for merged multi-roll lines
-3. Map magnitude ranges to scraped tier intervals
-4. Prefer fractured context (locked) > generic explicit potential
-5. Suppress tiers for uniques
-
-Remaining edge cases are logged locally for heuristic refinement (e.g. near-boundary dual partial rolls).
+<!-- Tier logic intentionally omitted here per simplified user-facing feature list. -->
 
 ---
 
