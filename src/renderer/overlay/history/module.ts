@@ -811,6 +811,9 @@ export function renderHistoryDetail(idx: number): void {
     return;
   }
   const item = it.item || it?.data?.item || {};
+  const explicitDetails: any[] = Array.isArray(item?.extended?.mods?.explicit) ? item.extended.mods.explicit : [];
+  const fracturedDetails: any[] = Array.isArray(item?.extended?.mods?.fractured) ? item.extended.mods.fractured : [];
+  const desecratedDetails: any[] = Array.isArray(item?.extended?.mods?.desecrated) ? item.extended.mods.desecrated : [];
   const icon = item?.icon || item?.iconUrl || "";
   const name = item?.name || item?.typeLine || item?.baseType || "Item";
   const base = item?.baseType || item?.typeLine || "";
@@ -829,7 +832,6 @@ export function renderHistoryDetail(idx: number): void {
     : [];
   const fractured = Array.isArray(item?.fracturedMods) ? item.fracturedMods : [];
   const desecrated = Array.isArray(item?.desecratedMods) ? item.desecratedMods : [];
-  const explicitDetails: any[] = Array.isArray(item?.extended?.mods?.explicit) ? item.extended.mods.explicit : [];
   const implicits = Array.isArray(item?.implicitMods)
     ? item.implicitMods
     : Array.isArray(item?.mods?.implicit)
@@ -849,29 +851,72 @@ export function renderHistoryDetail(idx: number): void {
       return first || "";
     });
   }
-  function formatModTier(rawTier: any, det: any): string {
-    let tierText = '';
-    const raw = (rawTier || det?.tier || det?.Tier || '').toString();
-    if (raw) {
-      const numMatch = raw.match(/(\d+)/);
-      if (numMatch) tierText = `T${numMatch[1]}`; // Always canonical T#
+  // Normalization + tier helpers (scoped per item)
+  function normalizeTier(rawTier: any, lvl?: number): string {
+    const raw = (rawTier || '').toString();
+    const m = raw.match(/(\d+)/);
+    if (m) return `T${m[1]}`; // Collapse P1/S1 -> T1
+    if (!raw && typeof lvl === 'number' && lvl > 0) return `L${lvl}`;
+    return '';
+  }
+  const hashGroups: { hash:string; indices:number[]; minSum:number; maxSum:number; bestTier:string }[] = [];
+  try {
+    const hashes: any[] = (item?.extended?.hashes?.explicit) || [];
+    const details: any[] = explicitDetails;
+    for (const entry of hashes) {
+      const hash = entry?.[0];
+      const idxs: number[] = Array.isArray(entry?.[1]) ? entry[1].map((n:any)=>Number(n)).filter(n=>!isNaN(n)) : [];
+      if (!hash || !idxs.length) continue;
+      let minSum=0, maxSum=0; const tiers:string[]=[];
+      idxs.forEach(iDet => {
+        const det = details[iDet]; if (!det) return;
+        const t = normalizeTier(det.tier, det.level); if (t) tiers.push(t);
+        const mags: any[] = Array.isArray(det?.magnitudes) ? det.magnitudes : [];
+        mags.filter(mg=>mg?.hash===hash).forEach(mg => {
+          const mn=Number(mg.min); const mx=Number(mg.max);
+            if(!isNaN(mn)) minSum += mn; if(!isNaN(mx)) maxSum += mx;
+        });
+      });
+      if (minSum || maxSum) {
+        let best=''; let bestNum=Infinity;
+        tiers.forEach(t=>{ const mm=t.match(/T(\d+)/); if(mm){ const v=Number(mm[1]); if(v<bestNum){bestNum=v;best=`T${v}`;}}});
+        hashGroups.push({ hash, indices: idxs, minSum, maxSum, bestTier: best });
+      }
     }
-    // Fallback: use level if no numeric tier
-    if (!tierText && typeof det?.level === 'number' && det.level > 0) tierText = `L${det.level}`;
-    return tierText;
+  } catch {}
+  function aggregatedTierForLine(line: string, idx: number): string {
+    const nums = Array.from(line.matchAll(/\d+(?:\.\d+)?/g)).map(m=>Number(m[0])).filter(n=>!isNaN(n));
+    if (!nums.length) return normalizeTier(explicitDetails[idx]?.tier, explicitDetails[idx]?.level);
+    for (const g of hashGroups) {
+      if (!g.bestTier) continue;
+      for (const n of nums) {
+        if (n >= g.minSum - 0.0001 && n <= g.maxSum + 0.0001) return g.bestTier;
+      }
+    }
+    const det = explicitDetails[idx];
+    return det ? normalizeTier(det.tier, det.level) : '';
   }
   function renderExplicitLike(mods: string[], kind: 'explicit' | 'fractured' | 'desecrated'): string {
     if (!mods.length) return '';
-    return mods.map((m: string, i: number) => {
-      const clean = collapseBracketAlternates(m);
-      let tierBadge = '';
-      if (kind === 'explicit') {
-        const det = explicitDetails[i] || {};
-        const t = formatModTier(det?.tier, det);
-        if (t) tierBadge = ` <span class=\"mod-tier\" title=\"Mod tier\">${escapeHtml(t)}</span>`;
+    const isUnique = rarity.toLowerCase() === 'unique';
+    return mods.map((raw: string, i:number) => {
+      const clean = collapseBracketAlternates(raw);
+      const tierBadges: string[] = [];
+      if (!isUnique) {
+        if (kind === 'explicit') {
+          const t = aggregatedTierForLine(clean, i);
+          if (t) tierBadges.push(t);
+        } else if (kind === 'fractured') {
+          const det = fracturedDetails[i]; const t = det ? normalizeTier(det.tier, det.level) : '';
+          if (t) tierBadges.push(t);
+        } else if (kind === 'desecrated') {
+          const det = desecratedDetails[i]; const t = det ? normalizeTier(det.tier, det.level) : '';
+          if (t) tierBadges.push(t);
+        }
       }
       const extraCls = kind !== 'explicit' ? ` ${kind}` : '';
-      return `<div class=\"mod-line${extraCls}\" data-field=\"${kind}\">${escapeHtml(clean)}${tierBadge}</div>`;
+      const tiersHtml = tierBadges.map(tb => `<span class=\"mod-tier\" title=\"Mod tier\">${escapeHtml(tb)}</span>`).join('');
+      return `<div class=\"mod-line${extraCls}\" data-field=\"${kind}\"><span class=\"mod-text\">${escapeHtml(clean)}</span>${tiersHtml}</div>`;
     }).join('');
   }
 
@@ -932,7 +977,7 @@ export function renderHistoryDetail(idx: number): void {
                             }
                             ${
                               (explicits.length + fractured.length + desecrated.length) > 0
-                                ? `<div class=\"mod-section\"><div class=\"mod-section-title\">Explicit</div><div class=\"mod-lines explicit-mods\">${renderExplicitLike(fractured,'fractured')}${renderExplicitLike(explicits,'explicit')}${renderExplicitLike(desecrated,'desecrated')}</div></div>`
+                ? `<div class=\"mod-section\"><div class=\"mod-section-title\">Explicit</div><div class=\"mod-lines explicit-mods\">${renderExplicitLike(fractured,'fractured')}${renderExplicitLike(explicits,'explicit')}${renderExplicitLike(desecrated,'desecrated')}</div></div>`
                                 : '<div class="no-mods">No explicit / fractured / desecrated mods</div>'
                             }
                         </div>
@@ -971,19 +1016,13 @@ export function updateHistoryRefreshButton(): void {
   const titleDefault = "Refresh merchant history";
   if (waitMs > 0) {
     const secs = Math.ceil(waitMs / 1000);
-    btn.setAttribute("disabled", "true");
+    btn.setAttribute("disabled","true");
     btn.style.opacity = "0.6";
     btn.title = `Wait ${secs}s to refresh (throttle/rate limit)`;
     if (_refreshBtnTimer) clearTimeout(_refreshBtnTimer);
-    _refreshBtnTimer = setTimeout(() => {
-      _refreshBtnTimer = null;
-      updateHistoryRefreshButton();
-    }, Math.min(waitMs, 1000));
+    _refreshBtnTimer = setTimeout(()=>{ _refreshBtnTimer=null; updateHistoryRefreshButton(); }, Math.min(waitMs,1000));
   } else {
-    if (_refreshBtnTimer) {
-      clearTimeout(_refreshBtnTimer);
-      _refreshBtnTimer = null;
-    }
+    if (_refreshBtnTimer) { clearTimeout(_refreshBtnTimer); _refreshBtnTimer=null; }
     btn.removeAttribute("disabled");
     btn.style.opacity = "";
     btn.title = titleDefault;
