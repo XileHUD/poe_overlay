@@ -68,7 +68,7 @@ export interface HistoryState {
   selectedIndex: number;
   league: string;
   store: HistoryStore;
-  filters: { min: number; cur: string; category: string; search: string };
+  filters: { min: number; cur: string; category: string; search: string; rarity: string };
   sort: string;
   lastRefreshAt: number;
   rateLimitUntil: number;
@@ -79,7 +79,7 @@ export const historyState: HistoryState = {
   selectedIndex: 0,
   league: "Rise of the Abyssal",
   store: { entries: [], totals: {}, lastSync: 0 },
-  filters: { min: 0, cur: "exalted", category: "", search: "" },
+  filters: { min: 0, cur: "exalted", category: "", search: "", rarity: "" },
   sort: "newest",
   lastRefreshAt: 0,
   rateLimitUntil: 0,
@@ -106,6 +106,30 @@ export const historyState: HistoryState = {
   } catch {}
 })();
 
+export async function updateSessionUI(): Promise<boolean> {
+  try {
+    const session = await (window as any).electronAPI.poeGetSession();
+    const loginBtn = document.getElementById("poeLoginBtn");
+    if (session?.loggedIn) {
+      if (loginBtn) {
+        let label = session.accountName ? session.accountName : "Account";
+        try {
+          const masked = localStorage.getItem('xilehud_mask_account') === '1';
+          if (masked && label) label = '***';
+        } catch {}
+        (loginBtn as HTMLButtonElement).textContent = label;
+        (loginBtn as HTMLButtonElement).title = "Logged in to pathofexile.com";
+      }
+    } else if (loginBtn) {
+      (loginBtn as HTMLButtonElement).textContent = "Login";
+      (loginBtn as HTMLButtonElement).title = "Login to pathofexile.com";
+    }
+    return !!session?.loggedIn;
+  } catch {
+    return false;
+  }
+}
+
 export function recomputeTotalsFromEntries(): void {
   const totals: Record<string, number> = {};
   const entries = historyState.store?.entries || [];
@@ -116,34 +140,6 @@ export function recomputeTotalsFromEntries(): void {
     totals[cur] = (totals[cur] || 0) + amt;
   }
   historyState.store.totals = totals;
-}
-
-export async function updateSessionUI(): Promise<boolean> {
-  try {
-    const session = await (window as any).electronAPI.poeGetSession();
-    const loginBtn = document.getElementById("poeLoginBtn");
-    if (session?.loggedIn) {
-      if (loginBtn) {
-        let label = session.accountName ? session.accountName : "Account";
-        try {
-          const masked = localStorage.getItem('xilehud_mask_account') === '1';
-          if (masked && label) {
-            label = '***';
-          }
-        } catch {}
-        (loginBtn as HTMLButtonElement).textContent = label;
-        (loginBtn as HTMLButtonElement).title = "Logged in to pathofexile.com";
-      }
-    } else {
-      if (loginBtn) {
-        (loginBtn as HTMLButtonElement).textContent = "Login";
-        (loginBtn as HTMLButtonElement).title = "Login to pathofexile.com";
-      }
-    }
-    return !!session?.loggedIn;
-  } catch {
-    return false;
-  }
 }
 
 export function keyForRow(r: HistoryEntryRaw): string {
@@ -196,7 +192,7 @@ export function renderHistoryActiveFilters(): void {
   if (!historyVisible() || _activeGeneration !== _viewGeneration) return;
   const wrap = document.getElementById("historyActiveFilters");
   if (!wrap) return;
-  const { min, cur, category, search } = historyState.filters;
+  const { min, cur, category, search, rarity } = historyState.filters;
   const chips: string[] = [];
   if (min && min > 0) {
     const c = normalizeCurrency(cur || "");
@@ -218,6 +214,11 @@ export function renderHistoryActiveFilters(): void {
       )} <button data-act="clear-search" style="margin-left:6px; background:none; border:none; color:var(--text-muted); cursor:pointer;">×</button></span>`
     );
   }
+  if (rarity) {
+    chips.push(
+      `<span class="price-badge" title="Rarity filter">${escapeHtml(rarity)} <button data-act="clear-rarity" style="margin-left:6px; background:none; border:none; color:var(--text-muted); cursor:pointer;">×</button></span>`
+    );
+  }
   (wrap as HTMLElement).innerHTML = chips.join(" ");
   wrap.querySelectorAll("button[data-act]")?.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -234,6 +235,10 @@ export function renderHistoryActiveFilters(): void {
         historyState.filters.search = "";
         const el = document.getElementById("histSearch");
         if (el) (el as HTMLInputElement).value = "";
+      } else if (act === "clear-rarity") {
+        historyState.filters.rarity = "";
+        const el = document.getElementById("histRarity");
+        if (el) (el as HTMLSelectElement).value = "";
       }
       const all = (historyState.store.entries || []).slice().reverse();
       historyState.items = applySort(applyFilters(all));
@@ -246,7 +251,7 @@ export function renderHistoryActiveFilters(): void {
 }
 
 export function applyFilters(list: HistoryEntryRaw[]): HistoryEntryRaw[] {
-  const { min, search } = historyState.filters;
+  const { min, search, rarity } = historyState.filters;
   const cur = normalizeCurrency(historyState.filters.cur || "");
   const catSel = historyState.filters.category || "";
   return list.filter((it: any) => {
@@ -291,6 +296,12 @@ export function applyFilters(list: HistoryEntryRaw[]): HistoryEntryRaw[] {
       } else if (catSel === "Belts") {
         if (!(catEq("Belts") || /Belt/i.test(base) || /Belt/i.test(typeLine))) return false;
       } else if (catSel && !new RegExp(catSel.replace(/\s+/g, "|"), "i").test(base)) return false;
+    }
+    if (rarity) {
+      // Accept matches on item.rarity or frameType mapping; default Normal if missing
+      const frameMap: Record<number, string> = {0:'Normal',1:'Magic',2:'Rare',3:'Unique'};
+      const itemRarity = (it?.item?.rarity ? String(it.item.rarity) : (it?.item?.frameType != null ? frameMap[it.item.frameType] : 'Normal'));
+      if (!new RegExp(`^${rarity}$`, 'i').test(itemRarity || '')) return false;
     }
     if (search && search.length > 0) {
       const blob = [it?.item?.name, it?.item?.typeLine, it?.item?.baseType, it?.note]
