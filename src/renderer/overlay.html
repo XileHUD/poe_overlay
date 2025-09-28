@@ -1711,6 +1711,54 @@ function renderGems(groups){
         window.addEventListener('mouseup', onUp);
     });
 })();
-        </script>
-</body>
+                </script>
+                <script>
+                // IPC glue for tray / main-process actions
+                (function(){
+                    if (window.electronAPI) {
+                        try {
+                            window.electronAPI.onSetActiveTab?.((tab)=>{
+                            if (tab === 'modifiers') {
+                                // activate modifiers tab programmatically
+                                const modTab = document.getElementById('tabModifier');
+                                const histTab = document.getElementById('tabHistory');
+                                const contentMod = document.getElementById('content');
+                                const historyContainer = document.getElementById('historyContainer');
+                                modTab?.classList.add('active');
+                                histTab?.classList.remove('active');
+                                if (contentMod) contentMod.style.display='block';
+                                if (historyContainer) historyContainer.style.display='none';
+                            }
+                            if (tab === 'history') {
+                                const modTab = document.getElementById('tabModifier');
+                                const histTab = document.getElementById('tabHistory');
+                                const contentMod = document.getElementById('content');
+                                const historyContainer = document.getElementById('historyContainer');
+                                modTab?.classList.remove('active');
+                                histTab?.classList.add('active');
+                                if (contentMod) contentMod.style.display='none';
+                                if (historyContainer) historyContainer.style.display='flex';
+                                try { setHeader('Merchant History'); } catch {}
+                            }
+                            });
+                            window.electronAPI.onInvokeAction?.((action)=>{
+                                if (action === 'regex') {
+                                    try { if (window.OverlayRegex?.show) { window.OverlayRegex.show(); setHeader('Regex'); } } catch {}
+                                }
+                                if (action === 'merchant-history') {
+                                    const histBtn = document.getElementById('tabHistory');
+                                    histBtn?.click?.();
+                                }
+                            });
+                            // Respond to category selection from main
+                            window.electronAPI.onSetActiveCategory?.(async (cat)=>{
+                                try {
+                                    const select = document.getElementById('categorySelect');
+                                    if (select) { select.value = cat; select.dispatchEvent(new Event('change')); }
+                                } catch {}
+                            });
+                        } catch {}
+                    }
+                })();
+                </script>
 </html>

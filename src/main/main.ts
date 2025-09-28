@@ -46,6 +46,9 @@ class OverlayApp {
     private dataDirCache: string | null = null;
     private imageCacheMap: Record<string, string> = {};
     private imageCachePath: string | null = null;
+    private shortcutAwaitingCapture = false; // tracks if current Ctrl+Q press is still waiting for an item
+    private pendingCategory: string | null = null; // category queued before overlay loads
+    private pendingTab: string | null = null; // tab to activate after load (e.g. 'modifiers')
 
     constructor() {
         app.whenReady().then(async () => {
@@ -170,56 +173,72 @@ class OverlayApp {
     }
 
     private getDataDir(): string {
-        // Prefer current DB setting
         try { return (this.modifierDatabase as any).getDataPath?.() || this.dataDirCache || this.resolveInitialDataPath(); } catch {}
         return this.dataDirCache || this.resolveInitialDataPath();
     }
 
-    private getUserConfigDir(): string {
-        const base = app.getPath('userData');
-        const dir = path.join(base, 'overlay');
-        try { if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true }); } catch {}
-        return dir;
-    }
-    
-    // Safely send an event to the overlay renderer, retrying briefly until it's loaded
+    // Safely send IPC to overlay renderer if loaded; else queue minimal (category + item)
     private safeSendToOverlay(channel: string, ...args: any[]) {
-        this.sendToOverlayWithRetry(channel, args, 10);
-    }
-
-    private sendToOverlayWithRetry(channel: string, args: any[], tries: number) {
         try {
-            if (!this.overlayWindow || this.overlayWindow.isDestroyed()) return;
-            if (this.overlayLoaded) {
+            if (this.overlayWindow && !this.overlayWindow.isDestroyed() && this.overlayLoaded) {
                 this.overlayWindow.webContents.send(channel, ...args);
-                return;
-            }
-            if (tries > 0) {
-                setTimeout(() => this.sendToOverlayWithRetry(channel, args, tries - 1), 150);
+            } else {
+                if (channel === 'item-data') this.pendingItemData = args[0];
+                if (channel === 'set-active-category' && typeof args[0] === 'string') this.pendingCategory = args[0];
+                if (channel === 'set-active-tab' && typeof args[0] === 'string') this.pendingTab = args[0];
             }
         } catch {}
     }
 
-    // Persist and restore overlay window bounds
-    private loadWindowBounds(): { x?: number; y?: number; width?: number; height?: number } | null {
+    // Retry helper for early sends (used previously; keep for compatibility)
+    private sendToOverlayWithRetry(channel: string, args: any[], attempts = 5, delayMs = 120) {
+        const trySend = (left: number) => {
+            if (this.overlayWindow && this.overlayLoaded) {
+                try { this.overlayWindow.webContents.send(channel, ...args); } catch {}
+            } else if (left > 0) {
+                setTimeout(()=> trySend(left-1), delayMs);
+            }
+        };
+        trySend(attempts);
+    }
+    
+    // Return directory used for persisting lightweight JSON configs
+    private getUserConfigDir(): string {
+        try {
+            const dir = path.join(app.getPath('userData'), 'config');
+            try { if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true }); } catch {}
+            return dir;
+        } catch {
+            return app.getPath('userData');
+        }
+    }
+
+    // Load previously saved overlay window bounds (position + size)
+    private loadWindowBounds(): { x: number; y: number; width: number; height: number } | null {
         try {
             const configDir = this.getUserConfigDir();
             const configPath = path.join(configDir, 'window-bounds.json');
             if (fs.existsSync(configPath)) {
                 const raw = fs.readFileSync(configPath, 'utf8');
-                const obj = JSON.parse(raw);
-                if (obj && typeof obj === 'object') return obj;
+                const json = JSON.parse(raw);
+                if (json && typeof json === 'object') {
+                    const { x, y, width, height } = json as any;
+                    if ([x,y,width,height].every(v => typeof v === 'number' && isFinite(v))) {
+                        return { x, y, width, height };
+                    }
+                }
             }
         } catch {}
         return null;
     }
 
+    // Persist current overlay window bounds
     private saveWindowBounds(): void {
         try {
-            if (!this.overlayWindow || this.overlayWindow.isDestroyed()) return;
+            if (!this.overlayWindow) return;
             const bounds = this.overlayWindow.getBounds();
             const configDir = this.getUserConfigDir();
-            if (!fs.existsSync(configDir)) fs.mkdirSync(configDir, { recursive: true });
+            try { if (!fs.existsSync(configDir)) fs.mkdirSync(configDir, { recursive: true }); } catch {}
             const configPath = path.join(configDir, 'window-bounds.json');
             fs.writeFileSync(configPath, JSON.stringify(bounds, null, 2));
         } catch (error) {
@@ -250,37 +269,11 @@ class OverlayApp {
         if (trayIcon.getSize().width > 32) trayIcon = trayIcon.resize({ width: 24, height: 24 });
         this.tray = new Tray(trayIcon);
 
-        const openAndFocus = (panel: string) => {
-            // panel values: 'modifier','crafting','character','items'
-            this.toggleOverlayWithAllCategory();
-            setTimeout(()=>{
-                if(!this.overlayWindow) return;
-                switch(panel){
-                    case 'modifier':
-                        this.safeSendToOverlay('set-active-tab','modifiers');
-                        break;
-                    case 'crafting':
-                        this.safeSendToOverlay('set-active-category','Uniques');
-                        break;
-                    case 'character':
-                        this.safeSendToOverlay('set-active-category','Keystones');
-                        break;
-                    case 'items':
-                        this.safeSendToOverlay('set-active-category','Bases');
-                        break;
-                }
-            },120); // slight delay to ensure renderer ready
-        };
-
         const contextMenu = Menu.buildFromTemplate([
             { label: 'XileHUD (Ctrl+Q)', enabled: false },
             { type: 'separator' },
-            { label: 'Modifier', click: () => openAndFocus('modifier') },
-            { label: 'Crafting', click: () => openAndFocus('crafting') },
-            { label: 'Character', click: () => openAndFocus('character') },
-            { label: 'Items', click: () => openAndFocus('items') },
-            { label: 'Regex Tool', click: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> this.safeSendToOverlay('invoke-action','regex'),120); } },
-            { label: 'Merchant History', click: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> this.safeSendToOverlay('invoke-action','merchant-history'),120); } },
+            { label: 'Modifiers', click: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','modifiers'); }, 140); } },
+            { label: 'Merchant History', click: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','history'); this.safeSendToOverlay('invoke-action','merchant-history'); },180); } },
             { type: 'separator' },
             { label: 'Reload data (JSON)', click: () => (this.modifierDatabase as any).reload?.() },
             { label: 'Open data folder', click: () => shell.openPath(this.getDataDir()) },
@@ -414,23 +407,30 @@ class OverlayApp {
         // Track load state to queue events safely
         this.overlayWindow.webContents.on('did-finish-load', () => {
             this.overlayLoaded = true;
+            if (this.pendingTab) { try { this.overlayWindow?.webContents.send('set-active-tab', this.pendingTab); } catch {} }
+            if (this.pendingCategory) { try { this.overlayWindow?.webContents.send('set-active-category', this.pendingCategory); } catch {} }
             if (this.pendingItemData) {
-                this.safeSendToOverlay('clear-filters');
-                this.safeSendToOverlay('item-data', this.pendingItemData);
-                this.pendingItemData = null;
+                try { this.overlayWindow?.webContents.send('clear-filters'); } catch {}
+                try { this.overlayWindow?.webContents.send('item-data', this.pendingItemData); } catch {}
             }
+            this.pendingItemData = null;
+            this.pendingCategory = null;
+            this.pendingTab = null;
         });
 
-        // Add robust click-outside detection using window blur event
+        // Click-outside detection (skip while actively capturing so we don't lose clipboard data)
         this.overlayWindow.on('blur', () => {
             setTimeout(() => {
                 if (this.overlayWindow && !this.overlayWindow.isFocused() && !this.overlayWindow.isDestroyed()) {
-                    if (!this.pinned && this.isOverlayVisible) {
+                    const midCapture = this.shortcutAwaitingCapture || (Date.now() < this.armedCaptureUntil);
+                    if (!this.pinned && this.isOverlayVisible && !midCapture) {
                         console.log('Hiding overlay due to blur event (click outside)');
                         this.hideOverlay();
+                    } else if (midCapture) {
+                        console.log('Suppress hide on blur during capture window');
                     }
                 }
-            }, 100);
+            }, 60);
         });
 
         // Save window bounds when moved (handles native dragging)
@@ -454,53 +454,73 @@ class OverlayApp {
     private registerShortcuts() {
         try { globalShortcut.unregister('F12'); } catch {}
         try { globalShortcut.unregister('CommandOrControl+Shift+Q'); } catch {}
+        globalShortcut.register('CommandOrControl+Q', () => this.startShortcutCapture());
+    }
 
-        // Unified shortcut: Ctrl+Q
-        globalShortcut.register('CommandOrControl+Q', async () => {
-            // Always show overlay; attempt fast capture. If no valid item captured, default to Modifiers -> Gloves_int.
-            const openedBefore = this.isOverlayVisible;
-            if (!openedBefore) this.showOverlay();
-            const captured = await this.tryQuickCaptureForShortcut();
-            if (!captured) {
-                // Fallback: open modifiers tab with Gloves_int
+    private startShortcutCapture() {
+        const wasVisible = this.isOverlayVisible;
+        const now = Date.now();
+        this.pendingCategory = null;
+        this.pendingItemData = null;
+        this.pendingTab = null;
+        this.shortcutAwaitingCapture = true;
+        this.lastCopyTimestamp = now;
+        this.armedCaptureUntil = now + 600; // capture window only (we will decide before opening)
+        try { this.clipboardMonitor.resetLastSeen(); } catch {}
+        // Simulate copy BEFORE any possible overlay focus change
+        this.trySimulateCtrlC();
+        // Perform a focused capture attempt (poll up to ~260ms)
+        this.performImmediateCapture().then(result => {
+            this.shortcutAwaitingCapture = false;
+            const parsed = result?.parsed;
+            if (parsed && parsed.category && parsed.category !== 'unknown') {
+                // SUCCESS PATH
+                if (!wasVisible) this.showOverlay();
+                this.safeSendToOverlay('set-active-tab','modifiers');
+                if ((parsed.rarity||'').toLowerCase()==='unique') {
+                    this.showUniqueItem(parsed, false);
+                } else {
+                    this.safeSendToOverlay('set-active-category', parsed.category);
+                    // Provide item + modifiers payload
+                    (async () => {
+                        let modifiers: any[] = [];
+                        try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
+                        this.safeSendToOverlay('item-data', { item: parsed, modifiers });
+                    })();
+                }
+            } else {
+                // FALLBACK PATH
+                if (!wasVisible) this.showOverlay();
                 this.safeSendToOverlay('set-active-tab','modifiers');
                 this.safeSendToOverlay('set-active-category','Gloves_int');
             }
         });
+        // If overlay already visible we don't hide/show yet; capture function will update it when done.
+    }
+
+    // Poll clipboard briefly and attempt to parse; returns parsed item or null
+    private async performImmediateCapture(): Promise<{ raw: string|null; parsed: any|null }> {
+        let lastRaw = '';
+        const deadline = Date.now() + 260; // ~260ms budget
+        while (Date.now() < deadline) {
+            let raw: string = '';
+            try { raw = (clipboard.readText()||'').trim(); } catch {}
+            if (raw && raw.length > 25 && raw !== lastRaw) {
+                lastRaw = raw;
+                try {
+                    const parsed = await this.itemParser.parse(raw);
+                    if (parsed && parsed.category && parsed.category !== 'unknown') {
+                        return { raw, parsed };
+                    }
+                } catch {}
+            }
+            await new Promise(r=>setTimeout(r,22));
+        }
+        return { raw: lastRaw || null, parsed: null };
     }
 
     // Fast capture logic used by Ctrl+Q; returns true if an item opened a specific category
-    private async tryQuickCaptureForShortcut(): Promise<boolean> {
-        try {
-            const now = Date.now();
-            this.armedCaptureUntil = now + 900; // shorter window
-            this.lastCopyTimestamp = now;
-            try { this.clipboardMonitor.resetLastSeen(); } catch {}
-            try { clipboard.clear(); } catch {}
-            this.trySimulateCtrlC();
-            const deadline = Date.now() + 750;
-            while (Date.now() < deadline) {
-                const text = (clipboard.readText()||'').trim();
-                if (text.length > 25) {
-                    try {
-                        const parsed = await this.itemParser.parse(text);
-                        if (parsed && parsed.category && parsed.category !== 'unknown') {
-                            if ((parsed.rarity||'').toLowerCase()==='unique') { this.showUniqueItem(parsed); return true; }
-                            let modifiers: any[] = [];
-                            try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
-                            this.safeSendToOverlay('set-active-tab','modifiers');
-                            this.safeSendToOverlay('set-active-category', parsed.category);
-                            this.showOverlay({ item: parsed, modifiers });
-                            return true;
-                        }
-                    } catch {}
-                }
-                await new Promise(r=>setTimeout(r,30));
-            }
-        } catch {}
-        finally { this.armedCaptureUntil = 0; }
-        return false;
-    }
+    // Legacy fast loop removed (replaced by performImmediateCapture in simplified flow)
 
     private setupClipboardMonitoring() {
         if (!this.clipboardMonitor) return;
@@ -527,13 +547,17 @@ class OverlayApp {
                         if ((parsed.rarity || '').toLowerCase() === 'unique') {
                             this.showUniqueItem(parsed, allowPinnedPassive);
                             this.armedCaptureUntil = 0;
+                            this.shortcutAwaitingCapture = false;
                             return;
                         }
                     let modifiers: any[] = [];
                     try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
                     this.safeSendToOverlay('set-active-category', parsed.category);
+                    if (!this.overlayLoaded) this.pendingCategory = parsed.category;
                     this.showOverlay({ item: parsed, modifiers }, { silent: allowPinnedPassive });
+                    if (!this.overlayLoaded) this.pendingItemData = { item: parsed, modifiers };
                     this.armedCaptureUntil = 0;
+                    this.shortcutAwaitingCapture = false;
                 } else {
                     if (!allowPinnedPassive) this.showOverlay();
                     this.armedCaptureUntil = 0;
@@ -649,8 +673,11 @@ class OverlayApp {
         // Hide overlay normally
         this.overlayWindow.hide();
         this.isOverlayVisible = false;
-        try { clipboard.clear(); } catch {}
-        try { this.clipboardMonitor.resetLastSeen(); } catch {}
+        // Do not clear clipboard if a capture is in progress
+        if (!this.shortcutAwaitingCapture && Date.now() > this.armedCaptureUntil) {
+            try { clipboard.clear(); } catch {}
+            try { this.clipboardMonitor.resetLastSeen(); } catch {}
+        }
         console.log('Overlay hidden');
     }
 

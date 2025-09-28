@@ -14,6 +14,12 @@ contextBridge.exposeInMainWorld('electronAPI', {
     onSetActiveCategory: (callback: (category: string) => void) => {
         ipcRenderer.on('set-active-category', (event, category) => callback(category));
     },
+    onSetActiveTab: (callback: (tab: string) => void) => {
+        ipcRenderer.on('set-active-tab', (_event, tab) => callback(tab));
+    },
+    onInvokeAction: (callback: (action: string) => void) => {
+        ipcRenderer.on('invoke-action', (_event, action) => callback(action));
+    },
     onClearFilters: (callback: () => void) => {
         ipcRenderer.on('clear-filters', () => callback());
     },
