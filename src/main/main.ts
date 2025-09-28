@@ -273,12 +273,14 @@ class OverlayApp {
         };
 
         const contextMenu = Menu.buildFromTemplate([
-            { label: 'XileHUD (F12)', enabled: false },
+            { label: 'XileHUD (Ctrl+Q)', enabled: false },
             { type: 'separator' },
             { label: 'Modifier', click: () => openAndFocus('modifier') },
             { label: 'Crafting', click: () => openAndFocus('crafting') },
             { label: 'Character', click: () => openAndFocus('character') },
             { label: 'Items', click: () => openAndFocus('items') },
+            { label: 'Regex Tool', click: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> this.safeSendToOverlay('invoke-action','regex'),120); } },
+            { label: 'Merchant History', click: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> this.safeSendToOverlay('invoke-action','merchant-history'),120); } },
             { type: 'separator' },
             { label: 'Reload data (JSON)', click: () => (this.modifierDatabase as any).reload?.() },
             { label: 'Open data folder', click: () => shell.openPath(this.getDataDir()) },
@@ -289,7 +291,7 @@ class OverlayApp {
                 } catch { shell.openExternal('https://github.com/your-org/your-repo/releases'); }
             } },
             { type: 'separator' },
-            { label: 'Show/Hide (F12)', click: () => this.toggleOverlayWithAllCategory() },
+            { label: 'Show/Hide (Ctrl+Q)', click: () => this.toggleOverlayWithAllCategory() },
             { type: 'separator' },
             { label: 'Quit', click: () => app.quit() }
         ]);
@@ -450,21 +452,21 @@ class OverlayApp {
 
 
     private registerShortcuts() {
-        // Toggle overlay visibility with F12
-        globalShortcut.register('F12', () => {
-            this.toggleOverlayWithAllCategory();
+        // Unregister legacy shortcuts if linger
+        try { globalShortcut.unregister('F12'); } catch {}
+
+        // Simple toggle: Ctrl+Q (no item copy required)
+        globalShortcut.register('CommandOrControl+Q', () => {
+            if (this.isOverlayVisible) this.hideOverlay(); else this.showOverlay();
         });
 
-        // NOTE: We intentionally do NOT register Escape globally anymore, because that prevented PoE from seeing it.
-        // Overlay can still be hidden by: F12, clicking outside (blur) or future in-window ESC handling via IPC.
-
-        // Do NOT register Ctrl+C globally to avoid breaking copy in-game/OS.
-
-        // New: Capture hovered item and open overlay with Ctrl+Q
-        // This arms a short clipboard window and (optionally) simulates Ctrl+C
-        globalShortcut.register('CommandOrControl+Q', () => {
+        // Advanced capture: Ctrl+Shift+Q (attempt to copy hovered item then open)
+        globalShortcut.register('CommandOrControl+Shift+Q', () => {
             this.captureItemFromGame();
         });
+
+        // NOTE: We intentionally do NOT register Escape globally anymore.
+        // Do NOT register Ctrl+C globally to avoid breaking copy in-game/OS.
     }
 
     private setupClipboardMonitoring() {
