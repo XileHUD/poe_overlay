@@ -83,6 +83,14 @@
                         <option value="exalted-desc">Highest Exalted</option>
                         <option value="exalted-asc">Lowest Exalted</option>
                     </select>
+                    <label style="color:var(--text-secondary); font-size:11px;">Rarity:</label>
+                    <select id="histRarity" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;">
+                        <option value="">All</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Magic">Magic</option>
+                        <option value="Rare">Rare</option>
+                        <option value="Unique">Unique</option>
+                    </select>
                     <label style="color:var(--text-secondary); font-size:11px;">Type:</label>
                     <select id="histCategory" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;">
                         <option value="">All</option>
@@ -900,6 +908,7 @@
             const curEl = document.getElementById('histCurrency');
             const catEl = document.getElementById('histCategory');
             const sortEl = document.getElementById('histSort');
+            const rarEl = document.getElementById('histRarity');
             const searchEl = document.getElementById('histSearch');
             const topBtn = document.getElementById('histTopSale');
             function applyAndRender(){
@@ -918,6 +927,7 @@
             if (curEl) curEl.addEventListener('change', ()=>{ historyState.filters.cur = String(curEl.value||'exalted'); applyAndRender(); });
             if (catEl) catEl.addEventListener('change', ()=>{ historyState.filters.category = String(catEl.value||''); applyAndRender(); });
             if (sortEl) sortEl.addEventListener('change', ()=>{ historyState.sort = String(sortEl.value||'newest'); applyAndRender(); });
+            if (rarEl) rarEl.addEventListener('change', ()=>{ historyState.filters.rarity = String(rarEl.value||''); applyAndRender(); });
             if (searchEl) searchEl.addEventListener('input', ()=>{ historyState.filters.search = String(searchEl.value||'').trim().toLowerCase(); applyAndRender(); });
             if (topBtn) topBtn.addEventListener('click', ()=>{
                 const list = historyState.items;
