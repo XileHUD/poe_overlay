@@ -891,6 +891,10 @@ body {
 .mod-line::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:transparent; }
 .implicit-mods .mod-line::before { background:linear-gradient(180deg,#4d8dff,#2c5fa8); }
 .explicit-mods .mod-line::before { background:linear-gradient(180deg,#d4af37,#8f6a00); }
+.explicit-mods .mod-line.fractured { background:rgba(210,190,140,0.18); }
+.explicit-mods .mod-line.fractured::before { background:linear-gradient(180deg,#e6d5a8,#b79b55); }
+.explicit-mods .mod-line.desecrated { background:rgba(60,140,60,0.22); }
+.explicit-mods .mod-line.desecrated::before { background:linear-gradient(180deg,#7fd87f,#2f7f2f); }
 .mod-line[data-field="implicit"] { font-weight:600; }
 .mod-line:hover { background:rgba(255,255,255,0.07); }
 .mod-section-title { display:flex; align-items:center; gap:6px; }
@@ -899,6 +903,17 @@ body {
 .explicit-mods .mod-tier { background:rgba(212,175,55,0.15); border-color:rgba(212,175,55,0.4); color:#ffd769; }
 .implicit-mods .mod-tier { background:rgba(90,140,255,0.15); border-color:rgba(90,140,255,0.4); color:#8ec2ff; }
 .badge-corrupted { display:inline-block; padding:1px 6px; border-radius:999px; font-size:10px; background:#7a2b2b; color:#ffdede; border:1px solid #a33; margin-left:6px; }
+
+/* Sockets & Runes */
+.sockets-row { display:flex; align-items:center; gap:4px; flex-wrap:wrap; }
+.socket-group { display:flex; gap:2px; }
+.socket { width:26px; height:26px; border:1px solid rgba(255,255,255,0.15); border-radius:4px; background:#111; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+.socket.rune { border-color:#a88a3a; background:#1e1a10; }
+.socket.empty { opacity:0.25; }
+.socket img { width:100%; height:100%; object-fit:cover; display:block; }
+.socket-link { width:14px; height:2px; background:linear-gradient(90deg,rgba(255,255,255,0.5),rgba(255,255,255,0.05)); align-self:center; border-radius:2px; }
+.rune-mods { margin-top:6px; display:flex; flex-direction:column; gap:2px; }
+.rune-mod { font-size:11px; color:#c9d4ff; background:rgba(110,160,255,0.08); padding:3px 6px; border:1px solid rgba(110,160,255,0.25); border-radius:4px; }
 
 .clear-filters {
     padding: 4px 8px;

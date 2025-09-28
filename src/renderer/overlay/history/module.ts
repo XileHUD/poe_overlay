@@ -68,7 +68,7 @@ export interface HistoryState {
   selectedIndex: number;
   league: string;
   store: HistoryStore;
-  filters: { min: number; cur: string; category: string; search: string; rarity: string };
+  filters: { min: number; cur: string; category: string; search: string; rarity: string; timeframe: string };
   sort: string;
   lastRefreshAt: number;
   rateLimitUntil: number;
@@ -79,7 +79,7 @@ export const historyState: HistoryState = {
   selectedIndex: 0,
   league: "Rise of the Abyssal",
   store: { entries: [], totals: {}, lastSync: 0 },
-  filters: { min: 0, cur: "exalted", category: "", search: "", rarity: "" },
+  filters: { min: 0, cur: "exalted", category: "", search: "", rarity: "", timeframe: "all" },
   sort: "newest",
   lastRefreshAt: 0,
   rateLimitUntil: 0,
@@ -192,8 +192,13 @@ export function renderHistoryActiveFilters(): void {
   if (!historyVisible() || _activeGeneration !== _viewGeneration) return;
   const wrap = document.getElementById("historyActiveFilters");
   if (!wrap) return;
-  const { min, cur, category, search, rarity } = historyState.filters;
+  const { min, cur, category, search, rarity, timeframe } = historyState.filters;
   const chips: string[] = [];
+  if (timeframe && timeframe !== 'all') {
+    const labelMap: Record<string,string> = { today:'Today', yesterday:'Yesterday', '7d':'Last 7D', '14d':'Last 14D', '30d':'Last 30D' };
+    const lbl = labelMap[timeframe] || timeframe;
+    chips.push(`<span class="price-badge" title="Timeframe filter">${escapeHtml(lbl)} <button data-act="clear-timeframe" style="margin-left:6px; background:none; border:none; color:var(--text-muted); cursor:pointer;">×</button></span>`);
+  }
   if (min && min > 0) {
     const c = normalizeCurrency(cur || "");
     chips.push(
@@ -239,6 +244,10 @@ export function renderHistoryActiveFilters(): void {
         historyState.filters.rarity = "";
         const el = document.getElementById("histRarity");
         if (el) (el as HTMLSelectElement).value = "";
+      } else if (act === 'clear-timeframe') {
+        historyState.filters.timeframe = 'all';
+        const el = document.getElementById('histTimeframe');
+        if (el) (el as HTMLSelectElement).value = 'all';
       }
       const all = (historyState.store.entries || []).slice().reverse();
       historyState.items = applySort(applyFilters(all));
@@ -251,10 +260,28 @@ export function renderHistoryActiveFilters(): void {
 }
 
 export function applyFilters(list: HistoryEntryRaw[]): HistoryEntryRaw[] {
-  const { min, search, rarity } = historyState.filters;
+  const { min, search, rarity, timeframe } = historyState.filters;
   const cur = normalizeCurrency(historyState.filters.cur || "");
   const catSel = historyState.filters.category || "";
+  // Timeframe boundaries
+  let earliest = 0; let latest = Infinity;
+  if (timeframe && timeframe !== 'all') {
+    const now = Date.now();
+    const startOfToday = new Date(); startOfToday.setHours(0,0,0,0);
+    const startToday = startOfToday.getTime();
+    if (timeframe === 'today') { earliest = startToday; }
+    else if (timeframe === 'yesterday') { earliest = startToday - 24*3600*1000; latest = startToday - 1; }
+    else if (timeframe === '7d') { earliest = now - 7*24*3600*1000; }
+    else if (timeframe === '14d') { earliest = now - 14*24*3600*1000; }
+    else if (timeframe === '30d') { earliest = now - 30*24*3600*1000; }
+  }
   return list.filter((it: any) => {
+    if (earliest || latest !== Infinity) {
+      const tRaw = it?.time || it?.listedAt || it?.date || 0;
+      const t = typeof tRaw === 'number' ? (tRaw > 1e12 ? tRaw : tRaw * 1000) : Date.parse(tRaw || 0 as any);
+      if (t < earliest) return false;
+      if (t > latest) return false;
+    }
     const amount = Number(it?.price?.amount ?? it?.amount ?? 0);
     const currency = normalizeCurrency(it?.price?.currency ?? it?.currency ?? "");
     if (min > 0) {
@@ -800,15 +827,84 @@ export function renderHistoryDetail(idx: number): void {
     : Array.isArray(item?.mods?.explicit)
     ? item.mods.explicit
     : [];
+  const fractured = Array.isArray(item?.fracturedMods) ? item.fracturedMods : [];
+  const desecrated = Array.isArray(item?.desecratedMods) ? item.desecratedMods : [];
   const explicitDetails: any[] = Array.isArray(item?.extended?.mods?.explicit) ? item.extended.mods.explicit : [];
   const implicits = Array.isArray(item?.implicitMods)
     ? item.implicitMods
     : Array.isArray(item?.mods?.implicit)
     ? item.mods.implicit
     : [];
+  // Rune mods (from socketed runes / talismans / tablets) – show in its own small section beneath sockets if present
+  const runeMods = Array.isArray(item?.runeMods) ? item.runeMods : [];
   const cur = normalizeCurrency(it?.price?.currency ?? it?.currency ?? "");
   const amt = it?.price?.amount ?? it?.amount ?? "";
   const curClass = cur ? `currency-${cur}` : "";
+  
+  function collapseBracketAlternates(str: string): string {
+    if (!str) return str;
+    return str.replace(/\[([^\]]+?)\]/g, (_m: string, inner: string) => {
+      if (!inner) return "";
+      const first = inner.split("|").map((s: string) => s.trim()).filter(Boolean)[0];
+      return first || "";
+    });
+  }
+  function formatModTier(rawTier: any, det: any): string {
+    let tierText = '';
+    const raw = (rawTier || det?.tier || det?.Tier || '').toString();
+    if (raw) {
+      const numMatch = raw.match(/(\d+)/);
+      if (numMatch) tierText = `T${numMatch[1]}`; // Always canonical T#
+    }
+    // Fallback: use level if no numeric tier
+    if (!tierText && typeof det?.level === 'number' && det.level > 0) tierText = `L${det.level}`;
+    return tierText;
+  }
+  function renderExplicitLike(mods: string[], kind: 'explicit' | 'fractured' | 'desecrated'): string {
+    if (!mods.length) return '';
+    return mods.map((m: string, i: number) => {
+      const clean = collapseBracketAlternates(m);
+      let tierBadge = '';
+      if (kind === 'explicit') {
+        const det = explicitDetails[i] || {};
+        const t = formatModTier(det?.tier, det);
+        if (t) tierBadge = ` <span class=\"mod-tier\" title=\"Mod tier\">${escapeHtml(t)}</span>`;
+      }
+      const extraCls = kind !== 'explicit' ? ` ${kind}` : '';
+      return `<div class=\"mod-line${extraCls}\" data-field=\"${kind}\">${escapeHtml(clean)}${tierBadge}</div>`;
+    }).join('');
+  }
+
+  // Build sockets + runes display (replaces note area). Price already shown top right.
+  let socketsHtml = '';
+  try {
+    const sockets: any[] = Array.isArray(item?.sockets) ? item.sockets : [];
+    const socketed: any[] = Array.isArray(item?.socketedItems) ? item.socketedItems : [];
+    if (sockets.length) {
+      const groups: Record<number, any[]> = {};
+      sockets.forEach(s => { groups[s.group] = groups[s.group] || []; groups[s.group].push(s); });
+      const byIdx: Record<number, any> = {};
+      socketed.forEach(si => { if (si && typeof si.socket === 'number') byIdx[si.socket] = si; });
+      const groupHtml = Object.keys(groups).sort((a,b)=>Number(a)-Number(b)).map(gk => {
+        const arr = groups[Number(gk)] || [];
+        const cells = arr.map((s, idx) => {
+          const rune = byIdx[s.group]; // In PoE2 API sometimes socket index equals group for runes
+          const rItem = rune || socketed.find(r => r.socket === s.group || r.socket === idx) || null;
+          if (rItem) {
+            const rIcon = rItem.icon || '';
+            const title = (rItem.name || rItem.typeLine || '').trim();
+            return `<div class=\"socket rune\" title=\"${escapeHtml(title)}\">${rIcon ? `<img src='${rIcon}' loading='lazy'/>` : '<span class=\"rune-placeholder\">R</span>'}</div>`;
+          }
+          return `<div class=\"socket empty\"></div>`;
+        }).join('');
+        return `<div class=\"socket-group\">${cells}</div>`;
+      }).join('<div class=\"socket-link\"></div>');
+      socketsHtml = `<div class=\"sockets-row\" title=\"Sockets & Runes\">${groupHtml}</div>`;
+    }
+  } catch {}
+
+  const runeModsHtml = runeMods.length ? `<div class=\"rune-mods\">${runeMods.map((m: string) => `<div class=\"rune-mod\">${escapeHtml(collapseBracketAlternates(m))}</div>`).join('')}</div>` : '';
+
   (det as HTMLElement).innerHTML = `
                 <div style="width:100%; max-width:820px;">
                 <div class="history-detail-card ${rarityClass}">
@@ -826,39 +922,18 @@ export function renderHistoryDetail(idx: number): void {
                             <div class="card-sub">${escapeHtml(base)}${ilvl ? ` • iLvl ${ilvl}` : ""}${rarity ? ` • <span class="rarity-label ${rarityClass}">${escapeHtml(rarity)}</span>` : ""}${
     corrupted ? ` <span class="badge-corrupted">Corrupted</span>` : ""
   }</div>
-                            ${note ? `<div style="margin-top:6px;">${escapeHtml(note)}</div>` : ""}
+                            ${socketsHtml || runeModsHtml ? `<div style=\"margin-top:6px;\">${socketsHtml}${runeModsHtml}</div>` : ''}
                             ${
                               Array.isArray(implicits) && implicits.length > 0
                                 ? `<div class="mod-section"><div class="mod-section-title">Implicit</div><div class="mod-lines implicit-mods">${(implicits as any[])
-                                    .map((m: any) => `<div class=\"mod-line implicit\" data-field=\"implicit\">${escapeHtml(m)}</div>`)
+                                    .map((m: any) => `<div class=\"mod-line implicit\" data-field=\"implicit\">${escapeHtml(collapseBracketAlternates(m))}</div>`)
                                     .join("")}</div></div>`
                                 : ""
                             }
                             ${
-                              Array.isArray(explicits) && explicits.length > 0
-                                ? `<div class="mod-section"><div class="mod-section-title">Explicit</div><div class="mod-lines explicit-mods">${(explicits as any[])
-                                    .map((m: any, i:number) => {
-                                      const det = explicitDetails[i] || {};
-                                      let tierText = '';
-                                      const rawTier = (det && (det.tier || det.Tier || '')).toString();
-                                      if (rawTier && /\d/.test(rawTier)) {
-                                        tierText = rawTier.startsWith('T') ? rawTier : `T${rawTier}`;
-                                      } else if (det && typeof det.level === 'number' && det.level > 1) {
-                                        tierText = `L${det.level}`;
-                                      }
-                                      if (!tierText && Array.isArray(det?.magnitudes) && det.magnitudes.length === 1) {
-                                        // Fallback: show min-max if different
-                                        try {
-                                          const mg = det.magnitudes[0];
-                                          if (mg && mg.min != null && mg.max != null && mg.min !== mg.max) {
-                                            tierText = `${mg.min}-${mg.max}`;
-                                          }
-                                        } catch {}
-                                      }
-                                      return `<div class=\"mod-line\" data-field=\"explicit\">${escapeHtml(m)}${tierText ? ` <span class=\\"mod-tier\\" title=\\"Mod tier/level\\">${escapeHtml(tierText)}</span>`:''}</div>`;
-                                    })
-                                    .join("")}</div></div>`
-                                : '<div class="no-mods">No explicit mods</div>'
+                              (explicits.length + fractured.length + desecrated.length) > 0
+                                ? `<div class=\"mod-section\"><div class=\"mod-section-title\">Explicit</div><div class=\"mod-lines explicit-mods\">${renderExplicitLike(fractured,'fractured')}${renderExplicitLike(explicits,'explicit')}${renderExplicitLike(desecrated,'desecrated')}</div></div>`
+                                : '<div class="no-mods">No explicit / fractured / desecrated mods</div>'
                             }
                         </div>
                     </div>
