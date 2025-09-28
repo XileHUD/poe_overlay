@@ -452,21 +452,54 @@ class OverlayApp {
 
 
     private registerShortcuts() {
-        // Unregister legacy shortcuts if linger
         try { globalShortcut.unregister('F12'); } catch {}
+        try { globalShortcut.unregister('CommandOrControl+Shift+Q'); } catch {}
 
-        // Simple toggle: Ctrl+Q (no item copy required)
-        globalShortcut.register('CommandOrControl+Q', () => {
-            if (this.isOverlayVisible) this.hideOverlay(); else this.showOverlay();
+        // Unified shortcut: Ctrl+Q
+        globalShortcut.register('CommandOrControl+Q', async () => {
+            // Always show overlay; attempt fast capture. If no valid item captured, default to Modifiers -> Gloves_int.
+            const openedBefore = this.isOverlayVisible;
+            if (!openedBefore) this.showOverlay();
+            const captured = await this.tryQuickCaptureForShortcut();
+            if (!captured) {
+                // Fallback: open modifiers tab with Gloves_int
+                this.safeSendToOverlay('set-active-tab','modifiers');
+                this.safeSendToOverlay('set-active-category','Gloves_int');
+            }
         });
+    }
 
-        // Advanced capture: Ctrl+Shift+Q (attempt to copy hovered item then open)
-        globalShortcut.register('CommandOrControl+Shift+Q', () => {
-            this.captureItemFromGame();
-        });
-
-        // NOTE: We intentionally do NOT register Escape globally anymore.
-        // Do NOT register Ctrl+C globally to avoid breaking copy in-game/OS.
+    // Fast capture logic used by Ctrl+Q; returns true if an item opened a specific category
+    private async tryQuickCaptureForShortcut(): Promise<boolean> {
+        try {
+            const now = Date.now();
+            this.armedCaptureUntil = now + 900; // shorter window
+            this.lastCopyTimestamp = now;
+            try { this.clipboardMonitor.resetLastSeen(); } catch {}
+            try { clipboard.clear(); } catch {}
+            this.trySimulateCtrlC();
+            const deadline = Date.now() + 750;
+            while (Date.now() < deadline) {
+                const text = (clipboard.readText()||'').trim();
+                if (text.length > 25) {
+                    try {
+                        const parsed = await this.itemParser.parse(text);
+                        if (parsed && parsed.category && parsed.category !== 'unknown') {
+                            if ((parsed.rarity||'').toLowerCase()==='unique') { this.showUniqueItem(parsed); return true; }
+                            let modifiers: any[] = [];
+                            try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
+                            this.safeSendToOverlay('set-active-tab','modifiers');
+                            this.safeSendToOverlay('set-active-category', parsed.category);
+                            this.showOverlay({ item: parsed, modifiers });
+                            return true;
+                        }
+                    } catch {}
+                }
+                await new Promise(r=>setTimeout(r,30));
+            }
+        } catch {}
+        finally { this.armedCaptureUntil = 0; }
+        return false;
     }
 
     private setupClipboardMonitoring() {
