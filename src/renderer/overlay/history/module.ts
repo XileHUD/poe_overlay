@@ -800,6 +800,7 @@ export function renderHistoryDetail(idx: number): void {
     : Array.isArray(item?.mods?.explicit)
     ? item.mods.explicit
     : [];
+  const explicitDetails: any[] = Array.isArray(item?.extended?.mods?.explicit) ? item.extended.mods.explicit : [];
   const implicits = Array.isArray(item?.implicitMods)
     ? item.implicitMods
     : Array.isArray(item?.mods?.implicit)
@@ -833,15 +834,32 @@ export function renderHistoryDetail(idx: number): void {
                                     .join("")}</div></div>`
                                 : ""
                             }
-                            <div class="mod-lines">
-                                ${
-                                  Array.isArray(explicits) && explicits.length > 0
-                                    ? (explicits as any[])
-                                        .map((m: any) => `<div class="mod-line" data-field="explicit">${escapeHtml(m)}</div>`)
-                                        .join("")
-                                    : '<div class="no-mods">No explicit mods</div>'
-                                }
-                            </div>
+                            ${
+                              Array.isArray(explicits) && explicits.length > 0
+                                ? `<div class="mod-section"><div class="mod-section-title">Explicit</div><div class="mod-lines explicit-mods">${(explicits as any[])
+                                    .map((m: any, i:number) => {
+                                      const det = explicitDetails[i] || {};
+                                      let tierText = '';
+                                      const rawTier = (det && (det.tier || det.Tier || '')).toString();
+                                      if (rawTier && /\d/.test(rawTier)) {
+                                        tierText = rawTier.startsWith('T') ? rawTier : `T${rawTier}`;
+                                      } else if (det && typeof det.level === 'number' && det.level > 1) {
+                                        tierText = `L${det.level}`;
+                                      }
+                                      if (!tierText && Array.isArray(det?.magnitudes) && det.magnitudes.length === 1) {
+                                        // Fallback: show min-max if different
+                                        try {
+                                          const mg = det.magnitudes[0];
+                                          if (mg && mg.min != null && mg.max != null && mg.min !== mg.max) {
+                                            tierText = `${mg.min}-${mg.max}`;
+                                          }
+                                        } catch {}
+                                      }
+                                      return `<div class=\"mod-line\" data-field=\"explicit\">${escapeHtml(m)}${tierText ? ` <span class=\\"mod-tier\\" title=\\"Mod tier/level\\">${escapeHtml(tierText)}</span>`:''}</div>`;
+                                    })
+                                    .join("")}</div></div>`
+                                : '<div class="no-mods">No explicit mods</div>'
+                            }
                         </div>
                     </div>
                 </div>

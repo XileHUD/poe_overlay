@@ -877,8 +877,25 @@ body {
 .history-item-icon { width:128px; height:auto; border:1px solid var(--border-color); border-radius:6px; background: #111; object-fit: contain; }
     body.view-history #historyActiveFilters { padding:6px 0 8px 0; }
     body.view-history #historyHeader { padding-top:4px; }
-.mod-lines { margin-top:6px; display:flex; flex-direction:column; gap:4px; }
-.mod-line { color: var(--text-primary); }
+.mod-lines { margin-top:6px; display:flex; flex-direction:column; gap:0; background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)); border:1px solid var(--border-color); border-radius:6px; overflow:hidden; }
+.mod-section + .mod-section .mod-lines { margin-top:4px; }
+.mod-lines.explicit-mods { border-color:rgba(200,165,60,0.25); }
+.mod-lines.implicit-mods { border-color:rgba(110,160,255,0.25); }
+.mod-line { position:relative; padding:6px 10px 6px 12px; color: var(--text-primary); font-size:12px; line-height:1.25; }
+.mod-line:nth-child(odd) { background:rgba(255,255,255,0.015); }
+.mod-line:nth-child(even) { background:rgba(0,0,0,0.12); }
+.implicit-mods .mod-line.implicit { background:rgba(40,75,120,0.18); }
+.mod-line + .mod-line { border-top:1px solid rgba(255,255,255,0.04); }
+.mod-line::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:transparent; }
+.implicit-mods .mod-line::before { background:linear-gradient(180deg,#4d8dff,#2c5fa8); }
+.explicit-mods .mod-line::before { background:linear-gradient(180deg,#d4af37,#8f6a00); }
+.mod-line[data-field="implicit"] { font-weight:600; }
+.mod-line:hover { background:rgba(255,255,255,0.07); }
+.mod-section-title { display:flex; align-items:center; gap:6px; }
+.mod-section-title::after { content:''; flex:1 1 auto; height:1px; background:linear-gradient(90deg,rgba(255,255,255,0.15),rgba(255,255,255,0)); }
+.mod-tier { display:inline-block; margin-left:6px; font-size:10px; padding:2px 6px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); font-weight:600; letter-spacing:.5px; color:#ffdf6b; }
+.explicit-mods .mod-tier { background:rgba(212,175,55,0.15); border-color:rgba(212,175,55,0.4); color:#ffd769; }
+.implicit-mods .mod-tier { background:rgba(90,140,255,0.15); border-color:rgba(90,140,255,0.4); color:#8ec2ff; }
 .badge-corrupted { display:inline-block; padding:1px 6px; border-radius:999px; font-size:10px; background:#7a2b2b; color:#ffdede; border:1px solid #a33; margin-left:6px; }
 
 .clear-filters {
