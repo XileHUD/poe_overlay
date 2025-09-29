@@ -75,6 +75,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
     // Local merchant history store
     historyLoad: () => ipcRenderer.invoke('history-load'),
     historySave: (store: any) => ipcRenderer.invoke('history-save', store),
+    // Mod section popouts
+    openModPopout: (payload: any) => ipcRenderer.invoke('open-mod-popout', payload),
     
     // Remove listeners
     removeAllListeners: (channel: string) => ipcRenderer.removeAllListeners(channel)

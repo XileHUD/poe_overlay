@@ -42,7 +42,10 @@ function renderSection(section: any, domainId?: string){
         <span class="collapse-arrow" id="${arrowId}">▼</span>
         ${formatDomainName(section.domain)} ${side && side!=='none' ? '- ' + formatSideName(side) : ''}
       </div>
-      <div class="section-count">${mods.length}</div>
+      <div class="section-actions" style="display:flex; align-items:center; gap:6px;">
+        <button class="pin-section-btn" title="Pop out this mod group" data-domain="${section.domain}" data-side="${side}" style="background:transparent; border:1px solid var(--border-color); width:18px; height:18px; border-radius:4px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; font-size:11px; color:var(--text-secondary);">📌</button>
+        <div class="section-count">${mods.length}</div>
+      </div>
     </div>
     <div class="section-content" id="${sectionId}">
       <div class="mod-list">
@@ -628,7 +631,67 @@ export function renderFilteredContent(data: any){
         if((window as any).originalData) renderFilteredContent((window as any).originalData);
       });
     });
+    // Store last filtered sections for popout payload builder
+    (window as any).__lastFilteredSections = (filteredData.modifiers || []).map((s:any)=>({ ...s }));
+    // Attach pin button listeners
+    document.querySelectorAll('.pin-section-btn').forEach(btn => {
+      btn.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        const domain = (btn as HTMLElement).getAttribute('data-domain') || '';
+        const side = (btn as HTMLElement).getAttribute('data-side') || 'none';
+        try {
+          const payload = buildSectionPopoutPayload(domain, side);
+          if ((window as any).electronAPI?.openModPopout) {
+            (window as any).electronAPI.openModPopout(payload);
+          } else {
+            console.warn('openModPopout API unavailable');
+          }
+        } catch(e){ console.error('Failed to build popout payload', e); }
+      });
+    });
   } catch {}
+}
+
+interface PopoutSectionPayloadMod {
+  text: string;
+  tags?: string[];
+  tiers: Array<{ tier: number; text?: string; level?: number; ilvl?: number; weight?: number; }>;
+}
+interface PopoutSectionPayload {
+  title: string;
+  domain: string;
+  side: string;
+  category?: string;
+  mods: PopoutSectionPayloadMod[];
+}
+
+function buildSectionPopoutPayload(domain: string, side: string): PopoutSectionPayload {
+  const sections: any[] = (window as any).__lastFilteredSections || [];
+  const catRaw = (window as any).currentModifierCategory || '';
+  const catDisplay = catRaw ? String(catRaw).replace(/_/g,' ').replace(/\s+/g,' ').trim() : '';
+  // For prefix/suffix grouping we stored each section individually; we just need those matching domain & side
+  const matched = sections.filter(s => s.domain === domain && (s.side || s.type || 'none') === side);
+  let modsRaw: any[] = [];
+  if (matched.length > 0) modsRaw = matched[0].mods || [];
+  const mods = modsRaw.map(m => ({
+    text: m.text || m.text_plain || '',
+    tags: m.tags || [],
+    category: (window as any).currentModifierCategory || undefined,
+    tiers: (m.tiers||[]).map((t:any, idx:number, arr:any[]) => ({
+      tier: (arr.length - idx),
+      text: t.text_plain || t.text || '',
+      level: t.tier_level || t.level || t.ilvl,
+      ilvl: t.ilvl || t.tier_level || t.level,
+      weight: t.weight
+    }))
+  }));
+  return {
+    title: `${catDisplay ? catDisplay + ' - ' : ''}${formatDomainName(domain)}${side && side !== 'none' ? ' - ' + formatSideName(side) : ''}`,
+    domain,
+    side,
+    category: catRaw || undefined,
+    mods
+  };
 }
 
 export function patchCreateModItem(){
