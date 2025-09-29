@@ -459,6 +459,22 @@ class OverlayApp {
         try { globalShortcut.unregister('F12'); } catch {}
         try { globalShortcut.unregister('CommandOrControl+Shift+Q'); } catch {}
         globalShortcut.register('CommandOrControl+Q', () => this.startShortcutCapture());
+        // New shortcut: Ctrl+Shift+Q opens overlay focused on Merchant History
+        globalShortcut.register('CommandOrControl+Shift+Q', () => {
+            // If already visible just refocus & switch tab; else toggle open
+            if (!this.isOverlayVisible) {
+                this.showOverlay();
+                // Small delay to allow renderer to finish initial show before tab switch
+                setTimeout(() => {
+                    this.safeSendToOverlay('set-active-tab','history');
+                    this.safeSendToOverlay('invoke-action','merchant-history');
+                }, 180);
+            } else {
+                try { this.overlayWindow?.focus(); } catch {}
+                this.safeSendToOverlay('set-active-tab','history');
+                this.safeSendToOverlay('invoke-action','merchant-history');
+            }
+        });
     }
 
     private startShortcutCapture() {
