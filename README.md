@@ -95,7 +95,7 @@ I usually add features that I personally think would help me save time, so when 
 
 ## 🐞 Reporting Issues
 
-If you encounter a bug or have a suggestion, please create an issue on the GitHub Issues page. You can also report issues in the Reddit thread.
+If you encounter a bug or have a suggestion, please create an issue on the **[GitHub Issues page](https://github.com/XileHUD/poe_overlay/issues)**. You can also report issues in the Reddit thread.
 
 When reporting, please include:
 
@@ -106,71 +106,14 @@ When reporting, please include:
 
 ---
 
-## 🛠️ Build From Source
-
-Prerequisites: Node.js 18+, Git, and Windows.
-
-<!-- Original artifact lines preserved below as a code-comment style block for fidelity -->
-```
-code
-Powershell
-download
-content_copy
-expand_less
-```
-
-### Clone & Install
-```powershell
-# Clone the repository
 git clone https://github.com/XileHUD/poe_overlay.git
-
-# Navigate to the overlay package
-cd poe_overlay\packages\overlay
-
-# Install dependencies
-npm install
-
-# Run in development mode
-npm run dev
-```
-
-### Build Portable Executable
-```
-code
-Powershell
-download
-content_copy
-expand_less
-```
-```powershell
-npm run dist:unsigned
-```
-
-The output will be located in `dist_electron/XileHUD-<version>-portable.exe`.
-
----
-
-## 🙌 Contributing
-
-Pull requests are welcome! Some helpful areas for contribution include:
-
-- Refining tier aggregation for edge cases.
-- Performance profiling and optimization.
-- Developing new item context panels.
-
-### Flow
-
-1. Fork the repository and create a new branch.
-2. Run npm install to get started.
-3. Implement your changes.
-4. Commit with a clear, conventional message (e.g., feat:, fix:, docs:).
-5. Open a Pull Request with a description of your changes.
+<!-- Build & Contributing sections intentionally removed -->
 
 ---
 
 ## 📜 License
 
-Licensed under **GNU GPLv3** (see `LICENSE`).
+Licensed under **GNU GPLv3** (see [`LICENSE`](./LICENSE)).
 
 This project is not affiliated with or endorsed by Grinding Gear Games.
 
@@ -178,8 +121,8 @@ This project is not affiliated with or endorsed by Grinding Gear Games.
 
 ## Acknowledgements
 
-- Grinding Gear Games (http://www.grindinggear.com/): For creating the incredible Path of Exile (https://www.pathofexile.com/) and many of the file formats used. Please support them and do not reuse their files without permission.
-- OmegaK2 (https://github.com/OmegaK2): The original developer of PyPoE.
-- brather1ng (https://github.com/brather1ng): For the updated PyPoE fork.
-- Chriskang: For the original VisualGGPK2.
-- POEDB (http://poedb.tw/us/) & POE2.RE (https://poe2.re/): For invaluable data and references.
+- [Grinding Gear Games](http://www.grindinggear.com/) – For creating the incredible [Path of Exile](https://www.pathofexile.com/) and many of the file formats used. Please support them and do not reuse their files without permission.
+- [OmegaK2](https://github.com/OmegaK2) – The original developer of PyPoE.
+- [brather1ng](https://github.com/brather1ng) – For the updated PyPoE fork.
+- Chriskang – For the original VisualGGPK2.
+- [POEDB](http://poedb.tw/us/) & [POE2.RE](https://poe2.re/) – Invaluable data and references.
