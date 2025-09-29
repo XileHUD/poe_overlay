@@ -160,10 +160,7 @@ When reporting, please include:
 - Any relevant output from the console.
 
 ---
-
-git clone https://github.com/XileHUD/poe_overlay.git
 <!-- Build & Contributing sections intentionally removed -->
-
 ---
 
 ## 📜 License
