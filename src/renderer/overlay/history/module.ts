@@ -25,6 +25,13 @@ let _activeGeneration = 0;
 export function onEnterView(): void {
   _viewGeneration += 1;
   _activeGeneration = _viewGeneration;
+  // Defensive: ensure headers are visible (some crafting panels aggressively hide them)
+  try {
+    const hh = document.getElementById('historyHeader');
+    if (hh) (hh as HTMLElement).style.display = 'flex';
+    const hhMain = document.getElementById('historyHeaderMain');
+    if (hhMain) (hhMain as HTMLElement).style.display = 'flex';
+  } catch {}
   // When (re)entering, we can lazily re-render if we already have data.
   try {
     if (historyState.store.entries.length) {
@@ -836,6 +843,21 @@ export function renderHistoryDetail(idx: number): void {
     : Array.isArray(item?.mods?.implicit)
     ? item.mods.implicit
     : [];
+  // Notable properties (e.g. Megalomaniac style jewels) - structure: [{ name, values: [[text,0], ...] }]
+  const notablePropsRaw: any[] = Array.isArray(item?.notableProperties) ? item.notableProperties : [];
+  const notableLines: string[] = [];
+  try {
+    notablePropsRaw.forEach(np => {
+      const nName = (np?.name || '').toString();
+      const vals: any[] = Array.isArray(np?.values) ? np.values : [];
+      const mods = vals.map(v => Array.isArray(v) ? (v[0]||'') : '').filter(Boolean).map(s=>collapseBracketAlternates(s));
+      if(nName && mods.length){
+        mods.forEach(m => notableLines.push(`${nName}: ${m}`));
+      } else if(nName){
+        notableLines.push(nName);
+      }
+    });
+  } catch {}
   // Rune mods (from socketed runes / talismans / tablets) – show in its own small section beneath sockets if present
   const runeMods = Array.isArray(item?.runeMods) ? item.runeMods : [];
   const cur = normalizeCurrency(it?.price?.currency ?? it?.currency ?? "");
@@ -967,6 +989,7 @@ export function renderHistoryDetail(idx: number): void {
     corrupted ? ` <span class="badge-corrupted">Corrupted</span>` : ""
   }</div>
                             ${socketsHtml || runeModsHtml ? `<div style=\"margin-top:6px;\">${socketsHtml}${runeModsHtml}</div>` : ''}
+                            ${notableLines.length ? `<div class=\"mod-section\"><div class=\"mod-section-title\">Notables</div><div class=\"mod-lines explicit-mods\">${notableLines.map(l=>`<div class=\"mod-line explicit\" data-field=\"notable\">${escapeHtml(l)}</div>`).join('')}</div></div>` : ''}
                             ${
                               Array.isArray(implicits) && implicits.length > 0
                                 ? `<div class="mod-section"><div class="mod-section-title">Implicit</div><div class="mod-lines implicit-mods">${(implicits as any[])
