@@ -188,7 +188,51 @@ export class ModifierDatabase {
 
         // Normal categories from JSON
         console.log('Using JSON data');
-        return this.getFromJson(raw);
+        // Virtual aggregate: Relics -> merge all *_Relic subcategories
+        let datasets: any[][] = [];
+        if (/^Relics$/i.test(category)) {
+            for (const [cat, arr] of this.jsonCache) {
+                if (/_Relic$/i.test(cat) && Array.isArray(arr)) datasets.push(arr as any[]);
+            }
+            if (!datasets.length) {
+                console.warn('Virtual Relics requested but no *_Relic categories loaded');
+                return [];
+            }
+        } else {
+            const data = this.jsonCache.get(category);
+            if (!data) {
+                console.warn(`Category ${category} not found in JSON cache`);
+                return [];
+            }
+            if (Array.isArray(data)) datasets = [data as any[]];
+        }
+
+        const grouped = new Map<string, any>();
+        for (const data of datasets) {
+            for (const item of data) {
+                const domain = item.domain || 'unknown';
+                const side = item.side || 'unknown';
+                const tier = (item.domain_tier != null) ? item.domain_tier : 'na';
+                const key = `${domain}_${side}_${tier}`;
+                if (!grouped.has(key)) {
+                    grouped.set(key, {
+                        domain,
+                        side,
+                        domain_tier: item.domain_tier,
+                        mods: [] as any[]
+                    });
+                }
+                grouped.get(key).mods.push(item);
+            }
+        }
+        for (const grp of grouped.values()) {
+            grp.mods.sort((a: any, b: any) => {
+                const aw = (typeof a.weight_pct === 'number') ? a.weight_pct : (a.weight ?? 0);
+                const bw = (typeof b.weight_pct === 'number') ? b.weight_pct : (b.weight ?? 0);
+                return bw - aw;
+            });
+        }
+        return Array.from(grouped.values());
     }
 
     private getFromJson(category: string): ModifierData[] {
@@ -313,8 +357,14 @@ export class ModifierDatabase {
     async getAllCategories(): Promise<string[]> {
         if (this.jsonCache.size > 0) {
             const cats = Array.from(this.jsonCache.keys());
-            // Prepend special categories like in verifier
-            return ['ALL', 'DESECRATED', 'ESSENCE', 'CORRUPTED', 'SOCKETABLE', ...cats];
+            // Inject virtual aggregate categories
+            const out: string[] = ['ALL', 'DESECRATED', 'ESSENCE', 'CORRUPTED', 'SOCKETABLE'];
+            // Add existing categories
+            out.push(...cats);
+            // If we have any *_Relic categories but no generic Relics, expose virtual "Relics"
+            const relicSubs = cats.filter(c => /_Relic$/i.test(c));
+            if (relicSubs.length && !out.includes('Relics')) out.push('Relics');
+            return out;
         }
 
         return [];

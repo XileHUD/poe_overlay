@@ -978,9 +978,7 @@ class OverlayApp {
         // PoE login and session
         ipcMain.handle('poe-get-session', async () => {
             const loggedIn = await this.hasPoeSession();
-            if (loggedIn && !this.poeAccountName) {
-                this.poeAccountName = await this.tryFetchAccountName();
-            }
+            // Account name auto-detection removed (HTML scraping disallowed). May be populated by future official API only.
             return { loggedIn, accountName: this.poeAccountName };
         });
 
@@ -991,10 +989,6 @@ class OverlayApp {
 
         ipcMain.handle('poe-fetch-history', async (_e, league: string) => {
             const { ok, status, data, headers, error } = await this.fetchPoeHistory(league);
-            if (ok && !this.poeAccountName) {
-                // Opportunistically resolve account name from config/trade page
-                this.poeAccountName = await this.tryFetchAccountName();
-            }
             return { ok, status, data, headers, error, accountName: this.poeAccountName };
         });
 
@@ -1154,12 +1148,7 @@ class OverlayApp {
     private async openPoeLoginWindow(): Promise<{ loggedIn: boolean; accountName?: string | null }>{
         // If already logged in, short-circuit
         const already = await this.hasPoeSession();
-        if (already) {
-            if (!this.poeAccountName) {
-                this.poeAccountName = await this.tryFetchAccountName();
-            }
-            return { loggedIn: true, accountName: this.poeAccountName };
-        }
+        if (already) return { loggedIn: true, accountName: this.poeAccountName };
 
         return new Promise((resolve) => {
             const loginWin = new BrowserWindow({
@@ -1175,7 +1164,6 @@ class OverlayApp {
             const finishIfLoggedIn = async () => {
                 const authed = await this.isAuthenticated();
                 if (authed) {
-                    if (!this.poeAccountName) this.poeAccountName = await this.tryFetchAccountName();
                     try { loginWin.close(); } catch {}
                     resolve({ loggedIn: true, accountName: this.poeAccountName });
                     return true;
@@ -1186,7 +1174,6 @@ class OverlayApp {
             loginWin.on('closed', async () => {
                 const authed = await this.isAuthenticated();
                 if (authed) {
-                    if (!this.poeAccountName) this.poeAccountName = await this.tryFetchAccountName();
                     resolve({ loggedIn: true, accountName: this.poeAccountName });
                 } else {
                     resolve({ loggedIn: false, accountName: null });
@@ -1203,26 +1190,6 @@ class OverlayApp {
             // Start at trade site to keep context consistent
             loginWin.loadURL('https://www.pathofexile.com/login');
         });
-    }
-
-    private async tryFetchAccountName(): Promise<string | null> {
-        // Try trade2 page first; look for accountName in bootstrap/config
-        try {
-            const html = await this.httpGetText('https://www.pathofexile.com/trade2');
-            if (html) {
-                const m = html.match(/accountName"\s*:\s*"([^"]+)"/i);
-                if (m && m[1]) return m[1];
-                const m2 = html.match(/\/account\/view-profile\/([^"'\s]+)/i);
-                if (m2 && m2[1]) return decodeURIComponent(m2[1]);
-            }
-        } catch {}
-        // Fallback: homepage header
-        try {
-            const html = await this.httpGetText('https://www.pathofexile.com/');
-            const m = html && html.match(/\/account\/view-profile\/([^"'\s]+)/i);
-            if (m && m[1]) return decodeURIComponent(m[1]);
-        } catch {}
-        return null;
     }
 
     private async fetchPoeHistory(league: string): Promise<{ ok: boolean; status: number; data?: any; headers?: Record<string,string>; error?: string }>{
@@ -1246,128 +1213,8 @@ class OverlayApp {
             return { ok: false, status: 0, error: e?.message || 'Network error' };
         }
     }
-
-    private async fetchPoeHistoryFromPage(): Promise<{ ok: boolean; status: number; entries?: any[]; error?: string }>{
-        const url = 'https://www.pathofexile.com/trade2/history';
-        try {
-            const { statusCode, body } = await this.httpGetRaw(url, {
-                Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                Referer: 'https://www.pathofexile.com/trade2'
-            }, 12000);
-            if (statusCode !== 200) return { ok: false, status: statusCode, error: `HTTP ${statusCode}` };
-            const entries = this.extractEntriesFromHistoryHtml(body) || [];
-            return { ok: true, status: statusCode, entries };
-        } catch (e: any) {
-            return { ok: false, status: 0, error: e?.message || 'Network error' };
-        }
-    }
-
-    private extractEntriesFromHistoryHtml(html: string): any[] | null {
-        // Heuristic extraction: try to find a JSON blob with "entries": [ ... ]
-        try {
-            // 1) Try application/json script blocks
-            const scriptJsonRegex = /<script[^>]*type=["']application\/json["'][^>]*>([\s\S]*?)<\/script>/gi;
-            let m: RegExpExecArray | null;
-            while ((m = scriptJsonRegex.exec(html)) !== null) {
-                const txt = (m[1] || '').trim();
-                if (txt.includes('"entries"')) {
-                    try {
-                        const obj = JSON.parse(txt);
-                        if (obj && Array.isArray(obj.entries)) return obj.entries;
-                        // Some pages embed state like { page: { entries: [...] } }
-                        const deep = this.deepFindEntries(obj);
-                        if (deep) return deep;
-                    } catch {}
-                }
-            }
-            // 2) Fallback: regex find entries array and parse
-            const entriesMatch = html.match(/"entries"\s*:\s*\[(.*?)\]/s);
-            if (entriesMatch) {
-                const arrayStr = '[' + entriesMatch[1] + ']';
-                try {
-                    const arr = JSON.parse(arrayStr);
-                    if (Array.isArray(arr)) return arr;
-                } catch {}
-            }
-        } catch {}
-        return null;
-    }
-
-    private deepFindEntries(obj: any): any[] | null {
-        try {
-            if (!obj || typeof obj !== 'object') return null;
-            if (Array.isArray((obj as any).entries)) return (obj as any).entries;
-            for (const key of Object.keys(obj)) {
-                const val = (obj as any)[key];
-                const found = this.deepFindEntries(val);
-                if (found) return found;
-            }
-        } catch {}
-        return null;
-    }
-
-    private async fetchPoeHistoryViaDom(): Promise<{ ok: boolean; status: number; entries?: any[]; error?: string }>{
-        let win: BrowserWindow | null = null;
-        try {
-            win = new BrowserWindow({
-                show: false,
-                webPreferences: { contextIsolation: true, nodeIntegration: false }
-            });
-            await win.loadURL('https://www.pathofexile.com/trade2/history');
-            const entries = await win.webContents.executeJavaScript(`
-                (async function() {
-                    function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
-                    function norm(s){ return (s||'').replace(/\s+/g,' ').trim(); }
-                    function parseFromFilterTitle(span){
-                        const txt = norm(span.textContent||'');
-                        const soldIdx = txt.toUpperCase().indexOf('SOLD:');
-                        const forIdx = txt.toUpperCase().indexOf('FOR:');
-                        const name = soldIdx>=0 && forIdx>soldIdx ? txt.substring(soldIdx+5, forIdx).trim() : txt.replace(/^SOLD:\s*/i,'');
-                        const tail = forIdx>=0 ? txt.substring(forIdx+4).trim() : '';
-                        const timeMatch = tail.match(/(less than a minute ago|an?\s+\w+\s+ago|\d+\s+\w+\s+ago)$/i);
-                        const timeText = timeMatch ? timeMatch[0] : '';
-                        const pricePart = timeText ? tail.slice(0, tail.length - timeText.length).trim() : tail;
-                        const priceMatch = pricePart.match(/([0-9]+(?:[.,][0-9]+)?)\s*x?\s*(.+)$/i);
-                        const amount = priceMatch ? priceMatch[1] : '';
-                        const currency = priceMatch ? priceMatch[2].trim() : '';
-                        let url = '';
-                        const parent = span.closest('a[href]') || span.parentElement?.querySelector('a[href]');
-                        if (parent && parent.href) url = parent.href;
-                        return { item:{name}, price:(amount||currency)?{amount:Number(amount||'0'), currency}:undefined, timeText, url };
-                    }
-                    // Wait up to ~6s for rows; prioritize list items inside UL/OL
-                    let results = [];
-                    for (let i=0;i<24;i++){
-                        const spans = Array.from(document.querySelectorAll('span.filter-title.filter-title-clickable'));
-                        if (spans.length){ results = spans.map(parseFromFilterTitle).filter(x=>x && x.item && x.item.name); }
-                        if (results.length===0){
-                            // fallback: SOLD/ FOR text
-                            const liRows = Array.from(document.querySelectorAll('li')).filter(el => /^\s*SOLD:/i.test((el.textContent||'')) && /FOR:/i.test((el.textContent||'')));
-                            results = liRows.map(el=>{
-                                const span = el.querySelector('span.filter-title.filter-title-clickable');
-                                return span ? parseFromFilterTitle(span) : null;
-                            }).filter(Boolean);
-                        }
-                        if (results.length>0) break;
-                        await sleep(300);
-                    }
-                    return results;
-                })();
-            `);
-            return { ok: true, status: 200, entries: Array.isArray(entries) ? entries : [] };
-        } catch (e: any) {
-            return { ok: false, status: 0, error: e?.message || 'DOM scrape failed' };
-        } finally {
-            try { win?.close(); } catch {}
-        }
-    }
-
     private async isAuthenticated(): Promise<boolean> {
-        // Prefer parsing account name from trade2; else try calling a protected API
-        try {
-            const name = await this.tryFetchAccountName();
-            if (name) return true;
-        } catch {}
+        // Simplified: rely on protected API call only (HTML parsing removed)
         try {
             const probe = await this.fetchPoeHistory('Rise of the Abyssal');
             return !!probe.ok && probe.status === 200;

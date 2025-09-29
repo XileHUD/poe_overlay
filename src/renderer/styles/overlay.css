@@ -915,6 +915,11 @@ body {
 .rune-mods { margin-top:6px; display:flex; flex-direction:column; gap:2px; }
 .rune-mod { font-size:11px; color:#c9d4ff; background:rgba(110,160,255,0.08); padding:3px 6px; border:1px solid rgba(110,160,255,0.25); border-radius:4px; }
 
+/* Explicit tier stacking layout */
+/* Inline tiers alignment: ensure all mod-lines same min-height so tier badges line up visually */
+.explicit-mods .mod-line, .implicit-mods .mod-line { display:flex; align-items:center; gap:6px; }
+.explicit-mods .mod-line .mod-text { flex:1 1 auto; }
+
 .clear-filters {
     padding: 4px 8px;
     background: var(--accent-red);
@@ -994,24 +999,20 @@ body.crafting-mode #controlPanel { display: none !important; }
 
 /* Filter row prioritization: reorder essentials first on wrap */
 /* Assign classes in DOM (JS already gives ids; use attribute selectors fallback) */
-#historyHeaderRow2 { align-items: flex-start; }
+#historyHeaderRow2 { align-items:center; }
 #historyHeaderRow2 > * { flex: 0 0 auto; }
-/* Use order hints – lower = earlier. We'll target common control ids if present. */
-/* Explicit ordering groups so labels stay adjacent to their controls */
-#historyHeaderRow2 .lbl-currency { order: 1; }
-#historyHeaderRow2 .sel-currency { order: 2; }
-#historyHeaderRow2 .lbl-min { order: 3; }
-#historyHeaderRow2 .inp-min { order: 4; }
-#historyHeaderRow2 .lbl-time { order: 5; }
-#historyHeaderRow2 .sel-time { order: 6; }
-#historyHeaderRow2 .lbl-sort { order: 7; }
-#historyHeaderRow2 .sel-sort { order: 8; }
-#historyHeaderRow2 .lbl-rarity { order: 9; }
-#historyHeaderRow2 .sel-rarity { order: 10; }
-#historyHeaderRow2 .lbl-type { order: 11; }
-#historyHeaderRow2 .sel-type { order: 12; }
-#historyHeaderRow2 .btn-top-sale { order: 13; }
-#historyHeaderRow2 .inp-search { order: 14; }
+#historyHeaderRow2 .fgrp { display:flex; align-items:center; gap:4px; background:var(--bg-tertiary); padding:2px 6px; border:1px solid var(--border-color); border-radius:6px; }
+#historyHeaderRow2 .fgrp select,#historyHeaderRow2 .fgrp input { background:transparent !important; border:none !important; padding:2px 2px !important; box-shadow:none; }
+#historyHeaderRow2 .fgrp label { margin:0; }
+/* Order groups */
+#historyHeaderRow2 .grp-currency { order:1; }
+#historyHeaderRow2 .grp-min { order:2; }
+#historyHeaderRow2 .grp-time { order:3; }
+#historyHeaderRow2 .grp-sort { order:4; }
+#historyHeaderRow2 .grp-rarity { order:5; }
+#historyHeaderRow2 .grp-type { order:6; }
+/* Place search last (after other filters) */
+#historyHeaderRow2 .grp-search { order:7; }
 
 /* Chart minimum height enforcement + graceful shrink */
 #historyChartWrap { min-height: 140px; }

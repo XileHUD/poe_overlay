@@ -197,21 +197,6 @@ export function render(list: Essence[]): void {
       .replace(/([\[\]\(\)%])/g,'<span class="mod-value">$1</span>');
   }
 
-  function highlightTerms(html: string, search: string, tags: string[]): string {
-    const utils: any = (window as any).OverlayUtils;
-    if (!utils?.highlightMatches || !html) return html;
-    const tokens = new Set<string>();
-    if (search) search.split(/\s+/).forEach(t=> t.length>1 && tokens.add(t.toLowerCase()));
-    tags.forEach(t=> t.length>1 && tokens.add(t.toLowerCase()));
-    if (!tokens.size) return html;
-    const saved: string[] = [];
-    // protect existing spans
-    let w = html.replace(/<span[^>]*>.*?<\/span>/gi, (m: string)=>{ const i=saved.push(m)-1; return `__SPAN${i}__`; });
-    w = utils.highlightMatches(w, Array.from(tokens), { className: 'hl-term', escapeHtml: false });
-    w = w.replace(/__SPAN(\d+)__/g, (_m: string, g1: string)=> saved[Number(g1)] || '');
-    return w;
-  }
-
   function apply(filter = ""): void {
     const f = filter.toLowerCase().trim();
     if (!listEl) return;
@@ -240,12 +225,7 @@ export function render(list: Essence[]): void {
       card.style.display = 'flex';
       card.style.flexDirection = 'column';
       card.style.gap = '4px';
-      const searchTokens = f ? f.split(/\s+/).filter(Boolean) : [];
-      const tagTokens = [...state.selectedTags];
-      const modsHtml = (e.explicitMods && e.explicitMods.length) ? `<div style='font-size:11px;'>${e.explicitMods.map((m)=>{
-          const base = highlight(m.replace(/<a[^>]*>(.*?)<\/a>/g,'$1'));
-          return highlightTerms(base, searchTokens.join(' '), tagTokens);
-        }).join('<br>')}</div>` : '';
+      const modsHtml = (e.explicitMods && e.explicitMods.length) ? `<div style='font-size:11px;'>${e.explicitMods.map((m)=>highlight(m.replace(/<a[^>]*>(.*?)<\/a>/g,'$1'))).join('<br>')}</div>` : '';
       card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>
           ${e.image ? `<img src='${e.image}' alt='' style='width:28px; height:28px; object-fit:contain;'>` : ''}
           <div style='font-weight:600; line-height:1.2;'>${displayName}</div>

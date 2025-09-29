@@ -143,7 +143,8 @@ export function render(groups: BaseGroups): void {
   categoryKeys.forEach(k => ((state.groups as any)[k]||[]).forEach((b: BaseItem)=>{ (b.__tags||[]).forEach(t=>{ tagCounts[t] = (tagCounts[t]||0)+1; }); }));
 
   const selectedTags=new Set<string>();
-  let defenseQuick: 'Armour'|'Evasion'|'ES'|null = null;
+  // Multi-select defense filters (user can now pick any combination of Armour / Evasion / ES)
+  const defenseQuick = new Set<'Armour'|'Evasion'|'ES'>();
   let sortTag: 'Armour'|'Evasion'|'ES'|'AttackSpeed'|'Crit'|'Physical'|'Fire'|'Cold'|'Lightning'|'Chaos'|'Life'|'Mana'|'Block'|'Move'|'Elemental'|null = null;
   let sortDir: 'asc'|'desc' = 'desc';
 
@@ -180,7 +181,21 @@ export function render(groups: BaseGroups): void {
     if(selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; (reset as HTMLElement).style.cssText='cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--accent-red); border-radius:999px; background:var(--accent-red); color:#fff'; reset.addEventListener('click',()=>{ selectedTags.clear(); build(); renderTagFilters(); }); tagWrap.appendChild(reset); }
   }
   function baseMatchesTags(b: BaseItem){ if(!selectedTags.size) return true; if(!b.__tags) return false; return [...selectedTags].every(t=> (b.__tags as string[]).includes(t)); }
-  function matchesDefenseQuick(b: BaseItem){ if(!defenseQuick) return true; const props=b.properties||[]; if(defenseQuick==='Armour') return props.some(p=>/Armour|Armor/i.test(p.name)); if(defenseQuick==='Evasion') return props.some(p=>/Evasion/i.test(p.name)); if(defenseQuick==='ES') return props.some(p=>/Energy Shield/i.test(p.name)); return true; }
+  function matchesDefenseQuick(b: BaseItem){
+    if(!defenseQuick.size) return true;
+    const props=b.properties||[];
+    // Determine presence flags
+    const hasArmour = props.some(p=>/Armour|Armor/i.test(p.name));
+    const hasEvasion = props.some(p=>/Evasion/i.test(p.name));
+    const hasES = props.some(p=>/Energy Shield/i.test(p.name));
+    // All selected defenses must be present (intersection semantics)
+    for(const sel of defenseQuick){
+      if(sel==='Armour' && !hasArmour) return false;
+      if(sel==='Evasion' && !hasEvasion) return false;
+      if(sel==='ES' && !hasES) return false;
+    }
+    return true;
+  }
 
   function highlight(s: string){ return s.replace(/(\d+%?)/g,'<span class="mod-value">$1</span>'); }
 
@@ -211,13 +226,35 @@ export function render(groups: BaseGroups): void {
       arr.forEach(b=>{ let val=-Infinity; if(sortTag==='Elemental'){ let sum=0; let found=false; (b.properties||[]).forEach(p=>{ if(/Fire Damage|Cold Damage|Lightning Damage/i.test(p.name)){ const n=extractNum(p.value); if(!isNaN(n)){ sum+=n; found=true; }}}); if(found) val=sum; }
         else { (b.properties||[]).forEach((p)=>{ if(propMatchers[sortTag as string]?.(p)){ const n=extractNum(p.value); if(!isNaN(n) && n>val) val=n; }});} (b as any).__sortVal=val; });
       arr.sort((a,b)=>{ const av=(a as any).__sortVal, bv=(b as any).__sortVal; if(av===bv) return a.name.localeCompare(b.name); return sortDir==='desc'? (bv-av):(av-bv); });
+    } else if(defenseQuick.size>1){
+      // Composite defense sort: sum of selected defense values
+      const extractNum = (val: string)=>{ const nums=(val.match(/\d+(?:\.\d+)?/g)||[]).map(Number); if(!nums.length) return NaN as number; return Math.max(...nums); };
+      arr.forEach(b=>{
+        const props=b.properties||[];
+        let total=0; let missing=false;
+        const need=[...defenseQuick];
+        need.forEach(sel=>{
+          let best=-Infinity;
+            props.forEach(p=>{
+              if(sel==='Armour' && /Armour|Armor/i.test(p.name)) { const n=extractNum(p.value); if(!isNaN(n) && n>best) best=n; }
+              if(sel==='Evasion' && /Evasion/i.test(p.name)) { const n=extractNum(p.value); if(!isNaN(n) && n>best) best=n; }
+              if(sel==='ES' && /Energy Shield/i.test(p.name)) { const n=extractNum(p.value); if(!isNaN(n) && n>best) best=n; }
+            });
+          if(best===-Infinity) missing=true; else total+=best;
+        });
+        (b as any).__sortVal = missing? -Infinity : total;
+      });
+      arr.sort((a,b)=>{ const av=(a as any).__sortVal, bv=(b as any).__sortVal; if(av===bv) return a.name.localeCompare(b.name); return bv-av; });
     }
     arr.forEach(b=>{ const card=document.createElement('div'); card.style.width='100%'; card.style.background='var(--bg-card)'; card.style.border='1px solid var(--border-color)'; card.style.borderRadius='8px'; card.style.padding='8px'; card.style.display='flex'; card.style.gap='12px'; card.style.alignItems='flex-start';
       const imgBlock = b.image ? `<div style='flex:0 0 110px; display:flex; align-items:flex-start; justify-content:center;'><img src='${b.image}' alt='' style='width:110px; height:110px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 110px;'></div>`;
       const implicitHtml = (b.implicitMods||[]).length ? `<div style=\"font-size:11px; margin-bottom:4px;\">${(b.implicitMods||[]).map(m=>highlight(m)).join('<br>')}</div>` : '<div style=\"font-size:10px; color:var(--text-muted); margin-bottom:4px;\">No implicit</div>';
       const grantHtml = (b.grants||[]).length ? `<div style='font-size:10px; color:var(--accent-blue); margin-bottom:4px;'>${(b.grants||[]).map(g=>`Grants Skill: ${g.name}${g.level?` (Level ${g.level})`:''}`).join('<br>')}</div>` : '';
       const propHtml = (b.properties||[]).length ? `<div style=\"font-size:10px; display:flex; flex-wrap:wrap; gap:4px; margin-bottom:4px;\">${(b.properties||[]).map(p=>`<span style='background:var(--bg-tertiary); padding:2px 4px; border-radius:3px;'>${p.name}: ${p.value}</span>`).join('')}</div>` : '';
-      const tagsLine = (b.__tags&&b.__tags.length) ? `<div style='display:flex; flex-wrap:wrap; gap:4px; margin-top:2px;'>${(b.__tags||[]).map(t=>`<span style=\"background:${(sortTag===t)?'var(--accent-blue)':'var(--bg-tertiary)'}; padding:2px 6px; border-radius:4px; font-size:10px; cursor:pointer;\" data-sort-tag='${t}'>${t}</span>`).join('')}</div>` : '';
+      const tagsLine = (b.__tags&&b.__tags.length) ? `<div style='display:flex; flex-wrap:wrap; gap:4px; margin-top:2px;'>${(b.__tags||[]).map(t=>{
+        const highlight = (sortTag===t) || (defenseQuick.size>1 && defenseQuick.has(t as any) && ['Armour','Evasion','ES'].includes(t));
+        return `<span style=\"background:${highlight?'var(--accent-blue)':'var(--bg-tertiary)'}; padding:2px 6px; border-radius:4px; font-size:10px; cursor:pointer;\" data-sort-tag='${t}'>${t}</span>`;
+      }).join('')}</div>` : '';
       const right = `<div style='flex:1; display:flex; flex-direction:column;'>
         <div style='font-weight:600; font-size:15px; margin-bottom:6px;'>${b.name}${(sortTag && (b as any).__sortVal!==-Infinity)?` <span style='font-size:11px; color:var(--accent-blue);'>(${(b as any).__sortVal})</span>`:''}</div>
         ${implicitHtml}${grantHtml}${propHtml}${tagsLine}
@@ -251,12 +288,56 @@ export function render(groups: BaseGroups): void {
     });
   }
 
-  function renderDefenseQuick(){ if(!quickWrap) return; quickWrap.innerHTML='';
-    const defs:[{k:'Armour',label:string},{k:'Evasion',label:string},{k:'ES',label:string}] = [
-      {k:'Armour',label:'Armour'}, {k:'Evasion',label:'Evasion'}, {k:'ES',label:'Energy Shield'}
-    ] as any;
-    defs.forEach((d: any)=>{ const btn=document.createElement('button'); btn.textContent=d.label; btn.style.padding='4px 10px'; btn.style.fontSize='12px'; btn.style.border='1px solid var(--border-color)'; btn.style.borderRadius='4px'; btn.style.cursor='pointer'; btn.style.background= defenseQuick===d.k ? 'var(--accent-blue)' : 'var(--bg-tertiary)'; btn.style.color= defenseQuick===d.k ? '#fff':'var(--text-primary)'; btn.addEventListener('click',()=>{ if(defenseQuick===d.k){ defenseQuick=null; if(['Armour','Evasion','ES'].includes(sortTag as any)) sortTag=null; } else { defenseQuick=d.k; sortTag=d.k as any; sortDir='desc'; } build(); panel.scrollTo({top:0, behavior:'smooth'}); renderDefenseQuick(); }); quickWrap.appendChild(btn); });
-    if(defenseQuick){ const clear=document.createElement('button'); clear.textContent='×'; clear.title='Clear defense sort/filter'; clear.style.padding='4px 8px'; clear.style.fontSize='12px'; clear.style.border='1px solid var(--border-color)'; clear.style.borderRadius='4px'; clear.style.cursor='pointer'; clear.style.background='var(--accent-red)'; clear.style.color='#fff'; clear.addEventListener('click',()=>{ defenseQuick=null; if(['Armour','Evasion','ES'].includes(sortTag as any)) sortTag=null; build(); panel.scrollTo({top:0, behavior:'smooth'}); renderDefenseQuick(); }); quickWrap.appendChild(clear); }
+  function renderDefenseQuick(){
+    if(!quickWrap) return; quickWrap.innerHTML='';
+    const defs: {k:'Armour'|'Evasion'|'ES'; label:string}[] = [
+      {k:'Armour',label:'Armour'},
+      {k:'Evasion',label:'Evasion'},
+      {k:'ES',label:'Energy Shield'}
+    ];
+    defs.forEach(d=>{
+      const active = defenseQuick.has(d.k);
+      const btn=document.createElement('button');
+      btn.textContent=d.label;
+      btn.style.padding='4px 10px';
+      btn.style.fontSize='12px';
+      btn.style.border='1px solid var(--border-color)';
+      btn.style.borderRadius='4px';
+      btn.style.cursor='pointer';
+      btn.style.background= active ? 'var(--accent-blue)' : 'var(--bg-tertiary)';
+      btn.style.color= active ? '#fff':'var(--text-primary)';
+      btn.addEventListener('click',()=>{
+        if(active){ defenseQuick.delete(d.k); }
+        else { defenseQuick.add(d.k); }
+        // Sorting: only auto-apply if a single defense selected; otherwise clear defense-based sort
+        if(defenseQuick.size===1){ const only=[...defenseQuick][0]; sortTag=only as any; sortDir='desc'; }
+        else if(['Armour','Evasion','ES'].includes(sortTag as string)) { sortTag=null; }
+        build();
+        panel.scrollTo({top:0, behavior:'smooth'});
+        renderDefenseQuick();
+      });
+      quickWrap.appendChild(btn);
+    });
+    if(defenseQuick.size){
+      const clear=document.createElement('button');
+      clear.textContent='×';
+      clear.title='Clear defense filters';
+      clear.style.padding='4px 8px';
+      clear.style.fontSize='12px';
+      clear.style.border='1px solid var(--border-color)';
+      clear.style.borderRadius='4px';
+      clear.style.cursor='pointer';
+      clear.style.background='var(--accent-red)';
+      clear.style.color='#fff';
+      clear.addEventListener('click',()=>{
+        defenseQuick.clear();
+        if(['Armour','Evasion','ES'].includes(sortTag as string)) sortTag=null;
+        build();
+        panel.scrollTo({top:0, behavior:'smooth'});
+        renderDefenseQuick();
+      });
+      quickWrap.appendChild(clear);
+    }
   }
 
   searchEl.addEventListener('input',()=>build());

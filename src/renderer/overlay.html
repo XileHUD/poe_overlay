@@ -6,6 +6,22 @@
     <title>PoE2 Modifier Overlay</title>
     <link rel="stylesheet" href="./styles/overlay.css">
     <script type="module" src="./overlay-entry.ts"></script>
+        <style>
+            /* Login / Logout button state styles */
+            #poeLoginBtn.login-state { background:#1e5eb8; color:#fff; border:1px solid #2d74d6; }
+            #poeLoginBtn.login-state:hover { background:#256bd1; }
+            #poeLoginBtn.logout-state { background:#7d1d1d; color:#fff; border:1px solid #a22828; }
+            #poeLoginBtn.logout-state:hover { background:#942424; }
+            /* Ensure native select dropdown text is readable on dark theme */
+            select.sel-currency, select.sel-time, select.sel-sort, select.sel-rarity, select.sel-type {
+                color: var(--text-primary);
+            }
+            select.sel-currency option,
+            select.sel-time option,
+            select.sel-sort option,
+            select.sel-rarity option,
+            select.sel-type option { background: var(--bg-tertiary); color: var(--text-primary); }
+        </style>
 </head>
 <body>
     <!-- App header -->
@@ -17,8 +33,7 @@
         <!-- Merchant header (shown only on History tab) -->
         <div id="historyHeaderMain" style="display:none; flex:1 1 auto; min-width:0; align-items:center; gap:8px; justify-content:space-between;">
             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
-                <button id="poeLoginBtn" class="pin-btn" style="-webkit-app-region: no-drag;" title="Login to pathofexile.com">Login</button>
-                <button id="accountMaskToggle" class="pin-btn" style="-webkit-app-region: no-drag;" title="Mask account name (for screenshots)">👁</button>
+                <button id="poeLoginBtn" class="pin-btn login-state" style="-webkit-app-region: no-drag;" title="Login to pathofexile.com">Login</button>
                 <button id="historyRefreshBtn" class="pin-btn" style="-webkit-app-region: no-drag;" title="Refresh history">Refresh</button>
                 <span id="historyInfoBadge" class="price-badge" style="display:none;">Info</span>
             </div>
@@ -63,52 +78,74 @@
     <!-- History container (normal flow, visibility controlled by data-view) -->
     <div id="historyContainer" style="display:none; flex:1 1 auto; overflow:hidden;">
             <!-- History header/filters -->
-            <div id="historyHeader" style="display:flex; flex-direction:column; gap:3px; padding:8px 12px 0px 12px; border-bottom:1px solid var(--border-color); background: var(--bg-secondary); -webkit-app-region: no-drag;">
-                <div id="historyHeaderRow2" style="display:flex; gap:6px; align-items:center; flex-wrap:wrap; margin-top:0; margin-bottom:0;">
-                    <input id="histSearch" type="text" placeholder="Search items..." style="width:180px; padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;" />
-                    <label style="color:var(--text-secondary); font-size:11px;">Currency:</label>
-                    <select id="histCurrency" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;">
-                        <option value="exalted">Exalted</option>
-                        <option value="divine">Divine</option>
-                        <option value="annul">Annul</option>
-                    </select>
-                    <label style="color:var(--text-secondary); font-size:11px;">Min:</label>
-                    <input id="histMinValue" type="number" step="1" min="0" value="0" style="width:72px; padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;" />
-                    <label style="color:var(--text-secondary); font-size:11px;">Sort:</label>
-                    <select id="histSort" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;">
-                        <option value="newest">Newest</option>
-                        <option value="oldest">Oldest</option>
-                        <option value="divine-desc">Highest Divine</option>
-                        <option value="divine-asc">Lowest Divine</option>
-                        <option value="exalted-desc">Highest Exalted</option>
-                        <option value="exalted-asc">Lowest Exalted</option>
-                    </select>
-                    <label style="color:var(--text-secondary); font-size:11px;">Rarity:</label>
-                    <select id="histRarity" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;">
-                        <option value="">All</option>
-                        <option value="Normal">Normal</option>
-                        <option value="Magic">Magic</option>
-                        <option value="Rare">Rare</option>
-                        <option value="Unique">Unique</option>
-                    </select>
-                    <label style="color:var(--text-secondary); font-size:11px;">Type:</label>
-                    <select id="histCategory" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;">
-                        <option value="">All</option>
-                        <option>Helmets</option>
-                        <option>Body Armours</option>
-                        <option>Gloves</option>
-                        <option>Boots</option>
-                        <option>Rings</option>
-                        <option>Amulets</option>
-                        <option>Belts</option>
-                        <option>Weapons</option>
-                        <option>Jewels</option>
-                        <option>Uniques</option>
-                    </select>
-                    <button id="histTopSale" class="pin-btn" title="Jump to highest Divine sale (falls back to selected currency)">Top sale</button>
-                </div>
-                <div id="historyActiveFilters" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
-            </div>
+                        <div id="historyHeader" style="display:flex; flex-direction:column; gap:2px; padding:4px 8px 2px 8px; border-bottom:1px solid var(--border-color); background: var(--bg-secondary); -webkit-app-region: no-drag;">
+                            <div id="historyHeaderRow2" style="display:flex; flex-direction:row; align-items:center; gap:8px; flex-wrap:nowrap; overflow:hidden;">
+                                <div class="fgrp grp-currency" style="display:flex; align-items:center; gap:4px;">
+                                    <label style="color:var(--text-secondary); font-size:11px;">Currency:</label>
+                                      <select id="histCurrency" class="sel-currency" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px; appearance:none;">
+                                        <option value="exalted">Exalted</option>
+                                        <option value="divine">Divine</option>
+                                        <option value="annul">Annul</option>
+                                    </select>
+                                </div>
+                                <div class="fgrp grp-min" style="display:flex; align-items:center; gap:4px;">
+                                    <label style="color:var(--text-secondary); font-size:11px;">Min:</label>
+                                    <input id="histMinValue" class="inp-min" type="number" step="1" min="0" value="0" style="width:60px; padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;" />
+                                </div>
+                                <div class="fgrp grp-time" style="display:flex; align-items:center; gap:4px;">
+                                    <label style="color:var(--text-secondary); font-size:11px;">Time:</label>
+                                      <select id="histTimeframe" class="sel-time" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px; appearance:none;">
+                                        <option value="all" selected>All</option>
+                                        <option value="today">Today</option>
+                                        <option value="yesterday">Yesterday</option>
+                                        <option value="7d">7D</option>
+                                        <option value="14d">14D</option>
+                                        <option value="30d">30D</option>
+                                    </select>
+                                </div>
+                                <div class="fgrp grp-sort" style="display:flex; align-items:center; gap:4px;">
+                                    <label style="color:var(--text-secondary); font-size:11px;">Sort:</label>
+                                      <select id="histSort" class="sel-sort" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px; appearance:none;">
+                                        <option value="newest">Newest</option>
+                                        <option value="oldest">Oldest</option>
+                                        <option value="divine-desc">Highest Divine</option>
+                                        <option value="divine-asc">Lowest Divine</option>
+                                        <option value="exalted-desc">Highest Exalted</option>
+                                        <option value="exalted-asc">Lowest Exalted</option>
+                                    </select>
+                                </div>
+                                <div class="fgrp grp-rarity" style="display:flex; align-items:center; gap:4px;">
+                                    <label style="color:var(--text-secondary); font-size:11px;">Rarity:</label>
+                                      <select id="histRarity" class="sel-rarity" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px; appearance:none;">
+                                        <option value="">All</option>
+                                        <option value="Normal">Normal</option>
+                                        <option value="Magic">Magic</option>
+                                        <option value="Rare">Rare</option>
+                                        <option value="Unique">Unique</option>
+                                    </select>
+                                </div>
+                                <div class="fgrp grp-type" style="display:flex; align-items:center; gap:4px;">
+                                    <label style="color:var(--text-secondary); font-size:11px;">Type:</label>
+                                      <select id="histCategory" class="sel-type" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px; appearance:none;">
+                                        <option value="">All</option>
+                                        <option>Helmets</option>
+                                        <option>Body Armours</option>
+                                        <option>Gloves</option>
+                                        <option>Boots</option>
+                                        <option>Rings</option>
+                                        <option>Amulets</option>
+                                        <option>Belts</option>
+                                        <option>Weapons</option>
+                                        <option>Jewels</option>
+                                        <option>Uniques</option>
+                                    </select>
+                                </div>
+                                <div class="fgrp grp-search" style="display:flex; align-items:center; gap:4px;">
+                                    <input id="histSearch" class="inp-search" type="text" placeholder="Search items..." style="width:220px; padding:3px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:6px; color:var(--text-primary); font-size:11px;" />
+                                </div>
+                            </div>
+                            <div id="historyActiveFilters" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
+                        </div>
             <!-- History body (list + details + chart) -->
             <div style="display:flex; flex:1 1 auto; min-height:0;">
             <!-- Left list -->
@@ -409,7 +446,6 @@
     function applySort(list){ return window.OverlayHistory?.applySort?.(list) ?? list; }
     function applyFilters(list){ return window.OverlayHistory?.applyFilters?.(list) ?? list; }
     async function refreshHistory(){ return await window.OverlayHistory?.refreshHistory?.(); }
-    async function tryFallbackScrapeManual(){ return await window.OverlayHistory?.tryFallbackScrapeManual?.(); }
     function recomputeChartSeriesFromStore(){ return window.OverlayHistory?.recomputeChartSeriesFromStore?.(); }
     function updateHistoryChartFromTotals(t){ return window.OverlayHistory?.updateHistoryChartFromTotals?.(t); }
     function drawHistoryChart(){ return window.OverlayHistory?.drawHistoryChart?.(); }
@@ -855,15 +891,6 @@
                     setView('history');
                     // ensure history UI readiness
                     try { updateSessionUI(); } catch {}
-                    // Ensure mask toggle reflects state
-                    try {
-                        const el = document.getElementById('accountMaskToggle');
-                        if (el) {
-                            const masked = localStorage.getItem('xilehud_mask_account') === '1';
-                            el.classList.toggle('active', masked);
-                            el.setAttribute('title', masked ? 'Show account name' : 'Mask account name (for screenshots)');
-                        }
-                    } catch {}
                     try { if (typeof refreshHistoryIfAllowed === 'function') refreshHistoryIfAllowed('nav'); } catch {}
                     // proactively render from store before/while fetching
                     try { if (typeof renderHistoryTotals === 'function') renderHistoryTotals(); } catch {}
@@ -887,21 +914,7 @@
                 });
             }
 
-            // Mask toggle
-            const maskBtn = document.getElementById('accountMaskToggle');
-            if (maskBtn) {
-                maskBtn.addEventListener('click', async () => {
-                    try {
-                        const masked = localStorage.getItem('xilehud_mask_account') === '1';
-                        const next = masked ? '0' : '1';
-                        localStorage.setItem('xilehud_mask_account', next);
-                        // Reflect immediately
-                        maskBtn.classList.toggle('active', next === '1');
-                        maskBtn.setAttribute('title', next === '1' ? 'Show account name' : 'Mask account name (for screenshots)');
-                        await updateSessionUI();
-                    } catch {}
-                });
-            }
+            // Mask toggle feature removed (account name no longer displayed)
 
             // Filters UI wiring
             const minEl = document.getElementById('histMinValue');
@@ -909,8 +922,8 @@
             const catEl = document.getElementById('histCategory');
             const sortEl = document.getElementById('histSort');
             const rarEl = document.getElementById('histRarity');
+            const timeEl = document.getElementById('histTimeframe');
             const searchEl = document.getElementById('histSearch');
-            const topBtn = document.getElementById('histTopSale');
             function applyAndRender(){
                 // Ensure state reference is up-to-date
                 if (!historyState) { try { historyState = window.OverlayHistory?.historyState || historyState; } catch {} }
@@ -928,33 +941,8 @@
             if (catEl) catEl.addEventListener('change', ()=>{ historyState.filters.category = String(catEl.value||''); applyAndRender(); });
             if (sortEl) sortEl.addEventListener('change', ()=>{ historyState.sort = String(sortEl.value||'newest'); applyAndRender(); });
             if (rarEl) rarEl.addEventListener('change', ()=>{ historyState.filters.rarity = String(rarEl.value||''); applyAndRender(); });
+            if (timeEl) timeEl.addEventListener('change', ()=>{ historyState.filters.timeframe = String(timeEl.value||'all'); applyAndRender(); });
             if (searchEl) searchEl.addEventListener('input', ()=>{ historyState.filters.search = String(searchEl.value||'').trim().toLowerCase(); applyAndRender(); });
-            if (topBtn) topBtn.addEventListener('click', ()=>{
-                const list = historyState.items;
-                if (!list.length) return;
-                // Prefer Divine as requested; fallback to currently selected currency if no Divine in view
-                const preferCur = 'divine';
-                let bestIdx = -1; let bestAmt = -1;
-                // first pass: divine
-                list.forEach((it, idx)=>{
-                    const cur = normalizeCurrency(it?.price?.currency||'');
-                    const amt = Number(it?.price?.amount||0);
-                    if (cur===preferCur && amt>bestAmt){ bestAmt=amt; bestIdx=idx; }
-                });
-                if (bestIdx < 0) {
-                    // fallback: selected currency
-                    const fallback = historyState.filters.cur || 'exalted';
-                    list.forEach((it, idx)=>{
-                        const cur = normalizeCurrency(it?.price?.currency||'');
-                        const amt = Number(it?.price?.amount||0);
-                        if (cur===fallback && amt>bestAmt){ bestAmt=amt; bestIdx=idx; }
-                    });
-                }
-                if (bestIdx < 0) bestIdx = 0;
-                historyState.selectedIndex = bestIdx;
-                renderHistoryList();
-                renderHistoryDetail(bestIdx);
-            });
         
 
         // ===== Crafting: Liquid Emotions (delegation only) =====

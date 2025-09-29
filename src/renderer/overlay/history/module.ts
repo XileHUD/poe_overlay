@@ -112,17 +112,16 @@ export async function updateSessionUI(): Promise<boolean> {
     const loginBtn = document.getElementById("poeLoginBtn");
     if (session?.loggedIn) {
       if (loginBtn) {
-        let label = session.accountName ? session.accountName : "Account";
-        try {
-          const masked = localStorage.getItem('xilehud_mask_account') === '1';
-          if (masked && label) label = '***';
-        } catch {}
-        (loginBtn as HTMLButtonElement).textContent = label;
-        (loginBtn as HTMLButtonElement).title = "Logged in to pathofexile.com";
+        (loginBtn as HTMLButtonElement).textContent = "Logout";
+        (loginBtn as HTMLButtonElement).title = "Logout of pathofexile.com";
+        loginBtn.classList.remove('login-state');
+        loginBtn.classList.add('logout-state');
       }
     } else if (loginBtn) {
       (loginBtn as HTMLButtonElement).textContent = "Login";
       (loginBtn as HTMLButtonElement).title = "Login to pathofexile.com";
+      loginBtn.classList.remove('logout-state');
+      loginBtn.classList.add('login-state');
     }
     return !!session?.loggedIn;
   } catch {

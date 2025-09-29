@@ -198,20 +198,6 @@ export function render(list: Omen[]): void {
       .replace(/(?<![A-Za-z0-9>])([+\-]?\d+)(?![A-Za-z0-9<])/g,'<span class="mod-value">$1</span>')
       .replace(/(\d+%)/g,'<span class="mod-value">$1</span>');
   }
-  
-    function highlightTerms(html: string, search: string, tags: string[]): string {
-      const utils: any = (window as any).OverlayUtils;
-      if (!utils?.highlightMatches || !html) return html;
-      const tokens = new Set<string>();
-      if (search) search.split(/\s+/).forEach(t=> t.length>1 && tokens.add(t.toLowerCase()));
-      tags.forEach(t=> t.length>1 && tokens.add(t.toLowerCase()));
-      if (!tokens.size) return html;
-      const saved: string[] = [];
-      let w = html.replace(/<span[^>]*>.*?<\/span>/gi, (m: string)=>{ const i=saved.push(m)-1; return `__SPAN${i}__`; });
-      w = utils.highlightMatches(w, Array.from(tokens), { className: 'hl-term', escapeHtml: false });
-      w = w.replace(/__SPAN(\d+)__/g, (_m: string, g1: string)=> saved[Number(g1)] || '');
-      return w;
-    }
 
   function apply(filter = ""): void {
     if (!wrap) return;
@@ -228,12 +214,6 @@ export function render(list: Omen[]): void {
     state.filtered = state.cache.filter(o => (!f || (o.name||'').toLowerCase().includes(f) || (o.explicitMods||[]).some(m => (m||'').toLowerCase().includes(f))) && matchesTags(o));
     state.filtered.forEach(o => {
       const card = document.createElement('div');
-      const searchTokens = f ? f.split(/\s+/).filter(Boolean) : [];
-      const tagTokens = [...(state.selectedTags as Set<string>)];
-      const modsHtml = (o.explicitMods && o.explicitMods.length) ? `<div style='font-size:11px;'>${(o.explicitMods||[]).map(m => {
-        const base = highlight(m.replace(/<a[^>]*>(.*?)<\/a>/g,'$1'));
-        return highlightTerms(base, searchTokens.join(' '), tagTokens);
-      }).join('<br>')}</div>` : '';
       card.style.background = 'var(--bg-card)';
       card.style.border = '1px solid var(--border-color)';
       card.style.borderRadius = '6px';
@@ -241,7 +221,7 @@ export function render(list: Omen[]): void {
       card.style.display = 'flex';
       card.style.flexDirection = 'column';
       card.style.gap = '4px';
-      card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>${o.image?`<img class='omen-img' src='${o.image}' loading='lazy' decoding='async' style='width:28px; height:28px; object-fit:contain;'>`:''}<div style='font-weight:600;'>${o.name}</div></div><div style='font-size:11px; color:var(--text-muted);'>Stack: ${o.stack_current??'?'} / ${o.stack_max??'?'}</div>${modsHtml}`;
+      card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>${o.image?`<img class='omen-img' src='${o.image}' loading='lazy' decoding='async' style='width:28px; height:28px; object-fit:contain;'>`:''}<div style='font-weight:600;'>${o.name}</div></div><div style='font-size:11px; color:var(--text-muted);'>Stack: ${o.stack_current??'?'} / ${o.stack_max??'?'}</div><div style='font-size:11px;'>${(o.explicitMods||[]).map(m=>highlight(m)).join('<br>')}</div>`;
       wrap.appendChild(card);
     });
     bindImageFallback(panel, '.omen-img', '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><rect width="28" height="28" rx="4" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="8" font-family="sans-serif">?</text></svg>', 0.5);
