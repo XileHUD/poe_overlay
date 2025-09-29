@@ -93,6 +93,61 @@ I usually add features that I personally think would help me save time, so when 
 
 ---
 
+## ❓ WIP FAQ (Work in Progress)
+
+<sub>Early, evolving list. Content will expand as common questions come up. Nothing here is marketing fluff – just straight answers.</sub>
+
+<details>
+<summary><strong>Do you plan on releasing a version for PoE1?</strong></summary>
+<p>
+Definitely. I think PoE2 is heading in a great direction now – 0.3 was by far my most‑played league yet. I'm a min/max player who sweats week 1 for mirrors and then juices as hard as possible. That said, PoE1 is still my "main" game. I play Path of Exile about 95% of the time. Sometimes I'll touch LE or TLI for 2–3 days, but that's it. PoE gives me everything I want: blasting, crafting, trading, and all the little details. I released the PoE2 version first because it's the active league I'm playing right now. I'm confident the PoE1 overlay will be ready for the upcoming league release.
+</p>
+</details>
+
+<details>
+<summary><strong>Why don't you integrate a price check?</strong></summary>
+<p>
+I considered it. In my private version there is one, because I don't like waiting on features I personally need. I left it out publicly because there are already overlays that do price checking very well. I personally recommend <em>Exiled Exchange</em> (and <em>Awakened PoE</em> for PoE1) – in my opinion the best option: slim and feature complete.
+</p>
+</details>
+
+<details>
+<summary><strong>Any other features planned?</strong></summary>
+<p>
+Check the roadmap. I have many ideas because I actively play every day. The current version is a beta – I'll keep adding things I personally find useful over time.
+</p>
+</details>
+
+<details>
+<summary><strong>How long have you played PoE?</strong></summary>
+<p>
+Over a decade. I started a bit after beginning my self‑employed work. My job involves a lot of "observing", which makes it perfect to play games alongside. I think GGG is the best gaming company in the industry; I love their games and don't see myself switching to anything else as a main game.
+</p>
+</details>
+
+<details>
+<summary><strong>Do you have any socials for updates?</strong></summary>
+<p>
+Not yet. Let's first see if the overlay is interesting for people. It's a very specific tool aimed more at hardcore (not the game mode) PoE players – though I think there's useful info for beginners too: lots of data and the merchant history. We'll see where it goes.
+</p>
+</details>
+
+<details>
+<summary><strong>Are you open to improvements?</strong></summary>
+<p>
+For sure – performance or new features. I have an open mind; if I think it genuinely improves the overlay, I'll add it.
+</p>
+</details>
+
+<details>
+<summary><strong>Where to contact?</strong></summary>
+<p>
+Open an Issue here on GitHub, reply in the Reddit thread, or (soon) reach out via a small Discord.
+</p>
+</details>
+
+---
+
 ## 🐞 Reporting Issues
 
 If you encounter a bug or have a suggestion, please create an issue on the **[GitHub Issues page](https://github.com/XileHUD/poe_overlay/issues)**. You can also report issues in the Reddit thread.
