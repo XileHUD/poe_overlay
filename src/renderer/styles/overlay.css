@@ -852,6 +852,23 @@ body {
 .history-detail-card .currency-divine  { background:#ffd24d; color:#1a1a1a; border-color:#e0b939; }
 .history-detail-card .currency-annul   { background:#7b40b3; color:#fff; border-color:#7b40b3; }
 
+/* Quality badge (merchant history item detail) */
+.history-detail-card .quality-badge {
+        display:inline-block;
+        padding:2px 6px;
+        border-radius:6px;
+        background:linear-gradient(135deg,#2f3b46,#1f252b);
+        border:1px solid #3d4a55;
+        font-size:11px;
+        font-weight:600;
+        letter-spacing:0.5px;
+        color:#9fd8ff;
+    margin-left:6px;
+}
+@media (prefers-color-scheme: light) {
+    .history-detail-card .quality-badge { background:#e0ecf5; border-color:#b5c7d4; color:#225066; }
+}
+
 .history-detail-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);

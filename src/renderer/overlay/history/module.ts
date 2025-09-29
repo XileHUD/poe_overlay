@@ -863,6 +863,26 @@ export function renderHistoryDetail(idx: number): void {
   const cur = normalizeCurrency(it?.price?.currency ?? it?.currency ?? "");
   const amt = it?.price?.amount ?? it?.amount ?? "";
   const curClass = cur ? `currency-${cur}` : "";
+  // Quality (look for property named/containing Quality or type 6)
+  let qualityValue = '';
+  try {
+    const props: any[] = Array.isArray(item?.properties) ? item.properties : [];
+    for (const p of props) {
+      const n = (p?.name||'').toString().toLowerCase();
+      if (n.includes('quality') || p?.type === 6) {
+        // Values shape: [["+20%",1]] or similar
+        if (Array.isArray(p?.values) && p.values.length) {
+          const first = p.values[0];
+          if (Array.isArray(first) && first[0]) {
+            qualityValue = first[0].toString();
+          } else if (typeof first === 'string') {
+            qualityValue = first;
+          }
+        }
+        if (qualityValue) break;
+      }
+    }
+  } catch {}
   
   function collapseBracketAlternates(str: string): string {
     if (!str) return str;
@@ -975,7 +995,7 @@ export function renderHistoryDetail(idx: number): void {
                 <div style="width:100%; max-width:820px;">
                 <div class="history-detail-card ${rarityClass}">
                     <div class="card-header">
-                        <div class="card-title">${escapeHtml(name)}</div>
+            <div class="card-title">${escapeHtml(name)}${qualityValue ? ` <span class=\"quality-badge\" title=\"Quality\">${escapeHtml(qualityValue.replace(/^\+/, ''))}</span>` : ''}</div>
                         <div>
                             <span class="price-badge large ${curClass}" title="Sold price"><span class="amount">${amt}x</span> ${cur || ""}</span>
                         </div>
@@ -988,7 +1008,9 @@ export function renderHistoryDetail(idx: number): void {
                             <div class="card-sub">${escapeHtml(base)}${ilvl ? ` • iLvl ${ilvl}` : ""}${rarity ? ` • <span class="rarity-label ${rarityClass}">${escapeHtml(rarity)}</span>` : ""}${
     corrupted ? ` <span class="badge-corrupted">Corrupted</span>` : ""
   }</div>
-                            ${socketsHtml || runeModsHtml ? `<div style=\"margin-top:6px;\">${socketsHtml}${runeModsHtml}</div>` : ''}
+              ${(socketsHtml || runeModsHtml) ? `<div style=\"margin-top:6px; display:flex; flex-direction:column; gap:4px;\">`
+                + (socketsHtml || runeModsHtml ? `<div>${socketsHtml}${runeModsHtml}</div>` : '')
+                + `</div>` : ''}
                             ${notableLines.length ? `<div class=\"mod-section\"><div class=\"mod-section-title\">Notables</div><div class=\"mod-lines explicit-mods\">${notableLines.map(l=>`<div class=\"mod-line explicit\" data-field=\"notable\">${escapeHtml(l)}</div>`).join('')}</div></div>` : ''}
                             ${
                               Array.isArray(implicits) && implicits.length > 0
