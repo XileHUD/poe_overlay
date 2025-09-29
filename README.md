@@ -22,37 +22,56 @@ I initially created this HUD for my personal use. As a self-employed trader, I s
 
 ## ✨ Features
 
-> (All original feature text preserved; now presented as a list for readability)
+### Merchant History
+One of the core motivations for this project. In-game, the vendor history is capped at the last 100 items and doesn't show the items themselves. XileHUD provides a local, searchable, and filterable history of your merchant interactions, allowing you to save and analyze more than just the last 100 transactions.
+<!-- Screenshot placeholder: docs/images/merchant-history.png -->
 
-- Merchant History: One of the core motivations for this project. In-game, the vendor history is capped at the last 100 items and doesn't show the items themselves. XileHUD provides a local, searchable, and filterable history of your merchant interactions, allowing you to save and analyze more than just the last 100 transactions.
-- Detailed Modifier Overview: Get an in-depth look at item modifiers with advanced filters, weighting, and more. Instantly understand the power of an item.
-- Crafting Currency Helper: Ever wondered about the different Essences, Omens, or Runes available? Instead of manually searching the trade site, simply press Ctrl+Q on any currency to see a detailed, filterable list of what they do.
-- Smart Clipboard: The overlay is intelligent. If you copy a rare Strength-based chestplate, for example, the modifiers page will automatically open with the "STR Chest" category pre-selected. This functionality extends to Omens, Essences, Catalysts, Uniques, Flasks, Relics, and much more, saving you valuable clicks.
-- Character Planner: View all available Gems, Atlas Passives, Keystones, and Ascendancy passives. Filter everything to your needs to plan your next build or optimize your current one. A comprehensive glossary is also included.
-- Quest Passives Helper: With the absence of the /passives command in PoE2 and the increased number of campaign rewards, this tool is essential. Track and filter all sources of Spirit, passive points, resistances, and attributes. Check them off as you collect them to ensure you never miss a permanent character boost again.
-- Item Database: Browse all base items and Uniques in the game through a clean, organized interface with powerful filtering options. For instance, find the highest evasion base armor with just two clicks.
-- Map Regex Tool: A simple tool to make juicing maps more straightforward. Select the mods you want or don't want, and copy the generated regex directly into the game.
-- Focused Gaming: The overlay is designed to be unobtrusive and can be quickly toggled with a hotkey, keeping you focused on the game.
-- Local Database: Most features are fully local and can be used offline. An internet connection and account authentication are only required for the Merchant History to fetch your data from the PoE servers.
+### Detailed Modifier Overview
+Get an in-depth look at item modifiers with advanced filters, weighting, and more. Instantly understand the power of an item.
+<!-- Screenshot placeholder: docs/images/modifier-overview.png -->
+
+### Crafting Currency Helper
+Ever wondered about the different Essences, Omens, or Runes available? Instead of manually searching the trade site, simply press Ctrl+Q on any currency to see a detailed, filterable list of what they do.
+<!-- Screenshot placeholder: docs/images/currency-helper.png -->
+
+### Smart Clipboard
+The overlay is intelligent. If you copy a rare Strength-based chestplate, for example, the modifiers page will automatically open with the "STR Chest" category pre-selected. This functionality extends to Omens, Essences, Catalysts, Uniques, Flasks, Relics, and much more, saving you valuable clicks.
+<!-- Screenshot placeholder: docs/images/smart-clipboard.png -->
+
+### Character Planner
+View all available Gems, Atlas Passives, Keystones, and Ascendancy passives. Filter everything to your needs to plan your next build or optimize your current one. A comprehensive glossary is also included.
+<!-- Screenshot placeholder: docs/images/character-planner.png -->
+
+### Quest Passives Helper
+With the absence of the /passives command in PoE2 and the increased number of campaign rewards, this tool is essential. Track and filter all sources of Spirit, passive points, resistances, and attributes. Check them off as you collect them to ensure you never miss a permanent character boost again.
+<!-- Screenshot placeholder: docs/images/quest-passives.png -->
+
+### Item Database
+Browse all base items and Uniques in the game through a clean, organized interface with powerful filtering options. For instance, find the highest evasion base armor with just two clicks.
+<!-- Screenshot placeholder: docs/images/item-database.png -->
+
+### Map Regex Tool
+A simple tool to make juicing maps more straightforward. Select the mods you want or don't want, and copy the generated regex directly into the game.
+<!-- Screenshot placeholder: docs/images/map-regex.png -->
+
+### Focused Gaming
+The overlay is designed to be unobtrusive and can be quickly toggled with a hotkey, keeping you focused on the game.
+
+### Local Database
+Most features are fully local and can be used offline. An internet connection and account authentication are only required for the Merchant History to fetch your data from the PoE servers.
 
 ---
 
 ## 🚀 Quick Start
 
-Download the portable EXE from the Releases page.
-
-Run the application (as it's unsigned, you may need to click “More info → Run anyway”).
-
-Launch Path of Exile 2 (Windowed or Borderless Fullscreen is recommended).
-
-In-game, hover over an item and press Ctrl+C to copy its data.
-
-Press Ctrl+Q to toggle the overlay panel and view the item's details.
-
-### System Tray
-
-- Hide or restore the overlay from the system tray icon.
-- Right-click the tray icon to quit the application.
+1. Download the portable EXE from the [Releases](https://github.com/XileHUD/poe_overlay/releases/latest) page.
+2. Run the application (unsigned: “More info → Run anyway”).
+3. Launch Path of Exile 2 (Windowed or Borderless Fullscreen recommended).
+4. Hover an item and press `Ctrl+C` to copy its data.
+5. Press `Ctrl+Q` to toggle the overlay panel and view the item's details.
+6. System Tray:
+	- Left click: show / hide
+	- Right click: quit
 
 ---
 
