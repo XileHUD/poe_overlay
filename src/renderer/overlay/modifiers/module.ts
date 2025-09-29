@@ -494,9 +494,28 @@ export function renderFilteredContent(data: any){
               matchesIlvl = (baseIlvl >= minCap && baseIlvl <= maxCap);
             }
           }
+          // Additional tier-level pruning by active search term (feature: hide subtiers that don't contain search string when parent mod matches via tag etc.)
+          if (searchTerm && newTiers.length > 0) {
+            const st = searchTerm;
+            const tierMatches = (t:any) => {
+              const txt = (t?.text_plain || t?.text || '').toString().toLowerCase();
+              return txt.includes(st);
+            };
+            const filteredBySearch = newTiers.filter(tierMatches);
+            // Only prune if at least one tier matches; if zero match we leave handling to overall mod filtering below
+            if (filteredBySearch.length > 0 && filteredBySearch.length < newTiers.length) {
+              newTiers = filteredBySearch;
+            } else if (filteredBySearch.length === 0) {
+              // If none of the tiers themselves match, but parent text matched due to combined description lines, treat entire mod as non-match for search
+              if (matchesSearch) {
+                // Parent matched but not subtiers -> hide all tiers so card collapses (empty tiers array) while still allowing other filters to exclude if needed
+                newTiers = [];
+              }
+            }
+          }
           if (!(matchesSearch && matchesTags && matchesAttribute && matchesIlvl)) return null;
           const copy = { ...mod };
-          if (ilvlFilteringActive) copy.tiers = newTiers; // pruned tiers
+          if (ilvlFilteringActive || searchTerm) copy.tiers = newTiers; // pruned tiers for ilvl or search
           // Recompute mod weight from remaining tiers if tier weights exist
           if (Array.isArray(copy.tiers) && copy.tiers.length>0) {
             const tw: number[] = copy.tiers.map((t:any)=> Number(t.weight||0)).filter((v:number)=>v>0);
