@@ -170,7 +170,7 @@ Pull requests are welcome! Some helpful areas for contribution include:
 
 ## 📜 License
 
-MIT
+Licensed under **GNU GPLv3** (see `LICENSE`).
 
 This project is not affiliated with or endorsed by Grinding Gear Games.
 
