@@ -183,8 +183,9 @@ body {
     max-height: none !important; /* allow to expand with window */
 }
 #historyDetail { 
-  min-height: 0 !important; 
-  overflow-y: auto; 
+    min-height: 0 !important; 
+    overflow: hidden !important; /* prevent internal scrollbar; content must fit */
+    display:flex;
 }
 
 /* Force scrollbar visibility on history list */
@@ -890,8 +891,11 @@ body {
 .history-detail-card .card-header { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px; }
 .history-detail-card .card-title { font-weight:700; font-size:14px; }
 .history-detail-card .card-sub { color:var(--text-secondary); }
-.history-detail-card .grid { display:grid; grid-template-columns: 128px 1fr; gap:12px; align-items:start; }
-.history-item-icon { width:128px; height:auto; border:1px solid var(--border-color); border-radius:6px; background: #111; object-fit: contain; }
+/* Detail card fills its container so image + mods share vertical space without forcing scroll */
+.history-detail-card { display:flex; flex-direction:column; max-height:100%; }
+.history-detail-card .grid { display:grid; grid-template-columns: 128px 1fr; gap:12px; align-items:start; max-width:100%; flex:1 1 auto; min-height:0; }
+/* Constrain icon: fit within remaining vertical space without forcing parent scroll */
+.history-item-icon { width:128px; height:auto; max-height:100%; border:1px solid var(--border-color); border-radius:6px; background:#111; object-fit:contain; display:block; margin:0 auto; transition:height .15s ease; }
     body.view-history #historyActiveFilters { padding:6px 0 8px 0; }
     /* Ensure active filters always appear on their own line below the control row */
     #historyActiveFilters { width:100%; flex: 0 0 auto; display:flex; flex-wrap:wrap; gap:6px; }
@@ -1012,7 +1016,23 @@ body.crafting-mode #controlPanel { display: none !important; }
 }
 
 /* Icon becomes responsive (between 80px and 128px, scaling up to 20vw) */
-.history-item-icon { width: clamp(80px, 20vw, 128px); }
+/* Responsive icon clamp with updated max-height */
+/* Removed width clamp override to let JS scaling control height; keep responsive width via media queries if needed */
+/* Prevent inner scrollbars in 60/40 layout; allow page scroll only on list side */
+#historyDetail { scrollbar-width:none; }
+#historyDetail::-webkit-scrollbar { width:0; height:0; }
+.history-detail-card { overflow:hidden; }
+.history-detail-chart-grid { overflow:hidden; }
+
+/* Detail + Chart 60/40 split (falls back to vertical on smaller screens via existing breakpoints) */
+.history-detail-chart-grid { width:100%; }
+.history-detail-chart-grid #historyDetail { scrollbar-gutter:stable; }
+.history-detail-chart-grid #historyChartWrap { scrollbar-gutter:stable; }
+@media (max-width:1180px) {
+    .history-detail-chart-grid { flex-direction:column; }
+    .history-detail-chart-grid #historyDetail { flex:0 0 auto; max-width:100%!important; }
+    .history-detail-chart-grid #historyChartWrap { flex:0 0 auto; max-width:100%!important; border-left:none!important; border-top:1px solid var(--border-color); }
+}
 
 /* Filter row prioritization: reorder essentials first on wrap */
 /* Assign classes in DOM (JS already gives ids; use attribute selectors fallback) */

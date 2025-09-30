@@ -1041,6 +1041,43 @@ export function renderHistoryDetail(idx: number): void {
       img.style.opacity = '0.5';
       img.style.filter = 'grayscale(1)';
     }, { once: true });
+    const applyScale = () => {
+      try {
+        const host = document.getElementById('historyDetail');
+        if (!host) return;
+        const hostH = host.clientHeight || 0;
+        if (!hostH) return;
+        // Account for header + padding within card (~160px worst case); clamp min
+        const maxAvail = Math.max(140, hostH - 190);
+        const naturalH = img.naturalHeight || maxAvail;
+        if (naturalH > maxAvail) {
+            img.style.height = maxAvail + 'px';
+            img.style.width = 'auto';
+        } else {
+            img.style.height = '';
+            img.style.width = '';
+        }
+      } catch {}
+    };
+    if (img.complete) applyScale(); else img.addEventListener('load', applyScale, { once: true });
+    if (!(window as any)._histImgResizeAttach2) {
+      (window as any)._histImgResizeAttach2 = true;
+      let raf:number|null=null;
+      window.addEventListener('resize', () => { if(raf) cancelAnimationFrame(raf); raf=requestAnimationFrame(()=>{
+        document.querySelectorAll('#historyDetail img.history-item-icon').forEach(imEl => {
+          const im = imEl as HTMLImageElement;
+          try {
+            const host = document.getElementById('historyDetail');
+            if (!host) return;
+            const hostH = host.clientHeight || 0;
+            const maxAvail = Math.max(140, hostH - 190);
+            const naturalH = im.naturalHeight || maxAvail;
+            if (naturalH > maxAvail) { im.style.height = maxAvail + 'px'; im.style.width = 'auto'; }
+            else { im.style.height = ''; im.style.width = ''; }
+          } catch {}
+        });
+      }); });
+    }
   });
 }
 
