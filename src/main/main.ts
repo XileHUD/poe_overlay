@@ -484,48 +484,86 @@ class OverlayApp {
         this.pendingItemData = null;
         this.pendingTab = null;
         this.shortcutAwaitingCapture = true;
-        this.lastCopyTimestamp = now;
-        this.armedCaptureUntil = now + 600; // capture window only (we will decide before opening)
+        this.lastCopyTimestamp = now;        
+        // Extend armed window to allow re-copy attempts and slower clipboard population
+        this.armedCaptureUntil = now + 1600; 
         try { this.clipboardMonitor.resetLastSeen(); } catch {}
-        // Simulate copy BEFORE any possible overlay focus change
+
+        // Capture baseline (old) clipboard text so we can ignore stale content
+        let baseline = '';
+        try { baseline = (clipboard.readText()||'').trim(); } catch {}
+        // Clear clipboard so any new copy is definitely detected
+        try { clipboard.clear(); } catch {}
+
+        // First simulated copy BEFORE any decision / focus changes
         this.trySimulateCtrlC();
-        // Perform a focused capture attempt (poll up to ~260ms)
-        this.performImmediateCapture().then(result => {
+
+        // Perform a focused capture attempt (poll up to ~550ms, ignoring baseline)
+        this.performImmediateCapture(baseline).then(async result => {
+            // If we failed to parse AND clipboard still equals baseline (or empty), try a second copy
+            const stillBaseline = (() => {
+                try {
+                    const curr = (clipboard.readText()||'').trim();
+                    return !result.parsed && (!curr || curr === baseline);
+                } catch { return !result.parsed; }
+            })();
+            if (stillBaseline) {
+                // Retry copy once after a short delay
+                await new Promise(r=>setTimeout(r,90));
+                this.trySimulateCtrlC();
+                // Second window (~400ms)
+                const retry = await this.performImmediateCapture(baseline);
+                if (retry.parsed) {
+                    result = retry; // adopt successful retry
+                }
+            }
             this.shortcutAwaitingCapture = false;
             const parsed = result?.parsed;
             if (parsed && parsed.category && parsed.category !== 'unknown') {
                 // SUCCESS PATH
                 if (!wasVisible) this.showOverlay();
-                this.safeSendToOverlay('set-active-tab','modifiers');
-                if ((parsed.rarity||'').toLowerCase()==='unique') {
-                    this.showUniqueItem(parsed, false);
+                const isSocketable = parsed.category === 'Socketables';
+                if (isSocketable) {
+                    // Directly open crafting -> socketables, skip modifiers flash
+                    this.safeSendToOverlay('set-active-tab','crafting');
+                    this.safeSendToOverlay('invoke-action','socketables');
                 } else {
-                    this.safeSendToOverlay('set-active-category', parsed.category);
-                    // Provide item + modifiers payload
-                    (async () => {
-                        let modifiers: any[] = [];
-                        try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
-                        this.safeSendToOverlay('item-data', { item: parsed, modifiers });
-                    })();
+                    this.safeSendToOverlay('set-active-tab','modifiers');
+                    if ((parsed.rarity||'').toLowerCase()==='unique') {
+                        this.showUniqueItem(parsed, false);
+                    } else {
+                        this.safeSendToOverlay('set-active-category', parsed.category);
+                        (async () => {
+                            let modifiers: any[] = [];
+                            try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
+                            this.safeSendToOverlay('item-data', { item: parsed, modifiers });
+                        })();
+                    }
                 }
+                // Disarm further clipboard-driven fallback once we succeeded
+                this.armedCaptureUntil = 0;
+                return; // Prevent fallback override
             } else {
                 // FALLBACK PATH
                 if (!wasVisible) this.showOverlay();
                 this.safeSendToOverlay('set-active-tab','modifiers');
                 this.safeSendToOverlay('set-active-category','Gloves_int');
+                // Disarm after fallback as well
+                this.armedCaptureUntil = 0;
             }
         });
         // If overlay already visible we don't hide/show yet; capture function will update it when done.
     }
 
     // Poll clipboard briefly and attempt to parse; returns parsed item or null
-    private async performImmediateCapture(): Promise<{ raw: string|null; parsed: any|null }> {
+    private async performImmediateCapture(baseline?: string): Promise<{ raw: string|null; parsed: any|null }> {
         let lastRaw = '';
-        const deadline = Date.now() + 260; // ~260ms budget
+        const deadline = Date.now() + 550; // extended budget for slower clipboard population
         while (Date.now() < deadline) {
             let raw: string = '';
             try { raw = (clipboard.readText()||'').trim(); } catch {}
-            if (raw && raw.length > 25 && raw !== lastRaw) {
+            // Ignore if unchanged, too short, or matches baseline (old) content
+            if (raw && raw.length > 25 && raw !== lastRaw && (!baseline || raw !== baseline)) {
                 lastRaw = raw;
                 try {
                     const parsed = await this.itemParser.parse(raw);
@@ -570,12 +608,20 @@ class OverlayApp {
                             this.shortcutAwaitingCapture = false;
                             return;
                         }
-                    let modifiers: any[] = [];
-                    try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
-                    this.safeSendToOverlay('set-active-category', parsed.category);
-                    if (!this.overlayLoaded) this.pendingCategory = parsed.category;
-                    this.showOverlay({ item: parsed, modifiers }, { silent: allowPinnedPassive });
-                    if (!this.overlayLoaded) this.pendingItemData = { item: parsed, modifiers };
+                    const isSocketable = parsed.category === 'Socketables';
+                    if (isSocketable) {
+                        // Direct crafting view for socketables
+                        this.safeSendToOverlay('set-active-tab','crafting');
+                        this.safeSendToOverlay('invoke-action','socketables');
+                        this.showOverlay(undefined, { silent: allowPinnedPassive });
+                    } else {
+                        let modifiers: any[] = [];
+                        try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
+                        this.safeSendToOverlay('set-active-category', parsed.category);
+                        if (!this.overlayLoaded) this.pendingCategory = parsed.category;
+                        this.showOverlay({ item: parsed, modifiers }, { silent: allowPinnedPassive });
+                        if (!this.overlayLoaded) this.pendingItemData = { item: parsed, modifiers };
+                    }
                     this.armedCaptureUntil = 0;
                     this.shortcutAwaitingCapture = false;
                 } else {

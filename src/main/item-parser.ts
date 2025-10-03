@@ -191,10 +191,15 @@ export class ItemParser {
             requirements.level = parseInt(levelMatch[1]);
         }
 
-        // Extract attributes
-        const strMatch = reqLine.match(/(\d+) Str/);
-        const dexMatch = reqLine.match(/(\d+) Dex/);
-        const intMatch = reqLine.match(/(\d+) Int/);
+    // Extract attributes (allow optional parenthetical like '(augmented)' between number and attribute)
+    // Examples:
+    //   "Requires: Level 65, 104 (augmented) Int"
+    //   "Requires: Level 70, 95 Str, 102 (augmented) Int"
+    //   "Requires: Level 52, 88 Dex (unmet)"
+    const attrPattern = (attr: string) => new RegExp(`(\\d+)(?:\\s*\\(.*?\\))?\\s+${attr}\\b`, 'i');
+    const strMatch = reqLine.match(attrPattern('Str'));
+    const dexMatch = reqLine.match(attrPattern('Dex'));
+    const intMatch = reqLine.match(attrPattern('Int'));
 
         if (strMatch) requirements.str = parseInt(strMatch[1]);
         if (dexMatch) requirements.dex = parseInt(dexMatch[1]);
@@ -405,15 +410,22 @@ export class ItemParser {
             return 'Relics';
         }
 
-        // Tablet: detect specific precursor tablet variants by baseType/name
+        // Tablet: detect specific precursor tablet variants by baseType/name.
+        // Clipboard copies show Item Class: Tablet and the name like
+        // "Brimming Breach Precursor Tablet of the Invasion".
+        // We must map variant keywords ONLY for tablets; other gear detection unchanged.
         if (baseCategory === 'Tablet') {
-            const bt = (baseType || name || '').toLowerCase();
-            if (bt.includes('breach precursor tablet')) return 'Breach_Precursor_Tablet';
-            if (bt.includes('expedition precursor tablet')) return 'Expedition_Precursor_Tablet';
-            if (bt.includes('delirium precursor tablet')) return 'Delirium_Precursor_Tablet';
-            if (bt.includes('ritual precursor tablet')) return 'Ritual_Precursor_Tablet';
-            if (bt.includes('overseer precursor tablet')) return 'Overseer_Precursor_Tablet';
-            if (bt.includes('precursor tablet')) return 'Precursor_Tablet';
+            const source = (name + ' ' + baseType).trim().toLowerCase();
+            // Normalize multiple spaces
+            const bt = source.replace(/\s+/g, ' ');
+            // Order matters: match the more specific prefixed variants first.
+            if (/breach precursor tablet/.test(bt)) return 'Breach_Precursor_Tablet';
+            if (/expedition precursor tablet/.test(bt)) return 'Expedition_Precursor_Tablet';
+            if (/delirium precursor tablet/.test(bt)) return 'Delirium_Precursor_Tablet';
+            if (/ritual precursor tablet/.test(bt)) return 'Ritual_Precursor_Tablet';
+            if (/overseer precursor tablet/.test(bt)) return 'Overseer_Precursor_Tablet';
+            // Generic (no other domain keyword besides optional prefixes like Brimming etc.)
+            if (/precursor tablet/.test(bt)) return 'Precursor_Tablet';
             return 'Tablet';
         }
 
