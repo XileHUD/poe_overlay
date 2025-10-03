@@ -29,6 +29,7 @@ try {
 class OverlayApp {
     private mainWindow: BrowserWindow | null = null;
     private overlayWindow: BrowserWindow | null = null;
+    private splashWindow: BrowserWindow | null = null;
     private clipboardMonitor!: ClipboardMonitor;
     private itemParser!: ItemParser;
     private modifierDatabase!: ModifierDatabase;
@@ -54,19 +55,26 @@ class OverlayApp {
 
     constructor() {
         app.whenReady().then(async () => {
+            this.showSplash('Initializing...');
             // Load core services
             // Resolve initial data path (JSON-only). Prefer env or config; fallback to repo data folder.
             const initialDataPath = this.resolveInitialDataPath();
+            this.updateSplash('Loading modifier database');
             this.modifierDatabase = new ModifierDatabase(initialDataPath);
             try { await (this.modifierDatabase as any).load?.(); } catch (e) { console.warn('Failed loading modifier DB', e); }
+            this.updateSplash('Starting parsers');
             this.itemParser = new ItemParser();
             this.clipboardMonitor = new ClipboardMonitor();
             this.keyboardMonitor = new KeyboardMonitor();
             try { this.keyboardMonitor.start(); } catch {}
 
+            this.updateSplash('Creating overlay window');
             this.createOverlayWindow();
+            this.updateSplash('Creating tray');
             this.createTray();
+            this.updateSplash('Registering shortcuts');
             this.registerShortcuts();
+            this.updateSplash('Setting up services');
             this.setupIPC();
             this.setupClipboardMonitoring();
             this.initImageCache();
@@ -90,7 +98,73 @@ class OverlayApp {
                 try { (this.clipboardMonitor as any).stop?.(); } catch {}
                 try { this.keyboardMonitor?.stop(); } catch {}
             });
+
+            // Finalize splash
+            this.updateSplash('Loaded and ready (running in background)');
+            // Keep the final ready message visible a bit longer so users notice
+            setTimeout(()=> this.closeSplash(), 3000);
         });
+    }
+
+    private showSplash(initial: string) {
+        try {
+            if (this.splashWindow) return;
+            const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+            this.splashWindow = new BrowserWindow({
+                width: 360,
+                height: 200,
+                x: Math.round(width/2 - 180),
+                y: Math.round(height/2 - 100),
+                frame: false,
+                transparent: true,
+                resizable: false,
+                alwaysOnTop: true,
+                skipTaskbar: true,
+                show: true,
+                webPreferences: { nodeIntegration: false, contextIsolation: true }
+            });
+            // Minimal splash (no logo) – emphasize product name with subtle gradient
+                                    const html = `<!DOCTYPE html><html><head><meta charset='utf-8'/><title>XileHUD</title>
+                                    <style>
+                                    :root { color-scheme: dark; }
+                                    body { margin:0; font-family: system-ui, Arial, sans-serif; background: rgba(0,0,0,0); color:#d6d6dc; width:100%; height:100%; }
+                                    .wrap { position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:100%; max-width:340px; padding:16px 22px 20px; box-sizing:border-box; display:flex; flex-direction:column; align-items:center; gap:11px; background:rgba(18,18,22,0.94); border:1px solid #2e2e35; border-radius:16px; box-shadow:0 6px 22px -8px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.02); backdrop-filter:blur(6px); }
+                                    .title { font-size:22px; font-weight:650; letter-spacing:1px; background:linear-gradient(90deg,#cdb8ff,#a98eff 55%,#7b5fff); -webkit-background-clip:text; color:transparent; filter:drop-shadow(0 1px 2px rgba(0,0,0,0.55)); text-align:center; }
+                                    .subtitle { font-size:11px; opacity:0.60; letter-spacing:0.6px; margin-top:-6px; text-transform:uppercase; text-align:center; }
+                                    .status { font-size:12px; opacity:0.90; min-height:18px; text-align:center; max-width:300px; line-height:1.35; padding-top:2px; }
+                                    .spinner { width:22px; height:22px; border:3px solid #3f3f47; border-top-color:#b190ff; border-radius:50%; animation:spin 0.85s linear infinite; filter:drop-shadow(0 0 3px rgba(111,84,255,0.35)); }
+                                    @keyframes spin { to { transform:rotate(360deg);} }
+                                    .ready { color:#92ff9d; font-weight:520; }
+                                    .fade-in { animation:fadeIn .35s ease-out; }
+                                    @keyframes fadeIn { from { opacity:0; transform:translateY(4px);} to { opacity:1; transform:translateY(0);} }
+                                    </style></head><body>
+                                    <div class='wrap fade-in'>
+                                        <div class='title'>XILEHUD</div>
+                                        <div class='subtitle'>Overlay is starting…</div>
+                                        <div class='spinner' id='sp'></div>
+                                        <div class='status' id='st'></div>
+                                    </div>
+                                    <script>document.getElementById('st').textContent=${JSON.stringify(initial)};</script>
+                                    </body></html>`;
+            this.splashWindow.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
+        } catch (e) { console.warn('splash create failed', e); }
+    }
+
+    private updateSplash(msg: string) {
+        try {
+            if (!this.splashWindow || this.splashWindow.isDestroyed()) return;
+            this.splashWindow.webContents.executeJavaScript(`(function(){ const st=document.getElementById('st'); if(st) st.textContent=${JSON.stringify(msg)}; })();`).catch(()=>{});
+        } catch {}
+    }
+
+    private closeSplash() {
+        try {
+            if (!this.splashWindow || this.splashWindow.isDestroyed()) return;
+            this.splashWindow.webContents.executeJavaScript(`(function(){ const sp=document.getElementById('sp'); if(sp) sp.remove(); const st=document.getElementById('st'); if(st){ st.classList.add('ready'); } })();`).catch(()=>{});
+            const ref = this.splashWindow;
+            this.splashWindow = null;
+            setTimeout(()=> { try { ref.close(); } catch {} }, 380);
+        } catch {}
     }
 
     private resolveInitialDataPath(): string {
