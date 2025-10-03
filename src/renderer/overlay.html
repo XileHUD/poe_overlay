@@ -688,7 +688,9 @@
                         const isEssence = /essence/i.test(name) || /essence/i.test(baseType) || /essences?/i.test(blob);
                         const isOmen = /omen/i.test(blob);
                         const isCatalyst = /catalyst/i.test(blob);
-                        const isSocketable = /socketable|socketables|waystone|waystones/i.test(blob);
+                        // Socketables exclude Waystones now; handle Waystones separately so they stay in Modifiers
+                        const isSocketable = /socketable|socketables/i.test(blob);
+                        const isWaystone = /waystone|waystones/i.test(blob) || /^Waystones?_?/i.test(category || '');
                         // Fix: Liquid Emotions detection based on name, not category
                         const isEmotion = /liquid\s*(emotion|envy|hatred|fear|anguish|despair|suffering|greed|contempt|ire)/i.test(name) || /liquid\s*emotion/i.test(baseType);
                         // Fix: Gems should route to Character > Gems, not modifiers  
@@ -729,6 +731,25 @@
                                 () => !!(window.OverlaySocketables && typeof window.OverlaySocketables.show === 'function'),
                                 async () => { try { await showSocketables(); } catch {} }
                             );
+                            return;
+                        }
+
+                        if (isWaystone) {
+                            // Keep Waystones in Modifiers tab; derive Low/Mid/Top category if provided by backend
+                            setView('modifiers');
+                            setHeader('Waystones');
+                            // Decide variant: prefer provided category, else simple heuristic
+                            let wsCat = (category || '').startsWith('Waystones_') ? category : '';
+                            if (!wsCat) {
+                                // Heuristic by Area Level or Tier inside blob if needed (client side fallback)
+                                const tierMatch = blob.match(/Waystone\s*Tier\s*(\d+)/i) || name.match(/Tier\s*(\d+)/i);
+                                if (tierMatch) {
+                                    const t = parseInt(tierMatch[1], 10);
+                                    if (t >=1 && t <=5) wsCat = 'Waystones_Low'; else if (t<=10) wsCat = 'Waystones_Mid'; else wsCat = 'Waystones_Top';
+                                }
+                            }
+                            if (!wsCat) wsCat = 'Waystones_Low';
+                            try { window.electron?.ipcRenderer?.send('set-active-category', wsCat); } catch {}
                             return;
                         }
 
