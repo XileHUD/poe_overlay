@@ -343,8 +343,47 @@ class OverlayApp {
                 'iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABYUlEQVRYR+2WwQ3CMBBF/4oAUgAJIAGkAAmgABJAAkgAJIAG0qXQm5mQx2tW1vJvce7M9nHfT0S2JgIIYQQQgghhBBCL4A0yX8gJX6AE2A3wE5gDdA3kJmYDTJ17G0Q+u+J6AK6BrV3Q5T6I27wfWZ3vNJTQdD5WWgG1bYx1iZ8AsxQ6L5KbAEOuAvxwD0WwgrXcB2Pyc/B4nWkB8kXgJd3EItgFv6dL+y7JvBButlTB4QXhu7tyeII7wyb+K4HI1EawySGR4p+Hj6xV8Kf6bH0M7d2LZg55i1DYwFKwhbMHDfN9CH8HxtSV/T9OQpB2gXtCfgT6AKqgCqgCqoAqoAqsA5u2p90vUS6oMteYgz1xTsy7soE5FMX57N0w5re2kc4Tkm9Apu1y3bqk8J7Tb9DhK4aN6HuPgS1Bf6GvoM1Ay6R+QSs8g/An0CtMZoZhBBCCCGEEEIIIYT8QvwB6PCXh38XNbcAAAAASUVORK5CYII=', 'base64');
             trayIcon = nativeImage.createFromBuffer(placeholder);
         }
-        // Resize for tray use (Windows often expects 16x16 / 24x24); we keep original if square and <=32.
-        if (trayIcon.getSize().width > 32) trayIcon = trayIcon.resize({ width: 24, height: 24 });
+        // Attempt to crop transparent padding so the visible glyph appears larger in the tray.
+        try {
+            if (trayIcon) {
+                const size = trayIcon.getSize();
+                if (size.width <= 0 || size.height <= 0) throw new Error('invalid icon size');
+                // Only crop if icon is large (e.g. 64+); .ico may include padding that makes it look tiny.
+                if (size.width >= 48 && size.height >= 48) {
+                    const buf = trayIcon.toBitmap(); // BGRA
+                    const stride = size.width * 4;
+                    let minX = size.width, minY = size.height, maxX = 0, maxY = 0;
+                    for (let y = 0; y < size.height; y++) {
+                        for (let x = 0; x < size.width; x++) {
+                            const idx = y * stride + x * 4;
+                            const a = buf[idx + 3];
+                            if (a > 16) { // treat > ~6% alpha as visible
+                                if (x < minX) minX = x;
+                                if (y < minY) minY = y;
+                                if (x > maxX) maxX = x;
+                                if (y > maxY) maxY = y;
+                            }
+                        }
+                    }
+                    const hasContent = maxX >= minX && maxY >= minY;
+                    if (hasContent) {
+                        // Add a tiny padding (2px) to avoid clipping glow
+                        minX = Math.max(0, minX - 2); minY = Math.max(0, minY - 2);
+                        maxX = Math.min(size.width - 1, maxX + 2); maxY = Math.min(size.height - 1, maxY + 2);
+                        const cropWidth = maxX - minX + 1;
+                        const cropHeight = maxY - minY + 1;
+                        if (cropWidth > 8 && cropHeight > 8 && (cropWidth < size.width || cropHeight < size.height)) {
+                            trayIcon = trayIcon.crop({ x: minX, y: minY, width: cropWidth, height: cropHeight });
+                        }
+                    }
+                }
+                // Prefer a target around 32 logical px for clarity; let Windows downscale internally.
+                const finalSize = trayIcon.getSize();
+                if (finalSize.width > 64) {
+                    trayIcon = trayIcon.resize({ width: 64, height: 64, quality: 'best' });
+                }
+            }
+        } catch (e) { console.warn('Tray icon crop/resize failed', e); }
         this.tray = new Tray(trayIcon);
 
         const contextMenu = Menu.buildFromTemplate([
