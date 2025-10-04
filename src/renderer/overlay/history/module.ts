@@ -496,6 +496,12 @@ export async function refreshHistory(): Promise<boolean | void> {
     try {
       updateHistoryRefreshButton();
     } catch {}
+    
+    // Send updated data to popout if it exists
+    try {
+      sendHistoryToPopout();
+    } catch {}
+    
     return true;
   } catch (e) {
     (histList as HTMLElement).innerHTML =
@@ -1167,3 +1173,75 @@ export function parseRateLimitHeaders(headers: any, status?: number): number {
     return 0;
   }
 }
+
+// History popout functionality
+export async function openHistoryPopout(): Promise<void> {
+  try {
+    const now = Date.now();
+    // Calculate next allowed refresh time (1 min minimum cooldown)
+    const nextRefreshAt = Math.max(
+      historyState.lastRefreshAt + 60_000, // 1 min since last refresh
+      historyState.rateLimitUntil || 0 // rate limit
+    );
+    
+    const payload = {
+      items: historyState.items || [],
+      lastRefreshAt: historyState.lastRefreshAt,
+      nextRefreshAt: nextRefreshAt
+    };
+    
+    await (window as any).electronAPI?.openHistoryPopout?.(payload);
+  } catch (e) {
+    console.error('Failed to open history popout:', e);
+  }
+}
+
+// Handle refresh request from popout
+export async function handlePopoutRefreshRequest(): Promise<void> {
+  try {
+    const now = Date.now();
+    const nextRefreshAt = Math.max(
+      historyState.lastRefreshAt + 60_000, // 1 min minimum
+      historyState.rateLimitUntil || 0
+    );
+    
+    // Check if refresh is allowed
+    if (now < nextRefreshAt) {
+      // Send current data back without refreshing
+      sendHistoryToPopout();
+      return;
+    }
+    
+    // Perform refresh
+    const result = await refreshHistory();
+    
+    // Send updated data to popout
+    if (result !== false) {
+      sendHistoryToPopout();
+    }
+  } catch (e) {
+    console.error('Failed to handle popout refresh:', e);
+  }
+}
+
+// Send current history data to popout window
+export function sendHistoryToPopout(): void {
+  try {
+    const now = Date.now();
+    const nextRefreshAt = Math.max(
+      historyState.lastRefreshAt + 60_000,
+      historyState.rateLimitUntil || 0
+    );
+    
+    const payload = {
+      items: historyState.items || [],
+      lastRefreshAt: historyState.lastRefreshAt,
+      nextRefreshAt: nextRefreshAt
+    };
+    
+    (window as any).electronAPI?.sendHistoryToPopout?.(payload);
+  } catch (e) {
+    console.error('Failed to send history to popout:', e);
+  }
+}
+

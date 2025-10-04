@@ -35,6 +35,7 @@
             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
                 <button id="poeLoginBtn" class="pin-btn login-state" style="-webkit-app-region: no-drag;" title="Login to pathofexile.com">Login</button>
                 <button id="historyRefreshBtn" class="pin-btn" style="-webkit-app-region: no-drag;" title="Refresh history">Refresh</button>
+                <button id="historyPopoutBtn" class="pin-btn" style="-webkit-app-region: no-drag;" title="Pop out history">📌</button>
                 <span id="historyInfoBadge" class="price-badge" style="display:none;">Info</span>
             </div>
             <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
@@ -901,6 +902,21 @@
                     await (typeof refreshHistoryIfAllowed === 'function' ? refreshHistoryIfAllowed('manual') : refreshHistory());
                 });
             }
+            
+            // History popout button
+            const popoutBtn = document.getElementById('historyPopoutBtn');
+            if (popoutBtn) {
+                popoutBtn.addEventListener('click', async () => {
+                    try {
+                        if (typeof window.OverlayHistory?.openHistoryPopout === 'function') {
+                            await window.OverlayHistory.openHistoryPopout();
+                        }
+                    } catch (e) {
+                        console.error('Failed to open history popout:', e);
+                    }
+                });
+            }
+            
             if (typeof updateHistoryRefreshButton === 'function') { try { updateHistoryRefreshButton(); } catch {} }
 
             // History tab toggle: show history container and hide modifiers/crafting
@@ -1775,6 +1791,16 @@ function renderGems(groups){
                                     const select = document.getElementById('categorySelect');
                                     if (select) { select.value = cat; select.dispatchEvent(new Event('change')); }
                                 } catch {}
+                            });
+                            // Handle history popout refresh requests
+                            window.electronAPI.onRequestHistoryPopoutRefresh?.(async ()=>{
+                                try {
+                                    if (typeof window.OverlayHistory?.handlePopoutRefreshRequest === 'function') {
+                                        await window.OverlayHistory.handlePopoutRefreshRequest();
+                                    }
+                                } catch (e) {
+                                    console.error('Failed to handle popout refresh:', e);
+                                }
                             });
                         } catch {}
                     }

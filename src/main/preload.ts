@@ -77,6 +77,16 @@ contextBridge.exposeInMainWorld('electronAPI', {
     historySave: (store: any) => ipcRenderer.invoke('history-save', store),
     // Mod section popouts
     openModPopout: (payload: any) => ipcRenderer.invoke('open-mod-popout', payload),
+    // History popout
+    openHistoryPopout: (payload: any) => ipcRenderer.invoke('open-history-popout', payload),
+    refreshHistoryPopout: () => ipcRenderer.invoke('refresh-history-popout'),
+    sendHistoryToPopout: (payload: any) => ipcRenderer.invoke('send-history-to-popout', payload),
+    onUpdateHistoryPopout: (callback: (data: any) => void) => {
+        ipcRenderer.on('update-history-popout', (_event, data) => callback(data));
+    },
+    onRequestHistoryPopoutRefresh: (callback: () => void) => {
+        ipcRenderer.on('request-history-popout-refresh', () => callback());
+    },
     
     // Remove listeners
     removeAllListeners: (channel: string) => ipcRenderer.removeAllListeners(channel)
