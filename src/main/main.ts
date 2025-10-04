@@ -56,12 +56,14 @@ class OverlayApp {
     constructor() {
         app.whenReady().then(async () => {
             this.showSplash('Initializing...');
-            // Load core services
-            // Resolve initial data path (JSON-only). Prefer env or config; fallback to repo data folder.
+            // Resolve data path early
             const initialDataPath = this.resolveInitialDataPath();
-            this.updateSplash('Loading modifier database');
-            this.modifierDatabase = new ModifierDatabase(initialDataPath);
-            try { await (this.modifierDatabase as any).load?.(); } catch (e) { console.warn('Failed loading modifier DB', e); }
+            this.modifierDatabase = new ModifierDatabase(initialDataPath, false); // defer load
+            // Kick off async loading without blocking rest of startup
+            (async () => {
+                await this.modifierDatabase.loadAsync(msg => this.updateSplash(msg));
+                this.updateSplash('Modifiers loaded');
+            })();
             this.updateSplash('Starting parsers');
             this.itemParser = new ItemParser();
             this.clipboardMonitor = new ClipboardMonitor();

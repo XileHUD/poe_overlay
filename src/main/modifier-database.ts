@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { promises as fsp } from 'fs';
 
 export interface ModifierData {
     domain: string;
@@ -32,9 +33,11 @@ export class ModifierDatabase {
     private jsonCache: Map<string, any> = new Map();
     private dataPath: string;
 
-    constructor(dataPath: string) {
+    constructor(dataPath: string, autoLoad: boolean = true) {
         this.dataPath = dataPath;
-        this.loadFromJson();
+        if (autoLoad) {
+            this.loadFromJson();
+        }
     }
 
     setDataPath(newPath: string) {
@@ -156,6 +159,106 @@ export class ModifierDatabase {
             console.log(`Loaded ${this.jsonCache.size} categories from JSON files`);
         } catch (error) {
             console.error('Error loading JSON files:', error);
+        }
+    }
+
+    /**
+     * Asynchronous, incremental loader so UI (splash) can update while files are processed.
+     * @param onProgress optional callback receiving human readable status text
+     */
+    async loadAsync(onProgress?: (msg: string) => void) {
+        try {
+            if (!fs.existsSync(this.dataPath)) {
+                onProgress?.('Data path missing');
+                return;
+            }
+            const files = (await fsp.readdir(this.dataPath)).filter(f => f.endsWith('.json'));
+            const total = files.length;
+            let processed = 0;
+            onProgress?.(`Loading modifiers (0/${total})`);
+            for (const file of files) {
+                try {
+                    const category = file.replace('.json','');
+                    const filePath = path.join(this.dataPath, file);
+                    const rawTxt = await fsp.readFile(filePath, 'utf8');
+                    const raw = JSON.parse(rawTxt);
+                    if (category === 'Bases') {
+                        this.jsonCache.set(category, raw);
+                    } else if (Array.isArray(raw)) {
+                        this.jsonCache.set(category, raw);
+                    } else if (raw && Array.isArray(raw.emotions)) {
+                        const mapped = raw.emotions.map((e: any) => ({
+                            category,
+                            domain: 'normal',
+                            side: 'none',
+                            text_html: e.explicitMods?.join('<br>') || e.enchantMods?.join('<br>') || e.name,
+                            text_plain: (e.explicitMods?.join(' | ') || e.enchantMods?.join(' | ') || e.name) || '',
+                            tier: null,
+                            ilvl: null,
+                            weight: 0,
+                            weight_pct: 0,
+                            tags: ['emotion'],
+                            modal_id: null,
+                            family_name: null,
+                            tiers: []
+                        }));
+                        this.jsonCache.set(category, mapped);
+                    } else if (raw && Array.isArray(raw.omens)) {
+                        const mapped = raw.omens.map((o: any) => ({
+                            category,
+                            domain: 'omen',
+                            side: 'none',
+                            text_html: `<strong>${o.name}</strong><br>${(o.explicitMods||[]).join('<br>')}`,
+                            text_plain: [o.name, ...(o.explicitMods||[])].join(' | '),
+                            tier: null,
+                            ilvl: null,
+                            weight: 0,
+                            weight_pct: 0,
+                            tags: ['omen'],
+                            modal_id: null,
+                            family_name: null,
+                            tiers: []
+                        }));
+                        this.jsonCache.set(category, mapped);
+                    } else if (raw && raw.gems && typeof raw.gems === 'object') {
+                        const groups = raw.gems; const flat: any[] = [];
+                        for (const grp of Object.keys(groups)) {
+                            for (const g of groups[grp] || []) {
+                                flat.push({
+                                    category,
+                                    domain: 'gem',
+                                    side: 'none',
+                                    text_html: `<strong>${g.name}</strong><br>${g.description||''}`,
+                                    text_plain: [g.name, g.description || ''].join(' - ').trim(),
+                                    tier: null,
+                                    ilvl: null,
+                                    weight: 0,
+                                    weight_pct: 0,
+                                    tags: ['gem', grp, ...(g.tags||[])],
+                                    modal_id: null,
+                                    family_name: null,
+                                    tiers: []
+                                });
+                            }
+                        }
+                        this.jsonCache.set(category, flat);
+                    } else {
+                        this.jsonCache.set(category, []);
+                    }
+                } catch (e) {
+                    console.warn('Failed loading', file, e);
+                }
+                processed++;
+                if (processed % 3 === 0 || processed === total) {
+                    onProgress?.(`Loading modifiers (${processed}/${total})`);
+                }
+                // Yield so splash can repaint
+                await new Promise(r => setTimeout(r, 0));
+            }
+            onProgress?.(`Loaded ${this.jsonCache.size} categories`);
+        } catch (e) {
+            console.error('Async load error', e);
+            onProgress?.('Modifier load failed');
         }
     }
 
