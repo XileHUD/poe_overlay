@@ -31,7 +31,7 @@
             <div class="item-type" id="headerSubtitle" style="font-size:12px; color:var(--text-muted); user-select:none;"></div>
         </div>
         <!-- Merchant header (shown only on History tab) -->
-        <div id="historyHeaderMain" style="display:none; flex:1 1 auto; min-width:0; align-items:center; gap:8px; justify-content:space-between;">
+        <div id="historyHeaderMain" style="flex:1 1 auto; min-width:0; align-items:center; gap:8px; justify-content:space-between;">
             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
                 <button id="poeLoginBtn" class="pin-btn login-state" style="-webkit-app-region: no-drag;" title="Login to pathofexile.com">Login</button>
                 <button id="historyRefreshBtn" class="pin-btn" style="-webkit-app-region: no-drag;" title="Refresh history">Refresh</button>
@@ -377,8 +377,7 @@
         if (content) content.style.display = 'none';
         if (crafting) crafting.style.display = 'none';
         if (history) history.style.display = 'none';
-    if (histHeaderMain) histHeaderMain.style.display = 'none';
-    if (histFiltersHeader) histFiltersHeader.style.display = 'none';
+        // DO NOT set inline styles on history headers - let CSS handle it via body classes
         
         // Show only the requested view
         if (view === 'modifiers'){
@@ -395,11 +394,36 @@
             document.body.classList.add('crafting-mode');
             try { window.OverlayHistory?.onLeaveView?.(); } catch {}
         } else if (view === 'history'){
+            // Show the container with inline style, but let CSS handle headers
             if (history) history.style.display = 'flex';
-            if (histHeaderMain) histHeaderMain.style.display = 'flex';
-            if (histFiltersHeader) histFiltersHeader.style.display = 'flex';
             setControlPanelVisible(false);
             document.body.classList.add('view-history');
+            
+            // DEBUG: Check what's actually happening
+            setTimeout(() => {
+                const container = document.getElementById('historyContainer');
+                const header = document.getElementById('historyHeader');
+                const headerMain = document.getElementById('historyHeaderMain');
+                console.log('=== HISTORY VIEW DEBUG ===');
+                console.log('Body classes:', document.body.className);
+                console.log('Container:', container ? {
+                    display: window.getComputedStyle(container).display,
+                    visibility: window.getComputedStyle(container).visibility,
+                    inlineStyle: container.style.display
+                } : 'NOT FOUND');
+                console.log('Header (filter bar):', header ? {
+                    display: window.getComputedStyle(header).display,
+                    visibility: window.getComputedStyle(header).visibility,
+                    inlineStyle: header.style.display,
+                    offsetHeight: header.offsetHeight,
+                    offsetWidth: header.offsetWidth
+                } : 'NOT FOUND');
+                console.log('HeaderMain:', headerMain ? {
+                    display: window.getComputedStyle(headerMain).display,
+                    inlineStyle: headerMain.style.display
+                } : 'NOT FOUND');
+            }, 100);
+            
             try { window.OverlayHistory?.onEnterView?.(); } catch {}
         }
         

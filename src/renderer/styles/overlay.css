@@ -42,8 +42,16 @@
 
 /* Clean CSS: Only hide history elements when not in history view */
 body:not(.view-history) #historyContainer,
+body:not(.view-history) #historyHeader,
 body:not(.view-history) #historyHeaderMain {
     display: none !important;
+}
+body.view-history #historyContainer {
+    display: flex !important;
+}
+body.view-history #historyHeader,
+body.view-history #historyHeaderMain {
+    display: flex !important;
 }
 body.view-history #historyActiveFilters {
     display: initial !important;

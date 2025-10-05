@@ -7,7 +7,7 @@ export function formatJoinedModText(raw: any): string {
   // Normalise weird whitespace first
   s = s.replace(/\s+/g, ' ');
 
-  // Explicit separators from PoEDB that denoted family boundaries but were stripped when copying
+  // Explicit separators that denote family boundaries (scraped from game data)
   // Treat each <hr class="mod-same-family"> as a hard newline boundary
   s = s.replace(/<hr[^>]*mod-same-family[^>]*>/gi, '\n');
 

@@ -25,7 +25,7 @@ let _activeGeneration = 0;
 export function onEnterView(): void {
   _viewGeneration += 1;
   _activeGeneration = _viewGeneration;
-  // Defensive: ensure headers are visible (some crafting panels aggressively hide them)
+  // Defensive: ensure ALL headers are visible (some crafting panels aggressively hide them)
   try {
     const hh = document.getElementById('historyHeader');
     if (hh) (hh as HTMLElement).style.display = 'flex';

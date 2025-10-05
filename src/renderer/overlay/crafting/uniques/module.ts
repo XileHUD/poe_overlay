@@ -240,7 +240,7 @@ export function render(groups: UniqueGroups): void {
         card.style.display='flex';
         card.style.gap='12px';
         card.style.alignItems='flex-start';
-  const imgBlock = u.image ? `<div style='flex:0 0 118px; display:flex; align-items:flex-start; justify-content:center;'><img class='unique-img' src='${u.image}' alt='' loading='lazy' decoding='async' style='width:118px; height:118px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 118px;'></div>`;
+  const imgBlock = u.image ? `<div style='flex:0 0 118px; display:flex; align-items:flex-start; justify-content:center;'><img class='unique-img' src='${u.image}' alt='' decoding='async' style='width:118px; height:118px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 118px;'></div>`;
   const cleanedMods = (u.explicitMods||[]).map(m=> m.replace(/<img[^>]*>/ig,'').trim()).filter(Boolean);
   const modsHtml = `<div style='font-size:11px;'>${cleanedMods.map((m: string)=> highlightNumbers(sanitizeCraftingHtml(m)) ).join('<br>')}</div>`;
         const right = `<div style='flex:1; display:flex; flex-direction:column;'>

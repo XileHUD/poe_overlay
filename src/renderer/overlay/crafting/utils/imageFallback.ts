@@ -6,7 +6,7 @@ export function bindImageFallback(root: ParentNode, selector: string, placeholde
   root.querySelectorAll<HTMLImageElement>(selector).forEach(img => {
     if ((img as any)._fallbackBound) return;
     (img as any)._fallbackBound = true;
-    img.loading = img.loading || 'lazy';
+    img.loading = 'eager'; // Load all images immediately for caching
     img.decoding = 'async';
     const original = img.getAttribute('data-orig-src') || img.src;
     img.setAttribute('data-orig-src', original);
@@ -35,24 +35,15 @@ export function bindImageFallback(root: ParentNode, selector: string, placeholde
         // Ask main for cached file first
         const cached = await (window as any).electronAPI?.getCachedImage?.(url);
         if (cached && cached.path) {
-          // Already cached; ensure using it if network version ever fails later
+          // Already cached; just store the path, don't swap src (image already loaded successfully)
           (img as any)._cachedPath = cached.path;
           return;
         }
         const res = await (window as any).electronAPI?.cacheImage?.(url);
         if (res && res.ok && res.cached) {
           (img as any)._cachedPath = res.cached;
-          // Optionally swap to file path on next paint (keep original for cache bust chain if needed)
-          setTimeout(()=>{
-            try {
-              if(img.complete && (img as any)._cachedPath && img.naturalWidth>0){
-                // Keep original in data-orig-src; only swap displayed source if not already placeholder
-                if(!img.src.startsWith('file://')){
-                  img.src = 'file://'+ (img as any)._cachedPath.replace(/\\/g,'/');
-                }
-              }
-            } catch {}
-          }, 30);
+          // Don't swap src - image already loaded successfully from bundled/network source
+          // Swapping to file:// can cause CORS issues or unnecessary re-renders
         }
       } catch {}
     }, { once: true });

@@ -10,6 +10,7 @@
     "build": "npm run build:main && npm run build:renderer",
     "build:main": "tsc",
     "build:renderer": "vite build",
+    "download-images": "tsx scripts/downloadImages.ts",
     "start": "electron dist/main/main.js",
     "pack": "electron-builder",
     "dist": "npm run build && electron-builder",
@@ -50,6 +51,11 @@
         "from": "../../data/poe2",
         "to": "data/poe2",
         "filter": ["**/*.json"]
+      },
+      {
+        "from": "bundled-images",
+        "to": "bundled-images",
+        "filter": ["**/*"]
       }
     ],
     "publish": [

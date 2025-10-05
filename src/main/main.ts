@@ -55,8 +55,10 @@ class OverlayApp {
     private historyPopoutWindow: BrowserWindow | null = null;
 
     constructor() {
+        // Show splash immediately when Electron is ready
+        // Note: 5-10 second delay before this on first portable launch is Windows extracting the EXE
         app.whenReady().then(async () => {
-            this.showSplash('Initializing...');
+            this.showSplash('Initializing application...');
             // Resolve data path early
             const initialDataPath = this.resolveInitialDataPath();
             this.modifierDatabase = new ModifierDatabase(initialDataPath, false); // defer load
@@ -114,10 +116,10 @@ class OverlayApp {
             if (this.splashWindow) return;
             const { width, height } = screen.getPrimaryDisplay().workAreaSize;
             this.splashWindow = new BrowserWindow({
-                width: 360,
-                height: 200,
-                x: Math.round(width/2 - 180),
-                y: Math.round(height/2 - 100),
+                width: 380,
+                height: 220,
+                x: Math.round(width/2 - 190),
+                y: Math.round(height/2 - 110),
                 frame: false,
                 transparent: true,
                 resizable: false,
@@ -126,26 +128,35 @@ class OverlayApp {
                 show: true,
                 webPreferences: { nodeIntegration: false, contextIsolation: true }
             });
+            
+            // Check if this is a first-time launch (no config directory yet)
+            const isFirstLaunch = !fs.existsSync(this.getUserConfigDir());
+            const noteText = isFirstLaunch 
+                ? 'First launch requires Windows to extract application files<br>Subsequent launches will be instant'
+                : 'Loading overlay components...';
+            
             // Minimal splash (no logo) – emphasize product name with subtle gradient
                                     const html = `<!DOCTYPE html><html><head><meta charset='utf-8'/><title>XileHUD</title>
                                     <style>
                                     :root { color-scheme: dark; }
                                     body { margin:0; font-family: system-ui, Arial, sans-serif; background: rgba(0,0,0,0); color:#d6d6dc; width:100%; height:100%; }
-                                    .wrap { position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:100%; max-width:340px; padding:16px 22px 20px; box-sizing:border-box; display:flex; flex-direction:column; align-items:center; gap:11px; background:rgba(18,18,22,0.94); border:1px solid #2e2e35; border-radius:16px; box-shadow:0 6px 22px -8px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.02); backdrop-filter:blur(6px); }
-                                    .title { font-size:22px; font-weight:650; letter-spacing:1px; background:linear-gradient(90deg,#cdb8ff,#a98eff 55%,#7b5fff); -webkit-background-clip:text; color:transparent; filter:drop-shadow(0 1px 2px rgba(0,0,0,0.55)); text-align:center; }
-                                    .subtitle { font-size:11px; opacity:0.60; letter-spacing:0.6px; margin-top:-6px; text-transform:uppercase; text-align:center; }
-                                    .status { font-size:12px; opacity:0.90; min-height:18px; text-align:center; max-width:300px; line-height:1.35; padding-top:2px; }
-                                    .spinner { width:22px; height:22px; border:3px solid #3f3f47; border-top-color:#b190ff; border-radius:50%; animation:spin 0.85s linear infinite; filter:drop-shadow(0 0 3px rgba(111,84,255,0.35)); }
+                                    .wrap { position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:100%; max-width:360px; padding:18px 24px 22px; box-sizing:border-box; display:flex; flex-direction:column; align-items:center; gap:11px; background:rgba(18,18,22,0.96); border:1px solid #2e2e35; border-radius:16px; box-shadow:0 8px 26px -8px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.02); backdrop-filter:blur(8px); }
+                                    .title { font-size:24px; font-weight:650; letter-spacing:1.2px; background:linear-gradient(90deg,#cdb8ff,#a98eff 55%,#7b5fff); -webkit-background-clip:text; color:transparent; filter:drop-shadow(0 1px 2px rgba(0,0,0,0.55)); text-align:center; margin-bottom:2px; }
+                                    .subtitle { font-size:11px; opacity:0.65; letter-spacing:0.7px; margin-top:-6px; text-transform:uppercase; text-align:center; }
+                                    .status { font-size:13px; opacity:0.92; min-height:20px; text-align:center; max-width:320px; line-height:1.45; padding-top:4px; color:#d8d8e2; }
+                                    .spinner { width:24px; height:24px; border:3px solid #3f3f47; border-top-color:#b190ff; border-radius:50%; animation:spin 0.85s linear infinite; filter:drop-shadow(0 0 4px rgba(111,84,255,0.4)); }
                                     @keyframes spin { to { transform:rotate(360deg);} }
-                                    .ready { color:#92ff9d; font-weight:520; }
-                                    .fade-in { animation:fadeIn .35s ease-out; }
-                                    @keyframes fadeIn { from { opacity:0; transform:translateY(4px);} to { opacity:1; transform:translateY(0);} }
+                                    .ready { color:#92ff9d; font-weight:540; }
+                                    .fade-in { animation:fadeIn .4s ease-out; }
+                                    @keyframes fadeIn { from { opacity:0; transform:translateY(6px);} to { opacity:1; transform:translateY(0);} }
+                                    .note { font-size:10px; opacity:0.55; margin-top:6px; font-style:italic; max-width:320px; text-align:center; line-height:1.40; color:#b8b8c8; transition:opacity 0.3s ease; }
                                     </style></head><body>
                                     <div class='wrap fade-in'>
                                         <div class='title'>XILEHUD</div>
-                                        <div class='subtitle'>Overlay is starting…</div>
+                                        <div class='subtitle'>Starting overlay…</div>
                                         <div class='spinner' id='sp'></div>
                                         <div class='status' id='st'></div>
+                                        <div class='note' id='note'>${noteText}</div>
                                     </div>
                                     <script>document.getElementById('st').textContent=${JSON.stringify(initial)};</script>
                                     </body></html>`;
@@ -156,7 +167,12 @@ class OverlayApp {
     private updateSplash(msg: string) {
         try {
             if (!this.splashWindow || this.splashWindow.isDestroyed()) return;
-            this.splashWindow.webContents.executeJavaScript(`(function(){ const st=document.getElementById('st'); if(st) st.textContent=${JSON.stringify(msg)}; })();`).catch(()=>{});
+            this.splashWindow.webContents.executeJavaScript(`(function(){ 
+                const st=document.getElementById('st'); 
+                if(st) st.textContent=${JSON.stringify(msg)}; 
+                const note=document.getElementById('note');
+                if(note) note.style.opacity='0';
+            })();`).catch(()=>{});
         } catch {}
     }
 
@@ -192,15 +208,23 @@ class OverlayApp {
             if (fs.existsSync(devPath)) return devPath;
         } catch {}
         try {
-            // 4) Packaged resources (electron-builder extraFiles) under process.resourcesPath
-            const packaged = path.join(process.resourcesPath || '', 'data/poe2');
-            if (fs.existsSync(packaged)) {
-                // If there's only one league folder, pick it; else use root
-                const entries = fs.readdirSync(packaged).map(f => path.join(packaged, f)).filter(p => fs.statSync(p).isDirectory());
-                const abyssal = entries.find(p => /Rise of the Abyssal/i.test(p));
-                if (abyssal) return abyssal;
-                if (entries.length > 0) return entries[0];
-                return packaged; // fall back to root even if empty
+            // 4) Packaged resources (electron-builder extraFiles)
+            // For portable: data is at exe root (process.resourcesPath/../data/poe2)
+            // For installer: data is in resources (process.resourcesPath/data/poe2)
+            const candidates = [
+                path.join(process.resourcesPath || '', '..', 'data', 'poe2'), // Portable EXE
+                path.join(process.resourcesPath || '', 'data', 'poe2')         // Installer
+            ];
+            
+            for (const packaged of candidates) {
+                if (fs.existsSync(packaged)) {
+                    // If there's only one league folder, pick it; else use root
+                    const entries = fs.readdirSync(packaged).map(f => path.join(packaged, f)).filter(p => fs.statSync(p).isDirectory());
+                    const abyssal = entries.find(p => /Rise of the Abyssal/i.test(p));
+                    if (abyssal) return abyssal;
+                    if (entries.length > 0) return entries[0];
+                    return packaged; // fall back to root even if empty
+                }
             }
         } catch {}
         // 4) Fallback to userData/poe2 (user can place JSONs there)
@@ -235,9 +259,41 @@ class OverlayApp {
             try {
                 if (!this.imageCachePath) this.initImageCache();
                 const cacheDir = path.join(app.getPath('userData'), 'image-cache');
-                const fname = Buffer.from(url).toString('base64').replace(/[/+=]/g,'').slice(0,48) + path.extname(new URL(url).pathname || '.img');
+                const fname = Buffer.from(url).toString('base64').replace(/[/+=]/g,'') + path.extname(new URL(url).pathname || '.img');
                 const target = path.join(cacheDir, fname || 'img.bin');
-                if (fs.existsSync(target) && fs.statSync(target).size > 0) { resolve(target); return; }
+                
+                // Check user cache first
+                if (fs.existsSync(target) && fs.statSync(target).size > 0) { 
+                    resolve(target); 
+                    return; 
+                }
+                
+                // Check bundled images (in portable exe resources)
+                // For portable: bundled-images is at exe root (process.resourcesPath/../bundled-images)
+                // For installer: bundled-images is in resources (process.resourcesPath/bundled-images)
+                const bundledCandidates = app.isPackaged 
+                    ? [
+                        path.join(process.resourcesPath, '..', 'bundled-images', fname), // Portable EXE
+                        path.join(process.resourcesPath, 'bundled-images', fname)         // Installer
+                      ]
+                    : [path.join(__dirname, '../../bundled-images', fname)];               // Dev
+                
+                const bundledPath = bundledCandidates.find(p => fs.existsSync(p) && fs.statSync(p).size > 0);
+                    
+                if (bundledPath) {
+                    // Copy bundled image to user cache for consistency
+                    try {
+                        fs.copyFileSync(bundledPath, target);
+                        resolve(target);
+                        return;
+                    } catch (copyErr) {
+                        // If copy fails, use bundled path directly
+                        resolve(bundledPath);
+                        return;
+                    }
+                }
+                
+                // Download from CDN as fallback
                 const mod = url.startsWith('https:') ? require('https') : require('http');
                 const req = mod.get(url, (res: any) => {
                     if (res.statusCode !== 200) { try { res.resume(); } catch {}; resolve(null); return; }
@@ -458,13 +514,12 @@ class OverlayApp {
             const diag: { url: string; status?: number; method: string; error?: string; mime?: string; t: number; phase: string; }[] = [];
             const MAX = 250;
             const ses = this.overlayWindow.webContents.session;
-            // Ensure Referer/User-Agent for CDN (some assets may enforce hotlink policy)
+            // Ensure User-Agent for official PoE CDN requests (images now bundled, CDN is fallback only)
             ses.webRequest.onBeforeSendHeaders((details, cb) => {
-                if (/cdn\.poe2db\.tw\/image\//i.test(details.url)) {
+                // Only handle official Path of Exile CDN
+                if (/web\.poecdn\.com|cdn\.poecdn\.net/i.test(details.url)) {
                     const headers = { ...details.requestHeaders };
-                    // Only add if missing to avoid duplication
-                    if (!headers['Referer'] && !headers['referer']) headers['Referer'] = 'https://poe2db.tw/us';
-                    // Provide a stable UA (some 403s can be UA related when empty)
+                    // Provide a stable UA to avoid 403 errors
                     if (!headers['User-Agent']) headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) XileHUD/1.0 Chrome/118.0.0.0 Safari/537.36';
                     // Encourage image content negotiation
                     headers['Accept'] = headers['Accept'] || 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8';

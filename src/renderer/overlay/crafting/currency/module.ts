@@ -123,18 +123,11 @@ export function render(list: CurrencyItem[]): void {
       <input id='currencySearch' type='text' placeholder='Search currency...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
       <button id='currencyClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-    <div style='display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:4px;'>
-      <div id='currencyTagFilters' style='display:flex; flex:1; flex-wrap:wrap; gap:4px;'></div>
-      <button id='currencyImgLogBtn' title='Show recent image request log' style='padding:2px 6px; font-size:11px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer;'>Img Log</button>
-    </div>
-    <div id='currencyImgDiag' style='display:none; flex-direction:column; gap:4px; margin-bottom:8px;'></div>
+    <div id='currencyTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; margin-bottom:4px;'></div>
     <div id='currencyWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap:10px;'></div>`;
   state.input = panel.querySelector('#currencySearch') as HTMLInputElement | null;
   const wrap = panel.querySelector('#currencyWrap') as HTMLElement | null;
   const tagWrap = panel.querySelector('#currencyTagFilters') as HTMLElement | null;
-  const imgDiag = panel.querySelector('#currencyImgDiag') as HTMLElement | null;
-  const imgLogBtn = panel.querySelector('#currencyImgLogBtn') as HTMLButtonElement | null;
-  if (imgLogBtn) imgLogBtn.style.display = 'none';
 
   function highlight(s: string): string {
     return (s||"")
@@ -168,8 +161,6 @@ export function render(list: CurrencyItem[]): void {
   }
   function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; allTags.forEach(tag=>{ const active=state.selectedTags.has(tag); const el=document.createElement('div'); el.textContent = state.tagCounts[tag]? `${tag} (${state.tagCounts[tag]})` : tag; el.style.cssText=chipCss(tag, active); el.addEventListener('click',()=>{ active?state.selectedTags.delete(tag):state.selectedTags.add(tag); apply(state.input?.value||''); renderTagFilters(); }); tagWrap.appendChild(el); }); if(state.selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; reset.style.cssText='cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:999px; border:1px solid var(--accent-red); background:var(--accent-red); color:#fff;'; reset.addEventListener('click',()=>{ state.selectedTags.clear(); apply(state.input?.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
 
-  const imageErrors: { name: string; url: string; }[] = [];
-
   function apply(filter='') {
     if (!wrap) return;
     wrap.innerHTML='';
@@ -191,63 +182,16 @@ export function render(list: CurrencyItem[]): void {
       card.style.display='flex';
       card.style.flexDirection='column';
       card.style.gap='4px';
-      card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>${c.image?`<img class='currency-img' src='${c.image}' loading='lazy' decoding='async' style='width:26px; height:26px; object-fit:contain;'>`:''}<div style='font-weight:600;'>${c.name}</div></div><div style='font-size:11px; color:var(--text-muted);'>Stack: ${c.stack_current??'?'} / ${c.stack_max??'?'}${(c as any)._tags.length?` • ${(c as any)._tags.join(', ')}`:''}</div>${minLvl}<div style='font-size:11px;'>${modsHtml}</div>`;
+      card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>${c.image?`<img class='currency-img' src='${c.image}' decoding='async' style='width:26px; height:26px; object-fit:contain;'>`:''}<div style='font-weight:600;'>${c.name}</div></div><div style='font-size:11px; color:var(--text-muted);'>Stack: ${c.stack_current??'?'} / ${c.stack_max??'?'}${(c as any)._tags.length?` • ${(c as any)._tags.join(', ')}`:''}</div>${minLvl}<div style='font-size:11px;'>${modsHtml}</div>`;
       wrap.appendChild(card);
     });
     bindImageFallback(panel, '.currency-img', '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 28 28"><rect width="28" height="28" rx="4" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="8" font-family="sans-serif">?</text></svg>', 0.5);
-    if(imgDiag){ imgDiag.style.display='none'; imgDiag.innerHTML=''; }
-    panel.querySelectorAll<HTMLImageElement>('.currency-img').forEach(img=>{
-      if(!(img as any)._errBound){
-        (img as any)._errBound=true;
-        img.addEventListener('error',()=>{
-          const nm = img.parentElement?.textContent?.trim() || img.alt || 'Unknown';
-            imageErrors.push({ name: nm, url: img.src });
-            if(imgDiag){
-              imgDiag.style.display='flex';
-              imgDiag.innerHTML = `<div style='font-size:11px; color:var(--accent-red); font-weight:600;'>Image Errors (${imageErrors.length})</div>` +
-                `<div style='max-height:120px; overflow:auto; font-size:10px; line-height:1.3; background:var(--bg-tertiary); padding:4px; border:1px solid var(--border-color); border-radius:4px;'>`+
-                imageErrors.map(e=>`<div><span style='color:var(--accent-red);'>✖</span> ${e.name.replace(/\s+/g,' ')}<br><span style='opacity:.7;'>${e.url}</span></div>`).join('<hr style="border:none; border-top:1px solid var(--border-color); margin:4px 0;">')+
-                `</div>`;
-            }
-        });
-      }
-    });
   }
 
   state.input?.addEventListener('input', () => apply(state.input?.value || ''));
   panel.querySelector('#currencyClear')?.addEventListener('click', ()=>{ if (state.input) { state.input.value=''; apply(''); state.input.focus(); }});
-  imgLogBtn?.addEventListener('click', async ()=>{
-    try {
-      const log = await (window as any).electronAPI.getImageLog?.();
-      if(!imgDiag) return;
-      if(!log || !Array.isArray(log) || !log.length){
-        imgDiag.style.display='flex';
-        imgDiag.innerHTML = `<div style='font-size:11px; color:var(--text-muted);'>No image log entries.</div>`;
-        return;
-      }
-      imgDiag.style.display='flex';
-      imgDiag.innerHTML = `<div style='font-size:11px; font-weight:600;'>Recent Image Requests (${log.length})</div>`+
-        `<div style='max-height:160px; overflow:auto; font-size:10px; line-height:1.25; background:var(--bg-tertiary); padding:4px; border:1px solid var(--border-color); border-radius:4px;'>`+
-        log.slice().reverse().map((e:any)=>`<div style='margin-bottom:4px;'>${e.status?`<span style='color:${e.status>=200&&e.status<300?'#6fbf73':'var(--accent-red)'};'>${e.status||''}</span>`:`<span style='color:var(--accent-red);'>ERR</span>`} <span style='opacity:.7;'>${e.method}</span> <span>${e.url}</span>${e.error?`<div style='color:var(--accent-red);'>${e.error}</div>`:''}</div>`).join('')+
-        `</div>`;
-    } catch(err) {
-      if(imgDiag){ imgDiag.style.display='flex'; imgDiag.innerHTML = `<div style='color:var(--accent-red); font-size:11px;'>Failed to fetch image log</div>`; }
-    }
-  });
   renderTagFilters();
   apply('');
-
-  // Global debug hotkey (Ctrl+Shift+I) to toggle hidden debug image button
-  if (!(window as any).__currencyImgDebugHotkey) {
-    (window as any).__currencyImgDebugHotkey = true;
-    window.addEventListener('keydown', (e) => {
-      if (e.ctrlKey && e.shiftKey && e.code === 'KeyI') {
-        if (imgLogBtn) {
-          imgLogBtn.style.display = imgLogBtn.style.display === 'none' ? '' : 'none';
-        }
-      }
-    });
-  }
 }
 
 export async function reload(): Promise<void> {
