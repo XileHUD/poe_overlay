@@ -77,6 +77,7 @@ export class ItemParser {
         'Lineage Supports': 'Gems',
         // New PoE2 item classes
         'Uncut Skill Gems': 'Gems',
+        'Uncut Spirit Gems': 'Gems',
         'Socketable': 'Socketables'
     };
     // Extend mapping at runtime for Jewels if not present
@@ -150,7 +151,27 @@ export class ItemParser {
 
     private extractItemClass(lines: string[]): string {
         const classLine = lines.find(line => line.startsWith('Item Class:'));
-        return classLine ? classLine.replace('Item Class:', '').trim() : '';
+        if (classLine) return classLine.replace('Item Class:', '').trim();
+        
+        // Fallback: If no Item Class line but Rarity is Gem, infer from tags or context
+        const rarityLine = lines.find(line => line.startsWith('Rarity:'));
+        if (rarityLine && rarityLine.includes('Gem')) {
+            // Check for gem type indicators in the item text
+            // Look for tag lines that might indicate gem type (Buff, Support, Skill, Spirit, Meta, etc.)
+            const tagLine = lines.find(line => /^(Buff|Support|Skill|Spirit|Meta|Trigger|Persistent|Attack|Spell|Minion|Projectile|Area|Aura|Curse|Totem|Trap|Mine|Duration|AoE|Physical|Fire|Cold|Lightning|Chaos|Elemental)/i.test(line));
+            if (tagLine) {
+                // If it contains 'Support' or 'Meta', it's a support/meta gem
+                if (/Support|Meta/.test(tagLine)) return 'Support Gems';
+                // If it contains 'Spirit' or 'Persistent', likely a Spirit Gem
+                if (/Spirit|Persistent/.test(tagLine)) return 'Spirit Gems';
+                // Default to Skill Gems
+                return 'Skill Gems';
+            }
+            // Generic fallback if Rarity: Gem but no clear tags
+            return 'Skill Gems';
+        }
+        
+        return '';
     }
 
     private extractRarity(lines: string[]): string {

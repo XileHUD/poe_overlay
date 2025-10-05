@@ -697,10 +697,14 @@ class OverlayApp {
                 
                 if (!wasVisible) this.showOverlay();
                 const isSocketable = parsed.category === 'Socketables';
+                const isGem = parsed.category === 'Gems';
                 if (isSocketable) {
                     // Directly open crafting -> socketables, skip modifiers flash
                     this.safeSendToOverlay('set-active-tab','crafting');
                     this.safeSendToOverlay('invoke-action','socketables');
+                } else if (isGem) {
+                    // Directly open character -> gems view
+                    this.safeSendToOverlay('invoke-action','gems');
                 } else {
                     this.safeSendToOverlay('set-active-tab','modifiers');
                     if ((parsed.rarity||'').toLowerCase()==='unique') {
@@ -790,10 +794,15 @@ class OverlayApp {
                             return;
                         }
                     const isSocketable = parsed.category === 'Socketables';
+                    const isGem = parsed.category === 'Gems';
                     if (isSocketable) {
                         // Direct crafting view for socketables
                         this.safeSendToOverlay('set-active-tab','crafting');
                         this.safeSendToOverlay('invoke-action','socketables');
+                        this.showOverlay(undefined, { silent: allowPinnedPassive });
+                    } else if (isGem) {
+                        // Direct character -> gems view
+                        this.safeSendToOverlay('invoke-action','gems');
                         this.showOverlay(undefined, { silent: allowPinnedPassive });
                     } else {
                         let modifiers: any[] = [];

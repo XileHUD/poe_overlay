@@ -1851,6 +1851,14 @@ function renderGems(groups){
                                         } 
                                     } catch {}
                                 }
+                                if (action === 'gems') {
+                                    try {
+                                        setActiveTab('characterTab');
+                                        setView('crafting'); // Still use crafting view (shares craftingPanel div)
+                                        showGems();
+                                        setHeader('Gems');
+                                    } catch {}
+                                }
                             });
                             // Respond to category selection from main
                             window.electronAPI.onSetActiveCategory?.(async (cat)=>{

@@ -89,7 +89,7 @@ export function render(list: Omen[]): void {
   const curated = [
     'Damage','Ailments','Attributes','Life','Mana','Energy Shield','Armour','Evasion','Resistances',
     'Fire','Cold','Lightning','Chaos','Spell','Attack','Minion','Projectile','Area','Critical','Speed','Curse','DoT',
-    'Exalt','Divine','Regal','Essence'
+    'Exalt','Divine','Regal','Essence','Desecrate'
   ];
   // Build tag counts scanning explicit mods and names
   const lowerInc = (k: string) => { (state.tagCounts as any)[k] = ((state.tagCounts as any)[k] || 0) + 1; };
@@ -122,6 +122,7 @@ export function render(list: Omen[]): void {
     if (/divine/.test(blob)) lowerInc('Divine');
     if (/regal/.test(blob)) lowerInc('Regal');
     if (/essence/.test(blob)) lowerInc('Essence');
+    if (/desec/.test(blob)) lowerInc('Desecrate');
   };
   state.cache.forEach(addTagsFor);
 
@@ -155,6 +156,7 @@ export function render(list: Omen[]): void {
     if (t==='damage' || t==='ailments' || t==='mechanics' || t==='dot') return [96,125,139];
     if (t==='speed' || t==='movement') return [67,160,71];
     if (t==='elemental') return [255,152,0];
+    if (t==='desecrate') return [123,31,162];
     return [120,144,156];
   }
   function chipCss(tag: string, active: boolean){
