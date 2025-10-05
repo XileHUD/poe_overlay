@@ -14,6 +14,7 @@ import { buildHistoryPopoutHtml } from './popouts/historyPopoutTemplate';
 import { buildModPopoutHtml } from './popouts/modPopoutTemplate';
 // Use explicit .js extension for NodeNext module resolution compatibility
 import { buildSplashHtml } from './ui/splashTemplate.js';
+import { registerDataIpc } from './ipc/dataHandlers.js';
 
 // --- History popout debug instrumentation helpers ---
 // We persist a lightweight log to help diagnose the blank history popout window.
@@ -946,42 +947,13 @@ class OverlayApp {
 
     // IPC handlers
     private setupIPC() {
-        ipcMain.handle('get-modifier-data', async (event, category: string) => {
-            return await this.modifierDatabase.getModifiersForCategory(category);
+        // Register bulk data handlers
+        registerDataIpc({
+            modifierDatabase: this.modifierDatabase,
+            getDataDir: () => this.getDataDir(),
+            getUserConfigDir: () => this.getUserConfigDir()
         });
 
-        ipcMain.handle('search-modifiers', async (event, query: string, category?: string) => {
-            return await this.modifierDatabase.searchModifiers(query, category);
-        });
-
-        ipcMain.handle('get-all-categories', async (event) => {
-            return await this.modifierDatabase.getAllCategories();
-        });
-
-        // Data directory helpers (for updating JSONs without rebuilding)
-        ipcMain.handle('get-data-dir', async () => {
-            return this.getDataDir();
-        });
-        ipcMain.handle('set-data-dir', async (_e, dirPath: string) => {
-            if (typeof dirPath === 'string' && dirPath.trim()) {
-                (this.modifierDatabase as any).setDataPath?.(dirPath);
-                (this.modifierDatabase as any).reload?.();
-                // persist
-                try {
-                    const cfgDir = this.getUserConfigDir();
-                    const cfgPath = path.join(cfgDir, 'overlay-config.json');
-                    fs.writeFileSync(cfgPath, JSON.stringify({ dataDir: dirPath }, null, 2));
-                } catch {}
-                return { ok: true, dataDir: dirPath };
-            }
-            return { ok: false, error: 'invalid_path' };
-        });
-        ipcMain.handle('reload-data', async () => {
-            try { (this.modifierDatabase as any).reload?.(); return { ok: true }; } catch (e: any) { return { ok: false, error: e?.message||'reload_failed' }; }
-        });
-        ipcMain.handle('open-data-dir', async () => {
-            try { await shell.openPath(this.getDataDir()); return { ok: true }; } catch (e: any) { return { ok: false, error: e?.message||'open_failed' }; }
-        });
         ipcMain.handle('check-updates', async () => {
             try {
                 if (autoUpdater) {
@@ -993,203 +965,7 @@ class OverlayApp {
                 return { ok: false, error: e?.message || 'update_failed' };
             }
         });
-
-        // Crafting data (Liquid Emotions)
-        ipcMain.handle('get-liquid-emotions', async () => {
-            try {
-                const filePath = path.join(this.getDataDir(), 'Liquid_Emotions.json');
-                if (fs.existsSync(filePath)) {
-                    const raw = fs.readFileSync(filePath, 'utf-8');
-                    return JSON.parse(raw);
-                }
-                return { error: 'not_found', filePath };
-            } catch (e: any) {
-                return { error: e?.message || 'unknown_error' };
-            }
-        });
-
-        // Annoints data
-        ipcMain.handle('get-annoints', async () => {
-            try {
-                const filePath = path.join(this.getDataDir(), 'Annoints.json');
-                if (fs.existsSync(filePath)) {
-                    const raw = fs.readFileSync(filePath, 'utf-8');
-                    return JSON.parse(raw);
-                }
-                return { error: 'not_found', filePath };
-            } catch (e: any) {
-                return { error: e?.message || 'unknown_error' };
-            }
-        });
-
-        // Essences data
-        ipcMain.handle('get-essences', async () => {
-            try {
-                const filePath = path.join(this.getDataDir(), 'Essences.json');
-                if (fs.existsSync(filePath)) {
-                    const raw = fs.readFileSync(filePath, 'utf-8');
-                    return JSON.parse(raw);
-                }
-                return { error: 'not_found', filePath };
-            } catch (e: any) {
-                return { error: e?.message || 'unknown_error' };
-            }
-        });
-
-        // Catalysts data
-        ipcMain.handle('get-catalysts', async () => {
-            try {
-                const filePath = path.join(this.getDataDir(), 'Catalysts.json');
-                if (fs.existsSync(filePath)) {
-                    const raw = fs.readFileSync(filePath, 'utf-8');
-                    return JSON.parse(raw);
-                }
-                return { error: 'not_found', filePath };
-            } catch (e: any) {
-                return { error: e?.message || 'unknown_error' };
-            }
-        });
-
-        // Socketables data
-        ipcMain.handle('get-socketables', async () => {
-            try {
-                const filePath = path.join(this.getDataDir(), 'Socketables.json');
-                if (fs.existsSync(filePath)) {
-                    const raw = fs.readFileSync(filePath, 'utf-8');
-                    return JSON.parse(raw);
-                }
-                return { error: 'not_found', filePath };
-            } catch (e: any) {
-                return { error: e?.message || 'unknown_error' };
-            }
-        });
-
-        // Keywords (Glossar) data
-        ipcMain.handle('get-keywords', async () => {
-            try {
-                const filePath = path.join(this.getDataDir(), 'Keywords.json');
-                if (fs.existsSync(filePath)) {
-                    const raw = fs.readFileSync(filePath, 'utf-8');
-                    return JSON.parse(raw);
-                }
-                return { error: 'not_found', filePath };
-            } catch (e: any) {
-                return { error: e?.message || 'unknown_error' };
-            }
-        });
-
-        // Uniques data
-        ipcMain.handle('get-uniques', async () => {
-            try {
-                const filePath = path.join(this.getDataDir(), 'Uniques.json');
-                if (fs.existsSync(filePath)) {
-                    const raw = fs.readFileSync(filePath, 'utf-8');
-                    return JSON.parse(raw);
-                }
-                return { error: 'not_found', filePath };
-            } catch (e: any) {
-                return { error: e?.message || 'unknown_error' };
-            }
-        });
-
-        // Omens data
-        ipcMain.handle('get-omens', async () => {
-            try {
-                const filePath = path.join(this.getDataDir(), 'Omens.json');
-                if (fs.existsSync(filePath)) {
-                    const raw = fs.readFileSync(filePath, 'utf-8');
-                    return JSON.parse(raw);
-                }
-                return { error: 'not_found', filePath };
-            } catch (e: any) {
-                return { error: e?.message || 'unknown_error' };
-            }
-        });
-
-        // Currency data
-        ipcMain.handle('get-currency', async () => {
-            try {
-                const filePath = path.join(this.getDataDir(), 'Currency.json');
-                if (fs.existsSync(filePath)) {
-                    const raw = fs.readFileSync(filePath, 'utf-8');
-                    return JSON.parse(raw);
-                }
-                return { error: 'not_found', filePath };
-            } catch (e: any) {
-                return { error: e?.message || 'unknown_error' };
-            }
-        });
-
-        // Keystones data
-        ipcMain.handle('get-keystones', async () => {
-            try {
-                const filePath = path.join(this.getDataDir(), 'Keystones.json');
-                if (fs.existsSync(filePath)) {
-                    const raw = fs.readFileSync(filePath, 'utf-8');
-                    return JSON.parse(raw);
-                }
-                return { error: 'not_found', filePath };
-            } catch (e: any) {
-                return { error: e?.message || 'unknown_error' };
-            }
-        });
-
-        // Ascendancy Passives data
-        ipcMain.handle('get-ascendancy-passives', async () => {
-            try {
-                const filePath = path.join(this.getDataDir(), 'Ascendancy_Passives.json');
-                if (fs.existsSync(filePath)) {
-                    const raw = fs.readFileSync(filePath, 'utf-8');
-                    return JSON.parse(raw);
-                }
-                return { error: 'not_found', filePath };
-            } catch (e: any) {
-                return { error: e?.message || 'unknown_error' };
-            }
-        });
-
-        // Atlas Nodes data
-        ipcMain.handle('get-atlas-nodes', async () => {
-            try {
-                const filePath = path.join(this.getDataDir(), 'Atlas_Nodes.json');
-                if (fs.existsSync(filePath)) {
-                    const raw = fs.readFileSync(filePath, 'utf-8');
-                    return JSON.parse(raw);
-                }
-                return { error: 'not_found', filePath };
-            } catch (e: any) {
-                return { error: e?.message || 'unknown_error' };
-            }
-        });
-
-        // Gems data (combined)
-        ipcMain.handle('get-gems', async () => {
-            try {
-                const filePath = path.join(this.getDataDir(), 'Gems.json');
-                if (fs.existsSync(filePath)) {
-                    const raw = fs.readFileSync(filePath, 'utf-8');
-                    return JSON.parse(raw);
-                }
-                return { error: 'not_found', filePath };
-            } catch (e: any) {
-                return { error: e?.message || 'unknown_error' };
-            }
-        });
-
-        // Bases data
-        try { ipcMain.removeHandler('get-bases'); } catch {}
-        ipcMain.handle('get-bases', async () => {
-            try {
-                const filePath = path.join(this.getDataDir(), 'Bases.json');
-                if (fs.existsSync(filePath)) {
-                    const raw = fs.readFileSync(filePath, 'utf-8');
-                    return JSON.parse(raw);
-                }
-                return { error: 'not_found', filePath };
-            } catch (e: any) {
-                return { error: e?.message || 'unknown_error' };
-            }
-        });
+        // Remaining handlers below...
 
         // Open a lightweight transparent popout window for a modifier section (anchored to overlay)
         try { ipcMain.removeHandler('open-mod-popout'); } catch {}
