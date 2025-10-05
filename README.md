@@ -93,9 +93,10 @@ Most features are fully local and can be used offline. An internet connection an
 1. Download the portable EXE from the [Releases](https://github.com/XileHUD/poe_overlay/releases/latest) page.
 2. Run the application (unsigned: “More info → Run anyway”).
 3. Launch Path of Exile 2 (Windowed or Borderless Fullscreen recommended).
-4. Hover an item and press `Ctrl+C` to copy its data.
-5. Press `Ctrl+Q` to toggle the overlay panel and view the item's details.
-6. System Tray:
+4. Hover an in‑game item (no manual copy needed).
+5. Press `Ctrl+Q` while still hovering – the overlay auto issues the copy in the background and displays the parsed item.
+6. (Optional) Press `Ctrl+Q` again (when not pinned) to hide; if pinned it stays visible and `Ctrl+Q` captures a new hovered item.
+7. System Tray:
 	- Left click: show / hide
 	- Right click: quit
 
