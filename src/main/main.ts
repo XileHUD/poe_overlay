@@ -11,6 +11,18 @@ import { ItemParser } from './item-parser';
 import { ModifierDatabase } from './modifier-database';
 import { KeyboardMonitor } from './keyboard-monitor';
 
+// --- History popout debug instrumentation helpers ---
+// We persist a lightweight log to help diagnose the blank history popout window.
+const historyPopoutDebugLogPath = path.join(app.getPath('userData'), 'history-popout-debug.log');
+function appendHistoryPopoutDebug(msg: string) {
+    try {
+        const line = `[${new Date().toISOString()}] ${msg}\n`;
+        fs.appendFileSync(historyPopoutDebugLogPath, line);
+        // Also echo to console for real-time visibility
+        console.log('[HISTORY-POPOUT]', msg);
+    } catch { /* ignore */ }
+}
+
 // Configure Electron userData and Chromium caches to a writable directory before app is ready
 try {
     const userDataDir = path.join(app.getPath('appData'), 'XileHUD');
@@ -1285,6 +1297,7 @@ catch(err){console.error(err);document.querySelector('.content').textContent='Fa
             try {
                 // If popout already exists, focus it and update data
                 if (this.historyPopoutWindow && !this.historyPopoutWindow.isDestroyed()) {
+                    appendHistoryPopoutDebug('Reusing existing history popout – sending update payload');
                     this.historyPopoutWindow.focus();
                     this.historyPopoutWindow.webContents.send('update-history-popout', payload);
                     return { ok: true, exists: true };
@@ -1292,7 +1305,8 @@ catch(err){console.error(err);document.querySelector('.content').textContent='Fa
 
                 const json = JSON.stringify(payload || {});
                 const b64 = Buffer.from(json, 'utf8').toString('base64');
-                
+                appendHistoryPopoutDebug(`Opening new history popout. Payload bytes=${json.length}`);
+
                 // Anchor next to overlay (right side preferred)
                 let baseX = 120, baseY = 120;
                 try {
@@ -1305,8 +1319,9 @@ catch(err){console.error(err);document.querySelector('.content').textContent='Fa
                         const sh = disp.workArea.height || disp.workAreaSize.height;
                         if (baseX + 380 > sw) baseX = Math.max(12, b.x - 380 - 8);
                         if (baseY + 600 > sh) baseY = Math.max(20, sh - 620);
+                        appendHistoryPopoutDebug(`Computed window position x=${baseX} y=${baseY}`);
                     }
-                } catch {}
+                } catch (posErr) { appendHistoryPopoutDebug('Position computation error: ' + (posErr as any)?.message); }
 
                 const win = new BrowserWindow({
                     width: 380,
@@ -1317,182 +1332,210 @@ catch(err){console.error(err);document.querySelector('.content').textContent='Fa
                     alwaysOnTop: true,
                     skipTaskbar: false,
                     resizable: true,
-                    transparent: true,
+                    // Disable transparency during diagnostics so we can distinguish a paint issue from empty content
+                    transparent: false,
+                    backgroundColor: '#14161A',
                     show: true,
                     webPreferences: { contextIsolation: true, nodeIntegration: false, preload: path.join(__dirname, 'preload.js') }
                 });
+                appendHistoryPopoutDebug('BrowserWindow constructed');
+                win.webContents.on('did-start-loading', () => appendHistoryPopoutDebug('did-start-loading'));
+                win.webContents.on('did-finish-load', () => appendHistoryPopoutDebug('did-finish-load'));
+                win.webContents.on('dom-ready', () => appendHistoryPopoutDebug('dom-ready'));
+                win.webContents.on('did-fail-load', (_e2, errorCode, errorDesc) => appendHistoryPopoutDebug(`did-fail-load code=${errorCode} desc=${errorDesc}`));
+                win.on('unresponsive', () => appendHistoryPopoutDebug('window unresponsive'));
+                win.on('closed', () => appendHistoryPopoutDebug('window closed'));
                 
                 this.historyPopoutWindow = win;
                 win.on('closed', () => { this.historyPopoutWindow = null; });
-                
-                const html = `<!DOCTYPE html><html><head><meta charset='utf-8'/><title>Merchant History</title>
-<style>
-html,body{margin:0;padding:0;font-family:Segoe UI,Arial,sans-serif;font-size:12px;color:#ddd;background:rgba(20,22,26,0.95);-webkit-user-select:none;overflow:hidden;}
-.window{display:flex;flex-direction:column;height:100vh;}
-.header{font-weight:600;padding:6px 10px;background:rgba(40,44,52,0.95);cursor:default;-webkit-app-region:drag;display:flex;align-items:center;gap:8px;border-bottom:1px solid #404040;}
-.title{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;color:#fff;}
-.refresh-btn{width:20px;height:20px;line-height:18px;text-align:center;border:1px solid #555;border-radius:4px;background:rgba(60,64,72,0.75);cursor:pointer;-webkit-app-region:no-drag;font-size:14px;padding:0;display:flex;align-items:center;justify-content:center;}
-.refresh-btn:hover:not(.disabled){background:#4a9eff;border-color:#4a9eff;color:#fff;}
-.refresh-btn.disabled{opacity:0.4;cursor:not-allowed;}
-.close{width:20px;height:20px;line-height:18px;text-align:center;border:1px solid #555;border-radius:4px;background:rgba(60,64,72,0.75);cursor:pointer;-webkit-app-region:no-drag;}
-.close:hover{background:#c0392b;border-color:#e74c3c;color:#fff;}
-.info-bar{padding:4px 10px;background:rgba(30,34,40,0.8);font-size:10px;color:#999;display:flex;gap:8px;align-items:center;border-bottom:1px solid #333;}
-.list{flex:1;overflow-y:auto;overflow-x:hidden;}
-.history-row{padding:8px 10px;border-bottom:1px solid #2d2d2d;cursor:pointer;transition:background 0.15s;}
-.history-row:hover{background:rgba(74,158,255,0.15);}
-.history-row.selected{background:rgba(74,158,255,0.25);}
-.row-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
-.item-name{font-weight:600;font-size:11px;color:#fafafa;}
-.price{font-size:11px;color:#f0ad4e;}
-.row-meta{display:flex;gap:8px;font-size:10px;color:#888;}
-.detail{padding:10px;border-top:1px solid #404040;max-height:40%;overflow-y:auto;background:rgba(25,28,32,0.9);}
-.detail-item{font-size:11px;line-height:1.4;color:#ddd;}
-.no-selection{text-align:center;padding:20px;color:#666;font-size:11px;}
-::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:#444;border-radius:3px;}::-webkit-scrollbar-thumb:hover{background:#555;}
-.currency-divine{color:#d4af37;}
-.currency-exalted{color:#d4af37;}
-.currency-annul{color:#b8860b;}
-.rarity-unique{color:#af6025;}
-.rarity-rare{color:#ffff77;}
-.rarity-magic{color:#8888ff;}
-.rarity-normal{color:#c8c8c8;}
-</style>
-</head><body><div class='window'>
-<div class='header'><div class='title'>Merchant History</div><button class='refresh-btn' id='refreshBtn' title='Refresh (min 1 min cooldown)'>↻</button><div class='close' onclick='window.close()'>×</div></div>
-<div class='info-bar'><span id='infoText'>Loading...</span></div>
-<div class='list' id='historyList'></div>
-<div class='detail' id='detailPanel' style='display:none;'><div class='detail-item' id='detailContent'></div></div>
-</div>
-<script>
-// Safe UTF-8 base64 decode
-function decodeUtf8(b64){const bin=atob(b64);const len=bin.length;const bytes=new Uint8Array(len);for(let i=0;i<len;i++)bytes[i]=bin.charCodeAt(i);try{return new TextDecoder('utf-8').decode(bytes);}catch{return bin;}}
 
-let state = { items: [], selectedIndex: -1, lastRefreshAt: 0, nextRefreshAt: 0 };
+                                // Inject a console hook to capture renderer errors (skeleton version – payload arrives via IPC)
+                                const html = `<!DOCTYPE html><html><head><meta charset='utf-8'/><title>Merchant History</title>
+  <script>
+  (function(){
+    const msgs=[];function flush(t){try{require('electron').ipcRenderer.invoke('history-popout-debug-log',t);}catch{}}
+    const origLog=console.log, origErr=console.error;
+    console.log=function(...a){origLog.apply(this,a);flush('[log] '+a.join(' '));};
+    console.error=function(...a){origErr.apply(this,a);flush('[error] '+a.join(' '));};
+    window.addEventListener('error',e=>{flush('[window-error] '+e.message);});
+  })();
+  </script>
+  <style>
+  html,body{margin:0;padding:0;font-family:Segoe UI,Arial,sans-serif;font-size:12px;color:#ddd;background:rgba(20,22,26,0.95);-webkit-user-select:none;overflow:hidden;}
+  .window{display:flex;flex-direction:column;height:100vh;}
+  .header{font-weight:600;padding:6px 10px;background:rgba(40,44,52,0.95);cursor:default;-webkit-app-region:drag;display:flex;align-items:center;gap:8px;border-bottom:1px solid #404040;}
+  .title{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;color:#fff;}
+  .refresh-btn{width:20px;height:20px;line-height:18px;text-align:center;border:1px solid #555;border-radius:4px;background:rgba(60,64,72,0.75);cursor:pointer;-webkit-app-region:no-drag;font-size:14px;padding:0;display:flex;align-items:center;justify-content:center;}
+  .refresh-btn:hover:not(.disabled){background:#4a9eff;border-color:#4a9eff;color:#fff;}
+  .refresh-btn.disabled{opacity:0.4;cursor:not-allowed;}
+  .close{width:20px;height:20px;line-height:18px;text-align:center;border:1px solid #555;border-radius:4px;background:rgba(60,64,72,0.75);cursor:pointer;-webkit-app-region:no-drag;}
+  .close:hover{background:#c0392b;border-color:#e74c3c;color:#fff;}
+  .info-bar{padding:4px 10px;background:rgba(30,34,40,0.8);font-size:10px;color:#999;display:flex;gap:8px;align-items:center;border-bottom:1px solid #333;}
+  .list{flex:1;overflow-y:auto;overflow-x:hidden;}
+  .history-row{padding:8px 10px;border-bottom:1px solid #2d2d2d;cursor:pointer;transition:background 0.15s;}
+  .history-row:hover{background:rgba(74,158,255,0.15);}
+  .history-row.selected{background:rgba(74,158,255,0.25);}
+  .row-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
+  .item-name{font-weight:600;font-size:11px;color:#fafafa;}
+  .price{font-size:11px;color:#f0ad4e;}
+  .row-meta{display:flex;gap:8px;font-size:10px;color:#888;}
+  .detail{padding:10px;border-top:1px solid #404040;max-height:40%;overflow-y:auto;background:rgba(25,28,32,0.9);}
+  .detail-item{font-size:11px;line-height:1.4;color:#ddd;}
+  .no-selection{text-align:center;padding:20px;color:#666;font-size:11px;}
+  ::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:#444;border-radius:3px;}::-webkit-scrollbar-thumb:hover{background:#555;}
+  .currency-divine{color:#d4af37;}
+  .currency-exalted{color:#d4af37;}
+  .currency-annul{color:#b8860b;}
+  .rarity-unique{color:#af6025;}
+  .rarity-rare{color:#ffff77;}
+  .rarity-magic{color:#8888ff;}
+  .rarity-normal{color:#c8c8c8;}
+  </style>
+  </head><body><div class='window'>
+  <div class='header'><div class='title'>Merchant History</div><button class='refresh-btn' id='refreshBtn' title='Refresh (min 1 min cooldown)'>↻</button><div class='close' onclick='window.close()'>×</div></div>
+    <div class='info-bar'><span id='infoText'>Waiting for data...</span></div>
+  <div class='list' id='historyList'></div>
+  <div class='detail' id='detailPanel' style='display:none;'><div class='detail-item' id='detailContent'></div></div>
+  </div>
+  <script>
+    let state = { items: [], selectedIndex: -1, lastRefreshAt: 0, nextRefreshAt: 0 };
 
-function escapeHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function normalizeCurrency(c){const s=String(c||'').toLowerCase();if(s.includes('divine'))return'divine';if(s.includes('exalt'))return'exalted';if(s.includes('annul'))return'annul';return c;}
-function toRelativeTime(ts){const now=Date.now();const diff=now-Number(ts);if(diff<60000)return'<1m';if(diff<3600000)return Math.floor(diff/60000)+'m';if(diff<86400000)return Math.floor(diff/3600000)+'h';return Math.floor(diff/86400000)+'d';}
+  function escapeHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function normalizeCurrency(c){const s=String(c||'').toLowerCase();if(s.includes('divine'))return'divine';if(s.includes('exalt'))return'exalted';if(s.includes('annul'))return'annul';return c;}
+  function toRelativeTime(ts){const now=Date.now();const diff=now-Number(ts);if(diff<60000)return'<1m';if(diff<3600000)return Math.floor(diff/60000)+'m';if(diff<86400000)return Math.floor(diff/3600000)+'h';return Math.floor(diff/86400000)+'d';}
 
-function render(){
-  const list=document.getElementById('historyList');
-  const info=document.getElementById('infoText');
-  if(!state.items||state.items.length===0){list.innerHTML='<div style="padding:20px;text-align:center;color:#666;">No history</div>';info.textContent='0 trades';return;}
-  info.textContent=state.items.length+' trades';
-  list.innerHTML=state.items.map((it,idx)=>{
-    const name=it?.item?.name||it?.item?.typeLine||it?.item?.baseType||'Item';
-    const amount=it?.price?.amount??it?.amount??'?';
-    const currency=normalizeCurrency(it?.price?.currency??it?.currency??'');
-    const curClass=currency?'currency-'+currency:'';
-    const time=toRelativeTime(it?.time||it?.listedAt||it?.date||0);
-    const rarity=(it?.item?.rarity||'').toLowerCase();
-    const rarityClass=rarity?'rarity-'+rarity:'';
-    return \`<div class='history-row \${idx===state.selectedIndex?'selected':''}' data-idx='\${idx}'>
-      <div class='row-header'>
-        <div class='item-name \${rarityClass}'>\${escapeHtml(name)}</div>
-        <div class='price \${curClass}'>\${amount} \${currency}</div>
-      </div>
-      <div class='row-meta'><span>\${time} ago</span></div>
-    </div>\`;
-  }).join('');
-  // Attach click handlers
-  document.querySelectorAll('.history-row').forEach(row=>{
-    row.addEventListener('click',()=>{
-      const idx=parseInt(row.getAttribute('data-idx')||'0',10);
-      state.selectedIndex=idx;
-      render();
-      showDetail(idx);
+  function render(){
+    const list=document.getElementById('historyList');
+    const info=document.getElementById('infoText');
+    if(!state.items||state.items.length===0){list.innerHTML='<div style="padding:20px;text-align:center;color:#666;">No history</div>';info.textContent='0 trades';return;}
+    info.textContent=state.items.length+' trades';
+    list.innerHTML=state.items.map((it,idx)=>{
+      const name=it?.item?.name||it?.item?.typeLine||it?.item?.baseType||'Item';
+      const amount=it?.price?.amount??it?.amount??'?';
+      const currency=normalizeCurrency(it?.price?.currency??it?.currency??'');
+      const curClass=currency?'currency-'+currency:'';
+      const time=toRelativeTime(it?.time||it?.listedAt||it?.date||0);
+      const rarity=(it?.item?.rarity||'').toLowerCase();
+      const rarityClass=rarity?'rarity-'+rarity:'';
+      return \`<div class='history-row \${idx===state.selectedIndex?'selected':''}'  data-idx='\${idx}'>
+        <div class='row-header'>
+          <div class='item-name \${rarityClass}'>\${escapeHtml(name)}</div>
+          <div class='price \${curClass}'>\${amount} \${currency}</div>
+        </div>
+        <div class='row-meta'><span>\${time} ago</span></div>
+      </div>\`;
+    }).join('');
+    // Attach click handlers
+    document.querySelectorAll('.history-row').forEach(row=>{
+      row.addEventListener('click',()=>{
+        const idx=parseInt(row.getAttribute('data-idx')||'0',10);
+        state.selectedIndex=idx;
+        render();
+        showDetail(idx);
+      });
     });
-  });
-}
-
-function showDetail(idx){
-  const detail=document.getElementById('detailPanel');
-  const content=document.getElementById('detailContent');
-  if(idx<0||idx>=state.items.length){detail.style.display='none';return;}
-  const it=state.items[idx];
-  const item=it?.item||{};
-  const name=item.name||item.typeLine||item.baseType||'Item';
-  const rarity=(item.rarity||'normal').toLowerCase();
-  const rarityClass='rarity-'+rarity;
-  let html=\`<div style='font-weight:600;font-size:12px;margin-bottom:6px;' class='\${rarityClass}'>\${escapeHtml(name)}</div>\`;
-  if(item.baseType&&item.baseType!==name)html+=\`<div style='color:#999;font-size:10px;margin-bottom:4px;'>\${escapeHtml(item.baseType)}</div>\`;
-  if(item.ilvl)html+=\`<div style='font-size:10px;color:#888;'>Item Level: \${item.ilvl}</div>\`;
-  // Show implicit/explicit mods minimally
-  if(Array.isArray(item.implicitMods)&&item.implicitMods.length){
-    html+=\`<div style='margin-top:6px;font-size:10px;color:#88f;'>\${item.implicitMods.map(m=>escapeHtml(m)).join('<br>')}</div>\`;
   }
-  if(Array.isArray(item.explicitMods)&&item.explicitMods.length){
-    html+=\`<div style='margin-top:6px;font-size:10px;color:#8af;'>\${item.explicitMods.map(m=>escapeHtml(m)).join('<br>')}</div>\`;
-  }
-  content.innerHTML=html;
-  detail.style.display='block';
-}
 
-function updateRefreshButton(){
-  const btn=document.getElementById('refreshBtn');
-  const now=Date.now();
-  if(now<state.nextRefreshAt){
-    btn.classList.add('disabled');
-    const sec=Math.ceil((state.nextRefreshAt-now)/1000);
-    btn.title='Refresh available in '+sec+'s';
-    setTimeout(updateRefreshButton,1000);
-  }else{
-    btn.classList.remove('disabled');
-    btn.title='Refresh (min 1 min cooldown)';
-  }
-}
-
-// Auto-refresh every 5 minutes
-let autoRefreshTimer=null;
-function scheduleAutoRefresh(){
-  if(autoRefreshTimer)clearTimeout(autoRefreshTimer);
-  autoRefreshTimer=setTimeout(()=>{
-    const now=Date.now();
-    if(now>=state.nextRefreshAt){
-      window.electronAPI?.refreshHistoryPopout?.();
+  function showDetail(idx){
+    const detail=document.getElementById('detailPanel');
+    const content=document.getElementById('detailContent');
+    if(idx<0||idx>=state.items.length){detail.style.display='none';return;}
+    const it=state.items[idx];
+    const item=it?.item||{};
+    const name=item.name||item.typeLine||item.baseType||'Item';
+    const rarity=(item.rarity||'normal').toLowerCase();
+    const rarityClass='rarity-'+rarity;
+    let html=\`<div style='font-weight:600;font-size:12px;margin-bottom:6px;' class='\${rarityClass}'>\${escapeHtml(name)}</div>\`;
+    if(item.baseType&&item.baseType!==name)html+=\`<div style='color:#999;font-size:10px;margin-bottom:4px;'>\${escapeHtml(item.baseType)}</div>\`;
+    if(item.ilvl)html+=\`<div style='font-size:10px;color:#888;'>Item Level: \${item.ilvl}</div>\`;
+    // Show implicit/explicit mods minimally
+    if(Array.isArray(item.implicitMods)&&item.implicitMods.length){
+      html+=\`<div style='margin-top:6px;font-size:10px;color:#88f;'>\${item.implicitMods.map(m=>escapeHtml(m)).join('<br>')}</div>\`;
     }
-    scheduleAutoRefresh();
-  },300000); // 5 min
-}
+    if(Array.isArray(item.explicitMods)&&item.explicitMods.length){
+      html+=\`<div style='margin-top:6px;font-size:10px;color:#8af;'>\${item.explicitMods.map(m=>escapeHtml(m)).join('<br>')}</div>\`;
+    }
+    content.innerHTML=html;
+    detail.style.display='block';
+  }
 
-// Manual refresh button
-document.getElementById('refreshBtn')?.addEventListener('click',()=>{
-  const now=Date.now();
-  if(now<state.nextRefreshAt)return;
-  window.electronAPI?.refreshHistoryPopout?.();
-});
+  function updateRefreshButton(){
+    const btn=document.getElementById('refreshBtn');
+    const now=Date.now();
+    if(now<state.nextRefreshAt){
+      btn.classList.add('disabled');
+      const sec=Math.ceil((state.nextRefreshAt-now)/1000);
+      btn.title='Refresh available in '+sec+'s';
+      setTimeout(updateRefreshButton,1000);
+    }else{
+      btn.classList.remove('disabled');
+      btn.title='Refresh (min 1 min cooldown)';
+    }
+  }
 
-// Listen for updates from main process
-if(window.electronAPI?.onUpdateHistoryPopout){
-  window.electronAPI.onUpdateHistoryPopout((data)=>{
-    state.items=data.items||[];
-    state.lastRefreshAt=data.lastRefreshAt||Date.now();
-    state.nextRefreshAt=data.nextRefreshAt||0;
-    render();
-    updateRefreshButton();
+  // Auto-refresh every 5 minutes
+  let autoRefreshTimer=null;
+  function scheduleAutoRefresh(){
+    if(autoRefreshTimer)clearTimeout(autoRefreshTimer);
+    autoRefreshTimer=setTimeout(()=>{
+      const now=Date.now();
+      if(now>=state.nextRefreshAt){
+        window.electronAPI?.refreshHistoryPopout?.();
+      }
+      scheduleAutoRefresh();
+    },300000); // 5 min
+  }
+
+  // Manual refresh button
+  document.getElementById('refreshBtn')?.addEventListener('click',()=>{
+    const now=Date.now();
+    if(now<state.nextRefreshAt)return;
+    window.electronAPI?.refreshHistoryPopout?.();
   });
-}
 
-// Initial load
-try{
-  const raw=decodeUtf8('${b64}');
-  const data=JSON.parse(raw);
-  state.items=data.items||[];
-  state.lastRefreshAt=data.lastRefreshAt||0;
-  state.nextRefreshAt=data.nextRefreshAt||0;
-  render();
-  updateRefreshButton();
-  scheduleAutoRefresh();
-}catch(err){
-  console.error(err);
-  document.getElementById('historyList').innerHTML='<div style="padding:20px;text-align:center;color:#d9534f;">Failed to load</div>';
-}
-</script></body></html>`;
-                win.loadURL('data:text/html;base64,' + Buffer.from(html, 'utf8').toString('base64'));
+  // Listen for updates from main process
+  if(window.electronAPI?.onUpdateHistoryPopout){
+    window.electronAPI.onUpdateHistoryPopout((data)=>{
+      state.items=data.items||[];
+      state.lastRefreshAt=data.lastRefreshAt||Date.now();
+      state.nextRefreshAt=data.nextRefreshAt||0;
+      render();
+      updateRefreshButton();
+    });
+  }
+
+    // Initial load no longer decodes inline payload – data will be delivered by IPC after did-finish-load
+    console.log('Skeleton history popout loaded – awaiting IPC data');
+  </script></body></html>`;
+                                win.loadURL('data:text/html;base64,' + Buffer.from(html, 'utf8').toString('base64'));
+                                appendHistoryPopoutDebug('Called loadURL with skeleton HTML (length=' + html.length + ')');
+                                // Send payload after load
+                                const payloadClone = payload ? JSON.parse(JSON.stringify(payload)) : {};
+                                win.webContents.once('did-finish-load', () => {
+                                        try {
+                                                appendHistoryPopoutDebug('Sending payload via IPC. items=' + (payloadClone?.items?.length || 0));
+                                                win.webContents.send('update-history-popout', payloadClone);
+                                        } catch (sendErr) {
+                                                appendHistoryPopoutDebug('Error sending payload IPC: ' + (sendErr as any)?.message);
+                                        }
+                                });
                 return { ok: true, exists: false };
             } catch (e: any) {
+                appendHistoryPopoutDebug('Exception in open-history-popout: ' + (e?.message || e));
                 return { ok: false, error: e?.message || 'failed' };
             }
+        });
+
+        // IPC to receive renderer console messages & to fetch accumulated log
+        try { ipcMain.removeHandler('history-popout-debug-log'); } catch {}
+        ipcMain.handle('history-popout-debug-log', (_e, msg?: string) => {
+            if (msg) appendHistoryPopoutDebug('RENDERER: ' + msg);
+            return { ok: true };
+        });
+
+        try { ipcMain.removeHandler('get-history-popout-debug-log'); } catch {}
+        ipcMain.handle('get-history-popout-debug-log', async () => {
+            try { return { ok: true, log: fs.readFileSync(historyPopoutDebugLogPath, 'utf8') }; } catch (e: any) { return { ok: false, error: e?.message }; }
         });
 
         // Refresh history popout
