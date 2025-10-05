@@ -1,4 +1,4 @@
-import { app, BrowserWindow, globalShortcut, ipcMain, screen, Tray, Menu, nativeImage, clipboard, session, net, shell } from 'electron';
+import { app, BrowserWindow, globalShortcut, ipcMain, screen, Tray, Menu, nativeImage, clipboard, shell } from 'electron';
 import * as os from 'os';
 // Optional updater (will be active in packaged builds)
 let autoUpdater: any = null;
@@ -16,6 +16,8 @@ import { buildModPopoutHtml } from './popouts/modPopoutTemplate';
 import { buildSplashHtml } from './ui/splashTemplate.js';
 import { registerDataIpc } from './ipc/dataHandlers.js';
 import { registerHistoryPopoutIpc } from './ipc/historyPopoutHandlers.js';
+import { PoeSessionHelper } from './network/poeSession.js';
+import { ImageCacheService } from './services/imageCache.js';
 
 // History popout debug log path (moved logging helpers into historyPopoutHandlers)
 const historyPopoutDebugLogPath = path.join(app.getPath('userData'), 'history-popout-debug.log');
@@ -54,8 +56,8 @@ class OverlayApp {
     private keyboardMonitor: KeyboardMonitor | null = null;
     private armedCaptureUntil: number = 0; // time window (ms epoch) during which clipboard events are accepted
     private dataDirCache: string | null = null;
-    private imageCacheMap: Record<string, string> = {};
-    private imageCachePath: string | null = null;
+    private imageCache = new ImageCacheService();
+    private poeSession = new PoeSessionHelper(() => this.poeAccountName, (n) => { this.poeAccountName = n; });
     private shortcutAwaitingCapture = false; // tracks if current Ctrl+Q press is still waiting for an item
     private pendingCategory: string | null = null; // category queued before overlay loads
     private pendingTab: string | null = null; // tab to activate after load (e.g. 'modifiers')
@@ -94,7 +96,7 @@ class OverlayApp {
             this.updateSplash('Setting up services');
             this.setupIPC();
             this.setupClipboardMonitoring();
-            this.initImageCache();
+            this.imageCache.init();
             try { (this.clipboardMonitor as any).start?.(); } catch {}
 
             // Auto-update (best-effort)
@@ -217,79 +219,7 @@ class OverlayApp {
         return fallback;
     }
 
-    private initImageCache() {
-        try {
-            const dir = path.join(app.getPath('userData'), 'image-cache');
-            if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-            this.imageCachePath = path.join(app.getPath('userData'), 'image-cache-index.json');
-            if (fs.existsSync(this.imageCachePath)) {
-                try {
-                    const raw = JSON.parse(fs.readFileSync(this.imageCachePath, 'utf8'));
-                    if (raw && typeof raw === 'object') this.imageCacheMap = raw;
-                } catch {}
-            }
-        } catch {}
-    }
-
-    private persistImageCacheMap() {
-        try {
-            if (!this.imageCachePath) return;
-            fs.writeFileSync(this.imageCachePath, JSON.stringify(this.imageCacheMap, null, 0));
-        } catch {}
-    }
-
-    private async downloadImageToCache(url: string): Promise<string | null> {
-        return new Promise(resolve => {
-            try {
-                if (!this.imageCachePath) this.initImageCache();
-                const cacheDir = path.join(app.getPath('userData'), 'image-cache');
-                const fname = Buffer.from(url).toString('base64').replace(/[/+=]/g,'') + path.extname(new URL(url).pathname || '.img');
-                const target = path.join(cacheDir, fname || 'img.bin');
-                
-                // Check user cache first
-                if (fs.existsSync(target) && fs.statSync(target).size > 0) { 
-                    resolve(target); 
-                    return; 
-                }
-                
-                // Check bundled images (in portable exe resources)
-                // For portable: bundled-images is at exe root (process.resourcesPath/../bundled-images)
-                // For installer: bundled-images is in resources (process.resourcesPath/bundled-images)
-                const bundledCandidates = app.isPackaged 
-                    ? [
-                        path.join(process.resourcesPath, '..', 'bundled-images', fname), // Portable EXE
-                        path.join(process.resourcesPath, 'bundled-images', fname)         // Installer
-                      ]
-                    : [path.join(__dirname, '../../bundled-images', fname)];               // Dev
-                
-                const bundledPath = bundledCandidates.find(p => fs.existsSync(p) && fs.statSync(p).size > 0);
-                    
-                if (bundledPath) {
-                    // Copy bundled image to user cache for consistency
-                    try {
-                        fs.copyFileSync(bundledPath, target);
-                        resolve(target);
-                        return;
-                    } catch (copyErr) {
-                        // If copy fails, use bundled path directly
-                        resolve(bundledPath);
-                        return;
-                    }
-                }
-                
-                // Download from CDN as fallback
-                const mod = url.startsWith('https:') ? require('https') : require('http');
-                const req = mod.get(url, (res: any) => {
-                    if (res.statusCode !== 200) { try { res.resume(); } catch {}; resolve(null); return; }
-                    const out = fs.createWriteStream(target);
-                    res.pipe(out);
-                    out.on('finish', () => { out.close(()=> resolve(target)); });
-                    out.on('error', () => { try { fs.unlinkSync(target); } catch {}; resolve(null); });
-                });
-                req.on('error', () => resolve(null));
-            } catch { resolve(null); }
-        });
-    }
+    // (Legacy image cache methods removed; handled by ImageCacheService)
 
     private getDataDir(): string {
         try { return (this.modifierDatabase as any).getDataPath?.() || this.dataDirCache || this.resolveInitialDataPath(); } catch {}
@@ -531,15 +461,15 @@ class OverlayApp {
             ipcMain.handle('cache-image', async (_e, url: string) => {
                 try {
                     if (!url || typeof url !== 'string') return { ok: false, reason: 'bad_url' };
-                    if (this.imageCacheMap[url]) return { ok: true, cached: this.imageCacheMap[url] };
+                    if (this.imageCache.state.map[url]) return { ok: true, cached: this.imageCache.state.map[url] };
                     const dest = await this.downloadImageToCache(url);
-                    if (dest) { this.imageCacheMap[url] = dest; this.persistImageCacheMap(); return { ok: true, cached: dest }; }
+                    if (dest) { this.imageCache.state.map[url] = dest; this.persistImageCacheMap(); return { ok: true, cached: dest }; }
                     return { ok: false };
                 } catch (e) { return { ok: false, error: (e as Error).message }; }
             });
             ipcMain.handle('get-cached-image', (_e, url: string) => {
-                if (url && this.imageCacheMap[url] && fs.existsSync(this.imageCacheMap[url])) {
-                    return { path: this.imageCacheMap[url] };
+                if (url && this.imageCache.state.map[url] && fs.existsSync(this.imageCache.state.map[url])) {
+                    return { path: this.imageCache.state.map[url] };
                 }
                 return { path: null };
             });
@@ -610,208 +540,8 @@ class OverlayApp {
     }
 
 
-    private registerShortcuts() {
-        try { globalShortcut.unregister('F12'); } catch {}
-        try { globalShortcut.unregister('CommandOrControl+Shift+Q'); } catch {}
-        globalShortcut.register('CommandOrControl+Q', () => this.startShortcutCapture());
-        // New shortcut: Ctrl+Shift+Q opens overlay focused on Merchant History
-        globalShortcut.register('CommandOrControl+Shift+Q', () => {
-            // If already visible just refocus & switch tab; else toggle open
-            if (!this.isOverlayVisible) {
-                this.showOverlay();
-                // Small delay to allow renderer to finish initial show before tab switch
-                setTimeout(() => {
-                    this.safeSendToOverlay('set-active-tab','history');
-                    this.safeSendToOverlay('invoke-action','merchant-history');
-                }, 180);
-            } else {
-                try { this.overlayWindow?.focus(); } catch {}
-                this.safeSendToOverlay('set-active-tab','history');
-                this.safeSendToOverlay('invoke-action','merchant-history');
-            }
-        });
-    }
-
-    private startShortcutCapture() {
-        const wasVisible = this.isOverlayVisible;
-        const now = Date.now();
-        this.pendingCategory = null;
-        this.pendingItemData = null;
-        this.pendingTab = null;
-        this.shortcutAwaitingCapture = true;
-        this.lastCopyTimestamp = now;        
-        // Extend armed window to allow re-copy attempts and slower clipboard population
-        this.armedCaptureUntil = now + 1600; 
-        try { this.clipboardMonitor.resetLastSeen(); } catch {}
-
-        // Capture baseline (old) clipboard text so we can ignore stale content
-        let baseline = '';
-        try { baseline = (clipboard.readText()||'').trim(); } catch {}
-        // Clear clipboard so any new copy is definitely detected
-        try { clipboard.clear(); } catch {}
-
-        // First simulated copy BEFORE any decision / focus changes
-        this.trySimulateCtrlC();
-
-        // Perform a focused capture attempt (poll up to ~550ms, ignoring baseline)
-        this.performImmediateCapture(baseline).then(async result => {
-            // If we failed to parse AND clipboard still equals baseline (or empty), try a second copy
-            const stillBaseline = (() => {
-                try {
-                    const curr = (clipboard.readText()||'').trim();
-                    return !result.parsed && (!curr || curr === baseline);
-                } catch { return !result.parsed; }
-            })();
-            if (stillBaseline) {
-                // Retry copy once after a short delay
-                await new Promise(r=>setTimeout(r,90));
-                this.trySimulateCtrlC();
-                // Second window (~400ms)
-                const retry = await this.performImmediateCapture(baseline);
-                if (retry.parsed) {
-                    result = retry; // adopt successful retry
-                }
-            }
-            const parsed = result?.parsed;
-            if (parsed && parsed.category && parsed.category !== 'unknown') {
-                // SUCCESS PATH - disarm IMMEDIATELY to prevent clipboard monitor from re-processing
-                this.armedCaptureUntil = 0;
-                this.shortcutAwaitingCapture = false;
-                
-                if (!wasVisible) this.showOverlay();
-                const isSocketable = parsed.category === 'Socketables';
-                const isGem = parsed.category === 'Gems';
-                if (isSocketable) {
-                    // Directly open crafting -> socketables, skip modifiers flash
-                    this.safeSendToOverlay('set-active-tab','crafting');
-                    this.safeSendToOverlay('invoke-action','socketables');
-                } else if (isGem) {
-                    // Directly open character -> gems view
-                    this.safeSendToOverlay('invoke-action','gems');
-                } else {
-                    this.safeSendToOverlay('set-active-tab','modifiers');
-                    if ((parsed.rarity||'').toLowerCase()==='unique') {
-                        this.showUniqueItem(parsed, false);
-                    } else {
-                        // Send item-data with modifiers directly (no need for set-active-category, renderer will handle dropdown)
-                        (async () => {
-                            let modifiers: any[] = [];
-                            try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
-                            this.safeSendToOverlay('item-data', { item: parsed, modifiers });
-                        })();
-                    }
-                }
-                return; // Prevent fallback override
-            } else {
-                // FALLBACK PATH - disarm after fallback as well
-                this.armedCaptureUntil = 0;
-                this.shortcutAwaitingCapture = false;
-                
-                if (!wasVisible) this.showOverlay();
-                this.safeSendToOverlay('set-active-tab','modifiers');
-                this.safeSendToOverlay('set-active-category','Gloves_int');
-            }
-        });
-        // If overlay already visible we don't hide/show yet; capture function will update it when done.
-    }
-
-    // Poll clipboard briefly and attempt to parse; returns parsed item or null
-    private async performImmediateCapture(baseline?: string): Promise<{ raw: string|null; parsed: any|null }> {
-        let lastRaw = '';
-        const deadline = Date.now() + 550; // extended budget for slower clipboard population
-        while (Date.now() < deadline) {
-            let raw: string = '';
-            try { raw = (clipboard.readText()||'').trim(); } catch {}
-            // Ignore if unchanged, too short, or matches baseline (old) content
-            if (raw && raw.length > 25 && raw !== lastRaw && (!baseline || raw !== baseline)) {
-                lastRaw = raw;
-                try {
-                    const parsed = await this.itemParser.parse(raw);
-                    if (parsed && parsed.category && parsed.category !== 'unknown') {
-                        // Store processed item to prevent clipboard monitor from re-processing
-                        this.lastProcessedItemText = raw;
-                        return { raw, parsed };
-                    }
-                } catch {}
-            }
-            await new Promise(r=>setTimeout(r,22));
-        }
-        return { raw: lastRaw || null, parsed: null };
-    }
-
-    // Fast capture logic used by Ctrl+Q; returns true if an item opened a specific category
-    // Legacy fast loop removed (replaced by performImmediateCapture in simplified flow)
-
-    private setupClipboardMonitoring() {
-        if (!this.clipboardMonitor) return;
-        this.clipboardMonitor.on('poe2-item-copied', async (itemText: string) => {
-            // Skip if this is the same item we just processed in performImmediateCapture
-            if (itemText === this.lastProcessedItemText) {
-                console.log('Clipboard monitor: skipping duplicate item already processed by immediate capture');
-                return;
-            }
-            
-            // Only react while we are armed by our own shortcut (Ctrl+Q)
-            const now = Date.now();
-            const allowPinnedPassive = this.pinned && this.isOverlayVisible;
-            if (!allowPinnedPassive) {
-                if (!this.armedCaptureUntil || now > this.armedCaptureUntil) {
-                    return; // ignore unsolicited clipboard changes (other overlays, apps)
-                }
-            }
-            // Honor recent Ctrl+C if keyboard monitor active
-            if (this.keyboardMonitor?.available) {
-                const now = Date.now();
-                if (!this.lastCopyTimestamp || now - this.lastCopyTimestamp > 1600) {
-                    if (!allowPinnedPassive) return; // stale copy event
-                }
-            }
-            try {
-                const parsed = await this.itemParser.parse(itemText);
-                if (parsed && parsed.category && parsed.category !== 'unknown') {
-                    // Unique items: open Uniques panel and attempt to focus the item
-                        if ((parsed.rarity || '').toLowerCase() === 'unique') {
-                            this.showUniqueItem(parsed, allowPinnedPassive);
-                            this.armedCaptureUntil = 0;
-                            this.shortcutAwaitingCapture = false;
-                            return;
-                        }
-                    const isSocketable = parsed.category === 'Socketables';
-                    const isGem = parsed.category === 'Gems';
-                    if (isSocketable) {
-                        // Direct crafting view for socketables
-                        this.safeSendToOverlay('set-active-tab','crafting');
-                        this.safeSendToOverlay('invoke-action','socketables');
-                        this.showOverlay(undefined, { silent: allowPinnedPassive });
-                    } else if (isGem) {
-                        // Direct character -> gems view
-                        this.safeSendToOverlay('invoke-action','gems');
-                        this.showOverlay(undefined, { silent: allowPinnedPassive });
-                    } else {
-                        let modifiers: any[] = [];
-                        try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
-                        // Send item-data with modifiers (renderer will set dropdown without triggering reload)
-                        if (!this.overlayLoaded) this.pendingCategory = parsed.category;
-                        this.showOverlay({ item: parsed, modifiers }, { silent: allowPinnedPassive });
-                        if (!this.overlayLoaded) this.pendingItemData = { item: parsed, modifiers };
-                    }
-                    this.armedCaptureUntil = 0;
-                    this.shortcutAwaitingCapture = false;
-                    // Mark this item as processed to prevent immediate re-processing
-                    this.lastProcessedItemText = itemText;
-                    // Clear after 2 seconds to allow re-copying same item later
-                    setTimeout(() => { this.lastProcessedItemText = ''; }, 2000);
-                } else {
-                    if (!allowPinnedPassive) this.showOverlay();
-                    this.armedCaptureUntil = 0;
-                }
-            } catch (e) {
-                console.warn('Parse failed, showing overlay generic', e);
-                if (!allowPinnedPassive) this.showOverlay();
-                this.armedCaptureUntil = 0;
-            }
-        });
-    }
+    private persistImageCacheMap() { this.imageCache.persist(); }
+    private async downloadImageToCache(url: string): Promise<string | null> { return this.imageCache.download(url); }
 
     // Attempt to capture the currently hovered item from the game by issuing a copy and parsing clipboard
     private async captureItemFromGame() {
@@ -837,10 +567,10 @@ class OverlayApp {
                         if (parsed && parsed.category && parsed.category !== 'unknown') {
                             // Unique shortcut handling
                             if ((parsed.rarity || '').toLowerCase() === 'unique') {
-                                    this.showUniqueItem(parsed);
-                                    handled = true;
-                                    break;
-                                }
+                                this.showUniqueItem(parsed);
+                                handled = true;
+                                break;
+                            }
                             let modifiers: any[] = [];
                             try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
                             this.safeSendToOverlay('set-active-category', parsed.category);
@@ -857,6 +587,13 @@ class OverlayApp {
         // Disarm
         this.armedCaptureUntil = 0;
     }
+
+    // === Session / network (delegated to PoeSessionHelper) ===
+    private async hasPoeSession(): Promise<boolean> { return this.poeSession.hasSession(); }
+    private async openPoeLoginWindow(): Promise<{ loggedIn: boolean; accountName?: string | null }> { return this.poeSession.openLoginWindow(); }
+    private async fetchPoeHistory(league: string) { return this.poeSession.fetchHistory(league); }
+    private async isAuthenticated() { return this.poeSession.isAuthenticatedProbe('Rise of the Abyssal'); }
+
 
     // Optional best-effort Ctrl+C keystroke using robotjs if available
     private trySimulateCtrlC() {
@@ -937,6 +674,58 @@ class OverlayApp {
         } else {
             this.showOverlay();
         }
+    }
+
+    // Global keyboard shortcuts and simulation logic
+    private registerShortcuts() {
+        try { globalShortcut.unregisterAll(); } catch {}
+        // Primary toggle / capture: Ctrl+Q behavior
+        try {
+            globalShortcut.register('CommandOrControl+Q', async () => {
+                const now = Date.now();
+                // If overlay visible and NOT pinned, act as a hide toggle.
+                // If pinned, treat Ctrl+Q as a capture attempt (previous behavior).
+                if (this.isOverlayVisible && !this.pinned && !this.shortcutAwaitingCapture) {
+                    this.hideOverlay();
+                    return;
+                }
+                // If recently armed and awaiting capture, ignore extra presses
+                if (this.shortcutAwaitingCapture && now < this.armedCaptureUntil) return;
+                this.shortcutAwaitingCapture = true;
+                await this.captureItemFromGame();
+                this.shortcutAwaitingCapture = false;
+            });
+        } catch (e) { console.warn('register shortcut failed', e); }
+    }
+
+    // Monitors clipboard for external (manual) copies while armed
+    private setupClipboardMonitoring() {
+        try {
+            if (!this.clipboardMonitor) return;
+            this.clipboardMonitor.on('text-changed', async (text: string) => {
+                if (!text || typeof text !== 'string') return;
+                const trimmed = text.trim();
+                if (!trimmed || trimmed.length < 15) return;
+                // Only accept during armed window
+                if (Date.now() > this.armedCaptureUntil) return;
+                // Avoid duplicates
+                if (trimmed === this.lastProcessedItemText) return;
+                this.lastProcessedItemText = trimmed;
+                try {
+                    const parsed = await this.itemParser.parse(trimmed);
+                    if (parsed && parsed.category && parsed.category !== 'unknown') {
+                        if ((parsed.rarity || '').toLowerCase() === 'unique') {
+                            this.showUniqueItem(parsed, true);
+                        } else {
+                            let modifiers: any[] = [];
+                            try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
+                            this.safeSendToOverlay('set-active-category', parsed.category);
+                            this.showOverlay({ item: parsed, modifiers }, { silent: true });
+                        }
+                    }
+                } catch {}
+            });
+        } catch {}
     }
 
     // IPC handlers
@@ -1146,193 +935,10 @@ class OverlayApp {
 
     // ---- Legacy merchant-history migration ----
     private async migrateLegacyMerchantHistory(): Promise<void> {
-        try {
-            const newDir = this.getUserConfigDir();
-            const newPath = path.join(newDir, 'merchant-history.json');
-            // Candidate legacy locations (dev and prod builds)
-            const legacyCandidates: string[] = [];
-            // Previously: path.join(__dirname, '../../config/merchant-history.json')
-            try { legacyCandidates.push(path.join(__dirname, '../../config/merchant-history.json')); } catch {}
-            // Also check cwd/config for dev runs
-            try { legacyCandidates.push(path.join(process.cwd(), 'config/merchant-history.json')); } catch {}
-
-            // Read new (target) store if exists
-            let target: any = { entries: [], totals: {}, lastSync: 0 };
-            if (fs.existsSync(newPath)) {
-                try { target = JSON.parse(fs.readFileSync(newPath, 'utf8')); } catch {}
-            }
-
-            // Merge each legacy file if present
-            for (const cand of legacyCandidates) {
-                if (!cand) continue;
-                if (!fs.existsSync(cand)) continue;
-                try {
-                    const legacy = JSON.parse(fs.readFileSync(cand, 'utf8'));
-                    const merged = this.mergeHistoryStores(target, legacy);
-                    target = merged;
-                } catch {}
-            }
-
-            // If we updated target or if new file didn’t exist, write it
-            try { if (!fs.existsSync(newDir)) fs.mkdirSync(newDir, { recursive: true }); } catch {}
-            fs.writeFileSync(newPath, JSON.stringify(target || { entries: [], totals: {}, lastSync: 0 }, null, 2));
-        } catch {}
+        // (Legacy direct session/network helpers removed - delegated to PoeSessionHelper)
     }
 
-    private historyRowKey(r: any): string {
-        try {
-            const t = r?.time ?? r?.listedAt ?? r?.date ?? '';
-            const item = r?.item ?? (r?.data && r.data.item) ?? r;
-            const name = item?.name ?? item?.typeLine ?? item?.baseType ?? '';
-            return `${String(name)}##${String(t)}`;
-        } catch { return JSON.stringify(r); }
-    }
-
-    private mergeHistoryStores(a: any, b: any): any {
-        const out = { entries: [], totals: {}, lastSync: 0 } as any;
-        const entriesA: any[] = Array.isArray(a?.entries) ? a.entries : [];
-        const entriesB: any[] = Array.isArray(b?.entries) ? b.entries : [];
-        const map = new Map<string, any>();
-        for (const e of entriesA) { map.set(this.historyRowKey(e), e); }
-        for (const e of entriesB) { map.set(this.historyRowKey(e), e); }
-        out.entries = Array.from(map.values());
-        // Totals: sum by normalized currency
-        const totals: Record<string, number> = {};
-        const addTotals = (src: any) => {
-            const t = (src?.totals && typeof src.totals === 'object') ? src.totals : {};
-            for (const [k, v] of Object.entries(t)) {
-                const key = String(k).toLowerCase();
-                const num = Number(v || 0);
-                totals[key] = (totals[key] || 0) + (isFinite(num) ? num : 0);
-            }
-        };
-        addTotals(a); addTotals(b);
-        out.totals = totals;
-        out.lastSync = Math.max(Number(a?.lastSync || 0) || 0, Number(b?.lastSync || 0) || 0, Date.now());
-        return out;
-    }
-
-    // ===== PoE session & network helpers =====
-    private async hasPoeSession(): Promise<boolean> {
-        try {
-            const cookies = await session.defaultSession.cookies.get({ domain: 'pathofexile.com', name: 'POESESSID' });
-            return cookies && cookies.length > 0 && !!cookies[0].value;
-        } catch (e) {
-            return false;
-        }
-    }
-
-    private async openPoeLoginWindow(): Promise<{ loggedIn: boolean; accountName?: string | null }>{
-        // If already logged in, short-circuit
-        const already = await this.hasPoeSession();
-        if (already) return { loggedIn: true, accountName: this.poeAccountName };
-
-        return new Promise((resolve) => {
-            const loginWin = new BrowserWindow({
-                width: 900,
-                height: 900,
-                title: 'Log in to pathofexile.com',
-                webPreferences: {
-                    nodeIntegration: false,
-                    contextIsolation: true
-                }
-            });
-
-            const finishIfLoggedIn = async () => {
-                const authed = await this.isAuthenticated();
-                if (authed) {
-                    try { loginWin.close(); } catch {}
-                    resolve({ loggedIn: true, accountName: this.poeAccountName });
-                    return true;
-                }
-                return false;
-            };
-
-            loginWin.on('closed', async () => {
-                const authed = await this.isAuthenticated();
-                if (authed) {
-                    resolve({ loggedIn: true, accountName: this.poeAccountName });
-                } else {
-                    resolve({ loggedIn: false, accountName: null });
-                }
-            });
-
-            loginWin.webContents.on('did-navigate', async () => {
-                await finishIfLoggedIn();
-            });
-            loginWin.webContents.on('did-finish-load', async () => {
-                await finishIfLoggedIn();
-            });
-
-            // Start at trade site to keep context consistent
-            loginWin.loadURL('https://www.pathofexile.com/login');
-        });
-    }
-
-    private async fetchPoeHistory(league: string): Promise<{ ok: boolean; status: number; data?: any; headers?: Record<string,string>; error?: string }>{
-        const url = `https://www.pathofexile.com/api/trade2/history/${encodeURIComponent(league)}`;
-        try {
-            const { statusCode, body, headers } = await this.httpGetRaw(url, {
-                Accept: 'application/json',
-                Referer: 'https://www.pathofexile.com/trade2',
-                'X-Requested-With': 'XMLHttpRequest'
-            }, 12000);
-            if (statusCode === 200) {
-                let json: any = null;
-                try { json = JSON.parse(body); } catch {}
-                return { ok: true, status: statusCode, data: json ?? body, headers };
-            }
-            if (statusCode === 401 || statusCode === 403) {
-                return { ok: false, status: statusCode, error: 'Unauthorized' };
-            }
-            return { ok: false, status: statusCode, error: `HTTP ${statusCode}` };
-        } catch (e: any) {
-            return { ok: false, status: 0, error: e?.message || 'Network error' };
-        }
-    }
-    private async isAuthenticated(): Promise<boolean> {
-        // Simplified: rely on protected API call only (HTML parsing removed)
-        try {
-            const probe = await this.fetchPoeHistory('Rise of the Abyssal');
-            return !!probe.ok && probe.status === 200;
-        } catch {
-            return false;
-        }
-    }
-
-    private async httpGetText(url: string, headers?: Record<string,string>): Promise<string> {
-        const { body } = await this.httpGetRaw(url, headers, 12000);
-        return body;
-    }
-
-    private httpGetRaw(url: string, headers?: Record<string,string>, timeoutMs: number = 10000): Promise<{ statusCode: number; headers: Record<string,string>; body: string }>{
-        return new Promise((resolve, reject) => {
-            const request = net.request({ method: 'GET', url, useSessionCookies: true });
-            if (headers) {
-                for (const [k, v] of Object.entries(headers)) request.setHeader(k, v);
-            }
-            const resHeaders: Record<string,string> = {};
-            let chunks: Buffer[] = [];
-            const timer = setTimeout(() => {
-                try { request.abort(); } catch {}
-                reject(new Error(`Request timeout after ${timeoutMs}ms`));
-            }, timeoutMs);
-            request.on('response', (response) => {
-                const statusCode = response.statusCode || 0;
-                for (const [k, v] of Object.entries(response.headers)) {
-                    const val = Array.isArray(v) ? v.join(', ') : (v ?? '').toString();
-                    resHeaders[k.toLowerCase()] = val;
-                }
-                response.on('data', (chunk) => chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk)));
-                response.on('end', () => {
-                    clearTimeout(timer);
-                    resolve({ statusCode, headers: resHeaders, body: Buffer.concat(chunks).toString('utf8') });
-                });
-            });
-            request.on('error', (err) => reject(err));
-            request.end();
-        });
-    }
+    // (Removed legacy direct network helpers)
 }
 
 // Start the application
