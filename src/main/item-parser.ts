@@ -99,6 +99,8 @@ export class ItemParser {
         
     const attributeType = this.determineAttributeType(requirements);
         let category = this.determineCategory(itemClass, attributeType, baseType, name);
+        
+        console.log('ItemParser: parsed item', { itemClass, name, baseType, category });
 
         // Waystones: derive Low/Mid/Top virtual categories from Area Level or Tier in name
         if (category === 'Waystones') {

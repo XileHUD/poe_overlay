@@ -50,7 +50,7 @@ export async function show(): Promise<void> {
   if (itemsTab) { itemsTab.style.background = "var(--accent-blue)"; itemsTab.style.color = "#fff"; }
   if (contentMod) contentMod.style.display = "none";
   if (contentHist) contentHist.style.display = "none";
-  document.getElementById("historyHeader")?.setAttribute("style", "display:none");
+  // Don't set inline display:none - let CSS handle visibility via body classes
   document.getElementById("modifierHeaderInfo")?.setAttribute("style", "display:none");
   document.getElementById("whittlingInfo")?.setAttribute("style", "display:none");
   document.getElementById("controlPanel")?.setAttribute("style", "");

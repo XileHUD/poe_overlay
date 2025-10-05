@@ -45,9 +45,7 @@ export async function show(): Promise<void> {
   if (craftingTab) { craftingTab.style.background = "var(--accent-blue)"; craftingTab.style.color = "#fff"; }
   if (contentMod) contentMod.style.display = "none";
   if (contentHist) contentHist.style.display = "none";
-  document.getElementById("historyHeader")?.setAttribute("style", "display:none");
-  document.getElementById("historyHeaderLeft")?.setAttribute("style", "display:none");
-  const hh = document.getElementById("historyHeaderMain"); if (hh) (hh as HTMLElement).style.display='none';
+  // Don't set inline display:none - let CSS handle visibility via body classes
   document.getElementById("modifierHeaderInfo")?.setAttribute("style", "display:none");
   document.getElementById("whittlingInfo")?.setAttribute("style", "display:none");
   // Keep control panel visible on crafting pages

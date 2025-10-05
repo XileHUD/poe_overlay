@@ -14,7 +14,7 @@ function prepareCharacterPanel(label: string){
   (charTab as any).style.background='var(--accent-blue)'; (charTab as any).style.color='#fff';
   const content = document.getElementById('content'); if (content) (content as any).style.display='none';
   const hist = document.getElementById('historyContainer'); if (hist) (hist as any).style.display='none';
-  const hh = document.getElementById('historyHeader'); if (hh) (hh as any).style.display='none';
+  // Don't set inline display:none - let CSS handle visibility via body classes
   const mhi = document.getElementById('modifierHeaderInfo'); if (mhi) (mhi as any).style.display='none';
   const wi = document.getElementById('whittlingInfo'); if (wi) (wi as any).style.display='none';
   // Do not force show control panel; overlay shell manages it
@@ -88,7 +88,7 @@ export async function show(){
   (window as any).__lastPanel='quest_passives';
   const panel = prepareCharacterPanel('Quest Passives');
   try{
-    const mh=document.getElementById('historyHeader'); if(mh) (mh as any).style.display='none';
+    // Don't set inline display:none - let CSS handle visibility via body classes
     const mhi=document.getElementById('modifierHeaderInfo'); if(mhi){ (mhi as any).style.display='none'; }
   }catch{}
   panel.innerHTML = '<div class="no-mods">Loading...</div>';

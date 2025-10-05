@@ -774,8 +774,9 @@
                                 }
                             }
                             if (!wsCat) wsCat = 'Waystones_Low';
-                            try { window.electron?.ipcRenderer?.send('set-active-category', wsCat); } catch {}
-                            return;
+                            // Update item.category so dropdown gets set correctly below
+                            item.category = wsCat;
+                            // Don't return - let the normal category handling code process it
                         }
 
                         if (isEmotion) {
@@ -1438,10 +1439,7 @@ function renderKeystones(list){
     </div>
     <div id='keystoneTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
     <div id='keystoneWrap' style='display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; align-items:stretch;'></div>`;
-    // Ensure merchant history UI fully hidden (defensive)
-    document.getElementById('historyHeader')?.setAttribute('style','display:none');
-    document.getElementById('historyHeaderLeft')?.setAttribute('style','display:none');
-    const hh2=document.getElementById('historyHeaderMain'); if(hh2) hh2.style.display='none';
+    // Don't set inline display:none - let CSS handle visibility via body classes
     const searchEl=panel.querySelector('#keystoneSearch');
     const clearBtn=panel.querySelector('#keystoneClear');
     const tagWrap=panel.querySelector('#keystoneTagFilters');
@@ -1816,6 +1814,11 @@ function renderGems(groups){
                                 if (contentMod) contentMod.style.display='block';
                                 if (historyContainer) historyContainer.style.display='none';
                             }
+                            if (tab === 'crafting') {
+                                // activate crafting tab programmatically
+                                const craftBtn = document.getElementById('craftingTab');
+                                craftBtn?.click?.();
+                            }
                             if (tab === 'history') {
                                 const modTab = document.getElementById('tabModifier');
                                 const histTab = document.getElementById('tabHistory');
@@ -1835,6 +1838,15 @@ function renderGems(groups){
                                 if (action === 'merchant-history') {
                                     const histBtn = document.getElementById('tabHistory');
                                     histBtn?.click?.();
+                                }
+                                if (action === 'socketables') {
+                                    try {
+                                        closeAllMenus(); // Close the crafting dropdown menu
+                                        if (window.OverlaySocketables?.show) { 
+                                            window.OverlaySocketables.show(); 
+                                            setHeader('Socketables'); 
+                                        } 
+                                    } catch {}
                                 }
                             });
                             // Respond to category selection from main

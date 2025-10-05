@@ -33,7 +33,7 @@ export async function show(): Promise<void> {
   if (glossarTab) { glossarTab.classList.add('active'); glossarTab.style.background='var(--accent-blue)'; glossarTab.style.color='#fff'; }
   const content = document.getElementById('content'); if (content) content.style.display='none';
   const hist = document.getElementById('historyContainer'); if (hist) (hist as HTMLElement).style.display='none';
-  document.getElementById('historyHeader')?.setAttribute('style','display:none');
+  // Don't set inline display:none - let CSS handle visibility via body classes
   document.getElementById('modifierHeaderInfo')?.setAttribute('style','display:none');
   document.getElementById('whittlingInfo')?.setAttribute('style','display:none');
   // Do not force show control panel; overlay shell manages it
