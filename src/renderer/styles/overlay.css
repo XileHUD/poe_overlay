@@ -60,6 +60,28 @@ body.view-history #historyActiveFilters {
     pointer-events: auto !important;
 }
 
+/* Prevent text selection when dragging history header */
+#historyHeaderMain,
+#historyTotals,
+#historyTotals * {
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+/* Enable dragging on history header (override .header * no-drag) */
+#historyHeaderMain {
+    -webkit-app-region: drag;
+    cursor: move;
+}
+
+/* Disable dragging on interactive elements within history header */
+#historyHeaderMain button,
+#historyHeaderMain .pin-btn {
+    -webkit-app-region: no-drag;
+    cursor: pointer;
+}
+
 * {
     box-sizing: border-box;
 }
