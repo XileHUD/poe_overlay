@@ -102,7 +102,7 @@ export function render(list: Essence[]): void {
     if (/energy\s*shield|\bes\b/.test(blob)) lowerInc('Energy Shield');
     if (/armour|armor/.test(blob)) lowerInc('Armour');
     if (/evasion/.test(blob)) lowerInc('Evasion');
-    if (/resist/.test(blob)) lowerInc('Resistances');
+    if (/resistan/.test(blob)) lowerInc('Resistances');
     if (/fire/.test(blob)) lowerInc('Fire');
     if (/cold|freeze|chill/.test(blob)) lowerInc('Cold');
     if (/lightning|shock|electrocute/.test(blob)) lowerInc('Lightning');
@@ -207,7 +207,8 @@ export function render(list: Essence[]): void {
       const blob = `${e.name||''} ${(e.explicitMods||[]).join(' ')}`.toLowerCase();
       return [...state.selectedTags].every(t => blob.includes(t) || (
         t==='energy shield' && /energy\s*shield|\bes\b/.test(blob)
-      ) || (t==='dot' && /damage over time|degeneration|bleed|ignite/.test(blob)));
+      ) || (t==='dot' && /damage over time|degeneration|bleed|ignite/.test(blob)
+      ) || (t==='resistances' && /resistan/.test(blob)));
     };
     state.filtered = state.cache.filter((e) =>
       (!f || (e.name && e.name.toLowerCase().includes(f)) || (e.slug||'').toLowerCase().includes(f) || (e.explicitMods||[]).some((m)=>m.toLowerCase().includes(f)))

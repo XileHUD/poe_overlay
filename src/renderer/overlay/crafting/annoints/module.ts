@@ -81,7 +81,7 @@ export function hide(): void {
 }
 
 function deriveAnnointTags(a: Annoint): string[] {
-  const text = `${a.name||''} ${String(a.description||'').replace(/<[^>]+>/g,' ')}`;
+  const text = String(a.description||'').replace(/<[^>]+>/g,' ');
   const tags = new Set<string>();
   if(/Damage/i.test(text)) tags.add('Damage');
   if(/Ailment|Bleed|Ignite|Chill|Freeze|Shock|Poison|Stun/i.test(text)) tags.add('Ailments');

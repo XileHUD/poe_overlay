@@ -144,6 +144,20 @@ export function mechanicsPostProcess(data: ModifierData){
   } catch(e){ console.warn('Mechanics post-process failed', e); }
 }
 
+// TODO: WHITTLING FEATURE - CURRENTLY DISABLED
+// This feature should show tier information for gear modifiers in the header
+// Issues to fix:
+// 1. Should work for ALL gear pieces, not just rings/amulets with catalyst quality
+// 2. Need to call computeWhittling() somewhere and render results to whittlingInfo element
+// 3. Need to implement the display logic (currently missing)
+// 4. The whittlingInfo element exists in HTML but is never populated
+//
+// To re-enable:
+// - Uncomment the computeWhittling function below
+// - Call it from the render() function when displaying modifiers
+// - Populate the whittlingInfo element with the results
+// - Test on all gear types
+/*
 export function computeWhittling(data: ModifierData){
   try {
     if (!data || !data.item || !Array.isArray((data as any).item?.modifiers) || !data.modifiers) return null;
@@ -376,6 +390,8 @@ export function computeWhittling(data: ModifierData){
     return null;
   }
 }
+*/
+// END OF DISABLED WHITTLING FEATURE
 
 export function renderFilteredContent(data: any){
   const content = document.getElementById('content');
