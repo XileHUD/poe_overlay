@@ -819,15 +819,14 @@
                             const opt = Array.from(categorySelect.options||[]).find(o=>o.value===slug);
                             console.log('Found option:', opt);
                             if (opt) { 
+                                // Set dropdown value WITHOUT triggering change event (data already has modifiers)
                                 categorySelect.value = slug;
-                                console.log('Set category dropdown to:', slug);
-                                // Trigger change event to load modifiers
-                                const changeEvent = new Event('change', { bubbles: true });
-                                categorySelect.dispatchEvent(changeEvent);
+                                console.log('Set category dropdown to:', slug, '(no reload, using provided modifiers)');
                             } else {
                                 console.log('Category option not found in dropdown for:', slug);
                             }
                         }
+                        // Render directly with provided modifiers (no need to reload)
                         window.originalData = data;
                         try { window.OverlayModifiers?.mechanicsPostProcess?.(data); } catch {}
                         renderFilteredContent(data);
@@ -1260,13 +1259,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Debounce mechanism to prevent category spam
+let switchCategoryLocked = false;
+let lastSwitchedCategory = '';
+let lastSwitchTime = 0;
+
 // Re-added after accidental removal: handles manual category selection in modifier panel
 function switchCategory(){
     const select=document.getElementById('categorySelect');
     if(!select) return;
     const cat=select.value;
     if(!cat) return;
-    if(!window.electronAPI || !window.electronAPI.getModifierData) return;
+    
+    // Debounce: if same category was just loaded within 2 seconds, skip
+    const now = Date.now();
+    if (cat === lastSwitchedCategory && (now - lastSwitchTime) < 2000) {
+        console.log('Category switch debounced (same category within 2s):', cat);
+        return;
+    }
+    
+    // Lock: if already loading, queue and skip
+    if (switchCategoryLocked) {
+        console.log('Category switch locked (already loading):', cat);
+        return;
+    }
+    
+    switchCategoryLocked = true;
+    lastSwitchedCategory = cat;
+    lastSwitchTime = now;
+    
+    if(!window.electronAPI || !window.electronAPI.getModifierData) {
+        switchCategoryLocked = false;
+        return;
+    }
     // Store current category globally for use in render functions
     window.currentModifierCategory = cat;
     // Ensure we're in Modifiers view; hide other panels and menus
@@ -1291,6 +1316,7 @@ function switchCategory(){
     window.electronAPI.getModifierData(cat).then(mods=>{
         if(!Array.isArray(mods)){
             console.warn('Category returned non-array', mods);
+            switchCategoryLocked = false;
             throw new Error('invalid_data');
         }
         const data={
@@ -1302,10 +1328,12 @@ function switchCategory(){
     window.originalData=data;
     renderCategoryDetail(data);
     try { setHeader('Modifier', cat.replace(/_/g,' ')); } catch {}
+    switchCategoryLocked = false; // Unlock after successful load
     }).catch(err=>{
         console.error('switchCategory error', err);
         const content=document.getElementById('content');
         if(content) content.innerHTML=`<div class="no-mods" style="color:var(--accent-red);">Failed to load category (${err?.message||'error'})</div>`;
+        switchCategoryLocked = false; // Unlock after error
     });
 }
 

@@ -53,6 +53,7 @@ class OverlayApp {
     private modPopoutWindows: Set<BrowserWindow> = new Set();
     private lastPopoutSpawnAt: number = 0;
     private historyPopoutWindow: BrowserWindow | null = null;
+    private lastProcessedItemText: string = ''; // track last processed item to avoid duplicate handling
 
     constructor() {
         // Show splash immediately when Electron is ready
@@ -688,10 +689,12 @@ class OverlayApp {
                     result = retry; // adopt successful retry
                 }
             }
-            this.shortcutAwaitingCapture = false;
             const parsed = result?.parsed;
             if (parsed && parsed.category && parsed.category !== 'unknown') {
-                // SUCCESS PATH
+                // SUCCESS PATH - disarm IMMEDIATELY to prevent clipboard monitor from re-processing
+                this.armedCaptureUntil = 0;
+                this.shortcutAwaitingCapture = false;
+                
                 if (!wasVisible) this.showOverlay();
                 const isSocketable = parsed.category === 'Socketables';
                 if (isSocketable) {
@@ -703,7 +706,7 @@ class OverlayApp {
                     if ((parsed.rarity||'').toLowerCase()==='unique') {
                         this.showUniqueItem(parsed, false);
                     } else {
-                        this.safeSendToOverlay('set-active-category', parsed.category);
+                        // Send item-data with modifiers directly (no need for set-active-category, renderer will handle dropdown)
                         (async () => {
                             let modifiers: any[] = [];
                             try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
@@ -711,16 +714,15 @@ class OverlayApp {
                         })();
                     }
                 }
-                // Disarm further clipboard-driven fallback once we succeeded
-                this.armedCaptureUntil = 0;
                 return; // Prevent fallback override
             } else {
-                // FALLBACK PATH
+                // FALLBACK PATH - disarm after fallback as well
+                this.armedCaptureUntil = 0;
+                this.shortcutAwaitingCapture = false;
+                
                 if (!wasVisible) this.showOverlay();
                 this.safeSendToOverlay('set-active-tab','modifiers');
                 this.safeSendToOverlay('set-active-category','Gloves_int');
-                // Disarm after fallback as well
-                this.armedCaptureUntil = 0;
             }
         });
         // If overlay already visible we don't hide/show yet; capture function will update it when done.
@@ -739,6 +741,8 @@ class OverlayApp {
                 try {
                     const parsed = await this.itemParser.parse(raw);
                     if (parsed && parsed.category && parsed.category !== 'unknown') {
+                        // Store processed item to prevent clipboard monitor from re-processing
+                        this.lastProcessedItemText = raw;
                         return { raw, parsed };
                     }
                 } catch {}
@@ -754,6 +758,12 @@ class OverlayApp {
     private setupClipboardMonitoring() {
         if (!this.clipboardMonitor) return;
         this.clipboardMonitor.on('poe2-item-copied', async (itemText: string) => {
+            // Skip if this is the same item we just processed in performImmediateCapture
+            if (itemText === this.lastProcessedItemText) {
+                console.log('Clipboard monitor: skipping duplicate item already processed by immediate capture');
+                return;
+            }
+            
             // Only react while we are armed by our own shortcut (Ctrl+Q)
             const now = Date.now();
             const allowPinnedPassive = this.pinned && this.isOverlayVisible;
@@ -788,13 +798,17 @@ class OverlayApp {
                     } else {
                         let modifiers: any[] = [];
                         try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
-                        this.safeSendToOverlay('set-active-category', parsed.category);
+                        // Send item-data with modifiers (renderer will set dropdown without triggering reload)
                         if (!this.overlayLoaded) this.pendingCategory = parsed.category;
                         this.showOverlay({ item: parsed, modifiers }, { silent: allowPinnedPassive });
                         if (!this.overlayLoaded) this.pendingItemData = { item: parsed, modifiers };
                     }
                     this.armedCaptureUntil = 0;
                     this.shortcutAwaitingCapture = false;
+                    // Mark this item as processed to prevent immediate re-processing
+                    this.lastProcessedItemText = itemText;
+                    // Clear after 2 seconds to allow re-copying same item later
+                    setTimeout(() => { this.lastProcessedItemText = ''; }, 2000);
                 } else {
                     if (!allowPinnedPassive) this.showOverlay();
                     this.armedCaptureUntil = 0;
