@@ -79,6 +79,8 @@ export interface HistoryState {
   sort: string;
   lastRefreshAt: number;
   rateLimitUntil: number;
+  globalMinInterval?: number;
+  remoteLastFetchAt?: number;
 }
 
 export const historyState: HistoryState = {
@@ -90,6 +92,8 @@ export const historyState: HistoryState = {
   sort: "newest",
   lastRefreshAt: 0,
   rateLimitUntil: 0,
+  globalMinInterval: 300_000,
+  remoteLastFetchAt: 0,
 };
 
 // On load: hydrate store from local disk so we keep more than the last 100 entries
@@ -134,6 +138,23 @@ export async function updateSessionUI(): Promise<boolean> {
   } catch {
     return false;
   }
+}
+
+// Canonical millisecond timestamp resolver for history entries
+function canonicalTs(r: any): number {
+  try {
+    const raw = r?.time ?? r?.listedAt ?? r?.date ?? 0;
+    if (!raw) return 0;
+    if (typeof raw === 'number') {
+      if (!isFinite(raw) || raw <= 0) return 0;
+      return raw < 2_000_000_000 ? raw * 1000 : raw; // treat plausible seconds epoch
+    }
+    if (typeof raw === 'string' && raw.trim()) {
+      const p = Date.parse(raw.trim());
+      return isFinite(p) ? p : 0;
+    }
+    return 0;
+  } catch { return 0; }
 }
 
 export function recomputeTotalsFromEntries(): void {
@@ -414,14 +435,26 @@ export async function refreshHistory(): Promise<boolean | void> {
   }
   try {
     let rows: any[] = [];
-    const res = await (window as any).electronAPI.poeFetchHistory(historyState.league);
+  const res = await (window as any).electronAPI.poeFetchHistory(historyState.league);
     try {
       const headers = (res as any)?.headers || {};
       const until = parseRateLimitHeaders(headers, (res as any)?.status);
       if (until) historyState.rateLimitUntil = Math.max(historyState.rateLimitUntil || 0, until);
     } catch {}
     if (!(res as any)?.ok) {
-      historyState.lastRefreshAt = Date.now();
+      if ((res as any)?.rateLimited) {
+        const retryIn = Number((res as any)?.retryIn || 0) || 0;
+        if (retryIn > 0) {
+          const until = Date.now() + retryIn;
+          historyState.rateLimitUntil = Math.max(historyState.rateLimitUntil || 0, until);
+        }
+        const lf = Number((res as any)?.lastFetchAt || 0) || 0;
+        if (lf) historyState.remoteLastFetchAt = lf;
+        const mi = Number((res as any)?.minInterval || 0) || 0;
+        if (mi > 0) historyState.globalMinInterval = mi;
+      } else {
+        historyState.lastRefreshAt = Date.now();
+      }
       const loggedIn = await updateSessionUI();
       const is429 = (res as any)?.status === 429;
       if (!loggedIn && (!historyState.items || historyState.items.length === 0)) {
@@ -453,7 +486,12 @@ export async function refreshHistory(): Promise<boolean | void> {
       } catch {}
       return;
     }
-    const json = (res as any).data || {};
+  // Success metadata adoption
+  const lf = Number((res as any)?.lastFetchAt || 0) || 0;
+  if (lf) historyState.remoteLastFetchAt = lf;
+  const mi = Number((res as any)?.minInterval || 0) || 0;
+  if (mi > 0) historyState.globalMinInterval = mi;
+  const json = (res as any).data || {};
     if (Array.isArray((json as any)?.result)) rows = (json as any).result;
     else if (Array.isArray((json as any)?.entries)) rows = (json as any).entries;
     else if (Array.isArray(json)) rows = json as any[];
@@ -468,6 +506,7 @@ export async function refreshHistory(): Promise<boolean | void> {
       price: r.price || (r.amount ? { amount: r.amount, currency: r.currency } : undefined),
       item: r.item || (r.data && r.data.item) || r,
       note: r.note || (r.price && r.price.raw),
+      ts: canonicalTs(r)
     }));
     const existingKeys = new Set((historyState.store.entries || []).map(keyForRow));
     const newOnes = normalized.filter((r: any) => !existingKeys.has(keyForRow(r)));
@@ -492,7 +531,7 @@ export async function refreshHistory(): Promise<boolean | void> {
       recomputeChartSeriesFromStore();
       drawHistoryChart();
     } catch {}
-    historyState.lastRefreshAt = Date.now();
+  historyState.lastRefreshAt = historyState.remoteLastFetchAt || Date.now();
     try {
       updateHistoryRefreshButton();
     } catch {}
@@ -1088,8 +1127,9 @@ export function renderHistoryDetail(idx: number): void {
 }
 
 export function nextAllowedRefreshAt(): number {
-  const minInterval = 30_000; // 30s throttle
-  return Math.max((historyState.lastRefreshAt || 0) + minInterval, historyState.rateLimitUntil || 0);
+  const minInterval = historyState.globalMinInterval || 300_000;
+  const base = historyState.remoteLastFetchAt || historyState.lastRefreshAt || 0;
+  return Math.max(base + minInterval, historyState.rateLimitUntil || 0);
 }
 
 let _refreshBtnTimer: any = null;
@@ -1177,19 +1217,11 @@ export function parseRateLimitHeaders(headers: any, status?: number): number {
 // History popout functionality
 export async function openHistoryPopout(): Promise<void> {
   try {
-    const now = Date.now();
-    // Calculate next allowed refresh time (1 min minimum cooldown)
-    const nextRefreshAt = Math.max(
-      historyState.lastRefreshAt + 60_000, // 1 min since last refresh
-      historyState.rateLimitUntil || 0 // rate limit
-    );
-    
-    const payload = {
-      items: historyState.items || [],
-      lastRefreshAt: historyState.lastRefreshAt,
-      nextRefreshAt: nextRefreshAt
-    };
-    
+    const minInterval = historyState.globalMinInterval || 300_000;
+    const base = historyState.remoteLastFetchAt || historyState.lastRefreshAt || 0;
+    const nextRefreshAt = Math.max(base + minInterval, historyState.rateLimitUntil || 0);
+    const items = (historyState.items || []).map((it:any)=>{ if(!it.ts) it.ts = canonicalTs(it); return it; });
+    const payload = { items, lastRefreshAt: historyState.lastRefreshAt, nextRefreshAt, minInterval };
     await (window as any).electronAPI?.openHistoryPopout?.(payload);
   } catch (e) {
     console.error('Failed to open history popout:', e);
@@ -1199,14 +1231,10 @@ export async function openHistoryPopout(): Promise<void> {
 // Handle refresh request from popout
 export async function handlePopoutRefreshRequest(): Promise<void> {
   try {
-    const now = Date.now();
-    const nextRefreshAt = Math.max(
-      historyState.lastRefreshAt + 60_000, // 1 min minimum
-      historyState.rateLimitUntil || 0
-    );
-    
-    // Check if refresh is allowed
-    if (now < nextRefreshAt) {
+    const minInterval = historyState.globalMinInterval || 300_000;
+    const base = historyState.remoteLastFetchAt || historyState.lastRefreshAt || 0;
+    const nextRefreshAt = Math.max(base + minInterval, historyState.rateLimitUntil || 0);
+    if (Date.now() < nextRefreshAt) {
       // Send current data back without refreshing
       sendHistoryToPopout();
       return;
@@ -1227,18 +1255,11 @@ export async function handlePopoutRefreshRequest(): Promise<void> {
 // Send current history data to popout window
 export function sendHistoryToPopout(): void {
   try {
-    const now = Date.now();
-    const nextRefreshAt = Math.max(
-      historyState.lastRefreshAt + 60_000,
-      historyState.rateLimitUntil || 0
-    );
-    
-    const payload = {
-      items: historyState.items || [],
-      lastRefreshAt: historyState.lastRefreshAt,
-      nextRefreshAt: nextRefreshAt
-    };
-    
+    const minInterval = historyState.globalMinInterval || 300_000;
+    const base = historyState.remoteLastFetchAt || historyState.lastRefreshAt || 0;
+    const nextRefreshAt = Math.max(base + minInterval, historyState.rateLimitUntil || 0);
+    const items = (historyState.items || []).map((it:any)=>{ if(!it.ts) it.ts = canonicalTs(it); return it; });
+    const payload = { items, lastRefreshAt: historyState.lastRefreshAt, nextRefreshAt, minInterval };
     (window as any).electronAPI?.sendHistoryToPopout?.(payload);
   } catch (e) {
     console.error('Failed to send history to popout:', e);

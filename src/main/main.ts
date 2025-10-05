@@ -10,23 +10,15 @@ import { ClipboardMonitor } from './clipboard-monitor';
 import { ItemParser } from './item-parser';
 import { ModifierDatabase } from './modifier-database';
 import { KeyboardMonitor } from './keyboard-monitor';
-import { buildHistoryPopoutHtml } from './popouts/historyPopoutTemplate';
+import { buildHistoryPopoutHtml } from './popouts/historyPopoutTemplate'; // still used for mod popouts? kept for now
 import { buildModPopoutHtml } from './popouts/modPopoutTemplate';
 // Use explicit .js extension for NodeNext module resolution compatibility
 import { buildSplashHtml } from './ui/splashTemplate.js';
 import { registerDataIpc } from './ipc/dataHandlers.js';
+import { registerHistoryPopoutIpc } from './ipc/historyPopoutHandlers.js';
 
-// --- History popout debug instrumentation helpers ---
-// We persist a lightweight log to help diagnose the blank history popout window.
+// History popout debug log path (moved logging helpers into historyPopoutHandlers)
 const historyPopoutDebugLogPath = path.join(app.getPath('userData'), 'history-popout-debug.log');
-function appendHistoryPopoutDebug(msg: string) {
-    try {
-        const line = `[${new Date().toISOString()}] ${msg}\n`;
-        fs.appendFileSync(historyPopoutDebugLogPath, line);
-        // Also echo to console for real-time visibility
-        console.log('[HISTORY-POPOUT]', msg);
-    } catch { /* ignore */ }
-}
 
 // Configure Electron userData and Chromium caches to a writable directory before app is ready
 try {
@@ -71,6 +63,8 @@ class OverlayApp {
     private lastPopoutSpawnAt: number = 0;
     private historyPopoutWindow: BrowserWindow | null = null;
     private lastProcessedItemText: string = ''; // track last processed item to avoid duplicate handling
+    private lastHistoryFetchAt: number = 0; // global merchant history fetch timestamp (ms)
+    private readonly HISTORY_FETCH_MIN_INTERVAL = 5 * 60 * 1000; // 5 minutes
 
     constructor() {
         // Show splash immediately when Electron is ready
@@ -1012,113 +1006,12 @@ class OverlayApp {
             }
         });
 
-        // Open history popout window
-        try { ipcMain.removeHandler('open-history-popout'); } catch {}
-        ipcMain.handle('open-history-popout', async (_e, payload: any) => {
-            try {
-                // If popout already exists, focus it and update data
-                if (this.historyPopoutWindow && !this.historyPopoutWindow.isDestroyed()) {
-                    appendHistoryPopoutDebug('Reusing existing history popout – sending update payload');
-                    this.historyPopoutWindow.focus();
-                    this.historyPopoutWindow.webContents.send('update-history-popout', payload);
-                    return { ok: true, exists: true };
-                }
-
-                const json = JSON.stringify(payload || {});
-                const b64 = Buffer.from(json, 'utf8').toString('base64');
-                appendHistoryPopoutDebug(`Opening new history popout. Payload bytes=${json.length}`);
-
-                // Anchor next to overlay (right side preferred)
-                let baseX = 120, baseY = 120;
-                try {
-                    if (this.overlayWindow && !this.overlayWindow.isDestroyed()) {
-                        const b = this.overlayWindow.getBounds();
-                        baseX = b.x + b.width + 8;
-                        baseY = b.y;
-                        const disp = screen.getPrimaryDisplay();
-                        const sw = disp.workArea.width || disp.workAreaSize.width;
-                        const sh = disp.workArea.height || disp.workAreaSize.height;
-                        if (baseX + 380 > sw) baseX = Math.max(12, b.x - 380 - 8);
-                        if (baseY + 600 > sh) baseY = Math.max(20, sh - 620);
-                        appendHistoryPopoutDebug(`Computed window position x=${baseX} y=${baseY}`);
-                    }
-                } catch (posErr) { appendHistoryPopoutDebug('Position computation error: ' + (posErr as any)?.message); }
-
-                const win = new BrowserWindow({
-                    width: 380,
-                    height: 600,
-                    x: baseX,
-                    y: baseY,
-                    frame: false,
-                    alwaysOnTop: true,
-                    skipTaskbar: false,
-                    resizable: true,
-                    // Disable transparency during diagnostics so we can distinguish a paint issue from empty content
-                    transparent: false,
-                    backgroundColor: '#14161A',
-                    show: true,
-                    webPreferences: { contextIsolation: true, nodeIntegration: false, preload: path.join(__dirname, 'preload.js') }
-                });
-                appendHistoryPopoutDebug('BrowserWindow constructed');
-                win.webContents.on('did-start-loading', () => appendHistoryPopoutDebug('did-start-loading'));
-                win.webContents.on('did-finish-load', () => appendHistoryPopoutDebug('did-finish-load'));
-                win.webContents.on('dom-ready', () => appendHistoryPopoutDebug('dom-ready'));
-                win.webContents.on('did-fail-load', (_e2, errorCode, errorDesc) => appendHistoryPopoutDebug(`did-fail-load code=${errorCode} desc=${errorDesc}`));
-                win.on('unresponsive', () => appendHistoryPopoutDebug('window unresponsive'));
-                win.on('closed', () => appendHistoryPopoutDebug('window closed'));
-                
-                this.historyPopoutWindow = win;
-                win.on('closed', () => { this.historyPopoutWindow = null; });
-
-                                const html = buildHistoryPopoutHtml();
-                                win.loadURL('data:text/html;base64,' + Buffer.from(html, 'utf8').toString('base64'));
-                                appendHistoryPopoutDebug('Called loadURL with skeleton HTML (length=' + html.length + ')');
-                                // Send payload after load
-                                const payloadClone = payload ? JSON.parse(JSON.stringify(payload)) : {};
-                                win.webContents.once('did-finish-load', () => {
-                                        try {
-                                                appendHistoryPopoutDebug('Sending payload via IPC. items=' + (payloadClone?.items?.length || 0));
-                                                win.webContents.send('update-history-popout', payloadClone);
-                                        } catch (sendErr) {
-                                                appendHistoryPopoutDebug('Error sending payload IPC: ' + (sendErr as any)?.message);
-                                        }
-                                });
-                return { ok: true, exists: false };
-            } catch (e: any) {
-                appendHistoryPopoutDebug('Exception in open-history-popout: ' + (e?.message || e));
-                return { ok: false, error: e?.message || 'failed' };
-            }
-        });
-
-        // IPC to receive renderer console messages & to fetch accumulated log
-        try { ipcMain.removeHandler('history-popout-debug-log'); } catch {}
-        ipcMain.handle('history-popout-debug-log', (_e, msg?: string) => {
-            if (msg) appendHistoryPopoutDebug('RENDERER: ' + msg);
-            return { ok: true };
-        });
-
-        try { ipcMain.removeHandler('get-history-popout-debug-log'); } catch {}
-        ipcMain.handle('get-history-popout-debug-log', async () => {
-            try { return { ok: true, log: fs.readFileSync(historyPopoutDebugLogPath, 'utf8') }; } catch (e: any) { return { ok: false, error: e?.message }; }
-        });
-
-        // Refresh history popout
-        try { ipcMain.removeHandler('refresh-history-popout'); } catch {}
-        ipcMain.handle('refresh-history-popout', async () => {
-            // Delegate to overlay to refresh and send back updated data
-            if (this.overlayWindow && !this.overlayWindow.isDestroyed()) {
-                this.overlayWindow.webContents.send('request-history-popout-refresh');
-            }
-            return { ok: true };
-        });
-
-        // Send updated data to popout from overlay
-        try { ipcMain.removeHandler('send-history-to-popout'); } catch {}
-        ipcMain.handle('send-history-to-popout', async (_e, payload: any) => {
-            if (this.historyPopoutWindow && !this.historyPopoutWindow.isDestroyed()) {
-                this.historyPopoutWindow.webContents.send('update-history-popout', payload);
-            }
-            return { ok: true };
+        // History popout handlers extracted
+        registerHistoryPopoutIpc({
+            historyPopoutWindowRef: { current: this.historyPopoutWindow },
+            overlayWindow: () => this.overlayWindow,
+            getUserConfigDir: () => this.getUserConfigDir(),
+            logPath: historyPopoutDebugLogPath
         });
 
         ipcMain.on('hide-overlay', () => {
@@ -1166,8 +1059,14 @@ class OverlayApp {
         });
 
         ipcMain.handle('poe-fetch-history', async (_e, league: string) => {
+            const now = Date.now();
+            if (now - this.lastHistoryFetchAt < this.HISTORY_FETCH_MIN_INTERVAL) {
+                const waitMs = this.HISTORY_FETCH_MIN_INTERVAL - (now - this.lastHistoryFetchAt);
+                return { ok: false, rateLimited: true, retryIn: waitMs, accountName: this.poeAccountName };
+            }
             const { ok, status, data, headers, error } = await this.fetchPoeHistory(league);
-            return { ok, status, data, headers, error, accountName: this.poeAccountName };
+            if (ok) this.lastHistoryFetchAt = Date.now();
+            return { ok, status, data, headers, error, accountName: this.poeAccountName, lastFetchAt: this.lastHistoryFetchAt, minInterval: this.HISTORY_FETCH_MIN_INTERVAL };
         });
 
 

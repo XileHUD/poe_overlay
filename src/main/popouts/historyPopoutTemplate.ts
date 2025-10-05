@@ -10,7 +10,7 @@ export function buildHistoryPopoutHtml(): string {
     window.addEventListener('error',e=>flush('[window-error] '+e.message));
   })();</script>
   <style>
-    html,body{margin:0;padding:0;font-family:Segoe UI,Arial,sans-serif;font-size:12px;color:#ddd;background:rgba(20,22,26,0.95);-webkit-user-select:none;overflow:hidden;}
+  html,body{margin:0;padding:0;font-family:Segoe UI,Arial,sans-serif;font-size:12px;color:#ddd;background:rgba(20,22,26,0.60);backdrop-filter:blur(6px) saturate(130%);-webkit-user-select:none;overflow:hidden;}
     .window{display:flex;flex-direction:column;height:100vh;}
     .header{font-weight:600;padding:6px 10px;background:rgba(40,44,52,0.95);cursor:default;-webkit-app-region:drag;display:flex;align-items:center;gap:8px;border-bottom:1px solid #404040;}
     .title{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;color:#fff;}
@@ -35,7 +35,7 @@ export function buildHistoryPopoutHtml(): string {
     .rarity-unique{color:#af6025;}.rarity-rare{color:#ffff77;}.rarity-magic{color:#8888ff;}.rarity-normal{color:#c8c8c8;}
   </style>
   </head><body><div class='window'>
-    <div class='header'><div class='title'>Merchant History</div><button class='refresh-btn' id='refreshBtn' title='Refresh (min 1 min cooldown)'>↻</button><div class='close' onclick='window.close()'>×</div></div>
+  <div class='header'><div class='title'>Merchant History</div><button class='refresh-btn' id='refreshBtn' title='Refresh (5m global cooldown)'>↻</button><div class='close' onclick='window.close()'>×</div></div>
     <div class='info-bar'><span id='infoText'>Waiting for data...</span></div>
     <div class='list' id='historyList'></div>
     <div class='detail' id='detailPanel' style='display:none;'><div class='detail-item' id='detailContent'></div></div>
@@ -44,7 +44,20 @@ export function buildHistoryPopoutHtml(): string {
     let state={items:[],selectedIndex:-1,lastRefreshAt:0,nextRefreshAt:0};
     function escapeHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
     function normalizeCurrency(c){const s=String(c||'').toLowerCase();if(s.includes('divine'))return'divine';if(s.includes('exalt'))return'exalted';if(s.includes('annul'))return'annul';return c;}
-    function toRelativeTime(ts){const now=Date.now();const diff=now-Number(ts);if(diff<60000)return'<1m';if(diff<3600000)return Math.floor(diff/60000)+'m';if(diff<86400000)return Math.floor(diff/3600000)+'h';return Math.floor(diff/86400000)+'d';}
+    function toRelativeTime(ts){
+      let n = Number(ts);
+      if(isFinite(n) && n < 2e10) { // likely seconds epoch
+        if(n>1e9 && n<2e10) n = n*1000; // convert seconds to ms
+      }
+      if(!isFinite(n) || n<=0) return '?';
+      const now = Date.now();
+      let diff = now - n;
+      if(diff < 0) diff = 0;
+      if(diff < 60000) return '<1m';
+      if(diff < 3600000) return Math.floor(diff/60000)+'m';
+      if(diff < 86400000) return Math.floor(diff/3600000)+'h';
+      return Math.floor(diff/86400000)+'d';
+    }
     function render(){
       const list=document.getElementById('historyList');
       const info=document.getElementById('infoText');
@@ -59,7 +72,7 @@ export function buildHistoryPopoutHtml(): string {
         const amount=(it&& (it.price&&it.price.amount || it.amount)) ?? '?';
         const currency=normalizeCurrency((it&& (it.price&&it.price.currency || it.currency))||'');
         const curClass=currency?('currency-'+currency):'';
-        const time=toRelativeTime(it && (it.time||it.listedAt||it.date||0));
+        const time=toRelativeTime(it && it.ts ? it.ts : (it && (it.time||it.listedAt||it.date||0))); // canonical ts provided by renderer
         const rarity=(it&&it.item&&it.item.rarity||'').toLowerCase();
         const rarityClass=rarity?('rarity-'+rarity):'';
         return '<div class="history-row '+(idx===state.selectedIndex?'selected':'')+'" data-idx="'+idx+'">'
@@ -100,10 +113,10 @@ export function buildHistoryPopoutHtml(): string {
       c.innerHTML=html;
       d.style.display='block';
     }
-    function updateRefreshButton(){const b=document.getElementById('refreshBtn');const now=Date.now();if(now<state.nextRefreshAt){b.classList.add('disabled');const s=Math.ceil((state.nextRefreshAt-now)/1000);b.title='Refresh available in '+s+'s';setTimeout(updateRefreshButton,1000);}else{b.classList.remove('disabled');b.title='Refresh (min 1 min cooldown)';}}
+  function updateRefreshButton(){const b=document.getElementById('refreshBtn');const now=Date.now();if(now<state.nextRefreshAt){b.classList.add('disabled');const s=Math.ceil((state.nextRefreshAt-now)/1000);b.title='Refresh available in '+s+'s (5m global)';setTimeout(updateRefreshButton,1000);}else{b.classList.remove('disabled');b.title='Refresh (5m global cooldown)';}}
     let autoRefreshTimer=null;let autoRefreshStarted=false;function scheduleAutoRefresh(){if(autoRefreshTimer)clearTimeout(autoRefreshTimer);autoRefreshTimer=setTimeout(()=>{const now=Date.now();if(now>=state.nextRefreshAt){window.electronAPI?.refreshHistoryPopout?.();}scheduleAutoRefresh();},300000);} // 5m
     document.getElementById('refreshBtn')?.addEventListener('click',()=>{const now=Date.now();if(now<state.nextRefreshAt)return;window.electronAPI?.refreshHistoryPopout?.();});
-    if(window.electronAPI?.onUpdateHistoryPopout){window.electronAPI.onUpdateHistoryPopout((data)=>{console.log('Received update event items='+(data?.items?.length||0));state.items=data.items||[];state.lastRefreshAt=data.lastRefreshAt||Date.now();state.nextRefreshAt=data.nextRefreshAt||0;render();updateRefreshButton();if(!autoRefreshStarted){scheduleAutoRefresh();autoRefreshStarted=true;}});}else{console.error('electronAPI.onUpdateHistoryPopout missing');}
+  if(window.electronAPI?.onUpdateHistoryPopout){window.electronAPI.onUpdateHistoryPopout((data)=>{console.log('Received update event items='+(data?.items?.length||0));state.items=data.items||[];state.lastRefreshAt=data.lastRefreshAt||Date.now();state.nextRefreshAt=data.nextRefreshAt||0;render();updateRefreshButton();if(!autoRefreshStarted){scheduleAutoRefresh();autoRefreshStarted=true;}});}else{console.error('electronAPI.onUpdateHistoryPopout missing');}
     console.log('History skeleton loaded');
   </script></body></html>`;
 }
