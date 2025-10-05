@@ -24,35 +24,61 @@ I initially created this HUD for my personal use. As a self-employed trader, I s
 
 ### Merchant History
 One of the core motivations for this project. In-game, the vendor history is capped at the last 100 items and doesn't show the items themselves. XileHUD provides a local, searchable, and filterable history of your merchant interactions, allowing you to save and analyze more than just the last 100 transactions.
-<!-- Screenshot placeholder: docs/images/merchant-history.png -->
+
+<p align="center">
+	<img src="./screenshots/MerchantHistory.png" alt="Merchant History UI" width="760" />
+</p>
 
 ### Detailed Modifier Overview
 Get an in-depth look at item modifiers with advanced filters, weighting, and more. Instantly understand the power of an item.
-<!-- Screenshot placeholder: docs/images/modifier-overview.png -->
+
+<p align="center">
+	<img src="./screenshots/Modifier.png" alt="Detailed Modifier Overview" width="760" />
+</p>
 
 ### Crafting Currency Helper
 Ever wondered about the different Essences, Omens, or Runes available? Instead of manually searching the trade site, simply press Ctrl+Q on any currency to see a detailed, filterable list of what they do.
-<!-- Screenshot placeholder: docs/images/currency-helper.png -->
+
+<p align="center">
+	<img src="./screenshots/Omen.png" alt="Crafting Currency / Omen Helper" width="720" />
+</p>
 
 ### Smart Clipboard
 The overlay is intelligent. If you copy a rare Strength-based chestplate, for example, the modifiers page will automatically open with the "STR Chest" category pre-selected. This functionality extends to Omens, Essences, Catalysts, Uniques, Flasks, Relics, and much more, saving you valuable clicks.
-<!-- Screenshot placeholder: docs/images/smart-clipboard.png -->
+
+<p align="center">
+	<img src="./screenshots/Socketables.png" alt="Smart Clipboard Socketables Context" width="360" />
+	<img src="./screenshots/Annoints.png" alt="Smart Clipboard Annoints Context" width="360" />
+</p>
 
 ### Character Planner
 View all available Gems, Atlas Passives, Keystones, and Ascendancy passives. Filter everything to your needs to plan your next build or optimize your current one. A comprehensive glossary is also included.
-<!-- Screenshot placeholder: docs/images/character-planner.png -->
+
+<p align="center">
+	<img src="./screenshots/Gems.png" alt="Character Planner Gems" width="760" />
+</p>
 
 ### Quest Passives Helper
 With the absence of the /passives command in PoE2 and the increased number of campaign rewards, this tool is essential. Track and filter all sources of Spirit, passive points, resistances, and attributes. Check them off as you collect them to ensure you never miss a permanent character boost again.
-<!-- Screenshot placeholder: docs/images/quest-passives.png -->
+
+<p align="center">
+	<img src="./screenshots/QuestPassives.png" alt="Quest Passives Helper" width="760" />
+</p>
 
 ### Item Database
 Browse all base items and Uniques in the game through a clean, organized interface with powerful filtering options. For instance, find the highest evasion base armor with just two clicks.
-<!-- Screenshot placeholder: docs/images/item-database.png -->
+
+<p align="center">
+	<img src="./screenshots/Bases.png" alt="Base Item Browser" width="370" />
+	<img src="./screenshots/Uniques.png" alt="Unique Item Browser" width="370" />
+</p>
 
 ### Map Regex Tool
 A simple tool to make juicing maps more straightforward. Select the mods you want or don't want, and copy the generated regex directly into the game.
-<!-- Screenshot placeholder: docs/images/map-regex.png -->
+
+<p align="center">
+	<img src="./screenshots/Regex.png" alt="Map Regex Tool" width="760" />
+</p>
 
 ### Focused Gaming
 The overlay is designed to be unobtrusive and can be quickly toggled with a hotkey, keeping you focused on the game.
