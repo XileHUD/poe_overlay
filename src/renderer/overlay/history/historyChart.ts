@@ -226,15 +226,36 @@ export function drawHistoryChart(): void {
   });
   (ctx as any).setLineDash?.([]);
 
-  // Y tick labels
+  // Y tick labels with de-overlap logic
   ctx.fillStyle = "#999" as any;
   (ctx as any).font = "10px Segoe UI, sans-serif";
   (ctx as any).textAlign = "right";
-  ctx.fillText("0", padL - 4, H - padB + 10);
+  const minGap = 14; // minimum pixel gap between baselines
+  const topY = padT + 10; // baseline used for top value label
+  const bottomLabel = { v: 0, y: H - padB + 10 };
+  const interiorTicks: { v: number; y: number }[] = [];
+  // Pre-compute and filter out ticks too close to top
   yTicks.forEach(v => {
-    ctx.fillText(String(v), padL - 4, Y(v) + 3);
+    const yPix = Y(v) + 3; // baseline adjustment
+    if (Math.abs(yPix - topY) < minGap) return; // skip ticks colliding with top label
+    interiorTicks.push({ v, y: yPix });
   });
-  ctx.fillText(String(Math.round(maxVal)), padL - 4, padT + 10);
+  // Sort by y descending (bottom to top) to enforce spacing
+  interiorTicks.sort((a,b)=> b.y - a.y);
+  const kept: { v: number; y: number }[] = [];
+  let lastYPix = Infinity; // last baseline used (starting from bottom -> large y)
+  for (const t of interiorTicks) {
+    if (lastYPix === Infinity || Math.abs(lastYPix - t.y) >= minGap) {
+      kept.push(t);
+      lastYPix = t.y;
+    }
+  }
+  // Draw bottom label (0)
+  ctx.fillText(String(bottomLabel.v), padL - 4, bottomLabel.y);
+  // Draw kept interior ticks
+  kept.forEach(t => ctx.fillText(String(t.v), padL - 4, t.y));
+  // Draw top label (max)
+  ctx.fillText(String(Math.round(maxVal)), padL - 4, topY);
   
   // --- X Axis ticks (trade index) ------------------------------------------
   // Count only trades relevant to current currency (when value increases)
