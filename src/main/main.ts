@@ -446,8 +446,7 @@ class OverlayApp {
             const MAX = 250;
             const ses = this.overlayWindow.webContents.session;
             
-            // Image request interception: hard redirect known poedb assets to local bundle, never hit network.
-            // Official PoE CDN is allowed (merchant history etc.). If we cannot map a poedb URL, we cancel (show '?').
+            // Image request interception: prefer locally bundled assets; restrict unknown external image hosts.
             ses.webRequest.onBeforeRequest({ urls: ['https://*/*', 'http://*/*'] }, (details, cb) => {
                 if (!/\bimage\b/i.test(details.resourceType)) { cb({}); return; }
                 const lower = details.url.toLowerCase();
@@ -460,10 +459,8 @@ class OverlayApp {
                     }
                 } catch {}
 
-                // poedb hosts -> do NOT allow network (we expect everything bundled). Cancel if not resolved.
-                if (lower.includes('cdn.poe2db.tw') || lower.includes('poedb.tw')) {
-                    return cb({ cancel: true });
-                }
+                // Disallow certain disused third-party hosts (all such assets expected to be bundled). Cancel if not locally resolved.
+                if (/poe2db|poedb\.tw/.test(lower)) { return cb({ cancel: true }); }
 
                 // Allow official PoE CDN (we do not mirror these entirely: account / trade history avatars, etc.)
                 if (lower.includes('web.poecdn.com') || lower.includes('cdn.poecdn.net')) { cb({}); return; }
