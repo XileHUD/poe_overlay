@@ -104,13 +104,22 @@ export async function confirmManualRefresh(): Promise<boolean> {
 export function updateRefreshButtonUI(
   canRefresh: boolean, 
   retryAfter?: number,
-  autoRefreshActive?: boolean
+  autoRefreshActive?: boolean,
+  rateLimitInfo?: { limits: string; state: string; budget: string }
 ): void {
   const btn = document.getElementById('historyRefreshBtn') as HTMLButtonElement | null;
   if (!btn) return;
 
   // Store retryAfter for click handler to use
   (btn as any)._retryAfter = retryAfter || 0;
+  
+  // Build rate limit display from actual headers
+  let rateLimitText = '';
+  if (rateLimitInfo) {
+    rateLimitText = `\n\n📊 Current Rate Limits:\n${rateLimitInfo.limits || 'Unknown'}\n\n📈 Usage:\n${rateLimitInfo.state || 'Unknown'}\n\n💰 Budget: ${rateLimitInfo.budget || 'Unknown'}`;
+  } else {
+    rateLimitText = '\n\n⚠ GGG API limits: 15 requests per 3 hours';
+  }
 
   if (!canRefresh && retryAfter) {
     btn.disabled = true;
@@ -118,17 +127,17 @@ export function updateRefreshButtonUI(
     btn.style.cursor = 'not-allowed';
     const mins = Math.floor(retryAfter / 60);
     const secs = retryAfter % 60;
-    btn.title = `⏱ Rate Limited\n\nNext refresh available in: ${mins}m ${secs}s\n\nAPI Limits: 15 requests per 3 hours\nAuto-refresh: Every 15 minutes`;
+    btn.title = `⏱ Rate Limited\n\nNext refresh available in: ${mins}m ${secs}s${rateLimitText}`;
   } else if (autoRefreshActive) {
     btn.disabled = false;
     btn.style.opacity = '1';
     btn.style.cursor = 'pointer';
-    btn.title = `🔄 Auto-Refresh Active\n\nRefreshes every 15 minutes to stay within GGG API limits\n\nClick to manually refresh now\n⚠ Manual refresh uses your limited API budget (15 per 3h)`;
+    btn.title = `🔄 Auto-Refresh Active\n\nRefreshes every 15 minutes to stay within limits${rateLimitText}\n\nClick to manually refresh now`;
   } else {
     btn.disabled = false;
     btn.style.opacity = '1';
     btn.style.cursor = 'pointer';
-    btn.title = 'Refresh merchant history\n\n⚠ GGG API limits: 15 requests per 3 hours';
+    btn.title = `Refresh merchant history${rateLimitText}\n\nClick to manually refresh`;
   }
 }
 

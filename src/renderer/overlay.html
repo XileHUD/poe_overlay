@@ -469,21 +469,32 @@
     window.addEventListener('DOMContentLoaded', () => { try { historyState = window.OverlayHistory?.historyState || historyState; } catch {} });
     async function updateSessionUI(){ return await window.OverlayHistory?.updateSessionUI?.(); }
     function keyForRow(r){ return window.OverlayHistory?.keyForRow?.(r); }
-    function addToTotals(p){ return window.OverlayHistory?.addToTotals?.(p); }
-    function renderHistoryTotals(){ return window.OverlayHistory?.renderHistoryTotals?.(); }
-    function renderHistoryActiveFilters(){ return window.OverlayHistory?.renderHistoryActiveFilters?.(); }
-    function renderHistoryList(){ return window.OverlayHistory?.renderHistoryList?.(); }
-    function renderHistoryDetail(i){ return window.OverlayHistory?.renderHistoryDetail?.(i); }
-    function applySort(list){ return window.OverlayHistory?.applySort?.(list) ?? list; }
-    function applyFilters(list){ return window.OverlayHistory?.applyFilters?.(list) ?? list; }
-    async function refreshHistory(){ return await window.OverlayHistory?.refreshHistory?.(); }
+    function addToTotals(p){ return window.OverlayHistory?.addToTotalsWrapper?.(p); }
+    function renderHistoryTotals(){ return window.OverlayHistory?.renderHistoryTotalsWrapper?.(); }
+    function renderHistoryActiveFilters(){ return window.OverlayHistory?.renderHistoryActiveFiltersWrapper?.(); }
+    function renderHistoryList(){ return window.OverlayHistory?.renderHistoryListWrapper?.(); }
+    function renderHistoryDetail(i){ return window.OverlayHistory?.renderHistoryDetailWrapper?.(i); }
+    function applySort(list){ return window.OverlayHistory?.applySort?.(list, window.OverlayHistory?.historyState?.sort) ?? list; }
+    function applyFilters(list){ return window.OverlayHistory?.applyFilters?.(list, window.OverlayHistory?.historyState?.filters) ?? list; }
+    async function refreshHistory(){ return await window.OverlayHistory?.onManualRefresh?.(); }
     function recomputeChartSeriesFromStore(){ return window.OverlayHistory?.recomputeChartSeriesFromStore?.(); }
     function updateHistoryChartFromTotals(t){ return window.OverlayHistory?.updateHistoryChartFromTotals?.(t); }
     function drawHistoryChart(){ return window.OverlayHistory?.drawHistoryChart?.(); }
     function setChartCurrency(cur){ return window.OverlayHistory?.setChartCurrency?.(cur); }
     function nextAllowedRefreshAt(){ return window.OverlayHistory?.nextAllowedRefreshAt?.(); }
     function updateHistoryRefreshButton(){ return window.OverlayHistory?.updateHistoryRefreshButton?.(); }
-    async function refreshHistoryIfAllowed(origin){ return await window.OverlayHistory?.refreshHistoryIfAllowed?.(origin); }
+    // HTML wrapper previously called refreshHistoryIfAllowed without required render callbacks (causing TypeError in minified bundle).
+    async function refreshHistoryIfAllowed(origin){ 
+        try {
+            const H = window.OverlayHistory;
+            if (!H || typeof H.refreshHistoryIfAllowed !== 'function') return;
+            return await H.refreshHistoryIfAllowed(
+                origin,
+                (detailCb)=>{ try { H.renderHistoryList(detailCb); } catch(e){ console.warn('[History HTML wrapper] list render failed', e);} },
+                (idx)=>{ try { H.renderHistoryDetail(idx); } catch(e){ console.warn('[History HTML wrapper] detail render failed', e);} }
+            );
+        } catch(e){ console.warn('[History HTML wrapper] refreshHistoryIfAllowed error', e); }
+    }
     function parseRateLimitHeaders(headers, status){ return window.OverlayHistory?.parseRateLimitHeaders?.(headers, status) ?? 0; }
 
         // Function to render content with current filters applied
@@ -1004,39 +1015,29 @@
             const timeEl = document.getElementById('histTimeframe');
             const searchEl = document.getElementById('histSearch');
             
-            // Get functions from OverlayHistory module
-            const OverlayHistoryModule = window.OverlayHistory || {};
-            const histState = OverlayHistoryModule.historyState;
-            const applyAndRenderFn = OverlayHistoryModule.applyAndRender;
-            
-            if (minEl && applyAndRenderFn) minEl.addEventListener('input', ()=>{ 
-                histState.filters.min = Number(minEl.value||0); 
-                applyAndRenderFn(); 
-            });
-            if (curEl && applyAndRenderFn) curEl.addEventListener('change', ()=>{ 
-                histState.filters.cur = String(curEl.value||'exalted'); 
-                applyAndRenderFn(); 
-            });
-            if (catEl && applyAndRenderFn) catEl.addEventListener('change', ()=>{ 
-                histState.filters.category = String(catEl.value||''); 
-                applyAndRenderFn(); 
-            });
-            if (sortEl && applyAndRenderFn) sortEl.addEventListener('change', ()=>{ 
-                histState.sort = String(sortEl.value||'newest'); 
-                applyAndRenderFn(); 
-            });
-            if (rarEl && applyAndRenderFn) rarEl.addEventListener('change', ()=>{ 
-                histState.filters.rarity = String(rarEl.value||''); 
-                applyAndRenderFn(); 
-            });
-            if (timeEl && applyAndRenderFn) timeEl.addEventListener('change', ()=>{ 
-                histState.filters.timeframe = String(timeEl.value||'all'); 
-                applyAndRenderFn(); 
-            });
-            if (searchEl && applyAndRenderFn) searchEl.addEventListener('input', ()=>{ 
-                histState.filters.search = String(searchEl.value||'').trim().toLowerCase(); 
-                applyAndRenderFn(); 
-            });
+            // Deferred filter binding: retry until OverlayHistory is actually attached & ready.
+            (function bindHistoryFilters(attempt=0){
+                const H = window.OverlayHistory;
+                const ready = !!(H && H.historyState && typeof H.applyAndRender === 'function');
+                if (!ready){
+                    if (attempt === 0) console.log('[Filter Setup] OverlayHistory not ready yet – deferring');
+                    if (attempt < 50) return setTimeout(()=>bindHistoryFilters(attempt+1), 100); // up to 5s
+                    console.warn('[Filter Setup] Gave up waiting for OverlayHistory after 5s');
+                    return;
+                }
+                console.log('[Filter Setup] Binding filters on attempt', attempt, 'state entries:', H.historyState.store?.entries?.length||0);
+                const histState = H.historyState;
+                const applyAndRenderFn = H.applyAndRender;
+                const wire = (el, ev, fn)=>{ if(el){ el.addEventListener(ev, fn); el.setAttribute('data-filter-wired','1'); } };
+                wire(minEl,'input', ()=>{ histState.filters.min = Number(minEl.value||0); applyAndRenderFn(); });
+                wire(curEl,'change', ()=>{ histState.filters.cur = String(curEl.value||'exalted'); applyAndRenderFn(); });
+                wire(catEl,'change', ()=>{ histState.filters.category = String(catEl.value||''); applyAndRenderFn(); });
+                wire(sortEl,'change', ()=>{ histState.sort = String(sortEl.value||'newest'); applyAndRenderFn(); });
+                wire(rarEl,'change', ()=>{ histState.filters.rarity = String(rarEl.value||''); applyAndRenderFn(); });
+                wire(timeEl,'change', ()=>{ histState.filters.timeframe = String(timeEl.value||'all'); applyAndRenderFn(); });
+                wire(searchEl,'input', ()=>{ histState.filters.search = String(searchEl.value||'').trim().toLowerCase(); applyAndRenderFn(); });
+                console.log('[Filter Setup] Filters wired');
+            })();
         
 
         // ===== Crafting: Liquid Emotions (delegation only) =====

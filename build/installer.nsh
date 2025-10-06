@@ -1,32 +1,40 @@
 ; XileHUD Custom NSIS Installer Script
-; Strategy: ALWAYS uninstall old version first (silent) preserving user data in %APPDATA%\xilehud-overlay
+; Strategy: MANUAL cleanup of old installation (don't call old uninstaller - it has the same bug!)
 
 !include "MUI2.nsh"
 !include "FileFunc.nsh"
-
-; Avoid built-in running process dialog (false positive due to installer exe name match)
-!define DO_NOT_CHECK_RUNNING
 
 ; UI tweaks
 !define MUI_INSTFILESPAGE_COLORS "FFFFFF 000000"
 !define MUI_INSTFILESPAGE_PROGRESSBAR "smooth"
 
 !macro customInit
-  DetailPrint "Pre-install: searching for previous XileHUD installation..."
-  ; Potential per-user path
-  StrCpy $0 "$LOCALAPPDATA\Programs\XileHUD\Uninstall XileHUD.exe"
-  IfFileExists "$0" 0 +3
-    DetailPrint "Found existing per-user install. Running silent uninstall..."
-    ExecWait '"$0" /S'
-  ; Potential per-machine 64-bit path
-  StrCpy $1 "$PROGRAMFILES64\XileHUD\Uninstall XileHUD.exe"
-  IfFileExists "$1" 0 +3
-    DetailPrint "Found existing per-machine install. Running silent uninstall..."
-    ExecWait '"$1" /S'
-  ; Kill any leftover processes just in case (ignore errors)
-  ExecWait 'taskkill /F /IM XileHUD.exe /T' $2
-  ExecWait 'taskkill /F /IM XileHUDOverlay.exe /T' $2
+  DetailPrint "Pre-install: cleaning up any previous XileHUD installation..."
+  
+  ; Kill any running processes FIRST (both old and new exe names)
+  DetailPrint "→ Stopping any running XileHUD processes..."
+  ExecWait 'taskkill /F /IM XileHUD.exe /T' $R0
+  ExecWait 'taskkill /F /IM XileHUDOverlay.exe /T' $R0
+  Sleep 800
+  
+  ; Manually delete old installation files (per-user location)
+  StrCpy $0 "$LOCALAPPDATA\Programs\XileHUD"
+  IfFileExists "$0\*.*" 0 skip_user_cleanup
+    DetailPrint "→ Removing old per-user installation..."
+    RMDir /r "$0"
+    Delete "$DESKTOP\XileHUD.lnk"
+    Delete "$SMPROGRAMS\XileHUD.lnk"
+  skip_user_cleanup:
+  
+  ; Manually delete old installation files (per-machine location)
+  StrCpy $1 "$PROGRAMFILES64\XileHUD"
+  IfFileExists "$1\*.*" 0 skip_machine_cleanup
+    DetailPrint "→ Removing old per-machine installation..."
+    RMDir /r "$1"
+  skip_machine_cleanup:
+  
   Sleep 300
+  DetailPrint "Ready to install fresh version..."
 !macroend
 
 !macro customInstall

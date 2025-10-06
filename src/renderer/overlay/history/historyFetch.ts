@@ -14,7 +14,7 @@ import { historyVisible } from './historyView';
 import { addToTotals, recomputeTotalsFromEntries, renderHistoryTotals } from './historyTotals';
 import { applyFilters, renderHistoryActiveFilters } from './historyFilters';
 import { applySort } from './historyFilters';
-import { nextAllowedRefreshAt, updateHistoryRefreshButton } from './historyRateLimit';
+import { nextAllowedRefreshAt, updateHistoryRefreshButton, setRateLimitInfo } from './historyRateLimit';
 import { updateSessionUI } from './sessionManager';
 import { sendHistoryToPopout } from './historyPopout';
 import { recomputeChartSeriesFromStore, drawHistoryChart, updateHistoryChartFromTotals } from './historyChart';
@@ -40,11 +40,20 @@ export async function refreshHistory(
   renderListCallback: (renderDetailCallback: (idx: number) => void) => void,
   renderDetailCallback: (idx: number) => void
 ): Promise<boolean | void> {
+  // Defensive: log the types we were passed (helps diagnose minified t() errors)
+  try {
+    const rlType = typeof renderListCallback;
+    const rdType = typeof renderDetailCallback;
+    if (rlType !== 'function' || rdType !== 'function') {
+      console.warn('[History] refreshHistory called with non-function callbacks', { rlType, rdType, renderListCallback, renderDetailCallback });
+      return; // Abort to avoid mysterious "t is not a function" crashes
+    }
+  } catch {}
   const histList = document.getElementById("historyList");
   const histDet = document.getElementById("historyDetail");
   if (!histList || !histDet) return;
   
-  // Show loading state
+  // Show loading state only if we don't already have items displayed
   if (!historyState.items || historyState.items.length === 0) {
     (histList as HTMLElement).innerHTML = '<div class="no-mods" style="padding:8px;">Loading…</div>';
   }
@@ -83,6 +92,21 @@ export async function refreshHistory(
       }
       
       try { updateHistoryRefreshButton(); } catch {}
+      
+      // Re-render from cache if we have data
+      if (historyState.store.entries && historyState.store.entries.length > 0) {
+        const all = (historyState.store.entries || []).slice().reverse();
+        historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+        historyState.selectedIndex = 0;
+        renderListCallback(renderDetailCallback);
+        renderDetailCallback(0);
+        renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+          try { updateHistoryChartFromTotals(totals); } catch {}
+        });
+        renderHistoryActiveFilters(historyState, () => historyVisible(), () => renderListCallback(renderDetailCallback));
+        try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+      }
+      
       return;
     }
     
@@ -94,13 +118,25 @@ export async function refreshHistory(
       // If not logged in and no cached data, show login prompt
       if (!loggedIn && (!historyState.items || historyState.items.length === 0)) {
         (histList as HTMLElement).innerHTML = '<div class="no-mods" style="padding:8px;">Please log in to pathofexile.com to view history.</div>';
+      } else if (historyState.store.entries && historyState.store.entries.length > 0) {
+        // Re-render from cache
+        const all = (historyState.store.entries || []).slice().reverse();
+        historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+        historyState.selectedIndex = 0;
+        renderListCallback(renderDetailCallback);
+        renderDetailCallback(0);
+        renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+          try { updateHistoryChartFromTotals(totals); } catch {}
+        });
+        renderHistoryActiveFilters(historyState, () => historyVisible(), () => renderListCallback(renderDetailCallback));
+        try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
       }
       
       // Show error badge
       const info = document.getElementById("historyInfoBadge");
       if (info) {
         (info as HTMLElement).style.display = "";
-        (info as HTMLElement).textContent = "Fetch failed";
+        (info as HTMLElement).textContent = loggedIn ? "Fetch failed" : "Not logged in";
         setTimeout(() => {
           if (info) (info as HTMLElement).style.display = "none";
         }, 4000);
@@ -116,6 +152,11 @@ export async function refreshHistory(
     
     const mi = Number((res as any)?.minInterval || 0) || 0;
     if (mi > 0) historyState.globalMinInterval = mi;
+    
+    // Store rate limit info from headers for display
+    if ((res as any)?.headers) {
+      try { setRateLimitInfo((res as any).headers); } catch {}
+    }
     
     // ========== Extract Rows from Response ==========
     const json = (res as any).data || {};
@@ -189,11 +230,27 @@ export async function refreshHistory(
     
     return true;
   } catch (e) {
-    (histList as HTMLElement).innerHTML =
-      '<div class="no-mods" style="padding:8px;">Error loading history (timeout or network).<br/><br/>Tip: Click "View in browser", verify the page shows, then Refresh.</div>';
-    try {
-      updateHistoryRefreshButton();
-    } catch {}
+    console.error('[History] Exception during refresh:', e);
+    
+    // Re-render from cache if we have it
+    if (historyState.store.entries && historyState.store.entries.length > 0) {
+      const all = (historyState.store.entries || []).slice().reverse();
+      historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+      historyState.selectedIndex = 0;
+      renderListCallback(renderDetailCallback);
+      renderDetailCallback(0);
+      renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+        try { updateHistoryChartFromTotals(totals); } catch {}
+      });
+      renderHistoryActiveFilters(historyState, () => historyVisible(), () => renderListCallback(renderDetailCallback));
+      try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+    } else {
+      // No cache - show error message
+      (histList as HTMLElement).innerHTML =
+        '<div class="no-mods" style="padding:8px;">Error loading history (timeout or network).<br/><br/>Tip: Click "View in browser", verify the page shows, then Refresh.</div>';
+    }
+    
+    try { updateHistoryRefreshButton(); } catch {}
   }
 }
 
@@ -208,6 +265,12 @@ export async function refreshHistoryIfAllowed(
   renderListCallback: (renderDetailCallback: (idx: number) => void) => void,
   renderDetailCallback: (idx: number) => void
 ): Promise<boolean | void> {
+  try {
+    if (typeof renderListCallback !== 'function' || typeof renderDetailCallback !== 'function') {
+      console.warn('[History] refreshHistoryIfAllowed invoked with bad callbacks', { origin, renderListCallbackType: typeof renderListCallback, renderDetailCallbackType: typeof renderDetailCallback });
+      return; 
+    }
+  } catch {}
   if (!historyVisible()) return;
   
   const now = Date.now();

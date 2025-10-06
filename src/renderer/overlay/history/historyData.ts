@@ -55,7 +55,8 @@ export const historyState: HistoryState = {
   sort: "newest",
   lastRefreshAt: 0,
   rateLimitUntil: 0,
-  globalMinInterval: 300_000,
+  // Minimum interval between remote fetches (default 15 minutes unless server enforces higher/lower)
+  globalMinInterval: 900_000,
   remoteLastFetchAt: 0,
 };
 

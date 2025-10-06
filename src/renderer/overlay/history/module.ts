@@ -50,7 +50,8 @@ import {
 import { 
   nextAllowedRefreshAt, 
   updateHistoryRefreshButton, 
-  parseRateLimitHeaders 
+  parseRateLimitHeaders,
+  setRateLimitInfo 
 } from './historyRateLimit';
 import { 
   openHistoryPopout, 
@@ -133,7 +134,6 @@ export function onLeaveView(): void {
   // Initialize session UI and login button
   setTimeout(() => { 
     try { 
-      // Attach login button with auto-refresh on success
       attachLoginButtonLogic(() => {
         console.log('[Login] Starting auto-refresh system');
         autoRefreshManager.startAutoRefresh(async () => {
@@ -144,7 +144,7 @@ export function onLeaveView(): void {
         });
       });
       updateSessionUI(); 
-    } catch {} 
+    } catch (e) { console.warn('[Session] Attach login logic failed:', e); } 
   }, 300);
   
   // Attach refresh button
@@ -156,7 +156,7 @@ export function onLeaveView(): void {
           (idx) => renderHistoryDetail(idx)
         );
       });
-    } catch {}
+    } catch (e) { console.warn('[History] Attach refresh button failed:', e); }
   }, 300);
 })();
 
@@ -223,15 +223,34 @@ export async function onManualRefresh(): Promise<void> {
  * Apply filters and re-render (called from HTML filter inputs)
  */
 export function applyAndRender(): void {
-  if (!historyVisible()) return;
+  console.log('[applyAndRender] Called, historyVisible:', historyVisible());
+  console.log('[applyAndRender] Current filters:', JSON.stringify(historyState.filters));
+  console.log('[applyAndRender] Store entries count:', historyState.store.entries?.length || 0);
+  
+  if (!historyVisible()) {
+    console.warn('[applyAndRender] History not visible, aborting');
+    return;
+  }
+  
   const all = (historyState.store.entries || []).slice().reverse();
-  historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+  console.log('[applyAndRender] All entries (reversed):', all.length);
+  
+  const filtered = applyFilters(all, historyState.filters);
+  console.log('[applyAndRender] After filters:', filtered.length);
+  
+  const sorted = applySort(filtered, historyState.sort);
+  console.log('[applyAndRender] After sort:', sorted.length);
+  
+  historyState.items = sorted;
   historyState.selectedIndex = 0;
+  
   renderHistoryList((idx) => renderHistoryDetail(idx));
   renderHistoryDetail(0);
   renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
     renderHistoryList((idx) => renderHistoryDetail(idx));
   });
+  
+  console.log('[applyAndRender] Render complete');
 }
 
 /**
@@ -280,6 +299,7 @@ export {
   updateHistoryRefreshButton,
   nextAllowedRefreshAt,
   parseRateLimitHeaders,
+  setRateLimitInfo,
   recomputeTotalsFromEntries,
   applyFilters,
   applySort,

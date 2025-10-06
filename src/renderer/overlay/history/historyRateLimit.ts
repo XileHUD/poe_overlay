@@ -25,6 +25,86 @@ export function nextAllowedRefreshAt(): number {
 }
 
 let _refreshBtnTimer: any = null;
+let _lastRateLimitInfo: { limits: string; state: string; budget: string } | null = null;
+
+/**
+ * Store rate limit info from last fetch for display
+ */
+export function setRateLimitInfo(headers: any): void {
+  try {
+    const limits = headers?.['x-rate-limit-account'] || headers?.['x-rate-limit-ip'] || 'Unknown';
+    const state = headers?.['x-rate-limit-account-state'] || headers?.['x-rate-limit-ip-state'] || 'Unknown';
+    
+    // Parse to show friendly budget
+    const limitLines: string[] = [];
+    const stateLines: string[] = [];
+    const budgetLines: string[] = [];
+    
+    const limitBucketParts: { limit: number; period: number }[] = [];
+    if (typeof limits === 'string' && limits !== 'Unknown') {
+      const buckets = limits.split(',');
+      buckets.forEach((bucket) => {
+        const [limitStr, periodStr] = bucket.split(':');
+        const limit = Number(limitStr);
+        const periodSec = Number(periodStr);
+        limitBucketParts.push({ limit, period: periodSec });
+        const periodDesc = formatWindow(periodSec);
+        limitLines.push(`• ${limit} requests / ${periodDesc}`);
+      });
+    }
+    
+    if (typeof state === 'string' && state !== 'Unknown') {
+      const buckets = state.split(',');
+      buckets.forEach((bucket, i) => {
+        const [usedStr, periodStr, resetStr] = bucket.split(':');
+        const used = Number(usedStr);
+        const resetSec = Number(resetStr);
+        const resetDesc = formatReset(resetSec);
+        stateLines.push(`• ${used} used (resets in ${resetDesc})`);
+        
+        // Budget line paired with its period window
+        const limitInfo = limitBucketParts[i];
+        if (limitInfo) {
+          const remaining = limitInfo.limit - used;
+          const windowDesc = formatWindow(limitInfo.period);
+          budgetLines.push(`• ${remaining}/${limitInfo.limit} remaining (${windowDesc})`);
+        }
+      });
+    }
+    
+    _lastRateLimitInfo = {
+      limits: limitLines.length > 0 ? limitLines.join('\n') : limits.toString(),
+      state: stateLines.length > 0 ? stateLines.join('\n') : state.toString(),
+      budget: budgetLines.length > 0 ? budgetLines.join('\n') : 'Unknown'
+    };
+  } catch (e) {
+    console.warn('[RateLimit] Failed to parse rate limit info:', e);
+  }
+}
+
+// ===== Formatting helpers =====
+function formatWindow(periodSec: number): string {
+  if (!periodSec || periodSec <= 0) return 'unknown window';
+  if (periodSec < 60) return `${periodSec}s`;
+  const mins = Math.floor(periodSec / 60);
+  if (mins < 60) return `${mins}m`;
+  const hrs = Math.floor(mins / 60);
+  const remM = mins % 60;
+  return remM ? `${hrs}h ${remM}m` : `${hrs}h`;
+}
+
+function formatReset(resetSec: number): string {
+  if (resetSec <= 0) return 'soon';
+  if (resetSec < 60) return `${resetSec}s`;
+  const mins = Math.floor(resetSec / 60);
+  if (mins < 60) {
+    const secs = resetSec % 60;
+    return secs ? `${mins}m ${secs}s` : `${mins}m`;
+  }
+  const hrs = Math.floor(mins / 60);
+  const remM = mins % 60;
+  return remM ? `${hrs}h ${remM}m` : `${hrs}h`;
+}
 
 /**
  * Update the refresh button UI to reflect current rate limit status.
@@ -41,7 +121,7 @@ export function updateHistoryRefreshButton(): void {
   const retryAfterSecs = Math.ceil(waitMs / 1000);
   const autoRefreshActive = autoRefreshManager.isRunning();
   
-  updateRefreshButtonUI(canRefresh, retryAfterSecs, autoRefreshActive);
+  updateRefreshButtonUI(canRefresh, retryAfterSecs, autoRefreshActive, _lastRateLimitInfo || undefined);
   
   // Schedule next update if rate limited
   if (waitMs > 0) {

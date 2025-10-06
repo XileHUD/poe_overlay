@@ -1,4 +1,4 @@
-import { app, BrowserWindow, globalShortcut, ipcMain, screen, Tray, Menu, nativeImage, clipboard, shell } from 'electron';
+import { app, BrowserWindow, globalShortcut, ipcMain, screen, Tray, Menu, nativeImage, clipboard, shell, session } from 'electron';
 import * as os from 'os';
 // Optional updater (will be active in packaged builds)
 let autoUpdater: any = null;
@@ -547,6 +547,17 @@ class OverlayApp {
         } else {
             this.overlayWindow.loadFile(path.join(__dirname, '../renderer/src/renderer/overlay.html'));
         }
+        
+        // Enable F12 to open DevTools
+        this.overlayWindow.webContents.on('before-input-event', (event, input) => {
+            if (input.key === 'F12' && input.type === 'keyDown') {
+                if (this.overlayWindow?.webContents.isDevToolsOpened()) {
+                    this.overlayWindow.webContents.closeDevTools();
+                } else {
+                    this.overlayWindow?.webContents.openDevTools({ mode: 'detach' });
+                }
+            }
+        });
 
         // Track load state to queue events safely
         this.overlayWindow.webContents.on('did-finish-load', () => {
@@ -894,15 +905,33 @@ class OverlayApp {
 
         // PoE login and session
         ipcMain.handle('poe-get-session', async () => {
-            // Step 1: fast cookie presence check
+            // Fast cookie check first
             const hasCookie = await this.hasPoeSession();
-            // Simple logic: if we have cookie AND recent successful history fetch, trust it
-            // Otherwise require explicit fetch to confirm (no spammy probes)
-            let confirmed = false;
-            if (hasCookie && this.lastHistoryFetchAt && Date.now() - this.lastHistoryFetchAt < 30 * 60 * 1000) {
-                confirmed = true;
+            if (!hasCookie) {
+                return { loggedIn: false, cookiePresent: false, accountName: null };
             }
-            return { loggedIn: confirmed, cookiePresent: hasCookie, accountName: this.poeAccountName };
+            
+            // Verify session by checking if we can access the trade page
+            try {
+                const cookies = await session.defaultSession.cookies.get({ domain: 'pathofexile.com' });
+                const cookieStr = cookies.map((c: any) => `${c.name}=${c.value}`).join('; ');
+                
+                const response = await fetch('https://www.pathofexile.com/trade2', {
+                    method: 'GET',
+                    headers: {
+                        'Cookie': cookieStr,
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                    },
+                    redirect: 'manual' // Don't follow redirects
+                });
+                
+                // If we get 200, we're logged in. If 302/redirect, we need to login
+                const loggedIn = response.status === 200;
+                return { loggedIn, cookiePresent: hasCookie, accountName: this.poeAccountName };
+            } catch (e) {
+                console.warn('[Session] Failed to verify login status:', e);
+                return { loggedIn: false, cookiePresent: hasCookie, accountName: this.poeAccountName };
+            }
         });
 
         ipcMain.handle('poe-login', async () => {

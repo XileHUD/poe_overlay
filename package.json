@@ -1,7 +1,7 @@
 {
   "name": "@xilehud/overlay",
   "version": "0.1.0",
-  "description": "PoE2 Modifier Overlay",
+  "description": "XileHUD",
   "main": "dist/main/main.js",
   "scripts": {
     "dev": "concurrently \"npm run dev:main\" \"npm run dev:renderer\"",
@@ -74,7 +74,6 @@
     "win": {
       "icon": "xile512.ico",
       "artifactName": "XileHUD-Setup-${version}.${ext}",
-      "executableName": "XileHUDOverlay",
       "target": [
         { 
           "target": "nsis", 
@@ -83,8 +82,7 @@
       ]
     },
     "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true,
+      "oneClick": true,
       "perMachine": false,
       "allowElevation": true,
       "installerIcon": "xile512.ico",
