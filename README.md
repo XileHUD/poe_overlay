@@ -121,7 +121,9 @@ No telemetry or tracking is implemented. Account authentication is only required
 I usually add features that I personally think would help me save time, so when you see an update, it's likely something I'm actively using myself.
 
 Technical Improvements:
-- Modularize components: Refactor and clean up `module.ts` and `main.ts` for better maintainability and code organization.
+- ✅ ~~Modularize history module~~ (Complete: reduced from 1,279 → 215 lines, 11 focused modules)
+- Modularize overlay.html: Break down 1,940-line monolithic HTML file into component partials for better maintainability
+- Further refactor main.ts: Continue code cleanup and organization
 
 New / High-Priority Ideas:
 - Leveling Overlay: Route planner with act/zone splits, boss prep tips, automatic progress detection (so you never miss a quest reward or passive point while rushing).
