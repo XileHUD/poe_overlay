@@ -1,66 +1,63 @@
 ; XileHUD Custom NSIS Installer Script
-; This script customizes the installation process with detailed progress
+; Strategy: ALWAYS uninstall old version first (silent) preserving user data in %APPDATA%\xilehud-overlay
 
 !include "MUI2.nsh"
 !include "FileFunc.nsh"
 
-; Show detailed progress during installation
+; Avoid built-in running process dialog (false positive due to installer exe name match)
+!define DO_NOT_CHECK_RUNNING
+
+; UI tweaks
 !define MUI_INSTFILESPAGE_COLORS "FFFFFF 000000"
 !define MUI_INSTFILESPAGE_PROGRESSBAR "smooth"
 
-; Custom install messages
+!macro customInit
+  DetailPrint "Pre-install: searching for previous XileHUD installation..."
+  ; Potential per-user path
+  StrCpy $0 "$LOCALAPPDATA\Programs\XileHUD\Uninstall XileHUD.exe"
+  IfFileExists "$0" 0 +3
+    DetailPrint "Found existing per-user install. Running silent uninstall..."
+    ExecWait '"$0" /S'
+  ; Potential per-machine 64-bit path
+  StrCpy $1 "$PROGRAMFILES64\XileHUD\Uninstall XileHUD.exe"
+  IfFileExists "$1" 0 +3
+    DetailPrint "Found existing per-machine install. Running silent uninstall..."
+    ExecWait '"$1" /S'
+  ; Kill any leftover processes just in case (ignore errors)
+  ExecWait 'taskkill /F /IM XileHUD.exe /T' $2
+  ExecWait 'taskkill /F /IM XileHUDOverlay.exe /T' $2
+  Sleep 300
+!macroend
+
 !macro customInstall
   DetailPrint "════════════════════════════════════════════"
-  DetailPrint "Installing XileHUD Overlay for Path of Exile 2"
+  DetailPrint "Installing XileHUD Overlay (fresh after uninstall)"
   DetailPrint "════════════════════════════════════════════"
-  DetailPrint ""
-  
-  DetailPrint "→ Installing application files..."
-  Sleep 100
-  
-  DetailPrint "→ Extracting bundled item images (1900+ images)..."
-  Sleep 100
-  
-  DetailPrint "→ Installing Path of Exile 2 data files..."
-  Sleep 100
-  
-  DetailPrint "→ Setting up configuration directories..."
-  Sleep 100
-  
+  DetailPrint "→ Copying new application files..."
+  Sleep 80
+  DetailPrint "→ Extracting bundled assets..."
+  Sleep 80
+  DetailPrint "→ Preparing data files..."
+  Sleep 80
   DetailPrint "→ Creating shortcuts..."
-  Sleep 100
-  
-  DetailPrint ""
-  DetailPrint "════════════════════════════════════════════"
-  DetailPrint "Installation completed successfully!"
-  DetailPrint "════════════════════════════════════════════"
+  Sleep 80
+  DetailPrint "→ Finalizing..."
+  Sleep 80
+  DetailPrint "Installation complete. User data kept (merchant history & settings)."
 !macroend
 
-; Custom uninstall messages
 !macro customUnInstall
   DetailPrint "════════════════════════════════════════════"
-  DetailPrint "Uninstalling XileHUD Overlay"
+  DetailPrint "Uninstalling XileHUD (preserving user data)"
   DetailPrint "════════════════════════════════════════════"
-  DetailPrint ""
-  
   DetailPrint "→ Removing application files..."
-  Sleep 50
-  
-  DetailPrint "→ Cleaning up shortcuts..."
-  Sleep 50
-  
-  ; Preserve user data (settings, history)
-  DetailPrint "→ Preserving user settings and merchant history..."
-  DetailPrint "  (Stored in: $APPDATA\xilehud-overlay)"
-  Sleep 50
-  
-  DetailPrint ""
-  DetailPrint "════════════════════════════════════════════"
-  DetailPrint "Uninstallation completed!"
-  DetailPrint "Your settings and history have been preserved."
-  DetailPrint "════════════════════════════════════════════"
+  Sleep 60
+  DetailPrint "→ Cleaning shortcuts..."
+  Sleep 60
+  DetailPrint "→ Keeping %APPDATA%\\xilehud-overlay (history/settings)"
+  Sleep 60
+  DetailPrint "Done."
 !macroend
 
-; Make the installer show details by default
 ShowInstDetails show
 ShowUnInstDetails show

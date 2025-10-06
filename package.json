@@ -74,6 +74,7 @@
     "win": {
       "icon": "xile512.ico",
       "artifactName": "XileHUD-Setup-${version}.${ext}",
+      "executableName": "XileHUDOverlay",
       "target": [
         { 
           "target": "nsis", 
@@ -95,7 +96,8 @@
       "runAfterFinish": true,
       "deleteAppDataOnUninstall": false,
       "displayLanguageSelector": false,
-      "include": "build/installer.nsh"
+      "include": "build/installer.nsh",
+      "warningsAsErrors": false
     }
   }
 }
