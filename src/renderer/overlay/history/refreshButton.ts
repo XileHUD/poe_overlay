@@ -109,18 +109,84 @@ export function updateRefreshButtonUI(
   const btn = document.getElementById('historyRefreshBtn') as HTMLButtonElement | null;
   if (!btn) return;
 
+  // Store retryAfter for click handler to use
+  (btn as any)._retryAfter = retryAfter || 0;
+
   if (!canRefresh && retryAfter) {
     btn.disabled = true;
+    btn.style.opacity = '0.5';
+    btn.style.cursor = 'not-allowed';
     const mins = Math.floor(retryAfter / 60);
     const secs = retryAfter % 60;
-    btn.title = `Rate limited. Retry in ${mins}m ${secs}s`;
+    btn.title = `⏱ Rate Limited\n\nNext refresh available in: ${mins}m ${secs}s\n\nAPI Limits: 15 requests per 3 hours\nAuto-refresh: Every 15 minutes`;
   } else if (autoRefreshActive) {
     btn.disabled = false;
-    btn.title = `Auto-refresh active (every 15min)\nClick to manually refresh now\n⚠ Uses limited API budget (15 per 3h)`;
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+    btn.title = `🔄 Auto-Refresh Active\n\nRefreshes every 15 minutes to stay within GGG API limits\n\nClick to manually refresh now\n⚠ Manual refresh uses your limited API budget (15 per 3h)`;
   } else {
     btn.disabled = false;
-    btn.title = 'Refresh merchant history';
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+    btn.title = 'Refresh merchant history\n\n⚠ GGG API limits: 15 requests per 3 hours';
   }
+}
+
+/**
+ * Show toast notification for rate limit feedback
+ */
+function showRateLimitToast(retryAfter: number): void {
+  const toast = document.createElement('div');
+  const mins = Math.floor(retryAfter / 60);
+  const secs = retryAfter % 60;
+  
+  toast.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #ff5252;
+    color: #fff;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    z-index: 10001;
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 350px;
+    animation: slideIn 0.3s ease-out;
+  `;
+  
+  toast.innerHTML = `
+    <strong style="display: block; margin-bottom: 8px;">⏱ Rate Limited</strong>
+    <div>Next refresh available in: <strong>${mins}m ${secs}s</strong></div>
+    <div style="margin-top: 8px; font-size: 12px; opacity: 0.9;">
+      GGG API limits: 15 requests per 3 hours<br>
+      Auto-refresh runs every 15 minutes
+    </div>
+  `;
+  
+  document.body.appendChild(toast);
+  
+  // Add slide-in animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes slideIn {
+      from { transform: translateX(400px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+  `;
+  document.head.appendChild(style);
+  
+  // Auto-remove after 4 seconds
+  setTimeout(() => {
+    toast.style.animation = 'slideOut 0.3s ease-out';
+    toast.style.transform = 'translateX(400px)';
+    toast.style.opacity = '0';
+    setTimeout(() => {
+      document.body.removeChild(toast);
+      document.head.removeChild(style);
+    }, 300);
+  }, 4000);
 }
 
 /**
@@ -132,7 +198,14 @@ export function attachRefreshButtonLogic(refreshCallback: () => Promise<void>): 
   (btn as any)._refreshWired = true;
 
   btn.addEventListener('click', async () => {
-    if (btn.disabled) return;
+    // If disabled, show toast with rate limit info
+    if (btn.disabled) {
+      const retryAfter = (btn as any)._retryAfter || 0;
+      if (retryAfter > 0) {
+        showRateLimitToast(retryAfter);
+      }
+      return;
+    }
 
     // Show confirmation dialog
     const confirmed = await confirmManualRefresh();

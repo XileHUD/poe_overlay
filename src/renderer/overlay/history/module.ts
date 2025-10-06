@@ -12,7 +12,8 @@ import {
   type HistoryEntryRaw, 
   type HistoryStore, 
   type HistoryState, 
-  type Price 
+  type Price,
+  keyForRow 
 } from './historyData';
 import { 
   historyVisible, 
@@ -22,7 +23,8 @@ import {
 } from './historyView';
 import { 
   recomputeTotalsFromEntries, 
-  renderHistoryTotals 
+  renderHistoryTotals,
+  addToTotals 
 } from './historyTotals';
 import { 
   renderHistoryActiveFilters, 
@@ -214,6 +216,63 @@ export async function onManualRefresh(): Promise<void> {
   );
 }
 
+// ========== HTML Compatibility Wrappers ==========
+// These wrapper functions are called from overlay.html inline scripts
+
+/**
+ * Apply filters and re-render (called from HTML filter inputs)
+ */
+export function applyAndRender(): void {
+  if (!historyVisible()) return;
+  const all = (historyState.store.entries || []).slice().reverse();
+  historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+  historyState.selectedIndex = 0;
+  renderHistoryList((idx) => renderHistoryDetail(idx));
+  renderHistoryDetail(0);
+  renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+    renderHistoryList((idx) => renderHistoryDetail(idx));
+  });
+}
+
+/**
+ * Render history list (called from HTML)
+ */
+export function renderHistoryListWrapper(): void {
+  renderHistoryList((idx) => renderHistoryDetail(idx));
+}
+
+/**
+ * Render history detail wrapper (called from HTML)
+ */
+export function renderHistoryDetailWrapper(idx: number): void {
+  renderHistoryDetail(idx);
+}
+
+/**
+ * Render history active filters wrapper (called from HTML)
+ */
+export function renderHistoryActiveFiltersWrapper(): void {
+  renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+    renderHistoryList((idx) => renderHistoryDetail(idx));
+  });
+}
+
+/**
+ * Render history totals wrapper (called from HTML)
+ */
+export function renderHistoryTotalsWrapper(): void {
+  renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+    try { updateHistoryChartFromTotals(totals); } catch {}
+  });
+}
+
+/**
+ * Add to totals wrapper (called from HTML)
+ */
+export function addToTotalsWrapper(price?: Price): void {
+  addToTotals(historyState.store, price);
+}
+
 // Re-export utility functions that might be used externally
 export {
   refreshHistory,
@@ -225,5 +284,15 @@ export {
   applyFilters,
   applySort,
   setChartCurrency,
-  openHistoryPopout
+  openHistoryPopout,
+  keyForRow,
+  addToTotals,
+  renderHistoryTotals,
+  renderHistoryActiveFilters,
+  renderHistoryList,
+  renderHistoryDetail,
+  recomputeChartSeriesFromStore,
+  drawHistoryChart,
+  updateHistoryChartFromTotals,
+  updateSessionUI
 };
