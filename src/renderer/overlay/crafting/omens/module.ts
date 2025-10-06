@@ -209,9 +209,16 @@ export function render(list: Omen[]): void {
     const matchesTags = (o: Omen) => {
       if (!hasTags) return true;
       const blob = `${o.name||''} ${(o.explicitMods||[]).join(' ')}`.toLowerCase();
-      return [...(state.selectedTags as Set<string>)].every(t => blob.includes(t) || (
-        t==='energy shield' && /energy\s*shield|\bes\b/.test(blob)
-      ) || (t==='dot' && /damage over time|degeneration|bleed|ignite/.test(blob)));
+      return [...(state.selectedTags as Set<string>)].every(t =>
+        blob.includes(t) ||
+        (
+          t==='energy shield' && /energy\s*shield|\bes\b/.test(blob)
+        ) || (
+          t==='dot' && /damage over time|degeneration|bleed|ignite/.test(blob)
+        ) || (
+          t==='desecrate' && /desec/.test(blob)
+        )
+      );
     };
     state.filtered = state.cache.filter(o => (!f || (o.name||'').toLowerCase().includes(f) || (o.explicitMods||[]).some(m => (m||'').toLowerCase().includes(f))) && matchesTags(o));
     state.filtered.forEach(o => {
