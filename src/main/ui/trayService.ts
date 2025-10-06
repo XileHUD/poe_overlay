@@ -70,8 +70,8 @@ export function createTray(params: CreateTrayParams): Tray | null {
     trayIcon = nativeImage.createFromBuffer(placeholder);
   }
 
-  // Mild crop only (no upscale) to remove large transparent padding while keeping native resolution.
-  const mildCrop = (img: Electron.NativeImage): Electron.NativeImage => {
+  // Crop transparent padding and resize to proper tray icon size
+  const cropAndResize = (img: Electron.NativeImage): Electron.NativeImage => {
     try {
       const { width, height } = img.getSize(); if (!width || !height) return img;
       const buf = img.toBitmap(); const stride = width * 4;
@@ -92,18 +92,23 @@ export function createTray(params: CreateTrayParams): Tray | null {
       if (w >= width - 2 && h >= height - 2) return img; // cropping negligible
       try {
         const cropped = img.crop({ x: minX, y: minY, width: w, height: h });
-        if (!cropped.isEmpty()) return cropped;
+        if (!cropped.isEmpty()) {
+          // Resize cropped icon to 32x32 for tray (works well on all DPI settings)
+          const resized = cropped.resize({ width: 32, height: 32, quality: 'best' });
+          if (!resized.isEmpty()) return resized;
+          return cropped;
+        }
       } catch {}
       return img;
     } catch { return img; }
   };
 
-  // If ICO produced tiny central glyph (large padding), convert to bitmap and crop as PNG fallback
+  // Apply crop and resize to all icons (including ICO) to remove padding
   if (trayIcon) {
-    try { trayIcon = mildCrop(trayIcon); } catch {}
+    try { trayIcon = cropAndResize(trayIcon); } catch {}
   }
 
-  // No scaling applied; let OS scale appropriately.
+  // No additional scaling applied; let OS scale appropriately.
 
   let tray: Tray | null = null;
   try {
