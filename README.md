@@ -8,6 +8,13 @@ Lightweight PoE2 item & modifier overlay – copy an item, see the data instantl
 
 <br />
 
+<a href="https://www.youtube.com/watch?v=115H_9t8fiA" target="_blank" rel="noopener noreferrer">
+	<img src="https://img.youtube.com/vi/115H_9t8fiA/hqdefault.jpg" alt="XileHUD Video Overview" width="720" /><br/>
+	<sub><em>Watch a short video overview (YouTube)</em></sub>
+</a>
+
+<br />
+
 <strong>PoE1 Version:</strong> Currently in development, with a planned release before the new league at the end of October.
 
 </div>
