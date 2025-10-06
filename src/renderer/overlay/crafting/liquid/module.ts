@@ -133,7 +133,7 @@ export function render(items: LiquidEmotionItem[]): void {
     cards.push(`
       <div class='liquid-emotion-card' data-slug='${item.slug||""}' data-name='${(item.name||"").replace(/'/g,"&#39;")}' style='background:var(--bg-card); border:1px solid var(--border-color); border-radius:6px; padding:6px; display:flex; flex-direction:column; gap:4px; transition:border-color .25s; height:100%'>
         <div style='display:flex; align-items:center; gap:6px;'>
-          ${item.image ? `<img src='${item.image}' alt='' style='width:28px; height:28px; object-fit:contain;'>` : ''}
+          ${item.image ? `<img class='currency-img' src='${item.image}' alt='' loading='lazy' decoding='async' style='width:28px; height:28px; object-fit:contain;'>` : ''}
           <div style='font-weight:600; line-height:1.2;'>${item.name}</div>
         </div>
         <div style='font-size:11px; color:var(--text-muted);'>Stack: ${item.stack_current ?? '?'} / ${item.stack_max ?? '?'}</div>
@@ -185,20 +185,6 @@ export function render(items: LiquidEmotionItem[]): void {
   };
   searchEl?.addEventListener('input', ()=> apply(searchEl.value));
   clearBtn?.addEventListener('click', ()=> { if (searchEl) { searchEl.value=''; apply(''); searchEl.focus(); } });
-  
-  // Add image fallback for liquid emotions
-  const placeholder = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><rect width='28' height='28' rx='4' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='8' font-family='sans-serif'>?</text></svg>`)}`;
-  panel.querySelectorAll('img').forEach((img: HTMLImageElement) => {
-    if ((img as any)._fb) return;
-    (img as any)._fb = true;
-    img.loading = 'lazy';
-    img.decoding = 'async';
-    img.addEventListener('error', () => {
-      img.src = placeholder;
-      img.style.opacity = '0.5';
-      img.style.filter = 'grayscale(1)';
-    }, { once: true });
-  });
   
   renderFixedChips();
 }

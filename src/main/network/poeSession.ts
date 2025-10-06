@@ -41,24 +41,22 @@ export class PoeSessionHelper {
 
   openLoginWindow(): Promise<{ loggedIn: boolean; accountName?: string | null }>{
     return new Promise(async (resolve) => {
-      const already = await this.hasSession();
-      if (already) { resolve({ loggedIn: true, accountName: this.getAccountName() }); return; }
+      // Always open the window so user can login/logout/manage session
       const loginWin = new BrowserWindow({
         width: 900, height: 900, title: 'Log in to pathofexile.com',
         webPreferences: { nodeIntegration: false, contextIsolation: true }
       });
-      const finish = async () => {
-        const authed = await this.isAuthenticatedProbe('Rise of the Abyssal');
-        if (authed) { try { loginWin.close(); } catch {}; resolve({ loggedIn: true, accountName: this.getAccountName() }); return true; }
-        return false;
-      };
+      
+      // When window closes, just check if cookie exists (don't probe API - that triggers CF challenges)
       loginWin.on('closed', async () => {
-        const authed = await this.isAuthenticatedProbe('Rise of the Abyssal');
-        if (authed) resolve({ loggedIn: true, accountName: this.getAccountName() });
-        else resolve({ loggedIn: false, accountName: null });
+        const hasCookie = await this.hasSession();
+        if (hasCookie) {
+          resolve({ loggedIn: true, accountName: this.getAccountName() });
+        } else {
+          resolve({ loggedIn: false, accountName: null });
+        }
       });
-      loginWin.webContents.on('did-finish-load', () => { finish(); });
-      loginWin.webContents.on('did-navigate', () => { finish(); });
+      
       loginWin.loadURL('https://www.pathofexile.com/login');
     });
   }

@@ -61,8 +61,13 @@ function buildIndexOnce(): void {
       const originalUrl = decodeFilename(filename);
       
       if (originalUrl) {
-        // Index by full URL (lowercase for case-insensitive lookup)
-        index.map[originalUrl.toLowerCase()] = fullPath;
+        // Index by full URL (preserve ORIGINAL case for exact match)
+        index.map[originalUrl] = fullPath;
+        // ALSO index by lowercase for case-insensitive fallback
+        const lowerUrl = originalUrl.toLowerCase();
+        if (!index.map[lowerUrl]) {
+          index.map[lowerUrl] = fullPath;
+        }
         indexed++;
         
         // Also index by basename for fallback matching
@@ -90,15 +95,20 @@ export function resolveLocalImage(original: string): string | null {
   try { buildIndexOnce(); } catch {}
   if (!original) return null;
   
-  // Try exact URL match first (case-insensitive)
-  const normalized = original.toLowerCase();
-  const exactMatch = index.map[normalized];
+  // Try EXACT match first (preserves original case from bundled filename)
+  const exactMatch = index.map[original];
   if (exactMatch) {
-    console.log(`[ImageResolver] ✅ Exact match for: ${original.substring(0, 80)}...`);
     return exactMatch;
   }
   
-  // Try basename match as fallback
+  // Try lowercase match as fallback (case-insensitive)
+  const normalized = original.toLowerCase();
+  const lowerMatch = index.map[normalized];
+  if (lowerMatch) {
+    return lowerMatch;
+  }
+  
+  // Try basename match as last resort
   const cleaned = (() => {
     try {
       if (/^https?:/i.test(original)) {
@@ -112,11 +122,9 @@ export function resolveLocalImage(original: string): string | null {
   })();
   
   if (cleaned && index.map[cleaned]) {
-    console.log(`[ImageResolver] ✅ Basename match for: ${original.substring(0, 80)}... (basename: ${cleaned})`);
     return index.map[cleaned];
   }
   
-  console.warn(`[ImageResolver] ❌ No match for: ${original.substring(0, 80)}...`);
   return null;
 }
 

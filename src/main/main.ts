@@ -444,6 +444,33 @@ class OverlayApp {
             const diag: { url: string; status?: number; method: string; error?: string; mime?: string; t: number; phase: string; }[] = [];
             const MAX = 250;
             const ses = this.overlayWindow.webContents.session;
+            
+            // Image request interception: hard redirect known poedb assets to local bundle, never hit network.
+            // Official PoE CDN is allowed (merchant history etc.). If we cannot map a poedb URL, we cancel (show '?').
+            ses.webRequest.onBeforeRequest({ urls: ['https://*/*', 'http://*/*'] }, (details, cb) => {
+                if (!/\bimage\b/i.test(details.resourceType)) { cb({}); return; }
+                const lower = details.url.toLowerCase();
+
+                // Attempt local resolution first for ANY image so we short‑circuit quickly.
+                try {
+                    const local = resolveLocalImage(details.url);
+                    if (local && fs.existsSync(local)) {
+                        return cb({ redirectURL: 'file:///' + local.replace(/\\/g,'/') });
+                    }
+                } catch {}
+
+                // poedb hosts -> do NOT allow network (we expect everything bundled). Cancel if not resolved.
+                if (lower.includes('cdn.poe2db.tw') || lower.includes('poedb.tw')) {
+                    return cb({ cancel: true });
+                }
+
+                // Allow official PoE CDN (we do not mirror these entirely: account / trade history avatars, etc.)
+                if (lower.includes('web.poecdn.com') || lower.includes('cdn.poecdn.net')) { cb({}); return; }
+
+                // All other hosts: just allow.
+                cb({});
+            });
+            
             // Ensure User-Agent for official PoE CDN requests (images now bundled, CDN is fallback only)
             ses.webRequest.onBeforeSendHeaders((details, cb) => {
                 // Only handle official Path of Exile CDN
@@ -868,25 +895,24 @@ class OverlayApp {
         ipcMain.handle('poe-get-session', async () => {
             // Step 1: fast cookie presence check
             const hasCookie = await this.hasPoeSession();
-            // Step 2: if cookie present, optionally probe (light weight) to avoid false-positive stale cookie
-            // We only probe if we have not successfully fetched history in this session yet.
+            // Simple logic: if we have cookie AND recent successful history fetch, trust it
+            // Otherwise require explicit fetch to confirm (no spammy probes)
             let confirmed = false;
-            if (hasCookie) {
-                try {
-                    // Avoid spamming: if last history fetch succeeded recently, trust it
-                    if (this.lastHistoryFetchAt && Date.now() - this.lastHistoryFetchAt < 5 * 60 * 1000) {
-                        confirmed = true;
-                    } else {
-                        confirmed = await this.isAuthenticated();
-                    }
-                } catch { confirmed = false; }
+            if (hasCookie && this.lastHistoryFetchAt && Date.now() - this.lastHistoryFetchAt < 30 * 60 * 1000) {
+                confirmed = true;
             }
             return { loggedIn: confirmed, cookiePresent: hasCookie, accountName: this.poeAccountName };
         });
 
         ipcMain.handle('poe-login', async () => {
-            const result = await this.openPoeLoginWindow();
-            return result;
+            // If we have a CONFIRMED recent session, treat click as "manage / logout" action -> still open window.
+            // If only a cookie is present but unconfirmed, we also open the login window to finish auth.
+            const r = await this.openPoeLoginWindow();
+            // If login was successful, set a timestamp so poe-get-session immediately recognizes it
+            if (r.loggedIn) {
+                this.lastHistoryFetchAt = Date.now() - (this.HISTORY_FETCH_MIN_INTERVAL - 1000); // Set to 4min ago so next fetch is allowed
+            }
+            return r;
         });
 
         ipcMain.handle('poe-fetch-history', async (_e, league: string) => {

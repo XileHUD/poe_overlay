@@ -122,10 +122,9 @@ export async function updateSessionUI(): Promise<boolean> {
     const session = await (window as any).electronAPI.poeGetSession();
     const loginBtn = document.getElementById("poeLoginBtn") as HTMLButtonElement | null;
     if (!loginBtn) return !!session?.loggedIn;
-    // States:
-    // - No cookie: show Login
-    // - Cookie but not confirmed: show "Checking..." (disabled)
-    // - Confirmed: show Logout
+    
+    // Simple logic: loggedIn=true → Logout button, otherwise → Login button
+    // NO POLLING, NO CHECKING STATE
     if (session?.loggedIn) {
       loginBtn.disabled = false;
       loginBtn.textContent = 'Logout';
@@ -134,18 +133,8 @@ export async function updateSessionUI(): Promise<boolean> {
       loginBtn.classList.add('logout-state');
       return true;
     }
-    if (session?.cookiePresent) {
-      // Cookie present but not yet confirmed; intermediate visual
-      loginBtn.disabled = true;
-      loginBtn.textContent = 'Checking…';
-      loginBtn.title = 'Verifying session…';
-      loginBtn.classList.remove('logout-state');
-      loginBtn.classList.add('login-state');
-      // Schedule a recheck shortly (probe result will eventually mark loggedIn true)
-      setTimeout(()=>{ try { updateSessionUI(); } catch {} }, 2500);
-      return false;
-    }
-    // Default: not logged in
+    
+    // Not logged in (either no cookie or unconfirmed)
     loginBtn.disabled = false;
     loginBtn.textContent = 'Login';
     loginBtn.title = 'Login to pathofexile.com';
@@ -164,21 +153,29 @@ function attachLoginButtonLogic(){
   (btn as any)._loginWired = true;
   btn.addEventListener('click', async () => {
     try {
-      // If currently showing Logout -> perform a simple cookie clear prompt? For now: treat as logout not implemented.
-      if (btn.classList.contains('logout-state')) {
-        // No official logout API (PoE uses server-side + cookie). Open login page so user can log out manually.
-        await (window as any).electronAPI.poeLogin();
-        setTimeout(()=>updateSessionUI(), 1500);
-        return;
-      }
-      if (btn.disabled) return; // in checking state
-      // Start auth flow.
+      if (btn.disabled) return; // Prevent double-clicks
+      
+      // Disable button immediately to prevent multiple windows
       btn.disabled = true;
       btn.textContent = 'Opening…';
-      await (window as any).electronAPI.poeLogin();
-      // Give a moment then re-evaluate session
-      setTimeout(()=>updateSessionUI(), 2000);
-    } catch {
+      
+      const result = await (window as any).electronAPI.poeLogin();
+      
+      // Update UI immediately after login resolves
+      await updateSessionUI();
+      
+      // If login was successful, trigger an immediate history fetch
+      if (result?.loggedIn) {
+        setTimeout(async () => {
+          try {
+            await refreshHistory();
+          } catch (e) {
+            console.error('Auto-fetch after login failed:', e);
+          }
+        }, 500);
+      }
+    } catch (e) {
+      console.error('Login error:', e);
       btn.disabled = false;
       btn.textContent = 'Login';
     }
