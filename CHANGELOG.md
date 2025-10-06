@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0 (2025-10-06)
+
+### Bug Fixes
+- Fixed login window triggering multiple Cloudflare challenges by removing API probes from window events
+- Login window now only checks cookie presence on close instead of probing trade API repeatedly
+- Fixed case-sensitive URL encoding in image resolver (dual-key indexing for both original and lowercase URLs)
+- Added `currency-img` class to liquid emotion images for proper auto-resolution
+- Simplified session state to binary logged-in check, removing infinite polling loops
+- Fixed poedb image blocking while preserving official PoE CDN access for merchant history
+
+### Technical Improvements
+- Removed recursive setTimeout calls in session UI updates
+- Streamlined login flow to prevent multiple browser windows opening
+- Enhanced image resolution with fallback mechanism for case-mismatched URLs
+
+---
+
 ## 0.0.1-beta (2025-09-27)
 
 First public beta of XileHUD Overlay.
