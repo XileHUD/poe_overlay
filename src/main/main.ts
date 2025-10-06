@@ -21,6 +21,7 @@ import { registerHistoryPopoutIpc } from './ipc/historyPopoutHandlers.js';
 import { PoeSessionHelper } from './network/poeSession.js';
 import { ImageCacheService } from './services/imageCache.js';
 import { resolveLocalImage, resolveByNameOrSlug, getImageIndexMeta } from './services/imageResolver.js';
+import { rateLimiter } from './services/rateLimiter.js';
 
 // History popout debug log path (moved logging helpers into historyPopoutHandlers)
 const historyPopoutDebugLogPath = path.join(app.getPath('userData'), 'history-popout-debug.log');
@@ -910,20 +911,37 @@ class OverlayApp {
             const r = await this.openPoeLoginWindow();
             // If login was successful, set a timestamp so poe-get-session immediately recognizes it
             if (r.loggedIn) {
-                this.lastHistoryFetchAt = Date.now() - (this.HISTORY_FETCH_MIN_INTERVAL - 1000); // Set to 4min ago so next fetch is allowed
+                this.lastHistoryFetchAt = Date.now() - 60000; // Set to 1min ago so session is confirmed
             }
             return r;
         });
 
         ipcMain.handle('poe-fetch-history', async (_e, league: string) => {
-            const now = Date.now();
-            if (now - this.lastHistoryFetchAt < this.HISTORY_FETCH_MIN_INTERVAL) {
-                const waitMs = this.HISTORY_FETCH_MIN_INTERVAL - (now - this.lastHistoryFetchAt);
-                return { ok: false, rateLimited: true, retryIn: waitMs, accountName: this.poeAccountName };
+            // Rate limiter handles ALL timing - no manual interval checks
+            const { ok, status, data, headers, error, rateLimited, retryAfter } = await this.fetchPoeHistory(league);
+            
+            // Only update lastFetchAt on successful requests
+            if (ok) {
+                this.lastHistoryFetchAt = Date.now();
             }
-            const { ok, status, data, headers, error } = await this.fetchPoeHistory(league);
-            if (ok) this.lastHistoryFetchAt = Date.now();
-            return { ok, status, data, headers, error, accountName: this.poeAccountName, lastFetchAt: this.lastHistoryFetchAt, minInterval: this.HISTORY_FETCH_MIN_INTERVAL };
+            
+            return { 
+                ok, 
+                status, 
+                data, 
+                headers, 
+                error, 
+                rateLimited,
+                retryAfter,
+                accountName: this.poeAccountName, 
+                lastFetchAt: this.lastHistoryFetchAt
+            };
+        });
+
+        ipcMain.handle('poe-get-rate-limit-status', async () => {
+            const budget = rateLimiter.canRequest();
+            const status = rateLimiter.getStatus();
+            return { budget, status };
         });
 
 

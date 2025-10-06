@@ -2,6 +2,9 @@
 // This module intentionally keeps DOM id references and behavior identical to preserve functionality.
 
 import { escapeHtml, normalizeCurrency } from "../utils";
+import { autoRefreshManager } from "./autoRefresh";
+import { updateSessionUI, attachLoginButtonLogic } from "./sessionManager";
+import { confirmManualRefresh, updateRefreshButtonUI, attachRefreshButtonLogic } from "./refreshButton";
 
 // --- View gating helpers ----------------------------------------------------
 // We aggressively guard all render/update functions so that if the user switches
@@ -117,88 +120,19 @@ export const historyState: HistoryState = {
   } catch {}
 })();
 
-export async function updateSessionUI(): Promise<boolean> {
-  try {
-    const session = await (window as any).electronAPI.poeGetSession();
-    const loginBtn = document.getElementById("poeLoginBtn") as HTMLButtonElement | null;
-    if (!loginBtn) return !!session?.loggedIn;
-    
-    // Simple logic: loggedIn=true → Logout button, otherwise → Login button
-    // NO POLLING, NO CHECKING STATE
-    if (session?.loggedIn) {
-      loginBtn.disabled = false;
-      loginBtn.textContent = 'Logout';
-      loginBtn.title = 'Logout of pathofexile.com';
-      loginBtn.classList.remove('login-state');
-      loginBtn.classList.add('logout-state');
-      return true;
-    }
-    
-    // Not logged in (either no cookie or unconfirmed)
-    loginBtn.disabled = false;
-    loginBtn.textContent = 'Login';
-    loginBtn.title = 'Login to pathofexile.com';
-    loginBtn.classList.remove('logout-state');
-    loginBtn.classList.add('login-state');
-    return false;
-  } catch {
-    return false;
-  }
-}
-
-// --- Login button wiring & watchdog ---
-function attachLoginButtonLogic(){
-  const btn = document.getElementById('poeLoginBtn') as HTMLButtonElement | null;
-  if (!btn || (btn as any)._loginWired) return;
-  (btn as any)._loginWired = true;
-  btn.addEventListener('click', async () => {
-    try {
-      if (btn.disabled) return; // Prevent double-clicks
-      
-      // Disable button immediately to prevent multiple windows
-      btn.disabled = true;
-      btn.textContent = 'Opening…';
-      
-      const result = await (window as any).electronAPI.poeLogin();
-      
-      // Update UI immediately after login resolves
-      await updateSessionUI();
-      
-      // If login was successful, trigger an immediate history fetch
-      if (result?.loggedIn) {
-        setTimeout(async () => {
-          try {
-            await refreshHistory();
-          } catch (e) {
-            console.error('Auto-fetch after login failed:', e);
-          }
-        }, 500);
-      }
-    } catch (e) {
-      console.error('Login error:', e);
-      btn.disabled = false;
-      btn.textContent = 'Login';
-    }
-  });
-  // Watchdog: if stuck in Checking… for >5s revert to Login state to allow retry
-  setInterval(()=>{
-    if (!btn) return;
-    if (btn.textContent?.startsWith('Checking') && btn.disabled) {
-      const since = (btn as any)._checkingSince || 0;
-      if (!since) { (btn as any)._checkingSince = Date.now(); return; }
-      if (Date.now() - since > 5000) {
-        (btn as any)._checkingSince = 0;
-        btn.disabled = false;
-        btn.textContent = 'Login';
-      }
-    } else {
-      (btn as any)._checkingSince = 0;
-    }
-  }, 1200);
-}
-
-// Initial attach
-setTimeout(()=>{ try { attachLoginButtonLogic(); updateSessionUI(); } catch {} }, 300);
+// Initialize session UI and login button on load
+setTimeout(()=>{ 
+  try { 
+    // Attach login button with auto-refresh on success
+    attachLoginButtonLogic(() => {
+      console.log('[Login] Starting auto-refresh system');
+      autoRefreshManager.startAutoRefresh(async () => {
+        await refreshHistory();
+      });
+    });
+    updateSessionUI(); 
+  } catch {} 
+}, 300);
 
 // Canonical millisecond timestamp resolver for history entries
 function canonicalTs(r: any): number {
@@ -495,57 +429,61 @@ export async function refreshHistory(): Promise<boolean | void> {
   }
   try {
     let rows: any[] = [];
-  const res = await (window as any).electronAPI.poeFetchHistory(historyState.league);
-    try {
-      const headers = (res as any)?.headers || {};
-      const until = parseRateLimitHeaders(headers, (res as any)?.status);
-      if (until) historyState.rateLimitUntil = Math.max(historyState.rateLimitUntil || 0, until);
-    } catch {}
-    if (!(res as any)?.ok) {
-      if ((res as any)?.rateLimited) {
-        const retryIn = Number((res as any)?.retryIn || 0) || 0;
-        if (retryIn > 0) {
-          const until = Date.now() + retryIn;
-          historyState.rateLimitUntil = Math.max(historyState.rateLimitUntil || 0, until);
-        }
-        const lf = Number((res as any)?.lastFetchAt || 0) || 0;
-        if (lf) historyState.remoteLastFetchAt = lf;
-        const mi = Number((res as any)?.minInterval || 0) || 0;
-        if (mi > 0) historyState.globalMinInterval = mi;
-      } else {
-        historyState.lastRefreshAt = Date.now();
+    const res = await (window as any).electronAPI.poeFetchHistory(historyState.league);
+    
+    // Handle rate limiting (either pre-check or server 429)
+    if ((res as any)?.rateLimited) {
+      const retryAfter = Number((res as any)?.retryAfter || 0) || 0;
+      if (retryAfter > 0) {
+        const until = Date.now() + (retryAfter * 1000);
+        historyState.rateLimitUntil = Math.max(historyState.rateLimitUntil || 0, until);
       }
+      
+      const info = document.getElementById("historyInfoBadge");
+      if (info) {
+        (info as HTMLElement).style.display = "";
+        const until = nextAllowedRefreshAt();
+        const tick = () => {
+          const ms = Math.max(0, until - Date.now());
+          const s = Math.ceil(ms / 1000);
+          const mins = Math.floor(s / 60);
+          const secs = s % 60;
+          if (mins > 0) {
+            (info as HTMLElement).textContent = `Rate limited • ${mins}m ${secs}s`;
+          } else {
+            (info as HTMLElement).textContent = `Rate limited • ${s}s`;
+          }
+          if (ms > 0) setTimeout(tick, 1000);
+          else (info as HTMLElement).style.display = "none";
+        };
+        tick();
+      }
+      
+      try { updateHistoryRefreshButton(); } catch {}
+      return;
+    }
+    
+    if (!(res as any)?.ok) {
+      historyState.lastRefreshAt = Date.now();
       const loggedIn = await updateSessionUI();
-      const is429 = (res as any)?.status === 429;
+      
       if (!loggedIn && (!historyState.items || historyState.items.length === 0)) {
         (histList as HTMLElement).innerHTML = '<div class="no-mods" style="padding:8px;">Please log in to pathofexile.com to view history.</div>';
       }
+      
       const info = document.getElementById("historyInfoBadge");
       if (info) {
-        if (is429) {
-          (info as HTMLElement).style.display = "";
-          const until = nextAllowedRefreshAt();
-          const tick = () => {
-            const ms = Math.max(0, until - Date.now());
-            const s = Math.ceil(ms / 1000);
-            (info as HTMLElement).textContent = `Rate limited • ${s}s`;
-            if (ms > 0) setTimeout(tick, 1000);
-            else (info as HTMLElement).style.display = "none";
-          };
-          tick();
-        } else {
-          (info as HTMLElement).style.display = "";
-          (info as HTMLElement).textContent = "Fetch failed";
-          setTimeout(() => {
-            if (info) (info as HTMLElement).style.display = "none";
-          }, 4000);
-        }
+        (info as HTMLElement).style.display = "";
+        (info as HTMLElement).textContent = "Fetch failed";
+        setTimeout(() => {
+          if (info) (info as HTMLElement).style.display = "none";
+        }, 4000);
       }
-      try {
-        updateHistoryRefreshButton();
-      } catch {}
+      
+      try { updateHistoryRefreshButton(); } catch {}
       return;
     }
+    
   // Success metadata adoption
   const lf = Number((res as any)?.lastFetchAt || 0) || 0;
   if (lf) historyState.remoteLastFetchAt = lf;
@@ -1195,26 +1133,38 @@ export function nextAllowedRefreshAt(): number {
 let _refreshBtnTimer: any = null;
 export function updateHistoryRefreshButton(): void {
   if (!historyVisible() || _activeGeneration !== _viewGeneration) return;
-  const btn = document.getElementById("historyRefreshBtn") as HTMLButtonElement | null;
-  if (!btn) return;
   const now = Date.now();
   const nextAt = nextAllowedRefreshAt();
   const waitMs = Math.max(0, nextAt - now);
-  const titleDefault = "Refresh merchant history";
+  const canRefresh = waitMs === 0;
+  const retryAfterSecs = Math.ceil(waitMs / 1000);
+  const autoRefreshActive = autoRefreshManager.isRunning();
+  
+  updateRefreshButtonUI(canRefresh, retryAfterSecs, autoRefreshActive);
+  
+  // Schedule next update if rate limited
   if (waitMs > 0) {
-    const secs = Math.ceil(waitMs / 1000);
-    btn.setAttribute("disabled","true");
-    btn.style.opacity = "0.6";
-    btn.title = `Wait ${secs}s to refresh (throttle/rate limit)`;
     if (_refreshBtnTimer) clearTimeout(_refreshBtnTimer);
-    _refreshBtnTimer = setTimeout(()=>{ _refreshBtnTimer=null; updateHistoryRefreshButton(); }, Math.min(waitMs,1000));
+    _refreshBtnTimer = setTimeout(()=>{ 
+      _refreshBtnTimer=null; 
+      updateHistoryRefreshButton(); 
+    }, Math.min(waitMs,1000));
   } else {
-    if (_refreshBtnTimer) { clearTimeout(_refreshBtnTimer); _refreshBtnTimer=null; }
-    btn.removeAttribute("disabled");
-    btn.style.opacity = "";
-    btn.title = titleDefault;
+    if (_refreshBtnTimer) { 
+      clearTimeout(_refreshBtnTimer); 
+      _refreshBtnTimer=null; 
+    }
   }
 }
+
+// Attach refresh button with confirmation dialog
+setTimeout(() => {
+  try {
+    attachRefreshButtonLogic(async () => {
+      await refreshHistory();
+    });
+  } catch {}
+}, 300);
 
 export async function refreshHistoryIfAllowed(origin?: string): Promise<boolean | void> {
   if (!historyVisible()) return;

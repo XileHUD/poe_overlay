@@ -928,6 +928,16 @@
             }
             if (refreshBtn) {
                 refreshBtn.addEventListener('click', async () => {
+                    // Show warning about rate limits for manual refreshes
+                    const confirmed = confirm(
+                        '⚠️ Manual Refresh Warning\n\n' +
+                        'The app automatically refreshes every 15 minutes to stay within GGG rate limits.\n\n' +
+                        'Manual refreshes use your limited API quota (15 requests per 3 hours).\n\n' +
+                        'Are you sure you want to refresh now?'
+                    );
+                    
+                    if (!confirmed) return;
+                    
                     await (typeof refreshHistoryIfAllowed === 'function' ? refreshHistoryIfAllowed('manual') : refreshHistory());
                 });
             }
