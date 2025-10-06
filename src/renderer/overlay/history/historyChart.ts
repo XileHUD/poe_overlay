@@ -267,35 +267,52 @@ export function drawHistoryChart(): void {
   }
   
   if (totalTrades > 0) {
-    const desiredXTicks = 4; // interior ticks
+    const desiredXTicks = 4; // interior target
     let xStep = Math.ceil(totalTrades / (desiredXTicks + 1));
-    // Round xStep to a nice number (1,2,5 * 10^n)
     const pow10x = Math.pow(10, Math.floor(Math.log10(xStep)));
     const candX = [1, 2, 5, 10].map(c => c * pow10x);
     for (const c of candX) { if (xStep <= c) { xStep = c; break; } }
-    
+
     ctx.fillStyle = "#777" as any;
-    (ctx as any).textAlign = "center";
     (ctx as any).font = "9px Segoe UI, sans-serif";
-    
+    const minXGap = 24; // minimum horizontal gap in pixels between label centers
+
+    // Draw start label first and track last label position
+    (ctx as any).textAlign = "left";
+    const startX = padL + 2;
+    ctx.fillText("1", startX, H - padB + 12);
+    let lastLabelX = startX;
+
+    // Interior ticks filtering by gap
+    const interior: { i: number; x: number; p:any }[] = [];
     for (let i = xStep; i < totalTrades; i += xStep) {
       const p = pts[Math.min(i, pts.length - 1)];
-      const x = X(p.t);
+      interior.push({ i, x: X(p.t), p });
+    }
+    // Sort by x just in case (should already be ascending)
+    interior.sort((a,b)=> a.x - b.x);
+
+    (ctx as any).textAlign = "center";
+    interior.forEach(t => {
+      if (t.x - lastLabelX < minXGap) return; // skip overlapping
+      // Draw grid line
       ctx.beginPath();
       ctx.strokeStyle = "#2d2d2d";
       (ctx as any).setLineDash?.([2, 3]);
-      ctx.moveTo(x, padT);
-      ctx.lineTo(x, H - padB);
+      ctx.moveTo(t.x, padT);
+      ctx.lineTo(t.x, H - padB);
       ctx.stroke();
       (ctx as any).setLineDash?.([]);
-      ctx.fillText(String(i), x, H - padB + 12);
-    }
-    
-    // Start and end labels
-    (ctx as any).textAlign = "left";
-    ctx.fillText("1", padL + 2, H - padB + 12);
+      ctx.fillText(String(t.i), t.x, H - padB + 12);
+      lastLabelX = t.x;
+    });
+
+    // End label (ensure spacing from last interior)
+    const endX = W - padR - 2;
     (ctx as any).textAlign = "right";
-    ctx.fillText(String(totalTrades), W - padR - 2, H - padB + 12);
+    if (endX - lastLabelX >= minXGap * 0.6) { // allow a little tighter for final
+      ctx.fillText(String(totalTrades), endX, H - padB + 12);
+    }
   }
   
   // Draw line chart
