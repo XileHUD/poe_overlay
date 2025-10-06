@@ -11,10 +11,12 @@
     "build:main": "tsc",
     "build:renderer": "vite build",
     "download-images": "tsx scripts/downloadImages.ts",
+    "typecheck": "tsc --noEmit",
     "start": "electron dist/main/main.js",
-    "pack": "electron-builder",
+    "pack": "electron-builder --dir",
     "dist": "npm run build && electron-builder",
-    "dist:unsigned": "cross-env WIN_CODESIGN=skip npm run build && electron-builder"
+    "dist:unsigned": "cross-env WIN_CODESIGN=skip npm run build && electron-builder",
+    "publish:github": "npm run build && electron-builder --publish always"
   },
   "keywords": ["poe2", "overlay", "modifiers", "electron"],
   "author": "XileHUD",
@@ -41,12 +43,15 @@
     "appId": "com.xilehud.overlay",
     "productName": "XileHUD",
     "copyright": "Copyright © 2025 XileHUD",
-    "directories": { "output": "dist_electron" },
+    "directories": { 
+      "output": "dist_electron",
+      "buildResources": "build"
+    },
     "files": [
       "dist/**",
       "xile512.ico"
     ],
-    "extraFiles": [
+    "extraResources": [
       {
         "from": "../../data/poe2",
         "to": "data/poe2",
@@ -61,15 +66,36 @@
     "publish": [
       {
         "provider": "github",
-        "private": true
+        "owner": "XileHUD",
+        "repo": "poe_overlay",
+        "private": false
       }
     ],
     "win": {
       "icon": "xile512.ico",
-      "artifactName": "XileHUD-${version}-portable.${ext}",
+      "artifactName": "XileHUD-Setup-${version}.${ext}",
       "target": [
-        { "target": "portable", "arch": ["x64"] }
+        { 
+          "target": "nsis", 
+          "arch": ["x64"] 
+        }
       ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "allowElevation": true,
+      "installerIcon": "xile512.ico",
+      "uninstallerIcon": "xile512.ico",
+      "installerHeaderIcon": "xile512.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "XileHUD",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "displayLanguageSelector": false,
+      "include": "build/installer.nsh"
     }
   }
 }

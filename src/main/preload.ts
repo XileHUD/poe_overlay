@@ -17,6 +17,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
     onSetActiveTab: (callback: (tab: string) => void) => {
         ipcRenderer.on('set-active-tab', (_event, tab) => callback(tab));
     },
+    onModifiersLoaded: (callback: (categories: string[]) => void) => {
+        ipcRenderer.on('modifiers-loaded', (_event, cats) => callback(cats));
+    },
     onInvokeAction: (callback: (action: string) => void) => {
         ipcRenderer.on('invoke-action', (_event, action) => callback(action));
     },
@@ -47,6 +50,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
     getImageLog: () => ipcRenderer.invoke('debug-get-image-log'),
     cacheImage: (url: string) => ipcRenderer.invoke('cache-image', url),
     getCachedImage: (url: string) => ipcRenderer.invoke('get-cached-image', url),
+    resolveImage: (url: string) => ipcRenderer.invoke('resolve-image', url),
+    resolveImageByName: (name: string) => ipcRenderer.invoke('resolve-image-by-name', name),
     // Data updates
     getDataDir: () => ipcRenderer.invoke('get-data-dir'),
     setDataDir: (dir: string) => ipcRenderer.invoke('set-data-dir', dir),

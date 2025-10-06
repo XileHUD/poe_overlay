@@ -6,18 +6,21 @@ try { autoUpdater = require('electron-updater').autoUpdater; } catch {}
 import * as cp from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs';
-import { ClipboardMonitor } from './clipboard-monitor';
-import { ItemParser } from './item-parser';
-import { ModifierDatabase } from './modifier-database';
-import { KeyboardMonitor } from './keyboard-monitor';
+// Heavy modules will be lazy-imported after splash is visible
+import type { ClipboardMonitor } from './clipboard-monitor';
+import type { ItemParser } from './item-parser';
+import type { ModifierDatabase } from './modifier-database';
+import type { KeyboardMonitor } from './keyboard-monitor';
 import { buildHistoryPopoutHtml } from './popouts/historyPopoutTemplate'; // still used for mod popouts? kept for now
 import { buildModPopoutHtml } from './popouts/modPopoutTemplate';
 // Use explicit .js extension for NodeNext module resolution compatibility
 import { buildSplashHtml } from './ui/splashTemplate.js';
+import { createTray } from './ui/trayService.js';
 import { registerDataIpc } from './ipc/dataHandlers.js';
 import { registerHistoryPopoutIpc } from './ipc/historyPopoutHandlers.js';
 import { PoeSessionHelper } from './network/poeSession.js';
 import { ImageCacheService } from './services/imageCache.js';
+import { resolveLocalImage, resolveByNameOrSlug, getImageIndexMeta } from './services/imageResolver.js';
 
 // History popout debug log path (moved logging helpers into historyPopoutHandlers)
 const historyPopoutDebugLogPath = path.join(app.getPath('userData'), 'history-popout-debug.log');
@@ -36,6 +39,33 @@ try {
     app.commandLine.appendSwitch('shader-disk-cache-size', '0');
     app.commandLine.appendSwitch('disable-gpu-shader-disk-cache');
 } catch {}
+
+// Early minimal splash: show as soon as 'ready' fires so users get instant feedback even if
+// Windows Defender / extraction delays block JS event loop for a while after.
+let earlySplash: BrowserWindow | null = null;
+app.once('ready', () => {
+    try {
+        if (earlySplash) return;
+        const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+        earlySplash = new BrowserWindow({
+            width: 360,
+            height: 200,
+            x: Math.round(width/2 - 180),
+            y: Math.round(height/2 - 100),
+            frame: false,
+            transparent: true,
+            resizable: false,
+            alwaysOnTop: true,
+            skipTaskbar: true,
+            show: true,
+            webPreferences: { nodeIntegration: false, contextIsolation: true }
+        });
+        // Increase max listeners to prevent warning during startup
+        earlySplash.webContents.setMaxListeners(20);
+        const minimalHtml = `<!DOCTYPE html><html><head><meta charset='utf-8'/><style>body{margin:0;font-family:Segoe UI,Roboto,Arial,sans-serif;background:rgba(10,12,18,.9);color:#ddd;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;overflow:hidden;}h1{font-size:15px;margin:0 0 10px;color:#ffcc66;letter-spacing:.5px;text-shadow:0 0 4px #000}#msg{font-size:12px;opacity:.9;animation:pulse 2.6s ease-in-out infinite}@keyframes pulse{0%{opacity:.55}50%{opacity:1}100%{opacity:.55}}</style></head><body><h1>XileHUD Overlay</h1><div id="msg">Starting...</div></body></html>`;
+        earlySplash.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(minimalHtml));
+    } catch {}
+});
 
 class OverlayApp {
     private mainWindow: BrowserWindow | null = null;
@@ -69,28 +99,49 @@ class OverlayApp {
     private readonly HISTORY_FETCH_MIN_INTERVAL = 5 * 60 * 1000; // 5 minutes
 
     constructor() {
-        // Show splash immediately when Electron is ready
-        // Note: 5-10 second delay before this on first portable launch is Windows extracting the EXE
         app.whenReady().then(async () => {
             this.showSplash('Initializing application...');
-            // Resolve data path early
+            // Lazy load heavy modules after splash is visible
+            const [ { ModifierDatabase }, { ItemParser }, { ClipboardMonitor }, { KeyboardMonitor } ] = await Promise.all([
+                import('./modifier-database.js'),
+                import('./item-parser.js'),
+                import('./clipboard-monitor.js'),
+                import('./keyboard-monitor.js')
+            ]);
+
+            this.updateSplash('Resolving data path');
             const initialDataPath = this.resolveInitialDataPath();
-            this.modifierDatabase = new ModifierDatabase(initialDataPath, false); // defer load
-            // Kick off async loading without blocking rest of startup
-            (async () => {
-                await this.modifierDatabase.loadAsync(msg => this.updateSplash(msg));
+            this.modifierDatabase = new ModifierDatabase(initialDataPath, false);
+            (async () => { // start async background load
+                const p = this.modifierDatabase.loadAsync(msg => this.updateSplash(msg));
+                ;(this.modifierDatabase as any).__loadingPromise = p;
+                await p;
                 this.updateSplash('Modifiers loaded');
+                // Notify any renderers that categories may now be complete
+                try {
+                    const cats = await this.modifierDatabase.getAllCategories();
+                    this.overlayWindow?.webContents.send('modifiers-loaded', cats);
+                } catch {}
             })();
+
             this.updateSplash('Starting parsers');
             this.itemParser = new ItemParser();
             this.clipboardMonitor = new ClipboardMonitor();
             this.keyboardMonitor = new KeyboardMonitor();
-            try { this.keyboardMonitor.start(); } catch {}
+            try { this.keyboardMonitor!.start(); } catch {}
 
             this.updateSplash('Creating overlay window');
             this.createOverlayWindow();
             this.updateSplash('Creating tray');
-            this.createTray();
+            this.tray = createTray({
+                onToggleOverlay: () => this.toggleOverlayWithAllCategory(),
+                onOpenModifiers: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','modifiers'); },140); },
+                onOpenHistory: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','history'); this.safeSendToOverlay('invoke-action','merchant-history'); },180); },
+                getDataDir: () => this.getDataDir(),
+                reloadData: () => (this.modifierDatabase as any).reload?.(),
+                checkForUpdates: () => { try { if (autoUpdater) autoUpdater.checkForUpdatesAndNotify(); else shell.openExternal('https://github.com/XileHUD/poe_overlay/releases'); } catch { shell.openExternal('https://github.com/XileHUD/poe_overlay/releases'); } },
+                onQuit: () => app.quit()
+            });
             this.updateSplash('Registering shortcuts');
             this.registerShortcuts();
             this.updateSplash('Setting up services');
@@ -99,17 +150,58 @@ class OverlayApp {
             this.imageCache.init();
             try { (this.clipboardMonitor as any).start?.(); } catch {}
 
-            // Auto-update (best-effort)
+            // Auto-update configuration
             try {
                 if (autoUpdater) {
+                    // Configure updater
                     autoUpdater.autoDownload = true;
                     autoUpdater.autoInstallOnAppQuit = true;
-                    autoUpdater.checkForUpdatesAndNotify();
-                    autoUpdater.on('update-downloaded', () => {
-                        try { this.tray?.displayBalloon?.({ title: 'Update ready', content: 'A new version will install on exit.' }); } catch {}
+                    autoUpdater.logger = console;
+                    
+                    // Event handlers
+                    autoUpdater.on('checking-for-update', () => {
+                        console.log('[AutoUpdater] Checking for updates...');
                     });
+                    
+                    autoUpdater.on('update-available', (info: any) => {
+                        console.log('[AutoUpdater] Update available:', info.version);
+                        try { 
+                            this.tray?.displayBalloon?.({ 
+                                title: 'XileHUD Update Available', 
+                                content: `Version ${info.version} is downloading...` 
+                            }); 
+                        } catch {}
+                    });
+                    
+                    autoUpdater.on('update-not-available', () => {
+                        console.log('[AutoUpdater] No updates available');
+                    });
+                    
+                    autoUpdater.on('download-progress', (progress: any) => {
+                        const percent = Math.round(progress.percent);
+                        console.log(`[AutoUpdater] Download progress: ${percent}%`);
+                    });
+                    
+                    autoUpdater.on('update-downloaded', (info: any) => {
+                        console.log('[AutoUpdater] Update downloaded, will install on quit');
+                        try { 
+                            this.tray?.displayBalloon?.({ 
+                                title: 'XileHUD Update Ready', 
+                                content: 'Version ' + info.version + ' will install when you close the overlay.\n\nYour settings and history will be preserved.' 
+                            }); 
+                        } catch {}
+                    });
+                    
+                    autoUpdater.on('error', (err: any) => {
+                        console.error('[AutoUpdater] Error:', err);
+                    });
+                    
+                    // Check for updates on startup
+                    autoUpdater.checkForUpdatesAndNotify();
                 }
-            } catch {}
+            } catch (e) {
+                console.error('[AutoUpdater] Setup failed:', e);
+            }
 
             // Auto clean on quit
             app.on('will-quit', () => {
@@ -127,7 +219,19 @@ class OverlayApp {
 
     private showSplash(initial: string) {
         try {
-            if (this.splashWindow) return;
+            if (this.splashWindow && !this.splashWindow.isDestroyed()) {
+                this.updateSplash(initial);
+                return;
+            }
+            // Reuse earlySplash if available
+            if (earlySplash && !earlySplash.isDestroyed()) {
+                this.splashWindow = earlySplash;
+                earlySplash = null; // transfer ownership
+                const isFirstLaunch = !fs.existsSync(this.getUserConfigDir());
+                const html = buildSplashHtml(initial, isFirstLaunch);
+                this.splashWindow.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
+                return;
+            }
             const { width, height } = screen.getPrimaryDisplay().workAreaSize;
             this.splashWindow = new BrowserWindow({
                 width: 380,
@@ -142,8 +246,6 @@ class OverlayApp {
                 show: true,
                 webPreferences: { nodeIntegration: false, contextIsolation: true }
             });
-            
-            // Check if this is a first-time launch (no config directory yet)
             const isFirstLaunch = !fs.existsSync(this.getUserConfigDir());
             const html = buildSplashHtml(initial, isFirstLaunch);
             this.splashWindow.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
@@ -294,93 +396,7 @@ class OverlayApp {
             console.error('Error saving window bounds:', error);
         }
     }
-    private createTray() {
-        // Try to use packaged icon; fallback to placeholder if missing
-        let trayIcon: Electron.NativeImage | null = null;
-        try {
-            // In prod, process.resourcesPath points to resources folder; the ico is copied beside app as per config
-            // We look relative to __dirname (dist/main) first, then fallback to process.resourcesPath, then project root.
-            const candidatePaths = [
-                path.join(process.resourcesPath || '', 'xile512.ico'),
-                path.join(__dirname, '..', '..', 'xile512.ico'),
-                path.join(process.cwd(), 'packages', 'overlay', 'xile512.ico')
-            ].filter(p => !!p);
-            for (const pth of candidatePaths) {
-                try { if (fs.existsSync(pth)) { trayIcon = nativeImage.createFromPath(pth); break; } } catch {}
-            }
-        } catch {}
-        if (!trayIcon || trayIcon.isEmpty()) {
-            const placeholder = Buffer.from(
-                'iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABYUlEQVRYR+2WwQ3CMBBF/4oAUgAJIAGkAAmgABJAAkgAJIAG0qXQm5mQx2tW1vJvce7M9nHfT0S2JgIIYQQQgghhBBCL4A0yX8gJX6AE2A3wE5gDdA3kJmYDTJ17G0Q+u+J6AK6BrV3Q5T6I27wfWZ3vNJTQdD5WWgG1bYx1iZ8AsxQ6L5KbAEOuAvxwD0WwgrXcB2Pyc/B4nWkB8kXgJd3EItgFv6dL+y7JvBButlTB4QXhu7tyeII7wyb+K4HI1EawySGR4p+Hj6xV8Kf6bH0M7d2LZg55i1DYwFKwhbMHDfN9CH8HxtSV/T9OQpB2gXtCfgT6AKqgCqgCqoAqoAqsA5u2p90vUS6oMteYgz1xTsy7soE5FMX57N0w5re2kc4Tkm9Apu1y3bqk8J7Tb9DhK4aN6HuPgS1Bf6GvoM1Ay6R+QSs8g/An0CtMZoZhBBCCCGEEEIIIYT8QvwB6PCXh38XNbcAAAAASUVORK5CYII=', 'base64');
-            trayIcon = nativeImage.createFromBuffer(placeholder);
-        }
-        // Attempt to crop transparent padding so the visible glyph appears larger in the tray.
-        try {
-            if (trayIcon) {
-                const size = trayIcon.getSize();
-                if (size.width <= 0 || size.height <= 0) throw new Error('invalid icon size');
-                // Only crop if icon is large (e.g. 64+); .ico may include padding that makes it look tiny.
-                if (size.width >= 48 && size.height >= 48) {
-                    const buf = trayIcon.toBitmap(); // BGRA
-                    const stride = size.width * 4;
-                    let minX = size.width, minY = size.height, maxX = 0, maxY = 0;
-                    for (let y = 0; y < size.height; y++) {
-                        for (let x = 0; x < size.width; x++) {
-                            const idx = y * stride + x * 4;
-                            const a = buf[idx + 3];
-                            if (a > 16) { // treat > ~6% alpha as visible
-                                if (x < minX) minX = x;
-                                if (y < minY) minY = y;
-                                if (x > maxX) maxX = x;
-                                if (y > maxY) maxY = y;
-                            }
-                        }
-                    }
-                    const hasContent = maxX >= minX && maxY >= minY;
-                    if (hasContent) {
-                        // Add a tiny padding (2px) to avoid clipping glow
-                        minX = Math.max(0, minX - 2); minY = Math.max(0, minY - 2);
-                        maxX = Math.min(size.width - 1, maxX + 2); maxY = Math.min(size.height - 1, maxY + 2);
-                        const cropWidth = maxX - minX + 1;
-                        const cropHeight = maxY - minY + 1;
-                        if (cropWidth > 8 && cropHeight > 8 && (cropWidth < size.width || cropHeight < size.height)) {
-                            trayIcon = trayIcon.crop({ x: minX, y: minY, width: cropWidth, height: cropHeight });
-                        }
-                    }
-                }
-                // Prefer a target around 32 logical px for clarity; let Windows downscale internally.
-                const finalSize = trayIcon.getSize();
-                if (finalSize.width > 64) {
-                    trayIcon = trayIcon.resize({ width: 64, height: 64, quality: 'best' });
-                }
-            }
-        } catch (e) { console.warn('Tray icon crop/resize failed', e); }
-        this.tray = new Tray(trayIcon);
-
-        const contextMenu = Menu.buildFromTemplate([
-            { label: 'XileHUD (Ctrl+Q)', enabled: false },
-            { type: 'separator' },
-            { label: 'Modifiers', click: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','modifiers'); }, 140); } },
-            { label: 'Merchant History', click: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','history'); this.safeSendToOverlay('invoke-action','merchant-history'); },180); } },
-            { type: 'separator' },
-            { label: 'Reload data (JSON)', click: () => (this.modifierDatabase as any).reload?.() },
-            { label: 'Open data folder', click: () => shell.openPath(this.getDataDir()) },
-            { label: 'Check for app updates', click: () => {
-                try {
-                    if (autoUpdater) autoUpdater.checkForUpdatesAndNotify();
-                    else shell.openExternal('https://github.com/your-org/your-repo/releases');
-                } catch { shell.openExternal('https://github.com/your-org/your-repo/releases'); }
-            } },
-            { type: 'separator' },
-            { label: 'Show/Hide (Ctrl+Q)', click: () => this.toggleOverlayWithAllCategory() },
-            { type: 'separator' },
-            { label: 'Quit', click: () => app.quit() }
-        ]);
-
-    this.tray.setToolTip('XileHUD');
-        this.tray.setContextMenu(contextMenu);
-        this.tray.on('double-click', () => this.toggleOverlayWithAllCategory());
-    }
+    // Tray creation moved to trayService.ts
 
     private createOverlayWindow() {
         const displays = screen.getAllDisplays();
@@ -472,6 +488,19 @@ class OverlayApp {
                     return { path: this.imageCache.state.map[url] };
                 }
                 return { path: null };
+            });
+            // Resolve a local bundled image path (prefer local over network)
+            ipcMain.handle('resolve-image', (_e, original: string) => {
+                try {
+                    const local = resolveLocalImage(original);
+                    return { local, original, index: getImageIndexMeta() };
+                } catch (e:any) { return { local: null, error: e?.message||'resolve_failed' }; }
+            });
+            ipcMain.handle('resolve-image-by-name', (_e, nameOrSlug: string) => {
+                try {
+                    const local = resolveByNameOrSlug(nameOrSlug);
+                    return { local, nameOrSlug, index: getImageIndexMeta() };
+                } catch (e:any) { return { local: null, error: e?.message||'resolve_failed' }; }
             });
         } catch (e) {
             console.warn('Image diagnostics setup failed', e);
@@ -837,9 +866,22 @@ class OverlayApp {
 
         // PoE login and session
         ipcMain.handle('poe-get-session', async () => {
-            const loggedIn = await this.hasPoeSession();
-            // Account name auto-detection removed (HTML scraping disallowed). May be populated by future official API only.
-            return { loggedIn, accountName: this.poeAccountName };
+            // Step 1: fast cookie presence check
+            const hasCookie = await this.hasPoeSession();
+            // Step 2: if cookie present, optionally probe (light weight) to avoid false-positive stale cookie
+            // We only probe if we have not successfully fetched history in this session yet.
+            let confirmed = false;
+            if (hasCookie) {
+                try {
+                    // Avoid spamming: if last history fetch succeeded recently, trust it
+                    if (this.lastHistoryFetchAt && Date.now() - this.lastHistoryFetchAt < 5 * 60 * 1000) {
+                        confirmed = true;
+                    } else {
+                        confirmed = await this.isAuthenticated();
+                    }
+                } catch { confirmed = false; }
+            }
+            return { loggedIn: confirmed, cookiePresent: hasCookie, accountName: this.poeAccountName };
         });
 
         ipcMain.handle('poe-login', async () => {

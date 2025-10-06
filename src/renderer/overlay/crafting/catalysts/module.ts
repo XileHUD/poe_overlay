@@ -1,4 +1,5 @@
 // Catalysts module: encapsulates Catalysts crafting UI
+import { bindImageFallback } from "../utils/imageFallback";
 
 export type Catalyst = {
   slug?: string;
@@ -26,6 +27,8 @@ const state: State = {
   selectedTags: new Set<string>(),
   tagCounts: {},
 };
+
+// Reuse shared fallback for consistent offline resolution (currency already uses it)
 
 function ensurePanel(): HTMLElement {
   if (state.panelEl && document.body.contains(state.panelEl)) return state.panelEl;
@@ -245,6 +248,8 @@ export async function reload(): Promise<void> {
   const panel = ensurePanel();
   panel.querySelector('.no-mods')?.remove();
   const loader = document.createElement('div'); loader.className = 'no-mods'; loader.textContent = 'Reloading...'; panel.appendChild(loader);
+    // Apply shared fallback (which also attempts local bundled resolution) then ensure placeholder style
+    bindImageFallback(panel, 'img.catalyst-img', `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><rect width="28" height="28" rx="4" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="8" font-family="sans-serif">?</text></svg>`, 0.55);
   try {
     const data = await (window as any).electronAPI.getCatalysts();
     if (!data || data.error) { panel.innerHTML = `<div style='color:var(--accent-red);'>Failed to load Catalysts (${data?.error||'unknown'})</div>`; return; }

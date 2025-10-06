@@ -53,8 +53,8 @@ console.log(`Found ${imageUrls.size} unique image URLs`);
 function downloadImage(url: string): Promise<string | null> {
   return new Promise((resolve) => {
     try {
-      // Create filename from base64 hash (same as main.ts)
-      const fname = Buffer.from(url).toString('base64').replace(/[/+=]/g, '') + path.extname(new URL(url).pathname || '.webp');
+      // Create filename from base64-encoded URL
+      const fname = Buffer.from(url).toString('base64') + '.webp';
       const target = path.join(imageDir, fname);
       
       // Skip if already exists
@@ -63,7 +63,25 @@ function downloadImage(url: string): Promise<string | null> {
         return;
       }
       
-      https.get(url, (res) => {
+      const urlObj = new URL(url);
+      const options = {
+        hostname: urlObj.hostname,
+        path: urlObj.pathname + urlObj.search,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        }
+      };
+      
+      https.get(options, (res) => {
+        if (res.statusCode === 301 || res.statusCode === 302) {
+          // Follow redirect
+          const redirectUrl = res.headers.location;
+          if (redirectUrl) {
+            resolve(downloadImage(redirectUrl));
+            return;
+          }
+        }
+        
         if (res.statusCode !== 200) {
           console.warn(`Failed to download ${url}: ${res.statusCode}`);
           res.resume();
@@ -108,7 +126,7 @@ async function downloadAll() {
     const url = urls[i];
     process.stdout.write(`\rProgress: ${i + 1}/${urls.length} (Downloaded: ${downloaded}, Skipped: ${skipped}, Failed: ${failed})`);
     
-    const fname = Buffer.from(url).toString('base64').replace(/[/+=]/g, '') + path.extname(new URL(url).pathname || '.webp');
+    const fname = Buffer.from(url).toString('base64') + '.webp';
     const target = path.join(imageDir, fname);
     
     if (fs.existsSync(target) && fs.statSync(target).size > 0) {
@@ -149,7 +167,7 @@ async function downloadAll() {
         const url = failedUrls[i];
         process.stdout.write(`\rRetry ${retry}: ${i + 1}/${failedUrls.length} (Downloaded: ${retryDownloaded}, Still failed: ${stillFailed.length})`);
         
-        const fname = Buffer.from(url).toString('base64').replace(/[/+=]/g, '') + path.extname(new URL(url).pathname || '.webp');
+        const fname = Buffer.from(url).toString('base64') + '.webp';
         const target = path.join(imageDir, fname);
         
         // Check if somehow got downloaded

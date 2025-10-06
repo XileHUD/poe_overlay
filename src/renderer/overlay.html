@@ -594,6 +594,8 @@
         // Wire initial controls on DOM ready
         document.addEventListener('DOMContentLoaded', () => {
             try { populateCategoryDropdown(); } catch {}
+            // Re-populate once modifiers fully loaded (ensures full category list when opening without item)
+            try { window.electronAPI?.onModifiersLoaded?.((_cats)=> { try { populateCategoryDropdown(); } catch {} }); } catch {}
             setHeader('Modifier');
             // Initial UI state
             try { setActiveTab('tabModifier'); } catch {}
@@ -1774,6 +1776,50 @@ function renderGems(groups){
         });
     }
 }
+
+// --- Generic auto-resolve for bundled images (gems / atlas / ascendancy / keystones / bases / uniques) ---
+// Problem: Some panels (gems, atlas nodes, ascendancy passives, etc.) render <img src="https://..."> directly
+// without invoking the shared bindImageFallback helper used in modular TS panels (currency, omens, etc.).
+// Since we bundle images offline and block external fetching, those HTTP requests fail and show '?'.
+// Solution: Observe the DOM and, for any matching image class, ask main process to map the original URL
+// to the local file path via electronAPI.resolveImage, then swap src to file:/// path.
+(function(){
+    try {
+        if (!window.electronAPI || typeof window.electronAPI.resolveImage !== 'function') return; // preload not ready
+    } catch { return; }
+    var TARGET_CLASSES = ['gem-img','atlas-img','asc-img','keystone-img','base-img','unique-img','essence-img','catalyst-img','currency-img'];
+    var pending = new WeakSet();
+
+    async function tryResolve(img){
+        try {
+            if (!img || pending.has(img)) return;
+            if (img._resolvedLocal || img.dataset.localResolved) return;
+            var orig = img.getAttribute('data-orig-src') || img.getAttribute('src') || '';
+            if (!orig || orig.startsWith('file:') || orig.startsWith('data:')) return; // already local / inline
+            var hasTarget = TARGET_CLASSES.some(function(cls){ return img.classList.contains(cls); });
+            if (!hasTarget) return;
+            pending.add(img);
+            var res = await window.electronAPI.resolveImage(orig);
+            if (res && res.local) {
+                var localUrl = 'file:///' + String(res.local).replace(/\\/g,'/');
+                img.src = localUrl;
+                img.dataset.localResolved = '1';
+                img._resolvedLocal = true;
+            }
+        } catch {}
+    }
+
+    function scan(){
+        TARGET_CLASSES.forEach(function(cls){
+            document.querySelectorAll('img.'+cls).forEach(function(img){ tryResolve(img); });
+        });
+    }
+
+    var mo = new MutationObserver(function(){ scan(); });
+    try { mo.observe(document.body || document.documentElement, { childList:true, subtree:true }); } catch {}
+    setInterval(scan, 2000); // periodic safety scan
+    scan(); // initial
+})();
 
 // Bottom resize handle wiring (vertical resize)
 (function(){

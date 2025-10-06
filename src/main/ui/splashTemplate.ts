@@ -11,6 +11,7 @@ export function buildSplashHtml(initialStatus: string, isFirstLaunch: boolean): 
   return `<!DOCTYPE html><html><head><meta charset='utf-8'/><title>XileHUD</title>
   <style>
   :root { color-scheme: dark; }
+  html, body { overflow:hidden; }
   body { margin:0; font-family: system-ui, Arial, sans-serif; background: rgba(0,0,0,0); color:#d6d6dc; width:100%; height:100%; }
   .wrap { position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:100%; max-width:360px; padding:18px 24px 22px; box-sizing:border-box; display:flex; flex-direction:column; align-items:center; gap:11px; background:rgba(18,18,22,0.96); border:1px solid #2e2e35; border-radius:16px; box-shadow:0 8px 26px -8px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.02); backdrop-filter:blur(8px); }
   .title { font-size:24px; font-weight:650; letter-spacing:1.2px; background:linear-gradient(90deg,#cdb8ff,#a98eff 55%,#7b5fff); -webkit-background-clip:text; color:transparent; filter:drop-shadow(0 1px 2px rgba(0,0,0,0.55)); text-align:center; margin-bottom:2px; }

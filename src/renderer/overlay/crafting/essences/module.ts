@@ -228,7 +228,7 @@ export function render(list: Essence[]): void {
       card.style.gap = '4px';
       const modsHtml = (e.explicitMods && e.explicitMods.length) ? `<div style='font-size:11px;'>${e.explicitMods.map((m)=>highlight(m.replace(/<a[^>]*>(.*?)<\/a>/g,'$1'))).join('<br>')}</div>` : '';
       card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>
-          ${e.image ? `<img src='${e.image}' alt='' style='width:28px; height:28px; object-fit:contain;'>` : ''}
+          ${e.image ? `<img class='essence-img' src='${e.image}' alt='' style='width:28px; height:28px; object-fit:contain;' decoding='async'>` : ''}
           <div style='font-weight:600; line-height:1.2;'>${displayName}</div>
         </div>
         <div style='font-size:11px; color:var(--text-muted);'>Stack: ${e.stack_current ?? '?'} / ${e.stack_max ?? '?'}</div>
@@ -238,7 +238,8 @@ export function render(list: Essence[]): void {
     
     // Add image fallback for essences
     const placeholder = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><rect width='28' height='28' rx='4' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='8' font-family='sans-serif'>?</text></svg>`)}`;
-    listEl.querySelectorAll('img').forEach((img: HTMLImageElement) => {
+    listEl.querySelectorAll('img.essence-img').forEach((el) => {
+      const img = el as HTMLImageElement;
       if ((img as any)._fb) return;
       (img as any)._fb = true;
       img.loading = 'lazy';
@@ -249,6 +250,10 @@ export function render(list: Essence[]): void {
         img.style.filter = 'grayscale(1)';
       }, { once: true });
     });
+    // Trigger generic auto-resolve soon after initial render (in case MutationObserver already ran)
+    setTimeout(()=>{
+      try { document.querySelectorAll('img.essence-img').forEach(img=>{ (img as any)._forceScanTs = Date.now(); }); } catch {}
+    }, 50);
   }
 
   state.input?.addEventListener('input', () => apply(state.input?.value || ''));

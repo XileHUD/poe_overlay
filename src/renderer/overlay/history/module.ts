@@ -120,25 +120,88 @@ export const historyState: HistoryState = {
 export async function updateSessionUI(): Promise<boolean> {
   try {
     const session = await (window as any).electronAPI.poeGetSession();
-    const loginBtn = document.getElementById("poeLoginBtn");
+    const loginBtn = document.getElementById("poeLoginBtn") as HTMLButtonElement | null;
+    if (!loginBtn) return !!session?.loggedIn;
+    // States:
+    // - No cookie: show Login
+    // - Cookie but not confirmed: show "Checking..." (disabled)
+    // - Confirmed: show Logout
     if (session?.loggedIn) {
-      if (loginBtn) {
-        (loginBtn as HTMLButtonElement).textContent = "Logout";
-        (loginBtn as HTMLButtonElement).title = "Logout of pathofexile.com";
-        loginBtn.classList.remove('login-state');
-        loginBtn.classList.add('logout-state');
-      }
-    } else if (loginBtn) {
-      (loginBtn as HTMLButtonElement).textContent = "Login";
-      (loginBtn as HTMLButtonElement).title = "Login to pathofexile.com";
+      loginBtn.disabled = false;
+      loginBtn.textContent = 'Logout';
+      loginBtn.title = 'Logout of pathofexile.com';
+      loginBtn.classList.remove('login-state');
+      loginBtn.classList.add('logout-state');
+      return true;
+    }
+    if (session?.cookiePresent) {
+      // Cookie present but not yet confirmed; intermediate visual
+      loginBtn.disabled = true;
+      loginBtn.textContent = 'Checking…';
+      loginBtn.title = 'Verifying session…';
       loginBtn.classList.remove('logout-state');
       loginBtn.classList.add('login-state');
+      // Schedule a recheck shortly (probe result will eventually mark loggedIn true)
+      setTimeout(()=>{ try { updateSessionUI(); } catch {} }, 2500);
+      return false;
     }
-    return !!session?.loggedIn;
+    // Default: not logged in
+    loginBtn.disabled = false;
+    loginBtn.textContent = 'Login';
+    loginBtn.title = 'Login to pathofexile.com';
+    loginBtn.classList.remove('logout-state');
+    loginBtn.classList.add('login-state');
+    return false;
   } catch {
     return false;
   }
 }
+
+// --- Login button wiring & watchdog ---
+function attachLoginButtonLogic(){
+  const btn = document.getElementById('poeLoginBtn') as HTMLButtonElement | null;
+  if (!btn || (btn as any)._loginWired) return;
+  (btn as any)._loginWired = true;
+  btn.addEventListener('click', async () => {
+    try {
+      // If currently showing Logout -> perform a simple cookie clear prompt? For now: treat as logout not implemented.
+      if (btn.classList.contains('logout-state')) {
+        // No official logout API (PoE uses server-side + cookie). Open login page so user can log out manually.
+        await (window as any).electronAPI.poeLogin();
+        setTimeout(()=>updateSessionUI(), 1500);
+        return;
+      }
+      if (btn.disabled) return; // in checking state
+      // Start auth flow.
+      btn.disabled = true;
+      btn.textContent = 'Opening…';
+      await (window as any).electronAPI.poeLogin();
+      // Give a moment then re-evaluate session
+      setTimeout(()=>updateSessionUI(), 2000);
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Login';
+    }
+  });
+  // Watchdog: if stuck in Checking… for >5s revert to Login state to allow retry
+  setInterval(()=>{
+    if (!btn) return;
+    if (btn.textContent?.startsWith('Checking') && btn.disabled) {
+      const since = (btn as any)._checkingSince || 0;
+      if (!since) { (btn as any)._checkingSince = Date.now(); return; }
+      if (Date.now() - since > 5000) {
+        (btn as any)._checkingSince = 0;
+        btn.disabled = false;
+        btn.textContent = 'Login';
+      }
+    } else {
+      (btn as any)._checkingSince = 0;
+    }
+  }, 1200);
+}
+
+// Initial attach
+setTimeout(()=>{ try { attachLoginButtonLogic(); updateSessionUI(); } catch {} }, 300);
 
 // Canonical millisecond timestamp resolver for history entries
 function canonicalTs(r: any): number {

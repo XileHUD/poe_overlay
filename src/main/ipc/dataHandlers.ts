@@ -23,6 +23,14 @@ export function registerDataIpc(deps: DataIpcDeps) {
   });
 
   ipcMain.handle('get-all-categories', async () => {
+    try {
+      const maybePromise = (modifierDatabase as any).__loadingPromise;
+      if (maybePromise && typeof maybePromise.then === 'function') {
+        // Wait (with timeout safeguard) so first open gets full list
+        const timeout = new Promise(res => setTimeout(res, 4000));
+        await Promise.race([maybePromise.catch(()=>{}), timeout]);
+      }
+    } catch {}
     return await modifierDatabase.getAllCategories();
   });
 
