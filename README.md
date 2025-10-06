@@ -8,10 +8,10 @@ Lightweight PoE2 item & modifier overlay – copy an item, see the data instantl
 
 <br />
 
-<a href="https://www.youtube.com/watch?v=115H_9t8fiA" target="_blank" rel="noopener noreferrer">
-	<img src="https://img.youtube.com/vi/115H_9t8fiA/hqdefault.jpg" alt="XileHUD Video Overview" width="720" /><br/>
-	<sub><em>Watch a short video overview (YouTube)</em></sub>
-</a>
+<a href="https://www.youtube.com/watch?v=115H_9t8fiA" target="_blank" rel="noopener noreferrer" title="Watch the XileHUD overview video on YouTube">
+	<img src="./screenshots/yt.png" alt="XileHUD Video Overview (YouTube)" width="720" />
+</a><br/>
+<sub><a href="https://www.youtube.com/watch?v=115H_9t8fiA" target="_blank" rel="noopener noreferrer"><em>Watch a short video overview on YouTube</em></a></sub>
 
 <br />
 
