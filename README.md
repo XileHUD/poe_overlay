@@ -137,6 +137,11 @@ Existing / Ongoing:
 - PoE1 Version: Complete the Path of Exile 1 adaptation.
 - And much more!: I have many other ideas in mind to continue making our lives in Wraeclast easier.
 
+Future / Exploratory:
+- Exchange Prices Integration: Optional toggleable pricing data (overlay remains fully functional offline if disabled).
+- Top Builds Browser: View popular builds for each class directly in the overlay for build inspiration.
+- Mobile Companion App: Primarily for Merchant History on-the-go; also useful for console players to browse their trade data.
+
 ---
 
 ## ❓ WIP FAQ (Work in Progress)
