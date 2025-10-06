@@ -1,0 +1,1112 @@
+:root {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #3a3a3a;
+    --bg-card: #252525;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --text-muted: #808080;
+    --border-color: #404040;
+    --accent-blue: #4a9eff;
+    --accent-green: #5cb85c;
+    --accent-orange: #f0ad4e;
+    --accent-red: #d9534f;
+}
+
+/* Control panel (single row) */
+.control-panel {
+    background: var(--bg-secondary);
+    padding: 12px 14px; /* increased vertical space */
+    border-bottom: 1px solid var(--border-color);
+    font-size: 11px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.menu-icon, .tab .menu-icon {
+    width: 14px;
+    height: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 4px;
+    flex: 0 0 auto;
+}
+.menu-icon svg { width: 14px; height: 14px; stroke: currentColor; }
+.dropdown-with-icons > div .menu-icon { margin-right: 6px; }
+
+
+/* Clean CSS: Only hide history elements when not in history view */
+body:not(.view-history) #historyContainer,
+body:not(.view-history) #historyHeader,
+body:not(.view-history) #historyHeaderMain {
+    display: none !important;
+}
+body.view-history #historyContainer {
+    display: flex !important;
+}
+body.view-history #historyHeader,
+body.view-history #historyHeaderMain {
+    display: flex !important;
+}
+body.view-history #historyActiveFilters {
+    display: initial !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* Prevent text selection when dragging history header */
+#historyHeaderMain,
+#historyTotals,
+#historyTotals * {
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+/* Enable dragging on history header (override .header * no-drag) */
+#historyHeaderMain {
+    -webkit-app-region: drag;
+    cursor: move;
+}
+
+/* Disable dragging on interactive elements within history header */
+#historyHeaderMain button,
+#historyHeaderMain .pin-btn {
+    -webkit-app-region: no-drag;
+    cursor: pointer;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 12px;  /* Reduced from 13px */
+    line-height: 1.3;  /* Reduced from 1.4 */
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+    width: 100vw;  /* Fill window width */
+    height: 100vh; /* Fill window height */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Domain toggle buttons uniform sizing */
+.domain-toggle {
+    padding: 2px 0;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    color: var(--text-secondary);
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    white-space: nowrap;
+    width: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    background: var(--bg-secondary);
+    padding: 6px 10px;  /* Reduced from 8px 12px */
+    border-bottom: 1px solid var(--border-color);
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-app-region: drag;  /* Enable native dragging */
+}
+
+.header * {
+    -webkit-app-region: no-drag;  /* Prevent child elements from being draggable */
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.item-type {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.close-btn {
+    background: var(--accent-red);
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto; /* push to right */
+}
+.item-info { flex: 0 1 auto; }
+
+.pin-btn {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.pin-btn.active {
+    background: var(--accent-blue);
+    color: #fff;
+    border-color: var(--accent-blue);
+}
+
+.content {
+    flex: 1 1 auto;
+    min-height: 0; /* for proper flexbox scrolling */
+    overflow-y: auto;
+    padding: 8px;  /* Reduced from 12px */
+}
+
+/* Ensure History layout flex children can actually shrink and scroll */
+#historyContainer { 
+  min-height: 0 !important; 
+  display: flex !important; 
+  flex-direction: column !important;
+}
+#historyRight { 
+  min-height: 0 !important; 
+  overflow: hidden; 
+}
+#historyList { 
+    min-height: 0 !important; 
+    overflow-y: auto !important; 
+    flex:1 1 auto !important;
+    max-height: none !important; /* allow to expand with window */
+}
+#historyDetail { 
+    min-height: 0 !important; 
+    overflow: hidden !important; /* prevent internal scrollbar; content must fit */
+    display:flex;
+}
+
+/* Force scrollbar visibility on history list */
+#historyList::-webkit-scrollbar {
+  width: 8px !important;
+  display: block !important;
+}
+#historyList::-webkit-scrollbar-track {
+  background: var(--bg-secondary) !important;
+}
+#historyList::-webkit-scrollbar-thumb {
+  background: var(--border-color) !important;
+  border-radius: 4px;
+}
+#historyList::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted) !important;
+}
+
+/* Merchant history filter bar spacing */
+#historyHeaderRow2 { 
+    margin-top: 4px; 
+    margin-bottom: 6px; 
+}
+#historyHeaderRow2 > * { 
+    margin-top: 2px; 
+    margin-bottom: 2px; 
+}
+
+    /* Ensure dynamically inserted crafting panels stack correctly */
+    #craftingPanel,
+    #annointsPanel {
+        position: relative;
+        z-index: 10;
+    }
+
+.no-mods {
+    text-align: center;
+    padding: 20px;  /* Reduced from 40px */
+    color: var(--text-muted);
+}
+
+/* Center all non-modifier pages content while keeping scrollbar at the window edge */
+/* Keep the scroll container (#craftingPanel, #annointsPanel) full width and center its direct children */
+#craftingPanel > *,
+#annointsPanel > * {
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Verifier-style domain layout */
+.domain-container {
+    margin-bottom: 10px;  /* Reduced from 16px */
+}
+
+.domain-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;  /* Reduced from 12px */
+}
+
+.domain-sections.single {
+    grid-template-columns: 1fr;
+}
+
+.section-group {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section-header {
+    background: var(--bg-secondary);
+    padding: 8px 12px;  /* Reduced from 12px 16px */
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.15s;
+}
+
+.section-header:hover {
+    background: var(--bg-tertiary);
+}
+
+.section-title {
+    font-weight: 600;
+    font-size: 13px;  /* Reduced from 14px */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.collapse-arrow {
+    font-size: 12px;
+    transition: transform 0.2s;
+}
+
+.section-count {
+    background: var(--accent-blue);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.section-content {
+    padding: 12px;
+}
+
+.mod-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mod-item {
+    padding: 6px 10px;  /* Further reduced padding */
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;  /* Reduced border radius */
+    transition: all 0.15s;
+    display: block; /* header + tiers as vertical stack */
+}
+
+.mod-item:hover {
+    border-color: var(--accent-blue);
+    background: var(--bg-secondary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(74, 158, 255, 0.15);
+}
+
+.mod-text {
+    font-size: 13px;
+    line-height: 1.3;
+    cursor: pointer;
+    /* Removed flex so <br> works and no gaps between highlighted tokens */
+    display: block;
+    white-space: normal;
+}
+
+.expand-icon {
+    /* Repositioned absolutely so we can keep block layout for line breaks */
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    color: var(--text-muted);
+    font-size: 12px;
+    pointer-events: none; /* clicks handled by parent */
+}
+
+/* Highlight tokens (numbers, ranges, %, brackets) */
+.mod-value {
+    color: var(--accent-blue) !important;
+}
+
+.mod-meta {
+    display: flex;
+    gap: 4px;  /* Reduced gap */
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+
+.mod-text {
+    /* second definition keeps sizing */
+    flex: 1;
+    font-size: 12px;
+    line-height: 1.3;
+    position: relative; /* anchor expand icon */
+    padding-right: 14px; /* room for arrow */
+}
+
+.mod-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.mod-badge {
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.badge-weight {
+    background: var(--accent-red) !important;  /* Red for weights */
+    color: white;
+}
+
+/* push weight all the way to the right on mod rows */
+.mod-meta .spacer { margin-left: auto; }
+
+.badge-tier {
+    background: var(--accent-green) !important;  /* Green for tiers */
+    color: white;
+}
+
+.badge-ilvl {
+    background: var(--text-muted) !important;  /* Grey for ilvl */
+    color: white;
+}
+
+.tag {
+    padding: 1px 4px;
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    font-size: 9px;
+    color: white !important;  /* Force white text for readability */
+    font-weight: 600;  /* Bold for better contrast */
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.8);  /* Shadow for better readability */
+    margin-left: 2px;
+}
+
+/* Tag color coding like in verifier */
+.tag:nth-child(1) { background: #8B4513; } /* Brown */
+.tag:nth-child(2) { background: #4682B4; } /* Steel Blue */
+.tag:nth-child(3) { background: #228B22; } /* Forest Green */
+.tag:nth-child(4) { background: #DC143C; } /* Crimson */
+.tag:nth-child(5) { background: #9400D3; } /* Violet */
+.tag:nth-child(6) { background: #FF8C00; } /* Dark Orange */
+.tag:nth-child(7) { background: #2F4F4F; } /* Dark Slate Gray */
+.tag:nth-child(8) { background: #8B008B; } /* Dark Magenta */
+
+/* Specific tag colors for common tags */
+.tag[data-tag="defences"] { background: #4682B4 !important; }
+.tag[data-tag="life"] { background: #DC143C !important; }
+.tag[data-tag="mana"] { background: #4169E1 !important; }
+.tag[data-tag="damage"] { background: #FF4500 !important; }
+.tag[data-tag="attack"] { background: #B22222 !important; }
+.tag[data-tag="speed"] { background: #32CD32 !important; }
+.tag[data-tag="resistance"] { background: #9400D3 !important; }
+.tag[data-tag="elemental"] { background: #3fa9f5 !important; color: #fff !important; }  /* Softer blue, white text */
+.tag[data-tag="physical"] { background: #8B4513 !important; }
+.tag[data-tag="chaos"] { background: #800080 !important; }
+.tag[data-tag="fire"] { background: #FF4500 !important; }
+.tag[data-tag="cold"] { background: #4682B4 !important; }
+.tag[data-tag="lightning"] { background: #7b7bff !important; color: #fff !important; }  /* Indigo for lightning */
+.tag[data-tag="attribute"] { background: #20B2AA !important; }
+.tag[data-tag="caster"] { background: #4169E1 !important; }
+.tag[data-tag="critical"] { background: #FF1493 !important; }
+
+/* Category tags - item type indicators */
+.category-tag {
+    background: #FF6B35 !important; /* Distinctive orange for item types */
+    color: #fff !important;
+    font-weight: bold !important;
+    border: 1px solid #E55A2B !important;
+    margin-right: 6px !important;
+}
+
+/* Tier list styling - matching verifier exactly */
+.tier-list {
+    margin-top: 12px;
+    padding-left: 20px;
+    border-left: 2px solid var(--border-color);
+}
+
+.tier-item {
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+    border-left: 3px solid var(--accent-blue);
+}
+
+.tier-item:last-child {
+    margin-bottom: 0;
+}
+
+.tier-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.tier-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 13px;
+}
+
+.tier-badges {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.tier-text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+    font-weight: 600; /* bolder for readability */
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.tier-badge {
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.tier-weight {
+    background: var(--accent-red);
+    color: white;
+}
+
+.tier-number {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.tier-ilvl {
+    background: var(--accent-purple);
+    color: white;
+}
+
+.tier-item {
+    margin-bottom: 6px;
+    padding: 4px 8px;
+    background: var(--bg-secondary);
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+}
+
+.tier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+.tier-name {
+    font-weight: 500;
+    font-size: 11px;
+}
+
+.tier-meta {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.tier-text {
+    font-size: 10px;
+    color: var(--text-secondary);
+    line-height: 1.3;
+}
+
+.mod-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.tier-item {
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.tier-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.tier-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.tier-weight {
+    background: var(--accent-red);
+    color: white;
+}
+
+.tier-ilvl {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.tier-number {
+    background: var(--accent-green);
+    color: white;
+}
+
+.tier-text {
+    color: var(--text-primary);
+    font-size: 11px;
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+.total-row {
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-text {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.total-meta {
+    display: flex;
+    gap: 6px;
+}
+
+.total-summary-tag {
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 600;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+}
+
+/* color the total weight to match red weight tags */
+.total-summary-tag.weight {
+    background: var(--accent-red);
+    color: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* (Removed older duplicate .control-panel definition) */
+
+.control-row {
+    display: flex;
+    gap: 10px;  /* Reduced from 12px */
+    align-items: center;
+    margin-bottom: 4px;  /* Reduced from 6px */
+}
+
+.control-row:last-child {
+    margin-bottom: 0;
+}
+
+.control-group {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.control-group label {
+    color: var(--text-secondary);
+    font-size: 11px;
+}
+
+.attribute-selectors {
+    display: flex;
+    gap: 4px;
+}
+
+.attribute-selector {
+    padding: 4px 8px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 500;
+    transition: all 0.15s;
+}
+
+.attribute-selector:hover {
+    background: var(--bg-card);
+    border-color: var(--accent-blue);
+}
+
+.attribute-selector.active {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: white;
+}
+
+#search-input {
+    padding: 4px 8px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 11px;
+    width: 180px;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+}
+
+#categorySelect {
+    padding: 4px 8px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 11px;
+    width: 200px;
+}
+
+/* Remove earlier grid approach to prevent unintended wrapping when child count changes */
+.cp-left { display:flex; align-items:center; gap:8px; }
+.cp-label { font-size: 11px; color: var(--text-secondary); }
+.cp-select { width: 180px; padding: 3px 6px; font-size: 11px; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-primary); }
+.cp-search { width: 100%; min-width: 140px; padding: 4px 8px; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-primary); font-size: 11px; }
+.cp-filters { display:flex; align-items:center; gap: 6px; }
+.cp-filters-label { font-size: 10px; color: var(--text-secondary); }
+.cp-clear { padding: 4px 12px; font-size: 11px; line-height:1; position:relative; top:0; background: var(--accent-red); border:1px solid var(--accent-red); color:#fff; }
+/* Ensure consistent height across controls */
+.cp-select, .cp-search, .domain-toggle, .cp-clear, #ilvl-min, #ilvl-max { height:24px; }
+
+/* (Old domain-toggle definition removed; unified version at top) */
+
+.domain-toggle:hover {
+    background: var(--bg-secondary);
+    border-color: var(--accent-blue);
+}
+
+.domain-toggle.active {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: white;
+}
+
+/* Add some global spacing to control panels across all views */
+#controlPanel {
+    margin: 0 0 2px 0 !important; /* small bottom gap before chips */
+    padding: 16px 16px !important; /* back to the good padding that worked */
+}
+
+/* Add spacing to content areas */
+#content {
+    padding: 16px 16px 12px 16px !important;
+}
+
+#craftingPanel {
+    padding: 16px 16px 12px 16px !important;
+}
+
+.attribute-selectors {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.attribute-btn {
+    padding: 3px 8px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    color: var(--text-secondary);
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.attribute-btn:hover {
+    background: var(--bg-secondary);
+    border-color: var(--accent-blue);
+}
+
+.attribute-btn.active {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: white;
+}
+
+.filter-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.filter-tag {
+    padding: 2px 6px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.filter-tag:hover {
+    border-color: var(--accent-blue);
+}
+
+.filter-tag.active {
+    /* Active filter tags show tag color mapping by adding class 'tag' dynamically */
+    border-color: var(--accent-blue);
+}
+.tag[data-tag="lightning"] { background: #7b7bff !important; color: #fff !important; }  /* Indigo for lightning */
+
+/* Simple neutral style for source category chips */
+.tag.source-tag { background: var(--bg-tertiary) !important; }
+
+/* ===== Merchant history polish ===== */
+.history-row {
+    padding: 8px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+.history-row:hover { background: var(--bg-secondary); }
+.history-row.active {
+    background: var(--bg-secondary);
+    border-left: 2px solid var(--accent-blue);
+}
+.history-row .row-top { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.history-row .row-title { font-weight:600; color:var(--text-primary); overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+.history-row .row-right { display:flex; align-items:center; gap:8px; }
+.history-row .time-text { color:var(--text-muted); font-size:11px; }
+.price-badge {
+    display:inline-flex; align-items:center; gap:6px;
+    padding: 2px 8px; border-radius: 999px;
+    background: var(--bg-tertiary); border: 1px solid var(--border-color);
+    font-size: 11px; font-weight: 700; color: var(--text-primary);
+    line-height: 1; white-space:nowrap;
+}
+.price-badge .amount { font-weight:800; }
+.price-badge.large { font-size:12px; padding:4px 10px; }
+/* Currency accents */
+/* Updated colors: Exalt blue, Divine gold, Annul purple */
+.currency-exalted { background:#1f375a; color:#d6e8ff; border-color:#3f6aa1; }
+.currency-divine { background:#d4af37; color:#1a1a1a; border-color:#b8921d; }
+.currency-annul  { background:#5a2a84; color:#f0e6ff; border-color:#7b40b3; }
+.currency-chaos  { background:#24331b; color:#cfe9b8; border-color:#4a6a35; }
+.currency-altar  { background:#1f2d3f; color:#b6d5ff; border-color:#3b5f8f; }
+/* Vivid in detail card (match same hues) */
+.history-detail-card .currency-exalted { background:#2b4f80; color:#eaf4ff; border-color:#2b4f80; }
+.history-detail-card .currency-divine  { background:#ffd24d; color:#1a1a1a; border-color:#e0b939; }
+.history-detail-card .currency-annul   { background:#7b40b3; color:#fff; border-color:#7b40b3; }
+
+/* Quality badge (merchant history item detail) */
+.history-detail-card .quality-badge {
+        display:inline-block;
+        padding:2px 6px;
+        border-radius:6px;
+        background:linear-gradient(135deg,#2f3b46,#1f252b);
+        border:1px solid #3d4a55;
+        font-size:11px;
+        font-weight:600;
+        letter-spacing:0.5px;
+        color:#9fd8ff;
+    margin-left:6px;
+}
+@media (prefers-color-scheme: light) {
+    .history-detail-card .quality-badge { background:#e0ecf5; border-color:#b5c7d4; color:#225066; }
+}
+
+.history-detail-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+.history-detail-card.rarity-normal { border-color: var(--border-color); }
+.history-detail-card.rarity-magic { border-color:#335d9b; box-shadow:0 0 0 1px #335d9b88, 0 4px 14px rgba(0,0,0,0.25); }
+.history-detail-card.rarity-rare { border-color:#c9a000; box-shadow:0 0 0 1px #c9a00088, 0 4px 14px rgba(0,0,0,0.25); }
+.history-detail-card.rarity-unique { border-color:#ad4900; box-shadow:0 0 0 1px #ad490088, 0 4px 14px rgba(0,0,0,0.25); }
+.rarity-label { font-weight:600; }
+.rarity-label.rarity-magic { color:#6ba8ff; }
+.rarity-label.rarity-rare { color:#ffdf6b; }
+.rarity-label.rarity-unique { color:#ff9436; }
+.implicit-mods .implicit { color:#7fb5ff; }
+.mod-section { margin-top:8px; }
+.mod-section-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; opacity:.8; margin-bottom:4px; }
+.history-detail-card .card-header { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px; }
+.history-detail-card .card-title { font-weight:700; font-size:14px; }
+.history-detail-card .card-sub { color:var(--text-secondary); }
+/* Detail card fills its container so image + mods share vertical space without forcing scroll */
+.history-detail-card { display:flex; flex-direction:column; max-height:100%; }
+.history-detail-card .grid { display:grid; grid-template-columns: 128px 1fr; gap:12px; align-items:start; max-width:100%; flex:1 1 auto; min-height:0; }
+/* Constrain icon: fit within remaining vertical space without forcing parent scroll */
+.history-item-icon { width:128px; height:auto; max-height:100%; border:1px solid var(--border-color); border-radius:6px; background:#111; object-fit:contain; display:block; margin:0 auto; transition:height .15s ease; }
+    body.view-history #historyActiveFilters { padding:6px 0 8px 0; }
+    /* Ensure active filters always appear on their own line below the control row */
+    #historyActiveFilters { width:100%; flex: 0 0 auto; display:flex; flex-wrap:wrap; gap:6px; }
+    body.view-history #historyHeader { padding-top:4px; }
+.mod-lines { margin-top:6px; display:flex; flex-direction:column; gap:0; background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)); border:1px solid var(--border-color); border-radius:6px; overflow:hidden; }
+.mod-section + .mod-section .mod-lines { margin-top:4px; }
+.mod-lines.explicit-mods { border-color:rgba(200,165,60,0.25); }
+.mod-lines.implicit-mods { border-color:rgba(110,160,255,0.25); }
+.mod-line { position:relative; padding:6px 10px 6px 12px; color: var(--text-primary); font-size:12px; line-height:1.25; }
+.mod-line:nth-child(odd) { background:rgba(255,255,255,0.015); }
+.mod-line:nth-child(even) { background:rgba(0,0,0,0.12); }
+.implicit-mods .mod-line.implicit { background:rgba(40,75,120,0.18); }
+.mod-line + .mod-line { border-top:1px solid rgba(255,255,255,0.04); }
+.mod-line::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:transparent; }
+.implicit-mods .mod-line::before { background:linear-gradient(180deg,#4d8dff,#2c5fa8); }
+.explicit-mods .mod-line::before { background:linear-gradient(180deg,#d4af37,#8f6a00); }
+.explicit-mods .mod-line.fractured { background:rgba(210,190,140,0.18); }
+.explicit-mods .mod-line.fractured::before { background:linear-gradient(180deg,#e6d5a8,#b79b55); }
+.explicit-mods .mod-line.desecrated { background:rgba(60,140,60,0.22); }
+.explicit-mods .mod-line.desecrated::before { background:linear-gradient(180deg,#7fd87f,#2f7f2f); }
+.mod-line[data-field="implicit"] { font-weight:600; }
+.mod-line:hover { background:rgba(255,255,255,0.07); }
+.mod-section-title { display:flex; align-items:center; gap:6px; }
+.mod-section-title::after { content:''; flex:1 1 auto; height:1px; background:linear-gradient(90deg,rgba(255,255,255,0.15),rgba(255,255,255,0)); }
+.mod-tier { display:inline-block; margin-left:6px; font-size:10px; padding:2px 6px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); font-weight:600; letter-spacing:.5px; color:#ffdf6b; }
+.explicit-mods .mod-tier { background:rgba(212,175,55,0.15); border-color:rgba(212,175,55,0.4); color:#ffd769; }
+.implicit-mods .mod-tier { background:rgba(90,140,255,0.15); border-color:rgba(90,140,255,0.4); color:#8ec2ff; }
+.badge-corrupted { display:inline-block; padding:1px 6px; border-radius:999px; font-size:10px; background:#7a2b2b; color:#ffdede; border:1px solid #a33; margin-left:6px; }
+
+/* Sockets & Runes */
+.sockets-row { display:flex; align-items:center; gap:4px; flex-wrap:wrap; }
+.socket-group { display:flex; gap:2px; }
+.socket { width:26px; height:26px; border:1px solid rgba(255,255,255,0.15); border-radius:4px; background:#111; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+.socket.rune { border-color:#a88a3a; background:#1e1a10; }
+.socket.empty { opacity:0.25; }
+.socket img { width:100%; height:100%; object-fit:cover; display:block; }
+.socket-link { width:14px; height:2px; background:linear-gradient(90deg,rgba(255,255,255,0.5),rgba(255,255,255,0.05)); align-self:center; border-radius:2px; }
+.rune-mods { margin-top:6px; display:flex; flex-direction:column; gap:2px; }
+.rune-mod { font-size:11px; color:#c9d4ff; background:rgba(110,160,255,0.08); padding:3px 6px; border:1px solid rgba(110,160,255,0.25); border-radius:4px; }
+
+/* Explicit tier stacking layout */
+/* Inline tiers alignment: ensure all mod-lines same min-height so tier badges line up visually */
+.explicit-mods .mod-line, .implicit-mods .mod-line { display:flex; align-items:center; gap:6px; }
+.explicit-mods .mod-line .mod-text { flex:1 1 auto; }
+
+.clear-filters {
+    padding: 4px 8px;
+    background: var(--accent-red);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+/* Crafting mode: hide modifier filtering controls but keep header actions */
+body.crafting-mode #controlPanel { display: none !important; }
+
+.logbook-level { display:inline-flex; align-items:center; padding:2px 6px; margin-right:6px; font-size:11px; font-weight:600; background:#262d33; border:1px solid #555; border-radius:999px; color:#ffcf6e; line-height:1; }
+.logbook-level span.label { font-weight:400; color:#aaa; margin-left:4px; }
+.mod-item.strongbox-unique .mod-text { white-space:normal; }
+/* Chart currency selector */
+.chart-cur { cursor:pointer; user-select:none; opacity:.7; display:inline-flex; align-items:center; gap:6px; padding:2px 6px; border:1px solid transparent; border-radius:999px; }
+.chart-cur .sw { width:10px; height:2px; display:inline-block; }
+.chart-cur.active { opacity:1; border-color: var(--border-color); background: var(--bg-secondary); }
+
+/* Quest Passives page */
+.qp-topbar{display:flex; gap:6px; align-items:center; margin-bottom:8px; flex-wrap:wrap}
+.qp-search{flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px; min-width:200px}
+.qp-chip{cursor:pointer; user-select:none; padding:3px 8px; font-size:11px; border-radius:999px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary)}
+.qp-chip.active{background:var(--accent-blue); border-color:var(--accent-blue); color:#fff}
+.qp-section{background:var(--bg-card); border:1px solid var(--border-color); border-radius:8px; padding:10px}
+.qp-title{display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:6px}
+.qp-title h3{margin:0; font-size:14px; white-space:nowrap}
+.qp-summary{color:var(--text-secondary); font-size:12px}
+.qp-list{display:flex; flex-direction:column; gap:8px}
+.qp-item{background:var(--bg-primary); border:1px solid var(--border-color); border-radius:6px; padding:8px; display:flex; gap:8px; align-items:flex-start}
+.qp-item.checked{opacity:.55; filter:grayscale(0.2)}
+.qp-check{flex:0 0 18px; height:18px}
+.qp-body{flex:1 1 auto}
+.qp-line{font-size:12px; line-height:1.35}
+.qp-note{font-size:11px; color:var(--text-secondary)}
+.qp-tags{display:flex; gap:4px; flex-wrap:wrap; margin-top:6px}
+.qp-tag{padding:2px 6px; border-radius:999px; font-size:10px; border:1px solid var(--border-color)}
+.qp-tag.life{background:#5a2b2b; color:#ffdede; border-color:#7a3a3a}
+.qp-tag.mana{background:#243c63; color:#d6e8ff; border-color:#3f6aa1}
+.qp-tag.resistance{background:#3b2f6b; color:#e8e0ff; border-color:#5a4991}
+.qp-tag.spirit{background:#2f4f4f; color:#e6ffff; border-color:#406565}
+.qp-tag.gem{background:#164a3a; color:#c8ffe6; border-color:#2b7a63}
+.qp-tag.passive{background:#3a2f13; color:#ffe9ad; border-color:#6b5619}
+.qp-tag.relic{background:#5a4a2a; color:#fff0d6; border-color:#7a6a4a}
+.qp-tag.charm{background:#3a1f3f; color:#ffe1ff; border-color:#6a3f7a}
+.qp-tag.flask{background:#194a4a; color:#c8ffff; border-color:#2a6a6a}
+.qp-tag.dexterity{background:#1f3f1f; color:#ccffcc; border-color:#2f6a2f}
+.qp-tag.intelligence{background:#1f1f3f; color:#d6d6ff; border-color:#3a3a7a}
+.qp-tag.movement{background:#163a1f; color:#c9ffd6; border-color:#2e6a3f}
+.qp-tag.strength{background:#3f1f1f; color:#ffd6d6; border-color:#7a3a3a}
+.qp-pill{display:inline-flex; align-items:center; gap:6px; padding:2px 8px; border-radius:999px; background:var(--bg-tertiary); border:1px solid var(--border-color); font-size:11px;}
+
+/* ================= Responsive Enhancements (safe + incremental) ================= */
+/* Breakpoint 1: Slightly constrain list width sooner for medium viewports */
+@media (max-width: 1100px) {
+    #historyList { flex: 0 0 50% !important; }
+}
+
+/* Breakpoint 2: Stack list and detail vertically under narrow width */
+@media (max-width: 860px) {
+    #historyContainer { flex-direction: column !important; }
+    #historyList { flex: 0 0 auto !important; max-height: 38vh; border-right:none !important; border-bottom:1px solid var(--border-color); }
+    #historyRight { flex: 1 1 auto; }
+    #historyChartWrap { min-height: 130px; }
+}
+
+/* Breakpoint 3: Single-column detail card (icon above mods) */
+@media (max-width: 720px) {
+    .history-detail-card .grid { grid-template-columns: 1fr !important; }
+    .history-item-icon { margin: 0 auto 8px auto; }
+}
+
+/* Icon becomes responsive (between 80px and 128px, scaling up to 20vw) */
+/* Responsive icon clamp with updated max-height */
+/* Removed width clamp override to let JS scaling control height; keep responsive width via media queries if needed */
+/* Prevent inner scrollbars in 60/40 layout; allow page scroll only on list side */
+#historyDetail { scrollbar-width:none; }
+#historyDetail::-webkit-scrollbar { width:0; height:0; }
+.history-detail-card { overflow:hidden; }
+.history-detail-chart-grid { overflow:hidden; }
+
+/* Detail + Chart 60/40 split (falls back to vertical on smaller screens via existing breakpoints) */
+.history-detail-chart-grid { width:100%; }
+.history-detail-chart-grid #historyDetail { scrollbar-gutter:stable; }
+.history-detail-chart-grid #historyChartWrap { scrollbar-gutter:stable; }
+@media (max-width:1180px) {
+    .history-detail-chart-grid { flex-direction:column; }
+    .history-detail-chart-grid #historyDetail { flex:0 0 auto; max-width:100%!important; }
+    .history-detail-chart-grid #historyChartWrap { flex:0 0 auto; max-width:100%!important; border-left:none!important; border-top:1px solid var(--border-color); }
+}
+
+/* Filter row prioritization: reorder essentials first on wrap */
+/* Assign classes in DOM (JS already gives ids; use attribute selectors fallback) */
+#historyHeaderRow2 { align-items:center; }
+#historyHeaderRow2 > * { flex: 0 0 auto; }
+#historyHeaderRow2 .fgrp { display:flex; align-items:center; gap:4px; background:var(--bg-tertiary); padding:2px 6px; border:1px solid var(--border-color); border-radius:6px; }
+#historyHeaderRow2 .fgrp select,#historyHeaderRow2 .fgrp input { background:transparent !important; border:none !important; padding:2px 2px !important; box-shadow:none; }
+#historyHeaderRow2 .fgrp label { margin:0; }
+/* Order groups */
+#historyHeaderRow2 .grp-currency { order:1; }
+#historyHeaderRow2 .grp-min { order:2; }
+#historyHeaderRow2 .grp-time { order:3; }
+#historyHeaderRow2 .grp-sort { order:4; }
+#historyHeaderRow2 .grp-rarity { order:5; }
+#historyHeaderRow2 .grp-type { order:6; }
+/* Place search last (after other filters) */
+#historyHeaderRow2 .grp-search { order:7; }
+
+/* Chart minimum height enforcement + graceful shrink */
+#historyChartWrap { min-height: 140px; }
+@media (max-width: 900px) { #historyChartWrap { min-height: 130px; } }
+@media (max-width: 720px) { #historyChartWrap { min-height: 120px; } }
+
+/* Root font scaling for condensed width (small reductions) */
+@media (max-width: 900px) { html { font-size: 15px; } }
+@media (max-width: 780px) { html { font-size: 14.5px; } }
+@media (max-width: 660px) { html { font-size: 14px; } }
+
+/* Ensure mod lines stay readable when font shrinks */
+@media (max-width: 660px) { .mod-line { font-size:11px; } }
+
+/* Prevent overly tall list area when stacked; allow scroll */
+@media (max-width: 860px) { #historyList { overflow-y:auto; } }
+
+/* Minor tightening inside card on very small widths */
+@media (max-width: 520px) { .history-detail-card { padding:10px; } }
+
+/* Allow active filters row to wrap nicely below header when stacked */
+@media (max-width: 860px) { #historyActiveFilters { order: 10; width:100%; } }
+
+/* Safety: Avoid overflow for long item titles on narrow widths */
+@media (max-width: 720px) { .history-detail-card .card-title { font-size:13px; } }
+
+/* Keep currency badges compact on narrow screens */
+@media (max-width: 660px) { .price-badge { font-size:10px; padding:2px 6px; } }
+
+/* End responsive enhancements */

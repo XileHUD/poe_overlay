@@ -1,0 +1,38 @@
+# Node/Electron build artifacts
+node_modules/
+dist/
+dist_electron/
+*.log
+
+# Editor/OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local data/config (user)
+/config/
+**/config/
+# User data (Electron stores under %APPDATA%/XileHUD/overlay) – not in repo
+# Nothing to ignore here; just a note.
+
+# Cache and raw scraped HTML outside overlay package are not part of this repo
+../../cache/
+../../cache/**
+../../data/**
+
+# Secrets
+.env
+.env.*
+
+# Build temp
+*.tmp
+*.temp
+
+# Local reference snapshots (keep only locally, never commit)
+OLD_WORKING_module.ts
+.commit_placeholder
+
+# Private / local-only helper scripts (keep local)
+scripts/
+CHANGELOG.md

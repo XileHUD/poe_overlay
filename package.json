@@ -1,0 +1,101 @@
+{
+  "name": "@xilehud/overlay",
+  "version": "0.1.0",
+  "description": "XileHUD",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:main\" \"npm run dev:renderer\"",
+    "dev:main": "tsx watch src/main/main.ts",
+    "dev:renderer": "vite",
+    "build": "npm run build:main && npm run build:renderer",
+    "build:main": "tsc",
+    "build:renderer": "vite build",
+    "download-images": "tsx scripts/downloadImages.ts",
+    "typecheck": "tsc --noEmit",
+    "start": "electron dist/main/main.js",
+    "pack": "electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "dist:unsigned": "cross-env WIN_CODESIGN=skip npm run build && electron-builder",
+    "publish:github": "npm run build && electron-builder --publish always"
+  },
+  "keywords": ["poe2", "overlay", "modifiers", "electron"],
+  "author": "XileHUD",
+  "license": "GPL-3.0-only",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@vitejs/plugin-vue": "^4.6.2",
+    "concurrently": "^8.0.0",
+    "electron": "28.3.0",
+    "electron-builder": "23.6.0",
+    "cross-env": "^7.0.3",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0",
+    "vue": "^3.0.0",
+    "vue-tsc": "^3.0.7"
+  },
+  "dependencies": {
+    "clipboardy": "^4.0.0",
+    "electron-forge": "^5.2.4",
+    "electron-updater": "^6.3.5"
+  },
+  "build": {
+    "appId": "com.xilehud.overlay",
+    "productName": "XileHUD",
+    "copyright": "Copyright © 2025 XileHUD",
+    "directories": { 
+      "output": "dist_electron",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**",
+      "xile512.ico"
+    ],
+    "extraResources": [
+      {
+        "from": "../../data/poe2",
+        "to": "data/poe2",
+        "filter": ["**/*.json"]
+      },
+      {
+        "from": "bundled-images",
+        "to": "bundled-images",
+        "filter": ["**/*"]
+      }
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "XileHUD",
+        "repo": "poe_overlay",
+        "private": false
+      }
+    ],
+    "win": {
+      "icon": "xile512.ico",
+      "artifactName": "XileHUD-Setup-${version}.${ext}",
+      "target": [
+        { 
+          "target": "nsis", 
+          "arch": ["x64"] 
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowElevation": true,
+      "installerIcon": "xile512.ico",
+      "uninstallerIcon": "xile512.ico",
+      "installerHeaderIcon": "xile512.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "XileHUD",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "displayLanguageSelector": false,
+      "include": "build/installer.nsh",
+      "warningsAsErrors": false
+    }
+  }
+}
