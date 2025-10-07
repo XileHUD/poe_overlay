@@ -23,19 +23,6 @@ export class PoeSessionHelper {
   }
 
   async fetchHistory(league: string): Promise<PoeHistoryResponse> {
-    // Check rate limit BEFORE making request
-    const budget = rateLimiter.canRequest();
-    if (!budget.canRequest) {
-      console.warn('Rate limit check failed:', budget.reason);
-      return { 
-        ok: false, 
-        status: 429, 
-        error: budget.reason || 'Rate limited',
-        rateLimited: true,
-        retryAfter: budget.retryAfter
-      };
-    }
-
     const url = `https://www.pathofexile.com/api/trade2/history/${encodeURIComponent(league)}`;
     try {
       const { statusCode, body, headers } = await httpGetRaw(url, {
@@ -50,6 +37,19 @@ export class PoeSessionHelper {
       }
       if (headers['x-rate-limit-account-state']) {
         rateLimiter.updateStateFromHeader(headers['x-rate-limit-account-state']);
+      }
+
+      // After updating state, check if all buckets exhausted (rare edge: server returned exhausted state w/out 429)
+      const postBudget = rateLimiter.canRequest();
+      if (!postBudget.canRequest && statusCode !== 200 && statusCode !== 429) {
+        return {
+          ok: false,
+          status: 429,
+          error: postBudget.reason || 'Rate limited',
+          rateLimited: true,
+          retryAfter: postBudget.retryAfter,
+          headers
+        };
       }
 
       if (statusCode === 200) {

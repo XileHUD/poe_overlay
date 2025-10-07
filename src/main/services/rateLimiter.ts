@@ -75,8 +75,13 @@ export class RateLimiter {
   updateStateFromHeader(header: string): void {
     try {
       const parts = header.split(',').map(s => s.trim());
-      this.states = parts.map(part => {
-        const [remaining, window, reset] = part.split(':').map(Number);
+      this.states = parts.map((part, idx) => {
+        // PoE header format is actually: used:window:reset
+        // We convert to remaining = maxRequests - used for internal logic.
+        const [used, window, reset] = part.split(':').map(Number);
+        const rule = this.rules[idx];
+        const max = rule ? rule.maxRequests : 0;
+        const remaining = Math.max(0, max - (isNaN(used) ? 0 : used));
         return { remaining, windowSeconds: window, resetSeconds: reset };
       });
     } catch (e) {
@@ -122,44 +127,22 @@ export class RateLimiter {
       };
     }
 
-    // Check each window with safety margin
-    for (let i = 0; i < this.rules.length; i++) {
-      const rule = this.rules[i];
-      const state = this.states[i];
-      
-      // Local tracking: count requests in this window
-      const windowStart = now - (rule.windowSeconds * 1000);
-      const requestsInWindow = this.requestHistory.filter(t => t >= windowStart).length;
-      
-      // Apply safety margin (use 80% of limit)
-      const safeLimit = Math.floor(rule.maxRequests * this.safetyMargin);
-      
-      // Check local tracking
-      if (requestsInWindow >= safeLimit) {
-        const oldestInWindow = this.requestHistory.find(t => t >= windowStart);
-        const nextSlot = oldestInWindow ? oldestInWindow + (rule.windowSeconds * 1000) : now + (rule.windowSeconds * 1000);
-        const waitSeconds = Math.ceil((nextSlot - now) / 1000);
-        
+    // Simplified logic: allow request as long as ANY bucket still has remaining > 0.
+    // Only block when every known bucket has 0 remaining.
+    if (this.states.length > 0) {
+      const anyRemaining = this.states.some(s => s.remaining > 0);
+      if (!anyRemaining) {
+        // All buckets exhausted – compute earliest reset
+        const resetSecs = this.states
+          .map(s => s.resetSeconds || 0)
+          .filter(x => x > 0);
+        const minReset = resetSecs.length ? Math.min(...resetSecs) : 60; // fallback 60s
         return {
           canRequest: false,
-          reason: `Local budget exhausted for ${rule.windowSeconds}s window (${requestsInWindow}/${safeLimit})`,
-          retryAfter: waitSeconds,
-          nextSlot
+            reason: `All rate limit buckets exhausted – wait ${minReset}s`,
+            retryAfter: minReset,
+            nextSlot: now + (minReset * 1000)
         };
-      }
-
-      // Check server-provided state (if available)
-      if (state) {
-        const serverSafeLimit = Math.floor(rule.maxRequests * this.safetyMargin);
-        if (state.remaining < (rule.maxRequests - serverSafeLimit)) {
-          const nextSlot = now + (state.resetSeconds * 1000);
-          return {
-            canRequest: false,
-            reason: `Server budget low for ${rule.windowSeconds}s window (${state.remaining} remaining)`,
-            retryAfter: state.resetSeconds,
-            nextSlot
-          };
-        }
       }
     }
 

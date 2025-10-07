@@ -143,7 +143,19 @@ export function onLeaveView(): void {
           );
         });
       });
-      updateSessionUI(); 
+      // If already logged in on startup, auto-start refresh loop
+      (async () => {
+        const loggedIn = await updateSessionUI();
+        if (loggedIn) {
+          console.log('[Startup] Session already logged in – starting auto-refresh system');
+          autoRefreshManager.startAutoRefresh(async () => {
+            await refreshHistory(
+              (renderDetailCallback) => renderHistoryList(renderDetailCallback),
+              (idx) => renderHistoryDetail(idx)
+            );
+          });
+        }
+      })();
     } catch (e) { console.warn('[Session] Attach login logic failed:', e); } 
   }, 300);
   

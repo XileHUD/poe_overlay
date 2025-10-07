@@ -36,4 +36,19 @@ OLD_WORKING_module.ts
 # Private / local-only helper scripts (keep local)
 scripts/
 CHANGELOG.md
-\n# Backup artifacts\n*.backup\n
+
+# Backup artifacts
+*.backup
+
+# Old bundled images backup (from image migration)
+bundled-images-old/
+
+# Image migration scripts (keep local only - already covered by scripts/ above)
+# scripts/downloadImages.ts
+# scripts/reorganize-images.ts
+# scripts/migrate-json-images.ts
+
+# Documents that are local reference only
+*.md
+!README.md
+

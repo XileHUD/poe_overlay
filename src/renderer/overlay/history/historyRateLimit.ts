@@ -77,6 +77,9 @@ export function setRateLimitInfo(headers: any): void {
       state: stateLines.length > 0 ? stateLines.join('\n') : state.toString(),
       budget: budgetLines.length > 0 ? budgetLines.join('\n') : 'Unknown'
     };
+    try {
+      (window as any).__lastRateLimitInfo = _lastRateLimitInfo; // expose for UI dialogs
+    } catch {}
   } catch (e) {
     console.warn('[RateLimit] Failed to parse rate limit info:', e);
   }

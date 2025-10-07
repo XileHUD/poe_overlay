@@ -959,21 +959,11 @@
                     }
                 });
             }
-            if (refreshBtn) {
-                refreshBtn.addEventListener('click', async () => {
-                    // Show warning about rate limits for manual refreshes
-                    const confirmed = confirm(
-                        '⚠️ Manual Refresh Warning\n\n' +
-                        'The app automatically refreshes every 15 minutes to stay within GGG rate limits.\n\n' +
-                        'Manual refreshes use your limited API quota (15 requests per 3 hours).\n\n' +
-                        'Are you sure you want to refresh now?'
-                    );
-                    
-                    if (!confirmed) return;
-                    
-                    await (typeof refreshHistoryIfAllowed === 'function' ? refreshHistoryIfAllowed('manual') : refreshHistory());
-                });
-            }
+            // Refresh button logic now handled by modular history system (refreshButton.ts)
+            // Legacy confirm() popup removed to avoid duplicate dialogs and native alert.
+            // attachRefreshButtonLogic() (called in history/module.ts) wires the styled confirmation dialog.
+            // We leave this block intentionally empty to prevent double-binding.
+            // (If needed in future, ensure not to reintroduce native confirm here.)
             
             // History popout button
             const popoutBtn = document.getElementById('historyPopoutBtn');

@@ -1,12 +1,43 @@
 /**
  * Refresh button UI and confirmation logic
  */
+import { historyState } from './historyData';
+import { autoRefreshManager } from './autoRefresh';
 
 /**
  * Show confirmation dialog before manual refresh
  * Warns users about rate limiting and auto-refresh
  */
 export async function confirmManualRefresh(): Promise<boolean> {
+  // Pull latest rate limit info if available
+  let budgetHtml = '';
+  let lastRefreshHtml = '';
+  try {
+    const info = (window as any).__lastRateLimitInfo as { limits: string; state: string; budget: string } | undefined;
+    if (info) {
+      const budgetLines = (info.budget || '').split('\n').filter(Boolean);
+      if (budgetLines.length) {
+        budgetHtml = '<div style="margin:8px 0 12px 0; font-size:12px; line-height:1.4; background:#222; padding:8px 10px; border:1px solid #333; border-radius:6px;">' +
+          '<strong style="color:#ff9800;">Current Budget</strong><br>' +
+          budgetLines.map(l => l.replace(/^•\s?/, '')).join('<br>') + '</div>';
+      }
+    }
+    const ts = historyState.remoteLastFetchAt || historyState.lastRefreshAt || 0;
+    if (ts) {
+      const diff = Date.now() - ts;
+      const secs = Math.floor(diff / 1000);
+      const mins = Math.floor(secs / 60);
+      let when = '';
+      if (mins < 1) when = 'Just now';
+      else if (mins < 60) when = mins + 'm ago';
+      else {
+        const hrs = Math.floor(mins / 60);
+        const rem = mins % 60;
+        when = hrs + 'h' + (rem ? ' ' + rem + 'm' : '') + ' ago';
+      }
+      lastRefreshHtml = `<div style=\"margin:4px 0 12px 0; font-size:12px; color:#bbb;\"><strong style=\"color:#ff9800;\">Last refresh:</strong> ${when}</div>`;
+    }
+  } catch {}
   const overlay = document.createElement('div');
   overlay.style.cssText = `
     position: fixed;
@@ -34,15 +65,13 @@ export async function confirmManualRefresh(): Promise<boolean> {
   dialog.innerHTML = `
     <h3 style="margin: 0 0 16px 0; color: #ff9800;">⚠ Manual Refresh Warning</h3>
     <p style="margin: 0 0 12px 0; line-height: 1.5;">
-      GGG's API has strict rate limits:<br>
-      <strong>15 requests per 3 hours</strong>
+      You have a limited request budget enforced by GGG.<br>
+      The overlay auto-refreshes every <strong>15 minutes</strong> to conserve it.
     </p>
-    <p style="margin: 0 0 16px 0; line-height: 1.5; color: #aaa;">
-      The app automatically refreshes every <strong>15 minutes</strong> to stay within limits.
-      Manual refreshes consume your limited budget.
-    </p>
+  ${lastRefreshHtml}
+  ${budgetHtml || '<p style="margin:0 0 12px 0; font-size:12px; color:#bbb;">Budget information will appear after first successful fetch.</p>'}
     <p style="margin: 0 0 20px 0; line-height: 1.5;">
-      Are you sure you want to refresh now?
+      Proceed with a manual refresh now?
     </p>
     <div style="display: flex; gap: 12px; justify-content: flex-end;">
       <button id="cancelRefresh" style="
@@ -122,23 +151,73 @@ export function updateRefreshButtonUI(
   }
 
   if (!canRefresh && retryAfter) {
-    btn.disabled = true;
-    btn.style.opacity = '0.5';
-    btn.style.cursor = 'not-allowed';
+    // Keep enabled but show countdown in title
     const mins = Math.floor(retryAfter / 60);
     const secs = retryAfter % 60;
-    btn.title = `⏱ Rate Limited\n\nNext refresh available in: ${mins}m ${secs}s${rateLimitText}`;
+    btn.title = buildTooltip(`⏱ Cooling Down\n\nRecommended wait: ${mins}m ${secs}s${rateLimitText}\n\n(You can still attempt a refresh manually)`);
   } else if (autoRefreshActive) {
     btn.disabled = false;
     btn.style.opacity = '1';
     btn.style.cursor = 'pointer';
-    btn.title = `🔄 Auto-Refresh Active\n\nRefreshes every 15 minutes to stay within limits${rateLimitText}\n\nClick to manually refresh now`;
+    btn.title = buildTooltip(`🔄 Auto-Refresh Active\n\nRefreshes every 15 minutes to stay within limits${rateLimitText}\n\nClick to manually refresh now`);
   } else {
     btn.disabled = false;
     btn.style.opacity = '1';
     btn.style.cursor = 'pointer';
-    btn.title = `Refresh merchant history${rateLimitText}\n\nClick to manually refresh`;
+    btn.title = buildTooltip(`Refresh merchant history${rateLimitText}\n\nClick to manually refresh`);
   }
+
+  // Update / create last refresh badge
+  try {
+    const container = btn.parentElement;
+    if (container) {
+      let badge = document.getElementById('historyLastRefresh');
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.id = 'historyLastRefresh';
+        badge.style.cssText = 'margin-left:8px; font-size:11px; color:#bbb; opacity:0.85;';
+        container.appendChild(badge);
+      }
+      const ts = historyState.remoteLastFetchAt || historyState.lastRefreshAt || 0;
+      if (ts) {
+        const diff = Date.now() - ts;
+        const secs = Math.floor(diff / 1000);
+        const mins = Math.floor(secs / 60);
+        let text: string;
+        if (mins < 1) text = 'Updated just now';
+        else if (mins < 60) text = `Updated ${mins}m ago`;
+        else {
+          const hrs = Math.floor(mins / 60);
+          const rem = mins % 60;
+          text = `Updated ${hrs}h${rem? ' '+rem+'m':''} ago`;
+        }
+        (badge as HTMLElement).textContent = text;
+        badge.style.display = '';
+      } else {
+        (badge as HTMLElement).textContent = 'No data yet';
+        badge.style.display = '';
+      }
+    }
+  } catch {}
+}
+
+function buildTooltip(base: string): string {
+  try {
+    const ts = historyState.remoteLastFetchAt || historyState.lastRefreshAt || 0;
+    if (ts) {
+      const diff = Date.now() - ts;
+      const secs = Math.floor(diff / 1000);
+      const mins = Math.floor(secs / 60);
+      let when: string;
+      if (mins < 1) when = 'just now';
+      else if (mins < 60) when = `${mins}m ago`;
+      else {
+        const hrs = Math.floor(mins / 60); const rem = mins % 60; when = `${hrs}h${rem? ' '+rem+'m':''} ago`;
+      }
+      return base + `\n\nLast refresh: ${when}`;
+    }
+  } catch {}
+  return base + '\n\nLast refresh: (none)';
 }
 
 /**
@@ -207,15 +286,6 @@ export function attachRefreshButtonLogic(refreshCallback: () => Promise<void>): 
   (btn as any)._refreshWired = true;
 
   btn.addEventListener('click', async () => {
-    // If disabled, show toast with rate limit info
-    if (btn.disabled) {
-      const retryAfter = (btn as any)._retryAfter || 0;
-      if (retryAfter > 0) {
-        showRateLimitToast(retryAfter);
-      }
-      return;
-    }
-
     // Show confirmation dialog
     const confirmed = await confirmManualRefresh();
     if (!confirmed) {
@@ -227,6 +297,15 @@ export function attachRefreshButtonLogic(refreshCallback: () => Promise<void>): 
     
     try {
       await refreshCallback();
+      // Reset auto-refresh schedule to be 15m from this manual refresh
+      try {
+        if (autoRefreshManager.isRunning()) {
+          autoRefreshManager.startAutoRefresh(async () => {
+            // Reuse external refresh callback semantics
+            await refreshCallback();
+          });
+        }
+      } catch {}
     } catch (e) {
       console.error('Manual refresh failed:', e);
     }
