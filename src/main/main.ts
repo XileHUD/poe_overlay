@@ -16,6 +16,9 @@ import { buildModPopoutHtml } from './popouts/modPopoutTemplate';
 // Use explicit .js extension for NodeNext module resolution compatibility
 import { buildSplashHtml } from './ui/splashTemplate.js';
 import { createTray } from './ui/trayService.js';
+// NodeNext sometimes fails transiently on newly added files with explicit .js; use extensionless for TS while runtime still resolves .js after build
+import { FloatingButton } from './ui/floatingButton';
+import { SettingsService } from './services/settingsService.js';
 import { registerDataIpc } from './ipc/dataHandlers.js';
 import { registerHistoryPopoutIpc } from './ipc/historyPopoutHandlers.js';
 import { PoeSessionHelper } from './network/poeSession.js';
@@ -98,6 +101,8 @@ class OverlayApp {
     private lastProcessedItemText: string = ''; // track last processed item to avoid duplicate handling
     private lastHistoryFetchAt: number = 0; // global merchant history fetch timestamp (ms)
     private readonly HISTORY_FETCH_MIN_INTERVAL = 5 * 60 * 1000; // 5 minutes
+    private floatingButton: FloatingButton | null = null;
+    private settingsService: SettingsService | null = null;
 
     constructor() {
         app.whenReady().then(async () => {
@@ -133,6 +138,11 @@ class OverlayApp {
 
             this.updateSplash('Creating overlay window');
             this.createOverlayWindow();
+            this.updateSplash('Initializing settings');
+            this.settingsService = new SettingsService(this.getUserConfigDir());
+            this.floatingButton = new FloatingButton({
+                settingsService: this.settingsService
+            });
             this.updateSplash('Creating tray');
             this.tray = createTray({
                 onToggleOverlay: () => this.toggleOverlayWithAllCategory(),
@@ -141,7 +151,8 @@ class OverlayApp {
                 getDataDir: () => this.getDataDir(),
                 reloadData: () => (this.modifierDatabase as any).reload?.(),
                 checkForUpdates: () => { try { if (autoUpdater) autoUpdater.checkForUpdatesAndNotify(); else shell.openExternal('https://github.com/XileHUD/poe_overlay/releases'); } catch { shell.openExternal('https://github.com/XileHUD/poe_overlay/releases'); } },
-                onQuit: () => app.quit()
+                onQuit: () => app.quit(),
+                onToggleFloatingButton: () => this.toggleFloatingButton()
             });
             this.updateSplash('Registering shortcuts');
             this.registerShortcuts();
@@ -213,6 +224,13 @@ class OverlayApp {
 
             // Finalize splash
             this.updateSplash('Loaded and ready (running in background)');
+            
+            // Restore floating button state if it was enabled
+            const floatingButtonSettings = this.settingsService.get('floatingButton');
+            if (floatingButtonSettings?.enabled) {
+                this.floatingButton?.show();
+            }
+            
             // Keep the final ready message visible a bit longer so users notice
             setTimeout(()=> this.closeSplash(), 3000);
         });
@@ -527,6 +545,28 @@ class OverlayApp {
                     return { local, nameOrSlug, index: getImageIndexMeta() };
                 } catch (e:any) { return { local: null, error: e?.message||'resolve_failed' }; }
             });
+            
+            // NEW: Get bundled image path from imageLocal field (no URL resolution needed)
+            ipcMain.handle('get-bundled-image-path', (_e, localPath: string) => {
+                try {
+                    if (!localPath) return null;
+                    const res = (process as any).resourcesPath || process.cwd();
+                    const bundledDir = path.join(res, 'bundled-images');
+                    const fullPath = path.join(bundledDir, localPath);
+                    const exists = fs.existsSync(fullPath);
+                    if(!exists){
+                        console.debug('[get-bundled-image-path] MISS', { localPath, fullPath });
+                        return null;
+                    }
+                    console.debug('[get-bundled-image-path] HIT', { localPath, fullPath });
+                    
+                    // Return as file:// URL for renderer
+                    return 'file:///' + fullPath.replace(/\\/g, '/');
+                } catch (e) {
+                    console.error('[getBundledImagePath] Error:', e);
+                    return null;
+                }
+            });
         } catch (e) {
             console.warn('Image diagnostics setup failed', e);
         }
@@ -741,6 +781,28 @@ class OverlayApp {
         }
     }
 
+    // Toggle overlay from floating button - enables pinned mode
+    private toggleOverlayFromButton() {
+        if (this.isOverlayVisible) {
+            this.hideOverlay();
+        } else {
+            // When opening from button, automatically enable pinned mode
+            this.pinned = true;
+            this.showOverlay();
+            // Notify the overlay window that pinned mode is enabled
+            if (this.overlayWindow && !this.overlayWindow.isDestroyed()) {
+                this.overlayWindow.webContents.send('pinned-changed', true);
+            }
+        }
+    }
+
+    // Toggle floating button visibility
+    private toggleFloatingButton() {
+        if (!this.floatingButton) return;
+        
+        this.floatingButton.toggle();
+    }
+
     // Global keyboard shortcuts and simulation logic
     private registerShortcuts() {
         try { globalShortcut.unregisterAll(); } catch {}
@@ -761,6 +823,13 @@ class OverlayApp {
                 this.shortcutAwaitingCapture = false;
             });
         } catch (e) { console.warn('register shortcut failed', e); }
+        
+        // Floating button toggle: Ctrl+Alt+Q
+        try {
+            globalShortcut.register('CommandOrControl+Alt+Q', () => {
+                this.toggleFloatingButton();
+            });
+        } catch (e) { console.warn('register floating button shortcut failed', e); }
     }
 
     // Monitors clipboard for external (manual) copies while armed
@@ -866,6 +935,17 @@ class OverlayApp {
             overlayWindow: () => this.overlayWindow,
             getUserConfigDir: () => this.getUserConfigDir(),
             logPath: historyPopoutDebugLogPath
+        });
+
+        // Floating button IPC handlers
+        ipcMain.on('floating-button-clicked', () => {
+            console.log('[FloatingButton] Button clicked');
+            this.toggleOverlayFromButton();
+        });
+
+        ipcMain.on('floating-button-pin-toggled', () => {
+            console.log('[FloatingButton] Pin toggled');
+            this.floatingButton?.togglePin();
         });
 
         ipcMain.on('hide-overlay', () => {

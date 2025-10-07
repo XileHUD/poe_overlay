@@ -10,6 +10,7 @@ export interface CreateTrayParams {
   reloadData: () => void;
   checkForUpdates: () => void; // wraps autoUpdater or external link
   onQuit?: () => void;
+  onToggleFloatingButton?: () => void;
 }
 
 export function createTray(params: CreateTrayParams): Tray | null {
@@ -20,7 +21,8 @@ export function createTray(params: CreateTrayParams): Tray | null {
     getDataDir,
     reloadData,
     checkForUpdates,
-    onQuit
+    onQuit,
+    onToggleFloatingButton
   } = params;
 
   const DEBUG = process.env.XILEHUD_TRAY_DEBUG === '1';
@@ -123,6 +125,8 @@ export function createTray(params: CreateTrayParams): Tray | null {
     { label: 'Modifiers', click: () => onOpenModifiers() },
     { label: 'Merchant History', click: () => onOpenHistory() },
     { type: 'separator' },
+    { label: 'Toggle Floating Button (Ctrl+Alt+Q)', click: () => onToggleFloatingButton?.(), visible: !!onToggleFloatingButton },
+    { type: 'separator', visible: !!onToggleFloatingButton },
     { label: 'Reload data (JSON)', click: () => reloadData() },
     { label: 'Open data folder', click: () => shell.openPath(getDataDir()) },
     { label: 'Check for app updates', click: () => checkForUpdates() },
