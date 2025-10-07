@@ -23,10 +23,9 @@
 
   loop_kill:
     ; Attempt graceful -> forced termination (idempotent if not running)
-    ExecWait 'taskkill /IM XileHUD.exe /T' $R0
-    ExecWait 'taskkill /F /IM XileHUD.exe /T' $R0
-    ExecWait 'taskkill /IM XileHUDOverlay.exe /T' $R0
-    ExecWait 'taskkill /F /IM XileHUDOverlay.exe /T' $R0
+  ; Run process termination in a single hidden PowerShell instance to avoid flashing multiple cmd windows.
+  ; -WindowStyle Hidden ensures no visible console; errors suppressed.
+  ExecWait 'powershell -NoLogo -NoProfile -WindowStyle Hidden -Command "foreach($n in \"XileHUD.exe\",\"XileHUDOverlay.exe\"){ taskkill /IM $n /T 2>$null; taskkill /F /IM $n /T 2>$null }"' $R0
     Sleep 400
 
     ; Heuristic: if executable file can be renamed temporarily, no process holds a lock.
