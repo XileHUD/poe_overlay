@@ -120,12 +120,8 @@ No telemetry or tracking is implemented. Account authentication is only required
 
 I usually add features that I personally think would help me save time, so when you see an update, it's likely something I'm actively using myself.
 
-Technical Improvements:
-- ✅ ~~Modularize history module~~ (Complete: reduced from 1,279 → 215 lines, 11 focused modules)
-- Modularize overlay.html: Break down 1,940-line monolithic HTML file into component partials for better maintainability
-- Further refactor main.ts: Continue code cleanup and organization
-
 New / High-Priority Ideas:
+- Unique Drop Source tags for Uniques: Display where each Unique item drops (boss, encounter, league mechanic) to support target-farming and planning.
 - Leveling Overlay: Route planner with act/zone splits, boss prep tips, automatic progress detection (so you never miss a quest reward or passive point while rushing).
 - Speedrun Timer: Lightweight in-overlay timer with segment splits (acts, key bosses) and auto‑split hooks planned when reliable triggers are identified.
 - "Today I Learned" Knowledge Base: Curated micro‑tips (e.g. how to cheaply get a level 21 gem) – community aggregated, surfaced contextually later.
@@ -141,6 +137,11 @@ Future / Exploratory:
 - Exchange Prices Integration: Optional toggleable pricing data (overlay remains fully functional offline if disabled).
 - Top Builds Browser: View popular builds for each class directly in the overlay for build inspiration.
 - Mobile Companion App: Primarily for Merchant History on-the-go; also useful for console players to browse their trade data.
+
+Technical Improvements (moved to bottom for clarity):
+- ✅ ~~Modularize history module~~ (Complete: reduced from 1,279 → 215 lines, 11 focused modules)
+- Modularize overlay.html: Break down 1,940-line monolithic HTML file into component partials for better maintainability
+- Further refactor main.ts: Continue code cleanup and organization
 
 ---
 

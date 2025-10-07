@@ -52,6 +52,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     getCachedImage: (url: string) => ipcRenderer.invoke('get-cached-image', url),
     resolveImage: (url: string) => ipcRenderer.invoke('resolve-image', url),
     resolveImageByName: (name: string) => ipcRenderer.invoke('resolve-image-by-name', name),
+    getBundledImagePath: (localPath: string) => ipcRenderer.invoke('get-bundled-image-path', localPath),
     // Data updates
     getDataDir: () => ipcRenderer.invoke('get-data-dir'),
     setDataDir: (dir: string) => ipcRenderer.invoke('set-data-dir', dir),
@@ -96,3 +97,17 @@ contextBridge.exposeInMainWorld('electronAPI', {
     // Remove listeners
     removeAllListeners: (channel: string) => ipcRenderer.removeAllListeners(channel)
 });
+
+// Expose a lightweight helper for immediate (no-IPC) path construction to bundled images.
+try {
+    const path = require('path');
+    // Prefer resourcesPath (packaged). Fallback to directory of preload (dev) without using process.cwd (sandbox-safe).
+    const resPath = (process as any).resourcesPath || path.join(__dirname, '..', '..');
+    const root = path.join(resPath, 'bundled-images');
+    contextBridge.exposeInMainWorld('bundledImages', {
+        root: root.replace(/\\/g,'/'),
+        toFileUrl: (rel: string) => 'file:///' + path.join(root, rel).replace(/\\/g,'/')
+    });
+} catch (e) {
+    console.warn('[preload] failed to expose bundledImages helper', e);
+}

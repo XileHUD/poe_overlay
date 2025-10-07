@@ -1,10 +1,18 @@
 // Uniques panel module: encapsulates Uniques UI and logic and exposes a window facade for overlay.html delegation
 import { sanitizeCraftingHtml } from "../../utils";
+import { bindImageFallback } from "../utils/imageFallback";
+import { resolveLocalImage } from "../utils/localImage";
+
+// Helper to get image path - returns the path that will be resolved by auto-resolver
+function getImagePath(item: any): string {
+  return resolveLocalImage(item.imageLocal, item.image);
+}
 
 type UniqueItem = {
   name: string;
   typeLine: string;
   image?: string;
+  imageLocal?: string;
   explicitMods?: string[];
 };
 
@@ -240,7 +248,9 @@ export function render(groups: UniqueGroups): void {
         card.style.display='flex';
         card.style.gap='12px';
         card.style.alignItems='flex-start';
-  const imgBlock = u.image ? `<div style='flex:0 0 118px; display:flex; align-items:flex-start; justify-content:center;'><img class='unique-img' src='${u.image}' alt='' decoding='async' style='width:118px; height:118px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 118px;'></div>`;
+  // Use imageLocal if available, fallback to image (legacy)
+  const imgSrc = getImagePath(u);
+  const imgBlock = imgSrc ? `<div style='flex:0 0 118px; display:flex; align-items:flex-start; justify-content:center;'><img class='unique-img' src='' data-orig-src='${(u.imageLocal || u.image || '').replace(/'/g,"&#39;")}' alt='' decoding='async' style='width:118px; height:118px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 118px;'></div>`;
   const cleanedMods = (u.explicitMods||[]).map(m=> m.replace(/<img[^>]*>/ig,'').trim()).filter(Boolean);
   const modsHtml = `<div style='font-size:11px;'>${cleanedMods.map((m: string)=> highlightNumbers(sanitizeCraftingHtml(m)) ).join('<br>')}</div>`;
         const right = `<div style='flex:1; display:flex; flex-direction:column;'>
@@ -254,17 +264,8 @@ export function render(groups: UniqueGroups): void {
       section.appendChild(wrap);
       container.appendChild(section);
     });
-    // Image fallback: gray out and remove broken src to avoid endless retries
-    const placeholder = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110"><rect width="110" height="110" rx="8" fill="%23222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23555" font-size="14" font-family="sans-serif">IMG</text></svg>';
-    panel.querySelectorAll('img.unique-img').forEach((img: any)=>{
-      if (img._fallbackBound) return;
-      img._fallbackBound = true;
-      img.addEventListener('error',()=>{
-        img.src = placeholder;
-        img.style.opacity='0.55';
-        img.style.filter='grayscale(1)';
-      }, { once:true });
-    });
+    // Standardized fallback & local path resolution for unique images
+    bindImageFallback(panel, 'img.unique-img', `<svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110"><rect width="110" height="110" rx="8" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="14" font-family="sans-serif">IMG</text></svg>`, 0.55);
   }
 
   searchEl?.addEventListener('input', ()=> build(searchEl.value));

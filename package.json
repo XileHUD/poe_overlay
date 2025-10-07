@@ -4,6 +4,7 @@
   "description": "XileHUD",
   "main": "dist/main/main.js",
   "scripts": {
+    "check:images": "node scripts/check-images.js",
     "dev": "concurrently \"npm run dev:main\" \"npm run dev:renderer\"",
     "dev:main": "tsx watch src/main/main.ts",
     "dev:renderer": "vite",
@@ -11,6 +12,7 @@
     "build:main": "tsc",
     "build:renderer": "vite build",
     "download-images": "tsx scripts/downloadImages.ts",
+    "recover-images": "tsx scripts/recover-missing-images.ts",
     "typecheck": "tsc --noEmit",
     "start": "electron dist/main/main.js",
     "pack": "electron-builder --dir",

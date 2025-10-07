@@ -323,6 +323,25 @@
     const headerTitleEl = document.getElementById('headerTitle');
     const headerSubtitleEl = document.getElementById('headerSubtitle');
 
+    // === Image Path Helper ===
+    // Convert imageLocal field to file:// URL for bundled images (SYNC version for templates)
+    function getImagePath(item) {
+        // Use new imageLocal field (clean local paths, no poedb URLs!)
+        if (item.imageLocal) {
+            // In development: file:///C:/Users/.../packages/overlay/bundled-images/...
+            // In production: file:///C:/Program Files/.../resources/bundled-images/...
+            // The path will be resolved by main process, but we can construct it client-side too
+            return item.imageLocal; // Will be handled by image auto-resolver
+        }
+        
+        // Fallback to old image field (deprecated, will be removed)
+        if (item.image && item.image.startsWith('http')) {
+            return item.image; // Will trigger old resolver
+        }
+        
+        return ''; // No image available
+    }
+
     function setHeader(title, subtitle=''){
         if (headerTitleEl) headerTitleEl.textContent = title || '';
         if (headerSubtitleEl) headerSubtitleEl.textContent = subtitle || '';
@@ -1488,7 +1507,8 @@ function renderAscendancyPassives(list){
             // Clean mods: remove inline skill icons (grantsSkill) then highlight numbers
             const cleanedMods = (p.explicitMods||[]).map(m=> m.replace(/<img[^>]*grantsSkill[^>]*>/ig,'').replace(/<img[^>]*>/ig,'').trim()).filter(Boolean);
             const mods = cleanedMods.map(m=>highlight(m)).join('<br>');
-            const imgHtml = p.image ? `<img src='${p.image}' class='asc-img' style='width:46px; height:46px; object-fit:contain; flex:0 0 46px;'>` : '';
+            const _ap = getImagePath(p);
+            const imgHtml = p.image || p.imageLocal ? `<img src='' data-orig-src='${_ap}' class='asc-img' style='width:46px; height:46px; object-fit:contain; flex:0 0 46px;'>` : '';
             const metaParts = [];
             if(p.ascendancy) metaParts.push(`<span style="background:var(--accent-blue); color:#fff; padding:2px 8px; border-radius:12px; font-size:11px; font-weight:600; letter-spacing:0.3px;">${p.ascendancy}</span>`);
             if(p.character) metaParts.push(`<span style="background:var(--bg-tertiary); color:var(--text-primary); padding:2px 8px; border-radius:12px; font-size:11px;">${p.character}</span>`);
@@ -1498,7 +1518,7 @@ function renderAscendancyPassives(list){
         });
         const svg = "<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><rect width='30' height='30' rx='6' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='9' font-family='sans-serif'>?</text></svg>";
         const placeholder = 'data:image/svg+xml;utf8,'+encodeURIComponent(svg);
-    wrap.querySelectorAll('img.asc-img').forEach(img=>{ if(img._fb) return; img._fb=true; img.addEventListener('error',()=>{ img.src=placeholder; img.style.opacity='0.5'; img.style.filter='grayscale(1)'; },{once:true}); });
+    wrap.querySelectorAll('img.asc-img').forEach(img=>{ if(img._fb) return; img._fb=true; img.addEventListener('error',()=>{ img.src=placeholder; img.style.opacity='0.5'; img.style.filter='grayscale(1)'; },{once:true}); img.addEventListener('load',()=>{ if(img.src!==placeholder){ img.style.opacity='1'; img.style.filter='none'; } }, { once:true }); });
     }
     searchEl.addEventListener('input',()=>build(searchEl.value));
     clearBtn.addEventListener('click',()=>{ searchEl.value=''; selected.clear(); build(''); renderFilters(); searchEl.focus(); });
@@ -1583,7 +1603,8 @@ function renderKeystones(list){
             card.style.flexDirection='column';
             card.style.gap='4px';
             card.style.height='100%';
-            const imgHtml = k.image ? `<img src='${k.image}' class='keystone-img' style='width:30px; height:30px; object-fit:contain;'>` : `<img src='' class='keystone-img' style='width:30px; height:30px; object-fit:contain;'>`;
+            const kp = getImagePath(k);
+            const imgHtml = k.image || k.imageLocal ? `<img src='' data-orig-src='${kp}' class='keystone-img' style='width:30px; height:30px; object-fit:contain;'>` : `<img src='' class='keystone-img' style='width:30px; height:30px; object-fit:contain;'>`;
             card.innerHTML=`<div style='display:flex; gap:6px; align-items:center;'>${imgHtml}<div style='font-weight:600;'>${k.name}</div></div><div style='font-size:11px;'>${k.description||''}</div>`;
             wrap.appendChild(card);
         });
@@ -1591,7 +1612,8 @@ function renderKeystones(list){
         const placeholderSvg = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><rect width='30' height='30' rx='6' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='9' font-family='sans-serif'>?</text></svg>`)}`;
         wrap.querySelectorAll('img.keystone-img').forEach(function(img){
             if(img._fb) return; img._fb=true; img.loading= img.loading || 'lazy'; img.decoding='async';
-            img.addEventListener('error', function(){ img.src=placeholderSvg; img.style.opacity='0.5'; img.style.filter='grayscale(1)'; }, {once:true});
+            img.addEventListener('error', function(){ img.src=placeholderSvg; img.style.opacity='0.5'; img.style.filter='grayscale(1)'; });
+            img.addEventListener('load', function(){ if(img.src!==placeholderSvg){ img.style.opacity='1'; img.style.filter='none'; }});
         });
     }
     searchEl.addEventListener('input',()=>build(searchEl.value));
@@ -1689,7 +1711,8 @@ function renderAtlasNodes(list){
             card.style.flexDirection='column';
             card.style.gap='6px';
             card.style.height='100%';
-            const title=`<div style='display:flex; align-items:center; gap:6px;'><img src='${n.image||''}' class='atlas-img' style='width:28px; height:28px; object-fit:contain;'/><div style='font-weight:700; font-size:15px;'>${n.name}</div></div>`;
+            const ap=getImagePath(n);
+            const title=`<div style='display:flex; align-items:center; gap:6px;'><img src='' data-orig-src='${ap}' class='atlas-img' style='width:28px; height:28px; object-fit:contain;'/><div style='font-weight:700; font-size:15px;'>${n.name}</div></div>`;
             const bodyHtml = (n.description_html || escapeHtml(n.description || '')).trim();
             const body = `<div style='font-size:12px; line-height:1.35;'>${bodyHtml}</div>`;
             card.innerHTML=title+body;
@@ -1699,7 +1722,8 @@ function renderAtlasNodes(list){
         const placeholderSvg = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><rect width='28' height='28' rx='6' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='8' font-family='sans-serif'>?</text></svg>`)}`;
         wrap.querySelectorAll('img.atlas-img').forEach(function(img){
             if(img._fb) return; img._fb=true; img.loading='lazy'; img.decoding='async';
-            img.addEventListener('error', function(){ img.src=placeholderSvg; img.style.opacity='0.5'; img.style.filter='grayscale(1)'; }, {once:true});
+            img.addEventListener('error', function(){ img.src=placeholderSvg; img.style.opacity='0.5'; img.style.filter='grayscale(1)'; });
+            img.addEventListener('load', function(){ if(img.src!==placeholderSvg){ img.style.opacity='1'; img.style.filter='none'; }});
         });
     }
     searchEl.addEventListener('input',()=>build(searchEl.value));
@@ -1787,7 +1811,8 @@ function renderGems(groups){
             list.forEach(g=>{
                 const card=document.createElement('div');
                 card.style.background='var(--bg-card)'; card.style.border='1px solid var(--border-color)'; card.style.borderRadius='6px'; card.style.padding='6px'; card.style.display='flex'; card.style.flexDirection='column'; card.style.gap='4px';
-                const imgHtml = g.image?`<img class='gem-img' src='${g.image}' loading='lazy' decoding='async' style='width:28px; height:28px; object-fit:contain;'>`:'';
+                const gp = getImagePath(g);
+                const imgHtml = g.image || g.imageLocal ?`<img class='gem-img' src='' data-orig-src='${gp}' loading='lazy' decoding='async' style='width:28px; height:28px; object-fit:contain;'>`:'';
                 const base=`<div style='display:flex; gap:6px; align-items:center;'>${imgHtml}<div style='font-weight:600;'>${g.name}</div></div><div style='font-size:10px; color:var(--text-muted);'>${g.type||''}</div><div style='font-size:11px; max-height:120px; overflow:auto;'>${g.description||''}</div>`;
                 const tagsRow = `<div style='font-size:10px; display:flex; flex-wrap:wrap; gap:4px;'>${(g.tags||[]).length? (g.tags||[]).map(t=>'<span style="background:var(--bg-tertiary); padding:2px 4px; border-radius:3px; line-height:1;">'+t+'</span>').join('') : '<span style="opacity:.5;">No tags</span>'}</div>`;
                 card.innerHTML=base+tagsRow;
@@ -1847,47 +1872,38 @@ function renderGems(groups){
 }
 
 // --- Generic auto-resolve for bundled images (gems / atlas / ascendancy / keystones / bases / uniques) ---
-// Problem: Some panels (gems, atlas nodes, ascendancy passives, etc.) render <img src="https://..."> directly
-// without invoking the shared bindImageFallback helper used in modular TS panels (currency, omens, etc.).
-// Since we bundle images offline and block external fetching, those HTTP requests fail and show '?'.
-// Solution: Observe the DOM and, for any matching image class, ask main process to map the original URL
-// to the local file path via electronAPI.resolveImage, then swap src to file:/// path.
+// NEW SYSTEM: Images use imageLocal field with clean paths like "keystones/avatar_of_fire.webp"
+// This resolver converts those to file:// URLs and also handles legacy URL-based images as fallback.
 (function(){
-    try {
-        if (!window.electronAPI || typeof window.electronAPI.resolveImage !== 'function') return; // preload not ready
-    } catch { return; }
-    var TARGET_CLASSES = ['gem-img','atlas-img','asc-img','keystone-img','base-img','unique-img','essence-img','catalyst-img','currency-img'];
-    var pending = new WeakSet();
-
-    async function tryResolve(img){
+    // Generic resolver for any <img data-orig-src> left unhandled by module-specific bindImageFallback.
+    function resolveImg(img){
+        if(!img || img.dataset._genericResolved) return;
+        const orig = img.getAttribute('data-orig-src');
+        if(!orig) return;
+        // If already has a non-empty src, skip.
+        if(img.getAttribute('src')) { return; }
+        const finish = (u) => {
+            if(!u) return;
+            img.src = u;
+            img.dataset._genericResolved = '1';
+            // Clear any placeholder styling if set earlier
+            requestAnimationFrame(()=>{ if(img.src && !/data:image\/svg/i.test(img.src)){ img.style.opacity='1'; img.style.filter='none'; } });
+        };
         try {
-            if (!img || pending.has(img)) return;
-            if (img._resolvedLocal || img.dataset.localResolved) return;
-            var orig = img.getAttribute('data-orig-src') || img.getAttribute('src') || '';
-            if (!orig || orig.startsWith('file:') || orig.startsWith('data:')) return; // already local / inline
-            var hasTarget = TARGET_CLASSES.some(function(cls){ return img.classList.contains(cls); });
-            if (!hasTarget) return;
-            pending.add(img);
-            var res = await window.electronAPI.resolveImage(orig);
-            if (res && res.local) {
-                var localUrl = 'file:///' + String(res.local).replace(/\\/g,'/');
-                img.src = localUrl;
-                img.dataset.localResolved = '1';
-                img._resolvedLocal = true;
+            if(/^file:|^data:/.test(orig)) { return finish(orig); }
+            if((window).bundledImages && (window).bundledImages.toFileUrl){ finish((window).bundledImages.toFileUrl(orig)); return; }
+            if((window).electronAPI && (window).electronAPI.getBundledImagePath){
+                (window).electronAPI.getBundledImagePath(orig).then(u=>{ if(!img.dataset._genericResolved && u) finish(u); });
+                return;
             }
+            // Last resort: try using orig directly (may 404, error handlers will catch)
+            finish(orig);
         } catch {}
     }
-
-    function scan(){
-        TARGET_CLASSES.forEach(function(cls){
-            document.querySelectorAll('img.'+cls).forEach(function(img){ tryResolve(img); });
-        });
-    }
-
-    var mo = new MutationObserver(function(){ scan(); });
-    try { mo.observe(document.body || document.documentElement, { childList:true, subtree:true }); } catch {}
-    setInterval(scan, 2000); // periodic safety scan
-    scan(); // initial
+    function scan(){ document.querySelectorAll('img[data-orig-src]').forEach(i=>{ if(!i.getAttribute('src')) resolveImg(i); }); }
+    setTimeout(scan, 5);
+    new MutationObserver(()=>scan()).observe(document.documentElement,{childList:true,subtree:true});
+    document.addEventListener('DOMContentLoaded', scan);
 })();
 
 // Bottom resize handle wiring (vertical resize)

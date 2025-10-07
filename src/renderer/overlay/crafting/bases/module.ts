@@ -1,8 +1,20 @@
 // Bases panel module: encapsulates Bases UI logic with filters and sorting
+import { bindImageFallback } from "../utils/imageFallback";
+
+// Helper to get image path - returns the path that will be resolved by auto-resolver
+function getImagePath(item: any): string {
+  // Use new imageLocal field (clean local paths)
+  if (item.imageLocal) {
+    return item.imageLocal; // Auto-resolver will convert to file:// URL
+  }
+  // Fallback to legacy image URL
+  return item.image || '';
+}
 
 export type BaseItem = {
   name: string;
   image?: string;
+  imageLocal?: string;
   implicitMods?: string[];
   properties?: { name: string; value: string }[];
   grants?: { name: string; level?: number }[];
@@ -247,7 +259,9 @@ export function render(groups: BaseGroups): void {
       arr.sort((a,b)=>{ const av=(a as any).__sortVal, bv=(b as any).__sortVal; if(av===bv) return a.name.localeCompare(b.name); return bv-av; });
     }
     arr.forEach(b=>{ const card=document.createElement('div'); card.style.width='100%'; card.style.background='var(--bg-card)'; card.style.border='1px solid var(--border-color)'; card.style.borderRadius='8px'; card.style.padding='8px'; card.style.display='flex'; card.style.gap='12px'; card.style.alignItems='flex-start';
-      const imgBlock = b.image ? `<div style='flex:0 0 110px; display:flex; align-items:flex-start; justify-content:center;'><img class='base-img' src='${b.image}' alt='' style='width:110px; height:110px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 110px;'></div>`;
+      // Use imageLocal if available, fallback to image (legacy)
+  const imgSrc = getImagePath(b);
+  const imgBlock = imgSrc ? `<div style='flex:0 0 110px; display:flex; align-items:flex-start; justify-content:center;'><img class='base-img' src='' data-orig-src='${imgSrc}' alt='' style='width:110px; height:110px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 110px;'></div>`;
       const implicitHtml = (b.implicitMods||[]).length ? `<div style=\"font-size:11px; margin-bottom:4px;\">${(b.implicitMods||[]).map(m=>highlight(m)).join('<br>')}</div>` : '<div style=\"font-size:10px; color:var(--text-muted); margin-bottom:4px;\">No implicit</div>';
       const grantHtml = (b.grants||[]).length ? `<div style='font-size:10px; color:var(--accent-blue); margin-bottom:4px;'>${(b.grants||[]).map(g=>`Grants Skill: ${g.name}${g.level?` (Level ${g.level})`:''}`).join('<br>')}</div>` : '';
       const propHtml = (b.properties||[]).length ? `<div style=\"font-size:10px; display:flex; flex-wrap:wrap; gap:4px; margin-bottom:4px;\">${(b.properties||[]).map(p=>`<span style='background:var(--bg-tertiary); padding:2px 4px; border-radius:3px;'>${p.name}: ${p.value}</span>`).join('')}</div>` : '';
@@ -261,19 +275,8 @@ export function render(groups: BaseGroups): void {
       </div>`;
       card.innerHTML = imgBlock + right; listEl.appendChild(card); });
 
-    // Add image fallback for bases
-    const placeholder = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='110' height='110' viewBox='0 0 110 110'><rect width='110' height='110' rx='8' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='12' font-family='sans-serif'>?</text></svg>`)}`;
-    listEl.querySelectorAll('img').forEach((img: HTMLImageElement) => {
-      if ((img as any)._fb) return;
-      (img as any)._fb = true;
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      img.addEventListener('error', () => {
-        img.src = placeholder;
-        img.style.opacity = '0.5';
-        img.style.filter = 'grayscale(1)';
-      }, { once: true });
-    });
+    // Standardized fallback & local path resolution
+    bindImageFallback(listEl, 'img.base-img', `<svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110"><rect width="110" height="110" rx="8" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="12" font-family="sans-serif">?</text></svg>`, 0.5);
 
     listEl.querySelectorAll('[data-sort-tag]').forEach(el=>{
       el.addEventListener('click',(e)=>{

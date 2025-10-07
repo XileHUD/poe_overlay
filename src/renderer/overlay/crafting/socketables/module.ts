@@ -1,10 +1,12 @@
 // Socketables module: encapsulates socketable crafting UI (refactored to grid + shared image fallback)
 import { bindImageFallback } from "../utils/imageFallback";
+import { resolveLocalImage } from "../utils/localImage";
 
 export type Socketable = {
   slug?: string;
   name?: string;
   image?: string;
+  imageLocal?: string;
   implicitMods?: string[];
   stack_current?: number;
   stack_max?: number;
@@ -193,8 +195,9 @@ export function render(list: Socketable[]): void {
       const modsHtml = (e.implicitMods && e.implicitMods.length) ? `<div style='font-size:11px;'>${e.implicitMods.map((m)=>highlight(m.replace(/<a[^>]*>(.*?)<\/a>/g,'$1'))).join('<br>')}</div>` : '';
       const stackInfo = (e.stack_current!=null || e.stack_max!=null) ? `<div style='font-size:11px; color:var(--text-muted);'>Stack: ${e.stack_current ?? '?'} / ${e.stack_max ?? '?'}</div>` : '';
       const levelInfo = (e.level_req!=null) ? `<div style='font-size:11px; color:var(--text-muted);'>Requires Level ${e.level_req}</div>` : '';
-      card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>
-          ${e.image ? `<img src='${e.image}' alt='' class='socketable-img' style='width:32px; height:32px; object-fit:contain;'>` : `<img src='' alt='' class='socketable-img' style='width:32px; height:32px; object-fit:contain;'>`}
+    const origPath = e.imageLocal || e.image || '';
+    card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>
+      ${(e.imageLocal || e.image) ? `<img src='' data-orig-src='${origPath}' alt='' class='socketable-img' style='width:32px; height:32px; object-fit:contain;'>` : `<img src='' alt='' class='socketable-img' style='width:32px; height:32px; object-fit:contain;'>`}
           <div style='font-weight:600; line-height:1.2;'>${e.name}</div>
         </div>
         ${stackInfo}

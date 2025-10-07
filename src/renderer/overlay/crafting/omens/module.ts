@@ -1,10 +1,12 @@
 // Omens module: encapsulates Omens crafting UI
 import { bindImageFallback } from "../utils/imageFallback";
+import { resolveLocalImage } from "../utils/localImage";
 
 export type Omen = {
   slug?: string;
   name?: string;
   image?: string;
+  imageLocal?: string;
   stack_current?: number;
   stack_max?: number;
   explicitMods?: string[];
@@ -230,7 +232,8 @@ export function render(list: Omen[]): void {
       card.style.display = 'flex';
       card.style.flexDirection = 'column';
       card.style.gap = '4px';
-      card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>${o.image?`<img class='omen-img' src='${o.image}' decoding='async' style='width:28px; height:28px; object-fit:contain;'>`:''}<div style='font-weight:600;'>${o.name}</div></div><div style='font-size:11px; color:var(--text-muted);'>Stack: ${o.stack_current??'?'} / ${o.stack_max??'?'}</div><div style='font-size:11px;'>${(o.explicitMods||[]).map(m=>highlight(m)).join('<br>')}</div>`;
+  const orig = o.imageLocal || o.image || '';
+  card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>${o.imageLocal || o.image?`<img class='omen-img' src='' data-orig-src='${orig}' decoding='async' style='width:28px; height:28px; object-fit:contain;'>`:''}<div style='font-weight:600;'>${o.name}</div></div><div style='font-size:11px; color:var(--text-muted);'>Stack: ${o.stack_current??'?'} / ${o.stack_max??'?'}</div><div style='font-size:11px;'>${(o.explicitMods||[]).map(m=>highlight(m)).join('<br>')}</div>`;
       wrap.appendChild(card);
     });
     bindImageFallback(panel, '.omen-img', '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><rect width="28" height="28" rx="4" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="8" font-family="sans-serif">?</text></svg>', 0.5);
