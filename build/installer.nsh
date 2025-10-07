@@ -9,37 +9,65 @@
 !define MUI_INSTFILESPAGE_PROGRESSBAR "smooth"
 
 !macro customInit
-  DetailPrint "Pre-install: cleaning up any previous XileHUD installation..."
-  
-  ; Kill any running processes FIRST (both old and new exe names)
-  DetailPrint "→ Stopping any running XileHUD processes..."
-  ExecWait 'taskkill /F /IM XileHUD.exe /T' $R0
-  ExecWait 'taskkill /F /IM XileHUDOverlay.exe /T' $R0
-  Sleep 800
-  
-  ; Manually delete old installation files (per-user location)
-  StrCpy $0 "$LOCALAPPDATA\Programs\XileHUD"
-  IfFileExists "$0\*.*" 0 skip_user_cleanup
-    DetailPrint "→ Removing old per-user installation..."
-    RMDir /r "$0"
-    Delete "$DESKTOP\XileHUD.lnk"
-    Delete "$SMPROGRAMS\XileHUD.lnk"
-  skip_user_cleanup:
-  
-  ; Manually delete old installation files (per-machine location)
-  StrCpy $1 "$PROGRAMFILES64\XileHUD"
-  IfFileExists "$1\*.*" 0 skip_machine_cleanup
-    DetailPrint "→ Removing old per-machine installation..."
-    RMDir /r "$1"
-  skip_machine_cleanup:
-  
-  Sleep 300
-  DetailPrint "Ready to install fresh version..."
+  DetailPrint "Pre-install: preparing system for XileHUD update/install..."
+
+  ; ------------------------------------------------------------------
+  ; Robust process termination WITHOUT deleting install directory.
+  ; Rationale: letting electron-builder's internal upgrade logic handle
+  ; existing files avoids race conditions & false 'app is running' errors
+  ; caused by premature RMDir while handles still existed.
+  ; ------------------------------------------------------------------
+  Var /GLOBAL _tries
+  StrCpy $_tries 0
+  DetailPrint "→ Ensuring no stale XileHUD processes are running..."
+
+  loop_kill:
+    ; Attempt graceful -> forced termination (idempotent if not running)
+    ExecWait 'taskkill /IM XileHUD.exe /T' $R0
+    ExecWait 'taskkill /F /IM XileHUD.exe /T' $R0
+    ExecWait 'taskkill /IM XileHUDOverlay.exe /T' $R0
+    ExecWait 'taskkill /F /IM XileHUDOverlay.exe /T' $R0
+    Sleep 400
+
+    ; Heuristic: if executable file can be renamed temporarily, no process holds a lock.
+    ; We test only the per-user default path (perMachine not used in current config).
+    StrCpy $0 "$LOCALAPPDATA\Programs\XileHUD\XileHUD.exe"
+    IfFileExists $0 0 no_file_lock_test
+      Rename $0 "$0.locktest" 
+      IfErrors file_locked file_unlocked
+      file_locked:
+        ; Could not rename => still locked by a process.
+        ; Restore state if partially renamed (rare timing case)
+        IfFileExists "$0.locktest" 0 +2
+          Rename "$0.locktest" $0
+        Goto still_running
+      file_unlocked:
+        ; Rename succeeded -> restore original name, proceed.
+        Rename "$0.locktest" $0
+        Goto done_kill
+    no_file_lock_test:
+      ; Executable not present yet (fresh install scenario) -> safe to continue.
+      Goto done_kill
+
+    still_running:
+      IntOp $_tries $_tries + 1
+      ${IfThen} $_tries >= 10 ${|} DetailPrint "  → Warning: process still appears active (attempt $_tries). Retrying..." ${|}
+      ${If} $_tries < 25
+        Sleep 300
+        Goto loop_kill
+      ${Else}
+        DetailPrint "  → Continuing despite lock test after 25 attempts (fallback)."
+        Goto done_kill
+      ${EndIf}
+
+  done_kill:
+  DetailPrint "→ No active XileHUD processes detected. Proceeding with upgrade/installation."
+  DetailPrint "→ Existing application files will be overwritten in-place. User data retained."
 !macroend
 
 !macro customInstall
   DetailPrint "════════════════════════════════════════════"
-  DetailPrint "Installing XileHUD Overlay (fresh after uninstall)"
+  DetailPrint "Installing / Updating XileHUD Overlay"
   DetailPrint "════════════════════════════════════════════"
   DetailPrint "→ Copying new application files..."
   Sleep 80
