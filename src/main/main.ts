@@ -311,16 +311,14 @@ class OverlayApp {
         } catch {}
         try {
             // 3) Repo relative default (dev)
-            const devPath = path.join(__dirname, '../../../../data/poe2/Rise of the Abyssal');
-            if (fs.existsSync(devPath)) return devPath;
+            const internalDev = path.join(__dirname, '../../data/poe2/Rise of the Abyssal');
+            if (fs.existsSync(internalDev)) return internalDev;
         } catch {}
         try {
             // 4) Packaged resources (electron-builder extraFiles)
-            // For portable: data is at exe root (process.resourcesPath/../data/poe2)
-            // For installer: data is in resources (process.resourcesPath/data/poe2)
+            // For packaged builds, data is placed under resources/data/poe2 by electron-builder configuration
             const candidates = [
-                path.join(process.resourcesPath || '', '..', 'data', 'poe2'), // Portable EXE
-                path.join(process.resourcesPath || '', 'data', 'poe2')         // Installer
+                path.join(process.resourcesPath || '', 'data', 'poe2')
             ];
             
             for (const packaged of candidates) {

@@ -1,0 +1,608 @@
+[
+  {
+    "category": "Life_Flasks",
+    "domain": "normal",
+    "side": "prefix",
+    "text_html": "\n    #% increased Life RecoveredRemoves #% of Life Recovered from Mana when used<hr class=\"mod-same-family\">#% increased Amount Recovered<hr class=\"mod-same-family\">#% more Recovery if used while on Low Life\n",
+    "text_plain": "#% increased Life RecoveredRemoves #% of Life Recovered from Mana when used#% increased Amount Recovered#% more Recovery if used while on Low Life",
+    "tier": 18,
+    "ilvl": 83,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "life",
+      "mana"
+    ],
+    "modal_id": "#collapseOnenormal1FlaskRecoveryAmount",
+    "family_name": "FlaskRecoveryAmount",
+    "tiers": [
+      {
+        "tier_name": "Impairing",
+        "tier_level": 13,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">13</span> <span class=\"mod-value\">(61–68)</span>% increased Life Recovered<br>Removes <span class=\"mod-value\">15</span>% of Life Recovered from Mana when used",
+        "text_plain": "13 (61–68)% increased Life RecoveredRemoves 15% of Life Recovered from Mana when used",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Dizzying",
+        "tier_level": 30,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">30</span> <span class=\"mod-value\">(69–76)</span>% increased Life Recovered<br>Removes <span class=\"mod-value\">15</span>% of Life Recovered from Mana when used",
+        "text_plain": "30 (69–76)% increased Life RecoveredRemoves 15% of Life Recovered from Mana when used",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Depleting",
+        "tier_level": 47,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">47</span> <span class=\"mod-value\">(77–84)</span>% increased Life Recovered<br>Removes <span class=\"mod-value\">15</span>% of Life Recovered from Mana when used",
+        "text_plain": "47 (77–84)% increased Life RecoveredRemoves 15% of Life Recovered from Mana when used",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Vitiating",
+        "tier_level": 64,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">64</span> <span class=\"mod-value\">(85–92)</span>% increased Life Recovered<br>Removes <span class=\"mod-value\">15</span>% of Life Recovered from Mana when used",
+        "text_plain": "64 (85–92)% increased Life RecoveredRemoves 15% of Life Recovered from Mana when used",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Sapping",
+        "tier_level": 81,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">81</span> <span class=\"mod-value\">(93–100)</span>% increased Life Recovered<br>Removes <span class=\"mod-value\">15</span>% of Life Recovered from Mana when used",
+        "text_plain": "81 (93–100)% increased Life RecoveredRemoves 15% of Life Recovered from Mana when used",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Opaque",
+        "tier_level": 1,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">(41–45)</span>% increased Amount Recovered",
+        "text_plain": "1 (41–45)% increased Amount Recovered",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Compact",
+        "tier_level": 11,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">11</span> <span class=\"mod-value\">(46–50)</span>% increased Amount Recovered",
+        "text_plain": "11 (46–50)% increased Amount Recovered",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Full-bodied",
+        "tier_level": 23,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">23</span> <span class=\"mod-value\">(51–55)</span>% increased Amount Recovered",
+        "text_plain": "23 (51–55)% increased Amount Recovered",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Abundant",
+        "tier_level": 34,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">34</span> <span class=\"mod-value\">(56–60)</span>% increased Amount Recovered",
+        "text_plain": "34 (56–60)% increased Amount Recovered",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Substantial",
+        "tier_level": 46,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">46</span> <span class=\"mod-value\">(61–65)</span>% increased Amount Recovered",
+        "text_plain": "46 (61–65)% increased Amount Recovered",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Concentrated",
+        "tier_level": 56,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">56</span> <span class=\"mod-value\">(66–70)</span>% increased Amount Recovered",
+        "text_plain": "56 (66–70)% increased Amount Recovered",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Potent",
+        "tier_level": 67,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">67</span> <span class=\"mod-value\">(71–75)</span>% increased Amount Recovered",
+        "text_plain": "67 (71–75)% increased Amount Recovered",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Saturated",
+        "tier_level": 83,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">83</span> <span class=\"mod-value\">(76–80)</span>% increased Amount Recovered",
+        "text_plain": "83 (76–80)% increased Amount Recovered",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Prudent",
+        "tier_level": 2,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">2</span> <span class=\"mod-value\">(51–60)</span>% more Recovery if used while on <a data-keyword=\"LowLife\" href=\"Low_Life\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/20c8c594f49cedf4b6384177db2f3fa3cb4b3ac5b7dd5ca8a3acee40c4bc362f\">Low Life</a>",
+        "text_plain": "2 (51–60)% more Recovery if used while on Low Life",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Prepared",
+        "tier_level": 25,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">25</span> <span class=\"mod-value\">(61–70)</span>% more Recovery if used while on <a data-keyword=\"LowLife\" href=\"Low_Life\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/20c8c594f49cedf4b6384177db2f3fa3cb4b3ac5b7dd5ca8a3acee40c4bc362f\">Low Life</a>",
+        "text_plain": "25 (61–70)% more Recovery if used while on Low Life",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Wary",
+        "tier_level": 44,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">44</span> <span class=\"mod-value\">(71–80)</span>% more Recovery if used while on <a data-keyword=\"LowLife\" href=\"Low_Life\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/20c8c594f49cedf4b6384177db2f3fa3cb4b3ac5b7dd5ca8a3acee40c4bc362f\">Low Life</a>",
+        "text_plain": "44 (71–80)% more Recovery if used while on Low Life",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Careful",
+        "tier_level": 63,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">63</span> <span class=\"mod-value\">(81–90)</span>% more Recovery if used while on <a data-keyword=\"LowLife\" href=\"Low_Life\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/20c8c594f49cedf4b6384177db2f3fa3cb4b3ac5b7dd5ca8a3acee40c4bc362f\">Low Life</a>",
+        "text_plain": "63 (81–90)% more Recovery if used while on Low Life",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Cautious",
+        "tier_level": 82,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">82</span> <span class=\"mod-value\">(91–100)</span>% more Recovery if used while on <a data-keyword=\"LowLife\" href=\"Low_Life\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/20c8c594f49cedf4b6384177db2f3fa3cb4b3ac5b7dd5ca8a3acee40c4bc362f\">Low Life</a>",
+        "text_plain": "82 (91–100)% more Recovery if used while on Low Life",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "source_url": "https://poe2db.tw/us/Life_Flasks#ModifiersCalc",
+    "scraped_at": "2025-09-23T14:25:05.811Z"
+  },
+  {
+    "category": "Life_Flasks",
+    "domain": "normal",
+    "side": "prefix",
+    "text_html": "\n    <span class=\"mod-value\">50</span>% reduced Amount Recovered<br>Instant Recovery\n",
+    "text_plain": "50% reduced Amount RecoveredInstant Recovery",
+    "tier": 1,
+    "ilvl": 42,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "modal_id": "#collapseOnenormal1FlaskBuffWhileHealing",
+    "family_name": "FlaskBuffWhileHealing",
+    "tiers": [
+      {
+        "tier_name": "Seething",
+        "tier_level": 42,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">42</span> <span class=\"mod-value\">50</span>% reduced Amount Recovered<br>Instant Recovery",
+        "text_plain": "42 50% reduced Amount RecoveredInstant Recovery",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "source_url": "https://poe2db.tw/us/Life_Flasks#ModifiersCalc",
+    "scraped_at": "2025-09-23T14:25:05.811Z"
+  },
+  {
+    "category": "Life_Flasks",
+    "domain": "normal",
+    "side": "prefix",
+    "text_html": "\n    Grants #% of Life Recovery to Minions\n",
+    "text_plain": "Grants #% of Life Recovery to Minions",
+    "tier": 5,
+    "ilvl": 82,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "life",
+      "minion"
+    ],
+    "modal_id": "#collapseOnenormal1FlaskHealsOthers",
+    "family_name": "FlaskHealsOthers",
+    "tiers": [
+      {
+        "tier_name": "Novice's",
+        "tier_level": 10,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">10</span> Grants <span class=\"mod-value\">(51–56)</span>% of Life Recovery to Minions",
+        "text_plain": "10 Grants (51–56)% of Life Recovery to Minions",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Acolyte's",
+        "tier_level": 28,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">28</span> Grants <span class=\"mod-value\">(57–62)</span>% of Life Recovery to Minions",
+        "text_plain": "28 Grants (57–62)% of Life Recovery to Minions",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Summoner's",
+        "tier_level": 46,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">46</span> Grants <span class=\"mod-value\">(63–68)</span>% of Life Recovery to Minions",
+        "text_plain": "46 Grants (63–68)% of Life Recovery to Minions",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Conjurer's",
+        "tier_level": 64,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">64</span> Grants <span class=\"mod-value\">(69–74)</span>% of Life Recovery to Minions",
+        "text_plain": "64 Grants (69–74)% of Life Recovery to Minions",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Necromancer's",
+        "tier_level": 82,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">82</span> Grants <span class=\"mod-value\">(75–80)</span>% of Life Recovery to Minions",
+        "text_plain": "82 Grants (75–80)% of Life Recovery to Minions",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "source_url": "https://poe2db.tw/us/Life_Flasks#ModifiersCalc",
+    "scraped_at": "2025-09-23T14:25:05.811Z"
+  },
+  {
+    "category": "Life_Flasks",
+    "domain": "normal",
+    "side": "prefix",
+    "text_html": "\n    #% increased Recovery rate<hr class=\"mod-same-family\">#% of Recovery applied Instantly\n",
+    "text_plain": "#% increased Recovery rate#% of Recovery applied Instantly",
+    "tier": 9,
+    "ilvl": 81,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "modal_id": "#collapseOnenormal1FlaskRecoverySpeed",
+    "family_name": "FlaskRecoverySpeed",
+    "tiers": [
+      {
+        "tier_name": "Dense",
+        "tier_level": 1,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">(41–45)</span>% increased Recovery rate",
+        "text_plain": "1 (41–45)% increased Recovery rate",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Undiluted",
+        "tier_level": 15,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">15</span> <span class=\"mod-value\">(46–50)</span>% increased Recovery rate",
+        "text_plain": "15 (46–50)% increased Recovery rate",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Hearty",
+        "tier_level": 31,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">31</span> <span class=\"mod-value\">(51–55)</span>% increased Recovery rate",
+        "text_plain": "31 (51–55)% increased Recovery rate",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Viscous",
+        "tier_level": 46,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">46</span> <span class=\"mod-value\">(56–60)</span>% increased Recovery rate",
+        "text_plain": "46 (56–60)% increased Recovery rate",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Condensed",
+        "tier_level": 61,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">61</span> <span class=\"mod-value\">(61–65)</span>% increased Recovery rate",
+        "text_plain": "61 (61–65)% increased Recovery rate",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Catalysed",
+        "tier_level": 81,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">81</span> <span class=\"mod-value\">(66–70)</span>% increased Recovery rate",
+        "text_plain": "81 (66–70)% increased Recovery rate",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Simmering",
+        "tier_level": 3,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">3</span> <span class=\"mod-value\">(20–23)</span>% of Recovery applied Instantly",
+        "text_plain": "3 (20–23)% of Recovery applied Instantly",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Effervescent",
+        "tier_level": 27,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">27</span> <span class=\"mod-value\">(24–27)</span>% of Recovery applied Instantly",
+        "text_plain": "27 (24–27)% of Recovery applied Instantly",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Bubbling",
+        "tier_level": 46,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">46</span> <span class=\"mod-value\">(28–30)</span>% of Recovery applied Instantly",
+        "text_plain": "46 (28–30)% of Recovery applied Instantly",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "source_url": "https://poe2db.tw/us/Life_Flasks#ModifiersCalc",
+    "scraped_at": "2025-09-23T14:25:05.811Z"
+  },
+  {
+    "category": "Life_Flasks",
+    "domain": "normal",
+    "side": "suffix",
+    "text_html": "\n    #% Chance to gain a Charge when you Kill an Enemy<hr class=\"mod-same-family\">#% increased Charges gained\n",
+    "text_plain": "#% Chance to gain a Charge when you Kill an Enemy#% increased Charges gained",
+    "tier": 9,
+    "ilvl": 82,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "modal_id": "#collapseOnenormal2FlaskRechargeRate",
+    "family_name": "FlaskRechargeRate",
+    "tiers": [
+      {
+        "tier_name": "of the Medic",
+        "tier_level": 8,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">8</span> <span class=\"mod-value\">(21–25)</span>% Chance to gain a Charge when you Kill an Enemy",
+        "text_plain": "8 (21–25)% Chance to gain a Charge when you Kill an Enemy",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Doctor",
+        "tier_level": 26,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">26</span> <span class=\"mod-value\">(26–30)</span>% Chance to gain a Charge when you Kill an Enemy",
+        "text_plain": "26 (26–30)% Chance to gain a Charge when you Kill an Enemy",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Surgeon",
+        "tier_level": 45,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">45</span> <span class=\"mod-value\">(31–35)</span>% Chance to gain a Charge when you Kill an Enemy",
+        "text_plain": "45 (31–35)% Chance to gain a Charge when you Kill an Enemy",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Constant",
+        "tier_level": 1,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">(23–30)</span>% increased Charges gained",
+        "text_plain": "1 (23–30)% increased Charges gained",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Continuous",
+        "tier_level": 13,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">13</span> <span class=\"mod-value\">(31–38)</span>% increased Charges gained",
+        "text_plain": "13 (31–38)% increased Charges gained",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Endless",
+        "tier_level": 33,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">33</span> <span class=\"mod-value\">(39–46)</span>% increased Charges gained",
+        "text_plain": "33 (39–46)% increased Charges gained",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Bottomless",
+        "tier_level": 48,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">48</span> <span class=\"mod-value\">(47–54)</span>% increased Charges gained",
+        "text_plain": "48 (47–54)% increased Charges gained",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Perpetual",
+        "tier_level": 63,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">63</span> <span class=\"mod-value\">(55–62)</span>% increased Charges gained",
+        "text_plain": "63 (55–62)% increased Charges gained",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Eternal",
+        "tier_level": 82,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">82</span> <span class=\"mod-value\">(63–70)</span>% increased Charges gained",
+        "text_plain": "82 (63–70)% increased Charges gained",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "source_url": "https://poe2db.tw/us/Life_Flasks#ModifiersCalc",
+    "scraped_at": "2025-09-23T14:25:05.811Z"
+  },
+  {
+    "category": "Life_Flasks",
+    "domain": "normal",
+    "side": "suffix",
+    "text_html": "\n    #% reduced Charges per use\n",
+    "text_plain": "#% reduced Charges per use",
+    "tier": 6,
+    "ilvl": 83,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "modal_id": "#collapseOnenormal2FlaskChargesUsed",
+    "family_name": "FlaskChargesUsed",
+    "tiers": [
+      {
+        "tier_name": "of the Apprentice",
+        "tier_level": 1,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">(15–17)</span>% reduced Charges per use",
+        "text_plain": "1 (15–17)% reduced Charges per use",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Practitioner",
+        "tier_level": 14,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">14</span> <span class=\"mod-value\">(18–20)</span>% reduced Charges per use",
+        "text_plain": "14 (18–20)% reduced Charges per use",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Mixologist",
+        "tier_level": 34,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">34</span> <span class=\"mod-value\">(21–23)</span>% reduced Charges per use",
+        "text_plain": "34 (21–23)% reduced Charges per use",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Distiller",
+        "tier_level": 49,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">49</span> <span class=\"mod-value\">(24–26)</span>% reduced Charges per use",
+        "text_plain": "49 (24–26)% reduced Charges per use",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Brewer",
+        "tier_level": 64,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">64</span> <span class=\"mod-value\">(27–29)</span>% reduced Charges per use",
+        "text_plain": "64 (27–29)% reduced Charges per use",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Chemist",
+        "tier_level": 83,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">83</span> <span class=\"mod-value\">(30–32)</span>% reduced Charges per use",
+        "text_plain": "83 (30–32)% reduced Charges per use",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "source_url": "https://poe2db.tw/us/Life_Flasks#ModifiersCalc",
+    "scraped_at": "2025-09-23T14:25:05.811Z"
+  },
+  {
+    "category": "Life_Flasks",
+    "domain": "normal",
+    "side": "suffix",
+    "text_html": "\n    #% increased Charges\n",
+    "text_plain": "#% increased Charges",
+    "tier": 6,
+    "ilvl": 81,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "modal_id": "#collapseOnenormal2FlaskNumCharges",
+    "family_name": "FlaskNumCharges",
+    "tiers": [
+      {
+        "tier_name": "of the Wide",
+        "tier_level": 1,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">(23–30)</span>% increased Charges",
+        "text_plain": "1 (23–30)% increased Charges",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Copious",
+        "tier_level": 12,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">12</span> <span class=\"mod-value\">(31–38)</span>% increased Charges",
+        "text_plain": "12 (31–38)% increased Charges",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Plentiful",
+        "tier_level": 32,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">32</span> <span class=\"mod-value\">(39–46)</span>% increased Charges",
+        "text_plain": "32 (39–46)% increased Charges",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Bountiful",
+        "tier_level": 47,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">47</span> <span class=\"mod-value\">(47–54)</span>% increased Charges",
+        "text_plain": "47 (47–54)% increased Charges",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Abundant",
+        "tier_level": 62,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">62</span> <span class=\"mod-value\">(55–62)</span>% increased Charges",
+        "text_plain": "62 (55–62)% increased Charges",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Ample",
+        "tier_level": 81,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">81</span> <span class=\"mod-value\">(63–70)</span>% increased Charges",
+        "text_plain": "81 (63–70)% increased Charges",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "source_url": "https://poe2db.tw/us/Life_Flasks#ModifiersCalc",
+    "scraped_at": "2025-09-23T14:25:05.811Z"
+  },
+  {
+    "category": "Life_Flasks",
+    "domain": "normal",
+    "side": "suffix",
+    "text_html": "\n    Gains # Charges per Second\n",
+    "text_plain": "Gains # Charges per Second",
+    "tier": 3,
+    "ilvl": 45,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "modal_id": "#collapseOnenormal2FlaskGainCharge",
+    "family_name": "FlaskGainCharge",
+    "tiers": [
+      {
+        "tier_name": "of the Foliage",
+        "tier_level": 8,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">8</span> Gains <span class=\"mod-value\">0.15</span> Charges per Second",
+        "text_plain": "8 Gains 0.15 Charges per Second",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Verdant",
+        "tier_level": 26,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">26</span> Gains <span class=\"mod-value\">0.2</span> Charges per Second",
+        "text_plain": "26 Gains 0.2 Charges per Second",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of the Sylvan",
+        "tier_level": 45,
+        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">45</span> Gains <span class=\"mod-value\">0.25</span> Charges per Second",
+        "text_plain": "45 Gains 0.25 Charges per Second",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "source_url": "https://poe2db.tw/us/Life_Flasks#ModifiersCalc",
+    "scraped_at": "2025-09-23T14:25:05.811Z"
+  }
+]

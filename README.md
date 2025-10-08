@@ -239,3 +239,18 @@ This project is not affiliated with or endorsed by Grinding Gear Games.
 - [brather1ng](https://github.com/brather1ng) – For the updated PyPoE fork.
 - Chriskang – For the original VisualGGPK2.
 - [POEDB](http://poedb.tw/us/) & [POE2.RE](https://poe2.re/) – Invaluable data and references.
+
+---
+
+## 🔧 Building From Source
+
+1. Install dependencies (this folder): `npm install`
+2. Development run (hot reload main + renderer): `npm run dev`
+3. Type check: `npm run typecheck`
+4. Package installer: `npm run dist:unsigned` (or `npm run dist` when codesign configured)
+
+All required data JSON files reside under `data/poe2/<League>/` inside this repository so no external folders are needed.
+
+Environment override (optional): set `XILEHUD_DATA_DIR` to point to an alternate league directory at runtime.
+
+---

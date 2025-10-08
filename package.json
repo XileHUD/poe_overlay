@@ -54,11 +54,7 @@
       "xile512.ico"
     ],
     "extraResources": [
-      {
-        "from": "../../data/poe2",
-        "to": "data/poe2",
-        "filter": ["**/*.json"]
-      },
+      { "from": "data/poe2", "to": "data/poe2", "filter": ["**/*.json"] },
       {
         "from": "bundled-images",
         "to": "bundled-images",
