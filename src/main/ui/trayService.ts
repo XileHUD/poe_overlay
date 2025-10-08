@@ -11,6 +11,8 @@ export interface CreateTrayParams {
   checkForUpdates: () => void; // wraps autoUpdater or external link
   onQuit?: () => void;
   onToggleFloatingButton?: () => void;
+  onConfigureHotkey?: () => void;
+  currentHotkey?: string;
 }
 
 export function createTray(params: CreateTrayParams): Tray | null {
@@ -22,7 +24,9 @@ export function createTray(params: CreateTrayParams): Tray | null {
     reloadData,
     checkForUpdates,
     onQuit,
-    onToggleFloatingButton
+    onToggleFloatingButton,
+    onConfigureHotkey,
+    currentHotkey = 'Q'
   } = params;
 
   const DEBUG = process.env.XILEHUD_TRAY_DEBUG === '1';
@@ -120,18 +124,20 @@ export function createTray(params: CreateTrayParams): Tray | null {
   log('Tray created using', iconPathUsed || 'placeholder');
 
   const contextMenu = Menu.buildFromTemplate([
-    { label: 'XileHUD (Ctrl+Q)', enabled: false },
+    { label: `XileHUD (Ctrl+${currentHotkey})`, enabled: false },
     { type: 'separator' },
     { label: 'Modifiers', click: () => onOpenModifiers() },
     { label: 'Merchant History', click: () => onOpenHistory() },
     { type: 'separator' },
-    { label: 'Toggle Floating Button (Ctrl+Alt+Q)', click: () => onToggleFloatingButton?.(), visible: !!onToggleFloatingButton },
+    { label: `Toggle Floating Button (Ctrl+Alt+${currentHotkey})`, click: () => onToggleFloatingButton?.(), visible: !!onToggleFloatingButton },
     { type: 'separator', visible: !!onToggleFloatingButton },
+    { label: 'Change Hotkey...', click: () => onConfigureHotkey?.(), visible: !!onConfigureHotkey },
+    { type: 'separator', visible: !!onConfigureHotkey },
     { label: 'Reload data (JSON)', click: () => reloadData() },
     { label: 'Open data folder', click: () => shell.openPath(getDataDir()) },
     { label: 'Check for app updates', click: () => checkForUpdates() },
     { type: 'separator' },
-    { label: 'Show/Hide (Ctrl+Q)', click: () => onToggleOverlay() },
+    { label: `Show/Hide (Ctrl+${currentHotkey})`, click: () => onToggleOverlay() },
     { type: 'separator' },
     { label: 'Quit', click: () => (onQuit ? onQuit() : app.quit()) }
   ]);

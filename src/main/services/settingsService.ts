@@ -7,6 +7,9 @@ export interface UserSettings {
     position?: { x: number; y: number };
     pinned?: boolean;
   };
+  hotkey?: {
+    key: string; // e.g., "Q", "E", "1", "F1", etc. (Ctrl/Cmd is always fixed)
+  };
 }
 
 export class SettingsService {

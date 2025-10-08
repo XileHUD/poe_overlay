@@ -90,6 +90,8 @@
                                         <option value="exalted">Exalted</option>
                                         <option value="divine">Divine</option>
                                         <option value="annul">Annul</option>
+                                        <option value="chaos">Chaos</option>
+                                        <option value="regal">Regal</option>
                                     </select>
                                 </div>
                                 <div class="fgrp grp-min" style="display:flex; align-items:center; gap:4px;">
@@ -116,6 +118,10 @@
                                         <option value="divine-asc">Lowest Divine</option>
                                         <option value="exalted-desc">Highest Exalted</option>
                                         <option value="exalted-asc">Lowest Exalted</option>
+                                        <option value="chaos-desc">Highest Chaos</option>
+                                        <option value="chaos-asc">Lowest Chaos</option>
+                                        <option value="regal-desc">Highest Regal</option>
+                                        <option value="regal-asc">Lowest Regal</option>
                                     </select>
                                 </div>
                                 <div class="fgrp grp-rarity" style="display:flex; align-items:center; gap:4px;">
@@ -171,6 +177,8 @@
                             <span id="chartCur-divine" class="chart-cur active" data-cur="divine"><span class="sw" style="background:#d4af37;"></span> divine</span>
                             <span id="chartCur-exalted" class="chart-cur" data-cur="exalted"><span class="sw" style="background:#3f6aa1;"></span> exalted</span>
                             <span id="chartCur-annul" class="chart-cur" data-cur="annul"><span class="sw" style="background:#7b40b3;"></span> annul</span>
+                            <span id="chartCur-chaos" class="chart-cur" data-cur="chaos"><span class="sw" style="background:#4a6a35;"></span> chaos</span>
+                            <span id="chartCur-regal" class="chart-cur" data-cur="regal"><span class="sw" style="background:#6b4a28;"></span> regal</span>
                         </div>
                     </div>
                     <canvas id="historyChart" height="150" style="width:100%; min-width:240px; display:block;"></canvas>
@@ -574,7 +582,7 @@
 
                 const buckets = { aggregated:[], gear:[], waystones:[], relics:[], flasks:[], tablets:[], jewels:[], mechanics:[] };
                 const nonModifierCats = new Set([
-                    'LIQUID_EMOTIONS','ANNOINTS','ESSENCES','OMENS','CATALYSTS','SOCKETABLES','GEMS','KEYSTONES','ATLAS_NODES','KEYWORDS','UNIQUES','BASES'
+                    'LIQUID_EMOTIONS','ANNOINTS','ESSENCES','OMENS','CATALYSTS','SOCKETABLES','GEMS','KEYSTONES','ASCENDANCY_PASSIVES','ATLAS_NODES','KEYWORDS','UNIQUES','BASES','CURRENCY'
                 ]);
                 // First, put all aggregated explicitly into the aggregated bucket (preserve our preferred order)
                 for (const a of AGGREGATED_CATEGORIES) {
@@ -756,8 +764,9 @@
                         const isWaystone = /waystone|waystones/i.test(blob) || /^Waystones?_?/i.test(category || '');
                         // Fix: Liquid Emotions detection based on name, not category
                         const isEmotion = /liquid\s*(emotion|envy|hatred|fear|anguish|despair|suffering|greed|contempt|ire)/i.test(name) || /liquid\s*emotion/i.test(baseType);
-                        // Fix: Gems should route to Character > Gems, not modifiers  
-                        const isGem = /\bgem\b|support|lineage|spirit/i.test(blob) && !/liquid/i.test(name);
+                        // Fix: Gems should route to Character > Gems - use itemClass instead of text matching to avoid false positives with "spirit" in rare item names
+                        const itemClass = (item.itemClass || '').toLowerCase();
+                        const isGem = itemClass.includes('skill gem') || itemClass.includes('spirit gem') || itemClass.includes('uncut spirit gem') || itemClass.includes('support gem');
 
                         // (unique via frame/icon was handled above)
 
@@ -1107,7 +1116,9 @@
             const els = [
                 document.getElementById('chartCur-divine'),
                 document.getElementById('chartCur-exalted'),
-                document.getElementById('chartCur-annul')
+                document.getElementById('chartCur-annul'),
+                document.getElementById('chartCur-chaos'),
+                document.getElementById('chartCur-regal')
             ].filter(Boolean);
             els.forEach(el=>{
                 el.addEventListener('click', ()=>{

@@ -150,6 +150,7 @@ export function normalizeCurrency(c: any): string {
   if (/^(div|divi|divine)/.test(s)) return 'divine';
   if (/^(ann|annul|annulment)/.test(s)) return 'annul';
   if (/^(c|chaos)/.test(s)) return 'chaos';
+  if (/^(r|reg|regal)/.test(s)) return 'regal';
   if (/altar/.test(s)) return 'altar';
   return s;
 }

@@ -198,7 +198,7 @@ export function onSortChange(newSort: string): void {
 }
 
 // Chart currency change
-export function onChartCurrencyChange(cur: "divine" | "exalted" | "annul"): void {
+export function onChartCurrencyChange(cur: "divine" | "exalted" | "annul" | "chaos" | "regal"): void {
   setChartCurrency(cur);
 }
 

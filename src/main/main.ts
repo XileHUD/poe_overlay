@@ -18,6 +18,7 @@ import { buildSplashHtml } from './ui/splashTemplate.js';
 import { createTray } from './ui/trayService.js';
 // NodeNext sometimes fails transiently on newly added files with explicit .js; use extensionless for TS while runtime still resolves .js after build
 import { FloatingButton } from './ui/floatingButton';
+import { HotkeyConfigurator } from './ui/hotkeyConfigurator';
 import { SettingsService } from './services/settingsService.js';
 import { registerDataIpc } from './ipc/dataHandlers.js';
 import { registerHistoryPopoutIpc } from './ipc/historyPopoutHandlers.js';
@@ -103,6 +104,7 @@ class OverlayApp {
     private readonly HISTORY_FETCH_MIN_INTERVAL = 5 * 60 * 1000; // 5 minutes
     private floatingButton: FloatingButton | null = null;
     private settingsService: SettingsService | null = null;
+    private hotkeyConfigurator: HotkeyConfigurator | null = null;
 
     constructor() {
         app.whenReady().then(async () => {
@@ -152,7 +154,9 @@ class OverlayApp {
                 reloadData: () => (this.modifierDatabase as any).reload?.(),
                 checkForUpdates: () => { try { if (autoUpdater) autoUpdater.checkForUpdatesAndNotify(); else shell.openExternal('https://github.com/XileHUD/poe_overlay/releases'); } catch { shell.openExternal('https://github.com/XileHUD/poe_overlay/releases'); } },
                 onQuit: () => app.quit(),
-                onToggleFloatingButton: () => this.toggleFloatingButton()
+                onToggleFloatingButton: () => this.toggleFloatingButton(),
+                onConfigureHotkey: () => this.openHotkeyConfigurator(),
+                currentHotkey: this.getHotkeyKey()
             });
             this.updateSplash('Registering shortcuts');
             this.registerShortcuts();
@@ -674,6 +678,16 @@ class OverlayApp {
                                 handled = true;
                                 break;
                             }
+                            // Gem shortcut handling - switch to character tab and show gems panel
+                            if (parsed.category === 'Gems') {
+                                this.toggleOverlayWithAllCategory();
+                                setTimeout(() => {
+                                    this.safeSendToOverlay('set-active-tab', 'characterTab');
+                                    this.safeSendToOverlay('invoke-action', 'gems');
+                                }, 140);
+                                handled = true;
+                                break;
+                            }
                             let modifiers: any[] = [];
                             try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
                             this.safeSendToOverlay('set-active-category', parsed.category);
@@ -799,14 +813,60 @@ class OverlayApp {
         if (!this.floatingButton) return;
         
         this.floatingButton.toggle();
+        const isVisible = this.floatingButton.isVisible();
+        this.settingsService?.set('floatingButton', {
+            ...(this.settingsService.get('floatingButton') || {}),
+            enabled: isVisible
+        });
+    }
+
+    // Get current hotkey (default to "Q")
+    private getHotkeyKey(): string {
+        return this.settingsService?.get('hotkey')?.key || 'Q';
+    }
+
+    // Open hotkey configurator
+    private openHotkeyConfigurator() {
+        if (!this.hotkeyConfigurator) {
+            this.hotkeyConfigurator = new HotkeyConfigurator({
+                currentKey: this.getHotkeyKey(),
+                onSave: (newKey: string) => this.saveHotkey(newKey)
+            });
+        }
+        this.hotkeyConfigurator.show();
+    }
+
+    // Save new hotkey and re-register shortcuts
+    private saveHotkey(newKey: string) {
+        this.settingsService?.set('hotkey', { key: newKey });
+        this.registerShortcuts();
+        // Update tray menu labels
+        if (this.tray) {
+            this.tray.destroy();
+            this.tray = createTray({
+                onToggleOverlay: () => this.toggleOverlayWithAllCategory(),
+                onOpenModifiers: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','modifiers'); },140); },
+                onOpenHistory: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','history'); this.safeSendToOverlay('invoke-action','merchant-history'); },180); },
+                getDataDir: () => this.getDataDir(),
+                reloadData: () => (this.modifierDatabase as any).reload?.(),
+                checkForUpdates: () => { try { if (autoUpdater) autoUpdater.checkForUpdatesAndNotify(); else shell.openExternal('https://github.com/XileHUD/poe_overlay/releases'); } catch { shell.openExternal('https://github.com/XileHUD/poe_overlay/releases'); } },
+                onQuit: () => app.quit(),
+                onToggleFloatingButton: () => this.toggleFloatingButton(),
+                onConfigureHotkey: () => this.openHotkeyConfigurator(),
+                currentHotkey: this.getHotkeyKey()
+            });
+        }
     }
 
     // Global keyboard shortcuts and simulation logic
     private registerShortcuts() {
         try { globalShortcut.unregisterAll(); } catch {}
-        // Primary toggle / capture: Ctrl+Q behavior
+        
+        const hotkeyKey = this.getHotkeyKey();
+        
+        // Primary toggle / capture: Ctrl+<Key> behavior
         try {
-            globalShortcut.register('CommandOrControl+Q', async () => {
+            globalShortcut.register(`CommandOrControl+${hotkeyKey}`, async () => {
                 const now = Date.now();
                 // If overlay visible and NOT pinned, act as a hide toggle.
                 // If pinned, treat Ctrl+Q as a capture attempt (previous behavior).
@@ -848,6 +908,13 @@ class OverlayApp {
                     if (parsed && parsed.category && parsed.category !== 'unknown') {
                         if ((parsed.rarity || '').toLowerCase() === 'unique') {
                             this.showUniqueItem(parsed, true);
+                        } else if (parsed.category === 'Gems') {
+                            // Gem handling - switch to character tab and show gems panel
+                            this.toggleOverlayWithAllCategory();
+                            setTimeout(() => {
+                                this.safeSendToOverlay('set-active-tab', 'characterTab');
+                                this.safeSendToOverlay('invoke-action', 'gems');
+                            }, 140);
                         } else {
                             let modifiers: any[] = [];
                             try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}

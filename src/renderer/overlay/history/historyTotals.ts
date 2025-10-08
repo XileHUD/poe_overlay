@@ -64,14 +64,14 @@ export function renderHistoryTotals(
     totals[nk] = (totals[nk] || 0) + v;
   });
   
-  // Render main currencies (divine, exalted, annul)
-  const main = ["divine", "exalted", "annul"];
+  // Render main currencies (divine, exalted, annul, chaos)
+  const main = ["divine", "exalted", "annul", "chaos"];
   const chips = main
     .filter((c) => (totals as any)[c])
     .map((c) => `<span class="price-badge currency-${c}"><span class="amount">${(totals as any)[c]}</span> ${c}</span>`)
     .join("");
   
-  // Other currencies in tooltip
+  // Other currencies in tooltip (including regal)
   const other = Object.keys(totals).filter((k) => !main.includes(k) && (totals as any)[k]);
   const hover = other.length ? other.map((k) => `${k}: ${(totals as any)[k]}`).join("\n") : "";
   

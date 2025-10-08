@@ -17,18 +17,20 @@ interface ChartPoint {
   d: number;  // divine cumulative
   e: number;  // exalted cumulative
   a: number;  // annul cumulative
+  c: number;  // chaos cumulative
+  r: number;  // regal cumulative
 }
 
 interface ChartState {
   points: ChartPoint[];
-  current: "divine" | "exalted" | "annul";
-  lastTotals: { divine: number; exalted: number; annul: number };
+  current: "divine" | "exalted" | "annul" | "chaos" | "regal";
+  lastTotals: { divine: number; exalted: number; annul: number; chaos: number; regal: number };
 }
 
 const _chartState: ChartState = {
   points: [],
   current: "divine",
-  lastTotals: { divine: 0, exalted: 0, annul: 0 }
+  lastTotals: { divine: 0, exalted: 0, annul: 0, chaos: 0, regal: 0 }
 };
 
 /**
@@ -54,14 +56,14 @@ export function recomputeChartSeriesFromStore(): void {
   });
   
   // Build cumulative points
-  let d = 0, e = 0, a = 0;
+  let d = 0, e = 0, a = 0, c = 0, r = 0;
   const pts: ChartPoint[] = [];
   
   // Add synthetic first point (1 minute before first trade)
   const first = entries[0] as any;
   const tFirstRaw = first.time || first.listedAt || first.date || 0;
   const tFirst = typeof tFirstRaw === "number" ? (tFirstRaw > 1e12 ? tFirstRaw : tFirstRaw * 1000) : Date.parse((tFirstRaw as any) || 0);
-  pts.push({ t: tFirst - 60_000, d: 0, e: 0, a: 0 });
+  pts.push({ t: tFirst - 60_000, d: 0, e: 0, a: 0, c: 0, r: 0 });
   
   // Accumulate trades
   for (const it of entries as any[]) {
@@ -73,23 +75,26 @@ export function recomputeChartSeriesFromStore(): void {
     if (cur === "divine") d += amt;
     else if (cur === "exalted") e += amt;
     else if (cur === "annul") a += amt;
+    else if (cur === "chaos") c += amt;
+    else if (cur === "regal") r += amt;
     
-    pts.push({ t, d, e, a });
+    pts.push({ t, d, e, a, c, r });
   }
   
   // Append final point at 'now' matching normalized header totals (chart and header alignment)
   try {
     const totals: any = historyState.store?.totals || {};
-    const nd = Number(totals.divine || 0), ne = Number(totals.exalted || 0), na = Number(totals.annul || 0);
-    if (nd || ne || na) {
+    const nd = Number(totals.divine || 0), ne = Number(totals.exalted || 0), na = Number(totals.annul || 0),
+          nc = Number(totals.chaos || 0), nr = Number(totals.regal || 0);
+    if (nd || ne || na || nc || nr) {
       const now = Date.now();
-      pts.push({ t: now, d: nd, e: ne, a: na });
-      d = nd; e = ne; a = na;
+      pts.push({ t: now, d: nd, e: ne, a: na, c: nc, r: nr });
+      d = nd; e = ne; a = na; c = nc; r = nr;
     }
   } catch {}
   
   _chartState.points = pts;
-  _chartState.lastTotals = { divine: d, exalted: e, annul: a };
+  _chartState.lastTotals = { divine: d, exalted: e, annul: a, chaos: c, regal: r };
 }
 
 /**
@@ -103,13 +108,15 @@ export function updateHistoryChartFromTotals(totals: Record<string, number>): vo
   const t = Date.now();
   const d = Number((totals as any).divine || 0),
     e = Number((totals as any).exalted || 0),
-    a = Number((totals as any).annul || 0);
+    a = Number((totals as any).annul || 0),
+    c = Number((totals as any).chaos || 0),
+    r = Number((totals as any).regal || 0);
   
   const last = _chartState.lastTotals;
-  if (!_chartState.points.length || d !== last.divine || e !== last.exalted || a !== last.annul) {
-    _chartState.points.push({ t, d, e, a });
+  if (!_chartState.points.length || d !== last.divine || e !== last.exalted || a !== last.annul || c !== last.chaos || r !== last.regal) {
+    _chartState.points.push({ t, d, e, a, c, r });
     if (_chartState.points.length > 200) _chartState.points.shift();
-    _chartState.lastTotals = { divine: d, exalted: e, annul: a };
+    _chartState.lastTotals = { divine: d, exalted: e, annul: a, chaos: c, regal: r };
   }
   
   drawHistoryChart();
@@ -171,12 +178,16 @@ export function drawHistoryChart(): void {
   // Need at least 2 points for a line
   if (pts.length === 1) {
     const p = pts[0];
-    pts = [{ t: p.t - 60_000, d: p.d, e: p.e, a: p.a }, p];
+    pts = [{ t: p.t - 60_000, d: p.d, e: p.e, a: p.a, c: p.c, r: p.r }, p];
   }
   
   const t0 = pts[0].t, t1 = pts[pts.length - 1].t || t0 + 1;
   const minVal = 0;
-  const key = _chartState.current === "exalted" ? "e" : _chartState.current === "annul" ? "a" : "d";
+  const key = _chartState.current === "exalted" ? "e" 
+    : _chartState.current === "annul" ? "a" 
+    : _chartState.current === "chaos" ? "c"
+    : _chartState.current === "regal" ? "r"
+    : "d";
   const maxVal = Math.max(1, ...pts.map((p) => (p as any)[key] as number));
   
   const padL = 36, padR = 8, padT = 8, padB = 22;
@@ -316,7 +327,11 @@ export function drawHistoryChart(): void {
   }
   
   // Draw line chart
-  const color = _chartState.current === "exalted" ? "#3f6aa1" : _chartState.current === "annul" ? "#7b40b3" : "#d4af37";
+  const color = _chartState.current === "exalted" ? "#3f6aa1" 
+    : _chartState.current === "annul" ? "#7b40b3" 
+    : _chartState.current === "chaos" ? "#4a6a35"
+    : _chartState.current === "regal" ? "#6b4a28"
+    : "#d4af37";
   ctx.strokeStyle = color as any;
   (ctx as any).lineWidth = 2;
   ctx.beginPath();
@@ -342,9 +357,9 @@ export function drawHistoryChart(): void {
 /**
  * Switch the chart to display a different currency.
  * 
- * @param cur - Currency to display ("divine" | "exalted" | "annul")
+ * @param cur - Currency to display ("divine" | "exalted" | "annul" | "chaos" | "regal")
  */
-export function setChartCurrency(cur: "divine" | "exalted" | "annul"): void {
+export function setChartCurrency(cur: "divine" | "exalted" | "annul" | "chaos" | "regal"): void {
   _chartState.current = cur;
   drawHistoryChart();
 }
