@@ -9,7 +9,7 @@ Lightweight PoE2 item & modifier overlay – copy an item, see the data instantl
 <br />
 
 <a href="https://www.youtube.com/watch?v=115H_9t8fiA" target="_blank" rel="noopener noreferrer" title="Watch the XileHUD overview video on YouTube">
-	<img src="./screenshots/yt.png" alt="XileHUD Video Overview (YouTube)" width="720" />
+	<img src="./screenshots/YTThumb.png" alt="XileHUD Video Overview (YouTube)" width="720" />
 </a><br/>
 <sub><a href="https://www.youtube.com/watch?v=115H_9t8fiA" target="_blank" rel="noopener noreferrer"><em>Watch a short video overview on YouTube</em></a></sub>
 
@@ -97,16 +97,25 @@ Most features are fully local and can be used offline. An internet connection an
 
 ## 🚀 Quick Start
 
-1. Download the Installer (`XileHUD-Setup-x.y.z.exe`) from the [Releases](https://github.com/XileHUD/poe_overlay/releases/latest) page.
-2. Run the installer (first run of an unsigned build: Windows SmartScreen → “More info → Run anyway”).
-3. Launch Path of Exile 2 (Windowed or Borderless Fullscreen recommended).
-4. Hover an in‑game item (no manual copy needed).
-5. Press `Ctrl+Q` while still hovering – the overlay auto issues the copy in the background and displays the parsed item.
-6. Press `Ctrl+Q` again (when not pinned) to hide; if pinned it stays visible and `Ctrl+Q` captures a new hovered item.
-7. System Tray:
-	- Left click: show / hide
-	- Right click: quit
-8. Updates: future versions download automatically and install when you exit the overlay (settings & history preserved).
+Download the installer (`XileHUD-Setup-x.y.z.exe`) from the [Releases](https://github.com/XileHUD/poe_overlay/releases/latest) page and run it (first run of an unsigned build: Windows SmartScreen → “More info → Run anyway”). Then:
+
+**Primary Hotkey (Ctrl+Q)**  
+In‑game (Windowed or Borderless Fullscreen), just hover your mouse over any item (gear, essence, omen, socketable, etc.) and press `Ctrl+Q`. The overlay auto‑copies the item in the background and shows the correct panel instantly—no manual copy, no extra clicks.
+
+**On‑Screen Button (No Hotkey Mode)**  
+Prefer clicking instead of hotkeys? Press `Ctrl+Alt+Q` (or right‑click the tray icon and enable the toggle) to spawn a draggable on‑screen button. Place it anywhere, pin it if you like, and left‑click it while hovering an item to capture & display that item. Great for chill mapping or controller / couch setups.
+
+**Toggling & Capturing**  
+- `Ctrl+Q` when overlay is hidden: capture hovered item & show overlay.  
+- `Ctrl+Q` again (if not pinned): hide overlay.  
+- While pinned: subsequent `Ctrl+Q` (or button clicks) replace the content without hiding.
+
+**System Tray**  
+- Left click: show / hide overlay  
+- Right click: quit / options (including enabling the capture button)  
+
+**Updates**  
+Future versions auto‑download silently and apply when you exit the app; your settings & merchant history remain intact.
 
 ---
 
