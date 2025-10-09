@@ -15,9 +15,13 @@
     "recover-images": "tsx scripts/recover-missing-images.ts",
     "typecheck": "tsc --noEmit",
     "start": "electron dist/main/main.js",
+    "start:linux": "./run-linux.sh",
+    "start:linux-wayland": "electron dist/main/main.js --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime",
+    "start:linux-x11": "electron dist/main/main.js",
     "pack": "electron-builder --dir",
     "dist": "npm run build && electron-builder",
     "dist:unsigned": "cross-env WIN_CODESIGN=skip npm run build && electron-builder",
+    "dist:linux": "npm run build && electron-builder --linux",
     "publish:github": "npm run build && electron-builder --publish always"
   },
   "keywords": ["poe2", "overlay", "modifiers", "electron"],
@@ -51,9 +55,13 @@
     },
     "files": [
       "dist/**",
-      "xile512.ico"
+      "xile512.ico",
+      "xilehud.png"
     ],
     "extraResources": [
+      "xilehud.png",
+      "xile512.ico",
+      { "from": "build/icon.ico", "to": "icon.ico" },
       { "from": "data/poe2", "to": "data/poe2", "filter": ["**/*.json"] },
       {
         "from": "bundled-images",
@@ -93,6 +101,23 @@
       "deleteAppDataOnUninstall": false,
       "displayLanguageSelector": false,
       "warningsAsErrors": false
+    },
+    "linux": {
+      "icon": "xilehud.png",
+      "category": "Game",
+      "artifactName": "XileHUD-${version}-${arch}.${ext}",
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": ["x64"]
+        }
+      ],
+      "desktop": {
+        "Name": "XileHUD",
+        "Comment": "PoE2 item & modifier overlay",
+        "Categories": "Game;Utility;",
+        "StartupWMClass": "XileHUD"
+      }
     }
   }
 }

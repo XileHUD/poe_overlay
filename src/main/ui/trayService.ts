@@ -48,7 +48,11 @@ export function createTray(params: CreateTrayParams): Tray | null {
       path.join(process.cwd(), 'packages', 'overlay'),
       path.join(process.cwd(), 'packages', 'overlay', 'build')
     ];
-    const names = ['xile512.ico','icon.ico','xilehudICO.ico'];
+    // Linux/KDE prefers PNG for tray icons, Windows prefers ICO
+    const isLinux = process.platform === 'linux';
+    const names = isLinux 
+      ? ['xilehud.png', 'icon.png', 'xile512.ico', 'icon.ico']
+      : ['xile512.ico', 'icon.ico', 'xilehudICO.ico', 'xilehud.png'];
     const candidates: string[] = [];
     for (const r of roots) {
       for (const n of names) candidates.push(path.join(r, n));
@@ -130,36 +134,126 @@ export function createTray(params: CreateTrayParams): Tray | null {
   const contextMenu = Menu.buildFromTemplate([
     { label: `XileHUD (${currentHotkeyLabel})`, enabled: false },
     { type: 'separator' },
-    { label: 'Modifiers', click: () => onOpenModifiers(), visible: showModifiers },
-    { label: 'Merchant History', click: () => onOpenHistory(), visible: showMerchantHistory },
+    { 
+      label: 'Modifiers', 
+      click: () => {
+        log('Menu click: Modifiers');
+        try { onOpenModifiers(); } catch (e) { log('Error in onOpenModifiers:', e); }
+      }, 
+      visible: showModifiers 
+    },
+    { 
+      label: 'Merchant History', 
+      click: () => {
+        log('Menu click: Merchant History');
+        try { onOpenHistory(); } catch (e) { log('Error in onOpenHistory:', e); }
+      }, 
+      visible: showMerchantHistory 
+    },
     { type: 'separator', visible: showModifiers || showMerchantHistory },
-    { label: 'Toggle Floating Button', click: () => onToggleFloatingButton?.(), visible: !!onToggleFloatingButton },
+    { 
+      label: 'Toggle Floating Button', 
+      click: () => {
+        log('Menu click: Toggle Floating Button');
+        try { onToggleFloatingButton?.(); } catch (e) { log('Error in onToggleFloatingButton:', e); }
+      }, 
+      visible: !!onToggleFloatingButton 
+    },
     { type: 'separator', visible: !!onToggleFloatingButton },
-    { label: 'Settings...', click: () => onOpenSettings?.(), visible: !!onOpenSettings },
+    { 
+      label: 'Settings...', 
+      click: () => {
+        log('Menu click: Settings');
+        try { onOpenSettings?.(); } catch (e) { log('Error in onOpenSettings:', e); }
+      }, 
+      visible: !!onOpenSettings 
+    },
     { type: 'separator', visible: !!onOpenSettings },
-    { label: `Show/Hide (${currentHotkeyLabel})`, click: () => onToggleOverlay() },
+    { 
+      label: `Show/Hide (${currentHotkeyLabel})`, 
+      click: () => {
+        log('Menu click: Show/Hide');
+        try { onToggleOverlay(); } catch (e) { log('Error in onToggleOverlay:', e); }
+      }
+    },
     { type: 'separator' },
-    { label: 'Quit', click: () => (onQuit ? onQuit() : app.quit()) }
+    { 
+      label: 'Quit', 
+      click: () => {
+        log('Menu click: Quit');
+        try { 
+          if (onQuit) onQuit(); 
+          else app.quit(); 
+        } catch (e) { 
+          log('Error in Quit:', e); 
+          app.quit(); 
+        }
+      }
+    }
   ]);
 
   try { tray.setToolTip('XileHUD'); } catch {}
   
-  // Windows fix: Use click event to manually popup menu with proper z-order
-  // This ensures the menu appears on top of all windows
-  try {
-    tray.on('click', () => {
-      if (tray) {
-        tray.popUpContextMenu(contextMenu);
-      }
-    });
-    tray.on('right-click', () => {
-      if (tray) {
-        tray.popUpContextMenu(contextMenu);
-      }
-    });
-  } catch {}
+  // Linux/KDE fix: Set title to help with tray icon visibility
+  if (process.platform === 'linux') {
+    try { tray.setTitle('XileHUD'); } catch {}
+  }
   
-  try { tray.on('double-click', () => (onShowOverlay ? onShowOverlay() : onToggleOverlay())); } catch {}
+  // Platform-specific click handlers
+  if (process.platform === 'linux') {
+    // Linux: Set context menu directly, it will show automatically on click
+    try { 
+      tray.setContextMenu(contextMenu); 
+      log('Linux: Context menu set with', contextMenu.items.length, 'items');
+      
+      // Force menu refresh to ensure it's properly attached
+      process.nextTick(() => {
+        if (tray) {
+          try {
+            tray.setContextMenu(contextMenu);
+            log('Linux: Context menu refreshed');
+          } catch {}
+        }
+      });
+    } catch (e) { 
+      log('Failed to set context menu:', e); 
+    }
+    
+    // Add click handler to log clicks
+    try {
+      tray.on('click', () => {
+        log('Tray icon clicked (left click)');
+      });
+      tray.on('right-click', () => {
+        log('Tray icon clicked (right click)');
+      });
+    } catch {}
+    
+    // Double-click to show/hide overlay
+    try { 
+      tray.on('double-click', () => {
+        log('Double-click detected');
+        (onShowOverlay ? onShowOverlay() : onToggleOverlay());
+      }); 
+    } catch {}
+  } else {
+    // Windows: Use click event to manually popup menu with proper z-order
+    // This ensures the menu appears on top of all windows
+    try {
+      tray.on('click', () => {
+        if (tray) {
+          tray.popUpContextMenu(contextMenu);
+        }
+      });
+      tray.on('right-click', () => {
+        if (tray) {
+          tray.popUpContextMenu(contextMenu);
+        }
+      });
+    } catch {}
+    
+    try { tray.on('double-click', () => (onShowOverlay ? onShowOverlay() : onToggleOverlay())); } catch {}
+  }
 
   return tray;
 }
