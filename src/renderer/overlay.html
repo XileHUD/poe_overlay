@@ -6,6 +6,7 @@
     <title>PoE2 Modifier Overlay</title>
     <link rel="stylesheet" href="./styles/overlay.css">
     <script type="module" src="./overlay-entry.ts"></script>
+
         <style>
             /* Login / Logout button state styles */
             #poeLoginBtn.login-state { background:#1e5eb8; color:#fff; border:1px solid #2d74d6; }
@@ -331,6 +332,42 @@
     const headerTitleEl = document.getElementById('headerTitle');
     const headerSubtitleEl = document.getElementById('headerSubtitle');
 
+    // Track which high-level views are allowed by the current feature configuration
+    const featureAvailability = {
+        modifiers: true,
+        crafting: true,
+        history: true
+    };
+
+    function setFeatureAvailability(flags) {
+        if (!flags) return;
+        if (typeof flags.modifiers === 'boolean') featureAvailability.modifiers = flags.modifiers;
+        if (typeof flags.crafting === 'boolean') featureAvailability.crafting = flags.crafting;
+        if (typeof flags.history === 'boolean') featureAvailability.history = flags.history;
+    }
+
+    function isViewAvailable(view) {
+        if (view === 'modifiers') return !!featureAvailability.modifiers;
+        if (view === 'history') return !!featureAvailability.history;
+        if (view === 'crafting' || view === 'character') return !!featureAvailability.crafting;
+        return true;
+    }
+
+    function pickFirstAvailableView(preferred) {
+        const order = [];
+        if (preferred) order.push(preferred);
+        order.push('modifiers', 'crafting', 'history');
+        const seen = new Set();
+        for (const view of order) {
+            if (seen.has(view)) continue;
+            seen.add(view);
+            if (view === 'modifiers' && featureAvailability.modifiers) return 'modifiers';
+            if ((view === 'crafting' || view === 'character') && featureAvailability.crafting) return 'crafting';
+            if (view === 'history' && featureAvailability.history) return 'history';
+        }
+        return null;
+    }
+
     // === Image Path Helper ===
     // Convert imageLocal field to file:// URL for bundled images (SYNC version for templates)
     function getImagePath(item) {
@@ -357,6 +394,9 @@
 
     // Footer tab helpers: keep only the current tab blue
     function setActiveTab(tabId){
+        const targetTab = document.getElementById(tabId);
+        if (!targetTab) return;
+        if (window.getComputedStyle(targetTab).display === 'none') return;
         const tabs = [
             document.getElementById('tabModifier'),
             document.getElementById('tabHistory'),
@@ -397,6 +437,24 @@
 
     // Clean view switching: only one container visible at a time
     function setView(view){
+        let targetView = view;
+        if (view === 'modifiers' && !featureAvailability.modifiers) {
+            targetView = pickFirstAvailableView('crafting');
+        } else if ((view === 'crafting' || view === 'character') && !featureAvailability.crafting) {
+            targetView = pickFirstAvailableView(view === 'crafting' ? 'history' : undefined);
+        } else if (view === 'history' && !featureAvailability.history) {
+            targetView = pickFirstAvailableView('modifiers');
+        }
+
+        if (!targetView) {
+            console.warn('[View] No available view to show (feature set disabled)');
+            return;
+        }
+
+        if (targetView !== view) {
+            console.log(`[View] Requested "${view}" but feature disabled, falling back to "${targetView}"`);
+        }
+        view = targetView;
         const content = document.getElementById('content');
         const crafting = document.getElementById('craftingPanel');
         const history = document.getElementById('historyContainer');
@@ -633,13 +691,237 @@
             } catch {}
         }
         // Wire initial controls on DOM ready
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Feature-aware tab visibility (hide disabled features)
+            try {
+                const enabledFeatures = await window.electronAPI?.getEnabledFeatures?.();
+                console.log('[FeatureFilter] Enabled features:', enabledFeatures);
+                
+                if (enabledFeatures) {
+                    let modifiersEnabled = !!enabledFeatures.modifiers;
+                    let historyEnabled = !!enabledFeatures.merchant;
+                    let craftingViewEnabled = false;
+
+                    // Hide Modifier tab if disabled
+                    if (!enabledFeatures.modifiers) {
+                        console.log('[FeatureFilter] Hiding Modifier tab (modifiers disabled)');
+                        const modTab = document.getElementById('tabModifier');
+                        if (modTab) {
+                            modTab.remove();
+                            console.log('[FeatureFilter] Modifier tab removed');
+                        }
+                        modifiersEnabled = false;
+                    } else {
+                        modifiersEnabled = true;
+                    }
+                    
+                    // Hide Merchant History tab if disabled
+                    if (!enabledFeatures.merchant) {
+                        console.log('[FeatureFilter] Hiding Merchant History tab (merchant disabled)');
+                        const histTab = document.getElementById('tabHistory');
+                        if (histTab) histTab.remove();
+                        historyEnabled = false;
+                    } else {
+                        historyEnabled = true;
+                    }
+                    
+                    // Filter Crafting submenu items
+                    if (enabledFeatures.crafting && !enabledFeatures.crafting.enabled) {
+                        const craftingTab = document.getElementById('craftingTab');
+                        if (craftingTab) craftingTab.remove();
+                    } else if (enabledFeatures.crafting?.enabled) {
+                        const craftMenu = document.getElementById('craftingMenu');
+                        const subs = enabledFeatures.crafting.subcategories || {};
+                        let anySubEnabled = false;
+                        
+                        if (craftMenu) {
+                            const items = craftMenu.querySelectorAll('.crafting-menu-item');
+                            items.forEach(item => {
+                                const action = item.getAttribute('data-action');
+                                let shouldShow = false;
+                                
+                                if (action === 'liquid-emotions' && subs.liquidEmotions) shouldShow = true;
+                                if (action === 'annoints' && subs.annoints) shouldShow = true;
+                                if (action === 'essences' && subs.essences) shouldShow = true;
+                                if (action === 'omens' && subs.omens) shouldShow = true;
+                                if (action === 'currency' && subs.currency) shouldShow = true;
+                                if (action === 'catalysts' && subs.catalysts) shouldShow = true;
+                                if (action === 'socketables' && subs.socketables) shouldShow = true;
+                                
+                                if (shouldShow) {
+                                    anySubEnabled = true;
+                                    item.style.display = '';
+                                } else {
+                                    item.style.display = 'none';
+                                }
+                            });
+                        }
+                        
+                        // Hide entire Crafting tab if no subcategories enabled
+                        if (!anySubEnabled) {
+                            const craftingTab = document.getElementById('craftingTab');
+                            if (craftingTab) craftingTab.remove();
+                        }
+                    }
+                    if (document.getElementById('craftingTab')) craftingViewEnabled = true;
+                    
+                    // Filter Character submenu items
+                    if (enabledFeatures.character && !enabledFeatures.character.enabled) {
+                        const charTab = document.getElementById('characterTab');
+                        if (charTab) charTab.remove();
+                    } else if (enabledFeatures.character?.enabled) {
+                        const charMenu = document.getElementById('characterMenu');
+                        const subs = enabledFeatures.character.subcategories || {};
+                        let anySubEnabled = false;
+                        
+                        if (charMenu) {
+                            const items = charMenu.querySelectorAll('.character-menu-item');
+                            items.forEach(item => {
+                                const action = item.getAttribute('data-action');
+                                let shouldShow = false;
+                                
+                                if (action === 'quest-passives' && subs.questPassives) shouldShow = true;
+                                if (action === 'keystones' && subs.keystones) shouldShow = true;
+                                if (action === 'asc-passives' && subs.ascendancyPassives) shouldShow = true;
+                                if (action === 'atlas-nodes' && subs.atlasNodes) shouldShow = true;
+                                if (action === 'gems' && subs.gems) shouldShow = true;
+                                if (action === 'glossar' && subs.glossar) shouldShow = true;
+                                
+                                if (shouldShow) {
+                                    anySubEnabled = true;
+                                    item.style.display = '';
+                                } else {
+                                    item.style.display = 'none';
+                                }
+                            });
+                        }
+                        
+                        // Hide entire Character tab if no subcategories enabled
+                        if (!anySubEnabled) {
+                            const charTab = document.getElementById('characterTab');
+                            if (charTab) charTab.remove();
+                        }
+                    }
+                    if (document.getElementById('characterTab')) craftingViewEnabled = true;
+                    
+                    // Filter Items submenu items
+                    if (enabledFeatures.items && !enabledFeatures.items.enabled) {
+                        const itemsTab = document.getElementById('itemsTab');
+                        if (itemsTab) itemsTab.remove();
+                    } else if (enabledFeatures.items?.enabled) {
+                        const itemsMenu = document.getElementById('itemsMenu');
+                        const subs = enabledFeatures.items.subcategories || {};
+                        let anySubEnabled = false;
+                        
+                        if (itemsMenu) {
+                            const items = itemsMenu.querySelectorAll('.items-menu-item');
+                            items.forEach(item => {
+                                const action = item.getAttribute('data-action');
+                                let shouldShow = false;
+                                
+                                if (action === 'uniques' && subs.uniques) shouldShow = true;
+                                if (action === 'bases' && subs.bases) shouldShow = true;
+                                
+                                if (shouldShow) {
+                                    anySubEnabled = true;
+                                    item.style.display = '';
+                                } else {
+                                    item.style.display = 'none';
+                                }
+                            });
+                        }
+                        
+                        // Hide entire Items tab if no subcategories enabled
+                        if (!anySubEnabled) {
+                            const itemsTab = document.getElementById('itemsTab');
+                            if (itemsTab) itemsTab.remove();
+                        }
+                    }
+                    if (document.getElementById('itemsTab')) craftingViewEnabled = true;
+                    
+                    // Tools menu
+                    if (enabledFeatures.tools && !enabledFeatures.tools.enabled) {
+                        const toolsTab = document.getElementById('toolsTab');
+                        if (toolsTab) toolsTab.remove();
+                    } else if (enabledFeatures.tools?.enabled) {
+                        const toolsMenu = document.getElementById('toolsMenu');
+                        const subs = enabledFeatures.tools.subcategories || {};
+                        let anySubEnabled = false;
+                        
+                        if (toolsMenu) {
+                            const items = toolsMenu.querySelectorAll('.tools-menu-item');
+                            items.forEach(item => {
+                                const action = item.getAttribute('data-action');
+                                let shouldShow = false;
+                                
+                                if (action === 'regex' && subs.regex) shouldShow = true;
+                                
+                                if (shouldShow) {
+                                    anySubEnabled = true;
+                                    item.style.display = '';
+                                } else {
+                                    item.style.display = 'none';
+                                }
+                            });
+                        }
+                        
+                        // Hide entire Tools tab if no subcategories enabled
+                        if (!anySubEnabled) {
+                            const toolsTab = document.getElementById('toolsTab');
+                            if (toolsTab) toolsTab.remove();
+                        }
+                    }
+                    if (document.getElementById('toolsTab')) craftingViewEnabled = true;
+
+                    setFeatureAvailability({
+                        modifiers: modifiersEnabled,
+                        crafting: craftingViewEnabled,
+                        history: historyEnabled
+                    });
+                    
+                    // Set first visible tab as active and default view
+                    const tabOrder = ['tabModifier', 'craftingTab', 'characterTab', 'itemsTab', 'toolsTab', 'tabHistory'];
+                    let firstVisibleTab = null;
+                    for (const tabId of tabOrder) {
+                        const tab = document.getElementById(tabId);
+                        if (tab && window.getComputedStyle(tab).display !== 'none') {
+                            firstVisibleTab = tabId;
+                            break;
+                        }
+                    }
+                    if (firstVisibleTab) {
+                        const targetView = firstVisibleTab === 'tabModifier' ? 'modifiers'
+                                          : firstVisibleTab === 'tabHistory' ? 'history'
+                                          : 'crafting';
+                        try { setView(targetView); } catch {}
+                        try { setActiveTab(firstVisibleTab); } catch {}
+                        if (firstVisibleTab === 'tabHistory') {
+                            try { setHeader('Merchant History'); } catch {}
+                        } else if (firstVisibleTab === 'tabModifier') {
+                            try { setHeader('Modifier'); } catch {}
+                        } else {
+                            try { setHeader('Crafting'); } catch {}
+                        }
+                    }
+                }
+            } catch (err) {
+                console.error('[Tab visibility] Error:', err);
+            }
+            
             try { populateCategoryDropdown(); } catch {}
             // Re-populate once modifiers fully loaded (ensures full category list when opening without item)
             try { window.electronAPI?.onModifiersLoaded?.((_cats)=> { try { populateCategoryDropdown(); } catch {} }); } catch {}
-            setHeader('Modifier');
-            // Initial UI state
-            try { setActiveTab('tabModifier'); } catch {}
+            if (!headerTitleEl || !headerTitleEl.textContent) {
+                const fallbackView = pickFirstAvailableView('modifiers');
+                if (fallbackView === 'history') {
+                    setHeader('Merchant History');
+                } else if (fallbackView === 'crafting') {
+                    setHeader('Crafting');
+                } else {
+                    setHeader('Modifier');
+                }
+            }
+            // Initial UI state (tab already set above based on enabled features)
             try { closeAllMenus(); } catch {}
             const select = document.getElementById('categorySelect');
             if (select) select.addEventListener('change', switchCategory);
@@ -648,6 +930,165 @@
             function updatePinUI(pinned){ if (!pinBtn) return; pinBtn.classList.toggle('active', !!pinned); pinBtn.textContent = pinned ? 'Pinned' : 'Pin'; }
             if (pinBtn) pinBtn.addEventListener('click', ()=>{ try { const isPinned = pinBtn.classList.contains('active'); window.electronAPI?.setPinned?.(!isPinned); updatePinUI(!isPinned); } catch {} });
             try { window.electronAPI?.onPinnedChanged?.((p)=> updatePinUI(p)); } catch {}
+            
+            // Notify main process that overlay is ready (this will trigger pinned state sync)
+            try { window.electronAPI?.overlayReady?.(); } catch {}
+            
+            // Font size management - robust scaling for all inline px fonts
+            (async function() {
+                try {
+                    if (!window.electronAPI) return;
+
+                    const STATE = {
+                        scale: 1,
+                        scaledAttr: 'data-font-scaled'
+                    };
+
+                    function isTextual(el){
+                        const tag = el.tagName;
+                        if (!tag) return false;
+                        return !(
+                            tag === 'IMG' || tag === 'SVG' || tag === 'CANVAS' ||
+                            tag === 'VIDEO' || tag === 'AUDIO' ||
+                            tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT'
+                        );
+                    }
+
+                    function hasScaledAncestor(el){
+                        try {
+                            let p = el.parentElement;
+                            while (p && p !== document.body){
+                                if (p.getAttribute && p.getAttribute(STATE.attr)) return true;
+                                p = p.parentElement;
+                            }
+                        } catch {}
+                        return false;
+                    }
+
+                    // Find nearest ancestor that we previously marked with a stored base font
+                    function nearestScaledAncestor(el){
+                        try {
+                            let p = el.parentElement;
+                            while (p && p !== document.body){
+                                if (p.getAttribute && p.getAttribute(STATE.attr)) return p;
+                                p = p.parentElement;
+                            }
+                        } catch {}
+                        return null;
+                    }
+
+                    function scaleElement(el, scale){
+                        if (!isTextual(el)) return;
+                        try {
+                            let base = el.getAttribute(STATE.attr);
+                            if (!base){
+                                const cs = getComputedStyle(el);
+                                let px = parseFloat(cs.fontSize) || 12;
+                                // If an ancestor was already scaled and this element doesn't have its own inline font-size
+                                // then its computed font-size already includes the ancestor scale. Normalize it out so we don't square the scale.
+                                const hasInline = !!(el && el.style && el.style.fontSize);
+                                if (!hasInline) {
+                                    const anc = nearestScaledAncestor(el);
+                                    if (anc) {
+                                        const ancPx = parseFloat(getComputedStyle(anc).fontSize) || 0;
+                                        const elPxNow = px;
+                                        // Only normalize if element appears to inherit ancestor size (computed sizes are effectively equal)
+                                        if (Math.abs(elPxNow - ancPx) < 0.5) {
+                                            px = elPxNow / (STATE.scale || 1);
+                                        }
+                                    }
+                                }
+                                // Detect headline-like text (names/titles): heavy weight and larger base size
+                                const fwRaw = (cs.fontWeight || '').toString();
+                                const fw = /bold/i.test(fwRaw) ? 700 : (parseInt(fwRaw, 10) || 400);
+                                const isHeadline = (fw >= 600 && px >= 13) || px >= 14;
+                                el.setAttribute(STATE.attr, String(px));
+                                if (isHeadline) el.setAttribute('data-font-headline', '1');
+                                base = String(px);
+                            }
+                            const basePx = parseFloat(base) || 12;
+                            // Apply sublinear scaling to headline-like text to avoid oversized names
+                            const isHeadline = el.getAttribute('data-font-headline') === '1';
+                            const effScale = isHeadline ? (1 + (scale - 1) * 0.6) : scale;
+                            let newPx = Math.round(basePx * effScale);
+                            if (!isFinite(newPx) || newPx < 8) newPx = 8;
+                            // Optional soft cap to avoid runaway titles
+                            if (isHeadline && newPx > 22) newPx = 22;
+                            el.style.fontSize = newPx + 'px';
+                            // Mark as scaled so we can safely reset only our own inline sizes later
+                            el.setAttribute(STATE.scaledAttr, '1');
+                        } catch {}
+                    }
+
+                    function applyScale(root, scale){
+                        if (!root) root = document.body;
+                        // Do not scale the root container to avoid inheritance compounding
+                        // All descendants
+                        const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT);
+                        let node;
+                        while ((node = walker.nextNode())){
+                            scaleElement(node, scale);
+                        }
+                    }
+
+                    // One-time purge of previously inlined font sizes to establish a clean baseline
+                    function purgeFontState(){
+                        try {
+                            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT);
+                            let node;
+                            while ((node = walker.nextNode())){
+                                if (node.nodeType === 1){
+                                    // Only reset sizes that we previously applied; preserve original inline font-sizes
+                                    if (node.getAttribute && node.getAttribute(STATE.scaledAttr) === '1'){
+                                        if (node.style && node.style.fontSize) node.style.fontSize = '';
+                                    }
+                                    if (node.removeAttribute){
+                                        node.removeAttribute(STATE.attr);
+                                        node.removeAttribute(STATE.scaledAttr);
+                                    }
+                                }
+                            }
+                        } catch {}
+                    }
+
+                    // Observe dynamic content and scale newcomers using stored base
+                    let observer;
+                    function ensureObserver(){
+                        try {
+                            if (observer) return;
+                            observer = new MutationObserver((mutations)=>{
+                                for (const m of mutations){
+                                    m.addedNodes && m.addedNodes.forEach(n=>{
+                                        if (n.nodeType === 1){
+                                            applyScale(n, STATE.scale);
+                                        }
+                                    });
+                                }
+                            });
+                            observer.observe(document.body, { childList: true, subtree: true });
+                        } catch {}
+                    }
+
+                    function setFontScale(percent){
+                        const scale = Math.max(0.8, Math.min(1.5, (Number(percent)||100) / 100));
+                        STATE.scale = scale;
+                        applyScale(document.body, scale);
+                        ensureObserver();
+                        console.log('[FontSize] Applied scale:', percent + '% =>', scale);
+                    }
+
+                    // Initial load: purge inline sizes once, then set scale
+                    purgeFontState();
+                    const size = await window.electronAPI.getFontSize();
+                    setFontScale(size);
+
+                    // Live changes from Settings window
+                    window.electronAPI.onFontSizeChanged((size) => setFontScale(size));
+                } catch (e) {
+                    console.warn('[FontSize] Error:', e);
+                }
+            })();
+            
             const search = document.getElementById('search-input');
             if (search) search.addEventListener('input', () => { if (window.originalData) try { renderFilteredContent(window.originalData); } catch {} });
             // iLvl filters (debounced 500ms)
@@ -694,7 +1135,6 @@
                         if (!data || !data.item) return;
                         // Always start from a clean state
                         closeAllMenus();
-                        setView('modifiers');
 
                         const item = data.item || {};
                         const rarity = (item.rarity || '').toLowerCase();
@@ -1473,12 +1913,12 @@ async function showAscendancyPassives(){
 }
 function renderAscendancyPassives(list){
     const panel=craftingPanelEl; if(!panel) return;
-    panel.innerHTML=`<div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
+    panel.innerHTML=`<div class='page-inner'><div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
         <input id='ascSearch' type='text' placeholder='Search ascendancy passives...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
         <button id='ascClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-    <div id='ascClassFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
-    <div id='ascWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:10px;'></div>`;
+    <div id='ascClassFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
+    <div id='ascWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:10px;'></div></div>`;
     const searchEl=panel.querySelector('#ascSearch');
     const clearBtn=panel.querySelector('#ascClear');
     const filterWrap=panel.querySelector('#ascClassFilters');
@@ -1528,12 +1968,12 @@ function renderAscendancyPassives(list){
 }
 function renderKeystones(list){
     const panel=craftingPanelEl; if(!panel) return;
-    panel.innerHTML=`<div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
+    panel.innerHTML=`<div class='page-inner'><div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
         <input id='keystoneSearch' type='text' placeholder='Search keystones...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
         <button id='keystoneClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-    <div id='keystoneTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
-    <div id='keystoneWrap' style='display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; align-items:stretch;'></div>`;
+    <div id='keystoneTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
+    <div id='keystoneWrap' style='display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; align-items:stretch;'></div></div>`;
     // Don't set inline display:none - let CSS handle visibility via body classes
     const searchEl=panel.querySelector('#keystoneSearch');
     const clearBtn=panel.querySelector('#keystoneClear');
@@ -1635,12 +2075,12 @@ async function showAtlasNodes(){
 }
 function renderAtlasNodes(list){
     const panel=craftingPanelEl; if(!panel) return;
-    panel.innerHTML=`<div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
+    panel.innerHTML=`<div class='page-inner'><div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
         <input id='atlasSearch' type='text' placeholder='Search atlas nodes...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
         <button id='atlasClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-    <div id='atlasTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
-    <div id='atlasWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:10px;'></div>`;
+    <div id='atlasTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
+    <div id='atlasWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:10px;'></div></div>`;
     const searchEl=panel.querySelector('#atlasSearch');
     const clearBtn=panel.querySelector('#atlasClear');
     const tagWrap=panel.querySelector('#atlasTagFilters');
@@ -1763,7 +2203,7 @@ function renderGems(groups){
         <button id='gemClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
     <div style='display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:4px;'>
-      <div id='gemTagFilters' style='display:flex; flex-wrap:wrap; gap:4px;'></div>
+    <div id='gemTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; justify-content:center; width:100%;'></div>
       <button id='gemImgLogBtn' title='Show recent image request log' style='padding:2px 6px; font-size:11px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer;'>Img Log</button>
     </div>
     <div id='gemImgDiag' style='display:none; flex-direction:column; gap:4px; margin-bottom:8px;'></div>
@@ -1938,39 +2378,43 @@ function renderGems(groups){
                     if (window.electronAPI) {
                         try {
                             window.electronAPI.onSetActiveTab?.((tab)=>{
-                            if (tab === 'modifiers') {
-                                // activate modifiers tab programmatically
-                                const modTab = document.getElementById('tabModifier');
-                                const histTab = document.getElementById('tabHistory');
-                                const contentMod = document.getElementById('content');
-                                const historyContainer = document.getElementById('historyContainer');
-                                modTab?.classList.add('active');
-                                histTab?.classList.remove('active');
-                                if (contentMod) contentMod.style.display='block';
-                                if (historyContainer) historyContainer.style.display='none';
-                            }
-                            if (tab === 'crafting') {
-                                // activate crafting tab programmatically
-                                const craftBtn = document.getElementById('craftingTab');
-                                craftBtn?.click?.();
-                            }
-                            if (tab === 'history') {
-                                const modTab = document.getElementById('tabModifier');
-                                const histTab = document.getElementById('tabHistory');
-                                const contentMod = document.getElementById('content');
-                                const historyContainer = document.getElementById('historyContainer');
-                                modTab?.classList.remove('active');
-                                histTab?.classList.add('active');
-                                if (contentMod) contentMod.style.display='none';
-                                if (historyContainer) historyContainer.style.display='flex';
-                                try { setHeader('Merchant History'); } catch {}
-                            }
+                                if (tab === 'modifiers') {
+                                    if (!featureAvailability.modifiers) return;
+                                    const modTab = document.getElementById('tabModifier');
+                                    if (!modTab || window.getComputedStyle(modTab).display === 'none') return;
+                                    const histTab = document.getElementById('tabHistory');
+                                    const contentMod = document.getElementById('content');
+                                    const historyContainer = document.getElementById('historyContainer');
+                                    modTab.classList.add('active');
+                                    histTab?.classList.remove('active');
+                                    if (contentMod) contentMod.style.display='block';
+                                    if (historyContainer) historyContainer.style.display='none';
+                                }
+                                if (tab === 'crafting' || tab === 'character') {
+                                    if (!featureAvailability.crafting) return;
+                                    const craftBtn = document.getElementById('craftingTab');
+                                    craftBtn?.click?.();
+                                }
+                                if (tab === 'history') {
+                                    if (!featureAvailability.history) return;
+                                    const histTab = document.getElementById('tabHistory');
+                                    if (!histTab || window.getComputedStyle(histTab).display === 'none') return;
+                                    const modTab = document.getElementById('tabModifier');
+                                    const contentMod = document.getElementById('content');
+                                    const historyContainer = document.getElementById('historyContainer');
+                                    modTab?.classList.remove('active');
+                                    histTab.classList.add('active');
+                                    if (contentMod) contentMod.style.display='none';
+                                    if (historyContainer) historyContainer.style.display='flex';
+                                    try { setHeader('Merchant History'); } catch {}
+                                }
                             });
                             window.electronAPI.onInvokeAction?.((action)=>{
                                 if (action === 'regex') {
                                     try { if (window.OverlayRegex?.show) { window.OverlayRegex.show(); setHeader('Regex'); } } catch {}
                                 }
                                 if (action === 'merchant-history') {
+                                    if (!featureAvailability.history) return;
                                     const histBtn = document.getElementById('tabHistory');
                                     histBtn?.click?.();
                                 }
@@ -1995,6 +2439,15 @@ function renderGems(groups){
                             // Respond to category selection from main
                             window.electronAPI.onSetActiveCategory?.(async (cat)=>{
                                 try {
+                                    const normalized = String(cat || '').toLowerCase();
+                                    if (normalized === 'socketables') {
+                                        closeAllMenus();
+                                        setActiveTab('craftingTab');
+                                        setView('crafting');
+                                        try { await showSocketables(); } catch {}
+                                        setHeader('Socketables');
+                                        return;
+                                    }
                                     const select = document.getElementById('categorySelect');
                                     if (select) { select.value = cat; select.dispatchEvent(new Event('change')); }
                                 } catch {}

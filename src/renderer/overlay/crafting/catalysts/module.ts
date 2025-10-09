@@ -124,12 +124,14 @@ export function render(list: Catalyst[]): void {
   state.cache.forEach(addTagsFor);
 
   panel.innerHTML = `
-    <div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
-      <input id='catalystSearch' type='text' placeholder='Search...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
-      <button id='catalystClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
-    </div>
-    <div id='catalystTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
-  <div id='catalystList' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:10px;'></div>`;
+    <div class='page-inner'>
+      <div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
+        <input id='catalystSearch' type='text' placeholder='Search...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
+        <button id='catalystClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
+      </div>
+      <div id='catalystTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
+      <div id='catalystList' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:10px;'></div>
+    </div>`;
   state.input = panel.querySelector('#catalystSearch') as HTMLInputElement | null;
   const listEl = panel.querySelector('#catalystList') as HTMLElement | null;
   const tagWrap = panel.querySelector('#catalystTagFilters') as HTMLElement | null;

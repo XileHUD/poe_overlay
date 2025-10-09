@@ -126,12 +126,14 @@ export function render(list: Essence[]): void {
   state.cache.forEach(addTagsFor);
 
   panel.innerHTML = `
-    <div style='display:flex; gap:6px; align-items:center; margin-bottom:6px;'>
-      <input id='essenceSearch' type='text' placeholder='Search...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
-      <button id='essenceClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
-    </div>
-    <div id='essenceTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
-    <div id='essenceList' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:10px;'></div>`;
+    <div class='page-inner'>
+      <div style='display:flex; gap:6px; align-items:center; margin-bottom:6px;'>
+        <input id='essenceSearch' type='text' placeholder='Search...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
+        <button id='essenceClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
+      </div>
+      <div id='essenceTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
+      <div id='essenceList' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:10px;'></div>
+    </div>`;
   state.input = panel.querySelector('#essenceSearch') as HTMLInputElement | null;
   const listEl = panel.querySelector('#essenceList') as HTMLElement | null;
   const tagWrap = panel.querySelector('#essenceTagFilters') as HTMLElement | null;

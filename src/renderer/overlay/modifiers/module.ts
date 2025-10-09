@@ -599,9 +599,9 @@ export function renderFilteredContent(data: any){
     return `padding:2px 8px; font-size:11px; border:1px solid ${border}; border-radius:999px; background:${bg}; color:${color}; cursor:pointer;`;
   };
   const filtersHtml = `
-    <div id="filtersBar" style="display:flex; flex-direction:column; gap:8px; margin:2px 0 8px; padding:0;">
-      ${attrButtons.length? `<div style="display:flex; gap:6px; align-items:center;"><span style="font-size:11px; color:var(--text-secondary);">Attribute</span>${attrButtons.map(a=>`<button class="attribute-btn${prevAttr===a?' active':''}" data-attr="${a}" style="padding:2px 8px; font-size:11px; border:1px solid var(--border-color); border-radius:999px; background:${prevAttr===a?'var(--accent-blue)':'var(--bg-tertiary)'}; color:${prevAttr===a?'#fff':'var(--text-primary)'}; cursor:pointer;">${a.toUpperCase()}</button>`).join('')}</div>` : ''}
-      <div style="display:flex; flex-wrap:wrap; gap:6px;">
+    <div id="filtersBar" style="display:flex; flex-direction:column; gap:8px; margin:2px 0 8px; padding:0; width:100%;">
+      ${attrButtons.length? `<div style="display:flex; gap:6px; align-items:center; justify-content:center; width:100%;"><span style="font-size:11px; color:var(--text-secondary);">Attribute</span>${attrButtons.map(a=>`<button class="attribute-btn${prevAttr===a?' active':''}" data-attr="${a}" style="padding:2px 8px; font-size:11px; border:1px solid var(--border-color); border-radius:999px; background:${prevAttr===a?'var(--accent-blue)':'var(--bg-tertiary)'}; color:${prevAttr===a?'#fff':'var(--text-primary)'}; cursor:pointer;">${a.toUpperCase()}</button>`).join('')}</div>` : ''}
+      <div style="display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;">
         ${sortedTags.map(t=>`<button class="filter-tag${prevActive.has(t)?' active':''}" data-tag="${t}" style="${chipCss(t, prevActive.has(t))}">${t} (${tagCounts[t]||0})</button>`).join('')}
       </div>
     </div>`;

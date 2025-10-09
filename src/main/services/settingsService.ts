@@ -1,15 +1,20 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import type { FeatureConfig } from '../features/featureTypes.js';
 
 export interface UserSettings {
+  enabledFeatures?: FeatureConfig;
+  seenFeatureSplash?: boolean; // Track if user has seen feature selection splash at least once
   floatingButton?: {
     enabled: boolean;
     position?: { x: number; y: number };
     pinned?: boolean;
   };
   hotkey?: {
-    key: string; // e.g., "Q", "E", "1", "F1", etc. (Ctrl/Cmd is always fixed)
+    key: string; // e.g., "Q", "E", "1", "F1", etc.
+    useCtrl?: boolean; // when true (default), register as Ctrl/Cmd + key; when false, register as single key
   };
+  fontSize?: number; // Font size percentage (80-150), default 100
 }
 
 export class SettingsService {

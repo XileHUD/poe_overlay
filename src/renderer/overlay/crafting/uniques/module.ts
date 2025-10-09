@@ -136,7 +136,7 @@ export function render(groups: UniqueGroups): void {
     <input id='uniqueSearch' type='text' placeholder='Search uniques...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
     <button id='uniqueClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
   </div>
-  <div id='uniqueTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; margin:-2px 0 8px; justify-content:center;'></div>
+  <div id='uniqueTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
   <div id='uniqueSections' style='display:flex; flex-direction:column; gap:14px;'></div>`;
   // Wrap in page-inner for consistent centering like other crafting panels
   panel.innerHTML = `<div class='page-inner'>${controls}</div>`;

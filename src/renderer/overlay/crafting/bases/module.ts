@@ -161,16 +161,18 @@ export function render(groups: BaseGroups): void {
   let sortDir: 'asc'|'desc' = 'desc';
 
   panel.innerHTML=`
-    <div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
-        <select id='baseCategorySelect' style='padding:4px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); color:var(--text-primary); border-radius:4px; font-size:12px;'>
-          ${categoryKeys.map(c=>`<option value='${c}'>${c.replace(/_/g,' ')}</option>`).join('')}
-        </select>
-        <input id='baseSearch' type='text' placeholder='Search bases...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
-        <button id='baseClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
-    </div>
-    <div id='baseDefQuick' style='display:flex; gap:6px; margin:-4px 0 10px; justify-content:center;'></div>
-    <div id='baseTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; margin:-2px 0 8px; justify-content:center;'></div>
-    <div id='baseList' style='display:grid; grid-template-columns: 1fr 1fr; gap:10px;'></div>`;
+    <div class='page-inner'>
+      <div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
+          <select id='baseCategorySelect' style='padding:4px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); color:var(--text-primary); border-radius:4px; font-size:12px;'>
+            ${categoryKeys.map(c=>`<option value='${c}'>${c.replace(/_/g,' ')}</option>`).join('')}
+          </select>
+          <input id='baseSearch' type='text' placeholder='Search bases...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
+          <button id='baseClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
+      </div>
+      <div id='baseDefQuick' style='display:flex; gap:6px; margin:-4px 0 10px; justify-content:center;'></div>
+      <div id='baseTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
+      <div id='baseList' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:10px;'></div>
+    </div>`;
 
   const searchEl=panel.querySelector('#baseSearch') as HTMLInputElement;
   const clearBtn=panel.querySelector('#baseClear') as HTMLButtonElement;

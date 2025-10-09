@@ -6,13 +6,15 @@ export interface CreateTrayParams {
   onToggleOverlay: () => void;
   onOpenModifiers: () => void;
   onOpenHistory: () => void;
-  getDataDir: () => string;
-  reloadData: () => void;
-  checkForUpdates: () => void; // wraps autoUpdater or external link
   onQuit?: () => void;
   onToggleFloatingButton?: () => void;
-  onConfigureHotkey?: () => void;
-  currentHotkey?: string;
+  onOpenSettings?: () => void;
+  onShowOverlay?: () => void;
+  currentHotkeyLabel?: string;
+  featureVisibility?: {
+    modifiers?: boolean;
+    merchantHistory?: boolean;
+  };
 }
 
 export function createTray(params: CreateTrayParams): Tray | null {
@@ -20,14 +22,16 @@ export function createTray(params: CreateTrayParams): Tray | null {
     onToggleOverlay,
     onOpenModifiers,
     onOpenHistory,
-    getDataDir,
-    reloadData,
-    checkForUpdates,
     onQuit,
     onToggleFloatingButton,
-    onConfigureHotkey,
-    currentHotkey = 'Q'
+    onOpenSettings,
+    onShowOverlay,
+    currentHotkeyLabel = 'Ctrl+Q',
+    featureVisibility
   } = params;
+
+  const showModifiers = featureVisibility?.modifiers !== false;
+  const showMerchantHistory = featureVisibility?.merchantHistory !== false;
 
   const DEBUG = process.env.XILEHUD_TRAY_DEBUG === '1';
   const log = (...a: any[]) => { if (DEBUG) console.log('[tray]', ...a); };
@@ -124,27 +128,38 @@ export function createTray(params: CreateTrayParams): Tray | null {
   log('Tray created using', iconPathUsed || 'placeholder');
 
   const contextMenu = Menu.buildFromTemplate([
-    { label: `XileHUD (Ctrl+${currentHotkey})`, enabled: false },
+    { label: `XileHUD (${currentHotkeyLabel})`, enabled: false },
     { type: 'separator' },
-    { label: 'Modifiers', click: () => onOpenModifiers() },
-    { label: 'Merchant History', click: () => onOpenHistory() },
-    { type: 'separator' },
-    { label: `Toggle Floating Button (Ctrl+Alt+${currentHotkey})`, click: () => onToggleFloatingButton?.(), visible: !!onToggleFloatingButton },
+    { label: 'Modifiers', click: () => onOpenModifiers(), visible: showModifiers },
+    { label: 'Merchant History', click: () => onOpenHistory(), visible: showMerchantHistory },
+    { type: 'separator', visible: showModifiers || showMerchantHistory },
+    { label: 'Toggle Floating Button', click: () => onToggleFloatingButton?.(), visible: !!onToggleFloatingButton },
     { type: 'separator', visible: !!onToggleFloatingButton },
-    { label: 'Change Hotkey...', click: () => onConfigureHotkey?.(), visible: !!onConfigureHotkey },
-    { type: 'separator', visible: !!onConfigureHotkey },
-    { label: 'Reload data (JSON)', click: () => reloadData() },
-    { label: 'Open data folder', click: () => shell.openPath(getDataDir()) },
-    { label: 'Check for app updates', click: () => checkForUpdates() },
-    { type: 'separator' },
-    { label: `Show/Hide (Ctrl+${currentHotkey})`, click: () => onToggleOverlay() },
+    { label: 'Settings...', click: () => onOpenSettings?.(), visible: !!onOpenSettings },
+    { type: 'separator', visible: !!onOpenSettings },
+    { label: `Show/Hide (${currentHotkeyLabel})`, click: () => onToggleOverlay() },
     { type: 'separator' },
     { label: 'Quit', click: () => (onQuit ? onQuit() : app.quit()) }
   ]);
 
   try { tray.setToolTip('XileHUD'); } catch {}
-  try { tray.setContextMenu(contextMenu); } catch {}
-  try { tray.on('double-click', () => onToggleOverlay()); } catch {}
+  
+  // Windows fix: Use click event to manually popup menu with proper z-order
+  // This ensures the menu appears on top of all windows
+  try {
+    tray.on('click', () => {
+      if (tray) {
+        tray.popUpContextMenu(contextMenu);
+      }
+    });
+    tray.on('right-click', () => {
+      if (tray) {
+        tray.popUpContextMenu(contextMenu);
+      }
+    });
+  } catch {}
+  
+  try { tray.on('double-click', () => (onShowOverlay ? onShowOverlay() : onToggleOverlay())); } catch {}
 
   return tray;
 }

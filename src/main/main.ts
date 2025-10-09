@@ -20,6 +20,12 @@ import { createTray } from './ui/trayService.js';
 import { FloatingButton } from './ui/floatingButton';
 import { HotkeyConfigurator } from './ui/hotkeyConfigurator';
 import { SettingsService } from './services/settingsService.js';
+import { FeatureService } from './services/featureService.js';
+import { FeatureLoader } from './features/featureLoader.js';
+import { showFeatureSplash } from './ui/featureSplash.js';
+import { showSettingsSplash } from './ui/settingsSplash.js';
+import { showRestartDialog } from './ui/restartDialog.js';
+import { showToast } from './utils/toastNotification.js';
 import { registerDataIpc } from './ipc/dataHandlers.js';
 import { registerHistoryPopoutIpc } from './ipc/historyPopoutHandlers.js';
 import { PoeSessionHelper } from './network/poeSession.js';
@@ -84,7 +90,7 @@ class OverlayApp {
     private isOverlayVisible = false;
     private moveTimeout: NodeJS.Timeout | null = null;
     private tray: Tray | null = null;
-    private pinned = false;
+    private pinned = true; // Default to pinned
     private overlayLoaded = false;
     private pendingItemData: any | null = null;
     private lastCopyTimestamp: number = 0;
@@ -104,11 +110,33 @@ class OverlayApp {
     private readonly HISTORY_FETCH_MIN_INTERVAL = 5 * 60 * 1000; // 5 minutes
     private floatingButton: FloatingButton | null = null;
     private settingsService: SettingsService | null = null;
+    private featureService: FeatureService | null = null;
     private hotkeyConfigurator: HotkeyConfigurator | null = null;
+    private currentRegisteredHotkey: string | null = null; // Track currently registered hotkey to avoid re-registration
 
     constructor() {
         app.whenReady().then(async () => {
             this.showSplash('Initializing application...');
+            
+            // Initialize settings first
+            this.updateSplash('Loading settings');
+            this.settingsService = new SettingsService(this.getUserConfigDir());
+            this.featureService = new FeatureService(this.settingsService);
+            
+            // Show splash if user has never seen it (new install or upgrade from old version)
+            const hasSeenSplash = this.settingsService.get('seenFeatureSplash');
+            
+            if (!hasSeenSplash) {
+                this.updateSplash('Awaiting feature selection...');
+                // Close loading splash before showing feature splash to avoid z-order issues
+                this.closeSplash();
+                await this.showFeatureSelection();
+                // Mark splash as seen after user saves config
+                this.settingsService.set('seenFeatureSplash', true);
+                // Reopen loading splash for rest of initialization
+                this.showSplash('Loading enabled features...');
+            }
+            
             // Lazy load heavy modules after splash is visible
             const [ { ModifierDatabase }, { ItemParser }, { ClipboardMonitor }, { KeyboardMonitor } ] = await Promise.all([
                 import('./modifier-database.js'),
@@ -119,18 +147,27 @@ class OverlayApp {
 
             this.updateSplash('Resolving data path');
             const initialDataPath = this.resolveInitialDataPath();
-            this.modifierDatabase = new ModifierDatabase(initialDataPath, false);
-            (async () => { // start async background load
-                const p = this.modifierDatabase.loadAsync(msg => this.updateSplash(msg));
-                ;(this.modifierDatabase as any).__loadingPromise = p;
-                await p;
+            
+            // Use FeatureLoader to conditionally load only enabled features
+            this.updateSplash('Loading enabled features');
+            const featureLoader = new FeatureLoader(
+                this.featureService,
+                initialDataPath,
+                (msg) => this.updateSplash(msg)
+            );
+            
+            const { modifierDatabase } = await featureLoader.loadAll();
+            this.modifierDatabase = modifierDatabase as any;
+            
+            // If modifiers loaded, notify renderer when categories are ready
+            if (this.modifierDatabase) {
                 this.updateSplash('Modifiers loaded');
                 // Notify any renderers that categories may now be complete
                 try {
                     const cats = await this.modifierDatabase.getAllCategories();
                     this.overlayWindow?.webContents.send('modifiers-loaded', cats);
                 } catch {}
-            })();
+            }
 
             this.updateSplash('Starting parsers');
             this.itemParser = new ItemParser();
@@ -140,23 +177,25 @@ class OverlayApp {
 
             this.updateSplash('Creating overlay window');
             this.createOverlayWindow();
-            this.updateSplash('Initializing settings');
-            this.settingsService = new SettingsService(this.getUserConfigDir());
+            
             this.floatingButton = new FloatingButton({
                 settingsService: this.settingsService
             });
+            
             this.updateSplash('Creating tray');
             this.tray = createTray({
                 onToggleOverlay: () => this.toggleOverlayWithAllCategory(),
                 onOpenModifiers: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','modifiers'); },140); },
                 onOpenHistory: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','history'); this.safeSendToOverlay('invoke-action','merchant-history'); },180); },
-                getDataDir: () => this.getDataDir(),
-                reloadData: () => (this.modifierDatabase as any).reload?.(),
-                checkForUpdates: () => { try { if (autoUpdater) autoUpdater.checkForUpdatesAndNotify(); else shell.openExternal('https://github.com/XileHUD/poe_overlay/releases'); } catch { shell.openExternal('https://github.com/XileHUD/poe_overlay/releases'); } },
                 onQuit: () => app.quit(),
                 onToggleFloatingButton: () => this.toggleFloatingButton(),
-                onConfigureHotkey: () => this.openHotkeyConfigurator(),
-                currentHotkey: this.getHotkeyKey()
+                onOpenSettings: () => this.openSettings(),
+                onShowOverlay: () => this.showOverlay(undefined, { focus: true }),
+                currentHotkeyLabel: this.getHotkeyKey(),
+                featureVisibility: {
+                    modifiers: this.featureService?.isFeatureEnabled('modifiers') ?? false,
+                    merchantHistory: this.featureService?.isFeatureEnabled('merchant') ?? false
+                }
             });
             this.updateSplash('Registering shortcuts');
             this.registerShortcuts();
@@ -212,8 +251,15 @@ class OverlayApp {
                         console.error('[AutoUpdater] Error:', err);
                     });
                     
-                    // Check for updates on startup
-                    autoUpdater.checkForUpdatesAndNotify();
+                    // Check for updates on startup (ignore missing latest.yml in local builds)
+                    autoUpdater.checkForUpdatesAndNotify().catch((err: any) => {
+                        const message = err?.message || String(err || 'unknown error');
+                        if (/latest\.yml/i.test(message)) {
+                            console.warn('[AutoUpdater] latest.yml missing (likely unsigned/local build). Skipping update check.');
+                        } else {
+                            console.error('[AutoUpdater] checkForUpdatesAndNotify failed:', message);
+                        }
+                    });
                 }
             } catch (e) {
                 console.error('[AutoUpdater] Setup failed:', e);
@@ -347,6 +393,66 @@ class OverlayApp {
     private getDataDir(): string {
         try { return (this.modifierDatabase as any).getDataPath?.() || this.dataDirCache || this.resolveInitialDataPath(); } catch {}
         return this.dataDirCache || this.resolveInitialDataPath();
+    }
+
+    /**
+     * Show feature selection splash (first launch or manual config)
+     */
+    private async showFeatureSelection(): Promise<void> {
+        try {
+            const selectedConfig = await showFeatureSplash();
+            if (selectedConfig) {
+                this.featureService!.saveConfig(selectedConfig);
+                this.updateSplash('Feature configuration saved');
+            }
+        } catch (err) {
+            console.error('[showFeatureSelection] Error:', err);
+        }
+    }
+
+    /**
+     * Open feature configuration window (triggered from tray menu)
+     */
+    private async openFeatureConfiguration(): Promise<void> {
+        try {
+            const currentConfig = this.featureService!.getConfig();
+            const selectedConfig = await showFeatureSplash(currentConfig);
+            
+            if (selectedConfig) {
+                this.featureService!.saveConfig(selectedConfig);
+                
+                // Prompt user to restart
+                const shouldRestart = await showRestartDialog();
+                
+                if (shouldRestart) {
+                    app.relaunch();
+                    app.quit();
+                }
+            }
+        } catch (err) {
+            console.error('[openFeatureConfiguration] Error:', err);
+        }
+    }
+
+    /**
+     * Open settings splash window
+     */
+    private async openSettings(): Promise<void> {
+        try {
+            await showSettingsSplash({
+                settingsService: this.settingsService!,
+                featureService: this.featureService!,
+                currentHotkey: this.getHotkeyKey(),
+                getDataDir: () => this.getDataDir(),
+                reloadData: () => (this.modifierDatabase as any)?.reload?.(),
+                onHotkeySave: (newKey: string) => this.saveHotkey(newKey),
+                onFeatureConfigOpen: () => this.openFeatureConfiguration(),
+                onShowOverlay: () => this.toggleOverlayWithAllCategory(),
+                overlayWindow: this.overlayWindow
+            });
+        } catch (err) {
+            console.error('[openSettings] Error:', err);
+        }
     }
 
     // Safely send IPC to overlay renderer if loaded; else queue minimal (category + item)
@@ -618,6 +724,11 @@ class OverlayApp {
                 try {
                     if (!this.overlayWindow || this.overlayWindow.isDestroyed()) return;
                     if (this.pinned || !this.isOverlayVisible) return;
+                    // Don't hide if capture is in progress
+                    if (this.shortcutAwaitingCapture || Date.now() <= this.armedCaptureUntil) {
+                        console.log('[blur] Skipping hide - capture in progress');
+                        return;
+                    }
                     const focused = BrowserWindow.getFocusedWindow();
                     if (!focused) { this.hideOverlay(); return; }
                     // If a popout is focused, keep overlay
@@ -651,58 +762,112 @@ class OverlayApp {
     private async downloadImageToCache(url: string): Promise<string | null> { return this.imageCache.download(url); }
 
     // Attempt to capture the currently hovered item from the game by issuing a copy and parsing clipboard
-    private async captureItemFromGame() {
+    private async captureItemFromGame(): Promise<boolean> {
         // Arm clipboard acceptance for a brief window
         const now = Date.now();
         this.armedCaptureUntil = now + 2000;
         this.lastCopyTimestamp = now;
         try { this.clipboardMonitor.resetLastSeen(); } catch {}
-        try { clipboard.clear(); } catch {}
+        console.log('[Hotkey] Starting item capture: simulating Ctrl+C');
 
-        // Best-effort: try to simulate Ctrl+C using optional robotjs if present
-        this.trySimulateCtrlC();
+        const overlayWindow = (this.overlayWindow && !this.overlayWindow.isDestroyed()) ? this.overlayWindow : null;
+        const overlayWasVisible = overlayWindow ? this.isOverlayVisible : false;
+        let restoreOverlayFocusable = false;
 
-        // Poll clipboard directly for fast response while the interval monitor also runs
-        const deadline = Date.now() + 1600;
-        let handled = false;
-        while (Date.now() < deadline) {
-            try {
-                const text = (clipboard.readText() || '').trim();
-                if (text && text.length > 20) {
-                    try {
-                        const parsed = await this.itemParser.parse(text);
-                        if (parsed && parsed.category && parsed.category !== 'unknown') {
-                            // Unique shortcut handling
-                            if ((parsed.rarity || '').toLowerCase() === 'unique') {
-                                this.showUniqueItem(parsed);
-                                handled = true;
-                                break;
-                            }
-                            // Gem shortcut handling - switch to character tab and show gems panel
-                            if (parsed.category === 'Gems') {
-                                this.toggleOverlayWithAllCategory();
-                                setTimeout(() => {
-                                    this.safeSendToOverlay('set-active-tab', 'characterTab');
-                                    this.safeSendToOverlay('invoke-action', 'gems');
-                                }, 140);
-                                handled = true;
-                                break;
-                            }
-                            let modifiers: any[] = [];
-                            try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
-                            this.safeSendToOverlay('set-active-category', parsed.category);
-                            this.showOverlay({ item: parsed, modifiers });
-                            handled = true;
-                            break;
-                        }
-                    } catch {}
+        if (overlayWindow && overlayWasVisible) {
+            console.log('[Hotkey] Temporarily disabling overlay focus to allow game copy');
+            if (typeof (overlayWindow as any).setFocusable === 'function') {
+                try {
+                    (overlayWindow as any).setFocusable(false);
+                    restoreOverlayFocusable = true;
+                } catch (err) {
+                    console.warn('[Hotkey] Failed to set overlay focusable=false', err);
                 }
-            } catch {}
-            await new Promise(r => setTimeout(r, 30));
+            }
+            try { overlayWindow.blur(); } catch {}
+            await new Promise(r => setTimeout(r, 25));
         }
-        // Only open overlay if we actually captured an item
-        // Disarm
-        this.armedCaptureUntil = 0;
+
+        let handled = false;
+        try {
+            // ALWAYS try to simulate Ctrl+C first to get the fresh item from game
+            this.trySimulateCtrlC();
+        
+            // Give the OS/game a brief moment to populate the clipboard
+            await new Promise(r => setTimeout(r, 250));
+
+            // Poll clipboard directly for fast response while the interval monitor also runs
+            const deadline = Date.now() + 1200; // Shorter timeout: 1.2s max
+            let attempts = 0;
+        
+            while (Date.now() < deadline) {
+                attempts++;
+                try {
+                    const text = (clipboard.readText() || '').trim();
+                
+                    if (text && text.length > 5) {
+                        try {
+                            const parsed = await this.itemParser.parse(text);
+                        
+                            // Only accept if we got a valid category (not 'unknown')
+                            if (parsed && parsed.category && parsed.category !== 'unknown') {
+                                console.log('[Hotkey] ✓ Parsed item. Category:', parsed.category, 'Rarity:', parsed.rarity);
+                            
+                                // Unique shortcut handling
+                                if ((parsed.rarity || '').toLowerCase() === 'unique') {
+                                    this.showUniqueItem(parsed, { focus: false });
+                                    handled = true;
+                                    break;
+                                }
+                        
+                                // Gem shortcut handling - switch to character tab and show gems panel
+                                if (parsed.category === 'Gems') {
+                                    this.showOverlay(undefined, { focus: false });
+                                    setTimeout(() => {
+                                        this.safeSendToOverlay('set-active-tab', 'characterTab');
+                                        this.safeSendToOverlay('invoke-action', 'gems');
+                                    }, 140);
+                                    handled = true;
+                                    break;
+                                }
+                        
+                                let modifiers: any[] = [];
+                                try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
+                                this.safeSendToOverlay('set-active-category', parsed.category);
+                                this.showOverlay({ item: parsed, modifiers }, { focus: false });
+                                handled = true;
+                                break;
+                            } else if (parsed && parsed.category === 'unknown') {
+                                // Don't spam logs - just continue polling
+                                // Clipboard might have junk text or we copied too early
+                            }
+                        } catch (parseErr) {
+                            // Parse error - clipboard has text but it's not a valid item
+                            // Continue polling in case a valid item arrives
+                        }
+                    }
+                } catch {}
+            
+                // Don't poll too fast - give clipboard time to update
+                await new Promise(r => setTimeout(r, 50));
+            }
+            
+            if (!handled && attempts > 0) {
+                console.log('[Hotkey] No valid item found after', attempts, 'attempts');
+            }
+        } finally {
+            this.armedCaptureUntil = 0;
+            if (overlayWindow && restoreOverlayFocusable) {
+                try {
+                    (overlayWindow as any).setFocusable(true);
+                    console.log('[Hotkey] Restored overlay focusability');
+                } catch (err) {
+                    console.warn('[Hotkey] Failed to restore overlay focusability', err);
+                }
+            }
+        }
+
+        return handled;
     }
 
     // === Session / network (delegated to PoeSessionHelper) ===
@@ -712,7 +877,7 @@ class OverlayApp {
     private async isAuthenticated() { return this.poeSession.isAuthenticatedProbe('Rise of the Abyssal'); }
 
 
-    // Optional best-effort Ctrl+C keystroke using robotjs if available
+    // Best-effort copy trigger: send real Ctrl/Command+C to force a copy in PoE
     private trySimulateCtrlC() {
         // Try robotjs if available
         try {
@@ -724,7 +889,7 @@ class OverlayApp {
                 return;
             }
         } catch {}
-        // Windows fallback: use SendKeys via PowerShell to send Ctrl+C to the active window
+        // Windows fallback: Send Ctrl+C via SendKeys
         if (process.platform === 'win32') {
             try {
                 const ps = cp.spawn('powershell.exe', [
@@ -733,13 +898,12 @@ class OverlayApp {
                     '-Command',
                     "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait('^c')"
                 ], { windowsHide: true, stdio: 'ignore' });
-                // Do not await; it's near-instant and we concurrently poll the clipboard
                 ps.unref?.();
             } catch {}
         }
     }
 
-    private showOverlay(data?: any, opts?: { silent?: boolean }) {
+    private showOverlay(data?: any, opts?: { silent?: boolean; focus?: boolean }) {
         if (!this.overlayWindow) return;
         
         if (data) {
@@ -750,18 +914,38 @@ class OverlayApp {
                 this.pendingItemData = data;
             }
         }
-        if (opts?.silent && this.isOverlayVisible && this.pinned) {
-            // Passive update only (no focus steal)
-            console.log('Overlay passive update (pinned)');
+        const wasVisible = this.isOverlayVisible;
+        const wasPinned = this.pinned;
+        
+        // Always ensure window is visible when showOverlay is called
+        // Passive mode just means "don't steal focus from game", not "don't show"
+        const shouldFocus = opts?.focus !== false; // default true
+        
+        // If already visible and pinned and we don't want focus, just update data (passive)
+        // But still ensure window is shown and on top
+        if (this.isOverlayVisible && this.pinned && !shouldFocus) {
+            this.overlayWindow.show(); // Ensure still visible (might have been minimized)
+            console.log('[Overlay] Passive update (pinned, no focus steal)');
             return;
         }
 
-        // Show overlay and ensure it gets focus for blur events to work (active open)
-        this.overlayWindow.show();
-        this.overlayWindow.focus();
+        // Show overlay and optionally give it focus
+        if (shouldFocus) {
+            this.overlayWindow.show();
+            this.overlayWindow.focus();
+        } else {
+            if (typeof this.overlayWindow.showInactive === 'function') {
+                this.overlayWindow.showInactive();
+            } else {
+                this.overlayWindow.show();
+            }
+            try {
+                this.overlayWindow.blur();
+            } catch {}
+        }
         this.isOverlayVisible = true;
         
-        console.log('Overlay shown');
+        console.log('[Overlay] shown. wasVisible=', wasVisible, 'pinned=', wasPinned, 'focus=', shouldFocus);
     }
 
     private hideOverlay() {
@@ -771,15 +955,22 @@ class OverlayApp {
         this.overlayWindow.hide();
         this.isOverlayVisible = false;
         // Do not clear clipboard if a capture is in progress
-        if (!this.shortcutAwaitingCapture && Date.now() > this.armedCaptureUntil) {
+        const captureInProgress = this.shortcutAwaitingCapture || Date.now() <= this.armedCaptureUntil;
+        console.log('[hideOverlay] captureInProgress=', captureInProgress, 'shortcutAwaitingCapture=', this.shortcutAwaitingCapture, 'armedCaptureUntil=', this.armedCaptureUntil, 'now=', Date.now());
+        if (!captureInProgress) {
+            console.log('[hideOverlay] Clearing clipboard');
             try { clipboard.clear(); } catch {}
             try { this.clipboardMonitor.resetLastSeen(); } catch {}
+        } else {
+            console.log('[hideOverlay] Skipping clipboard clear - capture in progress');
         }
         console.log('Overlay hidden');
     }
 
-    private showUniqueItem(parsed: any, silent = false) {
-        this.showOverlay({ item: parsed, isUnique: true }, { silent });
+    private showUniqueItem(parsed: any, opts: { silent?: boolean; focus?: boolean } = {}) {
+        const silent = opts.silent ?? false;
+        const focus = opts.focus ?? true;
+        this.showOverlay({ item: parsed, isUnique: true }, { silent, focus });
         if (!silent) {
             this.safeSendToOverlay('show-unique-item', { name: parsed.name, baseType: parsed.baseType });
         }
@@ -820,9 +1011,22 @@ class OverlayApp {
         });
     }
 
-    // Get current hotkey (default to "Q")
+    // Get current hotkey (default to "Q", with validation)
     private getHotkeyKey(): string {
-        return this.settingsService?.get('hotkey')?.key || 'Q';
+        try {
+            const hotkey = this.settingsService?.get('hotkey');
+            if (!hotkey || typeof hotkey !== 'object') return 'Q';
+            const { key } = hotkey as any;
+            
+            if (key && typeof key === 'string' && key.length > 0) {
+                return key; // Return as-is (could be "Q", "Ctrl+Q", "Alt+F", etc.)
+            }
+            
+            return 'Q';
+        } catch (error) {
+            console.error('[Hotkey] Error reading hotkey from settings:', error);
+            return 'Q';
+        }
     }
 
     // Open hotkey configurator
@@ -847,47 +1051,80 @@ class OverlayApp {
                 onToggleOverlay: () => this.toggleOverlayWithAllCategory(),
                 onOpenModifiers: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','modifiers'); },140); },
                 onOpenHistory: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','history'); this.safeSendToOverlay('invoke-action','merchant-history'); },180); },
-                getDataDir: () => this.getDataDir(),
-                reloadData: () => (this.modifierDatabase as any).reload?.(),
-                checkForUpdates: () => { try { if (autoUpdater) autoUpdater.checkForUpdatesAndNotify(); else shell.openExternal('https://github.com/XileHUD/poe_overlay/releases'); } catch { shell.openExternal('https://github.com/XileHUD/poe_overlay/releases'); } },
                 onQuit: () => app.quit(),
                 onToggleFloatingButton: () => this.toggleFloatingButton(),
-                onConfigureHotkey: () => this.openHotkeyConfigurator(),
-                currentHotkey: this.getHotkeyKey()
+                onOpenSettings: () => this.openSettings(),
+                onShowOverlay: () => this.showOverlay(undefined, { focus: true }),
+                currentHotkeyLabel: this.getHotkeyKey(),
+                featureVisibility: {
+                    modifiers: this.featureService?.isFeatureEnabled('modifiers') ?? false,
+                    merchantHistory: this.featureService?.isFeatureEnabled('merchant') ?? false
+                }
             });
         }
     }
 
     // Global keyboard shortcuts and simulation logic
+    // This method GUARANTEES a hotkey will be registered, falling back to Q if necessary
     private registerShortcuts() {
-        try { globalShortcut.unregisterAll(); } catch {}
+        const accelerator = this.getHotkeyKey(); // Full string like "Q", "Ctrl+Q", "Alt+F"
         
-        const hotkeyKey = this.getHotkeyKey();
+        // Skip if already registered
+        if (this.currentRegisteredHotkey === accelerator) {
+            console.log(`[Hotkey] Already registered: ${accelerator}`);
+            return;
+        }
         
-        // Primary toggle / capture: Ctrl+<Key> behavior
-        try {
-            globalShortcut.register(`CommandOrControl+${hotkeyKey}`, async () => {
-                const now = Date.now();
-                // If overlay visible and NOT pinned, act as a hide toggle.
-                // If pinned, treat Ctrl+Q as a capture attempt (previous behavior).
-                if (this.isOverlayVisible && !this.pinned && !this.shortcutAwaitingCapture) {
-                    this.hideOverlay();
-                    return;
+        // Unregister old shortcuts first
+        if (this.currentRegisteredHotkey) {
+            try {
+                globalShortcut.unregister(this.currentRegisteredHotkey);
+                console.log(`[Hotkey] Unregistered old shortcut: ${this.currentRegisteredHotkey}`);
+            } catch (e) {
+                console.warn('[Hotkey] Failed to unregister old shortcuts:', e);
+            }
+        }
+        
+        // Define handlers
+        const captureHandler = async () => {
+            // Simple debounce - ignore if already processing
+            if (this.shortcutAwaitingCapture) return;
+
+            this.shortcutAwaitingCapture = true;
+
+            try {
+                // Try to capture and parse item from clipboard
+                const overlayWasVisible = this.isOverlayVisible;
+                if (!overlayWasVisible) {
+                    this.showOverlay(undefined, { focus: false });
                 }
-                // If recently armed and awaiting capture, ignore extra presses
-                if (this.shortcutAwaitingCapture && now < this.armedCaptureUntil) return;
-                this.shortcutAwaitingCapture = true;
-                await this.captureItemFromGame();
+
+                const itemCaptured = await this.captureItemFromGame();
+                console.log('[Hotkey] captureHandler done. itemCaptured=', itemCaptured);
+                
+                if (!itemCaptured) {
+                    if (!this.isOverlayVisible) {
+                        this.showOverlay(undefined, { focus: false });
+                    }
+                }
+            } finally {
                 this.shortcutAwaitingCapture = false;
-            });
-        } catch (e) { console.warn('register shortcut failed', e); }
+            }
+        };        const floatingButtonHandler = () => {
+            this.toggleFloatingButton();
+        };
         
-        // Floating button toggle: Ctrl+Alt+Q
+        // Register the hotkeys - supports full accelerator strings
+        // Examples: "Q", "Ctrl+Q", "Alt+F", "Shift+1"
+        // NOTE: Avoid Ctrl+Alt combinations to not block AltGr
         try {
-            globalShortcut.register('CommandOrControl+Alt+Q', () => {
-                this.toggleFloatingButton();
-            });
-        } catch (e) { console.warn('register floating button shortcut failed', e); }
+            globalShortcut.register(accelerator, captureHandler);
+            this.currentRegisteredHotkey = accelerator;
+            console.log(`[Hotkey] ✓ Registered: ${accelerator}`);
+        } catch (e) {
+            console.error(`[Hotkey] Failed to register ${accelerator}:`, e);
+            this.currentRegisteredHotkey = null;
+        }
     }
 
     // Monitors clipboard for external (manual) copies while armed
@@ -907,10 +1144,10 @@ class OverlayApp {
                     const parsed = await this.itemParser.parse(trimmed);
                     if (parsed && parsed.category && parsed.category !== 'unknown') {
                         if ((parsed.rarity || '').toLowerCase() === 'unique') {
-                            this.showUniqueItem(parsed, true);
+                            this.showUniqueItem(parsed, { silent: true, focus: false });
                         } else if (parsed.category === 'Gems') {
                             // Gem handling - switch to character tab and show gems panel
-                            this.toggleOverlayWithAllCategory();
+                            this.showOverlay(undefined, { silent: true, focus: false });
                             setTimeout(() => {
                                 this.safeSendToOverlay('set-active-tab', 'characterTab');
                                 this.safeSendToOverlay('invoke-action', 'gems');
@@ -919,7 +1156,7 @@ class OverlayApp {
                             let modifiers: any[] = [];
                             try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
                             this.safeSendToOverlay('set-active-category', parsed.category);
-                            this.showOverlay({ item: parsed, modifiers }, { silent: true });
+                            this.showOverlay({ item: parsed, modifiers }, { silent: true, focus: false });
                         }
                     }
                 } catch {}
@@ -934,6 +1171,29 @@ class OverlayApp {
             modifierDatabase: this.modifierDatabase,
             getDataDir: () => this.getDataDir(),
             getUserConfigDir: () => this.getUserConfigDir()
+        });
+
+        // Feature configuration IPC handlers
+        ipcMain.handle('get-enabled-features', () => {
+            try {
+                return this.featureService?.getConfig() || null;
+            } catch (e) {
+                console.error('[IPC:get-enabled-features] Error:', e);
+                return null;
+            }
+        });
+
+        // Feature configuration save is now handled directly by featureSplash.ts
+        // (no IPC handler needed - saves config and shows restart dialog there)
+
+        // Font size handlers
+        ipcMain.handle('get-font-size', () => {
+            try {
+                return this.settingsService?.get('fontSize') || 100;
+            } catch (e) {
+                console.error('[IPC:get-font-size] Error:', e);
+                return 100;
+            }
         });
 
         ipcMain.handle('check-updates', async () => {
@@ -1020,6 +1280,12 @@ class OverlayApp {
         ipcMain.on('overlay-ready', () => {
             console.log('Overlay renderer ready');
             this.overlayLoaded = true;
+            
+            // Send initial pinned state to renderer
+            if (this.overlayWindow && !this.overlayWindow.isDestroyed()) {
+                this.overlayWindow.webContents.send('pinned-changed', this.pinned);
+            }
+            
             if (this.pendingItemData) {
                 this.safeSendToOverlay('clear-filters');
                 this.safeSendToOverlay('item-data', this.pendingItemData);

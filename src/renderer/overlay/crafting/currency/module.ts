@@ -125,7 +125,7 @@ export function render(list: CurrencyItem[]): void {
       <input id='currencySearch' type='text' placeholder='Search currency...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
       <button id='currencyClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-    <div id='currencyTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; margin-bottom:4px;'></div>
+  <div id='currencyTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; margin-bottom:4px; justify-content:center; width:100%;'></div>
     <div id='currencyWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap:10px;'></div>`;
   state.input = panel.querySelector('#currencySearch') as HTMLInputElement | null;
   const wrap = panel.querySelector('#currencyWrap') as HTMLElement | null;

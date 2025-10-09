@@ -125,7 +125,7 @@ export function render(list: Socketable[]): void {
       <input id='socketableSearch' type='text' placeholder='Search...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
       <button id='socketableClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-    <div id='socketableTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center;'></div>
+  <div id='socketableTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
     <div id='socketableList' style='display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:10px; align-items:stretch;'></div>
     </div>`;
 

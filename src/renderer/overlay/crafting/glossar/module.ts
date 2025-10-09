@@ -113,10 +113,10 @@ export function render(entries: GlossEntry[]): void {
     <input id='glossSearch' type='text' placeholder='Search keywords...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
     <button id='glossClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
   </div>
-  <div id='glossTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:0 0 8px; justify-content:center;'></div>
+  <div id='glossTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:0 0 8px; justify-content:center; width:100%;'></div>
   <div id='glossList' style='display:flex; flex-direction:column; gap:8px;'></div>`;
   const panelEl = ensurePanel();
-  panelEl.innerHTML = controls;
+  panelEl.innerHTML = `<div class='page-inner'>${controls}</div>`;
 
   const input=panelEl.querySelector('#glossSearch') as HTMLInputElement;
   const clear=panelEl.querySelector('#glossClear') as HTMLButtonElement;

@@ -81,7 +81,7 @@ export class HotkeyConfigurator {
       // Update the UI to show captured key
       this.capturedKey = key;
       this.window?.webContents.executeJavaScript(`
-        document.getElementById('status').textContent = 'Hotkey: Ctrl + ${key}';
+        document.getElementById('status').textContent = 'Hotkey: ' + '${key}';
         document.getElementById('status').style.color = '#4CAF50';
         document.getElementById('saveBtn').disabled = false;
         document.getElementById('saveBtn').dataset.key = '${key}';
@@ -200,8 +200,8 @@ export class HotkeyConfigurator {
   <div class="container">
     <h2>Configure Hotkey</h2>
     <div class="info">Press any key to set your new hotkey</div>
-    <div class="info" style="font-weight: 600; color: #ff9800;">Ctrl/Cmd is always fixed</div>
-    <div class="current">Current: Ctrl + ${currentKey}</div>
+  <div class="info" style="font-weight: 600; color: #ff9800;">Tip: You can use a single key or add Ctrl/Cmd in settings.</div>
+  <div class="current">Current: ${currentKey}</div>
     
     <div id="status">Waiting for key press...</div>
     

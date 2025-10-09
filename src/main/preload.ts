@@ -94,6 +94,17 @@ contextBridge.exposeInMainWorld('electronAPI', {
         ipcRenderer.on('request-history-popout-refresh', () => callback());
     },
     
+    // Feature configuration
+    getEnabledFeatures: () => ipcRenderer.invoke('get-enabled-features'),
+    saveFeatureConfig: (config: any) => ipcRenderer.send('save-feature-config', config),
+    closeFeatureSplash: () => ipcRenderer.send('feature-splash-close'),
+    
+    // Font size
+    onFontSizeChanged: (callback: (size: number) => void) => {
+        ipcRenderer.on('font-size-changed', (_event, size) => callback(size));
+    },
+    getFontSize: () => ipcRenderer.invoke('get-font-size'),
+    
     // Remove listeners
     removeAllListeners: (channel: string) => ipcRenderer.removeAllListeners(channel)
 });

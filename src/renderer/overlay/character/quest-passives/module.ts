@@ -103,11 +103,13 @@ export function render(model: QpModel){
   const collapsedKey='qp:collapsed:v1';
   const collapsed = JSON.parse(localStorage.getItem(collapsedKey)||'{}');
   panel.innerHTML = `
-    <div class='qp-topbar'>
-      <input id='qpSearch' class='qp-search' placeholder='Search steps...'>
-      <div id='qpTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center;'></div>
-    </div>
-    <div id='qpSections' style='display:flex; flex-direction:column; gap:12px;'></div>`;
+    <div class='page-inner'>
+      <div class='qp-topbar'>
+        <input id='qpSearch' class='qp-search' placeholder='Search steps...'>
+        <div id='qpTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
+      </div>
+      <div id='qpSections' style='display:flex; flex-direction:column; gap:12px;'></div>
+    </div>`;
   const searchEl = panel.querySelector('#qpSearch') as HTMLInputElement | null;
   const tagWrap = panel.querySelector('#qpTagFilters') as HTMLElement | null;
   const container = panel.querySelector('#qpSections') as HTMLElement | null;

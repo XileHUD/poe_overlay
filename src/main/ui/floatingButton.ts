@@ -50,12 +50,15 @@ export class FloatingButton {
       transparent: true,
       alwaysOnTop: true,
       skipTaskbar: true,
+      focusable: false,
       resizable: false,
       hasShadow: false,
-      webPreferences: { nodeIntegration: true, contextIsolation: false },
+      webPreferences: { nodeIntegration: true, contextIsolation: false, backgroundThrottling: false },
     });
 
-    this.window.setIgnoreMouseEvents(false);
+  // Accept clicks, but do not take focus
+  this.window.setIgnoreMouseEvents(false);
+  try { this.window.setFocusable(false); } catch {}
     this.window.loadURL(this.buildHtml());
 
     this.window.on('moved', () => { if (!this.isPinned) this.savePosition(); });

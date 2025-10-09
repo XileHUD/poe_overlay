@@ -101,7 +101,10 @@ export class ItemParser {
     const attributeType = this.determineAttributeType(requirements);
         let category = this.determineCategory(itemClass, attributeType, baseType, name);
         
-        console.log('ItemParser: parsed item', { itemClass, name, baseType, category });
+        // Only log successful parses (suppress unknown/empty spam during clipboard polling)
+        if (category && category !== 'unknown') {
+            console.log('ItemParser: parsed item', { itemClass, name, baseType, category });
+        }
 
         // Waystones: derive Low/Mid/Top virtual categories from Area Level or Tier in name
         if (category === 'Waystones') {
@@ -345,7 +348,10 @@ export class ItemParser {
         }
         const baseCategory = this.categoryMappings[itemClass] || (itemClass === 'Jewels' ? 'Jewels' : '');
         if (!baseCategory) {
-            console.warn(`Unknown item class: ${itemClass}`);
+            // Only log if itemClass is not empty (suppress spam when clipboard is empty/junk during polling)
+            if (itemClass && itemClass.trim()) {
+                console.warn(`Unknown item class: ${itemClass}`);
+            }
             return 'unknown';
         }
         if (baseCategory === 'Stackable_Currency') {

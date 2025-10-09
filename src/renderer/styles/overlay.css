@@ -274,7 +274,7 @@ body {
 
 .domain-sections {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 8px;  /* Reduced from 12px */
 }
 

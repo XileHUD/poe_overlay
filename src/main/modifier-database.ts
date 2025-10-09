@@ -262,6 +262,142 @@ export class ModifierDatabase {
         }
     }
 
+    /**
+     * Asynchronous loader that only loads categories matching enabled patterns.
+     * Used by feature selection to avoid loading disabled categories.
+     * @param enabledCategories Array of category names or patterns (e.g., "Body_Armours_*")
+     * @param onProgress Optional progress callback
+     */
+    async loadAsyncFiltered(enabledCategories: string[], onProgress?: (msg: string) => void) {
+        try {
+            if (!fs.existsSync(this.dataPath)) {
+                onProgress?.('Data path missing');
+                return;
+            }
+
+            const allFiles = (await fsp.readdir(this.dataPath)).filter(f => f.endsWith('.json'));
+            
+            // Filter files by pattern matching
+            const filesToLoad = allFiles.filter(file => {
+                const category = file.replace('.json', '');
+                return this.matchesEnabledPattern(category, enabledCategories);
+            });
+
+            const total = filesToLoad.length;
+            let processed = 0;
+            
+            onProgress?.(`Loading ${total}/${allFiles.length} enabled categories...`);
+
+            for (const file of filesToLoad) {
+                try {
+                    const category = file.replace('.json','');
+                    const filePath = path.join(this.dataPath, file);
+                    const rawTxt = await fsp.readFile(filePath, 'utf8');
+                    const raw = JSON.parse(rawTxt);
+                    
+                    // Same parsing logic as loadAsync
+                    if (category === 'Bases') {
+                        this.jsonCache.set(category, raw);
+                    } else if (Array.isArray(raw)) {
+                        this.jsonCache.set(category, raw);
+                    } else if (raw && Array.isArray(raw.emotions)) {
+                        const mapped = raw.emotions.map((e: any) => ({
+                            category,
+                            domain: 'normal',
+                            side: 'none',
+                            text_html: e.explicitMods?.join('<br>') || e.enchantMods?.join('<br>') || e.name,
+                            text_plain: (e.explicitMods?.join(' | ') || e.enchantMods?.join(' | ') || e.name) || '',
+                            tier: null,
+                            ilvl: null,
+                            weight: 0,
+                            weight_pct: 0,
+                            tags: ['emotion'],
+                            modal_id: null,
+                            family_name: null,
+                            tiers: []
+                        }));
+                        this.jsonCache.set(category, mapped);
+                    } else if (raw && Array.isArray(raw.omens)) {
+                        const mapped = raw.omens.map((o: any) => ({
+                            category,
+                            domain: 'omen',
+                            side: 'none',
+                            text_html: `<strong>${o.name}</strong><br>${(o.explicitMods||[]).join('<br>')}`,
+                            text_plain: [o.name, ...(o.explicitMods||[])].join(' | '),
+                            tier: null,
+                            ilvl: null,
+                            weight: 0,
+                            weight_pct: 0,
+                            tags: ['omen'],
+                            modal_id: null,
+                            family_name: null,
+                            tiers: []
+                        }));
+                        this.jsonCache.set(category, mapped);
+                    } else if (raw && raw.gems && typeof raw.gems === 'object') {
+                        const groups = raw.gems; const flat: any[] = [];
+                        for (const grp of Object.keys(groups)) {
+                            for (const g of groups[grp] || []) {
+                                flat.push({
+                                    category,
+                                    domain: 'gem',
+                                    side: 'none',
+                                    text_html: `<strong>${g.name}</strong><br>${g.description||''}`,
+                                    text_plain: [g.name, g.description || ''].join(' - ').trim(),
+                                    tier: null,
+                                    ilvl: null,
+                                    weight: 0,
+                                    weight_pct: 0,
+                                    tags: ['gem', grp, ...(g.tags||[])],
+                                    modal_id: null,
+                                    family_name: null,
+                                    tiers: []
+                                });
+                            }
+                        }
+                        this.jsonCache.set(category, flat);
+                    } else {
+                        this.jsonCache.set(category, []);
+                    }
+                } catch (e) {
+                    console.warn('Failed loading', file, e);
+                }
+                processed++;
+                if (processed % 3 === 0 || processed === total) {
+                    onProgress?.(`Loading ${processed}/${total} categories...`);
+                }
+                // Yield so splash can repaint
+                await new Promise(r => setTimeout(r, 0));
+            }
+            
+            onProgress?.(`Loaded ${this.jsonCache.size} categories (skipped ${allFiles.length - total})`);
+        } catch (e) {
+            console.error('Async filtered load error', e);
+            onProgress?.('Modifier load failed');
+        }
+    }
+
+    /**
+     * Check if a category matches any of the enabled patterns.
+     * Supports wildcards: "Body_Armours_*" matches "Body_Armours_str", etc.
+     */
+    private matchesEnabledPattern(category: string, patterns: string[]): boolean {
+        return patterns.some(pattern => {
+            // Wildcard at end: "Body_Armours_*"
+            if (pattern.endsWith('_*')) {
+                const prefix = pattern.slice(0, -2);
+                return category.startsWith(prefix);
+            }
+            // Wildcard at start: "*_Relic"
+            if (pattern.startsWith('*_')) {
+                const suffix = pattern.slice(1);
+                return category.endsWith(suffix);
+            }
+            // Exact match
+            return category === pattern;
+        });
+    }
+
     async getModifiersForCategory(category: string): Promise<ModifierData[]> {
     const raw = (category || '').trim();
         const norm = raw.toUpperCase();
