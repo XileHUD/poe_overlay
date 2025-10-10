@@ -563,8 +563,21 @@ class OverlayApp {
             transparent: true,
             show: false,
             focusable: true,  // Changed to true to allow mouse interactions
-            icon: windowIcon
+            icon: windowIcon,
+            // Critical for windowed fullscreen games: ensure overlay stays above game
+            type: process.platform === 'win32' ? 'toolbar' : undefined
         });
+
+        // Immediately enforce skipTaskbar and always-on-top for windowed fullscreen compatibility
+        if (this.overlayWindow) {
+            try {
+                this.overlayWindow.setSkipTaskbar(true);
+                // Use 'screen-saver' level which is above fullscreen windows but below system UI
+                this.overlayWindow.setAlwaysOnTop(true, 'screen-saver');
+            } catch (e) {
+                console.warn('[Overlay] Failed to set initial window properties:', e);
+            }
+        }
 
     // --- Image diagnostics instrumentation ---
         try {
@@ -686,6 +699,16 @@ class OverlayApp {
     const maxH = primaryDisplay.bounds.height - 50;
     this.overlayWindow.setMaximumSize(primaryDisplay.bounds.width, maxH);
 
+        // Additional Windows compatibility: ensure window is visible on all workspaces/desktops
+        // This helps with Windows 10/11 virtual desktop issues
+        try {
+            if (process.platform === 'win32' && typeof this.overlayWindow.setVisibleOnAllWorkspaces === 'function') {
+                this.overlayWindow.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
+            }
+        } catch (e) {
+            console.warn('[Overlay] setVisibleOnAllWorkspaces not supported or failed:', e);
+        }
+
         // Load the overlay UI
         if (process.env.NODE_ENV === 'development') {
             this.overlayWindow.loadURL('http://localhost:5173/overlay');
@@ -707,6 +730,18 @@ class OverlayApp {
         // Track load state to queue events safely
         this.overlayWindow.webContents.on('did-finish-load', () => {
             this.overlayLoaded = true;
+            
+            // Explicitly set always-on-top and skipTaskbar after window content loads
+            // Use screen-saver level to stay above windowed fullscreen games
+            try {
+                if (this.overlayWindow && !this.overlayWindow.isDestroyed()) {
+                    this.overlayWindow.setSkipTaskbar(true);
+                    this.overlayWindow.setAlwaysOnTop(true, 'screen-saver');
+                }
+            } catch (e) {
+                console.warn('[Overlay] Failed to set window properties after load:', e);
+            }
+            
             if (this.pendingTab) { try { this.overlayWindow?.webContents.send('set-active-tab', this.pendingTab); } catch {} }
             if (this.pendingCategory) { try { this.overlayWindow?.webContents.send('set-active-category', this.pendingCategory); } catch {} }
             if (this.pendingItemData) {
@@ -755,6 +790,21 @@ class OverlayApp {
         this.overlayWindow.on('resized', () => {
             this.saveWindowBounds();
         });
+
+        // Periodic check to ensure always-on-top and skipTaskbar are maintained
+        // This fixes windowed fullscreen games and some Windows configurations
+        setInterval(() => {
+            try {
+                if (this.overlayWindow && !this.overlayWindow.isDestroyed() && this.isOverlayVisible) {
+                    // Use screen-saver level to stay above fullscreen/borderless windowed games
+                    this.overlayWindow.setAlwaysOnTop(true, 'screen-saver');
+                    // Ensure taskbar icon doesn't appear
+                    this.overlayWindow.setSkipTaskbar(true);
+                }
+            } catch (e) {
+                // Silently handle errors (window might be in transition)
+            }
+        }, 3000); // Check every 3 seconds
     }
 
 
@@ -921,10 +971,19 @@ class OverlayApp {
         // Passive mode just means "don't steal focus from game", not "don't show"
         const shouldFocus = opts?.focus !== false; // default true
         
+        // Ensure taskbar icon is hidden (fix for some Windows configs)
+        try {
+            this.overlayWindow.setSkipTaskbar(true);
+        } catch (e) {
+            console.warn('[Overlay] Failed to set skipTaskbar:', e);
+        }
+        
         // If already visible and pinned and we don't want focus, just update data (passive)
         // But still ensure window is shown and on top
         if (this.isOverlayVisible && this.pinned && !shouldFocus) {
             this.overlayWindow.show(); // Ensure still visible (might have been minimized)
+            // Use screen-saver level to stay above windowed fullscreen games
+            this.overlayWindow.setAlwaysOnTop(true, 'screen-saver');
             console.log('[Overlay] Passive update (pinned, no focus steal)');
             return;
         }
@@ -932,6 +991,9 @@ class OverlayApp {
         // Show overlay and optionally give it focus
         if (shouldFocus) {
             this.overlayWindow.show();
+            // Use screen-saver level - this is ABOVE fullscreen windows
+            // This fixes windowed fullscreen game overlay issues
+            this.overlayWindow.setAlwaysOnTop(true, 'screen-saver');
             this.overlayWindow.focus();
         } else {
             if (typeof this.overlayWindow.showInactive === 'function') {
@@ -939,6 +1001,8 @@ class OverlayApp {
             } else {
                 this.overlayWindow.show();
             }
+            // Use screen-saver level even in passive mode to stay above game
+            this.overlayWindow.setAlwaysOnTop(true, 'screen-saver');
             try {
                 this.overlayWindow.blur();
             } catch {}
