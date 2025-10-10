@@ -139,6 +139,11 @@ export function updateRefreshButtonUI(
   const btn = document.getElementById('historyRefreshBtn') as HTMLButtonElement | null;
   if (!btn) return;
 
+  // Don't update tooltip while hovering to prevent flicker
+  if ((btn as any).matches && (btn as any).matches(':hover')) {
+    return;
+  }
+
   // Store retryAfter for click handler to use
   (btn as any)._retryAfter = retryAfter || 0;
   
@@ -280,7 +285,10 @@ function showRateLimitToast(retryAfter: number): void {
 /**
  * Attach refresh button click handler with confirmation
  */
-export function attachRefreshButtonLogic(refreshCallback: () => Promise<void>): void {
+export function attachRefreshButtonLogic(
+  refreshCallback: () => Promise<void>,
+  autoRefreshCallback?: () => Promise<void>
+): void {
   const btn = document.getElementById('historyRefreshBtn') as HTMLButtonElement | null;
   if (!btn || (btn as any)._refreshWired) return;
   (btn as any)._refreshWired = true;
@@ -302,7 +310,7 @@ export function attachRefreshButtonLogic(refreshCallback: () => Promise<void>): 
         if (autoRefreshManager.isRunning()) {
           autoRefreshManager.startAutoRefresh(async () => {
             // Reuse external refresh callback semantics
-            await refreshCallback();
+            await (autoRefreshCallback || refreshCallback)();
           });
         }
       } catch {}

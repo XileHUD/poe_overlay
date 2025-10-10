@@ -75,9 +75,12 @@ export function renderHistoryList(renderDetailCallback: (idx: number) => void): 
     .map((it: any, idx: number) => {
       const rel = toRelativeTime(it?.time || it?.listedAt || it?.date || 0);
       const time = rel || (it?.timeText || "");
-      const amount = it?.price?.amount ?? it?.amount ?? "?";
-      const currency = normalizeCurrency(it?.price?.currency ?? it?.currency ?? "");
-      const curClass = currency ? `currency-${currency}` : "";
+    const amountRaw = it?.price?.amount ?? it?.amount;
+        const currency = normalizeCurrency(it?.price?.currency ?? it?.currency ?? "");
+    const numericAmount = typeof amountRaw === 'number' ? amountRaw : Number(amountRaw);
+    const hasPrice = Number.isFinite(numericAmount) && !!currency;
+    const amount = hasPrice ? numericAmount : "?";
+        const curClass = hasPrice ? `currency-${currency}` : "";
   const name = it?.item?.name || it?.item?.typeLine || it?.item?.baseType || "Item";
   const indexLabel = idx + 1;
   const isSelected = idx === historyState.selectedIndex;
@@ -85,13 +88,13 @@ export function renderHistoryList(renderDetailCallback: (idx: number) => void): 
       
       return `<div data-idx="${idx}" class="${rowClasses}" style="padding:8px; border-bottom:1px solid var(--border-color); cursor:pointer;">
         <div style="display:flex; justify-content:space-between; gap:6px; align-items:center;">
-          <div style="display:flex; align-items:center; gap:8px; min-width:0;">
+          <div style="display:flex; align-items:center; gap:8px; min-width:0; overflow:hidden;">
             <span class="history-row-index" aria-hidden="true">${indexLabel}</span>
             <div class="history-row-title" title="${escapeHtml(name)}">${escapeHtml(name)}</div>
           </div>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span class="price-badge ${curClass}"><span class="amount">${amount}</span> ${currency}</span>
-            <div style="color:var(--text-muted); font-size:11px;">${time}</div>
+            <div style="display:flex; align-items:center; gap:8px; flex-shrink:0; white-space:nowrap;">
+              ${hasPrice ? `<span class="price-badge ${curClass}" style="white-space:nowrap;"><span class="amount">${amount}</span> ${currency}</span>` : ''}
+              <div style="color:var(--text-muted); font-size:11px; white-space:nowrap;">${time}</div>
           </div>
         </div>
         <div style="color:var(--text-secondary);"></div>

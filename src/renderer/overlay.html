@@ -88,16 +88,13 @@
                                 <div class="fgrp grp-currency" style="display:flex; align-items:center; gap:4px;">
                                     <label style="color:var(--text-secondary); font-size:11px;">Currency:</label>
                                       <select id="histCurrency" class="sel-currency" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px; appearance:none;">
+                                        <option value="">All</option>
                                         <option value="exalted">Exalted</option>
                                         <option value="divine">Divine</option>
                                         <option value="annul">Annul</option>
                                         <option value="chaos">Chaos</option>
                                         <option value="regal">Regal</option>
                                     </select>
-                                </div>
-                                <div class="fgrp grp-min" style="display:flex; align-items:center; gap:4px;">
-                                    <label style="color:var(--text-secondary); font-size:11px;">Min:</label>
-                                    <input id="histMinValue" class="inp-min" type="number" step="1" min="0" value="0" style="width:60px; padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;" />
                                 </div>
                                 <div class="fgrp grp-time" style="display:flex; align-items:center; gap:4px;">
                                     <label style="color:var(--text-secondary); font-size:11px;">Time:</label>
@@ -133,6 +130,7 @@
                                         <option value="Magic">Magic</option>
                                         <option value="Rare">Rare</option>
                                         <option value="Unique">Unique</option>
+                                        <option value="Foil">Foil</option>
                                     </select>
                                 </div>
                                 <div class="fgrp grp-type" style="display:flex; align-items:center; gap:4px;">
@@ -143,13 +141,12 @@
                                         <option>Body Armours</option>
                                         <option>Gloves</option>
                                         <option>Boots</option>
-                                        <option value="Other">Other</option>
+                                        <option>Offhand</option>
                                         <option>Rings</option>
                                         <option>Amulets</option>
                                         <option>Belts</option>
                                         <option>Weapons</option>
                                         <option>Jewels</option>
-                                        <option>Uniques</option>
                                         <option>Other</option>
                                     </select>
                                 </div>
@@ -1511,7 +1508,7 @@
                 const applyAndRenderFn = H.applyAndRender;
                 const wire = (el, ev, fn)=>{ if(el){ el.addEventListener(ev, fn); el.setAttribute('data-filter-wired','1'); } };
                 wire(minEl,'input', ()=>{ histState.filters.min = Number(minEl.value||0); applyAndRenderFn(); });
-                wire(curEl,'change', ()=>{ histState.filters.cur = String(curEl.value||'exalted'); applyAndRenderFn(); });
+                wire(curEl,'change', ()=>{ histState.filters.cur = String(curEl.value||''); applyAndRenderFn(); });
                 wire(catEl,'change', ()=>{ histState.filters.category = String(catEl.value||''); applyAndRenderFn(); });
                 wire(sortEl,'change', ()=>{ histState.sort = String(sortEl.value||'newest'); applyAndRenderFn(); });
                 wire(rarEl,'change', ()=>{ histState.filters.rarity = String(rarEl.value||''); applyAndRenderFn(); });

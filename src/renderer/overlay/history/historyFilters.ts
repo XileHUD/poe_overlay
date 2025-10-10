@@ -6,6 +6,119 @@
 import { normalizeCurrency, escapeHtml } from "../utils";
 import type { HistoryEntryRaw, HistoryState } from "./historyData";
 
+const escapeRegExp = (value: string): string => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+type SearchToken = {
+  value: string;
+  strict: boolean;
+};
+
+const buildSearchWords = (text: string): string[] => text.split(/[^a-z0-9]+/).filter(Boolean);
+
+function evaluateSearchTokens(haystack: string, tokens: SearchToken[], rawTerm: string): boolean {
+  if (!tokens.length) return true;
+  const words = buildSearchWords(haystack);
+
+  for (const token of tokens) {
+    if (!token || !token.value) continue;
+    if (token.strict && !haystack.includes(token.value)) return false;
+  }
+
+  const fuzzyTokens = tokens.filter(token => token && token.value && !token.strict);
+  if (fuzzyTokens.length === 0) return true;
+
+  const matchedFuzzy = fuzzyTokens.filter(token => words.some(word => word.startsWith(token.value))).length;
+  if (matchedFuzzy === fuzzyTokens.length) return true;
+
+  if (rawTerm && haystack.includes(rawTerm)) return true;
+
+  return false;
+}
+
+function pushSegment(target: string[], val: any): void {
+  if (val === null || val === undefined) return;
+  if (typeof val === "string") {
+    const trimmed = val.trim();
+    if (trimmed) target.push(trimmed);
+    return;
+  }
+  if (typeof val === "number") {
+    if (Number.isFinite(val)) target.push(String(val));
+    return;
+  }
+  if (Array.isArray(val)) {
+    val.forEach((entry) => pushSegment(target, entry));
+    return;
+  }
+  if (typeof val === "object") {
+    const maybeName = (val as any).name;
+    const maybeText = (val as any).text;
+    if (maybeName) pushSegment(target, maybeName);
+    if (maybeText) pushSegment(target, maybeText);
+    const values = (val as any).values;
+    if (Array.isArray(values)) {
+      values.forEach((entry: any) => {
+        if (Array.isArray(entry) && entry.length) pushSegment(target, entry[0]);
+        else pushSegment(target, entry);
+      });
+    }
+  }
+}
+
+function collectItemSegments(entry: any): string[] {
+  const segments: string[] = [];
+  const item = entry?.item || {};
+  pushSegment(segments, item?.name);
+  pushSegment(segments, item?.typeLine);
+  pushSegment(segments, item?.baseType);
+  pushSegment(segments, item?.descrText);
+  pushSegment(segments, item?.flavourText);
+  pushSegment(segments, item?.note);
+  pushSegment(segments, entry?.note);
+  pushSegment(segments, entry?.merchant);
+  pushSegment(segments, entry?.account);
+  pushSegment(segments, entry?.accountName);
+  pushSegment(segments, entry?.character);
+  pushSegment(segments, entry?.seller);
+
+  const priceCurrency = normalizeCurrency(item?.price?.currency ?? entry?.price?.currency ?? entry?.currency ?? "");
+  if (priceCurrency) pushSegment(segments, priceCurrency);
+  pushSegment(segments, entry?.price?.amount ?? entry?.amount);
+
+  const modsToCollect = [
+    item?.implicitMods,
+    item?.explicitMods,
+    item?.fracturedMods,
+    item?.desecratedMods,
+    item?.enchantMods,
+    item?.corruptedMods,
+    item?.veiledMods,
+    item?.craftedMods,
+    item?.runeMods
+  ];
+  modsToCollect.forEach((mods) => pushSegment(segments, mods));
+
+  if (Array.isArray(item?.properties)) {
+    item.properties.forEach((prop: any) => {
+      pushSegment(segments, prop?.name);
+      const vals: any[] = Array.isArray(prop?.values) ? prop.values : [];
+      vals.forEach((v) => {
+        if (Array.isArray(v) && v.length) pushSegment(segments, v[0]);
+        else pushSegment(segments, v);
+      });
+    });
+  }
+
+  const extended = item?.extended || {};
+  ["ar", "armour", "ev", "evasion", "es", "energy_shield", "energyshield", "ward", "foil", "isFoil"]
+    .forEach((key) => pushSegment(segments, (extended as any)[key]));
+
+  if (Array.isArray(item?.utilityMods)) pushSegment(segments, item.utilityMods);
+  if (Array.isArray(item?.additionalProperties)) pushSegment(segments, item.additionalProperties);
+
+  return segments;
+}
+
 /**
  * Render active filter chips with remove buttons
  */
@@ -34,10 +147,15 @@ export function renderHistoryActiveFilters(
     chips.push(`<span class="price-badge" title="Timeframe filter">${escapeHtml(lbl)} <button data-act="clear-timeframe" style="margin-left:6px; background:none; border:none; color:var(--text-muted); cursor:pointer;">×</button></span>`);
   }
   
-  if (min && min > 0) {
-    const c = normalizeCurrency(cur || "");
+  if (cur) {
+    const c = normalizeCurrency(cur);
+    const curClass = `currency-${c}`;
     chips.push(
-      `<span class="price-badge" title="Minimum amount in ${c}">Min: <span class="amount">${min}</span> ${c} <button data-act="clear-min" style="margin-left:6px; background:none; border:none; color:var(--text-muted); cursor:pointer;">×</button></span>`
+      `<span class="price-badge ${curClass}" title="Currency filter">${c}${min > 0 ? ` ≥ <span class="amount">${min}</span>` : ''} <button data-act="clear-cur" style="margin-left:6px; background:none; border:none; color:inherit; opacity:0.7; cursor:pointer;">×</button></span>`
+    );
+  } else if (min > 0) {
+    chips.push(
+      `<span class="price-badge" title="Minimum amount">Min: <span class="amount">${min}</span> <button data-act="clear-min" style="margin-left:6px; background:none; border:none; color:var(--text-muted); cursor:pointer;">×</button></span>`
     );
   }
   
@@ -54,8 +172,17 @@ export function renderHistoryActiveFilters(
   }
   
   if (rarity) {
+    const rarityColors: Record<string, string> = {
+      'normal': 'currency-normal',
+      'magic': 'currency-magic',
+      'rare': 'currency-rare',
+      'unique': 'currency-unique',
+      'foil': 'currency-foil'
+    };
+    const rarityKey = rarity.toLowerCase();
+    const rarityClass = rarityColors[rarityKey] || '';
     chips.push(
-      `<span class="price-badge" title="Rarity filter">${escapeHtml(rarity)} <button data-act="clear-rarity" style="margin-left:6px; background:none; border:none; color:var(--text-muted); cursor:pointer;">×</button></span>`
+      `<span class="price-badge ${rarityClass}" title="Rarity filter">${escapeHtml(rarity)} <button data-act="clear-rarity" style="margin-left:6px; background:none; border:none; color:inherit; opacity:0.7; cursor:pointer;">×</button></span>`
     );
   }
   
@@ -69,6 +196,13 @@ export function renderHistoryActiveFilters(
         state.filters.min = 0;
         const el = document.getElementById("histMinValue");
         if (el) (el as HTMLInputElement).value = "0";
+      } else if (act === "clear-cur") {
+        state.filters.cur = "";
+        state.filters.min = 0;
+        const curEl = document.getElementById("histCurrency");
+        const minEl = document.getElementById("histMinValue");
+        if (curEl) (curEl as HTMLSelectElement).value = "";
+        if (minEl) (minEl as HTMLInputElement).value = "0";
       } else if (act === "clear-cat") {
         state.filters.category = "";
         const el = document.getElementById("histCategory");
@@ -86,7 +220,6 @@ export function renderHistoryActiveFilters(
         const el = document.getElementById('histTimeframe');
         if (el) (el as HTMLSelectElement).value = 'all';
       }
-      
       try {
         const allEntries = (state.store?.entries || []).slice().reverse();
         state.items = applySort(applyFilters(allEntries, state.filters), state.sort);
@@ -120,6 +253,19 @@ export function applyFilters(list: HistoryEntryRaw[], filters: HistoryState['fil
   const cur = normalizeCurrency(filters.cur || "");
   const catSel = filters.category || "";
   const searchTerm = (search || '').trim().toLowerCase();
+  const searchTokens: SearchToken[] = searchTerm
+    ? searchTerm
+        .split(/\s+/)
+        .map((token) => {
+          if (!token) return null;
+          const strict = token.startsWith('-');
+          const valueRaw = strict ? token.slice(1) : token;
+          const value = valueRaw.trim().toLowerCase();
+          if (!value) return null;
+          return { value, strict } as SearchToken;
+        })
+        .filter((token): token is SearchToken => Boolean(token))
+    : [];
   
   // Timeframe boundaries
   let earliest = 0;
@@ -145,6 +291,12 @@ export function applyFilters(list: HistoryEntryRaw[], filters: HistoryState['fil
   }
   
   return list.filter((it: any) => {
+    let segmentCache: string[] | null = null;
+    const ensureSegments = (): string[] => {
+      if (!segmentCache) segmentCache = collectItemSegments(it);
+      return segmentCache;
+    };
+
     // Timeframe filter
     if (earliest || latest !== Infinity) {
       const tRaw = it?.time || it?.listedAt || it?.date || 0;
@@ -153,12 +305,17 @@ export function applyFilters(list: HistoryEntryRaw[], filters: HistoryState['fil
       if (t > latest) return false;
     }
     
-    // Price filter
+    // Currency filter (when currency is selected, filter by currency regardless of min)
     const amount = Number(it?.price?.amount ?? it?.amount ?? 0);
     const currency = normalizeCurrency(it?.price?.currency ?? it?.currency ?? "");
-    if (min > 0) {
+    if (cur) {
+      // Currency selected: filter by currency
       if (currency !== cur) return false;
-      if (amount < min) return false;
+      // If min is set, also filter by amount
+      if (min > 0 && amount < min) return false;
+    } else {
+      // No currency selected ("All"): only filter by min if set
+      if (min > 0 && amount < min) return false;
     }
     
     // Category filter
@@ -174,6 +331,10 @@ export function applyFilters(list: HistoryEntryRaw[], filters: HistoryState['fil
       const includesAny = (patterns: string[]): boolean => {
         return lowerPieces.some(text => patterns.some(p => p && text.includes(p)));
       };
+      const containsWord = (word: string): boolean => {
+        const pattern = new RegExp(`(^|[^a-z0-9])${escapeRegExp(word)}s?(?=$|[^a-z0-9])`, 'i');
+        return lowerPieces.some(text => pattern.test(text));
+      };
 
       const matchesCategoryLabel = (label: string): boolean => {
         switch (label) {
@@ -181,15 +342,10 @@ export function applyFilters(list: HistoryEntryRaw[], filters: HistoryState['fil
             if (includesAny(["jewel"])) return true;
             return includesAny(["cluster", "abyss", "ruby", "emerald", "sapphire", "diamond", "time-lost", "timelost", "time lost"]);
           }
-          case "Uniques": {
-            const frameStr = frame != null ? String(frame) : "";
-            if (frameStr === "3") return true;
-            return /unique/i.test(frameStr) || includesAny(["<unique>"]);
-          }
           case "Weapons":
             return includesAny([
               "sword", "axe", "mace", "bow", "sceptre", "scepter", "staff", "spear", "claw", "crossbow", "flail", "wand", "dagger", "polearm",
-              "pick", "greatclub", "hammer", "maul", "quiver"
+              "pick", "greatclub", "hammer", "maul"
             ]);
           case "Body Armours":
             return includesAny(["armour", "armor", "robe", "vest", "mail", "plate", "tunic", "garb", "brigandine", "chest", "coat", "jacket", "raiment"]);
@@ -204,7 +360,9 @@ export function applyFilters(list: HistoryEntryRaw[], filters: HistoryState['fil
               "glove", "gauntlet", "mitt", "handwrap", "grip", "handwraps", "handwrap", "hand", "hands", "paw", "paws", "wraps", "finger", "fingers", "clutch", "clutches"
             ]);
           case "Rings":
-            return includesAny(["ring", "signet"]);
+            return containsWord("ring") || containsWord("signet");
+          case "Offhand":
+            return includesAny(["buckler", "kite", "tower shield", "shield", "focus", "foci", "spirit shield"]) || containsWord("quiver");
           case "Amulets":
             return includesAny(["amulet", "talisman", "necklace", "locket"]);
           case "Belts":
@@ -227,7 +385,7 @@ export function applyFilters(list: HistoryEntryRaw[], filters: HistoryState['fil
           "Belts",
           "Weapons",
           "Jewels",
-          "Uniques"
+          "Offhand"
         ];
         if (knownLabels.some(label => matchesCategoryLabel(label))) {
           return false;
@@ -239,94 +397,33 @@ export function applyFilters(list: HistoryEntryRaw[], filters: HistoryState['fil
     
     // Rarity filter
     if (rarity) {
-      const frameMap: Record<number, string> = {0:'Normal',1:'Magic',2:'Rare',3:'Unique'};
-      const itemRarity = (it?.item?.rarity ? String(it.item.rarity) : (it?.item?.frameType != null ? frameMap[it.item.frameType] : 'Normal'));
-      if (!new RegExp(`^${rarity}$`, 'i').test(itemRarity || '')) return false;
-    }
-    
-    // Search filter
-    if (searchTerm) {
-      const item = it?.item || {};
-      const segments: string[] = [];
-      const push = (val: any) => {
-        if (val === null || val === undefined) return;
-        if (typeof val === 'string') {
-          if (val.trim()) segments.push(val);
-          return;
-        }
-        if (typeof val === 'number') {
-          segments.push(String(val));
-          return;
-        }
-        if (Array.isArray(val)) {
-          val.forEach(push);
-          return;
-        }
-        if (typeof val === 'object') {
-          const maybeName = (val as any).name;
-          const maybeText = (val as any).text;
-          if (maybeName) push(maybeName);
-          if (maybeText) push(maybeText);
-          const values = (val as any).values;
-          if (Array.isArray(values)) {
-            values.forEach((entry: any) => {
-              if (Array.isArray(entry) && entry.length) push(entry[0]);
-              else push(entry);
-            });
-          }
-        }
-      };
-
-      push(item?.name);
-      push(item?.typeLine);
-      push(item?.baseType);
-      push(item?.descrText);
-      push(item?.flavourText);
-      push(item?.note);
-      push(it?.note);
-
-      const priceCurrency = normalizeCurrency(it?.price?.currency ?? it?.currency ?? '');
-      if (priceCurrency) push(priceCurrency);
-      push(it?.price?.amount ?? it?.amount);
-
-      const modsToCollect = [
-        item?.implicitMods,
-        item?.explicitMods,
-        item?.fracturedMods,
-        item?.desecratedMods,
-        item?.enchantMods,
-        item?.corruptedMods,
-        item?.veiledMods,
-        item?.craftedMods,
-        item?.runeMods
-      ];
-      modsToCollect.forEach(push);
-
-      if (Array.isArray(item?.properties)) {
-        item.properties.forEach((prop: any) => {
-          push((prop as any)?.name);
-          const vals: any[] = Array.isArray((prop as any)?.values) ? (prop as any).values : [];
-          vals.forEach(v => {
-            if (Array.isArray(v) && v.length) push(v[0]);
-            else push(v);
-          });
-        });
+      if (/^foil$/i.test(rarity)) {
+        const segments = ensureSegments();
+        const haystack = segments
+          .filter(Boolean)
+          .map(str => str.toString().toLowerCase())
+          .join(' ');
+        const item = it?.item || {};
+        const extended = item?.extended || {};
+        const foilFlags = Boolean((item as any)?.foil || (item as any)?.isFoil || (extended as any)?.foil || (extended as any)?.isFoil);
+        const foilPhrase = haystack.includes('foil unique') || haystack.includes('unique foil');
+        const hasFoilWord = /(^|\W)foil(\W|$)/i.test(haystack);
+        if (!(foilFlags || foilPhrase || (hasFoilWord && /unique/i.test(haystack)))) return false;
+      } else {
+        const frameMap: Record<number, string> = {0:'Normal',1:'Magic',2:'Rare',3:'Unique'};
+        const itemRarity = (it?.item?.rarity ? String(it.item.rarity) : (it?.item?.frameType != null ? frameMap[it.item.frameType] : 'Normal'));
+        if (!new RegExp(`^${escapeRegExp(rarity)}$`, 'i').test(itemRarity || '')) return false;
       }
+    }
 
-      const extended = item?.extended || {};
-      ['ar', 'armour', 'ev', 'evasion', 'es', 'energy_shield', 'energyshield', 'ward']
-        .forEach(key => {
-          const val = (extended as any)[key];
-          if (val !== undefined && val !== null && val !== '') {
-            push(`${key} ${val}`);
-          }
-        });
-
+    // Search filter
+    if (searchTokens.length > 0) {
+      const segments = ensureSegments();
       const haystack = segments
         .filter(Boolean)
         .map(str => str.toString().toLowerCase())
         .join(' ');
-      if (!haystack.includes(searchTerm)) return false;
+      if (!evaluateSearchTokens(haystack, searchTokens, searchTerm)) return false;
     }
     
     return true;

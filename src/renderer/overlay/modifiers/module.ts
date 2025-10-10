@@ -17,6 +17,156 @@ export type ModifierData = {
 function highlightText(s: string){ return (window as any).OverlayUtils?.highlightText?.(s) ?? s; }
 function formatJoinedModText(s: string){ return (window as any).OverlayUtils?.formatJoinedModText?.(s) ?? s; }
 
+type SearchToken = {
+  value: string;
+  strict: boolean;
+};
+
+type SearchIndex = {
+  haystack: string;
+  words: string[];
+};
+
+const modSearchCache = new WeakMap<any, SearchIndex>();
+
+type SearchEvaluation = {
+  passes: boolean;
+  matchedFuzzy: number;
+  matchedStrict: number;
+};
+
+function normalizeSearchText(value: string): string {
+  return value.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function pushSearchSegment(target: string[], value: any): void {
+  if (value === null || value === undefined) return;
+  if (typeof value === "string") {
+    const normalized = normalizeSearchText(value);
+    if (normalized) target.push(normalized);
+    return;
+  }
+  if (typeof value === "number") {
+    if (Number.isFinite(value)) target.push(String(value));
+    return;
+  }
+  if (Array.isArray(value)) {
+    value.forEach((entry) => pushSearchSegment(target, entry));
+    return;
+  }
+  if (typeof value === "object") {
+    const obj: any = value;
+    if (obj.text_plain) pushSearchSegment(target, obj.text_plain);
+    else if (obj.text) pushSearchSegment(target, obj.text);
+    else if (obj.name) pushSearchSegment(target, obj.name);
+    if (Array.isArray(obj.values)) {
+      obj.values.forEach((entry: any) => {
+        if (Array.isArray(entry) && entry.length) pushSearchSegment(target, entry[0]);
+        else pushSearchSegment(target, entry);
+      });
+    }
+    if (Array.isArray(obj.tags)) pushSearchSegment(target, obj.tags);
+    if (Array.isArray(obj.attributes)) pushSearchSegment(target, obj.attributes);
+  }
+}
+
+function collectModSearchSegments(mod: any, section: any, data: any): string[] {
+  const segments: string[] = [];
+  pushSearchSegment(segments, mod?.text);
+  pushSearchSegment(segments, mod?.text_plain);
+  pushSearchSegment(segments, mod?.text_html);
+  pushSearchSegment(segments, mod?.name);
+  pushSearchSegment(segments, mod?.category);
+  pushSearchSegment(segments, mod?.group);
+  pushSearchSegment(segments, mod?.type);
+  pushSearchSegment(segments, mod?.tags);
+  pushSearchSegment(segments, mod?.attributes);
+  if (Array.isArray(mod?.tiers)) {
+    mod.tiers.forEach((tier: any) => {
+      pushSearchSegment(segments, tier?.text_plain);
+      pushSearchSegment(segments, tier?.text);
+      pushSearchSegment(segments, tier?.tier_name);
+      pushSearchSegment(segments, tier?.name);
+      pushSearchSegment(segments, tier?.attributes);
+    });
+  }
+
+  if (section) {
+    pushSearchSegment(segments, section.domain);
+    pushSearchSegment(segments, section.side ?? section.type);
+    pushSearchSegment(segments, section.category);
+    pushSearchSegment(segments, section.tags);
+    pushSearchSegment(segments, section.attributes);
+  }
+
+  return segments;
+}
+
+function getModSearchIndex(mod: any, section: any, data: any): SearchIndex {
+  const cached = modSearchCache.get(mod);
+  if (cached) return cached;
+  const haystack = collectModSearchSegments(mod, section, data)
+    .filter(Boolean)
+    .map((segment) => segment.toString().toLowerCase())
+    .join(" ");
+  const index = {
+    haystack,
+    words: haystack.split(/[^a-z0-9]+/).filter(Boolean)
+  };
+  modSearchCache.set(mod, index);
+  return index;
+}
+
+function buildSearchIndexFromText(text: string): SearchIndex {
+  const haystack = text.toLowerCase();
+  return {
+    haystack,
+    words: haystack.split(/[^a-z0-9]+/).filter(Boolean)
+  };
+}
+
+function evaluateSearchTokens(index: SearchIndex, tokens: SearchToken[], rawTerm: string): SearchEvaluation {
+  if (!tokens.length) return { passes: true, matchedFuzzy: 0, matchedStrict: 0 };
+  const { haystack, words } = index;
+  let matchedFuzzy = 0;
+  let matchedStrict = 0;
+
+  // Check raw phrase match first (exact substring)
+  const allFuzzy = tokens.every(token => token && !token.strict);
+  if (allFuzzy && rawTerm && haystack.includes(rawTerm)) {
+    return { passes: true, matchedFuzzy: tokens.length, matchedStrict: 0 };
+  }
+
+  // Strict tokens must ALL be present as exact substrings (AND for strict)
+  for (const token of tokens) {
+    if (!token || !token.value || !token.strict) continue;
+    if (!haystack.includes(token.value)) {
+      return { passes: false, matchedFuzzy: 0, matchedStrict: 0 };
+    }
+    matchedStrict += 1;
+  }
+
+  // Fuzzy tokens use OR logic - match ANY token (at least one must match)
+  const fuzzyTokens = tokens.filter(token => token && token.value && !token.strict);
+  if (fuzzyTokens.length === 0) {
+    return { passes: true, matchedFuzzy: 0, matchedStrict };
+  }
+
+  for (const token of fuzzyTokens) {
+    const matched = words.some(word => word.startsWith(token.value));
+    if (matched) {
+      matchedFuzzy += 1;
+    }
+  }
+
+  // Pass if ANY fuzzy token matched (OR behavior for modifiers)
+  if (matchedFuzzy > 0) {
+    return { passes: true, matchedFuzzy, matchedStrict };
+  }
+
+  return { passes: false, matchedFuzzy: 0, matchedStrict };
+}
+
 // Check if current category is an aggregated view that should show item type tags
 function isAggregatedCategory(): boolean {
   const currentCategory = (window as any).currentModifierCategory;
@@ -395,7 +545,22 @@ export function computeWhittling(data: ModifierData){
 
 export function renderFilteredContent(data: any){
   const content = document.getElementById('content');
-  const searchTerm = (document.getElementById('search-input') as HTMLInputElement | null)?.value?.toLowerCase() || '';
+  const searchInputRaw = (document.getElementById('search-input') as HTMLInputElement | null)?.value || '';
+  const searchTerm = searchInputRaw.trim().toLowerCase();
+  const searchTokens: SearchToken[] = searchTerm
+    ? searchTerm
+        .split(/\s+/)
+        .map((token) => {
+          if (!token) return null;
+          const strict = token.startsWith('-');
+          const valueRaw = strict ? token.slice(1) : token;
+          const value = valueRaw.trim().toLowerCase();
+          if (!value) return null;
+          return { value, strict } as SearchToken;
+        })
+        .filter((token): token is SearchToken => Boolean(token))
+    : [];
+  const hasSearch = searchTokens.length > 0;
   const ilvlMin = Number((document.getElementById('ilvl-min') as HTMLInputElement | null)?.value || 0) || 0;
   const ilvlMaxRaw = (document.getElementById('ilvl-max') as HTMLInputElement | null)?.value || '';
   const ilvlMax = ilvlMaxRaw === '' ? null : (Number(ilvlMaxRaw)||0);
@@ -444,7 +609,7 @@ export function renderFilteredContent(data: any){
   // Determine if ilvl filtering is active
   const ilvlFilteringActive = (ilvlMin > 0) || (ilvlMax != null && ilvlMax > 0);
   // noFilters previously ignored ilvl filters causing them to do nothing when used alone
-  const noFilters = (!searchTerm || searchTerm.length === 0)
+  const noFilters = (!hasSearch)
     && activeTags.length === 0
     && (!currentAttribute || categoryHasAttribute || !attributeMetaAvailable)
     && activeDomain === 'all'
@@ -477,9 +642,11 @@ export function renderFilteredContent(data: any){
         const filteredMods = section.mods.map((orig:any) => {
           // Work on a shallow clone so original dataset isn't mutated across successive filters
           const mod = { ...orig, tiers: Array.isArray(orig.tiers) ? [...orig.tiers] : undefined } as any;
-          const matchesSearch = !searchTerm ||
-            (mod.text && String(mod.text).toLowerCase().includes(searchTerm)) ||
-            (mod.text_plain && String(mod.text_plain).toLowerCase().includes(searchTerm));
+          const searchIndex = hasSearch ? getModSearchIndex(orig, section, data) : null;
+          const searchEval = hasSearch && searchIndex
+            ? evaluateSearchTokens(searchIndex, searchTokens, searchTerm)
+            : { passes: true, matchedFuzzy: 0, matchedStrict: 0 };
+          const matchesSearch = !hasSearch || searchEval.passes;
           const matchesTags = activeTags.length === 0 || (mod.tags && activeTags.every(t => mod.tags.includes(t)));
           let matchesAttribute = true;
           if (currentAttribute && attributeMetaAvailable && !categoryHasAttribute) {
@@ -514,34 +681,58 @@ export function renderFilteredContent(data: any){
             }
           }
           // Additional tier-level pruning by active search term (feature: hide subtiers that don't contain search string when parent mod matches via tag etc.)
-          if (searchTerm && newTiers.length > 0) {
-            const st = searchTerm;
+          const hadTiersBeforeSearch = Array.isArray(mod.tiers) && mod.tiers.length > 0;
+          if (hasSearch && newTiers.length > 0) {
             const tierMatches = (t:any) => {
-              const txt = (t?.text_plain || t?.text || '').toString().toLowerCase();
-              return txt.includes(st);
+              const raw = (t?.text_plain || t?.text || '').toString();
+              if (!raw) return false;
+              const tierIndex = buildSearchIndexFromText(raw);
+              return evaluateSearchTokens(tierIndex, searchTokens, searchTerm).passes;
             };
             const filteredBySearch = newTiers.filter(tierMatches);
             // Only prune if at least one tier matches; if zero match we leave handling to overall mod filtering below
             if (filteredBySearch.length > 0 && filteredBySearch.length < newTiers.length) {
               newTiers = filteredBySearch;
             } else if (filteredBySearch.length === 0) {
-              // If none of the tiers themselves match, but parent text matched due to combined description lines, treat entire mod as non-match for search
-              if (matchesSearch) {
-                // Parent matched but not subtiers -> hide all tiers so card collapses (empty tiers array) while still allowing other filters to exclude if needed
-                newTiers = [];
-              }
+              // If none of the tiers themselves match, exclude entire mod
+              return null;
             }
           }
+          
+          // If mod originally had tiers but search removed them all, exclude the mod
+          if (hasSearch && hadTiersBeforeSearch && newTiers.length === 0) {
+            return null;
+          }
+          
           if (!(matchesSearch && matchesTags && matchesAttribute && matchesIlvl)) return null;
-          const copy = { ...mod };
-          if (ilvlFilteringActive || searchTerm) copy.tiers = newTiers; // pruned tiers for ilvl or search
+          const copy = { ...mod } as any;
+          if (ilvlFilteringActive || hasSearch) copy.tiers = newTiers; // pruned tiers for ilvl or search
           // Recompute mod weight from remaining tiers if tier weights exist
           if (Array.isArray(copy.tiers) && copy.tiers.length>0) {
             const tw: number[] = copy.tiers.map((t:any)=> Number(t.weight||0)).filter((v:number)=>v>0);
             if (tw.length>0) copy.weight = tw.reduce((a:number,b:number)=>a+b,0);
           }
+          if (hasSearch) {
+            const score = (searchEval.matchedFuzzy * 10) + searchEval.matchedStrict;
+            copy.__searchScore = score;
+          }
           return copy;
-        }).filter(Boolean);
+        }).filter(Boolean) as any[];
+
+        if (hasSearch && filteredMods.length > 1) {
+          filteredMods.sort((a: any, b: any) => {
+            const scoreA = typeof a.__searchScore === 'number' ? a.__searchScore : 0;
+            const scoreB = typeof b.__searchScore === 'number' ? b.__searchScore : 0;
+            if (scoreA !== scoreB) return scoreB - scoreA;
+            const textA = (a.text_plain || a.text || '').toString();
+            const textB = (b.text_plain || b.text || '').toString();
+            return textA.localeCompare(textB);
+          });
+          filteredMods.forEach(mod => {
+            if (mod && Object.prototype.hasOwnProperty.call(mod, '__searchScore')) delete mod.__searchScore;
+          });
+        }
+
         const effectiveTotal = filteredMods.reduce((s:number,m:any)=> s + (Number(m.weight||0)||0), 0);
         return { ...section, mods: filteredMods, _effectiveTotalWeight: effectiveTotal };
       }).filter((section:any) => section.mods.length > 0);
@@ -606,7 +797,7 @@ export function renderFilteredContent(data: any){
       </div>
     </div>`;
 
-  const html = Object.entries(groupedByDomain).map(([domain, domainSections]: any[]) => {
+  const resultsHtml = Object.entries(groupedByDomain).map(([domain, domainSections]: any[]) => {
     const hasPrefix = (domainSections as any).prefix;
     const hasSuffix = (domainSections as any).suffix;
     const hasNone = (domainSections as any).none;
@@ -629,28 +820,69 @@ export function renderFilteredContent(data: any){
       </div>`;
   }).join('');
 
-  if (content) (content as HTMLElement).innerHTML = filtersHtml + html;
-  // Wire filter interactions
+  if (!content) return;
+  let filtersWrapper = content.querySelector('#modFiltersWrapper') as HTMLElement | null;
+  let resultsWrapper = content.querySelector('#modResultsWrapper') as HTMLElement | null;
+
+  const filterSignature = JSON.stringify({
+    tags: sortedTags,
+    attr: attrButtons,
+    counts: sortedTags.map(tag => tagCounts[tag] || 0)
+  });
+
+  if (!filtersWrapper || !resultsWrapper) {
+    content.innerHTML = `
+      <div id="modFiltersWrapper" data-signature=""></div>
+      <div id="modResultsWrapper"></div>
+    `;
+    filtersWrapper = content.querySelector('#modFiltersWrapper') as HTMLElement;
+    resultsWrapper = content.querySelector('#modResultsWrapper') as HTMLElement;
+  }
+
+  if (!filtersWrapper || !resultsWrapper) return;
+
+  if (filtersWrapper.getAttribute('data-signature') !== filterSignature) {
+    filtersWrapper.setAttribute('data-signature', filterSignature);
+    filtersWrapper.innerHTML = filtersHtml;
+    try {
+      filtersWrapper.querySelectorAll('.filter-tag').forEach(chip => {
+        chip.addEventListener('click', () => {
+          chip.classList.toggle('active');
+          if ((window as any).originalData) renderFilteredContent((window as any).originalData);
+        });
+      });
+      filtersWrapper.querySelectorAll('.attribute-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const isActive = btn.classList.contains('active');
+          filtersWrapper?.querySelectorAll('.attribute-btn').forEach(b => b.classList.remove('active'));
+          if (!isActive) btn.classList.add('active');
+          if ((window as any).originalData) renderFilteredContent((window as any).originalData);
+        });
+      });
+    } catch {}
+  }
+
   try {
-    document.querySelectorAll('#filtersBar .filter-tag').forEach(chip=>{
-      chip.addEventListener('click', ()=>{
-        chip.classList.toggle('active');
-        // re-render with new active tag set
-        if((window as any).originalData) renderFilteredContent((window as any).originalData);
-      });
+    // Sync chip active states without rebuilding DOM to prevent layout shift
+    filtersWrapper.querySelectorAll('.filter-tag').forEach(chip => {
+      const key = chip.getAttribute('data-tag') || '';
+      const isActive = prevActive.has(key);
+      chip.classList.toggle('active', isActive);
+      chip.setAttribute('style', chipCss(key, isActive));
     });
-    document.querySelectorAll('#filtersBar .attribute-btn').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const isActive = btn.classList.contains('active');
-        document.querySelectorAll('#filtersBar .attribute-btn').forEach(b=> b.classList.remove('active'));
-        if (!isActive) btn.classList.add('active');
-        if((window as any).originalData) renderFilteredContent((window as any).originalData);
-      });
+    filtersWrapper.querySelectorAll('.attribute-btn').forEach(btn => {
+      const attr = btn.getAttribute('data-attr') || '';
+      const isActive = attr && attr === prevAttr;
+      btn.classList.toggle('active', !!isActive);
+      btn.setAttribute('style', `padding:2px 8px; font-size:11px; border:1px solid var(--border-color); border-radius:999px; background:${isActive ? 'var(--accent-blue)' : 'var(--bg-tertiary)'}; color:${isActive ? '#fff' : 'var(--text-primary)'}; cursor:pointer;`);
     });
-    // Store last filtered sections for popout payload builder
+  } catch {}
+
+  resultsWrapper.innerHTML = resultsHtml;
+
+  try {
     (window as any).__lastFilteredSections = (filteredData.modifiers || []).map((s:any)=>({ ...s }));
-    // Attach pin button listeners
-    document.querySelectorAll('.pin-section-btn').forEach(btn => {
+    resultsWrapper.querySelectorAll('.pin-section-btn').forEach(btn => {
       btn.addEventListener('click', (ev) => {
         ev.stopPropagation();
         const domain = (btn as HTMLElement).getAttribute('data-domain') || '';

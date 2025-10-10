@@ -21,6 +21,7 @@ export interface HistoryStore {
   entries: HistoryEntryRaw[];
   totals: Record<string, number>;
   lastSync: number;
+  lastFetchAt?: number;
 }
 
 export interface HistoryState {
@@ -50,8 +51,8 @@ export const historyState: HistoryState = {
   items: [],
   selectedIndex: 0,
   league: "Rise of the Abyssal",
-  store: { entries: [], totals: {}, lastSync: 0 },
-  filters: { min: 0, cur: "exalted", category: "", search: "", rarity: "", timeframe: "all" },
+  store: { entries: [], totals: {}, lastSync: 0, lastFetchAt: 0 },
+  filters: { min: 0, cur: "", category: "", search: "", rarity: "", timeframe: "all" },
   sort: "newest",
   lastRefreshAt: 0,
   rateLimitUntil: 0,
@@ -107,10 +108,11 @@ export async function initHistoryFromLocal(
   try {
     const saved = await (window as any).electronAPI?.historyLoad?.();
     if (saved && typeof saved === 'object') {
-      const entries = Array.isArray((saved as any).entries) ? (saved as any).entries : [];
-      const totals = (saved as any).totals && typeof (saved as any).totals === 'object' ? (saved as any).totals : {};
-      const lastSync = Number((saved as any).lastSync || 0) || 0;
-      historyState.store = { entries, totals, lastSync } as any;
+  const entries = Array.isArray((saved as any).entries) ? (saved as any).entries : [];
+  const totals = (saved as any).totals && typeof (saved as any).totals === 'object' ? (saved as any).totals : {};
+  const lastSync = Number((saved as any).lastSync || 0) || 0;
+  const lastFetchAt = Number((saved as any).lastFetchAt || lastSync || 0) || 0;
+  historyState.store = { entries, totals, lastSync, lastFetchAt } as any;
       
       // Ensure totals are consistent with entries on load
       try { recomputeTotals(); } catch {}
@@ -130,6 +132,9 @@ export async function initHistoryFromLocal(
         renderCallbacks.recomputeChartSeries();
         renderCallbacks.drawChart();
       } catch {}
+
+      historyState.lastRefreshAt = lastFetchAt;
+      historyState.remoteLastFetchAt = lastFetchAt;
     }
   } catch {}
 }

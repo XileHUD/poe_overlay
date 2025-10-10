@@ -822,8 +822,9 @@ class OverlayApp {
             // Send Ctrl+C immediately - game has focus since we haven't shown overlay yet
             this.trySimulateCtrlC();
         
-            // Give the game time to populate the clipboard
-            await new Promise(r => setTimeout(r, 250));
+            // Give the game time to populate the clipboard - configurable delay for users with timing issues
+            const clipboardDelay = this.settingsService?.get('clipboardDelay') || 300;
+            await new Promise(r => setTimeout(r, clipboardDelay));
 
             // Poll clipboard for the item
             const deadline = Date.now() + 800; // Reduced from 1200ms - faster feedback
@@ -976,9 +977,14 @@ class OverlayApp {
         // If already visible and pinned and we don't want focus, just update data (passive)
         // But still ensure window is shown and on top
         if (this.isOverlayVisible && this.pinned && !shouldFocus) {
-            this.overlayWindow.show(); // Ensure still visible (might have been minimized)
-            // Use screen-saver level to stay above windowed fullscreen games
-            this.overlayWindow.setAlwaysOnTop(true, 'screen-saver');
+            try {
+                if (!this.overlayWindow.isVisible()) {
+                    this.overlayWindow.show();
+                }
+                this.overlayWindow.setAlwaysOnTop(true, 'screen-saver');
+            } catch (e) {
+                console.warn('[Overlay] Passive update setAlwaysOnTop failed:', e);
+            }
             console.log('[Overlay] Passive update (pinned, no focus steal)');
             return;
         }
@@ -1504,15 +1510,16 @@ class OverlayApp {
                     const entries = Array.isArray(json?.entries) ? json.entries : [];
                     const totals = json?.totals && typeof json.totals === 'object' ? json.totals : {};
                     const lastSync = Number(json?.lastSync || 0) || 0;
-                    return { entries, totals, lastSync };
+                    const lastFetchAt = Number(json?.lastFetchAt || 0) || 0;
+                    return { entries, totals, lastSync, lastFetchAt };
                 }
                 // Initialize empty store if missing
-                const empty = { entries: [], totals: {}, lastSync: 0 };
+                const empty = { entries: [], totals: {}, lastSync: 0, lastFetchAt: 0 };
                 try { if (!fs.existsSync(cfgDir)) fs.mkdirSync(cfgDir, { recursive: true }); } catch {}
                 fs.writeFileSync(file, JSON.stringify(empty, null, 2));
                 return empty;
             } catch (e: any) {
-                return { entries: [], totals: {}, lastSync: 0 };
+                return { entries: [], totals: {}, lastSync: 0, lastFetchAt: 0 };
             }
         });
         ipcMain.handle('history-save', async (_e, store: any) => {
@@ -1520,7 +1527,7 @@ class OverlayApp {
                 const cfgDir = this.getUserConfigDir();
                 const file = path.join(cfgDir, 'merchant-history.json');
                 try { if (!fs.existsSync(cfgDir)) fs.mkdirSync(cfgDir, { recursive: true }); } catch {}
-                fs.writeFileSync(file, JSON.stringify(store || { entries: [], totals: {}, lastSync: 0 }, null, 2));
+                fs.writeFileSync(file, JSON.stringify(store || { entries: [], totals: {}, lastSync: 0, lastFetchAt: 0 }, null, 2));
                 return { ok: true };
             } catch (e: any) {
                 return { ok: false, error: e?.message || 'write_failed' };

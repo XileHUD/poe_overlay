@@ -910,6 +910,12 @@ body {
 .currency-chaos  { background:#24331b; color:#cfe9b8; border-color:#4a6a35; }
 .currency-regal  { background:#3d2817; color:#f4d8a6; border-color:#6b4a28; }
 .currency-altar  { background:#1f2d3f; color:#b6d5ff; border-color:#3b5f8f; }
+/* Rarity colors */
+.currency-normal { background:#6b6b6b; color:#ffffff; border-color:#8b8b8b; }
+.currency-magic  { background:#1f3a5f; color:#8888ff; border-color:#4169e1; }
+.currency-rare   { background:#5a4a22; color:#ffff77; border-color:#8b7a42; }
+.currency-unique { background:#6b3410; color:#ff8844; border-color:#b8631e; }
+.currency-foil   { background:#4a2d4a; color:#ff69eb; border-color:#8b5a8b; }
 /* Vivid in detail card (match same hues) */
 .history-detail-card .currency-exalted { background:#2b4f80; color:#eaf4ff; border-color:#2b4f80; }
 .history-detail-card .currency-divine  { background:#ffd24d; color:#1a1a1a; border-color:#e0b939; }

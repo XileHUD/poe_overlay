@@ -146,20 +146,35 @@ export function createTray(params: CreateTrayParams): Tray | null {
   
   // Windows fix: Use click event to manually popup menu with proper z-order
   // This ensures the menu appears on top of all windows
+  let clickTimer: NodeJS.Timeout | null = null;
+  const clearClickTimer = () => {
+    if (clickTimer) {
+      clearTimeout(clickTimer);
+      clickTimer = null;
+    }
+  };
+
   try {
     tray.on('click', () => {
-      if (tray) {
-        tray.popUpContextMenu(contextMenu);
-      }
+      clearClickTimer();
+      clickTimer = setTimeout(() => {
+        clickTimer = null;
+        try { tray?.popUpContextMenu(contextMenu); } catch {}
+      }, 220);
     });
     tray.on('right-click', () => {
-      if (tray) {
-        tray.popUpContextMenu(contextMenu);
-      }
+      clearClickTimer();
+      try { tray?.popUpContextMenu(contextMenu); } catch {}
     });
   } catch {}
   
-  try { tray.on('double-click', () => (onShowOverlay ? onShowOverlay() : onToggleOverlay())); } catch {}
+  try {
+    tray.on('double-click', () => {
+      clearClickTimer();
+      if (onShowOverlay) onShowOverlay();
+      else onToggleOverlay();
+    });
+  } catch {}
 
   return tray;
 }
