@@ -18,7 +18,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest]
         include:
           - os: ubuntu-latest
             platform: linux
@@ -26,9 +26,6 @@ jobs:
           - os: windows-latest
             platform: windows
             artifact_name: Setup
-          - os: macos-latest
-            platform: macos
-            artifact_name: dmg
 
     runs-on: ${{ matrix.os }}
 
@@ -53,15 +50,15 @@ jobs:
 
       - name: Build distribution (Linux)
         if: matrix.platform == 'linux'
-        run: npm run dist:linux
+        run: npm run dist:linux:ci
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build distribution (Windows)
         if: matrix.platform == 'windows'
         run: npm run dist:unsigned
-
-      - name: Build distribution (macOS)
-        if: matrix.platform == 'macos'
-        run: npm run dist
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifacts (Linux)
         if: matrix.platform == 'linux'
@@ -81,16 +78,6 @@ jobs:
           path: |
             dist_electron/*.exe
             dist_electron/latest.yml
-          if-no-files-found: warn
-
-      - name: Upload artifacts (macOS)
-        if: matrix.platform == 'macos'
-        uses: actions/upload-artifact@v4
-        with:
-          name: xilehud-macos
-          path: |
-            dist_electron/*.dmg
-            dist_electron/latest-mac.yml
           if-no-files-found: warn
 
   release:
@@ -113,7 +100,6 @@ jobs:
           files: |
             artifacts/**/*.AppImage
             artifacts/**/*.exe
-            artifacts/**/*.dmg
             artifacts/**/*.yml
           draft: false
           prerelease: false

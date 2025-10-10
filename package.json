@@ -21,7 +21,8 @@
     "pack": "electron-builder --dir",
     "dist": "npm run build && electron-builder",
     "dist:unsigned": "cross-env WIN_CODESIGN=skip npm run build && electron-builder",
-    "dist:linux": "npm run build && electron-builder --linux",
+    "dist:linux": "npm run build && electron-builder --linux --publish never",
+    "dist:linux:ci": "npm run build && electron-builder --linux",
     "publish:github": "npm run build && electron-builder --publish always"
   },
   "keywords": ["poe2", "overlay", "modifiers", "electron"],
