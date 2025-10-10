@@ -43,7 +43,7 @@ export function renderHistoryActiveFilters(
   
   if (category) {
     chips.push(
-      `<span class="price-badge" title="Type filter">${escapeHtml(category)} <button data-act="clear-cat" style="margin-left:6px; background:none; border:none; color:var(--text-muted; cursor:pointer;">×</button></span>`
+      `<span class="price-badge" title="Type filter">${escapeHtml(category)} <button data-act="clear-cat" style="margin-left:6px; background:none; border:none; color:var(--text-muted); cursor:pointer;">×</button></span>`
     );
   }
   
@@ -87,7 +87,27 @@ export function renderHistoryActiveFilters(
         if (el) (el as HTMLSelectElement).value = 'all';
       }
       
+      try {
+        const allEntries = (state.store?.entries || []).slice().reverse();
+        state.items = applySort(applyFilters(allEntries, state.filters), state.sort);
+        if (!state.items || state.items.length === 0) {
+          state.selectedIndex = 0;
+        } else if (state.selectedIndex >= state.items.length) {
+          state.selectedIndex = Math.max(0, state.items.length - 1);
+        }
+      } catch (err) {
+        console.warn('[History] Failed to recompute filters after chip clear:', err);
+      }
+
       refreshList();
+      // Re-render chips so cleared filters disappear immediately
+      setTimeout(() => {
+        try {
+          renderHistoryActiveFilters(state, isVisible, refreshList);
+        } catch (err) {
+          console.warn('[History] Failed to refresh filter chips:', err);
+        }
+      }, 0);
     });
   });
 }
@@ -99,6 +119,7 @@ export function applyFilters(list: HistoryEntryRaw[], filters: HistoryState['fil
   const { min, search, rarity, timeframe } = filters;
   const cur = normalizeCurrency(filters.cur || "");
   const catSel = filters.category || "";
+  const searchTerm = (search || '').trim().toLowerCase();
   
   // Timeframe boundaries
   let earliest = 0;
@@ -142,41 +163,76 @@ export function applyFilters(list: HistoryEntryRaw[], filters: HistoryState['fil
     
     // Category filter
     if (catSel) {
-      const base = it?.item?.baseType || it?.item?.typeLine || "";
-      const name = it?.item?.name || "";
-      const typeLine = it?.item?.typeLine || "";
-      const category = (it?.item?.category || "").toString();
-      const catEq = (want: string) => new RegExp(`^${want}$`, "i").test(category);
-      
-      if (catSel === "Jewels") {
-        if (catEq("Jewels")) {
-          // ok
-        } else {
-          const jewelRe = /(Jewel|Cluster|Abyss|Ruby|Emerald|Sapphire|Diamond|Time[- ]?Lost(?:_[A-Za-z]+)?)/i;
-          const isJewel = jewelRe.test(base) || jewelRe.test(name) || jewelRe.test(typeLine) || /jewel/i.test(category);
-          if (!isJewel) return false;
+      const item = it?.item || {};
+      const base = (item?.baseType || item?.typeLine || "").toString();
+      const name = (item?.name || "").toString();
+      const typeLine = (item?.typeLine || "").toString();
+      const categoryRaw = (item?.category || "").toString();
+      const frame = item?.frameType ?? item?.rarity;
+      const lowerPieces = [base, name, typeLine, categoryRaw].map((part) => part.toLowerCase());
+
+      const includesAny = (patterns: string[]): boolean => {
+        return lowerPieces.some(text => patterns.some(p => p && text.includes(p)));
+      };
+
+      const matchesCategoryLabel = (label: string): boolean => {
+        switch (label) {
+          case "Jewels": {
+            if (includesAny(["jewel"])) return true;
+            return includesAny(["cluster", "abyss", "ruby", "emerald", "sapphire", "diamond", "time-lost", "timelost", "time lost"]);
+          }
+          case "Uniques": {
+            const frameStr = frame != null ? String(frame) : "";
+            if (frameStr === "3") return true;
+            return /unique/i.test(frameStr) || includesAny(["<unique>"]);
+          }
+          case "Weapons":
+            return includesAny([
+              "sword", "axe", "mace", "bow", "sceptre", "scepter", "staff", "spear", "claw", "crossbow", "flail", "wand", "dagger", "polearm",
+              "pick", "greatclub", "hammer", "maul", "quiver"
+            ]);
+          case "Body Armours":
+            return includesAny(["armour", "armor", "robe", "vest", "mail", "plate", "tunic", "garb", "brigandine", "chest", "coat", "jacket", "raiment"]);
+          case "Helmets":
+            return includesAny(["helmet", "helm", "crown", "mask", "hood", "bascinet", "circlet", "coif", "tiara", "burgonet", "headgear"]);
+          case "Boots":
+            return includesAny([
+              "boot", "greave", "sabat", "slipper", "legwrap", "footwrap", "footwear", "shoe", "sandal", "sandals", "hoof", "hooves"
+            ]);
+          case "Gloves":
+            return includesAny([
+              "glove", "gauntlet", "mitt", "handwrap", "grip", "handwraps", "handwrap", "hand", "hands", "paw", "paws", "wraps", "finger", "fingers", "clutch", "clutches"
+            ]);
+          case "Rings":
+            return includesAny(["ring", "signet"]);
+          case "Amulets":
+            return includesAny(["amulet", "talisman", "necklace", "locket"]);
+          case "Belts":
+            return includesAny(["belt", "girdle", "sash", "strap", "chain belt", "chainbelt", "cord"]);
+          default: {
+            const normalized = label.toLowerCase();
+            return includesAny([normalized.replace(/\s+/g, " ")]) || includesAny(normalized.split(/\s+/g));
+          }
         }
-      } else if (catSel === "Uniques") {
-        const frame = it?.item?.frameType ?? it?.item?.rarity;
-        const isUnique = String(frame) === "3" || /Unique/i.test(String(frame)) || /<unique>/i.test(name);
-        if (!isUnique) return false;
-      } else if (catSel === "Weapons") {
-        if (!/(Sword|Axe|Mace|Bow|Sceptre|Staff|Spear|Claw|Crossbow|Flail|Wand|Dagger)/i.test(base)) return false;
-      } else if (catSel === "Body Armours") {
-        if (!/(Armour|Armor|Robe|Vest|Mail|Plate|Tunic|Garb|Brigandine|Chest)/i.test(base)) return false;
-      } else if (catSel === "Helmets") {
-        const re = /(Helmet|Helm|Crown|Mask|Hood|Bascinet|Circlet|Coif|Tiara)/i;
-        if (!(catEq("Helmets") || re.test(base) || re.test(typeLine) || /helm/i.test(category))) return false;
-      } else if (catSel === "Boots") {
-        const re = /(Boots|Greaves|Sabatons|Slippers|Legwraps|Footwraps|Footwear|Shoes)/i;
-        if (!(catEq("Boots") || re.test(base) || re.test(typeLine) || /boot/i.test(category))) return false;
-      } else if (catSel === "Rings") {
-        if (!(catEq("Rings") || /Ring/i.test(base) || /Ring/i.test(typeLine))) return false;
-      } else if (catSel === "Amulets") {
-        if (!(catEq("Amulets") || /Amulet/i.test(base) || /Talisman/i.test(base) || /Amulet|Talisman/i.test(typeLine))) return false;
-      } else if (catSel === "Belts") {
-        if (!(catEq("Belts") || /Belt/i.test(base) || /Belt/i.test(typeLine))) return false;
-      } else if (catSel && !new RegExp(catSel.replace(/\s+/g, "|"), "i").test(base)) {
+      };
+
+      if (catSel === "Other") {
+        const knownLabels = [
+          "Helmets",
+          "Body Armours",
+          "Gloves",
+          "Boots",
+          "Rings",
+          "Amulets",
+          "Belts",
+          "Weapons",
+          "Jewels",
+          "Uniques"
+        ];
+        if (knownLabels.some(label => matchesCategoryLabel(label))) {
+          return false;
+        }
+      } else if (!matchesCategoryLabel(catSel)) {
         return false;
       }
     }
@@ -189,12 +245,88 @@ export function applyFilters(list: HistoryEntryRaw[], filters: HistoryState['fil
     }
     
     // Search filter
-    if (search && search.length > 0) {
-      const blob = [it?.item?.name, it?.item?.typeLine, it?.item?.baseType, it?.note]
+    if (searchTerm) {
+      const item = it?.item || {};
+      const segments: string[] = [];
+      const push = (val: any) => {
+        if (val === null || val === undefined) return;
+        if (typeof val === 'string') {
+          if (val.trim()) segments.push(val);
+          return;
+        }
+        if (typeof val === 'number') {
+          segments.push(String(val));
+          return;
+        }
+        if (Array.isArray(val)) {
+          val.forEach(push);
+          return;
+        }
+        if (typeof val === 'object') {
+          const maybeName = (val as any).name;
+          const maybeText = (val as any).text;
+          if (maybeName) push(maybeName);
+          if (maybeText) push(maybeText);
+          const values = (val as any).values;
+          if (Array.isArray(values)) {
+            values.forEach((entry: any) => {
+              if (Array.isArray(entry) && entry.length) push(entry[0]);
+              else push(entry);
+            });
+          }
+        }
+      };
+
+      push(item?.name);
+      push(item?.typeLine);
+      push(item?.baseType);
+      push(item?.descrText);
+      push(item?.flavourText);
+      push(item?.note);
+      push(it?.note);
+
+      const priceCurrency = normalizeCurrency(it?.price?.currency ?? it?.currency ?? '');
+      if (priceCurrency) push(priceCurrency);
+      push(it?.price?.amount ?? it?.amount);
+
+      const modsToCollect = [
+        item?.implicitMods,
+        item?.explicitMods,
+        item?.fracturedMods,
+        item?.desecratedMods,
+        item?.enchantMods,
+        item?.corruptedMods,
+        item?.veiledMods,
+        item?.craftedMods,
+        item?.runeMods
+      ];
+      modsToCollect.forEach(push);
+
+      if (Array.isArray(item?.properties)) {
+        item.properties.forEach((prop: any) => {
+          push((prop as any)?.name);
+          const vals: any[] = Array.isArray((prop as any)?.values) ? (prop as any).values : [];
+          vals.forEach(v => {
+            if (Array.isArray(v) && v.length) push(v[0]);
+            else push(v);
+          });
+        });
+      }
+
+      const extended = item?.extended || {};
+      ['ar', 'armour', 'ev', 'evasion', 'es', 'energy_shield', 'energyshield', 'ward']
+        .forEach(key => {
+          const val = (extended as any)[key];
+          if (val !== undefined && val !== null && val !== '') {
+            push(`${key} ${val}`);
+          }
+        });
+
+      const haystack = segments
         .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-      if (!blob.includes(search)) return false;
+        .map(str => str.toString().toLowerCase())
+        .join(' ');
+      if (!haystack.includes(searchTerm)) return false;
     }
     
     return true;

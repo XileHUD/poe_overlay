@@ -35,7 +35,7 @@
         <div id="modifierHeaderInfo" style="display:none; margin-left:8px; -webkit-app-region: no-drag;"></div>
         <div id="whittlingInfo" style="display:none; margin-right:8px; -webkit-app-region: no-drag;"></div>
         <!-- Merchant header (shown only on History tab) -->
-        <div id="historyHeaderMain" style="flex:1 1 auto; min-width:0; align-items:center; gap:8px; justify-content:space-between;">
+        <div id="historyHeaderMain" style="flex:1 1 auto; min-width:0; align-items:center; gap:8px; justify-content:space-between; display:flex; -webkit-app-region: drag;">
             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
                 <button id="poeLoginBtn" class="pin-btn login-state" style="-webkit-app-region: no-drag;" title="Login to pathofexile.com">Login</button>
                 <button id="historyRefreshBtn" class="pin-btn" style="-webkit-app-region: no-drag;" title="Refresh history">Refresh</button>
@@ -143,12 +143,14 @@
                                         <option>Body Armours</option>
                                         <option>Gloves</option>
                                         <option>Boots</option>
+                                        <option value="Other">Other</option>
                                         <option>Rings</option>
                                         <option>Amulets</option>
                                         <option>Belts</option>
                                         <option>Weapons</option>
                                         <option>Jewels</option>
                                         <option>Uniques</option>
+                                        <option>Other</option>
                                     </select>
                                 </div>
                                 <div class="fgrp grp-search" style="display:flex; align-items:center; gap:4px;">

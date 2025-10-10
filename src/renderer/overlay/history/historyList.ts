@@ -12,6 +12,13 @@ import { historyState } from './historyData';
 import { historyVisible } from './historyView';
 import { normalizeCurrency, escapeHtml } from '../utils';
 
+declare global {
+  interface Window {
+    __historyListSelectIndex?: (idx: number, opts?: { scroll?: boolean }) => void;
+    __historyListKeyNavAttached?: boolean;
+  }
+}
+
 /**
  * Convert timestamp to relative time string (e.g., "5m ago", "2h ago", "3d ago").
  * 
@@ -46,6 +53,9 @@ export function renderHistoryList(renderDetailCallback: (idx: number) => void): 
   
   const histList = document.getElementById("historyList");
   if (!histList) return;
+  if (!histList.hasAttribute('tabindex')) {
+    histList.setAttribute('tabindex', '0');
+  }
   
   // Update trade count
   const cntEl = document.getElementById("historyTradeCount");
@@ -68,13 +78,17 @@ export function renderHistoryList(renderDetailCallback: (idx: number) => void): 
       const amount = it?.price?.amount ?? it?.amount ?? "?";
       const currency = normalizeCurrency(it?.price?.currency ?? it?.currency ?? "");
       const curClass = currency ? `currency-${currency}` : "";
-      const name = it?.item?.name || it?.item?.typeLine || it?.item?.baseType || "Item";
+  const name = it?.item?.name || it?.item?.typeLine || it?.item?.baseType || "Item";
+  const indexLabel = idx + 1;
+  const isSelected = idx === historyState.selectedIndex;
+  const rowClasses = `history-row${isSelected ? ' selected' : ''}`;
       
-      return `<div data-idx="${idx}" class="history-row" style="padding:8px; border-bottom:1px solid var(--border-color); cursor:pointer; ${
-        idx === historyState.selectedIndex ? "background: var(--bg-secondary);" : ""
-      }">
+      return `<div data-idx="${idx}" class="${rowClasses}" style="padding:8px; border-bottom:1px solid var(--border-color); cursor:pointer;">
         <div style="display:flex; justify-content:space-between; gap:6px; align-items:center;">
-          <div style="font-weight:600; color:var(--text-primary);">Sold: ${escapeHtml(name)}</div>
+          <div style="display:flex; align-items:center; gap:8px; min-width:0;">
+            <span class="history-row-index" aria-hidden="true">${indexLabel}</span>
+            <div class="history-row-title" title="${escapeHtml(name)}">${escapeHtml(name)}</div>
+          </div>
           <div style="display:flex; align-items:center; gap:8px;">
             <span class="price-badge ${curClass}"><span class="amount">${amount}</span> ${currency}</span>
             <div style="color:var(--text-muted); font-size:11px;">${time}</div>
@@ -86,6 +100,52 @@ export function renderHistoryList(renderDetailCallback: (idx: number) => void): 
     .join("");
   
   (histList as HTMLElement).innerHTML = rows;
+
+  const clampIndex = (idx: number): number => {
+    const max = (historyState.items?.length ?? 0) - 1;
+    if (max < 0) return 0;
+    if (!Number.isFinite(idx)) return Math.max(0, Math.min(0, max));
+    return Math.max(0, Math.min(max, idx));
+  };
+
+  const selectIndex = (idx: number, opts: { scroll?: boolean } = {}): void => {
+    if (!historyState.items || !historyState.items.length) return;
+    const safeIdx = clampIndex(idx);
+    historyState.selectedIndex = safeIdx;
+
+    histList.querySelectorAll('.history-row.selected').forEach(el => el.classList.remove('selected'));
+    const row = histList.querySelector(`.history-row[data-idx="${safeIdx}"]`) as HTMLElement | null;
+    if (row) {
+      row.classList.add('selected');
+      if (opts.scroll) {
+        row.scrollIntoView({ block: 'nearest' });
+      }
+    }
+
+    renderDetailCallback(safeIdx);
+  };
+
+  const currentIndex = clampIndex(historyState.selectedIndex ?? 0);
+  selectIndex(currentIndex, { scroll: false });
+  (histList as HTMLElement).dataset.selectedIdx = String(currentIndex);
+  window.__historyListSelectIndex = selectIndex;
+
+  if (!window.__historyListKeyNavAttached) {
+    window.__historyListKeyNavAttached = true;
+    document.addEventListener('keydown', (event: KeyboardEvent) => {
+      if (!historyVisible()) return;
+      const selectFn = window.__historyListSelectIndex;
+      if (!selectFn) return;
+      if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+      const activeTag = (document.activeElement && document.activeElement.tagName) || '';
+      if (["INPUT", "TEXTAREA", "SELECT"].includes(activeTag)) return;
+      event.preventDefault();
+      const delta = event.key === 'ArrowDown' ? 1 : -1;
+      const nextIdx = clampIndex((historyState.selectedIndex ?? 0) + delta);
+      if (nextIdx === (historyState.selectedIndex ?? 0)) return;
+      selectFn(nextIdx, { scroll: true });
+    });
+  }
   
   // Attach click handlers
   histList.querySelectorAll(".history-row").forEach((el) => {
@@ -93,10 +153,7 @@ export function renderHistoryList(renderDetailCallback: (idx: number) => void): 
       const target: any = ev.currentTarget || ev.target;
       const idxAttr = target && target.dataset ? target.dataset.idx : undefined;
       const idx = Number(idxAttr || 0);
-      
-      historyState.selectedIndex = idx;
-      renderHistoryList(renderDetailCallback);
-      renderDetailCallback(idx);
+      selectIndex(idx, { scroll: false });
     });
   });
 }
