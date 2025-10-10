@@ -139,11 +139,13 @@ export function drawHistoryChart(): void {
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
+  if (canvas.offsetParent === null) {
+    (canvas as any)._drawRetries = 0;
+    return;
+  }
   
-  // Force canvas to be visible and get proper dimensions
-  const chartWrap = document.getElementById("historyChartWrap");
-  if (chartWrap && chartWrap.offsetHeight === 0) {
-    // Chart wrapper not visible yet, retry
+  const chartWrap = document.getElementById("historyChartWrap") as HTMLElement | null;
+  if (!chartWrap || chartWrap.offsetParent === null) {
     const retries = (canvas as any)._drawRetries || 0;
     if (retries < 20) {
       (canvas as any)._drawRetries = retries + 1;
@@ -151,14 +153,11 @@ export function drawHistoryChart(): void {
     }
     return;
   }
-  
-  // Get dimensions from wrapper or fallback
-  let W = chartWrap ? chartWrap.clientWidth - 16 : 400; // subtract padding
-  // Dynamic height: use available space in flex container, with reasonable bounds
-  let H = chartWrap ? Math.max(120, Math.min(chartWrap.clientHeight - 50, 300)) : 180;
-  
-  if (W <= 0 || H <= 0) {
-    // Still not ready, retry
+
+  const displayWidth = Math.floor(canvas.clientWidth || chartWrap.clientWidth || 0);
+  const displayHeight = Math.floor(canvas.clientHeight || 0);
+
+  if (displayWidth <= 0 || displayHeight <= 0) {
     const retries = (canvas as any)._drawRetries || 0;
     if (retries < 20) {
       (canvas as any)._drawRetries = retries + 1;
@@ -166,11 +165,22 @@ export function drawHistoryChart(): void {
     }
     return;
   }
-  
+
   (canvas as any)._drawRetries = 0;
-  if (canvas.width !== W) canvas.width = W;
-  if (canvas.height !== H) canvas.height = H;
-  ctx.clearRect(0, 0, W, H);
+
+  const dpr = window.devicePixelRatio || 1;
+  const backingWidth = Math.round(displayWidth * dpr);
+  const backingHeight = Math.round(displayHeight * dpr);
+
+  if (canvas.width !== backingWidth) canvas.width = backingWidth;
+  if (canvas.height !== backingHeight) canvas.height = backingHeight;
+
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, displayWidth, displayHeight);
+  
+  const W = displayWidth;
+  const H = displayHeight;
   
   let pts = _chartState.points.slice();
   if (!pts.length) return;

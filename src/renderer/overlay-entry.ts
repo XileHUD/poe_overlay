@@ -31,3 +31,25 @@ import './overlay/character/quest-passives/globals';
 
 // Tools
 import './overlay/tools/regex/globals';
+
+// Global ESC key handler to close overlay (unless pinned)
+window.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Escape' && window.electronAPI) {
+            // Check if we're in a modal or input that might want ESC
+            const activeElement = document.activeElement;
+            const isInInput = activeElement && (
+                activeElement.tagName === 'INPUT' ||
+                activeElement.tagName === 'TEXTAREA' ||
+                activeElement.tagName === 'SELECT'
+            );
+            
+            // If not in an input and overlay exists, close it
+            if (!isInInput) {
+                e.preventDefault();
+                console.log('[ESC] Closing overlay');
+                window.electronAPI.hideOverlay();
+            }
+        }
+    });
+});

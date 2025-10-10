@@ -67,6 +67,7 @@ export function renderHistoryDetail(idx: number): void {
   
   // ========== Extract Item Data ==========
   const item = it.item || it?.data?.item || {};
+  const properties: any[] = Array.isArray(item?.properties) ? item.properties : [];
   
   const explicitDetails: any[] = Array.isArray(item?.extended?.mods?.explicit) ? item.extended.mods.explicit : [];
   const fracturedDetails: any[] = Array.isArray(item?.extended?.mods?.fractured) ? item.extended.mods.fractured : [];
@@ -99,6 +100,8 @@ export function renderHistoryDetail(idx: number): void {
     : Array.isArray(item?.mods?.implicit)
     ? item.mods.implicit
     : [];
+  const enchantMods = Array.isArray(item?.enchantMods) ? item.enchantMods : [];
+  const corruptedMods = Array.isArray(item?.corruptedMods) ? item.corruptedMods : [];
   
   // Notable properties (e.g. Megalomaniac style jewels)
   const notablePropsRaw: any[] = Array.isArray(item?.notableProperties) ? item.notableProperties : [];
@@ -118,6 +121,56 @@ export function renderHistoryDetail(idx: number): void {
   
   // Rune mods (from socketed runes / talismans / tablets)
   const runeMods = Array.isArray(item?.runeMods) ? item.runeMods : [];
+
+  const defenseTags: string[] = [];
+  const parseNumeric = (val: any): number | undefined => {
+    if (val === null || val === undefined) return undefined;
+    if (typeof val === 'number' && Number.isFinite(val)) return val;
+    if (typeof val === 'string') {
+      const cleaned = val.replace(/[^0-9.+-]/g, '');
+      if (!cleaned) return undefined;
+      const num = Number(cleaned);
+      return Number.isFinite(num) ? num : undefined;
+    }
+    return undefined;
+  };
+  const findPropertyValue = (candidates: string[]): number | undefined => {
+    for (const prop of properties) {
+      const name = (prop?.name || '').toString().toLowerCase();
+      if (!name) continue;
+      if (!candidates.some(c => name.includes(c))) continue;
+      const vals: any[] = Array.isArray(prop?.values) ? prop.values : [];
+      if (!vals.length) continue;
+      const first = vals[0];
+      const raw = Array.isArray(first) ? first[0] : first;
+      const parsed = parseNumeric(raw);
+      if (parsed !== undefined) return parsed;
+    }
+    return undefined;
+  };
+  try {
+    const ext = item?.extended || {};
+    const defs = [
+      { keys: ['ar', 'armour'], label: 'Armour', cls: 'meta-armour' },
+      { keys: ['ev', 'evasion'], label: 'Evasion', cls: 'meta-evasion' },
+      { keys: ['es', 'energyshield', 'energy shield', 'energy_shield'], label: 'Energy Shield', cls: 'meta-energy' }
+    ];
+    defs.forEach(def => {
+      let val: number | undefined;
+      for (const key of def.keys) {
+        const candidate = parseNumeric((ext as any)[key]);
+        if (candidate !== undefined) { val = candidate; break; }
+      }
+      if (val === undefined) {
+        const fallback = findPropertyValue(def.keys.map(k => k.replace(/_/g, ' ')));
+        if (fallback !== undefined) val = fallback;
+      }
+      if (val !== undefined && val > 0) {
+        const display = val.toLocaleString();
+        defenseTags.push(`<span class="meta-tag ${def.cls}" title="${escapeHtml(def.label)}">${escapeHtml(def.label)}: ${escapeHtml(display)}</span>`);
+      }
+    });
+  } catch {}
   
   // Price
   const cur = normalizeCurrency(it?.price?.currency ?? it?.currency ?? "");
@@ -127,8 +180,7 @@ export function renderHistoryDetail(idx: number): void {
   // Quality (look for property named/containing Quality or type 6)
   let qualityValue = '';
   try {
-    const props: any[] = Array.isArray(item?.properties) ? item.properties : [];
-    for (const p of props) {
+    for (const p of properties) {
       const n = (p?.name||'').toString().toLowerCase();
       if (n.includes('quality') || p?.type === 6) {
         // Values shape: [["+20%",1]] or similar
@@ -217,7 +269,16 @@ export function renderHistoryDetail(idx: number): void {
     }).join('');
   }
 
-  // ========== Sockets & Runes ==========
+  function renderSimpleSection(mods: string[], title: string, lineClass: string, field: string): string {
+    if (!mods.length) return '';
+    const lines = mods.map((raw: string) => {
+      const clean = collapseBracketAlternates(raw);
+      return `<div class="mod-line ${lineClass}" data-field="${field}"><span class="mod-text">${escapeHtml(clean)}</span></div>`;
+    }).join('');
+    return `<div class="mod-section"><div class="mod-section-title">${escapeHtml(title)}</div><div class="mod-lines ${lineClass}-mods">${lines}</div></div>`;
+  }
+
+  // ========== Sockets, Runes & Defenses ==========
   let socketsHtml = '';
   try {
     const sockets: any[] = Array.isArray(item?.sockets) ? item.sockets : [];
@@ -230,7 +291,7 @@ export function renderHistoryDetail(idx: number): void {
       const groupHtml = Object.keys(groups).sort((a,b)=>Number(a)-Number(b)).map(gk => {
         const arr = groups[Number(gk)] || [];
         const cells = arr.map((s, idx) => {
-          const rune = byIdx[s.group]; // In PoE2 API sometimes socket index equals group for runes
+          const rune = byIdx[s.group];
           const rItem = rune || socketed.find(r => r.socket === s.group || r.socket === idx) || null;
           if (rItem) {
             const rIcon = rItem.icon || '';
@@ -246,6 +307,11 @@ export function renderHistoryDetail(idx: number): void {
   } catch {}
 
   const runeModsHtml = runeMods.length ? `<div class=\"rune-mods\">${runeMods.map((m: string) => `<div class=\"rune-mod\">${escapeHtml(collapseBracketAlternates(m))}</div>`).join('')}</div>` : '';
+  const defenseTagsHtml = defenseTags.length ? `<div class=\"item-meta-tags\">${defenseTags.join('')}</div>` : '';
+  const metaStackPieces = [defenseTagsHtml, socketsHtml, runeModsHtml].filter(Boolean);
+  const metaStackHtml = metaStackPieces.length ? `<div class=\"item-meta-stack\">${metaStackPieces.join('')}</div>` : '';
+  const enchantSectionHtml = renderSimpleSection(enchantMods, 'Enchant', 'enchant', 'enchant');
+  const corruptedSectionHtml = renderSimpleSection(corruptedMods, 'Corrupted', 'corrupted', 'corrupted');
 
   // ========== Render HTML ==========
   (det as HTMLElement).innerHTML = `
@@ -265,10 +331,10 @@ export function renderHistoryDetail(idx: number): void {
             <div class="card-sub">${escapeHtml(base)}${ilvl ? ` • iLvl ${ilvl}` : ""}${rarity ? ` • <span class="rarity-label ${rarityClass}">${escapeHtml(rarity)}</span>` : ""}${
     corrupted ? ` <span class="badge-corrupted">Corrupted</span>` : ""
   }</div>
-            ${(socketsHtml || runeModsHtml) ? `<div style=\"margin-top:6px; display:flex; flex-direction:column; gap:4px;\">`
-              + (socketsHtml || runeModsHtml ? `<div>${socketsHtml}${runeModsHtml}</div>` : '')
-              + `</div>` : ''}
+            ${metaStackHtml}
             ${notableLines.length ? `<div class=\"mod-section\"><div class=\"mod-section-title\">Notables</div><div class=\"mod-lines explicit-mods\">${notableLines.map(l=>`<div class=\"mod-line explicit\" data-field=\"notable\">${escapeHtml(l)}</div>`).join('')}</div></div>` : ''}
+            ${corruptedSectionHtml}
+            ${enchantSectionHtml}
             ${
               Array.isArray(implicits) && implicits.length > 0
                 ? `<div class="mod-section"><div class="mod-section-title">Implicit</div><div class="mod-lines implicit-mods">${(implicits as any[])
