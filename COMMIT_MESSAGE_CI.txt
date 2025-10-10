@@ -1,0 +1,30 @@
+ci: add GitHub Actions workflows for automated builds
+
+Add CI/CD automation with GitHub Actions for multi-platform builds:
+
+Features:
+- Automatic builds on push to main/master/feature/linux-support branches
+- Multi-platform support: Linux (AppImage), Windows (NSIS), macOS (DMG)
+- Automatic release creation on version tags (v*)
+- PR validation workflow for code quality checks
+- Artifact uploading for all platforms
+- Caching of npm dependencies for faster builds
+
+Workflows:
+- build.yml: Main build workflow with matrix strategy for all platforms
+  * Linux: builds AppImage with electron-builder
+  * Windows: builds unsigned installer (NSIS)
+  * macOS: builds DMG package
+  * Automatic release creation on tags with generated release notes
+  
+- pr-check.yml: Fast PR validation
+  * TypeScript type checking
+  * Build verification
+  * Runs on every pull request to main/master
+
+The build workflow can also be triggered manually via workflow_dispatch.
+
+Time to build: ~30-35 minutes for all platforms
+Artifacts retention: 90 days (default)
+Release creation: automatic on tags matching v*
+
