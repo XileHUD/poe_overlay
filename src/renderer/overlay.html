@@ -35,7 +35,7 @@
         <div id="modifierHeaderInfo" style="display:none; margin-left:8px; -webkit-app-region: no-drag;"></div>
         <div id="whittlingInfo" style="display:none; margin-right:8px; -webkit-app-region: no-drag;"></div>
         <!-- Merchant header (shown only on History tab) -->
-        <div id="historyHeaderMain" style="flex:1 1 auto; min-width:0; align-items:center; gap:8px; justify-content:space-between;">
+        <div id="historyHeaderMain" style="flex:1 1 auto; min-width:0; align-items:center; gap:8px; justify-content:space-between; display:flex; -webkit-app-region: drag;">
             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
                 <button id="poeLoginBtn" class="pin-btn login-state" style="-webkit-app-region: no-drag;" title="Login to pathofexile.com">Login</button>
                 <button id="historyRefreshBtn" class="pin-btn" style="-webkit-app-region: no-drag;" title="Refresh history">Refresh</button>
@@ -88,16 +88,13 @@
                                 <div class="fgrp grp-currency" style="display:flex; align-items:center; gap:4px;">
                                     <label style="color:var(--text-secondary); font-size:11px;">Currency:</label>
                                       <select id="histCurrency" class="sel-currency" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px; appearance:none;">
+                                        <option value="">All</option>
                                         <option value="exalted">Exalted</option>
                                         <option value="divine">Divine</option>
                                         <option value="annul">Annul</option>
                                         <option value="chaos">Chaos</option>
                                         <option value="regal">Regal</option>
                                     </select>
-                                </div>
-                                <div class="fgrp grp-min" style="display:flex; align-items:center; gap:4px;">
-                                    <label style="color:var(--text-secondary); font-size:11px;">Min:</label>
-                                    <input id="histMinValue" class="inp-min" type="number" step="1" min="0" value="0" style="width:60px; padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;" />
                                 </div>
                                 <div class="fgrp grp-time" style="display:flex; align-items:center; gap:4px;">
                                     <label style="color:var(--text-secondary); font-size:11px;">Time:</label>
@@ -133,6 +130,7 @@
                                         <option value="Magic">Magic</option>
                                         <option value="Rare">Rare</option>
                                         <option value="Unique">Unique</option>
+                                        <option value="Foil">Foil</option>
                                     </select>
                                 </div>
                                 <div class="fgrp grp-type" style="display:flex; align-items:center; gap:4px;">
@@ -143,12 +141,13 @@
                                         <option>Body Armours</option>
                                         <option>Gloves</option>
                                         <option>Boots</option>
+                                        <option>Offhand</option>
                                         <option>Rings</option>
                                         <option>Amulets</option>
                                         <option>Belts</option>
                                         <option>Weapons</option>
                                         <option>Jewels</option>
-                                        <option>Uniques</option>
+                                        <option>Other</option>
                                     </select>
                                 </div>
                                 <div class="fgrp grp-search" style="display:flex; align-items:center; gap:4px;">
@@ -1509,7 +1508,7 @@
                 const applyAndRenderFn = H.applyAndRender;
                 const wire = (el, ev, fn)=>{ if(el){ el.addEventListener(ev, fn); el.setAttribute('data-filter-wired','1'); } };
                 wire(minEl,'input', ()=>{ histState.filters.min = Number(minEl.value||0); applyAndRenderFn(); });
-                wire(curEl,'change', ()=>{ histState.filters.cur = String(curEl.value||'exalted'); applyAndRenderFn(); });
+                wire(curEl,'change', ()=>{ histState.filters.cur = String(curEl.value||''); applyAndRenderFn(); });
                 wire(catEl,'change', ()=>{ histState.filters.category = String(catEl.value||''); applyAndRenderFn(); });
                 wire(sortEl,'change', ()=>{ histState.sort = String(sortEl.value||'newest'); applyAndRenderFn(); });
                 wire(rarEl,'change', ()=>{ histState.filters.rarity = String(rarEl.value||''); applyAndRenderFn(); });

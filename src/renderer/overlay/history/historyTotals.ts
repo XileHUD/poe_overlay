@@ -10,6 +10,7 @@ export interface HistoryStore {
   entries: any[];
   totals: Record<string, number>;
   lastSync: number;
+  lastFetchAt?: number;
 }
 
 export type Price = { amount?: number; currency?: string } | undefined;

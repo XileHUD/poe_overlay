@@ -20,8 +20,17 @@ function collapseBracketAlternates(str: string): string {
   if (!str) return str;
   return str.replace(/\[([^\]]+?)\]/g, (_m: string, inner: string) => {
     if (!inner) return "";
-    const first = inner.split("|").map((s: string) => s.trim()).filter(Boolean)[0];
-    return first || "";
+    const parts = inner.split("|").map((s: string) => s.trim()).filter(Boolean);
+    if (!parts.length) return "";
+    if (parts.length === 1) return parts[0];
+    const ranked = parts.slice().sort((a, b) => {
+      const lenDiff = b.length - a.length;
+      if (lenDiff !== 0) return lenDiff;
+      const spaceDiff = (b.includes(' ') ? 1 : 0) - (a.includes(' ') ? 1 : 0);
+      if (spaceDiff !== 0) return spaceDiff;
+      return b.localeCompare(a);
+    });
+    return ranked[0] || parts[0];
   });
 }
 

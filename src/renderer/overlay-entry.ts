@@ -32,6 +32,59 @@ import './overlay/character/quest-passives/globals';
 // Tools
 import './overlay/tools/regex/globals';
 
+function enableNumberScrollWheel(): void {
+    const precisionFromStep = (step: string): number => {
+        if (!step || step === 'any') return 0;
+        const dot = step.indexOf('.');
+        if (dot === -1) return 0;
+        return step.length - dot - 1;
+    };
+
+    const inputs = Array.from(document.querySelectorAll<HTMLInputElement>('input[type="number"]'));
+    inputs.forEach((input) => {
+        if ((input as any)._wheelAttached) return;
+        (input as any)._wheelAttached = true;
+
+        input.addEventListener('wheel', (event: WheelEvent) => {
+            if (event.ctrlKey) return; // allow browser zoom gesture
+            event.preventDefault();
+
+            const stepAttr = input.step;
+            const stepVal = stepAttr && stepAttr !== 'any' ? Number(stepAttr) : 1;
+            const step = Number.isFinite(stepVal) && stepVal !== 0 ? stepVal : 1;
+            const direction = event.deltaY < 0 ? 1 : -1;
+
+            const currentValue = Number(input.value || 0) || 0;
+            let nextValue = currentValue + step * direction;
+
+            if (input.min !== '') {
+                const minVal = Number(input.min);
+                if (Number.isFinite(minVal)) {
+                    nextValue = Math.max(nextValue, minVal);
+                }
+            }
+            if (input.max !== '') {
+                const maxVal = Number(input.max);
+                if (Number.isFinite(maxVal)) {
+                    nextValue = Math.min(nextValue, maxVal);
+                }
+            }
+
+            const precision = precisionFromStep(stepAttr || '');
+            if (precision > 0) {
+                const multiplier = Math.pow(10, precision);
+                nextValue = Math.round(nextValue * multiplier) / multiplier;
+            } else {
+                nextValue = Math.round(nextValue);
+            }
+
+            input.value = String(nextValue);
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            input.dispatchEvent(new Event('change', { bubbles: true }));
+        }, { passive: false });
+    });
+}
+
 // Global ESC key handler to close overlay (unless pinned)
 window.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e: KeyboardEvent) => {
@@ -52,4 +105,6 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    enableNumberScrollWheel();
 });

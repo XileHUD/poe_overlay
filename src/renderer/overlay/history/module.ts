@@ -62,6 +62,29 @@ import { autoRefreshManager } from './autoRefresh';
 import { updateSessionUI, attachLoginButtonLogic } from './sessionManager';
 import { attachRefreshButtonLogic } from './refreshButton';
 
+const renderListWithDetail = (renderDetailCallback: (idx: number) => void) => renderHistoryList(renderDetailCallback);
+const renderDetailForIndex = (idx: number) => renderHistoryDetail(idx);
+
+async function performFullRefresh(): Promise<boolean | void> {
+  return await refreshHistory(
+    (renderDetailCallback) => renderListWithDetail(renderDetailCallback),
+    (idx) => renderDetailForIndex(idx)
+  );
+}
+
+async function performGuardedRefresh(origin: string): Promise<void> {
+  const now = Date.now();
+  const nextAt = nextAllowedRefreshAt();
+  if (now < nextAt) {
+    const waitMs = nextAt - now;
+    const waitSec = Math.ceil(waitMs / 1000);
+    console.log(`[History] Skipping ${origin} refresh; waiting ${waitSec}s to respect cooldown`);
+    try { updateHistoryRefreshButton(); } catch {}
+    return;
+  }
+  await performFullRefresh();
+}
+
 // Re-export types for external use
 export type { HistoryEntryRaw, HistoryStore, HistoryState, Price };
 
@@ -130,6 +153,8 @@ export function onLeaveView(): void {
       drawChart: () => drawHistoryChart()
     }
   );
+
+  try { updateHistoryRefreshButton(); } catch {}
   
   // Initialize session UI and login button
   setTimeout(() => { 
@@ -137,10 +162,7 @@ export function onLeaveView(): void {
       attachLoginButtonLogic(() => {
         console.log('[Login] Starting auto-refresh system');
         autoRefreshManager.startAutoRefresh(async () => {
-          await refreshHistory(
-            (renderDetailCallback) => renderHistoryList(renderDetailCallback),
-            (idx) => renderHistoryDetail(idx)
-          );
+          await performGuardedRefresh('auto-refresh');
         });
       });
       // If already logged in on startup, auto-start refresh loop
@@ -149,10 +171,7 @@ export function onLeaveView(): void {
         if (loggedIn) {
           console.log('[Startup] Session already logged in – starting auto-refresh system');
           autoRefreshManager.startAutoRefresh(async () => {
-            await refreshHistory(
-              (renderDetailCallback) => renderHistoryList(renderDetailCallback),
-              (idx) => renderHistoryDetail(idx)
-            );
+            await performGuardedRefresh('auto-refresh');
           });
         }
       })();
@@ -163,10 +182,9 @@ export function onLeaveView(): void {
   setTimeout(() => {
     try {
       attachRefreshButtonLogic(async () => {
-        await refreshHistory(
-          (renderDetailCallback) => renderHistoryList(renderDetailCallback),
-          (idx) => renderHistoryDetail(idx)
-        );
+        await performFullRefresh();
+      }, async () => {
+        await performGuardedRefresh('auto-refresh');
       });
     } catch (e) { console.warn('[History] Attach refresh button failed:', e); }
   }, 300);
@@ -211,10 +229,7 @@ export function onPopoutRefresh(): void {
   handlePopoutRefreshRequest(
     historyState,
     async () => {
-      return await refreshHistory(
-        (renderDetailCallback) => renderHistoryList(renderDetailCallback),
-        (idx) => renderHistoryDetail(idx)
-      );
+      return await performFullRefresh();
     },
     () => sendHistoryToPopout(historyState)
   );
@@ -222,10 +237,7 @@ export function onPopoutRefresh(): void {
 
 // Manual refresh
 export async function onManualRefresh(): Promise<void> {
-  await refreshHistory(
-    (renderDetailCallback) => renderHistoryList(renderDetailCallback),
-    (idx) => renderHistoryDetail(idx)
-  );
+  await performFullRefresh();
 }
 
 // ========== HTML Compatibility Wrappers ==========

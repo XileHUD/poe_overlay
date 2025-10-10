@@ -166,11 +166,10 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       }
     });
 
-    const fontSize = settingsService.get('fontSize') || 100;
-    const appVersion = getAppVersion();
-    const html = buildSettingsSplashHtml(currentHotkey, getDataDir(), Number(fontSize), appVersion);
-    
-    window.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
+  const fontSize = settingsService.get('fontSize') || 100;
+  const clipboardDelay = settingsService.get('clipboardDelay') || 300;
+  const appVersion = getAppVersion();
+  const html = buildSettingsSplashHtml(currentHotkey, getDataDir(), Number(fontSize), appVersion, Number(clipboardDelay));    window.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
 
     // Show when ready
     window.once('ready-to-show', () => {
@@ -371,6 +370,16 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       }
     });
 
+    // Handle clipboard delay save
+    ipcMain.on('settings-clipboard-delay-save', (event, value: number) => {
+      try {
+        settingsService.set('clipboardDelay', value);
+        event.reply('settings-clipboard-delay-saved', value);
+      } catch (error) {
+        console.error('Failed to save clipboard delay:', error);
+      }
+    });
+
     window.on('closed', () => {
       // Cleanup IPC handlers
       ipcMain.removeAllListeners('settings-check-updates');
@@ -378,6 +387,7 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       ipcMain.removeAllListeners('settings-font-size-save');
       ipcMain.removeAllListeners('settings-save-hotkey');
       ipcMain.removeAllListeners('settings-show-overlay');
+      ipcMain.removeAllListeners('settings-clipboard-delay-save');
       resolve();
     });
   });
@@ -386,7 +396,7 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
 /**
  * Build HTML for settings splash
  */
-function buildSettingsSplashHtml(currentHotkey: string, dataDir: string, fontSize: number, appVersion: string): string {
+function buildSettingsSplashHtml(currentHotkey: string, dataDir: string, fontSize: number, appVersion: string, clipboardDelay: number): string {
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -926,6 +936,26 @@ function buildSettingsSplashHtml(currentHotkey: string, dataDir: string, fontSiz
     <div id="dataReloadStatus" class="data-reload-status"></div>
   </div>
   
+  <!-- Debug Section -->
+  <div class="section">
+    <div class="section-title">🔧 Debug Settings</div>
+    <div class="section-desc">Advanced settings for troubleshooting copy/paste issues</div>
+    <div class="setting-item">
+      <div class="setting-label">
+        <span class="setting-label-text">Clipboard Delay</span>
+        <span class="setting-label-desc">If items aren't being captured, try increasing this delay</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; flex: 1; max-width: 400px;">
+        <input type="range" min="120" max="3000" step="50" value="${clipboardDelay}" class="slider" id="clipboardDelaySlider" style="flex: 1;">
+        <span class="slider-value" id="clipboardDelayValue">${clipboardDelay}ms</span>
+      </div>
+    </div>
+    <div style="margin-top: 8px; padding: 10px 12px; background: rgba(255, 165, 0, 0.1); border: 1px solid rgba(255, 165, 0, 0.3); border-radius: 6px; font-size: 12px; color: var(--accent-orange);">
+      ⚠️ Only change this if you experience items not being captured when using the overlay hotkey. Default is 300ms.
+    </div>
+    <button class="btn btn-green" id="saveClipboardDelayBtn" style="margin-top: 10px; display: none;">Save Delay</button>
+  </div>
+  
   </div><!-- end content-wrapper -->
   
   <script>
@@ -1207,6 +1237,33 @@ function buildSettingsSplashHtml(currentHotkey: string, dataDir: string, fontSiz
       document.getElementById('openFolderBtn').addEventListener('click', () => {
         ipcRenderer.send('settings-open-folder');
       });
+      
+      // Clipboard delay slider
+      const clipboardDelaySlider = document.getElementById('clipboardDelaySlider');
+      const clipboardDelayValue = document.getElementById('clipboardDelayValue');
+      const saveClipboardDelayBtn = document.getElementById('saveClipboardDelayBtn');
+      let originalClipboardDelay = ${clipboardDelay};
+      let pendingClipboardDelay = ${clipboardDelay};
+      
+      if (clipboardDelaySlider && clipboardDelayValue && saveClipboardDelayBtn) {
+        clipboardDelaySlider.addEventListener('input', (e) => {
+          pendingClipboardDelay = Number(e.target.value);
+          clipboardDelayValue.textContent = pendingClipboardDelay + 'ms';
+          saveClipboardDelayBtn.style.display = (pendingClipboardDelay !== originalClipboardDelay) ? 'block' : 'none';
+        });
+        
+        saveClipboardDelayBtn.addEventListener('click', () => {
+          ipcRenderer.send('settings-clipboard-delay-save', pendingClipboardDelay);
+        });
+        
+        ipcRenderer.on('settings-clipboard-delay-saved', (event, value) => {
+          console.log('Clipboard delay saved:', value);
+          originalClipboardDelay = value;
+          pendingClipboardDelay = value;
+          clipboardDelayValue.textContent = value + 'ms';
+          saveClipboardDelayBtn.style.display = 'none';
+        });
+      }
     })();
   </script>
 </body>

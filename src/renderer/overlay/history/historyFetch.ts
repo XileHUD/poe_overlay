@@ -182,7 +182,8 @@ export async function refreshHistory(
     
     const existingKeys = new Set((historyState.store.entries || []).map(keyForRow));
     const newOnes = normalized.filter((r: any) => !existingKeys.has(keyForRow(r)));
-    
+    let needsPersist = false;
+
     if (newOnes.length) {
       // Add to totals
       newOnes.forEach((r: any) => addToTotals((r as any).price));
@@ -190,14 +191,17 @@ export async function refreshHistory(
       // Merge with store
       historyState.store.entries = (historyState.store.entries || []).concat(newOnes);
       historyState.store.lastSync = Date.now();
+      needsPersist = true;
       
       // Reconcile totals with entries to avoid drift
       try { recomputeTotalsFromEntries(historyState.store); } catch {}
-      
-      // Save to disk
-      try {
-        await (window as any).electronAPI.historySave(historyState.store);
-      } catch {}
+    }
+    
+    const prevLastFetch = Number(historyState.store.lastFetchAt || 0);
+    const fetchTimestamp = historyState.remoteLastFetchAt || Date.now();
+    if (fetchTimestamp && fetchTimestamp !== prevLastFetch) {
+      historyState.store.lastFetchAt = fetchTimestamp;
+      needsPersist = true;
     }
     
     // ========== Update UI ==========
@@ -217,7 +221,15 @@ export async function refreshHistory(
       drawHistoryChart();
     } catch {}
     
-    historyState.lastRefreshAt = historyState.remoteLastFetchAt || Date.now();
+    const refreshTs = historyState.store.lastFetchAt || historyState.remoteLastFetchAt || Date.now();
+    historyState.lastRefreshAt = refreshTs;
+    historyState.store.lastFetchAt = refreshTs;
+
+    if (needsPersist) {
+      try {
+        await (window as any).electronAPI.historySave(historyState.store);
+      } catch {}
+    }
     
     try {
       updateHistoryRefreshButton();

@@ -91,6 +91,28 @@ A simple tool to make juicing maps more straightforward. Select the mods you wan
 	<img src="./screenshots/Regex.png" alt="Map Regex Tool" width="760" />
 </p>
 
+### Feature Selector
+Quickly tailor the overlay to the features you actually use. Toggle whole modules on or off, reorder their priority, and keep your HUD lean during leagues when you only care about a handful of systems.
+
+<p align="center">
+	<img src="./screenshots/FeatureSelection.png" alt="Feature Selector UI" width="760" />
+</p>
+
+### Fuzzy Search Everywhere
+Every major data panel now supports fuzzy matching. Type fragments or abbreviations ("ev armor", "anc ra") and we rank the closest hits instantly, so you never have to remember the exact wording of an item base, quest, or modifier again.
+
+<p align="center">
+	<img src="./screenshots/Fuzzy.png" alt="Fuzzy Search Results" width="760" />
+</p>
+
+### Unified Settings Screen
+All preferences live in a single, keyboard-friendly Settings hub: manage hotkeys, overlay themes, capture behavior, and advanced options without digging through config files.
+
+<p align="center">
+	<img src="./screenshots/Settings1.png" alt="Settings Screen General Tab" width="370" />
+	<img src="./screenshots/Settings2.png" alt="Settings Screen Advanced Tab" width="370" />
+</p>
+
 ### Focused Gaming
 The overlay is designed to be unobtrusive and can be quickly toggled with a hotkey, keeping you focused on the game.
 
@@ -117,6 +139,7 @@ Prefer clicking instead of hotkeys? Press `Ctrl+Alt+Q` (or right‑click the tra
 **System Tray**  
 - Left click: show / hide overlay  
 - Right click: quit / options (including enabling the capture button)  
+- Open **Settings** from here (or `Ctrl+,`) to access the feature selector, hotkey tweaks, and overlay preferences.
 
 **Updates**  
 Future versions auto‑download silently and apply when you exit the app; your settings & merchant history remain intact.

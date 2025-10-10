@@ -69,19 +69,6 @@ body.view-history #historyActiveFilters {
     cursor: default;
 }
 
-/* Enable dragging on history header (override .header * no-drag) */
-#historyHeaderMain {
-    -webkit-app-region: drag;
-    cursor: move;
-}
-
-/* Disable dragging on interactive elements within history header */
-#historyHeaderMain button,
-#historyHeaderMain .pin-btn {
-    -webkit-app-region: no-drag;
-    cursor: pointer;
-}
-
 * {
     box-sizing: border-box;
 }
@@ -134,9 +121,13 @@ body {
     align-items: center;
     -webkit-app-region: drag;  /* Enable native dragging */
 }
-
-.header * {
-    -webkit-app-region: no-drag;  /* Prevent child elements from being draggable */
+.header button,
+.header input,
+.header select,
+.header textarea,
+.header a,
+.header [data-no-drag="true"] {
+    -webkit-app-region: no-drag;
 }
 
 .item-info {
@@ -209,8 +200,48 @@ body {
 #historyList { 
     min-height: 0 !important; 
     overflow-y: auto !important; 
-    flex:1 1 auto !important;
+    flex: 0 1 clamp(360px, 42vw, 560px) !important;
+    min-width: clamp(300px, 36vw, 500px) !important;
+    max-width: clamp(420px, 45vw, 600px) !important;
     max-height: none !important; /* allow to expand with window */
+}
+#historyList .history-row {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+#historyList .history-row:hover:not(.selected) {
+    background: var(--bg-secondary);
+}
+#historyList .history-row.selected {
+    background: rgba(61, 116, 201, 0.15);
+}
+#historyList .history-row-index {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width: 26px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+}
+#historyList .history-row.selected .history-row-index {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: #fff;
+}
+#historyList .history-row-title {
+    font-weight:600;
+    color:var(--text-primary);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+#historyList .history-row.selected .history-row-title {
+    color: var(--accent-blue);
 }
 #historyDetail { 
     min-height: 0 !important; 
@@ -879,6 +910,12 @@ body {
 .currency-chaos  { background:#24331b; color:#cfe9b8; border-color:#4a6a35; }
 .currency-regal  { background:#3d2817; color:#f4d8a6; border-color:#6b4a28; }
 .currency-altar  { background:#1f2d3f; color:#b6d5ff; border-color:#3b5f8f; }
+/* Rarity colors */
+.currency-normal { background:#6b6b6b; color:#ffffff; border-color:#8b8b8b; }
+.currency-magic  { background:#1f3a5f; color:#8888ff; border-color:#4169e1; }
+.currency-rare   { background:#5a4a22; color:#ffff77; border-color:#8b7a42; }
+.currency-unique { background:#6b3410; color:#ff8844; border-color:#b8631e; }
+.currency-foil   { background:#4a2d4a; color:#ff69eb; border-color:#8b5a8b; }
 /* Vivid in detail card (match same hues) */
 .history-detail-card .currency-exalted { background:#2b4f80; color:#eaf4ff; border-color:#2b4f80; }
 .history-detail-card .currency-divine  { background:#ffd24d; color:#1a1a1a; border-color:#e0b939; }
@@ -1035,13 +1072,13 @@ body.crafting-mode #controlPanel { display: none !important; }
 /* ================= Responsive Enhancements (safe + incremental) ================= */
 /* Breakpoint 1: Slightly constrain list width sooner for medium viewports */
 @media (max-width: 1100px) {
-    #historyList { flex: 0 0 50% !important; }
+    #historyList { flex: 0 0 clamp(320px, 50%, 520px) !important; max-width: clamp(320px, 54%, 560px) !important; }
 }
 
 /* Breakpoint 2: Stack list and detail vertically under narrow width */
 @media (max-width: 860px) {
     #historyContainer { flex-direction: column !important; }
-    #historyList { flex: 0 0 auto !important; max-height: 38vh; border-right:none !important; border-bottom:1px solid var(--border-color); }
+    #historyList { flex: 0 0 auto !important; min-width: 0 !important; max-height: 38vh; border-right:none !important; border-bottom:1px solid var(--border-color); }
     #historyRight { flex: 1 1 auto; }
 }
 

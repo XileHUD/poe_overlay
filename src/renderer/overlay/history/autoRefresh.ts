@@ -5,6 +5,7 @@
 
 export class HistoryAutoRefresh {
   private autoRefreshInterval: NodeJS.Timeout | null = null;
+  private initialTimeout: NodeJS.Timeout | null = null;
   private readonly AUTO_REFRESH_INTERVAL_MS = 15 * 60 * 1000; // 15 minutes
   private readonly INITIAL_DELAY_MS = 3000; // 3 seconds after login
 
@@ -15,7 +16,7 @@ export class HistoryAutoRefresh {
     this.stopAutoRefresh(); // Clear any existing interval
 
     // Initial fetch after 3 seconds
-    setTimeout(async () => {
+    this.initialTimeout = setTimeout(async () => {
       try {
         await refreshCallback();
       } catch (e) {
@@ -40,6 +41,10 @@ export class HistoryAutoRefresh {
    * Stop auto-refresh (e.g., on logout or rate limit)
    */
   stopAutoRefresh(): void {
+    if (this.initialTimeout) {
+      clearTimeout(this.initialTimeout);
+      this.initialTimeout = null;
+    }
     if (this.autoRefreshInterval) {
       clearInterval(this.autoRefreshInterval);
       this.autoRefreshInterval = null;
