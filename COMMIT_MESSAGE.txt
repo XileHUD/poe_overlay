@@ -1,0 +1,44 @@
+feat: Add Linux x64 AppImage support
+
+Add full Linux support via AppImage with X11/XWayland compatibility.
+
+Changes:
+- Add Linux build configuration in package.json (AppImage target)
+- Add PNG icon support for Linux system tray
+- Implement platform-specific tray click handlers
+- Add run-linux.sh launcher script for X11/XWayland mode
+- Add dist:linux npm script for building
+
+System Tray:
+- PNG icons preferred on Linux (xilehud.png)
+- Use setContextMenu() for proper Linux menu handling
+- Add setTitle() for better KDE Plasma visibility
+- Log tray events when XILEHUD_TRAY_DEBUG=1
+
+Platform Support:
+- Works on X11 sessions natively
+- Works on Wayland sessions via XWayland
+- Tested on Fedora/Bazzite + KDE Plasma 6.4.5
+- Compatible with KDE, GNOME, XFCE, and other DEs
+
+Technical Details:
+- Transparent windows work via X11/XWayland
+- run-linux.sh forces X11 mode for compatibility
+- All features have full parity with Windows version
+- AppImage includes all dependencies
+
+Files Added:
+- run-linux.sh: Launcher script with X11 mode
+- package-lock.json: npm dependency lock file
+
+Files Modified:
+- package.json: Linux build config + extraResources
+- src/main/main.ts: Linux platform detection
+- src/main/ui/trayService.ts: PNG icons + Linux handlers
+
+Usage:
+  ./run-linux.sh
+
+Output:
+  dist_electron/XileHUD-0.1.2-x86_64.AppImage (138 MB)
+

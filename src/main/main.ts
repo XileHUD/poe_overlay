@@ -6,6 +6,45 @@ try { autoUpdater = require('electron-updater').autoUpdater; } catch {}
 import * as cp from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs';
+
+// Linux/Wayland fix: Force X11/XWayland mode if running on Wayland
+// This must happen BEFORE any Electron initialization
+if (process.platform === 'linux') {
+    const isWayland = (process.env.XDG_SESSION_TYPE === 'wayland' || process.env.WAYLAND_DISPLAY) &&
+                      !process.env.GDK_BACKEND; // Not already forced to X11
+    
+    if (isWayland) {
+        // Check if this is the original process or already restarted
+        if (!process.env.XILEHUD_RESTARTED) {
+            console.log('[Linux] Wayland detected - restarting in X11/XWayland mode for compatibility...');
+            
+            // Set environment variables for X11 mode
+            const env = {
+                ...process.env,
+                GDK_BACKEND: 'x11',
+                QT_QPA_PLATFORM: 'xcb',
+                XILEHUD_RESTARTED: '1'
+            };
+            
+            // Restart with X11 environment
+            try {
+                cp.spawn(process.execPath, process.argv.slice(1), {
+                    env,
+                    detached: true,
+                    stdio: 'inherit'
+                }).unref();
+                
+                // Exit this instance
+                process.exit(0);
+            } catch (e) {
+                console.error('[Linux] Failed to restart in X11 mode:', e);
+                console.error('[Linux] Continuing in Wayland mode (may not work properly)...');
+            }
+        } else {
+            console.log('[Linux] Restarted in X11/XWayland mode - full functionality available');
+        }
+    }
+}
 // Heavy modules will be lazy-imported after splash is visible
 import type { ClipboardMonitor } from './clipboard-monitor';
 import type { ItemParser } from './item-parser';
@@ -49,6 +88,13 @@ try {
     app.commandLine.appendSwitch('media-cache-dir', cacheDir);
     app.commandLine.appendSwitch('shader-disk-cache-size', '0');
     app.commandLine.appendSwitch('disable-gpu-shader-disk-cache');
+    
+    // Linux specific optimizations
+    if (process.platform === 'linux') {
+        console.log('[Linux] X11/XWayland mode - full functionality available');
+        // Disable GPU sandbox on Linux for better compatibility
+        app.commandLine.appendSwitch('disable-gpu-sandbox');
+    }
 } catch {}
 
 // Early minimal splash: show as soon as 'ready' fires so users get instant feedback even if
