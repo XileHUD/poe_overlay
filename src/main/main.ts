@@ -113,6 +113,8 @@ class OverlayApp {
     private featureService: FeatureService | null = null;
     private hotkeyConfigurator: HotkeyConfigurator | null = null;
     private currentRegisteredHotkey: string | null = null; // Track currently registered hotkey to avoid re-registration
+    private clickOutsideCheckInterval: NodeJS.Timeout | null = null; // Polling interval for click-outside detection
+    private lastMousePosition: { x: number; y: number } | null = null; // Track mouse position for click detection
 
     constructor() {
         app.whenReady().then(async () => {
@@ -562,7 +564,7 @@ class OverlayApp {
             resizable: true, // allow height-only resize (width constrained below)
             transparent: true,
             show: false,
-            focusable: true,  // Changed to true to allow mouse interactions
+            focusable: false,  // Start as non-focusable to avoid intercepting game input
             icon: windowIcon,
             // Critical for windowed fullscreen games: ensure overlay stays above game
             type: process.platform === 'win32' ? 'toolbar' : undefined
@@ -574,6 +576,10 @@ class OverlayApp {
                 this.overlayWindow.setSkipTaskbar(true);
                 // Use 'screen-saver' level which is above fullscreen windows but below system UI
                 this.overlayWindow.setAlwaysOnTop(true, 'screen-saver');
+                // Ensure window doesn't steal focus from game (critical for clipboard capture)
+                if (typeof (this.overlayWindow as any).setFocusable === 'function') {
+                    (this.overlayWindow as any).setFocusable(false);
+                }
             } catch (e) {
                 console.warn('[Overlay] Failed to set initial window properties:', e);
             }
@@ -753,19 +759,24 @@ class OverlayApp {
             this.pendingTab = null;
         });
 
-        // Click-outside detection (consider popout focus)
+        // Click-outside detection using blur event
+        // The click-through handler in renderer makes the window click-through when not over interactive content
+        // When user clicks outside on the game, Windows gives focus back to the game, triggering blur
         this.overlayWindow.on('blur', () => {
             setTimeout(() => {
                 try {
                     if (!this.overlayWindow || this.overlayWindow.isDestroyed()) return;
                     if (this.pinned || !this.isOverlayVisible) return;
+                    
                     // Don't hide if capture is in progress
                     if (this.shortcutAwaitingCapture || Date.now() <= this.armedCaptureUntil) {
                         console.log('[blur] Skipping hide - capture in progress');
                         return;
                     }
+                    
                     const focused = BrowserWindow.getFocusedWindow();
                     if (!focused) { this.hideOverlay(); return; }
+                    
                     // If a popout is focused, keep overlay
                     const popFocused = Array.from(this.modPopoutWindows).some(w => !w.isDestroyed() && w.id === focused.id);
                     if (!popFocused && focused.id !== this.overlayWindow.id) {
@@ -791,20 +802,6 @@ class OverlayApp {
             this.saveWindowBounds();
         });
 
-        // Periodic check to ensure always-on-top and skipTaskbar are maintained
-        // This fixes windowed fullscreen games and some Windows configurations
-        setInterval(() => {
-            try {
-                if (this.overlayWindow && !this.overlayWindow.isDestroyed() && this.isOverlayVisible) {
-                    // Use screen-saver level to stay above fullscreen/borderless windowed games
-                    this.overlayWindow.setAlwaysOnTop(true, 'screen-saver');
-                    // Ensure taskbar icon doesn't appear
-                    this.overlayWindow.setSkipTaskbar(true);
-                }
-            } catch (e) {
-                // Silently handle errors (window might be in transition)
-            }
-        }, 3000); // Check every 3 seconds
     }
 
 
@@ -820,85 +817,91 @@ class OverlayApp {
         try { this.clipboardMonitor.resetLastSeen(); } catch {}
         console.log('[Hotkey] Starting item capture: simulating Ctrl+C');
 
-        const overlayWindow = (this.overlayWindow && !this.overlayWindow.isDestroyed()) ? this.overlayWindow : null;
-        const overlayWasVisible = overlayWindow ? this.isOverlayVisible : false;
-        let restoreOverlayFocusable = false;
-
-        if (overlayWindow && overlayWasVisible) {
-            console.log('[Hotkey] Temporarily disabling overlay focus to allow game copy');
-            if (typeof (overlayWindow as any).setFocusable === 'function') {
-                try {
-                    (overlayWindow as any).setFocusable(false);
-                    restoreOverlayFocusable = true;
-                } catch (err) {
-                    console.warn('[Hotkey] Failed to set overlay focusable=false', err);
-                }
-            }
-            try { overlayWindow.blur(); } catch {}
-            await new Promise(r => setTimeout(r, 25));
-        }
-
         let handled = false;
         try {
-            // ALWAYS try to simulate Ctrl+C first to get the fresh item from game
+            // Send Ctrl+C immediately - game has focus since we haven't shown overlay yet
             this.trySimulateCtrlC();
         
-            // Give the OS/game a brief moment to populate the clipboard
+            // Give the game time to populate the clipboard
             await new Promise(r => setTimeout(r, 250));
 
-            // Poll clipboard directly for fast response while the interval monitor also runs
-            const deadline = Date.now() + 1200; // Shorter timeout: 1.2s max
+            // Poll clipboard for the item
+            const deadline = Date.now() + 800; // Reduced from 1200ms - faster feedback
             let attempts = 0;
+            let lastText = '';
         
             while (Date.now() < deadline) {
                 attempts++;
                 try {
                     const text = (clipboard.readText() || '').trim();
                 
-                    if (text && text.length > 5) {
-                        try {
-                            const parsed = await this.itemParser.parse(text);
+                    // Early exit if clipboard is empty or hasn't changed
+                    if (!text || text.length < 5) {
+                        // If we've tried a few times and clipboard is still empty, exit early
+                        if (attempts > 3 && !text) {
+                            console.log('[Hotkey] Clipboard empty after', attempts, 'attempts, exiting early');
+                            break;
+                        }
+                        await new Promise(r => setTimeout(r, 50));
+                        continue;
+                    }
+                    
+                    // If text hasn't changed from last poll, we've seen all the data
+                    if (text === lastText && attempts > 2) {
+                        console.log('[Hotkey] Clipboard unchanged, likely not an item');
+                        break;
+                    }
+                    lastText = text;
+                
+                    try {
+                        const parsed = await this.itemParser.parse(text);
                         
-                            // Only accept if we got a valid category (not 'unknown')
-                            if (parsed && parsed.category && parsed.category !== 'unknown') {
-                                console.log('[Hotkey] ✓ Parsed item. Category:', parsed.category, 'Rarity:', parsed.rarity);
+                        // Only accept if we got a valid category (not 'unknown')
+                        if (parsed && parsed.category && parsed.category !== 'unknown') {
+                            console.log('[Hotkey] ✓ Parsed item. Category:', parsed.category, 'Rarity:', parsed.rarity);
                             
-                                // Unique shortcut handling
-                                if ((parsed.rarity || '').toLowerCase() === 'unique') {
-                                    this.showUniqueItem(parsed, { focus: false });
-                                    handled = true;
-                                    break;
-                                }
-                        
-                                // Gem shortcut handling - switch to character tab and show gems panel
-                                if (parsed.category === 'Gems') {
-                                    this.showOverlay(undefined, { focus: false });
-                                    setTimeout(() => {
-                                        this.safeSendToOverlay('set-active-tab', 'characterTab');
-                                        this.safeSendToOverlay('invoke-action', 'gems');
-                                    }, 140);
-                                    handled = true;
-                                    break;
-                                }
-                        
-                                let modifiers: any[] = [];
-                                try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
-                                this.safeSendToOverlay('set-active-category', parsed.category);
-                                this.showOverlay({ item: parsed, modifiers }, { focus: false });
+                            // Unique shortcut handling
+                            if ((parsed.rarity || '').toLowerCase() === 'unique') {
+                                this.showUniqueItem(parsed, { focus: false });
                                 handled = true;
                                 break;
-                            } else if (parsed && parsed.category === 'unknown') {
-                                // Don't spam logs - just continue polling
-                                // Clipboard might have junk text or we copied too early
                             }
-                        } catch (parseErr) {
-                            // Parse error - clipboard has text but it's not a valid item
-                            // Continue polling in case a valid item arrives
+                        
+                            // Gem shortcut handling - switch to character tab and show gems panel
+                            if (parsed.category === 'Gems') {
+                                this.showOverlay(undefined, { focus: false });
+                                setTimeout(() => {
+                                    this.safeSendToOverlay('set-active-tab', 'characterTab');
+                                    this.safeSendToOverlay('invoke-action', 'gems');
+                                }, 140);
+                                handled = true;
+                                break;
+                            }
+                        
+                            let modifiers: any[] = [];
+                            try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
+                            this.safeSendToOverlay('set-active-category', parsed.category);
+                            this.showOverlay({ item: parsed, modifiers }, { focus: false });
+                            handled = true;
+                            break;
+                        } else if (parsed && parsed.category === 'unknown') {
+                            // Text parsed but not recognized as item - exit early
+                            if (attempts > 2) {
+                                console.log('[Hotkey] Parsed but unknown category, exiting');
+                                break;
+                            }
+                        }
+                    } catch (parseErr) {
+                        // Parse error - not a valid item
+                        // If we've tried parsing a few times and it keeps failing, exit
+                        if (attempts > 3) {
+                            console.log('[Hotkey] Parse failed multiple times, exiting');
+                            break;
                         }
                     }
                 } catch {}
             
-                // Don't poll too fast - give clipboard time to update
+                // Poll every 50ms
                 await new Promise(r => setTimeout(r, 50));
             }
             
@@ -907,14 +910,6 @@ class OverlayApp {
             }
         } finally {
             this.armedCaptureUntil = 0;
-            if (overlayWindow && restoreOverlayFocusable) {
-                try {
-                    (overlayWindow as any).setFocusable(true);
-                    console.log('[Hotkey] Restored overlay focusability');
-                } catch (err) {
-                    console.warn('[Hotkey] Failed to restore overlay focusability', err);
-                }
-            }
         }
 
         return handled;
@@ -990,22 +985,40 @@ class OverlayApp {
 
         // Show overlay and optionally give it focus
         if (shouldFocus) {
+            // Make window focusable when we want to give it focus
+            if (typeof (this.overlayWindow as any).setFocusable === 'function') {
+                try {
+                    (this.overlayWindow as any).setFocusable(true);
+                } catch {}
+            }
+            
             this.overlayWindow.show();
             // Use screen-saver level - this is ABOVE fullscreen windows
             // This fixes windowed fullscreen game overlay issues
             this.overlayWindow.setAlwaysOnTop(true, 'screen-saver');
             this.overlayWindow.focus();
+            console.log('[Overlay] Shown with immediate focus');
         } else {
-            if (typeof this.overlayWindow.showInactive === 'function') {
-                this.overlayWindow.showInactive();
-            } else {
-                this.overlayWindow.show();
+            // Passive mode: show and immediately give it focus
+            // This way when user clicks outside, blur event fires and overlay closes
+            if (typeof (this.overlayWindow as any).setFocusable === 'function') {
+                try {
+                    (this.overlayWindow as any).setFocusable(true);
+                } catch {}
             }
+            
+            this.overlayWindow.show();
             // Use screen-saver level even in passive mode to stay above game
             this.overlayWindow.setAlwaysOnTop(true, 'screen-saver');
-            try {
-                this.overlayWindow.blur();
-            } catch {}
+            
+            // Give it focus so blur event can fire when clicking outside
+            setTimeout(() => {
+                try {
+                    if (this.overlayWindow && !this.overlayWindow.isDestroyed()) {
+                        this.overlayWindow.focus();
+                    }
+                } catch {}
+            }, 100);
         }
         this.isOverlayVisible = true;
         
@@ -1157,19 +1170,15 @@ class OverlayApp {
             this.shortcutAwaitingCapture = true;
 
             try {
-                // Try to capture and parse item from clipboard
-                const overlayWasVisible = this.isOverlayVisible;
-                if (!overlayWasVisible) {
-                    this.showOverlay(undefined, { focus: false });
-                }
-
+                // CAPTURE FIRST, then show overlay with results
+                // Don't show overlay before capture - it steals focus from game
                 const itemCaptured = await this.captureItemFromGame();
                 console.log('[Hotkey] captureHandler done. itemCaptured=', itemCaptured);
                 
-                if (!itemCaptured) {
-                    if (!this.isOverlayVisible) {
-                        this.showOverlay(undefined, { focus: false });
-                    }
+                // If we didn't capture anything, show empty overlay WITH focus
+                // (so click-outside works immediately)
+                if (!itemCaptured && !this.isOverlayVisible) {
+                    this.showOverlay(undefined, { focus: true });
                 }
             } finally {
                 this.shortcutAwaitingCapture = false;
