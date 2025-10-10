@@ -147,12 +147,47 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
 
   return new Promise((resolve) => {
     const { width, height } = screen.getPrimaryDisplay().workAreaSize;
-    
+    const splashWidth = 550;
+    const splashHeight = 600;
+    let initialX = Math.round(width / 2 - splashWidth / 2);
+    let initialY = Math.round(height / 2 - splashHeight / 2);
+
+    try {
+      if (overlayWindow && !overlayWindow.isDestroyed()) {
+        const overlayBounds = overlayWindow.getBounds();
+        const display = screen.getDisplayMatching(overlayBounds);
+        const workArea = (display.workArea || display.workAreaSize || { width, height, x: 0, y: 0 }) as any;
+        const workX = typeof workArea.x === 'number' ? workArea.x : 0;
+        const workY = typeof workArea.y === 'number' ? workArea.y : 0;
+        const workWidth = typeof workArea.width === 'number' ? workArea.width : width;
+        const workHeight = typeof workArea.height === 'number' ? workArea.height : height;
+
+        let candidateX = overlayBounds.x + overlayBounds.width + 16;
+        if (candidateX + splashWidth > workX + workWidth) {
+          candidateX = overlayBounds.x - splashWidth - 16;
+        }
+        if (candidateX < workX) {
+          candidateX = workX + 16;
+        }
+
+        let candidateY = overlayBounds.y;
+        if (candidateY + splashHeight > workY + workHeight) {
+          candidateY = workY + workHeight - splashHeight - 16;
+        }
+        if (candidateY < workY) {
+          candidateY = workY + 16;
+        }
+
+        initialX = Math.round(candidateX);
+        initialY = Math.round(candidateY);
+      }
+    } catch {}
+
     const window = new BrowserWindow({
-      width: 550,
-      height: 600,
-      x: Math.round(width / 2 - 275),
-      y: Math.round(height / 2 - 300),
+      width: splashWidth,
+      height: splashHeight,
+      x: initialX,
+      y: initialY,
       frame: false,
       transparent: true,
       resizable: false,

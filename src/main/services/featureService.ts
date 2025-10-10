@@ -3,10 +3,54 @@
  * Handles loading, saving, and querying enabled features.
  */
 
-import { FeatureConfig, DEFAULT_FEATURES } from '../features/featureTypes.js';
+import { FeatureConfig, DEFAULT_FEATURES, CraftingSubcategories, CharacterSubcategories, ItemsSubcategories } from '../features/featureTypes.js';
 import { SettingsService } from './settingsService.js';
 
+const MODIFIER_CATEGORY_PATTERNS = [
+  'Amulets', 'Rings', 'Belts',
+  'Body_Armours_*', 'Helmets_*', 'Gloves_*', 'Boots_*', 'Shields_*',
+  'Bows', 'Crossbows', 'Wands', 'Daggers', 'Claws', 'Flails', 'Foci',
+  'One_Hand_Swords', 'Two_Hand_Swords',
+  'One_Hand_Maces', 'Two_Hand_Maces',
+  'One_Hand_Axes', 'Two_Hand_Axes',
+  'Quarterstaves', 'Staves', 'Sceptres', 'Spears',
+  'Quivers', 'Bucklers',
+  'ALL', 'DESECRATED', 'ESSENCE', 'CORRUPTED', 'SOCKETABLE',
+  'Waystones', 'Waystones_*',
+  'Relics', '*_Relic',
+  'Life_Flasks', 'Mana_Flasks', 'Charms',
+  'Tablet', '*_Precursor_Tablet',
+  'Jewels', 'Ruby', 'Emerald', 'Sapphire', 'Time-Lost_*',
+  'Stackable_Currency',
+  'Strongbox', 'Strongbox_Uniques', 'Expedition_Logbook'
+];
+
+const CRAFTING_CATEGORY_MAP: Record<string, keyof CraftingSubcategories> = {
+  Liquid_Emotions: 'liquidEmotions',
+  Annoints: 'annoints',
+  Essences: 'essences',
+  Omens: 'omens',
+  Currency: 'currency',
+  Catalysts: 'catalysts',
+  Socketables: 'socketables'
+};
+
+const CHARACTER_CATEGORY_MAP: Record<string, keyof CharacterSubcategories> = {
+  Keystones: 'keystones',
+  Ascendancy_Passives: 'ascendancyPassives',
+  Atlas_Nodes: 'atlasNodes',
+  Gems: 'gems',
+  Keywords: 'glossar'
+};
+
+const ITEM_CATEGORY_MAP: Record<string, keyof ItemsSubcategories> = {
+  Uniques: 'uniques',
+  Bases: 'bases'
+};
+
 export class FeatureService {
+  private patternCache = new Map<string, RegExp>();
+
   constructor(private settings: SettingsService) {}
 
   /**
@@ -46,63 +90,102 @@ export class FeatureService {
 
     // Modifiers (all gear/weapons/etc.)
     if (config.modifiers) {
-      categories.push(
-        // Jewelry
-        'Amulets', 'Rings', 'Belts',
-        // Armour (with attribute variants)
-        'Body_Armours_*', 'Helmets_*', 'Gloves_*', 'Boots_*', 'Shields_*',
-        // Weapons
-        'Bows', 'Crossbows', 'Wands', 'Daggers', 'Claws', 'Flails', 'Foci',
-        'One_Hand_Swords', 'Two_Hand_Swords', 
-        'One_Hand_Maces', 'Two_Hand_Maces',
-        'One_Hand_Axes', 'Two_Hand_Axes', 
-        'Quarterstaves', 'Staves', 'Sceptres', 'Spears',
-        // Offhand
-        'Quivers', 'Bucklers',
-        // Aggregated modifier views
-        'ALL', 'DESECRATED', 'ESSENCE', 'CORRUPTED', 'SOCKETABLE',
-        // Waystones, relics, flasks, etc.
-        'Waystones_*', '*_Relic', 
-        'Life_Flasks', 'Mana_Flasks', 'Charms',
-        '*_Precursor_Tablet', 
-        'Ruby', 'Emerald', 'Sapphire', 'Time-Lost_*',
-        'Strongbox', 'Strongbox_Uniques', 'Expedition_Logbook'
-      );
+      categories.push(...MODIFIER_CATEGORY_PATTERNS);
     }
 
     // Crafting subcategories
     if (config.crafting?.enabled) {
       const c = config.crafting.subcategories;
-      if (c.liquidEmotions) categories.push('Liquid_Emotions');
-      if (c.annoints) categories.push('Annoints');
-      if (c.essences) categories.push('Essences');
-      if (c.omens) categories.push('Omens');
-      if (c.currency) categories.push('Currency');
-      if (c.catalysts) categories.push('Catalysts');
-      if (c.socketables) categories.push('Socketables');
+      for (const [categoryName, key] of Object.entries(CRAFTING_CATEGORY_MAP)) {
+        if (c[key]) categories.push(categoryName);
+      }
     }
 
     // Character subcategories
     if (config.character?.enabled) {
       const c = config.character.subcategories;
-      if (c.keystones) categories.push('Keystones');
-      if (c.ascendancyPassives) categories.push('Ascendancy_Passives');
-      if (c.atlasNodes) categories.push('Atlas_Nodes');
-      if (c.gems) categories.push('Gems');
-      if (c.glossar) categories.push('Keywords'); // Glossar maps to Keywords.json
+      for (const [categoryName, key] of Object.entries(CHARACTER_CATEGORY_MAP)) {
+        if (c[key]) categories.push(categoryName);
+      }
       // Note: questPassives doesn't need a JSON (local state only)
     }
 
     // Items subcategories
     if (config.items?.enabled) {
       const i = config.items.subcategories;
-      if (i.uniques) categories.push('Uniques');
-      if (i.bases) categories.push('Bases');
+      for (const [categoryName, key] of Object.entries(ITEM_CATEGORY_MAP)) {
+        if (i[key]) categories.push(categoryName);
+      }
     }
 
     // Tools don't require JSON categories (regex is UI-only)
 
     return categories;
+  }
+
+  /**
+   * Check if a parsed item category should be available based on feature selection.
+   */
+  isCategoryEnabled(category: string): boolean {
+    if (!category) return false;
+    const value = category.trim();
+    if (!value) return false;
+    const config = this.getConfig();
+
+    if (this.matchesAnyPattern(MODIFIER_CATEGORY_PATTERNS, value)) {
+      return !!config.modifiers;
+    }
+
+    if (this.matchesMappedCategory(CRAFTING_CATEGORY_MAP, value, () => !!config.crafting?.enabled, config.crafting?.subcategories)) {
+      return true;
+    }
+
+    if (this.matchesMappedCategory(CHARACTER_CATEGORY_MAP, value, () => !!config.character?.enabled, config.character?.subcategories)) {
+      return true;
+    }
+
+    if (this.matchesMappedCategory(ITEM_CATEGORY_MAP, value, () => !!config.items?.enabled, config.items?.subcategories)) {
+      return true;
+    }
+
+    if (/^merchant$/i.test(value)) {
+      return !!config.merchant;
+    }
+
+    // Fallback: check generated JSON categories (handles wildcard-only patterns)
+    const enabledCategories = this.getEnabledJsonCategories();
+    return enabledCategories.some(pattern => this.matchesPattern(pattern, value));
+  }
+
+  private matchesMappedCategory<T extends Record<string, any>>(map: Record<string, keyof T>, value: string, parentEnabled: () => boolean, subcategories?: T): boolean {
+    if (!parentEnabled() || !subcategories) return false;
+    for (const [categoryName, key] of Object.entries(map)) {
+      if (this.matchesPattern(categoryName, value)) {
+        return !!subcategories[key];
+      }
+    }
+    return false;
+  }
+
+  private matchesAnyPattern(patterns: string[], value: string): boolean {
+    return patterns.some(pattern => this.matchesPattern(pattern, value));
+  }
+
+  private matchesPattern(pattern: string, value: string): boolean {
+    const regex = this.getPatternRegex(pattern);
+    return regex.test(value);
+  }
+
+  private getPatternRegex(pattern: string): RegExp {
+    let regex = this.patternCache.get(pattern);
+    if (!regex) {
+      const escaped = pattern
+        .replace(/[.+?^${}()|[\]\\]/g, '\\$&')
+        .replace(/\*/g, '.*');
+      regex = new RegExp(`^${escaped}$`, 'i');
+      this.patternCache.set(pattern, regex);
+    }
+    return regex;
   }
 
   /**

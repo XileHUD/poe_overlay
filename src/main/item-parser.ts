@@ -355,8 +355,13 @@ export class ItemParser {
             return 'unknown';
         }
         if (baseCategory === 'Stackable_Currency') {
-            // Essences: detect pattern "Essence" in name
-            if (/Essence/i.test(name)) return 'Essences';
+            const stackableBlob = `${name} ${baseType}`.toLowerCase();
+            if (/essence/.test(stackableBlob)) return 'Essences';
+            if (/catalyst/.test(stackableBlob)) return 'Catalysts';
+            if (/liquid\s*(emotion|envy|hatred|fear|anguish|despair|suffering|greed|contempt|ire|wrath|rage|malice|ire)/i.test(name) || /liquid\s*(emotion|envy|hatred|fear|anguish|despair|suffering|greed|contempt|ire|wrath|rage|malice|ire)/i.test(baseType)) {
+                return 'Liquid_Emotions';
+            }
+            if (/^omen\s+of\s+/i.test(name)) return 'Omens';
             return 'Stackable_Currency';
         }
 
@@ -373,13 +378,11 @@ export class ItemParser {
 
         // Essences: treat stackable currency names containing 'Essence' as Essences crafting view trigger
         if (itemClass === 'Stackable Currency') {
-            if (/Essence/i.test(name)) {
-                return 'Essences';
-            }
-            // Omens share the Stackable Currency class – detect pattern "Omen of X"
-            if (/^Omen\s+of\s+/i.test(name)) {
-                return 'Omens';
-            }
+            const stackableBlob = `${name} ${baseType}`.toLowerCase();
+            if (/essence/.test(stackableBlob)) return 'Essences';
+            if (/catalyst/.test(stackableBlob)) return 'Catalysts';
+            if (/liquid\s*(emotion|envy|hatred|fear|anguish|despair|suffering|greed|contempt|ire|wrath|rage|malice|ire)/.test(stackableBlob)) return 'Liquid_Emotions';
+            if (/^omen\s+of\s+/i.test(name)) return 'Omens';
         }
         // Direct standalone Omen item class safeguard
         if (/^Omen$/i.test(itemClass)) {

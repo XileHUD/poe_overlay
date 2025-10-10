@@ -6,6 +6,8 @@ try { autoUpdater = require('electron-updater').autoUpdater; } catch {}
 import * as cp from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs';
+import * as https from 'https';
+import { isDeepStrictEqual } from 'util';
 // Heavy modules will be lazy-imported after splash is visible
 import type { ClipboardMonitor } from './clipboard-monitor';
 import type { ItemParser } from './item-parser';
@@ -35,6 +37,139 @@ import { rateLimiter } from './services/rateLimiter.js';
 
 // History popout debug log path (moved logging helpers into historyPopoutHandlers)
 const historyPopoutDebugLogPath = path.join(app.getPath('userData'), 'history-popout-debug.log');
+
+const OVERLAY_RELEASE_URL = 'https://github.com/XileHUD/poe_overlay/releases/latest';
+
+interface GithubReleaseInfo {
+    version: string | null;
+    url?: string;
+}
+
+export interface OverlayUpdateCheckResult {
+    available: boolean;
+    version: string | null;
+    message: string;
+    url?: string;
+    error?: boolean;
+}
+
+function normalizeVersionString(version: string | null | undefined): string | null {
+    if (!version) return null;
+    return version.trim().replace(/^v/i, '');
+}
+
+function compareSemanticVersions(a: string, b: string): number {
+    const segA = a.split('.').map((n) => parseInt(n, 10) || 0);
+    const segB = b.split('.').map((n) => parseInt(n, 10) || 0);
+    const len = Math.max(segA.length, segB.length);
+    for (let i = 0; i < len; i++) {
+        const diff = (segA[i] || 0) - (segB[i] || 0);
+        if (diff !== 0) return diff;
+    }
+    return 0;
+}
+
+function fetchLatestReleaseInfo(): Promise<GithubReleaseInfo> {
+    return new Promise((resolve, reject) => {
+        const options: https.RequestOptions = {
+            hostname: 'api.github.com',
+            path: '/repos/XileHUD/poe_overlay/releases/latest',
+            method: 'GET',
+            headers: {
+                'User-Agent': 'XileHUD-Updater',
+                'Accept': 'application/vnd.github+json'
+            }
+        };
+
+        const req = https.request(options, (res) => {
+            if (res.statusCode && res.statusCode >= 400) {
+                res.resume();
+                reject(new Error(`GitHub API responded with ${res.statusCode}`));
+                return;
+            }
+            const chunks: Buffer[] = [];
+            res.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
+            res.on('end', () => {
+                try {
+                    const body = Buffer.concat(chunks).toString('utf-8');
+                    const data = JSON.parse(body);
+                    resolve({
+                        version: typeof data?.tag_name === 'string' ? data.tag_name : null,
+                        url: typeof data?.html_url === 'string' ? data.html_url : undefined
+                    });
+                } catch (err) {
+                    reject(err);
+                }
+            });
+        });
+
+        req.on('error', reject);
+        req.end();
+    });
+}
+
+function getOverlayAppVersion(): string {
+    try {
+        const packagePath = path.join(__dirname, '../../package.json');
+        if (fs.existsSync(packagePath)) {
+            const packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf-8'));
+            if (packageJson?.version) return String(packageJson.version);
+        }
+    } catch {}
+    try { return app.getVersion(); } catch { return '0.0.0'; }
+}
+
+async function checkOverlayUpdateStatus(currentVersion: string): Promise<OverlayUpdateCheckResult> {
+    const currentNorm = normalizeVersionString(currentVersion) || '0.0.0';
+    try {
+        const release = await fetchLatestReleaseInfo();
+        if (!release.version) {
+            return {
+                available: false,
+                version: null,
+                message: 'Unable to determine the latest version from GitHub.',
+                error: true,
+                url: OVERLAY_RELEASE_URL
+            };
+        }
+
+        const remoteNorm = normalizeVersionString(release.version);
+        if (!remoteNorm) {
+            return {
+                available: false,
+                version: release.version,
+                message: 'Received an invalid version from GitHub releases.',
+                error: true,
+                url: release.url || OVERLAY_RELEASE_URL
+            };
+        }
+
+        const comparison = compareSemanticVersions(remoteNorm, currentNorm);
+        if (comparison > 0) {
+            return {
+                available: true,
+                version: release.version,
+                message: `New version available: ${release.version}. Click to download the latest release.`,
+                url: release.url || OVERLAY_RELEASE_URL
+            };
+        }
+
+        return {
+            available: false,
+            version: release.version,
+            message: `You're already on the latest version (v${currentNorm}).`,
+            url: release.url || OVERLAY_RELEASE_URL
+        };
+    } catch (error: any) {
+        return {
+            available: false,
+            version: currentNorm,
+            message: 'Failed to check for updates. Please try again later.',
+            error: true,
+            url: OVERLAY_RELEASE_URL
+        };
+    }
+}
 
 // Configure Electron userData and Chromium caches to a writable directory before app is ready
 try {
@@ -107,6 +242,7 @@ class OverlayApp {
     private historyPopoutWindow: BrowserWindow | null = null;
     private lastProcessedItemText: string = ''; // track last processed item to avoid duplicate handling
     private lastHistoryFetchAt: number = 0; // global merchant history fetch timestamp (ms)
+    private pendingDefaultView = false; // request renderer to show last/default view when no item provided
     private readonly HISTORY_FETCH_MIN_INTERVAL = 5 * 60 * 1000; // 5 minutes
     private floatingButton: FloatingButton | null = null;
     private settingsService: SettingsService | null = null;
@@ -115,6 +251,7 @@ class OverlayApp {
     private currentRegisteredHotkey: string | null = null; // Track currently registered hotkey to avoid re-registration
     private clickOutsideCheckInterval: NodeJS.Timeout | null = null; // Polling interval for click-outside detection
     private lastMousePosition: { x: number; y: number } | null = null; // Track mouse position for click detection
+    private overlayUpdateCache: { timestamp: number; result: OverlayUpdateCheckResult } | null = null;
 
     constructor() {
         app.whenReady().then(async () => {
@@ -419,17 +556,21 @@ class OverlayApp {
         try {
             const currentConfig = this.featureService!.getConfig();
             const selectedConfig = await showFeatureSplash(currentConfig);
-            
-            if (selectedConfig) {
-                this.featureService!.saveConfig(selectedConfig);
-                
-                // Prompt user to restart
-                const shouldRestart = await showRestartDialog();
-                
-                if (shouldRestart) {
-                    app.relaunch();
-                    app.quit();
-                }
+
+            if (!selectedConfig) return;
+
+            if (currentConfig && isDeepStrictEqual(currentConfig, selectedConfig)) {
+                return;
+            }
+
+            this.featureService!.saveConfig(selectedConfig);
+
+            // Prompt user to restart only when config changed
+            const shouldRestart = await showRestartDialog();
+
+            if (shouldRestart) {
+                app.relaunch();
+                app.quit();
             }
         } catch (err) {
             console.error('[openFeatureConfiguration] Error:', err);
@@ -757,6 +898,10 @@ class OverlayApp {
             this.pendingItemData = null;
             this.pendingCategory = null;
             this.pendingTab = null;
+            if (this.pendingDefaultView) {
+                try { this.overlayWindow?.webContents.send('show-default-view'); } catch {}
+                this.pendingDefaultView = false;
+            }
         });
 
         // Click-outside detection using blur event
@@ -860,6 +1005,12 @@ class OverlayApp {
                         // Only accept if we got a valid category (not 'unknown')
                         if (parsed && parsed.category && parsed.category !== 'unknown') {
                             console.log('[Hotkey] ✓ Parsed item. Category:', parsed.category, 'Rarity:', parsed.rarity);
+
+                            if (!this.isParsedItemAllowed(parsed)) {
+                                console.log('[Hotkey] Feature disabled for parsed item.', { category: parsed.category, rarity: parsed.rarity });
+                                handled = false;
+                                break;
+                            }
                             
                             // Unique shortcut handling
                             if ((parsed.rarity || '').toLowerCase() === 'unique') {
@@ -1027,6 +1178,16 @@ class OverlayApp {
             }, 100);
         }
         this.isOverlayVisible = true;
+        if (!data) {
+            if (this.overlayLoaded && this.overlayWindow && !this.overlayWindow.isDestroyed()) {
+                try { this.overlayWindow.webContents.send('show-default-view'); } catch {}
+                this.pendingDefaultView = false;
+            } else {
+                this.pendingDefaultView = true;
+            }
+        } else {
+            this.pendingDefaultView = false;
+        }
         
         console.log('[Overlay] shown. wasVisible=', wasVisible, 'pinned=', wasPinned, 'focus=', shouldFocus);
     }
@@ -1050,7 +1211,26 @@ class OverlayApp {
         console.log('Overlay hidden');
     }
 
+    private isParsedItemAllowed(parsed: any): boolean {
+        if (!parsed) return false;
+        if (!this.featureService) return true;
+
+        const rarity = typeof parsed.rarity === 'string' ? parsed.rarity.toLowerCase() : '';
+        if (rarity === 'unique') {
+            return this.featureService.isCategoryEnabled('Uniques');
+        }
+
+        const category = typeof parsed.category === 'string' ? parsed.category : '';
+        if (!category || category === 'unknown') return false;
+
+        return this.featureService.isCategoryEnabled(category);
+    }
+
     private showUniqueItem(parsed: any, opts: { silent?: boolean; focus?: boolean } = {}) {
+        if (this.featureService && !this.featureService.isCategoryEnabled('Uniques')) {
+            console.log('[Unique] Feature disabled - skipping unique overlay.');
+            return;
+        }
         const silent = opts.silent ?? false;
         const focus = opts.focus ?? true;
         this.showOverlay({ item: parsed, isUnique: true }, { silent, focus });
@@ -1222,6 +1402,11 @@ class OverlayApp {
                 try {
                     const parsed = await this.itemParser.parse(trimmed);
                     if (parsed && parsed.category && parsed.category !== 'unknown') {
+                        if (!this.isParsedItemAllowed(parsed)) {
+                            console.log('[Clipboard] Feature disabled for parsed item.', { category: parsed.category, rarity: parsed.rarity });
+                            return;
+                        }
+
                         if ((parsed.rarity || '').toLowerCase() === 'unique') {
                             this.showUniqueItem(parsed, { silent: true, focus: false });
                         } else if (parsed.category === 'Gems') {
@@ -1245,6 +1430,21 @@ class OverlayApp {
 
     // IPC handlers
     private setupIPC() {
+        ipcMain.on('open-settings', () => {
+            this.openSettings().catch((err) => console.error('[IPC:open-settings] Error:', err));
+        });
+
+        ipcMain.on('open-releases-page', () => {
+            try {
+                const promise = shell.openExternal(OVERLAY_RELEASE_URL);
+                if (promise && typeof (promise as Promise<void>).catch === 'function') {
+                    (promise as Promise<void>).catch((err) => console.error('[IPC:open-releases-page] Error:', err));
+                }
+            } catch (err) {
+                console.error('[IPC:open-releases-page] Error:', err);
+            }
+        });
+
         // Register bulk data handlers
         registerDataIpc({
             modifierDatabase: this.modifierDatabase,
@@ -1277,13 +1477,21 @@ class OverlayApp {
 
         ipcMain.handle('check-updates', async () => {
             try {
-                if (autoUpdater) {
-                    await autoUpdater.checkForUpdatesAndNotify();
-                    return { ok: true };
+                if (this.overlayUpdateCache) {
+                    return this.overlayUpdateCache.result;
                 }
-                return { ok: false, error: 'updater_unavailable' };
-            } catch (e: any) {
-                return { ok: false, error: e?.message || 'update_failed' };
+                const currentVersion = getOverlayAppVersion();
+                const result = await checkOverlayUpdateStatus(currentVersion);
+                this.overlayUpdateCache = { timestamp: Date.now(), result };
+                return result;
+            } catch (err: any) {
+                return {
+                    available: false,
+                    version: null,
+                    message: err?.message || 'Failed to check for updates.',
+                    error: true,
+                    url: OVERLAY_RELEASE_URL
+                } as OverlayUpdateCheckResult;
             }
         });
         // Remaining handlers below...

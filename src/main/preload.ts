@@ -5,6 +5,8 @@ import { contextBridge, ipcRenderer } from 'electron';
 contextBridge.exposeInMainWorld('electronAPI', {
     // Overlay controls
     hideOverlay: () => ipcRenderer.send('hide-overlay'),
+    openSettings: () => ipcRenderer.send('open-settings'),
+    openReleasesPage: () => ipcRenderer.send('open-releases-page'),
     onItemData: (callback: (data: any) => void) => {
         ipcRenderer.on('item-data', (event, data) => callback(data));
     },

@@ -301,9 +301,18 @@
                 <span>Merchant History</span>
             </button>
         </div>
-        <div id="resizeHandle" title="Resize height" style="height: 12px; cursor: ns-resize; display: flex; align-items: center; justify-content: center; gap:2px; padding: 0 6px; -webkit-app-region: no-drag;">
-            <span style="display:inline-block; width: 14px; height: 2px; background: var(--text-muted);"></span>
-            <span style="display:inline-block; width: 14px; height: 2px; background: var(--text-muted);"></span>
+        <div class="footer-actions" style="display:flex; align-items:center; gap:6px; -webkit-app-region: no-drag;">
+            <button id="updateBadge" class="pin-btn" style="display:none; background: var(--accent-orange); border: 1px solid var(--accent-orange); color: #fff; border-radius: 4px; padding: 3px 8px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2px;">
+                New Update
+            </button>
+            <button id="settingsBtn" class="pin-btn" style="width: 32px; height: 26px; display:flex; align-items:center; justify-content:center; padding: 0 6px;" title="Open settings" aria-label="Open settings">
+                <span class="menu-icon" aria-hidden="true" style="display:flex; align-items:center; justify-content:center;">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06A1.65 1.65 0 0015 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0l-.06-.06A1.65 1.65 0 008.6 19.4a1.65 1.65 0 00-1.82-.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 008.6 9a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0l.06.06A1.65 1.65 0 0015 9a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 13z"></path>
+                    </svg>
+                </span>
+            </button>
         </div>
     </div>
 
@@ -331,6 +340,104 @@
     const closeBtn = document.getElementById('closeBtn');
     const headerTitleEl = document.getElementById('headerTitle');
     const headerSubtitleEl = document.getElementById('headerSubtitle');
+    const settingsBtn = document.getElementById('settingsBtn');
+    const updateBadgeBtn = document.getElementById('updateBadge');
+
+    const LAST_CONTEXT_KEY = 'xilehud:last-view-context';
+    let firstSelectableCategory = null;
+
+    const UPDATE_RELEASE_URL = 'https://github.com/XileHUD/poe_overlay/releases/latest';
+    let startupUpdateCheckTriggered = false;
+
+    function showUpdateBadge(info) {
+        if (!updateBadgeBtn) return;
+        updateBadgeBtn.style.display = 'inline-flex';
+        updateBadgeBtn.dataset.version = info?.version ? String(info.version) : '';
+        const normalized = info?.version ? String(info.version).replace(/^v/i, '') : '';
+        const message = info?.message || 'A new update is available. Click to open the latest release.';
+        updateBadgeBtn.title = normalized ? `${message}\n(v${normalized})` : message;
+    }
+
+    function hideUpdateBadge() {
+        if (!updateBadgeBtn) return;
+        updateBadgeBtn.style.display = 'none';
+        delete updateBadgeBtn.dataset.version;
+        updateBadgeBtn.title = '';
+    }
+
+    async function triggerStartupUpdateCheck() {
+        if (startupUpdateCheckTriggered) return;
+        startupUpdateCheckTriggered = true;
+        if (!window.electronAPI || typeof window.electronAPI.checkUpdates !== 'function') return;
+        try {
+            const result = await window.electronAPI.checkUpdates();
+            if (result && typeof result === 'object' && result.available) {
+                showUpdateBadge(result);
+            } else {
+                hideUpdateBadge();
+            }
+        } catch {
+            hideUpdateBadge();
+        }
+    }
+
+    function loadLastContext() {
+        try {
+            const stored = window.localStorage?.getItem(LAST_CONTEXT_KEY);
+            if (!stored) return { view: null, action: null, category: null };
+            const parsed = JSON.parse(stored);
+            return {
+                view: parsed?.view || null,
+                action: parsed?.action || null,
+                category: parsed?.category || null
+            };
+        } catch {
+            return { view: null, action: null, category: null };
+        }
+    }
+
+    let lastContext = loadLastContext();
+
+    function saveLastContext() {
+        try {
+            window.localStorage?.setItem(LAST_CONTEXT_KEY, JSON.stringify(lastContext));
+        } catch {}
+    }
+
+    function updateLastContext(update) {
+        if (!update) return;
+        lastContext = { ...lastContext, ...update };
+        saveLastContext();
+    }
+
+    function markModifiersCategory(cat) {
+        if (!cat) return;
+        updateLastContext({ view: 'modifiers', category: cat, action: `modifiers:${cat}` });
+    }
+
+    function markCraftingAction(actionKey) {
+        if (!actionKey) return;
+        updateLastContext({ view: 'crafting', action: `crafting:${actionKey}` });
+    }
+
+    function markCharacterAction(actionKey) {
+        if (!actionKey) return;
+        updateLastContext({ view: 'character', action: `character:${actionKey}` });
+    }
+
+    function markItemsAction(actionKey) {
+        if (!actionKey) return;
+        updateLastContext({ view: 'items', action: `items:${actionKey}` });
+    }
+
+    function markToolsAction(actionKey) {
+        if (!actionKey) return;
+        updateLastContext({ view: 'tools', action: `tools:${actionKey}` });
+    }
+
+    function markHistoryAction() {
+        updateLastContext({ view: 'history', action: 'history:merchant' });
+    }
 
     // Track which high-level views are allowed by the current feature configuration
     const featureAvailability = {
@@ -518,7 +625,212 @@
             try { window.OverlayHistory?.onEnterView?.(); } catch {}
         }
         
+        updateLastContext({ view });
         console.log('setView:', view, 'body classes:', document.body.className);
+    }
+
+    function recordHeaderAction(title) {
+        if (!title) return;
+        const key = String(title).toLowerCase();
+    if (key === 'liquid emotions') { markCraftingAction('liquid-emotions'); return; }
+    if (key === 'annoints') { markCraftingAction('annoints'); return; }
+    if (key === 'essences') { markCraftingAction('essences'); return; }
+    if (key === 'omens') { markCraftingAction('omens'); return; }
+    if (key === 'currency') { markCraftingAction('currency'); return; }
+    if (key === 'catalysts') { markCraftingAction('catalysts'); return; }
+    if (key === 'socketables') { markCraftingAction('socketables'); return; }
+    if (key === 'gems') { markCharacterAction('gems'); return; }
+    if (key === 'quest passives') { markCharacterAction('quest-passives'); return; }
+    if (key === 'keystones') { markCharacterAction('keystones'); return; }
+    if (key === 'ascendancy passives') { markCharacterAction('asc-passives'); return; }
+    if (key === 'atlas nodes') { markCharacterAction('atlas-nodes'); return; }
+    if (key === 'glossar') { markCharacterAction('glossar'); return; }
+    if (key === 'uniques') { markItemsAction('uniques'); return; }
+    if (key === 'bases') { markItemsAction('bases'); return; }
+    if (key === 'merchant history') { markHistoryAction(); return; }
+    if (key === 'regex') { markToolsAction('regex'); return; }
+    }
+
+    async function runStoredAction(action) {
+        if (!action) return false;
+        try {
+            if (action.startsWith('modifiers:')) {
+                if (!featureAvailability.modifiers) return false;
+                const category = action.slice('modifiers:'.length);
+                if (!category) return false;
+                await populateCategoryDropdown();
+                const select = document.getElementById('categorySelect');
+                if (!select) return false;
+                const option = Array.from(select.options || []).find(opt => opt.value === category);
+                if (!option) return false;
+                select.value = category;
+                lastSwitchedCategory = '';
+                lastSwitchTime = 0;
+                switchCategory();
+                return true;
+            }
+
+            if (action.startsWith('crafting:')) {
+                if (!featureAvailability.crafting) return false;
+                const key = action.slice('crafting:'.length);
+                const menuItem = document.querySelector(`#craftingMenu .crafting-menu-item[data-action="${key}"]`);
+                if (menuItem && window.getComputedStyle(menuItem).display === 'none') return false;
+                setActiveTab('craftingTab');
+                closeAllMenus();
+                setView('crafting');
+                if (key === 'liquid-emotions') { await showLiquidEmotions(); setHeader('Liquid Emotions'); recordHeaderAction('Liquid Emotions'); return true; }
+                if (key === 'annoints') { await showAnnoints(); setHeader('Annoints'); recordHeaderAction('Annoints'); return true; }
+                if (key === 'essences') { await showEssences(); setHeader('Essences'); recordHeaderAction('Essences'); return true; }
+                if (key === 'omens') { await showOmens(); setHeader('Omens'); recordHeaderAction('Omens'); return true; }
+                if (key === 'currency') { await showCurrency(); setHeader('Currency'); recordHeaderAction('Currency'); return true; }
+                if (key === 'catalysts') { await showCatalysts(); setHeader('Catalysts'); recordHeaderAction('Catalysts'); return true; }
+                if (key === 'socketables') { await showSocketables(); setHeader('Socketables'); recordHeaderAction('Socketables'); return true; }
+                return false;
+            }
+
+            if (action.startsWith('character:')) {
+                if (!featureAvailability.crafting) return false;
+                const key = action.slice('character:'.length);
+                const menuItem = document.querySelector(`#characterMenu .character-menu-item[data-action="${key}"]`);
+                if (menuItem && window.getComputedStyle(menuItem).display === 'none') return false;
+                if (key === 'gems') {
+                    setActiveTab('characterTab');
+                    setView('crafting');
+                    await showGems();
+                    setHeader('Gems');
+                    recordHeaderAction('Gems');
+                    return true;
+                }
+                if (key === 'keystones') {
+                    setActiveTab('characterTab');
+                    setView('crafting');
+                    await showKeystones();
+                    setHeader('Keystones');
+                    recordHeaderAction('Keystones');
+                    return true;
+                }
+                if (key === 'asc-passives') {
+                    setActiveTab('characterTab');
+                    setView('crafting');
+                    await showAscendancyPassives();
+                    setHeader('Ascendancy Passives');
+                    recordHeaderAction('Ascendancy Passives');
+                    return true;
+                }
+                if (key === 'atlas-nodes') {
+                    setActiveTab('characterTab');
+                    setView('crafting');
+                    await showAtlasNodes();
+                    setHeader('Atlas Nodes');
+                    recordHeaderAction('Atlas Nodes');
+                    return true;
+                }
+                if (key === 'quest-passives') {
+                    setActiveTab('characterTab');
+                    setView('crafting');
+                    if (window.OverlayQuestPassives?.show) { try { await window.OverlayQuestPassives.show(); } catch {} }
+                    setHeader('Quest Passives');
+                    recordHeaderAction('Quest Passives');
+                    return true;
+                }
+                if (key === 'glossar') {
+                    setActiveTab('characterTab');
+                    setView('crafting');
+                    try { await showGlossar(); } catch {}
+                    setHeader('Glossar');
+                    recordHeaderAction('Glossar');
+                    return true;
+                }
+                return false;
+            }
+
+            if (action.startsWith('items:')) {
+                if (!featureAvailability.crafting) return false;
+                const key = action.slice('items:'.length);
+                const menuItem = document.querySelector(`#itemsMenu .items-menu-item[data-action="${key}"]`);
+                if (menuItem && window.getComputedStyle(menuItem).display === 'none') return false;
+                setActiveTab('itemsTab');
+                setView('crafting');
+                if (key === 'uniques') { await showUniques(); setHeader('Uniques'); recordHeaderAction('Uniques'); return true; }
+                if (key === 'bases') { await showBases(); setHeader('Bases'); recordHeaderAction('Bases'); return true; }
+                return false;
+            }
+
+            if (action === 'history:merchant') {
+                if (!featureAvailability.history) return false;
+                setActiveTab('tabHistory');
+                setView('history');
+                setHeader('Merchant History');
+                recordHeaderAction('Merchant History');
+                try { window.OverlayHistory?.onEnterView?.(); } catch {}
+                return true;
+            }
+
+            if (action === 'tools:regex') {
+                const menuItem = document.querySelector('#toolsMenu .tools-menu-item[data-action="regex"]');
+                if (menuItem && window.getComputedStyle(menuItem).display === 'none') return false;
+                setActiveTab('toolsTab');
+                closeAllMenus();
+                setView('crafting');
+                if (window.OverlayRegex?.show) { try { await window.OverlayRegex.show(); } catch {} }
+                setHeader('Regex');
+                                            recordHeaderAction('Socketables'); // Record action for Socketables
+                return true;
+            }
+        } catch (err) {
+            console.warn('[runStoredAction] Failed to restore action', action, err);
+        }
+        return false;
+    }
+
+    async function openFirstAvailableAction() {
+                                        recordHeaderAction('Gems'); // Record action for Gems
+            await populateCategoryDropdown();
+            if (!firstSelectableCategory) {
+                const select = document.getElementById('categorySelect');
+                if (select) {
+                    const option = Array.from(select.options || []).find(opt => !opt.disabled && opt.value);
+                    firstSelectableCategory = option ? option.value : null;
+                                    recordHeaderAction('Merchant History'); // Record action for Merchant History
+            }
+            if (firstSelectableCategory) {
+                return await runStoredAction(`modifiers:${firstSelectableCategory}`);
+            }
+        }
+
+        if (featureAvailability.crafting) {
+            const craftingActions = ['liquid-emotions', 'annoints', 'essences', 'omens', 'currency', 'catalysts', 'socketables'];
+            for (const key of craftingActions) {
+                if (await runStoredAction(`crafting:${key}`)) return true;
+            }
+            const characterActions = ['gems', 'keystones', 'asc-passives', 'atlas-nodes', 'quest-passives', 'glossar'];
+            for (const key of characterActions) {
+                if (await runStoredAction(`character:${key}`)) return true;
+            }
+            const itemActions = ['uniques', 'bases'];
+            for (const key of itemActions) {
+                if (await runStoredAction(`items:${key}`)) return true;
+            }
+            if (await runStoredAction('tools:regex')) return true;
+        }
+
+        if (featureAvailability.history) {
+            if (await runStoredAction('history:merchant')) return true;
+        }
+
+        // Fallback: show modifiers view even if no category (empty state)
+        if (featureAvailability.modifiers) {
+            setView('modifiers');
+            setHeader('Modifier');
+            return true;
+        }
+
+        return false;
+    }
+
+    async function openLastOrDefault() {
+        if (await runStoredAction(lastContext?.action)) return;
+        await openFirstAvailableAction();
     }
 
     // debug logger removed
@@ -684,10 +996,13 @@
                     addGroup('— Waystones —', buckets.waystones);
                     addGroup('— Relics —', buckets.relics, c=>c.replace(/_/g,' '));
                     addGroup('— Flasks & Charms —', buckets.flasks, c=>c.replace(/_/g,' '));
+                    addGroup('— Jewels —', buckets.jewels, c=>c.replace(/_/g,' '));
                     addGroup('— Tablets —', buckets.tablets, c=>c.replace(/_/g,' '));
                 }
                 // initial build with no filter
                 buildOptions('');
+                const realOptions = Array.from(categorySelect.options || []).filter(opt => !opt.disabled && opt.value);
+                firstSelectableCategory = realOptions.length ? realOptions[0].value : null;
             } catch {}
         }
         // Wire initial controls on DOM ready
@@ -812,6 +1127,7 @@
                         const itemsMenu = document.getElementById('itemsMenu');
                         const subs = enabledFeatures.items.subcategories || {};
                         let anySubEnabled = false;
+                        const enabledItemActions = [];
                         
                         if (itemsMenu) {
                             const items = itemsMenu.querySelectorAll('.items-menu-item');
@@ -825,6 +1141,7 @@
                                 if (shouldShow) {
                                     anySubEnabled = true;
                                     item.style.display = '';
+                                    if (action) enabledItemActions.push(action);
                                 } else {
                                     item.style.display = 'none';
                                 }
@@ -835,6 +1152,19 @@
                         if (!anySubEnabled) {
                             const itemsTab = document.getElementById('itemsTab');
                             if (itemsTab) itemsTab.remove();
+                        } else {
+                            const itemsTab = document.getElementById('itemsTab');
+                            if (itemsTab) {
+                                if (enabledItemActions.length === 1) {
+                                    itemsTab.setAttribute('data-single-action', enabledItemActions[0]);
+                                    const labelSpan = itemsTab.querySelector('span:last-child');
+                                    if (labelSpan) labelSpan.textContent = 'Items';
+                                } else {
+                                    itemsTab.removeAttribute('data-single-action');
+                                    const labelSpan = itemsTab.querySelector('span:last-child');
+                                    if (labelSpan) labelSpan.textContent = 'Items ▾';
+                                }
+                            }
                         }
                     }
                     if (document.getElementById('itemsTab')) craftingViewEnabled = true;
@@ -930,9 +1260,24 @@
             function updatePinUI(pinned){ if (!pinBtn) return; pinBtn.classList.toggle('active', !!pinned); pinBtn.textContent = pinned ? 'Pinned' : 'Pin'; }
             if (pinBtn) pinBtn.addEventListener('click', ()=>{ try { const isPinned = pinBtn.classList.contains('active'); window.electronAPI?.setPinned?.(!isPinned); updatePinUI(!isPinned); } catch {} });
             try { window.electronAPI?.onPinnedChanged?.((p)=> updatePinUI(p)); } catch {}
+            if (settingsBtn) settingsBtn.addEventListener('click', ()=>{
+                try { window.electronAPI?.openSettings?.(); } catch {}
+            });
+            if (updateBadgeBtn) updateBadgeBtn.addEventListener('click', ()=>{
+                try {
+                    if (window.electronAPI?.openReleasesPage) {
+                        window.electronAPI.openReleasesPage();
+                    } else {
+                        window.open(UPDATE_RELEASE_URL, '_blank', 'noopener');
+                    }
+                } catch {
+                    try { window.open(UPDATE_RELEASE_URL, '_blank', 'noopener'); } catch {}
+                }
+            });
             
             // Notify main process that overlay is ready (this will trigger pinned state sync)
             try { window.electronAPI?.overlayReady?.(); } catch {}
+            setTimeout(()=>{ try { triggerStartupUpdateCheck(); } catch {} }, 1200);
             
             // Font size management - robust scaling for all inline px fonts
             (async function() {
@@ -1161,6 +1506,7 @@
                         const prepareCrafting = (headerTitle) => {
                             setView('crafting');
                             setHeader(headerTitle || '');
+                            recordHeaderAction(headerTitle || '');
                         };
                         const retryShow = (readyFn, runFn, attempts = 3) => {
                             if (readyFn()) { try { runFn(); } catch {} return; }
@@ -1284,6 +1630,8 @@
                                     try { 
                                         await showGems(); 
                                         setActiveTab('characterTab');
+                                        setHeader('Gems');
+                                        recordHeaderAction('Gems');
                                     } catch {} 
                                 }
                             );
@@ -1310,6 +1658,7 @@
                                 // Set dropdown value WITHOUT triggering change event (data already has modifiers)
                                 categorySelect.value = slug;
                                 console.log('Set category dropdown to:', slug, '(no reload, using provided modifiers)');
+                                markModifiersCategory(slug);
                             } else {
                                 console.log('Category option not found in dropdown for:', slug);
                             }
@@ -1364,29 +1713,36 @@
                         if (action === 'liquid-emotions') {
                             await showLiquidEmotions();
                             setHeader('Liquid Emotions');
+                            recordHeaderAction('Liquid Emotions');
                             
                         } else if (action === 'annoints') {
                             await showAnnoints();
                             setHeader('Annoints');
+                            recordHeaderAction('Annoints');
                             
                         } else if (action === 'essences') {
                             await showEssences();
                             setHeader('Essences');
+                            recordHeaderAction('Essences');
                             
                         } else if (action === 'omens') {
                             await showOmens();
                             setHeader('Omens');
+                            recordHeaderAction('Omens');
                         } else if (action === 'currency') {
                             await showCurrency();
                             setHeader('Currency');
+                            recordHeaderAction('Currency');
                             
                         } else if (action === 'catalysts') {
                             await showCatalysts();
                             setHeader('Catalysts');
+                            recordHeaderAction('Catalysts');
                             
                         } else if (action === 'socketables') {
                             await showSocketables();
                             setHeader('Socketables');
+                            recordHeaderAction('Socketables');
                             
                         }
                     });
@@ -1478,6 +1834,7 @@
                         }
                     } catch {}
                     setHeader('Merchant History');
+                    recordHeaderAction('Merchant History');
                     
                 });
             }
@@ -1698,24 +2055,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (action === 'quest-passives') {
                     if (window.OverlayQuestPassives?.show) { try { await window.OverlayQuestPassives.show(); } catch {} }
                     setHeader('Quest Passives');
+                    recordHeaderAction('Quest Passives');
                     
                 } else if (action === 'keystones') {
                     await showKeystones();
                     setHeader('Keystones');
+                    recordHeaderAction('Keystones');
                     
                 } else if (action === 'asc-passives') {
                     await showAscendancyPassives();
                     setHeader('Ascendancy Passives');
+                    recordHeaderAction('Ascendancy Passives');
                     
                 } else if (action === 'atlas-nodes') {
                     await showAtlasNodes();
                     setHeader('Atlas Nodes');
+                    recordHeaderAction('Atlas Nodes');
                 } else if (action === 'gems') {
                     await showGems();
                     setHeader('Gems');
+                    recordHeaderAction('Gems');
                 } else if (action === 'glossar') {
                     try { await showGlossar(); } catch {}
                     setHeader('Glossar');
+                    recordHeaderAction('Glossar');
                 }
             });
         });
@@ -1735,6 +2098,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Ensure crafting view in Uniques mode
                         setView('crafting');
                         setHeader('Uniques');
+                        recordHeaderAction('Uniques');
                         // Reset scroll containers to top to avoid random offset
                         // Removed forced scroll reset to keep current position
                         // Attempt to render / show uniques panel if not yet loaded
@@ -1754,9 +2118,38 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!window.__xilehudUniqueBound) setTimeout(attachUniqueHandler, 300);
     };
     attachUniqueHandler();
+    async function runItemsAction(action) {
+        if (!action) return;
+        setActiveTab('itemsTab');
+        const tabHistEl = document.getElementById('tabHistory');
+        if (tabHistEl) {
+            tabHistEl.classList.remove('active');
+            tabHistEl.setAttribute('style','background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
+        }
+        closeAllMenus();
+        if (itemsMenu) itemsMenu.style.display = 'none';
+        setView('crafting');
+        if (action === 'uniques') {
+            await showUniques();
+            setHeader('Uniques');
+            recordHeaderAction('Uniques');
+            markItemsAction('uniques');
+        } else if (action === 'bases') {
+            await showBases();
+            setHeader('Bases');
+            recordHeaderAction('Bases');
+            markItemsAction('bases');
+        }
+    }
+
         if (itemsTab) {
-        itemsTab.addEventListener('click', (e) => {
+        itemsTab.addEventListener('click', async (e) => {
             e.stopPropagation();
+                const singleAction = itemsTab.getAttribute('data-single-action');
+                if (singleAction) {
+                    await runItemsAction(singleAction);
+                    return;
+                }
                 setActiveTab('itemsTab');
                 const vis = itemsMenu && itemsMenu.style.display === 'block';
                 closeAllMenus();
@@ -1766,24 +2159,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (itemsMenu) itemsMenu.addEventListener('click', (e) => { e.stopPropagation(); });
         if (itemsMenu) itemsMenu.querySelectorAll('.items-menu-item').forEach(item => {
             item.addEventListener('click', async () => {
-                setActiveTab('itemsTab');
-                const tabHistEl = document.getElementById('tabHistory');
-                if (tabHistEl) {
-                    tabHistEl.classList.remove('active');
-                    tabHistEl.setAttribute('style','background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
-                }
-                closeAllMenus();
                 const action = item.getAttribute('data-action');
-                if (itemsMenu) itemsMenu.style.display = 'none';
-                // Items render into crafting panel for consistency
-                setView('crafting');
-                if (action === 'uniques') {
-                    await showUniques();
-                    setHeader('Uniques');
-                } else if (action === 'bases') {
-                    await showBases();
-                    setHeader('Bases');
-                }
+                await runItemsAction(action);
             });
         });
     }
@@ -1808,6 +2185,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     setView('crafting');
                     if (window.OverlayRegex?.show) { try { await window.OverlayRegex.show(); } catch {} }
                     setHeader('Regex');
+                    recordHeaderAction('Regex');
                 }
             });
         });
@@ -1883,6 +2261,7 @@ function switchCategory(){
     window.originalData=data;
     renderCategoryDetail(data);
     try { setHeader('Modifier', cat.replace(/_/g,' ')); } catch {}
+    markModifiersCategory(cat);
     switchCategoryLocked = false; // Unlock after successful load
     }).catch(err=>{
         console.error('switchCategory error', err);
@@ -2466,11 +2845,15 @@ function renderGems(groups){
                                         setView('crafting');
                                         try { await showSocketables(); } catch {}
                                         setHeader('Socketables');
+                                        recordHeaderAction('Socketables');
                                         return;
                                     }
                                     const select = document.getElementById('categorySelect');
                                     if (select) { select.value = cat; select.dispatchEvent(new Event('change')); }
                                 } catch {}
+                            });
+                            window.electronAPI.onShowDefaultView?.(() => {
+                                openLastOrDefault();
                             });
                             // Handle history popout refresh requests
                             window.electronAPI.onRequestHistoryPopoutRefresh?.(async ()=>{

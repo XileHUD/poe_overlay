@@ -4,6 +4,15 @@ declare global {
   interface Window {
     electronAPI?: {
       hideOverlay: () => void;
+      openSettings: () => void;
+      openReleasesPage: () => void;
+      checkUpdates: () => Promise<{
+        available: boolean;
+        version?: string | null;
+        message?: string;
+        url?: string;
+        error?: boolean;
+      }>;
       onItemData: (callback: (data: any) => void) => void;
       getModifierData: (category: string) => Promise<any>;
       searchModifiers: (query: string, category?: string) => Promise<any>;
