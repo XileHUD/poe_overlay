@@ -78,6 +78,7 @@ declare global {
       render: (groups: any) => void;
       reload: () => Promise<void>;
     };
+  openModifiersCategory?: (category: string | string[], options?: { bypassDebounce?: boolean }) => void;
     OverlayGlossar?: {
       show: () => Promise<void>;
       render: (list: any[]) => void;

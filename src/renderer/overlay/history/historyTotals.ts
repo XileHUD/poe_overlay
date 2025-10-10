@@ -3,8 +3,8 @@
  * Manages and renders currency totals in the history header
  */
 
-import { normalizeCurrency } from "../utils";
-import { escapeHtml } from "../utils";
+import { normalizeCurrency, escapeHtml } from "../utils";
+import type { HistoryEntryRaw } from "./historyData";
 
 export interface HistoryStore {
   entries: any[];
@@ -18,16 +18,25 @@ export type Price = { amount?: number; currency?: string } | undefined;
 /**
  * Recalculate totals from all entries in the store
  */
-export function recomputeTotalsFromEntries(store: HistoryStore): void {
+export function totalsFromEntries(entries?: HistoryEntryRaw[]): Record<string, number> {
   const totals: Record<string, number> = {};
-  const entries = store?.entries || [];
-  for (const r of entries as any[]) {
-    const amt = Number((r?.price?.amount ?? r?.amount ?? 0) || 0);
-    const cur = normalizeCurrency(r?.price?.currency ?? r?.currency ?? "");
-    if (!cur || !isFinite(amt)) continue;
+  if (!Array.isArray(entries)) return totals;
+
+  for (const entry of entries) {
+    const priceLike: Price | undefined = (entry as any)?.price ?? undefined;
+    const rawAmount = priceLike?.amount ?? (entry as any)?.amount ?? 0;
+    const rawCurrency = priceLike?.currency ?? (entry as any)?.currency ?? "";
+    const amt = Number(rawAmount || 0);
+    const cur = normalizeCurrency(rawCurrency || "");
+    if (!cur || !isFinite(amt) || amt === 0) continue;
     totals[cur] = (totals[cur] || 0) + amt;
   }
-  store.totals = totals;
+
+  return totals;
+}
+
+export function recomputeTotalsFromEntries(store: HistoryStore): void {
+  store.totals = totalsFromEntries(store?.entries || []);
 }
 
 /**
@@ -47,14 +56,16 @@ export function addToTotals(store: HistoryStore, price?: Price): void {
 export function renderHistoryTotals(
   store: HistoryStore,
   isVisible: () => boolean,
-  updateChart: (totals: Record<string, number>) => void
+  updateChart: (totals: Record<string, number>) => void,
+  options?: { entries?: HistoryEntryRaw[]; totalCount?: number }
 ): void {
   if (!isVisible()) return;
   
   const wrap = document.getElementById("historyTotals");
   if (!wrap) return;
   
-  const rawTotals = store?.totals || {};
+  const sourceEntries = options?.entries;
+  const rawTotals = sourceEntries ? totalsFromEntries(sourceEntries) : (store?.totals || {});
   const totals: Record<string, number> = {};
   
   // Normalize currency keys
@@ -82,7 +93,7 @@ export function renderHistoryTotals(
   // Update trade count
   const cntEl = document.getElementById("historyTradeCount");
   if (cntEl) {
-    const totalTrades = (store?.entries || []).length;
+    const totalTrades = options?.totalCount ?? (sourceEntries ? sourceEntries.length : (store?.entries || []).length);
     (cntEl as HTMLElement).textContent = totalTrades ? `${totalTrades} trades` : "";
   }
   

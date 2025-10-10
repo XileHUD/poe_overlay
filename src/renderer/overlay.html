@@ -33,7 +33,6 @@
         </div>
         <!-- Modifier info badges (shown on modifiers tab) -->
         <div id="modifierHeaderInfo" style="display:none; margin-left:8px; -webkit-app-region: no-drag;"></div>
-        <div id="whittlingInfo" style="display:none; margin-right:8px; -webkit-app-region: no-drag;"></div>
         <!-- Merchant header (shown only on History tab) -->
         <div id="historyHeaderMain" style="flex:1 1 auto; min-width:0; align-items:center; gap:8px; justify-content:space-between; display:flex; -webkit-app-region: drag;">
             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
@@ -48,6 +47,7 @@
             </div>
         </div>
         <div class="header-actions" style="display:flex; align-items:center; gap:6px; margin-left:auto; -webkit-app-region: no-drag; user-select:none;">
+            <div id="whittlingInfo" style="display:none; margin-right:6px; -webkit-app-region: no-drag;"></div>
             <button id="pinBtn" class="pin-btn" title="Pin overlay on top">Pin</button>
             <button id="closeBtn" class="close-btn" title="Close overlay">×</button>
         </div>
@@ -274,7 +274,7 @@
             </div>
             <div class="tab" id="itemsTab" style="position:relative; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px; cursor:pointer; display:inline-flex; align-items:center; gap:4px;">
                 <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
-                <span>Items ▾</span>
+                <span class="tab-label">Items ▾</span>
                 <div id="itemsMenu" style="display:none; position:absolute; left:0; bottom:100%; transform: translateY(-4px); background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; padding:4px; z-index:300; min-width:140px; box-shadow:0 4px 14px rgba(0,0,0,0.5);">
                     <div class="items-menu-item" data-action="uniques" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l4 4-4 4-4-4 4-4z"/><path d="M12 14l4 4-4 4-4-4 4-4z"/><path d="M2 12l4-4 4 4-4 4-4-4z"/><path d="M14 12l4-4 4 4-4 4-4-4z"/></svg></span>
@@ -582,6 +582,11 @@
             if (content) content.style.display = '';
             setControlPanelVisible(true);
             document.body.classList.add('view-modifiers');
+            // Show whittling badge on modifiers view (if data available, will be set by renderFilteredContent)
+            const whittlingInfo = document.getElementById('whittlingInfo');
+            if (whittlingInfo && whittlingInfo.innerHTML) {
+                whittlingInfo.style.display = 'inline-flex';
+            }
             try { window.OverlayHistory?.onLeaveView?.(); } catch {}
         } else if (view === 'crafting'){
             if (crafting) { 
@@ -590,12 +595,18 @@
             }
             setControlPanelVisible(false);
             document.body.classList.add('crafting-mode');
+            // Hide whittling badge on crafting views
+            const whittlingInfo = document.getElementById('whittlingInfo');
+            if (whittlingInfo) whittlingInfo.style.display = 'none';
             try { window.OverlayHistory?.onLeaveView?.(); } catch {}
         } else if (view === 'history'){
             // Show the container with inline style, but let CSS handle headers
             if (history) history.style.display = 'flex';
             setControlPanelVisible(false);
             document.body.classList.add('view-history');
+            // Hide whittling badge on history view
+            const whittlingInfo = document.getElementById('whittlingInfo');
+            if (whittlingInfo) whittlingInfo.style.display = 'none';
             
             // DEBUG: Check what's actually happening
             setTimeout(() => {
@@ -1157,11 +1168,11 @@
                             if (itemsTab) {
                                 if (enabledItemActions.length === 1) {
                                     itemsTab.setAttribute('data-single-action', enabledItemActions[0]);
-                                    const labelSpan = itemsTab.querySelector('span:last-child');
+                                    const labelSpan = itemsTab.querySelector('.tab-label');
                                     if (labelSpan) labelSpan.textContent = 'Items';
                                 } else {
                                     itemsTab.removeAttribute('data-single-action');
-                                    const labelSpan = itemsTab.querySelector('span:last-child');
+                                    const labelSpan = itemsTab.querySelector('.tab-label');
                                     if (labelSpan) labelSpan.textContent = 'Items ▾';
                                 }
                             }
@@ -1678,7 +1689,7 @@
                     closeAllMenus();
                     setView('modifiers'); // Use single source of truth
                     document.getElementById('modifierHeaderInfo')?.setAttribute('style','');
-                    document.getElementById('whittlingInfo')?.setAttribute('style','margin-right: 8px; display:none; -webkit-app-region: no-drag;');
+                    document.getElementById('whittlingInfo')?.setAttribute('style','margin-left: auto; display:none; -webkit-app-region: no-drag;');
                     setControlPanelVisible(true);
                     document.body.classList.remove('crafting-mode');
                     setHeader('Modifier');
@@ -2270,6 +2281,39 @@ function switchCategory(){
         switchCategoryLocked = false; // Unlock after error
     });
 }
+
+function openModifiersCategory(cat, options){
+    const select = document.getElementById('categorySelect');
+    if (!select) return;
+    const rawCandidates = Array.isArray(cat) ? cat : [cat];
+    const candidates = rawCandidates.map((entry) => String(entry || '').trim()).filter(Boolean);
+    if (!candidates.length) return;
+    const optionList = Array.from(select.options || []);
+    const optionMap = new Map(optionList.map(opt => [(opt.value || '').toUpperCase(), opt.value]));
+    let resolved = '';
+    for (const candidate of candidates) {
+        const key = candidate.toUpperCase();
+        if (optionMap.has(key)) {
+            resolved = optionMap.get(key) || candidate;
+            break;
+        }
+    }
+    if (!resolved) {
+        resolved = candidates[0];
+        console.warn('[openModifiersCategory] No direct match for candidates, falling back to first entry:', candidates);
+    }
+    select.value = resolved;
+    if (options && options.bypassDebounce) {
+        switchCategoryLocked = false;
+        lastSwitchedCategory = '';
+        lastSwitchTime = 0;
+    }
+    try { markModifiersCategory(resolved); } catch {}
+    try { setView('modifiers'); } catch {}
+    try { switchCategory(); } catch (err) { console.warn('[openModifiersCategory] switchCategory failed:', err); }
+}
+
+window.openModifiersCategory = openModifiersCategory;
 
 // ===== Essences Panel delegated to module =====
 // (Removed duplicate extended crafting menu handler; actions are wired above.)

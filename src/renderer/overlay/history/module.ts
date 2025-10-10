@@ -98,11 +98,14 @@ export function onEnterView(): void {
       renderTotals: () => {
         renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
           try { updateHistoryChartFromTotals(totals); } catch {}
-        });
+        }, { entries: historyState.items });
       },
       renderFilters: () => {
         renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
           renderHistoryList((idx) => renderHistoryDetail(idx));
+          renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+            try { updateHistoryChartFromTotals(totals); } catch {}
+          }, { entries: historyState.items });
         });
       },
       renderList: () => {
@@ -142,11 +145,14 @@ export function onLeaveView(): void {
       renderTotals: () => {
         renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
           try { updateHistoryChartFromTotals(totals); } catch {}
-        });
+        }, { entries: historyState.items });
       },
       renderFilters: () => {
         renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
           renderHistoryList((idx) => renderHistoryDetail(idx));
+          renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+            try { updateHistoryChartFromTotals(totals); } catch {}
+          }, { entries: historyState.items });
         });
       },
       recomputeChartSeries: () => recomputeChartSeriesFromStore(),
@@ -200,8 +206,14 @@ export function onFilterChange(): void {
   historyState.selectedIndex = 0;
   renderHistoryList((idx) => renderHistoryDetail(idx));
   renderHistoryDetail(0);
+  renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+    try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+  }, { entries: historyState.items });
   renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
     renderHistoryList((idx) => renderHistoryDetail(idx));
+    renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+      try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+    }, { entries: historyState.items });
   });
 }
 
@@ -213,6 +225,9 @@ export function onSortChange(newSort: string): void {
   historyState.selectedIndex = 0;
   renderHistoryList((idx) => renderHistoryDetail(idx));
   renderHistoryDetail(0);
+  renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+    try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+  }, { entries: historyState.items });
 }
 
 // Chart currency change
@@ -272,7 +287,13 @@ export function applyAndRender(): void {
   renderHistoryDetail(0);
   renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
     renderHistoryList((idx) => renderHistoryDetail(idx));
+    renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+      try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+    }, { entries: historyState.items });
   });
+  renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+    try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+  }, { entries: historyState.items });
   
   console.log('[applyAndRender] Render complete');
 }
@@ -297,7 +318,13 @@ export function renderHistoryDetailWrapper(idx: number): void {
 export function renderHistoryActiveFiltersWrapper(): void {
   renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
     renderHistoryList((idx) => renderHistoryDetail(idx));
+    renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+      try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+    }, { entries: historyState.items });
   });
+  renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+    try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+  }, { entries: historyState.items });
 }
 
 /**
@@ -305,8 +332,8 @@ export function renderHistoryActiveFiltersWrapper(): void {
  */
 export function renderHistoryTotalsWrapper(): void {
   renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
-    try { updateHistoryChartFromTotals(totals); } catch {}
-  });
+    try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+  }, { entries: historyState.items });
 }
 
 /**

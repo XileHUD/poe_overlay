@@ -1,5 +1,6 @@
 // Bases panel module: encapsulates Bases UI logic with filters and sorting
 import { bindImageFallback } from "../utils/imageFallback";
+import { escapeHtml } from "../../utils";
 
 // Helper to get image path - returns the path that will be resolved by auto-resolver
 function getImagePath(item: any): string {
@@ -18,6 +19,7 @@ export type BaseItem = {
   implicitMods?: string[];
   properties?: { name: string; value: string }[];
   grants?: { name: string; level?: number }[];
+  category?: string;
   __tags?: string[];
   __sortVal?: number;
 };
@@ -28,6 +30,75 @@ const state = {
   panelEl: null as HTMLElement | null,
   groups: {} as BaseGroups,
 };
+
+const CATEGORY_SYNONYMS: Record<string, string[]> = {
+  Bucklers: ["Shields"],
+  Offhand: ["Shields"],
+  Shields: ["Shields"],
+};
+
+function normalizeCategorySlug(input?: string): string {
+  if (!input) return "";
+  const trimmed = input.trim();
+  if (!trimmed) return "";
+  return trimmed.replace(/[^A-Za-z0-9_]+/g, "_").replace(/_+/g, "_");
+}
+
+function deriveDefenseSuffix(base: BaseItem): string | null {
+  const props = Array.isArray(base?.properties) ? base.properties : [];
+  const hasArmour = props.some((p) => /Armour|Armor/i.test(p?.name || ""));
+  const hasEvasion = props.some((p) => /Evasion/i.test(p?.name || ""));
+  const hasES = props.some((p) => /Energy Shield/i.test(p?.name || ""));
+  const parts: string[] = [];
+  if (hasArmour) parts.push("str");
+  if (hasEvasion) parts.push("dex");
+  if (hasES) parts.push("int");
+  if (!parts.length) return null;
+  return parts.join("_");
+}
+
+function buildModifierSlugCandidates(base: BaseItem, parentKey: string): string[] {
+  const ordered: string[] = [];
+  const baseCat = normalizeCategorySlug(base?.category);
+  const parent = normalizeCategorySlug(parentKey === "All" ? base?.category : parentKey);
+  const synonyms = new Set<string>();
+  const collectSynonyms = (key?: string) => {
+    if (!key) return;
+    const opts = CATEGORY_SYNONYMS[key] || CATEGORY_SYNONYMS[normalizeCategorySlug(key)] || [];
+    opts.forEach((entry) => {
+      const normalized = normalizeCategorySlug(entry);
+      if (normalized) synonyms.add(normalized);
+    });
+  };
+  collectSynonyms(base?.category);
+  collectSynonyms(parentKey);
+  collectSynonyms(baseCat);
+  collectSynonyms(parent);
+
+  const seeds = [baseCat, parent, ...Array.from(synonyms)].filter(Boolean);
+  const defenceSuffix = deriveDefenseSuffix(base);
+  if (defenceSuffix) {
+    seeds.forEach((seed) => {
+      if (!seed) return;
+      ordered.push(`${seed}_${defenceSuffix}`);
+    });
+  }
+  seeds.forEach((seed) => {
+    if (!seed) return;
+    ordered.push(seed);
+  });
+  ordered.push("ALL");
+  const unique = new Set<string>();
+  const result: string[] = [];
+  ordered.forEach((slug) => {
+    const trimmed = slug.trim();
+    if (!trimmed) return;
+    if (unique.has(trimmed)) return;
+    unique.add(trimmed);
+    result.push(trimmed);
+  });
+  return result;
+}
 
 function ensurePanel(): HTMLElement {
   if (state.panelEl && document.body.contains(state.panelEl)) return state.panelEl;
@@ -260,22 +331,109 @@ export function render(groups: BaseGroups): void {
       });
       arr.sort((a,b)=>{ const av=(a as any).__sortVal, bv=(b as any).__sortVal; if(av===bv) return a.name.localeCompare(b.name); return bv-av; });
     }
-    arr.forEach(b=>{ const card=document.createElement('div'); card.style.width='100%'; card.style.background='var(--bg-card)'; card.style.border='1px solid var(--border-color)'; card.style.borderRadius='8px'; card.style.padding='8px'; card.style.display='flex'; card.style.gap='12px'; card.style.alignItems='flex-start';
+    arr.forEach(b=>{
+      const card=document.createElement('div');
+      card.style.width='100%';
+      card.style.background='var(--bg-card)';
+      card.style.border='1px solid var(--border-color)';
+      card.style.borderRadius='8px';
+      card.style.padding='8px';
+      card.style.display='flex';
+      card.style.gap='12px';
+      card.style.alignItems='flex-start';
       // Use imageLocal if available, fallback to image (legacy)
-  const imgSrc = getImagePath(b);
-  const imgBlock = imgSrc ? `<div style='flex:0 0 110px; display:flex; align-items:flex-start; justify-content:center;'><img class='base-img' src='' data-orig-src='${imgSrc}' alt='' style='width:110px; height:110px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 110px;'></div>`;
+      const imgSrc = getImagePath(b);
+      const imgBlock = imgSrc ? `<div style='flex:0 0 110px; display:flex; align-items:flex-start; justify-content:center;'><img class='base-img' src='' data-orig-src='${imgSrc}' alt='' style='width:110px; height:110px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 110px;'></div>`;
       const implicitHtml = (b.implicitMods||[]).length ? `<div style=\"font-size:11px; margin-bottom:4px;\">${(b.implicitMods||[]).map(m=>highlight(m)).join('<br>')}</div>` : '<div style=\"font-size:10px; color:var(--text-muted); margin-bottom:4px;\">No implicit</div>';
       const grantHtml = (b.grants||[]).length ? `<div style='font-size:10px; color:var(--accent-blue); margin-bottom:4px;'>${(b.grants||[]).map(g=>`Grants Skill: ${g.name}${g.level?` (Level ${g.level})`:''}`).join('<br>')}</div>` : '';
       const propHtml = (b.properties||[]).length ? `<div style=\"font-size:10px; display:flex; flex-wrap:wrap; gap:4px; margin-bottom:4px;\">${(b.properties||[]).map(p=>`<span style='background:var(--bg-tertiary); padding:2px 4px; border-radius:3px;'>${p.name}: ${p.value}</span>`).join('')}</div>` : '';
       const tagsLine = (b.__tags&&b.__tags.length) ? `<div style='display:flex; flex-wrap:wrap; gap:4px; margin-top:2px;'>${(b.__tags||[]).map(t=>{
-        const highlight = (sortTag===t) || (defenseQuick.size>1 && defenseQuick.has(t as any) && ['Armour','Evasion','ES'].includes(t));
-        return `<span style=\"background:${highlight?'var(--accent-blue)':'var(--bg-tertiary)'}; padding:2px 6px; border-radius:4px; font-size:10px; cursor:pointer;\" data-sort-tag='${t}'>${t}</span>`;
+        const highlightTag = (sortTag===t) || (defenseQuick.size>1 && defenseQuick.has(t as any) && ['Armour','Evasion','ES'].includes(t));
+        return `<span style=\"background:${highlightTag?'var(--accent-blue)':'var(--bg-tertiary)'}; padding:2px 6px; border-radius:4px; font-size:10px; cursor:pointer;\" data-sort-tag='${t}'>${t}</span>`;
       }).join('')}</div>` : '';
+      const slugCandidates = buildModifierSlugCandidates(b, cat);
+      const primarySlug = slugCandidates.length ? slugCandidates[0] : '';
+      const sortBadge = (sortTag && (b as any).__sortVal!==-Infinity)?` <span style='font-size:11px; color:var(--accent-blue);'>(${(b as any).__sortVal})</span>`:'';
+      const safeName = escapeHtml(b.name || '');
+      const safeSlug = escapeHtml(primarySlug);
+      const modButton = primarySlug
+        ? `<button class='base-modifiers-btn' data-mod-cat='${safeSlug}' title='Open modifiers for ${safeName}' aria-label='Open modifiers for ${safeName}' style='border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-secondary); width:26px; height:26px; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; cursor:pointer; transition:background 0.15s ease;'>✦</button>`
+        : '';
+      const headerLine = `<div style='display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:6px;'>
+        <div style='font-weight:600; font-size:15px;'>${b.name}${sortBadge}</div>
+        ${modButton}
+      </div>`;
       const right = `<div style='flex:1; display:flex; flex-direction:column;'>
-        <div style='font-weight:600; font-size:15px; margin-bottom:6px;'>${b.name}${(sortTag && (b as any).__sortVal!==-Infinity)?` <span style='font-size:11px; color:var(--accent-blue);'>(${(b as any).__sortVal})</span>`:''}</div>
+        ${headerLine}
         ${implicitHtml}${grantHtml}${propHtml}${tagsLine}
       </div>`;
-      card.innerHTML = imgBlock + right; listEl.appendChild(card); });
+      card.innerHTML = imgBlock + right;
+      listEl.appendChild(card);
+
+      if (primarySlug) {
+        const btn = card.querySelector<HTMLButtonElement>('button.base-modifiers-btn');
+        if (btn) {
+          if (slugCandidates.length) {
+            try {
+              btn.dataset.modCandidates = JSON.stringify(slugCandidates);
+            } catch {
+              btn.dataset.modCandidates = slugCandidates.join('|');
+            }
+            btn.setAttribute('data-mod-cat', slugCandidates[0]);
+          }
+          btn.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            ev.stopPropagation();
+            const currentTarget = ev.currentTarget as HTMLElement;
+            let slugs: string[] = [];
+            const rawCandidates = currentTarget?.dataset?.modCandidates || '';
+            if (rawCandidates) {
+              try {
+                const parsed = JSON.parse(rawCandidates);
+                if (Array.isArray(parsed)) {
+                  slugs = parsed.map((entry) => String(entry)).filter(Boolean);
+                }
+              } catch {
+                slugs = rawCandidates.split('|').map((entry) => entry.trim()).filter(Boolean);
+              }
+            }
+            if (!slugs.length) {
+              const fallback = currentTarget.getAttribute('data-mod-cat');
+              if (fallback) slugs = [fallback];
+            }
+            if (!slugs.length) return;
+            try {
+              (window as any).openModifiersCategory?.(slugs, { bypassDebounce: true });
+            } catch (err) {
+              console.warn('[Bases] Failed to open modifiers category via helper:', slugs, err);
+              try {
+                const select = document.getElementById('categorySelect') as HTMLSelectElement | null;
+                if (select) {
+                  const optionList = Array.from(select.options || []);
+                  let resolved = '';
+                  for (const candidate of slugs) {
+                    const match = optionList.find(opt => (opt.value || '').toUpperCase() === candidate.toUpperCase());
+                    if (match) {
+                      resolved = match.value;
+                      break;
+                    }
+                  }
+                  if (!resolved) {
+                    // Final attempt: try first candidate verbatim
+                    resolved = slugs[0];
+                  }
+                  select.value = resolved;
+                }
+                (window as any).setView?.('modifiers');
+                (window as any).switchCategory?.();
+              } catch (fallbackErr) {
+                console.warn('[Bases] Fallback category switch failed:', fallbackErr);
+              }
+            }
+          });
+        }
+      }
+    });
 
     // Standardized fallback & local path resolution
     bindImageFallback(listEl, 'img.base-img', `<svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110"><rect width="110" height="110" rx="8" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="12" font-family="sans-serif">?</text></svg>`, 0.5);

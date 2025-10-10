@@ -15,7 +15,7 @@ export interface UserSettings {
     useCtrl?: boolean; // when true (default), register as Ctrl/Cmd + key; when false, register as single key
   };
   fontSize?: number; // Font size percentage (80-150), default 100
-  clipboardDelay?: number; // Delay in ms before checking clipboard after Ctrl+C (default 300ms)
+  clipboardDelay?: number; // Delay in ms before checking clipboard after invoking the copy shortcut (default 300ms)
 }
 
 export class SettingsService {

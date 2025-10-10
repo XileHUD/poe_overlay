@@ -102,8 +102,13 @@ export async function refreshHistory(
         renderDetailCallback(0);
         renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
           try { updateHistoryChartFromTotals(totals); } catch {}
+        }, { entries: historyState.items });
+        renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+          renderListCallback(renderDetailCallback);
+          renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+            try { updateHistoryChartFromTotals(totals); } catch {}
+          }, { entries: historyState.items });
         });
-        renderHistoryActiveFilters(historyState, () => historyVisible(), () => renderListCallback(renderDetailCallback));
         try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
       }
       
@@ -127,8 +132,13 @@ export async function refreshHistory(
         renderDetailCallback(0);
         renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
           try { updateHistoryChartFromTotals(totals); } catch {}
+        }, { entries: historyState.items });
+        renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+          renderListCallback(renderDetailCallback);
+          renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+            try { updateHistoryChartFromTotals(totals); } catch {}
+          }, { entries: historyState.items });
         });
-        renderHistoryActiveFilters(historyState, () => historyVisible(), () => renderListCallback(renderDetailCallback));
         try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
       }
       
@@ -213,8 +223,13 @@ export async function refreshHistory(
     renderDetailCallback(0);
     renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
       try { updateHistoryChartFromTotals(totals); } catch {}
+    }, { entries: historyState.items });
+    renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+      renderListCallback(renderDetailCallback);
+      renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+        try { updateHistoryChartFromTotals(totals); } catch {}
+      }, { entries: historyState.items });
     });
-    renderHistoryActiveFilters(historyState, () => historyVisible(), () => renderListCallback(renderDetailCallback));
     
     try {
       recomputeChartSeriesFromStore();
@@ -253,8 +268,13 @@ export async function refreshHistory(
       renderDetailCallback(0);
       renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
         try { updateHistoryChartFromTotals(totals); } catch {}
+      }, { entries: historyState.items });
+      renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+        renderListCallback(renderDetailCallback);
+        renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+          try { updateHistoryChartFromTotals(totals); } catch {}
+        }, { entries: historyState.items });
       });
-      renderHistoryActiveFilters(historyState, () => historyVisible(), () => renderListCallback(renderDetailCallback));
       try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
     } else {
       // No cache - show error message
@@ -295,6 +315,15 @@ export async function refreshHistoryIfAllowed(
     historyState.selectedIndex = 0;
     renderListCallback(renderDetailCallback);
     renderDetailCallback(0);
+    renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+      try { updateHistoryChartFromTotals(totals); } catch {}
+    }, { entries: historyState.items });
+    renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+      renderListCallback(renderDetailCallback);
+      renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+        try { updateHistoryChartFromTotals(totals); } catch {}
+      }, { entries: historyState.items });
+    });
     updateHistoryRefreshButton();
     return false;
   }

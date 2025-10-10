@@ -1,3 +1,5 @@
+import { escapeHtml } from '../utils';
+
 // Modifier panel controller + render pipeline extracted from overlay.html
 // Exposes a stable API used by overlay.html wrappers. No DOM structure changes.
 
@@ -9,6 +11,12 @@ export type ModifierData = {
     category?: string;
     quality?: { percent?: number; group?: string; tags?: string[] } | undefined;
     modifiers?: string[];
+    corrupted?: boolean;
+    isCorrupted?: boolean;
+    sanctified?: boolean;
+    isSanctified?: boolean;
+    fractured?: boolean;
+    isFractured?: boolean;
   };
   modifiers?: Array<any>;
 };
@@ -175,6 +183,30 @@ function isAggregatedCategory(): boolean {
   return AGGREGATED_CATEGORIES.includes(currentCategory.toUpperCase());
 }
 
+function extractTierNumber(value: any): number | null {
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return value;
+  }
+  if (typeof value === 'string') {
+    const parsed = Number(value);
+    if (Number.isFinite(parsed)) {
+      return parsed;
+    }
+  }
+  return null;
+}
+
+function renderTierBadge(mod: any): string {
+  const headerTier = extractTierNumber(mod?.headerTierNumber);
+  const whittlingTier = extractTierNumber(mod?.whittlingTierNumber);
+  const dataTier = extractTierNumber(mod?.tier);
+  const displayTier = headerTier ?? whittlingTier ?? dataTier;
+  if (displayTier == null) return '';
+  const mismatch = dataTier != null && dataTier !== displayTier;
+  const tooltip = mismatch ? ` title="Clipboard tier T${displayTier}; Database tier T${dataTier}"` : '';
+  return `<span class="mod-badge badge-tier"${tooltip}>T${displayTier}</span>`;
+}
+
 function renderSection(section: any, domainId?: string){
   const side = section.side || section.type || 'none';
   const sectionId = `section-${section.domain}-${side}`;
@@ -210,7 +242,7 @@ function renderSection(section: any, domainId?: string){
               ${mod.tags && mod.tags.length ? mod.tags.map((t:string)=>`<span class="tag" data-tag="${t}">${t}</span>`).join('') : ''}
               <span class="spacer"></span>
               ${mod.ilvl ? `<span class="mod-badge badge-ilvl">iLvl ${mod.ilvl}</span>` : ''}
-              ${mod.tier ? `<span class="mod-badge badge-tier">T${mod.tier}</span>` : ''}
+              ${renderTierBadge(mod)}
               ${mod.weight > 0 ? `<span class="mod-badge badge-weight" title="${totalWeight>0?((mod.weight/totalWeight)*100).toFixed(1):'0.0'}% of section">${mod.weight}</span>` : ''}
             </div>
             ${mod.tiers && mod.tiers.length > 0 ? `
@@ -294,254 +326,617 @@ export function mechanicsPostProcess(data: ModifierData){
   } catch(e){ console.warn('Mechanics post-process failed', e); }
 }
 
-// TODO: WHITTLING FEATURE - CURRENTLY DISABLED
-// This feature should show tier information for gear modifiers in the header
-// Issues to fix:
-// 1. Should work for ALL gear pieces, not just rings/amulets with catalyst quality
-// 2. Need to call computeWhittling() somewhere and render results to whittlingInfo element
-// 3. Need to implement the display logic (currently missing)
-// 4. The whittlingInfo element exists in HTML but is never populated
-//
-// To re-enable:
-// - Uncomment the computeWhittling function below
-// - Call it from the render() function when displaying modifiers
-// - Populate the whittlingInfo element with the results
-// - Test on all gear types
-/*
-export function computeWhittling(data: ModifierData){
+type ParsedItemMod = {
+  header?: string | null;
+  value: string;
+  tierName?: string | null;
+  tierNumber?: number | null;
+  side?: string | null;
+  isFractured?: boolean;
+  isRune?: boolean;
+  isDesecrated?: boolean;
+  isSanctified?: boolean;
+};
+
+type TierCandidate = {
+  canonical: string;
+  tierName: string | null;
+  tierNumber?: number | null;
+  tierLevel: number | null;
+  side: string | null;
+  domain: string | null;
+  tierText: string;
+  modText: string;
+};
+
+type TierIndex = {
+  byCanonical: Map<string, TierCandidate[]>;
+  byTierName: Map<string, TierCandidate[]>;
+};
+
+type WhittlingMod = {
+  id: string;
+  header?: string | null;
+  value: string;
+  display: string;
+  canonical: string;
+  tierName: string | null;
+  tierNumber: number | null;
+  headerTierNumber: number | null;
+  ilvl: number | null;
+  side: string | null;
+  domain: string | null;
+  isFractured: boolean;
+  isRune: boolean;
+  isDesecrated: boolean;
+  isSanctified: boolean;
+  isLocked: boolean;
+};
+
+type WhittlingResult = {
+  lowestIlvl: number | null;
+  lowestMods: WhittlingMod[];
+  allMods: WhittlingMod[];
+  blockedReason: 'corrupted' | 'sanctified' | 'fractured' | null;
+};
+
+function pushToMap<T>(map: Map<string, T[]>, key: string | null | undefined, value: T): void {
+  const normalized = key ? key : '';
+  if (!normalized) return;
+  const bucket = map.get(normalized);
+  if (bucket) bucket.push(value);
+  else map.set(normalized, [value]);
+}
+
+function normalizeTierName(name: string | null | undefined): string {
+  if (!name) return '';
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+
+function tierNameTokens(name: string | null | undefined): string[] {
+  if (!name) return [];
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]+/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+function titleCase(input: string | null | undefined): string {
+  if (!input) return '';
+  return input
+    .split(/\s+/)
+    .filter(Boolean)
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+    .join(' ');
+}
+
+function canonicalizeBaseText(raw: string | null | undefined, removeLeadingLevel = false): string {
+  if (!raw) return '';
+  let text = String(raw);
+  if (removeLeadingLevel) {
+    text = text.replace(/^\s*\d+\s+/, '');
+  }
+  text = text
+    .replace(/\(augmented\)/gi, '')
+    .replace(/\(crafted\)/gi, '')
+    .replace(/\(implicit\)/gi, '')
+    .replace(/\(enchant(?:ed)?\)/gi, '')
+    .replace(/\(corrupted\)/gi, '')
+    .replace(/\(rune\)/gi, '')
+    .replace(/\(fractured\)/gi, '')
+    .replace(/\(desecrated\)/gi, '')
+    .replace(/\(sanctified\)/gi, '')
+    .replace(/[–—−]/g, '-')
+    .replace(/\s+/g, ' ')
+    .trim();
+  text = text.replace(/\d+(?:\.\d+)?/g, '#');
+  text = text.replace(/#\s*\(/g, '(');
+  text = text.replace(/^\+/, '');
+  return text.toLowerCase();
+}
+
+function canonicalizeDatabaseText(raw: string | null | undefined): string {
+  return canonicalizeBaseText(raw, true);
+}
+
+function canonicalizeItemText(raw: string | null | undefined): string {
+  return canonicalizeBaseText(raw, false);
+}
+
+function formatWhittlingDisplay(value: string): string {
+  return value
+    .replace(/\s*\((?:augmented|fractured|desecrated|crafted|rune|corrupted|sanctified)\)\s*/gi, '')
+    .trim();
+}
+
+function parseHeaderInfo(header: string | null | undefined): {
+  tierName: string | null;
+  tierNumber: number | null;
+  side: string | null;
+  isFractured: boolean;
+  isRune: boolean;
+  skip: boolean;
+} {
+  if (!header) {
+    return { tierName: null, tierNumber: null, side: null, isFractured: false, isRune: false, skip: false };
+  }
+  const tierNameMatch = header.match(/["“”'‘’]([^"“”'‘’]+)["“”'‘’]/);
+  const tierName = tierNameMatch ? tierNameMatch[1] : null;
+  const tierNumberMatch = header.match(/Tier:\s*(\d+)/i);
+  const tierNumber = tierNumberMatch ? Number(tierNumberMatch[1]) : null;
+  const lower = header.toLowerCase();
+  const side = lower.includes('suffix modifier') ? 'suffix' : (lower.includes('prefix modifier') ? 'prefix' : null);
+  const isFractured = lower.includes('fractured');
+  const isRune = lower.includes('rune');
+  const skip = lower.includes('implicit modifier') || lower.includes(' implicit ') || lower.includes('enchant');
+  return { tierName, tierNumber, side, isFractured, isRune, skip };
+}
+
+function parseValueMarkers(value: string): {
+  isFractured: boolean;
+  isRune: boolean;
+  isDesecrated: boolean;
+  isSanctified: boolean;
+  skip: boolean;
+} {
+  const isFractured = /\(fractured\)/i.test(value);
+  const isRune = /\(rune\)/i.test(value);
+  const isDesecrated = /\(desecrated\)/i.test(value);
+  const isSanctified = /\(sanctified\)/i.test(value) || /\bsanctified\b/i.test(value);
+  const skip = /\(crafted\)/i.test(value) || /\(implicit\)/i.test(value) || /\(enchant(?:ed)?\)/i.test(value) || /\(corrupted\)/i.test(value);
+  return { isFractured, isRune, isDesecrated, isSanctified, skip };
+}
+
+function createParsedMod(header: string | null, value: string): ParsedItemMod | null {
+  const headerInfo = parseHeaderInfo(header);
+  const markerInfo = parseValueMarkers(value);
+  if (headerInfo.skip) return null;
+  if (markerInfo.skip) return null;
+  if (headerInfo.isRune || markerInfo.isRune) return null;
+  return {
+    header,
+    value,
+    tierName: headerInfo.tierName,
+    tierNumber: headerInfo.tierNumber,
+    side: headerInfo.side,
+    isFractured: headerInfo.isFractured || markerInfo.isFractured,
+    isRune: headerInfo.isRune || markerInfo.isRune,
+    isDesecrated: markerInfo.isDesecrated,
+    isSanctified: markerInfo.isSanctified
+  };
+}
+
+function parseItemModifiers(lines: string[] | undefined): ParsedItemMod[] {
+  if (!Array.isArray(lines) || !lines.length) return [];
+  const entries: ParsedItemMod[] = [];
+  let pendingHeader: string | null = null;
+  for (const raw of lines) {
+    if (raw == null) continue;
+    const trimmed = String(raw).trim();
+    if (!trimmed) continue;
+    if (/^[-=]{2,}$/.test(trimmed)) continue;
+    if (/^\{/.test(trimmed)) {
+      pendingHeader = trimmed;
+      continue;
+    }
+    if (!pendingHeader && !/\d/.test(trimmed)) continue;
+    if (/^socketed\s+(?:gems|attacks|spells)\s+are\s+supported/i.test(trimmed)) {
+      pendingHeader = null;
+      continue;
+    }
+    const entry = createParsedMod(pendingHeader, trimmed);
+    pendingHeader = null;
+    if (entry) entries.push(entry);
+  }
+  return entries;
+}
+
+function determineBlockedReason(itemMeta: any, lines: string[] | undefined): 'corrupted' | 'sanctified' | 'fractured' | null {
+  const reasons: Array<'corrupted' | 'sanctified' | 'fractured'> = ['corrupted', 'sanctified', 'fractured'];
+  const boolFields = {
+    corrupted: ['corrupted', 'isCorrupted'],
+    sanctified: ['sanctified', 'isSanctified'],
+    fractured: ['fractured', 'isFractured'],
+  } as const;
+  const normalizedLines = Array.isArray(lines)
+    ? lines
+        .map((entry) => (entry == null ? '' : String(entry).trim().toLowerCase()))
+        .filter(Boolean)
+    : [];
+  const matchesLine = (needle: string, exact = false) => {
+    if (!needle) return false;
+    return normalizedLines.some((line) => (exact ? line === needle : line.includes(needle)));
+  };
+
+  for (const reason of reasons) {
+    const fields = boolFields[reason];
+    if (fields.some((field) => itemMeta && Boolean(itemMeta[field]))) return reason;
+    if (reason === 'fractured') {
+      if (matchesLine('fractured item', true)) return reason;
+      continue;
+    }
+    if (matchesLine(reason, reason === 'corrupted')) return reason;
+  }
+  return null;
+}
+
+function buildTierIndex(sections: any[] | undefined): TierIndex {
+  const byCanonical = new Map<string, TierCandidate[]>();
+  const byTierName = new Map<string, TierCandidate[]>();
+  if (!Array.isArray(sections)) return { byCanonical, byTierName };
+  const allowedDomains = new Set(['normal', 'essence', 'desecrated']);
+  for (const section of sections) {
+    if (!section) continue;
+    const side = typeof section.side === 'string'
+      ? section.side.toLowerCase()
+      : (typeof section.type === 'string' ? section.type.toLowerCase() : null);
+    const domain = typeof section.domain === 'string' ? section.domain.toLowerCase() : null;
+    if (domain && !allowedDomains.has(domain)) continue;
+    const mods = Array.isArray(section.mods) ? section.mods : [];
+    for (const mod of mods) {
+      if (!mod) continue;
+      const modText = (mod.text_plain || mod.text || mod.text_html || '').toString();
+      const modLevel = Number(mod.ilvl ?? mod.level ?? 0) || null;
+      if (Array.isArray(mod.tiers) && mod.tiers.length) {
+        const tiers = mod.tiers;
+        tiers.forEach((tier: any, idx: number) => {
+          if (!tier) return;
+          const tierText = (tier.text_plain || tier.text || tier.text_html || modText || '').toString();
+          const canonical = canonicalizeDatabaseText(tierText);
+          if (!canonical) return;
+          const tierName = (tier.tier_name || tier.name || '').toString() || null;
+          const tierLevel = Number(tier.tier_level ?? tier.ilvl ?? modLevel ?? 0) || null;
+          const tierNumber = tiers.length - idx;
+          const candidate: TierCandidate = {
+            canonical,
+            tierName,
+            tierNumber,
+            tierLevel,
+            side,
+            domain,
+            tierText,
+            modText
+          };
+          pushToMap(byCanonical, canonical, candidate);
+          if (tierName) pushToMap(byTierName, normalizeTierName(tierName), candidate);
+        });
+      } else {
+        const canonical = canonicalizeDatabaseText(modText);
+        if (!canonical) continue;
+        const tierName = (mod.tier_name || mod.name || mod.family_name || '').toString() || null;
+        const candidate: TierCandidate = {
+          canonical,
+          tierName,
+          tierNumber: null,
+          tierLevel: modLevel,
+          side,
+          domain,
+          tierText: modText,
+          modText
+        };
+        pushToMap(byCanonical, canonical, candidate);
+        if (tierName) pushToMap(byTierName, normalizeTierName(tierName), candidate);
+      }
+    }
+  }
+  return { byCanonical, byTierName };
+}
+
+function selectCandidate(entry: ParsedItemMod, canonical: string, index: TierIndex): TierCandidate | null {
+  if (!canonical) return null;
+  let candidates = (index.byCanonical.get(canonical) || []).slice();
+  if (entry.tierName) {
+    const byName = index.byTierName.get(normalizeTierName(entry.tierName)) || [];
+    if (byName.length) {
+      const nameSet = new Set(byName);
+      const overlap = candidates.filter(candidate => nameSet.has(candidate));
+      candidates = overlap.length ? overlap.slice() : byName.slice();
+    }
+    if (!candidates.length) {
+      const entryTokens = tierNameTokens(entry.tierName);
+      if (entryTokens.length) {
+        candidates = (index.byCanonical.get(canonical) || []).filter(candidate => {
+          const candTokens = tierNameTokens(candidate.tierName);
+          return candTokens.some(token => entryTokens.includes(token));
+        });
+      }
+    }
+    if (!candidates.length) {
+      const lowered = entry.tierName.toLowerCase();
+      if (lowered.includes('essence')) {
+        const canonMatches = index.byCanonical.get(canonical) || [];
+        const essenceMatches = canonMatches.filter(candidate => candidate.domain === 'essence');
+        if (essenceMatches.length) candidates = essenceMatches;
+      }
+    }
+  }
+  if (entry.tierNumber != null && candidates.length > 1) {
+    const exact = candidates.filter(candidate => candidate.tierNumber === entry.tierNumber);
+    if (exact.length) candidates = exact;
+  }
+  if (entry.side && entry.side !== 'none' && candidates.length > 1) {
+    const sideMatches = candidates.filter(candidate => !candidate.side || candidate.side === entry.side);
+    if (sideMatches.length) candidates = sideMatches;
+  }
+  const preferredDomains = new Set(['', 'normal', 'essence', 'desecrated', 'none']);
+  const domainFiltered = candidates.filter(candidate => !candidate.domain || preferredDomains.has(candidate.domain));
+  if (domainFiltered.length) candidates = domainFiltered;
+  if (!candidates.length) return null;
+  if (candidates.length === 1) return candidates[0];
+  const domainRank = (domain: string | null | undefined) => {
+    if (!domain || domain === 'normal' || domain === 'none') return 0;
+    if (domain === 'essence') return 1;
+    if (domain === 'desecrated') return 2;
+    return 99;
+  };
+  candidates.sort((a, b) => {
+    const rankDiff = domainRank(a.domain) - domainRank(b.domain);
+    if (rankDiff !== 0) return rankDiff;
+    const tierA = typeof a.tierNumber === 'number' ? a.tierNumber : Infinity;
+    const tierB = typeof b.tierNumber === 'number' ? b.tierNumber : Infinity;
+    if (tierA !== tierB) return tierA - tierB;
+    const levelA = typeof a.tierLevel === 'number' ? a.tierLevel : -Infinity;
+    const levelB = typeof b.tierLevel === 'number' ? b.tierLevel : -Infinity;
+    if (levelA !== levelB) return levelB - levelA;
+    return a.modText.localeCompare(b.modText);
+  });
+  return candidates[0] || null;
+}
+
+function buildWhittlingMeta(mod: WhittlingMod): string {
+  const meta: string[] = [];
+  if (mod.tierName) meta.push(mod.tierName);
+  const tierForDisplay = mod.headerTierNumber ?? mod.tierNumber;
+  if (tierForDisplay != null) meta.push(`T${tierForDisplay}`);
+  if (typeof mod.ilvl === 'number' && Number.isFinite(mod.ilvl)) meta.push(`iLvl ${mod.ilvl}`);
+  if (mod.side && mod.side !== 'none') meta.push(titleCase(mod.side));
+  if (mod.domain && mod.domain !== 'normal' && mod.domain !== 'none') meta.push(titleCase(mod.domain.replace(/_/g, ' ')));
+  if (mod.isDesecrated) meta.push('Desecrated');
+  if (mod.isSanctified) meta.push('Sanctified');
+  if (mod.isFractured) meta.push('Fractured');
+  if (mod.isRune) meta.push('Rune');
+  return meta.length ? meta.join(' · ') : 'No tier metadata';
+}
+
+function buildWhittlingBadge(result: WhittlingResult): string {
+  let summary: string;
+  if (result.blockedReason) {
+    const reasonText = result.blockedReason === 'fractured' ? 'FRACTURED' : result.blockedReason.toUpperCase();
+    if (result.blockedReason === 'corrupted' || result.blockedReason === 'sanctified') {
+      summary = reasonText;
+    } else {
+      const modCount = result.lowestMods.length === 1 ? '1 mod' : `${result.lowestMods.length} mods`;
+      summary = `${reasonText} · ${modCount}`;
+    }
+  } else if (result.lowestMods.length === 1) {
+    summary = '1 mod';
+  } else {
+    summary = `${result.lowestMods.length} mods`;
+  }
+  const sorted = [...result.allMods].sort((a, b) => {
+    const aIlvl = typeof a.ilvl === 'number' ? a.ilvl : -Infinity;
+    const bIlvl = typeof b.ilvl === 'number' ? b.ilvl : -Infinity;
+    if (aIlvl !== bIlvl) return bIlvl - aIlvl;
+    if (a.isLocked !== b.isLocked) return a.isLocked ? 1 : -1;
+    return a.display.localeCompare(b.display);
+  });
+  const highlightIds = new Set(result.lowestMods.map(mod => mod.id));
+  const warningNote = (() => {
+    if (!result.blockedReason) return '';
+    const label = result.blockedReason === 'fractured'
+      ? 'Item is fractured and cannot be whittled'
+      : result.blockedReason === 'sanctified'
+        ? 'Item is sanctified and cannot be whittled'
+        : 'Item is corrupted and cannot be whittled';
+    return `<div class="whittling-tooltip-warning">${escapeHtml(label)}</div>`;
+  })();
+  const rows = sorted.map(mod => {
+    const classes = ['whittling-tooltip-row'];
+    if (highlightIds.has(mod.id)) classes.push('whittling-remove');
+    if (mod.isLocked) classes.push('whittling-locked');
+    return `<div class="${classes.join(' ')}">
+        <div class="whittling-mod-text">${escapeHtml(mod.display)}</div>
+        <div class="whittling-mod-meta">${escapeHtml(buildWhittlingMeta(mod))}</div>
+      </div>`;
+  }).join('');
+  return `<div class="whittling-badge">
+    <div class="whittling-label">WHITTLING</div>
+      <div class="whittling-value">${escapeHtml(summary)}</div>
+      <div class="whittling-tooltip">
+        <div class="whittling-tooltip-header">Explicit modifiers</div>
+        ${warningNote}
+        ${rows || '<div class="whittling-tooltip-row whittling-empty">No explicit modifiers detected</div>'}
+      </div>
+    </div>`;
+}
+
+export function buildWhittlingBadgeForTest(result: WhittlingResult): string {
+  return buildWhittlingBadge(result);
+}
+
+function applyWhittlingMetadataToOverlayMods(data: ModifierData | null | undefined, result: WhittlingResult | null): void {
   try {
-    if (!data || !data.item || !Array.isArray((data as any).item?.modifiers) || !data.modifiers) return null;
-    // Detect catalyst quality on rings/amulets and determine affected tag set
-    const quality = (data.item as any).quality || undefined;
-    const qualityPct = quality && typeof quality.percent === 'number' ? quality.percent : 0;
-    const qualityMul = qualityPct > 0 ? (1 + (qualityPct / 100)) : 1;
-    const qualityTags: string[] = (quality && Array.isArray(quality.tags)) ? quality.tags : [];
-
-    // Only consider explicit lines.
-    // Rules:
-    // - Exclude implicit/enchants/crafted/corrupted/rune markers
-    // - Include desecrated and essence explicits
-    // - Do NOT blanket-exclude lines containing the word "Socketed"
-    // - Specifically ignore the special support lines like: "Socketed Gems are Supported by Level X <Support>"
-    //   but KEEP essence explicit like: "#% increased effect of Socketed Items"
-    const rawLines = Array.isArray((data as any).item?.modifiers) ? ((data as any).item.modifiers as string[]).slice() : [];
-    const itemMods = rawLines
-      .map(s => s.trim())
-      .filter(Boolean)
-      // Ignore only implicit/crafted/rune/corrupted markers; keep desecrated/essence, and allow 'Socketed Items'
-      .filter(line => !/(implicit|enchant|crafted|corrupted|rune)/i.test(line))
-      // Drop true socketed support lines, but not essence "effect of Socketed Items" lines
-      .filter(line => !/^Socketed\s+(?:Gems|Attacks|Spells)\s+are\s+Supported\s+by\s+Level\s+\d+/i.test(line));
-    if (itemMods.length === 0) return null;
-
-    const stripMarkers = (s: string) => String(s)
-      .replace(/\s*\((?:desecrated|crafted|essence|implicit|enchant|fractured|corrupted|socketed)\)\s*$/i, '')
-      .replace(/\+\s*(?=\()/g, ''); // drop leading plus before ranges for key match
-    const toPlaceholder = (s: string) => String(stripMarkers(s))
-      .replace(/\d+(?:,\d{3})*(?:\.\d+)?/g, '#') // numbers -> '#'
-      .replace(/\(implicit\)/ig, '')
-      .replace(/<[^>]+>/g, '')
-      .replace(/\s+/g, ' ')
-      .trim()
-      .toLowerCase();
-    const toStem = (s: string) => String(stripMarkers(s))
-      .toLowerCase()
-      .replace(/[+%()#\d\-–]/g, '')
-      .replace(/\s+/g, ' ')
-      .trim();
-    const toNumbers = (s: string) => (String(s).match(/[+\-]?\d+(?:\.\d+)?/g) || []).map(x => Number(x.replace('+','')));
-    // Decide if a given candidate mod is affected by quality based on its tags
-    const modAffectedByQuality = (modTags: string[] | undefined, section: any) => {
-      if (!qualityTags || qualityTags.length === 0) return false;
-      // Consider both mod.tags and section-level tags if available
-      const tagsList = Array.isArray(modTags) && modTags.length>0 ? modTags : (Array.isArray(section?.attributes)? section.attributes : []);
-      if (!Array.isArray(tagsList) || tagsList.length === 0) return false;
-      // Overlap between normalized tag sets
-      const set = new Set(tagsList.map((t: string) => String(t).toLowerCase()));
-      return qualityTags.some((t: string) => set.has(String(t).toLowerCase()));
-    };
-    const toNumbersWithoutLeading = (s: string, leading: number | undefined) => {
-      const nums = toNumbers(s);
-      if (nums.length > 0 && typeof leading === 'number' && nums[0] === Number(leading)) {
-        return nums.slice(1);
-      }
-      return nums;
-    };
-    const extractRanges = (s: string) => {
-      // Match things like (10–15), (4-7) using both en dash and hyphen
-      const ranges: Array<{lo:number; hi:number}> = [];
-      const re = /\((\d+(?:\.\d+)?)\s*[–-]\s*(\d+(?:\.\d+)?)\)/g;
-      let m: RegExpExecArray | null;
-      while ((m = re.exec(String(s))) !== null) {
-        ranges.push({ lo: Number(m[1]), hi: Number(m[2]) });
-      }
-      return ranges;
-    };
-    const rangeDistance = (vals: number[], ranges: Array<{lo:number;hi:number}>, focusIndex: number | null = null) => {
-      if (!Array.isArray(vals) || !Array.isArray(ranges) || vals.length !== ranges.length) return Number.POSITIVE_INFINITY;
-      let s = 0;
-      for (let i=0;i<ranges.length;i++) {
-        const v = vals[i];
-        const { lo, hi } = ranges[i];
-        if (v < lo) s += (lo - v);
-        else if (v > hi) s += (v - hi);
-        else {
-          const mid = (lo + hi) / 2;
-          s += Math.abs(v - mid) * 0.1; // slight preference toward center when inside range
+    if (!data || !Array.isArray((data as any).modifiers)) return;
+    (data.modifiers as any[]).forEach(section => {
+      if (!section || !Array.isArray(section.mods)) return;
+      section.mods.forEach((mod: any) => {
+        if (!mod) return;
+        if (Object.prototype.hasOwnProperty.call(mod, 'headerTierNumber')) mod.headerTierNumber = null;
+        if (Object.prototype.hasOwnProperty.call(mod, 'whittlingTierNumber')) mod.whittlingTierNumber = null;
+      });
+    });
+    if (!result || !Array.isArray(result.allMods) || !result.allMods.length) return;
+    console.log('[Whittling] Applying metadata from', result.allMods.length, 'clipboard mods to database');
+    const buckets = new Map<string, WhittlingMod[]>();
+    result.allMods.forEach(mod => {
+      if (!mod || !mod.canonical) return;
+      const list = buckets.get(mod.canonical) || [];
+      list.push(mod);
+      buckets.set(mod.canonical, list);
+    });
+    console.log('[Whittling] Built', buckets.size, 'canonical buckets');
+    (data.modifiers as any[]).forEach(section => {
+      if (!section || !Array.isArray(section.mods)) return;
+      section.mods.forEach((mod: any) => {
+        if (!mod) return;
+        const rawText = (mod.text_plain ?? mod.text ?? mod.text_html ?? '') as string;
+        const canonical = canonicalizeItemText(rawText);
+        if (!canonical) return;
+        const bucket = buckets.get(canonical);
+        if (!bucket || !bucket.length) {
+          console.log('[Whittling] No match for database mod:', rawText.substring(0, 50));
+          return;
         }
-      }
-      return s;
-    };
-    const chooseComponentIndex = (line: string, candKey: string, rangesLen: number) => {
-      const l = String(line).toLowerCase();
-      if (rangesLen <= 1) return null as any;
-      // Heuristics: map by keywords in line
-      const keys = [
-        { kw: 'evasion', idx: 0 },
-        { kw: 'energy shield', idx: 1 },
-        { kw: 'armour', idx: 0 },
-        { kw: 'ward', idx: 1 }
-      ];
-      for (const k of keys) {
-        if (l.includes(k.kw)) return k.idx;
-      }
-      // If we can infer order from candidate key, prefer first
-      return 0;
-    };
-
-    // Collect candidates by base key, keeping all tier variants with their ilvl and numbers
-    const candByKey: Map<string, any[]> = new Map();
-    const candByStem: Map<string, any[]> = new Map();
-    const candList: any[] = [];
-    const allowedDomains = new Set(['normal','essence','desecrated']);
-    for (const section of (data.modifiers as any[])) {
-      if (!(section && allowedDomains.has(section.domain) && (section.side === 'prefix' || section.side === 'suffix' || section.side === 'none'))) continue;
-      for (const mod of section.mods || []) {
-        const modName = (mod.text_plain || mod.text_html || 'Mod').toString();
-        // Build key from the mod's base text (without tier-level), so it matches the item's explicit line
-        const baseText = (mod.text_plain || mod.text_html || '').toString();
-        const key = toPlaceholder(baseText);
-        const stem = toStem(baseText);
-        if (!key) continue;
-        const arr = candByKey.get(key) || [];
-        const arrStem = candByStem.get(stem) || [];
-        const affected = modAffectedByQuality(mod.tags, section);
-        if (Array.isArray(mod.tiers) && mod.tiers.length > 0) {
-          for (let idx=0; idx<mod.tiers.length; idx++) {
-            const t = mod.tiers[idx];
-            const tText = (t.text_plain || t.text_html || '').toString();
-            const nums = toNumbersWithoutLeading(tText, t.tier_level);
-            const ranges = extractRanges(tText);
-            const tierNumber = (mod.tiers.length - idx);
-            const entry = { name: modName, ilvl: Number(t.tier_level || 0), nums, ranges, tierNumber, key, stem, tags: mod.tags || [], affectedByQuality: affected };
-            arr.push(entry);
-            arrStem.push(entry);
-            candList.push(entry);
-          }
+        console.log('[Whittling] Found', bucket.length, 'clipboard match(es) for:', rawText.substring(0, 50));
+        console.log('[Whittling] Found', bucket.length, 'clipboard match(es) for:', rawText.substring(0, 50));
+        let match: WhittlingMod | undefined;
+        if (bucket.length === 1) {
+          match = bucket[0];
         } else {
-          const nums = toNumbers(baseText);
-          const entry = { name: modName, ilvl: Number(mod.ilvl || 0), nums, ranges: extractRanges(baseText), tierNumber: undefined, key, stem, tags: mod.tags || [], affectedByQuality: affected };
-          arr.push(entry);
-          arrStem.push(entry);
-          candList.push(entry);
-        }
-        candByKey.set(key, arr);
-        candByStem.set(stem, arrStem);
-      }
-    }
-    if (candByKey.size === 0) return null;
-
-    const matched: Array<{name:string; ilvl:number; tier?:number; suspect?:boolean; qualityAdjusted?:boolean}> = [];
-    const ignoredFractured: string[] = [];
-    for (const rawLine of itemMods) {
-      const line = stripMarkers(rawLine);
-      const key = toPlaceholder(line);
-      const stem = toStem(line);
-      let nums = toNumbers(line);
-      // Skip fractured lines in matching but collect for tooltip
-      if (/\(fractured\)/i.test(rawLine)) {
-        ignoredFractured.push(rawLine);
-        continue;
-      }
-      let variants: any[] = candByKey.get(key) || [];
-      if (variants.length === 0) {
-        // Fallback 1: stem-based match (ignores numbers, punctuation)
-        variants = (candByStem.get(stem) || []);
-        // Fallback 2: substring fuzzy across keys and stems
-        if (variants.length === 0) {
-          const near = candList.filter(c => c.key.includes(key) || key.includes(c.key) || c.stem.includes(stem) || stem.includes(c.stem));
-          variants = near;
-        }
-        if (variants.length === 0) continue;
-      }
-      // Unified scoring that handles equal-length ranges, numeric-only, and component focus for multi-component candidates
-      const scoreVariant = (v: any) => {
-        if (Array.isArray(v.ranges) && v.ranges.length > 0) {
-          if (v.ranges.length === nums.length) return rangeDistance(nums, v.ranges);
-          // If candidate has multiple components, compare to the most likely component
-          const idx = chooseComponentIndex(line, v.key || '', v.ranges.length);
-          if (idx != null && v.ranges[idx]) return rangeDistance([nums[0]], [v.ranges[idx]]);
-          // else take min distance among components as a fallback
-          const dists = v.ranges.map((r: any) => rangeDistance([nums[0]], [r]));
-          return Math.min.apply(null, dists as any);
-        }
-        // No ranges: numeric distance over available components
-        const n = Math.max(((v.nums?.length)||0), nums.length);
-        let s = 0;
-        for (let i=0;i<n;i++) s += Math.abs((((v.nums)||[])[i]||0) - (nums[i]||0));
-        return s;
-      };
-
-      // If this line maps to variants that are affected by quality, unscale the numbers before scoring
-      const anyAffected = variants.some(v => v.affectedByQuality);
-      let scaledBackNums = nums;
-      if (anyAffected && qualityMul !== 1) {
-        // divide each observed number by multiplier and round to nearest tenth to reduce float noise
-        scaledBackNums = nums.map(n => Math.round((n / qualityMul) * 10) / 10);
-      }
-      const scoreVariantWithNums = (v: any) => {
-        const keep = nums; // keep for composite suspicion later
-        nums = scaledBackNums;
-        const s = scoreVariant(v);
-        nums = keep;
-        return s;
-      };
-      const best = variants.slice().sort((a,b) => scoreVariantWithNums(a) - scoreVariantWithNums(b))[0];
-      if (best) {
-        // Composite suspicion: if value exceeds single-mod max across tiers
-        let suspect = false;
-        const familyMax = (() => {
-          const fam = variants;
-          let m = -Infinity;
-          for (const v of fam) {
-            if (Array.isArray(v.ranges) && v.ranges.length>0) {
-              for (const r of v.ranges) m = Math.max(m, r.hi);
-            }
-            for (const n of (v.nums||[])) m = Math.max(m, n||0);
+          const tierMatches = bucket.filter(candidate => {
+            const candidateTier = extractTierNumber(candidate.tierNumber);
+            const modTier = extractTierNumber(mod.tier);
+            return candidateTier != null && modTier != null && candidateTier === modTier;
+          });
+          if (tierMatches.length) {
+            match = tierMatches[0];
+          } else {
+            const headerMatches = bucket.filter(candidate => extractTierNumber(candidate.headerTierNumber) != null);
+            match = headerMatches[0] || bucket[0];
           }
-          return m;
-        })();
-        // If quality applied, re-evaluate composite suspicion on de-scaled number
-        let observed = nums[0];
-        if (anyAffected && qualityMul !== 1 && typeof observed === 'number') {
-          observed = Math.round((observed / qualityMul) * 10) / 10;
         }
-        if (isFinite(familyMax) && typeof observed === 'number' && observed > (familyMax as number) + 0.5) suspect = true;
-        matched.push({ name: line, ilvl: best.ilvl, tier: best.tierNumber, suspect, qualityAdjusted: anyAffected && qualityMul !== 1 });
-      }
-    }
-    if (matched.length === 0) return null;
+        if (!match) return;
+        console.log('[Whittling] Match headerTier:', match.headerTierNumber, 'fallbackTier:', match.tierNumber);
+        const bucketIndex = bucket.indexOf(match);
+        if (bucketIndex >= 0) bucket.splice(bucketIndex, 1);
+        if (!bucket.length) buckets.delete(canonical);
+        const headerTier = extractTierNumber(match.headerTierNumber);
+        const fallbackTier = extractTierNumber(match.tierNumber);
+        if (headerTier != null || fallbackTier != null) {
+          mod.headerTierNumber = headerTier;
+          mod.whittlingTierNumber = fallbackTier;
+          console.log('[Whittling] Set metadata on database mod - headerTier:', headerTier, 'fallbackTier:', fallbackTier);
+        }
+      });
+    });
+  } catch (error) {
+    console.warn('[Whittling] failed to apply metadata to overlay mods', error);
+  }
+}
 
-    const minIlvl = matched.reduce((m, x) => Math.min(m, (x.ilvl as number) || Infinity), Infinity);
-    if (!isFinite(minIlvl)) return null;
-    const lowest = matched.filter(m => ((m.ilvl as number) || 0) === minIlvl);
-    return { ilvl: minIlvl, mods: lowest, all: matched, ignoredFractured };
-  } catch {
+function renderWhittlingInfo(result: WhittlingResult | null): void {
+  const container = document.getElementById('whittlingInfo');
+  if (!container) return;
+  if (!result || !result.allMods.length) {
+    container.setAttribute('style', 'display:none; margin-right:6px; -webkit-app-region: no-drag;');
+    container.innerHTML = '';
+    return;
+  }
+  container.setAttribute('style', 'display:inline-flex; align-items:center; gap:6px; margin-right:6px; -webkit-app-region: no-drag;');
+  container.innerHTML = buildWhittlingBadge(result);
+}
+
+export function computeWhittling(data: ModifierData): WhittlingResult | null {
+  try {
+    if (!data || !Array.isArray((data as any).item?.modifiers) || !Array.isArray(data.modifiers)) return null;
+    const itemMeta: any = (data as any).item ?? {};
+    const rawLines = Array.isArray((data as any).item?.modifiers)
+      ? ((data as any).item?.modifiers as string[]).slice()
+      : [];
+    console.log('[Whittling] Raw clipboard lines:', rawLines);
+    const entries = parseItemModifiers(rawLines);
+    console.log('[Whittling] Parsed', entries.length, 'entries from clipboard');
+    if (!entries.length) return null;
+    const tierIndex = buildTierIndex(data.modifiers as any[]);
+    const allMods: WhittlingMod[] = [];
+    entries.forEach((entry, index) => {
+      const headerDetails = entry.header ? parseHeaderInfo(entry.header) : { tierName: null, tierNumber: null, side: null, isFractured: false, isRune: false, skip: false };
+      console.log('[Whittling] Entry', index, 'header:', entry.header, '→ tierNumber:', headerDetails.tierNumber);
+      const canonical = canonicalizeItemText(entry.value);
+      const candidate = selectCandidate(entry, canonical, tierIndex);
+      const tierName = headerDetails.tierName ?? entry.tierName ?? candidate?.tierName ?? null;
+      const tierNumber = headerDetails.tierNumber ?? entry.tierNumber ?? candidate?.tierNumber ?? null;
+      const ilvl = candidate?.tierLevel ?? null;
+      const side = headerDetails.side ?? entry.side ?? candidate?.side ?? null;
+      const domain = candidate?.domain ?? null;
+      const mod: WhittlingMod = {
+        id: `whittling-${index}`,
+        header: entry.header,
+        value: entry.value,
+        display: formatWhittlingDisplay(entry.value),
+        canonical,
+        tierName,
+        tierNumber: typeof tierNumber === 'number' && Number.isFinite(tierNumber) ? tierNumber : null,
+        headerTierNumber: typeof headerDetails.tierNumber === 'number' && Number.isFinite(headerDetails.tierNumber) ? headerDetails.tierNumber : null,
+        ilvl: typeof ilvl === 'number' && Number.isFinite(ilvl) ? ilvl : null,
+        side,
+        domain,
+        isFractured: Boolean(headerDetails.isFractured || entry.isFractured),
+        isRune: Boolean(headerDetails.isRune || entry.isRune),
+        isDesecrated: Boolean(entry.isDesecrated),
+        isSanctified: Boolean(entry.isSanctified),
+        isLocked: Boolean(entry.isFractured || entry.isRune || entry.isSanctified)
+      };
+      allMods.push(mod);
+    });
+    const removable = allMods.filter(mod => !mod.isLocked && typeof mod.ilvl === 'number' && Number.isFinite(mod.ilvl));
+    const lowestIlvl = removable.length ? removable.reduce((min, mod) => Math.min(min, mod.ilvl as number), Infinity) : null;
+    const lowestMods = removable.length && lowestIlvl != null
+      ? removable.filter(mod => (mod.ilvl as number) === lowestIlvl)
+      : [];
+    let blockedReason = determineBlockedReason(itemMeta, rawLines);
+    if (!blockedReason) {
+      try {
+        const serialized = JSON.stringify(itemMeta ?? {}).toLowerCase();
+        const flagMatch = (needle: string) => {
+          if (!needle) return false;
+          const capitalized = needle.charAt(0).toUpperCase() + needle.slice(1);
+          const tokens = [
+            `"${needle}":true`,
+            `"${needle}":1`,
+            `"${needle}":"true"`,
+            `"${needle}":"1"`,
+            `"is${capitalized}":true`,
+            `"is${capitalized}":1`,
+            `"is${capitalized}":"true"`,
+            `"status":"${needle}"`,
+            `"state":"${needle}"`,
+            `"flags":["${needle}"`,
+            `"tags":["${needle}"`,
+            `"keywords":["${needle}"`
+          ];
+          return tokens.some(token => serialized.includes(token));
+        };
+        if (flagMatch('sanctified')) blockedReason = 'sanctified';
+        else if (flagMatch('corrupted')) blockedReason = 'corrupted';
+        else if (flagMatch('fractured')) blockedReason = 'fractured';
+      } catch {}
+    }
+    if (!blockedReason && rawLines.length) {
+      const combined = rawLines.join('\n').toLowerCase();
+      if (combined.includes('\nsanctified') || combined.includes(' (sanctified)')) blockedReason = 'sanctified';
+      else if (combined.includes('\ncorrupted') || combined.includes(' (corrupted)')) blockedReason = 'corrupted';
+      else if (combined.includes('fractured item')) blockedReason = 'fractured';
+    }
+    if (!blockedReason) {
+      const hasSanctified = allMods.some(mod => mod.isSanctified);
+      const hasFractured = allMods.some(mod => mod.isFractured);
+      if (hasSanctified && removable.length === 0) blockedReason = 'sanctified';
+      else if (hasFractured && removable.length === 0) blockedReason = 'fractured';
+    }
+    return {
+      lowestIlvl,
+      lowestMods,
+      allMods,
+      blockedReason
+    };
+  } catch (error) {
+    console.warn('[Whittling] compute failed', error);
     return null;
   }
 }
-*/
-// END OF DISABLED WHITTLING FEATURE
+// END WHITTLING FEATURE
 
 export function renderFilteredContent(data: any){
   const content = document.getElementById('content');
@@ -565,6 +960,10 @@ export function renderFilteredContent(data: any){
   const ilvlMaxRaw = (document.getElementById('ilvl-max') as HTMLInputElement | null)?.value || '';
   const ilvlMax = ilvlMaxRaw === '' ? null : (Number(ilvlMaxRaw)||0);
   const activeTags = Array.from(document.querySelectorAll('.filter-tag.active')).map(el => el.getAttribute('data-tag') || (el.textContent||'').replace(/ \(\d+\)$/,''));
+
+  const whittlingResult = computeWhittling(data as ModifierData);
+  applyWhittlingMetadataToOverlayMods(data as ModifierData, whittlingResult);
+  renderWhittlingInfo(whittlingResult);
   
   // Get active domain filter (radio button behavior)
   let activeDomain = 'all'; // default to show all

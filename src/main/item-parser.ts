@@ -18,6 +18,12 @@ export interface ParsedItem {
     category: string;
     attributeType: string; // 'str', 'dex', 'int', 'str_dex', 'str_int', 'dex_int'
     modifiers: string[];
+    corrupted?: boolean;
+    isCorrupted?: boolean;
+    sanctified?: boolean;
+    isSanctified?: boolean;
+    fractured?: boolean;
+    isFractured?: boolean;
 }
 
 export class ItemParser {
@@ -97,6 +103,7 @@ export class ItemParser {
         const requirements = this.extractRequirements(lines);
         const itemLevel = this.extractItemLevel(lines);
         const modifiers = this.extractModifiers(lines);
+    const statusFlags = this.extractStatusFlags(lines);
         
     const attributeType = this.determineAttributeType(requirements);
         let category = this.determineCategory(itemClass, attributeType, baseType, name);
@@ -148,7 +155,8 @@ export class ItemParser {
             itemLevel,
             category,
             attributeType,
-            modifiers
+            modifiers,
+            ...statusFlags
         };
     }
 
@@ -298,6 +306,10 @@ export class ItemParser {
             return /[%+]/.test(s) ||
                    /(increased|reduced|to maximum|to all|adds|gain|regenerate|chance|while|during|on kill|per second|additional)/.test(lc);
         };
+        const isModHeader = (s: string) => {
+            // Headers like: { Prefix Modifier "Coursing" (Tier: 3) — Damage, Elemental, Lightning }
+            return /^\{.*\bModifier\b.*\}$/i.test(s);
+        };
         for (const raw of lines) {
             const line = raw.trim();
             if (!line || line === '--------') continue;
@@ -307,11 +319,34 @@ export class ItemParser {
             if (/^Quality \(/.test(line)) continue;
             // Ignore section headers like "Implicit", "Explicit", etc.
             if (/^(implicit|explicit|enchanted|prefixes|suffixes)[:]?$/i.test(line)) continue;
-            if (looksLikeMod(line)) {
+            // Preserve mod headers (for whittling tier extraction) AND actual mods
+            if (isModHeader(line) || looksLikeMod(line)) {
                 modifiers.push(line);
             }
         }
         return modifiers;
+    }
+
+    private extractStatusFlags(lines: string[]): {
+        corrupted: boolean;
+        isCorrupted: boolean;
+        sanctified: boolean;
+        isSanctified: boolean;
+        fractured: boolean;
+        isFractured: boolean;
+    } {
+    const normalized = lines.map(line => line.trim().toLowerCase()).filter(Boolean);
+    const hasCorrupted = normalized.some(line => line === 'corrupted' || /corrupted/.test(line));
+    const hasSanctified = normalized.some(line => line === 'sanctified' || /sanctified/.test(line));
+    const hasFractured = normalized.some(line => line === 'fractured item' || /fractured item/.test(line));
+        return {
+            corrupted: hasCorrupted,
+            isCorrupted: hasCorrupted,
+            sanctified: hasSanctified,
+            isSanctified: hasSanctified,
+            fractured: hasFractured,
+            isFractured: hasFractured
+        };
     }
 
     private determineAttributeType(requirements: ParsedItem['requirements']): string {

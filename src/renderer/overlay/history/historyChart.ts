@@ -9,6 +9,7 @@
  */
 
 import { historyState } from './historyData';
+import { totalsFromEntries } from './historyTotals';
 import { historyVisible } from './historyView';
 import { normalizeCurrency } from '../utils';
 
@@ -40,7 +41,12 @@ const _chartState: ChartState = {
  * and a final point at current time matching header totals.
  */
 export function recomputeChartSeriesFromStore(): void {
-  const entries = (historyState.store?.entries || []).slice();
+  const filtered = Array.isArray(historyState.items) && historyState.items.length
+    ? historyState.items.slice()
+    : [];
+  const entries = filtered.length
+    ? filtered
+    : (historyState.store?.entries || []).slice();
   if (!entries.length) {
     _chartState.points = [];
     return;
@@ -83,9 +89,9 @@ export function recomputeChartSeriesFromStore(): void {
   
   // Append final point at 'now' matching normalized header totals (chart and header alignment)
   try {
-    const totals: any = historyState.store?.totals || {};
-    const nd = Number(totals.divine || 0), ne = Number(totals.exalted || 0), na = Number(totals.annul || 0),
-          nc = Number(totals.chaos || 0), nr = Number(totals.regal || 0);
+    const totalsSource = filtered.length ? totalsFromEntries(filtered) : (historyState.store?.totals || {});
+    const nd = Number(totalsSource.divine || 0), ne = Number(totalsSource.exalted || 0), na = Number(totalsSource.annul || 0),
+          nc = Number(totalsSource.chaos || 0), nr = Number(totalsSource.regal || 0);
     if (nd || ne || na || nc || nr) {
       const now = Date.now();
       pts.push({ t: now, d: nd, e: ne, a: na, c: nc, r: nr });

@@ -565,8 +565,39 @@ class OverlayApp {
 
             this.featureService!.saveConfig(selectedConfig);
 
-            // Prompt user to restart only when config changed
-            const shouldRestart = await showRestartDialog();
+            const overlayRef = (this.overlayWindow && !this.overlayWindow.isDestroyed()) ? this.overlayWindow : null;
+            let restoreOverlayZ: (() => void) | undefined;
+
+            if (overlayRef) {
+                const wasAlwaysOnTop = overlayRef.isAlwaysOnTop();
+                try {
+                    overlayRef.setAlwaysOnTop(false);
+                } catch (err) {
+                    console.warn('[overlay] Failed to release always-on-top for restart dialog:', err);
+                }
+                restoreOverlayZ = () => {
+                    try {
+                        if (!overlayRef || overlayRef.isDestroyed()) return;
+                        if (this.pinned || wasAlwaysOnTop) {
+                            overlayRef.setAlwaysOnTop(true, 'screen-saver');
+                            if (typeof (overlayRef as any).moveTop === 'function') {
+                                (overlayRef as any).moveTop();
+                            }
+                        } else {
+                            overlayRef.setAlwaysOnTop(false);
+                        }
+                    } catch (restoreErr) {
+                        console.warn('[overlay] Failed to restore always-on-top after restart dialog:', restoreErr);
+                    }
+                };
+            }
+
+            let shouldRestart = false;
+            try {
+                shouldRestart = await showRestartDialog(overlayRef);
+            } finally {
+                restoreOverlayZ?.();
+            }
 
             if (shouldRestart) {
                 app.relaunch();
@@ -958,14 +989,15 @@ class OverlayApp {
         // Arm clipboard acceptance for a brief window
         const now = Date.now();
         this.armedCaptureUntil = now + 2000;
-        this.lastCopyTimestamp = now;
-        try { this.clipboardMonitor.resetLastSeen(); } catch {}
-        console.log('[Hotkey] Starting item capture: simulating Ctrl+C');
+    this.lastCopyTimestamp = now;
+    try { this.clipboardMonitor.resetLastSeen(); } catch {}
+    const copyShortcutLabel = process.platform === 'darwin' ? 'Cmd+Alt+C' : 'Ctrl+Alt+C';
+    console.log(`[Hotkey] Starting item capture: simulating ${copyShortcutLabel}`);
 
         let handled = false;
         try {
-            // Send Ctrl+C immediately - game has focus since we haven't shown overlay yet
-            this.trySimulateCtrlC();
+            // Send copy combo immediately - game has focus since we haven't shown overlay yet
+            this.trySimulateCopyShortcut();
         
             // Give the game time to populate the clipboard - configurable delay for users with timing issues
             const clipboardDelay = this.settingsService?.get('clipboardDelay') || 300;
@@ -974,8 +1006,6 @@ class OverlayApp {
             // Poll clipboard for the item
             const deadline = Date.now() + 800; // Reduced from 1200ms - faster feedback
             let attempts = 0;
-            let lastText = '';
-        
             while (Date.now() < deadline) {
                 attempts++;
                 try {
@@ -992,13 +1022,6 @@ class OverlayApp {
                         continue;
                     }
                     
-                    // If text hasn't changed from last poll, we've seen all the data
-                    if (text === lastText && attempts > 2) {
-                        console.log('[Hotkey] Clipboard unchanged, likely not an item');
-                        break;
-                    }
-                    lastText = text;
-                
                     try {
                         const parsed = await this.itemParser.parse(text);
                         
@@ -1075,25 +1098,25 @@ class OverlayApp {
 
 
     // Best-effort copy trigger: send real Ctrl/Command+C to force a copy in PoE
-    private trySimulateCtrlC() {
+    private trySimulateCopyShortcut() {
         // Try robotjs if available
         try {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const robot = require('robotjs');
             if (robot && typeof robot.keyTap === 'function') {
-                const modifier = process.platform === 'darwin' ? 'command' : 'control';
-                robot.keyTap('c', modifier);
+                const modifiers = process.platform === 'darwin' ? ['command', 'alt'] : ['control', 'alt'];
+                robot.keyTap('c', modifiers);
                 return;
             }
         } catch {}
-        // Windows fallback: Send Ctrl+C via SendKeys
+    // Windows fallback: Send Ctrl+Alt+C via SendKeys
         if (process.platform === 'win32') {
             try {
                 const ps = cp.spawn('powershell.exe', [
                     '-NoProfile',
                     '-WindowStyle', 'Hidden',
                     '-Command',
-                    "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait('^c')"
+                    "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait('^%c')"
                 ], { windowsHide: true, stdio: 'ignore' });
                 ps.unref?.();
             } catch {}
@@ -1202,8 +1225,7 @@ class OverlayApp {
         const captureInProgress = this.shortcutAwaitingCapture || Date.now() <= this.armedCaptureUntil;
         console.log('[hideOverlay] captureInProgress=', captureInProgress, 'shortcutAwaitingCapture=', this.shortcutAwaitingCapture, 'armedCaptureUntil=', this.armedCaptureUntil, 'now=', Date.now());
         if (!captureInProgress) {
-            console.log('[hideOverlay] Clearing clipboard');
-            try { clipboard.clear(); } catch {}
+            console.log('[hideOverlay] Leaving clipboard contents intact');
             try { this.clipboardMonitor.resetLastSeen(); } catch {}
         } else {
             console.log('[hideOverlay] Skipping clipboard clear - capture in progress');
