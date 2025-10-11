@@ -1,6 +1,6 @@
 {
   "name": "@xilehud/overlay",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "XileHUD",
   "main": "dist/main/main.js",
   "scripts": {
@@ -20,16 +20,21 @@
     "dist:unsigned": "cross-env WIN_CODESIGN=skip npm run build && electron-builder",
     "publish:github": "npm run build && electron-builder --publish always"
   },
-  "keywords": ["poe2", "overlay", "modifiers", "electron"],
+  "keywords": [
+    "poe2",
+    "overlay",
+    "modifiers",
+    "electron"
+  ],
   "author": "XileHUD",
   "license": "GPL-3.0-only",
   "devDependencies": {
     "@types/node": "^20.0.0",
     "@vitejs/plugin-vue": "^4.6.2",
     "concurrently": "^8.0.0",
+    "cross-env": "^7.0.3",
     "electron": "28.3.0",
     "electron-builder": "23.6.0",
-    "cross-env": "^7.0.3",
     "tsx": "^4.0.0",
     "typescript": "^5.0.0",
     "vite": "^5.0.0",
@@ -39,13 +44,14 @@
   "dependencies": {
     "clipboardy": "^4.0.0",
     "electron-forge": "^5.2.4",
-    "electron-updater": "^6.3.5"
+    "electron-updater": "^6.3.5",
+    "uiohook-napi": "^1.5.4"
   },
   "build": {
     "appId": "com.xilehud.overlay",
     "productName": "XileHUD",
     "copyright": "Copyright © 2025 XileHUD",
-    "directories": { 
+    "directories": {
       "output": "dist_electron",
       "buildResources": "build"
     },
@@ -54,11 +60,19 @@
       "xile512.ico"
     ],
     "extraResources": [
-      { "from": "data/poe2", "to": "data/poe2", "filter": ["**/*.json"] },
+      {
+        "from": "data/poe2",
+        "to": "data/poe2",
+        "filter": [
+          "**/*.json"
+        ]
+      },
       {
         "from": "bundled-images",
         "to": "bundled-images",
-        "filter": ["**/*"]
+        "filter": [
+          "**/*"
+        ]
       }
     ],
     "publish": [
@@ -73,9 +87,11 @@
       "icon": "xile512.ico",
       "artifactName": "XileHUD-Setup-${version}.${ext}",
       "target": [
-        { 
-          "target": "nsis", 
-          "arch": ["x64"] 
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
         }
       ]
     },

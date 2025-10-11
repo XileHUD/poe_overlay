@@ -15,7 +15,10 @@ export interface UserSettings {
     useCtrl?: boolean; // when true (default), register as Ctrl/Cmd + key; when false, register as single key
   };
   fontSize?: number; // Font size percentage (80-150), default 100
-  clipboardDelay?: number; // Delay in ms before checking clipboard after invoking the copy shortcut (default 300ms)
+  clipboardDelay?: number | null; // Additional delay before clipboard polling (ms)
+  clipboardDelayMigrated?: boolean; // Internal flag to avoid repeating clipboard delay resets
+  clipboardDelayMigratedV2?: boolean; // Flag for 2025-10 migration to new hotkey system defaults
+  clipboardDelayMigratedV3?: boolean; // Flag for resetting all clipboard delays to Auto (2025-10-11)
 }
 
 export class SettingsService {

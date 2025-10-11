@@ -18,6 +18,7 @@ import { buildModPopoutHtml } from './popouts/modPopoutTemplate';
 // Use explicit .js extension for NodeNext module resolution compatibility
 import { buildSplashHtml } from './ui/splashTemplate.js';
 import { createTray } from './ui/trayService.js';
+import { initializeUiohookTrigger, shutdownUiohookTrigger, triggerCopyShortcut } from './hotkeys/uiohook-trigger.js';
 // NodeNext sometimes fails transiently on newly added files with explicit .js; use extensionless for TS while runtime still resolves .js after build
 import { FloatingButton } from './ui/floatingButton';
 import { HotkeyConfigurator } from './ui/hotkeyConfigurator';
@@ -252,6 +253,9 @@ class OverlayApp {
     private clickOutsideCheckInterval: NodeJS.Timeout | null = null; // Polling interval for click-outside detection
     private lastMousePosition: { x: number; y: number } | null = null; // Track mouse position for click detection
     private overlayUpdateCache: { timestamp: number; result: OverlayUpdateCheckResult } | null = null;
+    private lastForegroundWindowHandle: { handle: string; capturedAt: number } | null = null;
+    private uiohookInitialized = false;
+    private lastTriggerUsedUiohook: boolean | null = null;
 
     constructor() {
         app.whenReady().then(async () => {
@@ -261,6 +265,8 @@ class OverlayApp {
             this.updateSplash('Loading settings');
             this.settingsService = new SettingsService(this.getUserConfigDir());
             this.featureService = new FeatureService(this.settingsService);
+
+            this.migrateClipboardDelaySetting();
             
             // Show splash if user has never seen it (new install or upgrade from old version)
             const hasSeenSplash = this.settingsService.get('seenFeatureSplash');
@@ -313,6 +319,18 @@ class OverlayApp {
             this.clipboardMonitor = new ClipboardMonitor();
             this.keyboardMonitor = new KeyboardMonitor();
             try { this.keyboardMonitor!.start(); } catch {}
+
+            const hookReady = await initializeUiohookTrigger((message, details) => {
+                if (details) {
+                    console.debug(message, details);
+                } else {
+                    console.debug(message);
+                }
+            });
+            this.uiohookInitialized = hookReady;
+            if (!hookReady) {
+                console.warn('[Hotkey] uIOhook unavailable, falling back to RobotJS/SendKeys');
+            }
 
             this.updateSplash('Creating overlay window');
             this.createOverlayWindow();
@@ -409,6 +427,13 @@ class OverlayApp {
                 try { globalShortcut.unregisterAll(); } catch {}
                 try { (this.clipboardMonitor as any).stop?.(); } catch {}
                 try { this.keyboardMonitor?.stop(); } catch {}
+                try { shutdownUiohookTrigger((message, details) => {
+                    if (details) {
+                        console.debug(message, details);
+                    } else {
+                        console.debug(message);
+                    }
+                }); } catch {}
             });
 
             // Finalize splash
@@ -622,7 +647,8 @@ class OverlayApp {
                 onHotkeySave: (newKey: string) => this.saveHotkey(newKey),
                 onFeatureConfigOpen: () => this.openFeatureConfiguration(),
                 onShowOverlay: () => this.toggleOverlayWithAllCategory(),
-                overlayWindow: this.overlayWindow
+                overlayWindow: this.overlayWindow,
+                getDefaultClipboardDelay: () => this.getAdaptiveClipboardDelay()
             });
         } catch (err) {
             console.error('[openSettings] Error:', err);
@@ -997,35 +1023,36 @@ class OverlayApp {
         let handled = false;
         try {
             // Send copy combo immediately - game has focus since we haven't shown overlay yet
-            this.trySimulateCopyShortcut();
+            await this.trySimulateCopyShortcut();
         
             // Give the game time to populate the clipboard - configurable delay for users with timing issues
-            const clipboardDelay = this.settingsService?.get('clipboardDelay') || 300;
-            await new Promise(r => setTimeout(r, clipboardDelay));
+            const additionalDelay = this.getAdaptiveClipboardDelay();
+            if (additionalDelay > 0) {
+                await new Promise(r => setTimeout(r, additionalDelay));
+            }
 
-            // Poll clipboard for the item
-            const deadline = Date.now() + 800; // Reduced from 1200ms - faster feedback
+            const { interval: clipboardPollInterval, timeout: clipboardPollTimeout } = this.getClipboardPollConfig();
+            const clipboardDeadline = Date.now() + clipboardPollTimeout;
+            const emptyExitThreshold = Math.max(3, Math.round(180 / clipboardPollInterval));
+
             let attempts = 0;
-            while (Date.now() < deadline) {
+            while (Date.now() < clipboardDeadline) {
                 attempts++;
                 try {
                     const text = (clipboard.readText() || '').trim();
-                
-                    // Early exit if clipboard is empty or hasn't changed
+
                     if (!text || text.length < 5) {
-                        // If we've tried a few times and clipboard is still empty, exit early
-                        if (attempts > 3 && !text) {
-                            console.log('[Hotkey] Clipboard empty after', attempts, 'attempts, exiting early');
+                        if (attempts > emptyExitThreshold && !text) {
+                            console.log('[Hotkey] Clipboard still empty after', attempts, 'polls (~', attempts * clipboardPollInterval, 'ms), exiting early');
                             break;
                         }
-                        await new Promise(r => setTimeout(r, 50));
+                        await new Promise(r => setTimeout(r, clipboardPollInterval));
                         continue;
                     }
-                    
+
                     try {
                         const parsed = await this.itemParser.parse(text);
-                        
-                        // Only accept if we got a valid category (not 'unknown')
+
                         if (parsed && parsed.category && parsed.category !== 'unknown') {
                             console.log('[Hotkey] ✓ Parsed item. Category:', parsed.category, 'Rarity:', parsed.rarity);
 
@@ -1067,17 +1094,14 @@ class OverlayApp {
                             }
                         }
                     } catch (parseErr) {
-                        // Parse error - not a valid item
-                        // If we've tried parsing a few times and it keeps failing, exit
-                        if (attempts > 3) {
+                        if (attempts > emptyExitThreshold) {
                             console.log('[Hotkey] Parse failed multiple times, exiting');
                             break;
                         }
                     }
                 } catch {}
-            
-                // Poll every 50ms
-                await new Promise(r => setTimeout(r, 50));
+
+                await new Promise(r => setTimeout(r, clipboardPollInterval));
             }
             
             if (!handled && attempts > 0) {
@@ -1097,19 +1121,46 @@ class OverlayApp {
     private async isAuthenticated() { return this.poeSession.isAuthenticatedProbe('Rise of the Abyssal'); }
 
 
-    // Best-effort copy trigger: send real Ctrl/Command+C to force a copy in PoE
-    private trySimulateCopyShortcut() {
-        // Try robotjs if available
+    // Best-effort copy trigger: send real Ctrl/Command+C sequence to force a copy in PoE
+    private async trySimulateCopyShortcut(): Promise<void> {
+        const logger = (message: string, details?: unknown) => {
+            if (details) {
+                console.debug(message, details);
+            } else {
+                console.debug(message);
+            }
+        };
+
+    const hookSuccess = await triggerCopyShortcut({ includeAlt: true, logger });
+    this.lastTriggerUsedUiohook = hookSuccess;
+        if (hookSuccess) return;
+
+        const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+
+        // Try robotjs if available as secondary fallback
         try {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const robot = require('robotjs');
-            if (robot && typeof robot.keyTap === 'function') {
+            if (robot && typeof robot.keyToggle === 'function') {
                 const modifiers = process.platform === 'darwin' ? ['command', 'alt'] : ['control', 'alt'];
-                robot.keyTap('c', modifiers);
+                for (const mod of modifiers) {
+                    robot.keyToggle(mod, 'down');
+                    await sleep(12);
+                }
+                robot.keyToggle('c', 'down');
+                await sleep(30);
+                robot.keyToggle('c', 'up');
+                for (let i = modifiers.length - 1; i >= 0; i--) {
+                    await sleep(10);
+                    robot.keyToggle(modifiers[i], 'up');
+                }
                 return;
             }
-        } catch {}
-    // Windows fallback: Send Ctrl+Alt+C via SendKeys
+        } catch (err) {
+            logger('[Hotkey] robotjs fallback failed', err);
+        }
+
+        // Windows fallback: Send Ctrl+Alt+C via SendKeys
         if (process.platform === 'win32') {
             try {
                 const ps = cp.spawn('powershell.exe', [
@@ -1119,7 +1170,9 @@ class OverlayApp {
                     "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait('^%c')"
                 ], { windowsHide: true, stdio: 'ignore' });
                 ps.unref?.();
-            } catch {}
+            } catch (err) {
+                logger('[Hotkey] PowerShell SendKeys fallback failed', err);
+            }
         }
     }
 
@@ -1136,6 +1189,10 @@ class OverlayApp {
         }
         const wasVisible = this.isOverlayVisible;
         const wasPinned = this.pinned;
+
+        if (!wasVisible) {
+            this.captureForegroundWindowHandle();
+        }
         
         // Always ensure window is visible when showOverlay is called
         // Passive mode just means "don't steal focus from game", not "don't show"
@@ -1231,6 +1288,168 @@ class OverlayApp {
             console.log('[hideOverlay] Skipping clipboard clear - capture in progress');
         }
         console.log('Overlay hidden');
+
+        // Restore game focus shortly after overlay is hidden (Windows only)
+        if (process.platform === 'win32') {
+            setTimeout(() => {
+                try {
+                    if (this.restoreForegroundWindowFocus()) {
+                        console.log('[Overlay] Requested PoE window focus restore');
+                    }
+                } catch (err) {
+                    console.warn('[Overlay] Failed to restore foreground window', err);
+                }
+            }, 60);
+        }
+    }
+
+    private getOverlayWindowHandleString(): string | null {
+        if (process.platform !== 'win32') return null;
+        if (!this.overlayWindow || typeof this.overlayWindow.getNativeWindowHandle !== 'function') return null;
+        try {
+            const handleBuffer: Buffer = this.overlayWindow.getNativeWindowHandle();
+            if (!handleBuffer) return null;
+
+            if (handleBuffer.length >= 8 && typeof handleBuffer.readBigUInt64LE === 'function') {
+                const handleValue = handleBuffer.readBigUInt64LE(0);
+                return BigInt.asUintN(64, handleValue).toString();
+            }
+
+            if (handleBuffer.length >= 4) {
+                return handleBuffer.readUInt32LE(0).toString();
+            }
+        } catch (err) {
+            console.warn('[Overlay] Failed to read overlay window handle', err);
+        }
+        return null;
+    }
+
+    private captureForegroundWindowHandle() {
+        if (process.platform !== 'win32') return;
+        if (this.lastForegroundWindowHandle && (Date.now() - this.lastForegroundWindowHandle.capturedAt) < 200) {
+            return;
+        }
+        try {
+            const script = `
+Add-Type @"
+using System;
+using System.Runtime.InteropServices;
+public static class ForegroundWindowHelper {
+    [DllImport("user32.dll")]
+    public static extern IntPtr GetForegroundWindow();
+}
+"@
+$hwnd = [ForegroundWindowHelper]::GetForegroundWindow()
+if ($hwnd -eq [System.IntPtr]::Zero) {
+    ""
+} else {
+    $hwnd.ToInt64()
+}`;
+            const handle = cp.execFileSync('powershell.exe', [
+                '-NoProfile',
+                '-Command',
+                script
+            ], { encoding: 'utf8' }).trim();
+            if (handle && /^\d+$/.test(handle)) {
+                const overlayHandle = this.getOverlayWindowHandleString();
+                if (overlayHandle && overlayHandle === handle) {
+                    return;
+                }
+                this.lastForegroundWindowHandle = { handle, capturedAt: Date.now() };
+            }
+        } catch (err) {
+            console.warn('[Overlay] Failed to capture foreground window handle', err);
+        }
+    }
+
+    private restoreForegroundWindowFocus(): boolean {
+        if (process.platform !== 'win32') return false;
+        const entry = this.lastForegroundWindowHandle;
+        this.lastForegroundWindowHandle = null;
+        if (!entry || !entry.handle || !/^\d+$/.test(entry.handle)) return false;
+        try {
+            const handleValue = entry.handle.trim();
+            const script = `
+$handleRaw = '${handleValue}'
+if ([string]::IsNullOrWhiteSpace($handleRaw)) { return }
+[long]$handleValue = 0
+if (-not [long]::TryParse($handleRaw, [ref]$handleValue)) { return }
+if ($handleValue -eq 0) { return }
+Add-Type @"
+using System;
+using System.Runtime.InteropServices;
+public static class ForegroundWindowHelper {
+    [DllImport("user32.dll")]
+    public static extern bool SetForegroundWindow(IntPtr hWnd);
+    [DllImport("user32.dll")]
+    public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+    [DllImport("user32.dll")]
+    public static extern bool IsIconic(IntPtr hWnd);
+}
+"@
+$ptr = [System.IntPtr]$handleValue
+if ($ptr -eq [System.IntPtr]::Zero) { return }
+if ([ForegroundWindowHelper]::IsIconic($ptr)) {
+    [ForegroundWindowHelper]::ShowWindow($ptr, 9) | Out-Null
+}
+[ForegroundWindowHelper]::SetForegroundWindow($ptr) | Out-Null
+`;
+            const ps = cp.spawn('powershell.exe', [
+                '-NoProfile',
+                '-WindowStyle', 'Hidden',
+                '-Command',
+                script
+            ], { windowsHide: true, stdio: 'ignore' });
+            ps.unref?.();
+            return true;
+        } catch (err) {
+            console.warn('[Overlay] Failed to refocus captured window', err);
+            return false;
+        }
+    }
+
+    private getAdaptiveClipboardDelay(): number {
+        const configured = this.settingsService?.get('clipboardDelay');
+        if (typeof configured === 'number' && Number.isFinite(configured)) {
+            return Math.max(0, configured);
+        }
+
+        const preferFast = this.lastTriggerUsedUiohook ?? this.uiohookInitialized;
+        return preferFast ? 0 : 150;
+    }
+
+    private getClipboardPollConfig(): { interval: number; timeout: number } {
+        const configured = this.settingsService?.get('clipboardDelay');
+        const customDelay = typeof configured === 'number' && configured > 0 ? configured : 0;
+        const usingUiohook = this.lastTriggerUsedUiohook ?? this.uiohookInitialized;
+
+        const interval = usingUiohook ? 48 : 70;
+        const baseTimeout = usingUiohook ? 650 : 950;
+
+        return {
+            interval,
+            timeout: baseTimeout + customDelay
+        };
+    }
+
+    private migrateClipboardDelaySetting(): void {
+        if (!this.settingsService) return;
+
+        const v2Done = this.settingsService.get('clipboardDelayMigratedV2');
+        if (!v2Done) {
+            this.settingsService.set('clipboardDelayMigratedV2', true);
+        }
+
+        const alreadyMigrated = this.settingsService.get('clipboardDelayMigratedV3');
+        if (alreadyMigrated) return;
+
+        const existingDelay = this.settingsService.get('clipboardDelay');
+        if (existingDelay !== null && existingDelay !== undefined) {
+            console.log('[Settings] Clearing clipboard delay override (previous value:', existingDelay, ') to enable Auto default');
+            this.settingsService.set('clipboardDelay', null);
+        }
+
+        this.settingsService.set('clipboardDelayMigratedV3', true);
     }
 
     private isParsedItemAllowed(parsed: any): boolean {
