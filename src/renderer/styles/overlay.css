@@ -352,7 +352,8 @@ body {
 }
 #historyDetail { 
     min-height: 0 !important; 
-    overflow: hidden !important; /* prevent internal scrollbar; content must fit */
+    overflow-x: hidden;
+    overflow-y: auto;
     display:flex;
 }
 
@@ -1206,8 +1207,20 @@ body.crafting-mode #controlPanel { display: none !important; }
 /* Responsive icon clamp with updated max-height */
 /* Removed width clamp override to let JS scaling control height; keep responsive width via media queries if needed */
 /* Prevent inner scrollbars in 60/40 layout; allow page scroll only on list side */
-#historyDetail { scrollbar-width:none; }
-#historyDetail::-webkit-scrollbar { width:0; height:0; }
+#historyDetail { scrollbar-width: thin; }
+#historyDetail::-webkit-scrollbar {
+    width: 8px;
+}
+#historyDetail::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+#historyDetail::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+#historyDetail::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
 .history-detail-card { overflow:hidden; }
 .history-detail-chart-grid { overflow:hidden; }
 

@@ -287,7 +287,12 @@
                 </div>
             </div>
             <div class="tab" id="toolsTab" style="position:relative; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px; cursor:pointer; display:inline-flex; align-items:center; gap:4px;">
-                <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06A1.65 1.65 0 0015 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0l-.06-.06A1.65 1.65 0 008.6 19.4a1.65 1.65 0 00-1.82-.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 008.6 9a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0l.06.06A1.65 1.65 0 0015 9a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 13c0 .4.16.78.44 1.06z"/></svg></span>
+                <span class="menu-icon" aria-hidden="true">
+                    <!-- Tools icon – CC Attribution, atomicons (https://atomicons.com/) -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="miter">
+                        <path d="M22 8.5A6.5 6.5 0 0 1 15.5 15a6.38 6.38 0 0 1-2-.3L6.62 21.62 2.38 17.38 9.3 10.46a6.38 6.38 0 0 1-.3-2 6.49 6.49 0 0 1 9.34-5.84L14 7l3 3 4.34-4.34A6.45 6.45 0 0 1 22 8.5Z"/>
+                    </svg>
+                </span>
                 <span>Tools ▾</span>
                 <div id="toolsMenu" style="display:none; position:absolute; left:0; bottom:100%; transform: translateY(-4px); background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; padding:4px; z-index:320; min-width:140px; box-shadow:0 4px 14px rgba(0,0,0,0.55);">
                     <div class="tools-menu-item" data-action="regex" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
@@ -306,9 +311,12 @@
                 New Update
             </button>
             <button id="settingsBtn" class="pin-btn" style="width: 32px; height: 26px; display:flex; align-items:center; justify-content:center; padding: 0;" title="Open settings" aria-label="Open settings">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="3"></circle>
-                    <path d="M12 1v6m0 6v10M5.6 5.6l4.2 4.2m4.2 4.2l4.2 4.2M1 12h6m6 0h10M5.6 18.4l4.2-4.2m4.2-4.2l4.2-4.2"></path>
+                <!-- Settings cog icon – Public Domain, Significa Labs (https://significa.co/labs/) -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(2 3)" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10">
+                        <circle cx="2.5" cy="2.5" r="2.5" transform="translate(7.5 6.5)" fill="none"></circle>
+                        <path d="M4.452,16.794l.087-3.249-3.249.087A9.078,9.078,0,0,1,.276,11.185l2.36-2.236L.276,6.712A9.078,9.078,0,0,1,1.29,4.265l3.249.087L4.452,1.1A9.078,9.078,0,0,1,6.9.089l2.236,2.36L11.372.089A9.078,9.078,0,0,1,13.82,1.1l-.087,3.249,3.249-.087A9.081,9.081,0,0,1,18,6.712l-2.36,2.237L18,11.185a9.081,9.081,0,0,1-1.015,2.447l-3.249-.087.087,3.249a9.078,9.078,0,0,1-2.448,1.015l-2.236-2.36L6.9,17.809A9.078,9.078,0,0,1,4.452,16.794Z" transform="translate(0.864 0.051)" fill="none"></path>
+                    </g>
                 </svg>
             </button>
         </div>
@@ -1551,7 +1559,11 @@
                             return;
                         }
 
-                        const isEssence = /essence/i.test(name) || /essence/i.test(baseType) || /essences?/i.test(blob);
+                        const normalizedCategory = String(category || '').toLowerCase();
+                        const itemClass = (item.itemClass || '').toLowerCase();
+                        const isEssence = normalizedCategory === 'essences' ||
+                                           (!normalizedCategory && itemClass.includes('stackable currency') &&
+                                            (/essence/i.test(name) || /essence/i.test(baseType) || /essences?/i.test(blob)));
                         const isOmen = /omen/i.test(blob);
                         const isCatalyst = /catalyst/i.test(blob);
                         // Socketables exclude Waystones now; handle Waystones separately so they stay in Modifiers
@@ -1560,7 +1572,6 @@
                         // Fix: Liquid Emotions detection based on name, not category
                         const isEmotion = /liquid\s*(emotion|envy|hatred|fear|anguish|despair|suffering|greed|contempt|ire)/i.test(name) || /liquid\s*emotion/i.test(baseType);
                         // Fix: Gems should route to Character > Gems - use itemClass instead of text matching to avoid false positives with "spirit" in rare item names
-                        const itemClass = (item.itemClass || '').toLowerCase();
                         const isGem = itemClass.includes('skill gem') || itemClass.includes('spirit gem') || itemClass.includes('uncut spirit gem') || itemClass.includes('support gem');
 
                         // (unique via frame/icon was handled above)
