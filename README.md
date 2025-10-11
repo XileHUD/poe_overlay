@@ -43,8 +43,14 @@ One of the core motivations for this project. In-game, the vendor history is cap
 ### Detailed Modifier Overview
 Get an in-depth look at item modifiers with advanced filters, weighting, and more. Instantly understand the power of an item.
 
+With the new whittling helper you can continue your hotkey workflow exactly as before, but now the header gains a dedicated “Whittling” label. Hovering it reveals every affix the overlay parsed—including their tiers, item level requirements, and which modifier would get whittled. The target line is highlighted in orange so you know precisely what you’re locking in.
+
 <p align="center">
 	<img src="./screenshots/Modifier.png" alt="Detailed Modifier Overview" width="760" />
+</p>
+
+<p align="center">
+	<img src="./screenshots/Whittling.png" alt="Whittling helper showing clipboard tiers and target modifier" width="760" />
 </p>
 
 ### Crafting Currency Helper
@@ -96,6 +102,20 @@ Quickly tailor the overlay to the features you actually use. Toggle whole module
 
 <p align="center">
 	<img src="./screenshots/FeatureSelection.png" alt="Feature Selector UI" width="760" />
+</p>
+
+### Base Browser → Modifiers Jump
+From the Bases browser you can now jump straight into the relevant modifier list with a single click. Look up a base, tap the new “View modifiers” shortcut, and the overlay pivots directly to the matching category so you can evaluate tiers without hunting manually.
+
+<p align="center">
+	<img src="./screenshots/BasesModifierSwitch.png" alt="Quick jump from bases to modifiers" width="760" />
+</p>
+
+### Merchant History Insights
+Merchant history filters also power more than the table: the currency totals, trade count, and earnings graph now rebuild from the filtered dataset, keeping every stat perfectly aligned with the slice you’re studying.
+
+<p align="center">
+	<img src="./screenshots/MerchantFilter.png" alt="Merchant history filters syncing totals and graph" width="760" />
 </p>
 
 ### Fuzzy Search Everywhere
