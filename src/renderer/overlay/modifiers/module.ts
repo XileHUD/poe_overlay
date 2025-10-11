@@ -428,10 +428,12 @@ function canonicalizeBaseText(raw: string | null | undefined, removeLeadingLevel
     .replace(/\(desecrated\)/gi, '')
     .replace(/\(sanctified\)/gi, '')
     .replace(/[–—−]/g, '-')
+    .replace(/\s*\+\s*/g, '+')
     .replace(/\s+/g, ' ')
     .trim();
   text = text.replace(/\d+(?:\.\d+)?/g, '#');
-  text = text.replace(/#\s*\(/g, '(');
+  text = text.replace(/#\s*\(/g, '#(');
+  text = text.replace(/#(?=\()/g, '');
   text = text.replace(/^\+/, '');
   return text.toLowerCase();
 }
@@ -447,6 +449,7 @@ function canonicalizeItemText(raw: string | null | undefined): string {
 function formatWhittlingDisplay(value: string): string {
   return value
     .replace(/\s*\((?:augmented|fractured|desecrated|crafted|rune|corrupted|sanctified)\)\s*/gi, '')
+    .replace(/\s*\n\s*/g, ' · ')
     .trim();
 }
 
@@ -488,12 +491,68 @@ function parseValueMarkers(value: string): {
   return { isFractured, isRune, isDesecrated, isSanctified, skip };
 }
 
+function isLikelyBasePropertyLine(value: string): boolean {
+  if (!value) return false;
+  const normalized = value.replace(/\(augmented\)/gi, '').trim();
+  if (!normalized) return false;
+  const colonIndex = normalized.indexOf(':');
+  if (colonIndex <= 0) return false;
+  const label = normalized.slice(0, colonIndex).trim().toLowerCase();
+  if (!label) return false;
+
+  const BASE_PROPERTY_KEYWORDS = [
+    'block chance',
+    'chance to block',
+    'chance to block spell damage',
+    'chance to block attack damage',
+    'armour',
+    'armour and evasion',
+    'armour and energy shield',
+    'armour, evasion and energy shield',
+    'evasion rating',
+    'energy shield',
+    'ward',
+    'physical damage',
+    'chaos damage',
+    'elemental damage',
+    'critical strike chance',
+    'attacks per second',
+    'weapon range',
+    'stack size',
+    'quality',
+    'item level',
+    'level requirement',
+    'requires',
+    'strength requirement',
+    'dexterity requirement',
+    'intelligence requirement',
+    'base chance',
+    'socketed gems',
+    'sockets',
+    'gem level'
+  ];
+
+  if (BASE_PROPERTY_KEYWORDS.some(keyword => label === keyword || label.startsWith(keyword))) {
+    return true;
+  }
+
+  const simpleWords = label.replace(/[^a-z\s]/g, '').trim();
+  if (!simpleWords) return false;
+  const wordCount = simpleWords.split(/\s+/).filter(Boolean).length;
+  if (wordCount <= 4 && /(armour|evasion|energy shield|ward|block|damage|resistance)/.test(simpleWords)) {
+    return true;
+  }
+
+  return false;
+}
+
 function createParsedMod(header: string | null, value: string): ParsedItemMod | null {
   const headerInfo = parseHeaderInfo(header);
   const markerInfo = parseValueMarkers(value);
   if (headerInfo.skip) return null;
   if (markerInfo.skip) return null;
   if (headerInfo.isRune || markerInfo.isRune) return null;
+  if (isLikelyBasePropertyLine(value)) return null;
   return {
     header,
     value,
@@ -510,26 +569,53 @@ function createParsedMod(header: string | null, value: string): ParsedItemMod | 
 function parseItemModifiers(lines: string[] | undefined): ParsedItemMod[] {
   if (!Array.isArray(lines) || !lines.length) return [];
   const entries: ParsedItemMod[] = [];
-  let pendingHeader: string | null = null;
+  let currentHeader: string | null = null;
   for (const raw of lines) {
     if (raw == null) continue;
     const trimmed = String(raw).trim();
     if (!trimmed) continue;
     if (/^[-=]{2,}$/.test(trimmed)) continue;
     if (/^\{/.test(trimmed)) {
-      pendingHeader = trimmed;
+      currentHeader = trimmed;
       continue;
     }
-    if (!pendingHeader && !/\d/.test(trimmed)) continue;
+  if (!currentHeader) continue;
     if (/^socketed\s+(?:gems|attacks|spells)\s+are\s+supported/i.test(trimmed)) {
-      pendingHeader = null;
+      currentHeader = null;
       continue;
     }
-    const entry = createParsedMod(pendingHeader, trimmed);
-    pendingHeader = null;
+    const entry = createParsedMod(currentHeader, trimmed);
+    if (!entry && currentHeader) {
+      // Allow non-numeric descriptive lines to clear current header gracefully
+      currentHeader = null;
+    }
     if (entry) entries.push(entry);
   }
-  return entries;
+  return mergeHybridEntries(entries);
+}
+
+function mergeHybridEntries(entries: ParsedItemMod[]): ParsedItemMod[] {
+  if (!entries.length) return entries;
+  const merged: ParsedItemMod[] = [];
+  for (let i = 0; i < entries.length; i++) {
+    const current = entries[i];
+    if (!current.header) {
+      merged.push(current);
+      continue;
+    }
+    const combined: ParsedItemMod = { ...current };
+    while (i + 1 < entries.length && entries[i + 1]?.header === current.header) {
+      const next = entries[i + 1];
+      combined.value = `${combined.value}\n${next.value}`;
+      combined.isFractured = Boolean(combined.isFractured || next.isFractured);
+      combined.isRune = Boolean(combined.isRune || next.isRune);
+      combined.isDesecrated = Boolean(combined.isDesecrated || next.isDesecrated);
+      combined.isSanctified = Boolean(combined.isSanctified || next.isSanctified);
+      i++;
+    }
+    merged.push(combined);
+  }
+  return merged;
 }
 
 function determineBlockedReason(itemMeta: any, lines: string[] | undefined): 'corrupted' | 'sanctified' | 'fractured' | null {
@@ -854,7 +940,25 @@ export function computeWhittling(data: ModifierData): WhittlingResult | null {
       const headerDetails = entry.header ? parseHeaderInfo(entry.header) : { tierName: null, tierNumber: null, side: null, isFractured: false, isRune: false, skip: false };
       console.log('[Whittling] Entry', index, 'header:', entry.header, '→ tierNumber:', headerDetails.tierNumber);
       const canonical = canonicalizeItemText(entry.value);
-      const candidate = selectCandidate(entry, canonical, tierIndex);
+      let candidate = selectCandidate(entry, canonical, tierIndex);
+      const canonicalBucket = canonical ? (tierIndex.byCanonical.get(canonical) || []).slice() : [];
+      if (!candidate && canonicalBucket.length) {
+        const desiredTier = headerDetails.tierNumber ?? entry.tierNumber ?? null;
+        if (desiredTier != null) {
+          const tierMatch = canonicalBucket.find(c => c.tierNumber === desiredTier);
+          if (tierMatch) candidate = tierMatch;
+        }
+        if (!candidate && (headerDetails.tierName || entry.tierName)) {
+          const desiredName = normalizeTierName(headerDetails.tierName ?? entry.tierName);
+          if (desiredName) {
+            const nameMatch = canonicalBucket.find(c => normalizeTierName(c.tierName) === desiredName);
+            if (nameMatch) candidate = nameMatch;
+          }
+        }
+        if (!candidate) {
+          candidate = canonicalBucket[0] || null;
+        }
+      }
       const tierName = headerDetails.tierName ?? entry.tierName ?? candidate?.tierName ?? null;
       const tierNumber = headerDetails.tierNumber ?? entry.tierNumber ?? candidate?.tierNumber ?? null;
       const ilvl = candidate?.tierLevel ?? null;

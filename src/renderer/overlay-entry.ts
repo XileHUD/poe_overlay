@@ -40,8 +40,7 @@ function enableNumberScrollWheel(): void {
         return step.length - dot - 1;
     };
 
-    const inputs = Array.from(document.querySelectorAll<HTMLInputElement>('input[type="number"]'));
-    inputs.forEach((input) => {
+    const attachWheel = (input: HTMLInputElement): void => {
         if ((input as any)._wheelAttached) return;
         (input as any)._wheelAttached = true;
 
@@ -82,7 +81,36 @@ function enableNumberScrollWheel(): void {
             input.dispatchEvent(new Event('input', { bubbles: true }));
             input.dispatchEvent(new Event('change', { bubbles: true }));
         }, { passive: false });
-    });
+    };
+
+    const scanInputs = (root: ParentNode = document): void => {
+        root.querySelectorAll<HTMLInputElement>('input[type="number"]').forEach(attachWheel);
+    };
+
+    scanInputs();
+
+    if (typeof MutationObserver === 'undefined') return;
+    if (!(window as any)._numberWheelObserver) {
+        try {
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    mutation.addedNodes.forEach((node) => {
+                        if (node instanceof HTMLInputElement) {
+                            if (node.type === 'number') attachWheel(node);
+                        } else if (node instanceof HTMLElement) {
+                            scanInputs(node);
+                        }
+                    });
+                });
+            });
+            if (document.body) {
+                observer.observe(document.body, { childList: true, subtree: true });
+                (window as any)._numberWheelObserver = observer;
+            }
+        } catch {
+            // noop - observer not critical
+        }
+    }
 }
 
 // Global ESC key handler to close overlay (unless pinned)

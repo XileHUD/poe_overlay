@@ -19,7 +19,7 @@ const MODIFIER_CATEGORY_PATTERNS = [
   'Waystones', 'Waystones_*',
   'Relics', '*_Relic',
   'Life_Flasks', 'Mana_Flasks', 'Charms',
-  'Tablet', '*_Precursor_Tablet',
+  'Tablet', 'Precursor_Tablet', '*_Precursor_Tablet',
   'Jewels', 'Ruby', 'Emerald', 'Sapphire', 'Time-Lost_*',
   'Stackable_Currency',
   'Strongbox', 'Strongbox_Uniques', 'Expedition_Logbook'
