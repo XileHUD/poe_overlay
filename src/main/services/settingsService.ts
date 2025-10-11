@@ -19,6 +19,8 @@ export interface UserSettings {
   clipboardDelayMigrated?: boolean; // Internal flag to avoid repeating clipboard delay resets
   clipboardDelayMigratedV2?: boolean; // Flag for 2025-10 migration to new hotkey system defaults
   clipboardDelayMigratedV3?: boolean; // Flag for resetting all clipboard delays to Auto (2025-10-11)
+  merchantHistoryLeague?: string; // Preferred league for merchant history fetches
+  merchantHistoryLeagueSource?: 'auto' | 'manual'; // Whether league was auto-detected or manually chosen
 }
 
 export class SettingsService {

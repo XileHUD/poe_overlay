@@ -54,6 +54,12 @@ export interface OverlayUpdateCheckResult {
     error?: boolean;
 }
 
+type OverlaySnapshot =
+    | { kind: 'item'; sourceText?: string | null; payload: { item: any; modifiers: any[]; category: string } }
+    | { kind: 'unique'; sourceText?: string | null; payload: { item: any } }
+    | { kind: 'gems'; sourceText?: string | null; payload: { tab: string; action?: string; delay?: number } }
+    | { kind: 'default'; sourceText?: string | null; payload?: Record<string, unknown> };
+
 function normalizeVersionString(version: string | null | undefined): string | null {
     if (!version) return null;
     return version.trim().replace(/^v/i, '');
@@ -242,7 +248,10 @@ class OverlayApp {
     private lastPopoutSpawnAt: number = 0;
     private historyPopoutWindow: BrowserWindow | null = null;
     private lastProcessedItemText: string = ''; // track last processed item to avoid duplicate handling
+    private lastOverlaySnapshot: OverlaySnapshot | null = null;
     private lastHistoryFetchAt: number = 0; // global merchant history fetch timestamp (ms)
+    private merchantHistoryLeague: string = 'Rise of the Abyssal';
+    private merchantHistoryLeagueSource: 'auto' | 'manual' = 'auto';
     private pendingDefaultView = false; // request renderer to show last/default view when no item provided
     private readonly HISTORY_FETCH_MIN_INTERVAL = 5 * 60 * 1000; // 5 minutes
     private floatingButton: FloatingButton | null = null;
@@ -256,6 +265,7 @@ class OverlayApp {
     private lastForegroundWindowHandle: { handle: string; capturedAt: number } | null = null;
     private uiohookInitialized = false;
     private lastTriggerUsedUiohook: boolean | null = null;
+    private skipNextFocusRestore = false;
 
     constructor() {
         app.whenReady().then(async () => {
@@ -267,6 +277,20 @@ class OverlayApp {
             this.featureService = new FeatureService(this.settingsService);
 
             this.migrateClipboardDelaySetting();
+
+            try {
+                const storedLeague = this.settingsService.get('merchantHistoryLeague');
+                if (typeof storedLeague === 'string' && storedLeague.trim()) {
+                    this.merchantHistoryLeague = storedLeague.trim();
+                }
+            } catch {}
+
+            try {
+                const storedSource = this.settingsService.get('merchantHistoryLeagueSource');
+                if (storedSource === 'auto' || storedSource === 'manual') {
+                    this.merchantHistoryLeagueSource = storedSource;
+                }
+            } catch {}
             
             // Show splash if user has never seen it (new install or upgrade from old version)
             const hasSeenSplash = this.settingsService.get('seenFeatureSplash');
@@ -347,7 +371,7 @@ class OverlayApp {
                 onQuit: () => app.quit(),
                 onToggleFloatingButton: () => this.toggleFloatingButton(),
                 onOpenSettings: () => this.openSettings(),
-                onShowOverlay: () => this.showOverlay(undefined, { focus: true }),
+                onShowOverlay: () => this.showDefaultOverlay({ focus: true }),
                 currentHotkeyLabel: this.getHotkeyKey(),
                 featureVisibility: {
                     modifiers: this.featureService?.isFeatureEnabled('modifiers') ?? false,
@@ -965,6 +989,7 @@ class OverlayApp {
         // The click-through handler in renderer makes the window click-through when not over interactive content
         // When user clicks outside on the game, Windows gives focus back to the game, triggering blur
         this.overlayWindow.on('blur', () => {
+            console.log('[blur] overlay window blur event fired. isOverlayVisible=', this.isOverlayVisible, 'pinned=', this.pinned);
             setTimeout(() => {
                 try {
                     if (!this.overlayWindow || this.overlayWindow.isDestroyed()) return;
@@ -977,11 +1002,24 @@ class OverlayApp {
                     }
                     
                     const focused = BrowserWindow.getFocusedWindow();
-                    if (!focused) { this.hideOverlay(); return; }
+                    if (!focused) {
+                        const currentHandle = this.getCurrentForegroundWindowHandle();
+                        const capturedHandle = this.lastForegroundWindowHandle?.handle;
+                        const shouldRestore = !!capturedHandle && currentHandle === capturedHandle && capturedHandle !== this.getOverlayWindowHandleString();
+                        this.skipNextFocusRestore = !shouldRestore;
+                        console.log('[blur] No focused window after blur; hiding overlay. currentHandle=', currentHandle, 'capturedHandle=', capturedHandle, 'shouldRestore=', shouldRestore);
+                        this.hideOverlay();
+                        return;
+                    }
                     
                     // If a popout is focused, keep overlay
                     const popFocused = Array.from(this.modPopoutWindows).some(w => !w.isDestroyed() && w.id === focused.id);
                     if (!popFocused && focused.id !== this.overlayWindow.id) {
+                        const currentHandle = this.getCurrentForegroundWindowHandle();
+                        const capturedHandle = this.lastForegroundWindowHandle?.handle;
+                        const shouldRestore = !!capturedHandle && currentHandle === capturedHandle && capturedHandle !== this.getOverlayWindowHandleString();
+                        this.skipNextFocusRestore = !shouldRestore;
+                        console.log('[blur] Focus moved to window id', focused.id, '- hiding overlay. currentHandle=', currentHandle, 'capturedHandle=', capturedHandle, 'shouldRestore=', shouldRestore);
                         this.hideOverlay();
                     }
                 } catch {}
@@ -1039,7 +1077,8 @@ class OverlayApp {
             while (Date.now() < clipboardDeadline) {
                 attempts++;
                 try {
-                    const text = (clipboard.readText() || '').trim();
+                    const rawClipboard = clipboard.readText() || '';
+                    const text = rawClipboard.trim();
 
                     if (!text || text.length < 5) {
                         if (attempts > emptyExitThreshold && !text) {
@@ -1048,6 +1087,20 @@ class OverlayApp {
                         }
                         await new Promise(r => setTimeout(r, clipboardPollInterval));
                         continue;
+                    }
+
+                    if (text === this.lastProcessedItemText) {
+                        console.log('[Hotkey] Clipboard text matches last processed item; reusing existing overlay state');
+                        if (this.isOverlayVisible) {
+                            try { this.overlayWindow?.focus(); } catch {}
+                            handled = true;
+                        } else if (this.restoreLastOverlayView({ focus: false })) {
+                            handled = true;
+                        } else {
+                            this.showDefaultOverlay({ focus: false });
+                            handled = true;
+                        }
+                        break;
                     }
 
                     try {
@@ -1064,13 +1117,18 @@ class OverlayApp {
                             
                             // Unique shortcut handling
                             if ((parsed.rarity || '').toLowerCase() === 'unique') {
-                                this.showUniqueItem(parsed, { focus: false });
+                                this.showUniqueItem(parsed, { focus: false }, text);
                                 handled = true;
                                 break;
                             }
                         
                             // Gem shortcut handling - switch to character tab and show gems panel
                             if (parsed.category === 'Gems') {
+                                this.rememberOverlaySnapshot({
+                                    kind: 'gems',
+                                    sourceText: text,
+                                    payload: { tab: 'characterTab', action: 'gems', delay: 140 }
+                                });
                                 this.showOverlay(undefined, { focus: false });
                                 setTimeout(() => {
                                     this.safeSendToOverlay('set-active-tab', 'characterTab');
@@ -1083,6 +1141,11 @@ class OverlayApp {
                             let modifiers: any[] = [];
                             try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
                             this.safeSendToOverlay('set-active-category', parsed.category);
+                            this.rememberOverlaySnapshot({
+                                kind: 'item',
+                                sourceText: text,
+                                payload: { item: parsed, modifiers, category: parsed.category }
+                            });
                             this.showOverlay({ item: parsed, modifiers }, { focus: false });
                             handled = true;
                             break;
@@ -1117,8 +1180,11 @@ class OverlayApp {
     // === Session / network (delegated to PoeSessionHelper) ===
     private async hasPoeSession(): Promise<boolean> { return this.poeSession.hasSession(); }
     private async openPoeLoginWindow(): Promise<{ loggedIn: boolean; accountName?: string | null }> { return this.poeSession.openLoginWindow(); }
-    private async fetchPoeHistory(league: string) { return this.poeSession.fetchHistory(league); }
-    private async isAuthenticated() { return this.poeSession.isAuthenticatedProbe('Rise of the Abyssal'); }
+    private async fetchPoeHistory(league: string | null | undefined) {
+        const targetLeague = (typeof league === 'string' && league.trim()) ? league.trim() : this.merchantHistoryLeague;
+        return this.poeSession.fetchHistory(targetLeague);
+    }
+    private async isAuthenticated() { return this.poeSession.isAuthenticatedProbe(this.merchantHistoryLeague || 'Rise of the Abyssal'); }
 
 
     // Best-effort copy trigger: send real Ctrl/Command+C sequence to force a copy in PoE
@@ -1187,11 +1253,13 @@ class OverlayApp {
                 this.pendingItemData = data;
             }
         }
+        console.log('[Overlay] showOverlay called with data=', Boolean(data), 'opts=', opts, 'wasVisible=', this.isOverlayVisible);
         const wasVisible = this.isOverlayVisible;
         const wasPinned = this.pinned;
 
         if (!wasVisible) {
             this.captureForegroundWindowHandle();
+            this.skipNextFocusRestore = false;
         }
         
         // Always ensure window is visible when showOverlay is called
@@ -1269,7 +1337,7 @@ class OverlayApp {
             this.pendingDefaultView = false;
         }
         
-        console.log('[Overlay] shown. wasVisible=', wasVisible, 'pinned=', wasPinned, 'focus=', shouldFocus);
+    console.log('[Overlay] shown. wasVisible=', wasVisible, 'pinned=', wasPinned, 'focus=', shouldFocus, 'overlayVisible=', this.isOverlayVisible);
     }
 
     private hideOverlay() {
@@ -1278,6 +1346,7 @@ class OverlayApp {
         // Hide overlay normally
         this.overlayWindow.hide();
         this.isOverlayVisible = false;
+    console.log('[Overlay] hideOverlay -> window hidden');
         // Do not clear clipboard if a capture is in progress
         const captureInProgress = this.shortcutAwaitingCapture || Date.now() <= this.armedCaptureUntil;
         console.log('[hideOverlay] captureInProgress=', captureInProgress, 'shortcutAwaitingCapture=', this.shortcutAwaitingCapture, 'armedCaptureUntil=', this.armedCaptureUntil, 'now=', Date.now());
@@ -1290,7 +1359,13 @@ class OverlayApp {
         console.log('Overlay hidden');
 
         // Restore game focus shortly after overlay is hidden (Windows only)
-        if (process.platform === 'win32') {
+        const shouldRestoreFocus = process.platform === 'win32' && !this.skipNextFocusRestore;
+        if (process.platform === 'win32' && this.skipNextFocusRestore) {
+            console.log('[Overlay] Skipping focus restore due to skipNextFocusRestore flag');
+        }
+        this.skipNextFocusRestore = false;
+
+        if (shouldRestoreFocus) {
             setTimeout(() => {
                 try {
                     if (this.restoreForegroundWindowFocus()) {
@@ -1301,6 +1376,120 @@ class OverlayApp {
                 }
             }, 60);
         }
+    }
+
+    private rememberOverlaySnapshot(snapshot: OverlaySnapshot, manualSourceText?: string | null) {
+        const manual = typeof manualSourceText === 'string' ? manualSourceText.trim() : '';
+        const existing = typeof snapshot.sourceText === 'string' ? snapshot.sourceText.trim() : '';
+        const normalized = manual.length > 0 ? manual : existing;
+
+        this.lastOverlaySnapshot = {
+            ...snapshot,
+            sourceText: normalized.length > 0 ? normalized : snapshot.sourceText
+        };
+
+        if (normalized.length > 0) {
+            this.lastProcessedItemText = normalized;
+            this.lastOverlaySnapshot.sourceText = normalized;
+        }
+    }
+
+    private bringOverlayToFront(opts: { focus?: boolean } = {}) {
+        if (!this.overlayWindow) return;
+        const shouldFocus = opts.focus !== false;
+        console.log('[Overlay] bringOverlayToFront called. focus=', shouldFocus, 'isVisible=', this.isOverlayVisible);
+
+        try {
+            this.overlayWindow.setSkipTaskbar(true);
+        } catch (e) {
+            console.warn('[Overlay] Failed to set skipTaskbar when bringing to front:', e);
+        }
+
+        if (typeof (this.overlayWindow as any).setFocusable === 'function') {
+            try {
+                (this.overlayWindow as any).setFocusable(true);
+            } catch {}
+        }
+
+        try {
+            if (!this.overlayWindow.isVisible()) {
+                this.overlayWindow.show();
+            }
+            this.overlayWindow.setAlwaysOnTop(true, 'screen-saver');
+        } catch {}
+
+        if (shouldFocus) {
+            try { this.overlayWindow.focus(); } catch {}
+        } else {
+            setTimeout(() => {
+                try {
+                    if (this.overlayWindow && !this.overlayWindow.isDestroyed()) {
+                        this.overlayWindow.focus();
+                    }
+                } catch {}
+            }, 100);
+        }
+
+        this.isOverlayVisible = true;
+        console.log('[Overlay] bringOverlayToFront completed. visible=', this.overlayWindow?.isVisible());
+    }
+
+    private restoreLastOverlayView(opts: { focus?: boolean } = {}): boolean {
+        const snapshot = this.lastOverlaySnapshot;
+        if (!snapshot) {
+            console.log('[Overlay] restoreLastOverlayView -> no snapshot available');
+            return false;
+        }
+        console.log('[Overlay] restoreLastOverlayView', { kind: snapshot.kind, focus: opts.focus, hasSource: Boolean(snapshot.sourceText) });
+
+    const kind = snapshot.kind;
+
+    switch (kind) {
+            case 'item': {
+                const { item, modifiers, category } = snapshot.payload;
+                if (!item || !modifiers) return false;
+                this.rememberOverlaySnapshot(snapshot);
+                if (category) {
+                    this.safeSendToOverlay('set-active-category', category);
+                }
+                this.bringOverlayToFront(opts);
+                console.log('[Overlay] restoreLastOverlayView -> item restored');
+                return true;
+            }
+            case 'unique': {
+                const { item } = snapshot.payload;
+                if (!item) return false;
+                this.rememberOverlaySnapshot(snapshot, snapshot.sourceText ?? undefined);
+                this.bringOverlayToFront(opts);
+                console.log('[Overlay] restoreLastOverlayView -> unique restored');
+                return true;
+            }
+            case 'gems': {
+                const { tab, action, delay = 140 } = snapshot.payload;
+                this.rememberOverlaySnapshot(snapshot);
+                this.bringOverlayToFront(opts);
+                setTimeout(() => {
+                    if (tab) this.safeSendToOverlay('set-active-tab', tab);
+                    if (action) this.safeSendToOverlay('invoke-action', action);
+                }, delay);
+                console.log('[Overlay] restoreLastOverlayView -> gems restored');
+                return true;
+            }
+            case 'default': {
+                this.rememberOverlaySnapshot(snapshot);
+                this.bringOverlayToFront(opts);
+                console.log('[Overlay] restoreLastOverlayView -> default restored');
+                return true;
+            }
+            default:
+                console.log('[Overlay] restoreLastOverlayView -> unsupported kind', kind);
+                return false;
+        }
+    }
+
+    private showDefaultOverlay(opts: { silent?: boolean; focus?: boolean } = {}) {
+        this.rememberOverlaySnapshot({ kind: 'default' });
+        this.showOverlay(undefined, opts);
     }
 
     private getOverlayWindowHandleString(): string | null {
@@ -1320,6 +1509,38 @@ class OverlayApp {
             }
         } catch (err) {
             console.warn('[Overlay] Failed to read overlay window handle', err);
+        }
+        return null;
+    }
+
+    private getCurrentForegroundWindowHandle(): string | null {
+        if (process.platform !== 'win32') return null;
+        try {
+            const script = `
+Add-Type @"
+using System;
+using System.Runtime.InteropServices;
+public static class ForegroundWindowHelper {
+    [DllImport("user32.dll")]
+    public static extern IntPtr GetForegroundWindow();
+}
+"@
+$hwnd = [ForegroundWindowHelper]::GetForegroundWindow()
+if ($hwnd -eq [System.IntPtr]::Zero) {
+    ""
+} else {
+    $hwnd.ToInt64()
+}`;
+            const handle = cp.execFileSync('powershell.exe', [
+                '-NoProfile',
+                '-Command',
+                script
+            ], { encoding: 'utf8' }).trim();
+            if (handle && /^\d+$/.test(handle)) {
+                return handle;
+            }
+        } catch (err) {
+            console.warn('[Overlay] Failed to query current foreground window handle', err);
         }
         return null;
     }
@@ -1353,8 +1574,10 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             if (handle && /^\d+$/.test(handle)) {
                 const overlayHandle = this.getOverlayWindowHandleString();
                 if (overlayHandle && overlayHandle === handle) {
+                    console.log('[Overlay] captureForegroundWindowHandle -> ignoring overlay handle', handle);
                     return;
                 }
+                console.log('[Overlay] captureForegroundWindowHandle -> stored handle', handle);
                 this.lastForegroundWindowHandle = { handle, capturedAt: Date.now() };
             }
         } catch (err) {
@@ -1369,6 +1592,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
         if (!entry || !entry.handle || !/^\d+$/.test(entry.handle)) return false;
         try {
             const handleValue = entry.handle.trim();
+            console.log('[Overlay] restoreForegroundWindowFocus -> attempting handle', handleValue, 'capturedAt', entry.capturedAt);
             const script = `
 $handleRaw = '${handleValue}'
 if ([string]::IsNullOrWhiteSpace($handleRaw)) { return }
@@ -1467,13 +1691,19 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         return this.featureService.isCategoryEnabled(category);
     }
 
-    private showUniqueItem(parsed: any, opts: { silent?: boolean; focus?: boolean } = {}) {
+    private showUniqueItem(parsed: any, opts: { silent?: boolean; focus?: boolean } = {}, sourceText?: string | null) {
         if (this.featureService && !this.featureService.isCategoryEnabled('Uniques')) {
             console.log('[Unique] Feature disabled - skipping unique overlay.');
             return;
         }
         const silent = opts.silent ?? false;
         const focus = opts.focus ?? true;
+        const normalizedSource = typeof sourceText === 'string' && sourceText.trim().length > 0 ? sourceText.trim() : undefined;
+        this.rememberOverlaySnapshot({
+            kind: 'unique',
+            sourceText: normalizedSource,
+            payload: { item: parsed }
+        });
         this.showOverlay({ item: parsed, isUnique: true }, { silent, focus });
         if (!silent) {
             this.safeSendToOverlay('show-unique-item', { name: parsed.name, baseType: parsed.baseType });
@@ -1484,7 +1714,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         if (this.isOverlayVisible) {
             this.hideOverlay();
         } else {
-            this.showOverlay();
+            this.showDefaultOverlay();
         }
     }
 
@@ -1495,7 +1725,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         } else {
             // When opening from button, automatically enable pinned mode
             this.pinned = true;
-            this.showOverlay();
+            this.showDefaultOverlay();
             // Notify the overlay window that pinned mode is enabled
             if (this.overlayWindow && !this.overlayWindow.isDestroyed()) {
                 this.overlayWindow.webContents.send('pinned-changed', true);
@@ -1558,7 +1788,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 onQuit: () => app.quit(),
                 onToggleFloatingButton: () => this.toggleFloatingButton(),
                 onOpenSettings: () => this.openSettings(),
-                onShowOverlay: () => this.showOverlay(undefined, { focus: true }),
+                onShowOverlay: () => this.showDefaultOverlay({ focus: true }),
                 currentHotkeyLabel: this.getHotkeyKey(),
                 featureVisibility: {
                     modifiers: this.featureService?.isFeatureEnabled('modifiers') ?? false,
@@ -1605,7 +1835,9 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 // If we didn't capture anything, show empty overlay WITH focus
                 // (so click-outside works immediately)
                 if (!itemCaptured && !this.isOverlayVisible) {
-                    this.showOverlay(undefined, { focus: true });
+                    if (!this.restoreLastOverlayView({ focus: true })) {
+                        this.showDefaultOverlay({ focus: true });
+                    }
                 }
             } finally {
                 this.shortcutAwaitingCapture = false;
@@ -1638,8 +1870,14 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 // Only accept during armed window
                 if (Date.now() > this.armedCaptureUntil) return;
                 // Avoid duplicates
-                if (trimmed === this.lastProcessedItemText) return;
-                this.lastProcessedItemText = trimmed;
+                if (trimmed === this.lastProcessedItemText) {
+                    if (!this.isOverlayVisible) {
+                        if (!this.restoreLastOverlayView({ focus: false })) {
+                            this.showDefaultOverlay({ focus: false });
+                        }
+                    }
+                    return;
+                }
                 try {
                     const parsed = await this.itemParser.parse(trimmed);
                     if (parsed && parsed.category && parsed.category !== 'unknown') {
@@ -1649,8 +1887,13 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                         }
 
                         if ((parsed.rarity || '').toLowerCase() === 'unique') {
-                            this.showUniqueItem(parsed, { silent: true, focus: false });
+                            this.showUniqueItem(parsed, { silent: true, focus: false }, trimmed);
                         } else if (parsed.category === 'Gems') {
+                            this.rememberOverlaySnapshot({
+                                kind: 'gems',
+                                sourceText: trimmed,
+                                payload: { tab: 'characterTab', action: 'gems', delay: 140 }
+                            });
                             // Gem handling - switch to character tab and show gems panel
                             this.showOverlay(undefined, { silent: true, focus: false });
                             setTimeout(() => {
@@ -1661,6 +1904,11 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                             let modifiers: any[] = [];
                             try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
                             this.safeSendToOverlay('set-active-category', parsed.category);
+                            this.rememberOverlaySnapshot({
+                                kind: 'item',
+                                sourceText: trimmed,
+                                payload: { item: parsed, modifiers, category: parsed.category }
+                            });
                             this.showOverlay({ item: parsed, modifiers }, { silent: true, focus: false });
                         }
                     }
@@ -1883,11 +2131,16 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
 
         ipcMain.handle('poe-fetch-history', async (_e, league: string) => {
             // Rate limiter handles ALL timing - no manual interval checks
-            const { ok, status, data, headers, error, rateLimited, retryAfter } = await this.fetchPoeHistory(league);
+            const targetLeague = (typeof league === 'string' && league.trim()) ? league.trim() : this.merchantHistoryLeague;
+            const { ok, status, data, headers, error, rateLimited, retryAfter } = await this.fetchPoeHistory(targetLeague);
             
             // Only update lastFetchAt on successful requests
             if (ok) {
                 this.lastHistoryFetchAt = Date.now();
+            }
+
+            if (targetLeague && targetLeague !== this.merchantHistoryLeague) {
+                this.merchantHistoryLeague = targetLeague;
             }
             
             return { 
@@ -1899,7 +2152,8 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 rateLimited,
                 retryAfter,
                 accountName: this.poeAccountName, 
-                lastFetchAt: this.lastHistoryFetchAt
+                lastFetchAt: this.lastHistoryFetchAt,
+                league: targetLeague
             };
         });
 
@@ -1941,6 +2195,35 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         });
 
         // Removed: poe-scrape-open-history (deprecated scraping approach)
+
+        ipcMain.handle('history-get-league', async () => {
+            return {
+                league: this.merchantHistoryLeague,
+                source: this.merchantHistoryLeagueSource
+            };
+        });
+
+        ipcMain.handle('history-set-league', async (_event, payload: { league?: string; source?: 'auto' | 'manual' }) => {
+            const nextLeagueRaw = typeof payload?.league === 'string' ? payload.league.trim() : '';
+            const nextLeague = nextLeagueRaw || this.merchantHistoryLeague || 'Rise of the Abyssal';
+            const nextSource: 'auto' | 'manual' = payload?.source === 'manual' ? 'manual' : 'auto';
+
+            const leagueChanged = nextLeague !== this.merchantHistoryLeague;
+            const sourceChanged = nextSource !== this.merchantHistoryLeagueSource;
+
+            this.merchantHistoryLeague = nextLeague;
+            this.merchantHistoryLeagueSource = nextSource;
+
+            if ((leagueChanged || sourceChanged) && this.settingsService) {
+                try { this.settingsService.set('merchantHistoryLeague', this.merchantHistoryLeague); } catch {}
+                try { this.settingsService.set('merchantHistoryLeagueSource', this.merchantHistoryLeagueSource); } catch {}
+            }
+
+            return {
+                league: this.merchantHistoryLeague,
+                source: this.merchantHistoryLeagueSource
+            };
+        });
 
         // Local merchant history persistence
         try { ipcMain.removeHandler('history-load'); } catch {}

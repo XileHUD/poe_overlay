@@ -211,8 +211,9 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
   const clipboardDelay = (typeof configuredDelay === 'number' && Number.isFinite(configuredDelay))
     ? configuredDelay
     : defaultClipboardDelay;
+  const merchantHistoryLeague = settingsService.get('merchantHistoryLeague') || 'Rise of the Abyssal';
   const appVersion = getAppVersion();
-  const html = buildSettingsSplashHtml(currentHotkey, getDataDir(), Number(fontSize), appVersion, Number(clipboardDelay));    window.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
+  const html = buildSettingsSplashHtml(currentHotkey, getDataDir(), Number(fontSize), appVersion, Number(clipboardDelay), String(merchantHistoryLeague));    window.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
 
     // Show when ready
     window.once('ready-to-show', () => {
@@ -363,6 +364,17 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       setTimeout(() => onFeatureConfigOpen(), 100);
     });
 
+    // Handle league save
+    ipcMain.on('settings-save-league', (event, league: string) => {
+      try {
+        settingsService.set('merchantHistoryLeague', league);
+        settingsService.set('merchantHistoryLeagueSource', 'manual');
+        console.log('[Settings] Saved merchant history league:', league);
+      } catch (error) {
+        console.error('Failed to save league:', error);
+      }
+    });
+
     // Handle font size preview (live update, not saved)
     ipcMain.on('settings-font-size-preview', (event, value: number) => {
       try {
@@ -449,7 +461,7 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
 /**
  * Build HTML for settings splash
  */
-function buildSettingsSplashHtml(currentHotkey: string, dataDir: string, fontSize: number, appVersion: string, clipboardDelay: number): string {
+function buildSettingsSplashHtml(currentHotkey: string, dataDir: string, fontSize: number, appVersion: string, clipboardDelay: number, merchantHistoryLeague: string): string {
   const normalizedClipboardDelay = Number.isFinite(clipboardDelay) ? Math.max(0, clipboardDelay) : 0;
   return `
 <!DOCTYPE html>
@@ -915,6 +927,25 @@ function buildSettingsSplashHtml(currentHotkey: string, dataDir: string, fontSiz
     </div>
   </div>
   
+  <!-- Merchant History League Section -->
+  <div class="section">
+    <div class="section-title">📊 Merchant History</div>
+    <div class="section-desc">Choose which trade league to track for merchant history</div>
+    <div class="setting-item">
+      <div class="setting-label">
+        <span class="setting-label-text">Trade League</span>
+        <span class="setting-label-desc">Select the league for tracking your merchant trades</span>
+      </div>
+      <select class="btn btn-secondary" id="leagueSelect" style="min-width: 220px;">
+        <option value="Rise of the Abyssal">Rise of the Abyssal (Softcore)</option>
+        <option value="Hardcore Rise of the Abyssal">Hardcore Rise of the Abyssal</option>
+        <option value="Standard">Standard (Legacy)</option>
+        <option value="Hardcore">Hardcore (Legacy)</option>
+      </select>
+    </div>
+    <button class="btn btn-green" id="saveLeagueBtn" style="margin-top: 10px; display: none;">Save League</button>
+  </div>
+  
   <!-- Controls Section -->
   <div class="section">
     <div class="section-title">🎮 Controls</div>
@@ -1085,6 +1116,31 @@ function buildSettingsSplashHtml(currentHotkey: string, dataDir: string, fontSiz
       // Feature configuration
       document.getElementById('featuresBtn').addEventListener('click', () => {
         ipcRenderer.send('settings-open-features');
+      });
+      
+      // League selection
+      const leagueSelect = document.getElementById('leagueSelect');
+      const saveLeagueBtn = document.getElementById('saveLeagueBtn');
+      let originalLeague = '${merchantHistoryLeague}';
+      
+      // Set initial value
+      leagueSelect.value = originalLeague;
+      
+      // Show save button when league changes
+      leagueSelect.addEventListener('change', () => {
+        if (leagueSelect.value !== originalLeague) {
+          saveLeagueBtn.style.display = 'block';
+        } else {
+          saveLeagueBtn.style.display = 'none';
+        }
+      });
+      
+      // Save league
+      saveLeagueBtn.addEventListener('click', () => {
+        const newLeague = leagueSelect.value;
+        ipcRenderer.send('settings-save-league', newLeague);
+        originalLeague = newLeague;
+        saveLeagueBtn.style.display = 'none';
       });
       
       // Hotkey configuration - inline capture

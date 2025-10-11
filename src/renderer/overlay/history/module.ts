@@ -61,6 +61,7 @@ import {
 import { autoRefreshManager } from './autoRefresh';
 import { updateSessionUI, attachLoginButtonLogic } from './sessionManager';
 import { attachRefreshButtonLogic } from './refreshButton';
+import { initializeHistoryLeagueControls, maybeShowPendingLeaguePrompt, formatLeagueLabel } from './historyLeague';
 
 const renderListWithDetail = (renderDetailCallback: (idx: number) => void) => renderHistoryList(renderDetailCallback);
 const renderDetailForIndex = (idx: number) => renderHistoryDetail(idx);
@@ -83,6 +84,35 @@ async function performGuardedRefresh(origin: string): Promise<void> {
     return;
   }
   await performFullRefresh();
+}
+
+function prepareUiForManualLeagueChange(league: string): void {
+  const label = formatLeagueLabel(league);
+  const list = document.getElementById('historyList');
+  if (list) {
+    (list as HTMLElement).innerHTML = `<div class="no-mods" style="padding:8px;">Loading ${label}…</div>`;
+  }
+  const detail = document.getElementById('historyDetail');
+  if (detail) {
+    (detail as HTMLElement).innerHTML = '<div class="no-mods" style="padding:8px;">Select a trade to see item details</div>';
+  }
+  const totals = document.getElementById('historyTotals');
+  if (totals) totals.innerHTML = '';
+  const tradeCount = document.getElementById('historyTradeCount');
+  if (tradeCount) tradeCount.textContent = '';
+
+  const info = document.getElementById('historyInfoBadge');
+  if (info) {
+    (info as HTMLElement).textContent = `Switching to ${label}…`;
+    (info as HTMLElement).style.display = '';
+    setTimeout(() => {
+      if ((info as HTMLElement).textContent === `Switching to ${label}…`) {
+        (info as HTMLElement).style.display = 'none';
+      }
+    }, 3200);
+  }
+
+  try { updateHistoryRefreshButton(); } catch {}
 }
 
 // Re-export types for external use
@@ -123,6 +153,8 @@ export function onEnterView(): void {
     },
     () => historyState.store.entries.length > 0
   );
+
+  maybeShowPendingLeaguePrompt();
 }
 
 export function onLeaveView(): void {
@@ -159,6 +191,15 @@ export function onLeaveView(): void {
       drawChart: () => drawHistoryChart()
     }
   );
+
+  await initializeHistoryLeagueControls({
+    onManualChangePrep: ({ league }) => {
+      prepareUiForManualLeagueChange(league);
+    },
+    onManualLeagueChange: async () => {
+      await performFullRefresh();
+    }
+  });
 
   try { updateHistoryRefreshButton(); } catch {}
   

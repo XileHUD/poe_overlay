@@ -42,7 +42,7 @@
                 <span id="historyInfoBadge" class="price-badge" style="display:none;">Info</span>
             </div>
             <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-                <div id="historyTotals" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
+                <div id="historyTotals" style="display:flex; gap:6px; flex-wrap:nowrap; align-items:center; overflow:hidden;"></div>
                 <span id="historyTradeCount" style="color:var(--text-secondary); font-size:11px;"></span>
             </div>
         </div>
@@ -58,14 +58,16 @@
             <label class="cp-label" style="font-size:11px; color:var(--text-secondary);">Category</label>
             <select id="categorySelect" class="cp-select" style="min-width:140px;"></select>
         </div>
-    <input id="search-input" class="cp-search" type="text" placeholder="Search..." style="width:150px; flex:0 0 auto;" />
-    <div style="display:flex; align-items:center; gap:4px; flex:0 0 auto; white-space:nowrap;">
+        <div id="searchInputWrap" class="cp-search-wrap" style="flex:0 0 auto;">
+            <input id="search-input" class="cp-search" type="text" placeholder="Search..." style="width:150px;" />
+        </div>
+        <div id="ilvlControls" style="display:flex; align-items:center; gap:4px; flex:0 0 auto; white-space:nowrap;">
             <label style="font-size:11px; color:var(--text-secondary);">iLvl</label>
             <input id="ilvl-min" type="number" min="0" placeholder="min" style="width:50px; padding:3px 4px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;" />
             <span style="color:var(--text-secondary); font-size:11px;">-</span>
             <input id="ilvl-max" type="number" min="0" placeholder="max" style="width:50px; padding:3px 4px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;" />
         </div>
-    <div id="domainFilters" class="cp-filters" style="display:flex; align-items:center; gap:4px; flex:0 0 auto; white-space:nowrap;">
+        <div id="domainFilters" class="cp-filters" style="display:flex; align-items:center; gap:4px; flex:0 0 auto; white-space:nowrap;">
             <span class="cp-filters-label" style="font-size:11px; color:var(--text-secondary);">Show:</span>
             <button id="toggleAll" class="domain-toggle active" data-domain="all">All</button>
             <button id="toggleBase" class="domain-toggle" data-domain="base">Base</button>
@@ -73,7 +75,7 @@
             <button id="toggleEssence" class="domain-toggle" data-domain="essence">Ess</button>
             <button id="toggleCorrupted" class="domain-toggle" data-domain="corrupted">Corr</button>
         </div>
-    <button id="clearFilters" class="pin-btn cp-clear" style="margin-left:auto; flex:0 0 auto;">Clear</button>
+        <button id="clearFilters" class="pin-btn cp-clear" style="margin-left:auto; flex:0 0 auto;">Clear</button>
         </div>
     <div id="content" style="flex:1 1 auto; overflow:auto; padding:16px 12px 12px 12px;">
             <div class="no-mods">Pick a category from the dropdown to load modifiers.</div>
@@ -95,6 +97,11 @@
                                         <option value="chaos">Chaos</option>
                                         <option value="regal">Regal</option>
                                     </select>
+                                    <div id="histAmountRange" style="display:flex; align-items:center; gap:4px;">
+                                        <input id="histMinValue" type="number" min="0" placeholder="min" style="width:60px; padding:3px 4px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;" />
+                                        <span style="color:var(--text-secondary); font-size:11px;">-</span>
+                                        <input id="histMaxValue" type="number" min="0" placeholder="max" style="width:60px; padding:3px 4px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px;" />
+                                    </div>
                                 </div>
                                 <div class="fgrp grp-time" style="display:flex; align-items:center; gap:4px;">
                                     <label style="color:var(--text-secondary); font-size:11px;">Time:</label>
@@ -164,25 +171,28 @@
             </div>
             <!-- Right details -->
             <div id="historyRight" style="flex: 1 1 auto; display:flex; flex-direction:column; overflow:hidden; min-height:0;">
-                <div id="historyDetail" style="flex: 0 1 auto; overflow-y:auto; padding: 10px; display:flex; align-items:flex-start; justify-content:center; min-height:0;">
+                <div id="historyDetail" style="flex: 0 0 auto; overflow-y:visible; padding: 10px; min-height:0;">
                     <div class="no-mods">Select a trade to see item details</div>
                 </div>
-                <div id="historyChartWrap" style="flex: 1 1 auto; border-top:1px solid var(--border-color); padding:8px; background: var(--bg-card); min-height:140px; transition: all 0.3s ease;">
-                    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;">
-                        <div style="display:flex; align-items:center; gap:8px;">
-                            <button id="chartCollapseBtn" title="Collapse/Expand chart" style="padding:2px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-secondary); cursor:pointer; font-size:11px; font-weight:bold;">▼</button>
-                            <button id="chartExpandBtn" title="Expand chart to take full space" style="padding:2px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-secondary); cursor:pointer; font-size:11px; font-weight:bold;">▲</button>
-                            <div style="font-weight:600; color:var(--text-secondary);">Totals over time</div>
+                <div id="historyChartWrap" class="history-chart-wrap">
+                    <div class="history-chart-controls" id="historyChartHeader">
+                        <div class="history-chart-controls-left">
+                            <button id="chartCollapseBtn" class="chart-inline-btn" title="Collapse chart">▼</button>
+                            <button id="chartExpandBtn" class="chart-inline-btn" title="Expand chart to take full space">▲</button>
+                            <div class="history-chart-title">Totals over time</div>
                         </div>
-                        <div style="display:flex; gap:10px; align-items:center; font-size:11px;">
-                            <span id="chartCur-divine" class="chart-cur active" data-cur="divine"><span class="sw" style="background:#d4af37;"></span> divine</span>
-                            <span id="chartCur-exalted" class="chart-cur" data-cur="exalted"><span class="sw" style="background:#3f6aa1;"></span> exalted</span>
-                            <span id="chartCur-annul" class="chart-cur" data-cur="annul"><span class="sw" style="background:#7b40b3;"></span> annul</span>
-                            <span id="chartCur-chaos" class="chart-cur" data-cur="chaos"><span class="sw" style="background:#4a6a35;"></span> chaos</span>
-                            <span id="chartCur-regal" class="chart-cur" data-cur="regal"><span class="sw" style="background:#6b4a28;"></span> regal</span>
+                        <div id="chartLegend" class="chart-legend" data-min-lock="2">
+                            <span id="chartCur-divine" class="chart-cur active" data-cur="divine" data-priority="1" data-lock="1"><span class="sw" style="background:#d4af37;"></span> divine</span>
+                            <span id="chartCur-exalted" class="chart-cur" data-cur="exalted" data-priority="2" data-lock="1"><span class="sw" style="background:#3f6aa1;"></span> exalted</span>
+                            <span id="chartCur-annul" class="chart-cur" data-cur="annul" data-priority="3"><span class="sw" style="background:#7b40b3;"></span> annul</span>
+                            <span id="chartCur-chaos" class="chart-cur" data-cur="chaos" data-priority="4"><span class="sw" style="background:#4a6a35;"></span> chaos</span>
+                            <span id="chartCur-regal" class="chart-cur" data-cur="regal" data-priority="5"><span class="sw" style="background:#6b4a28;"></span> regal</span>
+                            <button id="chartLegendMore" class="chart-legend-more" type="button" aria-expanded="false" hidden>+0</button>
                         </div>
                     </div>
-                    <canvas id="historyChart" height="150" style="width:100%; min-width:240px; display:block;"></canvas>
+                    <div id="historyChartBody" class="history-chart-body">
+                        <canvas id="historyChart" height="150"></canvas>
+                    </div>
                 </div>
             </div>
             </div>
@@ -1813,13 +1823,20 @@
                     chartExpandBtn.textContent = expanded ? '▼' : '▲';
                     chartExpandBtn.title = expanded ? 'Show item details panel' : 'Expand chart to take full space';
 
+                    // Trigger height adjustment and redraw
+                    adjustHistoryChartHeight();
+                    
                     const refresh = () => {
                         try { if (typeof drawHistoryChart === 'function') drawHistoryChart(); } catch {}
                     };
 
                     requestAnimationFrame(() => {
+                        adjustHistoryChartHeight();
                         refresh();
-                        setTimeout(refresh, 120);
+                        setTimeout(() => {
+                            adjustHistoryChartHeight();
+                            refresh();
+                        }, 120);
                     });
                 });
             }
@@ -1863,6 +1880,7 @@
 
             // Filters UI wiring
             const minEl = document.getElementById('histMinValue');
+            const maxEl = document.getElementById('histMaxValue');
             const curEl = document.getElementById('histCurrency');
             const catEl = document.getElementById('histCategory');
             const sortEl = document.getElementById('histSort');
@@ -1884,7 +1902,16 @@
                 const histState = H.historyState;
                 const applyAndRenderFn = H.applyAndRender;
                 const wire = (el, ev, fn)=>{ if(el){ el.addEventListener(ev, fn); el.setAttribute('data-filter-wired','1'); } };
+                if (minEl) minEl.value = histState.filters.min > 0 ? String(histState.filters.min) : '';
+                if (maxEl) maxEl.value = histState.filters.max > 0 ? String(histState.filters.max) : '';
+                if (curEl) curEl.value = histState.filters.cur || '';
+                if (catEl) catEl.value = histState.filters.category || '';
+                if (sortEl) sortEl.value = histState.sort || 'newest';
+                if (rarEl) rarEl.value = histState.filters.rarity || '';
+                if (timeEl) timeEl.value = histState.filters.timeframe || 'all';
+                if (searchEl) searchEl.value = histState.filters.search || '';
                 wire(minEl,'input', ()=>{ histState.filters.min = Number(minEl.value||0); applyAndRenderFn(); });
+                wire(maxEl,'input', ()=>{ histState.filters.max = Number(maxEl.value||0); applyAndRenderFn(); });
                 wire(curEl,'change', ()=>{ histState.filters.cur = String(curEl.value||''); applyAndRenderFn(); });
                 wire(catEl,'change', ()=>{ histState.filters.category = String(catEl.value||''); applyAndRenderFn(); });
                 wire(sortEl,'change', ()=>{ histState.sort = String(sortEl.value||'newest'); applyAndRenderFn(); });
@@ -1894,6 +1921,131 @@
                 console.log('[Filter Setup] Filters wired');
             })();
         
+        function setupAdaptiveBar(container, selectors){
+            if (!container || typeof ResizeObserver === 'undefined') return;
+            const targets = selectors
+                .map(sel => typeof sel === 'string' ? container.querySelector(sel) : sel)
+                .filter(el => el && el instanceof HTMLElement);
+            if (!targets.length) return;
+
+            const apply = () => {
+                targets.forEach(el => el.classList.remove('auto-condensed'));
+                let overflow = container.scrollWidth > container.clientWidth + 1;
+                for (const el of targets){
+                    if (!overflow) break;
+                    el.classList.add('auto-condensed');
+                    overflow = container.scrollWidth > container.clientWidth + 1;
+                }
+            };
+
+            const ro = new ResizeObserver(() => apply());
+            ro.observe(container);
+            window.addEventListener('resize', apply);
+            apply();
+        }
+
+        function setupLegendOverflow() {
+            const legend = document.getElementById('chartLegend');
+            const moreBtn = document.getElementById('chartLegendMore');
+            if (!legend || !moreBtn) return;
+            if (legend.dataset.legendEnhanced === '1') return;
+            legend.dataset.legendEnhanced = '1';
+
+            const items = Array.from(legend.querySelectorAll('.chart-cur'));
+            if (!items.length) return;
+
+            let expanded = false;
+            let rafId = 0;
+
+            const schedule = () => {
+                if (expanded) return;
+                if (rafId) cancelAnimationFrame(rafId);
+                rafId = requestAnimationFrame(() => {
+                    rafId = 0;
+                    apply();
+                });
+            };
+
+            function apply() {
+                if (expanded) return;
+                moreBtn.hidden = true;
+                moreBtn.textContent = '';
+                moreBtn.title = '';
+                items.forEach(item => item.classList.remove('legend-condensed'));
+
+                const baseHidden = items.filter(item => item.dataset.defaultCondensed === '1');
+                baseHidden.forEach(item => item.classList.add('legend-condensed'));
+
+                let overflow = legend.scrollWidth > legend.clientWidth + 1;
+                const hidden = [];
+                const hideCandidates = items
+                    .filter(item => item.dataset.lock !== '1' && !baseHidden.includes(item))
+                    .sort((a, b) => Number(b.dataset.priority || '999') - Number(a.dataset.priority || '999'));
+
+                for (const item of hideCandidates) {
+                    if (!overflow) break;
+                    item.classList.add('legend-condensed');
+                    hidden.push(item);
+                    overflow = legend.scrollWidth > legend.clientWidth + 1;
+                }
+
+                if (overflow) {
+                    const locked = items
+                        .filter(item => item.dataset.lock === '1' && !baseHidden.includes(item))
+                        .sort((a, b) => Number(b.dataset.priority || '999') - Number(a.dataset.priority || '999'));
+                    for (const item of locked) {
+                        if (!overflow) break;
+                        item.classList.add('legend-condensed');
+                        hidden.push(item);
+                        overflow = legend.scrollWidth > legend.clientWidth + 1;
+                    }
+                }
+
+                const totalHidden = baseHidden.concat(hidden);
+
+                if (totalHidden.length) {
+                    const tooltip = totalHidden
+                        .map(item => (item.textContent || item.dataset.cur || '')?.trim())
+                        .filter(Boolean)
+                        .join('\n');
+                    moreBtn.hidden = false;
+                    moreBtn.textContent = `+${totalHidden.length}`;
+                    moreBtn.title = tooltip;
+                    moreBtn.dataset.tooltip = tooltip;
+                } else {
+                    moreBtn.hidden = true;
+                    delete moreBtn.dataset.tooltip;
+                }
+            }
+
+            moreBtn.addEventListener('click', () => {
+                expanded = !expanded;
+                moreBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                if (expanded) {
+                    items.forEach(item => item.classList.remove('legend-condensed'));
+                    moreBtn.hidden = false;
+                    moreBtn.textContent = 'Show less';
+                    moreBtn.title = 'Hide additional currencies';
+                } else {
+                    schedule();
+                }
+            });
+
+            if (typeof ResizeObserver !== 'undefined') {
+                const ro = new ResizeObserver(() => schedule());
+                ro.observe(legend);
+            }
+            window.addEventListener('resize', schedule);
+
+            schedule();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setupAdaptiveBar(document.getElementById('controlPanel'), ['#ilvlControls', '#searchInputWrap', '#domainFilters', '#clearFilters']);
+            setupAdaptiveBar(document.getElementById('historyHeaderRow2'), ['.grp-type', '.grp-rarity', '.grp-sort', '.grp-time']);
+            setupLegendOverflow();
+        });
+
 
         // ===== Crafting: Liquid Emotions (delegation only) =====
         let craftingPanelEl = null;
@@ -1928,23 +2080,70 @@
 
         // ===== Simple totals chart (canvas, no external deps) =====
     // Redraw on resize using module's chart
-        window.addEventListener('resize', ()=> { try { drawHistoryChart(); } catch {} });
+        function adjustHistoryChartHeight(){
+            try {
+                const right = document.getElementById('historyRight');
+                const detail = document.getElementById('historyDetail');
+                const wrap = document.getElementById('historyChartWrap');
+                if (!right || !detail || !wrap) return;
+
+                const expanded = right.classList.contains('history-chart-expanded');
+                const collapsed = wrap.classList.contains('chart-collapsed');
+
+                // Always enforce an 8px gap above the chart in normal mode; remove in expanded/collapsed
+                const GAP = 8;
+                if (collapsed) {
+                    // Hide body via class; let flex naturally size
+                    detail.style.marginBottom = '';
+                    wrap.style.flex = '0 0 auto';
+                    wrap.style.height = '';
+                    return;
+                }
+
+                if (expanded) {
+                    // Chart takes all vertical space; remove gap and let flex grow
+                    detail.style.marginBottom = '';
+                    wrap.style.flex = '1 1 auto';
+                    wrap.style.height = '';
+                    return;
+                }
+
+                // Normal mode: detail sits on top, chart flexes to fill the rest; dock naturally
+                detail.style.marginBottom = GAP + 'px';
+                wrap.style.flex = '1 1 auto';
+                wrap.style.height = '';
+            } catch {}
+        }
+
+        window.addEventListener('resize', ()=> { try { adjustHistoryChartHeight(); drawHistoryChart(); } catch {} });
     // Draw again after a brief delay to handle first-layout canvas sizes
-    document.addEventListener('DOMContentLoaded', ()=>{ setTimeout(()=>{ try { drawHistoryChart(); } catch {} }, 50); });
+    document.addEventListener('DOMContentLoaded', ()=>{ setTimeout(()=>{ try { adjustHistoryChartHeight(); drawHistoryChart(); } catch {} }, 50); });
         // Observe visibility/size changes on the historyRight container
         document.addEventListener('DOMContentLoaded', ()=>{
             const right = document.getElementById('historyRight');
             if (!right || typeof MutationObserver === 'undefined') return;
-            const obs = new MutationObserver(()=>{ try { drawHistoryChart(); } catch {} });
+            const obs = new MutationObserver(()=>{ try { adjustHistoryChartHeight(); drawHistoryChart(); } catch {} });
             obs.observe(right, { attributes:true, attributeFilter:['style','class'] });
         });
         // Also observe actual size changes of the chart wrapper if supported
         document.addEventListener('DOMContentLoaded', ()=>{
             try {
                 const wrap = document.getElementById('historyChartWrap');
-                if (wrap && typeof ResizeObserver !== 'undefined') {
-                    const ro = new ResizeObserver(() => { try { drawHistoryChart(); } catch {} });
-                    ro.observe(wrap);
+                const right = document.getElementById('historyRight');
+                const detail = document.getElementById('historyDetail');
+                if (typeof ResizeObserver !== 'undefined') {
+                    if (wrap) {
+                        const ro = new ResizeObserver(() => { try { adjustHistoryChartHeight(); drawHistoryChart(); } catch {} });
+                        ro.observe(wrap);
+                    }
+                    if (right) {
+                        const ro2 = new ResizeObserver(() => { try { adjustHistoryChartHeight(); drawHistoryChart(); } catch {} });
+                        ro2.observe(right);
+                    }
+                    if (detail) {
+                        const ro3 = new ResizeObserver(() => { try { adjustHistoryChartHeight(); drawHistoryChart(); } catch {} });
+                        ro3.observe(detail);
+                    }
                 }
             } catch {}
         });
@@ -1969,40 +2168,39 @@
             // Chart collapse/expand handler
             const collapseBtn = document.getElementById('chartCollapseBtn');
             const chartWrap = document.getElementById('historyChartWrap');
+            const chartBody = document.getElementById('historyChartBody');
             const chartCanvas = document.getElementById('historyChart');
             let chartCollapsed = localStorage.getItem('historyChartCollapsed') === 'true';
 
-            // Apply initial state
-            if (chartCollapsed && collapseBtn && chartWrap && chartCanvas) {
-                chartWrap.style.flex = '0 0 auto';
-                chartWrap.style.minHeight = '0';
-                chartCanvas.style.display = 'none';
-                collapseBtn.textContent = '▶';
-                collapseBtn.title = 'Expand chart';
-            }
+            const applyChartCollapsed = (collapsed) => {
+                if (!chartWrap) return;
+                chartWrap.classList.toggle('chart-collapsed', collapsed);
+                if (chartBody) {
+                    chartBody.style.display = collapsed ? 'none' : 'flex';
+                }
+                if (chartCanvas) {
+                    chartCanvas.style.display = collapsed ? 'none' : 'block';
+                }
+                if (collapseBtn) {
+                    collapseBtn.textContent = collapsed ? '▶' : '▼';
+                    collapseBtn.title = collapsed ? 'Expand chart' : 'Collapse chart';
+                }
+                // Always adjust after state change
+                setTimeout(() => adjustHistoryChartHeight(), 10);
+                if (!collapsed) {
+                    const triggerRedraw = () => { try { drawHistoryChart(); } catch {} };
+                    requestAnimationFrame(triggerRedraw);
+                    setTimeout(triggerRedraw, 140);
+                }
+            };
+
+            applyChartCollapsed(chartCollapsed);
 
             if (collapseBtn) {
                 collapseBtn.addEventListener('click', () => {
                     chartCollapsed = !chartCollapsed;
                     localStorage.setItem('historyChartCollapsed', chartCollapsed.toString());
-
-                    if (chartCollapsed) {
-                        // Collapse
-                        chartWrap.style.flex = '0 0 auto';
-                        chartWrap.style.minHeight = '0';
-                        chartCanvas.style.display = 'none';
-                        collapseBtn.textContent = '▶';
-                        collapseBtn.title = 'Expand chart';
-                    } else {
-                        // Expand
-                        chartWrap.style.flex = '1 1 auto';
-                        chartWrap.style.minHeight = '140px';
-                        chartCanvas.style.display = 'block';
-                        collapseBtn.textContent = '▼';
-                        collapseBtn.title = 'Collapse chart';
-                        // Redraw chart after expansion
-                        setTimeout(() => { try { drawHistoryChart(); } catch {} }, 100);
-                    }
+                    applyChartCollapsed(chartCollapsed);
                 });
             }
         });

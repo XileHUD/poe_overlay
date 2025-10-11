@@ -18,6 +18,130 @@ import { nextAllowedRefreshAt, updateHistoryRefreshButton, setRateLimitInfo } fr
 import { updateSessionUI } from './sessionManager';
 import { sendHistoryToPopout } from './historyPopout';
 import { recomputeChartSeriesFromStore, drawHistoryChart, updateHistoryChartFromTotals } from './historyChart';
+import { getLeaguePreference, setLeaguePreference, queueAutoLeaguePrompt, maybeShowPendingLeaguePrompt, showLeaguePrompt, formatLeagueLabel, SOFTCORE_LEAGUE, HARDCORE_LEAGUE, STANDARD_LEAGUE, LEGACY_HARDCORE_LEAGUE } from './historyLeague';
+
+function extractRowsFromResponse(res: any): any[] {
+  if (!res) return [];
+  const payload = (res as any).data ?? res;
+  if (Array.isArray(payload?.result)) return payload.result;
+  if (Array.isArray(payload?.entries)) return payload.entries;
+  if (Array.isArray(payload)) return payload;
+  return [];
+}
+
+function showInfoBadge(message: string, duration = 4000): void {
+  const info = document.getElementById('historyInfoBadge');
+  if (!info) return;
+  info.textContent = message;
+  (info as HTMLElement).style.display = '';
+  window.setTimeout(() => {
+    if (info.textContent === message) {
+      (info as HTMLElement).style.display = 'none';
+    }
+  }, duration);
+}
+
+function computeFallbackLeagues(base: string): string[] {
+  const norm = (base || '').toLowerCase();
+  if (norm === SOFTCORE_LEAGUE.toLowerCase()) {
+    return [HARDCORE_LEAGUE, STANDARD_LEAGUE, LEGACY_HARDCORE_LEAGUE];
+  }
+  if (norm === HARDCORE_LEAGUE.toLowerCase()) {
+    return [SOFTCORE_LEAGUE, STANDARD_LEAGUE];
+  }
+  if (norm === STANDARD_LEAGUE.toLowerCase()) {
+    return [LEGACY_HARDCORE_LEAGUE, SOFTCORE_LEAGUE, HARDCORE_LEAGUE];
+  }
+  if (norm === LEGACY_HARDCORE_LEAGUE.toLowerCase()) {
+    return [STANDARD_LEAGUE, SOFTCORE_LEAGUE, HARDCORE_LEAGUE];
+  }
+  return [SOFTCORE_LEAGUE, HARDCORE_LEAGUE, STANDARD_LEAGUE, LEGACY_HARDCORE_LEAGUE].filter((league) => league.toLowerCase() !== norm);
+}
+
+async function tryAutoDetectAlternateLeague(originalLeague: string): Promise<{ response: any; rows: any[] } | null> {
+  const pref = getLeaguePreference();
+  if (pref.source === 'manual') return null;
+
+  const candidates = computeFallbackLeagues(originalLeague);
+  for (const candidate of candidates) {
+    if ((candidate || '').toLowerCase() === (originalLeague || '').toLowerCase()) {
+      continue;
+    }
+    try {
+      const attempt = await (window as any).electronAPI.poeFetchHistory(candidate);
+      if ((attempt as any)?.rateLimited) {
+        return { response: attempt, rows: [] };
+      }
+      if (!(attempt as any)?.ok) continue;
+      const rows = extractRowsFromResponse(attempt);
+      if (!rows || rows.length === 0) {
+        continue;
+      }
+
+      await setLeaguePreference(candidate, 'auto', { persist: true, resetStore: true, reason: 'auto-detect' });
+      queueAutoLeaguePrompt(candidate, originalLeague);
+      showInfoBadge(`Detected ${formatLeagueLabel(candidate)}`, 5000);
+      return { response: attempt, rows };
+    } catch (err) {
+      console.warn('[History] League fallback fetch failed', candidate, err);
+    }
+  }
+
+  return null;
+}
+
+async function handleRateLimitedResponse(
+  res: any,
+  histList: HTMLElement,
+  renderListCallback: (renderDetailCallback: (idx: number) => void) => void,
+  renderDetailCallback: (idx: number) => void
+): Promise<void> {
+  const retryAfter = Number((res as any)?.retryAfter || 0) || 0;
+  if (retryAfter > 0) {
+    const until = Date.now() + (retryAfter * 1000);
+    historyState.rateLimitUntil = Math.max(historyState.rateLimitUntil || 0, until);
+  }
+
+  const info = document.getElementById("historyInfoBadge");
+  if (info) {
+    (info as HTMLElement).style.display = "";
+    const until = nextAllowedRefreshAt();
+    const tick = () => {
+      const ms = Math.max(0, until - Date.now());
+      const s = Math.ceil(ms / 1000);
+      const mins = Math.floor(s / 60);
+      const secs = s % 60;
+      if (mins > 0) {
+        (info as HTMLElement).textContent = `Rate limited • ${mins}m ${secs}s`;
+      } else {
+        (info as HTMLElement).textContent = `Rate limited • ${s}s`;
+      }
+      if (ms > 0) setTimeout(tick, 1000);
+      else (info as HTMLElement).style.display = "none";
+    };
+    tick();
+  }
+
+  try { updateHistoryRefreshButton(); } catch {}
+
+  if (historyState.store.entries && historyState.store.entries.length > 0) {
+    const all = (historyState.store.entries || []).slice().reverse();
+    historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+    historyState.selectedIndex = 0;
+    renderListCallback(renderDetailCallback);
+    renderDetailCallback(0);
+    renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+      try { updateHistoryChartFromTotals(totals); } catch {}
+    }, { entries: historyState.items });
+    renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+      renderListCallback(renderDetailCallback);
+      renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+        try { updateHistoryChartFromTotals(totals); } catch {}
+      }, { entries: historyState.items });
+    });
+    try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+  }
+}
 
 /**
  * Refresh trade history from GGG API.
@@ -60,58 +184,11 @@ export async function refreshHistory(
   
   try {
     let rows: any[] = [];
-    const res = await (window as any).electronAPI.poeFetchHistory(historyState.league);
+  let res: any = await (window as any).electronAPI.poeFetchHistory(historyState.league);
     
     // ========== Handle Rate Limiting ==========
     if ((res as any)?.rateLimited) {
-      const retryAfter = Number((res as any)?.retryAfter || 0) || 0;
-      if (retryAfter > 0) {
-        const until = Date.now() + (retryAfter * 1000);
-        historyState.rateLimitUntil = Math.max(historyState.rateLimitUntil || 0, until);
-      }
-      
-      // Show rate limit countdown
-      const info = document.getElementById("historyInfoBadge");
-      if (info) {
-        (info as HTMLElement).style.display = "";
-        const until = nextAllowedRefreshAt();
-        const tick = () => {
-          const ms = Math.max(0, until - Date.now());
-          const s = Math.ceil(ms / 1000);
-          const mins = Math.floor(s / 60);
-          const secs = s % 60;
-          if (mins > 0) {
-            (info as HTMLElement).textContent = `Rate limited • ${mins}m ${secs}s`;
-          } else {
-            (info as HTMLElement).textContent = `Rate limited • ${s}s`;
-          }
-          if (ms > 0) setTimeout(tick, 1000);
-          else (info as HTMLElement).style.display = "none";
-        };
-        tick();
-      }
-      
-      try { updateHistoryRefreshButton(); } catch {}
-      
-      // Re-render from cache if we have data
-      if (historyState.store.entries && historyState.store.entries.length > 0) {
-        const all = (historyState.store.entries || []).slice().reverse();
-        historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
-        historyState.selectedIndex = 0;
-        renderListCallback(renderDetailCallback);
-        renderDetailCallback(0);
-        renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
-          try { updateHistoryChartFromTotals(totals); } catch {}
-        }, { entries: historyState.items });
-        renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
-          renderListCallback(renderDetailCallback);
-          renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
-            try { updateHistoryChartFromTotals(totals); } catch {}
-          }, { entries: historyState.items });
-        });
-        try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
-      }
-      
+      await handleRateLimitedResponse(res, histList, renderListCallback, renderDetailCallback);
       return;
     }
     
@@ -156,6 +233,35 @@ export async function refreshHistory(
       return;
     }
     
+    // Sync league with response if main defaulted to stored preference
+    const responseLeagueRaw = typeof (res as any)?.league === 'string' ? String((res as any).league).trim() : '';
+    if (responseLeagueRaw && responseLeagueRaw !== historyState.league) {
+      await setLeaguePreference(responseLeagueRaw, historyState.leagueSource === 'manual' ? 'manual' : 'auto', { persist: false, reason: 'sync' });
+    }
+
+    // ========== Extract Rows from Response ==========
+    rows = extractRowsFromResponse(res);
+
+    if (!rows || rows.length === 0) {
+      const previousLeague = historyState.league;
+      const fallback = await tryAutoDetectAlternateLeague(previousLeague);
+      if (fallback) {
+        if ((fallback.response as any)?.rateLimited) {
+          await handleRateLimitedResponse(fallback.response, histList, renderListCallback, renderDetailCallback);
+          return;
+        }
+        res = fallback.response;
+        rows = fallback.rows;
+      }
+    }
+
+    if (!rows || rows.length === 0) {
+      (histList as HTMLElement).innerHTML =
+        `<div class="no-mods" style="padding:8px;">No history returned for ${formatLeagueLabel(historyState.league)}. Try selecting another league.</div>`;
+      showLeaguePrompt('empty-data', { previousLeague: historyState.league });
+      return;
+    }
+    
     // ========== Success: Process Metadata ==========
     const lf = Number((res as any)?.lastFetchAt || 0) || 0;
     if (lf) historyState.remoteLastFetchAt = lf;
@@ -166,19 +272,6 @@ export async function refreshHistory(
     // Store rate limit info from headers for display
     if ((res as any)?.headers) {
       try { setRateLimitInfo((res as any).headers); } catch {}
-    }
-    
-    // ========== Extract Rows from Response ==========
-    const json = (res as any).data || {};
-    if (Array.isArray((json as any)?.result)) rows = (json as any).result;
-    else if (Array.isArray((json as any)?.entries)) rows = (json as any).entries;
-    else if (Array.isArray(json)) rows = json as any[];
-    else rows = [];
-    
-    if (!rows || rows.length === 0) {
-      (histList as HTMLElement).innerHTML =
-        '<div class="no-mods" style="padding:8px;">No history returned by API. Open the page in browser and try again.</div>';
-      return;
     }
     
     // ========== Normalize and Merge Data ==========
@@ -255,6 +348,8 @@ export async function refreshHistory(
       sendHistoryToPopout(historyState);
     } catch {}
     
+    maybeShowPendingLeaguePrompt();
+
     return true;
   } catch (e) {
     console.error('[History] Exception during refresh:', e);

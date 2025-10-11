@@ -15,6 +15,42 @@ type SearchToken = {
 
 const buildSearchWords = (text: string): string[] => text.split(/[^a-z0-9]+/).filter(Boolean);
 
+function extractCategoryTokens(input: any): string[] {
+  const tokens = new Set<string>();
+
+  const addString = (value: string) => {
+    const normalized = value.toLowerCase().trim();
+    if (!normalized) return;
+    tokens.add(normalized);
+    normalized
+      .split(/[^a-z0-9]+/)
+      .filter(Boolean)
+      .forEach((part) => tokens.add(part));
+  };
+
+  const visit = (value: any, depth = 0): void => {
+    if (value == null || depth > 4) return;
+    if (typeof value === "string") {
+      addString(value);
+      return;
+    }
+    if (typeof value === "number" && Number.isFinite(value)) {
+      addString(String(value));
+      return;
+    }
+    if (Array.isArray(value)) {
+      value.forEach((entry) => visit(entry, depth + 1));
+      return;
+    }
+    if (typeof value === "object") {
+      Object.values(value).forEach((entry) => visit(entry, depth + 1));
+    }
+  };
+
+  visit(input, 0);
+  return Array.from(tokens);
+}
+
 function evaluateSearchTokens(haystack: string, tokens: SearchToken[], rawTerm: string): boolean {
   if (!tokens.length) return true;
   const words = buildSearchWords(haystack);
@@ -132,7 +168,7 @@ export function renderHistoryActiveFilters(
   const wrap = document.getElementById("historyActiveFilters");
   if (!wrap) return;
   
-  const { min, cur, category, search, rarity, timeframe } = state.filters;
+  const { min, max, cur, category, search, rarity, timeframe } = state.filters;
   const chips: string[] = [];
   
   if (timeframe && timeframe !== 'all') {
@@ -150,12 +186,19 @@ export function renderHistoryActiveFilters(
   if (cur) {
     const c = normalizeCurrency(cur);
     const curClass = `currency-${c}`;
+    const parts: string[] = [];
+    if (min > 0) parts.push(`≥ <span class="amount">${min}</span>`);
+    if (max > 0) parts.push(`≤ <span class="amount">${max}</span>`);
+    const rangeText = parts.length ? ` ${parts.join(' ')}` : '';
     chips.push(
-      `<span class="price-badge ${curClass}" title="Currency filter">${c}${min > 0 ? ` ≥ <span class="amount">${min}</span>` : ''} <button data-act="clear-cur" style="margin-left:6px; background:none; border:none; color:inherit; opacity:0.7; cursor:pointer;">×</button></span>`
+      `<span class="price-badge ${curClass}" title="Currency filter">${c}${rangeText} <button data-act="clear-cur" style="margin-left:6px; background:none; border:none; color:inherit; opacity:0.7; cursor:pointer;">×</button></span>`
     );
-  } else if (min > 0) {
+  } else if (min > 0 || max > 0) {
+    const labels: string[] = [];
+    if (min > 0) labels.push(`≥ <span class="amount">${min}</span>`);
+    if (max > 0) labels.push(`≤ <span class="amount">${max}</span>`);
     chips.push(
-      `<span class="price-badge" title="Minimum amount">Min: <span class="amount">${min}</span> <button data-act="clear-min" style="margin-left:6px; background:none; border:none; color:var(--text-muted); cursor:pointer;">×</button></span>`
+      `<span class="price-badge" title="Amount filter">Amt ${labels.join(' ')} <button data-act="clear-amount" style="margin-left:6px; background:none; border:none; color:var(--text-muted); cursor:pointer;">×</button></span>`
     );
   }
   
@@ -195,14 +238,28 @@ export function renderHistoryActiveFilters(
       if (act === "clear-min") {
         state.filters.min = 0;
         const el = document.getElementById("histMinValue");
-        if (el) (el as HTMLInputElement).value = "0";
+        if (el) (el as HTMLInputElement).value = "";
+      } else if (act === "clear-max") {
+        state.filters.max = 0;
+        const el = document.getElementById("histMaxValue");
+        if (el) (el as HTMLInputElement).value = "";
+      } else if (act === "clear-amount") {
+        state.filters.min = 0;
+        state.filters.max = 0;
+        const minEl = document.getElementById("histMinValue");
+        const maxEl = document.getElementById("histMaxValue");
+        if (minEl) (minEl as HTMLInputElement).value = "";
+        if (maxEl) (maxEl as HTMLInputElement).value = "";
       } else if (act === "clear-cur") {
         state.filters.cur = "";
         state.filters.min = 0;
+        state.filters.max = 0;
         const curEl = document.getElementById("histCurrency");
         const minEl = document.getElementById("histMinValue");
+        const maxEl = document.getElementById("histMaxValue");
         if (curEl) (curEl as HTMLSelectElement).value = "";
-        if (minEl) (minEl as HTMLInputElement).value = "0";
+        if (minEl) (minEl as HTMLInputElement).value = "";
+        if (maxEl) (maxEl as HTMLInputElement).value = "";
       } else if (act === "clear-cat") {
         state.filters.category = "";
         const el = document.getElementById("histCategory");
@@ -249,7 +306,7 @@ export function renderHistoryActiveFilters(
  * Apply all active filters to history list
  */
 export function applyFilters(list: HistoryEntryRaw[], filters: HistoryState['filters']): HistoryEntryRaw[] {
-  const { min, search, rarity, timeframe } = filters;
+  const { min, max, search, rarity, timeframe } = filters;
   const cur = normalizeCurrency(filters.cur || "");
   const catSel = filters.category || "";
   const searchTerm = (search || '').trim().toLowerCase();
@@ -311,11 +368,12 @@ export function applyFilters(list: HistoryEntryRaw[], filters: HistoryState['fil
     if (cur) {
       // Currency selected: filter by currency
       if (currency !== cur) return false;
-      // If min is set, also filter by amount
       if (min > 0 && amount < min) return false;
+      if (max > 0 && amount > max) return false;
     } else {
-      // No currency selected ("All"): only filter by min if set
+      // No currency selected ("All"): only filter by amount bounds if set
       if (min > 0 && amount < min) return false;
+      if (max > 0 && amount > max) return false;
     }
     
     // Category filter
@@ -325,15 +383,19 @@ export function applyFilters(list: HistoryEntryRaw[], filters: HistoryState['fil
       const name = (item?.name || "").toString();
       const typeLine = (item?.typeLine || "").toString();
       const categoryRaw = (item?.category || "").toString();
-      const frame = item?.frameType ?? item?.rarity;
       const lowerPieces = [base, name, typeLine, categoryRaw].map((part) => part.toLowerCase());
+      const categoryTokens = extractCategoryTokens(item?.category);
 
       const includesAny = (patterns: string[]): boolean => {
-        return lowerPieces.some(text => patterns.some(p => p && text.includes(p)));
+        const lowered = patterns.filter(Boolean).map((p) => p.toLowerCase());
+        if (lowerPieces.some(text => lowered.some(p => p && text.includes(p)))) return true;
+        return categoryTokens.some(token => lowered.some(p => p && token.includes(p)));
       };
       const containsWord = (word: string): boolean => {
         const pattern = new RegExp(`(^|[^a-z0-9])${escapeRegExp(word)}s?(?=$|[^a-z0-9])`, 'i');
-        return lowerPieces.some(text => pattern.test(text));
+        if (lowerPieces.some(text => pattern.test(text))) return true;
+        const normalizedWord = word.toLowerCase();
+        return categoryTokens.some(token => token === normalizedWord || token === `${normalizedWord}s`);
       };
 
       const matchesCategoryLabel = (label: string): boolean => {
@@ -355,10 +417,16 @@ export function applyFilters(list: HistoryEntryRaw[], filters: HistoryState['fil
             return includesAny([
               "boot", "greave", "sabat", "slipper", "legwrap", "footwrap", "footwear", "shoe", "sandal", "sandals", "hoof", "hooves"
             ]);
-          case "Gloves":
-            return includesAny([
-              "glove", "gauntlet", "mitt", "handwrap", "grip", "handwraps", "handwrap", "hand", "hands", "paw", "paws", "wraps", "finger", "fingers", "clutch", "clutches"
-            ]);
+          case "Gloves": {
+            const glovePatterns = [
+              "glove", "gauntlet", "mitt", "handwrap", "handwraps", "grip", "paw", "paws", "wraps", "finger", "fingers", "clutch", "clutches", "bracer", "bracers"
+            ];
+            const matches = includesAny(glovePatterns) || categoryTokens.some(token => /glove|gauntlet|mitt|bracer/.test(token));
+            if (!matches) return false;
+            const hintedTablet = lowerPieces.some(text => text.includes('tablet'));
+            if (hintedTablet && !categoryTokens.some(token => token.includes('glove'))) return false;
+            return true;
+          }
           case "Rings":
             return containsWord("ring") || containsWord("signet");
           case "Offhand":

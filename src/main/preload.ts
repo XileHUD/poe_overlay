@@ -80,6 +80,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
     poeOpenHistoryWindow: () => ipcRenderer.invoke('poe-open-history-window'),
     // Fallback scraping removed
 
+    // Merchant history league preferences
+    historyGetLeaguePreference: () => ipcRenderer.invoke('history-get-league'),
+    historySetLeaguePreference: (payload: { league: string; source: 'auto' | 'manual' }) => ipcRenderer.invoke('history-set-league', payload),
+
     // Local merchant history store
     historyLoad: () => ipcRenderer.invoke('history-load'),
     historySave: (store: any) => ipcRenderer.invoke('history-save', store),

@@ -28,9 +28,11 @@ export interface HistoryState {
   items: HistoryEntryRaw[];
   selectedIndex: number;
   league: string;
+  leagueSource: 'auto' | 'manual';
   store: HistoryStore;
   filters: { 
     min: number; 
+    max: number; 
     cur: string; 
     category: string; 
     search: string; 
@@ -51,8 +53,9 @@ export const historyState: HistoryState = {
   items: [],
   selectedIndex: 0,
   league: "Rise of the Abyssal",
+  leagueSource: 'auto',
   store: { entries: [], totals: {}, lastSync: 0, lastFetchAt: 0 },
-  filters: { min: 0, cur: "", category: "", search: "", rarity: "", timeframe: "all" },
+  filters: { min: 0, max: 0, cur: "", category: "", search: "", rarity: "", timeframe: "all" },
   sort: "newest",
   lastRefreshAt: 0,
   rateLimitUntil: 0,

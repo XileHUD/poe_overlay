@@ -23,8 +23,20 @@
     flex-wrap: nowrap;
     align-items: center;
     gap: 10px;
-    overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: hidden;
+}
+.auto-condensed {
+    display: none !important;
+}
+
+.cp-search-wrap {
+    display: flex;
+    align-items: center;
+}
+
+#histAmountRange input {
+    min-width: 0;
 }
 
 .menu-icon, .tab .menu-icon {
@@ -354,7 +366,6 @@ body {
     min-height: 0 !important; 
     overflow-x: hidden;
     overflow-y: auto;
-    display:flex;
 }
 
 /* Force scrollbar visibility on history list */
@@ -898,7 +909,7 @@ body {
 .cp-filters-label { font-size: 10px; color: var(--text-secondary); }
 .cp-clear { padding: 4px 12px; font-size: 11px; line-height:1; position:relative; top:0; background: var(--accent-red); border:1px solid var(--accent-red); color:#fff; }
 /* Ensure consistent height across controls */
-.cp-select, .cp-search, .domain-toggle, .cp-clear, #ilvl-min, #ilvl-max { height:24px; }
+.cp-select, .cp-search, .domain-toggle, .cp-clear, #ilvl-min, #ilvl-max, #histMinValue, #histMaxValue { height:24px; }
 
 /* (Old domain-toggle definition removed; unified version at top) */
 
@@ -1052,6 +1063,7 @@ body {
     border-radius: 10px;
     padding: 12px;
     box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    margin-bottom: 0;
 }
 .history-detail-card.rarity-normal { border-color: var(--border-color); }
 .history-detail-card.rarity-magic { border-color:#335d9b; box-shadow:0 0 0 1px #335d9b88, 0 4px 14px rgba(0,0,0,0.25); }
@@ -1067,11 +1079,8 @@ body {
 .history-detail-card .card-header { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px; }
 .history-detail-card .card-title { font-weight:700; font-size:14px; }
 .history-detail-card .card-sub { color:var(--text-secondary); }
-/* Detail card fills its container so image + mods share vertical space without forcing scroll */
-.history-detail-card { display:flex; flex-direction:column; max-height:100%; }
-.history-detail-card .grid { display:grid; grid-template-columns: 128px 1fr; gap:12px; align-items:start; max-width:100%; flex:1 1 auto; min-height:0; }
-/* Constrain icon: fit within remaining vertical space without forcing parent scroll */
-.history-item-icon { width:128px; height:auto; max-height:100%; border:1px solid var(--border-color); border-radius:6px; background:#111; object-fit:contain; display:block; margin:0 auto; transition:height .15s ease; }
+.history-detail-card .grid { display:grid; grid-template-columns: 128px 1fr; gap:12px; align-items:start; }
+.history-item-icon { width:128px; height:auto; border:1px solid var(--border-color); border-radius:6px; background:#111; object-fit:contain; display:block; margin:0 auto; }
     body.view-history #historyActiveFilters { padding:6px 0 8px 0; }
     /* Ensure active filters always appear on their own line below the control row */
     #historyActiveFilters { width:100%; flex: 0 0 auto; display:flex; flex-wrap:wrap; gap:6px; }
@@ -1140,9 +1149,33 @@ body.crafting-mode #controlPanel { display: none !important; }
 .logbook-level span.label { font-weight:400; color:#aaa; margin-left:4px; }
 .mod-item.strongbox-unique .mod-text { white-space:normal; }
 /* Chart currency selector */
-.chart-cur { cursor:pointer; user-select:none; opacity:.7; display:inline-flex; align-items:center; gap:6px; padding:2px 6px; border:1px solid transparent; border-radius:999px; }
-.chart-cur .sw { width:10px; height:2px; display:inline-block; }
-.chart-cur.active { opacity:1; border-color: var(--border-color); background: var(--bg-secondary); }
+.chart-cur { cursor:pointer; user-select:none; opacity:.75; display:inline-flex; align-items:center; gap:6px; padding:2px 8px; border:1px solid transparent; border-radius:6px; transition:opacity 0.15s ease, border-color 0.15s ease; white-space:nowrap; }
+.chart-cur .sw { width:12px; height:6px; border-radius:999px; display:inline-block; }
+.chart-cur:hover { opacity:1; border-color: var(--border-color); }
+.chart-cur.active { opacity:1; border-color: var(--border-color); background: var(--bg-tertiary); }
+.chart-cur.legend-condensed { display:none !important; }
+
+.chart-legend { display:flex; align-items:center; gap:8px; font-size:11px; flex-wrap:nowrap; overflow:hidden; justify-content:flex-end; flex:1 1 auto; min-width:0; }
+.chart-legend-more { padding:2px 8px; border-radius:6px; background:var(--bg-tertiary); border:1px solid var(--border-color); color:var(--text-secondary); cursor:pointer; font-size:11px; white-space:nowrap; }
+.chart-legend-more:hover { color:var(--text-primary); border-color:var(--text-secondary); }
+.chart-legend-more[hidden] { display:none !important; }
+
+.chart-inline-btn { padding:2px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-secondary); cursor:pointer; font-size:11px; font-weight:600; }
+.chart-inline-btn:hover { color:var(--text-primary); border-color:var(--text-secondary); }
+
+#historyChartWrap { flex: 1 1 auto; border-top:1px solid var(--border-color); padding:8px; background: var(--bg-card); height: auto; min-height:120px; transition: all 0.2s ease; display:flex; flex-direction:column; gap:6px; }
+#historyChartWrap.chart-collapsed { min-height:0; padding-bottom:4px; }
+#historyChartWrap.chart-collapsed .history-chart-body { display:none !important; }
+#historyChartWrap.chart-collapsed .history-chart-controls { margin-bottom:0; }
+.history-chart-controls { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:4px; flex:0 0 auto; flex-wrap:nowrap; min-width:0; }
+.history-chart-controls-left { display:flex; align-items:center; gap:8px; flex-wrap:nowrap; flex:0 0 auto; }
+.history-chart-title { font-weight:600; color:var(--text-secondary); letter-spacing:0.4px; text-transform:uppercase; font-size:11px; }
+.history-chart-body { flex:1 1 auto; min-height:0; display:flex; }
+
+#historyTotals { display:flex; gap:6px; align-items:center; flex-wrap:nowrap; overflow:hidden; min-width:0; }
+#historyTotals .price-badge.totals-condensed { display:none !important; }
+#historyTotals .price-badge.totals-more { background:var(--bg-tertiary); color:var(--text-secondary); cursor:pointer; }
+#historyTotals .price-badge.totals-more:hover { color:var(--text-primary); border-color:var(--text-secondary); }
 
 /* Quest Passives page */
 .qp-topbar{display:flex; gap:6px; align-items:center; margin-bottom:8px; flex-wrap:wrap}
@@ -1260,16 +1293,11 @@ body.crafting-mode #controlPanel { display: none !important; }
 /* Place search last (after other filters) */
 #historyHeaderRow2 .grp-search { order:7; }
 
-/* Chart minimum height enforcement + graceful shrink */
-#historyChartWrap { min-height: 140px; display:flex; flex-direction:column; gap:4px; }
-@media (max-width: 900px) { #historyChartWrap { min-height: 130px; } }
-@media (max-width: 720px) { #historyChartWrap { min-height: 120px; } }
-
-#historyChart { flex:1 1 150px; min-height:150px; width:100%; }
+#historyChart { flex:1 1 auto; width:100%; height:100%; min-height:100px; display:block; }
 
 #historyRight.history-chart-expanded { display:flex; flex-direction:column; }
 #historyRight.history-chart-expanded #historyDetail { display:none !important; }
-#historyRight.history-chart-expanded #historyChartWrap { flex:1 1 auto; min-height:0; }
+#historyRight.history-chart-expanded #historyChartWrap { flex:1 1 auto; min-height:0; max-height:none; }
 #historyRight.history-chart-expanded #historyChart { flex:1 1 auto; min-height:0; }
 
 /* Root font scaling for condensed width (small reductions) */
