@@ -238,8 +238,8 @@ function renderSection(section: any, domainId?: string){
               ${mod.tiers && mod.tiers.length > 0 ? '<span class="expand-icon">▼</span>' : ''}
             </div>
             <div class="mod-meta">
-              ${isAggregatedCategory() && mod.category ? `<span class="tag category-tag" data-tag="${mod.category}">${mod.category.replace(/_/g, ' ').toUpperCase()}</span>` : ''}
-              ${mod.tags && mod.tags.length ? mod.tags.map((t:string)=>`<span class="tag" data-tag="${t}">${t}</span>`).join('') : ''}
+              ${isAggregatedCategory() && mod.category ? `<span class="tag category-tag" data-tag="${mod.category}" style="user-select:none; cursor:pointer;">${mod.category.replace(/_/g, ' ').toUpperCase()}</span>` : ''}
+              ${mod.tags && mod.tags.length ? mod.tags.map((t:string)=>`<span class="tag" data-tag="${t}" style="user-select:none; cursor:pointer;">${t}</span>`).join('') : ''}
               <span class="spacer"></span>
               ${mod.ilvl ? `<span class="mod-badge badge-ilvl">iLvl ${mod.ilvl}</span>` : ''}
               ${renderTierBadge(mod)}
@@ -1042,6 +1042,96 @@ export function computeWhittling(data: ModifierData): WhittlingResult | null {
 }
 // END WHITTLING FEATURE
 
+/**
+ * Attach click handlers to inline tags (tags displayed on mods) to make them clickable filters.
+ * When clicked, toggles the corresponding filter chip and triggers re-render.
+ * Also updates inline tag styling to visually indicate active filter state.
+ */
+function attachInlineTagClickHandlers(activeTags: Set<string>, tagRGB: (tag: string) => number[]): void {
+  try {
+    const resultsWrapper = document.getElementById('modResultsWrapper');
+    if (!resultsWrapper) return;
+
+    // Select all inline tags within mod items (excluding category tags and filter chips)
+    const inlineTags = resultsWrapper.querySelectorAll('.mod-meta .tag[data-tag]:not(.category-tag)');
+    
+    inlineTags.forEach(tagEl => {
+      const tagName = tagEl.getAttribute('data-tag') || '';
+      if (!tagName) return;
+
+      // Update styling based on active state
+      const isActive = activeTags.has(tagName);
+      updateInlineTagStyle(tagEl as HTMLElement, tagName, isActive, tagRGB);
+
+      // Remove any existing listeners to prevent duplicates
+      const oldHandler = (tagEl as any).__tagClickHandler;
+      if (oldHandler) tagEl.removeEventListener('click', oldHandler);
+      const oldDown = (tagEl as any).__tagDownHandler;
+      if (oldDown) tagEl.removeEventListener('mousedown', oldDown);
+      const oldUp = (tagEl as any).__tagUpHandler;
+      if (oldUp) tagEl.removeEventListener('mouseup', oldUp);
+
+      // Prevent text selection caret on mousedown
+      const downHandler = (e: Event) => { e.preventDefault(); };
+      const upHandler = (e: Event) => { e.preventDefault(); };
+      (tagEl as any).__tagDownHandler = downHandler;
+      (tagEl as any).__tagUpHandler = upHandler;
+      tagEl.addEventListener('mousedown', downHandler);
+      tagEl.addEventListener('mouseup', upHandler);
+
+      // Create new click handler
+      const clickHandler = (e: Event) => {
+        e.stopPropagation(); // Prevent triggering tier toggle
+        e.preventDefault(); // Avoid text selection
+        toggleTagFilter(tagName);
+      };
+
+      // Store handler reference for cleanup
+      (tagEl as any).__tagClickHandler = clickHandler;
+      tagEl.addEventListener('click', clickHandler);
+    });
+  } catch (err) {
+    console.warn('[attachInlineTagClickHandlers] failed:', err);
+  }
+}
+
+/**
+ * Update inline tag styling to reflect active/inactive state.
+ */
+function updateInlineTagStyle(tagEl: HTMLElement, tagName: string, isActive: boolean, tagRGB: (tag: string) => number[]): void {
+  const [r, g, b] = tagRGB(tagName);
+  const bg = isActive ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
+  const border = `rgba(${r},${g},${b},0.6)`;
+  const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  const color = isActive ? (luma > 180 ? '#000' : '#fff') : 'var(--text-primary)';
+  
+  tagEl.style.background = bg;
+  tagEl.style.borderColor = border;
+  tagEl.style.color = color;
+  tagEl.style.cursor = 'pointer';
+  tagEl.classList.toggle('active', isActive);
+}
+
+/**
+ * Toggle a tag filter: finds the corresponding filter chip and simulates a click,
+ * which will trigger the existing filter logic and re-render.
+ */
+function toggleTagFilter(tagName: string): void {
+  try {
+    const filtersWrapper = document.getElementById('modFiltersWrapper');
+    if (!filtersWrapper) return;
+
+    // Find the filter chip with matching data-tag
+    const chip = filtersWrapper.querySelector(`.filter-tag[data-tag="${tagName}"]`) as HTMLElement;
+    if (chip) {
+      // Simulate click on the filter chip to reuse existing filter logic
+      chip.click();
+    }
+  } catch (err) {
+    console.warn('[toggleTagFilter] failed:', err);
+  }
+}
+
 export function renderFilteredContent(data: any){
   const content = document.getElementById('content');
   const searchInputRaw = (document.getElementById('search-input') as HTMLInputElement | null)?.value || '';
@@ -1384,6 +1474,9 @@ export function renderFilteredContent(data: any){
   resultsWrapper.innerHTML = resultsHtml;
 
   try {
+    // Ensure inline tags are wired after results are in the DOM
+    attachInlineTagClickHandlers(prevActive, tagRGB);
+
     (window as any).__lastFilteredSections = (filteredData.modifiers || []).map((s:any)=>({ ...s }));
     resultsWrapper.querySelectorAll('.pin-section-btn').forEach(btn => {
       btn.addEventListener('click', (ev) => {
