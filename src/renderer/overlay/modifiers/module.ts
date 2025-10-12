@@ -110,6 +110,64 @@ function collectModSearchSegments(mod: any, section: any, data: any): string[] {
   return segments;
 }
 
+// --- Derived metadata helpers for multimods ---
+function deriveTagsFromMod(mod: any): string[] {
+  try {
+    const out = new Set<string>();
+    const base = `${mod?.text_plain || ''} ${(mod?.text || '')}`.toLowerCase();
+    const tiersTxt = Array.isArray(mod?.tiers) ? mod.tiers.map((t:any)=>`${t?.text_plain||t?.text||''}`.toLowerCase()).join(' ') : '';
+    const hay = `${base} ${tiersTxt}`;
+    const add = (t:string)=>{ if(t) out.add(t); };
+    if (/\bfire\b/.test(hay)) add('fire');
+    if (/\bcold\b/.test(hay)) add('cold');
+    if (/\blightning\b/.test(hay)) add('lightning');
+    if (/\bchaos\b/.test(hay)) add('chaos');
+    if (/\bphysical\b/.test(hay)) add('physical');
+    if (/\bspell\b/.test(hay)) add('spell');
+    if (/\bbleed|bleeding\b/.test(hay)) add('bleeding');
+    if (/\bpoison\b/.test(hay)) add('poison');
+    if (/\bignite\b/.test(hay)) add('ignite');
+    if (/\belemental\b/.test(hay)) add('elemental');
+    if (/\bdamage\b/.test(hay)) add('damage');
+    if (/\bailment|ailments?\b/.test(hay)) add('ailment');
+    return Array.from(out);
+  } catch { return []; }
+}
+
+function groupKeyForTierText(text: string): string {
+  const s = (text||'').toLowerCase();
+  if (/\bfire\b/.test(s)) return 'fire';
+  if (/\bcold\b/.test(s)) return 'cold';
+  if (/\blightning\b/.test(s)) return 'lightning';
+  if (/\bchaos\b/.test(s)) return 'chaos';
+  if (/\bbleed|bleeding\b/.test(s)) return 'bleeding';
+  if (/\bpoison\b/.test(s)) return 'poison';
+  if (/\bignite\b/.test(s)) return 'ignite';
+  if (/\bspell\b/.test(s) && /\bphysical\b/.test(s)) return 'spell-physical';
+  if (/\bphysical\b/.test(s)) return 'physical';
+  return 'default';
+}
+
+// Normalize tier plain text for display: remove leading numbering ("iLvl 83 -", "T1 -", etc.),
+// drop stray numeric-only lines and standalone labels like "Skills" that sometimes leak from data.
+function sanitizeTierPlainText(raw: string): string {
+  try {
+    const lines = String(raw || '').split(/\r?\n/);
+    const cleaned = lines.map(line => {
+      // Strip leading markers like "iLvl 83 -" or "T1:"
+      let L = line.replace(/^\s*(?:i?l?v?l?\s*\d+|T?\d+)\s*[-:]?\s*/i, '').trim();
+      // Remove lines that become empty, numeric only, or just the word "Skills"/"Skill"/"Spells"
+      if (!L) return '';
+      if (/^[0-9]+$/.test(L)) return '';
+      if (/^(skills?|spells?)$/i.test(L)) return '';
+      return L;
+    }).filter(Boolean);
+    return cleaned.join('\n');
+  } catch {
+    return String(raw||'');
+  }
+}
+
 function getModSearchIndex(mod: any, section: any, data: any): SearchIndex {
   const cached = modSearchCache.get(mod);
   if (cached) return cached;
@@ -207,6 +265,8 @@ function renderTierBadge(mod: any): string {
   return `<span class="mod-badge badge-tier"${tooltip}>T${displayTier}</span>`;
 }
 
+// --- Helpers for multimod rendering ---
+
 function renderSection(section: any, domainId?: string){
   const side = section.side || section.type || 'none';
   const sectionId = `section-${section.domain}-${side}`;
@@ -234,12 +294,12 @@ function renderSection(section: any, domainId?: string){
         ${mods.map((mod: any, modIndex: number) => `
           <div class="mod-item" id="mod-${section.domain}-${side}-${modIndex}" onclick="window.OverlayModifiers&&window.OverlayModifiers.toggleTiers&&window.OverlayModifiers.toggleTiers('${section.domain}', '${side}', ${modIndex})">
             <div class="mod-text" style="cursor:pointer;">
-              ${highlightText(formatJoinedModText(mod.text || mod.text_plain))}
-              ${mod.tiers && mod.tiers.length > 0 ? '<span class="expand-icon">▼</span>' : ''}
+              ${highlightText(formatJoinedModText(sanitizeTierPlainText(mod.text || mod.text_plain)))}
+                        ${mod.tiers && mod.tiers.length > 0 ? '<span class="expand-icon">▼</span>' : ''} 
             </div>
             <div class="mod-meta">
               ${isAggregatedCategory() && mod.category ? `<span class="tag category-tag" data-tag="${mod.category}" style="user-select:none; cursor:pointer;">${mod.category.replace(/_/g, ' ').toUpperCase()}</span>` : ''}
-              ${mod.tags && mod.tags.length ? mod.tags.map((t:string)=>`<span class="tag" data-tag="${t}" style="user-select:none; cursor:pointer;">${t}</span>`).join('') : ''}
+              ${(()=>{ const explicit = Array.isArray(mod.tags)? mod.tags: []; const derived = deriveTagsFromMod(mod); const all = Array.from(new Set([...(explicit||[]), ...derived])); return all.map((t:string)=>`<span class="tag" data-tag="${t}" style="user-select:none; cursor:pointer;">${t}</span>`).join(''); })()}
               <span class="spacer"></span>
               ${mod.ilvl ? `<span class="mod-badge badge-ilvl">iLvl ${mod.ilvl}</span>` : ''}
               ${renderTierBadge(mod)}
@@ -247,23 +307,31 @@ function renderSection(section: any, domainId?: string){
             </div>
             ${mod.tiers && mod.tiers.length > 0 ? `
               <div class="tier-list" id="tiers-${section.domain}-${side}-${modIndex}" style="display:none;">
-                ${mod.tiers.map((tier:any, tierIndex:number)=>`
-                  <div class="tier-item">
-                    <div class="tier-line">
-                      <span class="tier-name">${String(tier.tier_name||'').replace(/^\s*(?:i?l?v?l?\s*\d+|T?\d+)\s*[-:]?\s*/i,'')}</span>
-                      <div class="tier-badges">
-                        ${tier.tier_level ? `<span class="tier-badge tier-ilvl">iLvl ${tier.tier_level}</span>` : ''}
-                        <span class="tier-badge tier-number">T${mod.tiers.length - tierIndex}</span>
-                        ${tier.weight > 0 ? `<span class="tier-badge tier-weight" title="${(mod.weight && mod.weight>0 ? ((tier.weight/mod.weight)*100).toFixed(1) : '0.0')}% of mod">${tier.weight}</span>` : ''}
-                      </div>
-                    </div>
-                    <div class="tier-text">${highlightText(formatJoinedModText(String(tier.text_plain || '')
-                      // remove any leading ordinal/index like '1' or 'T1 -' or 'iLvl 83 -'
-                      .replace(/^\s*(?:i?l?v?l?\s*\d+|T?\d+)\s*[-:]?\s*/i, '')
-                      .replace(/^\s*\d+\s*(?:\r?\n|$)/, '')
-                    ))}</div>
-                  </div>
-                `).join('')}
+                ${(()=>{
+                  // Build per-group reverse numbering
+                  const groups = new Map<string, number>();
+                  const counts = new Map<string, number>();
+                  mod.tiers.forEach((t:any)=>{ const key = groupKeyForTierText(String(t.text_plain||t.text||'')); counts.set(key, (counts.get(key)||0)+1); });
+                  counts.forEach((cnt, key)=> groups.set(key, cnt)); // start from count and decrement
+                  return mod.tiers.map((tier:any)=>{
+                    const key = groupKeyForTierText(String(tier.text_plain||tier.text||''));
+                    const current = groups.get(key) || counts.get(key) || 1;
+                    const label = `T${current}`;
+                    groups.set(key, Math.max(0, current - 1));
+                    return `
+                      <div class="tier-item">
+                        <div class="tier-line">
+                          <span class="tier-name">${String(tier.tier_name||'').replace(/^\s*(?:i?l?v?l?\s*\d+|T?\d+)\s*[-:]?\s*/i,'')}</span>
+                            <div class="tier-badges"> 
+                            ${tier.tier_level ? `<span class="tier-badge tier-ilvl">iLvl ${tier.tier_level}</span>` : ''}
+                            <span class="tier-badge tier-number">${label}</span>
+                            ${tier.weight > 0 ? `<span class="tier-badge tier-weight" title="${(mod.weight && mod.weight>0 ? ((tier.weight/mod.weight)*100).toFixed(1) : '0.0')}% of mod">${tier.weight}</span>` : ''}
+                          </div>
+                        </div>
+                        <div class="tier-text">${highlightText(formatJoinedModText(sanitizeTierPlainText(String(tier.text_plain || tier.text || ''))))} </div>
+                      </div>`;
+                  }).join('');
+                })()}
               </div>
             `: ''}
           </div>
@@ -284,7 +352,7 @@ export function mechanicsPostProcess(data: ModifierData){
   try{
     const catSlug = (data.item?.category || '').toUpperCase();
     if (catSlug === 'EXPEDITION_LOGBOOK') {
-      (data.modifiers||[]).forEach(sec=>{
+      (data.modifiers||[]).forEach(sec=>{ 
         (sec.mods||[]).forEach((m:any)=>{
           if (m.text_html && !m.text_html.includes('logbook-level')){
             const plainMatch = m.text_plain?.match(/^(\d+):\s*(.*)$/);
@@ -1240,7 +1308,8 @@ export function renderFilteredContent(data: any){
             ? evaluateSearchTokens(searchIndex, searchTokens, searchTerm)
             : { passes: true, matchedFuzzy: 0, matchedStrict: 0 };
           const matchesSearch = !hasSearch || searchEval.passes;
-          const matchesTags = activeTags.length === 0 || (mod.tags && activeTags.every(t => mod.tags.includes(t)));
+          const expandedTags = (()=>{ const base = Array.isArray(mod.tags) ? mod.tags.slice() : []; const extra = deriveTagsFromMod(mod); return Array.from(new Set([...(base||[]), ...extra])); })();
+          const matchesTags = activeTags.length === 0 || (expandedTags.length>0 && activeTags.every(t => expandedTags.includes(t)));
           let matchesAttribute = true;
           if (currentAttribute && attributeMetaAvailable && !categoryHasAttribute) {
             matchesAttribute = (
@@ -1347,7 +1416,10 @@ export function renderFilteredContent(data: any){
   const tagCounts: Record<string, number> = {};
   (data.modifiers||[]).forEach((section:any)=>{
     (section.mods||[]).forEach((m:any)=>{
-      (m.tags||[]).forEach((t:string)=>{ tagCounts[t] = (tagCounts[t]||0)+1; });
+      const explicit = Array.isArray(m.tags) ? m.tags : [];
+      const derived = deriveTagsFromMod(m);
+      const all = new Set<string>([...explicit, ...derived]);
+      all.forEach((t:string)=>{ tagCounts[t] = (tagCounts[t]||0)+1; });
     })
   });
   const sortedTags = Object.keys(tagCounts).sort((a,b)=> a.localeCompare(b));
@@ -1356,23 +1428,58 @@ export function renderFilteredContent(data: any){
   // Colored chip helpers similar to other panels
   const tagRGB = (tag: string) => {
     const t=(tag||'').toLowerCase();
-    if (t==='fire' || t==='life') return [220,68,61];
-    if (t==='cold' || t==='mana') return [66,165,245];
-    if (t==='lightning') return [255,213,79];
-    if (t==='chaos' || t==='minion') return [156,39,176];
-    if (t==='energy shield' || t==='es') return [38,198,218];
-    if (t==='defences' || t==='armour' || t==='armor') return [109,76,65];
-    if (t==='evasion') return [46,125,50];
-    if (t==='resistances' || t==='resist') return [255,112,67];
-    if (t==='projectile') return [255,179,0];
-    if (t==='area') return [171,71,188];
-    if (t==='critical' || t==='crit') return [255,179,0];
-    if (t==='spell') return [92,107,192];
-    if (t==='attack') return [121,85,72];
-    if (t==='damage' || t==='ailments' || t==='mechanics') return [96,125,139];
-    if (t==='speed' || t==='movement') return [67,160,71];
-    if (t==='elemental') return [255,152,0];
-    return [120,144,156];
+    // Elemental damage types
+    if (t==='fire') return [220,68,61];           // Red
+    if (t==='cold') return [66,165,245];          // Blue
+    if (t==='lightning') return [255,213,79];     // Yellow
+    if (t==='chaos') return [156,39,176];         // Purple
+    if (t==='physical') return [158,158,158];     // Gray
+    if (t==='elemental') return [255,152,0];      // Orange
+    
+    // Ailments & DoT
+    if (t==='bleeding' || t==='bleed') return [183,28,28];      // Dark red
+    if (t==='poison') return [76,175,80];                       // Green
+    if (t==='ignite') return [255,87,34];                       // Bright orange
+    if (t==='freeze' || t==='chill') return [79,195,247];       // Light blue
+    if (t==='shock' || t==='electrocute') return [255,235,59];  // Bright yellow
+    if (t==='burn' || t==='burning') return [244,67,54];        // Red-orange
+    if (t==='ailments') return [96,125,139];                    // Blue-gray
+    
+    // Resources
+    if (t==='life') return [220,68,61];           // Red (same as fire)
+    if (t==='mana') return [66,165,245];          // Blue (same as cold)
+    if (t==='energy shield' || t==='es') return [38,198,218];  // Cyan
+    
+    // Defences
+    if (t==='defences' || t==='armour' || t==='armor') return [109,76,65];  // Brown
+    if (t==='evasion') return [46,125,50];                                   // Dark green
+    if (t==='resistances' || t==='resist') return [255,112,67];              // Coral
+    if (t==='block') return [141,110,99];                                    // Medium brown
+    
+    // Damage & Combat
+    if (t==='damage') return [244,67,54];         // Red
+    if (t==='attack') return [121,85,72];         // Brown
+    if (t==='spell') return [92,107,192];         // Indigo
+    if (t==='critical' || t==='crit') return [255,193,7];  // Amber
+    if (t==='projectile') return [103,58,183];    // Deep purple
+    if (t==='area') return [171,71,188];          // Purple
+    if (t==='melee') return [139,69,19];          // Saddle brown
+    
+    // Mechanics
+    if (t==='curse') return [123,31,162];         // Dark purple
+    if (t==='minion') return [156,39,176];        // Purple (same as chaos)
+    if (t==='totem') return [121,134,203];        // Light indigo
+    if (t==='trap' || t==='mine') return [255,167,38];  // Deep orange
+    if (t==='speed' || t==='movement') return [67,160,71];    // Green
+    if (t==='duration') return [63,81,181];       // Indigo
+    if (t==='cooldown') return [33,150,243];      // Blue
+    if (t==='aura') return [236,64,122];          // Pink
+    if (t==='flask') return [0,150,136];          // Teal
+    if (t==='charge') return [255,202,40];        // Gold
+    if (t==='mechanics') return [96,125,139];     // Blue-gray
+    
+    // Default fallback
+    return [120,144,156];  // Slate gray
   };
   const chipCss = (tag: string, active: boolean) => {
     const [r,g,b] = tagRGB(tag);
