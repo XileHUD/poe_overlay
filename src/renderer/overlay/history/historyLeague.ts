@@ -23,13 +23,13 @@ export interface LeagueOption {
 export type LeaguePromptReason = 'manual-open' | 'auto-hardcore' | 'empty-data';
 
 export const SOFTCORE_LEAGUE = 'Rise of the Abyssal';
-export const HARDCORE_LEAGUE = 'Hardcore Rise of the Abyssal';
+export const HARDCORE_LEAGUE = 'HC Rise of the Abyssal';
 export const STANDARD_LEAGUE = 'Standard';
 export const LEGACY_HARDCORE_LEAGUE = 'Hardcore';
 
 const LEAGUE_OPTIONS: LeagueOption[] = [
   { id: SOFTCORE_LEAGUE, label: 'Rise of the Abyssal', tag: 'Softcore', hint: 'Default trade league' },
-  { id: HARDCORE_LEAGUE, label: 'Hardcore Rise of the Abyssal', tag: 'Hardcore', hint: 'Deletes characters on death' },
+  { id: HARDCORE_LEAGUE, label: 'HC Rise of the Abyssal', tag: 'Hardcore', hint: 'Deletes characters on death' },
   { id: STANDARD_LEAGUE, label: 'Standard', tag: 'Legacy', hint: 'Permanent league' },
   { id: LEGACY_HARDCORE_LEAGUE, label: 'Hardcore', tag: 'Legacy HC', hint: 'Legacy hardcore league' }
 ];

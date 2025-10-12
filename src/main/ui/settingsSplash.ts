@@ -1055,7 +1055,7 @@ function buildSettingsSplashHtml(
       </div>
       <select class="btn btn-secondary" id="leagueSelect" style="min-width: 220px;">
         <option value="Rise of the Abyssal">Rise of the Abyssal (Softcore)</option>
-        <option value="Hardcore Rise of the Abyssal">Hardcore Rise of the Abyssal</option>
+        <option value="HC Rise of the Abyssal">HC Rise of the Abyssal</option>
         <option value="Standard">Standard (Legacy)</option>
         <option value="Hardcore">Hardcore (Legacy)</option>
       </select>
