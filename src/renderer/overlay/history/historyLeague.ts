@@ -108,7 +108,7 @@ function buildPromptMessage(reason: LeaguePromptReason, opts?: { previousLeague?
   }
   if (reason === 'empty-data') {
     const prev = opts?.previousLeague ? formatLeagueLabel(opts.previousLeague) : 'that league';
-    return `No history entries were returned for ${prev}. Try another league below.`;
+    return `No history entries were returned for ${prev}. This often means your character is in a different league (Softcore vs Hardcore). Choose the correct league below to resume syncing.`;
   }
   return 'Pick which trade league you want to track for merchant history.';
 }
@@ -236,6 +236,11 @@ export function setLeaguePreference(league: string, source: LeagueSource, option
 
   historyState.league = trimmed;
   historyState.leagueSource = source;
+  
+  // Mark as explicitly set when user manually selects or when loaded from persisted preference
+  if (source === 'manual' || options?.reason === 'init') {
+    historyState.leagueExplicitlySet = true;
+  }
 
   if (leagueChanged && options?.resetStore !== false) {
     resetHistoryStoreForLeagueChange();
@@ -262,25 +267,46 @@ export async function initializeHistoryLeagueControls(callbacks: { onManualLeagu
 
   try {
     const pref = await getElectronAPI().historyGetLeaguePreference?.();
-    const league = (pref?.league || SOFTCORE_LEAGUE).trim() || SOFTCORE_LEAGUE;
-    const source: LeagueSource = pref?.source === 'manual' ? 'manual' : 'auto';
-    await setLeaguePreference(league, source, { persist: false, resetStore: false, reason: 'init' });
+    
+    // Use the hasStoredPreference flag from main process to determine if user has actually saved a preference
+    const hasStoredPreference = pref && (pref as any).hasStoredPreference === true;
+    
+    if (hasStoredPreference) {
+      // User has a real stored preference - use it and mark as explicitly set
+      const league = (pref?.league || SOFTCORE_LEAGUE).trim() || SOFTCORE_LEAGUE;
+      const source: LeagueSource = pref?.source === 'manual' ? 'manual' : 'auto';
+      await setLeaguePreference(league, source, { persist: false, resetStore: false, reason: 'init' });
+      console.log('[HistoryLeague] Loaded stored league preference:', league, '(source:', source, ')');
+    } else {
+      // No stored preference - set default but DON'T mark as explicitly set
+      console.log('[HistoryLeague] No stored league preference - using default (user must confirm in Settings)');
+      historyState.league = SOFTCORE_LEAGUE;
+      historyState.leagueSource = 'auto';
+      historyState.leagueExplicitlySet = false; // Force user to select league
+      // Surface the prompt immediately so the user knows to pick a league
+      showLeaguePrompt('manual-open', {
+        message: 'Pick the trade league you want to track before refreshing history.',
+        highlight: historyState.league
+      });
+    }
   } catch (err) {
     console.warn('[HistoryLeague] Failed to load stored league preference', err);
-    await setLeaguePreference(historyState.league || SOFTCORE_LEAGUE, historyState.leagueSource === 'manual' ? 'manual' : 'auto', { persist: false, resetStore: false, reason: 'init' });
+    // On error, use current state but don't mark as explicitly set
+    historyState.league = historyState.league || SOFTCORE_LEAGUE;
+    historyState.leagueSource = historyState.leagueSource === 'manual' ? 'manual' : 'auto';
+    historyState.leagueExplicitlySet = false;
   }
 }
 
 export function queueAutoLeaguePrompt(newLeague: string, previousLeague?: string): void {
-  // League selection moved to settings - no longer show prompts
-  console.log('[HistoryLeague] Auto-detected league:', newLeague, 'from', previousLeague);
+  // Auto-detection removed - users must manually select their league
+  console.log('[HistoryLeague] Auto-detection disabled:', newLeague, 'from', previousLeague);
 }
 
 export function maybeShowPendingLeaguePrompt(): void {
-  // League selection moved to settings - no longer show prompts
+  // Auto-detection removed - users must manually select their league
 }
 
 export function showLeaguePrompt(reason: LeaguePromptReason, opts?: { previousLeague?: string; newLeague?: string; message?: string; highlight?: string }): void {
-  // League selection moved to settings - no longer show prompts
-  console.log('[HistoryLeague] League prompt disabled (moved to settings):', reason, opts);
+  showPrompt(reason, opts);
 }

@@ -84,6 +84,11 @@
         <!-- History view container (hidden by default, toggled by Merchant History tab) -->
     <!-- History container (normal flow, visibility controlled by data-view) -->
     <div id="historyContainer" style="display:none; flex:1 1 auto; overflow:hidden;">
+            <div id="historyLeaguePrompt" class="history-league-prompt" style="display:none;">
+                <div id="historyLeaguePromptMessage" class="history-league-prompt-message"></div>
+                <div id="historyLeaguePromptButtons" class="history-league-prompt-buttons"></div>
+                <button id="historyLeaguePromptDismiss" type="button" class="history-league-prompt-dismiss">Not now</button>
+            </div>
             <!-- History header/filters -->
                         <div id="historyHeader" style="display:flex; flex-direction:column; gap:2px; padding:4px 8px 2px 8px; border-bottom:1px solid var(--border-color); background: var(--bg-secondary); -webkit-app-region: no-drag;">
                             <div id="historyHeaderRow2" style="display:flex; flex-direction:row; align-items:center; gap:8px; flex-wrap:nowrap; overflow:hidden;">

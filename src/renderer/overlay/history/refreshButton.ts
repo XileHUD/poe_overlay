@@ -3,6 +3,7 @@
  */
 import { historyState } from './historyData';
 import { autoRefreshManager } from './autoRefresh';
+import { nextAllowedRefreshAt } from './historyRateLimit';
 
 /**
  * Show confirmation dialog before manual refresh
@@ -159,12 +160,15 @@ export function updateRefreshButtonUI(
     // Keep enabled but show countdown in title
     const mins = Math.floor(retryAfter / 60);
     const secs = retryAfter % 60;
-    btn.title = buildTooltip(`⏱ Cooling Down\n\nRecommended wait: ${mins}m ${secs}s${rateLimitText}\n\n(You can still attempt a refresh manually)`);
+    btn.title = buildTooltip(
+      `⏱ Cooling Down\n\nNext automatic refresh in: ${mins}m ${secs}s${rateLimitText}` +
+      `\n\nWe'll trigger it for you as soon as the budget resets, or you can refresh manually now.`
+    );
   } else if (autoRefreshActive) {
     btn.disabled = false;
     btn.style.opacity = '1';
     btn.style.cursor = 'pointer';
-    btn.title = buildTooltip(`🔄 Auto-Refresh Active\n\nRefreshes every 15 minutes to stay within limits${rateLimitText}\n\nClick to manually refresh now`);
+    btn.title = buildTooltip(`🔄 Auto-Refresh Active\n\nWe schedule refreshes based on the latest rate-limit window${rateLimitText}\n\nClick to refresh immediately if needed`);
   } else {
     btn.disabled = false;
     btn.style.opacity = '1';
@@ -308,10 +312,13 @@ export function attachRefreshButtonLogic(
       // Reset auto-refresh schedule to be 15m from this manual refresh
       try {
         if (autoRefreshManager.isRunning()) {
-          autoRefreshManager.startAutoRefresh(async () => {
-            // Reuse external refresh callback semantics
-            await (autoRefreshCallback || refreshCallback)();
-          });
+          autoRefreshManager.startAutoRefresh(
+            async () => {
+              // Reuse external refresh callback semantics
+              await (autoRefreshCallback || refreshCallback)();
+            },
+            () => nextAllowedRefreshAt()
+          );
         }
       } catch {}
     } catch (e) {

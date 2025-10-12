@@ -69,4 +69,9 @@ export class SettingsService {
     this.settings[key] = updater(this.settings[key]);
     this.save();
   }
+
+  clear<K extends keyof UserSettings>(key: K): void {
+    delete this.settings[key];
+    this.save();
+  }
 }

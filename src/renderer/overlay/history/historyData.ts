@@ -29,6 +29,7 @@ export interface HistoryState {
   selectedIndex: number;
   league: string;
   leagueSource: 'auto' | 'manual';
+  leagueExplicitlySet: boolean; // true if user has explicitly selected a league (prevents auto-fetch on first load)
   store: HistoryStore;
   filters: { 
     min: number; 
@@ -54,6 +55,7 @@ export const historyState: HistoryState = {
   selectedIndex: 0,
   league: "Rise of the Abyssal",
   leagueSource: 'auto',
+  leagueExplicitlySet: false, // Will be set to true when user selects league in Settings or after first successful fetch
   store: { entries: [], totals: {}, lastSync: 0, lastFetchAt: 0 },
   filters: { min: 0, max: 0, cur: "", category: "", search: "", rarity: "", timeframe: "all" },
   sort: "newest",

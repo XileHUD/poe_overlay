@@ -72,6 +72,95 @@ body.view-history #historyActiveFilters {
     pointer-events: auto !important;
 }
 
+#historyLeagueBtn.is-manual::after {
+    content: ' (manual)';
+    font-size: 10px;
+    color: var(--accent-blue);
+}
+
+.history-league-prompt {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    margin: 6px 8px;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-tertiary);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+}
+
+.history-league-prompt.active {
+    display: flex;
+}
+
+.history-league-prompt-message {
+    font-size: 12px;
+    color: var(--text-primary);
+}
+
+.history-league-prompt-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.history-league-option {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    min-width: 168px;
+    padding: 6px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 11px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.history-league-option:hover {
+    border-color: var(--accent-blue);
+}
+
+.history-league-option.active {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 1px var(--accent-blue);
+}
+
+.history-league-option-main {
+    font-weight: 600;
+}
+
+.history-league-option-tag {
+    font-size: 10px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.35px;
+}
+
+.history-league-option-hint {
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.history-league-prompt-dismiss {
+    align-self: flex-start;
+    font-size: 11px;
+    color: var(--text-secondary);
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.history-league-prompt-dismiss:hover {
+    color: var(--text-primary);
+}
+
 /* Prevent text selection when dragging history header */
 #historyHeaderMain,
 #historyTotals,

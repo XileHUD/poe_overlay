@@ -61,7 +61,7 @@ import {
 import { autoRefreshManager } from './autoRefresh';
 import { updateSessionUI, attachLoginButtonLogic } from './sessionManager';
 import { attachRefreshButtonLogic } from './refreshButton';
-import { initializeHistoryLeagueControls, maybeShowPendingLeaguePrompt, formatLeagueLabel } from './historyLeague';
+import { initializeHistoryLeagueControls, formatLeagueLabel } from './historyLeague';
 
 const renderListWithDetail = (renderDetailCallback: (idx: number) => void) => renderHistoryList(renderDetailCallback);
 const renderDetailForIndex = (idx: number) => renderHistoryDetail(idx);
@@ -84,6 +84,15 @@ async function performGuardedRefresh(origin: string): Promise<void> {
     return;
   }
   await performFullRefresh();
+}
+
+function startAutoRefreshLoop(): void {
+  autoRefreshManager.startAutoRefresh(
+    async () => {
+      await performGuardedRefresh('auto-refresh');
+    },
+    () => nextAllowedRefreshAt()
+  );
 }
 
 function prepareUiForManualLeagueChange(league: string): void {
@@ -153,8 +162,6 @@ export function onEnterView(): void {
     },
     () => historyState.store.entries.length > 0
   );
-
-  maybeShowPendingLeaguePrompt();
 }
 
 export function onLeaveView(): void {
@@ -198,6 +205,10 @@ export function onLeaveView(): void {
     },
     onManualLeagueChange: async () => {
       await performFullRefresh();
+      const loggedIn = await updateSessionUI();
+      if (loggedIn) {
+        startAutoRefreshLoop();
+      }
     }
   });
 
@@ -208,18 +219,14 @@ export function onLeaveView(): void {
     try { 
       attachLoginButtonLogic(() => {
         console.log('[Login] Starting auto-refresh system');
-        autoRefreshManager.startAutoRefresh(async () => {
-          await performGuardedRefresh('auto-refresh');
-        });
+        startAutoRefreshLoop();
       });
       // If already logged in on startup, auto-start refresh loop
       (async () => {
         const loggedIn = await updateSessionUI();
         if (loggedIn) {
           console.log('[Startup] Session already logged in – starting auto-refresh system');
-          autoRefreshManager.startAutoRefresh(async () => {
-            await performGuardedRefresh('auto-refresh');
-          });
+          startAutoRefreshLoop();
         }
       })();
     } catch (e) { console.warn('[Session] Attach login logic failed:', e); } 

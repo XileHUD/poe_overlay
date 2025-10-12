@@ -279,22 +279,37 @@ class OverlayApp {
             this.migrateClipboardDelaySetting();
 
             try {
-                const storedLeague = this.settingsService.get('merchantHistoryLeague');
-                if (typeof storedLeague === 'string' && storedLeague.trim()) {
-                    this.merchantHistoryLeague = storedLeague.trim();
-                }
-            } catch {}
-
-            try {
+                const storedLeagueRaw = this.settingsService.get('merchantHistoryLeague');
                 const storedSource = this.settingsService.get('merchantHistoryLeagueSource');
-                if (storedSource === 'auto' || storedSource === 'manual') {
-                    this.merchantHistoryLeagueSource = storedSource;
+                const trimmedLeague = typeof storedLeagueRaw === 'string' ? storedLeagueRaw.trim() : '';
+                const hasManualPreference = storedSource === 'manual' && trimmedLeague.length > 0;
+
+                if (hasManualPreference) {
+                    this.merchantHistoryLeague = trimmedLeague;
+                    this.merchantHistoryLeagueSource = 'manual';
+                } else {
+                    this.merchantHistoryLeague = 'Rise of the Abyssal';
+                    this.merchantHistoryLeagueSource = 'auto';
+
+                    if (trimmedLeague.length > 0 || storedSource === 'auto') {
+                        this.settingsService.clear('merchantHistoryLeague');
+                        this.settingsService.clear('merchantHistoryLeagueSource');
+                    }
                 }
             } catch {}
             
             // Show splash if user has never seen it (new install or upgrade from old version)
-            const hasSeenSplash = this.settingsService.get('seenFeatureSplash');
-            
+            let hasSeenSplash = this.settingsService.get('seenFeatureSplash') === true;
+
+            if (!hasSeenSplash) {
+                const existingFeatureConfig = this.settingsService.get('enabledFeatures');
+                if (existingFeatureConfig && typeof existingFeatureConfig === 'object') {
+                    console.log('[Init] Feature config already present – skipping splash');
+                    hasSeenSplash = true;
+                    this.settingsService.set('seenFeatureSplash', true);
+                }
+            }
+
             if (!hasSeenSplash) {
                 this.updateSplash('Awaiting feature selection...');
                 // Close loading splash before showing feature splash to avoid z-order issues
@@ -1745,21 +1760,21 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         });
     }
 
-    // Get current hotkey (default to "Q", with validation)
+    // Get current hotkey (default to "Ctrl+Q", with validation)
     private getHotkeyKey(): string {
         try {
             const hotkey = this.settingsService?.get('hotkey');
-            if (!hotkey || typeof hotkey !== 'object') return 'Q';
+            if (!hotkey || typeof hotkey !== 'object') return 'Ctrl+Q';
             const { key } = hotkey as any;
             
             if (key && typeof key === 'string' && key.length > 0) {
                 return key; // Return as-is (could be "Q", "Ctrl+Q", "Alt+F", etc.)
             }
             
-            return 'Q';
+            return 'Ctrl+Q';
         } catch (error) {
             console.error('[Hotkey] Error reading hotkey from settings:', error);
-            return 'Q';
+            return 'Ctrl+Q';
         }
     }
 
@@ -2197,9 +2212,16 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         // Removed: poe-scrape-open-history (deprecated scraping approach)
 
         ipcMain.handle('history-get-league', async () => {
+            const storedLeagueRaw = this.settingsService?.get('merchantHistoryLeague');
+            const storedSource = this.settingsService?.get('merchantHistoryLeagueSource');
+            const hasStoredPreference = storedSource === 'manual'
+                && typeof storedLeagueRaw === 'string'
+                && storedLeagueRaw.trim().length > 0;
+
             return {
                 league: this.merchantHistoryLeague,
-                source: this.merchantHistoryLeagueSource
+                source: this.merchantHistoryLeagueSource,
+                hasStoredPreference
             };
         });
 
@@ -2215,8 +2237,13 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
             this.merchantHistoryLeagueSource = nextSource;
 
             if ((leagueChanged || sourceChanged) && this.settingsService) {
-                try { this.settingsService.set('merchantHistoryLeague', this.merchantHistoryLeague); } catch {}
-                try { this.settingsService.set('merchantHistoryLeagueSource', this.merchantHistoryLeagueSource); } catch {}
+                if (this.merchantHistoryLeagueSource === 'manual') {
+                    try { this.settingsService.set('merchantHistoryLeague', this.merchantHistoryLeague); } catch {}
+                    try { this.settingsService.set('merchantHistoryLeagueSource', this.merchantHistoryLeagueSource); } catch {}
+                } else {
+                    try { this.settingsService.clear('merchantHistoryLeague'); } catch {}
+                    try { this.settingsService.clear('merchantHistoryLeagueSource'); } catch {}
+                }
             }
 
             return {

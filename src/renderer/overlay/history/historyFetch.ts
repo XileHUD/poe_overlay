@@ -14,11 +14,12 @@ import { historyVisible } from './historyView';
 import { addToTotals, recomputeTotalsFromEntries, renderHistoryTotals } from './historyTotals';
 import { applyFilters, renderHistoryActiveFilters } from './historyFilters';
 import { applySort } from './historyFilters';
-import { nextAllowedRefreshAt, updateHistoryRefreshButton, setRateLimitInfo } from './historyRateLimit';
+import { nextAllowedRefreshAt, updateHistoryRefreshButton, setRateLimitInfo, parseRateLimitHeaders } from './historyRateLimit';
+import { autoRefreshManager } from './autoRefresh';
 import { updateSessionUI } from './sessionManager';
 import { sendHistoryToPopout } from './historyPopout';
 import { recomputeChartSeriesFromStore, drawHistoryChart, updateHistoryChartFromTotals } from './historyChart';
-import { getLeaguePreference, setLeaguePreference, queueAutoLeaguePrompt, maybeShowPendingLeaguePrompt, showLeaguePrompt, formatLeagueLabel, SOFTCORE_LEAGUE, HARDCORE_LEAGUE, STANDARD_LEAGUE, LEGACY_HARDCORE_LEAGUE } from './historyLeague';
+import { getLeaguePreference, setLeaguePreference, showLeaguePrompt, formatLeagueLabel } from './historyLeague';
 
 function extractRowsFromResponse(res: any): any[] {
   if (!res) return [];
@@ -41,54 +42,7 @@ function showInfoBadge(message: string, duration = 4000): void {
   }, duration);
 }
 
-function computeFallbackLeagues(base: string): string[] {
-  const norm = (base || '').toLowerCase();
-  if (norm === SOFTCORE_LEAGUE.toLowerCase()) {
-    return [HARDCORE_LEAGUE, STANDARD_LEAGUE, LEGACY_HARDCORE_LEAGUE];
-  }
-  if (norm === HARDCORE_LEAGUE.toLowerCase()) {
-    return [SOFTCORE_LEAGUE, STANDARD_LEAGUE];
-  }
-  if (norm === STANDARD_LEAGUE.toLowerCase()) {
-    return [LEGACY_HARDCORE_LEAGUE, SOFTCORE_LEAGUE, HARDCORE_LEAGUE];
-  }
-  if (norm === LEGACY_HARDCORE_LEAGUE.toLowerCase()) {
-    return [STANDARD_LEAGUE, SOFTCORE_LEAGUE, HARDCORE_LEAGUE];
-  }
-  return [SOFTCORE_LEAGUE, HARDCORE_LEAGUE, STANDARD_LEAGUE, LEGACY_HARDCORE_LEAGUE].filter((league) => league.toLowerCase() !== norm);
-}
-
-async function tryAutoDetectAlternateLeague(originalLeague: string): Promise<{ response: any; rows: any[] } | null> {
-  const pref = getLeaguePreference();
-  if (pref.source === 'manual') return null;
-
-  const candidates = computeFallbackLeagues(originalLeague);
-  for (const candidate of candidates) {
-    if ((candidate || '').toLowerCase() === (originalLeague || '').toLowerCase()) {
-      continue;
-    }
-    try {
-      const attempt = await (window as any).electronAPI.poeFetchHistory(candidate);
-      if ((attempt as any)?.rateLimited) {
-        return { response: attempt, rows: [] };
-      }
-      if (!(attempt as any)?.ok) continue;
-      const rows = extractRowsFromResponse(attempt);
-      if (!rows || rows.length === 0) {
-        continue;
-      }
-
-      await setLeaguePreference(candidate, 'auto', { persist: true, resetStore: true, reason: 'auto-detect' });
-      queueAutoLeaguePrompt(candidate, originalLeague);
-      showInfoBadge(`Detected ${formatLeagueLabel(candidate)}`, 5000);
-      return { response: attempt, rows };
-    } catch (err) {
-      console.warn('[History] League fallback fetch failed', candidate, err);
-    }
-  }
-
-  return null;
-}
+// Auto-detection removed to prevent rate-limit loops when users have no history in their league
 
 async function handleRateLimitedResponse(
   res: any,
@@ -177,6 +131,24 @@ export async function refreshHistory(
   const histDet = document.getElementById("historyDetail");
   if (!histList || !histDet) return;
   
+  // Check if league has been explicitly set by user
+  if (!historyState.leagueExplicitlySet) {
+    (histList as HTMLElement).innerHTML = `
+      <div class="no-mods" style="padding:16px;line-height:1.6;">
+        <div style="font-size:14px;font-weight:500;margin-bottom:12px;">👋 Welcome to Merchant History!</div>
+        <div style="font-size:13px;color:#bbb;margin-bottom:8px;">
+          Before fetching your trade history, please select your league:
+        </div>
+        <div style="font-size:12px;color:#999;">
+          1. Click the <strong>Settings</strong> icon (top-left gear)<br/>
+          2. Select your league under <strong>"Merchant History League"</strong><br/>
+          3. Come back here and click <strong>Refresh</strong>
+        </div>
+      </div>`;
+    console.log('[History] League not explicitly set – showing welcome message');
+    return;
+  }
+  
   // Show loading state only if we don't already have items displayed
   if (!historyState.items || historyState.items.length === 0) {
     (histList as HTMLElement).innerHTML = '<div class="no-mods" style="padding:8px;">Loading…</div>';
@@ -242,22 +214,14 @@ export async function refreshHistory(
     // ========== Extract Rows from Response ==========
     rows = extractRowsFromResponse(res);
 
-    if (!rows || rows.length === 0) {
-      const previousLeague = historyState.league;
-      const fallback = await tryAutoDetectAlternateLeague(previousLeague);
-      if (fallback) {
-        if ((fallback.response as any)?.rateLimited) {
-          await handleRateLimitedResponse(fallback.response, histList, renderListCallback, renderDetailCallback);
-          return;
-        }
-        res = fallback.response;
-        rows = fallback.rows;
-      }
-    }
-
+    // If no data found, show league selection prompt (no auto-detection to avoid rate-limit loops)
     if (!rows || rows.length === 0) {
       (histList as HTMLElement).innerHTML =
-        `<div class="no-mods" style="padding:8px;">No history returned for ${formatLeagueLabel(historyState.league)}. Try selecting another league.</div>`;
+        `<div class="no-mods" style="padding:8px;">No history returned for ${formatLeagueLabel(historyState.league)}.<br/><br/>` +
+        `This usually means the selected league doesn't match your character (Softcore vs Hardcore).` +
+        `<br/><br/>Pick the correct league in <strong>Settings</strong> (top-left gear icon) to resume.</div>`;
+      showInfoBadge(`No trades found for ${formatLeagueLabel(historyState.league)}. Double-check your league choice; auto-refresh is paused until you switch.`);
+      try { autoRefreshManager.stopAutoRefresh(); } catch {}
       showLeaguePrompt('empty-data', { previousLeague: historyState.league });
       return;
     }
@@ -272,6 +236,14 @@ export async function refreshHistory(
     // Store rate limit info from headers for display
     if ((res as any)?.headers) {
       try { setRateLimitInfo((res as any).headers); } catch {}
+      try {
+        const until = parseRateLimitHeaders((res as any).headers, (res as any)?.status);
+        if (typeof until === 'number') {
+          historyState.rateLimitUntil = until > Date.now() ? until : 0;
+        }
+      } catch (e) {
+        console.warn('[History] Failed to interpret rate limit headers', e);
+      }
     }
     
     // ========== Normalize and Merge Data ==========
@@ -347,8 +319,6 @@ export async function refreshHistory(
     try {
       sendHistoryToPopout(historyState);
     } catch {}
-    
-    maybeShowPendingLeaguePrompt();
 
     return true;
   } catch (e) {
