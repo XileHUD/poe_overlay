@@ -23,8 +23,9 @@
     flex-wrap: nowrap;
     align-items: center;
     gap: 10px;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow: visible;
+    position: relative;
+    z-index: 300;
 }
 .auto-condensed {
     display: none !important;
@@ -979,14 +980,185 @@ body {
     border-color: var(--accent-blue);
 }
 
-#categorySelect {
-    padding: 4px 8px;
+.category-select-wrapper {
+    position: relative;
+    display: inline-flex;
+    width: 200px;
+    z-index: 20;
+}
+
+.category-select-wrapper .category-select-native {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.category-select-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 5px 12px;
     background: var(--bg-tertiary);
     border: 1px solid var(--border-color);
     border-radius: 4px;
     color: var(--text-primary);
     font-size: 11px;
-    width: 200px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.category-select-display.has-background {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.category-select-display:focus-visible {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px rgba(9, 105, 218, 0.25);
+}
+
+.category-select-display.has-background {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.category-select-display-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    flex: 0 0 18px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.category-select-display-icon.has-icon {
+    display: inline-flex;
+}
+
+.category-select-display-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: invert(1) brightness(1.25);
+}
+
+.category-select-display-label {
+    flex: 1 1 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.category-select-display-caret {
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-left: auto;
+}
+
+.category-select-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    z-index: 500;
+    display: none;
+    flex-direction: column;
+    width: max(100%, 220px);
+    max-height: 320px;
+    overflow-y: auto;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    padding: 4px 0;
+}
+
+.category-select-wrapper.open .category-select-menu {
+    display: flex;
+}
+
+.category-menu-group-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    padding: 6px 14px 4px 14px;
+    color: var(--text-secondary);
+}
+
+.category-menu-divider {
+    height: 1px;
+    margin: 4px 10px;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.category-menu-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 11px;
+    cursor: pointer;
+    text-align: left;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.category-menu-item .category-menu-item-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    flex: 0 0 18px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.category-menu-item .category-menu-item-icon.has-icon {
+    display: flex;
+}
+
+.category-menu-item .category-menu-item-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: invert(1) brightness(1.25);
+}
+
+.category-menu-item .category-menu-item-label {
+    flex: 1 1 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.category-menu-item:hover {
+    transform: translateX(2px);
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.category-menu-item.active {
+    box-shadow: inset 0 0 0 1px rgba(201, 204, 255, 0.35);
+}
+
+.category-menu-item[data-icon-url=""] .category-menu-item-icon {
+    display: none;
 }
 
 /* Remove earlier grid approach to prevent unintended wrapping when child count changes */

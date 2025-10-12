@@ -56,7 +56,15 @@
     <div id="controlPanel" class="control-panel" style="-webkit-app-region: no-drag;">
         <div class="cp-left" style="display:flex; align-items:center; gap:6px; flex:0 0 auto;">
             <label class="cp-label" style="font-size:11px; color:var(--text-secondary);">Category</label>
-            <select id="categorySelect" class="cp-select" style="min-width:140px;"></select>
+            <div id="categorySelectWrapper" class="category-select-wrapper" style="min-width:140px;">
+                <button id="categorySelectDisplay" class="cp-select category-select-display" type="button" aria-haspopup="listbox" aria-expanded="false">
+                    <span id="categorySelectIcon" class="category-select-display-icon" aria-hidden="true"></span>
+                    <span id="categorySelectLabel" class="category-select-display-label">Select category...</span>
+                    <span class="category-select-display-caret" aria-hidden="true">▾</span>
+                </button>
+                <div id="categorySelectMenu" class="category-select-menu" role="listbox" aria-hidden="true"></div>
+                <select id="categorySelect" class="cp-select category-select-native" aria-hidden="true" tabindex="-1"></select>
+            </div>
         </div>
         <div id="searchInputWrap" class="cp-search-wrap" style="flex:0 0 auto;">
             <input id="search-input" class="cp-search" type="text" placeholder="Search..." style="width:150px;" />
@@ -959,15 +967,457 @@
         }
         
 
+    const CATEGORY_ICON_FALLBACK = 'body';
+    const CATEGORY_ICON_MAP = {
+        ALL: 'aggregated',
+        DESECRATED: 'aggregated',
+        ESSENCE: 'aggregated',
+        CORRUPTED: 'aggregated',
+        SOCKETABLE: 'aggregated',
+        SOCKETABLES: 'aggregated',
+        RELICS: 'relic',
+        BODY_ARMOURS: 'body',
+        HELMETS: 'helmet',
+        GLOVES: 'gloves',
+        BOOTS: 'boots',
+        RINGS: 'ring',
+        AMULETS: 'amulet',
+        BELTS: 'belt',
+        BUCKLERS: 'shield',
+        SHIELDS: 'shield',
+        BOWS: 'bow',
+        CROSSBOWS: 'crossbow',
+        CLAWS: 'blade',
+        DAGGERS: 'blade',
+        ONE_HAND_SWORDS: 'blade',
+        TWO_HAND_SWORDS: 'blade',
+        ONE_HAND_AXES: 'axe',
+        TWO_HAND_AXES: 'axe',
+        ONE_HAND_MACES: 'mace',
+        TWO_HAND_MACES: 'mace',
+        FLAILS: 'flail',
+        SPEARS: 'spear',
+        QUARTERSTAVES: 'spear',
+        STAVES: 'spear',
+        FOCI: 'foci',
+        WANDS: 'wand',
+        SCEPTRES: 'wand',
+        QUIVERS: 'quiver',
+        CHARMS: 'charm',
+        LIFE_FLASKS: 'flask-life',
+        MANA_FLASKS: 'flask-mana',
+        TRAPS: 'trap',
+        WAYSTONES: 'waystone',
+        STRONGBOX: 'relic',
+        STRONGBOX_UNIQUES: 'relic',
+        EXPEDITION_LOGBOOK: 'tablet',
+        PRECURSOR_TABLET: 'tablet',
+        EXPEDITION_PRECURSOR_TABLET: 'tablet',
+        BREACH_PRECURSOR_TABLET: 'tablet',
+        RITUAL_PRECURSOR_TABLET: 'tablet',
+        OVERSEER_PRECURSOR_TABLET: 'tablet',
+        DELIRIUM_PRECURSOR_TABLET: 'tablet',
+        TAPESTRY_RELIC: 'relic',
+        AMPHORA_RELIC: 'relic',
+        COFFER_RELIC: 'relic',
+        INCENSE_RELIC: 'relic',
+        SEAL_RELIC: 'relic',
+        URN_RELIC: 'relic',
+        VASE_RELIC: 'relic',
+        EMERALD: 'jewel',
+        RUBY: 'jewel',
+        SAPPHIRE: 'jewel',
+        TIME_LOST_EMERALD: 'jewel',
+        TIME_LOST_RUBY: 'jewel',
+        TIME_LOST_SAPPHIRE: 'jewel',
+        JEWELS: 'jewel'
+    };
+
+    const ATTRIBUTE_STYLES = {
+        none: { gradient: 'linear-gradient(120deg, rgba(255,255,255,0.04) 0%, rgba(14,21,30,0.18) 100%)', textColor: 'var(--text-primary)' },
+        str: { gradient: 'linear-gradient(120deg, rgba(203,72,72,0.28) 0%, rgba(203,72,72,0.08) 100%)', textColor: 'var(--text-primary)' },
+        dex: { gradient: 'linear-gradient(120deg, rgba(76,158,108,0.28) 0%, rgba(76,158,108,0.08) 100%)', textColor: 'var(--text-primary)' },
+        int: { gradient: 'linear-gradient(120deg, rgba(87,118,214,0.28) 0%, rgba(87,118,214,0.08) 100%)', textColor: 'var(--text-primary)' },
+        str_dex: { gradient: 'linear-gradient(120deg, rgba(203,72,72,0.26) 0%, rgba(76,158,108,0.22) 75%, rgba(76,158,108,0.08) 100%)', textColor: 'var(--text-primary)' },
+        str_int: { gradient: 'linear-gradient(120deg, rgba(203,72,72,0.26) 0%, rgba(87,118,214,0.22) 75%, rgba(87,118,214,0.08) 100%)', textColor: 'var(--text-primary)' },
+        dex_int: { gradient: 'linear-gradient(120deg, rgba(76,158,108,0.26) 0%, rgba(87,118,214,0.22) 75%, rgba(87,118,214,0.08) 100%)', textColor: 'var(--text-primary)' }
+    };
+
+    const CATEGORY_ATTRIBUTE_OVERRIDES = {
+        BOWS: 'dex',
+        CROSSBOWS: 'dex',
+        QUIVERS: 'dex',
+        CLAWS: 'dex_int',
+        DAGGERS: 'dex_int',
+        ONE_HAND_SWORDS: 'str_dex',
+        TWO_HAND_SWORDS: 'str_dex',
+        ONE_HAND_AXES: 'str',
+        TWO_HAND_AXES: 'str',
+        ONE_HAND_MACES: 'str',
+        TWO_HAND_MACES: 'str',
+        FLAILS: 'str',
+        SPEARS: 'str_dex',
+        QUARTERSTAVES: 'str_int',
+        STAVES: 'int',
+        WANDS: 'int',
+        SCEPTRES: 'str_int',
+        FOCI: 'int',
+        BUCKLERS: 'dex',
+        SHIELDS: 'str',
+        TRAPS: 'dex',
+        BELTS: 'str'
+    };
+
+    const iconUrlCache = new Map();
+    const categoryMetaCache = new Map();
+    const missingCategoryIconNames = new Set();
+
+    function normalizeCategoryKey(value) {
+        return String(value || '')
+            .replace(/\s+/g, '_')
+            .replace(/-+/g, '_')
+            .replace(/__+/g, '_')
+            .trim()
+            .toUpperCase();
+    }
+
+    function splitCategoryKey(key) {
+        const parts = key.split('_');
+        const attrParts = [];
+        while (parts.length) {
+            const tail = parts[parts.length - 1];
+            if (tail === 'STR' || tail === 'DEX' || tail === 'INT') {
+                attrParts.unshift(tail.toLowerCase());
+                parts.pop();
+            } else {
+                break;
+            }
+        }
+        const baseKey = parts.join('_');
+        const attributeKey = attrParts.length ? attrParts.join('_') : '';
+        return { baseKey, attributeKey };
+    }
+
+    function inferAttribute(baseKey, attributeKey) {
+        if (attributeKey) return attributeKey;
+        if (CATEGORY_ATTRIBUTE_OVERRIDES[baseKey]) return CATEGORY_ATTRIBUTE_OVERRIDES[baseKey];
+        return '';
+    }
+
+    function inferIconName(baseKey, normalizedKey) {
+        const direct = CATEGORY_ICON_MAP[normalizedKey] || CATEGORY_ICON_MAP[baseKey];
+        if (direct) return direct;
+        if (/RELIC$/.test(baseKey)) return 'relic';
+        if (baseKey.includes('RELIC')) return 'relic';
+        if (baseKey.includes('WAYSTONE')) return 'waystone';
+        if (baseKey.includes('TABLET') || baseKey.endsWith('LOGBOOK')) return 'tablet';
+        if (/EMERALD|RUBY|SAPPHIRE|JEWEL|TIME_LOST/.test(baseKey)) return 'jewel';
+        return CATEGORY_ICON_FALLBACK;
+    }
+
+    async function resolveIconUrl(iconName) {
+        if (!iconName) return '';
+        if (iconUrlCache.has(iconName)) {
+            const cached = iconUrlCache.get(iconName);
+            if (cached) return cached;
+        }
+        let resolved = '';
+        try {
+            if (window.electronAPI?.getBundledImagePath) {
+                resolved = await window.electronAPI.getBundledImagePath(`svgicons/${iconName}.svg`);
+            }
+        } catch {}
+        if (!resolved && window.bundledImages?.toFileUrl) {
+            try { resolved = window.bundledImages.toFileUrl(`svgicons/${iconName}.svg`); } catch {}
+        }
+        resolved = normalizeIconUrl(resolved);
+        if (!resolved) {
+            resolved = '';
+        }
+        iconUrlCache.set(iconName, resolved);
+        return resolved;
+    }
+
+    function composeBackgroundLayers(gradient) {
+        return gradient || '';
+    }
+
+    function toDevServerFsUrl(pathFragment) {
+        if (!pathFragment) return '';
+        try {
+            const origin = window.location?.origin;
+            if (!origin || !/^https?:/i.test(window.location.protocol)) return '';
+            const normalized = pathFragment.replace(/\\/g, '/');
+            const trimmed = normalized.startsWith('/') && /^[A-Za-z]:/.test(normalized.slice(1))
+                ? normalized.slice(1)
+                : normalized;
+            const encoded = encodeURI(trimmed);
+            return `${origin}/@fs/${encoded}`;
+        } catch (err) {
+            console.debug('[CategoryDropdown] toDevServerFsUrl failed', err);
+            return '';
+        }
+    }
+
+    function normalizeIconUrl(value) {
+        if (!value) return '';
+        const str = String(value).trim();
+        if (!str) return '';
+        if (/^data:/i.test(str) || /^https?:/i.test(str)) return str;
+        if (/^file:/i.test(str)) {
+            const withoutScheme = str.replace(/^file:\/+/, '');
+            const devUrl = toDevServerFsUrl(withoutScheme);
+            if (devUrl) return devUrl;
+            return `file:///${withoutScheme.replace(/\\/g, '/')}`;
+        }
+        const normalized = str.replace(/\\/g, '/');
+        if (/^[A-Za-z]:/.test(normalized) || /^\/[A-Za-z]:/.test(normalized)) {
+            const devUrl = toDevServerFsUrl(normalized);
+            if (devUrl) return devUrl;
+            const cleaned = normalized.replace(/^\//, '');
+            return `file:///${cleaned}`;
+        }
+        if (normalized.startsWith('//')) return `file:${normalized}`;
+        if (normalized.startsWith('/')) return `file://${normalized}`;
+        return `file:///${normalized}`;
+    }
+
+    function applyElementMeta(element, meta) {
+        if (!element) return;
+        element.dataset.category = meta.category || '';
+        element.dataset.attr = meta.attributeKey || '';
+        element.dataset.gradient = meta.gradient || '';
+        element.dataset.iconUrl = meta.iconUrl || '';
+        element.dataset.iconName = meta.iconResolved || meta.iconRequested || '';
+        element.dataset.textColor = meta.textColor || 'var(--text-primary)';
+        element.dataset.iconRequested = meta.iconRequested || '';
+        if (meta.displayLabel) {
+            element.dataset.displayLabel = meta.displayLabel;
+        }
+        if (meta.iconMissing) {
+            element.dataset.iconMissing = meta.iconMissing;
+        } else if (element.dataset.iconMissing) {
+            element.removeAttribute('data-icon-missing');
+        }
+    }
+
+    function applyOptionDecor(option, meta) {
+        option.classList.add('category-option');
+        applyElementMeta(option, meta);
+        option.dataset.displayLabel = meta.displayLabel || option.textContent || option.value || '';
+        const background = composeBackgroundLayers(meta.gradient);
+        if (background) {
+            option.style.backgroundImage = background;
+            option.style.backgroundRepeat = 'no-repeat';
+            option.style.backgroundSize = '100% 100%';
+            option.style.backgroundPosition = 'center';
+        } else {
+            option.style.backgroundImage = 'none';
+        }
+        option.style.paddingLeft = meta.iconUrl ? '34px' : '12px';
+        option.style.color = meta.textColor || 'var(--text-primary)';
+    }
+
+    function getCategoryDropdownElements() {
+        return {
+            wrapper: document.getElementById('categorySelectWrapper'),
+            button: document.getElementById('categorySelectDisplay'),
+            menu: document.getElementById('categorySelectMenu'),
+            select: document.getElementById('categorySelect'),
+            label: document.getElementById('categorySelectLabel'),
+            icon: document.getElementById('categorySelectIcon')
+        };
+    }
+
+    function updateCategoryMenuSelection(value) {
+        const { menu } = getCategoryDropdownElements();
+        if (!menu) return;
+        const items = menu.querySelectorAll('.category-menu-item');
+        items.forEach((item) => {
+            item.classList.toggle('active', item.dataset.value === value);
+        });
+    }
+
+    function toggleCategoryMenu(forceOpen) {
+        const { wrapper, button, menu } = getCategoryDropdownElements();
+        if (!wrapper || !button || !menu) return;
+        const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : !wrapper.classList.contains('open');
+        wrapper.classList.toggle('open', shouldOpen);
+        button.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+        menu.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    }
+
+    function closeCategoryMenu() {
+        toggleCategoryMenu(false);
+    }
+
+    function renderCategoryMenu(items, selectedValue) {
+        const { menu } = getCategoryDropdownElements();
+        if (!menu) return;
+        menu.innerHTML = '';
+        const frag = document.createDocumentFragment();
+        items.forEach((item, index) => {
+            if (item.type === 'group-label') {
+                const labelEl = document.createElement('div');
+                labelEl.className = 'category-menu-group-label';
+                labelEl.textContent = item.label;
+                frag.appendChild(labelEl);
+                return;
+            }
+            if (item.type === 'divider') {
+                if (index === items.length - 1) return;
+                const divider = document.createElement('div');
+                divider.className = 'category-menu-divider';
+                frag.appendChild(divider);
+                return;
+            }
+            if (item.type === 'option') {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'category-menu-item';
+                btn.setAttribute('role', 'option');
+                applyElementMeta(btn, item.meta);
+                btn.dataset.value = item.meta.category;
+                btn.style.backgroundImage = item.meta.gradient || 'none';
+                if (item.meta.gradient) {
+                    btn.classList.add('has-background');
+                }
+                btn.style.backgroundRepeat = 'no-repeat';
+                btn.style.backgroundSize = '100% 100%';
+                btn.style.backgroundPosition = 'center';
+                btn.style.color = item.meta.textColor || 'var(--text-primary)';
+                const iconSpan = document.createElement('span');
+                iconSpan.className = 'category-menu-item-icon';
+                iconSpan.textContent = '';
+                if (item.meta.iconUrl) {
+                    const iconImg = document.createElement('img');
+                    iconImg.src = item.meta.iconUrl;
+                    iconImg.alt = '';
+                    iconImg.loading = 'lazy';
+                    iconSpan.appendChild(iconImg);
+                    iconSpan.classList.add('has-icon');
+                } else {
+                    iconSpan.classList.remove('has-icon');
+                }
+                const labelSpan = document.createElement('span');
+                labelSpan.className = 'category-menu-item-label';
+                labelSpan.textContent = item.meta.displayLabel || item.displayLabel || item.meta.category.replace(/_/g, ' ');
+                btn.appendChild(iconSpan);
+                btn.appendChild(labelSpan);
+                if (item.meta.category === selectedValue) {
+                    btn.classList.add('active');
+                }
+                btn.addEventListener('click', () => {
+                    const { select } = getCategoryDropdownElements();
+                    if (!select) return;
+                    if (select.value !== item.meta.category) {
+                        select.value = item.meta.category;
+                        select.dispatchEvent(new Event('change', { bubbles: true }));
+                    } else {
+                        syncCategorySelectAppearance();
+                    }
+                    closeCategoryMenu();
+                });
+                frag.appendChild(btn);
+            }
+        });
+        menu.appendChild(frag);
+        updateCategoryMenuSelection(selectedValue || '');
+    }
+
+    function syncCategorySelectAppearance() {
+        const select = document.getElementById('categorySelect');
+        const { button, label, icon } = getCategoryDropdownElements();
+        if (!select || !button || !label || !icon) return;
+        const option = select.options[select.selectedIndex] || null;
+        if (!option || !option.value) {
+            button.style.backgroundImage = ATTRIBUTE_STYLES.none.gradient;
+            button.classList.add('has-background');
+            button.style.color = 'var(--text-primary)';
+            label.textContent = 'Select category...';
+            icon.style.backgroundImage = 'none';
+            icon.classList.remove('has-icon');
+            updateCategoryMenuSelection('');
+            return;
+        }
+        const gradient = option.dataset.gradient || ATTRIBUTE_STYLES.none.gradient;
+        const iconUrl = option.dataset.iconUrl || '';
+        const textColor = option.dataset.textColor || 'var(--text-primary)';
+        const displayLabel = option.dataset.displayLabel || option.textContent || option.value;
+        if (gradient) {
+            button.style.backgroundImage = gradient;
+            button.classList.add('has-background');
+        } else {
+            button.style.backgroundImage = 'none';
+            button.classList.remove('has-background');
+        }
+        button.style.color = textColor;
+        label.textContent = displayLabel;
+        icon.replaceChildren();
+        if (iconUrl) {
+            const displayImg = document.createElement('img');
+            displayImg.src = iconUrl;
+            displayImg.alt = '';
+            icon.appendChild(displayImg);
+            icon.classList.add('has-icon');
+        } else {
+            icon.classList.remove('has-icon');
+        }
+        updateCategoryMenuSelection(option.value);
+    }
+
+    async function buildCategoryMeta(category) {
+        const normalizedKey = normalizeCategoryKey(category);
+        if (categoryMetaCache.has(normalizedKey)) return categoryMetaCache.get(normalizedKey);
+        const { baseKey, attributeKey } = splitCategoryKey(normalizedKey);
+        const inferredAttr = inferAttribute(baseKey, attributeKey);
+        const rawIconName = inferIconName(baseKey, normalizedKey);
+        let iconRequested = rawIconName;
+        let iconUrl = await resolveIconUrl(rawIconName);
+        let iconResolved = rawIconName;
+        let iconMissing = '';
+        if (iconUrl) {
+            if (missingCategoryIconNames.delete(rawIconName)) {
+                window.__missingCategoryIcons = Array.from(missingCategoryIconNames);
+            }
+        } else if (rawIconName !== CATEGORY_ICON_FALLBACK) {
+            iconMissing = rawIconName;
+            if (!missingCategoryIconNames.has(rawIconName)) {
+                console.info('[CategoryDropdown] Missing icon asset detected:', `${rawIconName}.svg`, '— using fallback.');
+                missingCategoryIconNames.add(rawIconName);
+                window.__missingCategoryIcons = Array.from(missingCategoryIconNames);
+            }
+            iconRequested = CATEGORY_ICON_FALLBACK;
+            iconUrl = await resolveIconUrl(iconRequested);
+            iconResolved = iconRequested;
+        }
+        const attrStyle = ATTRIBUTE_STYLES[inferredAttr] || ATTRIBUTE_STYLES.none;
+        const meta = {
+            category,
+            normalizedKey,
+            baseKey,
+            attributeKey: inferredAttr || 'none',
+            iconRequested,
+            iconResolved,
+            iconUrl,
+            textColor: attrStyle.textColor,
+            gradient: attrStyle.gradient,
+            iconMissing
+        };
+        categoryMetaCache.set(normalizedKey, meta);
+        return meta;
+    }
+
     // Populate category dropdown on load
         async function populateCategoryDropdown() {
             if (!window.electronAPI || !window.electronAPI.getAllCategories) return;
             try {
                 const categories = await window.electronAPI.getAllCategories();
                 const categorySelect = document.getElementById('categorySelect');
+                if (!categorySelect) return;
                 const previous = categorySelect.value;
         // Ensure aggregated pseudo-categories are always known and rendered first
-        const AGGREGATED_CATEGORIES = ['ALL','DESECRATED','ESSENCE','CORRUPTED','SOCKETABLE','SOCKETABLES'];
+    const AGGREGATED_CATEGORIES = ['ALL','DESECRATED','ESSENCE','CORRUPTED','SOCKETABLES'];
         const aggregatedSet = new Set(AGGREGATED_CATEGORIES.map(c => c.toUpperCase()));
 
                 function classify(cat) {
@@ -975,6 +1425,7 @@
                     if (aggregatedSet.has(u)) return 'aggregated';
                     if (u.startsWith('WAYSTONES_')) return 'waystones';
                     if (/(_RELIC)$/.test(u)) return 'relics';
+                    if (u === 'RELICS') return 'relics';
                     if (u === 'LIFE_FLASKS' || u === 'MANA_FLASKS' || u === 'CHARMS') return 'flasks';
                     if (u === 'PRECURSOR_TABLET' || /_PRECURSOR_TABLET$/.test(u)) return 'tablets';
                     if (u === 'JEWELS' || /^RUBY$/.test(u) || /^EMERALD$/.test(u) || /^SAPPHIRE$/.test(u) || /^TIME-LOST_RUBY$/.test(u) || /^TIME-LOST_EMERALD$/.test(u) || /^TIME-LOST_SAPPHIRE$/.test(u)) return 'jewels';
@@ -987,9 +1438,15 @@
                     'LIQUID_EMOTIONS','ANNOINTS','ESSENCES','OMENS','CATALYSTS','SOCKETABLES','GEMS','KEYSTONES','ASCENDANCY_PASSIVES','ATLAS_NODES','KEYWORDS','UNIQUES','BASES','CURRENCY'
                 ]);
                 // First, put all aggregated explicitly into the aggregated bucket (preserve our preferred order)
+                const aggregatedAdded = new Set();
                 for (const a of AGGREGATED_CATEGORIES) {
                     const hit = (categories||[]).find(c => String(c).toUpperCase() === a);
-                    if (hit) buckets.aggregated.push(hit);
+                    if (hit) {
+                        const key = String(hit).toUpperCase();
+                        if (aggregatedAdded.has(key)) continue;
+                        aggregatedAdded.add(key);
+                        buckets.aggregated.push(hit);
+                    }
                 }
                 // Then, distribute the rest (excluding non-modifier and aggregated)
                 for (const c of categories) {
@@ -1000,42 +1457,83 @@
                     buckets[g].push(c);
                 }
 
-                // buildOptions builds grouped & filtered list
-                function buildOptions(filterText='') {
+                const metaCacheForRun = new Map();
+
+                async function ensureMeta(cat) {
+                    if (!metaCacheForRun.has(cat)) {
+                        const meta = await buildCategoryMeta(cat);
+                        metaCacheForRun.set(cat, meta);
+                    }
+                    return metaCacheForRun.get(cat);
+                }
+
+                async function buildOptions(filterText='') {
                     categorySelect.innerHTML = `<option value="">${filterText? 'Filter: '+filterText : 'Select category...'}</option>`;
+                    const placeholder = categorySelect.options[0];
+                    if (placeholder) {
+                        placeholder.classList.add('category-placeholder');
+                        placeholder.dataset.gradient = ATTRIBUTE_STYLES.none.gradient;
+                        placeholder.dataset.iconUrl = '';
+                        placeholder.dataset.textColor = ATTRIBUTE_STYLES.none.textColor;
+                    }
+                    const menuItems = [];
                     const f = filterText.toLowerCase();
-                    function addGroup(label, list, transform=(c)=>c.replace(/_/g,' '), upper=false) {
+                    async function addGroup(label, list, transform=(c)=>c.replace(/_/g,' '), upper=false) {
                         const subset = f ? list.filter(c => transform(c).toLowerCase().includes(f)) : list.slice();
                         if (!subset.length) return;
                         const groupLabel = document.createElement('option');
                         groupLabel.textContent = label;
                         groupLabel.disabled = true;
+                        groupLabel.classList.add('category-group-label');
                         categorySelect.appendChild(groupLabel);
-                        subset.sort().forEach(c => {
+                        menuItems.push({ type: 'group-label', label });
+                        const ordered = subset.slice().sort();
+                        for (const c of ordered) {
                             const opt = document.createElement('option');
+                            const display = upper ? transform(c).toUpperCase() : transform(c);
                             opt.value = c;
-                            opt.textContent = upper ? c.toUpperCase() : transform(c);
+                            opt.textContent = display;
+                            const meta = await ensureMeta(c);
+                            meta.displayLabel = display;
+                            applyOptionDecor(opt, meta);
                             categorySelect.appendChild(opt);
-                        });
+                            menuItems.push({ type: 'option', meta });
+                        }
                         const div = document.createElement('option');
                         div.textContent = '──────────';
                         div.disabled = true;
+                        div.classList.add('category-divider');
                         categorySelect.appendChild(div);
+                        menuItems.push({ type: 'divider' });
                     }
                     // Ensure aggregated remains first group
-                    addGroup('— Aggregated —', buckets.aggregated, c=>c.toUpperCase(), true);
-                    addGroup('— Gear —', buckets.gear);
-                    addGroup('— Waystones —', buckets.waystones);
-                    addGroup('— Relics —', buckets.relics, c=>c.replace(/_/g,' '));
-                    addGroup('— Flasks & Charms —', buckets.flasks, c=>c.replace(/_/g,' '));
-                    addGroup('— Jewels —', buckets.jewels, c=>c.replace(/_/g,' '));
-                    addGroup('— Tablets —', buckets.tablets, c=>c.replace(/_/g,' '));
+                    await addGroup('— Aggregated —', buckets.aggregated, c=>c.toUpperCase(), true);
+                    await addGroup('— Gear —', buckets.gear);
+                    await addGroup('— Waystones —', buckets.waystones);
+                    await addGroup('— Relics —', buckets.relics, c=>c.replace(/_/g,' '));
+                    await addGroup('— Flasks & Charms —', buckets.flasks, c=>c.replace(/_/g,' '));
+                    await addGroup('— Jewels —', buckets.jewels, c=>c.replace(/_/g,' '));
+                    await addGroup('— Tablets —', buckets.tablets, c=>c.replace(/_/g,' '));
+                    await addGroup('— Mechanics —', buckets.mechanics, c=>c.replace(/_/g,' '));
+                    if (menuItems.length && menuItems[menuItems.length - 1]?.type === 'divider') {
+                        menuItems.pop();
+                    }
+                    return menuItems;
                 }
                 // initial build with no filter
-                buildOptions('');
+                const menuItems = await buildOptions('');
                 const realOptions = Array.from(categorySelect.options || []).filter(opt => !opt.disabled && opt.value);
                 firstSelectableCategory = realOptions.length ? realOptions[0].value : null;
-            } catch {}
+                if (previous && realOptions.some(opt => opt.value === previous)) {
+                    categorySelect.value = previous;
+                }
+                renderCategoryMenu(menuItems || [], categorySelect.value || previous || '');
+                closeCategoryMenu();
+                syncCategorySelectAppearance();
+                window.__missingCategoryIcons = Array.from(missingCategoryIconNames);
+            } catch (err) {
+                console.warn('[populateCategoryDropdown] failed', err);
+            }
         }
         // Wire initial controls on DOM ready
         document.addEventListener('DOMContentLoaded', async () => {
@@ -1270,9 +1768,13 @@
                 console.error('[Tab visibility] Error:', err);
             }
             
-            try { populateCategoryDropdown(); } catch {}
+            try { await populateCategoryDropdown(); } catch {}
             // Re-populate once modifiers fully loaded (ensures full category list when opening without item)
-            try { window.electronAPI?.onModifiersLoaded?.((_cats)=> { try { populateCategoryDropdown(); } catch {} }); } catch {}
+            try {
+                window.electronAPI?.onModifiersLoaded?.((_cats)=> {
+                    populateCategoryDropdown().catch((err)=> console.warn('[onModifiersLoaded] populateCategoryDropdown failed', err));
+                });
+            } catch {}
             if (!headerTitleEl || !headerTitleEl.textContent) {
                 const fallbackView = pickFirstAvailableView('modifiers');
                 if (fallbackView === 'history') {
@@ -1286,7 +1788,32 @@
             // Initial UI state (tab already set above based on enabled features)
             try { closeAllMenus(); } catch {}
             const select = document.getElementById('categorySelect');
-            if (select) select.addEventListener('change', switchCategory);
+            if (select) {
+                select.addEventListener('change', () => {
+                    syncCategorySelectAppearance();
+                    switchCategory();
+                });
+            }
+            const { button: categoryButton } = getCategoryDropdownElements();
+            if (categoryButton) {
+                categoryButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    toggleCategoryMenu();
+                });
+            }
+            document.addEventListener('click', (event) => {
+                const { wrapper } = getCategoryDropdownElements();
+                if (!wrapper) return;
+                if (!wrapper.contains(event.target)) {
+                    closeCategoryMenu();
+                }
+            });
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeCategoryMenu();
+                }
+            });
             // Header actions
             if (closeBtn) closeBtn.addEventListener('click', ()=>{ try { window.electronAPI?.hideOverlay?.(); } catch {} });
             function updatePinUI(pinned){ if (!pinBtn) return; pinBtn.classList.toggle('active', !!pinned); pinBtn.textContent = pinned ? 'Pinned' : 'Pin'; }
@@ -1692,6 +2219,7 @@
                             if (opt) { 
                                 // Set dropdown value WITHOUT triggering change event (data already has modifiers)
                                 categorySelect.value = slug;
+                                syncCategorySelectAppearance();
                                 console.log('Set category dropdown to:', slug, '(no reload, using provided modifiers)');
                                 markModifiersCategory(slug);
                             } else {
@@ -2424,6 +2952,7 @@ let lastSwitchTime = 0;
 function switchCategory(){
     const select=document.getElementById('categorySelect');
     if(!select) return;
+    syncCategorySelectAppearance();
     const cat=select.value;
     if(!cat) return;
     
@@ -2515,6 +3044,7 @@ function openModifiersCategory(cat, options){
         console.warn('[openModifiersCategory] No direct match for candidates, falling back to first entry:', candidates);
     }
     select.value = resolved;
+    syncCategorySelectAppearance();
     if (options && options.bypassDebounce) {
         switchCategoryLocked = false;
         lastSwitchedCategory = '';

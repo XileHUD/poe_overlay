@@ -8,6 +8,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as https from 'https';
 import { isDeepStrictEqual } from 'util';
+import { pathToFileURL } from 'url';
 // Heavy modules will be lazy-imported after splash is visible
 import type { ClipboardMonitor } from './clipboard-monitor';
 import type { ItemParser } from './item-parser';
@@ -914,18 +915,33 @@ class OverlayApp {
             ipcMain.handle('get-bundled-image-path', (_e, localPath: string) => {
                 try {
                     if (!localPath) return null;
-                    const res = (process as any).resourcesPath || process.cwd();
-                    const bundledDir = path.join(res, 'bundled-images');
-                    const fullPath = path.join(bundledDir, localPath);
-                    const exists = fs.existsSync(fullPath);
-                    if(!exists){
-                        console.debug('[get-bundled-image-path] MISS', { localPath, fullPath });
-                        return null;
+                    const normalizedLocal = localPath.replace(/^\/+/, '');
+                    const roots: string[] = [];
+                    const seen = new Set<string>();
+
+                    const pushRoot = (candidate: string | null | undefined) => {
+                        if (!candidate) return;
+                        const resolved = path.resolve(candidate);
+                        if (seen.has(resolved)) return;
+                        seen.add(resolved);
+                        roots.push(resolved);
+                    };
+
+                    pushRoot((process as any).resourcesPath ? path.join((process as any).resourcesPath, 'bundled-images') : undefined);
+                    pushRoot(app.getAppPath ? path.join(app.getAppPath(), 'bundled-images') : undefined);
+                    pushRoot(path.join(__dirname, '../../bundled-images'));
+                    pushRoot(path.join(process.cwd(), 'bundled-images'));
+                    pushRoot(path.join(process.cwd(), '..', 'bundled-images'));
+
+                    for (const root of roots) {
+                        const fullPath = path.resolve(root, normalizedLocal);
+                        if (fs.existsSync(fullPath)) {
+                            try { console.debug('[get-bundled-image-path] HIT', { localPath, fullPath }); } catch {}
+                            return pathToFileURL(fullPath).toString();
+                        }
                     }
-                    console.debug('[get-bundled-image-path] HIT', { localPath, fullPath });
-                    
-                    // Return as file:// URL for renderer
-                    return 'file:///' + fullPath.replace(/\\/g, '/');
+                    try { console.debug('[get-bundled-image-path] MISS', { localPath, roots }); } catch {}
+                    return null;
                 } catch (e) {
                     console.error('[getBundledImagePath] Error:', e);
                     return null;
