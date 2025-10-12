@@ -1100,9 +1100,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
         this.overlayWindow.on('blur', () => {
             console.log('[blur] overlay window blur event fired. isOverlayVisible=', this.isOverlayVisible, 'pinned=', this.pinned);
             this.hideTargetIndicator();
-            setTimeout(() => {
-                void this.handleOverlayBlur();
-            }, 55);
+            // Instant close - no delay needed
+            void this.handleOverlayBlur();
         });
 
         // Save window bounds when moved (handles native dragging)

@@ -810,11 +810,11 @@ function buildWhittlingBadge(result: WhittlingResult): string {
   const highlightIds = new Set(result.lowestMods.map(mod => mod.id));
   const warningNote = (() => {
     if (!result.blockedReason) return '';
-    const label = result.blockedReason === 'fractured'
-      ? 'Item is fractured and cannot be whittled'
-      : result.blockedReason === 'sanctified'
-        ? 'Item is sanctified and cannot be whittled'
-        : 'Item is corrupted and cannot be whittled';
+    // Fractured items CAN be whittled (just not the fractured mod), so only warn for sanctified/corrupted
+    if (result.blockedReason === 'fractured') return '';
+    const label = result.blockedReason === 'sanctified'
+      ? 'Item is sanctified and cannot be whittled'
+      : 'Item is corrupted and cannot be whittled';
     return `<div class="whittling-tooltip-warning">${escapeHtml(label)}</div>`;
   })();
   const rows = sorted.map(mod => {
