@@ -215,8 +215,20 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
     : defaultClipboardDelay;
   // Read from config file - it's always synchronously updated when league changes
   const merchantHistoryLeague = settingsService.get('merchantHistoryLeague') || 'Rise of the Abyssal';
+  const merchantHistoryAutoFetch = settingsService.get('merchantHistoryAutoFetch') !== false; // default true
+  const merchantHistoryRefreshInterval = settingsService.get('merchantHistoryRefreshInterval') || 0; // 0 = smart auto
   const appVersion = getAppVersion();
-  const html = buildSettingsSplashHtml(currentHotkey, getDataDir(), Number(fontSize), appVersion, Number(clipboardDelay), String(merchantHistoryLeague));    window.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
+  const html = buildSettingsSplashHtml(
+    currentHotkey, 
+    getDataDir(), 
+    Number(fontSize), 
+    appVersion, 
+    Number(clipboardDelay), 
+    String(merchantHistoryLeague),
+    Boolean(merchantHistoryAutoFetch),
+    Number(merchantHistoryRefreshInterval)
+  );
+  window.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
 
     // Show when ready
     window.once('ready-to-show', () => {
@@ -450,6 +462,34 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       }
     });
 
+    // Handle merchant history config save
+    ipcMain.on('settings-save-merchant-history-config', (event, data: { autoFetch: boolean; interval: number }) => {
+      try {
+        let sanitizedInterval = 0; // 0 = smart auto
+        if (data.interval > 0) {
+          sanitizedInterval = Math.max(15, Math.min(240, Math.round(data.interval)));
+        }
+        
+        settingsService.set('merchantHistoryAutoFetch', data.autoFetch);
+        settingsService.set('merchantHistoryRefreshInterval', sanitizedInterval);
+        
+        // Notify overlay window for live update
+        if (overlayWindow && !overlayWindow.isDestroyed()) {
+          overlayWindow.webContents.send('merchant-history-config-changed', {
+            autoFetch: data.autoFetch,
+            interval: sanitizedInterval
+          });
+        }
+        
+        event.reply('settings-merchant-history-config-saved', {
+          autoFetch: data.autoFetch,
+          interval: sanitizedInterval
+        });
+      } catch (error) {
+        console.error('Failed to save merchant history config:', error);
+      }
+    });
+
     window.on('closed', () => {
       // Cleanup IPC handlers
       ipcMain.removeAllListeners('settings-check-updates');
@@ -466,7 +506,16 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
 /**
  * Build HTML for settings splash
  */
-function buildSettingsSplashHtml(currentHotkey: string, dataDir: string, fontSize: number, appVersion: string, clipboardDelay: number, merchantHistoryLeague: string): string {
+function buildSettingsSplashHtml(
+  currentHotkey: string, 
+  dataDir: string, 
+  fontSize: number, 
+  appVersion: string, 
+  clipboardDelay: number, 
+  merchantHistoryLeague: string,
+  merchantHistoryAutoFetch: boolean,
+  merchantHistoryRefreshInterval: number
+): string {
   const normalizedClipboardDelay = Number.isFinite(clipboardDelay) ? Math.max(0, clipboardDelay) : 0;
   return `
 <!DOCTYPE html>
@@ -750,6 +799,69 @@ function buildSettingsSplashHtml(currentHotkey: string, dataDir: string, fontSiz
       font-size: 13px;
       color: var(--accent-purple);
       font-weight: 600;
+    }
+    
+    .text-input {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+    
+    .text-input:focus {
+      border-color: var(--accent-blue);
+    }
+    
+    /* Toggle Switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 48px;
+      height: 24px;
+    }
+    
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .switch-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      transition: 0.3s;
+      border-radius: 24px;
+    }
+    
+    .switch-slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 3px;
+      bottom: 3px;
+      background-color: var(--text-secondary);
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+    
+    .switch input:checked + .switch-slider {
+      background-color: var(--accent-green);
+      border-color: var(--accent-green);
+    }
+    
+    .switch input:checked + .switch-slider:before {
+      transform: translateX(24px);
+      background-color: white;
     }
     
     .footer {
@@ -1046,6 +1158,44 @@ function buildSettingsSplashHtml(currentHotkey: string, dataDir: string, fontSiz
     <div style="display: flex; gap: 8px; margin-top: 10px;">
       <button class="btn btn-green" id="saveClipboardDelayBtn" style="display: none;">Save Delay</button>
       <button class="btn btn-secondary" id="resetClipboardDelayBtn" style="display: ${normalizedClipboardDelay === 0 ? 'none' : 'block'};">Reset to Auto</button>
+    </div>
+
+    <!-- Merchant History Auto-Fetch Settings -->
+    <div style="margin-top: 24px; padding: 12px; background: rgba(255, 193, 7, 0.08); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 8px;">
+      <div style="font-weight: 600; font-size: 13px; margin-bottom: 8px; color: var(--text-primary);">⚙️ Merchant History Auto-Fetch</div>
+      
+      <div class="setting-item" style="margin-bottom: 12px;">
+        <div class="setting-label">
+          <span class="setting-label-text">Enable Auto-Fetch</span>
+          <span class="setting-label-desc">Automatically fetch merchant history from trade site (smart interval based on rate limit headers)</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="merchantHistoryAutoFetchToggle" ${merchantHistoryAutoFetch !== false ? 'checked' : ''}>
+          <span class="switch-slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-item">
+        <div class="setting-label">
+          <span class="setting-label-text">Override Auto-Fetch Interval (optional)</span>
+          <span class="setting-label-desc">Force a fixed interval instead of smart fetching. Leave empty for automatic. Minimum 15 minutes.</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; flex: 1; max-width: 400px;">
+          <input type="number" min="15" max="240" step="5" value="${merchantHistoryRefreshInterval || ''}" placeholder="Auto" class="text-input" id="merchantHistoryIntervalInput" style="width: 100px; padding: 6px 8px; font-size: 13px;">
+          <span class="slider-value" id="merchantHistoryIntervalDisplay">${merchantHistoryRefreshInterval ? merchantHistoryRefreshInterval + ' min' : 'Smart Auto'}</span>
+        </div>
+      </div>
+
+      <div style="margin-top: 12px; display: flex; gap: 8px;">
+        <button class="btn btn-green" id="saveMerchantHistorySettingsBtn" style="display: none;">Save Settings</button>
+      </div>
+
+      <div style="margin-top: 12px; padding: 10px; background: rgba(244, 67, 54, 0.1); border: 1px solid rgba(244, 67, 54, 0.3); border-radius: 6px; font-size: 11px; line-height: 1.5; color: var(--text-secondary);">
+        <strong style="color: var(--accent-red);">⚠️ WARNING:</strong> Do not change these settings unless you know what you're doing!<br>
+        By default, the overlay uses <strong>smart fetching</strong> based on rate limit headers from the trade site for optimal performance.<br>
+        Only set a manual interval if you experience issues or heavily use the trade history in your browser.<br>
+        <strong>Going below 15 minutes will almost certainly get you rate-limited by the history site.</strong>
+      </div>
     </div>
   </div>
   
@@ -1401,6 +1551,69 @@ function buildSettingsSplashHtml(currentHotkey: string, dataDir: string, fontSiz
             ipcRenderer.send('settings-clipboard-delay-save', 0);
           });
         }
+      }
+      
+      // Merchant History Auto-Fetch Settings
+      const merchantHistoryAutoFetchToggle = document.getElementById('merchantHistoryAutoFetchToggle');
+      const merchantHistoryIntervalInput = document.getElementById('merchantHistoryIntervalInput');
+      const merchantHistoryIntervalDisplay = document.getElementById('merchantHistoryIntervalDisplay');
+      const saveMerchantHistorySettingsBtn = document.getElementById('saveMerchantHistorySettingsBtn');
+      
+      let originalAutoFetch = ${merchantHistoryAutoFetch};
+      let originalInterval = ${merchantHistoryRefreshInterval || 0}; // 0 = smart auto
+      let pendingAutoFetch = originalAutoFetch;
+      let pendingInterval = originalInterval;
+      
+      const updateMerchantHistorySaveBtn = () => {
+        const changed = (pendingAutoFetch !== originalAutoFetch) || (pendingInterval !== originalInterval);
+        saveMerchantHistorySettingsBtn.style.display = changed ? 'block' : 'none';
+      };
+      
+      const updateIntervalDisplay = (value) => {
+        if (!value || value === 0) {
+          merchantHistoryIntervalDisplay.textContent = 'Smart Auto';
+        } else {
+          merchantHistoryIntervalDisplay.textContent = value + ' min';
+        }
+      };
+      
+      if (merchantHistoryAutoFetchToggle) {
+        merchantHistoryAutoFetchToggle.addEventListener('change', (e) => {
+          pendingAutoFetch = e.target.checked;
+          updateMerchantHistorySaveBtn();
+        });
+      }
+      
+      if (merchantHistoryIntervalInput) {
+        merchantHistoryIntervalInput.addEventListener('input', (e) => {
+          let value = e.target.value.trim() === '' ? 0 : Number(e.target.value);
+          if (value > 0 && value < 15) value = 15;
+          if (value > 240) value = 240;
+          pendingInterval = value;
+          updateIntervalDisplay(value);
+          updateMerchantHistorySaveBtn();
+        });
+      }
+      
+      if (saveMerchantHistorySettingsBtn) {
+        saveMerchantHistorySettingsBtn.addEventListener('click', () => {
+          ipcRenderer.send('settings-save-merchant-history-config', {
+            autoFetch: pendingAutoFetch,
+            interval: pendingInterval
+          });
+        });
+        
+        ipcRenderer.on('settings-merchant-history-config-saved', (event, data) => {
+          console.log('Merchant history config saved:', data);
+          originalAutoFetch = data.autoFetch;
+          originalInterval = data.interval;
+          pendingAutoFetch = data.autoFetch;
+          pendingInterval = data.interval;
+          merchantHistoryAutoFetchToggle.checked = data.autoFetch;
+          merchantHistoryIntervalInput.value = data.interval > 0 ? String(data.interval) : '';
+          updateIntervalDisplay(data.interval);
+          saveMerchantHistorySettingsBtn.style.display = 'none';
+        });
       }
     })();
   </script>
