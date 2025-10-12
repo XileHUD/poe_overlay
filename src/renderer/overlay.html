@@ -597,6 +597,16 @@
         const histHeaderMain = document.getElementById('historyHeaderMain');
         const histFiltersHeader = document.getElementById('historyHeader');
         
+        if (crafting) {
+            crafting.classList.remove('regex-mode');
+            if (crafting.dataset.regexPrevOverflow) {
+                crafting.style.overflow = crafting.dataset.regexPrevOverflow;
+                delete crafting.dataset.regexPrevOverflow;
+            } else {
+                crafting.style.overflow = 'auto';
+            }
+        }
+
         // ALWAYS remove ALL view classes first
         document.body.classList.remove('crafting-mode', 'view-history', 'view-modifiers');
         
@@ -2062,7 +2072,8 @@
                         });
 
                         // Small helper: prepare crafting view and run a show() with a couple retries
-                        const prepareCrafting = (headerTitle) => {
+                        const prepareCrafting = (headerTitle, tabId = 'craftingTab') => {
+                            setActiveTab(tabId);
                             setView('crafting');
                             setHeader(headerTitle || '');
                             recordHeaderAction(headerTitle || '');
@@ -2090,7 +2101,7 @@
                                 icon: icon,
                                 isUniqueFlag: data.isUnique
                             });
-                            prepareCrafting('Uniques');
+                            prepareCrafting('Uniques', 'itemsTab');
                             retryShow(
                                 () => !!(window.OverlayUniques && typeof window.OverlayUniques.show === 'function'),
                                 async () => {
@@ -2156,6 +2167,7 @@
 
                         if (isWaystone) {
                             // Keep Waystones in Modifiers tab; derive Low/Mid/Top category if provided by backend
+                            setActiveTab('tabModifier');
                             setView('modifiers');
                             setHeader('Waystones');
                             // Decide variant: prefer provided category, else simple heuristic
@@ -2185,13 +2197,13 @@
 
                         if (isGem) {
                             // Route to Character > Gems directly (no crafting mode)
+                            setActiveTab('characterTab');
                             setView('character');
                             retryShow(
                                 () => !!(window.OverlayGems && typeof window.OverlayGems.show === 'function'),
                                 async () => { 
                                     try { 
                                         await showGems(); 
-                                        setActiveTab('characterTab');
                                         setHeader('Gems');
                                         recordHeaderAction('Gems');
                                     } catch {} 
@@ -2201,13 +2213,7 @@
                         }
 
                         // Default: Modifiers view
-                        const tabModEl = document.getElementById('tabModifier'); const tabHistEl = document.getElementById('tabHistory');
-                        if (tabModEl && tabHistEl) {
-                            tabModEl.classList.add('active');
-                            tabModEl.setAttribute('style','background: var(--accent-blue); color: #fff; border: 1px solid var(--accent-blue); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
-                            tabHistEl.classList.remove('active');
-                            tabHistEl.setAttribute('style','background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
-                        }
+                        setActiveTab('tabModifier');
                         setView('modifiers');
                         await populateCategoryDropdown();
                         const categorySelect = document.getElementById('categorySelect');
@@ -2254,11 +2260,6 @@
                 craftingTab.addEventListener('click', (e) => {
                     e.stopPropagation();
                     setActiveTab('craftingTab');
-                    const tabHistEl = document.getElementById('tabHistory');
-                    if (tabHistEl) {
-                        tabHistEl.classList.remove('active');
-                        tabHistEl.setAttribute('style','background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
-                    }
                     const vis = craftingMenu.style.display === 'block';
                     closeAllMenus();
                     craftingMenu.style.display = vis ? 'none' : 'block';
@@ -2847,6 +2848,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.electronAPI.onShowUniqueItem((payload) => {
                     try {
                         // Ensure crafting view in Uniques mode
+                                setActiveTab('itemsTab');
                         setView('crafting');
                         setHeader('Uniques');
                         recordHeaderAction('Uniques');
@@ -2872,11 +2874,6 @@ document.addEventListener('DOMContentLoaded', () => {
     async function runItemsAction(action) {
         if (!action) return;
         setActiveTab('itemsTab');
-        const tabHistEl = document.getElementById('tabHistory');
-        if (tabHistEl) {
-            tabHistEl.classList.remove('active');
-            tabHistEl.setAttribute('style','background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
-        }
         closeAllMenus();
         if (itemsMenu) itemsMenu.style.display = 'none';
         setView('crafting');
@@ -2981,15 +2978,8 @@ function switchCategory(){
     window.currentModifierCategory = cat;
     // Ensure we're in Modifiers view; hide other panels and menus
     try {
+        setActiveTab('tabModifier');
         setView('modifiers');
-        const tabModEl = document.getElementById('tabModifier');
-        const tabHistEl = document.getElementById('tabHistory');
-        if (tabModEl && tabHistEl) {
-            tabModEl.classList.add('active');
-            tabModEl.setAttribute('style','background: var(--accent-blue); color: #fff; border: 1px solid var(--accent-blue); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
-            tabHistEl.classList.remove('active');
-            tabHistEl.setAttribute('style','background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px;');
-        }
         // Close any open dropdown menus
         const craftingMenu = document.getElementById('craftingMenu'); if (craftingMenu) craftingMenu.style.display='none';
         const characterMenu = document.getElementById('characterMenu'); if (characterMenu) characterMenu.style.display='none';
@@ -3567,30 +3557,20 @@ function renderGems(groups){
                                     if (!featureAvailability.modifiers) return;
                                     const modTab = document.getElementById('tabModifier');
                                     if (!modTab || window.getComputedStyle(modTab).display === 'none') return;
-                                    const histTab = document.getElementById('tabHistory');
-                                    const contentMod = document.getElementById('content');
-                                    const historyContainer = document.getElementById('historyContainer');
-                                    modTab.classList.add('active');
-                                    histTab?.classList.remove('active');
-                                    if (contentMod) contentMod.style.display='block';
-                                    if (historyContainer) historyContainer.style.display='none';
+                                    setActiveTab('tabModifier');
+                                    setView('modifiers');
                                 }
                                 if (tab === 'crafting' || tab === 'character') {
                                     if (!featureAvailability.crafting) return;
-                                    const craftBtn = document.getElementById('craftingTab');
-                                    craftBtn?.click?.();
+                                    setActiveTab(tab === 'character' ? 'characterTab' : 'craftingTab');
+                                    setView('crafting');
                                 }
                                 if (tab === 'history') {
                                     if (!featureAvailability.history) return;
                                     const histTab = document.getElementById('tabHistory');
                                     if (!histTab || window.getComputedStyle(histTab).display === 'none') return;
-                                    const modTab = document.getElementById('tabModifier');
-                                    const contentMod = document.getElementById('content');
-                                    const historyContainer = document.getElementById('historyContainer');
-                                    modTab?.classList.remove('active');
-                                    histTab.classList.add('active');
-                                    if (contentMod) contentMod.style.display='none';
-                                    if (historyContainer) historyContainer.style.display='flex';
+                                    setActiveTab('tabHistory');
+                                    setView('history');
                                     try { setHeader('Merchant History'); } catch {}
                                 }
                             });

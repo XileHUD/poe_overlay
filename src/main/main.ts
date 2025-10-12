@@ -222,6 +222,18 @@ app.once('ready', () => {
 });
 
 class OverlayApp {
+    private static readonly ITEM_CLIPBOARD_PREFIXES = [
+        'Item Class: ',
+        'Класс предмета: ',
+        'Classe d\'objet: ',
+        'Gegenstandsklasse: ',
+        'Classe do Item: ',
+        'Clase de objeto: ',
+        'ชนิดไอเทม: ',
+        '아이템 종류: ',
+        '物品種類: ',
+        '物品类别: '
+    ];
     private mainWindow: BrowserWindow | null = null;
     private overlayWindow: BrowserWindow | null = null;
     private splashWindow: BrowserWindow | null = null;
@@ -267,6 +279,8 @@ class OverlayApp {
     private uiohookInitialized = false;
     private lastTriggerUsedUiohook: boolean | null = null;
     private skipNextFocusRestore = false;
+    private targetIndicatorWindow: BrowserWindow | null = null;
+    private targetIndicatorHideTimer: NodeJS.Timeout | null = null;
 
     constructor() {
         app.whenReady().then(async () => {
@@ -1081,131 +1095,147 @@ class OverlayApp {
 
     // Attempt to capture the currently hovered item from the game by issuing a copy and parsing clipboard
     private async captureItemFromGame(): Promise<boolean> {
-        // Arm clipboard acceptance for a brief window
         const now = Date.now();
-        this.armedCaptureUntil = now + 2000;
-    this.lastCopyTimestamp = now;
-    try { this.clipboardMonitor.resetLastSeen(); } catch {}
-    const copyShortcutLabel = process.platform === 'darwin' ? 'Cmd+Alt+C' : 'Ctrl+Alt+C';
-    console.log(`[Hotkey] Starting item capture: simulating ${copyShortcutLabel}`);
+        this.armedCaptureUntil = now + 1200;
+        this.lastCopyTimestamp = now;
+        try { this.clipboardMonitor.resetLastSeen(); } catch {}
 
-        let handled = false;
+        const copyShortcutLabel = process.platform === 'darwin' ? 'Cmd+Alt+C' : 'Ctrl+Alt+C';
+        console.log(`[Hotkey] Starting item capture: simulating ${copyShortcutLabel}`);
+
+        let previousClipboardRaw = '';
+        let clipboardHasNewItem = false;
+
         try {
-            // Send copy combo immediately - game has focus since we haven't shown overlay yet
-            await this.trySimulateCopyShortcut();
-        
-            // Give the game time to populate the clipboard - configurable delay for users with timing issues
-            const additionalDelay = this.getAdaptiveClipboardDelay();
-            if (additionalDelay > 0) {
-                await new Promise(r => setTimeout(r, additionalDelay));
+            try {
+                const cursor = screen.getCursorScreenPoint();
+                this.lastMousePosition = cursor;
+                this.showTargetIndicator(cursor);
+            } catch {}
+
+            previousClipboardRaw = clipboard.readText?.() ?? '';
+            const previousClipboardTrimmed = previousClipboardRaw.trim();
+
+            if (this.isLikelyItemClipboardText(previousClipboardTrimmed)) {
+                try { clipboard.writeText(''); } catch (err) {
+                    console.warn('[Hotkey] Failed to clear clipboard before copy', err);
+                }
+            }
+
+            const copyTriggered = await this.trySimulateCopyShortcut();
+            if (!copyTriggered) {
+                console.warn('[Hotkey] Copy shortcut trigger unavailable (uIOhook failed)');
+                return false;
             }
 
             const { interval: clipboardPollInterval, timeout: clipboardPollTimeout } = this.getClipboardPollConfig();
-            const clipboardDeadline = Date.now() + clipboardPollTimeout;
-            const emptyExitThreshold = Math.max(3, Math.round(180 / clipboardPollInterval));
-
-            let attempts = 0;
-            while (Date.now() < clipboardDeadline) {
-                attempts++;
-                try {
-                    const rawClipboard = clipboard.readText() || '';
-                    const text = rawClipboard.trim();
-
-                    if (!text || text.length < 5) {
-                        if (attempts > emptyExitThreshold && !text) {
-                            console.log('[Hotkey] Clipboard still empty after', attempts, 'polls (~', attempts * clipboardPollInterval, 'ms), exiting early');
-                            break;
-                        }
-                        await new Promise(r => setTimeout(r, clipboardPollInterval));
-                        continue;
-                    }
-
-                    if (text === this.lastProcessedItemText) {
-                        console.log('[Hotkey] Clipboard text matches last processed item; reusing existing overlay state');
-                        if (this.isOverlayVisible) {
-                            try { this.overlayWindow?.focus(); } catch {}
-                            handled = true;
-                        } else if (this.restoreLastOverlayView({ focus: false })) {
-                            handled = true;
-                        } else {
-                            this.showDefaultOverlay({ focus: false });
-                            handled = true;
-                        }
-                        break;
-                    }
-
-                    try {
-                        const parsed = await this.itemParser.parse(text);
-
-                        if (parsed && parsed.category && parsed.category !== 'unknown') {
-                            console.log('[Hotkey] ✓ Parsed item. Category:', parsed.category, 'Rarity:', parsed.rarity);
-
-                            if (!this.isParsedItemAllowed(parsed)) {
-                                console.log('[Hotkey] Feature disabled for parsed item.', { category: parsed.category, rarity: parsed.rarity });
-                                handled = false;
-                                break;
-                            }
-                            
-                            // Unique shortcut handling
-                            if ((parsed.rarity || '').toLowerCase() === 'unique') {
-                                this.showUniqueItem(parsed, { focus: false }, text);
-                                handled = true;
-                                break;
-                            }
-                        
-                            // Gem shortcut handling - switch to character tab and show gems panel
-                            if (parsed.category === 'Gems') {
-                                this.rememberOverlaySnapshot({
-                                    kind: 'gems',
-                                    sourceText: text,
-                                    payload: { tab: 'characterTab', action: 'gems', delay: 140 }
-                                });
-                                this.showOverlay(undefined, { focus: false });
-                                setTimeout(() => {
-                                    this.safeSendToOverlay('set-active-tab', 'characterTab');
-                                    this.safeSendToOverlay('invoke-action', 'gems');
-                                }, 140);
-                                handled = true;
-                                break;
-                            }
-                        
-                            let modifiers: any[] = [];
-                            try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
-                            this.safeSendToOverlay('set-active-category', parsed.category);
-                            this.rememberOverlaySnapshot({
-                                kind: 'item',
-                                sourceText: text,
-                                payload: { item: parsed, modifiers, category: parsed.category }
-                            });
-                            this.showOverlay({ item: parsed, modifiers }, { focus: false });
-                            handled = true;
-                            break;
-                        } else if (parsed && parsed.category === 'unknown') {
-                            // Text parsed but not recognized as item - exit early
-                            if (attempts > 2) {
-                                console.log('[Hotkey] Parsed but unknown category, exiting');
-                                break;
-                            }
-                        }
-                    } catch (parseErr) {
-                        if (attempts > emptyExitThreshold) {
-                            console.log('[Hotkey] Parse failed multiple times, exiting');
-                            break;
-                        }
-                    }
-                } catch {}
-
-                await new Promise(r => setTimeout(r, clipboardPollInterval));
+            const clipboardResult = await this.waitForClipboardItem(clipboardPollInterval, clipboardPollTimeout);
+            if (!clipboardResult) {
+                console.log('[Hotkey] Clipboard did not update with item text within timeout window');
+                return false;
             }
-            
-            if (!handled && attempts > 0) {
-                console.log('[Hotkey] No valid item found after', attempts, 'attempts');
+
+            clipboardHasNewItem = true;
+            const { rawText, trimmedText } = clipboardResult;
+
+            if (trimmedText === this.lastProcessedItemText) {
+                console.log('[Hotkey] Clipboard text matches last processed item; reusing existing overlay state');
+                if (this.isOverlayVisible) {
+                    try { this.overlayWindow?.focus(); } catch {}
+                } else if (!this.restoreLastOverlayView({ focus: false })) {
+                    this.showDefaultOverlay({ focus: false });
+                }
+                return true;
             }
+
+            try {
+                const parsed = await this.itemParser.parse(trimmedText);
+
+                if (parsed && parsed.category && parsed.category !== 'unknown') {
+                    console.log('[Hotkey] ✓ Parsed item. Category:', parsed.category, 'Rarity:', parsed.rarity);
+
+                    if (!this.isParsedItemAllowed(parsed)) {
+                        console.log('[Hotkey] Feature disabled for parsed item.', { category: parsed.category, rarity: parsed.rarity });
+                        return false;
+                    }
+
+                    if ((parsed.rarity || '').toLowerCase() === 'unique') {
+                        this.showUniqueItem(parsed, { focus: false }, rawText);
+                        return true;
+                    }
+
+                    if (parsed.category === 'Gems') {
+                        this.rememberOverlaySnapshot({
+                            kind: 'gems',
+                            sourceText: rawText,
+                            payload: { tab: 'characterTab', action: 'gems', delay: 140 }
+                        });
+                        this.showOverlay(undefined, { focus: false });
+                        setTimeout(() => {
+                            this.safeSendToOverlay('set-active-tab', 'characterTab');
+                            this.safeSendToOverlay('invoke-action', 'gems');
+                        }, 140);
+                        return true;
+                    }
+
+                    let modifiers: any[] = [];
+                    try { modifiers = await this.modifierDatabase.getModifiersForCategory(parsed.category); } catch {}
+                    this.safeSendToOverlay('set-active-category', parsed.category);
+                    this.rememberOverlaySnapshot({
+                        kind: 'item',
+                        sourceText: rawText,
+                        payload: { item: parsed, modifiers, category: parsed.category }
+                    });
+                    this.showOverlay({ item: parsed, modifiers }, { focus: false });
+                    return true;
+                }
+
+                if (parsed && parsed.category === 'unknown') {
+                    console.log('[Hotkey] Parsed but unknown category, skipping overlay');
+                    return false;
+                }
+            } catch (parseErr) {
+                console.log('[Hotkey] Item parse failed', parseErr);
+                return false;
+            }
+
+            console.log('[Hotkey] No valid item detected after clipboard update');
+            return false;
         } finally {
             this.armedCaptureUntil = 0;
+            if (!clipboardHasNewItem) {
+                try { clipboard.writeText(previousClipboardRaw); } catch {}
+            }
+        }
+    }
+
+    private async waitForClipboardItem(interval: number, timeout: number): Promise<{ rawText: string; trimmedText: string } | null> {
+        const deadline = Date.now() + timeout;
+        while (Date.now() < deadline) {
+            await new Promise<void>(resolve => setTimeout(resolve, interval));
+            let raw = '';
+            try {
+                raw = clipboard.readText() || '';
+            } catch {
+                continue;
+            }
+
+            const trimmed = raw.trim();
+            if (!trimmed) continue;
+            if (!this.isLikelyItemClipboardText(trimmed)) continue;
+
+            return { rawText: raw, trimmedText: trimmed };
         }
 
-        return handled;
+        return null;
+    }
+
+    private isLikelyItemClipboardText(text: string): boolean {
+        if (!text || text.length < 15) return false;
+        const normalized = text.trim();
+        if (normalized.length < 10) return false;
+        const firstLine = normalized.split(/\r?\n/, 1)[0] ?? '';
+        return OverlayApp.ITEM_CLIPBOARD_PREFIXES.some(prefix => firstLine.startsWith(prefix));
     }
 
     // === Session / network (delegated to PoeSessionHelper) ===
@@ -1219,7 +1249,7 @@ class OverlayApp {
 
 
     // Best-effort copy trigger: send real Ctrl/Command+C sequence to force a copy in PoE
-    private async trySimulateCopyShortcut(): Promise<void> {
+    private async trySimulateCopyShortcut(): Promise<boolean> {
         const logger = (message: string, details?: unknown) => {
             if (details) {
                 console.debug(message, details);
@@ -1228,49 +1258,12 @@ class OverlayApp {
             }
         };
 
-    const hookSuccess = await triggerCopyShortcut({ includeAlt: true, logger });
-    this.lastTriggerUsedUiohook = hookSuccess;
-        if (hookSuccess) return;
-
-        const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
-
-        // Try robotjs if available as secondary fallback
-        try {
-            // eslint-disable-next-line @typescript-eslint/no-var-requires
-            const robot = require('robotjs');
-            if (robot && typeof robot.keyToggle === 'function') {
-                const modifiers = process.platform === 'darwin' ? ['command', 'alt'] : ['control', 'alt'];
-                for (const mod of modifiers) {
-                    robot.keyToggle(mod, 'down');
-                    await sleep(12);
-                }
-                robot.keyToggle('c', 'down');
-                await sleep(30);
-                robot.keyToggle('c', 'up');
-                for (let i = modifiers.length - 1; i >= 0; i--) {
-                    await sleep(10);
-                    robot.keyToggle(modifiers[i], 'up');
-                }
-                return;
-            }
-        } catch (err) {
-            logger('[Hotkey] robotjs fallback failed', err);
+        const hookSuccess = await triggerCopyShortcut({ includeAlt: true, logger });
+        this.lastTriggerUsedUiohook = hookSuccess;
+        if (!hookSuccess) {
+            console.warn('[Hotkey] uIOhook trigger failed to simulate copy');
         }
-
-        // Windows fallback: Send Ctrl+Alt+C via SendKeys
-        if (process.platform === 'win32') {
-            try {
-                const ps = cp.spawn('powershell.exe', [
-                    '-NoProfile',
-                    '-WindowStyle', 'Hidden',
-                    '-Command',
-                    "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait('^%c')"
-                ], { windowsHide: true, stdio: 'ignore' });
-                ps.unref?.();
-            } catch (err) {
-                logger('[Hotkey] PowerShell SendKeys fallback failed', err);
-            }
-        }
+        return hookSuccess;
     }
 
     private showOverlay(data?: any, opts?: { silent?: boolean; focus?: boolean }) {
@@ -1463,6 +1456,100 @@ class OverlayApp {
 
         this.isOverlayVisible = true;
         console.log('[Overlay] bringOverlayToFront completed. visible=', this.overlayWindow?.isVisible());
+    }
+
+    private ensureTargetIndicatorWindow(): BrowserWindow | null {
+        if (this.targetIndicatorWindow && !this.targetIndicatorWindow.isDestroyed()) {
+            return this.targetIndicatorWindow;
+        }
+
+        try {
+            const win = new BrowserWindow({
+                width: 160,
+                height: 160,
+                frame: false,
+                transparent: true,
+                resizable: false,
+                alwaysOnTop: true,
+                skipTaskbar: true,
+                focusable: false,
+                show: false,
+                hasShadow: false,
+                backgroundColor: '#00000000',
+                webPreferences: {
+                    nodeIntegration: false,
+                    contextIsolation: true
+                }
+            });
+
+            try { win.setIgnoreMouseEvents(true, { forward: true }); } catch {}
+            win.on('closed', () => { this.targetIndicatorWindow = null; });
+
+            const html = `<!DOCTYPE html><html><head><meta charset="utf-8"/><style>
+                html,body{margin:0;padding:0;width:100%;height:100%;background:transparent;overflow:hidden;}
+                #ring{position:absolute;top:50%;left:50%;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;
+                    border:3px solid rgba(255,255,255,0.82);box-shadow:0 0 18px rgba(255,255,255,0.45);
+                    background:radial-gradient(circle,rgba(255,255,255,0.32)0%,rgba(255,255,255,0.12)55%,rgba(255,255,255,0)72%);
+                    opacity:0;transform:scale(0.6);}
+                @keyframes ping{0%{opacity:0.88;transform:scale(0.6);}55%{opacity:0.35;transform:scale(1);}100%{opacity:0;transform:scale(1.15);}}
+            </style></head><body>
+            <div id="ring"></div>
+            <script>
+                function triggerPulse(){
+                    const el=document.getElementById('ring');
+                    if(!el) return;
+                    el.style.animation='none';
+                    void el.offsetWidth;
+                    el.style.animation='ping 360ms ease-out forwards';
+                }
+                window.triggerPulse=triggerPulse;
+                window.addEventListener('DOMContentLoaded',triggerPulse);
+            </script></body></html>`;
+
+            win.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
+            this.targetIndicatorWindow = win;
+            return win;
+        } catch (error) {
+            console.warn('[Indicator] Failed to create indicator window', error);
+            this.targetIndicatorWindow = null;
+            return null;
+        }
+    }
+
+    private hideTargetIndicator() {
+        if (!this.targetIndicatorWindow || this.targetIndicatorWindow.isDestroyed()) return;
+        try { this.targetIndicatorWindow.hide(); } catch {}
+    }
+
+    private showTargetIndicator(point: { x: number; y: number }) {
+        const win = this.ensureTargetIndicatorWindow();
+        if (!win) return;
+
+        const size = 160;
+        const display = screen.getDisplayNearestPoint(point);
+        const bounds = display?.bounds || { x: 0, y: 0, width: size, height: size };
+        let targetX = Math.round(point.x - size / 2);
+        let targetY = Math.round(point.y - size / 2);
+        targetX = Math.max(bounds.x, Math.min(bounds.x + bounds.width - size, targetX));
+        targetY = Math.max(bounds.y, Math.min(bounds.y + bounds.height - size, targetY));
+
+        try { win.setBounds({ x: targetX, y: targetY, width: size, height: size }); } catch {}
+
+        try {
+            if (typeof (win as any).showInactive === 'function') {
+                (win as any).showInactive();
+            } else {
+                win.show();
+            }
+            win.setAlwaysOnTop(true, 'screen-saver');
+        } catch {}
+
+        win.webContents.executeJavaScript('window.triggerPulse && window.triggerPulse();', true).catch(() => {});
+
+        if (this.targetIndicatorHideTimer) {
+            clearTimeout(this.targetIndicatorHideTimer);
+        }
+        this.targetIndicatorHideTimer = setTimeout(() => this.hideTargetIndicator(), 420);
     }
 
     private restoreLastOverlayView(opts: { focus?: boolean } = {}): boolean {

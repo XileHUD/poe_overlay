@@ -173,6 +173,11 @@ function dedupe(arr: string[]): string[]{
 function render(): void {
   const panel = ensurePanel();
   panel.style.display='';
+  if (!panel.dataset.regexPrevOverflow) {
+    panel.dataset.regexPrevOverflow = panel.style.overflow || '';
+  }
+  panel.style.overflow = 'hidden';
+  panel.classList.add('regex-mode');
     panel.innerHTML = `
       <div id='regexToolRoot' class='regex-tool-root' style='display:flex; flex-direction:column; gap:12px;'>
         <!-- Row 1: Chips + Save/Load -->
@@ -223,7 +228,7 @@ function render(): void {
           <input id='regexSearch' type='text' placeholder='Search mods...' class='regex-input' style='width:100%;'>
         </div>
         <!-- Row 4: Mods list (info text moved inside for height savings) -->
-        <div id='regexMods' style='display:flex; flex-direction:column; gap:4px; overflow:auto; border:1px solid var(--border-color); border-radius:6px; padding:6px; background:var(--bg-tertiary);'>
+  <div id='regexMods' style='display:flex; flex-direction:column; gap:4px; overflow:auto; border:1px solid var(--border-color); border-radius:6px; padding:6px; background:var(--bg-tertiary); flex:1 1 auto; min-height:180px;'>
           <div id='regexInfoCycle' style='cursor:pointer; font-size:10px; opacity:.55; padding:2px 0 6px 0;'>Click mod to cycle include / exclude • fragments are shortest unique substrings</div>
         </div>
         <!-- Row 5: Combined Results at bottom -->
@@ -288,20 +293,29 @@ function recalcRegexModsHeight(panel: HTMLElement){
     const mods = panel.querySelector('#regexMods') as HTMLElement | null;
     if (!mods) return;
     const bottom = panel.querySelector('.regex-bottom-results') as HTMLElement | null;
-    const headerFiltersHeight = 200; // refined static height after spacing reductions
     const panelRect = panel.getBoundingClientRect();
+    const modsRect = mods.getBoundingClientRect();
     const bottomH = bottom ? bottom.getBoundingClientRect().height : 0;
-    const available = panelRect.height - bottomH - headerFiltersHeight - 8; // tighter padding
-    const maxH = Math.max(180, available);
-    mods.style.maxHeight = maxH + 'px';
+    const paddingBottom = parseFloat(getComputedStyle(panel).paddingBottom || '0');
+    const headerSpace = Math.max(0, modsRect.top - panelRect.top);
+    const available = panelRect.height - headerSpace - bottomH - paddingBottom - 4;
+    const target = Math.max(180, available);
+    mods.style.flex = '1 1 auto';
     mods.style.minHeight = '180px';
+    mods.style.maxHeight = target + 'px';
+    mods.style.height = target + 'px';
     mods.style.overflowY = 'auto';
   } catch {}
 }
 
 function renderChips(){
   const wrap = document.getElementById('regexChips'); if(!wrap) return;
+  const existingChip = wrap.querySelector('.regex-chip') as HTMLElement | null;
+  const currentSize = existingChip ? getComputedStyle(existingChip).fontSize : '';
   wrap.innerHTML = ['rarity','pack','rare','mod'].map(k=>renderChip(k, chipLabel(k))).join('');
+  if (currentSize) {
+    wrap.querySelectorAll('.regex-chip').forEach(el => { (el as HTMLElement).style.fontSize = currentSize; });
+  }
   wrap.querySelectorAll('.regex-chip').forEach(ch => {
     ch.addEventListener('click', () => {
       const key = (ch as HTMLElement).dataset.key!;
@@ -324,7 +338,7 @@ function chipLabel(k:string){
 
 function renderChip(key: string, label: string){
   const active = state.tagFilters.has(key);
-  return `<div class='regex-chip' data-key='${key}' style='padding:3px 8px; border:1px solid ${active?'var(--accent-blue)':'var(--border-color)'}; background:${active?'var(--accent-blue)':'var(--bg-secondary)'}; color:${active?'#fff':'var(--text-primary)'}; border-radius:12px; font-size:11px; cursor:pointer; user-select:none;'>${label}</div>`;
+  return `<div class='regex-chip' data-key='${key}' style='padding:3px 8px; border:1px solid ${active?'var(--accent-blue)':'var(--border-color)'}; background:${active?'var(--accent-blue)':'var(--bg-secondary)'}; color:${active?'#fff':'var(--text-primary)'}; border-radius:12px; cursor:pointer; user-select:none;'>${label}</div>`;
 }
 
 function drawMods(){
@@ -419,14 +433,13 @@ function escapeBaseFragment(s: string): string {
   const style = document.createElement('style');
   style.id = id;
   style.textContent = `
-  #regexToolRoot { display:flex; flex-direction:column; min-height:420px; height:100%; }
-  #regexToolRoot { flex:1 1 auto; }
+  #regexToolRoot { display:flex; flex-direction:column; height:100%; flex:1 1 auto; min-height:0; }
   #regexToolRoot > * { box-sizing:border-box; }
   .regex-input { background: var(--bg-secondary); border:1px solid var(--border-color); color: var(--text-primary); border-radius:6px; padding:6px 8px; font-size:11px; }
   .regex-input:focus { outline:1px solid var(--accent-blue); }
   .regex-output { background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--accent-blue); border-radius:8px; padding:10px 12px; font-size:11px; font-family:monospace; width:100%; }
   .regex-mod:hover { filter:brightness(1.15); }
-  .regex-chip { transition:background .15s,border-color .15s; }
+  .regex-chip { transition:background .15s,border-color .15s; font-size:11px; line-height:1; }
   .regex-copy-btn, .regex-btn { background: var(--accent-blue); color:#fff; border:1px solid var(--accent-blue); padding:6px 14px; border-radius:18px; cursor:pointer; font-size:11px; line-height:1; font-weight:500; letter-spacing:.3px; }
   .regex-copy-btn:hover, .regex-btn:hover { filter:brightness(1.2); }
   .regex-btn-danger { background:#c63b3b; border-color:#c63b3b; color:#fff; }
@@ -440,8 +453,12 @@ function escapeBaseFragment(s: string): string {
   .regex-label-row { display:flex; justify-content:space-between; align-items:center; font-size:11px; font-weight:600; padding:0 2px; }
   .regex-filters { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
   .regex-search { width:100%; }
-  .regex-bottom-results { display:flex; flex-direction:column; gap:4px; margin-top:6px; }
-  #regexMods { min-height:180px; }
+  .regex-bottom-results { display:flex; flex-direction:column; gap:4px; margin-top:6px; flex:0 0 auto; }
+  #regexMods { min-height:180px; flex:1 1 auto; }
+  #craftingPanel.regex-mode { display:flex !important; flex-direction:column; overflow:hidden; }
+  #craftingPanel.regex-mode > #regexToolRoot { flex:1 1 auto; display:flex; flex-direction:column; min-height:0; }
+  #craftingPanel.regex-mode #regexMods { flex:1 1 auto; min-height:180px; }
+  #craftingPanel.regex-mode .regex-bottom-results { margin-top:8px; }
   /* Allow panel to grow with window; parent container should stretch */
   .regex-bottom-results .regex-label-row { display:flex; justify-content:space-between; align-items:center; font-size:11px; font-weight:600; padding:0 2px; }
   `;
