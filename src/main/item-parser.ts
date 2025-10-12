@@ -536,7 +536,8 @@ export class ItemParser {
             const stackableBlob = `${name} ${baseType}`.toLowerCase();
             if (/essence/.test(stackableBlob)) return 'Essences';
             if (/catalyst/.test(stackableBlob)) return 'Catalysts';
-            if (/liquid\s*(emotion|envy|hatred|fear|anguish|despair|suffering|greed|contempt|ire|wrath|rage|malice|ire)/i.test(name) || /liquid\s*(emotion|envy|hatred|fear|anguish|despair|suffering|greed|contempt|ire|wrath|rage|malice|ire)/i.test(baseType)) {
+            // Match any item containing "Liquid" (covers all liquid emotions: Liquid Paranoia, Concentrated Liquid Isolation, Diluted Liquid Ire, etc.)
+            if (/liquid/i.test(name) || /liquid/i.test(baseType)) {
                 return 'Liquid_Emotions';
             }
             if (/^omen\s+of\s+/i.test(name)) return 'Omens';
@@ -559,7 +560,8 @@ export class ItemParser {
             const stackableBlob = `${name} ${baseType}`.toLowerCase();
             if (/essence/.test(stackableBlob)) return 'Essences';
             if (/catalyst/.test(stackableBlob)) return 'Catalysts';
-            if (/liquid\s*(emotion|envy|hatred|fear|anguish|despair|suffering|greed|contempt|ire|wrath|rage|malice|ire)/.test(stackableBlob)) return 'Liquid_Emotions';
+            // Match any item containing "Liquid" (covers all liquid emotions)
+            if (/liquid/.test(stackableBlob)) return 'Liquid_Emotions';
             if (/^omen\s+of\s+/i.test(name)) return 'Omens';
         }
         // Direct standalone Omen item class safeguard

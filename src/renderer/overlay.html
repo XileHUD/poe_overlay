@@ -2122,8 +2122,8 @@
                         // Socketables exclude Waystones now; handle Waystones separately so they stay in Modifiers
                         const isSocketable = /socketable|socketables/i.test(blob);
                         const isWaystone = /waystone|waystones/i.test(blob) || /^Waystones?_?/i.test(category || '');
-                        // Fix: Liquid Emotions detection based on name, not category
-                        const isEmotion = /liquid\s*(emotion|envy|hatred|fear|anguish|despair|suffering|greed|contempt|ire)/i.test(name) || /liquid\s*emotion/i.test(baseType);
+                        // Fix: Liquid Emotions detection - check category first, then fallback to name/baseType containing "liquid"
+                        const isEmotion = normalizedCategory === 'liquid_emotions' || /liquid/i.test(name) || /liquid/i.test(baseType);
                         // Fix: Gems should route to Character > Gems - use itemClass instead of text matching to avoid false positives with "spirit" in rare item names
                         const isGem = itemClass.includes('skill gem') || itemClass.includes('spirit gem') || itemClass.includes('uncut spirit gem') || itemClass.includes('support gem');
 
