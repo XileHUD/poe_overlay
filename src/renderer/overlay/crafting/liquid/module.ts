@@ -1,6 +1,7 @@
 // Liquid Emotions module: renders the Liquid Emotions crafting panel and exposes an imperative API
 import { TRANSPARENT_PLACEHOLDER } from "../utils/imagePlaceholder";
 import { sanitizeCraftingHtml } from "../../utils";
+import { bindImageFallback } from "../utils/imageFallback";
 
 export type LiquidEmotionItem = {
   slug?: string;
@@ -189,6 +190,9 @@ export function render(items: LiquidEmotionItem[]): void {
   };
   searchEl?.addEventListener('input', ()=> apply(searchEl.value));
   clearBtn?.addEventListener('click', ()=> { if (searchEl) { searchEl.value=''; apply(''); searchEl.focus(); } });
+  
+  // Bind image fallback to handle loading
+  bindImageFallback(panel, 'img.currency-img', `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><rect width="28" height="28" rx="4" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="8" font-family="sans-serif">?</text></svg>`, 0.55);
   
   renderFixedChips();
 }

@@ -237,10 +237,8 @@ export function render(list: Catalyst[]): void {
         ${modsHtml}`;
       listEl.appendChild(card);
     });
-    listEl.querySelectorAll('img.catalyst-img').forEach((img: any)=>{
-      if (img._fallbackBound) return; img._fallbackBound = true;
-      img.addEventListener('error',()=>{ img.src = placeholder; img.style.opacity='0.55'; img.style.filter='grayscale(1)'; }, { once:true });
-    });
+    // Bind image fallback to handle loading
+    bindImageFallback(listEl, 'img.catalyst-img', `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><rect width="28" height="28" rx="4" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="8" font-family="sans-serif">?</text></svg>`, 0.55);
   }
 
   state.input?.addEventListener('input', () => apply(state.input?.value || ''));
