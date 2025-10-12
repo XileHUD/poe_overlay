@@ -1,6 +1,7 @@
 // Annoints module: encapsulates Annoints crafting UI
 import { sanitizeCraftingHtml } from "../../utils";
 import { bindImageFallback } from "../utils/imageFallback";
+import { TRANSPARENT_PLACEHOLDER } from "../utils/imagePlaceholder";
 
 export type Annoint = {
   name: string;
@@ -168,7 +169,7 @@ export function render(): void {
   if (!total) { panel.innerHTML = header + `<div class='no-mods'>No annoints.</div>`; return; }
 
   const cardsHtml = state.data.map(a => {
-  const emotions = (a.emotions||[]).map(e=>{ const raw = e.imageLocal || e.image || ''; return `<span style='display:inline-flex; align-items:center; gap:2px; background:var(--bg-tertiary); padding:1px 4px; border-radius:3px; font-size:10px;'>${raw?`<img src='' data-orig-src='${raw}' style='width:14px;height:14px;object-fit:contain;'>`:''}${e.name}</span>`; }).join(' ');
+  const emotions = (a.emotions||[]).map(e=>{ const raw = e.imageLocal || e.image || ''; return `<span style='display:inline-flex; align-items:center; gap:2px; background:var(--bg-tertiary); padding:1px 4px; border-radius:3px; font-size:10px;'>${raw?`<img src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${raw}' style='width:14px;height:14px;object-fit:contain;'>`:''}${e.name}</span>`; }).join(' ');
     const desc = sanitizeCraftingHtml(a.description);
     const searchBlob = [a.name, desc, ...(a.emotions||[]).map(e=>e.name)].join(' ').toLowerCase();
     return `<div class='annoint-card' data-name='${a.name.replace(/'/g,"&#39;")}' data-search='${searchBlob.replace(/'/g,"&#39;")}' data-tags='${(a as any).__tags.map((t: string)=>t.toLowerCase()).join('|').replace(/'/g,"&#39;")}' style='flex:0 0 300px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:6px; padding:6px; display:flex; flex-direction:column; gap:4px;'>

@@ -22,6 +22,7 @@ export class KeyboardMonitor extends EventEmitter {
         if (!this.available || !this.hook) return;
         // Ensure only one listener
         this.hook.removeAllListeners('keydown');
+        this.hook.removeAllListeners('mousedown');
         this.hook.on('keydown', (event: any) => {
             const ctrl = !!(event && (event.ctrlKey || event.metaKey));
             const keycode = event?.keycode;
@@ -32,6 +33,15 @@ export class KeyboardMonitor extends EventEmitter {
                 const ts = Date.now();
                 this.emit('copy', ts);
             }
+        });
+        this.hook.on('mousedown', (event: any) => {
+            try {
+                this.emit('mouse-down', {
+                    button: event?.button ?? null,
+                    raw: event,
+                    timestamp: Date.now()
+                });
+            } catch {}
         });
         try {
             this.hook.start();
@@ -44,5 +54,6 @@ export class KeyboardMonitor extends EventEmitter {
             this.hook.stop();
         } catch {}
         this.hook.removeAllListeners('keydown');
+        this.hook.removeAllListeners('mousedown');
     }
 }

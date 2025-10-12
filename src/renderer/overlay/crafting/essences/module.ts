@@ -1,5 +1,6 @@
 // Essences module: encapsulates Essences crafting UI
 import { bindImageFallback } from "../utils/imageFallback";
+import { TRANSPARENT_PLACEHOLDER } from "../utils/imagePlaceholder";
 import { resolveLocalImage } from "../utils/localImage";
 
 export type Essence = {
@@ -236,7 +237,7 @@ export function render(list: Essence[]): void {
       const modsHtml = (e.explicitMods && e.explicitMods.length) ? `<div style='font-size:11px;'>${e.explicitMods.map((m)=>highlight(m.replace(/<a[^>]*>(.*?)<\/a>/g,'$1'))).join('<br>')}</div>` : '';
     const rawSrc = e.imageLocal || e.image || '';
       card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>
-      <img class='essence-img' src='' data-orig-src='${rawSrc}' alt='' style='width:28px; height:28px; object-fit:contain;' decoding='async'>
+      <img class='essence-img' src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${rawSrc}' alt='' style='width:28px; height:28px; object-fit:contain;' decoding='async'>
           <div style='font-weight:600; line-height:1.2;'>${displayName}</div>
         </div>
         <div style='font-size:11px; color:var(--text-muted);'>Stack: ${e.stack_current ?? '?'} / ${e.stack_max ?? '?'}</div>

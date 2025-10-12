@@ -124,6 +124,7 @@ export interface SettingsSplashParams {
   getDataDir: () => string;
   reloadData: () => void;
   onHotkeySave: (newKey: string) => void;
+  onLeagueSave: (league: string) => void;
   onFeatureConfigOpen: () => void;
   onShowOverlay: () => void;
   overlayWindow: any; // BrowserWindow to send font size updates to
@@ -141,6 +142,7 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
     getDataDir,
     reloadData,
     onHotkeySave,
+    onLeagueSave,
     onFeatureConfigOpen,
     onShowOverlay,
     overlayWindow,
@@ -211,6 +213,7 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
   const clipboardDelay = (typeof configuredDelay === 'number' && Number.isFinite(configuredDelay))
     ? configuredDelay
     : defaultClipboardDelay;
+  // Read from config file - it's always synchronously updated when league changes
   const merchantHistoryLeague = settingsService.get('merchantHistoryLeague') || 'Rise of the Abyssal';
   const appVersion = getAppVersion();
   const html = buildSettingsSplashHtml(currentHotkey, getDataDir(), Number(fontSize), appVersion, Number(clipboardDelay), String(merchantHistoryLeague));    window.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
@@ -370,6 +373,8 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
         settingsService.set('merchantHistoryLeague', league);
         settingsService.set('merchantHistoryLeagueSource', 'manual');
         console.log('[Settings] Saved merchant history league:', league);
+        // Notify Main instance to update its state and notify renderer
+        onLeagueSave(league);
       } catch (error) {
         console.error('Failed to save league:', error);
       }

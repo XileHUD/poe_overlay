@@ -19,7 +19,7 @@ import { buildModPopoutHtml } from './popouts/modPopoutTemplate';
 // Use explicit .js extension for NodeNext module resolution compatibility
 import { buildSplashHtml } from './ui/splashTemplate.js';
 import { createTray } from './ui/trayService.js';
-import { initializeUiohookTrigger, shutdownUiohookTrigger, triggerCopyShortcut } from './hotkeys/uiohook-trigger.js';
+import { initializeUiohookTrigger, registerGlobalMouseDown, shutdownUiohookTrigger, triggerCopyShortcut } from './hotkeys/uiohook-trigger.js';
 // NodeNext sometimes fails transiently on newly added files with explicit .js; use extensionless for TS while runtime still resolves .js after build
 import { FloatingButton } from './ui/floatingButton';
 import { HotkeyConfigurator } from './ui/hotkeyConfigurator';
@@ -234,6 +234,21 @@ class OverlayApp {
         '物品種類: ',
         '物品类别: '
     ];
+    private static readonly FOREGROUND_WINDOW_PS_SCRIPT = `
+Add-Type @"
+using System;
+using System.Runtime.InteropServices;
+public static class ForegroundWindowHelper {
+    [DllImport("user32.dll")]
+    public static extern IntPtr GetForegroundWindow();
+}
+"@
+$hwnd = [ForegroundWindowHelper]::GetForegroundWindow()
+if ($hwnd -eq [System.IntPtr]::Zero) {
+    ""
+} else {
+    $hwnd.ToInt64()
+}`;
     private mainWindow: BrowserWindow | null = null;
     private overlayWindow: BrowserWindow | null = null;
     private splashWindow: BrowserWindow | null = null;
@@ -280,7 +295,11 @@ class OverlayApp {
     private lastTriggerUsedUiohook: boolean | null = null;
     private skipNextFocusRestore = false;
     private targetIndicatorWindow: BrowserWindow | null = null;
-    private targetIndicatorHideTimer: NodeJS.Timeout | null = null;
+    private blurHandlingInProgress = false;
+    private removeUiohookMouseDown: (() => void) | null = null;
+    private readonly handleGlobalMouseDown = () => {
+        this.hideTargetIndicator();
+    };
 
     constructor() {
         app.whenReady().then(async () => {
@@ -373,14 +392,25 @@ class OverlayApp {
             this.clipboardMonitor = new ClipboardMonitor();
             this.keyboardMonitor = new KeyboardMonitor();
             try { this.keyboardMonitor!.start(); } catch {}
+            try { this.keyboardMonitor?.on?.('mouse-down', this.handleGlobalMouseDown); } catch {}
 
-            const hookReady = await initializeUiohookTrigger((message, details) => {
+            const hookLogger = (message: string, details?: unknown) => {
                 if (details) {
                     console.debug(message, details);
                 } else {
                     console.debug(message);
                 }
-            });
+            };
+            const hookReady = await initializeUiohookTrigger(hookLogger);
+            if (hookReady) {
+                try {
+                    this.removeUiohookMouseDown = await registerGlobalMouseDown(() => this.handleGlobalMouseDown(), hookLogger);
+                } catch (err) {
+                    console.warn('[Overlay] Failed to attach uIOhook mouse listener', err);
+                }
+            } else {
+                console.warn('[Overlay] uIOhook trigger unavailable; global mouse-down listener disabled');
+            }
             this.uiohookInitialized = hookReady;
             if (!hookReady) {
                 console.warn('[Hotkey] uIOhook unavailable, falling back to RobotJS/SendKeys');
@@ -480,7 +510,10 @@ class OverlayApp {
             app.on('will-quit', () => {
                 try { globalShortcut.unregisterAll(); } catch {}
                 try { (this.clipboardMonitor as any).stop?.(); } catch {}
+                try { this.keyboardMonitor?.removeListener?.('mouse-down', this.handleGlobalMouseDown); } catch {}
                 try { this.keyboardMonitor?.stop(); } catch {}
+                try { this.removeUiohookMouseDown?.(); } catch {}
+                this.removeUiohookMouseDown = null;
                 try { shutdownUiohookTrigger((message, details) => {
                     if (details) {
                         console.debug(message, details);
@@ -699,6 +732,7 @@ class OverlayApp {
                 getDataDir: () => this.getDataDir(),
                 reloadData: () => (this.modifierDatabase as any)?.reload?.(),
                 onHotkeySave: (newKey: string) => this.saveHotkey(newKey),
+                onLeagueSave: (league: string) => this.handleLeagueChange(league),
                 onFeatureConfigOpen: () => this.openFeatureConfiguration(),
                 onShowOverlay: () => this.toggleOverlayWithAllCategory(),
                 overlayWindow: this.overlayWindow,
@@ -706,6 +740,33 @@ class OverlayApp {
             });
         } catch (err) {
             console.error('[openSettings] Error:', err);
+        }
+    }
+
+    /**
+     * Handle league change from settings UI
+     */
+    private handleLeagueChange(league: string): void {
+        const trimmedLeague = league.trim();
+        if (!trimmedLeague) return;
+
+        console.log('[Main] League changed in settings:', trimmedLeague);
+
+        // Update instance variables
+        this.merchantHistoryLeague = trimmedLeague;
+        this.merchantHistoryLeagueSource = 'manual';
+
+        // Notify overlay renderer of the league change
+        if (this.overlayWindow && !this.overlayWindow.isDestroyed()) {
+            try {
+                this.overlayWindow.webContents.send('history-league-changed', {
+                    league: trimmedLeague,
+                    source: 'manual'
+                });
+                console.log('[Main] Sent league change notification to renderer:', trimmedLeague);
+            } catch (err) {
+                console.error('[Main] Failed to notify renderer of league change:', err);
+            }
         }
     }
 
@@ -941,20 +1002,23 @@ class OverlayApp {
                         roots.push(resolved);
                     };
 
+                    // Production paths (packaged app)
                     pushRoot((process as any).resourcesPath ? path.join((process as any).resourcesPath, 'bundled-images') : undefined);
                     pushRoot(app.getAppPath ? path.join(app.getAppPath(), 'bundled-images') : undefined);
+                    
+                    // Development paths (npm start from packages/overlay)
                     pushRoot(path.join(__dirname, '../../bundled-images'));
+                    pushRoot(path.join(__dirname, '../../../bundled-images'));
                     pushRoot(path.join(process.cwd(), 'bundled-images'));
                     pushRoot(path.join(process.cwd(), '..', 'bundled-images'));
+                    pushRoot(path.join(process.cwd(), '../..', 'bundled-images'));
 
                     for (const root of roots) {
                         const fullPath = path.resolve(root, normalizedLocal);
                         if (fs.existsSync(fullPath)) {
-                            try { console.debug('[get-bundled-image-path] HIT', { localPath, fullPath }); } catch {}
                             return pathToFileURL(fullPath).toString();
                         }
                     }
-                    try { console.debug('[get-bundled-image-path] MISS', { localPath, roots }); } catch {}
                     return null;
                 } catch (e) {
                     console.error('[getBundledImagePath] Error:', e);
@@ -1035,39 +1099,9 @@ class OverlayApp {
         // When user clicks outside on the game, Windows gives focus back to the game, triggering blur
         this.overlayWindow.on('blur', () => {
             console.log('[blur] overlay window blur event fired. isOverlayVisible=', this.isOverlayVisible, 'pinned=', this.pinned);
+            this.hideTargetIndicator();
             setTimeout(() => {
-                try {
-                    if (!this.overlayWindow || this.overlayWindow.isDestroyed()) return;
-                    if (this.pinned || !this.isOverlayVisible) return;
-                    
-                    // Don't hide if capture is in progress
-                    if (this.shortcutAwaitingCapture || Date.now() <= this.armedCaptureUntil) {
-                        console.log('[blur] Skipping hide - capture in progress');
-                        return;
-                    }
-                    
-                    const focused = BrowserWindow.getFocusedWindow();
-                    if (!focused) {
-                        const currentHandle = this.getCurrentForegroundWindowHandle();
-                        const capturedHandle = this.lastForegroundWindowHandle?.handle;
-                        const shouldRestore = !!capturedHandle && currentHandle === capturedHandle && capturedHandle !== this.getOverlayWindowHandleString();
-                        this.skipNextFocusRestore = !shouldRestore;
-                        console.log('[blur] No focused window after blur; hiding overlay. currentHandle=', currentHandle, 'capturedHandle=', capturedHandle, 'shouldRestore=', shouldRestore);
-                        this.hideOverlay();
-                        return;
-                    }
-                    
-                    // If a popout is focused, keep overlay
-                    const popFocused = Array.from(this.modPopoutWindows).some(w => !w.isDestroyed() && w.id === focused.id);
-                    if (!popFocused && focused.id !== this.overlayWindow.id) {
-                        const currentHandle = this.getCurrentForegroundWindowHandle();
-                        const capturedHandle = this.lastForegroundWindowHandle?.handle;
-                        const shouldRestore = !!capturedHandle && currentHandle === capturedHandle && capturedHandle !== this.getOverlayWindowHandleString();
-                        this.skipNextFocusRestore = !shouldRestore;
-                        console.log('[blur] Focus moved to window id', focused.id, '- hiding overlay. currentHandle=', currentHandle, 'capturedHandle=', capturedHandle, 'shouldRestore=', shouldRestore);
-                        this.hideOverlay();
-                    }
-                } catch {}
+                void this.handleOverlayBlur();
             }, 55);
         });
 
@@ -1125,6 +1159,7 @@ class OverlayApp {
             const copyTriggered = await this.trySimulateCopyShortcut();
             if (!copyTriggered) {
                 console.warn('[Hotkey] Copy shortcut trigger unavailable (uIOhook failed)');
+                this.hideTargetIndicator();
                 return false;
             }
 
@@ -1132,6 +1167,7 @@ class OverlayApp {
             const clipboardResult = await this.waitForClipboardItem(clipboardPollInterval, clipboardPollTimeout);
             if (!clipboardResult) {
                 console.log('[Hotkey] Clipboard did not update with item text within timeout window');
+                this.hideTargetIndicator();
                 return false;
             }
 
@@ -1145,6 +1181,8 @@ class OverlayApp {
                     if (!this.restoreLastOverlayView({ focus: false })) {
                         this.showDefaultOverlay({ focus: false });
                     }
+                } else {
+                    this.hideTargetIndicator();
                 }
                 // If overlay is already visible (pinned), do nothing - don't steal focus
                 return true;
@@ -1158,6 +1196,7 @@ class OverlayApp {
 
                     if (!this.isParsedItemAllowed(parsed)) {
                         console.log('[Hotkey] Feature disabled for parsed item.', { category: parsed.category, rarity: parsed.rarity });
+                        this.hideTargetIndicator();
                         return false;
                     }
 
@@ -1194,14 +1233,17 @@ class OverlayApp {
 
                 if (parsed && parsed.category === 'unknown') {
                     console.log('[Hotkey] Parsed but unknown category, skipping overlay');
+                    this.hideTargetIndicator();
                     return false;
                 }
             } catch (parseErr) {
                 console.log('[Hotkey] Item parse failed', parseErr);
+                this.hideTargetIndicator();
                 return false;
             }
 
             console.log('[Hotkey] No valid item detected after clipboard update');
+            this.hideTargetIndicator();
             return false;
         } finally {
             this.armedCaptureUntil = 0;
@@ -1362,12 +1404,19 @@ class OverlayApp {
         } else {
             this.pendingDefaultView = false;
         }
+
+        try {
+            if (this.overlayWindow && typeof this.overlayWindow.isFocused === 'function' && this.overlayWindow.isFocused()) {
+                this.hideTargetIndicator();
+            }
+        } catch {}
         
     console.log('[Overlay] shown. wasVisible=', wasVisible, 'pinned=', wasPinned, 'focus=', shouldFocus, 'overlayVisible=', this.isOverlayVisible);
     }
 
     private hideOverlay() {
         if (!this.overlayWindow) return;
+        this.hideTargetIndicator();
         
         // Hide overlay normally
         this.overlayWindow.hide();
@@ -1402,6 +1451,123 @@ class OverlayApp {
                 }
             }, 60);
         }
+    }
+
+    private async handleOverlayBlur(): Promise<void> {
+        if (this.blurHandlingInProgress) return;
+        this.blurHandlingInProgress = true;
+        try {
+            const overlay = this.overlayWindow;
+            if (!overlay || overlay.isDestroyed()) return;
+            if (this.pinned || !this.isOverlayVisible) return;
+
+            const captureInProgress = this.shortcutAwaitingCapture || Date.now() <= this.armedCaptureUntil;
+            if (captureInProgress) {
+                console.log('[blur] Skipping hide - capture in progress');
+                return;
+            }
+
+            const focused = BrowserWindow.getFocusedWindow();
+            const popFocused = focused ? Array.from(this.modPopoutWindows).some(w => !w.isDestroyed() && w.id === focused.id) : false;
+            const shouldHideInitial = !focused || (!popFocused && focused.id !== overlay.id);
+            if (!shouldHideInitial) {
+                return;
+            }
+
+            const { shouldRestore, currentHandle, capturedHandle } = await this.evaluateFocusRestoration();
+
+            if (!this.overlayWindow || this.overlayWindow.isDestroyed()) return;
+            if (this.pinned || !this.isOverlayVisible) return;
+            if (this.shortcutAwaitingCapture || Date.now() <= this.armedCaptureUntil) {
+                console.log('[blur] Skip hide after await - capture resumed');
+                return;
+            }
+
+            const focusedAfter = BrowserWindow.getFocusedWindow();
+            const popFocusedAfter = focusedAfter ? Array.from(this.modPopoutWindows).some(w => !w.isDestroyed() && w.id === focusedAfter.id) : false;
+            const shouldHideFinal = !focusedAfter || (!popFocusedAfter && focusedAfter.id !== this.overlayWindow.id);
+            if (!shouldHideFinal) {
+                return;
+            }
+
+            if (process.platform === 'win32') {
+                this.skipNextFocusRestore = !shouldRestore;
+            } else {
+                this.skipNextFocusRestore = false;
+            }
+
+            if (!focusedAfter) {
+                console.log('[blur] No focused window after blur; hiding overlay. currentHandle=', currentHandle, 'capturedHandle=', capturedHandle, 'shouldRestore=', shouldRestore);
+            } else {
+                console.log('[blur] Focus moved to window id', focusedAfter.id, '- hiding overlay. currentHandle=', currentHandle, 'capturedHandle=', capturedHandle, 'shouldRestore=', shouldRestore);
+            }
+
+            this.hideOverlay();
+        } catch (err) {
+            console.warn('[blur] handleOverlayBlur failed', err);
+        } finally {
+            this.blurHandlingInProgress = false;
+        }
+    }
+
+    private async evaluateFocusRestoration(): Promise<{ shouldRestore: boolean; currentHandle: string | null; capturedHandle: string | null }> {
+        const capturedHandle = this.lastForegroundWindowHandle?.handle ?? null;
+        if (process.platform !== 'win32') {
+            return { shouldRestore: false, currentHandle: null, capturedHandle };
+        }
+
+        const currentHandle = await this.queryCurrentForegroundWindowHandle();
+        const overlayHandle = this.getOverlayWindowHandleString();
+        const shouldRestore = !!capturedHandle && !!currentHandle && currentHandle === capturedHandle && (!overlayHandle || capturedHandle !== overlayHandle);
+        return { shouldRestore, currentHandle, capturedHandle };
+    }
+
+    private queryCurrentForegroundWindowHandle(): Promise<string | null> {
+        if (process.platform !== 'win32') {
+            return Promise.resolve(null);
+        }
+
+        return new Promise(resolve => {
+            let settled = false;
+            const safeResolve = (value: string | null) => {
+                if (settled) return;
+                settled = true;
+                resolve(value);
+            };
+
+            try {
+                const child = cp.execFile('powershell.exe', [
+                    '-NoProfile',
+                    '-Command',
+                    OverlayApp.FOREGROUND_WINDOW_PS_SCRIPT
+                ], {
+                    encoding: 'utf8',
+                    windowsHide: true,
+                    timeout: 500,
+                    maxBuffer: 1024 * 16
+                }, (error, stdout) => {
+                    if (error) {
+                        console.warn('[Overlay] Failed to query current foreground window handle', error);
+                        safeResolve(null);
+                        return;
+                    }
+                    const handle = (stdout || '').trim();
+                    if (handle && /^\d+$/.test(handle)) {
+                        safeResolve(handle);
+                    } else {
+                        safeResolve(null);
+                    }
+                });
+
+                child.on('error', err => {
+                    console.warn('[Overlay] Failed to query current foreground window handle', err);
+                    safeResolve(null);
+                });
+            } catch (err) {
+                console.warn('[Overlay] Failed to query current foreground window handle', err);
+                safeResolve(null);
+            }
+        });
     }
 
     private rememberOverlaySnapshot(snapshot: OverlaySnapshot, manualSourceText?: string | null) {
@@ -1493,19 +1659,38 @@ class OverlayApp {
                     border:3px solid rgba(255,255,255,0.82);box-shadow:0 0 18px rgba(255,255,255,0.45);
                     background:radial-gradient(circle,rgba(255,255,255,0.32)0%,rgba(255,255,255,0.12)55%,rgba(255,255,255,0)72%);
                     opacity:0;transform:scale(0.6);}
+                #ring.anim{animation:ping 360ms ease-out forwards;}
+                #marker{position:absolute;top:50%;left:50%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;
+                    border:2px solid rgba(255,255,255,0.9);box-shadow:0 0 14px rgba(255,255,255,0.44);
+                    background:radial-gradient(circle,rgba(255,255,255,0.42)10%,rgba(255,255,255,0.08)70%,rgba(255,255,255,0)92%);
+                    opacity:0;transform:scale(0.45);transition:opacity 180ms ease-out,transform 200ms ease-out;}
+                #marker.visible{opacity:0.92;transform:scale(1);}
                 @keyframes ping{0%{opacity:0.88;transform:scale(0.6);}55%{opacity:0.35;transform:scale(1);}100%{opacity:0;transform:scale(1.15);}}
             </style></head><body>
             <div id="ring"></div>
+            <div id="marker"></div>
             <script>
-                function triggerPulse(){
-                    const el=document.getElementById('ring');
-                    if(!el) return;
-                    el.style.animation='none';
-                    void el.offsetWidth;
-                    el.style.animation='ping 360ms ease-out forwards';
-                }
-                window.triggerPulse=triggerPulse;
-                window.addEventListener('DOMContentLoaded',triggerPulse);
+                (function(){
+                    const ring=document.getElementById('ring');
+                    const marker=document.getElementById('marker');
+                    function triggerPulse(){
+                        if(!ring||!marker) return;
+                        marker.classList.add('visible');
+                        ring.classList.remove('anim');
+                        void ring.offsetWidth;
+                        ring.classList.add('anim');
+                    }
+                    function hideMarker(){
+                        if(marker){ marker.classList.remove('visible'); }
+                        if(ring){ ring.classList.remove('anim'); }
+                    }
+                    window.triggerPulse=triggerPulse;
+                    window.hideMarker=hideMarker;
+                    window.addEventListener('DOMContentLoaded',()=>{
+                        triggerPulse();
+                        setTimeout(()=>{ if(marker) marker.classList.add('visible'); }, 120);
+                    });
+                })();
             </script></body></html>`;
 
             win.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
@@ -1520,6 +1705,7 @@ class OverlayApp {
 
     private hideTargetIndicator() {
         if (!this.targetIndicatorWindow || this.targetIndicatorWindow.isDestroyed()) return;
+        try { this.targetIndicatorWindow.webContents.executeJavaScript('window.hideMarker && window.hideMarker();', true).catch(() => {}); } catch {}
         try { this.targetIndicatorWindow.hide(); } catch {}
     }
 
@@ -1547,11 +1733,6 @@ class OverlayApp {
         } catch {}
 
         win.webContents.executeJavaScript('window.triggerPulse && window.triggerPulse();', true).catch(() => {});
-
-        if (this.targetIndicatorHideTimer) {
-            clearTimeout(this.targetIndicatorHideTimer);
-        }
-        this.targetIndicatorHideTimer = setTimeout(() => this.hideTargetIndicator(), 420);
     }
 
     private restoreLastOverlayView(opts: { focus?: boolean } = {}): boolean {
@@ -1633,64 +1814,17 @@ class OverlayApp {
         return null;
     }
 
-    private getCurrentForegroundWindowHandle(): string | null {
-        if (process.platform !== 'win32') return null;
-        try {
-            const script = `
-Add-Type @"
-using System;
-using System.Runtime.InteropServices;
-public static class ForegroundWindowHelper {
-    [DllImport("user32.dll")]
-    public static extern IntPtr GetForegroundWindow();
-}
-"@
-$hwnd = [ForegroundWindowHelper]::GetForegroundWindow()
-if ($hwnd -eq [System.IntPtr]::Zero) {
-    ""
-} else {
-    $hwnd.ToInt64()
-}`;
-            const handle = cp.execFileSync('powershell.exe', [
-                '-NoProfile',
-                '-Command',
-                script
-            ], { encoding: 'utf8' }).trim();
-            if (handle && /^\d+$/.test(handle)) {
-                return handle;
-            }
-        } catch (err) {
-            console.warn('[Overlay] Failed to query current foreground window handle', err);
-        }
-        return null;
-    }
-
     private captureForegroundWindowHandle() {
         if (process.platform !== 'win32') return;
         if (this.lastForegroundWindowHandle && (Date.now() - this.lastForegroundWindowHandle.capturedAt) < 200) {
             return;
         }
         try {
-            const script = `
-Add-Type @"
-using System;
-using System.Runtime.InteropServices;
-public static class ForegroundWindowHelper {
-    [DllImport("user32.dll")]
-    public static extern IntPtr GetForegroundWindow();
-}
-"@
-$hwnd = [ForegroundWindowHelper]::GetForegroundWindow()
-if ($hwnd -eq [System.IntPtr]::Zero) {
-    ""
-} else {
-    $hwnd.ToInt64()
-}`;
             const handle = cp.execFileSync('powershell.exe', [
                 '-NoProfile',
                 '-Command',
-                script
-            ], { encoding: 'utf8' }).trim();
+                OverlayApp.FOREGROUND_WINDOW_PS_SCRIPT
+            ], { encoding: 'utf8', windowsHide: true }).trim();
             if (handle && /^\d+$/.test(handle)) {
                 const overlayHandle = this.getOverlayWindowHandleString();
                 if (overlayHandle && overlayHandle === handle) {

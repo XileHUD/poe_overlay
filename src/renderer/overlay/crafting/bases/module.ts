@@ -1,5 +1,6 @@
 // Bases panel module: encapsulates Bases UI logic with filters and sorting
 import { bindImageFallback } from "../utils/imageFallback";
+import { TRANSPARENT_PLACEHOLDER } from "../utils/imagePlaceholder";
 import { escapeHtml } from "../../utils";
 
 // Helper to get image path - returns the path that will be resolved by auto-resolver
@@ -343,7 +344,7 @@ export function render(groups: BaseGroups): void {
       card.style.alignItems='flex-start';
       // Use imageLocal if available, fallback to image (legacy)
       const imgSrc = getImagePath(b);
-      const imgBlock = imgSrc ? `<div style='flex:0 0 110px; display:flex; align-items:flex-start; justify-content:center;'><img class='base-img' src='' data-orig-src='${imgSrc}' alt='' style='width:110px; height:110px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 110px;'></div>`;
+      const imgBlock = imgSrc ? `<div style='flex:0 0 110px; display:flex; align-items:flex-start; justify-content:center;'><img class='base-img' src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${imgSrc}' alt='' style='width:110px; height:110px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 110px;'></div>`;
       const implicitHtml = (b.implicitMods||[]).length ? `<div style=\"font-size:11px; margin-bottom:4px;\">${(b.implicitMods||[]).map(m=>highlight(m)).join('<br>')}</div>` : '<div style=\"font-size:10px; color:var(--text-muted); margin-bottom:4px;\">No implicit</div>';
       const grantHtml = (b.grants||[]).length ? `<div style='font-size:10px; color:var(--accent-blue); margin-bottom:4px;'>${(b.grants||[]).map(g=>`Grants Skill: ${g.name}${g.level?` (Level ${g.level})`:''}`).join('<br>')}</div>` : '';
       const propHtml = (b.properties||[]).length ? `<div style=\"font-size:10px; display:flex; flex-wrap:wrap; gap:4px; margin-bottom:4px;\">${(b.properties||[]).map(p=>`<span style='background:var(--bg-tertiary); padding:2px 4px; border-radius:3px;'>${p.name}: ${p.value}</span>`).join('')}</div>` : '';

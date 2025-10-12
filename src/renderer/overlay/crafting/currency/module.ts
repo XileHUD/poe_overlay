@@ -1,5 +1,6 @@
 // Currency module: displays generic stackable currency (excluding Omens/Catalysts) similar to Essences
 import { bindImageFallback } from "../utils/imageFallback";
+import { TRANSPARENT_PLACEHOLDER } from "../utils/imagePlaceholder";
 import { resolveLocalImage } from "../utils/localImage";
 
 export type CurrencyItem = {
@@ -185,7 +186,7 @@ export function render(list: CurrencyItem[]): void {
       card.style.flexDirection='column';
       card.style.gap='4px';
   const orig = c.imageLocal || c.image || '';
-  card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>${c.imageLocal || c.image?`<img class='currency-img' src='' data-orig-src='${orig}' decoding='async' style='width:26px; height:26px; object-fit:contain;'>`:''}<div style='font-weight:600;'>${c.name}</div></div><div style='font-size:11px; color:var(--text-muted);'>Stack: ${c.stack_current??'?'} / ${c.stack_max??'?'}${(c as any)._tags.length?` • ${(c as any)._tags.join(', ')}`:''}</div>${minLvl}<div style='font-size:11px;'>${modsHtml}</div>`;
+  card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>${c.imageLocal || c.image?`<img class='currency-img' src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${orig}' decoding='async' style='width:26px; height:26px; object-fit:contain;'>`:''}<div style='font-weight:600;'>${c.name}</div></div><div style='font-size:11px; color:var(--text-muted);'>Stack: ${c.stack_current??'?'} / ${c.stack_max??'?'}${(c as any)._tags.length?` • ${(c as any)._tags.join(', ')}`:''}</div>${minLvl}<div style='font-size:11px;'>${modsHtml}</div>`;
       wrap.appendChild(card);
     });
     bindImageFallback(panel, '.currency-img', '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 28 28"><rect width="28" height="28" rx="4" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="8" font-family="sans-serif">?</text></svg>', 0.5);

@@ -1,5 +1,6 @@
 // Catalysts module: encapsulates Catalysts crafting UI
 import { bindImageFallback } from "../utils/imageFallback";
+import { TRANSPARENT_PLACEHOLDER } from "../utils/imagePlaceholder";
 import { resolveLocalImage } from "../utils/localImage";
 
 export type Catalyst = {
@@ -227,7 +228,7 @@ export function render(list: Catalyst[]): void {
       card.style.gap = '4px';
       const modsHtml = (e.explicitMods && e.explicitMods.length) ? `<div style='font-size:11px;'>${e.explicitMods.map((m)=>highlight(m.replace(/<a[^>]*>(.*?)<\/a>/g,'$1'))).join('<br>')}</div>` : '';
   const orig = e.imageLocal || e.image || '';
-  const imgHtml = e.imageLocal || e.image ? `<img class='catalyst-img' src='' data-orig-src='${orig}' alt='' decoding='async' style='width:28px; height:28px; object-fit:contain;'>` : `<img src='${placeholder}' style='width:28px; height:28px; opacity:.4;'>`;
+  const imgHtml = e.imageLocal || e.image ? `<img class='catalyst-img' src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${orig}' alt='' decoding='async' style='width:28px; height:28px; object-fit:contain;'>` : `<img src='${placeholder}' style='width:28px; height:28px; opacity:.4;'>`;
       card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>
           ${imgHtml}
           <div style='font-weight:600; line-height:1.2;'>${e.name}</div>

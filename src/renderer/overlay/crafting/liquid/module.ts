@@ -1,4 +1,5 @@
 // Liquid Emotions module: renders the Liquid Emotions crafting panel and exposes an imperative API
+import { TRANSPARENT_PLACEHOLDER } from "../utils/imagePlaceholder";
 import { sanitizeCraftingHtml } from "../../utils";
 
 export type LiquidEmotionItem = {
@@ -134,7 +135,7 @@ export function render(items: LiquidEmotionItem[]): void {
     cards.push(`
       <div class='liquid-emotion-card' data-slug='${item.slug||""}' data-name='${(item.name||"").replace(/'/g,"&#39;")}' style='background:var(--bg-card); border:1px solid var(--border-color); border-radius:6px; padding:6px; display:flex; flex-direction:column; gap:4px; transition:border-color .25s; height:100%'>
         <div style='display:flex; align-items:center; gap:6px;'>
-          ${(item.imageLocal || item.image) ? `<img class='currency-img' src='' data-orig-src='${item.imageLocal || item.image}' alt='' loading='lazy' decoding='async' style='width:28px; height:28px; object-fit:contain;'>` : ''}
+          ${(item.imageLocal || item.image) ? `<img class='currency-img' src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${item.imageLocal || item.image}' alt='' loading='lazy' decoding='async' style='width:28px; height:28px; object-fit:contain;'>` : ''}
           <div style='font-weight:600; line-height:1.2;'>${item.name}</div>
         </div>
         <div style='font-size:11px; color:var(--text-muted);'>Stack: ${item.stack_current ?? '?'} / ${item.stack_max ?? '?'}</div>

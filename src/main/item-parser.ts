@@ -1,3 +1,12 @@
+export interface OrganizedModifier {
+    name?: string;         // For explicit mods: "Fugitive", "of the Polar Bear"
+    tier?: string;         // For explicit mods: "1", "2", "3"
+    tags: string[];        // Modifier tags: ["Elemental", "Cold", "Resistance"]
+    value: string;         // Full modifier text
+    isFractured?: boolean;
+    isDesecrated?: boolean;
+}
+
 export interface ParsedItem {
     itemClass: string;
     rarity: string;
@@ -17,7 +26,13 @@ export interface ParsedItem {
     itemLevel: number;
     category: string;
     attributeType: string; // 'str', 'dex', 'int', 'str_dex', 'str_int', 'dex_int'
-    modifiers: string[];
+    modifiers: string[];   // Legacy: raw text lines (kept for backward compatibility)
+    organizedModifiers?: { // New: organized by type with metadata
+        enchant: OrganizedModifier[];
+        implicit: OrganizedModifier[];
+        explicit: OrganizedModifier[];
+        rune: OrganizedModifier[];
+    };
     corrupted?: boolean;
     isCorrupted?: boolean;
     sanctified?: boolean;
@@ -103,6 +118,7 @@ export class ItemParser {
         const requirements = this.extractRequirements(lines);
         const itemLevel = this.extractItemLevel(lines);
         const modifiers = this.extractModifiers(lines);
+        const organizedModifiers = this.extractOrganizedModifiers(itemText);
     const statusFlags = this.extractStatusFlags(lines);
         
     const attributeType = this.determineAttributeType(requirements);
@@ -156,6 +172,7 @@ export class ItemParser {
             category,
             attributeType,
             modifiers,
+            organizedModifiers,
             ...statusFlags
         };
     }
@@ -347,6 +364,132 @@ export class ItemParser {
             fractured: hasFractured,
             isFractured: hasFractured
         };
+    }
+
+    // New organized modifier extraction using regex patterns ZuZus Idea (based on game format markers)
+    private extractOrganizedModifiers(itemText: string): ParsedItem['organizedModifiers'] {
+        const result: NonNullable<ParsedItem['organizedModifiers']> = {
+            enchant: [],
+            implicit: [],
+            explicit: [],
+            rune: []
+        };
+
+        try {
+            // Extract enchant mods: lines ending with (enchant)
+            const enchantMatches = itemText.match(/^(.+) \(enchant\)$/gm);
+            if (enchantMatches) {
+                enchantMatches.forEach(line => {
+                    const value = line.replace(/ \(enchant\)$/, '').trim();
+                    result.enchant.push({ tags: [], value });
+                });
+            }
+
+            // Extract rune mods: lines ending with (rune)
+            const runeMatches = itemText.match(/^(.+) \(rune\)$/gm);
+            if (runeMatches) {
+                runeMatches.forEach(line => {
+                    const value = line.replace(/ \(rune\)$/, '').trim();
+                    result.rune.push({ tags: [], value });
+                });
+            }
+
+            // Extract implicit mods: { Implicit Modifier — tags } or { Implicit Modifier } followed by value lines
+            const implicitSections = itemText.split(/\{ Implicit Modifier(?: — )?/);
+            implicitSections.shift(); // Remove first element (before first implicit)
+            
+            implicitSections.forEach(section => {
+                try {
+                    const parts = section.split(' }\n');
+                    if (parts.length < 2) return;
+                    
+                    // Tags might be empty if no " — " was present
+                    const tagString = parts[0].trim();
+                    const tags = tagString ? tagString.split(', ').map(t => t.trim()) : [];
+                    const valueSection = parts[1].split(/\n--------|\n$/)[0];
+                    const value = valueSection.replace(/ \(implicit\)$/gm, '').trim();
+                    
+                    result.implicit.push({ tags, value });
+                } catch (e) {
+                    console.warn('[Parser] Failed to parse implicit mod section:', e);
+                }
+            });
+
+            // Extract explicit mods: { Prefix/Suffix Modifier "name" (Tier: X) — tags } followed by value lines
+            // Handle cases: with tier and tags, with tier no tags, without tier with tags, without tier no tags
+            const explicitSections = itemText.split(/\{ (?:Prefix|Suffix) Modifier "/);
+            explicitSections.shift(); // Remove first element (before first explicit)
+            
+            explicitSections.forEach(section => {
+                try {
+                    // Parse: name" (Tier: X) — tags } value
+                    // or: name" (Tier: X) } value (no tags)
+                    // or: name" — tags } value (no tier)
+                    // or: name" } value (no tier, no tags)
+                    let name = '';
+                    let tier: string | undefined;
+                    let tags: string[] = [];
+                    let value = '';
+                    
+                    // Try to match with tier and tags
+                    let match = section.match(/^([^"]+)" \(Tier: (\d+)\) — ([^}]+) }\n(.+?)(?:\n--------|\n$|$)/s);
+                    if (match) {
+                        name = match[1].trim();
+                        tier = match[2];
+                        tags = match[3].split(', ').map(t => t.trim());
+                        value = match[4].trim();
+                    } else {
+                        // Try with tier but no tags
+                        match = section.match(/^([^"]+)" \(Tier: (\d+)\) }\n(.+?)(?:\n--------|\n$|$)/s);
+                        if (match) {
+                            name = match[1].trim();
+                            tier = match[2];
+                            value = match[3].trim();
+                        } else {
+                            // Try without tier but with tags
+                            match = section.match(/^([^"]+)" — ([^}]+) }\n(.+?)(?:\n--------|\n$|$)/s);
+                            if (match) {
+                                name = match[1].trim();
+                                tags = match[2].split(', ').map(t => t.trim());
+                                value = match[3].trim();
+                            } else {
+                                // Try without tier and without tags
+                                match = section.match(/^([^"]+)" }\n(.+?)(?:\n--------|\n$|$)/s);
+                                if (match) {
+                                    name = match[1].trim();
+                                    value = match[2].trim();
+                                } else {
+                                    return;
+                                }
+                            }
+                        }
+                    }
+
+                    // Check for fractured/desecrated markers in value
+                    const isFractured = /\(fractured\)/i.test(value);
+                    const isDesecrated = /\(desecrated\)/i.test(value);
+                    
+                    // Clean markers from value
+                    value = value.replace(/\(fractured\)/gi, '').replace(/\(desecrated\)/gi, '').trim();
+
+                    result.explicit.push({
+                        name,
+                        tier,
+                        tags,
+                        value,
+                        isFractured,
+                        isDesecrated
+                    });
+                } catch (e) {
+                    console.warn('[Parser] Failed to parse explicit mod section:', e);
+                }
+            });
+
+        } catch (e) {
+            console.error('[Parser] Failed to extract organized modifiers:', e);
+        }
+
+        return result;
     }
 
     private determineAttributeType(requirements: ParsedItem['requirements']): string {

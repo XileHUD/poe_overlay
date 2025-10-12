@@ -391,6 +391,44 @@ export function addToTotalsWrapper(price?: Price): void {
   addToTotals(historyState.store, price);
 }
 
+/**
+ * Handle league change from settings UI
+ */
+export async function handleLeagueChangeFromSettings(league: string, source: 'auto' | 'manual'): Promise<void> {
+  console.log('[History] Handling league change from settings:', league, source);
+  
+  // Update the history state
+  historyState.league = league;
+  historyState.leagueSource = source;
+  historyState.leagueExplicitlySet = true;
+
+  // Clear existing data
+  historyState.items = [];
+  historyState.selectedIndex = 0;
+  historyState.store = {
+    entries: [],
+    totals: {},
+    lastSync: Date.now()
+  };
+
+  // Update UI
+  prepareUiForManualLeagueChange(league);
+
+  // Update league button/controls
+  const leagueButton = document.getElementById('historyLeagueBtn') as HTMLButtonElement | null;
+  if (leagueButton) {
+    leagueButton.textContent = `League: ${formatLeagueLabel(league)}`;
+    leagueButton.classList.add('is-manual');
+  }
+
+  // Refresh history with new league
+  try {
+    await performFullRefresh();
+  } catch (err) {
+    console.error('[History] Failed to refresh after league change:', err);
+  }
+}
+
 // Re-export utility functions that might be used externally
 export {
   refreshHistory,

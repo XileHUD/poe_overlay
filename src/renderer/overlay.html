@@ -3631,6 +3631,17 @@ function renderGems(groups){
                                     console.error('Failed to handle popout refresh:', e);
                                 }
                             });
+                            // Handle league change from settings
+                            window.electronAPI.onHistoryLeagueChanged?.(async (data)=>{
+                                try {
+                                    console.log('[Overlay] League changed from settings:', data);
+                                    if (typeof window.OverlayHistory?.handleLeagueChangeFromSettings === 'function') {
+                                        await window.OverlayHistory.handleLeagueChangeFromSettings(data.league, data.source);
+                                    }
+                                } catch (e) {
+                                    console.error('Failed to handle league change:', e);
+                                }
+                            });
                         } catch {}
                     }
                 })();

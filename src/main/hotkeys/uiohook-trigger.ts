@@ -1,4 +1,4 @@
-import type { UiohookKeyboardEvent } from 'uiohook-napi';
+import type { UiohookKeyboardEvent, UiohookMouseEvent } from 'uiohook-napi';
 
 type Logger = (message: string, details?: unknown) => void;
 type UiohookModule = typeof import('uiohook-napi');
@@ -32,6 +32,22 @@ const pressedPhysicalKeys = new Set<number>();
 
 let keydownHandler: ((event: UiohookKeyboardEvent) => void) | null = null;
 let keyupHandler: ((event: UiohookKeyboardEvent) => void) | null = null;
+let mouseDownHandler: ((event: UiohookMouseEvent) => void) | null = null;
+
+type MouseDownListener = (event: UiohookMouseEvent) => void;
+
+const mouseDownListeners = new Set<MouseDownListener>();
+
+function dispatchMouseDown(event: UiohookMouseEvent) {
+    if (mouseDownListeners.size === 0) return;
+    for (const listener of Array.from(mouseDownListeners)) {
+        try {
+            listener(event);
+        } catch (err) {
+            console.debug('[Hotkey] mouse-down listener threw', err);
+        }
+    }
+}
 
 const sleep = (ms: number) => new Promise<void>(resolve => setTimeout(resolve, ms));
 
@@ -64,19 +80,27 @@ async function loadModule(logger?: Logger): Promise<UiohookModule | null> {
     return moduleLoadPromise;
 }
 
+function ensureMouseDownListener(module: UiohookModule): void {
+    if (mouseDownHandler || mouseDownListeners.size === 0) return;
+    mouseDownHandler = (event: UiohookMouseEvent) => dispatchMouseDown(event);
+    module.uIOhook.on('mousedown', mouseDownHandler);
+}
+
 function ensureListeners(module: UiohookModule): void {
-    if (listenersAttached) return;
+    if (!listenersAttached) {
+        keydownHandler = (event: UiohookKeyboardEvent) => {
+            pressedPhysicalKeys.add(event.keycode);
+        };
+        keyupHandler = (event: UiohookKeyboardEvent) => {
+            pressedPhysicalKeys.delete(event.keycode);
+        };
 
-    keydownHandler = (event: UiohookKeyboardEvent) => {
-        pressedPhysicalKeys.add(event.keycode);
-    };
-    keyupHandler = (event: UiohookKeyboardEvent) => {
-        pressedPhysicalKeys.delete(event.keycode);
-    };
+        module.uIOhook.on('keydown', keydownHandler);
+        module.uIOhook.on('keyup', keyupHandler);
+        listenersAttached = true;
+    }
 
-    module.uIOhook.on('keydown', keydownHandler);
-    module.uIOhook.on('keyup', keyupHandler);
-    listenersAttached = true;
+    ensureMouseDownListener(module);
 }
 
 async function ensureHookStarted(logger?: Logger): Promise<UiohookModule | null> {
@@ -119,6 +143,32 @@ export async function initializeUiohookTrigger(logger?: Logger): Promise<boolean
 
 export function isUiohookActive(): boolean {
     return hookStarted;
+}
+
+export async function registerGlobalMouseDown(listener: MouseDownListener, logger?: Logger): Promise<() => void> {
+    mouseDownListeners.add(listener);
+    const module = await ensureHookStarted(logger);
+    if (!module) {
+        mouseDownListeners.delete(listener);
+        return () => {};
+    }
+
+    ensureMouseDownListener(module);
+
+    let disposed = false;
+    return () => {
+        if (disposed) return;
+        disposed = true;
+        mouseDownListeners.delete(listener);
+        if (mouseDownListeners.size === 0 && mouseDownHandler && uiohookModule) {
+            try {
+                uiohookModule.uIOhook.removeListener('mousedown', mouseDownHandler);
+            } catch (err) {
+                logger?.('[Hotkey] Failed to detach mouse listener', err);
+            }
+            mouseDownHandler = null;
+        }
+    };
 }
 
 export async function triggerCopyShortcut(options: TriggerCopyOptions = {}): Promise<boolean> {
@@ -198,6 +248,16 @@ export function shutdownUiohookTrigger(logger?: Logger): void {
         }
         listenersAttached = false;
     }
+
+    if (mouseDownHandler) {
+        try {
+            uiohookModule.uIOhook.removeListener('mousedown', mouseDownHandler);
+        } catch (err) {
+            logger?.('[Hotkey] Failed to detach mouse listener during shutdown', err);
+        }
+        mouseDownHandler = null;
+    }
+    mouseDownListeners.clear();
 
     if (hookStarted) {
         try {

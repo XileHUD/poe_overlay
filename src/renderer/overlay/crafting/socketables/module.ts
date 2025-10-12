@@ -1,5 +1,6 @@
 // Socketables module: encapsulates socketable crafting UI (refactored to grid + shared image fallback)
 import { bindImageFallback } from "../utils/imageFallback";
+import { TRANSPARENT_PLACEHOLDER } from "../utils/imagePlaceholder";
 import { resolveLocalImage } from "../utils/localImage";
 
 export type Socketable = {
@@ -197,7 +198,7 @@ export function render(list: Socketable[]): void {
       const levelInfo = (e.level_req!=null) ? `<div style='font-size:11px; color:var(--text-muted);'>Requires Level ${e.level_req}</div>` : '';
     const origPath = e.imageLocal || e.image || '';
     card.innerHTML = `<div style='display:flex; align-items:center; gap:6px;'>
-      ${(e.imageLocal || e.image) ? `<img src='' data-orig-src='${origPath}' alt='' class='socketable-img' style='width:32px; height:32px; object-fit:contain;'>` : `<img src='' alt='' class='socketable-img' style='width:32px; height:32px; object-fit:contain;'>`}
+      ${(e.imageLocal || e.image) ? `<img src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${origPath}' alt='' class='socketable-img' style='width:32px; height:32px; object-fit:contain;'>` : `<img src='${TRANSPARENT_PLACEHOLDER}' alt='' class='socketable-img' style='width:32px; height:32px; object-fit:contain;'>`}
           <div style='font-weight:600; line-height:1.2;'>${e.name}</div>
         </div>
         ${stackInfo}

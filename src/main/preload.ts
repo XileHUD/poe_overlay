@@ -83,6 +83,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
     // Merchant history league preferences
     historyGetLeaguePreference: () => ipcRenderer.invoke('history-get-league'),
     historySetLeaguePreference: (payload: { league: string; source: 'auto' | 'manual' }) => ipcRenderer.invoke('history-set-league', payload),
+    onHistoryLeagueChanged: (callback: (data: { league: string; source: 'auto' | 'manual' }) => void) => {
+        ipcRenderer.on('history-league-changed', (_event, data) => callback(data));
+    },
 
     // Local merchant history store
     historyLoad: () => ipcRenderer.invoke('history-load'),

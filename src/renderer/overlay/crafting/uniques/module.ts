@@ -1,6 +1,7 @@
 // Uniques panel module: encapsulates Uniques UI and logic and exposes a window facade for overlay.html delegation
 import { sanitizeCraftingHtml } from "../../utils";
 import { bindImageFallback } from "../utils/imageFallback";
+import { TRANSPARENT_PLACEHOLDER } from "../utils/imagePlaceholder";
 import { resolveLocalImage } from "../utils/localImage";
 
 // Helper to get image path - returns the path that will be resolved by auto-resolver
@@ -250,7 +251,7 @@ export function render(groups: UniqueGroups): void {
         card.style.alignItems='flex-start';
   // Use imageLocal if available, fallback to image (legacy)
   const imgSrc = getImagePath(u);
-  const imgBlock = imgSrc ? `<div style='flex:0 0 118px; display:flex; align-items:flex-start; justify-content:center;'><img class='unique-img' src='' data-orig-src='${(u.imageLocal || u.image || '').replace(/'/g,"&#39;")}' alt='' decoding='async' style='width:118px; height:118px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 118px;'></div>`;
+  const imgBlock = imgSrc ? `<div style='flex:0 0 118px; display:flex; align-items:flex-start; justify-content:center;'><img class='unique-img' src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${(u.imageLocal || u.image || '').replace(/'/g,"&#39;")}' alt='' decoding='async' style='width:118px; height:118px; object-fit:contain; image-rendering:crisp-edges;'></div>` : `<div style='flex:0 0 118px;'></div>`;
   const cleanedMods = (u.explicitMods||[]).map(m=> m.replace(/<img[^>]*>/ig,'').trim()).filter(Boolean);
   const modsHtml = `<div style='font-size:11px;'>${cleanedMods.map((m: string)=> highlightNumbers(sanitizeCraftingHtml(m)) ).join('<br>')}</div>`;
         const right = `<div style='flex:1; display:flex; flex-direction:column;'>
