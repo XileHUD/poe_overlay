@@ -307,7 +307,7 @@ export async function refreshHistory(
 
     if (needsPersist) {
       try {
-        await (window as any).electronAPI.historySave(historyState.store);
+        await (window as any).electronAPI.historySave(historyState.store, historyState.league);
       } catch {}
     }
     

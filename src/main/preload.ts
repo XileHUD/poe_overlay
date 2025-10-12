@@ -87,9 +87,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
         ipcRenderer.on('history-league-changed', (_event, data) => callback(data));
     },
 
-    // Local merchant history store
-    historyLoad: () => ipcRenderer.invoke('history-load'),
-    historySave: (store: any) => ipcRenderer.invoke('history-save', store),
+    // Local merchant history store (per-league)
+    historyLoad: (league?: string) => ipcRenderer.invoke('history-load', league),
+    historySave: (store: any, league?: string) => ipcRenderer.invoke('history-save', store, league),
     // Mod section popouts
     openModPopout: (payload: any) => ipcRenderer.invoke('open-mod-popout', payload),
     // History popout

@@ -28,6 +28,7 @@ import { FeatureService } from './services/featureService.js';
 import { FeatureLoader } from './features/featureLoader.js';
 import { showFeatureSplash } from './ui/featureSplash.js';
 import { showSettingsSplash } from './ui/settingsSplash.js';
+import { MerchantHistoryExportService } from './services/merchantHistoryExport.js';
 import { showRestartDialog } from './ui/restartDialog.js';
 import { showToast } from './utils/toastNotification.js';
 import { registerDataIpc } from './ipc/dataHandlers.js';
@@ -428,6 +429,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 onToggleOverlay: () => this.toggleOverlayWithAllCategory(),
                 onOpenModifiers: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','modifiers'); },140); },
                 onOpenHistory: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','history'); this.safeSendToOverlay('invoke-action','merchant-history'); },180); },
+                onExportHistory: () => this.exportMerchantHistoryToCsv(),
                 onQuit: () => app.quit(),
                 onToggleFloatingButton: () => this.toggleFloatingButton(),
                 onOpenSettings: () => this.openSettings(),
@@ -803,6 +805,16 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             return dir;
         } catch {
             return app.getPath('userData');
+        }
+    }
+
+    // Export merchant history to CSV
+    private async exportMerchantHistoryToCsv(): Promise<void> {
+        try {
+            const configDir = this.getUserConfigDir();
+            await MerchantHistoryExportService.exportToCsv(configDir, this.overlayWindow, this.merchantHistoryLeague);
+        } catch (e) {
+            console.error('[Main] Failed to export merchant history:', e);
         }
     }
 
@@ -2029,6 +2041,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 onToggleOverlay: () => this.toggleOverlayWithAllCategory(),
                 onOpenModifiers: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','modifiers'); },140); },
                 onOpenHistory: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','history'); this.safeSendToOverlay('invoke-action','merchant-history'); },180); },
+                onExportHistory: () => this.exportMerchantHistoryToCsv(),
                 onQuit: () => app.quit(),
                 onToggleFloatingButton: () => this.toggleFloatingButton(),
                 onOpenSettings: () => this.openSettings(),
@@ -2481,16 +2494,19 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
             };
         });
 
-        // Local merchant history persistence
+        // Local merchant history persistence (per-league)
         try { ipcMain.removeHandler('history-load'); } catch {}
         try { ipcMain.removeHandler('history-save'); } catch {}
-        ipcMain.handle('history-load', async () => {
+        ipcMain.handle('history-load', async (_e, league?: string) => {
             try {
                 await this.migrateLegacyMerchantHistory();
             } catch {}
             try {
                 const cfgDir = this.getUserConfigDir();
-                const file = path.join(cfgDir, 'merchant-history.json');
+                const targetLeague = league || this.merchantHistoryLeague || 'Rise of the Abyssal';
+                const safeLeagueName = targetLeague.replace(/[^a-zA-Z0-9_-]/g, '_');
+                const file = path.join(cfgDir, `merchant-history-${safeLeagueName}.json`);
+                
                 if (fs.existsSync(file)) {
                     const raw = fs.readFileSync(file, 'utf8');
                     const json = JSON.parse(raw);
@@ -2499,10 +2515,10 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                     const totals = json?.totals && typeof json.totals === 'object' ? json.totals : {};
                     const lastSync = Number(json?.lastSync || 0) || 0;
                     const lastFetchAt = Number(json?.lastFetchAt || 0) || 0;
-                    return { entries, totals, lastSync, lastFetchAt };
+                    return { entries, totals, lastSync, lastFetchAt, league: targetLeague };
                 }
                 // Initialize empty store if missing
-                const empty = { entries: [], totals: {}, lastSync: 0, lastFetchAt: 0 };
+                const empty = { entries: [], totals: {}, lastSync: 0, lastFetchAt: 0, league: targetLeague };
                 try { if (!fs.existsSync(cfgDir)) fs.mkdirSync(cfgDir, { recursive: true }); } catch {}
                 fs.writeFileSync(file, JSON.stringify(empty, null, 2));
                 return empty;
@@ -2510,13 +2526,23 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 return { entries: [], totals: {}, lastSync: 0, lastFetchAt: 0 };
             }
         });
-        ipcMain.handle('history-save', async (_e, store: any) => {
+        ipcMain.handle('history-save', async (_e, store: any, league?: string) => {
             try {
                 const cfgDir = this.getUserConfigDir();
-                const file = path.join(cfgDir, 'merchant-history.json');
+                const targetLeague = league || this.merchantHistoryLeague || 'Rise of the Abyssal';
+                const safeLeagueName = targetLeague.replace(/[^a-zA-Z0-9_-]/g, '_');
+                const file = path.join(cfgDir, `merchant-history-${safeLeagueName}.json`);
+                
                 try { if (!fs.existsSync(cfgDir)) fs.mkdirSync(cfgDir, { recursive: true }); } catch {}
-                fs.writeFileSync(file, JSON.stringify(store || { entries: [], totals: {}, lastSync: 0, lastFetchAt: 0 }, null, 2));
-                return { ok: true };
+                const dataToSave = {
+                    entries: store?.entries || [],
+                    totals: store?.totals || {},
+                    lastSync: store?.lastSync || 0,
+                    lastFetchAt: store?.lastFetchAt || 0,
+                    league: targetLeague
+                };
+                fs.writeFileSync(file, JSON.stringify(dataToSave, null, 2));
+                return { ok: true, league: targetLeague };
             } catch (e: any) {
                 return { ok: false, error: e?.message || 'write_failed' };
             }
@@ -2526,7 +2552,49 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
 
     // ---- Legacy merchant-history migration ----
     private async migrateLegacyMerchantHistory(): Promise<void> {
-        // (Legacy direct session/network helpers removed - delegated to PoeSessionHelper)
+        try {
+            const cfgDir = this.getUserConfigDir();
+            const oldFile = path.join(cfgDir, 'merchant-history.json');
+            
+            // If old single-league file exists, migrate it to the current league
+            if (fs.existsSync(oldFile)) {
+                const raw = fs.readFileSync(oldFile, 'utf8');
+                const json = JSON.parse(raw);
+                
+                // Create a backup
+                const backupFile = path.join(cfgDir, 'merchant-history-legacy-backup.json');
+                fs.writeFileSync(backupFile, raw);
+                
+                // Determine which league this data belongs to (default to current)
+                const targetLeague = this.merchantHistoryLeague || 'Rise of the Abyssal';
+                const safeLeagueName = targetLeague.replace(/[^a-zA-Z0-9_-]/g, '_');
+                const newFile = path.join(cfgDir, `merchant-history-${safeLeagueName}.json`);
+                
+                // Only migrate if the new file doesn't exist or is empty
+                if (!fs.existsSync(newFile)) {
+                    const entries = Array.isArray(json?.entries) ? json.entries : [];
+                    const totals = json?.totals && typeof json.totals === 'object' ? json.totals : {};
+                    const lastSync = Number(json?.lastSync || 0) || 0;
+                    const lastFetchAt = Number(json?.lastFetchAt || 0) || 0;
+                    
+                    const migratedData = {
+                        entries,
+                        totals,
+                        lastSync,
+                        lastFetchAt,
+                        league: targetLeague
+                    };
+                    
+                    fs.writeFileSync(newFile, JSON.stringify(migratedData, null, 2));
+                }
+                
+                // Rename old file to .migrated so we don't re-migrate
+                const migratedFile = path.join(cfgDir, 'merchant-history.json.migrated');
+                fs.renameSync(oldFile, migratedFile);
+            }
+        } catch (e) {
+            console.error('[Migration] Failed to migrate legacy merchant history:', e);
+        }
     }
 
     // (Removed legacy direct network helpers)

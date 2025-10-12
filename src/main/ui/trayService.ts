@@ -6,6 +6,7 @@ export interface CreateTrayParams {
   onToggleOverlay: () => void;
   onOpenModifiers: () => void;
   onOpenHistory: () => void;
+  onExportHistory?: () => void;
   onQuit?: () => void;
   onToggleFloatingButton?: () => void;
   onOpenSettings?: () => void;
@@ -22,6 +23,7 @@ export function createTray(params: CreateTrayParams): Tray | null {
     onToggleOverlay,
     onOpenModifiers,
     onOpenHistory,
+    onExportHistory,
     onQuit,
     onToggleFloatingButton,
     onOpenSettings,
@@ -132,6 +134,7 @@ export function createTray(params: CreateTrayParams): Tray | null {
     { type: 'separator' },
     { label: 'Modifiers', click: () => onOpenModifiers(), visible: showModifiers },
     { label: 'Merchant History', click: () => onOpenHistory(), visible: showMerchantHistory },
+    { label: 'Export Merchant History (CSV)', click: () => onExportHistory?.(), visible: showMerchantHistory && !!onExportHistory },
     { type: 'separator', visible: showModifiers || showMerchantHistory },
     { label: 'Toggle Floating Button', click: () => onToggleFloatingButton?.(), visible: !!onToggleFloatingButton },
     { type: 'separator', visible: !!onToggleFloatingButton },

@@ -111,7 +111,7 @@ export async function initHistoryFromLocal(
   }
 ): Promise<void> {
   try {
-    const saved = await (window as any).electronAPI?.historyLoad?.();
+    const saved = await (window as any).electronAPI?.historyLoad?.(historyState.league);
     if (saved && typeof saved === 'object') {
   const entries = Array.isArray((saved as any).entries) ? (saved as any).entries : [];
   const totals = (saved as any).totals && typeof (saved as any).totals === 'object' ? (saved as any).totals : {};
