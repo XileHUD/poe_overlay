@@ -1139,12 +1139,14 @@ class OverlayApp {
             const { rawText, trimmedText } = clipboardResult;
 
             if (trimmedText === this.lastProcessedItemText) {
-                console.log('[Hotkey] Clipboard text matches last processed item; reusing existing overlay state');
-                if (this.isOverlayVisible) {
-                    try { this.overlayWindow?.focus(); } catch {}
-                } else if (!this.restoreLastOverlayView({ focus: false })) {
-                    this.showDefaultOverlay({ focus: false });
+                console.log('[Hotkey] Clipboard text matches last processed item; reusing existing overlay state without stealing focus');
+                if (!this.isOverlayVisible) {
+                    // Only restore if overlay is not visible - don't steal focus
+                    if (!this.restoreLastOverlayView({ focus: false })) {
+                        this.showDefaultOverlay({ focus: false });
+                    }
                 }
+                // If overlay is already visible (pinned), do nothing - don't steal focus
                 return true;
             }
 
