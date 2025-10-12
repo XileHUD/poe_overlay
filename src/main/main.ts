@@ -1473,35 +1473,26 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 return;
             }
 
-            const { shouldRestore, currentHandle, capturedHandle } = await this.evaluateFocusRestoration();
-
-            if (!this.overlayWindow || this.overlayWindow.isDestroyed()) return;
-            if (this.pinned || !this.isOverlayVisible) return;
-            if (this.shortcutAwaitingCapture || Date.now() <= this.armedCaptureUntil) {
-                console.log('[blur] Skip hide after await - capture resumed');
-                return;
-            }
-
-            const focusedAfter = BrowserWindow.getFocusedWindow();
-            const popFocusedAfter = focusedAfter ? Array.from(this.modPopoutWindows).some(w => !w.isDestroyed() && w.id === focusedAfter.id) : false;
-            const shouldHideFinal = !focusedAfter || (!popFocusedAfter && focusedAfter.id !== this.overlayWindow.id);
-            if (!shouldHideFinal) {
-                return;
-            }
-
-            if (process.platform === 'win32') {
-                this.skipNextFocusRestore = !shouldRestore;
-            } else {
-                this.skipNextFocusRestore = false;
-            }
-
-            if (!focusedAfter) {
-                console.log('[blur] No focused window after blur; hiding overlay. currentHandle=', currentHandle, 'capturedHandle=', capturedHandle, 'shouldRestore=', shouldRestore);
-            } else {
-                console.log('[blur] Focus moved to window id', focusedAfter.id, '- hiding overlay. currentHandle=', currentHandle, 'capturedHandle=', capturedHandle, 'shouldRestore=', shouldRestore);
-            }
-
+            // INSTANT CLOSE: Hide immediately, then evaluate focus restoration in background
             this.hideOverlay();
+            
+            // Evaluate focus restoration async (don't block the hide)
+            this.evaluateFocusRestoration().then(({ shouldRestore, currentHandle, capturedHandle }) => {
+                if (process.platform === 'win32') {
+                    this.skipNextFocusRestore = !shouldRestore;
+                } else {
+                    this.skipNextFocusRestore = false;
+                }
+                
+                if (!focused) {
+                    console.log('[blur] No focused window after blur; overlay hidden. currentHandle=', currentHandle, 'capturedHandle=', capturedHandle, 'shouldRestore=', shouldRestore);
+                } else {
+                    console.log('[blur] Focus moved to window id', focused.id, '- overlay hidden. currentHandle=', currentHandle, 'capturedHandle=', capturedHandle, 'shouldRestore=', shouldRestore);
+                }
+            }).catch(err => {
+                console.warn('[blur] evaluateFocusRestoration failed', err);
+                this.skipNextFocusRestore = false;
+            });
         } catch (err) {
             console.warn('[blur] handleOverlayBlur failed', err);
         } finally {
