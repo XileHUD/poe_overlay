@@ -1755,6 +1755,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 if (category) {
                     this.safeSendToOverlay('set-active-category', category);
                 }
+                // Resend item data to ensure whittling info and other data is displayed
+                this.safeSendToOverlay('item-data', { item, modifiers });
                 this.bringOverlayToFront(opts);
                 console.log('[Overlay] restoreLastOverlayView -> item restored');
                 return true;
@@ -1763,6 +1765,9 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 const { item } = snapshot.payload;
                 if (!item) return false;
                 this.rememberOverlaySnapshot(snapshot, snapshot.sourceText ?? undefined);
+                // Resend unique item data to ensure all information is displayed
+                this.safeSendToOverlay('item-data', { item, isUnique: true });
+                this.safeSendToOverlay('show-unique-item', { name: item.name, baseType: item.baseType });
                 this.bringOverlayToFront(opts);
                 console.log('[Overlay] restoreLastOverlayView -> unique restored');
                 return true;
@@ -2304,6 +2309,11 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         ipcMain.on('floating-button-pin-toggled', () => {
             console.log('[FloatingButton] Pin toggled');
             this.floatingButton?.togglePin();
+        });
+
+        ipcMain.on('floating-button-close', () => {
+            console.log('[FloatingButton] Close button clicked');
+            this.floatingButton?.hide();
         });
 
         ipcMain.on('hide-overlay', () => {
