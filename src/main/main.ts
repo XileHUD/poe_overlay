@@ -23,7 +23,7 @@ import { initializeUiohookTrigger, registerGlobalMouseDown, shutdownUiohookTrigg
 // NodeNext sometimes fails transiently on newly added files with explicit .js; use extensionless for TS while runtime still resolves .js after build
 import { FloatingButton } from './ui/floatingButton';
 import { HotkeyConfigurator } from './ui/hotkeyConfigurator';
-import { SettingsService } from './services/settingsService.js';
+import { SettingsService, type UserSettings } from './services/settingsService.js';
 import { FeatureService } from './services/featureService.js';
 import { FeatureLoader } from './features/featureLoader.js';
 import { showFeatureSplash } from './ui/featureSplash.js';
@@ -2688,6 +2688,57 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 return { ok: false, error: e?.message || 'write_failed' };
             }
         });
+
+        // Settings get/set for auto-cleanup flag
+        try { ipcMain.removeHandler('get-setting'); } catch {}
+        try { ipcMain.removeHandler('set-setting'); } catch {}
+        ipcMain.handle('get-setting', async (_e, key: string) => {
+            try {
+                return this.settingsService?.get(key as keyof UserSettings);
+            } catch (e) {
+                console.error(`[IPC:get-setting] Error getting ${key}:`, e);
+                return undefined;
+            }
+        });
+        ipcMain.handle('set-setting', async (_e, key: string, value: any) => {
+            try {
+                this.settingsService?.set(key as keyof UserSettings, value);
+                return { ok: true };
+            } catch (e: any) {
+                console.error(`[IPC:set-setting] Error setting ${key}:`, e);
+                return { ok: false, error: e?.message };
+            }
+        });
+
+        // Auto-cleanup merchant history (silent, no prompts)
+        try { ipcMain.removeHandler('cleanup-merchant-history-auto'); } catch {}
+        ipcMain.handle('cleanup-merchant-history-auto', async () => {
+            try {
+                const configDir = this.getUserConfigDir();
+                const cleanupResult = await MerchantHistoryCleanupService.cleanupAllLeagues(configDir);
+                
+                if (cleanupResult.success && (cleanupResult.totalRemoved > 0 || cleanupResult.totalMerged > 0)) {
+                    console.log(`[HistoryAutoCleanup] Cleaned: ${cleanupResult.totalMerged} merged, ${cleanupResult.totalRemoved} removed`);
+                    
+                    // Notify renderer to refresh history
+                    if (this.overlayWindow && !this.overlayWindow.isDestroyed()) {
+                        this.overlayWindow.webContents.send('history-cleaned', cleanupResult);
+                    }
+                }
+                
+                return cleanupResult;
+            } catch (e) {
+                console.error('[HistoryAutoCleanup] Failed:', e);
+                return {
+                    success: false,
+                    results: [],
+                    totalRemoved: 0,
+                    totalMerged: 0,
+                    error: e instanceof Error ? e.message : String(e)
+                };
+            }
+        });
+
         // Fallback scraping handlers removed
     }
 

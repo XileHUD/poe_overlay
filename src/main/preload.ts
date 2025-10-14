@@ -107,6 +107,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
     onHistoryCleaned: (callback: (result: any) => void) => {
         ipcRenderer.on('history-cleaned', (_event, result) => callback(result));
     },
+    cleanupMerchantHistoryAuto: () => ipcRenderer.invoke('cleanup-merchant-history-auto'),
+    
+    // Settings
+    getSetting: (key: string) => ipcRenderer.invoke('get-setting', key),
+    setSetting: (key: string, value: any) => ipcRenderer.invoke('set-setting', key, value),
     
     // Feature configuration
     getEnabledFeatures: () => ipcRenderer.invoke('get-enabled-features'),

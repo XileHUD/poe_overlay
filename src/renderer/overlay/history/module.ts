@@ -244,6 +244,63 @@ export function onLeaveView(): void {
     } catch (e) { console.warn('[History] Attach refresh button failed:', e); }
   }, 300);
 
+  // Auto-cleanup on first start (if not already done)
+  setTimeout(async () => {
+    try {
+      const autoCleanupDone = await (window as any).electronAPI?.getSetting?.('historyAutoCleanupDone');
+      if (!autoCleanupDone) {
+        console.log('[History] First start detected - running auto-cleanup...');
+        const result = await (window as any).electronAPI?.cleanupMerchantHistoryAuto?.();
+        
+        if (result?.success && (result?.totalRemoved > 0 || result?.totalMerged > 0)) {
+          const message = `History cleaned: ${result.totalMerged || 0} merged, ${result.totalRemoved || 0} removed`;
+          const info = document.getElementById('historyInfoBadge');
+          if (info) {
+            (info as HTMLElement).textContent = message;
+            (info as HTMLElement).style.display = '';
+            setTimeout(() => {
+              (info as HTMLElement).style.display = 'none';
+            }, 5000);
+          }
+          
+          // Reload history after cleanup
+          await initHistoryFromLocal(
+            () => recomputeTotalsFromEntries(historyState.store),
+            () => {
+              const all = (historyState.store.entries || []).slice().reverse();
+              historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+              historyState.selectedIndex = 0;
+            },
+            {
+              renderList: () => renderHistoryList((idx) => renderHistoryDetail(idx)),
+              renderDetail: (idx: number) => renderHistoryDetail(idx),
+              renderTotals: () => {
+                renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+                  try { updateHistoryChartFromTotals(totals); } catch {}
+                }, { entries: historyState.items });
+              },
+              renderFilters: () => {
+                renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+                  renderHistoryList((idx) => renderHistoryDetail(idx));
+                  renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+                    try { updateHistoryChartFromTotals(totals); } catch {}
+                  }, { entries: historyState.items });
+                });
+              },
+              recomputeChartSeries: () => recomputeChartSeriesFromStore(),
+              drawChart: () => drawHistoryChart()
+            }
+          );
+        }
+        
+        // Mark as done
+        await (window as any).electronAPI?.setSetting?.('historyAutoCleanupDone', true);
+      }
+    } catch (e) {
+      console.warn('[History] Auto-cleanup failed:', e);
+    }
+  }, 1000);
+
   // Listen for history cleanup events from main process
   try {
     (window as any).electronAPI?.onHistoryCleaned?.((result: any) => {

@@ -23,6 +23,7 @@ export interface UserSettings {
   merchantHistoryLeagueSource?: 'auto' | 'manual'; // Whether league was auto-detected or manually chosen
   merchantHistoryAutoFetch?: boolean; // Enable/disable automatic history fetching (default: true)
   merchantHistoryRefreshInterval?: number; // Auto-fetch interval in minutes (default: 30, min: 15)
+  historyAutoCleanupDone?: boolean; // Flag to track if auto-cleanup has been performed on first start
 }
 
 export class SettingsService {
