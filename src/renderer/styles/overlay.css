@@ -583,6 +583,8 @@ body {
     border-radius: 4px;  /* Reduced border radius */
     transition: all 0.15s;
     display: block; /* header + tiers as vertical stack */
+    content-visibility: auto; /* Browser-native virtual scrolling for performance */
+    contain-intrinsic-size: auto 80px; /* Estimated height for layout calculations */
 }
 
 .mod-item:hover {
