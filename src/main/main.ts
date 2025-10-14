@@ -29,6 +29,7 @@ import { FeatureLoader } from './features/featureLoader.js';
 import { showFeatureSplash } from './ui/featureSplash.js';
 import { showSettingsSplash } from './ui/settingsSplash.js';
 import { MerchantHistoryExportService } from './services/merchantHistoryExport.js';
+import { MerchantHistoryCleanupService } from './services/merchantHistoryCleanup.js';
 import { showRestartDialog } from './ui/restartDialog.js';
 import { showToast } from './utils/toastNotification.js';
 import { registerDataIpc } from './ipc/dataHandlers.js';
@@ -430,6 +431,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 onOpenModifiers: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','modifiers'); },140); },
                 onOpenHistory: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','history'); this.safeSendToOverlay('invoke-action','merchant-history'); },180); },
                 onExportHistory: () => this.exportMerchantHistoryToCsv(),
+                onCleanupHistory: () => this.cleanupMerchantHistory(),
                 onQuit: () => app.quit(),
                 onToggleFloatingButton: () => this.toggleFloatingButton(),
                 onOpenSettings: () => this.openSettings(),
@@ -815,6 +817,134 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             await MerchantHistoryExportService.exportToCsv(configDir, this.overlayWindow, this.merchantHistoryLeague);
         } catch (e) {
             console.error('[Main] Failed to export merchant history:', e);
+        }
+    }
+
+    // Clean up merchant history duplicates (smart deduplication)
+    private async cleanupMerchantHistory(): Promise<void> {
+        try {
+            const configDir = this.getUserConfigDir();
+            const { dialog, BrowserWindow } = await import('electron');
+            
+            // Scan all leagues to see what needs cleaning
+            const allLeaguesScan = await MerchantHistoryCleanupService.scanAllLeagues(configDir);
+            
+            if (allLeaguesScan.totalInvalid === 0) {
+                // Temporarily disable alwaysOnTop for overlay so dialog can appear on top
+                const wasAlwaysOnTop = this.overlayWindow?.isAlwaysOnTop() || false;
+                if (wasAlwaysOnTop && this.overlayWindow) {
+                    this.overlayWindow.setAlwaysOnTop(false);
+                }
+
+                await dialog.showMessageBox(this.overlayWindow || undefined as any, {
+                    type: 'info',
+                    title: 'History Clean',
+                    message: 'Your history is already clean!',
+                    detail: 'No duplicate entries found. The new smart deduplication system will prevent future duplicates automatically.',
+                    buttons: ['OK']
+                });
+
+                // Restore alwaysOnTop
+                if (wasAlwaysOnTop && this.overlayWindow) {
+                    this.overlayWindow.setAlwaysOnTop(true);
+                }
+                return;
+            }
+
+            // Build detail message showing all affected leagues
+            let detailMessage = '🔍 **What we found:**\n\n';
+            for (const file of allLeaguesScan.files) {
+                detailMessage += `• ${file.fileName}\n`;
+                detailMessage += `  ${file.invalidEntries} duplicates (${file.validEntries} valid)\n\n`;
+            }
+            detailMessage += `**Total duplicates:** ${allLeaguesScan.totalInvalid}\n\n`;
+            detailMessage += `🔧 **What cleanup does:**\n`;
+            detailMessage += `• Finds entries with same item_id + timestamp\n`;
+            detailMessage += `• Keeps complete version (with item details)\n`;
+            detailMessage += `• Removes incomplete version (item: null)\n`;
+            detailMessage += `• Fixes inflated totals\n\n`;
+            detailMessage += `✅ **Going forward:**\n`;
+            detailMessage += `The new smart system prevents duplicates automatically!\n\n`;
+            detailMessage += `💾 **Safety:** Backup created before any changes.`;
+
+            // Show choice dialog: Clean all or just current league
+            // Temporarily disable alwaysOnTop for overlay so dialog can appear on top
+            const wasAlwaysOnTop = this.overlayWindow?.isAlwaysOnTop() || false;
+            if (wasAlwaysOnTop && this.overlayWindow) {
+                this.overlayWindow.setAlwaysOnTop(false);
+            }
+
+            const choiceResult = await dialog.showMessageBox(this.overlayWindow || undefined as any, {
+                type: 'question',
+                title: 'Clean Duplicate History Entries',
+                message: `Found ${allLeaguesScan.totalInvalid} duplicate ${allLeaguesScan.totalInvalid === 1 ? 'entry' : 'entries'} from old data`,
+                detail: detailMessage,
+                buttons: ['Clean All Leagues', 'Clean Current League Only', 'Cancel'],
+                defaultId: 0,
+                cancelId: 2,
+                noLink: true
+            });
+
+            // Restore alwaysOnTop
+            if (wasAlwaysOnTop && this.overlayWindow) {
+                this.overlayWindow.setAlwaysOnTop(true);
+            }
+
+            if (choiceResult.response === 2) {
+                return; // Cancelled
+            }
+
+            if (choiceResult.response === 0) {
+                // Clean all leagues
+                const cleanupResult = await MerchantHistoryCleanupService.cleanupAllLeagues(configDir);
+
+                if (cleanupResult.success && (cleanupResult.totalRemoved > 0 || cleanupResult.totalMerged > 0)) {
+                    let successMessage = `✅ Cleaned ${cleanupResult.results.length} league ${cleanupResult.results.length === 1 ? 'file' : 'files'}:\n\n`;
+                    for (const { file, result } of cleanupResult.results) {
+                        if (result.success && (result.removedCount > 0 || result.mergedCount > 0)) {
+                            successMessage += `• ${file}:\n`;
+                            if (result.mergedCount > 0) successMessage += `  ${result.mergedCount} duplicates merged\n`;
+                            if (result.removedCount > 0) successMessage += `  ${result.removedCount} entries removed\n`;
+                        }
+                    }
+                    successMessage += `\nTotal: ${cleanupResult.totalMerged} merged, ${cleanupResult.totalRemoved} removed\nBackups saved. Refresh history to see changes.`;
+                    
+                    showToast(this.overlayWindow, successMessage, 'success');
+
+                    // Notify renderer to refresh history
+                    if (this.overlayWindow && !this.overlayWindow.isDestroyed()) {
+                        this.overlayWindow.webContents.send('history-cleaned', cleanupResult);
+                    }
+                } else if (cleanupResult.error) {
+                    showToast(this.overlayWindow, cleanupResult.error, 'error');
+                } else {
+                    showToast(this.overlayWindow, 'No changes needed - history is already clean!', 'info');
+                }
+            } else {
+                // Clean current league only
+                const cleanupResult = await MerchantHistoryCleanupService.cleanupHistory(configDir, this.merchantHistoryLeague);
+
+                if (cleanupResult.success && (cleanupResult.removedCount > 0 || cleanupResult.mergedCount > 0)) {
+                    let message = '✅ Cleanup complete:\n';
+                    if (cleanupResult.mergedCount > 0) message += `${cleanupResult.mergedCount} duplicates merged\n`;
+                    if (cleanupResult.removedCount > 0) message += `${cleanupResult.removedCount} entries removed\n`;
+                    message += '\nBackup saved. Refresh history to see changes.';
+                    
+                    showToast(this.overlayWindow, message, 'success');
+
+                    // Notify renderer to refresh history
+                    if (this.overlayWindow && !this.overlayWindow.isDestroyed()) {
+                        this.overlayWindow.webContents.send('history-cleaned', cleanupResult);
+                    }
+                } else if (cleanupResult.error) {
+                    showToast(this.overlayWindow, cleanupResult.error, 'error');
+                } else {
+                    showToast(this.overlayWindow, 'No duplicates found in current league!', 'info');
+                }
+            }
+        } catch (e) {
+            console.error('[Main] Failed to cleanup merchant history:', e);
+            showToast(this.overlayWindow, e instanceof Error ? e.message : String(e), 'error');
         }
     }
 
@@ -2047,6 +2177,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 onOpenModifiers: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','modifiers'); },140); },
                 onOpenHistory: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','history'); this.safeSendToOverlay('invoke-action','merchant-history'); },180); },
                 onExportHistory: () => this.exportMerchantHistoryToCsv(),
+                onCleanupHistory: () => this.cleanupMerchantHistory(),
                 onQuit: () => app.quit(),
                 onToggleFloatingButton: () => this.toggleFloatingButton(),
                 onOpenSettings: () => this.openSettings(),

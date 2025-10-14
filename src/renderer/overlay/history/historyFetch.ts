@@ -247,26 +247,157 @@ export async function refreshHistory(
     }
     
     // ========== Normalize and Merge Data ==========
-    const normalized = rows.map((r: any) => ({
-      time: r.time || r.listedAt || r.date,
-      price: r.price || (r.amount ? { amount: r.amount, currency: r.currency } : undefined),
-      item: r.item || (r.data && r.data.item) || r,
-      note: r.note || (r.price && r.price.raw),
-      ts: canonicalTs(r)
-    }));
-    
-    const existingKeys = new Set((historyState.store.entries || []).map(keyForRow));
-    const newOnes = normalized.filter((r: any) => !existingKeys.has(keyForRow(r)));
-    let needsPersist = false;
-
-    if (newOnes.length) {
-      // Add to totals
-      newOnes.forEach((r: any) => addToTotals((r as any).price));
+    const normalized = rows.map((r: any) => {
+      // Extract item_id from various possible locations
+      let itemId = r.item_id || r.itemId;
       
-      // Merge with store
-      historyState.store.entries = (historyState.store.entries || []).concat(newOnes);
+      // If not at root, check inside item.id (this is where GGG puts it)
+      if (!itemId) {
+        const item = r.item || (r.data && r.data.item);
+        if (item && typeof item === 'object' && item.id) {
+          itemId = item.id;
+        }
+      }
+      
+      return {
+        time: r.time || r.listedAt || r.date,
+        item_id: itemId,
+        price: r.price || (r.amount ? { amount: r.amount, currency: r.currency } : undefined),
+        item: r.item || (r.data && r.data.item) || r,
+        note: r.note || (r.price && r.price.raw),
+        ts: canonicalTs(r)
+      };
+    });
+    
+    // Helper: Check if an entry has complete item data
+    const isCompleteEntry = (r: any): boolean => {
+      const item = r.item;
+      if (!item || item === null) return false;
+      if (typeof item === 'object' && !item.name && !item.typeLine && !item.baseType) {
+        return false;
+      }
+      return true;
+    };
+    
+    // Helper: Generate unique key using item_id + time (most reliable)
+    // For old entries without item_id at root level, try to extract from item.id
+    const getEntryKey = (r: any): string => {
+      let itemId = r.item_id || r.itemId || '';
+      const time = r.time || r.ts || '';
+      
+      // For old entries, item_id might be inside item.id
+      if (!itemId && r.item && typeof r.item === 'object') {
+        itemId = r.item.id || '';
+      }
+      
+      // item_id + time is the most reliable key (even incomplete entries have this)
+      if (itemId && time) {
+        return `${itemId}##${time}`;
+      }
+      
+      // Fallback for very old data without item_id: use item name
+      const item = r.item;
+      let itemName = '';
+      if (item && typeof item === 'object') {
+        itemName = item.name || item.typeLine || item.baseType || '';
+      }
+      
+      if (itemName && time) {
+        return `${itemName}##${time}`;
+      }
+      
+      // Last resort: just time (should never happen with GGG API data)
+      return `##${time}`;
+    };
+    
+    // Counters and flags
+    let newCount = 0;
+    let replacedCount = 0;
+    let incompleteCount = 0;
+    let backfilledCount = 0;
+    let needsPersist = false;
+    
+    // Build map of existing entries by their unique key (item_id + time)
+    // Also backfill item_id for old entries that have it in item.id but not at root
+    const existingEntriesMap = new Map<string, any>();
+    for (const entry of (historyState.store.entries || [])) {
+      // Backfill item_id from item.id if missing at root level (for old data compatibility)
+      const entryAny = entry as any;
+      if (!entryAny.item_id && entryAny.item && typeof entryAny.item === 'object' && entryAny.item.id) {
+        entryAny.item_id = entryAny.item.id;
+        backfilledCount++;
+        needsPersist = true;
+      }
+      
+      const key = getEntryKey(entry);
+      existingEntriesMap.set(key, entry);
+    }
+    
+    if (backfilledCount > 0) {
+      console.log(`[History] 🔧 Backfilled item_id for ${backfilledCount} old ${backfilledCount === 1 ? 'entry' : 'entries'}`);
+    }
+
+    // Process each normalized entry
+    for (const entry of normalized) {
+      const key = getEntryKey(entry);
+      const existingEntry = existingEntriesMap.get(key);
+      const isComplete = isCompleteEntry(entry);
+      
+      if (!isComplete) {
+        incompleteCount++;
+      }
+      
+      if (!existingEntry) {
+        // New entry (complete or incomplete) - add it
+        historyState.store.entries.push(entry);
+        addToTotals(entry.price);
+        newCount++;
+        needsPersist = true;
+      } else {
+        // Entry already exists - check if we should replace it
+        const existingIsComplete = isCompleteEntry(existingEntry);
+        
+        if (!existingIsComplete && isComplete) {
+          // Replace incomplete entry with complete one
+          console.log(`[History] Replacing incomplete entry with complete data for ${key}`);
+          
+          // Remove old totals
+          const oldPrice = existingEntry.price || (existingEntry.amount ? { amount: existingEntry.amount, currency: existingEntry.currency } : undefined);
+          if (oldPrice && oldPrice.currency && oldPrice.amount) {
+            const cur = oldPrice.currency.toLowerCase();
+            historyState.store.totals[cur] = Math.max(0, (historyState.store.totals[cur] || 0) - oldPrice.amount);
+          }
+          
+          // Replace entry
+          const index = historyState.store.entries.indexOf(existingEntry);
+          if (index !== -1) {
+            historyState.store.entries[index] = entry;
+          }
+          
+          // Add new totals
+          addToTotals(entry.price);
+          
+          replacedCount++;
+          needsPersist = true;
+        }
+        // If both are complete or both are incomplete, keep existing (no change)
+      }
+    }
+    
+    // Log summary
+    if (incompleteCount > 0) {
+      console.warn(`[History] Received ${incompleteCount} incomplete ${incompleteCount === 1 ? 'entry' : 'entries'} (item: null). Keeping for price data - will be replaced when complete data arrives.`);
+    }
+    if (replacedCount > 0) {
+      console.log(`[History] ✅ Replaced ${replacedCount} incomplete ${replacedCount === 1 ? 'entry' : 'entries'} with complete data!`);
+      showInfoBadge(`✅ Updated ${replacedCount} ${replacedCount === 1 ? 'entry' : 'entries'} with complete data!`, 4000);
+    }
+    if (newCount > 0) {
+      console.log(`[History] Added ${newCount} new ${newCount === 1 ? 'entry' : 'entries'}`);
+    }
+
+    if (needsPersist) {
       historyState.store.lastSync = Date.now();
-      needsPersist = true;
       
       // Reconcile totals with entries to avoid drift
       try { recomputeTotalsFromEntries(historyState.store); } catch {}

@@ -103,6 +103,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
         ipcRenderer.on('request-history-popout-refresh', () => callback());
     },
     
+    // History cleanup
+    onHistoryCleaned: (callback: (result: any) => void) => {
+        ipcRenderer.on('history-cleaned', (_event, result) => callback(result));
+    },
+    
     // Feature configuration
     getEnabledFeatures: () => ipcRenderer.invoke('get-enabled-features'),
     saveFeatureConfig: (config: any) => ipcRenderer.send('save-feature-config', config),

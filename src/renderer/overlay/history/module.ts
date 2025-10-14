@@ -242,6 +242,47 @@ export function onLeaveView(): void {
       });
     } catch (e) { console.warn('[History] Attach refresh button failed:', e); }
   }, 300);
+
+  // Listen for history cleanup events from main process
+  try {
+    (window as any).electronAPI?.onHistoryCleaned?.((result: any) => {
+      console.log('[History] Cleanup completed, reloading data from disk...', result);
+      
+      // Reload history from disk to get cleaned data
+      (async () => {
+        await initHistoryFromLocal(
+          () => recomputeTotalsFromEntries(historyState.store),
+          () => {
+            const all = (historyState.store.entries || []).slice().reverse();
+            historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+            historyState.selectedIndex = 0;
+          },
+          {
+            renderList: () => renderHistoryList((idx) => renderHistoryDetail(idx)),
+            renderDetail: (idx: number) => renderHistoryDetail(idx),
+            renderTotals: () => {
+              renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+                try { updateHistoryChartFromTotals(totals); } catch {}
+              }, { entries: historyState.items });
+            },
+            renderFilters: () => {
+              renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+                renderHistoryList((idx) => renderHistoryDetail(idx));
+                renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+                  try { updateHistoryChartFromTotals(totals); } catch {}
+                }, { entries: historyState.items });
+              });
+            },
+            recomputeChartSeries: () => recomputeChartSeriesFromStore(),
+            drawChart: () => drawHistoryChart()
+          }
+        );
+        console.log('[History] Data reloaded after cleanup');
+      })();
+    });
+  } catch (e) {
+    console.warn('[History] Failed to attach cleanup listener:', e);
+  }
 })();
 
 // ========== Event Handlers ==========
