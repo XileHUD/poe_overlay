@@ -1475,27 +1475,17 @@ body.crafting-mode #controlPanel { display: none !important; }
 .qp-pill{display:inline-flex; align-items:center; gap:6px; padding:2px 8px; border-radius:999px; background:var(--bg-tertiary); border:1px solid var(--border-color); font-size:11px;}
 
 /* ================= Responsive Enhancements (safe + incremental) ================= */
-/* Breakpoint 1: Slightly constrain list width sooner for medium viewports */
-@media (max-width: 1100px) {
-    #historyList { flex: 0 0 clamp(320px, 50%, 520px) !important; max-width: clamp(320px, 54%, 560px) !important; }
-}
+/* Removed - minimum window width handles layout properly */
 
-/* Breakpoint 2: Stack list and detail vertically under narrow width */
-@media (max-width: 860px) {
-    #historyContainer { flex-direction: column !important; }
-    #historyList { flex: 0 0 auto !important; min-width: 0 !important; max-height: 38vh; border-right:none !important; border-bottom:1px solid var(--border-color); }
-    #historyRight { flex: 1 1 auto; }
-}
-
-/* Breakpoint 3: Single-column detail card (icon above mods) */
-
+/* Breakpoint 4: Single-column detail card (icon above mods) */
+@media (max-width: 720px) {
     #historyChart { flex:1 1 150px; min-height:150px; width:100%; }
 
     #historyRight.history-chart-expanded { display:flex; flex-direction:column; }
     #historyRight.history-chart-expanded #historyDetail { display:none !important; }
     #historyRight.history-chart-expanded #historyChartWrap { flex:1 1 auto; min-height:0; }
     #historyRight.history-chart-expanded #historyChart { flex:1 1 auto; min-height:0; }
-@media (max-width: 720px) {
+    
     .history-detail-card .grid { grid-template-columns: 1fr !important; }
     .history-item-icon { margin: 0 auto 8px auto; }
 }

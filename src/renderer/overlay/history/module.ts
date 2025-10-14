@@ -405,10 +405,16 @@ export async function onManualRefresh(): Promise<void> {
 // ========== HTML Compatibility Wrappers ==========
 // These wrapper functions are called from overlay.html inline scripts
 
+// Adaptive debouncing based on render performance
+let lastRenderTime = 0;
+let adaptiveDebounceDelay = 0;
+
 /**
  * Internal function to apply filters and re-render
  */
 function _applyAndRenderInternal(): void {
+  const startTime = performance.now();
+  
   console.log('[applyAndRender] Called, historyVisible:', historyVisible());
   console.log('[applyAndRender] Current filters:', JSON.stringify(historyState.filters));
   console.log('[applyAndRender] Store entries count:', historyState.store.entries?.length || 0);
@@ -442,17 +448,33 @@ function _applyAndRenderInternal(): void {
     try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
   }, { entries: historyState.items });
   
+  const endTime = performance.now();
+  lastRenderTime = endTime - startTime;
+  
+  // Adaptive debounce: if render took >250ms, increase debounce to 150ms, otherwise keep it instant
+  if (lastRenderTime > 250) {
+    adaptiveDebounceDelay = 150;
+    console.log(`[applyAndRender] Slow render detected (${lastRenderTime.toFixed(2)}ms), enabling 150ms debounce`);
+  } else {
+    adaptiveDebounceDelay = 0;
+    console.log(`[applyAndRender] Fast render (${lastRenderTime.toFixed(2)}ms), debounce disabled`);
+  }
+  
   console.log('[applyAndRender] Render complete');
 }
 
-// Create debounced version for filter inputs (300ms delay)
-const debouncedApplyAndRender = debounce('apply-and-render', _applyAndRenderInternal, 300);
+// Create debounced version for filter inputs (adaptive delay)
+let debouncedApplyAndRender = debounce('apply-and-render', _applyAndRenderInternal, 0);
 
 /**
  * Apply filters and re-render (called from HTML filter inputs)
- * Debounced to prevent expensive operations on every keystroke.
+ * Uses adaptive debouncing based on render performance.
  */
 export function applyAndRender(): void {
+  // Recreate debounced function if delay changed
+  if (debouncedApplyAndRender !== debounce('apply-and-render', _applyAndRenderInternal, adaptiveDebounceDelay)) {
+    debouncedApplyAndRender = debounce('apply-and-render', _applyAndRenderInternal, adaptiveDebounceDelay);
+  }
   debouncedApplyAndRender();
 }
 

@@ -22,6 +22,7 @@ interface VirtualScrollState {
 
 const DEFAULT_ITEM_HEIGHT = 48; // Default height estimate (will be measured dynamically)
 const BUFFER_SIZE = 5; // Number of items to render above/below visible area
+const SCROLL_SNAP_DELAY = 150; // ms to wait after manual scroll before snapping
 
 let virtualState: VirtualScrollState = {
   scrollTop: 0,
@@ -31,6 +32,9 @@ let virtualState: VirtualScrollState = {
   visibleEnd: 20,
   bufferSize: BUFFER_SIZE
 };
+
+let lastManualScrollTime = 0;
+let snapTimeout: number | null = null;
 
 /**
  * Measure the actual height of a history row by rendering one temporarily
@@ -89,12 +93,21 @@ export function renderVirtualHistoryList(renderDetailCallback: (idx: number) => 
     initializeVirtualScroll(histList, renderDetailCallback);
   }
   
+  // Update container height (it may change due to responsive breakpoints)
+  const currentHeight = histList.clientHeight;
+  if (currentHeight !== virtualState.containerHeight) {
+    console.log(`[VirtualScroll] Container height changed: ${virtualState.containerHeight}px -> ${currentHeight}px`);
+    virtualState.containerHeight = currentHeight;
+  }
+  
   // Calculate visible range
   const { start, end } = calculateVisibleRange(
     virtualState.scrollTop,
     virtualState.containerHeight,
     totalItems
   );
+  
+  console.log(`[VirtualScroll] Rendering items ${start}-${end} of ${totalItems}, containerHeight=${virtualState.containerHeight}px`);
   
   virtualState.visibleStart = start;
   virtualState.visibleEnd = end;
@@ -173,15 +186,36 @@ function initializeVirtualScroll(histList: HTMLElement, renderDetailCallback: (i
   
   // Set up scroll handler with throttling
   let scrollTimeout: number | null = null;
-  histList.addEventListener('scroll', () => {
+  let isUserScrolling = false;
+  
+  histList.addEventListener('scroll', (e: Event) => {
     virtualState.scrollTop = histList.scrollTop;
     virtualState.containerHeight = histList.clientHeight;
+    
+    // Track manual scroll to prevent snap-to-top interference
+    lastManualScrollTime = Date.now();
+    isUserScrolling = true;
+    
+    // Clear any pending snap
+    if (snapTimeout !== null) {
+      window.clearTimeout(snapTimeout);
+      snapTimeout = null;
+    }
     
     // Throttle re-render to every 16ms (~60fps)
     if (scrollTimeout === null) {
       scrollTimeout = window.setTimeout(() => {
         renderVirtualHistoryList(renderDetailCallback);
         scrollTimeout = null;
+        isUserScrolling = false;
+        
+        // Schedule snap-to-item-top after user stops scrolling
+        snapTimeout = window.setTimeout(() => {
+          const timeSinceLastScroll = Date.now() - lastManualScrollTime;
+          if (timeSinceLastScroll >= SCROLL_SNAP_DELAY) {
+            snapToNearestItem(histList);
+          }
+        }, SCROLL_SNAP_DELAY);
       }, 16);
     }
   });
@@ -271,6 +305,26 @@ function updateSelection(histList: HTMLElement, renderDetailCallback: (idx: numb
 }
 
 /**
+ * Snap scroll position to nearest item top (only called after user stops scrolling)
+ */
+function snapToNearestItem(histList: HTMLElement): void {
+  const currentScrollTop = histList.scrollTop;
+  const itemHeight = virtualState.itemHeight;
+  
+  // Find the nearest item top
+  const nearestItemIndex = Math.round(currentScrollTop / itemHeight);
+  const targetScrollTop = nearestItemIndex * itemHeight;
+  
+  // Only snap if we're not already close enough (within 2px)
+  if (Math.abs(currentScrollTop - targetScrollTop) > 2) {
+    histList.scrollTo({
+      top: targetScrollTop,
+      behavior: 'smooth'
+    });
+  }
+}
+
+/**
  * Scroll to a specific index (useful for keyboard navigation)
  */
 export function scrollToVirtualIndex(idx: number, histList: HTMLElement | null): void {
@@ -283,8 +337,16 @@ export function scrollToVirtualIndex(idx: number, histList: HTMLElement | null):
   const containerHeight = histList.clientHeight;
   const currentScrollTop = histList.scrollTop;
   
-  // Only scroll if item is not visible
-  if (targetScrollTop < currentScrollTop || targetScrollTop > currentScrollTop + containerHeight - virtualState.itemHeight) {
-    histList.scrollTop = targetScrollTop - containerHeight / 2 + virtualState.itemHeight / 2;
+  // Only scroll if item is not fully visible
+  const itemBottom = targetScrollTop + virtualState.itemHeight;
+  const visibleTop = currentScrollTop;
+  const visibleBottom = currentScrollTop + containerHeight;
+  
+  if (targetScrollTop < visibleTop) {
+    // Item is above visible area - scroll to show it at top
+    histList.scrollTop = targetScrollTop;
+  } else if (itemBottom > visibleBottom) {
+    // Item is below visible area - scroll to show it at bottom
+    histList.scrollTop = itemBottom - containerHeight;
   }
 }
