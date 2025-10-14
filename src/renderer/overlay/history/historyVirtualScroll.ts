@@ -9,6 +9,7 @@
 import { historyState } from './historyData';
 import { toRelativeTime } from './historyList';
 import { normalizeCurrency, escapeHtml } from '../utils';
+import { historyVisible } from './historyView';
 
 interface VirtualScrollState {
   scrollTop: number;
@@ -182,6 +183,30 @@ function initializeVirtualScroll(histList: HTMLElement, renderDetailCallback: (i
         renderVirtualHistoryList(renderDetailCallback);
         scrollTimeout = null;
       }, 16);
+    }
+  });
+  
+  // Set up arrow key navigation
+  document.addEventListener('keydown', (e: KeyboardEvent) => {
+    // Only handle arrow keys when history view is active and histList is focused
+    if (!historyVisible()) return;
+    if (document.activeElement !== histList) return;
+    
+    const items = historyState.items || [];
+    if (items.length === 0) return;
+    
+    if (e.code === 'ArrowDown' || e.code === 'ArrowUp') {
+      e.preventDefault(); // Prevent browser scrolling
+      
+      const currentIdx = historyState.selectedIndex ?? 0;
+      const newIdx = e.code === 'ArrowDown'
+        ? Math.min(items.length - 1, currentIdx + 1)
+        : Math.max(0, currentIdx - 1);
+      
+      if (newIdx !== currentIdx) {
+        selectVirtualIndex(newIdx, histList, renderDetailCallback);
+        scrollToVirtualIndex(newIdx, histList);
+      }
     }
   });
   
