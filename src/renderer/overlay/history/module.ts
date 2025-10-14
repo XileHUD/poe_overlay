@@ -37,6 +37,7 @@ import {
 import { 
   renderHistoryDetail 
 } from './historyDetail';
+import { debounce } from './debouncedFilters';
 import { 
   recomputeChartSeriesFromStore, 
   drawHistoryChart, 
@@ -348,9 +349,9 @@ export async function onManualRefresh(): Promise<void> {
 // These wrapper functions are called from overlay.html inline scripts
 
 /**
- * Apply filters and re-render (called from HTML filter inputs)
+ * Internal function to apply filters and re-render
  */
-export function applyAndRender(): void {
+function _applyAndRenderInternal(): void {
   console.log('[applyAndRender] Called, historyVisible:', historyVisible());
   console.log('[applyAndRender] Current filters:', JSON.stringify(historyState.filters));
   console.log('[applyAndRender] Store entries count:', historyState.store.entries?.length || 0);
@@ -385,6 +386,17 @@ export function applyAndRender(): void {
   }, { entries: historyState.items });
   
   console.log('[applyAndRender] Render complete');
+}
+
+// Create debounced version for filter inputs (300ms delay)
+const debouncedApplyAndRender = debounce('apply-and-render', _applyAndRenderInternal, 300);
+
+/**
+ * Apply filters and re-render (called from HTML filter inputs)
+ * Debounced to prevent expensive operations on every keystroke.
+ */
+export function applyAndRender(): void {
+  debouncedApplyAndRender();
 }
 
 /**
