@@ -3,7 +3,6 @@
     "category": "Traps",
     "domain": "normal",
     "side": "prefix",
-    "text_html": "\n    # to maximum Mana\n",
     "text_plain": "# to maximum Mana",
     "tier": 11,
     "ilvl": 70,
@@ -12,13 +11,10 @@
     "tags": [
       "mana"
     ],
-    "modal_id": "#collapseOnenormal1IncreasedMana",
-    "family_name": "IncreasedMana",
     "tiers": [
       {
         "tier_name": "Beryl",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">+(10–14)</span> to maximum Mana",
         "text_plain": "1 +(10–14) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -26,7 +22,6 @@
       {
         "tier_name": "Cobalt",
         "tier_level": 6,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">6</span> <span class=\"mod-value\">+(15–24)</span> to maximum Mana",
         "text_plain": "6 +(15–24) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -34,7 +29,6 @@
       {
         "tier_name": "Azure",
         "tier_level": 16,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">16</span> <span class=\"mod-value\">+(25–34)</span> to maximum Mana",
         "text_plain": "16 +(25–34) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -42,7 +36,6 @@
       {
         "tier_name": "Teal",
         "tier_level": 25,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">25</span> <span class=\"mod-value\">+(35–54)</span> to maximum Mana",
         "text_plain": "25 +(35–54) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -50,7 +43,6 @@
       {
         "tier_name": "Cerulean",
         "tier_level": 33,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">33</span> <span class=\"mod-value\">+(55–64)</span> to maximum Mana",
         "text_plain": "33 +(55–64) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -58,7 +50,6 @@
       {
         "tier_name": "Aqua",
         "tier_level": 38,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">38</span> <span class=\"mod-value\">+(65–79)</span> to maximum Mana",
         "text_plain": "38 +(65–79) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -66,7 +57,6 @@
       {
         "tier_name": "Opalescent",
         "tier_level": 46,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">46</span> <span class=\"mod-value\">+(80–89)</span> to maximum Mana",
         "text_plain": "46 +(80–89) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -74,7 +64,6 @@
       {
         "tier_name": "Gentian",
         "tier_level": 54,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">54</span> <span class=\"mod-value\">+(90–104)</span> to maximum Mana",
         "text_plain": "54 +(90–104) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -82,7 +71,6 @@
       {
         "tier_name": "Chalybeous",
         "tier_level": 60,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">60</span> <span class=\"mod-value\">+(105–124)</span> to maximum Mana",
         "text_plain": "60 +(105–124) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -90,7 +78,6 @@
       {
         "tier_name": "Mazarine",
         "tier_level": 65,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">65</span> <span class=\"mod-value\">+(125–149)</span> to maximum Mana",
         "text_plain": "65 +(125–149) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -98,20 +85,16 @@
       {
         "tier_name": "Blue",
         "tier_level": 70,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">70</span> <span class=\"mod-value\">+(150–164)</span> to maximum Mana",
         "text_plain": "70 +(150–164) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "normal",
     "side": "prefix",
-    "text_html": "\n    #% increased Fire Damage<hr class=\"mod-same-family\">#% increased Cold Damage<hr class=\"mod-same-family\">#% increased Lightning Damage<hr class=\"mod-same-family\">#% increased Chaos Damage<hr class=\"mod-same-family\">#% increased Spell Physical Damage\n",
     "text_plain": "#% increased Fire Damage#% increased Cold Damage#% increased Lightning Damage#% increased Chaos Damage#% increased Spell Physical Damage",
     "tier": 40,
     "ilvl": 81,
@@ -122,13 +105,10 @@
       "elemental",
       "fire"
     ],
-    "modal_id": "#collapseOnenormal1WeaponDamageTypePrefix",
-    "family_name": "WeaponDamageTypePrefix",
     "tiers": [
       {
         "tier_name": "Searing",
         "tier_level": 2,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">2</span> <span class=\"mod-value\">(25–34)</span>% increased <a data-keyword=\"Fire\" href=\"Fire_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFire\">Fire</a> Damage",
         "text_plain": "2 (25–34)% increased Fire Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -136,7 +116,6 @@
       {
         "tier_name": "Sizzling",
         "tier_level": 8,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">8</span> <span class=\"mod-value\">(35–44)</span>% increased <a data-keyword=\"Fire\" href=\"Fire_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFire\">Fire</a> Damage",
         "text_plain": "8 (35–44)% increased Fire Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -144,7 +123,6 @@
       {
         "tier_name": "Blistering",
         "tier_level": 16,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">16</span> <span class=\"mod-value\">(45–54)</span>% increased <a data-keyword=\"Fire\" href=\"Fire_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFire\">Fire</a> Damage",
         "text_plain": "16 (45–54)% increased Fire Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -152,7 +130,6 @@
       {
         "tier_name": "Cauterising",
         "tier_level": 33,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">33</span> <span class=\"mod-value\">(55–64)</span>% increased <a data-keyword=\"Fire\" href=\"Fire_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFire\">Fire</a> Damage",
         "text_plain": "33 (55–64)% increased Fire Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -160,7 +137,6 @@
       {
         "tier_name": "Smoldering",
         "tier_level": 46,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">46</span> <span class=\"mod-value\">(65–74)</span>% increased <a data-keyword=\"Fire\" href=\"Fire_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFire\">Fire</a> Damage",
         "text_plain": "46 (65–74)% increased Fire Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -168,7 +144,6 @@
       {
         "tier_name": "Magmatic",
         "tier_level": 60,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">60</span> <span class=\"mod-value\">(75–89)</span>% increased <a data-keyword=\"Fire\" href=\"Fire_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFire\">Fire</a> Damage",
         "text_plain": "60 (75–89)% increased Fire Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -176,7 +151,6 @@
       {
         "tier_name": "Volcanic",
         "tier_level": 70,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">70</span> <span class=\"mod-value\">(90–104)</span>% increased <a data-keyword=\"Fire\" href=\"Fire_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFire\">Fire</a> Damage",
         "text_plain": "70 (90–104)% increased Fire Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -184,7 +158,6 @@
       {
         "tier_name": "Pyromancer's",
         "tier_level": 81,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">81</span> <span class=\"mod-value\">(105–119)</span>% increased <a data-keyword=\"Fire\" href=\"Fire_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFire\">Fire</a> Damage",
         "text_plain": "81 (105–119)% increased Fire Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -192,7 +165,6 @@
       {
         "tier_name": "Bitter",
         "tier_level": 2,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">2</span> <span class=\"mod-value\">(25–34)</span>% increased <a data-keyword=\"Cold\" href=\"Cold_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FCold\">Cold</a> Damage",
         "text_plain": "2 (25–34)% increased Cold Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -200,7 +172,6 @@
       {
         "tier_name": "Biting",
         "tier_level": 8,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">8</span> <span class=\"mod-value\">(35–44)</span>% increased <a data-keyword=\"Cold\" href=\"Cold_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FCold\">Cold</a> Damage",
         "text_plain": "8 (35–44)% increased Cold Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -208,7 +179,6 @@
       {
         "tier_name": "Alpine",
         "tier_level": 16,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">16</span> <span class=\"mod-value\">(45–54)</span>% increased <a data-keyword=\"Cold\" href=\"Cold_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FCold\">Cold</a> Damage",
         "text_plain": "16 (45–54)% increased Cold Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -216,7 +186,6 @@
       {
         "tier_name": "Snowy",
         "tier_level": 33,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">33</span> <span class=\"mod-value\">(55–64)</span>% increased <a data-keyword=\"Cold\" href=\"Cold_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FCold\">Cold</a> Damage",
         "text_plain": "33 (55–64)% increased Cold Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -224,7 +193,6 @@
       {
         "tier_name": "Hailing",
         "tier_level": 46,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">46</span> <span class=\"mod-value\">(65–74)</span>% increased <a data-keyword=\"Cold\" href=\"Cold_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FCold\">Cold</a> Damage",
         "text_plain": "46 (65–74)% increased Cold Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -232,7 +200,6 @@
       {
         "tier_name": "Arctic",
         "tier_level": 60,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">60</span> <span class=\"mod-value\">(75–89)</span>% increased <a data-keyword=\"Cold\" href=\"Cold_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FCold\">Cold</a> Damage",
         "text_plain": "60 (75–89)% increased Cold Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -240,7 +207,6 @@
       {
         "tier_name": "Crystalline",
         "tier_level": 70,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">70</span> <span class=\"mod-value\">(90–104)</span>% increased <a data-keyword=\"Cold\" href=\"Cold_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FCold\">Cold</a> Damage",
         "text_plain": "70 (90–104)% increased Cold Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -248,7 +214,6 @@
       {
         "tier_name": "Cryomancer's",
         "tier_level": 81,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">81</span> <span class=\"mod-value\">(105–119)</span>% increased <a data-keyword=\"Cold\" href=\"Cold_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FCold\">Cold</a> Damage",
         "text_plain": "81 (105–119)% increased Cold Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -256,7 +221,6 @@
       {
         "tier_name": "Charged",
         "tier_level": 2,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">2</span> <span class=\"mod-value\">(25–34)</span>% increased <a data-keyword=\"Lightning\" href=\"Lightning_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/089f8a765c8b56819c267fef103f31db8e55e76433fe4b6a9ea94f7853bce2f8\">Lightning</a> Damage",
         "text_plain": "2 (25–34)% increased Lightning Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -264,7 +228,6 @@
       {
         "tier_name": "Hissing",
         "tier_level": 8,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">8</span> <span class=\"mod-value\">(35–44)</span>% increased <a data-keyword=\"Lightning\" href=\"Lightning_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/089f8a765c8b56819c267fef103f31db8e55e76433fe4b6a9ea94f7853bce2f8\">Lightning</a> Damage",
         "text_plain": "8 (35–44)% increased Lightning Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -272,7 +235,6 @@
       {
         "tier_name": "Bolting",
         "tier_level": 16,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">16</span> <span class=\"mod-value\">(45–54)</span>% increased <a data-keyword=\"Lightning\" href=\"Lightning_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/089f8a765c8b56819c267fef103f31db8e55e76433fe4b6a9ea94f7853bce2f8\">Lightning</a> Damage",
         "text_plain": "16 (45–54)% increased Lightning Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -280,7 +242,6 @@
       {
         "tier_name": "Coursing",
         "tier_level": 33,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">33</span> <span class=\"mod-value\">(55–64)</span>% increased <a data-keyword=\"Lightning\" href=\"Lightning_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/089f8a765c8b56819c267fef103f31db8e55e76433fe4b6a9ea94f7853bce2f8\">Lightning</a> Damage",
         "text_plain": "33 (55–64)% increased Lightning Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -288,7 +249,6 @@
       {
         "tier_name": "Striking",
         "tier_level": 46,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">46</span> <span class=\"mod-value\">(65–74)</span>% increased <a data-keyword=\"Lightning\" href=\"Lightning_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/089f8a765c8b56819c267fef103f31db8e55e76433fe4b6a9ea94f7853bce2f8\">Lightning</a> Damage",
         "text_plain": "46 (65–74)% increased Lightning Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -296,7 +256,6 @@
       {
         "tier_name": "Smiting",
         "tier_level": 60,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">60</span> <span class=\"mod-value\">(75–89)</span>% increased <a data-keyword=\"Lightning\" href=\"Lightning_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/089f8a765c8b56819c267fef103f31db8e55e76433fe4b6a9ea94f7853bce2f8\">Lightning</a> Damage",
         "text_plain": "60 (75–89)% increased Lightning Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -304,7 +263,6 @@
       {
         "tier_name": "Ionising",
         "tier_level": 70,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">70</span> <span class=\"mod-value\">(90–104)</span>% increased <a data-keyword=\"Lightning\" href=\"Lightning_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/089f8a765c8b56819c267fef103f31db8e55e76433fe4b6a9ea94f7853bce2f8\">Lightning</a> Damage",
         "text_plain": "70 (90–104)% increased Lightning Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -312,7 +270,6 @@
       {
         "tier_name": "Electromancer's",
         "tier_level": 81,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">81</span> <span class=\"mod-value\">(105–119)</span>% increased <a data-keyword=\"Lightning\" href=\"Lightning_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/089f8a765c8b56819c267fef103f31db8e55e76433fe4b6a9ea94f7853bce2f8\">Lightning</a> Damage",
         "text_plain": "81 (105–119)% increased Lightning Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -320,7 +277,6 @@
       {
         "tier_name": "Impure",
         "tier_level": 2,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">2</span> <span class=\"mod-value\">(25–34)</span>% increased <a data-keyword=\"Chaos\" href=\"Chaos_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/bba511e2c574cdc483d16ecbdcad006f1af68496d37a1d18b13e5c997761fc28\">Chaos</a> Damage",
         "text_plain": "2 (25–34)% increased Chaos Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -328,7 +284,6 @@
       {
         "tier_name": "Tainted",
         "tier_level": 8,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">8</span> <span class=\"mod-value\">(35–44)</span>% increased <a data-keyword=\"Chaos\" href=\"Chaos_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/bba511e2c574cdc483d16ecbdcad006f1af68496d37a1d18b13e5c997761fc28\">Chaos</a> Damage",
         "text_plain": "8 (35–44)% increased Chaos Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -336,7 +291,6 @@
       {
         "tier_name": "Clouded",
         "tier_level": 16,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">16</span> <span class=\"mod-value\">(45–54)</span>% increased <a data-keyword=\"Chaos\" href=\"Chaos_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/bba511e2c574cdc483d16ecbdcad006f1af68496d37a1d18b13e5c997761fc28\">Chaos</a> Damage",
         "text_plain": "16 (45–54)% increased Chaos Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -344,7 +298,6 @@
       {
         "tier_name": "Darkened",
         "tier_level": 33,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">33</span> <span class=\"mod-value\">(55–64)</span>% increased <a data-keyword=\"Chaos\" href=\"Chaos_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/bba511e2c574cdc483d16ecbdcad006f1af68496d37a1d18b13e5c997761fc28\">Chaos</a> Damage",
         "text_plain": "33 (55–64)% increased Chaos Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -352,7 +305,6 @@
       {
         "tier_name": "Malignant",
         "tier_level": 46,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">46</span> <span class=\"mod-value\">(65–74)</span>% increased <a data-keyword=\"Chaos\" href=\"Chaos_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/bba511e2c574cdc483d16ecbdcad006f1af68496d37a1d18b13e5c997761fc28\">Chaos</a> Damage",
         "text_plain": "46 (65–74)% increased Chaos Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -360,7 +312,6 @@
       {
         "tier_name": "Vile",
         "tier_level": 60,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">60</span> <span class=\"mod-value\">(75–89)</span>% increased <a data-keyword=\"Chaos\" href=\"Chaos_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/bba511e2c574cdc483d16ecbdcad006f1af68496d37a1d18b13e5c997761fc28\">Chaos</a> Damage",
         "text_plain": "60 (75–89)% increased Chaos Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -368,7 +319,6 @@
       {
         "tier_name": "Twisted",
         "tier_level": 70,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">70</span> <span class=\"mod-value\">(90–104)</span>% increased <a data-keyword=\"Chaos\" href=\"Chaos_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/bba511e2c574cdc483d16ecbdcad006f1af68496d37a1d18b13e5c997761fc28\">Chaos</a> Damage",
         "text_plain": "70 (90–104)% increased Chaos Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -376,7 +326,6 @@
       {
         "tier_name": "Malevolent",
         "tier_level": 81,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">81</span> <span class=\"mod-value\">(105–119)</span>% increased <a data-keyword=\"Chaos\" href=\"Chaos_Damage\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/bba511e2c574cdc483d16ecbdcad006f1af68496d37a1d18b13e5c997761fc28\">Chaos</a> Damage",
         "text_plain": "81 (105–119)% increased Chaos Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -384,7 +333,6 @@
       {
         "tier_name": "Punishing",
         "tier_level": 2,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">2</span> <span class=\"mod-value\">(25–34)</span>% increased <a data-keyword=\"Spell\" href=\"Spells\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FSpell\">Spell</a> <a data-keyword=\"Physical\" href=\"Physical_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FPhysical\">Physical</a> Damage",
         "text_plain": "2 (25–34)% increased Spell Physical Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -392,7 +340,6 @@
       {
         "tier_name": "Unforgiving",
         "tier_level": 8,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">8</span> <span class=\"mod-value\">(35–44)</span>% increased <a data-keyword=\"Spell\" href=\"Spells\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FSpell\">Spell</a> <a data-keyword=\"Physical\" href=\"Physical_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FPhysical\">Physical</a> Damage",
         "text_plain": "8 (35–44)% increased Spell Physical Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -400,7 +347,6 @@
       {
         "tier_name": "Vengeful",
         "tier_level": 16,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">16</span> <span class=\"mod-value\">(45–54)</span>% increased <a data-keyword=\"Spell\" href=\"Spells\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FSpell\">Spell</a> <a data-keyword=\"Physical\" href=\"Physical_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FPhysical\">Physical</a> Damage",
         "text_plain": "16 (45–54)% increased Spell Physical Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -408,7 +354,6 @@
       {
         "tier_name": "Sadistic",
         "tier_level": 33,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">33</span> <span class=\"mod-value\">(55–64)</span>% increased <a data-keyword=\"Spell\" href=\"Spells\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FSpell\">Spell</a> <a data-keyword=\"Physical\" href=\"Physical_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FPhysical\">Physical</a> Damage",
         "text_plain": "33 (55–64)% increased Spell Physical Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -416,7 +361,6 @@
       {
         "tier_name": "Pitiless",
         "tier_level": 46,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">46</span> <span class=\"mod-value\">(65–74)</span>% increased <a data-keyword=\"Spell\" href=\"Spells\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FSpell\">Spell</a> <a data-keyword=\"Physical\" href=\"Physical_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FPhysical\">Physical</a> Damage",
         "text_plain": "46 (65–74)% increased Spell Physical Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -424,7 +368,6 @@
       {
         "tier_name": "Agonising",
         "tier_level": 60,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">60</span> <span class=\"mod-value\">(75–89)</span>% increased <a data-keyword=\"Spell\" href=\"Spells\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FSpell\">Spell</a> <a data-keyword=\"Physical\" href=\"Physical_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FPhysical\">Physical</a> Damage",
         "text_plain": "60 (75–89)% increased Spell Physical Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -432,7 +375,6 @@
       {
         "tier_name": "Oppressor's",
         "tier_level": 70,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">70</span> <span class=\"mod-value\">(90–104)</span>% increased <a data-keyword=\"Spell\" href=\"Spells\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FSpell\">Spell</a> <a data-keyword=\"Physical\" href=\"Physical_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FPhysical\">Physical</a> Damage",
         "text_plain": "70 (90–104)% increased Spell Physical Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -440,20 +382,16 @@
       {
         "tier_name": "Torturer's",
         "tier_level": 81,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">81</span> <span class=\"mod-value\">(105–119)</span>% increased <a data-keyword=\"Spell\" href=\"Spells\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FSpell\">Spell</a> <a data-keyword=\"Physical\" href=\"Physical_Damage\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FPhysical\">Physical</a> Damage",
         "text_plain": "81 (105–119)% increased Spell Physical Damage",
         "weight": 1,
         "weight_pct": 1.515
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "normal",
     "side": "prefix",
-    "text_html": "\n    #% increased Trap Damage\n",
     "text_plain": "#% increased Trap Damage",
     "tier": 8,
     "ilvl": 81,
@@ -462,13 +400,10 @@
     "tags": [
       "damage"
     ],
-    "modal_id": "#collapseOnenormal1WeaponCasterDamagePrefix",
-    "family_name": "WeaponCasterDamagePrefix",
     "tiers": [
       {
         "tier_name": "Explosive",
         "tier_level": 2,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">2</span> <span class=\"mod-value\">(25–34)</span>% increased <a data-keyword=\"Trap\" href=\"Traps\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FTrap\">Trap</a> Damage",
         "text_plain": "2 (25–34)% increased Trap Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -476,7 +411,6 @@
       {
         "tier_name": "Eviscerating",
         "tier_level": 8,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">8</span> <span class=\"mod-value\">(35–44)</span>% increased <a data-keyword=\"Trap\" href=\"Traps\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FTrap\">Trap</a> Damage",
         "text_plain": "8 (35–44)% increased Trap Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -484,7 +418,6 @@
       {
         "tier_name": "Crippling",
         "tier_level": 16,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">16</span> <span class=\"mod-value\">(45–54)</span>% increased <a data-keyword=\"Trap\" href=\"Traps\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FTrap\">Trap</a> Damage",
         "text_plain": "16 (45–54)% increased Trap Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -492,7 +425,6 @@
       {
         "tier_name": "Disabling",
         "tier_level": 33,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">33</span> <span class=\"mod-value\">(55–64)</span>% increased <a data-keyword=\"Trap\" href=\"Traps\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FTrap\">Trap</a> Damage",
         "text_plain": "33 (55–64)% increased Trap Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -500,7 +432,6 @@
       {
         "tier_name": "Decimating",
         "tier_level": 46,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">46</span> <span class=\"mod-value\">(65–74)</span>% increased <a data-keyword=\"Trap\" href=\"Traps\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FTrap\">Trap</a> Damage",
         "text_plain": "46 (65–74)% increased Trap Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -508,7 +439,6 @@
       {
         "tier_name": "Demolishing",
         "tier_level": 60,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">60</span> <span class=\"mod-value\">(75–89)</span>% increased <a data-keyword=\"Trap\" href=\"Traps\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FTrap\">Trap</a> Damage",
         "text_plain": "60 (75–89)% increased Trap Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -516,7 +446,6 @@
       {
         "tier_name": "Obliterating",
         "tier_level": 70,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">70</span> <span class=\"mod-value\">(90–104)</span>% increased <a data-keyword=\"Trap\" href=\"Traps\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FTrap\">Trap</a> Damage",
         "text_plain": "70 (90–104)% increased Trap Damage",
         "weight": 1,
         "weight_pct": 1.515
@@ -524,33 +453,26 @@
       {
         "tier_name": "Shattering",
         "tier_level": 81,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">81</span> <span class=\"mod-value\">(105–119)</span>% increased <a data-keyword=\"Trap\" href=\"Traps\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FTrap\">Trap</a> Damage",
         "text_plain": "81 (105–119)% increased Trap Damage",
         "weight": 1,
         "weight_pct": 1.515
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "normal",
     "side": "prefix",
-    "text_html": "\n    #% increased Trap Damage# to maximum Mana\n",
     "text_plain": "#% increased Trap Damage# to maximum Mana",
     "tier": 7,
     "ilvl": 78,
     "weight": 7,
     "weight_pct": 10.606,
     "tags": [],
-    "modal_id": "#collapseOnenormal1TrapDamageAndMana",
-    "family_name": "TrapDamageAndMana",
     "tiers": [
       {
         "tier_name": "Sapper's",
         "tier_level": 2,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">2</span> <span class=\"mod-value\">(15–19)</span>% increased <a data-keyword=\"Trap\" href=\"Traps\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FTrap\">Trap</a> Damage<br><span class=\"mod-value\">+(17–20)</span> to maximum Mana",
         "text_plain": "2 (15–19)% increased Trap Damage+(17–20) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -558,7 +480,6 @@
       {
         "tier_name": "Saboteur's",
         "tier_level": 11,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">11</span> <span class=\"mod-value\">(20–24)</span>% increased <a data-keyword=\"Trap\" href=\"Traps\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FTrap\">Trap</a> Damage<br><span class=\"mod-value\">+(21–24)</span> to maximum Mana",
         "text_plain": "11 (20–24)% increased Trap Damage+(21–24) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -566,7 +487,6 @@
       {
         "tier_name": "Tinkerer's",
         "tier_level": 23,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">23</span> <span class=\"mod-value\">(25–29)</span>% increased <a data-keyword=\"Trap\" href=\"Traps\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FTrap\">Trap</a> Damage<br><span class=\"mod-value\">+(25–28)</span> to maximum Mana",
         "text_plain": "23 (25–29)% increased Trap Damage+(25–28) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -574,7 +494,6 @@
       {
         "tier_name": "Mechanic's",
         "tier_level": 35,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">35</span> <span class=\"mod-value\">(30–34)</span>% increased <a data-keyword=\"Trap\" href=\"Traps\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FTrap\">Trap</a> Damage<br><span class=\"mod-value\">+(29–33)</span> to maximum Mana",
         "text_plain": "35 (30–34)% increased Trap Damage+(29–33) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -582,7 +501,6 @@
       {
         "tier_name": "Engineer's",
         "tier_level": 48,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">48</span> <span class=\"mod-value\">(35–39)</span>% increased <a data-keyword=\"Trap\" href=\"Traps\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FTrap\">Trap</a> Damage<br><span class=\"mod-value\">+(34–37)</span> to maximum Mana",
         "text_plain": "48 (35–39)% increased Trap Damage+(34–37) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -590,7 +508,6 @@
       {
         "tier_name": "Inventor's",
         "tier_level": 63,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">63</span> <span class=\"mod-value\">(40–44)</span>% increased <a data-keyword=\"Trap\" href=\"Traps\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FTrap\">Trap</a> Damage<br><span class=\"mod-value\">+(38–41)</span> to maximum Mana",
         "text_plain": "63 (40–44)% increased Trap Damage+(38–41) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
@@ -598,20 +515,16 @@
       {
         "tier_name": "Artificer's",
         "tier_level": 78,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">78</span> <span class=\"mod-value\">(45–49)</span>% increased <a data-keyword=\"Trap\" href=\"Traps\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FTrap\">Trap</a> Damage<br><span class=\"mod-value\">+(42–45)</span> to maximum Mana",
         "text_plain": "78 (45–49)% increased Trap Damage+(42–45) to maximum Mana",
         "weight": 1,
         "weight_pct": 1.515
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "normal",
     "side": "suffix",
-    "text_html": "\n    # to Dexterity\n",
     "text_plain": "# to Dexterity",
     "tier": 8,
     "ilvl": 74,
@@ -620,13 +533,10 @@
     "tags": [
       "attribute"
     ],
-    "modal_id": "#collapseOnenormal2Dexterity",
-    "family_name": "Dexterity",
     "tiers": [
       {
         "tier_name": "of the Mongoose",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">+(5–8)</span> to <a data-keyword=\"Dexterity\" href=\"Dexterity\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FDexterity\">Dexterity</a>",
         "text_plain": "1 +(5–8) to Dexterity",
         "weight": 1,
         "weight_pct": 1.299
@@ -634,7 +544,6 @@
       {
         "tier_name": "of the Lynx",
         "tier_level": 11,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">11</span> <span class=\"mod-value\">+(9–12)</span> to <a data-keyword=\"Dexterity\" href=\"Dexterity\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FDexterity\">Dexterity</a>",
         "text_plain": "11 +(9–12) to Dexterity",
         "weight": 1,
         "weight_pct": 1.299
@@ -642,7 +551,6 @@
       {
         "tier_name": "of the Fox",
         "tier_level": 22,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">22</span> <span class=\"mod-value\">+(13–16)</span> to <a data-keyword=\"Dexterity\" href=\"Dexterity\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FDexterity\">Dexterity</a>",
         "text_plain": "22 +(13–16) to Dexterity",
         "weight": 1,
         "weight_pct": 1.299
@@ -650,7 +558,6 @@
       {
         "tier_name": "of the Falcon",
         "tier_level": 33,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">33</span> <span class=\"mod-value\">+(17–20)</span> to <a data-keyword=\"Dexterity\" href=\"Dexterity\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FDexterity\">Dexterity</a>",
         "text_plain": "33 +(17–20) to Dexterity",
         "weight": 1,
         "weight_pct": 1.299
@@ -658,7 +565,6 @@
       {
         "tier_name": "of the Panther",
         "tier_level": 44,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">44</span> <span class=\"mod-value\">+(21–24)</span> to <a data-keyword=\"Dexterity\" href=\"Dexterity\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FDexterity\">Dexterity</a>",
         "text_plain": "44 +(21–24) to Dexterity",
         "weight": 1,
         "weight_pct": 1.299
@@ -666,7 +572,6 @@
       {
         "tier_name": "of the Leopard",
         "tier_level": 55,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">55</span> <span class=\"mod-value\">+(25–27)</span> to <a data-keyword=\"Dexterity\" href=\"Dexterity\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FDexterity\">Dexterity</a>",
         "text_plain": "55 +(25–27) to Dexterity",
         "weight": 1,
         "weight_pct": 1.299
@@ -674,7 +579,6 @@
       {
         "tier_name": "of the Jaguar",
         "tier_level": 66,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">66</span> <span class=\"mod-value\">+(28–30)</span> to <a data-keyword=\"Dexterity\" href=\"Dexterity\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FDexterity\">Dexterity</a>",
         "text_plain": "66 +(28–30) to Dexterity",
         "weight": 1,
         "weight_pct": 1.299
@@ -682,20 +586,16 @@
       {
         "tier_name": "of the Phantom",
         "tier_level": 74,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">74</span> <span class=\"mod-value\">+(31–33)</span> to <a data-keyword=\"Dexterity\" href=\"Dexterity\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FDexterity\">Dexterity</a>",
         "text_plain": "74 +(31–33) to Dexterity",
         "weight": 1,
         "weight_pct": 1.299
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "normal",
     "side": "suffix",
-    "text_html": "\n    # to Intelligence\n",
     "text_plain": "# to Intelligence",
     "tier": 8,
     "ilvl": 74,
@@ -704,13 +604,10 @@
     "tags": [
       "attribute"
     ],
-    "modal_id": "#collapseOnenormal2Intelligence",
-    "family_name": "Intelligence",
     "tiers": [
       {
         "tier_name": "of the Pupil",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">+(5–8)</span> to <a data-keyword=\"Intelligence\" href=\"Intelligence\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FIntelligence\">Intelligence</a>",
         "text_plain": "1 +(5–8) to Intelligence",
         "weight": 1,
         "weight_pct": 1.299
@@ -718,7 +615,6 @@
       {
         "tier_name": "of the Student",
         "tier_level": 11,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">11</span> <span class=\"mod-value\">+(9–12)</span> to <a data-keyword=\"Intelligence\" href=\"Intelligence\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FIntelligence\">Intelligence</a>",
         "text_plain": "11 +(9–12) to Intelligence",
         "weight": 1,
         "weight_pct": 1.299
@@ -726,7 +622,6 @@
       {
         "tier_name": "of the Prodigy",
         "tier_level": 22,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">22</span> <span class=\"mod-value\">+(13–16)</span> to <a data-keyword=\"Intelligence\" href=\"Intelligence\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FIntelligence\">Intelligence</a>",
         "text_plain": "22 +(13–16) to Intelligence",
         "weight": 1,
         "weight_pct": 1.299
@@ -734,7 +629,6 @@
       {
         "tier_name": "of the Augur",
         "tier_level": 33,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">33</span> <span class=\"mod-value\">+(17–20)</span> to <a data-keyword=\"Intelligence\" href=\"Intelligence\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FIntelligence\">Intelligence</a>",
         "text_plain": "33 +(17–20) to Intelligence",
         "weight": 1,
         "weight_pct": 1.299
@@ -742,7 +636,6 @@
       {
         "tier_name": "of the Philosopher",
         "tier_level": 44,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">44</span> <span class=\"mod-value\">+(21–24)</span> to <a data-keyword=\"Intelligence\" href=\"Intelligence\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FIntelligence\">Intelligence</a>",
         "text_plain": "44 +(21–24) to Intelligence",
         "weight": 1,
         "weight_pct": 1.299
@@ -750,7 +643,6 @@
       {
         "tier_name": "of the Sage",
         "tier_level": 55,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">55</span> <span class=\"mod-value\">+(25–27)</span> to <a data-keyword=\"Intelligence\" href=\"Intelligence\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FIntelligence\">Intelligence</a>",
         "text_plain": "55 +(25–27) to Intelligence",
         "weight": 1,
         "weight_pct": 1.299
@@ -758,7 +650,6 @@
       {
         "tier_name": "of the Savant",
         "tier_level": 66,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">66</span> <span class=\"mod-value\">+(28–30)</span> to <a data-keyword=\"Intelligence\" href=\"Intelligence\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FIntelligence\">Intelligence</a>",
         "text_plain": "66 +(28–30) to Intelligence",
         "weight": 1,
         "weight_pct": 1.299
@@ -766,33 +657,26 @@
       {
         "tier_name": "of the Virtuoso",
         "tier_level": 74,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">74</span> <span class=\"mod-value\">+(31–33)</span> to <a data-keyword=\"Intelligence\" href=\"Intelligence\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FIntelligence\">Intelligence</a>",
         "text_plain": "74 +(31–33) to Intelligence",
         "weight": 1,
         "weight_pct": 1.299
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "normal",
     "side": "suffix",
-    "text_html": "\n    # to Level of all Trap Skill Gems\n",
     "text_plain": "# to Level of all Trap Skill Gems",
     "tier": 5,
     "ilvl": 81,
     "weight": 5,
     "weight_pct": 6.494,
     "tags": [],
-    "modal_id": "#collapseOnenormal2IncreaseSocketedGemLevel",
-    "family_name": "IncreaseSocketedGemLevel",
     "tiers": [
       {
         "tier_name": "of Explosives",
         "tier_level": 2,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">2</span> <span class=\"mod-value\">+1</span> to Level of all Trap Skill Gems",
         "text_plain": "2 +1 to Level of all Trap Skill Gems",
         "weight": 1,
         "weight_pct": 1.299
@@ -800,7 +684,6 @@
       {
         "tier_name": "of Shrapnel",
         "tier_level": 18,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">18</span> <span class=\"mod-value\">+2</span> to Level of all Trap Skill Gems",
         "text_plain": "18 +2 to Level of all Trap Skill Gems",
         "weight": 1,
         "weight_pct": 1.299
@@ -808,7 +691,6 @@
       {
         "tier_name": "of Sabotage",
         "tier_level": 36,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">36</span> <span class=\"mod-value\">+3</span> to Level of all Trap Skill Gems",
         "text_plain": "36 +3 to Level of all Trap Skill Gems",
         "weight": 1,
         "weight_pct": 1.299
@@ -816,7 +698,6 @@
       {
         "tier_name": "of Detonation",
         "tier_level": 55,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">55</span> <span class=\"mod-value\">+4</span> to Level of all Trap Skill Gems",
         "text_plain": "55 +4 to Level of all Trap Skill Gems",
         "weight": 1,
         "weight_pct": 1.299
@@ -824,20 +705,16 @@
       {
         "tier_name": "of Pyrotechnics",
         "tier_level": 81,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">81</span> <span class=\"mod-value\">+5</span> to Level of all Trap Skill Gems",
         "text_plain": "81 +5 to Level of all Trap Skill Gems",
         "weight": 1,
         "weight_pct": 1.299
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "normal",
     "side": "suffix",
-    "text_html": "\n    #% increased Mana Regeneration Rate\n",
     "text_plain": "#% increased Mana Regeneration Rate",
     "tier": 6,
     "ilvl": 79,
@@ -846,13 +723,10 @@
     "tags": [
       "mana"
     ],
-    "modal_id": "#collapseOnenormal2ManaRegeneration",
-    "family_name": "ManaRegeneration",
     "tiers": [
       {
         "tier_name": "of Excitement",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">(10–19)</span>% increased Mana Regeneration Rate",
         "text_plain": "1 (10–19)% increased Mana Regeneration Rate",
         "weight": 1,
         "weight_pct": 1.299
@@ -860,7 +734,6 @@
       {
         "tier_name": "of Joy",
         "tier_level": 18,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">18</span> <span class=\"mod-value\">(20–29)</span>% increased Mana Regeneration Rate",
         "text_plain": "18 (20–29)% increased Mana Regeneration Rate",
         "weight": 1,
         "weight_pct": 1.299
@@ -868,7 +741,6 @@
       {
         "tier_name": "of Elation",
         "tier_level": 29,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">29</span> <span class=\"mod-value\">(30–39)</span>% increased Mana Regeneration Rate",
         "text_plain": "29 (30–39)% increased Mana Regeneration Rate",
         "weight": 1,
         "weight_pct": 1.299
@@ -876,7 +748,6 @@
       {
         "tier_name": "of Bliss",
         "tier_level": 42,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">42</span> <span class=\"mod-value\">(40–49)</span>% increased Mana Regeneration Rate",
         "text_plain": "42 (40–49)% increased Mana Regeneration Rate",
         "weight": 1,
         "weight_pct": 1.299
@@ -884,7 +755,6 @@
       {
         "tier_name": "of Euphoria",
         "tier_level": 55,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">55</span> <span class=\"mod-value\">(50–59)</span>% increased Mana Regeneration Rate",
         "text_plain": "55 (50–59)% increased Mana Regeneration Rate",
         "weight": 1,
         "weight_pct": 1.299
@@ -892,20 +762,16 @@
       {
         "tier_name": "of Nirvana",
         "tier_level": 79,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">79</span> <span class=\"mod-value\">(60–69)</span>% increased Mana Regeneration Rate",
         "text_plain": "79 (60–69)% increased Mana Regeneration Rate",
         "weight": 1,
         "weight_pct": 1.299
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "normal",
     "side": "suffix",
-    "text_html": "\n    Gain # Life per Enemy Killed\n",
     "text_plain": "Gain # Life per Enemy Killed",
     "tier": 8,
     "ilvl": 77,
@@ -914,13 +780,10 @@
     "tags": [
       "life"
     ],
-    "modal_id": "#collapseOnenormal2LifeGainedFromEnemyDeath",
-    "family_name": "LifeGainedFromEnemyDeath",
     "tiers": [
       {
         "tier_name": "of Success",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> Gain <span class=\"mod-value\">(4–6)</span> Life per Enemy Killed",
         "text_plain": "1 Gain (4–6) Life per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
@@ -928,7 +791,6 @@
       {
         "tier_name": "of Victory",
         "tier_level": 11,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">11</span> Gain <span class=\"mod-value\">(7–9)</span> Life per Enemy Killed",
         "text_plain": "11 Gain (7–9) Life per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
@@ -936,7 +798,6 @@
       {
         "tier_name": "of Triumph",
         "tier_level": 22,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">22</span> Gain <span class=\"mod-value\">(10–18)</span> Life per Enemy Killed",
         "text_plain": "22 Gain (10–18) Life per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
@@ -944,7 +805,6 @@
       {
         "tier_name": "of Conquest",
         "tier_level": 33,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">33</span> Gain <span class=\"mod-value\">(19–28)</span> Life per Enemy Killed",
         "text_plain": "33 Gain (19–28) Life per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
@@ -952,7 +812,6 @@
       {
         "tier_name": "of Vanquishing",
         "tier_level": 44,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">44</span> Gain <span class=\"mod-value\">(29–40)</span> Life per Enemy Killed",
         "text_plain": "44 Gain (29–40) Life per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
@@ -960,7 +819,6 @@
       {
         "tier_name": "of Valour",
         "tier_level": 55,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">55</span> Gain <span class=\"mod-value\">(41–53)</span> Life per Enemy Killed",
         "text_plain": "55 Gain (41–53) Life per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
@@ -968,7 +826,6 @@
       {
         "tier_name": "of Glory",
         "tier_level": 66,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">66</span> Gain <span class=\"mod-value\">(54–68)</span> Life per Enemy Killed",
         "text_plain": "66 Gain (54–68) Life per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
@@ -976,20 +833,16 @@
       {
         "tier_name": "of Legend",
         "tier_level": 77,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">77</span> Gain <span class=\"mod-value\">(69–84)</span> Life per Enemy Killed",
         "text_plain": "77 Gain (69–84) Life per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "normal",
     "side": "suffix",
-    "text_html": "\n    Gain # Mana per Enemy Killed\n",
     "text_plain": "Gain # Mana per Enemy Killed",
     "tier": 8,
     "ilvl": 78,
@@ -998,13 +851,10 @@
     "tags": [
       "mana"
     ],
-    "modal_id": "#collapseOnenormal2ManaGainedFromEnemyDeath",
-    "family_name": "ManaGainedFromEnemyDeath",
     "tiers": [
       {
         "tier_name": "of Absorption",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> Gain <span class=\"mod-value\">(2–3)</span> Mana per Enemy Killed",
         "text_plain": "1 Gain (2–3) Mana per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
@@ -1012,7 +862,6 @@
       {
         "tier_name": "of Osmosis",
         "tier_level": 12,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">12</span> Gain <span class=\"mod-value\">(4–5)</span> Mana per Enemy Killed",
         "text_plain": "12 Gain (4–5) Mana per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
@@ -1020,7 +869,6 @@
       {
         "tier_name": "of Infusion",
         "tier_level": 23,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">23</span> Gain <span class=\"mod-value\">(6–9)</span> Mana per Enemy Killed",
         "text_plain": "23 Gain (6–9) Mana per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
@@ -1028,7 +876,6 @@
       {
         "tier_name": "of Enveloping",
         "tier_level": 34,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">34</span> Gain <span class=\"mod-value\">(10–14)</span> Mana per Enemy Killed",
         "text_plain": "34 Gain (10–14) Mana per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
@@ -1036,7 +883,6 @@
       {
         "tier_name": "of Consumption",
         "tier_level": 45,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">45</span> Gain <span class=\"mod-value\">(15–20)</span> Mana per Enemy Killed",
         "text_plain": "45 Gain (15–20) Mana per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
@@ -1044,7 +890,6 @@
       {
         "tier_name": "of Siphoning",
         "tier_level": 56,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">56</span> Gain <span class=\"mod-value\">(21–27)</span> Mana per Enemy Killed",
         "text_plain": "56 Gain (21–27) Mana per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
@@ -1052,7 +897,6 @@
       {
         "tier_name": "of Devouring",
         "tier_level": 67,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">67</span> Gain <span class=\"mod-value\">(28–35)</span> Mana per Enemy Killed",
         "text_plain": "67 Gain (28–35) Mana per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
@@ -1060,20 +904,16 @@
       {
         "tier_name": "of Assimilation",
         "tier_level": 78,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">78</span> Gain <span class=\"mod-value\">(36–45)</span> Mana per Enemy Killed",
         "text_plain": "78 Gain (36–45) Mana per Enemy Killed",
         "weight": 1,
         "weight_pct": 1.299
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "normal",
     "side": "suffix",
-    "text_html": "\n    \n",
     "text_plain": "",
     "tier": 7,
     "ilvl": 80,
@@ -1082,13 +922,10 @@
     "tags": [
       "speed"
     ],
-    "modal_id": "#collapseOnenormal2TrapAndMineThrowSpeed",
-    "family_name": "TrapAndMineThrowSpeed",
     "tiers": [
       {
         "tier_name": "TBD",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> ",
         "text_plain": "1",
         "weight": 1,
         "weight_pct": 1.299
@@ -1096,7 +933,6 @@
       {
         "tier_name": "TBD",
         "tier_level": 15,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">15</span> ",
         "text_plain": "15",
         "weight": 1,
         "weight_pct": 1.299
@@ -1104,7 +940,6 @@
       {
         "tier_name": "TBD",
         "tier_level": 30,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">30</span> ",
         "text_plain": "30",
         "weight": 1,
         "weight_pct": 1.299
@@ -1112,7 +947,6 @@
       {
         "tier_name": "TBD",
         "tier_level": 45,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">45</span> ",
         "text_plain": "45",
         "weight": 1,
         "weight_pct": 1.299
@@ -1120,7 +954,6 @@
       {
         "tier_name": "TBD",
         "tier_level": 60,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">60</span> ",
         "text_plain": "60",
         "weight": 1,
         "weight_pct": 1.299
@@ -1128,7 +961,6 @@
       {
         "tier_name": "TBD",
         "tier_level": 70,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">70</span> ",
         "text_plain": "70",
         "weight": 1,
         "weight_pct": 1.299
@@ -1136,33 +968,26 @@
       {
         "tier_name": "TBD",
         "tier_level": 80,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">80</span> ",
         "text_plain": "80",
         "weight": 1,
         "weight_pct": 1.299
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "normal",
     "side": "suffix",
-    "text_html": "\n    #% increased Critical Hit Chance with Traps\n",
     "text_plain": "#% increased Critical Hit Chance with Traps",
     "tier": 6,
     "ilvl": 76,
     "weight": 6,
     "weight_pct": 7.792,
     "tags": [],
-    "modal_id": "#collapseOnenormal2CriticalStrikeChanceIncrease",
-    "family_name": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Menace",
         "tier_level": 11,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">11</span> <span class=\"mod-value\">(10–19)</span>% increased <a data-keyword=\"Critical\" href=\"Critical_Hits\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/3368cc132fd243a796b37403166c83eaa36bf931aabcd4047c8b6694ee7a7ce7\">Critical Hit Chance</a> with Traps",
         "text_plain": "11 (10–19)% increased Critical Hit Chance with Traps",
         "weight": 1,
         "weight_pct": 1.299
@@ -1170,7 +995,6 @@
       {
         "tier_name": "of Havoc",
         "tier_level": 21,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">21</span> <span class=\"mod-value\">(20–39)</span>% increased <a data-keyword=\"Critical\" href=\"Critical_Hits\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/3368cc132fd243a796b37403166c83eaa36bf931aabcd4047c8b6694ee7a7ce7\">Critical Hit Chance</a> with Traps",
         "text_plain": "21 (20–39)% increased Critical Hit Chance with Traps",
         "weight": 1,
         "weight_pct": 1.299
@@ -1178,7 +1002,6 @@
       {
         "tier_name": "of Disaster",
         "tier_level": 28,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">28</span> <span class=\"mod-value\">(40–59)</span>% increased <a data-keyword=\"Critical\" href=\"Critical_Hits\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/3368cc132fd243a796b37403166c83eaa36bf931aabcd4047c8b6694ee7a7ce7\">Critical Hit Chance</a> with Traps",
         "text_plain": "28 (40–59)% increased Critical Hit Chance with Traps",
         "weight": 1,
         "weight_pct": 1.299
@@ -1186,7 +1009,6 @@
       {
         "tier_name": "of Calamity",
         "tier_level": 41,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">41</span> <span class=\"mod-value\">(60–79)</span>% increased <a data-keyword=\"Critical\" href=\"Critical_Hits\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/3368cc132fd243a796b37403166c83eaa36bf931aabcd4047c8b6694ee7a7ce7\">Critical Hit Chance</a> with Traps",
         "text_plain": "41 (60–79)% increased Critical Hit Chance with Traps",
         "weight": 1,
         "weight_pct": 1.299
@@ -1194,7 +1016,6 @@
       {
         "tier_name": "of Ruin",
         "tier_level": 59,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">59</span> <span class=\"mod-value\">(80–99)</span>% increased <a data-keyword=\"Critical\" href=\"Critical_Hits\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/3368cc132fd243a796b37403166c83eaa36bf931aabcd4047c8b6694ee7a7ce7\">Critical Hit Chance</a> with Traps",
         "text_plain": "59 (80–99)% increased Critical Hit Chance with Traps",
         "weight": 1,
         "weight_pct": 1.299
@@ -1202,33 +1023,26 @@
       {
         "tier_name": "of Unmaking",
         "tier_level": 76,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">76</span> <span class=\"mod-value\">(100–109)</span>% increased <a data-keyword=\"Critical\" href=\"Critical_Hits\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/3368cc132fd243a796b37403166c83eaa36bf931aabcd4047c8b6694ee7a7ce7\">Critical Hit Chance</a> with Traps",
         "text_plain": "76 (100–109)% increased Critical Hit Chance with Traps",
         "weight": 1,
         "weight_pct": 1.299
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "normal",
     "side": "suffix",
-    "text_html": "\n    #% to Critical Damage Bonus with Traps\n",
     "text_plain": "#% to Critical Damage Bonus with Traps",
     "tier": 6,
     "ilvl": 73,
     "weight": 6,
     "weight_pct": 7.792,
     "tags": [],
-    "modal_id": "#collapseOnenormal2CriticalStrikeMultiplier",
-    "family_name": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "of Ire",
         "tier_level": 8,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">8</span> <span class=\"mod-value\">+(10–14)</span>% to <a data-keyword=\"CriticalDamageBonus\" href=\"Critical_Damage_Bonus\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/2bbc1abf252be3850c51e643960fa3ab68b7263276a109bfbc6b6898435f5b2c\">Critical Damage Bonus</a> with Traps",
         "text_plain": "8 +(10–14)% to Critical Damage Bonus with Traps",
         "weight": 1,
         "weight_pct": 1.299
@@ -1236,7 +1050,6 @@
       {
         "tier_name": "of Anger",
         "tier_level": 21,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">21</span> <span class=\"mod-value\">+(15–19)</span>% to <a data-keyword=\"CriticalDamageBonus\" href=\"Critical_Damage_Bonus\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/2bbc1abf252be3850c51e643960fa3ab68b7263276a109bfbc6b6898435f5b2c\">Critical Damage Bonus</a> with Traps",
         "text_plain": "21 +(15–19)% to Critical Damage Bonus with Traps",
         "weight": 1,
         "weight_pct": 1.299
@@ -1244,7 +1057,6 @@
       {
         "tier_name": "of Rage",
         "tier_level": 30,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">30</span> <span class=\"mod-value\">+(20–24)</span>% to <a data-keyword=\"CriticalDamageBonus\" href=\"Critical_Damage_Bonus\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/2bbc1abf252be3850c51e643960fa3ab68b7263276a109bfbc6b6898435f5b2c\">Critical Damage Bonus</a> with Traps",
         "text_plain": "30 +(20–24)% to Critical Damage Bonus with Traps",
         "weight": 1,
         "weight_pct": 1.299
@@ -1252,7 +1064,6 @@
       {
         "tier_name": "of Fury",
         "tier_level": 44,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">44</span> <span class=\"mod-value\">+(25–29)</span>% to <a data-keyword=\"CriticalDamageBonus\" href=\"Critical_Damage_Bonus\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/2bbc1abf252be3850c51e643960fa3ab68b7263276a109bfbc6b6898435f5b2c\">Critical Damage Bonus</a> with Traps",
         "text_plain": "44 +(25–29)% to Critical Damage Bonus with Traps",
         "weight": 1,
         "weight_pct": 1.299
@@ -1260,7 +1071,6 @@
       {
         "tier_name": "of Ferocity",
         "tier_level": 59,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">59</span> <span class=\"mod-value\">+(30–34)</span>% to <a data-keyword=\"CriticalDamageBonus\" href=\"Critical_Damage_Bonus\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/2bbc1abf252be3850c51e643960fa3ab68b7263276a109bfbc6b6898435f5b2c\">Critical Damage Bonus</a> with Traps",
         "text_plain": "59 +(30–34)% to Critical Damage Bonus with Traps",
         "weight": 1,
         "weight_pct": 1.299
@@ -1268,33 +1078,26 @@
       {
         "tier_name": "of Destruction",
         "tier_level": 73,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">73</span> <span class=\"mod-value\">+(35–39)</span>% to <a data-keyword=\"CriticalDamageBonus\" href=\"Critical_Damage_Bonus\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/2bbc1abf252be3850c51e643960fa3ab68b7263276a109bfbc6b6898435f5b2c\">Critical Damage Bonus</a> with Traps",
         "text_plain": "73 +(35–39)% to Critical Damage Bonus with Traps",
         "weight": 1,
         "weight_pct": 1.299
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "normal",
     "side": "suffix",
-    "text_html": "\n    #% increased Flammability Magnitude\n",
     "text_plain": "#% increased Flammability Magnitude",
     "tier": 5,
     "ilvl": 75,
     "weight": 5,
     "weight_pct": 6.494,
     "tags": [],
-    "modal_id": "#collapseOnenormal2IgniteChanceIncrease",
-    "family_name": "IgniteChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Ignition",
         "tier_level": 15,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">15</span> <span class=\"mod-value\">(51–60)</span>% increased <a data-keyword=\"Flammability\" href=\"Flammability\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFlammability\">Flammability</a> <a data-keyword=\"BuffMagnitude\" href=\"Buff_Debuff_Magnitude\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/8a9d9e108c59b98aadfbe348af2d8418987e642104460735a151d3a7cea5f4c0\">Magnitude</a>",
         "text_plain": "15 (51–60)% increased Flammability Magnitude",
         "weight": 1,
         "weight_pct": 1.299
@@ -1302,7 +1105,6 @@
       {
         "tier_name": "of Scorching",
         "tier_level": 30,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">30</span> <span class=\"mod-value\">(61–70)</span>% increased <a data-keyword=\"Flammability\" href=\"Flammability\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFlammability\">Flammability</a> <a data-keyword=\"BuffMagnitude\" href=\"Buff_Debuff_Magnitude\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/8a9d9e108c59b98aadfbe348af2d8418987e642104460735a151d3a7cea5f4c0\">Magnitude</a>",
         "text_plain": "30 (61–70)% increased Flammability Magnitude",
         "weight": 1,
         "weight_pct": 1.299
@@ -1310,7 +1112,6 @@
       {
         "tier_name": "of Incineration",
         "tier_level": 45,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">45</span> <span class=\"mod-value\">(71–80)</span>% increased <a data-keyword=\"Flammability\" href=\"Flammability\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFlammability\">Flammability</a> <a data-keyword=\"BuffMagnitude\" href=\"Buff_Debuff_Magnitude\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/8a9d9e108c59b98aadfbe348af2d8418987e642104460735a151d3a7cea5f4c0\">Magnitude</a>",
         "text_plain": "45 (71–80)% increased Flammability Magnitude",
         "weight": 1,
         "weight_pct": 1.299
@@ -1318,7 +1119,6 @@
       {
         "tier_name": "of Combustion",
         "tier_level": 60,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">60</span> <span class=\"mod-value\">(81–90)</span>% increased <a data-keyword=\"Flammability\" href=\"Flammability\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFlammability\">Flammability</a> <a data-keyword=\"BuffMagnitude\" href=\"Buff_Debuff_Magnitude\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/8a9d9e108c59b98aadfbe348af2d8418987e642104460735a151d3a7cea5f4c0\">Magnitude</a>",
         "text_plain": "60 (81–90)% increased Flammability Magnitude",
         "weight": 1,
         "weight_pct": 1.299
@@ -1326,33 +1126,26 @@
       {
         "tier_name": "of Conflagration",
         "tier_level": 75,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">75</span> <span class=\"mod-value\">(91–100)</span>% increased <a data-keyword=\"Flammability\" href=\"Flammability\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFlammability\">Flammability</a> <a data-keyword=\"BuffMagnitude\" href=\"Buff_Debuff_Magnitude\" class=\"KeywordPopups\" data-hover=\"/cache2/us/Poe_Data_KeywordPopups_hover/8a9d9e108c59b98aadfbe348af2d8418987e642104460735a151d3a7cea5f4c0\">Magnitude</a>",
         "text_plain": "75 (91–100)% increased Flammability Magnitude",
         "weight": 1,
         "weight_pct": 1.299
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "normal",
     "side": "suffix",
-    "text_html": "\n    #% increased Freeze Buildup\n",
     "text_plain": "#% increased Freeze Buildup",
     "tier": 5,
     "ilvl": 75,
     "weight": 5,
     "weight_pct": 6.494,
     "tags": [],
-    "modal_id": "#collapseOnenormal2FreezeDamageIncrease",
-    "family_name": "FreezeDamageIncrease",
     "tiers": [
       {
         "tier_name": "of Freezing",
         "tier_level": 15,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">15</span> <span class=\"mod-value\">(31–40)</span>% increased <a data-keyword=\"Freeze\" href=\"Freeze\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFreeze\">Freeze</a> Buildup",
         "text_plain": "15 (31–40)% increased Freeze Buildup",
         "weight": 1,
         "weight_pct": 1.299
@@ -1360,7 +1153,6 @@
       {
         "tier_name": "of Bleakness",
         "tier_level": 30,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">30</span> <span class=\"mod-value\">(41–50)</span>% increased <a data-keyword=\"Freeze\" href=\"Freeze\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFreeze\">Freeze</a> Buildup",
         "text_plain": "30 (41–50)% increased Freeze Buildup",
         "weight": 1,
         "weight_pct": 1.299
@@ -1368,7 +1160,6 @@
       {
         "tier_name": "of the Glacier",
         "tier_level": 45,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">45</span> <span class=\"mod-value\">(51–60)</span>% increased <a data-keyword=\"Freeze\" href=\"Freeze\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFreeze\">Freeze</a> Buildup",
         "text_plain": "45 (51–60)% increased Freeze Buildup",
         "weight": 1,
         "weight_pct": 1.299
@@ -1376,7 +1167,6 @@
       {
         "tier_name": "of the Hyperboreal",
         "tier_level": 60,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">60</span> <span class=\"mod-value\">(61–70)</span>% increased <a data-keyword=\"Freeze\" href=\"Freeze\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFreeze\">Freeze</a> Buildup",
         "text_plain": "60 (61–70)% increased Freeze Buildup",
         "weight": 1,
         "weight_pct": 1.299
@@ -1384,33 +1174,26 @@
       {
         "tier_name": "of the Arctic",
         "tier_level": 75,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">75</span> <span class=\"mod-value\">(71–80)</span>% increased <a data-keyword=\"Freeze\" href=\"Freeze\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FFreeze\">Freeze</a> Buildup",
         "text_plain": "75 (71–80)% increased Freeze Buildup",
         "weight": 1,
         "weight_pct": 1.299
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "normal",
     "side": "suffix",
-    "text_html": "\n    #% increased chance to Shock\n",
     "text_plain": "#% increased chance to Shock",
     "tier": 5,
     "ilvl": 75,
     "weight": 5,
     "weight_pct": 6.494,
     "tags": [],
-    "modal_id": "#collapseOnenormal2ShockChanceIncrease",
-    "family_name": "ShockChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Shocking",
         "tier_level": 15,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">15</span> <span class=\"mod-value\">(51–60)</span>% increased chance to <a data-keyword=\"Shock\" href=\"Shock\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FShock\">Shock</a>",
         "text_plain": "15 (51–60)% increased chance to Shock",
         "weight": 1,
         "weight_pct": 1.299
@@ -1418,7 +1201,6 @@
       {
         "tier_name": "of Zapping",
         "tier_level": 30,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">30</span> <span class=\"mod-value\">(61–70)</span>% increased chance to <a data-keyword=\"Shock\" href=\"Shock\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FShock\">Shock</a>",
         "text_plain": "30 (61–70)% increased chance to Shock",
         "weight": 1,
         "weight_pct": 1.299
@@ -1426,7 +1208,6 @@
       {
         "tier_name": "of Electrocution",
         "tier_level": 45,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">45</span> <span class=\"mod-value\">(71–80)</span>% increased chance to <a data-keyword=\"Shock\" href=\"Shock\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FShock\">Shock</a>",
         "text_plain": "45 (71–80)% increased chance to Shock",
         "weight": 1,
         "weight_pct": 1.299
@@ -1434,7 +1215,6 @@
       {
         "tier_name": "of Voltages",
         "tier_level": 60,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">60</span> <span class=\"mod-value\">(81–90)</span>% increased chance to <a data-keyword=\"Shock\" href=\"Shock\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FShock\">Shock</a>",
         "text_plain": "60 (81–90)% increased chance to Shock",
         "weight": 1,
         "weight_pct": 1.299
@@ -1442,33 +1222,26 @@
       {
         "tier_name": "of the Thunderbolt",
         "tier_level": 75,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">75</span> <span class=\"mod-value\">(91–100)</span>% increased chance to <a data-keyword=\"Shock\" href=\"Shock\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FShock\">Shock</a>",
         "text_plain": "75 (91–100)% increased chance to Shock",
         "weight": 1,
         "weight_pct": 1.299
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "socketable",
     "side": "none",
-    "text_html": "\n    # to Strength\n",
     "text_plain": "# to Strength",
     "tier": 3,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
-    "modal_id": "#collapseOnesocketable0RobustRune",
-    "family_name": "RobustRune",
     "tiers": [
       {
         "tier_name": "Lesser Robust Rune",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">+6</span> to <a data-keyword=\"Strength\" href=\"Strength\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FStrength\">Strength</a>",
         "text_plain": "1 +6 to Strength",
         "weight": 0,
         "weight_pct": 0
@@ -1476,7 +1249,6 @@
       {
         "tier_name": "Robust Rune",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">+8</span> to <a data-keyword=\"Strength\" href=\"Strength\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FStrength\">Strength</a>",
         "text_plain": "1 +8 to Strength",
         "weight": 0,
         "weight_pct": 0
@@ -1484,33 +1256,26 @@
       {
         "tier_name": "Greater Robust Rune",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">+10</span> to <a data-keyword=\"Strength\" href=\"Strength\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FStrength\">Strength</a>",
         "text_plain": "1 +10 to Strength",
         "weight": 0,
         "weight_pct": 0
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "socketable",
     "side": "none",
-    "text_html": "\n    # to Dexterity\n",
     "text_plain": "# to Dexterity",
     "tier": 3,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
-    "modal_id": "#collapseOnesocketable0AdeptRune",
-    "family_name": "AdeptRune",
     "tiers": [
       {
         "tier_name": "Lesser Adept Rune",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">+6</span> to <a data-keyword=\"Dexterity\" href=\"Dexterity\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FDexterity\">Dexterity</a>",
         "text_plain": "1 +6 to Dexterity",
         "weight": 0,
         "weight_pct": 0
@@ -1518,7 +1283,6 @@
       {
         "tier_name": "Adept Rune",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">+8</span> to <a data-keyword=\"Dexterity\" href=\"Dexterity\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FDexterity\">Dexterity</a>",
         "text_plain": "1 +8 to Dexterity",
         "weight": 0,
         "weight_pct": 0
@@ -1526,33 +1290,26 @@
       {
         "tier_name": "Greater Adept Rune",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">+10</span> to <a data-keyword=\"Dexterity\" href=\"Dexterity\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FDexterity\">Dexterity</a>",
         "text_plain": "1 +10 to Dexterity",
         "weight": 0,
         "weight_pct": 0
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "socketable",
     "side": "none",
-    "text_html": "\n    # to Intelligence\n",
     "text_plain": "# to Intelligence",
     "tier": 3,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
-    "modal_id": "#collapseOnesocketable0ResolveRune",
-    "family_name": "ResolveRune",
     "tiers": [
       {
         "tier_name": "Lesser Resolve Rune",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">+6</span> to <a data-keyword=\"Intelligence\" href=\"Intelligence\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FIntelligence\">Intelligence</a>",
         "text_plain": "1 +6 to Intelligence",
         "weight": 0,
         "weight_pct": 0
@@ -1560,7 +1317,6 @@
       {
         "tier_name": "Resolve Rune",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">+8</span> to <a data-keyword=\"Intelligence\" href=\"Intelligence\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FIntelligence\">Intelligence</a>",
         "text_plain": "1 +8 to Intelligence",
         "weight": 0,
         "weight_pct": 0
@@ -1568,39 +1324,30 @@
       {
         "tier_name": "Greater Resolve Rune",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">+10</span> to <a data-keyword=\"Intelligence\" href=\"Intelligence\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FIntelligence\">Intelligence</a>",
         "text_plain": "1 +10 to Intelligence",
         "weight": 0,
         "weight_pct": 0
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   },
   {
     "category": "Traps",
     "domain": "corrupted",
     "side": "none",
-    "text_html": "\n    <span class=\"mod-value\">(10–20)</span>% reduced <a data-keyword=\"Attributes\" href2=\"Attributes\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FAttributes\">Attribute</a> Requirements\n",
     "text_plain": "(10–20)% reduced Attribute Requirements",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
     "weight_pct": 100,
     "tags": [],
-    "modal_id": "#collapseOnecorrupted0LocalAttributeRequirements",
-    "family_name": "LocalAttributeRequirements",
     "tiers": [
       {
         "tier_name": "CorruptionReducedLocalAttributeRequirements1",
         "tier_level": 1,
-        "text_html": "<span class=\"d-none badge rounded-pill bg-secondary\">1</span> <span class=\"mod-value\">(10–20)</span>% reduced <a data-keyword=\"Attributes\" href=\"Attributes\" class=\"KeywordPopups\" data-hover=\"?s=Data%5CKeywordPopups%2FAttributes\">Attribute</a> Requirements",
         "text_plain": "1 (10–20)% reduced Attribute Requirements",
         "weight": 1,
         "weight_pct": 100
       }
-    ],
-    "source_url": "https://poe2db.tw/us/Traps#ModifiersCalc",
-    "scraped_at": "2025-09-23T14:17:50.840Z"
+    ]
   }
 ]
