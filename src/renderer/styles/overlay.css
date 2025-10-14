@@ -1076,6 +1076,7 @@ body {
     width: max(100%, 220px);
     max-height: 320px;
     overflow-y: auto;
+    overflow-x: hidden;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 6px;

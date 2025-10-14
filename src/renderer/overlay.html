@@ -1050,7 +1050,24 @@
         int: { gradient: 'linear-gradient(120deg, rgba(87,118,214,0.28) 0%, rgba(87,118,214,0.08) 100%)', textColor: 'var(--text-primary)' },
         str_dex: { gradient: 'linear-gradient(120deg, rgba(203,72,72,0.26) 0%, rgba(76,158,108,0.22) 75%, rgba(76,158,108,0.08) 100%)', textColor: 'var(--text-primary)' },
         str_int: { gradient: 'linear-gradient(120deg, rgba(203,72,72,0.26) 0%, rgba(87,118,214,0.22) 75%, rgba(87,118,214,0.08) 100%)', textColor: 'var(--text-primary)' },
-        dex_int: { gradient: 'linear-gradient(120deg, rgba(76,158,108,0.26) 0%, rgba(87,118,214,0.22) 75%, rgba(87,118,214,0.08) 100%)', textColor: 'var(--text-primary)' }
+        dex_int: { gradient: 'linear-gradient(120deg, rgba(76,158,108,0.26) 0%, rgba(87,118,214,0.22) 75%, rgba(87,118,214,0.08) 100%)', textColor: 'var(--text-primary)' },
+        // Jewels
+        ruby: { gradient: 'linear-gradient(120deg, rgba(220,38,38,0.28) 0%, rgba(220,38,38,0.08) 100%)', textColor: 'var(--text-primary)' },
+        emerald: { gradient: 'linear-gradient(120deg, rgba(34,197,94,0.28) 0%, rgba(34,197,94,0.08) 100%)', textColor: 'var(--text-primary)' },
+        sapphire: { gradient: 'linear-gradient(120deg, rgba(59,130,246,0.28) 0%, rgba(59,130,246,0.08) 100%)', textColor: 'var(--text-primary)' },
+        // Flasks & Charms
+        life_flask: { gradient: 'linear-gradient(120deg, rgba(220,38,38,0.28) 0%, rgba(220,38,38,0.08) 100%)', textColor: 'var(--text-primary)' },
+        mana_flask: { gradient: 'linear-gradient(120deg, rgba(59,130,246,0.28) 0%, rgba(59,130,246,0.08) 100%)', textColor: 'var(--text-primary)' },
+        charms: { gradient: 'linear-gradient(120deg, rgba(168,85,247,0.28) 0%, rgba(168,85,247,0.08) 100%)', textColor: 'var(--text-primary)' },
+        // Waystones
+        waystone_low: { gradient: 'linear-gradient(120deg, rgba(120,120,120,0.28) 0%, rgba(120,120,120,0.08) 100%)', textColor: 'var(--text-primary)' },
+        waystone_mid: { gradient: 'linear-gradient(120deg, rgba(234,179,8,0.28) 0%, rgba(234,179,8,0.08) 100%)', textColor: 'var(--text-primary)' },
+        waystone_high: { gradient: 'linear-gradient(120deg, rgba(220,38,38,0.28) 0%, rgba(220,38,38,0.08) 100%)', textColor: 'var(--text-primary)' },
+        // Aggregated
+        corrupted: { gradient: 'linear-gradient(120deg, rgba(220,38,38,0.28) 0%, rgba(220,38,38,0.08) 100%)', textColor: 'var(--text-primary)' },
+        essence: { gradient: 'linear-gradient(120deg, rgba(59,130,246,0.28) 0%, rgba(59,130,246,0.08) 100%)', textColor: 'var(--text-primary)' },
+        socketables: { gradient: 'linear-gradient(120deg, rgba(34,197,94,0.28) 0%, rgba(34,197,94,0.08) 100%)', textColor: 'var(--text-primary)' },
+        desecrated: { gradient: 'linear-gradient(120deg, rgba(21,128,61,0.28) 0%, rgba(21,128,61,0.08) 100%)', textColor: 'var(--text-primary)' }
     };
 
     const CATEGORY_ATTRIBUTE_OVERRIDES = {
@@ -1380,7 +1397,30 @@
         const normalizedKey = normalizeCategoryKey(category);
         if (categoryMetaCache.has(normalizedKey)) return categoryMetaCache.get(normalizedKey);
         const { baseKey, attributeKey } = splitCategoryKey(normalizedKey);
-        const inferredAttr = inferAttribute(baseKey, attributeKey);
+        let inferredAttr = inferAttribute(baseKey, attributeKey);
+        
+        // Override attribute style for special categories
+        if (baseKey === 'RUBY' || baseKey === 'TIME_LOST_RUBY') inferredAttr = 'ruby';
+        else if (baseKey === 'EMERALD' || baseKey === 'TIME_LOST_EMERALD') inferredAttr = 'emerald';
+        else if (baseKey === 'SAPPHIRE' || baseKey === 'TIME_LOST_SAPPHIRE') inferredAttr = 'sapphire';
+        else if (baseKey === 'LIFE_FLASKS') inferredAttr = 'life_flask';
+        else if (baseKey === 'MANA_FLASKS') inferredAttr = 'mana_flask';
+        else if (baseKey === 'CHARMS') inferredAttr = 'charms';
+        else if (baseKey === 'CORRUPTED') inferredAttr = 'corrupted';
+        else if (baseKey === 'ESSENCE') inferredAttr = 'essence';
+        else if (baseKey === 'SOCKETABLES' || baseKey === 'SOCKETABLE') inferredAttr = 'socketables';
+        else if (baseKey === 'DESECRATED') inferredAttr = 'desecrated';
+        else if (baseKey.startsWith('WAYSTONES_')) {
+            // Extract tier from waystone category
+            const tierMatch = baseKey.match(/WAYSTONES_(\d+)/);
+            if (tierMatch) {
+                const tier = parseInt(tierMatch[1], 10);
+                if (tier >= 1 && tier <= 5) inferredAttr = 'waystone_low';
+                else if (tier >= 6 && tier <= 10) inferredAttr = 'waystone_mid';
+                else if (tier >= 11) inferredAttr = 'waystone_high';
+            }
+        }
+        
         const rawIconName = inferIconName(baseKey, normalizedKey);
         let iconRequested = rawIconName;
         let iconUrl = await resolveIconUrl(rawIconName);
@@ -1445,7 +1485,7 @@
 
                 const buckets = { aggregated:[], gear:[], waystones:[], relics:[], flasks:[], tablets:[], jewels:[], mechanics:[] };
                 const nonModifierCats = new Set([
-                    'LIQUID_EMOTIONS','ANNOINTS','ESSENCES','OMENS','CATALYSTS','SOCKETABLES','GEMS','KEYSTONES','ASCENDANCY_PASSIVES','ATLAS_NODES','KEYWORDS','UNIQUES','BASES','CURRENCY'
+                    'LIQUID_EMOTIONS','ANNOINTS','ESSENCES','OMENS','CATALYSTS','SOCKETABLES','SOCKETABLE','GEMS','KEYSTONES','ASCENDANCY_PASSIVES','ATLAS_NODES','KEYWORDS','UNIQUES','BASES','CURRENCY'
                 ]);
                 // First, put all aggregated explicitly into the aggregated bucket (preserve our preferred order)
                 const aggregatedAdded = new Set();
@@ -1520,7 +1560,18 @@
                     await addGroup('— Aggregated —', buckets.aggregated, c=>c.toUpperCase(), true);
                     await addGroup('— Gear —', buckets.gear);
                     await addGroup('— Waystones —', buckets.waystones);
-                    await addGroup('— Relics —', buckets.relics, c=>c.replace(/_/g,' '));
+                    await addGroup('— Relics —', buckets.relics, c=>{
+                        const name = c.replace(/_/g,' ');
+                        const u = c.toUpperCase();
+                        if (u.includes('SEAL')) return name + ' [2x1]';
+                        if (u.includes('URN')) return name + ' [1x2]';
+                        if (u.includes('TAPESTRY')) return name + ' [3x1]';
+                        if (u.includes('AMPHORA')) return name + ' [1x3]';
+                        if (u.includes('INCENSE')) return name + ' [4x1]';
+                        if (u.includes('VASE')) return name + ' [1x4]';
+                        if (u.includes('COFFER')) return name + ' [2x2]';
+                        return name;
+                    });
                     await addGroup('— Flasks & Charms —', buckets.flasks, c=>c.replace(/_/g,' '));
                     await addGroup('— Jewels —', buckets.jewels, c=>c.replace(/_/g,' '));
                     await addGroup('— Tablets —', buckets.tablets, c=>c.replace(/_/g,' '));
