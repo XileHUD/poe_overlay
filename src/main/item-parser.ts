@@ -8,6 +8,7 @@ export interface OrganizedModifier {
     isDesecrated?: boolean;
     isVeiled?: boolean;
     hasExceptionalValue?: boolean; // True when the rolled value sits outside the documented range
+    isCrafted?: boolean;   // PoE1: Master Crafted modifier
 }
 
 export interface ParsedItem {
@@ -25,6 +26,7 @@ export interface ParsedItem {
         str?: number;
         dex?: number;
         int?: number;
+        [key: string]: number | undefined; // Allow dynamic PoE1 requirement keys
     };
     itemLevel: number;
     category: string;
@@ -35,9 +37,12 @@ export interface ParsedItem {
         implicit: OrganizedModifier[];
         explicit: OrganizedModifier[];
         rune: OrganizedModifier[];
+        crucible?: OrganizedModifier[]; // PoE1: Crucible passive skills
     };
     waystoneTier?: number;
+    mapTier?: number; // PoE1: Map tier
     waystoneBonuses?: Array<{ text: string; value: number | null }>;
+    socketsPoe1?: string[][]; // PoE1: Linked socket groups [['R','G'],['B','B','R']]
     isIdentified?: boolean;
     isFoiled?: boolean;
     foiled?: boolean;
@@ -54,9 +59,24 @@ export interface ParsedItem {
     mirrored?: boolean;
     isMirrored?: boolean;
     isModifiable?: boolean;
+    // PoE1 influence flags
+    isWarlord?: boolean;
+    isHunter?: boolean;
+    isRedeemer?: boolean;
+    isCrusader?: boolean;
+    isElder?: boolean;
+    isShaper?: boolean;
+    isSynthesis?: boolean;
+    isExarch?: boolean;
+    isEater?: boolean;
+    isInfluenced?: boolean;
+    influenceCount?: number;
 }
 
+export type GameVersion = 'poe1' | 'poe2';
+
 export class ItemParser {
+    private game: GameVersion;
     private categoryMappings: Record<string, string> = {
         'Body Armours': 'Body_Armours',
         'Helmets': 'Helmets',
@@ -117,14 +137,22 @@ export class ItemParser {
         'Socketable': 'Socketables'
     };
     // Extend mapping at runtime for Jewels if not present
-    constructor() {
+    constructor(game: GameVersion = 'poe2') {
+        this.game = game;
         if (!this.categoryMappings['Jewels']) {
             this.categoryMappings['Jewels'] = 'Jewels';
+        }
+        // Add PoE1-specific category mappings
+        if (game === 'poe1') {
+            this.categoryMappings['Maps'] = 'Maps';
         }
     }
 
     async parse(itemText: string): Promise<ParsedItem> {
-        const lines = itemText.split('\n').map(line => line.trim()).filter(line => line);
+        // Normalize text: remove PoE1 "cannot use" warning
+        let normalizedText = itemText.replace(/You cannot use this item\. Its stats will be ignored\s*\r?\n?-{8,}\r?\n?/g, '');
+        
+        const lines = normalizedText.split('\n').map(line => line.trim()).filter(line => line);
         
         const itemClass = this.extractItemClass(lines);
         const rarity = this.extractRarity(lines);
@@ -133,8 +161,9 @@ export class ItemParser {
         const requirements = this.extractRequirements(lines);
         const itemLevel = this.extractItemLevel(lines, itemClass, rarity);
         const modifiers = this.extractModifiers(lines);
-        const organizedModifiers = this.extractOrganizedModifiers(itemText);
-        const statusFlags = this.extractStatusFlags(lines);
+        const organizedModifiers = this.extractOrganizedModifiers(normalizedText);
+        const statusFlags = this.extractStatusFlags(lines, normalizedText);
+        const socketData = this.extractSockets(normalizedText);
         
         const attributeType = this.determineAttributeType(requirements);
         let category = this.determineCategory(itemClass, attributeType, baseType, name);
@@ -188,6 +217,7 @@ export class ItemParser {
             attributeType,
             modifiers,
             organizedModifiers,
+            ...socketData,
             ...statusFlags
         };
     }
@@ -226,30 +256,43 @@ export class ItemParser {
     }
 
     private extractRequirements(lines: string[]): ParsedItem['requirements'] {
-        const reqLine = lines.find(line => line.startsWith('Requires:'));
-        if (!reqLine) return {};
-
         const requirements: ParsedItem['requirements'] = {};
         
-        // Extract level
-        const levelMatch = reqLine.match(/Level (\d+)/);
-        if (levelMatch) {
-            requirements.level = parseInt(levelMatch[1]);
+        // PoE2 inline format: "Requires: Level 80, 121 Dex"
+        const reqLine = lines.find(line => line.startsWith('Requires:'));
+        if (reqLine) {
+            const levelMatch = reqLine.match(/Level\s+(\d+)/i);
+            if (levelMatch) {
+                requirements.level = parseInt(levelMatch[1], 10);
+            }
+
+            // Extract attributes (allow optional parenthetical like '(augmented)' or '(unmet)')
+            const attrPattern = (attr: string) => new RegExp(`(\\d+)(?:\\s*\\(.*?\\))?\\s+${attr}\\b`, 'i');
+            const strMatch = reqLine.match(attrPattern('Str'));
+            const dexMatch = reqLine.match(attrPattern('Dex'));
+            const intMatch = reqLine.match(attrPattern('Int'));
+
+            if (strMatch) requirements.str = parseInt(strMatch[1], 10);
+            if (dexMatch) requirements.dex = parseInt(dexMatch[1], 10);
+            if (intMatch) requirements.int = parseInt(intMatch[1], 10);
+            
+            return requirements;
         }
 
-    // Extract attributes (allow optional parenthetical like '(augmented)' between number and attribute)
-    // Examples:
-    //   "Requires: Level 65, 104 (augmented) Int"
-    //   "Requires: Level 70, 95 Str, 102 (augmented) Int"
-    //   "Requires: Level 52, 88 Dex (unmet)"
-    const attrPattern = (attr: string) => new RegExp(`(\\d+)(?:\\s*\\(.*?\\))?\\s+${attr}\\b`, 'i');
-    const strMatch = reqLine.match(attrPattern('Str'));
-    const dexMatch = reqLine.match(attrPattern('Dex'));
-    const intMatch = reqLine.match(attrPattern('Int'));
-
-        if (strMatch) requirements.str = parseInt(strMatch[1]);
-        if (dexMatch) requirements.dex = parseInt(dexMatch[1]);
-        if (intMatch) requirements.int = parseInt(intMatch[1]);
+        // PoE1 block format: "Requirements:\nLevel: 67\nStr: 66\n..."
+        const blockStartIndex = lines.findIndex(line => line === 'Requirements:');
+        if (blockStartIndex !== -1) {
+            for (let i = blockStartIndex + 1; i < lines.length; i++) {
+                const line = lines[i];
+                if (line.startsWith('--------') || !line.includes(':')) break;
+                
+                const match = line.match(/([\w\s]+?):\s*(\d+)(?:\s*\(.*?\))?/i);
+                if (match) {
+                    const key = match[1].toLowerCase().replace(/\s+/g, '');
+                    requirements[key] = parseInt(match[2], 10);
+                }
+            }
+        }
 
         return requirements;
     }
@@ -374,7 +417,7 @@ export class ItemParser {
         return modifiers;
     }
 
-    private extractStatusFlags(lines: string[]): {
+    private extractStatusFlags(lines: string[], fullText: string): {
         corrupted: boolean;
         isCorrupted: boolean;
         sanctified: boolean;
@@ -391,6 +434,21 @@ export class ItemParser {
         isFoiled: boolean;
         isIdentified: boolean;
         isModifiable: boolean;
+        // PoE1 influence flags
+        isWarlord?: boolean;
+        isHunter?: boolean;
+        isRedeemer?: boolean;
+        isCrusader?: boolean;
+        isElder?: boolean;
+        isShaper?: boolean;
+        isSynthesis?: boolean;
+        isExarch?: boolean;
+        isEater?: boolean;
+        isInfluenced?: boolean;
+        influenceCount?: number;
+        waystoneTier?: number;
+        mapTier?: number;
+        waystoneBonuses?: Array<{ text: string; value: number | null }>;
     } {
         const normalized = lines.map(line => line.trim().toLowerCase()).filter(Boolean);
 
@@ -403,7 +461,7 @@ export class ItemParser {
         const hasDesecrated = normalized.some(line => line.includes('(desecrated)') || /desecrated\s+(?:prefix|suffix)/i.test(line));
         const hasVeiled = normalized.some(line => /desecrated\s+(?:prefix|suffix)/i.test(line));
 
-        return {
+        const result: ReturnType<typeof this.extractStatusFlags> = {
             corrupted: hasCorrupted,
             isCorrupted: hasCorrupted,
             sanctified: hasSanctified,
@@ -421,6 +479,93 @@ export class ItemParser {
             isIdentified: !hasUnidentified,
             isModifiable: !(hasCorrupted || hasSanctified || hasMirrored)
         };
+
+        // PoE1-specific influence detection
+        if (this.game === 'poe1') {
+            const isWarlord = fullText.includes('Warlord Item');
+            const isHunter = fullText.includes('Hunter Item');
+            const isRedeemer = fullText.includes('Redeemer Item');
+            const isCrusader = fullText.includes('Crusader Item');
+            const isElder = fullText.includes('Elder Item');
+            const isShaper = fullText.includes('Shaper Item');
+            const isSynthesis = fullText.includes('Synthesised Item');
+            const isExarch = fullText.includes('Searing Exarch Item');
+            const isEater = fullText.includes('Eater of Worlds Item');
+
+            const isInfluenced = isWarlord || isHunter || isRedeemer || isCrusader || isElder || isShaper || isSynthesis || isExarch || isEater;
+            const influenceCount = [isWarlord, isHunter, isRedeemer, isCrusader, isElder, isShaper, isSynthesis, isExarch, isEater].filter(Boolean).length;
+
+            Object.assign(result, {
+                isWarlord,
+                isHunter,
+                isRedeemer,
+                isCrusader,
+                isElder,
+                isShaper,
+                isSynthesis,
+                isExarch,
+                isEater,
+                isInfluenced,
+                influenceCount
+            });
+        }
+
+        // Extract waystone/map tier and bonuses
+        const itemClassLine = lines.find(l => l.startsWith('Item Class:'));
+        const itemClass = itemClassLine ? itemClassLine.replace('Item Class:', '').trim() : '';
+
+        if (itemClass === 'Waystones' || itemClass === 'Maps') {
+            const augmentedLines = fullText.match(/\n(.*) \(augmented\)/g) || [];
+            const waystoneBonuses = augmentedLines.map(line => {
+                const m = line.trim().match(/([\+\d%-]+)[^\(]*\(([^)]+)\)/);
+                return {
+                    text: line.split(':')[0].trim(),
+                    value: m ? parseInt(m[1].replace(/[+%]/g, ''), 10) : null
+                };
+            });
+
+            if (itemClass === 'Waystones') {
+                const tierMatch = fullText.match(/Waystone Tier:\s*(\d+)/i);
+                if (tierMatch) {
+                    result.waystoneTier = parseInt(tierMatch[1], 10);
+                }
+            } else if (itemClass === 'Maps') {
+                const tierMatch = fullText.match(/Map Tier:\s*(\d+)/i);
+                if (tierMatch) {
+                    result.mapTier = parseInt(tierMatch[1], 10);
+                }
+            }
+
+            if (waystoneBonuses.length > 0) {
+                result.waystoneBonuses = waystoneBonuses;
+            }
+        }
+
+        return result;
+    }
+
+    private extractSockets(text: string): { sockets?: number; socketsPoe1?: string[][] } {
+        const result: { sockets?: number; socketsPoe1?: string[][] } = {};
+
+        if (this.game === 'poe1') {
+            // PoE1: "Sockets: R-G B-B-R W"
+            const poe1Match = text.match(/Sockets:\s*([RGBWA\- ]+)/i);
+            if (poe1Match) {
+                const raw = poe1Match[1].trim();
+                const groups = raw.split(/\s+/);
+                result.socketsPoe1 = groups.map(group => group.split('-'));
+                result.sockets = result.socketsPoe1.flat().length;
+            }
+        } else {
+            // PoE2: "Sockets: S S S" or "Sockets: G G G G" (gems)
+            const poe2Match = text.match(/Sockets:\s*([SJG\s]+)/i);
+            if (poe2Match) {
+                const chars = poe2Match[0].match(/[SJG]/g) || [];
+                result.sockets = chars.length;
+            }
+        }
+
+        return result;
     }
 
     // Helper to extract numeric values from modifier text and detect exceptional rolls
@@ -537,10 +682,12 @@ export class ItemParser {
             const hasVeiledMarker = /Desecrated\s+(?:Prefix|Suffix)/i.test(section) || /Desecrated\s+(?:Prefix|Suffix)/i.test(modString);
             const isFractured = /\(fractured\)/i.test(modString);
             const isDesecrated = /\(desecrated\)/i.test(modString) || hasVeiledMarker;
+            const isCrafted = /\(crafted\)/i.test(modString);
 
             modString = modString
                 .replace(/\(fractured\)/gi, '')
                 .replace(/\(desecrated\)/gi, '')
+                .replace(/\(crafted\)/gi, '')
                 .trim();
 
             const { numbers, isExceptional } = this.parseValues(modString);
@@ -554,6 +701,7 @@ export class ItemParser {
                 isFractured,
                 isDesecrated,
                 isVeiled: hasVeiledMarker,
+                isCrafted,
                 hasExceptionalValue: isExceptional
             };
         } catch (e) {
@@ -570,6 +718,10 @@ export class ItemParser {
             explicit: [],
             rune: []
         };
+
+        if (this.game === 'poe1') {
+            result.crucible = [];
+        }
 
         try {
             // Extract enchant mods: lines ending with (enchant)
@@ -602,8 +754,12 @@ export class ItemParser {
                 });
             }
 
-            // Extract implicit mods
-            const implicitSections = itemText.split(/\{ Implicit Modifier(?: — )?/);
+            // Extract implicit mods (including PoE1 influence implicits)
+            const implicitPattern = this.game === 'poe1' 
+                ? /\{ (?:Implicit Modifier|(?:Warlord|Hunter|Redeemer|Crusader|Elder|Shaper|Searing Exarch|Eater of Worlds) Implicit Modifier(?: \([^)]+\))?)(?: — )?/
+                : /\{ Implicit Modifier(?: — )?/;
+            
+            const implicitSections = itemText.split(implicitPattern);
             implicitSections.shift();
             
             implicitSections.forEach(section => {
@@ -611,8 +767,12 @@ export class ItemParser {
                 if (mod) result.implicit.push(mod);
             });
 
-            // Extract explicit mods
-            const explicitSections = itemText.split(/\{ (?:Prefix|Suffix) Modifier "/);
+            // Extract explicit mods (including PoE1 master crafted)
+            const explicitPattern = this.game === 'poe1'
+                ? /\{ (?:Prefix|Suffix|Master Crafted Prefix|Master Crafted Suffix) Modifier "/
+                : /\{ (?:Prefix|Suffix) Modifier "/;
+            
+            const explicitSections = itemText.split(explicitPattern);
             explicitSections.shift();
             
             explicitSections.forEach(section => {
@@ -628,6 +788,23 @@ export class ItemParser {
                 const mod = this.parseMod(section, 'unique');
                 if (mod) result.explicit.push(mod); // Add to explicit array
             });
+
+            // PoE1: Extract crucible mods
+            if (this.game === 'poe1') {
+                const crucibleSections = itemText.split(/\{ Allocated Crucible Passive Skill(?: \(Tier: \d+\))? }/);
+                crucibleSections.shift();
+                
+                crucibleSections.forEach(section => {
+                    const modString = section.split('--------')[0].trim();
+                    const { numbers, isExceptional } = this.parseValues(modString);
+                    result.crucible!.push({
+                        tags: [],
+                        string: modString,
+                        values: numbers,
+                        hasExceptionalValue: isExceptional
+                    });
+                });
+            }
 
         } catch (e) {
             console.error('[Parser] Failed to extract organized modifiers:', e);

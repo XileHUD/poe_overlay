@@ -417,7 +417,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             }
 
             this.updateSplash('Starting parsers');
-            this.itemParser = new ItemParser();
+            this.itemParser = new ItemParser(this.overlayVersion as 'poe1' | 'poe2');
             this.clipboardMonitor = new ClipboardMonitor();
             this.keyboardMonitor = new KeyboardMonitor();
             try { this.keyboardMonitor!.start(); } catch {}
