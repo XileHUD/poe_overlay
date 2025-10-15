@@ -2502,14 +2502,23 @@
                                 icon: icon,
                                 isUniqueFlag: data.isUnique
                             });
-                            prepareCrafting('Uniques', 'itemsTab');
-                            retryShow(
-                                () => !!(window.OverlayUniques && typeof window.OverlayUniques.show === 'function'),
-                                async () => {
-                                    try { await showUniques(); } catch {}
-                                    // Removed auto highlight to prevent unintended scroll movement
-                                }
-                            );
+                            // Uniques page is PoE2-only for now
+                            if (overlayVersionMode === 'poe2') {
+                                prepareCrafting('Uniques', 'itemsTab');
+                                retryShow(
+                                    () => !!(window.OverlayUniques && typeof window.OverlayUniques.show === 'function'),
+                                    async () => {
+                                        try { await showUniques(); } catch {}
+                                        // Removed auto highlight to prevent unintended scroll movement
+                                    }
+                                );
+                            } else {
+                                // PoE1 mode - just open overlay on last visited page (Modifiers)
+                                console.log('Unique copied in PoE1 mode - opening on last page');
+                                setActiveTab('tabModifier');
+                                setView('modifiers');
+                                setHeader('Modifier');
+                            }
                             return;
                         }
 
@@ -2531,85 +2540,142 @@
                         // (unique via frame/icon was handled above)
 
                         if (isEssence) {
-                            prepareCrafting('Essences');
-                            retryShow(
-                                () => !!(window.OverlayEssences && typeof window.OverlayEssences.show === 'function'),
-                                async () => { try { await showEssences(); } catch {} }
-                            );
+                            // Essences page is PoE2-only for now
+                            if (overlayVersionMode === 'poe2') {
+                                prepareCrafting('Essences');
+                                retryShow(
+                                    () => !!(window.OverlayEssences && typeof window.OverlayEssences.show === 'function'),
+                                    async () => { try { await showEssences(); } catch {} }
+                                );
+                            } else {
+                                console.log('Essence copied in PoE1 mode - opening on last page');
+                                setActiveTab('tabModifier');
+                                setView('modifiers');
+                                setHeader('Modifier');
+                            }
                             return;
                         }
 
                         if (isOmen) {
-                            prepareCrafting('Omens');
-                            retryShow(
-                                () => !!(window.OverlayOmens && typeof window.OverlayOmens.show === 'function'),
-                                async () => { try { await showOmens(); } catch {} }
-                            );
+                            // Omens page is PoE2-only
+                            if (overlayVersionMode === 'poe2') {
+                                prepareCrafting('Omens');
+                                retryShow(
+                                    () => !!(window.OverlayOmens && typeof window.OverlayOmens.show === 'function'),
+                                    async () => { try { await showOmens(); } catch {} }
+                                );
+                            } else {
+                                console.log('Omen copied in PoE1 mode - opening on last page');
+                                setActiveTab('tabModifier');
+                                setView('modifiers');
+                                setHeader('Modifier');
+                            }
                             return;
                         }
 
                         if (isCatalyst) {
-                            prepareCrafting('Catalysts');
-                            retryShow(
-                                () => !!(window.OverlayCatalysts && typeof window.OverlayCatalysts.show === 'function'),
-                                async () => { try { await showCatalysts(); } catch {} }
-                            );
+                            // Catalysts page is PoE2-only
+                            if (overlayVersionMode === 'poe2') {
+                                prepareCrafting('Catalysts');
+                                retryShow(
+                                    () => !!(window.OverlayCatalysts && typeof window.OverlayCatalysts.show === 'function'),
+                                    async () => { try { await showCatalysts(); } catch {} }
+                                );
+                            } else {
+                                console.log('Catalyst copied in PoE1 mode - opening on last page');
+                                setActiveTab('tabModifier');
+                                setView('modifiers');
+                                setHeader('Modifier');
+                            }
                             return;
                         }
 
                         if (isSocketable) {
-                            prepareCrafting('Socketables');
-                            retryShow(
-                                () => !!(window.OverlaySocketables && typeof window.OverlaySocketables.show === 'function'),
-                                async () => { try { await showSocketables(); } catch {} }
-                            );
+                            // Socketables page is PoE2-only
+                            if (overlayVersionMode === 'poe2') {
+                                prepareCrafting('Socketables');
+                                retryShow(
+                                    () => !!(window.OverlaySocketables && typeof window.OverlaySocketables.show === 'function'),
+                                    async () => { try { await showSocketables(); } catch {} }
+                                );
+                            } else {
+                                console.log('Socketable copied in PoE1 mode - opening on last page');
+                                setActiveTab('tabModifier');
+                                setView('modifiers');
+                                setHeader('Modifier');
+                            }
                             return;
                         }
 
                         if (isWaystone) {
-                            // Keep Waystones in Modifiers tab; derive Low/Mid/Top category if provided by backend
-                            setActiveTab('tabModifier');
-                            setView('modifiers');
-                            setHeader('Waystones');
-                            // Decide variant: prefer provided category, else simple heuristic
-                            let wsCat = (category || '').startsWith('Waystones_') ? category : '';
-                            if (!wsCat) {
-                                // Heuristic by Area Level or Tier inside blob if needed (client side fallback)
-                                const tierMatch = blob.match(/Waystone\s*Tier\s*(\d+)/i) || name.match(/Tier\s*(\d+)/i);
-                                if (tierMatch) {
-                                    const t = parseInt(tierMatch[1], 10);
-                                    if (t >=1 && t <=5) wsCat = 'Waystones_Low'; else if (t<=10) wsCat = 'Waystones_Mid'; else wsCat = 'Waystones_Top';
+                            // Waystones are PoE2-only
+                            if (overlayVersionMode === 'poe2') {
+                                // Keep Waystones in Modifiers tab; derive Low/Mid/Top category if provided by backend
+                                setActiveTab('tabModifier');
+                                setView('modifiers');
+                                setHeader('Waystones');
+                                // Decide variant: prefer provided category, else simple heuristic
+                                let wsCat = (category || '').startsWith('Waystones_') ? category : '';
+                                if (!wsCat) {
+                                    // Heuristic by Area Level or Tier inside blob if needed (client side fallback)
+                                    const tierMatch = blob.match(/Waystone\s*Tier\s*(\d+)/i) || name.match(/Tier\s*(\d+)/i);
+                                    if (tierMatch) {
+                                        const t = parseInt(tierMatch[1], 10);
+                                        if (t >=1 && t <=5) wsCat = 'Waystones_Low'; else if (t<=10) wsCat = 'Waystones_Mid'; else wsCat = 'Waystones_Top';
+                                    }
                                 }
+                                if (!wsCat) wsCat = 'Waystones_Low';
+                                // Update item.category so dropdown gets set correctly below
+                                item.category = wsCat;
+                                // Don't return - let the normal category handling code process it
+                            } else {
+                                console.log('Waystone copied in PoE1 mode - opening on last page');
+                                setActiveTab('tabModifier');
+                                setView('modifiers');
+                                setHeader('Modifier');
+                                return;
                             }
-                            if (!wsCat) wsCat = 'Waystones_Low';
-                            // Update item.category so dropdown gets set correctly below
-                            item.category = wsCat;
-                            // Don't return - let the normal category handling code process it
                         }
 
                         if (isEmotion) {
-                            prepareCrafting('Liquid Emotions');
-                            retryShow(
-                                () => !!(window.OverlayLiquid && typeof window.OverlayLiquid.show === 'function'),
-                                async () => { try { await showLiquidEmotions(); } catch {} }
-                            );
+                            // Liquid Emotions page is PoE2-only
+                            if (overlayVersionMode === 'poe2') {
+                                prepareCrafting('Liquid Emotions');
+                                retryShow(
+                                    () => !!(window.OverlayLiquid && typeof window.OverlayLiquid.show === 'function'),
+                                    async () => { try { await showLiquidEmotions(); } catch {} }
+                                );
+                            } else {
+                                console.log('Liquid Emotion copied in PoE1 mode - opening on last page');
+                                setActiveTab('tabModifier');
+                                setView('modifiers');
+                                setHeader('Modifier');
+                            }
                             return;
                         }
 
                         if (isGem) {
-                            // Route to Character > Gems directly (no crafting mode)
-                            setActiveTab('characterTab');
-                            setView('character');
-                            retryShow(
-                                () => !!(window.OverlayGems && typeof window.OverlayGems.show === 'function'),
-                                async () => { 
-                                    try { 
-                                        await showGems(); 
-                                        setHeader('Gems');
-                                        recordHeaderAction('Gems');
-                                    } catch {} 
-                                }
-                            );
+                            // Gems page is PoE2-only for now
+                            if (overlayVersionMode === 'poe2') {
+                                // Route to Character > Gems directly (no crafting mode)
+                                setActiveTab('characterTab');
+                                setView('character');
+                                retryShow(
+                                    () => !!(window.OverlayGems && typeof window.OverlayGems.show === 'function'),
+                                    async () => { 
+                                        try { 
+                                            await showGems(); 
+                                            setHeader('Gems');
+                                            recordHeaderAction('Gems');
+                                        } catch {} 
+                                    }
+                                );
+                            } else {
+                                console.log('Gem copied in PoE1 mode - opening on last page');
+                                setActiveTab('tabModifier');
+                                setView('modifiers');
+                                setHeader('Modifier');
+                            }
                             return;
                         }
 
@@ -3248,8 +3314,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.__xilehudUniqueBound = true;
                 window.electronAPI.onShowUniqueItem((payload) => {
                     try {
+                        // Check if Uniques page is available for current version
+                        if (overlayVersionMode !== 'poe2') {
+                            console.log('[onShowUniqueItem] Uniques not available in', overlayVersionMode, 'mode - opening on last page');
+                            setActiveTab('tabModifier');
+                            setView('modifiers');
+                            setHeader('Modifier');
+                            return;
+                        }
+                        
                         // Ensure crafting view in Uniques mode
-                                setActiveTab('itemsTab');
+                        setActiveTab('itemsTab');
                         setView('crafting');
                         setHeader('Uniques');
                         recordHeaderAction('Uniques');
@@ -4051,6 +4126,14 @@ function renderGems(groups){
                                 }
                                 if (action === 'gems') {
                                     try {
+                                        // Gems page is PoE2-only for now
+                                        if (overlayVersionMode !== 'poe2') {
+                                            console.log('[onInvokeAction] Gems not available in', overlayVersionMode, 'mode - opening on last page');
+                                            setActiveTab('tabModifier');
+                                            setView('modifiers');
+                                            setHeader('Modifier');
+                                            return;
+                                        }
                                         setActiveTab('characterTab');
                                         setView('crafting'); // Still use crafting view (shares craftingPanel div)
                                         showGems();
