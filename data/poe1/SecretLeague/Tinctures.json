@@ -1,0 +1,693 @@
+[
+  {
+    "category": "Tinctures",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "#% increased effect#% increased effect#% increased Mana Burn rate#% reduced effect#% reduced Mana Burn rate",
+    "tier": 10,
+    "ilvl": 85,
+    "weight": 4800,
+    "weight_pct": 40,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Herbal",
+        "tier_level": 1,
+        "text_plain": "1 (11–13)% increased effect",
+        "weight": 600,
+        "weight_pct": 5
+      },
+      {
+        "tier_name": "Natural",
+        "tier_level": 35,
+        "text_plain": "35 (14–16)% increased effect",
+        "weight": 600,
+        "weight_pct": 5
+      },
+      {
+        "tier_name": "Medicinal",
+        "tier_level": 64,
+        "text_plain": "64 (17–19)% increased effect",
+        "weight": 600,
+        "weight_pct": 5
+      },
+      {
+        "tier_name": "Horticultural",
+        "tier_level": 85,
+        "text_plain": "85 (20–22)% increased effect",
+        "weight": 600,
+        "weight_pct": 5
+      },
+      {
+        "tier_name": "Potent",
+        "tier_level": 1,
+        "text_plain": "1 35% increased effect(47–51)% increased Mana Burn rate",
+        "weight": 400,
+        "weight_pct": 3.333
+      },
+      {
+        "tier_name": "Concentrated",
+        "tier_level": 49,
+        "text_plain": "49 35% increased effect(42–46)% increased Mana Burn rate",
+        "weight": 400,
+        "weight_pct": 3.333
+      },
+      {
+        "tier_name": "Enriched",
+        "tier_level": 84,
+        "text_plain": "84 35% increased effect(37–41)% increased Mana Burn rate",
+        "weight": 400,
+        "weight_pct": 3.333
+      },
+      {
+        "tier_name": "Thin",
+        "tier_level": 1,
+        "text_plain": "1 (31–35)% reduced effect50% reduced Mana Burn rate",
+        "weight": 400,
+        "weight_pct": 3.333
+      },
+      {
+        "tier_name": "Diluted",
+        "tier_level": 49,
+        "text_plain": "49 (26–30)% reduced effect50% reduced Mana Burn rate",
+        "weight": 400,
+        "weight_pct": 3.333
+      },
+      {
+        "tier_name": "Measured",
+        "tier_level": 84,
+        "text_plain": "84 (21–25)% reduced effect50% reduced Mana Burn rate",
+        "weight": 400,
+        "weight_pct": 3.333
+      }
+    ]
+  },
+  {
+    "category": "Tinctures",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "#% reduced Mana Burn rate",
+    "tier": 4,
+    "ilvl": 80,
+    "weight": 4000,
+    "weight_pct": 33.333,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Sustained",
+        "tier_level": 1,
+        "text_plain": "1 (15–17)% reduced Mana Burn rate",
+        "weight": 1000,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Tenacious",
+        "tier_level": 30,
+        "text_plain": "30 (18–20)% reduced Mana Burn rate",
+        "weight": 1000,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Persistent",
+        "tier_level": 58,
+        "text_plain": "58 (21–23)% reduced Mana Burn rate",
+        "weight": 1000,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Persevering",
+        "tier_level": 80,
+        "text_plain": "80 (24–26)% reduced Mana Burn rate",
+        "weight": 1000,
+        "weight_pct": 8.333
+      }
+    ]
+  },
+  {
+    "category": "Tinctures",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "#% increased Cooldown Recovery Rate",
+    "tier": 4,
+    "ilvl": 82,
+    "weight": 3200,
+    "weight_pct": 26.667,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Lucid",
+        "tier_level": 1,
+        "text_plain": "1 (13–17)% increased Cooldown Recovery Rate",
+        "weight": 800,
+        "weight_pct": 6.667
+      },
+      {
+        "tier_name": "Perceptive",
+        "tier_level": 30,
+        "text_plain": "30 (18–22)% increased Cooldown Recovery Rate",
+        "weight": 800,
+        "weight_pct": 6.667
+      },
+      {
+        "tier_name": "Insightful",
+        "tier_level": 58,
+        "text_plain": "58 (23–27)% increased Cooldown Recovery Rate",
+        "weight": 800,
+        "weight_pct": 6.667
+      },
+      {
+        "tier_name": "Astute",
+        "tier_level": 82,
+        "text_plain": "82 (28–32)% increased Cooldown Recovery Rate",
+        "weight": 800,
+        "weight_pct": 6.667
+      }
+    ]
+  },
+  {
+    "category": "Tinctures",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "#% increased Duration of Elemental Ailments from Melee Weapon Attacks",
+    "tier": 4,
+    "ilvl": 82,
+    "weight": 2800,
+    "weight_pct": 8.917,
+    "tags": [
+      "elemental",
+      "attack",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Wild",
+        "tier_level": 1,
+        "text_plain": "1 (25–35)% increased Duration of Elemental Ailments from Melee Weapon Attacks",
+        "weight": 700,
+        "weight_pct": 2.229
+      },
+      {
+        "tier_name": "of the Untamed",
+        "tier_level": 42,
+        "text_plain": "42 (36–45)% increased Duration of Elemental Ailments from Melee Weapon Attacks",
+        "weight": 700,
+        "weight_pct": 2.229
+      },
+      {
+        "tier_name": "of the Savage",
+        "tier_level": 60,
+        "text_plain": "60 (46–55)% increased Duration of Elemental Ailments from Melee Weapon Attacks",
+        "weight": 700,
+        "weight_pct": 2.229
+      },
+      {
+        "tier_name": "of the Beast",
+        "tier_level": 82,
+        "text_plain": "82 (56–65)% increased Duration of Elemental Ailments from Melee Weapon Attacks",
+        "weight": 700,
+        "weight_pct": 2.229
+      }
+    ]
+  },
+  {
+    "category": "Tinctures",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "#% to Damage over Time Multiplier with Melee Weapon Attacks",
+    "tier": 5,
+    "ilvl": 84,
+    "weight": 2500,
+    "weight_pct": 7.962,
+    "tags": [
+      "damage",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Acrimony",
+        "tier_level": 1,
+        "text_plain": "1 +(9–13)% to Damage over Time Multiplier with Melee Weapon Attacks",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Dispersion",
+        "tier_level": 34,
+        "text_plain": "34 +(14–18)% to Damage over Time Multiplier with Melee Weapon Attacks",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Liquefaction",
+        "tier_level": 58,
+        "text_plain": "58 +(19–23)% to Damage over Time Multiplier with Melee Weapon Attacks",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Melting",
+        "tier_level": 70,
+        "text_plain": "70 +(24–28)% to Damage over Time Multiplier with Melee Weapon Attacks",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Dissolution",
+        "tier_level": 84,
+        "text_plain": "84 +(29–33)% to Damage over Time Multiplier with Melee Weapon Attacks",
+        "weight": 500,
+        "weight_pct": 1.592
+      }
+    ]
+  },
+  {
+    "category": "Tinctures",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Melee Weapon Damage Penetrates #% Elemental Resistances",
+    "tier": 5,
+    "ilvl": 85,
+    "weight": 2500,
+    "weight_pct": 7.962,
+    "tags": [
+      "damage",
+      "elemental",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Catalysing",
+        "tier_level": 1,
+        "text_plain": "1 Melee Weapon Damage Penetrates (5–7)% Elemental Resistances",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Infusing",
+        "tier_level": 32,
+        "text_plain": "32 Melee Weapon Damage Penetrates (8–10)% Elemental Resistances",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Empowering",
+        "tier_level": 60,
+        "text_plain": "60 Melee Weapon Damage Penetrates (11–13)% Elemental Resistances",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of the Unleashed",
+        "tier_level": 73,
+        "text_plain": "73 Melee Weapon Damage Penetrates (14–16)% Elemental Resistances",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Overpowering",
+        "tier_level": 85,
+        "text_plain": "85 Melee Weapon Damage Penetrates (17–19)% Elemental Resistances",
+        "weight": 500,
+        "weight_pct": 1.592
+      }
+    ]
+  },
+  {
+    "category": "Tinctures",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "#% to Melee Weapon Critical Strike Multiplier",
+    "tier": 5,
+    "ilvl": 85,
+    "weight": 2500,
+    "weight_pct": 7.962,
+    "tags": [
+      "damage",
+      "attack",
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Ire",
+        "tier_level": 1,
+        "text_plain": "1 +(9–13)% to Melee Weapon Critical Strike Multiplier",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Anger",
+        "tier_level": 32,
+        "text_plain": "32 +(14–18)% to Melee Weapon Critical Strike Multiplier",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Rage",
+        "tier_level": 60,
+        "text_plain": "60 +(19–23)% to Melee Weapon Critical Strike Multiplier",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Fury",
+        "tier_level": 73,
+        "text_plain": "73 +(24–28)% to Melee Weapon Critical Strike Multiplier",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Ferocity",
+        "tier_level": 85,
+        "text_plain": "85 +(29–33)% to Melee Weapon Critical Strike Multiplier",
+        "weight": 500,
+        "weight_pct": 1.592
+      }
+    ]
+  },
+  {
+    "category": "Tinctures",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "#% increased Melee Weapon Attack Speed",
+    "tier": 3,
+    "ilvl": 85,
+    "weight": 2400,
+    "weight_pct": 7.643,
+    "tags": [
+      "attack",
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Skill",
+        "tier_level": 1,
+        "text_plain": "1 (15–19)% increased Melee Weapon Attack Speed",
+        "weight": 800,
+        "weight_pct": 2.548
+      },
+      {
+        "tier_name": "of Ease",
+        "tier_level": 65,
+        "text_plain": "65 (20–24)% increased Melee Weapon Attack Speed",
+        "weight": 800,
+        "weight_pct": 2.548
+      },
+      {
+        "tier_name": "of Mastery",
+        "tier_level": 85,
+        "text_plain": "85 (25–29)% increased Melee Weapon Attack Speed",
+        "weight": 800,
+        "weight_pct": 2.548
+      }
+    ]
+  },
+  {
+    "category": "Tinctures",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "#% increased Melee Weapon Damage against Enemies that are on Low Life",
+    "tier": 5,
+    "ilvl": 80,
+    "weight": 3000,
+    "weight_pct": 9.554,
+    "tags": [
+      "damage",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Execution",
+        "tier_level": 1,
+        "text_plain": "1 (40–47)% increased Melee Weapon Damage against Enemies that are on Low Life",
+        "weight": 600,
+        "weight_pct": 1.911
+      },
+      {
+        "tier_name": "of Elimination",
+        "tier_level": 28,
+        "text_plain": "28 (48–55)% increased Melee Weapon Damage against Enemies that are on Low Life",
+        "weight": 600,
+        "weight_pct": 1.911
+      },
+      {
+        "tier_name": "of Termination",
+        "tier_level": 47,
+        "text_plain": "47 (56–63)% increased Melee Weapon Damage against Enemies that are on Low Life",
+        "weight": 600,
+        "weight_pct": 1.911
+      },
+      {
+        "tier_name": "of Extermination",
+        "tier_level": 65,
+        "text_plain": "65 (64–71)% increased Melee Weapon Damage against Enemies that are on Low Life",
+        "weight": 600,
+        "weight_pct": 1.911
+      },
+      {
+        "tier_name": "of Assassination",
+        "tier_level": 80,
+        "text_plain": "80 (72–79)% increased Melee Weapon Damage against Enemies that are on Low Life",
+        "weight": 600,
+        "weight_pct": 1.911
+      }
+    ]
+  },
+  {
+    "category": "Tinctures",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Gain # Life per Enemy Killed with Melee Weapons",
+    "tier": 4,
+    "ilvl": 80,
+    "weight": 4000,
+    "weight_pct": 12.739,
+    "tags": [
+      "life",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Success",
+        "tier_level": 1,
+        "text_plain": "1 Gain (11–15) Life per Enemy Killed with Melee Weapons",
+        "weight": 1000,
+        "weight_pct": 3.185
+      },
+      {
+        "tier_name": "of Victory",
+        "tier_level": 35,
+        "text_plain": "35 Gain (16–20) Life per Enemy Killed with Melee Weapons",
+        "weight": 1000,
+        "weight_pct": 3.185
+      },
+      {
+        "tier_name": "of Triumph",
+        "tier_level": 62,
+        "text_plain": "62 Gain (21–25) Life per Enemy Killed with Melee Weapons",
+        "weight": 1000,
+        "weight_pct": 3.185
+      },
+      {
+        "tier_name": "of Conquest",
+        "tier_level": 80,
+        "text_plain": "80 Gain (26–30) Life per Enemy Killed with Melee Weapons",
+        "weight": 1000,
+        "weight_pct": 3.185
+      }
+    ]
+  },
+  {
+    "category": "Tinctures",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Gain # Mana per Enemy Killed with Melee Weapons",
+    "tier": 4,
+    "ilvl": 82,
+    "weight": 4000,
+    "weight_pct": 12.739,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Absorption",
+        "tier_level": 38,
+        "text_plain": "38 Gain (2–3) Mana per Enemy Killed with Melee Weapons",
+        "weight": 1000,
+        "weight_pct": 3.185
+      },
+      {
+        "tier_name": "of Osmosis",
+        "tier_level": 50,
+        "text_plain": "50 Gain (4–5) Mana per Enemy Killed with Melee Weapons",
+        "weight": 1000,
+        "weight_pct": 3.185
+      },
+      {
+        "tier_name": "of Consumption",
+        "tier_level": 68,
+        "text_plain": "68 Gain (6–8) Mana per Enemy Killed with Melee Weapons",
+        "weight": 1000,
+        "weight_pct": 3.185
+      },
+      {
+        "tier_name": "of Assimilation",
+        "tier_level": 82,
+        "text_plain": "82 Gain (9–11) Mana per Enemy Killed with Melee Weapons",
+        "weight": 1000,
+        "weight_pct": 3.185
+      }
+    ]
+  },
+  {
+    "category": "Tinctures",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Gain # Life per Enemy Hit with Melee Weapons",
+    "tier": 3,
+    "ilvl": 77,
+    "weight": 1500,
+    "weight_pct": 4.777,
+    "tags": [
+      "life",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Rejuvenation",
+        "tier_level": 1,
+        "text_plain": "1 Gain (2–3) Life per Enemy Hit with Melee Weapons",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Restoration",
+        "tier_level": 50,
+        "text_plain": "50 Gain (3–4) Life per Enemy Hit with Melee Weapons",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Regrowth",
+        "tier_level": 77,
+        "text_plain": "77 Gain (5–7) Life per Enemy Hit with Melee Weapons",
+        "weight": 500,
+        "weight_pct": 1.592
+      }
+    ]
+  },
+  {
+    "category": "Tinctures",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Gain # Mana per Enemy Hit with Melee Weapons",
+    "tier": 3,
+    "ilvl": 84,
+    "weight": 1500,
+    "weight_pct": 4.777,
+    "tags": [
+      "mana",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Enveloping",
+        "tier_level": 45,
+        "text_plain": "45 Gain 1 Mana per Enemy Hit with Melee Weapons",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Siphoning",
+        "tier_level": 68,
+        "text_plain": "68 Gain 2 Mana per Enemy Hit with Melee Weapons",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Devouring",
+        "tier_level": 84,
+        "text_plain": "84 Gain 3 Mana per Enemy Hit with Melee Weapons",
+        "weight": 500,
+        "weight_pct": 1.592
+      }
+    ]
+  },
+  {
+    "category": "Tinctures",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "#% increased Flask Charges gained from Kills with Melee Weapons",
+    "tier": 4,
+    "ilvl": 85,
+    "weight": 3200,
+    "weight_pct": 10.191,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Restocking",
+        "tier_level": 1,
+        "text_plain": "1 (11–15)% increased Flask Charges gained from Kills with Melee Weapons",
+        "weight": 800,
+        "weight_pct": 2.548
+      },
+      {
+        "tier_name": "of Replenishing",
+        "tier_level": 40,
+        "text_plain": "40 (16–20)% increased Flask Charges gained from Kills with Melee Weapons",
+        "weight": 800,
+        "weight_pct": 2.548
+      },
+      {
+        "tier_name": "of Pouring",
+        "tier_level": 72,
+        "text_plain": "72 (21–25)% increased Flask Charges gained from Kills with Melee Weapons",
+        "weight": 800,
+        "weight_pct": 2.548
+      },
+      {
+        "tier_name": "of Overflowing",
+        "tier_level": 85,
+        "text_plain": "85 (26–30)% increased Flask Charges gained from Kills with Melee Weapons",
+        "weight": 800,
+        "weight_pct": 2.548
+      }
+    ]
+  },
+  {
+    "category": "Tinctures",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Melee Weapon Hits have #% chance to ignore Enemy Physical Damage Reduction",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 1500,
+    "weight_pct": 4.777,
+    "tags": [
+      "damage",
+      "physical",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Battering",
+        "tier_level": 40,
+        "text_plain": "40 Melee Weapon Hits have (30–39)% chance to ignore Enemy Physical Damage Reduction",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Crushing",
+        "tier_level": 62,
+        "text_plain": "62 Melee Weapon Hits have (40–49)% chance to ignore Enemy Physical Damage Reduction",
+        "weight": 500,
+        "weight_pct": 1.592
+      },
+      {
+        "tier_name": "of Overwhelming",
+        "tier_level": 80,
+        "text_plain": "80 Melee Weapon Hits have (50–60)% chance to ignore Enemy Physical Damage Reduction",
+        "weight": 500,
+        "weight_pct": 1.592
+      }
+    ]
+  }
+]

@@ -1,0 +1,3525 @@
+[
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "#% increased Elemental Damage with Attack Skills",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 1500,
+    "weight_pct": 100,
+    "tags": [
+      "damage",
+      "elemental",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 (26–30)% increased Elemental Damage with Attack Skills",
+        "weight": 500,
+        "weight_pct": 33.333
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 75,
+        "text_plain": "75 (31–35)% increased Elemental Damage with Attack Skills",
+        "weight": 500,
+        "weight_pct": 33.333
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 (36–40)% increased Elemental Damage with Attack Skills",
+        "weight": 500,
+        "weight_pct": 33.333
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "#% of Physical Damage from Hits taken as Cold Damage",
+    "tier": 3,
+    "ilvl": 83,
+    "weight": 1000,
+    "weight_pct": 44.444,
+    "tags": [
+      "physical",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 (8–12)% of Physical Damage from Hits taken as Cold Damage",
+        "weight": 500,
+        "weight_pct": 22.222
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 83,
+        "text_plain": "83 (13–15)% of Physical Damage from Hits taken as Cold Damage",
+        "weight": 500,
+        "weight_pct": 22.222
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 93,
+        "text_plain": "93 (16–18)% of Physical Damage from Hits taken as Cold Damage(7–10)% of Cold Damage taken Recouped as Life",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int",
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Adds # to # Cold DamageAttacks with this Weapon Penetrate #% Cold Resistance",
+    "tier": 5,
+    "ilvl": 80,
+    "weight": 1900,
+    "weight_pct": 39.583,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Adds (7–9) to (14–16) Cold DamageAttacks with this Weapon Penetrate (5–7)% Cold Resistance",
+        "weight": 500,
+        "weight_pct": 10.417
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 71,
+        "text_plain": "71 Adds (11–14) to (22–25) Cold DamageAttacks with this Weapon Penetrate (5–7)% Cold Resistance",
+        "weight": 500,
+        "weight_pct": 10.417
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 74,
+        "text_plain": "74 Adds (15–20) to (30–35) Cold DamageAttacks with this Weapon Penetrate (5–7)% Cold Resistance",
+        "weight": 400,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 77,
+        "text_plain": "77 Adds (19–25) to (38–44) Cold DamageAttacks with this Weapon Penetrate (5–7)% Cold Resistance",
+        "weight": 300,
+        "weight_pct": 6.25
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 Adds (23–32) to (48–55) Cold DamageAttacks with this Weapon Penetrate (5–7)% Cold Resistance",
+        "weight": 200,
+        "weight_pct": 4.167
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Gain #% of Physical Damage as Extra Cold Damage",
+    "tier": 3,
+    "ilvl": 75,
+    "weight": 1000,
+    "weight_pct": 36.364,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Gain (3–5)% of Physical Damage as Extra Cold Damage",
+        "weight": 500,
+        "weight_pct": 18.182
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 75,
+        "text_plain": "75 Gain (6–8)% of Physical Damage as Extra Cold Damage",
+        "weight": 500,
+        "weight_pct": 18.182
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 85,
+        "text_plain": "85 Gain (9–11)% of Physical Damage as Extra Cold Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Bows",
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Runic_Sabatons",
+      "Sceptres",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Swords",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Gain #% of Physical Damage as Extra Cold Damage",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1000,
+    "weight_pct": 33.333,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Gain (5–10)% of Physical Damage as Extra Cold Damage",
+        "weight": 500,
+        "weight_pct": 16.667
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 75,
+        "text_plain": "75 Gain (11–15)% of Physical Damage as Extra Cold Damage",
+        "weight": 500,
+        "weight_pct": 16.667
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Quivers"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "#% increased Damage per Frenzy Charge",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 33.333,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 (3–4)% increased Damage per Frenzy Charge",
+        "weight": 500,
+        "weight_pct": 16.667
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 (5–6)% increased Damage per Frenzy Charge",
+        "weight": 500,
+        "weight_pct": 16.667
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Rune_Daggers"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "#% increased Evasion Rating",
+    "tier": 3,
+    "ilvl": 82,
+    "weight": 1500,
+    "weight_pct": 33.333,
+    "tags": [
+      "defences",
+      "evasion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 (7–9)% increased Evasion Rating",
+        "weight": 500,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 78,
+        "text_plain": "78 (10–12)% increased Evasion Rating",
+        "weight": 500,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 82,
+        "text_plain": "82 (13–15)% increased Evasion Rating",
+        "weight": 500,
+        "weight_pct": 11.111
+      }
+    ],
+    "sourceCategories": [
+      "Belts",
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "#% increased Damage with Hits against Chilled Enemies",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 1500,
+    "weight_pct": 33.333,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 (26–30)% increased Damage with Hits against Chilled Enemies",
+        "weight": 500,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 75,
+        "text_plain": "75 (31–35)% increased Damage with Hits against Chilled Enemies",
+        "weight": 500,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 (36–40)% increased Damage with Hits against Chilled Enemies",
+        "weight": 500,
+        "weight_pct": 11.111
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "#% increased Cold Damage",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 1500,
+    "weight_pct": 33.333,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 (16–20)% increased Cold Damage",
+        "weight": 500,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 75,
+        "text_plain": "75 (21–25)% increased Cold Damage",
+        "weight": 500,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 (26–30)% increased Cold Damage",
+        "weight": 500,
+        "weight_pct": 11.111
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Attacks with this Weapon Penetrate #% Cold ResistanceDamage Penetrates #% Cold Resistance",
+    "tier": 6,
+    "ilvl": 78,
+    "weight": 2400,
+    "weight_pct": 29.268,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Attacks with this Weapon Penetrate (9–10)% Cold Resistance",
+        "weight": 500,
+        "weight_pct": 6.098
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 73,
+        "text_plain": "73 Attacks with this Weapon Penetrate (11–12)% Cold Resistance",
+        "weight": 400,
+        "weight_pct": 4.878
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 78,
+        "text_plain": "78 Attacks with this Weapon Penetrate (13–15)% Cold Resistance",
+        "weight": 300,
+        "weight_pct": 3.659
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Damage Penetrates 6% Cold Resistance",
+        "weight": 400,
+        "weight_pct": 4.878
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 73,
+        "text_plain": "73 Damage Penetrates 7% Cold Resistance",
+        "weight": 400,
+        "weight_pct": 4.878
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 78,
+        "text_plain": "78 Damage Penetrates 8% Cold Resistance",
+        "weight": 400,
+        "weight_pct": 4.878
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "#% chance to gain a Power Charge on Kill",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 500,
+    "weight_pct": 28.571,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 (4–6)% chance to gain a Power Charge on Kill",
+        "weight": 250,
+        "weight_pct": 14.286
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 (7–10)% chance to gain a Power Charge on Kill",
+        "weight": 250,
+        "weight_pct": 14.286
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 90,
+        "text_plain": "90 50% increased Power Charge Duration(11–15)% chance to gain a Power Charge on Kill",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Adds # to # Cold Damage to SpellsDamage Penetrates #% Cold Resistance",
+    "tier": 5,
+    "ilvl": 80,
+    "weight": 2200,
+    "weight_pct": 26.829,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold",
+      "caster"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Adds (5–7) to (10–12) Cold Damage to SpellsDamage Penetrates 4% Cold Resistance",
+        "weight": 500,
+        "weight_pct": 6.098
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 71,
+        "text_plain": "71 Adds (8–10) to (16–18) Cold Damage to SpellsDamage Penetrates 4% Cold Resistance",
+        "weight": 500,
+        "weight_pct": 6.098
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 74,
+        "text_plain": "74 Adds (11–15) to (22–25) Cold Damage to SpellsDamage Penetrates 4% Cold Resistance",
+        "weight": 500,
+        "weight_pct": 6.098
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 77,
+        "text_plain": "77 Adds (14–18) to (27–32) Cold Damage to SpellsDamage Penetrates 4% Cold Resistance",
+        "weight": 400,
+        "weight_pct": 4.878
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 Adds (17–23) to (34–40) Cold Damage to SpellsDamage Penetrates 4% Cold Resistance",
+        "weight": 300,
+        "weight_pct": 3.659
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Attacks with this Weapon Penetrate #% Cold Resistance",
+    "tier": 3,
+    "ilvl": 78,
+    "weight": 1200,
+    "weight_pct": 25,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Attacks with this Weapon Penetrate (9–10)% Cold Resistance",
+        "weight": 500,
+        "weight_pct": 10.417
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 73,
+        "text_plain": "73 Attacks with this Weapon Penetrate (11–12)% Cold Resistance",
+        "weight": 400,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 78,
+        "text_plain": "78 Attacks with this Weapon Penetrate (13–15)% Cold Resistance",
+        "weight": 300,
+        "weight_pct": 6.25
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Claws",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Minions deal #% increased Damage",
+    "tier": 4,
+    "ilvl": 73,
+    "weight": 1500,
+    "weight_pct": 25,
+    "tags": [
+      "damage",
+      "minion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Minions deal (18–22)% increased Damage",
+        "weight": 500,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 70,
+        "text_plain": "70 Minions deal (23–26)% increased Damage",
+        "weight": 500,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 73,
+        "text_plain": "73 Minions deal (27–30)% increased Damage",
+        "weight": 500,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 83,
+        "text_plain": "83 Minions deal (31–45)% increased Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Bone_Ring",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "#% increased Projectile Attack Damage",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 1500,
+    "weight_pct": 23.077,
+    "tags": [
+      "damage",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 (15–17)% increased Projectile Attack Damage",
+        "weight": 500,
+        "weight_pct": 7.692
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 75,
+        "text_plain": "75 (18–21)% increased Projectile Attack Damage",
+        "weight": 500,
+        "weight_pct": 7.692
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 (22–25)% increased Projectile Attack Damage",
+        "weight": 500,
+        "weight_pct": 7.692
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Bone_Ring",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Minions deal #% increased Damage",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 1500,
+    "weight_pct": 23.077,
+    "tags": [
+      "damage",
+      "minion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Minions deal (15–17)% increased Damage",
+        "weight": 500,
+        "weight_pct": 7.692
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 75,
+        "text_plain": "75 Minions deal (18–21)% increased Damage",
+        "weight": 500,
+        "weight_pct": 7.692
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 Minions deal (22–25)% increased Damage",
+        "weight": 500,
+        "weight_pct": 7.692
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "You and your Minions take #% reduced Reflected Elemental Damage",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 500,
+    "weight_pct": 22.222,
+    "tags": [
+      "elemental"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 75,
+        "text_plain": "75 You and your Minions take 100% reduced Reflected Elemental Damage",
+        "weight": 500,
+        "weight_pct": 22.222
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 85,
+        "text_plain": "85 (3–5)% reduced Elemental Damage takenYou and your Minions take 100% reduced Reflected Elemental Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Nearby Enemies are Blinded",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 500,
+    "weight_pct": 22.222,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 75,
+        "text_plain": "75 Nearby Enemies are Blinded",
+        "weight": 500,
+        "weight_pct": 22.222
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 85,
+        "text_plain": "85 Cannot be BlindedNearby Enemies are Blinded",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Unaffected by Chilled Ground",
+    "tier": 2,
+    "ilvl": 68,
+    "weight": 500,
+    "weight_pct": 18.182,
+    "tags": [
+      "elemental",
+      "cold",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Unaffected by Chilled Ground",
+        "weight": 500,
+        "weight_pct": 18.182
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 78,
+        "text_plain": "78 Unaffected by Chill",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "# to Level of Socketed Cold Gems",
+    "tier": 2,
+    "ilvl": 68,
+    "weight": 500,
+    "weight_pct": 18.182,
+    "tags": [
+      "elemental",
+      "cold",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 +2 to Level of Socketed Cold Gems",
+        "weight": 500,
+        "weight_pct": 18.182
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 78,
+        "text_plain": "78 +2 to Level of Socketed Cold Gems+(3–7)% to Quality of Socketed Cold Gems",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "#% chance to gain an Endurance Charge on Kill",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 500,
+    "weight_pct": 18.182,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 (4–6)% chance to gain an Endurance Charge on Kill",
+        "weight": 250,
+        "weight_pct": 9.091
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 (7–10)% chance to gain an Endurance Charge on Kill",
+        "weight": 250,
+        "weight_pct": 9.091
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 90,
+        "text_plain": "90 50% increased Endurance Charge Duration(7–10)% chance to gain an Endurance Charge on Kill",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "1% increased Damage per 15 Dexterity",
+    "tier": 1,
+    "ilvl": 80,
+    "weight": 500,
+    "weight_pct": 16.667,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 1% increased Damage per 15 Dexterity",
+        "weight": 500,
+        "weight_pct": 16.667
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Damage Penetrates #% Cold Resistance",
+    "tier": 2,
+    "ilvl": 82,
+    "weight": 500,
+    "weight_pct": 16.667,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Damage Penetrates (4–7)% Cold Resistance",
+        "weight": 250,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 82,
+        "text_plain": "82 Damage Penetrates (8–10)% Cold Resistance",
+        "weight": 250,
+        "weight_pct": 8.333
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Adds # to # Physical Damage if you've dealt a Critical Strike Recently",
+    "tier": 3,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 16.667,
+    "tags": [
+      "damage",
+      "physical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Adds (4–5) to (6–8) Physical Damage if you've dealt a Critical Strike Recently",
+        "weight": 500,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 73,
+        "text_plain": "73 Adds (6–8) to (9–11) Physical Damage if you've dealt a Critical Strike Recently",
+        "weight": 500,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 83,
+        "text_plain": "83 Adds (9–12) to (13–16) Physical Damage if you've dealt a Critical Strike Recently",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Adds # to # Fire Damage if you've dealt a Critical Strike Recently",
+    "tier": 3,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 16.667,
+    "tags": [
+      "damage",
+      "elemental",
+      "fire"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Adds (16–20) to (22–25) Fire Damage if you've dealt a Critical Strike Recently",
+        "weight": 500,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 73,
+        "text_plain": "73 Adds (20–25) to (26–35) Fire Damage if you've dealt a Critical Strike Recently",
+        "weight": 500,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 83,
+        "text_plain": "83 Adds (26–30) to (36–45) Fire Damage if you've dealt a Critical Strike Recently",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Adds # to # Cold Damage if you've dealt a Critical Strike Recently",
+    "tier": 3,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 16.667,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Adds (16–20) to (22–25) Cold Damage if you've dealt a Critical Strike Recently",
+        "weight": 500,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 73,
+        "text_plain": "73 Adds (20–25) to (26–35) Cold Damage if you've dealt a Critical Strike Recently",
+        "weight": 500,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 83,
+        "text_plain": "83 Adds (26–30) to (36–45) Cold Damage if you've dealt a Critical Strike Recently",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Adds # to # Lightning Damage if you've dealt a Critical Strike Recently",
+    "tier": 3,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 16.667,
+    "tags": [
+      "damage",
+      "elemental",
+      "lightning"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Adds 1 to (41–47) Lightning Damage if you've dealt a Critical Strike Recently",
+        "weight": 500,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 73,
+        "text_plain": "73 Adds 1 to (48–60) Lightning Damage if you've dealt a Critical Strike Recently",
+        "weight": 500,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 83,
+        "text_plain": "83 Adds 1 to (61–90) Lightning Damage if you've dealt a Critical Strike Recently",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Bone_Ring",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Adds # to # Cold Damage against Chilled or Frozen Enemies",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1000,
+    "weight_pct": 15.385,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 Adds (17–23) to (35–41) Cold Damage against Chilled or Frozen Enemies",
+        "weight": 500,
+        "weight_pct": 7.692
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 75,
+        "text_plain": "75 Adds (20–26) to (41–48) Cold Damage against Chilled or Frozen Enemies",
+        "weight": 500,
+        "weight_pct": 7.692
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Bone_Ring",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "# to # Added Cold Damage per Frenzy Charge",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 15.385,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 75,
+        "text_plain": "75 (2–3) to (4–5) Added Cold Damage per Frenzy Charge",
+        "weight": 500,
+        "weight_pct": 7.692
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 (3–4) to (6–7) Added Cold Damage per Frenzy Charge",
+        "weight": 500,
+        "weight_pct": 7.692
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "Skills supported by Unleash have # to maximum number of Seals",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 250,
+    "weight_pct": 14.286,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 Skills supported by Unleash have +1 to maximum number of Seals",
+        "weight": 250,
+        "weight_pct": 14.286
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 90,
+        "text_plain": "90 (50–75)% increased Critical Strike Chance with Spells which remove the maximum number of SealsSkills supported by Unleash have +1 to maximum number of Seals",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "# to Level of Socketed Support Gems",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 250,
+    "weight_pct": 11.111,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 +1 to Level of Socketed Support Gems",
+        "weight": 250,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 90,
+        "text_plain": "90 +1 to Level of Socketed Support Gems+(5–10)% to Quality of Socketed Support Gems",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "#% chance to gain a Frenzy Charge on Kill",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 500,
+    "weight_pct": 10.417,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 (4–6)% chance to gain a Frenzy Charge on Kill",
+        "weight": 250,
+        "weight_pct": 5.208
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 (7–10)% chance to gain a Frenzy Charge on Kill",
+        "weight": 250,
+        "weight_pct": 5.208
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Claws",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Swords",
+      "Quivers",
+      "Rune_Daggers",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "#% chance to gain a Power Charge on Kill",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 500,
+    "weight_pct": 9.434,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 (4–6)% chance to gain a Power Charge on Kill",
+        "weight": 250,
+        "weight_pct": 4.717
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 (7–10)% chance to gain a Power Charge on Kill",
+        "weight": 250,
+        "weight_pct": 4.717
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "One_Hand_Axes",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "#% chance to gain an Endurance Charge on Kill",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 500,
+    "weight_pct": 9.434,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 (4–6)% chance to gain an Endurance Charge on Kill",
+        "weight": 250,
+        "weight_pct": 4.717
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 (7–10)% chance to gain an Endurance Charge on Kill",
+        "weight": 250,
+        "weight_pct": 4.717
+      }
+    ],
+    "sourceCategories": [
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Sceptres",
+      "Staves",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "#% chance to gain Elusive on Critical Strike",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 250,
+    "weight_pct": 9.091,
+    "tags": [
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 75,
+        "text_plain": "75 (5–10)% chance to gain Elusive on Critical Strike",
+        "weight": 250,
+        "weight_pct": 9.091
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 85,
+        "text_plain": "85 (11–20)% chance to gain Elusive on Critical Strike(5–10)% increased Elusive Effect",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "redeemer",
+    "side": "prefix",
+    "text_plain": "#% chance to gain a Frenzy Charge on Kill",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 500,
+    "weight_pct": 8.333,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 68,
+        "text_plain": "68 (4–6)% chance to gain a Frenzy Charge on Kill",
+        "weight": 250,
+        "weight_pct": 4.167
+      },
+      {
+        "tier_name": "Redeemer's",
+        "tier_level": 80,
+        "text_plain": "80 (7–10)% chance to gain a Frenzy Charge on Kill",
+        "weight": 250,
+        "weight_pct": 4.167
+      },
+      {
+        "tier_name": "Elevated Redeemer's",
+        "tier_level": 90,
+        "text_plain": "90 50% increased Frenzy Charge Duration(7–10)% chance to gain a Frenzy Charge on Kill",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Projectile Attack Damage during any Flask Effect",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 1500,
+    "weight_pct": 54.545,
+    "tags": [
+      "damage",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (20–25)% increased Projectile Attack Damage during any Flask Effect",
+        "weight": 500,
+        "weight_pct": 18.182
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (26–30)% increased Projectile Attack Damage during any Flask Effect",
+        "weight": 500,
+        "weight_pct": 18.182
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 (31–35)% increased Projectile Attack Damage during any Flask Effect",
+        "weight": 500,
+        "weight_pct": 18.182
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Global Accuracy Rating",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 50,
+    "tags": [
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (12–15)% increased Global Accuracy Rating",
+        "weight": 500,
+        "weight_pct": 25
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 (16–20)% increased Global Accuracy Rating",
+        "weight": 500,
+        "weight_pct": 25
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 90,
+        "text_plain": "90 (21–30)% increased Global Accuracy Rating",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% Global chance to Blind Enemies on hit",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 50,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (8–11)% Global chance to Blind Enemies on hit",
+        "weight": 500,
+        "weight_pct": 25
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 (12–15)% Global chance to Blind Enemies on hit",
+        "weight": 500,
+        "weight_pct": 25
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 90,
+        "text_plain": "90 (20–30)% increased Damage with Hits and Ailments against Blinded Enemies(12–15)% Global chance to Blind Enemies on hit",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Bone_Ring",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Global Accuracy Rating",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 34.483,
+    "tags": [
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (12–15)% increased Global Accuracy Rating",
+        "weight": 500,
+        "weight_pct": 17.241
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 (16–20)% increased Global Accuracy Rating",
+        "weight": 500,
+        "weight_pct": 17.241
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Ring",
+      "Quivers",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% chance to Blind Enemies on Hit with Attacks",
+    "tier": 3,
+    "ilvl": 73,
+    "weight": 1500,
+    "weight_pct": 34.091,
+    "tags": [
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (15–18)% chance to Blind Enemies on Hit with Attacks",
+        "weight": 500,
+        "weight_pct": 11.364
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 70,
+        "text_plain": "70 (19–22)% chance to Blind Enemies on Hit with Attacks",
+        "weight": 500,
+        "weight_pct": 11.364
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 73,
+        "text_plain": "73 (23–25)% chance to Blind Enemies on Hit with Attacks",
+        "weight": 500,
+        "weight_pct": 11.364
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Claws",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% chance to avoid Projectiles",
+    "tier": 3,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 33.333,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (6–9)% chance to avoid Projectiles",
+        "weight": 500,
+        "weight_pct": 16.667
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 73,
+        "text_plain": "73 (10–12)% chance to avoid Projectiles",
+        "weight": 500,
+        "weight_pct": 16.667
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 83,
+        "text_plain": "83 (11–15)% chance to avoid Projectiles if you've taken Projectile Damage Recently(10–12)% chance to avoid Projectiles",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Effect of Non-Damaging Ailments",
+    "tier": 3,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 33.333,
+    "tags": [
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (30–34)% increased Effect of Non-Damaging Ailments",
+        "weight": 500,
+        "weight_pct": 16.667
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 73,
+        "text_plain": "73 (35–40)% increased Effect of Non-Damaging Ailments",
+        "weight": 500,
+        "weight_pct": 16.667
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 83,
+        "text_plain": "83 (41–60)% increased Effect of Non-Damaging Ailments",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% chance to gain Onslaught for # seconds on Kill",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 33.333,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (5–7)% chance to gain Onslaught for 4 seconds on Kill",
+        "weight": 500,
+        "weight_pct": 16.667
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 (8–10)% chance to gain Onslaught for 4 seconds on Kill",
+        "weight": 500,
+        "weight_pct": 16.667
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 90,
+        "text_plain": "90 (8–10)% chance to gain Onslaught for 4 seconds on Kill(3–10)% increased Attack, Cast and Movement Speed while you have Onslaught",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Bows",
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Runic_Sabatons",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Swords",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% Chance to Block Attack Damage while Dual Wielding",
+    "tier": 3,
+    "ilvl": 73,
+    "weight": 1500,
+    "weight_pct": 30.612,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 +(2–4)% Chance to Block Attack Damage while Dual Wielding",
+        "weight": 500,
+        "weight_pct": 10.204
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 70,
+        "text_plain": "70 +(5–7)% Chance to Block Attack Damage while Dual Wielding",
+        "weight": 500,
+        "weight_pct": 10.204
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 73,
+        "text_plain": "73 +(8–9)% Chance to Block Attack Damage while Dual Wielding",
+        "weight": 500,
+        "weight_pct": 10.204
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Thrusting_One_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Mana Reservation Efficiency of SkillsHatred has #% increased Mana Reservation EfficiencyGrace has #% increased Mana Reservation EfficiencyPurity of Ice has #% increased Mana Reservation Efficiency",
+    "tier": 5,
+    "ilvl": 75,
+    "weight": 2500,
+    "weight_pct": 30.303,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (4–6)% increased Mana Reservation Efficiency of Skills",
+        "weight": 500,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (7–10)% increased Mana Reservation Efficiency of Skills",
+        "weight": 500,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 Hatred has (40–50)% increased Mana Reservation Efficiency",
+        "weight": 500,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 Grace has (40–50)% increased Mana Reservation Efficiency",
+        "weight": 500,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 Purity of Ice has (50–60)% increased Mana Reservation Efficiency",
+        "weight": 500,
+        "weight_pct": 6.061
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Dexterity",
+    "tier": 3,
+    "ilvl": 75,
+    "weight": 1000,
+    "weight_pct": 26.667,
+    "tags": [
+      "attribute"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (5–8)% increased Dexterity",
+        "weight": 500,
+        "weight_pct": 13.333
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (9–12)% increased Dexterity",
+        "weight": 500,
+        "weight_pct": 13.333
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 85,
+        "text_plain": "85 +1 to Level of Socketed Dexterity Gems(9–12)% increased Dexterity",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "Recover #% of Mana on Kill",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 26.667,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 Recover (3–4)% of Mana on Kill",
+        "weight": 500,
+        "weight_pct": 13.333
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 Recover (5–6)% of Mana on Kill",
+        "weight": 500,
+        "weight_pct": 13.333
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 90,
+        "text_plain": "90 Recover (5–6)% of Mana on Kill(5–10)% increased Mana Recovery Rate if you haven't Killed Recently",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Mana Recovery rate",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 26.667,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (8–11)% increased Mana Recovery rate",
+        "weight": 500,
+        "weight_pct": 13.333
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 (12–15)% increased Mana Recovery rate",
+        "weight": 500,
+        "weight_pct": 13.333
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 90,
+        "text_plain": "90 (12–15)% increased Mana Recovery rate(20–35)% increased Mana Recovery from Flasks",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Movement Speed",
+    "tier": 2,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 22.727,
+    "tags": [
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (3–6)% increased Movement Speed",
+        "weight": 500,
+        "weight_pct": 11.364
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 73,
+        "text_plain": "73 (7–10)% increased Movement Speed",
+        "weight": 500,
+        "weight_pct": 11.364
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "One_Hand_Maces",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% chance to double Stun Duration",
+    "tier": 2,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 22.727,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (7–11)% chance to double Stun Duration",
+        "weight": 500,
+        "weight_pct": 11.364
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 73,
+        "text_plain": "73 (12–15)% chance to double Stun Duration",
+        "weight": 500,
+        "weight_pct": 11.364
+      }
+    ],
+    "sourceCategories": [
+      "One_Hand_Maces",
+      "Two_Hand_Maces"
+    ]
+  },
+  {
+    "category": "One_Hand_Maces",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Movement Speed if you've Hit an Enemy Recently",
+    "tier": 2,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 22.727,
+    "tags": [
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (5–7)% increased Movement Speed if you've Hit an Enemy Recently",
+        "weight": 500,
+        "weight_pct": 11.364
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 73,
+        "text_plain": "73 (8–10)% increased Movement Speed if you've Hit an Enemy Recently",
+        "weight": 500,
+        "weight_pct": 11.364
+      }
+    ],
+    "sourceCategories": [
+      "One_Hand_Maces",
+      "Sceptres",
+      "Two_Hand_Maces"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "# to Minimum Frenzy Charges",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 21.053,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 +1 to Minimum Frenzy Charges",
+        "weight": 500,
+        "weight_pct": 10.526
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 +2 to Minimum Frenzy Charges",
+        "weight": 500,
+        "weight_pct": 10.526
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% chance to Avoid Physical Damage from Hits",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 21.053,
+    "tags": [
+      "physical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (5–7)% chance to Avoid Physical Damage from Hits",
+        "weight": 500,
+        "weight_pct": 10.526
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 (8–10)% chance to Avoid Physical Damage from Hits",
+        "weight": 500,
+        "weight_pct": 10.526
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Quivers",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased effect of Non-Curse Auras from your Skills",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 21.053,
+    "tags": [
+      "aura"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 73,
+        "text_plain": "73 (5–7)% increased effect of Non-Curse Auras from your Skills",
+        "weight": 500,
+        "weight_pct": 10.526
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 (8–10)% increased effect of Non-Curse Auras from your Skills",
+        "weight": 500,
+        "weight_pct": 10.526
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Quivers",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% chance to gain Onslaught for # seconds on Kill",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 20,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (5–7)% chance to gain Onslaught for 4 seconds on Kill",
+        "weight": 500,
+        "weight_pct": 10
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 (8–10)% chance to gain Onslaught for 4 seconds on Kill",
+        "weight": 500,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Quivers"
+    ]
+  },
+  {
+    "category": "Quivers",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% Global chance to Blind Enemies on hit",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 20,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (8–11)% Global chance to Blind Enemies on hit",
+        "weight": 500,
+        "weight_pct": 10
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 (12–15)% Global chance to Blind Enemies on hit",
+        "weight": 500,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Quivers"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Mana Reservation Efficiency of Skills",
+    "tier": 3,
+    "ilvl": 75,
+    "weight": 1000,
+    "weight_pct": 19.048,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (4–6)% increased Mana Reservation Efficiency of Skills",
+        "weight": 500,
+        "weight_pct": 9.524
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (7–10)% increased Mana Reservation Efficiency of Skills",
+        "weight": 500,
+        "weight_pct": 9.524
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 85,
+        "text_plain": "85 (11–14)% increased Mana Reservation Efficiency of Skills",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Burning Damage#% chance to Ignite",
+    "tier": 3,
+    "ilvl": 75,
+    "weight": 1000,
+    "weight_pct": 19.048,
+    "tags": [
+      "damage",
+      "elemental",
+      "fire",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (15–17)% increased Burning Damage(6–8)% chance to Ignite",
+        "weight": 500,
+        "weight_pct": 9.524
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (18–20)% increased Burning Damage(6–8)% chance to Ignite",
+        "weight": 500,
+        "weight_pct": 9.524
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 85,
+        "text_plain": "85 (10–15)% chance to IgniteIgnites you inflict deal Damage (10–15)% faster",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Freeze Duration on Enemies#% chance to Freeze",
+    "tier": 3,
+    "ilvl": 75,
+    "weight": 1000,
+    "weight_pct": 19.048,
+    "tags": [
+      "elemental",
+      "cold",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (8–12)% increased Freeze Duration on Enemies(6–8)% chance to Freeze",
+        "weight": 500,
+        "weight_pct": 9.524
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (13–15)% increased Freeze Duration on Enemies(6–8)% chance to Freeze",
+        "weight": 500,
+        "weight_pct": 9.524
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 85,
+        "text_plain": "85 (10–15)% chance to FreezeFreeze Enemies as though dealing (30–50)% more Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% chance to Shock#% increased Effect of Lightning Ailments",
+    "tier": 3,
+    "ilvl": 75,
+    "weight": 1000,
+    "weight_pct": 19.048,
+    "tags": [
+      "elemental",
+      "lightning",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (6–8)% chance to Shock(8–12)% increased Effect of Lightning Ailments",
+        "weight": 500,
+        "weight_pct": 9.524
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (6–8)% chance to Shock(13–15)% increased Effect of Lightning Ailments",
+        "weight": 500,
+        "weight_pct": 9.524
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 85,
+        "text_plain": "85 (10–15)% chance to ShockShock Enemies as though dealing (30–50)% more Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "Regenerate # Mana per second",
+    "tier": 3,
+    "ilvl": 75,
+    "weight": 1000,
+    "weight_pct": 19.048,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 Regenerate (3–5) Mana per second",
+        "weight": 500,
+        "weight_pct": 9.524
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 Regenerate (6–8) Mana per second",
+        "weight": 500,
+        "weight_pct": 9.524
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 85,
+        "text_plain": "85 Regenerate (6–8) Mana per secondMana Flasks gain 1 Charge every 3 seconds",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Warcry Speed",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 1500,
+    "weight_pct": 18.182,
+    "tags": [
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (21–25)% increased Warcry Speed",
+        "weight": 500,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (26–30)% increased Warcry Speed",
+        "weight": 500,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 (31–35)% increased Warcry Speed",
+        "weight": 500,
+        "weight_pct": 6.061
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Mana Recovery rate",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 500,
+    "weight_pct": 18.182,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (7–9)% increased Mana Recovery rate",
+        "weight": 250,
+        "weight_pct": 9.091
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (10–12)% increased Mana Recovery rate",
+        "weight": 250,
+        "weight_pct": 9.091
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "Remove Chill and Freeze when you use a Flask",
+    "tier": 1,
+    "ilvl": 75,
+    "weight": 500,
+    "weight_pct": 18.182,
+    "tags": [
+      "elemental",
+      "cold",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 Remove Chill and Freeze when you use a Flask",
+        "weight": 500,
+        "weight_pct": 18.182
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Bone_Ring",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "(8–12)% increased Attack Speed if you've been Hit Recently",
+    "tier": 1,
+    "ilvl": 75,
+    "weight": 500,
+    "weight_pct": 17.241,
+    "tags": [
+      "attack",
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (8–12)% increased Attack Speed if you've been Hit Recently",
+        "weight": 500,
+        "weight_pct": 17.241
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% chance to inflict Cold Exposure on Hit",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 15.625,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (11–15)% chance to inflict Cold Exposure on Hit",
+        "weight": 500,
+        "weight_pct": 7.813
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 (16–20)% chance to inflict Cold Exposure on Hit",
+        "weight": 500,
+        "weight_pct": 7.813
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "Spells have a #% chance to deal Double Damage",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 15.625,
+    "tags": [
+      "damage",
+      "caster"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 Spells have a (4–5)% chance to deal Double Damage",
+        "weight": 500,
+        "weight_pct": 7.813
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 Spells have a (6–7)% chance to deal Double Damage",
+        "weight": 500,
+        "weight_pct": 7.813
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "Hatred has #% increased Aura Effect",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 1000,
+    "weight_pct": 15.625,
+    "tags": [
+      "aura"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 Hatred has (28–33)% increased Aura Effect",
+        "weight": 500,
+        "weight_pct": 7.813
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 Hatred has (34–40)% increased Aura Effect",
+        "weight": 500,
+        "weight_pct": 7.813
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Cast Speed if you've Killed Recently",
+    "tier": 2,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 15.625,
+    "tags": [
+      "caster",
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (13–16)% increased Cast Speed if you've Killed Recently",
+        "weight": 500,
+        "weight_pct": 7.813
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 73,
+        "text_plain": "73 (17–20)% increased Cast Speed if you've Killed Recently",
+        "weight": 500,
+        "weight_pct": 7.813
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Bone_Ring",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "Curse Enemies with Frostbite on Hit",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 400,
+    "weight_pct": 13.793,
+    "tags": [
+      "caster",
+      "curse"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 Curse Enemies with Frostbite on Hit",
+        "weight": 200,
+        "weight_pct": 6.897
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 Curse Enemies with Frostbite on Hit",
+        "weight": 200,
+        "weight_pct": 6.897
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Staves",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% Chance to Block Attack Damage if you were Damaged by a Hit Recently",
+    "tier": 2,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 13.514,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 +(10–12)% Chance to Block Attack Damage if you were Damaged by a Hit Recently",
+        "weight": 500,
+        "weight_pct": 6.757
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 73,
+        "text_plain": "73 +(13–15)% Chance to Block Attack Damage if you were Damaged by a Hit Recently",
+        "weight": 500,
+        "weight_pct": 6.757
+      }
+    ],
+    "sourceCategories": [
+      "Staves",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Staves",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% Chance to Block Spell Damage if you were Damaged by a Hit Recently",
+    "tier": 2,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 13.514,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 +(10–12)% Chance to Block Spell Damage if you were Damaged by a Hit Recently",
+        "weight": 500,
+        "weight_pct": 6.757
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 73,
+        "text_plain": "73 +(13–15)% Chance to Block Spell Damage if you were Damaged by a Hit Recently",
+        "weight": 500,
+        "weight_pct": 6.757
+      }
+    ],
+    "sourceCategories": [
+      "Staves",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased effect of Non-Curse Auras from your Skills",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 500,
+    "weight_pct": 13.333,
+    "tags": [
+      "aura"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (15–20)% increased effect of Non-Curse Auras from your Skills",
+        "weight": 250,
+        "weight_pct": 6.667
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 (21–25)% increased effect of Non-Curse Auras from your Skills",
+        "weight": 250,
+        "weight_pct": 6.667
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 90,
+        "text_plain": "90 (26–30)% increased effect of Non-Curse Auras from your Skills",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Dexterity",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1000,
+    "weight_pct": 12.121,
+    "tags": [
+      "attribute"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (5–8)% increased Dexterity",
+        "weight": 500,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (9–12)% increased Dexterity",
+        "weight": 500,
+        "weight_pct": 6.061
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Effect of Non-Damaging Ailments",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1000,
+    "weight_pct": 12.121,
+    "tags": [
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (15–20)% increased Effect of Non-Damaging Ailments",
+        "weight": 500,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (21–25)% increased Effect of Non-Damaging Ailments",
+        "weight": 500,
+        "weight_pct": 6.061
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Bone_Ring",
+      "Bone_Spirit_Shield",
+      "Quivers",
+      "Rings",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% of Cold Damage Leeched as Life#% of Cold Damage Leeched as Energy Shield",
+    "tier": 2,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 12.121,
+    "tags": [
+      "life",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (0.3–0.5)% of Cold Damage Leeched as Life",
+        "weight": 500,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (0.2–0.4)% of Cold Damage Leeched as Energy Shield",
+        "weight": 500,
+        "weight_pct": 6.061
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% chance to deal Double Damage if you have Stunned an Enemy Recently",
+    "tier": 2,
+    "ilvl": 83,
+    "weight": 1000,
+    "weight_pct": 12.121,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 75,
+        "text_plain": "75 (5–7)% chance to deal Double Damage if you have Stunned an Enemy Recently",
+        "weight": 500,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 83,
+        "text_plain": "83 (8–10)% chance to deal Double Damage if you have Stunned an Enemy Recently",
+        "weight": 500,
+        "weight_pct": 6.061
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "One_Hand_Maces",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "Enemies Killed with Attack or Spell Hits Explode, dealing 5% of their Life as Fire Damage",
+    "tier": 1,
+    "ilvl": 78,
+    "weight": 500,
+    "weight_pct": 11.364,
+    "tags": [
+      "damage",
+      "elemental",
+      "fire"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 78,
+        "text_plain": "78 Enemies Killed with Attack or Spell Hits Explode, dealing 5% of their Life as Fire Damage",
+        "weight": 500,
+        "weight_pct": 11.364
+      }
+    ],
+    "sourceCategories": [
+      "One_Hand_Maces",
+      "Two_Hand_Maces"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "(8–12)% increased Effect of your Curses",
+    "tier": 1,
+    "ilvl": 80,
+    "weight": 500,
+    "weight_pct": 10.526,
+    "tags": [
+      "caster",
+      "curse"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 (8–12)% increased Effect of your Curses",
+        "weight": 500,
+        "weight_pct": 10.526
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "(8–14)% increased Attack Speed during any Flask Effect",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 250,
+    "weight_pct": 9.091,
+    "tags": [
+      "attack",
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (8–14)% increased Attack Speed during any Flask Effect",
+        "weight": 250,
+        "weight_pct": 9.091
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "Auras from your Skills grant 4% increased Damage to you and Allies",
+    "tier": 1,
+    "ilvl": 82,
+    "weight": 400,
+    "weight_pct": 9.091,
+    "tags": [
+      "damage",
+      "aura"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 82,
+        "text_plain": "82 Auras from your Skills grant 4% increased Damage to you and Allies",
+        "weight": 400,
+        "weight_pct": 9.091
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "Auras from your Skills grant 2% increased Damage to you and Allies",
+    "tier": 1,
+    "ilvl": 82,
+    "weight": 400,
+    "weight_pct": 8.163,
+    "tags": [
+      "damage",
+      "aura"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 82,
+        "text_plain": "82 Auras from your Skills grant 2% increased Damage to you and Allies",
+        "weight": 400,
+        "weight_pct": 8.163
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Thrusting_One_Hand_Swords",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "Curse Enemies with Frostbite on Hit",
+    "tier": 1,
+    "ilvl": 78,
+    "weight": 500,
+    "weight_pct": 7.813,
+    "tags": [
+      "caster",
+      "curse"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 78,
+        "text_plain": "78 Curse Enemies with Frostbite on Hit",
+        "weight": 500,
+        "weight_pct": 7.813
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% chance to gain a Frenzy Charge on Hit",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 250,
+    "weight_pct": 6.667,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 80,
+        "text_plain": "80 10% chance to gain a Frenzy Charge on Hit",
+        "weight": 250,
+        "weight_pct": 6.667
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 90,
+        "text_plain": "90 1% increased Movement Speed per Frenzy Charge10% chance to gain a Frenzy Charge on Hit",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "Recover (3–5)% of your maximum Mana when you Block",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 250,
+    "weight_pct": 5.263,
+    "tags": [
+      "resource",
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 Recover (3–5)% of your maximum Mana when you Block",
+        "weight": 250,
+        "weight_pct": 5.263
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "Nearby Enemies have #% to Cold Resistance",
+    "tier": 2,
+    "ilvl": 85,
+    "weight": 250,
+    "weight_pct": 4.762,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold",
+      "resistance"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 85,
+        "text_plain": "85 Nearby Enemies have -9% to Cold Resistance",
+        "weight": 250,
+        "weight_pct": 4.762
+      },
+      {
+        "tier_name": "of Elevated Redemption",
+        "tier_level": 95,
+        "text_plain": "95 Nearby Enemies have -12% to Cold Resistance",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "Prevent +2% of Suppressed Spell Damage",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 250,
+    "weight_pct": 3.03,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 Prevent +2% of Suppressed Spell Damage",
+        "weight": 250,
+        "weight_pct": 3.03
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  }
+]

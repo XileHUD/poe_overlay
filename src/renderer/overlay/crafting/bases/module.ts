@@ -42,7 +42,11 @@ function normalizeCategorySlug(input?: string): string {
   if (!input) return "";
   const trimmed = input.trim();
   if (!trimmed) return "";
-  return trimmed.replace(/[^A-Za-z0-9_]+/g, "_").replace(/_+/g, "_");
+  return trimmed
+    .replace(/[^A-Za-z0-9_]+/g, "_")
+    .replace(/_+/g, "_")
+    .replace(/^_+|_+$/g, "")
+    .toUpperCase();
 }
 
 function deriveDefenseSuffix(base: BaseItem): string | null {
@@ -60,12 +64,13 @@ function deriveDefenseSuffix(base: BaseItem): string | null {
 
 function buildModifierSlugCandidates(base: BaseItem, parentKey: string): string[] {
   const ordered: string[] = [];
-  const baseCat = normalizeCategorySlug(base?.category);
+  const explicitCategory = normalizeCategorySlug(base?.category);
   const parent = normalizeCategorySlug(parentKey === "All" ? base?.category : parentKey);
   const synonyms = new Set<string>();
   const collectSynonyms = (key?: string) => {
     if (!key) return;
-    const opts = CATEGORY_SYNONYMS[key] || CATEGORY_SYNONYMS[normalizeCategorySlug(key)] || [];
+    const normalizedKey = normalizeCategorySlug(key);
+    const opts = CATEGORY_SYNONYMS[key] || CATEGORY_SYNONYMS[normalizedKey] || [];
     opts.forEach((entry) => {
       const normalized = normalizeCategorySlug(entry);
       if (normalized) synonyms.add(normalized);
@@ -73,10 +78,10 @@ function buildModifierSlugCandidates(base: BaseItem, parentKey: string): string[
   };
   collectSynonyms(base?.category);
   collectSynonyms(parentKey);
-  collectSynonyms(baseCat);
+  if (explicitCategory) collectSynonyms(explicitCategory);
   collectSynonyms(parent);
 
-  const seeds = [baseCat, parent, ...Array.from(synonyms)].filter(Boolean);
+  const seeds = [explicitCategory, parent, ...Array.from(synonyms)].filter(Boolean);
   const defenceSuffix = deriveDefenseSuffix(base);
   if (defenceSuffix) {
     seeds.forEach((seed) => {
@@ -88,7 +93,6 @@ function buildModifierSlugCandidates(base: BaseItem, parentKey: string): string[
     if (!seed) return;
     ordered.push(seed);
   });
-  ordered.push("ALL");
   const unique = new Set<string>();
   const result: string[] = [];
   ordered.forEach((slug) => {
@@ -174,6 +178,15 @@ export function render(groups: BaseGroups): void {
   const rawCategoryKeys = Object.keys(state.groups).sort((a,b)=>a.localeCompare(b));
   const categoryKeys = ['All', ...rawCategoryKeys];
   if(!categoryKeys.length){ panel.innerHTML='<div class="no-mods">No bases found</div>'; return; }
+
+  rawCategoryKeys.forEach((key) => {
+    const entries = ((state.groups as any)[key] || []) as BaseItem[];
+    entries.forEach((base) => {
+      if (!base.category) {
+        base.category = key;
+      }
+    });
+  });
 
   // Derive tags per base and collect universe + counts
   const tagUniverse = new Set<string>();
@@ -352,7 +365,7 @@ export function render(groups: BaseGroups): void {
         const highlightTag = (sortTag===t) || (defenseQuick.size>1 && defenseQuick.has(t as any) && ['Armour','Evasion','ES'].includes(t));
         return `<span style=\"background:${highlightTag?'var(--accent-blue)':'var(--bg-tertiary)'}; padding:2px 6px; border-radius:4px; font-size:10px; cursor:pointer;\" data-sort-tag='${t}'>${t}</span>`;
       }).join('')}</div>` : '';
-      const slugCandidates = buildModifierSlugCandidates(b, cat);
+  const slugCandidates = buildModifierSlugCandidates(b, cat);
       const primarySlug = slugCandidates.length ? slugCandidates[0] : '';
       const sortBadge = (sortTag && (b as any).__sortVal!==-Infinity)?` <span style='font-size:11px; color:var(--accent-blue);'>(${(b as any).__sortVal})</span>`:'';
       const safeName = escapeHtml(b.name || '');

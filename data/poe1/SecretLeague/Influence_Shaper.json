@@ -1,0 +1,5564 @@
+[
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "+1 to maximum number of Summoned Totems",
+    "tier": 1,
+    "ilvl": 70,
+    "weight": 800,
+    "weight_pct": 100,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 70,
+        "text_plain": "70 +1 to maximum number of Summoned Totems",
+        "weight": 800,
+        "weight_pct": 100
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Gems are Supported by Level # Slower Projectiles#% increased Projectile Damage",
+    "tier": 4,
+    "ilvl": 83,
+    "weight": 2400,
+    "weight_pct": 75,
+    "tags": [
+      "damage",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Slower Projectiles(15–18)% increased Projectile Damage",
+        "weight": 800,
+        "weight_pct": 25
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Slower Projectiles(19–22)% increased Projectile Damage",
+        "weight": 800,
+        "weight_pct": 25
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 83,
+        "text_plain": "83 Socketed Gems are Supported by Level 20 Slower Projectiles(23–25)% increased Projectile Damage",
+        "weight": 800,
+        "weight_pct": 25
+      },
+      {
+        "tier_name": "Elevated Shaper's",
+        "tier_level": 93,
+        "text_plain": "93 Socketed Gems are Supported by Level 25 Slower Projectiles(23–25)% increased Projectile Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Unaffected by Chilled GroundUnaffected by Burning Ground",
+    "tier": 4,
+    "ilvl": 68,
+    "weight": 1600,
+    "weight_pct": 66.667,
+    "tags": [
+      "elemental",
+      "cold",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Unaffected by Chilled Ground",
+        "weight": 800,
+        "weight_pct": 33.333
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Unaffected by Burning Ground",
+        "weight": 800,
+        "weight_pct": 33.333
+      },
+      {
+        "tier_name": "Elevated Shaper's",
+        "tier_level": 78,
+        "text_plain": "78 Unaffected by Chill",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Elevated Shaper's",
+        "tier_level": 78,
+        "text_plain": "78 Unaffected by Ignite",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "#% of Physical Damage from Hits taken as Cold Damage#% of Physical Damage from Hits taken as Lightning Damage",
+    "tier": 5,
+    "ilvl": 83,
+    "weight": 1600,
+    "weight_pct": 53.333,
+    "tags": [
+      "physical",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 (8–12)% of Physical Damage from Hits taken as Cold Damage",
+        "weight": 400,
+        "weight_pct": 13.333
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 83,
+        "text_plain": "83 (13–15)% of Physical Damage from Hits taken as Cold Damage",
+        "weight": 400,
+        "weight_pct": 13.333
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 (8–12)% of Physical Damage from Hits taken as Lightning Damage",
+        "weight": 400,
+        "weight_pct": 13.333
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 82,
+        "text_plain": "82 (13–15)% of Physical Damage from Hits taken as Lightning Damage",
+        "weight": 400,
+        "weight_pct": 13.333
+      },
+      {
+        "tier_name": "Elevated Shaper's",
+        "tier_level": 93,
+        "text_plain": "93 (16–18)% of Physical Damage from Hits taken as Cold Damage(7–10)% of Cold Damage taken Recouped as Life",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "#% increased Elemental Damage",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 1500,
+    "weight_pct": 48.387,
+    "tags": [
+      "damage",
+      "elemental"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 (11–15)% increased Elemental Damage",
+        "weight": 500,
+        "weight_pct": 16.129
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 (16–20)% increased Elemental Damage",
+        "weight": 500,
+        "weight_pct": 16.129
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 80,
+        "text_plain": "80 (21–25)% increased Elemental Damage",
+        "weight": 500,
+        "weight_pct": 16.129
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Bone_Ring",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Adds # to # Cold Damage against Chilled or Frozen EnemiesAdds # to # Lightning Damage against Shocked Enemies",
+    "tier": 4,
+    "ilvl": 75,
+    "weight": 3200,
+    "weight_pct": 44.138,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Adds (17–23) to (35–41) Cold Damage against Chilled or Frozen Enemies",
+        "weight": 800,
+        "weight_pct": 11.034
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Adds (20–26) to (41–48) Cold Damage against Chilled or Frozen Enemies",
+        "weight": 800,
+        "weight_pct": 11.034
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Adds (3–7) to (68–73) Lightning Damage against Shocked Enemies",
+        "weight": 800,
+        "weight_pct": 11.034
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Adds (4–8) to (82–86) Lightning Damage against Shocked Enemies",
+        "weight": 800,
+        "weight_pct": 11.034
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Gems are Supported by Level # Increased Area of Effect#% increased Area of Effect",
+    "tier": 4,
+    "ilvl": 83,
+    "weight": 2400,
+    "weight_pct": 42.857,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Increased Area of Effect(7–9)% increased Area of Effect",
+        "weight": 800,
+        "weight_pct": 14.286
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Increased Area of Effect(10–12)% increased Area of Effect",
+        "weight": 800,
+        "weight_pct": 14.286
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 83,
+        "text_plain": "83 Socketed Gems are Supported by Level 20 Increased Area of Effect(13–15)% increased Area of Effect",
+        "weight": 800,
+        "weight_pct": 14.286
+      },
+      {
+        "tier_name": "Elevated Shaper's",
+        "tier_level": 93,
+        "text_plain": "93 Socketed Gems are Supported by Level 25 Increased Area of Effect(13–15)% increased Area of Effect",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Gain #% of Physical Damage as Extra Cold Damage",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 3000,
+    "weight_pct": 36.585,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Gain (7–12)% of Physical Damage as Extra Cold Damage",
+        "weight": 1000,
+        "weight_pct": 12.195
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Gain (13–17)% of Physical Damage as Extra Cold Damage",
+        "weight": 1000,
+        "weight_pct": 12.195
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 80,
+        "text_plain": "80 Gain (18–20)% of Physical Damage as Extra Cold Damage",
+        "weight": 1000,
+        "weight_pct": 12.195
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Claws",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Damage Penetrates #% Elemental Resistances",
+    "tier": 3,
+    "ilvl": 83,
+    "weight": 3000,
+    "weight_pct": 36.585,
+    "tags": [
+      "damage",
+      "elemental"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Damage Penetrates (7–8)% Elemental Resistances",
+        "weight": 1000,
+        "weight_pct": 12.195
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Damage Penetrates (9–10)% Elemental Resistances",
+        "weight": 1000,
+        "weight_pct": 12.195
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 83,
+        "text_plain": "83 Damage Penetrates (11–12)% Elemental Resistances",
+        "weight": 1000,
+        "weight_pct": 12.195
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Gems are supported by Level # Life Leech",
+    "tier": 2,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 33.333,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are supported by Level 15 Life Leech",
+        "weight": 800,
+        "weight_pct": 33.333
+      },
+      {
+        "tier_name": "Elevated Shaper's",
+        "tier_level": 78,
+        "text_plain": "78 Socketed Gems are supported by Level 20 Life Leech",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "#% increased maximum Mana",
+    "tier": 3,
+    "ilvl": 75,
+    "weight": 800,
+    "weight_pct": 26.667,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 (9–11)% increased maximum Mana",
+        "weight": 400,
+        "weight_pct": 13.333
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 (12–15)% increased maximum Mana",
+        "weight": 400,
+        "weight_pct": 13.333
+      },
+      {
+        "tier_name": "Elevated Shaper's",
+        "tier_level": 85,
+        "text_plain": "85 (16–18)% increased maximum Mana",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Gain #% of Physical Damage as Extra Lightning Damage",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 3000,
+    "weight_pct": 25.862,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "lightning"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Gain (7–12)% of Physical Damage as Extra Lightning Damage",
+        "weight": 1000,
+        "weight_pct": 8.621
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Gain (13–17)% of Physical Damage as Extra Lightning Damage",
+        "weight": 1000,
+        "weight_pct": 8.621
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 80,
+        "text_plain": "80 Gain (18–20)% of Physical Damage as Extra Lightning Damage",
+        "weight": 1000,
+        "weight_pct": 8.621
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "One_Hand_Axes",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Gain #% of Physical Damage as Extra Fire Damage",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 3000,
+    "weight_pct": 25.862,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "fire"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Gain (7–12)% of Physical Damage as Extra Fire Damage",
+        "weight": 1000,
+        "weight_pct": 8.621
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Gain (13–17)% of Physical Damage as Extra Fire Damage",
+        "weight": 1000,
+        "weight_pct": 8.621
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 80,
+        "text_plain": "80 Gain (18–20)% of Physical Damage as Extra Fire Damage",
+        "weight": 1000,
+        "weight_pct": 8.621
+      }
+    ],
+    "sourceCategories": [
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Sceptres",
+      "Staves",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Grants Level 22 Intimidating Cry Skill",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 25.806,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Grants Level 22 Intimidating Cry Skill",
+        "weight": 800,
+        "weight_pct": 25.806
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "#% increased Energy Shield from Equipped Body Armour",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 800,
+    "weight_pct": 25.806,
+    "tags": [
+      "defences",
+      "energy_shield"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 (21–25)% increased Energy Shield from Equipped Body Armour",
+        "weight": 400,
+        "weight_pct": 12.903
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 80,
+        "text_plain": "80 (26–30)% increased Energy Shield from Equipped Body Armour",
+        "weight": 400,
+        "weight_pct": 12.903
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Gems are Supported by Level # Mana Leech",
+    "tier": 2,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 25,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 15 Mana Leech",
+        "weight": 800,
+        "weight_pct": 25
+      },
+      {
+        "tier_name": "Elevated Shaper's",
+        "tier_level": 78,
+        "text_plain": "78 Socketed Gems are Supported by Level 20 Mana Leech(20–30)% increased Maximum total Mana Recovery per second from Leech",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "#% increased Movement Speed",
+    "tier": 2,
+    "ilvl": 84,
+    "weight": 1600,
+    "weight_pct": 22.222,
+    "tags": [
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 (4–6)% increased Movement Speed",
+        "weight": 800,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 84,
+        "text_plain": "84 (7–8)% increased Movement Speed",
+        "weight": 800,
+        "weight_pct": 11.111
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Bows",
+      "Quivers",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Gain #% of Physical Damage as Extra Cold Damage",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1600,
+    "weight_pct": 22.222,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Gain (8–11)% of Physical Damage as Extra Cold Damage",
+        "weight": 800,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Gain (12–15)% of Physical Damage as Extra Cold Damage",
+        "weight": 800,
+        "weight_pct": 11.111
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Quivers"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Gain #% of Physical Damage as Extra Lightning Damage",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1600,
+    "weight_pct": 22.222,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "lightning"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Gain (8–11)% of Physical Damage as Extra Lightning Damage",
+        "weight": 800,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Gain (12–15)% of Physical Damage as Extra Lightning Damage",
+        "weight": 800,
+        "weight_pct": 11.111
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "#% increased Damage per # Dexterity#% increased Damage per # Intelligence",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 1600,
+    "weight_pct": 22.222,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 80,
+        "text_plain": "80 1% increased Damage per 15 Dexterity",
+        "weight": 800,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 80,
+        "text_plain": "80 1% increased Damage per 15 Intelligence",
+        "weight": 800,
+        "weight_pct": 11.111
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Bone_Ring",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Gain # Life per Enemy Hit with Spells",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1600,
+    "weight_pct": 22.069,
+    "tags": [
+      "resource",
+      "life",
+      "caster"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Gain (8–12) Life per Enemy Hit with Spells",
+        "weight": 800,
+        "weight_pct": 11.034
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Gain (13–15) Life per Enemy Hit with Spells",
+        "weight": 800,
+        "weight_pct": 11.034
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Adds # to # Cold Damage to Spells",
+    "tier": 4,
+    "ilvl": 83,
+    "weight": 1200,
+    "weight_pct": 21.429,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold",
+      "caster"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Adds (14–18) to (27–32) Cold Damage to Spells",
+        "weight": 400,
+        "weight_pct": 7.143
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Adds (17–23) to (34–40) Cold Damage to Spells",
+        "weight": 400,
+        "weight_pct": 7.143
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 83,
+        "text_plain": "83 Adds (21–28) to (41–48) Cold Damage to Spells",
+        "weight": 400,
+        "weight_pct": 7.143
+      },
+      {
+        "tier_name": "Elevated Shaper's",
+        "tier_level": 93,
+        "text_plain": "93 Adds (29–39) to (49–61) Cold Damage to Spells",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Adds # to # Lightning Damage to Spells",
+    "tier": 4,
+    "ilvl": 84,
+    "weight": 1200,
+    "weight_pct": 21.429,
+    "tags": [
+      "damage",
+      "elemental",
+      "lightning",
+      "caster"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Adds (2–5) to (58–61) Lightning Damage to Spells",
+        "weight": 400,
+        "weight_pct": 7.143
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Adds (2–6) to (73–77) Lightning Damage to Spells",
+        "weight": 400,
+        "weight_pct": 7.143
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 84,
+        "text_plain": "84 Adds (2–7) to (88–93) Lightning Damage to Spells",
+        "weight": 400,
+        "weight_pct": 7.143
+      },
+      {
+        "tier_name": "Elevated Shaper's",
+        "tier_level": 94,
+        "text_plain": "94 Adds (2–8) to (101–121) Lightning Damage to Spells",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Two_Hand_Axes",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Gems are supported by Level # Cast On Critical StrikeSocketed Gems are Supported by Level # Cast On Melee Kill",
+    "tier": 4,
+    "ilvl": 75,
+    "weight": 1200,
+    "weight_pct": 20.339,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are supported by Level 18 Cast On Critical Strike",
+        "weight": 350,
+        "weight_pct": 5.932
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are supported by Level 20 Cast On Critical Strike",
+        "weight": 350,
+        "weight_pct": 5.932
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Cast On Melee Kill",
+        "weight": 250,
+        "weight_pct": 4.237
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Cast On Melee Kill",
+        "weight": 250,
+        "weight_pct": 4.237
+      }
+    ],
+    "sourceCategories": [
+      "Two_Hand_Axes",
+      "Two_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Quivers",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Gain (2–3) Mana per Enemy Hit with Attacks",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 20,
+    "tags": [
+      "mana",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Gain (2–3) Mana per Enemy Hit with Attacks",
+        "weight": 800,
+        "weight_pct": 20
+      }
+    ],
+    "sourceCategories": [
+      "Quivers"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Gems are Supported by Level # Controlled Destruction#% increased Spell DamageSocketed Gems are Supported by Level # Cold Penetration#% increased Cold DamageSocketed Gems are Supported by Level # Lightning Penetration#% increased Lightning Damage",
+    "tier": 9,
+    "ilvl": 80,
+    "weight": 2100,
+    "weight_pct": 16.154,
+    "tags": [
+      "damage",
+      "caster",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Controlled Destruction(45–52)% increased Spell Damage",
+        "weight": 400,
+        "weight_pct": 3.077
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Controlled Destruction(53–56)% increased Spell Damage",
+        "weight": 200,
+        "weight_pct": 1.538
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Controlled Destruction(57–60)% increased Spell Damage",
+        "weight": 100,
+        "weight_pct": 0.769
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Cold Penetration(45–52)% increased Cold Damage",
+        "weight": 400,
+        "weight_pct": 3.077
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Cold Penetration(53–56)% increased Cold Damage",
+        "weight": 200,
+        "weight_pct": 1.538
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Cold Penetration(57–60)% increased Cold Damage",
+        "weight": 100,
+        "weight_pct": 0.769
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Lightning Penetration(45–52)% increased Lightning Damage",
+        "weight": 400,
+        "weight_pct": 3.077
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Lightning Penetration(53–56)% increased Lightning Damage",
+        "weight": 200,
+        "weight_pct": 1.538
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Lightning Penetration(57–60)% increased Lightning Damage",
+        "weight": 100,
+        "weight_pct": 0.769
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Rune_Daggers",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Gain #% of Elemental Damage as Extra Chaos Damage",
+    "tier": 2,
+    "ilvl": 85,
+    "weight": 2000,
+    "weight_pct": 15.385,
+    "tags": [
+      "damage",
+      "elemental",
+      "chaos"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Gain (5–6)% of Elemental Damage as Extra Chaos Damage",
+        "weight": 1000,
+        "weight_pct": 7.692
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 85,
+        "text_plain": "85 Gain (7–8)% of Elemental Damage as Extra Chaos Damage",
+        "weight": 1000,
+        "weight_pct": 7.692
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Daggers",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "#% chance to gain a Power Charge on Kill",
+    "tier": 3,
+    "ilvl": 84,
+    "weight": 800,
+    "weight_pct": 14.286,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 (4–6)% chance to gain a Power Charge on Kill",
+        "weight": 400,
+        "weight_pct": 7.143
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 84,
+        "text_plain": "84 (7–10)% chance to gain a Power Charge on Kill",
+        "weight": 400,
+        "weight_pct": 7.143
+      },
+      {
+        "tier_name": "Elevated Shaper's",
+        "tier_level": 94,
+        "text_plain": "94 50% increased Power Charge Duration(11–15)% chance to gain a Power Charge on Kill",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "# to Level of Socketed Skill Gems",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 400,
+    "weight_pct": 13.333,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 80,
+        "text_plain": "80 +1 to Level of Socketed Skill Gems",
+        "weight": 400,
+        "weight_pct": 13.333
+      },
+      {
+        "tier_name": "Elevated Shaper's",
+        "tier_level": 90,
+        "text_plain": "90 +1 to Level of Socketed Skill Gems+(5–10)% to Quality of Socketed Skill Gems",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Sceptres",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Gems are Supported by Level # Controlled Destruction#% increased Spell DamageSocketed Gems are Supported by Level # Elemental Focus#% increased Elemental DamageSocketed Gems are Supported by Level # Lightning Penetration#% increased Lightning Damage",
+    "tier": 9,
+    "ilvl": 80,
+    "weight": 2100,
+    "weight_pct": 12.963,
+    "tags": [
+      "damage",
+      "caster",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Controlled Destruction(45–52)% increased Spell Damage",
+        "weight": 400,
+        "weight_pct": 2.469
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Controlled Destruction(53–56)% increased Spell Damage",
+        "weight": 200,
+        "weight_pct": 1.235
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Controlled Destruction(57–60)% increased Spell Damage",
+        "weight": 100,
+        "weight_pct": 0.617
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Elemental Focus(45–52)% increased Elemental Damage",
+        "weight": 400,
+        "weight_pct": 2.469
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Elemental Focus(53–56)% increased Elemental Damage",
+        "weight": 200,
+        "weight_pct": 1.235
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Elemental Focus(57–60)% increased Elemental Damage",
+        "weight": 100,
+        "weight_pct": 0.617
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Lightning Penetration(45–52)% increased Lightning Damage",
+        "weight": 400,
+        "weight_pct": 2.469
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Lightning Penetration(53–56)% increased Lightning Damage",
+        "weight": 200,
+        "weight_pct": 1.235
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Lightning Penetration(57–60)% increased Lightning Damage",
+        "weight": 100,
+        "weight_pct": 0.617
+      }
+    ],
+    "sourceCategories": [
+      "Sceptres"
+    ]
+  },
+  {
+    "category": "Staves",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Gems are Supported by Level # Arcane SurgeSocketed Gems are Supported by Level # Cast On Melee KillSocketed Gems are Supported by Level # Cast While Channelling",
+    "tier": 5,
+    "ilvl": 75,
+    "weight": 1900,
+    "weight_pct": 12.583,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 1 Arcane Surge",
+        "weight": 400,
+        "weight_pct": 2.649
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Cast On Melee Kill",
+        "weight": 250,
+        "weight_pct": 1.656
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Cast On Melee Kill",
+        "weight": 250,
+        "weight_pct": 1.656
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Cast While Channelling",
+        "weight": 500,
+        "weight_pct": 3.311
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Cast While Channelling",
+        "weight": 500,
+        "weight_pct": 3.311
+      }
+    ],
+    "sourceCategories": [
+      "Staves"
+    ]
+  },
+  {
+    "category": "Two_Hand_Maces",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Gems are Supported by Level # Cast On Melee Kill",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 500,
+    "weight_pct": 11.905,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Cast On Melee Kill",
+        "weight": 250,
+        "weight_pct": 5.952
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Cast On Melee Kill",
+        "weight": 250,
+        "weight_pct": 5.952
+      }
+    ],
+    "sourceCategories": [
+      "Two_Hand_Maces"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Damage Penetrates (4–7)% Elemental Resistances",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 11.111,
+    "tags": [
+      "damage",
+      "elemental"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Damage Penetrates (4–7)% Elemental Resistances",
+        "weight": 800,
+        "weight_pct": 11.111
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Bone_Ring",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Gain (2–3) Mana per Enemy Hit with Spells",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 11.034,
+    "tags": [
+      "resource",
+      "mana",
+      "caster"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Gain (2–3) Mana per Enemy Hit with Spells",
+        "weight": 800,
+        "weight_pct": 11.034
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Warstaves",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Gems are Supported by Level # Cast On Melee KillSocketed Gems are Supported by Level # Cast While Channelling",
+    "tier": 4,
+    "ilvl": 75,
+    "weight": 1500,
+    "weight_pct": 10.563,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Cast On Melee Kill",
+        "weight": 250,
+        "weight_pct": 1.761
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Cast On Melee Kill",
+        "weight": 250,
+        "weight_pct": 1.761
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Cast While Channelling",
+        "weight": 500,
+        "weight_pct": 3.521
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Cast While Channelling",
+        "weight": 500,
+        "weight_pct": 3.521
+      }
+    ],
+    "sourceCategories": [
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "#% chance to gain a Frenzy Charge on Kill",
+    "tier": 2,
+    "ilvl": 84,
+    "weight": 800,
+    "weight_pct": 9.756,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 (4–6)% chance to gain a Frenzy Charge on Kill",
+        "weight": 400,
+        "weight_pct": 4.878
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 84,
+        "text_plain": "84 (7–10)% chance to gain a Frenzy Charge on Kill",
+        "weight": 400,
+        "weight_pct": 4.878
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Two_Hand_Axes",
+      "Two_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Gems are supported by Level # Elemental Damage with Attacks#% increased Elemental Damage with Attack Skills",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1000,
+    "weight_pct": 8.621,
+    "tags": [
+      "damage",
+      "elemental",
+      "attack",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are supported by Level 18 Elemental Damage with Attacks(28–32)% increased Elemental Damage with Attack Skills",
+        "weight": 500,
+        "weight_pct": 4.31
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are supported by Level 20 Elemental Damage with Attacks(33–37)% increased Elemental Damage with Attack Skills",
+        "weight": 500,
+        "weight_pct": 4.31
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Thrusting_One_Hand_Swords",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Gems are supported by Level # Cast On Critical Strike",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 700,
+    "weight_pct": 8.537,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are supported by Level 18 Cast On Critical Strike",
+        "weight": 350,
+        "weight_pct": 4.268
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are supported by Level 20 Cast On Critical Strike",
+        "weight": 350,
+        "weight_pct": 4.268
+      }
+    ],
+    "sourceCategories": [
+      "Bows"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "You and your Minions take #% reduced Reflected Elemental Damage",
+    "tier": 2,
+    "ilvl": 68,
+    "weight": 200,
+    "weight_pct": 6.667,
+    "tags": [
+      "elemental"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 You and your Minions take 100% reduced Reflected Elemental Damage",
+        "weight": 200,
+        "weight_pct": 6.667
+      },
+      {
+        "tier_name": "Elevated Shaper's",
+        "tier_level": 85,
+        "text_plain": "85 (3–5)% reduced Elemental Damage takenYou and your Minions take 100% reduced Reflected Elemental Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int",
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Skills deal 20% more Attack Damage",
+    "tier": 1,
+    "ilvl": 83,
+    "weight": 500,
+    "weight_pct": 6.098,
+    "tags": [
+      "damage",
+      "attack",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 83,
+        "text_plain": "83 Socketed Skills deal 20% more Attack Damage",
+        "weight": 500,
+        "weight_pct": 6.098
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Gems are Supported by Level # Added Fire Damage#% increased Physical Damage",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 700,
+    "weight_pct": 6.034,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "fire",
+      "attack",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Added Fire Damage(101–115)% increased Physical Damage",
+        "weight": 400,
+        "weight_pct": 3.448
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Added Fire Damage(116–126)% increased Physical Damage",
+        "weight": 200,
+        "weight_pct": 1.724
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Added Fire Damage(127–134)% increased Physical Damage",
+        "weight": 100,
+        "weight_pct": 0.862
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Thrusting_One_Hand_Swords",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Staves",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "#% chance to gain a Power Charge on Kill",
+    "tier": 2,
+    "ilvl": 84,
+    "weight": 800,
+    "weight_pct": 5.298,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 (4–6)% chance to gain a Power Charge on Kill",
+        "weight": 400,
+        "weight_pct": 2.649
+      },
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 84,
+        "text_plain": "84 (7–10)% chance to gain a Power Charge on Kill",
+        "weight": 400,
+        "weight_pct": 2.649
+      }
+    ],
+    "sourceCategories": [
+      "Staves",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Skills deal 40% more Attack Damage",
+    "tier": 1,
+    "ilvl": 83,
+    "weight": 500,
+    "weight_pct": 4.31,
+    "tags": [
+      "damage",
+      "attack",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 83,
+        "text_plain": "83 Socketed Skills deal 40% more Attack Damage",
+        "weight": 500,
+        "weight_pct": 4.31
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Thrusting_One_Hand_Swords",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Skills deal 40% more Spell Damage",
+    "tier": 1,
+    "ilvl": 83,
+    "weight": 500,
+    "weight_pct": 3.846,
+    "tags": [
+      "damage",
+      "caster",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 83,
+        "text_plain": "83 Socketed Skills deal 40% more Spell Damage",
+        "weight": 500,
+        "weight_pct": 3.846
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Rune_Daggers",
+      "Sceptres",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Two_Hand_Axes",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Adds (2–3) to (4–5) Cold Damage to Attacks with this Weapon per 10 Dexterity",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 200,
+    "weight_pct": 3.39,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Adds (2–3) to (4–5) Cold Damage to Attacks with this Weapon per 10 Dexterity",
+        "weight": 200,
+        "weight_pct": 3.39
+      }
+    ],
+    "sourceCategories": [
+      "Two_Hand_Axes",
+      "Two_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Staves",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Socketed Skills deal 20% more Spell Damage",
+    "tier": 1,
+    "ilvl": 83,
+    "weight": 500,
+    "weight_pct": 3.311,
+    "tags": [
+      "damage",
+      "caster",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 83,
+        "text_plain": "83 Socketed Skills deal 20% more Spell Damage",
+        "weight": 500,
+        "weight_pct": 3.311
+      }
+    ],
+    "sourceCategories": [
+      "Staves"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Adds (1–2) to (3–4) Cold Damage to Attacks with this Weapon per 10 Dexterity",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 200,
+    "weight_pct": 2.439,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Adds (1–2) to (3–4) Cold Damage to Attacks with this Weapon per 10 Dexterity",
+        "weight": 200,
+        "weight_pct": 2.439
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Claws",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Thrusting_One_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Adds 1 to (5–6) Lightning Damage to Attacks with this Weapon per 10 Intelligence",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 200,
+    "weight_pct": 1.724,
+    "tags": [
+      "damage",
+      "elemental",
+      "lightning",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Adds 1 to (5–6) Lightning Damage to Attacks with this Weapon per 10 Intelligence",
+        "weight": 200,
+        "weight_pct": 1.724
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "Rune_Daggers",
+      "Sceptres",
+      "Wands"
+    ]
+  },
+  {
+    "category": "One_Hand_Axes",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Adds (1–2) to (3–4) Fire Damage to Attacks with this Weapon per 10 Strength",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 200,
+    "weight_pct": 1.724,
+    "tags": [
+      "damage",
+      "elemental",
+      "fire",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Adds (1–2) to (3–4) Fire Damage to Attacks with this Weapon per 10 Strength",
+        "weight": 200,
+        "weight_pct": 1.724
+      }
+    ],
+    "sourceCategories": [
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Sceptres",
+      "Thrusting_One_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Staves",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Adds (2–3) to (4–5) Fire Damage to Attacks with this Weapon per 10 Strength",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 200,
+    "weight_pct": 1.325,
+    "tags": [
+      "damage",
+      "elemental",
+      "fire",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Adds (2–3) to (4–5) Fire Damage to Attacks with this Weapon per 10 Strength",
+        "weight": 200,
+        "weight_pct": 1.325
+      }
+    ],
+    "sourceCategories": [
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Staves",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "Adds 1 to (7–8) Lightning Damage to Attacks with this Weapon per 10 Intelligence",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 200,
+    "weight_pct": 1.325,
+    "tags": [
+      "damage",
+      "elemental",
+      "lightning",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 68,
+        "text_plain": "68 Adds 1 to (7–8) Lightning Damage to Attacks with this Weapon per 10 Intelligence",
+        "weight": 200,
+        "weight_pct": 1.325
+      }
+    ],
+    "sourceCategories": [
+      "Staves",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Bone_Ring",
+    "domain": "shaper",
+    "side": "prefix",
+    "text_plain": "(2–3)% increased Experience gain",
+    "tier": 1,
+    "ilvl": 85,
+    "weight": 50,
+    "weight_pct": 0.69,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "The Shaper's",
+        "tier_level": 85,
+        "text_plain": "85 (2–3)% increased Experience gain",
+        "weight": 50,
+        "weight_pct": 0.69
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are Supported by Level # Hypothermia#% increased Effect of Cold AilmentsSocketed Gems are Supported by Level # Innervate#% increased Effect of Lightning Ailments",
+    "tier": 8,
+    "ilvl": 80,
+    "weight": 4800,
+    "weight_pct": 43.243,
+    "tags": [
+      "elemental",
+      "cold",
+      "ailment",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Hypothermia(8–12)% increased Effect of Cold Ailments",
+        "weight": 800,
+        "weight_pct": 7.207
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Hypothermia(13–16)% increased Effect of Cold Ailments",
+        "weight": 800,
+        "weight_pct": 7.207
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Hypothermia(17–20)% increased Effect of Cold Ailments",
+        "weight": 800,
+        "weight_pct": 7.207
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Innervate(8–12)% increased Effect of Lightning Ailments",
+        "weight": 800,
+        "weight_pct": 7.207
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Innervate(13–16)% increased Effect of Lightning Ailments",
+        "weight": 800,
+        "weight_pct": 7.207
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Innervate(17–20)% increased Effect of Lightning Ailments",
+        "weight": 800,
+        "weight_pct": 7.207
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 90,
+        "text_plain": "90 Socketed Gems are Supported by Level 25 Hypothermia(17–20)% increased Effect of Cold Ailments",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 90,
+        "text_plain": "90 Socketed Gems are Supported by Level 25 Innervate(17–20)% increased Effect of Lightning Ailments",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Bone_Ring",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% increased Global Critical Strike Chance",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 2400,
+    "weight_pct": 42.857,
+    "tags": [
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (10–15)% increased Global Critical Strike Chance",
+        "weight": 800,
+        "weight_pct": 14.286
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (16–20)% increased Global Critical Strike Chance",
+        "weight": 800,
+        "weight_pct": 14.286
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 (21–25)% increased Global Critical Strike Chance",
+        "weight": 800,
+        "weight_pct": 14.286
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Quivers",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% chance to Blind Enemies on Hit with Attacks",
+    "tier": 3,
+    "ilvl": 81,
+    "weight": 3000,
+    "weight_pct": 39.474,
+    "tags": [
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (5–6)% chance to Blind Enemies on Hit with Attacks",
+        "weight": 1000,
+        "weight_pct": 13.158
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (7–8)% chance to Blind Enemies on Hit with Attacks",
+        "weight": 1000,
+        "weight_pct": 13.158
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 81,
+        "text_plain": "81 (9–10)% chance to Blind Enemies on Hit with Attacks",
+        "weight": 1000,
+        "weight_pct": 13.158
+      }
+    ],
+    "sourceCategories": [
+      "Quivers"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are Supported by Level # Spell Cascade#% increased Area of EffectSocketed Gems are Supported by Level # Volley#% increased Projectile Speed",
+    "tier": 6,
+    "ilvl": 80,
+    "weight": 6000,
+    "weight_pct": 36.364,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Spell Cascade(5–8)% increased Area of Effect",
+        "weight": 1000,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Spell Cascade(9–12)% increased Area of Effect",
+        "weight": 1000,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Spell Cascade(13–15)% increased Area of Effect",
+        "weight": 1000,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Volley(15–18)% increased Projectile Speed",
+        "weight": 1000,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Volley(19–22)% increased Projectile Speed",
+        "weight": 1000,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Volley(23–25)% increased Projectile Speed",
+        "weight": 1000,
+        "weight_pct": 6.061
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Grants Level # Determination SkillGrants Level # Grace SkillGrants Level # Discipline SkillGrants Level # Haste SkillGrants Level # Vitality SkillGrants Level # Clarity Skill",
+    "tier": 6,
+    "ilvl": 68,
+    "weight": 4800,
+    "weight_pct": 31.579,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Grants Level 22 Determination Skill",
+        "weight": 800,
+        "weight_pct": 5.263
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Grants Level 22 Grace Skill",
+        "weight": 800,
+        "weight_pct": 5.263
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Grants Level 22 Discipline Skill",
+        "weight": 800,
+        "weight_pct": 5.263
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Grants Level 22 Haste Skill",
+        "weight": 800,
+        "weight_pct": 5.263
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Grants Level 22 Vitality Skill",
+        "weight": 800,
+        "weight_pct": 5.263
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Grants Level 22 Clarity Skill",
+        "weight": 800,
+        "weight_pct": 5.263
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% chance to Avoid Elemental Ailments",
+    "tier": 2,
+    "ilvl": 81,
+    "weight": 1600,
+    "weight_pct": 29.63,
+    "tags": [
+      "elemental",
+      "fire",
+      "cold",
+      "lightning",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 81,
+        "text_plain": "81 (31–35)% chance to Avoid Elemental Ailments",
+        "weight": 1600,
+        "weight_pct": 29.63
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 91,
+        "text_plain": "91 (36–45)% chance to Avoid Elemental Ailments",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% increased Mana Regeneration RateRegenerate # Mana per second",
+    "tier": 5,
+    "ilvl": 80,
+    "weight": 3200,
+    "weight_pct": 28.829,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (41–55)% increased Mana Regeneration Rate",
+        "weight": 800,
+        "weight_pct": 7.207
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (56–70)% increased Mana Regeneration Rate",
+        "weight": 800,
+        "weight_pct": 7.207
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Regenerate (3–5) Mana per second",
+        "weight": 800,
+        "weight_pct": 7.207
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Regenerate (6–8) Mana per second",
+        "weight": 800,
+        "weight_pct": 7.207
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 90,
+        "text_plain": "90 Regenerate (6–8) Mana per secondMana Flasks gain 1 Charge every 3 seconds",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Bone_Ring",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "(35–40)% reduced Effect of Curses on you",
+    "tier": 1,
+    "ilvl": 75,
+    "weight": 1600,
+    "weight_pct": 28.571,
+    "tags": [
+      "caster",
+      "curse"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (35–40)% reduced Effect of Curses on you",
+        "weight": 1600,
+        "weight_pct": 28.571
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Bone_Ring",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Grants Level # Herald of Ice SkillGrants Level # Herald of Thunder Skill",
+    "tier": 2,
+    "ilvl": 68,
+    "weight": 1600,
+    "weight_pct": 28.571,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Grants Level 22 Herald of Ice Skill",
+        "weight": 800,
+        "weight_pct": 14.286
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Grants Level 22 Herald of Thunder Skill",
+        "weight": 800,
+        "weight_pct": 14.286
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are Supported by Level # Ballista Totem#% increased Totem DamageSocketed Gems are Supported by Level # Ballista Totem#% increased Totem Placement speed",
+    "tier": 8,
+    "ilvl": 80,
+    "weight": 1500,
+    "weight_pct": 27.778,
+    "tags": [
+      "damage",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Ballista Totem(20–25)% increased Totem Damage",
+        "weight": 250,
+        "weight_pct": 4.63
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Ballista Totem(26–30)% increased Totem Damage",
+        "weight": 250,
+        "weight_pct": 4.63
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 22 Ballista Totem(31–35)% increased Totem Damage",
+        "weight": 250,
+        "weight_pct": 4.63
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Ballista Totem(8–12)% increased Totem Placement speed",
+        "weight": 250,
+        "weight_pct": 4.63
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Ballista Totem(13–16)% increased Totem Placement speed",
+        "weight": 250,
+        "weight_pct": 4.63
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 22 Ballista Totem(17–20)% increased Totem Placement speed",
+        "weight": 250,
+        "weight_pct": 4.63
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 90,
+        "text_plain": "90 Socketed Gems are Supported by Level 25 Ballista Totem(31–35)% increased Totem Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 90,
+        "text_plain": "90 Socketed Gems are Supported by Level 25 Ballista Totem(17–20)% increased Totem Placement speed",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are Supported by Level # Trap#% increased Trap DamageSocketed Gems are Supported by Level # Advanced Traps#% increased Trap DamageSocketed Gems are Supported by Level # Advanced Traps#% increased Trap Throwing SpeedSocketed Gems are Supported by Level # Trap And Mine Damage#% increased Trap Damage",
+    "tier": 16,
+    "ilvl": 80,
+    "weight": 3000,
+    "weight_pct": 24.59,
+    "tags": [
+      "damage",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Trap(20–25)% increased Trap Damage",
+        "weight": 250,
+        "weight_pct": 2.049
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Trap(26–30)% increased Trap Damage",
+        "weight": 250,
+        "weight_pct": 2.049
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 22 Trap(31–35)% increased Trap Damage",
+        "weight": 250,
+        "weight_pct": 2.049
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Advanced Traps(20–25)% increased Trap Damage",
+        "weight": 250,
+        "weight_pct": 2.049
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Advanced Traps(26–30)% increased Trap Damage",
+        "weight": 250,
+        "weight_pct": 2.049
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Advanced Traps(31–35)% increased Trap Damage",
+        "weight": 250,
+        "weight_pct": 2.049
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Advanced Traps(8–12)% increased Trap Throwing Speed",
+        "weight": 250,
+        "weight_pct": 2.049
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Advanced Traps(13–16)% increased Trap Throwing Speed",
+        "weight": 250,
+        "weight_pct": 2.049
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Advanced Traps(17–20)% increased Trap Throwing Speed",
+        "weight": 250,
+        "weight_pct": 2.049
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Trap And Mine Damage(20–25)% increased Trap Damage",
+        "weight": 250,
+        "weight_pct": 2.049
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Trap And Mine Damage(26–30)% increased Trap Damage",
+        "weight": 250,
+        "weight_pct": 2.049
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Trap And Mine Damage(31–35)% increased Trap Damage",
+        "weight": 250,
+        "weight_pct": 2.049
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 90,
+        "text_plain": "90 Socketed Gems are Supported by Level 25 Trap(31–35)% increased Trap Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 90,
+        "text_plain": "90 Socketed Gems are Supported by Level 25 Advanced Traps(31–35)% increased Trap Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 90,
+        "text_plain": "90 Socketed Gems are Supported by Level 25 Advanced Traps(17–20)% increased Trap Throwing Speed",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 90,
+        "text_plain": "90 Socketed Gems are Supported by Level 25 Trap And Mine Damage(31–35)% increased Trap Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are Supported by Level # Increased Critical Strikes#% increased Critical Strike ChanceSocketed Gems are Supported by Level # Increased Critical Strikes#% increased Spell Critical Strike Chance",
+    "tier": 4,
+    "ilvl": 75,
+    "weight": 4000,
+    "weight_pct": 24.242,
+    "tags": [
+      "attack",
+      "critical",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Increased Critical Strikes(22–25)% increased Critical Strike Chance",
+        "weight": 1000,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Increased Critical Strikes(26–29)% increased Critical Strike Chance",
+        "weight": 1000,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Increased Critical Strikes(60–74)% increased Spell Critical Strike Chance",
+        "weight": 1000,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Increased Critical Strikes(75–82)% increased Spell Critical Strike Chance",
+        "weight": 1000,
+        "weight_pct": 6.061
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Rune_Daggers",
+      "Sceptres",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Recover #% of Mana on Kill",
+    "tier": 3,
+    "ilvl": 75,
+    "weight": 1600,
+    "weight_pct": 22.222,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Recover (3–4)% of Mana on Kill",
+        "weight": 800,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Recover (5–6)% of Mana on Kill",
+        "weight": 800,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 85,
+        "text_plain": "85 Recover (5–6)% of Mana on Kill(5–10)% increased Mana Recovery Rate if you haven't Killed Recently",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Recover #% of Energy Shield on Kill",
+    "tier": 3,
+    "ilvl": 75,
+    "weight": 1600,
+    "weight_pct": 22.222,
+    "tags": [
+      "defences",
+      "energy_shield"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Recover (3–4)% of Energy Shield on Kill",
+        "weight": 800,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Recover (5–6)% of Energy Shield on Kill",
+        "weight": 800,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 85,
+        "text_plain": "85 Recover (5–6)% of Energy Shield on Kill(5–10)% increased Energy Shield Recovery Rate if you haven't Killed Recently",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% increased Intelligence",
+    "tier": 3,
+    "ilvl": 83,
+    "weight": 1600,
+    "weight_pct": 22.222,
+    "tags": [
+      "attribute"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (5–8)% increased Intelligence",
+        "weight": 800,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 83,
+        "text_plain": "83 (9–12)% increased Intelligence",
+        "weight": 800,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 93,
+        "text_plain": "93 +1 to Level of Socketed Intelligence Gems(9–12)% increased Intelligence",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are Supported by Level # Item Rarity#% increased Rarity of Items found from Slain Unique Enemies",
+    "tier": 3,
+    "ilvl": 85,
+    "weight": 1600,
+    "weight_pct": 22.222,
+    "tags": [
+      "gem",
+      "drop"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 10 Item Rarity(8–12)% increased Rarity of Items found from Slain Unique Enemies",
+        "weight": 800,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 85,
+        "text_plain": "85 Socketed Gems are Supported by Level 15 Item Rarity(13–18)% increased Rarity of Items found from Slain Unique Enemies",
+        "weight": 800,
+        "weight_pct": 11.111
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 95,
+        "text_plain": "95 Socketed Gems are Supported by Level 20 Item Rarity(19–25)% increased Rarity of Items found from Slain Unique Enemies",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% increased Spell Damage during any Flask Effect",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 2400,
+    "weight_pct": 21.429,
+    "tags": [
+      "damage",
+      "caster"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (20–25)% increased Spell Damage during any Flask Effect",
+        "weight": 800,
+        "weight_pct": 7.143
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (26–30)% increased Spell Damage during any Flask Effect",
+        "weight": 800,
+        "weight_pct": 7.143
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 (31–35)% increased Spell Damage during any Flask Effect",
+        "weight": 800,
+        "weight_pct": 7.143
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% chance to gain Onslaught for # seconds on Kill",
+    "tier": 3,
+    "ilvl": 83,
+    "weight": 3000,
+    "weight_pct": 21.127,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (5–6)% chance to gain Onslaught for 4 seconds on Kill",
+        "weight": 1000,
+        "weight_pct": 7.042
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (7–8)% chance to gain Onslaught for 4 seconds on Kill",
+        "weight": 1000,
+        "weight_pct": 7.042
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 83,
+        "text_plain": "83 (9–10)% chance to gain Onslaught for 4 seconds on Kill",
+        "weight": 1000,
+        "weight_pct": 7.042
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Claws",
+      "One_Hand_Axes",
+      "One_Hand_Swords",
+      "Quivers",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Quivers",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Attacks have #% chance to Maim on Hit",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1600,
+    "weight_pct": 21.053,
+    "tags": [
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Attacks have 15% chance to Maim on Hit",
+        "weight": 800,
+        "weight_pct": 10.526
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Attacks have 20% chance to Maim on Hit",
+        "weight": 800,
+        "weight_pct": 10.526
+      }
+    ],
+    "sourceCategories": [
+      "Quivers"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems have #% increased Reservation Efficiency",
+    "tier": 2,
+    "ilvl": 80,
+    "weight": 1600,
+    "weight_pct": 20,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems have 20% increased Reservation Efficiency",
+        "weight": 800,
+        "weight_pct": 10
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems have 30% increased Reservation Efficiency",
+        "weight": 800,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% chance to Chill Attackers for # seconds on Block",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1600,
+    "weight_pct": 20,
+    "tags": [
+      "elemental",
+      "cold",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (25–40)% chance to Chill Attackers for 4 seconds on Block",
+        "weight": 800,
+        "weight_pct": 10
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (41–50)% chance to Chill Attackers for 4 seconds on Block",
+        "weight": 800,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% chance to Shock Attackers for # seconds on Block",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1600,
+    "weight_pct": 20,
+    "tags": [
+      "elemental",
+      "lightning",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (25–40)% chance to Shock Attackers for 4 seconds on Block",
+        "weight": 800,
+        "weight_pct": 10
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (41–50)% chance to Shock Attackers for 4 seconds on Block",
+        "weight": 800,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are Supported by Level # Faster Casting#% increased Cast Speed",
+    "tier": 4,
+    "ilvl": 84,
+    "weight": 2400,
+    "weight_pct": 19.672,
+    "tags": [
+      "caster",
+      "speed",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Faster Casting(7–9)% increased Cast Speed",
+        "weight": 800,
+        "weight_pct": 6.557
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Faster Casting(10–12)% increased Cast Speed",
+        "weight": 800,
+        "weight_pct": 6.557
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 84,
+        "text_plain": "84 Socketed Gems are Supported by Level 20 Faster Casting(13–14)% increased Cast Speed",
+        "weight": 800,
+        "weight_pct": 6.557
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 94,
+        "text_plain": "94 Socketed Gems are Supported by Level 25 Faster Casting(13–14)% increased Cast Speed",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% chance to Ignore Stuns while Casting",
+    "tier": 4,
+    "ilvl": 80,
+    "weight": 2400,
+    "weight_pct": 19.672,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (15–20)% chance to Ignore Stuns while Casting",
+        "weight": 800,
+        "weight_pct": 6.557
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (21–25)% chance to Ignore Stuns while Casting",
+        "weight": 800,
+        "weight_pct": 6.557
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 (26–30)% chance to Ignore Stuns while Casting",
+        "weight": 800,
+        "weight_pct": 6.557
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 90,
+        "text_plain": "90 (31–60)% chance to Ignore Stuns while Casting",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are supported by Level # Blind#% Global chance to Blind Enemies on hit",
+    "tier": 4,
+    "ilvl": 80,
+    "weight": 2400,
+    "weight_pct": 19.672,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are supported by Level 16 Blind(5–6)% Global chance to Blind Enemies on hit",
+        "weight": 800,
+        "weight_pct": 6.557
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are supported by Level 18 Blind(7–8)% Global chance to Blind Enemies on hit",
+        "weight": 800,
+        "weight_pct": 6.557
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are supported by Level 20 Blind(9–10)% Global chance to Blind Enemies on hit",
+        "weight": 800,
+        "weight_pct": 6.557
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 90,
+        "text_plain": "90 Socketed Gems are supported by Level 25 Blind(9–10)% Global chance to Blind Enemies on hit",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% chance to avoid Projectiles",
+    "tier": 3,
+    "ilvl": 84,
+    "weight": 1000,
+    "weight_pct": 18.519,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (6–9)% chance to avoid Projectiles",
+        "weight": 500,
+        "weight_pct": 9.259
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 84,
+        "text_plain": "84 (10–12)% chance to avoid Projectiles",
+        "weight": 500,
+        "weight_pct": 9.259
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 94,
+        "text_plain": "94 (11–15)% chance to avoid Projectiles if you've taken Projectile Damage Recently(10–12)% chance to avoid Projectiles",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are supported by Level # Melee Splash#% increased Area Damage",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 3000,
+    "weight_pct": 17.647,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are supported by Level 16 Melee Splash(23–27)% increased Area Damage",
+        "weight": 1000,
+        "weight_pct": 5.882
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are supported by Level 18 Melee Splash(28–32)% increased Area Damage",
+        "weight": 1000,
+        "weight_pct": 5.882
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are supported by Level 20 Melee Splash(33–37)% increased Area Damage",
+        "weight": 1000,
+        "weight_pct": 5.882
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Thrusting_One_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% Chance to Block Attack Damage while Dual Wielding",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 3000,
+    "weight_pct": 17.647,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 +(2–4)% Chance to Block Attack Damage while Dual Wielding",
+        "weight": 1000,
+        "weight_pct": 5.882
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 +(5–7)% Chance to Block Attack Damage while Dual Wielding",
+        "weight": 1000,
+        "weight_pct": 5.882
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 +(8–9)% Chance to Block Attack Damage while Dual Wielding",
+        "weight": 1000,
+        "weight_pct": 5.882
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Thrusting_One_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Daggers",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are Supported by Level # Chance to Poison#% increased Damage with Poison",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 2000,
+    "weight_pct": 16.667,
+    "tags": [
+      "damage",
+      "chaos",
+      "ailment",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Chance to Poison(19–23)% increased Damage with Poison",
+        "weight": 1000,
+        "weight_pct": 8.333
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Chance to Poison(24–26)% increased Damage with Poison",
+        "weight": 1000,
+        "weight_pct": 8.333
+      }
+    ],
+    "sourceCategories": [
+      "Daggers",
+      "Rune_Daggers"
+    ]
+  },
+  {
+    "category": "Rune_Daggers",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are Supported by Level # Spell Cascade#% increased Area of Effect",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 3000,
+    "weight_pct": 16.216,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Spell Cascade(5–8)% increased Area of Effect",
+        "weight": 1000,
+        "weight_pct": 5.405
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Spell Cascade(9–12)% increased Area of Effect",
+        "weight": 1000,
+        "weight_pct": 5.405
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Spell Cascade(13–15)% increased Area of Effect",
+        "weight": 1000,
+        "weight_pct": 5.405
+      }
+    ],
+    "sourceCategories": [
+      "Rune_Daggers",
+      "Sceptres"
+    ]
+  },
+  {
+    "category": "Sceptres",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Gain #% of Physical Damage as Extra Damage of a random Element",
+    "tier": 3,
+    "ilvl": 80,
+    "weight": 3000,
+    "weight_pct": 16.216,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Gain (7–9)% of Physical Damage as Extra Damage of a random Element",
+        "weight": 1000,
+        "weight_pct": 5.405
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Gain (10–12)% of Physical Damage as Extra Damage of a random Element",
+        "weight": 1000,
+        "weight_pct": 5.405
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Gain (13–15)% of Physical Damage as Extra Damage of a random Element",
+        "weight": 1000,
+        "weight_pct": 5.405
+      }
+    ],
+    "sourceCategories": [
+      "Sceptres"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Grants Level # Decoy Totem Skill",
+    "tier": 2,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 14.815,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Grants Level 20 Decoy Totem Skill",
+        "weight": 800,
+        "weight_pct": 14.815
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 78,
+        "text_plain": "78 Grants Level 25 Decoy Totem Skill",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Staves",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% increased Spell Critical Strike Chance#% chance to gain a Power Charge on Critical Strike",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 2000,
+    "weight_pct": 14.815,
+    "tags": [
+      "caster",
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (60–74)% increased Spell Critical Strike Chance10% chance to gain a Power Charge on Critical Strike",
+        "weight": 1000,
+        "weight_pct": 7.407
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (75–82)% increased Spell Critical Strike Chance10% chance to gain a Power Charge on Critical Strike",
+        "weight": 1000,
+        "weight_pct": 7.407
+      }
+    ],
+    "sourceCategories": [
+      "Staves"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "# Physical Damage taken from Attack Hits",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1600,
+    "weight_pct": 14.286,
+    "tags": [
+      "physical",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (-35–-25) Physical Damage taken from Attack Hits",
+        "weight": 800,
+        "weight_pct": 7.143
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (-45–-36) Physical Damage taken from Attack Hits",
+        "weight": 800,
+        "weight_pct": 7.143
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% increased Cooldown Recovery Rate",
+    "tier": 2,
+    "ilvl": 84,
+    "weight": 1600,
+    "weight_pct": 14.286,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (10–15)% increased Cooldown Recovery Rate",
+        "weight": 800,
+        "weight_pct": 7.143
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 84,
+        "text_plain": "84 (16–20)% increased Cooldown Recovery Rate",
+        "weight": 800,
+        "weight_pct": 7.143
+      }
+    ],
+    "sourceCategories": [
+      "Belts",
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% increased Energy Shield Recovery rate",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1600,
+    "weight_pct": 14.286,
+    "tags": [
+      "defences",
+      "energy_shield"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (7–9)% increased Energy Shield Recovery rate",
+        "weight": 800,
+        "weight_pct": 7.143
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (10–12)% increased Energy Shield Recovery rate",
+        "weight": 800,
+        "weight_pct": 7.143
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% increased Mana Recovery rate",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1600,
+    "weight_pct": 14.286,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (7–9)% increased Mana Recovery rate",
+        "weight": 800,
+        "weight_pct": 7.143
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (10–12)% increased Mana Recovery rate",
+        "weight": 800,
+        "weight_pct": 7.143
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% increased Attack Speed#% chance to deal Double Damage",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 2000,
+    "weight_pct": 14.085,
+    "tags": [
+      "damage",
+      "attack",
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (8–10)% increased Attack Speed(4–6)% chance to deal Double Damage",
+        "weight": 1000,
+        "weight_pct": 7.042
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (11–12)% increased Attack Speed(4–6)% chance to deal Double Damage",
+        "weight": 1000,
+        "weight_pct": 7.042
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% increased Critical Strike Chance#% increased Critical Strike Chance if you have Killed Recently",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 2000,
+    "weight_pct": 14.085,
+    "tags": [
+      "attack",
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (22–25)% increased Critical Strike Chance50% increased Critical Strike Chance if you have Killed Recently",
+        "weight": 1000,
+        "weight_pct": 7.042
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (26–29)% increased Critical Strike Chance50% increased Critical Strike Chance if you have Killed Recently",
+        "weight": 1000,
+        "weight_pct": 7.042
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Projectiles Pierce an additional TargetProjectiles Pierce # additional Targets",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 2000,
+    "weight_pct": 14.085,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Projectiles Pierce an additional Target",
+        "weight": 1000,
+        "weight_pct": 7.042
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Projectiles Pierce 2 additional Targets",
+        "weight": 1000,
+        "weight_pct": 7.042
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Convoking_Wand",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are Supported by Level # Blastchain Mine#% increased Mine DamageSocketed Gems are Supported by Level # Trap And Mine Damage#% increased Mine Damage",
+    "tier": 8,
+    "ilvl": 80,
+    "weight": 1500,
+    "weight_pct": 13.514,
+    "tags": [
+      "damage",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Blastchain Mine(20–25)% increased Mine Damage",
+        "weight": 250,
+        "weight_pct": 2.252
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Blastchain Mine(26–30)% increased Mine Damage",
+        "weight": 250,
+        "weight_pct": 2.252
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 22 Blastchain Mine(31–35)% increased Mine Damage",
+        "weight": 250,
+        "weight_pct": 2.252
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 16 Trap And Mine Damage(20–25)% increased Mine Damage",
+        "weight": 250,
+        "weight_pct": 2.252
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 18 Trap And Mine Damage(26–30)% increased Mine Damage",
+        "weight": 250,
+        "weight_pct": 2.252
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 Socketed Gems are Supported by Level 20 Trap And Mine Damage(31–35)% increased Mine Damage",
+        "weight": 250,
+        "weight_pct": 2.252
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 90,
+        "text_plain": "90 Socketed Gems are Supported by Level 25 Blastchain Mine(31–35)% increased Mine Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 90,
+        "text_plain": "90 Socketed Gems are Supported by Level 25 Trap And Mine Damage(31–35)% increased Mine Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are Supported by Level # Faster Attacks#% increased Attack Speed",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 2000,
+    "weight_pct": 11.765,
+    "tags": [
+      "attack",
+      "speed",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Faster Attacks(17–19)% increased Attack Speed",
+        "weight": 1000,
+        "weight_pct": 5.882
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Faster Attacks(20–21)% increased Attack Speed",
+        "weight": 1000,
+        "weight_pct": 5.882
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Thrusting_One_Hand_Swords",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are Supported by Level # Increased Critical Strikes#% increased Critical Strike Chance",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 2000,
+    "weight_pct": 11.765,
+    "tags": [
+      "attack",
+      "critical",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Increased Critical Strikes(22–25)% increased Critical Strike Chance",
+        "weight": 1000,
+        "weight_pct": 5.882
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Increased Critical Strikes(26–29)% increased Critical Strike Chance",
+        "weight": 1000,
+        "weight_pct": 5.882
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Thrusting_One_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are Supported by Level # Maim#% chance to Maim on Hit",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 2000,
+    "weight_pct": 11.765,
+    "tags": [
+      "attack",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Maim15% chance to Maim on Hit",
+        "weight": 1000,
+        "weight_pct": 5.882
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Maim20% chance to Maim on Hit",
+        "weight": 1000,
+        "weight_pct": 5.882
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Thrusting_One_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% to Spell Critical Strike Chance",
+    "tier": 3,
+    "ilvl": 84,
+    "weight": 800,
+    "weight_pct": 11.111,
+    "tags": [
+      "caster",
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 +(0.5–1)% to Spell Critical Strike Chance",
+        "weight": 400,
+        "weight_pct": 5.556
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 84,
+        "text_plain": "84 +(1.1–1.5)% to Spell Critical Strike Chance",
+        "weight": 400,
+        "weight_pct": 5.556
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 94,
+        "text_plain": "94 +(1.6–2)% to Spell Critical Strike Chance",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Staves",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% increased Cast Speed#% increased Cast Speed if you've Killed Recently",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1500,
+    "weight_pct": 11.111,
+    "tags": [
+      "caster",
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (15–17)% increased Cast Speed20% increased Cast Speed if you've Killed Recently",
+        "weight": 1000,
+        "weight_pct": 7.407
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (18–20)% increased Cast Speed20% increased Cast Speed if you've Killed Recently",
+        "weight": 500,
+        "weight_pct": 3.704
+      }
+    ],
+    "sourceCategories": [
+      "Staves"
+    ]
+  },
+  {
+    "category": "Two_Hand_Maces",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "(20–30)% reduced Enemy Stun Threshold(20–30)% increased Stun Duration on Enemies",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 11.111,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (20–30)% reduced Enemy Stun Threshold(20–30)% increased Stun Duration on Enemies",
+        "weight": 1000,
+        "weight_pct": 11.111
+      }
+    ],
+    "sourceCategories": [
+      "Two_Hand_Maces"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Spells have #% to Critical Strike Chance",
+    "tier": 4,
+    "ilvl": 84,
+    "weight": 1200,
+    "weight_pct": 10.811,
+    "tags": [
+      "caster",
+      "critical",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Spells have +1% to Critical Strike Chance",
+        "weight": 400,
+        "weight_pct": 3.604
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Spells have +2% to Critical Strike Chance",
+        "weight": 400,
+        "weight_pct": 3.604
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 84,
+        "text_plain": "84 Socketed Spells have +3% to Critical Strike Chance",
+        "weight": 400,
+        "weight_pct": 3.604
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 94,
+        "text_plain": "94 Socketed Spells have +4% to Critical Strike Chance",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Sceptres",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are Supported by Level # Elemental Proliferation#% chance to Freeze, Shock and Ignite",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 2000,
+    "weight_pct": 10.811,
+    "tags": [
+      "elemental",
+      "fire",
+      "cold",
+      "lightning",
+      "ailment",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Elemental Proliferation(5–7)% chance to Freeze, Shock and Ignite",
+        "weight": 1000,
+        "weight_pct": 5.405
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Elemental Proliferation(8–10)% chance to Freeze, Shock and Ignite",
+        "weight": 1000,
+        "weight_pct": 5.405
+      }
+    ],
+    "sourceCategories": [
+      "Sceptres"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Items and Gems have #% reduced Attribute Requirements",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1600,
+    "weight_pct": 10.526,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Items and Gems have (5–10)% reduced Attribute Requirements",
+        "weight": 800,
+        "weight_pct": 5.263
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Items and Gems have (11–15)% reduced Attribute Requirements",
+        "weight": 800,
+        "weight_pct": 5.263
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% Chance to Block Spell Damage",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1600,
+    "weight_pct": 10.526,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (4–5)% Chance to Block Spell Damage",
+        "weight": 800,
+        "weight_pct": 5.263
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (6–7)% Chance to Block Spell Damage",
+        "weight": 800,
+        "weight_pct": 5.263
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% chance to gain a Power, Frenzy or Endurance Charge on Kill",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1600,
+    "weight_pct": 10.526,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (3–6)% chance to gain a Power, Frenzy or Endurance Charge on Kill",
+        "weight": 800,
+        "weight_pct": 5.263
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (7–10)% chance to gain a Power, Frenzy or Endurance Charge on Kill",
+        "weight": 800,
+        "weight_pct": 5.263
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% to Cold Damage over Time Multiplier#% to Fire Damage over Time Multiplier",
+    "tier": 4,
+    "ilvl": 80,
+    "weight": 1600,
+    "weight_pct": 10.526,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 +(11–15)% to Cold Damage over Time Multiplier",
+        "weight": 400,
+        "weight_pct": 2.632
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 +(16–20)% to Cold Damage over Time Multiplier",
+        "weight": 400,
+        "weight_pct": 2.632
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 +(11–15)% to Fire Damage over Time Multiplier",
+        "weight": 400,
+        "weight_pct": 2.632
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 +(16–20)% to Fire Damage over Time Multiplier",
+        "weight": 400,
+        "weight_pct": 2.632
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Gain an Endurance, Frenzy or Power charge when you Block",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 10,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Gain an Endurance, Frenzy or Power charge when you Block",
+        "weight": 800,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Recover (3–5)% of Life when you Block",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 10,
+    "tags": [
+      "resource",
+      "life"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Recover (3–5)% of Life when you Block",
+        "weight": 800,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Recover (3–5)% of your maximum Mana when you Block",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 10,
+    "tags": [
+      "resource",
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Recover (3–5)% of your maximum Mana when you Block",
+        "weight": 800,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Recover (3–5)% of Energy Shield when you Block",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 10,
+    "tags": [
+      "defences"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Recover (3–5)% of Energy Shield when you Block",
+        "weight": 800,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Spells have #% to Critical Strike Multiplier",
+    "tier": 4,
+    "ilvl": 83,
+    "weight": 1200,
+    "weight_pct": 9.836,
+    "tags": [
+      "damage",
+      "caster",
+      "critical",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Spells have +30% to Critical Strike Multiplier",
+        "weight": 400,
+        "weight_pct": 3.279
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Spells have +50% to Critical Strike Multiplier",
+        "weight": 400,
+        "weight_pct": 3.279
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 83,
+        "text_plain": "83 Socketed Spells have +70% to Critical Strike Multiplier",
+        "weight": 400,
+        "weight_pct": 3.279
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 93,
+        "text_plain": "93 Socketed Spells have +90% to Critical Strike Multiplier",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems are Supported by Level # Faster Casting#% increased Cast Speed",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1500,
+    "weight_pct": 9.091,
+    "tags": [
+      "caster",
+      "speed",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Gems are Supported by Level 18 Faster Casting(15–17)% increased Cast Speed",
+        "weight": 1000,
+        "weight_pct": 6.061
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Socketed Gems are Supported by Level 20 Faster Casting(18–20)% increased Cast Speed",
+        "weight": 500,
+        "weight_pct": 3.03
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Rune_Daggers",
+      "Sceptres",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Daggers",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "+(50–60)% to Critical Strike Multiplier against Enemies that are on Full Life",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 8.333,
+    "tags": [
+      "damage",
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 +(50–60)% to Critical Strike Multiplier against Enemies that are on Full Life",
+        "weight": 1000,
+        "weight_pct": 8.333
+      }
+    ],
+    "sourceCategories": [
+      "Daggers",
+      "Rune_Daggers"
+    ]
+  },
+  {
+    "category": "Two_Hand_Axes",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "(15–30)% chance to gain an Endurance Charge when you Taunt an Enemy",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 7.692,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (15–30)% chance to gain an Endurance Charge when you Taunt an Enemy",
+        "weight": 1000,
+        "weight_pct": 7.692
+      }
+    ],
+    "sourceCategories": [
+      "Two_Hand_Axes"
+    ]
+  },
+  {
+    "category": "Two_Hand_Swords",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Hits with Melee Movement Skills have (30–50)% chance to Fortify",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 7.692,
+    "tags": [
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Hits with Melee Movement Skills have (30–50)% chance to Fortify",
+        "weight": 1000,
+        "weight_pct": 7.692
+      }
+    ],
+    "sourceCategories": [
+      "Two_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Staves",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "+1 to Maximum Endurance Charges",
+    "tier": 1,
+    "ilvl": 84,
+    "weight": 1000,
+    "weight_pct": 7.407,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 84,
+        "text_plain": "84 +1 to Maximum Endurance Charges",
+        "weight": 1000,
+        "weight_pct": 7.407
+      }
+    ],
+    "sourceCategories": [
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Staves",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "+1 to Maximum Power Charges",
+    "tier": 1,
+    "ilvl": 84,
+    "weight": 1000,
+    "weight_pct": 7.407,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 84,
+        "text_plain": "84 +1 to Maximum Power Charges",
+        "weight": 1000,
+        "weight_pct": 7.407
+      }
+    ],
+    "sourceCategories": [
+      "Staves",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Staves",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "+5% Chance to Block Attack Damage while wielding a Staff+(35–45)% to Critical Strike Multiplier if you have Blocked Recently",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 7.407,
+    "tags": [
+      "damage",
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 +5% Chance to Block Attack Damage while wielding a Staff+(35–45)% to Critical Strike Multiplier if you have Blocked Recently",
+        "weight": 1000,
+        "weight_pct": 7.407
+      }
+    ],
+    "sourceCategories": [
+      "Staves",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Staves",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "+(15–25)% to Global Critical Strike Multiplier(80–100)% increased Critical Strike Chance if you haven't dealt a Critical Strike Recently",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 7.407,
+    "tags": [
+      "damage",
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 +(15–25)% to Global Critical Strike Multiplier(80–100)% increased Critical Strike Chance if you haven't dealt a Critical Strike Recently",
+        "weight": 1000,
+        "weight_pct": 7.407
+      }
+    ],
+    "sourceCategories": [
+      "Staves",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "(6–10)% increased Movement Speed during any Flask Effect",
+    "tier": 1,
+    "ilvl": 81,
+    "weight": 800,
+    "weight_pct": 7.143,
+    "tags": [
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 81,
+        "text_plain": "81 (6–10)% increased Movement Speed during any Flask Effect",
+        "weight": 800,
+        "weight_pct": 7.143
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Remove Chill and Freeze when you use a FlaskRemove Shock when you use a Flask",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 800,
+    "weight_pct": 7.143,
+    "tags": [
+      "elemental",
+      "cold",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Remove Chill and Freeze when you use a Flask",
+        "weight": 400,
+        "weight_pct": 3.571
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 Remove Shock when you use a Flask",
+        "weight": 400,
+        "weight_pct": 3.571
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "(8–14)% increased Cast Speed during any Flask Effect",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 7.143,
+    "tags": [
+      "caster",
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (8–14)% increased Cast Speed during any Flask Effect",
+        "weight": 800,
+        "weight_pct": 7.143
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "One_Hand_Maces",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Enemies Killed with Attack or Spell Hits Explode, dealing 5% of their Life as Fire Damage",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 7.143,
+    "tags": [
+      "damage",
+      "elemental",
+      "fire"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Enemies Killed with Attack or Spell Hits Explode, dealing 5% of their Life as Fire Damage",
+        "weight": 1000,
+        "weight_pct": 7.143
+      }
+    ],
+    "sourceCategories": [
+      "One_Hand_Maces",
+      "Two_Hand_Maces"
+    ]
+  },
+  {
+    "category": "One_Hand_Maces",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Melee Hits which Stun have (10–20)% chance to Fortify",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 7.143,
+    "tags": [
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Melee Hits which Stun have (10–20)% chance to Fortify",
+        "weight": 1000,
+        "weight_pct": 7.143
+      }
+    ],
+    "sourceCategories": [
+      "One_Hand_Maces"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% to Global Critical Strike Multiplier#% chance to gain a Power Charge on Critical Strike",
+    "tier": 2,
+    "ilvl": 75,
+    "weight": 1000,
+    "weight_pct": 7.042,
+    "tags": [
+      "damage",
+      "attack",
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 +(22–25)% to Global Critical Strike Multiplier(5–8)% chance to gain a Power Charge on Critical Strike",
+        "weight": 500,
+        "weight_pct": 3.521
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 +(26–29)% to Global Critical Strike Multiplier(9–10)% chance to gain a Power Charge on Critical Strike",
+        "weight": 500,
+        "weight_pct": 3.521
+      }
+    ],
+    "sourceCategories": [
+      "Bows"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "+1 to Maximum Frenzy Charges",
+    "tier": 1,
+    "ilvl": 84,
+    "weight": 1000,
+    "weight_pct": 7.042,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 84,
+        "text_plain": "84 +1 to Maximum Frenzy Charges",
+        "weight": 1000,
+        "weight_pct": 7.042
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Two_Hand_Axes",
+      "Two_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Projectiles deal (20–30)% increased Damage with Hits and Ailments for each Enemy Pierced",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 7.042,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Projectiles deal (20–30)% increased Damage with Hits and Ailments for each Enemy Pierced",
+        "weight": 1000,
+        "weight_pct": 7.042
+      }
+    ],
+    "sourceCategories": [
+      "Bows"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "#% to Cold Damage over Time Multiplier#% to Fire Damage over Time Multiplier",
+    "tier": 6,
+    "ilvl": 80,
+    "weight": 800,
+    "weight_pct": 6.557,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 +(11–15)% to Cold Damage over Time Multiplier",
+        "weight": 200,
+        "weight_pct": 1.639
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 +(16–20)% to Cold Damage over Time Multiplier",
+        "weight": 200,
+        "weight_pct": 1.639
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 +(11–15)% to Fire Damage over Time Multiplier",
+        "weight": 200,
+        "weight_pct": 1.639
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 80,
+        "text_plain": "80 +(16–20)% to Fire Damage over Time Multiplier",
+        "weight": 200,
+        "weight_pct": 1.639
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 90,
+        "text_plain": "90 +(17–24)% to Cold Damage over Time Multiplier",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 90,
+        "text_plain": "90 +(17–24)% to Fire Damage over Time Multiplier",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Gain a Power Charge after Spending a total of 200 Mana",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 6.061,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Gain a Power Charge after Spending a total of 200 Mana",
+        "weight": 1000,
+        "weight_pct": 6.061
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Enemies have 20% reduced Evasion if you have Hit them Recently",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 5.882,
+    "tags": [
+      "defences",
+      "evasion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Enemies have 20% reduced Evasion if you have Hit them Recently",
+        "weight": 1000,
+        "weight_pct": 5.882
+      }
+    ],
+    "sourceCategories": [
+      "Claws"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "(80–100)% increased Critical Strike Chance against Blinded Enemies",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 5.882,
+    "tags": [
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (80–100)% increased Critical Strike Chance against Blinded Enemies",
+        "weight": 1000,
+        "weight_pct": 5.882
+      }
+    ],
+    "sourceCategories": [
+      "Claws"
+    ]
+  },
+  {
+    "category": "One_Hand_Axes",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "(15–20)% increased Critical Strike Chance(5–10)% chance to gain an Endurance Charge on Critical Strike",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 5.882,
+    "tags": [
+      "attack",
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (15–20)% increased Critical Strike Chance(5–10)% chance to gain an Endurance Charge on Critical Strike",
+        "weight": 1000,
+        "weight_pct": 5.882
+      }
+    ],
+    "sourceCategories": [
+      "One_Hand_Axes",
+      "Two_Hand_Axes"
+    ]
+  },
+  {
+    "category": "One_Hand_Axes",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "(80–100)% increased Critical Strike Chance if you have Killed Recently",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 5.882,
+    "tags": [
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (80–100)% increased Critical Strike Chance if you have Killed Recently",
+        "weight": 1000,
+        "weight_pct": 5.882
+      }
+    ],
+    "sourceCategories": [
+      "One_Hand_Axes"
+    ]
+  },
+  {
+    "category": "One_Hand_Swords",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "5% increased Accuracy Rating per Frenzy Charge(20–25)% chance to gain a Frenzy Charge when you Block",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 5.882,
+    "tags": [
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 5% increased Accuracy Rating per Frenzy Charge(20–25)% chance to gain a Frenzy Charge when you Block",
+        "weight": 1000,
+        "weight_pct": 5.882
+      }
+    ],
+    "sourceCategories": [
+      "One_Hand_Swords",
+      "Thrusting_One_Hand_Swords"
+    ]
+  },
+  {
+    "category": "One_Hand_Swords",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Movement Skills Cost no Mana",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 5.882,
+    "tags": [
+      "mana",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 Socketed Movement Skills Cost no Mana",
+        "weight": 1000,
+        "weight_pct": 5.882
+      }
+    ],
+    "sourceCategories": [
+      "One_Hand_Swords",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Swords"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "(0.3–0.5)% of Cold Damage Leeched as Life",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 5.263,
+    "tags": [
+      "life",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (0.3–0.5)% of Cold Damage Leeched as Life",
+        "weight": 800,
+        "weight_pct": 5.263
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "(0.3–0.5)% of Lightning Damage Leeched as Life",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 5.263,
+    "tags": [
+      "life",
+      "elemental",
+      "lightning"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (0.3–0.5)% of Lightning Damage Leeched as Life",
+        "weight": 800,
+        "weight_pct": 5.263
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "(6–9)% increased Attributes",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 5.263,
+    "tags": [
+      "attribute"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 (6–9)% increased Attributes",
+        "weight": 800,
+        "weight_pct": 5.263
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "(6–10)% increased Mana Reservation Efficiency of Skills",
+    "tier": 1,
+    "ilvl": 82,
+    "weight": 800,
+    "weight_pct": 5.263,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 82,
+        "text_plain": "82 (6–10)% increased Mana Reservation Efficiency of Skills",
+        "weight": 800,
+        "weight_pct": 5.263
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "+2% to maximum Chance to Block Attack Damage",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 800,
+    "weight_pct": 5.263,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 68,
+        "text_plain": "68 +2% to maximum Chance to Block Attack Damage",
+        "weight": 800,
+        "weight_pct": 5.263
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Nearby Enemies take #% increased Elemental Damage",
+    "tier": 2,
+    "ilvl": 85,
+    "weight": 400,
+    "weight_pct": 3.604,
+    "tags": [
+      "damage",
+      "elemental"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 85,
+        "text_plain": "85 Nearby Enemies take 6% increased Elemental Damage",
+        "weight": 400,
+        "weight_pct": 3.604
+      },
+      {
+        "tier_name": "of Elevated Shaping",
+        "tier_level": 95,
+        "text_plain": "95 Nearby Enemies take 9% increased Elemental Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "suffix",
+    "text_plain": "Socketed Gems Chain 1 additional times",
+    "tier": 1,
+    "ilvl": 85,
+    "weight": 200,
+    "weight_pct": 1.408,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 85,
+        "text_plain": "85 Socketed Gems Chain 1 additional times",
+        "weight": 200,
+        "weight_pct": 1.408
+      }
+    ],
+    "sourceCategories": [
+      "Bows"
+    ]
+  }
+]

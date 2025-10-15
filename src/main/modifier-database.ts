@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { promises as fsp } from 'fs';
+import { getVersionConfig, getVirtualCategories, isBaseDomain, type OverlayGameVersion } from './config/modifierVersionConfig.js';
 
 export interface ModifierData {
     domain: string;
@@ -32,9 +33,11 @@ export interface ModifierData {
 export class ModifierDatabase {
     private jsonCache: Map<string, any> = new Map();
     private dataPath: string;
+    private gameVersion: OverlayGameVersion;
 
-    constructor(dataPath: string, autoLoad: boolean = true) {
+    constructor(dataPath: string, autoLoad: boolean = true, gameVersion: OverlayGameVersion = 'poe2') {
         this.dataPath = dataPath;
+        this.gameVersion = gameVersion;
         if (autoLoad) {
             this.loadFromJson();
         }
@@ -44,6 +47,10 @@ export class ModifierDatabase {
         if (newPath && newPath !== this.dataPath) {
             this.dataPath = newPath;
         }
+    }
+
+    setGameVersion(version: OverlayGameVersion) {
+        this.gameVersion = version;
     }
 
     getDataPath(): string {
@@ -401,28 +408,178 @@ export class ModifierDatabase {
     async getModifiersForCategory(category: string): Promise<ModifierData[]> {
     const raw = (category || '').trim();
         const norm = raw.toUpperCase();
-        console.log(`Getting modifiers for category: ${raw}`);
+        console.log(`Getting modifiers for category: ${raw} (game: ${this.gameVersion})`);
 
-        // Special virtual categories (match verifier semantics)
+        // Special virtual categories - version-aware
         if (norm === 'ALL' || /^_+ALL_+$/.test(raw)) {
             console.log('Aggregating ALL modifiers from JSON cache');
             return this.getAllAggregated();
         }
-        if (norm === 'DESECRATED' || /^_+DESECRATED_+$/.test(raw)) {
-            console.log('Aggregating DESECRATED modifiers from JSON cache');
-            return this.getDomainAggregated('desecrated');
+        
+        // PoE2-only virtual categories
+        if (this.gameVersion === 'poe2') {
+            if (norm === 'DESECRATED' || /^_+DESECRATED_+$/.test(raw)) {
+                console.log('Aggregating DESECRATED modifiers from JSON cache');
+                return this.getDomainAggregated('desecrated');
+            }
+            if (norm === 'ESSENCE') {
+                console.log('Aggregating ESSENCE modifiers from JSON cache');
+                return this.getDomainAggregated('essence');
+            }
+            if (norm === 'CORRUPTED') {
+                console.log('Aggregating CORRUPTED modifiers from JSON cache');
+                return this.getDomainAggregated('corrupted');
+            }
+            if (norm === 'SOCKETABLE' || norm === 'SOCKETABLES') {
+                console.log('Aggregating SOCKETABLE modifiers from JSON cache');
+                return this.getDomainAggregated('socketable');
+            }
         }
-        if (norm === 'ESSENCE') {
-            console.log('Aggregating ESSENCE modifiers from JSON cache');
-            return this.getDomainAggregated('essence');
-        }
-        if (norm === 'CORRUPTED') {
-            console.log('Aggregating CORRUPTED modifiers from JSON cache');
-            return this.getDomainAggregated('corrupted');
-        }
-        if (norm === 'SOCKETABLE' || norm === 'SOCKETABLES') {
-            console.log('Aggregating SOCKETABLE modifiers from JSON cache');
-            return this.getDomainAggregated('socketable');
+        
+        // PoE1-only virtual categories
+        if (this.gameVersion === 'poe1') {
+            if (norm === 'GEAR') {
+                console.log('Aggregating GEAR modifiers (all equipment)');
+                return this.getGearAggregated();
+            }
+            if (norm === 'INFLUENCE') {
+                console.log('Loading pre-generated All_Influences aggregate');
+                // Try to load the pre-generated aggregate file
+                const aggData = this.jsonCache.get('Aggregate_All_Influences');
+                if (aggData && Array.isArray(aggData)) {
+                    return this.formatModifierData(aggData);
+                }
+                // Fallback to live aggregation
+                console.log('Aggregate file not found, falling back to live aggregation');
+                return this.getInfluenceAggregated();
+            }
+            
+            // Individual influences
+            if (norm === 'SHAPER') {
+                const data = this.jsonCache.get('Influence_Shaper');
+                if (data && Array.isArray(data)) return this.formatModifierData(data);
+                return [];
+            }
+            if (norm === 'ELDER') {
+                const data = this.jsonCache.get('Influence_Elder');
+                if (data && Array.isArray(data)) return this.formatModifierData(data);
+                return [];
+            }
+            if (norm === 'CRUSADER') {
+                const data = this.jsonCache.get('Influence_Crusader');
+                if (data && Array.isArray(data)) return this.formatModifierData(data);
+                return [];
+            }
+            if (norm === 'REDEEMER') {
+                const data = this.jsonCache.get('Influence_Redeemer');
+                if (data && Array.isArray(data)) return this.formatModifierData(data);
+                return [];
+            }
+            if (norm === 'HUNTER') {
+                const data = this.jsonCache.get('Influence_Hunter');
+                if (data && Array.isArray(data)) return this.formatModifierData(data);
+                return [];
+            }
+            if (norm === 'WARLORD') {
+                const data = this.jsonCache.get('Influence_Warlord');
+                if (data && Array.isArray(data)) return this.formatModifierData(data);
+                return [];
+            }
+            
+            // Eldritch aggregate and individual
+            if (norm === 'ELDRITCH') {
+                console.log('Loading pre-generated All_Eldritch aggregate');
+                const aggData = this.jsonCache.get('Aggregate_All_Eldritch');
+                if (aggData && Array.isArray(aggData)) {
+                    return this.formatModifierData(aggData);
+                }
+                console.log('Aggregate file not found, falling back to live aggregation');
+                return this.getMultiDomainAggregated(['eldritch_eater', 'eldritch_searing']);
+            }
+            if (norm === 'ELDRITCH_EATER') {
+                const data = this.jsonCache.get('Eldritch_Eater');
+                if (data && Array.isArray(data)) return this.formatModifierData(data);
+                return [];
+            }
+            if (norm === 'ELDRITCH_SEARING') {
+                const data = this.jsonCache.get('Eldritch_Searing');
+                if (data && Array.isArray(data)) return this.formatModifierData(data);
+                return [];
+            }
+            
+            // Other domains
+            if (norm === 'MASTER_CRAFTING') {
+                console.log('Loading Master domain file');
+                const masterData = this.jsonCache.get('Domain_Master');
+                if (masterData && Array.isArray(masterData)) {
+                    return this.formatModifierData(masterData);
+                }
+                return this.getDomainAggregated('master');
+            }
+            if (norm === 'CORRUPTED') {
+                console.log('Loading Corrupted domain file');
+                const corrData = this.jsonCache.get('Domain_Corrupted');
+                if (corrData && Array.isArray(corrData)) {
+                    return this.formatModifierData(corrData);
+                }
+                return this.getDomainAggregated('corrupted');
+            }
+            if (norm === 'SYNTHESISED') {
+                console.log('Loading Synthesis domain file');
+                const synthData = this.jsonCache.get('Domain_Synthesis');
+                if (synthData && Array.isArray(synthData)) {
+                    return this.formatModifierData(synthData);
+                }
+                return this.getDomainAggregated('synthesis');
+            }
+            if (norm === 'VEILED') {
+                console.log('Loading Veiled domain file');
+                const veiledData = this.jsonCache.get('Domain_Veiled');
+                if (veiledData && Array.isArray(veiledData)) {
+                    return this.formatModifierData(veiledData);
+                }
+                return this.getDomainAggregated('veiled');
+            }
+            if (norm === 'DELVE') {
+                const data = this.jsonCache.get('Domain_Delve');
+                if (data && Array.isArray(data)) return this.formatModifierData(data);
+                return [];
+            }
+            if (norm === 'INCURSION') {
+                const data = this.jsonCache.get('Domain_Incursion');
+                if (data && Array.isArray(data)) return this.formatModifierData(data);
+                return [];
+            }
+            if (norm === 'ESSENCE') {
+                const data = this.jsonCache.get('Domain_Essence');
+                if (data && Array.isArray(data)) return this.formatModifierData(data);
+                return [];
+            }
+            if (norm === 'SCOURGE') {
+                const data = this.jsonCache.get('Domain_Scourge');
+                if (data && Array.isArray(data)) return this.formatModifierData(data);
+                return [];
+            }
+            if (norm === 'BESTIARY') {
+                const data = this.jsonCache.get('Domain_Bestiary');
+                if (data && Array.isArray(data)) return this.formatModifierData(data);
+                return [];
+            }
+            if (norm === 'SENTINEL') {
+                const data = this.jsonCache.get('Domain_Sentinel');
+                if (data && Array.isArray(data)) return this.formatModifierData(data);
+                return [];
+            }
+            if (norm === 'INFAMOUS') {
+                const data = this.jsonCache.get('Domain_Infamous');
+                if (data && Array.isArray(data)) return this.formatModifierData(data);
+                return [];
+            }
+            if (norm === 'UNIQUE_MAPS') {
+                console.log('Aggregating UNIQUE_MAPS');
+                // TODO: Implement unique maps aggregation when we handle special formats
+                return [];
+            }
         }
 
         // Normal categories from JSON
@@ -463,6 +620,36 @@ export class ModifierDatabase {
                 }
                 grouped.get(key).mods.push(item);
             }
+        }
+        for (const grp of grouped.values()) {
+            grp.mods.sort((a: any, b: any) => {
+                const aw = (typeof a.weight_pct === 'number') ? a.weight_pct : (a.weight ?? 0);
+                const bw = (typeof b.weight_pct === 'number') ? b.weight_pct : (b.weight ?? 0);
+                return bw - aw;
+            });
+        }
+        return Array.from(grouped.values());
+    }
+
+    /**
+     * Format array of mod items into ModifierData structure
+     */
+    private formatModifierData(data: any[]): ModifierData[] {
+        const grouped = new Map<string, any>();
+        for (const item of data) {
+            const domain = item.domain || 'unknown';
+            const side = item.side || 'unknown';
+            const tier = (item.domain_tier != null) ? item.domain_tier : 'na';
+            const key = `${domain}_${side}_${tier}`;
+            if (!grouped.has(key)) {
+                grouped.set(key, {
+                    domain,
+                    side,
+                    domain_tier: item.domain_tier,
+                    mods: [] as any[]
+                });
+            }
+            grouped.get(key).mods.push(item);
         }
         for (const grp of grouped.values()) {
             grp.mods.sort((a: any, b: any) => {
@@ -561,6 +748,90 @@ export class ModifierDatabase {
         return Array.from(grouped.values());
     }
 
+    // PoE1: Aggregate multiple domains (e.g., Eldritch = eater + searing)
+    private getMultiDomainAggregated(domainNames: string[]): ModifierData[] {
+        if (this.jsonCache.size === 0) return [];
+
+        const grouped = new Map<string, any>();
+        for (const [category, data] of this.jsonCache) {
+            if (!Array.isArray(data)) continue;
+            (data as any[])
+                .filter((item: any) => domainNames.includes(item.domain))
+                .forEach((item: any) => {
+                    const key = `${item.domain}_${item.side}`;
+                    if (!grouped.has(key)) {
+                        grouped.set(key, {
+                            domain: item.domain,
+                            side: item.side,
+                            mods: [] as any[]
+                        });
+                    }
+                    grouped.get(key).mods.push({ ...item, sourceCategory: category });
+                });
+        }
+
+        for (const group of grouped.values()) {
+            group.mods.sort((a: any, b: any) => {
+                const aw = (typeof a.weight_pct === 'number') ? a.weight_pct : (a.weight ?? 0);
+                const bw = (typeof b.weight_pct === 'number') ? b.weight_pct : (b.weight ?? 0);
+                return bw - aw;
+            });
+        }
+
+        return Array.from(grouped.values());
+    }
+
+    // PoE1: Aggregate all conqueror influence domains
+    private getInfluenceAggregated(): ModifierData[] {
+        const influenceDomains = ['shaper', 'elder', 'crusader', 'redeemer', 'hunter', 'warlord'];
+        return this.getMultiDomainAggregated(influenceDomains);
+    }
+
+    // PoE1: Aggregate all gear categories (armours, weapons, accessories)
+    private getGearAggregated(): ModifierData[] {
+        if (this.jsonCache.size === 0) return [];
+
+        const gearPatterns = [
+            /^Body_Armours_/i,
+            /^Helmets_/i,
+            /^Gloves_/i,
+            /^Boots_/i,
+            /^Shields_/i,
+            /^(One_Hand_|Two_Hand_)/i,
+            /^(Bows|Claws|Daggers|Staves|Wands|Sceptres|Quarterstaves|Warstaves)$/i,
+            /^(Amulets|Rings|Belts|Quivers)$/i
+        ];
+
+        const grouped = new Map<string, any>();
+        for (const [category, data] of this.jsonCache) {
+            // Skip if not a gear category
+            if (!gearPatterns.some(pattern => pattern.test(category))) continue;
+            if (!Array.isArray(data)) continue;
+
+            (data as any[]).forEach((item: any) => {
+                const key = `${item.domain}_${item.side}`;
+                if (!grouped.has(key)) {
+                    grouped.set(key, {
+                        domain: item.domain,
+                        side: item.side,
+                        mods: [] as any[]
+                    });
+                }
+                grouped.get(key).mods.push({ ...item, sourceCategory: category });
+            });
+        }
+
+        for (const group of grouped.values()) {
+            group.mods.sort((a: any, b: any) => {
+                const aw = (typeof a.weight_pct === 'number') ? a.weight_pct : (a.weight ?? 0);
+                const bw = (typeof b.weight_pct === 'number') ? b.weight_pct : (b.weight ?? 0);
+                return bw - aw;
+            });
+        }
+
+        return Array.from(grouped.values());
+    }
+
     async searchModifiers(query: string, category?: string): Promise<ModifierData[]> {
         const searchTerm = query.toLowerCase();
         
@@ -596,13 +867,50 @@ export class ModifierDatabase {
     async getAllCategories(): Promise<string[]> {
         if (this.jsonCache.size > 0) {
             const cats = Array.from(this.jsonCache.keys());
-            // Inject virtual aggregate categories
-            const out: string[] = ['ALL', 'DESECRATED', 'ESSENCE', 'CORRUPTED', 'SOCKETABLE'];
-            // Add existing categories
-            out.push(...cats);
-            // If we have any *_Relic categories but no generic Relics, expose virtual "Relics"
-            const relicSubs = cats.filter(c => /_Relic$/i.test(c));
-            if (relicSubs.length && !out.includes('Relics')) out.push('Relics');
+            const virtualCats = getVirtualCategories(this.gameVersion);
+            const out: string[] = [...virtualCats];
+            
+            if (this.gameVersion === 'poe1') {
+                // For PoE1, separate gear categories from domain files
+                const gearCats: string[] = [];
+                const domainCats: string[] = [];
+                const specialCats: string[] = [];
+                
+                for (const cat of cats) {
+                    // Skip domain/aggregate files (they're accessed via virtual categories)
+                    if (cat.startsWith('Influence_') || 
+                        cat.startsWith('Eldritch_') || 
+                        cat.startsWith('Domain_') || 
+                        cat.startsWith('Aggregate_')) {
+                        // These are loaded but not shown directly in category list
+                        continue;
+                    }
+                    
+                    // Categorize by type
+                    if (cat.match(/^(Body_Armours|Boots|Gloves|Helmets|Shields|Belts|Amulets|Rings|Quivers|One_Hand|Two_Hand|Bows|Claws|Daggers|Sceptres|Wands|Staves)/)) {
+                        gearCats.push(cat);
+                    } else if (cat.match(/(Jewel|Idol|Charm|Flask|Brooch|Keyring)/i)) {
+                        specialCats.push(cat);
+                    } else {
+                        specialCats.push(cat);
+                    }
+                }
+                
+                // Add gear first, then special
+                out.push(...gearCats.sort());
+                out.push(...specialCats.sort());
+                
+                // Add conditional virtuals
+                const relicSubs = cats.filter(c => /_Relic$/i.test(c));
+                if (relicSubs.length && !out.includes('Relics')) out.push('Relics');
+            } else {
+                // PoE2 - add all categories
+                out.push(...cats);
+                
+                const relicSubs = cats.filter(c => /_Relic$/i.test(c));
+                if (relicSubs.length && !out.includes('Relics')) out.push('Relics');
+            }
+            
             return out;
         }
 

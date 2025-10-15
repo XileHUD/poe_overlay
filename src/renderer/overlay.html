@@ -129,11 +129,7 @@
         </div>
         <div id="domainFilters" class="cp-filters" style="display:flex; align-items:center; gap:4px; flex:0 0 auto; white-space:nowrap;">
             <span class="cp-filters-label" style="font-size:11px; color:var(--text-secondary);">Show:</span>
-            <button id="toggleAll" class="domain-toggle active" data-domain="all">All</button>
-            <button id="toggleBase" class="domain-toggle" data-domain="base">Base</button>
-            <button id="toggleDesecrated" class="domain-toggle" data-domain="desecrated">Dese</button>
-            <button id="toggleEssence" class="domain-toggle" data-domain="essence">Ess</button>
-            <button id="toggleCorrupted" class="domain-toggle" data-domain="corrupted">Corr</button>
+            <!-- Domain toggle buttons will be dynamically rendered here -->
         </div>
         <button id="clearFilters" class="pin-btn cp-clear" style="margin-left:auto; flex:0 0 auto;">Clear</button>
         </div>
@@ -501,11 +497,15 @@
         overlayVersionMode = normalized;
         window.__overlayVersionMode = normalized;
         try { window.OverlayModifiers?.setOverlayVersionMode?.(normalized); } catch {}
+        
+        // Render version-specific domain toggles
+        renderDomainToggles();
+        
+        // PoE1 mode now has modifiers feature enabled
         if (normalized === 'poe1') {
-            document.body.classList.add('overlay-no-features');
             document.body.classList.add('overlay-poe1-mode');
-            updateNoFeaturesPlaceholder('Path of Exile 1 Mode', 'Overlay features are coming soon for PoE1. Switch back to PoE2 mode in Settings for the existing tools.');
-            setHeader('Path of Exile 1', 'Overlay features coming soon');
+            document.body.classList.remove('overlay-no-features');
+            setHeader('Path of Exile 1', 'Modifiers');
             const whittlingInfo = document.getElementById('whittlingInfo');
             if (whittlingInfo) {
                 whittlingInfo.innerHTML = '';
@@ -513,6 +513,7 @@
             }
             return;
         }
+        
         document.body.classList.remove('overlay-poe1-mode');
         if (!overlayHasAnyFeatures) {
             document.body.classList.add('overlay-no-features');
@@ -559,6 +560,150 @@
     function markCraftingAction(actionKey) {
         if (!actionKey) return;
         updateLastContext({ view: 'crafting', action: `crafting:${actionKey}` });
+    }
+
+    // ===== Domain Toggle Configuration (mirrors main process config) =====
+    const POE2_TOGGLES = [
+        { id: 'toggleAll', label: 'All', domain: 'all' },
+        { id: 'toggleBase', label: 'Base', domain: 'normal' },
+        { id: 'toggleDesecrated', label: 'Dese', domain: 'desecrated' },
+        { id: 'toggleEssence', label: 'Ess', domain: 'essence' },
+        { id: 'toggleCorrupted', label: 'Corr', domain: 'corrupted' }
+    ];
+
+    const POE1_PRIMARY_TOGGLES = [
+        { id: 'toggleAll', label: 'All', domain: 'all' },
+        { id: 'toggleNormal', label: 'Normal', domain: 'normal' },
+        { id: 'toggleEldritch', label: 'Eldritch', domain: ['eldritch_eater', 'eldritch_searing'] },
+        { id: 'toggleCrafting', label: 'Crafting', domain: 'master' }
+    ];
+
+    const POE1_OVERFLOW_TOGGLES = [
+        { id: 'toggleShaper', label: 'Shaper', domain: 'shaper' },
+        { id: 'toggleElder', label: 'Elder', domain: 'elder' },
+        { id: 'toggleCrusader', label: 'Crusader', domain: 'crusader' },
+        { id: 'toggleRedeemer', label: 'Redeemer', domain: 'redeemer' },
+        { id: 'toggleHunter', label: 'Hunter', domain: 'hunter' },
+        { id: 'toggleWarlord', label: 'Warlord', domain: 'warlord' },
+        { id: 'toggleVeiled', label: 'Veiled', domain: 'veiled' },
+        { id: 'toggleCorrupted', label: 'Corrupted', domain: 'corrupted' },
+        { id: 'toggleSynthesis', label: 'Synthesis', domain: 'synthesis' },
+        { id: 'toggleDelve', label: 'Delve', domain: 'delve' },
+        { id: 'toggleIncursion', label: 'Incursion', domain: 'incursion' },
+        { id: 'toggleEssence', label: 'Essence', domain: 'essence' },
+        { id: 'toggleScourge', label: 'Scourge', domain: 'scourge' },
+        { id: 'toggleBestiary', label: 'Bestiary', domain: 'bestiary' },
+        { id: 'toggleSentinel', label: 'Sentinel', domain: 'sentinel' },
+        { id: 'toggleInfamous', label: 'Infamous', domain: 'infamous' }
+    ];
+
+    let allDomainButtonIds = [];
+    let overflowMenuOpen = false;
+
+    function renderDomainToggles() {
+        const container = document.getElementById('domainFilters');
+        if (!container) return;
+
+        // Clear existing buttons (keep the label)
+        const label = container.querySelector('.cp-filters-label');
+        container.innerHTML = '';
+        if (label) container.appendChild(label);
+
+        const isPoe1 = overlayVersionMode === 'poe1';
+        const primaryToggles = isPoe1 ? POE1_PRIMARY_TOGGLES : POE2_TOGGLES;
+        const overflowToggles = isPoe1 ? POE1_OVERFLOW_TOGGLES : [];
+
+        allDomainButtonIds = [];
+
+        // Render primary toggles
+        primaryToggles.forEach((toggle, index) => {
+            const btn = document.createElement('button');
+            btn.id = toggle.id;
+            btn.className = 'domain-toggle' + (index === 0 ? ' active' : '');
+            // Store domain as JSON if it's an array
+            btn.dataset.domain = Array.isArray(toggle.domain) ? JSON.stringify(toggle.domain) : toggle.domain;
+            btn.textContent = toggle.label;
+            container.appendChild(btn);
+            allDomainButtonIds.push(toggle.id);
+        });
+
+        // Add overflow menu for PoE1
+        if (isPoe1 && overflowToggles.length > 0) {
+            const moreBtn = document.createElement('button');
+            moreBtn.id = 'toggleMoreDomains';
+            moreBtn.className = 'domain-toggle more-domains-btn';
+            moreBtn.textContent = '+ More';
+            moreBtn.style.position = 'relative';
+            
+            const overflowMenu = document.createElement('div');
+            overflowMenu.id = 'domainOverflowMenu';
+            overflowMenu.className = 'domain-overflow-menu';
+            overflowMenu.style.cssText = 'display:none; position:absolute; top:100%; right:0; margin-top:4px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; box-shadow:0 4px 12px rgba(0,0,0,0.3); z-index:1000; min-width:120px; max-height:300px; overflow-y:auto;';
+
+            overflowToggles.forEach(toggle => {
+                const btn = document.createElement('button');
+                btn.id = toggle.id;
+                btn.className = 'domain-toggle overflow-item';
+                btn.dataset.domain = Array.isArray(toggle.domain) ? JSON.stringify(toggle.domain) : toggle.domain;
+                btn.textContent = toggle.label;
+                btn.style.cssText = 'display:block; width:100%; text-align:left; padding:6px 12px; border:none; background:transparent; color:var(--text-primary); cursor:pointer; font-size:12px;';
+                btn.addEventListener('mouseenter', () => btn.style.background = 'var(--bg-tertiary)');
+                btn.addEventListener('mouseleave', () => btn.style.background = 'transparent');
+                overflowMenu.appendChild(btn);
+                allDomainButtonIds.push(toggle.id);
+            });
+
+            moreBtn.appendChild(overflowMenu);
+            moreBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                overflowMenuOpen = !overflowMenuOpen;
+                overflowMenu.style.display = overflowMenuOpen ? 'block' : 'none';
+            });
+
+            container.appendChild(moreBtn);
+
+            // Close overflow menu when clicking outside
+            document.addEventListener('click', () => {
+                if (overflowMenuOpen) {
+                    overflowMenuOpen = false;
+                    overflowMenu.style.display = 'none';
+                }
+            });
+        }
+
+        // Attach click handlers to all toggles
+        allDomainButtonIds.forEach(id => {
+            const btn = document.getElementById(id);
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all domain buttons
+                    allDomainButtonIds.forEach(otherId => {
+                        const otherBtn = document.getElementById(otherId);
+                        if (otherBtn) otherBtn.classList.remove('active');
+                    });
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    // Close overflow menu if open
+                    if (overflowMenuOpen) {
+                        overflowMenuOpen = false;
+                        const menu = document.getElementById('domainOverflowMenu');
+                        if (menu) menu.style.display = 'none';
+                    }
+                    // Re-render with new filter
+                    if (window.originalData) try { renderFilteredContent(window.originalData); } catch {}
+                });
+            }
+        });
+        
+        // Safety check: ensure at least one toggle is active (default to "All")
+        const hasActive = allDomainButtonIds.some(id => {
+            const btn = document.getElementById(id);
+            return btn && btn.classList.contains('active');
+        });
+        if (!hasActive) {
+            const toggleAll = document.getElementById('toggleAll');
+            if (toggleAll) toggleAll.classList.add('active');
+        }
     }
 
     function markCharacterAction(actionKey) {
@@ -1579,12 +1724,60 @@
                 if (!categorySelect) return;
                 const previous = categorySelect.value;
         const categories = (rawCategories || []).filter((entry) => String(entry || '').toUpperCase() !== 'ALL');
-        // Ensure aggregated pseudo-categories are always known and rendered first
-    const AGGREGATED_CATEGORIES = ['DESECRATED','ESSENCE','CORRUPTED','SOCKETABLE','SOCKETABLES'];
+        
+        // Version-specific aggregated categories
+        const POE2_AGGREGATED = ['DESECRATED','ESSENCE','CORRUPTED','SOCKETABLE','SOCKETABLES'];
+        const POE1_AGGREGATED = ['INFLUENCE','ELDRITCH','MASTER_CRAFTING','CORRUPTED','SYNTHESISED','VEILED'];
+        const POE1_INFLUENCES = ['SHAPER','ELDER','CRUSADER','REDEEMER','HUNTER','WARLORD'];
+        const POE1_ELDRITCH = ['ELDRITCH_EATER','ELDRITCH_SEARING'];
+        const POE1_DOMAINS = ['DELVE','INCURSION','ESSENCE','SCOURGE','BESTIARY','SENTINEL','INFAMOUS'];
+        
+        const AGGREGATED_CATEGORIES = overlayVersionMode === 'poe1' ? POE1_AGGREGATED : POE2_AGGREGATED;
         const aggregatedSet = new Set(AGGREGATED_CATEGORIES.map(c => c.toUpperCase()));
 
                 function classify(cat) {
                     const u = cat.toUpperCase();
+                    
+                    // PoE1-specific classification
+                    if (overlayVersionMode === 'poe1') {
+                        if (aggregatedSet.has(u)) return 'aggregated';
+                        if (POE1_INFLUENCES.includes(u)) return 'influences';
+                        if (POE1_ELDRITCH.includes(u)) return 'eldritch';
+                        if (POE1_DOMAINS.includes(u)) return 'domains';
+                        
+                        // Special gear (unique items that don't fit normal categories)
+                        if (u.match(/^(CONVOKING_WAND|FISHING_ROD|RUNE_DAGGER|STEEL_BRACER|THRUSTING_ONE_HAND|UNSET_RING|WARSTAFF)/)) {
+                            return 'special_gear';
+                        }
+                        
+                        // Special bases (Bone, Runic)
+                        if (u.match(/^(BONE_|RUNIC_)/)) return 'special_gear'; // Combine with special gear
+                        
+                        // Idols
+                        if (u.match(/_IDOL$/)) return 'idols';
+                        
+                        // Jewels
+                        if (u.match(/JEWEL|ABYSS/)) return 'jewels';
+                        
+                        // Charms
+                        if (u.match(/CHARM/)) return 'charms';
+                        
+                        // Flasks and Tinctures/Trinkets
+                        if (u.match(/FLASK|TINCTURE|TRINKET/)) return 'flasks';
+                        
+                        // Blueprints and Contracts
+                        if (u.match(/BLUEPRINT|CONTRACT/)) return 'extra';
+                        
+                        // Gear categories (including Warstaves but excluding individual GEAR)
+                        if (u.match(/^(BODY_ARMOUR|BOOT|GLOVE|HELMET|SHIELD|BELT|AMULET|RING|QUIVER|ONE_HAND|TWO_HAND|BOW|CLAW|DAGGER|SCEPTRE|WAND|STAVE|AXE|MACE|SWORD)/) && u !== 'GEAR') {
+                            return 'gear';
+                        }
+                        
+                        // Default to other
+                        return 'other';
+                    }
+                    
+                    // PoE2 classification
                     if (aggregatedSet.has(u)) return 'aggregated';
                     if (u.startsWith('WAYSTONES_')) return 'waystones';
                     if (/(_RELIC)$/.test(u)) return 'relics';
@@ -1596,7 +1789,11 @@
                     return 'gear';
                 }
 
-                const buckets = { aggregated:[], gear:[], waystones:[], relics:[], flasks:[], tablets:[], jewels:[], mechanics:[] };
+                // Version-specific buckets
+                const poe2Buckets = { aggregated:[], gear:[], waystones:[], relics:[], flasks:[], tablets:[], jewels:[], mechanics:[] };
+                const poe1Buckets = { aggregated:[], influences:[], eldritch:[], domains:[], gear:[], special_gear:[], jewels:[], flasks:[], extra:[], idols:[], charms:[], other:[] };
+                const buckets = overlayVersionMode === 'poe1' ? poe1Buckets : poe2Buckets;
+                
                 const nonModifierCats = new Set([
                     'LIQUID_EMOTIONS','ANNOINTS','ESSENCES','OMENS','CATALYSTS','SOCKETABLES','SOCKETABLE','GEMS','KEYSTONES','ASCENDANCY_PASSIVES','ATLAS_NODES','KEYWORDS','UNIQUES','BASES','CURRENCY'
                 ]);
@@ -1669,26 +1866,48 @@
                         categorySelect.appendChild(div);
                         menuItems.push({ type: 'divider' });
                     }
-                    // Ensure aggregated remains first group
-                    await addGroup('— Aggregated —', buckets.aggregated, c=>c.toUpperCase(), true);
-                    await addGroup('— Gear —', buckets.gear);
-                    await addGroup('— Waystones —', buckets.waystones);
-                    await addGroup('— Relics —', buckets.relics, c=>{
-                        const name = c.replace(/_/g,' ');
-                        const u = c.toUpperCase();
-                        if (u.includes('SEAL')) return name + ' [2x1]';
-                        if (u.includes('URN')) return name + ' [1x2]';
-                        if (u.includes('TAPESTRY')) return name + ' [3x1]';
-                        if (u.includes('AMPHORA')) return name + ' [1x3]';
-                        if (u.includes('INCENSE')) return name + ' [4x1]';
-                        if (u.includes('VASE')) return name + ' [1x4]';
-                        if (u.includes('COFFER')) return name + ' [2x2]';
-                        return name;
-                    });
-                    await addGroup('— Flasks & Charms —', buckets.flasks, c=>c.replace(/_/g,' '));
-                    await addGroup('— Jewels —', buckets.jewels, c=>c.replace(/_/g,' '));
-                    await addGroup('— Tablets —', buckets.tablets, c=>c.replace(/_/g,' '));
-                    await addGroup('— Mechanics —', buckets.mechanics, c=>c.replace(/_/g,' '));
+                    // Version-specific group rendering
+                    if (overlayVersionMode === 'poe1') {
+                        // PoE1 sections - correct order
+                        await addGroup('— Gear —', buckets.gear, c=>c.replace(/_/g,' '));
+                        await addGroup('— Special Gear —', buckets.special_gear, c=>c.replace(/_/g,' '));
+                        await addGroup('— Jewels —', buckets.jewels, c=>c.replace(/_/g,' '));
+                        await addGroup('— Flasks —', buckets.flasks, c=>c.replace(/_/g,' '));
+                        await addGroup('— Extra —', buckets.extra, c=>c.replace(/_/g,' '));
+                        await addGroup('— Influences —', buckets.influences, c=>c.replace(/_/g,' '));
+                        await addGroup('— Eldritch —', buckets.eldritch, c=>{
+                            const name = c.replace(/ELDRITCH_/,'').replace(/_/g,' ');
+                            if (c.toUpperCase().includes('EATER')) return 'Eater of Worlds';
+                            if (c.toUpperCase().includes('SEARING')) return 'Searing Exarch';
+                            return name;
+                        });
+                        await addGroup('— Domains —', buckets.domains, c=>c.replace(/_/g,' '));
+                        await addGroup('— Aggregated —', buckets.aggregated, c=>c.replace(/_/g,' ').toUpperCase(), true);
+                        await addGroup('— Idols —', buckets.idols, c=>c.replace(/_/g,' '));
+                        await addGroup('— Charms —', buckets.charms, c=>c.replace(/_/g,' '));
+                        await addGroup('— Other —', buckets.other, c=>c.replace(/_/g,' '));
+                    } else {
+                        // PoE2 sections
+                        await addGroup('— Aggregated —', buckets.aggregated, c=>c.toUpperCase(), true);
+                        await addGroup('— Gear —', buckets.gear);
+                        await addGroup('— Waystones —', buckets.waystones);
+                        await addGroup('— Relics —', buckets.relics, c=>{
+                            const name = c.replace(/_/g,' ');
+                            const u = c.toUpperCase();
+                            if (u.includes('SEAL')) return name + ' [2x1]';
+                            if (u.includes('URN')) return name + ' [1x2]';
+                            if (u.includes('TAPESTRY')) return name + ' [3x1]';
+                            if (u.includes('AMPHORA')) return name + ' [1x3]';
+                            if (u.includes('INCENSE')) return name + ' [4x1]';
+                            if (u.includes('VASE')) return name + ' [1x4]';
+                            if (u.includes('COFFER')) return name + ' [2x2]';
+                            return name;
+                        });
+                        await addGroup('— Flasks & Charms —', buckets.flasks, c=>c.replace(/_/g,' '));
+                        await addGroup('— Jewels —', buckets.jewels, c=>c.replace(/_/g,' '));
+                        await addGroup('— Tablets —', buckets.tablets, c=>c.replace(/_/g,' '));
+                        await addGroup('— Mechanics —', buckets.mechanics, c=>c.replace(/_/g,' '));
+                    }
                     if (menuItems.length && menuItems[menuItems.length - 1]?.type === 'divider') {
                         menuItems.pop();
                     }
@@ -2207,27 +2426,21 @@
             if (clear) clear.addEventListener('click', () => {
                 const s = document.getElementById('search-input'); if (s) s.value = '';
                 try { window.OverlayModifiers?.clearAllFilters?.(); } catch {}
+                // Auto-select "All" toggle
+                const toggleAll = document.getElementById('toggleAll');
+                if (toggleAll && !toggleAll.classList.contains('active')) {
+                    allDomainButtonIds.forEach(id => {
+                        const btn = document.getElementById(id);
+                        if (btn) btn.classList.remove('active');
+                    });
+                    toggleAll.classList.add('active');
+                }
                 if (window.originalData) try { renderFilteredContent(window.originalData); } catch {}
             });
             
-            // Initialize domain toggle buttons (radio button behavior)
-            const domainButtons = ['toggleAll', 'toggleBase', 'toggleDesecrated', 'toggleEssence', 'toggleCorrupted'];
-            domainButtons.forEach(id => {
-                const btn = document.getElementById(id);
-                if (btn) {
-                    btn.addEventListener('click', () => {
-                        // Remove active class from all domain buttons
-                        domainButtons.forEach(otherId => {
-                            const otherBtn = document.getElementById(otherId);
-                            if (otherBtn) otherBtn.classList.remove('active');
-                        });
-                        // Add active class to clicked button
-                        btn.classList.add('active');
-                        // Re-render with new filter
-                        if (window.originalData) try { renderFilteredContent(window.originalData); } catch {}
-                    });
-                }
-            });
+            // Domain toggle buttons are now rendered dynamically via renderDomainToggles()
+            // called from applyOverlayVersionMode()
+            
             // Default view: use single source of truth
             setView('modifiers');
             // Wire clipboard item detection to auto-open correct category

@@ -1,0 +1,723 @@
+[
+  {
+    "category": "Burst_Band",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "#% increased Damage",
+    "tier": 4,
+    "ilvl": 81,
+    "weight": 2800,
+    "weight_pct": 11.111,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Harmful",
+        "tier_level": 1,
+        "text_plain": "1 (30–34)% increased Damage",
+        "weight": 1000,
+        "weight_pct": 3.968
+      },
+      {
+        "tier_name": "Hazardous",
+        "tier_level": 45,
+        "text_plain": "45 (35–39)% increased Damage",
+        "weight": 800,
+        "weight_pct": 3.175
+      },
+      {
+        "tier_name": "Dangerous",
+        "tier_level": 75,
+        "text_plain": "75 (40–44)% increased Damage",
+        "weight": 600,
+        "weight_pct": 2.381
+      },
+      {
+        "tier_name": "Destructive",
+        "tier_level": 81,
+        "text_plain": "81 (45–50)% increased Damage",
+        "weight": 400,
+        "weight_pct": 1.587
+      }
+    ]
+  },
+  {
+    "category": "Burst_Band",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "#% increased time before Lockdown",
+    "tier": 4,
+    "ilvl": 81,
+    "weight": 2800,
+    "weight_pct": 11.111,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Slowing",
+        "tier_level": 1,
+        "text_plain": "1 (5–6)% increased time before Lockdown",
+        "weight": 1000,
+        "weight_pct": 3.968
+      },
+      {
+        "tier_name": "Stalling",
+        "tier_level": 45,
+        "text_plain": "45 (6–7)% increased time before Lockdown",
+        "weight": 800,
+        "weight_pct": 3.175
+      },
+      {
+        "tier_name": "Delaying",
+        "tier_level": 75,
+        "text_plain": "75 (8–9)% increased time before Lockdown",
+        "weight": 600,
+        "weight_pct": 2.381
+      },
+      {
+        "tier_name": "Interrupting",
+        "tier_level": 81,
+        "text_plain": "81 (9–10)% increased time before Lockdown",
+        "weight": 400,
+        "weight_pct": 1.587
+      }
+    ]
+  },
+  {
+    "category": "Burst_Band",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "#% increased Job speed",
+    "tier": 4,
+    "ilvl": 81,
+    "weight": 2800,
+    "weight_pct": 11.111,
+    "tags": [
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Practiced",
+        "tier_level": 1,
+        "text_plain": "1 (9–11)% increased Job speed",
+        "weight": 1000,
+        "weight_pct": 3.968
+      },
+      {
+        "tier_name": "Skillful",
+        "tier_level": 45,
+        "text_plain": "45 (12–14)% increased Job speed",
+        "weight": 800,
+        "weight_pct": 3.175
+      },
+      {
+        "tier_name": "Professional",
+        "tier_level": 75,
+        "text_plain": "75 (15–17)% increased Job speed",
+        "weight": 600,
+        "weight_pct": 2.381
+      },
+      {
+        "tier_name": "Masterful",
+        "tier_level": 81,
+        "text_plain": "81 (18–20)% increased Job speed",
+        "weight": 400,
+        "weight_pct": 1.587
+      }
+    ]
+  },
+  {
+    "category": "Burst_Band",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "#% increased Job Experience gainmap item drop rarity +% [#]",
+    "tier": 4,
+    "ilvl": 81,
+    "weight": 2800,
+    "weight_pct": 11.111,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Footpad's",
+        "tier_level": 1,
+        "text_plain": "1 (3–4)% increased Job Experience gainmap item drop rarity +% [0]",
+        "weight": 1000,
+        "weight_pct": 3.968
+      },
+      {
+        "tier_name": "Crook's",
+        "tier_level": 45,
+        "text_plain": "45 (5–6)% increased Job Experience gainmap item drop rarity +% [0]",
+        "weight": 800,
+        "weight_pct": 3.175
+      },
+      {
+        "tier_name": "Criminal's",
+        "tier_level": 75,
+        "text_plain": "75 (7–8)% increased Job Experience gainmap item drop rarity +% [0]",
+        "weight": 600,
+        "weight_pct": 2.381
+      },
+      {
+        "tier_name": "Mastermind's",
+        "tier_level": 81,
+        "text_plain": "81 (9–10)% increased Job Experience gainmap item drop rarity +% [0]",
+        "weight": 400,
+        "weight_pct": 1.587
+      }
+    ]
+  },
+  {
+    "category": "Burst_Band",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "# to # added Physical DamagePlayers and their Minions have # to # added Physical Damage",
+    "tier": 4,
+    "ilvl": 83,
+    "weight": 2800,
+    "weight_pct": 11.111,
+    "tags": [
+      "damage",
+      "physical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Glinting",
+        "tier_level": 1,
+        "text_plain": "1 (2–3) to (4–5) added Physical DamagePlayers and their Minions have (2–3) to (4–5) added Physical Damage",
+        "weight": 1000,
+        "weight_pct": 3.968
+      },
+      {
+        "tier_name": "Burnished",
+        "tier_level": 45,
+        "text_plain": "45 (4–5) to (6–8) added Physical DamagePlayers and their Minions have (4–5) to (6–8) added Physical Damage",
+        "weight": 800,
+        "weight_pct": 3.175
+      },
+      {
+        "tier_name": "Polished",
+        "tier_level": 75,
+        "text_plain": "75 (6–8) to (9–11) added Physical DamagePlayers and their Minions have (6–8) to (9–11) added Physical Damage",
+        "weight": 600,
+        "weight_pct": 2.381
+      },
+      {
+        "tier_name": "Honed",
+        "tier_level": 83,
+        "text_plain": "83 (7–9) to (12–14) added Physical DamagePlayers and their Minions have (7–9) to (12–14) added Physical Damage",
+        "weight": 400,
+        "weight_pct": 1.587
+      }
+    ]
+  },
+  {
+    "category": "Burst_Band",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "# to # added Fire DamagePlayers and their Minions have # to # added Fire Damage",
+    "tier": 4,
+    "ilvl": 83,
+    "weight": 2800,
+    "weight_pct": 11.111,
+    "tags": [
+      "damage",
+      "elemental",
+      "fire"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Heated",
+        "tier_level": 1,
+        "text_plain": "1 (11–15) to (18–21) added Fire DamagePlayers and their Minions have (11–15) to (18–21) added Fire Damage",
+        "weight": 1000,
+        "weight_pct": 3.968
+      },
+      {
+        "tier_name": "Smouldering",
+        "tier_level": 45,
+        "text_plain": "45 (16–20) to (22–25) added Fire DamagePlayers and their Minions have (16–20) to (22–25) added Fire Damage",
+        "weight": 800,
+        "weight_pct": 3.175
+      },
+      {
+        "tier_name": "Smoking",
+        "tier_level": 75,
+        "text_plain": "75 (20–25) to (26–35) added Fire DamagePlayers and their Minions have (20–25) to (26–35) added Fire Damage",
+        "weight": 600,
+        "weight_pct": 2.381
+      },
+      {
+        "tier_name": "Burning",
+        "tier_level": 83,
+        "text_plain": "83 (26–30) to (36–42) added Fire DamagePlayers and their Minions have (26–30) to (36–42) added Fire Damage",
+        "weight": 400,
+        "weight_pct": 1.587
+      }
+    ]
+  },
+  {
+    "category": "Burst_Band",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "# to # added Cold DamagePlayers and their Minions have # to # added Cold Damage",
+    "tier": 4,
+    "ilvl": 83,
+    "weight": 2800,
+    "weight_pct": 11.111,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Frosted",
+        "tier_level": 1,
+        "text_plain": "1 (11–15) to (18–21) added Cold DamagePlayers and their Minions have (11–15) to (18–21) added Cold Damage",
+        "weight": 1000,
+        "weight_pct": 3.968
+      },
+      {
+        "tier_name": "Chilled",
+        "tier_level": 45,
+        "text_plain": "45 (16–20) to (22–25) added Cold DamagePlayers and their Minions have (16–20) to (22–25) added Cold Damage",
+        "weight": 800,
+        "weight_pct": 3.175
+      },
+      {
+        "tier_name": "Icy",
+        "tier_level": 75,
+        "text_plain": "75 (20–25) to (26–35) added Cold DamagePlayers and their Minions have (20–25) to (26–35) added Cold Damage",
+        "weight": 600,
+        "weight_pct": 2.381
+      },
+      {
+        "tier_name": "Frigid",
+        "tier_level": 83,
+        "text_plain": "83 (26–30) to (36–42) added Cold DamagePlayers and their Minions have (26–30) to (36–42) added Cold Damage",
+        "weight": 400,
+        "weight_pct": 1.587
+      }
+    ]
+  },
+  {
+    "category": "Burst_Band",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "# to # added Lightning DamagePlayers and their Minions have # to # added Lightning Damage",
+    "tier": 4,
+    "ilvl": 83,
+    "weight": 2800,
+    "weight_pct": 11.111,
+    "tags": [
+      "damage",
+      "elemental",
+      "lightning"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Humming",
+        "tier_level": 1,
+        "text_plain": "1 1 to (35–40) added Lightning DamagePlayers and their Minions have 1 to (35–40) added Lightning Damage",
+        "weight": 1000,
+        "weight_pct": 3.968
+      },
+      {
+        "tier_name": "Buzzing",
+        "tier_level": 45,
+        "text_plain": "45 1 to (41–47) added Lightning DamagePlayers and their Minions have 1 to (41–47) added Lightning Damage",
+        "weight": 800,
+        "weight_pct": 3.175
+      },
+      {
+        "tier_name": "Snapping",
+        "tier_level": 75,
+        "text_plain": "75 1 to (48–60) added Lightning DamagePlayers and their Minions have 1 to (48–60) added Lightning Damage",
+        "weight": 600,
+        "weight_pct": 2.381
+      },
+      {
+        "tier_name": "Crackling",
+        "tier_level": 83,
+        "text_plain": "83 1 to (61–66) added Lightning DamagePlayers and their Minions have 1 to (61–66) added Lightning Damage",
+        "weight": 400,
+        "weight_pct": 1.587
+      }
+    ]
+  },
+  {
+    "category": "Burst_Band",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "#% increased Spell Damage",
+    "tier": 4,
+    "ilvl": 81,
+    "weight": 2800,
+    "weight_pct": 11.111,
+    "tags": [
+      "damage",
+      "caster"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Illusionist's",
+        "tier_level": 1,
+        "text_plain": "1 (21–25)% increased Spell Damage",
+        "weight": 1000,
+        "weight_pct": 3.968
+      },
+      {
+        "tier_name": "Conjuror's",
+        "tier_level": 45,
+        "text_plain": "45 (26–30)% increased Spell Damage",
+        "weight": 800,
+        "weight_pct": 3.175
+      },
+      {
+        "tier_name": "Witch's",
+        "tier_level": 75,
+        "text_plain": "75 (31–35)% increased Spell Damage",
+        "weight": 600,
+        "weight_pct": 2.381
+      },
+      {
+        "tier_name": "Archmage's",
+        "tier_level": 81,
+        "text_plain": "81 (36–40)% increased Spell Damage",
+        "weight": 400,
+        "weight_pct": 1.587
+      }
+    ]
+  },
+  {
+    "category": "Burst_Band",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "#% reduced Hiring Feemap item drop rarity +% [#]",
+    "tier": 4,
+    "ilvl": 81,
+    "weight": 2800,
+    "weight_pct": 14,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Personality",
+        "tier_level": 1,
+        "text_plain": "1 (6–7)% reduced Hiring Feemap item drop rarity +% [0]",
+        "weight": 1000,
+        "weight_pct": 5
+      },
+      {
+        "tier_name": "of Presence",
+        "tier_level": 45,
+        "text_plain": "45 (8–9)% reduced Hiring Feemap item drop rarity +% [0]",
+        "weight": 800,
+        "weight_pct": 4
+      },
+      {
+        "tier_name": "of Charm",
+        "tier_level": 75,
+        "text_plain": "75 (10–12)% reduced Hiring Feemap item drop rarity +% [0]",
+        "weight": 600,
+        "weight_pct": 3
+      },
+      {
+        "tier_name": "of Charisma",
+        "tier_level": 81,
+        "text_plain": "81 (13–15)% reduced Hiring Feemap item drop rarity +% [0]",
+        "weight": 400,
+        "weight_pct": 2
+      }
+    ]
+  },
+  {
+    "category": "Burst_Band",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "The Ring's Cut reduced by #%map item drop rarity +% [#]",
+    "tier": 4,
+    "ilvl": 81,
+    "weight": 2800,
+    "weight_pct": 14,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Bartering",
+        "tier_level": 1,
+        "text_plain": "1 The Ring's Cut reduced by (6–7)%map item drop rarity +% [0]",
+        "weight": 1000,
+        "weight_pct": 5
+      },
+      {
+        "tier_name": "of Negotiating",
+        "tier_level": 45,
+        "text_plain": "45 The Ring's Cut reduced by (8–9)%map item drop rarity +% [0]",
+        "weight": 800,
+        "weight_pct": 4
+      },
+      {
+        "tier_name": "of Selfishness",
+        "tier_level": 75,
+        "text_plain": "75 The Ring's Cut reduced by (10–12)%map item drop rarity +% [0]",
+        "weight": 600,
+        "weight_pct": 3
+      },
+      {
+        "tier_name": "of Greed",
+        "tier_level": 81,
+        "text_plain": "81 The Ring's Cut reduced by (13–15)%map item drop rarity +% [0]",
+        "weight": 400,
+        "weight_pct": 2
+      }
+    ]
+  },
+  {
+    "category": "Burst_Band",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "#% reduced Travel Feemap item drop rarity +% [#]",
+    "tier": 4,
+    "ilvl": 81,
+    "weight": 2800,
+    "weight_pct": 14,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Efficiency",
+        "tier_level": 1,
+        "text_plain": "1 (6–7)% reduced Travel Feemap item drop rarity +% [0]",
+        "weight": 1000,
+        "weight_pct": 5
+      },
+      {
+        "tier_name": "of Shortcuts",
+        "tier_level": 45,
+        "text_plain": "45 (8–9)% reduced Travel Feemap item drop rarity +% [0]",
+        "weight": 800,
+        "weight_pct": 4
+      },
+      {
+        "tier_name": "of Bypasses",
+        "tier_level": 75,
+        "text_plain": "75 (10–12)% reduced Travel Feemap item drop rarity +% [0]",
+        "weight": 600,
+        "weight_pct": 3
+      },
+      {
+        "tier_name": "of Passage",
+        "tier_level": 81,
+        "text_plain": "81 (13–15)% reduced Travel Feemap item drop rarity +% [0]",
+        "weight": 400,
+        "weight_pct": 2
+      }
+    ]
+  },
+  {
+    "category": "Burst_Band",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "#% increased Critical Strike Chance",
+    "tier": 4,
+    "ilvl": 82,
+    "weight": 2800,
+    "weight_pct": 14,
+    "tags": [
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Needling",
+        "tier_level": 1,
+        "text_plain": "1 (61–70)% increased Critical Strike Chance",
+        "weight": 1000,
+        "weight_pct": 5
+      },
+      {
+        "tier_name": "of Stinging",
+        "tier_level": 45,
+        "text_plain": "45 (71–80)% increased Critical Strike Chance",
+        "weight": 800,
+        "weight_pct": 4
+      },
+      {
+        "tier_name": "of Piercing",
+        "tier_level": 75,
+        "text_plain": "75 (81–90)% increased Critical Strike Chance",
+        "weight": 600,
+        "weight_pct": 3
+      },
+      {
+        "tier_name": "of Rupturing",
+        "tier_level": 82,
+        "text_plain": "82 (91–100)% increased Critical Strike Chance",
+        "weight": 400,
+        "weight_pct": 2
+      }
+    ]
+  },
+  {
+    "category": "Burst_Band",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Players and their Minions have #% increased Mana Regeneration Rate",
+    "tier": 4,
+    "ilvl": 82,
+    "weight": 2800,
+    "weight_pct": 14,
+    "tags": [
+      "resource",
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Excitement",
+        "tier_level": 1,
+        "text_plain": "1 Players and their Minions have (21–25)% increased Mana Regeneration Rate",
+        "weight": 1000,
+        "weight_pct": 5
+      },
+      {
+        "tier_name": "of Joy",
+        "tier_level": 45,
+        "text_plain": "45 Players and their Minions have (26–30)% increased Mana Regeneration Rate",
+        "weight": 800,
+        "weight_pct": 4
+      },
+      {
+        "tier_name": "of Elation",
+        "tier_level": 75,
+        "text_plain": "75 Players and their Minions have (31–35)% increased Mana Regeneration Rate",
+        "weight": 600,
+        "weight_pct": 3
+      },
+      {
+        "tier_name": "of Bliss",
+        "tier_level": 82,
+        "text_plain": "82 Players and their Minions have (36–40)% increased Mana Regeneration Rate",
+        "weight": 400,
+        "weight_pct": 2
+      }
+    ]
+  },
+  {
+    "category": "Burst_Band",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Grants Level # Wrath SkillGrants Level # Discipline SkillGrants Level # Purity of Lightning SkillGrants Level # Zealotry SkillGrants Level # Malevolence Skill",
+    "tier": 15,
+    "ilvl": 75,
+    "weight": 6000,
+    "weight_pct": 30,
+    "tags": [
+      "aura"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Aid",
+        "tier_level": 45,
+        "text_plain": "45 Grants Level 5 Wrath Skill",
+        "weight": 500,
+        "weight_pct": 2.5
+      },
+      {
+        "tier_name": "of Coordination",
+        "tier_level": 68,
+        "text_plain": "68 Grants Level 10 Wrath Skill",
+        "weight": 400,
+        "weight_pct": 2
+      },
+      {
+        "tier_name": "of Cooperation",
+        "tier_level": 75,
+        "text_plain": "75 Grants Level 15 Wrath Skill",
+        "weight": 300,
+        "weight_pct": 1.5
+      },
+      {
+        "tier_name": "of Aid",
+        "tier_level": 45,
+        "text_plain": "45 Grants Level 5 Discipline Skill",
+        "weight": 500,
+        "weight_pct": 2.5
+      },
+      {
+        "tier_name": "of Coordination",
+        "tier_level": 68,
+        "text_plain": "68 Grants Level 10 Discipline Skill",
+        "weight": 400,
+        "weight_pct": 2
+      },
+      {
+        "tier_name": "of Cooperation",
+        "tier_level": 75,
+        "text_plain": "75 Grants Level 15 Discipline Skill",
+        "weight": 300,
+        "weight_pct": 1.5
+      },
+      {
+        "tier_name": "of Aid",
+        "tier_level": 45,
+        "text_plain": "45 Grants Level 5 Purity of Lightning Skill",
+        "weight": 500,
+        "weight_pct": 2.5
+      },
+      {
+        "tier_name": "of Coordination",
+        "tier_level": 68,
+        "text_plain": "68 Grants Level 10 Purity of Lightning Skill",
+        "weight": 400,
+        "weight_pct": 2
+      },
+      {
+        "tier_name": "of Cooperation",
+        "tier_level": 75,
+        "text_plain": "75 Grants Level 15 Purity of Lightning Skill",
+        "weight": 300,
+        "weight_pct": 1.5
+      },
+      {
+        "tier_name": "of Aid",
+        "tier_level": 45,
+        "text_plain": "45 Grants Level 5 Zealotry Skill",
+        "weight": 500,
+        "weight_pct": 2.5
+      },
+      {
+        "tier_name": "of Coordination",
+        "tier_level": 68,
+        "text_plain": "68 Grants Level 10 Zealotry Skill",
+        "weight": 400,
+        "weight_pct": 2
+      },
+      {
+        "tier_name": "of Cooperation",
+        "tier_level": 75,
+        "text_plain": "75 Grants Level 15 Zealotry Skill",
+        "weight": 300,
+        "weight_pct": 1.5
+      },
+      {
+        "tier_name": "of Aid",
+        "tier_level": 45,
+        "text_plain": "45 Grants Level 5 Malevolence Skill",
+        "weight": 500,
+        "weight_pct": 2.5
+      },
+      {
+        "tier_name": "of Coordination",
+        "tier_level": 68,
+        "text_plain": "68 Grants Level 10 Malevolence Skill",
+        "weight": 400,
+        "weight_pct": 2
+      },
+      {
+        "tier_name": "of Cooperation",
+        "tier_level": 75,
+        "text_plain": "75 Grants Level 15 Malevolence Skill",
+        "weight": 300,
+        "weight_pct": 1.5
+      }
+    ]
+  }
+]

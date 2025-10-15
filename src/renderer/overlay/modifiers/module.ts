@@ -1,4 +1,5 @@
 import { escapeHtml } from '../utils';
+import { getDomainToggles, getPrimaryToggles, getOverflowToggles, domainMatchesToggle, isBaseDomain, type OverlayGameVersion } from './versionConfig';
 
 // Modifier panel controller + render pipeline extracted from overlay.html
 // Exposes a stable API used by overlay.html wrappers. No DOM structure changes.
@@ -1239,25 +1240,23 @@ export function renderFilteredContent(data: any){
   applyWhittlingMetadataToOverlayMods(data as ModifierData, canComputeWhittling ? whittlingResult : null);
   renderWhittlingInfo(canComputeWhittling ? whittlingResult : null);
   
-  // Get active domain filter (radio button behavior)
-  let activeDomain = 'all'; // default to show all
-  const domainMappings = {
-    'toggleAll': 'all',
-    'toggleBase': 'base',
-    'toggleDesecrated': 'desecrated', 
-    'toggleEssence': 'essence',
-    'toggleCorrupted': 'corrupted'
-  };
+  // Get active domain filter using version-aware config
+  const gameVersion = currentOverlayVersionMode;
+  const allToggles = getDomainToggles(gameVersion);
   
-  // Find which domain button is active
-  Object.entries(domainMappings).forEach(([buttonId, domain]) => {
-    const btn = document.getElementById(buttonId);
+  let activeToggle: any = null;
+  for (const toggle of allToggles) {
+    const btn = document.getElementById(toggle.id);
     if (btn && btn.classList.contains('active')) {
-      activeDomain = domain;
+      activeToggle = toggle;
+      break;
     }
-  });
+  }
   
-  console.log('Active domain filter:', activeDomain);
+  // Default to 'all' if no button is active
+  const activeDomain = activeToggle ? activeToggle.domain : 'all';
+  
+  console.log('Active domain filter:', activeDomain, '(version:', gameVersion, ')');
   
   const currentAttribute = (document.querySelector('.attribute-btn.active') as HTMLElement | null)?.dataset.attr;
     const attributeMetaAvailable = Array.isArray(data?.modifiers) && data.modifiers.some((sec:any) =>
@@ -1293,21 +1292,22 @@ export function renderFilteredContent(data: any){
     filteredData.modifiers = data.modifiers
       .filter((section:any) => {
         // Filter by domain if a specific domain is selected
-        if (activeDomain !== 'all') {
-          const sectionDomain = String(section.domain || '').toLowerCase();
-          // Normalize known special domains set
-          const special = new Set(['desecrated','essence','corrupted']);
-
-          if (activeDomain === 'base') {
-            // Show any section that is NOT one of the special domains
-            // Includes empty/undefined/"base"/"normal" and any unknown domain that isn't special
-            return !special.has(sectionDomain);
-          }
-
-          // Other domains must match exactly
-          return sectionDomain === activeDomain;
+        if (activeDomain === 'all') return true;
+        
+        const sectionDomain = String(section.domain || '').toLowerCase();
+        
+        // Handle 'base'/'normal' toggle - show non-special domains
+        if (activeDomain === 'normal' || activeDomain === 'base') {
+          return isBaseDomain(gameVersion, sectionDomain);
         }
-        return true;
+        
+        // Handle multi-domain toggles (e.g., Eldritch = eater + searing)
+        if (Array.isArray(activeDomain)) {
+          return activeDomain.some(d => d.toLowerCase() === sectionDomain);
+        }
+        
+        // Single domain match
+        return activeDomain.toLowerCase() === sectionDomain;
       })
       .map((section:any) => {
         // Helper to derive tier level consistently
@@ -1509,29 +1509,6 @@ export function renderFilteredContent(data: any){
       </div>
     </div>`;
 
-  const resultsHtml = Object.entries(groupedByDomain).map(([domain, domainSections]: any[]) => {
-    const hasPrefix = (domainSections as any).prefix;
-    const hasSuffix = (domainSections as any).suffix;
-    const hasNone = (domainSections as any).none;
-    if (hasPrefix || hasSuffix) {
-      const domainId = `domain-${domain}`;
-      return `
-        <div class="domain-container">
-          <div class="domain-sections open" id="${domainId}">
-            ${hasPrefix ? renderSection(hasPrefix, domainId) : '<div></div>'}
-            ${hasSuffix ? renderSection(hasSuffix, domainId) : '<div></div>'}
-          </div>
-        </div>`;
-    }
-    const domainId = `domain-${domain}`;
-    return `
-      <div class="domain-container">
-        <div class="domain-sections open" id="${domainId}">
-          ${renderSection((hasNone || ((domainSections as any).list && (domainSections as any).list[0]) || { mods: [] }), domainId)}
-        </div>
-      </div>`;
-  }).join('');
-
   if (!content) return;
   let filtersWrapper = content.querySelector('#modFiltersWrapper') as HTMLElement | null;
   let resultsWrapper = content.querySelector('#modResultsWrapper') as HTMLElement | null;
@@ -1590,29 +1567,109 @@ export function renderFilteredContent(data: any){
     });
   } catch {}
 
-  resultsWrapper.innerHTML = resultsHtml;
+  // Progressive rendering for better performance with many domains (PoE1)
+  const domainEntries = Object.entries(groupedByDomain);
+  const CHUNK_SIZE = 5; // Render 5 domain sections at a time
+  
+  // Clear results wrapper
+  resultsWrapper.innerHTML = '';
+  
+  // Show loading indicator if we have many domains
+  if (domainEntries.length > 10) {
+    const loadingDiv = document.createElement('div');
+    loadingDiv.className = 'mod-loading-indicator';
+    loadingDiv.style.cssText = 'text-align:center; padding:20px; color:var(--text-secondary); font-size:12px;';
+    loadingDiv.textContent = `Loading ${domainEntries.length} domain sections...`;
+    resultsWrapper.appendChild(loadingDiv);
+  }
+  
+  // Function to render a chunk of domains
+  let currentChunkIndex = 0;
+  const renderChunk = () => {
+    const start = currentChunkIndex * CHUNK_SIZE;
+    const end = Math.min(start + CHUNK_SIZE, domainEntries.length);
+    
+    // Remove loading indicator on first chunk
+    if (currentChunkIndex === 0) {
+      resultsWrapper.innerHTML = '';
+    }
+    
+    // Create fragment for efficient DOM insertion
+    const fragment = document.createDocumentFragment();
+    
+    for (let i = start; i < end; i++) {
+      const [domain, domainSections] = domainEntries[i] as any[];
+      const hasPrefix = (domainSections as any).prefix;
+      const hasSuffix = (domainSections as any).suffix;
+      const hasNone = (domainSections as any).none;
+      
+      const container = document.createElement('div');
+      container.className = 'domain-container';
+      
+      const domainId = `domain-${domain}`;
+      let html = '';
+      
+      if (hasPrefix || hasSuffix) {
+        html = `
+          <div class="domain-sections open" id="${domainId}">
+            ${hasPrefix ? renderSection(hasPrefix, domainId) : '<div></div>'}
+            ${hasSuffix ? renderSection(hasSuffix, domainId) : '<div></div>'}
+          </div>`;
+      } else {
+        html = `
+          <div class="domain-sections open" id="${domainId}">
+            ${renderSection((hasNone || ((domainSections as any).list && (domainSections as any).list[0]) || { mods: [] }), domainId)}
+          </div>`;
+      }
+      
+      container.innerHTML = html;
+      fragment.appendChild(container);
+    }
+    
+    // Append chunk to results
+    resultsWrapper.appendChild(fragment);
+    
+    currentChunkIndex++;
+    
+    // Schedule next chunk if there are more
+    if (end < domainEntries.length) {
+      // Use requestAnimationFrame for smooth rendering
+      requestAnimationFrame(renderChunk);
+    } else {
+      // All chunks rendered - attach event handlers
+      attachEventHandlers();
+    }
+  };
+  
+  // Function to attach event handlers after all rendering is complete
+  const attachEventHandlers = () => {
+    try {
+      // Ensure inline tags are wired after results are in the DOM
+      attachInlineTagClickHandlers(prevActive, tagRGB);
 
-  try {
-    // Ensure inline tags are wired after results are in the DOM
-    attachInlineTagClickHandlers(prevActive, tagRGB);
-
-    (window as any).__lastFilteredSections = (filteredData.modifiers || []).map((s:any)=>({ ...s }));
-    resultsWrapper.querySelectorAll('.pin-section-btn').forEach(btn => {
-      btn.addEventListener('click', (ev) => {
-        ev.stopPropagation();
-        const domain = (btn as HTMLElement).getAttribute('data-domain') || '';
-        const side = (btn as HTMLElement).getAttribute('data-side') || 'none';
-        try {
-          const payload = buildSectionPopoutPayload(domain, side);
-          if ((window as any).electronAPI?.openModPopout) {
-            (window as any).electronAPI.openModPopout(payload);
-          } else {
-            console.warn('openModPopout API unavailable');
-          }
-        } catch(e){ console.error('Failed to build popout payload', e); }
+      (window as any).__lastFilteredSections = (filteredData.modifiers || []).map((s:any)=>({ ...s }));
+      resultsWrapper.querySelectorAll('.pin-section-btn').forEach(btn => {
+        btn.addEventListener('click', (ev) => {
+          ev.stopPropagation();
+          const domain = (btn as HTMLElement).getAttribute('data-domain') || '';
+          const side = (btn as HTMLElement).getAttribute('data-side') || 'none';
+          try {
+            const payload = buildSectionPopoutPayload(domain, side);
+            if ((window as any).electronAPI?.openModPopout) {
+              (window as any).electronAPI.openModPopout(payload);
+            } else {
+              console.warn('openModPopout API unavailable');
+            }
+          } catch(e){ console.error('Failed to build popout payload', e); }
+        });
       });
-    });
-  } catch {}
+    } catch (err) {
+      console.error('Error attaching event handlers:', err);
+    }
+  };
+  
+  // Start progressive rendering
+  renderChunk();
 }
 
 interface PopoutSectionPayloadMod {
@@ -1690,12 +1747,14 @@ export function clearAllFilters(){
   })
   document.querySelectorAll('.attribute-btn.active').forEach(btn=> btn.classList.remove('active'));
   
-  // Clear domain filters - reset to "All" (only "All" button active)
-  const domainButtons = ['toggleAll', 'toggleBase', 'toggleDesecrated', 'toggleEssence', 'toggleCorrupted'];
-  domainButtons.forEach(id => {
-    const btn = document.getElementById(id);
+  // Clear domain filters - reset to "All" using version-aware config
+  const gameVersion = currentOverlayVersionMode;
+  const allToggles = getDomainToggles(gameVersion);
+  
+  allToggles.forEach(toggle => {
+    const btn = document.getElementById(toggle.id);
     if (btn) {
-      if (id === 'toggleAll') {
+      if (toggle.id === 'toggleAll') {
         btn.classList.add('active');
       } else {
         btn.classList.remove('active');
@@ -1712,7 +1771,15 @@ export function formatDomainName(domain: string){
   const d = String(domain).toLowerCase();
   if(d==='prefix') return 'Prefix'; if(d==='suffix') return 'Suffix';
   if(d==='local') return 'Local'; if(d==='explicit') return 'Explicit'; if(d==='implicit') return 'Implicit';
-  return d.charAt(0).toUpperCase()+d.slice(1);
+  
+  // Handle Eldritch domains
+  if(d.includes('eldritch')) {
+    if(d.includes('eater')) return 'Eater of Worlds';
+    if(d.includes('searing')) return 'Searing Exarch';
+  }
+  
+  // Clean up underscores and capitalize
+  return d.replace(/_/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
 export function formatSideName(side: string){
   if(!side) return 'None';

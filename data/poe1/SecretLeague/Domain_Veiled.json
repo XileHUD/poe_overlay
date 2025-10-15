@@ -1,0 +1,4001 @@
+[
+  {
+    "category": "Bows",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "#% increased Physical Damage#% chance to Impale Enemies on Hit with Attacks#% increased Physical Damage#% chance to cause Bleeding on Hit#% increased Physical Damage#% chance to Blind Enemies on hit#% increased Physical Damage#% chance to Poison on Hit",
+    "tier": 4,
+    "ilvl": 60,
+    "weight": 4000,
+    "weight_pct": 62.5,
+    "tags": [
+      "damage",
+      "physical",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (120–139)% increased Physical Damage(21–25)% chance to Impale Enemies on Hit with Attacks",
+        "weight": 1000,
+        "weight_pct": 15.625
+      },
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (120–139)% increased Physical Damage(21–25)% chance to cause Bleeding on Hit",
+        "weight": 1000,
+        "weight_pct": 15.625
+      },
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (120–139)% increased Physical Damage(21–25)% chance to Blind Enemies on hit",
+        "weight": 1000,
+        "weight_pct": 15.625
+      },
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (120–139)% increased Physical Damage(21–25)% chance to Poison on Hit",
+        "weight": 1000,
+        "weight_pct": 15.625
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "#% increased Movement Speed#% increased Movement Speed if you haven't been Hit Recently#% increased Movement Speed#% chance to gain Onslaught for # seconds on Kill#% increased Movement Speed#% chance to Avoid being Chilled",
+    "tier": 3,
+    "ilvl": 60,
+    "weight": 4500,
+    "weight_pct": 52.941,
+    "tags": [
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (25–30)% increased Movement Speed(10–12)% increased Movement Speed if you haven't been Hit Recently",
+        "weight": 1500,
+        "weight_pct": 17.647
+      },
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (25–30)% increased Movement Speed(13–16)% chance to gain Onslaught for 4 seconds on Kill",
+        "weight": 1500,
+        "weight_pct": 17.647
+      },
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (25–30)% increased Movement Speed100% chance to Avoid being Chilled",
+        "weight": 1500,
+        "weight_pct": 17.647
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "# to maximum ManaRegenerate # Mana per second# to maximum Mana#% reduced Mana Cost of Skills# to maximum Mana#% of Damage taken Recouped as Mana# to maximum ManaRegenerate # Life per second",
+    "tier": 4,
+    "ilvl": 60,
+    "weight": 2800,
+    "weight_pct": 41.176,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 +(51–55) to maximum ManaRegenerate 5.3 Mana per second",
+        "weight": 600,
+        "weight_pct": 8.824
+      },
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 +(51–55) to maximum Mana(6–7)% reduced Mana Cost of Skills",
+        "weight": 600,
+        "weight_pct": 8.824
+      },
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 +(51–55) to maximum Mana(7–8)% of Damage taken Recouped as Mana",
+        "weight": 600,
+        "weight_pct": 8.824
+      },
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 +(55–60) to maximum ManaRegenerate 33.3 Life per second",
+        "weight": 1000,
+        "weight_pct": 14.706
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "# to Armour and Evasion Rating# to Armour# to maximum Energy Shield",
+    "tier": 2,
+    "ilvl": 60,
+    "weight": 3000,
+    "weight_pct": 37.5,
+    "tags": [
+      "defences",
+      "armour",
+      "evasion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 +(365–400) to Armour and Evasion Rating",
+        "weight": 1500,
+        "weight_pct": 18.75
+      },
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 +(365–400) to Armour+(31–35) to maximum Energy Shield",
+        "weight": 1500,
+        "weight_pct": 18.75
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(9–10)% increased maximum Life(9–10)% increased maximum Mana",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 2000,
+    "weight_pct": 20,
+    "tags": [
+      "life",
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (9–10)% increased maximum Life(9–10)% increased maximum Mana",
+        "weight": 2000,
+        "weight_pct": 20
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(8–9)% Chance to Block Attack Damage",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 2000,
+    "weight_pct": 20,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (8–9)% Chance to Block Attack Damage",
+        "weight": 2000,
+        "weight_pct": 20
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(9–10)% Chance to Block Spell Damage",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 2000,
+    "weight_pct": 20,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (9–10)% Chance to Block Spell Damage",
+        "weight": 2000,
+        "weight_pct": 20
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(30–35)% chance to Avoid Elemental Ailments(30–35)% chance to Avoid being Stunned",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 2000,
+    "weight_pct": 20,
+    "tags": [
+      "elemental",
+      "fire",
+      "cold",
+      "lightning",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (30–35)% chance to Avoid Elemental Ailments(30–35)% chance to Avoid being Stunned",
+        "weight": 2000,
+        "weight_pct": 20
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Energy Shield+(19–22) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 20,
+    "tags": [
+      "resource",
+      "life",
+      "defences"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Energy Shield+(19–22) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 20
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Helmets_int",
+      "Shields_int"
+    ]
+  },
+  {
+    "category": "Iron_Flask",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "Regenerate 3% of Life per second during Effect",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 20,
+    "tags": [
+      "resource",
+      "life"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 Regenerate 3% of Life per second during Effect",
+        "weight": 1000,
+        "weight_pct": 20
+      }
+    ],
+    "sourceCategories": [
+      "Iron_Flask",
+      "Life_Flasks",
+      "Mana_Flasks",
+      "Silver_Flask",
+      "Utility_Flasks"
+    ]
+  },
+  {
+    "category": "Iron_Flask",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "50% Chance to Avoid being Stunned during Effect",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 20,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 50% Chance to Avoid being Stunned during Effect",
+        "weight": 1000,
+        "weight_pct": 20
+      }
+    ],
+    "sourceCategories": [
+      "Iron_Flask",
+      "Life_Flasks",
+      "Mana_Flasks",
+      "Silver_Flask",
+      "Utility_Flasks"
+    ]
+  },
+  {
+    "category": "Iron_Flask",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(20–30)% increased Rarity of Items found during Effect",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 20,
+    "tags": [
+      "drop"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (20–30)% increased Rarity of Items found during Effect",
+        "weight": 1000,
+        "weight_pct": 20
+      }
+    ],
+    "sourceCategories": [
+      "Iron_Flask",
+      "Life_Flasks",
+      "Mana_Flasks",
+      "Silver_Flask",
+      "Utility_Flasks"
+    ]
+  },
+  {
+    "category": "Iron_Flask",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "15% of Damage Taken from Hits is Leeched as Life during Effect",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 20,
+    "tags": [
+      "resource",
+      "life"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 15% of Damage Taken from Hits is Leeched as Life during Effect",
+        "weight": 1000,
+        "weight_pct": 20
+      }
+    ],
+    "sourceCategories": [
+      "Iron_Flask",
+      "Life_Flasks",
+      "Mana_Flasks",
+      "Silver_Flask",
+      "Utility_Flasks"
+    ]
+  },
+  {
+    "category": "Iron_Flask",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(60–80)% reduced Reflected Damage taken during Effect",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 20,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (60–80)% reduced Reflected Damage taken during Effect",
+        "weight": 1000,
+        "weight_pct": 20
+      }
+    ],
+    "sourceCategories": [
+      "Iron_Flask",
+      "Life_Flasks",
+      "Mana_Flasks",
+      "Silver_Flask",
+      "Utility_Flasks"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "+(365–400) to Evasion Rating+(31–35) to maximum Energy Shield",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 18.75,
+    "tags": [
+      "defences",
+      "evasion",
+      "energy_shield"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 +(365–400) to Evasion Rating+(31–35) to maximum Energy Shield",
+        "weight": 1500,
+        "weight_pct": 18.75
+      }
+    ],
+    "sourceCategories": [
+      "Belts",
+      "Quivers"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "33% reduced Flask Charges gainedFlasks applied to you have (15–18)% increased Effect",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 18.75,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 33% reduced Flask Charges gainedFlasks applied to you have (15–18)% increased Effect",
+        "weight": 1500,
+        "weight_pct": 18.75
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Quivers",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "+(365–400) to Armour and Evasion Rating",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 18.75,
+    "tags": [
+      "defences",
+      "armour",
+      "evasion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 +(365–400) to Armour and Evasion Rating",
+        "weight": 1500,
+        "weight_pct": 18.75
+      }
+    ],
+    "sourceCategories": [
+      "Quivers"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "Minions have (8–10)% increased maximum Life+1 to maximum number of Raised Zombies+1 to maximum number of Skeletons",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 2000,
+    "weight_pct": 16.667,
+    "tags": [
+      "minion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 Minions have (8–10)% increased maximum Life+1 to maximum number of Raised Zombies+1 to maximum number of Skeletons",
+        "weight": 2000,
+        "weight_pct": 16.667
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(30–35)% of Physical Damage Converted to Fire Damage",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 2000,
+    "weight_pct": 15.686,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "fire"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (30–35)% of Physical Damage Converted to Fire Damage",
+        "weight": 2000,
+        "weight_pct": 15.686
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(30–35)% of Physical Damage Converted to Cold Damage",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 2000,
+    "weight_pct": 15.686,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (30–35)% of Physical Damage Converted to Cold Damage",
+        "weight": 2000,
+        "weight_pct": 15.686
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(30–35)% of Physical Damage Converted to Lightning Damage",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 2000,
+    "weight_pct": 15.686,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "lightning"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (30–35)% of Physical Damage Converted to Lightning Damage",
+        "weight": 2000,
+        "weight_pct": 15.686
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "Attacks with this Weapon Penetrate (14–16)% Elemental Resistances",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 15.625,
+    "tags": [
+      "damage",
+      "elemental",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 Attacks with this Weapon Penetrate (14–16)% Elemental Resistances",
+        "weight": 1000,
+        "weight_pct": 15.625
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "Attacks with this Weapon Penetrate (14–16)% Chaos Resistance",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 15.625,
+    "tags": [
+      "damage",
+      "chaos",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 Attacks with this Weapon Penetrate (14–16)% Chaos Resistance",
+        "weight": 1000,
+        "weight_pct": 15.625
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "+(55–60) to maximum LifeRegenerate 5.3 Mana per second",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 14.706,
+    "tags": [
+      "life",
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 +(55–60) to maximum LifeRegenerate 5.3 Mana per second",
+        "weight": 1000,
+        "weight_pct": 14.706
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Belts",
+      "Bone_Ring",
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Quivers",
+      "Rings",
+      "Runic_Crown",
+      "Runic_Gauntlets",
+      "Runic_Sabatons",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "Adds (14–16) to (20–22) Fire DamageAdds (14–16) to (20–22) Cold Damage",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 14.706,
+    "tags": [
+      "damage",
+      "elemental",
+      "fire",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 Adds (14–16) to (20–22) Fire DamageAdds (14–16) to (20–22) Cold Damage",
+        "weight": 1000,
+        "weight_pct": 14.706
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Bone_Ring",
+      "Bone_Spirit_Shield",
+      "Quivers",
+      "Rings",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "Adds (14–16) to (20–22) Fire DamageAdds (14–16) to (20–22) Lightning Damage",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 14.706,
+    "tags": [
+      "damage",
+      "elemental",
+      "fire",
+      "lightning"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 Adds (14–16) to (20–22) Fire DamageAdds (14–16) to (20–22) Lightning Damage",
+        "weight": 1000,
+        "weight_pct": 14.706
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Bone_Ring",
+      "Bone_Spirit_Shield",
+      "Quivers",
+      "Rings",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "Adds (14–16) to (20–22) Cold DamageAdds (14–16) to (20–22) Lightning Damage",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 14.706,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold",
+      "lightning"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 Adds (14–16) to (20–22) Cold DamageAdds (14–16) to (20–22) Lightning Damage",
+        "weight": 1000,
+        "weight_pct": 14.706
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Bone_Ring",
+      "Bone_Spirit_Shield",
+      "Quivers",
+      "Rings",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "#% increased Fire Damage#% chance to Ignite#% increased Cold Damage#% chance to Freeze#% increased Lightning Damage#% chance to Shock#% increased Chaos DamageChaos Skills have #% increased Skill Effect Duration#% increased Spell Damage#% increased Mana Regeneration Rate#% increased Spell DamageGain #% of Non-Chaos Damage as extra Chaos DamageMinions have #% increased maximum LifeMinions deal #% increased Damage",
+    "tier": 7,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 14.286,
+    "tags": [
+      "damage",
+      "elemental",
+      "fire",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (70–79)% increased Fire Damage(21–23)% chance to Ignite",
+        "weight": 100,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (70–79)% increased Cold Damage(21–23)% chance to Freeze",
+        "weight": 100,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (70–79)% increased Lightning Damage(21–23)% chance to Shock",
+        "weight": 100,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (60–69)% increased Chaos DamageChaos Skills have (13–15)% increased Skill Effect Duration",
+        "weight": 100,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (70–79)% increased Spell Damage(18–20)% increased Mana Regeneration Rate",
+        "weight": 100,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (60–69)% increased Spell DamageGain 5% of Non-Chaos Damage as extra Chaos Damage",
+        "weight": 100,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 Minions have (34–38)% increased maximum LifeMinions deal (34–38)% increased Damage",
+        "weight": 400,
+        "weight_pct": 5.714
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "+(55–60) to maximum ManaRegenerate 33.3 Life per second",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 12.5,
+    "tags": [
+      "life",
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 +(55–60) to maximum ManaRegenerate 33.3 Life per second",
+        "weight": 1000,
+        "weight_pct": 12.5
+      }
+    ],
+    "sourceCategories": [
+      "Belts",
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Quivers",
+      "Runic_Crown",
+      "Runic_Gauntlets",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "+2 to Level of Socketed AoE Gems(8–10)% increased Area of Effect",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 12.5,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 +2 to Level of Socketed AoE Gems(8–10)% increased Area of Effect",
+        "weight": 1500,
+        "weight_pct": 12.5
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "+2 to Level of Socketed Projectile GemsProjectiles Pierce an additional Target",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 12.5,
+    "tags": [
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 +2 to Level of Socketed Projectile GemsProjectiles Pierce an additional Target",
+        "weight": 1500,
+        "weight_pct": 12.5
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "+2 to Level of Socketed Melee Gems+0.2 metres to Melee Strike Range",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 12.5,
+    "tags": [
+      "attack",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 +2 to Level of Socketed Melee Gems+0.2 metres to Melee Strike Range",
+        "weight": 1500,
+        "weight_pct": 12.5
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Evasion Rating+(17–19) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 11.765,
+    "tags": [
+      "life",
+      "defences",
+      "evasion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Evasion Rating+(17–19) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 11.765
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Gloves_dex"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(30–32)% increased Evasion Rating while Focusedgrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 11.765,
+    "tags": [
+      "defences",
+      "evasion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (30–32)% increased Evasion Rating while Focusedgrant focus skill [1]",
+        "weight": 1000,
+        "weight_pct": 11.765
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Boots_dex_int",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Evasion and Energy Shield+(17–19) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 11.765,
+    "tags": [
+      "life",
+      "defences",
+      "evasion",
+      "energy_shield"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Evasion and Energy Shield+(17–19) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 11.765
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex_int",
+      "Gloves_dex_int"
+    ]
+  },
+  {
+    "category": "Boots_int",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Energy Shield+(17–19) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 11.765,
+    "tags": [
+      "life",
+      "defences",
+      "energy_shield"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Energy Shield+(17–19) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 11.765
+      }
+    ],
+    "sourceCategories": [
+      "Boots_int",
+      "Gloves_int"
+    ]
+  },
+  {
+    "category": "Boots_str",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Armour+(17–19) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 11.765,
+    "tags": [
+      "life",
+      "defences",
+      "armour"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Armour+(17–19) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 11.765
+      }
+    ],
+    "sourceCategories": [
+      "Boots_str",
+      "Gloves_str"
+    ]
+  },
+  {
+    "category": "Boots_str_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Armour and Evasion+(17–19) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 11.765,
+    "tags": [
+      "life",
+      "defences",
+      "armour",
+      "evasion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Armour and Evasion+(17–19) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 11.765
+      }
+    ],
+    "sourceCategories": [
+      "Boots_str_dex",
+      "Gloves_str_dex"
+    ]
+  },
+  {
+    "category": "Boots_str_int",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Armour and Energy Shield+(17–19) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 11.765,
+    "tags": [
+      "life",
+      "defences",
+      "armour",
+      "energy_shield"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Armour and Energy Shield+(17–19) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 11.765
+      }
+    ],
+    "sourceCategories": [
+      "Boots_str_int",
+      "Gloves_str_int"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(13–15)% additional Physical Damage Reduction while Focusedgrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 11.765,
+    "tags": [
+      "physical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (13–15)% additional Physical Damage Reduction while Focusedgrant focus skill [1]",
+        "weight": 1500,
+        "weight_pct": 11.765
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Evasion Rating+(23–26) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 10,
+    "tags": [
+      "life",
+      "defences",
+      "evasion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Evasion Rating+(23–26) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "+(3201–4000) to Armour during Soul Gain Prevention",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 10,
+    "tags": [
+      "physical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 +(3201–4000) to Armour during Soul Gain Prevention",
+        "weight": 1000,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int",
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex_int",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Evasion and Energy Shield+(23–26) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 10,
+    "tags": [
+      "life",
+      "defences",
+      "evasion",
+      "energy_shield"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Evasion and Energy Shield+(23–26) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_int",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Energy Shield+(23–26) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 10,
+    "tags": [
+      "life",
+      "defences",
+      "energy_shield"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Energy Shield+(23–26) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_str",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Armour+(23–26) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 10,
+    "tags": [
+      "life",
+      "defences",
+      "armour"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Armour+(23–26) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_str"
+    ]
+  },
+  {
+    "category": "Body_Armours_str_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Armour and Evasion+(23–26) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 10,
+    "tags": [
+      "life",
+      "defences",
+      "armour",
+      "evasion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Armour and Evasion+(23–26) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_str_dex"
+    ]
+  },
+  {
+    "category": "Body_Armours_str_dex_int",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Armour, Evasion and Energy Shield+(23–26) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 10,
+    "tags": [
+      "life",
+      "defences",
+      "armour",
+      "evasion",
+      "energy_shield"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Armour, Evasion and Energy Shield+(23–26) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_str_dex_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_str_int",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Armour and Energy Shield+(23–26) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 10,
+    "tags": [
+      "life",
+      "defences",
+      "armour",
+      "energy_shield"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Armour and Energy Shield+(23–26) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 10
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Evasion Rating+(19–22) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 8.333,
+    "tags": [
+      "life",
+      "defences",
+      "evasion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Evasion Rating+(19–22) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 8.333
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Shields_dex"
+    ]
+  },
+  {
+    "category": "Helmets_dex_int",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Evasion and Energy Shield+(19–22) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 8.333,
+    "tags": [
+      "life",
+      "defences",
+      "evasion",
+      "energy_shield"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Evasion and Energy Shield+(19–22) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 8.333
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex_int",
+      "Shields_dex_int"
+    ]
+  },
+  {
+    "category": "Helmets_str",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Armour+(19–22) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 8.333,
+    "tags": [
+      "life",
+      "defences",
+      "armour"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Armour+(19–22) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 8.333
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_str",
+      "Shields_str"
+    ]
+  },
+  {
+    "category": "Helmets_str_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Armour and Evasion+(19–22) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 8.333,
+    "tags": [
+      "life",
+      "defences",
+      "armour",
+      "evasion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Armour and Evasion+(19–22) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 8.333
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_str_dex",
+      "Shields_str_dex"
+    ]
+  },
+  {
+    "category": "Helmets_str_int",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(24–28)% increased Armour and Energy Shield+(19–22) to maximum Life",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 8.333,
+    "tags": [
+      "life",
+      "defences",
+      "armour",
+      "energy_shield"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (24–28)% increased Armour and Energy Shield+(19–22) to maximum Life",
+        "weight": 1000,
+        "weight_pct": 8.333
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_str_int",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "Minions have (50–59)% increased maximum LifeMinions deal (50–59)% increased Damage",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 400,
+    "weight_pct": 6.25,
+    "tags": [
+      "life",
+      "damage",
+      "minion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 Minions have (50–59)% increased maximum LifeMinions deal (50–59)% increased Damage",
+        "weight": 400,
+        "weight_pct": 6.25
+      }
+    ],
+    "sourceCategories": [
+      "Bows"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(14–16)% increased Area of Effect(17–20)% increased Area Damage",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 750,
+    "weight_pct": 5.882,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (14–16)% increased Area of Effect(17–20)% increased Area Damage",
+        "weight": 750,
+        "weight_pct": 5.882
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(23–25)% increased Projectile Speed(17–20)% increased Projectile Damage",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 750,
+    "weight_pct": 5.882,
+    "tags": [
+      "damage",
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (23–25)% increased Projectile Speed(17–20)% increased Projectile Damage",
+        "weight": 750,
+        "weight_pct": 5.882
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "veiled",
+    "side": "prefix",
+    "text_plain": "(17–20)% increased Melee Damage+0.2 metres to Melee Strike Range",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 750,
+    "weight_pct": 5.882,
+    "tags": [
+      "damage",
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Chosen",
+        "tier_level": 60,
+        "text_plain": "60 (17–20)% increased Melee Damage+0.2 metres to Melee Strike Range",
+        "weight": 750,
+        "weight_pct": 5.882
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Quivers",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "#% increased Global Critical Strike Chance#% chance to gain a Frenzy Charge on Critical Strike#% increased Global Critical Strike Chance#% increased Elemental Damage if you've dealt a Critical Strike Recently#% increased Global Critical Strike ChanceAdds # to # Chaos Damage if you've dealt a Critical Strike Recently",
+    "tier": 3,
+    "ilvl": 60,
+    "weight": 4500,
+    "weight_pct": 46.875,
+    "tags": [
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (18–20)% increased Global Critical Strike Chance(6–7)% chance to gain a Frenzy Charge on Critical Strike",
+        "weight": 1500,
+        "weight_pct": 15.625
+      },
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (20–22)% increased Global Critical Strike Chance(27–30)% increased Elemental Damage if you've dealt a Critical Strike Recently",
+        "weight": 1500,
+        "weight_pct": 15.625
+      },
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (20–22)% increased Global Critical Strike ChanceAdds (22–25) to (28–32) Chaos Damage if you've dealt a Critical Strike Recently",
+        "weight": 1500,
+        "weight_pct": 15.625
+      }
+    ],
+    "sourceCategories": [
+      "Quivers"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(8–10)% increased Effect of your Curses",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 3000,
+    "weight_pct": 25.862,
+    "tags": [
+      "caster",
+      "curse"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (8–10)% increased Effect of your Curses",
+        "weight": 3000,
+        "weight_pct": 25.862
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "#% increased Damage per Endurance Charge#% increased Damage per Frenzy Charge#% increased Damage per Power Charge",
+    "tier": 3,
+    "ilvl": 60,
+    "weight": 3000,
+    "weight_pct": 23.077,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (7–8)% increased Damage per Endurance Charge",
+        "weight": 1000,
+        "weight_pct": 7.692
+      },
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (7–8)% increased Damage per Frenzy Charge",
+        "weight": 1000,
+        "weight_pct": 7.692
+      },
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (7–8)% increased Damage per Power Charge",
+        "weight": 1000,
+        "weight_pct": 7.692
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "#% increased Global Critical Strike Chance#% increased Elemental Damage if you've dealt a Critical Strike Recently#% increased Global Critical Strike ChanceAdds # to # Chaos Damage if you've dealt a Critical Strike Recently",
+    "tier": 2,
+    "ilvl": 60,
+    "weight": 3000,
+    "weight_pct": 20.548,
+    "tags": [
+      "damage",
+      "elemental",
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (20–22)% increased Global Critical Strike Chance(27–30)% increased Elemental Damage if you've dealt a Critical Strike Recently",
+        "weight": 1500,
+        "weight_pct": 10.274
+      },
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (20–22)% increased Global Critical Strike ChanceAdds (22–25) to (28–32) Chaos Damage if you've dealt a Critical Strike Recently",
+        "weight": 1500,
+        "weight_pct": 10.274
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(13–16)% increased Cooldown Recovery Rate",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 17.442,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (13–16)% increased Cooldown Recovery Rate",
+        "weight": 1500,
+        "weight_pct": 17.442
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "Regenerate 200 Energy Shield per second while a Rare or Unique Enemy is Nearby",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 17.442,
+    "tags": [
+      "defences",
+      "energy_shield"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 Regenerate 200 Energy Shield per second while a Rare or Unique Enemy is Nearby",
+        "weight": 1500,
+        "weight_pct": 17.442
+      }
+    ],
+    "sourceCategories": [
+      "Belts",
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "# to Strength and Dexterity# to Strength and Intelligence# to Strength#% chance to Avoid being Ignited",
+    "tier": 3,
+    "ilvl": 60,
+    "weight": 2200,
+    "weight_pct": 16.794,
+    "tags": [
+      "attribute"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(31–35) to Strength and Dexterity",
+        "weight": 600,
+        "weight_pct": 4.58
+      },
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(31–35) to Strength and Intelligence",
+        "weight": 600,
+        "weight_pct": 4.58
+      },
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(31–35) to Strength(21–25)% chance to Avoid being Ignited",
+        "weight": 1000,
+        "weight_pct": 7.634
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int",
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "You have Vaal Pact while Focused15% of Damage Leeched as Life while Focusedgrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 3000,
+    "weight_pct": 16.575,
+    "tags": [
+      "life"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 You have Vaal Pact while Focused15% of Damage Leeched as Life while Focusedgrant focus skill [1]",
+        "weight": 3000,
+        "weight_pct": 16.575
+      }
+    ],
+    "sourceCategories": [
+      "Amulets"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "# to Dexterity and Intelligence#% increased Attack Speed#% chance to Trigger Level # Blood Rage when you Kill an Enemy#% increased Attack Speed",
+    "tier": 2,
+    "ilvl": 60,
+    "weight": 2000,
+    "weight_pct": 15.385,
+    "tags": [
+      "attack",
+      "speed",
+      "attribute"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(25–28) to Dexterity and Intelligence(12–15)% increased Attack Speed",
+        "weight": 1000,
+        "weight_pct": 7.692
+      },
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 15% chance to Trigger Level 1 Blood Rage when you Kill an Enemy(12–15)% increased Attack Speed",
+        "weight": 1000,
+        "weight_pct": 7.692
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "Focus has (5–8)% increased Cooldown Recovery RateYou are Immune to Ailments while Focusedgrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 2000,
+    "weight_pct": 15.267,
+    "tags": [
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 Focus has (5–8)% increased Cooldown Recovery RateYou are Immune to Ailments while Focusedgrant focus skill [1]",
+        "weight": 2000,
+        "weight_pct": 15.267
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "Focus has (31–35)% increased Cooldown Recovery Rate",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 2000,
+    "weight_pct": 15.267,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 Focus has (31–35)% increased Cooldown Recovery Rate",
+        "weight": 2000,
+        "weight_pct": 15.267
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(45–50)% increased Attack and Cast Speed while Focusedgrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 2000,
+    "weight_pct": 13.699,
+    "tags": [
+      "attack",
+      "caster",
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (45–50)% increased Attack and Cast Speed while Focusedgrant focus skill [1]",
+        "weight": 2000,
+        "weight_pct": 13.699
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "Focus has (5–8)% increased Cooldown Recovery RateMinions Recover 100% of their Life when you Focusgrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 2000,
+    "weight_pct": 13.699,
+    "tags": [
+      "life",
+      "minion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 Focus has (5–8)% increased Cooldown Recovery RateMinions Recover 100% of their Life when you Focusgrant focus skill [1]",
+        "weight": 2000,
+        "weight_pct": 13.699
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(36–40)% increased Duration of Ailments you inflict while Focusedgrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 13.158,
+    "tags": [
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (36–40)% increased Duration of Ailments you inflict while Focusedgrant focus skill [1]",
+        "weight": 1000,
+        "weight_pct": 13.158
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Helmets_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "Trigger Socketed Spells when you Focus, with a 0.25 second CooldownFocus has (5–8)% increased Cooldown Recovery Rategrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 13.158,
+    "tags": [
+      "caster",
+      "gem"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 Trigger Socketed Spells when you Focus, with a 0.25 second CooldownFocus has (5–8)% increased Cooldown Recovery Rategrant focus skill [1]",
+        "weight": 1000,
+        "weight_pct": 13.158
+      }
+    ],
+    "sourceCategories": [
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "# to Dexterity and Intelligence# to Dexterity#% chance to Avoid being Frozen",
+    "tier": 2,
+    "ilvl": 60,
+    "weight": 1600,
+    "weight_pct": 12.214,
+    "tags": [
+      "attribute"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(31–35) to Dexterity and Intelligence",
+        "weight": 600,
+        "weight_pct": 4.58
+      },
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(31–35) to Dexterity(21–25)% chance to Avoid being Frozen",
+        "weight": 1000,
+        "weight_pct": 7.634
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int",
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Belts",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "Your Critical Strike Chance is Lucky while FocusedFocus has (5–8)% increased Cooldown Recovery Rategrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 11.628,
+    "tags": [
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 Your Critical Strike Chance is Lucky while FocusedFocus has (5–8)% increased Cooldown Recovery Rategrant focus skill [1]",
+        "weight": 1000,
+        "weight_pct": 11.628
+      }
+    ],
+    "sourceCategories": [
+      "Belts"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "#% to Chaos Damage over Time Multiplier#% to Physical Damage over Time Multiplier#% to Fire Damage over Time Multiplier",
+    "tier": 3,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 11.538,
+    "tags": [
+      "damage",
+      "chaos"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(24–28)% to Chaos Damage over Time Multiplier",
+        "weight": 1000,
+        "weight_pct": 7.692
+      },
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(24–28)% to Physical Damage over Time Multiplier",
+        "weight": 400,
+        "weight_pct": 3.077
+      },
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(24–28)% to Fire Damage over Time Multiplier",
+        "weight": 100,
+        "weight_pct": 0.769
+      }
+    ],
+    "sourceCategories": [
+      "Bows"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "You have Onslaught during Soul Gain Prevention",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 11.45,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 You have Onslaught during Soul Gain Prevention",
+        "weight": 1500,
+        "weight_pct": 11.45
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Boots_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(71–80)% increased Damage with Non-Vaal Skills during Soul Gain Prevention",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 11.45,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (71–80)% increased Damage with Non-Vaal Skills during Soul Gain Prevention",
+        "weight": 1500,
+        "weight_pct": 11.45
+      }
+    ],
+    "sourceCategories": [
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Bone_Ring",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "Focus has (5–8)% increased Cooldown Recovery RateShock nearby Enemies for 4 Seconds when you Focusgrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 10.989,
+    "tags": [
+      "elemental",
+      "lightning",
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 Focus has (5–8)% increased Cooldown Recovery RateShock nearby Enemies for 4 Seconds when you Focusgrant focus skill [1]",
+        "weight": 1000,
+        "weight_pct": 10.989
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "#% to Chaos Damage over Time Multiplier#% to Physical Damage over Time Multiplier#% to Cold Damage over Time Multiplier#% to Fire Damage over Time Multiplier",
+    "tier": 4,
+    "ilvl": 60,
+    "weight": 1300,
+    "weight_pct": 10.156,
+    "tags": [
+      "damage",
+      "chaos"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(24–28)% to Chaos Damage over Time Multiplier",
+        "weight": 100,
+        "weight_pct": 0.781
+      },
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(24–28)% to Physical Damage over Time Multiplier",
+        "weight": 400,
+        "weight_pct": 3.125
+      },
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(24–28)% to Cold Damage over Time Multiplier",
+        "weight": 400,
+        "weight_pct": 3.125
+      },
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(24–28)% to Fire Damage over Time Multiplier",
+        "weight": 400,
+        "weight_pct": 3.125
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(6–7)% chance to deal Double Damage",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 8.621,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (6–7)% chance to deal Double Damage",
+        "weight": 1000,
+        "weight_pct": 8.621
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int",
+      "Thrusting_One_Hand_Swords",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(18–20)% chance to deal Double Damage while Focusedgrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 8.621,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (18–20)% chance to deal Double Damage while Focusedgrant focus skill [1]",
+        "weight": 1000,
+        "weight_pct": 8.621
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int",
+      "Thrusting_One_Hand_Swords",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "+1 to Minimum Endurance Charges(3–4)% chance to gain an Endurance Charge on Kill",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 8.287,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +1 to Minimum Endurance Charges(3–4)% chance to gain an Endurance Charge on Kill",
+        "weight": 1500,
+        "weight_pct": 8.287
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "+1 to Minimum Power Charges(3–4)% chance to gain a Power Charge on Kill",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 8.287,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +1 to Minimum Power Charges(3–4)% chance to gain a Power Charge on Kill",
+        "weight": 1500,
+        "weight_pct": 8.287
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "+1 to Minimum Frenzy Charges(3–4)% chance to gain a Frenzy Charge on Kill",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 8.287,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +1 to Minimum Frenzy Charges(3–4)% chance to gain a Frenzy Charge on Kill",
+        "weight": 1500,
+        "weight_pct": 8.287
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Bone_Ring",
+      "Rings",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(7–8)% increased Attack and Cast Speed",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 8.287,
+    "tags": [
+      "attack",
+      "caster",
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (7–8)% increased Attack and Cast Speed",
+        "weight": 1500,
+        "weight_pct": 8.287
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Quivers"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(33–40)% increased Effect of Non-Damaging Ailments",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1500,
+    "weight_pct": 8.287,
+    "tags": [
+      "ailment"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (33–40)% increased Effect of Non-Damaging Ailments",
+        "weight": 1500,
+        "weight_pct": 8.287
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "+(36–40)% Critical Strike Multiplier while a Rare or Unique Enemy is Nearby",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 7.813,
+    "tags": [
+      "damage",
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(36–40)% Critical Strike Multiplier while a Rare or Unique Enemy is Nearby",
+        "weight": 1000,
+        "weight_pct": 7.813
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Thrusting_One_Hand_Swords",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(12–15)% increased Attack Speed while a Rare or Unique Enemy is Nearby",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 7.813,
+    "tags": [
+      "attack",
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (12–15)% increased Attack Speed while a Rare or Unique Enemy is Nearby",
+        "weight": 1000,
+        "weight_pct": 7.813
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Thrusting_One_Hand_Swords",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(12–14)% chance to deal Double Damage",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 7.692,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (12–14)% chance to deal Double Damage",
+        "weight": 1000,
+        "weight_pct": 7.692
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "+(54–60)% Critical Strike Multiplier while a Rare or Unique Enemy is Nearby",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 7.692,
+    "tags": [
+      "damage",
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(54–60)% Critical Strike Multiplier while a Rare or Unique Enemy is Nearby",
+        "weight": 1000,
+        "weight_pct": 7.692
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(27–30)% increased Attack Speed while a Rare or Unique Enemy is Nearby",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 7.692,
+    "tags": [
+      "attack",
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (27–30)% increased Attack Speed while a Rare or Unique Enemy is Nearby",
+        "weight": 1000,
+        "weight_pct": 7.692
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(36–40)% chance to deal Double Damage while Focusedgrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 7.692,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (36–40)% chance to deal Double Damage while Focusedgrant focus skill [1]",
+        "weight": 1000,
+        "weight_pct": 7.692
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "+(25–28) to Strength and Intelligence(28–32)% increased Critical Strike Chance",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 7.692,
+    "tags": [
+      "attack",
+      "critical",
+      "attribute"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(25–28) to Strength and Intelligence(28–32)% increased Critical Strike Chance",
+        "weight": 1000,
+        "weight_pct": 7.692
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "+(25–28) to Strength and Dexterity+(311–350) to Accuracy Rating",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 7.692,
+    "tags": [
+      "attack",
+      "attribute"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(25–28) to Strength and Dexterity+(311–350) to Accuracy Rating",
+        "weight": 1000,
+        "weight_pct": 7.692
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Thrusting_One_Hand_Swords",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(10–12)% chance to Avoid Elemental Damage from Hits during Soul Gain Prevention",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 7.634,
+    "tags": [
+      "elemental"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (10–12)% chance to Avoid Elemental Damage from Hits during Soul Gain Prevention",
+        "weight": 1000,
+        "weight_pct": 7.634
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int",
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "1.5% of Evasion Rating is Regenerated as Life per second while Focusedgrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 7.634,
+    "tags": [
+      "life"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 1.5% of Evasion Rating is Regenerated as Life per second while Focusedgrant focus skill [1]",
+        "weight": 1000,
+        "weight_pct": 7.634
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "Recover (37–40)% of Mana and Energy Shield when you Focusgrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 7.634,
+    "tags": [
+      "mana",
+      "defences",
+      "energy_shield"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 Recover (37–40)% of Mana and Energy Shield when you Focusgrant focus skill [1]",
+        "weight": 1000,
+        "weight_pct": 7.634
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "+10 to maximum Fortification while Focusedgrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 7.634,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +10 to maximum Fortification while Focusedgrant focus skill [1]",
+        "weight": 1000,
+        "weight_pct": 7.634
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(18–22)% of Damage is taken from Mana before Life while Focusedgrant focus skill [1]",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 7.634,
+    "tags": [
+      "life",
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (18–22)% of Damage is taken from Mana before Life while Focusedgrant focus skill [1]",
+        "weight": 1000,
+        "weight_pct": 7.634
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
+    "category": "Body_Armours_dex",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "+(31–35) to Intelligence(21–25)% chance to Avoid being Shocked",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 7.634,
+    "tags": [
+      "attribute"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(31–35) to Intelligence(21–25)% chance to Avoid being Shocked",
+        "weight": 1000,
+        "weight_pct": 7.634
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int",
+      "Bone_Spirit_Shield",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "# to Strength and Dexterity# to Strength and Intelligence",
+    "tier": 2,
+    "ilvl": 60,
+    "weight": 1200,
+    "weight_pct": 6.63,
+    "tags": [
+      "attribute"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(31–35) to Strength and Dexterity",
+        "weight": 600,
+        "weight_pct": 3.315
+      },
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(31–35) to Strength and Intelligence",
+        "weight": 600,
+        "weight_pct": 3.315
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Belts",
+      "Bone_Ring",
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Quivers",
+      "Rings",
+      "Runic_Crown",
+      "Runic_Gauntlets",
+      "Runic_Sabatons",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(36–40)% increased Totem Placement speed",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 5.525,
+    "tags": [
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (36–40)% increased Totem Placement speed",
+        "weight": 1000,
+        "weight_pct": 5.525
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Runic_Sabatons"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(14–16)% increased Trap Throwing Speed",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 5.525,
+    "tags": [
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (14–16)% increased Trap Throwing Speed",
+        "weight": 1000,
+        "weight_pct": 5.525
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Belts"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(14–16)% increased Mine Throwing Speed",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 5.525,
+    "tags": [
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (14–16)% increased Mine Throwing Speed",
+        "weight": 1000,
+        "weight_pct": 5.525
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Runic_Crown"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(25–28)% increased Brand Attachment range",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 1000,
+    "weight_pct": 5.525,
+    "tags": [
+      "caster"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (25–28)% increased Brand Attachment range",
+        "weight": 1000,
+        "weight_pct": 5.525
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "+(31–35) to Dexterity and Intelligence",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 600,
+    "weight_pct": 3.315,
+    "tags": [
+      "attribute"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(31–35) to Dexterity and Intelligence",
+        "weight": 600,
+        "weight_pct": 3.315
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Belts",
+      "Bone_Ring",
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Quivers",
+      "Rings",
+      "Runic_Crown",
+      "Runic_Gauntlets",
+      "Runic_Sabatons",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "+(16–20)% to Fire and Chaos Resistances",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 600,
+    "weight_pct": 3.315,
+    "tags": [
+      "elemental",
+      "fire",
+      "chaos",
+      "resistance"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(16–20)% to Fire and Chaos Resistances",
+        "weight": 600,
+        "weight_pct": 3.315
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Belts",
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int",
+      "Bone_Ring",
+      "Bone_Spirit_Shield",
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Quivers",
+      "Rings",
+      "Runic_Crown",
+      "Runic_Gauntlets",
+      "Runic_Sabatons",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "+(16–20)% to Lightning and Chaos Resistances",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 600,
+    "weight_pct": 3.315,
+    "tags": [
+      "elemental",
+      "lightning",
+      "chaos",
+      "resistance"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(16–20)% to Lightning and Chaos Resistances",
+        "weight": 600,
+        "weight_pct": 3.315
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Belts",
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int",
+      "Bone_Ring",
+      "Bone_Spirit_Shield",
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Quivers",
+      "Rings",
+      "Runic_Crown",
+      "Runic_Gauntlets",
+      "Runic_Sabatons",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Amulets",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "+(16–20)% to Cold and Chaos Resistances",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 600,
+    "weight_pct": 3.315,
+    "tags": [
+      "elemental",
+      "cold",
+      "chaos",
+      "resistance"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 +(16–20)% to Cold and Chaos Resistances",
+        "weight": 600,
+        "weight_pct": 3.315
+      }
+    ],
+    "sourceCategories": [
+      "Amulets",
+      "Belts",
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int",
+      "Bone_Ring",
+      "Bone_Spirit_Shield",
+      "Boots_dex",
+      "Boots_dex_int",
+      "Boots_int",
+      "Boots_str",
+      "Boots_str_dex",
+      "Boots_str_int",
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Quivers",
+      "Rings",
+      "Runic_Crown",
+      "Runic_Gauntlets",
+      "Runic_Sabatons",
+      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int",
+      "Unset_Ring"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "Minions have (18–20)% increased Attack SpeedMinions have (18–20)% increased Cast Speed",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 400,
+    "weight_pct": 3.125,
+    "tags": [
+      "attack",
+      "caster",
+      "speed",
+      "minion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 Minions have (18–20)% increased Attack SpeedMinions have (18–20)% increased Cast Speed",
+        "weight": 400,
+        "weight_pct": 3.125
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Thrusting_One_Hand_Swords",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "Minions have (34–38)% increased Attack SpeedMinions have (34–38)% increased Cast Speed",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 400,
+    "weight_pct": 3.077,
+    "tags": [
+      "attack",
+      "caster",
+      "speed",
+      "minion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 Minions have (34–38)% increased Attack SpeedMinions have (34–38)% increased Cast Speed",
+        "weight": 400,
+        "weight_pct": 3.077
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Claws",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(18–22)% increased Cast Speed15% chance to gain Arcane Surge when you Kill an Enemy",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 100,
+    "weight_pct": 0.781,
+    "tags": [
+      "caster",
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (18–22)% increased Cast Speed15% chance to gain Arcane Surge when you Kill an Enemy",
+        "weight": 100,
+        "weight_pct": 0.781
+      }
+    ],
+    "sourceCategories": [
+      "Claws",
+      "Convoking_Wand",
+      "Daggers",
+      "One_Hand_Axes",
+      "One_Hand_Maces",
+      "One_Hand_Swords",
+      "Rune_Daggers",
+      "Sceptres",
+      "Thrusting_One_Hand_Swords",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "veiled",
+    "side": "suffix",
+    "text_plain": "(26–31)% increased Cast Speed15% chance to gain Arcane Surge when you Kill an Enemy",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 100,
+    "weight_pct": 0.769,
+    "tags": [
+      "caster",
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Order",
+        "tier_level": 60,
+        "text_plain": "60 (26–31)% increased Cast Speed15% chance to gain Arcane Surge when you Kill an Enemy",
+        "weight": 100,
+        "weight_pct": 0.769
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  }
+]

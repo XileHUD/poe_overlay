@@ -394,14 +394,16 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             const initialDataPath = this.resolveInitialDataPath();
             
             if (this.overlayVersion === 'poe1') {
-                this.updateSplash('PoE1 mode: skipping PoE2 data load');
-                this.modifierDatabase = new ModifierDatabase(initialDataPath, false);
+                this.updateSplash('PoE1 mode: loading PoE1 data');
+                this.modifierDatabase = new ModifierDatabase(initialDataPath, false, 'poe1');
+                await this.modifierDatabase.loadAsync((msg) => this.updateSplash(msg));
             } else {
                 this.updateSplash('Loading enabled features');
                 const featureLoader = new FeatureLoader(
                     this.featureService,
                     initialDataPath,
-                    (msg) => this.updateSplash(msg)
+                    (msg) => this.updateSplash(msg),
+                    this.overlayVersion as 'poe1' | 'poe2'
                 );
 
                 const { modifierDatabase } = await featureLoader.loadAll();
@@ -470,7 +472,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                         merchantHistory: this.featureService?.isFeatureEnabled('merchant') ?? false
                     }
                     : {
-                        modifiers: false,
+                        modifiers: true, // PoE1 has modifiers feature
                         merchantHistory: false
                     }
             });
@@ -2355,7 +2357,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                         merchantHistory: this.featureService?.isFeatureEnabled('merchant') ?? false
                     }
                     : {
-                        modifiers: false,
+                        modifiers: true, // PoE1 has modifiers feature
                         merchantHistory: false
                     }
             });
@@ -2509,8 +2511,16 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         // Feature configuration IPC handlers
         ipcMain.handle('get-enabled-features', () => {
             try {
-                if (this.overlayVersion !== 'poe2') {
-                    return this.buildDisabledFeatureConfig();
+                if (this.overlayVersion === 'poe1') {
+                    // PoE1 has modifiers feature enabled
+                    return {
+                        modifiers: true,
+                        merchant: false,
+                        crafting: { enabled: false },
+                        character: { enabled: false },
+                        items: { enabled: false },
+                        tools: { enabled: false }
+                    };
                 }
                 return this.featureService?.getConfig() || this.buildDisabledFeatureConfig();
             } catch (e) {

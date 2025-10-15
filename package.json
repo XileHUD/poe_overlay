@@ -58,6 +58,13 @@
     ],
     "extraResources": [
       {
+        "from": "data/poe1",
+        "to": "data/poe1",
+        "filter": [
+          "**/*.json"
+        ]
+      },
+      {
         "from": "data/poe2",
         "to": "data/poe2",
         "filter": [

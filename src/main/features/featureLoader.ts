@@ -5,6 +5,7 @@
 
 import { FeatureService } from '../services/featureService.js';
 import { ModifierDatabase } from '../modifier-database.js';
+import type { OverlayGameVersion } from '../config/modifierVersionConfig.js';
 
 export interface FeatureLoadResult {
   modifierDatabase: ModifierDatabase | null;
@@ -16,7 +17,8 @@ export class FeatureLoader {
   constructor(
     private featureService: FeatureService,
     private dataPath: string,
-    private updateSplash: (msg: string) => void
+    private updateSplash: (msg: string) => void,
+    private gameVersion: OverlayGameVersion = 'poe2'
   ) {}
 
   /**
@@ -74,7 +76,7 @@ export class FeatureLoader {
       return;
     }
 
-    this.modifierDatabase = new ModifierDatabase(this.dataPath, false);
+    this.modifierDatabase = new ModifierDatabase(this.dataPath, false, this.gameVersion);
     
     await this.modifierDatabase.loadAsyncFiltered(
       categories,
