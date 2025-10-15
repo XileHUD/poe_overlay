@@ -303,11 +303,26 @@ function renderSection(section: any, domainId?: string){
     </div>
     <div class="section-content" id="${sectionId}">
       <div class="mod-list">
-        ${mods.map((mod: any, modIndex: number) => `
+        ${mods.map((mod: any, modIndex: number) => {
+          // Special handling for Eldritch mods with many tiers - show only first tier text
+          const isEldritch = section.domain && (section.domain.toLowerCase().includes('eldritch_eater') || section.domain.toLowerCase().includes('eldritch_searing'));
+          const hasManyTiers = mod.tiers && mod.tiers.length > 15; // Threshold for "many"
+          
+          let displayText = mod.text || mod.text_plain;
+          let variantBadge = '';
+          
+          if (isEldritch && hasManyTiers && mod.tiers.length > 0) {
+            // Show only first tier's text for Eldritch mods with many variants
+            displayText = mod.tiers[0].text_plain || mod.tiers[0].text || displayText;
+            variantBadge = `<span class="mod-badge badge-variants" style="background:var(--accent-purple);color:#fff;margin-left:6px;padding:2px 6px;border-radius:3px;font-weight:600;font-size:0.85em;" title="${mod.tiers.length} total variants">${mod.tiers.length} variants</span>`;
+          }
+          
+          return `
           <div class="mod-item" id="mod-${section.domain}-${side}-${modIndex}" onclick="window.OverlayModifiers&&window.OverlayModifiers.toggleTiers&&window.OverlayModifiers.toggleTiers('${section.domain}', '${side}', ${modIndex})">
             <div class="mod-text" style="cursor:pointer;">
-              ${highlightText(formatJoinedModText(sanitizeTierPlainText(mod.text || mod.text_plain)))}
-                        ${mod.tiers && mod.tiers.length > 0 ? '<span class="expand-icon">▼</span>' : ''} 
+              ${highlightText(formatJoinedModText(sanitizeTierPlainText(displayText)))}
+              ${variantBadge}
+              ${mod.tiers && mod.tiers.length > 0 ? '<span class="expand-icon">▼</span>' : ''} 
             </div>
             <div class="mod-meta">
               ${isAggregatedCategory() && mod.category ? `<span class="tag category-tag" data-tag="${mod.category}" style="user-select:none; cursor:pointer;">${mod.category.replace(/_/g, ' ').toUpperCase()}</span>` : ''}
@@ -347,7 +362,8 @@ function renderSection(section: any, domainId?: string){
               </div>
             `: ''}
           </div>
-        `).join('')}
+        `;
+        }).join('')}
         <div class="total-row">
           <div class="total-text">Total</div>
           <div class="total-meta">
