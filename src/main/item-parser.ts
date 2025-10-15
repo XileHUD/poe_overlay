@@ -6,6 +6,8 @@ export interface OrganizedModifier {
     values: number[];      // Extracted numeric values: [109, 101, 110] from "109(101-110)%"
     isFractured?: boolean;
     isDesecrated?: boolean;
+    isVeiled?: boolean;
+    hasExceptionalValue?: boolean; // True when the rolled value sits outside the documented range
 }
 
 export interface ParsedItem {
@@ -38,13 +40,19 @@ export interface ParsedItem {
     waystoneBonuses?: Array<{ text: string; value: number | null }>;
     isIdentified?: boolean;
     isFoiled?: boolean;
+    foiled?: boolean;
     corrupted?: boolean;
     isCorrupted?: boolean;
     sanctified?: boolean;
     isSanctified?: boolean;
     fractured?: boolean;
     isFractured?: boolean;
+    desecrated?: boolean;
     isDesecrated?: boolean;
+    veiled?: boolean;
+    isVeiled?: boolean;
+    mirrored?: boolean;
+    isMirrored?: boolean;
     isModifiable?: boolean;
 }
 
@@ -123,12 +131,12 @@ export class ItemParser {
         const { name, baseType } = this.extractNameAndBase(lines);
         const quality = this.extractQuality(lines);
         const requirements = this.extractRequirements(lines);
-        const itemLevel = this.extractItemLevel(lines);
+        const itemLevel = this.extractItemLevel(lines, itemClass, rarity);
         const modifiers = this.extractModifiers(lines);
         const organizedModifiers = this.extractOrganizedModifiers(itemText);
-    const statusFlags = this.extractStatusFlags(lines);
+        const statusFlags = this.extractStatusFlags(lines);
         
-    const attributeType = this.determineAttributeType(requirements);
+        const attributeType = this.determineAttributeType(requirements);
         let category = this.determineCategory(itemClass, attributeType, baseType, name);
         
         // Only log successful parses (suppress unknown/empty spam during clipboard polling)
@@ -246,12 +254,27 @@ export class ItemParser {
         return requirements;
     }
 
-    private extractItemLevel(lines: string[]): number {
+    private extractItemLevel(lines: string[], itemClass: string, rarity: string): number {
         const ilvlLine = lines.find(line => line.startsWith('Item Level:'));
-        if (!ilvlLine) return 0;
-        
-        const match = ilvlLine.match(/Item Level: (\d+)/);
-        return match ? parseInt(match[1]) : 0;
+        if (ilvlLine) {
+            const match = ilvlLine.match(/Item Level:\s*(\d+)/i);
+            if (match) {
+                return parseInt(match[1], 10);
+            }
+        }
+
+        const isGem = /gem/i.test(itemClass) || /^gem$/i.test(rarity);
+        if (isGem) {
+            const gemLevelLine = lines.find(line => /^Level:\s*\d+/i.test(line));
+            if (gemLevelLine) {
+                const gemMatch = gemLevelLine.match(/^Level:\s*(\d+)/i);
+                if (gemMatch) {
+                    return parseInt(gemMatch[1], 10);
+                }
+            }
+        }
+
+        return 0;
     }
 
     // Extracts ring/amulet catalyst quality lines like:
@@ -358,36 +381,97 @@ export class ItemParser {
         isSanctified: boolean;
         fractured: boolean;
         isFractured: boolean;
+        desecrated: boolean;
+        isDesecrated: boolean;
+        veiled: boolean;
+        isVeiled: boolean;
+        mirrored: boolean;
+        isMirrored: boolean;
+        foiled: boolean;
+        isFoiled: boolean;
+        isIdentified: boolean;
+        isModifiable: boolean;
     } {
-    const normalized = lines.map(line => line.trim().toLowerCase()).filter(Boolean);
-    const hasCorrupted = normalized.some(line => line === 'corrupted' || /corrupted/.test(line));
-    const hasSanctified = normalized.some(line => line === 'sanctified' || /sanctified/.test(line));
-    const hasFractured = normalized.some(line => line === 'fractured item' || /fractured item/.test(line));
+        const normalized = lines.map(line => line.trim().toLowerCase()).filter(Boolean);
+
+        const hasCorrupted = normalized.some(line => line === 'corrupted');
+        const hasSanctified = normalized.some(line => line === 'sanctified');
+        const hasFractured = normalized.some(line => line === 'fractured item');
+        const hasMirrored = normalized.some(line => line === 'mirrored');
+        const hasFoil = normalized.some(line => line === 'foil unique');
+        const hasUnidentified = normalized.some(line => line === 'unidentified');
+        const hasDesecrated = normalized.some(line => line.includes('(desecrated)') || /desecrated\s+(?:prefix|suffix)/i.test(line));
+        const hasVeiled = normalized.some(line => /desecrated\s+(?:prefix|suffix)/i.test(line));
+
         return {
             corrupted: hasCorrupted,
             isCorrupted: hasCorrupted,
             sanctified: hasSanctified,
             isSanctified: hasSanctified,
             fractured: hasFractured,
-            isFractured: hasFractured
+            isFractured: hasFractured,
+            desecrated: hasDesecrated,
+            isDesecrated: hasDesecrated,
+            veiled: hasVeiled,
+            isVeiled: hasVeiled,
+            mirrored: hasMirrored,
+            isMirrored: hasMirrored,
+            foiled: hasFoil,
+            isFoiled: hasFoil,
+            isIdentified: !hasUnidentified,
+            isModifiable: !(hasCorrupted || hasSanctified || hasMirrored)
         };
     }
 
-    // Helper to extract numeric values from modifier text
-    private parseValues(text: string): number[] {
-        const values: number[] = [];
-        // Match patterns like "109(101-110)" or just "15" or "(10-20)"
-        const matches = text.matchAll(/(\d+)(?:\((\d+)-(\d+)\))?/g);
-        for (const match of matches) {
-            if (match[1]) {
-                values.push(parseInt(match[1], 10));
+    // Helper to extract numeric values from modifier text and detect exceptional rolls
+    private parseValues(text: string): { numbers: number[]; isExceptional: boolean } {
+        const numbers: number[] = [];
+        const valuePattern = /([+-]?\d+(?:\.\d+)?)(?:%?)\s*(?:\(\s*([+-]?\d+(?:\.\d+)?)(?:%?)\s*(?:-\s*([+-]?\d+(?:\.\d+)?)(?:%?)\s*)?\))?/g;
+        let match: RegExpExecArray | null;
+
+        while ((match = valuePattern.exec(text)) !== null) {
+            const actual = parseFloat(match[1]);
+            if (!Number.isNaN(actual)) {
+                numbers.push(actual);
             }
-            if (match[2] && match[3]) {
-                values.push(parseInt(match[2], 10));
-                values.push(parseInt(match[3], 10));
+
+            if (match[2]) {
+                const lower = parseFloat(match[2]);
+                if (!Number.isNaN(lower)) {
+                    numbers.push(lower);
+                }
+            }
+
+            if (match[3]) {
+                const upper = parseFloat(match[3]);
+                if (!Number.isNaN(upper)) {
+                    numbers.push(upper);
+                }
             }
         }
-        return values;
+
+        let isExceptional = false;
+        const rangePattern = /([+-]?\d+(?:\.\d+)?)\s*\(\s*([+-]?\d+(?:\.\d+)?)(?:%?)\s*(?:-\s*([+-]?\d+(?:\.\d+)?)(?:%?)\s*)?\)/g;
+        let rangeMatch: RegExpExecArray | null;
+
+        while ((rangeMatch = rangePattern.exec(text)) !== null) {
+            const actual = parseFloat(rangeMatch[1]);
+            const low = parseFloat(rangeMatch[2]);
+            const high = rangeMatch[3] !== undefined ? parseFloat(rangeMatch[3]) : low;
+
+            if (Number.isNaN(actual) || Number.isNaN(low) || Number.isNaN(high)) {
+                continue;
+            }
+
+            const min = Math.min(low, high);
+            const max = Math.max(low, high);
+            if (actual < min || actual > max) {
+                isExceptional = true;
+                break;
+            }
+        }
+
+        return { numbers, isExceptional };
     }
 
     // Helper to parse a single modifier section
@@ -450,27 +534,27 @@ export class ItemParser {
                 }
             }
 
-            // Check for fractured/desecrated markers
+            const hasVeiledMarker = /Desecrated\s+(?:Prefix|Suffix)/i.test(section) || /Desecrated\s+(?:Prefix|Suffix)/i.test(modString);
             const isFractured = /\(fractured\)/i.test(modString);
-            const isDesecrated = /\(desecrated\)/i.test(modString);
+            const isDesecrated = /\(desecrated\)/i.test(modString) || hasVeiledMarker;
 
-            // Clean markers from string
             modString = modString
                 .replace(/\(fractured\)/gi, '')
                 .replace(/\(desecrated\)/gi, '')
                 .trim();
 
-            // Extract numeric values
-            const values = this.parseValues(modString);
+            const { numbers, isExceptional } = this.parseValues(modString);
 
             return {
                 name,
                 tier,
                 tags,
                 string: modString,
-                values,
+                values: numbers,
                 isFractured,
-                isDesecrated
+                isDesecrated,
+                isVeiled: hasVeiledMarker,
+                hasExceptionalValue: isExceptional
             };
         } catch (e) {
             console.warn(`[Parser] Failed to parse ${modType} mod section:`, e);
@@ -493,11 +577,12 @@ export class ItemParser {
             if (enchantMatches) {
                 enchantMatches.forEach(line => {
                     const modString = line.replace(/ \(enchant\)$/, '').trim();
-                    const values = this.parseValues(modString);
+                    const { numbers, isExceptional } = this.parseValues(modString);
                     result.enchant.push({
                         tags: [],
                         string: modString,
-                        values
+                        values: numbers,
+                        hasExceptionalValue: isExceptional
                     });
                 });
             }
@@ -507,11 +592,12 @@ export class ItemParser {
             if (runeMatches) {
                 runeMatches.forEach(line => {
                     const modString = line.replace(/ \(rune\)$/, '').trim();
-                    const values = this.parseValues(modString);
+                    const { numbers, isExceptional } = this.parseValues(modString);
                     result.rune.push({
                         tags: [],
                         string: modString,
-                        values
+                        values: numbers,
+                        hasExceptionalValue: isExceptional
                     });
                 });
             }
