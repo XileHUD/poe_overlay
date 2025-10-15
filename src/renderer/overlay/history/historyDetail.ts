@@ -183,6 +183,7 @@ export function renderHistoryDetail(idx: number): void {
   
   // Price
   const cur = normalizeCurrency(it?.price?.currency ?? it?.currency ?? "");
+  const curDisplay = cur ? cur.charAt(0).toUpperCase() + cur.slice(1) : "";
   const amt = it?.price?.amount ?? it?.amount ?? "";
   const curClass = cur ? `currency-${cur}` : "";
   
@@ -329,7 +330,7 @@ export function renderHistoryDetail(idx: number): void {
         <div class="card-header">
           <div class="card-title">${escapeHtml(name)}${qualityValue ? ` <span class=\"quality-badge\" title=\"Quality\">${escapeHtml(qualityValue.replace(/^\+/, ''))}</span>` : ''}</div>
           <div>
-            <span class="price-badge large ${curClass}" title="Sold price"><span class="amount">${amt}x</span> ${cur || ""}</span>
+            <span class="price-badge large ${curClass}" title="Sold price"><span class="amount">${amt}x</span> ${curDisplay}</span>
           </div>
         </div>
         <div class="grid">

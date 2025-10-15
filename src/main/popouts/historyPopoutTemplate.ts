@@ -31,7 +31,13 @@ export function buildHistoryPopoutHtml(): string {
     .detail{padding:10px;border-top:1px solid #404040;max-height:40%;overflow-y:auto;background:rgba(25,28,32,0.9);}
     .detail-item{font-size:11px;line-height:1.4;color:#ddd;}
     ::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:#444;border-radius:3px;}::-webkit-scrollbar-thumb:hover{background:#555;}
-    .currency-divine{color:#d4af37;}.currency-exalted{color:#d4af37;}.currency-annul{color:#b8860b;}
+    .price-badge{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:999px;background:var(--bg-tertiary);border:1px solid var(--border-color);font-size:11px;font-weight:700;color:var(--text-primary);line-height:1;white-space:nowrap;text-shadow:1px 1px rgba(0,0,0,0.6);}
+    .price-badge .amount{font-weight:800;}
+    .currency-exalted{background:#1f375a;color:#d6e8ff;border-color:#3f6aa1;}
+    .currency-divine{background:radial-gradient(#675c39, #7e6f41);color:#fffef5;border-color:#d4af37;}
+    .currency-annul{background:radial-gradient(#5a2a84, #4a266a);color:#f0e6ff;border-color:#7b40b3;}
+    .currency-chaos{background:#24331b;color:#cfe9b8;border-color:#4a6a35;}
+    .currency-regal{background:#3d2817;color:#f4d8a6;border-color:#6b4a28;}
     .rarity-unique{color:#af6025;}.rarity-rare{color:#ffff77;}.rarity-magic{color:#8888ff;}.rarity-normal{color:#c8c8c8;}
   </style>
   </head><body><div class='window'>
@@ -43,7 +49,7 @@ export function buildHistoryPopoutHtml(): string {
   <script>
     let state={items:[],selectedIndex:-1,lastRefreshAt:0,nextRefreshAt:0};
     function escapeHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-    function normalizeCurrency(c){const s=String(c||'').toLowerCase();if(s.includes('divine'))return'divine';if(s.includes('exalt'))return'exalted';if(s.includes('annul'))return'annul';return c;}
+    function normalizeCurrency(c){const s=String(c||'').toLowerCase();if(s.includes('divine'))return'divine';if(s.includes('exalt'))return'exalted';if(s.includes('annul'))return'annul';if(s.includes('chaos'))return'chaos';if(s.includes('regal'))return'regal';return c;}
     function toRelativeTime(ts){
       let n = Number(ts);
       if(isFinite(n) && n < 2e10) { // likely seconds epoch
@@ -72,13 +78,15 @@ export function buildHistoryPopoutHtml(): string {
         const amount=(it&& (it.price&&it.price.amount || it.amount)) ?? '?';
         const currency=normalizeCurrency((it&& (it.price&&it.price.currency || it.currency))||'');
         const curClass=currency?('currency-'+currency):'';
+        const currencyDisplay=currency?(currency.charAt(0).toUpperCase()+currency.slice(1)):'';
         const time=toRelativeTime(it && it.ts ? it.ts : (it && (it.time||it.listedAt||it.date||0))); // canonical ts provided by renderer
         const rarity=(it&&it.item&&it.item.rarity||'').toLowerCase();
         const rarityClass=rarity?('rarity-'+rarity):'';
+        const hasPrice = amount !== '?' && currency;
         return '<div class="history-row '+(idx===state.selectedIndex?'selected':'')+'" data-idx="'+idx+'">'
           +'<div class="row-header">'
             +'<div class="item-name '+rarityClass+'">'+escapeHtml(name)+'</div>'
-            +'<div class="price '+curClass+'">'+amount+' '+currency+'</div>'
+            +(hasPrice ? '<span class="price-badge '+curClass+'"><span class="amount">'+amount+'</span>'+currencyDisplay+'</span>' : '')
           +'</div>'
           +'<div class="row-meta"><span>'+time+' ago</span></div>'
         +'</div>';

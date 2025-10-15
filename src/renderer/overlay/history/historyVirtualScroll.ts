@@ -158,6 +158,7 @@ function renderHistoryRow(it: any, idx: number): string {
   const hasPrice = Number.isFinite(numericAmount) && !!currency;
   const amount = hasPrice ? numericAmount : "?";
   const curClass = hasPrice ? `currency-${currency}` : "";
+  const currencyDisplay = currency ? currency.charAt(0).toUpperCase() + currency.slice(1) : "";
   const name = it?.item?.name || it?.item?.typeLine || it?.item?.baseType || "Item";
   const indexLabel = idx + 1;
   const isSelected = idx === historyState.selectedIndex;
@@ -170,7 +171,7 @@ function renderHistoryRow(it: any, idx: number): string {
         <div class="history-row-title" title="${escapeHtml(name)}">${escapeHtml(name)}</div>
       </div>
       <div style="display:flex; align-items:center; gap:8px; flex-shrink:0; white-space:nowrap;">
-        ${hasPrice ? `<span class="price-badge ${curClass}" style="white-space:nowrap;"><span class="amount">${amount}</span> ${currency}</span>` : ''}
+        ${hasPrice ? `<span class="price-badge ${curClass}" style="white-space:nowrap;"><span class="amount">${amount}</span>${currencyDisplay}</span>` : ''}
         <div style="color:var(--text-muted); font-size:11px; white-space:nowrap;">${time}</div>
       </div>
     </div>
@@ -196,11 +197,19 @@ function initializeVirtualScroll(histList: HTMLElement, renderDetailCallback: (i
     lastManualScrollTime = Date.now();
     isUserScrolling = true;
     
-    // Clear any pending snap
+    // Clear any pending snap - this is the debounce
     if (snapTimeout !== null) {
       window.clearTimeout(snapTimeout);
       snapTimeout = null;
     }
+    
+    // Schedule snap-to-item-top after user stops scrolling (debounced)
+    // This gets cleared and rescheduled on every scroll event, so it only fires
+    // after SCROLL_SNAP_DELAY ms of no scroll events
+    snapTimeout = window.setTimeout(() => {
+      snapToNearestItem(histList);
+      snapTimeout = null;
+    }, SCROLL_SNAP_DELAY);
     
     // Throttle re-render to every 16ms (~60fps)
     if (scrollTimeout === null) {
@@ -208,14 +217,6 @@ function initializeVirtualScroll(histList: HTMLElement, renderDetailCallback: (i
         renderVirtualHistoryList(renderDetailCallback);
         scrollTimeout = null;
         isUserScrolling = false;
-        
-        // Schedule snap-to-item-top after user stops scrolling
-        snapTimeout = window.setTimeout(() => {
-          const timeSinceLastScroll = Date.now() - lastManualScrollTime;
-          if (timeSinceLastScroll >= SCROLL_SNAP_DELAY) {
-            snapToNearestItem(histList);
-          }
-        }, SCROLL_SNAP_DELAY);
       }, 16);
     }
   });

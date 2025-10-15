@@ -1277,19 +1277,20 @@ body {
 .history-row .row-right { display:flex; align-items:center; gap:8px; }
 .history-row .time-text { color:var(--text-muted); font-size:11px; }
 .price-badge {
-    display:inline-flex; align-items:center; gap:6px;
+    display:inline-flex; align-items:center; gap:3px;
     padding: 2px 8px; border-radius: 999px;
     background: var(--bg-tertiary); border: 1px solid var(--border-color);
     font-size: 11px; font-weight: 700; color: var(--text-primary);
     line-height: 1; white-space:nowrap;
+    text-shadow: 1px 1px rgba(0,0,0,0.6);
 }
 .price-badge .amount { font-weight:800; }
 .price-badge.large { font-size:12px; padding:4px 10px; }
 /* Currency accents */
 /* Updated colors: Exalt blue, Divine gold, Annul purple */
 .currency-exalted { background:#1f375a; color:#d6e8ff; border-color:#3f6aa1; }
-.currency-divine { background:#d4af37; color:#1a1a1a; border-color:#b8921d; }
-.currency-annul  { background:#5a2a84; color:#f0e6ff; border-color:#7b40b3; }
+.currency-divine { background:radial-gradient(#675c39, #7e6f41); color:#fffef5; border-color:#d4af37; }
+.currency-annul  { background:radial-gradient(#5a2a84, #4a266a); color:#f0e6ff; border-color:#7b40b3; }
 .currency-chaos  { background:#24331b; color:#cfe9b8; border-color:#4a6a35; }
 .currency-regal  { background:#3d2817; color:#f4d8a6; border-color:#6b4a28; }
 .currency-altar  { background:#1f2d3f; color:#b6d5ff; border-color:#3b5f8f; }
@@ -1301,8 +1302,8 @@ body {
 .currency-foil   { background:#4a2d4a; color:#ff69eb; border-color:#8b5a8b; }
 /* Vivid in detail card (match same hues) */
 .history-detail-card .currency-exalted { background:#2b4f80; color:#eaf4ff; border-color:#2b4f80; }
-.history-detail-card .currency-divine  { background:#ffd24d; color:#1a1a1a; border-color:#e0b939; }
-.history-detail-card .currency-annul   { background:#7b40b3; color:#fff; border-color:#7b40b3; }
+.history-detail-card .currency-divine  { background:radial-gradient(#7e6f41, #5c4f30); color:#fffef8; border-color:#b8921d; }
+.history-detail-card .currency-annul   { background:radial-gradient(#7b40b3, #5c2d85); color:#fff; border-color:#7b40b3; }
 
 /* Quality badge (merchant history item detail) */
 .history-detail-card .quality-badge {

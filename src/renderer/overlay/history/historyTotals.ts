@@ -268,7 +268,8 @@ export function renderHistoryTotals(
     amountEl.className = "amount";
     amountEl.textContent = String(entry.amount);
     chip.appendChild(amountEl);
-    chip.appendChild(document.createTextNode(` ${entry.currency}`));
+    const currencyDisplay = entry.currency.charAt(0).toUpperCase() + entry.currency.slice(1);
+    chip.appendChild(document.createTextNode(` ${currencyDisplay}`));
     items.push(chip);
   }
 
