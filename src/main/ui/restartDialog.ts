@@ -3,15 +3,21 @@
  */
 import { dialog, BrowserWindow } from 'electron';
 
-export async function showRestartDialog(parent?: BrowserWindow | null): Promise<boolean> {
+export interface RestartDialogOptions {
+  title?: string;
+  message?: string;
+  detail?: string;
+}
+
+export async function showRestartDialog(parent?: BrowserWindow | null, options: RestartDialogOptions = {}): Promise<boolean> {
   const opts: Electron.MessageBoxOptions = {
     type: 'question',
     buttons: ['Restart Overlay', 'Later'],
     defaultId: 0,
     cancelId: 1,
-    title: 'Overlay Restart Required',
-    message: 'Feature settings updated',
-    detail: 'The overlay will restart to apply your changes.\n\nYour game will NOT be affected.'
+    title: options.title ?? 'Overlay Restart Required',
+    message: options.message ?? 'Settings updated',
+    detail: options.detail ?? 'The overlay will restart to apply your changes.\n\nYour game will NOT be affected.'
   } as const;
 
   const result = parent

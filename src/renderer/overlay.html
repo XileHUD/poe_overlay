@@ -22,6 +22,58 @@
             select.sel-sort option,
             select.sel-rarity option,
             select.sel-type option { background: var(--bg-tertiary); color: var(--text-primary); }
+
+            #noFeaturesPlaceholder {
+                display: none;
+                flex: 1 1 auto;
+                min-height: 0;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 24px;
+                color: var(--text-secondary);
+            }
+            #noFeaturesPlaceholder .no-features-card {
+                background: var(--bg-secondary);
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                padding: 20px 24px;
+                max-width: 360px;
+                width: 100%;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            #noFeaturesPlaceholder .no-features-title {
+                font-size: 15px;
+                font-weight: 600;
+                color: var(--text-primary);
+            }
+            #noFeaturesPlaceholder .no-features-message {
+                font-size: 13px;
+                line-height: 1.5;
+            }
+            body.overlay-no-features #controlPanel,
+            body.overlay-no-features #content,
+            body.overlay-no-features #craftingPanel,
+            body.overlay-no-features #historyContainer,
+            body.overlay-no-features #historyHeaderMain,
+            body.overlay-no-features #historyHeader {
+                display: none !important;
+            }
+            body.overlay-no-features #noFeaturesPlaceholder {
+                display: flex !important;
+            }
+            body.overlay-no-features #footer {
+                justify-content: flex-end !important;
+            }
+            body.overlay-no-features #footer .tabs {
+                display: none !important;
+            }
+            body.overlay-poe1-mode #noFeaturesPlaceholder .no-features-title {
+                color: var(--accent-orange);
+            }
         </style>
 </head>
 <body>
@@ -212,6 +264,12 @@
         </div>
     </div>
     </div>
+    <div id="noFeaturesPlaceholder">
+        <div class="no-features-card">
+            <div class="no-features-title" id="noFeaturesTitle">Overlay mode limited</div>
+            <div class="no-features-message" id="noFeaturesMessage">Overlay features are currently unavailable.</div>
+        </div>
+    </div>
 
     <!-- Footer with tabs and resize handle -->
     <div class="footer" id="footer" style="background: var(--bg-secondary); border-top: 1px solid var(--border-color); padding: 4px 8px; display: flex; align-items: center; justify-content: space-between; -webkit-app-region: drag; flex: 0 0 auto;">
@@ -371,12 +429,19 @@
     const headerSubtitleEl = document.getElementById('headerSubtitle');
     const settingsBtn = document.getElementById('settingsBtn');
     const updateBadgeBtn = document.getElementById('updateBadge');
+    const noFeaturesRoot = document.getElementById('noFeaturesPlaceholder');
+    const noFeaturesTitleEl = document.getElementById('noFeaturesTitle');
+    const noFeaturesMessageEl = document.getElementById('noFeaturesMessage');
 
     const LAST_CONTEXT_KEY = 'xilehud:last-view-context';
     let firstSelectableCategory = null;
 
     const UPDATE_RELEASE_URL = 'https://github.com/XileHUD/poe_overlay/releases/latest';
     let startupUpdateCheckTriggered = false;
+    let overlayVersionMode = 'poe2';
+    window.__overlayVersionMode = overlayVersionMode;
+    let pendingOverlayVersionMode = null;
+    let overlayHasAnyFeatures = true;
 
     function showUpdateBadge(info) {
         if (!updateBadgeBtn) return;
@@ -424,6 +489,53 @@
             return { view: null, action: null, category: null };
         }
     }
+
+    function updateNoFeaturesPlaceholder(title, message) {
+        if (!noFeaturesRoot) return;
+        if (noFeaturesTitleEl) noFeaturesTitleEl.textContent = title || '';
+        if (noFeaturesMessageEl) noFeaturesMessageEl.textContent = message || '';
+    }
+
+    function applyOverlayVersionMode(mode) {
+        const normalized = mode === 'poe1' ? 'poe1' : 'poe2';
+        overlayVersionMode = normalized;
+        window.__overlayVersionMode = normalized;
+        try { window.OverlayModifiers?.setOverlayVersionMode?.(normalized); } catch {}
+        if (normalized === 'poe1') {
+            document.body.classList.add('overlay-no-features');
+            document.body.classList.add('overlay-poe1-mode');
+            updateNoFeaturesPlaceholder('Path of Exile 1 Mode', 'Overlay features are coming soon for PoE1. Switch back to PoE2 mode in Settings for the existing tools.');
+            setHeader('Path of Exile 1', 'Overlay features coming soon');
+            const whittlingInfo = document.getElementById('whittlingInfo');
+            if (whittlingInfo) {
+                whittlingInfo.innerHTML = '';
+                whittlingInfo.setAttribute('style', 'display:none; margin-right:6px; -webkit-app-region: no-drag;');
+            }
+            return;
+        }
+        document.body.classList.remove('overlay-poe1-mode');
+        if (!overlayHasAnyFeatures) {
+            document.body.classList.add('overlay-no-features');
+            updateNoFeaturesPlaceholder('Overlay features disabled', 'Enable overlay features from Settings to re-enable the Modifier, Crafting, or History views.');
+        } else {
+            document.body.classList.remove('overlay-no-features');
+            updateNoFeaturesPlaceholder('', '');
+        }
+    }
+
+    try {
+        window.electronAPI?.onOverlayVersionMode?.((mode) => {
+            const normalized = mode === 'poe1' ? 'poe1' : 'poe2';
+            overlayVersionMode = normalized;
+            window.__overlayVersionMode = normalized;
+            try { window.OverlayModifiers?.setOverlayVersionMode?.(normalized); } catch {}
+            if (document.readyState === 'loading') {
+                pendingOverlayVersionMode = normalized;
+                return;
+            }
+            applyOverlayVersionMode(normalized);
+        });
+    } catch {}
 
     let lastContext = loadLastContext();
 
@@ -1462,12 +1574,13 @@
         async function populateCategoryDropdown() {
             if (!window.electronAPI || !window.electronAPI.getAllCategories) return;
             try {
-                const categories = await window.electronAPI.getAllCategories();
+                const rawCategories = await window.electronAPI.getAllCategories();
                 const categorySelect = document.getElementById('categorySelect');
                 if (!categorySelect) return;
                 const previous = categorySelect.value;
+        const categories = (rawCategories || []).filter((entry) => String(entry || '').toUpperCase() !== 'ALL');
         // Ensure aggregated pseudo-categories are always known and rendered first
-    const AGGREGATED_CATEGORIES = ['ALL','DESECRATED','ESSENCE','CORRUPTED','SOCKETABLES'];
+    const AGGREGATED_CATEGORIES = ['DESECRATED','ESSENCE','CORRUPTED','SOCKETABLE','SOCKETABLES'];
         const aggregatedSet = new Set(AGGREGATED_CATEGORIES.map(c => c.toUpperCase()));
 
                 function classify(cat) {
@@ -1598,7 +1711,15 @@
         }
         // Wire initial controls on DOM ready
         document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const storedMode = await window.electronAPI?.getSetting?.('overlayVersion');
+                if (storedMode === 'poe1' || storedMode === 'poe2') {
+                    overlayVersionMode = storedMode;
+                }
+            } catch {}
+
             // Feature-aware tab visibility (hide disabled features)
+            overlayHasAnyFeatures = true;
             try {
                 const enabledFeatures = await window.electronAPI?.getEnabledFeatures?.();
                 console.log('[FeatureFilter] Enabled features:', enabledFeatures);
@@ -1794,49 +1915,61 @@
                     }
                     if (document.getElementById('toolsTab')) craftingViewEnabled = true;
 
+                    overlayHasAnyFeatures = modifiersEnabled || craftingViewEnabled || historyEnabled;
+
                     setFeatureAvailability({
                         modifiers: modifiersEnabled,
                         crafting: craftingViewEnabled,
                         history: historyEnabled
                     });
-                    
-                    // Set first visible tab as active and default view
-                    const tabOrder = ['tabModifier', 'craftingTab', 'characterTab', 'itemsTab', 'toolsTab', 'tabHistory'];
-                    let firstVisibleTab = null;
-                    for (const tabId of tabOrder) {
-                        const tab = document.getElementById(tabId);
-                        if (tab && window.getComputedStyle(tab).display !== 'none') {
-                            firstVisibleTab = tabId;
-                            break;
+
+                    if (overlayHasAnyFeatures) {
+                        // Set first visible tab as active and default view when something is available
+                        const tabOrder = ['tabModifier', 'craftingTab', 'characterTab', 'itemsTab', 'toolsTab', 'tabHistory'];
+                        let firstVisibleTab = null;
+                        for (const tabId of tabOrder) {
+                            const tab = document.getElementById(tabId);
+                            if (tab && window.getComputedStyle(tab).display !== 'none') {
+                                firstVisibleTab = tabId;
+                                break;
+                            }
                         }
-                    }
-                    if (firstVisibleTab) {
-                        const targetView = firstVisibleTab === 'tabModifier' ? 'modifiers'
-                                          : firstVisibleTab === 'tabHistory' ? 'history'
-                                          : 'crafting';
-                        try { setView(targetView); } catch {}
-                        try { setActiveTab(firstVisibleTab); } catch {}
-                        if (firstVisibleTab === 'tabHistory') {
-                            try { setHeader('Merchant History'); } catch {}
-                        } else if (firstVisibleTab === 'tabModifier') {
-                            try { setHeader('Modifier'); } catch {}
-                        } else {
-                            try { setHeader('Crafting'); } catch {}
+                        if (firstVisibleTab) {
+                            const targetView = firstVisibleTab === 'tabModifier' ? 'modifiers'
+                                              : firstVisibleTab === 'tabHistory' ? 'history'
+                                              : 'crafting';
+                            try { setView(targetView); } catch {}
+                            try { setActiveTab(firstVisibleTab); } catch {}
+                            if (firstVisibleTab === 'tabHistory') {
+                                try { setHeader('Merchant History'); } catch {}
+                            } else if (firstVisibleTab === 'tabModifier') {
+                                try { setHeader('Modifier'); } catch {}
+                            } else {
+                                try { setHeader('Crafting'); } catch {}
+                            }
                         }
+                    } else {
+                        closeAllMenus();
+                        setControlPanelVisible(false);
+                        hideHistoryView();
                     }
+
+                    applyOverlayVersionMode(overlayVersionMode);
                 }
             } catch (err) {
                 console.error('[Tab visibility] Error:', err);
             }
             
-            try { await populateCategoryDropdown(); } catch {}
-            // Re-populate once modifiers fully loaded (ensures full category list when opening without item)
-            try {
-                window.electronAPI?.onModifiersLoaded?.((_cats)=> {
-                    populateCategoryDropdown().catch((err)=> console.warn('[onModifiersLoaded] populateCategoryDropdown failed', err));
-                });
-            } catch {}
-            if (!headerTitleEl || !headerTitleEl.textContent) {
+            if (overlayHasAnyFeatures) {
+                try { await populateCategoryDropdown(); } catch {}
+                // Re-populate once modifiers fully loaded (ensures full category list when opening without item)
+                try {
+                    window.electronAPI?.onModifiersLoaded?.((_cats)=> {
+                        populateCategoryDropdown().catch((err)=> console.warn('[onModifiersLoaded] populateCategoryDropdown failed', err));
+                    });
+                } catch {}
+            }
+            if (overlayHasAnyFeatures && (!headerTitleEl || !headerTitleEl.textContent)) {
                 const fallbackView = pickFirstAvailableView('modifiers');
                 if (fallbackView === 'history') {
                     setHeader('Merchant History');
@@ -1895,6 +2028,10 @@
                 }
             });
             
+            const modeToApply = pendingOverlayVersionMode || overlayVersionMode;
+            applyOverlayVersionMode(modeToApply);
+            pendingOverlayVersionMode = null;
+
             // Notify main process that overlay is ready (this will trigger pinned state sync)
             try { window.electronAPI?.overlayReady?.(); } catch {}
             setTimeout(()=>{ try { triggerStartupUpdateCheck(); } catch {} }, 1200);
@@ -3064,27 +3201,83 @@ function switchCategory(){
     });
 }
 
-function openModifiersCategory(cat, options){
+async function openModifiersCategory(cat, options){
     const select = document.getElementById('categorySelect');
     if (!select) return;
     const rawCandidates = Array.isArray(cat) ? cat : [cat];
     const candidates = rawCandidates.map((entry) => String(entry || '').trim()).filter(Boolean);
     if (!candidates.length) return;
-    const optionList = Array.from(select.options || []);
-    const optionMap = new Map(optionList.map(opt => [(opt.value || '').toUpperCase(), opt.value]));
-    let resolved = '';
-    for (const candidate of candidates) {
-        const key = candidate.toUpperCase();
-        if (optionMap.has(key)) {
-            resolved = optionMap.get(key) || candidate;
-            break;
+    const preferredCandidates = candidates.filter((entry) => normalizeCategoryKey(entry) !== 'ALL');
+    const candidatePool = preferredCandidates.length ? preferredCandidates : candidates;
+
+    const buildResolutionMaps = (optionList) => {
+        return {
+            upperMap: new Map(optionList.map(opt => [(opt.value || '').toUpperCase(), opt.value])),
+            normalizedValueMap: new Map(optionList.map(opt => [normalizeCategoryKey(opt.value || ''), opt.value])),
+            normalizedLabelMap: new Map(optionList.map(opt => [normalizeCategoryKey(opt.textContent || ''), opt.value]))
+        };
+    };
+
+    const attemptResolve = (optionList, pool) => {
+        if (!optionList.length) return '';
+        const maps = buildResolutionMaps(optionList);
+        for (const candidate of pool) {
+            if (!candidate) continue;
+            const upperKey = candidate.toUpperCase();
+            if (maps.upperMap.has(upperKey)) return maps.upperMap.get(upperKey) || '';
+            const normalizedKey = normalizeCategoryKey(candidate);
+            if (normalizedKey) {
+                if (maps.normalizedValueMap.has(normalizedKey)) return maps.normalizedValueMap.get(normalizedKey) || '';
+                if (maps.normalizedLabelMap.has(normalizedKey)) return maps.normalizedLabelMap.get(normalizedKey) || '';
+            }
+        }
+        return '';
+    };
+
+    const resolveFallbackViaOptions = (optionList, pool) => {
+        for (const candidate of pool) {
+            const normalizedKey = normalizeCategoryKey(candidate);
+            if (!normalizedKey || normalizedKey === 'ALL') continue;
+            const match = optionList.find(opt => normalizeCategoryKey(opt.value || '') === normalizedKey || normalizeCategoryKey(opt.textContent || '') === normalizedKey);
+            if (match) return match.value;
+        }
+        return '';
+    };
+
+    let optionList = Array.from(select.options || []);
+    let resolved = attemptResolve(optionList, candidatePool);
+    if (!resolved) {
+        const optionCount = optionList.length;
+        if (optionCount <= 1 && typeof populateCategoryDropdown === 'function') {
+            try {
+                await populateCategoryDropdown();
+            } catch (err) {
+                console.warn('[openModifiersCategory] populateCategoryDropdown failed during resolution', err);
+            }
+            optionList = Array.from(select.options || []);
+            resolved = attemptResolve(optionList, candidatePool);
         }
     }
+
     if (!resolved) {
-        resolved = candidates[0];
-        console.warn('[openModifiersCategory] No direct match for candidates, falling back to first entry:', candidates);
+        resolved = resolveFallbackViaOptions(optionList, candidatePool);
     }
+
+    if (!resolved) {
+        const firstUsable = optionList.find(opt => opt.value && normalizeCategoryKey(opt.value) !== 'ALL');
+        if (firstUsable) {
+            resolved = firstUsable.value;
+            console.warn('[openModifiersCategory] Falling back to first available category:', resolved, 'for candidates', candidatePool);
+        }
+    }
+
+    if (!resolved) {
+        console.warn('[openModifiersCategory] Unable to resolve category for candidates:', candidatePool);
+        return;
+    }
+
     select.value = resolved;
+
     syncCategorySelectAppearance();
     if (options && options.bypassDebounce) {
         switchCategoryLocked = false;

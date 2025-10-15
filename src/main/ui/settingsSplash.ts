@@ -8,10 +8,30 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import * as https from 'https';
 import type { SettingsService } from '../services/settingsService.js';
+import { isOverlayVersion, type OverlayVersion } from '../../types/overlayVersion.js';
 
 // Optional updater (will be active in packaged builds)
 let autoUpdater: any = null;
 try { autoUpdater = require('electron-updater').autoUpdater; } catch {}
+
+interface LeagueOption {
+  value: string;
+  label: string;
+}
+
+const POE2_LEAGUES: LeagueOption[] = [
+  { value: 'Rise of the Abyssal', label: 'Rise of the Abyssal (Softcore)' },
+  { value: 'HC Rise of the Abyssal', label: 'HC Rise of the Abyssal' },
+  { value: 'Standard', label: 'Standard (Legacy)' },
+  { value: 'Hardcore', label: 'Hardcore (Legacy)' }
+];
+
+const POE1_LEAGUES: LeagueOption[] = [
+  { value: 'Secret', label: 'Secret (Placeholder League)' },
+  { value: 'Secret Hardcore', label: 'Secret Hardcore (Placeholder League)' },
+  { value: 'Standard', label: 'Standard' },
+  { value: 'Standard Hardcore', label: 'Standard Hardcore' }
+];
 
 // Get version from package.json
 function getAppVersion(): string {
@@ -126,9 +146,10 @@ export interface SettingsSplashParams {
   onHotkeySave: (newKey: string) => void;
   onLeagueSave: (league: string) => void;
   onFeatureConfigOpen: () => void;
+  onRequestOverlayRestart: (options?: { message?: string; detail?: string }) => void;
   onShowOverlay: () => void;
   overlayWindow: any; // BrowserWindow to send font size updates to
-  getDefaultClipboardDelay?: () => number;
+  overlayVersion: OverlayVersion;
 }
 
 /**
@@ -144,10 +165,13 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
     onHotkeySave,
     onLeagueSave,
     onFeatureConfigOpen,
+    onRequestOverlayRestart,
     onShowOverlay,
     overlayWindow,
-    getDefaultClipboardDelay
+    overlayVersion
   } = params;
+
+  let currentOverlayVersion: OverlayVersion = isOverlayVersion(overlayVersion) ? overlayVersion : 'poe2';
 
   return new Promise((resolve) => {
     const { width, height } = screen.getPrimaryDisplay().workAreaSize;
@@ -205,16 +229,78 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       }
     });
 
+    ipcMain.on('settings-save-overlay-version', (event, version: unknown) => {
+      try {
+        if (!isOverlayVersion(version)) {
+          throw new Error('Please choose a valid overlay version.');
+        }
+        const changed = version !== currentOverlayVersion;
+        settingsService.set('overlayVersion', version);
+        settingsService.update('featureSplashSeen', (current) => {
+          const next: Partial<Record<OverlayVersion, boolean>> = {
+            ...(current && typeof current === 'object' ? current : {})
+          };
+          if (version === 'poe2') {
+            next['poe2'] = false;
+          } else {
+            next['poe1'] = true;
+          }
+          return next;
+        });
+        if (version === 'poe2') {
+          settingsService.clear('seenFeatureSplash');
+        }
+        currentOverlayVersion = version;
+        event.reply('settings-overlay-version-saved', { version, changed });
+        if (changed) {
+          setTimeout(() => {
+            try { window.close(); } catch {}
+            try {
+              onRequestOverlayRestart?.({
+                message: 'Overlay version changed',
+                detail: 'Restart to load the correct data set for the selected Path of Exile version.'
+              });
+            } catch (err) {
+              console.error('[Settings] Failed to request restart prompt:', err);
+            }
+          }, 120);
+        }
+      } catch (error: any) {
+        const message = error?.message || 'Failed to save overlay version.';
+        event.reply('settings-overlay-version-saved', { error: message });
+      }
+    });
+
   const fontSize = settingsService.get('fontSize') || 100;
-  const configuredDelay = settingsService.get('clipboardDelay');
-  const defaultClipboardDelay = typeof getDefaultClipboardDelay === 'function'
-    ? getDefaultClipboardDelay()
-    : 300;
-  const clipboardDelay = (typeof configuredDelay === 'number' && Number.isFinite(configuredDelay))
-    ? configuredDelay
-    : defaultClipboardDelay;
   // Read from config file - it's always synchronously updated when league changes
-  const merchantHistoryLeague = settingsService.get('merchantHistoryLeague') || 'Rise of the Abyssal';
+  const storedMerchantLeague = settingsService.get('merchantHistoryLeague');
+  const storedMerchantLeagueSource = settingsService.get('merchantHistoryLeagueSource');
+  const leagueOptions = currentOverlayVersion === 'poe1' ? POE1_LEAGUES : POE2_LEAGUES;
+  const defaultLeague = leagueOptions[0]?.value ?? '';
+  const trimmedStoredLeague = typeof storedMerchantLeague === 'string' ? storedMerchantLeague.trim() : '';
+  const hasManualStoredLeague = storedMerchantLeagueSource === 'manual' && trimmedStoredLeague.length > 0;
+
+  let merchantHistoryLeague = trimmedStoredLeague || defaultLeague;
+  const displayLeagueOptions: LeagueOption[] = [...leagueOptions];
+
+  if (merchantHistoryLeague && !displayLeagueOptions.some((option) => option.value === merchantHistoryLeague)) {
+    if (hasManualStoredLeague) {
+      // Keep the user's manual league visible even when switching overlay versions to avoid losing the preference
+      displayLeagueOptions.unshift({ value: merchantHistoryLeague, label: `${trimmedStoredLeague} (Saved)` });
+    } else {
+      merchantHistoryLeague = defaultLeague;
+      if (merchantHistoryLeague) {
+        try {
+          settingsService.set('merchantHistoryLeague', merchantHistoryLeague);
+          settingsService.set('merchantHistoryLeagueSource', 'auto');
+        } catch (err) {
+          console.warn('[Settings] Failed to reset merchant league for overlay version:', err);
+        }
+      }
+    }
+  } else if (!merchantHistoryLeague && defaultLeague) {
+    merchantHistoryLeague = defaultLeague;
+  }
   const merchantHistoryAutoFetch = settingsService.get('merchantHistoryAutoFetch') !== false; // default true
   const merchantHistoryRefreshInterval = settingsService.get('merchantHistoryRefreshInterval') || 0; // 0 = smart auto
   const appVersion = getAppVersion();
@@ -223,10 +309,11 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
     getDataDir(), 
     Number(fontSize), 
     appVersion, 
-    Number(clipboardDelay), 
     String(merchantHistoryLeague),
     Boolean(merchantHistoryAutoFetch),
-    Number(merchantHistoryRefreshInterval)
+    Number(merchantHistoryRefreshInterval),
+    overlayVersion,
+    displayLeagueOptions
   );
   window.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
 
@@ -442,26 +529,6 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       }
     });
 
-    // Handle clipboard delay save
-    ipcMain.on('settings-clipboard-delay-save', (event, rawValue: number | null) => {
-      try {
-        let sanitized = 0;
-        if (typeof rawValue === 'number' && Number.isFinite(rawValue)) {
-          sanitized = Math.max(0, Math.min(1000, Math.round(rawValue)));
-        }
-
-        if (sanitized > 0) {
-          settingsService.set('clipboardDelay', sanitized);
-        } else {
-          settingsService.set('clipboardDelay', null);
-        }
-
-        event.reply('settings-clipboard-delay-saved', sanitized);
-      } catch (error) {
-        console.error('Failed to save clipboard delay:', error);
-      }
-    });
-
     // Handle merchant history config save
     ipcMain.on('settings-save-merchant-history-config', (event, data: { autoFetch: boolean; interval: number }) => {
       try {
@@ -497,7 +564,7 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       ipcMain.removeAllListeners('settings-font-size-save');
       ipcMain.removeAllListeners('settings-save-hotkey');
       ipcMain.removeAllListeners('settings-show-overlay');
-      ipcMain.removeAllListeners('settings-clipboard-delay-save');
+      ipcMain.removeAllListeners('settings-save-overlay-version');
       resolve();
     });
   });
@@ -507,16 +574,32 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
  * Build HTML for settings splash
  */
 function buildSettingsSplashHtml(
-  currentHotkey: string, 
-  dataDir: string, 
-  fontSize: number, 
-  appVersion: string, 
-  clipboardDelay: number, 
+  currentHotkey: string,
+  dataDir: string,
+  fontSize: number,
+  appVersion: string,
   merchantHistoryLeague: string,
   merchantHistoryAutoFetch: boolean,
-  merchantHistoryRefreshInterval: number
+  merchantHistoryRefreshInterval: number,
+  overlayVersion: OverlayVersion,
+  leagueOptions: LeagueOption[]
 ): string {
-  const normalizedClipboardDelay = Number.isFinite(clipboardDelay) ? Math.max(0, clipboardDelay) : 0;
+  const normalizedOverlayVersion: OverlayVersion = isOverlayVersion(overlayVersion) ? overlayVersion : 'poe2';
+  const escapeHtml = (value: string): string =>
+    value
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+
+  const effectiveLeagueOptions = (leagueOptions && leagueOptions.length) ? leagueOptions : POE2_LEAGUES;
+  const leagueOptionsMarkup = effectiveLeagueOptions
+    .map(({ value, label }) => {
+      const selected = value === merchantHistoryLeague ? ' selected' : '';
+      return `<option value="${escapeHtml(value)}"${selected}>${escapeHtml(label)}</option>`;
+    })
+    .join('\n        ');
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -656,6 +739,98 @@ function buildSettingsSplashHtml(
       font-size: 12px;
       color: var(--text-secondary);
     }
+
+    .game-choice-grid {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .game-choice {
+      flex: 1 1 48%;
+      min-width: 220px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px 18px;
+      color: var(--text-primary);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .game-choice:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-blue);
+      background: rgba(74, 158, 255, 0.08);
+    }
+
+    .game-choice.selected {
+      border-color: var(--accent-orange);
+      box-shadow: 0 0 0 1px rgba(240, 173, 78, 0.3);
+      background: rgba(240, 173, 78, 0.08);
+    }
+
+    .game-choice-title {
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .game-choice-title span.badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(74, 158, 255, 0.2);
+      color: var(--accent-blue);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .setting-hint {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    .setting-status {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      border: 1px solid transparent;
+      display: none;
+    }
+
+    .setting-status.success {
+      display: block;
+      border-color: rgba(46, 160, 67, 0.4);
+      background: rgba(46, 160, 67, 0.15);
+      color: var(--accent-green);
+    }
+
+    .setting-status.error {
+      display: block;
+      border-color: rgba(248, 81, 73, 0.4);
+      background: rgba(248, 81, 73, 0.15);
+      color: #f85149;
+    }
+
+    .setting-status.info {
+      display: block;
+      border-color: rgba(158, 203, 255, 0.4);
+      background: rgba(158, 203, 255, 0.15);
+      color: var(--accent-blue);
+    }
     .setting-item {
       display: flex;
       justify-content: space-between;
@@ -754,52 +929,6 @@ function buildSettingsSplashHtml(
       text-align: center;
     }
     .seg-btn.active { background: var(--accent-blue); color: #fff; border-color: var(--accent-blue); }
-    
-    .slider {
-      flex: 1;
-      height: 4px;
-      background: var(--bg-tertiary);
-      border-radius: 2px;
-      outline: none;
-      -webkit-appearance: none;
-    }
-    
-    .slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 16px;
-      height: 16px;
-      background: var(--accent-purple);
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background 0.15s ease;
-    }
-    
-    .slider::-webkit-slider-thumb:hover {
-      background: var(--accent-purple-hover);
-    }
-    
-    .slider::-moz-range-thumb {
-      width: 16px;
-      height: 16px;
-      background: var(--accent-purple);
-      border-radius: 50%;
-      cursor: pointer;
-      border: none;
-      transition: background 0.15s ease;
-    }
-    
-    .slider::-moz-range-thumb:hover {
-      background: var(--accent-purple-hover);
-    }
-    
-    .slider-value {
-      min-width: 45px;
-      text-align: right;
-      font-size: 13px;
-      color: var(--accent-purple);
-      font-weight: 600;
-    }
     
     .text-input {
       background: var(--bg-tertiary);
@@ -1043,6 +1172,23 @@ function buildSettingsSplashHtml(
       <button class="btn btn-primary" id="featuresBtn">Configure Features</button>
     </div>
   </div>
+
+  <!-- Overlay Version Section -->
+  <div class="section">
+    <div class="section-title">🛡 Overlay Version</div>
+    <div class="section-desc">Pick the Path of Exile version this overlay should use. The other game's files stay unloaded.</div>
+    <div class="game-choice-grid">
+      <button class="game-choice ${normalizedOverlayVersion === 'poe1' ? 'selected' : ''}" data-overlay-version="poe1" type="button">
+        <div class="game-choice-title"><span class="badge">1</span>Path of Exile 1</div>
+      </button>
+      <button class="game-choice ${normalizedOverlayVersion === 'poe2' ? 'selected' : ''}" data-overlay-version="poe2" type="button">
+        <div class="game-choice-title"><span class="badge">2</span>Path of Exile 2</div>
+      </button>
+    </div>
+    <div class="setting-hint">You can swap games here whenever you like. We'll prompt you to restart after saving so the new data loads cleanly.</div>
+    <button class="btn btn-green" id="saveOverlayVersionBtn" style="display: none; margin-top: 12px;">Save Overlay Version</button>
+    <div class="setting-status" id="overlayVersionStatus"></div>
+  </div>
   
   <!-- Merchant History League Section -->
   <div class="section">
@@ -1054,10 +1200,7 @@ function buildSettingsSplashHtml(
         <span class="setting-label-desc">Select the league for tracking your merchant trades</span>
       </div>
       <select class="btn btn-secondary" id="leagueSelect" style="min-width: 220px;">
-        <option value="Rise of the Abyssal">Rise of the Abyssal (Softcore)</option>
-        <option value="HC Rise of the Abyssal">HC Rise of the Abyssal</option>
-        <option value="Standard">Standard (Legacy)</option>
-        <option value="Hardcore">Hardcore (Legacy)</option>
+        ${leagueOptionsMarkup}
       </select>
     </div>
     <button class="btn btn-green" id="saveLeagueBtn" style="margin-top: 10px; display: none;">Save League</button>
@@ -1138,30 +1281,11 @@ function buildSettingsSplashHtml(
     <div id="dataReloadStatus" class="data-reload-status"></div>
   </div>
   
-  <!-- Debug Section -->
+  <!-- Merchant History Automation -->
   <div class="section">
-    <div class="section-title">🔧 Debug Settings</div>
-    <div class="section-desc">Advanced settings for troubleshooting copy/paste issues</div>
-    <div class="setting-item">
-      <div class="setting-label">
-        <span class="setting-label-text">Clipboard Delay Override</span>
-        <span class="setting-label-desc">If item copies still fail, add a small extra wait before the clipboard check. Leave at Auto for fastest results.</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 12px; flex: 1; max-width: 400px;">
-        <input type="range" min="0" max="1000" step="10" value="${normalizedClipboardDelay}" class="slider" id="clipboardDelaySlider" style="flex: 1;">
-        <span class="slider-value" id="clipboardDelayValue">${normalizedClipboardDelay === 0 ? 'Auto' : normalizedClipboardDelay + 'ms'}</span>
-      </div>
-    </div>
-    <div style="margin-top: 8px; padding: 10px 12px; background: rgba(255, 165, 0, 0.1); border: 1px solid rgba(255, 165, 0, 0.3); border-radius: 6px; font-size: 12px; color: var(--accent-orange);">
-      ⚠️ Only change this if you experience items not being captured when using the overlay hotkey. Default is <strong>Auto</strong> (≈50&nbsp;ms).
-    </div>
-    <div style="display: flex; gap: 8px; margin-top: 10px;">
-      <button class="btn btn-green" id="saveClipboardDelayBtn" style="display: none;">Save Delay</button>
-      <button class="btn btn-secondary" id="resetClipboardDelayBtn" style="display: ${normalizedClipboardDelay === 0 ? 'none' : 'block'};">Reset to Auto</button>
-    </div>
-
-    <!-- Merchant History Auto-Fetch Settings -->
-    <div style="margin-top: 24px; padding: 12px; background: rgba(255, 193, 7, 0.08); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 8px;">
+    <div class="section-title">🗓 Merchant History Automation</div>
+    <div class="section-desc">Control how often the overlay polls merchant history in the background</div>
+    <div style="padding: 12px; background: rgba(255, 193, 7, 0.08); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 8px;">
       <div style="font-weight: 600; font-size: 13px; margin-bottom: 8px; color: var(--text-primary);">⚙️ Merchant History Auto-Fetch</div>
       
       <div class="setting-item" style="margin-bottom: 12px;">
@@ -1272,31 +1396,96 @@ function buildSettingsSplashHtml(
       document.getElementById('featuresBtn').addEventListener('click', () => {
         ipcRenderer.send('settings-open-features');
       });
-      
-      // League selection
-      const leagueSelect = document.getElementById('leagueSelect');
-      const saveLeagueBtn = document.getElementById('saveLeagueBtn');
-      let originalLeague = '${merchantHistoryLeague}';
-      
-      // Set initial value
-      leagueSelect.value = originalLeague;
-      
-      // Show save button when league changes
-      leagueSelect.addEventListener('change', () => {
-        if (leagueSelect.value !== originalLeague) {
-          saveLeagueBtn.style.display = 'block';
-        } else {
-          saveLeagueBtn.style.display = 'none';
+
+      // Overlay version selection
+  const overlayVersionButtons = Array.from(document.querySelectorAll('[data-overlay-version]'));
+  const overlayVersionSaveBtn = document.getElementById('saveOverlayVersionBtn');
+  const overlayVersionStatus = document.getElementById('overlayVersionStatus');
+  let originalOverlayVersion = ${JSON.stringify(normalizedOverlayVersion)};
+  let selectedOverlayVersion = originalOverlayVersion;
+
+      const updateOverlayVersionUI = () => {
+        overlayVersionButtons.forEach((btn) => {
+          const version = btn.getAttribute('data-overlay-version');
+          btn.classList.toggle('selected', version === selectedOverlayVersion);
+        });
+        if (overlayVersionSaveBtn) {
+          overlayVersionSaveBtn.style.display = selectedOverlayVersion !== originalOverlayVersion ? 'block' : 'none';
+        }
+      };
+
+      updateOverlayVersionUI();
+
+      overlayVersionButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const version = btn.getAttribute('data-overlay-version');
+          if (!version) return;
+          selectedOverlayVersion = version;
+          updateOverlayVersionUI();
+          if (overlayVersionStatus) {
+            overlayVersionStatus.className = 'setting-status';
+            overlayVersionStatus.textContent = '';
+          }
+        });
+      });
+
+      overlayVersionSaveBtn?.addEventListener('click', () => {
+        ipcRenderer.send('settings-save-overlay-version', selectedOverlayVersion);
+        if (overlayVersionStatus) {
+          overlayVersionStatus.className = 'setting-status info';
+          overlayVersionStatus.textContent = 'Saving overlay version...';
         }
       });
-      
-      // Save league
-      saveLeagueBtn.addEventListener('click', () => {
-        const newLeague = leagueSelect.value;
-        ipcRenderer.send('settings-save-league', newLeague);
-        originalLeague = newLeague;
-        saveLeagueBtn.style.display = 'none';
+
+      ipcRenderer.on('settings-overlay-version-saved', (_event, payload) => {
+            if (!overlayVersionStatus) return;
+            if (payload?.error) {
+              overlayVersionStatus.className = 'setting-status error';
+              overlayVersionStatus.textContent = payload.error;
+              return;
+            }
+            originalOverlayVersion = payload?.version || selectedOverlayVersion;
+            selectedOverlayVersion = originalOverlayVersion;
+            updateOverlayVersionUI();
+            overlayVersionSaveBtn?.style && (overlayVersionSaveBtn.style.display = 'none');
+            if (payload?.changed) {
+              overlayVersionStatus.className = 'setting-status success';
+              overlayVersionStatus.textContent = 'Saved. Preparing restart…';
+            } else {
+              overlayVersionStatus.className = 'setting-status info';
+              overlayVersionStatus.textContent = 'Already using that version.';
+            }
       });
+      
+      // League selection
+  const leagueSelect = document.getElementById('leagueSelect');
+  const saveLeagueBtn = document.getElementById('saveLeagueBtn');
+  let originalLeague = ${JSON.stringify(merchantHistoryLeague)};
+      
+      // Set initial value
+      if (leagueSelect) {
+        leagueSelect.value = originalLeague;
+      }
+      if (leagueSelect && saveLeagueBtn) {
+        leagueSelect.addEventListener('change', () => {
+          if (leagueSelect.value !== originalLeague) {
+            saveLeagueBtn.style.display = 'block';
+          } else {
+            saveLeagueBtn.style.display = 'none';
+          }
+        });
+      }
+
+      // Save league
+      if (saveLeagueBtn) {
+        saveLeagueBtn.addEventListener('click', () => {
+          if (!leagueSelect) return;
+          const newLeague = leagueSelect.value;
+          ipcRenderer.send('settings-save-league', newLeague);
+          originalLeague = newLeague;
+          saveLeagueBtn.style.display = 'none';
+        });
+      }
       
       // Hotkey configuration - inline capture
       let capturedKey = null;
@@ -1505,53 +1694,6 @@ function buildSettingsSplashHtml(
       document.getElementById('openFolderBtn').addEventListener('click', () => {
         ipcRenderer.send('settings-open-folder');
       });
-      
-      // Clipboard delay slider
-      const clipboardDelaySlider = document.getElementById('clipboardDelaySlider');
-      const clipboardDelayValue = document.getElementById('clipboardDelayValue');
-      const saveClipboardDelayBtn = document.getElementById('saveClipboardDelayBtn');
-      const resetClipboardDelayBtn = document.getElementById('resetClipboardDelayBtn');
-      let originalClipboardDelay = ${normalizedClipboardDelay};
-      let pendingClipboardDelay = ${normalizedClipboardDelay};
-
-      const formatClipboardDelay = (value) => value <= 0 ? 'Auto' : value + 'ms';
-      
-      if (clipboardDelaySlider && clipboardDelayValue && saveClipboardDelayBtn) {
-        clipboardDelaySlider.addEventListener('input', (e) => {
-          pendingClipboardDelay = Number(e.target.value);
-          clipboardDelayValue.textContent = formatClipboardDelay(pendingClipboardDelay);
-          saveClipboardDelayBtn.style.display = (pendingClipboardDelay !== originalClipboardDelay) ? 'block' : 'none';
-          if (resetClipboardDelayBtn) {
-            resetClipboardDelayBtn.style.display = pendingClipboardDelay <= 0 ? 'none' : 'block';
-          }
-        });
-        
-        saveClipboardDelayBtn.addEventListener('click', () => {
-          ipcRenderer.send('settings-clipboard-delay-save', pendingClipboardDelay);
-        });
-        
-        ipcRenderer.on('settings-clipboard-delay-saved', (event, value) => {
-          console.log('Clipboard delay saved:', value);
-          originalClipboardDelay = value;
-          pendingClipboardDelay = value;
-          clipboardDelayValue.textContent = formatClipboardDelay(value);
-          saveClipboardDelayBtn.style.display = 'none';
-          if (resetClipboardDelayBtn) {
-            resetClipboardDelayBtn.style.display = value <= 0 ? 'none' : 'block';
-          }
-        });
-
-        if (resetClipboardDelayBtn) {
-          resetClipboardDelayBtn.addEventListener('click', () => {
-            pendingClipboardDelay = 0;
-            clipboardDelaySlider.value = '0';
-            clipboardDelayValue.textContent = formatClipboardDelay(0);
-            saveClipboardDelayBtn.style.display = (originalClipboardDelay !== 0) ? 'block' : 'none';
-            resetClipboardDelayBtn.style.display = 'none';
-            ipcRenderer.send('settings-clipboard-delay-save', 0);
-          });
-        }
-      }
       
       // Merchant History Auto-Fetch Settings
       const merchantHistoryAutoFetchToggle = document.getElementById('merchantHistoryAutoFetchToggle');

@@ -37,6 +37,17 @@ type SearchIndex = {
 
 const modSearchCache = new WeakMap<any, SearchIndex>();
 
+type OverlayVersionMode = 'poe1' | 'poe2';
+let currentOverlayVersionMode: OverlayVersionMode = 'poe2';
+
+export function setOverlayVersionMode(mode: string | null | undefined): void {
+  currentOverlayVersionMode = mode === 'poe1' ? 'poe1' : 'poe2';
+}
+
+function isWhittlingFeatureEnabled(): boolean {
+  return currentOverlayVersionMode !== 'poe1';
+}
+
 type SearchEvaluation = {
   passes: boolean;
   matchedFuzzy: number;
@@ -1223,9 +1234,10 @@ export function renderFilteredContent(data: any){
   const ilvlMax = ilvlMaxRaw === '' ? null : (Number(ilvlMaxRaw)||0);
   const activeTags = Array.from(document.querySelectorAll('.filter-tag.active')).map(el => el.getAttribute('data-tag') || (el.textContent||'').replace(/ \(\d+\)$/,''));
 
-  const whittlingResult = computeWhittling(data as ModifierData);
-  applyWhittlingMetadataToOverlayMods(data as ModifierData, whittlingResult);
-  renderWhittlingInfo(whittlingResult);
+  const canComputeWhittling = isWhittlingFeatureEnabled();
+  const whittlingResult = canComputeWhittling ? computeWhittling(data as ModifierData) : null;
+  applyWhittlingMetadataToOverlayMods(data as ModifierData, canComputeWhittling ? whittlingResult : null);
+  renderWhittlingInfo(canComputeWhittling ? whittlingResult : null);
   
   // Get active domain filter (radio button behavior)
   let activeDomain = 'all'; // default to show all

@@ -71,6 +71,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
     setPinned: (pinned: boolean) => ipcRenderer.send('set-pinned', pinned),
     onPinnedChanged: (callback: (pinned: boolean) => void) => ipcRenderer.on('pinned-changed', (_e, state) => callback(state)),
     resizeOverlayHeight: (height: number) => ipcRenderer.send('resize-overlay-height', height),
+        onOverlayVersionMode: (callback: (mode: string) => void) => {
+            ipcRenderer.on('overlay-version-mode', (_event, mode) => callback(mode));
+        },
     
     // PoE session & history
     poeGetSession: () => ipcRenderer.invoke('poe-get-session'),

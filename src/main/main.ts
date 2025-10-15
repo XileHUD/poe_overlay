@@ -26,11 +26,13 @@ import { HotkeyConfigurator } from './ui/hotkeyConfigurator';
 import { SettingsService, type UserSettings } from './services/settingsService.js';
 import { FeatureService } from './services/featureService.js';
 import { FeatureLoader } from './features/featureLoader.js';
+import type { FeatureConfig } from './features/featureTypes.js';
 import { showFeatureSplash } from './ui/featureSplash.js';
 import { showSettingsSplash } from './ui/settingsSplash.js';
+import { showOverlayVersionPrompt } from './ui/overlayVersionPrompt.js';
 import { MerchantHistoryExportService } from './services/merchantHistoryExport.js';
 import { MerchantHistoryCleanupService } from './services/merchantHistoryCleanup.js';
-import { showRestartDialog } from './ui/restartDialog.js';
+import { showRestartDialog, type RestartDialogOptions } from './ui/restartDialog.js';
 import { showToast } from './utils/toastNotification.js';
 import { registerDataIpc } from './ipc/dataHandlers.js';
 import { registerHistoryPopoutIpc } from './ipc/historyPopoutHandlers.js';
@@ -38,6 +40,7 @@ import { PoeSessionHelper } from './network/poeSession.js';
 import { ImageCacheService } from './services/imageCache.js';
 import { resolveLocalImage, resolveByNameOrSlug, getImageIndexMeta } from './services/imageResolver.js';
 import { rateLimiter } from './services/rateLimiter.js';
+import { isOverlayVersion, type OverlayVersion } from '../types/overlayVersion.js';
 
 // History popout debug log path (moved logging helpers into historyPopoutHandlers)
 const historyPopoutDebugLogPath = path.join(app.getPath('userData'), 'history-popout-debug.log');
@@ -299,6 +302,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
     private targetIndicatorWindow: BrowserWindow | null = null;
     private blurHandlingInProgress = false;
     private removeUiohookMouseDown: (() => void) | null = null;
+    private overlayVersion: OverlayVersion = 'poe2';
     private readonly handleGlobalMouseDown = () => {
         this.hideTargetIndicator();
     };
@@ -311,6 +315,26 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             this.updateSplash('Loading settings');
             this.settingsService = new SettingsService(this.getUserConfigDir());
             this.featureService = new FeatureService(this.settingsService);
+
+            let overlayVersionSetting = this.settingsService.get('overlayVersion');
+            if (!isOverlayVersion(overlayVersionSetting)) {
+                this.updateSplash('Awaiting overlay version selection...');
+                this.closeSplash();
+                const selected = await showOverlayVersionPrompt();
+                overlayVersionSetting = selected;
+                try {
+                    this.settingsService.set('overlayVersion', selected);
+                } catch (err) {
+                    console.warn('[Init] Failed to persist overlay version selection:', err);
+                }
+                this.showSplash('Initializing application...');
+                this.updateSplash('Loading settings');
+            }
+            const resolvedOverlayVersion: OverlayVersion = isOverlayVersion(overlayVersionSetting) ? overlayVersionSetting : 'poe2';
+            this.overlayVersion = resolvedOverlayVersion;
+            console.log('[Init] Overlay version set to', this.overlayVersion);
+
+            this.migrateLegacyFeatureSplashFlag();
 
             this.migrateClipboardDelaySetting();
 
@@ -334,27 +358,28 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 }
             } catch {}
             
-            // Show splash if user has never seen it (new install or upgrade from old version)
-            let hasSeenSplash = this.settingsService.get('seenFeatureSplash') === true;
+            if (this.overlayVersion === 'poe1') {
+                this.markFeatureSplashSeen('poe1');
+                this.updateSplash('PoE1 mode detected');
+            } else {
+                let hasSeenSplash = this.hasSeenFeatureSplash('poe2');
 
-            if (!hasSeenSplash) {
-                const existingFeatureConfig = this.settingsService.get('enabledFeatures');
-                if (existingFeatureConfig && typeof existingFeatureConfig === 'object') {
-                    console.log('[Init] Feature config already present – skipping splash');
-                    hasSeenSplash = true;
-                    this.settingsService.set('seenFeatureSplash', true);
+                if (!hasSeenSplash) {
+                    const existingFeatureConfig = this.settingsService.get('enabledFeatures');
+                    if (existingFeatureConfig && typeof existingFeatureConfig === 'object') {
+                        console.log('[Init] Feature config already present – skipping splash');
+                        hasSeenSplash = true;
+                        this.markFeatureSplashSeen('poe2');
+                    }
                 }
-            }
 
-            if (!hasSeenSplash) {
-                this.updateSplash('Awaiting feature selection...');
-                // Close loading splash before showing feature splash to avoid z-order issues
-                this.closeSplash();
-                await this.showFeatureSelection();
-                // Mark splash as seen after user saves config
-                this.settingsService.set('seenFeatureSplash', true);
-                // Reopen loading splash for rest of initialization
-                this.showSplash('Loading enabled features...');
+                if (!hasSeenSplash) {
+                    this.updateSplash('Awaiting feature selection...');
+                    this.closeSplash();
+                    await this.showFeatureSelection();
+                    this.markFeatureSplashSeen('poe2');
+                    this.showSplash('Loading enabled features...');
+                }
             }
             
             // Lazy load heavy modules after splash is visible
@@ -368,21 +393,23 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             this.updateSplash('Resolving data path');
             const initialDataPath = this.resolveInitialDataPath();
             
-            // Use FeatureLoader to conditionally load only enabled features
-            this.updateSplash('Loading enabled features');
-            const featureLoader = new FeatureLoader(
-                this.featureService,
-                initialDataPath,
-                (msg) => this.updateSplash(msg)
-            );
-            
-            const { modifierDatabase } = await featureLoader.loadAll();
-            this.modifierDatabase = modifierDatabase as any;
-            
-            // If modifiers loaded, notify renderer when categories are ready
+            if (this.overlayVersion === 'poe1') {
+                this.updateSplash('PoE1 mode: skipping PoE2 data load');
+                this.modifierDatabase = new ModifierDatabase(initialDataPath, false);
+            } else {
+                this.updateSplash('Loading enabled features');
+                const featureLoader = new FeatureLoader(
+                    this.featureService,
+                    initialDataPath,
+                    (msg) => this.updateSplash(msg)
+                );
+
+                const { modifierDatabase } = await featureLoader.loadAll();
+                this.modifierDatabase = modifierDatabase as any;
+            }
+
             if (this.modifierDatabase) {
                 this.updateSplash('Modifiers loaded');
-                // Notify any renderers that categories may now be complete
                 try {
                     const cats = await this.modifierDatabase.getAllCategories();
                     this.overlayWindow?.webContents.send('modifiers-loaded', cats);
@@ -437,10 +464,15 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 onOpenSettings: () => this.openSettings(),
                 onShowOverlay: () => this.showDefaultOverlay({ focus: true }),
                 currentHotkeyLabel: this.getHotkeyKey(),
-                featureVisibility: {
-                    modifiers: this.featureService?.isFeatureEnabled('modifiers') ?? false,
-                    merchantHistory: this.featureService?.isFeatureEnabled('merchant') ?? false
-                }
+                featureVisibility: this.overlayVersion === 'poe2'
+                    ? {
+                        modifiers: this.featureService?.isFeatureEnabled('modifiers') ?? false,
+                        merchantHistory: this.featureService?.isFeatureEnabled('merchant') ?? false
+                    }
+                    : {
+                        modifiers: false,
+                        merchantHistory: false
+                    }
             });
             this.updateSplash('Registering shortcuts');
             this.registerShortcuts();
@@ -599,46 +631,77 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
     }
 
     private resolveInitialDataPath(): string {
+        const version: OverlayVersion = this.overlayVersion === 'poe1' ? 'poe1' : 'poe2';
+
         try {
-            // 1) Environment override
-            const env = process.env.XILEHUD_DATA_DIR;
-            if (env && fs.existsSync(env)) return env;
+            // 1) Environment override (version specific first, then generic)
+            const specificEnvKey = version === 'poe1' ? 'XILEHUD_POE1_DATA_DIR' : 'XILEHUD_POE2_DATA_DIR';
+            const specificEnv = process.env[specificEnvKey];
+            if (specificEnv && fs.existsSync(specificEnv)) return specificEnv;
+            const genericEnv = process.env.XILEHUD_DATA_DIR;
+            if (genericEnv && fs.existsSync(genericEnv)) return genericEnv;
         } catch {}
+
         try {
-            // 2) Config file under userData
+            // 2) Config file under userData (store per-version override)
             const cfgDir = this.getUserConfigDir();
             const cfgPath = path.join(cfgDir, 'overlay-config.json');
             if (fs.existsSync(cfgPath)) {
                 const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
-                const p = cfg?.dataDir;
-                if (p && typeof p === 'string' && fs.existsSync(p)) return p;
-            }
-        } catch {}
-        try {
-            // 3) Repo relative default (dev)
-            const internalDev = path.join(__dirname, '../../data/poe2/Rise of the Abyssal');
-            if (fs.existsSync(internalDev)) return internalDev;
-        } catch {}
-        try {
-            // 4) Packaged resources (electron-builder extraFiles)
-            // For packaged builds, data is placed under resources/data/poe2 by electron-builder configuration
-            const candidates = [
-                path.join(process.resourcesPath || '', 'data', 'poe2')
-            ];
-            
-            for (const packaged of candidates) {
-                if (fs.existsSync(packaged)) {
-                    // If there's only one league folder, pick it; else use root
-                    const entries = fs.readdirSync(packaged).map(f => path.join(packaged, f)).filter(p => fs.statSync(p).isDirectory());
-                    const abyssal = entries.find(p => /Rise of the Abyssal/i.test(p));
-                    if (abyssal) return abyssal;
-                    if (entries.length > 0) return entries[0];
-                    return packaged; // fall back to root even if empty
+                const keyed = typeof cfg === 'object' && cfg ? cfg : {};
+                const versionKey = version === 'poe1' ? 'poe1DataDir' : 'poe2DataDir';
+                const maybeSpecific = keyed?.[versionKey];
+                if (typeof maybeSpecific === 'string' && fs.existsSync(maybeSpecific)) {
+                    return maybeSpecific;
+                }
+                const legacyShared = keyed?.dataDir;
+                if (typeof legacyShared === 'string' && fs.existsSync(legacyShared)) {
+                    return legacyShared;
                 }
             }
         } catch {}
-        // 4) Fallback to userData/poe2 (user can place JSONs there)
-        const fallback = path.join(this.getUserConfigDir(), 'poe2');
+
+        try {
+            // 3) Repo relative default (dev)
+            const devRoot = path.join(__dirname, '../../data', version);
+            if (fs.existsSync(devRoot)) {
+                const entries = fs.readdirSync(devRoot)
+                    .map((entry) => path.join(devRoot, entry))
+                    .filter((fullPath) => {
+                        try { return fs.statSync(fullPath).isDirectory(); } catch { return false; }
+                    });
+                if (entries.length > 0) {
+                    if (version === 'poe2') {
+                        const abyssal = entries.find((candidate) => /Rise of the Abyssal/i.test(candidate));
+                        if (abyssal) return abyssal;
+                    } else if (version === 'poe1') {
+                        const defaultPoe1 = entries.find((candidate) => /Secret/i.test(candidate));
+                        if (defaultPoe1) return defaultPoe1;
+                    }
+                    return entries[0];
+                }
+                return devRoot;
+            }
+        } catch {}
+
+        try {
+            // 4) Packaged resources (electron-builder extraFiles)
+            const base = path.join(process.resourcesPath || '', 'data', version);
+            if (fs.existsSync(base)) {
+                const entries = fs.readdirSync(base)
+                    .map((entry) => path.join(base, entry))
+                    .filter((fullPath) => {
+                        try { return fs.statSync(fullPath).isDirectory(); } catch { return false; }
+                    });
+                if (entries.length > 0) {
+                    return entries[0];
+                }
+                return base;
+            }
+        } catch {}
+
+        // 5) Fallback to userData/<version>
+        const fallback = path.join(this.getUserConfigDir(), version);
         try { if (!fs.existsSync(fallback)) fs.mkdirSync(fallback, { recursive: true }); } catch {}
         return fallback;
     }
@@ -650,10 +713,54 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
         return this.dataDirCache || this.resolveInitialDataPath();
     }
 
+    private migrateLegacyFeatureSplashFlag(): void {
+        if (!this.settingsService) return;
+        const legacySeen = this.settingsService.get('seenFeatureSplash') === true;
+        if (!legacySeen) return;
+        const perVersion = this.settingsService.get('featureSplashSeen');
+        if (perVersion && typeof perVersion === 'object' && (perVersion as Record<string, unknown>).poe2 === true) {
+            return;
+        }
+        const next: Partial<Record<OverlayVersion, boolean>> = { ...(perVersion && typeof perVersion === 'object' ? perVersion : {}) };
+        next.poe2 = true;
+        this.settingsService.set('featureSplashSeen', next);
+    }
+
+    private hasSeenFeatureSplash(version: OverlayVersion): boolean {
+        if (!this.settingsService) return false;
+        const perVersion = this.settingsService.get('featureSplashSeen');
+        if (perVersion && typeof perVersion === 'object') {
+            const value = (perVersion as Record<string, unknown>)[version];
+            if (value === true) return true;
+            if (value === false) return false;
+        }
+        if (version === 'poe2') {
+            return this.settingsService.get('seenFeatureSplash') === true;
+        }
+        return false;
+    }
+
+    private markFeatureSplashSeen(version: OverlayVersion): void {
+        if (!this.settingsService) return;
+        const perVersion = this.settingsService.get('featureSplashSeen');
+        const next: Partial<Record<OverlayVersion, boolean>> = { ...(perVersion && typeof perVersion === 'object' ? perVersion : {}) };
+        if (next[version] === true) {
+            return;
+        }
+        next[version] = true;
+        this.settingsService.set('featureSplashSeen', next);
+        if (version === 'poe2' && this.settingsService.get('seenFeatureSplash') !== true) {
+            this.settingsService.set('seenFeatureSplash', true);
+        }
+    }
+
     /**
      * Show feature selection splash (first launch or manual config)
      */
     private async showFeatureSelection(): Promise<void> {
+        if (this.overlayVersion !== 'poe2') {
+            return;
+        }
         try {
             const selectedConfig = await showFeatureSplash();
             if (selectedConfig) {
@@ -681,47 +788,100 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
 
             this.featureService!.saveConfig(selectedConfig);
 
-            const overlayRef = (this.overlayWindow && !this.overlayWindow.isDestroyed()) ? this.overlayWindow : null;
-            let restoreOverlayZ: (() => void) | undefined;
-
-            if (overlayRef) {
-                const wasAlwaysOnTop = overlayRef.isAlwaysOnTop();
-                try {
-                    overlayRef.setAlwaysOnTop(false);
-                } catch (err) {
-                    console.warn('[overlay] Failed to release always-on-top for restart dialog:', err);
-                }
-                restoreOverlayZ = () => {
-                    try {
-                        if (!overlayRef || overlayRef.isDestroyed()) return;
-                        if (this.pinned || wasAlwaysOnTop) {
-                            overlayRef.setAlwaysOnTop(true, 'screen-saver');
-                            if (typeof (overlayRef as any).moveTop === 'function') {
-                                (overlayRef as any).moveTop();
-                            }
-                        } else {
-                            overlayRef.setAlwaysOnTop(false);
-                        }
-                    } catch (restoreErr) {
-                        console.warn('[overlay] Failed to restore always-on-top after restart dialog:', restoreErr);
-                    }
-                };
-            }
-
-            let shouldRestart = false;
-            try {
-                shouldRestart = await showRestartDialog(overlayRef);
-            } finally {
-                restoreOverlayZ?.();
-            }
-
-            if (shouldRestart) {
-                app.relaunch();
-                app.quit();
-            }
+            await this.promptForRestart();
         } catch (err) {
             console.error('[openFeatureConfiguration] Error:', err);
         }
+    }
+
+    private async promptForRestart(options?: RestartDialogOptions): Promise<void> {
+        const overlayRef = (this.overlayWindow && !this.overlayWindow.isDestroyed()) ? this.overlayWindow : null;
+        let restoreOverlayZ: (() => void) | undefined;
+
+        if (overlayRef) {
+            const wasAlwaysOnTop = overlayRef.isAlwaysOnTop();
+            try {
+                overlayRef.setAlwaysOnTop(false);
+            } catch (err) {
+                console.warn('[overlay] Failed to release always-on-top for restart dialog:', err);
+            }
+            restoreOverlayZ = () => {
+                try {
+                    if (!overlayRef || overlayRef.isDestroyed()) return;
+                    if (this.pinned || wasAlwaysOnTop) {
+                        overlayRef.setAlwaysOnTop(true, 'screen-saver');
+                        if (typeof (overlayRef as any).moveTop === 'function') {
+                            (overlayRef as any).moveTop();
+                        }
+                    } else {
+                        overlayRef.setAlwaysOnTop(false);
+                    }
+                } catch (restoreErr) {
+                    console.warn('[overlay] Failed to restore always-on-top after restart dialog:', restoreErr);
+                }
+            };
+        }
+
+        const dialogOptions: RestartDialogOptions = {
+            title: options?.title,
+            message: options?.message ?? 'Feature settings updated',
+            detail: options?.detail ?? 'The overlay will restart to apply your changes.\n\nYour game will NOT be affected.'
+        };
+
+        let shouldRestart = false;
+        try {
+            shouldRestart = await showRestartDialog(overlayRef, dialogOptions);
+        } finally {
+            restoreOverlayZ?.();
+        }
+
+        if (shouldRestart) {
+            app.relaunch();
+            app.quit();
+        }
+    }
+
+    private buildDisabledFeatureConfig(): FeatureConfig {
+        return {
+            modifiers: false,
+            crafting: {
+                enabled: false,
+                subcategories: {
+                    liquidEmotions: false,
+                    annoints: false,
+                    essences: false,
+                    omens: false,
+                    currency: false,
+                    catalysts: false,
+                    socketables: false
+                }
+            },
+            character: {
+                enabled: false,
+                subcategories: {
+                    questPassives: false,
+                    keystones: false,
+                    ascendancyPassives: false,
+                    atlasNodes: false,
+                    gems: false,
+                    glossar: false
+                }
+            },
+            items: {
+                enabled: false,
+                subcategories: {
+                    uniques: false,
+                    bases: false
+                }
+            },
+            tools: {
+                enabled: false,
+                subcategories: {
+                    regex: false
+                }
+            },
+            merchant: false
+        };
     }
 
     /**
@@ -738,9 +898,15 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 onHotkeySave: (newKey: string) => this.saveHotkey(newKey),
                 onLeagueSave: (league: string) => this.handleLeagueChange(league),
                 onFeatureConfigOpen: () => this.openFeatureConfiguration(),
+                onRequestOverlayRestart: (options?: { message?: string; detail?: string }) => {
+                    void this.promptForRestart({
+                        message: options?.message ?? 'Overlay version changed',
+                        detail: options?.detail ?? 'The overlay can reload into the selected game mode once it restarts.'
+                    });
+                },
                 onShowOverlay: () => this.toggleOverlayWithAllCategory(),
                 overlayWindow: this.overlayWindow,
-                getDefaultClipboardDelay: () => this.getAdaptiveClipboardDelay()
+                overlayVersion: this.overlayVersion
             });
         } catch (err) {
             console.error('[openSettings] Error:', err);
@@ -2183,10 +2349,15 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 onOpenSettings: () => this.openSettings(),
                 onShowOverlay: () => this.showDefaultOverlay({ focus: true }),
                 currentHotkeyLabel: this.getHotkeyKey(),
-                featureVisibility: {
-                    modifiers: this.featureService?.isFeatureEnabled('modifiers') ?? false,
-                    merchantHistory: this.featureService?.isFeatureEnabled('merchant') ?? false
-                }
+                featureVisibility: this.overlayVersion === 'poe2'
+                    ? {
+                        modifiers: this.featureService?.isFeatureEnabled('modifiers') ?? false,
+                        merchantHistory: this.featureService?.isFeatureEnabled('merchant') ?? false
+                    }
+                    : {
+                        modifiers: false,
+                        merchantHistory: false
+                    }
             });
         }
     }
@@ -2331,16 +2502,20 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         registerDataIpc({
             modifierDatabase: this.modifierDatabase,
             getDataDir: () => this.getDataDir(),
-            getUserConfigDir: () => this.getUserConfigDir()
+            getUserConfigDir: () => this.getUserConfigDir(),
+            getOverlayVersion: () => this.overlayVersion
         });
 
         // Feature configuration IPC handlers
         ipcMain.handle('get-enabled-features', () => {
             try {
-                return this.featureService?.getConfig() || null;
+                if (this.overlayVersion !== 'poe2') {
+                    return this.buildDisabledFeatureConfig();
+                }
+                return this.featureService?.getConfig() || this.buildDisabledFeatureConfig();
             } catch (e) {
                 console.error('[IPC:get-enabled-features] Error:', e);
-                return null;
+                return this.buildDisabledFeatureConfig();
             }
         });
 
@@ -2458,6 +2633,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
             // Send initial pinned state to renderer
             if (this.overlayWindow && !this.overlayWindow.isDestroyed()) {
                 this.overlayWindow.webContents.send('pinned-changed', this.pinned);
+                this.overlayWindow.webContents.send('overlay-version-mode', this.overlayVersion);
             }
             
             if (this.pendingItemData) {

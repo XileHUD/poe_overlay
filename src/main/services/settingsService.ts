@@ -1,10 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import type { FeatureConfig } from '../features/featureTypes.js';
+import type { OverlayVersion } from '../../types/overlayVersion.js';
 
 export interface UserSettings {
   enabledFeatures?: FeatureConfig;
   seenFeatureSplash?: boolean; // Track if user has seen feature selection splash at least once
+  featureSplashSeen?: Partial<Record<OverlayVersion, boolean>>; // Per-overlay-version splash tracking
+  overlayVersion?: OverlayVersion;
   floatingButton?: {
     enabled: boolean;
     position?: { x: number; y: number };

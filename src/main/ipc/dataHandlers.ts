@@ -2,6 +2,7 @@ import { ipcMain, shell } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import { ModifierDatabase } from '../modifier-database';
+import type { OverlayVersion } from '../../types/overlayVersion.js';
 
 // Centralized registration for data-related IPC handlers (JSON catalogs, modifiers, etc.)
 // OverlayApp will provide getDataDir function and modifierDatabase instance.
@@ -9,6 +10,7 @@ export interface DataIpcDeps {
   getDataDir(): string;
   modifierDatabase: ModifierDatabase;
   getUserConfigDir(): string; // for persistence of data dir selection
+  getOverlayVersion(): OverlayVersion;
 }
 
 export function registerDataIpc(deps: DataIpcDeps) {
@@ -47,7 +49,23 @@ export function registerDataIpc(deps: DataIpcDeps) {
       try {
         const cfgDir = deps.getUserConfigDir();
         const cfgPath = path.join(cfgDir, 'overlay-config.json');
-        fs.writeFileSync(cfgPath, JSON.stringify({ dataDir: dirPath }, null, 2));
+        let existing: any = {};
+        try {
+          if (fs.existsSync(cfgPath)) {
+            existing = JSON.parse(fs.readFileSync(cfgPath, 'utf8')) || {};
+          }
+        } catch {
+          existing = {};
+        }
+
+        const overlayVersion = deps.getOverlayVersion();
+        const versionKey = overlayVersion === 'poe1' ? 'poe1DataDir' : 'poe2DataDir';
+        const nextConfig = {
+          ...existing,
+          [versionKey]: dirPath,
+          dataDir: dirPath // legacy compatibility
+        };
+        fs.writeFileSync(cfgPath, JSON.stringify(nextConfig, null, 2));
       } catch {}
       return { ok: true, dataDir: dirPath };
     }
