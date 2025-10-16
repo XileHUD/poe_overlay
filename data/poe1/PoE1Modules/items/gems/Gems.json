@@ -1,0 +1,5464 @@
+{
+  "slug": "Gems",
+  "gems": {
+    "SkillGemsGem": [
+      {
+        "name": "Cleave",
+        "slug": "Cleave",
+        "tags": "Attack, AoE, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/cleave.webp"
+      },
+      {
+        "name": "Cleave of Rage",
+        "slug": "Cleave_of_Rage",
+        "tags": "Attack, AoE, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/cleave_of_rage.webp"
+      },
+      {
+        "name": "Glacial Hammer",
+        "slug": "Glacial_Hammer",
+        "tags": "Attack, Melee, Strike, Cold",
+        "color": "str",
+        "imageLocal": "skillgemsgem/glacial_hammer.webp"
+      },
+      {
+        "name": "Glacial Hammer of Shattering",
+        "slug": "Glacial_Hammer_of_Shattering",
+        "tags": "Critical, Attack, Melee, Strike, Cold",
+        "color": "str",
+        "imageLocal": "skillgemsgem/glacial_hammer_of_shattering.webp"
+      },
+      {
+        "name": "Ground Slam",
+        "slug": "Ground_Slam",
+        "tags": "Attack, AoE, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/ground_slam.webp"
+      },
+      {
+        "name": "Ground Slam of Earthshaking",
+        "slug": "Ground_Slam_of_Earthshaking",
+        "tags": "Attack, AoE, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/ground_slam_of_earthshaking.webp"
+      },
+      {
+        "name": "Heavy Strike",
+        "slug": "Heavy_Strike",
+        "tags": "Attack, Melee, Strike",
+        "color": "str",
+        "imageLocal": "skillgemsgem/heavy_strike.webp"
+      },
+      {
+        "name": "Heavy Strike of Trarthus",
+        "slug": "Heavy_Strike_of_Trarthus",
+        "tags": "Attack, Melee, Strike",
+        "color": "str",
+        "imageLocal": "skillgemsgem/heavy_strike_of_trarthus.webp"
+      },
+      {
+        "name": "Molten Strike",
+        "slug": "Molten_Strike",
+        "tags": "Attack, Projectile, AoE, Melee, Strike, Fire",
+        "color": "str",
+        "imageLocal": "skillgemsgem/molten_strike.webp"
+      },
+      {
+        "name": "Molten Strike of the Zenith",
+        "slug": "Molten_Strike_of_the_Zenith",
+        "tags": "Attack, Projectile, AoE, Melee, Strike, Fire",
+        "color": "str",
+        "imageLocal": "skillgemsgem/molten_strike_of_the_zenith.webp"
+      },
+      {
+        "name": "Perforate",
+        "slug": "Perforate",
+        "tags": "Attack, AoE, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/perforate.webp"
+      },
+      {
+        "name": "Perforate of Duality",
+        "slug": "Perforate_of_Duality",
+        "tags": "Attack, AoE, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/perforate_of_duality.webp"
+      },
+      {
+        "name": "Perforate of Bloodshed",
+        "slug": "Perforate_of_Bloodshed",
+        "tags": "Physical, Attack, AoE, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/perforate_of_bloodshed.webp"
+      },
+      {
+        "name": "Shield Crush",
+        "slug": "Shield_Crush",
+        "tags": "Attack, AoE, Physical, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/shield_crush.webp"
+      },
+      {
+        "name": "Shield Crush of the Chieftain",
+        "slug": "Shield_Crush_of_the_Chieftain",
+        "tags": "Attack, AoE, Fire, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/shield_crush_of_the_chieftain.webp"
+      },
+      {
+        "name": "Smite",
+        "slug": "Smite",
+        "tags": "Lightning, Attack, AoE, Duration, Melee, Strike, Aura",
+        "color": "str",
+        "imageLocal": "skillgemsgem/smite.webp"
+      },
+      {
+        "name": "Smite of Divine Judgement",
+        "slug": "Smite_of_Divine_Judgement",
+        "tags": "Lightning, Attack, AoE, Melee, Strike",
+        "color": "str",
+        "imageLocal": "skillgemsgem/smite_of_divine_judgement.webp"
+      },
+      {
+        "name": "Vaal Cleave",
+        "slug": "Vaal_Cleave",
+        "tags": "Attack, AoE, Vaal, Duration, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vaal_cleave.webp"
+      },
+      {
+        "name": "Vaal Glacial Hammer",
+        "slug": "Vaal_Glacial_Hammer",
+        "tags": "Attack, Melee, Strike, Duration, AoE, Vaal, Cold",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vaal_glacial_hammer.webp"
+      },
+      {
+        "name": "Vaal Ground Slam",
+        "slug": "Vaal_Ground_Slam",
+        "tags": "Attack, AoE, Vaal, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vaal_ground_slam.webp"
+      },
+      {
+        "name": "Vaal Molten Strike",
+        "slug": "Vaal_Molten_Strike",
+        "tags": "Attack, Projectile, AoE, Melee, Strike, Fire, Chaining, Vaal",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vaal_molten_strike.webp"
+      },
+      {
+        "name": "Vaal Smite",
+        "slug": "Vaal_Smite",
+        "tags": "Lightning, Attack, AoE, Duration, Melee, Strike, Aura, Vaal",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vaal_smite.webp"
+      },
+      {
+        "name": "Ancestral Protector",
+        "slug": "Ancestral_Protector",
+        "tags": "Attack, Totem, Melee, Strike",
+        "color": "str",
+        "imageLocal": "skillgemsgem/ancestral_protector.webp"
+      },
+      {
+        "name": "Blood and Sand",
+        "slug": "Blood_and_Sand",
+        "tags": "Spell, Stance",
+        "color": "str",
+        "imageLocal": "skillgemsgem/blood_and_sand.webp"
+      },
+      {
+        "name": "Crushing Fist",
+        "slug": "Crushing_Fist",
+        "tags": "Attack, Slam, AoE, Retaliation, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/crushing_fist.webp"
+      },
+      {
+        "name": "Decoy Totem",
+        "slug": "Decoy_Totem",
+        "tags": "Totem, Spell, AoE",
+        "color": "str",
+        "imageLocal": "skillgemsgem/decoy_totem.webp"
+      },
+      {
+        "name": "Devouring Totem",
+        "slug": "Devouring_Totem",
+        "tags": "Totem, Spell",
+        "color": "str",
+        "imageLocal": "skillgemsgem/devouring_totem.webp"
+      },
+      {
+        "name": "Holy Flame Totem",
+        "slug": "Holy_Flame_Totem",
+        "tags": "Totem, Spell, Projectile, Fire, Channelling, Physical",
+        "color": "str",
+        "imageLocal": "skillgemsgem/holy_flame_totem.webp"
+      },
+      {
+        "name": "Holy Flame Totem of Ire",
+        "slug": "Holy_Flame_Totem_of_Ire",
+        "tags": "Totem, Spell, Projectile, Fire, Channelling, Physical",
+        "color": "str",
+        "imageLocal": "skillgemsgem/holy_flame_totem_of_ire.webp"
+      },
+      {
+        "name": "Steelskin",
+        "slug": "Steelskin",
+        "tags": "Spell, Duration, Guard",
+        "color": "str",
+        "imageLocal": "skillgemsgem/steelskin.webp"
+      },
+      {
+        "name": "Rejuvenation Totem",
+        "slug": "Rejuvenation_Totem",
+        "tags": "Totem, Aura, Spell, AoE",
+        "color": "str",
+        "imageLocal": "skillgemsgem/rejuvenation_totem.webp"
+      },
+      {
+        "name": "Shield Charge",
+        "slug": "Shield_Charge",
+        "tags": "Attack, AoE, Movement, Travel, Physical, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/shield_charge.webp"
+      },
+      {
+        "name": "Vaal Rejuvenation Totem",
+        "slug": "Vaal_Rejuvenation_Totem",
+        "tags": "Totem, Aura, Spell, AoE, Vaal",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vaal_rejuvenation_totem.webp"
+      },
+      {
+        "name": "Vigilant Strike",
+        "slug": "Vigilant_Strike",
+        "tags": "Attack, Melee, Strike",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vigilant_strike.webp"
+      },
+      {
+        "name": "War Banner",
+        "slug": "War_Banner",
+        "tags": "AoE, Spell, Duration, Aura, Physical",
+        "color": "str",
+        "imageLocal": "skillgemsgem/war_banner.webp"
+      },
+      {
+        "name": "Enduring Cry",
+        "slug": "Enduring_Cry",
+        "tags": "Warcry, AoE, Duration",
+        "color": "str",
+        "imageLocal": "skillgemsgem/enduring_cry.webp"
+      },
+      {
+        "name": "Intimidating Cry",
+        "slug": "Intimidating_Cry",
+        "tags": "Warcry, AoE, Duration, Physical",
+        "color": "str",
+        "imageLocal": "skillgemsgem/intimidating_cry.webp"
+      },
+      {
+        "name": "Leap Slam",
+        "slug": "Leap_Slam",
+        "tags": "Attack, AoE, Movement, Travel, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/leap_slam.webp"
+      },
+      {
+        "name": "Leap Slam of Groundbreaking",
+        "slug": "Leap_Slam_of_Groundbreaking",
+        "tags": "Attack, AoE, Movement, Travel, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/leap_slam_of_groundbreaking.webp"
+      },
+      {
+        "name": "Vitality",
+        "slug": "Vitality",
+        "tags": "Aura, Spell, AoE",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vitality.webp"
+      },
+      {
+        "name": "Absolution",
+        "slug": "Absolution",
+        "tags": "Spell, Minion, Duration, Physical, Lightning, AoE",
+        "color": "str",
+        "imageLocal": "skillgemsgem/absolution.webp"
+      },
+      {
+        "name": "Absolution of Inspiring",
+        "slug": "Absolution_of_Inspiring",
+        "tags": "Spell, Minion, Duration, Physical, Lightning, AoE",
+        "color": "str",
+        "imageLocal": "skillgemsgem/absolution_of_inspiring.webp"
+      },
+      {
+        "name": "Chain Hook",
+        "slug": "Chain_Hook",
+        "tags": "Attack, AoE, Movement, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/chain_hook.webp"
+      },
+      {
+        "name": "Chain Hook of Trarthus",
+        "slug": "Chain_Hook_of_Trarthus",
+        "tags": "Attack, AoE, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/chain_hook_of_trarthus.webp"
+      },
+      {
+        "name": "Earthshatter",
+        "slug": "Earthshatter",
+        "tags": "Attack, AoE, Slam, Duration, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/earthshatter.webp"
+      },
+      {
+        "name": "Earthshatter of Fragility",
+        "slug": "Earthshatter_of_Fragility",
+        "tags": "Attack, AoE, Slam, Duration, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/earthshatter_of_fragility.webp"
+      },
+      {
+        "name": "Earthshatter of Prominence",
+        "slug": "Earthshatter_of_Prominence",
+        "tags": "Attack, AoE, Slam, Duration, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/earthshatter_of_prominence.webp"
+      },
+      {
+        "name": "Exsanguinate",
+        "slug": "Exsanguinate",
+        "tags": "Spell, Chaining, Physical, Duration",
+        "color": "str",
+        "imageLocal": "skillgemsgem/exsanguinate.webp"
+      },
+      {
+        "name": "Exsanguinate of Transmission",
+        "slug": "Exsanguinate_of_Transmission",
+        "tags": "Spell, Chaining, Physical, Duration",
+        "color": "str",
+        "imageLocal": "skillgemsgem/exsanguinate_of_transmission.webp"
+      },
+      {
+        "name": "Infernal Blow",
+        "slug": "Infernal_Blow",
+        "tags": "Attack, AoE, Melee, Strike, Fire, Duration",
+        "color": "str",
+        "imageLocal": "skillgemsgem/infernal_blow.webp"
+      },
+      {
+        "name": "Infernal Blow of Immolation",
+        "slug": "Infernal_Blow_of_Immolation",
+        "tags": "Attack, AoE, Melee, Strike, Fire, Duration",
+        "color": "str",
+        "imageLocal": "skillgemsgem/infernal_blow_of_immolation.webp"
+      },
+      {
+        "name": "Searing Bond",
+        "slug": "Searing_Bond",
+        "tags": "Spell, Totem, Fire",
+        "color": "str",
+        "imageLocal": "skillgemsgem/searing_bond.webp"
+      },
+      {
+        "name": "Static Strike",
+        "slug": "Static_Strike",
+        "tags": "Attack, Melee, Strike, AoE, Duration, Lightning, Chaining",
+        "color": "str",
+        "imageLocal": "skillgemsgem/static_strike.webp"
+      },
+      {
+        "name": "Sunder",
+        "slug": "Sunder",
+        "tags": "Attack, AoE, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/sunder.webp"
+      },
+      {
+        "name": "Sunder of Earthbreaking",
+        "slug": "Sunder_of_Earthbreaking",
+        "tags": "Attack, AoE, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/sunder_of_earthbreaking.webp"
+      },
+      {
+        "name": "Sunder of Trarthus",
+        "slug": "Sunder_of_Trarthus",
+        "tags": "Attack, AoE, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/sunder_of_trarthus.webp"
+      },
+      {
+        "name": "Sweep",
+        "slug": "Sweep",
+        "tags": "Attack, AoE, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/sweep.webp"
+      },
+      {
+        "name": "Vaal Absolution",
+        "slug": "Vaal_Absolution",
+        "tags": "Spell, Minion, Duration, Physical, Lightning, Vaal, AoE",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vaal_absolution.webp"
+      },
+      {
+        "name": "Vaal Volcanic Fissure",
+        "slug": "Vaal_Volcanic_Fissure",
+        "tags": "Melee, Attack, Projectile, AoE, Slam, Fire, Vaal",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vaal_volcanic_fissure.webp"
+      },
+      {
+        "name": "Volcanic Fissure",
+        "slug": "Volcanic_Fissure",
+        "tags": "Melee, Attack, Projectile, AoE, Slam, Fire",
+        "color": "str",
+        "imageLocal": "skillgemsgem/volcanic_fissure.webp"
+      },
+      {
+        "name": "Volcanic Fissure of Snaking",
+        "slug": "Volcanic_Fissure_of_Snaking",
+        "tags": "Melee, Attack, AoE, Slam, Fire",
+        "color": "str",
+        "imageLocal": "skillgemsgem/volcanic_fissure_of_snaking.webp"
+      },
+      {
+        "name": "Ancestral Cry",
+        "slug": "Ancestral_Cry",
+        "tags": "Warcry, AoE, Duration",
+        "color": "str",
+        "imageLocal": "skillgemsgem/ancestral_cry.webp"
+      },
+      {
+        "name": "Corrupting Fever",
+        "slug": "Corrupting_Fever",
+        "tags": "Spell, Duration, Physical",
+        "color": "str",
+        "imageLocal": "skillgemsgem/corrupting_fever.webp"
+      },
+      {
+        "name": "Defiance Banner",
+        "slug": "Defiance_Banner",
+        "tags": "AoE, Spell, Duration, Aura",
+        "color": "str",
+        "imageLocal": "skillgemsgem/defiance_banner.webp"
+      },
+      {
+        "name": "Eviscerate",
+        "slug": "Eviscerate",
+        "tags": "Attack, AoE, Retaliation, Physical, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/eviscerate.webp"
+      },
+      {
+        "name": "Flesh and Stone",
+        "slug": "Flesh_and_Stone",
+        "tags": "Spell, Aura, AoE, Stance, Physical",
+        "color": "str",
+        "imageLocal": "skillgemsgem/flesh_and_stone.webp"
+      },
+      {
+        "name": "Herald of Ash",
+        "slug": "Herald_of_Ash",
+        "tags": "Spell, AoE, Fire, Herald, Duration",
+        "color": "str",
+        "imageLocal": "skillgemsgem/herald_of_ash.webp"
+      },
+      {
+        "name": "Herald of Purity",
+        "slug": "Herald_of_Purity",
+        "tags": "Spell, Herald, Minion, Duration, Physical",
+        "color": "str",
+        "imageLocal": "skillgemsgem/herald_of_purity.webp"
+      },
+      {
+        "name": "Molten Shell",
+        "slug": "Molten_Shell",
+        "tags": "Spell, AoE, Duration, Fire, Physical, Guard",
+        "color": "str",
+        "imageLocal": "skillgemsgem/molten_shell.webp"
+      },
+      {
+        "name": "Seismic Cry",
+        "slug": "Seismic_Cry",
+        "tags": "Warcry, AoE, Duration",
+        "color": "str",
+        "imageLocal": "skillgemsgem/seismic_cry.webp"
+      },
+      {
+        "name": "Swordstorm",
+        "slug": "Swordstorm",
+        "tags": "Attack, AoE, Retaliation, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/swordstorm.webp"
+      },
+      {
+        "name": "Vaal Molten Shell",
+        "slug": "Vaal_Molten_Shell",
+        "tags": "Spell, AoE, Duration, Fire, Physical, Vaal, Guard",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vaal_molten_shell.webp"
+      },
+      {
+        "name": "Warlord's Mark",
+        "slug": "Warlords_Mark",
+        "tags": "Spell, Curse, Mark",
+        "color": "str",
+        "imageLocal": "skillgemsgem/warlords_mark.webp"
+      },
+      {
+        "name": "Anger",
+        "slug": "Anger",
+        "tags": "Aura, Spell, AoE, Fire",
+        "color": "str",
+        "imageLocal": "skillgemsgem/anger.webp"
+      },
+      {
+        "name": "Autoexertion",
+        "slug": "Autoexertion",
+        "tags": "Warcry, Trigger, Spell",
+        "color": "str",
+        "imageLocal": "skillgemsgem/autoexertion.webp"
+      },
+      {
+        "name": "Battlemage's Cry",
+        "slug": "Battlemages_Cry",
+        "tags": "Warcry, Critical, Trigger, AoE, Duration",
+        "color": "str",
+        "imageLocal": "skillgemsgem/battlemages_cry.webp"
+      },
+      {
+        "name": "Determination",
+        "slug": "Determination",
+        "tags": "Aura, Spell, AoE, Physical",
+        "color": "str",
+        "imageLocal": "skillgemsgem/determination.webp"
+      },
+      {
+        "name": "Dread Banner",
+        "slug": "Dread_Banner",
+        "tags": "AoE, Spell, Duration, Aura",
+        "color": "str",
+        "imageLocal": "skillgemsgem/dread_banner.webp"
+      },
+      {
+        "name": "General's Cry",
+        "slug": "Generals_Cry",
+        "tags": "Warcry, AoE, Duration",
+        "color": "str",
+        "imageLocal": "skillgemsgem/generals_cry.webp"
+      },
+      {
+        "name": "Infernal Cry",
+        "slug": "Infernal_Cry",
+        "tags": "Warcry, AoE, Duration, Fire, Attack, Trigger, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/infernal_cry.webp"
+      },
+      {
+        "name": "Petrified Blood",
+        "slug": "Petrified_Blood",
+        "tags": "Spell",
+        "color": "str",
+        "imageLocal": "skillgemsgem/petrified_blood.webp"
+      },
+      {
+        "name": "Pride",
+        "slug": "Pride",
+        "tags": "Spell, AoE, Aura, Physical",
+        "color": "str",
+        "imageLocal": "skillgemsgem/pride.webp"
+      },
+      {
+        "name": "Punishment",
+        "slug": "Punishment",
+        "tags": "Spell, AoE, Duration, Curse, Hex",
+        "color": "str",
+        "imageLocal": "skillgemsgem/punishment.webp"
+      },
+      {
+        "name": "Purity of Fire",
+        "slug": "Purity_of_Fire",
+        "tags": "Aura, Spell, AoE, Fire",
+        "color": "str",
+        "imageLocal": "skillgemsgem/purity_of_fire.webp"
+      },
+      {
+        "name": "Rallying Cry",
+        "slug": "Rallying_Cry",
+        "tags": "Warcry, AoE, Duration",
+        "color": "str",
+        "imageLocal": "skillgemsgem/rallying_cry.webp"
+      },
+      {
+        "name": "Vaal Impurity of Fire",
+        "slug": "Vaal_Impurity_of_Fire",
+        "tags": "Aura, Spell, AoE, Duration, Vaal, Fire",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vaal_impurity_of_fire.webp"
+      },
+      {
+        "name": "Vengeful Cry",
+        "slug": "Vengeful_Cry",
+        "tags": "Warcry, AoE, Duration, Retaliation",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vengeful_cry.webp"
+      },
+      {
+        "name": "Vulnerability",
+        "slug": "Vulnerability",
+        "tags": "Spell, AoE, Duration, Curse, Physical, Hex",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vulnerability.webp"
+      },
+      {
+        "name": "Ancestral Warchief",
+        "slug": "Ancestral_Warchief",
+        "tags": "Attack, Totem, AoE, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/ancestral_warchief.webp"
+      },
+      {
+        "name": "Animate Guardian",
+        "slug": "Animate_Guardian",
+        "tags": "Spell, Minion",
+        "color": "str",
+        "imageLocal": "skillgemsgem/animate_guardian.webp"
+      },
+      {
+        "name": "Animate Guardian of Smiting",
+        "slug": "Animate_Guardian_of_Smiting",
+        "tags": "Spell, Minion, Lightning",
+        "color": "str",
+        "imageLocal": "skillgemsgem/animate_guardian_of_smiting.webp"
+      },
+      {
+        "name": "Bladestorm",
+        "slug": "Bladestorm",
+        "tags": "Attack, AoE, Duration, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/bladestorm.webp"
+      },
+      {
+        "name": "Bladestorm of Uncertainty",
+        "slug": "Bladestorm_of_Uncertainty",
+        "tags": "Attack, AoE, Duration, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/bladestorm_of_uncertainty.webp"
+      },
+      {
+        "name": "Boneshatter",
+        "slug": "Boneshatter",
+        "tags": "Attack, Melee, Strike, AoE, Duration, Physical",
+        "color": "str",
+        "imageLocal": "skillgemsgem/boneshatter.webp"
+      },
+      {
+        "name": "Boneshatter of Complex Trauma",
+        "slug": "Boneshatter_of_Complex_Trauma",
+        "tags": "Attack, Melee, Strike, AoE, Duration, Physical",
+        "color": "str",
+        "imageLocal": "skillgemsgem/boneshatter_of_complex_trauma.webp"
+      },
+      {
+        "name": "Boneshatter of Carnage",
+        "slug": "Boneshatter_of_Carnage",
+        "tags": "Attack, Melee, Strike, AoE",
+        "color": "str",
+        "imageLocal": "skillgemsgem/boneshatter_of_carnage.webp"
+      },
+      {
+        "name": "Consecrated Path",
+        "slug": "Consecrated_Path",
+        "tags": "Fire, Attack, AoE, Movement, Duration, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/consecrated_path.webp"
+      },
+      {
+        "name": "Consecrated Path of Endurance",
+        "slug": "Consecrated_Path_of_Endurance",
+        "tags": "Fire, Attack, AoE, Movement, Duration, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/consecrated_path_of_endurance.webp"
+      },
+      {
+        "name": "Dominating Blow",
+        "slug": "Dominating_Blow",
+        "tags": "Attack, Minion, Duration, Melee, Strike",
+        "color": "str",
+        "imageLocal": "skillgemsgem/dominating_blow.webp"
+      },
+      {
+        "name": "Dominating Blow of Inspiring",
+        "slug": "Dominating_Blow_of_Inspiring",
+        "tags": "Attack, Minion, Duration, Melee, Strike",
+        "color": "str",
+        "imageLocal": "skillgemsgem/dominating_blow_of_inspiring.webp"
+      },
+      {
+        "name": "Earthquake",
+        "slug": "Earthquake",
+        "tags": "Attack, AoE, Duration, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/earthquake.webp"
+      },
+      {
+        "name": "Earthquake of Amplification",
+        "slug": "Earthquake_of_Amplification",
+        "tags": "Attack, AoE, Duration, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/earthquake_of_amplification.webp"
+      },
+      {
+        "name": "Ice Crash",
+        "slug": "Ice_Crash",
+        "tags": "Attack, AoE, Cold, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/ice_crash.webp"
+      },
+      {
+        "name": "Ice Crash of Cadence",
+        "slug": "Ice_Crash_of_Cadence",
+        "tags": "Attack, AoE, Cold, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/ice_crash_of_cadence.webp"
+      },
+      {
+        "name": "Rage Vortex",
+        "slug": "Rage_Vortex",
+        "tags": "Attack, AoE, Duration, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/rage_vortex.webp"
+      },
+      {
+        "name": "Rage Vortex of Berserking",
+        "slug": "Rage_Vortex_of_Berserking",
+        "tags": "Attack, AoE, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/rage_vortex_of_berserking.webp"
+      },
+      {
+        "name": "Reap",
+        "slug": "Reap",
+        "tags": "Spell, Physical, AoE, Duration",
+        "color": "str",
+        "imageLocal": "skillgemsgem/reap.webp"
+      },
+      {
+        "name": "Shockwave Totem",
+        "slug": "Shockwave_Totem",
+        "tags": "Totem, Spell, AoE, Physical, Nova",
+        "color": "str",
+        "imageLocal": "skillgemsgem/shockwave_totem.webp"
+      },
+      {
+        "name": "Tectonic Slam",
+        "slug": "Tectonic_Slam",
+        "tags": "Fire, Attack, AoE, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/tectonic_slam.webp"
+      },
+      {
+        "name": "Tectonic Slam of Cataclysm",
+        "slug": "Tectonic_Slam_of_Cataclysm",
+        "tags": "Fire, Attack, AoE, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/tectonic_slam_of_cataclysm.webp"
+      },
+      {
+        "name": "Vaal Ancestral Warchief",
+        "slug": "Vaal_Ancestral_Warchief",
+        "tags": "Attack, Totem, AoE, Vaal, Melee, Slam",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vaal_ancestral_warchief.webp"
+      },
+      {
+        "name": "Vaal Domination",
+        "slug": "Vaal_Domination",
+        "tags": "Spell, Minion, Duration, Vaal, Attack, Melee, Strike",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vaal_domination.webp"
+      },
+      {
+        "name": "Vaal Earthquake",
+        "slug": "Vaal_Earthquake",
+        "tags": "Attack, AoE, Duration, Vaal, Slam, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vaal_earthquake.webp"
+      },
+      {
+        "name": "Vaal Reap",
+        "slug": "Vaal_Reap",
+        "tags": "Spell, Physical, AoE, Duration, Vaal",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vaal_reap.webp"
+      },
+      {
+        "name": "Berserk",
+        "slug": "Berserk",
+        "tags": "Spell",
+        "color": "str",
+        "imageLocal": "skillgemsgem/berserk.webp"
+      },
+      {
+        "name": "Flame Link",
+        "slug": "Flame_Link",
+        "tags": "Spell, Duration, Link, Fire",
+        "color": "str",
+        "imageLocal": "skillgemsgem/flame_link.webp"
+      },
+      {
+        "name": "Frozen Legion",
+        "slug": "Frozen_Legion",
+        "tags": "Spell, Cold, Attack, AoE, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/frozen_legion.webp"
+      },
+      {
+        "name": "Frozen Legion of Rallying",
+        "slug": "Frozen_Legion_of_Rallying",
+        "tags": "Spell, Cold, Attack, AoE, Melee",
+        "color": "str",
+        "imageLocal": "skillgemsgem/frozen_legion_of_rallying.webp"
+      },
+      {
+        "name": "Immortal Call",
+        "slug": "Immortal_Call",
+        "tags": "Spell, Duration, Guard",
+        "color": "str",
+        "imageLocal": "skillgemsgem/immortal_call.webp"
+      },
+      {
+        "name": "Protective Link",
+        "slug": "Protective_Link",
+        "tags": "Spell, Duration, Link",
+        "color": "str",
+        "imageLocal": "skillgemsgem/protective_link.webp"
+      },
+      {
+        "name": "Summon Flame Golem",
+        "slug": "Summon_Flame_Golem",
+        "tags": "Fire, Minion, Spell, Golem",
+        "color": "str",
+        "imageLocal": "skillgemsgem/summon_flame_golem.webp"
+      },
+      {
+        "name": "Summon Flame Golem of Hordes",
+        "slug": "Summon_Flame_Golem_of_Hordes",
+        "tags": "Fire, Minion, Spell, Golem",
+        "color": "str",
+        "imageLocal": "skillgemsgem/summon_flame_golem_of_hordes.webp"
+      },
+      {
+        "name": "Summon Flame Golem of the Meteor",
+        "slug": "Summon_Flame_Golem_of_the_Meteor",
+        "tags": "Fire, Minion, Spell, Golem",
+        "color": "str",
+        "imageLocal": "skillgemsgem/summon_flame_golem_of_the_meteor.webp"
+      },
+      {
+        "name": "Summon Stone Golem",
+        "slug": "Summon_Stone_Golem",
+        "tags": "Minion, Spell, Golem, Physical",
+        "color": "str",
+        "imageLocal": "skillgemsgem/summon_stone_golem.webp"
+      },
+      {
+        "name": "Summon Stone Golem of Hordes",
+        "slug": "Summon_Stone_Golem_of_Hordes",
+        "tags": "Minion, Spell, Golem, Physical",
+        "color": "str",
+        "imageLocal": "skillgemsgem/summon_stone_golem_of_hordes.webp"
+      },
+      {
+        "name": "Summon Stone Golem of Safeguarding",
+        "slug": "Summon_Stone_Golem_of_Safeguarding",
+        "tags": "Minion, Spell, Golem, Physical",
+        "color": "str",
+        "imageLocal": "skillgemsgem/summon_stone_golem_of_safeguarding.webp"
+      },
+      {
+        "name": "Vaal Immortal Call",
+        "slug": "Vaal_Immortal_Call",
+        "tags": "Spell, Duration, Vaal, Guard",
+        "color": "str",
+        "imageLocal": "skillgemsgem/vaal_immortal_call.webp"
+      },
+      {
+        "name": "Burning Arrow",
+        "slug": "Burning_Arrow",
+        "tags": "Attack, Projectile, Fire, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/burning_arrow.webp"
+      },
+      {
+        "name": "Burning Arrow of Vigour",
+        "slug": "Burning_Arrow_of_Vigour",
+        "tags": "Attack, Projectile, Fire, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/burning_arrow_of_vigour.webp"
+      },
+      {
+        "name": "Caustic Arrow",
+        "slug": "Caustic_Arrow",
+        "tags": "Attack, Projectile, AoE, Duration, Chaos, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/caustic_arrow.webp"
+      },
+      {
+        "name": "Caustic Arrow of Poison",
+        "slug": "Caustic_Arrow_of_Poison",
+        "tags": "Attack, Projectile, AoE, Chaos, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/caustic_arrow_of_poison.webp"
+      },
+      {
+        "name": "Cobra Lash",
+        "slug": "Cobra_Lash",
+        "tags": "Attack, Projectile, Chaos",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/cobra_lash.webp"
+      },
+      {
+        "name": "Double Strike",
+        "slug": "Double_Strike",
+        "tags": "Attack, Melee, Strike, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/double_strike.webp"
+      },
+      {
+        "name": "Double Strike of Impaling",
+        "slug": "Double_Strike_of_Impaling",
+        "tags": "Attack, Melee, Strike, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/double_strike_of_impaling.webp"
+      },
+      {
+        "name": "Double Strike of Momentum",
+        "slug": "Double_Strike_of_Momentum",
+        "tags": "Attack, Melee, Strike",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/double_strike_of_momentum.webp"
+      },
+      {
+        "name": "Dual Strike",
+        "slug": "Dual_Strike",
+        "tags": "Critical, Attack, Melee, Strike",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/dual_strike.webp"
+      },
+      {
+        "name": "Dual Strike of Ambidexterity",
+        "slug": "Dual_Strike_of_Ambidexterity",
+        "tags": "Attack, Melee, Strike",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/dual_strike_of_ambidexterity.webp"
+      },
+      {
+        "name": "Ethereal Knives",
+        "slug": "Ethereal_Knives",
+        "tags": "Spell, Projectile, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/ethereal_knives.webp"
+      },
+      {
+        "name": "Ethereal Knives of Lingering Blades",
+        "slug": "Ethereal_Knives_of_Lingering_Blades",
+        "tags": "Spell, Projectile, Physical, Duration",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/ethereal_knives_of_lingering_blades.webp"
+      },
+      {
+        "name": "Ethereal Knives of the Massacre",
+        "slug": "Ethereal_Knives_of_the_Massacre",
+        "tags": "Spell, Projectile, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/ethereal_knives_of_the_massacre.webp"
+      },
+      {
+        "name": "Explosive Trap",
+        "slug": "Explosive_Trap",
+        "tags": "Trap, Spell, AoE, Fire, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/explosive_trap.webp"
+      },
+      {
+        "name": "Explosive Trap of Shrapnel",
+        "slug": "Explosive_Trap_of_Shrapnel",
+        "tags": "Trap, Spell, AoE, Fire, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/explosive_trap_of_shrapnel.webp"
+      },
+      {
+        "name": "Explosive Trap of Magnitude",
+        "slug": "Explosive_Trap_of_Magnitude",
+        "tags": "Trap, Spell, AoE, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/explosive_trap_of_magnitude.webp"
+      },
+      {
+        "name": "Frost Blades",
+        "slug": "Frost_Blades",
+        "tags": "Attack, Projectile, Melee, Strike, Cold",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/frost_blades.webp"
+      },
+      {
+        "name": "Frost Blades of Katabasis",
+        "slug": "Frost_Blades_of_Katabasis",
+        "tags": "Attack, Melee, Strike, Cold, AoE, Duration",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/frost_blades_of_katabasis.webp"
+      },
+      {
+        "name": "Galvanic Arrow",
+        "slug": "Galvanic_Arrow",
+        "tags": "Lightning, Attack, Projectile, AoE, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/galvanic_arrow.webp"
+      },
+      {
+        "name": "Galvanic Arrow of Energy",
+        "slug": "Galvanic_Arrow_of_Energy",
+        "tags": "Lightning, Attack, AoE, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/galvanic_arrow_of_energy.webp"
+      },
+      {
+        "name": "Galvanic Arrow of Surging",
+        "slug": "Galvanic_Arrow_of_Surging",
+        "tags": "Lightning, Attack, Projectile, AoE, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/galvanic_arrow_of_surging.webp"
+      },
+      {
+        "name": "Ice Shot",
+        "slug": "Ice_Shot",
+        "tags": "Attack, Projectile, AoE, Cold, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/ice_shot.webp"
+      },
+      {
+        "name": "Ice Shot of Penetration",
+        "slug": "Ice_Shot_of_Penetration",
+        "tags": "Attack, Projectile, AoE, Cold, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/ice_shot_of_penetration.webp"
+      },
+      {
+        "name": "Spectral Throw",
+        "slug": "Spectral_Throw",
+        "tags": "Attack, Projectile",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/spectral_throw.webp"
+      },
+      {
+        "name": "Spectral Throw of Materialising",
+        "slug": "Spectral_Throw_of_Materialising",
+        "tags": "Attack, Projectile",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/spectral_throw_of_materialising.webp"
+      },
+      {
+        "name": "Spectral Throw of Trarthus",
+        "slug": "Spectral_Throw_of_Trarthus",
+        "tags": "Trap, Attack, Projectile",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/spectral_throw_of_trarthus.webp"
+      },
+      {
+        "name": "Split Arrow",
+        "slug": "Split_Arrow",
+        "tags": "Attack, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/split_arrow.webp"
+      },
+      {
+        "name": "Split Arrow of Splitting",
+        "slug": "Split_Arrow_of_Splitting",
+        "tags": "Attack, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/split_arrow_of_splitting.webp"
+      },
+      {
+        "name": "Splitting Steel",
+        "slug": "Splitting_Steel",
+        "tags": "Attack, Projectile, AoE, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/splitting_steel.webp"
+      },
+      {
+        "name": "Splitting Steel of Ammunition",
+        "slug": "Splitting_Steel_of_Ammunition",
+        "tags": "Attack, Projectile, AoE, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/splitting_steel_of_ammunition.webp"
+      },
+      {
+        "name": "Vaal Burning Arrow",
+        "slug": "Vaal_Burning_Arrow",
+        "tags": "Attack, Projectile, AoE, Vaal, Fire, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_burning_arrow.webp"
+      },
+      {
+        "name": "Vaal Caustic Arrow",
+        "slug": "Vaal_Caustic_Arrow",
+        "tags": "Attack, Projectile, AoE, Duration, Chaos, Vaal, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_caustic_arrow.webp"
+      },
+      {
+        "name": "Vaal Double Strike",
+        "slug": "Vaal_Double_Strike",
+        "tags": "Attack, Melee, Strike, Duration, Vaal, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_double_strike.webp"
+      },
+      {
+        "name": "Vaal Ice Shot",
+        "slug": "Vaal_Ice_Shot",
+        "tags": "Attack, Projectile, AoE, Cold, Vaal, Duration, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_ice_shot.webp"
+      },
+      {
+        "name": "Vaal Spectral Throw",
+        "slug": "Vaal_Spectral_Throw",
+        "tags": "Attack, Projectile, Vaal",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_spectral_throw.webp"
+      },
+      {
+        "name": "Viper Strike",
+        "slug": "Viper_Strike",
+        "tags": "Attack, Duration, Melee, Strike, Chaos",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/viper_strike.webp"
+      },
+      {
+        "name": "Viper Strike of the Mamba",
+        "slug": "Viper_Strike_of_the_Mamba",
+        "tags": "Attack, Duration, Melee, Strike, Chaos",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/viper_strike_of_the_mamba.webp"
+      },
+      {
+        "name": "Animate Weapon",
+        "slug": "Animate_Weapon",
+        "tags": "Duration, Minion, Spell, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/animate_weapon.webp"
+      },
+      {
+        "name": "Animate Weapon of Self Reflection",
+        "slug": "Animate_Weapon_of_Self_Reflection",
+        "tags": "Duration, Minion, Spell",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/animate_weapon_of_self_reflection.webp"
+      },
+      {
+        "name": "Animate Weapon of Ranged Arms",
+        "slug": "Animate_Weapon_of_Ranged_Arms",
+        "tags": "Duration, Minion, Spell, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/animate_weapon_of_ranged_arms.webp"
+      },
+      {
+        "name": "Bear Trap",
+        "slug": "Bear_Trap",
+        "tags": "Trap, Spell, Duration, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/bear_trap.webp"
+      },
+      {
+        "name": "Bear Trap of Skewers",
+        "slug": "Bear_Trap_of_Skewers",
+        "tags": "Trap, Spell, Duration, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/bear_trap_of_skewers.webp"
+      },
+      {
+        "name": "Dash",
+        "slug": "Dash",
+        "tags": "Spell, Movement, Travel, Blink",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/dash.webp"
+      },
+      {
+        "name": "Detonate Dead",
+        "slug": "Detonate_Dead",
+        "tags": "Spell, AoE, Fire",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/detonate_dead.webp"
+      },
+      {
+        "name": "Detonate Dead of Scavenging",
+        "slug": "Detonate_Dead_of_Scavenging",
+        "tags": "Spell, AoE, Fire",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/detonate_dead_of_scavenging.webp"
+      },
+      {
+        "name": "Detonate Dead of Chain Reaction",
+        "slug": "Detonate_Dead_of_Chain_Reaction",
+        "tags": "Spell, AoE, Fire",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/detonate_dead_of_chain_reaction.webp"
+      },
+      {
+        "name": "Puncture",
+        "slug": "Puncture",
+        "tags": "Attack, Projectile, Duration, Physical, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/puncture.webp"
+      },
+      {
+        "name": "Puncture of Shanking",
+        "slug": "Puncture_of_Shanking",
+        "tags": "Attack, Melee, Strike, Duration, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/puncture_of_shanking.webp"
+      },
+      {
+        "name": "Shrapnel Ballista",
+        "slug": "Shrapnel_Ballista",
+        "tags": "Attack, Projectile, Totem, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/shrapnel_ballista.webp"
+      },
+      {
+        "name": "Shrapnel Ballista of Steel",
+        "slug": "Shrapnel_Ballista_of_Steel",
+        "tags": "Attack, Projectile, Totem, Physical, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/shrapnel_ballista_of_steel.webp"
+      },
+      {
+        "name": "Sniper's Mark",
+        "slug": "Snipers_Mark",
+        "tags": "Spell, Curse, Mark",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/snipers_mark.webp"
+      },
+      {
+        "name": "Vaal Animate Weapon",
+        "slug": "Vaal_Animate_Weapon",
+        "tags": "Duration, Minion, Spell, Vaal, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_animate_weapon.webp"
+      },
+      {
+        "name": "Vaal Detonate Dead",
+        "slug": "Vaal_Detonate_Dead",
+        "tags": "Spell, AoE, Vaal, Fire",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_detonate_dead.webp"
+      },
+      {
+        "name": "Blink Arrow",
+        "slug": "Blink_Arrow",
+        "tags": "Attack, Minion, Duration, Movement, Travel, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blink_arrow.webp"
+      },
+      {
+        "name": "Blink Arrow of Bombarding Clones",
+        "slug": "Blink_Arrow_of_Bombarding_Clones",
+        "tags": "Attack, Minion, Duration, Movement, Travel, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blink_arrow_of_bombarding_clones.webp"
+      },
+      {
+        "name": "Blink Arrow of Prismatic Clones",
+        "slug": "Blink_Arrow_of_Prismatic_Clones",
+        "tags": "Attack, Minion, Duration, Movement, Travel, Prismatic, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blink_arrow_of_prismatic_clones.webp"
+      },
+      {
+        "name": "Flicker Strike",
+        "slug": "Flicker_Strike",
+        "tags": "Attack, Melee, Strike, Movement, Duration",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/flicker_strike.webp"
+      },
+      {
+        "name": "Flicker Strike of Power",
+        "slug": "Flicker_Strike_of_Power",
+        "tags": "Critical, Attack, Melee, Strike, Movement, Duration",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/flicker_strike_of_power.webp"
+      },
+      {
+        "name": "Mirror Arrow",
+        "slug": "Mirror_Arrow",
+        "tags": "Attack, Minion, Duration, Movement, Travel, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/mirror_arrow.webp"
+      },
+      {
+        "name": "Mirror Arrow of Bombarding Clones",
+        "slug": "Mirror_Arrow_of_Bombarding_Clones",
+        "tags": "Attack, Minion, Duration, Movement, Travel, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/mirror_arrow_of_bombarding_clones.webp"
+      },
+      {
+        "name": "Mirror Arrow of Prismatic Clones",
+        "slug": "Mirror_Arrow_of_Prismatic_Clones",
+        "tags": "Attack, Minion, Duration, Movement, Travel, Prismatic, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/mirror_arrow_of_prismatic_clones.webp"
+      },
+      {
+        "name": "Precision",
+        "slug": "Precision",
+        "tags": "Aura, Critical, Spell, AoE",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/precision.webp"
+      },
+      {
+        "name": "Smoke Mine",
+        "slug": "Smoke_Mine",
+        "tags": "Mine, Spell, AoE, Duration, Movement, Travel, Blink",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/smoke_mine.webp"
+      },
+      {
+        "name": "Unearth",
+        "slug": "Unearth",
+        "tags": "Spell, Projectile, AoE, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/unearth.webp"
+      },
+      {
+        "name": "Vaal Flicker Strike",
+        "slug": "Vaal_Flicker_Strike",
+        "tags": "Attack, Melee, Strike, Movement, Vaal, Duration",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_flicker_strike.webp"
+      },
+      {
+        "name": "Whirling Blades",
+        "slug": "Whirling_Blades",
+        "tags": "Attack, Movement, Travel, Melee",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/whirling_blades.webp"
+      },
+      {
+        "name": "Withering Step",
+        "slug": "Withering_Step",
+        "tags": "Travel, AoE, Chaos, Movement, Blink, Spell, Duration",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/withering_step.webp"
+      },
+      {
+        "name": "Barrage",
+        "slug": "Barrage",
+        "tags": "Attack, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/barrage.webp"
+      },
+      {
+        "name": "Barrage of Volley Fire",
+        "slug": "Barrage_of_Volley_Fire",
+        "tags": "Attack, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/barrage_of_volley_fire.webp"
+      },
+      {
+        "name": "Blade Trap",
+        "slug": "Blade_Trap",
+        "tags": "Trap, Attack, AoE",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blade_trap.webp"
+      },
+      {
+        "name": "Blade Trap of Greatswords",
+        "slug": "Blade_Trap_of_Greatswords",
+        "tags": "Trap, Attack, AoE, Duration",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blade_trap_of_greatswords.webp"
+      },
+      {
+        "name": "Blade Trap of Laceration",
+        "slug": "Blade_Trap_of_Laceration",
+        "tags": "Trap, Attack, AoE, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blade_trap_of_laceration.webp"
+      },
+      {
+        "name": "Blade Vortex",
+        "slug": "Blade_Vortex",
+        "tags": "Spell, AoE, Duration, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blade_vortex.webp"
+      },
+      {
+        "name": "Blade Vortex of the Scythe",
+        "slug": "Blade_Vortex_of_the_Scythe",
+        "tags": "Spell, AoE, Duration, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blade_vortex_of_the_scythe.webp"
+      },
+      {
+        "name": "Elemental Hit",
+        "slug": "Elemental_Hit",
+        "tags": "Attack, Melee, Strike, Fire, Cold, Lightning, AoE, Prismatic",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/elemental_hit.webp"
+      },
+      {
+        "name": "Elemental Hit of the Spectrum",
+        "slug": "Elemental_Hit_of_the_Spectrum",
+        "tags": "Attack, Projectile, Fire, Cold, Lightning, AoE, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/elemental_hit_of_the_spectrum.webp"
+      },
+      {
+        "name": "Fire Trap",
+        "slug": "Fire_Trap",
+        "tags": "Trap, Spell, Duration, AoE, Fire",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/fire_trap.webp"
+      },
+      {
+        "name": "Fire Trap of Blasting",
+        "slug": "Fire_Trap_of_Blasting",
+        "tags": "Trap, Spell, Duration, AoE, Fire",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/fire_trap_of_blasting.webp"
+      },
+      {
+        "name": "Lacerate",
+        "slug": "Lacerate",
+        "tags": "Attack, AoE, Physical, Melee",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/lacerate.webp"
+      },
+      {
+        "name": "Lacerate of Butchering",
+        "slug": "Lacerate_of_Butchering",
+        "tags": "Attack, AoE, Melee",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/lacerate_of_butchering.webp"
+      },
+      {
+        "name": "Lacerate of Haemorrhage",
+        "slug": "Lacerate_of_Haemorrhage",
+        "tags": "Attack, AoE, Physical, Melee",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/lacerate_of_haemorrhage.webp"
+      },
+      {
+        "name": "Lightning Arrow",
+        "slug": "Lightning_Arrow",
+        "tags": "Attack, AoE, Projectile, Lightning, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/lightning_arrow.webp"
+      },
+      {
+        "name": "Lightning Arrow of Electrocution",
+        "slug": "Lightning_Arrow_of_Electrocution",
+        "tags": "Attack, Projectile, Lightning, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/lightning_arrow_of_electrocution.webp"
+      },
+      {
+        "name": "Lightning Strike",
+        "slug": "Lightning_Strike",
+        "tags": "Attack, Projectile, Melee, Strike, Lightning",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/lightning_strike.webp"
+      },
+      {
+        "name": "Lightning Strike of Arcing",
+        "slug": "Lightning_Strike_of_Arcing",
+        "tags": "Attack, Projectile, Melee, Strike, Lightning, Chaining",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/lightning_strike_of_arcing.webp"
+      },
+      {
+        "name": "Poisonous Concoction",
+        "slug": "Poisonous_Concoction",
+        "tags": "Attack, AoE, Chaos, Projectile",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/poisonous_concoction.webp"
+      },
+      {
+        "name": "Poisonous Concoction of Bouncing",
+        "slug": "Poisonous_Concoction_of_Bouncing",
+        "tags": "Attack, AoE, Chaos, Projectile, Chaining",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/poisonous_concoction_of_bouncing.webp"
+      },
+      {
+        "name": "Rain of Arrows",
+        "slug": "Rain_of_Arrows",
+        "tags": "Attack, AoE, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/rain_of_arrows.webp"
+      },
+      {
+        "name": "Rain of Arrows of Artillery",
+        "slug": "Rain_of_Arrows_of_Artillery",
+        "tags": "Attack, AoE, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/rain_of_arrows_of_artillery.webp"
+      },
+      {
+        "name": "Rain of Arrows of Saturation",
+        "slug": "Rain_of_Arrows_of_Saturation",
+        "tags": "Attack, AoE, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/rain_of_arrows_of_saturation.webp"
+      },
+      {
+        "name": "Reave",
+        "slug": "Reave",
+        "tags": "Attack, AoE, Melee",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/reave.webp"
+      },
+      {
+        "name": "Reave of Refraction",
+        "slug": "Reave_of_Refraction",
+        "tags": "Attack, AoE, Melee",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/reave_of_refraction.webp"
+      },
+      {
+        "name": "Shattering Steel",
+        "slug": "Shattering_Steel",
+        "tags": "Attack, Projectile, AoE, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/shattering_steel.webp"
+      },
+      {
+        "name": "Shattering Steel of Ammunition",
+        "slug": "Shattering_Steel_of_Ammunition",
+        "tags": "Attack, Projectile, AoE, Physical, Duration",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/shattering_steel_of_ammunition.webp"
+      },
+      {
+        "name": "Siege Ballista",
+        "slug": "Siege_Ballista",
+        "tags": "Attack, Projectile, Totem, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/siege_ballista.webp"
+      },
+      {
+        "name": "Siege Ballista of Splintering",
+        "slug": "Siege_Ballista_of_Splintering",
+        "tags": "Attack, Projectile, Totem, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/siege_ballista_of_splintering.webp"
+      },
+      {
+        "name": "Siege Ballista of Trarthus",
+        "slug": "Siege_Ballista_of_Trarthus",
+        "tags": "Attack, Projectile, Totem, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/siege_ballista_of_trarthus.webp"
+      },
+      {
+        "name": "Spectral Helix",
+        "slug": "Spectral_Helix",
+        "tags": "Attack, Projectile",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/spectral_helix.webp"
+      },
+      {
+        "name": "Spectral Helix of Trarthus",
+        "slug": "Spectral_Helix_of_Trarthus",
+        "tags": "Trap, Attack, Projectile",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/spectral_helix_of_trarthus.webp"
+      },
+      {
+        "name": "Toxic Rain",
+        "slug": "Toxic_Rain",
+        "tags": "Attack, AoE, Chaos, Duration, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/toxic_rain.webp"
+      },
+      {
+        "name": "Toxic Rain of Sporeburst",
+        "slug": "Toxic_Rain_of_Sporeburst",
+        "tags": "Attack, AoE, Chaos, Duration, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/toxic_rain_of_sporeburst.webp"
+      },
+      {
+        "name": "Toxic Rain of Withering",
+        "slug": "Toxic_Rain_of_Withering",
+        "tags": "Attack, AoE, Chaos, Duration, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/toxic_rain_of_withering.webp"
+      },
+      {
+        "name": "Vaal Blade Vortex",
+        "slug": "Vaal_Blade_Vortex",
+        "tags": "Critical, Spell, AoE, Duration, Vaal, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_blade_vortex.webp"
+      },
+      {
+        "name": "Vaal Lightning Arrow",
+        "slug": "Vaal_Lightning_Arrow",
+        "tags": "Attack, AoE, Projectile, Lightning, Vaal, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_lightning_arrow.webp"
+      },
+      {
+        "name": "Vaal Lightning Strike",
+        "slug": "Vaal_Lightning_Strike",
+        "tags": "Attack, Melee, Strike, Duration, Vaal, Lightning, Projectile",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_lightning_strike.webp"
+      },
+      {
+        "name": "Vaal Rain of Arrows",
+        "slug": "Vaal_Rain_of_Arrows",
+        "tags": "Attack, AoE, Projectile, Vaal, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_rain_of_arrows.webp"
+      },
+      {
+        "name": "Vaal Reave",
+        "slug": "Vaal_Reave",
+        "tags": "Attack, AoE, Vaal, Melee",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_reave.webp"
+      },
+      {
+        "name": "Vaal Venom Gyre",
+        "slug": "Vaal_Venom_Gyre",
+        "tags": "Attack, Projectile, Chaos, Duration, Vaal",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_venom_gyre.webp"
+      },
+      {
+        "name": "Venom Gyre",
+        "slug": "Venom_Gyre",
+        "tags": "Attack, Projectile, Chaos, Duration",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/venom_gyre.webp"
+      },
+      {
+        "name": "Volatile Dead",
+        "slug": "Volatile_Dead",
+        "tags": "Spell, AoE, Fire",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/volatile_dead.webp"
+      },
+      {
+        "name": "Volatile Dead of Confinement",
+        "slug": "Volatile_Dead_of_Confinement",
+        "tags": "Spell, AoE, Fire, Duration",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/volatile_dead_of_confinement.webp"
+      },
+      {
+        "name": "Volatile Dead of Seething",
+        "slug": "Volatile_Dead_of_Seething",
+        "tags": "Spell, AoE, Fire",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/volatile_dead_of_seething.webp"
+      },
+      {
+        "name": "Arctic Armour",
+        "slug": "Old_Arctic_Armour",
+        "tags": "Spell, Duration, Cold",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/arctic_armour.webp"
+      },
+      {
+        "name": "Blade Blast",
+        "slug": "Blade_Blast",
+        "tags": "Spell, AoE, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blade_blast.webp"
+      },
+      {
+        "name": "Blade Blast of Unloading",
+        "slug": "Blade_Blast_of_Unloading",
+        "tags": "Spell, AoE, Physical, Nova",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blade_blast_of_unloading.webp"
+      },
+      {
+        "name": "Blade Blast of Dagger Detonation",
+        "slug": "Blade_Blast_of_Dagger_Detonation",
+        "tags": "Spell, AoE, Physical, Nova",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blade_blast_of_dagger_detonation.webp"
+      },
+      {
+        "name": "Blood Rage",
+        "slug": "Blood_Rage",
+        "tags": "Spell, Duration, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blood_rage.webp"
+      },
+      {
+        "name": "Desecrate",
+        "slug": "Desecrate",
+        "tags": "Spell, AoE, Duration, Chaos",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/desecrate.webp"
+      },
+      {
+        "name": "Ensnaring Arrow",
+        "slug": "Ensnaring_Arrow",
+        "tags": "Attack, Projectile, AoE, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/ensnaring_arrow.webp"
+      },
+      {
+        "name": "Frenzy",
+        "slug": "Frenzy",
+        "tags": "Attack, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/frenzy.webp"
+      },
+      {
+        "name": "Frenzy of Onslaught",
+        "slug": "Frenzy_of_Onslaught",
+        "tags": "Attack, Melee, Strike",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/frenzy_of_onslaught.webp"
+      },
+      {
+        "name": "Glacial Shield Swipe",
+        "slug": "Glacial_Shield_Swipe",
+        "tags": "Attack, AoE, Cold, Physical, Retaliation, Melee",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/glacial_shield_swipe.webp"
+      },
+      {
+        "name": "Herald of Agony",
+        "slug": "Herald_of_Agony",
+        "tags": "Spell, Herald, Minion, Chaos, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/herald_of_agony.webp"
+      },
+      {
+        "name": "Herald of Ice",
+        "slug": "Herald_of_Ice",
+        "tags": "Spell, AoE, Cold, Herald",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/herald_of_ice.webp"
+      },
+      {
+        "name": "Poacher's Mark",
+        "slug": "Poachers_Mark",
+        "tags": "Physical, Spell, Curse, Mark",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/poachers_mark.webp"
+      },
+      {
+        "name": "Vaal Arctic Armour",
+        "slug": "Vaal_Arctic_Armour",
+        "tags": "Spell, Duration, Cold, Vaal",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_arctic_armour.webp"
+      },
+      {
+        "name": "Alchemist's Mark",
+        "slug": "Alchemists_Mark",
+        "tags": "Spell, Curse, Mark, AoE, Duration, Fire, Chaos",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/alchemists_mark.webp"
+      },
+      {
+        "name": "Grace",
+        "slug": "Grace",
+        "tags": "Aura, Spell, AoE",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/grace.webp"
+      },
+      {
+        "name": "Haste",
+        "slug": "Haste",
+        "tags": "Aura, Spell, AoE",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/haste.webp"
+      },
+      {
+        "name": "Hatred",
+        "slug": "Hatred",
+        "tags": "Aura, Spell, AoE, Cold",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/hatred.webp"
+      },
+      {
+        "name": "Plague Bearer",
+        "slug": "Plague_Bearer",
+        "tags": "Spell, Chaos, AoE",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/plague_bearer.webp"
+      },
+      {
+        "name": "Purity of Ice",
+        "slug": "Purity_of_Ice",
+        "tags": "Aura, Spell, AoE, Cold",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/purity_of_ice.webp"
+      },
+      {
+        "name": "Temporal Chains",
+        "slug": "Temporal_Chains",
+        "tags": "Spell, AoE, Duration, Curse, Hex",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/temporal_chains.webp"
+      },
+      {
+        "name": "Vaal Grace",
+        "slug": "Vaal_Grace",
+        "tags": "Aura, Spell, AoE, Duration, Vaal",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_grace.webp"
+      },
+      {
+        "name": "Vaal Haste",
+        "slug": "Vaal_Haste",
+        "tags": "Aura, Spell, AoE, Duration, Vaal",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_haste.webp"
+      },
+      {
+        "name": "Vaal Impurity of Ice",
+        "slug": "Vaal_Impurity_of_Ice",
+        "tags": "Aura, Spell, AoE, Duration, Vaal, Cold",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_impurity_of_ice.webp"
+      },
+      {
+        "name": "Artillery Ballista",
+        "slug": "Artillery_Ballista",
+        "tags": "Attack, Totem, AoE, Fire, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/artillery_ballista.webp"
+      },
+      {
+        "name": "Artillery Ballista of Cross Strafe",
+        "slug": "Artillery_Ballista_of_Cross_Strafe",
+        "tags": "Attack, Totem, AoE, Fire, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/artillery_ballista_of_cross_strafe.webp"
+      },
+      {
+        "name": "Artillery Ballista of Focus Fire",
+        "slug": "Artillery_Ballista_of_Focus_Fire",
+        "tags": "Attack, Totem, AoE, Fire, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/artillery_ballista_of_focus_fire.webp"
+      },
+      {
+        "name": "Blade Flurry",
+        "slug": "Blade_Flurry",
+        "tags": "Attack, AoE, Channelling, Melee",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blade_flurry.webp"
+      },
+      {
+        "name": "Blade Flurry of Incision",
+        "slug": "Blade_Flurry_of_Incision",
+        "tags": "Critical, Attack, AoE, Channelling, Melee",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blade_flurry_of_incision.webp"
+      },
+      {
+        "name": "Bladefall",
+        "slug": "Bladefall",
+        "tags": "Spell, AoE, Physical, Duration",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/bladefall.webp"
+      },
+      {
+        "name": "Bladefall of Volleys",
+        "slug": "Bladefall_of_Volleys",
+        "tags": "Critical, Spell, AoE, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/bladefall_of_volleys.webp"
+      },
+      {
+        "name": "Bladefall of Impaling",
+        "slug": "Bladefall_of_Impaling",
+        "tags": "Critical, Spell, AoE, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/bladefall_of_impaling.webp"
+      },
+      {
+        "name": "Bladefall of Trarthus",
+        "slug": "Bladefall_of_Trarthus",
+        "tags": "Spell, AoE, Physical, Arcane, Duration",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/bladefall_of_trarthus.webp"
+      },
+      {
+        "name": "Blast Rain",
+        "slug": "Blast_Rain",
+        "tags": "Fire, Attack, AoE, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blast_rain.webp"
+      },
+      {
+        "name": "Blast Rain of Trarthus",
+        "slug": "Blast_Rain_of_Trarthus",
+        "tags": "Fire, Attack, AoE, Projectile, Duration, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/blast_rain_of_trarthus.webp"
+      },
+      {
+        "name": "Charged Dash",
+        "slug": "Charged_Dash",
+        "tags": "Movement, AoE, Channelling, Attack, Lightning, Melee",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/charged_dash.webp"
+      },
+      {
+        "name": "Cremation",
+        "slug": "Cremation",
+        "tags": "Spell, AoE, Fire, Duration, Projectile, Orb",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/cremation.webp"
+      },
+      {
+        "name": "Cremation of Exhuming",
+        "slug": "Cremation_of_Exhuming",
+        "tags": "Spell, AoE, Fire, Duration, Projectile, Orb",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/cremation_of_exhuming.webp"
+      },
+      {
+        "name": "Cremation of the Volcano",
+        "slug": "Cremation_of_the_Volcano",
+        "tags": "Spell, AoE, Fire, Duration, Projectile, Orb",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/cremation_of_the_volcano.webp"
+      },
+      {
+        "name": "Cyclone",
+        "slug": "Cyclone",
+        "tags": "Attack, AoE, Movement, Channelling, Melee",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/cyclone.webp"
+      },
+      {
+        "name": "Cyclone of Tumult",
+        "slug": "Cyclone_of_Tumult",
+        "tags": "Attack, AoE, Movement, Channelling, Melee",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/cyclone_of_tumult.webp"
+      },
+      {
+        "name": "Explosive Arrow",
+        "slug": "Explosive_Arrow",
+        "tags": "Attack, Projectile, AoE, Duration, Fire, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/explosive_arrow.webp"
+      },
+      {
+        "name": "Explosive Concoction",
+        "slug": "Explosive_Concoction",
+        "tags": "Attack, AoE, Fire, Cold, Lightning, Projectile",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/explosive_concoction.webp"
+      },
+      {
+        "name": "Explosive Concoction of Destruction",
+        "slug": "Explosive_Concoction_of_Destruction",
+        "tags": "Critical, Attack, AoE, Fire, Cold, Lightning, Projectile",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/explosive_concoction_of_destruction.webp"
+      },
+      {
+        "name": "Flamethrower Trap",
+        "slug": "Flamethrower_Trap",
+        "tags": "Trap, Spell, Duration, AoE, Fire",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/flamethrower_trap.webp"
+      },
+      {
+        "name": "Ice Trap",
+        "slug": "Ice_Trap",
+        "tags": "Trap, Spell, AoE, Cold",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/ice_trap.webp"
+      },
+      {
+        "name": "Ice Trap of Hollowness",
+        "slug": "Ice_Trap_of_Hollowness",
+        "tags": "Trap, Spell, AoE, Cold",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/ice_trap_of_hollowness.webp"
+      },
+      {
+        "name": "Lancing Steel",
+        "slug": "Lancing_Steel",
+        "tags": "Attack, Projectile, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/lancing_steel.webp"
+      },
+      {
+        "name": "Lancing Steel of Spraying",
+        "slug": "Lancing_Steel_of_Spraying",
+        "tags": "Attack, Projectile",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/lancing_steel_of_spraying.webp"
+      },
+      {
+        "name": "Pestilent Strike",
+        "slug": "Pestilent_Strike",
+        "tags": "Attack, Melee, Strike, AoE, Duration, Chaos",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/pestilent_strike.webp"
+      },
+      {
+        "name": "Scourge Arrow",
+        "slug": "Scourge_Arrow",
+        "tags": "Attack, Projectile, Channelling, Chaos, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/scourge_arrow.webp"
+      },
+      {
+        "name": "Scourge Arrow of Menace",
+        "slug": "Scourge_Arrow_of_Menace",
+        "tags": "Attack, Projectile, Chaos, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/scourge_arrow_of_menace.webp"
+      },
+      {
+        "name": "Seismic Trap",
+        "slug": "Seismic_Trap",
+        "tags": "Trap, Spell, Duration, AoE, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/seismic_trap.webp"
+      },
+      {
+        "name": "Seismic Trap of Swells",
+        "slug": "Seismic_Trap_of_Swells",
+        "tags": "Trap, Spell, AoE, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/seismic_trap_of_swells.webp"
+      },
+      {
+        "name": "Spectral Shield Throw",
+        "slug": "Spectral_Shield_Throw",
+        "tags": "Attack, Projectile, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/spectral_shield_throw.webp"
+      },
+      {
+        "name": "Spectral Shield Throw of Shattering",
+        "slug": "Spectral_Shield_Throw_of_Shattering",
+        "tags": "Attack, Projectile, Cold",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/spectral_shield_throw_of_shattering.webp"
+      },
+      {
+        "name": "Spectral Shield Throw of Trarthus",
+        "slug": "Spectral_Shield_Throw_of_Trarthus",
+        "tags": "Attack, Projectile, Physical",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/spectral_shield_throw_of_trarthus.webp"
+      },
+      {
+        "name": "Storm Rain",
+        "slug": "Storm_Rain",
+        "tags": "Attack, AoE, Lightning, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/storm_rain.webp"
+      },
+      {
+        "name": "Storm Rain of the Conduit",
+        "slug": "Storm_Rain_of_the_Conduit",
+        "tags": "Attack, AoE, Lightning, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/storm_rain_of_the_conduit.webp"
+      },
+      {
+        "name": "Storm Rain of the Fence",
+        "slug": "Storm_Rain_of_the_Fence",
+        "tags": "Attack, AoE, Lightning, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/storm_rain_of_the_fence.webp"
+      },
+      {
+        "name": "Tornado Shot",
+        "slug": "Tornado_Shot",
+        "tags": "Attack, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/tornado_shot.webp"
+      },
+      {
+        "name": "Tornado Shot of Cloudburst",
+        "slug": "Tornado_Shot_of_Cloudburst",
+        "tags": "Attack, Projectile, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/tornado_shot_of_cloudburst.webp"
+      },
+      {
+        "name": "Vaal Blade Flurry",
+        "slug": "Vaal_Blade_Flurry",
+        "tags": "Attack, AoE, Channelling, Vaal, Melee",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_blade_flurry.webp"
+      },
+      {
+        "name": "Vaal Cyclone",
+        "slug": "Vaal_Cyclone",
+        "tags": "Attack, AoE, Duration, Vaal, Melee, Movement, Channelling",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vaal_cyclone.webp"
+      },
+      {
+        "name": "Wild Strike",
+        "slug": "Wild_Strike",
+        "tags": "Attack, Melee, Strike, Lightning, Cold, Fire, Projectile, AoE, Chaining, Prismatic",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/wild_strike.webp"
+      },
+      {
+        "name": "Wild Strike of Extremes",
+        "slug": "Wild_Strike_of_Extremes",
+        "tags": "Attack, Melee, Strike, Lightning, Cold, Fire, Projectile, AoE, Chaining, Prismatic",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/wild_strike_of_extremes.webp"
+      },
+      {
+        "name": "Ambush",
+        "slug": "Ambush",
+        "tags": "Critical, Spell, Movement, Duration, Travel",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/ambush.webp"
+      },
+      {
+        "name": "Intuitive Link",
+        "slug": "Intuitive_Link",
+        "tags": "Trigger, Spell, Duration, Link",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/intuitive_link.webp"
+      },
+      {
+        "name": "Phase Run",
+        "slug": "Old_Phase_Run",
+        "tags": "Spell, Duration, Movement, Physical, Travel",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/phase_run.webp"
+      },
+      {
+        "name": "Snipe",
+        "slug": "Snipe",
+        "tags": "Attack, Projectile, Channelling, Physical, Bow",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/snipe.webp"
+      },
+      {
+        "name": "Summon Ice Golem",
+        "slug": "Summon_Ice_Golem",
+        "tags": "Critical, Cold, Minion, Spell, Golem",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/summon_ice_golem.webp"
+      },
+      {
+        "name": "Summon Ice Golem of Hordes",
+        "slug": "Summon_Ice_Golem_of_Hordes",
+        "tags": "Cold, Minion, Spell, Golem",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/summon_ice_golem_of_hordes.webp"
+      },
+      {
+        "name": "Summon Ice Golem of Shattering",
+        "slug": "Summon_Ice_Golem_of_Shattering",
+        "tags": "Cold, Minion, Spell, Golem",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/summon_ice_golem_of_shattering.webp"
+      },
+      {
+        "name": "Temporal Rift",
+        "slug": "Temporal_Rift",
+        "tags": "Spell",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/temporal_rift.webp"
+      },
+      {
+        "name": "Tornado",
+        "slug": "Tornado",
+        "tags": "Spell, Duration, Physical, AoE, Orb",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/tornado.webp"
+      },
+      {
+        "name": "Tornado of Elemental Turbulence",
+        "slug": "Tornado_of_Elemental_Turbulence",
+        "tags": "Spell, Duration, Physical, AoE, Orb, Fire, Cold, Lightning, Prismatic",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/tornado_of_elemental_turbulence.webp"
+      },
+      {
+        "name": "Vampiric Link",
+        "slug": "Vampiric_Link",
+        "tags": "Spell, Duration, Link",
+        "color": "dex",
+        "imageLocal": "skillgemsgem/vampiric_link.webp"
+      },
+      {
+        "name": "Blight",
+        "slug": "Blight",
+        "tags": "Spell, Chaos, AoE, Channelling, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/blight.webp"
+      },
+      {
+        "name": "Blight of Contagion",
+        "slug": "Blight_of_Contagion",
+        "tags": "Spell, Chaos, AoE, Channelling, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/blight_of_contagion.webp"
+      },
+      {
+        "name": "Blight of Atrophy",
+        "slug": "Blight_of_Atrophy",
+        "tags": "Spell, Chaos, AoE, Channelling, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/blight_of_atrophy.webp"
+      },
+      {
+        "name": "Fireball",
+        "slug": "Fireball",
+        "tags": "Projectile, Spell, AoE, Fire",
+        "color": "int",
+        "imageLocal": "skillgemsgem/fireball.webp"
+      },
+      {
+        "name": "Freezing Pulse",
+        "slug": "Freezing_Pulse",
+        "tags": "Spell, Projectile, Cold",
+        "color": "int",
+        "imageLocal": "skillgemsgem/freezing_pulse.webp"
+      },
+      {
+        "name": "Frostbolt",
+        "slug": "Frostbolt",
+        "tags": "Spell, Projectile, Cold",
+        "color": "int",
+        "imageLocal": "skillgemsgem/frostbolt.webp"
+      },
+      {
+        "name": "Kinetic Bolt",
+        "slug": "Kinetic_Bolt",
+        "tags": "Attack, Projectile",
+        "color": "int",
+        "imageLocal": "skillgemsgem/kinetic_bolt.webp"
+      },
+      {
+        "name": "Kinetic Bolt of Fragmentation",
+        "slug": "Kinetic_Bolt_of_Fragmentation",
+        "tags": "Attack, Projectile",
+        "color": "int",
+        "imageLocal": "skillgemsgem/kinetic_bolt_of_fragmentation.webp"
+      },
+      {
+        "name": "Lightning Tendrils",
+        "slug": "Lightning_Tendrils",
+        "tags": "Critical, Spell, AoE, Lightning, Channelling",
+        "color": "int",
+        "imageLocal": "skillgemsgem/lightning_tendrils.webp"
+      },
+      {
+        "name": "Lightning Tendrils of Eccentricity",
+        "slug": "Lightning_Tendrils_of_Eccentricity",
+        "tags": "Critical, Spell, AoE, Lightning, Channelling",
+        "color": "int",
+        "imageLocal": "skillgemsgem/lightning_tendrils_of_eccentricity.webp"
+      },
+      {
+        "name": "Lightning Tendrils of Escalation",
+        "slug": "Lightning_Tendrils_of_Escalation",
+        "tags": "Spell, AoE, Lightning, Channelling",
+        "color": "int",
+        "imageLocal": "skillgemsgem/lightning_tendrils_of_escalation.webp"
+      },
+      {
+        "name": "Purifying Flame",
+        "slug": "Purifying_Flame",
+        "tags": "Fire, Spell, AoE, Duration, Physical",
+        "color": "int",
+        "imageLocal": "skillgemsgem/purifying_flame.webp"
+      },
+      {
+        "name": "Purifying Flame of Revelations",
+        "slug": "Purifying_Flame_of_Revelations",
+        "tags": "Fire, Spell, AoE, Duration, Physical",
+        "color": "int",
+        "imageLocal": "skillgemsgem/purifying_flame_of_revelations.webp"
+      },
+      {
+        "name": "Raise Zombie",
+        "slug": "Raise_Zombie",
+        "tags": "Spell, Minion",
+        "color": "int",
+        "imageLocal": "skillgemsgem/raise_zombie.webp"
+      },
+      {
+        "name": "Raise Zombie of Slamming",
+        "slug": "Raise_Zombie_of_Slamming",
+        "tags": "Spell, Minion",
+        "color": "int",
+        "imageLocal": "skillgemsgem/raise_zombie_of_slamming.webp"
+      },
+      {
+        "name": "Raise Zombie of Falling",
+        "slug": "Raise_Zombie_of_Falling",
+        "tags": "Spell, Minion",
+        "color": "int",
+        "imageLocal": "skillgemsgem/raise_zombie_of_falling.webp"
+      },
+      {
+        "name": "Rolling Magma",
+        "slug": "Rolling_Magma",
+        "tags": "Spell, AoE, Fire, Projectile, Chaining",
+        "color": "int",
+        "imageLocal": "skillgemsgem/rolling_magma.webp"
+      },
+      {
+        "name": "Spark",
+        "slug": "Spark",
+        "tags": "Spell, Projectile, Duration, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/spark.webp"
+      },
+      {
+        "name": "Spark of the Nova",
+        "slug": "Spark_of_the_Nova",
+        "tags": "Spell, Projectile, Duration, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/spark_of_the_nova.webp"
+      },
+      {
+        "name": "Spark of Unpredictability",
+        "slug": "Spark_of_Unpredictability",
+        "tags": "Spell, Projectile, Duration, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/spark_of_unpredictability.webp"
+      },
+      {
+        "name": "Stormblast Mine",
+        "slug": "Stormblast_Mine",
+        "tags": "Mine, Spell, AoE, Lightning, Aura, Nova",
+        "color": "int",
+        "imageLocal": "skillgemsgem/stormblast_mine.webp"
+      },
+      {
+        "name": "Vaal Blight",
+        "slug": "Vaal_Blight",
+        "tags": "Spell, Chaos, AoE, Duration, Vaal, Nova, Channelling",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_blight.webp"
+      },
+      {
+        "name": "Vaal Fireball",
+        "slug": "Vaal_Fireball",
+        "tags": "Projectile, Spell, AoE, Vaal, Fire",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_fireball.webp"
+      },
+      {
+        "name": "Vaal Spark",
+        "slug": "Vaal_Spark",
+        "tags": "Spell, Projectile, Duration, Vaal, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_spark.webp"
+      },
+      {
+        "name": "Contagion",
+        "slug": "Contagion",
+        "tags": "Spell, AoE, Duration, Chaos",
+        "color": "int",
+        "imageLocal": "skillgemsgem/contagion.webp"
+      },
+      {
+        "name": "Contagion of Subsiding",
+        "slug": "Contagion_of_Subsiding",
+        "tags": "Spell, AoE, Duration, Chaos",
+        "color": "int",
+        "imageLocal": "skillgemsgem/contagion_of_subsiding.webp"
+      },
+      {
+        "name": "Contagion of Transference",
+        "slug": "Contagion_of_Transference",
+        "tags": "Spell, AoE, Duration, Chaos",
+        "color": "int",
+        "imageLocal": "skillgemsgem/contagion_of_transference.webp"
+      },
+      {
+        "name": "Conversion Trap",
+        "slug": "Conversion_Trap",
+        "tags": "Trap, Spell, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/conversion_trap.webp"
+      },
+      {
+        "name": "Flame Wall",
+        "slug": "Flame_Wall",
+        "tags": "Spell, AoE, Duration, Fire",
+        "color": "int",
+        "imageLocal": "skillgemsgem/flame_wall.webp"
+      },
+      {
+        "name": "Frost Bomb",
+        "slug": "Frost_Bomb",
+        "tags": "Spell, AoE, Duration, Cold, Orb",
+        "color": "int",
+        "imageLocal": "skillgemsgem/frost_bomb.webp"
+      },
+      {
+        "name": "Frost Bomb of Instability",
+        "slug": "Frost_Bomb_of_Instability",
+        "tags": "Spell, AoE, Duration, Cold",
+        "color": "int",
+        "imageLocal": "skillgemsgem/frost_bomb_of_instability.webp"
+      },
+      {
+        "name": "Frost Bomb of Forthcoming",
+        "slug": "Frost_Bomb_of_Forthcoming",
+        "tags": "Spell, AoE, Duration, Cold",
+        "color": "int",
+        "imageLocal": "skillgemsgem/frost_bomb_of_forthcoming.webp"
+      },
+      {
+        "name": "Frost Wall",
+        "slug": "Frost_Wall",
+        "tags": "Spell, Duration, Cold",
+        "color": "int",
+        "imageLocal": "skillgemsgem/frost_wall.webp"
+      },
+      {
+        "name": "Frostblink",
+        "slug": "Frostblink",
+        "tags": "Spell, Movement, Duration, Cold, Travel, Blink, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/frostblink.webp"
+      },
+      {
+        "name": "Frostblink of Wintry Blast",
+        "slug": "Frostblink_of_Wintry_Blast",
+        "tags": "Spell, Movement, Cold, Travel, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/frostblink_of_wintry_blast.webp"
+      },
+      {
+        "name": "Orb of Storms",
+        "slug": "Orb_of_Storms",
+        "tags": "Lightning, Spell, AoE, Chaining, Orb",
+        "color": "int",
+        "imageLocal": "skillgemsgem/orb_of_storms.webp"
+      },
+      {
+        "name": "Summon Holy Relic",
+        "slug": "Summon_Holy_Relic",
+        "tags": "Minion, Spell",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_holy_relic.webp"
+      },
+      {
+        "name": "Summon Holy Relic of Conviction",
+        "slug": "Summon_Holy_Relic_of_Conviction",
+        "tags": "Minion, Spell",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_holy_relic_of_conviction.webp"
+      },
+      {
+        "name": "Summon Raging Spirit",
+        "slug": "Summon_Raging_Spirit",
+        "tags": "Spell, Minion, Duration, Fire",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_raging_spirit.webp"
+      },
+      {
+        "name": "Summon Raging Spirit of Enormity",
+        "slug": "Summon_Raging_Spirit_of_Enormity",
+        "tags": "Spell, Minion, Duration, Fire",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_raging_spirit_of_enormity.webp"
+      },
+      {
+        "name": "Bodyswap",
+        "slug": "Bodyswap",
+        "tags": "Movement, Spell, AoE, Fire, Travel",
+        "color": "int",
+        "imageLocal": "skillgemsgem/bodyswap.webp"
+      },
+      {
+        "name": "Bodyswap of Sacrifice",
+        "slug": "Bodyswap_of_Sacrifice",
+        "tags": "Movement, Spell, AoE, Fire, Travel, Minion",
+        "color": "int",
+        "imageLocal": "skillgemsgem/bodyswap_of_sacrifice.webp"
+      },
+      {
+        "name": "Clarity",
+        "slug": "Clarity",
+        "tags": "Aura, Spell, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/clarity.webp"
+      },
+      {
+        "name": "Flame Dash",
+        "slug": "Flame_Dash",
+        "tags": "Spell, Movement, Duration, Fire, Travel, Blink",
+        "color": "int",
+        "imageLocal": "skillgemsgem/flame_dash.webp"
+      },
+      {
+        "name": "Flame Dash of Return",
+        "slug": "Flame_Dash_of_Return",
+        "tags": "Spell, Movement, Duration, Fire",
+        "color": "int",
+        "imageLocal": "skillgemsgem/flame_dash_of_return.webp"
+      },
+      {
+        "name": "Lightning Warp",
+        "slug": "Lightning_Warp",
+        "tags": "Spell, AoE, Duration, Movement, Lightning, Travel",
+        "color": "int",
+        "imageLocal": "skillgemsgem/lightning_warp.webp"
+      },
+      {
+        "name": "Siphoning Trap",
+        "slug": "Siphoning_Trap",
+        "tags": "Trap, Spell, Duration, AoE, Cold",
+        "color": "int",
+        "imageLocal": "skillgemsgem/siphoning_trap.webp"
+      },
+      {
+        "name": "Summon Skeletons",
+        "slug": "Summon_Skeletons",
+        "tags": "Spell, Minion, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_skeletons.webp"
+      },
+      {
+        "name": "Summon Skeletons of Archers",
+        "slug": "Summon_Skeletons_of_Archers",
+        "tags": "Spell, Minion, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_skeletons_of_archers.webp"
+      },
+      {
+        "name": "Summon Skeletons of Mages",
+        "slug": "Summon_Skeletons_of_Mages",
+        "tags": "Spell, Minion, Duration, Prismatic",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_skeletons_of_mages.webp"
+      },
+      {
+        "name": "Vaal Clarity",
+        "slug": "Vaal_Clarity",
+        "tags": "Aura, Spell, AoE, Duration, Vaal",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_clarity.webp"
+      },
+      {
+        "name": "Vaal Lightning Warp",
+        "slug": "Vaal_Lightning_Warp",
+        "tags": "Spell, AoE, Duration, Vaal, Lightning, Movement, Travel",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_lightning_warp.webp"
+      },
+      {
+        "name": "Vaal Summon Skeletons",
+        "slug": "Vaal_Summon_Skeletons",
+        "tags": "Spell, Minion, Duration, Vaal",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_summon_skeletons.webp"
+      },
+      {
+        "name": "Wither",
+        "slug": "Wither",
+        "tags": "Spell, AoE, Duration, Chaos, Channelling",
+        "color": "int",
+        "imageLocal": "skillgemsgem/wither.webp"
+      },
+      {
+        "name": "Arc",
+        "slug": "Arc",
+        "tags": "Spell, Chaining, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/arc.webp"
+      },
+      {
+        "name": "Arc of Surging",
+        "slug": "Arc_of_Surging",
+        "tags": "Spell, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/arc_of_surging.webp"
+      },
+      {
+        "name": "Arc of Oscillating",
+        "slug": "Arc_of_Oscillating",
+        "tags": "Spell, Chaining, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/arc_of_oscillating.webp"
+      },
+      {
+        "name": "Blazing Salvo",
+        "slug": "Blazing_Salvo",
+        "tags": "Spell, AoE, Fire, Projectile",
+        "color": "int",
+        "imageLocal": "skillgemsgem/blazing_salvo.webp"
+      },
+      {
+        "name": "Bone Offering",
+        "slug": "Bone_Offering",
+        "tags": "Minion, Spell, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/bone_offering.webp"
+      },
+      {
+        "name": "Creeping Frost",
+        "slug": "Creeping_Frost",
+        "tags": "Spell, Projectile, Duration, AoE, Cold",
+        "color": "int",
+        "imageLocal": "skillgemsgem/creeping_frost.webp"
+      },
+      {
+        "name": "Essence Drain",
+        "slug": "Essence_Drain",
+        "tags": "Spell, Projectile, Duration, Chaos, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/essence_drain.webp"
+      },
+      {
+        "name": "Essence Drain of Desperation",
+        "slug": "Essence_Drain_of_Desperation",
+        "tags": "Spell, Projectile, Duration, Chaos, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/essence_drain_of_desperation.webp"
+      },
+      {
+        "name": "Essence Drain of Wickedness",
+        "slug": "Essence_Drain_of_Wickedness",
+        "tags": "Spell, Projectile, Duration, Chaos, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/essence_drain_of_wickedness.webp"
+      },
+      {
+        "name": "Flame Surge",
+        "slug": "Flame_Surge",
+        "tags": "Spell, AoE, Fire, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/flame_surge.webp"
+      },
+      {
+        "name": "Flame Surge of Combusting",
+        "slug": "Flame_Surge_of_Combusting",
+        "tags": "Spell, AoE, Fire, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/flame_surge_of_combusting.webp"
+      },
+      {
+        "name": "Flesh Offering",
+        "slug": "Flesh_Offering",
+        "tags": "Minion, Spell, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/flesh_offering.webp"
+      },
+      {
+        "name": "Ice Nova",
+        "slug": "Ice_Nova",
+        "tags": "Spell, AoE, Cold, Nova",
+        "color": "int",
+        "imageLocal": "skillgemsgem/ice_nova.webp"
+      },
+      {
+        "name": "Ice Nova of Frostbolts",
+        "slug": "Ice_Nova_of_Frostbolts",
+        "tags": "Spell, AoE, Cold, Nova",
+        "color": "int",
+        "imageLocal": "skillgemsgem/ice_nova_of_frostbolts.webp"
+      },
+      {
+        "name": "Ice Nova of Deep Freeze",
+        "slug": "Ice_Nova_of_Deep_Freeze",
+        "tags": "Spell, AoE, Cold, Nova",
+        "color": "int",
+        "imageLocal": "skillgemsgem/ice_nova_of_deep_freeze.webp"
+      },
+      {
+        "name": "Ice Spear",
+        "slug": "Ice_Spear",
+        "tags": "Critical, Spell, Projectile, Cold",
+        "color": "int",
+        "imageLocal": "skillgemsgem/ice_spear.webp"
+      },
+      {
+        "name": "Ice Spear of Splitting",
+        "slug": "Ice_Spear_of_Splitting",
+        "tags": "Spell, Projectile, Cold",
+        "color": "int",
+        "imageLocal": "skillgemsgem/ice_spear_of_splitting.webp"
+      },
+      {
+        "name": "Icicle Mine",
+        "slug": "Icicle_Mine",
+        "tags": "Mine, Critical, Spell, Projectile, Cold, Aura, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/icicle_mine.webp"
+      },
+      {
+        "name": "Icicle Mine of Fanning",
+        "slug": "Icicle_Mine_of_Fanning",
+        "tags": "Mine, Critical, Spell, Projectile, Cold, Aura, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/icicle_mine_of_fanning.webp"
+      },
+      {
+        "name": "Icicle Mine of Sabotage",
+        "slug": "Icicle_Mine_of_Sabotage",
+        "tags": "Mine, Critical, Spell, Projectile, Cold, Aura, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/icicle_mine_of_sabotage.webp"
+      },
+      {
+        "name": "Incinerate",
+        "slug": "Incinerate",
+        "tags": "Spell, Fire, Channelling, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/incinerate.webp"
+      },
+      {
+        "name": "Incinerate of Expanse",
+        "slug": "Incinerate_of_Expanse",
+        "tags": "Spell, Fire, Channelling, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/incinerate_of_expanse.webp"
+      },
+      {
+        "name": "Incinerate of Venting",
+        "slug": "Incinerate_of_Venting",
+        "tags": "Spell, Fire, Channelling, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/incinerate_of_venting.webp"
+      },
+      {
+        "name": "Lightning Trap",
+        "slug": "Lightning_Trap",
+        "tags": "Trap, Critical, Spell, Projectile, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/lightning_trap.webp"
+      },
+      {
+        "name": "Lightning Trap of Sparking",
+        "slug": "Lightning_Trap_of_Sparking",
+        "tags": "Trap, Critical, Spell, Projectile, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/lightning_trap_of_sparking.webp"
+      },
+      {
+        "name": "Manabond",
+        "slug": "Manabond",
+        "tags": "Spell, AoE, Lightning, Arcane",
+        "color": "int",
+        "imageLocal": "skillgemsgem/manabond.webp"
+      },
+      {
+        "name": "Power Siphon",
+        "slug": "Power_Siphon",
+        "tags": "Critical, Attack, Projectile",
+        "color": "int",
+        "imageLocal": "skillgemsgem/power_siphon.webp"
+      },
+      {
+        "name": "Power Siphon of the Archmage",
+        "slug": "Power_Siphon_of_the_Archmage",
+        "tags": "Attack, Projectile, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/power_siphon_of_the_archmage.webp"
+      },
+      {
+        "name": "Scorching Ray",
+        "slug": "Scorching_Ray",
+        "tags": "Spell, Fire, Duration, Channelling",
+        "color": "int",
+        "imageLocal": "skillgemsgem/scorching_ray.webp"
+      },
+      {
+        "name": "Scorching Ray of Immolation",
+        "slug": "Scorching_Ray_of_Immolation",
+        "tags": "Spell, Fire, Duration, Channelling",
+        "color": "int",
+        "imageLocal": "skillgemsgem/scorching_ray_of_immolation.webp"
+      },
+      {
+        "name": "Spirit Offering",
+        "slug": "Spirit_Offering",
+        "tags": "Minion, Spell, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/spirit_offering.webp"
+      },
+      {
+        "name": "Storm Brand",
+        "slug": "Storm_Brand",
+        "tags": "Lightning, Spell, AoE, Chaining, Duration, Brand",
+        "color": "int",
+        "imageLocal": "skillgemsgem/storm_brand.webp"
+      },
+      {
+        "name": "Storm Brand of Indecision",
+        "slug": "Storm_Brand_of_Indecision",
+        "tags": "Lightning, Spell, AoE, Chaining, Duration, Brand",
+        "color": "int",
+        "imageLocal": "skillgemsgem/storm_brand_of_indecision.webp"
+      },
+      {
+        "name": "Storm Burst",
+        "slug": "Storm_Burst",
+        "tags": "AoE, Spell, Lightning, Channelling, Duration, Physical",
+        "color": "int",
+        "imageLocal": "skillgemsgem/storm_burst.webp"
+      },
+      {
+        "name": "Storm Call",
+        "slug": "Storm_Call",
+        "tags": "Spell, AoE, Duration, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/storm_call.webp"
+      },
+      {
+        "name": "Storm Call of Trarthus",
+        "slug": "Storm_Call_of_Trarthus",
+        "tags": "Spell, AoE, Duration, Physical",
+        "color": "int",
+        "imageLocal": "skillgemsgem/storm_call_of_trarthus.webp"
+      },
+      {
+        "name": "Vaal Arc",
+        "slug": "Vaal_Arc",
+        "tags": "Spell, Chaining, Vaal, Lightning, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_arc.webp"
+      },
+      {
+        "name": "Vaal Ice Nova",
+        "slug": "Vaal_Ice_Nova",
+        "tags": "Spell, AoE, Vaal, Cold, Nova",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_ice_nova.webp"
+      },
+      {
+        "name": "Vaal Lightning Trap",
+        "slug": "Vaal_Lightning_Trap",
+        "tags": "Trap, Critical, Spell, Projectile, Duration, Vaal, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_lightning_trap.webp"
+      },
+      {
+        "name": "Vaal Power Siphon",
+        "slug": "Vaal_Power_Siphon",
+        "tags": "Critical, Attack, Projectile, Vaal",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_power_siphon.webp"
+      },
+      {
+        "name": "Vaal Storm Call",
+        "slug": "Vaal_Storm_Call",
+        "tags": "Spell, AoE, Duration, Vaal, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_storm_call.webp"
+      },
+      {
+        "name": "Voltaxic Burst",
+        "slug": "Voltaxic_Burst",
+        "tags": "Spell, AoE, Chaos, Lightning, Nova, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/voltaxic_burst.webp"
+      },
+      {
+        "name": "Wintertide Brand",
+        "slug": "Wintertide_Brand",
+        "tags": "Spell, AoE, Cold, Duration, Brand",
+        "color": "int",
+        "imageLocal": "skillgemsgem/wintertide_brand.webp"
+      },
+      {
+        "name": "Arcane Cloak",
+        "slug": "Arcane_Cloak",
+        "tags": "Spell, Duration, Guard, Lightning, Arcane",
+        "color": "int",
+        "imageLocal": "skillgemsgem/arcane_cloak.webp"
+      },
+      {
+        "name": "Assassin's Mark",
+        "slug": "Assassins_Mark",
+        "tags": "Critical, Spell, Curse, Mark",
+        "color": "int",
+        "imageLocal": "skillgemsgem/assassins_mark.webp"
+      },
+      {
+        "name": "Brand Recall",
+        "slug": "Brand_Recall",
+        "tags": "Brand, Spell",
+        "color": "int",
+        "imageLocal": "skillgemsgem/brand_recall.webp"
+      },
+      {
+        "name": "Cold Snap",
+        "slug": "Cold_Snap",
+        "tags": "Spell, AoE, Cold, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/cold_snap.webp"
+      },
+      {
+        "name": "Cold Snap of Power",
+        "slug": "Cold_Snap_of_Power",
+        "tags": "Critical, Spell, AoE, Cold",
+        "color": "int",
+        "imageLocal": "skillgemsgem/cold_snap_of_power.webp"
+      },
+      {
+        "name": "Divine Retribution",
+        "slug": "Divine_Retribution",
+        "tags": "Spell, AoE, Lightning, Physical, Retaliation",
+        "color": "int",
+        "imageLocal": "skillgemsgem/divine_retribution.webp"
+      },
+      {
+        "name": "Forbidden Rite",
+        "slug": "Forbidden_Rite",
+        "tags": "Spell, AoE, Chaos, Projectile",
+        "color": "int",
+        "imageLocal": "skillgemsgem/forbidden_rite.webp"
+      },
+      {
+        "name": "Forbidden Rite of Soul Sacrifice",
+        "slug": "Forbidden_Rite_of_Soul_Sacrifice",
+        "tags": "Spell, AoE, Chaos, Projectile",
+        "color": "int",
+        "imageLocal": "skillgemsgem/forbidden_rite_of_soul_sacrifice.webp"
+      },
+      {
+        "name": "Galvanic Field",
+        "slug": "Galvanic_Field",
+        "tags": "Spell, AoE, Duration, Lightning, Chaining, Orb",
+        "color": "int",
+        "imageLocal": "skillgemsgem/galvanic_field.webp"
+      },
+      {
+        "name": "Galvanic Field of Intensity",
+        "slug": "Galvanic_Field_of_Intensity",
+        "tags": "Spell, AoE, Duration, Lightning, Chaining, Orb",
+        "color": "int",
+        "imageLocal": "skillgemsgem/galvanic_field_of_intensity.webp"
+      },
+      {
+        "name": "Herald of Thunder",
+        "slug": "Herald_of_Thunder",
+        "tags": "Spell, AoE, Duration, Lightning, Herald",
+        "color": "int",
+        "imageLocal": "skillgemsgem/herald_of_thunder.webp"
+      },
+      {
+        "name": "Righteous Fire",
+        "slug": "Righteous_Fire",
+        "tags": "Spell, AoE, Fire",
+        "color": "int",
+        "imageLocal": "skillgemsgem/righteous_fire.webp"
+      },
+      {
+        "name": "Righteous Fire of Arcane Devotion",
+        "slug": "Righteous_Fire_of_Arcane_Devotion",
+        "tags": "Spell, AoE, Fire",
+        "color": "int",
+        "imageLocal": "skillgemsgem/righteous_fire_of_arcane_devotion.webp"
+      },
+      {
+        "name": "Summon Skitterbots",
+        "slug": "Summon_Skitterbots",
+        "tags": "Trap, Mine, Spell, Minion, Cold, Lightning, AoE, Aura",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_skitterbots.webp"
+      },
+      {
+        "name": "Tempest Shield",
+        "slug": "Tempest_Shield",
+        "tags": "Spell, Lightning, Chaining",
+        "color": "int",
+        "imageLocal": "skillgemsgem/tempest_shield.webp"
+      },
+      {
+        "name": "Vaal Cold Snap",
+        "slug": "Vaal_Cold_Snap",
+        "tags": "Spell, AoE, Duration, Vaal, Cold",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_cold_snap.webp"
+      },
+      {
+        "name": "Vaal Righteous Fire",
+        "slug": "Vaal_Righteous_Fire",
+        "tags": "Spell, AoE, Fire, Vaal, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_righteous_fire.webp"
+      },
+      {
+        "name": "Wave of Conviction",
+        "slug": "Wave_of_Conviction",
+        "tags": "Spell, AoE, Duration, Fire, Lightning, Physical",
+        "color": "int",
+        "imageLocal": "skillgemsgem/wave_of_conviction.webp"
+      },
+      {
+        "name": "Wave of Conviction of Trarthus",
+        "slug": "Wave_of_Conviction_of_Trarthus",
+        "tags": "Spell, AoE, Duration, Physical, Fire, Nova",
+        "color": "int",
+        "imageLocal": "skillgemsgem/wave_of_conviction_of_trarthus.webp"
+      },
+      {
+        "name": "Automation",
+        "slug": "Automation",
+        "tags": "Trigger, Spell",
+        "color": "int",
+        "imageLocal": "skillgemsgem/automation.webp"
+      },
+      {
+        "name": "Bane",
+        "slug": "Bane",
+        "tags": "Chaos, Trigger, Spell, AoE, Duration, Hex",
+        "color": "int",
+        "imageLocal": "skillgemsgem/bane.webp"
+      },
+      {
+        "name": "Bane of Condemnation",
+        "slug": "Bane_of_Condemnation",
+        "tags": "Chaos, Trigger, Spell, AoE, Duration, Hex",
+        "color": "int",
+        "imageLocal": "skillgemsgem/bane_of_condemnation.webp"
+      },
+      {
+        "name": "Conductivity",
+        "slug": "Conductivity",
+        "tags": "Spell, AoE, Duration, Lightning, Curse, Hex",
+        "color": "int",
+        "imageLocal": "skillgemsgem/conductivity.webp"
+      },
+      {
+        "name": "Convocation",
+        "slug": "Convocation",
+        "tags": "Minion, Spell, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/convocation.webp"
+      },
+      {
+        "name": "Despair",
+        "slug": "Despair",
+        "tags": "Spell, AoE, Duration, Chaos, Curse, Hex",
+        "color": "int",
+        "imageLocal": "skillgemsgem/despair.webp"
+      },
+      {
+        "name": "Discipline",
+        "slug": "Discipline",
+        "tags": "Aura, Spell, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/discipline.webp"
+      },
+      {
+        "name": "Elemental Weakness",
+        "slug": "Elemental_Weakness",
+        "tags": "Spell, AoE, Duration, Curse, Hex",
+        "color": "int",
+        "imageLocal": "skillgemsgem/elemental_weakness.webp"
+      },
+      {
+        "name": "Energy Blade",
+        "slug": "Energy_Blade",
+        "tags": "Spell, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/energy_blade.webp"
+      },
+      {
+        "name": "Enfeeble",
+        "slug": "Enfeeble",
+        "tags": "Spell, AoE, Duration, Curse, Hex",
+        "color": "int",
+        "imageLocal": "skillgemsgem/enfeeble.webp"
+      },
+      {
+        "name": "Flammability",
+        "slug": "Flammability",
+        "tags": "Spell, AoE, Duration, Fire, Curse, Hex",
+        "color": "int",
+        "imageLocal": "skillgemsgem/flammability.webp"
+      },
+      {
+        "name": "Frostbite",
+        "slug": "Frostbite",
+        "tags": "Spell, AoE, Duration, Cold, Curse, Hex",
+        "color": "int",
+        "imageLocal": "skillgemsgem/frostbite.webp"
+      },
+      {
+        "name": "Malevolence",
+        "slug": "Malevolence",
+        "tags": "Aura, Spell, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/malevolence.webp"
+      },
+      {
+        "name": "Purity of Elements",
+        "slug": "Purity_of_Elements",
+        "tags": "Aura, Spell, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/purity_of_elements.webp"
+      },
+      {
+        "name": "Purity of Lightning",
+        "slug": "Purity_of_Lightning",
+        "tags": "Aura, Spell, AoE, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/purity_of_lightning.webp"
+      },
+      {
+        "name": "Spellslinger",
+        "slug": "Spellslinger",
+        "tags": "Trigger, Spell",
+        "color": "int",
+        "imageLocal": "skillgemsgem/spellslinger.webp"
+      },
+      {
+        "name": "Vaal Discipline",
+        "slug": "Vaal_Discipline",
+        "tags": "Aura, Spell, AoE, Duration, Vaal",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_discipline.webp"
+      },
+      {
+        "name": "Vaal Impurity of Lightning",
+        "slug": "Vaal_Impurity_of_Lightning",
+        "tags": "Aura, Spell, AoE, Duration, Vaal, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_impurity_of_lightning.webp"
+      },
+      {
+        "name": "Wrath",
+        "slug": "Wrath",
+        "tags": "Aura, Spell, AoE, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/wrath.webp"
+      },
+      {
+        "name": "Zealotry",
+        "slug": "Zealotry",
+        "tags": "Aura, Critical, Spell, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/zealotry.webp"
+      },
+      {
+        "name": "Armageddon Brand",
+        "slug": "Armageddon_Brand",
+        "tags": "Spell, AoE, Fire, Duration, Brand",
+        "color": "int",
+        "imageLocal": "skillgemsgem/armageddon_brand.webp"
+      },
+      {
+        "name": "Armageddon Brand of Volatility",
+        "slug": "Armageddon_Brand_of_Volatility",
+        "tags": "Spell, AoE, Fire, Duration, Brand",
+        "color": "int",
+        "imageLocal": "skillgemsgem/armageddon_brand_of_volatility.webp"
+      },
+      {
+        "name": "Armageddon Brand of Recall",
+        "slug": "Armageddon_Brand_of_Recall",
+        "tags": "Spell, AoE, Fire, Duration, Brand",
+        "color": "int",
+        "imageLocal": "skillgemsgem/armageddon_brand_of_recall.webp"
+      },
+      {
+        "name": "Ball Lightning",
+        "slug": "Ball_Lightning",
+        "tags": "Spell, Projectile, AoE, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/ball_lightning.webp"
+      },
+      {
+        "name": "Ball Lightning of Orbiting",
+        "slug": "Ball_Lightning_of_Orbiting",
+        "tags": "Spell, Projectile, AoE, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/ball_lightning_of_orbiting.webp"
+      },
+      {
+        "name": "Ball Lightning of Static",
+        "slug": "Ball_Lightning_of_Static",
+        "tags": "Spell, AoE, Lightning, Orb",
+        "color": "int",
+        "imageLocal": "skillgemsgem/ball_lightning_of_static.webp"
+      },
+      {
+        "name": "Crackling Lance",
+        "slug": "Crackling_Lance",
+        "tags": "Spell, AoE, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/crackling_lance.webp"
+      },
+      {
+        "name": "Crackling Lance of Branching",
+        "slug": "Crackling_Lance_of_Branching",
+        "tags": "Spell, AoE, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/crackling_lance_of_branching.webp"
+      },
+      {
+        "name": "Crackling Lance of Disintegration",
+        "slug": "Crackling_Lance_of_Disintegration",
+        "tags": "Spell, AoE, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/crackling_lance_of_disintegration.webp"
+      },
+      {
+        "name": "Dark Pact",
+        "slug": "Dark_Pact",
+        "tags": "Minion, Spell, AoE, Chaining, Chaos, Nova",
+        "color": "int",
+        "imageLocal": "skillgemsgem/dark_pact.webp"
+      },
+      {
+        "name": "Dark Pact of Trarthus",
+        "slug": "Dark_Pact_of_Trarthus",
+        "tags": "Spell, AoE, Chaos, Nova",
+        "color": "int",
+        "imageLocal": "skillgemsgem/dark_pact_of_trarthus.webp"
+      },
+      {
+        "name": "Discharge",
+        "slug": "Discharge",
+        "tags": "Spell, AoE, Fire, Cold, Lightning, Nova",
+        "color": "int",
+        "imageLocal": "skillgemsgem/discharge.webp"
+      },
+      {
+        "name": "Discharge of Misery",
+        "slug": "Discharge_of_Misery",
+        "tags": "Spell, AoE, Fire, Cold, Lightning, Nova",
+        "color": "int",
+        "imageLocal": "skillgemsgem/discharge_of_misery.webp"
+      },
+      {
+        "name": "Divine Ire",
+        "slug": "Divine_Ire",
+        "tags": "Lightning, Spell, AoE, Channelling, Physical",
+        "color": "int",
+        "imageLocal": "skillgemsgem/divine_ire.webp"
+      },
+      {
+        "name": "Divine Ire of Holy Lightning",
+        "slug": "Divine_Ire_of_Holy_Lightning",
+        "tags": "Lightning, Spell, AoE, Channelling, Physical",
+        "color": "int",
+        "imageLocal": "skillgemsgem/divine_ire_of_holy_lightning.webp"
+      },
+      {
+        "name": "Divine Ire of Disintegration",
+        "slug": "Divine_Ire_of_Disintegration",
+        "tags": "Lightning, Spell, AoE, Channelling, Physical",
+        "color": "int",
+        "imageLocal": "skillgemsgem/divine_ire_of_disintegration.webp"
+      },
+      {
+        "name": "Eye of Winter",
+        "slug": "Eye_of_Winter",
+        "tags": "Spell, Projectile, Cold",
+        "color": "int",
+        "imageLocal": "skillgemsgem/eye_of_winter.webp"
+      },
+      {
+        "name": "Eye of Winter of Finality",
+        "slug": "Eye_of_Winter_of_Finality",
+        "tags": "Spell, Projectile, Cold",
+        "color": "int",
+        "imageLocal": "skillgemsgem/eye_of_winter_of_finality.webp"
+      },
+      {
+        "name": "Eye of Winter of Transience",
+        "slug": "Eye_of_Winter_of_Transience",
+        "tags": "Spell, Projectile, Cold",
+        "color": "int",
+        "imageLocal": "skillgemsgem/eye_of_winter_of_transience.webp"
+      },
+      {
+        "name": "Firestorm",
+        "slug": "Firestorm",
+        "tags": "Spell, AoE, Duration, Fire",
+        "color": "int",
+        "imageLocal": "skillgemsgem/firestorm.webp"
+      },
+      {
+        "name": "Firestorm of Meteors",
+        "slug": "Firestorm_of_Meteors",
+        "tags": "Spell, AoE, Fire",
+        "color": "int",
+        "imageLocal": "skillgemsgem/firestorm_of_meteors.webp"
+      },
+      {
+        "name": "Firestorm of Pelting",
+        "slug": "Firestorm_of_Pelting",
+        "tags": "Spell, AoE, Duration, Fire",
+        "color": "int",
+        "imageLocal": "skillgemsgem/firestorm_of_pelting.webp"
+      },
+      {
+        "name": "Flameblast",
+        "slug": "Flameblast",
+        "tags": "Spell, AoE, Fire, Channelling",
+        "color": "int",
+        "imageLocal": "skillgemsgem/flameblast.webp"
+      },
+      {
+        "name": "Flameblast of Celerity",
+        "slug": "Flameblast_of_Celerity",
+        "tags": "Spell, AoE, Fire, Channelling",
+        "color": "int",
+        "imageLocal": "skillgemsgem/flameblast_of_celerity.webp"
+      },
+      {
+        "name": "Flameblast of Contraction",
+        "slug": "Flameblast_of_Contraction",
+        "tags": "Spell, AoE, Fire, Channelling",
+        "color": "int",
+        "imageLocal": "skillgemsgem/flameblast_of_contraction.webp"
+      },
+      {
+        "name": "Glacial Cascade",
+        "slug": "Glacial_Cascade",
+        "tags": "Spell, AoE, Cold, Physical",
+        "color": "int",
+        "imageLocal": "skillgemsgem/glacial_cascade.webp"
+      },
+      {
+        "name": "Glacial Cascade of the Fissure",
+        "slug": "Glacial_Cascade_of_the_Fissure",
+        "tags": "Spell, AoE, Cold, Physical",
+        "color": "int",
+        "imageLocal": "skillgemsgem/glacial_cascade_of_the_fissure.webp"
+      },
+      {
+        "name": "Hexblast",
+        "slug": "Hexblast",
+        "tags": "Spell, AoE, Chaos, Hex",
+        "color": "int",
+        "imageLocal": "skillgemsgem/hexblast.webp"
+      },
+      {
+        "name": "Hexblast of Contradiction",
+        "slug": "Hexblast_of_Contradiction",
+        "tags": "Spell, AoE, Chaos, Hex",
+        "color": "int",
+        "imageLocal": "skillgemsgem/hexblast_of_contradiction.webp"
+      },
+      {
+        "name": "Hexblast of Havoc",
+        "slug": "Hexblast_of_Havoc",
+        "tags": "Spell, AoE, Chaos, Hex",
+        "color": "int",
+        "imageLocal": "skillgemsgem/hexblast_of_havoc.webp"
+      },
+      {
+        "name": "Kinetic Blast",
+        "slug": "Kinetic_Blast",
+        "tags": "Attack, Projectile, AoE",
+        "color": "int",
+        "imageLocal": "skillgemsgem/kinetic_blast.webp"
+      },
+      {
+        "name": "Kinetic Blast of Clustering",
+        "slug": "Kinetic_Blast_of_Clustering",
+        "tags": "Attack, Projectile, AoE, Physical",
+        "color": "int",
+        "imageLocal": "skillgemsgem/kinetic_blast_of_clustering.webp"
+      },
+      {
+        "name": "Lightning Conduit",
+        "slug": "Lightning_Conduit",
+        "tags": "Spell, AoE, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/lightning_conduit.webp"
+      },
+      {
+        "name": "Lightning Conduit of the Heavens",
+        "slug": "Lightning_Conduit_of_the_Heavens",
+        "tags": "Spell, AoE, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/lightning_conduit_of_the_heavens.webp"
+      },
+      {
+        "name": "Lightning Spire Trap",
+        "slug": "Lightning_Spire_Trap",
+        "tags": "Trap, Critical, Spell, Duration, AoE, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/lightning_spire_trap.webp"
+      },
+      {
+        "name": "Lightning Spire Trap of Zapping",
+        "slug": "Lightning_Spire_Trap_of_Zapping",
+        "tags": "Trap, Spell, Duration, AoE, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/lightning_spire_trap_of_zapping.webp"
+      },
+      {
+        "name": "Lightning Spire Trap of Overloading",
+        "slug": "Lightning_Spire_Trap_of_Overloading",
+        "tags": "Trap, Spell, Duration, AoE, Lightning",
+        "color": "int",
+        "imageLocal": "skillgemsgem/lightning_spire_trap_of_overloading.webp"
+      },
+      {
+        "name": "Penance Brand",
+        "slug": "Penance_Brand",
+        "tags": "Spell, AoE, Physical, Lightning, Duration, Brand",
+        "color": "int",
+        "imageLocal": "skillgemsgem/penance_brand.webp"
+      },
+      {
+        "name": "Penance Brand of Dissipation",
+        "slug": "Penance_Brand_of_Dissipation",
+        "tags": "Spell, AoE, Physical, Lightning, Duration, Brand",
+        "color": "int",
+        "imageLocal": "skillgemsgem/penance_brand_of_dissipation.webp"
+      },
+      {
+        "name": "Penance Brand of Conduction",
+        "slug": "Penance_Brand_of_Conduction",
+        "tags": "Spell, AoE, Physical, Lightning, Duration, Brand",
+        "color": "int",
+        "imageLocal": "skillgemsgem/penance_brand_of_conduction.webp"
+      },
+      {
+        "name": "Pyroclast Mine",
+        "slug": "Pyroclast_Mine",
+        "tags": "Mine, Spell, Projectile, Fire, AoE, Aura, Nova",
+        "color": "int",
+        "imageLocal": "skillgemsgem/pyroclast_mine.webp"
+      },
+      {
+        "name": "Pyroclast Mine of Sabotage",
+        "slug": "Pyroclast_Mine_of_Sabotage",
+        "tags": "Mine, Spell, Projectile, Fire, AoE, Aura, Nova",
+        "color": "int",
+        "imageLocal": "skillgemsgem/pyroclast_mine_of_sabotage.webp"
+      },
+      {
+        "name": "Raise Spectre",
+        "slug": "Raise_Spectre",
+        "tags": "Spell, Minion",
+        "color": "int",
+        "imageLocal": "skillgemsgem/raise_spectre.webp"
+      },
+      {
+        "name": "Raise Spectre of Transience",
+        "slug": "Raise_Spectre_of_Transience",
+        "tags": "Spell, Minion, Duration",
+        "color": "int",
+        "imageLocal": "skillgemsgem/raise_spectre_of_transience.webp"
+      },
+      {
+        "name": "Shock Nova",
+        "slug": "Shock_Nova",
+        "tags": "Spell, AoE, Lightning, Nova",
+        "color": "int",
+        "imageLocal": "skillgemsgem/shock_nova.webp"
+      },
+      {
+        "name": "Soulrend",
+        "slug": "Soulrend",
+        "tags": "Chaos, Spell, AoE, Duration, Projectile",
+        "color": "int",
+        "imageLocal": "skillgemsgem/soulrend.webp"
+      },
+      {
+        "name": "Soulrend of Reaping",
+        "slug": "Soulrend_of_Reaping",
+        "tags": "Chaos, Spell, Projectile",
+        "color": "int",
+        "imageLocal": "skillgemsgem/soulrend_of_reaping.webp"
+      },
+      {
+        "name": "Soulrend of the Spiral",
+        "slug": "Soulrend_of_the_Spiral",
+        "tags": "Chaos, Spell, AoE, Duration, Projectile",
+        "color": "int",
+        "imageLocal": "skillgemsgem/soulrend_of_the_spiral.webp"
+      },
+      {
+        "name": "Stormbind",
+        "slug": "Stormbind",
+        "tags": "Spell, AoE, Channelling, Lightning, Duration, Arcane",
+        "color": "int",
+        "imageLocal": "skillgemsgem/stormbind.webp"
+      },
+      {
+        "name": "Stormbind of Teleportation",
+        "slug": "Stormbind_of_Teleportation",
+        "tags": "Spell, AoE, Channelling, Lightning, Duration, Arcane, Movement, Travel, Blink",
+        "color": "int",
+        "imageLocal": "skillgemsgem/stormbind_of_teleportation.webp"
+      },
+      {
+        "name": "Summon Reaper",
+        "slug": "Summon_Reaper",
+        "tags": "Physical, Minion, Spell",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_reaper.webp"
+      },
+      {
+        "name": "Summon Reaper of Revenants",
+        "slug": "Summon_Reaper_of_Revenants",
+        "tags": "Minion, Spell",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_reaper_of_revenants.webp"
+      },
+      {
+        "name": "Summon Reaper of Eviscerating",
+        "slug": "Summon_Reaper_of_Eviscerating",
+        "tags": "Physical, Minion, Spell",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_reaper_of_eviscerating.webp"
+      },
+      {
+        "name": "Vaal Firestorm",
+        "slug": "Vaal_Firestorm",
+        "tags": "Spell, AoE, Duration, Fire, Vaal",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_firestorm.webp"
+      },
+      {
+        "name": "Vaal Flameblast",
+        "slug": "Vaal_Flameblast",
+        "tags": "Spell, AoE, Vaal, Fire, Channelling",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vaal_flameblast.webp"
+      },
+      {
+        "name": "Vortex",
+        "slug": "Vortex",
+        "tags": "Spell, AoE, Cold, Duration, Nova",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vortex.webp"
+      },
+      {
+        "name": "Vortex of Projection",
+        "slug": "Vortex_of_Projection",
+        "tags": "Spell, AoE, Cold, Duration, Nova",
+        "color": "int",
+        "imageLocal": "skillgemsgem/vortex_of_projection.webp"
+      },
+      {
+        "name": "Winter Orb",
+        "slug": "Winter_Orb",
+        "tags": "Cold, Spell, Channelling, AoE, Duration, Projectile, Orb",
+        "color": "int",
+        "imageLocal": "skillgemsgem/winter_orb.webp"
+      },
+      {
+        "name": "Convocation",
+        "slug": "Convocation",
+        "tags": "Spell, Duration, Minion",
+        "color": "int",
+        "imageLocal": "skillgemsgem/convocation.webp"
+      },
+      {
+        "name": "Destructive Link",
+        "slug": "Destructive_Link",
+        "tags": "Critical, Spell, Duration, Link",
+        "color": "int",
+        "imageLocal": "skillgemsgem/destructive_link.webp"
+      },
+      {
+        "name": "Frost Shield",
+        "slug": "Frost_Shield",
+        "tags": "Critical, Spell, AoE, Duration, Cold",
+        "color": "int",
+        "imageLocal": "skillgemsgem/frost_shield.webp"
+      },
+      {
+        "name": "Hydrosphere",
+        "slug": "Hydrosphere",
+        "tags": "Spell, AoE, Duration, Cold, Orb, Lightning, Physical",
+        "color": "int",
+        "imageLocal": "skillgemsgem/hydrosphere.webp"
+      },
+      {
+        "name": "Sigil of Power",
+        "slug": "Sigil_of_Power",
+        "tags": "Spell, AoE, Duration, Lightning, Arcane",
+        "color": "int",
+        "imageLocal": "skillgemsgem/sigil_of_power.webp"
+      },
+      {
+        "name": "Soul Link",
+        "slug": "Soul_Link",
+        "tags": "Spell, Duration, Link",
+        "color": "int",
+        "imageLocal": "skillgemsgem/soul_link.webp"
+      },
+      {
+        "name": "Summon Carrion Golem",
+        "slug": "Summon_Carrion_Golem",
+        "tags": "Physical, Minion, Spell, Golem",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_carrion_golem.webp"
+      },
+      {
+        "name": "Summon Carrion Golem of Hordes",
+        "slug": "Summon_Carrion_Golem_of_Hordes",
+        "tags": "Physical, Minion, Spell, Golem",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_carrion_golem_of_hordes.webp"
+      },
+      {
+        "name": "Summon Carrion Golem of Scavenging",
+        "slug": "Summon_Carrion_Golem_of_Scavenging",
+        "tags": "Physical, Minion, Spell, Golem",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_carrion_golem_of_scavenging.webp"
+      },
+      {
+        "name": "Summon Chaos Golem",
+        "slug": "Summon_Chaos_Golem",
+        "tags": "Chaos, Minion, Spell, Golem",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_chaos_golem.webp"
+      },
+      {
+        "name": "Summon Chaos Golem of Hordes",
+        "slug": "Summon_Chaos_Golem_of_Hordes",
+        "tags": "Chaos, Minion, Spell, Golem",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_chaos_golem_of_hordes.webp"
+      },
+      {
+        "name": "Summon Chaos Golem of the Maelström",
+        "slug": "Summon_Chaos_Golem_of_the_Maelstr%C3%B6m",
+        "tags": "Chaos, Minion, Spell, Golem",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_chaos_golem_of_the_maelstr_m.webp"
+      },
+      {
+        "name": "Summon Lightning Golem",
+        "slug": "Summon_Lightning_Golem",
+        "tags": "Lightning, Minion, Spell, Golem",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_lightning_golem.webp"
+      },
+      {
+        "name": "Summon Lightning Golem of Hordes",
+        "slug": "Summon_Lightning_Golem_of_Hordes",
+        "tags": "Lightning, Minion, Spell, Golem",
+        "color": "int",
+        "imageLocal": "skillgemsgem/summon_lightning_golem_of_hordes.webp"
+      },
+      {
+        "name": "Void Sphere",
+        "slug": "Void_Sphere",
+        "tags": "Spell, AoE, Duration, Physical, Chaos, Orb",
+        "color": "int",
+        "imageLocal": "skillgemsgem/void_sphere.webp"
+      },
+      {
+        "name": "Void Sphere of Rending",
+        "slug": "Void_Sphere_of_Rending",
+        "tags": "Spell, AoE, Duration, Physical, Chaos, Orb",
+        "color": "int",
+        "imageLocal": "skillgemsgem/void_sphere_of_rending.webp"
+      },
+      {
+        "name": "Arcanist Brand",
+        "slug": "Arcanist_Brand",
+        "tags": "Trigger, Spell, Duration, Brand",
+        "color": "int",
+        "imageLocal": "skillgemsgem/arcanist_brand.webp"
+      },
+      {
+        "name": "Quickstep",
+        "slug": "Quickstep",
+        "tags": "Spell, Movement, Travel, Blink",
+        "color": "",
+        "imageLocal": "skillgemsgem/quickstep.webp"
+      },
+      {
+        "name": "Detonate Mines",
+        "slug": "Detonate_Mines",
+        "tags": "Mine, Spell",
+        "color": "",
+        "imageLocal": "skillgemsgem/detonate_mines.webp"
+      },
+      {
+        "name": "Portal",
+        "slug": "Portal",
+        "tags": "Spell",
+        "color": "",
+        "imageLocal": "skillgemsgem/portal.webp"
+      },
+      {
+        "name": "Vaal Breach",
+        "slug": "Vaal_Breach",
+        "tags": "Spell, Vaal",
+        "color": "",
+        "imageLocal": "skillgemsgem/vaal_breach.webp"
+      }
+    ],
+    "SupportGemsGem": [
+      {
+        "name": "Chance to Bleed Support",
+        "slug": "Chance_to_Bleed_Support",
+        "tags": "Attack, Physical, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/chance_to_bleed_support.webp"
+      },
+      {
+        "name": "Empower Support",
+        "slug": "Empower_Support",
+        "tags": "Exceptional, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/empower_support.webp"
+      },
+      {
+        "name": "Ruthless Support",
+        "slug": "Ruthless_Support",
+        "tags": "Slam, Support, Melee, Attack, Strike",
+        "color": "str",
+        "imageLocal": "supportgemsgem/ruthless_support.webp"
+      },
+      {
+        "name": "Ancestral Call Support",
+        "slug": "Ancestral_Call_Support",
+        "tags": "Support, Melee, Attack, Strike",
+        "color": "str",
+        "imageLocal": "supportgemsgem/ancestral_call_support.webp"
+      },
+      {
+        "name": "Added Fire Damage Support",
+        "slug": "Added_Fire_Damage_Support",
+        "tags": "Fire, Physical, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/added_fire_damage_support.webp"
+      },
+      {
+        "name": "Ballista Totem Support",
+        "slug": "Ballista_Totem_Support",
+        "tags": "Bow, Projectile, Support, Totem",
+        "color": "str",
+        "imageLocal": "supportgemsgem/ballista_totem_support.webp"
+      },
+      {
+        "name": "Earthbreaker Support",
+        "slug": "Earthbreaker_Support",
+        "tags": "Attack, Melee, Slam, AoE, Support, Totem",
+        "color": "str",
+        "imageLocal": "supportgemsgem/earthbreaker_support.webp"
+      },
+      {
+        "name": "Flamewood Support",
+        "slug": "Flamewood_Support",
+        "tags": "Support, Totem, Spell, AoE, Fire, Projectile, Trigger",
+        "color": "str",
+        "imageLocal": "supportgemsgem/flamewood_support.webp"
+      },
+      {
+        "name": "Knockback Support",
+        "slug": "Knockback_Support",
+        "tags": "Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/knockback_support.webp"
+      },
+      {
+        "name": "Life Gain on Hit Support",
+        "slug": "Life_Gain_on_Hit_Support",
+        "tags": "Attack, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/life_gain_on_hit_support.webp"
+      },
+      {
+        "name": "Lifetap Support",
+        "slug": "Lifetap_Support",
+        "tags": "Support, Duration",
+        "color": "str",
+        "imageLocal": "supportgemsgem/lifetap_support.webp"
+      },
+      {
+        "name": "Maim Support",
+        "slug": "Maim_Support",
+        "tags": "Attack, Physical, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/maim_support.webp"
+      },
+      {
+        "name": "Melee Splash Support",
+        "slug": "Melee_Splash_Support",
+        "tags": "Support, Melee, Attack, Strike, AoE",
+        "color": "str",
+        "imageLocal": "supportgemsgem/melee_splash_support.webp"
+      },
+      {
+        "name": "Spell Totem Support",
+        "slug": "Spell_Totem_Support",
+        "tags": "Support, Spell, Totem",
+        "color": "str",
+        "imageLocal": "supportgemsgem/spell_totem_support.webp"
+      },
+      {
+        "name": "Stun Support",
+        "slug": "Stun_Support",
+        "tags": "Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/stun_support.webp"
+      },
+      {
+        "name": "Bloodlust Support",
+        "slug": "Bloodlust_Support",
+        "tags": "Attack, Physical, Support, Melee",
+        "color": "str",
+        "imageLocal": "supportgemsgem/bloodlust_support.webp"
+      },
+      {
+        "name": "Cold to Fire Support",
+        "slug": "Cold_to_Fire_Support",
+        "tags": "Cold, Fire, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/cold_to_fire_support.webp"
+      },
+      {
+        "name": "Cruelty Support",
+        "slug": "Cruelty_Support",
+        "tags": "Support, Duration",
+        "color": "str",
+        "imageLocal": "supportgemsgem/cruelty_support.webp"
+      },
+      {
+        "name": "Damage on Full Life Support",
+        "slug": "Damage_on_Full_Life_Support",
+        "tags": "Attack, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/damage_on_full_life_support.webp"
+      },
+      {
+        "name": "Elemental Damage with Attacks Support",
+        "slug": "Elemental_Damage_with_Attacks_Support",
+        "tags": "Attack, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/elemental_damage_with_attacks_support.webp"
+      },
+      {
+        "name": "Endurance Charge on Melee Stun Support",
+        "slug": "Endurance_Charge_on_Melee_Stun_Support",
+        "tags": "Support, Melee, Attack",
+        "color": "str",
+        "imageLocal": "supportgemsgem/endurance_charge_on_melee_stun_support.webp"
+      },
+      {
+        "name": "Iron Grip Support",
+        "slug": "Iron_Grip_Support",
+        "tags": "Projectile, Physical, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/iron_grip_support.webp"
+      },
+      {
+        "name": "Iron Will Support",
+        "slug": "Iron_Will_Support",
+        "tags": "Spell, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/iron_will_support.webp"
+      },
+      {
+        "name": "Melee Physical Damage Support",
+        "slug": "Melee_Physical_Damage_Support",
+        "tags": "Melee, Physical, Support, Attack",
+        "color": "str",
+        "imageLocal": "supportgemsgem/melee_physical_damage_support.webp"
+      },
+      {
+        "name": "Rage Support",
+        "slug": "Rage_Support",
+        "tags": "Support, Melee, Attack",
+        "color": "str",
+        "imageLocal": "supportgemsgem/rage_support.webp"
+      },
+      {
+        "name": "Shockwave Support",
+        "slug": "Shockwave_Support",
+        "tags": "Support, Melee, Attack, AoE",
+        "color": "str",
+        "imageLocal": "supportgemsgem/shockwave_support.webp"
+      },
+      {
+        "name": "Volatility Support",
+        "slug": "Volatility_Support",
+        "tags": "Attack, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/volatility_support.webp"
+      },
+      {
+        "name": "Arrogance Support",
+        "slug": "Arrogance_Support",
+        "tags": "Aura, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/arrogance_support.webp"
+      },
+      {
+        "name": "Bloodthirst Support",
+        "slug": "Bloodthirst_Support",
+        "tags": "Attack, Physical, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/bloodthirst_support.webp"
+      },
+      {
+        "name": "Burning Damage Support",
+        "slug": "Burning_Damage_Support",
+        "tags": "Fire, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/burning_damage_support.webp"
+      },
+      {
+        "name": "Controlled Blaze Support",
+        "slug": "Controlled_Blaze_Support",
+        "tags": "Fire, Support, Melee, Attack",
+        "color": "str",
+        "imageLocal": "supportgemsgem/controlled_blaze_support.webp"
+      },
+      {
+        "name": "Corrupting Cry Support",
+        "slug": "Corrupting_Cry_Support",
+        "tags": "AoE, Physical, Support, Warcry, Duration",
+        "color": "str",
+        "imageLocal": "supportgemsgem/corrupting_cry_support.webp"
+      },
+      {
+        "name": "Divine Blessing Support",
+        "slug": "Divine_Blessing_Support",
+        "tags": "Support, Aura, Duration, Blessing",
+        "color": "str",
+        "imageLocal": "supportgemsgem/divine_blessing_support.webp"
+      },
+      {
+        "name": "Expert Retaliation Support",
+        "slug": "Expert_Retaliation_Support",
+        "tags": "Retaliation, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/expert_retaliation_support.webp"
+      },
+      {
+        "name": "Fire Penetration Support",
+        "slug": "Fire_Penetration_Support",
+        "tags": "Fire, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/fire_penetration_support.webp"
+      },
+      {
+        "name": "Fortify Support",
+        "slug": "Fortify_Support",
+        "tags": "Attack, Support, Melee",
+        "color": "str",
+        "imageLocal": "supportgemsgem/fortify_support.webp"
+      },
+      {
+        "name": "Generosity Support",
+        "slug": "Generosity_Support",
+        "tags": "Support, Aura",
+        "color": "str",
+        "imageLocal": "supportgemsgem/generosity_support.webp"
+      },
+      {
+        "name": "Guardian's Blessing Support",
+        "slug": "Guardians_Blessing_Support",
+        "tags": "Support, Aura, Blessing, Minion",
+        "color": "str",
+        "imageLocal": "supportgemsgem/guardians_blessing_support.webp"
+      },
+      {
+        "name": "Inspiration Support",
+        "slug": "Inspiration_Support",
+        "tags": "Critical, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/inspiration_support.webp"
+      },
+      {
+        "name": "Less Duration Support",
+        "slug": "Less_Duration_Support",
+        "tags": "Support, Duration",
+        "color": "str",
+        "imageLocal": "supportgemsgem/less_duration_support.webp"
+      },
+      {
+        "name": "Life Leech Support",
+        "slug": "Life_Leech_Support",
+        "tags": "Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/life_leech_support.webp"
+      },
+      {
+        "name": "More Duration Support",
+        "slug": "More_Duration_Support",
+        "tags": "Support, Duration",
+        "color": "str",
+        "imageLocal": "supportgemsgem/more_duration_support.webp"
+      },
+      {
+        "name": "Pulverise Support",
+        "slug": "Pulverise_Support",
+        "tags": "AoE, Support, Melee, Attack",
+        "color": "str",
+        "imageLocal": "supportgemsgem/pulverise_support.webp"
+      },
+      {
+        "name": "Urgent Orders Support",
+        "slug": "Urgent_Orders_Support",
+        "tags": "Warcry, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/urgent_orders_support.webp"
+      },
+      {
+        "name": "Behead Support",
+        "slug": "Behead_Support",
+        "tags": "Support, Melee, Attack, Strike",
+        "color": "str",
+        "imageLocal": "supportgemsgem/behead_support.webp"
+      },
+      {
+        "name": "Brutality Support",
+        "slug": "Brutality_Support",
+        "tags": "Physical, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/brutality_support.webp"
+      },
+      {
+        "name": "Cast when Damage Taken Support",
+        "slug": "Cast_when_Damage_Taken_Support",
+        "tags": "Support, Spell, Trigger",
+        "color": "str",
+        "imageLocal": "supportgemsgem/cast_when_damage_taken_support.webp"
+      },
+      {
+        "name": "Cast on Melee Kill Support",
+        "slug": "Cast_on_Melee_Kill_Support",
+        "tags": "Support, Melee, Attack, Spell, Trigger",
+        "color": "str",
+        "imageLocal": "supportgemsgem/cast_on_melee_kill_support.webp"
+      },
+      {
+        "name": "Eternal Blessing Support",
+        "slug": "Eternal_Blessing_Support",
+        "tags": "Support, Aura, Blessing",
+        "color": "str",
+        "imageLocal": "supportgemsgem/eternal_blessing_support.webp"
+      },
+      {
+        "name": "Fist of War Support",
+        "slug": "Fist_of_War_Support",
+        "tags": "Slam, Attack, Melee, AoE, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/fist_of_war_support.webp"
+      },
+      {
+        "name": "Multiple Totems Support",
+        "slug": "Multiple_Totems_Support",
+        "tags": "Totem, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/multiple_totems_support.webp"
+      },
+      {
+        "name": "Multistrike Support",
+        "slug": "Multistrike_Support",
+        "tags": "Attack, Melee, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/multistrike_support.webp"
+      },
+      {
+        "name": "Overexertion Support",
+        "slug": "Overexertion_Support",
+        "tags": "Warcry, Support, Melee, Attack",
+        "color": "str",
+        "imageLocal": "supportgemsgem/overexertion_support.webp"
+      },
+      {
+        "name": "Trauma Support",
+        "slug": "Trauma_Support",
+        "tags": "Physical, Support, Melee, Attack, Strike, Duration",
+        "color": "str",
+        "imageLocal": "supportgemsgem/trauma_support.webp"
+      },
+      {
+        "name": "Awakened Added Fire Damage Support",
+        "slug": "Awakened_Added_Fire_Damage_Support",
+        "tags": "Fire, Physical, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/awakened_added_fire_damage_support.webp"
+      },
+      {
+        "name": "Awakened Ancestral Call Support",
+        "slug": "Awakened_Ancestral_Call_Support",
+        "tags": "Support, Melee, Attack, Strike",
+        "color": "str",
+        "imageLocal": "supportgemsgem/awakened_ancestral_call_support.webp"
+      },
+      {
+        "name": "Awakened Brutality Support",
+        "slug": "Awakened_Brutality_Support",
+        "tags": "Physical, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/awakened_brutality_support.webp"
+      },
+      {
+        "name": "Awakened Burning Damage Support",
+        "slug": "Awakened_Burning_Damage_Support",
+        "tags": "Fire, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/awakened_burning_damage_support.webp"
+      },
+      {
+        "name": "Awakened Elemental Damage with Attacks Support",
+        "slug": "Awakened_Elemental_Damage_with_Attacks_Support",
+        "tags": "Attack, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/awakened_elemental_damage_with_attacks_support.webp"
+      },
+      {
+        "name": "Awakened Empower Support",
+        "slug": "Awakened_Empower_Support",
+        "tags": "Exceptional, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/awakened_empower_support.webp"
+      },
+      {
+        "name": "Awakened Fire Penetration Support",
+        "slug": "Awakened_Fire_Penetration_Support",
+        "tags": "Fire, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/awakened_fire_penetration_support.webp"
+      },
+      {
+        "name": "Awakened Generosity Support",
+        "slug": "Awakened_Generosity_Support",
+        "tags": "Support, Aura",
+        "color": "str",
+        "imageLocal": "supportgemsgem/awakened_generosity_support.webp"
+      },
+      {
+        "name": "Awakened Melee Physical Damage Support",
+        "slug": "Awakened_Melee_Physical_Damage_Support",
+        "tags": "Melee, Physical, Support, Attack",
+        "color": "str",
+        "imageLocal": "supportgemsgem/awakened_melee_physical_damage_support.webp"
+      },
+      {
+        "name": "Awakened Melee Splash Support",
+        "slug": "Awakened_Melee_Splash_Support",
+        "tags": "Support, Melee, Attack, Strike, AoE",
+        "color": "str",
+        "imageLocal": "supportgemsgem/awakened_melee_splash_support.webp"
+      },
+      {
+        "name": "Awakened Multistrike Support",
+        "slug": "Awakened_Multistrike_Support",
+        "tags": "Attack, Melee, Support",
+        "color": "str",
+        "imageLocal": "supportgemsgem/awakened_multistrike_support.webp"
+      },
+      {
+        "name": "Chance to Poison Support",
+        "slug": "Chance_to_Poison_Support",
+        "tags": "Chaos, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/chance_to_poison_support.webp"
+      },
+      {
+        "name": "Enhance Support",
+        "slug": "Enhance_Support",
+        "tags": "Exceptional, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/enhance_support.webp"
+      },
+      {
+        "name": "Momentum Support",
+        "slug": "Momentum_Support",
+        "tags": "Attack, Support, Duration",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/momentum_support.webp"
+      },
+      {
+        "name": "Mirage Archer Support",
+        "slug": "Mirage_Archer_Support",
+        "tags": "Bow, Attack, Support, Duration",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/mirage_archer_support.webp"
+      },
+      {
+        "name": "Pierce Support",
+        "slug": "Pierce_Support",
+        "tags": "Support, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/pierce_support.webp"
+      },
+      {
+        "name": "Swift Assembly Support",
+        "slug": "Swift_Assembly_Support",
+        "tags": "Support, Trap, Mine",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/swift_assembly_support.webp"
+      },
+      {
+        "name": "Volley Support",
+        "slug": "Volley_Support",
+        "tags": "Support, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/volley_support.webp"
+      },
+      {
+        "name": "Added Cold Damage Support",
+        "slug": "Added_Cold_Damage_Support",
+        "tags": "Cold, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/added_cold_damage_support.webp"
+      },
+      {
+        "name": "Additional Accuracy Support",
+        "slug": "Additional_Accuracy_Support",
+        "tags": "Attack, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/additional_accuracy_support.webp"
+      },
+      {
+        "name": "Arrow Nova Support",
+        "slug": "Arrow_Nova_Support",
+        "tags": "Bow, Attack, Support, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/arrow_nova_support.webp"
+      },
+      {
+        "name": "Blind Support",
+        "slug": "Blind_Support",
+        "tags": "Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/blind_support.webp"
+      },
+      {
+        "name": "Chance to Flee Support",
+        "slug": "Chance_to_Flee_Support",
+        "tags": "Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/chance_to_flee_support.webp"
+      },
+      {
+        "name": "Faster Attacks Support",
+        "slug": "Faster_Attacks_Support",
+        "tags": "Attack, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/faster_attacks_support.webp"
+      },
+      {
+        "name": "Lesser Multiple Projectiles Support",
+        "slug": "Lesser_Multiple_Projectiles_Support",
+        "tags": "Support, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/lesser_multiple_projectiles_support.webp"
+      },
+      {
+        "name": "Locus Mine Support",
+        "slug": "Locus_Mine_Support",
+        "tags": "Bow, Attack, Support, Projectile, Mine",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/locus_mine_support.webp"
+      },
+      {
+        "name": "Manaforged Arrows Support",
+        "slug": "Manaforged_Arrows_Support",
+        "tags": "Bow, Support, Trigger",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/manaforged_arrows_support.webp"
+      },
+      {
+        "name": "Multiple Traps Support",
+        "slug": "Multiple_Traps_Support",
+        "tags": "Support, Trap",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/multiple_traps_support.webp"
+      },
+      {
+        "name": "Trap Support",
+        "slug": "Trap_Support",
+        "tags": "Support, Trap",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/trap_support.webp"
+      },
+      {
+        "name": "Void Manipulation Support",
+        "slug": "Void_Manipulation_Support",
+        "tags": "Chaos, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/void_manipulation_support.webp"
+      },
+      {
+        "name": "Block Chance Reduction Support",
+        "slug": "Block_Chance_Reduction_Support",
+        "tags": "Support, Duration",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/block_chance_reduction_support.webp"
+      },
+      {
+        "name": "Close Combat Support",
+        "slug": "Close_Combat_Support",
+        "tags": "Support, Melee, Attack, Duration",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/close_combat_support.webp"
+      },
+      {
+        "name": "Culling Strike Support",
+        "slug": "Culling_Strike_Support",
+        "tags": "Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/culling_strike_support.webp"
+      },
+      {
+        "name": "Deadly Ailments Support",
+        "slug": "Deadly_Ailments_Support",
+        "tags": "Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/deadly_ailments_support.webp"
+      },
+      {
+        "name": "Nightblade Support",
+        "slug": "Nightblade_Support",
+        "tags": "Attack, Critical, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/nightblade_support.webp"
+      },
+      {
+        "name": "Point Blank Support",
+        "slug": "Point_Blank_Support",
+        "tags": "Projectile, Attack, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/point_blank_support.webp"
+      },
+      {
+        "name": "Sadism Support",
+        "slug": "Sadism_Support",
+        "tags": "Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/sadism_support.webp"
+      },
+      {
+        "name": "Trap and Mine Damage Support",
+        "slug": "Trap_and_Mine_Damage_Support",
+        "tags": "Support, Trap, Mine",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/trap_and_mine_damage_support.webp"
+      },
+      {
+        "name": "Vicious Projectiles Support",
+        "slug": "Vicious_Projectiles_Support",
+        "tags": "Projectile, Attack, Physical, Chaos, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/vicious_projectiles_support.webp"
+      },
+      {
+        "name": "Advanced Traps Support",
+        "slug": "Advanced_Traps_Support",
+        "tags": "Trap, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/advanced_traps_support.webp"
+      },
+      {
+        "name": "Charged Traps Support",
+        "slug": "Charged_Traps_Support",
+        "tags": "Critical, Support, Trap",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/charged_traps_support.webp"
+      },
+      {
+        "name": "Cold Penetration Support",
+        "slug": "Cold_Penetration_Support",
+        "tags": "Cold, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/cold_penetration_support.webp"
+      },
+      {
+        "name": "Critical Strike Affliction Support",
+        "slug": "Critical_Strike_Affliction_Support",
+        "tags": "Critical, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/critical_strike_affliction_support.webp"
+      },
+      {
+        "name": "Faster Projectiles Support",
+        "slug": "Faster_Projectiles_Support",
+        "tags": "Support, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/faster_projectiles_support.webp"
+      },
+      {
+        "name": "Focused Ballista Support",
+        "slug": "Focused_Ballista_Support",
+        "tags": "Projectile, Support, Totem",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/focused_ballista_support.webp"
+      },
+      {
+        "name": "Fork Support",
+        "slug": "Fork_Support",
+        "tags": "Support, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/fork_support.webp"
+      },
+      {
+        "name": "Hypothermia Support",
+        "slug": "Hypothermia_Support",
+        "tags": "Cold, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/hypothermia_support.webp"
+      },
+      {
+        "name": "Ice Bite Support",
+        "slug": "Ice_Bite_Support",
+        "tags": "Cold, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/ice_bite_support.webp"
+      },
+      {
+        "name": "Impale Support",
+        "slug": "Impale_Support",
+        "tags": "Attack, Physical, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/impale_support.webp"
+      },
+      {
+        "name": "Mana Leech Support",
+        "slug": "Mana_Leech_Support",
+        "tags": "Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/mana_leech_support.webp"
+      },
+      {
+        "name": "Second Wind Support",
+        "slug": "Second_Wind_Support",
+        "tags": "Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/second_wind_support.webp"
+      },
+      {
+        "name": "Slower Projectiles Support",
+        "slug": "Slower_Projectiles_Support",
+        "tags": "Support, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/slower_projectiles_support.webp"
+      },
+      {
+        "name": "Swift Affliction Support",
+        "slug": "Swift_Affliction_Support",
+        "tags": "Support, Duration",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/swift_affliction_support.webp"
+      },
+      {
+        "name": "Barrage Support",
+        "slug": "Barrage_Support",
+        "tags": "Bow, Attack, Support, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/barrage_support.webp"
+      },
+      {
+        "name": "Cast On Critical Strike Support",
+        "slug": "Cast_On_Critical_Strike_Support",
+        "tags": "Critical, Support, Spell, Trigger",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/cast_on_critical_strike_support.webp"
+      },
+      {
+        "name": "Cast on Death Support",
+        "slug": "Cast_on_Death_Support",
+        "tags": "Support, Spell, Trigger",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/cast_on_death_support.webp"
+      },
+      {
+        "name": "Chain Support",
+        "slug": "Chain_Support",
+        "tags": "Support, Chaining, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/chain_support.webp"
+      },
+      {
+        "name": "Cluster Traps Support",
+        "slug": "Cluster_Traps_Support",
+        "tags": "Trap, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/cluster_traps_support.webp"
+      },
+      {
+        "name": "Greater Multiple Projectiles Support",
+        "slug": "Greater_Multiple_Projectiles_Support",
+        "tags": "Support, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/greater_multiple_projectiles_support.webp"
+      },
+      {
+        "name": "Greater Volley Support",
+        "slug": "Greater_Volley_Support",
+        "tags": "Support, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/greater_volley_support.webp"
+      },
+      {
+        "name": "Mark On Hit Support",
+        "slug": "Mark_On_Hit_Support",
+        "tags": "Support, Mark, Trigger",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/mark_on_hit_support.webp"
+      },
+      {
+        "name": "Returning Projectiles Support",
+        "slug": "Returning_Projectiles_Support",
+        "tags": "Support, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/returning_projectiles_support.webp"
+      },
+      {
+        "name": "Rupture Support",
+        "slug": "Rupture_Support",
+        "tags": "Attack, Physical, Critical, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/rupture_support.webp"
+      },
+      {
+        "name": "Vile Toxins Support",
+        "slug": "Vile_Toxins_Support",
+        "tags": "Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/vile_toxins_support.webp"
+      },
+      {
+        "name": "Withering Touch Support",
+        "slug": "Withering_Touch_Support",
+        "tags": "Chaos, Physical, Attack, Support, Duration",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/withering_touch_support.webp"
+      },
+      {
+        "name": "Awakened Added Cold Damage Support",
+        "slug": "Awakened_Added_Cold_Damage_Support",
+        "tags": "Cold, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/awakened_added_cold_damage_support.webp"
+      },
+      {
+        "name": "Awakened Arrow Nova Support",
+        "slug": "Awakened_Arrow_Nova_Support",
+        "tags": "Bow, Attack, Support, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/awakened_arrow_nova_support.webp"
+      },
+      {
+        "name": "Awakened Cast On Critical Strike Support",
+        "slug": "Awakened_Cast_On_Critical_Strike_Support",
+        "tags": "Critical, Support, Spell, Trigger",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/awakened_cast_on_critical_strike_support.webp"
+      },
+      {
+        "name": "Awakened Chain Support",
+        "slug": "Awakened_Chain_Support",
+        "tags": "Support, Chaining, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/awakened_chain_support.webp"
+      },
+      {
+        "name": "Awakened Cold Penetration Support",
+        "slug": "Awakened_Cold_Penetration_Support",
+        "tags": "Cold, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/awakened_cold_penetration_support.webp"
+      },
+      {
+        "name": "Awakened Deadly Ailments Support",
+        "slug": "Awakened_Deadly_Ailments_Support",
+        "tags": "Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/awakened_deadly_ailments_support.webp"
+      },
+      {
+        "name": "Awakened Enhance Support",
+        "slug": "Awakened_Enhance_Support",
+        "tags": "Exceptional, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/awakened_enhance_support.webp"
+      },
+      {
+        "name": "Awakened Fork Support",
+        "slug": "Awakened_Fork_Support",
+        "tags": "Support, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/awakened_fork_support.webp"
+      },
+      {
+        "name": "Awakened Greater Multiple Projectiles Support",
+        "slug": "Awakened_Greater_Multiple_Projectiles_Support",
+        "tags": "Support, Projectile",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/awakened_greater_multiple_projectiles_support.webp"
+      },
+      {
+        "name": "Awakened Swift Affliction Support",
+        "slug": "Awakened_Swift_Affliction_Support",
+        "tags": "Support, Duration",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/awakened_swift_affliction_support.webp"
+      },
+      {
+        "name": "Awakened Vicious Projectiles Support",
+        "slug": "Awakened_Vicious_Projectiles_Support",
+        "tags": "Projectile, Attack, Physical, Chaos, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/awakened_vicious_projectiles_support.webp"
+      },
+      {
+        "name": "Awakened Void Manipulation Support",
+        "slug": "Awakened_Void_Manipulation_Support",
+        "tags": "Chaos, Support",
+        "color": "dex",
+        "imageLocal": "supportgemsgem/awakened_void_manipulation_support.webp"
+      },
+      {
+        "name": "Arcane Surge Support",
+        "slug": "Arcane_Surge_Support",
+        "tags": "Arcane, Support, Spell, Duration",
+        "color": "int",
+        "imageLocal": "supportgemsgem/arcane_surge_support.webp"
+      },
+      {
+        "name": "Elemental Proliferation Support",
+        "slug": "Elemental_Proliferation_Support",
+        "tags": "Cold, Fire, Lightning, Support, AoE",
+        "color": "int",
+        "imageLocal": "supportgemsgem/elemental_proliferation_support.webp"
+      },
+      {
+        "name": "Enlighten Support",
+        "slug": "Enlighten_Support",
+        "tags": "Exceptional, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/enlighten_support.webp"
+      },
+      {
+        "name": "Prismatic Burst Support",
+        "slug": "Prismatic_Burst_Support",
+        "tags": "Support, Spell, AoE, Fire, Cold, Lightning, Prismatic, Trigger",
+        "color": "int",
+        "imageLocal": "supportgemsgem/prismatic_burst_support.webp"
+      },
+      {
+        "name": "Infused Channelling Support",
+        "slug": "Infused_Channelling_Support",
+        "tags": "Support, Channelling",
+        "color": "int",
+        "imageLocal": "supportgemsgem/infused_channelling_support.webp"
+      },
+      {
+        "name": "Spell Cascade Support",
+        "slug": "Spell_Cascade_Support",
+        "tags": "AoE, Spell, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/spell_cascade_support.webp"
+      },
+      {
+        "name": "Summon Phantasm Support",
+        "slug": "Summon_Phantasm_Support",
+        "tags": "Support, Minion",
+        "color": "int",
+        "imageLocal": "supportgemsgem/summon_phantasm_support.webp"
+      },
+      {
+        "name": "Added Lightning Damage Support",
+        "slug": "Added_Lightning_Damage_Support",
+        "tags": "Lightning, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/added_lightning_damage_support.webp"
+      },
+      {
+        "name": "Blastchain Mine Support",
+        "slug": "Blastchain_Mine_Support",
+        "tags": "Support, Mine",
+        "color": "int",
+        "imageLocal": "supportgemsgem/blastchain_mine_support.webp"
+      },
+      {
+        "name": "Combustion Support",
+        "slug": "Combustion_Support",
+        "tags": "Fire, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/combustion_support.webp"
+      },
+      {
+        "name": "Devour Support",
+        "slug": "Devour_Support",
+        "tags": "Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/devour_support.webp"
+      },
+      {
+        "name": "Efficacy Support",
+        "slug": "Efficacy_Support",
+        "tags": "Support, Duration",
+        "color": "int",
+        "imageLocal": "supportgemsgem/efficacy_support.webp"
+      },
+      {
+        "name": "Increased Critical Strikes Support",
+        "slug": "Increased_Critical_Strikes_Support",
+        "tags": "Critical, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/increased_critical_strikes_support.webp"
+      },
+      {
+        "name": "Infernal Legion Support",
+        "slug": "Infernal_Legion_Support",
+        "tags": "Fire, AoE, Support, Minion",
+        "color": "int",
+        "imageLocal": "supportgemsgem/infernal_legion_support.webp"
+      },
+      {
+        "name": "Minion Damage Support",
+        "slug": "Minion_Damage_Support",
+        "tags": "Support, Minion",
+        "color": "int",
+        "imageLocal": "supportgemsgem/minion_damage_support.webp"
+      },
+      {
+        "name": "Unbound Ailments Support",
+        "slug": "Unbound_Ailments_Support",
+        "tags": "Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/unbound_ailments_support.webp"
+      },
+      {
+        "name": "Concentrated Effect Support",
+        "slug": "Concentrated_Effect_Support",
+        "tags": "Support, AoE",
+        "color": "int",
+        "imageLocal": "supportgemsgem/concentrated_effect_support.webp"
+      },
+      {
+        "name": "Controlled Destruction Support",
+        "slug": "Controlled_Destruction_Support",
+        "tags": "Spell, Critical, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/controlled_destruction_support.webp"
+      },
+      {
+        "name": "Elemental Focus Support",
+        "slug": "Elemental_Focus_Support",
+        "tags": "Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/elemental_focus_support.webp"
+      },
+      {
+        "name": "Faster Casting Support",
+        "slug": "Faster_Casting_Support",
+        "tags": "Support, Spell",
+        "color": "int",
+        "imageLocal": "supportgemsgem/faster_casting_support.webp"
+      },
+      {
+        "name": "Fresh Meat Support",
+        "slug": "Fresh_Meat_Support",
+        "tags": "Critical, Support, Minion",
+        "color": "int",
+        "imageLocal": "supportgemsgem/fresh_meat_support.webp"
+      },
+      {
+        "name": "Increased Critical Damage Support",
+        "slug": "Increased_Critical_Damage_Support",
+        "tags": "Critical, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/increased_critical_damage_support.webp"
+      },
+      {
+        "name": "Minion Life Support",
+        "slug": "Minion_Life_Support",
+        "tags": "Support, Minion",
+        "color": "int",
+        "imageLocal": "supportgemsgem/minion_life_support.webp"
+      },
+      {
+        "name": "Minion Speed Support",
+        "slug": "Minion_Speed_Support",
+        "tags": "Movement, Support, Minion",
+        "color": "int",
+        "imageLocal": "supportgemsgem/minion_speed_support.webp"
+      },
+      {
+        "name": "Overcharge Support",
+        "slug": "Overcharge_Support",
+        "tags": "Lightning, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/overcharge_support.webp"
+      },
+      {
+        "name": "Physical to Lightning Support",
+        "slug": "Physical_to_Lightning_Support",
+        "tags": "Lightning, Physical, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/physical_to_lightning_support.webp"
+      },
+      {
+        "name": "Power Charge On Critical Support",
+        "slug": "Power_Charge_On_Critical_Support",
+        "tags": "Critical, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/power_charge_on_critical_support.webp"
+      },
+      {
+        "name": "Predator Support",
+        "slug": "Predator_Support",
+        "tags": "Support, Minion, Spell, Duration",
+        "color": "int",
+        "imageLocal": "supportgemsgem/predator_support.webp"
+      },
+      {
+        "name": "Sacred Wisps Support",
+        "slug": "Sacred_Wisps_Support",
+        "tags": "Attack, Support, Trigger, Duration, Spell",
+        "color": "int",
+        "imageLocal": "supportgemsgem/sacred_wisps_support.webp"
+      },
+      {
+        "name": "Trinity Support",
+        "slug": "Trinity_Support",
+        "tags": "Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/trinity_support.webp"
+      },
+      {
+        "name": "Added Chaos Damage Support",
+        "slug": "Added_Chaos_Damage_Support",
+        "tags": "Chaos, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/added_chaos_damage_support.webp"
+      },
+      {
+        "name": "Archmage Support",
+        "slug": "Archmage_Support",
+        "tags": "Lightning, Arcane, Support, Spell",
+        "color": "int",
+        "imageLocal": "supportgemsgem/archmage_support.webp"
+      },
+      {
+        "name": "Blasphemy Support",
+        "slug": "Blasphemy_Support",
+        "tags": "Support, Hex, Aura",
+        "color": "int",
+        "imageLocal": "supportgemsgem/blasphemy_support.webp"
+      },
+      {
+        "name": "Charged Mines Support",
+        "slug": "Charged_Mines_Support",
+        "tags": "Critical, Support, Mine",
+        "color": "int",
+        "imageLocal": "supportgemsgem/charged_mines_support.webp"
+      },
+      {
+        "name": "Cursed Ground Support",
+        "slug": "Cursed_Ground_Support",
+        "tags": "AoE, Duration, Support, Hex",
+        "color": "int",
+        "imageLocal": "supportgemsgem/cursed_ground_support.webp"
+      },
+      {
+        "name": "Elemental Army Support",
+        "slug": "Elemental_Army_Support",
+        "tags": "Support, Minion",
+        "color": "int",
+        "imageLocal": "supportgemsgem/elemental_army_support.webp"
+      },
+      {
+        "name": "Elemental Penetration Support",
+        "slug": "Elemental_Penetration_Support",
+        "tags": "Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/elemental_penetration_support.webp"
+      },
+      {
+        "name": "Energy Leech Support",
+        "slug": "Energy_Leech_Support",
+        "tags": "Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/energy_leech_support.webp"
+      },
+      {
+        "name": "Feeding Frenzy Support",
+        "slug": "Feeding_Frenzy_Support",
+        "tags": "Support, Minion, Duration",
+        "color": "int",
+        "imageLocal": "supportgemsgem/feeding_frenzy_support.webp"
+      },
+      {
+        "name": "Focused Channelling Support",
+        "slug": "Focused_Channelling_Support",
+        "tags": "Channelling, Spell, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/focused_channelling_support.webp"
+      },
+      {
+        "name": "High-Impact Mine Support",
+        "slug": "High-Impact_Mine_Support",
+        "tags": "Mine, Support, AoE, Aura",
+        "color": "int",
+        "imageLocal": "supportgemsgem/high_impact_mine_support.webp"
+      },
+      {
+        "name": "Impending Doom Support",
+        "slug": "Impending_Doom_Support",
+        "tags": "Support, Hex, Spell, AoE, Chaos, Trigger",
+        "color": "int",
+        "imageLocal": "supportgemsgem/impending_doom_support.webp"
+      },
+      {
+        "name": "Innervate Support",
+        "slug": "Innervate_Support",
+        "tags": "Lightning, Support, Duration",
+        "color": "int",
+        "imageLocal": "supportgemsgem/innervate_support.webp"
+      },
+      {
+        "name": "Intensify Support",
+        "slug": "Intensify_Support",
+        "tags": "AoE, Spell, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/intensify_support.webp"
+      },
+      {
+        "name": "Item Rarity Support",
+        "slug": "Item_Rarity_Support",
+        "tags": "Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/item_rarity_support.webp"
+      },
+      {
+        "name": "Lightning Penetration Support",
+        "slug": "Lightning_Penetration_Support",
+        "tags": "Lightning, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/lightning_penetration_support.webp"
+      },
+      {
+        "name": "Meat Shield Support",
+        "slug": "Meat_Shield_Support",
+        "tags": "Support, Minion",
+        "color": "int",
+        "imageLocal": "supportgemsgem/meat_shield_support.webp"
+      },
+      {
+        "name": "Pinpoint Support",
+        "slug": "Pinpoint_Support",
+        "tags": "Support, Projectile, Spell",
+        "color": "int",
+        "imageLocal": "supportgemsgem/pinpoint_support.webp"
+      },
+      {
+        "name": "Sacrifice Support",
+        "slug": "Sacrifice_Support",
+        "tags": "Chaos, Support, Spell",
+        "color": "int",
+        "imageLocal": "supportgemsgem/sacrifice_support.webp"
+      },
+      {
+        "name": "Swiftbrand Support",
+        "slug": "Swiftbrand_Support",
+        "tags": "Brand, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/swiftbrand_support.webp"
+      },
+      {
+        "name": "Bonechill Support",
+        "slug": "Bonechill_Support",
+        "tags": "Cold, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/bonechill_support.webp"
+      },
+      {
+        "name": "Cast when Stunned Support",
+        "slug": "Cast_when_Stunned_Support",
+        "tags": "Support, Spell, Trigger",
+        "color": "int",
+        "imageLocal": "supportgemsgem/cast_when_stunned_support.webp"
+      },
+      {
+        "name": "Cast while Channelling Support",
+        "slug": "Cast_while_Channelling_Support",
+        "tags": "Support, Channelling, Spell, Trigger",
+        "color": "int",
+        "imageLocal": "supportgemsgem/cast_while_channelling_support.webp"
+      },
+      {
+        "name": "Decay Support",
+        "slug": "Decay_Support",
+        "tags": "Chaos, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/decay_support.webp"
+      },
+      {
+        "name": "Frigid Bond Support",
+        "slug": "Frigid_Bond_Support",
+        "tags": "Cold, Support, Link, Duration",
+        "color": "int",
+        "imageLocal": "supportgemsgem/frigid_bond_support.webp"
+      },
+      {
+        "name": "Hex Bloom Support",
+        "slug": "Hex_Bloom_Support",
+        "tags": "Support, Hex",
+        "color": "int",
+        "imageLocal": "supportgemsgem/hex_bloom_support.webp"
+      },
+      {
+        "name": "Hextouch Support",
+        "slug": "Hextouch_Support",
+        "tags": "Support, Hex, Trigger",
+        "color": "int",
+        "imageLocal": "supportgemsgem/hextouch_support.webp"
+      },
+      {
+        "name": "Ignite Proliferation Support",
+        "slug": "Ignite_Proliferation_Support",
+        "tags": "Fire, Support, AoE",
+        "color": "int",
+        "imageLocal": "supportgemsgem/ignite_proliferation_support.webp"
+      },
+      {
+        "name": "Immolate Support",
+        "slug": "Immolate_Support",
+        "tags": "Fire, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/immolate_support.webp"
+      },
+      {
+        "name": "Increased Area of Effect Support",
+        "slug": "Increased_Area_of_Effect_Support",
+        "tags": "Support, AoE",
+        "color": "int",
+        "imageLocal": "supportgemsgem/increased_area_of_effect_support.webp"
+      },
+      {
+        "name": "Minefield Support",
+        "slug": "Minefield_Support",
+        "tags": "Support, Mine",
+        "color": "int",
+        "imageLocal": "supportgemsgem/minefield_support.webp"
+      },
+      {
+        "name": "Spell Echo Support",
+        "slug": "Spell_Echo_Support",
+        "tags": "Spell, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/spell_echo_support.webp"
+      },
+      {
+        "name": "Spellblade Support",
+        "slug": "Spellblade_Support",
+        "tags": "Support, Spell",
+        "color": "int",
+        "imageLocal": "supportgemsgem/spellblade_support.webp"
+      },
+      {
+        "name": "Unleash Support",
+        "slug": "Unleash_Support",
+        "tags": "Spell, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/unleash_support.webp"
+      },
+      {
+        "name": "Awakened Added Chaos Damage Support",
+        "slug": "Awakened_Added_Chaos_Damage_Support",
+        "tags": "Chaos, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/awakened_added_chaos_damage_support.webp"
+      },
+      {
+        "name": "Awakened Added Lightning Damage Support",
+        "slug": "Awakened_Added_Lightning_Damage_Support",
+        "tags": "Lightning, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/awakened_added_lightning_damage_support.webp"
+      },
+      {
+        "name": "Awakened Blasphemy Support",
+        "slug": "Awakened_Blasphemy_Support",
+        "tags": "Support, Hex, Aura",
+        "color": "int",
+        "imageLocal": "supportgemsgem/awakened_blasphemy_support.webp"
+      },
+      {
+        "name": "Awakened Cast While Channelling Support",
+        "slug": "Awakened_Cast_While_Channelling_Support",
+        "tags": "Support, Channelling, Spell, Trigger",
+        "color": "int",
+        "imageLocal": "supportgemsgem/awakened_cast_while_channelling_support.webp"
+      },
+      {
+        "name": "Awakened Controlled Destruction Support",
+        "slug": "Awakened_Controlled_Destruction_Support",
+        "tags": "Spell, Critical, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/awakened_controlled_destruction_support.webp"
+      },
+      {
+        "name": "Awakened Elemental Focus Support",
+        "slug": "Awakened_Elemental_Focus_Support",
+        "tags": "Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/awakened_elemental_focus_support.webp"
+      },
+      {
+        "name": "Awakened Enlighten Support",
+        "slug": "Awakened_Enlighten_Support",
+        "tags": "Exceptional, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/awakened_enlighten_support.webp"
+      },
+      {
+        "name": "Awakened Hextouch Support",
+        "slug": "Awakened_Hextouch_Support",
+        "tags": "Support, Hex, Trigger",
+        "color": "int",
+        "imageLocal": "supportgemsgem/awakened_hextouch_support.webp"
+      },
+      {
+        "name": "Awakened Increased Area of Effect Support",
+        "slug": "Awakened_Increased_Area_of_Effect_Support",
+        "tags": "Support, AoE",
+        "color": "int",
+        "imageLocal": "supportgemsgem/awakened_increased_area_of_effect_support.webp"
+      },
+      {
+        "name": "Awakened Lightning Penetration Support",
+        "slug": "Awakened_Lightning_Penetration_Support",
+        "tags": "Lightning, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/awakened_lightning_penetration_support.webp"
+      },
+      {
+        "name": "Awakened Minion Damage Support",
+        "slug": "Awakened_Minion_Damage_Support",
+        "tags": "Support, Minion",
+        "color": "int",
+        "imageLocal": "supportgemsgem/awakened_minion_damage_support.webp"
+      },
+      {
+        "name": "Awakened Spell Cascade Support",
+        "slug": "Awakened_Spell_Cascade_Support",
+        "tags": "AoE, Spell, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/awakened_spell_cascade_support.webp"
+      },
+      {
+        "name": "Awakened Spell Echo Support",
+        "slug": "Awakened_Spell_Echo_Support",
+        "tags": "Spell, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/awakened_spell_echo_support.webp"
+      },
+      {
+        "name": "Awakened Unbound Ailments Support",
+        "slug": "Awakened_Unbound_Ailments_Support",
+        "tags": "Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/awakened_unbound_ailments_support.webp"
+      },
+      {
+        "name": "Awakened Unleash Support",
+        "slug": "Awakened_Unleash_Support",
+        "tags": "Spell, Support",
+        "color": "int",
+        "imageLocal": "supportgemsgem/awakened_unleash_support.webp"
+      }
+    ],
+    "AwakenedGem": [
+      {
+        "name": "Awakened Added Fire Damage Support",
+        "slug": "Awakened_Added_Fire_Damage_Support",
+        "tags": "Fire, Physical, Support",
+        "color": "str",
+        "imageLocal": "awakenedgem/awakened_added_fire_damage_support.webp"
+      },
+      {
+        "name": "Awakened Ancestral Call Support",
+        "slug": "Awakened_Ancestral_Call_Support",
+        "tags": "Support, Melee, Attack, Strike",
+        "color": "str",
+        "imageLocal": "awakenedgem/awakened_ancestral_call_support.webp"
+      },
+      {
+        "name": "Awakened Brutality Support",
+        "slug": "Awakened_Brutality_Support",
+        "tags": "Physical, Support",
+        "color": "str",
+        "imageLocal": "awakenedgem/awakened_brutality_support.webp"
+      },
+      {
+        "name": "Awakened Burning Damage Support",
+        "slug": "Awakened_Burning_Damage_Support",
+        "tags": "Fire, Support",
+        "color": "str",
+        "imageLocal": "awakenedgem/awakened_burning_damage_support.webp"
+      },
+      {
+        "name": "Awakened Elemental Damage with Attacks Support",
+        "slug": "Awakened_Elemental_Damage_with_Attacks_Support",
+        "tags": "Attack, Support",
+        "color": "str",
+        "imageLocal": "awakenedgem/awakened_elemental_damage_with_attacks_support.webp"
+      },
+      {
+        "name": "Awakened Empower Support",
+        "slug": "Awakened_Empower_Support",
+        "tags": "Exceptional, Support",
+        "color": "str",
+        "imageLocal": "awakenedgem/awakened_empower_support.webp"
+      },
+      {
+        "name": "Awakened Fire Penetration Support",
+        "slug": "Awakened_Fire_Penetration_Support",
+        "tags": "Fire, Support",
+        "color": "str",
+        "imageLocal": "awakenedgem/awakened_fire_penetration_support.webp"
+      },
+      {
+        "name": "Awakened Generosity Support",
+        "slug": "Awakened_Generosity_Support",
+        "tags": "Support, Aura",
+        "color": "str",
+        "imageLocal": "awakenedgem/awakened_generosity_support.webp"
+      },
+      {
+        "name": "Awakened Melee Physical Damage Support",
+        "slug": "Awakened_Melee_Physical_Damage_Support",
+        "tags": "Melee, Physical, Support, Attack",
+        "color": "str",
+        "imageLocal": "awakenedgem/awakened_melee_physical_damage_support.webp"
+      },
+      {
+        "name": "Awakened Melee Splash Support",
+        "slug": "Awakened_Melee_Splash_Support",
+        "tags": "Support, Melee, Attack, Strike, AoE",
+        "color": "str",
+        "imageLocal": "awakenedgem/awakened_melee_splash_support.webp"
+      },
+      {
+        "name": "Awakened Multistrike Support",
+        "slug": "Awakened_Multistrike_Support",
+        "tags": "Attack, Melee, Support",
+        "color": "str",
+        "imageLocal": "awakenedgem/awakened_multistrike_support.webp"
+      },
+      {
+        "name": "Awakened Added Cold Damage Support",
+        "slug": "Awakened_Added_Cold_Damage_Support",
+        "tags": "Cold, Support",
+        "color": "dex",
+        "imageLocal": "awakenedgem/awakened_added_cold_damage_support.webp"
+      },
+      {
+        "name": "Awakened Arrow Nova Support",
+        "slug": "Awakened_Arrow_Nova_Support",
+        "tags": "Bow, Attack, Support, Projectile",
+        "color": "dex",
+        "imageLocal": "awakenedgem/awakened_arrow_nova_support.webp"
+      },
+      {
+        "name": "Awakened Cast On Critical Strike Support",
+        "slug": "Awakened_Cast_On_Critical_Strike_Support",
+        "tags": "Critical, Support, Spell, Trigger",
+        "color": "dex",
+        "imageLocal": "awakenedgem/awakened_cast_on_critical_strike_support.webp"
+      },
+      {
+        "name": "Awakened Chain Support",
+        "slug": "Awakened_Chain_Support",
+        "tags": "Support, Chaining, Projectile",
+        "color": "dex",
+        "imageLocal": "awakenedgem/awakened_chain_support.webp"
+      },
+      {
+        "name": "Awakened Cold Penetration Support",
+        "slug": "Awakened_Cold_Penetration_Support",
+        "tags": "Cold, Support",
+        "color": "dex",
+        "imageLocal": "awakenedgem/awakened_cold_penetration_support.webp"
+      },
+      {
+        "name": "Awakened Deadly Ailments Support",
+        "slug": "Awakened_Deadly_Ailments_Support",
+        "tags": "Support",
+        "color": "dex",
+        "imageLocal": "awakenedgem/awakened_deadly_ailments_support.webp"
+      },
+      {
+        "name": "Awakened Enhance Support",
+        "slug": "Awakened_Enhance_Support",
+        "tags": "Exceptional, Support",
+        "color": "dex",
+        "imageLocal": "awakenedgem/awakened_enhance_support.webp"
+      },
+      {
+        "name": "Awakened Fork Support",
+        "slug": "Awakened_Fork_Support",
+        "tags": "Support, Projectile",
+        "color": "dex",
+        "imageLocal": "awakenedgem/awakened_fork_support.webp"
+      },
+      {
+        "name": "Awakened Greater Multiple Projectiles Support",
+        "slug": "Awakened_Greater_Multiple_Projectiles_Support",
+        "tags": "Support, Projectile",
+        "color": "dex",
+        "imageLocal": "awakenedgem/awakened_greater_multiple_projectiles_support.webp"
+      },
+      {
+        "name": "Awakened Swift Affliction Support",
+        "slug": "Awakened_Swift_Affliction_Support",
+        "tags": "Support, Duration",
+        "color": "dex",
+        "imageLocal": "awakenedgem/awakened_swift_affliction_support.webp"
+      },
+      {
+        "name": "Awakened Vicious Projectiles Support",
+        "slug": "Awakened_Vicious_Projectiles_Support",
+        "tags": "Projectile, Attack, Physical, Chaos, Support",
+        "color": "dex",
+        "imageLocal": "awakenedgem/awakened_vicious_projectiles_support.webp"
+      },
+      {
+        "name": "Awakened Void Manipulation Support",
+        "slug": "Awakened_Void_Manipulation_Support",
+        "tags": "Chaos, Support",
+        "color": "dex",
+        "imageLocal": "awakenedgem/awakened_void_manipulation_support.webp"
+      },
+      {
+        "name": "Awakened Added Chaos Damage Support",
+        "slug": "Awakened_Added_Chaos_Damage_Support",
+        "tags": "Chaos, Support",
+        "color": "int",
+        "imageLocal": "awakenedgem/awakened_added_chaos_damage_support.webp"
+      },
+      {
+        "name": "Awakened Added Lightning Damage Support",
+        "slug": "Awakened_Added_Lightning_Damage_Support",
+        "tags": "Lightning, Support",
+        "color": "int",
+        "imageLocal": "awakenedgem/awakened_added_lightning_damage_support.webp"
+      },
+      {
+        "name": "Awakened Blasphemy Support",
+        "slug": "Awakened_Blasphemy_Support",
+        "tags": "Support, Hex, Aura",
+        "color": "int",
+        "imageLocal": "awakenedgem/awakened_blasphemy_support.webp"
+      },
+      {
+        "name": "Awakened Cast While Channelling Support",
+        "slug": "Awakened_Cast_While_Channelling_Support",
+        "tags": "Support, Channelling, Spell, Trigger",
+        "color": "int",
+        "imageLocal": "awakenedgem/awakened_cast_while_channelling_support.webp"
+      },
+      {
+        "name": "Awakened Controlled Destruction Support",
+        "slug": "Awakened_Controlled_Destruction_Support",
+        "tags": "Spell, Critical, Support",
+        "color": "int",
+        "imageLocal": "awakenedgem/awakened_controlled_destruction_support.webp"
+      },
+      {
+        "name": "Awakened Elemental Focus Support",
+        "slug": "Awakened_Elemental_Focus_Support",
+        "tags": "Support",
+        "color": "int",
+        "imageLocal": "awakenedgem/awakened_elemental_focus_support.webp"
+      },
+      {
+        "name": "Awakened Enlighten Support",
+        "slug": "Awakened_Enlighten_Support",
+        "tags": "Exceptional, Support",
+        "color": "int",
+        "imageLocal": "awakenedgem/awakened_enlighten_support.webp"
+      },
+      {
+        "name": "Awakened Hextouch Support",
+        "slug": "Awakened_Hextouch_Support",
+        "tags": "Support, Hex, Trigger",
+        "color": "int",
+        "imageLocal": "awakenedgem/awakened_hextouch_support.webp"
+      },
+      {
+        "name": "Awakened Increased Area of Effect Support",
+        "slug": "Awakened_Increased_Area_of_Effect_Support",
+        "tags": "Support, AoE",
+        "color": "int",
+        "imageLocal": "awakenedgem/awakened_increased_area_of_effect_support.webp"
+      },
+      {
+        "name": "Awakened Lightning Penetration Support",
+        "slug": "Awakened_Lightning_Penetration_Support",
+        "tags": "Lightning, Support",
+        "color": "int",
+        "imageLocal": "awakenedgem/awakened_lightning_penetration_support.webp"
+      },
+      {
+        "name": "Awakened Minion Damage Support",
+        "slug": "Awakened_Minion_Damage_Support",
+        "tags": "Support, Minion",
+        "color": "int",
+        "imageLocal": "awakenedgem/awakened_minion_damage_support.webp"
+      },
+      {
+        "name": "Awakened Spell Cascade Support",
+        "slug": "Awakened_Spell_Cascade_Support",
+        "tags": "AoE, Spell, Support",
+        "color": "int",
+        "imageLocal": "awakenedgem/awakened_spell_cascade_support.webp"
+      },
+      {
+        "name": "Awakened Spell Echo Support",
+        "slug": "Awakened_Spell_Echo_Support",
+        "tags": "Spell, Support",
+        "color": "int",
+        "imageLocal": "awakenedgem/awakened_spell_echo_support.webp"
+      },
+      {
+        "name": "Awakened Unbound Ailments Support",
+        "slug": "Awakened_Unbound_Ailments_Support",
+        "tags": "Support",
+        "color": "int",
+        "imageLocal": "awakenedgem/awakened_unbound_ailments_support.webp"
+      },
+      {
+        "name": "Awakened Unleash Support",
+        "slug": "Awakened_Unleash_Support",
+        "tags": "Spell, Support",
+        "color": "int",
+        "imageLocal": "awakenedgem/awakened_unleash_support.webp"
+      }
+    ]
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "slug": "Tinctures",
+  "items": [
+    {
+      "name": "Sap of the Seasons",
+      "slug": "Sap_of_the_Seasons",
+      "baseType": "Prismatic Tincture",
+      "properties": {},
+      "mods": [
+        "(70–100)% increased Elemental Damage with Melee Weapons",
+        "Melee Weapon Damage Penetrates 1% Elemental Resistances per Mana Burn, up to a maximum of 200%",
+        "(20–40)% increased Cooldown Recovery Rate",
+        "(-35–35)% reduced Mana Burn rate"
+      ],
+      "imageLocal": "tinctures/sap_of_the_seasons.webp"
+    },
+    {
+      "name": "Mightblood Ire",
+      "slug": "Mightblood_Ire",
+      "baseType": "Ironwood Tincture",
+      "properties": {},
+      "mods": [
+        "40% reduced Enemy Stun Threshold with Melee Weapons(15–25)% increased Stun Duration with Melee Weapons",
+        "Melee Strike Skills deal Splash Damage to surrounding targets",
+        "Melee Strike Skills deal Splash Damage to surrounding targets",
+        "(15–25)% reduced Mana Burn rate"
+      ],
+      "imageLocal": "tinctures/mightblood_ire.webp"
+    },
+    {
+      "name": "Wildfire Phloem",
+      "slug": "Wildfire_Phloem",
+      "baseType": "Ashbark Tincture",
+      "properties": {},
+      "mods": [
+        "25% chance to Ignite with Melee Weapons(60–90)% increased Damage with Ignite from Melee Weapons",
+        "-1 Fire Damage taken from Hits per Mana Burn",
+        "(15–25)% chance to refresh Ignite Duration on Melee Weapon Hit",
+        "Cover Full Life Enemies in Ash for (4–10) seconds on Melee Weapon Hit",
+        "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+        "(Being Covered in Ash applies 20% less Movement Speed and 20% increased Fire Damage Taken)"
+      ],
+      "imageLocal": "tinctures/wildfire_phloem.webp"
+    },
+    {
+      "name": "The Battle Within",
+      "slug": "The_Battle_Within",
+      "baseType": "Oakbranch Tincture",
+      "properties": {},
+      "mods": [
+        "Gain 3 Rage on Melee Weapon Hit",
+        "Does not inflict Mana Burn over time",
+        "Inflicts Mana Burn on you when you Hit an Enemy with a Melee Weapon",
+        "(1–5)% increased Rarity of Items found per Mana Burn, up to a maximum of 100%",
+        "(Mana Burn causes you to lose 1% of your maximum Mana per stack per second)"
+      ],
+      "imageLocal": "tinctures/the_battle_within.webp"
+    },
+    {
+      "name": "Grasping Nightshade",
+      "slug": "Grasping_Nightshade",
+      "baseType": "Sporebloom Tincture",
+      "properties": {},
+      "mods": [
+        "25% chance to Blind Enemies on Hit with Melee Weapons(25–35)% increased Effect of Blind from Melee Weapons",
+        "Melee Weapon Hits Inflict (2–3) Withered Debuffs for 2 seconds",
+        "(20–30)% chance to inflict a Grasping Vine on Melee Weapon Hit",
+        "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)",
+        "(Up to 10 Vines can grasp you, inflicting 8% less Movement Speed per Vine. Broken by moving)"
+      ],
+      "imageLocal": "tinctures/grasping_nightshade.webp"
+    },
+    {
+      "name": "Prismatic Tincture",
+      "slug": "Prismatic_Tincture",
+      "baseType": "",
+      "properties": {},
+      "mods": [
+        "(70–100)% increased Elemental Damage with Melee Weapons"
+      ],
+      "imageLocal": "tinctures/prismatic_tincture.webp"
+    },
+    {
+      "name": "Rosethorn Tincture",
+      "slug": "Rosethorn_Tincture",
+      "baseType": "",
+      "properties": {},
+      "mods": [
+        "(100–150)% increased Critical Strike Chance with Melee Weapons"
+      ],
+      "imageLocal": "tinctures/rosethorn_tincture.webp"
+    },
+    {
+      "name": "Ironwood Tincture",
+      "slug": "Ironwood_Tincture",
+      "baseType": "",
+      "properties": {},
+      "mods": [
+        "40% reduced Enemy Stun Threshold with Melee Weapons(15–25)% increased Stun Duration with Melee Weapons"
+      ],
+      "imageLocal": "tinctures/ironwood_tincture.webp"
+    },
+    {
+      "name": "Ashbark Tincture",
+      "slug": "Ashbark_Tincture",
+      "baseType": "",
+      "properties": {},
+      "mods": [
+        "25% chance to Ignite with Melee Weapons(60–90)% increased Damage with Ignite from Melee Weapons"
+      ],
+      "imageLocal": "tinctures/ashbark_tincture.webp"
+    },
+    {
+      "name": "Borealwood Tincture",
+      "slug": "Borealwood_Tincture",
+      "baseType": "",
+      "properties": {},
+      "mods": [
+        "25% chance to Freeze with Melee Weapons(25–35)% increased Effect of Chill from Melee Weapons"
+      ],
+      "imageLocal": "tinctures/borealwood_tincture.webp"
+    },
+    {
+      "name": "Fulgurite Tincture",
+      "slug": "Fulgurite_Tincture",
+      "baseType": "",
+      "properties": {},
+      "mods": [
+        "25% chance to Shock with Melee Weapons(25–35)% increased Effect of Shock from Melee Weapons"
+      ],
+      "imageLocal": "tinctures/fulgurite_tincture.webp"
+    },
+    {
+      "name": "Poisonberry Tincture",
+      "slug": "Poisonberry_Tincture",
+      "baseType": "",
+      "properties": {},
+      "mods": [
+        "20% chance to Poison with Melee Weapons(60–90)% increased Damage with Poison from Melee Weapons"
+      ],
+      "imageLocal": "tinctures/poisonberry_tincture.webp"
+    },
+    {
+      "name": "Blood Sap Tincture",
+      "slug": "Blood_Sap_Tincture",
+      "baseType": "",
+      "properties": {},
+      "mods": [
+        "20% chance to cause Bleeding with Melee Weapons(60–90)% increased Damage with Bleeding from Melee Weapons"
+      ],
+      "imageLocal": "tinctures/blood_sap_tincture.webp"
+    },
+    {
+      "name": "Oakbranch Tincture",
+      "slug": "Oakbranch_Tincture",
+      "baseType": "",
+      "properties": {},
+      "mods": [
+        "Gain 3 Rage on Melee Weapon Hit"
+      ],
+      "imageLocal": "tinctures/oakbranch_tincture.webp"
+    },
+    {
+      "name": "Sporebloom Tincture",
+      "slug": "Sporebloom_Tincture",
+      "baseType": "",
+      "properties": {},
+      "mods": [
+        "25% chance to Blind Enemies on Hit with Melee Weapons(25–35)% increased Effect of Blind from Melee Weapons"
+      ],
+      "imageLocal": "tinctures/sporebloom_tincture.webp"
+    }
+  ]
+}

@@ -27,12 +27,18 @@ export interface ItemsSubcategories {
   bases: boolean;
 }
 
+export interface Poe1ItemsSubcategories {
+  uniques: boolean;
+  bases: boolean;
+}
+
 export interface ToolsSubcategories {
   regex: boolean;
 }
 
 export interface FeatureConfig {
   modifiers: boolean;
+  poe1Modifiers: boolean;
   crafting: {
     enabled: boolean;
     subcategories: CraftingSubcategories;
@@ -44,6 +50,10 @@ export interface FeatureConfig {
   items: {
     enabled: boolean;
     subcategories: ItemsSubcategories;
+  };
+  poe1Items: {
+    enabled: boolean;
+    subcategories: Poe1ItemsSubcategories;
   };
   tools: {
     enabled: boolean;
@@ -58,6 +68,7 @@ export interface FeatureConfig {
  */
 export const DEFAULT_FEATURES: FeatureConfig = {
   modifiers: true,
+  poe1Modifiers: false,
   crafting: {
     enabled: true,
     subcategories: {
@@ -88,6 +99,13 @@ export const DEFAULT_FEATURES: FeatureConfig = {
       bases: false
     }
   },
+  poe1Items: {
+    enabled: false,
+    subcategories: {
+      uniques: false,
+      bases: false
+    }
+  },
   tools: {
     enabled: false,
     subcategories: {
@@ -102,6 +120,7 @@ export const DEFAULT_FEATURES: FeatureConfig = {
  */
 export const MINIMAL_FEATURES: FeatureConfig = {
   modifiers: false,
+  poe1Modifiers: false,
   crafting: {
     enabled: false,
     subcategories: {
@@ -132,6 +151,13 @@ export const MINIMAL_FEATURES: FeatureConfig = {
       bases: false
     }
   },
+  poe1Items: {
+    enabled: false,
+    subcategories: {
+      uniques: false,
+      bases: false
+    }
+  },
   tools: {
     enabled: false,
     subcategories: {
@@ -146,6 +172,7 @@ export const MINIMAL_FEATURES: FeatureConfig = {
  */
 export const ALL_FEATURES: FeatureConfig = {
   modifiers: true,
+  poe1Modifiers: true,
   crafting: {
     enabled: true,
     subcategories: {
@@ -170,6 +197,13 @@ export const ALL_FEATURES: FeatureConfig = {
     }
   },
   items: {
+    enabled: true,
+    subcategories: {
+      uniques: true,
+      bases: true
+    }
+  },
+  poe1Items: {
     enabled: true,
     subcategories: {
       uniques: true,

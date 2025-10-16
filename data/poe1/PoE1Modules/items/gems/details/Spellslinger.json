@@ -1,0 +1,420 @@
+{
+  "name": "Spellslinger",
+  "slug": "Spellslinger",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
+    "Acronym": "Cooldown, Hit, Reservation, Trigger, Projectile, Recovery, Ailment",
+    "DropLevel": "24",
+    "BaseType": "Spellslinger",
+    "Class": "Skill Gems",
+    "TargetTypes": "Any",
+    "Type": "Spell, Instant, HasReservation, Cooldown",
+    "ItemType": "Metadata/Items/Gems/SkillGemSpellslinger",
+    "ActiveSkillsCode": "spellslinger",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "24",
+      "Int": "58",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "60, 1",
+      "#% increased Cooldown Recovery Rate": "",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "37",
+      "Experience": "118,383"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "27",
+      "Int": "64",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "66, 1",
+      "#% increased Cooldown Recovery Rate": "2",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "37",
+      "Experience": "175,816"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "30",
+      "Int": "71",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "72, 1",
+      "#% increased Cooldown Recovery Rate": "4",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "37",
+      "Experience": "254,061"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "33",
+      "Int": "77",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "78, 1",
+      "#% increased Cooldown Recovery Rate": "6",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "36",
+      "Experience": "359,090"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "36",
+      "Int": "83",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "84, 1",
+      "#% increased Cooldown Recovery Rate": "8",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "36",
+      "Experience": "498,508"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "39",
+      "Int": "90",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "90, 1",
+      "#% increased Cooldown Recovery Rate": "10",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "36",
+      "Experience": "682,057"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "42",
+      "Int": "96",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "96, 1",
+      "#% increased Cooldown Recovery Rate": "12",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "35",
+      "Experience": "921,777"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "45",
+      "Int": "102",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "102, 1",
+      "#% increased Cooldown Recovery Rate": "14",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "35",
+      "Experience": "1,727,879"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Int": "109",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "108, 1",
+      "#% increased Cooldown Recovery Rate": "16",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "35",
+      "Experience": "1,138,877"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Int": "113",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "114, 1",
+      "#% increased Cooldown Recovery Rate": "18",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "34",
+      "Experience": "1,368,233"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Int": "117",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "120, 1",
+      "#% increased Cooldown Recovery Rate": "20",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "34",
+      "Experience": "1,638,338"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Int": "121",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "126, 1",
+      "#% increased Cooldown Recovery Rate": "22",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "34",
+      "Experience": "1,956,648"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Int": "125",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "132, 1",
+      "#% increased Cooldown Recovery Rate": "24",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "33",
+      "Experience": "3,655,184"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Int": "130",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "138, 1",
+      "#% increased Cooldown Recovery Rate": "26",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "33",
+      "Experience": "3,017,327"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Int": "134",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "144, 1",
+      "#% increased Cooldown Recovery Rate": "28",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "33",
+      "Experience": "7,793,914"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Int": "138",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "150, 1",
+      "#% increased Cooldown Recovery Rate": "30",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "32",
+      "Experience": "15,206,031"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Int": "142",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "156, 1",
+      "#% increased Cooldown Recovery Rate": "32",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "32",
+      "Experience": "26,185,582"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Int": "146",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "162, 1",
+      "#% increased Cooldown Recovery Rate": "34",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "32",
+      "Experience": "62,755,923"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Int": "151",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "168, 1",
+      "#% increased Cooldown Recovery Rate": "36",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "31",
+      "Experience": "211,877,683"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Int": "155",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "174, 1",
+      "#% increased Cooldown Recovery Rate": "38",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "31",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "180, 1",
+      "#% increased Cooldown Recovery Rate": "40",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "31",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "186, 1",
+      "#% increased Cooldown Recovery Rate": "42",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "192, 1",
+      "#% increased Cooldown Recovery Rate": "44",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "198, 1",
+      "#% increased Cooldown Recovery Rate": "46",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "204, 1",
+      "#% increased Cooldown Recovery Rate": "48",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "29",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "210, 1",
+      "#% increased Cooldown Recovery Rate": "50",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "29",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "216, 1",
+      "#% increased Cooldown Recovery Rate": "52",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "29",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "222, 1",
+      "#% increased Cooldown Recovery Rate": "54",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "28",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "228, 1",
+      "#% increased Cooldown Recovery Rate": "56",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "28",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "234, 1",
+      "#% increased Cooldown Recovery Rate": "58",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "28",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "237, 1",
+      "#% increased Cooldown Recovery Rate": "59",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "27",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "240, 1",
+      "#% increased Cooldown Recovery Rate": "60",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "27",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "243, 1",
+      "#% increased Cooldown Recovery Rate": "61",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "27",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "246, 1",
+      "#% increased Cooldown Recovery Rate": "62",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "26",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "249, 1",
+      "#% increased Cooldown Recovery Rate": "63",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "26",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "252, 1",
+      "#% increased Cooldown Recovery Rate": "64",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "26",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "255, 1",
+      "#% increased Cooldown Recovery Rate": "65",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "258, 1",
+      "#% increased Cooldown Recovery Rate": "66",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "261, 1",
+      "#% increased Cooldown Recovery Rate": "67",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Int": "",
+      "Base Damage": "100%, 100%, 100%",
+      "Supported Skills have Added Spell Damage equal to 60% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage": "264, 1",
+      "#% increased Cooldown Recovery Rate": "68",
+      "Supported Skills deal 37% less Damage with Hits and Ailments": "24",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

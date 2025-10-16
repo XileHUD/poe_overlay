@@ -1,0 +1,420 @@
+{
+  "name": "Icicle Mine",
+  "slug": "Icicle_Mine",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
+    "Acronym": "Hit, Mine, Projectile",
+    "DropLevel": "12",
+    "BaseType": "Icicle Mine",
+    "Class": "Skill Gems",
+    "TargetTypes": "Ground, Enemy",
+    "Type": "Spell, Damage, Projectile, RemoteMined, Cold, HasReservation, ProjectilesFromUser, Aura, Area, AuraAffectsEnemies, AuraNotOnCaster",
+    "ItemType": "Metadata/Items/Gems/SkillGemFreezeMine",
+    "ActiveSkillsCode": "icicle_mine",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "12",
+      "Int": "21",
+      "Dex": "14",
+      "Reservation": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "16, 24",
+      "Experience": "15,249"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "15",
+      "Int": "25",
+      "Dex": "17",
+      "Reservation": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "20, 31",
+      "Experience": "41,517"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "19",
+      "Int": "30",
+      "Dex": "21",
+      "Reservation": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "28, 41",
+      "Experience": "81,983"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "23",
+      "Int": "35",
+      "Dex": "25",
+      "Reservation": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "36, 55",
+      "Experience": "147,968"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "27",
+      "Int": "41",
+      "Dex": "28",
+      "Reservation": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "47, 71",
+      "Experience": "250,557"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "31",
+      "Int": "46",
+      "Dex": "32",
+      "Reservation": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "61, 92",
+      "Experience": "405,086"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "35",
+      "Int": "51",
+      "Dex": "36",
+      "Reservation": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "78, 117",
+      "Experience": "447,718"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "38",
+      "Int": "55",
+      "Dex": "38",
+      "Reservation": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "93, 139",
+      "Experience": "615,318"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "41",
+      "Int": "59",
+      "Dex": "41",
+      "Reservation": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "111, 166",
+      "Experience": "834,639"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "44",
+      "Int": "63",
+      "Dex": "44",
+      "Reservation": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "131, 196",
+      "Experience": "1,570,760"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "47",
+      "Int": "67",
+      "Dex": "47",
+      "Reservation": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "155, 232",
+      "Experience": "1,633,987"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "50",
+      "Int": "71",
+      "Dex": "49",
+      "Reservation": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "182, 273",
+      "Experience": "2,151,030"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "53",
+      "Int": "75",
+      "Dex": "52",
+      "Reservation": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "214, 321",
+      "Experience": "2,812,189"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "56",
+      "Int": "79",
+      "Dex": "55",
+      "Reservation": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "251, 376",
+      "Experience": "5,099,360"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "59",
+      "Int": "83",
+      "Dex": "58",
+      "Reservation": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "294, 440",
+      "Experience": "9,400,731"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Int": "87",
+      "Dex": "60",
+      "Reservation": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "343, 514",
+      "Experience": "15,273,366"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Int": "90",
+      "Dex": "62",
+      "Reservation": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "380, 569",
+      "Experience": "26,286,582"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Int": "92",
+      "Dex": "64",
+      "Reservation": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "420, 630",
+      "Experience": "62,890,590"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Int": "95",
+      "Dex": "66",
+      "Reservation": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "465, 697",
+      "Experience": "212,046,017"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Int": "98",
+      "Dex": "68",
+      "Reservation": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "514, 771",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "568, 851",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "627, 940",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "691, 1037",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "762, 1144",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "7",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "840, 1260",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "7",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "926, 1389",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "7",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "1019, 1529",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "7",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "1122, 1683",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "7",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "1234, 1851",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "7",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "1357, 2036",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "7",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "1423, 2135",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "7",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "1492, 2238",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "7",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "1564, 2346",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "1639, 2459",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "1718, 2577",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "1801, 2701",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "1887, 2831",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "1977, 2966",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "2072, 3108",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Int": "",
+      "Dex": "",
+      "Reservation": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 24 Cold Damage": "2170, 3256",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

@@ -48,6 +48,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
     getAtlasNodes: () => ipcRenderer.invoke('get-atlas-nodes'),
     getGems: () => ipcRenderer.invoke('get-gems'),
     getBases: () => ipcRenderer.invoke('get-bases'),
+    // PoE1-specific data
+    getPoe1Uniques: () => ipcRenderer.invoke('get-poe1-uniques'),
+    getPoe1Bases: () => ipcRenderer.invoke('get-poe1-bases'),
     // Diagnostics
     getImageLog: () => ipcRenderer.invoke('debug-get-image-log'),
     cacheImage: (url: string) => ipcRenderer.invoke('cache-image', url),
@@ -64,6 +67,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
     // Uniques auto-open
     onShowUniqueItem: (callback: (data: { name: string; baseType: string }) => void) => {
         ipcRenderer.on('show-unique-item', (_event, data) => callback(data));
+    },
+    onShowPoe1UniqueItem: (callback: (data: { name: string; baseType: string }) => void) => {
+        ipcRenderer.on('show-poe1-unique-item', (_event, data) => callback(data));
     },
     
     // Notify main process that overlay is ready

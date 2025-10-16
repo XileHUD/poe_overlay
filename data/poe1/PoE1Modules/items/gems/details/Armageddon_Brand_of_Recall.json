@@ -1,0 +1,336 @@
+{
+  "name": "Armageddon Brand of Recall",
+  "slug": "Armageddon_Brand_of_Recall",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Armageddon Brand of Recall",
+    "TargetTypes": "Ground, Enemy",
+    "Type": "Spell, Damage, Area, Fire, Duration, Totemable, Trappable, Mineable, Triggerable, Multicastable, Brand, AreaSpell",
+    "ActiveSkillsCode": "armageddon_brand_alt_y"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "28",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "102, 152",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "31",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "125, 188",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "34",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "153, 230",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "37",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "187, 280",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "40",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "227, 340",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "42",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "258, 386",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "44",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "292, 438",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "46",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "331, 496",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "374, 561",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "422, 634",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "477, 715",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "537, 806",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "605, 908",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "681, 1021",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "765, 1148",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "859, 1289",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "964, 1446",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "1081, 1622",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "1212, 1818",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "1357, 2036",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "1519, 2278",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "1699, 2548",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "1899, 2849",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "2122, 3183",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "2369, 3554",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "31",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "2645, 3967",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "31",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "2950, 4425",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "32",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "3290, 4935",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "32",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "3667, 5500",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "33",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "4086, 6128",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "33",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "4312, 6468",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "34",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "4550, 6825",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "34",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "4801, 7202",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "34",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "5065, 7598",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "35",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "5344, 8016",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "35",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "5637, 8456",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "35",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "5946, 8919",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "35",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "6271, 9407",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "36",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "6613, 9920",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 102 to 152 Fire Damage": "6974, 10461",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

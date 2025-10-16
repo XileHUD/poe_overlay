@@ -5,14 +5,27 @@
 
 import { BrowserWindow, ipcMain, screen } from 'electron';
 import { FeatureConfig, DEFAULT_FEATURES, MINIMAL_FEATURES, ALL_FEATURES } from '../features/featureTypes.js';
+import type { OverlayVersion } from '../../types/overlayVersion.js';
 
 /**
  * Build HTML for feature selection splash.
  * Uses dark theme consistent with merchant history UI.
  */
-export function buildFeatureSplashHtml(currentConfig?: FeatureConfig): string {
+export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVersion: OverlayVersion = 'poe2'): string {
   const config = currentConfig || DEFAULT_FEATURES;
   
+  // Ensure all required fields exist (merge with defaults)
+  const safeConfig: FeatureConfig = {
+    ...DEFAULT_FEATURES,
+    ...config,
+    crafting: { ...DEFAULT_FEATURES.crafting, ...config.crafting },
+    character: { ...DEFAULT_FEATURES.character, ...config.character },
+    items: { ...DEFAULT_FEATURES.items, ...config.items },
+    poe1Items: { ...DEFAULT_FEATURES.poe1Items, ...(config.poe1Items || {}) }
+  };
+  
+  const overlayClass = overlayVersion === 'poe1' ? 'poe1-mode' : 'poe2-mode';
+
   const checked = (val: boolean) => val ? 'checked' : '';
   
   return `
@@ -45,6 +58,14 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig): string {
       color: var(--text-primary);
       overflow-y: auto;
       user-select: none;
+    }
+    
+    body.poe1-mode .poe2-only {
+      display: none !important;
+    }
+
+    body.poe2-mode .poe1-only {
+      display: none !important;
     }
     
     /* Dark scrollbar */
@@ -285,7 +306,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig): string {
     }
   </style>
 </head>
-<body>
+<body class="${overlayClass}">
   <h1>
     <span>🎯 Feature Selection</span>
     <button class="close-btn" onclick="closeWindow()" title="Close">✕</button>
@@ -296,107 +317,132 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig): string {
     Enabling fewer features will make the overlay start faster and use less memory.
   </div>
 
-  <!-- Modifiers (simple checkbox, no subs) -->
-  <div class="simple-checkbox">
-    <input type="checkbox" id="feat-modifiers" ${checked(config.modifiers)}/>
-    <label for="feat-modifiers">Modifiers (gear, weapons, jewels, etc.)</label>
+  <!-- Modifiers PoE2 (simple checkbox, no subs) -->
+  <div class="simple-checkbox poe2-only">
+    <input type="checkbox" id="feat-modifiers" ${checked(safeConfig.modifiers)}/>
+    <label for="feat-modifiers">Modifiers (PoE2 - gear, weapons, jewels, etc.)</label>
+  </div>
+
+  <!-- Modifiers PoE1 (simple checkbox, no subs) -->
+  <div class="simple-checkbox poe1-only">
+    <input type="checkbox" id="feat-poe1-modifiers" ${checked(safeConfig.poe1Modifiers)}/>
+    <label for="feat-poe1-modifiers">Modifiers (PoE1)</label>
   </div>
 
   <!-- Crafting (with subcategories) -->
-  <div class="feature-group">
+  <div class="feature-group poe2-only">
     <div class="feature-main" onclick="toggleGroup('crafting')">
-      <input type="checkbox" id="feat-crafting" ${checked(config.crafting.enabled)} onclick="event.stopPropagation()"/>
+      <input type="checkbox" id="feat-crafting" ${checked(safeConfig.crafting.enabled)} onclick="event.stopPropagation()"/>
       <label for="feat-crafting">Crafting</label>
-      <span class="expand-icon ${config.crafting.enabled ? 'expanded' : ''}">▶</span>
+      <span class="expand-icon ${safeConfig.crafting.enabled ? 'expanded' : ''}">▶</span>
     </div>
-    <div class="feature-subs ${config.crafting.enabled ? 'visible' : ''}" id="subs-crafting">
+    <div class="feature-subs ${safeConfig.crafting.enabled ? 'visible' : ''}" id="subs-crafting">
       <div class="feature-sub">
-        <input type="checkbox" id="feat-craft-liquid" ${checked(config.crafting.subcategories.liquidEmotions)}/>
+        <input type="checkbox" id="feat-craft-liquid" ${checked(safeConfig.crafting.subcategories.liquidEmotions)}/>
         <label for="feat-craft-liquid">Liquid Emotions</label>
       </div>
       <div class="feature-sub">
-        <input type="checkbox" id="feat-craft-annoints" ${checked(config.crafting.subcategories.annoints)}/>
+        <input type="checkbox" id="feat-craft-annoints" ${checked(safeConfig.crafting.subcategories.annoints)}/>
         <label for="feat-craft-annoints">Annoints</label>
       </div>
       <div class="feature-sub">
-        <input type="checkbox" id="feat-craft-essences" ${checked(config.crafting.subcategories.essences)}/>
+        <input type="checkbox" id="feat-craft-essences" ${checked(safeConfig.crafting.subcategories.essences)}/>
         <label for="feat-craft-essences">Essences</label>
       </div>
       <div class="feature-sub">
-        <input type="checkbox" id="feat-craft-omens" ${checked(config.crafting.subcategories.omens)}/>
+        <input type="checkbox" id="feat-craft-omens" ${checked(safeConfig.crafting.subcategories.omens)}/>
         <label for="feat-craft-omens">Omens</label>
       </div>
       <div class="feature-sub">
-        <input type="checkbox" id="feat-craft-currency" ${checked(config.crafting.subcategories.currency)}/>
+        <input type="checkbox" id="feat-craft-currency" ${checked(safeConfig.crafting.subcategories.currency)}/>
         <label for="feat-craft-currency">Currency</label>
       </div>
       <div class="feature-sub">
-        <input type="checkbox" id="feat-craft-catalysts" ${checked(config.crafting.subcategories.catalysts)}/>
+        <input type="checkbox" id="feat-craft-catalysts" ${checked(safeConfig.crafting.subcategories.catalysts)}/>
         <label for="feat-craft-catalysts">Catalysts</label>
       </div>
       <div class="feature-sub">
-        <input type="checkbox" id="feat-craft-socketables" ${checked(config.crafting.subcategories.socketables)}/>
+        <input type="checkbox" id="feat-craft-socketables" ${checked(safeConfig.crafting.subcategories.socketables)}/>
         <label for="feat-craft-socketables">Socketables</label>
       </div>
     </div>
   </div>
 
   <!-- Character (with subcategories) -->
-  <div class="feature-group">
+  <div class="feature-group poe2-only">
     <div class="feature-main" onclick="toggleGroup('character')">
-      <input type="checkbox" id="feat-character" ${checked(config.character.enabled)} onclick="event.stopPropagation()"/>
+      <input type="checkbox" id="feat-character" ${checked(safeConfig.character.enabled)} onclick="event.stopPropagation()"/>
       <label for="feat-character">Character</label>
-      <span class="expand-icon ${config.character.enabled ? 'expanded' : ''}">▶</span>
+      <span class="expand-icon ${safeConfig.character.enabled ? 'expanded' : ''}">▶</span>
     </div>
-    <div class="feature-subs ${config.character.enabled ? 'visible' : ''}" id="subs-character">
+    <div class="feature-subs ${safeConfig.character.enabled ? 'visible' : ''}" id="subs-character">
       <div class="feature-sub">
-        <input type="checkbox" id="feat-char-quests" ${checked(config.character.subcategories.questPassives)}/>
+        <input type="checkbox" id="feat-char-quests" ${checked(safeConfig.character.subcategories.questPassives)}/>
         <label for="feat-char-quests">Quest Passives</label>
       </div>
       <div class="feature-sub">
-        <input type="checkbox" id="feat-char-keystones" ${checked(config.character.subcategories.keystones)}/>
+        <input type="checkbox" id="feat-char-keystones" ${checked(safeConfig.character.subcategories.keystones)}/>
         <label for="feat-char-keystones">Keystones</label>
       </div>
       <div class="feature-sub">
-        <input type="checkbox" id="feat-char-asc" ${checked(config.character.subcategories.ascendancyPassives)}/>
+        <input type="checkbox" id="feat-char-asc" ${checked(safeConfig.character.subcategories.ascendancyPassives)}/>
         <label for="feat-char-asc">Ascendancy Passives</label>
       </div>
       <div class="feature-sub">
-        <input type="checkbox" id="feat-char-atlas" ${checked(config.character.subcategories.atlasNodes)}/>
+        <input type="checkbox" id="feat-char-atlas" ${checked(safeConfig.character.subcategories.atlasNodes)}/>
         <label for="feat-char-atlas">Atlas Nodes</label>
       </div>
       <div class="feature-sub">
-        <input type="checkbox" id="feat-char-gems" ${checked(config.character.subcategories.gems)}/>
+        <input type="checkbox" id="feat-char-gems" ${checked(safeConfig.character.subcategories.gems)}/>
         <label for="feat-char-gems">Gems</label>
       </div>
       <div class="feature-sub">
-        <input type="checkbox" id="feat-char-glossar" ${checked(config.character.subcategories.glossar)}/>
+        <input type="checkbox" id="feat-char-glossar" ${checked(safeConfig.character.subcategories.glossar)}/>
         <label for="feat-char-glossar">Glossar</label>
       </div>
     </div>
   </div>
 
   <!-- Items (with subcategories) -->
-  <div class="feature-group">
+  <div class="feature-group poe2-only">
     <div class="feature-main" onclick="toggleGroup('items')">
-      <input type="checkbox" id="feat-items" ${checked(config.items.enabled)} onclick="event.stopPropagation()"/>
-      <label for="feat-items">Items</label>
-      <span class="expand-icon ${config.items.enabled ? 'expanded' : ''}">▶</span>
+      <input type="checkbox" id="feat-items" ${checked(safeConfig.items.enabled)} onclick="event.stopPropagation()"/>
+      <label for="feat-items">Items (PoE2)</label>
+      <span class="expand-icon ${safeConfig.items.enabled ? 'expanded' : ''}">▶</span>
     </div>
-    <div class="feature-subs ${config.items.enabled ? 'visible' : ''}" id="subs-items">
+    <div class="feature-subs ${safeConfig.items.enabled ? 'visible' : ''}" id="subs-items">
       <div class="feature-sub">
-        <input type="checkbox" id="feat-items-uniques" ${checked(config.items.subcategories.uniques)}/>
+        <input type="checkbox" id="feat-items-uniques" ${checked(safeConfig.items.subcategories.uniques)}/>
         <label for="feat-items-uniques">Uniques</label>
       </div>
       <div class="feature-sub">
-        <input type="checkbox" id="feat-items-bases" ${checked(config.items.subcategories.bases)}/>
+        <input type="checkbox" id="feat-items-bases" ${checked(safeConfig.items.subcategories.bases)}/>
         <label for="feat-items-bases">Bases</label>
       </div>
     </div>
   </div>
 
+  <!-- PoE1 Items (with subcategories) -->
+  <div class="feature-group poe1-only">
+    <div class="feature-main" onclick="toggleGroup('poe1Items')">
+      <input type="checkbox" id="feat-poe1-items" ${checked(safeConfig.poe1Items.enabled)} onclick="event.stopPropagation()"/>
+      <label for="feat-poe1-items">Items (PoE1)</label>
+      <span class="expand-icon ${safeConfig.poe1Items.enabled ? 'expanded' : ''}">▶</span>
+    </div>
+    <div class="feature-subs ${safeConfig.poe1Items.enabled ? 'visible' : ''}" id="subs-poe1Items">
+      <div class="feature-sub">
+        <input type="checkbox" id="feat-poe1-items-uniques" ${checked(safeConfig.poe1Items.subcategories.uniques)}/>
+        <label for="feat-poe1-items-uniques">Uniques</label>
+      </div>
+      <div class="feature-sub">
+        <input type="checkbox" id="feat-poe1-items-bases" ${checked(safeConfig.poe1Items.subcategories.bases)}/>
+        <label for="feat-poe1-items-bases">Bases</label>
+      </div>
+    </div>
+  </div>
+
   <!-- Tools (with subcategories) -->
-  <div class="feature-group">
+  <div class="feature-group poe2-only">
     <div class="feature-main" onclick="toggleGroup('tools')">
       <input type="checkbox" id="feat-tools" ${checked(config.tools.enabled)} onclick="event.stopPropagation()"/>
       <label for="feat-tools">Tools</label>
@@ -411,7 +457,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig): string {
   </div>
 
   <!-- Merchant (simple checkbox, no subs) -->
-  <div class="simple-checkbox">
+  <div class="simple-checkbox poe2-only">
     <input type="checkbox" id="feat-merchant" ${checked(config.merchant)}/>
     <label for="feat-merchant">Merchant History</label>
   </div>
@@ -425,10 +471,27 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig): string {
 
   <script>
     // Toggle group expansion
+    const GROUPS = {
+      crafting: { checkboxId: 'feat-crafting' },
+      character: { checkboxId: 'feat-character' },
+      items: { checkboxId: 'feat-items' },
+      poe1Items: { checkboxId: 'feat-poe1-items' },
+      tools: { checkboxId: 'feat-tools' }
+    };
+
+    function getGroupCheckbox(groupName) {
+      const group = GROUPS[groupName];
+      const fallbackId = 'feat-' + groupName;
+      return document.getElementById(group ? group.checkboxId : fallbackId);
+    }
+
     function toggleGroup(groupName) {
-      const checkbox = document.getElementById('feat-' + groupName);
+      const checkbox = getGroupCheckbox(groupName);
       const subs = document.getElementById('subs-' + groupName);
       const icon = event.currentTarget.querySelector('.expand-icon');
+      if (!checkbox || !subs || !icon) {
+        return;
+      }
       
       if (checkbox.checked) {
         subs.classList.toggle('visible');
@@ -441,11 +504,15 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig): string {
     }
     
     // Watch parent checkboxes to auto-collapse
-    ['crafting', 'character', 'items', 'tools'].forEach(group => {
-      const checkbox = document.getElementById('feat-' + group);
+    const GROUP_ORDER = ['crafting', 'character', 'items', 'poe1Items', 'tools'];
+
+    GROUP_ORDER.forEach(group => {
+      const checkbox = getGroupCheckbox(group);
       const subs = document.getElementById('subs-' + group);
       const icon = document.querySelector('[onclick*="' + group + '"] .expand-icon');
-      
+      if (!checkbox || !subs || !icon) {
+        return;
+      }
       checkbox.addEventListener('change', () => {
         if (checkbox.checked) {
           subs.classList.add('visible');
@@ -469,6 +536,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig): string {
       
       // Apply preset
       document.getElementById('feat-modifiers').checked = preset.modifiers;
+      document.getElementById('feat-poe1-modifiers').checked = preset.poe1Modifiers;
       document.getElementById('feat-merchant').checked = preset.merchant;
       
       // Crafting
@@ -490,21 +558,28 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig): string {
       document.getElementById('feat-char-gems').checked = preset.character.subcategories.gems;
       document.getElementById('feat-char-glossar').checked = preset.character.subcategories.glossar;
       
-      // Items
+      // Items (PoE2)
       document.getElementById('feat-items').checked = preset.items.enabled;
       document.getElementById('feat-items-uniques').checked = preset.items.subcategories.uniques;
       document.getElementById('feat-items-bases').checked = preset.items.subcategories.bases;
+      
+      // Items (PoE1)
+      document.getElementById('feat-poe1-items').checked = preset.poe1Items.enabled;
+      document.getElementById('feat-poe1-items-uniques').checked = preset.poe1Items.subcategories.uniques;
+      document.getElementById('feat-poe1-items-bases').checked = preset.poe1Items.subcategories.bases;
       
       // Tools
       document.getElementById('feat-tools').checked = preset.tools.enabled;
       document.getElementById('feat-tools-regex').checked = preset.tools.subcategories.regex;
       
       // Update visibility
-      ['crafting', 'character', 'items', 'tools'].forEach(group => {
-        const checkbox = document.getElementById('feat-' + group);
+      GROUP_ORDER.forEach(group => {
+        const checkbox = getGroupCheckbox(group);
         const subs = document.getElementById('subs-' + group);
         const icon = document.querySelector('[onclick*="' + group + '"] .expand-icon');
-        
+        if (!checkbox || !subs || !icon) {
+          return;
+        }
         if (checkbox.checked) {
           subs.classList.add('visible');
           icon.classList.add('expanded');
@@ -528,6 +603,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig): string {
       
       const config = {
         modifiers: document.getElementById('feat-modifiers').checked,
+        poe1Modifiers: document.getElementById('feat-poe1-modifiers').checked,
         crafting: {
           enabled: document.getElementById('feat-crafting').checked,
           subcategories: {
@@ -558,6 +634,13 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig): string {
             bases: document.getElementById('feat-items-bases').checked
           }
         },
+        poe1Items: {
+          enabled: document.getElementById('feat-poe1-items').checked,
+          subcategories: {
+            uniques: document.getElementById('feat-poe1-items-uniques').checked,
+            bases: document.getElementById('feat-poe1-items-bases').checked
+          }
+        },
         tools: {
           enabled: document.getElementById('feat-tools').checked,
           subcategories: {
@@ -568,9 +651,9 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig): string {
       };
       
       // Validate at least one feature enabled
-      const hasAny = config.modifiers || config.merchant || 
+      const hasAny = config.modifiers || config.poe1Modifiers || config.merchant || 
         config.crafting.enabled || config.character.enabled || 
-        config.items.enabled || config.tools.enabled;
+        config.items.enabled || config.poe1Items.enabled || config.tools.enabled;
       
       if (!hasAny) {
         alert('Please enable at least one feature!');
@@ -609,7 +692,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig): string {
  * Show feature selection splash window.
  * Returns a promise that resolves with the selected configuration.
  */
-export function showFeatureSplash(currentConfig?: FeatureConfig): Promise<FeatureConfig> {
+export function showFeatureSplash(currentConfig?: FeatureConfig, overlayVersion: OverlayVersion = 'poe2'): Promise<FeatureConfig> {
   return new Promise((resolve, reject) => {
     const { width, height } = screen.getPrimaryDisplay().workAreaSize;
     
@@ -634,7 +717,7 @@ export function showFeatureSplash(currentConfig?: FeatureConfig): Promise<Featur
       }
     });
 
-    const html = buildFeatureSplashHtml(currentConfig);
+  const html = buildFeatureSplashHtml(currentConfig, overlayVersion);
     win.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
 
     let resolved = false;

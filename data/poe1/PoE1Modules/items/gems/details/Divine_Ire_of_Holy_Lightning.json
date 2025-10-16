@@ -1,0 +1,376 @@
+{
+  "name": "Divine Ire of Holy Lightning",
+  "slug": "Divine_Ire_of_Holy_Lightning",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Divine Ire of Holy Lightning",
+    "TargetTypes": ", ,",
+    "Type": "Spell, Area, Damage, Channel, Lightning, Totemable, AreaSpell, Physical",
+    "ActiveSkillsCode": "divine_ire_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "28",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "27, 40",
+      "Damages 6 nearby Enemies when you gain Stages": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "31",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "33, 50",
+      "Damages 6 nearby Enemies when you gain Stages": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "34",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "40, 61",
+      "Damages 6 nearby Enemies when you gain Stages": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "37",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "49, 74",
+      "Damages 6 nearby Enemies when you gain Stages": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "40",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "60, 90",
+      "Damages 6 nearby Enemies when you gain Stages": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "42",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "68, 102",
+      "Damages 6 nearby Enemies when you gain Stages": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "44",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "77, 115",
+      "Damages 6 nearby Enemies when you gain Stages": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "46",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "87, 130",
+      "Damages 6 nearby Enemies when you gain Stages": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "98, 147",
+      "Damages 6 nearby Enemies when you gain Stages": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "111, 166",
+      "Damages 6 nearby Enemies when you gain Stages": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "125, 187",
+      "Damages 6 nearby Enemies when you gain Stages": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "141, 211",
+      "Damages 6 nearby Enemies when you gain Stages": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "158, 237",
+      "Damages 6 nearby Enemies when you gain Stages": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "178, 267",
+      "Damages 6 nearby Enemies when you gain Stages": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "200, 300",
+      "Damages 6 nearby Enemies when you gain Stages": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "224, 336",
+      "Damages 6 nearby Enemies when you gain Stages": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "251, 377",
+      "Damages 6 nearby Enemies when you gain Stages": "10",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "281, 422",
+      "Damages 6 nearby Enemies when you gain Stages": "10",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "315, 473",
+      "Damages 6 nearby Enemies when you gain Stages": "10",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "353, 529",
+      "Damages 6 nearby Enemies when you gain Stages": "10",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "394, 591",
+      "Damages 6 nearby Enemies when you gain Stages": "11",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "440, 661",
+      "Damages 6 nearby Enemies when you gain Stages": "11",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "492, 738",
+      "Damages 6 nearby Enemies when you gain Stages": "11",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "549, 824",
+      "Damages 6 nearby Enemies when you gain Stages": "11",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "613, 919",
+      "Damages 6 nearby Enemies when you gain Stages": "11",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "683, 1025",
+      "Damages 6 nearby Enemies when you gain Stages": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "761, 1142",
+      "Damages 6 nearby Enemies when you gain Stages": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "848, 1272",
+      "Damages 6 nearby Enemies when you gain Stages": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "944, 1417",
+      "Damages 6 nearby Enemies when you gain Stages": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "1051, 1577",
+      "Damages 6 nearby Enemies when you gain Stages": "13",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "1109, 1663",
+      "Damages 6 nearby Enemies when you gain Stages": "13",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "1170, 1754",
+      "Damages 6 nearby Enemies when you gain Stages": "13",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "1234, 1850",
+      "Damages 6 nearby Enemies when you gain Stages": "13",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "1301, 1951",
+      "Damages 6 nearby Enemies when you gain Stages": "13",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "1372, 2057",
+      "Damages 6 nearby Enemies when you gain Stages": "13",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "1446, 2169",
+      "Damages 6 nearby Enemies when you gain Stages": "13",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "1525, 2287",
+      "Damages 6 nearby Enemies when you gain Stages": "13",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "1607, 2411",
+      "Damages 6 nearby Enemies when you gain Stages": "13",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "1694, 2541",
+      "Damages 6 nearby Enemies when you gain Stages": "14",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 27 to 40 Physical Damage": "1786, 2679",
+      "Damages 6 nearby Enemies when you gain Stages": "14",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

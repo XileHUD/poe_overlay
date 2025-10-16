@@ -1,0 +1,337 @@
+{
+  "name": "Vaal Glacial Hammer",
+  "slug": "Vaal_Glacial_Hammer",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Glacial Hammer",
+    "Weapon": "One Hand Maces, Staves, Two Hand Maces, Sceptres, Warstaves",
+    "TargetTypes": "Ground, Enemy",
+    "Type": "Attack, MeleeSingleTarget, Multistrikeable, Melee, Cold, ThresholdJewelArea",
+    "ActiveSkillsCode": "glacial_hammer"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "1",
+      "Base Damage": "218.5%, 218.5%",
+      "10% increased Effect of Cold Ailments": "10",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "200",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "2",
+      "Base Damage": "229.8%, 229.8%",
+      "10% increased Effect of Cold Ailments": "11",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "210",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "4",
+      "Base Damage": "242.2%, 242.2%",
+      "10% increased Effect of Cold Ailments": "12",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "220",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "7",
+      "Base Damage": "255.7%, 255.7%",
+      "10% increased Effect of Cold Ailments": "13",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "230",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "11",
+      "Base Damage": "270.5%, 270.5%",
+      "10% increased Effect of Cold Ailments": "14",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "240",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "16",
+      "Base Damage": "286.6%, 286.6%",
+      "10% increased Effect of Cold Ailments": "15",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "250",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "20",
+      "Base Damage": "303.1%, 303.1%",
+      "10% increased Effect of Cold Ailments": "16",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "260",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "24",
+      "Base Damage": "320.6%, 320.6%",
+      "10% increased Effect of Cold Ailments": "17",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "270",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "28",
+      "Base Damage": "338.9%, 338.9%",
+      "10% increased Effect of Cold Ailments": "18",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "280",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "32",
+      "Base Damage": "358.4%, 358.4%",
+      "10% increased Effect of Cold Ailments": "19",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "290",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "36",
+      "Base Damage": "378.9%, 378.9%",
+      "10% increased Effect of Cold Ailments": "20",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "300",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "40",
+      "Base Damage": "400.7%, 400.7%",
+      "10% increased Effect of Cold Ailments": "21",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "310",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "44",
+      "Base Damage": "423.6%, 423.6%",
+      "10% increased Effect of Cold Ailments": "22",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "320",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "48",
+      "Base Damage": "447.8%, 447.8%",
+      "10% increased Effect of Cold Ailments": "23",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "330",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "52",
+      "Base Damage": "473.4%, 473.4%",
+      "10% increased Effect of Cold Ailments": "24",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "340",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "56",
+      "Base Damage": "500.4%, 500.4%",
+      "10% increased Effect of Cold Ailments": "25",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "350",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "60",
+      "Base Damage": "529.1%, 529.1%",
+      "10% increased Effect of Cold Ailments": "26",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "360",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "64",
+      "Base Damage": "559.2%, 559.2%",
+      "10% increased Effect of Cold Ailments": "27",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "370",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "67",
+      "Base Damage": "590%, 590%",
+      "10% increased Effect of Cold Ailments": "28",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "380",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Base Damage": "622.6%, 622.6%",
+      "10% increased Effect of Cold Ailments": "29",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "390",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Base Damage": "655.8%, 655.8%",
+      "10% increased Effect of Cold Ailments": "30",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "400",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Base Damage": "690.9%, 690.9%",
+      "10% increased Effect of Cold Ailments": "31",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "410",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Base Damage": "727.9%, 727.9%",
+      "10% increased Effect of Cold Ailments": "32",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "420",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Base Damage": "766.7%, 766.7%",
+      "10% increased Effect of Cold Ailments": "33",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "430",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Base Damage": "807.7%, 807.7%",
+      "10% increased Effect of Cold Ailments": "34",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "440",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Base Damage": "850.8%, 850.8%",
+      "10% increased Effect of Cold Ailments": "35",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "450",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Base Damage": "896.2%, 896.2%",
+      "10% increased Effect of Cold Ailments": "36",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "460",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Base Damage": "944.1%, 944.1%",
+      "10% increased Effect of Cold Ailments": "37",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "470",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Base Damage": "994.4%, 994.4%",
+      "10% increased Effect of Cold Ailments": "38",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "480",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Base Damage": "1047.5%, 1047.5%",
+      "10% increased Effect of Cold Ailments": "39",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "490",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Base Damage": "1129.2%, 1129.2%",
+      "10% increased Effect of Cold Ailments": "39",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "495",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Base Damage": "1159.2%, 1159.2%",
+      "10% increased Effect of Cold Ailments": "40",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "500",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Base Damage": "1190.1%, 1190.1%",
+      "10% increased Effect of Cold Ailments": "40",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "505",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Base Damage": "1221.7%, 1221.7%",
+      "10% increased Effect of Cold Ailments": "41",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "510",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Base Damage": "1254.2%, 1254.2%",
+      "10% increased Effect of Cold Ailments": "41",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "515",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Base Damage": "1287.6%, 1287.6%",
+      "10% increased Effect of Cold Ailments": "42",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "520",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Base Damage": "1321.9%, 1321.9%",
+      "10% increased Effect of Cold Ailments": "42",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "525",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Base Damage": "1357.1%, 1357.1%",
+      "10% increased Effect of Cold Ailments": "43",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "530",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Base Damage": "1393.2%, 1393.2%",
+      "10% increased Effect of Cold Ailments": "43",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "535",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Base Damage": "1430.2%, 1430.2%",
+      "10% increased Effect of Cold Ailments": "44",
+      "Every third successive strike Freezes enemies as though dealing 200% more Damage": "540",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

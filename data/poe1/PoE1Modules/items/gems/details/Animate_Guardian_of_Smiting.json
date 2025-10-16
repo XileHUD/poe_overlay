@@ -1,0 +1,377 @@
+{
+  "name": "Animate Guardian of Smiting",
+  "slug": "Animate_Guardian_of_Smiting",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Animate Guardian of Smiting",
+    "TargetTypes": "Armour, Ground",
+    "Type": "Spell, Minion, MinionsCanExplode, Totemable, Triggerable, CreatesMinion, Lightning",
+    "MinionType": "Attack, Melee, MeleeSingleTarget, Multistrikeable",
+    "ActiveSkillsCode": "animate_guardian_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "28",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "33",
+      "Minions deal 100% of Damage": "100",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "31",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "36",
+      "Minions deal 100% of Damage": "2",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "34",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "39",
+      "Minions deal 100% of Damage": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "37",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "43",
+      "Minions deal 100% of Damage": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "40",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "46",
+      "Minions deal 100% of Damage": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "42",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "48",
+      "Minions deal 100% of Damage": "10",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "44",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "51",
+      "Minions deal 100% of Damage": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "46",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "53",
+      "Minions deal 100% of Damage": "14",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "56",
+      "Minions deal 100% of Damage": "16",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "58",
+      "Minions deal 100% of Damage": "18",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "61",
+      "Minions deal 100% of Damage": "20",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "63",
+      "Minions deal 100% of Damage": "22",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "66",
+      "Minions deal 100% of Damage": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "68",
+      "Minions deal 100% of Damage": "26",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "71",
+      "Minions deal 100% of Damage": "28",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "73",
+      "Minions deal 100% of Damage": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "76",
+      "Minions deal 100% of Damage": "32",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "79",
+      "Minions deal 100% of Damage": "34",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "82",
+      "Minions deal 100% of Damage": "36",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "38",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "40",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "42",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "44",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "46",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "48",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "50",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "52",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "54",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "56",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "58",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "59",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "60",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "61",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "62",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "63",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "64",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "65",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "66",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "67",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 33": "100",
+      "Minions deal 100% of Damage": "68",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

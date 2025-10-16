@@ -1,0 +1,380 @@
+{
+  "name": "Automation",
+  "slug": "Automation",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
+    "Acronym": "Cooldown, Trigger, Recovery",
+    "DropLevel": "24",
+    "BaseType": "Automation",
+    "Class": "Skill Gems",
+    "TargetTypes": "Any",
+    "Type": "Spell, Instant, HasReservation, Cooldown",
+    "ItemType": "Metadata/Items/Gems/SkillGemAutomation",
+    "ActiveSkillsCode": "automation",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "24",
+      "Int": "37",
+      "Dex": "25",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "24",
+      "Experience": "118,383"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "27",
+      "Int": "41",
+      "Dex": "28",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "23",
+      "Experience": "175,816"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "30",
+      "Int": "45",
+      "Dex": "31",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "22",
+      "Experience": "254,061"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "33",
+      "Int": "49",
+      "Dex": "34",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "21",
+      "Experience": "359,090"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "36",
+      "Int": "53",
+      "Dex": "37",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "20",
+      "Experience": "498,508"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "39",
+      "Int": "57",
+      "Dex": "39",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "19",
+      "Experience": "682,057"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "42",
+      "Int": "61",
+      "Dex": "42",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "18",
+      "Experience": "921,777"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "45",
+      "Int": "65",
+      "Dex": "45",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "17",
+      "Experience": "1,727,879"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Int": "69",
+      "Dex": "48",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "16",
+      "Experience": "1,138,877"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Int": "71",
+      "Dex": "49",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "15",
+      "Experience": "1,368,233"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Int": "74",
+      "Dex": "51",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "14",
+      "Experience": "1,638,338"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Int": "76",
+      "Dex": "53",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "13",
+      "Experience": "1,956,648"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Int": "79",
+      "Dex": "55",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "12",
+      "Experience": "3,655,184"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Int": "82",
+      "Dex": "57",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "11",
+      "Experience": "3,017,327"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Int": "84",
+      "Dex": "59",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "10",
+      "Experience": "7,793,914"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Int": "87",
+      "Dex": "60",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "9",
+      "Experience": "15,206,031"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Int": "90",
+      "Dex": "62",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "8",
+      "Experience": "26,185,582"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Int": "92",
+      "Dex": "64",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "7",
+      "Experience": "62,755,923"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Int": "95",
+      "Dex": "66",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "6",
+      "Experience": "211,877,683"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Int": "98",
+      "Dex": "68",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "5",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "2",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "1",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "1",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "2",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "5",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "5",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Int": "",
+      "Dex": "",
+      "Base Damage": "100%, 100%, 100%",
+      "24% reduced Cooldown Recovery Rate": "10",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

@@ -1,0 +1,420 @@
+{
+  "name": "Contagion",
+  "slug": "Contagion",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
+    "Acronym": "Modifiers",
+    "DropLevel": "4",
+    "BaseType": "Contagion",
+    "Class": "Skill Gems",
+    "TargetTypes": "Ground, Enemy,",
+    "Type": "Spell, Area, Duration, Trappable, Totemable, DamageOverTime, Chaos, Multicastable, Triggerable, Mineable, DegenOnlySpellDamage, Cascadable, CanRapidFire, AreaSpell",
+    "ItemType": "Metadata/Items/Gems/SkillGemContagion",
+    "ActiveSkillsCode": "contagion",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "4",
+      "Int": "0",
+      "Dex": "0",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "3.4",
+      "Experience": "841"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "6",
+      "Int": "0",
+      "Dex": "0",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "4.2",
+      "Experience": "3,099"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "9",
+      "Int": "17",
+      "Dex": "0",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "5.6",
+      "Experience": "7,433"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "12",
+      "Int": "21",
+      "Dex": "14",
+      "Cost": "7",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "7.4",
+      "Experience": "22,895"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "16",
+      "Int": "26",
+      "Dex": "18",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "10.2",
+      "Experience": "49,725"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "20",
+      "Int": "31",
+      "Dex": "22",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "13.9",
+      "Experience": "95,714"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "24",
+      "Int": "37",
+      "Dex": "25",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "18.5",
+      "Experience": "169,595"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "28",
+      "Int": "42",
+      "Dex": "29",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "24.4",
+      "Experience": "283,759"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "32",
+      "Int": "47",
+      "Dex": "33",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "31.7",
+      "Experience": "453,996"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "36",
+      "Int": "53",
+      "Dex": "37",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "40.8",
+      "Experience": "703,128"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "40",
+      "Int": "58",
+      "Dex": "40",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "52.2",
+      "Experience": "1,061,223"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "44",
+      "Int": "63",
+      "Dex": "44",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "66.3",
+      "Experience": "2,065,870"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "48",
+      "Int": "69",
+      "Dex": "48",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "83.7",
+      "Experience": "2,507,110"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "52",
+      "Int": "74",
+      "Dex": "51",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "105.2",
+      "Experience": "2,573,731"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "55",
+      "Int": "78",
+      "Dex": "54",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "124.6",
+      "Experience": "7,611,351"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "58",
+      "Int": "82",
+      "Dex": "57",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "147.1",
+      "Experience": "13,437,908"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "61",
+      "Int": "86",
+      "Dex": "60",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "173.5",
+      "Experience": "25,052,147"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "64",
+      "Int": "90",
+      "Dex": "62",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "204.2",
+      "Experience": "43,869,436"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "67",
+      "Int": "94",
+      "Dex": "65",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "239.9",
+      "Experience": "242,081,178"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Int": "98",
+      "Dex": "68",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "281.5",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Int": "",
+      "Dex": "",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "312.8",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Int": "",
+      "Dex": "",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "347.5",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Int": "",
+      "Dex": "",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "385.8",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Int": "",
+      "Dex": "",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "428.1",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Int": "",
+      "Dex": "",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "474.7",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Int": "",
+      "Dex": "",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "526.2",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Int": "",
+      "Dex": "",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "583",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Int": "",
+      "Dex": "",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "645.7",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Int": "",
+      "Dex": "",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "714.7",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Int": "",
+      "Dex": "",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "790.8",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Int": "",
+      "Dex": "",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "831.7",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Int": "",
+      "Dex": "",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "874.7",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Int": "",
+      "Dex": "",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "919.7",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Int": "",
+      "Dex": "",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "967",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Int": "",
+      "Dex": "",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "1016.7",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Int": "",
+      "Dex": "",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "1068.8",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Int": "",
+      "Dex": "",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "1123.4",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Int": "",
+      "Dex": "",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "1180.8",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Int": "",
+      "Dex": "",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "1241",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Int": "",
+      "Dex": "",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 3.4 Base Chaos Damage per second": "1304.1",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

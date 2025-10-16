@@ -1,0 +1,420 @@
+{
+  "name": "Corrupting Fever",
+  "slug": "Corrupting_Fever",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
+    "Acronym": "Duration, Buff",
+    "DropLevel": "16",
+    "BaseType": "Corrupting Fever",
+    "Class": "Skill Gems",
+    "TargetTypes": "Any",
+    "Type": "Spell, Buff, Duration, Triggerable, Instant, Physical, Cooldown, DamageOverTime, Totemable",
+    "ItemType": "Metadata/Items/Gems/SkillGemCorruptingFever",
+    "ActiveSkillsCode": "corrupting_fever",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "16",
+      "Str": "41",
+      "Cost": "78",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "7.8",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "26",
+      "Experience": "49,725"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "20",
+      "Str": "50",
+      "Cost": "92",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "10.9",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "32",
+      "Experience": "95,714"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "24",
+      "Str": "58",
+      "Cost": "113",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "15.1",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "38",
+      "Experience": "169,595"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "28",
+      "Str": "67",
+      "Cost": "134",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "20.5",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "43",
+      "Experience": "199,345"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "31",
+      "Str": "73",
+      "Cost": "159",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "25.6",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "47",
+      "Experience": "285,815"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "34",
+      "Str": "79",
+      "Cost": "183",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "31.8",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "50",
+      "Experience": "401,344"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "37",
+      "Str": "85",
+      "Cost": "203",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "39.3",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "53",
+      "Experience": "554,379"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "40",
+      "Str": "92",
+      "Cost": "222",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "48.4",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "56",
+      "Experience": "755,049"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "43",
+      "Str": "98",
+      "Cost": "254",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "59.4",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "67",
+      "Experience": "1,016,533"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "46",
+      "Str": "104",
+      "Cost": "284",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "72.7",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "77",
+      "Experience": "1,898,602"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "49",
+      "Str": "111",
+      "Cost": "310",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "88.7",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "89",
+      "Experience": "1,964,019"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "52",
+      "Str": "117",
+      "Cost": "332",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "107.9",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "101",
+      "Experience": "2,573,731"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "55",
+      "Str": "123",
+      "Cost": "385",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "131",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "117",
+      "Experience": "4,676,439"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Str": "130",
+      "Cost": "398",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "158.7",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "133",
+      "Experience": "3,017,327"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Str": "134",
+      "Cost": "407",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "180.1",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "144",
+      "Experience": "7,823,001"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Str": "138",
+      "Cost": "425",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "204.2",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "155",
+      "Experience": "15,264,208"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Str": "142",
+      "Cost": "441",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "231.4",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "169",
+      "Experience": "26,272,845"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Str": "146",
+      "Cost": "508",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "262.1",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "185",
+      "Experience": "62,872,274"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Str": "151",
+      "Cost": "515",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "296.6",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "201",
+      "Experience": "212,023,122"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Str": "155",
+      "Cost": "520",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "335.4",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "205",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Str": "",
+      "Cost": "585",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "379",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "210",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Str": "",
+      "Cost": "653",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "428.1",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "226",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Str": "",
+      "Cost": "726",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "483.2",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "239",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Str": "",
+      "Cost": "802",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "545.2",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "252",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Str": "",
+      "Cost": "881",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "614.8",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "262",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Str": "",
+      "Cost": "963",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "692.9",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "270",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Str": "",
+      "Cost": "1047",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "780.5",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "275",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Str": "",
+      "Cost": "1134",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "878.9",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "290",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Str": "",
+      "Cost": "1223",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "989.2",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "305",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Str": "",
+      "Cost": "1312",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "1112.9",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "318",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Str": "",
+      "Cost": "1351",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "1180.3",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "335",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Str": "",
+      "Cost": "1388",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "1251.6",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "351",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Str": "",
+      "Cost": "1427",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "1327.1",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "368",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Str": "",
+      "Cost": "1463",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "1407",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "386",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Str": "",
+      "Cost": "1500",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "1491.6",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "405",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Str": "",
+      "Cost": "1534",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "1581.1",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "423",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Str": "",
+      "Cost": "1570",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "1675.8",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "443",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Str": "",
+      "Cost": "1601",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "1776.1",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "463",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Str": "",
+      "Cost": "1633",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "1882.2",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "484",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Str": "",
+      "Cost": "1662",
+      "Base Damage": "100%, 100%",
+      "Deals 7.8 Base Physical Damage per second": "1994.5",
+      "Buff Duration is refreshed after you spend a total of 26 Life": "504",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

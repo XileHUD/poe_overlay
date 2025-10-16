@@ -1,0 +1,420 @@
+{
+  "name": "Caustic Arrow",
+  "slug": "Caustic_Arrow",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
+    "Acronym": "Projectile, Modifiers",
+    "BaseType": "Caustic Arrow",
+    "Class": "Skill Gems",
+    "Weapon": "Bows",
+    "TargetTypes": "Ground, Enemy",
+    "Type": "Attack, RangedAttack, MirageArcherCanUse, Projectile, ProjectilesFromUser, Area, Duration, Trappable, Mineable, Totemable, DamageOverTime, Chaos, Triggerable",
+    "ItemType": "Metadata/Items/Gems/SkillGemPoisonArrow",
+    "ActiveSkillsCode": "caustic_arrow",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "1",
+      "Dex": "0",
+      "Cost": "6",
+      "Base Damage": "55%, 55%",
+      "Deals 8.8 Base Chaos Damage per second": "8.8",
+      "# metres to radius": "0",
+      "Experience": "70"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "2",
+      "Dex": "0",
+      "Cost": "6",
+      "Base Damage": "55.5%, 55.5%",
+      "Deals 8.8 Base Chaos Damage per second": "10.1",
+      "# metres to radius": "0",
+      "Experience": "308"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "4",
+      "Dex": "16",
+      "Cost": "6",
+      "Base Damage": "56%, 56%",
+      "Deals 8.8 Base Chaos Damage per second": "13.1",
+      "# metres to radius": "0.1",
+      "Experience": "1,554"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "7",
+      "Dex": "22",
+      "Cost": "6",
+      "Base Damage": "56.5%, 56.5%",
+      "Deals 8.8 Base Chaos Damage per second": "18.4",
+      "# metres to radius": "0.1",
+      "Experience": "6,667"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "11",
+      "Dex": "31",
+      "Cost": "6",
+      "Base Damage": "57%, 57%",
+      "Deals 8.8 Base Chaos Damage per second": "27.8",
+      "# metres to radius": "0.1",
+      "Experience": "26,047"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "16",
+      "Dex": "41",
+      "Cost": "7",
+      "Base Damage": "57.5%, 57.5%",
+      "Deals 8.8 Base Chaos Damage per second": "44",
+      "# metres to radius": "0.2",
+      "Experience": "49,725"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "20",
+      "Dex": "50",
+      "Cost": "7",
+      "Base Damage": "58%, 58%",
+      "Deals 8.8 Base Chaos Damage per second": "61.9",
+      "# metres to radius": "0.2",
+      "Experience": "95,714"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "24",
+      "Dex": "58",
+      "Cost": "7",
+      "Base Damage": "58.5%, 58.5%",
+      "Deals 8.8 Base Chaos Damage per second": "85.4",
+      "# metres to radius": "0.2",
+      "Experience": "169,595"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "28",
+      "Dex": "67",
+      "Cost": "7",
+      "Base Damage": "59%, 59%",
+      "Deals 8.8 Base Chaos Damage per second": "116.2",
+      "# metres to radius": "0.3",
+      "Experience": "283,759"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "32",
+      "Dex": "75",
+      "Cost": "8",
+      "Base Damage": "59.5%, 59.5%",
+      "Deals 8.8 Base Chaos Damage per second": "156.4",
+      "# metres to radius": "0.3",
+      "Experience": "453,996"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "36",
+      "Dex": "83",
+      "Cost": "8",
+      "Base Damage": "59.9%, 59.9%",
+      "Deals 8.8 Base Chaos Damage per second": "208.5",
+      "# metres to radius": "0.3",
+      "Experience": "703,128"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "40",
+      "Dex": "92",
+      "Cost": "8",
+      "Base Damage": "60.4%, 60.4%",
+      "Deals 8.8 Base Chaos Damage per second": "275.9",
+      "# metres to radius": "0.3",
+      "Experience": "1,061,223"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "44",
+      "Dex": "100",
+      "Cost": "8",
+      "Base Damage": "60.9%, 60.9%",
+      "Deals 8.8 Base Chaos Damage per second": "362.7",
+      "# metres to radius": "0.4",
+      "Experience": "2,065,870"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "48",
+      "Dex": "109",
+      "Cost": "9",
+      "Base Damage": "61.4%, 61.4%",
+      "Deals 8.8 Base Chaos Damage per second": "474.1",
+      "# metres to radius": "0.4",
+      "Experience": "2,507,110"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "52",
+      "Dex": "117",
+      "Cost": "9",
+      "Base Damage": "61.9%, 61.9%",
+      "Deals 8.8 Base Chaos Damage per second": "616.9",
+      "# metres to radius": "0.4",
+      "Experience": "5,798,936"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "56",
+      "Dex": "125",
+      "Cost": "9",
+      "Base Damage": "62.4%, 62.4%",
+      "Deals 8.8 Base Chaos Damage per second": "799.3",
+      "# metres to radius": "0.5",
+      "Experience": "15,083,919"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "60",
+      "Dex": "134",
+      "Cost": "9",
+      "Base Damage": "62.9%, 62.9%",
+      "Deals 8.8 Base Chaos Damage per second": "1031.9",
+      "# metres to radius": "0.5",
+      "Experience": "27,792,735"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "64",
+      "Dex": "142",
+      "Cost": "10",
+      "Base Damage": "63.4%, 63.4%",
+      "Deals 8.8 Base Chaos Damage per second": "1327.6",
+      "# metres to radius": "0.5",
+      "Experience": "43,869,739"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "67",
+      "Dex": "148",
+      "Cost": "10",
+      "Base Damage": "63.9%, 63.9%",
+      "Deals 8.8 Base Chaos Damage per second": "1600.8",
+      "# metres to radius": "0.6",
+      "Experience": "242,081,556"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Dex": "155",
+      "Cost": "10",
+      "Base Damage": "64.4%, 64.4%",
+      "Deals 8.8 Base Chaos Damage per second": "1927.1",
+      "# metres to radius": "0.6",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Dex": "",
+      "Cost": "10",
+      "Base Damage": "64.9%, 64.9%",
+      "Deals 8.8 Base Chaos Damage per second": "2179.2",
+      "# metres to radius": "0.6",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Dex": "",
+      "Cost": "10",
+      "Base Damage": "65.4%, 65.4%",
+      "Deals 8.8 Base Chaos Damage per second": "2462.7",
+      "# metres to radius": "0.7",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Dex": "",
+      "Cost": "10",
+      "Base Damage": "65.9%, 65.9%",
+      "Deals 8.8 Base Chaos Damage per second": "2781.5",
+      "# metres to radius": "0.7",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "66.4%, 66.4%",
+      "Deals 8.8 Base Chaos Damage per second": "3139.9",
+      "# metres to radius": "0.7",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "66.9%, 66.9%",
+      "Deals 8.8 Base Chaos Damage per second": "3542.6",
+      "# metres to radius": "0.8",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "67.4%, 67.4%",
+      "Deals 8.8 Base Chaos Damage per second": "3995",
+      "# metres to radius": "0.8",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "67.9%, 67.9%",
+      "Deals 8.8 Base Chaos Damage per second": "4503.1",
+      "# metres to radius": "0.8",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "68.4%, 68.4%",
+      "Deals 8.8 Base Chaos Damage per second": "5073.4",
+      "# metres to radius": "0.9",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "68.9%, 68.9%",
+      "Deals 8.8 Base Chaos Damage per second": "5713.5",
+      "# metres to radius": "0.9",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "69.4%, 69.4%",
+      "Deals 8.8 Base Chaos Damage per second": "6431.6",
+      "# metres to radius": "0.9",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "69.8%, 69.8%",
+      "Deals 8.8 Base Chaos Damage per second": "6822.8",
+      "# metres to radius": "0.9",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "70.3%, 70.3%",
+      "Deals 8.8 Base Chaos Damage per second": "7237.1",
+      "# metres to radius": "1",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "70.8%, 70.8%",
+      "Deals 8.8 Base Chaos Damage per second": "7675.8",
+      "# metres to radius": "1",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "71.3%, 71.3%",
+      "Deals 8.8 Base Chaos Damage per second": "8140.3",
+      "# metres to radius": "1",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "71.8%, 71.8%",
+      "Deals 8.8 Base Chaos Damage per second": "8632.2",
+      "# metres to radius": "1.1",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "72.3%, 72.3%",
+      "Deals 8.8 Base Chaos Damage per second": "9152.9",
+      "# metres to radius": "1.1",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "72.8%, 72.8%",
+      "Deals 8.8 Base Chaos Damage per second": "9704.2",
+      "# metres to radius": "1.1",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "73.3%, 73.3%",
+      "Deals 8.8 Base Chaos Damage per second": "10287.7",
+      "# metres to radius": "1.2",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "73.8%, 73.8%",
+      "Deals 8.8 Base Chaos Damage per second": "10905.4",
+      "# metres to radius": "1.2",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "74.3%, 74.3%",
+      "Deals 8.8 Base Chaos Damage per second": "11559.3",
+      "# metres to radius": "1.2",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

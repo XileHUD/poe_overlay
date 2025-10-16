@@ -1,0 +1,341 @@
+{
+  "name": "Barrage",
+  "slug": "Barrage",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
+    "Acronym": "Projectile",
+    "DropLevel": "12",
+    "BaseType": "Barrage",
+    "Class": "Skill Gems",
+    "Weapon": "Wands, Bows",
+    "TargetTypes": "Ground, Enemy",
+    "Type": "Attack, RangedAttack, MirageArcherCanUse, Projectile, ProjectilesFromUser, Totemable, Trappable, Mineable",
+    "ItemType": "Metadata/Items/Gems/SkillGemBarrage",
+    "ActiveSkillsCode": "barrage",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "12",
+      "Dex": "33",
+      "Cost": "6",
+      "Base Damage": "47%, 47%",
+      "Experience": "15,249"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "15",
+      "Dex": "39",
+      "Cost": "6",
+      "Base Damage": "47.4%, 47.4%",
+      "Experience": "41,517"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "19",
+      "Dex": "48",
+      "Cost": "7",
+      "Base Damage": "47.8%, 47.8%",
+      "Experience": "81,983"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "23",
+      "Dex": "56",
+      "Cost": "7",
+      "Base Damage": "48.2%, 48.2%",
+      "Experience": "147,968"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "27",
+      "Dex": "64",
+      "Cost": "7",
+      "Base Damage": "48.6%, 48.6%",
+      "Experience": "250,557"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "31",
+      "Dex": "73",
+      "Cost": "8",
+      "Base Damage": "49%, 49%",
+      "Experience": "405,086"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "35",
+      "Dex": "81",
+      "Cost": "8",
+      "Base Damage": "49.4%, 49.4%",
+      "Experience": "447,718"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "38",
+      "Dex": "88",
+      "Cost": "8",
+      "Base Damage": "49.8%, 49.8%",
+      "Experience": "615,318"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "41",
+      "Dex": "94",
+      "Cost": "8",
+      "Base Damage": "50.2%, 50.2%",
+      "Experience": "834,639"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "44",
+      "Dex": "100",
+      "Cost": "8",
+      "Base Damage": "50.6%, 50.6%",
+      "Experience": "1,570,760"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "47",
+      "Dex": "106",
+      "Cost": "9",
+      "Base Damage": "51%, 51%",
+      "Experience": "1,633,987"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "50",
+      "Dex": "113",
+      "Cost": "9",
+      "Base Damage": "51.4%, 51.4%",
+      "Experience": "2,151,030"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "53",
+      "Dex": "119",
+      "Cost": "9",
+      "Base Damage": "51.8%, 51.8%",
+      "Experience": "2,812,189"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "56",
+      "Dex": "125",
+      "Cost": "9",
+      "Base Damage": "52.2%, 52.2%",
+      "Experience": "5,099,360"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "59",
+      "Dex": "132",
+      "Cost": "9",
+      "Base Damage": "52.6%, 52.6%",
+      "Experience": "9,400,731"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Dex": "138",
+      "Cost": "10",
+      "Base Damage": "53%, 53%",
+      "Experience": "15,273,366"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Dex": "142",
+      "Cost": "10",
+      "Base Damage": "53.4%, 53.4%",
+      "Experience": "26,286,582"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Dex": "146",
+      "Cost": "10",
+      "Base Damage": "53.8%, 53.8%",
+      "Experience": "62,890,590"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Dex": "151",
+      "Cost": "10",
+      "Base Damage": "54.2%, 54.2%",
+      "Experience": "212,046,017"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Dex": "155",
+      "Cost": "10",
+      "Base Damage": "54.6%, 54.6%",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Dex": "",
+      "Cost": "10",
+      "Base Damage": "55%, 55%",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Dex": "",
+      "Cost": "10",
+      "Base Damage": "55.4%, 55.4%",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Dex": "",
+      "Cost": "10",
+      "Base Damage": "55.8%, 55.8%",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "56.2%, 56.2%",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "56.6%, 56.6%",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "57%, 57%",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "57.4%, 57.4%",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "57.8%, 57.8%",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "58.2%, 58.2%",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "58.6%, 58.6%",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "58.8%, 58.8%",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "59%, 59%",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "59.2%, 59.2%",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "59.4%, 59.4%",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "59.6%, 59.6%",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "59.8%, 59.8%",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "60%, 60%",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "60.2%, 60.2%",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "60.4%, 60.4%",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "60.6%, 60.6%",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

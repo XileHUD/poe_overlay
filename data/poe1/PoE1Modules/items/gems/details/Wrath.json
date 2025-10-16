@@ -1,0 +1,419 @@
+{
+  "name": "Wrath",
+  "slug": "Wrath",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
+    "DropLevel": "24",
+    "BaseType": "Wrath",
+    "Class": "Skill Gems",
+    "TargetTypes": "Any",
+    "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Lightning, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
+    "ItemType": "Metadata/Items/Gems/SkillGemWrath",
+    "ActiveSkillsCode": "wrath",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "24",
+      "Int": "58",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "2, 37",
+      "# metres to radius": "0",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "15",
+      "Experience": "118,383"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "27",
+      "Int": "64",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "3, 43",
+      "# metres to radius": "0.1",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "15",
+      "Experience": "175,816"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "30",
+      "Int": "71",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "3, 50",
+      "# metres to radius": "0.2",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "15",
+      "Experience": "254,061"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "33",
+      "Int": "77",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "4, 57",
+      "# metres to radius": "0.3",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "16",
+      "Experience": "359,090"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "36",
+      "Int": "83",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "4, 66",
+      "# metres to radius": "0.4",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "16",
+      "Experience": "498,508"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "39",
+      "Int": "90",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "5, 75",
+      "# metres to radius": "0.5",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "16",
+      "Experience": "682,057"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "42",
+      "Int": "96",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "5, 85",
+      "# metres to radius": "0.6",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "17",
+      "Experience": "921,777"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "45",
+      "Int": "102",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "6, 97",
+      "# metres to radius": "0.7",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "17",
+      "Experience": "1,727,879"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Int": "109",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "7, 109",
+      "# metres to radius": "0.8",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "17",
+      "Experience": "1,138,877"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Int": "113",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "7, 118",
+      "# metres to radius": "0.9",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "18",
+      "Experience": "1,368,233"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Int": "117",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "8, 128",
+      "# metres to radius": "1",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "18",
+      "Experience": "1,638,338"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Int": "121",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "9, 138",
+      "# metres to radius": "1.1",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "18",
+      "Experience": "1,956,648"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Int": "125",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "9, 149",
+      "# metres to radius": "1.2",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "19",
+      "Experience": "3,655,184"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Int": "130",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "10, 161",
+      "# metres to radius": "1.3",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "19",
+      "Experience": "3,017,327"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Int": "134",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "11, 173",
+      "# metres to radius": "1.4",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "19",
+      "Experience": "7,793,914"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Int": "138",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "12, 186",
+      "# metres to radius": "1.5",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "20",
+      "Experience": "15,206,031"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Int": "142",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "13, 200",
+      "# metres to radius": "1.6",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "20",
+      "Experience": "26,185,582"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Int": "146",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "13, 215",
+      "# metres to radius": "1.7",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "20",
+      "Experience": "62,755,923"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Int": "151",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "14, 231",
+      "# metres to radius": "1.8",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "21",
+      "Experience": "211,877,683"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Int": "155",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "16, 248",
+      "# metres to radius": "1.9",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "21",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "17, 267",
+      "# metres to radius": "2",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "21",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "18, 286",
+      "# metres to radius": "2.1",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "22",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "19, 306",
+      "# metres to radius": "2.2",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "22",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "20, 328",
+      "# metres to radius": "2.3",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "22",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "22, 351",
+      "# metres to radius": "2.4",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "23",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "23, 375",
+      "# metres to radius": "2.5",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "23",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "25, 401",
+      "# metres to radius": "2.6",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "23",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "27, 429",
+      "# metres to radius": "2.7",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "29, 458",
+      "# metres to radius": "2.8",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "31, 490",
+      "# metres to radius": "2.9",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "32, 506",
+      "# metres to radius": "2.9",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "33, 523",
+      "# metres to radius": "3",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "34, 540",
+      "# metres to radius": "3",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "35, 558",
+      "# metres to radius": "3.1",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "36, 576",
+      "# metres to radius": "3.1",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "37, 595",
+      "# metres to radius": "3.2",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "38, 614",
+      "# metres to radius": "3.2",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "40, 634",
+      "# metres to radius": "3.3",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "26",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "41, 655",
+      "# metres to radius": "3.3",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "26",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies deal 2 to 37 additional Lightning Damage with Attacks": "42, 676",
+      "# metres to radius": "3.4",
+      "You and nearby allies deal 15% more Spell Lightning Damage": "26",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

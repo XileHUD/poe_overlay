@@ -1,0 +1,336 @@
+{
+  "name": "Blade Blast of Unloading",
+  "slug": "Blade_Blast_of_Unloading",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Blade Blast of Unloading",
+    "TargetTypes": "Any",
+    "Type": "Spell, Area, Trappable, Mineable, Totemable, Damage, Triggerable, Multicastable, CanRapidFire, AreaSpell, Physical, Nova",
+    "ActiveSkillsCode": "blade_blast_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "16",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "40, 60",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "20",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "55, 82",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "24",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "73, 109",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "28",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "96, 144",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "31",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "117, 175",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "34",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "142, 212",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "37",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "171, 256",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "40",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "205, 308",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "43",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "246, 368",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "46",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "293, 440",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "49",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "349, 523",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "52",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "414, 621",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "55",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "490, 735",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "579, 868",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "646, 969",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "721, 1081",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "803, 1205",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "894, 1342",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "995, 1493",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "1107, 1661",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "1230, 1846",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "1367, 2050",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "1517, 2276",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "1684, 2526",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "1867, 2801",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "2070, 3105",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "2293, 3440",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "2540, 3809",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "2811, 4217",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "3110, 4666",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "3271, 4907",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "3440, 5160",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "3618, 5426",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "3804, 5705",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "3999, 5998",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "4204, 6306",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "4419, 6628",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "31",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "4644, 6967",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "31",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "4881, 7322",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "31",
+      "Base Damage": "100%, 100%",
+      "Deals 40 to 60 Physical Damage": "5129, 7694",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

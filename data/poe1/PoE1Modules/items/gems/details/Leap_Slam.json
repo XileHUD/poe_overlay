@@ -1,0 +1,381 @@
+{
+  "name": "Leap Slam",
+  "slug": "Leap_Slam",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
+    "Acronym": "Hit, Stun, Duration",
+    "DropLevel": "10",
+    "BaseType": "Leap Slam",
+    "Class": "Skill Gems",
+    "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Warstaves",
+    "TargetTypes": "Ground, Enemy",
+    "Type": "Attack, Area, Melee, Movement, Travel, Slam, Totemable",
+    "ItemType": "Metadata/Items/Gems/SkillGemLeapSlam",
+    "ActiveSkillsCode": "leap_slam",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "10",
+      "Str": "29",
+      "Cost": "6",
+      "Base Damage": "136.4%, 136.4%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "20",
+      "Experience": "9,569"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "13",
+      "Str": "35",
+      "Cost": "6",
+      "Base Damage": "142.5%, 142.5%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "21",
+      "Experience": "28,189"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "17",
+      "Str": "43",
+      "Cost": "7",
+      "Base Damage": "149.2%, 149.2%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "22",
+      "Experience": "59,146"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "21",
+      "Str": "52",
+      "Cost": "7",
+      "Base Damage": "156.2%, 156.2%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "23",
+      "Experience": "111,192"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "25",
+      "Str": "60",
+      "Cost": "7",
+      "Base Damage": "163.4%, 163.4%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "24",
+      "Experience": "193,800"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "29",
+      "Str": "69",
+      "Cost": "7",
+      "Base Damage": "171%, 171%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "25",
+      "Experience": "320,280"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "33",
+      "Str": "77",
+      "Cost": "8",
+      "Base Damage": "179%, 179%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "26",
+      "Experience": "359,090"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "36",
+      "Str": "83",
+      "Cost": "8",
+      "Base Damage": "187.1%, 187.1%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "27",
+      "Experience": "498,508"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "39",
+      "Str": "90",
+      "Cost": "8",
+      "Base Damage": "195.4%, 195.4%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "28",
+      "Experience": "682,057"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "42",
+      "Str": "96",
+      "Cost": "8",
+      "Base Damage": "204.1%, 204.1%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "29",
+      "Experience": "921,777"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "45",
+      "Str": "102",
+      "Cost": "8",
+      "Base Damage": "213.3%, 213.3%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "30",
+      "Experience": "1,727,879"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "48",
+      "Str": "109",
+      "Cost": "9",
+      "Base Damage": "222.7%, 222.7%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "31",
+      "Experience": "1,791,769"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "51",
+      "Str": "115",
+      "Cost": "9",
+      "Base Damage": "232.7%, 232.7%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "32",
+      "Experience": "2,353,679"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "54",
+      "Str": "121",
+      "Cost": "9",
+      "Base Damage": "243.1%, 243.1%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "33",
+      "Experience": "3,070,912"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "57",
+      "Str": "127",
+      "Cost": "9",
+      "Base Damage": "253.8%, 253.8%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "34",
+      "Experience": "9,095,466"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "60",
+      "Str": "134",
+      "Cost": "9",
+      "Base Damage": "265.2%, 265.2%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "35",
+      "Experience": "16,039,890"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "63",
+      "Str": "140",
+      "Cost": "10",
+      "Base Damage": "277%, 277%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "36",
+      "Experience": "29,817,117"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Str": "146",
+      "Cost": "10",
+      "Base Damage": "289.2%, 289.2%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "37",
+      "Experience": "62,895,056"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Str": "151",
+      "Cost": "10",
+      "Base Damage": "301.7%, 301.7%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "38",
+      "Experience": "212,051,599"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Str": "155",
+      "Cost": "10",
+      "Base Damage": "314.5%, 314.5%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "39",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Str": "",
+      "Cost": "10",
+      "Base Damage": "328%, 328%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "40",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Str": "",
+      "Cost": "10",
+      "Base Damage": "341.9%, 341.9%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "41",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Str": "",
+      "Cost": "10",
+      "Base Damage": "356.5%, 356.5%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "42",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Str": "",
+      "Cost": "11",
+      "Base Damage": "371.8%, 371.8%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "43",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Str": "",
+      "Cost": "11",
+      "Base Damage": "387.5%, 387.5%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "44",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Str": "",
+      "Cost": "11",
+      "Base Damage": "404.1%, 404.1%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "45",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Str": "",
+      "Cost": "11",
+      "Base Damage": "421.3%, 421.3%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "46",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Str": "",
+      "Cost": "11",
+      "Base Damage": "439.3%, 439.3%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "47",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Str": "",
+      "Cost": "11",
+      "Base Damage": "458%, 458%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "48",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Str": "",
+      "Cost": "11",
+      "Base Damage": "477.5%, 477.5%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "49",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Str": "",
+      "Cost": "11",
+      "Base Damage": "506.7%, 506.7%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "50",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Str": "",
+      "Cost": "11",
+      "Base Damage": "517.5%, 517.5%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "50",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Str": "",
+      "Cost": "12",
+      "Base Damage": "528.5%, 528.5%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "51",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Str": "",
+      "Cost": "12",
+      "Base Damage": "539.7%, 539.7%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "51",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Str": "",
+      "Cost": "12",
+      "Base Damage": "551.3%, 551.3%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "52",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Str": "",
+      "Cost": "12",
+      "Base Damage": "562.9%, 562.9%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "52",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Str": "",
+      "Cost": "12",
+      "Base Damage": "574.9%, 574.9%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "53",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Str": "",
+      "Cost": "12",
+      "Base Damage": "587.1%, 587.1%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "53",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Str": "",
+      "Cost": "12",
+      "Base Damage": "599.5%, 599.5%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "54",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Str": "",
+      "Cost": "12",
+      "Base Damage": "612.3%, 612.3%",
+      "20% increased Stun Duration against Enemies that are on Full Life": "54",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

@@ -1,0 +1,337 @@
+{
+  "name": "Sunder of Earthbreaking",
+  "slug": "Sunder_of_Earthbreaking",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Sunder of Earthbreaking",
+    "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
+    "TargetTypes": "Ground, Enemy, SELF_ORIGIN",
+    "Type": "Attack, Area, Multistrikeable, Melee, Slam, Totemable",
+    "ActiveSkillsCode": "sunder_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "12",
+      "Cost": "7",
+      "Base Damage": "219.1%, 219.1%",
+      "#% more Area of Effect": "",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "15",
+      "Cost": "7",
+      "Base Damage": "228.9%, 228.9%",
+      "#% more Area of Effect": "2",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "19",
+      "Cost": "7",
+      "Base Damage": "239.5%, 239.5%",
+      "#% more Area of Effect": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "23",
+      "Cost": "8",
+      "Base Damage": "250.7%, 250.7%",
+      "#% more Area of Effect": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "27",
+      "Cost": "8",
+      "Base Damage": "262.4%, 262.4%",
+      "#% more Area of Effect": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "31",
+      "Cost": "8",
+      "Base Damage": "274.6%, 274.6%",
+      "#% more Area of Effect": "10",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "35",
+      "Cost": "9",
+      "Base Damage": "287.5%, 287.5%",
+      "#% more Area of Effect": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "38",
+      "Cost": "9",
+      "Base Damage": "300.3%, 300.3%",
+      "#% more Area of Effect": "14",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "41",
+      "Cost": "9",
+      "Base Damage": "313.7%, 313.7%",
+      "#% more Area of Effect": "16",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "44",
+      "Cost": "9",
+      "Base Damage": "327.8%, 327.8%",
+      "#% more Area of Effect": "18",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "47",
+      "Cost": "10",
+      "Base Damage": "342.3%, 342.3%",
+      "#% more Area of Effect": "20",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "50",
+      "Cost": "10",
+      "Base Damage": "357.6%, 357.6%",
+      "#% more Area of Effect": "22",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "53",
+      "Cost": "10",
+      "Base Damage": "373.6%, 373.6%",
+      "#% more Area of Effect": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "56",
+      "Cost": "10",
+      "Base Damage": "390.2%, 390.2%",
+      "#% more Area of Effect": "26",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "59",
+      "Cost": "10",
+      "Base Damage": "407.6%, 407.6%",
+      "#% more Area of Effect": "28",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Cost": "11",
+      "Base Damage": "425.7%, 425.7%",
+      "#% more Area of Effect": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Cost": "11",
+      "Base Damage": "443.8%, 443.8%",
+      "#% more Area of Effect": "32",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Cost": "11",
+      "Base Damage": "462.9%, 462.9%",
+      "#% more Area of Effect": "34",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Cost": "11",
+      "Base Damage": "482.6%, 482.6%",
+      "#% more Area of Effect": "36",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "11",
+      "Base Damage": "503.2%, 503.2%",
+      "#% more Area of Effect": "38",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "11",
+      "Base Damage": "524.7%, 524.7%",
+      "#% more Area of Effect": "40",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "11",
+      "Base Damage": "547.1%, 547.1%",
+      "#% more Area of Effect": "42",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "12",
+      "Base Damage": "570.4%, 570.4%",
+      "#% more Area of Effect": "44",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "12",
+      "Base Damage": "594.8%, 594.8%",
+      "#% more Area of Effect": "46",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "12",
+      "Base Damage": "620.1%, 620.1%",
+      "#% more Area of Effect": "48",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "12",
+      "Base Damage": "646.6%, 646.6%",
+      "#% more Area of Effect": "50",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "12",
+      "Base Damage": "674%, 674%",
+      "#% more Area of Effect": "52",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "12",
+      "Base Damage": "702.8%, 702.8%",
+      "#% more Area of Effect": "54",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "12",
+      "Base Damage": "732.7%, 732.7%",
+      "#% more Area of Effect": "56",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "13",
+      "Base Damage": "763.9%, 763.9%",
+      "#% more Area of Effect": "58",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "13",
+      "Base Damage": "810.8%, 810.8%",
+      "#% more Area of Effect": "59",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "13",
+      "Base Damage": "828%, 828%",
+      "#% more Area of Effect": "60",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "13",
+      "Base Damage": "845.6%, 845.6%",
+      "#% more Area of Effect": "61",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "13",
+      "Base Damage": "863.6%, 863.6%",
+      "#% more Area of Effect": "62",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "13",
+      "Base Damage": "882%, 882%",
+      "#% more Area of Effect": "63",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "13",
+      "Base Damage": "900.6%, 900.6%",
+      "#% more Area of Effect": "64",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "13",
+      "Base Damage": "919.8%, 919.8%",
+      "#% more Area of Effect": "65",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "13",
+      "Base Damage": "939.3%, 939.3%",
+      "#% more Area of Effect": "66",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "13",
+      "Base Damage": "959.3%, 959.3%",
+      "#% more Area of Effect": "67",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "13",
+      "Base Damage": "979.6%, 979.6%",
+      "#% more Area of Effect": "68",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

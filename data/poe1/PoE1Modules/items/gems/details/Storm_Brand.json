@@ -1,0 +1,423 @@
+{
+  "name": "Storm Brand",
+  "slug": "Storm_Brand",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
+    "Acronym": "Hit, Duration, Brand",
+    "DropLevel": "12",
+    "BaseType": "Storm Brand",
+    "Class": "Skill Gems",
+    "TargetTypes": "Ground, Enemy",
+    "Type": "Spell, Damage, Area, Lightning, Chains, Duration, Totemable, Trappable, Mineable, Triggerable, Multicastable, Brand, AreaSpell",
+    "ItemType": "Metadata/Items/Gems/SkillGemStormBrand",
+    "ActiveSkillsCode": "storm_brand",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "12",
+      "Int": "33",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "3, 8",
+      "Deals 80% more Damage with Hits against Branded Enemy": "80, 1",
+      "Experience": "15,249"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "15",
+      "Int": "39",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "3, 10",
+      "Deals 80% more Damage with Hits against Branded Enemy": "83, 1",
+      "Experience": "41,517"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "19",
+      "Int": "48",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "4, 13",
+      "Deals 80% more Damage with Hits against Branded Enemy": "85, 1",
+      "Experience": "81,983"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "23",
+      "Int": "56",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "6, 18",
+      "Deals 80% more Damage with Hits against Branded Enemy": "88, 1",
+      "Experience": "147,968"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "27",
+      "Int": "64",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "8, 23",
+      "Deals 80% more Damage with Hits against Branded Enemy": "91, 1",
+      "Experience": "250,557"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "31",
+      "Int": "73",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "10, 30",
+      "Deals 80% more Damage with Hits against Branded Enemy": "93, 1",
+      "Experience": "405,086"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "35",
+      "Int": "81",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "13, 39",
+      "Deals 80% more Damage with Hits against Branded Enemy": "96, 1",
+      "Experience": "447,718"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "38",
+      "Int": "88",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "16, 47",
+      "Deals 80% more Damage with Hits against Branded Enemy": "98, 1",
+      "Experience": "615,318"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "41",
+      "Int": "94",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "19, 56",
+      "Deals 80% more Damage with Hits against Branded Enemy": "101, 1",
+      "Experience": "834,639"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "44",
+      "Int": "100",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "22, 67",
+      "Deals 80% more Damage with Hits against Branded Enemy": "104, 1",
+      "Experience": "1,570,760"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "47",
+      "Int": "106",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "26, 79",
+      "Deals 80% more Damage with Hits against Branded Enemy": "106, 1",
+      "Experience": "1,633,987"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "50",
+      "Int": "113",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "31, 94",
+      "Deals 80% more Damage with Hits against Branded Enemy": "109, 1",
+      "Experience": "2,151,030"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "53",
+      "Int": "119",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "37, 111",
+      "Deals 80% more Damage with Hits against Branded Enemy": "112, 1",
+      "Experience": "2,812,189"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "56",
+      "Int": "125",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "44, 131",
+      "Deals 80% more Damage with Hits against Branded Enemy": "114, 1",
+      "Experience": "5,099,360"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "59",
+      "Int": "132",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "52, 155",
+      "Deals 80% more Damage with Hits against Branded Enemy": "117, 1",
+      "Experience": "9,400,731"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Int": "138",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "61, 182",
+      "Deals 80% more Damage with Hits against Branded Enemy": "119, 1",
+      "Experience": "15,273,366"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Int": "142",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "67, 202",
+      "Deals 80% more Damage with Hits against Branded Enemy": "122, 1",
+      "Experience": "26,286,582"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Int": "146",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "75, 225",
+      "Deals 80% more Damage with Hits against Branded Enemy": "125, 1",
+      "Experience": "62,890,590"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Int": "151",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "83, 250",
+      "Deals 80% more Damage with Hits against Branded Enemy": "127, 1",
+      "Experience": "212,046,017"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Int": "155",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "92, 277",
+      "Deals 80% more Damage with Hits against Branded Enemy": "130, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Int": "",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "103, 308",
+      "Deals 80% more Damage with Hits against Branded Enemy": "133, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Int": "",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "114, 341",
+      "Deals 80% more Damage with Hits against Branded Enemy": "135, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Int": "",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "126, 378",
+      "Deals 80% more Damage with Hits against Branded Enemy": "138, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Int": "",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "140, 419",
+      "Deals 80% more Damage with Hits against Branded Enemy": "141, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Int": "",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "155, 464",
+      "Deals 80% more Damage with Hits against Branded Enemy": "143, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Int": "",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "171, 513",
+      "Deals 80% more Damage with Hits against Branded Enemy": "146, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Int": "",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "189, 567",
+      "Deals 80% more Damage with Hits against Branded Enemy": "148, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Int": "",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "209, 627",
+      "Deals 80% more Damage with Hits against Branded Enemy": "151, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Int": "",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "231, 693",
+      "Deals 80% more Damage with Hits against Branded Enemy": "154, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Int": "",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "255, 766",
+      "Deals 80% more Damage with Hits against Branded Enemy": "156, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Int": "",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "268, 804",
+      "Deals 80% more Damage with Hits against Branded Enemy": "158, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Int": "",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "282, 845",
+      "Deals 80% more Damage with Hits against Branded Enemy": "159, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Int": "",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "296, 888",
+      "Deals 80% more Damage with Hits against Branded Enemy": "160, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Int": "",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "311, 933",
+      "Deals 80% more Damage with Hits against Branded Enemy": "162, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Int": "",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "327, 980",
+      "Deals 80% more Damage with Hits against Branded Enemy": "163, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Int": "",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "343, 1029",
+      "Deals 80% more Damage with Hits against Branded Enemy": "164, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Int": "",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "360, 1081",
+      "Deals 80% more Damage with Hits against Branded Enemy": "166, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Int": "",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "378, 1135",
+      "Deals 80% more Damage with Hits against Branded Enemy": "167, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Int": "",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "397, 1192",
+      "Deals 80% more Damage with Hits against Branded Enemy": "168, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Int": "",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 3 to 8 Lightning Damage": "417, 1252",
+      "Deals 80% more Damage with Hits against Branded Enemy": "169, 1",
+      "Experience": ""
+    }
+  ],
+  "description": "Maximum Active Brands: All brands share a limit of three (3) active brand limit. This can be split between the two brand skills (2-1) or all of one type. Passive skills can increase the number of active brands that are allowed to be active at a time.\nMaximum Brand Attachment: By default, you may only have one brand of any kind attached to a single target at any time. Taking the Keystone Runebinder allows you to place a second brand on a single target. Like the Active Brand limit these brands may either be split (1-1) or both the same type of brand.",
+  "stats": [
+    "Maximum Active Brands: All brands share a limit of three (3) active brand limit. This can be split between the two brand skills (2-1) or all of one type. Passive skills can increase the number of active brands that are allowed to be active at a time.",
+    "Maximum Brand Attachment: By default, you may only have one brand of any kind attached to a single target at any time. Taking the Keystone Runebinder allows you to place a second brand on a single target. Like the Active Brand limit these brands may either be split (1-1) or both the same type of brand."
+  ]
+}

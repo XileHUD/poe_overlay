@@ -1,0 +1,419 @@
+{
+  "name": "Vitality",
+  "slug": "Vitality",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
+    "DropLevel": "10",
+    "BaseType": "Vitality",
+    "Class": "Skill Gems",
+    "TargetTypes": "Any",
+    "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
+    "ItemType": "Metadata/Items/Gems/SkillGemVitality",
+    "ActiveSkillsCode": "vitality",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "10",
+      "Str": "22",
+      "Reservation": "28",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "10",
+      "# metres to radius": "0",
+      "Experience": "9,569"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "13",
+      "Str": "27",
+      "Reservation": "40",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "12.1",
+      "# metres to radius": "0.1",
+      "Experience": "28,189"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "17",
+      "Str": "34",
+      "Reservation": "51",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "16.3",
+      "# metres to radius": "0.2",
+      "Experience": "59,146"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "21",
+      "Str": "40",
+      "Reservation": "63",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "19.7",
+      "# metres to radius": "0.3",
+      "Experience": "111,192"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "25",
+      "Str": "46",
+      "Reservation": "74",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "22.8",
+      "# metres to radius": "0.4",
+      "Experience": "193,800"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "29",
+      "Str": "53",
+      "Reservation": "85",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "29.3",
+      "# metres to radius": "0.5",
+      "Experience": "320,280"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "33",
+      "Str": "59",
+      "Reservation": "96",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "38.1",
+      "# metres to radius": "0.6",
+      "Experience": "359,090"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "36",
+      "Str": "64",
+      "Reservation": "108",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "42.6",
+      "# metres to radius": "0.7",
+      "Experience": "498,508"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "39",
+      "Str": "69",
+      "Reservation": "118",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "47.2",
+      "# metres to radius": "0.8",
+      "Experience": "682,057"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "42",
+      "Str": "74",
+      "Reservation": "128",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "56.2",
+      "# metres to radius": "0.9",
+      "Experience": "921,777"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "45",
+      "Str": "79",
+      "Reservation": "138",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "65.3",
+      "# metres to radius": "1",
+      "Experience": "1,727,879"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "48",
+      "Str": "84",
+      "Reservation": "148",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "78.8",
+      "# metres to radius": "1.1",
+      "Experience": "1,791,769"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "51",
+      "Str": "89",
+      "Reservation": "158",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "92.6",
+      "# metres to radius": "1.2",
+      "Experience": "2,353,679"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "54",
+      "Str": "93",
+      "Reservation": "169",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "106.6",
+      "# metres to radius": "1.3",
+      "Experience": "3,070,912"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "57",
+      "Str": "98",
+      "Reservation": "178",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "120.7",
+      "# metres to radius": "1.4",
+      "Experience": "9,095,466"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "60",
+      "Str": "103",
+      "Reservation": "189",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "135",
+      "# metres to radius": "1.5",
+      "Experience": "16,039,890"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "63",
+      "Str": "108",
+      "Reservation": "199",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "154",
+      "# metres to radius": "1.6",
+      "Experience": "29,817,117"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Str": "113",
+      "Reservation": "209",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "173.3",
+      "# metres to radius": "1.7",
+      "Experience": "62,895,056"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Str": "116",
+      "Reservation": "221",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "183.2",
+      "# metres to radius": "1.8",
+      "Experience": "212,051,599"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Str": "119",
+      "Reservation": "233",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "193.2",
+      "# metres to radius": "1.9",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Str": "",
+      "Reservation": "244",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "203.3",
+      "# metres to radius": "2",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Str": "",
+      "Reservation": "253",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "213.4",
+      "# metres to radius": "2.1",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Str": "",
+      "Reservation": "261",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "223.7",
+      "# metres to radius": "2.2",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Str": "",
+      "Reservation": "269",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "234",
+      "# metres to radius": "2.3",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Str": "",
+      "Reservation": "278",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "244.4",
+      "# metres to radius": "2.4",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Str": "",
+      "Reservation": "286",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "254.9",
+      "# metres to radius": "2.5",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Str": "",
+      "Reservation": "294",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "265.4",
+      "# metres to radius": "2.6",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Str": "",
+      "Reservation": "303",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "276.1",
+      "# metres to radius": "2.7",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Str": "",
+      "Reservation": "311",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "286.8",
+      "# metres to radius": "2.8",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Str": "",
+      "Reservation": "319",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "297.6",
+      "# metres to radius": "2.9",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Str": "",
+      "Reservation": "338",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "303",
+      "# metres to radius": "2.9",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Str": "",
+      "Reservation": "348",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "308.5",
+      "# metres to radius": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Str": "",
+      "Reservation": "358",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "314",
+      "# metres to radius": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Str": "",
+      "Reservation": "368",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "319.4",
+      "# metres to radius": "3.1",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Str": "",
+      "Reservation": "379",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "325",
+      "# metres to radius": "3.1",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Str": "",
+      "Reservation": "389",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "330.5",
+      "# metres to radius": "3.2",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Str": "",
+      "Reservation": "399",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "336",
+      "# metres to radius": "3.2",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Str": "",
+      "Reservation": "409",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "341.6",
+      "# metres to radius": "3.3",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Str": "",
+      "Reservation": "419",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "347.2",
+      "# metres to radius": "3.3",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Str": "",
+      "Reservation": "429",
+      "Base Damage": "100%, 100%",
+      "You and nearby Allies Regenerate 10 Life per second": "352.8",
+      "# metres to radius": "3.4",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

@@ -1,6 +1,8 @@
 // Shared image fallback helper - only shows bundled images or placeholder
 export function bindImageFallback(root: ParentNode, selector: string, placeholderSvg: string, dimOpacity = 0.55) {
-  const ph = `data:image/svg+xml;utf8,${encodeURIComponent(placeholderSvg)}`;
+  const ph = placeholderSvg.startsWith('data:')
+    ? placeholderSvg
+    : `data:image/svg+xml;utf8,${encodeURIComponent(placeholderSvg)}`;
   
   root.querySelectorAll<HTMLImageElement>(selector).forEach(async img => {
     if ((img as any)._fallbackBound) return;

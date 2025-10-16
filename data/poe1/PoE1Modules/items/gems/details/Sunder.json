@@ -1,0 +1,421 @@
+{
+  "name": "Sunder",
+  "slug": "Sunder",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
+    "Acronym": "Shock",
+    "DropLevel": "12",
+    "BaseType": "Sunder",
+    "Class": "Skill Gems",
+    "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
+    "TargetTypes": "Ground, Enemy, SELF_ORIGIN",
+    "Type": "Attack, Area, Multistrikeable, Melee, Slam, Totemable",
+    "ItemType": "Metadata/Items/Gems/SkillGemSunder",
+    "ActiveSkillsCode": "sunder",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "12",
+      "Str": "33",
+      "Cost": "8",
+      "Base Damage": "273.8%, 273.8%",
+      "#% more Area of Effect": "",
+      "Wave has #% reduced delay between Areas": "",
+      "Experience": "15,249"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "15",
+      "Str": "39",
+      "Cost": "9",
+      "Base Damage": "286%, 286%",
+      "#% more Area of Effect": "1",
+      "Wave has #% reduced delay between Areas": "1",
+      "Experience": "41,517"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "19",
+      "Str": "48",
+      "Cost": "9",
+      "Base Damage": "299.5%, 299.5%",
+      "#% more Area of Effect": "2",
+      "Wave has #% reduced delay between Areas": "3",
+      "Experience": "81,983"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "23",
+      "Str": "56",
+      "Cost": "9",
+      "Base Damage": "313.5%, 313.5%",
+      "#% more Area of Effect": "3",
+      "Wave has #% reduced delay between Areas": "4",
+      "Experience": "147,968"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "27",
+      "Str": "64",
+      "Cost": "10",
+      "Base Damage": "328.1%, 328.1%",
+      "#% more Area of Effect": "4",
+      "Wave has #% reduced delay between Areas": "5",
+      "Experience": "250,557"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "31",
+      "Str": "73",
+      "Cost": "10",
+      "Base Damage": "343.4%, 343.4%",
+      "#% more Area of Effect": "5",
+      "Wave has #% reduced delay between Areas": "7",
+      "Experience": "405,086"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "35",
+      "Str": "81",
+      "Cost": "10",
+      "Base Damage": "359.4%, 359.4%",
+      "#% more Area of Effect": "6",
+      "Wave has #% reduced delay between Areas": "8",
+      "Experience": "447,718"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "38",
+      "Str": "88",
+      "Cost": "11",
+      "Base Damage": "375.5%, 375.5%",
+      "#% more Area of Effect": "7",
+      "Wave has #% reduced delay between Areas": "9",
+      "Experience": "615,318"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "41",
+      "Str": "94",
+      "Cost": "11",
+      "Base Damage": "392.1%, 392.1%",
+      "#% more Area of Effect": "8",
+      "Wave has #% reduced delay between Areas": "11",
+      "Experience": "834,639"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "44",
+      "Str": "100",
+      "Cost": "11",
+      "Base Damage": "409.7%, 409.7%",
+      "#% more Area of Effect": "9",
+      "Wave has #% reduced delay between Areas": "12",
+      "Experience": "1,570,760"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "47",
+      "Str": "106",
+      "Cost": "11",
+      "Base Damage": "428%, 428%",
+      "#% more Area of Effect": "10",
+      "Wave has #% reduced delay between Areas": "13",
+      "Experience": "1,633,987"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "50",
+      "Str": "113",
+      "Cost": "12",
+      "Base Damage": "447.1%, 447.1%",
+      "#% more Area of Effect": "11",
+      "Wave has #% reduced delay between Areas": "14",
+      "Experience": "2,151,030"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "53",
+      "Str": "119",
+      "Cost": "12",
+      "Base Damage": "467%, 467%",
+      "#% more Area of Effect": "12",
+      "Wave has #% reduced delay between Areas": "16",
+      "Experience": "2,812,189"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "56",
+      "Str": "125",
+      "Cost": "12",
+      "Base Damage": "487.7%, 487.7%",
+      "#% more Area of Effect": "13",
+      "Wave has #% reduced delay between Areas": "17",
+      "Experience": "5,099,360"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "59",
+      "Str": "132",
+      "Cost": "12",
+      "Base Damage": "509.5%, 509.5%",
+      "#% more Area of Effect": "14",
+      "Wave has #% reduced delay between Areas": "18",
+      "Experience": "9,400,731"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Str": "138",
+      "Cost": "13",
+      "Base Damage": "532.2%, 532.2%",
+      "#% more Area of Effect": "15",
+      "Wave has #% reduced delay between Areas": "20",
+      "Experience": "15,273,366"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Str": "142",
+      "Cost": "13",
+      "Base Damage": "554.8%, 554.8%",
+      "#% more Area of Effect": "16",
+      "Wave has #% reduced delay between Areas": "21",
+      "Experience": "26,286,582"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Str": "146",
+      "Cost": "13",
+      "Base Damage": "578.5%, 578.5%",
+      "#% more Area of Effect": "17",
+      "Wave has #% reduced delay between Areas": "22",
+      "Experience": "62,890,590"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Str": "151",
+      "Cost": "13",
+      "Base Damage": "603.2%, 603.2%",
+      "#% more Area of Effect": "18",
+      "Wave has #% reduced delay between Areas": "24",
+      "Experience": "212,046,017"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Str": "155",
+      "Cost": "13",
+      "Base Damage": "629%, 629%",
+      "#% more Area of Effect": "19",
+      "Wave has #% reduced delay between Areas": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Str": "",
+      "Cost": "14",
+      "Base Damage": "655.8%, 655.8%",
+      "#% more Area of Effect": "20",
+      "Wave has #% reduced delay between Areas": "26",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Str": "",
+      "Cost": "14",
+      "Base Damage": "683.9%, 683.9%",
+      "#% more Area of Effect": "21",
+      "Wave has #% reduced delay between Areas": "28",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Str": "",
+      "Cost": "14",
+      "Base Damage": "713%, 713%",
+      "#% more Area of Effect": "22",
+      "Wave has #% reduced delay between Areas": "29",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Str": "",
+      "Cost": "14",
+      "Base Damage": "743.4%, 743.4%",
+      "#% more Area of Effect": "23",
+      "Wave has #% reduced delay between Areas": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Str": "",
+      "Cost": "14",
+      "Base Damage": "775.1%, 775.1%",
+      "#% more Area of Effect": "24",
+      "Wave has #% reduced delay between Areas": "32",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Str": "",
+      "Cost": "14",
+      "Base Damage": "808.1%, 808.1%",
+      "#% more Area of Effect": "25",
+      "Wave has #% reduced delay between Areas": "33",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Str": "",
+      "Cost": "15",
+      "Base Damage": "842.6%, 842.6%",
+      "#% more Area of Effect": "26",
+      "Wave has #% reduced delay between Areas": "34",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Str": "",
+      "Cost": "15",
+      "Base Damage": "878.5%, 878.5%",
+      "#% more Area of Effect": "27",
+      "Wave has #% reduced delay between Areas": "36",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Str": "",
+      "Cost": "15",
+      "Base Damage": "915.9%, 915.9%",
+      "#% more Area of Effect": "28",
+      "Wave has #% reduced delay between Areas": "37",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Str": "",
+      "Cost": "15",
+      "Base Damage": "954.9%, 954.9%",
+      "#% more Area of Effect": "29",
+      "Wave has #% reduced delay between Areas": "38",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Str": "",
+      "Cost": "15",
+      "Base Damage": "1013.5%, 1013.5%",
+      "#% more Area of Effect": "29",
+      "Wave has #% reduced delay between Areas": "39",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Str": "",
+      "Cost": "15",
+      "Base Damage": "1035%, 1035%",
+      "#% more Area of Effect": "30",
+      "Wave has #% reduced delay between Areas": "39",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Str": "",
+      "Cost": "15",
+      "Base Damage": "1057%, 1057%",
+      "#% more Area of Effect": "30",
+      "Wave has #% reduced delay between Areas": "40",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Str": "",
+      "Cost": "15",
+      "Base Damage": "1079.5%, 1079.5%",
+      "#% more Area of Effect": "31",
+      "Wave has #% reduced delay between Areas": "41",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Str": "",
+      "Cost": "16",
+      "Base Damage": "1102.4%, 1102.4%",
+      "#% more Area of Effect": "31",
+      "Wave has #% reduced delay between Areas": "41",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Str": "",
+      "Cost": "16",
+      "Base Damage": "1125.9%, 1125.9%",
+      "#% more Area of Effect": "32",
+      "Wave has #% reduced delay between Areas": "42",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Str": "",
+      "Cost": "16",
+      "Base Damage": "1149.8%, 1149.8%",
+      "#% more Area of Effect": "32",
+      "Wave has #% reduced delay between Areas": "43",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Str": "",
+      "Cost": "16",
+      "Base Damage": "1174.1%, 1174.1%",
+      "#% more Area of Effect": "33",
+      "Wave has #% reduced delay between Areas": "43",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Str": "",
+      "Cost": "16",
+      "Base Damage": "1199.1%, 1199.1%",
+      "#% more Area of Effect": "33",
+      "Wave has #% reduced delay between Areas": "44",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Str": "",
+      "Cost": "16",
+      "Base Damage": "1224.6%, 1224.6%",
+      "#% more Area of Effect": "34",
+      "Wave has #% reduced delay between Areas": "45",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

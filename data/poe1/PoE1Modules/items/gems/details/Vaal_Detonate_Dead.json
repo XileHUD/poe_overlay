@@ -1,0 +1,416 @@
+{
+  "name": "Vaal Detonate Dead",
+  "slug": "Vaal_Detonate_Dead",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Detonate Dead",
+    "TargetTypes": "Corpse,",
+    "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, Cascadable, DestroysCorpse, CanRapidFire, AreaSpell",
+    "ActiveSkillsCode": "detonate_dead"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "4",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "15, 22",
+      "Base radius is 2.2 metres": "2.2",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "6",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "21, 32",
+      "Base radius is 2.2 metres": "2.2",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "6.1",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "9",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "32, 42",
+      "Base radius is 2.2 metres": "2.2",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "6.2",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "12",
+      "Cost": "7",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "36, 53",
+      "Base radius is 2.2 metres": "2.2",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "6.3",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "16",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "48, 72",
+      "Base radius is 2.2 metres": "2.3",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "6.4",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "20",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "63, 94",
+      "Base radius is 2.2 metres": "2.3",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "6.5",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "24",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "80, 121",
+      "Base radius is 2.2 metres": "2.3",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "6.6",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "28",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "102, 153",
+      "Base radius is 2.2 metres": "2.3",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "6.7",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "32",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "128, 192",
+      "Base radius is 2.2 metres": "2.3",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "6.8",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "36",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "159, 238",
+      "Base radius is 2.2 metres": "2.4",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "6.9",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "40",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "195, 293",
+      "Base radius is 2.2 metres": "2.4",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "44",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "239, 359",
+      "Base radius is 2.2 metres": "2.4",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "7.1",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "48",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "291, 436",
+      "Base radius is 2.2 metres": "2.4",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "7.2",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "52",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "352, 529",
+      "Base radius is 2.2 metres": "2.4",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "7.3",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "55",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "406, 609",
+      "Base radius is 2.2 metres": "2.5",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "7.4",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "58",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "466, 699",
+      "Base radius is 2.2 metres": "2.5",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "7.5",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "61",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "535, 802",
+      "Base radius is 2.2 metres": "2.5",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "7.6",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "64",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "612, 918",
+      "Base radius is 2.2 metres": "2.5",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "7.7",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "67",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "700, 1049",
+      "Base radius is 2.2 metres": "2.5",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "7.8",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "798, 1197",
+      "Base radius is 2.2 metres": "2.6",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "7.9",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "871, 1306",
+      "Base radius is 2.2 metres": "2.6",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "950, 1424",
+      "Base radius is 2.2 metres": "2.6",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "8.1",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "1035, 1552",
+      "Base radius is 2.2 metres": "2.6",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "8.2",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "1127, 1691",
+      "Base radius is 2.2 metres": "2.6",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "8.3",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "1227, 1841",
+      "Base radius is 2.2 metres": "2.7",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "8.4",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "1335, 2003",
+      "Base radius is 2.2 metres": "2.7",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "8.5",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "1452, 2178",
+      "Base radius is 2.2 metres": "2.7",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "8.6",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "1579, 2368",
+      "Base radius is 2.2 metres": "2.7",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "8.7",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "1716, 2573",
+      "Base radius is 2.2 metres": "2.7",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "8.8",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "1863, 2795",
+      "Base radius is 2.2 metres": "2.8",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "8.9",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "1942, 2913",
+      "Base radius is 2.2 metres": "2.8",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "8.9",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "2023, 3035",
+      "Base radius is 2.2 metres": "2.8",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "2108, 3162",
+      "Base radius is 2.2 metres": "2.8",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "2196, 3294",
+      "Base radius is 2.2 metres": "2.8",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "9.1",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "2287, 3431",
+      "Base radius is 2.2 metres": "2.9",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "9.1",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "2382, 3573",
+      "Base radius is 2.2 metres": "2.9",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "9.2",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "2481, 3722",
+      "Base radius is 2.2 metres": "2.9",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "9.2",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "2584, 3875",
+      "Base radius is 2.2 metres": "2.9",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "9.3",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "2690, 4035",
+      "Base radius is 2.2 metres": "2.9",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "9.3",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 15 to 22 Fire Damage": "2801, 4202",
+      "Base radius is 2.2 metres": "3",
+      "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life": "9.4",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

@@ -1,0 +1,381 @@
+{
+  "name": "Artillery Ballista",
+  "slug": "Artillery_Ballista",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Chance",
+    "Acronym": "Totem",
+    "DropLevel": "28",
+    "BaseType": "Artillery Ballista",
+    "Class": "Skill Gems",
+    "Weapon": "Bows",
+    "TargetTypes": "Ground, Enemy,",
+    "Type": "Attack, RangedAttack, Trappable, Mineable, SummonsTotem, Area, Fire, ProjectileNumber, ProjectileSpeed, AttackInPlaceIsDefault, TotemsAreBallistae",
+    "ItemType": "Metadata/Items/Gems/SkillGemArtilleryBallista",
+    "ActiveSkillsCode": "artillery_ballista",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "28",
+      "Dex": "67",
+      "Cost": "9",
+      "Base Damage": "50%, 50%",
+      "+2 to maximum number of Summoned Ballista Totems": "2",
+      "Experience": "199,345"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "31",
+      "Dex": "73",
+      "Cost": "9",
+      "Base Damage": "50.8%, 50.8%",
+      "+2 to maximum number of Summoned Ballista Totems": "2",
+      "Experience": "285,815"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "34",
+      "Dex": "79",
+      "Cost": "10",
+      "Base Damage": "51.6%, 51.6%",
+      "+2 to maximum number of Summoned Ballista Totems": "2",
+      "Experience": "401,344"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "37",
+      "Dex": "85",
+      "Cost": "10",
+      "Base Damage": "52.4%, 52.4%",
+      "+2 to maximum number of Summoned Ballista Totems": "2",
+      "Experience": "554,379"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "40",
+      "Dex": "92",
+      "Cost": "10",
+      "Base Damage": "53.2%, 53.2%",
+      "+2 to maximum number of Summoned Ballista Totems": "2",
+      "Experience": "477,437"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "42",
+      "Dex": "96",
+      "Cost": "10",
+      "Base Damage": "53.9%, 53.9%",
+      "+2 to maximum number of Summoned Ballista Totems": "2",
+      "Experience": "583,786"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "44",
+      "Dex": "100",
+      "Cost": "10",
+      "Base Damage": "54.7%, 54.7%",
+      "+2 to maximum number of Summoned Ballista Totems": "2",
+      "Experience": "710,359"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "46",
+      "Dex": "104",
+      "Cost": "11",
+      "Base Damage": "55.5%, 55.5%",
+      "+2 to maximum number of Summoned Ballista Totems": "2",
+      "Experience": "1,355,511"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Dex": "109",
+      "Cost": "11",
+      "Base Damage": "56.3%, 56.3%",
+      "+2 to maximum number of Summoned Ballista Totems": "2",
+      "Experience": "1,138,877"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Dex": "113",
+      "Cost": "11",
+      "Base Damage": "57.1%, 57.1%",
+      "+2 to maximum number of Summoned Ballista Totems": "2",
+      "Experience": "1,368,233"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Dex": "117",
+      "Cost": "11",
+      "Base Damage": "57.9%, 57.9%",
+      "+2 to maximum number of Summoned Ballista Totems": "3",
+      "Experience": "1,638,338"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Dex": "121",
+      "Cost": "11",
+      "Base Damage": "58.7%, 58.7%",
+      "+2 to maximum number of Summoned Ballista Totems": "3",
+      "Experience": "1,956,648"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Dex": "125",
+      "Cost": "11",
+      "Base Damage": "59.5%, 59.5%",
+      "+2 to maximum number of Summoned Ballista Totems": "3",
+      "Experience": "3,655,184"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Dex": "130",
+      "Cost": "12",
+      "Base Damage": "60.3%, 60.3%",
+      "+2 to maximum number of Summoned Ballista Totems": "3",
+      "Experience": "3,017,327"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Dex": "134",
+      "Cost": "12",
+      "Base Damage": "61.1%, 61.1%",
+      "+2 to maximum number of Summoned Ballista Totems": "3",
+      "Experience": "7,759,995"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Dex": "138",
+      "Cost": "12",
+      "Base Damage": "61.8%, 61.8%",
+      "+2 to maximum number of Summoned Ballista Totems": "3",
+      "Experience": "15,138,193"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Dex": "142",
+      "Cost": "12",
+      "Base Damage": "62.6%, 62.6%",
+      "+2 to maximum number of Summoned Ballista Totems": "3",
+      "Experience": "26,083,825"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Dex": "146",
+      "Cost": "12",
+      "Base Damage": "63.4%, 63.4%",
+      "+2 to maximum number of Summoned Ballista Totems": "3",
+      "Experience": "62,620,247"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Dex": "151",
+      "Cost": "12",
+      "Base Damage": "64.2%, 64.2%",
+      "+2 to maximum number of Summoned Ballista Totems": "3",
+      "Experience": "211,708,088"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Dex": "155",
+      "Cost": "13",
+      "Base Damage": "65%, 65%",
+      "+2 to maximum number of Summoned Ballista Totems": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Dex": "",
+      "Cost": "13",
+      "Base Damage": "65.8%, 65.8%",
+      "+2 to maximum number of Summoned Ballista Totems": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Dex": "",
+      "Cost": "13",
+      "Base Damage": "66.6%, 66.6%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Dex": "",
+      "Cost": "13",
+      "Base Damage": "67.4%, 67.4%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Dex": "",
+      "Cost": "13",
+      "Base Damage": "68.2%, 68.2%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Dex": "",
+      "Cost": "13",
+      "Base Damage": "68.9%, 68.9%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Dex": "",
+      "Cost": "14",
+      "Base Damage": "69.7%, 69.7%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Dex": "",
+      "Cost": "14",
+      "Base Damage": "70.5%, 70.5%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Dex": "",
+      "Cost": "14",
+      "Base Damage": "71.3%, 71.3%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Dex": "",
+      "Cost": "14",
+      "Base Damage": "72.1%, 72.1%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Dex": "",
+      "Cost": "14",
+      "Base Damage": "72.9%, 72.9%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Dex": "",
+      "Cost": "14",
+      "Base Damage": "73.3%, 73.3%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Dex": "",
+      "Cost": "14",
+      "Base Damage": "73.7%, 73.7%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Dex": "",
+      "Cost": "14",
+      "Base Damage": "74.1%, 74.1%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Dex": "",
+      "Cost": "15",
+      "Base Damage": "74.5%, 74.5%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Dex": "",
+      "Cost": "15",
+      "Base Damage": "74.9%, 74.9%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Dex": "",
+      "Cost": "15",
+      "Base Damage": "75.3%, 75.3%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Dex": "",
+      "Cost": "15",
+      "Base Damage": "75.7%, 75.7%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Dex": "",
+      "Cost": "15",
+      "Base Damage": "76.1%, 76.1%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Dex": "",
+      "Cost": "15",
+      "Base Damage": "76.4%, 76.4%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Dex": "",
+      "Cost": "15",
+      "Base Damage": "76.8%, 76.8%",
+      "+2 to maximum number of Summoned Ballista Totems": "4",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

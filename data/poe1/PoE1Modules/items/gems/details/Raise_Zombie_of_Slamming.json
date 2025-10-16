@@ -1,0 +1,417 @@
+{
+  "name": "Raise Zombie of Slamming",
+  "slug": "Raise_Zombie_of_Slamming",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Raise Zombie of Slamming",
+    "TargetTypes": "Corpse,",
+    "Type": "Spell, Minion, MinionsCanExplode, Trappable, Totemable, Mineable, Multicastable, Triggerable, CanRapidFire, CreatesMinion",
+    "MinionType": "Attack, Melee, MeleeSingleTarget, Multistrikeable",
+    "ActiveSkillsCode": "raise_zombie_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "1",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "100",
+      "Minions have #% more Maximum Life": "",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "0",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "2",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "6",
+      "Minions have #% more Maximum Life": "4",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "4",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "4",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "12",
+      "Minions have #% more Maximum Life": "8",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "8",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "7",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "18",
+      "Minions have #% more Maximum Life": "12",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "12",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "11",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "24",
+      "Minions have #% more Maximum Life": "16",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "16",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "16",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "16",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "30",
+      "Minions have #% more Maximum Life": "20",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "20",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "20",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "20",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "36",
+      "Minions have #% more Maximum Life": "24",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "24",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "24",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "42",
+      "Minions have #% more Maximum Life": "28",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "28",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "28",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "28",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "48",
+      "Minions have #% more Maximum Life": "32",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "32",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "32",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "32",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "54",
+      "Minions have #% more Maximum Life": "36",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "36",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "36",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "36",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "60",
+      "Minions have #% more Maximum Life": "40",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "40",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "40",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "40",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "66",
+      "Minions have #% more Maximum Life": "44",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "44",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "44",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "44",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "72",
+      "Minions have #% more Maximum Life": "48",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "48",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "48",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "48",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "78",
+      "Minions have #% more Maximum Life": "52",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "52",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "52",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "52",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "84",
+      "Minions have #% more Maximum Life": "56",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "56",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "56",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "56",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "90",
+      "Minions have #% more Maximum Life": "60",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "60",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "60",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "60",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "96",
+      "Minions have #% more Maximum Life": "64",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "64",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "64",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "64",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "102",
+      "Minions have #% more Maximum Life": "68",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "68",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "68",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "67",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "108",
+      "Minions have #% more Maximum Life": "72",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "72",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "72",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "114",
+      "Minions have #% more Maximum Life": "76",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "76",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "76",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "120",
+      "Minions have #% more Maximum Life": "80",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "80",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "80",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "126",
+      "Minions have #% more Maximum Life": "84",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "84",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "84",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "132",
+      "Minions have #% more Maximum Life": "88",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "88",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "88",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "138",
+      "Minions have #% more Maximum Life": "92",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "92",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "92",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "144",
+      "Minions have #% more Maximum Life": "96",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "96",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "96",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "150",
+      "Minions have #% more Maximum Life": "100",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "100",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "100",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "156",
+      "Minions have #% more Maximum Life": "104",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "104",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "104",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "162",
+      "Minions have #% more Maximum Life": "108",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "108",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "108",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "168",
+      "Minions have #% more Maximum Life": "112",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "112",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "112",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "174",
+      "Minions have #% more Maximum Life": "116",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "116",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "116",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "177",
+      "Minions have #% more Maximum Life": "118",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "118",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "118",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "180",
+      "Minions have #% more Maximum Life": "120",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "120",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "120",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "183",
+      "Minions have #% more Maximum Life": "122",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "122",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "122",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "186",
+      "Minions have #% more Maximum Life": "124",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "124",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "124",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "189",
+      "Minions have #% more Maximum Life": "126",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "126",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "126",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "192",
+      "Minions have #% more Maximum Life": "128",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "128",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "128",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "195",
+      "Minions have #% more Maximum Life": "130",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "130",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "130",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "198",
+      "Minions have #% more Maximum Life": "132",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "132",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "132",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "201",
+      "Minions have #% more Maximum Life": "134",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "134",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "134",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Base Damage": "100%, 100%",
+      "Minions deal 100% of Damage": "204",
+      "Minions have #% more Maximum Life": "136",
+      "Raised Zombies' Slam Attack has % increased Cooldown Recovery Rate": "136",
+      "Raised Zombies' Slam Attack has #% increased Area of Effect": "136",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

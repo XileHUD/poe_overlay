@@ -1,0 +1,381 @@
+{
+  "name": "Blast Rain",
+  "slug": "Blast_Rain",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Chance",
+    "Acronym": "Resistance",
+    "DropLevel": "28",
+    "BaseType": "Blast Rain",
+    "Class": "Skill Gems",
+    "Weapon": "Bows",
+    "TargetTypes": "Ground, Enemy,",
+    "Type": "Attack, RangedAttack, Fire, MirageArcherCanUse, Area, ProjectileSpeed, ProjectileNumber, Totemable, Trappable, Mineable, Triggerable, Rain",
+    "ItemType": "Metadata/Items/Gems/SkillGemBlastRain",
+    "ActiveSkillsCode": "blast_rain",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "28",
+      "Dex": "67",
+      "Cost": "7",
+      "Base Damage": "30%, 30%",
+      "Penetrates 20% Fire Resistance": "20",
+      "Experience": "199,345"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "31",
+      "Dex": "73",
+      "Cost": "8",
+      "Base Damage": "30.3%, 30.3%",
+      "Penetrates 20% Fire Resistance": "21",
+      "Experience": "285,815"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "34",
+      "Dex": "79",
+      "Cost": "8",
+      "Base Damage": "30.6%, 30.6%",
+      "Penetrates 20% Fire Resistance": "21",
+      "Experience": "401,344"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "37",
+      "Dex": "85",
+      "Cost": "8",
+      "Base Damage": "30.9%, 30.9%",
+      "Penetrates 20% Fire Resistance": "22",
+      "Experience": "554,379"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "40",
+      "Dex": "92",
+      "Cost": "8",
+      "Base Damage": "31.2%, 31.2%",
+      "Penetrates 20% Fire Resistance": "22",
+      "Experience": "477,437"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "42",
+      "Dex": "96",
+      "Cost": "8",
+      "Base Damage": "31.5%, 31.5%",
+      "Penetrates 20% Fire Resistance": "23",
+      "Experience": "583,786"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "44",
+      "Dex": "100",
+      "Cost": "8",
+      "Base Damage": "31.8%, 31.8%",
+      "Penetrates 20% Fire Resistance": "23",
+      "Experience": "710,359"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "46",
+      "Dex": "104",
+      "Cost": "8",
+      "Base Damage": "32.1%, 32.1%",
+      "Penetrates 20% Fire Resistance": "24",
+      "Experience": "1,355,511"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Dex": "109",
+      "Cost": "9",
+      "Base Damage": "32.4%, 32.4%",
+      "Penetrates 20% Fire Resistance": "24",
+      "Experience": "1,138,877"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Dex": "113",
+      "Cost": "9",
+      "Base Damage": "32.7%, 32.7%",
+      "Penetrates 20% Fire Resistance": "25",
+      "Experience": "1,368,233"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Dex": "117",
+      "Cost": "9",
+      "Base Damage": "32.9%, 32.9%",
+      "Penetrates 20% Fire Resistance": "25",
+      "Experience": "1,638,338"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Dex": "121",
+      "Cost": "9",
+      "Base Damage": "33.2%, 33.2%",
+      "Penetrates 20% Fire Resistance": "26",
+      "Experience": "1,956,648"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Dex": "125",
+      "Cost": "9",
+      "Base Damage": "33.5%, 33.5%",
+      "Penetrates 20% Fire Resistance": "26",
+      "Experience": "3,655,184"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Dex": "130",
+      "Cost": "9",
+      "Base Damage": "33.8%, 33.8%",
+      "Penetrates 20% Fire Resistance": "27",
+      "Experience": "3,017,327"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Dex": "134",
+      "Cost": "9",
+      "Base Damage": "34.1%, 34.1%",
+      "Penetrates 20% Fire Resistance": "27",
+      "Experience": "7,759,995"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Dex": "138",
+      "Cost": "10",
+      "Base Damage": "34.4%, 34.4%",
+      "Penetrates 20% Fire Resistance": "28",
+      "Experience": "15,138,193"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Dex": "142",
+      "Cost": "10",
+      "Base Damage": "34.7%, 34.7%",
+      "Penetrates 20% Fire Resistance": "28",
+      "Experience": "26,083,825"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Dex": "146",
+      "Cost": "10",
+      "Base Damage": "35%, 35%",
+      "Penetrates 20% Fire Resistance": "29",
+      "Experience": "62,620,247"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Dex": "151",
+      "Cost": "10",
+      "Base Damage": "35.3%, 35.3%",
+      "Penetrates 20% Fire Resistance": "29",
+      "Experience": "211,708,088"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Dex": "155",
+      "Cost": "10",
+      "Base Damage": "35.6%, 35.6%",
+      "Penetrates 20% Fire Resistance": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Dex": "",
+      "Cost": "10",
+      "Base Damage": "35.9%, 35.9%",
+      "Penetrates 20% Fire Resistance": "31",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Dex": "",
+      "Cost": "10",
+      "Base Damage": "36.2%, 36.2%",
+      "Penetrates 20% Fire Resistance": "31",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Dex": "",
+      "Cost": "10",
+      "Base Damage": "36.5%, 36.5%",
+      "Penetrates 20% Fire Resistance": "32",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "36.8%, 36.8%",
+      "Penetrates 20% Fire Resistance": "32",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "37.1%, 37.1%",
+      "Penetrates 20% Fire Resistance": "33",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "37.4%, 37.4%",
+      "Penetrates 20% Fire Resistance": "33",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "37.7%, 37.7%",
+      "Penetrates 20% Fire Resistance": "34",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "38%, 38%",
+      "Penetrates 20% Fire Resistance": "34",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "38.3%, 38.3%",
+      "Penetrates 20% Fire Resistance": "35",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "38.5%, 38.5%",
+      "Penetrates 20% Fire Resistance": "35",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "38.7%, 38.7%",
+      "Penetrates 20% Fire Resistance": "36",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Dex": "",
+      "Cost": "11",
+      "Base Damage": "38.8%, 38.8%",
+      "Penetrates 20% Fire Resistance": "36",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "39%, 39%",
+      "Penetrates 20% Fire Resistance": "37",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "39.1%, 39.1%",
+      "Penetrates 20% Fire Resistance": "37",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "39.3%, 39.3%",
+      "Penetrates 20% Fire Resistance": "38",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "39.4%, 39.4%",
+      "Penetrates 20% Fire Resistance": "38",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "39.6%, 39.6%",
+      "Penetrates 20% Fire Resistance": "39",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "39.7%, 39.7%",
+      "Penetrates 20% Fire Resistance": "39",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "39.9%, 39.9%",
+      "Penetrates 20% Fire Resistance": "40",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Dex": "",
+      "Cost": "12",
+      "Base Damage": "40%, 40%",
+      "Penetrates 20% Fire Resistance": "41",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

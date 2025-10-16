@@ -1,0 +1,380 @@
+{
+  "name": "Discipline",
+  "slug": "Discipline",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
+    "Acronym": "Recharge",
+    "DropLevel": "24",
+    "BaseType": "Discipline",
+    "Class": "Skill Gems",
+    "TargetTypes": "Any",
+    "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
+    "ItemType": "Metadata/Items/Gems/SkillGemDiscipline",
+    "ActiveSkillsCode": "discipline",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "24",
+      "Int": "58",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "60",
+      "# metres to radius": "0",
+      "Experience": "118,383"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "27",
+      "Int": "64",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "69",
+      "# metres to radius": "0.1",
+      "Experience": "175,816"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "30",
+      "Int": "71",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "76",
+      "# metres to radius": "0.2",
+      "Experience": "254,061"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "33",
+      "Int": "77",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "85",
+      "# metres to radius": "0.3",
+      "Experience": "359,090"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "36",
+      "Int": "83",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "94",
+      "# metres to radius": "0.4",
+      "Experience": "498,508"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "39",
+      "Int": "90",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "103",
+      "# metres to radius": "0.5",
+      "Experience": "682,057"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "42",
+      "Int": "96",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "114",
+      "# metres to radius": "0.6",
+      "Experience": "921,777"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "45",
+      "Int": "102",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "124",
+      "# metres to radius": "0.7",
+      "Experience": "1,727,879"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Int": "109",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "136",
+      "# metres to radius": "0.8",
+      "Experience": "1,138,877"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Int": "113",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "143",
+      "# metres to radius": "0.9",
+      "Experience": "1,368,233"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Int": "117",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "147",
+      "# metres to radius": "1",
+      "Experience": "1,638,338"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Int": "121",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "156",
+      "# metres to radius": "1.1",
+      "Experience": "1,956,648"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Int": "125",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "165",
+      "# metres to radius": "1.2",
+      "Experience": "3,655,184"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Int": "130",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "171",
+      "# metres to radius": "1.3",
+      "Experience": "3,017,327"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Int": "134",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "179",
+      "# metres to radius": "1.4",
+      "Experience": "7,793,914"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Int": "138",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "185",
+      "# metres to radius": "1.5",
+      "Experience": "15,206,031"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Int": "142",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "192",
+      "# metres to radius": "1.6",
+      "Experience": "26,185,582"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Int": "146",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "200",
+      "# metres to radius": "1.7",
+      "Experience": "62,755,923"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Int": "151",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "205",
+      "# metres to radius": "1.8",
+      "Experience": "211,877,683"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Int": "155",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "217",
+      "# metres to radius": "1.9",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "221",
+      "# metres to radius": "2",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "231",
+      "# metres to radius": "2.1",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "238",
+      "# metres to radius": "2.2",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "250",
+      "# metres to radius": "2.3",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "262",
+      "# metres to radius": "2.4",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "269",
+      "# metres to radius": "2.5",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "284",
+      "# metres to radius": "2.6",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "294",
+      "# metres to radius": "2.7",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "304",
+      "# metres to radius": "2.8",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "314",
+      "# metres to radius": "2.9",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "314",
+      "# metres to radius": "2.9",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "323",
+      "# metres to radius": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "323",
+      "# metres to radius": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "332",
+      "# metres to radius": "3.1",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "332",
+      "# metres to radius": "3.1",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "340",
+      "# metres to radius": "3.2",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "340",
+      "# metres to radius": "3.2",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "348",
+      "# metres to radius": "3.3",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "348",
+      "# metres to radius": "3.3",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "You and nearby allies gain 60 additional Energy Shield": "356",
+      "# metres to radius": "3.4",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

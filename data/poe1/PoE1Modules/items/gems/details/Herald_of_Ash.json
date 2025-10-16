@@ -1,0 +1,420 @@
+{
+  "name": "Herald of Ash",
+  "slug": "Herald_of_Ash",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
+    "Acronym": "Burning, Buff",
+    "DropLevel": "16",
+    "BaseType": "Herald of Ash",
+    "Class": "Skill Gems",
+    "TargetTypes": "Any",
+    "Type": "Spell, Buff, HasReservation, CausesBurning, Area, DamageOverTime, Fire, TotemCastsAlone, Herald, Duration, Instant, AreaSpell, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
+    "ItemType": "Metadata/Items/Gems/SkillGemHeraldOfAsh",
+    "ActiveSkillsCode": "herald_of_ash",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "16",
+      "Str": "26",
+      "Int": "18",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "15",
+      "Experience": "49,725"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "20",
+      "Str": "31",
+      "Int": "22",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "2",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "15",
+      "Experience": "95,714"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "24",
+      "Str": "37",
+      "Int": "25",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "4",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "15",
+      "Experience": "169,595"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "28",
+      "Str": "42",
+      "Int": "29",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "6",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "15",
+      "Experience": "199,345"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "31",
+      "Str": "46",
+      "Int": "32",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "8",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "15",
+      "Experience": "285,815"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "34",
+      "Str": "50",
+      "Int": "35",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "10",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "16",
+      "Experience": "401,344"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "37",
+      "Str": "54",
+      "Int": "37",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "12",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "16",
+      "Experience": "554,379"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "40",
+      "Str": "58",
+      "Int": "40",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "14",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "16",
+      "Experience": "755,049"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "43",
+      "Str": "62",
+      "Int": "43",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "16",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "17",
+      "Experience": "1,016,533"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "46",
+      "Str": "66",
+      "Int": "46",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "18",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "17",
+      "Experience": "1,898,602"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "49",
+      "Str": "70",
+      "Int": "48",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "20",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "17",
+      "Experience": "1,964,019"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "52",
+      "Str": "74",
+      "Int": "51",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "22",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "18",
+      "Experience": "2,573,731"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "55",
+      "Str": "78",
+      "Int": "54",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "24",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "18",
+      "Experience": "4,676,439"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Str": "82",
+      "Int": "57",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "26",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "18",
+      "Experience": "3,017,327"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Str": "84",
+      "Int": "59",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "28",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "19",
+      "Experience": "7,823,001"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Str": "87",
+      "Int": "60",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "30",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "19",
+      "Experience": "15,264,208"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Str": "90",
+      "Int": "62",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "32",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "19",
+      "Experience": "26,272,845"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Str": "92",
+      "Int": "64",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "34",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "20",
+      "Experience": "62,872,274"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Str": "95",
+      "Int": "66",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "36",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "20",
+      "Experience": "212,023,122"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Str": "98",
+      "Int": "68",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "38",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "20",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "40",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "21",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "42",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "21",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "44",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "21",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "46",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "22",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "48",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "22",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "50",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "22",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "52",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "23",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "54",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "23",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "56",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "23",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "58",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "59",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "60",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "61",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "62",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "63",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "64",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "65",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "66",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "67",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% more Burning Damage": "68",
+      "Buff grants 15% of your Physical Damage as Extra Fire Damage": "25",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

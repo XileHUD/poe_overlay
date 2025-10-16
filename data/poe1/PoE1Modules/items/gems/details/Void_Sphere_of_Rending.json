@@ -1,0 +1,376 @@
+{
+  "name": "Void Sphere of Rending",
+  "slug": "Void_Sphere_of_Rending",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Void Sphere of Rending",
+    "TargetTypes": "Ground,",
+    "Type": "Spell, Area, Trappable, Mineable, Triggerable, Duration, AreaSpell, Totemable, Physical, Damage, Chaos, Orb",
+    "ActiveSkillsCode": "void_sphere_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "34",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "68, 101",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "36",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "79, 118",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "38",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "91, 137",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "31",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "40",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "106, 159",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "31",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "42",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "123, 185",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "32",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "44",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "142, 213",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "32",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "46",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "164, 247",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "33",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "48",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "190, 285",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "33",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "50",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "219, 328",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "34",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "52",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "252, 378",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "34",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "54",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "290, 435",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "35",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "56",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "333, 499",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "35",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "58",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "382, 573",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "36",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "60",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "438, 657",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "36",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "62",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "502, 753",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "37",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "64",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "575, 863",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "37",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "66",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "658, 987",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "38",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "68",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "753, 1129",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "38",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "69",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "805, 1207",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "39",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "860, 1290",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "39",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "982, 1473",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "40",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "1121, 1681",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "40",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "1279, 1918",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "41",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "1458, 2186",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "41",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "1661, 2491",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "42",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "1892, 2837",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "42",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "2153, 3230",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "43",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "31",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "2450, 3675",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "43",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "32",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "2787, 4180",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "44",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "32",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "3168, 4752",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "44",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "32",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "3377, 5066",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "44",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "33",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "3600, 5400",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "45",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "33",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "3837, 5756",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "45",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "33",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "4090, 6134",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "45",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "34",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "4358, 6537",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "45",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "34",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "4644, 6966",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "46",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "34",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "4948, 7422",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "46",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "34",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "5272, 7907",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "46",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "35",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "5616, 8424",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "46",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "35",
+      "Base Damage": "100%, 100%",
+      "Deals 68 to 101 Physical Damage": "5982, 8973",
+      "Enemies in range are Hindered, with up to 30% reduced Movement Speed, based on distance from the Void Sphere": "47",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

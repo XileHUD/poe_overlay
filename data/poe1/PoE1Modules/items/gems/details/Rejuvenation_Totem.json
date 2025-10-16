@@ -1,0 +1,420 @@
+{
+  "name": "Rejuvenation Totem",
+  "slug": "Rejuvenation_Totem",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
+    "Acronym": "Totem",
+    "DropLevel": "4",
+    "BaseType": "Rejuvenation Totem",
+    "Class": "Skill Gems",
+    "TargetTypes": "Any,",
+    "Type": "Spell, Buff, Area, TotemCastsAlone, Trappable, Mineable, SummonsTotem, Aura, AreaSpell, TotemCastsWhenNotDetached",
+    "ItemType": "Metadata/Items/Gems/SkillGemRejuvenationTotem",
+    "ActiveSkillsCode": "rejuvenation_totem",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "4",
+      "Str": "16",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "8.6",
+      "Supported Skills have #% increased Totem Life": "",
+      "Experience": "841"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "6",
+      "Str": "20",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "13.1",
+      "Supported Skills have #% increased Totem Life": "4",
+      "Experience": "3,099"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "9",
+      "Str": "27",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "17.8",
+      "Supported Skills have #% increased Totem Life": "8",
+      "Experience": "7,433"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "12",
+      "Str": "33",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "24.2",
+      "Supported Skills have #% increased Totem Life": "12",
+      "Experience": "22,895"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "16",
+      "Str": "41",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "32.3",
+      "Supported Skills have #% increased Totem Life": "16",
+      "Experience": "49,725"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "20",
+      "Str": "50",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "40.8",
+      "Supported Skills have #% increased Totem Life": "20",
+      "Experience": "95,714"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "24",
+      "Str": "58",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "51.1",
+      "Supported Skills have #% increased Totem Life": "24",
+      "Experience": "169,595"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "28",
+      "Str": "67",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "63.3",
+      "Supported Skills have #% increased Totem Life": "28",
+      "Experience": "283,759"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "32",
+      "Str": "75",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "76",
+      "Supported Skills have #% increased Totem Life": "32",
+      "Experience": "453,996"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "36",
+      "Str": "83",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "90.7",
+      "Supported Skills have #% increased Totem Life": "36",
+      "Experience": "703,128"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "40",
+      "Str": "92",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "105.9",
+      "Supported Skills have #% increased Totem Life": "40",
+      "Experience": "1,061,223"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "44",
+      "Str": "100",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "126.7",
+      "Supported Skills have #% increased Totem Life": "44",
+      "Experience": "2,065,870"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "48",
+      "Str": "109",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "146.4",
+      "Supported Skills have #% increased Totem Life": "48",
+      "Experience": "2,507,110"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "52",
+      "Str": "117",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "166.7",
+      "Supported Skills have #% increased Totem Life": "52",
+      "Experience": "2,573,731"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "55",
+      "Str": "123",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "187.5",
+      "Supported Skills have #% increased Totem Life": "56",
+      "Experience": "7,611,351"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "58",
+      "Str": "130",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "210.7",
+      "Supported Skills have #% increased Totem Life": "60",
+      "Experience": "13,437,908"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "61",
+      "Str": "136",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "230.8",
+      "Supported Skills have #% increased Totem Life": "64",
+      "Experience": "25,052,147"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "64",
+      "Str": "142",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "259",
+      "Supported Skills have #% increased Totem Life": "68",
+      "Experience": "43,869,436"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "67",
+      "Str": "148",
+      "Cost": "31",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "287.9",
+      "Supported Skills have #% increased Totem Life": "72",
+      "Experience": "242,081,178"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Str": "155",
+      "Cost": "32",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "317.5",
+      "Supported Skills have #% increased Totem Life": "76",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Str": "",
+      "Cost": "32",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "336",
+      "Supported Skills have #% increased Totem Life": "80",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Str": "",
+      "Cost": "33",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "356.8",
+      "Supported Skills have #% increased Totem Life": "84",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Str": "",
+      "Cost": "34",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "372",
+      "Supported Skills have #% increased Totem Life": "88",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Str": "",
+      "Cost": "34",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "395.8",
+      "Supported Skills have #% increased Totem Life": "92",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Str": "",
+      "Cost": "35",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "422.1",
+      "Supported Skills have #% increased Totem Life": "96",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Str": "",
+      "Cost": "36",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "438.4",
+      "Supported Skills have #% increased Totem Life": "100",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Str": "",
+      "Cost": "36",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "467.9",
+      "Supported Skills have #% increased Totem Life": "104",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Str": "",
+      "Cost": "37",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "498",
+      "Supported Skills have #% increased Totem Life": "108",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Str": "",
+      "Cost": "38",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "533.1",
+      "Supported Skills have #% increased Totem Life": "112",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Str": "",
+      "Cost": "39",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "566.7",
+      "Supported Skills have #% increased Totem Life": "116",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Str": "",
+      "Cost": "39",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "589.7",
+      "Supported Skills have #% increased Totem Life": "118",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Str": "",
+      "Cost": "39",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "613",
+      "Supported Skills have #% increased Totem Life": "120",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Str": "",
+      "Cost": "40",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "634.5",
+      "Supported Skills have #% increased Totem Life": "122",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Str": "",
+      "Cost": "40",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "658.6",
+      "Supported Skills have #% increased Totem Life": "124",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Str": "",
+      "Cost": "40",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "683.1",
+      "Supported Skills have #% increased Totem Life": "126",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Str": "",
+      "Cost": "41",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "708",
+      "Supported Skills have #% increased Totem Life": "128",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Str": "",
+      "Cost": "41",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "730.8",
+      "Supported Skills have #% increased Totem Life": "130",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Str": "",
+      "Cost": "41",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "756.5",
+      "Supported Skills have #% increased Totem Life": "132",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Str": "",
+      "Cost": "42",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "782.5",
+      "Supported Skills have #% increased Totem Life": "134",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Str": "",
+      "Cost": "42",
+      "Base Damage": "100%, 100%",
+      "Regenerate 8.6 Life per second": "806.4",
+      "Supported Skills have #% increased Totem Life": "136",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

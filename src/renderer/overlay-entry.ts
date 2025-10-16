@@ -16,9 +16,13 @@ import './overlay/crafting/socketables/globals';
 import './overlay/crafting/omens/globals';
 import './overlay/crafting/currency/globals';
 
-// Items panels
+// Items panels (PoE2)
 import './overlay/crafting/uniques/globals';
 import './overlay/crafting/bases/globals';
+
+// Items panels (PoE1)
+import './overlay/items/poe1/uniques/globals';
+import './overlay/items/poe1/bases/globals';
 
 // Glossar
 import './overlay/crafting/glossar/globals';

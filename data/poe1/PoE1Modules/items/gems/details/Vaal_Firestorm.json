@@ -1,0 +1,376 @@
+{
+  "name": "Vaal Firestorm",
+  "slug": "Vaal_Firestorm",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Firestorm",
+    "TargetTypes": "Ground, Enemy,",
+    "Type": "Spell, Damage, Area, Duration, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, Cascadable, CanRapidFire, AreaSpell",
+    "ActiveSkillsCode": "firestorm"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "28",
+      "Int": "67",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "224, 336",
+      "Deals 256.8 Base Fire Damage per second": "256.8",
+      "Experience": "199,345"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "31",
+      "Int": "73",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "279, 418",
+      "Deals 256.8 Base Fire Damage per second": "319.7",
+      "Experience": "285,815"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "34",
+      "Int": "79",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "345, 518",
+      "Deals 256.8 Base Fire Damage per second": "395.8",
+      "Experience": "401,344"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "37",
+      "Int": "85",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "426, 639",
+      "Deals 256.8 Base Fire Damage per second": "487.8",
+      "Experience": "554,379"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "40",
+      "Int": "92",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "522, 784",
+      "Deals 256.8 Base Fire Damage per second": "598.7",
+      "Experience": "477,437"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "42",
+      "Int": "96",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "598, 897",
+      "Deals 256.8 Base Fire Damage per second": "684.9",
+      "Experience": "583,786"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "44",
+      "Int": "100",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "683, 1024",
+      "Deals 256.8 Base Fire Damage per second": "782.3",
+      "Experience": "710,359"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "46",
+      "Int": "104",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "779, 1168",
+      "Deals 256.8 Base Fire Damage per second": "892.3",
+      "Experience": "1,355,511"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Int": "109",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "887, 1331",
+      "Deals 256.8 Base Fire Damage per second": "1016.5",
+      "Experience": "1,138,877"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Int": "113",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "1009, 1514",
+      "Deals 256.8 Base Fire Damage per second": "1156.6",
+      "Experience": "1,368,233"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Int": "117",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "1147, 1721",
+      "Deals 256.8 Base Fire Damage per second": "1314.6",
+      "Experience": "1,638,338"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Int": "121",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "1303, 1954",
+      "Deals 256.8 Base Fire Damage per second": "1492.5",
+      "Experience": "1,956,648"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Int": "125",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "1477, 2216",
+      "Deals 256.8 Base Fire Damage per second": "1692.9",
+      "Experience": "3,655,184"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Int": "130",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "1674, 2511",
+      "Deals 256.8 Base Fire Damage per second": "1918.4",
+      "Experience": "3,017,327"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Int": "134",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "1896, 2843",
+      "Deals 256.8 Base Fire Damage per second": "2172.1",
+      "Experience": "7,759,995"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Int": "138",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "2144, 3217",
+      "Deals 256.8 Base Fire Damage per second": "2457.2",
+      "Experience": "15,138,193"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Int": "142",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "2424, 3636",
+      "Deals 256.8 Base Fire Damage per second": "2777.7",
+      "Experience": "26,083,825"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Int": "146",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "2738, 4107",
+      "Deals 256.8 Base Fire Damage per second": "3137.6",
+      "Experience": "62,620,247"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Int": "151",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "3091, 4636",
+      "Deals 256.8 Base Fire Damage per second": "3541.7",
+      "Experience": "211,708,088"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Int": "155",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "3487, 5230",
+      "Deals 256.8 Base Fire Damage per second": "3995.3",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "3931, 5896",
+      "Deals 256.8 Base Fire Damage per second": "4504",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "4429, 6643",
+      "Deals 256.8 Base Fire Damage per second": "5074.5",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "4987, 7480",
+      "Deals 256.8 Base Fire Damage per second": "5714",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "5612, 8418",
+      "Deals 256.8 Base Fire Damage per second": "6430.6",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "6313, 9469",
+      "Deals 256.8 Base Fire Damage per second": "7233.3",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "7097, 10646",
+      "Deals 256.8 Base Fire Damage per second": "8132.2",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "7975, 11963",
+      "Deals 256.8 Base Fire Damage per second": "9138.5",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "8958, 13437",
+      "Deals 256.8 Base Fire Damage per second": "10264.6",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "10058, 15086",
+      "Deals 256.8 Base Fire Damage per second": "11524.4",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "11287, 16931",
+      "Deals 256.8 Base Fire Damage per second": "12933.4",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "11956, 17933",
+      "Deals 256.8 Base Fire Damage per second": "13699.2",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "12662, 18993",
+      "Deals 256.8 Base Fire Damage per second": "14508.9",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "13409, 20114",
+      "Deals 256.8 Base Fire Damage per second": "15365",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "14199, 21299",
+      "Deals 256.8 Base Fire Damage per second": "16270",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "15034, 22551",
+      "Deals 256.8 Base Fire Damage per second": "17226.8",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "15917, 23875",
+      "Deals 256.8 Base Fire Damage per second": "18238.1",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "16850, 25275",
+      "Deals 256.8 Base Fire Damage per second": "19307.1",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "17836, 26754",
+      "Deals 256.8 Base Fire Damage per second": "20437",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "18878, 28317",
+      "Deals 256.8 Base Fire Damage per second": "21631.1",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "Deals 224 to 336 Fire Damage": "19979, 29969",
+      "Deals 256.8 Base Fire Damage per second": "22893.1",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

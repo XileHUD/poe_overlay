@@ -1,0 +1,3837 @@
+{
+  "slug": "Currency",
+  "items": [
+    {
+      "name": "Scroll of Wisdom",
+      "slug": "Scroll_of_Wisdom",
+      "properties": {
+        "Stack Size": "1 / 40"
+      },
+      "mods": [
+        "Identifies an item"
+      ],
+      "imageLocal": "currency/scroll_of_wisdom.webp"
+    },
+    {
+      "name": "Chaos Orb",
+      "slug": "Chaos_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reforges a rare item with new random modifiers"
+      ],
+      "imageLocal": "currency/chaos_orb.webp"
+    },
+    {
+      "name": "Veiled Exalted Orb",
+      "slug": "Veiled_Exalted_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Removes a random modifier and adds a random Veiled modifier to a rare item"
+      ],
+      "imageLocal": "currency/veiled_exalted_orb.webp"
+    },
+    {
+      "name": "Veiled Chaos Orb",
+      "slug": "Veiled_Chaos_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reforges a rare item with new random modifiers including a random Veiled modifier"
+      ],
+      "imageLocal": "currency/veiled_chaos_orb.webp"
+    },
+    {
+      "name": "Armourer's Scrap",
+      "slug": "Armourers_Scrap",
+      "properties": {
+        "Stack Size": "1 / 40"
+      },
+      "mods": [
+        "Improves the quality of an armour"
+      ],
+      "imageLocal": "currency/armourers_scrap.webp"
+    },
+    {
+      "name": "Mirror of Kalandra",
+      "slug": "Mirror_of_Kalandra",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Creates a mirrored copy of an item"
+      ],
+      "imageLocal": "currency/mirror_of_kalandra.webp"
+    },
+    {
+      "name": "Orb of Alchemy",
+      "slug": "Orb_of_Alchemy",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Upgrades a normal item to a rare item"
+      ],
+      "imageLocal": "currency/orb_of_alchemy.webp"
+    },
+    {
+      "name": "Orb of Chance",
+      "slug": "Orb_of_Chance",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Upgrades a normal item to a random rarity"
+      ],
+      "imageLocal": "currency/orb_of_chance.webp"
+    },
+    {
+      "name": "Orb of Regret",
+      "slug": "Orb_of_Regret",
+      "properties": {
+        "Stack Size": "1 / 40"
+      },
+      "mods": [
+        "Grants a passive skill refund point"
+      ],
+      "imageLocal": "currency/orb_of_regret.webp"
+    },
+    {
+      "name": "Orb of Unmaking",
+      "slug": "Orb_of_Unmaking",
+      "properties": {
+        "Stack Size": "1 / 40"
+      },
+      "mods": [
+        "Grants an atlas passive skill refund point"
+      ],
+      "imageLocal": "currency/orb_of_unmaking.webp"
+    },
+    {
+      "name": "Orb of Transmutation",
+      "slug": "Orb_of_Transmutation",
+      "properties": {
+        "Stack Size": "1 / 40"
+      },
+      "mods": [
+        "Upgrades a normal item to a magic item"
+      ],
+      "imageLocal": "currency/orb_of_transmutation.webp"
+    },
+    {
+      "name": "Orb of Alteration",
+      "slug": "Orb_of_Alteration",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reforges a magic item with new random modifiers"
+      ],
+      "imageLocal": "currency/orb_of_alteration.webp"
+    },
+    {
+      "name": "Orb of Scouring",
+      "slug": "Orb_of_Scouring",
+      "properties": {
+        "Stack Size": "1 / 30"
+      },
+      "mods": [
+        "Removes all modifiers from an item"
+      ],
+      "imageLocal": "currency/orb_of_scouring.webp"
+    },
+    {
+      "name": "Exalted Orb",
+      "slug": "Exalted_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Augments a rare item with a new random modifier"
+      ],
+      "imageLocal": "currency/exalted_orb.webp"
+    },
+    {
+      "name": "Regal Orb",
+      "slug": "Regal_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Upgrades a magic item to a rare item"
+      ],
+      "imageLocal": "currency/regal_orb.webp"
+    },
+    {
+      "name": "Orb of Augmentation",
+      "slug": "Orb_of_Augmentation",
+      "properties": {
+        "Stack Size": "1 / 30"
+      },
+      "mods": [
+        "Augments a magic item with a new random modifier"
+      ],
+      "imageLocal": "currency/orb_of_augmentation.webp"
+    },
+    {
+      "name": "Portal Scroll",
+      "slug": "Portal_Scroll",
+      "properties": {
+        "Stack Size": "1 / 40"
+      },
+      "mods": [
+        "Creates a portal to town"
+      ],
+      "imageLocal": "currency/portal_scroll.webp"
+    },
+    {
+      "name": "Glassblower's Bauble",
+      "slug": "Glassblowers_Bauble",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Improves the quality of a flask or tincture"
+      ],
+      "imageLocal": "currency/glassblowers_bauble.webp"
+    },
+    {
+      "name": "Gemcutter's Prism",
+      "slug": "Gemcutters_Prism",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Improves the quality of a gem"
+      ],
+      "imageLocal": "currency/gemcutters_prism.webp"
+    },
+    {
+      "name": "Chromatic Orb",
+      "slug": "Chromatic_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reforges the colour of sockets on an item"
+      ],
+      "imageLocal": "currency/chromatic_orb.webp"
+    },
+    {
+      "name": "Orb of Fusing",
+      "slug": "Orb_of_Fusing",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reforges the links between sockets on an item"
+      ],
+      "imageLocal": "currency/orb_of_fusing.webp"
+    },
+    {
+      "name": "Jeweller's Orb",
+      "slug": "Jewellers_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reforges the number of sockets on an item"
+      ],
+      "imageLocal": "currency/jewellers_orb.webp"
+    },
+    {
+      "name": "Divine Orb",
+      "slug": "Divine_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Randomises the values of the random modifiers on an item"
+      ],
+      "imageLocal": "currency/divine_orb.webp"
+    },
+    {
+      "name": "Blessed Orb",
+      "slug": "Blessed_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Randomises the values of the implicit modifiers of an item"
+      ],
+      "imageLocal": "currency/blessed_orb.webp"
+    },
+    {
+      "name": "Sacred Orb",
+      "slug": "Sacred_Orb",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Randomises the numeric values of base defences on an armour"
+      ],
+      "imageLocal": "currency/sacred_orb.webp"
+    },
+    {
+      "name": "Cartographer's Chisel",
+      "slug": "Cartographers_Chisel",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Improves the quality of a map"
+      ],
+      "imageLocal": "currency/cartographers_chisel.webp"
+    },
+    {
+      "name": "Maven's Chisel of Procurement",
+      "slug": "Mavens_Chisel_of_Procurement",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Improves the quality of a map enhancing Item Rarity\nReplaces other quality types"
+      ],
+      "imageLocal": "currency/mavens_chisel_of_procurement.webp"
+    },
+    {
+      "name": "Maven's Chisel of Proliferation",
+      "slug": "Mavens_Chisel_of_Proliferation",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Improves the quality of a map enhancing Pack Size\nReplaces other quality types"
+      ],
+      "imageLocal": "currency/mavens_chisel_of_proliferation.webp"
+    },
+    {
+      "name": "Maven's Chisel of Divination",
+      "slug": "Mavens_Chisel_of_Divination",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Improves the quality of a map enhancing Divination Cards found\nReplaces other quality types"
+      ],
+      "imageLocal": "currency/mavens_chisel_of_divination.webp"
+    },
+    {
+      "name": "Maven's Chisel of Scarabs",
+      "slug": "Mavens_Chisel_of_Scarabs",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Improves the quality of a map enhancing Scarabs found\nReplaces other quality types"
+      ],
+      "imageLocal": "currency/mavens_chisel_of_scarabs.webp"
+    },
+    {
+      "name": "Maven's Chisel of Avarice",
+      "slug": "Mavens_Chisel_of_Avarice",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Improves the quality of a map enhancing Currency found\nReplaces other quality types"
+      ],
+      "imageLocal": "currency/mavens_chisel_of_avarice.webp"
+    },
+    {
+      "name": "Scroll Fragment",
+      "slug": "Scroll_Fragment",
+      "properties": {
+        "Stack Size": "1 / 5"
+      },
+      "mods": [],
+      "imageLocal": "currency/scroll_fragment.webp"
+    },
+    {
+      "name": "Transmutation Shard",
+      "slug": "Transmutation_Shard",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [],
+      "imageLocal": "currency/transmutation_shard.webp"
+    },
+    {
+      "name": "Alteration Shard",
+      "slug": "Alteration_Shard",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [],
+      "imageLocal": "currency/alteration_shard.webp"
+    },
+    {
+      "name": "Alchemy Shard",
+      "slug": "Alchemy_Shard",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [],
+      "imageLocal": "currency/alchemy_shard.webp"
+    },
+    {
+      "name": "Albino Rhoa Feather",
+      "slug": "Albino_Rhoa_Feather",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [],
+      "imageLocal": "currency/albino_rhoa_feather.webp"
+    },
+    {
+      "name": "Eternal Orb",
+      "slug": "Eternal_Orb",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Creates an imprint of an item for later restoration\nThe imprint can't be applied to Fractured Items"
+      ],
+      "imageLocal": "currency/eternal_orb.webp"
+    },
+    {
+      "name": "Imprint",
+      "slug": "Imprint",
+      "properties": {},
+      "mods": [
+        "Restores an imprinted item onto the original\nCan't be applied to Fractured Items"
+      ],
+      "imageLocal": "currency/imprint.webp"
+    },
+    {
+      "name": "Vaal Orb",
+      "slug": "Vaal_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Corrupts an item, modifying it unpredictably"
+      ],
+      "imageLocal": "currency/vaal_orb.webp"
+    },
+    {
+      "name": "Enchant",
+      "slug": "Enchant",
+      "properties": {
+        "Stack Size": "1 / 9"
+      },
+      "mods": [
+        "Adds an enchantment to an item, or replaces an existing enchantment"
+      ],
+      "imageLocal": "currency/enchant.webp"
+    },
+    {
+      "name": "Tainted Blessing",
+      "slug": "Tainted_Blessing",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [],
+      "imageLocal": "currency/tainted_blessing.webp"
+    },
+    {
+      "name": "Corrupt",
+      "slug": "Corrupt",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "currency/corrupt.webp"
+    },
+    {
+      "name": "Corrupt",
+      "slug": "Corrupt",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "currency/corrupt.webp"
+    },
+    {
+      "name": "Perandus Coin",
+      "slug": "Perandus_Coin",
+      "properties": {
+        "Stack Size": "1 / 5000"
+      },
+      "mods": [],
+      "imageLocal": "currency/perandus_coin.webp"
+    },
+    {
+      "name": "Prophecy",
+      "slug": "Prophecy",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "currency/prophecy.webp"
+    },
+    {
+      "name": "Bestiary Orb",
+      "slug": "Bestiary_Orb",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Stores a Beast in an item"
+      ],
+      "imageLocal": "currency/bestiary_orb.webp"
+    },
+    {
+      "name": "Imprinted Bestiary Orb",
+      "slug": "Imprinted_Bestiary_Orb",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "currency/imprinted_bestiary_orb.webp"
+    },
+    {
+      "name": "Empty Coffin",
+      "slug": "Empty_Coffin",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Stores a Corpse in an item"
+      ],
+      "imageLocal": "currency/empty_coffin.webp"
+    },
+    {
+      "name": "Filled Coffin",
+      "slug": "Filled_Coffin",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "currency/filled_coffin.webp"
+    },
+    {
+      "name": "Shaper's Exalted Orb",
+      "slug": "Shapers_Exalted_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Adds Shaper influence and a new Shaper modifier to a rare item"
+      ],
+      "imageLocal": "currency/shapers_exalted_orb.webp"
+    },
+    {
+      "name": "Elder's Exalted Orb",
+      "slug": "Elders_Exalted_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Adds Elder influence and a new Elder modifier to a rare item"
+      ],
+      "imageLocal": "currency/elders_exalted_orb.webp"
+    },
+    {
+      "name": "Orb of Remembrance",
+      "slug": "Orb_of_Remembrance",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Randomises the number of Memory Strands on a normal equipment item"
+      ],
+      "imageLocal": "currency/orb_of_remembrance.webp"
+    },
+    {
+      "name": "Orb of Unravelling",
+      "slug": "Orb_of_Unravelling",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Consumes all Memory Strands on an item to attempt to upgrade the tier\nof explicit modifiers based on the number of Memory Strands consumed"
+      ],
+      "imageLocal": "currency/orb_of_unravelling.webp"
+    },
+    {
+      "name": "Orb of Intention",
+      "slug": "Orb_of_Intention",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Modifies a Memory Influenced Map, causing items found to\nhave more Memory Strands, but fewer items drop"
+      ],
+      "imageLocal": "currency/orb_of_intention.webp"
+    },
+    {
+      "name": "Surveyor's Compass",
+      "slug": "Surveyors_Compass",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Stores a Sextant Modifier in an item"
+      ],
+      "imageLocal": "currency/surveyors_compass.webp"
+    },
+    {
+      "name": "Prime Regrading Lens",
+      "slug": "Prime_Regrading_Lens",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Change the type of quality of a skill gem with quality to another random quality"
+      ],
+      "imageLocal": "currency/prime_regrading_lens.webp"
+    },
+    {
+      "name": "Secondary Regrading Lens",
+      "slug": "Secondary_Regrading_Lens",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Change the type of quality of a support gem with quality to another random quality"
+      ],
+      "imageLocal": "currency/secondary_regrading_lens.webp"
+    },
+    {
+      "name": "Tempering Orb",
+      "slug": "Tempering_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Adds or replaces an enchantment on a weapon\nThis may reforge the weapon's sockets"
+      ],
+      "imageLocal": "currency/tempering_orb.webp"
+    },
+    {
+      "name": "Tailoring Orb",
+      "slug": "Tailoring_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Adds or replaces an enchantment on a body armour\nThis may reforge the body armour's sockets"
+      ],
+      "imageLocal": "currency/tailoring_orb.webp"
+    },
+    {
+      "name": "Veiled Scarab",
+      "slug": "Veiled_Scarab",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "A collection of unknown Scarabs"
+      ],
+      "imageLocal": "currency/veiled_scarab.webp"
+    },
+    {
+      "name": "Apprentice Cartographer's Seal",
+      "slug": "Apprentice_Cartographers_Seal",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Uncompletes a white map on the Atlas"
+      ],
+      "imageLocal": "currency/apprentice_cartographers_seal.webp"
+    },
+    {
+      "name": "Journeyman Cartographer's Seal",
+      "slug": "Journeyman_Cartographers_Seal",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Uncompletes a yellow or white map on the Atlas"
+      ],
+      "imageLocal": "currency/journeyman_cartographers_seal.webp"
+    },
+    {
+      "name": "Master Cartographer's Seal",
+      "slug": "Master_Cartographers_Seal",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Uncompletes any map on the Atlas"
+      ],
+      "imageLocal": "currency/master_cartographers_seal.webp"
+    },
+    {
+      "name": "Unshaping Orb",
+      "slug": "Unshaping_Orb",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Downgrades a map on the Atlas"
+      ],
+      "imageLocal": "currency/unshaping_orb.webp"
+    },
+    {
+      "name": "Orb of Annulment",
+      "slug": "Orb_of_Annulment",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Removes a random modifier from an item"
+      ],
+      "imageLocal": "currency/orb_of_annulment.webp"
+    },
+    {
+      "name": "Orb of Binding",
+      "slug": "Orb_of_Binding",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Upgrades a normal item to a rare item with up to four linked sockets"
+      ],
+      "imageLocal": "currency/orb_of_binding.webp"
+    },
+    {
+      "name": "Orb of Horizons",
+      "slug": "Orb_of_Horizons",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reforges a map item as another of the same tier"
+      ],
+      "imageLocal": "currency/orb_of_horizons.webp"
+    },
+    {
+      "name": "Harbinger's Orb",
+      "slug": "Harbingers_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reforges a map item as another of a higher tier"
+      ],
+      "imageLocal": "currency/harbingers_orb.webp"
+    },
+    {
+      "name": "Engineer's Orb",
+      "slug": "Engineers_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Improves the quality of a Strongbox"
+      ],
+      "imageLocal": "currency/engineers_orb.webp"
+    },
+    {
+      "name": "Infused Engineer's Orb",
+      "slug": "Infused_Engineers_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Greatly improves the quality and rewards of a Strongbox and strengthens its defenders"
+      ],
+      "imageLocal": "currency/infused_engineers_orb.webp"
+    },
+    {
+      "name": "Ancient Orb",
+      "slug": "Ancient_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reforges a unique equipment as another of the same item class"
+      ],
+      "imageLocal": "currency/ancient_orb.webp"
+    },
+    {
+      "name": "Fracturing Orb",
+      "slug": "Fracturing_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Fracture a random modifier on a rare item with at least 4 modifiers, locking it in place"
+      ],
+      "imageLocal": "currency/fracturing_orb.webp"
+    },
+    {
+      "name": "Annulment Shard",
+      "slug": "Annulment_Shard",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [],
+      "imageLocal": "currency/annulment_shard.webp"
+    },
+    {
+      "name": "Binding Shard",
+      "slug": "Binding_Shard",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [],
+      "imageLocal": "currency/binding_shard.webp"
+    },
+    {
+      "name": "Horizon Shard",
+      "slug": "Horizon_Shard",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [],
+      "imageLocal": "currency/horizon_shard.webp"
+    },
+    {
+      "name": "Harbinger's Shard",
+      "slug": "Harbingers_Shard",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [],
+      "imageLocal": "currency/harbingers_shard.webp"
+    },
+    {
+      "name": "Engineer's Shard",
+      "slug": "Engineers_Shard",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [],
+      "imageLocal": "currency/engineers_shard.webp"
+    },
+    {
+      "name": "Ancient Shard",
+      "slug": "Ancient_Shard",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [],
+      "imageLocal": "currency/ancient_shard.webp"
+    },
+    {
+      "name": "Chaos Shard",
+      "slug": "Chaos_Shard",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [],
+      "imageLocal": "currency/chaos_shard.webp"
+    },
+    {
+      "name": "Mirror Shard",
+      "slug": "Mirror_Shard",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [],
+      "imageLocal": "currency/mirror_shard.webp"
+    },
+    {
+      "name": "Exalted Shard",
+      "slug": "Exalted_Shard",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [],
+      "imageLocal": "currency/exalted_shard.webp"
+    },
+    {
+      "name": "Regal Shard",
+      "slug": "Regal_Shard",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [],
+      "imageLocal": "currency/regal_shard.webp"
+    },
+    {
+      "name": "Fracturing Shard",
+      "slug": "Fracturing_Shard",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [],
+      "imageLocal": "currency/fracturing_shard.webp"
+    },
+    {
+      "name": "Time-light Scroll",
+      "slug": "Time-light_Scroll",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Upgrades The Flow Untethered to a more powerful version"
+      ],
+      "imageLocal": "currency/time_light_scroll.webp"
+    },
+    {
+      "name": "Fragmentation Scroll",
+      "slug": "Fragmentation_Scroll",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Upgrades The Fracturing Spinner to a more powerful version"
+      ],
+      "imageLocal": "currency/fragmentation_scroll.webp"
+    },
+    {
+      "name": "Deregulation Scroll",
+      "slug": "Deregulation_Scroll",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Upgrades The Tempest's Binding to a more powerful version"
+      ],
+      "imageLocal": "currency/deregulation_scroll.webp"
+    },
+    {
+      "name": "Electroshock Scroll",
+      "slug": "Electroshock_Scroll",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Upgrades The Rippling Thoughts to a more powerful version"
+      ],
+      "imageLocal": "currency/electroshock_scroll.webp"
+    },
+    {
+      "name": "Haemocombustion Scroll",
+      "slug": "Haemocombustion_Scroll",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Upgrades The Enmity Divine to a more powerful version"
+      ],
+      "imageLocal": "currency/haemocombustion_scroll.webp"
+    },
+    {
+      "name": "Specularity Scroll",
+      "slug": "Specularity_Scroll",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Upgrades The Unshattered Will to a more powerful version"
+      ],
+      "imageLocal": "currency/specularity_scroll.webp"
+    },
+    {
+      "name": "Facetor's Lens",
+      "slug": "Facetors_Lens",
+      "properties": {},
+      "mods": [
+        "Adds stored experience to a gem, up to its maximum level"
+      ],
+      "imageLocal": "currency/facetors_lens.webp"
+    },
+    {
+      "name": "Magmatic Ore",
+      "slug": "Magmatic_Ore",
+      "properties": {},
+      "mods": [
+        "Adds stored Crucible experience to an item"
+      ],
+      "imageLocal": "currency/magmatic_ore.webp"
+    },
+    {
+      "name": "Ritual Vessel",
+      "slug": "Ritual_Vessel",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Stores the monsters slain for the first time from a completed Ritual Altar for future use"
+      ],
+      "imageLocal": "currency/ritual_vessel.webp"
+    },
+    {
+      "name": "Lesser Eldritch Ember",
+      "slug": "Lesser_Eldritch_Ember",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds a Lesser Searing Exarch implicit modifier to\na Body Armour, Boots, Gloves or Helmet\nThis replaces any existing implicit modifiers other than Eater of Worlds implicit modifiers"
+      ],
+      "imageLocal": "currency/lesser_eldritch_ember.webp"
+    },
+    {
+      "name": "Greater Eldritch Ember",
+      "slug": "Greater_Eldritch_Ember",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds a Greater Searing Exarch implicit modifier to\na Body Armour, Boots, Gloves or Helmet\nThis replaces any existing implicit modifiers other than Eater of Worlds implicit modifiers"
+      ],
+      "imageLocal": "currency/greater_eldritch_ember.webp"
+    },
+    {
+      "name": "Grand Eldritch Ember",
+      "slug": "Grand_Eldritch_Ember",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds a Grand Searing Exarch implicit modifier to\na Body Armour, Boots, Gloves or Helmet\nThis replaces any existing implicit modifiers other than Eater of Worlds implicit modifiers"
+      ],
+      "imageLocal": "currency/grand_eldritch_ember.webp"
+    },
+    {
+      "name": "Exceptional Eldritch Ember",
+      "slug": "Exceptional_Eldritch_Ember",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds an Exceptional Searing Exarch implicit modifier to\na Body Armour, Boots, Gloves or Helmet\nThis replaces any existing implicit modifiers other than Eater of Worlds implicit modifiers"
+      ],
+      "imageLocal": "currency/exceptional_eldritch_ember.webp"
+    },
+    {
+      "name": "Lesser Eldritch Ichor",
+      "slug": "Lesser_Eldritch_Ichor",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds a Lesser Eater of Worlds implicit modifier to\na Body Armour, Boots, Gloves or Helmet\nThis replaces any existing implicit modifiers other than Searing Exarch implicit modifiers"
+      ],
+      "imageLocal": "currency/lesser_eldritch_ichor.webp"
+    },
+    {
+      "name": "Greater Eldritch Ichor",
+      "slug": "Greater_Eldritch_Ichor",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds a Greater Eater of Worlds implicit modifier to\na Body Armour, Boots, Gloves or Helmet\nThis replaces any existing implicit modifiers other than Searing Exarch implicit modifiers"
+      ],
+      "imageLocal": "currency/greater_eldritch_ichor.webp"
+    },
+    {
+      "name": "Grand Eldritch Ichor",
+      "slug": "Grand_Eldritch_Ichor",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds a Grand Eater of Worlds implicit modifier to\na Body Armour, Boots, Gloves or Helmet\nThis replaces any existing implicit modifiers other than Searing Exarch implicit modifiers"
+      ],
+      "imageLocal": "currency/grand_eldritch_ichor.webp"
+    },
+    {
+      "name": "Exceptional Eldritch Ichor",
+      "slug": "Exceptional_Eldritch_Ichor",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds an Exceptional Eater of Worlds implicit modifier to\na Body Armour, Boots, Gloves or Helmet\nThis replaces any existing implicit modifiers other than Searing Exarch implicit modifiers"
+      ],
+      "imageLocal": "currency/exceptional_eldritch_ichor.webp"
+    },
+    {
+      "name": "Orb of Conflict",
+      "slug": "Orb_of_Conflict",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Unpredictably raise the strength of one Searing Exarch or Eater of Worlds modifier on an item and lower the strength of another\nLesser modifiers that have their strength lowered will be removed"
+      ],
+      "imageLocal": "currency/orb_of_conflict.webp"
+    },
+    {
+      "name": "Uncarved Gemstone",
+      "slug": "Uncarved_Gemstone",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "currency/uncarved_gemstone.webp"
+    },
+    {
+      "name": "Valdo's Puzzle Box",
+      "slug": "Valdos_Puzzle_Box",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Contains a Mysterious Map with a Foil Unique Reward"
+      ],
+      "imageLocal": "currency/valdos_puzzle_box.webp"
+    },
+    {
+      "name": "Stacked Deck",
+      "slug": "Stacked_Deck",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "A stack of unknown divination cards"
+      ],
+      "imageLocal": "currency/stacked_deck.webp"
+    },
+    {
+      "name": "Crusader's Exalted Orb",
+      "slug": "Crusaders_Exalted_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Adds Crusader influence and a new Crusader modifier to a rare item"
+      ],
+      "imageLocal": "currency/crusaders_exalted_orb.webp"
+    },
+    {
+      "name": "Redeemer's Exalted Orb",
+      "slug": "Redeemers_Exalted_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Adds Redeemer influence and a new Redeemer modifier to a rare item"
+      ],
+      "imageLocal": "currency/redeemers_exalted_orb.webp"
+    },
+    {
+      "name": "Hunter's Exalted Orb",
+      "slug": "Hunters_Exalted_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Adds Hunter influence and a new Hunter modifier to a rare item"
+      ],
+      "imageLocal": "currency/hunters_exalted_orb.webp"
+    },
+    {
+      "name": "Warlord's Exalted Orb",
+      "slug": "Warlords_Exalted_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Adds Warlord influence and a new Warlord modifier to a rare item"
+      ],
+      "imageLocal": "currency/warlords_exalted_orb.webp"
+    },
+    {
+      "name": "Awakener's Orb",
+      "slug": "Awakeners_Orb",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Destroys an item, applying its influence to another of the same item class\nThe second item is reforged as a rare item with both influence types and new modifiers"
+      ],
+      "imageLocal": "currency/awakeners_orb.webp"
+    },
+    {
+      "name": "Rogue's Marker",
+      "slug": "Rogues_Marker",
+      "properties": {
+        "Stack Size": "1 / 50000"
+      },
+      "mods": [
+        "Creates a portal to the Rogue Harbour from a Town or Hideout\nUsed as Currency for services in the Rogue Harbour"
+      ],
+      "imageLocal": "currency/rogues_marker.webp"
+    },
+    {
+      "name": "Orb of Dominance",
+      "slug": "Orb_of_Dominance",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Removes one Influenced Modifier from an item with at least two Influenced\nModifiers and upgrades another Influenced Modifier\nUpgrading a modifier of the highest tier transforms the\nmodifier into an Elevated Modifier\nAttempting to upgrade an Elevated Modifier rerolls its values\nCan be used on Body Armours, Boots, Gloves and Helmets"
+      ],
+      "imageLocal": "currency/orb_of_dominance.webp"
+    },
+    {
+      "name": "Enkindling Orb",
+      "slug": "Enkindling_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Adds an enchantment to a utility flask that will improve it\nbut prevent it from gaining charges during its effect\nReplaces any existing enchantment"
+      ],
+      "imageLocal": "currency/enkindling_orb.webp"
+    },
+    {
+      "name": "Instilling Orb",
+      "slug": "Instilling_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Adds an enchantment to a utility flask that will cause\nit to be used when certain conditions are met\nReplaces any existing enchantment"
+      ],
+      "imageLocal": "currency/instilling_orb.webp"
+    },
+    {
+      "name": "Exotic Coinage",
+      "slug": "Exotic_Coinage",
+      "properties": {
+        "Stack Size": "1 / 1000"
+      },
+      "mods": [],
+      "imageLocal": "currency/exotic_coinage.webp"
+    },
+    {
+      "name": "Scrap Metal",
+      "slug": "Scrap_Metal",
+      "properties": {
+        "Stack Size": "1 / 1000"
+      },
+      "mods": [],
+      "imageLocal": "currency/scrap_metal.webp"
+    },
+    {
+      "name": "Astragali",
+      "slug": "Astragali",
+      "properties": {
+        "Stack Size": "1 / 1000"
+      },
+      "mods": [],
+      "imageLocal": "currency/astragali.webp"
+    },
+    {
+      "name": "Burial Medallion",
+      "slug": "Burial_Medallion",
+      "properties": {
+        "Stack Size": "1 / 1000"
+      },
+      "mods": [],
+      "imageLocal": "currency/burial_medallion.webp"
+    },
+    {
+      "name": "Lesser Broken Circle Artifact",
+      "slug": "Lesser_Broken_Circle_Artifact",
+      "properties": {
+        "Stack Size": "1 / 50000"
+      },
+      "mods": [],
+      "imageLocal": "currency/lesser_broken_circle_artifact.webp"
+    },
+    {
+      "name": "Greater Broken Circle Artifact",
+      "slug": "Greater_Broken_Circle_Artifact",
+      "properties": {
+        "Stack Size": "1 / 50000"
+      },
+      "mods": [],
+      "imageLocal": "currency/greater_broken_circle_artifact.webp"
+    },
+    {
+      "name": "Grand Broken Circle Artifact",
+      "slug": "Grand_Broken_Circle_Artifact",
+      "properties": {
+        "Stack Size": "1 / 25000"
+      },
+      "mods": [],
+      "imageLocal": "currency/grand_broken_circle_artifact.webp"
+    },
+    {
+      "name": "Exceptional Broken Circle Artifact",
+      "slug": "Exceptional_Broken_Circle_Artifact",
+      "properties": {
+        "Stack Size": "1 / 5000"
+      },
+      "mods": [],
+      "imageLocal": "currency/exceptional_broken_circle_artifact.webp"
+    },
+    {
+      "name": "Lesser Black Scythe Artifact",
+      "slug": "Lesser_Black_Scythe_Artifact",
+      "properties": {
+        "Stack Size": "1 / 50000"
+      },
+      "mods": [],
+      "imageLocal": "currency/lesser_black_scythe_artifact.webp"
+    },
+    {
+      "name": "Greater Black Scythe Artifact",
+      "slug": "Greater_Black_Scythe_Artifact",
+      "properties": {
+        "Stack Size": "1 / 50000"
+      },
+      "mods": [],
+      "imageLocal": "currency/greater_black_scythe_artifact.webp"
+    },
+    {
+      "name": "Grand Black Scythe Artifact",
+      "slug": "Grand_Black_Scythe_Artifact",
+      "properties": {
+        "Stack Size": "1 / 25000"
+      },
+      "mods": [],
+      "imageLocal": "currency/grand_black_scythe_artifact.webp"
+    },
+    {
+      "name": "Exceptional Black Scythe Artifact",
+      "slug": "Exceptional_Black_Scythe_Artifact",
+      "properties": {
+        "Stack Size": "1 / 5000"
+      },
+      "mods": [],
+      "imageLocal": "currency/exceptional_black_scythe_artifact.webp"
+    },
+    {
+      "name": "Lesser Order Artifact",
+      "slug": "Lesser_Order_Artifact",
+      "properties": {
+        "Stack Size": "1 / 50000"
+      },
+      "mods": [],
+      "imageLocal": "currency/lesser_order_artifact.webp"
+    },
+    {
+      "name": "Greater Order Artifact",
+      "slug": "Greater_Order_Artifact",
+      "properties": {
+        "Stack Size": "1 / 50000"
+      },
+      "mods": [],
+      "imageLocal": "currency/greater_order_artifact.webp"
+    },
+    {
+      "name": "Grand Order Artifact",
+      "slug": "Grand_Order_Artifact",
+      "properties": {
+        "Stack Size": "1 / 25000"
+      },
+      "mods": [],
+      "imageLocal": "currency/grand_order_artifact.webp"
+    },
+    {
+      "name": "Exceptional Order Artifact",
+      "slug": "Exceptional_Order_Artifact",
+      "properties": {
+        "Stack Size": "1 / 5000"
+      },
+      "mods": [],
+      "imageLocal": "currency/exceptional_order_artifact.webp"
+    },
+    {
+      "name": "Lesser Sun Artifact",
+      "slug": "Lesser_Sun_Artifact",
+      "properties": {
+        "Stack Size": "1 / 50000"
+      },
+      "mods": [],
+      "imageLocal": "currency/lesser_sun_artifact.webp"
+    },
+    {
+      "name": "Greater Sun Artifact",
+      "slug": "Greater_Sun_Artifact",
+      "properties": {
+        "Stack Size": "1 / 50000"
+      },
+      "mods": [],
+      "imageLocal": "currency/greater_sun_artifact.webp"
+    },
+    {
+      "name": "Grand Sun Artifact",
+      "slug": "Grand_Sun_Artifact",
+      "properties": {
+        "Stack Size": "1 / 25000"
+      },
+      "mods": [],
+      "imageLocal": "currency/grand_sun_artifact.webp"
+    },
+    {
+      "name": "Exceptional Sun Artifact",
+      "slug": "Exceptional_Sun_Artifact",
+      "properties": {
+        "Stack Size": "1 / 5000"
+      },
+      "mods": [],
+      "imageLocal": "currency/exceptional_sun_artifact.webp"
+    },
+    {
+      "name": "Tainted Chromatic Orb",
+      "slug": "Tainted_Chromatic_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Unpredictably reforges the colour of sockets on a corrupted item"
+      ],
+      "imageLocal": "currency/tainted_chromatic_orb.webp"
+    },
+    {
+      "name": "Tainted Orb of Fusing",
+      "slug": "Tainted_Orb_of_Fusing",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Unpredictably adds or removes a link to the largest group of linked sockets on a corrupted item"
+      ],
+      "imageLocal": "currency/tainted_orb_of_fusing.webp"
+    },
+    {
+      "name": "Tainted Jeweller's Orb",
+      "slug": "Tainted_Jewellers_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Unpredictably adds or removes a socket on a corrupted item"
+      ],
+      "imageLocal": "currency/tainted_jewellers_orb.webp"
+    },
+    {
+      "name": "Tainted Chaos Orb",
+      "slug": "Tainted_Chaos_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Unpredictably either reforges a corrupted rare item with new random modifiers or removes all of its modifiers"
+      ],
+      "imageLocal": "currency/tainted_chaos_orb.webp"
+    },
+    {
+      "name": "Tainted Exalted Orb",
+      "slug": "Tainted_Exalted_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Unpredictably adds or removes a modifier on a corrupted rare item"
+      ],
+      "imageLocal": "currency/tainted_exalted_orb.webp"
+    },
+    {
+      "name": "Tainted Mythic Orb",
+      "slug": "Tainted_Mythic_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Unpredictably either upgrades a corrupted item to unique rarity or destroys it"
+      ],
+      "imageLocal": "currency/tainted_mythic_orb.webp"
+    },
+    {
+      "name": "Tainted Armourer's Scrap",
+      "slug": "Tainted_Armourers_Scrap",
+      "properties": {
+        "Stack Size": "1 / 40"
+      },
+      "mods": [
+        "Randomises the quality of a corrupted armour"
+      ],
+      "imageLocal": "currency/tainted_armourers_scrap.webp"
+    },
+    {
+      "name": "Tainted Blacksmith's Whetstone",
+      "slug": "Tainted_Blacksmiths_Whetstone",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Randomises the quality of a corrupted weapon"
+      ],
+      "imageLocal": "currency/tainted_blacksmiths_whetstone.webp"
+    },
+    {
+      "name": "Tainted Divine Teardrop",
+      "slug": "Tainted_Divine_Teardrop",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Unpredictably raises or lowers the tier of each modifier on a corrupted rare item"
+      ],
+      "imageLocal": "currency/tainted_divine_teardrop.webp"
+    },
+    {
+      "name": "Eldritch Chaos Orb",
+      "slug": "Eldritch_Chaos_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "If The Searing Exarch is dominant, reroll prefix modifiers\nIf The Eater of Worlds is dominant, reroll suffix modifiers"
+      ],
+      "imageLocal": "currency/eldritch_chaos_orb.webp"
+    },
+    {
+      "name": "Eldritch Exalted Orb",
+      "slug": "Eldritch_Exalted_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "If The Searing Exarch is dominant, add a prefix modifier\nIf The Eater of Worlds is dominant, add a suffix modifier"
+      ],
+      "imageLocal": "currency/eldritch_exalted_orb.webp"
+    },
+    {
+      "name": "Eldritch Orb of Annulment",
+      "slug": "Eldritch_Orb_of_Annulment",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "If The Searing Exarch is dominant, remove a prefix modifier\nIf The Eater of Worlds is dominant, remove a suffix modifier"
+      ],
+      "imageLocal": "currency/eldritch_orb_of_annulment.webp"
+    },
+    {
+      "name": "Singular Scouting Report",
+      "slug": "Singular_Scouting_Report",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reroll all of Kirac's Atlas Missions, including at least one Unique map"
+      ],
+      "imageLocal": "currency/singular_scouting_report.webp"
+    },
+    {
+      "name": "Otherworldly Scouting Report",
+      "slug": "Otherworldly_Scouting_Report",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reroll all of Kirac's Atlas Missions, including at least one Breachstone"
+      ],
+      "imageLocal": "currency/otherworldly_scouting_report.webp"
+    },
+    {
+      "name": "Comprehensive Scouting Report",
+      "slug": "Comprehensive_Scouting_Report",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reroll all of Kirac's Atlas Missions, adding additional mission options"
+      ],
+      "imageLocal": "currency/comprehensive_scouting_report.webp"
+    },
+    {
+      "name": "Vaal Scouting Report",
+      "slug": "Vaal_Scouting_Report",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reroll all of Kirac's Atlas Missions, corrupting all non-Unique Maps"
+      ],
+      "imageLocal": "currency/vaal_scouting_report.webp"
+    },
+    {
+      "name": "Delirious Scouting Report",
+      "slug": "Delirious_Scouting_Report",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reroll all of Kirac's Atlas Missions, adding layers of Delirium to all non-Unique Maps"
+      ],
+      "imageLocal": "currency/delirious_scouting_report.webp"
+    },
+    {
+      "name": "Operative's Scouting Report",
+      "slug": "Operatives_Scouting_Report",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reroll all of Kirac's Atlas Missions, granting missions with rewarding implicit modifiers"
+      ],
+      "imageLocal": "currency/operatives_scouting_report.webp"
+    },
+    {
+      "name": "Blighted Scouting Report",
+      "slug": "Blighted_Scouting_Report",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reroll all of Kirac's Atlas Missions, including at least one Blighted Map"
+      ],
+      "imageLocal": "currency/blighted_scouting_report.webp"
+    },
+    {
+      "name": "Influenced Scouting Report",
+      "slug": "Influenced_Scouting_Report",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reroll all of Kirac's Atlas Missions, including at least one Shaper Guardian, Elder Guardian, or Elderslayer Map"
+      ],
+      "imageLocal": "currency/influenced_scouting_report.webp"
+    },
+    {
+      "name": "Explorer's Scouting Report",
+      "slug": "Explorers_Scouting_Report",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Reroll all of Kirac's Atlas Missions, using uncompleted non-Unique Maps where possible"
+      ],
+      "imageLocal": "currency/explorers_scouting_report.webp"
+    },
+    {
+      "name": "Oil Extractor",
+      "slug": "Oil_Extractor",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Destroys an Anointed Item to recover one of the Oils that was used to apply that Anointment"
+      ],
+      "imageLocal": "currency/oil_extractor.webp"
+    },
+    {
+      "name": "Power Core",
+      "slug": "Power_Core",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Destroys two Sentinels to create a fully-charged Sentinel with a combination of their properties. Sometimes, the resultant item is modified unpredictably"
+      ],
+      "imageLocal": "currency/power_core.webp"
+    },
+    {
+      "name": "Transforming Power Core",
+      "slug": "Transforming_Power_Core",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Destroys two Sentinels to create a fully-charged Sentinel with a combination of their properties. Sometimes, the resultant item is modified unpredictably, with a higher chance of a special base type"
+      ],
+      "imageLocal": "currency/transforming_power_core.webp"
+    },
+    {
+      "name": "Amplifying Power Core",
+      "slug": "Amplifying_Power_Core",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Destroys two Sentinels to create a fully-charged Sentinel with a combination of their properties. Sometimes, the resultant item is modified unpredictably, with a higher chance of a upgrading the tier of modifiers"
+      ],
+      "imageLocal": "currency/amplifying_power_core.webp"
+    },
+    {
+      "name": "Augmenting Power Core",
+      "slug": "Augmenting_Power_Core",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Destroys two Sentinels to create a fully-charged Sentinel with a combination of their properties. Sometimes, the resultant item is modified unpredictably, with a higher chance of new random modifiers"
+      ],
+      "imageLocal": "currency/augmenting_power_core.webp"
+    },
+    {
+      "name": "Armour Recombinator",
+      "slug": "Armour_Recombinator",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Destroys two Armours to create a new Armour with a combination of their properties. Sometimes, the resultant item is modified unpredictably"
+      ],
+      "imageLocal": "currency/armour_recombinator.webp"
+    },
+    {
+      "name": "Weapon Recombinator",
+      "slug": "Weapon_Recombinator",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Destroys two Weapons or Quivers to create a new Weapon or Quiver with a combination of their properties. Sometimes, the resultant item is modified unpredictably"
+      ],
+      "imageLocal": "currency/weapon_recombinator.webp"
+    },
+    {
+      "name": "Jewellery Recombinator",
+      "slug": "Jewellery_Recombinator",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Destroys two Jewellery items to create a new Jewellery item with a combination of their properties. Sometimes, the resultant item is modified unpredictably"
+      ],
+      "imageLocal": "currency/jewellery_recombinator.webp"
+    },
+    {
+      "name": "Wild Crystallised Lifeforce",
+      "slug": "Wild_Crystallised_Lifeforce",
+      "properties": {
+        "Stack Size": "1 / 50000"
+      },
+      "mods": [],
+      "imageLocal": "currency/wild_crystallised_lifeforce.webp"
+    },
+    {
+      "name": "Vivid Crystallised Lifeforce",
+      "slug": "Vivid_Crystallised_Lifeforce",
+      "properties": {
+        "Stack Size": "1 / 50000"
+      },
+      "mods": [],
+      "imageLocal": "currency/vivid_crystallised_lifeforce.webp"
+    },
+    {
+      "name": "Primal Crystallised Lifeforce",
+      "slug": "Primal_Crystallised_Lifeforce",
+      "properties": {
+        "Stack Size": "1 / 50000"
+      },
+      "mods": [],
+      "imageLocal": "currency/primal_crystallised_lifeforce.webp"
+    },
+    {
+      "name": "Sacred Crystallised Lifeforce",
+      "slug": "Sacred_Crystallised_Lifeforce",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [],
+      "imageLocal": "currency/sacred_crystallised_lifeforce.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Minion Instability",
+      "slug": "Lycias_Invocation_of_Minion_Instability",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Minion Instability to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_minion_instability.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Resolute Technique",
+      "slug": "Lycias_Invocation_of_Resolute_Technique",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Resolute Technique to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_resolute_technique.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Blood Magic",
+      "slug": "Lycias_Invocation_of_Blood_Magic",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Blood Magic to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_blood_magic.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Pain Attunement",
+      "slug": "Lycias_Invocation_of_Pain_Attunement",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Pain Attunement to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_pain_attunement.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Elemental Equilibrium",
+      "slug": "Lycias_Invocation_of_Elemental_Equilibrium",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Elemental Equilibrium to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_elemental_equilibrium.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Iron Grip",
+      "slug": "Lycias_Invocation_of_Iron_Grip",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Iron Grip to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_iron_grip.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Point Blank",
+      "slug": "Lycias_Invocation_of_Point_Blank",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Point Blank to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_point_blank.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Acrobatics",
+      "slug": "Lycias_Invocation_of_Acrobatics",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Acrobatics to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_acrobatics.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Ghost Reaver",
+      "slug": "Lycias_Invocation_of_Ghost_Reaver",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Ghost Reaver to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_ghost_reaver.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Vaal Pact",
+      "slug": "Lycias_Invocation_of_Vaal_Pact",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Vaal Pact to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_vaal_pact.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Elemental Overload",
+      "slug": "Lycias_Invocation_of_Elemental_Overload",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Elemental Overload to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_elemental_overload.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Avatar of Fire",
+      "slug": "Lycias_Invocation_of_Avatar_of_Fire",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Avatar of Fire to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_avatar_of_fire.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Eldritch Battery",
+      "slug": "Lycias_Invocation_of_Eldritch_Battery",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Eldritch Battery to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_eldritch_battery.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Ancestral Bond",
+      "slug": "Lycias_Invocation_of_Ancestral_Bond",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Ancestral Bond to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_ancestral_bond.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Crimson Dance",
+      "slug": "Lycias_Invocation_of_Crimson_Dance",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Crimson Dance to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_crimson_dance.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Perfect Agony",
+      "slug": "Lycias_Invocation_of_Perfect_Agony",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Perfect Agony to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_perfect_agony.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Runebinder",
+      "slug": "Lycias_Invocation_of_Runebinder",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Runebinder to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_runebinder.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Glancing Blows",
+      "slug": "Lycias_Invocation_of_Glancing_Blows",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Glancing Blows to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_glancing_blows.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Call to Arms",
+      "slug": "Lycias_Invocation_of_Call_to_Arms",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Call To Arms to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_call_to_arms.webp"
+    },
+    {
+      "name": "Lycia's Invocation of the Agnostic",
+      "slug": "Lycias_Invocation_of_the_Agnostic",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds the Agnostic to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_the_agnostic.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Supreme Ego",
+      "slug": "Lycias_Invocation_of_Supreme_Ego",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Supreme Ego to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_supreme_ego.webp"
+    },
+    {
+      "name": "Lycia's Invocation of the Impaler",
+      "slug": "Lycias_Invocation_of_the_Impaler",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds The Impaler to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_the_impaler.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Hex Master",
+      "slug": "Lycias_Invocation_of_Hex_Master",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Hex Master to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_hex_master.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Lethe Shade",
+      "slug": "Lycias_Invocation_of_Lethe_Shade",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Lethe Shade to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_lethe_shade.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Ghost Dance",
+      "slug": "Lycias_Invocation_of_Ghost_Dance",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Ghost Dance to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_ghost_dance.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Versatile Combatant",
+      "slug": "Lycias_Invocation_of_Versatile_Combatant",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Versatile Combatant to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_versatile_combatant.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Magebane",
+      "slug": "Lycias_Invocation_of_Magebane",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Magebane to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_magebane.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Solipsism",
+      "slug": "Lycias_Invocation_of_Solipsism",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Solipsism to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_solipsism.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Divine Shield",
+      "slug": "Lycias_Invocation_of_Divine_Shield",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Divine Shield to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_divine_shield.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Iron Will",
+      "slug": "Lycias_Invocation_of_Iron_Will",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Iron Will to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_iron_will.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Wicked Ward",
+      "slug": "Lycias_Invocation_of_Wicked_Ward",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Wicked Ward to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_wicked_ward.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Wind Dancer",
+      "slug": "Lycias_Invocation_of_Wind_Dancer",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Wind Dancer to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_wind_dancer.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Conduit",
+      "slug": "Lycias_Invocation_of_Conduit",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Conduit to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_conduit.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Arrow Dancing",
+      "slug": "Lycias_Invocation_of_Arrow_Dancing",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Arrow Dancing to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_arrow_dancing.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Precise Technique",
+      "slug": "Lycias_Invocation_of_Precise_Technique",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Precise Technique to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_precise_technique.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Iron Reflexes",
+      "slug": "Lycias_Invocation_of_Iron_Reflexes",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Iron Reflexes to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_iron_reflexes.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Unwavering Stance",
+      "slug": "Lycias_Invocation_of_Unwavering_Stance",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Unwavering Stance to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_unwavering_stance.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Imbalanced Guard",
+      "slug": "Lycias_Invocation_of_Imbalanced_Guard",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Imbalanced Guard to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_imbalanced_guard.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Eternal Youth",
+      "slug": "Lycias_Invocation_of_Eternal_Youth",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Eternal Youth to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_eternal_youth.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Mind over Matter",
+      "slug": "Lycias_Invocation_of_Mind_over_Matter",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Mind over Matter to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_mind_over_matter.webp"
+    },
+    {
+      "name": "Lycia's Invocation of Zealot's Oath",
+      "slug": "Lycias_Invocation_of_Zealots_Oath",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Adds Zealot's Oath to a Sanctified Relic"
+      ],
+      "imageLocal": "currency/lycias_invocation_of_zealots_oath.webp"
+    },
+    {
+      "name": "Igneous Geode",
+      "slug": "Igneous_Geode",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "currency/igneous_geode.webp"
+    },
+    {
+      "name": "Crystalline Geode",
+      "slug": "Crystalline_Geode",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "currency/crystalline_geode.webp"
+    },
+    {
+      "name": "Silver Coin",
+      "slug": "Silver_Coin",
+      "properties": {
+        "Stack Size": "1 / 30"
+      },
+      "mods": [
+        "Creates a portal to the Halls of the Dead from a Town or Hideout\nUsed as Currency in the Halls of the Dead to participate in the Trial of the Ancestors"
+      ],
+      "imageLocal": "currency/silver_coin.webp"
+    },
+    {
+      "name": "Hinekora's Lock",
+      "slug": "Hinekoras_Lock",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Allows an item to foresee the result of the next Currency item used on it\nModifying the item in any way removes the ability to foresee"
+      ],
+      "imageLocal": "currency/hinekoras_lock.webp"
+    },
+    {
+      "name": "Omen of Amelioration",
+      "slug": "Omen_of_Amelioration",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you Die\nto prevent 75% of Experience loss"
+      ],
+      "imageLocal": "currency/omen_of_amelioration.webp"
+    },
+    {
+      "name": "Omen of Return",
+      "slug": "Omen_of_Return",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you Die\nto create a Portal to Town"
+      ],
+      "imageLocal": "currency/omen_of_return.webp"
+    },
+    {
+      "name": "Omen of Death-dancing",
+      "slug": "Omen_of_Death-dancing",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you reach 25% of Life\nto grant 75% chance to Avoid Damage from Hits for 4 seconds"
+      ],
+      "imageLocal": "currency/omen_of_death_dancing.webp"
+    },
+    {
+      "name": "Omen of Refreshment",
+      "slug": "Omen_of_Refreshment",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you reach 25% of Life\nto Refill all Flasks"
+      ],
+      "imageLocal": "currency/omen_of_refreshment.webp"
+    },
+    {
+      "name": "Omen of the Soul Devourer",
+      "slug": "Omen_of_the_Soul_Devourer",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you level up\nto grant Soul Eater for 5 minutes"
+      ],
+      "imageLocal": "currency/omen_of_the_soul_devourer.webp"
+    },
+    {
+      "name": "Omen of Acceleration",
+      "slug": "Omen_of_Acceleration",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you level up\nto create an Acceleration Shrine"
+      ],
+      "imageLocal": "currency/omen_of_acceleration.webp"
+    },
+    {
+      "name": "Omen of Fortune",
+      "slug": "Omen_of_Fortune",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you use an Orb of Chance\non an item which can become Unique to ensure it does so"
+      ],
+      "imageLocal": "currency/omen_of_fortune.webp"
+    },
+    {
+      "name": "Omen of the Jeweller",
+      "slug": "Omen_of_the_Jeweller",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you use a Jeweller's Orb\non an item to ensure maximum Sockets"
+      ],
+      "imageLocal": "currency/omen_of_the_jeweller.webp"
+    },
+    {
+      "name": "Omen of Connections",
+      "slug": "Omen_of_Connections",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you use an Orb of Fusing\non an item to ensure maximum Links"
+      ],
+      "imageLocal": "currency/omen_of_connections.webp"
+    },
+    {
+      "name": "Omen of Blanching",
+      "slug": "Omen_of_Blanching",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you use a Chromatic Orb\non an item to make 1-3 Sockets become White"
+      ],
+      "imageLocal": "currency/omen_of_blanching.webp"
+    },
+    {
+      "name": "Omen of Revenge",
+      "slug": "Omen_of_Revenge",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you Die\nto make each nearby enemy permanently take 25% more Damage"
+      ],
+      "imageLocal": "currency/omen_of_revenge.webp"
+    },
+    {
+      "name": "Omen of Bequeathal",
+      "slug": "Omen_of_Bequeathal",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you Die\nto add 300% of lost Experience to Gems"
+      ],
+      "imageLocal": "currency/omen_of_bequeathal.webp"
+    },
+    {
+      "name": "Omen of Resurgence",
+      "slug": "Omen_of_Resurgence",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you reach 25% of Life\nto cause 100% of Damage taken to be Recouped as Life for 4 seconds"
+      ],
+      "imageLocal": "currency/omen_of_resurgence.webp"
+    },
+    {
+      "name": "Omen of Adrenaline",
+      "slug": "Omen_of_Adrenaline",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you reach 25% of Life\nto grant Adrenaline for 10 seconds"
+      ],
+      "imageLocal": "currency/omen_of_adrenaline.webp"
+    },
+    {
+      "name": "Omen of Death's Door",
+      "slug": "Omen_of_Deaths_Door",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you reach 25% of Life\nto grant Shade Form for 3 seconds"
+      ],
+      "imageLocal": "currency/omen_of_deaths_door.webp"
+    },
+    {
+      "name": "Omen of Brilliance",
+      "slug": "Omen_of_Brilliance",
+      "properties": {},
+      "mods": [
+        "Will be Consumed when you level up\nto grant 100% increased Experience gained for 60 seconds"
+      ],
+      "imageLocal": "currency/omen_of_brilliance.webp"
+    },
+    {
+      "name": "Tattoo of the Ngamahu Firewalker",
+      "slug": "Tattoo_of_the_Ngamahu_Firewalker",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+6% to Fire Resistance"
+      ],
+      "imageLocal": "currency/tattoo_of_the_ngamahu_firewalker.webp"
+    },
+    {
+      "name": "Tattoo of the Ngamahu Shaman",
+      "slug": "Tattoo_of_the_Ngamahu_Shaman",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "10% reduced Ignite Duration on you"
+      ],
+      "imageLocal": "currency/tattoo_of_the_ngamahu_shaman.webp"
+    },
+    {
+      "name": "Tattoo of the Ngamahu Warrior",
+      "slug": "Tattoo_of_the_Ngamahu_Warrior",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% increased Fire Damage"
+      ],
+      "imageLocal": "currency/tattoo_of_the_ngamahu_warrior.webp"
+    },
+    {
+      "name": "Tattoo of the Ngamahu Warmonger",
+      "slug": "Tattoo_of_the_Ngamahu_Warmonger",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% chance to Ignite"
+      ],
+      "imageLocal": "currency/tattoo_of_the_ngamahu_warmonger.webp"
+    },
+    {
+      "name": "Tattoo of the Ngamahu Woodcarver",
+      "slug": "Tattoo_of_the_Ngamahu_Woodcarver",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% increased Totem Life"
+      ],
+      "imageLocal": "currency/tattoo_of_the_ngamahu_woodcarver.webp"
+    },
+    {
+      "name": "Loyalty Tattoo of Kaom",
+      "slug": "Loyalty_Tattoo_of_Kaom",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Loyalty Tattoo"
+      },
+      "mods": [
+        "Trigger level 1 Summon Spirit of Kaom Skill when a Totem dies whilea Unique Enemy is in your Presence",
+        "has trigger on totem death in presence of unique [1]"
+      ],
+      "imageLocal": "currency/loyalty_tattoo_of_kaom.webp"
+    },
+    {
+      "name": "Tattoo of the Ngamahu Makanga",
+      "slug": "Tattoo_of_the_Ngamahu_Makanga",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+1% to maximum Fire Resistance"
+      ],
+      "imageLocal": "currency/tattoo_of_the_ngamahu_makanga.webp"
+    },
+    {
+      "name": "Tattoo of the Kitava Blood Drinker",
+      "slug": "Tattoo_of_the_Kitava_Blood_Drinker",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "0.5% of Attack Damage Leeched as Life"
+      ],
+      "imageLocal": "currency/tattoo_of_the_kitava_blood_drinker.webp"
+    },
+    {
+      "name": "Tattoo of the Kitava Rebel",
+      "slug": "Tattoo_of_the_Kitava_Rebel",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "10% chance to Avoid Bleeding"
+      ],
+      "imageLocal": "currency/tattoo_of_the_kitava_rebel.webp"
+    },
+    {
+      "name": "Tattoo of the Kitava Warrior",
+      "slug": "Tattoo_of_the_Kitava_Warrior",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% increased Physical Damage"
+      ],
+      "imageLocal": "currency/tattoo_of_the_kitava_warrior.webp"
+    },
+    {
+      "name": "Tattoo of the Kitava Heart Eater",
+      "slug": "Tattoo_of_the_Kitava_Heart_Eater",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Killing Blows have 4% chance to Consume corpses to recover 10% of Maximum Life"
+      ],
+      "imageLocal": "currency/tattoo_of_the_kitava_heart_eater.webp"
+    },
+    {
+      "name": "Tattoo of the Kitava Shaman",
+      "slug": "Tattoo_of_the_Kitava_Shaman",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Attacks have 5% chance to cause Bleeding"
+      ],
+      "imageLocal": "currency/tattoo_of_the_kitava_shaman.webp"
+    },
+    {
+      "name": "Loyalty Tattoo of Utula",
+      "slug": "Loyalty_Tattoo_of_Utula",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Loyalty Tattoo"
+      },
+      "mods": [
+        "Trigger level 1 Summon Spirit of Utula Skill on taking a Savage Hit from a Unique Enemy",
+        "has trigger on taking savage hit from unique [1]"
+      ],
+      "imageLocal": "currency/loyalty_tattoo_of_utula.webp"
+    },
+    {
+      "name": "Tattoo of the Kitava Makanga",
+      "slug": "Tattoo_of_the_Kitava_Makanga",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "80% increased Maximum total Life Recovery per second from Leech"
+      ],
+      "imageLocal": "currency/tattoo_of_the_kitava_makanga.webp"
+    },
+    {
+      "name": "Tattoo of the Tukohama Shaman",
+      "slug": "Tattoo_of_the_Tukohama_Shaman",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Regenerate 0.3% of Life per second"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tukohama_shaman.webp"
+    },
+    {
+      "name": "Tattoo of the Tukohama Warrior",
+      "slug": "Tattoo_of_the_Tukohama_Warrior",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Melee Hits which Stun have 5% chance to Fortify"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tukohama_warrior.webp"
+    },
+    {
+      "name": "Tattoo of the Tukohama Brawler",
+      "slug": "Tattoo_of_the_Tukohama_Brawler",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "10% chance to Knock Enemies Back on hit"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tukohama_brawler.webp"
+    },
+    {
+      "name": "Tattoo of the Tukohama Warmonger",
+      "slug": "Tattoo_of_the_Tukohama_Warmonger",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% increased Melee Damage"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tukohama_warmonger.webp"
+    },
+    {
+      "name": "Tattoo of the Tukohama Warcaller",
+      "slug": "Tattoo_of_the_Tukohama_Warcaller",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "8% increased Warcry Cooldown Recovery Rate"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tukohama_warcaller.webp"
+    },
+    {
+      "name": "Loyalty Tattoo of Akoya",
+      "slug": "Loyalty_Tattoo_of_Akoya",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Loyalty Tattoo"
+      },
+      "mods": [
+        "Trigger level 1 Summon Spirit of Akoya Skill when you reach Maximum Rage whilea Unique Enemy is in your Presence",
+        "has trigger on reaching maximum rage in presence of unique [1]"
+      ],
+      "imageLocal": "currency/loyalty_tattoo_of_akoya.webp"
+    },
+    {
+      "name": "Tattoo of the Tukohama Makanga",
+      "slug": "Tattoo_of_the_Tukohama_Makanga",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "16% increased Life Regeneration rate"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tukohama_makanga.webp"
+    },
+    {
+      "name": "Tattoo of the Rongokurai Warrior",
+      "slug": "Tattoo_of_the_Rongokurai_Warrior",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "6% increased Armour"
+      ],
+      "imageLocal": "currency/tattoo_of_the_rongokurai_warrior.webp"
+    },
+    {
+      "name": "Tattoo of the Rongokurai Brute",
+      "slug": "Tattoo_of_the_Rongokurai_Brute",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "10% increased Stun Threshold"
+      ],
+      "imageLocal": "currency/tattoo_of_the_rongokurai_brute.webp"
+    },
+    {
+      "name": "Tattoo of the Rongokurai Goliath",
+      "slug": "Tattoo_of_the_Rongokurai_Goliath",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "10% increased Stun Duration on Enemies"
+      ],
+      "imageLocal": "currency/tattoo_of_the_rongokurai_goliath.webp"
+    },
+    {
+      "name": "Tattoo of the Rongokurai Turtle",
+      "slug": "Tattoo_of_the_Rongokurai_Turtle",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "You take 5% reduced Extra Damage from Critical Strikes"
+      ],
+      "imageLocal": "currency/tattoo_of_the_rongokurai_turtle.webp"
+    },
+    {
+      "name": "Tattoo of the Rongokurai Guard",
+      "slug": "Tattoo_of_the_Rongokurai_Guard",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Guard Skills have 6% increased Duration"
+      ],
+      "imageLocal": "currency/tattoo_of_the_rongokurai_guard.webp"
+    },
+    {
+      "name": "Loyalty Tattoo of Kahuturoa",
+      "slug": "Loyalty_Tattoo_of_Kahuturoa",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Loyalty Tattoo"
+      },
+      "mods": [
+        "Trigger level 1 Summon Spirit of Kahuturoa Skill when you takea Critical Strike from a Unique Enemy",
+        "has trigger on crit by unique enemy [1]"
+      ],
+      "imageLocal": "currency/loyalty_tattoo_of_kahuturoa.webp"
+    },
+    {
+      "name": "Tattoo of the Rongokurai Makanga",
+      "slug": "Tattoo_of_the_Rongokurai_Makanga",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "8% chance to Defend with 200% of Armour"
+      ],
+      "imageLocal": "currency/tattoo_of_the_rongokurai_makanga.webp"
+    },
+    {
+      "name": "Tattoo of the Tasalio Bladedancer",
+      "slug": "Tattoo_of_the_Tasalio_Bladedancer",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Attacks have 5% chance to Maim on Hit"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tasalio_bladedancer.webp"
+    },
+    {
+      "name": "Tattoo of the Tasalio Tideshifter",
+      "slug": "Tattoo_of_the_Tasalio_Tideshifter",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "10% chance to Avoid being Stunned"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tasalio_tideshifter.webp"
+    },
+    {
+      "name": "Tattoo of the Tasalio Shaman",
+      "slug": "Tattoo_of_the_Tasalio_Shaman",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% chance to Hinder Enemies on Hit with Spells"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tasalio_shaman.webp"
+    },
+    {
+      "name": "Tattoo of the Tasalio Warrior",
+      "slug": "Tattoo_of_the_Tasalio_Warrior",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% chance to Blind Enemies on Hit with Attacks"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tasalio_warrior.webp"
+    },
+    {
+      "name": "Tattoo of the Tasalio Scout",
+      "slug": "Tattoo_of_the_Tasalio_Scout",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "4% increased Effect of your Marks"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tasalio_scout.webp"
+    },
+    {
+      "name": "Loyalty Tattoo of Rakiata",
+      "slug": "Loyalty_Tattoo_of_Rakiata",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Loyalty Tattoo"
+      },
+      "mods": [
+        "Trigger level 1 Summon Spirit of Rakiata Skill on Critical Strike against Marked Unique Enemy",
+        "has trigger on crit vs marked unique [1]"
+      ],
+      "imageLocal": "currency/loyalty_tattoo_of_rakiata.webp"
+    },
+    {
+      "name": "Tattoo of the Tasalio Makanga",
+      "slug": "Tattoo_of_the_Tasalio_Makanga",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "8% increased Cooldown Recovery Rate"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tasalio_makanga.webp"
+    },
+    {
+      "name": "Tattoo of the Arohongui Moonwarden",
+      "slug": "Tattoo_of_the_Arohongui_Moonwarden",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+6% to Cold Resistance"
+      ],
+      "imageLocal": "currency/tattoo_of_the_arohongui_moonwarden.webp"
+    },
+    {
+      "name": "Tattoo of the Arohongui Scout",
+      "slug": "Tattoo_of_the_Arohongui_Scout",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "10% chance to Avoid being Chilled",
+        "10% chance to Avoid being Frozen"
+      ],
+      "imageLocal": "currency/tattoo_of_the_arohongui_scout.webp"
+    },
+    {
+      "name": "Tattoo of the Arohongui Warrior",
+      "slug": "Tattoo_of_the_Arohongui_Warrior",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% increased Cold Damage"
+      ],
+      "imageLocal": "currency/tattoo_of_the_arohongui_warrior.webp"
+    },
+    {
+      "name": "Tattoo of the Arohongui Warmonger",
+      "slug": "Tattoo_of_the_Arohongui_Warmonger",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% chance to Freeze"
+      ],
+      "imageLocal": "currency/tattoo_of_the_arohongui_warmonger.webp"
+    },
+    {
+      "name": "Tattoo of the Arohongui Shaman",
+      "slug": "Tattoo_of_the_Arohongui_Shaman",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% increased Effect of Herald Buffs on you"
+      ],
+      "imageLocal": "currency/tattoo_of_the_arohongui_shaman.webp"
+    },
+    {
+      "name": "Loyalty Tattoo of Ikiaho",
+      "slug": "Loyalty_Tattoo_of_Ikiaho",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Loyalty Tattoo"
+      },
+      "mods": [
+        "Trigger level 1 Summon Spirit of Ikiaho Skill when you use a TravelSkill while a Unique Enemy is in your Presence",
+        "has trigger on travel skill use in presence of unique [1]"
+      ],
+      "imageLocal": "currency/loyalty_tattoo_of_ikiaho.webp"
+    },
+    {
+      "name": "Tattoo of the Arohongui Makanga",
+      "slug": "Tattoo_of_the_Arohongui_Makanga",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+1% to maximum Cold Resistance"
+      ],
+      "imageLocal": "currency/tattoo_of_the_arohongui_makanga.webp"
+    },
+    {
+      "name": "Tattoo of the Ramako Scout",
+      "slug": "Tattoo_of_the_Ramako_Scout",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "6% increased Evasion Rating"
+      ],
+      "imageLocal": "currency/tattoo_of_the_ramako_scout.webp"
+    },
+    {
+      "name": "Tattoo of the Ramako Archer",
+      "slug": "Tattoo_of_the_Ramako_Archer",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% increased Global Accuracy Rating"
+      ],
+      "imageLocal": "currency/tattoo_of_the_ramako_archer.webp"
+    },
+    {
+      "name": "Tattoo of the Ramako Sniper",
+      "slug": "Tattoo_of_the_Ramako_Sniper",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% increased Projectile Speed"
+      ],
+      "imageLocal": "currency/tattoo_of_the_ramako_sniper.webp"
+    },
+    {
+      "name": "Tattoo of the Ramako Fleetfoot",
+      "slug": "Tattoo_of_the_Ramako_Fleetfoot",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "2% increased Movement Speed"
+      ],
+      "imageLocal": "currency/tattoo_of_the_ramako_fleetfoot.webp"
+    },
+    {
+      "name": "Tattoo of the Ramako Shaman",
+      "slug": "Tattoo_of_the_Ramako_Shaman",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+2% chance to Suppress Spell Damage"
+      ],
+      "imageLocal": "currency/tattoo_of_the_ramako_shaman.webp"
+    },
+    {
+      "name": "Loyalty Tattoo of Ahuana",
+      "slug": "Loyalty_Tattoo_of_Ahuana",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Loyalty Tattoo"
+      },
+      "mods": [
+        "Trigger level 1 Summon Spirit of Ahuana Skill when you SuppressSpell Damage from a Unique Enemy",
+        "has trigger on suppress hit from unique [1]"
+      ],
+      "imageLocal": "currency/loyalty_tattoo_of_ahuana.webp"
+    },
+    {
+      "name": "Tattoo of the Ramako Makanga",
+      "slug": "Tattoo_of_the_Ramako_Makanga",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Skills fire an additional Projectile"
+      ],
+      "imageLocal": "currency/tattoo_of_the_ramako_makanga.webp"
+    },
+    {
+      "name": "Tattoo of the Hinekora Warrior",
+      "slug": "Tattoo_of_the_Hinekora_Warrior",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "3% increased maximum Energy Shield"
+      ],
+      "imageLocal": "currency/tattoo_of_the_hinekora_warrior.webp"
+    },
+    {
+      "name": "Tattoo of the Hinekora Deathwarden",
+      "slug": "Tattoo_of_the_Hinekora_Deathwarden",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "6% reduced Effect of Curses on you"
+      ],
+      "imageLocal": "currency/tattoo_of_the_hinekora_deathwarden.webp"
+    },
+    {
+      "name": "Tattoo of the Hinekora Shaman",
+      "slug": "Tattoo_of_the_Hinekora_Shaman",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "8% increased Mana Regeneration Rate"
+      ],
+      "imageLocal": "currency/tattoo_of_the_hinekora_shaman.webp"
+    },
+    {
+      "name": "Tattoo of the Hinekora Storyteller",
+      "slug": "Tattoo_of_the_Hinekora_Storyteller",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+3% to Chaos Resistance"
+      ],
+      "imageLocal": "currency/tattoo_of_the_hinekora_storyteller.webp"
+    },
+    {
+      "name": "Tattoo of the Hinekora Warmonger",
+      "slug": "Tattoo_of_the_Hinekora_Warmonger",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Minions have 5% increased maximum Life"
+      ],
+      "imageLocal": "currency/tattoo_of_the_hinekora_warmonger.webp"
+    },
+    {
+      "name": "Loyalty Tattoo of Tawhanuku",
+      "slug": "Loyalty_Tattoo_of_Tawhanuku",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Loyalty Tattoo"
+      },
+      "mods": [
+        "Trigger level 1 Summon Spirit of Tawhanuku Skill when Energy Shield Recharge starts while a Unique Enemy is in your Presence",
+        "has trigger on es recharge in presence of unique [1]"
+      ],
+      "imageLocal": "currency/loyalty_tattoo_of_tawhanuku.webp"
+    },
+    {
+      "name": "Tattoo of the Hinekora Makanga",
+      "slug": "Tattoo_of_the_Hinekora_Makanga",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "8% increased Effect of your Curses"
+      ],
+      "imageLocal": "currency/tattoo_of_the_hinekora_makanga.webp"
+    },
+    {
+      "name": "Tattoo of the Tawhoa Naturalist",
+      "slug": "Tattoo_of_the_Tawhoa_Naturalist",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "8% increased Life Recovery from Flasks"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tawhoa_naturalist.webp"
+    },
+    {
+      "name": "Tattoo of the Tawhoa Scout",
+      "slug": "Tattoo_of_the_Tawhoa_Scout",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "10% chance to Avoid being Poisoned"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tawhoa_scout.webp"
+    },
+    {
+      "name": "Tattoo of the Tawhoa Warrior",
+      "slug": "Tattoo_of_the_Tawhoa_Warrior",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% increased Chaos Damage"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tawhoa_warrior.webp"
+    },
+    {
+      "name": "Tattoo of the Tawhoa Herbalist",
+      "slug": "Tattoo_of_the_Tawhoa_Herbalist",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "4% increased Flask Effect Duration"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tawhoa_herbalist.webp"
+    },
+    {
+      "name": "Tattoo of the Tawhoa Shaman",
+      "slug": "Tattoo_of_the_Tawhoa_Shaman",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% chance to Poison on Hit"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tawhoa_shaman.webp"
+    },
+    {
+      "name": "Loyalty Tattoo of Maata",
+      "slug": "Loyalty_Tattoo_of_Maata",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Loyalty Tattoo"
+      },
+      "mods": [
+        "Trigger level 1 Summon Spirit of Maata Skill when you reach Low Life whilea Unique Enemy is in your Presence",
+        "has trigger on reaching low life in presence of unique [1]"
+      ],
+      "imageLocal": "currency/loyalty_tattoo_of_maata.webp"
+    },
+    {
+      "name": "Tattoo of the Tawhoa Makanga",
+      "slug": "Tattoo_of_the_Tawhoa_Makanga",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Flasks applied to you have 8% increased Effect"
+      ],
+      "imageLocal": "currency/tattoo_of_the_tawhoa_makanga.webp"
+    },
+    {
+      "name": "Tattoo of the Valako Stormrider",
+      "slug": "Tattoo_of_the_Valako_Stormrider",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+6% to Lightning Resistance"
+      ],
+      "imageLocal": "currency/tattoo_of_the_valako_stormrider.webp"
+    },
+    {
+      "name": "Tattoo of the Valako Scout",
+      "slug": "Tattoo_of_the_Valako_Scout",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "10% reduced Effect of Shock on you"
+      ],
+      "imageLocal": "currency/tattoo_of_the_valako_scout.webp"
+    },
+    {
+      "name": "Tattoo of the Valako Warrior",
+      "slug": "Tattoo_of_the_Valako_Warrior",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% increased Lightning Damage"
+      ],
+      "imageLocal": "currency/tattoo_of_the_valako_warrior.webp"
+    },
+    {
+      "name": "Tattoo of the Valako Shieldbearer",
+      "slug": "Tattoo_of_the_Valako_Shieldbearer",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+1% Chance to Block Attack Damage"
+      ],
+      "imageLocal": "currency/tattoo_of_the_valako_shieldbearer.webp"
+    },
+    {
+      "name": "Tattoo of the Valako Shaman",
+      "slug": "Tattoo_of_the_Valako_Shaman",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "5% chance to Shock"
+      ],
+      "imageLocal": "currency/tattoo_of_the_valako_shaman.webp"
+    },
+    {
+      "name": "Loyalty Tattoo of Kiloava",
+      "slug": "Loyalty_Tattoo_of_Kiloava",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Loyalty Tattoo"
+      },
+      "mods": [
+        "Trigger level 1 Summon Spirit of Kiloava Skill when you Block Damage from a Unique Enemy",
+        "has trigger on block hit from unique [1]"
+      ],
+      "imageLocal": "currency/loyalty_tattoo_of_kiloava.webp"
+    },
+    {
+      "name": "Tattoo of the Valako Makanga",
+      "slug": "Tattoo_of_the_Valako_Makanga",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+1% to maximum Lightning Resistance"
+      ],
+      "imageLocal": "currency/tattoo_of_the_valako_makanga.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Dove",
+      "slug": "Honoured_Tattoo_of_the_Dove",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+4% to Chaos Resistance"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_dove.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Sky",
+      "slug": "Honoured_Tattoo_of_the_Sky",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+3% to all Elemental Resistances"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_sky.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Tuatara",
+      "slug": "Honoured_Tattoo_of_the_Tuatara",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+4 to all Attributes"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_tuatara.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Pillager",
+      "slug": "Honoured_Tattoo_of_the_Pillager",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "3% increased Rarity of Items found"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_pillager.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Turtle",
+      "slug": "Honoured_Tattoo_of_the_Turtle",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "3% increased Global Defences"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_turtle.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Oak",
+      "slug": "Honoured_Tattoo_of_the_Oak",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "2% increased maximum Life"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_oak.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Hatungo",
+      "slug": "Honoured_Tattoo_of_the_Hatungo",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "1% increased Reservation Efficiency of Skills"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_hatungo.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Flock",
+      "slug": "Honoured_Tattoo_of_the_Flock",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "1% increased effect of Non-Curse Auras from your Skills"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_flock.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Warlord",
+      "slug": "Honoured_Tattoo_of_the_Warlord",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Attribute Notable Tattoo"
+      },
+      "mods": [
+        "+1 to Level of all Strength Skill Gems"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_warlord.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Mountain",
+      "slug": "Honoured_Tattoo_of_the_Mountain",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Attribute Notable Tattoo"
+      },
+      "mods": [
+        "+1% to maximum Fire Resistance",
+        "+1 to Maximum Endurance Charges"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_mountain.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Pa",
+      "slug": "Honoured_Tattoo_of_the_Pa",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Attribute Notable Tattoo"
+      },
+      "mods": [
+        "Melee Hits Fortify"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_pa.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Hunter",
+      "slug": "Honoured_Tattoo_of_the_Hunter",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Attribute Notable Tattoo"
+      },
+      "mods": [
+        "+1 to Level of all Dexterity Skill Gems"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_hunter.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Barbarian",
+      "slug": "Honoured_Tattoo_of_the_Barbarian",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Attribute Notable Tattoo"
+      },
+      "mods": [
+        "+1% to maximum Cold Resistance",
+        "+1 to Maximum Frenzy Charges"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_barbarian.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Berserker",
+      "slug": "Honoured_Tattoo_of_the_Berserker",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Attribute Notable Tattoo"
+      },
+      "mods": [
+        "You gain Onslaught for 4 seconds on Hit"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_berserker.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Wise",
+      "slug": "Honoured_Tattoo_of_the_Wise",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Attribute Notable Tattoo"
+      },
+      "mods": [
+        "+1 to Level of all Intelligence Skill Gems"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_wise.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Storm",
+      "slug": "Honoured_Tattoo_of_the_Storm",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Attribute Notable Tattoo"
+      },
+      "mods": [
+        "+1% to maximum Lightning Resistance",
+        "+1 to Maximum Power Charges"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_storm.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Flood",
+      "slug": "Honoured_Tattoo_of_the_Flood",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Attribute Notable Tattoo"
+      },
+      "mods": [
+        "Gain Arcane Surge on Hit with Spells"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_flood.webp"
+    },
+    {
+      "name": "Ancestral Tattoo of Bloodlines",
+      "slug": "Ancestral_Tattoo_of_Bloodlines",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Ancestral Tattoo"
+      },
+      "mods": [
+        "2% increased Recovery Rate of Life, Mana and Energy Shieldper Tribe for which you have an allocated Tattoo"
+      ],
+      "imageLocal": "currency/ancestral_tattoo_of_bloodlines.webp"
+    },
+    {
+      "name": "Honoured Tattoo of the Makanga",
+      "slug": "Honoured_Tattoo_of_the_Makanga",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+2% to all maximum Resistances"
+      ],
+      "imageLocal": "currency/honoured_tattoo_of_the_makanga.webp"
+    },
+    {
+      "name": "Journey Tattoo of the Body",
+      "slug": "Journey_Tattoo_of_the_Body",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+25 to maximum Life per Allocated Journey Tattoo of the Body"
+      ],
+      "imageLocal": "currency/journey_tattoo_of_the_body.webp"
+    },
+    {
+      "name": "Journey Tattoo of the Mind",
+      "slug": "Journey_Tattoo_of_the_Mind",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+30 to maximum Mana per Allocated Journey Tattoo of the Mind"
+      ],
+      "imageLocal": "currency/journey_tattoo_of_the_mind.webp"
+    },
+    {
+      "name": "Journey Tattoo of the Soul",
+      "slug": "Journey_Tattoo_of_the_Soul",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "+40 to maximum Energy Shield per Allocated Journey Tattoo of the Soul"
+      ],
+      "imageLocal": "currency/journey_tattoo_of_the_soul.webp"
+    },
+    {
+      "name": "Journey Tattoo of Makanui",
+      "slug": "Journey_Tattoo_of_Makanui",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Keystone Tattoo"
+      },
+      "mods": [
+        "Grants a random Keystone"
+      ],
+      "imageLocal": "currency/journey_tattoo_of_makanui.webp"
+    },
+    {
+      "name": "Vivid Wisps",
+      "slug": "Vivid_Wisps",
+      "properties": {
+        "Stack Size": "1 / 50000"
+      },
+      "mods": [],
+      "imageLocal": "currency/vivid_wisps.webp"
+    },
+    {
+      "name": "Wild Wisps",
+      "slug": "Wild_Wisps",
+      "properties": {
+        "Stack Size": "1 / 50000"
+      },
+      "mods": [],
+      "imageLocal": "currency/wild_wisps.webp"
+    },
+    {
+      "name": "Primal Wisps",
+      "slug": "Primal_Wisps",
+      "properties": {
+        "Stack Size": "1 / 50000"
+      },
+      "mods": [],
+      "imageLocal": "currency/primal_wisps.webp"
+    },
+    {
+      "name": "Sun Rune",
+      "slug": "Sun_Rune",
+      "properties": {
+        "Stack Size": "1 / 250"
+      },
+      "mods": [],
+      "imageLocal": "currency/sun_rune.webp"
+    },
+    {
+      "name": "Bound Rune",
+      "slug": "Bound_Rune",
+      "properties": {
+        "Stack Size": "1 / 250"
+      },
+      "mods": [],
+      "imageLocal": "currency/bound_rune.webp"
+    },
+    {
+      "name": "Life Rune",
+      "slug": "Life_Rune",
+      "properties": {
+        "Stack Size": "1 / 250"
+      },
+      "mods": [],
+      "imageLocal": "currency/life_rune.webp"
+    },
+    {
+      "name": "War Rune",
+      "slug": "War_Rune",
+      "properties": {
+        "Stack Size": "1 / 250"
+      },
+      "mods": [],
+      "imageLocal": "currency/war_rune.webp"
+    },
+    {
+      "name": "River Rune",
+      "slug": "River_Rune",
+      "properties": {
+        "Stack Size": "1 / 250"
+      },
+      "mods": [],
+      "imageLocal": "currency/river_rune.webp"
+    },
+    {
+      "name": "Bounty Rune",
+      "slug": "Bounty_Rune",
+      "properties": {
+        "Stack Size": "1 / 250"
+      },
+      "mods": [],
+      "imageLocal": "currency/bounty_rune.webp"
+    },
+    {
+      "name": "Journey Rune",
+      "slug": "Journey_Rune",
+      "properties": {
+        "Stack Size": "1 / 250"
+      },
+      "mods": [],
+      "imageLocal": "currency/journey_rune.webp"
+    },
+    {
+      "name": "Mountain Rune",
+      "slug": "Mountain_Rune",
+      "properties": {
+        "Stack Size": "1 / 250"
+      },
+      "mods": [],
+      "imageLocal": "currency/mountain_rune.webp"
+    },
+    {
+      "name": "Time Rune",
+      "slug": "Time_Rune",
+      "properties": {
+        "Stack Size": "1 / 250"
+      },
+      "mods": [],
+      "imageLocal": "currency/time_rune.webp"
+    },
+    {
+      "name": "Power Rune",
+      "slug": "Power_Rune",
+      "properties": {
+        "Stack Size": "1 / 250"
+      },
+      "mods": [],
+      "imageLocal": "currency/power_rune.webp"
+    },
+    {
+      "name": "Reflecting Mist",
+      "slug": "Reflecting_Mist",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Unpredictably reflects a rare amulet or ring, breaking it\ninto two mirrored halves with reflected modifiers"
+      ],
+      "imageLocal": "currency/reflecting_mist.webp"
+    },
+    {
+      "name": "Runegraft of the River",
+      "slug": "Runegraft_of_the_River",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of the River"
+      },
+      "mods": [
+        "20% chance on reaching Low Life to recover to Full Life"
+      ],
+      "imageLocal": "currency/runegraft_of_the_river.webp"
+    },
+    {
+      "name": "Runegraft of the Fortress",
+      "slug": "Runegraft_of_the_Fortress",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of the Fortress"
+      },
+      "mods": [
+        "10% reduced Attributes",
+        "40% increased Global Defences"
+      ],
+      "imageLocal": "currency/runegraft_of_the_fortress.webp"
+    },
+    {
+      "name": "Runegraft of the Combatant",
+      "slug": "Runegraft_of_the_Combatant",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of the Combatant"
+      },
+      "mods": [
+        "50% increased Attack Damage against Enemies with a higher percentage of their Life remaining than you"
+      ],
+      "imageLocal": "currency/runegraft_of_the_combatant.webp"
+    },
+    {
+      "name": "Runegraft of the Sinistral",
+      "slug": "Runegraft_of_the_Sinistral",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of the Sinistral"
+      },
+      "mods": [
+        "10% more Attack speed with Offhand"
+      ],
+      "imageLocal": "currency/runegraft_of_the_sinistral.webp"
+    },
+    {
+      "name": "Runegraft of the Bound",
+      "slug": "Runegraft_of_the_Bound",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of the Bound"
+      },
+      "mods": [
+        "20% reduced bonuses gained from Equipped Boots",
+        "20% increased bonuses gained from Equipped Gloves"
+      ],
+      "imageLocal": "currency/runegraft_of_the_bound.webp"
+    },
+    {
+      "name": "Runegraft of the Warp",
+      "slug": "Runegraft_of_the_Warp",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of the Warp"
+      },
+      "mods": [
+        "Buffs on you expire 30% slower",
+        "Debuffs on you expire 30% faster"
+      ],
+      "imageLocal": "currency/runegraft_of_the_warp.webp"
+    },
+    {
+      "name": "Runegraft of the Soulwick",
+      "slug": "Runegraft_of_the_Soulwick",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of the Soulwick"
+      },
+      "mods": [
+        "Gain 1 Vaal Soul per second"
+      ],
+      "imageLocal": "currency/runegraft_of_the_soulwick.webp"
+    },
+    {
+      "name": "Runegraft of Bellows",
+      "slug": "Runegraft_of_Bellows",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of Bellows"
+      },
+      "mods": [
+        "100% increased Warcry Speed if you have not Warcried Recently"
+      ],
+      "imageLocal": "currency/runegraft_of_bellows.webp"
+    },
+    {
+      "name": "Runegraft of Gemcraft",
+      "slug": "Runegraft_of_Gemcraft",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of Gemcraft"
+      },
+      "mods": [
+        "+1 to Level of all non-Exceptional Support Gems"
+      ],
+      "imageLocal": "currency/runegraft_of_gemcraft.webp"
+    },
+    {
+      "name": "Runegraft of Blasphemy",
+      "slug": "Runegraft_of_Blasphemy",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of Blasphemy"
+      },
+      "mods": [
+        "30% chance to Curse non-Cursed Enemies with a random Hex on Hit"
+      ],
+      "imageLocal": "currency/runegraft_of_blasphemy.webp"
+    },
+    {
+      "name": "Runegraft of the Gauche",
+      "slug": "Runegraft_of_the_Gauche",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of the Gauche"
+      },
+      "mods": [
+        "Hit Damage with your Off Hand treats Enemy MonsterElemental Resistance values as inverted"
+      ],
+      "imageLocal": "currency/runegraft_of_the_gauche.webp"
+    },
+    {
+      "name": "Runegraft of Time",
+      "slug": "Runegraft_of_Time",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of Time"
+      },
+      "mods": [
+        "20% chance for Skills to not consume a Cooldown on use"
+      ],
+      "imageLocal": "currency/runegraft_of_time.webp"
+    },
+    {
+      "name": "Runegraft of Treachery",
+      "slug": "Runegraft_of_Treachery",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of Treachery"
+      },
+      "mods": [
+        "15% increased Reservation Efficiency of Skills",
+        "Auras from your Skills which affect Allies also affect Enemies"
+      ],
+      "imageLocal": "currency/runegraft_of_treachery.webp"
+    },
+    {
+      "name": "Runegraft of Quaffing",
+      "slug": "Runegraft_of_Quaffing",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of Quaffing"
+      },
+      "mods": [
+        "25% reduced Mana Recovery from Flasks",
+        "Non-instant Mana Recovery from Flasks is also Recovered as Life"
+      ],
+      "imageLocal": "currency/runegraft_of_quaffing.webp"
+    },
+    {
+      "name": "Runegraft of Restitching",
+      "slug": "Runegraft_of_Restitching",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of Restitching"
+      },
+      "mods": [
+        "40% of Damage taken from Critical Strikes Recouped as Life"
+      ],
+      "imageLocal": "currency/runegraft_of_restitching.webp"
+    },
+    {
+      "name": "Runegraft of Loyalty",
+      "slug": "Runegraft_of_Loyalty",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of Loyalty"
+      },
+      "mods": [
+        "40% chance for Elemental Ailments inflicted on you tobe inflicted on a nearby Minion instead"
+      ],
+      "imageLocal": "currency/runegraft_of_loyalty.webp"
+    },
+    {
+      "name": "Runegraft of the Witchmark",
+      "slug": "Runegraft_of_the_Witchmark",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of the Witchmark"
+      },
+      "mods": [
+        "Spells deal added Chaos Damage equal to 2% of your maximum Life",
+        "Spells have an additional Life cost equal to 8% of your Maximum Life"
+      ],
+      "imageLocal": "currency/runegraft_of_the_witchmark.webp"
+    },
+    {
+      "name": "Runegraft of the Novamark",
+      "slug": "Runegraft_of_the_Novamark",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of the Novamark"
+      },
+      "mods": [
+        "Nova Spells Cast at a Marked target instead of around you if possible"
+      ],
+      "imageLocal": "currency/runegraft_of_the_novamark.webp"
+    },
+    {
+      "name": "Runegraft of Recompense",
+      "slug": "Runegraft_of_Recompense",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of Recompense"
+      },
+      "mods": [
+        "Recover 10% of Skill Mana Cost per unspent Chain when Projectiles end, up to 50%"
+      ],
+      "imageLocal": "currency/runegraft_of_recompense.webp"
+    },
+    {
+      "name": "Runegraft of the Jeweller",
+      "slug": "Runegraft_of_the_Jeweller",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of the Jeweller"
+      },
+      "mods": [
+        "10% increased Damage for each unlinked Socket in Equipped Two Handed Weapon"
+      ],
+      "imageLocal": "currency/runegraft_of_the_jeweller.webp"
+    },
+    {
+      "name": "Runegraft of Stability",
+      "slug": "Runegraft_of_Stability",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of Stability"
+      },
+      "mods": [
+        "Your Lucky or Unlucky effects are instead Unexciting"
+      ],
+      "imageLocal": "currency/runegraft_of_stability.webp"
+    },
+    {
+      "name": "Runegraft of the Angler",
+      "slug": "Runegraft_of_the_Angler",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Limited to": "1 Runegraft of the Angler"
+      },
+      "mods": [
+        "All hits are Critical Strikes while holding a Fishing Rod"
+      ],
+      "imageLocal": "currency/runegraft_of_the_angler.webp"
+    },
+    {
+      "name": "Djinn-Touched Vaal Orb",
+      "slug": "Djinn-Touched_Vaal_Orb",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Corrupts a Unique item, modifying it unpredictably\nCan Modify Corrupted Items\nItems Corrupted this way can have up to 2 Implicit Modifiers"
+      ],
+      "imageLocal": "currency/djinn_touched_vaal_orb.webp"
+    },
+    {
+      "name": "Fading Reflecting Mist",
+      "slug": "Fading_Reflecting_Mist",
+      "properties": {
+        "Stack Size": "1 / 10"
+      },
+      "mods": [
+        "Unpredictably reflects a rare amulet or ring, breaking it\ninto two mirrored halves with reflected modifiers"
+      ],
+      "imageLocal": "currency/fading_reflecting_mist.webp"
+    },
+    {
+      "name": "Gemcutters Lens",
+      "slug": "Gemcutters_Lens",
+      "properties": {
+        "Stack Size": "1 / 20"
+      },
+      "mods": [
+        "Changes a Support or Skill Gem into another of the same type\nRetains Gem Level, Quality and Experience"
+      ],
+      "imageLocal": "currency/gemcutters_lens.webp"
+    }
+  ]
+}

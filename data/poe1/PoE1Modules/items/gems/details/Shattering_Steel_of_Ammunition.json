@@ -1,0 +1,337 @@
+{
+  "name": "Shattering Steel of Ammunition",
+  "slug": "Shattering_Steel_of_Ammunition",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Shattering Steel of Ammunition",
+    "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, Two Hand Swords, Two Hand Axes",
+    "TargetTypes": "Ground, Enemy",
+    "Type": "Attack, Projectile, Damage, ProjectileSpeed, RangedAttack, Area, Physical, ProjectilesFromUser, Steel, Duration",
+    "ActiveSkillsCode": "shattering_steel_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "12",
+      "Cost": "7",
+      "Base Damage": "170%, 170%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "50",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "15",
+      "Cost": "8",
+      "Base Damage": "175%, 175%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "50",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "19",
+      "Cost": "8",
+      "Base Damage": "180%, 180%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "55",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "23",
+      "Cost": "8",
+      "Base Damage": "185%, 185%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "60",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "27",
+      "Cost": "9",
+      "Base Damage": "190%, 190%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "60",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "31",
+      "Cost": "9",
+      "Base Damage": "195%, 195%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "65",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "35",
+      "Cost": "9",
+      "Base Damage": "200%, 200%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "70",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "38",
+      "Cost": "9",
+      "Base Damage": "205%, 205%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "70",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "41",
+      "Cost": "10",
+      "Base Damage": "210%, 210%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "75",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "44",
+      "Cost": "10",
+      "Base Damage": "215%, 215%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "80",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "47",
+      "Cost": "10",
+      "Base Damage": "220%, 220%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "80",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "50",
+      "Cost": "10",
+      "Base Damage": "225%, 225%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "85",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "53",
+      "Cost": "11",
+      "Base Damage": "230%, 230%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "90",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "56",
+      "Cost": "11",
+      "Base Damage": "235%, 235%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "90",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "59",
+      "Cost": "11",
+      "Base Damage": "240%, 240%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "95",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Cost": "11",
+      "Base Damage": "245%, 245%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "100",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Cost": "11",
+      "Base Damage": "250%, 250%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "100",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Cost": "12",
+      "Base Damage": "255%, 255%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "105",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Cost": "12",
+      "Base Damage": "260%, 260%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "110",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "12",
+      "Base Damage": "265%, 265%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "110",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "12",
+      "Base Damage": "270%, 270%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "115",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "12",
+      "Base Damage": "275%, 275%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "120",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "12",
+      "Base Damage": "280%, 280%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "120",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "12",
+      "Base Damage": "285%, 285%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "125",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "13",
+      "Base Damage": "290%, 290%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "130",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "13",
+      "Base Damage": "295%, 295%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "130",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "13",
+      "Base Damage": "300%, 300%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "135",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "13",
+      "Base Damage": "305%, 305%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "140",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "13",
+      "Base Damage": "310%, 310%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "140",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "13",
+      "Base Damage": "315%, 315%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "145",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "13",
+      "Base Damage": "317.5%, 317.5%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "150",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "14",
+      "Base Damage": "320%, 320%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "150",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "14",
+      "Base Damage": "322.5%, 322.5%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "155",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "14",
+      "Base Damage": "325%, 325%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "160",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "14",
+      "Base Damage": "327.5%, 327.5%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "160",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "14",
+      "Base Damage": "330%, 330%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "165",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "14",
+      "Base Damage": "332.5%, 332.5%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "170",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "14",
+      "Base Damage": "335%, 335%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "170",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "14",
+      "Base Damage": "337.5%, 337.5%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "175",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "14",
+      "Base Damage": "340%, 340%",
+      "Projectiles deal up to 50% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther": "180",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

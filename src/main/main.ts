@@ -395,7 +395,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             
             if (this.overlayVersion === 'poe1') {
                 this.updateSplash('PoE1 mode: loading PoE1 data');
-                this.modifierDatabase = new ModifierDatabase(initialDataPath, false, 'poe1');
+                const modifiersPath = this.getModifiersDir();
+                this.modifierDatabase = new ModifierDatabase(modifiersPath, false, 'poe1');
                 await this.modifierDatabase.loadAsync((msg) => this.updateSplash(msg));
             } else {
                 this.updateSplash('Loading enabled features');
@@ -677,8 +678,12 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                         const abyssal = entries.find((candidate) => /Rise of the Abyssal/i.test(candidate));
                         if (abyssal) return abyssal;
                     } else if (version === 'poe1') {
-                        const defaultPoe1 = entries.find((candidate) => /Secret/i.test(candidate));
-                        if (defaultPoe1) return defaultPoe1;
+                        // Look for PoE1Modules (items/gems/etc.)
+                        const modules = entries.find((candidate) => /PoE1Modules/i.test(candidate));
+                        if (modules) return modules;
+                        // Legacy fallback: "Secret" or "Rise of the Abyssal"
+                        const secret = entries.find((candidate) => /^Secret$/i.test(path.basename(candidate)));
+                        if (secret) return secret;
                     }
                     return entries[0];
                 }
@@ -711,8 +716,41 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
     // (Legacy image cache methods removed; handled by ImageCacheService)
 
     private getDataDir(): string {
-        try { return (this.modifierDatabase as any).getDataPath?.() || this.dataDirCache || this.resolveInitialDataPath(); } catch {}
-        return this.dataDirCache || this.resolveInitialDataPath();
+        // Always resolve based on current overlayVersion to ensure version-aware path
+        return this.resolveInitialDataPath();
+    }
+
+    private getModifiersDir(): string {
+        // For PoE1, modifiers are in a separate directory from items/gems
+        const version: OverlayVersion = this.overlayVersion === 'poe1' ? 'poe1' : 'poe2';
+        
+        if (version === 'poe2') {
+            // PoE2 modifiers and items are in the same directory
+            return this.resolveInitialDataPath();
+        }
+        
+        // PoE1: modifiers are in PoE1Modifiers, items/gems are in PoE1Modules
+        try {
+            const poe1Root = path.join(__dirname, '../../data/poe1');
+            if (fs.existsSync(poe1Root)) {
+                const entries = fs.readdirSync(poe1Root)
+                    .map((entry) => path.join(poe1Root, entry))
+                    .filter((fullPath) => {
+                        try { return fs.statSync(fullPath).isDirectory(); } catch { return false; }
+                    });
+                
+                // Look for PoE1Modifiers directory
+                const modifiersDir = entries.find((candidate) => /PoE1Modifiers/i.test(candidate));
+                if (modifiersDir) return modifiersDir;
+                
+                // Legacy fallback: SecretLeague
+                const legacyDir = entries.find((candidate) => /SecretLeague/i.test(candidate));
+                if (legacyDir) return legacyDir;
+            }
+        } catch {}
+        
+        // Fallback to same as items dir
+        return this.resolveInitialDataPath();
     }
 
     private migrateLegacyFeatureSplashFlag(): void {
@@ -764,7 +802,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             return;
         }
         try {
-            const selectedConfig = await showFeatureSplash();
+            const selectedConfig = await showFeatureSplash(undefined, this.overlayVersion);
             if (selectedConfig) {
                 this.featureService!.saveConfig(selectedConfig);
                 this.updateSplash('Feature configuration saved');
@@ -780,7 +818,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
     private async openFeatureConfiguration(): Promise<void> {
         try {
             const currentConfig = this.featureService!.getConfig();
-            const selectedConfig = await showFeatureSplash(currentConfig);
+            const selectedConfig = await showFeatureSplash(currentConfig, this.overlayVersion);
 
             if (!selectedConfig) return;
 
@@ -846,6 +884,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
     private buildDisabledFeatureConfig(): FeatureConfig {
         return {
             modifiers: false,
+            poe1Modifiers: false,
             crafting: {
                 enabled: false,
                 subcategories: {
@@ -870,6 +909,13 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 }
             },
             items: {
+                enabled: false,
+                subcategories: {
+                    uniques: false,
+                    bases: false
+                }
+            },
+            poe1Items: {
                 enabled: false,
                 subcategories: {
                     uniques: false,
@@ -1322,6 +1368,18 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                     pushRoot(path.join(process.cwd(), 'bundled-images'));
                     pushRoot(path.join(process.cwd(), '..', 'bundled-images'));
                     pushRoot(path.join(process.cwd(), '../..', 'bundled-images'));
+
+                    // Data directory images (PoE1 modules, custom data dir overrides, etc.)
+                    const dataDir = typeof this.getDataDir === 'function' ? this.getDataDir() : null;
+                    pushRoot(dataDir);
+                    pushRoot(dataDir ? path.join(dataDir, 'images') : undefined);
+                    if (dataDir) {
+                        pushRoot(path.join(path.dirname(dataDir), 'images'));
+                    }
+
+                    // Temporary collector image staging (during development or manual scrape)
+                    const collectorTmp = path.join(process.cwd(), 'tmp', 'collector-images', this.overlayVersion === 'poe1' ? 'poe1' : 'poe2');
+                    pushRoot(collectorTmp);
 
                     for (const root of roots) {
                         const fullPath = path.resolve(root, normalizedLocal);
@@ -2065,7 +2123,12 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 this.rememberOverlaySnapshot(snapshot, snapshot.sourceText ?? undefined);
                 // Resend unique item data to ensure all information is displayed
                 this.safeSendToOverlay('item-data', { item, isUnique: true });
-                this.safeSendToOverlay('show-unique-item', { name: item.name, baseType: item.baseType });
+                // Send version-specific event based on current overlay version
+                if (this.overlayVersion === 'poe1') {
+                    this.safeSendToOverlay('show-poe1-unique-item', { name: item.name, baseType: item.baseType });
+                } else {
+                    this.safeSendToOverlay('show-unique-item', { name: item.name, baseType: item.baseType });
+                }
                 this.bringOverlayToFront(opts);
                 console.log('[Overlay] restoreLastOverlayView -> unique restored');
                 return true;
@@ -2265,7 +2328,12 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         });
         this.showOverlay({ item: parsed, isUnique: true }, { silent, focus });
         if (!silent) {
-            this.safeSendToOverlay('show-unique-item', { name: parsed.name, baseType: parsed.baseType });
+            // Send version-specific event based on current overlay version
+            if (this.overlayVersion === 'poe1') {
+                this.safeSendToOverlay('show-poe1-unique-item', { name: parsed.name, baseType: parsed.baseType });
+            } else {
+                this.safeSendToOverlay('show-unique-item', { name: parsed.name, baseType: parsed.baseType });
+            }
         }
     }
 
@@ -2511,18 +2579,24 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         // Feature configuration IPC handlers
         ipcMain.handle('get-enabled-features', () => {
             try {
+                const config = this.featureService?.getConfig() || this.buildDisabledFeatureConfig();
+
                 if (this.overlayVersion === 'poe1') {
-                    // PoE1 has modifiers feature enabled
+                    const disabled = this.buildDisabledFeatureConfig();
                     return {
-                        modifiers: true,
-                        merchant: false,
-                        crafting: { enabled: false },
-                        character: { enabled: false },
-                        items: { enabled: false },
-                        tools: { enabled: false }
+                        ...disabled,
+                        poe1Modifiers: config.poe1Modifiers ?? disabled.poe1Modifiers,
+                        poe1Items: {
+                            enabled: config.poe1Items?.enabled ?? disabled.poe1Items.enabled,
+                            subcategories: {
+                                uniques: config.poe1Items?.subcategories?.uniques ?? disabled.poe1Items.subcategories.uniques,
+                                bases: config.poe1Items?.subcategories?.bases ?? disabled.poe1Items.subcategories.bases
+                            }
+                        }
                     };
                 }
-                return this.featureService?.getConfig() || this.buildDisabledFeatureConfig();
+
+                return config;
             } catch (e) {
                 console.error('[IPC:get-enabled-features] Error:', e);
                 return this.buildDisabledFeatureConfig();

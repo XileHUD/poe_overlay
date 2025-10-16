@@ -1,0 +1,376 @@
+{
+  "name": "Ice Spear of Splitting",
+  "slug": "Ice_Spear_of_Splitting",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Ice Spear of Splitting",
+    "TargetTypes": "Ground, Enemy",
+    "Type": "Spell, Projectile, ProjectilesFromUser, Damage, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cold, CanRapidFire",
+    "ActiveSkillsCode": "ice_spear_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "12",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "57, 86",
+      "Projectiles Split towards 2 targets": "2",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "15",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "72, 108",
+      "Projectiles Split towards 2 targets": "2",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "19",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "96, 143",
+      "Projectiles Split towards 2 targets": "2",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "23",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "124, 187",
+      "Projectiles Split towards 2 targets": "2",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "27",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "160, 240",
+      "Projectiles Split towards 2 targets": "2",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "31",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "202, 304",
+      "Projectiles Split towards 2 targets": "2",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "35",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "254, 381",
+      "Projectiles Split towards 2 targets": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "38",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "300, 450",
+      "Projectiles Split towards 2 targets": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "41",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "353, 529",
+      "Projectiles Split towards 2 targets": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "44",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "413, 619",
+      "Projectiles Split towards 2 targets": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "47",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "482, 723",
+      "Projectiles Split towards 2 targets": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "50",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "561, 842",
+      "Projectiles Split towards 2 targets": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "53",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "652, 978",
+      "Projectiles Split towards 2 targets": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "56",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "755, 1133",
+      "Projectiles Split towards 2 targets": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "59",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "873, 1310",
+      "Projectiles Split towards 2 targets": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "1008, 1512",
+      "Projectiles Split towards 2 targets": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "1108, 1662",
+      "Projectiles Split towards 2 targets": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "1217, 1825",
+      "Projectiles Split towards 2 targets": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "1335, 2003",
+      "Projectiles Split towards 2 targets": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "1465, 2197",
+      "Projectiles Split towards 2 targets": "5",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "1606, 2408",
+      "Projectiles Split towards 2 targets": "5",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "1759, 2638",
+      "Projectiles Split towards 2 targets": "5",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "1926, 2889",
+      "Projectiles Split towards 2 targets": "5",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "2107, 3161",
+      "Projectiles Split towards 2 targets": "5",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "2305, 3458",
+      "Projectiles Split towards 2 targets": "5",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "2520, 3780",
+      "Projectiles Split towards 2 targets": "5",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "2753, 4130",
+      "Projectiles Split towards 2 targets": "5",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "3007, 4511",
+      "Projectiles Split towards 2 targets": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "3283, 4924",
+      "Projectiles Split towards 2 targets": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "3582, 5373",
+      "Projectiles Split towards 2 targets": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "3742, 5612",
+      "Projectiles Split towards 2 targets": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "3908, 5861",
+      "Projectiles Split towards 2 targets": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "4080, 6121",
+      "Projectiles Split towards 2 targets": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "4261, 6391",
+      "Projectiles Split towards 2 targets": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "4448, 6673",
+      "Projectiles Split towards 2 targets": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "4644, 6966",
+      "Projectiles Split towards 2 targets": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "4848, 7272",
+      "Projectiles Split towards 2 targets": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "5060, 7590",
+      "Projectiles Split towards 2 targets": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "5281, 7922",
+      "Projectiles Split towards 2 targets": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "31",
+      "Base Damage": "100%, 100%",
+      "Deals 57 to 86 Cold Damage": "5511, 8267",
+      "Projectiles Split towards 2 targets": "8",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

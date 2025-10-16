@@ -1155,10 +1155,32 @@
     function renderOmens(list){ if (window.OverlayOmens && window.OverlayOmens.render) { try { return window.OverlayOmens.render(list); } catch {} } }
     async function showCurrency(){ if (window.OverlayCurrency && window.OverlayCurrency.show) { try { return await window.OverlayCurrency.show(); } catch {} } }
     function renderCurrency(list){ if (window.OverlayCurrency && window.OverlayCurrency.render) { try { return window.OverlayCurrency.render(list); } catch {} } }
-    // Uniques, Bases, Glossar
-    async function showUniques(){ if (window.OverlayUniques && window.OverlayUniques.show) { try { return await window.OverlayUniques.show(); } catch {} } }
+    // Uniques, Bases, Glossar (version-aware)
+    async function showUniques(){ 
+        const isPoe1 = overlayVersionMode === 'poe1';
+        if (isPoe1) {
+            if (window.OverlayPoe1Uniques && window.OverlayPoe1Uniques.show) { 
+                try { return await window.OverlayPoe1Uniques.show(); } catch {} 
+            }
+        } else {
+            if (window.OverlayUniques && window.OverlayUniques.show) { 
+                try { return await window.OverlayUniques.show(); } catch {} 
+            }
+        }
+    }
     function renderUniques(groups){ if (window.OverlayUniques && window.OverlayUniques.render) { try { return window.OverlayUniques.render(groups); } catch {} } }
-    async function showBases(){ if (window.OverlayBases && window.OverlayBases.show) { try { return await window.OverlayBases.show(); } catch {} } }
+    async function showBases(){ 
+        const isPoe1 = overlayVersionMode === 'poe1';
+        if (isPoe1) {
+            if (window.OverlayPoe1Bases && window.OverlayPoe1Bases.show) { 
+                try { return await window.OverlayPoe1Bases.show(); } catch {} 
+            }
+        } else {
+            if (window.OverlayBases && window.OverlayBases.show) { 
+                try { return await window.OverlayBases.show(); } catch {} 
+            }
+        }
+    }
     function renderBases(groups){ if (window.OverlayBases && window.OverlayBases.render) { try { return window.OverlayBases.render(groups); } catch {} } }
     async function showGlossar(){ if (window.OverlayGlossar && window.OverlayGlossar.show) { try { return await window.OverlayGlossar.show(); } catch {} } }
     function renderGlossar(list){ if (window.OverlayGlossar && window.OverlayGlossar.render) { try { return window.OverlayGlossar.render(list); } catch {} } }
@@ -1948,8 +1970,10 @@
                     let historyEnabled = !!enabledFeatures.merchant;
                     let craftingViewEnabled = false;
 
-                    // Hide Modifier tab if disabled
-                    if (!enabledFeatures.modifiers) {
+                    // Hide Modifier tab if disabled (version-aware: check poe1Modifiers for PoE1, modifiers for PoE2)
+                    const modifiersConfig = overlayVersionMode === 'poe1' ? enabledFeatures.poe1Modifiers : enabledFeatures.modifiers;
+                    
+                    if (!modifiersConfig) {
                         console.log('[FeatureFilter] Hiding Modifier tab (modifiers disabled)');
                         const modTab = document.getElementById('tabModifier');
                         if (modTab) {
@@ -2050,13 +2074,15 @@
                     }
                     if (document.getElementById('characterTab')) craftingViewEnabled = true;
                     
-                    // Filter Items submenu items
-                    if (enabledFeatures.items && !enabledFeatures.items.enabled) {
+                    // Filter Items submenu items (version-aware: check poe1Items for PoE1, items for PoE2)
+                    const itemsConfig = overlayVersionMode === 'poe1' ? enabledFeatures.poe1Items : enabledFeatures.items;
+                    
+                    if (itemsConfig && !itemsConfig.enabled) {
                         const itemsTab = document.getElementById('itemsTab');
                         if (itemsTab) itemsTab.remove();
-                    } else if (enabledFeatures.items?.enabled) {
+                    } else if (itemsConfig?.enabled) {
                         const itemsMenu = document.getElementById('itemsMenu');
-                        const subs = enabledFeatures.items.subcategories || {};
+                        const subs = itemsConfig.subcategories || {};
                         let anySubEnabled = false;
                         const enabledItemActions = [];
                         
@@ -3316,10 +3342,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     try {
                         // Check if Uniques page is available for current version
                         if (overlayVersionMode !== 'poe2') {
-                            console.log('[onShowUniqueItem] Uniques not available in', overlayVersionMode, 'mode - opening on last page');
-                            setActiveTab('tabModifier');
-                            setView('modifiers');
-                            setHeader('Modifier');
+                            console.log('[onShowUniqueItem] PoE2 Uniques not available in', overlayVersionMode, 'mode - ignoring');
                             return;
                         }
                         
@@ -3341,6 +3364,44 @@ document.addEventListener('DOMContentLoaded', () => {
                         };
                         ensure();
                     } catch (e) { console.warn('unique focus failed', e); }
+                });
+            }
+            
+            // PoE1 Unique Item handler
+            if (window.electronAPI && window.electronAPI.onShowPoe1UniqueItem && !window.__xilehudPoe1UniqueBound) {
+                window.__xilehudPoe1UniqueBound = true;
+                window.electronAPI.onShowPoe1UniqueItem((payload) => {
+                    try {
+                        console.log('[onShowPoe1UniqueItem] Opening PoE1 Uniques:', payload);
+                        
+                        // Ensure items tab and crafting view for PoE1 Uniques
+                        setActiveTab('itemsTab');
+                        setView('crafting');
+                        setHeader('PoE1 Uniques');
+                        recordHeaderAction('PoE1 Uniques');
+                        
+                        // Attempt to render / show PoE1 uniques panel
+                        const ensure = (attempts=5) => {
+                            if (window.OverlayPoe1Uniques && typeof window.OverlayPoe1Uniques.show === 'function') {
+                                try { 
+                                    window.OverlayPoe1Uniques.show(); 
+                                    console.log('[onShowPoe1UniqueItem] PoE1 Uniques panel shown');
+                                } catch (e) {
+                                    console.error('[onShowPoe1UniqueItem] Error showing PoE1 uniques:', e);
+                                }
+                                return;
+                            }
+                            if (attempts>0) {
+                                console.log('[onShowPoe1UniqueItem] Waiting for PoE1 Uniques module, attempts left:', attempts);
+                                setTimeout(()=>ensure(attempts-1),120);
+                            } else {
+                                console.error('[onShowPoe1UniqueItem] PoE1 Uniques module not available after retries');
+                            }
+                        };
+                        ensure();
+                    } catch (e) { 
+                        console.error('[onShowPoe1UniqueItem] PoE1 unique focus failed:', e); 
+                    }
                 });
             }
         } catch {}

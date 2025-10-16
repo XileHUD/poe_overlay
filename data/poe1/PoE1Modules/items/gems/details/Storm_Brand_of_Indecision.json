@@ -1,0 +1,336 @@
+{
+  "name": "Storm Brand of Indecision",
+  "slug": "Storm_Brand_of_Indecision",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Storm Brand of Indecision",
+    "TargetTypes": "Ground, Enemy",
+    "Type": "Spell, Damage, Area, Lightning, Chains, Duration, Totemable, Trappable, Mineable, Triggerable, Multicastable, Brand, AreaSpell",
+    "ActiveSkillsCode": "storm_brand_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "12",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "5, 14",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "15",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "6, 18",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "19",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "8, 25",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "23",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "11, 33",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "27",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "14, 43",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "31",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "19, 56",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "35",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "24, 72",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "38",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "29, 87",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "41",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "35, 104",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "44",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "41, 124",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "47",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "49, 147",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "50",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "58, 175",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "53",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "69, 207",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "56",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "81, 244",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "59",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "96, 287",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "112, 337",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "125, 375",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "139, 417",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "154, 463",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "172, 515",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "190, 571",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "211, 633",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "234, 702",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "259, 777",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "287, 860",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "317, 952",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "351, 1053",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "388, 1164",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "429, 1287",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "474, 1421",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "498, 1493",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "523, 1569",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "549, 1648",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "577, 1732",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "606, 1819",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "637, 1911",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "669, 2007",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "702, 2107",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "738, 2213",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 5 to 14 Lightning Damage": "774, 2323",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

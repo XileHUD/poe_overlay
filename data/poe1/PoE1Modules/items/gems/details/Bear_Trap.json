@@ -1,0 +1,380 @@
+{
+  "name": "Bear Trap",
+  "slug": "Bear_Trap",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
+    "Acronym": "Hit, Trigger, Duration, Trap, Mine",
+    "DropLevel": "4",
+    "BaseType": "Bear Trap",
+    "Class": "Skill Gems",
+    "TargetTypes": "Enemy",
+    "Type": "Spell, Duration, Mineable, Trapped, Damage, Physical, Cooldown",
+    "ItemType": "Metadata/Items/Gems/SkillGemBearTrap",
+    "ActiveSkillsCode": "bear_trap",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "4",
+      "Dex": "16",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "16, 22",
+      "Experience": "841"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "6",
+      "Dex": "20",
+      "Cost": "7",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "20, 28",
+      "Experience": "3,099"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "9",
+      "Dex": "27",
+      "Cost": "7",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "27, 38",
+      "Experience": "7,433"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "12",
+      "Dex": "33",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "35, 49",
+      "Experience": "22,895"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "16",
+      "Dex": "41",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "49, 69",
+      "Experience": "49,725"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "20",
+      "Dex": "50",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "67, 94",
+      "Experience": "95,714"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "24",
+      "Dex": "58",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "90, 126",
+      "Experience": "169,595"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "28",
+      "Dex": "67",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "119, 167",
+      "Experience": "283,759"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "32",
+      "Dex": "75",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "156, 218",
+      "Experience": "453,996"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "36",
+      "Dex": "83",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "202, 282",
+      "Experience": "703,128"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "40",
+      "Dex": "92",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "259, 363",
+      "Experience": "1,061,223"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "44",
+      "Dex": "100",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "331, 463",
+      "Experience": "2,065,870"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "48",
+      "Dex": "109",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "420, 587",
+      "Experience": "2,507,110"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "52",
+      "Dex": "117",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "530, 742",
+      "Experience": "2,573,731"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "55",
+      "Dex": "123",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "630, 881",
+      "Experience": "7,611,351"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "58",
+      "Dex": "130",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "746, 1045",
+      "Experience": "13,437,908"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "61",
+      "Dex": "136",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "883, 1236",
+      "Experience": "25,052,147"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "64",
+      "Dex": "142",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "1043, 1460",
+      "Experience": "43,869,436"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "67",
+      "Dex": "148",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "1230, 1721",
+      "Experience": "242,081,178"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Dex": "155",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "1447, 2026",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Dex": "",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "1613, 2258",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Dex": "",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "1795, 2514",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Dex": "",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "1998, 2797",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Dex": "",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "2222, 3111",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Dex": "",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "2470, 3458",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Dex": "",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "2744, 3842",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Dex": "",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "3047, 4266",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Dex": "",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "3382, 4735",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Dex": "",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "3753, 5254",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Dex": "",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "4162, 5826",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Dex": "",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "4382, 6135",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Dex": "",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "4614, 6459",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Dex": "",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "4857, 6800",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Dex": "",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "5113, 7158",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Dex": "",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "5381, 7534",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Dex": "",
+      "Cost": "31",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "5664, 7929",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Dex": "",
+      "Cost": "31",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "5960, 8344",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Dex": "",
+      "Cost": "31",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "6272, 8780",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Dex": "",
+      "Cost": "32",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "6599, 9238",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Dex": "",
+      "Cost": "33",
+      "Base Damage": "100%, 100%",
+      "Deals 16 to 22 Physical Damage": "6943, 9720",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

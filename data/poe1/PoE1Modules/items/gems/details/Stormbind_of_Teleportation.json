@@ -1,0 +1,376 @@
+{
+  "name": "Stormbind of Teleportation",
+  "slug": "Stormbind_of_Teleportation",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Stormbind of Teleportation",
+    "TargetTypes": "Ground",
+    "Type": "Spell, Area, Damage, AreaSpell, Channel, Lightning, Totemable, Duration, Arcane",
+    "ActiveSkillsCode": "stormbind_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "28",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "36, 107",
+      "A Rune is Improved for each 5 Mana Spent": "5",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "31",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "44, 131",
+      "A Rune is Improved for each 5 Mana Spent": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "34",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "53, 159",
+      "A Rune is Improved for each 5 Mana Spent": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "37",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "64, 193",
+      "A Rune is Improved for each 5 Mana Spent": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "40",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "78, 234",
+      "A Rune is Improved for each 5 Mana Spent": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "42",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "88, 265",
+      "A Rune is Improved for each 5 Mana Spent": "10",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "44",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "100, 299",
+      "A Rune is Improved for each 5 Mana Spent": "11",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "46",
+      "Cost": "3",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "113, 338",
+      "A Rune is Improved for each 5 Mana Spent": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "127, 380",
+      "A Rune is Improved for each 5 Mana Spent": "13",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "143, 428",
+      "A Rune is Improved for each 5 Mana Spent": "14",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "161, 482",
+      "A Rune is Improved for each 5 Mana Spent": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "180, 541",
+      "A Rune is Improved for each 5 Mana Spent": "16",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "203, 608",
+      "A Rune is Improved for each 5 Mana Spent": "17",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "227, 681",
+      "A Rune is Improved for each 5 Mana Spent": "18",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "254, 763",
+      "A Rune is Improved for each 5 Mana Spent": "19",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "285, 854",
+      "A Rune is Improved for each 5 Mana Spent": "20",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "319, 956",
+      "A Rune is Improved for each 5 Mana Spent": "21",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "356, 1068",
+      "A Rune is Improved for each 5 Mana Spent": "22",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "398, 1193",
+      "A Rune is Improved for each 5 Mana Spent": "23",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "444, 1332",
+      "A Rune is Improved for each 5 Mana Spent": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "495, 1486",
+      "A Rune is Improved for each 5 Mana Spent": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "552, 1657",
+      "A Rune is Improved for each 5 Mana Spent": "26",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "615, 1846",
+      "A Rune is Improved for each 5 Mana Spent": "27",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "685, 2056",
+      "A Rune is Improved for each 5 Mana Spent": "28",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "763, 2288",
+      "A Rune is Improved for each 5 Mana Spent": "29",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "848, 2545",
+      "A Rune is Improved for each 5 Mana Spent": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "944, 2831",
+      "A Rune is Improved for each 5 Mana Spent": "31",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "1049, 3146",
+      "A Rune is Improved for each 5 Mana Spent": "32",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "1165, 3495",
+      "A Rune is Improved for each 5 Mana Spent": "33",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "1294, 3882",
+      "A Rune is Improved for each 5 Mana Spent": "34",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "1363, 4090",
+      "A Rune is Improved for each 5 Mana Spent": "35",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "1436, 4309",
+      "A Rune is Improved for each 5 Mana Spent": "35",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "1513, 4539",
+      "A Rune is Improved for each 5 Mana Spent": "36",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "1594, 4781",
+      "A Rune is Improved for each 5 Mana Spent": "36",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "1679, 5036",
+      "A Rune is Improved for each 5 Mana Spent": "37",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "1768, 5304",
+      "A Rune is Improved for each 5 Mana Spent": "37",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "1862, 5585",
+      "A Rune is Improved for each 5 Mana Spent": "38",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "1960, 5881",
+      "A Rune is Improved for each 5 Mana Spent": "38",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "2064, 6192",
+      "A Rune is Improved for each 5 Mana Spent": "39",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 36 to 107 Lightning Damage": "2173, 6519",
+      "A Rune is Improved for each 5 Mana Spent": "39",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

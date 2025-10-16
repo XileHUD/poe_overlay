@@ -1,0 +1,420 @@
+{
+  "name": "Summon Phantasm Support",
+  "slug": "Summon_Phantasm_Support",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
+    "Acronym": "Hit, Kill, Minion, Phantasm",
+    "DropLevel": "4",
+    "BaseType": "Summon Phantasm Support",
+    "Class": "Support Gems",
+    "Icon": "G",
+    "ItemType": "Metadata/Items/Gems/SupportGemSummonGhostOnKill",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "4",
+      "Int": "0",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "50",
+      "Maximum 5 Summoned Phantasm": "5",
+      "Minion Level": "2",
+      "Experience": "841"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "6",
+      "Int": "15",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "51",
+      "Maximum 5 Summoned Phantasm": "5",
+      "Minion Level": "4",
+      "Experience": "3,099"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "9",
+      "Int": "19",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "52",
+      "Maximum 5 Summoned Phantasm": "5",
+      "Minion Level": "6",
+      "Experience": "7,433"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "12",
+      "Int": "24",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "53",
+      "Maximum 5 Summoned Phantasm": "6",
+      "Minion Level": "8",
+      "Experience": "22,895"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "16",
+      "Int": "30",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "54",
+      "Maximum 5 Summoned Phantasm": "6",
+      "Minion Level": "10",
+      "Experience": "49,725"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "20",
+      "Int": "36",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "55",
+      "Maximum 5 Summoned Phantasm": "6",
+      "Minion Level": "12",
+      "Experience": "95,714"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "24",
+      "Int": "42",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "56",
+      "Maximum 5 Summoned Phantasm": "7",
+      "Minion Level": "14",
+      "Experience": "169,595"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "28",
+      "Int": "48",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "57",
+      "Maximum 5 Summoned Phantasm": "7",
+      "Minion Level": "16",
+      "Experience": "283,759"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "32",
+      "Int": "54",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "58",
+      "Maximum 5 Summoned Phantasm": "7",
+      "Minion Level": "18",
+      "Experience": "453,996"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "36",
+      "Int": "60",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "59",
+      "Maximum 5 Summoned Phantasm": "8",
+      "Minion Level": "20",
+      "Experience": "703,128"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "40",
+      "Int": "66",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "60",
+      "Maximum 5 Summoned Phantasm": "8",
+      "Minion Level": "22",
+      "Experience": "1,061,223"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "44",
+      "Int": "72",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "61",
+      "Maximum 5 Summoned Phantasm": "8",
+      "Minion Level": "24",
+      "Experience": "2,065,870"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "48",
+      "Int": "78",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "62",
+      "Maximum 5 Summoned Phantasm": "9",
+      "Minion Level": "26",
+      "Experience": "2,507,110"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "52",
+      "Int": "84",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "63",
+      "Maximum 5 Summoned Phantasm": "9",
+      "Minion Level": "28",
+      "Experience": "2,573,731"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "55",
+      "Int": "88",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "64",
+      "Maximum 5 Summoned Phantasm": "9",
+      "Minion Level": "30",
+      "Experience": "7,611,351"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "58",
+      "Int": "93",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "65",
+      "Maximum 5 Summoned Phantasm": "9",
+      "Minion Level": "32",
+      "Experience": "13,437,908"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "61",
+      "Int": "97",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "66",
+      "Maximum 5 Summoned Phantasm": "10",
+      "Minion Level": "34",
+      "Experience": "25,052,147"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "64",
+      "Int": "102",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "67",
+      "Maximum 5 Summoned Phantasm": "10",
+      "Minion Level": "36",
+      "Experience": "43,869,436"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "67",
+      "Int": "106",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "68",
+      "Maximum 5 Summoned Phantasm": "10",
+      "Minion Level": "38",
+      "Experience": "242,081,178"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Int": "111",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "69",
+      "Maximum 5 Summoned Phantasm": "10",
+      "Minion Level": "40",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "70",
+      "Maximum 5 Summoned Phantasm": "11",
+      "Minion Level": "42",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "71",
+      "Maximum 5 Summoned Phantasm": "11",
+      "Minion Level": "44",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "72",
+      "Maximum 5 Summoned Phantasm": "11",
+      "Minion Level": "46",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "73",
+      "Maximum 5 Summoned Phantasm": "11",
+      "Minion Level": "48",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "74",
+      "Maximum 5 Summoned Phantasm": "11",
+      "Minion Level": "50",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "75",
+      "Maximum 5 Summoned Phantasm": "12",
+      "Minion Level": "52",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "76",
+      "Maximum 5 Summoned Phantasm": "12",
+      "Minion Level": "54",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "77",
+      "Maximum 5 Summoned Phantasm": "12",
+      "Minion Level": "56",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "78",
+      "Maximum 5 Summoned Phantasm": "12",
+      "Minion Level": "58",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "79",
+      "Maximum 5 Summoned Phantasm": "12",
+      "Minion Level": "60",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "79",
+      "Maximum 5 Summoned Phantasm": "12",
+      "Minion Level": "62",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "80",
+      "Maximum 5 Summoned Phantasm": "13",
+      "Minion Level": "64",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "80",
+      "Maximum 5 Summoned Phantasm": "13",
+      "Minion Level": "66",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "81",
+      "Maximum 5 Summoned Phantasm": "13",
+      "Minion Level": "68",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "81",
+      "Maximum 5 Summoned Phantasm": "13",
+      "Minion Level": "70",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "82",
+      "Maximum 5 Summoned Phantasm": "13",
+      "Minion Level": "72",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "82",
+      "Maximum 5 Summoned Phantasm": "13",
+      "Minion Level": "74",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "83",
+      "Maximum 5 Summoned Phantasm": "13",
+      "Minion Level": "76",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "83",
+      "Maximum 5 Summoned Phantasm": "13",
+      "Minion Level": "78",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "50% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow": "84",
+      "Maximum 5 Summoned Phantasm": "13",
+      "Minion Level": "80",
+      "Experience": ""
+    }
+  ],
+  "description": "This support gem has an interesting interaction with Soulwrest, increasing the limit of summoned phantasms. However, Soulwrest phantasms come from a trigger effect and therefore can not be supported by Spell Echo Support.",
+  "stats": [
+    "This support gem has an interesting interaction with Soulwrest, increasing the limit of summoned phantasms. However, Soulwrest phantasms come from a trigger effect and therefore can not be supported by Spell Echo Support."
+  ]
+}

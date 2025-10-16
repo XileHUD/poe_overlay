@@ -1,0 +1,381 @@
+{
+  "name": "Crushing Fist",
+  "slug": "Crushing_Fist",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
+    "Acronym": "Hit, Block, Ailment",
+    "DropLevel": "4",
+    "BaseType": "Crushing Fist",
+    "Class": "Skill Gems",
+    "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Rune Daggers, Warstaves",
+    "TargetTypes": "Ground, Enemy,",
+    "Type": "Attack, Melee, Slam, Area, Damage, Cooldown, Retaliation",
+    "ItemType": "Metadata/Items/Gems/SkillGemVengeance",
+    "ActiveSkillsCode": "crushing_fist",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "4",
+      "Str": "16",
+      "Cost": "8",
+      "Base Damage": "1003.9%, 1003.9%",
+      "Base radius is 2 metres": "2",
+      "Experience": "841"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "6",
+      "Str": "20",
+      "Cost": "8",
+      "Base Damage": "1046.1%, 1046.1%",
+      "Base radius is 2 metres": "2",
+      "Experience": "3,099"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "9",
+      "Str": "27",
+      "Cost": "9",
+      "Base Damage": "1090%, 1090%",
+      "Base radius is 2 metres": "2.1",
+      "Experience": "7,433"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "12",
+      "Str": "33",
+      "Cost": "9",
+      "Base Damage": "1135.8%, 1135.8%",
+      "Base radius is 2 metres": "2.1",
+      "Experience": "22,895"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "16",
+      "Str": "41",
+      "Cost": "9",
+      "Base Damage": "1183.5%, 1183.5%",
+      "Base radius is 2 metres": "2.2",
+      "Experience": "49,725"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "20",
+      "Str": "50",
+      "Cost": "10",
+      "Base Damage": "1233.2%, 1233.2%",
+      "Base radius is 2 metres": "2.2",
+      "Experience": "95,714"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "24",
+      "Str": "58",
+      "Cost": "10",
+      "Base Damage": "1285%, 1285%",
+      "Base radius is 2 metres": "2.3",
+      "Experience": "169,595"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "28",
+      "Str": "67",
+      "Cost": "10",
+      "Base Damage": "1339%, 1339%",
+      "Base radius is 2 metres": "2.3",
+      "Experience": "283,759"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "32",
+      "Str": "75",
+      "Cost": "11",
+      "Base Damage": "1395.2%, 1395.2%",
+      "Base radius is 2 metres": "2.3",
+      "Experience": "453,996"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "36",
+      "Str": "83",
+      "Cost": "11",
+      "Base Damage": "1453.8%, 1453.8%",
+      "Base radius is 2 metres": "2.4",
+      "Experience": "703,128"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "40",
+      "Str": "92",
+      "Cost": "12",
+      "Base Damage": "1514.9%, 1514.9%",
+      "Base radius is 2 metres": "2.4",
+      "Experience": "1,061,223"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "44",
+      "Str": "100",
+      "Cost": "12",
+      "Base Damage": "1578.5%, 1578.5%",
+      "Base radius is 2 metres": "2.5",
+      "Experience": "2,065,870"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "48",
+      "Str": "109",
+      "Cost": "12",
+      "Base Damage": "1644.8%, 1644.8%",
+      "Base radius is 2 metres": "2.5",
+      "Experience": "2,507,110"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "52",
+      "Str": "117",
+      "Cost": "13",
+      "Base Damage": "1713.9%, 1713.9%",
+      "Base radius is 2 metres": "2.5",
+      "Experience": "2,573,731"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "55",
+      "Str": "123",
+      "Cost": "13",
+      "Base Damage": "1785.9%, 1785.9%",
+      "Base radius is 2 metres": "2.6",
+      "Experience": "7,611,351"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "58",
+      "Str": "130",
+      "Cost": "13",
+      "Base Damage": "1860.9%, 1860.9%",
+      "Base radius is 2 metres": "2.6",
+      "Experience": "13,437,908"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "61",
+      "Str": "136",
+      "Cost": "14",
+      "Base Damage": "1939.1%, 1939.1%",
+      "Base radius is 2 metres": "2.7",
+      "Experience": "25,052,147"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "64",
+      "Str": "142",
+      "Cost": "14",
+      "Base Damage": "2020.5%, 2020.5%",
+      "Base radius is 2 metres": "2.7",
+      "Experience": "43,869,436"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "67",
+      "Str": "148",
+      "Cost": "14",
+      "Base Damage": "2105.4%, 2105.4%",
+      "Base radius is 2 metres": "2.8",
+      "Experience": "242,081,178"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Str": "155",
+      "Cost": "14",
+      "Base Damage": "2193.8%, 2193.8%",
+      "Base radius is 2 metres": "2.8",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Str": "",
+      "Cost": "15",
+      "Base Damage": "2285.9%, 2285.9%",
+      "Base radius is 2 metres": "2.8",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Str": "",
+      "Cost": "15",
+      "Base Damage": "2381.9%, 2381.9%",
+      "Base radius is 2 metres": "2.9",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Str": "",
+      "Cost": "15",
+      "Base Damage": "2482%, 2482%",
+      "Base radius is 2 metres": "2.9",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Str": "",
+      "Cost": "15",
+      "Base Damage": "2586.2%, 2586.2%",
+      "Base radius is 2 metres": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Str": "",
+      "Cost": "15",
+      "Base Damage": "2694.8%, 2694.8%",
+      "Base radius is 2 metres": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Str": "",
+      "Cost": "15",
+      "Base Damage": "2808%, 2808%",
+      "Base radius is 2 metres": "3.1",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Str": "",
+      "Cost": "16",
+      "Base Damage": "2925.9%, 2925.9%",
+      "Base radius is 2 metres": "3.1",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Str": "",
+      "Cost": "16",
+      "Base Damage": "3048.8%, 3048.8%",
+      "Base radius is 2 metres": "3.1",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Str": "",
+      "Cost": "16",
+      "Base Damage": "3176.9%, 3176.9%",
+      "Base radius is 2 metres": "3.2",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Str": "",
+      "Cost": "16",
+      "Base Damage": "3310.3%, 3310.3%",
+      "Base radius is 2 metres": "3.2",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Str": "",
+      "Cost": "16",
+      "Base Damage": "3521.8%, 3521.8%",
+      "Base radius is 2 metres": "3.2",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Str": "",
+      "Cost": "16",
+      "Base Damage": "3595.7%, 3595.7%",
+      "Base radius is 2 metres": "3.3",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Str": "",
+      "Cost": "16",
+      "Base Damage": "3671.3%, 3671.3%",
+      "Base radius is 2 metres": "3.3",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Str": "",
+      "Cost": "17",
+      "Base Damage": "3748.3%, 3748.3%",
+      "Base radius is 2 metres": "3.3",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Str": "",
+      "Cost": "17",
+      "Base Damage": "3827.1%, 3827.1%",
+      "Base radius is 2 metres": "3.3",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Str": "",
+      "Cost": "17",
+      "Base Damage": "3907.4%, 3907.4%",
+      "Base radius is 2 metres": "3.3",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Str": "",
+      "Cost": "17",
+      "Base Damage": "3989.5%, 3989.5%",
+      "Base radius is 2 metres": "3.4",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Str": "",
+      "Cost": "17",
+      "Base Damage": "4073.3%, 4073.3%",
+      "Base radius is 2 metres": "3.4",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Str": "",
+      "Cost": "17",
+      "Base Damage": "4158.8%, 4158.8%",
+      "Base radius is 2 metres": "3.4",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Str": "",
+      "Cost": "17",
+      "Base Damage": "4246.1%, 4246.1%",
+      "Base radius is 2 metres": "3.4",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

@@ -1,0 +1,377 @@
+{
+  "name": "Ice Shot of Penetration",
+  "slug": "Ice_Shot_of_Penetration",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Ice Shot of Penetration",
+    "Weapon": "Bows",
+    "TargetTypes": "Ground, Enemy",
+    "Type": "Attack, RangedAttack, Projectile, ProjectilesFromUser, Area, Cold, Triggerable, MirageArcherCanUse, Totemable, Trappable, Mineable",
+    "ActiveSkillsCode": "ice_shot_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "1",
+      "Cost": "7",
+      "Base Damage": "180%, 180%",
+      "Chills Enemies as though dealing 100% more Damage": "100",
+      "Base radius is 2.6 metres": "2.6",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "2",
+      "Cost": "8",
+      "Base Damage": "185.3%, 185.3%",
+      "Chills Enemies as though dealing 100% more Damage": "105",
+      "Base radius is 2.6 metres": "2.6",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "4",
+      "Cost": "8",
+      "Base Damage": "190.5%, 190.5%",
+      "Chills Enemies as though dealing 100% more Damage": "110",
+      "Base radius is 2.6 metres": "2.7",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "7",
+      "Cost": "8",
+      "Base Damage": "195.8%, 195.8%",
+      "Chills Enemies as though dealing 100% more Damage": "115",
+      "Base radius is 2.6 metres": "2.7",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "11",
+      "Cost": "8",
+      "Base Damage": "201.1%, 201.1%",
+      "Chills Enemies as though dealing 100% more Damage": "120",
+      "Base radius is 2.6 metres": "2.7",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "16",
+      "Cost": "9",
+      "Base Damage": "206.3%, 206.3%",
+      "Chills Enemies as though dealing 100% more Damage": "125",
+      "Base radius is 2.6 metres": "2.7",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "20",
+      "Cost": "9",
+      "Base Damage": "211.6%, 211.6%",
+      "Chills Enemies as though dealing 100% more Damage": "130",
+      "Base radius is 2.6 metres": "2.8",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "24",
+      "Cost": "9",
+      "Base Damage": "216.8%, 216.8%",
+      "Chills Enemies as though dealing 100% more Damage": "135",
+      "Base radius is 2.6 metres": "2.8",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "28",
+      "Cost": "10",
+      "Base Damage": "222.1%, 222.1%",
+      "Chills Enemies as though dealing 100% more Damage": "140",
+      "Base radius is 2.6 metres": "2.8",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "32",
+      "Cost": "10",
+      "Base Damage": "227.4%, 227.4%",
+      "Chills Enemies as though dealing 100% more Damage": "145",
+      "Base radius is 2.6 metres": "2.9",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "36",
+      "Cost": "10",
+      "Base Damage": "232.6%, 232.6%",
+      "Chills Enemies as though dealing 100% more Damage": "150",
+      "Base radius is 2.6 metres": "2.9",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "40",
+      "Cost": "11",
+      "Base Damage": "237.9%, 237.9%",
+      "Chills Enemies as though dealing 100% more Damage": "155",
+      "Base radius is 2.6 metres": "2.9",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "44",
+      "Cost": "11",
+      "Base Damage": "243.2%, 243.2%",
+      "Chills Enemies as though dealing 100% more Damage": "160",
+      "Base radius is 2.6 metres": "2.9",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "48",
+      "Cost": "11",
+      "Base Damage": "248.4%, 248.4%",
+      "Chills Enemies as though dealing 100% more Damage": "165",
+      "Base radius is 2.6 metres": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "52",
+      "Cost": "12",
+      "Base Damage": "253.7%, 253.7%",
+      "Chills Enemies as though dealing 100% more Damage": "170",
+      "Base radius is 2.6 metres": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "56",
+      "Cost": "12",
+      "Base Damage": "258.9%, 258.9%",
+      "Chills Enemies as though dealing 100% more Damage": "175",
+      "Base radius is 2.6 metres": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "60",
+      "Cost": "13",
+      "Base Damage": "264.2%, 264.2%",
+      "Chills Enemies as though dealing 100% more Damage": "180",
+      "Base radius is 2.6 metres": "3.1",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "64",
+      "Cost": "13",
+      "Base Damage": "269.5%, 269.5%",
+      "Chills Enemies as though dealing 100% more Damage": "185",
+      "Base radius is 2.6 metres": "3.1",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "67",
+      "Cost": "13",
+      "Base Damage": "274.7%, 274.7%",
+      "Chills Enemies as though dealing 100% more Damage": "190",
+      "Base radius is 2.6 metres": "3.1",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "13",
+      "Base Damage": "280%, 280%",
+      "Chills Enemies as though dealing 100% more Damage": "195",
+      "Base radius is 2.6 metres": "3.1",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "14",
+      "Base Damage": "285.3%, 285.3%",
+      "Chills Enemies as though dealing 100% more Damage": "200",
+      "Base radius is 2.6 metres": "3.2",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "14",
+      "Base Damage": "290.5%, 290.5%",
+      "Chills Enemies as though dealing 100% more Damage": "205",
+      "Base radius is 2.6 metres": "3.2",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "14",
+      "Base Damage": "295.8%, 295.8%",
+      "Chills Enemies as though dealing 100% more Damage": "210",
+      "Base radius is 2.6 metres": "3.2",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "14",
+      "Base Damage": "301.1%, 301.1%",
+      "Chills Enemies as though dealing 100% more Damage": "215",
+      "Base radius is 2.6 metres": "3.3",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "14",
+      "Base Damage": "306.3%, 306.3%",
+      "Chills Enemies as though dealing 100% more Damage": "220",
+      "Base radius is 2.6 metres": "3.3",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "14",
+      "Base Damage": "311.6%, 311.6%",
+      "Chills Enemies as though dealing 100% more Damage": "225",
+      "Base radius is 2.6 metres": "3.3",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "15",
+      "Base Damage": "316.8%, 316.8%",
+      "Chills Enemies as though dealing 100% more Damage": "230",
+      "Base radius is 2.6 metres": "3.3",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "15",
+      "Base Damage": "322.1%, 322.1%",
+      "Chills Enemies as though dealing 100% more Damage": "235",
+      "Base radius is 2.6 metres": "3.4",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "15",
+      "Base Damage": "327.4%, 327.4%",
+      "Chills Enemies as though dealing 100% more Damage": "240",
+      "Base radius is 2.6 metres": "3.4",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "15",
+      "Base Damage": "332.6%, 332.6%",
+      "Chills Enemies as though dealing 100% more Damage": "245",
+      "Base radius is 2.6 metres": "3.4",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "15",
+      "Base Damage": "335.3%, 335.3%",
+      "Chills Enemies as though dealing 100% more Damage": "247",
+      "Base radius is 2.6 metres": "3.4",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "15",
+      "Base Damage": "337.9%, 337.9%",
+      "Chills Enemies as though dealing 100% more Damage": "250",
+      "Base radius is 2.6 metres": "3.5",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "15",
+      "Base Damage": "340.5%, 340.5%",
+      "Chills Enemies as though dealing 100% more Damage": "252",
+      "Base radius is 2.6 metres": "3.5",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "15",
+      "Base Damage": "343.2%, 343.2%",
+      "Chills Enemies as though dealing 100% more Damage": "255",
+      "Base radius is 2.6 metres": "3.5",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "16",
+      "Base Damage": "345.8%, 345.8%",
+      "Chills Enemies as though dealing 100% more Damage": "257",
+      "Base radius is 2.6 metres": "3.5",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "16",
+      "Base Damage": "348.4%, 348.4%",
+      "Chills Enemies as though dealing 100% more Damage": "260",
+      "Base radius is 2.6 metres": "3.5",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "16",
+      "Base Damage": "351.1%, 351.1%",
+      "Chills Enemies as though dealing 100% more Damage": "262",
+      "Base radius is 2.6 metres": "3.5",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "16",
+      "Base Damage": "353.7%, 353.7%",
+      "Chills Enemies as though dealing 100% more Damage": "265",
+      "Base radius is 2.6 metres": "3.5",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "16",
+      "Base Damage": "356.3%, 356.3%",
+      "Chills Enemies as though dealing 100% more Damage": "267",
+      "Base radius is 2.6 metres": "3.6",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "16",
+      "Base Damage": "358.9%, 358.9%",
+      "Chills Enemies as though dealing 100% more Damage": "270",
+      "Base radius is 2.6 metres": "3.6",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

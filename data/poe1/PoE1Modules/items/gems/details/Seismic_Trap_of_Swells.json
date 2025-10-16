@@ -1,0 +1,336 @@
+{
+  "name": "Seismic Trap of Swells",
+  "slug": "Seismic_Trap_of_Swells",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Seismic Trap of Swells",
+    "TargetTypes": "Enemy, Ground",
+    "Type": "Spell, Damage, Mineable, Area, Trapped, AreaSpell, Physical, Cooldown",
+    "ActiveSkillsCode": "seismic_trap_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "28",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "81, 121",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "31",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "100, 149",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "34",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "122, 183",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "37",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "148, 222",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "40",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "180, 269",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "42",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "204, 306",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "44",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "231, 346",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "46",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "261, 392",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "295, 443",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "333, 500",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "375, 563",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "423, 634",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "476, 713",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "535, 802",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "600, 900",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "673, 1010",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "755, 1133",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "846, 1269",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "947, 1421",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "1060, 1589",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "1185, 1777",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "1324, 1986",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "1479, 2218",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "1650, 2476",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "1841, 2762",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "2053, 3080",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "2288, 3432",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "2549, 3824",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "2839, 4258",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "3160, 4739",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "3333, 4999",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "3515, 5273",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "3708, 5561",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "29",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "3910, 5865",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "4123, 6184",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "4347, 6521",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "31",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "4583, 6874",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "31",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "4831, 7247",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "32",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "5093, 7639",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "32",
+      "Base Damage": "100%, 100%",
+      "Deals 81 to 121 Physical Damage": "5368, 8051",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

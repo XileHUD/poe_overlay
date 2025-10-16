@@ -1,0 +1,418 @@
+{
+  "name": "Cruelty Support",
+  "slug": "Cruelty_Support",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
+    "Acronym": "Hit, Duration, Cruelty",
+    "DropLevel": "18",
+    "BaseType": "Cruelty Support",
+    "Class": "Support Gems",
+    "Icon": "Y",
+    "ItemType": "Metadata/Items/Gems/SupportGemCruelty",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "18",
+      "Str": "21",
+      "Int": "14",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "",
+      "Supported Skills deal 15% more Damage with Hits": "15",
+      "Experience": "69,833"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "22",
+      "Str": "24",
+      "Int": "17",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "1",
+      "Supported Skills deal 15% more Damage with Hits": "15",
+      "Experience": "128,549"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "26",
+      "Str": "28",
+      "Int": "20",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "2",
+      "Supported Skills deal 15% more Damage with Hits": "16",
+      "Experience": "154,553"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "29",
+      "Str": "31",
+      "Int": "21",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "3",
+      "Supported Skills deal 15% more Damage with Hits": "16",
+      "Experience": "225,374"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "32",
+      "Str": "34",
+      "Int": "23",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "4",
+      "Supported Skills deal 15% more Damage with Hits": "17",
+      "Experience": "320,672"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "35",
+      "Str": "37",
+      "Int": "25",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "5",
+      "Supported Skills deal 15% more Damage with Hits": "17",
+      "Experience": "447,718"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "38",
+      "Str": "39",
+      "Int": "27",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "6",
+      "Supported Skills deal 15% more Damage with Hits": "18",
+      "Experience": "615,318"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "41",
+      "Str": "42",
+      "Int": "29",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "7",
+      "Supported Skills deal 15% more Damage with Hits": "18",
+      "Experience": "834,639"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "44",
+      "Str": "45",
+      "Int": "31",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "8",
+      "Supported Skills deal 15% more Damage with Hits": "19",
+      "Experience": "1,570,760"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "47",
+      "Str": "48",
+      "Int": "33",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "9",
+      "Supported Skills deal 15% more Damage with Hits": "19",
+      "Experience": "1,633,987"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "50",
+      "Str": "51",
+      "Int": "35",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "10",
+      "Supported Skills deal 15% more Damage with Hits": "20",
+      "Experience": "2,151,030"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "53",
+      "Str": "54",
+      "Int": "37",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "11",
+      "Supported Skills deal 15% more Damage with Hits": "20",
+      "Experience": "2,812,189"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Str": "57",
+      "Int": "39",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "12",
+      "Supported Skills deal 15% more Damage with Hits": "21",
+      "Experience": "3,655,184"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Str": "58",
+      "Int": "41",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "13",
+      "Supported Skills deal 15% more Damage with Hits": "21",
+      "Experience": "3,017,327"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Str": "60",
+      "Int": "42",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "14",
+      "Supported Skills deal 15% more Damage with Hits": "22",
+      "Experience": "7,818,905"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Str": "62",
+      "Int": "43",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "15",
+      "Supported Skills deal 15% more Damage with Hits": "22",
+      "Experience": "15,256,013"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Str": "64",
+      "Int": "44",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "16",
+      "Supported Skills deal 15% more Damage with Hits": "23",
+      "Experience": "26,260,555"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Str": "66",
+      "Int": "46",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "17",
+      "Supported Skills deal 15% more Damage with Hits": "23",
+      "Experience": "62,855,887"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Str": "68",
+      "Int": "47",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "18",
+      "Supported Skills deal 15% more Damage with Hits": "24",
+      "Experience": "212,002,638"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Str": "70",
+      "Int": "48",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "19",
+      "Supported Skills deal 15% more Damage with Hits": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "20",
+      "Supported Skills deal 15% more Damage with Hits": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "21",
+      "Supported Skills deal 15% more Damage with Hits": "25",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "22",
+      "Supported Skills deal 15% more Damage with Hits": "26",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "23",
+      "Supported Skills deal 15% more Damage with Hits": "26",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "24",
+      "Supported Skills deal 15% more Damage with Hits": "27",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "25",
+      "Supported Skills deal 15% more Damage with Hits": "27",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "26",
+      "Supported Skills deal 15% more Damage with Hits": "28",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "27",
+      "Supported Skills deal 15% more Damage with Hits": "28",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "28",
+      "Supported Skills deal 15% more Damage with Hits": "29",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "29",
+      "Supported Skills deal 15% more Damage with Hits": "29",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "29",
+      "Supported Skills deal 15% more Damage with Hits": "29",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "30",
+      "Supported Skills deal 15% more Damage with Hits": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "30",
+      "Supported Skills deal 15% more Damage with Hits": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "31",
+      "Supported Skills deal 15% more Damage with Hits": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "31",
+      "Supported Skills deal 15% more Damage with Hits": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "32",
+      "Supported Skills deal 15% more Damage with Hits": "31",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "32",
+      "Supported Skills deal 15% more Damage with Hits": "31",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "33",
+      "Supported Skills deal 15% more Damage with Hits": "31",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "33",
+      "Supported Skills deal 15% more Damage with Hits": "31",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Str": "",
+      "Int": "",
+      "Base Damage": "100%, 100%",
+      "#% increased Effect of Cruelty granted by Supported Skills": "34",
+      "Supported Skills deal 15% more Damage with Hits": "32",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

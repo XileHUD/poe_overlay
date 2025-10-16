@@ -1,0 +1,420 @@
+{
+  "name": "Lightning Conduit",
+  "slug": "Lightning_Conduit",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 1xOrb of Chance",
+    "Acronym": "Cooldown, Hit, Trigger, Shock",
+    "DropLevel": "28",
+    "BaseType": "Lightning Conduit",
+    "Class": "Skill Gems",
+    "TargetTypes": "Ground,",
+    "Type": "Spell, Damage, Area, Totemable, Trappable, Mineable, Triggerable, Multicastable, Lightning, AreaSpell, DynamicCooldown",
+    "ItemType": "Metadata/Items/Gems/SkillGemLightningConduit",
+    "ActiveSkillsCode": "lightning_conduit",
+    "Reference": "poe.ninja, Community Wiki"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "28",
+      "Int": "67",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "33, 98",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "10, 1",
+      "Experience": "199,345"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "31",
+      "Int": "73",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "40, 119",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "10, 1",
+      "Experience": "285,815"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "34",
+      "Int": "79",
+      "Cost": "7",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "48, 145",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "11, 1",
+      "Experience": "401,344"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "37",
+      "Int": "85",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "58, 175",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "11, 1",
+      "Experience": "554,379"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "40",
+      "Int": "92",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "70, 211",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "12, 1",
+      "Experience": "477,437"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "42",
+      "Int": "96",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "79, 238",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "12, 1",
+      "Experience": "583,786"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "44",
+      "Int": "100",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "89, 268",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "13, 1",
+      "Experience": "710,359"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "46",
+      "Int": "104",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "101, 302",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "13, 1",
+      "Experience": "1,355,511"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Int": "109",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "113, 340",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "14, 1",
+      "Experience": "1,138,877"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Int": "113",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "127, 382",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "15, 1",
+      "Experience": "1,368,233"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Int": "117",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "143, 429",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "15, 1",
+      "Experience": "1,638,338"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Int": "121",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "160, 480",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "16, 1",
+      "Experience": "1,956,648"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Int": "125",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "179, 538",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "16, 1",
+      "Experience": "3,655,184"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Int": "130",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "201, 602",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "17, 1",
+      "Experience": "3,017,327"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Int": "134",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "224, 673",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "17, 1",
+      "Experience": "7,759,995"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Int": "138",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "250, 751",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "18, 1",
+      "Experience": "15,138,193"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Int": "142",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "280, 839",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "18, 1",
+      "Experience": "26,083,825"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Int": "146",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "312, 935",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "19, 1",
+      "Experience": "62,620,247"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Int": "151",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "347, 1042",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "19, 1",
+      "Experience": "211,708,088"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Int": "155",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "387, 1161",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "20, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Int": "",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "431, 1292",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "20, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Int": "",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "479, 1437",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "20, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Int": "",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "532, 1597",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "20, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Int": "",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "592, 1775",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "20, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Int": "",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "657, 1971",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "20, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Int": "",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "729, 2188",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "20, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Int": "",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "809, 2427",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "21, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Int": "",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "897, 2692",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "21, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Int": "",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "994, 2983",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "21, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Int": "",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "1102, 3305",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "21, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Int": "",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "1160, 3479",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "21, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Int": "",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "1220, 3661",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "21, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Int": "",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "1284, 3852",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "21, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Int": "",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "1351, 4053",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "21, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Int": "",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "1421, 4264",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "21, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Int": "",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "1495, 4485",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "21, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Int": "",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "1573, 4718",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "22, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Int": "",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "1654, 4962",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "22, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Int": "",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "1740, 5219",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "22, 1",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Int": "",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 33 to 98 Lightning Damage": "1829, 5488",
+      "10% more Damage with Hits per 5% Shock Effect on Enemy": "22, 1",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

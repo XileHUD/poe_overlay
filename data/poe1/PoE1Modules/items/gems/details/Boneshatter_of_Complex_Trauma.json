@@ -1,0 +1,417 @@
+{
+  "name": "Boneshatter of Complex Trauma",
+  "slug": "Boneshatter_of_Complex_Trauma",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Boneshatter of Complex Trauma",
+    "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Warstaves",
+    "TargetTypes": "Ground, Enemy",
+    "Type": "Attack, MeleeSingleTarget, Multistrikeable, Melee, Area, Duration, Physical, InnateTrauma",
+    "ActiveSkillsCode": "boneshatter_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "28",
+      "Cost": "9",
+      "Base Damage": "231%, 231%",
+      "11 to 17 Added Attack Physical Damage": "11, 17",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 18",
+      "8% more Damage per Trauma, up to 200%": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "31",
+      "Cost": "9",
+      "Base Damage": "236.6%, 236.6%",
+      "11 to 17 Added Attack Physical Damage": "14, 21",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 24",
+      "8% more Damage per Trauma, up to 200%": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "34",
+      "Cost": "9",
+      "Base Damage": "242.3%, 242.3%",
+      "11 to 17 Added Attack Physical Damage": "18, 26",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 31",
+      "8% more Damage per Trauma, up to 200%": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "37",
+      "Cost": "9",
+      "Base Damage": "248.1%, 248.1%",
+      "11 to 17 Added Attack Physical Damage": "22, 33",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 40",
+      "8% more Damage per Trauma, up to 200%": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "40",
+      "Cost": "10",
+      "Base Damage": "253.9%, 253.9%",
+      "11 to 17 Added Attack Physical Damage": "27, 40",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 52",
+      "8% more Damage per Trauma, up to 200%": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "42",
+      "Cost": "10",
+      "Base Damage": "259.4%, 259.4%",
+      "11 to 17 Added Attack Physical Damage": "30, 45",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 62",
+      "8% more Damage per Trauma, up to 200%": "10",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "44",
+      "Cost": "10",
+      "Base Damage": "264.8%, 264.8%",
+      "11 to 17 Added Attack Physical Damage": "34, 52",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 73",
+      "8% more Damage per Trauma, up to 200%": "10",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "46",
+      "Cost": "10",
+      "Base Damage": "270.3%, 270.3%",
+      "11 to 17 Added Attack Physical Damage": "39, 58",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 87",
+      "8% more Damage per Trauma, up to 200%": "11",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Cost": "10",
+      "Base Damage": "275.8%, 275.8%",
+      "11 to 17 Added Attack Physical Damage": "44, 66",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 103",
+      "8% more Damage per Trauma, up to 200%": "11",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Cost": "10",
+      "Base Damage": "281.3%, 281.3%",
+      "11 to 17 Added Attack Physical Damage": "50, 75",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 121",
+      "8% more Damage per Trauma, up to 200%": "11",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Cost": "10",
+      "Base Damage": "286.8%, 286.8%",
+      "11 to 17 Added Attack Physical Damage": "56, 84",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 142",
+      "8% more Damage per Trauma, up to 200%": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Cost": "11",
+      "Base Damage": "292.4%, 292.4%",
+      "11 to 17 Added Attack Physical Damage": "63, 95",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 167",
+      "8% more Damage per Trauma, up to 200%": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Cost": "11",
+      "Base Damage": "298%, 298%",
+      "11 to 17 Added Attack Physical Damage": "71, 107",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 197",
+      "8% more Damage per Trauma, up to 200%": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Cost": "11",
+      "Base Damage": "303.7%, 303.7%",
+      "11 to 17 Added Attack Physical Damage": "80, 120",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 231",
+      "8% more Damage per Trauma, up to 200%": "13",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Cost": "11",
+      "Base Damage": "309.3%, 309.3%",
+      "11 to 17 Added Attack Physical Damage": "90, 135",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 270",
+      "8% more Damage per Trauma, up to 200%": "13",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Cost": "11",
+      "Base Damage": "315.2%, 315.2%",
+      "11 to 17 Added Attack Physical Damage": "101, 152",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 316",
+      "8% more Damage per Trauma, up to 200%": "14",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Cost": "11",
+      "Base Damage": "320.9%, 320.9%",
+      "11 to 17 Added Attack Physical Damage": "113, 170",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 368",
+      "8% more Damage per Trauma, up to 200%": "14",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Cost": "12",
+      "Base Damage": "326.7%, 326.7%",
+      "11 to 17 Added Attack Physical Damage": "127, 190",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 429",
+      "8% more Damage per Trauma, up to 200%": "14",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Cost": "12",
+      "Base Damage": "332.5%, 332.5%",
+      "11 to 17 Added Attack Physical Damage": "142, 213",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 501",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "12",
+      "Base Damage": "338.3%, 338.3%",
+      "11 to 17 Added Attack Physical Damage": "158, 238",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 582",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "12",
+      "Base Damage": "344.2%, 344.2%",
+      "11 to 17 Added Attack Physical Damage": "177, 265",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 676",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "12",
+      "Base Damage": "350%, 350%",
+      "11 to 17 Added Attack Physical Damage": "197, 295",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 786",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "12",
+      "Base Damage": "356%, 356%",
+      "11 to 17 Added Attack Physical Damage": "219, 329",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 911",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "12",
+      "Base Damage": "361.9%, 361.9%",
+      "11 to 17 Added Attack Physical Damage": "244, 366",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 1055",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "13",
+      "Base Damage": "368%, 368%",
+      "11 to 17 Added Attack Physical Damage": "271, 407",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 1223",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "13",
+      "Base Damage": "374%, 374%",
+      "11 to 17 Added Attack Physical Damage": "301, 452",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 1414",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "13",
+      "Base Damage": "380.1%, 380.1%",
+      "11 to 17 Added Attack Physical Damage": "334, 501",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 1632",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "13",
+      "Base Damage": "386.2%, 386.2%",
+      "11 to 17 Added Attack Physical Damage": "370, 555",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 1889",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "13",
+      "Base Damage": "392.3%, 392.3%",
+      "11 to 17 Added Attack Physical Damage": "410, 615",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 2177",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "13",
+      "Base Damage": "398.4%, 398.4%",
+      "11 to 17 Added Attack Physical Damage": "453, 680",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 2508",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "13",
+      "Base Damage": "401.5%, 401.5%",
+      "11 to 17 Added Attack Physical Damage": "477, 715",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 2691",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "14",
+      "Base Damage": "404.6%, 404.6%",
+      "11 to 17 Added Attack Physical Damage": "501, 751",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 2888",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "14",
+      "Base Damage": "407.7%, 407.7%",
+      "11 to 17 Added Attack Physical Damage": "526, 789",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 3106",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "14",
+      "Base Damage": "410.8%, 410.8%",
+      "11 to 17 Added Attack Physical Damage": "553, 829",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 3331",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "14",
+      "Base Damage": "413.9%, 413.9%",
+      "11 to 17 Added Attack Physical Damage": "581, 871",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 3572",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "14",
+      "Base Damage": "417%, 417%",
+      "11 to 17 Added Attack Physical Damage": "610, 914",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 3830",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "14",
+      "Base Damage": "420.2%, 420.2%",
+      "11 to 17 Added Attack Physical Damage": "640, 960",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 4106",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "14",
+      "Base Damage": "423.3%, 423.3%",
+      "11 to 17 Added Attack Physical Damage": "671, 1007",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 4401",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "14",
+      "Base Damage": "426.6%, 426.6%",
+      "11 to 17 Added Attack Physical Damage": "704, 1057",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 4728",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "14",
+      "Base Damage": "429.7%, 429.7%",
+      "11 to 17 Added Attack Physical Damage": "739, 1108",
+      "Gain 1 Trauma the first time this Attack Hits an EnemyTake 18 Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds": "6, 5066",
+      "8% more Damage per Trauma, up to 200%": "15",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

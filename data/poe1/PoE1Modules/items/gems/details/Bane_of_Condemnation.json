@@ -1,0 +1,376 @@
+{
+  "name": "Bane of Condemnation",
+  "slug": "Bane_of_Condemnation",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Bane of Condemnation",
+    "TargetTypes": "Enemy, Ground,",
+    "Type": "Spell, Area, Duration, DamageOverTime, Chaos, Multicastable, Cascadable, Triggerable, DegenOnlySpellDamage, CanRapidFire, AreaSpell, Hex",
+    "ActiveSkillsCode": "bane_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "24",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "70.8",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "27",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "88.4",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "27",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "30",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "109.5",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "33",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "134.8",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "33",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "36",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "165.3",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "36",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "39",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "201.7",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "39",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "42",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "245.2",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "42",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "45",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "297.2",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "45",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "359",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "48",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "406.6",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "50",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "460",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "52",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "519.9",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "54",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "587",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "56",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "662.2",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "58",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "746.3",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "60",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "840.4",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "62",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "945.7",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "64",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "1063.4",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "66",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Cost": "26",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "1194.8",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "68",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "1341.7",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "70",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "27",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "1505.6",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "72",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "1688.5",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "74",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "1892.6",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "76",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "28",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "2120.3",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "78",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "2374",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "80",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "30",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "2656.9",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "82",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "31",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "2971.9",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "84",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "31",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "3322.9",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "86",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "32",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "3713.7",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "88",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "32",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "4148.7",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "90",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "32",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "4384.3",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "91",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "34",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "4632.8",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "92",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "34",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "4894.9",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "93",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "34",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "5171.4",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "94",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "34",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "5462.9",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "95",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "34",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "5770.4",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "96",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "35",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "6094.6",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "97",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "35",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "6436.5",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "98",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "35",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "6797",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "99",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "35",
+      "Base Damage": "100%, 100%",
+      "Deals 70.8 Base Chaos Damage per second": "7177.1",
+      "Only applies Hexes from Curse Skill Gems requiring Level 24 or lower": "100",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

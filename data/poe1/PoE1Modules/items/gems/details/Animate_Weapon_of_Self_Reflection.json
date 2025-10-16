@@ -1,0 +1,418 @@
+{
+  "name": "Animate Weapon of Self Reflection",
+  "slug": "Animate_Weapon_of_Self_Reflection",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Animate Weapon of Self Reflection",
+    "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Fishing Rods, Rune Daggers, Warstaves",
+    "TargetTypes": "Any",
+    "Type": "Triggerable, Duration, Minion, MinionsCanExplode, Spell, CreatesMinion, Multicastable, CanRapidFire",
+    "MinionType": "Attack, Melee, MeleeSingleTarget, Multistrikeable, ThresholdJewelProjectile, ProjectilesFromUser, ThresholdJewelRangedAttack",
+    "ActiveSkillsCode": "animate_weapon_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "4",
+      "Cost": "4",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "9",
+      "Minions deal 100% of Damage": "100",
+      "Minions have #% more Attack Speed": "",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "6",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "11",
+      "Minions deal 100% of Damage": "2",
+      "Minions have #% more Attack Speed": "2",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "9",
+      "Cost": "5",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "14",
+      "Minions deal 100% of Damage": "4",
+      "Minions have #% more Attack Speed": "4",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "12",
+      "Cost": "6",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "18",
+      "Minions deal 100% of Damage": "6",
+      "Minions have #% more Attack Speed": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "16",
+      "Cost": "7",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "22",
+      "Minions deal 100% of Damage": "8",
+      "Minions have #% more Attack Speed": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "20",
+      "Cost": "7",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "26",
+      "Minions deal 100% of Damage": "10",
+      "Minions have #% more Attack Speed": "10",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "24",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "31",
+      "Minions deal 100% of Damage": "12",
+      "Minions have #% more Attack Speed": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "28",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "35",
+      "Minions deal 100% of Damage": "14",
+      "Minions have #% more Attack Speed": "14",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "32",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "40",
+      "Minions deal 100% of Damage": "16",
+      "Minions have #% more Attack Speed": "16",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "36",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "44",
+      "Minions deal 100% of Damage": "18",
+      "Minions have #% more Attack Speed": "18",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "40",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "49",
+      "Minions deal 100% of Damage": "20",
+      "Minions have #% more Attack Speed": "20",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "44",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "53",
+      "Minions deal 100% of Damage": "22",
+      "Minions have #% more Attack Speed": "22",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "48",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "58",
+      "Minions deal 100% of Damage": "24",
+      "Minions have #% more Attack Speed": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "52",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "62",
+      "Minions deal 100% of Damage": "26",
+      "Minions have #% more Attack Speed": "26",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "55",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "66",
+      "Minions deal 100% of Damage": "28",
+      "Minions have #% more Attack Speed": "28",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "58",
+      "Cost": "13",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "70",
+      "Minions deal 100% of Damage": "30",
+      "Minions have #% more Attack Speed": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "61",
+      "Cost": "14",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "74",
+      "Minions deal 100% of Damage": "32",
+      "Minions have #% more Attack Speed": "32",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "64",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "78",
+      "Minions deal 100% of Damage": "34",
+      "Minions have #% more Attack Speed": "34",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "67",
+      "Cost": "15",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "82",
+      "Minions deal 100% of Damage": "36",
+      "Minions have #% more Attack Speed": "36",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "16",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "38",
+      "Minions have #% more Attack Speed": "38",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "39",
+      "Minions have #% more Attack Speed": "39",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "17",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "40",
+      "Minions have #% more Attack Speed": "40",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "18",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "41",
+      "Minions have #% more Attack Speed": "41",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "42",
+      "Minions have #% more Attack Speed": "42",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "19",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "43",
+      "Minions have #% more Attack Speed": "43",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "44",
+      "Minions have #% more Attack Speed": "44",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "20",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "45",
+      "Minions have #% more Attack Speed": "45",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "21",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "46",
+      "Minions have #% more Attack Speed": "46",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "47",
+      "Minions have #% more Attack Speed": "47",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "22",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "48",
+      "Minions have #% more Attack Speed": "48",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "49",
+      "Minions have #% more Attack Speed": "49",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "50",
+      "Minions have #% more Attack Speed": "50",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "23",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "51",
+      "Minions have #% more Attack Speed": "51",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "52",
+      "Minions have #% more Attack Speed": "52",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "53",
+      "Minions have #% more Attack Speed": "53",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "24",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "54",
+      "Minions have #% more Attack Speed": "54",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "55",
+      "Minions have #% more Attack Speed": "55",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "56",
+      "Minions have #% more Attack Speed": "56",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "57",
+      "Minions have #% more Attack Speed": "57",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "25",
+      "Base Damage": "100%, 100%",
+      "Can use Items requiring up to Level 9": "100",
+      "Minions deal 100% of Damage": "58",
+      "Minions have #% more Attack Speed": "58",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

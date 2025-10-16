@@ -1,0 +1,417 @@
+{
+  "name": "Spectral Shield Throw of Shattering",
+  "slug": "Spectral_Shield_Throw_of_Shattering",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Spectral Shield Throw of Shattering",
+    "Weapon": "Shields",
+    "TargetTypes": "Enemy, Ground",
+    "Type": "Attack, RangedAttack, Projectile, ProjectilesFromUser, SingleMainProjectile, Cold",
+    "ActiveSkillsCode": "spectral_shield_throw_alt_x"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "28",
+      "Cost": "7",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "69, 103",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "4, 7",
+      "Fires 6 additional Projectiles": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "31",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "78, 117",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "4, 8",
+      "Fires 6 additional Projectiles": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "34",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "88, 132",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "4, 8",
+      "Fires 6 additional Projectiles": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "37",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "99, 149",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "5, 9",
+      "Fires 6 additional Projectiles": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "40",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "111, 166",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "5, 9",
+      "Fires 6 additional Projectiles": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "42",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "119, 179",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "5, 9",
+      "Fires 6 additional Projectiles": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "44",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "128, 193",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "5, 9",
+      "Fires 6 additional Projectiles": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "46",
+      "Cost": "8",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "138, 207",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "5, 9",
+      "Fires 6 additional Projectiles": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "148, 222",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "5, 9",
+      "Fires 6 additional Projectiles": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "158, 237",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "6, 9",
+      "Fires 6 additional Projectiles": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "169, 254",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "6, 9",
+      "Fires 6 additional Projectiles": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "181, 271",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "6, 10",
+      "Fires 6 additional Projectiles": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "193, 289",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "6, 10",
+      "Fires 6 additional Projectiles": "10",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "206, 308",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "6, 10",
+      "Fires 6 additional Projectiles": "10",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Cost": "9",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "219, 329",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "6, 10",
+      "Fires 6 additional Projectiles": "10",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "233, 350",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "6, 10",
+      "Fires 6 additional Projectiles": "11",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "248, 372",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "6, 11",
+      "Fires 6 additional Projectiles": "11",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "264, 396",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "6, 11",
+      "Fires 6 additional Projectiles": "11",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "280, 420",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "7, 12",
+      "Fires 6 additional Projectiles": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "297, 446",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "7, 12",
+      "Fires 6 additional Projectiles": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "315, 473",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "7, 12",
+      "Fires 6 additional Projectiles": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "334, 502",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "7, 12",
+      "Fires 6 additional Projectiles": "13",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Cost": "10",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "354, 532",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "7, 12",
+      "Fires 6 additional Projectiles": "13",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "375, 563",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "8, 14",
+      "Fires 6 additional Projectiles": "13",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "397, 596",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "8, 14",
+      "Fires 6 additional Projectiles": "14",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "420, 630",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "8, 14",
+      "Fires 6 additional Projectiles": "14",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "444, 667",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "8, 14",
+      "Fires 6 additional Projectiles": "14",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "470, 705",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "8, 14",
+      "Fires 6 additional Projectiles": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "496, 744",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "8, 14",
+      "Fires 6 additional Projectiles": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "524, 786",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "8, 14",
+      "Fires 6 additional Projectiles": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "539, 808",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "8, 14",
+      "Fires 6 additional Projectiles": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Cost": "11",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "553, 830",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "8, 14",
+      "Fires 6 additional Projectiles": "16",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "568, 853",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "8, 14",
+      "Fires 6 additional Projectiles": "16",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "584, 876",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "9, 16",
+      "Fires 6 additional Projectiles": "16",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "600, 899",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "9, 16",
+      "Fires 6 additional Projectiles": "16",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "616, 924",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "9, 16",
+      "Fires 6 additional Projectiles": "16",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "632, 949",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "9, 16",
+      "Fires 6 additional Projectiles": "16",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "649, 974",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "9, 16",
+      "Fires 6 additional Projectiles": "17",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "667, 1000",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "9, 16",
+      "Fires 6 additional Projectiles": "17",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Cost": "12",
+      "Base Damage": "100%, 100%",
+      "69 to 103 Base Off Hand Cold Damage": "685, 1027",
+      "4 to 7 Added Cold Damage per 15 Evasion Rating on Shield": "9, 16",
+      "Fires 6 additional Projectiles": "17",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}

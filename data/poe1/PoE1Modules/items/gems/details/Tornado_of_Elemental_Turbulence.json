@@ -1,0 +1,336 @@
+{
+  "name": "Tornado of Elemental Turbulence",
+  "slug": "Tornado_of_Elemental_Turbulence",
+  "metadata": {
+    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
+    "Acronym": "Ignite",
+    "BaseType": "Tornado of Elemental Turbulence",
+    "TargetTypes": "Ground, Enemy",
+    "Type": "Spell, Duration, Trappable, Totemable, Mineable, Triggerable, Damage, Physical, Area, Orb, AreaSpell, Fire, Cold, Lightning, RandomElement, Multicastable, CanRapidFire",
+    "ActiveSkillsCode": "tornado_alt_y"
+  },
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "34",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "51, 76",
+      "Tornado has #% increased Movement Speed": "",
+      "Experience": ""
+    },
+    {
+      "Level": "2",
+      "Requires Level": "36",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "58, 87",
+      "Tornado has #% increased Movement Speed": "3",
+      "Experience": ""
+    },
+    {
+      "Level": "3",
+      "Requires Level": "38",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "67, 100",
+      "Tornado has #% increased Movement Speed": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "4",
+      "Requires Level": "40",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "77, 115",
+      "Tornado has #% increased Movement Speed": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "5",
+      "Requires Level": "42",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "88, 132",
+      "Tornado has #% increased Movement Speed": "12",
+      "Experience": ""
+    },
+    {
+      "Level": "6",
+      "Requires Level": "44",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "101, 152",
+      "Tornado has #% increased Movement Speed": "15",
+      "Experience": ""
+    },
+    {
+      "Level": "7",
+      "Requires Level": "46",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "116, 173",
+      "Tornado has #% increased Movement Speed": "18",
+      "Experience": ""
+    },
+    {
+      "Level": "8",
+      "Requires Level": "48",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "132, 198",
+      "Tornado has #% increased Movement Speed": "21",
+      "Experience": ""
+    },
+    {
+      "Level": "9",
+      "Requires Level": "50",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "151, 226",
+      "Tornado has #% increased Movement Speed": "24",
+      "Experience": ""
+    },
+    {
+      "Level": "10",
+      "Requires Level": "52",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "172, 257",
+      "Tornado has #% increased Movement Speed": "27",
+      "Experience": ""
+    },
+    {
+      "Level": "11",
+      "Requires Level": "54",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "195, 293",
+      "Tornado has #% increased Movement Speed": "30",
+      "Experience": ""
+    },
+    {
+      "Level": "12",
+      "Requires Level": "56",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "222, 333",
+      "Tornado has #% increased Movement Speed": "33",
+      "Experience": ""
+    },
+    {
+      "Level": "13",
+      "Requires Level": "58",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "252, 378",
+      "Tornado has #% increased Movement Speed": "36",
+      "Experience": ""
+    },
+    {
+      "Level": "14",
+      "Requires Level": "60",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "286, 429",
+      "Tornado has #% increased Movement Speed": "39",
+      "Experience": ""
+    },
+    {
+      "Level": "15",
+      "Requires Level": "62",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "325, 487",
+      "Tornado has #% increased Movement Speed": "42",
+      "Experience": ""
+    },
+    {
+      "Level": "16",
+      "Requires Level": "64",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "368, 552",
+      "Tornado has #% increased Movement Speed": "45",
+      "Experience": ""
+    },
+    {
+      "Level": "17",
+      "Requires Level": "66",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "417, 625",
+      "Tornado has #% increased Movement Speed": "48",
+      "Experience": ""
+    },
+    {
+      "Level": "18",
+      "Requires Level": "68",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "471, 707",
+      "Tornado has #% increased Movement Speed": "51",
+      "Experience": ""
+    },
+    {
+      "Level": "19",
+      "Requires Level": "69",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "501, 752",
+      "Tornado has #% increased Movement Speed": "54",
+      "Experience": ""
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "533, 800",
+      "Tornado has #% increased Movement Speed": "57",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "602, 904",
+      "Tornado has #% increased Movement Speed": "60",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "680, 1021",
+      "Tornado has #% increased Movement Speed": "63",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "768, 1152",
+      "Tornado has #% increased Movement Speed": "66",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "867, 1300",
+      "Tornado has #% increased Movement Speed": "69",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "977, 1466",
+      "Tornado has #% increased Movement Speed": "72",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "1101, 1652",
+      "Tornado has #% increased Movement Speed": "75",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "1241, 1861",
+      "Tornado has #% increased Movement Speed": "78",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "1397, 2095",
+      "Tornado has #% increased Movement Speed": "81",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "1572, 2358",
+      "Tornado has #% increased Movement Speed": "84",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "1769, 2653",
+      "Tornado has #% increased Movement Speed": "87",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "1876, 2814",
+      "Tornado has #% increased Movement Speed": "88",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "1989, 2984",
+      "Tornado has #% increased Movement Speed": "90",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "2109, 3164",
+      "Tornado has #% increased Movement Speed": "91",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "2236, 3354",
+      "Tornado has #% increased Movement Speed": "93",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "2371, 3556",
+      "Tornado has #% increased Movement Speed": "94",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "2513, 3769",
+      "Tornado has #% increased Movement Speed": "96",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "2664, 3995",
+      "Tornado has #% increased Movement Speed": "97",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "2823, 4234",
+      "Tornado has #% increased Movement Speed": "99",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "2992, 4487",
+      "Tornado has #% increased Movement Speed": "100",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Base Damage": "100%, 100%",
+      "Deals 51 to 76 Physical Damage": "3170, 4755",
+      "Tornado has #% increased Movement Speed": "102",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": []
+}
