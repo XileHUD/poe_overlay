@@ -243,6 +243,7 @@ export function render(list: CurrencyItem[]): void {
       card.style.display='flex';
       card.style.flexDirection='column';
       card.style.gap='4px';
+      card.style.minHeight='90px';
       
       const orig = c.imageLocal ? `poe1/${c.imageLocal}` : '';
       const imgHtml = orig ? `<img class='currency-img' src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${orig}' decoding='async' style='width:26px; height:26px; object-fit:contain;'>` : '';

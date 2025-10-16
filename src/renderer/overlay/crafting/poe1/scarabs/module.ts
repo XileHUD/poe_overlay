@@ -244,6 +244,7 @@ export function render(list: ScarabItem[]): void {
       card.style.display='flex';
       card.style.flexDirection='column';
       card.style.gap='4px';
+      card.style.minHeight='90px';
       
       const orig = s.imageLocal ? `poe1/${s.imageLocal}` : '';
       const imgHtml = orig ? `<img class='scarab-img' src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${orig}' decoding='async' style='width:28px; height:28px; object-fit:contain;'>` : '';

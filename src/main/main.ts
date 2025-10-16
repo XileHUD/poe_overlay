@@ -656,10 +656,15 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                     return { valid: false, reason: 'poe1_missing_expected_categories' };
                 }
             } else {
-                const expectedFiles = ['Currency.json', 'Essences.json', 'Uniques.json'];
-                const hasExpected = expectedFiles.some((file) => fs.existsSync(path.join(normalized, file)));
-                if (!hasExpected) {
-                    return { valid: false, reason: 'poe2_missing_expected_files' };
+                // PoE2: just check if directory exists and has some JSON files
+                try {
+                    const files = fs.readdirSync(normalized);
+                    const hasJsonFiles = files.some(f => f.endsWith('.json'));
+                    if (!hasJsonFiles) {
+                        return { valid: false, reason: 'poe2_missing_json_files' };
+                    }
+                } catch {
+                    return { valid: false, reason: 'poe2_read_error' };
                 }
             }
 
@@ -743,6 +748,14 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             // 4) Packaged resources (electron-builder extraFiles)
             const base = path.join(process.resourcesPath || '', 'data', version);
             if (fs.existsSync(base)) {
+                if (version === 'poe1') {
+                    // PoE1: look for PoE1Modules subdirectory
+                    const poe1Modules = path.join(base, 'PoE1Modules');
+                    if (fs.existsSync(poe1Modules)) {
+                        return poe1Modules;
+                    }
+                }
+                // PoE2 or fallback: look for first subdirectory (e.g., "Rise of the Abyssal")
                 const entries = fs.readdirSync(base)
                     .map((entry) => path.join(base, entry))
                     .filter((fullPath) => {
@@ -778,6 +791,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
         }
         
         // PoE1: modifiers are in PoE1Modifiers, items/gems are in PoE1Modules
+        // 1) Try dev path
         try {
             const poe1Root = path.join(__dirname, '../../data/poe1');
             if (fs.existsSync(poe1Root)) {
@@ -794,6 +808,17 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 // Legacy fallback: SecretLeague
                 const legacyDir = entries.find((candidate) => /SecretLeague/i.test(candidate));
                 if (legacyDir) return legacyDir;
+            }
+        } catch {}
+        
+        // 2) Try packaged resources path
+        try {
+            const poe1Root = path.join(process.resourcesPath || '', 'data', 'poe1');
+            if (fs.existsSync(poe1Root)) {
+                const poe1Modifiers = path.join(poe1Root, 'PoE1Modifiers');
+                if (fs.existsSync(poe1Modifiers)) {
+                    return poe1Modifiers;
+                }
             }
         } catch {}
         

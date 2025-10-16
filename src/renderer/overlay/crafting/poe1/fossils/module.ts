@@ -244,6 +244,7 @@ export function render(list: FossilItem[]): void {
       card.style.display='flex';
       card.style.flexDirection='column';
       card.style.gap='4px';
+      card.style.minHeight='90px';
       
       const orig = foss.imageLocal ? `poe1/${foss.imageLocal}` : '';
       const imgHtml = orig ? `<img class='fossil-img' src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${orig}' decoding='async' style='width:26px; height:26px; object-fit:contain;'>` : '';

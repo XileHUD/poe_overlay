@@ -249,6 +249,7 @@ export function render(list: EmberItem[]): void {
       card.style.display='flex';
       card.style.flexDirection='column';
       card.style.gap='4px';
+      card.style.minHeight='90px';
       
       const orig = ember.imageLocal ? `poe1/${ember.imageLocal}` : '';
       const imgHtml = orig ? `<img class='ember-img' src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${orig}' decoding='async' style='width:26px; height:26px; object-fit:contain;'>` : '';
