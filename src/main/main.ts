@@ -338,6 +338,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
 
             this.migrateClipboardDelaySetting();
 
+            this.initializeFontSize();
+
             try {
                 const storedLeagueRaw = this.settingsService.get('merchantHistoryLeague');
                 const storedSource = this.settingsService.get('merchantHistoryLeagueSource');
@@ -633,6 +635,41 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
         } catch {}
     }
 
+    private validateDataDirCandidate(candidate: string | null | undefined, version: OverlayVersion): { valid: boolean; reason?: string } {
+        if (typeof candidate !== 'string' || candidate.trim().length === 0) {
+            return { valid: false, reason: 'invalid_path' };
+        }
+        try {
+            const normalized = path.resolve(candidate);
+            if (!fs.existsSync(normalized)) {
+                return { valid: false, reason: 'missing' };
+            }
+
+            if (version === 'poe1') {
+                const itemsDir = path.join(normalized, 'items');
+                if (!fs.existsSync(itemsDir)) {
+                    return { valid: false, reason: 'poe1_missing_items_dir' };
+                }
+                const expectedSubdirs = ['currency', 'essences', 'fossils', 'embers', 'scarabs'];
+                const hasExpected = expectedSubdirs.some((dir) => fs.existsSync(path.join(itemsDir, dir)));
+                if (!hasExpected) {
+                    return { valid: false, reason: 'poe1_missing_expected_categories' };
+                }
+            } else {
+                const expectedFiles = ['Currency.json', 'Essences.json', 'Uniques.json'];
+                const hasExpected = expectedFiles.some((file) => fs.existsSync(path.join(normalized, file)));
+                if (!hasExpected) {
+                    return { valid: false, reason: 'poe2_missing_expected_files' };
+                }
+            }
+
+            return { valid: true };
+        } catch (error) {
+            console.warn('[DataPath] validation error for', candidate, error);
+            return { valid: false, reason: 'validation_error' };
+        }
+    }
+
     private resolveInitialDataPath(): string {
         const version: OverlayVersion = this.overlayVersion === 'poe1' ? 'poe1' : 'poe2';
 
@@ -640,9 +677,16 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             // 1) Environment override (version specific first, then generic)
             const specificEnvKey = version === 'poe1' ? 'XILEHUD_POE1_DATA_DIR' : 'XILEHUD_POE2_DATA_DIR';
             const specificEnv = process.env[specificEnvKey];
-            if (specificEnv && fs.existsSync(specificEnv)) return specificEnv;
+            const specificValidation = this.validateDataDirCandidate(specificEnv, version);
+            if (specificValidation.valid && specificEnv) {
+                return path.resolve(specificEnv);
+            }
+
             const genericEnv = process.env.XILEHUD_DATA_DIR;
-            if (genericEnv && fs.existsSync(genericEnv)) return genericEnv;
+            const genericValidation = this.validateDataDirCandidate(genericEnv, version);
+            if (genericValidation.valid && genericEnv) {
+                return path.resolve(genericEnv);
+            }
         } catch {}
 
         try {
@@ -654,12 +698,14 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 const keyed = typeof cfg === 'object' && cfg ? cfg : {};
                 const versionKey = version === 'poe1' ? 'poe1DataDir' : 'poe2DataDir';
                 const maybeSpecific = keyed?.[versionKey];
-                if (typeof maybeSpecific === 'string' && fs.existsSync(maybeSpecific)) {
-                    return maybeSpecific;
+                const specificValidation = this.validateDataDirCandidate(maybeSpecific, version);
+                if (specificValidation.valid && typeof maybeSpecific === 'string') {
+                    return path.resolve(maybeSpecific);
                 }
                 const legacyShared = keyed?.dataDir;
-                if (typeof legacyShared === 'string' && fs.existsSync(legacyShared)) {
-                    return legacyShared;
+                const legacyValidation = this.validateDataDirCandidate(legacyShared, version);
+                if (legacyValidation.valid && typeof legacyShared === 'string') {
+                    return path.resolve(legacyShared);
                 }
             }
         } catch {}
@@ -683,8 +729,10 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                         if (modules) return modules;
                         // Legacy fallback: "Secret" or "Rise of the Abyssal"
                         const secret = entries.find((candidate) => /^Secret$/i.test(path.basename(candidate)));
-                        if (secret) return secret;
+                        if (secret && this.validateDataDirCandidate(secret, version).valid) return secret;
                     }
+                    const firstValid = entries.find((entry) => this.validateDataDirCandidate(entry, version).valid);
+                    if (firstValid) return firstValid;
                     return entries[0];
                 }
                 return devRoot;
@@ -895,6 +943,16 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                     currency: false,
                     catalysts: false,
                     socketables: false
+                }
+            },
+            poe1Crafting: {
+                enabled: false,
+                subcategories: {
+                    scarabs: false,
+                    currency: false,
+                    essences: false,
+                    fossils: false,
+                    embers: false
                 }
             },
             character: {
@@ -2298,6 +2356,28 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         this.settingsService.set('clipboardDelayMigratedV3', true);
     }
 
+    /**
+     * Initialize font size to 115% on first install only.
+     * Subsequent launches will respect the user's saved font size.
+     */
+    private initializeFontSize(): void {
+        if (!this.settingsService) return;
+
+        // Check if we've already initialized font size
+        const fontSizeInitialized = this.settingsService.get('fontSizeInitialized');
+        if (fontSizeInitialized) return;
+
+        // Set default font size to 115 (115%)
+        const currentFontSize = this.settingsService.get('fontSize');
+        if (currentFontSize === null || currentFontSize === undefined) {
+            console.log('[Settings] Setting default font size to 115% on first install');
+            this.settingsService.set('fontSize', 115);
+        }
+
+        // Mark as initialized so we don't override user changes later
+        this.settingsService.set('fontSizeInitialized', true);
+    }
+
     private isParsedItemAllowed(parsed: any): boolean {
         if (!parsed) return false;
         if (!this.featureService) return true;
@@ -2573,7 +2653,8 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
             modifierDatabase: this.modifierDatabase,
             getDataDir: () => this.getDataDir(),
             getUserConfigDir: () => this.getUserConfigDir(),
-            getOverlayVersion: () => this.overlayVersion
+            getOverlayVersion: () => this.overlayVersion,
+            validateDataDir: (dirPath) => this.validateDataDirCandidate(dirPath, this.overlayVersion)
         });
 
         // Feature configuration IPC handlers
@@ -2583,9 +2664,20 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
 
                 if (this.overlayVersion === 'poe1') {
                     const disabled = this.buildDisabledFeatureConfig();
+
                     return {
                         ...disabled,
                         poe1Modifiers: config.poe1Modifiers ?? disabled.poe1Modifiers,
+                        poe1Crafting: {
+                            enabled: config.poe1Crafting?.enabled ?? disabled.poe1Crafting.enabled,
+                            subcategories: {
+                                scarabs: config.poe1Crafting?.subcategories?.scarabs ?? disabled.poe1Crafting.subcategories.scarabs,
+                                currency: config.poe1Crafting?.subcategories?.currency ?? disabled.poe1Crafting.subcategories.currency,
+                                essences: config.poe1Crafting?.subcategories?.essences ?? disabled.poe1Crafting.subcategories.essences,
+                                fossils: config.poe1Crafting?.subcategories?.fossils ?? disabled.poe1Crafting.subcategories.fossils,
+                                embers: config.poe1Crafting?.subcategories?.embers ?? disabled.poe1Crafting.subcategories.embers
+                            }
+                        },
                         poe1Items: {
                             enabled: config.poe1Items?.enabled ?? disabled.poe1Items.enabled,
                             subcategories: {

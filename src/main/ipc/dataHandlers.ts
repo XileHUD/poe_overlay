@@ -11,6 +11,7 @@ export interface DataIpcDeps {
   modifierDatabase: ModifierDatabase;
   getUserConfigDir(): string; // for persistence of data dir selection
   getOverlayVersion(): OverlayVersion;
+  validateDataDir?(dirPath: string): { valid: boolean; reason?: string };
 }
 
 export function registerDataIpc(deps: DataIpcDeps) {
@@ -71,8 +72,14 @@ export function registerDataIpc(deps: DataIpcDeps) {
     return deps.getDataDir();
   });
 
+  const validateDataDir = deps.validateDataDir ?? (() => ({ valid: true as const }));
+
   ipcMain.handle('set-data-dir', async (_e, dirPath: string) => {
     if (typeof dirPath === 'string' && dirPath.trim()) {
+      const validation = validateDataDir(dirPath);
+      if (!validation.valid) {
+        return { ok: false, error: validation.reason || 'invalid_path' };
+      }
       (modifierDatabase as any).setDataPath?.(dirPath);
       (modifierDatabase as any).reload?.();
       // persist
@@ -198,6 +205,11 @@ export function registerDataIpc(deps: DataIpcDeps) {
   // PoE1-specific handlers
   let poe1UniquesCache: any | undefined;
   let poe1BasesCache: any | undefined;
+  let poe1EssencesCache: any | undefined;
+  let poe1EmbersCache: any | undefined;
+  let poe1FossilsCache: any | undefined;
+  let poe1CurrencyCache: any | undefined;
+  let poe1ScarabsCache: any | undefined;
 
   const classifyReplicaCategory = (baseType: string): 'WeaponUnique' | 'ArmourUnique' | 'OtherUnique' => {
     const lower = (baseType || '').toLowerCase();
@@ -251,6 +263,86 @@ export function registerDataIpc(deps: DataIpcDeps) {
     return poe1UniquesCache;
   };
 
+  const loadPoe1Essences = () => {
+    try {
+      const dataDir = deps.getDataDir();
+      const essencesPath = path.join(dataDir, 'items', 'essences', 'Essences.json');
+      if (fs.existsSync(essencesPath)) {
+        const raw = fs.readFileSync(essencesPath, 'utf-8');
+        poe1EssencesCache = JSON.parse(raw);
+      } else {
+        poe1EssencesCache = { error: 'not_found', filePath: essencesPath };
+      }
+    } catch (e: any) {
+      poe1EssencesCache = { error: e?.message || 'unknown_error' };
+    }
+    return poe1EssencesCache;
+  };
+
+  const loadPoe1Embers = () => {
+    try {
+      const dataDir = deps.getDataDir();
+      const embersPath = path.join(dataDir, 'items', 'embers', 'Embers.json');
+      if (fs.existsSync(embersPath)) {
+        const raw = fs.readFileSync(embersPath, 'utf-8');
+        poe1EmbersCache = JSON.parse(raw);
+      } else {
+        poe1EmbersCache = { error: 'not_found', filePath: embersPath };
+      }
+    } catch (e: any) {
+      poe1EmbersCache = { error: e?.message || 'unknown_error' };
+    }
+    return poe1EmbersCache;
+  };
+
+  const loadPoe1Fossils = () => {
+    try {
+      const dataDir = deps.getDataDir();
+      const fossilsPath = path.join(dataDir, 'items', 'fossils', 'Fossils.json');
+      if (fs.existsSync(fossilsPath)) {
+        const raw = fs.readFileSync(fossilsPath, 'utf-8');
+        poe1FossilsCache = JSON.parse(raw);
+      } else {
+        poe1FossilsCache = { error: 'not_found', filePath: fossilsPath };
+      }
+    } catch (e: any) {
+      poe1FossilsCache = { error: e?.message || 'unknown_error' };
+    }
+    return poe1FossilsCache;
+  };
+
+  const loadPoe1Currency = () => {
+    try {
+      const dataDir = deps.getDataDir();
+      const currencyPath = path.join(dataDir, 'items', 'currency', 'Currency.json');
+      if (fs.existsSync(currencyPath)) {
+        const raw = fs.readFileSync(currencyPath, 'utf-8');
+        poe1CurrencyCache = JSON.parse(raw);
+      } else {
+        poe1CurrencyCache = { error: 'not_found', filePath: currencyPath };
+      }
+    } catch (e: any) {
+      poe1CurrencyCache = { error: e?.message || 'unknown_error' };
+    }
+    return poe1CurrencyCache;
+  };
+
+  const loadPoe1Scarabs = () => {
+    try {
+      const dataDir = deps.getDataDir();
+      const scarabsPath = path.join(dataDir, 'items', 'scarabs', 'Scarabs.json');
+      if (fs.existsSync(scarabsPath)) {
+        const raw = fs.readFileSync(scarabsPath, 'utf-8');
+        poe1ScarabsCache = JSON.parse(raw);
+      } else {
+        poe1ScarabsCache = { error: 'not_found', filePath: scarabsPath };
+      }
+    } catch (e: any) {
+      poe1ScarabsCache = { error: e?.message || 'unknown_error' };
+    }
+    return poe1ScarabsCache;
+  };
+
   const loadPoe1Bases = () => {
     try {
       const dataDir = deps.getDataDir();
@@ -287,10 +379,20 @@ export function registerDataIpc(deps: DataIpcDeps) {
 
   cacheInvalidators.set('poe1:uniques', () => { poe1UniquesCache = undefined; });
   cacheInvalidators.set('poe1:bases', () => { poe1BasesCache = undefined; });
+  cacheInvalidators.set('poe1:essences', () => { poe1EssencesCache = undefined; });
+  cacheInvalidators.set('poe1:embers', () => { poe1EmbersCache = undefined; });
+  cacheInvalidators.set('poe1:fossils', () => { poe1FossilsCache = undefined; });
+  cacheInvalidators.set('poe1:currency', () => { poe1CurrencyCache = undefined; });
+  cacheInvalidators.set('poe1:scarabs', () => { poe1ScarabsCache = undefined; });
 
   if (overlayVersion === 'poe1') {
     queuePreload('poe1:uniques', async () => { poe1UniquesCache = undefined; loadPoe1Uniques(); });
     queuePreload('poe1:bases', async () => { poe1BasesCache = undefined; loadPoe1Bases(); });
+    queuePreload('poe1:essences', async () => { poe1EssencesCache = undefined; loadPoe1Essences(); });
+    queuePreload('poe1:embers', async () => { poe1EmbersCache = undefined; loadPoe1Embers(); });
+    queuePreload('poe1:fossils', async () => { poe1FossilsCache = undefined; loadPoe1Fossils(); });
+    queuePreload('poe1:currency', async () => { poe1CurrencyCache = undefined; loadPoe1Currency(); });
+    queuePreload('poe1:scarabs', async () => { poe1ScarabsCache = undefined; loadPoe1Scarabs(); });
   }
 
   try { ipcMain.removeHandler('get-poe1-uniques'); } catch {}
@@ -312,6 +414,66 @@ export function registerDataIpc(deps: DataIpcDeps) {
         loadPoe1Bases();
       }
       return poe1BasesCache;
+    } catch (e: any) {
+      return { error: e?.message || 'unknown_error' };
+    }
+  });
+
+  try { ipcMain.removeHandler('get-poe1-essences'); } catch {}
+  ipcMain.handle('get-poe1-essences', async () => {
+    try {
+      if (typeof poe1EssencesCache === 'undefined') {
+        loadPoe1Essences();
+      }
+      return poe1EssencesCache;
+    } catch (e: any) {
+      return { error: e?.message || 'unknown_error' };
+    }
+  });
+
+  try { ipcMain.removeHandler('get-poe1-embers'); } catch {}
+  ipcMain.handle('get-poe1-embers', async () => {
+    try {
+      if (typeof poe1EmbersCache === 'undefined') {
+        loadPoe1Embers();
+      }
+      return poe1EmbersCache;
+    } catch (e: any) {
+      return { error: e?.message || 'unknown_error' };
+    }
+  });
+
+  try { ipcMain.removeHandler('get-poe1-fossils'); } catch {}
+  ipcMain.handle('get-poe1-fossils', async () => {
+    try {
+      if (typeof poe1FossilsCache === 'undefined') {
+        loadPoe1Fossils();
+      }
+      return poe1FossilsCache;
+    } catch (e: any) {
+      return { error: e?.message || 'unknown_error' };
+    }
+  });
+
+  try { ipcMain.removeHandler('get-poe1-currency'); } catch {}
+  ipcMain.handle('get-poe1-currency', async () => {
+    try {
+      if (typeof poe1CurrencyCache === 'undefined') {
+        loadPoe1Currency();
+      }
+      return poe1CurrencyCache;
+    } catch (e: any) {
+      return { error: e?.message || 'unknown_error' };
+    }
+  });
+
+  try { ipcMain.removeHandler('get-poe1-scarabs'); } catch {}
+  ipcMain.handle('get-poe1-scarabs', async () => {
+    try {
+      if (typeof poe1ScarabsCache === 'undefined') {
+        loadPoe1Scarabs();
+      }
+      return poe1ScarabsCache;
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }

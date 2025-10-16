@@ -51,6 +51,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
     // PoE1-specific data
     getPoe1Uniques: () => ipcRenderer.invoke('get-poe1-uniques'),
     getPoe1Bases: () => ipcRenderer.invoke('get-poe1-bases'),
+    getPoe1Essences: () => ipcRenderer.invoke('get-poe1-essences'),
+    getPoe1Embers: () => ipcRenderer.invoke('get-poe1-embers'),
+    getPoe1Fossils: () => ipcRenderer.invoke('get-poe1-fossils'),
+    getPoe1Currency: () => ipcRenderer.invoke('get-poe1-currency'),
+    getPoe1Scarabs: () => ipcRenderer.invoke('get-poe1-scarabs'),
     // Diagnostics
     getImageLog: () => ipcRenderer.invoke('debug-get-image-log'),
     cacheImage: (url: string) => ipcRenderer.invoke('cache-image', url),

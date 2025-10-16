@@ -74,6 +74,11 @@
             body.overlay-poe1-mode #noFeaturesPlaceholder .no-features-title {
                 color: var(--accent-orange);
             }
+            /* PoE1/PoE2 menu item visibility */
+            .poe1-only { display: none !important; }
+            .poe2-only { display: flex !important; }
+            body.overlay-poe1-mode .poe1-only { display: flex !important; }
+            body.overlay-poe1-mode .poe2-only { display: none !important; }
         </style>
 </head>
 <body>
@@ -289,33 +294,54 @@
                 </span>
                 <span>Crafting ▾</span>
                 <div id="craftingMenu" style="display:none; position:absolute; left:0; bottom:100%; transform: translateY(-4px); background: var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; min-width:160px; box-shadow:0 2px 6px rgba(0,0,0,0.4); z-index:200;">
-                    <div class="crafting-menu-item" data-action="liquid-emotions" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                    <div class="crafting-menu-item poe2-only" data-action="liquid-emotions" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C9 7 7 9.5 7 13a5 5 0 0010 0c0-3.5-2-6-5-11z"/></svg></span>
                         <span>Liquid Emotions</span>
                     </div>
-                    <div class="crafting-menu-item" data-action="annoints" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                    <div class="crafting-menu-item poe2-only" data-action="annoints" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-9 4 4 8-12" /><path d="M2 4h6"/></svg></span>
                         <span>Annoints</span>
                     </div>
-                    <div class="crafting-menu-item" data-action="essences" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                    <div class="crafting-menu-item poe2-only" data-action="essences" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l6 6-6 14-6-14 6-6z"/></svg></span>
                         <span>Essences</span>
                     </div>
-                    <div class="crafting-menu-item" data-action="omens" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                    <div class="crafting-menu-item poe2-only" data-action="omens" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4" /><path d="M2 12h2M20 12h2M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg></span>
                         <span>Omens</span>
                     </div>
-                    <div class="crafting-menu-item" data-action="currency" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                    <div class="crafting-menu-item poe2-only" data-action="currency" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="3"/><circle cx="16" cy="12" r="3"/><path d="M8 9V5m0 14v-4m8-6V5m0 14v-4"/></svg></span>
                         <span>Currency</span>
                     </div>
-                    <div class="crafting-menu-item" data-action="catalysts" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                    <div class="crafting-menu-item poe2-only" data-action="catalysts" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 5-3 5-3-5 3-5z"/><path d="M5 19h14"/><path d="M5 15h14"/></svg></span>
                         <span>Catalysts</span>
                     </div>
-                    <div class="crafting-menu-item" data-action="socketables" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                    <div class="crafting-menu-item poe2-only" data-action="socketables" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="7" height="8" rx="1"/><rect x="14" y="5" width="7" height="14" rx="1"/></svg></span>
                         <span>Socketables</span>
+                    </div>
+                    <!-- PoE1 Crafting Items -->
+                    <div class="crafting-menu-item poe1-only" data-action="poe1-scarabs" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-1.5 1.5-3 3.5-3 6 0 1.5.5 3 1.5 4l-4 4c-1 1-1.5 2.5-1.5 4s.5 3 1.5 4l4-4c1 1 2.5 1.5 4 1.5 2.5 0 4.5-1.5 6-3L12 2z"/></svg></span>
+                        <span>Scarabs</span>
+                    </div>
+                    <div class="crafting-menu-item poe1-only" data-action="poe1-currency" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="3"/><circle cx="16" cy="12" r="3"/><path d="M8 9V5m0 14v-4m8-6V5m0 14v-4"/></svg></span>
+                        <span>Currency</span>
+                    </div>
+                    <div class="crafting-menu-item poe1-only" data-action="poe1-essences" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l6 6-6 14-6-14 6-6z"/></svg></span>
+                        <span>Essences</span>
+                    </div>
+                    <div class="crafting-menu-item poe1-only" data-action="poe1-fossils" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M12 3v18M8 8l8 8M16 8l-8 8"/></svg></span>
+                        <span>Fossils</span>
+                    </div>
+                    <div class="crafting-menu-item poe1-only" data-action="poe1-embers" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C9 7 7 9.5 7 13a5 5 0 0010 0c0-3.5-2-6-5-11z"/><path d="M9 16c0 1.5.5 2.5 3 2.5s3-1 3-2.5"/></svg></span>
+                        <span>Allflames</span>
                     </div>
                         </div>
             </div>
@@ -539,6 +565,7 @@
     } catch {}
 
     let lastContext = loadLastContext();
+    let activeView = 'modifiers';
 
     function saveLastContext() {
         try {
@@ -830,7 +857,8 @@
 
     // Clean view switching: only one container visible at a time
     function setView(view){
-        let targetView = view;
+    const previousView = activeView;
+    let targetView = view;
         if (view === 'modifiers' && !featureAvailability.modifiers) {
             targetView = pickFirstAvailableView('crafting');
         } else if ((view === 'crafting' || view === 'character') && !featureAvailability.crafting) {
@@ -887,7 +915,9 @@
         } else if (view === 'crafting'){
             if (crafting) { 
                 crafting.style.display = 'block'; 
-                crafting.innerHTML = ''; 
+                if (previousView !== 'crafting') {
+                    crafting.innerHTML = ''; 
+                }
             }
             setControlPanelVisible(false);
             document.body.classList.add('crafting-mode');
@@ -932,7 +962,8 @@
             try { window.OverlayHistory?.onEnterView?.(); } catch {}
         }
         
-        updateLastContext({ view });
+    activeView = view;
+    updateLastContext({ view });
         console.log('setView:', view, 'body classes:', document.body.className);
     }
 
@@ -946,6 +977,11 @@
     if (key === 'currency') { markCraftingAction('currency'); return; }
     if (key === 'catalysts') { markCraftingAction('catalysts'); return; }
     if (key === 'socketables') { markCraftingAction('socketables'); return; }
+    if (key === 'poe1 scarabs') { markCraftingAction('poe1-scarabs'); return; }
+    if (key === 'poe1 currency') { markCraftingAction('poe1-currency'); return; }
+    if (key === 'poe1 essences') { markCraftingAction('poe1-essences'); return; }
+    if (key === 'poe1 fossils') { markCraftingAction('poe1-fossils'); return; }
+    if (key === 'poe1 embers' || key === 'poe1 allflames') { markCraftingAction('poe1-embers'); return; }
     if (key === 'gems') { markCharacterAction('gems'); return; }
     if (key === 'quest passives') { markCharacterAction('quest-passives'); return; }
     if (key === 'keystones') { markCharacterAction('keystones'); return; }
@@ -992,6 +1028,12 @@
                 if (key === 'currency') { await showCurrency(); setHeader('Currency'); recordHeaderAction('Currency'); return true; }
                 if (key === 'catalysts') { await showCatalysts(); setHeader('Catalysts'); recordHeaderAction('Catalysts'); return true; }
                 if (key === 'socketables') { await showSocketables(); setHeader('Socketables'); recordHeaderAction('Socketables'); return true; }
+                // PoE1 Crafting actions
+                if (key === 'poe1-scarabs') { await showPoe1Scarabs(); setHeader('PoE1 Scarabs'); recordHeaderAction('PoE1 Scarabs'); return true; }
+                if (key === 'poe1-currency') { await showPoe1Currency(); setHeader('PoE1 Currency'); recordHeaderAction('PoE1 Currency'); return true; }
+                if (key === 'poe1-essences') { await showPoe1Essences(); setHeader('PoE1 Essences'); recordHeaderAction('PoE1 Essences'); return true; }
+                if (key === 'poe1-fossils') { await showPoe1Fossils(); setHeader('PoE1 Fossils'); recordHeaderAction('PoE1 Fossils'); return true; }
+                if (key === 'poe1-embers') { await showPoe1Embers(); setHeader('PoE1 Allflames'); recordHeaderAction('PoE1 Allflames'); return true; }
                 return false;
             }
 
@@ -1106,7 +1148,7 @@
         }
 
         if (featureAvailability.crafting) {
-            const craftingActions = ['liquid-emotions', 'annoints', 'essences', 'omens', 'currency', 'catalysts', 'socketables'];
+            const craftingActions = ['liquid-emotions', 'annoints', 'essences', 'omens', 'currency', 'catalysts', 'socketables', 'poe1-scarabs', 'poe1-currency', 'poe1-essences', 'poe1-fossils', 'poe1-embers'];
             for (const key of craftingActions) {
                 if (await runStoredAction(`crafting:${key}`)) return true;
             }
@@ -1188,6 +1230,17 @@
     async function showAnnoints(){ if (window.OverlayAnnoints && window.OverlayAnnoints.show) { try { return await window.OverlayAnnoints.show(); } catch {} } }
     async function showEssences(){ if (window.OverlayEssences && window.OverlayEssences.show) { try { return await window.OverlayEssences.show(); } catch {} } }
     function renderEssences(list){ if (window.OverlayEssences && window.OverlayEssences.render) { try { return window.OverlayEssences.render(list); } catch {} } }
+    // PoE1 Crafting
+    async function showPoe1Scarabs(){ if (window.OverlayPoe1Scarabs && window.OverlayPoe1Scarabs.show) { try { return await window.OverlayPoe1Scarabs.show(); } catch {} } }
+    function renderPoe1Scarabs(list){ if (window.OverlayPoe1Scarabs && window.OverlayPoe1Scarabs.render) { try { return window.OverlayPoe1Scarabs.render(list); } catch {} } }
+    async function showPoe1Currency(){ if (window.OverlayPoe1Currency && window.OverlayPoe1Currency.show) { try { return await window.OverlayPoe1Currency.show(); } catch {} } }
+    function renderPoe1Currency(list){ if (window.OverlayPoe1Currency && window.OverlayPoe1Currency.render) { try { return window.OverlayPoe1Currency.render(list); } catch {} } }
+    async function showPoe1Essences(){ if (window.OverlayPoe1Essences && window.OverlayPoe1Essences.show) { try { return await window.OverlayPoe1Essences.show(); } catch {} } }
+    function renderPoe1Essences(list){ if (window.OverlayPoe1Essences && window.OverlayPoe1Essences.render) { try { return window.OverlayPoe1Essences.render(list); } catch {} } }
+    async function showPoe1Fossils(){ if (window.OverlayPoe1Fossils && window.OverlayPoe1Fossils.show) { try { return await window.OverlayPoe1Fossils.show(); } catch {} } }
+    function renderPoe1Fossils(list){ if (window.OverlayPoe1Fossils && window.OverlayPoe1Fossils.render) { try { return window.OverlayPoe1Fossils.render(list); } catch {} } }
+    async function showPoe1Embers(){ if (window.OverlayPoe1Embers && window.OverlayPoe1Embers.show) { try { return await window.OverlayPoe1Embers.show(); } catch {} } }
+    function renderPoe1Embers(list){ if (window.OverlayPoe1Embers && window.OverlayPoe1Embers.render) { try { return window.OverlayPoe1Embers.render(list); } catch {} } }
     // History aliases and thin wrappers
     let historyState = null;
     // Grab history state as soon as possible; refresh on DOMContentLoaded too
@@ -1995,14 +2048,21 @@
                         historyEnabled = true;
                     }
                     
-                    // Filter Crafting submenu items
-                    if (enabledFeatures.crafting && !enabledFeatures.crafting.enabled) {
+                    // Filter Crafting submenu items (PoE2 and PoE1)
+                    const craftingConfig = overlayVersionMode === 'poe1' ? enabledFeatures.poe1Crafting : enabledFeatures.crafting;
+                    
+                    console.log('[FeatureFilter] Crafting config:', { mode: overlayVersionMode, config: craftingConfig });
+                    
+                    if (!craftingConfig || !craftingConfig.enabled) {
+                        console.log('[FeatureFilter] Hiding Crafting tab (crafting disabled or missing)');
                         const craftingTab = document.getElementById('craftingTab');
                         if (craftingTab) craftingTab.remove();
-                    } else if (enabledFeatures.crafting?.enabled) {
+                    } else if (craftingConfig.enabled) {
                         const craftMenu = document.getElementById('craftingMenu');
-                        const subs = enabledFeatures.crafting.subcategories || {};
+                        const subs = craftingConfig.subcategories || {};
                         let anySubEnabled = false;
+                        
+                        console.log('[FeatureFilter] Crafting enabled, checking subcategories:', subs);
                         
                         if (craftMenu) {
                             const items = craftMenu.querySelectorAll('.crafting-menu-item');
@@ -2010,6 +2070,7 @@
                                 const action = item.getAttribute('data-action');
                                 let shouldShow = false;
                                 
+                                // PoE2 crafting items
                                 if (action === 'liquid-emotions' && subs.liquidEmotions) shouldShow = true;
                                 if (action === 'annoints' && subs.annoints) shouldShow = true;
                                 if (action === 'essences' && subs.essences) shouldShow = true;
@@ -2018,19 +2079,32 @@
                                 if (action === 'catalysts' && subs.catalysts) shouldShow = true;
                                 if (action === 'socketables' && subs.socketables) shouldShow = true;
                                 
+                                // PoE1 crafting items
+                                if (action === 'poe1-scarabs' && subs.scarabs) shouldShow = true;
+                                if (action === 'poe1-currency' && subs.currency) shouldShow = true;
+                                if (action === 'poe1-essences' && subs.essences) shouldShow = true;
+                                if (action === 'poe1-fossils' && subs.fossils) shouldShow = true;
+                                if (action === 'poe1-embers' && subs.embers) shouldShow = true;
+                                
                                 if (shouldShow) {
                                     anySubEnabled = true;
                                     item.style.display = '';
+                                    console.log('[FeatureFilter] Showing crafting item:', action);
                                 } else {
                                     item.style.display = 'none';
                                 }
                             });
                         }
                         
+                        console.log('[FeatureFilter] Any crafting sub enabled:', anySubEnabled);
+                        
                         // Hide entire Crafting tab if no subcategories enabled
                         if (!anySubEnabled) {
+                            console.log('[FeatureFilter] No crafting subs enabled, removing tab');
                             const craftingTab = document.getElementById('craftingTab');
                             if (craftingTab) craftingTab.remove();
+                        } else {
+                            console.log('[FeatureFilter] Crafting tab should be visible');
                         }
                     }
                     if (document.getElementById('craftingTab')) craftingViewEnabled = true;
@@ -2562,11 +2636,19 @@
                         const isEmotion = normalizedCategory === 'liquid_emotions' || /liquid/i.test(name) || /liquid/i.test(baseType);
                         // Fix: Gems should route to Character > Gems - use itemClass instead of text matching to avoid false positives with "spirit" in rare item names
                         const isGem = itemClass.includes('skill gem') || itemClass.includes('spirit gem') || itemClass.includes('uncut spirit gem') || itemClass.includes('support gem');
+                        const isPoe1Mode = overlayVersionMode === 'poe1';
+                        const isPoe1Scarabs = isPoe1Mode && (normalizedCategory === 'scarabs' || /scarab/i.test(blob));
+                        const isPoe1Fossils = isPoe1Mode && (normalizedCategory === 'fossils' || /fossil/i.test(blob));
+                        const isPoe1Allflames = isPoe1Mode && (normalizedCategory === 'embers' || /allflame|ember/i.test(blob));
+                        const isPoe1Essence = isPoe1Mode && isEssence;
+                        const isPoe1Currency = isPoe1Mode && !isPoe1Scarabs && !isPoe1Fossils && !isPoe1Allflames && !isPoe1Essence && (
+                            normalizedCategory === 'currency' ||
+                            ((itemClass.includes('stackable currency') || itemClass.includes('currency')) && /orb|scroll|bauble|whetstone|chisel|fusing|jeweller|chromatic|binding|annul|mirror|regret|exalted|chaos|splinter|fragment|sextant|compass|coin|prism|catalyst|harvest|fossil|resonator|blessing|prophecy|favour|perandus|remnant|ancient/i.test(blob))
+                        );
 
                         // (unique via frame/icon was handled above)
 
                         if (isEssence) {
-                            // Essences page is PoE2-only for now
                             if (overlayVersionMode === 'poe2') {
                                 prepareCrafting('Essences');
                                 retryShow(
@@ -2574,10 +2656,11 @@
                                     async () => { try { await showEssences(); } catch {} }
                                 );
                             } else {
-                                console.log('Essence copied in PoE1 mode - opening on last page');
-                                setActiveTab('tabModifier');
-                                setView('modifiers');
-                                setHeader('Modifier');
+                                prepareCrafting('PoE1 Essences');
+                                retryShow(
+                                    () => !!(window.OverlayPoe1Essences && typeof window.OverlayPoe1Essences.show === 'function'),
+                                    async () => { try { await showPoe1Essences(); } catch {} }
+                                );
                             }
                             return;
                         }
@@ -2630,6 +2713,42 @@
                                 setView('modifiers');
                                 setHeader('Modifier');
                             }
+                            return;
+                        }
+
+                        if (isPoe1Scarabs) {
+                            prepareCrafting('PoE1 Scarabs');
+                            retryShow(
+                                () => !!(window.OverlayPoe1Scarabs && typeof window.OverlayPoe1Scarabs.show === 'function'),
+                                async () => { try { await showPoe1Scarabs(); } catch {} }
+                            );
+                            return;
+                        }
+
+                        if (isPoe1Fossils) {
+                            prepareCrafting('PoE1 Fossils');
+                            retryShow(
+                                () => !!(window.OverlayPoe1Fossils && typeof window.OverlayPoe1Fossils.show === 'function'),
+                                async () => { try { await showPoe1Fossils(); } catch {} }
+                            );
+                            return;
+                        }
+
+                        if (isPoe1Allflames) {
+                            prepareCrafting('PoE1 Allflames');
+                            retryShow(
+                                () => !!(window.OverlayPoe1Embers && typeof window.OverlayPoe1Embers.show === 'function'),
+                                async () => { try { await showPoe1Embers(); } catch {} }
+                            );
+                            return;
+                        }
+
+                        if (isPoe1Currency) {
+                            prepareCrafting('PoE1 Currency');
+                            retryShow(
+                                () => !!(window.OverlayPoe1Currency && typeof window.OverlayPoe1Currency.show === 'function'),
+                                async () => { try { await showPoe1Currency(); } catch {} }
+                            );
                             return;
                         }
 
@@ -2763,44 +2882,14 @@
                     item.addEventListener('click', async (e) => {
                         const action = item.getAttribute('data-action');
                         craftingMenu.style.display = 'none';
-                        // Switch to crafting view using the single source of truth
-                        setActiveTab('craftingTab');
-                        closeAllMenus();
-                        setView('crafting');
-                        if (action === 'liquid-emotions') {
-                            await showLiquidEmotions();
-                            setHeader('Liquid Emotions');
-                            recordHeaderAction('Liquid Emotions');
-                            
-                        } else if (action === 'annoints') {
-                            await showAnnoints();
-                            setHeader('Annoints');
-                            recordHeaderAction('Annoints');
-                            
-                        } else if (action === 'essences') {
-                            await showEssences();
-                            setHeader('Essences');
-                            recordHeaderAction('Essences');
-                            
-                        } else if (action === 'omens') {
-                            await showOmens();
-                            setHeader('Omens');
-                            recordHeaderAction('Omens');
-                        } else if (action === 'currency') {
-                            await showCurrency();
-                            setHeader('Currency');
-                            recordHeaderAction('Currency');
-                            
-                        } else if (action === 'catalysts') {
-                            await showCatalysts();
-                            setHeader('Catalysts');
-                            recordHeaderAction('Catalysts');
-                            
-                        } else if (action === 'socketables') {
-                            await showSocketables();
-                            setHeader('Socketables');
-                            recordHeaderAction('Socketables');
-                            
+                        if (!action) {
+                            console.warn('[CraftingMenu] Click without action payload');
+                            return;
+                        }
+                        // Reuse stored-action pipeline so PoE1/PoE2 entries share the same handling
+                        const handled = await runStoredAction(`crafting:${action}`);
+                        if (!handled) {
+                            console.warn('[CraftingMenu] No handler resolved for crafting action', action);
                         }
                     });
                 });

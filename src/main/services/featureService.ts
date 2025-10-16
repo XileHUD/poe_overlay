@@ -3,7 +3,7 @@
  * Handles loading, saving, and querying enabled features.
  */
 
-import { FeatureConfig, DEFAULT_FEATURES, CraftingSubcategories, CharacterSubcategories, ItemsSubcategories, Poe1ItemsSubcategories } from '../features/featureTypes.js';
+import { FeatureConfig, DEFAULT_FEATURES, CraftingSubcategories, CharacterSubcategories, ItemsSubcategories, Poe1ItemsSubcategories, Poe1CraftingSubcategories } from '../features/featureTypes.js';
 import { SettingsService } from './settingsService.js';
 
 const MODIFIER_CATEGORY_PATTERNS = [
@@ -63,8 +63,64 @@ export class FeatureService {
    * Returns default config if none is stored.
    */
   getConfig(): FeatureConfig {
-    const stored = this.settings.get('enabledFeatures');
-    return stored || DEFAULT_FEATURES;
+    const stored = this.settings.get('enabledFeatures') as Partial<FeatureConfig> | undefined;
+
+    if (!stored) {
+      return DEFAULT_FEATURES;
+    }
+
+    return {
+      ...DEFAULT_FEATURES,
+      ...stored,
+      crafting: {
+        ...DEFAULT_FEATURES.crafting,
+        ...(stored.crafting || {}),
+        subcategories: {
+          ...DEFAULT_FEATURES.crafting.subcategories,
+          ...(stored.crafting?.subcategories || {})
+        }
+      },
+      poe1Crafting: {
+        ...DEFAULT_FEATURES.poe1Crafting,
+        ...(stored.poe1Crafting || {}),
+        subcategories: {
+          ...DEFAULT_FEATURES.poe1Crafting.subcategories,
+          ...(stored.poe1Crafting?.subcategories || {})
+        }
+      },
+      character: {
+        ...DEFAULT_FEATURES.character,
+        ...(stored.character || {}),
+        subcategories: {
+          ...DEFAULT_FEATURES.character.subcategories,
+          ...(stored.character?.subcategories || {})
+        }
+      },
+      items: {
+        ...DEFAULT_FEATURES.items,
+        ...(stored.items || {}),
+        subcategories: {
+          ...DEFAULT_FEATURES.items.subcategories,
+          ...(stored.items?.subcategories || {})
+        }
+      },
+      poe1Items: {
+        ...DEFAULT_FEATURES.poe1Items,
+        ...(stored.poe1Items || {}),
+        subcategories: {
+          ...DEFAULT_FEATURES.poe1Items.subcategories,
+          ...(stored.poe1Items?.subcategories || {})
+        }
+      },
+      tools: {
+        ...DEFAULT_FEATURES.tools,
+        ...(stored.tools || {}),
+        subcategories: {
+          ...DEFAULT_FEATURES.tools.subcategories,
+          ...(stored.tools?.subcategories || {})
+        }
+      }
+    };
   }
 
   /**
@@ -212,38 +268,73 @@ export class FeatureService {
 
     // Disable all subcategories if parent disabled
     if (!config.crafting?.enabled) {
-      config.crafting.subcategories = {
-        liquidEmotions: false,
-        annoints: false,
-        essences: false,
-        omens: false,
-        currency: false,
-        catalysts: false,
-        socketables: false
+      config.crafting = {
+        enabled: false,
+        subcategories: {
+          liquidEmotions: false,
+          annoints: false,
+          essences: false,
+          omens: false,
+          currency: false,
+          catalysts: false,
+          socketables: false
+        }
       };
     }
 
+    if (!config.poe1Crafting?.enabled) {
+      config.poe1Crafting = {
+        enabled: false,
+        subcategories: {
+          scarabs: false,
+          currency: false,
+          essences: false,
+          fossils: false,
+          embers: false
+        }
+      } as { enabled: boolean; subcategories: Poe1CraftingSubcategories };
+    }
+
     if (!config.character?.enabled) {
-      config.character.subcategories = {
-        questPassives: false,
-        keystones: false,
-        ascendancyPassives: false,
-        atlasNodes: false,
-        gems: false,
-        glossar: false
+      config.character = {
+        enabled: false,
+        subcategories: {
+          questPassives: false,
+          keystones: false,
+          ascendancyPassives: false,
+          atlasNodes: false,
+          gems: false,
+          glossar: false
+        }
       };
     }
 
     if (!config.items?.enabled) {
-      config.items.subcategories = {
-        uniques: false,
-        bases: false
+      config.items = {
+        enabled: false,
+        subcategories: {
+          uniques: false,
+          bases: false
+        }
+      };
+    }
+
+    if (!config.poe1Items?.enabled) {
+      config.poe1Items = {
+        enabled: false,
+        subcategories: {
+          uniques: false,
+          bases: false
+        }
       };
     }
 
     if (!config.tools?.enabled) {
-      config.tools.subcategories = {
-        regex: false
+      config.tools = {
+        enabled: false,
+        subcategories: {
+          regex: false
+        }
       };
     }
   }

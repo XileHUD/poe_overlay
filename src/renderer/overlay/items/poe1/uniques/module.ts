@@ -447,8 +447,8 @@ export function render(): void {
     sortedCategories.forEach(cat => {
       const items = groups.get(cat)!;
       
-      const section = document.createElement('div');
-      section.style.marginBottom = '16px';
+  const section = document.createElement('div');
+  section.style.marginBottom = '12px';
       
       const header = document.createElement('div');
       header.style.fontWeight = '600';
@@ -461,7 +461,7 @@ export function render(): void {
       const grid = document.createElement('div');
       grid.style.display = 'grid';
       grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
-      grid.style.gap = '12px';
+  grid.style.gap = '10px';
       
       items.forEach(p => {
         const card = buildItemCard(p.item);
@@ -494,10 +494,10 @@ export function render(): void {
     card.style.background = 'var(--bg-card)';
     card.style.border = '1px solid var(--border-color)';
     card.style.borderRadius = '8px';
-    card.style.padding = '10px';
+    card.style.padding = '8px';
     card.style.display = 'flex';
-    card.style.gap = '12px';
-  card.style.alignItems = 'stretch';
+    card.style.flexDirection = 'column';
+    card.style.gap = '8px';
     card.style.transition = 'all 0.2s ease';
     
     card.addEventListener('mouseenter', () => {
@@ -509,11 +509,16 @@ export function render(): void {
       card.style.transform = 'translateY(0)';
     });
     
-    // Image on the left - bigger
+    // Top row: image + name/base
+    const topRow = document.createElement('div');
+    topRow.style.display = 'flex';
+    topRow.style.gap = '10px';
+    topRow.style.alignItems = 'center';
+
     const imgWrap = document.createElement('div');
-  imgWrap.style.flex = '0 0 130px';
-  imgWrap.style.display = 'flex';
-  imgWrap.style.alignItems = 'center';
+    imgWrap.style.flex = '0 0 auto';
+    imgWrap.style.display = 'flex';
+    imgWrap.style.alignItems = 'center';
     imgWrap.style.justifyContent = 'center';
 
     const img = document.createElement('img');
@@ -526,73 +531,82 @@ export function render(): void {
       img.setAttribute('data-orig-src', imgPath);
     }
     img.alt = item.name;
-  img.style.width = '120px';
-  img.style.height = '140px';
-  img.style.objectFit = 'contain';
+    img.style.width = '80px';
+    img.style.height = '100px';
+    img.style.objectFit = 'contain';
     img.style.imageRendering = '-webkit-optimize-contrast';
     img.style.opacity = '0';
     img.style.transition = 'opacity 0.3s ease';
 
     imgWrap.appendChild(img);
-    card.appendChild(imgWrap);
+    topRow.appendChild(imgWrap);
     
-    // Content on the right
-    const body = document.createElement('div');
-    body.style.flex = '1';
-    body.style.display = 'flex';
-    body.style.flexDirection = 'column';
-    body.style.gap = '6px';
-    body.style.minWidth = '0';
+    // Name + base next to image
+    const nameBlock = document.createElement('div');
+    nameBlock.style.flex = '1';
+    nameBlock.style.display = 'flex';
+    nameBlock.style.flexDirection = 'column';
+    nameBlock.style.gap = '4px';
+    nameBlock.style.minWidth = '0';
     
     const modLines = (item.explicitMods && item.explicitMods.length > 0) ? item.explicitMods : (item.mods || []);
     
-    // Name - all in orange
+    // Name
     const title = document.createElement('div');
     title.style.fontWeight = '600';
     title.style.fontSize = '15px';
     title.style.color = 'var(--accent-orange)';
     title.style.lineHeight = '1.3';
     title.textContent = item.name;
-    body.appendChild(title);
+    nameBlock.appendChild(title);
     
     // Base type
     const baseType = document.createElement('div');
     baseType.style.fontSize = '11px';
     baseType.style.color = 'var(--text-secondary)';
     baseType.textContent = item.baseType;
-    body.appendChild(baseType);
+    nameBlock.appendChild(baseType);
+
+    topRow.appendChild(nameBlock);
+    card.appendChild(topRow);
     
-    // Explicit mods
+    // Mods below (full width)
     if (modLines.length > 0) {
       const mods = document.createElement('div');
       mods.style.fontSize = '11px';
       mods.style.color = 'var(--text-primary)';
-      mods.style.marginTop = '4px';
       mods.style.paddingTop = '6px';
       mods.style.borderTop = '1px solid var(--border-color)';
       mods.style.lineHeight = '1.35';
       
-      const displayMods = modLines.slice(0, 6);
+      const MAX_INLINE = 12; // expanded inline threshold
+      const initialCount = Math.min(MAX_INLINE, modLines.length);
+      const displayMods = modLines.slice(0, initialCount);
       mods.innerHTML = displayMods.map(m => highlightNumbers(escapeHtml(m))).join('<br>');
       
-      if (modLines.length > 6) {
+      if (modLines.length > initialCount) {
         const more = document.createElement('div');
         more.style.color = 'var(--text-secondary)';
         more.style.fontStyle = 'italic';
         more.style.marginTop = '4px';
         more.style.fontSize = '10px';
-        more.style.cursor = 'help';
+        more.style.cursor = 'pointer';
         more.style.textDecoration = 'underline dotted';
         more.style.textDecorationColor = 'var(--text-secondary)';
-        more.textContent = `+${modLines.length - 6} more...`;
+        more.textContent = `+${modLines.length - initialCount} more...`;
         
-        const hiddenMods = modLines.slice(6);
+        const hiddenMods = modLines.slice(initialCount);
         more.title = hiddenMods.map(m => m.replace(/<[^>]*>/g, '')).join('\n');
+        
+        more.addEventListener('click', () => {
+          // Expand to show all mods inline
+          mods.innerHTML = modLines.map(m => highlightNumbers(escapeHtml(m))).join('<br>');
+        });
         
         mods.appendChild(more);
       }
       
-      body.appendChild(mods);
+      card.appendChild(mods);
     }
     
     // Flavour text
@@ -604,10 +618,9 @@ export function render(): void {
       flavour.style.fontStyle = 'italic';
       flavour.style.opacity = '0.8';
       flavour.textContent = item.flavourText;
-      body.appendChild(flavour);
+      card.appendChild(flavour);
     }
-    
-    card.appendChild(body);
+
     return card;
   }
   

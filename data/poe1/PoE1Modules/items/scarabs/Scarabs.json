@@ -1,0 +1,1235 @@
+{
+  "slug": "Scarabs",
+  "items": [
+    {
+      "name": "Breach Scarab",
+      "slug": "Breach_Scarab",
+      "description": "Area contains 2 additional Breaches",
+      "stack_size": "1 / 20",
+      "limit": "5",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/breach_scarab.webp"
+    },
+    {
+      "name": "Breach Scarab of the Dreamer",
+      "slug": "Breach_Scarab_of_the_Dreamer",
+      "description": "Breaches in Area will always belong to Chayula",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/breach_scarab_of_the_dreamer.webp"
+    },
+    {
+      "name": "Breach Scarab of Lordship",
+      "slug": "Breach_Scarab_of_Lordship",
+      "description": "Breaches in Area each contain a Breachlord",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/breach_scarab_of_lordship.webp"
+    },
+    {
+      "name": "Breach Scarab of Splintering",
+      "slug": "Breach_Scarab_of_Splintering",
+      "description": "Breach Monsters in Area drop 50% more Breach Splinters Clasped Hands in Area drop 50% more Breach Splinters",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/breach_scarab_of_splintering.webp"
+    },
+    {
+      "name": "Breach Scarab of Snares",
+      "slug": "Breach_Scarab_of_Snares",
+      "description": "Breaches in Area have 3 to 5 additional Clasped Hands Clasped Hands in Area are guarded by a rare Breach Monster",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/breach_scarab_of_snares.webp"
+    },
+    {
+      "name": "Breach Scarab of Resonant Cascade",
+      "slug": "Breach_Scarab_of_Resonant_Cascade",
+      "description": "Breaches in Areas open and close 10% faster for each Breach already opened Monsters from Breaches in Areas have increased Difficulty and Reward for each Breach already opened",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/breach_scarab_of_resonant_cascade.webp"
+    },
+    {
+      "name": "Cartography Scarab of Escalation",
+      "slug": "Cartography_Scarab_of_Escalation",
+      "description": "10% increased Maps found in Area for each Map Modifier affecting Area",
+      "stack_size": "1 / 20",
+      "limit": "110",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/cartography_scarab_of_escalation.webp"
+    },
+    {
+      "name": "Cartography Scarab of Risk",
+      "slug": "Cartography_Scarab_of_Risk",
+      "description": "Area has 2 additional random Modifiers",
+      "stack_size": "1 / 20",
+      "limit": "5",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/cartography_scarab_of_risk.webp"
+    },
+    {
+      "name": "Cartography Scarab of Singularity",
+      "slug": "Cartography_Scarab_of_Singularity",
+      "description": "A Unique Map will drop from the Final Map Boss",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/cartography_scarab_of_singularity.webp"
+    },
+    {
+      "name": "Cartography Scarab of Corruption",
+      "slug": "Cartography_Scarab_of_Corruption",
+      "description": "Non-Unique Maps found in Area are Corrupted with 8 Modifiers",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/cartography_scarab_of_corruption.webp"
+    },
+    {
+      "name": "Cartography Scarab of the Multitude",
+      "slug": "Cartography_Scarab_of_the_Multitude",
+      "description": "Area contains 8 to 12 additional packs of Difficult and Rewarding Monsters which drop 300% increased Maps",
+      "stack_size": "1 / 20",
+      "limit": "3",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/cartography_scarab_of_the_multitude.webp"
+    },
+    {
+      "name": "Titanic Scarab",
+      "slug": "Titanic_Scarab",
+      "description": "Unique Monsters have 1% increased Toughness, Damage, Rarity and Quantity of items dropped per 1% increased Pack Size of Area",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/titanic_scarab.webp"
+    },
+    {
+      "name": "Titanic Scarab of Treasures",
+      "slug": "Titanic_Scarab_of_Treasures",
+      "description": "Unique Monsters in Area have an additional Reward Unique Monsters in Area have 30% increased Toughness",
+      "stack_size": "1 / 20",
+      "limit": "3",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/titanic_scarab_of_treasures.webp"
+    },
+    {
+      "name": "Titanic Scarab of Legend",
+      "slug": "Titanic_Scarab_of_Legend",
+      "description": "Unique Monsters in Area have 2 additional Monster Modifiers",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/titanic_scarab_of_legend.webp"
+    },
+    {
+      "name": "Bestiary Scarab",
+      "slug": "Bestiary_Scarab",
+      "description": "Area contains Einhar",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/bestiary_scarab.webp"
+    },
+    {
+      "name": "Bestiary Scarab of the Herd",
+      "slug": "Bestiary_Scarab_of_the_Herd",
+      "description": "Area contains 5 additional Red Beasts if it contains Einhar",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/bestiary_scarab_of_the_herd.webp"
+    },
+    {
+      "name": "Bestiary Scarab of Duplicating",
+      "slug": "Bestiary_Scarab_of_Duplicating",
+      "description": "Create a copy of Beasts captured in Area",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/bestiary_scarab_of_duplicating.webp"
+    },
+    {
+      "name": "Bestiary Scarab of the Shadowed Crow",
+      "slug": "Bestiary_Scarab_of_the_Shadowed_Crow",
+      "description": "Area contains The Black Mórrigan if it contains Einhar",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/bestiary_scarab_of_the_shadowed_crow.webp"
+    },
+    {
+      "name": "Influencing Scarab of the Shaper",
+      "slug": "Influencing_Scarab_of_the_Shaper",
+      "description": "Adds Shaper Influence outcome to Area",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/influencing_scarab_of_the_shaper.webp"
+    },
+    {
+      "name": "Influencing Scarab of the Elder",
+      "slug": "Influencing_Scarab_of_the_Elder",
+      "description": "Adds Elder Influence outcome to Area",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/influencing_scarab_of_the_elder.webp"
+    },
+    {
+      "name": "Influencing Scarab of Hordes",
+      "slug": "Influencing_Scarab_of_Hordes",
+      "description": "Influenced Monster Packs in Area have 40% increased Pack Size",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/influencing_scarab_of_hordes.webp"
+    },
+    {
+      "name": "Influencing Scarab of Conversion",
+      "slug": "Influencing_Scarab_of_Conversion",
+      "description": "Tier 14+ Maps found in Area have a chance to drop as Shaper Guardian, Elder Guardian, Conqueror or Unique Synthesised Maps instead",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/influencing_scarab_of_conversion.webp"
+    },
+    {
+      "name": "Sulphite Scarab",
+      "slug": "Sulphite_Scarab",
+      "description": "Area contains Niko Map owner gains 150% more Sulphite",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/sulphite_scarab.webp"
+    },
+    {
+      "name": "Sulphite Scarab of Greed",
+      "slug": "Sulphite_Scarab_of_Greed",
+      "description": "Map owner gains 150% more Sulphite",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/sulphite_scarab_of_greed.webp"
+    },
+    {
+      "name": "Sulphite Scarab of Fumes",
+      "slug": "Sulphite_Scarab_of_Fumes",
+      "description": "Sulphite found in Map Area releases Enraging Fumes Monsters affected by Enraging Fumes have 50% increased Item Quantity Sulphite in your maps is guarded by Monsters from the Azurite Mine",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/sulphite_scarab_of_fumes.webp"
+    },
+    {
+      "name": "Divination Scarab of The Cloister",
+      "slug": "Divination_Scarab_of_The_Cloister",
+      "description": "Area contains 8 to 12 additional packs of Doedre's Devoted Doedre's Devoted have 1% additional chance to drop a Stacked Deck",
+      "stack_size": "1 / 20",
+      "limit": "5",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/divination_scarab_of_the_cloister.webp"
+    },
+    {
+      "name": "Divination Scarab of Plenty",
+      "slug": "Divination_Scarab_of_Plenty",
+      "description": "Area contains 6 to 10 additional Packs of Divination Touched Magic Monsters that have 1000% increased chance to drop Divination Cards",
+      "stack_size": "1 / 20",
+      "limit": "5",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/divination_scarab_of_plenty.webp"
+    },
+    {
+      "name": "Divination Scarab of Pilfering",
+      "slug": "Divination_Scarab_of_Pilfering",
+      "description": "Divination Cards which drop in Area are stolen by a Final Map Boss That Final Map Boss becomes more Difficult and deals increased Damage the more Divination Cards they have stolen That Final Map Boss duplicates all stolen Divination Cards when defeated",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/divination_scarab_of_pilfering.webp"
+    },
+    {
+      "name": "Torment Scarab",
+      "slug": "Torment_Scarab",
+      "description": "Area is haunted by 3 additional Tormented Spirits Tormented Spirits in Area have a 25% chance to be set free when Possessed Monsters are slain",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/torment_scarab.webp"
+    },
+    {
+      "name": "Torment Scarab of Peculiarity",
+      "slug": "Torment_Scarab_of_Peculiarity",
+      "description": "Tormented Spirits in Area are replaced with unusual variants",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/torment_scarab_of_peculiarity.webp"
+    },
+    {
+      "name": "Torment Scarab of Release",
+      "slug": "Torment_Scarab_of_Release",
+      "description": "Tormented Spirits in Area have a 25% chance to be set free when Possessed Monsters are slain",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/torment_scarab_of_release.webp"
+    },
+    {
+      "name": "Torment Scarab of Possession",
+      "slug": "Torment_Scarab_of_Possession",
+      "description": "Rare Monsters in Area have a quarter chance to be Possessed by up to 1 Tormented Spirit",
+      "stack_size": "1 / 20",
+      "limit": "4",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/torment_scarab_of_possession.webp"
+    },
+    {
+      "name": "Ambush Scarab",
+      "slug": "Ambush_Scarab",
+      "description": "Area contains 3 additional Strongboxes",
+      "stack_size": "1 / 20",
+      "limit": "3",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/ambush_scarab.webp"
+    },
+    {
+      "name": "Ambush Scarab of Hidden Compartments",
+      "slug": "Ambush_Scarab_of_Hidden_Compartments",
+      "description": "15% Chance for Strongboxes in Area to be openable again",
+      "stack_size": "1 / 20",
+      "limit": "115",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/ambush_scarab_of_hidden_compartments.webp"
+    },
+    {
+      "name": "Ambush Scarab of Potency",
+      "slug": "Ambush_Scarab_of_Potency",
+      "description": "75% Increased effect of Explicit Modifiers on Strongboxes in Area",
+      "stack_size": "1 / 20",
+      "limit": "175",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/ambush_scarab_of_potency.webp"
+    },
+    {
+      "name": "Ambush Scarab of Containment",
+      "slug": "Ambush_Scarab_of_Containment",
+      "description": "Area contains many additional Strongboxes Area's inhabitants are lying in ambush",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/ambush_scarab_of_containment.webp"
+    },
+    {
+      "name": "Ambush Scarab of Discernment",
+      "slug": "Ambush_Scarab_of_Discernment",
+      "description": "Strongboxes in Area are more likely to be rarer varieties",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/ambush_scarab_of_discernment.webp"
+    },
+    {
+      "name": "Harbinger Scarab",
+      "slug": "Harbinger_Scarab",
+      "description": "Area contains 3 additional Harbingers",
+      "stack_size": "1 / 20",
+      "limit": "4",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/harbinger_scarab.webp"
+    },
+    {
+      "name": "Harbinger Scarab of Obelisks",
+      "slug": "Harbinger_Scarab_of_Obelisks",
+      "description": "Harbingers in Area spawn Empowered Obelisks Empowered Obelisks drop Currency Shards when defeated",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/harbinger_scarab_of_obelisks.webp"
+    },
+    {
+      "name": "Harbinger Scarab of Regency",
+      "slug": "Harbinger_Scarab_of_Regency",
+      "description": "Harbingers in Area have a 50% chance to be replaced by a powerful Harbinger Boss",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/harbinger_scarab_of_regency.webp"
+    },
+    {
+      "name": "Harbinger Scarab of Warhoards",
+      "slug": "Harbinger_Scarab_of_Warhoards",
+      "description": "Currency shards dropped by Harbingers in Area are duplicated",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/harbinger_scarab_of_warhoards.webp"
+    },
+    {
+      "name": "Expedition Scarab",
+      "slug": "Expedition_Scarab",
+      "description": "Area contains an Expedition Encounter",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/expedition_scarab.webp"
+    },
+    {
+      "name": "Expedition Scarab of Runefinding",
+      "slug": "Expedition_Scarab_of_Runefinding",
+      "description": "Expedition Encounters in Area have 100% increased number of Runic Monster Markers",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/expedition_scarab_of_runefinding.webp"
+    },
+    {
+      "name": "Expedition Scarab of Verisium Powder",
+      "slug": "Expedition_Scarab_of_Verisium_Powder",
+      "description": "Expedition Encounters in Area have 50% increased number of Explosives 80% increased Explosive Radius",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/expedition_scarab_of_verisium_powder.webp"
+    },
+    {
+      "name": "Expedition Scarab of the Skald",
+      "slug": "Expedition_Scarab_of_the_Skald",
+      "description": "Expedition Encounters in Area are lead by Dannig",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/expedition_scarab_of_the_skald.webp"
+    },
+    {
+      "name": "Expedition Scarab of Archaeology",
+      "slug": "Expedition_Scarab_of_Archaeology",
+      "description": "Remnants in Expedition Encounters in Area have 2 additional Suffixes and Prefixes",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/expedition_scarab_of_archaeology.webp"
+    },
+    {
+      "name": "Legion Scarab",
+      "slug": "Legion_Scarab",
+      "description": "Area contains an additional Legion Encounter",
+      "stack_size": "1 / 20",
+      "limit": "5",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/legion_scarab.webp"
+    },
+    {
+      "name": "Legion Scarab of Officers",
+      "slug": "Legion_Scarab_of_Officers",
+      "description": "Legion Factions in Area have 5 additional Sergeants",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/legion_scarab_of_officers.webp"
+    },
+    {
+      "name": "Legion Scarab of Command",
+      "slug": "Legion_Scarab_of_Command",
+      "description": "Legion Factions in Area are accompanied by a General",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/legion_scarab_of_command.webp"
+    },
+    {
+      "name": "Legion Scarab of The Sekhema",
+      "slug": "Legion_Scarab_of_The_Sekhema",
+      "description": "Legion Encounters in Area always contain the Maraketh Faction",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/legion_scarab_of_the_sekhema.webp"
+    },
+    {
+      "name": "Legion Scarab of Eternal Conflict",
+      "slug": "Legion_Scarab_of_Eternal_Conflict",
+      "description": "Legion Monsters in Area can be broken out of Stasis multiple times Legion Monsters in Area gain increased Difficulty and Reward for each time they are broken out",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/legion_scarab_of_eternal_conflict.webp"
+    },
+    {
+      "name": "Abyss Scarab",
+      "slug": "Abyss_Scarab",
+      "description": "Area contains an additional Abyss",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/abyss_scarab.webp"
+    },
+    {
+      "name": "Abyss Scarab of Multitudes",
+      "slug": "Abyss_Scarab_of_Multitudes",
+      "description": "Abysses in Area spawn 50% increased Monsters",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/abyss_scarab_of_multitudes.webp"
+    },
+    {
+      "name": "Abyss Scarab of Edifice",
+      "slug": "Abyss_Scarab_of_Edifice",
+      "description": "Abysses in Area that do not lead to an Abyssal Depths lead to a Stygian Spire Abysses in Area spawn Hoards as they travel",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/abyss_scarab_of_edifice.webp"
+    },
+    {
+      "name": "Abyss Scarab of Emptiness",
+      "slug": "Abyss_Scarab_of_Emptiness",
+      "description": "Rare Abyss Monsters in Area have a 50% chance to drop an additional Rare item with an Abyssal socket",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/abyss_scarab_of_emptiness.webp"
+    },
+    {
+      "name": "Abyss Scarab of Profound Depth",
+      "slug": "Abyss_Scarab_of_Profound_Depth",
+      "description": "Monsters from Abysses in Areas have increased Difficulty and Reward for each prior Pit in that Abyss",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/abyss_scarab_of_profound_depth.webp"
+    },
+    {
+      "name": "Anarchy Scarab",
+      "slug": "Anarchy_Scarab",
+      "description": "Area contains 4 additional Rogue Exiles",
+      "stack_size": "1 / 20",
+      "limit": "5",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/anarchy_scarab.webp"
+    },
+    {
+      "name": "Anarchy Scarab of Gigantification",
+      "slug": "Anarchy_Scarab_of_Gigantification",
+      "description": "Wild Rogue Exiles in Area have a 30% chance to be replaced with a Rogue Giant",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/anarchy_scarab_of_gigantification.webp"
+    },
+    {
+      "name": "Anarchy Scarab of Partnership",
+      "slug": "Anarchy_Scarab_of_Partnership",
+      "description": "Wild Rogue Exiles in Area have a 50% chance to appear in pairs",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/anarchy_scarab_of_partnership.webp"
+    },
+    {
+      "name": "Essence Scarab",
+      "slug": "Essence_Scarab",
+      "description": "Area contains 2 additional Imprisoned Monsters",
+      "stack_size": "1 / 20",
+      "limit": "5",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/essence_scarab.webp"
+    },
+    {
+      "name": "Essence Scarab of Ascent",
+      "slug": "Essence_Scarab_of_Ascent",
+      "description": "Essences found in Area are a tier higher",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/essence_scarab_of_ascent.webp"
+    },
+    {
+      "name": "Essence Scarab of Stability",
+      "slug": "Essence_Scarab_of_Stability",
+      "description": "Using a Remnant of Corruption in Area can only result in upgrading or transforming Essences",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/essence_scarab_of_stability.webp"
+    },
+    {
+      "name": "Essence Scarab of Calcification",
+      "slug": "Essence_Scarab_of_Calcification",
+      "description": "Rare monsters that are natural inhabitants of the Area are imprisoned by Essences",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/essence_scarab_of_calcification.webp"
+    },
+    {
+      "name": "Essence Scarab of Adaptation",
+      "slug": "Essence_Scarab_of_Adaptation",
+      "description": "Imprisoned Monsters released in Areas grant a random Essence Modifier to another Imprisoned Monster in the Area Imprisoned Monsters in Areas have increased Difficulty and Reward for each Essence Modifier",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/essence_scarab_of_adaptation.webp"
+    },
+    {
+      "name": "Domination Scarab",
+      "slug": "Domination_Scarab",
+      "description": "Area contains 2 additional Shrines",
+      "stack_size": "1 / 20",
+      "limit": "4",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/domination_scarab.webp"
+    },
+    {
+      "name": "Domination Scarab of Apparitions",
+      "slug": "Domination_Scarab_of_Apparitions",
+      "description": "Area contains 2 additional Apparition Shrines",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/domination_scarab_of_apparitions.webp"
+    },
+    {
+      "name": "Domination Scarab of Evolution",
+      "slug": "Domination_Scarab_of_Evolution",
+      "description": "Area contains an additional Evolving Shrine",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/domination_scarab_of_evolution.webp"
+    },
+    {
+      "name": "Domination Scarab of Terrors",
+      "slug": "Domination_Scarab_of_Terrors",
+      "description": "Shrines in Area are guarded by an Atlas Boss Modifiers to the Final Map Boss also apply to these Atlas Bosses",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/domination_scarab_of_terrors.webp"
+    },
+    {
+      "name": "Ritual Scarab of Selectiveness",
+      "slug": "Ritual_Scarab_of_Selectiveness",
+      "description": "Rerolling Favours at Ritual Altars in Area has no cost the first 2 times Ritual Altars in Area allow rerolling Favours 1 additional time",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/ritual_scarab_of_selectiveness.webp"
+    },
+    {
+      "name": "Ritual Scarab of Wisps",
+      "slug": "Ritual_Scarab_of_Wisps",
+      "description": "Ritual Altars in Area spawn a Wildwood Wisp Wildwood Wisps grant 100% increased Tribute Gained to nearby Players",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/ritual_scarab_of_wisps.webp"
+    },
+    {
+      "name": "Ritual Scarab of Abundance",
+      "slug": "Ritual_Scarab_of_Abundance",
+      "description": "Rituals in Area offer 100% increased Favours",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/ritual_scarab_of_abundance.webp"
+    },
+    {
+      "name": "Harvest Scarab",
+      "slug": "Harvest_Scarab",
+      "description": "Area contains the Sacred Grove",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/harvest_scarab.webp"
+    },
+    {
+      "name": "Harvest Scarab of Doubling",
+      "slug": "Harvest_Scarab_of_Doubling",
+      "description": "Lifeforce dropped by Harvest Monsters in Area is duplicated Harvest Monsters in Area have 100% more Life",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/harvest_scarab_of_doubling.webp"
+    },
+    {
+      "name": "Harvest Scarab of Cornucopia",
+      "slug": "Harvest_Scarab_of_Cornucopia",
+      "description": "If Area contains the Sacred Grove, it will contain up to 1 additional Tier 4 seed of each type, if possible",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/harvest_scarab_of_cornucopia.webp"
+    },
+    {
+      "name": "Incursion Scarab",
+      "slug": "Incursion_Scarab",
+      "description": "Area contains Alva",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/incursion_scarab.webp"
+    },
+    {
+      "name": "Incursion Scarab of Invasion",
+      "slug": "Incursion_Scarab_of_Invasion",
+      "description": "Area contains 12 to 16 additional packs of Incursion Monsters",
+      "stack_size": "1 / 20",
+      "limit": "3",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/incursion_scarab_of_invasion.webp"
+    },
+    {
+      "name": "Incursion Scarab of Champions",
+      "slug": "Incursion_Scarab_of_Champions",
+      "description": "Incursions in Area have a 35% chance for all Monsters to be at least Magic Incursions in Area have 15% increased Pack Size",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/incursion_scarab_of_champions.webp"
+    },
+    {
+      "name": "Incursion Scarab of Timelines",
+      "slug": "Incursion_Scarab_of_Timelines",
+      "description": "Final Architect slain in Area will drop an Itemised Temple Itemised Temples dropped in Area are generated based on current Temple layout, but with randomised room tiers",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/incursion_scarab_of_timelines.webp"
+    },
+    {
+      "name": "Betrayal Scarab",
+      "slug": "Betrayal_Scarab",
+      "description": "Area contains Jun",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/betrayal_scarab.webp"
+    },
+    {
+      "name": "Betrayal Scarab of the Allflame",
+      "slug": "Betrayal_Scarab_of_the_Allflame",
+      "description": "75% Increased number of Monster Packs Substituted by Allflame Embers in Area",
+      "stack_size": "1 / 20",
+      "limit": "175",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/betrayal_scarab_of_the_allflame.webp"
+    },
+    {
+      "name": "Betrayal Scarab of Reinforcements",
+      "slug": "Betrayal_Scarab_of_Reinforcements",
+      "description": "Immortal Syndicate Members in Area have 50% increased chance to be accompanied by reinforcements",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/betrayal_scarab_of_reinforcements.webp"
+    },
+    {
+      "name": "Betrayal Scarab of Perpetuation",
+      "slug": "Betrayal_Scarab_of_Perpetuation",
+      "description": "Defeated Immortal Syndicate targets in Area have a 50% chance to drop an additional Scarab",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/betrayal_scarab_of_perpetuation.webp"
+    },
+    {
+      "name": "Beyond Scarab",
+      "slug": "Beyond_Scarab",
+      "description": "Slaying enemies close together in Area can attract monsters from Beyond this realm",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/beyond_scarab.webp"
+    },
+    {
+      "name": "Beyond Scarab of Corruption",
+      "slug": "Beyond_Scarab_of_Corruption",
+      "description": "Items dropped by Beyond Demons in Area are Corrupted",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/beyond_scarab_of_corruption.webp"
+    },
+    {
+      "name": "Beyond Scarab of Haemophilia",
+      "slug": "Beyond_Scarab_of_Haemophilia",
+      "description": "Beyond Portals in Area have 50% increased Merging Radius",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/beyond_scarab_of_haemophilia.webp"
+    },
+    {
+      "name": "Beyond Scarab of Resurgence",
+      "slug": "Beyond_Scarab_of_Resurgence",
+      "description": "Beyond Bosses in Area are enraged on low life Beyond Bosses in Area drop 100% increased Tainted Currency Beyond Portals in Area have 30% increased chance to spawn a Unique Boss",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/beyond_scarab_of_resurgence.webp"
+    },
+    {
+      "name": "Beyond Scarab of the Invasion",
+      "slug": "Beyond_Scarab_of_the_Invasion",
+      "description": "Rare and Unique Monsters slain in Area create 8 to 12 additional Beyond Portals",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/beyond_scarab_of_the_invasion.webp"
+    },
+    {
+      "name": "Ultimatum Scarab",
+      "slug": "Ultimatum_Scarab",
+      "description": "Area contains an Ultimatum Encounter",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/ultimatum_scarab.webp"
+    },
+    {
+      "name": "Ultimatum Scarab of Bribing",
+      "slug": "Ultimatum_Scarab_of_Bribing",
+      "description": "Ultimatum Monsters grant 150% increased Experience Ultimatum Encounters grant rewards as though you completed 2 additional Rounds",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/ultimatum_scarab_of_bribing.webp"
+    },
+    {
+      "name": "Ultimatum Scarab of Dueling",
+      "slug": "Ultimatum_Scarab_of_Dueling",
+      "description": "Ultimatum Encounters in Area will always lead to a Unique Boss if possible",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/ultimatum_scarab_of_dueling.webp"
+    },
+    {
+      "name": "Ultimatum Scarab of Catalysing",
+      "slug": "Ultimatum_Scarab_of_Catalysing",
+      "description": "Ultimatum Encounters in Area will only offer Catalysts as Rewards to the Map Owner",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/ultimatum_scarab_of_catalysing.webp"
+    },
+    {
+      "name": "Ultimatum Scarab of Inscription",
+      "slug": "Ultimatum_Scarab_of_Inscription",
+      "description": "Ultimatum Encounter rewards in Area offering Catalysts will offer Inscribed Ultimatums to the Map Owner instead",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/ultimatum_scarab_of_inscription.webp"
+    },
+    {
+      "name": "Delirium Scarab",
+      "slug": "Delirium_Scarab",
+      "description": "Area contains a Mirror of Delirium",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/delirium_scarab.webp"
+    },
+    {
+      "name": "Delirium Scarab of Mania",
+      "slug": "Delirium_Scarab_of_Mania",
+      "description": "Delirium Reward Meters fill 100% faster in Area Delirium in Area increases 50% faster with distance from the mirror",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/delirium_scarab_of_mania.webp"
+    },
+    {
+      "name": "Delirium Scarab of Paranoia",
+      "slug": "Delirium_Scarab_of_Paranoia",
+      "description": "Delirium Encounters in Area generate 2 additional Reward types",
+      "stack_size": "1 / 20",
+      "limit": "5",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/delirium_scarab_of_paranoia.webp"
+    },
+    {
+      "name": "Delirium Scarab of Neuroses",
+      "slug": "Delirium_Scarab_of_Neuroses",
+      "description": "Delirium Encounters in Area contain all Unique Delirium Bosses Can only be used with Tier 11+ Maps",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/delirium_scarab_of_neuroses.webp"
+    },
+    {
+      "name": "Delirium Scarab of Delusions",
+      "slug": "Delirium_Scarab_of_Delusions",
+      "description": "Maps found in Area have layers of Delirium",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/delirium_scarab_of_delusions.webp"
+    },
+    {
+      "name": "Blight Scarab",
+      "slug": "Blight_Scarab",
+      "description": "Area contains a Blight Encounter",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/blight_scarab.webp"
+    },
+    {
+      "name": "Blight Scarab of Bounty",
+      "slug": "Blight_Scarab_of_Bounty",
+      "description": "Blight Chests in Area have a 20% chance to be openable again",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/blight_scarab_of_bounty.webp"
+    },
+    {
+      "name": "Blight Scarab of the Blightheart",
+      "slug": "Blight_Scarab_of_the_Blightheart",
+      "description": "Blight Encounters in Area have one Blighted Chest Blight Encounters in Area spawn many more waves of Enemies Blighted Chests in Area grow larger and more rewarding the more Blighted Enemies are slain",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/blight_scarab_of_the_blightheart.webp"
+    },
+    {
+      "name": "Blight Scarab of Blooming",
+      "slug": "Blight_Scarab_of_Blooming",
+      "description": "Blight Encounters in Area have up to 3 additional Unique Bosses Unique enemies in Blight Encounters have 100% increased life Tier 14+ Blighted Maps found in Area drop as Blight-Ravaged Maps instead",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/blight_scarab_of_blooming.webp"
+    },
+    {
+      "name": "Blight Scarab of Invigoration",
+      "slug": "Blight_Scarab_of_Invigoration",
+      "description": "Each Empowering Tower in Areas grants Blighted Monsters in range increased Difficulty and Reward",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/blight_scarab_of_invigoration.webp"
+    },
+    {
+      "name": "Kalguuran Scarab",
+      "slug": "Kalguuran_Scarab",
+      "description": "Area contains an additional Ore Deposit",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/kalguuran_scarab.webp"
+    },
+    {
+      "name": "Kalguuran Scarab of Guarded Riches",
+      "slug": "Kalguuran_Scarab_of_Guarded_Riches",
+      "description": "Monsters guarding Ore Deposits in Area are at least Magic",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/kalguuran_scarab_of_guarded_riches.webp"
+    },
+    {
+      "name": "Kalguuran Scarab of Refinement",
+      "slug": "Kalguuran_Scarab_of_Refinement",
+      "description": "Ore Deposits in Area grant Smelted Bars instead of Marking Ore",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/kalguuran_scarab_of_refinement.webp"
+    },
+    {
+      "name": "Scarab of Monstrous Lineage",
+      "slug": "Scarab_of_Monstrous_Lineage",
+      "description": "40% increased Magic Pack Size",
+      "stack_size": "1 / 20",
+      "limit": "240",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/scarab_of_monstrous_lineage.webp"
+    },
+    {
+      "name": "Scarab of Adversaries",
+      "slug": "Scarab_of_Adversaries",
+      "description": "Area contains 4 additional Packs with Mirrored Rare Monsters",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/scarab_of_adversaries.webp"
+    },
+    {
+      "name": "Scarab of Divinity",
+      "slug": "Scarab_of_Divinity",
+      "description": "Up to 2 additional Rare Monsters in Area will be Pantheon-Touched Apparitions spawned by Pantheon-Touched Monsters deal 100% increased damage",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/scarab_of_divinity.webp"
+    },
+    {
+      "name": "Scarab of Hunted Traitors",
+      "slug": "Scarab_of_Hunted_Traitors",
+      "description": "Area contains Hunted Traitors",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/scarab_of_hunted_traitors.webp"
+    },
+    {
+      "name": "Scarab of Stability",
+      "slug": "Scarab_of_Stability",
+      "description": "Portals to Area have a 50% chance to not be consumed on use",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/scarab_of_stability.webp"
+    },
+    {
+      "name": "Scarab of the Commander",
+      "slug": "Scarab_of_the_Commander",
+      "description": "Grants an additional Kirac Mission on Map Completion",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/scarab_of_the_commander.webp"
+    },
+    {
+      "name": "Scarab of Evolution",
+      "slug": "Scarab_of_Evolution",
+      "description": "10 Monster Packs in Area are upgraded to Magic",
+      "stack_size": "1 / 20",
+      "limit": "110",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/scarab_of_evolution.webp"
+    },
+    {
+      "name": "Scarab of Wisps",
+      "slug": "Scarab_of_Wisps",
+      "description": "Monsters in Area have a chance to be Empowered by 2000 Wildwood Wisps",
+      "stack_size": "1 / 20",
+      "limit": "2",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/scarab_of_wisps.webp"
+    },
+    {
+      "name": "Scarab of Bisection",
+      "slug": "Scarab_of_Bisection",
+      "description": "You can select the Nullify Prefixes or Nullify Suffixes crafting options on the Map Device",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/scarab_of_bisection.webp"
+    },
+    {
+      "name": "Scarab of Unity",
+      "slug": "Scarab_of_Unity",
+      "description": "All Magic Monsters in Area are in a Union of Souls Monsters in Area get 1% more Rarity of items dropped for each Empowered Soul, up to 500%",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/scarab_of_unity.webp"
+    },
+    {
+      "name": "Scarab of Radiant Storms",
+      "slug": "Scarab_of_Radiant_Storms",
+      "description": "Area contains a Resplendent Tempest",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/scarab_of_radiant_storms.webp"
+    },
+    {
+      "name": "Horned Scarab of Bloodlines",
+      "slug": "Horned_Scarab_of_Bloodlines",
+      "description": "Area has 150% increased Magic Monsters",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/horned_scarab_of_bloodlines.webp"
+    },
+    {
+      "name": "Horned Scarab of Nemeses",
+      "slug": "Horned_Scarab_of_Nemeses",
+      "description": "Rare Monsters in Area have 2 additional Modifiers",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/horned_scarab_of_nemeses.webp"
+    },
+    {
+      "name": "Horned Scarab of Preservation",
+      "slug": "Horned_Scarab_of_Preservation",
+      "description": "Other Scarabs are not consumed on use",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/horned_scarab_of_preservation.webp"
+    },
+    {
+      "name": "Horned Scarab of Awakening",
+      "slug": "Horned_Scarab_of_Awakening",
+      "description": "You can select one Imbued crafting option on the Map Device",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/horned_scarab_of_awakening.webp"
+    },
+    {
+      "name": "Horned Scarab of Tradition",
+      "slug": "Horned_Scarab_of_Tradition",
+      "description": "All Rare and Unique Monsters in Area have dropped items transformed by a Reward Modifier",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/horned_scarab_of_tradition.webp"
+    },
+    {
+      "name": "Horned Scarab of Glittering",
+      "slug": "Horned_Scarab_of_Glittering",
+      "description": "Players in Area gain increased Item Rarity for each Monster slain, up to 400%, decaying over time",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/horned_scarab_of_glittering.webp"
+    },
+    {
+      "name": "Horned Scarab of Pandemonium",
+      "slug": "Horned_Scarab_of_Pandemonium",
+      "description": "Monster packs in Area have a 15% chance to be replaced by a random Atlas Boss Modifiers to the Final Map Boss also apply to these Atlas Bosses",
+      "stack_size": "1 / 20",
+      "limit": "1",
+      "properties": {},
+      "mods": [],
+      "imageLocal": "scarabs/horned_scarab_of_pandemonium.webp"
+    }
+  ]
+}

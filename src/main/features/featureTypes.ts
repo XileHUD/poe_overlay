@@ -13,6 +13,14 @@ export interface CraftingSubcategories {
   socketables: boolean;
 }
 
+export interface Poe1CraftingSubcategories {
+  scarabs: boolean;
+  currency: boolean;
+  essences: boolean;
+  fossils: boolean;
+  embers: boolean;
+}
+
 export interface CharacterSubcategories {
   questPassives: boolean;
   keystones: boolean;
@@ -43,6 +51,10 @@ export interface FeatureConfig {
     enabled: boolean;
     subcategories: CraftingSubcategories;
   };
+  poe1Crafting: {
+    enabled: boolean;
+    subcategories: Poe1CraftingSubcategories;
+  };
   character: {
     enabled: boolean;
     subcategories: CharacterSubcategories;
@@ -64,63 +76,74 @@ export interface FeatureConfig {
 
 /**
  * Default recommended feature configuration.
- * Enables modifiers, some crafting features, and merchant history.
+ * Enables all features (was previously called "Recommended", now this is "All Features").
  */
 export const DEFAULT_FEATURES: FeatureConfig = {
   modifiers: true,
-  poe1Modifiers: false,
+  poe1Modifiers: true,
   crafting: {
     enabled: true,
     subcategories: {
       liquidEmotions: true,
       annoints: true,
       essences: true,
-      omens: false,
-      currency: false,
-      catalysts: false,
+      omens: true,
+      currency: true,
+      catalysts: true,
       socketables: true
     }
   },
-  character: {
-    enabled: false,
+  poe1Crafting: {
+    enabled: true,
     subcategories: {
-      questPassives: false,
-      keystones: false,
-      ascendancyPassives: false,
-      atlasNodes: false,
-      gems: false,
-      glossar: false
+      scarabs: true,
+      currency: true,
+      essences: true,
+      fossils: true,
+      embers: true
+    }
+  },
+  character: {
+    enabled: true,
+    subcategories: {
+      questPassives: true,
+      keystones: true,
+      ascendancyPassives: true,
+      atlasNodes: true,
+      gems: true,
+      glossar: true
     }
   },
   items: {
-    enabled: false,
+    enabled: true,
     subcategories: {
-      uniques: false,
-      bases: false
+      uniques: true,
+      bases: true
     }
   },
   poe1Items: {
-    enabled: false,
+    enabled: true,
     subcategories: {
-      uniques: false,
-      bases: false
+      uniques: true,
+      bases: true
     }
   },
   tools: {
-    enabled: false,
+    enabled: true,
     subcategories: {
-      regex: false
+      regex: true
     }
   },
   merchant: true
 };
 
 /**
- * Minimal feature configuration (merchant history only).
+ * Minimal feature configuration (modifiers and merchant history only).
+ * Note: merchant is true but will be disabled in PoE1 mode until PoE1 merchant is implemented.
  */
 export const MINIMAL_FEATURES: FeatureConfig = {
-  modifiers: false,
-  poe1Modifiers: false,
+  modifiers: true,
+  poe1Modifiers: true,
   crafting: {
     enabled: false,
     subcategories: {
@@ -131,6 +154,16 @@ export const MINIMAL_FEATURES: FeatureConfig = {
       currency: false,
       catalysts: false,
       socketables: false
+    }
+  },
+  poe1Crafting: {
+    enabled: false,
+    subcategories: {
+      scarabs: false,
+      currency: false,
+      essences: false,
+      fossils: false,
+      embers: false
     }
   },
   character: {
@@ -183,6 +216,16 @@ export const ALL_FEATURES: FeatureConfig = {
       currency: true,
       catalysts: true,
       socketables: true
+    }
+  },
+  poe1Crafting: {
+    enabled: true,
+    subcategories: {
+      scarabs: true,
+      currency: true,
+      essences: true,
+      fossils: true,
+      embers: true
     }
   },
   character: {

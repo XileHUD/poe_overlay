@@ -19,6 +19,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
     ...DEFAULT_FEATURES,
     ...config,
     crafting: { ...DEFAULT_FEATURES.crafting, ...config.crafting },
+    poe1Crafting: { ...DEFAULT_FEATURES.poe1Crafting, ...(config.poe1Crafting || {}) },
     character: { ...DEFAULT_FEATURES.character, ...config.character },
     items: { ...DEFAULT_FEATURES.items, ...config.items },
     poe1Items: { ...DEFAULT_FEATURES.poe1Items, ...(config.poe1Items || {}) }
@@ -329,6 +330,37 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
     <label for="feat-poe1-modifiers">Modifiers (PoE1)</label>
   </div>
 
+  <!-- PoE1 Crafting (with subcategories) -->
+  <div class="feature-group poe1-only">
+    <div class="feature-main" onclick="toggleGroup('poe1Crafting')">
+      <input type="checkbox" id="feat-poe1-crafting" ${checked(safeConfig.poe1Crafting.enabled)} onclick="event.stopPropagation()"/>
+      <label for="feat-poe1-crafting">Crafting (PoE1)</label>
+      <span class="expand-icon ${safeConfig.poe1Crafting.enabled ? 'expanded' : ''}">▶</span>
+    </div>
+    <div class="feature-subs ${safeConfig.poe1Crafting.enabled ? 'visible' : ''}" id="subs-poe1Crafting">
+      <div class="feature-sub">
+        <input type="checkbox" id="feat-poe1-craft-scarabs" ${checked(safeConfig.poe1Crafting.subcategories.scarabs)}/>
+        <label for="feat-poe1-craft-scarabs">Scarabs</label>
+      </div>
+      <div class="feature-sub">
+        <input type="checkbox" id="feat-poe1-craft-currency" ${checked(safeConfig.poe1Crafting.subcategories.currency)}/>
+        <label for="feat-poe1-craft-currency">Currency</label>
+      </div>
+      <div class="feature-sub">
+        <input type="checkbox" id="feat-poe1-craft-essences" ${checked(safeConfig.poe1Crafting.subcategories.essences)}/>
+        <label for="feat-poe1-craft-essences">Essences</label>
+      </div>
+      <div class="feature-sub">
+        <input type="checkbox" id="feat-poe1-craft-fossils" ${checked(safeConfig.poe1Crafting.subcategories.fossils)}/>
+        <label for="feat-poe1-craft-fossils">Fossils</label>
+      </div>
+      <div class="feature-sub">
+        <input type="checkbox" id="feat-poe1-craft-embers" ${checked(safeConfig.poe1Crafting.subcategories.embers)}/>
+        <label for="feat-poe1-craft-embers">Embers</label>
+      </div>
+    </div>
+  </div>
+
   <!-- Crafting (with subcategories) -->
   <div class="feature-group poe2-only">
     <div class="feature-main" onclick="toggleGroup('crafting')">
@@ -464,8 +496,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
 
   <div class="buttons">
     <button class="btn-secondary" onclick="loadPreset('minimal')">Minimal</button>
-    <button class="btn-secondary" onclick="loadPreset('recommended')">Recommended</button>
-    <button class="btn-secondary" onclick="loadPreset('all')">All Features</button>
+    <button class="btn-secondary" onclick="loadPreset('recommended')">All Features</button>
     <button class="btn-primary" onclick="saveAndContinue()">Save & Continue</button>
   </div>
 
@@ -473,6 +504,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
     // Toggle group expansion
     const GROUPS = {
       crafting: { checkboxId: 'feat-crafting' },
+      poe1Crafting: { checkboxId: 'feat-poe1-crafting' },
       character: { checkboxId: 'feat-character' },
       items: { checkboxId: 'feat-items' },
       poe1Items: { checkboxId: 'feat-poe1-items' },
@@ -504,7 +536,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
     }
     
     // Watch parent checkboxes to auto-collapse
-    const GROUP_ORDER = ['crafting', 'character', 'items', 'poe1Items', 'tools'];
+    const GROUP_ORDER = ['crafting', 'poe1Crafting', 'character', 'items', 'poe1Items', 'tools'];
 
     GROUP_ORDER.forEach(group => {
       const checkbox = getGroupCheckbox(group);
@@ -548,6 +580,14 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       document.getElementById('feat-craft-currency').checked = preset.crafting.subcategories.currency;
       document.getElementById('feat-craft-catalysts').checked = preset.crafting.subcategories.catalysts;
       document.getElementById('feat-craft-socketables').checked = preset.crafting.subcategories.socketables;
+      
+      // PoE1 Crafting
+      document.getElementById('feat-poe1-crafting').checked = preset.poe1Crafting.enabled;
+      document.getElementById('feat-poe1-craft-scarabs').checked = preset.poe1Crafting.subcategories.scarabs;
+      document.getElementById('feat-poe1-craft-currency').checked = preset.poe1Crafting.subcategories.currency;
+      document.getElementById('feat-poe1-craft-essences').checked = preset.poe1Crafting.subcategories.essences;
+      document.getElementById('feat-poe1-craft-fossils').checked = preset.poe1Crafting.subcategories.fossils;
+      document.getElementById('feat-poe1-craft-embers').checked = preset.poe1Crafting.subcategories.embers;
       
       // Character
       document.getElementById('feat-character').checked = preset.character.enabled;
@@ -616,6 +656,16 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
             socketables: document.getElementById('feat-craft-socketables').checked
           }
         },
+        poe1Crafting: {
+          enabled: document.getElementById('feat-poe1-crafting').checked,
+          subcategories: {
+            scarabs: document.getElementById('feat-poe1-craft-scarabs').checked,
+            currency: document.getElementById('feat-poe1-craft-currency').checked,
+            essences: document.getElementById('feat-poe1-craft-essences').checked,
+            fossils: document.getElementById('feat-poe1-craft-fossils').checked,
+            embers: document.getElementById('feat-poe1-craft-embers').checked
+          }
+        },
         character: {
           enabled: document.getElementById('feat-character').checked,
           subcategories: {
@@ -652,7 +702,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       
       // Validate at least one feature enabled
       const hasAny = config.modifiers || config.poe1Modifiers || config.merchant || 
-        config.crafting.enabled || config.character.enabled || 
+        config.crafting.enabled || config.poe1Crafting.enabled || config.character.enabled || 
         config.items.enabled || config.poe1Items.enabled || config.tools.enabled;
       
       if (!hasAny) {
