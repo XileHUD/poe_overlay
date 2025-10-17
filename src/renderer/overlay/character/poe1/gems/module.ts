@@ -19,6 +19,11 @@ export type GemDetail = {
   levelProgression: Array<Record<string, string>>;
   description?: string;
   stats?: string[];
+  // Enhanced fields for detailed gem information
+  gemDescription?: string; // Description from secDescrText div
+  explicitMods?: Array<{ text: string; values: string[] }>; // Explicit modifiers with values
+  modDescriptions?: string[]; // Explanatory text for mods (item_description spans)
+  qualityMods?: Array<{ text: string; values: string[] }>; // Quality bonuses with value ranges
 };
 
 type State = {
@@ -171,6 +176,7 @@ function renderList(): void {
 
   // Gem type filters - start with none selected (show all by default)
   const selectedGemTypes = new Set<string>();
+  let tagsExpanded = false; // Track Show More/Less state for gem tags
 
   function getGemType(gem: Gem): string {
     if (gem.isTransfigured) return 'Transfigured';
@@ -180,24 +186,71 @@ function renderList(): void {
     return 'Skill';
   }
 
-  function chipCss(tag: string, active: boolean, rgb: string = '144,164,174', isButton = false){
-    const [r,g,b] = rgb.split(',').map(Number); 
-    const bg=active?`rgba(${r},${g},${b},0.9)`:`rgba(${r},${g},${b},0.22)`; 
-    const border=`rgba(${r},${g},${b},0.6)`; 
-    const l=0.2126*r+0.7152*g+0.0722*b; 
-    const color=active?(l>180?'#000':'#fff'):'var(--text-primary)';
-    const padding = isButton ? '6px 14px' : '2px 6px';
-    const fontSize = isButton ? '11px' : '9px';
-    return `cursor:pointer; user-select:none; padding:${padding}; font-size:${fontSize}; border-radius:999px; border:1px solid ${border}; background:${bg}; color:${color}; white-space:nowrap; display:inline-block;`;
+  // Color mapping for tags (matches Bases pattern)
+  function tagRGB(tag: string): [number,number,number] {
+    const t = (tag || '').toLowerCase();
+    if (t === 'fire') return [220, 68, 61];
+    if (t === 'cold') return [66, 165, 245];
+    if (t === 'lightning') return [255, 213, 79];
+    if (t === 'chaos') return [156, 39, 176];
+    if (t === 'physical') return [158, 158, 158];
+    if (t === 'attack') return [121, 85, 72];
+    if (t === 'spell') return [92, 107, 192];
+    if (t === 'projectile') return [255, 179, 0];
+    if (t === 'aoe' || t === 'area') return [171, 71, 188];
+    if (t === 'melee') return [121, 85, 72];
+    if (t === 'critical' || t === 'crit') return [255, 179, 0];
+    if (t === 'duration') return [66, 165, 245];
+    if (t === 'minion' || t === 'summon') return [156, 39, 176];
+    if (t === 'curse' || t === 'hex' || t === 'mark') return [156, 39, 176];
+    if (t === 'aura' || t === 'herald') return [255, 193, 7];
+    if (t === 'totem') return [121, 85, 72];
+    if (t === 'trap') return [255, 112, 67];
+    if (t === 'mine') return [255, 112, 67];
+    if (t === 'bow') return [46, 125, 50];
+    if (t === 'wand') return [92, 107, 192];
+    if (t === 'channelling' || t === 'channeling') return [171, 71, 188];
+    if (t === 'movement' || t === 'travel') return [67, 160, 71];
+    if (t === 'support') return [156, 39, 176];
+    if (t === 'trigger') return [255, 193, 7];
+    if (t === 'vaal') return [220, 68, 61];
+    if (t === 'guard') return [109, 76, 65];
+    if (t === 'strike') return [121, 85, 72];
+    if (t === 'slam') return [121, 85, 72];
+    if (t === 'brand') return [92, 107, 192];
+    if (t === 'link') return [255, 193, 7];
+    if (t === 'orb') return [92, 107, 192];
+    if (t === 'nova') return [171, 71, 188];
+    if (t === 'chaining') return [255, 213, 79];
+    return [120, 144, 156]; // Default gray
   }
 
-  // Generate distinct colors for gem type filters
-  const typeColors: Record<string, string> = {
-    'Skill': '255,87,34',      // Deep Orange
-    'Support': '156,39,176',    // Purple
-    'Awakened': '255,193,7',    // Amber
-    'Transfigured': '0,188,212' // Cyan
-  };
+  // Simplified chipCss matching Bases pattern
+  function chipCss(tag: string, active: boolean) {
+    const [r, g, b] = tagRGB(tag);
+    const bg = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
+    const border = `rgba(${r},${g},${b},0.6)`;
+    const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    const color = active ? (luma > 180 ? '#000' : '#fff') : 'var(--text-primary)';
+    return `border:1px solid ${border}; background:${bg}; color:${color};`;
+  }
+
+  // Chip CSS for type filters with preset colors
+  function typeChipCss(type: string, active: boolean) {
+    const typeColors: Record<string, string> = {
+      'Skill': '255,87,34',      // Deep Orange
+      'Support': '156,39,176',   // Purple
+      'Awakened': '255,193,7',   // Amber
+      'Transfigured': '0,188,212' // Cyan
+    };
+    const rgb = typeColors[type] || '120,144,156';
+    const [r, g, b] = rgb.split(',').map(Number);
+    const bg = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
+    const border = `rgba(${r},${g},${b},0.6)`;
+    const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    const color = active ? (luma > 180 ? '#000' : '#fff') : 'var(--text-primary)';
+    return `border:1px solid ${border}; background:${bg}; color:${color};`;
+  }
 
   function renderTypeFilters() {
     if (!typeFilterWrap) return;
@@ -205,7 +258,7 @@ function renderList(): void {
     ['Skill', 'Support', 'Awakened', 'Transfigured'].forEach(type => {
       const el = document.createElement('div');
       el.textContent = type;
-      el.style.cssText = chipCss(type, selectedGemTypes.has(type), typeColors[type], true);
+      el.style.cssText = `cursor:pointer; user-select:none; padding:6px 14px; font-size:11px; border-radius:999px; ${typeChipCss(type, selectedGemTypes.has(type))}`;
       el.style.minWidth = '100px';
       el.style.textAlign = 'center';
       el.addEventListener('click', () => {
@@ -231,33 +284,16 @@ function renderList(): void {
       .sort((a, b) => b[1] - a[1])
       .map(([tag]) => tag);
     
-    // Generate distinct colors for each tag
-    const tagColorMap: Record<string, string> = {};
-    const hues = [210, 260, 30, 150, 330, 180, 60, 290, 120, 0]; // Diverse hues
-    sortedTags.forEach((tag, idx) => {
-      const hue = hues[idx % hues.length];
-      const sat = 60 + (idx % 3) * 10;
-      const light = 50 + (idx % 2) * 5;
-      tagColorMap[tag] = `hsl(${hue}, ${sat}%, ${light}%)`;
-    });
+    // Calculate if we need Show More button (approx 3 rows = ~21 tags @ 11px font with typical tag lengths)
+    const MAX_TAGS_COLLAPSED = 21;
+    const tagsToShow = (tagsExpanded || sortedTags.length <= MAX_TAGS_COLLAPSED) ? sortedTags : sortedTags.slice(0, MAX_TAGS_COLLAPSED);
+    const needsShowMore = sortedTags.length > MAX_TAGS_COLLAPSED;
     
-    sortedTags.forEach(tag => {
+    tagsToShow.forEach(tag => {
       const count = state.tagCounts[tag];
       const el = document.createElement('div');
       el.textContent = `${tag} (${count})`;
-      
-      // Convert HSL to RGB for chipCss
-      const hslMatch = tagColorMap[tag].match(/hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)/);
-      let rgb = '144,164,174';
-      if (hslMatch) {
-        const h = parseInt(hslMatch[1]) / 360;
-        const s = parseInt(hslMatch[2]) / 100;
-        const l = parseInt(hslMatch[3]) / 100;
-        const [r, g, b] = hslToRgb(h, s, l);
-        rgb = `${r},${g},${b}`;
-      }
-      
-      el.style.cssText = chipCss(tag, state.selectedTags.has(tag), rgb, false);
+      el.style.cssText = `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:999px; ${chipCss(tag, state.selectedTags.has(tag))}`;
       el.addEventListener('click', () => {
         if (state.selectedTags.has(tag)) {
           state.selectedTags.delete(tag);
@@ -269,29 +305,33 @@ function renderList(): void {
       });
       tagFilterWrap.appendChild(el);
     });
+    
+    // Show More/Less button
+    if (needsShowMore) {
+      const showMoreBtn = document.createElement('div');
+      showMoreBtn.textContent = tagsExpanded ? 'Show Less' : `Show More (${sortedTags.length - MAX_TAGS_COLLAPSED} more)`;
+      showMoreBtn.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--border-color); border-radius:999px; background:var(--bg-secondary); color:var(--text-secondary); font-style:italic;';
+      showMoreBtn.addEventListener('click', () => {
+        tagsExpanded = !tagsExpanded;
+        renderTagFilters();
+      });
+      tagFilterWrap.appendChild(showMoreBtn);
+    }
+    
+    // Reset button
+    if (state.selectedTags.size > 0) {
+      const reset = document.createElement('div');
+      reset.textContent = 'Reset';
+      reset.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--accent-red); border-radius:999px; background:var(--accent-red); color:#fff';
+      reset.addEventListener('click', () => {
+        state.selectedTags.clear();
+        applyFilter();
+        renderTagFilters();
+      });
+      tagFilterWrap.appendChild(reset);
+    }
   }
   
-  function hslToRgb(h: number, s: number, l: number): [number, number, number] {
-    let r, g, b;
-    if (s === 0) {
-      r = g = b = l;
-    } else {
-      const hue2rgb = (p: number, q: number, t: number) => {
-        if (t < 0) t += 1;
-        if (t > 1) t -= 1;
-        if (t < 1/6) return p + (q - p) * 6 * t;
-        if (t < 1/2) return q;
-        if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
-        return p;
-      };
-      const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-      const p = 2 * l - q;
-      r = hue2rgb(p, q, h + 1/3);
-      g = hue2rgb(p, q, h);
-      b = hue2rgb(p, q, h - 1/3);
-    }
-    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
-  }
 
   function applyFilter() {
     const query = (state.input?.value || '').toLowerCase().trim();
@@ -409,6 +449,44 @@ function renderDetail(): void {
     return name.replace(/^[\d.]+%?\s+(?:to\s+[\d.]+\s+)?/, '').trim();
   }
 
+  // Helper to deduplicate array items and filter out internal game mods
+  function deduplicateAndFilter<T extends { text: string }>(items: T[] | undefined): T[] {
+    if (!items || items.length === 0) return [];
+    
+    const seen = new Set<string>();
+    const internalModPatterns = [
+      'console skill dont chase',
+      'is area damage',
+      'quality display',
+      'display minion monster granted skill',
+      'skill can add multiple charges per action',
+      'base active skill totem placement speed',
+      'active skill area of effect radius',
+      'number of additional projectiles'
+    ];
+    
+    return items.filter(item => {
+      // Filter out internal game mods
+      const lowerText = item.text.toLowerCase();
+      if (internalModPatterns.some(pattern => lowerText.includes(pattern) && lowerText.includes('[1]'))) {
+        return false;
+      }
+      
+      // Deduplicate by text
+      if (seen.has(item.text)) {
+        return false;
+      }
+      seen.add(item.text);
+      return true;
+    });
+  }
+
+  // Helper to deduplicate simple string arrays
+  function deduplicateStrings(items: string[] | undefined): string[] {
+    if (!items || items.length === 0) return [];
+    return Array.from(new Set(items));
+  }
+
   // Extract numeric columns for charting
   const levelProgression = detail.levelProgression || [];
   if (levelProgression.length === 0) {
@@ -461,6 +539,68 @@ function renderDetail(): void {
     </div>
   ` : '';
 
+  // Gem description from secDescrText
+  const gemDescriptionHtml = detail.gemDescription ? `
+    <div style='background:var(--bg-secondary); padding:12px; border-radius:6px; margin-bottom:12px;'>
+      <div style='font-weight:600; margin-bottom:8px; color:var(--text-primary);'>Description</div>
+      <div style='font-size:13px; line-height:1.6; color:var(--text-secondary); font-style:italic;'>
+        ${detail.gemDescription}
+      </div>
+    </div>
+  ` : '';
+
+  // Deduplicate and filter explicit mods
+  const uniqueExplicitMods = deduplicateAndFilter(detail.explicitMods);
+  const explicitModsHtml = uniqueExplicitMods.length > 0 ? `
+    <div style='background:var(--bg-secondary); padding:12px; border-radius:6px; margin-bottom:12px;'>
+      <div style='font-weight:600; margin-bottom:8px; color:var(--text-primary);'>Explicit Modifiers</div>
+      <div style='display:flex; flex-direction:column; gap:8px;'>
+        ${uniqueExplicitMods.map(mod => `
+          <div style='font-size:14px; line-height:1.6; color:var(--text-primary);'>
+            ${mod.text
+              .replace(/\((\d+(?:–\d+)?(?:\.\d+)?)\)/g, '<span style="color:var(--accent-blue); font-weight:600;">($1)</span>')
+              .replace(/(\d+(?:\.\d+)?)%/g, '<span style="color:var(--accent-blue); font-weight:600;">$1%</span>')
+              .replace(/(\d+(?:\.\d+)?)\s+/g, '<span style="color:var(--accent-blue); font-weight:600;">$1</span> ')
+            }
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  ` : '';
+
+  // Deduplicate mod descriptions
+  const uniqueModDescriptions = deduplicateStrings(detail.modDescriptions);
+  const modDescriptionsHtml = uniqueModDescriptions.length > 0 ? `
+    <div style='background:var(--bg-secondary); padding:12px; border-radius:6px; margin-bottom:12px;'>
+      <div style='font-weight:600; margin-bottom:8px; color:var(--text-primary);'>Modifier Explanations</div>
+      <div style='display:flex; flex-direction:column; gap:6px;'>
+        ${uniqueModDescriptions.map(desc => `
+          <div style='font-size:12px; line-height:1.6; color:var(--text-secondary); font-style:italic;'>
+            ${desc}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  ` : '';
+
+  // Deduplicate and filter quality mods
+  const uniqueQualityMods = deduplicateAndFilter(detail.qualityMods);
+  const qualityModsHtml = uniqueQualityMods.length > 0 ? `
+    <div style='background:var(--bg-secondary); padding:12px; border-radius:6px; margin-bottom:12px;'>
+      <div style='font-weight:600; margin-bottom:8px; color:var(--text-primary);'>Additional Effects From Quality</div>
+      <div style='display:flex; flex-direction:column; gap:8px;'>
+        ${uniqueQualityMods.map(mod => `
+          <div style='font-size:14px; line-height:1.6; color:var(--text-primary);'>
+            ${mod.text
+              .replace(/\((\d+(?:–\d+)?(?:\.\d+)?)\)/g, '<span style="color:var(--accent-blue); font-weight:600;">($1)</span>')
+              .replace(/(\d+(?:\.\d+)?)%/g, '<span style="color:var(--accent-blue); font-weight:600;">$1%</span>')
+            }
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  ` : '';
+
   // Create reference links
   const gemSlug = state.currentGemSlug || '';
   const referenceLinksHtml = gemSlug ? `
@@ -489,6 +629,10 @@ function renderDetail(): void {
       <h2 style='margin:0; flex:1; font-size:18px; color:var(--text-primary);'>${detail.name}</h2>
     </div>
     ${descriptionHtml}
+    ${gemDescriptionHtml}
+    ${explicitModsHtml}
+    ${modDescriptionsHtml}
+    ${qualityModsHtml}
     <div style='background:var(--bg-secondary); padding:12px; border-radius:6px; margin-bottom:12px;'>
       <div style='font-weight:600; margin-bottom:8px;'>Metadata</div>
       <div style='display:grid; grid-template-columns: auto 1fr; gap:6px 12px; font-size:12px;'>

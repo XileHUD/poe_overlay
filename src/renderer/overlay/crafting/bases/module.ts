@@ -240,6 +240,7 @@ export function render(groups: BaseGroups): void {
   categoryKeys.forEach(k => ((state.groups as any)[k]||[]).forEach((b: BaseItem)=>{ (b.__tags||[]).forEach(t=>{ tagCounts[t] = (tagCounts[t]||0)+1; }); }));
 
   const selectedTags=new Set<string>();
+  let tagsExpanded = false; // Track Show More/Less state
   // Multi-select defense filters (user can now pick any combination of Armour / Evasion / ES)
   const defenseQuick = new Set<'Armour'|'Evasion'|'ES'>();
   let sortTag: 'Armour'|'Evasion'|'ES'|'AttackSpeed'|'Crit'|'Physical'|'Fire'|'Cold'|'Lightning'|'Chaos'|'Life'|'Mana'|'Block'|'Move'|'Elemental'|null = null;
@@ -268,7 +269,13 @@ export function render(groups: BaseGroups): void {
 
   function renderTagFilters(){
     if(!tagWrap) return; tagWrap.innerHTML='';
-    allTags.forEach(tag=>{
+    
+    // Calculate if we need Show More button (approx 3 rows = ~21 tags @ 11px font with typical tag lengths)
+    const MAX_TAGS_COLLAPSED = 21;
+    const tagsToShow = (tagsExpanded || allTags.length <= MAX_TAGS_COLLAPSED) ? allTags : allTags.slice(0, MAX_TAGS_COLLAPSED);
+    const needsShowMore = allTags.length > MAX_TAGS_COLLAPSED;
+    
+    tagsToShow.forEach(tag=>{
       const btn=document.createElement('div');
       const active=selectedTags.has(tag);
       const count = tagCounts[tag]||0;
@@ -277,6 +284,20 @@ export function render(groups: BaseGroups): void {
       btn.addEventListener('click',()=>{ active?selectedTags.delete(tag):selectedTags.add(tag); build(); renderTagFilters(); });
       tagWrap.appendChild(btn);
     });
+    
+    // Show More/Less button
+    if (needsShowMore) {
+      const showMoreBtn = document.createElement('div');
+      showMoreBtn.textContent = tagsExpanded ? 'Show Less' : `Show More (${allTags.length - MAX_TAGS_COLLAPSED} more)`;
+      showMoreBtn.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--border-color); border-radius:999px; background:var(--bg-secondary); color:var(--text-secondary); font-style:italic;';
+      showMoreBtn.addEventListener('click', () => {
+        tagsExpanded = !tagsExpanded;
+        renderTagFilters();
+      });
+      tagWrap.appendChild(showMoreBtn);
+    }
+    
+    // Reset button
     if(selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; (reset as HTMLElement).style.cssText='cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--accent-red); border-radius:999px; background:var(--accent-red); color:#fff'; reset.addEventListener('click',()=>{ selectedTags.clear(); build(); renderTagFilters(); }); tagWrap.appendChild(reset); }
   }
   function baseMatchesTags(b: BaseItem){ if(!selectedTags.size) return true; if(!b.__tags) return false; return [...selectedTags].every(t=> (b.__tags as string[]).includes(t)); }

@@ -81,6 +81,7 @@ export function render(list: DivinationCard[]): void {
   state.cache = [...(list||[])];
   state.selectedTags.clear();
   state.tagCounts = {};
+  let tagsExpanded = false; // Track Show More/Less state
 
   const tagCounts: Record<string, number> = {};
 
@@ -179,8 +180,14 @@ export function render(list: DivinationCard[]): void {
       if (orderA !== orderB) return orderA - orderB;
       return a.localeCompare(b);
     });
+    
+    // Calculate if we need Show More button (approx 3 rows = ~21 tags @ 11px font with typical tag lengths)
+    const MAX_TAGS_COLLAPSED = 21;
+    const tagsToShow = (tagsExpanded || sortedTags.length <= MAX_TAGS_COLLAPSED) ? sortedTags : sortedTags.slice(0, MAX_TAGS_COLLAPSED);
+    const needsShowMore = sortedTags.length > MAX_TAGS_COLLAPSED;
+    
     tagWrap.innerHTML = '';
-    sortedTags.forEach(tag => {
+    tagsToShow.forEach(tag => {
       const count = state.tagCounts[tag] || 0;
       const isActive = state.selectedTags.has(tag);
       const el = document.createElement('div');
@@ -194,6 +201,20 @@ export function render(list: DivinationCard[]): void {
       });
       tagWrap.appendChild(el);
     });
+    
+    // Show More/Less button
+    if (needsShowMore) {
+      const showMoreBtn = document.createElement('div');
+      showMoreBtn.textContent = tagsExpanded ? 'Show Less' : `Show More (${sortedTags.length - MAX_TAGS_COLLAPSED} more)`;
+      showMoreBtn.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--border-color); border-radius:999px; background:var(--bg-secondary); color:var(--text-secondary); font-style:italic;';
+      showMoreBtn.addEventListener('click', () => {
+        tagsExpanded = !tagsExpanded;
+        renderTagFilters();
+      });
+      tagWrap.appendChild(showMoreBtn);
+    }
+    
+    // Reset button
     if (state.selectedTags.size > 0) {
       const reset = document.createElement('div');
       reset.textContent = 'Reset';

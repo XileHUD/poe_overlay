@@ -89,6 +89,7 @@ export async function show(): Promise<void> {
 export function render(list: Catalyst[]): void {
   const panel = ensurePanel();
   state.cache = [...(list || [])];
+  let tagsExpanded = false; // Track Show More/Less state
   // Curated tags for catalysts based on typical catalyst effects
   const curated = [
     'Damage','Ailments','Attributes','Life','Mana','Energy Shield','Armour','Evasion','Resistances',
@@ -168,11 +169,19 @@ export function render(list: Catalyst[]): void {
   function renderTagFilters(){
     if (!tagWrap) return;
     tagWrap.innerHTML='';
-    curated.forEach(tag=>{
+    
+    // Filter to only show tags with counts
+    const tagsWithCounts = curated.filter(tag => ((state.tagCounts as any)[tag] || 0) > 0);
+    
+    // Calculate if we need Show More button (approx 3 rows = ~21 tags @ 11px font with typical tag lengths)
+    const MAX_TAGS_COLLAPSED = 21;
+    const tagsToShow = (tagsExpanded || tagsWithCounts.length <= MAX_TAGS_COLLAPSED) ? tagsWithCounts : tagsWithCounts.slice(0, MAX_TAGS_COLLAPSED);
+    const needsShowMore = tagsWithCounts.length > MAX_TAGS_COLLAPSED;
+    
+    tagsToShow.forEach(tag=>{
       const lc = tag.toLowerCase();
       const active = (state.selectedTags as Set<string>).has(lc);
       const count = (state.tagCounts as any)[tag] || 0;
-      if (!count) return;
       const el = document.createElement('button');
       el.textContent = count ? `${tag} (${count})` : tag;
       el.style.cssText = `padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; ${chipCss(tag, active)}`;
@@ -183,6 +192,20 @@ export function render(list: Catalyst[]): void {
       });
       tagWrap.appendChild(el);
     });
+    
+    // Show More/Less button
+    if (needsShowMore) {
+      const showMoreBtn = document.createElement('button');
+      showMoreBtn.textContent = tagsExpanded ? 'Show Less' : `Show More (${tagsWithCounts.length - MAX_TAGS_COLLAPSED} more)`;
+      showMoreBtn.style.cssText = 'padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; border:1px solid var(--border-color); background:var(--bg-secondary); color:var(--text-secondary); font-style:italic;';
+      showMoreBtn.addEventListener('click', () => {
+        tagsExpanded = !tagsExpanded;
+        renderTagFilters();
+      });
+      tagWrap.appendChild(showMoreBtn);
+    }
+    
+    // Reset button
     if ((state.selectedTags as Set<string>).size) {
       const reset=document.createElement('button');
       reset.textContent='Reset';
