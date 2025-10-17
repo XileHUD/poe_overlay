@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Ailment, Chill, Freeze",
     "DropLevel": "31",
+    "BaseType": "Hypothermia Support",
     "Class": "Support Gems",
     "Icon": "D",
     "ItemType": "Metadata/Items/Gems/SupportGemDamageAgainstChilled",
@@ -373,5 +374,138 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that deals damage.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have +20% chance to Freeze Enemies which are Chilled",
+      "values": [
+        "+20"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (20–29)% more Cold Damage Over Time",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (20–29)% more Damage with Hits and Ailments against Chilled Enemies",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "Supported Skills have +20% chance to Freeze Enemies which are Chilled",
+      "values": [
+        "+20"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (20–29)% more Cold Damage Over Time",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (20–29)% more Damage with Hits and Ailments against Chilled Enemies",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Bonechill",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Hypothermia",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Cold Penetration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Added Cold Damage",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Inspiration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Bonechill",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Hypothermia",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Cold Penetration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 1 Added Cold Damage",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Inspiration",
+      "values": [
+        "15"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have +(0–20)% chance to Freeze Enemies which are Chilled",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have +(0–20)% chance to Freeze Enemies which are Chilled",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

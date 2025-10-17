@@ -377,7 +377,7 @@ function renderList(): void {
     state.filtered.forEach(gem => {
       const card = document.createElement('div');
       card.style.background = 'var(--bg-card)';
-      card.style.border = '1px solid var(--border-color)';
+      card.style.border = '2px solid rgba(144,164,174,0.3)';
       card.style.borderRadius = '6px';
       card.style.padding = '8px';
       card.style.display = 'flex';
@@ -385,15 +385,18 @@ function renderList(): void {
       card.style.alignItems = 'flex-start';
       card.style.minHeight = '70px';
       card.style.cursor = 'pointer';
-      card.style.transition = 'transform 0.15s, box-shadow 0.15s';
+      card.style.transition = 'transform 0.15s, box-shadow 0.15s, border-color 0.15s';
+      card.style.background = 'var(--bg-secondary)';
       
       card.addEventListener('mouseenter', () => {
         card.style.transform = 'translateY(-2px)';
-        card.style.boxShadow = '0 4px 8px rgba(0,0,0,0.3)';
+        card.style.boxShadow = '0 4px 12px rgba(0,0,0,0.4)';
+        card.style.borderColor = 'rgba(144,164,174,0.6)';
       });
       card.addEventListener('mouseleave', () => {
         card.style.transform = '';
         card.style.boxShadow = '';
+        card.style.borderColor = 'rgba(144,164,174,0.3)';
       });
       card.addEventListener('click', () => {
         if (gem.slug) showDetail(gem.slug);
@@ -448,7 +451,17 @@ function renderDetail(): void {
   // Helper to remove leading numbers and % from column names
   function cleanColumnName(name: string): string {
     // Match pattern like "20% increased..." or "5 to 10 added..." and remove the leading number part
-    return name.replace(/^[\d.]+%?\s+(?:to\s+[\d.]+\s+)?/, '').trim();
+    let cleaned = name.replace(/^[\d.]+%?\s+(?:to\s+[\d.]+\s+)?/, '').trim();
+    
+    // If the text contains only ONE number (safe to remove placeholder), remove it
+    // This handles cases like "equal to 5% of Flask's Recovery" -> "equal to % of Flask's Recovery"
+    const numberMatches = cleaned.match(/\d+/g);
+    if (numberMatches && numberMatches.length === 1) {
+      // Only one number found - safe to remove it (it's likely a placeholder value)
+      cleaned = cleaned.replace(/\d+/g, '').replace(/\s+/g, ' ').trim();
+    }
+    
+    return cleaned;
   }
 
   // Helper to deduplicate array items and filter out internal game mods
@@ -530,8 +543,28 @@ function renderDetail(): void {
     }
   });
 
-  // Show all numeric columns as charts (not just 2)
-  const chartColumns = numericColumns;
+  // Filter out columns that don't scale (all values are the same)
+  const chartColumns = numericColumns.filter(key => {
+    // Extract all numeric values from this column across all levels
+    const allValues: number[] = [];
+    levelProgression.forEach(row => {
+      const rawValue = row[key] || '';
+      const matches = rawValue.match(/[\d.]+/g);
+      if (matches) {
+        matches.forEach(match => {
+          const num = parseFloat(match);
+          if (!isNaN(num)) allValues.push(num);
+        });
+      }
+    });
+    
+    // Check if values actually vary
+    if (allValues.length === 0) return false;
+    const min = Math.min(...allValues);
+    const max = Math.max(...allValues);
+    const range = max - min;
+    return range > 0.001; // Only include if values change
+  });
 
   // Filter metadata
   const filteredMetadata = Object.fromEntries(
@@ -552,18 +585,23 @@ function renderDetail(): void {
   const imgHtml = orig ? `<img class='gem-detail-img' src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${orig}' decoding='async' style='width:64px; height:64px; object-fit:contain; margin-right:12px;'>` : '';
 
   const description = detail.description || (gemImg as any)?.description || '';
+  const gemDescription = detail.gemDescription || '';
+  
+  // Only show gemDescription if it's different from description (avoid duplication)
+  const showBothDescriptions = description && gemDescription && description.trim() !== gemDescription.trim();
+  
   const descriptionHtml = description ? `
     <div style='background:var(--bg-secondary); padding:12px; border-radius:6px; margin-bottom:12px; font-size:13px; line-height:1.6; color:var(--text-primary);'>
       ${description}
     </div>
   ` : '';
 
-  // Gem description from secDescrText
-  const gemDescriptionHtml = detail.gemDescription ? `
+  // Gem description from secDescrText - only show if different from main description
+  const gemDescriptionHtml = (showBothDescriptions || (!description && gemDescription)) ? `
     <div style='background:var(--bg-secondary); padding:12px; border-radius:6px; margin-bottom:12px;'>
       <div style='font-weight:600; margin-bottom:8px; color:var(--text-primary);'>Description</div>
       <div style='font-size:13px; line-height:1.6; color:var(--text-secondary); font-style:italic;'>
-        ${detail.gemDescription}
+        ${gemDescription}
       </div>
     </div>
   ` : '';
@@ -579,7 +617,7 @@ function renderDetail(): void {
   const normalizeModText = (text: string) => {
     return text
       .replace(/\+/g, '')  // Remove +
-      .replace(/\([\d–\-]+\)/g, '(#)') // Replace (0-20) or (0–20) with (#)
+      .replace(/\([^)]+\)/g, '')  // Remove parentheses and their contents entirely
       .replace(/[\d.]+/g, '#')  // Replace all numbers with #
       .replace(/\s+/g, ' ')  // Collapse whitespace
       .trim()
@@ -595,14 +633,17 @@ function renderDetail(): void {
   const explicitModsHtml = filteredExplicitMods.length > 0 ? `
     <div style='background:rgba(65,105,225,0.08); border:1px solid rgba(65,105,225,0.25); padding:14px; border-radius:6px; margin-bottom:12px;'>
       <div style='font-weight:600; margin-bottom:10px; color:var(--accent-blue);'>Explicit Modifiers</div>
-      <div style='display:flex; flex-direction:column; gap:4px;'>
+      <div style='display:flex; flex-direction:column; gap:6px;'>
         ${filteredExplicitMods.map(mod => `
-          <div style='font-size:14px; line-height:1.5; color:var(--text-primary);'>
-            ${mod.text
-              .replace(/\((\d+(?:–\d+)?(?:\.\d+)?)\)/g, '<span style="color:var(--accent-blue); font-weight:600;">($1)</span>')
-              .replace(/(\d+(?:\.\d+)?)%/g, '<span style="color:var(--accent-blue); font-weight:600;">$1%</span>')
-              .replace(/(\d+(?:\.\d+)?)\s+/g, '<span style="color:var(--accent-blue); font-weight:600;">$1</span> ')
-            }
+          <div style='font-size:14px; line-height:1.5; color:var(--text-primary); display:flex; align-items:baseline; gap:8px;'>
+            <span style='color:var(--accent-blue); font-weight:bold; flex-shrink:0;'>▸</span>
+            <span style='flex:1;'>
+              ${mod.text
+                .replace(/\((\d+(?:–\d+)?(?:\.\d+)?)\)/g, '<span style="color:var(--accent-blue); font-weight:600;">($1)</span>')
+                .replace(/(\d+(?:\.\d+)?)%/g, '<span style="color:var(--accent-blue); font-weight:600;">$1%</span>')
+                .replace(/(\d+(?:\.\d+)?)\s+/g, '<span style="color:var(--accent-blue); font-weight:600;">$1</span> ')
+              }
+            </span>
           </div>
         `).join('')}
       </div>
@@ -687,20 +728,16 @@ function renderDetail(): void {
           <!-- For 3+ charts: 2 on top row, rest full-width below -->
           <div style='display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; margin-bottom:12px;'>
             ${chartColumns.slice(0, 2).map((col, idx) => {
-              const cleanName = cleanColumnName(col);
               return `
               <div>
-                <div style='font-weight:600; margin-bottom:8px; text-align:center;'>${cleanName} by Level</div>
                 <canvas id='gemChart${idx}' style='width:100%; height:250px; background:var(--bg-secondary); border-radius:6px;'></canvas>
               </div>
             `;}).join('')}
           </div>
           ${chartColumns.slice(2).map((col, idx) => {
             const actualIdx = idx + 2;
-            const cleanName = cleanColumnName(col);
             return `
             <div style='margin-bottom:12px;'>
-              <div style='font-weight:600; margin-bottom:8px; text-align:center;'>${cleanName} by Level</div>
               <canvas id='gemChart${actualIdx}' style='width:100%; height:250px; background:var(--bg-secondary); border-radius:6px;'></canvas>
             </div>
           `;}).join('')}
@@ -708,10 +745,8 @@ function renderDetail(): void {
           <!-- For 1-2 charts: side by side -->
           <div style='display:grid; grid-template-columns:repeat(auto-fit, minmax(400px, 1fr)); gap:12px;'>
             ${chartColumns.map((col, idx) => {
-              const cleanName = cleanColumnName(col);
               return `
               <div>
-                <div style='font-weight:600; margin-bottom:8px; text-align:center;'>${cleanName} by Level</div>
                 <canvas id='gemChart${idx}' style='width:100%; height:250px; background:var(--bg-secondary); border-radius:6px;'></canvas>
               </div>
             `;}).join('')}
@@ -722,7 +757,7 @@ function renderDetail(): void {
     <div style='background:var(--bg-secondary); padding:12px; border-radius:6px;'>
       <div style='font-weight:600; margin-bottom:8px;'>Level Progression</div>
       <div style='overflow-x:auto;'>
-        <table style='width:100%; border-collapse:collapse; font-size:11px;'>
+        <table style='width:100%; border-collapse:collapse; font-size:11px; table-layout:auto;'>
           <thead>
             <tr style='background:var(--bg-tertiary);'>
               ${Object.keys(firstRow).filter(k => !skipKeys.has(k)).map(k => {
@@ -749,7 +784,8 @@ function renderDetail(): void {
                   displayName = cleanName + ' %';
                 }
                 
-                return `<th style='padding:6px; border:1px solid var(--border-color); text-align:left; color:${headerColor}; font-weight:600;'>${displayName}</th>`;
+                // SIMPLE: Let browser auto-size. Headers wrap to max 2 lines, data cells stay single line
+                return `<th style='padding:4px 6px; border:1px solid var(--border-color); text-align:left; color:${headerColor}; font-weight:600; white-space:normal; word-wrap:break-word; line-height:1.25; vertical-align:top; font-size:10px; max-height:2.5em; overflow:hidden;'>${displayName}</th>`;
               }).join('')}
             </tr>
           </thead>
@@ -764,6 +800,11 @@ function renderDetail(): void {
               
               const cells = Object.keys(firstRow).filter(k => !skipKeys.has(k)).map(colKey => {
                 const rawValue = row[colKey] || '';
+                
+                // For multi-value cells (e.g., "40, 1"), extract only the first value
+                // This handles cases where the second value is constant/irrelevant
+                const values = rawValue.split(',').map(v => v.trim()).filter(v => v);
+                const primaryValue = values.length > 0 ? values[0] : rawValue;
                 
                 // Deduplicate cell values (e.g., "136.4%, 136.4%" -> "136.4%")
                 let deduplicatedValue = rawValue.split(',').map(v => v.trim()).filter((v, i, arr) => arr.indexOf(v) === i).join(', ');
@@ -795,13 +836,15 @@ function renderDetail(): void {
                 // Calculate delta from previous level (ONLY for damage/defense/special stats, NOT metadata)
                 let deltaHtml = '';
                 let isSignificant = false;
-                if (!isMetadata && idx > 0 && /[\d.]/.test(deduplicatedValue)) {
+                if (!isMetadata && idx > 0 && /[\d.]/.test(primaryValue)) {
                   const prevRow = levelProgression[idx - 1];
-                  const prevValue = prevRow[colKey] || '';
+                  const prevRawValue = prevRow[colKey] || '';
+                  const prevValues = prevRawValue.split(',').map(v => v.trim()).filter(v => v);
+                  const prevPrimaryValue = prevValues.length > 0 ? prevValues[0] : prevRawValue;
                   
-                  // Extract first numeric value from both
-                  const currentMatch = deduplicatedValue.match(/[\d.]+/);
-                  const prevMatch = prevValue.match(/[\d.]+/);
+                  // Extract first numeric value from both primary values
+                  const currentMatch = primaryValue.match(/[\d.]+/);
+                  const prevMatch = prevPrimaryValue.match(/[\d.]+/);
                   
                   if (currentMatch && prevMatch) {
                     const current = parseFloat(currentMatch[0]);
@@ -824,8 +867,8 @@ function renderDetail(): void {
                 }
                 
                 const cellStyle = isSignificant 
-                  ? `padding:6px; border:1px solid var(--border-color); font-weight:700; background:rgba(255,193,7,0.1);`
-                  : `padding:6px; border:1px solid var(--border-color);`;
+                  ? `padding:6px; border:1px solid var(--border-color); font-weight:700; background:rgba(255,193,7,0.1); white-space:nowrap;`
+                  : `padding:6px; border:1px solid var(--border-color); white-space:nowrap;`;
                 
                 return `<td style='${cellStyle}'>${deduplicatedValue}${deltaHtml}</td>`;
               }).join('');
@@ -885,28 +928,50 @@ function renderChart(canvas: HTMLCanvasElement, columnName: string, levelProgres
   const height = rect.height;
   const padding = { top: 20, right: 20, bottom: 40, left: 60 };
 
-  // Extract data points
-  const dataPoints: { level: number, value: number }[] = [];
+  // Extract ALL data series (multiple lines for multi-value columns)
+  const dataSeries: Array<{ level: number, value: number }[]> = [];
+  let maxSeriesCount = 0;
+  
+  // First pass: determine how many series we have
+  levelProgression.forEach(row => {
+    const rawValue = row[columnName] || '';
+    const matches = rawValue.match(/[\d.]+/g);
+    if (matches && matches.length > maxSeriesCount) {
+      maxSeriesCount = matches.length;
+    }
+  });
+  
+  // Initialize series arrays
+  for (let i = 0; i < maxSeriesCount; i++) {
+    dataSeries.push([]);
+  }
+  
+  // Second pass: extract data points for each series
   levelProgression.forEach(row => {
     const level = parseInt(row.Level || '0', 10);
     const rawValue = row[columnName] || '';
-    // Try to extract first number from value (handles ranges like "21, 31" or percentages)
-    const match = rawValue.match(/[\d.]+/);
-    if (match) {
-      const value = parseFloat(match[0]);
-      if (!isNaN(value)) {
-        dataPoints.push({ level, value });
-      }
+    const matches = rawValue.match(/[\d.]+/g);
+    
+    if (matches) {
+      matches.forEach((match, seriesIdx) => {
+        const value = parseFloat(match);
+        if (!isNaN(value) && dataSeries[seriesIdx]) {
+          dataSeries[seriesIdx].push({ level, value });
+        }
+      });
     }
   });
 
-  if (dataPoints.length === 0) return;
+  // Filter out empty series
+  const validSeries = dataSeries.filter(series => series.length > 0);
+  if (validSeries.length === 0) return;
 
-  // Find min/max for scaling
-  const minLevel = Math.min(...dataPoints.map(d => d.level));
-  const maxLevel = Math.max(...dataPoints.map(d => d.level));
-  const minValue = Math.min(...dataPoints.map(d => d.value));
-  const maxValue = Math.max(...dataPoints.map(d => d.value));
+  // Find min/max for scaling across ALL series
+  const allPoints = validSeries.flat();
+  const minLevel = Math.min(...allPoints.map(d => d.level));
+  const maxLevel = Math.max(...allPoints.map(d => d.level));
+  const minValue = Math.min(...allPoints.map(d => d.value));
+  const maxValue = Math.max(...allPoints.map(d => d.value));
 
   const chartWidth = width - padding.left - padding.right;
   const chartHeight = height - padding.top - padding.bottom;
@@ -959,31 +1024,75 @@ function renderChart(canvas: HTMLCanvasElement, columnName: string, levelProgres
     ctx.fillText(level.toString(), x, padding.top + chartHeight + 20);
   }
 
-  // Plot line
-  ctx.strokeStyle = '#64b5f6';
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  dataPoints.forEach((point, idx) => {
-    const x = xScale(point.level);
-    const y = yScale(point.value);
-    if (idx === 0) ctx.moveTo(x, y);
-    else ctx.lineTo(x, y);
-  });
-  ctx.stroke();
+  // Colors for multiple series
+  const seriesColors = [
+    '#64b5f6',  // Blue
+    '#81c784',  // Green
+    '#ffb74d',  // Orange
+    '#e57373',  // Red
+    '#ba68c8',  // Purple
+    '#4dd0e1',  // Cyan
+  ];
 
-  // Plot points
-  ctx.fillStyle = '#2196f3';
-  dataPoints.forEach(point => {
-    const x = xScale(point.level);
-    const y = yScale(point.value);
+  // Plot all series
+  validSeries.forEach((dataPoints, seriesIdx) => {
+    const color = seriesColors[seriesIdx % seriesColors.length];
+    
+    // Plot line
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.arc(x, y, 3, 0, Math.PI * 2);
-    ctx.fill();
+    dataPoints.forEach((point, idx) => {
+      const x = xScale(point.level);
+      const y = yScale(point.value);
+      if (idx === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+
+    // Plot points
+    ctx.fillStyle = color;
+    dataPoints.forEach(point => {
+      const x = xScale(point.level);
+      const y = yScale(point.value);
+      ctx.beginPath();
+      ctx.arc(x, y, 3, 0, Math.PI * 2);
+      ctx.fill();
+    });
   });
 
-  // Title
+  // Title (show "min-max" if multiple series) with ellipsis if too long
   ctx.fillStyle = '#fff';
   ctx.font = 'bold 12px sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText(columnName, width / 2, 15);
+  const titleSuffix = validSeries.length > 1 ? ` (${validSeries.length} values)` : '';
+  let titleText = columnName + titleSuffix;
+  
+  // Truncate with ellipsis if text is too wide
+  const maxTitleWidth = width - 40; // Leave 20px padding on each side
+  let titleWidth = ctx.measureText(titleText).width;
+  
+  if (titleWidth > maxTitleWidth) {
+    // Binary search for the right length
+    let low = 0;
+    let high = columnName.length;
+    let bestFit = columnName;
+    
+    while (low <= high) {
+      const mid = Math.floor((low + high) / 2);
+      const testText = columnName.substring(0, mid) + '...' + titleSuffix;
+      const testWidth = ctx.measureText(testText).width;
+      
+      if (testWidth <= maxTitleWidth) {
+        bestFit = columnName.substring(0, mid);
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
+    }
+    
+    titleText = bestFit + '...' + titleSuffix;
+  }
+  
+  ctx.fillText(titleText, width / 2, 15);
 }
