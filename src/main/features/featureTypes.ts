@@ -30,6 +30,12 @@ export interface CharacterSubcategories {
   glossar: boolean;
 }
 
+export interface Poe1CharacterSubcategories {
+  divinationCards: boolean;
+  tattoos: boolean;
+  gems: boolean;
+}
+
 export interface ItemsSubcategories {
   uniques: boolean;
   bases: boolean;
@@ -58,6 +64,10 @@ export interface FeatureConfig {
   character: {
     enabled: boolean;
     subcategories: CharacterSubcategories;
+  };
+  poe1Character: {
+    enabled: boolean;
+    subcategories: Poe1CharacterSubcategories;
   };
   items: {
     enabled: boolean;
@@ -112,6 +122,14 @@ export const DEFAULT_FEATURES: FeatureConfig = {
       atlasNodes: true,
       gems: true,
       glossar: true
+    }
+  },
+  poe1Character: {
+    enabled: true,
+    subcategories: {
+      divinationCards: true,
+      tattoos: true,
+      gems: true
     }
   },
   items: {
@@ -177,6 +195,14 @@ export const MINIMAL_FEATURES: FeatureConfig = {
       glossar: false
     }
   },
+  poe1Character: {
+    enabled: false,
+    subcategories: {
+      divinationCards: false,
+      tattoos: false,
+      gems: false
+    }
+  },
   items: {
     enabled: false,
     subcategories: {
@@ -237,6 +263,14 @@ export const ALL_FEATURES: FeatureConfig = {
       atlasNodes: true,
       gems: true,
       glossar: true
+    }
+  },
+  poe1Character: {
+    enabled: true,
+    subcategories: {
+      divinationCards: true,
+      tattoos: true,
+      gems: true
     }
   },
   items: {

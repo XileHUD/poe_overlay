@@ -991,6 +991,14 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                     glossar: false
                 }
             },
+            poe1Character: {
+                enabled: false,
+                subcategories: {
+                    divinationCards: false,
+                    tattoos: false,
+                    gems: false
+                }
+            },
             items: {
                 enabled: false,
                 subcategories: {
@@ -2701,6 +2709,14 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                                 essences: config.poe1Crafting?.subcategories?.essences ?? disabled.poe1Crafting.subcategories.essences,
                                 fossils: config.poe1Crafting?.subcategories?.fossils ?? disabled.poe1Crafting.subcategories.fossils,
                                 embers: config.poe1Crafting?.subcategories?.embers ?? disabled.poe1Crafting.subcategories.embers
+                            }
+                        },
+                        poe1Character: {
+                            enabled: config.poe1Character?.enabled ?? disabled.poe1Character.enabled,
+                            subcategories: {
+                                divinationCards: config.poe1Character?.subcategories?.divinationCards ?? disabled.poe1Character.subcategories.divinationCards,
+                                tattoos: config.poe1Character?.subcategories?.tattoos ?? disabled.poe1Character.subcategories.tattoos,
+                                gems: config.poe1Character?.subcategories?.gems ?? disabled.poe1Character.subcategories.gems
                             }
                         },
                         poe1Items: {

@@ -210,6 +210,9 @@ export function registerDataIpc(deps: DataIpcDeps) {
   let poe1FossilsCache: any | undefined;
   let poe1CurrencyCache: any | undefined;
   let poe1ScarabsCache: any | undefined;
+  let poe1DivinationCardsCache: any | undefined;
+  let poe1TattoosCache: any | undefined;
+  let poe1GemsCache: any | undefined;
 
   const classifyReplicaCategory = (baseType: string): 'WeaponUnique' | 'ArmourUnique' | 'OtherUnique' => {
     const lower = (baseType || '').toLowerCase();
@@ -343,6 +346,56 @@ export function registerDataIpc(deps: DataIpcDeps) {
     return poe1ScarabsCache;
   };
 
+  const loadPoe1DivinationCards = () => {
+    try {
+      const dataDir = deps.getDataDir();
+      const cardsPath = path.join(dataDir, 'items', 'divination-cards', 'DivinationCards.json');
+      if (fs.existsSync(cardsPath)) {
+        const raw = fs.readFileSync(cardsPath, 'utf-8');
+        poe1DivinationCardsCache = JSON.parse(raw);
+      } else {
+        poe1DivinationCardsCache = { error: 'not_found', filePath: cardsPath };
+      }
+    } catch (e: any) {
+      poe1DivinationCardsCache = { error: e?.message || 'unknown_error' };
+    }
+    return poe1DivinationCardsCache;
+  };
+
+  const loadPoe1Tattoos = () => {
+    try {
+      const dataDir = deps.getDataDir();
+      const tattoosPath = path.join(dataDir, 'items', 'tattoos', 'Tattoos.json');
+      if (fs.existsSync(tattoosPath)) {
+        const raw = fs.readFileSync(tattoosPath, 'utf-8');
+        poe1TattoosCache = JSON.parse(raw);
+      } else {
+        poe1TattoosCache = { error: 'not_found', filePath: tattoosPath };
+      }
+    } catch (e: any) {
+      poe1TattoosCache = { error: e?.message || 'unknown_error' };
+    }
+    return poe1TattoosCache;
+  };
+
+  const loadPoe1Gems = () => {
+    try {
+      const dataDir = deps.getDataDir();
+      const gemsPath = path.join(dataDir, 'items', 'gems', 'Gems.json');
+      if (fs.existsSync(gemsPath)) {
+        const raw = fs.readFileSync(gemsPath, 'utf-8');
+        const data = JSON.parse(raw);
+        // Extract the gems array from the new structure {slug: "Gems", gems: [...]}
+        poe1GemsCache = { gems: data.gems || [] };
+      } else {
+        poe1GemsCache = { error: 'not_found', filePath: gemsPath };
+      }
+    } catch (e: any) {
+      poe1GemsCache = { error: e?.message || 'unknown_error' };
+    }
+    return poe1GemsCache;
+  };
+
   const loadPoe1Bases = () => {
     try {
       const dataDir = deps.getDataDir();
@@ -384,6 +437,9 @@ export function registerDataIpc(deps: DataIpcDeps) {
   cacheInvalidators.set('poe1:fossils', () => { poe1FossilsCache = undefined; });
   cacheInvalidators.set('poe1:currency', () => { poe1CurrencyCache = undefined; });
   cacheInvalidators.set('poe1:scarabs', () => { poe1ScarabsCache = undefined; });
+  cacheInvalidators.set('poe1:divinationCards', () => { poe1DivinationCardsCache = undefined; });
+  cacheInvalidators.set('poe1:tattoos', () => { poe1TattoosCache = undefined; });
+  cacheInvalidators.set('poe1:gems', () => { poe1GemsCache = undefined; });
 
   if (overlayVersion === 'poe1') {
     queuePreload('poe1:uniques', async () => { poe1UniquesCache = undefined; loadPoe1Uniques(); });
@@ -393,6 +449,9 @@ export function registerDataIpc(deps: DataIpcDeps) {
     queuePreload('poe1:fossils', async () => { poe1FossilsCache = undefined; loadPoe1Fossils(); });
     queuePreload('poe1:currency', async () => { poe1CurrencyCache = undefined; loadPoe1Currency(); });
     queuePreload('poe1:scarabs', async () => { poe1ScarabsCache = undefined; loadPoe1Scarabs(); });
+    queuePreload('poe1:divinationCards', async () => { poe1DivinationCardsCache = undefined; loadPoe1DivinationCards(); });
+    queuePreload('poe1:tattoos', async () => { poe1TattoosCache = undefined; loadPoe1Tattoos(); });
+    queuePreload('poe1:gems', async () => { poe1GemsCache = undefined; loadPoe1Gems(); });
   }
 
   try { ipcMain.removeHandler('get-poe1-uniques'); } catch {}
@@ -474,6 +533,58 @@ export function registerDataIpc(deps: DataIpcDeps) {
         loadPoe1Scarabs();
       }
       return poe1ScarabsCache;
+    } catch (e: any) {
+      return { error: e?.message || 'unknown_error' };
+    }
+  });
+
+  try { ipcMain.removeHandler('get-poe1-divination-cards'); } catch {}
+  ipcMain.handle('get-poe1-divination-cards', async () => {
+    try {
+      if (typeof poe1DivinationCardsCache === 'undefined') {
+        loadPoe1DivinationCards();
+      }
+      return poe1DivinationCardsCache;
+    } catch (e: any) {
+      return { error: e?.message || 'unknown_error' };
+    }
+  });
+
+  try { ipcMain.removeHandler('get-poe1-tattoos'); } catch {}
+  ipcMain.handle('get-poe1-tattoos', async () => {
+    try {
+      if (typeof poe1TattoosCache === 'undefined') {
+        loadPoe1Tattoos();
+      }
+      return poe1TattoosCache;
+    } catch (e: any) {
+      return { error: e?.message || 'unknown_error' };
+    }
+  });
+
+  try { ipcMain.removeHandler('get-poe1-gems'); } catch {}
+  ipcMain.handle('get-poe1-gems', async () => {
+    try {
+      if (typeof poe1GemsCache === 'undefined') {
+        loadPoe1Gems();
+      }
+      return poe1GemsCache;
+    } catch (e: any) {
+      return { error: e?.message || 'unknown_error' };
+    }
+  });
+
+  try { ipcMain.removeHandler('get-poe1-gem-detail'); } catch {}
+  ipcMain.handle('get-poe1-gem-detail', async (_event, gemSlug: string) => {
+    try {
+      const dataDir = deps.getDataDir();
+      const detailPath = path.join(dataDir, 'items', 'gems', 'details', `${gemSlug}.json`);
+      if (fs.existsSync(detailPath)) {
+        const raw = fs.readFileSync(detailPath, 'utf-8');
+        return JSON.parse(raw);
+      } else {
+        return { error: 'not_found', filePath: detailPath };
+      }
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }

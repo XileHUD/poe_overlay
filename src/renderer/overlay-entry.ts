@@ -40,6 +40,11 @@ import './overlay/modifiers/globals';
 // Character: Quest Passives
 import './overlay/character/quest-passives/globals';
 
+// Character: PoE1
+import './overlay/character/poe1/divination-cards/globals';
+import './overlay/character/poe1/tattoos/globals';
+import './overlay/character/poe1/gems/globals';
+
 // Tools
 import './overlay/tools/regex/globals';
 

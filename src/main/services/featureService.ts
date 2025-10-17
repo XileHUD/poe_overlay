@@ -3,7 +3,7 @@
  * Handles loading, saving, and querying enabled features.
  */
 
-import { FeatureConfig, DEFAULT_FEATURES, CraftingSubcategories, CharacterSubcategories, ItemsSubcategories, Poe1ItemsSubcategories, Poe1CraftingSubcategories } from '../features/featureTypes.js';
+import { FeatureConfig, DEFAULT_FEATURES, CraftingSubcategories, CharacterSubcategories, Poe1CharacterSubcategories, ItemsSubcategories, Poe1ItemsSubcategories, Poe1CraftingSubcategories } from '../features/featureTypes.js';
 import { SettingsService } from './settingsService.js';
 
 const MODIFIER_CATEGORY_PATTERNS = [
@@ -94,6 +94,14 @@ export class FeatureService {
         subcategories: {
           ...DEFAULT_FEATURES.character.subcategories,
           ...(stored.character?.subcategories || {})
+        }
+      },
+      poe1Character: {
+        ...DEFAULT_FEATURES.poe1Character,
+        ...(stored.poe1Character || {}),
+        subcategories: {
+          ...DEFAULT_FEATURES.poe1Character.subcategories,
+          ...(stored.poe1Character?.subcategories || {})
         }
       },
       items: {

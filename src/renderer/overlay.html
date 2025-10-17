@@ -369,6 +369,18 @@
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l3 6-9 12L3 9l3-6z"/><path d="M3 9h18"/><path d="M12 3l-3 6 3 12 3-12-3-6z"/></svg></span>
                         <span>Gems</span>
                     </div>
+                    <div class="character-menu-item poe1-only" data-action="poe1-divination-cards" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10h8M8 14h5"/></svg></span>
+                        <span>Divination Cards</span>
+                    </div>
+                    <div class="character-menu-item poe1-only" data-action="poe1-tattoos" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+                        <span>Tattoos</span>
+                    </div>
+                    <div class="character-menu-item poe1-only" data-action="poe1-gems-list" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l3 6-9 12L3 9l3-6z"/><path d="M3 9h18"/><path d="M12 3l-3 6 3 12 3-12-3-6z"/></svg></span>
+                        <span>Gems</span>
+                    </div>
                     <div class="character-menu-item" data-action="glossar" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M4 4.5A2.5 2.5 0 016.5 7H20"/><path d="M6.5 7v10"/><path d="M12 7v10"/><path d="M17.5 7v10"/></svg></span>
                         <span>Glossar</span>
@@ -1090,6 +1102,30 @@
                     recordHeaderAction('Glossar');
                     return true;
                 }
+                if (key === 'poe1-divination-cards') {
+                    setActiveTab('characterTab');
+                    setView('crafting');
+                    if (window.OverlayPoe1DivinationCards?.show) { try { await window.OverlayPoe1DivinationCards.show(); } catch {} }
+                    setHeader('Divination Cards');
+                    recordHeaderAction('Divination Cards');
+                    return true;
+                }
+                if (key === 'poe1-tattoos') {
+                    setActiveTab('characterTab');
+                    setView('crafting');
+                    if (window.OverlayPoe1Tattoos?.show) { try { await window.OverlayPoe1Tattoos.show(); } catch {} }
+                    setHeader('Tattoos');
+                    recordHeaderAction('Tattoos');
+                    return true;
+                }
+                if (key === 'poe1-gems-list') {
+                    setActiveTab('characterTab');
+                    setView('crafting');
+                    if (window.OverlayPoe1Gems?.showList) { try { await window.OverlayPoe1Gems.showList(); } catch {} }
+                    setHeader('Gems');
+                    recordHeaderAction('Gems');
+                    return true;
+                }
                 return false;
             }
 
@@ -1152,7 +1188,7 @@
             for (const key of craftingActions) {
                 if (await runStoredAction(`crafting:${key}`)) return true;
             }
-            const characterActions = ['gems', 'keystones', 'asc-passives', 'atlas-nodes', 'quest-passives', 'glossar'];
+            const characterActions = ['gems', 'keystones', 'asc-passives', 'atlas-nodes', 'quest-passives', 'glossar', 'poe1-divination-cards', 'poe1-tattoos', 'poe1-gems-list'];
             for (const key of characterActions) {
                 if (await runStoredAction(`character:${key}`)) return true;
             }
@@ -2109,41 +2145,71 @@
                     }
                     if (document.getElementById('craftingTab')) craftingViewEnabled = true;
                     
-                    // Filter Character submenu items
-                    if (enabledFeatures.character && !enabledFeatures.character.enabled) {
+                    // Filter Character submenu items (PoE2 and PoE1)
+                    const isPoe1Mode = overlayVersionMode === 'poe1';
+                    const poe2CharacterConfig = enabledFeatures.character;
+                    const poe1CharacterConfig = enabledFeatures.poe1Character;
+
+                    console.log('[FeatureFilter] Character configs:', {
+                        mode: overlayVersionMode,
+                        poe2: poe2CharacterConfig,
+                        poe1: poe1CharacterConfig
+                    });
+
+                    const poe2CharacterEnabled = !!(poe2CharacterConfig && poe2CharacterConfig.enabled);
+                    const poe1CharacterEnabled = !!(poe1CharacterConfig && poe1CharacterConfig.enabled);
+
+                    if (!poe2CharacterEnabled && !poe1CharacterEnabled) {
+                        console.log('[FeatureFilter] Hiding Character tab (no character features enabled)');
                         const charTab = document.getElementById('characterTab');
                         if (charTab) charTab.remove();
-                    } else if (enabledFeatures.character?.enabled) {
+                    } else {
                         const charMenu = document.getElementById('characterMenu');
-                        const subs = enabledFeatures.character.subcategories || {};
+                        const poe2Subs = poe2CharacterConfig?.subcategories || {};
+                        const poe1Subs = poe1CharacterConfig?.subcategories || {};
                         let anySubEnabled = false;
-                        
+
+                        console.log('[FeatureFilter] Character subcategories:', { poe2: poe2Subs, poe1: poe1Subs });
+
                         if (charMenu) {
                             const items = charMenu.querySelectorAll('.character-menu-item');
                             items.forEach(item => {
                                 const action = item.getAttribute('data-action');
                                 let shouldShow = false;
-                                
-                                if (action === 'quest-passives' && subs.questPassives) shouldShow = true;
-                                if (action === 'keystones' && subs.keystones) shouldShow = true;
-                                if (action === 'asc-passives' && subs.ascendancyPassives) shouldShow = true;
-                                if (action === 'atlas-nodes' && subs.atlasNodes) shouldShow = true;
-                                if (action === 'gems' && subs.gems) shouldShow = true;
-                                if (action === 'glossar' && subs.glossar) shouldShow = true;
-                                
+
+                                if (poe2CharacterEnabled) {
+                                    if (action === 'quest-passives' && poe2Subs.questPassives) shouldShow = true;
+                                    if (action === 'keystones' && poe2Subs.keystones) shouldShow = true;
+                                    if (action === 'asc-passives' && poe2Subs.ascendancyPassives) shouldShow = true;
+                                    if (action === 'atlas-nodes' && poe2Subs.atlasNodes) shouldShow = true;
+                                    if (action === 'gems' && poe2Subs.gems) shouldShow = true;
+                                    if (action === 'glossar' && poe2Subs.glossar) shouldShow = true;
+                                }
+
+                                if (poe1CharacterEnabled && isPoe1Mode) {
+                                    if (action === 'poe1-divination-cards' && poe1Subs.divinationCards) shouldShow = true;
+                                    if (action === 'poe1-tattoos' && poe1Subs.tattoos) shouldShow = true;
+                                    if (action === 'poe1-gems-list' && poe1Subs.gems) shouldShow = true;
+                                }
+
                                 if (shouldShow) {
                                     anySubEnabled = true;
                                     item.style.display = '';
+                                    console.log('[FeatureFilter] Showing character item:', action);
                                 } else {
                                     item.style.display = 'none';
                                 }
                             });
                         }
-                        
-                        // Hide entire Character tab if no subcategories enabled
+
+                        console.log('[FeatureFilter] Any character sub enabled:', anySubEnabled);
+
                         if (!anySubEnabled) {
+                            console.log('[FeatureFilter] No character subs enabled, removing tab');
                             const charTab = document.getElementById('characterTab');
                             if (charTab) charTab.remove();
+                        } else {
+                            console.log('[FeatureFilter] Character tab should be visible');
                         }
                     }
                     if (document.getElementById('characterTab')) craftingViewEnabled = true;
@@ -3407,6 +3473,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     recordHeaderAction('Atlas Nodes');
                 } else if (action === 'gems') {
                     await showGems();
+                    setHeader('Gems');
+                    recordHeaderAction('Gems');
+                } else if (action === 'poe1-divination-cards') {
+                    if (window.OverlayPoe1DivinationCards?.show) { try { await window.OverlayPoe1DivinationCards.show(); } catch {} }
+                    setHeader('Divination Cards');
+                    recordHeaderAction('Divination Cards');
+                } else if (action === 'poe1-tattoos') {
+                    if (window.OverlayPoe1Tattoos?.show) { try { await window.OverlayPoe1Tattoos.show(); } catch {} }
+                    setHeader('Tattoos');
+                    recordHeaderAction('Tattoos');
+                } else if (action === 'poe1-gems-list') {
+                    if (window.OverlayPoe1Gems?.showList) { try { await window.OverlayPoe1Gems.showList(); } catch {} }
                     setHeader('Gems');
                     recordHeaderAction('Gems');
                 } else if (action === 'glossar') {

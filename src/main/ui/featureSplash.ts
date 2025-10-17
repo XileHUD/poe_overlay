@@ -21,6 +21,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
     crafting: { ...DEFAULT_FEATURES.crafting, ...config.crafting },
     poe1Crafting: { ...DEFAULT_FEATURES.poe1Crafting, ...(config.poe1Crafting || {}) },
     character: { ...DEFAULT_FEATURES.character, ...config.character },
+    poe1Character: { ...DEFAULT_FEATURES.poe1Character, ...(config.poe1Character || {}) },
     items: { ...DEFAULT_FEATURES.items, ...config.items },
     poe1Items: { ...DEFAULT_FEATURES.poe1Items, ...(config.poe1Items || {}) }
   };
@@ -435,6 +436,29 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
     </div>
   </div>
 
+  <!-- PoE1 Character (with subcategories) -->
+  <div class="feature-group poe1-only">
+    <div class="feature-main" onclick="toggleGroup('poe1Character')">
+      <input type="checkbox" id="feat-poe1-character" ${checked(safeConfig.poe1Character.enabled)} onclick="event.stopPropagation()"/>
+      <label for="feat-poe1-character">Character (PoE1)</label>
+      <span class="expand-icon ${safeConfig.poe1Character.enabled ? 'expanded' : ''}">▶</span>
+    </div>
+    <div class="feature-subs ${safeConfig.poe1Character.enabled ? 'visible' : ''}" id="subs-poe1Character">
+      <div class="feature-sub">
+        <input type="checkbox" id="feat-poe1-char-divcards" ${checked(safeConfig.poe1Character.subcategories.divinationCards)}/>
+        <label for="feat-poe1-char-divcards">Divination Cards</label>
+      </div>
+      <div class="feature-sub">
+        <input type="checkbox" id="feat-poe1-char-tattoos" ${checked(safeConfig.poe1Character.subcategories.tattoos)}/>
+        <label for="feat-poe1-char-tattoos">Tattoos</label>
+      </div>
+      <div class="feature-sub">
+        <input type="checkbox" id="feat-poe1-char-gems" ${checked(safeConfig.poe1Character.subcategories.gems)}/>
+        <label for="feat-poe1-char-gems">Gems</label>
+      </div>
+    </div>
+  </div>
+
   <!-- Items (with subcategories) -->
   <div class="feature-group poe2-only">
     <div class="feature-main" onclick="toggleGroup('items')">
@@ -506,6 +530,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       crafting: { checkboxId: 'feat-crafting' },
       poe1Crafting: { checkboxId: 'feat-poe1-crafting' },
       character: { checkboxId: 'feat-character' },
+      poe1Character: { checkboxId: 'feat-poe1-character' },
       items: { checkboxId: 'feat-items' },
       poe1Items: { checkboxId: 'feat-poe1-items' },
       tools: { checkboxId: 'feat-tools' }
@@ -536,7 +561,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
     }
     
     // Watch parent checkboxes to auto-collapse
-    const GROUP_ORDER = ['crafting', 'poe1Crafting', 'character', 'items', 'poe1Items', 'tools'];
+    const GROUP_ORDER = ['crafting', 'poe1Crafting', 'character', 'poe1Character', 'items', 'poe1Items', 'tools'];
 
     GROUP_ORDER.forEach(group => {
       const checkbox = getGroupCheckbox(group);
@@ -597,6 +622,12 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       document.getElementById('feat-char-atlas').checked = preset.character.subcategories.atlasNodes;
       document.getElementById('feat-char-gems').checked = preset.character.subcategories.gems;
       document.getElementById('feat-char-glossar').checked = preset.character.subcategories.glossar;
+      
+      // PoE1 Character
+      document.getElementById('feat-poe1-character').checked = preset.poe1Character.enabled;
+      document.getElementById('feat-poe1-char-divcards').checked = preset.poe1Character.subcategories.divinationCards;
+      document.getElementById('feat-poe1-char-tattoos').checked = preset.poe1Character.subcategories.tattoos;
+      document.getElementById('feat-poe1-char-gems').checked = preset.poe1Character.subcategories.gems;
       
       // Items (PoE2)
       document.getElementById('feat-items').checked = preset.items.enabled;
@@ -677,6 +708,14 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
             glossar: document.getElementById('feat-char-glossar').checked
           }
         },
+        poe1Character: {
+          enabled: document.getElementById('feat-poe1-character').checked,
+          subcategories: {
+            divinationCards: document.getElementById('feat-poe1-char-divcards').checked,
+            tattoos: document.getElementById('feat-poe1-char-tattoos').checked,
+            gems: document.getElementById('feat-poe1-char-gems').checked
+          }
+        },
         items: {
           enabled: document.getElementById('feat-items').checked,
           subcategories: {
@@ -703,7 +742,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       // Validate at least one feature enabled
       const hasAny = config.modifiers || config.poe1Modifiers || config.merchant || 
         config.crafting.enabled || config.poe1Crafting.enabled || config.character.enabled || 
-        config.items.enabled || config.poe1Items.enabled || config.tools.enabled;
+        config.poe1Character.enabled || config.items.enabled || config.poe1Items.enabled || config.tools.enabled;
       
       if (!hasAny) {
         alert('Please enable at least one feature!');

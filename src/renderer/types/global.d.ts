@@ -18,6 +18,17 @@ declare global {
       searchModifiers: (query: string, category?: string) => Promise<any>;
       overlayReady: () => void;
       removeAllListeners: (channel: string) => void;
+      getPoe1Uniques?: () => Promise<any>;
+      getPoe1Bases?: () => Promise<any>;
+      getPoe1Essences?: () => Promise<any>;
+      getPoe1Embers?: () => Promise<any>;
+      getPoe1Fossils?: () => Promise<any>;
+      getPoe1Currency?: () => Promise<any>;
+      getPoe1Scarabs?: () => Promise<any>;
+      getPoe1DivinationCards?: () => Promise<any>;
+      getPoe1Tattoos?: () => Promise<any>;
+      getPoe1Gems?: () => Promise<any>;
+      getPoe1GemDetail?: (gemSlug: string) => Promise<any>;
     };
     OverlayUtils?: {
       escapeHtml: (s: any) => string;
@@ -82,6 +93,18 @@ declare global {
     OverlayGlossar?: {
       show: () => Promise<void>;
       render: (list: any[]) => void;
+    };
+    OverlayPoe1DivinationCards?: {
+      show: () => Promise<void>;
+      render: (list: any[]) => void;
+    };
+    OverlayPoe1Tattoos?: {
+      show: () => Promise<void>;
+      render: (list: any[]) => void;
+    };
+    OverlayPoe1Gems?: {
+      showList: () => Promise<void>;
+      showDetail: (gemSlug: string) => Promise<void>;
     };
     OverlayRegex?: {
       show: () => Promise<void>;
