@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Melee",
     "DropLevel": "28",
+    "BaseType": "Cyclone",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Rune Daggers, Warstaves",
     "TargetTypes": "Ground,",
@@ -416,5 +417,59 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back.",
+  "explicitMods": [
+    {
+      "text": "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "(20–30)% less Movement Speed",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "(20–30)% less Movement Speed",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "cyclone_current_number_of_stages",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–5)% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "(0–5)% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

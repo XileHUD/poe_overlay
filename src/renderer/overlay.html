@@ -3852,7 +3852,9 @@ function renderAscendancyPassives(list){
         <input id='ascSearch' type='text' placeholder='Search ascendancy passives...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
         <button id='ascClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-    <div id='ascClassFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
+    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+    <div id='ascClassFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
+    </div>
     <div id='ascWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:10px;'></div></div>`;
     const searchEl=panel.querySelector('#ascSearch');
     const clearBtn=panel.querySelector('#ascClear');
@@ -3860,8 +3862,8 @@ function renderAscendancyPassives(list){
     const wrap=panel.querySelector('#ascWrap');
     const classes = Array.from(new Set(list.map(p=>p.ascendancy).filter(Boolean))).sort();
     const selected = new Set();
-    function chipCss(active){ return `padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; border:1px solid var(--border-color); background:${active?'var(--accent-blue)':'var(--bg-tertiary)'}; color:${active?'#fff':'var(--text-primary)'};`; }
-    function renderFilters(){ if(!filterWrap) return; filterWrap.innerHTML=''; classes.forEach(c=>{ const active=selected.has(c); const btn=document.createElement('button'); btn.textContent=c; btn.style.cssText=chipCss(active); btn.addEventListener('click',()=>{ if(active) selected.delete(c); else selected.add(c); build(searchEl.value||''); renderFilters(); }); filterWrap.appendChild(btn); }); if(selected.size){ const reset=document.createElement('button'); reset.textContent='Reset'; reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'; reset.addEventListener('click',()=>{ selected.clear(); build(''); renderFilters(); }); filterWrap.appendChild(reset);} }
+    function chipCss(active){ return `padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; border:1px solid var(--border-color); background:${active?'var(--accent-blue)':'var(--bg-tertiary)'}; color:${active?'#fff':'var(--text-primary)'};`; }
+    function renderFilters(){ if(!filterWrap) return; filterWrap.innerHTML=''; classes.forEach(c=>{ const active=selected.has(c); const btn=document.createElement('button'); btn.textContent=c; btn.style.cssText=chipCss(active); btn.addEventListener('click',()=>{ if(active) selected.delete(c); else selected.add(c); build(searchEl.value||''); renderFilters(); }); filterWrap.appendChild(btn); }); if(selected.size){ const reset=document.createElement('button'); reset.textContent='Reset'; reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'; reset.addEventListener('click',()=>{ selected.clear(); build(''); renderFilters(); }); filterWrap.appendChild(reset);} }
     function highlight(s){ return (s||"")
        .replace(/(\d+\s*[–-]\s*\d+)/g,'<span class="mod-value">$1</span>')
        .replace(/(?<![A-Za-z0-9>])([+\-]?\d+)(?![A-Za-z0-9<])/g,'<span class="mod-value">$1</span>')
@@ -3907,7 +3909,9 @@ function renderKeystones(list){
         <input id='keystoneSearch' type='text' placeholder='Search keystones...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
         <button id='keystoneClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-    <div id='keystoneTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
+    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+    <div id='keystoneTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
+    </div>
     <div id='keystoneWrap' style='display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; align-items:stretch;'></div></div>`;
     // Don't set inline display:none - let CSS handle visibility via body classes
     const searchEl=panel.querySelector('#keystoneSearch');
@@ -3933,7 +3937,7 @@ function renderKeystones(list){
         if(t==='movement' || t==='attack speed' || t==='speed') return [67,160,71];
         if(t==='elemental') return [255,152,0];
         return [120,144,156]; }
-    function chipCss(tag, active){ const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color};`; }
+    function chipCss(tag, active){ const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color}; border-radius:4px;`; }
     // Curated tag set same as Annoints
     const curatedTags = ['Damage','Ailments','Attributes','Energy Shield','Defences','Life','Mana','Fire','Cold','Lightning','Chaos','Resistances','Projectile','Area','Critical','Spell','Attack','Minion','Mechanics'];
     const selected = new Set();
@@ -3963,7 +3967,7 @@ function renderKeystones(list){
     list.forEach(k=>{ k.__tags = deriveTags(k); });
     const tagCounts = Object.fromEntries(curatedTags.map(t=>[t,0]));
     list.forEach(k=> (k.__tags||[]).forEach(t=>{ if(tagCounts[t]!=null) tagCounts[t]++; }));
-    function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; curatedTags.forEach(tag=>{ const active=selected.has(tag.toLowerCase()); const btn=document.createElement('button'); const count=tagCounts[tag]||0; btn.className='key-tag'; btn.setAttribute('data-tag', tag.toLowerCase()); btn.textContent = count? `${tag} (${count})` : tag; btn.style.cssText = `padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; ${chipCss(tag, active)}`; btn.addEventListener('click',()=>{ if(active) selected.delete(tag.toLowerCase()); else selected.add(tag.toLowerCase()); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(btn); }); if(selected.size){ const reset=document.createElement('button'); reset.textContent='Reset'; reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'; reset.addEventListener('click',()=>{ selected.clear(); build(''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
+    function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; curatedTags.forEach(tag=>{ const active=selected.has(tag.toLowerCase()); const btn=document.createElement('button'); const count=tagCounts[tag]||0; btn.className='key-tag'; btn.setAttribute('data-tag', tag.toLowerCase()); btn.textContent = count? `${tag} (${count})` : tag; btn.style.cssText = `padding:3px 8px; font-size:11px; cursor:pointer; ${chipCss(tag, active)}`; btn.addEventListener('click',()=>{ if(active) selected.delete(tag.toLowerCase()); else selected.add(tag.toLowerCase()); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(btn); }); if(selected.size){ const reset=document.createElement('button'); reset.textContent='Reset'; reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'; reset.addEventListener('click',()=>{ selected.clear(); build(''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
     function matchTags(k){ if(!selected.size) return true; const lc=(k.__tags||[]).map(t=>t.toLowerCase()); return [...selected].every(t=> lc.includes(t)); }
     function build(filter=''){
         wrap.innerHTML='';
@@ -4014,7 +4018,9 @@ function renderAtlasNodes(list){
         <input id='atlasSearch' type='text' placeholder='Search atlas nodes...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
         <button id='atlasClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-    <div id='atlasTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
+    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+    <div id='atlasTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
+    </div>
     <div id='atlasWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:10px;'></div></div>`;
     const searchEl=panel.querySelector('#atlasSearch');
     const clearBtn=panel.querySelector('#atlasClear');
@@ -4038,7 +4044,7 @@ function renderAtlasNodes(list){
         if(t==='movement' || t==='attack speed' || t==='speed') return [67,160,71];
         if(t==='elemental') return [255,152,0];
         return [120,144,156]; }
-    function chipCss(tag, active){ const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color};`; }
+    function chipCss(tag, active){ const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color}; border-radius:4px;`; }
     // Requested tag set for Atlas Nodes
     const curatedTags = [
         'quantity','rarity','explicit','prefix','suffix','delirium','breach','expedition','runic','remnants','spirit','ritual','azmeri','essence','strongbox','shrine','boss','waystone','rogue','biome','monster pack size','rare','magic'
@@ -4072,7 +4078,7 @@ function renderAtlasNodes(list){
     list.forEach(n=>{ n.__tags = deriveTags(n); });
     const tagCounts = Object.fromEntries(curatedTags.map(t=>[t,0]));
     list.forEach(n=> (n.__tags||[]).forEach(t=>{ if(tagCounts[t]!=null) tagCounts[t]++; }));
-    function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; curatedTags.forEach(tag=>{ const active=selected.has(tag.toLowerCase()); const btn=document.createElement('button'); const count=tagCounts[tag]||0; btn.className='key-tag'; btn.setAttribute('data-tag', tag.toLowerCase()); btn.textContent = count? `${tag} (${count})` : tag; btn.style.cssText = `padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; ${chipCss(tag, active)}`; btn.addEventListener('click',()=>{ if(active) selected.delete(tag.toLowerCase()); else selected.add(tag.toLowerCase()); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(btn); }); if(selected.size){ const reset=document.createElement('button'); reset.textContent='Reset'; reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'; reset.addEventListener('click',()=>{ selected.clear(); build(''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
+    function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; curatedTags.forEach(tag=>{ const active=selected.has(tag.toLowerCase()); const btn=document.createElement('button'); const count=tagCounts[tag]||0; btn.className='key-tag'; btn.setAttribute('data-tag', tag.toLowerCase()); btn.textContent = count? `${tag} (${count})` : tag; btn.style.cssText = `padding:3px 8px; font-size:11px; cursor:pointer; ${chipCss(tag, active)}`; btn.addEventListener('click',()=>{ if(active) selected.delete(tag.toLowerCase()); else selected.add(tag.toLowerCase()); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(btn); }); if(selected.size){ const reset=document.createElement('button'); reset.textContent='Reset'; reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'; reset.addEventListener('click',()=>{ selected.clear(); build(''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
     function matchTags(n){ if(!selected.size) return true; const lc=(n.__tags||[]).map(t=>t.toLowerCase()); return [...selected].every(t=> lc.includes(t)); }
     function build(filter=''){
         wrap.innerHTML='';
@@ -4138,7 +4144,9 @@ function renderGems(groups){
         <button id='gemClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
     <div style='display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:4px;'>
+    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; flex:1;'>
     <div id='gemTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; justify-content:center; width:100%;'></div>
+    </div>
       <button id='gemImgLogBtn' title='Show recent image request log' style='padding:2px 6px; font-size:11px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer;'>Img Log</button>
     </div>
     <div id='gemImgDiag' style='display:none; flex-direction:column; gap:4px; margin-bottom:8px;'></div>
@@ -4169,8 +4177,8 @@ function renderGems(groups){
         if(t==='movement' || t==='attack speed' || t==='speed') return [67,160,71];
         if(t==='elemental') return [255,152,0];
         return [120,144,156]; }
-    function chipCss(tag, active){ const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color};`; }
-    function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; sortedTags.forEach(tag=>{ const btn=document.createElement('div'); const active=selectedTags.has(tag); const count = tagCounts[tag]||0; btn.textContent = count ? `${tag} (${count})` : tag; btn.style.cssText = `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:999px; ${chipCss(tag, active)}`; btn.addEventListener('click',()=>{ active?selectedTags.delete(tag):selectedTags.add(tag); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(btn); }); if(selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; reset.style.cursor='pointer'; reset.style.userSelect='none'; reset.style.padding='2px 6px'; reset.style.fontSize='11px'; reset.style.border='1px solid var(--accent-red)'; reset.style.borderRadius='999px'; reset.style.background='var(--accent-red)'; reset.style.color='#fff'; reset.addEventListener('click',()=>{ selectedTags.clear(); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
+    function chipCss(tag, active){ const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color}; border-radius:4px;`; }
+    function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; sortedTags.forEach(tag=>{ const btn=document.createElement('div'); const active=selectedTags.has(tag); const count = tagCounts[tag]||0; btn.textContent = count ? `${tag} (${count})` : tag; btn.style.cssText = `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; ${chipCss(tag, active)}`; btn.addEventListener('click',()=>{ active?selectedTags.delete(tag):selectedTags.add(tag); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(btn); }); if(selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; reset.style.cursor='pointer'; reset.style.userSelect='none'; reset.style.padding='2px 6px'; reset.style.fontSize='11px'; reset.style.border='1px solid var(--accent-red)'; reset.style.borderRadius='4px'; reset.style.background='var(--accent-red)'; reset.style.color='#fff'; reset.addEventListener('click',()=>{ selectedTags.clear(); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
     function gemMatches(g){ if(selectedTags.size===0) return true; const desc=(g.description||'').toLowerCase(); return [...selectedTags].every(t=> (g.tags&&g.tags.includes(t)) || desc.includes(t.toLowerCase())); }
     function build(filter=''){
         container.innerHTML='';

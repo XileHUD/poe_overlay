@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Lightning Warp",
     "TargetTypes": "Ground, Self, Enemy,",
     "Type": "Spell, Damage, Area, Duration, Trappable, Totemable, Mineable, Triggerable, Movement, Lightning, AreaSpell, Travel, Multicastable, CanRapidFire",
     "ActiveSkillsCode": "lightning_warp"
@@ -331,5 +332,88 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts a delayed teleport for nearby enemies to a target destination. When the teleport occurs, lightning damage is dealt to the enemies both before and after they teleport.",
+  "explicitMods": [
+    {
+      "text": "Deals (1–31) to (18–586) Lightning Damage",
+      "values": [
+        "(1–31)",
+        "(18–586)"
+      ]
+    },
+    {
+      "text": "(0–38)% reduced Duration",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Deals (1–31) to (18–586) Lightning Damage",
+      "values": [
+        "(1–31)",
+        "(18–586)"
+      ]
+    },
+    {
+      "text": "(0–38)% reduced Duration",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill override pvp scaling time ms [1000]",
+      "values": []
+    },
+    {
+      "text": "Deals (6–1853) to (19–5558) Lightning Damage",
+      "values": [
+        "(6–1853)",
+        "(19–5558)"
+      ]
+    },
+    {
+      "text": "Can queue up to 50 uses",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "(30–64)% reduced Duration",
+      "values": [
+        "(30–64)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Cast Speed",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Cast Speed",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

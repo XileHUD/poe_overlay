@@ -2768,6 +2768,21 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 } as OverlayUpdateCheckResult;
             }
         });
+
+        // Open external URLs in system browser
+        ipcMain.handle('open-external', async (_e, url: string) => {
+            try {
+                if (!url || typeof url !== 'string') {
+                    console.warn('[IPC:open-external] Invalid URL:', url);
+                    return { success: false, error: 'Invalid URL' };
+                }
+                await shell.openExternal(url);
+                return { success: true };
+            } catch (err: any) {
+                console.error('[IPC:open-external] Error:', err);
+                return { success: false, error: err?.message || 'Failed to open external URL' };
+            }
+        });
         // Remaining handlers below...
 
         // Open a lightweight transparent popout window for a modifier section (anchored to overlay)

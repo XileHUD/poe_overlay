@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "DropLevel": "4",
+    "BaseType": "Detonate Dead",
     "Class": "Skill Gems",
     "TargetTypes": "Corpse,",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, Cascadable, DestroysCorpse, CanRapidFire, AreaSpell",
@@ -494,5 +495,65 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected.",
+  "explicitMods": [
+    {
+      "text": "Deals (15–798) to (22–1197) Fire Damage",
+      "values": [
+        "(15–798)",
+        "(22–1197)"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (6–7.9)% of the corpse's Maximum Life",
+      "values": [
+        "(6–7.9)"
+      ]
+    },
+    {
+      "text": "Base radius is (2.2–2.6) metres",
+      "values": [
+        "(2.2–2.6)"
+      ]
+    },
+    {
+      "text": "Deals (15–798) to (22–1197) Fire Damage",
+      "values": [
+        "(15–798)",
+        "(22–1197)"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (6–7.9)% of the corpse's Maximum Life",
+      "values": [
+        "(6–7.9)"
+      ]
+    },
+    {
+      "text": "Base radius is (2.2–2.6) metres",
+      "values": [
+        "(2.2–2.6)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–15)% chance to detonate an additional corpse",
+      "values": [
+        "(0–15)"
+      ]
+    },
+    {
+      "text": "(0–15)% chance to detonate an additional corpse",
+      "values": [
+        "(0–15)"
+      ]
+    }
+  ]
 }

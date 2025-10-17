@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Hit, Stun",
+    "BaseType": "Ground Slam",
     "Class": "Skill Gems",
     "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy",
@@ -415,5 +416,89 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slams the ground in front of you, creating a wave that travels forward and damages enemies with an increased chance to stun. The wave deals more damage to closer enemies. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "25% reduced Enemy Stun Threshold",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Deals up to (40–49)% more Damage with Hits to closer targets",
+      "values": [
+        "(40–49)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "25% reduced Enemy Stun Threshold",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Deals up to (40–49)% more Damage with Hits to closer targets",
+      "values": [
+        "(40–49)"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "(8–12)% increased Global Physical Damage",
+      "values": [
+        "(8–12)"
+      ]
+    },
+    {
+      "text": "With at least 40 Strength in Radius, Ground Slamhas a 50% increased angle",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "With at least 40 Strength in Radius, Ground Slam has a 35% chanceto grant an Endurance Charge when you Stun an Enemy",
+      "values": [
+        "35"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(The Stun Threshold determines how much Damage can Stun something)",
+    "(The Stun Threshold determines how much Damage can Stun something)",
+    "(The Stun Threshold determines how much Damage can Stun something)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Deals up to +(0–20)% more Damage with Hits to closer targets",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Deals up to +(0–20)% more Damage with Hits to closer targets",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

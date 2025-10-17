@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Explosive Trap of Magnitude",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Damage, Mineable, Area, Trapped, AreaSpell, Physical",
     "ActiveSkillsCode": "explosive_trap_alt_y"
@@ -371,5 +372,146 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap that creates a large explosion when triggered, dealing spell damage in an area around it.",
+  "explicitMods": [
+    {
+      "text": "Deals (13–1478) to (19–2216) Physical Damage",
+      "values": [
+        "(13–1478)",
+        "(19–2216)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% increased Stun Duration on enemies",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base explosion radius is (1.8–2.4) metres",
+      "values": [
+        "(1.8–2.4)"
+      ]
+    },
+    {
+      "text": "30% less Trap Throwing Speed",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Deals (13–1478) to (19–2216) Physical Damage",
+      "values": [
+        "(13–1478)",
+        "(19–2216)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% increased Stun Duration on enemies",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base explosion radius is (1.8–2.4) metres",
+      "values": [
+        "(1.8–2.4)"
+      ]
+    },
+    {
+      "text": "30% less Trap Throwing Speed",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (13–5806) to (19–8710) Physical Damage",
+      "values": [
+        "(13–5806)",
+        "(19–8710)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% increased Stun Duration on enemies",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base explosion radius is (1.8–2.9) metres",
+      "values": [
+        "(1.8–2.9)"
+      ]
+    },
+    {
+      "text": "30% less Trap Throwing Speed",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    }
+  ]
 }

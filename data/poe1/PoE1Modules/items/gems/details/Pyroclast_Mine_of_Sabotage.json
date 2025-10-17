@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Pyroclast Mine of Sabotage",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Projectile, Fire, RemoteMined, Area, HasReservation, Aura, AuraAffectsEnemies, ProjectilesNotFromUser, Nova, AuraNotOnCaster",
     "ActiveSkillsCode": "pyroclast_mine_alt_x"
@@ -371,5 +372,183 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a mine that deals damage in an area when detonated, then launches fiery projectiles that rain down around it, each exploding to deal damage in a smaller area.",
+  "explicitMods": [
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Deals (7–62) to (10–94) Fire Damage",
+      "values": [
+        "(7–62)",
+        "(10–94)"
+      ]
+    },
+    {
+      "text": "Base Mine Detonation Time is 0.35 seconds",
+      "values": [
+        "0.35"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Fires an additional Projectile for every 4 prior Mines in Detonation Sequence",
+      "values": []
+    },
+    {
+      "text": "Each Mine Adds (4–37) to (6–56) Fire Damage to Hits against Enemies near it, upto a maximum of (133–1249) to (200–1873)",
+      "values": [
+        "(4–37)",
+        "(6–56)",
+        "(133–1249)",
+        "(200–1873)"
+      ]
+    },
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Deals (7–62) to (10–94) Fire Damage",
+      "values": [
+        "(7–62)",
+        "(10–94)"
+      ]
+    },
+    {
+      "text": "Base Mine Detonation Time is 0.35 seconds",
+      "values": [
+        "0.35"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Fires an additional Projectile for every 4 prior Mines in Detonation Sequence",
+      "values": []
+    },
+    {
+      "text": "Each Mine Adds (4–37) to (6–56) Fire Damage to Hits against Enemies near it, upto a maximum of (133–1249) to (200–1873)",
+      "values": [
+        "(4–37)",
+        "(6–56)",
+        "(133–1249)",
+        "(200–1873)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is mined [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "projectile behaviour only explode [1]",
+      "values": []
+    },
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Deals (7–249) to (10–373) Fire Damage",
+      "values": [
+        "(7–249)",
+        "(10–373)"
+      ]
+    },
+    {
+      "text": "Base Mine Detonation Time is 0.35 seconds",
+      "values": [
+        "0.35"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Fires an additional Projectile for every 4 prior Mines in Detonation Sequence",
+      "values": []
+    },
+    {
+      "text": "Each Mine Adds (4–149) to (6–224) Fire Damage to Hits against Enemies near it, upto a maximum of (133–4978) to (200–7468)",
+      "values": [
+        "(4–149)",
+        "(6–224)",
+        "(133–4978)",
+        "(200–7468)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is mined [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "projectile behaviour only explode [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–1) Projectile",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Fires +(0–1) Projectile",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Fires +(0–1) Projectile",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

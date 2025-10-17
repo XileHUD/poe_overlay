@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Totem, Leech",
     "DropLevel": "4",
+    "BaseType": "Devouring Totem",
     "Class": "Skill Gems",
     "TargetTypes": "Corpse,",
     "Type": "Spell, Trappable, Mineable, SummonsTotem",
@@ -455,5 +456,98 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a totem that can consume nearby corpses. If you are hurt, it will destroy a corpse to leech life to you.",
+  "explicitMods": [
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–76)% increased Totem Life",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "Leeches (30–299) Life to you for each corpse Consumed",
+      "values": [
+        "(30–299)"
+      ]
+    },
+    {
+      "text": "Leeches (9–59) Mana to you for each corpse Consumed",
+      "values": [
+        "(9–59)"
+      ]
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–76)% increased Totem Life",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "Leeches (30–299) Life to you for each corpse Consumed",
+      "values": [
+        "(30–299)"
+      ]
+    },
+    {
+      "text": "Leeches (9–59) Mana to you for each corpse Consumed",
+      "values": [
+        "(9–59)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [60]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Totem Life",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Totem Life",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

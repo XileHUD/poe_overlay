@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Blight of Atrophy",
     "TargetTypes": "Ground, ROTATE_TO_TARGET",
     "Type": "Spell, Chaos, Area, Totemable, Channel, Duration, DamageOverTime, DegenOnlySpellDamage, AreaSpell",
     "ActiveSkillsCode": "blight_alt_y"
@@ -371,5 +372,167 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Apply a debuff to enemies in front of you which deals chaos damage over time. Enemies who aren't already debuffed by Blight are also hindered for a longer secondary duration, slowing their movement and reducing their life regeneration rate. Continued channelling adds layers of damage to the debuff, each with their own duration.",
+  "explicitMods": [
+    {
+      "text": "Deals (5.9–421.5) Base Chaos Damage per second",
+      "values": [
+        "(5.9–421.5)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "+(0–0.6) metres to radius",
+      "values": [
+        "+(0–0.6)"
+      ]
+    },
+    {
+      "text": "80% reduced Movement Speed",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Debuff can have up to 20 layers of Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "80% reduced Life Regeneration rate",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Deals (5.9–421.5) Base Chaos Damage per second",
+      "values": [
+        "(5.9–421.5)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "+(0–0.6) metres to radius",
+      "values": [
+        "+(0–0.6)"
+      ]
+    },
+    {
+      "text": "80% reduced Movement Speed",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Debuff can have up to 20 layers of Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "80% reduced Life Regeneration rate",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Deals (5.9–1554) Base Chaos Damage per second",
+      "values": [
+        "(5.9–1554)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "+(0–1.1) metres to radius",
+      "values": [
+        "+(0–1.1)"
+      ]
+    },
+    {
+      "text": "80% reduced Movement Speed",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Debuff can have up to 20 layers of Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "80% reduced Life Regeneration rate",
+      "values": [
+        "80"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base secondary duration is (0–1) seconds",
+      "values": [
+        "(0–1)"
+      ]
+    },
+    {
+      "text": "Base secondary duration is (0–1) seconds",
+      "values": [
+        "(0–1)"
+      ]
+    },
+    {
+      "text": "Base secondary duration is (0–1) seconds",
+      "values": [
+        "(0–1)"
+      ]
+    }
+  ]
 }

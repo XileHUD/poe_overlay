@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Reap",
     "TargetTypes": ",",
     "Type": "Spell, Damage, Physical, DamageOverTime, Area, AreaSpell, Duration, Trappable, Totemable, Mineable, Multicastable, CanRapidFire, Cascadable, Triggerable",
     "ActiveSkillsCode": "reap"
@@ -331,5 +332,180 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Bloody scythes swipe around a selected area, hitting enemies with physical damage. An area of boiling blood is left beneath them for a duration which deals physical damage over time. Also gives a bonus to maximum Blood Charges for a secondary duration.",
+  "explicitMods": [
+    {
+      "text": "Deals (114–2160) to (171–3240) Physical Damage",
+      "values": [
+        "(114–2160)",
+        "(171–3240)"
+      ]
+    },
+    {
+      "text": "Deals (178.4–3375.2) Base Physical Damage per second",
+      "values": [
+        "(178.4–3375.2)"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Effects of Boiling Blood Linger for 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Grants +4 to maximum Blood Charges",
+      "values": [
+        "+4"
+      ]
+    },
+    {
+      "text": "Grants up to maximum Blood Charges",
+      "values": []
+    },
+    {
+      "text": "Deals (114–2160) to (171–3240) Physical Damage",
+      "values": [
+        "(114–2160)",
+        "(171–3240)"
+      ]
+    },
+    {
+      "text": "Deals (178.4–3375.2) Base Physical Damage per second",
+      "values": [
+        "(178.4–3375.2)"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Effects of Boiling Blood Linger for 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Grants +4 to maximum Blood Charges",
+      "values": [
+        "+4"
+      ]
+    },
+    {
+      "text": "Grants up to maximum Blood Charges",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "maximum_blood_scythe_charges",
+      "values": []
+    },
+    {
+      "text": "Deals (57–5623) to (86–8434) Physical Damage",
+      "values": [
+        "(57–5623)",
+        "(86–8434)"
+      ]
+    },
+    {
+      "text": "Deals (120.2–9769.8) Base Physical Damage per second",
+      "values": [
+        "(120.2–9769.8)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Costs 20% more Life per Blood Charge",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Deals +15% more Damage per Blood Charge",
+      "values": [
+        "+15"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(The effects of the ground still apply to you, allies or enemies after leaving its area)",
+    "(The effects of the ground still apply to you, allies or enemies after leaving its area)",
+    "(The effects of the ground still apply to you, allies or enemies after leaving its area)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Deals +(0–5)% more Damage per Blood Charge",
+      "values": [
+        "+(0–5)"
+      ]
+    },
+    {
+      "text": "Deals +(0–5)% more Damage per Blood Charge",
+      "values": [
+        "+(0–5)"
+      ]
+    }
+  ]
 }

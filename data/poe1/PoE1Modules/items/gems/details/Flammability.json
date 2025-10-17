@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Resistance, Curse, Ignite",
     "DropLevel": "24",
+    "BaseType": "Flammability",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Area, Duration, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, Cascadable, AppliesCurse, CanRapidFire, AreaSpell, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Hex",
@@ -495,5 +496,132 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Curses all targets in an area, lowering their fire resistance and giving them a chance to be ignited when hit.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (8–11.8) seconds",
+      "values": [
+        "(8–11.8)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Cursed enemies have (-36–-17)% to Fire Resistance",
+      "values": [
+        "(-36–-17)"
+      ]
+    },
+    {
+      "text": "Hits against Cursed Enemies have +25% chance to Ignite",
+      "values": [
+        "+25"
+      ]
+    },
+    {
+      "text": "Base duration is (8–11.8) seconds",
+      "values": [
+        "(8–11.8)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Cursed enemies have (-36–-17)% to Fire Resistance",
+      "values": [
+        "(-36–-17)"
+      ]
+    },
+    {
+      "text": "Hits against Cursed Enemies have +25% chance to Ignite",
+      "values": [
+        "+25"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "Adds (5–15) to (20–25) Physical Damage",
+      "values": [
+        "(5–15)",
+        "(20–25)"
+      ]
+    },
+    {
+      "text": "Adds (5–15) to (20–25) Fire Damage",
+      "values": [
+        "(5–15)",
+        "(20–25)"
+      ]
+    },
+    {
+      "text": "(7–10)% increased Attack Speed",
+      "values": [
+        "(7–10)"
+      ]
+    },
+    {
+      "text": "+(15–25)% to Fire Resistance",
+      "values": [
+        "+(15–25)"
+      ]
+    },
+    {
+      "text": "5% increased Movement Speed",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Curse Enemies with Flammability on Hit",
+      "values": []
+    },
+    {
+      "text": "(Flammability is a Hex which inflicts -17% to Fire Resistance and causes Hits to have +25% chance to Ignite the target. It lasts 8 seconds)",
+      "values": []
+    },
+    {
+      "text": "base_self_ignite_duration_-%",
+      "values": []
+    },
+    {
+      "text": "chance_to_be_ignited_%",
+      "values": []
+    },
+    {
+      "text": "fire_damage_resistance_%_from_curse",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Flammability is a Hex which inflicts -17% to Fire Resistance and causes Hits to have +25% chance to Ignite the target. It lasts 8 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Ignite on Cursed enemies has (0–20)% increased Duration",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Ignite on Cursed enemies has (0–20)% increased Duration",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

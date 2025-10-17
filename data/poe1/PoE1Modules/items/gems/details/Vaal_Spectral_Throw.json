@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Spectral Throw",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, Projectile, ProjectilesFromUser",
@@ -292,5 +293,85 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws several spectral copies of your melee weapon. They fly out and then return to you, in a spinning attack that damages enemies in their path.",
+  "explicitMods": [
+    {
+      "text": "Fires 8 Projectiles in each of two mirrored spirals",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Fires 8 Projectiles in each of two mirrored spirals",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "projectile spiral nova starting angle offset [-15]",
+      "values": []
+    },
+    {
+      "text": "projectile spiral nova time ms [2000]",
+      "values": []
+    },
+    {
+      "text": "projectiles not offset [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "spectral throw forget hit list time override [225]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "spectral throw forget hit list time override [225]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

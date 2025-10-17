@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Lightning Strike of Arcing",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, Projectile, MeleeSingleTarget, Multistrikeable, Melee, Lightning, ProjectilesNotFromUser, Chains",
@@ -332,5 +333,117 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Infuses your melee weapon with electrical energies as you swing. In addition to converting some of your physical damage to lightning damage, the stored energy is released from the weapon as a projectile as you strike, flying out to hit farther-away enemies and chain between them. The projectile cannot miss if the melee attack hit a target.",
+  "explicitMods": [
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Chains +(4–7) Times",
+      "values": [
+        "+(4–7)"
+      ]
+    },
+    {
+      "text": "Projectiles deal 50% less Damage with Hits and Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "10% more Damage for each time this Skill has Chained",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Chains +(4–7) Times",
+      "values": [
+        "+(4–7)"
+      ]
+    },
+    {
+      "text": "Projectiles deal 50% less Damage with Hits and Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "10% more Damage for each time this Skill has Chained",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Chains +(4–11) Times",
+      "values": [
+        "+(4–11)"
+      ]
+    },
+    {
+      "text": "Projectiles deal 50% less Damage with Hits and Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "10% more Damage for each time this Skill has Chained",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Chains +(0–2) Times",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Chains +(0–2) Times",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Chains +(0–2) Times",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

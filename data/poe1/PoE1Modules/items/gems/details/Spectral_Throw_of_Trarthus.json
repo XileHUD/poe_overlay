@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Spectral Throw of Trarthus",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, Projectile, ProjectilesFromUser, Trapped",
@@ -292,5 +293,113 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap which, once triggered, fires many spectral copies of your melee weapon. They fly out in all directions and then return to where the trap triggered, in a spinning attack that damages enemies in their path. If dual wielding, each Trap thrown will randomly use either the main hand or off hand weapon.",
+  "explicitMods": [
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Fires (3–5) Projectiles",
+      "values": [
+        "(3–5)"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Fires (3–5) Projectiles",
+      "values": [
+        "(3–5)"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "spectral throw forget hit list time override [225]",
+      "values": []
+    },
+    {
+      "text": "Throw up to 1 additional Trap if dual wielding",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Trap lasts +4 seconds",
+      "values": [
+        "+4"
+      ]
+    },
+    {
+      "text": "Fires +(3–7) Projectiles",
+      "values": [
+        "+(3–7)"
+      ]
+    },
+    {
+      "text": "Traps are thrown randomly around targeted location",
+      "values": []
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "ignores trap and mine cooldown limit [1]",
+      "values": []
+    },
+    {
+      "text": "spectral throw forget hit list time override [225]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

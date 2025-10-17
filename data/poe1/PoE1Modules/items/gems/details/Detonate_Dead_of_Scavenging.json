@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Detonate Dead of Scavenging",
     "TargetTypes": "Corpse,",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, Cascadable, DestroysCorpse, CanRapidFire, AreaSpell",
     "ActiveSkillsCode": "detonate_dead_alt_x"
@@ -371,5 +372,96 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Targets a corpse, causing it to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected. Cannot target corpses that have been created by skills.",
+  "explicitMods": [
+    {
+      "text": "Explosion deals base Fire Damage equal to (20–29.5)% of the corpse's Maximum Life",
+      "values": [
+        "(20–29.5)"
+      ]
+    },
+    {
+      "text": "60% less Damage with Ailments",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Base radius is (2.8–3.2) metres",
+      "values": [
+        "(2.8–3.2)"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (20–29.5)% of the corpse's Maximum Life",
+      "values": [
+        "(20–29.5)"
+      ]
+    },
+    {
+      "text": "60% less Damage with Ailments",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Base radius is (2.8–3.2) metres",
+      "values": [
+        "(2.8–3.2)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (20–37)% of the corpse's Maximum Life",
+      "values": [
+        "(20–37)"
+      ]
+    },
+    {
+      "text": "60% less Damage with Ailments",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Base radius is (2.8–3.6) metres",
+      "values": [
+        "(2.8–3.6)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Explosion deals base Fire Damage equal to (0–5)% of the corpse's Maximum Life",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (0–5)% of the corpse's Maximum Life",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (0–5)% of the corpse's Maximum Life",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Animate Weapon of Ranged Arms",
     "TargetTypes": "Armour, unknown_13, Ground",
     "Type": "Triggerable, Duration, Minion, MinionsCanExplode, Spell, Totemable, CreatesMinion, Multicastable, CanRapidFire, Physical",
     "MinionType": "Attack, Melee, MeleeSingleTarget, Multistrikeable, ThresholdJewelProjectile, ProjectilesFromUser, ThresholdJewelRangedAttack",
@@ -532,5 +533,194 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Animates a Ranged Weapon Item or Lingering Blade to fight by your side. You cannot animate unidentified Weapons. Will not animate weapons with 6 sockets. Cannot be used by Traps or Mines.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 40 seconds",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Maximum (5–14) Animated Weapons",
+      "values": [
+        "(5–14)"
+      ]
+    },
+    {
+      "text": "Can use Items requiring up to Level (9–100)",
+      "values": [
+        "(9–100)"
+      ]
+    },
+    {
+      "text": "Animated Lingering Blades become Bows",
+      "values": []
+    },
+    {
+      "text": "Minions' Attacks deal (5–126) to (8–184) additional Physical Damage",
+      "values": [
+        "(5–126)",
+        "(8–184)"
+      ]
+    },
+    {
+      "text": "Animated Lingering Blades deal (1–17) to (2–80) Added Attack Physical Damage",
+      "values": [
+        "(1–17)",
+        "(2–80)"
+      ]
+    },
+    {
+      "text": "Minions deal (0–38)% more Damage",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Minions have (0–38)% more Attack Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Base duration is 40 seconds",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Maximum (5–14) Animated Weapons",
+      "values": [
+        "(5–14)"
+      ]
+    },
+    {
+      "text": "Can use Items requiring up to Level (9–100)",
+      "values": [
+        "(9–100)"
+      ]
+    },
+    {
+      "text": "Animated Lingering Blades become Bows",
+      "values": []
+    },
+    {
+      "text": "Minions' Attacks deal (5–126) to (8–184) additional Physical Damage",
+      "values": [
+        "(5–126)",
+        "(8–184)"
+      ]
+    },
+    {
+      "text": "Animated Lingering Blades deal (1–17) to (2–80) Added Attack Physical Damage",
+      "values": [
+        "(1–17)",
+        "(2–80)"
+      ]
+    },
+    {
+      "text": "Minions deal (0–38)% more Damage",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Minions have (0–38)% more Attack Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [4,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [22]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 40 seconds",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Maximum (5–24) Animated Weapons",
+      "values": [
+        "(5–24)"
+      ]
+    },
+    {
+      "text": "Can use Items requiring up to Level (9–100)",
+      "values": [
+        "(9–100)"
+      ]
+    },
+    {
+      "text": "Animated Lingering Blades become Bows",
+      "values": []
+    },
+    {
+      "text": "Minions' Attacks deal (5–228) to (8–333) additional Physical Damage",
+      "values": [
+        "(5–228)",
+        "(8–333)"
+      ]
+    },
+    {
+      "text": "Animated Lingering Blades deal (1–41) to (2–203) Added Attack Physical Damage",
+      "values": [
+        "(1–41)",
+        "(2–203)"
+      ]
+    },
+    {
+      "text": "Minions deal (0–58)% more Damage",
+      "values": [
+        "(0–58)"
+      ]
+    },
+    {
+      "text": "Minions have (0–58)% more Attack Speed",
+      "values": [
+        "(0–58)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [4,100]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [22]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–2) to Maximum Animated Weapons",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "+(0–2) to Maximum Animated Weapons",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "+(0–2) to Maximum Animated Weapons",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

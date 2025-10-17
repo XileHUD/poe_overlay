@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Flameblast of Celerity",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, Totemable, Fire, Channel, AreaSpell, Cooldown",
     "ActiveSkillsCode": "flameblast_alt_x"
@@ -331,5 +332,138 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Channels to build up an explosion, which is released when you stop using the skill or automatically at maximum stages. The longer you channel, the larger the area of effect and damage of the explosion.",
+  "explicitMods": [
+    {
+      "text": "Deals (34–443) to (50–665) Fire Damage",
+      "values": [
+        "(34–443)",
+        "(50–665)"
+      ]
+    },
+    {
+      "text": "220% more Spell Damage for each stage",
+      "values": [
+        "220"
+      ]
+    },
+    {
+      "text": "Base radius is 0.8 metres",
+      "values": [
+        "0.8"
+      ]
+    },
+    {
+      "text": "3 maximum Stages",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "+0.7 metres to radius per Stage",
+      "values": [
+        "+0.7"
+      ]
+    },
+    {
+      "text": "Deals (34–443) to (50–665) Fire Damage",
+      "values": [
+        "(34–443)",
+        "(50–665)"
+      ]
+    },
+    {
+      "text": "220% more Spell Damage for each stage",
+      "values": [
+        "220"
+      ]
+    },
+    {
+      "text": "Base radius is 0.8 metres",
+      "values": [
+        "0.8"
+      ]
+    },
+    {
+      "text": "3 maximum Stages",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "+0.7 metres to radius per Stage",
+      "values": [
+        "+0.7"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (34–2259) to (50–3389) Fire Damage",
+      "values": [
+        "(34–2259)",
+        "(50–3389)"
+      ]
+    },
+    {
+      "text": "220% more Spell Damage for each stage",
+      "values": [
+        "220"
+      ]
+    },
+    {
+      "text": "Base radius is 0.8 metres",
+      "values": [
+        "0.8"
+      ]
+    },
+    {
+      "text": "3 maximum Stages",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "+0.7 metres to radius per Stage",
+      "values": [
+        "+0.7"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% more Spell Damage for each stage",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% more Spell Damage for each stage",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% more Spell Damage for each stage",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

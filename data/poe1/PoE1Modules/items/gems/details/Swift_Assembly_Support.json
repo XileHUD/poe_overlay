@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Trap, Mine",
     "DropLevel": "4",
+    "BaseType": "Swift Assembly Support",
     "Class": "Support Gems",
     "Icon": "Z",
     "ItemType": "Metadata/Items/Gems/SupportGemSwiftAssembly",
@@ -453,5 +454,77 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which throw Traps or Mines.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (9–18)% chance to throw up to 1 additional Trap or Mine",
+      "values": [
+        "(9–18)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (6–12)% chance to throw up to 2 additional Traps or Mines",
+      "values": [
+        "(6–12)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (3–6)% chance to throw up to 3 additional Traps or Mines",
+      "values": [
+        "(3–6)"
+      ]
+    },
+    {
+      "text": "Supported Skills throw Traps randomly around targeted location",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (9–18)% chance to throw up to 1 additional Trap or Mine",
+      "values": [
+        "(9–18)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (6–12)% chance to throw up to 2 additional Traps or Mines",
+      "values": [
+        "(6–12)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (3–6)% chance to throw up to 3 additional Traps or Mines",
+      "values": [
+        "(3–6)"
+      ]
+    },
+    {
+      "text": "Supported Skills throw Traps randomly around targeted location",
+      "values": []
+    },
+    {
+      "text": "multi trap and mine support flags [4]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Throwing Mines takes 10% more time for each additional Mine thrown)",
+    "(Throwing Mines takes 10% more time for each additional Mine thrown)",
+    "(Throwing Mines takes 10% more time for each additional Mine thrown)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–5)% increased Mine Throwing SpeedSupported Skills have (0–5)% increased Trap Throwing Speed",
+      "values": [
+        "(0–5)",
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–5)% increased Mine Throwing SpeedSupported Skills have (0–5)% increased Trap Throwing Speed",
+      "values": [
+        "(0–5)",
+        "(0–5)"
+      ]
+    }
+  ]
 }

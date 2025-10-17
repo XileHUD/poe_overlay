@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Frostblink of Wintry Blast",
     "TargetTypes": "Enemy, Ground,",
     "Type": "Spell, Movement, Triggerable, Cold, Travel, Area, Triggerable, Damage, Totemable, Trappable, Mineable, Multicastable, DynamicCooldown",
     "ActiveSkillsCode": "frostblink_alt_x"
@@ -371,5 +372,130 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Teleport to a location, damaging enemies in an area at both ends of the teleport. Deals higher damage to chilled enemies, then removes chill from them. Cannot be supported by Unleash.",
+  "explicitMods": [
+    {
+      "text": "Deals (7–916) to (11–1374) Cold Damage",
+      "values": [
+        "(7–916)",
+        "(11–1374)"
+      ]
+    },
+    {
+      "text": "This Spell's Cast Time is added to its Cooldown if Triggered",
+      "values": []
+    },
+    {
+      "text": "+(0–0.3) metres to radius",
+      "values": [
+        "+(0–0.3)"
+      ]
+    },
+    {
+      "text": "Cannot inflict Chill",
+      "values": []
+    },
+    {
+      "text": "15% more Damage with Hits per 5% Chill Effect on Enemy",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Removes Chill after Damaging",
+      "values": []
+    },
+    {
+      "text": "Deals (7–916) to (11–1374) Cold Damage",
+      "values": [
+        "(7–916)",
+        "(11–1374)"
+      ]
+    },
+    {
+      "text": "This Spell's Cast Time is added to its Cooldown if Triggered",
+      "values": []
+    },
+    {
+      "text": "+(0–0.3) metres to radius",
+      "values": [
+        "+(0–0.3)"
+      ]
+    },
+    {
+      "text": "Cannot inflict Chill",
+      "values": []
+    },
+    {
+      "text": "15% more Damage with Hits per 5% Chill Effect on Enemy",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Removes Chill after Damaging",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (7–5070) to (11–7605) Cold Damage",
+      "values": [
+        "(7–5070)",
+        "(11–7605)"
+      ]
+    },
+    {
+      "text": "This Spell's Cast Time is added to its Cooldown if Triggered",
+      "values": []
+    },
+    {
+      "text": "+(0–0.6) metres to radius",
+      "values": [
+        "+(0–0.6)"
+      ]
+    },
+    {
+      "text": "Cannot inflict Chill",
+      "values": []
+    },
+    {
+      "text": "15% more Damage with Hits per 5% Chill Effect on Enemy",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Removes Chill after Damaging",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–4)% more Damage with Hits per 5% Chill Effect on Enemy",
+      "values": [
+        "(0–4)"
+      ]
+    },
+    {
+      "text": "(0–4)% more Damage with Hits per 5% Chill Effect on Enemy",
+      "values": [
+        "(0–4)"
+      ]
+    },
+    {
+      "text": "(0–4)% more Damage with Hits per 5% Chill Effect on Enemy",
+      "values": [
+        "(0–4)"
+      ]
+    }
+  ]
 }

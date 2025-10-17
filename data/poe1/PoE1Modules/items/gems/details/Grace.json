@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Evasion",
     "DropLevel": "24",
+    "BaseType": "Grace",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -415,5 +416,93 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts an aura that grants evasion to you and your allies.",
+  "explicitMods": [
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (136–1545) additional Evasion Rating",
+      "values": [
+        "(136–1545)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (20–29)% more Evasion rating",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (136–1545) additional Evasion Rating",
+      "values": [
+        "(136–1545)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (20–29)% more Evasion rating",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "+2.9 metres to radius",
+      "values": [
+        "+2.9"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain 2507 additional Evasion Rating",
+      "values": [
+        "2507"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain 34% more Evasion rating",
+      "values": [
+        "34"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Casts an aura that grants evasion to you and your allies)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

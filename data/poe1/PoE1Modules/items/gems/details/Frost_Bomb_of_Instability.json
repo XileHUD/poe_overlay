@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Frost Bomb of Instability",
     "TargetTypes": "Ground, ,",
     "Type": "Spell, Area, Duration, Cold, Damage, Multicastable, Totemable, Trappable, Mineable, Triggerable, Cascadable, AreaSpell, CanRapidFire",
     "ActiveSkillsCode": "frost_bomb_alt_x"
@@ -371,5 +372,94 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a crystal which lasts for a duration. When the crystal's duration ends, it explodes, dealing cold damage to enemies around it.",
+  "explicitMods": [
+    {
+      "text": "Deals (7–1178) to (11–1766) Cold Damage",
+      "values": [
+        "(7–1178)",
+        "(11–1766)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Base radius is (2–2.4) metres",
+      "values": [
+        "(2–2.4)"
+      ]
+    },
+    {
+      "text": "Deals (7–1178) to (11–1766) Cold Damage",
+      "values": [
+        "(7–1178)",
+        "(11–1766)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Base radius is (2–2.4) metres",
+      "values": [
+        "(2–2.4)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (7–7393) to (11–11090) Cold Damage",
+      "values": [
+        "(7–7393)",
+        "(11–11090)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Base radius is (2–2.7) metres",
+      "values": [
+        "(2–2.7)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

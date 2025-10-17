@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Weapon, Minion",
     "DropLevel": "4",
+    "BaseType": "Animate Weapon",
     "Class": "Skill Gems",
     "TargetTypes": "Armour, unknown_13, Ground",
     "Type": "Triggerable, Duration, Minion, MinionsCanExplode, Spell, Totemable, CreatesMinion, Multicastable, CanRapidFire, Physical",
@@ -655,5 +656,223 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Animates a Melee Weapon Item or Lingering Blade to fight by your side. You cannot animate unidentified Weapons. Will not animate weapons with 6 sockets. Cannot be used by Traps or Mines.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 40 seconds",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Maximum (5–14) Animated Weapons",
+      "values": [
+        "(5–14)"
+      ]
+    },
+    {
+      "text": "Can use Items requiring up to Level (9–100)",
+      "values": [
+        "(9–100)"
+      ]
+    },
+    {
+      "text": "Minions' Attacks deal (5–126) to (8–184) additional Physical Damage",
+      "values": [
+        "(5–126)",
+        "(8–184)"
+      ]
+    },
+    {
+      "text": "Animated Lingering Blades deal (1–17) to (2–80) Added Attack Physical Damage",
+      "values": [
+        "(1–17)",
+        "(2–80)"
+      ]
+    },
+    {
+      "text": "Minions deal (0–38)% more Damage",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Minions have (0–38)% more Attack Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Base duration is 40 seconds",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Maximum (5–14) Animated Weapons",
+      "values": [
+        "(5–14)"
+      ]
+    },
+    {
+      "text": "Can use Items requiring up to Level (9–100)",
+      "values": [
+        "(9–100)"
+      ]
+    },
+    {
+      "text": "Minions' Attacks deal (5–126) to (8–184) additional Physical Damage",
+      "values": [
+        "(5–126)",
+        "(8–184)"
+      ]
+    },
+    {
+      "text": "Animated Lingering Blades deal (1–17) to (2–80) Added Attack Physical Damage",
+      "values": [
+        "(1–17)",
+        "(2–80)"
+      ]
+    },
+    {
+      "text": "Minions deal (0–38)% more Damage",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Minions have (0–38)% more Attack Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [4,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [22]",
+      "values": []
+    },
+    {
+      "text": "Trigger Level 20 Animate Guardian's Weapon when Animated Guardian Kills an Enemy",
+      "values": []
+    },
+    {
+      "text": "10% chance to Trigger Level 18 Animate Guardian's Weapon when Animated Weapon Kills an Enemy",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "(150–190)% increased Armour and Energy Shield",
+      "values": [
+        "(150–190)"
+      ]
+    },
+    {
+      "text": "+(60–90) to maximum Life",
+      "values": [
+        "+(60–90)"
+      ]
+    },
+    {
+      "text": "Animated Guardian deals 5% increased Damage per Animated Weapon",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Animated and Manifested Minions' Melee Strikes deal SplashDamage to surrounding targets",
+      "values": []
+    },
+    {
+      "text": "Animated and Manifested Minions' Melee Strikes deal 50% less Splash Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "You cannot have Non-Animated, Non-Manifested Minions",
+      "values": []
+    },
+    {
+      "text": "animate guardian and weapon track on kill [2]",
+      "values": []
+    },
+    {
+      "text": "25% chance to Trigger Level 20 Animate Weapon on Kill",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(150–200)% increased Physical Damage",
+      "values": [
+        "(150–200)"
+      ]
+    },
+    {
+      "text": "(8–12)% increased Attack Speed",
+      "values": [
+        "(8–12)"
+      ]
+    },
+    {
+      "text": "(8–12)% increased Cast Speed",
+      "values": [
+        "(8–12)"
+      ]
+    },
+    {
+      "text": "30% less Animate Weapon Duration",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Weapons you Animate create an additional copy",
+      "values": []
+    },
+    {
+      "text": "Minions deal (8–12)% increased Damage",
+      "values": [
+        "(8–12)"
+      ]
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, Animate Weapon can Animate up to 20 Ranged Weapons",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–2) to Maximum Animated Weapons",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "+(0–2) to Maximum Animated Weapons",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

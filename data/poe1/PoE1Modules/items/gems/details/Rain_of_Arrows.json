@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "DropLevel": "12",
+    "BaseType": "Rain of Arrows",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
@@ -375,5 +376,136 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires multiple arrows into the air, to land in sequence after a delay, starting at the targeted location and spreading outwards in all directions. Each arrow deals damage in an area around it. Half of the arrows will land directly on targets if there are targets in their range.",
+  "explicitMods": [
+    {
+      "text": "Fires (18–22) Arrows",
+      "values": [
+        "(18–22)"
+      ]
+    },
+    {
+      "text": "Fires (18–22) Arrows",
+      "values": [
+        "(18–22)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "cannot pierce [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "Trigger Level 5 Rain of Arrows when you Attack with a Bow",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "+(40–60) to Strength",
+      "values": [
+        "+(40–60)"
+      ]
+    },
+    {
+      "text": "+(40–60) to Dexterity",
+      "values": [
+        "+(40–60)"
+      ]
+    },
+    {
+      "text": "Adds 12 to 24 Fire Damage to Attacks",
+      "values": [
+        "12",
+        "24"
+      ]
+    },
+    {
+      "text": "20% increased Movement Speed",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "40% reduced Movement Speed when on Low Life",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "(You are on Low Life if you have 50% of your Maximum Life or less)",
+      "values": []
+    },
+    {
+      "text": "Trigger Level 1 Rain of Arrows when you Attack with a Bow",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "+(20–30) to Strength",
+      "values": [
+        "+(20–30)"
+      ]
+    },
+    {
+      "text": "+(20–30) to Dexterity",
+      "values": [
+        "+(20–30)"
+      ]
+    },
+    {
+      "text": "Adds 4 to 8 Fire Damage to Attacks",
+      "values": [
+        "4",
+        "8"
+      ]
+    },
+    {
+      "text": "20% increased Movement Speed",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "40% reduced Movement Speed when on Low Life",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "(You are on Low Life if you have 50% of your Maximum Life or less)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(You are on Low Life if you have 50% of your Maximum Life or less)",
+    "(You are on Low Life if you have 50% of your Maximum Life or less)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–4) Arrows",
+      "values": [
+        "+(0–4)"
+      ]
+    },
+    {
+      "text": "Fires +(0–4) Arrows",
+      "values": [
+        "+(0–4)"
+      ]
+    }
+  ]
 }

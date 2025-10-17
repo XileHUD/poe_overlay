@@ -3,6 +3,7 @@
   "slug": "Awakened_Added_Cold_Damage_Support",
   "metadata": {
     "DropLevel": "72",
+    "BaseType": "Awakened Added Cold Damage Support",
     "Class": "Support Gems",
     "Icon": "C",
     "ItemType": "Metadata/Items/Gems/SupportGemAddedColdDamagePlus",
@@ -193,5 +194,49 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "+(0–1) to Level of Supported Cold Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (165–188) to (248–282) added Cold Damage",
+      "values": [
+        "(165–188)",
+        "(248–282)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Level of Supported Cold Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (165–188) to (248–282) added Cold Damage",
+      "values": [
+        "(165–188)",
+        "(248–282)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Cold Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Cold Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

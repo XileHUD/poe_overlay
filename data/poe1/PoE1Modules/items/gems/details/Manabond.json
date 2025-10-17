@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "DropLevel": "12",
+    "BaseType": "Manabond",
     "Class": "Skill Gems",
     "TargetTypes": "Ground,",
     "Type": "Spell, Area, Damage, AreaSpell, Lightning, Totemable, Mineable, Trappable, Cascadable, Multicastable, CanRapidFire, Triggerable, Arcane",
@@ -374,5 +375,65 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Deals lightning damage based upon your missing mana in a circular area around the targeted location, as well as in four rectangular extensions whose lengths depend upon your remaining mana.",
+  "explicitMods": [
+    {
+      "text": "Deals (7–263) to (39–1488) Lightning Damage",
+      "values": [
+        "(7–263)",
+        "(39–1488)"
+      ]
+    },
+    {
+      "text": "Deals base Lightning Damage equal to (25–44)% of missing Unreserved Mana",
+      "values": [
+        "(25–44)"
+      ]
+    },
+    {
+      "text": "+6 to length per 25% of Unreserved maximum Mana you have",
+      "values": []
+    },
+    {
+      "text": "Deals (7–263) to (39–1488) Lightning Damage",
+      "values": [
+        "(7–263)",
+        "(39–1488)"
+      ]
+    },
+    {
+      "text": "Deals base Lightning Damage equal to (25–44)% of missing Unreserved Mana",
+      "values": [
+        "(25–44)"
+      ]
+    },
+    {
+      "text": "+6 to length per 25% of Unreserved maximum Mana you have",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Deals base Lightning Damage equal to +(0–10)% of missing Unreserved Mana",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "Deals base Lightning Damage equal to +(0–10)% of missing Unreserved Mana",
+      "values": [
+        "+(0–10)"
+      ]
+    }
+  ]
 }

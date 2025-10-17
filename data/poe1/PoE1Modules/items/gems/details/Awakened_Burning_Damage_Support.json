@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Burning",
     "DropLevel": "72",
+    "BaseType": "Awakened Burning Damage Support",
     "Class": "Support Gems",
     "Icon": "b",
     "ItemType": "Metadata/Items/Gems/SupportGemBurningDamagePlus",
@@ -214,5 +215,47 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports any skill that hits enemies, or can deal burning damage directly.",
+  "explicitMods": [
+    {
+      "text": "+(0–1) to Level of Supported Fire Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (35–39)% more Burning Damage",
+      "values": [
+        "(35–39)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Level of Supported Fire Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (35–39)% more Burning Damage",
+      "values": [
+        "(35–39)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Burning Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Burning Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

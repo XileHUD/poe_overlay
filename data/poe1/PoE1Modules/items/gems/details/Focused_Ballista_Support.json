@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Totem, Projectile",
     "DropLevel": "31",
+    "BaseType": "Focused Ballista Support",
     "Class": "Support Gems",
     "Icon": "^",
     "ItemType": "Metadata/Items/Gems/SupportGemFocusedBallista",
@@ -413,5 +414,67 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills that summon ballista totems. Cannot modify the skills of minions.",
+  "explicitMods": [
+    {
+      "text": "Ballista Totems from Supported Skills only Attack when you fire an Attack Projectile",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (40–68)% increased Totem Placement speed",
+      "values": [
+        "(40–68)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (25–35)% more Attack Speed",
+      "values": [
+        "(25–35)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–9)% more Damage",
+      "values": [
+        "(0–9)"
+      ]
+    },
+    {
+      "text": "Ballista Totems from Supported Skills only Attack when you fire an Attack Projectile",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (40–68)% increased Totem Placement speed",
+      "values": [
+        "(40–68)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (25–35)% more Attack Speed",
+      "values": [
+        "(25–35)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–9)% more Damage",
+      "values": [
+        "(0–9)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Totem Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Totem Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

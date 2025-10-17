@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit, Projectile, Ailment",
     "DropLevel": "12",
+    "BaseType": "Volcanic Fissure",
     "Class": "Skill Gems",
     "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy, SELF_ORIGIN",
@@ -336,5 +337,71 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slam the ground, creating a winding fissure that deals area damage while travelling outwards. When it reaches the target location it erupts, releasing a burst of molten projectiles. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "Fires 5 Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Projectiles deal 50% less Damage with Hits and Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fires 5 Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Projectiles deal 50% less Damage with Hits and Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "projectiles not offset [1]",
+      "values": []
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

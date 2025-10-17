@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "16",
+    "BaseType": "Desecrate",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, ,",
     "Type": "Spell, Area, Duration, Trappable, Totemable, Mineable, Triggerable, DamageOverTime, Multicastable, Chaos, Cascadable, AreaSpell",
@@ -454,5 +455,87 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Desecrates the ground, spawning corpses based on monsters in the current area and dealing chaos damage over time to enemies. If you are using the Raise Spectre skill there is a chance to spawn spectral corpses matching your most recently raised Spectres. Spectral corpses cannot be interacted with except by Minion skills.",
+  "explicitMods": [
+    {
+      "text": "Deals (8.2–294) Base Chaos Damage per second",
+      "values": [
+        "(8.2–294)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Spawns 5 corpses",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Spawned corpses' level matches the area level, up to a maximum of Level (20–80)",
+      "values": [
+        "(20–80)"
+      ]
+    },
+    {
+      "text": "Maximum of 10 corpses allowed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Deals (8.2–294) Base Chaos Damage per second",
+      "values": [
+        "(8.2–294)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Spawns 5 corpses",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Spawned corpses' level matches the area level, up to a maximum of Level (20–80)",
+      "values": [
+        "(20–80)"
+      ]
+    },
+    {
+      "text": "Maximum of 10 corpses allowed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Cast Speed",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Cast Speed",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "DropLevel": "28",
+    "BaseType": "Tectonic Slam",
     "Class": "Skill Gems",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy, SELF_ORIGIN",
@@ -335,5 +336,79 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slam the ground, unleashing a fiery fissure in front of you, dealing area damage and randomly releasing a number of smaller fissures branching off from it. Consume an Endurance Charge every third time you slam the ground with this skill. Requires a Mace, Sceptre, Sword, Axe, Staff, or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "5% more Area of Effect per Endurance Charge",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "+5% fissure branching chance per Endurance Charge",
+      "values": [
+        "+5"
+      ]
+    },
+    {
+      "text": "30% fissure branching chance",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "5% more Area of Effect per Endurance Charge",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "+5% fissure branching chance per Endurance Charge",
+      "values": [
+        "+5"
+      ]
+    },
+    {
+      "text": "30% fissure branching chance",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–30)% Fissure branching chance",
+      "values": [
+        "+(0–30)"
+      ]
+    },
+    {
+      "text": "+(0–30)% Fissure branching chance",
+      "values": [
+        "+(0–30)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Projectile",
     "DropLevel": "4",
+    "BaseType": "Volley Support",
     "Class": "Support Gems",
     "Icon": "=",
     "ItemType": "Metadata/Items/Gems/SupportGemParallelProjectiles",
@@ -333,5 +334,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills that fire projectiles from the user. Does not affect projectiles fired from other locations as secondary effects. Does not support skills that fire projectiles in a spiral.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills fire 2 additional Projectiles",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Skills also fire Projectiles from up to 2 points on each side of you",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (3–12)% less Projectile Damage",
+      "values": [
+        "(3–12)"
+      ]
+    },
+    {
+      "text": "Supported Skills fire 2 additional Projectiles",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Skills also fire Projectiles from up to 2 points on each side of you",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (3–12)% less Projectile Damage",
+      "values": [
+        "(3–12)"
+      ]
+    },
+    {
+      "text": "volley additional projectiles fire parallel x dist [80]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

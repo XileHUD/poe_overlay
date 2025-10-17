@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Boneshatter of Carnage",
     "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, MeleeSingleTarget, Multistrikeable, Melee, Area",
@@ -332,5 +333,88 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Attack enemies with a forceful melee strike. Stunning an enemy with the strike releases a damaging pulse. Requires a Mace, Sceptre, Axe or Staff.",
+  "explicitMods": [
+    {
+      "text": "25% reduced Enemy Stun Threshold",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(20–39)% chance to double Stun Duration",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "Pulse has 20% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "25% reduced Enemy Stun Threshold",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(20–39)% chance to double Stun Duration",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "Pulse has 20% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "25% reduced Enemy Stun Threshold",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(20–54)% chance to double Stun Duration",
+      "values": [
+        "(20–54)"
+      ]
+    },
+    {
+      "text": "Pulse has 20% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
+      "values": [
+        "20"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(The Stun Threshold determines how much Damage can Stun something)",
+    "(The Stun Threshold determines how much Damage can Stun something)",
+    "(The Stun Threshold determines how much Damage can Stun something)",
+    "(The Stun Threshold determines how much Damage can Stun something)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Damage against Stunned Enemies",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Damage against Stunned Enemies",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Damage against Stunned Enemies",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

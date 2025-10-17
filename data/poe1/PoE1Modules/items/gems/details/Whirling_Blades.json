@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Weapon",
     "DropLevel": "10",
+    "BaseType": "Whirling Blades",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, Rune Daggers",
     "TargetTypes": "Ground, Enemy, Behind",
@@ -376,5 +377,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Dive through enemies, dealing weapon damage. If dual wielding attacks with both weapons, dealing the damage of both in one hit. Only works with Daggers, Claws, and One-Handed Swords.",
+  "explicitMods": [
+    {
+      "text": "When Dual Wielding, Deals 75% Damage from each Weapon combined",
+      "values": [
+        "75"
+      ]
+    },
+    {
+      "text": "+0.6 seconds to Attack Time",
+      "values": [
+        "+0.6"
+      ]
+    },
+    {
+      "text": "When Dual Wielding, Deals 75% Damage from each Weapon combined",
+      "values": [
+        "75"
+      ]
+    },
+    {
+      "text": "+0.6 seconds to Attack Time",
+      "values": [
+        "+0.6"
+      ]
+    },
+    {
+      "text": "animation effect variation [-1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "ignores proximity shield [1]",
+      "values": []
+    },
+    {
+      "text": "skill double hits when dual wielding [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Attack Speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Attack Speed",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Spectral Throw of Materialising",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, Projectile, ProjectilesFromUser",
@@ -292,5 +293,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws an intangible spectral copy of your melee weapon. It flies out and then becomes tangible as it returns to you, in a spinning attack that only hits and damages enemies while returning.",
+  "explicitMods": [
+    {
+      "text": "30% reduced Projectile Deceleration",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "30% reduced Projectile Deceleration",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "spectral throw forget hit list time override [225]",
+      "values": []
+    },
+    {
+      "text": "30% reduced Projectile Deceleration",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "spectral throw forget hit list time override [225]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Flame Surge of Combusting",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Trappable, Totemable, Mineable, Multicastable, Triggerable, Area, Fire, CanRapidFire, AreaSpell, Duration",
     "ActiveSkillsCode": "flame_surge_alt_x"
@@ -371,5 +372,135 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Strikes enemies in front of you with a surge of flame. If this ignites an enemy a large area of burning ground will be created under them. Your damage modifiers don't apply to this burning ground.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (44–1374) to (65–2062) Fire Damage",
+      "values": [
+        "(44–1374)",
+        "(65–2062)"
+      ]
+    },
+    {
+      "text": "25% chance to Ignite enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "+(0–9) to Area of Effect length",
+      "values": [
+        "+(0–9)"
+      ]
+    },
+    {
+      "text": "Igniting Enemies creates Burning Ground, no more than once per secondBurning Ground deals 50% of Fire Damage per second of inflicted Ignite",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (44–1374) to (65–2062) Fire Damage",
+      "values": [
+        "(44–1374)",
+        "(65–2062)"
+      ]
+    },
+    {
+      "text": "25% chance to Ignite enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "+(0–9) to Area of Effect length",
+      "values": [
+        "+(0–9)"
+      ]
+    },
+    {
+      "text": "Igniting Enemies creates Burning Ground, no more than once per secondBurning Ground deals 50% of Fire Damage per second of inflicted Ignite",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (44–5756) to (65–8634) Fire Damage",
+      "values": [
+        "(44–5756)",
+        "(65–8634)"
+      ]
+    },
+    {
+      "text": "25% chance to Ignite enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "+(0–17) to Area of Effect length",
+      "values": [
+        "+(0–17)"
+      ]
+    },
+    {
+      "text": "Igniting Enemies creates Burning Ground, no more than once per secondBurning Ground deals 50% of Fire Damage per second of inflicted Ignite",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Burning ground deals +(0–15)% of Fire Damage per second of inflicted Ignite",
+      "values": [
+        "+(0–15)"
+      ]
+    },
+    {
+      "text": "Burning ground deals +(0–15)% of Fire Damage per second of inflicted Ignite",
+      "values": [
+        "+(0–15)"
+      ]
+    },
+    {
+      "text": "Burning ground deals +(0–15)% of Fire Damage per second of inflicted Ignite",
+      "values": [
+        "+(0–15)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Ailment",
     "DropLevel": "28",
+    "BaseType": "Firestorm",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Damage, Area, Duration, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, Cascadable, CanRapidFire, AreaSpell",
@@ -375,5 +376,121 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Flaming bolts rain down over the targeted area. They explode when landing, dealing damage to nearby enemies.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 1.4 seconds",
+      "values": [
+        "1.4"
+      ]
+    },
+    {
+      "text": "Deals (23–361) to (35–541) Fire Damage",
+      "values": [
+        "(23–361)",
+        "(35–541)"
+      ]
+    },
+    {
+      "text": "One impact every 0.15 seconds",
+      "values": [
+        "0.15"
+      ]
+    },
+    {
+      "text": "Base radius is 1.3 metres",
+      "values": [
+        "1.3"
+      ]
+    },
+    {
+      "text": "First Impact has 100% more Area of Effect",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "First Impact deals 325% more Damage with Hits and Ailments",
+      "values": [
+        "325"
+      ]
+    },
+    {
+      "text": "Maximum 3 Firestorms at a time",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Base duration is 1.4 seconds",
+      "values": [
+        "1.4"
+      ]
+    },
+    {
+      "text": "Deals (23–361) to (35–541) Fire Damage",
+      "values": [
+        "(23–361)",
+        "(35–541)"
+      ]
+    },
+    {
+      "text": "One impact every 0.15 seconds",
+      "values": [
+        "0.15"
+      ]
+    },
+    {
+      "text": "Base radius is 1.3 metres",
+      "values": [
+        "1.3"
+      ]
+    },
+    {
+      "text": "First Impact has 100% more Area of Effect",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "First Impact deals 325% more Damage with Hits and Ailments",
+      "values": [
+        "325"
+      ]
+    },
+    {
+      "text": "Maximum 3 Firestorms at a time",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill override pvp scaling time ms [450]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

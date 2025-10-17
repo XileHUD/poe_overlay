@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Projectile, Pierce, Freeze",
+    "BaseType": "Freezing Pulse",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Projectile, ProjectilesFromUser, Damage, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cold, CanRapidFire",
@@ -374,5 +375,81 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "An icy projectile which has a chance to freeze enemies it passes through. The projectile fades quickly, reducing damage and freezing chance until it dissipates.",
+  "explicitMods": [
+    {
+      "text": "Deals (8–1458) to (12–2188) Cold Damage",
+      "values": [
+        "(8–1458)",
+        "(12–2188)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Projectiles continuously lose Damage, up to 50% less Damage by the time they dissipateProjectiles have 25% chance to Freeze, which is lost over the first quarter of their flight",
+      "values": []
+    },
+    {
+      "text": "Deals (8–1458) to (12–2188) Cold Damage",
+      "values": [
+        "(8–1458)",
+        "(12–2188)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Projectiles continuously lose Damage, up to 50% less Damage by the time they dissipateProjectiles have 25% chance to Freeze, which is lost over the first quarter of their flight",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "(7–10)% increased Projectile Damage",
+      "values": [
+        "(7–10)"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, 25% increased Freezing Pulse Damage ifyou've Shattered an Enemy Recently",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Freezing Pulse fires 2 additional Projectiles",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "(Recently refers to the past 4 seconds)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Recently refers to the past 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Projectile Speed",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Projectile Speed",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Wave of Conviction of Trarthus",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Area, Damage, Duration, Trappable, Totemable, Mineable, Triggerable, CanRapidFire, Multicastable, AreaSpell, Physical, Fire, Nova",
     "ActiveSkillsCode": "wave_of_conviction_alt_y"
@@ -331,5 +332,118 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "An expanding wave of energy surges outwards from you, damaging enemies in a ring-shaped area over a duration. The ring then returns, damaging enemies again on the way back. Only one Wave of Conviction can be active at a time",
+  "explicitMods": [
+    {
+      "text": "Deals (28–1181) to (42–1772) Physical Damage",
+      "values": [
+        "(28–1181)",
+        "(42–1772)"
+      ]
+    },
+    {
+      "text": "Base duration is (0.4–0.5) seconds",
+      "values": [
+        "(0.4–0.5)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Deals (28–1181) to (42–1772) Physical Damage",
+      "values": [
+        "(28–1181)",
+        "(42–1772)"
+      ]
+    },
+    {
+      "text": "Base duration is (0.4–0.5) seconds",
+      "values": [
+        "(0.4–0.5)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "ignite art variation [7]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "shock art variation [2]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (28–6964) to (42–10447) Physical Damage",
+      "values": [
+        "(28–6964)",
+        "(42–10447)"
+      ]
+    },
+    {
+      "text": "Base duration is (0.4–0.57) seconds",
+      "values": [
+        "(0.4–0.57)"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "ignite art variation [7]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "shock art variation [2]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Damage Penetrates (0–15)% of Enemy Elemental Resistances",
+      "values": [
+        "(0–15)"
+      ]
+    },
+    {
+      "text": "Damage Penetrates (0–15)% of Enemy Elemental Resistances",
+      "values": [
+        "(0–15)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Haste",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
     "ActiveSkillsCode": "haste"
@@ -411,5 +412,123 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts a temporary aura that increases the movement speed, attack speed and cast speed of you and your allies.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Modifiers to Buff Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (16–20)% increased Movement Speed",
+      "values": [
+        "(16–20)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (25–31)% increased Attack Speed",
+      "values": [
+        "(25–31)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (24–31)% increased Cast Speed",
+      "values": [
+        "(24–31)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Modifiers to Buff Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (16–20)% increased Movement Speed",
+      "values": [
+        "(16–20)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (25–31)% increased Attack Speed",
+      "values": [
+        "(25–31)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (24–31)% increased Cast Speed",
+      "values": [
+        "(24–31)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "+(0–3.4) metres to radius",
+      "values": [
+        "+(0–3.4)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (10–21)% increased Movement Speed",
+      "values": [
+        "(10–21)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (15–32)% increased Attack Speed",
+      "values": [
+        "(15–32)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (15–32)% increased Cast Speed",
+      "values": [
+        "(15–32)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

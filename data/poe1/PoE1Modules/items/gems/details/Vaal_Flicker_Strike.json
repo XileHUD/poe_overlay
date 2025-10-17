@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Flicker Strike",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Melee, MeleeSingleTarget, Multistrikeable, Movement, Duration, Cooldown",
@@ -252,5 +253,127 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Repeatedly teleports to enemies and hits them, inflicting a wound but dealing no damage. After the repeating finishes, each enemy is hit by the total damage of their wounds, which are removed.",
+  "explicitMods": [
+    {
+      "text": "This Attack Repeats 25 additional times",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "10% increased Attack Speed per Frenzy Charge",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "70% less Damage with Ailments",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "30% chance to gain a Frenzy Charge on Hit",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "This Attack Repeats 25 additional times",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "10% increased Attack Speed per Frenzy Charge",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "70% less Damage with Ailments",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "30% chance to gain a Frenzy Charge on Hit",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "apply cut debuff on hit [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "ignores proximity shield [1]",
+      "values": []
+    },
+    {
+      "text": "melee defer damage prediction [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "10% increased Attack Speed per Frenzy Charge",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "15% chance to gain a Frenzy Charge on Hit",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Buff grants 20% increased Movement Speed",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "ignores proximity shield [1]",
+      "values": []
+    },
+    {
+      "text": "melee defer damage prediction [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–10)% chance to gain a Frenzy Charge on Hit",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% chance to gain a Frenzy Charge on Hit",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

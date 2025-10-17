@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Rejuvenation Totem",
     "TargetTypes": "Any,",
     "Type": "Spell, Buff, Area, TotemCastsAlone, Trappable, Mineable, SummonsTotem, Aura, AreaSpell, TotemCastsWhenNotDetached",
     "ActiveSkillsCode": "rejuvenation_totem"
@@ -371,5 +372,175 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a totem that has an aura which regenerates life for you and your nearby allies. When things affected by the aura are hit, the totem's life is removed instead for some of the damage.",
+  "explicitMods": [
+    {
+      "text": "+1 to maximum number of Summoned Totems",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Totem lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Supported Skills have (50–164)% increased Totem Life",
+      "values": [
+        "(50–164)"
+      ]
+    },
+    {
+      "text": "Modifiers to Totem Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "30% less Area of Effect",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Regenerate (19.3–714.4) Life per second",
+      "values": [
+        "(19.3–714.4)"
+      ]
+    },
+    {
+      "text": "40% of Damage from Hits against targets affected by the Aura is taken from Totem's Life before the target",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "+1 to maximum number of Summoned Totems",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Totem lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Supported Skills have (50–164)% increased Totem Life",
+      "values": [
+        "(50–164)"
+      ]
+    },
+    {
+      "text": "Modifiers to Totem Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "30% less Area of Effect",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Regenerate (19.3–714.4) Life per second",
+      "values": [
+        "(19.3–714.4)"
+      ]
+    },
+    {
+      "text": "40% of Damage from Hits against targets affected by the Aura is taken from Totem's Life before the target",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [10]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "totem scale pluspercent [20]",
+      "values": []
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–136)% increased Totem Life",
+      "values": [
+        "(0–136)"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "Regenerate (8.6–806.4) Life per second",
+      "values": [
+        "(8.6–806.4)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [10]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Totem Life",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Totem Life",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Totem Life",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

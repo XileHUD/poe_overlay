@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Rune Blast",
     "TargetTypes": "Ground",
     "Type": "Spell, Channel, Arcane",
     "ActiveSkillsCode": "rune_blast"
@@ -291,5 +292,157 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Channel to spread runes on the ground in a growing pattern. The runes fade away after a duration, or will be immediately removed and deal damage in a circular area when detonated by Rune Blast. Enemies standing on the runes are Hindered, reducing their movement speed.",
+  "explicitMods": [
+    {
+      "text": "Deals (36–444) to (107–1332) Lightning Damage",
+      "values": [
+        "(36–444)",
+        "(107–1332)"
+      ]
+    },
+    {
+      "text": "Base duration is 12 seconds",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "50% reduced Movement Speed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Runes have 30% more Area of Effect per Improvement",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Runes deal 100% more Damage with Hits and Ailments per Improvement",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "A Rune is Improved for each (5–24) Mana Spent",
+      "values": [
+        "(5–24)"
+      ]
+    },
+    {
+      "text": "Runes can be improved 3 times",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Deals (36–444) to (107–1332) Lightning Damage",
+      "values": [
+        "(36–444)",
+        "(107–1332)"
+      ]
+    },
+    {
+      "text": "Base duration is 12 seconds",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "50% reduced Movement Speed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Runes have 30% more Area of Effect per Improvement",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Runes deal 100% more Damage with Hits and Ailments per Improvement",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "A Rune is Improved for each (5–24) Mana Spent",
+      "values": [
+        "(5–24)"
+      ]
+    },
+    {
+      "text": "Runes can be improved 3 times",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "damage cannot be reflected or leech if used by other object [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "Teleport to the detonated Rune if you have not detonated Runes in the past 1 second",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Runes have +(0–10)% more Area of Effect per Improvement",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Cast Speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Runes have +(0–10)% more Area of Effect per Improvement",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Cast Speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Cast Speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Cast Speed",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

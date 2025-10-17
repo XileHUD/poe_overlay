@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Armour, Evasion",
+    "BaseType": "Shield Crush",
     "Class": "Skill Gems",
     "Weapon": "Shields",
     "TargetTypes": "Ground, Enemy,",
@@ -455,5 +456,75 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Swipe your shield, dealing area damage in three waves in front of you. Enemies can be hit by two of the waves where they overlap.",
+  "explicitMods": [
+    {
+      "text": "(4–300) to (6–450) Base Off Hand Physical Damage",
+      "values": [
+        "(4–300)",
+        "(6–450)"
+      ]
+    },
+    {
+      "text": "(3–8) to (5–12) Added Physical Damage per 15 Armour or Evasion Rating on Shield",
+      "values": [
+        "(3–8)",
+        "(5–12)"
+      ]
+    },
+    {
+      "text": "+(0–0.6) metres to radius",
+      "values": [
+        "+(0–0.6)"
+      ]
+    },
+    {
+      "text": "(4–300) to (6–450) Base Off Hand Physical Damage",
+      "values": [
+        "(4–300)",
+        "(6–450)"
+      ]
+    },
+    {
+      "text": "(3–8) to (5–12) Added Physical Damage per 15 Armour or Evasion Rating on Shield",
+      "values": [
+        "(3–8)",
+        "(5–12)"
+      ]
+    },
+    {
+      "text": "+(0–0.6) metres to radius",
+      "values": [
+        "+(0–0.6)"
+      ]
+    },
+    {
+      "text": "attack is melee override [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Deals up to (0–10)% more Damage with Hits to closer targets",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Deals up to (0–10)% more Damage with Hits to closer targets",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

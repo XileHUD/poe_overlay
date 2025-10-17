@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "18",
+    "BaseType": "Volatility Support",
     "Class": "Support Gems",
     "Icon": "v",
     "ItemType": "Metadata/Items/Gems/SupportGemVolatility",
@@ -372,5 +373,47 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (30–58)% more Maximum Attack Damage",
+      "values": [
+        "(30–58)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (50–69)% less Minimum Attack Damage",
+      "values": [
+        "(50–69)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (30–58)% more Maximum Attack Damage",
+      "values": [
+        "(30–58)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (50–69)% less Minimum Attack Damage",
+      "values": [
+        "(50–69)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

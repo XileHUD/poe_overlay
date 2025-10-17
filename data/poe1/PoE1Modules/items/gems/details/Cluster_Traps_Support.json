@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Trap",
     "DropLevel": "38",
+    "BaseType": "Cluster Traps Support",
     "Class": "Support Gems",
     "Icon": "L",
     "ItemType": "Metadata/Items/Gems/SupportGemClusterTrap",
@@ -373,5 +374,107 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports traps skills, making them throw extra traps randomly around the targeted location.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills throw up to 2 additional Traps",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Skills throw Traps randomly around targeted location",
+      "values": []
+    },
+    {
+      "text": "Supported Skills can have up to 5 additional Traps placed at a time",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (55–61)% less Damage",
+      "values": [
+        "(55–61)"
+      ]
+    },
+    {
+      "text": "Supported Skills throw up to 2 additional Traps",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Skills throw Traps randomly around targeted location",
+      "values": []
+    },
+    {
+      "text": "Supported Skills can have up to 5 additional Traps placed at a time",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (55–61)% less Damage",
+      "values": [
+        "(55–61)"
+      ]
+    },
+    {
+      "text": "multi trap and mine support flags [1]",
+      "values": []
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 16 Trap",
+      "values": [
+        "16"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 16 Cluster Trap",
+      "values": [
+        "16"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 16 Trap And Mine Damage",
+      "values": [
+        "16"
+      ]
+    },
+    {
+      "text": "(40–50)% increased Global Damage",
+      "values": [
+        "(40–50)"
+      ]
+    },
+    {
+      "text": "(10–20)% increased maximum Life",
+      "values": [
+        "(10–20)"
+      ]
+    },
+    {
+      "text": "(10–20)% increased maximum Mana",
+      "values": [
+        "(10–20)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–20)% increased Trap Trigger Area of Effect",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–20)% increased Trap Trigger Area of Effect",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

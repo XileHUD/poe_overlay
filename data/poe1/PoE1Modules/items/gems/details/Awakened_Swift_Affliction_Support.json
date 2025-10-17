@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Duration, Ailment",
     "DropLevel": "72",
+    "BaseType": "Awakened Swift Affliction Support",
     "Class": "Support Gems",
     "Icon": "r",
     "ItemType": "Metadata/Items/Gems/SupportGemSwiftAfflictionPlus",
@@ -174,5 +175,51 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports any skill that has a duration, or can hit enemies to inflict ailments on them.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (40–49)% more Damage over Time",
+      "values": [
+        "(40–49)"
+      ]
+    },
+    {
+      "text": "25% less Duration of Supported Skills and Damaging Ailments they inflict",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (40–49)% more Damage over Time",
+      "values": [
+        "(40–49)"
+      ]
+    },
+    {
+      "text": "25% less Duration of Supported Skills and Damaging Ailments they inflict",
+      "values": [
+        "25"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage over Time",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage over Time",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

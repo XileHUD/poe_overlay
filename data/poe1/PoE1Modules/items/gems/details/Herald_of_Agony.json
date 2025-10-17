@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Minion, Buff, Taunt, Poison",
     "DropLevel": "16",
+    "BaseType": "Herald of Agony",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, HasReservation, Herald, Minion, Instant, Chaos, Physical, CreatesMinion, MinionsAreUndamagable, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -455,5 +456,257 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Grants a buff giving more poison damage and a chance to inflict poison. When you poison an enemy while you have this buff, you gain Virulence, and summon an Agony Crawler minion that uses projectile and area attacks. You will lose Virulence over time, at a rate which increases the more Virulence you have. The minion will die when you have no Virulence.",
+  "explicitMods": [
+    {
+      "text": "Maximum 1 Summoned Agony Crawler",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Buff grants 20% chance to Poison on Hit",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Grants Virulence when you Poison an Enemy",
+      "values": []
+    },
+    {
+      "text": "Buff grants 10% more Damage with Poison",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "40 Maximum Virulence",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Agony Crawler has (2–4)% increased Attack Speed per Virulence you have",
+      "values": [
+        "(2–4)"
+      ]
+    },
+    {
+      "text": "Agony Crawler deals (5–9)% increased Physical Damage per Virulence you have",
+      "values": [
+        "(5–9)"
+      ]
+    },
+    {
+      "text": "Agony Crawler has (1–45) to (3–84) Added Physical Damage per Virulence you have",
+      "values": [
+        "(1–45)",
+        "(3–84)"
+      ]
+    },
+    {
+      "text": "Minions cannot Taunt Enemies",
+      "values": []
+    },
+    {
+      "text": "Maximum 1 Summoned Agony Crawler",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Buff grants 20% chance to Poison on Hit",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Grants Virulence when you Poison an Enemy",
+      "values": []
+    },
+    {
+      "text": "Buff grants 10% more Damage with Poison",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "40 Maximum Virulence",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Agony Crawler has (2–4)% increased Attack Speed per Virulence you have",
+      "values": [
+        "(2–4)"
+      ]
+    },
+    {
+      "text": "Agony Crawler deals (5–9)% increased Physical Damage per Virulence you have",
+      "values": [
+        "(5–9)"
+      ]
+    },
+    {
+      "text": "Agony Crawler has (1–45) to (3–84) Added Physical Damage per Virulence you have",
+      "values": [
+        "(1–45)",
+        "(3–84)"
+      ]
+    },
+    {
+      "text": "Minions cannot Taunt Enemies",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "+(10–20) to all Attributes",
+      "values": [
+        "+(10–20)"
+      ]
+    },
+    {
+      "text": "Adds (15–20) to (21–30) Chaos Damage",
+      "values": [
+        "(15–20)",
+        "(21–30)"
+      ]
+    },
+    {
+      "text": "+(17–23)% to Chaos Resistance",
+      "values": [
+        "+(17–23)"
+      ]
+    },
+    {
+      "text": "When used in the Synthesiser, the new item will have an additional Herald Modifier",
+      "values": []
+    },
+    {
+      "text": "[Random Herald of Agony modifier]",
+      "values": []
+    },
+    {
+      "text": "(Attributes are Strength, Dexterity, and Intelligence)",
+      "values": []
+    },
+    {
+      "text": "Deals 60% less Attack Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Fires +6 Projectiles",
+      "values": [
+        "+6"
+      ]
+    },
+    {
+      "text": "35% less Attack Speed",
+      "values": [
+        "35"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [20]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "distribute projectiles over contact points [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "main hand base maximum attack distance [50]",
+      "values": []
+    },
+    {
+      "text": "projectile minimum range [10]",
+      "values": []
+    },
+    {
+      "text": "projectile spread radius [20]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    },
+    {
+      "text": "Fires 4 additional Projectiles",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "monster projectile variation [39]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    },
+    {
+      "text": "active skill area of effect radius +% final [30]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "Cannot be Damaged",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Attributes are Strength, Dexterity, and Intelligence)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–5) to Maximum Virulence",
+      "values": [
+        "+(0–5)"
+      ]
+    },
+    {
+      "text": "+(0–5) to Maximum Virulence",
+      "values": [
+        "+(0–5)"
+      ]
+    }
+  ]
 }

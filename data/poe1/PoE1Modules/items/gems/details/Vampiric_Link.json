@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Recovery, Leech, Buff, Link",
     "DropLevel": "34",
+    "BaseType": "Vampiric Link",
     "Class": "Skill Gems",
     "TargetTypes": "Self, Ground",
     "Type": "Spell, Buff, Duration, Link",
@@ -455,5 +456,75 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Targets an allied player to apply a buff which links you to them for a duration. While linked, they get recovery from your life leech instead of you. If the target dies while linked, you will also die. This skill cannot be triggered, or used by Totems, Traps, or Mines.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (8–9.9) seconds",
+      "values": [
+        "(8–9.9)"
+      ]
+    },
+    {
+      "text": "Life Leech effects are not removed at Full LifeLife Leech effects apply Recovery Linked Target instead of youLinked target's Maximum total Life Recovery per second from Leech is equal to yours",
+      "values": []
+    },
+    {
+      "text": "Buff grants +(2–5.8)% to Maximum total Life Recovery per second from Leech",
+      "values": [
+        "+(2–5.8)"
+      ]
+    },
+    {
+      "text": "Link breaks if target leaves range or line of sight for 4 secondsMaximum 1 Link from any source per targetYou die if Linked target dies",
+      "values": []
+    },
+    {
+      "text": "Base duration is (8–9.9) seconds",
+      "values": [
+        "(8–9.9)"
+      ]
+    },
+    {
+      "text": "Life Leech effects are not removed at Full LifeLife Leech effects apply Recovery Linked Target instead of youLinked target's Maximum total Life Recovery per second from Leech is equal to yours",
+      "values": []
+    },
+    {
+      "text": "Buff grants +(2–5.8)% to Maximum total Life Recovery per second from Leech",
+      "values": [
+        "+(2–5.8)"
+      ]
+    },
+    {
+      "text": "Link breaks if target leaves range or line of sight for 4 secondsMaximum 1 Link from any source per targetYou die if Linked target dies",
+      "values": []
+    },
+    {
+      "text": "skill cost over time is not removed with skill [1]",
+      "values": []
+    },
+    {
+      "text": "maximum_life_leech_rate_%_per_minute",
+      "values": []
+    },
+    {
+      "text": "damage_+%_when_on_full_life",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–1.5) seconds",
+      "values": [
+        "(0–1.5)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–1.5) seconds",
+      "values": [
+        "(0–1.5)"
+      ]
+    }
+  ]
 }

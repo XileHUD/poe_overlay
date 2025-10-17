@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Summon Sacred Wisps",
     "TargetTypes": "Ground",
     "Type": "SkillGrantedBySupport, Triggerable, Triggered, InbuiltTrigger, Duration, Spell",
     "ActiveSkillsCode": "summon_sacred_wisp"
@@ -251,5 +252,126 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills that can be used with Wands. Cannot support Vaal skills, minion skills, movement skills, or skills used by totems, traps, or mines.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (51–60)% less Damage when used by Sacred Wisps",
+      "values": [
+        "(51–60)"
+      ]
+    },
+    {
+      "text": "Supported Skills will Trigger Summon Sacred Wisps on Hit",
+      "values": []
+    },
+    {
+      "text": "Supported Skills can only be used with Wands",
+      "values": []
+    },
+    {
+      "text": "Base duration is 10 seconds",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Summons 2 Sacred WispsMaximum 2 Sacred Wisps",
+      "values": [
+        "2",
+        "2"
+      ]
+    },
+    {
+      "text": "Sacred Wisps have 25% chance to use the Triggering Skill when you fire aProjectile with that Skill",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Sacred Wisps have +25% chance to use the Triggering Skill when you fire a Projectile with that Skill while a Rare or Unique Enemy is in your Presence",
+      "values": [
+        "+25"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (51–60)% less Damage when used by Sacred Wisps",
+      "values": [
+        "(51–60)"
+      ]
+    },
+    {
+      "text": "Supported Skills will Trigger Summon Sacred Wisps on Hit",
+      "values": []
+    },
+    {
+      "text": "Supported Skills can only be used with Wands",
+      "values": []
+    },
+    {
+      "text": "Base duration is 10 seconds",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Summons 2 Sacred WispsMaximum 2 Sacred Wisps",
+      "values": [
+        "2",
+        "2"
+      ]
+    },
+    {
+      "text": "Sacred Wisps have 25% chance to use the Triggering Skill when you fire aProjectile with that Skill",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Sacred Wisps have +25% chance to use the Triggering Skill when you fire a Projectile with that Skill while a Rare or Unique Enemy is in your Presence",
+      "values": [
+        "+25"
+      ]
+    },
+    {
+      "text": "Base duration is 10 seconds",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Summons 2 Sacred WispsMaximum 2 Sacred Wisps",
+      "values": [
+        "2",
+        "2"
+      ]
+    },
+    {
+      "text": "Sacred Wisps have 25% chance to use the Triggering Skill when you fire aProjectile with that Skill",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Sacred Wisps have +25% chance to use the Triggering Skill when you fire a Projectile with that Skill while a Rare or Unique Enemy is in your Presence",
+      "values": [
+        "+25"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Attack Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Attack Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

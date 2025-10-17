@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Arc of Surging",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Trappable, Totemable, Mineable, Multicastable, Triggerable, Lightning, CanRapidFire, ThresholdJewelChaining",
     "ActiveSkillsCode": "arc_alt_x"
@@ -371,5 +372,94 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "An arc of lightning reaches from the caster to a targeted enemy and splits to simultaneously hit several other enemies.",
+  "explicitMods": [
+    {
+      "text": "Deals (11–381) to (62–2159) Lightning Damage",
+      "values": [
+        "(11–381)",
+        "(62–2159)"
+      ]
+    },
+    {
+      "text": "Beam Splits towards (4–7) additional targets",
+      "values": [
+        "(4–7)"
+      ]
+    },
+    {
+      "text": "Modifiers to the number of times to Chain instead applyto the number of targets Beam Splits towards",
+      "values": []
+    },
+    {
+      "text": "Deals (11–381) to (62–2159) Lightning Damage",
+      "values": [
+        "(11–381)",
+        "(62–2159)"
+      ]
+    },
+    {
+      "text": "Beam Splits towards (4–7) additional targets",
+      "values": [
+        "(4–7)"
+      ]
+    },
+    {
+      "text": "Modifiers to the number of times to Chain instead applyto the number of targets Beam Splits towards",
+      "values": []
+    },
+    {
+      "text": "arc additional delay ms [150]",
+      "values": []
+    },
+    {
+      "text": "arc chain distance [55]",
+      "values": []
+    },
+    {
+      "text": "disable visual hit effect [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (11–1676) to (62–9495) Lightning Damage",
+      "values": [
+        "(11–1676)",
+        "(62–9495)"
+      ]
+    },
+    {
+      "text": "Beam Splits towards (4–11) additional targets",
+      "values": [
+        "(4–11)"
+      ]
+    },
+    {
+      "text": "Modifiers to the number of times to Chain instead applyto the number of targets Beam Splits towards",
+      "values": []
+    },
+    {
+      "text": "arc additional delay ms [150]",
+      "values": []
+    },
+    {
+      "text": "arc chain distance [20]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Beam Splits towards (0–2) additional targets",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Beam Splits towards (0–2) additional targets",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

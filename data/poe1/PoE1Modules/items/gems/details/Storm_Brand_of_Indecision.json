@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Storm Brand of Indecision",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, Lightning, Chains, Duration, Totemable, Trappable, Mineable, Triggerable, Multicastable, Brand, AreaSpell",
     "ActiveSkillsCode": "storm_brand_alt_x"
@@ -331,5 +332,180 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, firing a beam which deals damage to the branded enemy and those around it. The brand will detach if the enemy dies.",
+  "explicitMods": [
+    {
+      "text": "Deals (5–172) to (14–515) Lightning Damage",
+      "values": [
+        "(5–172)",
+        "(14–515)"
+      ]
+    },
+    {
+      "text": "Activates every 0.4 seconds while Attached",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+      "values": []
+    },
+    {
+      "text": "Attaches to a new Enemy after Activating, no more than once every 0.3 seconds",
+      "values": []
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Can be Attached for a total Duration of 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Sends a beam to the Branded Enemy",
+      "values": []
+    },
+    {
+      "text": "Deals (5–172) to (14–515) Lightning Damage",
+      "values": [
+        "(5–172)",
+        "(14–515)"
+      ]
+    },
+    {
+      "text": "Activates every 0.4 seconds while Attached",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+      "values": []
+    },
+    {
+      "text": "Attaches to a new Enemy after Activating, no more than once every 0.3 seconds",
+      "values": []
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Can be Attached for a total Duration of 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Sends a beam to the Branded Enemy",
+      "values": []
+    },
+    {
+      "text": "base number of sigils allowed per target [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (5–774) to (14–2323) Lightning Damage",
+      "values": [
+        "(5–774)",
+        "(14–2323)"
+      ]
+    },
+    {
+      "text": "Activates every 0.4 seconds while Attached",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+      "values": []
+    },
+    {
+      "text": "Attaches to a new Enemy after Activating, no more than once every 0.3 seconds",
+      "values": []
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Can be Attached for a total Duration of 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Sends a beam to the Branded Enemy",
+      "values": []
+    },
+    {
+      "text": "base number of sigils allowed per target [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Deals +(0–10)% more Damage with Hits against Branded Enemy",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "Deals +(0–10)% more Damage with Hits against Branded Enemy",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "Deals +(0–10)% more Damage with Hits against Branded Enemy",
+      "values": [
+        "+(0–10)"
+      ]
+    }
+  ]
 }

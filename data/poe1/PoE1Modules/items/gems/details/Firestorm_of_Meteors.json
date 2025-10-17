@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Firestorm of Meteors",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, Cascadable, CanRapidFire, AreaSpell",
     "ActiveSkillsCode": "firestorm_alt_x"
@@ -331,5 +332,76 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "A large flaming bolt falls towards the targeted area. The bolt explodes when landing, dealing damage to nearby enemies.",
+  "explicitMods": [
+    {
+      "text": "Deals (117–1824) to (176–2735) Fire Damage",
+      "values": [
+        "(117–1824)",
+        "(176–2735)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.3 metres",
+      "values": [
+        "2.3"
+      ]
+    },
+    {
+      "text": "Deals (117–1824) to (176–2735) Fire Damage",
+      "values": [
+        "(117–1824)",
+        "(176–2735)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.3 metres",
+      "values": [
+        "2.3"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (117–10449) to (176–15673) Fire Damage",
+      "values": [
+        "(117–10449)",
+        "(176–15673)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.3 metres",
+      "values": [
+        "2.3"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

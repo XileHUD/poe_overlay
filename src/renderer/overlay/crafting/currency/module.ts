@@ -126,7 +126,9 @@ export function render(list: CurrencyItem[]): void {
       <input id='currencySearch' type='text' placeholder='Search currency...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
       <button id='currencyClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-  <div id='currencyTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; margin-bottom:4px; justify-content:center; width:100%;'></div>
+    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+      <div id='currencyTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; justify-content:center; width:100%;'></div>
+    </div>
     <div id='currencyWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap:10px;'></div>`;
   state.input = panel.querySelector('#currencySearch') as HTMLInputElement | null;
   const wrap = panel.querySelector('#currencyWrap') as HTMLElement | null;
@@ -160,9 +162,9 @@ export function render(list: CurrencyItem[]): void {
   }
   function chipCss(tag: string, active: boolean){
     const [r,g,b]=tagRGB(tag); const bg=active?`rgba(${r},${g},${b},0.9)`:`rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const l=0.2126*r+0.7152*g+0.0722*b; const color=active?(l>180?'#000':'#fff'):'var(--text-primary)';
-    return `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:999px; border:1px solid ${border}; background:${bg}; color:${color};`;
+    return `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; border:1px solid ${border}; background:${bg}; color:${color};`;
   }
-  function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; allTags.forEach(tag=>{ const active=state.selectedTags.has(tag); const el=document.createElement('div'); el.textContent = state.tagCounts[tag]? `${tag} (${state.tagCounts[tag]})` : tag; el.style.cssText=chipCss(tag, active); el.addEventListener('click',()=>{ active?state.selectedTags.delete(tag):state.selectedTags.add(tag); apply(state.input?.value||''); renderTagFilters(); }); tagWrap.appendChild(el); }); if(state.selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; reset.style.cssText='cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:999px; border:1px solid var(--accent-red); background:var(--accent-red); color:#fff;'; reset.addEventListener('click',()=>{ state.selectedTags.clear(); apply(state.input?.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
+  function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; allTags.forEach(tag=>{ const active=state.selectedTags.has(tag); const el=document.createElement('div'); el.textContent = state.tagCounts[tag]? `${tag} (${state.tagCounts[tag]})` : tag; el.style.cssText=chipCss(tag, active); el.addEventListener('click',()=>{ active?state.selectedTags.delete(tag):state.selectedTags.add(tag); apply(state.input?.value||''); renderTagFilters(); }); tagWrap.appendChild(el); }); if(state.selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; reset.style.cssText='cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; border:1px solid var(--accent-red); background:var(--accent-red); color:#fff;'; reset.addEventListener('click',()=>{ state.selectedTags.clear(); apply(state.input?.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
 
   function apply(filter='') {
     if (!wrap) return;

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Galvanic Arrow of Energy",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Area, Totemable, Trappable, Mineable, Lightning, RangedAttack, MirageArcherCanUse, Triggerable",
@@ -332,5 +333,65 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Create a burst of lightning from your Bow, firing no arrows but damaging enemies in a cone in front of you.",
+  "explicitMods": [
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+(0.8–1.3) metres to radius",
+      "values": [
+        "+(0.8–1.3)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+(0.8–1.3) metres to radius",
+      "values": [
+        "+(0.8–1.3)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+(0.8–1.8) metres to radius",
+      "values": [
+        "+(0.8–1.8)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–0.4) metres to radius",
+      "values": [
+        "+(0–0.4)"
+      ]
+    },
+    {
+      "text": "+(0–0.4) metres to radius",
+      "values": [
+        "+(0–0.4)"
+      ]
+    },
+    {
+      "text": "+(0–0.4) metres to radius",
+      "values": [
+        "+(0–0.4)"
+      ]
+    }
+  ]
 }

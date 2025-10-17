@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Golem, Resistance",
     "DropLevel": "34",
+    "BaseType": "Summon Chaos Golem",
     "Class": "Skill Gems",
     "TargetTypes": "Ground",
     "Type": "Triggerable, Chaos, Mineable, Minion, MinionsCanExplode, Multicastable, Spell, Totemable, Trappable, Golem, CreatesMinion, Cooldown",
@@ -455,5 +456,182 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a Chaos Golem that grants you damage over time and chaos resistance. The Chaos Golem can cast a damage over time Chaos aura and a cascade of Chaos spikes in addition to its melee attack.",
+  "explicitMods": [
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Golems grant +(10–16)% to Damage over Time Multiplier",
+      "values": [
+        "(10–16)"
+      ]
+    },
+    {
+      "text": "Golems grant +17% to Chaos Resistance",
+      "values": [
+        "+17"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Golems grant +(10–16)% to Damage over Time Multiplier",
+      "values": [
+        "(10–16)"
+      ]
+    },
+    {
+      "text": "Golems grant +17% to Chaos Resistance",
+      "values": [
+        "+17"
+      ]
+    },
+    {
+      "text": "base display minion actor level [34,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [5]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 1436.6 Base Chaos Damage per second",
+      "values": [
+        "1436.6"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "active skill area of effect radius +% final [20]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 440.3 to 660.4 Physical Damage",
+      "values": [
+        "440.3",
+        "660.4"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Causes +6 Bursts",
+      "values": [
+        "+6"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "monster penalty against minions damage +% final vs player minions [-25]",
+      "values": []
+    },
+    {
+      "text": "Withered you Inflict expires 100% slower",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Deals 4654.4 Base Chaos Damage per second",
+      "values": [
+        "4654.4"
+      ]
+    },
+    {
+      "text": "Base duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "6% increased Chaos Damage taken",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [50]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "sandstorm applies withered to enemies within [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Buff Effect",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Buff Effect",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

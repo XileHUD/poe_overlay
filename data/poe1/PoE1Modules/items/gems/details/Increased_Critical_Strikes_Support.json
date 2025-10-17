@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "DropLevel": "8",
+    "BaseType": "Increased Critical Strikes Support",
     "Class": "Support Gems",
     "Icon": "s",
     "ItemType": "Metadata/Items/Gems/SupportGemIncreasedCriticalStrikes",
@@ -334,5 +335,47 @@
   "description": "This item is drop disabled.",
   "stats": [
     "This item is drop disabled."
+  ],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (60–117)% increased Critical Strike Chance",
+      "values": [
+        "(60–117)"
+      ]
+    },
+    {
+      "text": "Supported Skills have +2% to Critical Strike Chance",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Supported Skills have (60–117)% increased Critical Strike Chance",
+      "values": [
+        "(60–117)"
+      ]
+    },
+    {
+      "text": "Supported Skills have +2% to Critical Strike Chance",
+      "values": [
+        "+2"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–20)% increased Critical Strike Chance",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–20)% increased Critical Strike Chance",
+      "values": [
+        "(0–20)"
+      ]
+    }
   ]
 }

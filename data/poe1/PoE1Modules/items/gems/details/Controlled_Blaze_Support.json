@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Ignite, Recently",
     "DropLevel": "31",
+    "BaseType": "Controlled Blaze Support",
     "Class": "Support Gems",
     "Icon": "Z",
     "ItemType": "Metadata/Items/Gems/SupportGemControlledBlaze",
@@ -413,5 +414,70 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports melee attack skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (10–19)% chance to Ignite",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Each Supported Skill deals (10–14)% more Damage with Ignite for each Ignite inflicted with it Recently, up to a maximum of (230–364)%",
+      "values": [
+        "(10–14)",
+        "(230–364)"
+      ]
+    },
+    {
+      "text": "Each Supported Skill deals 3% less Damage for each Ignite inflicted with it Recently, up to a maximum of (69–78)%",
+      "values": [
+        "3",
+        "(69–78)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (10–19)% chance to Ignite",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Each Supported Skill deals (10–14)% more Damage with Ignite for each Ignite inflicted with it Recently, up to a maximum of (230–364)%",
+      "values": [
+        "(10–14)",
+        "(230–364)"
+      ]
+    },
+    {
+      "text": "Each Supported Skill deals 3% less Damage for each Ignite inflicted with it Recently, up to a maximum of (69–78)%",
+      "values": [
+        "3",
+        "(69–78)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Recently refers to the past 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Recently refers to the past 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Recently refers to the past 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% chance to Ignite",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% chance to Ignite",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

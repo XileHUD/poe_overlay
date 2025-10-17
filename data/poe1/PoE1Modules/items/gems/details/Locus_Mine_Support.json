@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Reservation, Weapon, Melee, Mine, Projectile",
     "DropLevel": "8",
+    "BaseType": "Locus Mine Support",
     "Class": "Support Gems",
     "Icon": "*",
     "ItemType": "Metadata/Items/Gems/SupportGemLocusMine",
@@ -373,5 +374,151 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills that use bows or wands and fire projectiles ahead. Instead of using that skill, you will throw mines that will use the skill for you when you detonate them, targeting your location. Mines cannot use channelling skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Attack Skills cannot be used with Melee Weapons",
+      "values": []
+    },
+    {
+      "text": "Supported Skills always fire at least 1 Projectile",
+      "values": []
+    },
+    {
+      "text": "Supported Skills throw up to 2 additional Mines",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Skills fire 30% less Projectiles",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Supported Skills gain a Base Reservation equal to Base Mana and Life Cost",
+      "values": []
+    },
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Mines from Supported Skills can't be Detonated while within 3 metres of you",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Mines using Supported Skills always target your location",
+      "values": []
+    },
+    {
+      "text": "Supported Skills throw Mines in an Arc",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (11–30)% less Damage",
+      "values": [
+        "(11–30)"
+      ]
+    },
+    {
+      "text": "Supported Skills have a Base Mine Detonation Time of 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "Supported Attack Skills cannot be used with Melee Weapons",
+      "values": []
+    },
+    {
+      "text": "Supported Skills always fire at least 1 Projectile",
+      "values": []
+    },
+    {
+      "text": "Supported Skills throw up to 2 additional Mines",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Skills fire 30% less Projectiles",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Supported Skills gain a Base Reservation equal to Base Mana and Life Cost",
+      "values": []
+    },
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Mines from Supported Skills can't be Detonated while within 3 metres of you",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Mines using Supported Skills always target your location",
+      "values": []
+    },
+    {
+      "text": "Supported Skills throw Mines in an Arc",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (11–30)% less Damage",
+      "values": [
+        "(11–30)"
+      ]
+    },
+    {
+      "text": "Supported Skills have a Base Mine Detonation Time of 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "base skill is mined [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "support makes skill mine pvp damage +% final [-60]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Throwing Mines takes 10% more time for each additional Mine thrown)",
+    "(Throwing Mines takes 10% more time for each additional Mine thrown)",
+    "(Throwing Mines takes 10% more time for each additional Mine thrown)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Mine Throwing Speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Mine Throwing Speed",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

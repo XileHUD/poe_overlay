@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Detonate Dead of Chain Reaction",
     "TargetTypes": "Corpse,",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, DestroysCorpse, CanRapidFire, AreaSpell",
     "ActiveSkillsCode": "detonate_dead_alt_y"
@@ -411,5 +412,94 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected. This will continue to target other corpses in the area, with a shorter delay between each one, until it runs out of corpses or has destroyed 8 corpses. Cannot be supported by Spell Cascade.",
+  "explicitMods": [
+    {
+      "text": "Deals (6–287) to (8–431) Fire Damage",
+      "values": [
+        "(6–287)",
+        "(8–431)"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (4–5)% of the corpse's Maximum Life",
+      "values": [
+        "(4–5)"
+      ]
+    },
+    {
+      "text": "Base radius is (2–2.4) metres",
+      "values": [
+        "(2–2.4)"
+      ]
+    },
+    {
+      "text": "Deals (6–287) to (8–431) Fire Damage",
+      "values": [
+        "(6–287)",
+        "(8–431)"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (4–5)% of the corpse's Maximum Life",
+      "values": [
+        "(4–5)"
+      ]
+    },
+    {
+      "text": "Base radius is (2–2.4) metres",
+      "values": [
+        "(2–2.4)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (6–1008) to (8–1512) Fire Damage",
+      "values": [
+        "(6–1008)",
+        "(8–1512)"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (4–5.7)% of the corpse's Maximum Life",
+      "values": [
+        "(4–5.7)"
+      ]
+    },
+    {
+      "text": "Base radius is (2–2.8) metres",
+      "values": [
+        "(2–2.8)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

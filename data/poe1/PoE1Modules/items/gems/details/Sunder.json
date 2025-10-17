@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Shock",
     "DropLevel": "12",
+    "BaseType": "Sunder",
     "Class": "Skill Gems",
     "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy, SELF_ORIGIN",
@@ -416,5 +417,119 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slams the ground, creating a slow wave of churning terrain that damages enemies in a sequence of areas in front of you. A number of enemies hit by the wave will release a shockwave, damaging other enemies around them. Using the skill again will stop the previous wave. Requires a Mace, Sceptre, Axe, Staff or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "(0–19)% more Area of Effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Shockwaves deal 40% less Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Wave causes Shockwaves from up to 5 Enemies in each Area",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Wave has (0–25)% reduced delay between Areas",
+      "values": [
+        "(0–25)"
+      ]
+    },
+    {
+      "text": "Wave Damages 5 Areas",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Wave cannot stop before Damaging 2 Areas",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Wave gains +0.2 metres to radius with each Area in the Sequence",
+      "values": [
+        "+0.2"
+      ]
+    },
+    {
+      "text": "(0–19)% more Area of Effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Shockwaves deal 40% less Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Wave causes Shockwaves from up to 5 Enemies in each Area",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Wave has (0–25)% reduced delay between Areas",
+      "values": [
+        "(0–25)"
+      ]
+    },
+    {
+      "text": "Wave Damages 5 Areas",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Wave cannot stop before Damaging 2 Areas",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Wave gains +0.2 metres to radius with each Area in the Sequence",
+      "values": [
+        "+0.2"
+      ]
+    },
+    {
+      "text": "base sunder wave delay ms [400]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Wave gains +(0–0.1) metres to radius with each Area in the Sequence",
+      "values": [
+        "+(0–0.1)"
+      ]
+    },
+    {
+      "text": "Wave gains +(0–0.1) metres to radius with each Area in the Sequence",
+      "values": [
+        "+(0–0.1)"
+      ]
+    }
+  ]
 }

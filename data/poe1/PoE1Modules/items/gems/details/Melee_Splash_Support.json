@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Melee",
     "DropLevel": "8",
+    "BaseType": "Melee Splash Support",
     "Class": "Support Gems",
     "Icon": "S",
     "ItemType": "Metadata/Items/Gems/SupportGemMeleeSplash",
@@ -333,5 +334,100 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports melee strike skills, causing their melee strike to deal splash damage around each target hit.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal Splash Damage to surrounding targets",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal 40% less Splash Damage to surrounding targets",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–57)% more Melee Splash Area of Effect",
+      "values": [
+        "(0–57)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal Splash Damage to surrounding targets",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal 40% less Splash Damage to surrounding targets",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–57)% more Melee Splash Area of Effect",
+      "values": [
+        "(0–57)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are supported by Level 30 Melee Splash",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "(200–240)% increased Physical Damage",
+      "values": [
+        "(200–240)"
+      ]
+    },
+    {
+      "text": "1% of Physical Attack Damage Leeched as Life",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "1% of Physical Attack Damage Leeched as Mana",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Recover 5% of Life on Kill",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Enemies Killed by your Hits are destroyed",
+      "values": []
+    },
+    {
+      "text": "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+      "values": []
+    },
+    {
+      "text": "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

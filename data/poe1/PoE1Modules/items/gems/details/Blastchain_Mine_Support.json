@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Reservation, Weapon, Melee, Mine",
     "DropLevel": "8",
+    "BaseType": "Blastchain Mine Support",
     "Class": "Support Gems",
     "Icon": "Y",
     "ItemType": "Metadata/Items/Gems/SupportGemRemoteMine",
@@ -373,5 +374,137 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports spells, or attacks that use bows or wands. Instead of using that skill, you will throw a mine that will use the skill for you when you detonate it. Mines cannot use channelling skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Attack Skills cannot be used with Melee Weapons",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (53–59)% less Damage",
+      "values": [
+        "(53–59)"
+      ]
+    },
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Supported Skills have a Base Mine Detonation Time of 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "Supported Skills gain a Base Reservation equal to Base Mana and Life Cost",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal 5% more Damage for each prior Mine in Detonation Sequence",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Supported Attack Skills cannot be used with Melee Weapons",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (53–59)% less Damage",
+      "values": [
+        "(53–59)"
+      ]
+    },
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Supported Skills have a Base Mine Detonation Time of 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "Supported Skills gain a Base Reservation equal to Base Mana and Life Cost",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal 5% more Damage for each prior Mine in Detonation Sequence",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "base skill is mined [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "mine override pvp scaling time ms [250]",
+      "values": []
+    },
+    {
+      "text": "support makes skill mine pvp damage +% final [-60]",
+      "values": []
+    },
+    {
+      "text": "+2 to Level of Socketed Spell Gems",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Blastchain Mine",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "(40–60)% increased Spell Damage",
+      "values": [
+        "(40–60)"
+      ]
+    },
+    {
+      "text": "(15–20)% reduced Enemy Stun Threshold",
+      "values": [
+        "(15–20)"
+      ]
+    },
+    {
+      "text": "Mines can be Detonated an additional time",
+      "values": []
+    },
+    {
+      "text": "(The Stun Threshold determines how much Damage can Stun something)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(The Stun Threshold determines how much Damage can Stun something)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Mine Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Mine Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

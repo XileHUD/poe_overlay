@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "DropLevel": "31",
+    "BaseType": "Archmage Support",
     "Class": "Support Gems",
     "Icon": "^",
     "ItemType": "Metadata/Items/Gems/SupportGemArchmage",
@@ -332,5 +333,47 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports spell skills that deal damage with hits and have no reservation. Cannot support arcane skills, Brand skills, Orb skills, Vaal skills, or skills used by totems, traps or mines. Cannot modify the skills of minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills gain Added Lightning Damage equal to (10–16)% of Unreserved Maximum Mana",
+      "values": [
+        "(10–16)"
+      ]
+    },
+    {
+      "text": "Supported Skills have added Mana Cost equal to 5% of Unreserved Maximum Mana",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Supported Skills gain Added Lightning Damage equal to (10–16)% of Unreserved Maximum Mana",
+      "values": [
+        "(10–16)"
+      ]
+    },
+    {
+      "text": "Supported Skills have added Mana Cost equal to 5% of Unreserved Maximum Mana",
+      "values": [
+        "5"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

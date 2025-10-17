@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Projectile",
     "DropLevel": "16",
+    "BaseType": "Forbidden Rite",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, Trappable, Mineable, Totemable, Triggerable, Chaos, Projectile, ProjectilesFromUser, Multicastable, CanRapidFire, AreaSpell, Chaos",
@@ -415,5 +416,107 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Lobs an exploding projectile near the targeted location, and extra projectiles toward enemies around you. The projectiles deal chaos damage based on your life and energy shield. Casting this spell damages you.",
+  "explicitMods": [
+    {
+      "text": "Deals (15–498) to (22–747) Chaos Damage",
+      "values": [
+        "(15–498)",
+        "(22–747)"
+      ]
+    },
+    {
+      "text": "Deals 5% of your maximum Energy Shield as base Chaos Damage",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Deals 12% of your maximum Life as base Chaos Damage",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "Take 40% of maximum Life and 25% of maximum Energy Shield as Chaos Damage",
+      "values": [
+        "40",
+        "25"
+      ]
+    },
+    {
+      "text": "Fires extra Projectiles at up to (6–7) surrounding Enemies",
+      "values": [
+        "(6–7)"
+      ]
+    },
+    {
+      "text": "Deals (15–498) to (22–747) Chaos Damage",
+      "values": [
+        "(15–498)",
+        "(22–747)"
+      ]
+    },
+    {
+      "text": "Deals 5% of your maximum Energy Shield as base Chaos Damage",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Deals 12% of your maximum Life as base Chaos Damage",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "Take 40% of maximum Life and 25% of maximum Energy Shield as Chaos Damage",
+      "values": [
+        "40",
+        "25"
+      ]
+    },
+    {
+      "text": "Fires extra Projectiles at up to (6–7) surrounding Enemies",
+      "values": [
+        "(6–7)"
+      ]
+    },
+    {
+      "text": "active skill projectile speed +% variation final [20]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "projectile behaviour only explode [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires extra Projectiles at up to +(0–2) surrounding Enemies",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires extra Projectiles at up to +(0–2) surrounding Enemies",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

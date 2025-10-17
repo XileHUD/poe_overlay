@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Projectile, Modifiers",
     "DropLevel": "4",
+    "BaseType": "Flame Wall",
     "Class": "Skill Gems",
     "TargetTypes": "Ground,",
     "Type": "Spell, DamageOverTime, Area, Duration, Trappable, Mineable, Triggerable, AreaSpell, Totemable, Fire, DegenOnlySpellDamage, CanRapidFire, Multicastable, Cascadable, CausesBurning",
@@ -575,5 +576,137 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Create a wall of fire for a duration, which deals burning damage to everything in its area. Each enemy that enters the wall also receives a secondary burning debuff which persists for a short duration after leaving the wall. Any projectiles fired through the wall by you and allies deal added fire damage and apply the wall's secondary debuff on hit.",
+  "explicitMods": [
+    {
+      "text": "Deals (2.2–679.9) Base Fire Damage per second",
+      "values": [
+        "(2.2–679.9)"
+      ]
+    },
+    {
+      "text": "Secondary Debuff Deals (7.2–2266.4) Base Fire Damage per second",
+      "values": [
+        "(7.2–2266.4)"
+      ]
+    },
+    {
+      "text": "Base duration is (3–4.9) seconds",
+      "values": [
+        "(3–4.9)"
+      ]
+    },
+    {
+      "text": "Base secondary duration is (1–2) seconds",
+      "values": [
+        "(1–2)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Wall will be (4–5.9) meters long",
+      "values": [
+        "(4–5.9)"
+      ]
+    },
+    {
+      "text": "Maximum 3 Flame Walls at a time",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Projectiles which pass through the wall deal (3–78) to (5–117) Added Fire Damage",
+      "values": [
+        "(3–78)",
+        "(5–117)"
+      ]
+    },
+    {
+      "text": "Deals (2.2–679.9) Base Fire Damage per second",
+      "values": [
+        "(2.2–679.9)"
+      ]
+    },
+    {
+      "text": "Secondary Debuff Deals (7.2–2266.4) Base Fire Damage per second",
+      "values": [
+        "(7.2–2266.4)"
+      ]
+    },
+    {
+      "text": "Base duration is (3–4.9) seconds",
+      "values": [
+        "(3–4.9)"
+      ]
+    },
+    {
+      "text": "Base secondary duration is (1–2) seconds",
+      "values": [
+        "(1–2)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Wall will be (4–5.9) meters long",
+      "values": [
+        "(4–5.9)"
+      ]
+    },
+    {
+      "text": "Maximum 3 Flame Walls at a time",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Projectiles which pass through the wall deal (3–78) to (5–117) Added Fire Damage",
+      "values": [
+        "(3–78)",
+        "(5–117)"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "firewall attached projectile effect mtx [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "base_fire_damage_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "base_fire_damage_taken_per_minute",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–1) Maximum Flame Wall at a time",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) Maximum Flame Wall at a time",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

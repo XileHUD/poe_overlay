@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "DropLevel": "8",
+    "BaseType": "Lifetap Support",
     "Class": "Support Gems",
     "Icon": "T",
     "ItemType": "Metadata/Items/Gems/SupportGemLifetap",
@@ -372,5 +373,170 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any non-blessing skill. Minions cannot gain the Lifetap buff.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills Cost Life instead of Mana",
+      "values": []
+    },
+    {
+      "text": "Gain Lifetap after Spending a total of (23–273) Life on UpfrontCosts and Effects of a Supported Skill",
+      "values": [
+        "(23–273)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–19)% more Damage while you have Lifetap",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Lifetap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Supported Skills Cost Life instead of Mana",
+      "values": []
+    },
+    {
+      "text": "Gain Lifetap after Spending a total of (23–273) Life on UpfrontCosts and Effects of a Supported Skill",
+      "values": [
+        "(23–273)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–19)% more Damage while you have Lifetap",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Lifetap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 1 Lifetap",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Adds (90–115) to (230–260) Physical Damage",
+      "values": [
+        "(90–115)",
+        "(230–260)"
+      ]
+    },
+    {
+      "text": "(40–50)% increased Critical Strike Chance",
+      "values": [
+        "(40–50)"
+      ]
+    },
+    {
+      "text": "Enemies you Attack Reflect 100 Physical Damage to you",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "+0.2 metres to Weapon Range",
+      "values": [
+        "+0.2"
+      ]
+    },
+    {
+      "text": "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
+      "values": []
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 1 Lifetap",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Adds (6–10) to (12–16) Physical Damage",
+      "values": [
+        "(6–10)",
+        "(12–16)"
+      ]
+    },
+    {
+      "text": "(40–50)% increased Critical Strike Chance",
+      "values": [
+        "(40–50)"
+      ]
+    },
+    {
+      "text": "Enemies you Attack Reflect 20 Physical Damage to you",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "+0.2 metres to Weapon Range",
+      "values": [
+        "+0.2"
+      ]
+    },
+    {
+      "text": "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
+      "values": []
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 1 Lifetap",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "(20–30)% increased Cast Speed",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "Lose 500 Life per second",
+      "values": [
+        "500"
+      ]
+    },
+    {
+      "text": "Spells deal added Chaos Damage equal to (15–20)% of your maximum Life",
+      "values": [
+        "(15–20)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Upfront Costs are all Costs that are not paid per-second)",
+    "(Lifetap grants 20% increased Life Recovery from Flasks)",
+    "(Upfront Costs are all Costs that are not paid per-second)",
+    "(Lifetap grants 20% increased Life Recovery from Flasks)",
+    "(Upfront Costs are all Costs that are not paid per-second)",
+    "(Lifetap grants 20% increased Life Recovery from Flasks)",
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Lifetap lasts +(0–2) seconds",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Lifetap lasts +(0–2) seconds",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

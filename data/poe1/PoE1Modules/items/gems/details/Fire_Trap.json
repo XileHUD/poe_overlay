@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Burning, Trap, Modifiers",
     "DropLevel": "12",
+    "BaseType": "Fire Trap",
     "Class": "Skill Gems",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Duration, Damage, Mineable, Area, CausesBurning, Trapped, DamageOverTime, Fire, AreaSpell",
@@ -535,5 +536,193 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap that explodes when triggered, dealing fire damage to surrounding enemies and leaving an area of burning ground that damages enemies who walk through it.",
+  "explicitMods": [
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (27.7–2566) Base Fire Damage per second",
+      "values": [
+        "(27.7–2566)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.75 seconds",
+      "values": [
+        "1.75"
+      ]
+    },
+    {
+      "text": "Deals (10–915) to (15–1373) Fire Damage",
+      "values": [
+        "(10–915)",
+        "(15–1373)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "+(0–0.8) metres to radius",
+      "values": [
+        "+(0–0.8)"
+      ]
+    },
+    {
+      "text": "(3–286) to (5–429) added Fire Damage against Burning Enemies",
+      "values": [
+        "(3–286)",
+        "(5–429)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (27.7–2566) Base Fire Damage per second",
+      "values": [
+        "(27.7–2566)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.75 seconds",
+      "values": [
+        "1.75"
+      ]
+    },
+    {
+      "text": "Deals (10–915) to (15–1373) Fire Damage",
+      "values": [
+        "(10–915)",
+        "(15–1373)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "+(0–0.8) metres to radius",
+      "values": [
+        "+(0–0.8)"
+      ]
+    },
+    {
+      "text": "(3–286) to (5–429) added Fire Damage against Burning Enemies",
+      "values": [
+        "(3–286)",
+        "(5–429)"
+      ]
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "trap variation [22]",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Fire Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "Can have up to 1 additional Trap placed at a time",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, Fire Trap throws up to 1 additional Trap",
+      "values": []
+    },
+    {
+      "text": "Deals 620.2 Base Fire Damage per second",
+      "values": [
+        "620.2"
+      ]
+    },
+    {
+      "text": "Base duration is 12 seconds",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "Deals 446.5 to 558.2 Fire Damage",
+      "values": [
+        "446.5",
+        "558.2"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [-20]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 218.4 Base Fire Damage per second",
+      "values": [
+        "218.4"
+      ]
+    },
+    {
+      "text": "Base duration is 12 seconds",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "Deals 157.3 to 196.6 Fire Damage",
+      "values": [
+        "157.3",
+        "196.6"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [-20]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–80)% increased Trap Trigger Area of Effect",
+      "values": [
+        "(0–80)"
+      ]
+    },
+    {
+      "text": "(0–80)% increased Trap Trigger Area of Effect",
+      "values": [
+        "(0–80)"
+      ]
+    }
+  ]
 }

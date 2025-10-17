@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Trigger, Link",
     "DropLevel": "34",
+    "BaseType": "Intuitive Link",
     "Class": "Skill Gems",
     "TargetTypes": "Self, Ground",
     "Type": "Spell, Buff, Duration, Link",
@@ -415,5 +416,75 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Targets an allied player to apply a buff which links you to them for a duration. While linked, their hits can trigger your supported spells. If the target dies while linked, you will also die. This skill cannot be triggered, or used by Totems, Traps, or Mines.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (8–9.9) seconds",
+      "values": [
+        "(8–9.9)"
+      ]
+    },
+    {
+      "text": "Triggers a Supported Spell from Linked target's location when they Hit an Enemy",
+      "values": []
+    },
+    {
+      "text": "Link breaks if target leaves range or line of sight for 4 secondsMaximum 1 Link from any source per targetYou die if Linked target dies",
+      "values": []
+    },
+    {
+      "text": "Supported Spells deal (38–44)% less Damage",
+      "values": [
+        "(38–44)"
+      ]
+    },
+    {
+      "text": "Supported Spells are Triggered by Intuitive Link",
+      "values": []
+    },
+    {
+      "text": "Base duration is (8–9.9) seconds",
+      "values": [
+        "(8–9.9)"
+      ]
+    },
+    {
+      "text": "Triggers a Supported Spell from Linked target's location when they Hit an Enemy",
+      "values": []
+    },
+    {
+      "text": "Link breaks if target leaves range or line of sight for 4 secondsMaximum 1 Link from any source per targetYou die if Linked target dies",
+      "values": []
+    },
+    {
+      "text": "skill cost over time is not removed with skill [1]",
+      "values": []
+    },
+    {
+      "text": "Supported Spells deal (38–44)% less Damage",
+      "values": [
+        "(38–44)"
+      ]
+    },
+    {
+      "text": "Supported Spells are Triggered by Intuitive Link",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–1.5) seconds",
+      "values": [
+        "(0–1.5)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–1.5) seconds",
+      "values": [
+        "(0–1.5)"
+      ]
+    }
+  ]
 }

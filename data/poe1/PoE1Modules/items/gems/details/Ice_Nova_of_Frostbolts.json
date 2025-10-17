@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Ice Nova of Frostbolts",
     "TargetTypes": "Ground,",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cold, CanRapidFire, AreaSpell, Nova",
     "ActiveSkillsCode": "ice_nova_alt_x"
@@ -371,5 +372,112 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "A circle of ice expands from the caster. If the caster targets near their Frostbolt projectiles, it will expand from a number of those projectiles instead. If this skill would repeat when cast this way, it will instead expand again from the same projectiles after a short delay.",
+  "explicitMods": [
+    {
+      "text": "Deals (14–590) to (20–885) Cold Damage",
+      "values": [
+        "(14–590)",
+        "(20–885)"
+      ]
+    },
+    {
+      "text": "Base radius is (1.8–2.2) metres",
+      "values": [
+        "(1.8–2.2)"
+      ]
+    },
+    {
+      "text": "Deals 50% more Damage with Hits and Ailments when cast on Frostbolt",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Can expand from up to 2 Frostbolt Projectiles",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Deals (14–590) to (20–885) Cold Damage",
+      "values": [
+        "(14–590)",
+        "(20–885)"
+      ]
+    },
+    {
+      "text": "Base radius is (1.8–2.2) metres",
+      "values": [
+        "(1.8–2.2)"
+      ]
+    },
+    {
+      "text": "Deals 50% more Damage with Hits and Ailments when cast on Frostbolt",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Can expand from up to 2 Frostbolt Projectiles",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (14–2920) to (20–4381) Cold Damage",
+      "values": [
+        "(14–2920)",
+        "(20–4381)"
+      ]
+    },
+    {
+      "text": "Base radius is (1.8–2.6) metres",
+      "values": [
+        "(1.8–2.6)"
+      ]
+    },
+    {
+      "text": "Deals 50% more Damage with Hits and Ailments when cast on Frostbolt",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Can expand from up to 2 Frostbolt Projectiles",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    }
+  ]
 }

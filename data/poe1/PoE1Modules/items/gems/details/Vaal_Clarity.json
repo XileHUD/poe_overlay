@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Clarity",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
     "ActiveSkillsCode": "clarity"
@@ -331,5 +332,83 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts a temporary aura that lets you and your allies cast skills without paying their mana costs.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 10 seconds",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Modifiers to Buff Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "Your and nearby allies' Skills Cost no Mana",
+      "values": []
+    },
+    {
+      "text": "Base duration is 10 seconds",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Modifiers to Buff Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "Your and nearby allies' Skills Cost no Mana",
+      "values": []
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "+(0–3.4) metres to radius",
+      "values": [
+        "+(0–3.4)"
+      ]
+    },
+    {
+      "text": "You and nearby Allies Regenerate (2.9–48.1) Mana per second",
+      "values": [
+        "(2.9–48.1)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

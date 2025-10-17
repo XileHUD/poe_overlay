@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Trap, Mine",
     "DropLevel": "18",
+    "BaseType": "Trap and Mine Damage Support",
     "Class": "Support Gems",
     "Icon": "W",
     "ItemType": "Metadata/Items/Gems/SupportGemTrapAndMineDamage",
@@ -373,5 +374,59 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which throw Traps or Mines.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (30–49)% more Trap and Mine Damage",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 10% less Mine Throwing Speed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Supported Skills have 10% less Trap Throwing Speed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (30–49)% more Trap and Mine Damage",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 10% less Mine Throwing Speed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Supported Skills have 10% less Trap Throwing Speed",
+      "values": [
+        "10"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

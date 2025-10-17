@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Burning, Minion",
     "DropLevel": "8",
+    "BaseType": "Infernal Legion Support",
     "Class": "Support Gems",
     "Icon": "O",
     "ItemType": "Metadata/Items/Gems/SupportGemInfernalLegion",
@@ -455,5 +456,87 @@
   "description": "Minions are credited for kills from Infernal Legion's damage over time.",
   "stats": [
     "Minions are credited for kills from Infernal Legion's damage over time."
+  ],
+  "gemDescription": "Supports skills which create Minions.",
+  "explicitMods": [
+    {
+      "text": "Minions from Supported Skills take 40% of their Maximum Life as Fire Damage per second",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills deal (15.5–2092.6) Fire Damage per second to Enemies near them",
+      "values": [
+        "(15.5–2092.6)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills have +(0–0.5) metres to Radius of their Burning Effect",
+      "values": [
+        "+(0–0.5)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills take 40% of their Maximum Life as Fire Damage per second",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills deal (15.5–2092.6) Fire Damage per second to Enemies near them",
+      "values": [
+        "(15.5–2092.6)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills have +(0–0.5) metres to Radius of their Burning Effect",
+      "values": [
+        "+(0–0.5)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 30 Infernal Legion",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "+(60–100) to maximum Life",
+      "values": [
+        "+(60–100)"
+      ]
+    },
+    {
+      "text": "-30% to Fire Resistance",
+      "values": [
+        "-30"
+      ]
+    },
+    {
+      "text": "Minion Life is increased by their Overcapped Fire Resistance",
+      "values": []
+    },
+    {
+      "text": "(Overcapped Resistance is the amount by whch Uncapped Resistance is higher than Maximum Resistance)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Overcapped Resistance is the amount by whch Uncapped Resistance is higher than Maximum Resistance)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Minions from Supported Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

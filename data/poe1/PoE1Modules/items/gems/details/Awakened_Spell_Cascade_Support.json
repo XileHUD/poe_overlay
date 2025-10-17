@@ -3,6 +3,7 @@
   "slug": "Awakened_Spell_Cascade_Support",
   "metadata": {
     "DropLevel": "72",
+    "BaseType": "Awakened Spell Cascade Support",
     "Class": "Support Gems",
     "Icon": "p",
     "ItemType": "Metadata/Items/Gems/SupportGemSpellCascadePlus",
@@ -193,5 +194,55 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports spell skills that apply an effect to an area around a targeted location. Cannot support Vaal skills or skills used by totems, traps, or mines. Cannot modify the skills of minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (26–30)% less Area of Effect",
+      "values": [
+        "(26–30)"
+      ]
+    },
+    {
+      "text": "Supported Area of Effect Skills also affect areas in front of, behind,and on each side of the targeted area",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (28–30)% less Damage",
+      "values": [
+        "(28–30)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (26–30)% less Area of Effect",
+      "values": [
+        "(26–30)"
+      ]
+    },
+    {
+      "text": "Supported Area of Effect Skills also affect areas in front of, behind,and on each side of the targeted area",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (28–30)% less Damage",
+      "values": [
+        "(28–30)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

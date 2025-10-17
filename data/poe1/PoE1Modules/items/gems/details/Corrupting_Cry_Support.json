@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Exert, Duration, Corrupted Blood, Corrupted",
     "DropLevel": "31",
+    "BaseType": "Corrupting Cry Support",
     "Class": "Support Gems",
     "Icon": "C",
     "ItemType": "Metadata/Items/Gems/SupportGemCorruptingCry",
@@ -333,5 +334,87 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports warcry skills. Cannot modify the skills of minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills Cost Life instead of Mana",
+      "values": []
+    },
+    {
+      "text": "Corrupted Blood inflicted by Supported Warcries deals (45.9–601.5) base Physical Damage per second",
+      "values": [
+        "(45.9–601.5)"
+      ]
+    },
+    {
+      "text": "Corrupted Blood inflicted by Supported Warcries has a Base Duration of 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Warcries inflict 4 Corrupted Blood Debuffs",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Supported Skills have 20% less Area of Effect",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Supported Warcries inflict Corrupted Blood on the firstenemy Hit by each Attack they Exert",
+      "values": []
+    },
+    {
+      "text": "Supported Skills Cost Life instead of Mana",
+      "values": []
+    },
+    {
+      "text": "Corrupted Blood inflicted by Supported Warcries deals (45.9–601.5) base Physical Damage per second",
+      "values": [
+        "(45.9–601.5)"
+      ]
+    },
+    {
+      "text": "Corrupted Blood inflicted by Supported Warcries has a Base Duration of 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Warcries inflict 4 Corrupted Blood Debuffs",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Supported Skills have 20% less Area of Effect",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Supported Warcries inflict Corrupted Blood on the firstenemy Hit by each Attack they Exert",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

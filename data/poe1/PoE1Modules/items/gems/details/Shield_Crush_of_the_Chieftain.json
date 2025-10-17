@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Shield Crush of the Chieftain",
     "Weapon": "Shields",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Attack, RequiresShield, Melee, Area, Multistrikeable, Fire",
@@ -412,5 +413,113 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Swipe your shield, dealing area damage in three waves in front of you. Enemies can be hit by two of the waves where they overlap.",
+  "explicitMods": [
+    {
+      "text": "(6–389) to (8–583) Base Off Hand Fire Damage",
+      "values": [
+        "(6–389)",
+        "(8–583)"
+      ]
+    },
+    {
+      "text": "(8–16) to (12–24) Added Fire Damage per 15 Armour on Shield",
+      "values": [
+        "(8–16)",
+        "(12–24)"
+      ]
+    },
+    {
+      "text": "Central wave has (50–88)% more Area of Effect",
+      "values": [
+        "(50–88)"
+      ]
+    },
+    {
+      "text": "(6–389) to (8–583) Base Off Hand Fire Damage",
+      "values": [
+        "(6–389)",
+        "(8–583)"
+      ]
+    },
+    {
+      "text": "(8–16) to (12–24) Added Fire Damage per 15 Armour on Shield",
+      "values": [
+        "(8–16)",
+        "(12–24)"
+      ]
+    },
+    {
+      "text": "Central wave has (50–88)% more Area of Effect",
+      "values": [
+        "(50–88)"
+      ]
+    },
+    {
+      "text": "attack is melee override [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "(6–1417) to (8–2126) Base Off Hand Fire Damage",
+      "values": [
+        "(6–1417)",
+        "(8–2126)"
+      ]
+    },
+    {
+      "text": "(8–24) to (12–34) Added Fire Damage per 15 Armour on Shield",
+      "values": [
+        "(8–24)",
+        "(12–34)"
+      ]
+    },
+    {
+      "text": "Central wave has (50–118)% more Area of Effect",
+      "values": [
+        "(50–118)"
+      ]
+    },
+    {
+      "text": "attack is melee override [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Central wave has (0–40)% more Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Central wave has (0–40)% more Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Central wave has (0–40)% more Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

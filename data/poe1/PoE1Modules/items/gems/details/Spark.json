@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Projectile",
+    "BaseType": "Spark",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Projectile, ProjectilesFromUser, Damage, Duration, Trappable, Totemable, Mineable, Multicastable, Triggerable, Lightning, CanRapidFire",
@@ -414,5 +415,79 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Launches unpredictable sparks that move randomly until they hit an enemy or expire.",
+  "explicitMods": [
+    {
+      "text": "Deals (1–104) to (28–1983) Lightning Damage",
+      "values": [
+        "(1–104)",
+        "(28–1983)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Fires (4–8) Projectiles",
+      "values": [
+        "(4–8)"
+      ]
+    },
+    {
+      "text": "Deals (1–104) to (28–1983) Lightning Damage",
+      "values": [
+        "(1–104)",
+        "(28–1983)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Fires (4–8) Projectiles",
+      "values": [
+        "(4–8)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Lightning Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Spark fires  additional Projectiles",
+      "values": []
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Spark fires Projectiles in a circle",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

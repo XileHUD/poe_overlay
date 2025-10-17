@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Projectile, Ignite, Sap",
     "DropLevel": "28",
+    "BaseType": "Explosive Concoction",
     "Class": "Skill Gems",
     "Weapon": "Unarmed",
     "TargetTypes": "Ground, Enemy",
@@ -496,5 +497,133 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a bottle that explodes to deal unarmed attack damage in an area. Can consume charges from your Ruby, Sapphire, and Topaz flasks to add further damage. Requires an empty main hand, and no off-hand weapon.",
+  "explicitMods": [
+    {
+      "text": "(116–1203) to (173–1805) Added Fire Damage",
+      "values": [
+        "(116–1203)",
+        "(173–1805)"
+      ]
+    },
+    {
+      "text": "+6% to Critical Strike Chance",
+      "values": [
+        "+6"
+      ]
+    },
+    {
+      "text": "Base radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Can consume Charges from Ruby, Sapphire, and Topaz FlasksConsumes 1 Charge per Projectile Fired from 1 Flask of each valid type, if possible",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Deals (45–466) to (68–707) Added Cold Damage if Charges were consumed from a Sapphire Flask",
+      "values": [
+        "(45–466)",
+        "(68–707)"
+      ]
+    },
+    {
+      "text": "Deals (10–105) to (104–1083) Added Lightning Damage if Charges were consumed from a Topaz Flask",
+      "values": [
+        "(10–105)",
+        "(104–1083)"
+      ]
+    },
+    {
+      "text": "+(60–98)% to Damage over Time Multiplier with Ignite if Charges were consumed from a Ruby Flask",
+      "values": [
+        "+(60–98)"
+      ]
+    },
+    {
+      "text": "(116–1203) to (173–1805) Added Fire Damage",
+      "values": [
+        "(116–1203)",
+        "(173–1805)"
+      ]
+    },
+    {
+      "text": "+6% to Critical Strike Chance",
+      "values": [
+        "+6"
+      ]
+    },
+    {
+      "text": "Base radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Can consume Charges from Ruby, Sapphire, and Topaz FlasksConsumes 1 Charge per Projectile Fired from 1 Flask of each valid type, if possible",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Deals (45–466) to (68–707) Added Cold Damage if Charges were consumed from a Sapphire Flask",
+      "values": [
+        "(45–466)",
+        "(68–707)"
+      ]
+    },
+    {
+      "text": "Deals (10–105) to (104–1083) Added Lightning Damage if Charges were consumed from a Topaz Flask",
+      "values": [
+        "(10–105)",
+        "(104–1083)"
+      ]
+    },
+    {
+      "text": "+(60–98)% to Damage over Time Multiplier with Ignite if Charges were consumed from a Ruby Flask",
+      "values": [
+        "+(60–98)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "explosive concoction attach flask visual buff [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "projectile behaviour only explode [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–15)% reduced Flask Charges used",
+      "values": [
+        "(0–15)"
+      ]
+    },
+    {
+      "text": "(0–15)% reduced Flask Charges used",
+      "values": [
+        "(0–15)"
+      ]
+    }
+  ]
 }

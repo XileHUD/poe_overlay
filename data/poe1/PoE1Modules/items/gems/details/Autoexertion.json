@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Cooldown, Reservation, Trigger, Recovery, Buff",
     "DropLevel": "24",
+    "BaseType": "Autoexertion",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Instant, HasReservation, Cooldown",
@@ -335,5 +336,71 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Reserves mana based on the supported warcries to cause those warcries to be repeatedly triggered.",
+  "explicitMods": [
+    {
+      "text": "Supported Warcries will Trigger when their Cooldown is overThis Skill's Mana Reservation is the total of the Mana Reservations of Supported Skills, and cannot be further modified",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (0–19)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Supported Warcries are Triggered when their Cooldowns are over",
+      "values": []
+    },
+    {
+      "text": "Supported Skills' Base Mana Cost is 10",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Supported Warcries do not grant Buffs or Charges to You or Allies",
+      "values": []
+    },
+    {
+      "text": "Supported Warcries will Trigger when their Cooldown is overThis Skill's Mana Reservation is the total of the Mana Reservations of Supported Skills, and cannot be further modified",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (0–19)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Supported Warcries are Triggered when their Cooldowns are over",
+      "values": []
+    },
+    {
+      "text": "Supported Skills' Base Mana Cost is 10",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Supported Warcries do not grant Buffs or Charges to You or Allies",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

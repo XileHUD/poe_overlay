@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Double Strike",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, MeleeSingleTarget, Multistrikeable, Melee, Physical",
@@ -292,5 +293,124 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Performs two fast strikes with a melee weapon, each of which summons a double of you for a duration to continuously attack monsters in this fashion.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Doubles have (0–57)% increased Movement Speed",
+      "values": [
+        "(0–57)"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "25% chance to cause Bleeding",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Maximum 8 Summoned Doubles",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Doubles have (0–57)% increased Movement Speed",
+      "values": [
+        "(0–57)"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "25% chance to cause Bleeding",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Maximum 8 Summoned Doubles",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "base skill number of additional hits [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "number of monsters to summon [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "25% chance to cause Bleeding",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "base skill number of additional hits [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% chance to deal Double Damage to Bleeding Enemies",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to deal Double Damage to Bleeding Enemies",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to deal Double Damage to Bleeding Enemies",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

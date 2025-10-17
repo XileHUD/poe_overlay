@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Armour",
     "DropLevel": "24",
+    "BaseType": "Determination",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Instant, AreaSpell, Physical, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -417,5 +418,98 @@
   "description": "This skill's effect is similar to the effect of Grace for evasion. If the player has Iron Reflexes allocated, they do the same, but Grace is usually better than Determination. With no evasion specific nodes allocated, the player needs to have 5049 base armour (maximum of which is around 9000 without specific uniques) from equipment and passives for a level 20 Determination to be better than a level 20 Grace with Iron Reflexes.",
   "stats": [
     "This skill's effect is similar to the effect of Grace for evasion. If the player has Iron Reflexes allocated, they do the same, but Grace is usually better than Determination. With no evasion specific nodes allocated, the player needs to have 5049 base armour (maximum of which is around 9000 without specific uniques) from equipment and passives for a level 20 Determination to be better than a level 20 Grace with Iron Reflexes."
+  ],
+  "gemDescription": "Casts an aura that grants armour to you and your allies.",
+  "explicitMods": [
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (90–1026) additional Armour",
+      "values": [
+        "(90–1026)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (40–49)% more Armour",
+      "values": [
+        "(40–49)"
+      ]
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (90–1026) additional Armour",
+      "values": [
+        "(90–1026)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (40–49)% more Armour",
+      "values": [
+        "(40–49)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "+2.9 metres to radius",
+      "values": [
+        "+2.9"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain 1673 additional Armour",
+      "values": [
+        "1673"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain 54% more Armour",
+      "values": [
+        "54"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "Kiara's Determination",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Casts an aura that grants armour to you and your allies)",
+    "(The Stun Threshold determines how much Damage can Stun something)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
   ]
 }

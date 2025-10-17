@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Ancestral Warchief",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Attack, SummonsTotem, Melee, Area, Slam, Multistrikeable",
@@ -332,5 +333,163 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons an Ancestor Totem which attacks enemies with a powerful cascading slam while you're near it. If the enemies are far away, it will leap toward them as it slams. Being near it grants you more melee damage. Requires a Melee Weapon or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "+1 to maximum number of Summoned Totems",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Totem lasts 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Modifiers to Totem Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "32% more Melee Damage while Totem is Active",
+      "values": [
+        "32"
+      ]
+    },
+    {
+      "text": "50% increased Totem Placement speed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+1 to maximum number of Summoned Totems",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Totem lasts 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Modifiers to Totem Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "32% more Melee Damage while Totem is Active",
+      "values": [
+        "32"
+      ]
+    },
+    {
+      "text": "50% increased Totem Placement speed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "ancestor totem parent activiation range [120]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [50]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "totem ignores vaal skill cost [1]",
+      "values": []
+    },
+    {
+      "text": "Totem lasts 12 seconds",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "(8–25)% more Melee Damage while Totem is Active",
+      "values": [
+        "(8–25)"
+      ]
+    },
+    {
+      "text": "50% increased Totem Placement speed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+1 metre to Melee Strike Range",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "ancestor totem parent activiation range [70]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [50]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Totem Damage",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Totem Damage",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–30)% increased Activation range",
+      "values": [
+        "(0–30)"
+      ]
+    }
+  ]
 }

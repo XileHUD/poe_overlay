@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Scorching Ray of Immolation",
     "TargetTypes": ", ,",
     "Type": "Spell, Totemable, DamageOverTime, Fire, CausesBurning, Duration, Channel, DegenOnlySpellDamage",
     "ActiveSkillsCode": "scorching_ray_alt_x"
@@ -331,5 +332,113 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Unleash a beam of fire that burns enemies it touches. Remaining in the beam raises the burning, adding a portion of the beam's damage in stages. Enemies who leave the beam continue to burn for a duration. Increasing cast speed also increases the rate at which the beam turns.",
+  "explicitMods": [
+    {
+      "text": "Deals (40.1–2343.7) Base Fire Damage per second",
+      "values": [
+        "(40.1–2343.7)"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Burning Debuff can have a maximum of 8 stages",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Additional Debuff stages add 10% of Damage",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Deals (40.1–2343.7) Base Fire Damage per second",
+      "values": [
+        "(40.1–2343.7)"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Burning Debuff can have a maximum of 8 stages",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Additional Debuff stages add 10% of Damage",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Deals (40.1–13506.5) Base Fire Damage per second",
+      "values": [
+        "(40.1–13506.5)"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Burning Debuff can have a maximum of 8 stages",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Additional Debuff stages add 10% of Damage",
+      "values": [
+        "10"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Additional Debuff stages add +(0–4)% of Damage",
+      "values": [
+        "+(0–4)"
+      ]
+    },
+    {
+      "text": "Additional Debuff stages add +(0–4)% of Damage",
+      "values": [
+        "+(0–4)"
+      ]
+    },
+    {
+      "text": "Additional Debuff stages add +(0–4)% of Damage",
+      "values": [
+        "+(0–4)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Leech",
     "DropLevel": "31",
+    "BaseType": "Energy Leech Support",
     "Class": "Support Gems",
     "Icon": "g",
     "ItemType": "Metadata/Items/Gems/SupportGemEnergyShieldLeech",
@@ -413,5 +414,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies, causing those hits to leech energy shield based on damage dealt.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (1.5–1.9)% of Damage Leeched as Energy Shield",
+      "values": [
+        "(1.5–1.9)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–14)% more Damage while on Full Energy Shield",
+      "values": [
+        "(10–14)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (15–24)% more Damage while Leeching Energy Shield",
+      "values": [
+        "(15–24)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (1.5–1.9)% of Damage Leeched as Energy Shield",
+      "values": [
+        "(1.5–1.9)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–14)% more Damage while on Full Energy Shield",
+      "values": [
+        "(10–14)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (15–24)% more Damage while Leeching Energy Shield",
+      "values": [
+        "(15–24)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage while Leeching Energy Shield",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage while Leeching Energy Shield",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

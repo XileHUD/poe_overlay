@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Vortex of Projection",
     "TargetTypes": "Ground,",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Cold, Triggerable, Duration, ChillingArea, AreaSpell, Nova, CanRapidFire",
     "ActiveSkillsCode": "vortex_alt_x"
@@ -371,5 +372,196 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "An icy blast explodes around the caster, dealing cold damage to enemies, and leaving behind a whirling vortex which deals cold damage over time and chills enemies caught in it. If the caster targets near their Frostbolt projectiles, it will explode from a number of those projectiles instead, destroying them.",
+  "explicitMods": [
+    {
+      "text": "Deals (48–933) to (72–1399) Cold Damage",
+      "values": [
+        "(48–933)",
+        "(72–1399)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Deals (57.7–1386.4) Base Cold Damage per second",
+      "values": [
+        "(57.7–1386.4)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "50% more Area of Effect when Cast on Frostbolt",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "50% more Damage when Cast on Frostbolt",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Can explode from up to 5 Frostbolt Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Deals (48–933) to (72–1399) Cold Damage",
+      "values": [
+        "(48–933)",
+        "(72–1399)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Deals (57.7–1386.4) Base Cold Damage per second",
+      "values": [
+        "(57.7–1386.4)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "50% more Area of Effect when Cast on Frostbolt",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "50% more Damage when Cast on Frostbolt",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Can explode from up to 5 Frostbolt Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (48–6236) to (72–9354) Cold Damage",
+      "values": [
+        "(48–6236)",
+        "(72–9354)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Deals (57.7–10783.3) Base Cold Damage per second",
+      "values": [
+        "(57.7–10783.3)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "50% more Area of Effect when Cast on Frostbolt",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "50% more Damage when Cast on Frostbolt",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Can explode from up to 5 Frostbolt Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    }
+  ]
 }

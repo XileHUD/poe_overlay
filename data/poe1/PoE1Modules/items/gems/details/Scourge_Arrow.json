@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Pierce, Ailment",
     "DropLevel": "28",
+    "BaseType": "Scourge Arrow",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": ", ROTATE_TO_TARGET,",
@@ -376,5 +377,111 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Channel to infuse an arrow with chaos, gaining stages while it is held. Release to fire it, leaving spore pods in its wake. Each spore pod blooms, firing thorn arrows, which travel for a short time before dissipating. Modifiers that cause additional projectiles to be fired will only apply to the initial arrows, and the spore pods will be divided between those arrows.",
+  "explicitMods": [
+    {
+      "text": "Arrows Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "150% more Damage with Hits and Ailments per Stage",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "Maximum 5 StagesLeaves 1 Spore Pod per Stage",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Each Spore Pod fires 9 Thorn Arrows",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Thorn Arrows deal (50–60)% less Damage",
+      "values": [
+        "(50–60)"
+      ]
+    },
+    {
+      "text": "Arrows Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "150% more Damage with Hits and Ailments per Stage",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "Maximum 5 StagesLeaves 1 Spore Pod per Stage",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Each Spore Pod fires 9 Thorn Arrows",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Thorn Arrows deal (50–60)% less Damage",
+      "values": [
+        "(50–60)"
+      ]
+    },
+    {
+      "text": "override turn duration ms [100]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    },
+    {
+      "text": "override_turn_duration_ms",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Each Spore Pod fires +(0–2) Thorn Arrows",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Each Spore Pod fires +(0–2) Thorn Arrows",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

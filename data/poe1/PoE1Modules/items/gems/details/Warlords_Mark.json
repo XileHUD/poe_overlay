@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Stun, Rage, Duration, Leech, Curse",
     "DropLevel": "16",
+    "BaseType": "Warlord's Mark",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Trappable, Totemable, Mineable, Multicastable, Triggerable, AppliesCurse, CanRapidFire, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Mark",
@@ -495,5 +496,122 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Curses a single enemy, giving a chance to double the duration of stuns on them. Attacking the cursed enemy will leech life and mana, stunning them will grant rage, and killing it will grant an endurance charge. You can only have one Mark at a time.",
+  "explicitMods": [
+    {
+      "text": "Cursed enemies grant (2–2.95)% Life Leech when Hit by Attacks",
+      "values": [
+        "(2–2.95)"
+      ]
+    },
+    {
+      "text": "Cursed enemies grant (2–2.95)% Mana Leech when Hit by Attacks",
+      "values": [
+        "(2–2.95)"
+      ]
+    },
+    {
+      "text": "Cursed enemies have a 100% chance to grant an Endurance Charge when slain",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Hits against Cursed Enemies have (40–59)% chance to double Stun Duration",
+      "values": [
+        "(40–59)"
+      ]
+    },
+    {
+      "text": "Cursed Enemies grant 10 Rage when Stunned",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Cursed enemies grant (2–2.95)% Life Leech when Hit by Attacks",
+      "values": [
+        "(2–2.95)"
+      ]
+    },
+    {
+      "text": "Cursed enemies grant (2–2.95)% Mana Leech when Hit by Attacks",
+      "values": [
+        "(2–2.95)"
+      ]
+    },
+    {
+      "text": "Cursed enemies have a 100% chance to grant an Endurance Charge when slain",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Hits against Cursed Enemies have (40–59)% chance to double Stun Duration",
+      "values": [
+        "(40–59)"
+      ]
+    },
+    {
+      "text": "Cursed Enemies grant 10 Rage when Stunned",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "base_damage_taken_+%",
+      "values": []
+    },
+    {
+      "text": "chance_to_grant_endurance_charge_on_death_%",
+      "values": []
+    },
+    {
+      "text": "life_leech_on_any_damage_when_hit_by_attack_permyriad",
+      "values": []
+    },
+    {
+      "text": "mana_leech_on_any_damage_when_hit_by_attack_permyriad",
+      "values": []
+    },
+    {
+      "text": "enemy_chance_to_double_stun_duration_%_vs_self",
+      "values": []
+    },
+    {
+      "text": "grant_attacker_endurance_charge_when_hit_%_chance",
+      "values": []
+    },
+    {
+      "text": "enemy_grant_X_rage_on_stun",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Cursed Enemies have a (0–5)% chance to grant an Endurance Charge when Hit",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Cursed Enemies have a (0–5)% chance to grant an Endurance Charge when Hit",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

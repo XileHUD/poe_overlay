@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Minion",
     "DropLevel": "72",
+    "BaseType": "Awakened Minion Damage Support",
     "Class": "Support Gems",
     "Icon": "d",
     "ItemType": "Metadata/Items/Gems/SupportGemMinionDamagePlus",
@@ -214,5 +215,59 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports skills which create Minions.",
+  "explicitMods": [
+    {
+      "text": "Minions from Supported Skills deal (40–44)% more Damage",
+      "values": [
+        "(40–44)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills have 25% less Maximum Life",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "+(0–1) to Level of Supported Minion Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills deal (40–44)% more Damage",
+      "values": [
+        "(40–44)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills have 25% less Maximum Life",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "+(0–1) to Level of Supported Minion Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Minions from Supported Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

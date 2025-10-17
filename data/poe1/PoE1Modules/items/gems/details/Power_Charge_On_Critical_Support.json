@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "18",
+    "BaseType": "Power Charge On Critical Support",
     "Class": "Support Gems",
     "Icon": "P",
     "ItemType": "Metadata/Items/Gems/SupportGemPowerChargeOnCrit",
@@ -332,5 +333,47 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (35–54)% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "(35–54)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal 4% more Damage per Power Charge",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Supported Skills have (35–54)% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "(35–54)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal 4% more Damage per Power Charge",
+      "values": [
+        "4"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

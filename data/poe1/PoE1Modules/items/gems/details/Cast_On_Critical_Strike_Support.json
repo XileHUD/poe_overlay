@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Trigger",
     "DropLevel": "38",
+    "BaseType": "Cast On Critical Strike Support",
     "Class": "Support Gems",
     "Icon": "&",
     "ItemType": "Metadata/Items/Gems/SupportGemCastOnCrit",
@@ -391,5 +392,67 @@
     "Cast On Critical Strike Support",
     "Cast On Critical Strike Support",
     "Cast On Critical Strike Support (commonly referred to as CoC) is a Support gem that causes linked Spell to trigger when the player scores a critical strike with the Attack skill it is linked to."
+  ],
+  "gemDescription": "Must support both an attack skill and a spell skill to work. The attack skill will trigger a spell when it critically strikes an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.",
+  "explicitMods": [
+    {
+      "text": "Supported Attacks will Trigger a Supported Spell when you Crit an Enemy",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (10–19)% less Spell Damage",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Supported Attacks will Trigger a Supported Spell when you Crit an Enemy",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (10–19)% less Spell Damage",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "cast spell on linked attack crit [1]",
+      "values": []
+    },
+    {
+      "text": "spell uncastable if triggerable [1]",
+      "values": []
+    },
+    {
+      "text": "triggered skill uses main hand or averaged attack time for pvp scaling [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–20)% increased Attack Critical Strike Chance",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–20)% increased Spell Critical Strike Chance",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–20)% increased Attack Critical Strike Chance",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–20)% increased Spell Critical Strike Chance",
+      "values": [
+        "(0–20)"
+      ]
+    }
   ]
 }

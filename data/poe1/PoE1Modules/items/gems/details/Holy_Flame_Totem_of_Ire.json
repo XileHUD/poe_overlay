@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Holy Flame Totem of Ire",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Projectile, ProjectilesFromUser, Damage, Trappable, Mineable, SummonsTotem, Fire, Channel, Physical, ProjectilesNumberModifiersNotApplied",
     "ActiveSkillsCode": "holy_flame_totem_alt_x"
@@ -371,5 +372,192 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a totem that channels to fire a stream of flame at nearby enemies, and creates an area of consecrated ground around the totem.",
+  "explicitMods": [
+    {
+      "text": "Deals (2–153) to (5–230) Physical Damage",
+      "values": [
+        "(2–153)",
+        "(5–230)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles do not apply to this Skill",
+      "values": []
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "(90–128)% more Projectile Speed",
+      "values": [
+        "(90–128)"
+      ]
+    },
+    {
+      "text": "Consecrated Ground grants Immunity to Curses to you and Allies",
+      "values": []
+    },
+    {
+      "text": "Deals (2–153) to (5–230) Physical Damage",
+      "values": [
+        "(2–153)",
+        "(5–230)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles do not apply to this Skill",
+      "values": []
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "(90–128)% more Projectile Speed",
+      "values": [
+        "(90–128)"
+      ]
+    },
+    {
+      "text": "Consecrated Ground grants Immunity to Curses to you and Allies",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [100]",
+      "values": []
+    },
+    {
+      "text": "ignite art variation [7]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (2–546) to (5–819) Physical Damage",
+      "values": [
+        "(2–546)",
+        "(5–819)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles do not apply to this Skill",
+      "values": []
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "(90–158)% more Projectile Speed",
+      "values": [
+        "(90–158)"
+      ]
+    },
+    {
+      "text": "Consecrated Ground grants Immunity to Curses to you and Allies",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [100]",
+      "values": []
+    },
+    {
+      "text": "ignite art variation [7]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Consecrated Ground Area",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Consecrated Ground Area",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Consecrated Ground Area",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

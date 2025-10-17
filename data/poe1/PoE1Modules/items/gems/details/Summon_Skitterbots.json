@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Aura, Minion, Trap, Mine, Chill, Shock",
     "DropLevel": "16",
+    "BaseType": "Summon Skitterbots",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, Instant, Minion, CreatesMinion, MinionsAreUndamagable, HasReservation, Cold, Lightning, NonHitChill, ElementalStatus, Area, Aura, AuraAffectsEnemies, AuraNotOnCaster, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -495,5 +496,136 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summon a Chilling Skitterbot and a Shocking Skitterbot, which will trigger your traps and detonate your mines. Mines detonated by Skitterbots will re-arm and can then be detonated again. The Skitterbots grant you more trap and mine damage, and cannot be targeted or damaged.",
+  "explicitMods": [
+    {
+      "text": "(0–76)% increased Minion Movement Speed",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "Minions have (0–19)% increased Chill Effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Minions have (0–19)% increased Shock Effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Skitterbot of each type",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Chilling Skitterbot's Aura Chills Enemies near it",
+      "values": []
+    },
+    {
+      "text": "Shocking Skitterbot's Aura Shocks Enemies near it",
+      "values": []
+    },
+    {
+      "text": "Skitterbots grant 10% more Trap and Mine Damage",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "(0–76)% increased Minion Movement Speed",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "Minions have (0–19)% increased Chill Effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Minions have (0–19)% increased Shock Effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Skitterbot of each type",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Chilling Skitterbot's Aura Chills Enemies near it",
+      "values": []
+    },
+    {
+      "text": "Shocking Skitterbot's Aura Shocks Enemies near it",
+      "values": []
+    },
+    {
+      "text": "Skitterbots grant 10% more Trap and Mine Damage",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "+3 to Level of Socketed Curse Gems",
+      "values": [
+        "+3"
+      ]
+    },
+    {
+      "text": "+(20–30)% to Cold Resistance",
+      "values": [
+        "+(20–30)"
+      ]
+    },
+    {
+      "text": "+(20–30)% to Lightning Resistance",
+      "values": [
+        "+(20–30)"
+      ]
+    },
+    {
+      "text": "Left Ring Slot: Your Chilling Skitterbot's Aura applies Socketed Hex Curse instead",
+      "values": []
+    },
+    {
+      "text": "Right Ring Slot: Your Shocking Skitterbot's Aura applies Socketed Hex Curse instead",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Shock increases Damage taken by 15%)",
+    "(Chill reduces Enemy Action Speed by 10%)",
+    "(Shock increases Damage taken by 15%)",
+    "(Chill reduces Enemy Action Speed by 10%)",
+    "(Shock increases Damage taken by 15%)",
+    "(Chill reduces Enemy Action Speed by 10%)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Minion Movement Speed",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Minion Movement Speed",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

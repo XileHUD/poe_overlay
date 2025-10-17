@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Ailment, Ignite",
     "DropLevel": "28",
+    "BaseType": "Flameblast",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, Totemable, Fire, Channel, AreaSpell, Cooldown",
@@ -377,5 +378,112 @@
   "description": "Cast speed: At base cast speed it takes 2 seconds to reach the maximum stage. Increasing the cast speed reduces the time to reach the next stage, similar to how Incinerate works.",
   "stats": [
     "Cast speed: At base cast speed it takes 2 seconds to reach the maximum stage. Increasing the cast speed reduces the time to reach the next stage, similar to how Incinerate works."
+  ],
+  "gemDescription": "Channels to build up a large explosion, which is released when you stop using the skill. The longer you channel, the larger the area of effect and damage of the explosion.",
+  "explicitMods": [
+    {
+      "text": "Deals (31–405) to (46–608) Fire Damage",
+      "values": [
+        "(31–405)",
+        "(46–608)"
+      ]
+    },
+    {
+      "text": "50% chance to Ignite enemies",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "165% more Spell Damage for each stage",
+      "values": [
+        "165"
+      ]
+    },
+    {
+      "text": "60% more Damage with Ailments for each stage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "10 maximum Stages",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "+0.3 metres to radius per Stage",
+      "values": [
+        "+0.3"
+      ]
+    },
+    {
+      "text": "Deals (31–405) to (46–608) Fire Damage",
+      "values": [
+        "(31–405)",
+        "(46–608)"
+      ]
+    },
+    {
+      "text": "50% chance to Ignite enemies",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "165% more Spell Damage for each stage",
+      "values": [
+        "165"
+      ]
+    },
+    {
+      "text": "60% more Damage with Ailments for each stage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "10 maximum Stages",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "+0.3 metres to radius per Stage",
+      "values": [
+        "+0.3"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–1) to maximum Stages",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) to maximum Stages",
+      "values": [
+        "+(0–1)"
+      ]
+    }
   ]
 }

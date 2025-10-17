@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Totem",
     "DropLevel": "4",
+    "BaseType": "Shrapnel Ballista",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy,",
@@ -376,5 +377,125 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a ballista totem that fires multiple arrows with extreme force, breaking them apart into shrapnel. Enemies can be hit by multiple arrows from the same attack. Requires a Bow.",
+  "explicitMods": [
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "+(2–3) to maximum number of Summoned Ballista Totems",
+      "values": [
+        "+(2–3)"
+      ]
+    },
+    {
+      "text": "Fires 3 Arrows",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Summons a Ballista Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "+(2–3) to maximum number of Summoned Ballista Totems",
+      "values": [
+        "+(2–3)"
+      ]
+    },
+    {
+      "text": "Fires 3 Arrows",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Summons a Ballista Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [40]",
+      "values": []
+    },
+    {
+      "text": "projectiles can shotgun [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "Adds (8–12) to (16–24) Physical Damage",
+      "values": [
+        "(8–12)",
+        "(16–24)"
+      ]
+    },
+    {
+      "text": "(14–20)% increased Attack Speed",
+      "values": [
+        "(14–20)"
+      ]
+    },
+    {
+      "text": "(14–20)% increased Totem Life",
+      "values": [
+        "(14–20)"
+      ]
+    },
+    {
+      "text": "(14–20)% increased Totem Placement speed",
+      "values": [
+        "(14–20)"
+      ]
+    },
+    {
+      "text": "Shrapnel Ballista has +1 to maximum number of Summoned Totems per 200 Strength",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Adds 1 to 3 Physical Damage to Attacks per 25 Strength",
+      "values": [
+        "1",
+        "3"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Projectile Speed",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Projectile Speed",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

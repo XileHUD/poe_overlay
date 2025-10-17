@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Aura, Curse",
     "DropLevel": "31",
+    "BaseType": "Blasphemy Support",
     "Class": "Support Gems",
     "Icon": "A",
     "ItemType": "Metadata/Items/Gems/SupportGemBlasphemy",
@@ -333,5 +334,157 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports hex curse skills, turning them into auras that will apply their effect to all enemies in an area around you.",
+  "explicitMods": [
+    {
+      "text": "Supported Curse Skills apply their Curses as AurasSupported Curse Skills also count as Aura Skills",
+      "values": []
+    },
+    {
+      "text": "Using Supported Skills is Instant",
+      "values": []
+    },
+    {
+      "text": "25% less Effect of Supported Curses",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(0–76)% increased Area of Effect of Supported Curse Skills",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "Supported Curse Skills apply their Curses as AurasSupported Curse Skills also count as Aura Skills",
+      "values": []
+    },
+    {
+      "text": "Using Supported Skills is Instant",
+      "values": []
+    },
+    {
+      "text": "25% less Effect of Supported Curses",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(0–76)% increased Area of Effect of Supported Curse Skills",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 20 Blasphemy",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Grants Level 20 Summon Doedre's Effigy SkillSocketed Hex Curse Skills are Triggered by Doedre's Effigy when SummonedHexes from Socketed Skills can apply 5 additional Curses",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "+(30–40) to Intelligence",
+      "values": [
+        "+(30–40)"
+      ]
+    },
+    {
+      "text": "(130–150)% increased Energy Shield",
+      "values": [
+        "(130–150)"
+      ]
+    },
+    {
+      "text": "20% less Effect of your Curses",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "+2 to Level of Socketed Curse Gems",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 22 Blasphemy",
+      "values": [
+        "22"
+      ]
+    },
+    {
+      "text": "Socketed Curse Gems have 30% increased Reservation Efficiency",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "(90–110)% increased Evasion and Energy Shield",
+      "values": [
+        "(90–110)"
+      ]
+    },
+    {
+      "text": "+(40–50) to maximum Energy Shield",
+      "values": [
+        "+(40–50)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 20 Blasphemy",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Curse Auras from Socketed Skills also affect you",
+      "values": []
+    },
+    {
+      "text": "Socketed Curse Gems have 80% increased Reservation Efficiency",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "+(20–30) to Intelligence",
+      "values": [
+        "+(20–30)"
+      ]
+    },
+    {
+      "text": "20% reduced Effect of Curses on you",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(15–25)% increased Damage with Hits and Ailments against Cursed Enemies",
+      "values": [
+        "(15–25)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Area of Effect of Supported Curse Skills",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Area of Effect of Supported Curse Skills",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

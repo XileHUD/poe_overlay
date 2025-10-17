@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Cooldown, Brand, Recovery",
     "DropLevel": "16",
+    "BaseType": "Brand Recall",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Triggerable, Instant, Cooldown",
@@ -301,5 +302,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Recall your brands to you, detaching them from enemies and increasing attachment range until they next attach to an enemy. Spends a portion of each recalled brand's cost to cause it to activate.",
+  "explicitMods": [
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Spends 20% of Brand's Cost",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Brands gain (25–45)% increased Attachment Range",
+      "values": [
+        "(25–45)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Spends 20% of Brand's Cost",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Brands gain (25–45)% increased Attachment Range",
+      "values": [
+        "(25–45)"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

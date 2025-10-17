@@ -3,6 +3,7 @@
   "slug": "Awakened_Increased_Area_of_Effect_Support",
   "metadata": {
     "DropLevel": "72",
+    "BaseType": "Awakened Increased Area of Effect Support",
     "Class": "Support Gems",
     "Icon": "E",
     "ItemType": "Metadata/Items/Gems/SupportGemIncreasedAreaOfEffectPlus",
@@ -193,5 +194,47 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports any skill with an area of effect.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (50–54)% increased Area of Effect",
+      "values": [
+        "(50–54)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–14)% more Area Damage",
+      "values": [
+        "(10–14)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (50–54)% increased Area of Effect",
+      "values": [
+        "(50–54)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–14)% more Area Damage",
+      "values": [
+        "(10–14)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Area Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Area Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

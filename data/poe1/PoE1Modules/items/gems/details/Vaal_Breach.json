@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Portal",
     "TargetTypes": "Any",
     "Type": "Spell, Trappable, Totemable, Mineable, Triggerable, TotemCastsAlone",
     "ActiveSkillsCode": "town_portal"
@@ -71,5 +72,53 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a breach, making you vulnerable to its powerful inhabitants.",
+  "explicitMods": [
+    {
+      "text": "Monsters from the Breach do not grant Experience or drop Items",
+      "values": []
+    },
+    {
+      "text": "Monsters from the Breach do not grant Experience or drop Items",
+      "values": []
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–60)% increased Cast Speed",
+      "values": [
+        "(0–60)"
+      ]
+    },
+    {
+      "text": "(0–60)% increased Cast Speed",
+      "values": [
+        "(0–60)"
+      ]
+    },
+    {
+      "text": "(0–60)% increased Cast Speed",
+      "values": [
+        "(0–60)"
+      ]
+    }
+  ]
 }

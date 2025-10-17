@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Buff",
     "DropLevel": "16",
+    "BaseType": "Herald of Ice",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, HasReservation, Damage, Area, Cold, TotemCastsAlone, Herald, Instant, AreaSpell, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -455,5 +456,105 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Grants a buff adding cold damage to spells and attacks. If you shatter an enemy, this skill will cause them to explode and deal AoE cold damage to enemies near them. This damage is not affected by modifiers to spell damage.",
+  "explicitMods": [
+    {
+      "text": "Deals (18–308) to (26–462) Cold Damage",
+      "values": [
+        "(18–308)",
+        "(26–462)"
+      ]
+    },
+    {
+      "text": "Damage cannot be Reflected",
+      "values": []
+    },
+    {
+      "text": "Base radius is 1.2 metres",
+      "values": [
+        "1.2"
+      ]
+    },
+    {
+      "text": "Buff grants (4–38) to (5–56) Added Attack Cold Damage",
+      "values": [
+        "(4–38)",
+        "(5–56)"
+      ]
+    },
+    {
+      "text": "Buff grants (4–38) to (5–56) Added Spell Cold Damage",
+      "values": [
+        "(4–38)",
+        "(5–56)"
+      ]
+    },
+    {
+      "text": "Deals (18–308) to (26–462) Cold Damage",
+      "values": [
+        "(18–308)",
+        "(26–462)"
+      ]
+    },
+    {
+      "text": "Damage cannot be Reflected",
+      "values": []
+    },
+    {
+      "text": "Base radius is 1.2 metres",
+      "values": [
+        "1.2"
+      ]
+    },
+    {
+      "text": "Buff grants (4–38) to (5–56) Added Attack Cold Damage",
+      "values": [
+        "(4–38)",
+        "(5–56)"
+      ]
+    },
+    {
+      "text": "Buff grants (4–38) to (5–56) Added Spell Cold Damage",
+      "values": [
+        "(4–38)",
+        "(5–56)"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "display skill deals secondary damage [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "skill override pvp scaling time ms [1000]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    }
+  ]
 }

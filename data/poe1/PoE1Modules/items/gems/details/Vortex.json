@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Modifiers",
     "DropLevel": "28",
+    "BaseType": "Vortex",
     "Class": "Skill Gems",
     "TargetTypes": "Ground,",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Cold, Triggerable, Duration, ChillingArea, AreaSpell, Nova, CanRapidFire",
@@ -417,5 +418,166 @@
   "description": "Cast time: Vortex is an instant spell; it has no cast time and does not interrupt your character's other actions.",
   "stats": [
     "Cast time: Vortex is an instant spell; it has no cast time and does not interrupt your character's other actions."
+  ],
+  "gemDescription": "An icy blast explodes around the caster, dealing cold damage to enemies, and leaving behind a whirling vortex which deals cold damage over time and chills enemies caught in it.",
+  "explicitMods": [
+    {
+      "text": "Deals (48–933) to (72–1399) Cold Damage",
+      "values": [
+        "(48–933)",
+        "(72–1399)"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Deals (115.6–2772.8) Base Cold Damage per second",
+      "values": [
+        "(115.6–2772.8)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Base radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Deals (48–933) to (72–1399) Cold Damage",
+      "values": [
+        "(48–933)",
+        "(72–1399)"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Deals (115.6–2772.8) Base Cold Damage per second",
+      "values": [
+        "(115.6–2772.8)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Base radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "base_cold_damage_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "base_cold_damage_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "base_lightning_damage_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "base_lightning_damage_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "base_cold_damage_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "action attack or cast time uses animation length [1]",
+      "values": []
+    },
+    {
+      "text": "projectile uses contact position [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "use scaled contact offset [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 73.62 to 110.4 Cold Damage",
+      "values": [
+        "73.62",
+        "110.4"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "monster reverse point blank damage -% at minimum range [35]",
+      "values": []
+    },
+    {
+      "text": "Deals 204.6 Base Chaos Damage per second",
+      "values": [
+        "204.6"
+      ]
+    },
+    {
+      "text": "action attack or cast time uses animation length [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    }
   ]
 }

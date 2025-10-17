@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Channelling, Duration, Projectile",
     "DropLevel": "28",
+    "BaseType": "Winter Orb",
     "Class": "Skill Gems",
     "TargetTypes": "Ground",
     "Type": "Spell, Channel, Cold, Damage, Area, Duration, Projectile, Totemable, AreaSpell, ProjectilesNotFromUser, Orb",
@@ -377,5 +378,157 @@
   "description": "Base projectile rate at stage 1 with no cast speed is .625 per second.",
   "stats": [
     "Base projectile rate at stage 1 with no cast speed is .625 per second."
+  ],
+  "gemDescription": "Channel to conjure an orb above you, which pelts nearby enemies with projectiles that impact the ground and explode. Channelling for longer builds up stages on the skill. When you stop channelling, the stages decay over a duration.",
+  "explicitMods": [
+    {
+      "text": "Deals (39–360) to (49–450) Cold Damage",
+      "values": [
+        "(39–360)",
+        "(49–450)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.6 seconds",
+      "values": [
+        "1.6"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to Projectile Frequency",
+      "values": []
+    },
+    {
+      "text": "30% increased Duration per Stage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Fires projectiles every 1.6 seconds",
+      "values": [
+        "1.6"
+      ]
+    },
+    {
+      "text": "125% more Projectile Frequency while Channelling",
+      "values": [
+        "125"
+      ]
+    },
+    {
+      "text": "20% increased Projectile Frequency per Stage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Maximum 8 Stages",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Deals (39–360) to (49–450) Cold Damage",
+      "values": [
+        "(39–360)",
+        "(49–450)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.6 seconds",
+      "values": [
+        "1.6"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to Projectile Frequency",
+      "values": []
+    },
+    {
+      "text": "30% increased Duration per Stage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Fires projectiles every 1.6 seconds",
+      "values": [
+        "1.6"
+      ]
+    },
+    {
+      "text": "125% more Projectile Frequency while Channelling",
+      "values": [
+        "125"
+      ]
+    },
+    {
+      "text": "20% increased Projectile Frequency per Stage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Maximum 8 Stages",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "additional projectiles fired with distance offset [100]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "projectile behaviour only explode [1]",
+      "values": []
+    },
+    {
+      "text": "projectile remove default spread [1]",
+      "values": []
+    },
+    {
+      "text": "projectile spread radius [100]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "frost_fury_fire_speed_+%_per_stage",
+      "values": []
+    },
+    {
+      "text": "frost_fury_current_number_of_stages",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–2) Maximum Stages",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "+(0–2) Maximum Stages",
+      "values": [
+        "+(0–2)"
+      ]
+    }
   ]
 }

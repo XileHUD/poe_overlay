@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "24",
+    "BaseType": "Hatred",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Cold, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -414,5 +415,110 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts an aura that grants extra cold damage based on physical damage to you and your allies.",
+  "explicitMods": [
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (30–39)% of Physical Damage as Extra Cold Damage",
+      "values": [
+        "(30–39)"
+      ]
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (30–39)% of Physical Damage as Extra Cold Damage",
+      "values": [
+        "(30–39)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "Grants Level 22 Hatred Skill",
+      "values": [
+        "22"
+      ]
+    },
+    {
+      "text": "+(30–55) to Dexterity",
+      "values": [
+        "+(30–55)"
+      ]
+    },
+    {
+      "text": "+(18–35)% to Global Critical Strike Multiplier",
+      "values": [
+        "+(18–35)"
+      ]
+    },
+    {
+      "text": "Bow Attacks have Culling Strike",
+      "values": []
+    },
+    {
+      "text": "Hatred has 100% increased Mana Reservation Efficiency",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "(Culling Strike means enemies that are on 10% or lower life after your Hit are Killed)",
+      "values": []
+    },
+    {
+      "text": "Socketed Gems have 50% reduced Mana Cost",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Grants Level 20 Hatred Skill",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Adds 2 to 6 Physical Damage",
+      "values": [
+        "2",
+        "6"
+      ]
+    },
+    {
+      "text": "Gain 3 Life per Enemy Hit with Spells",
+      "values": [
+        "3"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Culling Strike means enemies that are on 10% or lower life after your Hit are Killed)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

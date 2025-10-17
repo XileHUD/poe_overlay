@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Projectile",
     "DropLevel": "28",
+    "BaseType": "Cremation",
     "Class": "Skill Gems",
     "TargetTypes": "Corpse",
     "Type": "Spell, Area, Fire, Duration, Projectile, Multicastable, Trappable, Totemable, Mineable, Triggerable, Damage, Cascadable, Projectile, CanRapidFire, AreaSpell, Orb",
@@ -497,5 +498,129 @@
   "description": "Cast speed: Only affects the speed to create a geyser. Fire frequency is not changed.",
   "stats": [
     "Cast speed: Only affects the speed to create a geyser. Fire frequency is not changed."
+  ],
+  "gemDescription": "A targeted corpse explodes, dealing area damage and turning into a volcanic geyser, which will repeatedly unleash projectiles sequentially over the surrounding area for a duration. The explosion of the corpse is not affected by modifiers to spell damage, and cannot be reflected.",
+  "explicitMods": [
+    {
+      "text": "Fires Projectiles every 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Deals (49–434) to (74–651) Fire Damage",
+      "values": [
+        "(49–434)",
+        "(74–651)"
+      ]
+    },
+    {
+      "text": "Fires 4 Projectiles",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Maximum of 3 Geysers at a time",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (4–5)% of the corpse's Maximum Life",
+      "values": [
+        "(4–5)"
+      ]
+    },
+    {
+      "text": "+(0–0.3) metres to radius",
+      "values": [
+        "+(0–0.3)"
+      ]
+    },
+    {
+      "text": "Fires Projectiles every 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Deals (49–434) to (74–651) Fire Damage",
+      "values": [
+        "(49–434)",
+        "(74–651)"
+      ]
+    },
+    {
+      "text": "Fires 4 Projectiles",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Maximum of 3 Geysers at a time",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (4–5)% of the corpse's Maximum Life",
+      "values": [
+        "(4–5)"
+      ]
+    },
+    {
+      "text": "+(0–0.3) metres to radius",
+      "values": [
+        "+(0–0.3)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "projectile behaviour only explode [1]",
+      "values": []
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires Projectiles (0–10)% faster",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Fires Projectiles (0–10)% faster",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

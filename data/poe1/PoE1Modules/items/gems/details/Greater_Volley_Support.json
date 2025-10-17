@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Projectile",
     "DropLevel": "38",
+    "BaseType": "Greater Volley Support",
     "Class": "Support Gems",
     "Icon": "≣",
     "ItemType": "Metadata/Items/Gems/SupportGemGreaterVolley",
@@ -333,5 +334,112 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills that fire projectiles from the user. Does not affect projectiles fired from other locations as secondary effects. Does not support skills that fire projectiles in a spiral.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills fire 4 additional Projectiles",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Supported Skills also fire Projectiles from up to 4 points on each side of you",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (21–30)% less Projectile Damage",
+      "values": [
+        "(21–30)"
+      ]
+    },
+    {
+      "text": "Supported Skills fire 4 additional Projectiles",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Supported Skills also fire Projectiles from up to 4 points on each side of you",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (21–30)% less Projectile Damage",
+      "values": [
+        "(21–30)"
+      ]
+    },
+    {
+      "text": "greater volley additional projectiles fire parallel x dist [80]",
+      "values": []
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 20 Greater Volley",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(50–75)% increased Physical Damage",
+      "values": [
+        "(50–75)"
+      ]
+    },
+    {
+      "text": "Adds (10–16) to (45–60) Physical Damage",
+      "values": [
+        "(10–16)",
+        "(45–60)"
+      ]
+    },
+    {
+      "text": "(8–12)% increased Attack Speed",
+      "values": [
+        "(8–12)"
+      ]
+    },
+    {
+      "text": "20% reduced Projectile Speed",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Arrows fired from the first firing points always Pierce",
+      "values": []
+    },
+    {
+      "text": "Arrows fired from the second firing points Fork",
+      "values": []
+    },
+    {
+      "text": "Arrows fired from the third firing points Return to you",
+      "values": []
+    },
+    {
+      "text": "Arrows fired from the fourth firing points Chain +2 times",
+      "values": [
+        "+2"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–20)% increased Projectile Damage",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–20)% increased Projectile Damage",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

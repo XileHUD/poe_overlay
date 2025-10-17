@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Trap",
     "DropLevel": "31",
+    "BaseType": "Charged Traps Support",
     "Class": "Support Gems",
     "Icon": "F",
     "ItemType": "Metadata/Items/Gems/SupportGemFrenzyPowerOnTrapTrigger",
@@ -413,5 +414,71 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which throw traps.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (20–30)% chance to gain a Frenzy Charge when your Trap is triggered by an Enemy",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (20–30)% chance to gain a Power Charge when your Trap is triggered by an Enemy",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "Supported Skills have +15% to Critical Strike Multiplier per Power Charge when used by Traps",
+      "values": [
+        "+15"
+      ]
+    },
+    {
+      "text": "Supported Skills have 10% increased Trap Throwing Speed per Frenzy Charge",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Supported Skills have (20–30)% chance to gain a Frenzy Charge when your Trap is triggered by an Enemy",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (20–30)% chance to gain a Power Charge when your Trap is triggered by an Enemy",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "Supported Skills have +15% to Critical Strike Multiplier per Power Charge when used by Traps",
+      "values": [
+        "+15"
+      ]
+    },
+    {
+      "text": "Supported Skills have 10% increased Trap Throwing Speed per Frenzy Charge",
+      "values": [
+        "10"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Trap Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Trap Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

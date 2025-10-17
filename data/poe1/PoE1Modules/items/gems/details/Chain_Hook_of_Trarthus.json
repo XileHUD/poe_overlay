@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Chain Hook of Trarthus",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Sceptres",
     "TargetTypes": "Enemy, Ground",
     "Type": "Attack, Area, Damage, Melee, Multistrikeable",
@@ -252,5 +253,121 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws chains ahead of you, attaching them to targets hit. Enemies chained to you will grant rage when hit. When chains are broken, they snap and deal attack damage in an area around the target they were attached to. Requires a One Handed Mace, Sceptre, Sword or Axe.",
+  "explicitMods": [
+    {
+      "text": "+0.1 metres to Radius per 5 Rage",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Throws Chains at up to 6 targets in range",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Chained targets grant 1 Rage when Hit",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Maximum chain length is 6 metres",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Maximum 12 chains",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "+0.1 metres to Radius per 5 Rage",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Throws Chains at up to 6 targets in range",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Chained targets grant 1 Rage when Hit",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Maximum chain length is 6 metres",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Maximum 12 chains",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "+0.1 metres to Radius per 5 Rage",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Throws Chains at up to 4 targets in range",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Chained targets grant 1 Rage when Hit",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Maximum chain length is 6 metres",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Maximum 8 chains",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Throws Chains at up to (0–3) targets in range",
+      "values": [
+        "(0–3)"
+      ]
+    },
+    {
+      "text": "Throws Chains at up to (0–3) targets in range",
+      "values": [
+        "(0–3)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Forbidden Rite of Soul Sacrifice",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, Trappable, Mineable, Totemable, Triggerable, Chaos, Projectile, ProjectilesFromUser, Multicastable, CanRapidFire, AreaSpell, Chaos",
     "ActiveSkillsCode": "forbidden_rite_alt_x"
@@ -371,5 +372,144 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Lobs an exploding projectile near the targeted location, and extra projectiles toward enemies around you. The projectiles deal chaos damage based on your energy shield. Casting this spell damages you.",
+  "explicitMods": [
+    {
+      "text": "Deals (15–498) to (22–747) Chaos Damage",
+      "values": [
+        "(15–498)",
+        "(22–747)"
+      ]
+    },
+    {
+      "text": "Deals 20% of your maximum Energy Shield as base Chaos Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Take 50% of maximum Energy Shield as Chaos Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fires extra Projectiles at up to (6–7) surrounding Enemies",
+      "values": [
+        "(6–7)"
+      ]
+    },
+    {
+      "text": "Deals (15–498) to (22–747) Chaos Damage",
+      "values": [
+        "(15–498)",
+        "(22–747)"
+      ]
+    },
+    {
+      "text": "Deals 20% of your maximum Energy Shield as base Chaos Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Take 50% of maximum Energy Shield as Chaos Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fires extra Projectiles at up to (6–7) surrounding Enemies",
+      "values": [
+        "(6–7)"
+      ]
+    },
+    {
+      "text": "active skill projectile speed +% variation final [20]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "projectile behaviour only explode [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (15–2566) to (22–3850) Chaos Damage",
+      "values": [
+        "(15–2566)",
+        "(22–3850)"
+      ]
+    },
+    {
+      "text": "Deals 20% of your maximum Energy Shield as base Chaos Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Take 50% of maximum Energy Shield as Chaos Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fires extra Projectiles at up to (6–8) surrounding Enemies",
+      "values": [
+        "(6–8)"
+      ]
+    },
+    {
+      "text": "active skill projectile speed +% variation final [20]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "projectile behaviour only explode [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires extra Projectiles at up to +(0–2) surrounding Enemies",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires extra Projectiles at up to +(0–2) surrounding Enemies",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires extra Projectiles at up to +(0–2) surrounding Enemies",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

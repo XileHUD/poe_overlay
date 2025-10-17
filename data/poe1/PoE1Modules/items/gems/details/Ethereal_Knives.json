@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Projectile",
+    "BaseType": "Ethereal Knives",
     "Class": "Skill Gems",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Damage, Projectile, ProjectilesFromUser, Totemable, Trappable, Mineable, Multicastable, Triggerable, CanRapidFire, Physical",
@@ -454,5 +455,75 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires an arc of knives outwards in front of the caster which deal physical damage.",
+  "explicitMods": [
+    {
+      "text": "Deals (7–949) to (10–1423) Physical Damage",
+      "values": [
+        "(7–949)",
+        "(10–1423)"
+      ]
+    },
+    {
+      "text": "Fires (10–13) Projectiles",
+      "values": [
+        "(10–13)"
+      ]
+    },
+    {
+      "text": "Deals (7–949) to (10–1423) Physical Damage",
+      "values": [
+        "(7–949)",
+        "(10–1423)"
+      ]
+    },
+    {
+      "text": "Fires (10–13) Projectiles",
+      "values": [
+        "(10–13)"
+      ]
+    },
+    {
+      "text": "active skill projectile speed +% variation final [50]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Global Physical Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, Ethereal Knives fires  additional Projectiles",
+      "values": []
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, Ethereal Knives fires Projectiles in a circle",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

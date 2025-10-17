@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Modifiers",
     "DropLevel": "28",
+    "BaseType": "Reap",
     "Class": "Skill Gems",
     "TargetTypes": ",",
     "Type": "Spell, Damage, Physical, DamageOverTime, Area, AreaSpell, Duration, Trappable, Totemable, Mineable, Multicastable, CanRapidFire, Cascadable, Triggerable",
@@ -455,5 +456,113 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "A bloody scythe swipes across a selected area, applying a physical damage over time debuff and hitting enemies with physical damage. If any survive, you gain a blood charge which raises the damage and cost of the skill. Players can have 5 maximum blood charges.",
+  "explicitMods": [
+    {
+      "text": "Deals (57–943) to (86–1414) Physical Damage",
+      "values": [
+        "(57–943)",
+        "(86–1414)"
+      ]
+    },
+    {
+      "text": "Deals (120.2–1741.3) Base Physical Damage per second",
+      "values": [
+        "(120.2–1741.3)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Gain a Blood Charge if this Skill Hits Enemies and none of them DieLose a Blood Charge when an Enemy Dies while affected by this Skill's Debuff",
+      "values": []
+    },
+    {
+      "text": "Costs 20% more Life per Blood Charge",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Deals 15% more Damage per Blood Charge",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Deals (57–943) to (86–1414) Physical Damage",
+      "values": [
+        "(57–943)",
+        "(86–1414)"
+      ]
+    },
+    {
+      "text": "Deals (120.2–1741.3) Base Physical Damage per second",
+      "values": [
+        "(120.2–1741.3)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Gain a Blood Charge if this Skill Hits Enemies and none of them DieLose a Blood Charge when an Enemy Dies while affected by this Skill's Debuff",
+      "values": []
+    },
+    {
+      "text": "Costs 20% more Life per Blood Charge",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Deals 15% more Damage per Blood Charge",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "base_physical_damage_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "base_fire_damage_taken_per_minute",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Deals +(0–5)% more Damage per Blood Charge",
+      "values": [
+        "+(0–5)"
+      ]
+    },
+    {
+      "text": "Deals +(0–5)% more Damage per Blood Charge",
+      "values": [
+        "+(0–5)"
+      ]
+    }
+  ]
 }

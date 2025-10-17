@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Flame Dash of Return",
     "TargetTypes": "Enemy, Ground, ,",
     "Type": "Spell, Movement, Damage, DamageOverTime, Duration, Fire, Multicastable",
     "ActiveSkillsCode": "flame_dash_alt_y"
@@ -411,5 +412,148 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Teleport to a location, damaging enemies and leaving a trail of burning ground, then repeat the teleport in the other direction. Cannot be triggered, or used by a totem, trap or mine. Cannot be supported by Unleash.",
+  "explicitMods": [
+    {
+      "text": "Deals (10.6–938.3) Base Fire Damage per second",
+      "values": [
+        "(10.6–938.3)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Repeats once",
+      "values": []
+    },
+    {
+      "text": "Deals (17–1501) to (25–2252) Fire Damage",
+      "values": [
+        "(17–1501)",
+        "(25–2252)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Reverses direction when Repeating",
+      "values": []
+    },
+    {
+      "text": "(0–19)% increased maximum travel distance",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Deals (10.6–938.3) Base Fire Damage per second",
+      "values": [
+        "(10.6–938.3)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Repeats once",
+      "values": []
+    },
+    {
+      "text": "Deals (17–1501) to (25–2252) Fire Damage",
+      "values": [
+        "(17–1501)",
+        "(25–2252)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Reverses direction when Repeating",
+      "values": []
+    },
+    {
+      "text": "(0–19)% increased maximum travel distance",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (10.6–6044.4) Base Fire Damage per second",
+      "values": [
+        "(10.6–6044.4)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Repeats once",
+      "values": []
+    },
+    {
+      "text": "Deals (17–9671) to (25–14507) Fire Damage",
+      "values": [
+        "(17–9671)",
+        "(25–14507)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Reverses direction when Repeating",
+      "values": []
+    },
+    {
+      "text": "(0–39)% increased maximum travel distance",
+      "values": [
+        "(0–39)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% chance to Scorch Enemies",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to Scorch Enemies",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to Scorch Enemies",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

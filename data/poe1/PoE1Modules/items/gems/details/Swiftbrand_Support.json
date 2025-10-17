@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Duration",
     "DropLevel": "31",
+    "BaseType": "Swiftbrand Support",
     "Class": "Support Gems",
     "Icon": "t",
     "ItemType": "Metadata/Items/Gems/SupportGemSwiftbrand",
@@ -333,5 +334,59 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which create brands.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have 65% less Attached Duration",
+      "values": [
+        "65"
+      ]
+    },
+    {
+      "text": "Supported Skills have 65% less Detached Duration",
+      "values": [
+        "65"
+      ]
+    },
+    {
+      "text": "Supported Skills have (30–44)% more Activation frequency",
+      "values": [
+        "(30–44)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 65% less Attached Duration",
+      "values": [
+        "65"
+      ]
+    },
+    {
+      "text": "Supported Skills have 65% less Detached Duration",
+      "values": [
+        "65"
+      ]
+    },
+    {
+      "text": "Supported Skills have (30–44)% more Activation frequency",
+      "values": [
+        "(30–44)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–5)% more Activation frequency",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–5)% more Activation frequency",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

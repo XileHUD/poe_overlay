@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Golem",
     "DropLevel": "34",
+    "BaseType": "Summon Flame Golem",
     "Class": "Skill Gems",
     "TargetTypes": "Ground",
     "Type": "Triggerable, Fire, Mineable, Minion, MinionsCanExplode, Multicastable, Spell, Totemable, Trappable, Golem, CreatesMinion, Cooldown",
@@ -495,5 +496,178 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a Flame Golem that grants you increased Damage and Area of Effect. The Flame Golem can cast a fire spray, a wave of fire damage, and an explosive arcing projectile.",
+  "explicitMods": [
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Golems grant (20–29)% increased Damage",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "Golems grant 20% increased Area of Effect",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Golems grant (20–29)% increased Damage",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "Golems grant 20% increased Area of Effect",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "base display minion actor level [34,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [7]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Deals 523.3 to 785 Fire Damage",
+      "values": [
+        "523.3",
+        "785"
+      ]
+    },
+    {
+      "text": "89% less Cast Speed",
+      "values": [
+        "89"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "monster penalty against minions damage +% final vs player minions [-25]",
+      "values": []
+    },
+    {
+      "text": "spell maximum action distance +% [-77]",
+      "values": []
+    },
+    {
+      "text": "Deals 895.1 to 1399 Fire Damage",
+      "values": [
+        "895.1",
+        "1399"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 837.2 to 1256 Fire Damage",
+      "values": [
+        "837.2",
+        "1256"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "projectile spread radius [15]",
+      "values": []
+    },
+    {
+      "text": "spell maximum action distance +% [-33]",
+      "values": []
+    },
+    {
+      "text": "Deals 5454.4 Base Fire Damage per second",
+      "values": [
+        "5454.4"
+      ]
+    },
+    {
+      "text": "Deals 580% more Attack Damage",
+      "values": [
+        "580"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [80]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Buff Effect",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Buff Effect",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

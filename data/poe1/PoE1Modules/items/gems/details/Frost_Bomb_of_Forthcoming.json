@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Frost Bomb of Forthcoming",
     "TargetTypes": "Ground, ,",
     "Type": "Spell, Area, Duration, Cold, Damage, Multicastable, Totemable, Trappable, Mineable, Triggerable, Cascadable, AreaSpell, Cooldown",
     "ActiveSkillsCode": "frost_bomb_alt_y"
@@ -371,5 +372,138 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a crystal which lasts for a duration. When the crystal's duration ends, it explodes, dealing heavy cold damage to enemies around it.",
+  "explicitMods": [
+    {
+      "text": "Deals (9–1668) to (14–2502) Cold Damage",
+      "values": [
+        "(9–1668)",
+        "(14–2502)"
+      ]
+    },
+    {
+      "text": "Base duration is 2.5 seconds",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "Deals 10% more Damage with Hits per 0.1 seconds Duration",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Deals 3% more Damage with Ailments per 0.1 seconds Duration",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Base radius is (2.6–3.3) metres",
+      "values": [
+        "(2.6–3.3)"
+      ]
+    },
+    {
+      "text": "Deals (9–1668) to (14–2502) Cold Damage",
+      "values": [
+        "(9–1668)",
+        "(14–2502)"
+      ]
+    },
+    {
+      "text": "Base duration is 2.5 seconds",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "Deals 10% more Damage with Hits per 0.1 seconds Duration",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Deals 3% more Damage with Ailments per 0.1 seconds Duration",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Base radius is (2.6–3.3) metres",
+      "values": [
+        "(2.6–3.3)"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (9–10898) to (14–16347) Cold Damage",
+      "values": [
+        "(9–10898)",
+        "(14–16347)"
+      ]
+    },
+    {
+      "text": "Base duration is 2.5 seconds",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "Deals 10% more Damage with Hits per 0.1 seconds Duration",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Deals 3% more Damage with Ailments per 0.1 seconds Duration",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Base radius is (2.6–3.9) metres",
+      "values": [
+        "(2.6–3.9)"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–0.5) seconds",
+      "values": [
+        "(0–0.5)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–0.5) seconds",
+      "values": [
+        "(0–0.5)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–0.5) seconds",
+      "values": [
+        "(0–0.5)"
+      ]
+    }
+  ]
 }

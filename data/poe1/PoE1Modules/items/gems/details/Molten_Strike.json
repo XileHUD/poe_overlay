@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Hit, Projectile, Ailment",
+    "BaseType": "Molten Strike",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
@@ -335,5 +336,85 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Infuses your melee weapon with molten energies to attack with physical and fire damage. This attack causes balls of molten magma to launch forth from the enemies you hit, divided amongst all enemies hit by the strike. These will deal area attack damage to enemies where they land.",
+  "explicitMods": [
+    {
+      "text": "Fires 4 Projectiles",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Projectiles deal 60% less Damage with Hits and Ailments",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Fires 4 Projectiles",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Projectiles deal 60% less Damage with Hits and Ailments",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Fire Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With at least 40 Strength in Radius, Molten Strike Projectiles Chain on impacting ground",
+      "values": []
+    },
+    {
+      "text": "With at least 40 Strength in Radius, Molten Strike Projectiles Chain +1 time",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "With at least 40 Strength in Radius, Molten Strike fires 50% less Projectiles",
+      "values": [
+        "50"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Projectiles deal (0–10)% more Damage with Hits and Ailments",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Projectiles deal (0–10)% more Damage with Hits and Ailments",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

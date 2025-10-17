@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "DropLevel": "8",
+    "BaseType": "Added Lightning Damage Support",
     "Class": "Support Gems",
     "Icon": "L",
     "ItemType": "Metadata/Items/Gems/SupportGemAddedLightningDamage",
@@ -332,5 +333,67 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (1–19) to (8–358) added Lightning Damage",
+      "values": [
+        "(1–19)",
+        "(8–358)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (1–19) to (8–358) added Lightning Damage",
+      "values": [
+        "(1–19)",
+        "(8–358)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 30 Added Lightning Damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "10% increased Attack Speed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "(150–200)% increased Evasion and Energy Shield",
+      "values": [
+        "(150–200)"
+      ]
+    },
+    {
+      "text": "100% increased Effect of Lightning Ailments",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "(Lightning Ailments are Shocked and Sapped)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Lightning Ailments are Shocked and Sapped)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Lightning Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Lightning Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

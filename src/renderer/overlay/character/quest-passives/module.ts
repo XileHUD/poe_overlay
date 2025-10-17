@@ -106,7 +106,9 @@ export function render(model: QpModel){
     <div class='page-inner'>
       <div class='qp-topbar'>
         <input id='qpSearch' class='qp-search' placeholder='Search steps...'>
-        <div id='qpTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
+        <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px; width:100%;'>
+          <div id='qpTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
+        </div>
       </div>
       <div id='qpSections' style='display:flex; flex-direction:column; gap:12px;'></div>
     </div>`;

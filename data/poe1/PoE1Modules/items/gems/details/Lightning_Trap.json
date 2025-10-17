@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Trap, Projectile, Shock",
     "DropLevel": "12",
+    "BaseType": "Lightning Trap",
     "Class": "Skill Gems",
     "TargetTypes": "Enemy",
     "Type": "Spell, Damage, Projectile, ProjectilesFromUser, Trapped, Mineable, Lightning",
@@ -497,5 +498,121 @@
   "description": "Cast speed: Modifiers to Cast speed do not affect Lightning Trap since it is the trap, not the player, that is casting the spell.",
   "stats": [
     "Cast speed: Modifiers to Cast speed do not affect Lightning Trap since it is the trap, not the player, that is casting the spell."
+  ],
+  "gemDescription": "Throws a trap that launches a ring of projectiles through the enemy that set it off, dealing lightning damage to them and subsequent targets.",
+  "explicitMods": [
+    {
+      "text": "Deals (15–659) to (46–1978) Lightning Damage",
+      "values": [
+        "(15–659)",
+        "(46–1978)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Fires 9 Projectiles",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "20% chance to Shock enemies",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(80–118)% increased Critical Strike Chance against Shocked Enemies",
+      "values": [
+        "(80–118)"
+      ]
+    },
+    {
+      "text": "(0–19)% increased Effect of Shock",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Deals (15–659) to (46–1978) Lightning Damage",
+      "values": [
+        "(15–659)",
+        "(46–1978)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Fires 9 Projectiles",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "20% chance to Shock enemies",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(80–118)% increased Critical Strike Chance against Shocked Enemies",
+      "values": [
+        "(80–118)"
+      ]
+    },
+    {
+      "text": "(0–19)% increased Effect of Shock",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–15)% Chance for Trap to Trigger an additional time",
+      "values": [
+        "(0–15)"
+      ]
+    },
+    {
+      "text": "(0–15)% Chance for Trap to Trigger an additional time",
+      "values": [
+        "(0–15)"
+      ]
+    }
   ]
 }

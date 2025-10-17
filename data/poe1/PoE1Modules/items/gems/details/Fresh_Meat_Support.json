@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Duration, Minion, Adrenaline",
     "DropLevel": "18",
+    "BaseType": "Fresh Meat Support",
     "Class": "Support Gems",
     "Icon": "f",
     "ItemType": "Metadata/Items/Gems/SupportGemFreshMeat",
@@ -373,5 +374,45 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills that create minions.",
+  "explicitMods": [
+    {
+      "text": "Minions created by Supported Skills gain Wakened Fury and Adrenaline for 10% of their Duration, up to a maximum of 10 secondsWakened Fury grants +(2–3.9)% to Critical Strike ChanceWakened Fury grants +(50–69)% to Critical Strike Multiplier",
+      "values": [
+        "10",
+        "10",
+        "+(2–3.9)",
+        "+(50–69)"
+      ]
+    },
+    {
+      "text": "Minions created by Supported Skills gain Wakened Fury and Adrenaline for 10% of their Duration, up to a maximum of 10 secondsWakened Fury grants +(2–3.9)% to Critical Strike ChanceWakened Fury grants +(50–69)% to Critical Strike Multiplier",
+      "values": [
+        "10",
+        "10",
+        "+(2–3.9)",
+        "+(50–69)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Adrenaline grants 100% increased Damage, 25% increased Attack, Cast and Movement Speed and 10% additional Physical Damage Reduction. You cannot gain Adrenaline if you already have it)",
+    "(Adrenaline grants 100% increased Damage, 25% increased Attack, Cast and Movement Speed and 10% additional Physical Damage Reduction. You cannot gain Adrenaline if you already have it)",
+    "(Adrenaline grants 100% increased Damage, 25% increased Attack, Cast and Movement Speed and 10% additional Physical Damage Reduction. You cannot gain Adrenaline if you already have it)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Minions from Supported Skills have (0–20)% increased Critical Strike Chance",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills have (0–20)% increased Critical Strike Chance",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

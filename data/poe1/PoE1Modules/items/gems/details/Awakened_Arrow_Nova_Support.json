@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Projectile",
     "DropLevel": "72",
+    "BaseType": "Awakened Arrow Nova Support",
     "Class": "Support Gems",
     "Icon": "G",
     "ItemType": "Metadata/Items/Gems/SupportGemArrowNovaPlus",
@@ -174,5 +175,75 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports bow attack skills that fire arrows forwards as projectiles. These skills will instead fire a payload arrow into the air to land at a targeted location. The supported skills' arrows will then fire out in a circle from where it lands. Cannot support skills that already fire arrows into the air, channelled skills, or skills that create Minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (11–15)% less Projectile Damage",
+      "values": [
+        "(11–15)"
+      ]
+    },
+    {
+      "text": "Supported Skills fire a Payload Arrow into the airProjectiles from the Supported Skill Fire from where the Payload Arrow lands",
+      "values": []
+    },
+    {
+      "text": "Supported Skills Fire Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "Supported Skills fire 5 additional Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Supported Skills can only be used with Bows",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (11–15)% less Projectile Damage",
+      "values": [
+        "(11–15)"
+      ]
+    },
+    {
+      "text": "Supported Skills fire a Payload Arrow into the airProjectiles from the Supported Skill Fire from where the Payload Arrow lands",
+      "values": []
+    },
+    {
+      "text": "Supported Skills Fire Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "Supported Skills fire 5 additional Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Supported Skills can only be used with Bows",
+      "values": []
+    },
+    {
+      "text": "skill is rain skill [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

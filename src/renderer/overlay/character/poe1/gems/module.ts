@@ -160,13 +160,15 @@ function renderList(): void {
   state.tagCounts = { ...tagCounts };
 
   panel.innerHTML = `
-    <div style='display:flex; gap:6px; align-items:center; margin-bottom:6px;'>
+    <div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
       <button id='gemsBackBtn' class='pin-btn' style='padding:4px 8px;'>← Back</button>
       <input id='gemsSearch' type='text' placeholder='Search gems...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
       <button id='gemsClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-    <div id='gemTypeFilters' style='display:flex; gap:6px; justify-content:center; margin-bottom:8px; flex-wrap:wrap;'></div>
-    <div id='gemTagFilters' style='display:flex; gap:4px; flex-wrap:wrap; margin-bottom:8px; justify-content:center; max-height:120px; overflow-y:auto; padding:4px;'></div>
+    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+      <div id='gemTypeFilters' style='display:flex; gap:6px; justify-content:center; margin-bottom:8px; flex-wrap:wrap;'></div>
+      <div id='gemTagFilters' style='display:flex; gap:4px; flex-wrap:wrap; justify-content:center;'></div>
+    </div>
     <div id='gemsWrap' style='display:grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap:10px;'></div>`;
   
   state.input = panel.querySelector('#gemsSearch') as HTMLInputElement | null;
@@ -258,7 +260,7 @@ function renderList(): void {
     ['Skill', 'Support', 'Awakened', 'Transfigured'].forEach(type => {
       const el = document.createElement('div');
       el.textContent = type;
-      el.style.cssText = `cursor:pointer; user-select:none; padding:6px 14px; font-size:11px; border-radius:999px; ${typeChipCss(type, selectedGemTypes.has(type))}`;
+      el.style.cssText = `cursor:pointer; user-select:none; padding:6px 14px; font-size:11px; border-radius:4px; ${typeChipCss(type, selectedGemTypes.has(type))}`;
       el.style.minWidth = '100px';
       el.style.textAlign = 'center';
       el.addEventListener('click', () => {
@@ -293,7 +295,7 @@ function renderList(): void {
       const count = state.tagCounts[tag];
       const el = document.createElement('div');
       el.textContent = `${tag} (${count})`;
-      el.style.cssText = `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:999px; ${chipCss(tag, state.selectedTags.has(tag))}`;
+      el.style.cssText = `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; ${chipCss(tag, state.selectedTags.has(tag))}`;
       el.addEventListener('click', () => {
         if (state.selectedTags.has(tag)) {
           state.selectedTags.delete(tag);
@@ -310,7 +312,7 @@ function renderList(): void {
     if (needsShowMore) {
       const showMoreBtn = document.createElement('div');
       showMoreBtn.textContent = tagsExpanded ? 'Show Less' : `Show More (${sortedTags.length - MAX_TAGS_COLLAPSED} more)`;
-      showMoreBtn.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--border-color); border-radius:999px; background:var(--bg-secondary); color:var(--text-secondary); font-style:italic;';
+      showMoreBtn.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-secondary); font-style:italic;';
       showMoreBtn.addEventListener('click', () => {
         tagsExpanded = !tagsExpanded;
         renderTagFilters();
@@ -322,7 +324,7 @@ function renderList(): void {
     if (state.selectedTags.size > 0) {
       const reset = document.createElement('div');
       reset.textContent = 'Reset';
-      reset.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--accent-red); border-radius:999px; background:var(--accent-red); color:#fff';
+      reset.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--accent-red); border-radius:4px; background:var(--accent-red); color:#fff';
       reset.addEventListener('click', () => {
         state.selectedTags.clear();
         applyFilter();
@@ -481,10 +483,27 @@ function renderDetail(): void {
     });
   }
 
-  // Helper to deduplicate simple string arrays
+  // Helper to deduplicate simple string arrays - keep longest variant of similar strings
   function deduplicateStrings(items: string[] | undefined): string[] {
     if (!items || items.length === 0) return [];
-    return Array.from(new Set(items));
+    
+    // Group similar strings (normalize by removing numbers and extra spaces)
+    const groups = new Map<string, string[]>();
+    items.forEach(item => {
+      // Normalize: remove all numbers and collapse whitespace
+      const normalized = item.replace(/[\d.]+/g, '#').replace(/\s+/g, ' ').trim().toLowerCase();
+      if (!groups.has(normalized)) {
+        groups.set(normalized, []);
+      }
+      groups.get(normalized)!.push(item);
+    });
+    
+    // For each group, keep only the longest string
+    return Array.from(groups.values()).map(group => {
+      return group.reduce((longest, current) => 
+        current.length > longest.length ? current : longest
+      );
+    });
   }
 
   // Extract numeric columns for charting
@@ -511,8 +530,8 @@ function renderDetail(): void {
     }
   });
 
-  // Take up to 2 most interesting numeric columns for charts
-  const chartColumns = numericColumns.slice(0, 2);
+  // Show all numeric columns as charts (not just 2)
+  const chartColumns = numericColumns;
 
   // Filter metadata
   const filteredMetadata = Object.fromEntries(
@@ -551,12 +570,34 @@ function renderDetail(): void {
 
   // Deduplicate and filter explicit mods
   const uniqueExplicitMods = deduplicateAndFilter(detail.explicitMods);
-  const explicitModsHtml = uniqueExplicitMods.length > 0 ? `
-    <div style='background:var(--bg-secondary); padding:12px; border-radius:6px; margin-bottom:12px;'>
-      <div style='font-weight:600; margin-bottom:8px; color:var(--text-primary);'>Explicit Modifiers</div>
-      <div style='display:flex; flex-direction:column; gap:8px;'>
-        ${uniqueExplicitMods.map(mod => `
-          <div style='font-size:14px; line-height:1.6; color:var(--text-primary);'>
+  
+  // Deduplicate and filter quality mods
+  const uniqueQualityMods = deduplicateAndFilter(detail.qualityMods);
+  
+  // Filter out quality mods from explicit mods to avoid duplication
+  // Normalize both for comparison (remove +, numbers in ranges, extra spaces)
+  const normalizeModText = (text: string) => {
+    return text
+      .replace(/\+/g, '')  // Remove +
+      .replace(/\([\d–\-]+\)/g, '(#)') // Replace (0-20) or (0–20) with (#)
+      .replace(/[\d.]+/g, '#')  // Replace all numbers with #
+      .replace(/\s+/g, ' ')  // Collapse whitespace
+      .trim()
+      .toLowerCase();
+  };
+  
+  const qualityTexts = new Set(uniqueQualityMods.map(m => normalizeModText(m.text)));
+  const filteredExplicitMods = uniqueExplicitMods.filter(mod => {
+    const normalized = normalizeModText(mod.text);
+    return !qualityTexts.has(normalized);
+  });
+  
+  const explicitModsHtml = filteredExplicitMods.length > 0 ? `
+    <div style='background:rgba(65,105,225,0.08); border:1px solid rgba(65,105,225,0.25); padding:14px; border-radius:6px; margin-bottom:12px;'>
+      <div style='font-weight:600; margin-bottom:10px; color:var(--accent-blue);'>Explicit Modifiers</div>
+      <div style='display:flex; flex-direction:column; gap:4px;'>
+        ${filteredExplicitMods.map(mod => `
+          <div style='font-size:14px; line-height:1.5; color:var(--text-primary);'>
             ${mod.text
               .replace(/\((\d+(?:–\d+)?(?:\.\d+)?)\)/g, '<span style="color:var(--accent-blue); font-weight:600;">($1)</span>')
               .replace(/(\d+(?:\.\d+)?)%/g, '<span style="color:var(--accent-blue); font-weight:600;">$1%</span>')
@@ -583,14 +624,12 @@ function renderDetail(): void {
     </div>
   ` : '';
 
-  // Deduplicate and filter quality mods
-  const uniqueQualityMods = deduplicateAndFilter(detail.qualityMods);
   const qualityModsHtml = uniqueQualityMods.length > 0 ? `
-    <div style='background:var(--bg-secondary); padding:12px; border-radius:6px; margin-bottom:12px;'>
-      <div style='font-weight:600; margin-bottom:8px; color:var(--text-primary);'>Additional Effects From Quality</div>
-      <div style='display:flex; flex-direction:column; gap:8px;'>
+    <div style='background:rgba(65,105,225,0.08); border:1px solid rgba(65,105,225,0.25); padding:14px; border-radius:6px; margin-bottom:12px;'>
+      <div style='font-weight:600; margin-bottom:10px; color:var(--accent-blue);'>Additional Effects From Quality</div>
+      <div style='display:flex; flex-direction:column; gap:4px;'>
         ${uniqueQualityMods.map(mod => `
-          <div style='font-size:14px; line-height:1.6; color:var(--text-primary);'>
+          <div style='font-size:14px; line-height:1.5; color:var(--text-primary);'>
             ${mod.text
               .replace(/\((\d+(?:–\d+)?(?:\.\d+)?)\)/g, '<span style="color:var(--accent-blue); font-weight:600;">($1)</span>')
               .replace(/(\d+(?:\.\d+)?)%/g, '<span style="color:var(--accent-blue); font-weight:600;">$1%</span>')
@@ -601,19 +640,19 @@ function renderDetail(): void {
     </div>
   ` : '';
 
-  // Create reference links
+  // Create reference links (will be positioned at the end)
   const gemSlug = state.currentGemSlug || '';
   const referenceLinksHtml = gemSlug ? `
-    <div style='background:var(--bg-secondary); padding:12px; border-radius:6px; margin-bottom:12px;'>
+    <div style='background:var(--bg-secondary); padding:12px; border-radius:6px; margin-top:12px;'>
       <div style='font-weight:600; margin-bottom:8px; color:var(--text-primary);'>External References</div>
       <div style='display:flex; gap:12px; flex-wrap:wrap;'>
-        <a href='https://poe.ninja/' target='_blank' style='color:var(--accent-blue); text-decoration:none; font-size:12px; display:flex; align-items:center; gap:4px;'>
+        <a class='external-link' data-href='https://poe.ninja/' style='cursor:pointer; color:var(--accent-blue); text-decoration:none; font-size:12px; display:flex; align-items:center; gap:4px;'>
           <span>📊</span> poe.ninja
         </a>
-        <a href='https://www.poewiki.net/wiki/${encodeURIComponent(detail.name.replace(/ /g, '_'))}' target='_blank' style='color:var(--accent-blue); text-decoration:none; font-size:12px; display:flex; align-items:center; gap:4px;'>
+        <a class='external-link' data-href='https://www.poewiki.net/wiki/${encodeURIComponent(detail.name.replace(/ /g, '_'))}' style='cursor:pointer; color:var(--accent-blue); text-decoration:none; font-size:12px; display:flex; align-items:center; gap:4px;'>
           <span>📖</span> Community Wiki
         </a>
-        <a href='https://poedb.tw/us/${gemSlug}' target='_blank' style='color:var(--accent-blue); text-decoration:none; font-size:12px; display:flex; align-items:center; gap:4px;'>
+        <a class='external-link' data-href='https://poedb.tw/us/${gemSlug}' style='cursor:pointer; color:var(--accent-blue); text-decoration:none; font-size:12px; display:flex; align-items:center; gap:4px;'>
           <span>🔍</span> PoEDB
         </a>
       </div>
@@ -642,17 +681,42 @@ function renderDetail(): void {
         `).join('')}
       </div>
     </div>
-    ${referenceLinksHtml}
     ${chartColumns.length > 0 ? `
-      <div style='display:grid; grid-template-columns:repeat(auto-fit, minmax(400px, 1fr)); gap:12px; margin-bottom:12px;'>
-        ${chartColumns.map((col, idx) => {
-          const cleanName = cleanColumnName(col);
-          return `
-          <div>
-            <div style='font-weight:600; margin-bottom:8px; text-align:center;'>${cleanName} by Level</div>
-            <canvas id='gemChart${idx}' style='width:100%; height:250px; background:var(--bg-secondary); border-radius:6px;'></canvas>
+      <div style='margin-bottom:12px;'>
+        ${chartColumns.length >= 3 ? `
+          <!-- For 3+ charts: 2 on top row, rest full-width below -->
+          <div style='display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; margin-bottom:12px;'>
+            ${chartColumns.slice(0, 2).map((col, idx) => {
+              const cleanName = cleanColumnName(col);
+              return `
+              <div>
+                <div style='font-weight:600; margin-bottom:8px; text-align:center;'>${cleanName} by Level</div>
+                <canvas id='gemChart${idx}' style='width:100%; height:250px; background:var(--bg-secondary); border-radius:6px;'></canvas>
+              </div>
+            `;}).join('')}
           </div>
-        `;}).join('')}
+          ${chartColumns.slice(2).map((col, idx) => {
+            const actualIdx = idx + 2;
+            const cleanName = cleanColumnName(col);
+            return `
+            <div style='margin-bottom:12px;'>
+              <div style='font-weight:600; margin-bottom:8px; text-align:center;'>${cleanName} by Level</div>
+              <canvas id='gemChart${actualIdx}' style='width:100%; height:250px; background:var(--bg-secondary); border-radius:6px;'></canvas>
+            </div>
+          `;}).join('')}
+        ` : `
+          <!-- For 1-2 charts: side by side -->
+          <div style='display:grid; grid-template-columns:repeat(auto-fit, minmax(400px, 1fr)); gap:12px;'>
+            ${chartColumns.map((col, idx) => {
+              const cleanName = cleanColumnName(col);
+              return `
+              <div>
+                <div style='font-weight:600; margin-bottom:8px; text-align:center;'>${cleanName} by Level</div>
+                <canvas id='gemChart${idx}' style='width:100%; height:250px; background:var(--bg-secondary); border-radius:6px;'></canvas>
+              </div>
+            `;}).join('')}
+          </div>
+        `}
       </div>
     ` : ''}
     <div style='background:var(--bg-secondary); padding:12px; border-radius:6px;'>
@@ -663,26 +727,137 @@ function renderDetail(): void {
             <tr style='background:var(--bg-tertiary);'>
               ${Object.keys(firstRow).filter(k => !skipKeys.has(k)).map(k => {
                 const cleanName = cleanColumnName(k);
-                return `<th style='padding:6px; border:1px solid var(--border-color); text-align:left;'>${cleanName}</th>`;
+                const lowerName = cleanName.toLowerCase();
+                
+                // Determine header color based on content
+                let headerColor = 'var(--text-primary)';
+                if (lowerName.includes('damage') || lowerName.includes('attack') || lowerName.includes('critical')) {
+                  headerColor = '#ff6b6b';
+                } else if (lowerName.includes('mana') || lowerName.includes('cost')) {
+                  headerColor = '#4dabf7';
+                } else if (lowerName.includes('duration') || lowerName.includes('cooldown')) {
+                  headerColor = '#a78bfa';
+                } else if (lowerName.includes('speed') || lowerName.includes('cast time')) {
+                  headerColor = '#51cf66';
+                }
+                
+                // Add % or other units to headers where appropriate
+                let displayName = cleanName;
+                if (lowerName.includes('damage') && !lowerName.includes('added') && !cleanName.includes('%')) {
+                  displayName = cleanName + ' %';
+                } else if ((lowerName.includes('increased') || lowerName.includes('more') || lowerName.includes('reduced')) && !cleanName.includes('%')) {
+                  displayName = cleanName + ' %';
+                }
+                
+                return `<th style='padding:6px; border:1px solid var(--border-color); text-align:left; color:${headerColor}; font-weight:600;'>${displayName}</th>`;
               }).join('')}
             </tr>
           </thead>
           <tbody>
-            ${levelProgression.map((row, idx) => `
-              <tr style='${idx % 2 === 0 ? 'background:var(--bg-secondary);' : 'background:var(--bg-tertiary);'}'>
-                ${Object.keys(firstRow).filter(k => !skipKeys.has(k)).map(k => `<td style='padding:6px; border:1px solid var(--border-color);'>${row[k] || ''}</td>`).join('')}
-              </tr>
-            `).join('')}
+            ${levelProgression.map((row, idx) => {
+              const level = parseInt(row.Level || '0', 10);
+              const isKeyLevel = level === 1 || level === 20 || level === 40;
+              const rowBg = isKeyLevel 
+                ? (level === 1 ? 'rgba(66,165,245,0.15)' : level === 20 ? 'rgba(255,193,7,0.15)' : 'rgba(156,39,176,0.15)')
+                : (idx % 2 === 0 ? 'var(--bg-secondary)' : 'var(--bg-tertiary)');
+              const rowBorder = isKeyLevel ? '2px solid ' + (level === 1 ? '#42a5f5' : level === 20 ? '#ffc107' : '#9c27b0') : '';
+              
+              const cells = Object.keys(firstRow).filter(k => !skipKeys.has(k)).map(colKey => {
+                const rawValue = row[colKey] || '';
+                
+                // Deduplicate cell values (e.g., "136.4%, 136.4%" -> "136.4%")
+                let deduplicatedValue = rawValue.split(',').map(v => v.trim()).filter((v, i, arr) => arr.indexOf(v) === i).join(', ');
+                
+                // Hide varying numbers in descriptive text (e.g., "Deals up to 40% more Damage" -> "Deals up to % more Damage")
+                // ONLY replace numbers in cells that contain descriptive words (Deals, up to, more, etc.)
+                const hasDescriptiveText = /\b(deals|up to|more|less|increased|reduced|additional|maximum|minimum)\b/i.test(deduplicatedValue);
+                if (hasDescriptiveText) {
+                  // Replace standalone numbers followed by % with just %
+                  deduplicatedValue = deduplicatedValue.replace(/\b(\d+(?:\.\d+)?%)\b/g, '%');
+                }
+                
+                // Metadata columns that should NOT show deltas (Level, Requirements, Cost, Experience, Attributes)
+                const metadataColumns = new Set([
+                  'Level', 'Requires Level', 'RequiresLevel', 'Req Level',
+                  'Str', 'Dex', 'Int', 'Strength', 'Dexterity', 'Intelligence',
+                  'Cost', 'Mana Cost', 'ManaCost', 'Mana', 'Mana Reserved',
+                  'Experience', 'Exp', 'Soul Cost', 'Cooldown'
+                ]);
+                
+                const lowerColKey = colKey.toLowerCase();
+                const isMetadata = metadataColumns.has(colKey) || 
+                                  lowerColKey.includes('level') || 
+                                  lowerColKey.includes('cost') || 
+                                  lowerColKey.includes('exp') ||
+                                  lowerColKey.includes('require') ||
+                                  lowerColKey.includes('cooldown');
+                
+                // Calculate delta from previous level (ONLY for damage/defense/special stats, NOT metadata)
+                let deltaHtml = '';
+                let isSignificant = false;
+                if (!isMetadata && idx > 0 && /[\d.]/.test(deduplicatedValue)) {
+                  const prevRow = levelProgression[idx - 1];
+                  const prevValue = prevRow[colKey] || '';
+                  
+                  // Extract first numeric value from both
+                  const currentMatch = deduplicatedValue.match(/[\d.]+/);
+                  const prevMatch = prevValue.match(/[\d.]+/);
+                  
+                  if (currentMatch && prevMatch) {
+                    const current = parseFloat(currentMatch[0]);
+                    const prev = parseFloat(prevMatch[0]);
+                    const delta = current - prev;
+                    
+                    if (Math.abs(delta) > 0.001) {
+                      const deltaColor = delta > 0 ? '#51cf66' : '#ff6b6b';
+                      const deltaSign = delta > 0 ? '+' : '';
+                      const deltaFormatted = Math.abs(delta) >= 10 ? delta.toFixed(1) : delta.toFixed(2);
+                      deltaHtml = ` <span style="color:${deltaColor}; font-size:10px;">(${deltaSign}${deltaFormatted})</span>`;
+                      
+                      // ONLY highlight EXTREME outliers: >50% relative change OR >20 absolute for percentage stats
+                      const relativeChange = prev > 0 ? Math.abs(delta / prev) : 0;
+                      if (relativeChange > 0.5 || Math.abs(delta) > 20) {
+                        isSignificant = true;
+                      }
+                    }
+                  }
+                }
+                
+                const cellStyle = isSignificant 
+                  ? `padding:6px; border:1px solid var(--border-color); font-weight:700; background:rgba(255,193,7,0.1);`
+                  : `padding:6px; border:1px solid var(--border-color);`;
+                
+                return `<td style='${cellStyle}'>${deduplicatedValue}${deltaHtml}</td>`;
+              }).join('');
+              
+              return `<tr style='background:${rowBg}; ${rowBorder ? `border-left:${rowBorder}; border-right:${rowBorder};` : ''}'>${cells}</tr>`;
+            }).join('')}
           </tbody>
         </table>
       </div>
     </div>
+    ${referenceLinksHtml}
   `;
 
   const backBtn = panel.querySelector('#gemDetailBackBtn') as HTMLButtonElement | null;
   if (backBtn) {
     backBtn.addEventListener('click', () => showList());
   }
+
+  // Bind external links to open in system browser
+  const externalLinks = panel.querySelectorAll('.external-link');
+  externalLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = (link as HTMLElement).getAttribute('data-href');
+      if (href && (window as any).electronAPI?.openExternal) {
+        (window as any).electronAPI.openExternal(href);
+      } else if (href) {
+        // Fallback for non-Electron environments
+        window.open(href, '_blank');
+      }
+    });
+  });
 
   // Bind image fallback
   bindImageFallback(panel, '.gem-detail-img', '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><rect width="64" height="64" rx="4" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="16" font-family="sans-serif">?</text></svg>', 0.5);

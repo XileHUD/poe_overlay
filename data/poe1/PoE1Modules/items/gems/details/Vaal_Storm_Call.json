@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Storm Call",
     "TargetTypes": "Ground, ,",
     "Type": "Spell, Damage, Area, Duration, Trappable, Totemable, Mineable, Triggerable, Multicastable, Lightning, Cascadable, CanRapidFire, AreaSpell",
     "ActiveSkillsCode": "storm_call"
@@ -374,5 +375,116 @@
   "stats": [
     "Critical Strike: Because Vaal Storm Call is only a single spell, its critical strike chance is only rolled once. If it crits, every lightning strike including the final bolt will be a critical strike. If it doesn't crit, none of them will be.",
     "Cast Speed: Affects the speed of the initial Vaal Storm Call cast, but does not affect the skill's periodic lightning strikes."
+  ],
+  "gemDescription": "Sets a marker at a location. Lightning strikes random enemies around the marker repeatedly over the skill's duration, dealing damage in an area around the strike. Modifiers to the skill's duration will also affect the delay between these strikes. When the duration ends, a large bolt of lightning strikes the marker, dealing damage around it.",
+  "explicitMods": [
+    {
+      "text": "Deals (21–510) to (38–947) Lightning Damage",
+      "values": [
+        "(21–510)",
+        "(38–947)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Strikes an Enemy every 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Deals (21–510) to (38–947) Lightning Damage",
+      "values": [
+        "(21–510)",
+        "(38–947)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Strikes an Enemy every 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "monster stormcall individually trigger [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (20–7430) to (60–22289) Lightning Damage",
+      "values": [
+        "(20–7430)",
+        "(60–22289)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "+(0–1.1) metres to radius",
+      "values": [
+        "+(0–1.1)"
+      ]
+    },
+    {
+      "text": "Also affects areas in front of and behind the targeted area",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

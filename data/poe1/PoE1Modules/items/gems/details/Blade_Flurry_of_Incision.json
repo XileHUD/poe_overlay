@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Blade Flurry of Incision",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, Rune Daggers",
     "TargetTypes": "Ground, ,",
     "Type": "Attack, Area, Channel, Melee",
@@ -292,5 +293,89 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Repeatedly hit enemies in a circle in front of you while channelling, dealing damage to and around the enemy. The critical strike chance is continually boosted while channelling. You unleash an additional hit for each stage reached once the channelling ends. Requires a Dagger, Claw or One-Handed Sword.",
+  "explicitMods": [
+    {
+      "text": "40% more Critical Strike Chance for each Stage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Maximum 6 Stages",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "40% more Critical Strike Chance for each Stage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Maximum 6 Stages",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "40% more Critical Strike Chance for each Stage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Maximum 6 Stages",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–40)% to Critical Strike Multiplier while at maximum Stages",
+      "values": [
+        "+(0–40)"
+      ]
+    },
+    {
+      "text": "+(0–40)% to Critical Strike Multiplier while at maximum Stages",
+      "values": [
+        "+(0–40)"
+      ]
+    },
+    {
+      "text": "+(0–40)% to Critical Strike Multiplier while at maximum Stages",
+      "values": [
+        "+(0–40)"
+      ]
+    }
+  ]
 }

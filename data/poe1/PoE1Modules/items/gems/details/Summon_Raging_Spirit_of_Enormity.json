@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Summon Raging Spirit of Enormity",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Minion, Duration, MinionsCanExplode, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, CanRapidFire, CreatesMinion",
     "MinionType": "Attack, Melee, MeleeSingleTarget, Multistrikeable",
@@ -372,5 +373,149 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a short-lived flaming skull that rushes at nearby enemies and attacks them rapidly, converting all its physical damage to fire. Enemies will not directly engage these spirits, and can pass through them.",
+  "explicitMods": [
+    {
+      "text": "Maximum 6 Summoned Raging Spirits",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Minions have (50–88)% more Maximum Life",
+      "values": [
+        "(50–88)"
+      ]
+    },
+    {
+      "text": "Minions' Hits are always Critical Strikes",
+      "values": []
+    },
+    {
+      "text": "Minions have +(40–78)% to Critical Strike Multiplier",
+      "values": [
+        "+(40–78)"
+      ]
+    },
+    {
+      "text": "Minions cannot Taunt Enemies",
+      "values": []
+    },
+    {
+      "text": "Maximum 6 Summoned Raging Spirits",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Minions have (50–88)% more Maximum Life",
+      "values": [
+        "(50–88)"
+      ]
+    },
+    {
+      "text": "Minions' Hits are always Critical Strikes",
+      "values": []
+    },
+    {
+      "text": "Minions have +(40–78)% to Critical Strike Multiplier",
+      "values": [
+        "+(40–78)"
+      ]
+    },
+    {
+      "text": "Minions cannot Taunt Enemies",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [4,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [20]",
+      "values": []
+    },
+    {
+      "text": "minion actor scale +% [50]",
+      "values": []
+    },
+    {
+      "text": "Maximum 6 Summoned Raging Spirits",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Minions have (50–118)% more Maximum Life",
+      "values": [
+        "(50–118)"
+      ]
+    },
+    {
+      "text": "Minions' Hits are always Critical Strikes",
+      "values": []
+    },
+    {
+      "text": "Minions have +(40–108)% to Critical Strike Multiplier",
+      "values": [
+        "+(40–108)"
+      ]
+    },
+    {
+      "text": "Minions cannot Taunt Enemies",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [4,100]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [20]",
+      "values": []
+    },
+    {
+      "text": "minion actor scale +% [50]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% more Minion Movement Speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% more Minion Movement Speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% more Minion Movement Speed",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

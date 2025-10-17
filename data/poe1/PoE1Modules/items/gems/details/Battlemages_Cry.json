@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Battlemage, Hit, Exert, Melee, Trigger, Warcry, Buff",
     "DropLevel": "24",
+    "BaseType": "Battlemage's Cry",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Buff, Area, Duration, Warcry, Cooldown",
@@ -495,5 +496,183 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Performs a warcry, taunting nearby enemies to attack the user and exerting subsequent attacks. The user and nearby allies gain a buff that boosts critical strike chance.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (2.5–3.4) seconds",
+      "values": [
+        "(2.5–3.4)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Warcry Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Exerts the next 5 Melee Attacks you perform",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Buff grants +0.5% to Critical Strike Chance per 5 power, counting a maximum of 25 Power",
+      "values": [
+        "+0.5"
+      ]
+    },
+    {
+      "text": "Exerted Attacks Trigger a Supported Spell with their first Melee Hit",
+      "values": []
+    },
+    {
+      "text": "Counts total Power of Enemies in Range",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (38–44)% less Damage",
+      "values": [
+        "(38–44)"
+      ]
+    },
+    {
+      "text": "Supported Spells are Triggered by Attacks Exerted by Battlemage's Cry",
+      "values": []
+    },
+    {
+      "text": "Base duration is (2.5–3.4) seconds",
+      "values": [
+        "(2.5–3.4)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Warcry Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Exerts the next 5 Melee Attacks you perform",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Buff grants +0.5% to Critical Strike Chance per 5 power, counting a maximum of 25 Power",
+      "values": [
+        "+0.5"
+      ]
+    },
+    {
+      "text": "Exerted Attacks Trigger a Supported Spell with their first Melee Hit",
+      "values": []
+    },
+    {
+      "text": "Counts total Power of Enemies in Range",
+      "values": []
+    },
+    {
+      "text": "base deal no attack damage [1]",
+      "values": []
+    },
+    {
+      "text": "base deal no secondary damage [1]",
+      "values": []
+    },
+    {
+      "text": "base deal no spell damage [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (38–44)% less Damage",
+      "values": [
+        "(38–44)"
+      ]
+    },
+    {
+      "text": "Supported Spells are Triggered by Attacks Exerted by Battlemage's Cry",
+      "values": []
+    },
+    {
+      "text": "Grants Level 15 Battlemage's Cry Skill",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "+(12–16)% Chance to Block Attack Damage while wielding a Staff",
+      "values": [
+        "+(12–16)"
+      ]
+    },
+    {
+      "text": "100% increased Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Adds (315–360) to (450–540) Fire Damage",
+      "values": [
+        "(315–360)",
+        "(450–540)"
+      ]
+    },
+    {
+      "text": "Damage Penetrates 15% of Fire Resistance if you have Blocked Recently",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Immune to Freeze and Chill while Ignited",
+      "values": []
+    },
+    {
+      "text": "Battlemage",
+      "values": []
+    },
+    {
+      "text": "(Warstaves are considered Staves)",
+      "values": []
+    },
+    {
+      "text": "(Gain Added Spell Damage equal to the Damage of your Main Hand Weapon)",
+      "values": []
+    },
+    {
+      "text": "additional_base_critical_strike_chance",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
+    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
+    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
+    "(Warstaves are considered Staves)",
+    "(Gain Added Spell Damage equal to the Damage of your Main Hand Weapon)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

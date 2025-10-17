@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit, Burning, Ignite",
     "DropLevel": "12",
+    "BaseType": "Flame Surge",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Trappable, Totemable, Mineable, Multicastable, Triggerable, Area, Fire, CanRapidFire, AreaSpell, Duration",
@@ -455,5 +456,109 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Strikes enemies in front of you with a surge of flame. Burning enemies are dealt more damage. If you hit an ignited enemy, will create burning ground under them. Your damage modifiers don't apply to this burning ground.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (26–832) to (40–1247) Fire Damage",
+      "values": [
+        "(26–832)",
+        "(40–1247)"
+      ]
+    },
+    {
+      "text": "(50–88)% more Damage with Hits against Burning enemies",
+      "values": [
+        "(50–88)"
+      ]
+    },
+    {
+      "text": "Cannot Ignite",
+      "values": []
+    },
+    {
+      "text": "+(0–9) to Area of Effect length",
+      "values": [
+        "+(0–9)"
+      ]
+    },
+    {
+      "text": "Hits on Ignited Enemies create Burning Ground, no more than once every 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Burning Ground deals 25% of Fire Damage per second of Ignite affecting Enemy",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (26–832) to (40–1247) Fire Damage",
+      "values": [
+        "(26–832)",
+        "(40–1247)"
+      ]
+    },
+    {
+      "text": "(50–88)% more Damage with Hits against Burning enemies",
+      "values": [
+        "(50–88)"
+      ]
+    },
+    {
+      "text": "Cannot Ignite",
+      "values": []
+    },
+    {
+      "text": "+(0–9) to Area of Effect length",
+      "values": [
+        "+(0–9)"
+      ]
+    },
+    {
+      "text": "Hits on Ignited Enemies create Burning Ground, no more than once every 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Burning Ground deals 25% of Fire Damage per second of Ignite affecting Enemy",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–20)% more Damage with Hits against Burning enemies",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "+(0–20)% more Damage with Hits against Burning enemies",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

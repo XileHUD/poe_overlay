@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Minion",
     "DropLevel": "8",
+    "BaseType": "Minion Damage Support",
     "Class": "Support Gems",
     "Icon": "d",
     "ItemType": "Metadata/Items/Gems/SupportGemMinionDamage",
@@ -373,5 +374,47 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which create Minions.",
+  "explicitMods": [
+    {
+      "text": "Minions from Supported Skills deal (25–39)% more Damage",
+      "values": [
+        "(25–39)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills have 25% less Maximum Life",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills deal (25–39)% more Damage",
+      "values": [
+        "(25–39)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills have 25% less Maximum Life",
+      "values": [
+        "25"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Minions from Supported Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

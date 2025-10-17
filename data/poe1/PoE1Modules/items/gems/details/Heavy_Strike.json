@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Stun",
+    "BaseType": "Heavy Strike",
     "Class": "Skill Gems",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Warstaves",
     "TargetTypes": "Ground, Enemy",
@@ -375,5 +376,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Attacks enemies with a forceful blow. Requires a Mace, Sceptre, Axe, Sword or Staff.",
+  "explicitMods": [
+    {
+      "text": "25% reduced Enemy Stun Threshold",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(20–39)% chance to deal Double Damage",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "25% reduced Enemy Stun Threshold",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(20–39)% chance to deal Double Damage",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "(8–12)% increased Global Physical Damage",
+      "values": [
+        "(8–12)"
+      ]
+    },
+    {
+      "text": "With at least 40 Strength in Radius, Heavy Strike has a 20% chance to deal Double Damage",
+      "values": [
+        "20"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(The Stun Threshold determines how much Damage can Stun something)",
+    "(The Stun Threshold determines how much Damage can Stun something)",
+    "(The Stun Threshold determines how much Damage can Stun something)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% chance to deal Double Damage",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to deal Double Damage",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "DropLevel": "38",
+    "BaseType": "Increased Area of Effect Support",
     "Class": "Support Gems",
     "Icon": "E",
     "ItemType": "Metadata/Items/Gems/SupportGemIncreasedAreaOfEffect",
@@ -332,5 +333,77 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill with an area of effect.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (30–49)% increased Area of Effect",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (30–49)% increased Area of Effect",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 20 Increased Area of Effect",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "+10 to Strength",
+      "values": [
+        "+10"
+      ]
+    },
+    {
+      "text": "(120–160)% increased Physical Damage",
+      "values": [
+        "(120–160)"
+      ]
+    },
+    {
+      "text": "Gain 10 Mana per Enemy Killed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "+(120–150) to Accuracy Rating",
+      "values": [
+        "+(120–150)"
+      ]
+    },
+    {
+      "text": "+0.2 metres to Weapon Range",
+      "values": [
+        "+0.2"
+      ]
+    },
+    {
+      "text": "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Area Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Area Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

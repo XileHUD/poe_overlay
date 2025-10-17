@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Projectile",
     "DropLevel": "38",
+    "BaseType": "Greater Multiple Projectiles Support",
     "Class": "Support Gems",
     "Icon": "P",
     "ItemType": "Metadata/Items/Gems/SupportGemGreaterMultipleProjectiles",
@@ -336,5 +337,51 @@
   "stats": [
     "This gem can be combined with Lesser Multiple Projectiles for a total of  6 additional Projectiles",
     ". Poison: The \"less projectile damage\" on the gem doesn't decrease the damage poison does, so gmp can be very useful if you use a skill that hits the same enemy multiple times, like Barrage and Tornado Shot."
+  ],
+  "gemDescription": "Supports projectile skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (26–35)% less Projectile Damage",
+      "values": [
+        "(26–35)"
+      ]
+    },
+    {
+      "text": "Supported Skills fire 4 additional Projectiles",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (26–35)% less Projectile Damage",
+      "values": [
+        "(26–35)"
+      ]
+    },
+    {
+      "text": "Supported Skills fire 4 additional Projectiles",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "terrain arrow attachment chance reduction +% [200]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

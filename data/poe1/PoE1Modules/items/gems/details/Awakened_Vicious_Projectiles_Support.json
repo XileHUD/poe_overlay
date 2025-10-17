@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Projectile",
     "DropLevel": "72",
+    "BaseType": "Awakened Vicious Projectiles Support",
     "Class": "Support Gems",
     "Icon": "d",
     "ItemType": "Metadata/Items/Gems/SupportGemViciousProjectilesPlus",
@@ -214,5 +215,71 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports projectile attack skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (50–59)% more Chaos Damage over Time",
+      "values": [
+        "(50–59)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (50–59)% more Physical Damage over Time",
+      "values": [
+        "(50–59)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (50–59)% more Physical Projectile Attack Damage",
+      "values": [
+        "(50–59)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 10% less Projectile Attack Speed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (50–59)% more Chaos Damage over Time",
+      "values": [
+        "(50–59)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (50–59)% more Physical Damage over Time",
+      "values": [
+        "(50–59)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (50–59)% more Physical Projectile Attack Damage",
+      "values": [
+        "(50–59)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 10% less Projectile Attack Speed",
+      "values": [
+        "10"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Physical Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Physical Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

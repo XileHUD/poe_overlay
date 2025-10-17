@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "DropLevel": "8",
+    "BaseType": "Void Manipulation Support",
     "Class": "Support Gems",
     "Icon": "v",
     "ItemType": "Metadata/Items/Gems/SupportGemVoidManipulation",
@@ -372,5 +373,43 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that deals damage.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (20–34)% more Chaos Damage",
+      "values": [
+        "(20–34)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal no Elemental Damage",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (20–34)% more Chaos Damage",
+      "values": [
+        "(20–34)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal no Elemental Damage",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Chaos Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Chaos Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

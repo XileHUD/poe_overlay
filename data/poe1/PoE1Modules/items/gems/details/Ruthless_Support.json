@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Hit, Stun, Melee, Duration, Ailment",
+    "BaseType": "Ruthless Support",
     "Class": "Support Gems",
     "Icon": "u",
     "ItemType": "Metadata/Items/Gems/SupportGemRuthless",
@@ -372,5 +373,71 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports melee strike or slam skills. Every third time you use a supported attack, that use of the skill will be more powerful.",
+  "explicitMods": [
+    {
+      "text": "Every third Attack with Supported Melee Attacks deals a Ruthless Blow",
+      "values": []
+    },
+    {
+      "text": "Ruthless Blows with Supported Skills deal (70–98)% more Melee Damage",
+      "values": [
+        "(70–98)"
+      ]
+    },
+    {
+      "text": "Ruthless Blows with Supported Skills deal (70–98)% more Damage withAilments caused by Melee Hits",
+      "values": [
+        "(70–98)"
+      ]
+    },
+    {
+      "text": "Ruthless Blows with Supported Skills have a base Stun Duration of 0.8 seconds",
+      "values": [
+        "0.8"
+      ]
+    },
+    {
+      "text": "Every third Attack with Supported Melee Attacks deals a Ruthless Blow",
+      "values": []
+    },
+    {
+      "text": "Ruthless Blows with Supported Skills deal (70–98)% more Melee Damage",
+      "values": [
+        "(70–98)"
+      ]
+    },
+    {
+      "text": "Ruthless Blows with Supported Skills deal (70–98)% more Damage withAilments caused by Melee Hits",
+      "values": [
+        "(70–98)"
+      ]
+    },
+    {
+      "text": "Ruthless Blows with Supported Skills have a base Stun Duration of 0.8 seconds",
+      "values": [
+        "0.8"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Attack Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Attack Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

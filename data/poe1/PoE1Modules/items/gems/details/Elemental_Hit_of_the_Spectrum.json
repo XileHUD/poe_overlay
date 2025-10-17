@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Elemental Hit of the Spectrum",
     "Weapon": "Wands, Bows",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Projectile, ProjectilesFromUser, Totemable, Trappable, Mineable, Fire, Cold, Lightning, RangedAttack, MirageArcherCanUse, Area, Triggerable",
@@ -452,5 +453,195 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a projectile with a wand or bow that deals fire, cold and lightning damage. If the projectile hits an enemy, it will deal damage in an area around them.",
+  "explicitMods": [
+    {
+      "text": "(6–148) to (12–275) Added Cold Damage",
+      "values": [
+        "(6–148)",
+        "(12–275)"
+      ]
+    },
+    {
+      "text": "(8–182) to (14–337) Added Fire Damage",
+      "values": [
+        "(8–182)",
+        "(14–337)"
+      ]
+    },
+    {
+      "text": "(1–29) to (23–555) Added Lightning Damage",
+      "values": [
+        "(1–29)",
+        "(23–555)"
+      ]
+    },
+    {
+      "text": "(30–49)% chance to Freeze, Shock and Ignite",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Base radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Deals no Non-Elemental Damage",
+      "values": []
+    },
+    {
+      "text": "10% more Damage for each type of Elemental Ailment on the Enemy",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "(6–148) to (12–275) Added Cold Damage",
+      "values": [
+        "(6–148)",
+        "(12–275)"
+      ]
+    },
+    {
+      "text": "(8–182) to (14–337) Added Fire Damage",
+      "values": [
+        "(8–182)",
+        "(14–337)"
+      ]
+    },
+    {
+      "text": "(1–29) to (23–555) Added Lightning Damage",
+      "values": [
+        "(1–29)",
+        "(23–555)"
+      ]
+    },
+    {
+      "text": "(30–49)% chance to Freeze, Shock and Ignite",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Base radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Deals no Non-Elemental Damage",
+      "values": []
+    },
+    {
+      "text": "10% more Damage for each type of Elemental Ailment on the Enemy",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "elemental hit no physical chaos damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "(6–534) to (12–993) Added Cold Damage",
+      "values": [
+        "(6–534)",
+        "(12–993)"
+      ]
+    },
+    {
+      "text": "(8–656) to (14–1218) Added Fire Damage",
+      "values": [
+        "(8–656)",
+        "(14–1218)"
+      ]
+    },
+    {
+      "text": "(1–103) to (23–2006) Added Lightning Damage",
+      "values": [
+        "(1–103)",
+        "(23–2006)"
+      ]
+    },
+    {
+      "text": "(30–64)% chance to Freeze, Shock and Ignite",
+      "values": [
+        "(30–64)"
+      ]
+    },
+    {
+      "text": "Base radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Deals no Non-Elemental Damage",
+      "values": []
+    },
+    {
+      "text": "10% more Damage for each type of Elemental Ailment on the Enemy",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "elemental hit no physical chaos damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–5)% more Damage for each type of Elemental Ailment on the Enemy",
+      "values": [
+        "+(0–5)"
+      ]
+    },
+    {
+      "text": "+(0–5)% more Damage for each type of Elemental Ailment on the Enemy",
+      "values": [
+        "+(0–5)"
+      ]
+    },
+    {
+      "text": "+(0–5)% more Damage for each type of Elemental Ailment on the Enemy",
+      "values": [
+        "+(0–5)"
+      ]
+    }
+  ]
 }

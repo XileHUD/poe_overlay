@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "DropLevel": "38",
+    "BaseType": "Brutality Support",
     "Class": "Support Gems",
     "Icon": "U",
     "ItemType": "Metadata/Items/Gems/SupportGemBrutality",
@@ -332,5 +333,51 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that deals damage.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (25–39)% more Physical Damage",
+      "values": [
+        "(25–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal no Chaos Damage",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal no Elemental Damage",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (25–39)% more Physical Damage",
+      "values": [
+        "(25–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal no Chaos Damage",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal no Elemental Damage",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Physical Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Physical Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

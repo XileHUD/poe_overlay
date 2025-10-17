@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Shock",
     "DropLevel": "18",
+    "BaseType": "Overcharge Support",
     "Class": "Support Gems",
     "Icon": "Z",
     "ItemType": "Metadata/Items/Gems/SupportGemOvercharge",
@@ -333,5 +334,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have 50% chance to Shock",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Supported Skills Shock Enemies as though dealing (500–690)% more Damage",
+      "values": [
+        "(500–690)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal 25% less Damage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Supported Skills have 50% chance to Shock",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Supported Skills Shock Enemies as though dealing (500–690)% more Damage",
+      "values": [
+        "(500–690)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal 25% less Damage",
+      "values": [
+        "25"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–20)% increased Shock Duration on Enemies",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–20)% increased Shock Duration on Enemies",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

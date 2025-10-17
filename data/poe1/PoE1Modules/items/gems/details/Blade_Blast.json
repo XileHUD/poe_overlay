@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "16",
+    "BaseType": "Blade Blast",
     "Class": "Skill Gems",
     "TargetTypes": "Ground,",
     "Type": "Spell, Area, Trappable, Mineable, Totemable, Damage, Triggerable, Multicastable, Cascadable, CanRapidFire, AreaSpell, Physical",
@@ -374,5 +375,53 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Deals spell damage in a targeted area. Each time this spell deals damage,  it will detonate any of your Lingering Blades it touches, dealing damage again in an area around them. Up to 50 Blades can be detonated this way.",
+  "explicitMods": [
+    {
+      "text": "Deals (11–309) to (17–464) Physical Damage",
+      "values": [
+        "(11–309)",
+        "(17–464)"
+      ]
+    },
+    {
+      "text": "Base radius is 1.4 metres",
+      "values": [
+        "1.4"
+      ]
+    },
+    {
+      "text": "Deals (11–309) to (17–464) Physical Damage",
+      "values": [
+        "(11–309)",
+        "(17–464)"
+      ]
+    },
+    {
+      "text": "Base radius is 1.4 metres",
+      "values": [
+        "1.4"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.1) metres",
+      "values": [
+        "(0–0.1)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.1) metres",
+      "values": [
+        "(0–0.1)"
+      ]
+    }
+  ]
 }

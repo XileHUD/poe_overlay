@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Fireball",
     "TargetTypes": "Ground, Enemy",
     "Type": "Projectile, ProjectilesFromUser, Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, CanRapidFire, AreaSpell",
     "ActiveSkillsCode": "fireball"
@@ -371,5 +372,123 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Launches a series of fireballs in a spiral around the caster.",
+  "explicitMods": [
+    {
+      "text": "Deals (9–1095) to (14–1643) Fire Damage",
+      "values": [
+        "(9–1095)",
+        "(14–1643)"
+      ]
+    },
+    {
+      "text": "Fires 32 Projectiles in a spiral",
+      "values": [
+        "32"
+      ]
+    },
+    {
+      "text": "25% chance to Ignite enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Base radius is (0.9–1.4) metres",
+      "values": [
+        "(0.9–1.4)"
+      ]
+    },
+    {
+      "text": "Deals (9–1095) to (14–1643) Fire Damage",
+      "values": [
+        "(9–1095)",
+        "(14–1643)"
+      ]
+    },
+    {
+      "text": "Fires 32 Projectiles in a spiral",
+      "values": [
+        "32"
+      ]
+    },
+    {
+      "text": "25% chance to Ignite enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Base radius is (0.9–1.4) metres",
+      "values": [
+        "(0.9–1.4)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "projectile spiral nova time ms [2000]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (9–9055) to (14–13583) Fire Damage",
+      "values": [
+        "(9–9055)",
+        "(14–13583)"
+      ]
+    },
+    {
+      "text": "25% chance to Ignite enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Base radius is (0.9–1.7) metres",
+      "values": [
+        "(0.9–1.7)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

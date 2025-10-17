@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Lacerate of Haemorrhage",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Area, Multistrikeable, Melee, Physical",
@@ -332,5 +333,86 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slashes twice, releasing waves of force that damage enemies they hit. Enemies in the middle of the slashes can be hit by both. Requires a One Handed Axe or One Handed Sword.",
+  "explicitMods": [
+    {
+      "text": "(75–132)% more Damage with Bleeding",
+      "values": [
+        "(75–132)"
+      ]
+    },
+    {
+      "text": "25% chance to cause Bleeding",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(75–132)% more Damage with Bleeding",
+      "values": [
+        "(75–132)"
+      ]
+    },
+    {
+      "text": "25% chance to cause Bleeding",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "(75–177)% more Damage with Bleeding",
+      "values": [
+        "(75–177)"
+      ]
+    },
+    {
+      "text": "25% chance to cause Bleeding",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–40)% more Damage with Bleeding",
+      "values": [
+        "+(0–40)"
+      ]
+    },
+    {
+      "text": "+(0–40)% more Damage with Bleeding",
+      "values": [
+        "+(0–40)"
+      ]
+    },
+    {
+      "text": "+(0–40)% more Damage with Bleeding",
+      "values": [
+        "+(0–40)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Cooldown, Trigger, Buff, Elusive, Phasing, Withered",
     "DropLevel": "10",
+    "BaseType": "Withering Step",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Travel, Buff, Instant, Area, Chaos, Movement, Blink, Spell, Triggerable, Duration, Cooldown, Totemable",
@@ -495,5 +496,121 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Grants Elusive and a buff that grants Phasing. While you have this buff, monsters that enter an area around you will be Withered. Using a skill or losing the Elusive buff ends this skill's effects. Shares a cooldown with other Blink skills. Cannot be used while already Elusive.",
+  "explicitMods": [
+    {
+      "text": "Withered lasts 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "+(0–0.6) metres to radius",
+      "values": [
+        "+(0–0.6)"
+      ]
+    },
+    {
+      "text": "Cannot be Cast or Triggered while ElusiveGrants Elusive",
+      "values": []
+    },
+    {
+      "text": "This Skill's Cooldown does not recover during its effect",
+      "values": []
+    },
+    {
+      "text": "(0–38)% increased Effect of Elusive from this Skill",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Inflicts (4–6) Withered Debuffs the first time each Enemy enters the Area",
+      "values": [
+        "(4–6)"
+      ]
+    },
+    {
+      "text": "Buff grants Phasing",
+      "values": []
+    },
+    {
+      "text": "Withered lasts 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "+(0–0.6) metres to radius",
+      "values": [
+        "+(0–0.6)"
+      ]
+    },
+    {
+      "text": "Cannot be Cast or Triggered while ElusiveGrants Elusive",
+      "values": []
+    },
+    {
+      "text": "This Skill's Cooldown does not recover during its effect",
+      "values": []
+    },
+    {
+      "text": "(0–38)% increased Effect of Elusive from this Skill",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Inflicts (4–6) Withered Debuffs the first time each Enemy enters the Area",
+      "values": [
+        "(4–6)"
+      ]
+    },
+    {
+      "text": "Buff grants Phasing",
+      "values": []
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "phase_through_objects",
+      "values": []
+    },
+    {
+      "text": "suppress_phasing_visual",
+      "values": []
+    },
+    {
+      "text": "slither_cooldown_does_not_tick",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Elusive initially grants 15% chance to Avoid All Damage from Hits, and 30% increased Movement Speed. The buff reduces its effect over time, removing itself at 0% effect. If you already have an Elusive buff, you cannot gain Elusive)",
+    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)",
+    "(While you have Phasing, your movement is not blocked by Enemies)",
+    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)",
+    "(While you have Phasing, your movement is not blocked by Enemies)",
+    "(Elusive initially grants 15% chance to Avoid All Damage from Hits, and 30% increased Movement Speed. The buff reduces its effect over time, removing itself at 0% effect. If you already have an Elusive buff, you cannot gain Elusive)",
+    "(Elusive initially grants 15% chance to Avoid All Damage from Hits, and 30% increased Movement Speed. The buff reduces its effect over time, removing itself at 0% effect. If you already have an Elusive buff, you cannot gain Elusive)",
+    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)",
+    "(While you have Phasing, your movement is not blocked by Enemies)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Inflicts +(0–2) Withered Debuffs the first time each Enemy enters the Area",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Inflicts +(0–2) Withered Debuffs the first time each Enemy enters the Area",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

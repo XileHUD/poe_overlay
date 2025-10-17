@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Skeleton",
     "DropLevel": "10",
+    "BaseType": "Summon Skeletons",
     "Class": "Skill Gems",
     "TargetTypes": "Ground,",
     "Type": "Spell, Minion, Duration, MinionsCanExplode, Trappable, Totemable, Mineable, Multicastable, Triggerable, CanRapidFire, CreatesMinion, Cooldown",
@@ -455,5 +456,95 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summon Skeleton Warrior minions at the targeted location. They use a melee attack and die after a duration. If made aggressive, Skeleton Warriors will also dash towards nearby enemies.",
+  "explicitMods": [
+    {
+      "text": "Maximum (5–7) Summoned Skeletons",
+      "values": [
+        "(5–7)"
+      ]
+    },
+    {
+      "text": "Base duration is 20 seconds",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Summons (2–3) Skeleton Warriors",
+      "values": [
+        "(2–3)"
+      ]
+    },
+    {
+      "text": "Maximum (5–7) Summoned Skeletons",
+      "values": [
+        "(5–7)"
+      ]
+    },
+    {
+      "text": "Base duration is 20 seconds",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Summons (2–3) Skeleton Warriors",
+      "values": [
+        "(2–3)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [10,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [2]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "This Spell's Cast Speed cannot be modified",
+      "values": []
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be interrupted [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be knocked back [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–1) to Maximum Summoned Skeletons",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Maximum Summoned Skeletons",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

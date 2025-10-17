@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Ethereal Knives of the Massacre",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Damage, Projectile, ProjectilesFromUser, Totemable, Trappable, Mineable, Multicastable, Triggerable, CanRapidFire, Physical",
     "ActiveSkillsCode": "ethereal_knives_alt_y"
@@ -371,5 +372,104 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a circle of knives outwards around the caster which deal physical damage.",
+  "explicitMods": [
+    {
+      "text": "Deals (7–949) to (10–1423) Physical Damage",
+      "values": [
+        "(7–949)",
+        "(10–1423)"
+      ]
+    },
+    {
+      "text": "Fires (12–16) Projectiles",
+      "values": [
+        "(12–16)"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "Deals (7–949) to (10–1423) Physical Damage",
+      "values": [
+        "(7–949)",
+        "(10–1423)"
+      ]
+    },
+    {
+      "text": "Fires (12–16) Projectiles",
+      "values": [
+        "(12–16)"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "active skill projectile speed +% variation final [50]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (7–4698) to (10–7047) Physical Damage",
+      "values": [
+        "(7–4698)",
+        "(10–7047)"
+      ]
+    },
+    {
+      "text": "Fires (12–19) Projectiles",
+      "values": [
+        "(12–19)"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "active skill projectile speed +% variation final [50]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–3) Projectiles",
+      "values": [
+        "+(0–3)"
+      ]
+    },
+    {
+      "text": "Fires +(0–3) Projectiles",
+      "values": [
+        "+(0–3)"
+      ]
+    },
+    {
+      "text": "Fires +(0–3) Projectiles",
+      "values": [
+        "+(0–3)"
+      ]
+    }
+  ]
 }

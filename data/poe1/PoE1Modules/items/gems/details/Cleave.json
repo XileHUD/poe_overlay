@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Weapon",
+    "BaseType": "Cleave",
     "Class": "Skill Gems",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, Two Hand Swords, Two Hand Axes",
     "TargetTypes": "Ground, Enemy",
@@ -415,5 +416,80 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Only works with Axes and Swords.",
+  "explicitMods": [
+    {
+      "text": "When Dual Wielding, Deals 60% Damage from each Weapon combined",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "When Dual Wielding, Deals 60% Damage from each Weapon combined",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill double hits when dual wielding [1]",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Global Physical Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With at least 40 Strength in Radius, Hits with Cleave Fortify",
+      "values": []
+    },
+    {
+      "text": "With at least 40 Strength in Radius, Cleave has +0.1 metres to Radius per NearbyEnemy, up to a maximum of +1 metre",
+      "values": []
+    },
+    {
+      "text": "(Fortifying grants an amount of Fortification based on the Damage of the Hit)",
+      "values": []
+    },
+    {
+      "text": "(Take 1% less Damage from Hits per Fortification. Maximum 20 Fortification. Fortification lasts 6 seconds)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Fortifying grants an amount of Fortification based on the Damage of the Hit)",
+    "(Take 1% less Damage from Hits per Fortification. Maximum 20 Fortification. Fortification lasts 6 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+0.1 metres to radius per Nearby Enemy, up to a maximum of +1 metre",
+      "values": []
+    },
+    {
+      "text": "+0.1 metres to radius per Nearby Enemy, up to a maximum of +1 metre",
+      "values": []
+    }
+  ]
 }

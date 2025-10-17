@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Boneshatter of Complex Trauma",
     "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, MeleeSingleTarget, Multistrikeable, Melee, Area, Duration, Physical, InnateTrauma",
@@ -412,5 +413,125 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Attack enemies with a forceful melee strike that also hurts you. Successive uses will raise the damage dealt both to enemies and you. Stunning an enemy with the strike releases a damaging pulse. Requires a Mace, Sceptre, Axe or Staff.",
+  "explicitMods": [
+    {
+      "text": "(11–158) to (17–238) Added Attack Physical Damage",
+      "values": [
+        "(11–158)",
+        "(17–238)"
+      ]
+    },
+    {
+      "text": "Lose all Trauma on reaching 10 Trauma",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Gain 1 Trauma the first time this Attack Hits an EnemyTake (18–582) Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds",
+      "values": [
+        "(18–582)",
+        "6"
+      ]
+    },
+    {
+      "text": "(8–15)% more Damage per Trauma, up to 200%",
+      "values": [
+        "(8–15)"
+      ]
+    },
+    {
+      "text": "Pulse has 15% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "(11–158) to (17–238) Added Attack Physical Damage",
+      "values": [
+        "(11–158)",
+        "(17–238)"
+      ]
+    },
+    {
+      "text": "Lose all Trauma on reaching 10 Trauma",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Gain 1 Trauma the first time this Attack Hits an EnemyTake (18–582) Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds",
+      "values": [
+        "(18–582)",
+        "6"
+      ]
+    },
+    {
+      "text": "(8–15)% more Damage per Trauma, up to 200%",
+      "values": [
+        "(8–15)"
+      ]
+    },
+    {
+      "text": "Pulse has 15% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "(11–739) to (17–1108) Added Attack Physical Damage",
+      "values": [
+        "(11–739)",
+        "(17–1108)"
+      ]
+    },
+    {
+      "text": "Lose all Trauma on reaching 10 Trauma",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Gain 1 Trauma the first time this Attack Hits an EnemyTake (18–5066) Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds",
+      "values": [
+        "(18–5066)",
+        "6"
+      ]
+    },
+    {
+      "text": "(8–15)% more Damage per Trauma, up to 200%",
+      "values": [
+        "(8–15)"
+      ]
+    },
+    {
+      "text": "Pulse has 15% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
+      "values": [
+        "15"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–5)% more Damage per Trauma, up to 200%",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "(0–5)% more Damage per Trauma, up to 200%",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "(0–5)% more Damage per Trauma, up to 200%",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

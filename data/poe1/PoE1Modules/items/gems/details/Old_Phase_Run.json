@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Melee, Duration, Buff, Phasing",
     "DropLevel": "34",
+    "BaseType": "Old Phase Run",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, Duration, Triggerable, Movement, Instant, Physical, Travel, Cooldown",
@@ -414,5 +415,111 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Gain a buff that makes you faster, harder to detect, and grants Phasing, letting you pass through enemies. Performing any skill replaces this buff with one that boosts melee physical damage of skills you use yourself (it will not apply to your melee skills used by totems). Consumes Frenzy Charges to increase duration.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 1.8 seconds",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 0.2 seconds",
+      "values": [
+        "0.2"
+      ]
+    },
+    {
+      "text": "(20–30)% more Melee Physical Damage",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "100% increased Skill Duration per Frenzy Charge removed",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Buff grants 100% increased Stealth",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Buff grants Phasing",
+      "values": []
+    },
+    {
+      "text": "Buff grants (30–39)% increased Movement Speed",
+      "values": [
+        "(30–39)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.8 seconds",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 0.2 seconds",
+      "values": [
+        "0.2"
+      ]
+    },
+    {
+      "text": "(20–30)% more Melee Physical Damage",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "100% increased Skill Duration per Frenzy Charge removed",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Buff grants 100% increased Stealth",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Buff grants Phasing",
+      "values": []
+    },
+    {
+      "text": "Buff grants (30–39)% increased Movement Speed",
+      "values": [
+        "(30–39)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(While you have Phasing, your movement is not blocked by Enemies)",
+    "(While you have Phasing, your movement is not blocked by Enemies)",
+    "(While you have Phasing, your movement is not blocked by Enemies)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Buff grants (0–10)% increased Movement Speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Buff grants (0–10)% increased Movement Speed",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

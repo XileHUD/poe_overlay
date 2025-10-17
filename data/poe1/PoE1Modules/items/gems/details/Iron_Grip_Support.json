@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Projectile",
     "DropLevel": "18",
+    "BaseType": "Iron Grip Support",
     "Class": "Support Gems",
     "Icon": "i",
     "ItemType": "Metadata/Items/Gems/SupportGemIronGrip",
@@ -333,5 +334,43 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills that fire projectiles, making the increase to physical melee damage from strength also increase their physical projectile damage.",
+  "explicitMods": [
+    {
+      "text": "Strength's Damage bonus applies to Projectile Attack Damage as well for Supported Skills",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (0–38)% increased Projectile Damage",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Strength's Damage bonus applies to Projectile Attack Damage as well for Supported Skills",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (0–38)% increased Projectile Damage",
+      "values": [
+        "(0–38)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Hit, Melee, Intimidate, Poison, Bleeding",
     "DropLevel": "72",
+    "BaseType": "Awakened Melee Physical Damage Support",
     "Class": "Support Gems",
     "Icon": "M",
     "ItemType": "Metadata/Items/Gems/SupportGemMeleePhysicalDamagePlus",
@@ -214,5 +215,74 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports melee attack skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (50–54)% more Melee Physical Damage",
+      "values": [
+        "(50–54)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (50–54)% more Damage with Bleeding and Poison caused by Melee Hits",
+      "values": [
+        "(50–54)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% chance to Intimidate Enemies for 4 seconds on Hit",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 10% less Attack Speed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (50–54)% more Melee Physical Damage",
+      "values": [
+        "(50–54)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (50–54)% more Damage with Bleeding and Poison caused by Melee Hits",
+      "values": [
+        "(50–54)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% chance to Intimidate Enemies for 4 seconds on Hit",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 10% less Attack Speed",
+      "values": [
+        "10"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Intimidated enemies take 10% increased Attack Damage)",
+    "(Intimidated enemies take 10% increased Attack Damage)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Melee Physical Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Melee Physical Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

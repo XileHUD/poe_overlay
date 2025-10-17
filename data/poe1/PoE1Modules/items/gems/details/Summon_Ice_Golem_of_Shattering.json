@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Summon Ice Golem of Shattering",
     "TargetTypes": "Ground",
     "Type": "Triggerable, Cold, Mineable, Minion, MinionsCanExplode, Multicastable, Spell, Totemable, Trappable, Golem, CreatesMinion, Cooldown",
     "MinionType": "Attack, Melee, MeleeSingleTarget, Projectile, ProjectilesFromUser, Spell, Damage, Movement, Multistrikeable, ChillingArea",
@@ -332,5 +333,105 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons an Ice Golem. The Ice Golem can use an icy barrage spell and a chilling spinning attack in addition to its melee attack. If reduced to low life it will trigger a spell that destroys itself to deal area damage and fire icy projectiles in a circle.",
+  "explicitMods": [
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "active skill no golem aura [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [34,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [6]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "minion from alternate gem index [2]",
+      "values": []
+    },
+    {
+      "text": "(0–17)% increased Character Size",
+      "values": [
+        "(0–17)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "active skill no golem aura [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [34,100]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [6]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "minion from alternate gem index [2]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

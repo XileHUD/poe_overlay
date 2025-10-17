@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Double Strike of Momentum",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, MeleeSingleTarget, Multistrikeable, Melee",
@@ -292,5 +293,73 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Performs two fast strikes with a melee weapon, gaining stages which cause this skill to attack faster. All stages are lost when you move.",
+  "explicitMods": [
+    {
+      "text": "10% more Attack Speed for each Stage",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Gain a Stage at the start of each pair of swingsMaximum 10 Stages",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "10% more Attack Speed for each Stage",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Gain a Stage at the start of each pair of swingsMaximum 10 Stages",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "base skill number of additional hits [1]",
+      "values": []
+    },
+    {
+      "text": "10% more Attack Speed for each Stage",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Gain a Stage at the start of each pair of swingsMaximum 10 Stages",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "base skill number of additional hits [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–4)% more Attack Speed for each Stage",
+      "values": [
+        "(0–4)"
+      ]
+    },
+    {
+      "text": "(0–4)% more Attack Speed for each Stage",
+      "values": [
+        "(0–4)"
+      ]
+    },
+    {
+      "text": "(0–4)% more Attack Speed for each Stage",
+      "values": [
+        "(0–4)"
+      ]
+    }
+  ]
 }

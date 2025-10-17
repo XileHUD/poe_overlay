@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Aura",
     "DropLevel": "24",
+    "BaseType": "Pride",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Instant, AreaSpell, Physical, AuraAffectsEnemies, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -375,5 +376,69 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts an aura that causes nearby enemies to take more physical damage.",
+  "explicitMods": [
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Nearby Enemies take at least (15–19)% more Physical Damage, raising up to (30–39)% as they stay in the Aura for 4 seconds",
+      "values": [
+        "(15–19)",
+        "(30–39)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Nearby Enemies take at least (15–19)% more Physical Damage, raising up to (30–39)% as they stay in the Aura for 4 seconds",
+      "values": [
+        "(15–19)",
+        "(30–39)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "base_additional_physical_damage_reduction_%",
+      "values": []
+    },
+    {
+      "text": "receive_bleeding_chance_%_when_hit_by_attack",
+      "values": []
+    },
+    {
+      "text": "pride_physical_damage_taken_+%_final",
+      "values": []
+    },
+    {
+      "text": "using_pride",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

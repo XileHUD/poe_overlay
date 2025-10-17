@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Weapon, Melee, Totem",
     "DropLevel": "8",
+    "BaseType": "Ballista Totem Support",
     "Class": "Support Gems",
     "Icon": "R",
     "ItemType": "Metadata/Items/Gems/SupportGemRangedAttackTotem",
@@ -375,5 +376,103 @@
   "description": "This gem will work with both Power Siphon and Frenzy if the player has a ranged weapon equipped. Totems use the player's own skills as though the player had cast them, and therefore skills cast by totems are affected by Charges on the player. Totems themselves have a maximum Power Charge and Frenzy Charge limit of zero, because those charges would have no effect.",
   "stats": [
     "This gem will work with both Power Siphon and Frenzy if the player has a ranged weapon equipped. Totems use the player's own skills as though the player had cast them, and therefore skills cast by totems are affected by Charges on the player. Totems themselves have a maximum Power Charge and Frenzy Charge limit of zero, because those charges would have no effect."
+  ],
+  "gemDescription": "Supports any bow or wand attack skill, causing it to summon a ballista totem that uses the skill for you.",
+  "explicitMods": [
+    {
+      "text": "Supported Attack Skills cannot be used with Melee Weapons",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (24–32)% less Damage",
+      "values": [
+        "(24–32)"
+      ]
+    },
+    {
+      "text": "Supported Skills will summon a Ballista Totem which uses that Skill",
+      "values": []
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Supported Skills have +2 to maximum number of Summoned Ballista Totems",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Supported Skills have 50% less Attack Speed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Supported Attack Skills cannot be used with Melee Weapons",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (24–32)% less Damage",
+      "values": [
+        "(24–32)"
+      ]
+    },
+    {
+      "text": "Supported Skills will summon a Ballista Totem which uses that Skill",
+      "values": []
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Supported Skills have +2 to maximum number of Summoned Ballista Totems",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Supported Skills have 50% less Attack Speed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [60]",
+      "values": []
+    },
+    {
+      "text": "terrain arrow attachment chance reduction +% [200]",
+      "values": []
+    },
+    {
+      "text": "totem support gem level [8,70]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Totem Placement speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Totem Placement speed",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

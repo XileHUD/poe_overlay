@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Divine Ire of Disintegration",
     "TargetTypes": ", ,",
     "Type": "Spell, Area, Damage, Channel, Lightning, Totemable, AreaSpell, Physical",
     "ActiveSkillsCode": "divine_ire_alt_y"
@@ -371,5 +372,139 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Channelling draws in energy around you to repeatedly build up stages. Release to unleash this energy in a beam in front of you. Modifiers to area of effect do not affect this skill. Maximum of 10 Stages.",
+  "explicitMods": [
+    {
+      "text": "Deals (38–491) to (56–737) Physical Damage",
+      "values": [
+        "(38–491)",
+        "(56–737)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Beam deals 200% more Damage with Hits per Stage after the firstBeam deals 60% more Damage with Ailments per Stage after the first",
+      "values": [
+        "200",
+        "60"
+      ]
+    },
+    {
+      "text": "(0–19)% increased beam width",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Deals (38–491) to (56–737) Physical Damage",
+      "values": [
+        "(38–491)",
+        "(56–737)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Beam deals 200% more Damage with Hits per Stage after the firstBeam deals 60% more Damage with Ailments per Stage after the first",
+      "values": [
+        "200",
+        "60"
+      ]
+    },
+    {
+      "text": "(0–19)% increased beam width",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "divine tempest beam width + [0,4]",
+      "values": []
+    },
+    {
+      "text": "shock art variation [2]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (38–2487) to (56–3731) Physical Damage",
+      "values": [
+        "(38–2487)",
+        "(56–3731)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Beam deals 200% more Damage with Hits per Stage after the firstBeam deals 60% more Damage with Ailments per Stage after the first",
+      "values": [
+        "200",
+        "60"
+      ]
+    },
+    {
+      "text": "(0–34)% increased beam width",
+      "values": [
+        "(0–34)"
+      ]
+    },
+    {
+      "text": "divine tempest beam width + [0,8]",
+      "values": []
+    },
+    {
+      "text": "shock art variation [2]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased beam width",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased beam width",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased beam width",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

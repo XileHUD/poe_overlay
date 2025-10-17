@@ -154,7 +154,7 @@ export function render(): void {
     const key = tag.toLowerCase();
     const active = state.selectedTags.has(key);
     const count = tagCounts.get(tag) || 0;
-    return `<button class='ann-tag' data-tag='${key}' style='font-size:11px; padding:2px 10px; border-radius:999px; cursor:pointer; ${chipCss(tag, active)}'>${tag} <span style="opacity:.8">(${count})</span></button>`;
+    return `<button class='ann-tag' data-tag='${key}' style='font-size:11px; padding:2px 10px; border-radius:4px; cursor:pointer; ${chipCss(tag, active)}'>${tag} <span style="opacity:.8">(${count})</span></button>`;
   }).join(' ');
 
   const header = `<div style='max-width:980px; margin:0 auto;'>
@@ -163,7 +163,9 @@ export function render(): void {
       <input id='annointsSearch' type='text' placeholder='Search annoints...' style='flex:1 1 220px; min-width:200px; font-size:12px; padding:2px 6px; background:var(--bg-tertiary); color:var(--text-primary); border:1px solid var(--border-color); border-radius:4px;'>
       <button id='annointsClear' style='font-size:11px; padding:2px 8px; background:var(--bg-tertiary); color:var(--text-primary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer;'>Clear</button>
     </div>
-    <div id='annointsTagBar' style='display:flex; flex-wrap:wrap; gap:6px; margin:2px 0 10px 0; justify-content:center;'>${tagsHtml}</div>
+    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+      <div id='annointsTagBar' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center;'>${tagsHtml}</div>
+    </div>
   </div>`;
 
   if (!total) { panel.innerHTML = header + `<div class='no-mods'>No annoints.</div>`; return; }
@@ -198,13 +200,13 @@ export function render(): void {
         const label = key.replace(/\b\w/g, (m) => m.toUpperCase());
         const [r,g,b]=tagRGB(label);
         const bg=`rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const color='var(--text-primary)';
-        (btn as HTMLElement).style.cssText = `font-size:11px; padding:2px 10px; border-radius:999px; cursor:pointer; border:1px solid ${border}; background:${bg}; color:${color};`;
+        (btn as HTMLElement).style.cssText = `font-size:11px; padding:2px 10px; border-radius:4px; cursor:pointer; border:1px solid ${border}; background:${bg}; color:${color};`;
       } else {
         state.selectedTags.add(key);
         const label = key.replace(/\b\w/g, (m) => m.toUpperCase());
         const [r,g,b]=tagRGB(label);
         const bg=`rgba(${r},${g},${b},0.9)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = (luma>180? '#000':'#fff');
-        (btn as HTMLElement).style.cssText = `font-size:11px; padding:2px 10px; border-radius:999px; cursor:pointer; border:1px solid ${border}; background:${bg}; color:${color};`;
+        (btn as HTMLElement).style.cssText = `font-size:11px; padding:2px 10px; border-radius:4px; cursor:pointer; border:1px solid ${border}; background:${bg}; color:${color};`;
       }
       applyFilter();
     });
@@ -219,7 +221,7 @@ export function render(): void {
       const label = key.replace(/\b\w/g, (m) => m.toUpperCase());
       const [r,g,b]=tagRGB(label);
       const bg=`rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const color='var(--text-primary)';
-      (btn as HTMLElement).style.cssText = `font-size:11px; padding:2px 10px; border-radius:999px; cursor:pointer; border:1px solid ${border}; background:${bg}; color:${color};`;
+      (btn as HTMLElement).style.cssText = `font-size:11px; padding:2px 10px; border-radius:4px; cursor:pointer; border:1px solid ${border}; background:${bg}; color:${color};`;
     });
     applyFilter();
     state.searchInput?.focus();

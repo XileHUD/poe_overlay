@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Volatile Dead of Confinement",
     "TargetTypes": "Corpse",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, Cascadable, CanRapidFire, AreaSpell, Duration",
     "ActiveSkillsCode": "volatile_dead_alt_x"
@@ -371,5 +372,174 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Corpses near the targeted location explode, dealing damage in a small area and creating an orb which detonates after a duration, dealing spell damage in a larger area. The explosion of the corpse is not affected by modifiers to spell damage, and cannot be reflected.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Deals (25–938) to (37–1407) Fire Damage",
+      "values": [
+        "(25–938)",
+        "(37–1407)"
+      ]
+    },
+    {
+      "text": "Consumes up to 3 corpses",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (3–4)% of the corpse's Maximum Life",
+      "values": [
+        "(3–4)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.8 metres",
+      "values": [
+        "2.8"
+      ]
+    },
+    {
+      "text": "Base explosion radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Maximum of 60 Orbs at a time",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Deals (25–938) to (37–1407) Fire Damage",
+      "values": [
+        "(25–938)",
+        "(37–1407)"
+      ]
+    },
+    {
+      "text": "Consumes up to 3 corpses",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (3–4)% of the corpse's Maximum Life",
+      "values": [
+        "(3–4)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.8 metres",
+      "values": [
+        "2.8"
+      ]
+    },
+    {
+      "text": "Base explosion radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Maximum of 60 Orbs at a time",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Deals (25–4309) to (37–6464) Fire Damage",
+      "values": [
+        "(25–4309)",
+        "(37–6464)"
+      ]
+    },
+    {
+      "text": "Consumes up to 3 corpses",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (3–4.7)% of the corpse's Maximum Life",
+      "values": [
+        "(3–4.7)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.8 metres",
+      "values": [
+        "2.8"
+      ]
+    },
+    {
+      "text": "Base explosion radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Maximum of 60 Orbs at a time",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    }
+  ]
 }

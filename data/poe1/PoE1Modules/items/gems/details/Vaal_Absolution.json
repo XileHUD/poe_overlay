@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Absolution",
     "TargetTypes": "ROTATE_TO_TARGET, ,",
     "Type": "Spell, Minion, Duration, Physical, Lightning, MinionsCanExplode, CreatesMinion, Damage, Area, Multicastable, Cascadable, Triggerable, Totemable, Trappable, Mineable, CanRapidFire",
     "ActiveSkillsCode": "absolution"
@@ -331,5 +332,146 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Causes one of your existing Sentinels of Absolution to Ascend, becoming more powerful, gaining new spells, and overriding its duration, while maintaining its other bonuses, including from support gems. If you cannot have more Ascended Sentinels of Absolution, an existing one will be refreshed instead.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 15 seconds",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Maximum 1 Ascended Sentinel of AbsolutionAscended Sentinel does not count towards the regular limit",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Ascended Sentinels deal 200% more Damage",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Ascended Sentinels take 70% less Damage",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "Base duration is 15 seconds",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Maximum 1 Ascended Sentinel of AbsolutionAscended Sentinel does not count towards the regular limit",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Ascended Sentinels deal 200% more Damage",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Ascended Sentinels take 70% less Damage",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (28–5936) to (43–8903) Physical Damage",
+      "values": [
+        "(28–5936)",
+        "(43–8903)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 10 seconds",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Maximum 3 Summoned Sentinels of Absolution",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "+(0–1.1) metres to radius",
+      "values": [
+        "+(0–1.1)"
+      ]
+    },
+    {
+      "text": "25% chance to Summon a Sentinel of Absolution on Hitting a Rare or Unique Enemy",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "This Spell and Minions Convert 50% of Physical Damage to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "base display minion actor level [12,100]",
+      "values": []
+    },
+    {
+      "text": "base max number of vaal absolution sentinels [1]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [19]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

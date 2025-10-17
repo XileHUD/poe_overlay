@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Melee",
     "DropLevel": "72",
+    "BaseType": "Awakened Multistrike Support",
     "Class": "Support Gems",
     "Icon": "3",
     "ItemType": "Metadata/Items/Gems/SupportGemMultistrikePlus",
@@ -194,5 +195,99 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports melee attack skills, making them repeat three times when used, targeting a random enemy each time. Cannot support Vaal skills, channelling skills, travel skills, retaliation skills or triggered skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills Repeat 3 additional times",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Supported Skills have (45–47)% more Melee Attack Speed",
+      "values": [
+        "(45–47)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal 20% less Attack Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "First Repeat of Supported Skills deals 22% more Damage",
+      "values": [
+        "22"
+      ]
+    },
+    {
+      "text": "Second Repeat of Supported Skills deals 44% more Damage",
+      "values": [
+        "44"
+      ]
+    },
+    {
+      "text": "Third Repeat of Supported Skills deals 66% more Damage",
+      "values": [
+        "66"
+      ]
+    },
+    {
+      "text": "Supported Skills Repeat 3 additional times",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Supported Skills have (45–47)% more Melee Attack Speed",
+      "values": [
+        "(45–47)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal 20% less Attack Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "First Repeat of Supported Skills deals 22% more Damage",
+      "values": [
+        "22"
+      ]
+    },
+    {
+      "text": "Second Repeat of Supported Skills deals 44% more Damage",
+      "values": [
+        "44"
+      ]
+    },
+    {
+      "text": "Third Repeat of Supported Skills deals 66% more Damage",
+      "values": [
+        "66"
+      ]
+    },
+    {
+      "text": "repeat target selection distance from initial target bias [3]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Melee Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Melee Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

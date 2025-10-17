@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Siege Ballista of Trarthus",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Attack, Projectile, ProjectilesFromUser, RangedAttack, Trappable, Mineable, SummonsTotem, AttackInPlaceIsDefault, TotemsAreBallistae",
@@ -292,5 +293,163 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a ring of ballista totems around a targeted location. These ballistae fire once at the targeted location and then expire. Requires a Bow.",
+  "explicitMods": [
+    {
+      "text": "Arrows Pierce (6–9) additional Targets",
+      "values": [
+        "(6–9)"
+      ]
+    },
+    {
+      "text": "300% increased Totem Placement range",
+      "values": [
+        "300"
+      ]
+    },
+    {
+      "text": "Totem lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "+(3–7) to maximum number of Summoned Totems",
+      "values": [
+        "+(3–7)"
+      ]
+    },
+    {
+      "text": "Summons (4–8) Ballista Totems in a ring which use this Skill",
+      "values": [
+        "(4–8)"
+      ]
+    },
+    {
+      "text": "Totems expire after Attacking once",
+      "values": []
+    },
+    {
+      "text": "Arrows Pierce (6–9) additional Targets",
+      "values": [
+        "(6–9)"
+      ]
+    },
+    {
+      "text": "300% increased Totem Placement range",
+      "values": [
+        "300"
+      ]
+    },
+    {
+      "text": "Totem lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "+(3–7) to maximum number of Summoned Totems",
+      "values": [
+        "+(3–7)"
+      ]
+    },
+    {
+      "text": "Summons (4–8) Ballista Totems in a ring which use this Skill",
+      "values": [
+        "(4–8)"
+      ]
+    },
+    {
+      "text": "Totems expire after Attacking once",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [80]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "totem formation radius override [3]",
+      "values": []
+    },
+    {
+      "text": "300% increased Totem Placement range",
+      "values": [
+        "300"
+      ]
+    },
+    {
+      "text": "Totem lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "+(3–11) to maximum number of Summoned Totems",
+      "values": [
+        "+(3–11)"
+      ]
+    },
+    {
+      "text": "Summons 4 Ballista Totems in a ring which use this Skill",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Totems expire after Attacking once",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [80]",
+      "values": []
+    },
+    {
+      "text": "ignores trap and mine cooldown limit [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "totem formation radius override [3]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Projectile Damage",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Projectile Damage",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

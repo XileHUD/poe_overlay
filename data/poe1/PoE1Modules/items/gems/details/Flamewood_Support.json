@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Avenging Flame",
     "TargetTypes": "Enemy",
     "Type": "Spell, Damage, Area, AreaSpell, Fire, ProjectileNumber, ProjectileSpeed, Triggerable, SkillGrantedBySupport, Triggered, InbuiltTrigger",
     "ActiveSkillsCode": "avenging_flame"
@@ -331,5 +332,119 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which summon totems. Cannot modify the skills of minions.",
+  "explicitMods": [
+    {
+      "text": "Totems from Supported Skills gain the Avenging FlameSkill and Trigger it when Hit by an Enemy",
+      "values": []
+    },
+    {
+      "text": "Base radius is (1.3–1.8) metres",
+      "values": [
+        "(1.3–1.8)"
+      ]
+    },
+    {
+      "text": "Deals base Fire Damage equal to (80–137)% of Totem's Maximum Life",
+      "values": [
+        "(80–137)"
+      ]
+    },
+    {
+      "text": "Totems with this Skill Trigger it when Hit by an Enemy",
+      "values": []
+    },
+    {
+      "text": "Totems from Supported Skills gain the Avenging FlameSkill and Trigger it when Hit by an Enemy",
+      "values": []
+    },
+    {
+      "text": "Base radius is (1.3–1.8) metres",
+      "values": [
+        "(1.3–1.8)"
+      ]
+    },
+    {
+      "text": "Deals base Fire Damage equal to (80–137)% of Totem's Maximum Life",
+      "values": [
+        "(80–137)"
+      ]
+    },
+    {
+      "text": "Totems with this Skill Trigger it when Hit by an Enemy",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "do not predict totem life [1]",
+      "values": []
+    },
+    {
+      "text": "infernal bolt cannot be triggered [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Base radius is (1.3–2.3) metres",
+      "values": [
+        "(1.3–2.3)"
+      ]
+    },
+    {
+      "text": "Deals base Fire Damage equal to (80–182)% of Totem's Maximum Life",
+      "values": [
+        "(80–182)"
+      ]
+    },
+    {
+      "text": "Totems with this Skill Trigger it when Hit by an Enemy",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "do not predict totem life [1]",
+      "values": []
+    },
+    {
+      "text": "infernal bolt cannot be triggered [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Totem Life",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Totem Life",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

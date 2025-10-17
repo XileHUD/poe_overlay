@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Ground Slam",
     "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Area, Multistrikeable, Melee, Slam, Totemable",
@@ -372,5 +373,134 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slams the ground in front of you, creating a wave that travels in all directions that damages enemies with an increased chance to stun. The wave deals more damage to closer enemies. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "+(0–0.9) metres to radius",
+      "values": [
+        "+(0–0.9)"
+      ]
+    },
+    {
+      "text": "25% reduced Enemy Stun Threshold",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "200% increased Stun Duration on enemies",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Deals up to (40–49)% more Damage with Hits to closer targets",
+      "values": [
+        "(40–49)"
+      ]
+    },
+    {
+      "text": "This Attack can be Exerted as though it was not a Vaal Skill",
+      "values": []
+    },
+    {
+      "text": "+(0–0.9) metres to radius",
+      "values": [
+        "+(0–0.9)"
+      ]
+    },
+    {
+      "text": "25% reduced Enemy Stun Threshold",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "200% increased Stun Duration on enemies",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Deals up to (40–49)% more Damage with Hits to closer targets",
+      "values": [
+        "(40–49)"
+      ]
+    },
+    {
+      "text": "This Attack can be Exerted as though it was not a Vaal Skill",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (0–100)% more Damage",
+      "values": [
+        "(0–100)"
+      ]
+    },
+    {
+      "text": "25% reduced Enemy Stun Threshold",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Deals up to +20% more Damage with Hits to closer targets",
+      "values": [
+        "+20"
+      ]
+    },
+    {
+      "text": "action attack or cast time uses animation length [1]",
+      "values": []
+    },
+    {
+      "text": "active skill area of effect radius +% final [10]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(The Stun Threshold determines how much Damage can Stun something)",
+    "(The Stun Threshold determines how much Damage can Stun something)",
+    "(The Stun Threshold determines how much Damage can Stun something)",
+    "(The Stun Threshold determines how much Damage can Stun something)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Deals up to +(0–20)% more Damage with Hits to closer targets",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Deals up to +(0–20)% more Damage with Hits to closer targets",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

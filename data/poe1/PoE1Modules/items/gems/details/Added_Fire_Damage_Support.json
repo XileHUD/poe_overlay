@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "DropLevel": "8",
+    "BaseType": "Added Fire Damage Support",
     "Class": "Support Gems",
     "Icon": "F",
     "ItemType": "Metadata/Items/Gems/SupportGemAddedFireDamage",
@@ -332,5 +333,35 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills gain (25–39)% of Physical Damage as Extra Fire Damage",
+      "values": [
+        "(25–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills gain (25–39)% of Physical Damage as Extra Fire Damage",
+      "values": [
+        "(25–39)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Fire Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Fire Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Exert, Melee, Warcry, Buff, Intimidate, Taunt",
     "DropLevel": "10",
+    "BaseType": "Intimidating Cry",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Area, Buff, Duration, Warcry, Cooldown, Physical",
@@ -415,5 +416,165 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Performs a warcry, taunting nearby enemies to attack the user and exerting subsequent attacks. The user and nearby allies gain a buff that grants movement speed.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (2.5–3.4) seconds",
+      "values": [
+        "(2.5–3.4)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Warcry Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Enemies Taunted by this Warcry are Intimidated",
+      "values": []
+    },
+    {
+      "text": "Buff grants 3% increased Movement Speed per 5 Power, counting a maximum of 30 Power",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Exerts the next 2 Melee Attacks you perform",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Exerted Attacks deal Double Damage",
+      "values": []
+    },
+    {
+      "text": "Counts total Power of Enemies in Range",
+      "values": []
+    },
+    {
+      "text": "Base duration is (2.5–3.4) seconds",
+      "values": [
+        "(2.5–3.4)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Warcry Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Enemies Taunted by this Warcry are Intimidated",
+      "values": []
+    },
+    {
+      "text": "Buff grants 3% increased Movement Speed per 5 Power, counting a maximum of 30 Power",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Exerts the next 2 Melee Attacks you perform",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Exerted Attacks deal Double Damage",
+      "values": []
+    },
+    {
+      "text": "Counts total Power of Enemies in Range",
+      "values": []
+    },
+    {
+      "text": "base deal no attack damage [1]",
+      "values": []
+    },
+    {
+      "text": "base deal no secondary damage [1]",
+      "values": []
+    },
+    {
+      "text": "base deal no spell damage [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "use intimidating cry buff visual for intimidate [1]",
+      "values": []
+    },
+    {
+      "text": "Trigger Level 20 Intimidating Cry when you lose Cat's Stealth",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(110–150)% increased Evasion Rating",
+      "values": [
+        "(110–150)"
+      ]
+    },
+    {
+      "text": "+(50–70) to maximum Life",
+      "values": [
+        "+(50–70)"
+      ]
+    },
+    {
+      "text": "20% increased Movement Speed",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(40–50)% chance to Avoid Bleeding",
+      "values": [
+        "(40–50)"
+      ]
+    },
+    {
+      "text": "20% increased Movement Speed while you have Cat's Stealth",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "base_movement_velocity_+%",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
+    "(Intimidated enemies take 10% increased Attack Damage)",
+    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
+    "(Intimidated enemies take 10% increased Attack Damage)",
+    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
+    "(Intimidated enemies take 10% increased Attack Damage)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

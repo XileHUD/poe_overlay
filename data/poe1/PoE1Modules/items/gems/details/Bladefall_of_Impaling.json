@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Bladefall of Impaling",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Area, Trappable, Mineable, Totemable, Damage, Triggerable, Multicastable, Cascadable, CanRapidFire, AreaSpell, Physical",
     "ActiveSkillsCode": "bladefall_alt_y"
@@ -371,5 +372,123 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Ethereal weapons rain from the sky, dealing damage to enemies in a sequence of volleys. Enemies can be hit multiple times where these overlap.",
+  "explicitMods": [
+    {
+      "text": "Deals (43–595) to (65–893) Physical Damage",
+      "values": [
+        "(43–595)",
+        "(65–893)"
+      ]
+    },
+    {
+      "text": "5 Volleys",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Critical Strikes do not deal extra Damage",
+      "values": []
+    },
+    {
+      "text": "(50–107)% increased Impale Effect",
+      "values": [
+        "(50–107)"
+      ]
+    },
+    {
+      "text": "Critical Strikes Impale Enemies on Hit",
+      "values": []
+    },
+    {
+      "text": "Deals (43–595) to (65–893) Physical Damage",
+      "values": [
+        "(43–595)",
+        "(65–893)"
+      ]
+    },
+    {
+      "text": "5 Volleys",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Critical Strikes do not deal extra Damage",
+      "values": []
+    },
+    {
+      "text": "(50–107)% increased Impale Effect",
+      "values": [
+        "(50–107)"
+      ]
+    },
+    {
+      "text": "Critical Strikes Impale Enemies on Hit",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (43–3111) to (65–4667) Physical Damage",
+      "values": [
+        "(43–3111)",
+        "(65–4667)"
+      ]
+    },
+    {
+      "text": "5 Volleys",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Critical Strikes do not deal extra Damage",
+      "values": []
+    },
+    {
+      "text": "(50–152)% increased Impale Effect",
+      "values": [
+        "(50–152)"
+      ]
+    },
+    {
+      "text": "Critical Strikes Impale Enemies on Hit",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)",
+    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)",
+    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)",
+    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Impale Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Impale Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Impale Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

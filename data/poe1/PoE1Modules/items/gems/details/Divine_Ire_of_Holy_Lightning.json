@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Divine Ire of Holy Lightning",
     "TargetTypes": ", ,",
     "Type": "Spell, Area, Damage, Channel, Lightning, Totemable, AreaSpell, Physical",
     "ActiveSkillsCode": "divine_ire_alt_x"
@@ -371,5 +372,149 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Channelling draws in energy around you to repeatedly build up stages, damaging a number of nearby enemies when you do so. Release to unleash this energy in a powerful burst around you. Maximum of 10 Stages.",
+  "explicitMods": [
+    {
+      "text": "Deals (27–353) to (40–529) Physical Damage",
+      "values": [
+        "(27–353)",
+        "(40–529)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Damages (6–10) nearby Enemies when you gain Stages",
+      "values": [
+        "(6–10)"
+      ]
+    },
+    {
+      "text": "20% less Area of Effect",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Burst deals 140% more Damage with Hits per Stage after the firstBurst deals 90% more Damage with Ailments per Stage after the first",
+      "values": [
+        "140",
+        "90"
+      ]
+    },
+    {
+      "text": "Deals (27–353) to (40–529) Physical Damage",
+      "values": [
+        "(27–353)",
+        "(40–529)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Damages (6–10) nearby Enemies when you gain Stages",
+      "values": [
+        "(6–10)"
+      ]
+    },
+    {
+      "text": "20% less Area of Effect",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Burst deals 140% more Damage with Hits per Stage after the firstBurst deals 90% more Damage with Ailments per Stage after the first",
+      "values": [
+        "140",
+        "90"
+      ]
+    },
+    {
+      "text": "shock art variation [2]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (27–1786) to (40–2679) Physical Damage",
+      "values": [
+        "(27–1786)",
+        "(40–2679)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Damages (6–14) nearby Enemies when you gain Stages",
+      "values": [
+        "(6–14)"
+      ]
+    },
+    {
+      "text": "20% less Area of Effect",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Burst deals 140% more Damage with Hits per Stage after the firstBurst deals 90% more Damage with Ailments per Stage after the first",
+      "values": [
+        "140",
+        "90"
+      ]
+    },
+    {
+      "text": "shock art variation [2]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Damages (0–4) nearby Enemies when you gain Stages",
+      "values": [
+        "(0–4)"
+      ]
+    },
+    {
+      "text": "Damages (0–4) nearby Enemies when you gain Stages",
+      "values": [
+        "(0–4)"
+      ]
+    },
+    {
+      "text": "Damages (0–4) nearby Enemies when you gain Stages",
+      "values": [
+        "(0–4)"
+      ]
+    }
+  ]
 }

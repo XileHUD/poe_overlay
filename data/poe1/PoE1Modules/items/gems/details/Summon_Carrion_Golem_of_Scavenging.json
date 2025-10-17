@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Summon Carrion Golem of Scavenging",
     "TargetTypes": "Ground",
     "Type": "Triggerable, Physical, Mineable, Minion, MinionsCanExplode, Multicastable, Spell, Totemable, Trappable, Golem, CreatesMinion, Cooldown",
     "MinionType": "Attack, Melee, MeleeSingleTarget, Movement, Area, Multistrikeable",
@@ -332,5 +333,126 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a Carrion Golem. The Carrion Golem attacks with a series of slashes that increase in speed and damage, can consume corpses to heal itself and gain the ability to unleash a devastating cascade of bone spikes, and deals more damage for each of your non-golem minions near it.",
+  "explicitMods": [
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Golems deal 5% more Damage per Non-Golem Minion near them, up to 50%",
+      "values": [
+        "5",
+        "50"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Golems deal 5% more Damage per Non-Golem Minion near them, up to 50%",
+      "values": [
+        "5",
+        "50"
+      ]
+    },
+    {
+      "text": "active skill minion from alternate gem index [2]",
+      "values": []
+    },
+    {
+      "text": "active skill no golem aura [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [34,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [7]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "(0–17)% increased Character Size",
+      "values": [
+        "(0–17)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Golems deal 5% more Damage per Non-Golem Minion near them, up to 50%",
+      "values": [
+        "5",
+        "50"
+      ]
+    },
+    {
+      "text": "active skill minion from alternate gem index [2]",
+      "values": []
+    },
+    {
+      "text": "active skill no golem aura [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [34,100]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [7]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Minions Regenerate (0–3)% of Life per second",
+      "values": [
+        "(0–3)"
+      ]
+    },
+    {
+      "text": "Minions Regenerate (0–3)% of Life per second",
+      "values": [
+        "(0–3)"
+      ]
+    },
+    {
+      "text": "Minions Regenerate (0–3)% of Life per second",
+      "values": [
+        "(0–3)"
+      ]
+    }
+  ]
 }

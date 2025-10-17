@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Armageddon Brand of Volatility",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, Fire, Duration, Totemable, Trappable, Mineable, Triggerable, Multicastable, Brand, AreaSpell",
     "ActiveSkillsCode": "armageddon_brand_alt_x"
@@ -331,5 +332,150 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a magical brand which can attach to a nearby enemy. It activates once, causing a fiery meteor to fall from the sky, then is destroyed.",
+  "explicitMods": [
+    {
+      "text": "Deals (125–1676) to (188–2514) Fire Damage",
+      "values": [
+        "(125–1676)",
+        "(188–2514)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.6 metres",
+      "values": [
+        "2.6"
+      ]
+    },
+    {
+      "text": "Cannot be Recalled",
+      "values": []
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Activates once when Attached, then is Destroyed",
+      "values": []
+    },
+    {
+      "text": "Deals (125–1676) to (188–2514) Fire Damage",
+      "values": [
+        "(125–1676)",
+        "(188–2514)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.6 metres",
+      "values": [
+        "2.6"
+      ]
+    },
+    {
+      "text": "Cannot be Recalled",
+      "values": []
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Activates once when Attached, then is Destroyed",
+      "values": []
+    },
+    {
+      "text": "base number of sigils allowed per target [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (125–8613) to (188–12920) Fire Damage",
+      "values": [
+        "(125–8613)",
+        "(188–12920)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.6 metres",
+      "values": [
+        "2.6"
+      ]
+    },
+    {
+      "text": "Cannot be Recalled",
+      "values": []
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Activates once when Attached, then is Destroyed",
+      "values": []
+    },
+    {
+      "text": "base number of sigils allowed per target [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

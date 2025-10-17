@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Molten Shell",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Duration, Totemable, TotemCastsWhenNotDetached, Fire, Instant, AreaSpell, Physical, Triggerable, Guard, Cooldown",
     "ActiveSkillsCode": "molten_shell"
@@ -291,5 +292,131 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Applies a buff that raises your armour, and takes some of the damage from hits for you before being depleted. Each second, the skill deals reflected damage to surrounding enemies based on the damage taken by the buff in that second. When the buff is removed, the skill deals reflected damage to enemies around you based on the total damage that was taken by the buff. You cannot have the buff at the same time as any other Guard skill.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 9 seconds",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "(35–39)% of Damage from Hits is taken from the Buff before your Life or Energy ShieldBuff can take Damage equal to 20% of your Armour, up to a maximum of 10000",
+      "values": [
+        "(35–39)",
+        "20",
+        "10000"
+      ]
+    },
+    {
+      "text": "Reflects (300–9000)% of Damage taken from Buff as Fire Damage each second,or when Buff expires or is depleted",
+      "values": [
+        "(300–9000)"
+      ]
+    },
+    {
+      "text": "Buff grants +(115–858) to Armour",
+      "values": [
+        "+(115–858)"
+      ]
+    },
+    {
+      "text": "Base duration is 9 seconds",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "(35–39)% of Damage from Hits is taken from the Buff before your Life or Energy ShieldBuff can take Damage equal to 20% of your Armour, up to a maximum of 10000",
+      "values": [
+        "(35–39)",
+        "20",
+        "10000"
+      ]
+    },
+    {
+      "text": "Reflects (300–9000)% of Damage taken from Buff as Fire Damage each second,or when Buff expires or is depleted",
+      "values": [
+        "(300–9000)"
+      ]
+    },
+    {
+      "text": "Buff grants +(115–858) to Armour",
+      "values": [
+        "+(115–858)"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "damage originates from initiator location [1]",
+      "values": []
+    },
+    {
+      "text": "molten shell explode each hit [1]",
+      "values": []
+    },
+    {
+      "text": "skill override pvp scaling time ms [1400]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "75% of Damage from Hits is taken from the Buff before your Life or Energy ShieldBuff can take Damage equal to 10% of your Armour, up to a maximum of 5000",
+      "values": [
+        "75",
+        "10",
+        "5000"
+      ]
+    },
+    {
+      "text": "Buff grants +(115–1929) to Armour",
+      "values": [
+        "+(115–1929)"
+      ]
+    },
+    {
+      "text": "damage originates from initiator location [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill override pvp scaling time ms [200]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Skill Effect Duration",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Skill Effect Duration",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

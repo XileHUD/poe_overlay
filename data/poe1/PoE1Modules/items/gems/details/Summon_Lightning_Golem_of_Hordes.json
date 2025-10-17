@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Summon Lightning Golem of Hordes",
     "TargetTypes": "Ground",
     "Type": "Triggerable, Lightning, Mineable, Minion, MinionsCanExplode, Multicastable, Spell, Totemable, Trappable, Golem, CreatesMinion, Cooldown",
     "MinionType": "Damage, Area, Aura, Projectile, ProjectilesFromUser, Duration, Spell, Buff",
@@ -292,5 +293,97 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a Lightning Golem. The Lightning Golem fires a projectile spell, creates orbs of Lightning that zap nearby enemies, and casts a temporary aura that grants added Lightning Damage to spells and attacks used by the Golem and its nearby allies.",
+  "explicitMods": [
+    {
+      "text": "20% reduced Character Size",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Maximum 3 Summoned Golems",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "20% reduced Character Size",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Maximum 3 Summoned Golems",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "active skill no golem aura [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [34,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [11]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "20% reduced Character Size",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Maximum 3 Summoned Golems",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "active skill no golem aura [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [34,100]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [11]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

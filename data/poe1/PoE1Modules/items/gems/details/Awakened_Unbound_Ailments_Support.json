@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Duration, Ailment",
     "DropLevel": "72",
+    "BaseType": "Awakened Unbound Ailments Support",
     "Class": "Support Gems",
     "Icon": "U",
     "ItemType": "Metadata/Items/Gems/SupportGemUnboundAilmentsPlus",
@@ -234,5 +235,69 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports any skill that hits enemies or inflicts ailments",
+  "explicitMods": [
+    {
+      "text": "(55–69)% increased Duration of Ailments inflicted with Supported Skills",
+      "values": [
+        "(55–69)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (55–69)% increased Effect of non-Damaging Ailments on Enemies",
+      "values": [
+        "(55–69)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (20–22)% more Damage with Ailments",
+      "values": [
+        "(20–22)"
+      ]
+    },
+    {
+      "text": "(55–69)% increased Duration of Ailments inflicted with Supported Skills",
+      "values": [
+        "(55–69)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (55–69)% increased Effect of non-Damaging Ailments on Enemies",
+      "values": [
+        "(55–69)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (20–22)% more Damage with Ailments",
+      "values": [
+        "(20–22)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
+    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
+    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Duration of Ailments inflicted with Supported Skills",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Duration of Ailments inflicted with Supported Skills",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

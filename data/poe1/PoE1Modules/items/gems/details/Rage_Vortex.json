@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Rage",
     "DropLevel": "28",
+    "BaseType": "Rage Vortex",
     "Class": "Skill Gems",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, Two Hand Swords, Two Hand Axes",
     "TargetTypes": "Enemy, Ground",
@@ -336,5 +337,123 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Spin with a sword or axe to deal damage in an area around you. Sacrifices some rage to send a ragestorm forward. While enemies are inside it, the ragestorm will slow its movement and repeatedly deal attack damage based on your attack speed.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Base radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Sacrifices 20% of Rage to create a Ragestorm, if you have at least 10 Rage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Ragestorm deals 10% more Damage per 1 Rage Sacrificed",
+      "values": [
+        "10",
+        "1"
+      ]
+    },
+    {
+      "text": "Ragestorm has +0.1 metres to radius per 2 Rage sacrificed",
+      "values": [
+        "+0.1",
+        "2"
+      ]
+    },
+    {
+      "text": "Ragestorm Hits 250% more Frequently",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "Maximum 1 Ragestorm",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Base radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Sacrifices 20% of Rage to create a Ragestorm, if you have at least 10 Rage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Ragestorm deals 10% more Damage per 1 Rage Sacrificed",
+      "values": [
+        "10",
+        "1"
+      ]
+    },
+    {
+      "text": "Ragestorm has +0.1 metres to radius per 2 Rage sacrificed",
+      "values": [
+        "+0.1",
+        "2"
+      ]
+    },
+    {
+      "text": "Ragestorm Hits 250% more Frequently",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "Maximum 1 Ragestorm",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Sacrifices +(0–5)% of Rage when creating a Ragestorm",
+      "values": [
+        "+(0–5)"
+      ]
+    },
+    {
+      "text": "Sacrifices +(0–5)% of Rage when creating a Ragestorm",
+      "values": [
+        "+(0–5)"
+      ]
+    }
+  ]
 }

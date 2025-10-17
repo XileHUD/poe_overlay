@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Earthshatter of Fragility",
     "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Attack, Area, Melee, Slam, Multistrikeable, Duration, Totemable",
@@ -332,5 +333,130 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slam the ground, sending out rectangular fissures that deal area damage to enemies and thrust a spike from the ground when they end. The spikes shatter after a duration, damaging surrounding enemies. Works with Maces, Sceptres, Axes, Staves and Unarmed.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "(0–19)% more Area of Effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Shattering Spikes deal 30% less damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Creates 5 fissures",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Maximum 15 Spikes",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "(0–19)% more Area of Effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Shattering Spikes deal 30% less damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Creates 5 fissures",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Maximum 15 Spikes",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "(0–34)% more Area of Effect",
+      "values": [
+        "(0–34)"
+      ]
+    },
+    {
+      "text": "Shattering Spikes deal 30% less damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Creates 5 fissures",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Maximum 15 Spikes",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–3) Maximum SpikesCreates +(0–1) fissure",
+      "values": [
+        "+(0–3)",
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–3) Maximum SpikesCreates +(0–1) fissure",
+      "values": [
+        "+(0–3)",
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–3) Maximum SpikesCreates +(0–1) fissure",
+      "values": [
+        "+(0–3)",
+        "+(0–1)"
+      ]
+    }
+  ]
 }

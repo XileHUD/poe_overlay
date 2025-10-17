@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Duration, Curse, Hex",
     "DropLevel": "31",
+    "BaseType": "Cursed Ground Support",
     "Class": "Support Gems",
     "Icon": "_",
     "ItemType": "Metadata/Items/Gems/SupportGemCursedGround",
@@ -333,5 +334,35 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports non-aura hex curse skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills create Cursed Ground with a base Duration of (15–34) secondsHexes from Supported Skills have no DurationEnemies on the Cursed Ground from a Supported Skill are Cursed with that HexMaximum 1 area of Cursed Ground",
+      "values": [
+        "(15–34)"
+      ]
+    },
+    {
+      "text": "Supported Skills create Cursed Ground with a base Duration of (15–34) secondsHexes from Supported Skills have no DurationEnemies on the Cursed Ground from a Supported Skill are Cursed with that HexMaximum 1 area of Cursed Ground",
+      "values": [
+        "(15–34)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Area of Effect of Supported Curse Skills",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Area of Effect of Supported Curse Skills",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

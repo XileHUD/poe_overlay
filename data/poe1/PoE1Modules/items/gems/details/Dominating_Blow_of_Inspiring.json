@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Dominating Blow of Inspiring",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Minion, Duration, MinionsCanExplode, MeleeSingleTarget, Multistrikeable, Melee, CreatesMinion",
@@ -293,5 +294,171 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Attacks enemies with a melee strike, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the enemy's corpse will be consumed and a Sentinel of Dominance with the same rarity, prefix and suffix modifiers will be summoned for a longer secondary duration.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 20 seconds",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at 250% of their value",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "Maximum 3 Summoned Magic Sentinels of Dominance",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Maximum 6 Summoned Normal Sentinels of Dominance",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Rare Sentinel of Dominance",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "25% Chance to Summon a Normal Sentinel of Dominance on Hitting a Unique Monster",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 20 seconds",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at 250% of their value",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "Maximum 3 Summoned Magic Sentinels of Dominance",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Maximum 6 Summoned Normal Sentinels of Dominance",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Rare Sentinel of Dominance",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "25% Chance to Summon a Normal Sentinel of Dominance on Hitting a Unique Monster",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "base max number of vaal dominated monsters [3]",
+      "values": []
+    },
+    {
+      "text": "is dominated [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 20 seconds",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at 250% of their value",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "Maximum 3 Summoned Magic Sentinels of Dominance",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Maximum 6 Summoned Normal Sentinels of Dominance",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Rare Sentinel of Dominance",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "25% Chance to Summon a Normal Sentinel of Dominance on Hitting a Unique Monster",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "base max number of vaal dominated monsters [3]",
+      "values": []
+    },
+    {
+      "text": "is dominated [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at (0–50)% of their value",
+      "values": [
+        "(0–50)"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at (0–50)% of their value",
+      "values": [
+        "(0–50)"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at (0–50)% of their value",
+      "values": [
+        "(0–50)"
+      ]
+    }
+  ]
 }

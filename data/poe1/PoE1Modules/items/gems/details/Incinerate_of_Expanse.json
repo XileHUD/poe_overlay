@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Incinerate of Expanse",
     "TargetTypes": ", ,",
     "Type": "Spell, Damage, Totemable, Fire, Channel, Area, AreaSpell, Cooldown",
     "ActiveSkillsCode": "incinerate_alt_x"
@@ -371,5 +372,197 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Continuously launches a torrent of fire from your hand, repeatedly damaging enemies. As you channel this spell longer, the flames spread wider close to you and spread longer directly in front of you. When you stop channelling you release a slow-moving wave of fire damage over a very large area that will apply a powerful Ignite.",
+  "explicitMods": [
+    {
+      "text": "Deals (3–207) to (5–311) Fire Damage",
+      "values": [
+        "(3–207)",
+        "(5–311)"
+      ]
+    },
+    {
+      "text": "25% more Damage with Hits and Ailments for each stage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "100% increased angle per stage, up to 300%",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Final wave always Ignites",
+      "values": []
+    },
+    {
+      "text": "4 maximum Stages",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "+(0.4–0.5) metres to radius per stage, up to a maximum of +(1.5–1.9) metres",
+      "values": [
+        "+(0.4–0.5)",
+        "+(1.5–1.9)"
+      ]
+    },
+    {
+      "text": "Final wave deals 700% more Damage with Hits",
+      "values": [
+        "700"
+      ]
+    },
+    {
+      "text": "Final wave deals 400% more Damage with Ignite",
+      "values": [
+        "400"
+      ]
+    },
+    {
+      "text": "Deals (3–207) to (5–311) Fire Damage",
+      "values": [
+        "(3–207)",
+        "(5–311)"
+      ]
+    },
+    {
+      "text": "25% more Damage with Hits and Ailments for each stage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "100% increased angle per stage, up to 300%",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Final wave always Ignites",
+      "values": []
+    },
+    {
+      "text": "4 maximum Stages",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "+(0.4–0.5) metres to radius per stage, up to a maximum of +(1.5–1.9) metres",
+      "values": [
+        "+(0.4–0.5)",
+        "+(1.5–1.9)"
+      ]
+    },
+    {
+      "text": "Final wave deals 700% more Damage with Hits",
+      "values": [
+        "700"
+      ]
+    },
+    {
+      "text": "Final wave deals 400% more Damage with Ignite",
+      "values": [
+        "400"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (3–1278) to (5–1917) Fire Damage",
+      "values": [
+        "(3–1278)",
+        "(5–1917)"
+      ]
+    },
+    {
+      "text": "25% more Damage with Hits and Ailments for each stage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "100% increased angle per stage, up to 300%",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Final wave always Ignites",
+      "values": []
+    },
+    {
+      "text": "4 maximum Stages",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "+(0.4–0.6) metres to radius per stage, up to a maximum of +(1.5–2.4) metres",
+      "values": [
+        "+(0.4–0.6)",
+        "+(1.5–2.4)"
+      ]
+    },
+    {
+      "text": "Final wave deals 700% more Damage with Hits",
+      "values": [
+        "700"
+      ]
+    },
+    {
+      "text": "Final wave deals 400% more Damage with Ignite",
+      "values": [
+        "400"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Final wave deals +(0–150)% more Damage with HitsFinal wave deals +(0–80)% more Damage with Ignite",
+      "values": [
+        "+(0–150)",
+        "+(0–80)"
+      ]
+    },
+    {
+      "text": "Final wave deals +(0–150)% more Damage with HitsFinal wave deals +(0–80)% more Damage with Ignite",
+      "values": [
+        "+(0–150)",
+        "+(0–80)"
+      ]
+    },
+    {
+      "text": "Final wave deals +(0–150)% more Damage with HitsFinal wave deals +(0–80)% more Damage with Ignite",
+      "values": [
+        "+(0–150)",
+        "+(0–80)"
+      ]
+    }
+  ]
 }

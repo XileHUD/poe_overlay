@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Cooldown, Recovery",
     "DropLevel": "31",
+    "BaseType": "Second Wind Support",
     "Class": "Support Gems",
     "Icon": "8",
     "ItemType": "Metadata/Items/Gems/SupportGemSecondWind",
@@ -373,5 +374,47 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills with cooldowns.\nCannot support triggered skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (5–24)% reduced Cooldown Recovery Rate",
+      "values": [
+        "(5–24)"
+      ]
+    },
+    {
+      "text": "Supported Non-Instant Skills have +1 Cooldown Use",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Supported Skills have (5–24)% reduced Cooldown Recovery Rate",
+      "values": [
+        "(5–24)"
+      ]
+    },
+    {
+      "text": "Supported Non-Instant Skills have +1 Cooldown Use",
+      "values": [
+        "+1"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–5)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–5)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

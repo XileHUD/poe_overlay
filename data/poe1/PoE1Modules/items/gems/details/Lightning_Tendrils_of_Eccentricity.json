@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Lightning Tendrils of Eccentricity",
     "TargetTypes": ", ,",
     "Type": "Spell, Damage, Area, Totemable, Lightning, Channel, AreaSpell",
     "ActiveSkillsCode": "lightning_tendrils_alt_x"
@@ -371,5 +372,143 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "While you channel this skill, it releases pulses of electrical energy, dealing lightning damage in a semicircular area in front of you.",
+  "explicitMods": [
+    {
+      "text": "Deals (1–33) to (2–629) Lightning Damage",
+      "values": [
+        "(1–33)",
+        "(2–629)"
+      ]
+    },
+    {
+      "text": "Releases a Stronger Pulse every 5 PulsesStronger Pulses always Critically Strike",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base radius is (2.4–3.1) metres",
+      "values": [
+        "(2.4–3.1)"
+      ]
+    },
+    {
+      "text": "Stronger Pulses have 150% more Area of Effect",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "Stronger Pulses deal 500% more Damage with Hits and Ailments",
+      "values": [
+        "500"
+      ]
+    },
+    {
+      "text": "Deals (1–33) to (2–629) Lightning Damage",
+      "values": [
+        "(1–33)",
+        "(2–629)"
+      ]
+    },
+    {
+      "text": "Releases a Stronger Pulse every 5 PulsesStronger Pulses always Critically Strike",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base radius is (2.4–3.1) metres",
+      "values": [
+        "(2.4–3.1)"
+      ]
+    },
+    {
+      "text": "Stronger Pulses have 150% more Area of Effect",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "Stronger Pulses deal 500% more Damage with Hits and Ailments",
+      "values": [
+        "500"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (1–203) to (2–3862) Lightning Damage",
+      "values": [
+        "(1–203)",
+        "(2–3862)"
+      ]
+    },
+    {
+      "text": "Releases a Stronger Pulse every 5 PulsesStronger Pulses always Critically Strike",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base radius is (2.4–3.7) metres",
+      "values": [
+        "(2.4–3.7)"
+      ]
+    },
+    {
+      "text": "Stronger Pulses have 150% more Area of Effect",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "Stronger Pulses deal 500% more Damage with Hits and Ailments",
+      "values": [
+        "500"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–40)% to Critical Strike Multiplier",
+      "values": [
+        "+(0–40)"
+      ]
+    },
+    {
+      "text": "+(0–40)% to Critical Strike Multiplier",
+      "values": [
+        "+(0–40)"
+      ]
+    },
+    {
+      "text": "+(0–40)% to Critical Strike Multiplier",
+      "values": [
+        "+(0–40)"
+      ]
+    }
+  ]
 }

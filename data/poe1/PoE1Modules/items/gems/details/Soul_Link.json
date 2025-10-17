@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Link",
     "DropLevel": "34",
+    "BaseType": "Soul Link",
     "Class": "Skill Gems",
     "TargetTypes": "Self, Ground",
     "Type": "Spell, Buff, Duration, Link",
@@ -415,5 +416,83 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Targets an allied player to apply a buff which links you to them for a duration. While linked, your Energy Shield will intercept some of the damage they would take. If the target dies while linked, you will also die. This skill cannot be triggered, or used by Totems, Traps, or Mines.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (8–9.9) seconds",
+      "values": [
+        "(8–9.9)"
+      ]
+    },
+    {
+      "text": "Linked target takes (5–14)% less Damage",
+      "values": [
+        "(5–14)"
+      ]
+    },
+    {
+      "text": "30% of Damage from Hits against target is taken from your Energy Shield before them",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Link breaks if target leaves range or line of sight for 4 secondsMaximum 1 Link from any source per targetYou die if Linked target dies",
+      "values": []
+    },
+    {
+      "text": "Base duration is (8–9.9) seconds",
+      "values": [
+        "(8–9.9)"
+      ]
+    },
+    {
+      "text": "Linked target takes (5–14)% less Damage",
+      "values": [
+        "(5–14)"
+      ]
+    },
+    {
+      "text": "30% of Damage from Hits against target is taken from your Energy Shield before them",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Link breaks if target leaves range or line of sight for 4 secondsMaximum 1 Link from any source per targetYou die if Linked target dies",
+      "values": []
+    },
+    {
+      "text": "skill cost over time is not removed with skill [1]",
+      "values": []
+    },
+    {
+      "text": "mana_regeneration_rate_+%",
+      "values": []
+    },
+    {
+      "text": "take_%_of_hit_damage_from_soul_link_source_energy_shield_before_you",
+      "values": []
+    },
+    {
+      "text": "damage_taken_+%_final_from_soul_link",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–1.5) seconds",
+      "values": [
+        "(0–1.5)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–1.5) seconds",
+      "values": [
+        "(0–1.5)"
+      ]
+    }
+  ]
 }

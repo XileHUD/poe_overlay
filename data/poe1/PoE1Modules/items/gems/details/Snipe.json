@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Ailment",
     "DropLevel": "34",
+    "BaseType": "Snipe",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": ", ROTATE_TO_TARGET,",
@@ -416,5 +417,154 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Channel to charge up your bow, gaining stages. Release to trigger one supported bow skill for each stage gained. If there are no supported skills, but at least one stage was gained, this skill will fire its own arrow instead. Cannot be used by Totems.",
+  "explicitMods": [
+    {
+      "text": "Maximum 6 Stages",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "This Skill's Arrows deal (50–80)% more Damage with Ailments per Stage",
+      "values": [
+        "(50–80)"
+      ]
+    },
+    {
+      "text": "This Skill's Arrows deal (70–108)% more Damage with Hits per Stage",
+      "values": [
+        "(70–108)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (70–108)% more Damage with Hits per Snipe Stage",
+      "values": [
+        "(70–108)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (50–80)% more Damage with Ailments per Snipe Stage",
+      "values": [
+        "(50–80)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal 40% less Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Maximum 6 Stages",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "This Skill's Arrows deal (50–80)% more Damage with Ailments per Stage",
+      "values": [
+        "(50–80)"
+      ]
+    },
+    {
+      "text": "This Skill's Arrows deal (70–108)% more Damage with Hits per Stage",
+      "values": [
+        "(70–108)"
+      ]
+    },
+    {
+      "text": "override turn duration ms [100]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (70–108)% more Damage with Hits per Snipe Stage",
+      "values": [
+        "(70–108)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (50–80)% more Damage with Ailments per Snipe Stage",
+      "values": [
+        "(50–80)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal 40% less Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "skill triggered by snipe [1]",
+      "values": []
+    },
+    {
+      "text": "Grants Level 30 Snipe Skill",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Socketed Non-Channelling Bow Skills are Triggered by SnipeSocketed Triggered Bow Skills gain a 0.05 second Cooldown",
+      "values": []
+    },
+    {
+      "text": "+(350–500) to Accuracy Rating",
+      "values": [
+        "+(350–500)"
+      ]
+    },
+    {
+      "text": "+(350–500) to Evasion Rating",
+      "values": [
+        "+(350–500)"
+      ]
+    },
+    {
+      "text": "+2 to maximum Snipe Stages",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "+(14–20)% chance to Suppress Spell Damage while Channelling",
+      "values": [
+        "+(14–20)"
+      ]
+    },
+    {
+      "text": "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
+      "values": []
+    },
+    {
+      "text": "override_turn_duration_ms",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–1) Maximum Stage",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) Maximum Stage",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

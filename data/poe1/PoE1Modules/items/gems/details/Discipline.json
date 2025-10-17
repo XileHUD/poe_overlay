@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Recharge",
     "DropLevel": "24",
+    "BaseType": "Discipline",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -375,5 +376,93 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts an aura that grants additional energy shield and increased energy shield recharge rate to you and your allies.",
+  "explicitMods": [
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (60–217) additional Energy Shield",
+      "values": [
+        "(60–217)"
+      ]
+    },
+    {
+      "text": "You and nearby Allies gain 30% increased Energy Shield Recharge Rate",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (60–217) additional Energy Shield",
+      "values": [
+        "(60–217)"
+      ]
+    },
+    {
+      "text": "You and nearby Allies gain 30% increased Energy Shield Recharge Rate",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "+2.9 metres to radius",
+      "values": [
+        "+2.9"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain 314 additional Energy Shield",
+      "values": [
+        "314"
+      ]
+    },
+    {
+      "text": "You and nearby Allies gain 30% increased Energy Shield Recharge Rate",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Casts an aura that grants additional energy shield and increased energy shield recharge rate to you and your allies)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

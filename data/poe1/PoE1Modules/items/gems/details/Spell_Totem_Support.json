@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Totem",
     "DropLevel": "8",
+    "BaseType": "Spell Totem Support",
     "Class": "Support Gems",
     "Icon": "T",
     "ItemType": "Metadata/Items/Gems/SupportGemSpellTotem",
@@ -373,5 +374,107 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports spell skills that are not triggered. Instead of casting that spell, you will summon a totem that casts the spell for you.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (40–49)% less Damage",
+      "values": [
+        "(40–49)"
+      ]
+    },
+    {
+      "text": "Supported Skills will summon a Totem which uses that Skill",
+      "values": []
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Supported Skills have 40% less Cast Speed",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (40–49)% less Damage",
+      "values": [
+        "(40–49)"
+      ]
+    },
+    {
+      "text": "Supported Skills will summon a Totem which uses that Skill",
+      "values": []
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Supported Skills have 40% less Cast Speed",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [60]",
+      "values": []
+    },
+    {
+      "text": "totem support gem level [8,70]",
+      "values": []
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 20 Spell Totem",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(20–25)% increased Spell Damage",
+      "values": [
+        "(20–25)"
+      ]
+    },
+    {
+      "text": "(100–120)% increased Energy Shield",
+      "values": [
+        "(100–120)"
+      ]
+    },
+    {
+      "text": "(20–30)% increased Totem Life",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "Inflicts a random Hex on you when your Totems die",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Totem Placement speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Totem Placement speed",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

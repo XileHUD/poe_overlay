@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Blind",
     "DropLevel": "8",
+    "BaseType": "Blind Support",
     "Class": "Support Gems",
     "Icon": "x",
     "ItemType": "Metadata/Items/Gems/SupportGemBlind",
@@ -333,5 +334,179 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have 10% chance to Blind enemies on hit",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–38)% increased Blinding duration",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 10% chance to Blind enemies on hit",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–38)% increased Blinding duration",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are supported by Level 20 Blind",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "+10 to Intelligence",
+      "values": [
+        "+10"
+      ]
+    },
+    {
+      "text": "(30–40)% increased Spell Damage",
+      "values": [
+        "(30–40)"
+      ]
+    },
+    {
+      "text": "(250–275)% increased Physical Damage",
+      "values": [
+        "(250–275)"
+      ]
+    },
+    {
+      "text": "(20–30)% increased Lightning Damage",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "10% increased Cast Speed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "10% chance to Blind Enemies on hit",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
+      "values": []
+    },
+    {
+      "text": "+2 to Level of Socketed Gems",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Added Chaos Damage",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are supported by Level 10 Blind",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are supported by Level 10 Cast when Stunned",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 30 Melee Physical Damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 30 Faster Attacks",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Socketed Gems are supported by Level 30 Blind",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "6% Chance to Block Attack Damage",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Adds 20 to 30 Physical Damage to Attacks",
+      "values": [
+        "20",
+        "30"
+      ]
+    },
+    {
+      "text": "(200–300)% increased Armour and Evasion",
+      "values": [
+        "(200–300)"
+      ]
+    },
+    {
+      "text": "+(200–300) to maximum Life",
+      "values": [
+        "+(200–300)"
+      ]
+    },
+    {
+      "text": "20% chance to gain an Endurance Charge when you Block",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Can't use Chest armour",
+      "values": []
+    },
+    {
+      "text": "Extra gore",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
+    "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
+    "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
+    "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Blind Effect",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Blind Effect",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

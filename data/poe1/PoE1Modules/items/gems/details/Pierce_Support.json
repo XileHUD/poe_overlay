@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Projectile, Pierce",
     "DropLevel": "4",
+    "BaseType": "Pierce Support",
     "Class": "Support Gems",
     "Icon": "p",
     "ItemType": "Metadata/Items/Gems/SupportGemPierce",
@@ -373,5 +374,87 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports projectile skills.",
+  "explicitMods": [
+    {
+      "text": "Projectiles from Supported Skills Pierce (2–4) additional Targets",
+      "values": [
+        "(2–4)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–19)% more Projectile Damage",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Projectiles from Supported Skills Pierce (2–4) additional Targets",
+      "values": [
+        "(2–4)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–19)% more Projectile Damage",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Pierce",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "+160 Dexterity Requirement",
+      "values": [
+        "+160"
+      ]
+    },
+    {
+      "text": "(200–250)% increased Armour",
+      "values": [
+        "(200–250)"
+      ]
+    },
+    {
+      "text": "+(60–100) to maximum Life",
+      "values": [
+        "+(60–100)"
+      ]
+    },
+    {
+      "text": "0.4% of Physical Attack Damage Leeched as Mana",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Enemy Projectiles Pierce you",
+      "values": []
+    },
+    {
+      "text": "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

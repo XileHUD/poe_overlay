@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Crackling Lance of Disintegration",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Area, Damage, Lightning, Trappable, Mineable, Totemable, Triggerable, AreaSpell, Multicastable, CanRapidFire",
     "ActiveSkillsCode": "crackling_lance_alt_y"
@@ -331,5 +332,103 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Release a concentrated beam which deals lightning damage to enemies in a long area in front of you.",
+  "explicitMods": [
+    {
+      "text": "Deals (59–1054) to (178–3161) Lightning Damage",
+      "values": [
+        "(59–1054)",
+        "(178–3161)"
+      ]
+    },
+    {
+      "text": "25% chance to Shock enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "+10% to Maximum Effect of Shock",
+      "values": [
+        "+10"
+      ]
+    },
+    {
+      "text": "Deals (59–1054) to (178–3161) Lightning Damage",
+      "values": [
+        "(59–1054)",
+        "(178–3161)"
+      ]
+    },
+    {
+      "text": "25% chance to Shock enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "+10% to Maximum Effect of Shock",
+      "values": [
+        "+10"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (59–6635) to (178–19905) Lightning Damage",
+      "values": [
+        "(59–6635)",
+        "(178–19905)"
+      ]
+    },
+    {
+      "text": "25% chance to Shock enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "+10% to Maximum Effect of Shock",
+      "values": [
+        "+10"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Base Maximum Effect of Shock is 50% increased Damage taken)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Base Maximum Effect of Shock is 50% increased Damage taken)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Base Maximum Effect of Shock is 50% increased Damage taken)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Base Maximum Effect of Shock is 50% increased Damage taken)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–10)% to Maximum Effect of Shock",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "+(0–10)% to Maximum Effect of Shock",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "+(0–10)% to Maximum Effect of Shock",
+      "values": [
+        "+(0–10)"
+      ]
+    }
+  ]
 }

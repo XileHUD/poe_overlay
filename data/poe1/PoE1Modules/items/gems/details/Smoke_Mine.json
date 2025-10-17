@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Duration, Mine, Buff",
     "DropLevel": "10",
+    "BaseType": "Smoke Mine",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy, Self",
     "Type": "Spell, Area, Duration, Movement, RemoteMined, AreaSpell, Travel, HasReservation, Blink, Cooldown",
@@ -455,5 +456,115 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a mine that will teleport you to it when detonated. It covers both your escape and arrival with a cloud of smoke that blinds enemies, and gives you a temporary buff to movement speed. Shares a cooldown with other Blink skills.",
+  "explicitMods": [
+    {
+      "text": "Mine lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Base duration is (4–5) seconds",
+      "values": [
+        "(4–5)"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Mine Duration also apply to this Skill's Buff Duration",
+      "values": []
+    },
+    {
+      "text": "Only one Mine of this type can Detonate in each Detonation Sequence",
+      "values": []
+    },
+    {
+      "text": "Mines cannot be Re-armed",
+      "values": []
+    },
+    {
+      "text": "Mine Detonation is Instant",
+      "values": []
+    },
+    {
+      "text": "Buff grants (20–29)% increased Movement Speed",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "Mine lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Base duration is (4–5) seconds",
+      "values": [
+        "(4–5)"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Mine Duration also apply to this Skill's Buff Duration",
+      "values": []
+    },
+    {
+      "text": "Only one Mine of this type can Detonate in each Detonation Sequence",
+      "values": []
+    },
+    {
+      "text": "Mines cannot be Re-armed",
+      "values": []
+    },
+    {
+      "text": "Mine Detonation is Instant",
+      "values": []
+    },
+    {
+      "text": "Buff grants (20–29)% increased Movement Speed",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is mined [1]",
+      "values": []
+    },
+    {
+      "text": "ground smoke art variation [5]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Buff grants (0–20)% increased Movement Speed",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Buff grants (0–20)% increased Movement Speed",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

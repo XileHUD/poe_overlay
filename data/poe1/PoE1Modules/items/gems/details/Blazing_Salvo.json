@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Projectile",
     "DropLevel": "12",
+    "BaseType": "Blazing Salvo",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, Trappable, Mineable, Totemable, Triggerable, Fire, Projectile, ProjectilesFromUser, Multicastable, CanRapidFire, AreaSpell",
@@ -415,5 +416,53 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires projectiles which fly in an arc, dealing area damage on impact with either enemies or the ground near where you target. Targeting farther away causes the projectiles to spread out and land over a wider area.",
+  "explicitMods": [
+    {
+      "text": "Deals (7–270) to (10–405) Fire Damage",
+      "values": [
+        "(7–270)",
+        "(10–405)"
+      ]
+    },
+    {
+      "text": "Fires (5–7) Projectiles",
+      "values": [
+        "(5–7)"
+      ]
+    },
+    {
+      "text": "Deals (7–270) to (10–405) Fire Damage",
+      "values": [
+        "(7–270)",
+        "(10–405)"
+      ]
+    },
+    {
+      "text": "Fires (5–7) Projectiles",
+      "values": [
+        "(5–7)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    }
+  ]
 }

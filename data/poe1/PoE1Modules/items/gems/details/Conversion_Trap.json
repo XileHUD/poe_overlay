@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Trigger, Duration, Trap",
     "DropLevel": "4",
+    "BaseType": "Conversion Trap",
     "Class": "Skill Gems",
     "TargetTypes": "Enemy",
     "Type": "Spell, Duration, Mineable, Trapped, Cooldown",
@@ -415,5 +416,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap that, when triggered by an enemy, converts that enemy to your side for a short duration. Does not affect unique monsters or players.",
+  "explicitMods": [
+    {
+      "text": "Traps do not Trigger at the end of their Duration",
+      "values": []
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is (5.3–10) seconds",
+      "values": [
+        "(5.3–10)"
+      ]
+    },
+    {
+      "text": "Traps do not Trigger at the end of their Duration",
+      "values": []
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is (5.3–10) seconds",
+      "values": [
+        "(5.3–10)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–4) seconds",
+      "values": [
+        "(0–4)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–4) seconds",
+      "values": [
+        "(0–4)"
+      ]
+    }
+  ]
 }

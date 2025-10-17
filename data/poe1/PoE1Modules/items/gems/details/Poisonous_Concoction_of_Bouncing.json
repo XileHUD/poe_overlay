@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Poisonous Concoction of Bouncing",
     "Weapon": "Unarmed",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, Area, Triggerable, Chaos, Damage, Projectile, ProjectilesFromUser, RequiresOffHandNotWeapon, Chains",
@@ -372,5 +373,227 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a single bottle that releases a burst when it hits the ground, dealing unarmed attack damage in an area with a chance to poison. The skill chains, bouncing randomly to deal damage multiple times. Can consume charges from a Life flask to add further damage. Requires an empty main hand, and no off-hand weapon.",
+  "explicitMods": [
+    {
+      "text": "(30–716) to (44–1073) Added Chaos Damage",
+      "values": [
+        "(30–716)",
+        "(44–1073)"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles instead apply to the number of times this Skill Chains",
+      "values": []
+    },
+    {
+      "text": "Chains +2 Times",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "40% chance to Poison on Hit",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "+6% to Critical Strike Chance",
+      "values": [
+        "+6"
+      ]
+    },
+    {
+      "text": "Base radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Projectiles can Chain when impacting the groundProjectiles Chain in random directions",
+      "values": []
+    },
+    {
+      "text": "Consumes 8 Charges per Projectile Fired from 1 Life Flask, if possible",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Added Chaos Damage equal to (5–15)% of Flask's Recovery Amount if Charges were consumed from a Life Flask",
+      "values": [
+        "(5–15)"
+      ]
+    },
+    {
+      "text": "(30–716) to (44–1073) Added Chaos Damage",
+      "values": [
+        "(30–716)",
+        "(44–1073)"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles instead apply to the number of times this Skill Chains",
+      "values": []
+    },
+    {
+      "text": "Chains +2 Times",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "40% chance to Poison on Hit",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "+6% to Critical Strike Chance",
+      "values": [
+        "+6"
+      ]
+    },
+    {
+      "text": "Base radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Projectiles can Chain when impacting the groundProjectiles Chain in random directions",
+      "values": []
+    },
+    {
+      "text": "Consumes 8 Charges per Projectile Fired from 1 Life Flask, if possible",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Added Chaos Damage equal to (5–15)% of Flask's Recovery Amount if Charges were consumed from a Life Flask",
+      "values": [
+        "(5–15)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "poisonous concoction attach flask visual buff [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    },
+    {
+      "text": "(30–2615) to (44–3923) Added Chaos Damage",
+      "values": [
+        "(30–2615)",
+        "(44–3923)"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles instead apply to the number of times this Skill Chains",
+      "values": []
+    },
+    {
+      "text": "Chains +2 Times",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "40% chance to Poison on Hit",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "+6% to Critical Strike Chance",
+      "values": [
+        "+6"
+      ]
+    },
+    {
+      "text": "Base radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Projectiles can Chain when impacting the groundProjectiles Chain in random directions",
+      "values": []
+    },
+    {
+      "text": "Consumes 8 Charges per Projectile Fired from 1 Life Flask, if possible",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Added Chaos Damage equal to (5–23)% of Flask's Recovery Amount if Charges were consumed from a Life Flask",
+      "values": [
+        "(5–23)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "poisonous concoction attach flask visual buff [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% chance to inflict Withered for 2 seconds on Hit",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to inflict Withered for 2 seconds on Hit",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to inflict Withered for 2 seconds on Hit",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

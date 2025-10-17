@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Duration, Ailment",
     "DropLevel": "18",
+    "BaseType": "Sadism Support",
     "Class": "Support Gems",
     "Icon": "X",
     "ItemType": "Metadata/Items/Gems/SupportGemSadism",
@@ -373,5 +374,57 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Damaging Ailments inflicted with Supported Skills deal damage (60–79)% faster",
+      "values": [
+        "(60–79)"
+      ]
+    },
+    {
+      "text": "80% less Duration of Ailments inflicted with Supported Skills",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Damaging Ailments inflicted with Supported Skills deal damage (60–79)% faster",
+      "values": [
+        "(60–79)"
+      ]
+    },
+    {
+      "text": "80% less Duration of Ailments inflicted with Supported Skills",
+      "values": [
+        "80"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(They will deal the same total damage over a shorter duration)",
+    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(They will deal the same total damage over a shorter duration)",
+    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(They will deal the same total damage over a shorter duration)",
+    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage over Time",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage over Time",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Hit, Stun, Duration",
     "DropLevel": "38",
+    "BaseType": "Trauma Support",
     "Class": "Support Gems",
     "Icon": "#",
     "ItemType": "Metadata/Items/Gems/SupportGemTrauma",
@@ -373,5 +374,75 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports melee strike skills that do not inherently apply Trauma. Cannot support triggered skills, Vaal skills, or skills used by things other than you. Cannot modify the skills of minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (2–10) to (3–17) Added Attack Physical Damage per Trauma",
+      "values": [
+        "(2–10)",
+        "(3–17)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 5% increased Stun Duration per Trauma",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Gain 1 Trauma the first time a Supported Attack Hits an EnemyTake (13–146) Physical Damage per Trauma when you gain Trauma from Supported SkillsTrauma lasts (5–6.9) seconds",
+      "values": [
+        "(13–146)",
+        "(5–6.9)"
+      ]
+    },
+    {
+      "text": "Supported Skills can only be used with Axes, Maces, Sceptres or Staves",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (2–10) to (3–17) Added Attack Physical Damage per Trauma",
+      "values": [
+        "(2–10)",
+        "(3–17)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 5% increased Stun Duration per Trauma",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Gain 1 Trauma the first time a Supported Attack Hits an EnemyTake (13–146) Physical Damage per Trauma when you gain Trauma from Supported SkillsTrauma lasts (5–6.9) seconds",
+      "values": [
+        "(13–146)",
+        "(5–6.9)"
+      ]
+    },
+    {
+      "text": "Supported Skills can only be used with Axes, Maces, Sceptres or Staves",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Warstaves are considered Staves)",
+    "(Warstaves are considered Staves)",
+    "(Warstaves are considered Staves)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% reduced Enemy Stun Threshold",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% reduced Enemy Stun Threshold",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

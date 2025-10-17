@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Aura",
     "DropLevel": "31",
+    "BaseType": "Arrogance Support",
     "Class": "Support Gems",
     "Icon": "B",
     "ItemType": "Metadata/Items/Gems/SupportGemBloodMagic",
@@ -373,5 +374,43 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any non-blessing skill with a reservation.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (10–19)% increased Aura effect",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Supported Skills Reserve Life instead of Mana",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (10–19)% increased Aura effect",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Supported Skills Reserve Life instead of Mana",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–5)% increased Aura effect",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–5)% increased Aura effect",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

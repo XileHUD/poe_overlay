@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Ignite",
+    "BaseType": "Fireball",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Projectile, ProjectilesFromUser, Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, CanRapidFire, AreaSpell",
@@ -414,5 +415,85 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Unleashes a ball of fire towards a target which explodes, damaging nearby foes.",
+  "explicitMods": [
+    {
+      "text": "Deals (9–1640) to (14–2460) Fire Damage",
+      "values": [
+        "(9–1640)",
+        "(14–2460)"
+      ]
+    },
+    {
+      "text": "25% chance to Ignite enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Base radius is (0.9–1.4) metres",
+      "values": [
+        "(0.9–1.4)"
+      ]
+    },
+    {
+      "text": "Deals (9–1640) to (14–2460) Fire Damage",
+      "values": [
+        "(9–1640)",
+        "(14–2460)"
+      ]
+    },
+    {
+      "text": "25% chance to Ignite enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Base radius is (0.9–1.4) metres",
+      "values": [
+        "(0.9–1.4)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Fire Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Fireball cannot ignite",
+      "values": []
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Fireball has +(30–50)% chance to inflict scorch",
+      "values": [
+        "+(30–50)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

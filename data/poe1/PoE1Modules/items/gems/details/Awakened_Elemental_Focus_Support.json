@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Ailment",
     "DropLevel": "72",
+    "BaseType": "Awakened Elemental Focus Support",
     "Class": "Support Gems",
     "Icon": "F",
     "ItemType": "Metadata/Items/Gems/SupportGemElementalFocusPlus",
@@ -194,5 +195,59 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports any skill that hits or burns enemies, or inflicts elemental ailments.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (35–39)% more Elemental Damage",
+      "values": [
+        "(35–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills cannot inflict Elemental Ailments",
+      "values": []
+    },
+    {
+      "text": "+(0–1) to Level of Supported Elemental Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (35–39)% more Elemental Damage",
+      "values": [
+        "(35–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills cannot inflict Elemental Ailments",
+      "values": []
+    },
+    {
+      "text": "+(0–1) to Level of Supported Elemental Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
+    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
+    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Elemental Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Elemental Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

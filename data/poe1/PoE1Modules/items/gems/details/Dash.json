@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Cooldown, Recovery",
     "DropLevel": "4",
+    "BaseType": "Dash",
     "Class": "Skill Gems",
     "TargetTypes": "Ground",
     "Type": "Spell, Movement, Travel, Blink, Cooldown, FixedCastTime",
@@ -415,5 +416,127 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Performs a series of quick teleports towards a targeted location. If using the \"Attack in Place\" option, the direction is reversed. Shares a cooldown with other Blink skills.",
+  "explicitMods": [
+    {
+      "text": "(0–19)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "(0–57)% increased travel distance",
+      "values": [
+        "(0–57)"
+      ]
+    },
+    {
+      "text": "This Spell's Cast Speed cannot be modified",
+      "values": []
+    },
+    {
+      "text": "(0–19)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "(0–57)% increased travel distance",
+      "values": [
+        "(0–57)"
+      ]
+    },
+    {
+      "text": "This Spell's Cast Speed cannot be modified",
+      "values": []
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be interrupted [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be knocked back [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned [1]",
+      "values": []
+    },
+    {
+      "text": "Grants Level 30 Dash Skill",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Adds (80–100) to (200–225) Physical Damage",
+      "values": [
+        "(80–100)",
+        "(200–225)"
+      ]
+    },
+    {
+      "text": "Bow Attacks fire 2 additional Arrows if you haven't Cast Dash recently",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "(20–30)% increased Attack Speed if you haven't Cast Dash recently",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "(100–160)% increased Evasion Rating if you've Cast Dash recently",
+      "values": [
+        "(100–160)"
+      ]
+    },
+    {
+      "text": "(20–30)% increased Movement Speed if you've Cast Dash recently",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "Travel Skills other than Dash are Disabled",
+      "values": []
+    },
+    {
+      "text": "Iron Reflexes",
+      "values": []
+    },
+    {
+      "text": "(Recently refers to the past 4 seconds)",
+      "values": []
+    },
+    {
+      "text": "(Converts all Evasion Rating to Armour. Dexterity provides no bonus to Evasion Rating)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Recently refers to the past 4 seconds)",
+    "(Converts all Evasion Rating to Armour. Dexterity provides no bonus to Evasion Rating)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Weapon, Melee, Trap",
     "DropLevel": "8",
+    "BaseType": "Trap Support",
     "Class": "Support Gems",
     "Icon": "T",
     "ItemType": "Metadata/Items/Gems/SupportGemTrap",
@@ -413,5 +414,211 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports spells, or attacks that use bows or wands. Instead of using that skill, you will throw a trap that will use the skill for you when an enemy walks near it. Traps cannot use channelling skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Attack Skills cannot be used with Melee Weapons",
+      "values": []
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (6–20)% less Trap Damage",
+      "values": [
+        "(6–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–19)% increased Trap Throwing Speed",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Supported Attack Skills cannot be used with Melee Weapons",
+      "values": []
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (6–20)% less Trap Damage",
+      "values": [
+        "(6–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–19)% increased Trap Throwing Speed",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is trap [1]",
+      "values": []
+    },
+    {
+      "text": "support makes skill trap pvp damage +% final [-60]",
+      "values": []
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Trap",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "(160–200)% increased Evasion Rating",
+      "values": [
+        "(160–200)"
+      ]
+    },
+    {
+      "text": "15% increased Movement Speed",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "(14–18)% increased Trap Throwing Speed",
+      "values": [
+        "(14–18)"
+      ]
+    },
+    {
+      "text": "15% increased Movement Speed for 9 seconds on Throwing a Trap",
+      "values": [
+        "15",
+        "9"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 8 Trap",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "(40–50)% increased Global Damage",
+      "values": [
+        "(40–50)"
+      ]
+    },
+    {
+      "text": "(10–20)% increased maximum Life",
+      "values": [
+        "(10–20)"
+      ]
+    },
+    {
+      "text": "(10–20)% increased maximum Mana",
+      "values": [
+        "(10–20)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 16 Trap",
+      "values": [
+        "16"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 16 Cluster Trap",
+      "values": [
+        "16"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 16 Trap And Mine Damage",
+      "values": [
+        "16"
+      ]
+    },
+    {
+      "text": "(40–50)% increased Global Damage",
+      "values": [
+        "(40–50)"
+      ]
+    },
+    {
+      "text": "(10–20)% increased maximum Life",
+      "values": [
+        "(10–20)"
+      ]
+    },
+    {
+      "text": "(10–20)% increased maximum Mana",
+      "values": [
+        "(10–20)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 1 Trap",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "(50–100)% increased Evasion Rating",
+      "values": [
+        "(50–100)"
+      ]
+    },
+    {
+      "text": "+(10–20) to maximum Life",
+      "values": [
+        "+(10–20)"
+      ]
+    },
+    {
+      "text": "10% increased Movement Speed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "(14–18)% increased Trap Throwing Speed",
+      "values": [
+        "(14–18)"
+      ]
+    },
+    {
+      "text": "15% increased Movement Speed for 9 seconds on Throwing a Trap",
+      "values": [
+        "15",
+        "9"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Trap Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Trap Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

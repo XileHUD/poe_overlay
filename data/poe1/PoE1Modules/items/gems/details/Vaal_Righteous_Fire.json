@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Righteous Fire",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, Area, CausesBurning, DamageOverTime, Fire, Totemable, Triggerable, Instant, AreaSpell, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
     "ActiveSkillsCode": "righteous_fire"
@@ -331,5 +332,147 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Sacrifices a portion of your Life and Energy Shield to engulf you in magical fire that rapidly burns nearby enemies for a duration. Your spell damage is increased while under this effect.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Sacrifices 60% of your total Energy Shield and LifeDeals (120–158)% of Sacrificed Energy Shield and Life as Fire Damage per second",
+      "values": [
+        "60",
+        "(120–158)"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Grants (10–19)% more Spell Damage",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Base radius is 3 metres",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Sacrifices 60% of your total Energy Shield and LifeDeals (120–158)% of Sacrificed Energy Shield and Life as Fire Damage per second",
+      "values": [
+        "60",
+        "(120–158)"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Grants (10–19)% more Spell Damage",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Base radius is 3 metres",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "base_fire_damage_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "buff_impl_stat",
+      "values": []
+    },
+    {
+      "text": "spell_damage_+%",
+      "values": []
+    },
+    {
+      "text": "vaal_righteous_fire_spell_damage_+%_final",
+      "values": []
+    },
+    {
+      "text": "vaal_righteous_fire_ignite_damage_+%_final",
+      "values": []
+    },
+    {
+      "text": "Deals 70% of your Maximum Life as Base Fire Damage per second",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "Deals 70% of your Maximum Energy Shield as Base Fire Damage per second",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "You Burn for 90% of your Maximum Life per second as Fire Damage",
+      "values": [
+        "90"
+      ]
+    },
+    {
+      "text": "You Burn for 70% of your Maximum Energy Shield per second as Fire Damage",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "Grants (20–54)% more Spell Damage",
+      "values": [
+        "(20–54)"
+      ]
+    },
+    {
+      "text": "Base radius is (1.8–2.8) metres",
+      "values": [
+        "(1.8–2.8)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    }
+  ]
 }

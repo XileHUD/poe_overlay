@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Totem, Projectile, Pierce, Curse",
     "DropLevel": "4",
+    "BaseType": "Holy Flame Totem",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Projectile, ProjectilesFromUser, Damage, Trappable, Mineable, SummonsTotem, Fire, Channel, Physical",
@@ -417,5 +418,121 @@
   "description": "This skill is affected by any passives that affect totems, however, nodes such as Totemic Zeal will not be displayed in tooltip DPS due to engine limitation.",
   "stats": [
     "This skill is affected by any passives that affect totems, however, nodes such as Totemic Zeal will not be displayed in tooltip DPS due to engine limitation."
+  ],
+  "gemDescription": "Summons a totem that channels to fire a stream of flame at nearby enemies, and creates an area of consecrated ground around the totem.",
+  "explicitMods": [
+    {
+      "text": "Deals (2–153) to (5–230) Physical Damage",
+      "values": [
+        "(2–153)",
+        "(5–230)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "Consecrated Ground grants Immunity to Curses to you and Allies",
+      "values": []
+    },
+    {
+      "text": "Deals (2–153) to (5–230) Physical Damage",
+      "values": [
+        "(2–153)",
+        "(5–230)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "Consecrated Ground grants Immunity to Curses to you and Allies",
+      "values": []
+    },
+    {
+      "text": "active skill projectile speed +% variation final [30]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [100]",
+      "values": []
+    },
+    {
+      "text": "ignite art variation [7]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Projectile Speed",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Projectile Speed",
+      "values": [
+        "(0–40)"
+      ]
+    }
   ]
 }

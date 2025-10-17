@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Accuracy, Curse",
     "DropLevel": "24",
+    "BaseType": "Enfeeble",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Area, Duration, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cascadable, AppliesCurse, CanRapidFire, AreaSpell, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Hex",
@@ -536,5 +537,142 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Curses all targets in an area, reducing their accuracy and making them deal less damage.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (8–11.8) seconds",
+      "values": [
+        "(8–11.8)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Cursed enemies have (10–19)% reduced Accuracy Rating",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Cursed Normal or Magic enemies deal (15–29)% less Damage",
+      "values": [
+        "(15–29)"
+      ]
+    },
+    {
+      "text": "Cursed Rare or Unique enemies deal (9–18)% less Damage",
+      "values": [
+        "(9–18)"
+      ]
+    },
+    {
+      "text": "Base duration is (8–11.8) seconds",
+      "values": [
+        "(8–11.8)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Cursed enemies have (10–19)% reduced Accuracy Rating",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Cursed Normal or Magic enemies deal (15–29)% less Damage",
+      "values": [
+        "(15–29)"
+      ]
+    },
+    {
+      "text": "Cursed Rare or Unique enemies deal (9–18)% less Damage",
+      "values": [
+        "(9–18)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "Adds (12–15) to (30–35) Fire Damage to Spells and Attacks",
+      "values": [
+        "(12–15)",
+        "(30–35)"
+      ]
+    },
+    {
+      "text": "(120–150)% increased Armour",
+      "values": [
+        "(120–150)"
+      ]
+    },
+    {
+      "text": "+(60–80) to maximum Life",
+      "values": [
+        "+(60–80)"
+      ]
+    },
+    {
+      "text": "+(35–50)% to Fire Resistance",
+      "values": [
+        "+(35–50)"
+      ]
+    },
+    {
+      "text": "25% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "25% chance to Curse Non-Cursed Enemies with Enfeeble on Hit",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(Enfeeble is a Hex which reduces the targets' Accuracy Rating by 10% and Damage by 15%, or 9% on Rare or Unique targets. It lasts 8 seconds)",
+      "values": []
+    },
+    {
+      "text": "accuracy_rating_+%",
+      "values": []
+    },
+    {
+      "text": "enfeeble_damage_+%_final",
+      "values": []
+    },
+    {
+      "text": "enfeeble_damage_+%_vs_rare_or_unique_final",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Enfeeble is a Hex which reduces the targets' Accuracy Rating by 10% and Damage by 15%, or 9% on Rare or Unique targets. It lasts 8 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Curse Duration",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Curse Duration",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

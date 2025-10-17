@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Resistance, Damage taken, Exposure",
     "DropLevel": "16",
+    "BaseType": "Wave of Conviction",
     "Class": "Skill Gems",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Area, Damage, Duration, Trappable, Totemable, Mineable, Triggerable, Fire, Lightning, CanRapidFire, Multicastable, AreaSpell, Physical",
@@ -455,5 +456,113 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "An expanding wave of energy surges forward, damaging enemies in a cone-shaped area over a duration. Each enemy hit is inflicted with Exposure matching the element of which they took the highest damage. Only one Wave of Conviction can be active at a time",
+  "explicitMods": [
+    {
+      "text": "Deals (35–1476) to (52–2214) Physical Damage",
+      "values": [
+        "(35–1476)",
+        "(52–2214)"
+      ]
+    },
+    {
+      "text": "25% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Base duration is (0.5–0.69) seconds",
+      "values": [
+        "(0.5–0.69)"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "25% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Exposure applies -15% to Elemental Resistance matching highest Damage taken",
+      "values": [
+        "-15"
+      ]
+    },
+    {
+      "text": "Deals (35–1476) to (52–2214) Physical Damage",
+      "values": [
+        "(35–1476)",
+        "(52–2214)"
+      ]
+    },
+    {
+      "text": "25% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Base duration is (0.5–0.69) seconds",
+      "values": [
+        "(0.5–0.69)"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "25% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Exposure applies -15% to Elemental Resistance matching highest Damage taken",
+      "values": [
+        "-15"
+      ]
+    },
+    {
+      "text": "ignite art variation [7]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "shock art variation [2]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Damage Penetrates (0–15)% of Enemy Elemental Resistances",
+      "values": [
+        "(0–15)"
+      ]
+    },
+    {
+      "text": "Damage Penetrates (0–15)% of Enemy Elemental Resistances",
+      "values": [
+        "(0–15)"
+      ]
+    }
+  ]
 }

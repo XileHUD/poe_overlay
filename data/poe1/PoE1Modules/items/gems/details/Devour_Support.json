@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Kill",
     "DropLevel": "8",
+    "BaseType": "Devour Support",
     "Class": "Support Gems",
     "Icon": "*",
     "ItemType": "Metadata/Items/Gems/SupportGemDevour",
@@ -373,5 +374,37 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Killing Blows with Supported Skills Consume corpses to Recover (24–366) Life and (10–40) Mana",
+      "values": [
+        "(24–366)",
+        "(10–40)"
+      ]
+    },
+    {
+      "text": "Killing Blows with Supported Skills Consume corpses to Recover (24–366) Life and (10–40) Mana",
+      "values": [
+        "(24–366)",
+        "(10–40)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–80)% increased Damage if you have Consumed a corpse Recently",
+      "values": [
+        "(0–80)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–80)% increased Damage if you have Consumed a corpse Recently",
+      "values": [
+        "(0–80)"
+      ]
+    }
+  ]
 }

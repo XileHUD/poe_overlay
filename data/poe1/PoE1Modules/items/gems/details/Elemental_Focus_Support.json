@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Ailment",
     "DropLevel": "18",
+    "BaseType": "Elemental Focus Support",
     "Class": "Support Gems",
     "Icon": "F",
     "ItemType": "Metadata/Items/Gems/SupportGemElementalFocus",
@@ -333,5 +334,47 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits or burns enemies, or inflicts elemental ailments.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (20–34)% more Elemental Damage",
+      "values": [
+        "(20–34)"
+      ]
+    },
+    {
+      "text": "Supported Skills cannot inflict Elemental Ailments",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (20–34)% more Elemental Damage",
+      "values": [
+        "(20–34)"
+      ]
+    },
+    {
+      "text": "Supported Skills cannot inflict Elemental Ailments",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
+    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
+    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Elemental Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Elemental Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

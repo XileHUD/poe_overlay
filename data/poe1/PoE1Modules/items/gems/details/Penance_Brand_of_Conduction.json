@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Penance Brand of Conduction",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, Physical, Lightning, Duration, Totemable, Trappable, Mineable, Triggerable, Multicastable, Brand, AreaSpell",
     "ActiveSkillsCode": "penance_brand_alt_y"
@@ -371,5 +372,202 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, adding energy to the branded enemy and nearby enemies who do not have energy. When the brand is detached, all enemies with energy are dealt damage.",
+  "explicitMods": [
+    {
+      "text": "Deals (35–509) to (53–764) Physical Damage",
+      "values": [
+        "(35–509)",
+        "(53–764)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Activates every 0.15 seconds while Attached",
+      "values": [
+        "0.15"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+      "values": []
+    },
+    {
+      "text": "Up to +(0–0.9) metres to Energy spread radius, scaled by distance from Brand",
+      "values": [
+        "+(0–0.9)"
+      ]
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Can be Attached for a total Duration of 0.5 seconds",
+      "values": [
+        "0.5"
+      ]
+    },
+    {
+      "text": "Deals 100% more Damage with Hits against Branded Enemy",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Deals (35–509) to (53–764) Physical Damage",
+      "values": [
+        "(35–509)",
+        "(53–764)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Activates every 0.15 seconds while Attached",
+      "values": [
+        "0.15"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+      "values": []
+    },
+    {
+      "text": "Up to +(0–0.9) metres to Energy spread radius, scaled by distance from Brand",
+      "values": [
+        "+(0–0.9)"
+      ]
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Can be Attached for a total Duration of 0.5 seconds",
+      "values": [
+        "0.5"
+      ]
+    },
+    {
+      "text": "Deals 100% more Damage with Hits against Branded Enemy",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "base number of sigils allowed per target [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "penance brand explodes on death and detach [1]",
+      "values": []
+    },
+    {
+      "text": "penance brand spreads energy [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (35–2758) to (53–4136) Physical Damage",
+      "values": [
+        "(35–2758)",
+        "(53–4136)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Activates every 0.15 seconds while Attached",
+      "values": [
+        "0.15"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+      "values": []
+    },
+    {
+      "text": "Up to +(0–1.7) metres to Energy spread radius, scaled by distance from Brand",
+      "values": [
+        "+(0–1.7)"
+      ]
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Can be Attached for a total Duration of 0.5 seconds",
+      "values": [
+        "0.5"
+      ]
+    },
+    {
+      "text": "Deals 100% more Damage with Hits against Branded Enemy",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "base number of sigils allowed per target [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "penance brand explodes on death and detach [1]",
+      "values": []
+    },
+    {
+      "text": "penance brand spreads energy [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Deals +(0–20)% more Damage with Hits against Branded Enemy",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Deals +(0–20)% more Damage with Hits against Branded Enemy",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Deals +(0–20)% more Damage with Hits against Branded Enemy",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

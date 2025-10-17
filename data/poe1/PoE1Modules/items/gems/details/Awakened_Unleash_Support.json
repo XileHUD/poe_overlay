@@ -3,6 +3,7 @@
   "slug": "Awakened_Unleash_Support",
   "metadata": {
     "DropLevel": "72",
+    "BaseType": "Awakened Unleash Support",
     "Class": "Support Gems",
     "Icon": "q",
     "ItemType": "Metadata/Items/Gems/SupportGemUnleashPlus",
@@ -193,5 +194,53 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports spell skills, making their effect reoccur when cast. Cannot support skills with cooldowns, triggered skills, Brand skills, Vaal skills, channelling skills, skills with a reservation, or skills used by totems, traps, or mines. Cannot modify the skills of minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (33–35)% less Damage when Reoccurring",
+      "values": [
+        "(33–35)"
+      ]
+    },
+    {
+      "text": "Supported Spells gain a Seal every (0.66–0.7) seconds, to a maximum of (3–4) SealsSupported Spells are Unsealed when cast, and their effects Reoccur for each Seal lost",
+      "values": [
+        "(0.66–0.7)",
+        "(3–4)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (33–35)% less Damage when Reoccurring",
+      "values": [
+        "(33–35)"
+      ]
+    },
+    {
+      "text": "Supported Spells gain a Seal every (0.66–0.7) seconds, to a maximum of (3–4) SealsSupported Spells are Unsealed when cast, and their effects Reoccur for each Seal lost",
+      "values": [
+        "(0.66–0.7)",
+        "(3–4)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Spell cast time is 10% longer for each time the Spell Reoccurs)",
+    "(Spell cast time is 10% longer for each time the Spell Reoccurs)",
+    "(Spell cast time is 10% longer for each time the Spell Reoccurs)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

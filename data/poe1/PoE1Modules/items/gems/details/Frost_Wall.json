@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "DropLevel": "4",
+    "BaseType": "Frost Wall",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Duration, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cold, Cascadable, Cooldown",
@@ -454,5 +455,77 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a wall of ice which holds back enemies. Targets under the wall are damaged and pushed back.",
+  "explicitMods": [
+    {
+      "text": "Deals (8–462) to (12–693) Cold Damage",
+      "values": [
+        "(8–462)",
+        "(12–693)"
+      ]
+    },
+    {
+      "text": "Base duration is (3–4.9) seconds",
+      "values": [
+        "(3–4.9)"
+      ]
+    },
+    {
+      "text": "0.15 seconds between appearance of Wall sections",
+      "values": [
+        "0.15"
+      ]
+    },
+    {
+      "text": "Wall will be (2.8–5.6) meters long",
+      "values": [
+        "(2.8–5.6)"
+      ]
+    },
+    {
+      "text": "Deals (8–462) to (12–693) Cold Damage",
+      "values": [
+        "(8–462)",
+        "(12–693)"
+      ]
+    },
+    {
+      "text": "Base duration is (3–4.9) seconds",
+      "values": [
+        "(3–4.9)"
+      ]
+    },
+    {
+      "text": "0.15 seconds between appearance of Wall sections",
+      "values": [
+        "0.15"
+      ]
+    },
+    {
+      "text": "Wall will be (2.8–5.6) meters long",
+      "values": [
+        "(2.8–5.6)"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

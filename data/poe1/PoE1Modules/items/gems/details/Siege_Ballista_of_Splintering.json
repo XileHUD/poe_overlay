@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Siege Ballista of Splintering",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Attack, Projectile, ProjectilesFromUser, RangedAttack, Trappable, Mineable, SummonsTotem, AttackInPlaceIsDefault, TotemsAreBallistae",
@@ -332,5 +333,139 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a ballista totem that attacks with forking arrows.\nRequires a Bow.",
+  "explicitMods": [
+    {
+      "text": "+(2–3) to maximum number of Summoned Totems",
+      "values": [
+        "+(2–3)"
+      ]
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Projectiles Fork",
+      "values": []
+    },
+    {
+      "text": "Projectiles can Fork 1 additional Time",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Summons a Ballista Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "+(2–3) to maximum number of Summoned Totems",
+      "values": [
+        "+(2–3)"
+      ]
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Projectiles Fork",
+      "values": []
+    },
+    {
+      "text": "Projectiles can Fork 1 additional Time",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Summons a Ballista Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [80]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "+(2–4) to maximum number of Summoned Totems",
+      "values": [
+        "+(2–4)"
+      ]
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Projectiles Fork",
+      "values": []
+    },
+    {
+      "text": "Projectiles can Fork 1 additional Time",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Summons a Ballista Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [80]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Projectiles have (0–40)% chance for an additional Projectile when Forking",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Projectiles have (0–40)% chance for an additional Projectile when Forking",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Projectiles have (0–40)% chance for an additional Projectile when Forking",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

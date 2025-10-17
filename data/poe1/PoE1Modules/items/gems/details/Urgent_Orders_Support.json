@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Warcry",
     "DropLevel": "31",
+    "BaseType": "Urgent Orders Support",
     "Class": "Support Gems",
     "Icon": "o",
     "ItemType": "Metadata/Items/Gems/SupportGemUrgentOrders",
@@ -333,5 +334,35 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports warcry skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (50–69)% increased Warcry Speed",
+      "values": [
+        "(50–69)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (50–69)% increased Warcry Speed",
+      "values": [
+        "(50–69)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Warcry Speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Warcry Speed",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

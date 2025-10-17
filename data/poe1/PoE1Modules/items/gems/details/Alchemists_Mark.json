@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Burning, Curse, Ignite, Poison",
     "DropLevel": "24",
+    "BaseType": "Alchemist's Mark",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Trappable, Totemable, Mineable, Multicastable, Triggerable, AppliesCurse, CanRapidFire, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Mark, Area, Duration, AreaSpell, Fire, Chaos",
@@ -375,5 +376,77 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Curses a single enemy, granting flask charges when you hit them and creating Burning Ground under them if your hit Ignites them, and Caustic Ground if it Poisons them. Damage modifiers do not apply to these ground effects. You can only have one Mark at a time.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Burning Ground deals (20–26)% of the Fire Damage per Second of strongest Ignite on EnemyCaustic Ground deals (60–79)% of the Chaos Damage per Second of strongest Poison on EnemyCan create each Ground effect no more than once each second",
+      "values": [
+        "(20–26)",
+        "(60–79)"
+      ]
+    },
+    {
+      "text": "Gain 1 Flask Charge when you Hit a Cursed Enemy, no more than once every 3 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Burning Ground deals (20–26)% of the Fire Damage per Second of strongest Ignite on EnemyCaustic Ground deals (60–79)% of the Chaos Damage per Second of strongest Poison on EnemyCan create each Ground effect no more than once each second",
+      "values": [
+        "(20–26)",
+        "(60–79)"
+      ]
+    },
+    {
+      "text": "Gain 1 Flask Charge when you Hit a Cursed Enemy, no more than once every 3 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "alchemists_mark_grant_attacker_x_flask_charges_when_hit_once_per_3s",
+      "values": []
+    },
+    {
+      "text": "alchemists_mark_igniter_creates_burning_ground_%_ignite_damage",
+      "values": []
+    },
+    {
+      "text": "alchemists_mark_poisoner_creates_caustic_ground_%_poison_damage",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Effect of Mark",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Effect of Mark",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

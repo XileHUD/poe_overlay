@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Galvanic Arrow of Surging",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Projectile, ProjectilesFromUser, Area, Totemable, Trappable, Mineable, Lightning, RangedAttack, MirageArcherCanUse, Triggerable",
@@ -292,5 +293,81 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fire a trio of electrical arrows that quickly dissipate, vanishing shortly after being loosed. If the arrows' flight is stopped by colliding with a target, they create a burst of lightning, damaging enemies in a cone behind the target",
+  "explicitMods": [
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fires 3 Arrows",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fires 3 Arrows",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fires 3 Arrows",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Projectile Speed",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Projectile Speed",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Projectile Speed",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

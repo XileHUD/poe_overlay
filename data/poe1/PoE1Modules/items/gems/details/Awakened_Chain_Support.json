@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Hit, Chain",
     "DropLevel": "72",
+    "BaseType": "Awakened Chain Support",
     "Class": "Support Gems",
     "Icon": "c",
     "ItemType": "Metadata/Items/Gems/SupportGemChainPlus",
@@ -174,5 +175,51 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports projectile skills, and any other skills that chain.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills Chain +3 times",
+      "values": [
+        "+3"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (6–10)% less Damage with Hits",
+      "values": [
+        "(6–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills Chain +3 times",
+      "values": [
+        "+3"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (6–10)% less Damage with Hits",
+      "values": [
+        "(6–10)"
+      ]
+    },
+    {
+      "text": "terrain arrow attachment chance reduction +% [150]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Chaining range",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Chaining range",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

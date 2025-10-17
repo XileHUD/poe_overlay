@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Minion, Bleeding",
     "DropLevel": "28",
+    "BaseType": "Summon Reaper",
     "Class": "Skill Gems",
     "TargetTypes": "Enemy, Ground,",
     "Type": "Triggerable, Physical, Mineable, Minion, MinionsCanExplode, Spell, Totemable, Trappable, CreatesMinion, Cooldown",
@@ -495,5 +496,251 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a powerful Reaper which uses a variety of slashing area attacks. The Reaper's presence weakens your other minions, and it will consume them to temporarily empower and heal itself. Using this skill while the Reaper is already summoned causes it to dash to the targeted location and perform a powerful attack.",
+  "explicitMods": [
+    {
+      "text": "Maximum 1 Summoned Reaper",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Minion's Attacks have 50% chance to inflict Bleeding",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Minion deals (30–87)% more Damage with Bleeding",
+      "values": [
+        "(30–87)"
+      ]
+    },
+    {
+      "text": "Reaper causes your Non-Reaper Minions to deal (20–29)% less Damage",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "Reaper causes your Non-Reaper Minions to have (20–29)% less Maximum Life",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Reaper",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Minion's Attacks have 50% chance to inflict Bleeding",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Minion deals (30–87)% more Damage with Bleeding",
+      "values": [
+        "(30–87)"
+      ]
+    },
+    {
+      "text": "Reaper causes your Non-Reaper Minions to deal (20–29)% less Damage",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "Reaper causes your Non-Reaper Minions to have (20–29)% less Maximum Life",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [28,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [18]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Deals 50% less Attack Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Deals 46.38% more Damage",
+      "values": [
+        "46.38"
+      ]
+    },
+    {
+      "text": "action attack or cast time uses animation length [1]",
+      "values": []
+    },
+    {
+      "text": "leap slam minimum distance [40]",
+      "values": []
+    },
+    {
+      "text": "walk emerge extra distance [-9]",
+      "values": []
+    },
+    {
+      "text": "Deals 50% more Attack Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Deals 46.38% more Damage",
+      "values": [
+        "46.38"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 50% more Attack Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Deals 46.38% more Damage",
+      "values": [
+        "46.38"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 50% more Attack Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Deals 46.38% more Damage",
+      "values": [
+        "46.38"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "+0.3 metres to Melee Strike Range",
+      "values": [
+        "+0.3"
+      ]
+    },
+    {
+      "text": "cast time overrides attack duration [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be knocked back [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 50% less Attack Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Deals 46.38% more Damage",
+      "values": [
+        "46.38"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 46.38% more Damage",
+      "values": [
+        "46.38"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 46.38% more Damage",
+      "values": [
+        "46.38"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 46.38% more Damage",
+      "values": [
+        "46.38"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Minion's Attacks have (0–20)% chance to inflict Bleeding",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Minion's Attacks have (0–20)% chance to inflict Bleeding",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

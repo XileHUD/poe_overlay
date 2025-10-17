@@ -3,6 +3,7 @@
   "slug": "Empower_Support",
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xDivine Orb",
+    "BaseType": "Empower Support",
     "Class": "Support Gems",
     "Icon": "+",
     "IsExceptional": "This support gem only supports active skills that come from gem items",
@@ -92,5 +93,35 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill gem. Once this gem reaches level 2 or above, will raise the level of supported gems. Cannot support skills that don't come from gems.",
+  "explicitMods": [
+    {
+      "text": "+(0–2) to Level of Supported Skill Gems",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "+(0–2) to Level of Supported Skill Gems",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "This Gem gains (0–100)% increased Experience",
+      "values": [
+        "(0–100)"
+      ]
+    },
+    {
+      "text": "This Gem gains (0–100)% increased Experience",
+      "values": [
+        "(0–100)"
+      ]
+    }
+  ]
 }

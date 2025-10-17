@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Spark",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Projectile, ProjectilesFromUser, Damage, Duration, Trappable, Totemable, Mineable, Multicastable, Triggerable, Lightning, CanRapidFire",
     "ActiveSkillsCode": "spark"
@@ -331,5 +332,108 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Continuously launches unpredictable sparks in all directions that move randomly until they hit an enemy or expire.",
+  "explicitMods": [
+    {
+      "text": "Deals (1–24) to (11–454) Lightning Damage",
+      "values": [
+        "(1–24)",
+        "(11–454)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Fires Projectiles in random directions",
+      "values": []
+    },
+    {
+      "text": "Deals (1–24) to (11–454) Lightning Damage",
+      "values": [
+        "(1–24)",
+        "(11–454)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Fires Projectiles in random directions",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "projectile spiral nova time ms [3000]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (4–483) to (13–1448) Lightning Damage",
+      "values": [
+        "(4–483)",
+        "(13–1448)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Fires an additional Projectile",
+      "values": []
+    },
+    {
+      "text": "25% increased Projectile Speed",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

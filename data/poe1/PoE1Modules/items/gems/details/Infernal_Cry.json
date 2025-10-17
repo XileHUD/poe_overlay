@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Combust",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Enemy, Ground",
     "Type": "Attack, Area, Damage, Triggerable, Triggered, Melee, InbuiltTrigger",
@@ -252,5 +253,188 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Performs a warcry, taunting nearby enemies to attack the user and exerting subsequent attacks. The user and nearby allies gain a buff that grants a portion of their physical damage as extra fire damage. In addition to being taunted, enemies are inflicted with a secondary debuff causing them to explode when they die, dealing fire damage in an area.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (2.5–3.4) seconds",
+      "values": [
+        "(2.5–3.4)"
+      ]
+    },
+    {
+      "text": "Base secondary duration is (2.5–3.4) seconds",
+      "values": [
+        "(2.5–3.4)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Warcry Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Damage cannot be Reflected",
+      "values": []
+    },
+    {
+      "text": "Explosion deals Base Fire Damage equal to 8% of the Monster's maximum Life",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Buff grants gain 5% of Physical Damage asExtra Fire Damage per 5 power, counting a maximum of 25 Power",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Exerts the next 6 Melee Attacks you perform",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Exerted Attacks Trigger Combust the first time they deal a Melee Hit",
+      "values": []
+    },
+    {
+      "text": "Counts total Power of Enemies in Range",
+      "values": []
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "This Skill is Triggered by Attacks Exerted by Infernal Cry",
+      "values": []
+    },
+    {
+      "text": "Base duration is (2.5–3.4) seconds",
+      "values": [
+        "(2.5–3.4)"
+      ]
+    },
+    {
+      "text": "Base secondary duration is (2.5–3.4) seconds",
+      "values": [
+        "(2.5–3.4)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Warcry Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Damage cannot be Reflected",
+      "values": []
+    },
+    {
+      "text": "Explosion deals Base Fire Damage equal to 8% of the Monster's maximum Life",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Buff grants gain 5% of Physical Damage asExtra Fire Damage per 5 power, counting a maximum of 25 Power",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Exerts the next 6 Melee Attacks you perform",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Exerted Attacks Trigger Combust the first time they deal a Melee Hit",
+      "values": []
+    },
+    {
+      "text": "Counts total Power of Enemies in Range",
+      "values": []
+    },
+    {
+      "text": "base deal no attack damage [1]",
+      "values": []
+    },
+    {
+      "text": "base deal no spell damage [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "display skill deals secondary damage [1]",
+      "values": []
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "This Skill is Triggered by Attacks Exerted by Infernal Cry",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "physical_damage_%_to_add_as_fire",
+      "values": []
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "This Skill is Triggered by Attacks Exerted by Infernal Cry",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
+    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
+    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

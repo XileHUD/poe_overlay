@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Bleeding",
+    "BaseType": "Double Strike",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
@@ -335,5 +336,47 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Performs two fast strikes with a melee weapon.",
+  "explicitMods": [
+    {
+      "text": "25% chance to cause Bleeding",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "25% chance to cause Bleeding",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "base skill number of additional hits [1]",
+      "values": []
+    },
+    {
+      "text": "double_strike_current_stages",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% chance to deal Double Damage to Bleeding Enemies",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to deal Double Damage to Bleeding Enemies",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

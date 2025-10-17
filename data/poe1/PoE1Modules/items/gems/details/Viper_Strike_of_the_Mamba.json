@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Viper Strike of the Mamba",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, Two Hand Swords, Rune Daggers",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Duration, Multistrikeable, Melee, MeleeSingleTarget, DamageOverTime, Chaos",
@@ -292,5 +293,142 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Hits enemies, converting some of your physical damage to chaos damage and inflicting poison which will be affected by modifiers to skill duration. If dual wielding, deals the damage of both weapons in one strike. Requires a claw, dagger or sword.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "60% chance to Poison on Hit",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "200% more Damage with Poison",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Cannot inflict Poison on Poisoned Enemies",
+      "values": []
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "60% chance to Poison on Hit",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "200% more Damage with Poison",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Cannot inflict Poison on Poisoned Enemies",
+      "values": []
+    },
+    {
+      "text": "poison duration is skill duration [1]",
+      "values": []
+    },
+    {
+      "text": "skill double hits when dual wielding [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "60% chance to Poison on Hit",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "200% more Damage with Poison",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Cannot inflict Poison on Poisoned Enemies",
+      "values": []
+    },
+    {
+      "text": "poison duration is skill duration [1]",
+      "values": []
+    },
+    {
+      "text": "skill double hits when dual wielding [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–40)% more Damage with Poison",
+      "values": [
+        "+(0–40)"
+      ]
+    },
+    {
+      "text": "+(0–40)% more Damage with Poison",
+      "values": [
+        "+(0–40)"
+      ]
+    },
+    {
+      "text": "+(0–40)% more Damage with Poison",
+      "values": [
+        "+(0–40)"
+      ]
+    }
+  ]
 }

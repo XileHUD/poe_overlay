@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Cooldown, Minion, Recovery",
     "DropLevel": "10",
+    "BaseType": "Blink Arrow",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy, ,",
@@ -456,5 +457,87 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires an arrow at the target destination. When the arrow lands, you are teleported to it and a clone is summoned at your old location. The clone is a minion that uses your bow and quiver.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "(0–47)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–47)"
+      ]
+    },
+    {
+      "text": "Minions deal (0–57)% more Damage",
+      "values": [
+        "(0–57)"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "(0–47)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–47)"
+      ]
+    },
+    {
+      "text": "Minions deal (0–57)% more Damage",
+      "values": [
+        "(0–57)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [10,70]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [25]",
+      "values": []
+    },
+    {
+      "text": "number of monsters to summon [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

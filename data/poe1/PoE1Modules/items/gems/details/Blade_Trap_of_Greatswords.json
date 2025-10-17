@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Blade Trap of Greatswords",
     "Weapon": "Two Hand Swords",
     "TargetTypes": "Enemy, Ground",
     "Type": "Attack, Damage, Mineable, Area, Trapped, Area, Cooldown, Duration",
@@ -332,5 +333,131 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap which, once triggered, swings two copies of your equipped Two Handed Sword around it in circles for a duration, each repeatedly damaging enemies it spins through",
+  "explicitMods": [
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is 3.5 seconds",
+      "values": [
+        "3.5"
+      ]
+    },
+    {
+      "text": "Base radius is (2.2–2.8) metres",
+      "values": [
+        "(2.2–2.8)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is 3.5 seconds",
+      "values": [
+        "3.5"
+      ]
+    },
+    {
+      "text": "Base radius is (2.2–2.8) metres",
+      "values": [
+        "(2.2–2.8)"
+      ]
+    },
+    {
+      "text": "attack is not melee override [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "trap use alternate death animation [1]",
+      "values": []
+    },
+    {
+      "text": "trap variation [18]",
+      "values": []
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is 3.5 seconds",
+      "values": [
+        "3.5"
+      ]
+    },
+    {
+      "text": "Base radius is (2.2–3.3) metres",
+      "values": [
+        "(2.2–3.3)"
+      ]
+    },
+    {
+      "text": "attack is not melee override [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "trap use alternate death animation [1]",
+      "values": []
+    },
+    {
+      "text": "trap variation [18]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–0.5) seconds",
+      "values": [
+        "(0–0.5)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–0.5) seconds",
+      "values": [
+        "(0–0.5)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–0.5) seconds",
+      "values": [
+        "(0–0.5)"
+      ]
+    }
+  ]
 }

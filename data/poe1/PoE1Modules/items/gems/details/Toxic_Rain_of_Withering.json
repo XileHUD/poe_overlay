@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Toxic Rain of Withering",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, MirageArcherCanUse, Area, ProjectileSpeed, Totemable, Trappable, Mineable, Damage, Chaos, Duration, DamageOverTime, ProjectileNumber, Chaos, Triggerable, Rain",
@@ -332,5 +333,170 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fire arrows into the air that rain down around the targeted area, dealing damage to enemies they hit and creating spore pods where they land. Each spore pod deals chaos damage over time to nearby enemies and withers them, causing them to take increased chaos damage. The pods last for a duration before bursting, dealing area damage.",
+  "explicitMods": [
+    {
+      "text": "Deals (8–238) Base Chaos Damage per second",
+      "values": [
+        "(8–238)"
+      ]
+    },
+    {
+      "text": "Base duration is 0.4 seconds",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Fires 5 Arrows",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Each Spore Pod inflicts 1 Withered Debuff on nearby Enemies",
+      "values": []
+    },
+    {
+      "text": "Deals (8–238) Base Chaos Damage per second",
+      "values": [
+        "(8–238)"
+      ]
+    },
+    {
+      "text": "Base duration is 0.4 seconds",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Fires 5 Arrows",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Each Spore Pod inflicts 1 Withered Debuff on nearby Enemies",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "cannot pierce [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (8–971.2) Base Chaos Damage per second",
+      "values": [
+        "(8–971.2)"
+      ]
+    },
+    {
+      "text": "Base duration is 0.4 seconds",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Fires 5 Arrows",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Each Spore Pod inflicts 1 Withered Debuff on nearby Enemies",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "cannot pierce [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)",
+    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)",
+    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)",
+    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–0.1) seconds",
+      "values": [
+        "(0–0.1)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–0.1) seconds",
+      "values": [
+        "(0–0.1)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–0.1) seconds",
+      "values": [
+        "(0–0.1)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Hit, Damage taken, Buff, Chill, Freeze",
     "DropLevel": "16",
+    "BaseType": "Old Arctic Armour",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, Totemable, Duration, HasReservation, TotemCastsAlone, Cold, ElementalStatus, Instant, NonHitChill, ChillingArea, AreaSpell, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -454,5 +455,83 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Conjures an icy barrier that chills enemies when they hit you. You drop chilled ground while moving, and take less Fire and Physical damage while stationary.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (2.5–4.4) seconds",
+      "values": [
+        "(2.5–4.4)"
+      ]
+    },
+    {
+      "text": "Buff grants (11–21)% less Physical Damage taken from Hits while stationary",
+      "values": [
+        "(11–21)"
+      ]
+    },
+    {
+      "text": "Buff grants (11–20)% less Fire Damage taken from Hits while stationary",
+      "values": [
+        "(11–20)"
+      ]
+    },
+    {
+      "text": "Chill Enemy for 0.5 seconds when Hit, reducing their Action Speed by 30%",
+      "values": [
+        "0.5"
+      ]
+    },
+    {
+      "text": "Buff grants Immunity to Freeze",
+      "values": []
+    },
+    {
+      "text": "Base duration is (2.5–4.4) seconds",
+      "values": [
+        "(2.5–4.4)"
+      ]
+    },
+    {
+      "text": "Buff grants (11–21)% less Physical Damage taken from Hits while stationary",
+      "values": [
+        "(11–21)"
+      ]
+    },
+    {
+      "text": "Buff grants (11–20)% less Fire Damage taken from Hits while stationary",
+      "values": [
+        "(11–20)"
+      ]
+    },
+    {
+      "text": "Chill Enemy for 0.5 seconds when Hit, reducing their Action Speed by 30%",
+      "values": [
+        "0.5"
+      ]
+    },
+    {
+      "text": "Buff grants Immunity to Freeze",
+      "values": []
+    },
+    {
+      "text": "ground ice art variation [6]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Skill Effect Duration",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Skill Effect Duration",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

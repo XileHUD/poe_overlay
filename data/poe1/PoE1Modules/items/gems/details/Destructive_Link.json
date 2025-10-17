@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Link",
     "DropLevel": "34",
+    "BaseType": "Destructive Link",
     "Class": "Skill Gems",
     "TargetTypes": "Self, Ground",
     "Type": "Spell, Buff, Duration, Link",
@@ -455,5 +456,75 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Targets an allied player to apply a buff which links you to them for a duration. While linked, they use your main hand critical strike chance. If the target dies while linked, you will also die. This skill cannot be triggered, or used by Totems, Traps, or Mines.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (8–9.9) seconds",
+      "values": [
+        "(8–9.9)"
+      ]
+    },
+    {
+      "text": "Linked target has +(30–49)% to Critical Strike Multiplier",
+      "values": [
+        "+(30–49)"
+      ]
+    },
+    {
+      "text": "Linked target's Main Hand Critical Strike Chance is equal to yours",
+      "values": []
+    },
+    {
+      "text": "Link breaks if target leaves range or line of sight for 4 secondsMaximum 1 Link from any source per targetYou die if Linked target dies",
+      "values": []
+    },
+    {
+      "text": "Base duration is (8–9.9) seconds",
+      "values": [
+        "(8–9.9)"
+      ]
+    },
+    {
+      "text": "Linked target has +(30–49)% to Critical Strike Multiplier",
+      "values": [
+        "+(30–49)"
+      ]
+    },
+    {
+      "text": "Linked target's Main Hand Critical Strike Chance is equal to yours",
+      "values": []
+    },
+    {
+      "text": "Link breaks if target leaves range or line of sight for 4 secondsMaximum 1 Link from any source per targetYou die if Linked target dies",
+      "values": []
+    },
+    {
+      "text": "skill cost over time is not removed with skill [1]",
+      "values": []
+    },
+    {
+      "text": "accuracy_rating_+%",
+      "values": []
+    },
+    {
+      "text": "base_critical_strike_multiplier_+",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–1.5) seconds",
+      "values": [
+        "(0–1.5)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–1.5) seconds",
+      "values": [
+        "(0–1.5)"
+      ]
+    }
+  ]
 }

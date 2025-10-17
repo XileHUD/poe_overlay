@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Hit",
     "DropLevel": "38",
+    "BaseType": "Decay Support",
     "Class": "Support Gems",
     "Icon": "D",
     "ItemType": "Metadata/Items/Gems/SupportGemDecay",
@@ -377,5 +378,35 @@
     "Cast on Death Support",
     "Cast on Melee Kill Support (Quality only)",
     "Cast when Damage Taken Support"
+  ],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills inflict Decay on Hit, dealing (162–1230) Chaos Damage per second for 8 seconds",
+      "values": [
+        "(162–1230)"
+      ]
+    },
+    {
+      "text": "Supported Skills inflict Decay on Hit, dealing (162–1230) Chaos Damage per second for 8 seconds",
+      "values": [
+        "(162–1230)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Chaos Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Chaos Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

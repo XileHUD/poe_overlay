@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Resistance, Curse, Freeze",
     "DropLevel": "24",
+    "BaseType": "Frostbite",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Area, Duration, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cold, Cascadable, AppliesCurse, CanRapidFire, AreaSpell, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Hex",
@@ -495,5 +496,141 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Curses all targets in an area, lowering their cold resistance and giving them a chance to be frozen when hit.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (8–11.8) seconds",
+      "values": [
+        "(8–11.8)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Cursed enemies have (-36–-17)% to Cold Resistance",
+      "values": [
+        "(-36–-17)"
+      ]
+    },
+    {
+      "text": "Hits against Cursed Enemies have +25% chance to Freeze",
+      "values": [
+        "+25"
+      ]
+    },
+    {
+      "text": "Base duration is (8–11.8) seconds",
+      "values": [
+        "(8–11.8)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Cursed enemies have (-36–-17)% to Cold Resistance",
+      "values": [
+        "(-36–-17)"
+      ]
+    },
+    {
+      "text": "Hits against Cursed Enemies have +25% chance to Freeze",
+      "values": [
+        "+25"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "Grants Level 5 Frostbite Skill",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "(8–12)% increased Attack Speed",
+      "values": [
+        "(8–12)"
+      ]
+    },
+    {
+      "text": "+(30–40)% to Cold Resistance",
+      "values": [
+        "+(30–40)"
+      ]
+    },
+    {
+      "text": "(30–40)% increased Chill Duration on Enemies",
+      "values": [
+        "(30–40)"
+      ]
+    },
+    {
+      "text": "Gain 20% of Physical Damage as Extra Cold Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(7–10)% chance to Freeze",
+      "values": [
+        "(7–10)"
+      ]
+    },
+    {
+      "text": "Hexes Transfer to all Enemies within 3 metres when Hexed Enemy dies",
+      "values": []
+    },
+    {
+      "text": "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+      "values": []
+    },
+    {
+      "text": "(Hexes from Auras or Cursed Ground cannot be Transferred)",
+      "values": []
+    },
+    {
+      "text": "base_self_freeze_duration_-%",
+      "values": []
+    },
+    {
+      "text": "chance_to_be_frozen_%",
+      "values": []
+    },
+    {
+      "text": "cold_damage_resistance_%_from_curse",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Hexes from Auras or Cursed Ground cannot be Transferred)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Freezes on Cursed enemies have (0–20)% increased Duration",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Freezes on Cursed enemies have (0–20)% increased Duration",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

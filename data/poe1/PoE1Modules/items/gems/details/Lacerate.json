@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Stance, Bleeding",
     "DropLevel": "12",
+    "BaseType": "Lacerate",
     "Class": "Skill Gems",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, Two Hand Swords, Two Hand Axes",
     "TargetTypes": "Ground, Enemy",
@@ -458,5 +459,86 @@
   "description": "Base radius of Lacerate is 38 units.",
   "stats": [
     "Base radius of Lacerate is 38 units."
+  ],
+  "gemDescription": "Slashes twice, releasing waves of force that damage enemies they hit. Enemies in the middle of the slashes can be hit by both. The slashes will have a chance to inflict bleeding in Blood Stance, or have a wider angle in Sand Stance. Can be used with Axes and Swords. You are in Blood Stance by default.",
+  "explicitMods": [
+    {
+      "text": "+(0–0.9) metres to radius",
+      "values": [
+        "+(0–0.9)"
+      ]
+    },
+    {
+      "text": "(50–88)% more Damage with Bleeding while in Blood Stance",
+      "values": [
+        "(50–88)"
+      ]
+    },
+    {
+      "text": "25% chance to cause Bleeding while in Blood Stance",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "50% increased angle while in Sand Stance",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+(0–0.9) metres to radius",
+      "values": [
+        "+(0–0.9)"
+      ]
+    },
+    {
+      "text": "(50–88)% more Damage with Bleeding while in Blood Stance",
+      "values": [
+        "(50–88)"
+      ]
+    },
+    {
+      "text": "25% chance to cause Bleeding while in Blood Stance",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "50% increased angle while in Sand Stance",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(You are in Blood Stance by default)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(You are in Blood Stance by default)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(You are in Blood Stance by default)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Attack Speed if you've changed Stance Recently",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Attack Speed if you've changed Stance Recently",
+      "values": [
+        "(0–20)"
+      ]
+    }
   ]
 }

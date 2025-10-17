@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Minion",
     "DropLevel": "18",
+    "BaseType": "Minion Speed Support",
     "Class": "Support Gems",
     "Icon": "e",
     "ItemType": "Metadata/Items/Gems/SupportGemMinionSpeed",
@@ -453,5 +454,59 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which create Minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (25–34)% increased Minion Attack Speed",
+      "values": [
+        "(25–34)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (25–34)% increased Minion Cast Speed",
+      "values": [
+        "(25–34)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (25–44)% increased Minion Movement Speed",
+      "values": [
+        "(25–44)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (25–34)% increased Minion Attack Speed",
+      "values": [
+        "(25–34)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (25–34)% increased Minion Cast Speed",
+      "values": [
+        "(25–34)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (25–44)% increased Minion Movement Speed",
+      "values": [
+        "(25–44)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Minion Movement Speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Minion Movement Speed",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

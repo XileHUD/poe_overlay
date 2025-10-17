@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Lacerate of Butchering",
     "Weapon": "Two Hand Swords, Two Hand Axes",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Area, Multistrikeable, Melee",
@@ -332,5 +333,81 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slashes twice, releasing wide waves of force that damage enemies they hit. Enemies in the middle of the slashes can be hit by both. Requires a Two Handed Axe or Two Handed Sword.",
+  "explicitMods": [
+    {
+      "text": "+(0.4–2.3) metres to radius",
+      "values": [
+        "+(0.4–2.3)"
+      ]
+    },
+    {
+      "text": "50% increased angle",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+(0.4–2.3) metres to radius",
+      "values": [
+        "+(0.4–2.3)"
+      ]
+    },
+    {
+      "text": "50% increased angle",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "+(0.4–3.8) metres to radius",
+      "values": [
+        "+(0.4–3.8)"
+      ]
+    },
+    {
+      "text": "50% increased angle",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–0.5) metres to radius",
+      "values": [
+        "+(0–0.5)"
+      ]
+    },
+    {
+      "text": "+(0–0.5) metres to radius",
+      "values": [
+        "+(0–0.5)"
+      ]
+    },
+    {
+      "text": "+(0–0.5) metres to radius",
+      "values": [
+        "+(0–0.5)"
+      ]
+    }
+  ]
 }

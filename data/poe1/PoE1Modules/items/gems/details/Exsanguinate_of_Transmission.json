@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Exsanguinate of Transmission",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Trappable, Totemable, Mineable, Chains, Multicastable, Triggerable, Physical, CanRapidFire, DamageOverTime, Duration",
     "ActiveSkillsCode": "exsanguinate_alt_x"
@@ -411,5 +412,134 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Releases a tendril of blood from your character, which will target an enemy in front of you, then chain to other enemies. The tendril deals physical damage and inflicts a physical damage over time debuff to enemies, which can stack up to 3 times.",
+  "explicitMods": [
+    {
+      "text": "Deals (4–268) to (5–401) Physical Damage",
+      "values": [
+        "(4–268)",
+        "(5–401)"
+      ]
+    },
+    {
+      "text": "Deals (26.3–1494.7) Base Physical Damage per second",
+      "values": [
+        "(26.3–1494.7)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Chains +(6–10) Times",
+      "values": [
+        "+(6–10)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Fires tendrils at up to 1 Target",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Deals (4–268) to (5–401) Physical Damage",
+      "values": [
+        "(4–268)",
+        "(5–401)"
+      ]
+    },
+    {
+      "text": "Deals (26.3–1494.7) Base Physical Damage per second",
+      "values": [
+        "(26.3–1494.7)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Chains +(6–10) Times",
+      "values": [
+        "+(6–10)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Fires tendrils at up to 1 Target",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Deals (4–1707) to (5–2562) Physical Damage",
+      "values": [
+        "(4–1707)",
+        "(5–2562)"
+      ]
+    },
+    {
+      "text": "Deals (26.3–9075.9) Base Physical Damage per second",
+      "values": [
+        "(26.3–9075.9)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Chains +(6–13) Times",
+      "values": [
+        "+(6–13)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Fires tendrils at up to 1 Target",
+      "values": [
+        "1"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–2) seconds",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–2) seconds",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–2) seconds",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

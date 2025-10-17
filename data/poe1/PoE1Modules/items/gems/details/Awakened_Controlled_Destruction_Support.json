@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Hit, Unnerve",
     "DropLevel": "72",
+    "BaseType": "Awakened Controlled Destruction Support",
     "Class": "Support Gems",
     "Icon": "C",
     "ItemType": "Metadata/Items/Gems/SupportGemControlledDestructionPlus",
@@ -194,5 +195,63 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports attack skills, or spell skills that deal damage.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have 80% less Critical Strike Chance",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (40–44)% more Spell Damage",
+      "values": [
+        "(40–44)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% chance to Unnerve Enemies for 4 seconds on Hit",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 80% less Critical Strike Chance",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (40–44)% more Spell Damage",
+      "values": [
+        "(40–44)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% chance to Unnerve Enemies for 4 seconds on Hit",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Unnerved enemies take 10% increased Spell Damage)",
+    "(Unnerved enemies take 10% increased Spell Damage)",
+    "(Unnerved enemies take 10% increased Spell Damage)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Spectral Shield Throw of Shattering",
     "Weapon": "Shields",
     "TargetTypes": "Enemy, Ground",
     "Type": "Attack, RangedAttack, Projectile, ProjectilesFromUser, SingleMainProjectile, Cold",
@@ -412,5 +413,123 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a spectral copy of your shield as a projectile which cannot pierce, and deals off-hand damage augmented by the evasion of the shield. When it collides with something it will shatter, launching a number of smaller shards as projectiles in all directions. Modifiers that cause additional projectiles to be fired will add more shards, not more copies of the shield.",
+  "explicitMods": [
+    {
+      "text": "Shard Projectiles Deal 25% less Damage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(69–297) to (103–446) Base Off Hand Cold Damage",
+      "values": [
+        "(69–297)",
+        "(103–446)"
+      ]
+    },
+    {
+      "text": "(4–7) to (7–12) Added Cold Damage per 15 Evasion Rating on Shield",
+      "values": [
+        "(4–7)",
+        "(7–12)"
+      ]
+    },
+    {
+      "text": "Fires (6–12) additional Projectiles",
+      "values": [
+        "(6–12)"
+      ]
+    },
+    {
+      "text": "Shard Projectiles Deal 25% less Damage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(69–297) to (103–446) Base Off Hand Cold Damage",
+      "values": [
+        "(69–297)",
+        "(103–446)"
+      ]
+    },
+    {
+      "text": "(4–7) to (7–12) Added Cold Damage per 15 Evasion Rating on Shield",
+      "values": [
+        "(4–7)",
+        "(7–12)"
+      ]
+    },
+    {
+      "text": "Fires (6–12) additional Projectiles",
+      "values": [
+        "(6–12)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "thrown shield projectile fire random directions [1]",
+      "values": []
+    },
+    {
+      "text": "Shard Projectiles Deal 25% less Damage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(69–685) to (103–1027) Base Off Hand Cold Damage",
+      "values": [
+        "(69–685)",
+        "(103–1027)"
+      ]
+    },
+    {
+      "text": "(4–9) to (7–16) Added Cold Damage per 15 Evasion Rating on Shield",
+      "values": [
+        "(4–9)",
+        "(7–16)"
+      ]
+    },
+    {
+      "text": "Fires (6–17) additional Projectiles",
+      "values": [
+        "(6–17)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "thrown shield projectile fire random directions [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Projectile Speed",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Projectile Speed",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Projectile Speed",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

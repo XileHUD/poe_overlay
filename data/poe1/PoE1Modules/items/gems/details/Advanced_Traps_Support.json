@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Cooldown, Trap, Recovery",
     "DropLevel": "31",
+    "BaseType": "Advanced Traps Support",
     "Class": "Support Gems",
     "Icon": "R",
     "ItemType": "Metadata/Items/Gems/SupportGemTrapCooldown",
@@ -373,5 +374,51 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which throw traps.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (50–107)% increased Cooldown Recovery Rate for throwing Traps",
+      "values": [
+        "(50–107)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (15–34)% increased Trap Throwing Speed",
+      "values": [
+        "(15–34)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (50–107)% increased Cooldown Recovery Rate for throwing Traps",
+      "values": [
+        "(50–107)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (15–34)% increased Trap Throwing Speed",
+      "values": [
+        "(15–34)"
+      ]
+    },
+    {
+      "text": "multi trap and mine support flags [16]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Trap Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Trap Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

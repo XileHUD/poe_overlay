@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "16",
+    "BaseType": "Righteous Fire",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, Area, CausesBurning, DamageOverTime, Fire, Totemable, Triggerable, Instant, AreaSpell, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -414,5 +415,163 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Engulfs you in magical fire that rapidly burns you and nearby enemies. Your spell damage is substantially increased while under this effect. The effect ends when you have 1 life remaining.",
+  "explicitMods": [
+    {
+      "text": "Deals 70% of your Maximum Life as Base Fire Damage per second",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "Deals 70% of your Maximum Energy Shield as Base Fire Damage per second",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "You Burn for 90% of your Maximum Life per second as Fire Damage",
+      "values": [
+        "90"
+      ]
+    },
+    {
+      "text": "You Burn for 70% of your Maximum Energy Shield per second as Fire Damage",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "Grants (20–39)% more Spell Damage",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "Base radius is (1.8–2.3) metres",
+      "values": [
+        "(1.8–2.3)"
+      ]
+    },
+    {
+      "text": "Deals 70% of your Maximum Life as Base Fire Damage per second",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "Deals 70% of your Maximum Energy Shield as Base Fire Damage per second",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "You Burn for 90% of your Maximum Life per second as Fire Damage",
+      "values": [
+        "90"
+      ]
+    },
+    {
+      "text": "You Burn for 70% of your Maximum Energy Shield per second as Fire Damage",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "Grants (20–39)% more Spell Damage",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "Base radius is (1.8–2.3) metres",
+      "values": [
+        "(1.8–2.3)"
+      ]
+    },
+    {
+      "text": "spell_damage_+%",
+      "values": []
+    },
+    {
+      "text": "base_nonlethal_fire_damage_%_of_maximum_life_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "righteous_fire_spell_damage_+%_final",
+      "values": []
+    },
+    {
+      "text": "base_nonlethal_fire_damage_%_of_maximum_energy_shield_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "base_nonlethal_fire_damage_%_of_maximum_mana_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "righteous_fire_cast_speed_+%_final",
+      "values": []
+    },
+    {
+      "text": "base_fire_damage_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "spell_damage_+%",
+      "values": []
+    },
+    {
+      "text": "righteous_fire_spell_damage_+%_final",
+      "values": []
+    },
+    {
+      "text": "base_fire_damage_%_of_maximum_life_plus_maximum_ES_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "base_fire_damage_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "spell_damage_+%",
+      "values": []
+    },
+    {
+      "text": "base_nonlethal_fire_damage_%_of_maximum_life_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "righteous_fire_spell_damage_+%_final",
+      "values": []
+    },
+    {
+      "text": "base_nonlethal_fire_damage_%_of_maximum_energy_shield_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "base_nonlethal_fire_damage_%_of_maximum_mana_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "righteous_fire_cast_speed_+%_final",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    }
+  ]
 }

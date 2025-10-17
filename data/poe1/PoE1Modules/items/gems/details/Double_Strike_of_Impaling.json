@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Double Strike of Impaling",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, MeleeSingleTarget, Multistrikeable, Melee, Physical",
@@ -292,5 +293,72 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Performs two fast strikes with a melee weapon.",
+  "explicitMods": [
+    {
+      "text": "Killing Blows cause Impales on Enemies to Reflect Damage to surrounding Enemies",
+      "values": []
+    },
+    {
+      "text": "40% chance to Impale Enemies on Hit",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Killing Blows cause Impales on Enemies to Reflect Damage to surrounding Enemies",
+      "values": []
+    },
+    {
+      "text": "40% chance to Impale Enemies on Hit",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "base skill number of additional hits [1]",
+      "values": []
+    },
+    {
+      "text": "Killing Blows cause Impales on Enemies to Reflect Damage to surrounding Enemies",
+      "values": []
+    },
+    {
+      "text": "40% chance to Impale Enemies on Hit",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "base skill number of additional hits [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)",
+    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)",
+    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)",
+    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Impale Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Impale Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Impale Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Accuracy",
     "DropLevel": "8",
+    "BaseType": "Additional Accuracy Support",
     "Class": "Support Gems",
     "Icon": "a",
     "ItemType": "Metadata/Items/Gems/SupportGemAdditionalAccuracy",
@@ -373,5 +374,35 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have +(74–1034) to Accuracy Rating",
+      "values": [
+        "+(74–1034)"
+      ]
+    },
+    {
+      "text": "Supported Skills have +(74–1034) to Accuracy Rating",
+      "values": [
+        "+(74–1034)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–20)% increased Accuracy Rating",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–20)% increased Accuracy Rating",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

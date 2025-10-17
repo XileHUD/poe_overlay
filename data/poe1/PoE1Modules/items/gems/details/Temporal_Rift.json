@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Cooldown, Chain, Recovery, Buff",
     "DropLevel": "34",
+    "BaseType": "Temporal Rift",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, HasReservation, Cooldown",
@@ -375,5 +376,104 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Reserves mana to apply a buff and leave afterimages of your recent past. Cast the spell again to return to the oldest afterimage, teleporting to that location as well as resetting your Life, Mana and Energy Shield to the values they had then.",
+  "explicitMods": [
+    {
+      "text": "(0–38)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "This Spell's Cast Speed cannot be modified",
+      "values": []
+    },
+    {
+      "text": "Buff makes you Unaffected by Temporal Chains",
+      "values": []
+    },
+    {
+      "text": "(0–38)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "This Spell's Cast Speed cannot be modified",
+      "values": []
+    },
+    {
+      "text": "Buff makes you Unaffected by Temporal Chains",
+      "values": []
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "(140–160)% increased Evasion and Energy Shield",
+      "values": [
+        "(140–160)"
+      ]
+    },
+    {
+      "text": "+(80–100) to maximum Life",
+      "values": [
+        "+(80–100)"
+      ]
+    },
+    {
+      "text": "Temporal Rift has no Reservation",
+      "values": []
+    },
+    {
+      "text": "(80–100)% of Damage taken Recouped as Life",
+      "values": [
+        "(80–100)"
+      ]
+    },
+    {
+      "text": "Debuffs on you expire (80–100)% faster",
+      "values": [
+        "(80–100)"
+      ]
+    },
+    {
+      "text": "(Only Damage from Hits can be Recouped, over 4 seconds following the Hit)",
+      "values": []
+    },
+    {
+      "text": "base_cooldown_speed_+%",
+      "values": []
+    },
+    {
+      "text": "debuff_time_passed_+%",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Debuffs you are Unaffected by can still be placed on you, but will not actually apply their effect)",
+    "(Debuffs you are Unaffected by can still be placed on you, but will not actually apply their effect)",
+    "(Debuffs you are Unaffected by can still be placed on you, but will not actually apply their effect)",
+    "(Only Damage from Hits can be Recouped, over 4 seconds following the Hit)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Buff causes Debuffs on you to expire (0–20)% faster",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Buff causes Debuffs on you to expire (0–20)% faster",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Block",
     "DropLevel": "16",
+    "BaseType": "Divine Retribution",
     "Class": "Skill Gems",
     "TargetTypes": "ROTATE_TO_TARGET, ,",
     "Type": "Spell, Area, Damage, Lightning, AreaSpell, Physical, Cooldown, Retaliation, Cascadable",
@@ -455,5 +456,113 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Retaliate against a blocked hit with a surge of divine power, causing multiple waves of lightning bursts to expand outward from a targeted location. This skill cannot be Triggered or used by Totems, Traps, or Mines.",
+  "explicitMods": [
+    {
+      "text": "Deals (57–1745) to (86–2617) Physical Damage",
+      "values": [
+        "(57–1745)",
+        "(86–2617)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you Block a Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Burst Base radius is (1.2–1.6) metres",
+      "values": [
+        "(1.2–1.6)"
+      ]
+    },
+    {
+      "text": "Each wave has 6 Bursts",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Causes 4 Waves",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (57–1745) to (86–2617) Physical Damage",
+      "values": [
+        "(57–1745)",
+        "(86–2617)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you Block a Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Burst Base radius is (1.2–1.6) metres",
+      "values": [
+        "(1.2–1.6)"
+      ]
+    },
+    {
+      "text": "Each wave has 6 Bursts",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Causes 4 Waves",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

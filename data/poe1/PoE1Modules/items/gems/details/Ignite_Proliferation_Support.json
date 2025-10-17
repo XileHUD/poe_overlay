@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Ignite",
     "DropLevel": "38",
+    "BaseType": "Ignite Proliferation Support",
     "Class": "Support Gems",
     "Icon": "I",
     "ItemType": "Metadata/Items/Gems/SupportGemIgniteProliferation",
@@ -413,5 +414,83 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Ignites caused by Supported Skills spread to other Enemies within (1.4–2) metres",
+      "values": [
+        "(1.4–2)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (15–24)% more Damage with Ignite",
+      "values": [
+        "(15–24)"
+      ]
+    },
+    {
+      "text": "Ignites caused by Supported Skills spread to other Enemies within (1.4–2) metres",
+      "values": [
+        "(1.4–2)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (15–24)% more Damage with Ignite",
+      "values": [
+        "(15–24)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 20 Ignite Proliferation",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(165–195)% increased Physical Damage",
+      "values": [
+        "(165–195)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "10% chance to Ignite",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Recover (40–60) Life when you Ignite an Enemy",
+      "values": [
+        "(40–60)"
+      ]
+    },
+    {
+      "text": "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Fire Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Fire Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

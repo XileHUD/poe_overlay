@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Hit, Weapon, Poison",
+    "BaseType": "Viper Strike",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, Two Hand Swords, Rune Daggers",
     "TargetTypes": "Ground, Enemy",
@@ -335,5 +336,117 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Hits enemies, converting some of your physical damage to chaos damage and inflicting poison which will be affected by modifiers to skill duration. If dual wielding, will strike with both weapons. Requires a claw, dagger or sword.",
+  "explicitMods": [
+    {
+      "text": "30% less Attack Speed if Dual Wielding",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Each Weapon Hits separately if Dual Wielding, dealing 20% less Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "60% chance to Poison on Hit",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "30% less Attack Speed if Dual Wielding",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Each Weapon Hits separately if Dual Wielding, dealing 20% less Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "60% chance to Poison on Hit",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "poison duration is skill duration [1]",
+      "values": []
+    },
+    {
+      "text": "skill double hits when dual wielding [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    },
+    {
+      "text": "(8–12)% increased Damage over Time",
+      "values": [
+        "(8–12)"
+      ]
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, Viper Strike deals 2% increased Damage with Hits and Poison for each Poison on the Enemy",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, Viper Strike has a 10% chance per Poison on Enemy to grant Unholy Might for 4 seconds on Hit",
+      "values": [
+        "10"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–1) seconds",
+      "values": [
+        "(0–1)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–1) seconds",
+      "values": [
+        "(0–1)"
+      ]
+    }
+  ]
 }

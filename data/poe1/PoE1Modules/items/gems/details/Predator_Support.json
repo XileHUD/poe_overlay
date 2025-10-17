@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Signal Prey",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Instant, Minion, Triggerable, Duration, InstantShiftAttackForLeftMouse, Cooldown, SkillGrantedBySupport",
     "ActiveSkillsCode": "signal_prey"
@@ -251,5 +252,81 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which create Minions.",
+  "explicitMods": [
+    {
+      "text": "Minions from Supported Skills deal (6–12)% more Damage",
+      "values": [
+        "(6–12)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills deal (15–24)% more Damage to the Prey with Hits and Ailments",
+      "values": [
+        "(15–24)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills always target the Prey if possible",
+      "values": []
+    },
+    {
+      "text": "Base duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills deal (6–12)% more Damage",
+      "values": [
+        "(6–12)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills deal (15–24)% more Damage to the Prey with Hits and Ailments",
+      "values": [
+        "(15–24)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills always target the Prey if possible",
+      "values": []
+    },
+    {
+      "text": "Base duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Minions from Supported Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

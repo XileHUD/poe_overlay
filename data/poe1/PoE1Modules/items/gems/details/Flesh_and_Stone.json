@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Cooldown, Hit, Aura, Stance, Recovery, Buff",
     "DropLevel": "16",
+    "BaseType": "Flesh and Stone",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, Aura, AuraAffectsEnemies, Instant, HasReservation, Area, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown, Stance, Physical",
@@ -455,5 +456,71 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Buffs you, and affects nearby enemies with an aura, differently depending on your stance. Both stances are more impactful against enemies closer to you. Using the skill again alternates between Blood Stance and Sand Stance.",
+  "explicitMods": [
+    {
+      "text": "Base Aura radius is 2.8 metres",
+      "values": [
+        "2.8"
+      ]
+    },
+    {
+      "text": "(0–50)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–50)"
+      ]
+    },
+    {
+      "text": "While in Blood Stance, Aura makes Enemies take up to (10–20)% more Physical Damage from Hits",
+      "values": [
+        "(10–20)"
+      ]
+    },
+    {
+      "text": "While in Sand Stance, Buff makes you take up to (10–19)% less Damage from Enemies in Aura",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Base Aura radius is 2.8 metres",
+      "values": [
+        "2.8"
+      ]
+    },
+    {
+      "text": "(0–50)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–50)"
+      ]
+    },
+    {
+      "text": "While in Blood Stance, Aura makes Enemies take up to (10–20)% more Physical Damage from Hits",
+      "values": [
+        "(10–20)"
+      ]
+    },
+    {
+      "text": "While in Sand Stance, Buff makes you take up to (10–19)% less Damage from Enemies in Aura",
+      "values": [
+        "(10–19)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

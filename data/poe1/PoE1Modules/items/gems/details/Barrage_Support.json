@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Trap, Mine, Projectile",
     "DropLevel": "38",
+    "BaseType": "Barrage Support",
     "Class": "Support Gems",
     "Icon": "N",
     "ItemType": "Metadata/Items/Gems/SupportGemBarrage",
@@ -333,5 +334,87 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports projectile attack skills that use bows or wands. Cannot support triggered skills, channelled skills, or skills that create Minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (62–68)% less Damage",
+      "values": [
+        "(62–68)"
+      ]
+    },
+    {
+      "text": "Supported Skills Fire Projectiles sequentially",
+      "values": []
+    },
+    {
+      "text": "Supported Skills fire 3 additional Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Supported Skills have 5% more Attack Time per Projectile",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Supported Skills have 5% more Trap and Mine Throwing Time per Projectile",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Supported Skills can only be used with Bows or Wands",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (62–68)% less Damage",
+      "values": [
+        "(62–68)"
+      ]
+    },
+    {
+      "text": "Supported Skills Fire Projectiles sequentially",
+      "values": []
+    },
+    {
+      "text": "Supported Skills fire 3 additional Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Supported Skills have 5% more Attack Time per Projectile",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Supported Skills have 5% more Trap and Mine Throwing Time per Projectile",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Supported Skills can only be used with Bows or Wands",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

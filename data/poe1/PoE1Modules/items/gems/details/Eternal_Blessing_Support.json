@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Reservation, Aura",
     "DropLevel": "38",
+    "BaseType": "Eternal Blessing Support",
     "Class": "Support Gems",
     "Icon": "c",
     "ItemType": "Metadata/Items/Gems/SupportGemEternalBlessing",
@@ -333,5 +334,59 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports aura skills that reserve life or mana to create auras around you.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (0–19)% increased Aura effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Supported Skills have no Reservation",
+      "values": []
+    },
+    {
+      "text": "Supported Skills also count as Blessing SkillsYou can only have one Aura on you from your Blessing Skills",
+      "values": []
+    },
+    {
+      "text": "Your Non-Blessing Skills which Reserve Mana are Disabled while you have an Aura from a Supported Skill on you",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (0–19)% increased Aura effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Supported Skills have no Reservation",
+      "values": []
+    },
+    {
+      "text": "Supported Skills also count as Blessing SkillsYou can only have one Aura on you from your Blessing Skills",
+      "values": []
+    },
+    {
+      "text": "Your Non-Blessing Skills which Reserve Mana are Disabled while you have an Aura from a Supported Skill on you",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–5)% increased Aura effect",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–5)% increased Aura effect",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

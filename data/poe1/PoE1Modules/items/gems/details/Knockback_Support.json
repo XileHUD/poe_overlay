@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Knockback, Distance",
     "DropLevel": "8",
+    "BaseType": "Knockback Support",
     "Class": "Support Gems",
     "Icon": "k",
     "ItemType": "Metadata/Items/Gems/SupportGemKnockback",
@@ -335,5 +336,72 @@
   "description": "This gem does not require an Attack, only a hit, and will work with spells that can hit.",
   "stats": [
     "This gem does not require an Attack, only a hit, and will work with spells that can hit."
+  ],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (25–44)% chance to Knock Enemies Back on hit",
+      "values": [
+        "(25–44)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 50% increased Knockback Distance",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Supported Skills have (25–44)% chance to Knock Enemies Back on hit",
+      "values": [
+        "(25–44)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 50% increased Knockback Distance",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Knockback",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "+(400–600) to Armour",
+      "values": [
+        "+(400–600)"
+      ]
+    },
+    {
+      "text": "Knockback direction is reversed",
+      "values": []
+    },
+    {
+      "text": "(Knockback pushes Enemies away when Hit)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Knockback pushes Enemies away when Hit)",
+    "(Knockback pushes Enemies away when Hit)",
+    "(Knockback pushes Enemies away when Hit)",
+    "(Knockback pushes Enemies away when Hit)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% chance to Knock Enemies Back on hit",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% chance to Knock Enemies Back on hit",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

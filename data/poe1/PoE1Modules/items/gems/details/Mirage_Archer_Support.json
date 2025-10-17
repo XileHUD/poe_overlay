@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Hit, Trigger",
     "DropLevel": "4",
+    "BaseType": "Mirage Archer Support",
     "Class": "Support Gems",
     "Icon": "M",
     "ItemType": "Metadata/Items/Gems/SupportGemMirageArcher",
@@ -333,5 +334,83 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills that can be used with bows. Supported skills can only be used with bows. Cannot support Vaal skills, minion skills, movement skills, or skills used by totems, traps, or mines.",
+  "explicitMods": [
+    {
+      "text": "Maximum 1 Summoned Mirage Archer",
+      "values": []
+    },
+    {
+      "text": "When you Hit an Enemy with an Arrow from a Supported Skill, Summon a Mirage Archer which uses that SkillMirage Archer can use Triggered Attacks as though they were not Triggered",
+      "values": []
+    },
+    {
+      "text": "Mirage Archer uses Supported Skill with 60% less Attack Speed",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Mirage Archer lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Mirage Archer deals (31–40)% less Damage with Supported Skills",
+      "values": [
+        "(31–40)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Mirage Archer",
+      "values": []
+    },
+    {
+      "text": "When you Hit an Enemy with an Arrow from a Supported Skill, Summon a Mirage Archer which uses that SkillMirage Archer can use Triggered Attacks as though they were not Triggered",
+      "values": []
+    },
+    {
+      "text": "Mirage Archer uses Supported Skill with 60% less Attack Speed",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Mirage Archer lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Mirage Archer deals (31–40)% less Damage with Supported Skills",
+      "values": [
+        "(31–40)"
+      ]
+    },
+    {
+      "text": "disable skill if weapon not bow [1]",
+      "values": []
+    },
+    {
+      "text": "mirage archer projectile additional height offset [-138]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Attack Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Attack Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

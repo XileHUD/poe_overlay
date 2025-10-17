@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Hit, Stun, Trigger, Block",
     "DropLevel": "38",
+    "BaseType": "Cast when Stunned Support",
     "Class": "Support Gems",
     "Icon": "!",
     "ItemType": "Metadata/Items/Gems/SupportGemCastOnStunned",
@@ -389,5 +390,67 @@
     "Cast when Stunned Support is a Support gem that causes a linked Spell to trigger when the player is stunned or blocks a stunning hit.",
     "Cast when Stunned targets the enemy which stunned the player. Spells that don't have targeting, like Discharge or Ice Nova, will be cast on the character as usual.",
     "Cast when Stunned has several advantages, which may tip its balance in its favour, depending on your character's build:"
+  ],
+  "gemDescription": "Each supported spell skill will have a chance to be triggered when you are stunned. Cannot support skills used by totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.",
+  "explicitMods": [
+    {
+      "text": "(50–69)% chance to Trigger Supported Spells when you are Stunned, orBlock a Stunning Hit",
+      "values": [
+        "(50–69)"
+      ]
+    },
+    {
+      "text": "(50–69)% chance to Trigger Supported Spells when you are Stunned, orBlock a Stunning Hit",
+      "values": [
+        "(50–69)"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "spell uncastable if triggerable [1]",
+      "values": []
+    },
+    {
+      "text": "+2 to Level of Socketed Gems",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Added Chaos Damage",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are supported by Level 10 Blind",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are supported by Level 10 Cast when Stunned",
+      "values": [
+        "10"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% chance to Trigger Supported Spells when you are Stunned, orBlock a Stunning Hit",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to Trigger Supported Spells when you are Stunned, orBlock a Stunning Hit",
+      "values": [
+        "(0–20)"
+      ]
+    }
   ]
 }

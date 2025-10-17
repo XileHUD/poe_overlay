@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Firestorm of Pelting",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Damage, Area, Duration, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, Cascadable, CanRapidFire, AreaSpell",
     "ActiveSkillsCode": "firestorm_alt_y"
@@ -331,5 +332,146 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Flaming bolts rain down over the targeted area. They explode when landing, dealing damage to nearby enemies.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Deals (35–551) to (53–826) Fire Damage",
+      "values": [
+        "(35–551)",
+        "(53–826)"
+      ]
+    },
+    {
+      "text": "One impact every 0.15 seconds",
+      "values": [
+        "0.15"
+      ]
+    },
+    {
+      "text": "Base radius is 1.2 metres",
+      "values": [
+        "1.2"
+      ]
+    },
+    {
+      "text": "Maximum 10 Firestorms at a time",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Deals (35–551) to (53–826) Fire Damage",
+      "values": [
+        "(35–551)",
+        "(53–826)"
+      ]
+    },
+    {
+      "text": "One impact every 0.15 seconds",
+      "values": [
+        "0.15"
+      ]
+    },
+    {
+      "text": "Base radius is 1.2 metres",
+      "values": [
+        "1.2"
+      ]
+    },
+    {
+      "text": "Maximum 10 Firestorms at a time",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill override pvp scaling time ms [450]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Deals (35–3155) to (53–4732) Fire Damage",
+      "values": [
+        "(35–3155)",
+        "(53–4732)"
+      ]
+    },
+    {
+      "text": "One impact every 0.15 seconds",
+      "values": [
+        "0.15"
+      ]
+    },
+    {
+      "text": "Base radius is 1.2 metres",
+      "values": [
+        "1.2"
+      ]
+    },
+    {
+      "text": "Maximum 10 Firestorms at a time",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill override pvp scaling time ms [450]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Maximum (0–2) Firestorms at a time",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Maximum (0–2) Firestorms at a time",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Maximum (0–2) Firestorms at a time",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

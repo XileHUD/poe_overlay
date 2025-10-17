@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "DropLevel": "12",
+    "BaseType": "Infernal Blow",
     "Class": "Skill Gems",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy",
@@ -335,5 +336,99 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Attacks with your weapon, applying a charged debuff to enemies hit by your strike, and an uncharged debuff to any other enemies hit. Upon reaching 6 charges, expiring, or the enemy's death, the charged debuff is removed to damage that and other surrounding enemies. Enemies with either debuff explode when they die, damaging other surrounding enemies. Damage from this explosion cannot be reflected. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 0.8 seconds",
+      "values": [
+        "0.8"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Base radius is 2.4 metres",
+      "values": [
+        "2.4"
+      ]
+    },
+    {
+      "text": "Base explosion radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Debuff deals 66% of Damage per Charge",
+      "values": [
+        "66"
+      ]
+    },
+    {
+      "text": "Base duration is 0.8 seconds",
+      "values": [
+        "0.8"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Base radius is 2.4 metres",
+      "values": [
+        "2.4"
+      ]
+    },
+    {
+      "text": "Base explosion radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Debuff deals 66% of Damage per Charge",
+      "values": [
+        "66"
+      ]
+    },
+    {
+      "text": "base_monster_will_be_deleted_on_death",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Debuff deals +(0–10)% of Damage per Charge",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "Debuff deals +(0–10)% of Damage per Charge",
+      "values": [
+        "+(0–10)"
+      ]
+    }
+  ]
 }

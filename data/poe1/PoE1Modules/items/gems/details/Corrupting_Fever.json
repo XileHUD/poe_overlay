@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Duration, Buff",
     "DropLevel": "16",
+    "BaseType": "Corrupting Fever",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, Duration, Triggerable, Instant, Physical, Cooldown, DamageOverTime, Totemable",
@@ -415,5 +416,71 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Draws out your own blood to power a buff for a duration, letting this skill inflict the Corrupting Blood debuff on enemies you hit, dealing physical damage over time for a short secondary duration. The buff's duration will be refreshed if you spend enough life before it expires.",
+  "explicitMods": [
+    {
+      "text": "Deals (7.8–335.4) Base Physical Damage per second",
+      "values": [
+        "(7.8–335.4)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Buff Duration is refreshed after you spend a total of (26–205) Life",
+      "values": [
+        "(26–205)"
+      ]
+    },
+    {
+      "text": "Deals (7.8–335.4) Base Physical Damage per second",
+      "values": [
+        "(7.8–335.4)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Buff Duration is refreshed after you spend a total of (26–205) Life",
+      "values": [
+        "(26–205)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Skill Effect Duration",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Skill Effect Duration",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

@@ -137,7 +137,9 @@ export function render(groups: UniqueGroups): void {
     <input id='uniqueSearch' type='text' placeholder='Search uniques...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
     <button id='uniqueClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
   </div>
-  <div id='uniqueTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
+  <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+    <div id='uniqueTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; justify-content:center; width:100%;'></div>
+  </div>
   <div id='uniqueSections' style='display:flex; flex-direction:column; gap:14px;'></div>`;
   // Wrap in page-inner for consistent centering like other crafting panels
   panel.innerHTML = `<div class='page-inner'>${controls}</div>`;
@@ -174,14 +176,14 @@ export function render(groups: UniqueGroups): void {
       const active = selectedTags.has(tag);
       const count = tagCounts[tag] || 0;
       btn.textContent = count ? `${tag} (${count})` : tag;
-      (btn as HTMLElement).style.cssText = `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:999px; ${chipCss(tag, active)}`;
+      (btn as HTMLElement).style.cssText = `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; ${chipCss(tag, active)}`;
       btn.addEventListener('click',()=>{ active?selectedTags.delete(tag):selectedTags.add(tag); build(searchEl?.value||''); renderTagFilters(); });
       tagWrap.appendChild(btn);
     });
     if (selectedTags.size) {
       const reset=document.createElement('div');
       reset.textContent='Reset';
-      (reset as HTMLElement).style.cssText='cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--accent-red); border-radius:999px; background:var(--accent-red); color:#fff';
+      (reset as HTMLElement).style.cssText='cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--accent-red); border-radius:4px; background:var(--accent-red); color:#fff';
       reset.addEventListener('click',()=>{ selectedTags.clear(); build(searchEl?.value||''); renderTagFilters(); });
       tagWrap.appendChild(reset);
     }

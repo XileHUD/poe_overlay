@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Earthquake of Amplification",
     "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Area, Melee, Multistrikeable, Duration, Slam, Triggerable, Totemable",
@@ -252,5 +253,111 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Smashes the ground, dealing damage in an area and cracking the earth. The crack will erupt in a powerful aftershock after a duration. Cracks created before the first one has erupted will not generate their own aftershocks. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 2.5 seconds",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "Aftershock deals 15% more Damage with Hits per 0.1 seconds Duration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Aftershock deals 5% more Damage with Ailments per 0.1 seconds Duration",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Aftershock has 2% more Area of Effect per 0.1 seconds Duration",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base duration is 2.5 seconds",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "Aftershock deals 15% more Damage with Hits per 0.1 seconds Duration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Aftershock deals 5% more Damage with Ailments per 0.1 seconds Duration",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Aftershock has 2% more Area of Effect per 0.1 seconds Duration",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "is player earthquake [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Aftershock deals 15% more Damage with Hits per 0.1 seconds Duration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Aftershock deals 5% more Damage with Ailments per 0.1 seconds Duration",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Aftershock has 2% more Area of Effect per 0.1 seconds Duration",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–0.5) seconds",
+      "values": [
+        "(0–0.5)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–0.5) seconds",
+      "values": [
+        "(0–0.5)"
+      ]
+    }
+  ]
 }

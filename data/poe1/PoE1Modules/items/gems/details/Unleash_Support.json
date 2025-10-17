@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "DropLevel": "38",
+    "BaseType": "Unleash Support",
     "Class": "Support Gems",
     "Icon": "q",
     "ItemType": "Metadata/Items/Gems/SupportGemHandcastAnticipation",
@@ -374,5 +375,83 @@
   "description": "This beats the multiplier of most other supports (=<49% more) at cast speeds lower than 2.6 cast/s (aka cast times greater than 0.39 s); though this comes with the downside of inconsistent damage if not all uses have the same number of reoccurances.",
   "stats": [
     "This beats the multiplier of most other supports (=<49% more) at cast speeds lower than 2.6 cast/s (aka cast times greater than 0.39 s); though this comes with the downside of inconsistent damage if not all uses have the same number of reoccurances."
+  ],
+  "gemDescription": "Supports spell skills, making their effect reoccur when cast. Cannot support skills with cooldowns, triggered skills, Brand skills, Vaal skills, channelling skills, skills with a reservation, or skills used by totems, traps, or mines. Cannot modify the skills of minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (36–45)% less Damage when Reoccurring",
+      "values": [
+        "(36–45)"
+      ]
+    },
+    {
+      "text": "Supported Spells gain a Seal every (0.71–0.9) seconds, to a maximum of 3 SealsSupported Spells are Unsealed when cast, and their effects Reoccur for each Seal lost",
+      "values": [
+        "(0.71–0.9)",
+        "3"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (36–45)% less Damage when Reoccurring",
+      "values": [
+        "(36–45)"
+      ]
+    },
+    {
+      "text": "Supported Spells gain a Seal every (0.71–0.9) seconds, to a maximum of 3 SealsSupported Spells are Unsealed when cast, and their effects Reoccur for each Seal lost",
+      "values": [
+        "(0.71–0.9)",
+        "3"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 18 Unleash",
+      "values": [
+        "18"
+      ]
+    },
+    {
+      "text": "+(20–30) to Intelligence",
+      "values": [
+        "+(20–30)"
+      ]
+    },
+    {
+      "text": "+(50–80) to maximum Energy Shield",
+      "values": [
+        "+(50–80)"
+      ]
+    },
+    {
+      "text": "+(50–70) to maximum Life",
+      "values": [
+        "+(50–70)"
+      ]
+    },
+    {
+      "text": "Gain 40% increased Area of Effect for 2 seconds after Spending a total of 800 Mana",
+      "values": [
+        "40"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Spell cast time is 10% longer for each time the Spell Reoccurs)",
+    "(Spell cast time is 10% longer for each time the Spell Reoccurs)",
+    "(Spell cast time is 10% longer for each time the Spell Reoccurs)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

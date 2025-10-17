@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Icicle Mine of Fanning",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Projectile, RemoteMined, Cold, HasReservation, ProjectilesFromUser, Aura, Area, AuraAffectsEnemies, AuraNotOnCaster",
     "ActiveSkillsCode": "icicle_mine_alt_x"
@@ -331,5 +332,174 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a mine that fires projectiles at enemies when detonated. These projectiles quickly dissipate as they travel, before disappearing.",
+  "explicitMods": [
+    {
+      "text": "Deals (18–591) to (28–886) Cold Damage",
+      "values": [
+        "(18–591)",
+        "(28–886)"
+      ]
+    },
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base Mine Detonation Time is 0.3 seconds",
+      "values": [
+        "0.3"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Fires an additional Projectile for every 2 prior Mines in Detonation Sequence",
+      "values": []
+    },
+    {
+      "text": "Each Mine applies 10% increased Critical Strike Chance to Hits against Enemies near it, up to a maximum of 500%",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Deals (18–591) to (28–886) Cold Damage",
+      "values": [
+        "(18–591)",
+        "(28–886)"
+      ]
+    },
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base Mine Detonation Time is 0.3 seconds",
+      "values": [
+        "0.3"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Fires an additional Projectile for every 2 prior Mines in Detonation Sequence",
+      "values": []
+    },
+    {
+      "text": "Each Mine applies 10% increased Critical Strike Chance to Hits against Enemies near it, up to a maximum of 500%",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is mined [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "projectile speed variation +% [10]",
+      "values": []
+    },
+    {
+      "text": "skill visual scale +% [50]",
+      "values": []
+    },
+    {
+      "text": "Deals (18–2495) to (28–3742) Cold Damage",
+      "values": [
+        "(18–2495)",
+        "(28–3742)"
+      ]
+    },
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base Mine Detonation Time is 0.3 seconds",
+      "values": [
+        "0.3"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Fires an additional Projectile for every 2 prior Mines in Detonation Sequence",
+      "values": []
+    },
+    {
+      "text": "Each Mine applies 10% increased Critical Strike Chance to Hits against Enemies near it, up to a maximum of 500%",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is mined [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "projectile speed variation +% [10]",
+      "values": []
+    },
+    {
+      "text": "skill visual scale +% [50]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

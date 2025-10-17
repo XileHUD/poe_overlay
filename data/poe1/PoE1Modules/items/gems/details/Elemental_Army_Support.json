@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Minion, Resistance, Exposure",
     "DropLevel": "31",
+    "BaseType": "Elemental Army Support",
     "Class": "Support Gems",
     "Icon": "r",
     "ItemType": "Metadata/Items/Gems/SupportGemSummonElementalResistance",
@@ -493,5 +494,71 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which create Minions.",
+  "explicitMods": [
+    {
+      "text": "Minions from Supported Skills have +(19–29)% to all Elemental Resistances",
+      "values": [
+        "+(19–29)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills have +(0–2)% to all maximum Elemental Resistances",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills inflict Exposure on Hit, applying -10% to the Elemental Resistance matching highest Damage type taken by Enemy",
+      "values": []
+    },
+    {
+      "text": "Minions from Supported Skills deal (10–19)% more Elemental Damage",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills have +(19–29)% to all Elemental Resistances",
+      "values": [
+        "+(19–29)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills have +(0–2)% to all maximum Elemental Resistances",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills inflict Exposure on Hit, applying -10% to the Elemental Resistance matching highest Damage type taken by Enemy",
+      "values": []
+    },
+    {
+      "text": "Minions from Supported Skills deal (10–19)% more Elemental Damage",
+      "values": [
+        "(10–19)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Maximum Resistances cannot be raised above 90%)",
+    "(Maximum Resistances cannot be raised above 90%)",
+    "(Maximum Resistances cannot be raised above 90%)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Minions from Supported Skills have +(0–2)% to all maximum Elemental Resistances",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills have +(0–2)% to all maximum Elemental Resistances",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

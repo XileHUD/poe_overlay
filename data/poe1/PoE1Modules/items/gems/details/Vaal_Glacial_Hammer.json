@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Glacial Hammer",
     "Weapon": "One Hand Maces, Staves, Two Hand Maces, Sceptres, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, MeleeSingleTarget, Multistrikeable, Melee, Cold, ThresholdJewelArea",
@@ -332,5 +333,162 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Hits enemies, converting some of your physical damage to cold damage. It traps enemies with you in a circle of ice so that they can't escape. Requires a Mace, Sceptre or Staff.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (3.4–4.35) seconds",
+      "values": [
+        "(3.4–4.35)"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "25% chance to Freeze enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Freezes enemies as though dealing (200–390)% more Damage",
+      "values": [
+        "(200–390)"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "35% increased Duration of Cold Ailments",
+      "values": [
+        "35"
+      ]
+    },
+    {
+      "text": "(10–29)% increased Effect of Cold Ailments",
+      "values": [
+        "(10–29)"
+      ]
+    },
+    {
+      "text": "Base duration is (3.4–4.35) seconds",
+      "values": [
+        "(3.4–4.35)"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "25% chance to Freeze enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Freezes enemies as though dealing (200–390)% more Damage",
+      "values": [
+        "(200–390)"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "35% increased Duration of Cold Ailments",
+      "values": [
+        "35"
+      ]
+    },
+    {
+      "text": "(10–29)% increased Effect of Cold Ailments",
+      "values": [
+        "(10–29)"
+      ]
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "25% chance to Freeze enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Every third successive strike Freezes enemies as though dealing (200–540)% more Damage",
+      "values": [
+        "(200–540)"
+      ]
+    },
+    {
+      "text": "35% increased Duration of Cold Ailments",
+      "values": [
+        "35"
+      ]
+    },
+    {
+      "text": "(10–44)% increased Effect of Cold Ailments",
+      "values": [
+        "(10–44)"
+      ]
+    },
+    {
+      "text": "additional main hand hits per combo average [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Cold Ailments are Chilled, Frozen and Brittle)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Cold Ailments are Chilled, Frozen and Brittle)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Cold Ailments are Chilled, Frozen and Brittle)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Cold Ailments are Chilled, Frozen and Brittle)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Duration of Cold Ailments",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Duration of Cold Ailments",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

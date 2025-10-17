@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Molten Strike of the Zenith",
     "Weapon": "Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Projectile, Area, Melee, MeleeSingleTarget, Fire, RangedAttack, ProjectilesNotFromUser, ThresholdJewelChaining, Multistrikeable",
@@ -292,5 +293,127 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Infuses your two-handed melee weapon with molten energies to attack with physical and fire damage. This attack causes balls of molten magma to launch forth from the enemies you hit, divided amongst all enemies hit by the strike. These will deal area attack damage to enemies where they land. Every fifth time you attack with this skill it fires more, high-damage projectiles.",
+  "explicitMods": [
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Projectiles deal 60% less Damage with Hits and Ailments",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Every fifth Attack fires 5 additional Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Every fifth Attack, Projectiles deal 600% more Damage with Hits and Ailments",
+      "values": [
+        "600"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Projectiles deal 60% less Damage with Hits and Ailments",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Every fifth Attack fires 5 additional Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Every fifth Attack, Projectiles deal 600% more Damage with Hits and Ailments",
+      "values": [
+        "600"
+      ]
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Projectiles deal 60% less Damage with Hits and Ailments",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Every fifth Attack fires 5 additional Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Every fifth Attack, Projectiles deal 600% more Damage with Hits and Ailments",
+      "values": [
+        "600"
+      ]
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Every fifth Attack, Projectiles deal (0–200)% more Damage with Hits and Ailments",
+      "values": [
+        "(0–200)"
+      ]
+    },
+    {
+      "text": "Every fifth Attack, Projectiles deal (0–200)% more Damage with Hits and Ailments",
+      "values": [
+        "(0–200)"
+      ]
+    },
+    {
+      "text": "Every fifth Attack, Projectiles deal (0–200)% more Damage with Hits and Ailments",
+      "values": [
+        "(0–200)"
+      ]
+    }
+  ]
 }

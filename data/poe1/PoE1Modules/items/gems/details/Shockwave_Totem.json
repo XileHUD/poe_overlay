@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Totem",
     "DropLevel": "28",
+    "BaseType": "Shockwave Totem",
     "Class": "Skill Gems",
     "TargetTypes": "Any, ,",
     "Type": "Spell, Damage, Area, Trappable, Mineable, SummonsTotem, Multicastable, AreaSpell, Physical, Nova",
@@ -375,5 +376,126 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a totem that shakes the earth around it, knocking back and damaging nearby enemies",
+  "explicitMods": [
+    {
+      "text": "Deals (33–412) to (65–765) Physical Damage",
+      "values": [
+        "(33–412)",
+        "(65–765)"
+      ]
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "25% chance to Knock Enemies Back on hit",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "Base radius is 2.4 metres",
+      "values": [
+        "2.4"
+      ]
+    },
+    {
+      "text": "Deals (33–412) to (65–765) Physical Damage",
+      "values": [
+        "(33–412)",
+        "(65–765)"
+      ]
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "25% chance to Knock Enemies Back on hit",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "Base radius is 2.4 metres",
+      "values": [
+        "2.4"
+      ]
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [80]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 66.8 to 124.1 Physical Damage",
+      "values": [
+        "66.8",
+        "124.1"
+      ]
+    },
+    {
+      "text": "Knocks Enemies Back on Hit",
+      "values": []
+    },
+    {
+      "text": "Base radius is 2.4 metres",
+      "values": [
+        "2.4"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [-17]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Knockback pushes Enemies away when Hit)",
+    "(Knockback pushes Enemies away when Hit)",
+    "(Knockback pushes Enemies away when Hit)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    }
+  ]
 }

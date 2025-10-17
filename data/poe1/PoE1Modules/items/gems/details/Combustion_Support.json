@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Resistance, Ignite",
     "DropLevel": "8",
+    "BaseType": "Combustion Support",
     "Class": "Support Gems",
     "Icon": "i",
     "ItemType": "Metadata/Items/Gems/SupportGemChanceToIgnite",
@@ -373,5 +374,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (10–19)% more Fire Damage",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 25% chance to Ignite",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Enemies Ignited by Supported Skills have -10% to Fire Resistance",
+      "values": [
+        "-10"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–19)% more Fire Damage",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 25% chance to Ignite",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Enemies Ignited by Supported Skills have -10% to Fire Resistance",
+      "values": [
+        "-10"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Fire Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Fire Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

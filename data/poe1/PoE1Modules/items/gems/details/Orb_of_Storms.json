@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Channelling, Split",
     "DropLevel": "4",
+    "BaseType": "Orb of Storms",
     "Class": "Skill Gems",
     "TargetTypes": "Ground",
     "Type": "Spell, Damage, Lightning, Area, Chains, Triggerable, Trappable, Mineable, Totemable, AreaSpell, Cooldown, Orb",
@@ -455,5 +456,93 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a stationary electrical orb that strikes enemies in its area of effect with beams of lightning that can then split to hit more enemies. Modifiers to cast speed will increase how frequently it does this. Casting this skill again will replace the previous orb.",
+  "explicitMods": [
+    {
+      "text": "Deals (3–304) to (8–913) Lightning Damage",
+      "values": [
+        "(3–304)",
+        "(8–913)"
+      ]
+    },
+    {
+      "text": "Strikes every (2.55–3.5) seconds, and when you use a Lightning Skill near the Orb",
+      "values": [
+        "(2.55–3.5)"
+      ]
+    },
+    {
+      "text": "Strikes every 0.5 seconds while Channelling a Lightning Skill near the Orb",
+      "values": [
+        "0.5"
+      ]
+    },
+    {
+      "text": "Orb disappears after (10–29) Strikes",
+      "values": [
+        "(10–29)"
+      ]
+    },
+    {
+      "text": "Beam Splits towards 3 additional targets",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Deals (3–304) to (8–913) Lightning Damage",
+      "values": [
+        "(3–304)",
+        "(8–913)"
+      ]
+    },
+    {
+      "text": "Strikes every (2.55–3.5) seconds, and when you use a Lightning Skill near the Orb",
+      "values": [
+        "(2.55–3.5)"
+      ]
+    },
+    {
+      "text": "Strikes every 0.5 seconds while Channelling a Lightning Skill near the Orb",
+      "values": [
+        "0.5"
+      ]
+    },
+    {
+      "text": "Orb disappears after (10–29) Strikes",
+      "values": [
+        "(10–29)"
+      ]
+    },
+    {
+      "text": "Beam Splits towards 3 additional targets",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "damage cannot be reflected or leech if used by other object [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Beam Splits towards (0–2) additional targets",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Beam Splits towards (0–2) additional targets",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

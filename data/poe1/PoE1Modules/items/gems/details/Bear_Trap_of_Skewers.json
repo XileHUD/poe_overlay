@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Bear Trap of Skewers",
     "TargetTypes": "Enemy",
     "Type": "Spell, Duration, Mineable, Trapped, Damage, Physical, Cooldown",
     "ActiveSkillsCode": "bear_trap_alt_x"
@@ -371,5 +372,166 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap that damages and impales a single enemy, and immobilises them for a duration based on how much damage was dealt. Modifiers to spell damage do not affect this skill's damage.",
+  "explicitMods": [
+    {
+      "text": "Deals (8–711) to (11–995) Physical Damage",
+      "values": [
+        "(8–711)",
+        "(11–995)"
+      ]
+    },
+    {
+      "text": "Traps do not Trigger at the end of their Duration",
+      "values": []
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Locks enemy in place",
+      "values": []
+    },
+    {
+      "text": "Killing Blows cause Impales on Enemies to Reflect Damage to surrounding Enemies",
+      "values": []
+    },
+    {
+      "text": "(100–195)% increased Impale Effect",
+      "values": [
+        "(100–195)"
+      ]
+    },
+    {
+      "text": "Impale Enemies on Hit",
+      "values": []
+    },
+    {
+      "text": "Deals (8–711) to (11–995) Physical Damage",
+      "values": [
+        "(8–711)",
+        "(11–995)"
+      ]
+    },
+    {
+      "text": "Traps do not Trigger at the end of their Duration",
+      "values": []
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Locks enemy in place",
+      "values": []
+    },
+    {
+      "text": "Killing Blows cause Impales on Enemies to Reflect Damage to surrounding Enemies",
+      "values": []
+    },
+    {
+      "text": "(100–195)% increased Impale Effect",
+      "values": [
+        "(100–195)"
+      ]
+    },
+    {
+      "text": "Impale Enemies on Hit",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "display skill deals secondary damage [1]",
+      "values": []
+    },
+    {
+      "text": "trap override pvp scaling time ms [750]",
+      "values": []
+    },
+    {
+      "text": "Deals (8–3410) to (11–4775) Physical Damage",
+      "values": [
+        "(8–3410)",
+        "(11–4775)"
+      ]
+    },
+    {
+      "text": "Traps do not Trigger at the end of their Duration",
+      "values": []
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Locks enemy in place",
+      "values": []
+    },
+    {
+      "text": "Killing Blows cause Impales on Enemies to Reflect Damage to surrounding Enemies",
+      "values": []
+    },
+    {
+      "text": "(100–270)% increased Impale Effect",
+      "values": [
+        "(100–270)"
+      ]
+    },
+    {
+      "text": "Impale Enemies on Hit",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "display skill deals secondary damage [1]",
+      "values": []
+    },
+    {
+      "text": "trap override pvp scaling time ms [750]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–80)% increased Impale Effect",
+      "values": [
+        "(0–80)"
+      ]
+    },
+    {
+      "text": "(0–80)% increased Impale Effect",
+      "values": [
+        "(0–80)"
+      ]
+    },
+    {
+      "text": "(0–80)% increased Impale Effect",
+      "values": [
+        "(0–80)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Flameblast of Contraction",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, Totemable, Fire, Channel, AreaSpell, Cooldown",
     "ActiveSkillsCode": "flameblast_alt_y"
@@ -331,5 +332,183 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Channels to concentrate an explosion, which is released when you stop using the skill. The longer you channel, the larger the damage of the explosion, but the smaller the area.",
+  "explicitMods": [
+    {
+      "text": "Deals (11–140) to (16–210) Fire Damage",
+      "values": [
+        "(11–140)",
+        "(16–210)"
+      ]
+    },
+    {
+      "text": "50% chance to Ignite enemies",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "600% more Spell Damage for each stage",
+      "values": [
+        "600"
+      ]
+    },
+    {
+      "text": "250% more Damage with Ailments for each stage",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "Base radius is 2.6 metres",
+      "values": [
+        "2.6"
+      ]
+    },
+    {
+      "text": "10 maximum Stages",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "-0.2 metres to radius per Stage",
+      "values": [
+        "-0.2"
+      ]
+    },
+    {
+      "text": "Deals (11–140) to (16–210) Fire Damage",
+      "values": [
+        "(11–140)",
+        "(16–210)"
+      ]
+    },
+    {
+      "text": "50% chance to Ignite enemies",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "600% more Spell Damage for each stage",
+      "values": [
+        "600"
+      ]
+    },
+    {
+      "text": "250% more Damage with Ailments for each stage",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "Base radius is 2.6 metres",
+      "values": [
+        "2.6"
+      ]
+    },
+    {
+      "text": "10 maximum Stages",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "-0.2 metres to radius per Stage",
+      "values": [
+        "-0.2"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (11–714) to (16–1070) Fire Damage",
+      "values": [
+        "(11–714)",
+        "(16–1070)"
+      ]
+    },
+    {
+      "text": "50% chance to Ignite enemies",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "600% more Spell Damage for each stage",
+      "values": [
+        "600"
+      ]
+    },
+    {
+      "text": "250% more Damage with Ailments for each stage",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "Base radius is 2.6 metres",
+      "values": [
+        "2.6"
+      ]
+    },
+    {
+      "text": "10 maximum Stages",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "-0.2 metres to radius per Stage",
+      "values": [
+        "-0.2"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–1) to maximum Stages",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) to maximum Stages",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) to maximum Stages",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

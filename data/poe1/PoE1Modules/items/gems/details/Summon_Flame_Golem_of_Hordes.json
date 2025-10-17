@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Summon Flame Golem of Hordes",
     "TargetTypes": "Ground",
     "Type": "Triggerable, Fire, Mineable, Minion, MinionsCanExplode, Multicastable, Spell, Totemable, Trappable, Golem, CreatesMinion, Cooldown",
     "MinionType": "Damage, Area, Projectile, ProjectilesFromUser, Spell",
@@ -292,5 +293,97 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a Flame Golem. The Flame Golem can cast a fire spray, a wave of fire damage, and an explosive arcing projectile.",
+  "explicitMods": [
+    {
+      "text": "20% reduced Character Size",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Maximum 3 Summoned Golems",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "20% reduced Character Size",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Maximum 3 Summoned Golems",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "active skill no golem aura [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [34,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [7]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "20% reduced Character Size",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Maximum 3 Summoned Golems",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "active skill no golem aura [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [34,100]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [7]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

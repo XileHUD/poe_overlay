@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Hit, Trigger, Duration, Brand, Projectile, Chain",
     "DropLevel": "38",
+    "BaseType": "Arcanist Brand",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Duration, Multicastable, Brand",
@@ -415,5 +416,151 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, triggering linked spells. The brand will detach if the enemy dies.",
+  "explicitMods": [
+    {
+      "text": "Activates every second while Attached",
+      "values": []
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+      "values": []
+    },
+    {
+      "text": "Can be Detached for a total Duration of 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Can be Attached for a total Duration of 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Supported Skills have 40% reduced Chaining range",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Projectiles from Supported Skills have 4.8 metres maximum range",
+      "values": [
+        "4.8"
+      ]
+    },
+    {
+      "text": "Supported Skills have 40% less Area of Effect",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (63–69)% less Damage",
+      "values": [
+        "(63–69)"
+      ]
+    },
+    {
+      "text": "Supported Skills Deal (40–59)% more Damage with Hits against Branded Enemy",
+      "values": [
+        "(40–59)"
+      ]
+    },
+    {
+      "text": "Supported Skills are Triggered by Arcanist Brand, from the Brand's location",
+      "values": []
+    },
+    {
+      "text": "Activates every second while Attached",
+      "values": []
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+      "values": []
+    },
+    {
+      "text": "Can be Detached for a total Duration of 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Can be Attached for a total Duration of 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "base number of sigils allowed per target [1]",
+      "values": []
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have 40% reduced Chaining range",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Projectiles from Supported Skills have 4.8 metres maximum range",
+      "values": [
+        "4.8"
+      ]
+    },
+    {
+      "text": "Supported Skills have 40% less Area of Effect",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (63–69)% less Damage",
+      "values": [
+        "(63–69)"
+      ]
+    },
+    {
+      "text": "Supported Skills Deal (40–59)% more Damage with Hits against Branded Enemy",
+      "values": [
+        "(40–59)"
+      ]
+    },
+    {
+      "text": "Supported Skills are Triggered by Arcanist Brand, from the Brand's location",
+      "values": []
+    },
+    {
+      "text": "projectiles not offset [1]",
+      "values": []
+    },
+    {
+      "text": "base_damage_taken_+%",
+      "values": []
+    },
+    {
+      "text": "branded_enemy_explode_for_25%_life_as_chaos_on_death_chance_%",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Activation frequency",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Activation frequency",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

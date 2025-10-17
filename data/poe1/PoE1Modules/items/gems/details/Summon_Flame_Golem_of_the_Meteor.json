@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Summon Flame Golem of the Meteor",
     "TargetTypes": "Ground,",
     "Type": "Triggerable, Fire, Mineable, Minion, MinionsCanExplode, Multicastable, Spell, Totemable, Trappable, Golem, CreatesMinion, Cooldown",
     "MinionType": "Damage, Area, Projectile, ProjectilesFromUser, Spell, CausesBurning, DamageOverTime",
@@ -332,5 +333,121 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a Flame Golem. When summoned, the Flame Golem attacks by falling from the sky, dealing fire damage in an area and leaving burning ground around the impact. After landing, it can cast a fire spray and a wave of fire damage.",
+  "explicitMods": [
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "active skill minion from alternate gem index [2]",
+      "values": []
+    },
+    {
+      "text": "active skill no golem aura [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [34,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [7]",
+      "values": []
+    },
+    {
+      "text": "golem can summoned within range [1]",
+      "values": []
+    },
+    {
+      "text": "golem summon distance + [70]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "(0–17)% increased Character Size",
+      "values": [
+        "(0–17)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "active skill minion from alternate gem index [2]",
+      "values": []
+    },
+    {
+      "text": "active skill no golem aura [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [34,100]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [7]",
+      "values": []
+    },
+    {
+      "text": "golem can summoned within range [1]",
+      "values": []
+    },
+    {
+      "text": "golem summon distance + [70]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

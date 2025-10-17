@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "DropLevel": "28",
+    "BaseType": "Bladefall",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Area, Trappable, Mineable, Totemable, Damage, Triggerable, Multicastable, Cascadable, CanRapidFire, AreaSpell, Physical, Duration",
@@ -374,5 +375,89 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Ethereal weapons rain from the sky, dealing damage to enemies in a sequence of volleys. Enemies can be hit multiple times where these overlap.",
+  "explicitMods": [
+    {
+      "text": "Deals (43–595) to (65–893) Physical Damage",
+      "values": [
+        "(43–595)",
+        "(65–893)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Leaves a Lingering Blade in the ground for every Volley",
+      "values": []
+    },
+    {
+      "text": "5 Volleys",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Maximum 40 Lingering Blades can be left in the ground at a time",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Deals (43–595) to (65–893) Physical Damage",
+      "values": [
+        "(43–595)",
+        "(65–893)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Leaves a Lingering Blade in the ground for every Volley",
+      "values": []
+    },
+    {
+      "text": "5 Volleys",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Maximum 40 Lingering Blades can be left in the ground at a time",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–1) Volley",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) Volley",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

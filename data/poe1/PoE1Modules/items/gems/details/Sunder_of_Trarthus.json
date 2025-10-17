@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Sunder of Trarthus",
     "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy, SELF_ORIGIN",
     "Type": "Attack, Area, Multistrikeable, Melee, Slam, Totemable",
@@ -252,5 +253,175 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slams the ground, creating a slow wave of churning terrain that damages enemies in a sequence of areas in front of you. A number of enemies hit by the wave will release a shockwave, damaging other enemies around them. Using the skill again will stop the previous wave. When the wave reaches a target or terrain, it can restart aiming towards an enemy, if one is in range. Requires a Mace, Sceptre, Axe, Staff or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "(0–19)% more Area of Effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Shockwaves deal 40% less Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Wave causes Shockwaves from up to 5 Enemies in each Area",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Wave has (0–25)% reduced delay between Areas",
+      "values": [
+        "(0–25)"
+      ]
+    },
+    {
+      "text": "Wave Damages 4 Areas",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Wave cannot stop before Damaging 2 Areas",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Wave gains +0.1 metres to radius with each Area in the Sequence",
+      "values": [
+        "+0.1"
+      ]
+    },
+    {
+      "text": "Wave can restart up to 2 timesWave Areas gain  metres to radius for each previous Area",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "(0–19)% more Area of Effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Shockwaves deal 40% less Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Wave causes Shockwaves from up to 5 Enemies in each Area",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Wave has (0–25)% reduced delay between Areas",
+      "values": [
+        "(0–25)"
+      ]
+    },
+    {
+      "text": "Wave Damages 4 Areas",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Wave cannot stop before Damaging 2 Areas",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Wave gains +0.1 metres to radius with each Area in the Sequence",
+      "values": [
+        "+0.1"
+      ]
+    },
+    {
+      "text": "Wave can restart up to 2 timesWave Areas gain  metres to radius for each previous Area",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "base sunder wave delay ms [300]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Shockwaves deal 40% less Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Wave causes Shockwaves from up to 5 Enemies in each Area",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Wave Damages 4 Areas",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Wave cannot stop before Damaging 2 Areas",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Wave gains +0.1 metres to radius with each Area in the Sequence",
+      "values": [
+        "+0.1"
+      ]
+    },
+    {
+      "text": "Wave can restart up to 2 timesWave Areas gain  metres to radius for each previous Area",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "base sunder wave delay ms [300]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Wave has (0–10)% reduced delay between Areas",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Wave has (0–10)% reduced delay between Areas",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

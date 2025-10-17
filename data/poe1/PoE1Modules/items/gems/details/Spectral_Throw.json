@@ -3,6 +3,7 @@
   "slug": "Spectral_Throw",
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
+    "BaseType": "Spectral Throw",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
@@ -374,5 +375,43 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a spectral copy of your melee weapon. It flies out and then returns to you, in a spinning attack that damages enemies in its path.",
+  "explicitMods": [
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "spectral throw forget hit list time override [225]",
+      "values": []
+    },
+    {
+      "text": "(7–10)% increased Projectile Damage",
+      "values": [
+        "(7–10)"
+      ]
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, each Spectral Throw Projectile gains 5% increased Damage each time it Hits",
+      "values": [
+        "5"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

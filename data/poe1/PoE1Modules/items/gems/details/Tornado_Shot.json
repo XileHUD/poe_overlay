@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Projectile",
     "DropLevel": "28",
+    "BaseType": "Tornado Shot",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy,",
@@ -336,5 +337,43 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a piercing shot that travels until it reaches the targeted location. It will then fire projectiles out in all directions from that point, which will travel for a short time before disappearing.",
+  "explicitMods": [
+    {
+      "text": "Fires 3 secondary Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Fires 3 secondary Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Projectile Speed",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Projectile Speed",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

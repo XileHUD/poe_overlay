@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Burning Arrow of Vigour",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, MirageArcherCanUse, Projectile, ProjectilesFromUser, Totemable, Trappable, Mineable, Fire, ThresholdJewelArea, Triggerable",
@@ -332,5 +333,96 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a burning arrow that deals fire damage and has a chance to ignite.",
+  "explicitMods": [
+    {
+      "text": "Deals Added Fire Damage equal to (21–32)% of Maximum Life",
+      "values": [
+        "(21–32)"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "25% chance to Ignite enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Deals Added Fire Damage equal to (21–32)% of Maximum Life",
+      "values": [
+        "(21–32)"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "25% chance to Ignite enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "Deals Added Fire Damage equal to (21–40)% of Maximum Life",
+      "values": [
+        "(21–40)"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "25% chance to Ignite enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Damage with Ignite",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Damage with Ignite",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Damage with Ignite",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

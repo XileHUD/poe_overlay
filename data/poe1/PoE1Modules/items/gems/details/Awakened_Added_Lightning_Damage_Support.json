@@ -3,6 +3,7 @@
   "slug": "Awakened_Added_Lightning_Damage_Support",
   "metadata": {
     "DropLevel": "72",
+    "BaseType": "Awakened Added Lightning Damage Support",
     "Class": "Support Gems",
     "Icon": "L",
     "ItemType": "Metadata/Items/Gems/SupportGemAddedLightningDamagePlus",
@@ -193,5 +194,49 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "+(0–1) to Level of Supported Lightning Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (21–24) to (391–449) added Lightning Damage",
+      "values": [
+        "(21–24)",
+        "(391–449)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Level of Supported Lightning Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (21–24) to (391–449) added Lightning Damage",
+      "values": [
+        "(21–24)",
+        "(391–449)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Lightning Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Lightning Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

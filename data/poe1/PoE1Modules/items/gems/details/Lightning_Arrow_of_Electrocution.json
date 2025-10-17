@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Lightning Arrow of Electrocution",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, MirageArcherCanUse, Projectile, ProjectilesFromUser, Totemable, Trappable, Mineable, Lightning, Triggerable",
@@ -292,5 +293,109 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a charged arrow which damages enemies by causing them to be struck by a bolt of lightning. It sticks into the final target, causing them to be struck and damaged multiple times.",
+  "explicitMods": [
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Arrows Damage final target 4 additional times after sticking in",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Lightning bolts strike every 0.5 seconds",
+      "values": [
+        "0.5"
+      ]
+    },
+    {
+      "text": "10 Maximum Lightning Arrows stuck in an Enemy",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Arrows Damage final target 4 additional times after sticking in",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Lightning bolts strike every 0.5 seconds",
+      "values": [
+        "0.5"
+      ]
+    },
+    {
+      "text": "10 Maximum Lightning Arrows stuck in an Enemy",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Arrows Damage final target 4 additional times after sticking in",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Lightning bolts strike every 0.5 seconds",
+      "values": [
+        "0.5"
+      ]
+    },
+    {
+      "text": "10 Maximum Lightning Arrows stuck in an Enemy",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Arrows Damage final target (0–1) additional time after sticking in",
+      "values": [
+        "(0–1)"
+      ]
+    },
+    {
+      "text": "Arrows Damage final target (0–1) additional time after sticking in",
+      "values": [
+        "(0–1)"
+      ]
+    },
+    {
+      "text": "Arrows Damage final target (0–1) additional time after sticking in",
+      "values": [
+        "(0–1)"
+      ]
+    }
+  ]
 }

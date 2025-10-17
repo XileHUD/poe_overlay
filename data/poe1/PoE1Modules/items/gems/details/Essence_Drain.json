@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Modifiers",
     "DropLevel": "12",
+    "BaseType": "Essence Drain",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Projectile, ProjectilesFromUser, Duration, Totemable, Multicastable, DamageOverTime, Chaos, Damage, Triggerable, CanRapidFire, Area, AreaSpell, Trappable, Mineable",
@@ -455,5 +456,89 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a projectile that applies a damage over time debuff when it hits. You are healed for a portion of the debuff damage. The debuff is spread by Contagion.",
+  "explicitMods": [
+    {
+      "text": "Deals (12–926) to (18–1389) Chaos Damage",
+      "values": [
+        "(12–926)",
+        "(18–1389)"
+      ]
+    },
+    {
+      "text": "Deals (42–2170.2) Base Chaos Damage per second",
+      "values": [
+        "(42–2170.2)"
+      ]
+    },
+    {
+      "text": "Base duration is 3.8 seconds",
+      "values": [
+        "3.8"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Regenerate 0.5% of Debuff Damage as Life",
+      "values": [
+        "0.5"
+      ]
+    },
+    {
+      "text": "Deals (12–926) to (18–1389) Chaos Damage",
+      "values": [
+        "(12–926)",
+        "(18–1389)"
+      ]
+    },
+    {
+      "text": "Deals (42–2170.2) Base Chaos Damage per second",
+      "values": [
+        "(42–2170.2)"
+      ]
+    },
+    {
+      "text": "Base duration is 3.8 seconds",
+      "values": [
+        "3.8"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Regenerate 0.5% of Debuff Damage as Life",
+      "values": [
+        "0.5"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base_chaos_damage_taken_per_minute",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Regenerate +(0–0.5)% of Debuff Damage as Life",
+      "values": [
+        "+(0–0.5)"
+      ]
+    },
+    {
+      "text": "Regenerate +(0–0.5)% of Debuff Damage as Life",
+      "values": [
+        "+(0–0.5)"
+      ]
+    }
+  ]
 }

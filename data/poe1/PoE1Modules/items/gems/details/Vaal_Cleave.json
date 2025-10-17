@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Cleave",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, Two Hand Swords, Two Hand Axes",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Area, Multistrikeable, Melee, ThresholdJewelArea",
@@ -292,5 +293,172 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Killing Blows on Rare or Unique enemies grant a buff that improves Cleave for a duration. Killing Blows on Rare Enemies also steal their modifiers for a secondary duration. Only works with Axes and Swords.",
+  "explicitMods": [
+    {
+      "text": "When Dual Wielding, Deals 60% Damage from each Weapon combined",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Base duration is 20 seconds",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 20 seconds",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "+0.8 seconds to Attack Time",
+      "values": [
+        "+0.8"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "+(1.5–2.4) metres to radius",
+      "values": [
+        "+(1.5–2.4)"
+      ]
+    },
+    {
+      "text": "Culling Strike",
+      "values": []
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Buff grants Culling Strike with CleaveBuff grants 60% more Cleave Area of EffectBuff grants 60% more Cleave Damage with Hits and Ailments to Enemies that are on Low Life",
+      "values": [
+        "60",
+        "60"
+      ]
+    },
+    {
+      "text": "When Dual Wielding, Deals 60% Damage from each Weapon combined",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Base duration is 20 seconds",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 20 seconds",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "+0.8 seconds to Attack Time",
+      "values": [
+        "+0.8"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "+(1.5–2.4) metres to radius",
+      "values": [
+        "+(1.5–2.4)"
+      ]
+    },
+    {
+      "text": "Culling Strike",
+      "values": []
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Buff grants Culling Strike with CleaveBuff grants 60% more Cleave Area of EffectBuff grants 60% more Cleave Damage with Hits and Ailments to Enemies that are on Low Life",
+      "values": [
+        "60",
+        "60"
+      ]
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "skill double hits when dual wielding [1]",
+      "values": []
+    },
+    {
+      "text": "vaal cleave steal mods on kill [1]",
+      "values": []
+    },
+    {
+      "text": "When Dual Wielding, Deals 60% Damage from each Weapon combined",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "+(0–1.8) metres to radius",
+      "values": [
+        "+(0–1.8)"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill double hits when dual wielding [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(You are on Low Life if you have 50% of your Maximum Life or less)",
+    "(Culling Strike means enemies that are on 10% or lower life after your Hit are Killed)",
+    "(You are on Low Life if you have 50% of your Maximum Life or less)",
+    "(Culling Strike means enemies that are on 10% or lower life after your Hit are Killed)",
+    "(You are on Low Life if you have 50% of your Maximum Life or less)",
+    "(Culling Strike means enemies that are on 10% or lower life after your Hit are Killed)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+0.1 metres to radius per Nearby Enemy, up to a maximum of +1 metre",
+      "values": []
+    },
+    {
+      "text": "+0.1 metres to radius per Nearby Enemy, up to a maximum of +1 metre",
+      "values": []
+    }
+  ]
 }

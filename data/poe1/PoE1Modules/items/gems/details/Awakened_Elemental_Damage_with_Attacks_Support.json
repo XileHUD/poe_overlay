@@ -3,6 +3,7 @@
   "slug": "Awakened_Elemental_Damage_with_Attacks_Support",
   "metadata": {
     "DropLevel": "72",
+    "BaseType": "Awakened Elemental Damage with Attacks Support",
     "Class": "Support Gems",
     "Icon": "W",
     "ItemType": "Metadata/Items/Gems/SupportGemWeaponElementalDamagePlus",
@@ -193,5 +194,43 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports attack skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Attack Skills deal (35–39)% more Elemental Damage",
+      "values": [
+        "(35–39)"
+      ]
+    },
+    {
+      "text": "Elemental Damage from Supported Skills cannot be Reflected",
+      "values": []
+    },
+    {
+      "text": "Supported Attack Skills deal (35–39)% more Elemental Damage",
+      "values": [
+        "(35–39)"
+      ]
+    },
+    {
+      "text": "Elemental Damage from Supported Skills cannot be Reflected",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Elemental Damage with Attack Skills",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Elemental Damage with Attack Skills",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

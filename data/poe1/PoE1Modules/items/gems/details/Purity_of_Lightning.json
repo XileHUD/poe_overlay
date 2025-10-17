@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Resistance",
     "DropLevel": "24",
+    "BaseType": "Purity of Lightning",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Lightning, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -415,5 +416,160 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts an aura that grants lightning resistance to you and your allies.",
+  "explicitMods": [
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (22–41)% additional Lightning Resistance",
+      "values": [
+        "(22–41)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (0–4)% additional maximum Lightning Resistance",
+      "values": [
+        "(0–4)"
+      ]
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (22–41)% additional Lightning Resistance",
+      "values": [
+        "(22–41)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (0–4)% additional maximum Lightning Resistance",
+      "values": [
+        "(0–4)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "Grants Level 25 Purity of Fire Skill",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Adds (25–30) to (40–45) Fire Damage to Spells and Attacks",
+      "values": [
+        "(25–30)",
+        "(40–45)"
+      ]
+    },
+    {
+      "text": "(100–120)% increased Armour",
+      "values": [
+        "(100–120)"
+      ]
+    },
+    {
+      "text": "+(60–70) to maximum Life",
+      "values": [
+        "+(60–70)"
+      ]
+    },
+    {
+      "text": "30% increased Movement Speed",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Grants Level 25 Purity of Lightning Skill",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Adds (1–3) to (68–72) Lightning Damage to Spells and Attacks",
+      "values": [
+        "(1–3)",
+        "(68–72)"
+      ]
+    },
+    {
+      "text": "(150–180)% increased Energy Shield",
+      "values": [
+        "(150–180)"
+      ]
+    },
+    {
+      "text": "+(60–70) to maximum Life",
+      "values": [
+        "+(60–70)"
+      ]
+    },
+    {
+      "text": "30% increased Movement Speed",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Grants Level 25 Purity of Ice Skill",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Adds (25–30) to (40–45) Cold Damage to Spells and Attacks",
+      "values": [
+        "(25–30)",
+        "(40–45)"
+      ]
+    },
+    {
+      "text": "(100–120)% increased Evasion Rating",
+      "values": [
+        "(100–120)"
+      ]
+    },
+    {
+      "text": "+(60–70) to maximum Life",
+      "values": [
+        "+(60–70)"
+      ]
+    },
+    {
+      "text": "30% increased Movement Speed",
+      "values": [
+        "30"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Maximum Resistances cannot be raised above 90%)",
+    "(Maximum Resistances cannot be raised above 90%)",
+    "(Maximum Resistances cannot be raised above 90%)"
+  ],
+  "qualityMods": [
+    {
+      "text": "You and nearby allies gain (0–10)% additional Lightning Resistance",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (0–10)% additional Lightning Resistance",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

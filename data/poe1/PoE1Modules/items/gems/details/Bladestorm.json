@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Stance, Ailment, Bleeding",
     "DropLevel": "28",
+    "BaseType": "Bladestorm",
     "Class": "Skill Gems",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, Two Hand Swords, Two Hand Axes",
     "TargetTypes": "Enemy, Ground",
@@ -496,5 +497,118 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Perform a spinning attack, damaging enemies around you and creating a bladestorm matching your stance. The bladestorm repeatedly damages enemies, based on your weapon damage and attack time, for a duration. Blood bladestorms are stationary and cause Bleeding, while Sand bladestorms move slowly forwards and Blind enemies. Requires a Sword or Axe. You are in Blood Stance by default.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "(70–108)% more Damage with Bleeding while in Blood Stance",
+      "values": [
+        "(70–108)"
+      ]
+    },
+    {
+      "text": "(10–12)% more Attack Speed while you're in a Blood Bladestorm",
+      "values": [
+        "(10–12)"
+      ]
+    },
+    {
+      "text": "Sand Bladestorms grant (30–38)% increased Movement Speed to you",
+      "values": [
+        "(30–38)"
+      ]
+    },
+    {
+      "text": "Bladestorm deals 50% less Damage with Hits and Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Maximum of 3 Bladestorms at a time",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "(70–108)% more Damage with Bleeding while in Blood Stance",
+      "values": [
+        "(70–108)"
+      ]
+    },
+    {
+      "text": "(10–12)% more Attack Speed while you're in a Blood Bladestorm",
+      "values": [
+        "(10–12)"
+      ]
+    },
+    {
+      "text": "Sand Bladestorms grant (30–38)% increased Movement Speed to you",
+      "values": [
+        "(30–38)"
+      ]
+    },
+    {
+      "text": "Bladestorm deals 50% less Damage with Hits and Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Maximum of 3 Bladestorms at a time",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "blind art variation [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(You are in Blood Stance by default)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(You are in Blood Stance by default)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(You are in Blood Stance by default)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–1) to Maximum number of Bladestorms at a time",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Maximum number of Bladestorms at a time",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

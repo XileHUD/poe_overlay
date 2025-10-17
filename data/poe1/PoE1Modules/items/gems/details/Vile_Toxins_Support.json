@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Hit, Poison",
     "DropLevel": "38",
+    "BaseType": "Vile Toxins Support",
     "Class": "Support Gems",
     "Icon": "e",
     "ItemType": "Metadata/Items/Gems/SupportGemVileToxins",
@@ -373,5 +374,80 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal 5% more Damage with Hits for each Poison on the Enemy, up to (5–8)",
+      "values": [
+        "5",
+        "(5–8)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–19)% more Damage with Poison",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal 5% more Damage with Hits for each Poison on the Enemy, up to (5–8)",
+      "values": [
+        "5",
+        "(5–8)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–19)% more Damage with Poison",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 20 Vile Toxins",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Adds (13–17) to (23–29) Chaos Damage",
+      "values": [
+        "(13–17)",
+        "(23–29)"
+      ]
+    },
+    {
+      "text": "+(50–70) to maximum Life",
+      "values": [
+        "+(50–70)"
+      ]
+    },
+    {
+      "text": "+(17–29)% to Chaos Resistance",
+      "values": [
+        "+(17–29)"
+      ]
+    },
+    {
+      "text": "(20–25)% increased Poison Duration",
+      "values": [
+        "(20–25)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage with Poison",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage with Poison",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

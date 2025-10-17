@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Rage, Warcry, Buff",
     "DropLevel": "24",
+    "BaseType": "Vengeful Cry",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Buff, Area, Duration, Warcry, Cooldown, Retaliation",
@@ -415,5 +416,132 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Retaliate against a savage hit with a warcry, taunting all nearby enemies to attack the user. The user and nearby allies gain a buff which grants rage and prevents rage from being lost. Minions cannot gain rage.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (2.5–3.4) seconds",
+      "values": [
+        "(2.5–3.4)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Warcry Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you take a Savage Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Buff grants 3 Rage per second per 5 Power, counting a maximum of 25 power",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Buff grants +25 to Maximum RageBuff prevents inherent loss of Rage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Counts total Power of Enemies in Range",
+      "values": []
+    },
+    {
+      "text": "Base duration is (2.5–3.4) seconds",
+      "values": [
+        "(2.5–3.4)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Warcry Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you take a Savage Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Buff grants 3 Rage per second per 5 Power, counting a maximum of 25 power",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Buff grants +25 to Maximum RageBuff prevents inherent loss of Rage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Counts total Power of Enemies in Range",
+      "values": []
+    },
+    {
+      "text": "base deal no attack damage [1]",
+      "values": []
+    },
+    {
+      "text": "base deal no secondary damage [1]",
+      "values": []
+    },
+    {
+      "text": "base deal no spell damage [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "maximum_rage",
+      "values": []
+    },
+    {
+      "text": "base_rage_regeneration_per_minute",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(A Hit that removes at least 15% of Maximum Life is a Savage Hit)",
+    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
+    "(This only affects the inherent loss of Rage when you haven't been Hit or gained Rage Recently)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
+    "(A Hit that removes at least 15% of Maximum Life is a Savage Hit)",
+    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
+    "(This only affects the inherent loss of Rage when you haven't been Hit or gained Rage Recently)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
+    "(A Hit that removes at least 15% of Maximum Life is a Savage Hit)",
+    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
+    "(This only affects the inherent loss of Rage when you haven't been Hit or gained Rage Recently)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

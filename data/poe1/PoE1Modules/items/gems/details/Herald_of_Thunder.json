@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Kill, Buff, Shock",
     "DropLevel": "16",
+    "BaseType": "Herald of Thunder",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, HasReservation, Damage, Area, Duration, Lightning, TotemCastsAlone, Herald, Instant, AreaSpell, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -415,5 +416,505 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Grants a buff which adds lightning damage to spells and attacks. If you kill a shocked enemy, this skill will create a storm, causing lightning bolts to strike enemies around you for a duration. The damage inflicted by this skill is not affected by modifiers to spell damage.",
+  "explicitMods": [
+    {
+      "text": "Deals (1–23) to (31–1108) Lightning Damage",
+      "values": [
+        "(1–23)",
+        "(31–1108)"
+      ]
+    },
+    {
+      "text": "Cannot inflict Shock",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Storm Hits an Enemy every 0.25 Seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "Creates a storm when you Kill a Shocked Enemy",
+      "values": []
+    },
+    {
+      "text": "Buff grants (2–19) to (7–76) Added Attack Lightning Damage",
+      "values": [
+        "(2–19)",
+        "(7–76)"
+      ]
+    },
+    {
+      "text": "Buff grants (2–19) to (7–76) Added Spell Lightning Damage",
+      "values": [
+        "(2–19)",
+        "(7–76)"
+      ]
+    },
+    {
+      "text": "Deals (1–23) to (31–1108) Lightning Damage",
+      "values": [
+        "(1–23)",
+        "(31–1108)"
+      ]
+    },
+    {
+      "text": "Cannot inflict Shock",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Storm Hits an Enemy every 0.25 Seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "Creates a storm when you Kill a Shocked Enemy",
+      "values": []
+    },
+    {
+      "text": "Buff grants (2–19) to (7–76) Added Attack Lightning Damage",
+      "values": [
+        "(2–19)",
+        "(7–76)"
+      ]
+    },
+    {
+      "text": "Buff grants (2–19) to (7–76) Added Spell Lightning Damage",
+      "values": [
+        "(2–19)",
+        "(7–76)"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "display skill deals secondary damage [1]",
+      "values": []
+    },
+    {
+      "text": "herald of thunder pvp scaling time uses bolt frequency [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "+(20–30) to Intelligence",
+      "values": [
+        "+(20–30)"
+      ]
+    },
+    {
+      "text": "Adds 1 to (48–60) Lightning Damage",
+      "values": [
+        "1",
+        "(48–60)"
+      ]
+    },
+    {
+      "text": "+(20–30)% to Lightning Resistance",
+      "values": [
+        "+(20–30)"
+      ]
+    },
+    {
+      "text": "When used in the Synthesiser, the new item will have an additional Herald Modifier",
+      "values": []
+    },
+    {
+      "text": "[Random Herald of Thunder modifier]",
+      "values": []
+    },
+    {
+      "text": "No Physical Damage",
+      "values": []
+    },
+    {
+      "text": "Adds 1 to (40–50) Lightning Damage",
+      "values": [
+        "1",
+        "(40–50)"
+      ]
+    },
+    {
+      "text": "(25–30)% increased Attack Speed",
+      "values": [
+        "(25–30)"
+      ]
+    },
+    {
+      "text": "Grants 2 Life per Enemy Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "(15–20)% chance to Shock",
+      "values": [
+        "(15–20)"
+      ]
+    },
+    {
+      "text": "Herald of Thunder has 50% increased Buff Effect",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+      "values": []
+    },
+    {
+      "text": "action attack or cast time uses animation length [1]",
+      "values": []
+    },
+    {
+      "text": "projectile uses contact position [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "use scaled contact offset [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Cursed enemies have -40% to Lightning Resistance",
+      "values": [
+        "-40"
+      ]
+    },
+    {
+      "text": "Hits against Cursed Enemies have +25% chance to Shock",
+      "values": [
+        "+25"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [9]",
+      "values": []
+    },
+    {
+      "text": "Deals 4140 to 6210 Lightning Damage",
+      "values": [
+        "4140",
+        "6210"
+      ]
+    },
+    {
+      "text": "Base duration is 2.2 seconds",
+      "values": [
+        "2.2"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [24]",
+      "values": []
+    },
+    {
+      "text": "beacon placement radius [50]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "monster penalty against minions damage +% final vs player minions [-25]",
+      "values": []
+    },
+    {
+      "text": "number of beacons [5]",
+      "values": []
+    },
+    {
+      "text": "Deals 396.6 to 1190 Lightning Damage",
+      "values": [
+        "396.6",
+        "1190"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 396.6 to 1190 Lightning Damage",
+      "values": [
+        "396.6",
+        "1190"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [65]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 157.1 to 471.2 Lightning Damage",
+      "values": [
+        "157.1",
+        "471.2"
+      ]
+    },
+    {
+      "text": "80% less Cast Speed",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "5% chance to Shock enemies",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "spell maximum action distance +% [-50]",
+      "values": []
+    },
+    {
+      "text": "action attack or cast time uses animation length [1]",
+      "values": []
+    },
+    {
+      "text": "projectile uses contact position [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "use scaled contact offset [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Cursed enemies have -30% to Lightning Resistance",
+      "values": [
+        "-30"
+      ]
+    },
+    {
+      "text": "Hits against Cursed Enemies have +25% chance to Shock",
+      "values": [
+        "+25"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [9]",
+      "values": []
+    },
+    {
+      "text": "Deals 2158 to 3237 Lightning Damage",
+      "values": [
+        "2158",
+        "3237"
+      ]
+    },
+    {
+      "text": "Base duration is 2.45 seconds",
+      "values": [
+        "2.45"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [4]",
+      "values": []
+    },
+    {
+      "text": "beacon placement radius [50]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "monster penalty against minions damage +% final vs player minions [-25]",
+      "values": []
+    },
+    {
+      "text": "number of beacons [5]",
+      "values": []
+    },
+    {
+      "text": "Deals 260.5 to 781.5 Lightning Damage",
+      "values": [
+        "260.5",
+        "781.5"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 260.5 to 781.5 Lightning Damage",
+      "values": [
+        "260.5",
+        "781.5"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [65]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 86.29 to 258.9 Lightning Damage",
+      "values": [
+        "86.29",
+        "258.9"
+      ]
+    },
+    {
+      "text": "80% less Cast Speed",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "5% chance to Shock enemies",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "spell maximum action distance +% [-50]",
+      "values": []
+    },
+    {
+      "text": "action attack or cast time uses animation length [1]",
+      "values": []
+    },
+    {
+      "text": "projectile uses contact position [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "use scaled contact offset [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 128.9 to 386.8 Lightning Damage",
+      "values": [
+        "128.9",
+        "386.8"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 128.9 to 386.8 Lightning Damage",
+      "values": [
+        "128.9",
+        "386.8"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [65]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Cursed enemies have -30% to Lightning Resistance",
+      "values": [
+        "-30"
+      ]
+    },
+    {
+      "text": "Hits against Cursed Enemies have +25% chance to Shock",
+      "values": [
+        "+25"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [9]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Storms Hit Enemies with (0–20)% increased Frequency",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Storms Hit Enemies with (0–20)% increased Frequency",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

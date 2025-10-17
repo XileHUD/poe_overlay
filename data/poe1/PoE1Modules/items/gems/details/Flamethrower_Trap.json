@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Burning, Trap, Ailment",
     "DropLevel": "28",
+    "BaseType": "Flamethrower Trap",
     "Class": "Skill Gems",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Duration, Damage, Mineable, Area, Trapped, Fire, AreaSpell, Cooldown",
@@ -415,5 +416,97 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap that releases a number of flames in different directions around it when triggered. The flames last for a duration, rotating around the trap and repeatedly dealing damage. Burning enemies are dealt more damage.",
+  "explicitMods": [
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is 3.5 seconds",
+      "values": [
+        "3.5"
+      ]
+    },
+    {
+      "text": "Deals (6–243) to (9–366) Fire Damage",
+      "values": [
+        "(6–243)",
+        "(9–366)"
+      ]
+    },
+    {
+      "text": "Has 4 Flames",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "25% more Damage with Hits and Ailments against Burning Enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is 3.5 seconds",
+      "values": [
+        "3.5"
+      ]
+    },
+    {
+      "text": "Deals (6–243) to (9–366) Fire Damage",
+      "values": [
+        "(6–243)",
+        "(9–366)"
+      ]
+    },
+    {
+      "text": "Has 4 Flames",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "25% more Damage with Hits and Ailments against Burning Enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

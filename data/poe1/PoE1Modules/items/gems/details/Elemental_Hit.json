@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Ailment, Ignite, Freeze, Shock",
     "DropLevel": "12",
+    "BaseType": "Elemental Hit",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
@@ -496,5 +497,176 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Each attack with a melee weapon will choose an element at random, and will only be able to deal damage of that element. If the attack hits an enemy, it will deal damage in an area around them, with the radius being larger if that enemy is suffering from an ailment of the chosen element. It will avoid choosing the same element twice in a row.",
+  "explicitMods": [
+    {
+      "text": "(21–609) to (40–1133) Added Cold Damage",
+      "values": [
+        "(21–609)",
+        "(40–1133)"
+      ]
+    },
+    {
+      "text": "(26–748) to (49–1389) Added Fire Damage",
+      "values": [
+        "(26–748)",
+        "(49–1389)"
+      ]
+    },
+    {
+      "text": "(4–118) to (80–2287) Added Lightning Damage",
+      "values": [
+        "(4–118)",
+        "(80–2287)"
+      ]
+    },
+    {
+      "text": "Only Deals Damage of the chosen ElementDeals no Damage of other Damage Types",
+      "values": []
+    },
+    {
+      "text": "(30–49)% chance to Freeze, Shock and Ignite",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Base radius is 1 metre",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "80% more Area Radius against Enemies affected by an Ailment of the chosen Element",
+      "values": []
+    },
+    {
+      "text": "10% more Damage for each type of Elemental Ailment on the Enemy",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "(21–609) to (40–1133) Added Cold Damage",
+      "values": [
+        "(21–609)",
+        "(40–1133)"
+      ]
+    },
+    {
+      "text": "(26–748) to (49–1389) Added Fire Damage",
+      "values": [
+        "(26–748)",
+        "(49–1389)"
+      ]
+    },
+    {
+      "text": "(4–118) to (80–2287) Added Lightning Damage",
+      "values": [
+        "(4–118)",
+        "(80–2287)"
+      ]
+    },
+    {
+      "text": "Only Deals Damage of the chosen ElementDeals no Damage of other Damage Types",
+      "values": []
+    },
+    {
+      "text": "(30–49)% chance to Freeze, Shock and Ignite",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Base radius is 1 metre",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "80% more Area Radius against Enemies affected by an Ailment of the chosen Element",
+      "values": []
+    },
+    {
+      "text": "10% more Damage for each type of Elemental Ailment on the Enemy",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "elemental hit no physical chaos damage [1]",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Elemental Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With 40 total Strength and Intelligence in Radius, Prismatic Skills deal 50% less Cold Damage",
+      "values": []
+    },
+    {
+      "text": "With 40 total Strength and Intelligence in Radius, Prismatic Skills cannot choose Cold",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Elemental Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With 40 total Dexterity and Strength in Radius, Prismatic Skills deal 50% less Lightning Damage",
+      "values": []
+    },
+    {
+      "text": "With 40 total Dexterity and Strength in Radius, Prismatic Skills cannot choose Lightning",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Elemental Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With 40 total Intelligence and Dexterity in Radius, Prismatic Skills deal 50% less Fire Damage",
+      "values": []
+    },
+    {
+      "text": "With 40 total Intelligence and Dexterity in Radius, Prismatic Skills cannot choose Fire",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(The Damage Types are Physical, Fire, Cold, Lightning, and Chaos)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(The Damage Types are Physical, Fire, Cold, Lightning, and Chaos)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(The Damage Types are Physical, Fire, Cold, Lightning, and Chaos)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–5)% more Damage for each type of Elemental Ailment on the Enemy",
+      "values": [
+        "+(0–5)"
+      ]
+    },
+    {
+      "text": "+(0–5)% more Damage for each type of Elemental Ailment on the Enemy",
+      "values": [
+        "+(0–5)"
+      ]
+    }
+  ]
 }

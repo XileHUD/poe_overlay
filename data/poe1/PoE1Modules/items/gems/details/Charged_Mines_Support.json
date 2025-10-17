@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Mine",
     "DropLevel": "31",
+    "BaseType": "Charged Mines Support",
     "Class": "Support Gems",
     "Icon": "-",
     "ItemType": "Metadata/Items/Gems/SupportGemChargedMines",
@@ -413,5 +414,71 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which throw mines.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have 10% increased Mine Throwing Speed per Frenzy Charge",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Supported Skills have 25% increased Critical Strike Chance perPower Charge when used by Mines",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(20–30)% chance to gain a Frenzy Charge when a Mine from SupportedSkills is Detonated targeting an Enemy",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "(20–30)% chance to gain a Power Charge when a Mine from SupportedSkills is Detonated targeting an Enemy",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 10% increased Mine Throwing Speed per Frenzy Charge",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Supported Skills have 25% increased Critical Strike Chance perPower Charge when used by Mines",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(20–30)% chance to gain a Frenzy Charge when a Mine from SupportedSkills is Detonated targeting an Enemy",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "(20–30)% chance to gain a Power Charge when a Mine from SupportedSkills is Detonated targeting an Enemy",
+      "values": [
+        "(20–30)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Mine Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Mine Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Cold Snap of Power",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cold, Cascadable, AreaSpell, Cooldown",
     "ActiveSkillsCode": "cold_snap_alt_x"
@@ -331,5 +332,102 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a sudden burst of cold in a targeted area, damaging enemies. The cooldown can be bypassed by expending a Power Charge.",
+  "explicitMods": [
+    {
+      "text": "Deals (34–1717) to (51–2575) Cold Damage",
+      "values": [
+        "(34–1717)",
+        "(51–2575)"
+      ]
+    },
+    {
+      "text": "30% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Burst Base radius is 2.5 metres",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "Deals (34–1717) to (51–2575) Cold Damage",
+      "values": [
+        "(34–1717)",
+        "(51–2575)"
+      ]
+    },
+    {
+      "text": "30% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Burst Base radius is 2.5 metres",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (34–11123) to (51–16685) Cold Damage",
+      "values": [
+        "(34–11123)",
+        "(51–16685)"
+      ]
+    },
+    {
+      "text": "30% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Burst Base radius is 2.5 metres",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

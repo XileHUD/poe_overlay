@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Projectile",
     "DropLevel": "16",
+    "BaseType": "Ensnaring Arrow",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
@@ -376,5 +377,87 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires an arrow that remains in the ground behind its final target, tethering that enemy to it. Ensnared enemies have less movement speed while trying to break the snare. The snare will break if they leave the area of effect.",
+  "explicitMods": [
+    {
+      "text": "Each Snare applies 40% less Movement Speed to Normal or Magic Enemies",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Each Snare applies 30% less Movement Speed to Rare Enemies",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Ensnared Enemies take (15–20)% increased Projectile Damage from Attack Hits",
+      "values": [
+        "(15–20)"
+      ]
+    },
+    {
+      "text": "Each Snare applies 25% less Movement Speed to Unique Enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Maximum 3 Snares per Enemy",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Each Snare applies 40% less Movement Speed to Normal or Magic Enemies",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Each Snare applies 30% less Movement Speed to Rare Enemies",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Ensnared Enemies take (15–20)% increased Projectile Damage from Attack Hits",
+      "values": [
+        "(15–20)"
+      ]
+    },
+    {
+      "text": "Each Snare applies 25% less Movement Speed to Unique Enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Maximum 3 Snares per Enemy",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Debuff Effect",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Debuff Effect",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

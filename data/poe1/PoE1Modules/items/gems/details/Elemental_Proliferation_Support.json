@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Duration, Ailment, Ignite, Freeze, Shock",
+    "BaseType": "Elemental Proliferation Support",
     "Class": "Support Gems",
     "Icon": "S",
     "ItemType": "Metadata/Items/Gems/SupportGemElementalProliferation",
@@ -372,5 +373,193 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies, or could otherwise apply elemental ailments.",
+  "explicitMods": [
+    {
+      "text": "(0–19)% increased Duration of Elemental Ailments on Enemies",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Elemental Ailments inflicted by Supported Skills spread to other enemies within (1.2–1.5) metres",
+      "values": [
+        "(1.2–1.5)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 20% chance to Freeze, Shock and Ignite",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(0–19)% increased Duration of Elemental Ailments on Enemies",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Elemental Ailments inflicted by Supported Skills spread to other enemies within (1.2–1.5) metres",
+      "values": [
+        "(1.2–1.5)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 20% chance to Freeze, Shock and Ignite",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "display what elemental proliferation does [1]",
+      "values": []
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 20 Elemental Proliferation",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Adds (65–85) to (100–160) Physical Damage",
+      "values": [
+        "(65–85)",
+        "(100–160)"
+      ]
+    },
+    {
+      "text": "(11–15)% increased Attack Speed",
+      "values": [
+        "(11–15)"
+      ]
+    },
+    {
+      "text": "(6–10)% increased Cast Speed",
+      "values": [
+        "(6–10)"
+      ]
+    },
+    {
+      "text": "(30–40)% increased Global Critical Strike Chance",
+      "values": [
+        "(30–40)"
+      ]
+    },
+    {
+      "text": "0.2% of Elemental Damage Leeched as Life",
+      "values": [
+        "0.2"
+      ]
+    },
+    {
+      "text": "(80–100)% increased Elemental Damage",
+      "values": [
+        "(80–100)"
+      ]
+    },
+    {
+      "text": "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+      "values": []
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 5 Elemental Proliferation",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Adds (2–4) to (5–9) Fire Damage to Spells and Attacks",
+      "values": [
+        "(2–4)",
+        "(5–9)"
+      ]
+    },
+    {
+      "text": "Adds (2–4) to (5–9) Cold Damage to Spells and Attacks",
+      "values": [
+        "(2–4)",
+        "(5–9)"
+      ]
+    },
+    {
+      "text": "Adds 1 to (4–12) Lightning Damage to Spells and Attacks",
+      "values": [
+        "1",
+        "(4–12)"
+      ]
+    },
+    {
+      "text": "+(30–60) to Evasion Rating",
+      "values": [
+        "+(30–60)"
+      ]
+    },
+    {
+      "text": "+(30–60) to maximum Energy Shield",
+      "values": [
+        "+(30–60)"
+      ]
+    },
+    {
+      "text": "+(25–50) to maximum Life",
+      "values": [
+        "+(25–50)"
+      ]
+    },
+    {
+      "text": "+(25–50) to maximum Mana",
+      "values": [
+        "+(25–50)"
+      ]
+    },
+    {
+      "text": "+(15–30)% to Fire Resistance",
+      "values": [
+        "+(15–30)"
+      ]
+    },
+    {
+      "text": "+(15–30)% to Cold Resistance",
+      "values": [
+        "+(15–30)"
+      ]
+    },
+    {
+      "text": "+(15–30)% to Lightning Resistance",
+      "values": [
+        "+(15–30)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Duration of Elemental Ailments on Enemies",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Duration of Elemental Ailments on Enemies",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Cremation of Exhuming",
     "TargetTypes": "Corpse",
     "Type": "Spell, Area, Fire, Duration, Projectile, Multicastable, Trappable, Totemable, Mineable, Triggerable, Damage, Cascadable, Projectile, CanRapidFire, AreaSpell, Orb",
     "ActiveSkillsCode": "cremation_alt_x"
@@ -411,5 +412,210 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "A targeted corpse explodes, dealing area damage and turning into a volcanic geyser, which will repeatedly unleash projectiles sequentially over the surrounding area and detonate nearby corpses for a duration. Corpse explosions are not affected by modifiers to spell damage, and cannot be reflected.",
+  "explicitMods": [
+    {
+      "text": "Fires Projectiles every 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Deals (49–434) to (74–651) Fire Damage",
+      "values": [
+        "(49–434)",
+        "(74–651)"
+      ]
+    },
+    {
+      "text": "Fires 4 Projectiles",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Maximum of 1 Geysers at a time",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (5–6)% of the corpse's Maximum Life",
+      "values": [
+        "(5–6)"
+      ]
+    },
+    {
+      "text": "+(0–0.3) metres to radius",
+      "values": [
+        "+(0–0.3)"
+      ]
+    },
+    {
+      "text": "Explode a nearby Corpse when Firing Projectiles",
+      "values": []
+    },
+    {
+      "text": "Fires Projectiles every 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Deals (49–434) to (74–651) Fire Damage",
+      "values": [
+        "(49–434)",
+        "(74–651)"
+      ]
+    },
+    {
+      "text": "Fires 4 Projectiles",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Maximum of 1 Geysers at a time",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (5–6)% of the corpse's Maximum Life",
+      "values": [
+        "(5–6)"
+      ]
+    },
+    {
+      "text": "+(0–0.3) metres to radius",
+      "values": [
+        "+(0–0.3)"
+      ]
+    },
+    {
+      "text": "Explode a nearby Corpse when Firing Projectiles",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "projectile behaviour only explode [1]",
+      "values": []
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "Fires Projectiles every 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Deals (49–1652) to (74–2479) Fire Damage",
+      "values": [
+        "(49–1652)",
+        "(74–2479)"
+      ]
+    },
+    {
+      "text": "Fires 4 Projectiles",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Maximum of 1 Geysers at a time",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (5–6.7)% of the corpse's Maximum Life",
+      "values": [
+        "(5–6.7)"
+      ]
+    },
+    {
+      "text": "+(0–0.6) metres to radius",
+      "values": [
+        "+(0–0.6)"
+      ]
+    },
+    {
+      "text": "Explode a nearby Corpse when Firing Projectiles",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "projectile behaviour only explode [1]",
+      "values": []
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires Projectiles (0–10)% faster",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Fires Projectiles (0–10)% faster",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Fires Projectiles (0–10)% faster",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit, Chain, Ailment",
     "DropLevel": "12",
+    "BaseType": "Arc",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Trappable, Totemable, Mineable, Chains, Multicastable, Triggerable, Lightning, CanRapidFire",
@@ -415,5 +416,73 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "An arc of lightning reaches from the caster to a targeted enemy and chains to other enemies, but not immediately back. Each time the arc chains, it will also chain a secondary arc to another enemy that the main arc has not already hit, which cannot chain further.",
+  "explicitMods": [
+    {
+      "text": "Deals (6–198) to (32–1122) Lightning Damage",
+      "values": [
+        "(6–198)",
+        "(32–1122)"
+      ]
+    },
+    {
+      "text": "Chains +(4–7) Times",
+      "values": [
+        "+(4–7)"
+      ]
+    },
+    {
+      "text": "15% more Damage with Hits and Ailments for each remaining Chain",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Deals (6–198) to (32–1122) Lightning Damage",
+      "values": [
+        "(6–198)",
+        "(32–1122)"
+      ]
+    },
+    {
+      "text": "Chains +(4–7) Times",
+      "values": [
+        "+(4–7)"
+      ]
+    },
+    {
+      "text": "15% more Damage with Hits and Ailments for each remaining Chain",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "arc chain distance [35]",
+      "values": []
+    },
+    {
+      "text": "arc enhanced behaviour [1]",
+      "values": []
+    },
+    {
+      "text": "disable visual hit effect [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Chains +(0–1) Times",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Chains +(0–1) Times",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

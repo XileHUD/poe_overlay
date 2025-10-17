@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Spectral Helix of Trarthus",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Attack, RangedAttack, Projectile, ProjectilesFromUser, Trapped",
@@ -252,5 +253,139 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap which, once triggered, fires a spectral copy of your melee weapon. It spins around while flying in a large spiral, damaging enemies in its path, and bouncing if it collides with walls. If dual wielding, each Trap thrown will randomly use either the main hand or off hand weapon.",
+  "explicitMods": [
+    {
+      "text": "Throw up to 1 additional Trap if dual wielding",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Bounces up to 3 timesModifiers to number of Projectiles instead apply to the number of Bounces",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Spirals through 4.25 rotations",
+      "values": [
+        "4.25"
+      ]
+    },
+    {
+      "text": "25% reduced Trap Throwing Speed while wielding a Two Handed Weapon",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Throw up to 1 additional Trap if dual wielding",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Bounces up to 3 timesModifiers to number of Projectiles instead apply to the number of Bounces",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Spirals through 4.25 rotations",
+      "values": [
+        "4.25"
+      ]
+    },
+    {
+      "text": "25% reduced Trap Throwing Speed while wielding a Two Handed Weapon",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "Throw up to 1 additional Trap if dual wielding",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Trap lasts +4 seconds",
+      "values": [
+        "+4"
+      ]
+    },
+    {
+      "text": "Bounces up to 3 timesModifiers to number of Projectiles instead apply to the number of Bounces",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Traps are thrown randomly around targeted location",
+      "values": []
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "Spirals through 4.25 rotations",
+      "values": [
+        "4.25"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "ignores trap and mine cooldown limit [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

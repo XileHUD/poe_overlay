@@ -128,8 +128,8 @@ export function render(list: EmberItem[]): void {
       <input id='emberSearch' type='text' placeholder='Search allflames...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
       <button id='emberClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-    <div id='emberTagFiltersRow' style='display:flex; justify-content:center; width:100%;'>
-      <div id='emberTagFilters' style='display:inline-flex; flex-wrap:wrap; gap:4px; margin-bottom:4px;'></div>
+    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+      <div id='emberTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; justify-content:center; width:100%;'></div>
     </div>
     <div id='emberWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap:10px;'></div>`;
   
@@ -202,7 +202,7 @@ export function render(list: EmberItem[]): void {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.textContent = count ? `${tag} (${count})` : tag;
-      btn.style.cssText = `padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; ${chipCss(tag, active)}`;
+      btn.style.cssText = `padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; ${chipCss(tag, active)}`;
       btn.addEventListener('click', () => {
         if (active) state.selectedTags.delete(tag); else state.selectedTags.add(tag);
         apply(state.input?.value || '');
@@ -215,7 +215,7 @@ export function render(list: EmberItem[]): void {
       const reset = document.createElement('button');
       reset.type = 'button';
       reset.textContent = 'Reset filters';
-      reset.style.cssText = 'padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);';
+      reset.style.cssText = 'padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);';
       reset.addEventListener('click', () => {
         state.selectedTags.clear();
         apply(state.input?.value || '');

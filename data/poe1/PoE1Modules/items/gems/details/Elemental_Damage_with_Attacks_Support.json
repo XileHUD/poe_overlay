@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "18",
+    "BaseType": "Elemental Damage with Attacks Support",
     "Class": "Support Gems",
     "Icon": "W",
     "ItemType": "Metadata/Items/Gems/SupportGemWeaponElementalDamage",
@@ -374,5 +375,35 @@
   "description": "This support gem will multiply the elemental damage dealt attacks skills, including the damage added by auras and equipment. It also includes unarmed attacks as well as ignites and secondary damage caused by supported attacks.",
   "stats": [
     "This support gem will multiply the elemental damage dealt attacks skills, including the damage added by auras and equipment. It also includes unarmed attacks as well as ignites and secondary damage caused by supported attacks."
+  ],
+  "gemDescription": "Supports attack skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Attack Skills deal (20–34)% more Elemental Damage",
+      "values": [
+        "(20–34)"
+      ]
+    },
+    {
+      "text": "Supported Attack Skills deal (20–34)% more Elemental Damage",
+      "values": [
+        "(20–34)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Elemental Damage with Attack Skills",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Elemental Damage with Attack Skills",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

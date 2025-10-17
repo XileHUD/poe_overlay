@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Rain of Arrows of Artillery",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, MirageArcherCanUse, Area, ProjectileSpeed, ProjectileNumber, Totemable, Trappable, Mineable, Triggerable, Rain",
@@ -332,5 +333,79 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires multiple arrows into the air, to land in sequence after a delay, starting in front of you and proceeding in a line in the direction of the target. Each arrow deals damage in an area around it.",
+  "explicitMods": [
+    {
+      "text": "Fires (18–22) Arrows",
+      "values": [
+        "(18–22)"
+      ]
+    },
+    {
+      "text": "Fires (18–22) Arrows",
+      "values": [
+        "(18–22)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "cannot pierce [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "Fires (18–26) Arrows",
+      "values": [
+        "(18–26)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "cannot pierce [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–4) Arrows",
+      "values": [
+        "+(0–4)"
+      ]
+    },
+    {
+      "text": "Fires +(0–4) Arrows",
+      "values": [
+        "+(0–4)"
+      ]
+    },
+    {
+      "text": "Fires +(0–4) Arrows",
+      "values": [
+        "+(0–4)"
+      ]
+    }
+  ]
 }

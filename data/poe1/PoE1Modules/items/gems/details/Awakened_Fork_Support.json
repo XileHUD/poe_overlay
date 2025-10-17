@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Projectile, Fork",
     "DropLevel": "72",
+    "BaseType": "Awakened Fork Support",
     "Class": "Support Gems",
     "Icon": "Y",
     "ItemType": "Metadata/Items/Gems/SupportGemForkPlus",
@@ -174,5 +175,55 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports projectile skills, making their projectiles fork into two projectiles the first two times they hit an enemy and don't pierce it.",
+  "explicitMods": [
+    {
+      "text": "Projectiles from Supported Skills Fork",
+      "values": []
+    },
+    {
+      "text": "Projectiles from Supported Skills can Fork an additional Time",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (10–14)% more Projectile Damage",
+      "values": [
+        "(10–14)"
+      ]
+    },
+    {
+      "text": "Projectiles from Supported Skills Fork",
+      "values": []
+    },
+    {
+      "text": "Projectiles from Supported Skills can Fork an additional Time",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (10–14)% more Projectile Damage",
+      "values": [
+        "(10–14)"
+      ]
+    },
+    {
+      "text": "terrain arrow attachment chance reduction +% [150]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Summon Skeletons of Mages",
     "TargetTypes": "Ground,",
     "Type": "Spell, Minion, Duration, MinionsCanExplode, Trappable, Totemable, Mineable, Multicastable, Triggerable, CanRapidFire, CreatesMinion, Cooldown, RandomElement",
     "MinionType": "Damage, Spell, Projectile, ProjectilesFromUser, RandomElement, Fire, Cold, Lightning",
@@ -372,5 +373,99 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summon Skeleton Mage minions of random elemental types at the targeted location. They cast projectile spells based on their element, and die after a duration.",
+  "explicitMods": [
+    {
+      "text": "Maximum (5–7) Summoned Skeletons",
+      "values": [
+        "(5–7)"
+      ]
+    },
+    {
+      "text": "Base duration is 20 seconds",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Summons (2–3) Skeleton Mages",
+      "values": [
+        "(2–3)"
+      ]
+    },
+    {
+      "text": "Maximum (5–7) Summoned Skeletons",
+      "values": [
+        "(5–7)"
+      ]
+    },
+    {
+      "text": "Base duration is 20 seconds",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Summons (2–3) Skeleton Mages",
+      "values": [
+        "(2–3)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [10,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [2]",
+      "values": []
+    },
+    {
+      "text": "Maximum (5–9) Summoned Skeletons",
+      "values": [
+        "(5–9)"
+      ]
+    },
+    {
+      "text": "Base duration is 20 seconds",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Summons (2–5) Skeleton Mages",
+      "values": [
+        "(2–5)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [10,100]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [2]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–1) to Maximum Summoned Skeletons",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Maximum Summoned Skeletons",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Maximum Summoned Skeletons",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

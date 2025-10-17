@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Resistance",
     "DropLevel": "28",
+    "BaseType": "Blast Rain",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy,",
@@ -376,5 +377,75 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires arrows up in the air, to rain down in an area. Each arrow deals area damage around where it lands, and they will all overlap on the targeted location.",
+  "explicitMods": [
+    {
+      "text": "Fires 6 Arrows",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Penetrates (20–30)% Fire Resistance",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "Fires 6 Arrows",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Penetrates (20–30)% Fire Resistance",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "blast rain arrow delay ms [80]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–1) Arrow",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Fires +(0–1) Arrow",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

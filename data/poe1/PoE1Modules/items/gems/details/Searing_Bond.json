@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Totem, Modifiers",
     "DropLevel": "12",
+    "BaseType": "Searing Bond",
     "Class": "Skill Gems",
     "TargetTypes": "Any,",
     "Type": "Spell, DamageOverTime, Trappable, Mineable, TotemCastsAlone, CausesBurning, SummonsTotem, Triggerable, Fire, DegenOnlySpellDamage",
@@ -415,5 +416,83 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a totem that casts a beam of fire at you and each other totem you control, dealing burning damage to enemies caught in the beam. Enemies near either end of a beam also suffer burning damage.",
+  "explicitMods": [
+    {
+      "text": "+1 to maximum number of Summoned Totems",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Deals (32.2–3899.6) Base Fire Damage per second",
+      "values": [
+        "(32.2–3899.6)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "+1 to maximum number of Summoned Totems",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Deals (32.2–3899.6) Base Fire Damage per second",
+      "values": [
+        "(32.2–3899.6)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [100]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–2) to maximum number of Summoned Totems",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "+(0–2) to maximum number of Summoned Totems",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

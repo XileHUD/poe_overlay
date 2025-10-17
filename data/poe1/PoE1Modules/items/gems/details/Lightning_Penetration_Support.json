@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Resistance",
     "DropLevel": "31",
+    "BaseType": "Lightning Penetration Support",
     "Class": "Support Gems",
     "Icon": "V",
     "ItemType": "Metadata/Items/Gems/SupportGemLightningPenetration",
@@ -333,5 +334,35 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies, making those hits penetrate enemy lightning resistance.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills Penetrate (20–34)% Lightning Resistance",
+      "values": [
+        "(20–34)"
+      ]
+    },
+    {
+      "text": "Supported Skills Penetrate (20–34)% Lightning Resistance",
+      "values": [
+        "(20–34)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Lightning Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Lightning Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Hit, Chain",
     "DropLevel": "38",
+    "BaseType": "Chain Support",
     "Class": "Support Gems",
     "Icon": "c",
     "ItemType": "Metadata/Items/Gems/SupportGemChain",
@@ -333,5 +334,51 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports projectile skills, and any other skills that chain.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills Chain +2 times",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (11–30)% less Damage with Hits",
+      "values": [
+        "(11–30)"
+      ]
+    },
+    {
+      "text": "Supported Skills Chain +2 times",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (11–30)% less Damage with Hits",
+      "values": [
+        "(11–30)"
+      ]
+    },
+    {
+      "text": "terrain arrow attachment chance reduction +% [100]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Chaining range",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Chaining range",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

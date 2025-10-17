@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Ice Nova of Deep Freeze",
     "TargetTypes": "Any",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cold, CanRapidFire, AreaSpell, Nova",
     "ActiveSkillsCode": "ice_nova_alt_y"
@@ -411,5 +412,117 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "A circle of ice expands from the caster.",
+  "explicitMods": [
+    {
+      "text": "Deals (15–642) to (22–963) Cold Damage",
+      "values": [
+        "(15–642)",
+        "(22–963)"
+      ]
+    },
+    {
+      "text": "50% chance to Freeze enemies",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base radius is (2.8–3.2) metres",
+      "values": [
+        "(2.8–3.2)"
+      ]
+    },
+    {
+      "text": "Freeze Enemies as though dealing (300–490)% more Damage",
+      "values": [
+        "(300–490)"
+      ]
+    },
+    {
+      "text": "Deals (15–642) to (22–963) Cold Damage",
+      "values": [
+        "(15–642)",
+        "(22–963)"
+      ]
+    },
+    {
+      "text": "50% chance to Freeze enemies",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base radius is (2.8–3.2) metres",
+      "values": [
+        "(2.8–3.2)"
+      ]
+    },
+    {
+      "text": "Freeze Enemies as though dealing (300–490)% more Damage",
+      "values": [
+        "(300–490)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (15–3178) to (22–4767) Cold Damage",
+      "values": [
+        "(15–3178)",
+        "(22–4767)"
+      ]
+    },
+    {
+      "text": "50% chance to Freeze enemies",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base radius is (2.8–3.6) metres",
+      "values": [
+        "(2.8–3.6)"
+      ]
+    },
+    {
+      "text": "Freeze Enemies as though dealing (300–640)% more Damage",
+      "values": [
+        "(300–640)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Freeze Enemies as though dealing (0–80)% more Damage",
+      "values": [
+        "(0–80)"
+      ]
+    },
+    {
+      "text": "Freeze Enemies as though dealing (0–80)% more Damage",
+      "values": [
+        "(0–80)"
+      ]
+    },
+    {
+      "text": "Freeze Enemies as though dealing (0–80)% more Damage",
+      "values": [
+        "(0–80)"
+      ]
+    }
+  ]
 }

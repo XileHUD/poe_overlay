@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Ailment",
     "DropLevel": "28",
+    "BaseType": "Discharge",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Damage, Area, Multicastable, Triggerable, Fire, Cold, Lightning, CanRapidFire, AreaSpell, Nova, Cooldown",
@@ -455,5 +456,137 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Discharge all the character's charges to deal elemental damage to all nearby monsters.",
+  "explicitMods": [
+    {
+      "text": "Deals (69–639) to (206–1918) base Lightning Damage per Power Charge removed",
+      "values": [
+        "(69–639)",
+        "(206–1918)"
+      ]
+    },
+    {
+      "text": "Deals (110–1023) to (165–1535) base Fire Damage per Endurance Charge removed",
+      "values": [
+        "(110–1023)",
+        "(165–1535)"
+      ]
+    },
+    {
+      "text": "Deals (110–1023) to (165–1535) base Cold Damage per Frenzy Charge removed",
+      "values": [
+        "(110–1023)",
+        "(165–1535)"
+      ]
+    },
+    {
+      "text": "60% less Damage with Ailments",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Base radius is 3 metres",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "15% more Area of Effect per Charge removed",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Deals (69–639) to (206–1918) base Lightning Damage per Power Charge removed",
+      "values": [
+        "(69–639)",
+        "(206–1918)"
+      ]
+    },
+    {
+      "text": "Deals (110–1023) to (165–1535) base Fire Damage per Endurance Charge removed",
+      "values": [
+        "(110–1023)",
+        "(165–1535)"
+      ]
+    },
+    {
+      "text": "Deals (110–1023) to (165–1535) base Cold Damage per Frenzy Charge removed",
+      "values": [
+        "(110–1023)",
+        "(165–1535)"
+      ]
+    },
+    {
+      "text": "60% less Damage with Ailments",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Base radius is 3 metres",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "15% more Area of Effect per Charge removed",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "(7–10)% increased Elemental Damage",
+      "values": [
+        "(7–10)"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Discharge has 60% less Area of Effect",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Discharge Cooldown is 250 ms",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Discharge deals 60% less Damage",
+      "values": [
+        "60"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–10)% chance to deal Damage without removing Charges",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% chance to deal Damage without removing Charges",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

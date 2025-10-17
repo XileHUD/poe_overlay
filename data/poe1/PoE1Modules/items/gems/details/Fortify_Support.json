@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Melee, Fortify, Ailment",
     "DropLevel": "31",
+    "BaseType": "Fortify Support",
     "Class": "Support Gems",
     "Icon": "O",
     "ItemType": "Metadata/Items/Gems/SupportGemFortify",
@@ -373,5 +374,104 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports melee attack skills that are not triggered.",
+  "explicitMods": [
+    {
+      "text": "Melee Hits from Supported Skills Fortify",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (10–19)% more Damage with Ailments caused by Melee Hits",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–19)% more Melee Damage",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Melee Hits from Supported Skills Fortify",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (10–19)% more Damage with Ailments caused by Melee Hits",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–19)% more Melee Damage",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 12 Fortify",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "15% Chance to Block Attack Damage",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "(100–120)% increased Physical Damage",
+      "values": [
+        "(100–120)"
+      ]
+    },
+    {
+      "text": "+110 to Evasion Rating",
+      "values": [
+        "+110"
+      ]
+    },
+    {
+      "text": "+35 to maximum Energy Shield",
+      "values": [
+        "+35"
+      ]
+    },
+    {
+      "text": "+(30–50) to maximum Life",
+      "values": [
+        "+(30–50)"
+      ]
+    },
+    {
+      "text": "Reflects (71–90) Physical Damage to Melee Attackers",
+      "values": [
+        "(71–90)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Fortifying grants an amount of Fortification based on the Damage of the Hit)",
+    "(Take 1% less Damage from Hits per Fortification. Maximum 20 Fortification. Fortification lasts 6 seconds)",
+    "(Fortifying grants an amount of Fortification based on the Damage of the Hit)",
+    "(Take 1% less Damage from Hits per Fortification. Maximum 20 Fortification. Fortification lasts 6 seconds)",
+    "(Fortifying grants an amount of Fortification based on the Damage of the Hit)",
+    "(Take 1% less Damage from Hits per Fortification. Maximum 20 Fortification. Fortification lasts 6 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–20)% increased Fortification Duration",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–20)% increased Fortification Duration",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

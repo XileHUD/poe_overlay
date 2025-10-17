@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Hex",
     "DropLevel": "38",
+    "BaseType": "Hex Bloom Support",
     "Class": "Support Gems",
     "Icon": "*",
     "ItemType": "Metadata/Items/Gems/SupportGemHexBloom",
@@ -333,5 +334,47 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports hex curse skills. Hexes from auras or cursed ground cannot transfer.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (0–28)% increased Hex Transfer range",
+      "values": [
+        "(0–28)"
+      ]
+    },
+    {
+      "text": "Hexes from Supported Skills Transfer to all Enemies within 3 metres when Hexed Enemy dies",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (0–28)% increased Hex Transfer range",
+      "values": [
+        "(0–28)"
+      ]
+    },
+    {
+      "text": "Hexes from Supported Skills Transfer to all Enemies within 3 metres when Hexed Enemy dies",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Hexes from Auras or Cursed Ground cannot be Transferred)",
+    "(Hexes from Auras or Cursed Ground cannot be Transferred)",
+    "(Hexes from Auras or Cursed Ground cannot be Transferred)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–4)% increased Hex Transfer range",
+      "values": [
+        "(0–4)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–4)% increased Hex Transfer range",
+      "values": [
+        "(0–4)"
+      ]
+    }
+  ]
 }

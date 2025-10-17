@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Raise Spectre of Transience",
     "TargetTypes": "Corpse,",
     "Type": "Spell, Minion, MinionsCanExplode, Trappable, Totemable, Mineable, Multicastable, Triggerable, CanRapidFire, CreatesMinion, Duration",
     "MinionType": "Attack, Melee, MeleeSingleTarget, Multistrikeable, Spell, Damage, Area, Projectile, Chains, Duration, SummonsTotem, Trapped, RemoteMined, DamageOverTime, Channel, RangedAttack, ProjectilesFromUser, Warcry",
@@ -332,5 +333,163 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Raises a spectral version of a defeated foe as a temporary minion to fight for you in battle for a duration.",
+  "explicitMods": [
+    {
+      "text": "Raised Spectres have a Base Duration of 30 secondsSpectres do not travel between Areas",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Maximum (4–6) Raised Spectres",
+      "values": [
+        "(4–6)"
+      ]
+    },
+    {
+      "text": "Minions have +30% to all Elemental Resistances",
+      "values": [
+        "+30"
+      ]
+    },
+    {
+      "text": "55% more Minion Movement Speed",
+      "values": [
+        "55"
+      ]
+    },
+    {
+      "text": "Minion Movement Speed is Capped",
+      "values": []
+    },
+    {
+      "text": "Minions have (800–1180)% increased Critical Strike Chance",
+      "values": [
+        "(800–1180)"
+      ]
+    },
+    {
+      "text": "Raised Spectres are Level (28–70)",
+      "values": [
+        "(28–70)"
+      ]
+    },
+    {
+      "text": "Minions have (105–776) additional Accuracy Rating",
+      "values": [
+        "(105–776)"
+      ]
+    },
+    {
+      "text": "Raised Spectres have a Base Duration of 30 secondsSpectres do not travel between Areas",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Maximum (4–6) Raised Spectres",
+      "values": [
+        "(4–6)"
+      ]
+    },
+    {
+      "text": "Minions have +30% to all Elemental Resistances",
+      "values": [
+        "+30"
+      ]
+    },
+    {
+      "text": "55% more Minion Movement Speed",
+      "values": [
+        "55"
+      ]
+    },
+    {
+      "text": "Minion Movement Speed is Capped",
+      "values": []
+    },
+    {
+      "text": "Minions have (800–1180)% increased Critical Strike Chance",
+      "values": [
+        "(800–1180)"
+      ]
+    },
+    {
+      "text": "Raised Spectres are Level (28–70)",
+      "values": [
+        "(28–70)"
+      ]
+    },
+    {
+      "text": "Minions have (105–776) additional Accuracy Rating",
+      "values": [
+        "(105–776)"
+      ]
+    },
+    {
+      "text": "cannot use spectre corpses [1]",
+      "values": []
+    },
+    {
+      "text": "Raised Spectres have a Base Duration of 30 secondsSpectres do not travel between Areas",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Maximum (4–7) Raised Spectres",
+      "values": [
+        "(4–7)"
+      ]
+    },
+    {
+      "text": "Minions have +30% to all Elemental Resistances",
+      "values": [
+        "+30"
+      ]
+    },
+    {
+      "text": "55% more Minion Movement Speed",
+      "values": [
+        "55"
+      ]
+    },
+    {
+      "text": "Minion Movement Speed is Capped",
+      "values": []
+    },
+    {
+      "text": "Minions have 1000% increased Critical Strike Chance",
+      "values": [
+        "1000"
+      ]
+    },
+    {
+      "text": "Raised Spectres are Level (28–91)",
+      "values": [
+        "(28–91)"
+      ]
+    },
+    {
+      "text": "cannot use spectre corpses [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Maximum (0–1) Raised Spectre",
+      "values": [
+        "(0–1)"
+      ]
+    },
+    {
+      "text": "Maximum (0–1) Raised Spectre",
+      "values": [
+        "(0–1)"
+      ]
+    }
+  ]
 }

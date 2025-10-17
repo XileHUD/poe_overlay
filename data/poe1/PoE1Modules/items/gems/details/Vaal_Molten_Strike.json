@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Molten Strike",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Projectile, Area, Melee, MeleeSingleTarget, Fire, RangedAttack, ProjectilesNotFromUser, ThresholdJewelChaining, Multistrikeable",
@@ -252,5 +253,125 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Infuses your melee weapon with molten energies to attack with physical and fire damage. This attack causes balls of molten magma to launch forth causing area attack damage to enemies where they land.",
+  "explicitMods": [
+    {
+      "text": "Fires 9 Projectiles",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Chains +8 Times",
+      "values": [
+        "+8"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "+0.4 metres to radius",
+      "values": [
+        "+0.4"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Projectiles can Chain when impacting the groundProjectiles do not change direction when Chaining",
+      "values": []
+    },
+    {
+      "text": "Fires 9 Projectiles",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Chains +8 Times",
+      "values": [
+        "+8"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "+0.4 metres to radius",
+      "values": [
+        "+0.4"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Projectiles can Chain when impacting the groundProjectiles do not change direction when Chaining",
+      "values": []
+    },
+    {
+      "text": "active skill projectile speed +% variation final [20]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "60% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Fires +4 Projectiles",
+      "values": [
+        "+4"
+      ]
+    },
+    {
+      "text": "Projectiles deal 60% less Damage with Hits and Ailments",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Projectiles deal (0–10)% more Damage with Hits and Ailments",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Projectiles deal (0–10)% more Damage with Hits and Ailments",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

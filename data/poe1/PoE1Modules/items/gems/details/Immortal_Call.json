@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Cooldown, Duration, Damage taken, Buff",
     "DropLevel": "34",
+    "BaseType": "Immortal Call",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, Duration, Totemable, Triggerable, Instant, Guard, Cooldown",
@@ -415,5 +416,123 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "20% increased Buff Duration per Endurance Charge removed",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "This Skill's Cooldown does not recover during its effect",
+      "values": []
+    },
+    {
+      "text": "(25–34)% less Elemental Damage taken",
+      "values": [
+        "(25–34)"
+      ]
+    },
+    {
+      "text": "(25–35)% less Physical Damage taken",
+      "values": [
+        "(25–35)"
+      ]
+    },
+    {
+      "text": "15% less Physical Damage taken per Endurance Charge removed",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "20% increased Buff Duration per Endurance Charge removed",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "This Skill's Cooldown does not recover during its effect",
+      "values": []
+    },
+    {
+      "text": "(25–34)% less Elemental Damage taken",
+      "values": [
+        "(25–34)"
+      ]
+    },
+    {
+      "text": "(25–35)% less Physical Damage taken",
+      "values": [
+        "(25–35)"
+      ]
+    },
+    {
+      "text": "15% less Physical Damage taken per Endurance Charge removed",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "physical_immunity",
+      "values": []
+    },
+    {
+      "text": "mortal_call_elemental_damage_taken_+%_final",
+      "values": []
+    },
+    {
+      "text": "mortal_call_physical_damage_taken_+%_final",
+      "values": []
+    },
+    {
+      "text": "mortal_call_physical_damage_taken_per_endurance_charge_consumed_final_permyriad",
+      "values": []
+    },
+    {
+      "text": "mortal_call_cooldown_does_not_tick",
+      "values": []
+    },
+    {
+      "text": "affected_by_guard_skill",
+      "values": []
+    },
+    {
+      "text": "immortal_call_elemental_damage_taken_+%_final_per_endurance_charge_consumed_permyriad",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

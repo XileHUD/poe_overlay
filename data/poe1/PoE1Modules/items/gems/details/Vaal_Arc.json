@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Arc",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Trappable, Totemable, Mineable, Chains, Multicastable, Triggerable, Lightning, CanRapidFire",
     "ActiveSkillsCode": "arc"
@@ -371,5 +372,163 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "A shocking arc of lightning reaches from the caster to a targeted enemy and chains to other enemies. Each time the arc chains from an enemy, it will do so simultaneously to two further enemies, but never to enemies that have already been hit by any of these chains. Also grants a buff making your Arc damage lucky for a short duration.",
+  "explicitMods": [
+    {
+      "text": "Deals (38–924) to (64–1539) Lightning Damage",
+      "values": [
+        "(38–924)",
+        "(64–1539)"
+      ]
+    },
+    {
+      "text": "100% increased Duration of Lightning Ailments",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Chains +(5–9) Times",
+      "values": [
+        "+(5–9)"
+      ]
+    },
+    {
+      "text": "100% chance to Shock enemies",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "15% more Damage with Hits and Ailments for each remaining Chain",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "100% increased Effect of Lightning Ailments",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Deals (38–924) to (64–1539) Lightning Damage",
+      "values": [
+        "(38–924)",
+        "(64–1539)"
+      ]
+    },
+    {
+      "text": "100% increased Duration of Lightning Ailments",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Chains +(5–9) Times",
+      "values": [
+        "+(5–9)"
+      ]
+    },
+    {
+      "text": "100% chance to Shock enemies",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "15% more Damage with Hits and Ailments for each remaining Chain",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "100% increased Effect of Lightning Ailments",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "arc chain distance [50]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "disable visual hit effect [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (6–871) to (32–4934) Lightning Damage",
+      "values": [
+        "(6–871)",
+        "(32–4934)"
+      ]
+    },
+    {
+      "text": "Chains +(4–11) Times",
+      "values": [
+        "+(4–11)"
+      ]
+    },
+    {
+      "text": "15% more Damage with Hits and Ailments for each remaining Chain",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "arc chain distance [35]",
+      "values": []
+    },
+    {
+      "text": "arc enhanced behaviour [1]",
+      "values": []
+    },
+    {
+      "text": "disable visual hit effect [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Lightning Ailments are Shocked and Sapped)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Lightning Ailments are Shocked and Sapped)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Lightning Ailments are Shocked and Sapped)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Chains +(0–1) Times",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Chains +(0–1) Times",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

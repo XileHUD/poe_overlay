@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Quality",
     "DropLevel": "72",
+    "BaseType": "Awakened Enhance Support",
     "Class": "Support Gems",
     "Icon": "+",
     "IsExceptional": "This support gem only supports active skills that come from gem items",
@@ -173,5 +174,35 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill gem. Once this gem reaches level 2 or above, will raise the quality of supported gems. Cannot support skills that don't come from gems.",
+  "explicitMods": [
+    {
+      "text": "+(0–24)% to Quality of Supported Skill Gems",
+      "values": [
+        "+(0–24)"
+      ]
+    },
+    {
+      "text": "+(0–24)% to Quality of Supported Skill Gems",
+      "values": [
+        "+(0–24)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "This Gem gains (0–100)% increased Experience",
+      "values": [
+        "(0–100)"
+      ]
+    },
+    {
+      "text": "This Gem gains (0–100)% increased Experience",
+      "values": [
+        "(0–100)"
+      ]
+    }
+  ]
 }

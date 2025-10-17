@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Hit, Channelling",
     "DropLevel": "4",
+    "BaseType": "Infused Channelling Support",
     "Class": "Support Gems",
     "Icon": "b",
     "ItemType": "Metadata/Items/Gems/SupportGemStormBarrier",
@@ -373,5 +374,47 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any channelling skill, protecting you from damage while you channel it. Cannot modify the skills of minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (20–29)% more Damage",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "While Channelling a Supported Skill, take 12% less Damage from Hits",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (20–29)% more Damage",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "While Channelling a Supported Skill, take 12% less Damage from Hits",
+      "values": [
+        "12"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "While Channelling a Supported Skill, take (0–2)% less Damage from Hits",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "While Channelling a Supported Skill, take (0–2)% less Damage from Hits",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

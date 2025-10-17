@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Mine",
+    "BaseType": "Stormblast Mine",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, RemoteMined, Lightning, AreaSpell, HasReservation, Aura, AuraAffectsEnemies, Nova, AuraNotOnCaster",
@@ -454,5 +455,97 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a mine that deals damage in an area when detonated.",
+  "explicitMods": [
+    {
+      "text": "Deals (3–367) to (8–1102) Lightning Damage",
+      "values": [
+        "(3–367)",
+        "(8–1102)"
+      ]
+    },
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base Mine Detonation Time is 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "+(0–0.5) metres to radius",
+      "values": [
+        "+(0–0.5)"
+      ]
+    },
+    {
+      "text": "Each Mine applies 3% increased Damage Taken to Enemies near it, upto a maximum of 150%",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Deals (3–367) to (8–1102) Lightning Damage",
+      "values": [
+        "(3–367)",
+        "(8–1102)"
+      ]
+    },
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base Mine Detonation Time is 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "+(0–0.5) metres to radius",
+      "values": [
+        "+(0–0.5)"
+      ]
+    },
+    {
+      "text": "Each Mine applies 3% increased Damage Taken to Enemies near it, upto a maximum of 150%",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "base skill is mined [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Each mine applies +(0–1)% increased Damage Taken to Enemies near it, upto a maximum of 150%",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Each mine applies +(0–1)% increased Damage Taken to Enemies near it, upto a maximum of 150%",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

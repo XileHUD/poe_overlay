@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Hit, Kill, Weapon, Melee, Duration, Ailment, Modifiers",
     "DropLevel": "38",
+    "BaseType": "Behead Support",
     "Class": "Support Gems",
     "Icon": "H",
     "ItemType": "Metadata/Items/Gems/SupportGemBehead",
@@ -373,5 +374,75 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports strike skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have +(0.2–0.3) metres to Melee Strike Range",
+      "values": [
+        "+(0.2–0.3)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (30–49)% more Damage with Hits and Ailments against Enemies on Low Life",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Killing Blows from Supported Strike Skills with Melee Weapons against Rare Monsters grant one of their Modifiers for 20 seconds",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "20% chance to refresh Duration of granted Modifier by up to 5 seconds when you Hit a Rare or Unique Enemy with Supported Skills",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Supported Skills have +(0.2–0.3) metres to Melee Strike Range",
+      "values": [
+        "+(0.2–0.3)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (30–49)% more Damage with Hits and Ailments against Enemies on Low Life",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Killing Blows from Supported Strike Skills with Melee Weapons against Rare Monsters grant one of their Modifiers for 20 seconds",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "20% chance to refresh Duration of granted Modifier by up to 5 seconds when you Hit a Rare or Unique Enemy with Supported Skills",
+      "values": [
+        "20"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–20)% increased Damage with Hits against Enemies that are on Low Life",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–20)% increased Damage with Hits against Enemies that are on Low Life",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Lightning Conduit of the Heavens",
     "TargetTypes": "Ground,",
     "Type": "Spell, Damage, Area, Totemable, Trappable, Mineable, Triggerable, Multicastable, Lightning, AreaSpell, CanRapidFire",
     "ActiveSkillsCode": "lightning_conduit_alt_x"
@@ -411,5 +412,104 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Lightning strikes a number of enemies around a targeted location. Cannot be supported by Spell Cascade.",
+  "explicitMods": [
+    {
+      "text": "Deals (63–749) to (189–2248) Lightning Damage",
+      "values": [
+        "(63–749)",
+        "(189–2248)"
+      ]
+    },
+    {
+      "text": "Base radius is 4 metres",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Shocks Enemies as though dealing (20–39)% more Damage",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "Hits up to (6–12) Enemies",
+      "values": [
+        "(6–12)"
+      ]
+    },
+    {
+      "text": "Deals (63–749) to (189–2248) Lightning Damage",
+      "values": [
+        "(63–749)",
+        "(189–2248)"
+      ]
+    },
+    {
+      "text": "Base radius is 4 metres",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Shocks Enemies as though dealing (20–39)% more Damage",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "Hits up to (6–12) Enemies",
+      "values": [
+        "(6–12)"
+      ]
+    },
+    {
+      "text": "Deals (63–3543) to (189–10628) Lightning Damage",
+      "values": [
+        "(63–3543)",
+        "(189–10628)"
+      ]
+    },
+    {
+      "text": "Base radius is 4 metres",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Shocks Enemies as though dealing (20–59)% more Damage",
+      "values": [
+        "(20–59)"
+      ]
+    },
+    {
+      "text": "Hits up to (6–17) Enemies",
+      "values": [
+        "(6–17)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Hits up to (0–4) Enemies",
+      "values": [
+        "(0–4)"
+      ]
+    },
+    {
+      "text": "Hits up to (0–4) Enemies",
+      "values": [
+        "(0–4)"
+      ]
+    },
+    {
+      "text": "Hits up to (0–4) Enemies",
+      "values": [
+        "(0–4)"
+      ]
+    }
+  ]
 }

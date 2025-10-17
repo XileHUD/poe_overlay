@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit, Projectile, Ailment",
     "DropLevel": "12",
+    "BaseType": "Lightning Strike",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
@@ -378,5 +379,75 @@
   "description": "This means that increasing the melee portion of the hit through melee-exclusive means such as Melee Physical Damage Support will not actually increase the projectile damage; the projectile damage is not \"converted melee damage\", a common misconception. Do not be deceived by the tooltip DPS of this skill which will change if you apply a melee-exclusive modifier; the tooltip DPS only shows the DPS of the melee portion of the attack and things that modify that, but not the projectile part of the attack.",
   "stats": [
     "This means that increasing the melee portion of the hit through melee-exclusive means such as Melee Physical Damage Support will not actually increase the projectile damage; the projectile damage is not \"converted melee damage\", a common misconception. Do not be deceived by the tooltip DPS of this skill which will change if you apply a melee-exclusive modifier; the tooltip DPS only shows the DPS of the melee portion of the attack and things that modify that, but not the projectile part of the attack."
+  ],
+  "gemDescription": "Infuses your melee weapon with electrical energies as you swing. In addition to converting some of your physical damage to lightning damage, the stored energy is released from the weapon as projectiles as you strike, flying out to hit farther-away enemies. The projectiles cannot miss if the melee attack hit a target.",
+  "explicitMods": [
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Projectiles deal 50% less Damage with Hits and Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Projectiles deal 50% less Damage with Hits and Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "active skill projectile speed +% variation final [30]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "total projectile spread angle override [70]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–1) Projectile",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Fires +(0–1) Projectile",
+      "values": [
+        "+(0–1)"
+      ]
+    }
   ]
 }

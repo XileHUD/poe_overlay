@@ -113,7 +113,9 @@ export function render(entries: GlossEntry[]): void {
     <input id='glossSearch' type='text' placeholder='Search keywords...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
     <button id='glossClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
   </div>
-  <div id='glossTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:0 0 8px; justify-content:center; width:100%;'></div>
+  <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+    <div id='glossTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
+  </div>
   <div id='glossList' style='display:flex; flex-direction:column; gap:8px;'></div>`;
   const panelEl = ensurePanel();
   panelEl.innerHTML = `<div class='page-inner'>${controls}</div>`;
@@ -131,11 +133,11 @@ export function render(entries: GlossEntry[]): void {
       const count = list.filter(e=> (e.__tags||[]).includes(tag)).length;
       const btn=document.createElement('button');
       btn.textContent = count ? `${tag} (${count})` : tag;
-      (btn as HTMLElement).style.cssText = `cursor:pointer; user-select:none; padding:3px 8px; font-size:11px; border-radius:999px; ${chipCss(tag, active)}`;
+      (btn as HTMLElement).style.cssText = `cursor:pointer; user-select:none; padding:3px 8px; font-size:11px; border-radius:4px; ${chipCss(tag, active)}`;
       btn.addEventListener('click',()=>{ active?selected.delete(tag):selected.add(tag); build(input.value||''); renderTagFilters(); });
       tagWrap.appendChild(btn);
     });
-    if(selected.size){ const reset=document.createElement('button'); reset.textContent='Reset'; (reset as HTMLElement).style.cssText='cursor:pointer; user-select:none; padding:3px 8px; font-size:11px; border:1px solid var(--accent-red); border-radius:999px; background:var(--accent-red); color:#fff'; reset.addEventListener('click',()=>{ selected.clear(); build(input.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); }
+    if(selected.size){ const reset=document.createElement('button'); reset.textContent='Reset'; (reset as HTMLElement).style.cssText='cursor:pointer; user-select:none; padding:3px 8px; font-size:11px; border:1px solid var(--accent-red); border-radius:4px; background:var(--accent-red); color:#fff'; reset.addEventListener('click',()=>{ selected.clear(); build(input.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); }
   }
 
   const highlight=(s: string)=> s

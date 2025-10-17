@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Skeleton, Chain, Ailment",
     "DropLevel": "28",
+    "BaseType": "Dark Pact",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Self,",
     "Type": "Spell, Damage, Mineable, Totemable, Area, Trappable, Triggerable, Multicastable, Chains, Chaos, Minion, CanRapidFire, AreaSpell, Nova",
@@ -455,5 +456,89 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "This spell removes some life from one of your Skeleton minions near you or the targeted location to deal chaos damage in an area around it. This effect will chain to your other nearby skeletons. If you have no skeletons near you or the targeted location, it will sacrifice your own life to deal damage instead.",
+  "explicitMods": [
+    {
+      "text": "Deals (24–241) to (36–362) Chaos Damage",
+      "values": [
+        "(24–241)",
+        "(36–362)"
+      ]
+    },
+    {
+      "text": "Chains +2 Times",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Sacrifices 8% of Skeleton's Life to deal that much Chaos Damage",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Uses your Life if no Skeletons in range",
+      "values": []
+    },
+    {
+      "text": "(56–136)% more Damage with Hits and Ailments if using your Life",
+      "values": [
+        "(56–136)"
+      ]
+    },
+    {
+      "text": "Deals (24–241) to (36–362) Chaos Damage",
+      "values": [
+        "(24–241)",
+        "(36–362)"
+      ]
+    },
+    {
+      "text": "Chains +2 Times",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Sacrifices 8% of Skeleton's Life to deal that much Chaos Damage",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Uses your Life if no Skeletons in range",
+      "values": []
+    },
+    {
+      "text": "(56–136)% more Damage with Hits and Ailments if using your Life",
+      "values": [
+        "(56–136)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Sacrifices +(0–2)% of Skeleton's Life to deal that much Chaos Damage",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Sacrifices +(0–2)% of Skeleton's Life to deal that much Chaos Damage",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

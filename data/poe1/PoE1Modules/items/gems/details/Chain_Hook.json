@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit, Rage",
     "DropLevel": "12",
+    "BaseType": "Chain Hook",
     "Class": "Skill Gems",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Sceptres",
     "TargetTypes": "Enemy, Ground",
@@ -336,5 +337,58 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "When used at range, throws out a chain, pulling you to the enemy hit dealing damage in an area behind them. When close to the enemy, just causes the area damage directly. Requires a One Handed Mace, Sceptre, Sword or Axe.",
+  "explicitMods": [
+    {
+      "text": "+0.1 metres to Radius per 5 Rage",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Gain 2 Rage on Attack Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "+0.1 metres to Radius per 5 Rage",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Gain 2 Rage on Attack Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
+    "(Only one Hit every 0.5 seconds can cause you to gain Rage)",
+    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
+    "(Only one Hit every 0.5 seconds can cause you to gain Rage)",
+    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
+    "(Only one Hit every 0.5 seconds can cause you to gain Rage)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Gain (0–1) Rage on Attack Hit",
+      "values": [
+        "(0–1)"
+      ]
+    },
+    {
+      "text": "Gain (0–1) Rage on Attack Hit",
+      "values": [
+        "(0–1)"
+      ]
+    }
+  ]
 }

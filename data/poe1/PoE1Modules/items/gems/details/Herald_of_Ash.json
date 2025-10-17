@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Burning, Buff",
     "DropLevel": "16",
+    "BaseType": "Herald of Ash",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, HasReservation, CausesBurning, Area, DamageOverTime, Fire, TotemCastsAlone, Herald, Duration, Instant, AreaSpell, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -415,5 +416,140 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Grants a buff providing fire damage based on your physical damage. While you have this buff, if you kill an enemy, other enemies near them will be burned based on the overkill damage. The burn inflicted by this skill can only be affected by modifiers to damage over time (burning damage is damage over time).",
+  "explicitMods": [
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base Burning Damage is 25% of Overkill Damage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(0–38)% more Burning Damage",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Buff grants (15–20)% of your Physical Damage as Extra Fire Damage",
+      "values": [
+        "(15–20)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base Burning Damage is 25% of Overkill Damage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(0–38)% more Burning Damage",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Buff grants (15–20)% of your Physical Damage as Extra Fire Damage",
+      "values": [
+        "(15–20)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Deals 121.7 to 182.6 Fire Damage",
+      "values": [
+        "121.7",
+        "182.6"
+      ]
+    },
+    {
+      "text": "25% chance to Ignite enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "One impact every 0.13 seconds",
+      "values": [
+        "0.13"
+      ]
+    },
+    {
+      "text": "Base radius is 1 metre",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "firestorm base area of effect +% [-49]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "spell maximum action distance +% [-50]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Cursed enemies have -30% to Fire Resistance",
+      "values": [
+        "-30"
+      ]
+    },
+    {
+      "text": "Hits against Cursed Enemies have +25% chance to Ignite",
+      "values": [
+        "+25"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [9]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base burning damage is an additional (0–5)% of Overkill Damage",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Base burning damage is an additional (0–5)% of Overkill Damage",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

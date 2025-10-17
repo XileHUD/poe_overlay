@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Kill",
     "DropLevel": "18",
+    "BaseType": "Culling Strike Support",
     "Class": "Support Gems",
     "Icon": "X",
     "ItemType": "Metadata/Items/Gems/SupportGemCullingStrike",
@@ -333,5 +334,43 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies. If enemies are left below 10% of maximum life after being hit by these skills, they will be killed.",
+  "explicitMods": [
+    {
+      "text": "Kill Enemies that have 10% Life or lower when Hit by Supported Skills",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (0–38)% increased Damage",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Kill Enemies that have 10% Life or lower when Hit by Supported Skills",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (0–38)% increased Damage",
+      "values": [
+        "(0–38)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Recover (0–2)% of Life when Supported Skills Cull an Enemy",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Recover (0–2)% of Life when Supported Skills Cull an Enemy",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

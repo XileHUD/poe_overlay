@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Ignore, Stun, Channelling, Trigger",
     "DropLevel": "72",
+    "BaseType": "Awakened Cast While Channelling Support",
     "Class": "Support Gems",
     "Icon": "W",
     "ItemType": "Metadata/Items/Gems/SupportGemCastWhileChannellingPlus",
@@ -214,5 +215,75 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Must support both a channelling skill and a non-channelling spell skill to work. The channelling skill will trigger a spell periodically while channelling. Cannot support skills used by totems, traps, or mines. Vaal skills and skills with a reservation cannot be triggered.",
+  "explicitMods": [
+    {
+      "text": "Trigger a Supported Spell every (0.3–0.34) seconds while Channelling Supported Skills",
+      "values": [
+        "(0.3–0.34)"
+      ]
+    },
+    {
+      "text": "Ignore Stuns while Using Supported Skills",
+      "values": []
+    },
+    {
+      "text": "Supported Triggered Spells deal 30% less Damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Trigger a Supported Spell every (0.3–0.34) seconds while Channelling Supported Skills",
+      "values": [
+        "(0.3–0.34)"
+      ]
+    },
+    {
+      "text": "Ignore Stuns while Using Supported Skills",
+      "values": []
+    },
+    {
+      "text": "Supported Triggered Spells deal 30% less Damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "cast spell while linked skill channelling [1]",
+      "values": []
+    },
+    {
+      "text": "spell uncastable if triggerable [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Channelling Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Triggered Spells deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Channelling Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Triggered Spells deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

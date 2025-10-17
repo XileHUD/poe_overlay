@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Reave",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, Rune Daggers",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Area, Multistrikeable, Melee",
@@ -332,5 +333,123 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Repeatedly attacks a large area in different directions. Each Vaal Reave that hits an enemy grants stages, which you will begin to lose after a short period without hitting anything. Only works with Daggers, Claws, and One-Handed Swords.",
+  "explicitMods": [
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "50% more Area of Effect for each stage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "+4 to maximum Stages",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "50% more Area of Effect for each stage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "+4 to maximum Stages",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "base attack repeat count [7]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "reave additional starting stacks [4]",
+      "values": []
+    },
+    {
+      "text": "reave rotation on repeat [135]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "4 Maximum Stages",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "+(0–0.3) metres to radius",
+      "values": [
+        "+(0–0.3)"
+      ]
+    },
+    {
+      "text": "50% more Area of Effect for each stage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–2) to maximum Stages",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "+(0–2) to maximum Stages",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "+(0–2) to maximum Stages",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

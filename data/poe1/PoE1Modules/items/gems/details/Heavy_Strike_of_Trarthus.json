@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Heavy Strike of Trarthus",
     "Weapon": "Staves, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, MeleeSingleTarget, Multistrikeable, Melee",
@@ -252,5 +253,59 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Attacks enemies with a forceful blow. Requires a Staff.",
+  "explicitMods": [
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "2% chance to deal Double Damage per 10 Intelligence",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "2% chance to deal Double Damage per 10 Intelligence",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at +150% of their value",
+      "values": [
+        "+150"
+      ]
+    },
+    {
+      "text": "2% chance to deal Double Damage per 10 Intelligence",
+      "values": [
+        "2"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at +(0–20)% of their value",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at +(0–20)% of their value",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

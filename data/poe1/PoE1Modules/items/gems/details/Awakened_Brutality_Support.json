@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Hit",
     "DropLevel": "72",
+    "BaseType": "Awakened Brutality Support",
     "Class": "Support Gems",
     "Icon": "U",
     "ItemType": "Metadata/Items/Gems/SupportGemBrutalityPlus",
@@ -194,5 +195,66 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports any skill that deals damage.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (40–44)% more Physical Damage",
+      "values": [
+        "(40–44)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal no Chaos Damage",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (0–10)% chance to Crush Enemies for 4 seconds on Hit",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal no Elemental Damage",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (40–44)% more Physical Damage",
+      "values": [
+        "(40–44)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal no Chaos Damage",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (0–10)% chance to Crush Enemies for 4 seconds on Hit",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal no Elemental Damage",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Crushed lowers Physical Damage Reduction by 15% for 4 seconds)",
+    "(Crushed lowers Physical Damage Reduction by 15% for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Physical Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Physical Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

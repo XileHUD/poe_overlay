@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "18",
+    "BaseType": "Damage on Full Life Support",
     "Class": "Support Gems",
     "Icon": "f",
     "ItemType": "Metadata/Items/Gems/SupportGemMeleeDamageOnFullLife",
@@ -332,5 +333,35 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills, providing a bonus to all damage dealt by those skills while your life is full.",
+  "explicitMods": [
+    {
+      "text": "Supported Attack Skills deal (20–34)% more Damage while on Full Life",
+      "values": [
+        "(20–34)"
+      ]
+    },
+    {
+      "text": "Supported Attack Skills deal (20–34)% more Damage while on Full Life",
+      "values": [
+        "(20–34)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

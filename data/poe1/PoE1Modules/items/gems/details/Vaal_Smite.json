@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Smite",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Melee, Attack, Area, Duration, Multistrikeable, Damage, MeleeSingleTarget, Aura, Buff, Lightning",
@@ -452,5 +453,218 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Calls lightning down to infuse your weapon, then performs a melee attack and causes lightning to strike nearby enemies, dealing damage in an area. Hitting an enemy grants an aura for a duration. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Base radius is (1.5–2.1) metres",
+      "values": [
+        "(1.5–2.1)"
+      ]
+    },
+    {
+      "text": "Base Aura radius is (3.6–4.2) metres",
+      "values": [
+        "(3.6–4.2)"
+      ]
+    },
+    {
+      "text": "Lightning strikes 30 targets within 10 metres",
+      "values": [
+        "30",
+        "10"
+      ]
+    },
+    {
+      "text": "Aura makes Smite strike +1 target with lightning",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Aura grants (1–17) to (7–330) added Lightning Damage",
+      "values": [
+        "(1–17)",
+        "(7–330)"
+      ]
+    },
+    {
+      "text": "Aura grants (10–19)% chance to Shock",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Base radius is (1.5–2.1) metres",
+      "values": [
+        "(1.5–2.1)"
+      ]
+    },
+    {
+      "text": "Base Aura radius is (3.6–4.2) metres",
+      "values": [
+        "(3.6–4.2)"
+      ]
+    },
+    {
+      "text": "Lightning strikes 30 targets within 10 metres",
+      "values": [
+        "30",
+        "10"
+      ]
+    },
+    {
+      "text": "Aura makes Smite strike +1 target with lightning",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Aura grants (1–17) to (7–330) added Lightning Damage",
+      "values": [
+        "(1–17)",
+        "(7–330)"
+      ]
+    },
+    {
+      "text": "Aura grants (10–19)% chance to Shock",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "has vaal smite behaviour [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "+(13–30)% less Area Damage",
+      "values": [
+        "+(13–30)"
+      ]
+    },
+    {
+      "text": "Base radius is (1.5–2.6) metres",
+      "values": [
+        "(1.5–2.6)"
+      ]
+    },
+    {
+      "text": "Base Aura radius is (3.6–4.7) metres",
+      "values": [
+        "(3.6–4.7)"
+      ]
+    },
+    {
+      "text": "Lightning strikes 1 target within 5 metres",
+      "values": [
+        "1",
+        "5"
+      ]
+    },
+    {
+      "text": "Aura grants (1–37) to (4–694) added Lightning Damage",
+      "values": [
+        "(1–37)",
+        "(4–694)"
+      ]
+    },
+    {
+      "text": "Aura grants (10–27)% chance to Shock",
+      "values": [
+        "(10–27)"
+      ]
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–10)% more Area Damage",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "+(0–10)% more Area Damage",
+      "values": [
+        "+(0–10)"
+      ]
+    }
+  ]
 }

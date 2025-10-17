@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Regeneration, Resistance, Exposure",
     "DropLevel": "4",
+    "BaseType": "Frost Bomb",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, ,",
     "Type": "Spell, Area, Duration, Cold, Damage, Multicastable, Totemable, Trappable, Mineable, Triggerable, Cascadable, AreaSpell, Cooldown, Orb",
@@ -415,5 +416,117 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a crystal that pulses with cold for a duration. Each pulse applies a debuff to nearby enemies for a secondary duration which reduces life regeneration rate, and also inflicts Cold Exposure. When the crystal's duration ends, it explodes, dealing heavy cold damage to enemies around it.",
+  "explicitMods": [
+    {
+      "text": "Deals (9–1391) to (13–2086) Cold Damage",
+      "values": [
+        "(9–1391)",
+        "(13–2086)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "75% reduced Life Regeneration rate",
+      "values": [
+        "75"
+      ]
+    },
+    {
+      "text": "Base radius is (2.4–3.1) metres",
+      "values": [
+        "(2.4–3.1)"
+      ]
+    },
+    {
+      "text": "Cold Exposure applies -15% to Cold Resistance",
+      "values": [
+        "-15"
+      ]
+    },
+    {
+      "text": "Deals (9–1391) to (13–2086) Cold Damage",
+      "values": [
+        "(9–1391)",
+        "(13–2086)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "75% reduced Life Regeneration rate",
+      "values": [
+        "75"
+      ]
+    },
+    {
+      "text": "Base radius is (2.4–3.1) metres",
+      "values": [
+        "(2.4–3.1)"
+      ]
+    },
+    {
+      "text": "Cold Exposure applies -15% to Cold Resistance",
+      "values": [
+        "-15"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "energy_shield_recharge_rate_+%",
+      "values": []
+    },
+    {
+      "text": "life_regeneration_rate_+%",
+      "values": []
+    },
+    {
+      "text": "energy_shield_regeneration_rate_+%",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

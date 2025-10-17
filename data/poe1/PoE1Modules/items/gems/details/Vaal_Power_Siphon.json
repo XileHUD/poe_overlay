@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Power Siphon",
     "Weapon": "Wands",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, Projectile, ProjectilesFromUser, Totemable, Trappable, Mineable",
@@ -292,5 +293,162 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires your wand simultaneously at all nearby enemies, culling those close to death and granting you a power charge for each. Cannot be supported by Volley.",
+  "explicitMods": [
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "Fires Projectiles at each nearby Enemy",
+      "values": []
+    },
+    {
+      "text": "Culling Strike",
+      "values": []
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Gain a Power Charge when Projectile Hits a Rare or Unique Enemy",
+      "values": []
+    },
+    {
+      "text": "20% more Critical Strike Chance per Power Charge",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "+25% to Critical Strike Multiplier per Power Charge",
+      "values": [
+        "+25"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "Fires Projectiles at each nearby Enemy",
+      "values": []
+    },
+    {
+      "text": "Culling Strike",
+      "values": []
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Gain a Power Charge when Projectile Hits a Rare or Unique Enemy",
+      "values": []
+    },
+    {
+      "text": "20% more Critical Strike Chance per Power Charge",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "+25% to Critical Strike Multiplier per Power Charge",
+      "values": [
+        "+25"
+      ]
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at +150% of their value",
+      "values": [
+        "+150"
+      ]
+    },
+    {
+      "text": "Fires a Projectile at up to (4–11) targetsModifiers to number of Projectiles instead apply to number of targets fired at",
+      "values": [
+        "(4–11)"
+      ]
+    },
+    {
+      "text": "Culling Strike",
+      "values": []
+    },
+    {
+      "text": "20% chance to gain a Power Charge when Projectile Hits a Rare or Unique Enemy",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "10% more Critical Strike Chance per Power Charge",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "+20% to Critical Strike Multiplier per Power Charge",
+      "values": [
+        "+20"
+      ]
+    },
+    {
+      "text": "number of projectiles override [1]",
+      "values": []
+    },
+    {
+      "text": "projectiles are not fired [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Culling Strike means enemies that are on 10% or lower life after your Hit are Killed)",
+    "(Culling Strike means enemies that are on 10% or lower life after your Hit are Killed)",
+    "(Culling Strike means enemies that are on 10% or lower life after your Hit are Killed)",
+    "(Culling Strike means enemies that are on 10% or lower life after your Hit are Killed)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–10)% to Critical Strike Multiplier per Power Charge",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "+(0–10)% to Critical Strike Multiplier per Power Charge",
+      "values": [
+        "+(0–10)"
+      ]
+    }
+  ]
 }

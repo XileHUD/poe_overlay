@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Flicker Strike of Power",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Melee, MeleeSingleTarget, Multistrikeable, Movement, Duration, Cooldown",
@@ -292,5 +293,125 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Teleports the character to a nearby monster and attacks with a melee weapon. If no specific monster is targeted, one is picked at random. Grants a buff that increases movement speed for a duration. The cooldown can be bypassed by expending a Power Charge.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "30% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "50% increased Critical Strike Chance per Power Charge",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Buff grants 20% increased Movement Speed",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "30% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "50% increased Critical Strike Chance per Power Charge",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Buff grants 20% increased Movement Speed",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "ignores proximity shield [1]",
+      "values": []
+    },
+    {
+      "text": "melee defer damage prediction [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "30% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "50% increased Critical Strike Chance per Power Charge",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Buff grants 20% increased Movement Speed",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "ignores proximity shield [1]",
+      "values": []
+    },
+    {
+      "text": "melee defer damage prediction [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to gain a Power Charge on Critical Strike",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

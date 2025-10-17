@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Duration, Projectile, Hinder",
     "DropLevel": "34",
+    "BaseType": "Tornado",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Duration, Trappable, Totemable, Mineable, Triggerable, Damage, Physical, Area, Orb, AreaSpell",
@@ -455,5 +456,149 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Create a Tornado that hinders and repeatedly damages enemies around it. It will move forward for a duration, during which your projectiles can collide with it to deal damage as though it was an enemy. Then it will chase down enemies for a secondary duration, and reflect a portion of the damage it took from your projectiles to them in addition to its own damage.",
+  "explicitMods": [
+    {
+      "text": "Deals (31–414) to (46–620) Physical Damage",
+      "values": [
+        "(31–414)",
+        "(46–620)"
+      ]
+    },
+    {
+      "text": "Deals Damage every 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "During initial Duration, can be hit by your Projectiles up to 20 times",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Reflects 10% of Damage Taken to Enemies",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Tornado has (0–57)% increased Movement Speed",
+      "values": [
+        "(0–57)"
+      ]
+    },
+    {
+      "text": "Enemies in range are Hindered",
+      "values": []
+    },
+    {
+      "text": "Maximum 1 Tornado",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Deals (31–414) to (46–620) Physical Damage",
+      "values": [
+        "(31–414)",
+        "(46–620)"
+      ]
+    },
+    {
+      "text": "Deals Damage every 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "During initial Duration, can be hit by your Projectiles up to 20 times",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Reflects 10% of Damage Taken to Enemies",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Tornado has (0–57)% increased Movement Speed",
+      "values": [
+        "(0–57)"
+      ]
+    },
+    {
+      "text": "Enemies in range are Hindered",
+      "values": []
+    },
+    {
+      "text": "Maximum 1 Tornado",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "damage cannot be reflected or leech if used by other object [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "skill override pvp scaling time ms [1000]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Hinder reduces movement speed by 30%)",
+    "(Hinder reduces movement speed by 30%)",
+    "(Hinder reduces movement speed by 30%)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Tornado has (0–20)% increased Movement Speed",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Tornado has (0–20)% increased Movement Speed",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

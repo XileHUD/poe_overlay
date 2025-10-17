@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Cooldown, Hit, Reservation, Trigger, Projectile, Recovery, Ailment",
     "DropLevel": "24",
+    "BaseType": "Spellslinger",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Instant, HasReservation, Cooldown",
@@ -415,5 +416,75 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Reserves mana based on the supported spells to cause those spells to trigger when you fire projectiles from a wand attack.",
+  "explicitMods": [
+    {
+      "text": "This Skill's Mana Reservation is the total of the Mana Reservations of Supported Skills, and cannot be further modified",
+      "values": []
+    },
+    {
+      "text": "Trigger Supported Spells when you fire Projectiles from a Non-Triggered Wand Attack",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (0–38)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Supported Skills have Added Spell Damage equal to (60–174)% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage",
+      "values": [
+        "(60–174)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (31–37)% less Damage with Hits and Ailments",
+      "values": [
+        "(31–37)"
+      ]
+    },
+    {
+      "text": "This Skill's Mana Reservation is the total of the Mana Reservations of Supported Skills, and cannot be further modified",
+      "values": []
+    },
+    {
+      "text": "Trigger Supported Spells when you fire Projectiles from a Non-Triggered Wand Attack",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (0–38)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Supported Skills have Added Spell Damage equal to (60–174)% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage",
+      "values": [
+        "(60–174)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (31–37)% less Damage with Hits and Ailments",
+      "values": [
+        "(31–37)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have Added Spell Damage equal to +(0–20)% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have Added Spell Damage equal to +(0–20)% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

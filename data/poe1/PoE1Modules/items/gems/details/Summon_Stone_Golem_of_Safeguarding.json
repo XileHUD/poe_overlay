@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Summon Stone Golem of Safeguarding",
     "TargetTypes": "Ground",
     "Type": "Triggerable, Mineable, Minion, MinionsCanExplode, Multicastable, Spell, Totemable, Trappable, Golem, Physical, CreatesMinion, CreatesMinion, Cooldown",
     "MinionType": "Attack, Melee, MeleeSingleTarget, Movement, Area, Multistrikeable",
@@ -332,5 +333,133 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a Stone Golem that takes a portion of the melee damage you recieve from enemy hits from its life before yours. In addition to its melee attack, the Stone Golem uses a rolling charge and a powerful slam that can taunt enemies.",
+  "explicitMods": [
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Minions have 50% less Maximum Life",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Golems grant 15% of Melee Damage is taken from your Stone Golems' Life before you",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Minions have 50% less Maximum Life",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Golems grant 15% of Melee Damage is taken from your Stone Golems' Life before you",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "active skill minion from alternate gem index [2]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [34,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [10]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "(0–17)% increased Character Size",
+      "values": [
+        "(0–17)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Minions have 50% less Maximum Life",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Golems grant 15% of Melee Damage is taken from your Stone Golems' Life before you",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "active skill minion from alternate gem index [2]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [34,100]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [10]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Buff Effect",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Buff Effect",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Buff Effect",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

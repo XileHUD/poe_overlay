@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Raise Zombie of Slamming",
     "TargetTypes": "Corpse,",
     "Type": "Spell, Minion, MinionsCanExplode, Trappable, Totemable, Mineable, Multicastable, Triggerable, CanRapidFire, CreatesMinion",
     "MinionType": "Attack, Melee, MeleeSingleTarget, Multistrikeable",
@@ -412,5 +413,113 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Raises a zombie minion from a corpse, which will follow you and attack enemies with a melee strike and an area of effect slam which cannot be evaded.",
+  "explicitMods": [
+    {
+      "text": "Maximum (3–6) Raised Zombies",
+      "values": [
+        "(3–6)"
+      ]
+    },
+    {
+      "text": "Raised Zombies' Slam Attack has (0–76)% increased Area of Effect",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "Raised Zombies' Slam Attack has (0–76)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "Maximum (3–6) Raised Zombies",
+      "values": [
+        "(3–6)"
+      ]
+    },
+    {
+      "text": "Raised Zombies' Slam Attack has (0–76)% increased Area of Effect",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "Raised Zombies' Slam Attack has (0–76)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "active skill minion from alternate gem index [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [1,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [1]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "+1 to Maximum Raised Zombies",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Does not require a corpse",
+      "values": []
+    },
+    {
+      "text": "Minions have (0–136)% more Maximum Life",
+      "values": [
+        "(0–136)"
+      ]
+    },
+    {
+      "text": "Raised Zombies' Slam Attack has (0–136)% increased Area of Effect",
+      "values": [
+        "(0–136)"
+      ]
+    },
+    {
+      "text": "Raised Zombies' Slam Attack has (0–136)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–136)"
+      ]
+    },
+    {
+      "text": "Minions deal (0–204)% more Damage",
+      "values": [
+        "(0–204)"
+      ]
+    },
+    {
+      "text": "minion actor scale +% [100]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–1) to Maximum Raised Zombies",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Maximum Raised Zombies",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

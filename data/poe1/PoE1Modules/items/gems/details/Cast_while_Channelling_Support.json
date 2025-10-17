@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Channelling, Trigger",
     "DropLevel": "38",
+    "BaseType": "Cast while Channelling Support",
     "Class": "Support Gems",
     "Icon": "W",
     "ItemType": "Metadata/Items/Gems/SupportGemCastWhileChannelling",
@@ -391,5 +392,67 @@
     "Cast while Channelling Support",
     "Cast while Channelling Support",
     "Cast while Channelling Support is a Support gem that trigger linked non-channeling Spell while the character is using a channelling skill."
+  ],
+  "gemDescription": "Must support both a channelling skill and a non-channelling spell skill to work. The channelling skill will trigger a spell periodically while channelling. Cannot support skills used by totems, traps, or mines. Vaal skills and skills with a reservation cannot be triggered.",
+  "explicitMods": [
+    {
+      "text": "Trigger a Supported Spell every (0.35–0.45) seconds while Channelling Supported Skills",
+      "values": [
+        "(0.35–0.45)"
+      ]
+    },
+    {
+      "text": "Supported Triggered Spells deal 30% less Damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Trigger a Supported Spell every (0.35–0.45) seconds while Channelling Supported Skills",
+      "values": [
+        "(0.35–0.45)"
+      ]
+    },
+    {
+      "text": "Supported Triggered Spells deal 30% less Damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "cast spell while linked skill channelling [1]",
+      "values": []
+    },
+    {
+      "text": "spell uncastable if triggerable [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Channelling Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Triggered Spells deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Channelling Skills deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Triggered Spells deal (0–10)% increased Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

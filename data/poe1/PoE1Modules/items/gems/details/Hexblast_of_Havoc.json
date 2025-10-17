@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Hexblast of Havoc",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Damage, Area, Chaos, Trappable, Totemable, Mineable, Multicastable, Triggerable, CanRapidFire, Hex, AreaSpell",
     "ActiveSkillsCode": "hexblast_alt_y"
@@ -331,5 +332,68 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Deals chaos damage to a single enemy. If the enemy was Hexed, also deals area damage to other enemies around the target.",
+  "explicitMods": [
+    {
+      "text": "Deals (119–1627) to (178–2440) Chaos Damage",
+      "values": [
+        "(119–1627)",
+        "(178–2440)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.5 metres",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "Deals (119–1627) to (178–2440) Chaos Damage",
+      "values": [
+        "(119–1627)",
+        "(178–2440)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.5 metres",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "Deals (119–8504) to (178–12757) Chaos Damage",
+      "values": [
+        "(119–8504)",
+        "(178–12757)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.5 metres",
+      "values": [
+        "2.5"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Eye of Winter of Finality",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Projectile, ProjectileSpiral, Damage, SingleMainProjectile, Cold, Totemable, Mineable, Trappable, Multicastable, CanRapidFire, Triggerable",
     "ActiveSkillsCode": "eye_of_winter_alt_x"
@@ -331,5 +332,130 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a single eye projectile which cannot damage enemies. When the eye dissipates or collides with terrain, it releases a fast spiral of shards. The shards will deal cold damage to enemies they impact.",
+  "explicitMods": [
+    {
+      "text": "Deals (24–361) to (36–541) Cold Damage",
+      "values": [
+        "(24–361)",
+        "(36–541)"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles only apply to the final Spiral",
+      "values": []
+    },
+    {
+      "text": "Fires 16 Shard Projectiles in a Spiral when Projectile ends",
+      "values": [
+        "16"
+      ]
+    },
+    {
+      "text": "Projectiles continuously gain Damage, up to 100% more Damage by the time they dissipate",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Deals (24–361) to (36–541) Cold Damage",
+      "values": [
+        "(24–361)",
+        "(36–541)"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles only apply to the final Spiral",
+      "values": []
+    },
+    {
+      "text": "Fires 16 Shard Projectiles in a Spiral when Projectile ends",
+      "values": [
+        "16"
+      ]
+    },
+    {
+      "text": "Projectiles continuously gain Damage, up to 100% more Damage by the time they dissipate",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "projectile firing forward distance override [100]",
+      "values": []
+    },
+    {
+      "text": "single primary projectile [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (24–2009) to (36–3014) Cold Damage",
+      "values": [
+        "(24–2009)",
+        "(36–3014)"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles only apply to the final Spiral",
+      "values": []
+    },
+    {
+      "text": "Fires 16 Shard Projectiles in a Spiral when Projectile ends",
+      "values": [
+        "16"
+      ]
+    },
+    {
+      "text": "Projectiles continuously gain Damage, up to 100% more Damage by the time they dissipate",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "projectile firing forward distance override [100]",
+      "values": []
+    },
+    {
+      "text": "single primary projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Projectiles gain up to +(0–20)% more Damage by the time they dissipate",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Projectiles gain up to +(0–20)% more Damage by the time they dissipate",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Projectiles gain up to +(0–20)% more Damage by the time they dissipate",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

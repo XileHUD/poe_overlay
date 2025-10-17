@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Bleeding",
+    "BaseType": "Chance to Bleed Support",
     "Class": "Support Gems",
     "Icon": "E",
     "ItemType": "Metadata/Items/Gems/SupportGemChanceToBleed",
@@ -332,5 +333,131 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Attacks have 25% chance to cause Bleeding",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Supported Attacks deal (10–29)% more Damage with Bleeding",
+      "values": [
+        "(10–29)"
+      ]
+    },
+    {
+      "text": "Supported Attacks have 25% chance to cause Bleeding",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Supported Attacks deal (10–29)% more Damage with Bleeding",
+      "values": [
+        "(10–29)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are supported by Level 1 Chance to Bleed",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Grants Summon Harbinger of Brutality Skill",
+      "values": []
+    },
+    {
+      "text": "+5% Chance to Block Attack Damage while wielding a Staff",
+      "values": [
+        "+5"
+      ]
+    },
+    {
+      "text": "+(60–80)% to Damage over Time Multiplier for Bleeding from Critical Strikes",
+      "values": [
+        "+(60–80)"
+      ]
+    },
+    {
+      "text": "Adds (225–265) to (315–385) Physical Damage",
+      "values": [
+        "(225–265)",
+        "(315–385)"
+      ]
+    },
+    {
+      "text": "(30–40)% increased Critical Strike Chance",
+      "values": [
+        "(30–40)"
+      ]
+    },
+    {
+      "text": "(Warstaves are considered Staves)",
+      "values": []
+    },
+    {
+      "text": "Socketed Gems are supported by Level 1 Chance to Bleed",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Grants Summon Greater Harbinger of Brutality Skill",
+      "values": []
+    },
+    {
+      "text": "+5% Chance to Block Attack Damage while wielding a Staff",
+      "values": [
+        "+5"
+      ]
+    },
+    {
+      "text": "+(60–80)% to Damage over Time Multiplier for Bleeding from Critical Strikes",
+      "values": [
+        "+(60–80)"
+      ]
+    },
+    {
+      "text": "Adds (225–265) to (315–385) Physical Damage",
+      "values": [
+        "(225–265)",
+        "(315–385)"
+      ]
+    },
+    {
+      "text": "(30–40)% increased Critical Strike Chance",
+      "values": [
+        "(30–40)"
+      ]
+    },
+    {
+      "text": "(Warstaves are considered Staves)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Warstaves are considered Staves)",
+    "(Warstaves are considered Staves)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Attacks deal (0–10)% increased Damage with Bleeding",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Attacks deal (0–10)% increased Damage with Bleeding",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

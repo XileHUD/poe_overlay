@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Minion, Taunt",
     "DropLevel": "4",
+    "BaseType": "Summon Raging Spirit",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Minion, Duration, MinionsCanExplode, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, CanRapidFire, CreatesMinion",
@@ -375,5 +376,157 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a short-lived flaming skull that rushes at nearby enemies and attacks them rapidly, converting all its physical damage to fire. Enemies will not directly engage these spirits, and can pass through them.",
+  "explicitMods": [
+    {
+      "text": "Maximum 20 Summoned Raging Spirits",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Minions cannot Taunt Enemies",
+      "values": []
+    },
+    {
+      "text": "Maximum 20 Summoned Raging Spirits",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Minions cannot Taunt Enemies",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [4,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [20]",
+      "values": []
+    },
+    {
+      "text": "25% chance to Trigger Level 10 Summon Raging Spirit on Kill",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Adds (20–24) to (38–46) Fire Damage",
+      "values": [
+        "(20–24)",
+        "(38–46)"
+      ]
+    },
+    {
+      "text": "Adds (20–24) to (38–46) Fire Damage to Spells",
+      "values": [
+        "(20–24)",
+        "(38–46)"
+      ]
+    },
+    {
+      "text": "10% chance to Cover Enemies in Ash on Hit",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "(Being Covered in Ash applies 20% less Movement Speed and 20% increased Fire Damage Taken, for 4 seconds)",
+      "values": []
+    },
+    {
+      "text": "+(30–50) to maximum Energy Shield",
+      "values": [
+        "+(30–50)"
+      ]
+    },
+    {
+      "text": "Summoned Raging Spirits deal (175–250)% increased Damage",
+      "values": [
+        "(175–250)"
+      ]
+    },
+    {
+      "text": "75% reduced Maximum number of Summoned Raging Spirits",
+      "values": [
+        "75"
+      ]
+    },
+    {
+      "text": "Summoned Raging Spirits' Hits always Ignite",
+      "values": []
+    },
+    {
+      "text": "Summoned Raging Spirits' Melee Strikes deal Fire-only SplashDamage to Surrounding Targets",
+      "values": []
+    },
+    {
+      "text": "+(30–40) to Intelligence",
+      "values": [
+        "+(30–40)"
+      ]
+    },
+    {
+      "text": "Minions have (-17–17)% to Chaos Resistance",
+      "values": [
+        "(-17–17)"
+      ]
+    },
+    {
+      "text": "Summon Raging Spirit has (20–30)% increased Duration",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "Summoned Raging Spirits deal (25–40)% increased Damage",
+      "values": [
+        "(25–40)"
+      ]
+    },
+    {
+      "text": "Summoned Raging Spirits have (25–40)% increased maximum Life",
+      "values": [
+        "(25–40)"
+      ]
+    },
+    {
+      "text": "Summoned Raging Spirits take 20% of their Maximum Life per second as Chaos Damage",
+      "values": [
+        "20"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Being Covered in Ash applies 20% less Movement Speed and 20% increased Fire Damage Taken, for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–30)% chance to summon an extra Minion",
+      "values": [
+        "(0–30)"
+      ]
+    },
+    {
+      "text": "(0–30)% chance to summon an extra Minion",
+      "values": [
+        "(0–30)"
+      ]
+    }
+  ]
 }

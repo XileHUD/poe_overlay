@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Burning Arrow",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, MirageArcherCanUse, Projectile, ProjectilesFromUser, Totemable, Trappable, Mineable, Fire, ThresholdJewelArea, Triggerable",
@@ -252,5 +253,104 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires an arrow that explodes, dealing fire damage to its target and other nearby enemies, with an increased chance of igniting them.",
+  "explicitMods": [
+    {
+      "text": "Projectiles Pierce 3 additional Targets",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "50% chance to Ignite enemies",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Projectiles Pierce 3 additional Targets",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "50% chance to Ignite enemies",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "vaal burning arrow explode on hit [1]",
+      "values": []
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "25% chance to Ignite enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Damage with Ignite",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Damage with Ignite",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

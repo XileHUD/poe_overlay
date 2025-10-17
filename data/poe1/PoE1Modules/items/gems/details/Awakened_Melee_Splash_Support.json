@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Melee",
     "DropLevel": "72",
+    "BaseType": "Awakened Melee Splash Support",
     "Class": "Support Gems",
     "Icon": "S",
     "ItemType": "Metadata/Items/Gems/SupportGemMeleeSplashPlus",
@@ -214,5 +215,67 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports melee strike skills, causing their melee strike to deal splash damage around each target hit.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal Splash Damage to surrounding targets",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (37–39)% less Splash Damage to surrounding targets",
+      "values": [
+        "(37–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (60–72)% more Melee Splash Area of Effect",
+      "values": [
+        "(60–72)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Level of Supported Strike Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal Splash Damage to surrounding targets",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (37–39)% less Splash Damage to surrounding targets",
+      "values": [
+        "(37–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (60–72)% more Melee Splash Area of Effect",
+      "values": [
+        "(60–72)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Level of Supported Strike Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

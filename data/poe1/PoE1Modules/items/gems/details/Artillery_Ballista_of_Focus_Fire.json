@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Artillery Ballista of Focus Fire",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Attack, RangedAttack, Trappable, Mineable, SummonsTotem, Area, Fire, ProjectileNumber, ProjectileSpeed, AttackInPlaceIsDefault, TotemsAreBallistae",
@@ -332,5 +333,161 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a ballista totem that propels a number of fiery arrows into the air, each targeting a specific enemy. Arrows deal area damage to enemies around it on landing. Requires a Bow.",
+  "explicitMods": [
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "+(2–3) to maximum number of Summoned Ballista Totems",
+      "values": [
+        "+(2–3)"
+      ]
+    },
+    {
+      "text": "Fires up to 5 Arrows at different targets",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Summons a Ballista Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "+(2–3) to maximum number of Summoned Ballista Totems",
+      "values": [
+        "+(2–3)"
+      ]
+    },
+    {
+      "text": "Fires up to 5 Arrows at different targets",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Summons a Ballista Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [80]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "totem ignores cooldown [1]",
+      "values": []
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "+(2–4) to maximum number of Summoned Ballista Totems",
+      "values": [
+        "+(2–4)"
+      ]
+    },
+    {
+      "text": "Fires up to 5 Arrows at different targets",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Summons a Ballista Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [80]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "totem ignores cooldown [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–1) Arrow",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Fires +(0–1) Arrow",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Fires +(0–1) Arrow",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

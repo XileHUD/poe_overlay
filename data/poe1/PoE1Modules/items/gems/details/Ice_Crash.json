@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "DropLevel": "28",
+    "BaseType": "Ice Crash",
     "Class": "Skill Gems",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy",
@@ -375,5 +376,103 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slam the ground, damaging enemies in an area around the impact in three stages of increasing size. Enemies take slightly less damage on the second and third stage, and can only be hit by one stage. Works with Swords, Maces, Sceptres, Axes, Staves and Unarmed.",
+  "explicitMods": [
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Second Stage deals 15% less Damage",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Third Stage deals 30% less Damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Base radius is 1.1 metres",
+      "values": [
+        "1.1"
+      ]
+    },
+    {
+      "text": "Base tertiary radius is 3.1 metres",
+      "values": [
+        "3.1"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 2.1 metres",
+      "values": [
+        "2.1"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Second Stage deals 15% less Damage",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Third Stage deals 30% less Damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Base radius is 1.1 metres",
+      "values": [
+        "1.1"
+      ]
+    },
+    {
+      "text": "Base tertiary radius is 3.1 metres",
+      "values": [
+        "3.1"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 2.1 metres",
+      "values": [
+        "2.1"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Gain (0–15)% of Physical Damage as Extra Cold Damage",
+      "values": [
+        "(0–15)"
+      ]
+    },
+    {
+      "text": "Gain (0–15)% of Physical Damage as Extra Cold Damage",
+      "values": [
+        "(0–15)"
+      ]
+    }
+  ]
 }

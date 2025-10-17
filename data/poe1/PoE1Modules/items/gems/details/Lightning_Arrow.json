@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit, Shock",
     "DropLevel": "12",
+    "BaseType": "Lightning Arrow",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
@@ -376,5 +377,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a charged arrow which damages enemies by causing them to be struck by a bolt of lightning, which also damages a number of surrounding enemies.",
+  "explicitMods": [
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Hits up to 3 additional enemies near the target",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Shocks Enemies as though dealing (100–290)% more Damage",
+      "values": [
+        "(100–290)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Hits up to 3 additional enemies near the target",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Shocks Enemies as though dealing (100–290)% more Damage",
+      "values": [
+        "(100–290)"
+      ]
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Hits up to (0–2) additional enemies near the target",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Hits up to (0–2) additional enemies near the target",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

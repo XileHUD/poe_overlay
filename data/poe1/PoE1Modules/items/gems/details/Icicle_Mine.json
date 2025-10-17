@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit, Mine, Projectile",
     "DropLevel": "12",
+    "BaseType": "Icicle Mine",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Projectile, RemoteMined, Cold, HasReservation, ProjectilesFromUser, Aura, Area, AuraAffectsEnemies, AuraNotOnCaster",
@@ -415,5 +416,121 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a mine that fires projectiles around it when detonated. These projectiles quickly dissipate as they travel, before disappearing.",
+  "explicitMods": [
+    {
+      "text": "Deals (16–514) to (24–771) Cold Damage",
+      "values": [
+        "(16–514)",
+        "(24–771)"
+      ]
+    },
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base Mine Detonation Time is 0.3 seconds",
+      "values": [
+        "0.3"
+      ]
+    },
+    {
+      "text": "Fires 5 Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "Fires an additional Projectile for every 2 prior Mines in Detonation Sequence",
+      "values": []
+    },
+    {
+      "text": "Each Mine applies 10% increased Critical Strike Chance to Hits against Enemies near it, up to a maximum of 500%",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Deals (16–514) to (24–771) Cold Damage",
+      "values": [
+        "(16–514)",
+        "(24–771)"
+      ]
+    },
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base Mine Detonation Time is 0.3 seconds",
+      "values": [
+        "0.3"
+      ]
+    },
+    {
+      "text": "Fires 5 Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "Fires an additional Projectile for every 2 prior Mines in Detonation Sequence",
+      "values": []
+    },
+    {
+      "text": "Each Mine applies 10% increased Critical Strike Chance to Hits against Enemies near it, up to a maximum of 500%",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is mined [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "projectile speed variation +% [10]",
+      "values": []
+    },
+    {
+      "text": "skill visual scale +% [50]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "DropLevel": "28",
+    "BaseType": "Ball Lightning",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Projectile, ProjectilesFromUser, Area, Totemable, Trappable, Mineable, Multicastable, Triggerable, Lightning, CanRapidFire, AreaSpell",
@@ -374,5 +375,57 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a slow-moving projectile that damages each enemy in an area around it repeatedly with bolts of lightning.",
+  "explicitMods": [
+    {
+      "text": "Deals (2–32) to (47–617) Lightning Damage",
+      "values": [
+        "(2–32)",
+        "(47–617)"
+      ]
+    },
+    {
+      "text": "Base radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Deals (2–32) to (47–617) Lightning Damage",
+      "values": [
+        "(2–32)",
+        "(47–617)"
+      ]
+    },
+    {
+      "text": "Base radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "ball lightning projectile speed and hit frequency +% final [33]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

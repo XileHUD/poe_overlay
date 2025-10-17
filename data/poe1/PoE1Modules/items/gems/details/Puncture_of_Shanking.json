@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Puncture of Shanking",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, Two Hand Swords, Rune Daggers",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, MeleeSingleTarget, Multistrikeable, Melee, Duration, DamageOverTime, Physical",
@@ -372,5 +373,108 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Punctures enemies, causing a bleeding debuff, which will be affected by modifiers to skill duration. Puncture works with daggers, claws or swords.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "(80–118)% increased Critical Strike Chance against Bleeding Enemies",
+      "values": [
+        "(80–118)"
+      ]
+    },
+    {
+      "text": "(30–49)% more Damage with Bleeding",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Causes Bleeding",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "(80–118)% increased Critical Strike Chance against Bleeding Enemies",
+      "values": [
+        "(80–118)"
+      ]
+    },
+    {
+      "text": "(30–49)% more Damage with Bleeding",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Causes Bleeding",
+      "values": []
+    },
+    {
+      "text": "bleed duration is skill duration [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "(80–148)% increased Critical Strike Chance against Bleeding Enemies",
+      "values": [
+        "(80–148)"
+      ]
+    },
+    {
+      "text": "(30–69)% more Damage with Bleeding",
+      "values": [
+        "(30–69)"
+      ]
+    },
+    {
+      "text": "Causes Bleeding",
+      "values": []
+    },
+    {
+      "text": "bleed duration is skill duration [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–20)% more Damage with Bleeding",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "+(0–20)% more Damage with Bleeding",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "+(0–20)% more Damage with Bleeding",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

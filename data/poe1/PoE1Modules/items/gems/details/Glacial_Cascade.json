@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Knockback, Hit",
     "DropLevel": "28",
+    "BaseType": "Glacial Cascade",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cold, Physical, CanRapidFire, AreaSpell",
@@ -375,5 +376,105 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Icicles emerge from the ground in a series of small bursts, each damaging enemies caught in the area and knocking them back in the direction of the next burst.",
+  "explicitMods": [
+    {
+      "text": "Deals (21–300) to (32–450) Physical Damage",
+      "values": [
+        "(21–300)",
+        "(32–450)"
+      ]
+    },
+    {
+      "text": "Knocks Enemies Back on Hit",
+      "values": []
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Cannot Knockback Unique Enemies more than once per secondFinal Burst Deals 200% more DamageFinal Burst has 100% more RadiusFinal Burst cannot Knockback",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Causes 4 Bursts",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (21–300) to (32–450) Physical Damage",
+      "values": [
+        "(21–300)",
+        "(32–450)"
+      ]
+    },
+    {
+      "text": "Knocks Enemies Back on Hit",
+      "values": []
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Cannot Knockback Unique Enemies more than once per secondFinal Burst Deals 200% more DamageFinal Burst has 100% more RadiusFinal Burst cannot Knockback",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Causes 4 Bursts",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Cold Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With 40 Intelligence in Radius, Glacial Cascade has an additional Burst",
+      "values": []
+    },
+    {
+      "text": "With 40 Intelligence in Radius, 20% of Glacial Cascade Physical DamageConverted to Cold Damage",
+      "values": [
+        "20"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Knockback pushes Enemies away when Hit)",
+    "(Knockback pushes Enemies away when Hit)",
+    "(Knockback pushes Enemies away when Hit)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Final Burst Deals +(0–50)% more Damage",
+      "values": [
+        "(0–50)"
+      ]
+    },
+    {
+      "text": "Final Burst Deals +(0–50)% more Damage",
+      "values": [
+        "(0–50)"
+      ]
+    }
+  ]
 }

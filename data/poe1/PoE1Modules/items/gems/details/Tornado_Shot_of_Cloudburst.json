@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Tornado Shot of Cloudburst",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Attack, Projectile, Rain, Trappable, Mineable, Totemable, RangedAttack, MirageArcherCanUse, Triggerable",
@@ -292,5 +293,87 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a single payload arrow into the air to land at a targeted location. It will then fire arrows out in all directions from that point.",
+  "explicitMods": [
+    {
+      "text": "Fires 9 Arrows",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "Fires a Payload Arrow into the airProjectiles Fire from where the Payload Arrow lands",
+      "values": []
+    },
+    {
+      "text": "Fires 9 Arrows",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "Fires a Payload Arrow into the airProjectiles Fire from where the Payload Arrow lands",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "Fires 9 Arrows",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "Fires a Payload Arrow into the airProjectiles Fire from where the Payload Arrow lands",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–4) Arrows",
+      "values": [
+        "+(0–4)"
+      ]
+    },
+    {
+      "text": "Fires +(0–4) Arrows",
+      "values": [
+        "+(0–4)"
+      ]
+    },
+    {
+      "text": "Fires +(0–4) Arrows",
+      "values": [
+        "+(0–4)"
+      ]
+    }
+  ]
 }

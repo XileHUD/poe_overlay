@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Blight",
     "TargetTypes": "Ground, ROTATE_TO_TARGET",
     "Type": "Spell, Chaos, Area, Totemable, Channel, Duration, DamageOverTime, DegenOnlySpellDamage, AreaSpell",
     "ActiveSkillsCode": "blight"
@@ -331,5 +332,171 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Apply a powerful debuff to enemies around you which deals chaos damage over time. Then applies two additional layers in a larger area, growing greatly in size each time. Enemies are also substantially hindered for a shorter secondary duration, slowing their movement.",
+  "explicitMods": [
+    {
+      "text": "Deals (6.5–778.9) Base Chaos Damage per second",
+      "values": [
+        "(6.5–778.9)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "+(0–0.9) metres to radius",
+      "values": [
+        "+(0–0.9)"
+      ]
+    },
+    {
+      "text": "80% reduced Movement Speed",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Debuff can have up to 20 layers of Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Hindered Enemies take 20% increased Chaos Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Deals (6.5–778.9) Base Chaos Damage per second",
+      "values": [
+        "(6.5–778.9)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "+(0–0.9) metres to radius",
+      "values": [
+        "+(0–0.9)"
+      ]
+    },
+    {
+      "text": "80% reduced Movement Speed",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Debuff can have up to 20 layers of Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Hindered Enemies take 20% increased Chaos Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (5.9–1554) Base Chaos Damage per second",
+      "values": [
+        "(5.9–1554)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "+(0–1.1) metres to radius",
+      "values": [
+        "+(0–1.1)"
+      ]
+    },
+    {
+      "text": "80% reduced Movement Speed",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Debuff can have up to 20 layers of Damage",
+      "values": [
+        "20"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–0.8) seconds",
+      "values": [
+        "(0–0.8)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–0.8) seconds",
+      "values": [
+        "(0–0.8)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Cooldown, Retaliation, Recovery",
     "DropLevel": "31",
+    "BaseType": "Expert Retaliation Support",
     "Class": "Support Gems",
     "Icon": "r",
     "ItemType": "Metadata/Items/Gems/SupportGemExpertRetaliation",
@@ -413,5 +414,47 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports retaliation skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Retaliation Skills become Usable for (20–39)% longer",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (40–78)% more Cooldown Recovery Rate",
+      "values": [
+        "(40–78)"
+      ]
+    },
+    {
+      "text": "Supported Retaliation Skills become Usable for (20–39)% longer",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (40–78)% more Cooldown Recovery Rate",
+      "values": [
+        "(40–78)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% more Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% more Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Lancing Steel of Spraying",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, Two Hand Swords, Two Hand Axes",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Projectile, Damage, ProjectileSpeed, RangedAttack, ProjectilesNotFromUser",
@@ -332,5 +333,85 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Thrust an Axe or Sword forward to form a cluster of shards in front of you. The cluster will fire a number of projectiles in sequence, aiming at enemies in front of or close to it.",
+  "explicitMods": [
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Fires (6–8) Projectiles",
+      "values": [
+        "(6–8)"
+      ]
+    },
+    {
+      "text": "Hits after the first on each Enemy deal 90% less Damage",
+      "values": [
+        "90"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Fires (6–8) Projectiles",
+      "values": [
+        "(6–8)"
+      ]
+    },
+    {
+      "text": "Hits after the first on each Enemy deal 90% less Damage",
+      "values": [
+        "90"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Fires (6–10) Projectiles",
+      "values": [
+        "(6–10)"
+      ]
+    },
+    {
+      "text": "Hits after the first on each Enemy deal 90% less Damage",
+      "values": [
+        "90"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

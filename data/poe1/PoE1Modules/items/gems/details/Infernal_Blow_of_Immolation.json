@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Infernal Blow of Immolation",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Area, MeleeSingleTarget, Multistrikeable, Melee, Fire, Duration",
@@ -252,5 +253,95 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Attacks with your weapon, applying a charged debuff to you the first time you hit an enemy with this skill. Upon reaching 6 charges, or charges expiring, the charged debuff is removed to damage nearby enemies. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Base radius is (2.6–2.9) metres",
+      "values": [
+        "(2.6–2.9)"
+      ]
+    },
+    {
+      "text": "Debuff deals 80% of Damage per Charge",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Base radius is (2.6–2.9) metres",
+      "values": [
+        "(2.6–2.9)"
+      ]
+    },
+    {
+      "text": "Debuff deals 80% of Damage per Charge",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Base duration is 2.2 seconds",
+      "values": [
+        "2.2"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Base radius is 2.4 metres",
+      "values": [
+        "2.4"
+      ]
+    },
+    {
+      "text": "Debuff deals +80% of Damage per Charge",
+      "values": [
+        "+80"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Debuff deals +(0–10)% of Damage per Charge",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "Debuff deals +(0–10)% of Damage per Charge",
+      "values": [
+        "+(0–10)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Buff",
     "DropLevel": "34",
+    "BaseType": "Sigil of Power",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Duration, Trappable, Mineable, Triggerable, AreaSpell, Cooldown, Totemable, Lightning, Arcane",
@@ -455,5 +456,121 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Places a Sigil on the ground, which grants a buff to you and allies in the area around it for a duration. The Sigil gains stages as you spend mana in its area, making the buff more powerful. You can only have one Sigil of Power at a time.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 12 seconds",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "Gains a Stage when you Spend a total of (72–400) Mana while in Area",
+      "values": [
+        "(72–400)"
+      ]
+    },
+    {
+      "text": "Maximum 4 Stages",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Buff grants (2–7) to (29–141) Added Lightning Damage per Stage",
+      "values": [
+        "(2–7)",
+        "(29–141)"
+      ]
+    },
+    {
+      "text": "Enemies in Area deal (10–19)% less Damage while at maximum Stages",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Minimum 1 second between Stages",
+      "values": []
+    },
+    {
+      "text": "Base duration is 12 seconds",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "Gains a Stage when you Spend a total of (72–400) Mana while in Area",
+      "values": [
+        "(72–400)"
+      ]
+    },
+    {
+      "text": "Maximum 4 Stages",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Buff grants (2–7) to (29–141) Added Lightning Damage per Stage",
+      "values": [
+        "(2–7)",
+        "(29–141)"
+      ]
+    },
+    {
+      "text": "Enemies in Area deal (10–19)% less Damage while at maximum Stages",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Minimum 1 second between Stages",
+      "values": []
+    },
+    {
+      "text": "spell_damage_+%",
+      "values": []
+    },
+    {
+      "text": "global_minimum_added_lightning_damage",
+      "values": []
+    },
+    {
+      "text": "global_maximum_added_lightning_damage",
+      "values": []
+    },
+    {
+      "text": "base_mana_cost_-%",
+      "values": []
+    },
+    {
+      "text": "critical_strike_chance_+%",
+      "values": []
+    },
+    {
+      "text": "base_chance_to_shock_%",
+      "values": []
+    },
+    {
+      "text": "circle_of_power_damage_+%_final",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Enemies in Area deal +(0–4)% less damage while at maximum Stages",
+      "values": [
+        "(0–4)"
+      ]
+    },
+    {
+      "text": "Enemies in Area deal +(0–4)% less damage while at maximum Stages",
+      "values": [
+        "(0–4)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Debilitate, Curse",
     "DropLevel": "24",
+    "BaseType": "Punishment",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Area, Duration, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cascadable, AppliesCurse, CanRapidFire, AreaSpell, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Hex",
@@ -495,5 +496,139 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Curses all targets in an area, causing them to be debilitated when they hit enemies and increasing damage they take while on low life.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (8–11.8) seconds",
+      "values": [
+        "(8–11.8)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Cursed Enemies take (30–58)% increased Damage while on Low Life",
+      "values": [
+        "(30–58)"
+      ]
+    },
+    {
+      "text": "Cursed Enemies are Debilitated for 2 Seconds when they Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base duration is (8–11.8) seconds",
+      "values": [
+        "(8–11.8)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Cursed Enemies take (30–58)% increased Damage while on Low Life",
+      "values": [
+        "(30–58)"
+      ]
+    },
+    {
+      "text": "Cursed Enemies are Debilitated for 2 Seconds when they Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "10% Chance to Block Spell Damage",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "+(20–30) to Intelligence",
+      "values": [
+        "+(20–30)"
+      ]
+    },
+    {
+      "text": "+5% Chance to Block",
+      "values": [
+        "+5"
+      ]
+    },
+    {
+      "text": "Curse Enemies with Punishment when you Block their Melee Damage, ignoring Curse Limit",
+      "values": []
+    },
+    {
+      "text": "Curse Enemies with Temporal Chains when you Block their Projectile Attack Damage, ignoring Curse Limit",
+      "values": []
+    },
+    {
+      "text": "Curse Enemies with Elemental Weakness when you Block their Spell Damage, ignoring Curse Limit",
+      "values": []
+    },
+    {
+      "text": "(Punishment is a Hex which increases Damage taken by 30% while the target is on low life and causes them to be Debilitated for 2 seconds when they Hit. It lasts 8 seconds)",
+      "values": []
+    },
+    {
+      "text": "(Temporal Chains is a Hex which reduces Action Speed by 15%, or 9% on Rare or Unique targets, and makes other effects on the target expire 40% slower. It has 50% less effect on Players and lasts 5 seconds)",
+      "values": []
+    },
+    {
+      "text": "(Elemental Weakness is a Hex which inficts -15% to all Elemental Resistances. It lasts 8 seconds)",
+      "values": []
+    },
+    {
+      "text": "punishment_reflect_%_overkill_damage_to_nearby_allies_on_death",
+      "values": []
+    },
+    {
+      "text": "damage_taken_+%_on_low_life",
+      "values": []
+    },
+    {
+      "text": "debilitate_self_for_x_milliseconds_on_hit",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(You are on Low Life if you have 50% of your Maximum Life or less)",
+    "(Enemies that are Debilitated have 20% less Movement Speed and deal 10% less damage)",
+    "(You are on Low Life if you have 50% of your Maximum Life or less)",
+    "(Enemies that are Debilitated have 20% less Movement Speed and deal 10% less damage)",
+    "(You are on Low Life if you have 50% of your Maximum Life or less)",
+    "(Enemies that are Debilitated have 20% less Movement Speed and deal 10% less damage)",
+    "(Punishment is a Hex which increases Damage taken by 30% while the target is on low life and causes them to be Debilitated for 2 seconds when they Hit. It lasts 8 seconds)",
+    "(Temporal Chains is a Hex which reduces Action Speed by 15%, or 9% on Rare or Unique targets, and makes other effects on the target expire 40% slower. It has 50% less effect on Players and lasts 5 seconds)",
+    "(Elemental Weakness is a Hex which inficts -15% to all Elemental Resistances. It lasts 8 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Cursed Enemies are Debilitated for +(0–1) Seconds when they Hit",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Cursed Enemies are Debilitated for +(0–1) Seconds when they Hit",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Ice Shot of Penetration",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, Projectile, ProjectilesFromUser, Area, Cold, Triggerable, MirageArcherCanUse, Totemable, Trappable, Mineable",
@@ -372,5 +373,121 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a piercing arrow that converts some physical damage to cold on its target and converts all physical damage to cold in two cones perpendicular to the target.",
+  "explicitMods": [
+    {
+      "text": "Modifiers to number of Projectiles do not apply to this Skill",
+      "values": []
+    },
+    {
+      "text": "Projectiles Pierce 3 additional Targets",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Chills Enemies as though dealing (100–195)% more Damage",
+      "values": [
+        "(100–195)"
+      ]
+    },
+    {
+      "text": "Base radius is (2.6–3.1) metres",
+      "values": [
+        "(2.6–3.1)"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles do not apply to this Skill",
+      "values": []
+    },
+    {
+      "text": "Projectiles Pierce 3 additional Targets",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Chills Enemies as though dealing (100–195)% more Damage",
+      "values": [
+        "(100–195)"
+      ]
+    },
+    {
+      "text": "Base radius is (2.6–3.1) metres",
+      "values": [
+        "(2.6–3.1)"
+      ]
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "Modifiers to number of Projectiles do not apply to this Skill",
+      "values": []
+    },
+    {
+      "text": "Projectiles Pierce 3 additional Targets",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Chills Enemies as though dealing (100–270)% more Damage",
+      "values": [
+        "(100–270)"
+      ]
+    },
+    {
+      "text": "Base radius is (2.6–3.6) metres",
+      "values": [
+        "(2.6–3.6)"
+      ]
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–80)% increased Area of Effect angle",
+      "values": [
+        "(0–80)"
+      ]
+    },
+    {
+      "text": "(0–80)% increased Area of Effect angle",
+      "values": [
+        "(0–80)"
+      ]
+    },
+    {
+      "text": "(0–80)% increased Area of Effect angle",
+      "values": [
+        "(0–80)"
+      ]
+    }
+  ]
 }

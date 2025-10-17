@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Hit, Slam, Ailment",
     "DropLevel": "38",
+    "BaseType": "Fist of War Support",
     "Class": "Support Gems",
     "Icon": "X",
     "ItemType": "Metadata/Items/Gems/SupportGemFistOfWar",
@@ -413,5 +414,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports slam skills, providing a powerful boost when they're used, with a delay before they can be boosted again. Cannot support Vaal skills or triggered skills. Cannot modify the skills of minions. Only skills you use yourself can receive the boost.",
+  "explicitMods": [
+    {
+      "text": "Ancestrally Boosted Slams have (40–59)% increased Area of Effect",
+      "values": [
+        "(40–59)"
+      ]
+    },
+    {
+      "text": "Attacks with Supported Skill are Ancestrally Boosted, no more than once every (1.8–2.5) secondsAncestral Boost does not apply to repeats of the Attack",
+      "values": [
+        "(1.8–2.5)"
+      ]
+    },
+    {
+      "text": "Ancestrally Boosted Slams deal (70–98)% more Damage with Hits and Ailments",
+      "values": [
+        "(70–98)"
+      ]
+    },
+    {
+      "text": "Ancestrally Boosted Slams have (40–59)% increased Area of Effect",
+      "values": [
+        "(40–59)"
+      ]
+    },
+    {
+      "text": "Attacks with Supported Skill are Ancestrally Boosted, no more than once every (1.8–2.5) secondsAncestral Boost does not apply to repeats of the Attack",
+      "values": [
+        "(1.8–2.5)"
+      ]
+    },
+    {
+      "text": "Ancestrally Boosted Slams deal (70–98)% more Damage with Hits and Ailments",
+      "values": [
+        "(70–98)"
+      ]
+    },
+    {
+      "text": "support ancestral slam big hit max count [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Shock",
     "DropLevel": "28",
+    "BaseType": "Shock Nova",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Lightning, CanRapidFire, AreaSpell, Nova",
@@ -375,5 +376,65 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts a ring of Lightning around you, followed by a larger Lightning nova. Each effect hits enemies caught in their area with Lightning Damage.",
+  "explicitMods": [
+    {
+      "text": "Deals (34–537) to (101–1610) Lightning Damage",
+      "values": [
+        "(34–537)",
+        "(101–1610)"
+      ]
+    },
+    {
+      "text": "+10% to Maximum Effect of Shock",
+      "values": [
+        "+10"
+      ]
+    },
+    {
+      "text": "Ring always Shocks",
+      "values": []
+    },
+    {
+      "text": "Deals (34–537) to (101–1610) Lightning Damage",
+      "values": [
+        "(34–537)",
+        "(101–1610)"
+      ]
+    },
+    {
+      "text": "+10% to Maximum Effect of Shock",
+      "values": [
+        "+10"
+      ]
+    },
+    {
+      "text": "Ring always Shocks",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Base Maximum Effect of Shock is 50% increased Damage taken)",
+    "(Base Maximum Effect of Shock is 50% increased Damage taken)",
+    "(Base Maximum Effect of Shock is 50% increased Damage taken)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–10)% to Maximum Effect of Shock",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "+(0–10)% to Maximum Effect of Shock",
+      "values": [
+        "+(0–10)"
+      ]
+    }
+  ]
 }

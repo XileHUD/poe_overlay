@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Mine, Projectile",
     "DropLevel": "28",
+    "BaseType": "Pyroclast Mine",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Projectile, Fire, RemoteMined, Area, HasReservation, Aura, AuraAffectsEnemies, ProjectilesNotFromUser, Nova, AuraNotOnCaster",
@@ -455,5 +456,119 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a mine that deals damage in an area when detonated, then launches fiery projectiles that rain down around it, each exploding to deal damage in a smaller area.",
+  "explicitMods": [
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Deals (26–240) to (39–361) Fire Damage",
+      "values": [
+        "(26–240)",
+        "(39–361)"
+      ]
+    },
+    {
+      "text": "Base Mine Detonation Time is 0.35 seconds",
+      "values": [
+        "0.35"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Fires an additional Projectile for every 4 prior Mines in Detonation Sequence",
+      "values": []
+    },
+    {
+      "text": "Each Mine Adds (1–12) to (2–18) Fire Damage to Hits against Enemies near it, upto a maximum of (64–601) to (96–901)",
+      "values": [
+        "(1–12)",
+        "(2–18)",
+        "(64–601)",
+        "(96–901)"
+      ]
+    },
+    {
+      "text": "Mine lasts 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Deals (26–240) to (39–361) Fire Damage",
+      "values": [
+        "(26–240)",
+        "(39–361)"
+      ]
+    },
+    {
+      "text": "Base Mine Detonation Time is 0.35 seconds",
+      "values": [
+        "0.35"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Fires an additional Projectile for every 4 prior Mines in Detonation Sequence",
+      "values": []
+    },
+    {
+      "text": "Each Mine Adds (1–12) to (2–18) Fire Damage to Hits against Enemies near it, upto a maximum of (64–601) to (96–901)",
+      "values": [
+        "(1–12)",
+        "(2–18)",
+        "(64–601)",
+        "(96–901)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is mined [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "projectile behaviour only explode [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–1) Projectile",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Fires +(0–1) Projectile",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

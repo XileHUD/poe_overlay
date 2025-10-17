@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Void Sphere of Rending",
     "TargetTypes": "Ground,",
     "Type": "Spell, Area, Trappable, Mineable, Triggerable, Duration, AreaSpell, Totemable, Physical, Damage, Chaos, Orb",
     "ActiveSkillsCode": "void_sphere_alt_x"
@@ -371,5 +372,169 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a Void Sphere which Hinders enemies in an area around it, with the debuff being stronger on enemies closer to the sphere. It also regularly releases pulses of area damage. The Void Sphere will consume the corpses of any enemies which die in its area. Can only have one Void Sphere at a time.",
+  "explicitMods": [
+    {
+      "text": "Deals (68–860) to (101–1290) Physical Damage",
+      "values": [
+        "(68–860)",
+        "(101–1290)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Pulses every 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "40% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Base radius is 2.4 metres",
+      "values": [
+        "2.4"
+      ]
+    },
+    {
+      "text": "Enemies in range are Hindered, with up to (30–39)% reduced Movement Speed, based on distance from the Void Sphere",
+      "values": [
+        "(30–39)"
+      ]
+    },
+    {
+      "text": "Deals (68–860) to (101–1290) Physical Damage",
+      "values": [
+        "(68–860)",
+        "(101–1290)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Pulses every 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "40% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Base radius is 2.4 metres",
+      "values": [
+        "2.4"
+      ]
+    },
+    {
+      "text": "Enemies in range are Hindered, with up to (30–39)% reduced Movement Speed, based on distance from the Void Sphere",
+      "values": [
+        "(30–39)"
+      ]
+    },
+    {
+      "text": "damage cannot be reflected or leech if used by other object [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (68–5982) to (101–8973) Physical Damage",
+      "values": [
+        "(68–5982)",
+        "(101–8973)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Pulses every 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "40% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Base radius is 2.4 metres",
+      "values": [
+        "2.4"
+      ]
+    },
+    {
+      "text": "Enemies in range are Hindered, with up to (30–47)% reduced Movement Speed, based on distance from the Void Sphere",
+      "values": [
+        "(30–47)"
+      ]
+    },
+    {
+      "text": "damage cannot be reflected or leech if used by other object [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Hinder reduces movement speed)",
+    "(Hinder reduces movement speed)",
+    "(Hinder reduces movement speed)",
+    "(Hinder reduces movement speed)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–0.5) seconds",
+      "values": [
+        "(0–0.5)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–0.5) seconds",
+      "values": [
+        "(0–0.5)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–0.5) seconds",
+      "values": [
+        "(0–0.5)"
+      ]
+    }
+  ]
 }

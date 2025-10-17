@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Hexblast of Contradiction",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Damage, Area, Chaos, Trappable, Totemable, Mineable, Multicastable, Triggerable, CanRapidFire, Hex, AreaSpell, Cooldown",
     "ActiveSkillsCode": "hexblast_alt_x"
@@ -331,5 +332,153 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Deals chaos damage to a single enemy, dealing more damage if they are Hexed, then removing the Hex. If the enemy was Hexed, also deals area damage to other enemies around the target, boosting damage and removing Hexes from those enemies in the same way.",
+  "explicitMods": [
+    {
+      "text": "Deals (111–1514) to (166–2271) Chaos Damage",
+      "values": [
+        "(111–1514)",
+        "(166–2271)"
+      ]
+    },
+    {
+      "text": "Base radius is 3.2 metres",
+      "values": [
+        "3.2"
+      ]
+    },
+    {
+      "text": "All Damage can Ignite, Freeze, and Shock",
+      "values": []
+    },
+    {
+      "text": "Chaos Damage with Hits is Resisted by highest Resistance instead",
+      "values": []
+    },
+    {
+      "text": "90% more Damage with Ailments if Enemy is Hexed",
+      "values": [
+        "90"
+      ]
+    },
+    {
+      "text": "240% more Damage with Hits if Enemy is Hexed",
+      "values": [
+        "240"
+      ]
+    },
+    {
+      "text": "% chance to remove a Hex after Damaging",
+      "values": []
+    },
+    {
+      "text": "Deals (111–1514) to (166–2271) Chaos Damage",
+      "values": [
+        "(111–1514)",
+        "(166–2271)"
+      ]
+    },
+    {
+      "text": "Base radius is 3.2 metres",
+      "values": [
+        "3.2"
+      ]
+    },
+    {
+      "text": "All Damage can Ignite, Freeze, and Shock",
+      "values": []
+    },
+    {
+      "text": "Chaos Damage with Hits is Resisted by highest Resistance instead",
+      "values": []
+    },
+    {
+      "text": "90% more Damage with Ailments if Enemy is Hexed",
+      "values": [
+        "90"
+      ]
+    },
+    {
+      "text": "240% more Damage with Hits if Enemy is Hexed",
+      "values": [
+        "240"
+      ]
+    },
+    {
+      "text": "% chance to remove a Hex after Damaging",
+      "values": []
+    },
+    {
+      "text": "Deals (111–7916) to (166–11874) Chaos Damage",
+      "values": [
+        "(111–7916)",
+        "(166–11874)"
+      ]
+    },
+    {
+      "text": "Base radius is 3.2 metres",
+      "values": [
+        "3.2"
+      ]
+    },
+    {
+      "text": "All Damage can Ignite, Freeze, and Shock",
+      "values": []
+    },
+    {
+      "text": "Chaos Damage with Hits is Resisted by highest Resistance instead",
+      "values": []
+    },
+    {
+      "text": "90% more Damage with Ailments if Enemy is Hexed",
+      "values": [
+        "90"
+      ]
+    },
+    {
+      "text": "240% more Damage with Hits if Enemy is Hexed",
+      "values": [
+        "240"
+      ]
+    },
+    {
+      "text": "% chance to remove a Hex after Damaging",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(-10–0)% chance to remove a Hex after Damaging",
+      "values": [
+        "(-10–0)"
+      ]
+    },
+    {
+      "text": "(-10–0)% chance to remove a Hex after Damaging",
+      "values": [
+        "(-10–0)"
+      ]
+    },
+    {
+      "text": "(-10–0)% chance to remove a Hex after Damaging",
+      "values": [
+        "(-10–0)"
+      ]
+    }
+  ]
 }

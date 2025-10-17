@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Smite of Divine Judgement",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Melee, Attack, Area, Multistrikeable, Damage, MeleeSingleTarget, Lightning",
@@ -372,5 +373,120 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Performs a melee attack, and causes lightning to strike nearby enemies, dealing damage in an area. Each target can only be hit once by this skill. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "(0–38)% more Area Damage",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Base radius is (1.5–2.1) metres",
+      "values": [
+        "(1.5–2.1)"
+      ]
+    },
+    {
+      "text": "Lightning strikes 3 targets within 5 metres",
+      "values": [
+        "3",
+        "5"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "(0–38)% more Area Damage",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Base radius is (1.5–2.1) metres",
+      "values": [
+        "(1.5–2.1)"
+      ]
+    },
+    {
+      "text": "Lightning strikes 3 targets within 5 metres",
+      "values": [
+        "3",
+        "5"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "(0–68)% more Area Damage",
+      "values": [
+        "(0–68)"
+      ]
+    },
+    {
+      "text": "Base radius is (1.5–2.6) metres",
+      "values": [
+        "(1.5–2.6)"
+      ]
+    },
+    {
+      "text": "Lightning strikes 3 targets within 5 metres",
+      "values": [
+        "3",
+        "5"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Lightning strikes targets within +(0–2) metres",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Lightning strikes targets within +(0–2) metres",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Lightning strikes targets within +(0–2) metres",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

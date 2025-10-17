@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Impale",
     "DropLevel": "31",
+    "BaseType": "Impale Support",
     "Class": "Support Gems",
     "Icon": "I",
     "ItemType": "Metadata/Items/Gems/SupportGemImpale",
@@ -373,5 +374,51 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Attacks have 60% chance to Impale Enemies on Hit",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Supported Attacks have (0–28)% increased Impale Effect",
+      "values": [
+        "(0–28)"
+      ]
+    },
+    {
+      "text": "Supported Attacks have 60% chance to Impale Enemies on Hit",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Supported Attacks have (0–28)% increased Impale Effect",
+      "values": [
+        "(0–28)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)",
+    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)",
+    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Attacks have (0–10)% increased Impale Effect",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Attacks have (0–10)% increased Impale Effect",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

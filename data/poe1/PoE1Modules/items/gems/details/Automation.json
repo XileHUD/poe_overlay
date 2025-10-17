@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Cooldown, Trigger, Recovery",
     "DropLevel": "24",
+    "BaseType": "Automation",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Instant, HasReservation, Cooldown",
@@ -375,5 +376,55 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "While this skill is active, supported spells will be repeatedly triggered.",
+  "explicitMods": [
+    {
+      "text": "Each Supported Spell will Trigger when its Cooldown is over",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (5–24)% reduced Cooldown Recovery Rate",
+      "values": [
+        "(5–24)"
+      ]
+    },
+    {
+      "text": "Supported Spells are Triggered when their Cooldowns are over",
+      "values": []
+    },
+    {
+      "text": "Each Supported Spell will Trigger when its Cooldown is over",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (5–24)% reduced Cooldown Recovery Rate",
+      "values": [
+        "(5–24)"
+      ]
+    },
+    {
+      "text": "Supported Spells are Triggered when their Cooldowns are over",
+      "values": []
+    },
+    {
+      "text": "spell uncastable if triggerable [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–5)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–5)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

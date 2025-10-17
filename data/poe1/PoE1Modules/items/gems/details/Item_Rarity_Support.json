@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Rarity",
     "DropLevel": "31",
+    "BaseType": "Item Rarity Support",
     "Class": "Support Gems",
     "Icon": "R",
     "ItemType": "Metadata/Items/Gems/SupportGemItemRarity",
@@ -333,5 +334,35 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that can kill enemies.",
+  "explicitMods": [
+    {
+      "text": "(40–59)% increased Rarity of Items Dropped by Enemies Slain from Supported Skills",
+      "values": [
+        "(40–59)"
+      ]
+    },
+    {
+      "text": "(40–59)% increased Rarity of Items Dropped by Enemies Slain from Supported Skills",
+      "values": [
+        "(40–59)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Rarity of Items Dropped by Enemies Slain from Supported Skills",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Rarity of Items Dropped by Enemies Slain from Supported Skills",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Projectile, Pierce",
     "DropLevel": "10",
+    "BaseType": "Unearth",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, ROTATE_TO_TARGET,",
     "Type": "Spell, Projectile, ProjectilesFromUser, Totemable, Mineable, Trappable, Triggerable, Damage, Multicastable, CanRapidFire, Area, AreaSpell, Physical",
@@ -455,5 +456,73 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a projectile that will pierce through enemies to impact the ground at the targeted location, creating a Bone Archer corpse where it lands.",
+  "explicitMods": [
+    {
+      "text": "Deals (15–607) to (22–911) Physical Damage",
+      "values": [
+        "(15–607)",
+        "(22–911)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Spawned corpses are Level (10–70)",
+      "values": [
+        "(10–70)"
+      ]
+    },
+    {
+      "text": "Maximum of 10 corpses allowed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Deals (15–607) to (22–911) Physical Damage",
+      "values": [
+        "(15–607)",
+        "(22–911)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Spawned corpses are Level (10–70)",
+      "values": [
+        "(10–70)"
+      ]
+    },
+    {
+      "text": "Maximum of 10 corpses allowed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Corpses Spawned have (0–20)% increased Maximum Life",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Corpses Spawned have (0–20)% increased Maximum Life",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

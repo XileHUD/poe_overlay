@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "DropLevel": "4",
+    "BaseType": "Spell Cascade Support",
     "Class": "Support Gems",
     "Icon": "p",
     "ItemType": "Metadata/Items/Gems/SupportGemSpellCascade",
@@ -372,5 +373,55 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports spell skills that apply an effect to an area around a targeted location. Cannot support Vaal skills or skills used by totems, traps, or mines. Cannot modify the skills of minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (16–25)% less Area of Effect",
+      "values": [
+        "(16–25)"
+      ]
+    },
+    {
+      "text": "Supported Area of Effect Skills also affect areas in front of and behind the targeted area",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (31–40)% less Damage",
+      "values": [
+        "(31–40)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (16–25)% less Area of Effect",
+      "values": [
+        "(16–25)"
+      ]
+    },
+    {
+      "text": "Supported Area of Effect Skills also affect areas in front of and behind the targeted area",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (31–40)% less Damage",
+      "values": [
+        "(31–40)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

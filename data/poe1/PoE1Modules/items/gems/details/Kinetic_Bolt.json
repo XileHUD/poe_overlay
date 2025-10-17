@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Projectile, Fork, Modifiers",
+    "BaseType": "Kinetic Bolt",
     "Class": "Skill Gems",
     "Weapon": "Wands",
     "TargetTypes": "Ground, Enemy,",
@@ -375,5 +376,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fire a projectile from your wand that changes direction in a zig-zag pattern at regular intervals or when hitting enemies. Each time it changes direction, a secondary projectile breaks off, flying in the direction it changed away from.",
+  "explicitMods": [
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 200% of their value",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Projectile changes direction (5–8) times",
+      "values": [
+        "(5–8)"
+      ]
+    },
+    {
+      "text": "Modifiers which would cause projectiles to Fork instead cause them to change direction additional times",
+      "values": []
+    },
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 200% of their value",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Projectile changes direction (5–8) times",
+      "values": [
+        "(5–8)"
+      ]
+    },
+    {
+      "text": "Modifiers which would cause projectiles to Fork instead cause them to change direction additional times",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at +(0–50)% of their value",
+      "values": [
+        "+(0–50)"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at +(0–50)% of their value",
+      "values": [
+        "+(0–50)"
+      ]
+    }
+  ]
 }

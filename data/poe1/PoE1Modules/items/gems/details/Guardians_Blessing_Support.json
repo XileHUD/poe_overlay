@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Reservation, Aura, Minion",
     "DropLevel": "31",
+    "BaseType": "Guardian's Blessing Support",
     "Class": "Support Gems",
     "Icon": "g",
     "ItemType": "Metadata/Items/Gems/SupportGemGuardiansBlessing",
@@ -453,5 +454,75 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Must support both a skill that creates minions which can be damaged, and\n an aura skill that creates permanent auras around you.\nCannot support triggered skills, banner skills or stance skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (-27–30)% reduced Aura effect",
+      "values": [
+        "(-27–30)"
+      ]
+    },
+    {
+      "text": "Supported Aura Skills have no Reservation",
+      "values": []
+    },
+    {
+      "text": "Supported Skills also count as Blessing SkillsYou can only have one Aura on you from your Blessing Skills",
+      "values": []
+    },
+    {
+      "text": "Supported Skills cannot apply Auras on you unless you have Minions from a Supported Skill",
+      "values": []
+    },
+    {
+      "text": "Minions from Supported Skills take (8–14.3)% of their total Maximum Life and Energy Shield as Physical Damage per second while you have an Aura from a Supported Skill on you",
+      "values": [
+        "(8–14.3)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (-27–30)% reduced Aura effect",
+      "values": [
+        "(-27–30)"
+      ]
+    },
+    {
+      "text": "Supported Aura Skills have no Reservation",
+      "values": []
+    },
+    {
+      "text": "Supported Skills also count as Blessing SkillsYou can only have one Aura on you from your Blessing Skills",
+      "values": []
+    },
+    {
+      "text": "Supported Skills cannot apply Auras on you unless you have Minions from a Supported Skill",
+      "values": []
+    },
+    {
+      "text": "Minions from Supported Skills take (8–14.3)% of their total Maximum Life and Energy Shield as Physical Damage per second while you have an Aura from a Supported Skill on you",
+      "values": [
+        "(8–14.3)"
+      ]
+    },
+    {
+      "text": "support guardians blessing summoned minions are guardians blessing minions [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–5)% increased Aura effect",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–5)% increased Aura effect",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

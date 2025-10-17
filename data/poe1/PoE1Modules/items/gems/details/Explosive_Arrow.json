@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Ailment",
     "DropLevel": "28",
+    "BaseType": "Explosive Arrow",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
@@ -376,5 +377,119 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires an arrow which will stick into an enemy or wall, and then explode, dealing area damage around it, either after a duration or when the maximum number of arrows stuck to that target is reached. If an enemy has multiple Explosive Arrows stuck in them, the first one to explode will consume the others, adding their damage to its explosion.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Explosion will have (47–522) to (71–783) added Fire Damage",
+      "values": [
+        "(47–522)",
+        "(71–783)"
+      ]
+    },
+    {
+      "text": "Explosion deals 50% less Base Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+0.2 metres to Explosion Radius per Explosive Arrow on Target, up to a maximum of +1.2 metres",
+      "values": [
+        "+0.2",
+        "+1.2"
+      ]
+    },
+    {
+      "text": "Explosion deals 6% more Damage with Hits per Explosive Arrow on Target",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Explosion deals 3% more Damage with Ailments per Explosive Arrow on Target",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Maximum 20 Explosive Arrows stuck in an Enemy",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Explosion will have (47–522) to (71–783) added Fire Damage",
+      "values": [
+        "(47–522)",
+        "(71–783)"
+      ]
+    },
+    {
+      "text": "Explosion deals 50% less Base Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+0.2 metres to Explosion Radius per Explosive Arrow on Target, up to a maximum of +1.2 metres",
+      "values": [
+        "+0.2",
+        "+1.2"
+      ]
+    },
+    {
+      "text": "Explosion deals 6% more Damage with Hits per Explosive Arrow on Target",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Explosion deals 3% more Damage with Ailments per Explosive Arrow on Target",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Maximum 20 Explosive Arrows stuck in an Enemy",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–2) Maximum Explosive Arrows stuck in an Enemy",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "+(0–2) Maximum Explosive Arrows stuck in an Enemy",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

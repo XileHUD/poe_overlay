@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Melee, Totem",
     "DropLevel": "4",
+    "BaseType": "Ancestral Protector",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy,",
@@ -415,5 +416,103 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons an Ancestor Totem which attacks enemies with melee strikes while you're near it. Being near it grants you more attack speed. Requires a Melee Weapon or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "Totem lasts 12 seconds",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "(10–20)% more Attack Speed while Totem is Active",
+      "values": [
+        "(10–20)"
+      ]
+    },
+    {
+      "text": "50% increased Totem Placement speed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+(1.6–1.8) metres to Melee Strike Range",
+      "values": [
+        "+(1.6–1.8)"
+      ]
+    },
+    {
+      "text": "Totem lasts 12 seconds",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "(10–20)% more Attack Speed while Totem is Active",
+      "values": [
+        "(10–20)"
+      ]
+    },
+    {
+      "text": "50% increased Totem Placement speed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+(1.6–1.8) metres to Melee Strike Range",
+      "values": [
+        "+(1.6–1.8)"
+      ]
+    },
+    {
+      "text": "ancestor totem parent activiation range [70]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [50]",
+      "values": []
+    },
+    {
+      "text": "attack_speed_+%",
+      "values": []
+    },
+    {
+      "text": "melee_ancestor_totem_granted_attack_speed_+%_final",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–0.4) metres to Melee Strike Range",
+      "values": [
+        "+(0–0.4)"
+      ]
+    },
+    {
+      "text": "+(0–0.4) metres to Melee Strike Range",
+      "values": [
+        "+(0–0.4)"
+      ]
+    }
+  ]
 }

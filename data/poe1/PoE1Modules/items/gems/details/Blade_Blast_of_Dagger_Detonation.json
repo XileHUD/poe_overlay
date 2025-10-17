@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Blade Blast of Dagger Detonation",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Trappable, Mineable, Totemable, Damage, Triggerable, Multicastable, CanRapidFire, AreaSpell, Physical, Nova",
     "ActiveSkillsCode": "blade_blast_alt_y"
@@ -371,5 +372,99 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Deals spell damage in an area around you. Your equipped daggers add to this damage.",
+  "explicitMods": [
+    {
+      "text": "Deals (11–309) to (17–464) Physical Damage",
+      "values": [
+        "(11–309)",
+        "(17–464)"
+      ]
+    },
+    {
+      "text": "Deals Added Spell Damage equal to (200–675)% of Damage of Equipped DaggerIf two Daggers are Equipped, each contributes 60% as much Added Damage",
+      "values": [
+        "(200–675)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.6 metres",
+      "values": [
+        "2.6"
+      ]
+    },
+    {
+      "text": "Deals (11–309) to (17–464) Physical Damage",
+      "values": [
+        "(11–309)",
+        "(17–464)"
+      ]
+    },
+    {
+      "text": "Deals Added Spell Damage equal to (200–675)% of Damage of Equipped DaggerIf two Daggers are Equipped, each contributes 60% as much Added Damage",
+      "values": [
+        "(200–675)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.6 metres",
+      "values": [
+        "2.6"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (11–1432) to (17–2148) Physical Damage",
+      "values": [
+        "(11–1432)",
+        "(17–2148)"
+      ]
+    },
+    {
+      "text": "Deals Added Spell Damage equal to (200–1050)% of Damage of Equipped DaggerIf two Daggers are Equipped, each contributes 60% as much Added Damage",
+      "values": [
+        "(200–1050)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.6 metres",
+      "values": [
+        "2.6"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Rune Daggers are considered Daggers)",
+    "(Rune Daggers are considered Daggers)",
+    "(Rune Daggers are considered Daggers)",
+    "(Rune Daggers are considered Daggers)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    }
+  ]
 }

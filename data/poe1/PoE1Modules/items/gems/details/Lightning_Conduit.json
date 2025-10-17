@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Cooldown, Hit, Trigger, Shock",
     "DropLevel": "28",
+    "BaseType": "Lightning Conduit",
     "Class": "Skill Gems",
     "TargetTypes": "Ground,",
     "Type": "Spell, Damage, Area, Totemable, Trappable, Mineable, Triggerable, Multicastable, Lightning, AreaSpell, DynamicCooldown",
@@ -415,5 +416,77 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Lightning strikes all Shocked enemies around a targeted location, then removes Shock from those enemies. Shocks cannot expire on enemies in range while casting this spell. Cannot be supported by Spell Cascade or Unleash.",
+  "explicitMods": [
+    {
+      "text": "Deals (33–387) to (98–1161) Lightning Damage",
+      "values": [
+        "(33–387)",
+        "(98–1161)"
+      ]
+    },
+    {
+      "text": "Cannot inflict Shock",
+      "values": []
+    },
+    {
+      "text": "This Spell's Cast Time is added to its Cooldown if Triggered",
+      "values": []
+    },
+    {
+      "text": "Base radius is 6 metres",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "(10–20)% more Damage with Hits per 5% Shock Effect on Enemy",
+      "values": [
+        "(10–20)"
+      ]
+    },
+    {
+      "text": "Deals (33–387) to (98–1161) Lightning Damage",
+      "values": [
+        "(33–387)",
+        "(98–1161)"
+      ]
+    },
+    {
+      "text": "Cannot inflict Shock",
+      "values": []
+    },
+    {
+      "text": "This Spell's Cast Time is added to its Cooldown if Triggered",
+      "values": []
+    },
+    {
+      "text": "Base radius is 6 metres",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "(10–20)% more Damage with Hits per 5% Shock Effect on Enemy",
+      "values": [
+        "(10–20)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–4)% more Damage with Hits per 5% Shock Effect on Enemy",
+      "values": [
+        "+(0–4)"
+      ]
+    },
+    {
+      "text": "+(0–4)% more Damage with Hits per 5% Shock Effect on Enemy",
+      "values": [
+        "+(0–4)"
+      ]
+    }
+  ]
 }

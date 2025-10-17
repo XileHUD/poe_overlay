@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Trap, Modifiers",
     "DropLevel": "28",
+    "BaseType": "Seismic Trap",
     "Class": "Skill Gems",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Duration, Damage, Mineable, Area, Trapped, AreaSpell, Physical, Cooldown",
@@ -415,5 +416,105 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap which, once triggered, repeatedly releases a number of waves for a duration. Each wave deals damage in a series of small bursts in a line, ending with a larger burst.",
+  "explicitMods": [
+    {
+      "text": "Deals (49–645) to (74–967) Physical Damage",
+      "values": [
+        "(49–645)",
+        "(74–967)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is 3.5 seconds",
+      "values": [
+        "3.5"
+      ]
+    },
+    {
+      "text": "Modifiers to Trap Throwing Speed also apply to wave release Frequency",
+      "values": []
+    },
+    {
+      "text": "Releases waves every 0.9 seconds",
+      "values": [
+        "0.9"
+      ]
+    },
+    {
+      "text": "Releases 5 waves",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Deals (49–645) to (74–967) Physical Damage",
+      "values": [
+        "(49–645)",
+        "(74–967)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is 3.5 seconds",
+      "values": [
+        "3.5"
+      ]
+    },
+    {
+      "text": "Modifiers to Trap Throwing Speed also apply to wave release Frequency",
+      "values": []
+    },
+    {
+      "text": "Releases waves every 0.9 seconds",
+      "values": [
+        "0.9"
+      ]
+    },
+    {
+      "text": "Releases 5 waves",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Releases +(0–1) wave",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Releases +(0–1) wave",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

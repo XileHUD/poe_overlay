@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Minion, Zombie",
+    "BaseType": "Raise Zombie",
     "Class": "Skill Gems",
     "TargetTypes": "Corpse,",
     "Type": "Spell, Minion, MinionsCanExplode, Trappable, Totemable, Mineable, Multicastable, Triggerable, CanRapidFire, CreatesMinion",
@@ -454,5 +455,453 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Raises a zombie minion from a corpse, which will follow you and attack enemies with a melee strike.",
+  "explicitMods": [
+    {
+      "text": "Maximum (3–6) Raised Zombies",
+      "values": [
+        "(3–6)"
+      ]
+    },
+    {
+      "text": "Minions have (0–38)% more Maximum Life",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Maximum (3–6) Raised Zombies",
+      "values": [
+        "(3–6)"
+      ]
+    },
+    {
+      "text": "Minions have (0–38)% more Maximum Life",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [1,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [1]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "+(30–40) to Dexterity",
+      "values": [
+        "+(30–40)"
+      ]
+    },
+    {
+      "text": "(5–7)% increased Cast Speed",
+      "values": [
+        "(5–7)"
+      ]
+    },
+    {
+      "text": "(100–150)% increased Evasion and Energy Shield",
+      "values": [
+        "(100–150)"
+      ]
+    },
+    {
+      "text": "Raised Zombies have (80–100)% increased maximum Life",
+      "values": [
+        "(80–100)"
+      ]
+    },
+    {
+      "text": "Raise Zombie does not require a corpse",
+      "values": []
+    },
+    {
+      "text": "Your Raised Zombies count as corpses",
+      "values": []
+    },
+    {
+      "text": "(40–60)% increased Energy Shield",
+      "values": [
+        "(40–60)"
+      ]
+    },
+    {
+      "text": "+20 to maximum Life",
+      "values": [
+        "+20"
+      ]
+    },
+    {
+      "text": "+20 to maximum Mana",
+      "values": [
+        "+20"
+      ]
+    },
+    {
+      "text": "+1 to Level of all Raise Zombie Gems",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "+1 to Level of all Raise Spectre Gems",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "(5–15)% increased Movement Speed",
+      "values": [
+        "(5–15)"
+      ]
+    },
+    {
+      "text": "+2 to Level of Socketed Minion Gems",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Minions deal (60–80)% increased Damage",
+      "values": [
+        "(60–80)"
+      ]
+    },
+    {
+      "text": "+1% Chance to Block Attack Damage per Summoned Skeleton",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "2% increased Attack and Cast Speed per Summoned Raging Spirit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Regenerate 0.6% of Life per second for each Raised Zombie",
+      "values": [
+        "0.6"
+      ]
+    },
+    {
+      "text": "30% increased Mana Regeneration Rate per Raised Spectre",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Cannot be used with Chaos Inoculation",
+      "values": []
+    },
+    {
+      "text": "+(10–20) to Intelligence",
+      "values": [
+        "+(10–20)"
+      ]
+    },
+    {
+      "text": "Minions have (20–30)% increased Movement Speed",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "Minions deal (50–70)% increased Damage",
+      "values": [
+        "(50–70)"
+      ]
+    },
+    {
+      "text": "+1 to maximum number of Raised Zombies",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "+1 to maximum number of Spectres",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "+1 to maximum number of Skeletons",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Reserves 30% of Life",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "50% reduced maximum number of Raised Zombies",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Raised Zombies have +5000 to maximum Life",
+      "values": [
+        "+5000"
+      ]
+    },
+    {
+      "text": "Raised Zombies have +(25–30)% to all Resistances",
+      "values": [
+        "+(25–30)"
+      ]
+    },
+    {
+      "text": "25% increased Raised Zombie Size",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Enemies Killed by Zombies' Hits Explode, dealing 50% of their Life as Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Raised Zombies deal (100–125)% more Physical Damage",
+      "values": [
+        "(100–125)"
+      ]
+    },
+    {
+      "text": "25% increased Strength Requirement",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Minions have (30–40)% increased maximum Life",
+      "values": [
+        "(30–40)"
+      ]
+    },
+    {
+      "text": "(150–200)% increased Skeleton Duration",
+      "values": [
+        "(150–200)"
+      ]
+    },
+    {
+      "text": "Minions deal (30–40)% increased Damage",
+      "values": [
+        "(30–40)"
+      ]
+    },
+    {
+      "text": "+(1–2) to maximum number of Raised Zombies",
+      "values": [
+        "+(1–2)"
+      ]
+    },
+    {
+      "text": "+(1–2) to maximum number of Spectres",
+      "values": [
+        "+(1–2)"
+      ]
+    },
+    {
+      "text": "+(1–2) to maximum number of Skeletons",
+      "values": [
+        "+(1–2)"
+      ]
+    },
+    {
+      "text": "25% increased Strength Requirement",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Minions have (30–40)% increased maximum Life",
+      "values": [
+        "(30–40)"
+      ]
+    },
+    {
+      "text": "Minions have (80–100)% increased Movement Speed",
+      "values": [
+        "(80–100)"
+      ]
+    },
+    {
+      "text": "(150–200)% increased Skeleton Duration",
+      "values": [
+        "(150–200)"
+      ]
+    },
+    {
+      "text": "Minions deal (30–40)% increased Damage",
+      "values": [
+        "(30–40)"
+      ]
+    },
+    {
+      "text": "+(1–2) to maximum number of Raised Zombies",
+      "values": [
+        "+(1–2)"
+      ]
+    },
+    {
+      "text": "+(1–2) to maximum number of Spectres",
+      "values": [
+        "+(1–2)"
+      ]
+    },
+    {
+      "text": "+(1–2) to maximum number of Skeletons",
+      "values": [
+        "+(1–2)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 1 Meat Shield",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "(100–140)% increased Armour and Energy Shield",
+      "values": [
+        "(100–140)"
+      ]
+    },
+    {
+      "text": "+(50–80) to maximum Life",
+      "values": [
+        "+(50–80)"
+      ]
+    },
+    {
+      "text": "(5–8)% increased Damage per Raised Zombie",
+      "values": [
+        "(5–8)"
+      ]
+    },
+    {
+      "text": "1% less Elemental Damage taken per Raised Zombie",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "+2 to Level of Socketed Minion Gems",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Minions have (10–20)% increased maximum Life",
+      "values": [
+        "(10–20)"
+      ]
+    },
+    {
+      "text": "Half of your Strength is added to your Minions",
+      "values": []
+    },
+    {
+      "text": "+1 to maximum number of Raised Zombies per 500 Strength",
+      "values": [
+        "500"
+      ]
+    },
+    {
+      "text": "With at least 1000 Strength, (1.5–2)% of Damage dealt by your Raised Zombies is Leeched to you as Life",
+      "values": [
+        "(1.5–2)"
+      ]
+    },
+    {
+      "text": "(8–12)% increased maximum Life",
+      "values": [
+        "(8–12)"
+      ]
+    },
+    {
+      "text": "Regenerate 2% of Life per second",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Flasks do not apply to you",
+      "values": []
+    },
+    {
+      "text": "Flasks you Use apply to your Raised Zombies and Spectres",
+      "values": []
+    },
+    {
+      "text": "Minions deal (10–15)% increased Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, RaisedZombies' Slam Attack has 100% increased Cooldown Recovery Rate",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Raised Zombies' SlamAttack deals 30% increased Damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 150% more Attack Damage",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–1) to Maximum Raised Zombies",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Maximum Raised Zombies",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

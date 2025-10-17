@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Resistance, Exposure, Ailment, Shock, Brittle, Sap",
     "DropLevel": "34",
+    "BaseType": "Hydrosphere",
     "Class": "Skill Gems",
     "TargetTypes": "Ground,",
     "Type": "Damage, Spell, Area, Duration, Trappable, Mineable, Triggerable, AreaSpell, Cold, Totemable, Orb, Multicastable, CanRapidFire, Lightning, Physical",
@@ -375,5 +376,125 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Create a sphere of water, or move an existing sphere and reset its duration. The sphere continually applies a drenched debuff with a short duration to enemies in its area or those it moves through. You can hit the sphere with other skills to inflict Cold and Lightning Ailments (other than Chill). The sphere pulses when created, at regular intervals while afflicted by an Ailment, and after moving, damaging all drenched enemies in a large area.",
+  "explicitMods": [
+    {
+      "text": "Deals (37–510) to (56–765) Physical Damage",
+      "values": [
+        "(37–510)",
+        "(56–765)"
+      ]
+    },
+    {
+      "text": "Base duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Pulses every 0.4 seconds while Frozen, Shocked, Brittle or Sapped",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Can only be Hit once every 1 second",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Drenched Enemies have Cold and Lightning Exposure, applying -10% to Resistances",
+      "values": [
+        "-10"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage while Sphere has no Ailments100% of Physical Damage Converted to Lightning Damage while sphere is Shocked or Sapped100% of Physical Damage Converted to Cold Damage while Sphere is Frozen or Brittle",
+      "values": []
+    },
+    {
+      "text": "Deals (37–510) to (56–765) Physical Damage",
+      "values": [
+        "(37–510)",
+        "(56–765)"
+      ]
+    },
+    {
+      "text": "Base duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Pulses every 0.4 seconds while Frozen, Shocked, Brittle or Sapped",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Can only be Hit once every 1 second",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Drenched Enemies have Cold and Lightning Exposure, applying -10% to Resistances",
+      "values": [
+        "-10"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage while Sphere has no Ailments100% of Physical Damage Converted to Lightning Damage while sphere is Shocked or Sapped100% of Physical Damage Converted to Cold Damage while Sphere is Frozen or Brittle",
+      "values": []
+    },
+    {
+      "text": "damage cannot be reflected or leech if used by other object [1]",
+      "values": []
+    },
+    {
+      "text": "hydrosphere ailment threshold [1500,103048]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(If both conversions apply, each will convert 50%)",
+    "(If both conversions apply, each will convert 50%)",
+    "(If both conversions apply, each will convert 50%)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–10)% increased Pulse Frequency",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "+(0–10)% increased Pulse Frequency",
+      "values": [
+        "+(0–10)"
+      ]
+    }
+  ]
 }

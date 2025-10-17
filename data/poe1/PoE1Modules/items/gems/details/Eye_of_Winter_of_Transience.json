@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Eye of Winter of Transience",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Projectile, ProjectileSpiral, Damage, SingleMainProjectile, Cold, Totemable, Mineable, Trappable, Multicastable, CanRapidFire, Triggerable",
     "ActiveSkillsCode": "eye_of_winter_alt_y"
@@ -331,5 +332,130 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a single eye projectile which releases a number shard projectiles in a spiral before dissipating. The shards will damage enemies they impact, dealing cold damage. The eye cannot damage enemies.",
+  "explicitMods": [
+    {
+      "text": "Deals (37–550) to (55–825) Cold Damage",
+      "values": [
+        "(37–550)",
+        "(55–825)"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles only apply to the Shards",
+      "values": []
+    },
+    {
+      "text": "Fires 12 Shard Projectiles in a Spiral while flying, then ends",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "50% more Projectile Speed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Deals (37–550) to (55–825) Cold Damage",
+      "values": [
+        "(37–550)",
+        "(55–825)"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles only apply to the Shards",
+      "values": []
+    },
+    {
+      "text": "Fires 12 Shard Projectiles in a Spiral while flying, then ends",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "50% more Projectile Speed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "projectile firing forward distance override [100]",
+      "values": []
+    },
+    {
+      "text": "single primary projectile [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (37–3062) to (55–4593) Cold Damage",
+      "values": [
+        "(37–3062)",
+        "(55–4593)"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles only apply to the Shards",
+      "values": []
+    },
+    {
+      "text": "Fires 12 Shard Projectiles in a Spiral while flying, then ends",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "50% more Projectile Speed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "projectile firing forward distance override [100]",
+      "values": []
+    },
+    {
+      "text": "single primary projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Projectiles gain up to +(0–15)% more Damage by the time they dissipate",
+      "values": [
+        "+(0–15)"
+      ]
+    },
+    {
+      "text": "Projectiles gain up to +(0–15)% more Damage by the time they dissipate",
+      "values": [
+        "+(0–15)"
+      ]
+    },
+    {
+      "text": "Projectiles gain up to +(0–15)% more Damage by the time they dissipate",
+      "values": [
+        "+(0–15)"
+      ]
+    }
+  ]
 }

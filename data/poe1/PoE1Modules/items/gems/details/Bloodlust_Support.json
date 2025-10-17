@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Melee, Bleeding",
     "DropLevel": "18",
+    "BaseType": "Bloodlust Support",
     "Class": "Support Gems",
     "Icon": "L",
     "ItemType": "Metadata/Items/Gems/SupportGemBloodlust",
@@ -333,5 +334,43 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports melee attack skills, causing them to deal more damage against bleeding enemies, but preventing those skills from inflicting bleeding on enemies in any way.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (25–39)% more Melee Physical Damage against Bleeding enemies",
+      "values": [
+        "(25–39)"
+      ]
+    },
+    {
+      "text": "Supported Attacks cannot cause Bleeding",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (25–39)% more Melee Physical Damage against Bleeding enemies",
+      "values": [
+        "(25–39)"
+      ]
+    },
+    {
+      "text": "Supported Attacks cannot cause Bleeding",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Melee Damage against Bleeding Enemies",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Melee Damage against Bleeding Enemies",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

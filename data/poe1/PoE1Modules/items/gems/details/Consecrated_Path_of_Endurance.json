@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Consecrated Path of Endurance",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, ,",
     "Type": "Melee, Attack, Area, Movement, Triggerable, Damage, Duration, Fire, Slam, Totemable, Cooldown",
@@ -292,5 +293,151 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slams the ground at a targeted location. If an enemy is near where you target, you'll teleport to it from a short distance away, slam, and create an area of consecrated ground. The cooldown can be bypassed by expending an Endurance Charge. Can't be supported by Multistrike, and requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Deals up to 20% more Damage with Hits to closer targets",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "10% more Area of Effect per Endurance Charge",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "10% more Attack Damage per Endurance Charge",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Deals up to 20% more Damage with Hits to closer targets",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "10% more Area of Effect per Endurance Charge",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "10% more Attack Damage per Endurance Charge",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "ignite art variation [7]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Deals up to 20% more Damage with Hits to closer targets",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "10% more Area of Effect per Endurance Charge",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "10% more Attack Damage per Endurance Charge",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "ignite art variation [7]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Deals up to +(0–10)% more Damage with Hits to closer targets",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "Deals up to +(0–10)% more Damage with Hits to closer targets",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "Deals up to +(0–10)% more Damage with Hits to closer targets",
+      "values": [
+        "+(0–10)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Hit, Projectile, Pierce, Return, Ailment",
     "DropLevel": "38",
+    "BaseType": "Returning Projectiles Support",
     "Class": "Support Gems",
     "Icon": "R",
     "ItemType": "Metadata/Items/Gems/SupportGemReturningProjectiles",
@@ -333,5 +334,51 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports projectile skills.",
+  "explicitMods": [
+    {
+      "text": "Projectiles from Supported Skills Return to you",
+      "values": []
+    },
+    {
+      "text": "Projectiles from Supported Skills deal (66–70)% less Damage with Hits and Ailments while Returning",
+      "values": [
+        "(66–70)"
+      ]
+    },
+    {
+      "text": "Projectiles from Supported Skills Pierce all Targets while Returning",
+      "values": []
+    },
+    {
+      "text": "Projectiles from Supported Skills Return to you",
+      "values": []
+    },
+    {
+      "text": "Projectiles from Supported Skills deal (66–70)% less Damage with Hits and Ailments while Returning",
+      "values": [
+        "(66–70)"
+      ]
+    },
+    {
+      "text": "Projectiles from Supported Skills Pierce all Targets while Returning",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Projectile Speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Projectile Speed",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

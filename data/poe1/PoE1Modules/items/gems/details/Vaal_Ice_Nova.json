@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Ice Nova",
     "TargetTypes": "Any",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cold, CanRapidFire, AreaSpell, Nova",
     "ActiveSkillsCode": "ice_nova"
@@ -331,5 +332,102 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "A chilling circle of ice expands from the caster, repeating from every enemy it hits.",
+  "explicitMods": [
+    {
+      "text": "Deals (18–518) to (26–762) Cold Damage",
+      "values": [
+        "(18–518)",
+        "(26–762)"
+      ]
+    },
+    {
+      "text": "Causes smaller novas up to 5 times on enemies hit",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "20% reduced Area of Effect each repeat",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Base radius is 2.6 metres",
+      "values": [
+        "2.6"
+      ]
+    },
+    {
+      "text": "Deals (18–518) to (26–762) Cold Damage",
+      "values": [
+        "(18–518)",
+        "(26–762)"
+      ]
+    },
+    {
+      "text": "Causes smaller novas up to 5 times on enemies hit",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "20% reduced Area of Effect each repeat",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Base radius is 2.6 metres",
+      "values": [
+        "2.6"
+      ]
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (23–4889) to (34–7333) Cold Damage",
+      "values": [
+        "(23–4889)",
+        "(34–7333)"
+      ]
+    },
+    {
+      "text": "Base radius is (2.6–3.4) metres",
+      "values": [
+        "(2.6–3.4)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    }
+  ]
 }

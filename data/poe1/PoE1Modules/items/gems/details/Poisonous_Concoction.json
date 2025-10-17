@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit, Projectile, Recovery, Poison",
     "DropLevel": "12",
+    "BaseType": "Poisonous Concoction",
     "Class": "Skill Gems",
     "Weapon": "Unarmed",
     "TargetTypes": "Ground, Enemy",
@@ -416,5 +417,125 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a bottle that explodes to deal unarmed attack damage in an area and has a chance to poison. Can consume charges from a Life flask to add further damage. Requires an empty main hand, and no off-hand weapon.",
+  "explicitMods": [
+    {
+      "text": "(30–716) to (44–1073) Added Chaos Damage",
+      "values": [
+        "(30–716)",
+        "(44–1073)"
+      ]
+    },
+    {
+      "text": "40% chance to Poison on Hit",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "+6% to Critical Strike Chance",
+      "values": [
+        "+6"
+      ]
+    },
+    {
+      "text": "Base radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Consumes 1 Charge per Projectile Fired from 1 Life Flask, if possible",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Added Chaos Damage equal to (3–11)% of Flask's Recovery Amount if Charges were consumed from a Life Flask",
+      "values": [
+        "(3–11)"
+      ]
+    },
+    {
+      "text": "(30–716) to (44–1073) Added Chaos Damage",
+      "values": [
+        "(30–716)",
+        "(44–1073)"
+      ]
+    },
+    {
+      "text": "40% chance to Poison on Hit",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "+6% to Critical Strike Chance",
+      "values": [
+        "+6"
+      ]
+    },
+    {
+      "text": "Base radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Consumes 1 Charge per Projectile Fired from 1 Life Flask, if possible",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Added Chaos Damage equal to (3–11)% of Flask's Recovery Amount if Charges were consumed from a Life Flask",
+      "values": [
+        "(3–11)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "poisonous concoction attach flask visual buff [1]",
+      "values": []
+    },
+    {
+      "text": "projectile behaviour only explode [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% chance to inflict Withered for 2 seconds on Hit",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to inflict Withered for 2 seconds on Hit",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

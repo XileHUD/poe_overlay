@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Channelling",
+    "BaseType": "Momentum Support",
     "Class": "Support Gems",
     "Icon": "n",
     "ItemType": "Metadata/Items/Gems/SupportGemOnslaught",
@@ -452,5 +453,77 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills that aren't triggered.",
+  "explicitMods": [
+    {
+      "text": "Gain 1 Momentum when you Use a Supported SkillGain 1 Momentum every (0.51–0.7) seconds while Channelling a Supported SkillLose all Momentum if you Move",
+      "values": [
+        "(0.51–0.7)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (15–20)% increased Attack Speed per Momentum",
+      "values": [
+        "(15–20)"
+      ]
+    },
+    {
+      "text": "When you reach (3–5) Momentum, lose all Momentum and gainSwiftness for 1.5 seconds",
+      "values": [
+        "(3–5)",
+        "1.5"
+      ]
+    },
+    {
+      "text": "Swiftness grants 15% increased Movement Speed per Momentum lost",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Gain 1 Momentum when you Use a Supported SkillGain 1 Momentum every (0.51–0.7) seconds while Channelling a Supported SkillLose all Momentum if you Move",
+      "values": [
+        "(0.51–0.7)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (15–20)% increased Attack Speed per Momentum",
+      "values": [
+        "(15–20)"
+      ]
+    },
+    {
+      "text": "When you reach (3–5) Momentum, lose all Momentum and gainSwiftness for 1.5 seconds",
+      "values": [
+        "(3–5)",
+        "1.5"
+      ]
+    },
+    {
+      "text": "Swiftness grants 15% increased Movement Speed per Momentum lost",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "count as momentum + if not channelled [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Swiftness lasts +(0–0.5) seconds",
+      "values": [
+        "+(0–0.5)"
+      ]
+    },
+    {
+      "text": "Swiftness lasts +(0–0.5) seconds",
+      "values": [
+        "+(0–0.5)"
+      ]
+    }
+  ]
 }

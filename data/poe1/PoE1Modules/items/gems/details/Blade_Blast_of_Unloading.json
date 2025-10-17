@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Blade Blast of Unloading",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Trappable, Mineable, Totemable, Damage, Triggerable, Multicastable, CanRapidFire, AreaSpell, Physical, Nova",
     "ActiveSkillsCode": "blade_blast_alt_x"
@@ -331,5 +332,112 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Deals spell damage in an area around you. If you have Blade Vortex blades orbiting you, it will detonate each of them in turn, dealing damage again in an area around you for each one.",
+  "explicitMods": [
+    {
+      "text": "Deals (40–1107) to (60–1661) Physical Damage",
+      "values": [
+        "(40–1107)",
+        "(60–1661)"
+      ]
+    },
+    {
+      "text": "5% more Damage for each blade",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base radius is 1.6 metres",
+      "values": [
+        "1.6"
+      ]
+    },
+    {
+      "text": "80% more Area of Effect per Blade Vortex blade detonated",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Deals (40–1107) to (60–1661) Physical Damage",
+      "values": [
+        "(40–1107)",
+        "(60–1661)"
+      ]
+    },
+    {
+      "text": "5% more Damage for each blade",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base radius is 1.6 metres",
+      "values": [
+        "1.6"
+      ]
+    },
+    {
+      "text": "80% more Area of Effect per Blade Vortex blade detonated",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (40–5129) to (60–7694) Physical Damage",
+      "values": [
+        "(40–5129)",
+        "(60–7694)"
+      ]
+    },
+    {
+      "text": "5% more Damage for each blade",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base radius is 1.6 metres",
+      "values": [
+        "1.6"
+      ]
+    },
+    {
+      "text": "80% more Area of Effect per Blade Vortex blade detonated",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Area of Effect per Blade Vortex blade detonated",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Area of Effect per Blade Vortex blade detonated",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Area of Effect per Blade Vortex blade detonated",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

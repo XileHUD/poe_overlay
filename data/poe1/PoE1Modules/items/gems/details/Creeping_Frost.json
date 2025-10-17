@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Chill, Modifiers",
     "DropLevel": "12",
+    "BaseType": "Creeping Frost",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Projectile, ProjectilesFromUser, Damage, Trappable, Totemable, Mineable, Duration, Area, Multicastable, Triggerable, Cold, ChillingArea, CanRapidFire, AreaSpell",
@@ -455,5 +456,125 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fire an icy projectile that bursts on impact or when reaching the targeted area, dealing area damage and creating a chilling area that deals cold damage over time. This area will creep across the ground towards nearby enemies until its duration expires.",
+  "explicitMods": [
+    {
+      "text": "Deals (11–568) to (16–847) Cold Damage",
+      "values": [
+        "(11–568)",
+        "(16–847)"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Deals (18.4–2225.7) Base Cold Damage per second",
+      "values": [
+        "(18.4–2225.7)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Base radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Can have up to 10 Chilling Areas",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Deals (11–568) to (16–847) Cold Damage",
+      "values": [
+        "(11–568)",
+        "(16–847)"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Deals (18.4–2225.7) Base Cold Damage per second",
+      "values": [
+        "(18.4–2225.7)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Base radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Can have up to 10 Chilling Areas",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "active skill projectile speed +% variation final [60]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "total projectile spread angle override [200]",
+      "values": []
+    },
+    {
+      "text": "base_cold_damage_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "is_on_ground_arctic_breath",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    }
+  ]
 }

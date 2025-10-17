@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit, Chain",
     "DropLevel": "12",
+    "BaseType": "Static Strike",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
@@ -456,5 +457,95 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Attack with a melee weapon, gaining static energy for a duration if you hit an enemy. While you have static energy, you'll frequently hit a number of nearby enemies with beams, dealing attack damage.",
+  "explicitMods": [
+    {
+      "text": "Beams Hit Enemies every (0.32–0.4) seconds",
+      "values": [
+        "(0.32–0.4)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Chains +1 Times",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Beams deal 40% less Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "(4–6) maximum Beam Targets",
+      "values": [
+        "(4–6)"
+      ]
+    },
+    {
+      "text": "Beams Hit Enemies every (0.32–0.4) seconds",
+      "values": [
+        "(0.32–0.4)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Chains +1 Times",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Beams deal 40% less Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "(4–6) maximum Beam Targets",
+      "values": [
+        "(4–6)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Beam frequency",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Beam frequency",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

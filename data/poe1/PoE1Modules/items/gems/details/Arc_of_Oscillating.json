@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Arc of Oscillating",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Trappable, Totemable, Mineable, Chains, Multicastable, Triggerable, Lightning, CanRapidFire",
     "ActiveSkillsCode": "arc_alt_y"
@@ -331,5 +332,110 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "An arc of lightning reaches from the caster to a targeted enemy and chains to other enemies. Each time the arc chains, it will also chain a secondary arc to another enemy, but this secondary arc cannot chain further.",
+  "explicitMods": [
+    {
+      "text": "Deals (3–94) to (15–531) Lightning Damage",
+      "values": [
+        "(3–94)",
+        "(15–531)"
+      ]
+    },
+    {
+      "text": "Chains +6 Times",
+      "values": [
+        "+6"
+      ]
+    },
+    {
+      "text": "50% more Damage with Hits and Ailments for each remaining Chain",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Deals (3–94) to (15–531) Lightning Damage",
+      "values": [
+        "(3–94)",
+        "(15–531)"
+      ]
+    },
+    {
+      "text": "Chains +6 Times",
+      "values": [
+        "+6"
+      ]
+    },
+    {
+      "text": "50% more Damage with Hits and Ailments for each remaining Chain",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "arc chain distance [35]",
+      "values": []
+    },
+    {
+      "text": "arc enhanced behaviour [1]",
+      "values": []
+    },
+    {
+      "text": "disable visual hit effect [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (3–412) to (15–2335) Lightning Damage",
+      "values": [
+        "(3–412)",
+        "(15–2335)"
+      ]
+    },
+    {
+      "text": "Chains +6 Times",
+      "values": [
+        "+6"
+      ]
+    },
+    {
+      "text": "50% more Damage with Hits and Ailments for each remaining Chain",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "arc chain distance [35]",
+      "values": []
+    },
+    {
+      "text": "arc enhanced behaviour [1]",
+      "values": []
+    },
+    {
+      "text": "disable visual hit effect [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Chains +(0–1) Times",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Chains +(0–1) Times",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Chains +(0–1) Times",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

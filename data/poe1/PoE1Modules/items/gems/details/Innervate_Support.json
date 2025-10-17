@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Kill, Shock",
     "DropLevel": "31",
+    "BaseType": "Innervate Support",
     "Class": "Support Gems",
     "Icon": "K",
     "ItemType": "Metadata/Items/Gems/SupportGemOnslaughtOnSlayingShockedEnemy",
@@ -373,5 +374,203 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill you use to hit enemies yourself. Cannot support skills used by totems, traps, or mines.",
+  "explicitMods": [
+    {
+      "text": "Gain Innervation on Killing a Shocked Enemy with Supported Skills",
+      "values": []
+    },
+    {
+      "text": "Innervation grants (1–8) to (17–145) Lightning Damage",
+      "values": [
+        "(1–8)",
+        "(17–145)"
+      ]
+    },
+    {
+      "text": "Innervation lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Supported Skills have 20% chance to Shock",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Supported Skills have (2–14) to (29–251) added Lightning Damage",
+      "values": [
+        "(2–14)",
+        "(29–251)"
+      ]
+    },
+    {
+      "text": "Gain Innervation on Killing a Shocked Enemy with Supported Skills",
+      "values": []
+    },
+    {
+      "text": "Innervation grants (1–8) to (17–145) Lightning Damage",
+      "values": [
+        "(1–8)",
+        "(17–145)"
+      ]
+    },
+    {
+      "text": "Innervation lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Supported Skills have 20% chance to Shock",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Supported Skills have (2–14) to (29–251) added Lightning Damage",
+      "values": [
+        "(2–14)",
+        "(29–251)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Elemental Penetration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Immolate",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Unbound Ailments",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Inspiration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Innervate",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 18 Ice Bite",
+      "values": [
+        "18"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 18 Innervate",
+      "values": [
+        "18"
+      ]
+    },
+    {
+      "text": "Grants Summon Harbinger of Storms Skill",
+      "values": []
+    },
+    {
+      "text": "+(100–150) to Evasion Rating",
+      "values": [
+        "+(100–150)"
+      ]
+    },
+    {
+      "text": "+(40–60) to maximum Energy Shield",
+      "values": [
+        "+(40–60)"
+      ]
+    },
+    {
+      "text": "+(60–80) to maximum Life",
+      "values": [
+        "+(60–80)"
+      ]
+    },
+    {
+      "text": "+(10–15)% to all Elemental Resistances",
+      "values": [
+        "+(10–15)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 18 Ice Bite",
+      "values": [
+        "18"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 18 Innervate",
+      "values": [
+        "18"
+      ]
+    },
+    {
+      "text": "Grants Summon Greater Harbinger of Storms Skill",
+      "values": []
+    },
+    {
+      "text": "+(100–150) to Evasion Rating",
+      "values": [
+        "+(100–150)"
+      ]
+    },
+    {
+      "text": "+(40–60) to maximum Energy Shield",
+      "values": [
+        "+(40–60)"
+      ]
+    },
+    {
+      "text": "+(60–80) to maximum Life",
+      "values": [
+        "+(60–80)"
+      ]
+    },
+    {
+      "text": "+(10–15)% to all Elemental Resistances",
+      "values": [
+        "+(10–15)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Innervation lasts (0–2) seconds",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Innervation lasts (0–2) seconds",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

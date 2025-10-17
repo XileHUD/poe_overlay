@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Ailment",
     "DropLevel": "28",
+    "BaseType": "Crackling Lance",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Area, Damage, Lightning, Trappable, Mineable, Totemable, Triggerable, AreaSpell, Multicastable, CanRapidFire",
@@ -375,5 +376,81 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Release a beam which deals lightning damage to enemies in a long area in front of you, and has several smaller beams branch off from it at an angle, hitting more enemies to the sides.",
+  "explicitMods": [
+    {
+      "text": "Deals (28–458) to (84–1375) Lightning Damage",
+      "values": [
+        "(28–458)",
+        "(84–1375)"
+      ]
+    },
+    {
+      "text": "This Spell loses 1 Intensity every 0.5 seconds while moving, or immediately if you teleport",
+      "values": []
+    },
+    {
+      "text": "This Spell gains Intensity when you Cast it, to a maximum of 3",
+      "values": []
+    },
+    {
+      "text": "+0.3 metres to Beam Width Per Intensity33% less branching angle per Intensity",
+      "values": [
+        "+0.3"
+      ]
+    },
+    {
+      "text": "35% more Damage with Hits and Ailments per Intensity",
+      "values": [
+        "35"
+      ]
+    },
+    {
+      "text": "Deals (28–458) to (84–1375) Lightning Damage",
+      "values": [
+        "(28–458)",
+        "(84–1375)"
+      ]
+    },
+    {
+      "text": "This Spell loses 1 Intensity every 0.5 seconds while moving, or immediately if you teleport",
+      "values": []
+    },
+    {
+      "text": "This Spell gains Intensity when you Cast it, to a maximum of 3",
+      "values": []
+    },
+    {
+      "text": "+0.3 metres to Beam Width Per Intensity33% less branching angle per Intensity",
+      "values": [
+        "+0.3"
+      ]
+    },
+    {
+      "text": "35% more Damage with Hits and Ailments per Intensity",
+      "values": [
+        "35"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–10)% more Damage with Hits and Ailments per Intensity",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "+(0–10)% more Damage with Hits and Ailments per Intensity",
+      "values": [
+        "+(0–10)"
+      ]
+    }
+  ]
 }

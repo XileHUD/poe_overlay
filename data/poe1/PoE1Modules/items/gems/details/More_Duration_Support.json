@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Duration",
     "DropLevel": "31",
+    "BaseType": "More Duration Support",
     "Class": "Support Gems",
     "Icon": "D",
     "ItemType": "Metadata/Items/Gems/SupportGemIncreasedDuration",
@@ -333,5 +334,35 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill with a duration.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (30–39)% more Skill Effect Duration",
+      "values": [
+        "(30–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (30–39)% more Skill Effect Duration",
+      "values": [
+        "(30–39)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% more Skill Effect Duration",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% more Skill Effect Duration",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

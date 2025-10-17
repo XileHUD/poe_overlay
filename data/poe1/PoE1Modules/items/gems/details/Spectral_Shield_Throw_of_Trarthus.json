@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Spectral Shield Throw of Trarthus",
     "Weapon": "Shields",
     "TargetTypes": "Enemy, Ground",
     "Type": "Attack, RangedAttack, Projectile, ProjectilesFromUser, SingleMainProjectile, Physical",
@@ -372,5 +373,147 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a spectral copy of your shield as a piercing projectile which deals off-hand damage augmented by the defences of the shield. When it reaches the targeted location it will hover in place, repeatedly firing a number of smaller shards as projectiles in all directions. The rate at which it releases shards will increase until all shards have been fired. Modifiers that cause additional projectiles to be fired will add more shards, not more copies of the shield.",
+  "explicitMods": [
+    {
+      "text": "Shard Projectiles Deal 50% less Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "(56–243) to (84–364) Base Off Hand Physical Damage",
+      "values": [
+        "(56–243)",
+        "(84–364)"
+      ]
+    },
+    {
+      "text": "(2–3) to (3–5) Added Physical Damage per 15 Armour or Evasion Rating on Shield",
+      "values": [
+        "(2–3)",
+        "(3–5)"
+      ]
+    },
+    {
+      "text": "Fires (17–23) additional Projectiles",
+      "values": [
+        "(17–23)"
+      ]
+    },
+    {
+      "text": "Fires 6 Shards at a time until all fired",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Shard Projectiles Deal 50% less Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "(56–243) to (84–364) Base Off Hand Physical Damage",
+      "values": [
+        "(56–243)",
+        "(84–364)"
+      ]
+    },
+    {
+      "text": "(2–3) to (3–5) Added Physical Damage per 15 Armour or Evasion Rating on Shield",
+      "values": [
+        "(2–3)",
+        "(3–5)"
+      ]
+    },
+    {
+      "text": "Fires (17–23) additional Projectiles",
+      "values": [
+        "(17–23)"
+      ]
+    },
+    {
+      "text": "Fires 6 Shards at a time until all fired",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "stationary shield throw firing interval ms [600]",
+      "values": []
+    },
+    {
+      "text": "stationary shield throw interval acceleration % per interval [40]",
+      "values": []
+    },
+    {
+      "text": "thrown shield projectile fire random directions [1]",
+      "values": []
+    },
+    {
+      "text": "Shard Projectiles Deal 50% less Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "(28–280) to (42–420) Base Off Hand Physical Damage",
+      "values": [
+        "(28–280)",
+        "(42–420)"
+      ]
+    },
+    {
+      "text": "(2–4) to (3–6) Added Physical Damage per 15 Armour or Evasion Rating on Shield",
+      "values": [
+        "(2–4)",
+        "(3–6)"
+      ]
+    },
+    {
+      "text": "Fires (18–28) additional Projectiles",
+      "values": [
+        "(18–28)"
+      ]
+    },
+    {
+      "text": "Fires 6 Shards at a time until all fired",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "stationary shield throw firing interval ms [600]",
+      "values": []
+    },
+    {
+      "text": "stationary shield throw interval acceleration % per interval [40]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Projectile Speed",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Projectile Speed",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

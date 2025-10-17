@@ -36,6 +36,7 @@ const state = {
 let searchValue = '';
 let selectedCategory = 'All';
 const selectedFilters = new Set<string>();
+let tagsExpanded = false; // Track Show More/Less state
 
 /**
  * Show the PoE1 Uniques panel
@@ -348,10 +349,16 @@ export function render(): void {
       });
     });
     
-    sortedTags.forEach(tag => {
+    // Filter tags that have counts
+    const tagsWithCounts = sortedTags.filter(tag => (tagCounts[tag] || 0) > 0);
+    
+    // Calculate if we need Show More button (approx 3 rows = ~21 tags @ 11px font with typical tag lengths)
+    const MAX_TAGS_COLLAPSED = 21;
+    const tagsToShow = (tagsExpanded || tagsWithCounts.length <= MAX_TAGS_COLLAPSED) ? tagsWithCounts : tagsWithCounts.slice(0, MAX_TAGS_COLLAPSED);
+    const needsShowMore = tagsWithCounts.length > MAX_TAGS_COLLAPSED;
+    
+    tagsToShow.forEach(tag => {
       const count = tagCounts[tag] || 0;
-      if (!count) return;
-      
       const isActive = selectedFilters.has(tag);
       const chip = document.createElement('div');
       chip.textContent = `${tag} (${count})`;
@@ -381,6 +388,18 @@ export function render(): void {
       
       filterChipsContainer.appendChild(chip);
     });
+    
+    // Show More/Less button
+    if (needsShowMore) {
+      const showMoreBtn = document.createElement('div');
+      showMoreBtn.textContent = tagsExpanded ? 'Show Less' : `Show More (${tagsWithCounts.length - MAX_TAGS_COLLAPSED} more)`;
+      showMoreBtn.style.cssText = 'cursor:pointer; user-select:none; padding:4px 12px; font-size:11px; border-radius:4px; border:1px solid var(--border-color); background:var(--bg-secondary); color:var(--text-secondary); font-style:italic; transition: all 0.15s ease';
+      showMoreBtn.addEventListener('click', () => {
+        tagsExpanded = !tagsExpanded;
+        renderFilterChips(visibleItems);
+      });
+      filterChipsContainer.appendChild(showMoreBtn);
+    }
     
     if (selectedFilters.size) {
       const reset = document.createElement('div');

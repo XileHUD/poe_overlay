@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Leap Slam of Groundbreaking",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Area, Melee, Movement, Travel, Slam, Totemable",
@@ -292,5 +293,87 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Jump a short distance through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
+  "explicitMods": [
+    {
+      "text": "(20–39)% increased Stun Duration against Enemies that are on Full Life",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.5 metres",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "Damaging Hits always Stun Enemies that are on Full Life",
+      "values": []
+    },
+    {
+      "text": "(20–39)% increased Stun Duration against Enemies that are on Full Life",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.5 metres",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "Damaging Hits always Stun Enemies that are on Full Life",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "leap slam always knockback within range [1]",
+      "values": []
+    },
+    {
+      "text": "(20–54)% increased Stun Duration against Enemies that are on Full Life",
+      "values": [
+        "(20–54)"
+      ]
+    },
+    {
+      "text": "Base radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Damaging Hits always Stun Enemies that are on Full Life",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "leap slam always knockback within range [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Stun Duration against Enemies that are on Full Life",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Stun Duration against Enemies that are on Full Life",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

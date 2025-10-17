@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Ailment",
     "DropLevel": "31",
+    "BaseType": "Critical Strike Affliction Support",
     "Class": "Support Gems",
     "Icon": "o",
     "ItemType": "Metadata/Items/Gems/SupportGemPoison",
@@ -347,5 +348,35 @@
     "Critical Strike Affliction Support",
     "Critical Strike Affliction Support",
     "Critical Strike Affliction Support (known as Poison Support before gem rework) is a Support gem. It increases the Damage over Time multiplier for ailments with inflicted with critical strikes."
+  ],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have +(70–98)% Damage over Time Multiplier for Ailments from Critical Strikes",
+      "values": [
+        "+(70–98)"
+      ]
+    },
+    {
+      "text": "Supported Skills have +(70–98)% Damage over Time Multiplier for Ailments from Critical Strikes",
+      "values": [
+        "+(70–98)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have +(0–10)% Damage over Time Multiplier for Ailments from Critical Strikes",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have +(0–10)% Damage over Time Multiplier for Ailments from Critical Strikes",
+      "values": [
+        "+(0–10)"
+      ]
+    }
   ]
 }

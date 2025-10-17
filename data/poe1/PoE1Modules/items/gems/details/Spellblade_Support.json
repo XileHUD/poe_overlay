@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Weapon, One Handed Melee Weapon, Melee",
     "DropLevel": "38",
+    "BaseType": "Spellblade Support",
     "Class": "Support Gems",
     "Icon": "|",
     "ItemType": "Metadata/Items/Gems/SupportGemSpellblade",
@@ -373,5 +374,35 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports spells that hit enemies. Cannot modify the skills of minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have Added Spell Damage equal to (40–135)% ofDamage of Equipped One Handed Melee WeaponsIf two Weapons are Equipped, each contributes 60% as much Added Damage",
+      "values": [
+        "(40–135)"
+      ]
+    },
+    {
+      "text": "Supported Skills have Added Spell Damage equal to (40–135)% ofDamage of Equipped One Handed Melee WeaponsIf two Weapons are Equipped, each contributes 60% as much Added Damage",
+      "values": [
+        "(40–135)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

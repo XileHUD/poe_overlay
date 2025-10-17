@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Buff",
     "DropLevel": "24",
+    "BaseType": "Energy Blade",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, Wands, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Fishing Rods, Rune Daggers, Warstaves",
     "TargetTypes": "Any",
@@ -376,5 +377,73 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Grants a buff which significantly lowers your maximum Energy Shield to transform your equipped weapons into Swords formed from that energy. Casting the spell again removes the buff. Requires a Non-Bow weapon. This skill cannot be triggered.",
+  "explicitMods": [
+    {
+      "text": "Energy Blades have minimum Lightning Damage equal to 2% of Energy Shield, plus (2–12)Energy Blades have maximum Lightning Damage equal to 40% of Energy Shield, plus (40–235)",
+      "values": [
+        "2",
+        "(2–12)",
+        "40",
+        "(40–235)"
+      ]
+    },
+    {
+      "text": "Two Handed Energy Blades have 70% more Lightning Damage",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "Buff grants 50% less Maximum Energy Shield",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Energy Blades have minimum Lightning Damage equal to 2% of Energy Shield, plus (2–12)Energy Blades have maximum Lightning Damage equal to 40% of Energy Shield, plus (40–235)",
+      "values": [
+        "2",
+        "(2–12)",
+        "40",
+        "(40–235)"
+      ]
+    },
+    {
+      "text": "Two Handed Energy Blades have 70% more Lightning Damage",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "Buff grants 50% less Maximum Energy Shield",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "storm_blade_energy_shield_+%_final",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Buff grants (0–5)% more Maximum Energy Shield",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Buff grants (0–5)% more Maximum Energy Shield",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

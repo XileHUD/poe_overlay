@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Frozen Sweep",
     "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Warstaves",
     "TargetTypes": "Ground",
     "Type": "Attack, Melee, Area, Cold, NonRepeatable, OtherThingUsesSkill, OwnerCannotUse",
@@ -252,5 +253,81 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "This spell consumes multiple cooldown uses to summon icy Statues in a ring. Each Statue uses your Frozen Sweep attack once before vanishing. Requires an Axe, Mace, Sceptre, or Staff. This skill cannot be triggered, supported by Spell Echo or Unleash, or used by Totems, Traps, or Mines.",
+  "explicitMods": [
+    {
+      "text": "Consumes one Cooldown Use per Statue Summoned",
+      "values": []
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "You cannot use this Skill yourself, your Statues will use this Skill for you",
+      "values": []
+    },
+    {
+      "text": "Consumes one Cooldown Use per Statue Summoned",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "You cannot use this Skill yourself, your Statues will use this Skill for you",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "You cannot use this Skill yourself, your Statues will use this Skill for you",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

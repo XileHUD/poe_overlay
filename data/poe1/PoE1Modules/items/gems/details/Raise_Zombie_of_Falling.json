@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Raise Zombie of Falling",
     "TargetTypes": "Ground,",
     "Type": "Spell, Minion, MinionsCanExplode, Trappable, Totemable, Mineable, Multicastable, Triggerable, CanRapidFire, CreatesMinion",
     "MinionType": "Attack, Melee",
@@ -252,5 +253,81 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Raises necromantic energies into the sky above a targeted location, where they coalesce into a zombie minion. The minion then attacks by falling to the ground, causing an impact that deals damage in an area and kills the zombie.",
+  "explicitMods": [
+    {
+      "text": "+200 to maximum number of Raised Zombies",
+      "values": [
+        "+200"
+      ]
+    },
+    {
+      "text": "Does not require a corpse",
+      "values": []
+    },
+    {
+      "text": "Minions' Hits can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "+200 to maximum number of Raised Zombies",
+      "values": [
+        "+200"
+      ]
+    },
+    {
+      "text": "Does not require a corpse",
+      "values": []
+    },
+    {
+      "text": "Minions' Hits can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "active skill minion from alternate gem index [2]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [1,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [1]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "+200 to maximum number of Raised Zombies",
+      "values": [
+        "+200"
+      ]
+    },
+    {
+      "text": "Does not require a corpse",
+      "values": []
+    },
+    {
+      "text": "active skill minion from alternate gem index [2]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Minions have (0–15)% chance to deal Double Damage",
+      "values": [
+        "(0–15)"
+      ]
+    },
+    {
+      "text": "Minions have (0–15)% chance to deal Double Damage",
+      "values": [
+        "(0–15)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Lightning Trap",
     "TargetTypes": "Enemy",
     "Type": "Spell, Damage, Projectile, ProjectilesFromUser, Trapped, Mineable, Lightning",
     "ActiveSkillsCode": "lightning_trap"
@@ -371,5 +372,192 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap that launches a ring of projectiles through the enemy that set it off, dealing lightning damage to them and subsequent targets and leaving a trail of shocked ground.",
+  "explicitMods": [
+    {
+      "text": "Deals (26–686) to (79–2057) Lightning Damage",
+      "values": [
+        "(26–686)",
+        "(79–2057)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Fires 9 Projectiles",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "Projectiles leave Shocked Ground",
+      "values": []
+    },
+    {
+      "text": "Shocked Ground causes 15% increased Damage taken",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Deals (26–686) to (79–2057) Lightning Damage",
+      "values": [
+        "(26–686)",
+        "(79–2057)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Fires 9 Projectiles",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "Projectiles leave Shocked Ground",
+      "values": []
+    },
+    {
+      "text": "Shocked Ground causes 15% increased Damage taken",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (15–3227) to (46–9680) Lightning Damage",
+      "values": [
+        "(15–3227)",
+        "(46–9680)"
+      ]
+    },
+    {
+      "text": "Trap lasts +4 seconds",
+      "values": [
+        "+4"
+      ]
+    },
+    {
+      "text": "Fires +9 Projectiles",
+      "values": [
+        "+9"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "20% chance to Shock enemies",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(80–148)% increased Critical Strike Chance against Shocked Enemies",
+      "values": [
+        "(80–148)"
+      ]
+    },
+    {
+      "text": "(0–34)% increased Effect of Shock",
+      "values": [
+        "(0–34)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "ignores trap and mine cooldown limit [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Shocked Ground causes (0–5)% increased Damage taken",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Shocked Ground causes (0–5)% increased Damage taken",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

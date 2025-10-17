@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Volcanic Fissure of Snaking",
     "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy, SELF_ORIGIN",
     "Type": "Attack, Area, Melee, Slam, Fire, Multistrikeable, Totemable",
@@ -292,5 +293,91 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slam the ground, creating a winding fissure that deals area damage while travelling outwards. When it reaches the target location it erupts dealing damage in an area. After erupting, the fissure continues moving towards enemies to cause further eruptions. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "50% more Area of Effect",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fissure erupts 2 additional times",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "50% more Area of Effect",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fissure erupts 2 additional times",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "50% more Area of Effect",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fissure erupts 2 additional times",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fissure erupts (0–1) additional times",
+      "values": [
+        "(0–1)"
+      ]
+    },
+    {
+      "text": "Fissure erupts (0–1) additional times",
+      "values": [
+        "(0–1)"
+      ]
+    },
+    {
+      "text": "Fissure erupts (0–1) additional times",
+      "values": [
+        "(0–1)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Duration, Minion",
     "DropLevel": "31",
+    "BaseType": "Feeding Frenzy Support",
     "Class": "Support Gems",
     "Icon": "h",
     "ItemType": "Metadata/Items/Gems/SupportGemFeedingFrenzy",
@@ -413,5 +414,62 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which create Minions.",
+  "explicitMods": [
+    {
+      "text": "Feeding Frenzy base Duration is (4–5.9) seconds",
+      "values": [
+        "(4–5.9)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills have (25–44)% chance to grant Feeding Frenzy to you on Hit",
+      "values": [
+        "(25–44)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills are Aggressive",
+      "values": []
+    },
+    {
+      "text": "Feeding Frenzy base Duration is (4–5.9) seconds",
+      "values": [
+        "(4–5.9)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills have (25–44)% chance to grant Feeding Frenzy to you on Hit",
+      "values": [
+        "(25–44)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills are Aggressive",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Feeding Frenzy grants 10% more Minion Damage, 10% increased Minion Movement Speed and 10% increased Minion Attack and Cast Speed)",
+    "(Aggressive minions have their targeting range raised to a minimum value)",
+    "(Feeding Frenzy grants 10% more Minion Damage, 10% increased Minion Movement Speed and 10% increased Minion Attack and Cast Speed)",
+    "(Aggressive minions have their targeting range raised to a minimum value)",
+    "(Feeding Frenzy grants 10% more Minion Damage, 10% increased Minion Movement Speed and 10% increased Minion Attack and Cast Speed)",
+    "(Aggressive minions have their targeting range raised to a minimum value)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Minion Movement Speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Minion Movement Speed",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

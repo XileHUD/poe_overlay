@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Hit, Trigger",
     "DropLevel": "38",
+    "BaseType": "Cast when Damage Taken Support",
     "Class": "Support Gems",
     "Icon": "!",
     "ItemType": "Metadata/Items/Gems/SupportGemCastOnDamageTaken",
@@ -468,5 +469,115 @@
     "Cast when Damage Taken Support",
     "Cast when Damage Taken Support is a Support gem. It causes a linked Spell to trigger when the player takes a certain amount of damage.",
     "Maximum level of supported skills: Cast when Damage Taken cannot support skills with a higher player level requirement than that of Cast when Damage Taken itself. Note that this restriction only applies to active skills; any level of other support gems may be used."
+  ],
+  "gemDescription": "Each supported spell skill will track damage you take, and be triggered when the total damage taken reaches a threshold. Cannot support skills used by totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.",
+  "explicitMods": [
+    {
+      "text": "This Gem can only Support Skill Gems requiring Level (38–70) or lower",
+      "values": [
+        "(38–70)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (27–65)% less Damage",
+      "values": [
+        "(27–65)"
+      ]
+    },
+    {
+      "text": "Trigger Supported Spells when you take (528–3272) total Damage from Hits",
+      "values": [
+        "(528–3272)"
+      ]
+    },
+    {
+      "text": "This Gem can only Support Skill Gems requiring Level (38–70) or lower",
+      "values": [
+        "(38–70)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (27–65)% less Damage",
+      "values": [
+        "(27–65)"
+      ]
+    },
+    {
+      "text": "Trigger Supported Spells when you take (528–3272) total Damage from Hits",
+      "values": [
+        "(528–3272)"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "spell uncastable if triggerable [1]",
+      "values": []
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 12 Cast when Damage Taken",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "15% Chance to Block Attack Damage",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "(100–120)% increased Physical Damage",
+      "values": [
+        "(100–120)"
+      ]
+    },
+    {
+      "text": "+(30–50) to maximum Life",
+      "values": [
+        "+(30–50)"
+      ]
+    },
+    {
+      "text": "50% increased Defences from Equipped Shield",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Adds 45 to 75 Fire Damage if you've Blocked Recently",
+      "values": [
+        "45",
+        "75"
+      ]
+    },
+    {
+      "text": "(Armour, Evasion Rating and Energy Shield are the standard Defences)",
+      "values": []
+    },
+    {
+      "text": "(Recently refers to the past 4 seconds)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Armour, Evasion Rating and Energy Shield are the standard Defences)",
+    "(Recently refers to the past 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills require (0–10)% reduced amount of Damage taken to Trigger",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills require (0–10)% reduced amount of Damage taken to Trigger",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

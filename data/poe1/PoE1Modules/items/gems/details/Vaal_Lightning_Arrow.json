@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Lightning Arrow",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, MirageArcherCanUse, Area, Projectile, ProjectilesFromUser, Totemable, Trappable, Mineable, Lightning, Triggerable",
@@ -292,5 +293,157 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires charged arrows, which repeatedly travel for a short time before changing direction. When they hit enemies, they are struck by a bolt of lightning which damages a number of surrounding enemies.",
+  "explicitMods": [
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fires 5 Arrows",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Projectiles change direction 9 timesProjectiles can Hit targets each time they change direction",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Modifiers which would cause Projectiles to Fork orChain instead cause them to change direction additional times",
+      "values": []
+    },
+    {
+      "text": "Fires Projectiles sequentially",
+      "values": []
+    },
+    {
+      "text": "Hits up to 3 additional enemies near the target",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Projectiles cannot Split",
+      "values": []
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fires 5 Arrows",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Projectiles change direction 9 timesProjectiles can Hit targets each time they change direction",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Modifiers which would cause Projectiles to Fork orChain instead cause them to change direction additional times",
+      "values": []
+    },
+    {
+      "text": "Fires Projectiles sequentially",
+      "values": []
+    },
+    {
+      "text": "Hits up to 3 additional enemies near the target",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Projectiles cannot Split",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "projectile random angle based on distance to target location % [35]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "50% chance to Sap Enemies",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fires (2–10) additional Projectiles",
+      "values": [
+        "(2–10)"
+      ]
+    },
+    {
+      "text": "Hits up to 3 additional enemies near the target",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Sapped Enemies deal up to 20% less Damage, based on the Lightning Damage of the Hit, for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Hits up to (0–2) additional enemies near the target",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Hits up to (0–2) additional enemies near the target",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

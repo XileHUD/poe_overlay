@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Earthshatter of Prominence",
     "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Attack, Area, Melee, Slam, Multistrikeable, Duration, Totemable",
@@ -332,5 +333,127 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slam the ground, sending out a rectangular fissure that deals area damage to enemies and thrusts a large spike from the ground where it ends. Warcries or other Slam Attacks performed by you or allied players near the spike will cause it to shatter, damaging surrounding enemies. Works with Maces, Sceptres, Axes, Staves and Unarmed.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Shattering Spikes have (100–157)% more Area of Effect",
+      "values": [
+        "(100–157)"
+      ]
+    },
+    {
+      "text": "Shattering Spikes deal 100% more damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Creates 1 fissure",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Maximum 5 Spikes",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Shattering Spikes have (100–157)% more Area of Effect",
+      "values": [
+        "(100–157)"
+      ]
+    },
+    {
+      "text": "Shattering Spikes deal 100% more damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Creates 1 fissure",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Maximum 5 Spikes",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Shattering Spikes have (100–202)% more Area of Effect",
+      "values": [
+        "(100–202)"
+      ]
+    },
+    {
+      "text": "Shattering Spikes deal 100% more damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Creates 1 fissure",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Maximum 5 Spikes",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Shattering Spikes deal +(0–20)% more damage",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Shattering Spikes deal +(0–20)% more damage",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Shattering Spikes deal +(0–20)% more damage",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

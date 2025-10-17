@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Lightning Spire Trap of Zapping",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Duration, Damage, Mineable, Area, Trapped, Lightning, AreaSpell",
     "ActiveSkillsCode": "lightning_tower_trap_alt_x"
@@ -331,5 +332,146 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap which, once triggered, will repeatedly strike multiple areas around it for a duration, dealing lightning damage.",
+  "explicitMods": [
+    {
+      "text": "Deals (19–291) to (56–872) Lightning Damage",
+      "values": [
+        "(19–291)",
+        "(56–872)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Strikes every 0.4 seconds",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Strikes 2 Areas",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Deals (19–291) to (56–872) Lightning Damage",
+      "values": [
+        "(19–291)",
+        "(56–872)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Strikes every 0.4 seconds",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Strikes 2 Areas",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (19–1674) to (56–5023) Lightning Damage",
+      "values": [
+        "(19–1674)",
+        "(56–5023)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Strikes every 0.4 seconds",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Strikes 2 Areas",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–15)% Chance for Trap to Trigger an additional time",
+      "values": [
+        "(0–15)"
+      ]
+    },
+    {
+      "text": "(0–15)% Chance for Trap to Trigger an additional time",
+      "values": [
+        "(0–15)"
+      ]
+    },
+    {
+      "text": "(0–15)% Chance for Trap to Trigger an additional time",
+      "values": [
+        "(0–15)"
+      ]
+    }
+  ]
 }

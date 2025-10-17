@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Duration, Ailment",
     "DropLevel": "8",
+    "BaseType": "Unbound Ailments Support",
     "Class": "Support Gems",
     "Icon": "U",
     "ItemType": "Metadata/Items/Gems/SupportGemUnboundAilments",
@@ -453,5 +454,105 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies or inflicts ailments",
+  "explicitMods": [
+    {
+      "text": "(35–54)% increased Duration of Ailments inflicted with Supported Skills",
+      "values": [
+        "(35–54)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (35–54)% increased Effect of non-Damaging Ailments on Enemies",
+      "values": [
+        "(35–54)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–19)% more Damage with Ailments",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "(35–54)% increased Duration of Ailments inflicted with Supported Skills",
+      "values": [
+        "(35–54)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (35–54)% increased Effect of non-Damaging Ailments on Enemies",
+      "values": [
+        "(35–54)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–19)% more Damage with Ailments",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Elemental Penetration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Immolate",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Unbound Ailments",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Inspiration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Innervate",
+      "values": [
+        "15"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
+    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
+    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Duration of Ailments inflicted with Supported Skills",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Duration of Ailments inflicted with Supported Skills",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

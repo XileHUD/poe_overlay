@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Kinetic Blast of Clustering",
     "Weapon": "Wands",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, Projectile, ProjectilesFromUser, Area, Trappable, Mineable, Totemable, Physical",
@@ -292,5 +293,153 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a projectile from a Wand that causes a series of area explosions in a secondary radius around its point of impact, each damaging enemies.",
+  "explicitMods": [
+    {
+      "text": "Kinetic Blast creates 3 additional explosions",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 200% of their value",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Deals Added Physical Damage equal to (8–15)% of Maximum Mana",
+      "values": [
+        "(8–15)"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles instead apply to the number of Explosions",
+      "values": []
+    },
+    {
+      "text": "Base explosion radius is 1.9 metres",
+      "values": [
+        "1.9"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 2.8 metres",
+      "values": [
+        "2.8"
+      ]
+    },
+    {
+      "text": "Projectiles cannot Split",
+      "values": []
+    },
+    {
+      "text": "Kinetic Blast creates 3 additional explosions",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 200% of their value",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Deals Added Physical Damage equal to (8–15)% of Maximum Mana",
+      "values": [
+        "(8–15)"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles instead apply to the number of Explosions",
+      "values": []
+    },
+    {
+      "text": "Base explosion radius is 1.9 metres",
+      "values": [
+        "1.9"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 2.8 metres",
+      "values": [
+        "2.8"
+      ]
+    },
+    {
+      "text": "Projectiles cannot Split",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "Kinetic Blast creates 3 additional explosions",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at +200% of their value",
+      "values": [
+        "+200"
+      ]
+    },
+    {
+      "text": "Deals Added Physical Damage equal to (8–21)% of Maximum Mana",
+      "values": [
+        "(8–21)"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles instead apply to the number of Explosions",
+      "values": []
+    },
+    {
+      "text": "Base radius is 1.9 metres",
+      "values": [
+        "1.9"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 0.8 metres",
+      "values": [
+        "0.8"
+      ]
+    },
+    {
+      "text": "Projectiles cannot Split",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Kinetic Blast creates (0–1) additional explosion",
+      "values": [
+        "(0–1)"
+      ]
+    },
+    {
+      "text": "Kinetic Blast creates (0–1) additional explosion",
+      "values": [
+        "(0–1)"
+      ]
+    }
+  ]
 }

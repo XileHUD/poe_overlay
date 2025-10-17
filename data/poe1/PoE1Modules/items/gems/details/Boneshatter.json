@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Stun, Duration",
     "DropLevel": "28",
+    "BaseType": "Boneshatter",
     "Class": "Skill Gems",
     "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Warstaves",
     "TargetTypes": "Ground, Enemy",
@@ -456,5 +457,75 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Attack enemies with a forceful melee strike that also hurts you. Successive uses will raise the damage dealt both to enemies and you. Stunning an enemy with the strike releases a damaging pulse. Requires a Mace, Sceptre, Axe or Staff.",
+  "explicitMods": [
+    {
+      "text": "(11–158) to (17–238) Added Attack Physical Damage",
+      "values": [
+        "(11–158)",
+        "(17–238)"
+      ]
+    },
+    {
+      "text": "(2–4)% more Damage per Trauma",
+      "values": [
+        "(2–4)"
+      ]
+    },
+    {
+      "text": "Gain 1 Trauma the first time this Attack Hits an EnemyTake (6–194) Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds",
+      "values": [
+        "(6–194)",
+        "6"
+      ]
+    },
+    {
+      "text": "Pulse has 15% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "(11–158) to (17–238) Added Attack Physical Damage",
+      "values": [
+        "(11–158)",
+        "(17–238)"
+      ]
+    },
+    {
+      "text": "(2–4)% more Damage per Trauma",
+      "values": [
+        "(2–4)"
+      ]
+    },
+    {
+      "text": "Gain 1 Trauma the first time this Attack Hits an EnemyTake (6–194) Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds",
+      "values": [
+        "(6–194)",
+        "6"
+      ]
+    },
+    {
+      "text": "Pulse has 15% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
+      "values": [
+        "15"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–1)% more Damage per Trauma",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1)% more Damage per Trauma",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

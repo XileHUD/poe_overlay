@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Glacial Cascade of the Fissure",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cold, Physical, CanRapidFire, AreaSpell",
     "ActiveSkillsCode": "player_glacial_cascade_alt_x"
@@ -331,5 +332,94 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Icicles emerge from the ground in a series of small bursts, each damaging enemies caught in the area.",
+  "explicitMods": [
+    {
+      "text": "Deals (51–758) to (77–1137) Physical Damage",
+      "values": [
+        "(51–758)",
+        "(77–1137)"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Causes 6 Bursts",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Deals (51–758) to (77–1137) Physical Damage",
+      "values": [
+        "(51–758)",
+        "(77–1137)"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Causes 6 Bursts",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (51–4185) to (77–6278) Physical Damage",
+      "values": [
+        "(51–4185)",
+        "(77–6278)"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Causes 6 Bursts",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Causes +(0–2) Bursts",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Causes +(0–2) Bursts",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Causes +(0–2) Bursts",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

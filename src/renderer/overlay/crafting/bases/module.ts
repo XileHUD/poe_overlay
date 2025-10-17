@@ -256,7 +256,9 @@ export function render(groups: BaseGroups): void {
           <button id='baseClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
       </div>
       <div id='baseDefQuick' style='display:flex; gap:6px; margin:-4px 0 10px; justify-content:center;'></div>
-      <div id='baseTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
+      <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+        <div id='baseTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; justify-content:center; width:100%;'></div>
+      </div>
       <div id='baseList' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:10px;'></div>
     </div>`;
 
@@ -280,7 +282,7 @@ export function render(groups: BaseGroups): void {
       const active=selectedTags.has(tag);
       const count = tagCounts[tag]||0;
       btn.textContent = count ? `${tag} (${count})` : tag;
-      (btn as HTMLElement).style.cssText = `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:999px; ${chipCss(tag, active)}`;
+      (btn as HTMLElement).style.cssText = `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; ${chipCss(tag, active)}`;
       btn.addEventListener('click',()=>{ active?selectedTags.delete(tag):selectedTags.add(tag); build(); renderTagFilters(); });
       tagWrap.appendChild(btn);
     });
@@ -289,7 +291,7 @@ export function render(groups: BaseGroups): void {
     if (needsShowMore) {
       const showMoreBtn = document.createElement('div');
       showMoreBtn.textContent = tagsExpanded ? 'Show Less' : `Show More (${allTags.length - MAX_TAGS_COLLAPSED} more)`;
-      showMoreBtn.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--border-color); border-radius:999px; background:var(--bg-secondary); color:var(--text-secondary); font-style:italic;';
+      showMoreBtn.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-secondary); color:var(--text-secondary); font-style:italic;';
       showMoreBtn.addEventListener('click', () => {
         tagsExpanded = !tagsExpanded;
         renderTagFilters();
@@ -298,7 +300,7 @@ export function render(groups: BaseGroups): void {
     }
     
     // Reset button
-    if(selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; (reset as HTMLElement).style.cssText='cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--accent-red); border-radius:999px; background:var(--accent-red); color:#fff'; reset.addEventListener('click',()=>{ selectedTags.clear(); build(); renderTagFilters(); }); tagWrap.appendChild(reset); }
+    if(selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; (reset as HTMLElement).style.cssText='cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--accent-red); border-radius:4px; background:var(--accent-red); color:#fff'; reset.addEventListener('click',()=>{ selectedTags.clear(); build(); renderTagFilters(); }); tagWrap.appendChild(reset); }
   }
   function baseMatchesTags(b: BaseItem){ if(!selectedTags.size) return true; if(!b.__tags) return false; return [...selectedTags].every(t=> (b.__tags as string[]).includes(t)); }
   function matchesDefenseQuick(b: BaseItem){

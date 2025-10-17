@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Bladefall of Volleys",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Area, Trappable, Mineable, Totemable, Damage, Triggerable, Multicastable, Cascadable, CanRapidFire, AreaSpell, Physical",
     "ActiveSkillsCode": "bladefall_alt_x"
@@ -331,5 +332,112 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Ethereal weapons rain from the sky, dealing damage to enemies in a sequence of volleys, each wider and more damaging than the last. Enemies can be hit multiple times where these overlap.",
+  "explicitMods": [
+    {
+      "text": "Deals (33–446) to (49–669) Physical Damage",
+      "values": [
+        "(33–446)",
+        "(49–669)"
+      ]
+    },
+    {
+      "text": "6 Volleys",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "10% more Damage per Volley",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "25% increased Critical Strike Chance per Volley",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Deals (33–446) to (49–669) Physical Damage",
+      "values": [
+        "(33–446)",
+        "(49–669)"
+      ]
+    },
+    {
+      "text": "6 Volleys",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "10% more Damage per Volley",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "25% increased Critical Strike Chance per Volley",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (33–2331) to (49–3497) Physical Damage",
+      "values": [
+        "(33–2331)",
+        "(49–3497)"
+      ]
+    },
+    {
+      "text": "6 Volleys",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "10% more Damage per Volley",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "25% increased Critical Strike Chance per Volley",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–1) Volley",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) Volley",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) Volley",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

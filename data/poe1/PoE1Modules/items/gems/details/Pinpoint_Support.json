@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Projectile",
     "DropLevel": "31",
+    "BaseType": "Pinpoint Support",
     "Class": "Support Gems",
     "Icon": "«",
     "ItemType": "Metadata/Items/Gems/SupportGemPinpoint",
@@ -373,5 +374,83 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports projectile spells you cast yourself. Cannot support triggered skills, Vaal skills, instant skills, channelling skills, skills with a reservation or which create minions, or skills used by totems, traps, or mines.",
+  "explicitMods": [
+    {
+      "text": "Supported Spells gain Intensity when you Cast them, to a maximum of 3Supported Skills fire 1 fewer Projectile per Intensity",
+      "values": []
+    },
+    {
+      "text": "Supported Spells lose 1 Intensity every 0.5 seconds while moving, or immediately if you teleport",
+      "values": []
+    },
+    {
+      "text": "Projectiles from Supported Skills deal 20% more Damage with Hits per Intensity",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Supported Skills always fire at least 1 Projectile",
+      "values": []
+    },
+    {
+      "text": "Supported Skills fire 3 additional Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–19)% less Projectile Damage",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Supported Spells gain Intensity when you Cast them, to a maximum of 3Supported Skills fire 1 fewer Projectile per Intensity",
+      "values": []
+    },
+    {
+      "text": "Supported Spells lose 1 Intensity every 0.5 seconds while moving, or immediately if you teleport",
+      "values": []
+    },
+    {
+      "text": "Projectiles from Supported Skills deal 20% more Damage with Hits per Intensity",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Supported Skills always fire at least 1 Projectile",
+      "values": []
+    },
+    {
+      "text": "Supported Skills fire 3 additional Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–19)% less Projectile Damage",
+      "values": [
+        "(10–19)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

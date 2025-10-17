@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Channelling",
     "DropLevel": "28",
+    "BaseType": "Charged Dash",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground",
@@ -336,5 +337,91 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Channel to project an illusion which you steer. You gain stages while it moves, until it stops at a maximum total distance. Waves of area damage frequently pulse along its path, based on your attack speed. Stop channelling to teleport to the illusion, dealing a final wave of damage. Requires a Melee Weapon.",
+  "explicitMods": [
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Deals 150% more Damage while Channelling if Illusion has finished moving",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "Hits from Final wave deal 75% of Damage per stage",
+      "values": [
+        "75"
+      ]
+    },
+    {
+      "text": "Illusion moves at 130% of your Movement Speed",
+      "values": [
+        "130"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Deals 150% more Damage while Channelling if Illusion has finished moving",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "Hits from Final wave deal 75% of Damage per stage",
+      "values": [
+        "75"
+      ]
+    },
+    {
+      "text": "Illusion moves at 130% of your Movement Speed",
+      "values": [
+        "130"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "charged dash damage +% final [-100]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "charged_dash_damage_+%_final",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Illusion moves at an additional +(0–20)% of your Movement Speed",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Illusion moves at an additional +(0–20)% of your Movement Speed",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

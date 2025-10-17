@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Split Arrow of Splitting",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, MirageArcherCanUse, Projectile, ProjectilesFromUser, Totemable, Trappable, Mineable, Triggerable, SingleMainProjectile",
@@ -332,5 +333,87 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires an arrow that splits to hit different targets.",
+  "explicitMods": [
+    {
+      "text": "Modifiers to number of Projectiles instead apply tothe number of targets Projectile Splits towards",
+      "values": []
+    },
+    {
+      "text": "Projectiles Split towards (3–6) targets",
+      "values": [
+        "(3–6)"
+      ]
+    },
+    {
+      "text": "Projectiles can Split without hitting a target",
+      "values": []
+    },
+    {
+      "text": "Modifiers to number of Projectiles instead apply tothe number of targets Projectile Splits towards",
+      "values": []
+    },
+    {
+      "text": "Projectiles Split towards (3–6) targets",
+      "values": [
+        "(3–6)"
+      ]
+    },
+    {
+      "text": "Projectiles can Split without hitting a target",
+      "values": []
+    },
+    {
+      "text": "active skill projectile speed +% variation final [50]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "Modifiers to number of Projectiles instead apply tothe number of targets Projectile Splits towards",
+      "values": []
+    },
+    {
+      "text": "Projectiles Split towards (3–8) targets",
+      "values": [
+        "(3–8)"
+      ]
+    },
+    {
+      "text": "Projectiles can Split without hitting a target",
+      "values": []
+    },
+    {
+      "text": "active skill projectile speed +% variation final [50]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Projectiles Split towards (0–2) targets",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Projectiles Split towards (0–2) targets",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Projectiles Split towards (0–2) targets",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

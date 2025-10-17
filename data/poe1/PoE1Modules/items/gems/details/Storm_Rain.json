@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "DropLevel": "28",
+    "BaseType": "Storm Rain",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
@@ -375,5 +376,95 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires an arrow into the air to land at a targeted location, dealing area damage. The arrow sticks in the ground where it lands, and periodically fires a beam of lightning to another arrow near it, dealing area damage between them.",
+  "explicitMods": [
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Arrows fire Beams every (0.41–0.5) seconds",
+      "values": [
+        "(0.41–0.5)"
+      ]
+    },
+    {
+      "text": "Maximum 100 Arrows in the ground",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Each Arrow can fire 4 Beams",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Arrows fire Beams every (0.41–0.5) seconds",
+      "values": [
+        "(0.41–0.5)"
+      ]
+    },
+    {
+      "text": "Maximum 100 Arrows in the ground",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Each Arrow can fire 4 Beams",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "cannot pierce [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Each Arrow can fire +(0–1) Beam",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Each Arrow can fire +(0–1) Beam",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

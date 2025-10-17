@@ -132,7 +132,9 @@ export function render(list: Essence[]): void {
         <input id='essenceSearch' type='text' placeholder='Search...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
         <button id='essenceClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
       </div>
-      <div id='essenceTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
+      <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+        <div id='essenceTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
+      </div>
       <div id='essenceList' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:10px;'></div>
     </div>`;
   state.input = panel.querySelector('#essenceSearch') as HTMLInputElement | null;
@@ -178,7 +180,7 @@ export function render(list: Essence[]): void {
       const el = document.createElement('button');
       el.className = 'essence-tag';
       el.textContent = count ? `${tag} (${count})` : tag;
-      el.style.cssText = `padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; ${chipCss(tag, active)}`;
+      el.style.cssText = `padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; ${chipCss(tag, active)}`;
       el.addEventListener('click', () => {
         if (active) state.selectedTags.delete(lc); else state.selectedTags.add(lc);
         apply(state.input?.value || '');
@@ -189,7 +191,7 @@ export function render(list: Essence[]): void {
     if (state.selectedTags.size) {
       const reset=document.createElement('button');
       reset.textContent='Reset';
-      reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);';
+      reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);';
       reset.addEventListener('click', ()=>{ state.selectedTags.clear(); apply(''); renderTagFilters(); });
       tagWrap.appendChild(reset);
     }

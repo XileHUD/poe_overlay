@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Resistance",
     "DropLevel": "18",
+    "BaseType": "Trinity Support",
     "Class": "Support Gems",
     "Icon": "y",
     "ItemType": "Metadata/Items/Gems/SupportGemTrinity",
@@ -373,5 +374,59 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills that hit enemies, causing them to gain bonuses while you have resonance of all three elements, and to grant resonance of elements other than the highest one in a hit. There is a maximum of 50 Resonance for each Element. Cannot support triggered skills, instant skills, orb skills, brands, skills with a reservation, or skills used by totems, traps, or mines. Cannot modify the skills of minions.",
+  "explicitMods": [
+    {
+      "text": "Hits with Supported Skills for which the highest Damage Type is Elemental cause you to gain 25 Resonance of other Elements per second for 2 secondsLose 5 Resonance per second of each Element you are not gaining",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal 3% more Elemental Damage per 5 of lowest Resonance",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Supported Skills penetrate (7–16)% Elemental Resistances while each Resonance is at least 25",
+      "values": [
+        "(7–16)"
+      ]
+    },
+    {
+      "text": "Hits with Supported Skills for which the highest Damage Type is Elemental cause you to gain 25 Resonance of other Elements per second for 2 secondsLose 5 Resonance per second of each Element you are not gaining",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal 3% more Elemental Damage per 5 of lowest Resonance",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Supported Skills penetrate (7–16)% Elemental Resistances while each Resonance is at least 25",
+      "values": [
+        "(7–16)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Maximum 50 Resonance of each Element)",
+    "(Maximum 50 Resonance of each Element)",
+    "(Maximum 50 Resonance of each Element)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Elemental Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Elemental Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

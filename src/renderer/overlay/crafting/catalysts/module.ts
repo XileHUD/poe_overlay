@@ -131,7 +131,9 @@ export function render(list: Catalyst[]): void {
         <input id='catalystSearch' type='text' placeholder='Search...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
         <button id='catalystClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
       </div>
-      <div id='catalystTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
+      <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+        <div id='catalystTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
+      </div>
       <div id='catalystList' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:10px;'></div>
     </div>`;
   state.input = panel.querySelector('#catalystSearch') as HTMLInputElement | null;
@@ -184,7 +186,7 @@ export function render(list: Catalyst[]): void {
       const count = (state.tagCounts as any)[tag] || 0;
       const el = document.createElement('button');
       el.textContent = count ? `${tag} (${count})` : tag;
-      el.style.cssText = `padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; ${chipCss(tag, active)}`;
+      el.style.cssText = `padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; ${chipCss(tag, active)}`;
       el.addEventListener('click', ()=>{
         if (active) (state.selectedTags as Set<string>).delete(lc); else (state.selectedTags as Set<string>).add(lc);
         apply(state.input?.value || '');
@@ -197,7 +199,7 @@ export function render(list: Catalyst[]): void {
     if (needsShowMore) {
       const showMoreBtn = document.createElement('button');
       showMoreBtn.textContent = tagsExpanded ? 'Show Less' : `Show More (${tagsWithCounts.length - MAX_TAGS_COLLAPSED} more)`;
-      showMoreBtn.style.cssText = 'padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; border:1px solid var(--border-color); background:var(--bg-secondary); color:var(--text-secondary); font-style:italic;';
+      showMoreBtn.style.cssText = 'padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; border:1px solid var(--border-color); background:var(--bg-secondary); color:var(--text-secondary); font-style:italic;';
       showMoreBtn.addEventListener('click', () => {
         tagsExpanded = !tagsExpanded;
         renderTagFilters();
@@ -209,7 +211,7 @@ export function render(list: Catalyst[]): void {
     if ((state.selectedTags as Set<string>).size) {
       const reset=document.createElement('button');
       reset.textContent='Reset';
-      reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);';
+      reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);';
       reset.addEventListener('click', ()=>{ (state.selectedTags as Set<string>).clear(); apply(''); renderTagFilters(); });
       tagWrap.appendChild(reset);
     }

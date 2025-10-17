@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Soulrend of Reaping",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Projectile, Damage, Chaos, Multicastable, Triggerable, Trappable, Mineable, Totemable, CanRapidFire, ProjectilesFromUser",
     "ActiveSkillsCode": "soulrend_alt_x"
@@ -291,5 +292,83 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a projectile that deals chaos damage to enemies it hits and leeches some of that damage as energy shield.",
+  "explicitMods": [
+    {
+      "text": "Deals (42–1784) to (62–2676) Chaos Damage",
+      "values": [
+        "(42–1784)",
+        "(62–2676)"
+      ]
+    },
+    {
+      "text": "4% of Spell Damage Leeched as Energy Shield",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (42–1784) to (62–2676) Chaos Damage",
+      "values": [
+        "(42–1784)",
+        "(62–2676)"
+      ]
+    },
+    {
+      "text": "4% of Spell Damage Leeched as Energy Shield",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "active skill projectile speed +% variation final [25]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (417–64189) to (625–96284) Chaos Damage",
+      "values": [
+        "(417–64189)",
+        "(625–96284)"
+      ]
+    },
+    {
+      "text": "4% of Spell Damage Leeched as Energy Shield",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "active skill projectile speed +% variation final [25]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Projectile Speed",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Projectile Speed",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

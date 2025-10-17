@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Exert, Melee, Buff",
     "DropLevel": "34",
+    "BaseType": "Ambush",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Movement, Duration, Travel, Triggerable, Cooldown, LateConsumeCooldown",
@@ -415,5 +416,83 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Teleports you to a nearby enemy, applying a buff to you for a short duration and blinding the enemy for a secondary duration. Performing a melee attack with a One-Handed Weapon removes the buff to exert that attack.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Buff is removed to Exert the next Melee Attack you performAttacks Exerted by this Skill cannot be Exerted by other Skills",
+      "values": []
+    },
+    {
+      "text": "Exerted Attacks have +25% to Critical Strike Chance",
+      "values": [
+        "+25"
+      ]
+    },
+    {
+      "text": "Exerted Attacks have +(100–138)% to Critical Strike Multiplier",
+      "values": [
+        "+(100–138)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Buff is removed to Exert the next Melee Attack you performAttacks Exerted by this Skill cannot be Exerted by other Skills",
+      "values": []
+    },
+    {
+      "text": "Exerted Attacks have +25% to Critical Strike Chance",
+      "values": [
+        "+25"
+      ]
+    },
+    {
+      "text": "Exerted Attacks have +(100–138)% to Critical Strike Multiplier",
+      "values": [
+        "+(100–138)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
+    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
+    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Exerted Attacks have +(0–10)% to Critical Strike Chance",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "Exerted Attacks have +(0–10)% to Critical Strike Chance",
+      "values": [
+        "+(0–10)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Duration, Ailment",
     "DropLevel": "31",
+    "BaseType": "Swift Affliction Support",
     "Class": "Support Gems",
     "Icon": "r",
     "ItemType": "Metadata/Items/Gems/SupportGemRapidDecay",
@@ -333,5 +334,51 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that has a duration, or can hit enemies to inflict ailments on them.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (25–39)% more Damage over Time",
+      "values": [
+        "(25–39)"
+      ]
+    },
+    {
+      "text": "25% less Duration of Supported Skills and Damaging Ailments they inflict",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (25–39)% more Damage over Time",
+      "values": [
+        "(25–39)"
+      ]
+    },
+    {
+      "text": "25% less Duration of Supported Skills and Damaging Ailments they inflict",
+      "values": [
+        "25"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage over Time",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage over Time",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

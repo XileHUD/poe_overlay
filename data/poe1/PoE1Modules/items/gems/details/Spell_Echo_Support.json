@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "DropLevel": "38",
+    "BaseType": "Spell Echo Support",
     "Class": "Support Gems",
     "Icon": "k",
     "ItemType": "Metadata/Items/Gems/SupportGemMulticast",
@@ -332,5 +333,103 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports spell skills, making them repeat when cast. Cannot support Vaal skills, totem skills, channelling skills, triggered skills, instant skills, retaliation skills, blink skills, or skills with a reservation.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills Repeat an additional time",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (40–54)% more Cast Speed",
+      "values": [
+        "(40–54)"
+      ]
+    },
+    {
+      "text": "Supported Skills Repeat an additional time",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (40–54)% more Cast Speed",
+      "values": [
+        "(40–54)"
+      ]
+    },
+    {
+      "text": "+2 to Level of Socketed Gems",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Intensify",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Spell Echo",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Controlled Destruction",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "+(10–30) to Intelligence",
+      "values": [
+        "+(10–30)"
+      ]
+    },
+    {
+      "text": "+2 to Level of Socketed Gems",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Arcane Surge",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Spell Echo",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Controlled Destruction",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "+(10–30) to Intelligence",
+      "values": [
+        "+(10–30)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

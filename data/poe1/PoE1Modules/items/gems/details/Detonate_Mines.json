@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Mine",
     "DropLevel": "8",
+    "BaseType": "Detonate Mines",
     "Class": "Skill Gems",
     "TargetTypes": "Ground,",
     "Type": "Spell, Trappable, Totemable, Triggerable, Instant, Cooldown",
@@ -105,5 +106,39 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Detonates a Mine, starting a Detonation Sequence which will detonate other Mines around it.",
+  "explicitMods": [
+    {
+      "text": "First Mine Detonates InstantlyMines get 10% more Detonation Speed for each prior Mine in Detonation Sequence",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "First Mine Detonates InstantlyMines get 10% more Detonation Speed for each prior Mine in Detonation Sequence",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Mines have (0–20)% increased Detonation Speed",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Mines have (0–20)% increased Detonation Speed",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

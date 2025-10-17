@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Chill",
+    "BaseType": "Ice Shot",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
@@ -375,5 +376,81 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires an arrow that converts some physical damage to cold on its target and converts all physical damage to cold in a cone behind that target.",
+  "explicitMods": [
+    {
+      "text": "60% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Chills Enemies as though dealing (100–195)% more Damage",
+      "values": [
+        "(100–195)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.4 metres",
+      "values": [
+        "2.4"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Chills Enemies as though dealing (100–195)% more Damage",
+      "values": [
+        "(100–195)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.4 metres",
+      "values": [
+        "2.4"
+      ]
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "(15–20)% increased Damage with Hits against Chilled Enemies",
+      "values": [
+        "(15–20)"
+      ]
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, Ice Shot has 25% increased Area of Effect",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, Ice Shot Pierces 3 additional Targets",
+      "values": [
+        "3"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–80)% increased Area of Effect angle",
+      "values": [
+        "(0–80)"
+      ]
+    },
+    {
+      "text": "(0–80)% increased Area of Effect angle",
+      "values": [
+        "(0–80)"
+      ]
+    }
+  ]
 }

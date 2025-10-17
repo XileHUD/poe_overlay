@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Modifiers",
     "DropLevel": "4",
+    "BaseType": "Contagion",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Area, Duration, Trappable, Totemable, DamageOverTime, Chaos, Multicastable, Triggerable, Mineable, DegenOnlySpellDamage, Cascadable, CanRapidFire, AreaSpell",
@@ -415,5 +416,83 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Unleashes a vile contagion on enemies, dealing chaos damage over time. If an enemy dies while affected by Contagion, the debuff spreads to other enemies.",
+  "explicitMods": [
+    {
+      "text": "Deals (3.4–281.5) Base Chaos Damage per second",
+      "values": [
+        "(3.4–281.5)"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Base radius is 1.7 metres",
+      "values": [
+        "1.7"
+      ]
+    },
+    {
+      "text": "Spreads when affected Enemy dies",
+      "values": []
+    },
+    {
+      "text": "Deals (3.4–281.5) Base Chaos Damage per second",
+      "values": [
+        "(3.4–281.5)"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Base radius is 1.7 metres",
+      "values": [
+        "1.7"
+      ]
+    },
+    {
+      "text": "Spreads when affected Enemy dies",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "base_chaos_damage_taken_per_minute",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

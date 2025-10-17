@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Lightning Tendrils of Escalation",
     "TargetTypes": ", ,",
     "Type": "Spell, Damage, Area, Totemable, Lightning, Channel, AreaSpell",
     "ActiveSkillsCode": "lightning_tendrils_alt_y"
@@ -371,5 +372,102 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "While you channel this skill, it releases pulses of electrical energy, dealing lightning damage in a growing semicircular area in front of you.",
+  "explicitMods": [
+    {
+      "text": "Deals (1–150) to (11–2858) Lightning Damage",
+      "values": [
+        "(1–150)",
+        "(11–2858)"
+      ]
+    },
+    {
+      "text": "Base radius is (2.4–3.1) metres",
+      "values": [
+        "(2.4–3.1)"
+      ]
+    },
+    {
+      "text": "Gains +1 metre to radius per second while Channelling, up to a maximum of +2 metres",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Deals (1–150) to (11–2858) Lightning Damage",
+      "values": [
+        "(1–150)",
+        "(11–2858)"
+      ]
+    },
+    {
+      "text": "Base radius is (2.4–3.1) metres",
+      "values": [
+        "(2.4–3.1)"
+      ]
+    },
+    {
+      "text": "Gains +1 metre to radius per second while Channelling, up to a maximum of +2 metres",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (1–923) to (11–17537) Lightning Damage",
+      "values": [
+        "(1–923)",
+        "(11–17537)"
+      ]
+    },
+    {
+      "text": "Base radius is (2.4–3.7) metres",
+      "values": [
+        "(2.4–3.7)"
+      ]
+    },
+    {
+      "text": "Gains +1 metre to radius per second while Channelling, up to a maximum of +2 metres",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

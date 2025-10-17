@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Spark of Unpredictability",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Projectile, ProjectilesFromUser, Damage, Duration, Trappable, Totemable, Mineable, Multicastable, Triggerable, Lightning, CanRapidFire",
     "ActiveSkillsCode": "spark_alt_y"
@@ -371,5 +372,94 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Launches unpredictable sparks with that move randomly with large differences in speed and distance until they hit an enemy or expire.",
+  "explicitMods": [
+    {
+      "text": "Deals (1–104) to (28–1983) Lightning Damage",
+      "values": [
+        "(1–104)",
+        "(28–1983)"
+      ]
+    },
+    {
+      "text": "Base duration is 2.5 seconds",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "Fires (3–6) Projectiles",
+      "values": [
+        "(3–6)"
+      ]
+    },
+    {
+      "text": "Deals (1–104) to (28–1983) Lightning Damage",
+      "values": [
+        "(1–104)",
+        "(28–1983)"
+      ]
+    },
+    {
+      "text": "Base duration is 2.5 seconds",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "Fires (3–6) Projectiles",
+      "values": [
+        "(3–6)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (1–382) to (28–7250) Lightning Damage",
+      "values": [
+        "(1–382)",
+        "(28–7250)"
+      ]
+    },
+    {
+      "text": "Base duration is 2.5 seconds",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "Fires (3–9) Projectiles",
+      "values": [
+        "(3–9)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

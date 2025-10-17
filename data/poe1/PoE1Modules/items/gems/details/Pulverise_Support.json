@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Melee",
     "DropLevel": "31",
+    "BaseType": "Pulverise Support",
     "Class": "Support Gems",
     "Icon": "P",
     "ItemType": "Metadata/Items/Gems/SupportGemPulverise",
@@ -373,5 +374,83 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports melee attack skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (25–34)% increased Area of Effect",
+      "values": [
+        "(25–34)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 15% less Attack Speed",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (35–49)% more Melee Area Damage",
+      "values": [
+        "(35–49)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (25–34)% increased Area of Effect",
+      "values": [
+        "(25–34)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 15% less Attack Speed",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (35–49)% more Melee Area Damage",
+      "values": [
+        "(35–49)"
+      ]
+    },
+    {
+      "text": "(500–600)% increased Physical Damage",
+      "values": [
+        "(500–600)"
+      ]
+    },
+    {
+      "text": "25% reduced Attack Speed",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(40–50)% increased Stun Duration on Enemies",
+      "values": [
+        "(40–50)"
+      ]
+    },
+    {
+      "text": "-500 to Accuracy Rating",
+      "values": [
+        "-500"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

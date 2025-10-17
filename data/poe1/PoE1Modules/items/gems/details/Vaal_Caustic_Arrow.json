@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Caustic Arrow",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, MirageArcherCanUse, Projectile, ProjectilesFromUser, Area, Duration, Trappable, Mineable, Totemable, DamageOverTime, Chaos, Triggerable",
@@ -332,5 +333,151 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a slow-moving serpentine arrow which deals chaos damage while piercing enemies, and leaves a trail of caustic ground. Enemies standing on the caustic ground take chaos damage over time.",
+  "explicitMods": [
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Deals (21.2–4622.5) Base Chaos Damage per second",
+      "values": [
+        "(21.2–4622.5)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Deals (21.2–4622.5) Base Chaos Damage per second",
+      "values": [
+        "(21.2–4622.5)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "vaal caustic arrow ground art variation [14]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (8.8–11559.3) Base Chaos Damage per second",
+      "values": [
+        "(8.8–11559.3)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "+(0–1.2) metres to radius",
+      "values": [
+        "+(0–1.2)"
+      ]
+    },
+    {
+      "text": "caustic arrow explode on hit base area of effect radius [12]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    }
+  ]
 }

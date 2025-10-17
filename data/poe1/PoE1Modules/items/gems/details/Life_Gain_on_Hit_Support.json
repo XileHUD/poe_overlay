@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit",
     "DropLevel": "8",
+    "BaseType": "Life Gain on Hit Support",
     "Class": "Support Gems",
     "Icon": "h",
     "ItemType": "Metadata/Items/Gems/SupportGemLifeGainOnHit",
@@ -335,5 +336,35 @@
   "description": "This gem should not be confused with the Life Leech Support gem, which also works with spells and causes the life to be recovered over time.",
   "stats": [
     "This gem should not be confused with the Life Leech Support gem, which also works with spells and causes the life to be recovered over time."
+  ],
+  "gemDescription": "Supports attack skills.",
+  "explicitMods": [
+    {
+      "text": "(6–44) Life gained per Enemy Hit with Supported Attacks",
+      "values": [
+        "(6–44)"
+      ]
+    },
+    {
+      "text": "(6–44) Life gained per Enemy Hit with Supported Attacks",
+      "values": [
+        "(6–44)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10) Life gained per Enemy Hit with Supported Attacks",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10) Life gained per Enemy Hit with Supported Attacks",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

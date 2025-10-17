@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Galvanic Field of Intensity",
     "TargetTypes": "Any",
     "Type": "Spell, Damage, Area, Buff, Duration, Lightning, Chains, Orb, Triggerable",
     "ActiveSkillsCode": "galvanic_field_alt_x"
@@ -331,5 +332,173 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Applies a buff boosting chance to shock. When you shock an enemy while you have this buff, creates a spherical field of energy attached to the shocked enemy for a duration, which will damage it and other nearby enemies with beams of lightning.",
+  "explicitMods": [
+    {
+      "text": "Deals (4–203) to (79–3858) Lightning Damage",
+      "values": [
+        "(4–203)",
+        "(79–3858)"
+      ]
+    },
+    {
+      "text": "Cannot inflict Shock",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Fires a beam every 0.2 seconds",
+      "values": [
+        "0.2"
+      ]
+    },
+    {
+      "text": "Can target each enemy only once every 0.7 seconds",
+      "values": [
+        "0.7"
+      ]
+    },
+    {
+      "text": "Maximum 1 Field",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Buff Grants 20% chance to Shock enemies",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Deals (4–203) to (79–3858) Lightning Damage",
+      "values": [
+        "(4–203)",
+        "(79–3858)"
+      ]
+    },
+    {
+      "text": "Cannot inflict Shock",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Fires a beam every 0.2 seconds",
+      "values": [
+        "0.2"
+      ]
+    },
+    {
+      "text": "Can target each enemy only once every 0.7 seconds",
+      "values": [
+        "0.7"
+      ]
+    },
+    {
+      "text": "Maximum 1 Field",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Buff Grants 20% chance to Shock enemies",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (4–1290) to (79–24502) Lightning Damage",
+      "values": [
+        "(4–1290)",
+        "(79–24502)"
+      ]
+    },
+    {
+      "text": "Cannot inflict Shock",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Fires a beam every 0.2 seconds",
+      "values": [
+        "0.2"
+      ]
+    },
+    {
+      "text": "Can target each enemy only once every 0.7 seconds",
+      "values": [
+        "0.7"
+      ]
+    },
+    {
+      "text": "Maximum 1 Field",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Buff Grants 20% chance to Shock enemies",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Buff grants +(0–20)% chance to Shock enemies",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Buff grants +(0–20)% chance to Shock enemies",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Buff grants +(0–20)% chance to Shock enemies",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

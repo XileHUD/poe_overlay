@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Melee, Totem",
     "DropLevel": "28",
+    "BaseType": "Ancestral Warchief",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy,",
@@ -375,5 +376,107 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons an Ancestor Totem which attacks enemies with a powerful slam while you're near it. Being near it grants you more melee damage. Requires a Melee Weapon or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "Totem lasts 12 seconds",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "(8–18)% more Melee Damage while Totem is Active",
+      "values": [
+        "(8–18)"
+      ]
+    },
+    {
+      "text": "50% increased Totem Placement speed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+1 metre to Melee Strike Range",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Totem lasts 12 seconds",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "(8–18)% more Melee Damage while Totem is Active",
+      "values": [
+        "(8–18)"
+      ]
+    },
+    {
+      "text": "50% increased Totem Placement speed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+1 metre to Melee Strike Range",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "ancestor totem parent activiation range [70]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [50]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "melee_damage_+%",
+      "values": []
+    },
+    {
+      "text": "slam_ancestor_totem_granted_melee_damage_+%_final",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–30)% increased Activation range",
+      "values": [
+        "(0–30)"
+      ]
+    },
+    {
+      "text": "(0–30)% increased Activation range",
+      "values": [
+        "(0–30)"
+      ]
+    }
+  ]
 }

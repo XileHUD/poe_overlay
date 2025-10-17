@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Projectile, Pierce",
+    "BaseType": "Frostbolt",
     "Class": "Skill Gems",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Projectile, ProjectilesFromUser, Damage, Trappable, Totemable, Mineable, Multicastable, Cold, Triggerable, CanRapidFire",
@@ -374,5 +375,67 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a slow-moving projectile that pierces through enemies, dealing cold damage.",
+  "explicitMods": [
+    {
+      "text": "Deals (9–1594) to (13–2392) Cold Damage",
+      "values": [
+        "(9–1594)",
+        "(13–2392)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Deals (9–1594) to (13–2392) Cold Damage",
+      "values": [
+        "(9–1594)",
+        "(13–2392)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "(7–10)% increased Projectile Damage",
+      "values": [
+        "(7–10)"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Frostbolt fires 2 additional Projectiles",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Frostbolt Projectiles gain 40% increased Projectile Speed per second",
+      "values": [
+        "40"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Projectiles that have Pierced deal (0–20)% more Damage",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Projectiles that have Pierced deal (0–20)% more Damage",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Tornado of Elemental Turbulence",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Duration, Trappable, Totemable, Mineable, Triggerable, Damage, Physical, Area, Orb, AreaSpell, Fire, Cold, Lightning, RandomElement, Multicastable, CanRapidFire",
     "ActiveSkillsCode": "tornado_alt_y"
@@ -331,5 +332,179 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Create a Tornado of a random element that hinders and repeatedly damages enemies around it, converting physical damage to its element. The Tornado will chase down enemies for a duration.",
+  "explicitMods": [
+    {
+      "text": "Deals (22–290) to (32–435) Physical Damage",
+      "values": [
+        "(22–290)",
+        "(32–435)"
+      ]
+    },
+    {
+      "text": "Deals Damage every 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire, Cold or Lightning Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Tornado has (0–57)% increased Movement Speed",
+      "values": [
+        "(0–57)"
+      ]
+    },
+    {
+      "text": "Enemies in range are Hindered",
+      "values": []
+    },
+    {
+      "text": "Maximum 3 Tornadoes",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Deals (22–290) to (32–435) Physical Damage",
+      "values": [
+        "(22–290)",
+        "(32–435)"
+      ]
+    },
+    {
+      "text": "Deals Damage every 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire, Cold or Lightning Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Tornado has (0–57)% increased Movement Speed",
+      "values": [
+        "(0–57)"
+      ]
+    },
+    {
+      "text": "Enemies in range are Hindered",
+      "values": []
+    },
+    {
+      "text": "Maximum 3 Tornadoes",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "damage cannot be reflected or leech if used by other object [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "skill override pvp scaling time ms [1000]",
+      "values": []
+    },
+    {
+      "text": "Deals (51–3170) to (76–4755) Physical Damage",
+      "values": [
+        "(51–3170)",
+        "(76–4755)"
+      ]
+    },
+    {
+      "text": "Deals Damage every 0.25 seconds",
+      "values": [
+        "0.25"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire, Cold or Lightning Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Tornado has (0–102)% increased Movement Speed",
+      "values": [
+        "(0–102)"
+      ]
+    },
+    {
+      "text": "Enemies in range are Hindered",
+      "values": []
+    },
+    {
+      "text": "Maximum 2 Tornadoes",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "damage cannot be reflected or leech if used by other object [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Hinder reduces movement speed by 30%)",
+    "(Hinder reduces movement speed by 30%)",
+    "(Hinder reduces movement speed by 30%)",
+    "(Hinder reduces movement speed by 30%)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Tornado has (0–40)% increased Movement Speed",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Tornado has (0–40)% increased Movement Speed",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

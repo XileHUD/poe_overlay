@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Hit, Resistance, Exposure",
     "DropLevel": "72",
+    "BaseType": "Awakened Fire Penetration Support",
     "Class": "Support Gems",
     "Icon": "V",
     "ItemType": "Metadata/Items/Gems/SupportGemFirePenetrationPlus",
@@ -194,5 +195,50 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports any skill that hits enemies, making those hits penetrate enemy fire resistance.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills Penetrate (35–39)% Fire Resistance",
+      "values": [
+        "(35–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% chance to inflict Fire Exposure on Hit",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills Penetrate (35–39)% Fire Resistance",
+      "values": [
+        "(35–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% chance to inflict Fire Exposure on Hit",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Fire Exposure applies -10% to Fire Resistance for 4 seconds)",
+    "(Fire Exposure applies -10% to Fire Resistance for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Fire Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Fire Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

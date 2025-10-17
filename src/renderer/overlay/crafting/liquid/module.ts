@@ -151,7 +151,9 @@ export function render(items: LiquidEmotionItem[]): void {
         <input id='leSearch' type='text' placeholder='Search emotions...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
         <button id='leClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
       </div>
-      <div id='leTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
+      <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+        <div id='leTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
+      </div>
       <div id='leList' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:10px;'>${cards.join("")}</div>
     </div>`;
 
@@ -161,10 +163,10 @@ export function render(items: LiquidEmotionItem[]): void {
   const listEl = panel.querySelector('#leList') as HTMLElement | null;
   const tagWrap = panel.querySelector('#leTagFilters') as HTMLElement | null;
   function chip(tag: string, active: boolean){
-    return `<button data-chip='${tag}' style='padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; border:1px solid var(--border-color); background:${active? 'var(--accent-blue)' : 'var(--bg-tertiary)'}; color:${active? '#fff':'var(--text-primary)'};'>${tag}</button>`;
+    return `<button data-chip='${tag}' style='padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; border:1px solid var(--border-color); background:${active? 'var(--accent-blue)' : 'var(--bg-tertiary)'}; color:${active? '#fff':'var(--text-primary)'};'>${tag}</button>`;
   }
   function renderFixedChips(){
-    if(!tagWrap) return; tagWrap.innerHTML = fixedChips.map(c=>chip(c, state.selectedTags.has(c.toLowerCase()))).join(' ')+ (state.selectedTags.size? ` <button id='leChipReset' style='padding:3px 10px; font-size:11px; border-radius:999px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'>Reset</button>` : '');
+    if(!tagWrap) return; tagWrap.innerHTML = fixedChips.map(c=>chip(c, state.selectedTags.has(c.toLowerCase()))).join(' ')+ (state.selectedTags.size? ` <button id='leChipReset' style='padding:3px 10px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'>Reset</button>` : '');
     tagWrap.querySelectorAll('button[data-chip]').forEach(btn=>{
       btn.addEventListener('click', ()=>{
         const name = (btn as HTMLElement).getAttribute('data-chip')||''; const key=name.toLowerCase();

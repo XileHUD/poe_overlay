@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Minion",
     "DropLevel": "18",
+    "BaseType": "Minion Life Support",
     "Class": "Support Gems",
     "Icon": "n",
     "ItemType": "Metadata/Items/Gems/SupportGemMinionLife",
@@ -373,5 +374,35 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which create Minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (30–49)% more Minion maximum Life",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (30–49)% more Minion maximum Life",
+      "values": [
+        "(30–49)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–20)% increased Minion maximum Life",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–20)% increased Minion maximum Life",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

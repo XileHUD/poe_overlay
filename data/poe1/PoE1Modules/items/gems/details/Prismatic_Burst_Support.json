@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Prismatic Burst",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Area, AreaSpell, Damage, Fire, Cold, Lightning, RandomElement, Triggerable, Triggered, InbuiltTrigger, Cooldown, SkillGrantedBySupport",
     "ActiveSkillsCode": "prismatic_burst"
@@ -451,5 +452,166 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attacks, causing them to trigger the Prismatic Burst spell. Cannot support triggered attacks or attacks used by things other than you. Cannot modify the skills of minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills will Trigger Prismatic Burst on Hit",
+      "values": []
+    },
+    {
+      "text": "Deals (3–1224) to (5–1836) Cold Damage",
+      "values": [
+        "(3–1224)",
+        "(5–1836)"
+      ]
+    },
+    {
+      "text": "Deals (1–153) to (7–2907) Lightning Damage",
+      "values": [
+        "(1–153)",
+        "(7–2907)"
+      ]
+    },
+    {
+      "text": "Deals (3–1224) to (5–1836) Fire Damage",
+      "values": [
+        "(3–1224)",
+        "(5–1836)"
+      ]
+    },
+    {
+      "text": "+(0–0.9) metres to radius",
+      "values": [
+        "+(0–0.9)"
+      ]
+    },
+    {
+      "text": "Deals 100% less Damage of each unchosen Damage Type",
+      "values": []
+    },
+    {
+      "text": "(0–57)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–57)"
+      ]
+    },
+    {
+      "text": "Supported Skills will Trigger Prismatic Burst on Hit",
+      "values": []
+    },
+    {
+      "text": "Deals (3–1224) to (5–1836) Cold Damage",
+      "values": [
+        "(3–1224)",
+        "(5–1836)"
+      ]
+    },
+    {
+      "text": "Deals (1–153) to (7–2907) Lightning Damage",
+      "values": [
+        "(1–153)",
+        "(7–2907)"
+      ]
+    },
+    {
+      "text": "Deals (3–1224) to (5–1836) Fire Damage",
+      "values": [
+        "(3–1224)",
+        "(5–1836)"
+      ]
+    },
+    {
+      "text": "+(0–0.9) metres to radius",
+      "values": [
+        "+(0–0.9)"
+      ]
+    },
+    {
+      "text": "Deals 100% less Damage of each unchosen Damage Type",
+      "values": []
+    },
+    {
+      "text": "(0–57)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–57)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "triggered prismatic burst [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (3–9511) to (5–14267) Cold Damage",
+      "values": [
+        "(3–9511)",
+        "(5–14267)"
+      ]
+    },
+    {
+      "text": "Deals (1–1189) to (7–22590) Lightning Damage",
+      "values": [
+        "(1–1189)",
+        "(7–22590)"
+      ]
+    },
+    {
+      "text": "Deals (3–9511) to (5–14267) Fire Damage",
+      "values": [
+        "(3–9511)",
+        "(5–14267)"
+      ]
+    },
+    {
+      "text": "+(0–1.4) metres to radius",
+      "values": [
+        "+(0–1.4)"
+      ]
+    },
+    {
+      "text": "Deals 100% less Damage of each unchosen Damage Type",
+      "values": []
+    },
+    {
+      "text": "(0–102)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–102)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "triggered prismatic burst [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(The Damage Types are Physical, Fire, Cold, Lightning, and Chaos)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Elemental Damage",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Elemental Damage",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Elemental Damage",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

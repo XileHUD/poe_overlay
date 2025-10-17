@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Dominating Blow",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Minion, Duration, MinionsCanExplode, MeleeSingleTarget, Multistrikeable, Melee, CreatesMinion",
@@ -253,5 +254,131 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "This spell causes one of your existing Sentinels of Dominance to Ascend, becoming more powerful, gaining new attacks, and overriding its duration, while maintaining its monster modifiers and other bonuses, including from support gems. If you cannot have more Ascended Sentinels of Dominance, an existing one will be refreshed instead.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 30 seconds",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Maximum 3 Ascended Sentinels of DominanceAscended Sentinels do not count towards the regular limits",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Ascended Sentinels deal 200% more Damage",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Ascended Sentinels take 70% less Damage",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "Base duration is 30 seconds",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Maximum 3 Ascended Sentinels of DominanceAscended Sentinels do not count towards the regular limits",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Ascended Sentinels deal 200% more Damage",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Ascended Sentinels take 70% less Damage",
+      "values": [
+        "70"
+      ]
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 20 seconds",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Maximum 3 Summoned Magic Sentinels of Dominance",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Maximum 9 Summoned Normal Sentinels of Dominance",
+      "values": [
+        "9"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Rare Sentinel of Dominance",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "25% Chance to Summon a Normal Sentinel of Dominance on Hitting a Unique Monster",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "base max number of vaal dominated monsters [3]",
+      "values": []
+    },
+    {
+      "text": "is dominated [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

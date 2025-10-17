@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Burning, Resistance, Exposure, Modifiers",
     "DropLevel": "12",
+    "BaseType": "Scorching Ray",
     "Class": "Skill Gems",
     "TargetTypes": ", ,",
     "Type": "Spell, Totemable, DamageOverTime, Fire, CausesBurning, Duration, Channel, DegenOnlySpellDamage",
@@ -375,5 +376,125 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Unleash a beam of fire that burns enemies it touches. Remaining in the beam raises the burning, adding a portion of the beam's damage in stages. Inflicts Fire Exposure at maximum stages. Enemies who leave the beam continue to burn for a duration. Increasing cast speed also increases the rate at which the beam turns.",
+  "explicitMods": [
+    {
+      "text": "Deals (13.4–780.7) Base Fire Damage per second",
+      "values": [
+        "(13.4–780.7)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Burning Debuff can have a maximum of 8 stages",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Additional Debuff stages add 80% of Damage",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Fire Exposure applies -25% to Fire Resistance",
+      "values": [
+        "-25"
+      ]
+    },
+    {
+      "text": "Deals (13.4–780.7) Base Fire Damage per second",
+      "values": [
+        "(13.4–780.7)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Burning Debuff can have a maximum of 8 stages",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Additional Debuff stages add 80% of Damage",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Fire Exposure applies -25% to Fire Resistance",
+      "values": [
+        "-25"
+      ]
+    },
+    {
+      "text": "Grants Level 25 Scorching Ray Skill",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(12–20)% increased Cast Speed",
+      "values": [
+        "(12–20)"
+      ]
+    },
+    {
+      "text": "Recover (1–3)% of Life on Kill",
+      "values": [
+        "(1–3)"
+      ]
+    },
+    {
+      "text": "Recover (1–3)% of Mana on Kill",
+      "values": [
+        "(1–3)"
+      ]
+    },
+    {
+      "text": "10% increased Scorching Ray beam length",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "buff_impl_stat",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fire Exposure applies (-5–0)% to Fire Resistance",
+      "values": [
+        "(-5–0)"
+      ]
+    },
+    {
+      "text": "Fire Exposure applies (-5–0)% to Fire Resistance",
+      "values": [
+        "(-5–0)"
+      ]
+    }
+  ]
 }

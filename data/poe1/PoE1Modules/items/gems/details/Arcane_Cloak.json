@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Cooldown, Hit, Buff",
     "DropLevel": "16",
+    "BaseType": "Arcane Cloak",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, Instant, Duration, Triggerable, Guard, Lightning, Cooldown, Arcane",
@@ -375,5 +376,107 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Spends a portion of your mana to grant a buff that takes some of the damage from hits for you until depleted. The buff grants added lightning damage based on the amount of mana spent by this skill. Shares a cooldown with other Guard skills.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Spends (45–64)% of current Mana",
+      "values": [
+        "(45–64)"
+      ]
+    },
+    {
+      "text": "75% of Damage from Hits is taken from Buff before your Life or Energy ShieldBuff can take Damage equal to Mana Spent by this Skill's effect",
+      "values": [
+        "75"
+      ]
+    },
+    {
+      "text": "Buff grants Added Lightning Damage equal to (10–14)% of Mana Spent by this Skill's effect",
+      "values": [
+        "(10–14)"
+      ]
+    },
+    {
+      "text": "This Skill's Cooldown does not recover during its effect",
+      "values": []
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Spends (45–64)% of current Mana",
+      "values": [
+        "(45–64)"
+      ]
+    },
+    {
+      "text": "75% of Damage from Hits is taken from Buff before your Life or Energy ShieldBuff can take Damage equal to Mana Spent by this Skill's effect",
+      "values": [
+        "75"
+      ]
+    },
+    {
+      "text": "Buff grants Added Lightning Damage equal to (10–14)% of Mana Spent by this Skill's effect",
+      "values": [
+        "(10–14)"
+      ]
+    },
+    {
+      "text": "This Skill's Cooldown does not recover during its effect",
+      "values": []
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "global_minimum_added_lightning_damage",
+      "values": []
+    },
+    {
+      "text": "global_maximum_added_lightning_damage",
+      "values": []
+    },
+    {
+      "text": "base_life_regeneration_rate_per_minute",
+      "values": []
+    },
+    {
+      "text": "damage_taken_goes_to_mana_%",
+      "values": []
+    },
+    {
+      "text": "affected_by_guard_skill",
+      "values": []
+    },
+    {
+      "text": "Back attachments can be applied in the Cosmetics tab of your Inventory.",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Buff Effect",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Buff Effect",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

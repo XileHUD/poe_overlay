@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "18",
+    "BaseType": "Concentrated Effect Support",
     "Class": "Support Gems",
     "Icon": "o",
     "ItemType": "Metadata/Items/Gems/SupportGemConcentratedEffect",
@@ -332,5 +333,179 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill with an area of effect, regardless of whether that skill deals damage.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (25–39)% more Area Damage",
+      "values": [
+        "(25–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 30% less Area of Effect",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (25–39)% more Area Damage",
+      "values": [
+        "(25–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 30% less Area of Effect",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "100% increased Melee Damage against Frozen Enemies",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "100% increased Melee Damage against Shocked Enemies",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "100% increased Melee Damage against Ignited Enemies",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Projectiles have (15–20)% chance to Ignite",
+      "values": [
+        "(15–20)"
+      ]
+    },
+    {
+      "text": "Projectiles have (15–20)% chance to Freeze",
+      "values": [
+        "(15–20)"
+      ]
+    },
+    {
+      "text": "Projectiles have (15–20)% chance to Shock",
+      "values": [
+        "(15–20)"
+      ]
+    },
+    {
+      "text": "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+      "values": []
+    },
+    {
+      "text": "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+      "values": []
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Concentrated Effect",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Inspiration",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Faster Casting",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 20 Concentrated Effect",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "+50% to Cold Damage over Time Multiplier",
+      "values": [
+        "+50"
+      ]
+    },
+    {
+      "text": "50% increased Energy Shield",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+(25–75) to maximum Mana",
+      "values": [
+        "+(25–75)"
+      ]
+    },
+    {
+      "text": "50% reduced Energy Shield Recharge Rate",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 5 Concentrated Effect",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "(120–160)% increased Armour and Evasion",
+      "values": [
+        "(120–160)"
+      ]
+    },
+    {
+      "text": "+(50–70) to maximum Life",
+      "values": [
+        "+(50–70)"
+      ]
+    },
+    {
+      "text": "4% reduced Mana Cost per Endurance Charge",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Lose all Endurance Charges when Rampage ends",
+      "values": []
+    },
+    {
+      "text": "Gain Rampage while at Maximum Endurance Charges",
+      "values": []
+    },
+    {
+      "text": "(You gain Rampage bonuses for Killing multiple Enemies in quick succession)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+    "(You gain Rampage bonuses for Killing multiple Enemies in quick succession)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Area Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Area Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

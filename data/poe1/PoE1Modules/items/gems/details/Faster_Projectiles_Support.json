@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Projectile",
     "DropLevel": "31",
+    "BaseType": "Faster Projectiles Support",
     "Class": "Support Gems",
     "Icon": "j",
     "ItemType": "Metadata/Items/Gems/SupportGemFasterProjectiles",
@@ -373,5 +374,47 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports projectile skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (50–69)% increased Projectile Speed",
+      "values": [
+        "(50–69)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (20–29)% increased Projectile Damage",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (50–69)% increased Projectile Speed",
+      "values": [
+        "(50–69)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (20–29)% increased Projectile Damage",
+      "values": [
+        "(20–29)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Projectile Speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Projectile Speed",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

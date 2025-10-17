@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Blast Rain of Trarthus",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Attack, RangedAttack, Fire, MirageArcherCanUse, Area, ProjectileSpeed, ProjectileNumber, Totemable, Trappable, Mineable, Triggerable, Rain, DamageOverTime, CausesBurning, Duration",
@@ -292,5 +293,187 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a single arrow up in the air, to rain down at a targeted location. The arrow deals area damage around where it lands, as well as releasing a wave of fire which will apply a burning debuff to enemies. The impact of the arrow will also inflict this debuff.",
+  "explicitMods": [
+    {
+      "text": "Deals (142.4–2737.1) Base Fire Damage per second",
+      "values": [
+        "(142.4–2737.1)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Fires 1 Arrow",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles do not apply to this Skill",
+      "values": []
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Base radius is 1 metre",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 3.5 metres",
+      "values": [
+        "3.5"
+      ]
+    },
+    {
+      "text": "Deals (142.4–2737.1) Base Fire Damage per second",
+      "values": [
+        "(142.4–2737.1)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Fires 1 Arrow",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles do not apply to this Skill",
+      "values": []
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Base radius is 1 metre",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 3.5 metres",
+      "values": [
+        "3.5"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "blast rain arrow delay ms [80]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (185.9–23821.4) Base Fire Damage per second",
+      "values": [
+        "(185.9–23821.4)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Fires +1 Arrow",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles do not apply to this Skill",
+      "values": []
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Base radius is 1 metre",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 3.5 metres",
+      "values": [
+        "3.5"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "blast rain arrow delay ms [80]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–20)% to Fire Damage over Time Multiplier",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "+(0–20)% to Fire Damage over Time Multiplier",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

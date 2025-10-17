@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Duration",
     "DropLevel": "10",
+    "BaseType": "Lightning Warp",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Self, Enemy,",
     "Type": "Spell, Damage, Area, Duration, Trappable, Totemable, Mineable, Triggerable, Movement, Lightning, AreaSpell, Travel, Multicastable, CanRapidFire",
@@ -455,5 +456,149 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Waits for a duration before teleporting to a targeted destination, with the duration based on the distance and your movement speed. When the teleport occurs, lightning damage is dealt to the area around both where the player was and where they teleported to. Casting again will queue up multiple teleportations to occur in sequence.",
+  "explicitMods": [
+    {
+      "text": "Deals (1–51) to (19–965) Lightning Damage",
+      "values": [
+        "(1–51)",
+        "(19–965)"
+      ]
+    },
+    {
+      "text": "+(0–0.4) metres to radius",
+      "values": [
+        "+(0–0.4)"
+      ]
+    },
+    {
+      "text": "Can queue up to 50 uses",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "(30–49)% reduced Duration",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Deals (1–51) to (19–965) Lightning Damage",
+      "values": [
+        "(1–51)",
+        "(19–965)"
+      ]
+    },
+    {
+      "text": "+(0–0.4) metres to radius",
+      "values": [
+        "+(0–0.4)"
+      ]
+    },
+    {
+      "text": "Can queue up to 50 uses",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "(30–49)% reduced Duration",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill override pvp scaling time ms [1000]",
+      "values": []
+    },
+    {
+      "text": "Trigger Level 15 Lightning Warp on Hit with this Weapon",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "(30–50)% increased Physical Damage",
+      "values": [
+        "(30–50)"
+      ]
+    },
+    {
+      "text": "(30–50)% increased Critical Strike Chance",
+      "values": [
+        "(30–50)"
+      ]
+    },
+    {
+      "text": "Hits with this Weapon gain (75–100)% of Physical Damage as Extra Cold or Lightning Damage",
+      "values": [
+        "(75–100)"
+      ]
+    },
+    {
+      "text": "local skills granted by item are supported by level x unique trigger support [1]",
+      "values": []
+    },
+    {
+      "text": "local use skill on hit % [100]",
+      "values": []
+    },
+    {
+      "text": "Trigger Level 1 Lightning Warp on Hit with this Weapon",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "(30–50)% increased Physical Damage",
+      "values": [
+        "(30–50)"
+      ]
+    },
+    {
+      "text": "(30–50)% increased Critical Strike Chance",
+      "values": [
+        "(30–50)"
+      ]
+    },
+    {
+      "text": "Hits with this Weapon gain (75–100)% of Physical Damage as Extra Cold or Lightning Damage",
+      "values": [
+        "(75–100)"
+      ]
+    },
+    {
+      "text": "local skills granted by item are supported by level x unique trigger support [1]",
+      "values": []
+    },
+    {
+      "text": "local use skill on hit % [100]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Cast Speed",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Cast Speed",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

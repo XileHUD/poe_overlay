@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit, Ailment, Ignite",
     "DropLevel": "12",
+    "BaseType": "Incinerate",
     "Class": "Skill Gems",
     "TargetTypes": ", ,",
     "Type": "Spell, Damage, Totemable, Fire, Channel, Area, AreaSpell, Cooldown",
@@ -415,5 +416,131 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Continuously launches a torrent of fire from your hand, repeatedly damaging enemies. As you channel this spell longer, the flames spread wider close to you and spread longer directly in front of you. When you stop channelling you release a wave of fire damage over a wide and long area that will apply a powerful Ignite.",
+  "explicitMods": [
+    {
+      "text": "Deals (3–207) to (5–311) Fire Damage",
+      "values": [
+        "(3–207)",
+        "(5–311)"
+      ]
+    },
+    {
+      "text": "25% more Damage with Hits and Ailments for each stage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "100% increased angle per stage, up to 300%",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Final wave always Ignites",
+      "values": []
+    },
+    {
+      "text": "8 maximum Stages",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "+(0.4–0.5) metres to radius per stage, up to a maximum of +(1.5–1.9) metres",
+      "values": [
+        "+(0.4–0.5)",
+        "+(1.5–1.9)"
+      ]
+    },
+    {
+      "text": "Final wave deals 500% more Damage with Hits",
+      "values": [
+        "500"
+      ]
+    },
+    {
+      "text": "Final wave deals 250% more Damage with Ignite",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "Deals (3–207) to (5–311) Fire Damage",
+      "values": [
+        "(3–207)",
+        "(5–311)"
+      ]
+    },
+    {
+      "text": "25% more Damage with Hits and Ailments for each stage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "100% increased angle per stage, up to 300%",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Final wave always Ignites",
+      "values": []
+    },
+    {
+      "text": "8 maximum Stages",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "+(0.4–0.5) metres to radius per stage, up to a maximum of +(1.5–1.9) metres",
+      "values": [
+        "+(0.4–0.5)",
+        "+(1.5–1.9)"
+      ]
+    },
+    {
+      "text": "Final wave deals 500% more Damage with Hits",
+      "values": [
+        "500"
+      ]
+    },
+    {
+      "text": "Final wave deals 250% more Damage with Ignite",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–2) to maximum Stages",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "+(0–2) to maximum Stages",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

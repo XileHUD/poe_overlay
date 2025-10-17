@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Grace",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
     "ActiveSkillsCode": "grace"
@@ -371,5 +372,105 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts a temporary aura that grants you and your allies additional chance to evade attacks, and makes suppressed spell damage unlucky against you.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Modifiers to Buff Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies have +15% chance to Evade Attack Hits",
+      "values": [
+        "+15"
+      ]
+    },
+    {
+      "text": "Suppressed Spell Damage dealt to you is Unlucky",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Modifiers to Buff Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies have +15% chance to Evade Attack Hits",
+      "values": [
+        "+15"
+      ]
+    },
+    {
+      "text": "Suppressed Spell Damage dealt to you is Unlucky",
+      "values": []
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "+(0–3.4) metres to radius",
+      "values": [
+        "+(0–3.4)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (136–3188) additional Evasion Rating",
+      "values": [
+        "(136–3188)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (20–37)% more Evasion rating",
+      "values": [
+        "(20–37)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Unlucky things are rolled twice and the worst result used)",
+    "(Unlucky things are rolled twice and the worst result used)",
+    "(Unlucky things are rolled twice and the worst result used)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

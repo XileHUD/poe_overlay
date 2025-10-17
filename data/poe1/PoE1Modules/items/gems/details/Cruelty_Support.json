@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Duration, Cruelty",
     "DropLevel": "18",
+    "BaseType": "Cruelty Support",
     "Class": "Support Gems",
     "Icon": "Y",
     "ItemType": "Metadata/Items/Gems/SupportGemCruelty",
@@ -413,5 +414,75 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies. Minions cannot gain Cruelty.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (15–24)% more Damage with Hits",
+      "values": [
+        "(15–24)"
+      ]
+    },
+    {
+      "text": "Cruelty has a Base Duration of 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Hits from Supported Skills grant Cruelty",
+      "values": []
+    },
+    {
+      "text": "(0–19)% increased Effect of Cruelty granted by Supported Skills",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (15–24)% more Damage with Hits",
+      "values": [
+        "(15–24)"
+      ]
+    },
+    {
+      "text": "Cruelty has a Base Duration of 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Hits from Supported Skills grant Cruelty",
+      "values": []
+    },
+    {
+      "text": "(0–19)% increased Effect of Cruelty granted by Supported Skills",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "supported by cruelty [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Cruelty makes all Skills Supported by Cruelty Support deal up to 40% more Damage over Time, based on the amount of Damage in the Hit which grants it)",
+    "(Cruelty makes all Skills Supported by Cruelty Support deal up to 40% more Damage over Time, based on the amount of Damage in the Hit which grants it)",
+    "(Cruelty makes all Skills Supported by Cruelty Support deal up to 40% more Damage over Time, based on the amount of Damage in the Hit which grants it)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–5)% increased Effect of Cruelty granted by Supported Skills",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "(0–5)% increased Effect of Cruelty granted by Supported Skills",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

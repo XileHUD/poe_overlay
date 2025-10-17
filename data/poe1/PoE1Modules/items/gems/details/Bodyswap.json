@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "DropLevel": "10",
+    "BaseType": "Bodyswap",
     "Class": "Skill Gems",
     "TargetTypes": "Corpse, Enemy",
     "Type": "Movement, Spell, Damage, Area, Totemable, Mineable, Trappable, Triggerable, Fire, AreaSpell, Travel",
@@ -494,5 +495,79 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Violently destroys your body and recreates it at the location of a targeted enemy or corpse, dealing spell damage in an area at both locations. If there is no specific target, it will prioritise corpses over enemies. If targeting a corpse, the corpse will also explode, dealing damage around it that is not affected by modifiers to spell damage, and cannot be reflected. This spell cannot be repeated.",
+  "explicitMods": [
+    {
+      "text": "This Spell deals (3–210) to (5–315), plus 4% of your maximum Life, as base Fire Damage",
+      "values": [
+        "(3–210)",
+        "(5–315)",
+        "4"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (6–7.9)% of the corpse's Maximum Life",
+      "values": [
+        "(6–7.9)"
+      ]
+    },
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "200% more Area of Effect if Consuming a corpse",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "This Spell deals (3–210) to (5–315), plus 4% of your maximum Life, as base Fire Damage",
+      "values": [
+        "(3–210)",
+        "(5–315)",
+        "4"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (6–7.9)% of the corpse's Maximum Life",
+      "values": [
+        "(6–7.9)"
+      ]
+    },
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "200% more Area of Effect if Consuming a corpse",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Deals +(0–4)% of your maximum Life, as base Fire Damage",
+      "values": [
+        "+(0–4)"
+      ]
+    },
+    {
+      "text": "Deals +(0–4)% of your maximum Life, as base Fire Damage",
+      "values": [
+        "+(0–4)"
+      ]
+    }
+  ]
 }

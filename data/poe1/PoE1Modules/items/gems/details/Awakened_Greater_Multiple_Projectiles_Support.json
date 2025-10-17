@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Projectile",
     "DropLevel": "72",
+    "BaseType": "Awakened Greater Multiple Projectiles Support",
     "Class": "Support Gems",
     "Icon": "P",
     "ItemType": "Metadata/Items/Gems/SupportGemGreaterMultipleProjectilesPlus",
@@ -174,5 +175,51 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports projectile skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (21–25)% less Projectile Damage",
+      "values": [
+        "(21–25)"
+      ]
+    },
+    {
+      "text": "Supported Skills fire 5 additional Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (21–25)% less Projectile Damage",
+      "values": [
+        "(21–25)"
+      ]
+    },
+    {
+      "text": "Supported Skills fire 5 additional Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "terrain arrow attachment chance reduction +% [250]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

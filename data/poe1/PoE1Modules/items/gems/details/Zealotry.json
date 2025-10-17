@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Minion",
     "DropLevel": "24",
+    "BaseType": "Zealotry",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -415,5 +416,79 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts an aura that grants bonuses to damage and critical strike chance of spells to you and your allies, and gives a chance to create Consecrated Ground against stronger enemies.",
+  "explicitMods": [
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby Non-Minion Allies have a 10% chance to create Consecrated Ground on Hitting a Rare or Unique Enemy, lasting 8 seconds",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "You and nearby allies have (20–39)% increased Spell Critical Strike Chance",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "You and nearby allies deal (10–15)% more Spell Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby Non-Minion Allies have a 10% chance to create Consecrated Ground on Hitting a Rare or Unique Enemy, lasting 8 seconds",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "You and nearby allies have (20–39)% increased Spell Critical Strike Chance",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "You and nearby allies deal (10–15)% more Spell Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Allies on your Consecrated Ground Regenerate a percentage of their Maximum Life per second, and Curses have 50% reduced effect on them)",
+    "(Allies on your Consecrated Ground Regenerate a percentage of their Maximum Life per second, and Curses have 50% reduced effect on them)",
+    "(Allies on your Consecrated Ground Regenerate a percentage of their Maximum Life per second, and Curses have 50% reduced effect on them)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

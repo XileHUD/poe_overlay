@@ -137,7 +137,9 @@ export function render(list: ScarabItem[]): void {
       <input id='scarabSearch' type='text' placeholder='Search scarabs...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
       <button id='scarabClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-    <div id='scarabTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; margin-bottom:4px; justify-content:center; width:100%;'></div>
+    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+      <div id='scarabTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; justify-content:center; width:100%;'></div>
+    </div>
     <div id='scarabWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:10px;'></div>`;
   
   state.input = panel.querySelector('#scarabSearch') as HTMLInputElement | null;
@@ -189,7 +191,7 @@ export function render(list: ScarabItem[]): void {
     const border=`rgba(${r},${g},${b},0.6)`; 
     const l=0.2126*r+0.7152*g+0.0722*b; 
     const color=active?(l>180?'#000':'#fff'):'var(--text-primary)';
-    return `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:999px; border:1px solid ${border}; background:${bg}; color:${color};`;
+    return `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; border:1px solid ${border}; background:${bg}; color:${color};`;
   }
   
   function renderTagFilters(){ 
@@ -210,7 +212,7 @@ export function render(list: ScarabItem[]): void {
     if(state.selectedTags.size){ 
       const reset=document.createElement('div'); 
       reset.textContent='Reset'; 
-      reset.style.cssText='cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:999px; border:1px solid var(--accent-red); background:var(--accent-red); color:#fff;'; 
+      reset.style.cssText='cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; border:1px solid var(--accent-red); background:var(--accent-red); color:#fff;'; 
       reset.addEventListener('click',()=>{ 
         state.selectedTags.clear(); 
         apply(state.input?.value||''); 

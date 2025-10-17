@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Perforate of Bloodshed",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, Two Hand Swords, Two Hand Axes",
     "TargetTypes": "Enemy, Ground",
     "Type": "Attack, Area, Damage, Melee, Multistrikeable, Slam, Totemable",
@@ -332,5 +333,112 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Smash the ground to bring forth multiple spikes from the ground in sequence, able to hit enemies multiple times.\nRequires a Sword or Axe.",
+  "explicitMods": [
+    {
+      "text": "Creates 6 Spikes",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "(50–88)% more Damage with Bleeding",
+      "values": [
+        "(50–88)"
+      ]
+    },
+    {
+      "text": "25% chance to cause Bleeding",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Creates 6 Spikes",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "(50–88)% more Damage with Bleeding",
+      "values": [
+        "(50–88)"
+      ]
+    },
+    {
+      "text": "25% chance to cause Bleeding",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "blood spears aoe modifiers apply to blood spear placement range at % value [50]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Creates 6 Spikes",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "(50–118)% more Damage with Bleeding",
+      "values": [
+        "(50–118)"
+      ]
+    },
+    {
+      "text": "25% chance to cause Bleeding",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "blood spears aoe modifiers apply to blood spear placement range at % value [50]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–20)% more Damage with Bleeding",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "+(0–20)% more Damage with Bleeding",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "+(0–20)% more Damage with Bleeding",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

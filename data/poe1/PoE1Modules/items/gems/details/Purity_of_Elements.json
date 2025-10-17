@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Resistance, Ailment",
     "DropLevel": "24",
+    "BaseType": "Purity of Elements",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -415,5 +416,92 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts an aura that grants elemental resistances and elemental ailment immunity to you and your allies.",
+  "explicitMods": [
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain +(20–34)% to all Elemental Resistances",
+      "values": [
+        "+(20–34)"
+      ]
+    },
+    {
+      "text": "You and nearby allies are Immune to all Elemental Ailments",
+      "values": []
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain +(20–34)% to all Elemental Resistances",
+      "values": [
+        "+(20–34)"
+      ]
+    },
+    {
+      "text": "You and nearby allies are Immune to all Elemental Ailments",
+      "values": []
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "Grants Level 10 Purity of Elements Skill",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "+(10–20) to all Attributes",
+      "values": [
+        "+(10–20)"
+      ]
+    },
+    {
+      "text": "+(20–40) to maximum Life",
+      "values": [
+        "+(20–40)"
+      ]
+    },
+    {
+      "text": "+(5–10)% to all Elemental Resistances",
+      "values": [
+        "+(5–10)"
+      ]
+    },
+    {
+      "text": "(Attributes are Strength, Dexterity, and Intelligence)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
+    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
+    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
+    "(Attributes are Strength, Dexterity, and Intelligence)"
+  ],
+  "qualityMods": [
+    {
+      "text": "You and nearby allies gain +(0–5)% to all Elemental Resistances",
+      "values": [
+        "+(0–5)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain +(0–5)% to all Elemental Resistances",
+      "values": [
+        "+(0–5)"
+      ]
+    }
+  ]
 }

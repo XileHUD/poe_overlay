@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Link",
     "DropLevel": "34",
+    "BaseType": "Flame Link",
     "Class": "Skill Gems",
     "TargetTypes": "Self, Ground",
     "Type": "Spell, Buff, Duration, Link, Fire",
@@ -415,5 +416,85 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Targets an allied player to apply a buff which links you to them for a duration. While linked, they deal additional fire damage based on your life. If the target dies while linked, you will also die. This skill cannot be triggered, or used by Totems, Traps, or Mines.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (8–9.9) seconds",
+      "values": [
+        "(8–9.9)"
+      ]
+    },
+    {
+      "text": "Linked target gains (23–169) to (35–254) Added Fire Damage",
+      "values": [
+        "(23–169)",
+        "(35–254)"
+      ]
+    },
+    {
+      "text": "Linked target gains Added Fire Damage equal to 5% of your Maximum Life",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Link breaks if target leaves range or line of sight for 4 secondsMaximum 1 Link from any source per targetYou die if Linked target dies",
+      "values": []
+    },
+    {
+      "text": "Base duration is (8–9.9) seconds",
+      "values": [
+        "(8–9.9)"
+      ]
+    },
+    {
+      "text": "Linked target gains (23–169) to (35–254) Added Fire Damage",
+      "values": [
+        "(23–169)",
+        "(35–254)"
+      ]
+    },
+    {
+      "text": "Linked target gains Added Fire Damage equal to 5% of your Maximum Life",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Link breaks if target leaves range or line of sight for 4 secondsMaximum 1 Link from any source per targetYou die if Linked target dies",
+      "values": []
+    },
+    {
+      "text": "skill cost over time is not removed with skill [1]",
+      "values": []
+    },
+    {
+      "text": "global_minimum_added_fire_damage",
+      "values": []
+    },
+    {
+      "text": "global_maximum_added_fire_damage",
+      "values": []
+    },
+    {
+      "text": "base_chance_to_ignite_%",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–1.5) seconds",
+      "values": [
+        "(0–1.5)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–1.5) seconds",
+      "values": [
+        "(0–1.5)"
+      ]
+    }
+  ]
 }

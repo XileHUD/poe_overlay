@@ -3,6 +3,7 @@
   "slug": "Awakened_Enlighten_Support",
   "metadata": {
     "DropLevel": "72",
+    "BaseType": "Awakened Enlighten Support",
     "Class": "Support Gems",
     "Icon": "+",
     "IsExceptional": "This support gem only supports active skills that come from gem items",
@@ -172,5 +173,22 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill gem. Once this gem reaches level 2 or above, will apply a cost & reservation multiplier to supported gems. Cannot support skills that don't come from gems.",
+  "explicitMods": [],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "This Gem gains (0–100)% increased Experience",
+      "values": [
+        "(0–100)"
+      ]
+    },
+    {
+      "text": "This Gem gains (0–100)% increased Experience",
+      "values": [
+        "(0–100)"
+      ]
+    }
+  ]
 }

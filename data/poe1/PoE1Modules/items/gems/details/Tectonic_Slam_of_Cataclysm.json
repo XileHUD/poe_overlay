@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Tectonic Slam of Cataclysm",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy, SELF_ORIGIN",
     "Type": "Attack, Area, Multistrikeable, Melee, Fire, Slam, Totemable",
@@ -292,5 +293,117 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slam the ground, consuming all Endurance Charges and unleashing a fiery fissure in front of you, dealing area damage and randomly releasing a number of smaller fissures branching off from it. Requires a Mace, Sceptre, Sword, Axe, Staff, or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "15% more Damage per Endurance Charge removed",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "10% more Area of Effect per Endurance Charge removed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "10% fissure branching chance per Endurance Charge removed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "15% more Damage per Endurance Charge removed",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "10% more Area of Effect per Endurance Charge removed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "10% fissure branching chance per Endurance Charge removed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "15% more Damage per Endurance Charge removed",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "10% more Area of Effect per Endurance Charge removed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "10% fissure branching chance per Endurance Charge removed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–5)% more Damage per Endurance Charge removed",
+      "values": [
+        "+(0–5)"
+      ]
+    },
+    {
+      "text": "+(0–5)% more Damage per Endurance Charge removed",
+      "values": [
+        "+(0–5)"
+      ]
+    },
+    {
+      "text": "+(0–5)% more Damage per Endurance Charge removed",
+      "values": [
+        "+(0–5)"
+      ]
+    }
+  ]
 }

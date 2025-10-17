@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Hit, Chain, Ailment, Poison",
+    "BaseType": "Cobra Lash",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, Rune Daggers",
     "TargetTypes": "Ground, Enemy",
@@ -415,5 +416,95 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a poisonous projectile based on your weapon that will chain between enemies. Requires a Dagger or Claw.",
+  "explicitMods": [
+    {
+      "text": "8% more Damage with Hits and Ailments for each remaining Chain",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Chains +(3–5) Times",
+      "values": [
+        "+(3–5)"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "40% chance to Poison on Hit",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "8% more Damage with Hits and Ailments for each remaining Chain",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Chains +(3–5) Times",
+      "values": [
+        "+(3–5)"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "40% chance to Poison on Hit",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "projectile angle variance [8]",
+      "values": []
+    },
+    {
+      "text": "projectile speed variation +% [15]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Chains +(0–2) Times",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Chains +(0–2) Times",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

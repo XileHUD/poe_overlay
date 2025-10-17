@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Leech",
     "DropLevel": "31",
+    "BaseType": "Mana Leech Support",
     "Class": "Support Gems",
     "Icon": "m",
     "ItemType": "Metadata/Items/Gems/SupportGemManaLeech",
@@ -335,5 +336,39 @@
   "description": "This gem is one of the few ways to get mana leech on a skill that deals no physical damage. Other sources are Warlord's Mark and Defy Pain.",
   "stats": [
     "This gem is one of the few ways to get mana leech on a skill that deals no physical damage. Other sources are Warlord's Mark and Defy Pain."
+  ],
+  "gemDescription": "Supports attack skills that hit enemies, causing those hits to leech mana based on damage dealt.",
+  "explicitMods": [
+    {
+      "text": "Supported Attacks have (2–3.9)% of Damage Leeched as Mana",
+      "values": [
+        "(2–3.9)"
+      ]
+    },
+    {
+      "text": "Supported Attacks have (2–3.9)% of Damage Leeched as Mana",
+      "values": [
+        "(2–3.9)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage while Leeching Mana",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage while Leeching Mana",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

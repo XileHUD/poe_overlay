@@ -1445,7 +1445,7 @@ body.crafting-mode #controlPanel { display: none !important; }
 /* Quest Passives page */
 .qp-topbar{display:flex; gap:6px; align-items:center; margin-bottom:8px; flex-wrap:wrap}
 .qp-search{flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px; min-width:200px}
-.qp-chip{cursor:pointer; user-select:none; padding:3px 8px; font-size:11px; border-radius:999px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary)}
+.qp-chip{cursor:pointer; user-select:none; padding:3px 8px; font-size:11px; border-radius:4px; border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-primary)}
 .qp-chip.active{background:var(--accent-blue); border-color:var(--accent-blue); color:#fff}
 .qp-section{background:var(--bg-card); border:1px solid var(--border-color); border-radius:8px; padding:10px}
 .qp-title{display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:6px}
@@ -1459,7 +1459,7 @@ body.crafting-mode #controlPanel { display: none !important; }
 .qp-line{font-size:12px; line-height:1.35}
 .qp-note{font-size:11px; color:var(--text-secondary)}
 .qp-tags{display:flex; gap:4px; flex-wrap:wrap; margin-top:6px}
-.qp-tag{padding:2px 6px; border-radius:999px; font-size:10px; border:1px solid var(--border-color)}
+.qp-tag{padding:2px 6px; border-radius:4px; font-size:10px; border:1px solid var(--border-color)}
 .qp-tag.life{background:#5a2b2b; color:#ffdede; border-color:#7a3a3a}
 .qp-tag.mana{background:#243c63; color:#d6e8ff; border-color:#3f6aa1}
 .qp-tag.resistance{background:#3b2f6b; color:#e8e0ff; border-color:#5a4991}
@@ -1473,7 +1473,7 @@ body.crafting-mode #controlPanel { display: none !important; }
 .qp-tag.intelligence{background:#1f1f3f; color:#d6d6ff; border-color:#3a3a7a}
 .qp-tag.movement{background:#163a1f; color:#c9ffd6; border-color:#2e6a3f}
 .qp-tag.strength{background:#3f1f1f; color:#ffd6d6; border-color:#7a3a3a}
-.qp-pill{display:inline-flex; align-items:center; gap:6px; padding:2px 8px; border-radius:999px; background:var(--bg-tertiary); border:1px solid var(--border-color); font-size:11px;}
+.qp-pill{display:inline-flex; align-items:center; gap:6px; padding:2px 8px; border-radius:4px; background:var(--bg-tertiary); border:1px solid var(--border-color); font-size:11px;}
 
 /* ================= Responsive Enhancements (safe + incremental) ================= */
 /* Removed - minimum window width handles layout properly */

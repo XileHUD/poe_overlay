@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Projectile, Impale",
     "DropLevel": "28",
+    "BaseType": "Lancing Steel",
     "Class": "Skill Gems",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, Two Hand Swords, Two Hand Axes",
     "TargetTypes": "Ground, Enemy",
@@ -376,5 +377,91 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Thrust an Axe or Sword forward, consuming your Steel Shards to form a cluster of shards in front of you. The cluster will fire a number of projectiles in sequence, aiming at enemies in front of or close to it. Steel Shards are gained with the Call of Steel Skill.",
+  "explicitMods": [
+    {
+      "text": "Fires 4 Projectiles",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Fires 50% more Projectiles per Steel Shard consumed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "20% chance to Impale Enemies on Hit",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Hits after the first on each Enemy deal 60% less Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Consumes up to 4 Steel Shards",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Fires 4 Projectiles",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Fires 50% more Projectiles per Steel Shard consumed",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "20% chance to Impale Enemies on Hit",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Hits after the first on each Enemy deal 60% less Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Consumes up to 4 Steel Shards",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)",
+    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)",
+    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–1) Projectile",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Fires +(0–1) Projectile",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

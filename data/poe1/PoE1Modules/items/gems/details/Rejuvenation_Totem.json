@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Totem",
     "DropLevel": "4",
+    "BaseType": "Rejuvenation Totem",
     "Class": "Skill Gems",
     "TargetTypes": "Any,",
     "Type": "Spell, Buff, Area, TotemCastsAlone, Trappable, Mineable, SummonsTotem, Aura, AreaSpell, TotemCastsWhenNotDetached",
@@ -415,5 +416,79 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a totem that has an aura which regenerates life for you and your nearby allies.",
+  "explicitMods": [
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–76)% increased Totem Life",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "Regenerate (8.6–317.5) Life per second",
+      "values": [
+        "(8.6–317.5)"
+      ]
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–76)% increased Totem Life",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "Regenerate (8.6–317.5) Life per second",
+      "values": [
+        "(8.6–317.5)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [10]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Totem Life",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Totem Life",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

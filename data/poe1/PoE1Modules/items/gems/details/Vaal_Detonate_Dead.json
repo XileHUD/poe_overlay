@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Detonate Dead",
     "TargetTypes": "Corpse,",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, Cascadable, DestroysCorpse, CanRapidFire, AreaSpell",
     "ActiveSkillsCode": "detonate_dead"
@@ -411,5 +412,98 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected. This will continue to target other corpses in the area, with an increasing delay between each one, until it runs out of corpses or has destroyed 22 corpses.",
+  "explicitMods": [
+    {
+      "text": "Deals (23–1395) to (33–2092) Fire Damage",
+      "values": [
+        "(23–1395)",
+        "(33–2092)"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (6–7.9)% of the corpse's Maximum Life",
+      "values": [
+        "(6–7.9)"
+      ]
+    },
+    {
+      "text": "Base radius is (2.4–2.8) metres",
+      "values": [
+        "(2.4–2.8)"
+      ]
+    },
+    {
+      "text": "Deals (23–1395) to (33–2092) Fire Damage",
+      "values": [
+        "(23–1395)",
+        "(33–2092)"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (6–7.9)% of the corpse's Maximum Life",
+      "values": [
+        "(6–7.9)"
+      ]
+    },
+    {
+      "text": "Base radius is (2.4–2.8) metres",
+      "values": [
+        "(2.4–2.8)"
+      ]
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (15–2801) to (22–4202) Fire Damage",
+      "values": [
+        "(15–2801)",
+        "(22–4202)"
+      ]
+    },
+    {
+      "text": "Explosion deals base Fire Damage equal to (6–9.4)% of the corpse's Maximum Life",
+      "values": [
+        "(6–9.4)"
+      ]
+    },
+    {
+      "text": "Base radius is (2.2–3) metres",
+      "values": [
+        "(2.2–3)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–30)% chance to detonate an additional corpse",
+      "values": [
+        "(0–30)"
+      ]
+    },
+    {
+      "text": "(0–30)% chance to detonate an additional corpse",
+      "values": [
+        "(0–30)"
+      ]
+    },
+    {
+      "text": "(0–15)% chance to detonate an additional corpse",
+      "values": [
+        "(0–15)"
+      ]
+    }
+  ]
 }

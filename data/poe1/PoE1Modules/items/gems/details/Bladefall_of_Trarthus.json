@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Bladefall of Trarthus",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Damage, Physical, Cooldown, InstantShiftAttackForLeftMouse, InstantNoRepeatWhenHeld, Instant, Arcane, Duration",
     "ActiveSkillsCode": "bladefall_alt_z"
@@ -331,5 +332,193 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Once activated, continuously spends mana to cause volleys of ethereal weapons rain from the sky around you, dealing damage to enemies they impact. Each Blade will target a separate enemy in the volley area if possible. Each enemy can only be hit once by each volley, even if multiple blades land near them. This skill cannot be triggered or used by Totems, Traps, or Mines.",
+  "explicitMods": [
+    {
+      "text": "Deals (26–357) to (39–536) Physical Damage",
+      "values": [
+        "(26–357)",
+        "(39–536)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "A Volley of blades falls every 0.7 seconds",
+      "values": [
+        "0.7"
+      ]
+    },
+    {
+      "text": "2% increased Volley frequency per 100 maximum Mana",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base Volley radius is 2.5 metres",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "Base Blade radius is 1 metre",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "5 Blades fall per Volley, which will then Linger in the ground",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Maximum 40 Lingering Blades can be left in the ground at a time",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Deals (26–357) to (39–536) Physical Damage",
+      "values": [
+        "(26–357)",
+        "(39–536)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "A Volley of blades falls every 0.7 seconds",
+      "values": [
+        "0.7"
+      ]
+    },
+    {
+      "text": "2% increased Volley frequency per 100 maximum Mana",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base Volley radius is 2.5 metres",
+      "values": [
+        "2.5"
+      ]
+    },
+    {
+      "text": "Base Blade radius is 1 metre",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "5 Blades fall per Volley, which will then Linger in the ground",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Maximum 40 Lingering Blades can be left in the ground at a time",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (26–1867) to (39–2800) Physical Damage",
+      "values": [
+        "(26–1867)",
+        "(39–2800)"
+      ]
+    },
+    {
+      "text": "Lose 6% of Mana per Second",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "A Volley of blades falls every 0.7 seconds",
+      "values": [
+        "0.7"
+      ]
+    },
+    {
+      "text": "2% increased Volley frequency per 100 maximum Mana",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base radius is (2–3) metres",
+      "values": [
+        "(2–3)"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 0.8 metres",
+      "values": [
+        "0.8"
+      ]
+    },
+    {
+      "text": "5 Blades fall per Volley, which will then Linger in the ground",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Maximum 40 Lingering Blades can be left in the ground at a time",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    }
+  ]
 }

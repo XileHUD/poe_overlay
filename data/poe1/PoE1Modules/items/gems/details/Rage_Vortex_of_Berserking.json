@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Rage Vortex of Berserking",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, Two Hand Swords, Two Hand Axes",
     "TargetTypes": "Enemy, Ground",
     "Type": "Attack, Melee, Area, Multistrikeable",
@@ -292,5 +293,143 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Spin with a sword or axe to deal damage in an area around you. If you have at least 10 rage, create a ragestorm attached to you that repeatedly deals attack damage to enemies inside based on your attack speed. The ragestorm consumes rage at an accelerating rate, and ends if you run out.",
+  "explicitMods": [
+    {
+      "text": "Base radius is 2.2 metres",
+      "values": [
+        "2.2"
+      ]
+    },
+    {
+      "text": "Ragestorm Hits 250% more Frequently",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "Maximum 1 Ragestorm",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Lose 3 Rage per second",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Each second, 20% more Rage loss Rate",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Base radius is 2.2 metres",
+      "values": [
+        "2.2"
+      ]
+    },
+    {
+      "text": "Ragestorm Hits 250% more Frequently",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "Maximum 1 Ragestorm",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Lose 3 Rage per second",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Each second, 20% more Rage loss Rate",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "Base radius is 2.2 metres",
+      "values": [
+        "2.2"
+      ]
+    },
+    {
+      "text": "Ragestorm Hits 250% more Frequently",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "Maximum 1 Ragestorm",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Lose 3 Rage per second",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Each second, 20% more Rage loss Rate",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

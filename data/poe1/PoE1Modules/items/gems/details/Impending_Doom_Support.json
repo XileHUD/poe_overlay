@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Doom Blast",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Area, Damage, Triggerable, Triggered, AreaSpell, Chaos, Cooldown, InbuiltTrigger, SkillGrantedBySupport",
     "ActiveSkillsCode": "doom_blast"
@@ -291,5 +292,78 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports hex curse skills, causing them to trigger Doom Blast when the hex ends. Cannot support curse skills which are triggered or applied as an aura.",
+  "explicitMods": [
+    {
+      "text": "Trigger Doom Blast when a Hex from Supported Curse Skills ends",
+      "values": []
+    },
+    {
+      "text": "Deals (102–1654) to (154–2481) Chaos Damage",
+      "values": [
+        "(102–1654)",
+        "(154–2481)"
+      ]
+    },
+    {
+      "text": "Trigger This Skill when a Hex from Supported Skills ends",
+      "values": []
+    },
+    {
+      "text": "Trigger Doom Blast when a Hex from Supported Curse Skills ends",
+      "values": []
+    },
+    {
+      "text": "Deals (102–1654) to (154–2481) Chaos Damage",
+      "values": [
+        "(102–1654)",
+        "(154–2481)"
+      ]
+    },
+    {
+      "text": "Trigger This Skill when a Hex from Supported Skills ends",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (102–11540) to (154–17310) Chaos Damage",
+      "values": [
+        "(102–11540)",
+        "(154–17310)"
+      ]
+    },
+    {
+      "text": "Trigger This Skill when a Hex from Supported Skills ends",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Area of Effect",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

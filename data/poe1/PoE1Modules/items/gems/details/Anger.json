@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "24",
+    "BaseType": "Anger",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Fire, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -454,5 +455,67 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts an aura that adds fire damage to the attacks and spells of you and your allies.",
+  "explicitMods": [
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies deal (16–109) to (23–155) additional Fire Damage with Attacks",
+      "values": [
+        "(16–109)",
+        "(23–155)"
+      ]
+    },
+    {
+      "text": "You and nearby allies deal (16–109) to (23–155) additional Fire Damage with Spells",
+      "values": [
+        "(16–109)",
+        "(23–155)"
+      ]
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies deal (16–109) to (23–155) additional Fire Damage with Attacks",
+      "values": [
+        "(16–109)",
+        "(23–155)"
+      ]
+    },
+    {
+      "text": "You and nearby allies deal (16–109) to (23–155) additional Fire Damage with Spells",
+      "values": [
+        "(16–109)",
+        "(23–155)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

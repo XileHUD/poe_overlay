@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Block, Bleeding",
     "DropLevel": "16",
+    "BaseType": "Eviscerate",
     "Class": "Skill Gems",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes",
     "TargetTypes": "Ground, Enemy,",
@@ -416,5 +417,99 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Retaliate against a blocked hit with an arcing slash that releases two waves of force. Enemies close in front of you can be hit by both waves. Requires a Sword or Axe and a Shield.",
+  "explicitMods": [
+    {
+      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you Block a Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Base wave length is 10 metres",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Base wave width is (2.8–3.2) metres",
+      "values": [
+        "(2.8–3.2)"
+      ]
+    },
+    {
+      "text": "Causes Bleeding",
+      "values": []
+    },
+    {
+      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you Block a Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Base wave length is 10 metres",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Base wave width is (2.8–3.2) metres",
+      "values": [
+        "(2.8–3.2)"
+      ]
+    },
+    {
+      "text": "Causes Bleeding",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be exerted [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

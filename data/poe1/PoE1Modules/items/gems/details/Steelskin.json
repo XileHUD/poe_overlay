@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Cooldown, Hit, Buff, Bleeding",
     "DropLevel": "4",
+    "BaseType": "Steelskin",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, Instant, Duration, Triggerable, Guard, Cooldown",
@@ -375,5 +376,81 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Applies a buff which can take some of the damage from hits for you before being depleted. Shares a cooldown with other Guard skills.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "This Skill's Cooldown does not recover during its effect",
+      "values": []
+    },
+    {
+      "text": "70% of Damage from Hits is taken from the Buff before Life or Energy ShieldBuff can take (54–2209) Damage",
+      "values": [
+        "70",
+        "(54–2209)"
+      ]
+    },
+    {
+      "text": "Buff grants Immunity to Bleeding",
+      "values": []
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "This Skill's Cooldown does not recover during its effect",
+      "values": []
+    },
+    {
+      "text": "70% of Damage from Hits is taken from the Buff before Life or Energy ShieldBuff can take (54–2209) Damage",
+      "values": [
+        "70",
+        "(54–2209)"
+      ]
+    },
+    {
+      "text": "Buff grants Immunity to Bleeding",
+      "values": []
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "base_additional_physical_damage_reduction_%",
+      "values": []
+    },
+    {
+      "text": "resist_all_%",
+      "values": []
+    },
+    {
+      "text": "affected_by_guard_skill",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

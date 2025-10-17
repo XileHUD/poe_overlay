@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Incinerate of Venting",
     "TargetTypes": ", ,",
     "Type": "Spell, Damage, Totemable, Fire, Channel, Area, AreaSpell, Cooldown",
     "ActiveSkillsCode": "incinerate_alt_y"
@@ -371,5 +372,146 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Continuously launches a torrent of fire from your hand, repeatedly damaging enemies. As you channel this spell longer, the flames spread wider close to you and spread longer directly in front of you.",
+  "explicitMods": [
+    {
+      "text": "Deals (3–228) to (5–342) Fire Damage",
+      "values": [
+        "(3–228)",
+        "(5–342)"
+      ]
+    },
+    {
+      "text": "25% more Damage with Hits and Ailments for each stage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "100% increased angle per stage, up to 300%",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "15 maximum Stages",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "+(0.4–0.5) metres to radius per stage, up to a maximum of +(2.4–3) metres",
+      "values": [
+        "+(0.4–0.5)",
+        "+(2.4–3)"
+      ]
+    },
+    {
+      "text": "Deals (3–228) to (5–342) Fire Damage",
+      "values": [
+        "(3–228)",
+        "(5–342)"
+      ]
+    },
+    {
+      "text": "25% more Damage with Hits and Ailments for each stage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "100% increased angle per stage, up to 300%",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "15 maximum Stages",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "+(0.4–0.5) metres to radius per stage, up to a maximum of +(2.4–3) metres",
+      "values": [
+        "+(0.4–0.5)",
+        "+(2.4–3)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (3–1406) to (5–2109) Fire Damage",
+      "values": [
+        "(3–1406)",
+        "(5–2109)"
+      ]
+    },
+    {
+      "text": "25% more Damage with Hits and Ailments for each stage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "100% increased angle per stage, up to 300%",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "15 maximum Stages",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "+(0.4–0.6) metres to radius per stage, up to a maximum of +(2.4–3.5) metres",
+      "values": [
+        "+(0.4–0.6)",
+        "+(2.4–3.5)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–3) to maximum Stages",
+      "values": [
+        "+(0–3)"
+      ]
+    },
+    {
+      "text": "+(0–3) to maximum Stages",
+      "values": [
+        "+(0–3)"
+      ]
+    },
+    {
+      "text": "+(0–3) to maximum Stages",
+      "values": [
+        "+(0–3)"
+      ]
+    }
+  ]
 }

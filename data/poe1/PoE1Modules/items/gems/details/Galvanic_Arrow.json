@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Projectile",
+    "BaseType": "Galvanic Arrow",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
@@ -375,5 +376,75 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fire a trio of electrical arrows that quickly dissipate, vanishing shortly after being loosed. The arrows are fired with such force that they create a burst of lightning, damaging enemies in a cone in front of you.",
+  "explicitMods": [
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fires 3 Arrows",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "+(0–0.5) metres to radius",
+      "values": [
+        "+(0–0.5)"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Projectile Speed also apply tothis Skill's Area of Effect",
+      "values": []
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fires 3 Arrows",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "+(0–0.5) metres to radius",
+      "values": [
+        "+(0–0.5)"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Projectile Speed also apply tothis Skill's Area of Effect",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Projectile Speed",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Projectile Speed",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

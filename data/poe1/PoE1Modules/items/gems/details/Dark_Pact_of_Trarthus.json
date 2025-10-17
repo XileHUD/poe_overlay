@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Dark Pact of Trarthus",
     "TargetTypes": "Any",
     "Type": "Spell, Damage, Mineable, Totemable, Area, Trappable, Triggerable, Multicastable, Chaos, CanRapidFire, AreaSpell, Nova",
     "ActiveSkillsCode": "dark_pact_alt_x"
@@ -331,5 +332,106 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "This spell deals chaos damage in an area around you. Casting this spell will cause you to gain Ruin. If this spell inflicts your seventh Ruin, it will sacrifice a large portion of your life to deal extra chaos damage based on the amount sacrificed, and remove all Ruin from you.",
+  "explicitMods": [
+    {
+      "text": "Deals (24–241) to (36–362) Chaos Damage",
+      "values": [
+        "(24–241)",
+        "(36–362)"
+      ]
+    },
+    {
+      "text": "50% less Damage with Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Gain one Ruin on useReaching seven Ruin will Sacrifice 50% of your Life to deal400% of Sacrificed Life as Chaos Damage",
+      "values": [
+        "50",
+        "400"
+      ]
+    },
+    {
+      "text": "Deals (24–241) to (36–362) Chaos Damage",
+      "values": [
+        "(24–241)",
+        "(36–362)"
+      ]
+    },
+    {
+      "text": "50% less Damage with Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Gain one Ruin on useReaching seven Ruin will Sacrifice 50% of your Life to deal400% of Sacrificed Life as Chaos Damage",
+      "values": [
+        "50",
+        "400"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (24–1016) to (36–1524) Chaos Damage",
+      "values": [
+        "(24–1016)",
+        "(36–1524)"
+      ]
+    },
+    {
+      "text": "50% less Damage with Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Gain one Ruin on useReaching seven Ruin will Sacrifice 50% of your Life to deal400% of Sacrificed Life as Chaos Damage",
+      "values": [
+        "50",
+        "400"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ruin applied by this method will stack additively with other sources of Ruin)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ruin applied by this method will stack additively with other sources of Ruin)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ruin applied by this method will stack additively with other sources of Ruin)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ruin applied by this method will stack additively with other sources of Ruin)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% chance to gain an additional Ruin on use",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to gain an additional Ruin on use",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to gain an additional Ruin on use",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

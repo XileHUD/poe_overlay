@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Trap",
     "DropLevel": "12",
+    "BaseType": "Blade Trap",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, Rune Daggers",
     "TargetTypes": "Enemy, Ground",
@@ -376,5 +377,109 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap which, once triggered, swings two copies of your equipped Dagger, Claw or One Handed Sword around it in circles, each repeatedly damaging enemies it spins through.",
+  "explicitMods": [
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Rotates 4 times",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "25% increased rotation speed if Dual Wielding",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Rotates +1 times if Dual Wielding",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Base radius is (1.6–2.2) metres",
+      "values": [
+        "(1.6–2.2)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Rotates 4 times",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "25% increased rotation speed if Dual Wielding",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Rotates +1 times if Dual Wielding",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Base radius is (1.6–2.2) metres",
+      "values": [
+        "(1.6–2.2)"
+      ]
+    },
+    {
+      "text": "attack is not melee override [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "trap use alternate death animation [1]",
+      "values": []
+    },
+    {
+      "text": "trap variation [18]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Trap lasts +(0–1) secondRotates +(0–1) time",
+      "values": [
+        "+(0–1)",
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Trap lasts +(0–1) secondRotates +(0–1) time",
+      "values": [
+        "+(0–1)",
+        "+(0–1)"
+      ]
+    }
+  ]
 }

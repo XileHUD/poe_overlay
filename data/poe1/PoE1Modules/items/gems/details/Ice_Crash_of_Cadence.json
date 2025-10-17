@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Ice Crash of Cadence",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Area, Melee, Cold, DualWieldOnly, Multistrikeable, Slam, Totemable",
@@ -292,5 +293,117 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slam the ground, damaging enemies in an area. Slams with main hand weapon deal more damage. Slams with off hand weapon have larger area of effect. Requires dual-wielding Swords, Maces, Sceptres, or Axes to use.",
+  "explicitMods": [
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "80% more Damage with Main Hand Weapon",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Main Hand Base radius is 1.1 metres",
+      "values": [
+        "1.1"
+      ]
+    },
+    {
+      "text": "Off Hand Base radius is 3.1 metres",
+      "values": [
+        "3.1"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "80% more Damage with Main Hand Weapon",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Main Hand Base radius is 1.1 metres",
+      "values": [
+        "1.1"
+      ]
+    },
+    {
+      "text": "Off Hand Base radius is 3.1 metres",
+      "values": [
+        "3.1"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "80% more Damage with Main Hand Weapon",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Main Hand Base radius is 1.1 metres",
+      "values": [
+        "1.1"
+      ]
+    },
+    {
+      "text": "Off Hand Base radius is 3.1 metres",
+      "values": [
+        "3.1"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Gain (0–20)% of Physical Damage as Extra Cold Damage",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Gain (0–20)% of Physical Damage as Extra Cold Damage",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Gain (0–20)% of Physical Damage as Extra Cold Damage",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

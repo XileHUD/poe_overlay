@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Hit, Poison",
+    "BaseType": "Chance to Poison Support",
     "Class": "Support Gems",
     "Icon": "O",
     "ItemType": "Metadata/Items/Gems/SupportGemLesserPoison",
@@ -332,5 +333,89 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have 40% chance to Poison on Hit",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Supported Skills have (1–94) to (2–141) added Chaos Damage",
+      "values": [
+        "(1–94)",
+        "(2–141)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 40% chance to Poison on Hit",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Supported Skills have (1–94) to (2–141) added Chaos Damage",
+      "values": [
+        "(1–94)",
+        "(2–141)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Chance to Poison",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "(130–150)% increased Evasion and Energy Shield",
+      "values": [
+        "(130–150)"
+      ]
+    },
+    {
+      "text": "+40 to maximum Energy Shield",
+      "values": [
+        "+40"
+      ]
+    },
+    {
+      "text": "+(15–25)% to all Elemental Resistances",
+      "values": [
+        "+(15–25)"
+      ]
+    },
+    {
+      "text": "(75–100)% increased Damage with Poison if you have at least 300 Dexterity",
+      "values": [
+        "(75–100)"
+      ]
+    },
+    {
+      "text": "(15–25)% increased Poison Duration if you have at least 150 Intelligence",
+      "values": [
+        "(15–25)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
+    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage with Poison",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage with Poison",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

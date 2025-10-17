@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Summon Chaos Golem of Hordes",
     "TargetTypes": "Ground",
     "Type": "Triggerable, Chaos, Mineable, Minion, MinionsCanExplode, Multicastable, Spell, Totemable, Trappable, Golem, CreatesMinion, Cooldown",
     "MinionType": "Attack, Melee, MeleeSingleTarget, Duration, Spell, Damage, Area, Multistrikeable",
@@ -292,5 +293,97 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a Chaos Golem. The Chaos Golem can cast a damage over time Chaos aura and a cascade of Chaos spikes in addition to its melee attack.",
+  "explicitMods": [
+    {
+      "text": "20% reduced Character Size",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Maximum 3 Summoned Golems",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "20% reduced Character Size",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Maximum 3 Summoned Golems",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "active skill no golem aura [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [34,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [5]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "20% reduced Character Size",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Maximum 3 Summoned Golems",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "active skill no golem aura [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [34,100]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [5]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Ailment",
     "DropLevel": "28",
+    "BaseType": "Blade Flurry",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, Rune Daggers",
     "TargetTypes": "Ground, ,",
@@ -376,5 +377,67 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Repeatedly hit enemies in a circle in front of you while channelling, dealing damage to and around the enemy. The damage is continually boosted while channelling. You unleash an additional hit for each stage reached once the channelling ends. Requires a Dagger, Claw or One-Handed Sword.",
+  "explicitMods": [
+    {
+      "text": "25% more Damage with Hits and Ailments for each stage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Maximum 6 Stages",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "25% more Damage with Hits and Ailments for each stage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Maximum 6 Stages",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "current_charged_attack_stacks",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Damage while at maximum Stages",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Damage while at maximum Stages",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

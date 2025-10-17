@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Aura",
     "DropLevel": "31",
+    "BaseType": "Divine Blessing Support",
     "Class": "Support Gems",
     "Icon": "a",
     "ItemType": "Metadata/Items/Gems/SupportGemDivineBlessing",
@@ -452,5 +453,105 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports aura skills that create permanent auras around you, changing their reservation to a cost and making them temporary. Cannot support banner or stance skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (10–29)% increased Aura effect",
+      "values": [
+        "(10–29)"
+      ]
+    },
+    {
+      "text": "Supported Skills Cost +(90–233) Mana",
+      "values": [
+        "+(90–233)"
+      ]
+    },
+    {
+      "text": "Supported Skills also count as Blessing SkillsYou can only have one Aura on you from your Blessing Skills",
+      "values": []
+    },
+    {
+      "text": "Auras from Supported Skills have a base duration of (9–10.9) seconds",
+      "values": [
+        "(9–10.9)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (10–29)% increased Aura effect",
+      "values": [
+        "(10–29)"
+      ]
+    },
+    {
+      "text": "Supported Skills Cost +(90–233) Mana",
+      "values": [
+        "+(90–233)"
+      ]
+    },
+    {
+      "text": "Supported Skills also count as Blessing SkillsYou can only have one Aura on you from your Blessing Skills",
+      "values": []
+    },
+    {
+      "text": "Auras from Supported Skills have a base duration of (9–10.9) seconds",
+      "values": [
+        "(9–10.9)"
+      ]
+    },
+    {
+      "text": "base spell cast time ms override [500]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "+(3–5) to Level of Socketed Aura Gems",
+      "values": [
+        "+(3–5)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 25 Divine Blessing",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "(250–300)% increased Armour and Energy Shield",
+      "values": [
+        "(250–300)"
+      ]
+    },
+    {
+      "text": "+(12–18)% to all Elemental Resistances",
+      "values": [
+        "+(12–18)"
+      ]
+    },
+    {
+      "text": "(20–30)% increased Movement Speed",
+      "values": [
+        "(20–30)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–5)% increased Aura effect",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–5)% increased Aura effect",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

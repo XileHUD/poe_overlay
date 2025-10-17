@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Curse",
     "DropLevel": "16",
+    "BaseType": "Poacher's Mark",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Trappable, Totemable, Mineable, Multicastable, Triggerable, AppliesCurse, CanRapidFire, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Mark",
@@ -455,5 +456,159 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Curses a single enemy, lowering their physical damage reduction, and adding physical damage to all hits against them. Attacking the cursed enemy will grant life and mana, and killing them will grant a frenzy charge. You can only have one Mark at a time.",
+  "explicitMods": [
+    {
+      "text": "Cursed enemies have a 100% chance to grant a Frenzy Charge when slain",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Cursed enemies grant (15–50) Life when Hit by Attacks",
+      "values": [
+        "(15–50)"
+      ]
+    },
+    {
+      "text": "Cursed enemies grant (8–25) Mana when Hit by Attacks",
+      "values": [
+        "(8–25)"
+      ]
+    },
+    {
+      "text": "Cursed enemies have -20% to Physical Damage Reduction",
+      "values": [
+        "-20"
+      ]
+    },
+    {
+      "text": "Adds (3–30) to (4–45) Physical Damage to Hits against Cursed Enemies",
+      "values": [
+        "(3–30)",
+        "(4–45)"
+      ]
+    },
+    {
+      "text": "Cursed enemies have a 100% chance to grant a Frenzy Charge when slain",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Cursed enemies grant (15–50) Life when Hit by Attacks",
+      "values": [
+        "(15–50)"
+      ]
+    },
+    {
+      "text": "Cursed enemies grant (8–25) Mana when Hit by Attacks",
+      "values": [
+        "(8–25)"
+      ]
+    },
+    {
+      "text": "Cursed enemies have -20% to Physical Damage Reduction",
+      "values": [
+        "-20"
+      ]
+    },
+    {
+      "text": "Adds (3–30) to (4–45) Physical Damage to Hits against Cursed Enemies",
+      "values": [
+        "(3–30)",
+        "(4–45)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "+(60–80) to maximum Life",
+      "values": [
+        "+(60–80)"
+      ]
+    },
+    {
+      "text": "You have Culling Strike against Cursed Enemies",
+      "values": []
+    },
+    {
+      "text": "Gain (20–28) Life per Cursed Enemy Hit with Attacks",
+      "values": [
+        "(20–28)"
+      ]
+    },
+    {
+      "text": "Gain (10–14) Mana per Cursed Enemy Hit with Attacks",
+      "values": [
+        "(10–14)"
+      ]
+    },
+    {
+      "text": "Take (100–200) Physical Damage when you use a Movement Skill",
+      "values": [
+        "(100–200)"
+      ]
+    },
+    {
+      "text": "You have no Armour or Maximum Energy Shield",
+      "values": []
+    },
+    {
+      "text": "(Culling Strike means enemies that are on 10% or lower life after your Hit are Killed)",
+      "values": []
+    },
+    {
+      "text": "base_damage_taken_+%",
+      "values": []
+    },
+    {
+      "text": "base_additional_physical_damage_reduction_%",
+      "values": []
+    },
+    {
+      "text": "chance_to_grant_frenzy_charge_on_death_%",
+      "values": []
+    },
+    {
+      "text": "life_granted_when_hit_by_attacks",
+      "values": []
+    },
+    {
+      "text": "mana_granted_when_hit_by_attacks",
+      "values": []
+    },
+    {
+      "text": "minimum_added_physical_damage_taken",
+      "values": []
+    },
+    {
+      "text": "maximum_added_physical_damage_taken",
+      "values": []
+    },
+    {
+      "text": "grant_attacker_frenzy_charge_when_hit_%_chance",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Culling Strike means enemies that are on 10% or lower life after your Hit are Killed)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Cursed Enemies have a (0–5)% chance to grant a Frenzy Charge when Hit",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Cursed Enemies have a (0–5)% chance to grant a Frenzy Charge when Hit",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

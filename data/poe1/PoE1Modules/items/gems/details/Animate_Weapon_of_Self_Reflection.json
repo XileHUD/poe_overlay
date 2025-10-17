@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Animate Weapon of Self Reflection",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Fishing Rods, Rune Daggers, Warstaves",
     "TargetTypes": "Any",
     "Type": "Triggerable, Duration, Minion, MinionsCanExplode, Spell, CreatesMinion, Multicastable, CanRapidFire",
@@ -413,5 +414,135 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Animates a copy of your main hand Melee Weapon to fight by your side. Cannot be used by Totems, Traps or Mines.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 15 seconds",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Maximum 6 Animated Weapons",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Can use Items requiring up to Level (9–100)",
+      "values": [
+        "(9–100)"
+      ]
+    },
+    {
+      "text": "Minions deal (0–38)% more Damage",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Minions have (0–38)% more Attack Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Base duration is 15 seconds",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Maximum 6 Animated Weapons",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Can use Items requiring up to Level (9–100)",
+      "values": [
+        "(9–100)"
+      ]
+    },
+    {
+      "text": "Minions deal (0–38)% more Damage",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Minions have (0–38)% more Attack Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [4,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [22]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 15 seconds",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Maximum 6 Animated Weapons",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Can use Items requiring up to Level (9–100)",
+      "values": [
+        "(9–100)"
+      ]
+    },
+    {
+      "text": "Minions deal (0–58)% more Damage",
+      "values": [
+        "(0–58)"
+      ]
+    },
+    {
+      "text": "Minions have (0–58)% more Attack Speed",
+      "values": [
+        "(0–58)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [4,100]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [22]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–1) to Maximum Animated Weapons",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Maximum Animated Weapons",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Maximum Animated Weapons",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

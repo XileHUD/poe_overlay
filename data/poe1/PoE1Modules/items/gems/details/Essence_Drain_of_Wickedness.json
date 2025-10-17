@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Essence Drain of Wickedness",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Projectile, ProjectilesFromUser, Duration, Totemable, Multicastable, DamageOverTime, Chaos, Damage, Triggerable, CanRapidFire, Area, AreaSpell, Trappable, Mineable",
     "ActiveSkillsCode": "essence_drain_alt_y"
@@ -331,5 +332,130 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a piercing projectile that applies a damage over time debuff when it hits. You are healed for a portion of the debuff damage.",
+  "explicitMods": [
+    {
+      "text": "Deals (22–1591) to (33–2409) Chaos Damage",
+      "values": [
+        "(22–1591)",
+        "(33–2409)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Deals (26.5–1275) Base Chaos Damage per second",
+      "values": [
+        "(26.5–1275)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Regenerate 1% of Debuff Damage as Life",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Deals (22–1591) to (33–2409) Chaos Damage",
+      "values": [
+        "(22–1591)",
+        "(33–2409)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Deals (26.5–1275) Base Chaos Damage per second",
+      "values": [
+        "(26.5–1275)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Regenerate 1% of Debuff Damage as Life",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (20–9049) to (30–13703) Chaos Damage",
+      "values": [
+        "(20–9049)",
+        "(30–13703)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Deals (23.5–5889.1) Base Chaos Damage per second",
+      "values": [
+        "(23.5–5889.1)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.9 seconds",
+      "values": [
+        "1.9"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Regenerate +38% of Debuff Damage as Life",
+      "values": [
+        "+38"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Regenerate +(0–0.5)% of Debuff Damage as Life",
+      "values": [
+        "+(0–0.5)"
+      ]
+    },
+    {
+      "text": "Regenerate +(0–0.5)% of Debuff Damage as Life",
+      "values": [
+        "+(0–0.5)"
+      ]
+    }
+  ]
 }

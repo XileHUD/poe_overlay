@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Kill, Curse",
     "DropLevel": "16",
+    "BaseType": "Assassin's Mark",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Trappable, Totemable, Mineable, Multicastable, Triggerable, AppliesCurse, CanRapidFire, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Mark",
@@ -495,5 +496,157 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Curses a single enemy, making them more vulnerable to Critical Strikes. Killing the cursed enemy will grant life and mana, and a power charge. You can only have one Mark at a time.",
+  "explicitMods": [
+    {
+      "text": "Cursed enemies have a 100% chance to grant a Power Charge when slain",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Hits against Cursed Enemies have +1.5% to Critical Strike Chance",
+      "values": [
+        "+1.5"
+      ]
+    },
+    {
+      "text": "Hits against Cursed Enemies have +(30–49)% to Critical Strike Multiplier",
+      "values": [
+        "+(30–49)"
+      ]
+    },
+    {
+      "text": "Cursed enemies grant (65–600) Life when Killed",
+      "values": [
+        "(65–600)"
+      ]
+    },
+    {
+      "text": "Cursed enemies grant (25–80) Mana when Killed",
+      "values": [
+        "(25–80)"
+      ]
+    },
+    {
+      "text": "Cursed enemies have a 100% chance to grant a Power Charge when slain",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Hits against Cursed Enemies have +1.5% to Critical Strike Chance",
+      "values": [
+        "+1.5"
+      ]
+    },
+    {
+      "text": "Hits against Cursed Enemies have +(30–49)% to Critical Strike Multiplier",
+      "values": [
+        "+(30–49)"
+      ]
+    },
+    {
+      "text": "Cursed enemies grant (65–600) Life when Killed",
+      "values": [
+        "(65–600)"
+      ]
+    },
+    {
+      "text": "Cursed enemies grant (25–80) Mana when Killed",
+      "values": [
+        "(25–80)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "Trigger Level 10 Assassin's Mark when you Hit a Rare or Unique Enemy and have no Mark",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "+(10–12)% chance to Suppress Spell Damage",
+      "values": [
+        "+(10–12)"
+      ]
+    },
+    {
+      "text": "(30–40)% increased Global Accuracy Rating",
+      "values": [
+        "(30–40)"
+      ]
+    },
+    {
+      "text": "+(40–50) to maximum Life",
+      "values": [
+        "+(40–50)"
+      ]
+    },
+    {
+      "text": "(-20–-10)% to Chaos Resistance",
+      "values": [
+        "(-20–-10)"
+      ]
+    },
+    {
+      "text": "2% increased Attack Critical Strike Chance per 200 Accuracy Rating",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
+      "values": []
+    },
+    {
+      "text": "base_damage_taken_+%",
+      "values": []
+    },
+    {
+      "text": "chance_to_grant_power_charge_on_death_%",
+      "values": []
+    },
+    {
+      "text": "life_granted_when_killed",
+      "values": []
+    },
+    {
+      "text": "mana_granted_when_killed",
+      "values": []
+    },
+    {
+      "text": "enemy_additional_critical_strike_chance_against_self",
+      "values": []
+    },
+    {
+      "text": "enemy_additional_critical_strike_multiplier_against_self",
+      "values": []
+    },
+    {
+      "text": "grant_attacker_power_charge_when_hit_%_chance",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Cursed Enemies have a (0–5)% chance to grant a Power Charge when Hit",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Cursed Enemies have a (0–5)% chance to grant a Power Charge when Hit",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

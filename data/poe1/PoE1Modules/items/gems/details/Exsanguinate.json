@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Modifiers",
     "DropLevel": "12",
+    "BaseType": "Exsanguinate",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Trappable, Totemable, Mineable, Chains, Multicastable, Triggerable, Physical, CanRapidFire, DamageOverTime, Duration",
@@ -495,5 +496,89 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Releases several tendrils of blood from your character, targeting enemies in a narrow angle in front of you. The beams deal physical damage and inflict a physical damage over time debuff to enemies, which can stack up to 3 times. Effects which allow skills to chain can apply to these tendrils.",
+  "explicitMods": [
+    {
+      "text": "Deals (17–1193) to (25–1789) Physical Damage",
+      "values": [
+        "(17–1193)",
+        "(25–1789)"
+      ]
+    },
+    {
+      "text": "Deals (23.4–1334) Base Physical Damage per second",
+      "values": [
+        "(23.4–1334)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Fires tendrils at up to (7–9) Targets",
+      "values": [
+        "(7–9)"
+      ]
+    },
+    {
+      "text": "Deals (17–1193) to (25–1789) Physical Damage",
+      "values": [
+        "(17–1193)",
+        "(25–1789)"
+      ]
+    },
+    {
+      "text": "Deals (23.4–1334) Base Physical Damage per second",
+      "values": [
+        "(23.4–1334)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Fires tendrils at up to (7–9) Targets",
+      "values": [
+        "(7–9)"
+      ]
+    },
+    {
+      "text": "base_physical_damage_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "base_fire_damage_taken_per_minute",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–1.5) seconds",
+      "values": [
+        "(0–1.5)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–1.5) seconds",
+      "values": [
+        "(0–1.5)"
+      ]
+    }
+  ]
 }

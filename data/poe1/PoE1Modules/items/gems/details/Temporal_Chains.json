@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Curse",
     "DropLevel": "24",
+    "BaseType": "Temporal Chains",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Area, Duration, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cascadable, AppliesCurse, CanRapidFire, AreaSpell, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Hex",
@@ -536,5 +537,342 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Curses all enemies in an area, lowering their action speed and making other effects on them expire more slowly.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (5–8.8) seconds",
+      "values": [
+        "(5–8.8)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "50% less Effect of Curse against Players",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Cursed Normal and Magic Enemies have (15–29)% less Action Speed",
+      "values": [
+        "(15–29)"
+      ]
+    },
+    {
+      "text": "Other effects on Cursed enemies expire 25% slower",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Cursed Rare and Unique Enemies have (9–18)% less Action Speed",
+      "values": [
+        "(9–18)"
+      ]
+    },
+    {
+      "text": "Base duration is (5–8.8) seconds",
+      "values": [
+        "(5–8.8)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "50% less Effect of Curse against Players",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Cursed Normal and Magic Enemies have (15–29)% less Action Speed",
+      "values": [
+        "(15–29)"
+      ]
+    },
+    {
+      "text": "Other effects on Cursed enemies expire 25% slower",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Cursed Rare and Unique Enemies have (9–18)% less Action Speed",
+      "values": [
+        "(9–18)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "+(20–30) to Intelligence",
+      "values": [
+        "+(20–30)"
+      ]
+    },
+    {
+      "text": "+(60–80) to maximum Life",
+      "values": [
+        "+(60–80)"
+      ]
+    },
+    {
+      "text": "+(60–80) to maximum Mana",
+      "values": [
+        "+(60–80)"
+      ]
+    },
+    {
+      "text": "Curse Enemies with Temporal Chains on Hit",
+      "values": []
+    },
+    {
+      "text": "Non-Aura Curses you inflict are not removed from Dying Enemies",
+      "values": []
+    },
+    {
+      "text": "Enemies near corpses affected by your Curses are BlindedEnemies Killed near corpses affected by your Curses explode, dealing3% of their Life as Physical Damage",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "(Temporal Chains is a Hex which reduces Action Speed by 15%, or 9% on Rare or Unique targets, and makes other effects on the target expire 40% slower. It has 50% less effect on Players and lasts 5 seconds)",
+      "values": []
+    },
+    {
+      "text": "+(60–80) to maximum Life",
+      "values": [
+        "+(60–80)"
+      ]
+    },
+    {
+      "text": "+(17–23)% to Chaos Resistance",
+      "values": [
+        "+(17–23)"
+      ]
+    },
+    {
+      "text": "Enemy Hits inflict Temporal Chains on you",
+      "values": []
+    },
+    {
+      "text": "When you lose Temporal Chains you gain maximum Rage",
+      "values": []
+    },
+    {
+      "text": "Immune to Curses while you have at least 25 Rage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "10% Chance to Block Spell Damage",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "+(20–30) to Intelligence",
+      "values": [
+        "+(20–30)"
+      ]
+    },
+    {
+      "text": "+5% Chance to Block",
+      "values": [
+        "+5"
+      ]
+    },
+    {
+      "text": "Curse Enemies with Punishment when you Block their Melee Damage, ignoring Curse Limit",
+      "values": []
+    },
+    {
+      "text": "Curse Enemies with Temporal Chains when you Block their Projectile Attack Damage, ignoring Curse Limit",
+      "values": []
+    },
+    {
+      "text": "Curse Enemies with Elemental Weakness when you Block their Spell Damage, ignoring Curse Limit",
+      "values": []
+    },
+    {
+      "text": "(Punishment is a Hex which increases Damage taken by 30% while the target is on low life and causes them to be Debilitated for 2 seconds when they Hit. It lasts 8 seconds)",
+      "values": []
+    },
+    {
+      "text": "(Temporal Chains is a Hex which reduces Action Speed by 15%, or 9% on Rare or Unique targets, and makes other effects on the target expire 40% slower. It has 50% less effect on Players and lasts 5 seconds)",
+      "values": []
+    },
+    {
+      "text": "(Elemental Weakness is a Hex which inficts -15% to all Elemental Resistances. It lasts 8 seconds)",
+      "values": []
+    },
+    {
+      "text": "(30–40)% increased Damage",
+      "values": [
+        "(30–40)"
+      ]
+    },
+    {
+      "text": "+(50–70) to maximum Life",
+      "values": [
+        "+(50–70)"
+      ]
+    },
+    {
+      "text": "Regenerate (8–10) Mana per second",
+      "values": [
+        "(8–10)"
+      ]
+    },
+    {
+      "text": "Gain Shaper's Presence for 10 seconds when you kill a Rare or Unique Enemy",
+      "values": []
+    },
+    {
+      "text": "Temporal Chains has no Reservation if Cast as an Aura",
+      "values": []
+    },
+    {
+      "text": "(Shaper's Presence causes effects on you and nearby allies to expire 20% slower)",
+      "values": []
+    },
+    {
+      "text": "(Effects cannot be slowed below 25% of their normal expiry rate)",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Attack Speed",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "(10–15)% increased Cast Speed",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "(-20–20)% reduced Skill Effect Duration",
+      "values": [
+        "(-20–20)"
+      ]
+    },
+    {
+      "text": "(6–12)% of Damage taken Recouped as Mana",
+      "values": [
+        "(6–12)"
+      ]
+    },
+    {
+      "text": "(6–12)% of Damage taken Recouped as Life",
+      "values": [
+        "(6–12)"
+      ]
+    },
+    {
+      "text": "Unaffected by Temporal Chains",
+      "values": []
+    },
+    {
+      "text": "(Debuffs you are Unaffected by can still be placed on you, but will not actually apply their effect)",
+      "values": []
+    },
+    {
+      "text": "(Only Damage from Hits can be Recouped, over 4 seconds following the Hit)",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Attack Speed",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "(10–15)% increased Cast Speed",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "+(40–45) to maximum Energy Shield",
+      "values": [
+        "+(40–45)"
+      ]
+    },
+    {
+      "text": "15% increased Mana Regeneration Rate",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "(-20–20)% reduced Skill Effect Duration",
+      "values": [
+        "(-20–20)"
+      ]
+    },
+    {
+      "text": "Unaffected by Temporal Chains",
+      "values": []
+    },
+    {
+      "text": "(Debuffs you are Unaffected by can still be placed on you, but will not actually apply their effect)",
+      "values": []
+    },
+    {
+      "text": "buff_time_passed_+%_other_than_temporal_chains",
+      "values": []
+    },
+    {
+      "text": "temporal_chains_action_speed_+%_final",
+      "values": []
+    },
+    {
+      "text": "temporal_chains_action_speed_+%_vs_rare_or_unique_final",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Effects cannot be slowed below 25% of their normal expiry rate)",
+    "(Effects cannot be slowed below 25% of their normal expiry rate)",
+    "(Effects cannot be slowed below 25% of their normal expiry rate)",
+    "(Temporal Chains is a Hex which reduces Action Speed by 15%, or 9% on Rare or Unique targets, and makes other effects on the target expire 40% slower. It has 50% less effect on Players and lasts 5 seconds)",
+    "(Punishment is a Hex which increases Damage taken by 30% while the target is on low life and causes them to be Debilitated for 2 seconds when they Hit. It lasts 8 seconds)",
+    "(Temporal Chains is a Hex which reduces Action Speed by 15%, or 9% on Rare or Unique targets, and makes other effects on the target expire 40% slower. It has 50% less effect on Players and lasts 5 seconds)",
+    "(Elemental Weakness is a Hex which inficts -15% to all Elemental Resistances. It lasts 8 seconds)",
+    "(Shaper's Presence causes effects on you and nearby allies to expire 20% slower)",
+    "(Effects cannot be slowed below 25% of their normal expiry rate)",
+    "(Debuffs you are Unaffected by can still be placed on you, but will not actually apply their effect)",
+    "(Only Damage from Hits can be Recouped, over 4 seconds following the Hit)",
+    "(Debuffs you are Unaffected by can still be placed on you, but will not actually apply their effect)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Curse Duration",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Curse Duration",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

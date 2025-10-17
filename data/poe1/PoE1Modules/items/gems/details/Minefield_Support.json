@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Mine",
     "DropLevel": "38",
+    "BaseType": "Minefield Support",
     "Class": "Support Gems",
     "Icon": "M",
     "ItemType": "Metadata/Items/Gems/SupportGemMinefield",
@@ -373,5 +374,67 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which throw mines.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills throw up to 4 additional Mines",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Supported Skills can have up to 3 additional Remote Mines placed at a time",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Supported Skills have (46–55)% less Mine Throwing Speed",
+      "values": [
+        "(46–55)"
+      ]
+    },
+    {
+      "text": "Supported Skills throw up to 4 additional Mines",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Supported Skills can have up to 3 additional Remote Mines placed at a time",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Supported Skills have (46–55)% less Mine Throwing Speed",
+      "values": [
+        "(46–55)"
+      ]
+    },
+    {
+      "text": "multi trap and mine support flags [8]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Throwing Mines takes 10% more time for each additional Mine thrown)",
+    "(Throwing Mines takes 10% more time for each additional Mine thrown)",
+    "(Throwing Mines takes 10% more time for each additional Mine thrown)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–5)% increased Mine Throwing Speed",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–5)% increased Mine Throwing Speed",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

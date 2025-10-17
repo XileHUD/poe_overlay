@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Ethereal Knives of Lingering Blades",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Damage, Projectile, ProjectilesFromUser, Totemable, Trappable, Mineable, Multicastable, Triggerable, CanRapidFire, Physical, Duration, NoVolley",
     "ActiveSkillsCode": "ethereal_knives_alt_x"
@@ -371,5 +372,145 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires an arc of knives down into the ground in front of the caster which deal physical damage.\nCannot be supported by Volley.",
+  "explicitMods": [
+    {
+      "text": "Deals (7–949) to (10–1423) Physical Damage",
+      "values": [
+        "(7–949)",
+        "(10–1423)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Fires (6–8) Projectiles",
+      "values": [
+        "(6–8)"
+      ]
+    },
+    {
+      "text": "Each Projectile fired remains in the ground as a Lingering Blade",
+      "values": []
+    },
+    {
+      "text": "Maximum 40 Lingering Blades can be left in the ground at a time",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Deals (7–949) to (10–1423) Physical Damage",
+      "values": [
+        "(7–949)",
+        "(10–1423)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Fires (6–8) Projectiles",
+      "values": [
+        "(6–8)"
+      ]
+    },
+    {
+      "text": "Each Projectile fired remains in the ground as a Lingering Blade",
+      "values": []
+    },
+    {
+      "text": "Maximum 40 Lingering Blades can be left in the ground at a time",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "active skill projectile speed +% variation final [50]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (7–4698) to (10–7047) Physical Damage",
+      "values": [
+        "(7–4698)",
+        "(10–7047)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Fires (6–10) Projectiles",
+      "values": [
+        "(6–10)"
+      ]
+    },
+    {
+      "text": "Each Projectile fired remains in the ground as a Lingering Blade",
+      "values": []
+    },
+    {
+      "text": "Maximum 40 Lingering Blades can be left in the ground at a time",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "active skill projectile speed +% variation final [50]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
+    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

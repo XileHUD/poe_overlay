@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "24",
+    "BaseType": "Wrath",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Lightning, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -414,5 +415,69 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts an aura that adds lightning damage to the attacks of you and your allies, and makes your spells deal more lightning damage.",
+  "explicitMods": [
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies deal (2–16) to (37–248) additional Lightning Damage with Attacks",
+      "values": [
+        "(2–16)",
+        "(37–248)"
+      ]
+    },
+    {
+      "text": "You and nearby allies deal (15–21)% more Spell Lightning Damage",
+      "values": [
+        "(15–21)"
+      ]
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies deal (2–16) to (37–248) additional Lightning Damage with Attacks",
+      "values": [
+        "(2–16)",
+        "(37–248)"
+      ]
+    },
+    {
+      "text": "You and nearby allies deal (15–21)% more Spell Lightning Damage",
+      "values": [
+        "(15–21)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "[Aura Bonus Modifier]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

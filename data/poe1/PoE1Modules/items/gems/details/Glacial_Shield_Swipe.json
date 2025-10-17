@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Armour, Block, Evasion, Ailment, Freeze",
     "DropLevel": "16",
+    "BaseType": "Glacial Shield Swipe",
     "Class": "Skill Gems",
     "Weapon": "Shields",
     "TargetTypes": "Ground, Enemy,",
@@ -456,5 +457,142 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Retaliate against a blocked hit with a sweep of your Shield, unleashing a wave of ice in a cone in front of you.",
+  "explicitMods": [
+    {
+      "text": "(78–607) to (117–911) Base Off Hand Physical Damage",
+      "values": [
+        "(78–607)",
+        "(117–911)"
+      ]
+    },
+    {
+      "text": "(17–29) to (25–43) Added Physical Damage per 15 Armour or Evasion Rating on Shield",
+      "values": [
+        "(17–29)",
+        "(25–43)"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you Block a Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Always Freezes enemies",
+      "values": []
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "50% less Damage with Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base radius is 8 metres",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "(78–607) to (117–911) Base Off Hand Physical Damage",
+      "values": [
+        "(78–607)",
+        "(117–911)"
+      ]
+    },
+    {
+      "text": "(17–29) to (25–43) Added Physical Damage per 15 Armour or Evasion Rating on Shield",
+      "values": [
+        "(17–29)",
+        "(25–43)"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you Block a Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Always Freezes enemies",
+      "values": []
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "50% less Damage with Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base radius is 8 metres",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be exerted [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

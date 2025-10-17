@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Ball Lightning of Orbiting",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Projectile, ProjectilesFromUser, Area, Totemable, Trappable, Mineable, Multicastable, Triggerable, Lightning, CanRapidFire, AreaSpell, ProjectileSpiral, ProjectilesNumberModifiersNotApplied",
     "ActiveSkillsCode": "ball_lightning_alt_x"
@@ -291,5 +292,130 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a single projectile which moves in a spiral while damaging each enemy in an area around it repeatedly with bolts of lightning.",
+  "explicitMods": [
+    {
+      "text": "Deals (2–27) to (39–511) Lightning Damage",
+      "values": [
+        "(2–27)",
+        "(39–511)"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles do not apply to this Skill",
+      "values": []
+    },
+    {
+      "text": "Base radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "100% more Projectile Speed",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Deals (2–27) to (39–511) Lightning Damage",
+      "values": [
+        "(2–27)",
+        "(39–511)"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles do not apply to this Skill",
+      "values": []
+    },
+    {
+      "text": "Base radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "100% more Projectile Speed",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "active skill projectile speed +% variation final [30]",
+      "values": []
+    },
+    {
+      "text": "ball lightning projectile speed and hit frequency +% final [33]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (2–136) to (39–2580) Lightning Damage",
+      "values": [
+        "(2–136)",
+        "(39–2580)"
+      ]
+    },
+    {
+      "text": "Trap lasts +4 seconds",
+      "values": [
+        "+4"
+      ]
+    },
+    {
+      "text": "Modifiers to number of Projectiles do not apply to this Skill",
+      "values": []
+    },
+    {
+      "text": "Base radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "100% more Projectile Speed",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "active skill projectile speed +% variation final [30]",
+      "values": []
+    },
+    {
+      "text": "ball lightning projectile speed and hit frequency +% final [33]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "ignores trap and mine cooldown limit [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

@@ -3,6 +3,7 @@
   "slug": "Awakened_Spell_Echo_Support",
   "metadata": {
     "DropLevel": "72",
+    "BaseType": "Awakened Spell Echo Support",
     "Class": "Support Gems",
     "Icon": "k",
     "ItemType": "Metadata/Items/Gems/SupportGemSpellEchoPlus",
@@ -173,5 +174,55 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports spell skills, making them repeat when cast. Cannot support Vaal skills, totem skills, channelling skills, triggered skills, instant skills, retaliation skills, blink skills, or skills with a reservation.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills Repeat an additional time",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (55–59)% more Cast Speed",
+      "values": [
+        "(55–59)"
+      ]
+    },
+    {
+      "text": "Final Repeat of Supported Skills has 20% chance to deal Double Damage",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Supported Skills Repeat an additional time",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have (55–59)% more Cast Speed",
+      "values": [
+        "(55–59)"
+      ]
+    },
+    {
+      "text": "Final Repeat of Supported Skills has 20% chance to deal Double Damage",
+      "values": [
+        "20"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit",
     "DropLevel": "12",
+    "BaseType": "Blade Vortex",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Damage, Area, Duration, Totemable, Multicastable, Triggerable, TotemCastsAlone, CanRapidFire, AreaSpell, Physical",
@@ -417,5 +418,137 @@
   "description": "Cast Speed: Faster Casting Support, Spell Echo Support, and Cast Speed from passives and gear will increase the rate at which blades are generated.",
   "stats": [
     "Cast Speed: Faster Casting Support, Spell Echo Support, and Cast Speed from passives and gear will increase the rate at which blades are generated."
+  ],
+  "gemDescription": "This spell creates ethereal blades which orbit in an area around you, dealing damage every 0.6 seconds to all enemies in their radius. As more blades are added, the damage becomes greater and more frequent.",
+  "explicitMods": [
+    {
+      "text": "Deals (3–140) to (5–211) Physical Damage",
+      "values": [
+        "(3–140)",
+        "(5–211)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "35% increased Hit Rate for each blade",
+      "values": [
+        "35"
+      ]
+    },
+    {
+      "text": "35% more Damage for each blade",
+      "values": [
+        "35"
+      ]
+    },
+    {
+      "text": "Can have up to 10 active spinning blades",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Deals (3–140) to (5–211) Physical Damage",
+      "values": [
+        "(3–140)",
+        "(5–211)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "35% increased Hit Rate for each blade",
+      "values": [
+        "35"
+      ]
+    },
+    {
+      "text": "35% more Damage for each blade",
+      "values": [
+        "35"
+      ]
+    },
+    {
+      "text": "Can have up to 10 active spinning blades",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "action ignores crit tracking [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "damage originates from initiator location [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot gain repeat bonuses [1]",
+      "values": []
+    },
+    {
+      "text": "buff_impl_stat",
+      "values": []
+    },
+    {
+      "text": "current_number_of_spinning_blades",
+      "values": []
+    },
+    {
+      "text": "buff_impl_stat",
+      "values": []
+    },
+    {
+      "text": "current_number_of_spinning_blades",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–5)% increased Hit Rate for each blade",
+      "values": [
+        "+(0–5)"
+      ]
+    },
+    {
+      "text": "+(0–5)% increased Hit Rate for each blade",
+      "values": [
+        "+(0–5)"
+      ]
+    }
   ]
 }

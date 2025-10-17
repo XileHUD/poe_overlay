@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Resistance",
     "DropLevel": "31",
+    "BaseType": "Fire Penetration Support",
     "Class": "Support Gems",
     "Icon": "V",
     "ItemType": "Metadata/Items/Gems/SupportGemFirePenetration",
@@ -333,5 +334,64 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies, making those hits penetrate enemy fire resistance.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills Penetrate (20–34)% Fire Resistance",
+      "values": [
+        "(20–34)"
+      ]
+    },
+    {
+      "text": "Supported Skills Penetrate (20–34)% Fire Resistance",
+      "values": [
+        "(20–34)"
+      ]
+    },
+    {
+      "text": "(150–200)% increased Physical Damage",
+      "values": [
+        "(150–200)"
+      ]
+    },
+    {
+      "text": "Adds (76–98) to (161–176) Fire Damage",
+      "values": [
+        "(76–98)",
+        "(161–176)"
+      ]
+    },
+    {
+      "text": "50% increased Light Radius",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Battlemage",
+      "values": []
+    },
+    {
+      "text": "(Gain Added Spell Damage equal to the Damage of your Main Hand Weapon)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Gain Added Spell Damage equal to the Damage of your Main Hand Weapon)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Fire Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Fire Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

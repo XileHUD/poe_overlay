@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Storm Call of Trarthus",
     "TargetTypes": "Ground, ,",
     "Type": "Spell, Damage, Area, Duration, Trappable, Totemable, Mineable, Triggerable, Multicastable, Cascadable, CanRapidFire, AreaSpell, Physical, DamageOverTime",
     "ActiveSkillsCode": "storm_call_alt_x"
@@ -331,5 +332,138 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Sets a marker at a location. After a short duration, a bolt strikes the marker, dealing physical damage around it and causing bolts to strike at any other markers you've cast. Bolt impacts will leave behind a pool of boiling blood, which deals physical damage over time to enemies within it for a secondary duration.",
+  "explicitMods": [
+    {
+      "text": "Deals (24–1085) to (36–1627) Physical Damage",
+      "values": [
+        "(24–1085)",
+        "(36–1627)"
+      ]
+    },
+    {
+      "text": "Deals (50.8–1683.4) Base Physical Damage per second",
+      "values": [
+        "(50.8–1683.4)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "+(0–0.6) metres to radius",
+      "values": [
+        "+(0–0.6)"
+      ]
+    },
+    {
+      "text": "Deals (24–1085) to (36–1627) Physical Damage",
+      "values": [
+        "(24–1085)",
+        "(36–1627)"
+      ]
+    },
+    {
+      "text": "Deals (50.8–1683.4) Base Physical Damage per second",
+      "values": [
+        "(50.8–1683.4)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "+(0–0.6) metres to radius",
+      "values": [
+        "+(0–0.6)"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (18–4145) to (28–6218) Physical Damage",
+      "values": [
+        "(18–4145)",
+        "(28–6218)"
+      ]
+    },
+    {
+      "text": "Deals (38.7–5181.4) Base Physical Damage per second",
+      "values": [
+        "(38.7–5181.4)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base secondary duration is (0–1) seconds",
+      "values": [
+        "(0–1)"
+      ]
+    },
+    {
+      "text": "Base secondary duration is (0–1) seconds",
+      "values": [
+        "(0–1)"
+      ]
+    }
+  ]
 }

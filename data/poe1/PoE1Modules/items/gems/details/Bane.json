@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Duration, Curse, Hex, Modifiers",
     "DropLevel": "24",
+    "BaseType": "Bane",
     "Class": "Skill Gems",
     "TargetTypes": "Enemy, Ground,",
     "Type": "Spell, Area, Duration, DamageOverTime, Chaos, Multicastable, Cascadable, Triggerable, DegenOnlySpellDamage, CanRapidFire, AreaSpell, Hex",
@@ -535,5 +536,171 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Applies a debuff to enemies in an area, which deals chaos damage over Time. Linked hex curses are also applied to those enemies. The debuff deals more damage and lasts longer for each hex applied this way.  This skill cannot be used by Totems, Traps, or Mines.",
+  "explicitMods": [
+    {
+      "text": "Only applies Hexes from Curse Skill Gems requiring Level (24–70) or lower",
+      "values": [
+        "(24–70)"
+      ]
+    },
+    {
+      "text": "Deals (59.3–1075.5) Base Chaos Damage per second",
+      "values": [
+        "(59.3–1075.5)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Base radius is (2.1–2.4) metres",
+      "values": [
+        "(2.1–2.4)"
+      ]
+    },
+    {
+      "text": "(28–42)% more Damage per Curse applied",
+      "values": [
+        "(28–42)"
+      ]
+    },
+    {
+      "text": "50% increased Debuff Duration per Curse applied",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Applied Curses have 25% less Effect",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "This Gem can only Support Skill Gems requiring Level (24–70) or lower",
+      "values": [
+        "(24–70)"
+      ]
+    },
+    {
+      "text": "You cannot Cast Supported Curse Spells",
+      "values": []
+    },
+    {
+      "text": "25% less Effect of Supported Curses",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Only applies Hexes from Curse Skill Gems requiring Level (24–70) or lower",
+      "values": [
+        "(24–70)"
+      ]
+    },
+    {
+      "text": "Deals (59.3–1075.5) Base Chaos Damage per second",
+      "values": [
+        "(59.3–1075.5)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Base radius is (2.1–2.4) metres",
+      "values": [
+        "(2.1–2.4)"
+      ]
+    },
+    {
+      "text": "(28–42)% more Damage per Curse applied",
+      "values": [
+        "(28–42)"
+      ]
+    },
+    {
+      "text": "50% increased Debuff Duration per Curse applied",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Applied Curses have 25% less Effect",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "This Gem can only Support Skill Gems requiring Level (24–70) or lower",
+      "values": [
+        "(24–70)"
+      ]
+    },
+    {
+      "text": "You cannot Cast Supported Curse Spells",
+      "values": []
+    },
+    {
+      "text": "25% less Effect of Supported Curses",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "apply linked curses with dark ritual [1]",
+      "values": []
+    },
+    {
+      "text": "base_chaos_damage_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "explode_on_death_%_chance_dealing_25%_life_as_chaos_damage",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Applied Curses have (0–20)% increased Effect",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Effect of Supported Curses",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Applied Curses have (0–20)% increased Effect",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Effect of Supported Curses",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

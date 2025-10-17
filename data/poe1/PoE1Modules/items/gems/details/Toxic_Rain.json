@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Projectile, Modifiers",
     "DropLevel": "12",
+    "BaseType": "Toxic Rain",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
@@ -376,5 +377,156 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fire arrows into the air that rain down around the targeted area, dealing damage to enemies they hit and creating spore pods where they land. Each spore pod deals chaos damage over time to nearby enemies and slows their movement speed. The pods last for a duration before bursting, dealing area damage.",
+  "explicitMods": [
+    {
+      "text": "Deals (8–238) Base Chaos Damage per second",
+      "values": [
+        "(8–238)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Fires 5 Arrows",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Each Spore Pod applies 5% less Movement Speed to nearby Enemies, to a maximum of 30%",
+      "values": [
+        "5",
+        "30"
+      ]
+    },
+    {
+      "text": "Deals (8–238) Base Chaos Damage per second",
+      "values": [
+        "(8–238)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Fires 5 Arrows",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Each Spore Pod applies 5% less Movement Speed to nearby Enemies, to a maximum of 30%",
+      "values": [
+        "5",
+        "30"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "cannot pierce [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    },
+    {
+      "text": "Trigger Level 5 Toxic Rain when you Attack with a Bow",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "+(40–60) to Strength",
+      "values": [
+        "+(40–60)"
+      ]
+    },
+    {
+      "text": "+(40–60) to Dexterity",
+      "values": [
+        "+(40–60)"
+      ]
+    },
+    {
+      "text": "Adds 12 to 24 Chaos Damage to Attacks",
+      "values": [
+        "12",
+        "24"
+      ]
+    },
+    {
+      "text": "20% increased Movement Speed",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "40% reduced Movement Speed when on Low Life",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "(You are on Low Life if you have 50% of your Maximum Life or less)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(You are on Low Life if you have 50% of your Maximum Life or less)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–0.2) seconds",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–0.2) seconds",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Penance Brand of Dissipation",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, Physical, Lightning, Duration, Totemable, Trappable, Mineable, Triggerable, Multicastable, Brand, AreaSpell",
     "ActiveSkillsCode": "penance_brand_alt_x"
@@ -331,5 +332,214 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, adding energy to the branded enemy and causing a pulse that deals damage to the branded enemy and other nearby enemies. The pulse gains area of effect and damage for each energy on the branded enemy, up to 20. All energy is removed from the enemy when the brand is detached.",
+  "explicitMods": [
+    {
+      "text": "Deals (16–231) to (24–347) Physical Damage",
+      "values": [
+        "(16–231)",
+        "(24–347)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Activates every 0.75 seconds while Attached",
+      "values": [
+        "0.75"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+      "values": []
+    },
+    {
+      "text": "Pulses deal 30% more Damage with Ailments per Energy after the first",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Pulses deal 30% more Damage with Hits per Energy after the first",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "+0.1 metres to Pulse radius per Energy",
+      "values": []
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Can be Attached for a total Duration of 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Deals (16–231) to (24–347) Physical Damage",
+      "values": [
+        "(16–231)",
+        "(24–347)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Activates every 0.75 seconds while Attached",
+      "values": [
+        "0.75"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+      "values": []
+    },
+    {
+      "text": "Pulses deal 30% more Damage with Ailments per Energy after the first",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Pulses deal 30% more Damage with Hits per Energy after the first",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "+0.1 metres to Pulse radius per Energy",
+      "values": []
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Can be Attached for a total Duration of 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "base number of sigils allowed per target [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (16–1252) to (24–1879) Physical Damage",
+      "values": [
+        "(16–1252)",
+        "(24–1879)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Activates every 0.75 seconds while Attached",
+      "values": [
+        "0.75"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+      "values": []
+    },
+    {
+      "text": "Pulses deal 30% more Damage with Ailments per Energy after the first",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Pulses deal 30% more Damage with Hits per Energy after the first",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "+0.1 metres to Pulse radius per Energy",
+      "values": []
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Can be Attached for a total Duration of 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "base number of sigils allowed per target [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Deals +(0–10)% more Damage with Hits against Branded Enemy",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "Deals +(0–10)% more Damage with Hits against Branded Enemy",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "Deals +(0–10)% more Damage with Hits against Branded Enemy",
+      "values": [
+        "+(0–10)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Weapon",
     "DropLevel": "31",
+    "BaseType": "Bloodthirst Support",
     "Class": "Support Gems",
     "Icon": "C",
     "ItemType": "Metadata/Items/Gems/SupportGemBloodthirst",
@@ -333,5 +334,51 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills. Cannot support triggered skills, skills which create minions, or skills used by totems, traps or mines.",
+  "explicitMods": [
+    {
+      "text": "Supported Attacks deal Added Physical Damage with Weapons equalto 2% of Maximum Life while on Low Life",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Attacks deal (0–9)% more Damage",
+      "values": [
+        "(0–9)"
+      ]
+    },
+    {
+      "text": "Supported Attacks deal Added Physical Damage with Weapons equalto 2% of Maximum Life while on Low Life",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Attacks deal (0–9)% more Damage",
+      "values": [
+        "(0–9)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(You are on Low Life if you have 50% of your Maximum Life or less)",
+    "(You are on Low Life if you have 50% of your Maximum Life or less)",
+    "(You are on Low Life if you have 50% of your Maximum Life or less)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills Deal (0–20)% increased Damage while on Low Life",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills Deal (0–20)% increased Damage while on Low Life",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "DropLevel": "12",
+    "BaseType": "Reave",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, Rune Daggers",
     "TargetTypes": "Ground, Enemy",
@@ -415,5 +416,67 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Attacks an area in front of you. Each Reave that hits an enemy grants stages, which you will begin to lose after a short period without hitting anything. Only works with Daggers, Claws, and One-Handed Swords.",
+  "explicitMods": [
+    {
+      "text": "4 Maximum Stages",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "50% more Area of Effect for each stage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "4 Maximum Stages",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "+(0–0.2) metres to radius",
+      "values": [
+        "+(0–0.2)"
+      ]
+    },
+    {
+      "text": "50% more Area of Effect for each stage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–2) to maximum Stages",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "+(0–2) to maximum Stages",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

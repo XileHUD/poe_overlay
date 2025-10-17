@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Resistance, Curse",
     "DropLevel": "24",
+    "BaseType": "Despair",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Area, Duration, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cascadable, Chaos, AppliesCurse, CanRapidFire, AreaSpell, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Hex",
@@ -495,5 +496,95 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Curses all targets in an area, lowering their chaos resistance.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (8–11.8) seconds",
+      "values": [
+        "(8–11.8)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Cursed enemies have (-30–-15)% to Chaos Resistance",
+      "values": [
+        "(-30–-15)"
+      ]
+    },
+    {
+      "text": "Base duration is (8–11.8) seconds",
+      "values": [
+        "(8–11.8)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to radius",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Cursed enemies have (-30–-15)% to Chaos Resistance",
+      "values": [
+        "(-30–-15)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "(-10–10)% reduced Charges per use",
+      "values": [
+        "(-10–10)"
+      ]
+    },
+    {
+      "text": "Grants Level 21 Despair Curse Aura during Effect",
+      "values": [
+        "21"
+      ]
+    },
+    {
+      "text": "base_chaos_damage_resistance_%",
+      "values": []
+    },
+    {
+      "text": "degen_effect_+%",
+      "values": []
+    },
+    {
+      "text": "minimum_added_chaos_damage_taken",
+      "values": []
+    },
+    {
+      "text": "maximum_added_chaos_damage_taken",
+      "values": []
+    },
+    {
+      "text": "chance_to_be_hindered_when_hit_by_spells_%",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Effect of Curse",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Effect of Curse",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

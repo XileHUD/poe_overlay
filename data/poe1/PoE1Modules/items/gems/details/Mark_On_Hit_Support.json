@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Hit, Trigger, Mark",
     "DropLevel": "38",
+    "BaseType": "Mark On Hit Support",
     "Class": "Support Gems",
     "Icon": "k",
     "ItemType": "Metadata/Items/Gems/SupportGemMarkOnHit",
@@ -333,5 +334,43 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports mark curse skills.",
+  "explicitMods": [
+    {
+      "text": "(21–30)% reduced Effect of Marks from Supported Skills",
+      "values": [
+        "(21–30)"
+      ]
+    },
+    {
+      "text": "Trigger Supported Skill when you Hit a Rare or Unique Enemy with an Attack",
+      "values": []
+    },
+    {
+      "text": "(21–30)% reduced Effect of Marks from Supported Skills",
+      "values": [
+        "(21–30)"
+      ]
+    },
+    {
+      "text": "Trigger Supported Skill when you Hit a Rare or Unique Enemy with an Attack",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–5)% increased Effect of Marks from Supported Skills",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "(0–5)% increased Effect of Marks from Supported Skills",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

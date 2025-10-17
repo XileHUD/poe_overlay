@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Kill, Minion, Sentinel, Buff",
     "DropLevel": "16",
+    "BaseType": "Herald of Purity",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, HasReservation, Herald, Minion, Instant, Duration, Physical, CreatesMinion, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -495,5 +496,161 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Grants a buff which lets you deal more physical damage. When you kill an enemy while you have this buff, this skill will summon a Sentinel of Purity, or refresh the duration and life of an existing one instead if you have the maximum number of them. The Sentinels of Purity have a single-target melee attack and an area melee attack.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 12 seconds",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "Maximum 4 Summoned Sentinels of Purity",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Minions have (0–38)% more Maximum Life",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Buff grants (9–12)% more Physical Damage",
+      "values": [
+        "(9–12)"
+      ]
+    },
+    {
+      "text": "Summon a Sentinel of Purity when you Kill an Enemy",
+      "values": []
+    },
+    {
+      "text": "20% chance to Summon a Sentinel of Purity when you Hit a Rare or Unique Enemy",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Minions deal (0–95)% more Physical Damage",
+      "values": [
+        "(0–95)"
+      ]
+    },
+    {
+      "text": "Base duration is 12 seconds",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "Maximum 4 Summoned Sentinels of Purity",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Minions have (0–38)% more Maximum Life",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Buff grants (9–12)% more Physical Damage",
+      "values": [
+        "(9–12)"
+      ]
+    },
+    {
+      "text": "Summon a Sentinel of Purity when you Kill an Enemy",
+      "values": []
+    },
+    {
+      "text": "20% chance to Summon a Sentinel of Purity when you Hit a Rare or Unique Enemy",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Minions deal (0–95)% more Physical Damage",
+      "values": [
+        "(0–95)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [16,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [21]",
+      "values": []
+    },
+    {
+      "text": "herald_of_purity_physical_damage_+%_final",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "33% less Attack Speed",
+      "values": [
+        "33"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [100]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 100% more Attack Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "33% less Attack Speed",
+      "values": [
+        "33"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [100]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

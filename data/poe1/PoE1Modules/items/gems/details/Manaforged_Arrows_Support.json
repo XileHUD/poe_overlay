@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit, Trigger, Ailment",
     "DropLevel": "8",
+    "BaseType": "Manaforged Arrows Support",
     "Class": "Support Gems",
     "Icon": "U",
     "ItemType": "Metadata/Items/Gems/SupportGemManaforgedArrows",
@@ -373,5 +374,59 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports bow attack skills, causing them to trigger when you've spent enough mana in total on other bow attacks. Cannot modify the skills of minions. Cannot support totems, traps, mines, Vaal skills, or channelling skills",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal 1% more Damage with Hits and Ailments per 1 Mana Cost",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (31–40)% less Damage",
+      "values": [
+        "(31–40)"
+      ]
+    },
+    {
+      "text": "Supported Skills Trigger once total Mana Spent on other BowAttacks exceeds 300% of their Mana Cost",
+      "values": [
+        "300"
+      ]
+    },
+    {
+      "text": "Supported Skills deal 1% more Damage with Hits and Ailments per 1 Mana Cost",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (31–40)% less Damage",
+      "values": [
+        "(31–40)"
+      ]
+    },
+    {
+      "text": "Supported Skills Trigger once total Mana Spent on other BowAttacks exceeds 300% of their Mana Cost",
+      "values": [
+        "300"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

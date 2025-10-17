@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Dual Strike of Ambidexterity",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Two Hand Axes, Sceptres, Rune Daggers",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, DualWieldOnly, DualWieldRequiresDifferentTypes, MeleeSingleTarget, Multistrikeable, Melee, ThresholdJewelArea",
@@ -292,5 +293,67 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Attacks with both weapons, dealing the damage of both in one strike. Requires dual-wielding two different melee weapon types to use.",
+  "explicitMods": [
+    {
+      "text": "50% more Damage with Main Hand Weapon",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Uses Off Hand Weapon Attack Time",
+      "values": []
+    },
+    {
+      "text": "50% more Damage with Main Hand Weapon",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Uses Off Hand Weapon Attack Time",
+      "values": []
+    },
+    {
+      "text": "skill double hits when dual wielding [1]",
+      "values": []
+    },
+    {
+      "text": "50% more Damage with Main Hand Weapon",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Uses Off Hand Weapon Attack Time",
+      "values": []
+    },
+    {
+      "text": "skill double hits when dual wielding [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Damage with Main Hand Weapon",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Damage with Main Hand Weapon",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Damage with Main Hand Weapon",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

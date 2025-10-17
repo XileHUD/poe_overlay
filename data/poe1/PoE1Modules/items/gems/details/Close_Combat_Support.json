@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Travel, Melee",
     "DropLevel": "18",
+    "BaseType": "Close Combat Support",
     "Class": "Support Gems",
     "Icon": "s",
     "ItemType": "Metadata/Items/Gems/SupportGemCloseCombat",
@@ -373,5 +374,71 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports melee attack skills. Cannot support skills which create minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal up to (25–39)% more Melee Damage to Enemies, based on proximity",
+      "values": [
+        "(25–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills grant Combat Rush on HitCombat Rush lasts 2 seconds or until you use a Travel Skill",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Combat Rush grants 20% more Attack Speed to Travel Skills not Supported by Close Combat",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Supported Skills can only be used with Axes or Swords",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal up to (25–39)% more Melee Damage to Enemies, based on proximity",
+      "values": [
+        "(25–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills grant Combat Rush on HitCombat Rush lasts 2 seconds or until you use a Travel Skill",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Combat Rush grants 20% more Attack Speed to Travel Skills not Supported by Close Combat",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Supported Skills can only be used with Axes or Swords",
+      "values": []
+    },
+    {
+      "text": "supported by slashing [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Damage with Hits to Close Range Enemies",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Damage with Hits to Close Range Enemies",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

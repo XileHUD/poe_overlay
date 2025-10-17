@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Duration, Ailment, Freeze",
+    "BaseType": "Glacial Hammer",
     "Class": "Skill Gems",
     "Weapon": "One Hand Maces, Staves, Two Hand Maces, Sceptres, Warstaves",
     "TargetTypes": "Ground, Enemy",
@@ -415,5 +416,130 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Hits enemies, converting some of your physical damage to cold damage. If a non-unique enemy is frozen and is on less than one third life, they will shatter when hit by Glacial Hammer. If striking three times in a row, the third strike will freeze enemies more easily. Requires a Mace, Sceptre or Staff.",
+  "explicitMods": [
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "25% chance to Freeze enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Every third successive strike Freezes enemies as though dealing (200–390)% more Damage",
+      "values": [
+        "(200–390)"
+      ]
+    },
+    {
+      "text": "35% increased Duration of Cold Ailments",
+      "values": [
+        "35"
+      ]
+    },
+    {
+      "text": "(10–29)% increased Effect of Cold Ailments",
+      "values": [
+        "(10–29)"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "25% chance to Freeze enemies",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Every third successive strike Freezes enemies as though dealing (200–390)% more Damage",
+      "values": [
+        "(200–390)"
+      ]
+    },
+    {
+      "text": "35% increased Duration of Cold Ailments",
+      "values": [
+        "35"
+      ]
+    },
+    {
+      "text": "(10–29)% increased Effect of Cold Ailments",
+      "values": [
+        "(10–29)"
+      ]
+    },
+    {
+      "text": "additional main hand hits per combo average [1]",
+      "values": []
+    },
+    {
+      "text": "glacial hammer shatter frozen enemies at 33% life [1]",
+      "values": []
+    },
+    {
+      "text": "quality display glacial hammer is gem [1]",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Cold Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With at least 40 Strength in Radius, 20% increasedRarity of Items dropped by Enemies Shattered by Glacial Hammer",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(10–15)% increased Cold Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With at least 40 Strength in Radius, 25% of GlacialHammer Physical Damage Converted to Cold Damage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "With at least 40 Strength in Radius, Glacial Hammer dealsCold-only Splash Damage to surrounding targets",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Cold Ailments are Chilled, Frozen and Brittle)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Cold Ailments are Chilled, Frozen and Brittle)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Cold Ailments are Chilled, Frozen and Brittle)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Every third successive strike Freezes enemies as though dealing (0–100)% more Damage",
+      "values": [
+        "(0–100)"
+      ]
+    },
+    {
+      "text": "Every third successive strike Freezes enemies as though dealing (0–100)% more Damage",
+      "values": [
+        "(0–100)"
+      ]
+    }
+  ]
 }

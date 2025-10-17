@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Cooldown, Recovery, Modifiers",
     "DropLevel": "10",
+    "BaseType": "Flame Dash",
     "Class": "Skill Gems",
     "TargetTypes": "Enemy, Ground, ,",
     "Type": "Spell, Movement, Damage, DamageOverTime, Duration, Totemable, Triggerable, Fire, Trappable, Mineable, Travel, Blink, Cooldown",
@@ -455,5 +456,85 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+  "explicitMods": [
+    {
+      "text": "Deals (19.7–1738.6) Base Fire Damage per second",
+      "values": [
+        "(19.7–1738.6)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (7–659) to (11–988) Fire Damage",
+      "values": [
+        "(7–659)",
+        "(11–988)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "(0–19)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Deals (19.7–1738.6) Base Fire Damage per second",
+      "values": [
+        "(19.7–1738.6)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (7–659) to (11–988) Fire Damage",
+      "values": [
+        "(7–659)",
+        "(11–988)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "(0–19)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Elusive",
     "DropLevel": "18",
+    "BaseType": "Nightblade Support",
     "Class": "Support Gems",
     "Icon": "u",
     "ItemType": "Metadata/Items/Gems/SupportGemNightblade",
@@ -453,5 +454,86 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills. Cannot support skills which create minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills grant Elusive on Critical Strike",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have +(0.7–1)% to Critical Strike Chance while Elusive",
+      "values": [
+        "+(0.7–1)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Effect of Elusive from Supported Skills",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Elusive from Supported Skills also grants +(100–138)% to Critical Strike Multiplier forSkills Supported by Nightblade",
+      "values": [
+        "+(100–138)"
+      ]
+    },
+    {
+      "text": "Supported Skills can only be used with Claws or Daggers",
+      "values": []
+    },
+    {
+      "text": "Supported Skills grant Elusive on Critical Strike",
+      "values": []
+    },
+    {
+      "text": "Supported Skills have +(0.7–1)% to Critical Strike Chance while Elusive",
+      "values": [
+        "+(0.7–1)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Effect of Elusive from Supported Skills",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Elusive from Supported Skills also grants +(100–138)% to Critical Strike Multiplier forSkills Supported by Nightblade",
+      "values": [
+        "+(100–138)"
+      ]
+    },
+    {
+      "text": "Supported Skills can only be used with Claws or Daggers",
+      "values": []
+    },
+    {
+      "text": "supported by nightblade [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Elusive initially grants 15% chance to Avoid All Damage from Hits, and 30% increased Movement Speed. The buff reduces its effect over time, removing itself at 0% effect. If you already have an Elusive buff, you cannot gain Elusive)",
+    "(Rune Daggers are considered Daggers)",
+    "(Elusive initially grants 15% chance to Avoid All Damage from Hits, and 30% increased Movement Speed. The buff reduces its effect over time, removing itself at 0% effect. If you already have an Elusive buff, you cannot gain Elusive)",
+    "(Rune Daggers are considered Daggers)",
+    "(Elusive initially grants 15% chance to Avoid All Damage from Hits, and 30% increased Movement Speed. The buff reduces its effect over time, removing itself at 0% effect. If you already have an Elusive buff, you cannot gain Elusive)",
+    "(Rune Daggers are considered Daggers)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–20)% increased Critical Strike Chance",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–20)% increased Critical Strike Chance",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

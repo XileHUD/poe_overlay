@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Scourge Arrow of Menace",
     "Weapon": "Bows",
     "TargetTypes": ", ROTATE_TO_TARGET,",
     "Type": "Attack, RangedAttack, MirageArcherCanUse, Projectile, ProjectilesFromUser, Totemable, Damage, Chaos, Trappable, Mineable, Triggerable",
@@ -252,5 +253,131 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fire an arrow that leaves a spore pod in its wake. The spore pod blooms, firing thorn arrows, which travel for a short time before dissipating. Modifiers that cause additional projectiles to be fired will only apply to the initial arrows, each of which leaves its own spore pod.",
+  "explicitMods": [
+    {
+      "text": "Arrows Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Each Arrow leaves 1 Spore Pod",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Each Spore Pod fires 4 Thorn Arrows",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Thorn Arrows deal (50–60)% less Damage",
+      "values": [
+        "(50–60)"
+      ]
+    },
+    {
+      "text": "Arrows Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Each Arrow leaves 1 Spore Pod",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Each Spore Pod fires 4 Thorn Arrows",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Thorn Arrows deal (50–60)% less Damage",
+      "values": [
+        "(50–60)"
+      ]
+    },
+    {
+      "text": "override turn duration ms [100]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    },
+    {
+      "text": "Arrows Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "60% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "Each Arrow leaves 1 Spore Pod",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Each Spore Pod fires +4 Thorn Arrows",
+      "values": [
+        "+4"
+      ]
+    },
+    {
+      "text": "Thorn Arrows deal 33% less Damage",
+      "values": [
+        "33"
+      ]
+    },
+    {
+      "text": "override turn duration ms [100]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect chaos is green [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Each Spore Pod fires +(0–1) Thorn Arrow",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Each Spore Pod fires +(0–1) Thorn Arrow",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

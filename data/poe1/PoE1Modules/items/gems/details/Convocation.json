@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "31",
+    "BaseType": "Convocation",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, Duration, Triggerable, Minion, Instant, Cooldown",
@@ -94,5 +95,95 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Recalls all minions that are following you to your location, and grants them a temporary life regeneration effect.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Regenerate (0.7–1.65)% of Life per second",
+      "values": [
+        "(0.7–1.65)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Regenerate (0.7–1.65)% of Life per second",
+      "values": [
+        "(0.7–1.65)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Regenerate 2% of Life per second",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Regenerate 2% of Life per second",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Skill Effect Duration(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)",
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Skill Effect Duration(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)",
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Skill Effect Duration(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)",
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Skill Effect Duration(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)",
+        "(0–20)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Trap",
     "DropLevel": "8",
+    "BaseType": "Multiple Traps Support",
     "Class": "Support Gems",
     "Icon": "t",
     "ItemType": "Metadata/Items/Gems/SupportGemMultiTrap",
@@ -373,5 +374,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports traps skills, making them throw extra traps in a line.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills throw up to 2 additional Traps",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (52–58)% less Damage",
+      "values": [
+        "(52–58)"
+      ]
+    },
+    {
+      "text": "Supported Skills can have up to 3 additional Traps placed at a time",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Supported Skills throw up to 2 additional Traps",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (52–58)% less Damage",
+      "values": [
+        "(52–58)"
+      ]
+    },
+    {
+      "text": "Supported Skills can have up to 3 additional Traps placed at a time",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "multi trap and mine support flags [2]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–20)% increased Trap Trigger Area of Effect",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–20)% increased Trap Trigger Area of Effect",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

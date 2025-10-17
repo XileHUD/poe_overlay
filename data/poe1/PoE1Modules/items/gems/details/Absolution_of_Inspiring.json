@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Absolution of Inspiring",
     "TargetTypes": "ROTATE_TO_TARGET, ,",
     "Type": "Spell, Minion, Duration, Physical, Lightning, MinionsCanExplode, CreatesMinion, Damage, Area, Multicastable, Cascadable, Triggerable, Totemable, Trappable, Mineable, CanRapidFire",
     "ActiveSkillsCode": "absolution_alt_x"
@@ -371,5 +372,208 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Damages enemies in an area, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the corpse will be consumed to summon a Sentinel of Absolution for a secondary duration, or to refresh the duration and life of an existing one instead if you have the maximum number of them.",
+  "explicitMods": [
+    {
+      "text": "Deals (21–873) to (31–1310) Physical Damage",
+      "values": [
+        "(21–873)",
+        "(31–1310)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 10 seconds",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at 250% of their value",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "Maximum 2 Summoned Sentinels of Absolution",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "+(0–0.6) metres to radius",
+      "values": [
+        "+(0–0.6)"
+      ]
+    },
+    {
+      "text": "25% chance to Summon a Sentinel of Absolution on Hitting a Rare or Unique Enemy",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "This Spell and Minions Convert 50% of Physical Damage to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Deals (21–873) to (31–1310) Physical Damage",
+      "values": [
+        "(21–873)",
+        "(31–1310)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 10 seconds",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at 250% of their value",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "Maximum 2 Summoned Sentinels of Absolution",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "+(0–0.6) metres to radius",
+      "values": [
+        "+(0–0.6)"
+      ]
+    },
+    {
+      "text": "25% chance to Summon a Sentinel of Absolution on Hitting a Rare or Unique Enemy",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "This Spell and Minions Convert 50% of Physical Damage to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "base display minion actor level [12,70]",
+      "values": []
+    },
+    {
+      "text": "base max number of vaal absolution sentinels [1]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [19]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (21–4273) to (31–6410) Physical Damage",
+      "values": [
+        "(21–4273)",
+        "(31–6410)"
+      ]
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Base secondary duration is 10 seconds",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at 250% of their value",
+      "values": [
+        "250"
+      ]
+    },
+    {
+      "text": "Maximum 2 Summoned Sentinels of Absolution",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "+(0–1.1) metres to radius",
+      "values": [
+        "+(0–1.1)"
+      ]
+    },
+    {
+      "text": "25% chance to Summon a Sentinel of Absolution on Hitting a Rare or Unique Enemy",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "This Spell and Minions Convert 50% of Physical Damage to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "base display minion actor level [12,100]",
+      "values": []
+    },
+    {
+      "text": "base max number of vaal absolution sentinels [1]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [19]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at (0–50)% of their value",
+      "values": [
+        "(0–50)"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at (0–50)% of their value",
+      "values": [
+        "(0–50)"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at (0–50)% of their value",
+      "values": [
+        "(0–50)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Frost Blades of Katabasis",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, MeleeSingleTarget, Multistrikeable, Melee, Cold, Area, DamageOverTime, ChillingArea, Duration",
@@ -332,5 +333,150 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Attack enemies with greatly increased range, creating a chilling area that deals cold damage over time if it hits. Requires a Melee Weapon.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Deals (9.6–3344.4) Base Cold Damage per second",
+      "values": [
+        "(9.6–3344.4)"
+      ]
+    },
+    {
+      "text": "This Skill's Area of Effect cannot be modified",
+      "values": []
+    },
+    {
+      "text": "60% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "+5 metres to Melee Strike Range",
+      "values": [
+        "+5"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Deals (9.6–3344.4) Base Cold Damage per second",
+      "values": [
+        "(9.6–3344.4)"
+      ]
+    },
+    {
+      "text": "This Skill's Area of Effect cannot be modified",
+      "values": []
+    },
+    {
+      "text": "60% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "+5 metres to Melee Strike Range",
+      "values": [
+        "+5"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "ground ice art variation [7]",
+      "values": []
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "total projectile spread angle override [110]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Deals (9.6–24623.8) Base Cold Damage per second",
+      "values": [
+        "(9.6–24623.8)"
+      ]
+    },
+    {
+      "text": "This Skill's Area of Effect cannot be modified",
+      "values": []
+    },
+    {
+      "text": "60% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "+5 metres to Melee Strike Range",
+      "values": [
+        "+5"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "ground ice art variation [7]",
+      "values": []
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "total projectile spread angle override [110]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
+    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–1) metre to Melee Strike Range",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to Melee Strike Range",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–1) metre to Melee Strike Range",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

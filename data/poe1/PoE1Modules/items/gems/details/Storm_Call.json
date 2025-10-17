@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "DropLevel": "12",
+    "BaseType": "Storm Call",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, ,",
     "Type": "Spell, Damage, Area, Duration, Trappable, Totemable, Mineable, Triggerable, Multicastable, Lightning, Cascadable, CanRapidFire, AreaSpell",
@@ -414,5 +415,73 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Sets a marker at a location. After a short duration, lightning strikes the marker, dealing damage around it and causing lightning strikes at any other markers you've cast.",
+  "explicitMods": [
+    {
+      "text": "Deals (21–949) to (39–1762) Lightning Damage",
+      "values": [
+        "(21–949)",
+        "(39–1762)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "+(0–0.6) metres to radius",
+      "values": [
+        "+(0–0.6)"
+      ]
+    },
+    {
+      "text": "Deals (21–949) to (39–1762) Lightning Damage",
+      "values": [
+        "(21–949)",
+        "(39–1762)"
+      ]
+    },
+    {
+      "text": "Base duration is 1.5 seconds",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "+(0–0.6) metres to radius",
+      "values": [
+        "+(0–0.6)"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–15)% chance for Lightning to Strike the Marker when Cast",
+      "values": [
+        "(0–15)"
+      ]
+    },
+    {
+      "text": "(0–15)% chance for Lightning to Strike the Marker when Cast",
+      "values": [
+        "(0–15)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Totem",
     "DropLevel": "38",
+    "BaseType": "Multiple Totems Support",
     "Class": "Support Gems",
     "Icon": "v",
     "ItemType": "Metadata/Items/Gems/SupportGemMultiTotem",
@@ -373,5 +374,79 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which summon totems.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have +2 to maximum number of Summoned Totems",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Supported Skills Summon two Totems instead of one",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (21–40)% less Damage",
+      "values": [
+        "(21–40)"
+      ]
+    },
+    {
+      "text": "Supported Skills have +2 to maximum number of Summoned Totems",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Supported Skills Summon two Totems instead of one",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (21–40)% less Damage",
+      "values": [
+        "(21–40)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 1 Multiple Totems",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "(40–50)% increased Global Damage",
+      "values": [
+        "(40–50)"
+      ]
+    },
+    {
+      "text": "(10–20)% increased maximum Life",
+      "values": [
+        "(10–20)"
+      ]
+    },
+    {
+      "text": "(10–20)% increased maximum Mana",
+      "values": [
+        "(10–20)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Totem Placement speed",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Totem Placement speed",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

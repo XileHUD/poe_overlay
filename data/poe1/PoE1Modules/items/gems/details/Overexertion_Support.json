@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Exert, Warcry",
     "DropLevel": "38",
+    "BaseType": "Overexertion Support",
     "Class": "Support Gems",
     "Icon": "o",
     "ItemType": "Metadata/Items/Gems/SupportGemOverexertion",
@@ -333,5 +334,47 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports melee attack skills which can be exerted. Cannot modify the skills of minions. Vaal skills and channelling skills cannot be exerted.",
+  "explicitMods": [
+    {
+      "text": "Supported Attacks deal (12–18)% more Damage for each Warcry Exerting them",
+      "values": [
+        "(12–18)"
+      ]
+    },
+    {
+      "text": "Supported Attacks deal 10% more Damage if Exerted",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Supported Attacks deal (12–18)% more Damage for each Warcry Exerting them",
+      "values": [
+        "(12–18)"
+      ]
+    },
+    {
+      "text": "Supported Attacks deal 10% more Damage if Exerted",
+      "values": [
+        "10"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Attacks deal (0–20)% increased Damage if Exerted",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Attacks deal (0–20)% increased Damage if Exerted",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

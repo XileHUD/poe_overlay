@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Glacial Hammer of Shattering",
     "Weapon": "One Hand Maces, Staves, Two Hand Maces, Sceptres, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, MeleeSingleTarget, Multistrikeable, Melee, Cold, ThresholdJewelArea",
@@ -292,5 +293,75 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Hits enemies, converting some of your physical damage to cold damage. If striking three times in a row, the third strike will be a critical strike. Requires a Mace, Sceptre or Staff.",
+  "explicitMods": [
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Every third successive strike is a Critical Strike",
+      "values": []
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Every third successive strike is a Critical Strike",
+      "values": []
+    },
+    {
+      "text": "additional main hand hits per combo average [1]",
+      "values": []
+    },
+    {
+      "text": "quality display glacial hammer is gem [1]",
+      "values": []
+    },
+    {
+      "text": "100% of Physical Damage Converted to Cold Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Every third successive strike is a Critical Strike",
+      "values": []
+    },
+    {
+      "text": "additional main hand hits per combo average [1]",
+      "values": []
+    },
+    {
+      "text": "quality display glacial hammer is gem [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–40)% to Critical Strike Multiplier",
+      "values": [
+        "+(0–40)"
+      ]
+    },
+    {
+      "text": "+(0–40)% to Critical Strike Multiplier",
+      "values": [
+        "+(0–40)"
+      ]
+    },
+    {
+      "text": "+(0–40)% to Critical Strike Multiplier",
+      "values": [
+        "+(0–40)"
+      ]
+    }
+  ]
 }

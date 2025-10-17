@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hinder",
     "DropLevel": "34",
+    "BaseType": "Void Sphere",
     "Class": "Skill Gems",
     "TargetTypes": "Ground,",
     "Type": "Spell, Area, Trappable, Mineable, Triggerable, Duration, AreaSpell, Cooldown, Totemable, Physical, Damage, Chaos, Orb",
@@ -415,5 +416,125 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a Void Sphere which Hinders enemies in an area around it, with the debuff being stronger on enemies closer to the sphere. It also regularly releases pulses of area damage. The Void Sphere will consume the corpses of any enemies which die in its area. Can only have one Void Sphere at a time.",
+  "explicitMods": [
+    {
+      "text": "Deals (27–344) to (40–516) Physical Damage",
+      "values": [
+        "(27–344)",
+        "(40–516)"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Pulses every 0.4 seconds",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "40% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Base radius is 3.8 metres",
+      "values": [
+        "3.8"
+      ]
+    },
+    {
+      "text": "Enemies in range are Hindered, with up to (30–39)% reduced Movement Speed, based on distance from the Void Sphere",
+      "values": [
+        "(30–39)"
+      ]
+    },
+    {
+      "text": "Deals (27–344) to (40–516) Physical Damage",
+      "values": [
+        "(27–344)",
+        "(40–516)"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Pulses every 0.4 seconds",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "40% of Physical Damage Converted to Chaos Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Base radius is 3.8 metres",
+      "values": [
+        "3.8"
+      ]
+    },
+    {
+      "text": "Enemies in range are Hindered, with up to (30–39)% reduced Movement Speed, based on distance from the Void Sphere",
+      "values": [
+        "(30–39)"
+      ]
+    },
+    {
+      "text": "damage cannot be reflected or leech if used by other object [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Hinder reduces movement speed)",
+    "(Hinder reduces movement speed)",
+    "(Hinder reduces movement speed)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

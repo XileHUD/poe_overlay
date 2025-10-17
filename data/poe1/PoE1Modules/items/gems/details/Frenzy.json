@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "16",
+    "BaseType": "Frenzy",
     "Class": "Skill Gems",
     "Weapon": "Wands, Bows",
     "TargetTypes": "Ground, Enemy",
@@ -335,5 +336,57 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Performs an attack with a ranged weapon that gives the character a frenzy charge if it hits. Frenzy charges increase your attack speed.",
+  "explicitMods": [
+    {
+      "text": "5% more Attack Damage per Frenzy Charge",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "5% more Attack Speed per Frenzy Charge",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "5% more Attack Damage per Frenzy Charge",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "5% more Attack Speed per Frenzy Charge",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–2)% more Attack Damage per Frenzy Charge+(0–2)% more Attack Speed per Frenzy Charge",
+      "values": [
+        "+(0–2)",
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "+(0–2)% more Attack Damage per Frenzy Charge+(0–2)% more Attack Speed per Frenzy Charge",
+      "values": [
+        "+(0–2)",
+        "+(0–2)"
+      ]
+    }
+  ]
 }

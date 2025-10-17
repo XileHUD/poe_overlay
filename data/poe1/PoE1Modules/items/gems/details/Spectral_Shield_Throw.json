@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Projectile, Chain, Armour, Evasion",
     "DropLevel": "28",
+    "BaseType": "Spectral Shield Throw",
     "Class": "Skill Gems",
     "Weapon": "Shields",
     "TargetTypes": "Enemy, Ground",
@@ -456,5 +457,95 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a spectral copy of your shield as a projectile which cannot pierce, and deals off-hand damage augmented by the defences of the shield. When it collides with something it will shatter, launching a number of smaller shards as projectiles in all directions. Modifiers that cause additional projectiles to be fired will add more shards, not more copies of the shield.",
+  "explicitMods": [
+    {
+      "text": "Shard Projectiles Deal 50% less Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "(56–243) to (84–364) Base Off Hand Physical Damage",
+      "values": [
+        "(56–243)",
+        "(84–364)"
+      ]
+    },
+    {
+      "text": "(3–5) to (5–9) Added Physical Damage per 15 Armour or Evasion Rating on Shield",
+      "values": [
+        "(3–5)",
+        "(5–9)"
+      ]
+    },
+    {
+      "text": "Fires 3 additional Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Primary Projectile Chains +3 Times",
+      "values": [
+        "+3"
+      ]
+    },
+    {
+      "text": "Shard Projectiles Deal 50% less Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "(56–243) to (84–364) Base Off Hand Physical Damage",
+      "values": [
+        "(56–243)",
+        "(84–364)"
+      ]
+    },
+    {
+      "text": "(3–5) to (5–9) Added Physical Damage per 15 Armour or Evasion Rating on Shield",
+      "values": [
+        "(3–5)",
+        "(5–9)"
+      ]
+    },
+    {
+      "text": "Fires 3 additional Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Primary Projectile Chains +3 Times",
+      "values": [
+        "+3"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "thrown shield projectile fire random directions [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires (0–2) additional Projectiles",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Fires (0–2) additional Projectiles",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

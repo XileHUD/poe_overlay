@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Contagion of Subsiding",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Area, Duration, Trappable, Totemable, DamageOverTime, Chaos, Multicastable, Triggerable, Mineable, DegenOnlySpellDamage, Cascadable, CanRapidFire, AreaSpell",
     "ActiveSkillsCode": "contagion_alt_x"
@@ -331,5 +332,115 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Unleashes a vile contagion on enemies, dealing chaos damage over time. If an enemy dies while affected by Contagion, the debuff spreads to other enemies, but each time it spreads, it only deals three quarters as much damage as before.",
+  "explicitMods": [
+    {
+      "text": "Deals (10.1–1531.3) Base Chaos Damage per second",
+      "values": [
+        "(10.1–1531.3)"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Base radius is 1.7 metres",
+      "values": [
+        "1.7"
+      ]
+    },
+    {
+      "text": "Spreads when affected Enemy dies",
+      "values": []
+    },
+    {
+      "text": "Deals (10.1–1531.3) Base Chaos Damage per second",
+      "values": [
+        "(10.1–1531.3)"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Base radius is 1.7 metres",
+      "values": [
+        "1.7"
+      ]
+    },
+    {
+      "text": "Spreads when affected Enemy dies",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (10.1–9317.2) Base Chaos Damage per second",
+      "values": [
+        "(10.1–9317.2)"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Base radius is 1.7 metres",
+      "values": [
+        "1.7"
+      ]
+    },
+    {
+      "text": "Spreads when affected Enemy dies",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

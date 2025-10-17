@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Cooldown, Melee, Stance, Recovery",
     "DropLevel": "4",
+    "BaseType": "Blood and Sand",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, Instant, HasReservation, Instant, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown, Stance",
@@ -301,5 +302,91 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts a buff that grants different bonuses to melee skills depending on your stance. Using the skill again alternates between Blood Stance and Sand Stance.",
+  "explicitMods": [
+    {
+      "text": "Melee Skills deal (10–15)% more Area Damage while in Blood Stance",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "Melee Skills have 5% less Area of Effect while in Blood Stance",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Melee Skills have (10–15)% more Area of Effect while in Sand Stance",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "Melee Skills deal 5% less Area Damage while in Sand Stance",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "(0–50)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–50)"
+      ]
+    },
+    {
+      "text": "Melee Skills deal (10–15)% more Area Damage while in Blood Stance",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "Melee Skills have 5% less Area of Effect while in Blood Stance",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Melee Skills have (10–15)% more Area of Effect while in Sand Stance",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "Melee Skills deal 5% less Area Damage while in Sand Stance",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "(0–50)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–50)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

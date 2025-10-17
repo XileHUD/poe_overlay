@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Hit, Withered",
     "DropLevel": "38",
+    "BaseType": "Withering Touch Support",
     "Class": "Support Gems",
     "Icon": "w",
     "ItemType": "Metadata/Items/Gems/SupportGemChaosAttacks",
@@ -333,5 +334,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have 25% chance to inflict Withered on Hit",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Withered lasts 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Skills gain (10–29)% of Physical Damage as Extra Chaos Damage",
+      "values": [
+        "(10–29)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 25% chance to inflict Withered on Hit",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Withered lasts 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Supported Skills gain (10–29)% of Physical Damage as Extra Chaos Damage",
+      "values": [
+        "(10–29)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)",
+    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)",
+    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Chaos Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Chaos Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

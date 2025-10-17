@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Ball Lightning of Static",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Damage, Area, Trappable, Mineable, Triggerable, Lightning, AreaSpell, Cooldown, Orb",
     "ActiveSkillsCode": "ball_lightning_alt_y"
@@ -331,5 +332,78 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a ball of lightning at a location that damages each enemy in an area around it repeatedly with bolts of lightning. Cannot be supported by Spell Echo or used by Totems.",
+  "explicitMods": [
+    {
+      "text": "Deals (4–50) to (73–946) Lightning Damage",
+      "values": [
+        "(4–50)",
+        "(73–946)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.8 metres",
+      "values": [
+        "2.8"
+      ]
+    },
+    {
+      "text": "Deals (4–50) to (73–946) Lightning Damage",
+      "values": [
+        "(4–50)",
+        "(73–946)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.8 metres",
+      "values": [
+        "2.8"
+      ]
+    },
+    {
+      "text": "ball lightning projectile speed and hit frequency +% final [33]",
+      "values": []
+    },
+    {
+      "text": "number of projectiles override [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (4–280) to (81–5326) Lightning Damage",
+      "values": [
+        "(4–280)",
+        "(81–5326)"
+      ]
+    },
+    {
+      "text": "Base radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "ball lightning projectile speed and hit frequency +% final [33]",
+      "values": []
+    },
+    {
+      "text": "number of projectiles override [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

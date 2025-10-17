@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Duration, Ailment",
     "DropLevel": "28",
+    "BaseType": "Penance Brand",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, Physical, Lightning, Duration, Totemable, Trappable, Mineable, Triggerable, Multicastable, Brand, AreaSpell",
@@ -415,5 +416,121 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, adding energy to the branded enemy. When the branded enemy reaches 20 energy, a large explosion occurs and the brand is removed. All energy is removed from the enemy when the brand is detached.",
+  "explicitMods": [
+    {
+      "text": "Deals (177–2541) to (265–3811) Physical Damage",
+      "values": [
+        "(177–2541)",
+        "(265–3811)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Activates every 0.1 seconds while Attached",
+      "values": [
+        "0.1"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+      "values": []
+    },
+    {
+      "text": "30% less Damage with Ailments",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Deals (177–2541) to (265–3811) Physical Damage",
+      "values": [
+        "(177–2541)",
+        "(265–3811)"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Activates every 0.1 seconds while Attached",
+      "values": [
+        "0.1"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+      "values": []
+    },
+    {
+      "text": "30% less Damage with Ailments",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "base number of sigils allowed per target [1]",
+      "values": []
+    },
+    {
+      "text": "brand atttached duration is infinite [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "base_damage_taken_+%",
+      "values": []
+    },
+    {
+      "text": "branded_enemy_explode_for_25%_life_as_chaos_on_death_chance_%",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Deals +(0–10)% more Damage with Hits against Branded Enemy",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "Deals +(0–10)% more Damage with Hits against Branded Enemy",
+      "values": [
+        "+(0–10)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "DropLevel": "31",
+    "BaseType": "Inspiration Support",
     "Class": "Support Gems",
     "Icon": "r",
     "ItemType": "Metadata/Items/Gems/SupportGemReducedMana",
@@ -496,5 +497,255 @@
     "This creates a mana counter for all skills linked with Inspiration Support, up to the respective cap.",
     "As soon as a skill is used that puts the total mana spent above the threshold, the mana counter is reset to 0 and all Inspiration Charges are removed.",
     "Cast On Critical Strike Support - Since Attacks usually cost much less mana to use than spells, especially Cyclone, it results in more efficient use of Inspiration Support. Both the attack and spell(s) in a common Cast On Critical Strike set-up will be supported, granting increased critical strike chance and more elemental damage to both."
+  ],
+  "gemDescription": "Supports any skill. Minions, Totems, Traps and Mines cannot gain Inspiration Charges.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (25–34)% less Mana Cost",
+      "values": [
+        "(25–34)"
+      ]
+    },
+    {
+      "text": "Gain an Inspiration Charge when you Spend Mana on UpfrontCosts or Effects of Supported Skills",
+      "values": []
+    },
+    {
+      "text": "Lose all Inspiration Charges after Spending a total of (122–800) Mana on Upfront Costs and Effects of Supported Skills",
+      "values": [
+        "(122–800)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (6–8)% increased Critical Strike Chance per Inspiration Charge",
+      "values": [
+        "(6–8)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (3–5)% more Elemental Damage per Inspiration Charge",
+      "values": [
+        "(3–5)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (25–34)% less Mana Cost",
+      "values": [
+        "(25–34)"
+      ]
+    },
+    {
+      "text": "Gain an Inspiration Charge when you Spend Mana on UpfrontCosts or Effects of Supported Skills",
+      "values": []
+    },
+    {
+      "text": "Lose all Inspiration Charges after Spending a total of (122–800) Mana on Upfront Costs and Effects of Supported Skills",
+      "values": [
+        "(122–800)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (6–8)% increased Critical Strike Chance per Inspiration Charge",
+      "values": [
+        "(6–8)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (3–5)% more Elemental Damage per Inspiration Charge",
+      "values": [
+        "(3–5)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Bonechill",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Hypothermia",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Cold Penetration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Added Cold Damage",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Inspiration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "100% increased Melee Damage against Frozen Enemies",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "100% increased Melee Damage against Shocked Enemies",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "100% increased Melee Damage against Ignited Enemies",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Projectiles have (15–20)% chance to Ignite",
+      "values": [
+        "(15–20)"
+      ]
+    },
+    {
+      "text": "Projectiles have (15–20)% chance to Freeze",
+      "values": [
+        "(15–20)"
+      ]
+    },
+    {
+      "text": "Projectiles have (15–20)% chance to Shock",
+      "values": [
+        "(15–20)"
+      ]
+    },
+    {
+      "text": "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+      "values": []
+    },
+    {
+      "text": "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
+      "values": []
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Concentrated Effect",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Inspiration",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Faster Casting",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Elemental Penetration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Immolate",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Unbound Ailments",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Inspiration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Innervate",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Bonechill",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Hypothermia",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Cold Penetration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 1 Added Cold Damage",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Inspiration",
+      "values": [
+        "15"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Upfront Costs are all Costs that are not paid per-second)",
+    "(Upfront Costs are all Costs that are not paid per-second)",
+    "(Upfront Costs are all Costs that are not paid per-second)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–5)% less Mana Cost",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–5)% less Mana Cost",
+      "values": [
+        "(0–5)"
+      ]
+    }
   ]
 }

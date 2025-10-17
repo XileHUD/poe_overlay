@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "18",
+    "BaseType": "Controlled Destruction Support",
     "Class": "Support Gems",
     "Icon": "C",
     "ItemType": "Metadata/Items/Gems/SupportGemControlledDestruction",
@@ -332,5 +333,107 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills, or spell skills that deal damage.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have 80% less Critical Strike Chance",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (25–39)% more Spell Damage",
+      "values": [
+        "(25–39)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 80% less Critical Strike Chance",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (25–39)% more Spell Damage",
+      "values": [
+        "(25–39)"
+      ]
+    },
+    {
+      "text": "+2 to Level of Socketed Gems",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Intensify",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Spell Echo",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Controlled Destruction",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "+(10–30) to Intelligence",
+      "values": [
+        "+(10–30)"
+      ]
+    },
+    {
+      "text": "+2 to Level of Socketed Gems",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Arcane Surge",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Spell Echo",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 10 Controlled Destruction",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "+(10–30) to Intelligence",
+      "values": [
+        "+(10–30)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

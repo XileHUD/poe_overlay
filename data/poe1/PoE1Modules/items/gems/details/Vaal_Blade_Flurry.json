@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Blade Flurry",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, Rune Daggers",
     "TargetTypes": "Ground, ,",
     "Type": "Attack, Area, Channel, Melee",
@@ -292,5 +293,138 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Channel to create an expanding circle area around you that blinds enemies within it. When you stop channelling, deals damage in a smaller area around each enemy in the circle. Requires a Dagger, Claw or One-Handed Sword.",
+  "explicitMods": [
+    {
+      "text": "Blind enemies on hit",
+      "values": []
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "(30–68)% increased Blind Effect",
+      "values": [
+        "(30–68)"
+      ]
+    },
+    {
+      "text": "50% less Damage Taken while Channelling",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base Circle Radius is 1 metre+0.5 metres to Circle Radius per StageChannelling stops when Total Circle Radius reaches 9 metres",
+      "values": [
+        "+0.5"
+      ]
+    },
+    {
+      "text": "Blind enemies on hit",
+      "values": []
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "(30–68)% increased Blind Effect",
+      "values": [
+        "(30–68)"
+      ]
+    },
+    {
+      "text": "50% less Damage Taken while Channelling",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base Circle Radius is 1 metre+0.5 metres to Circle Radius per StageChannelling stops when Total Circle Radius reaches 9 metres",
+      "values": [
+        "+0.5"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "current_charged_attack_stacks",
+      "values": []
+    },
+    {
+      "text": "has_soul_gain_prevention",
+      "values": []
+    },
+    {
+      "text": "damage_taken_+%_final_from_vaal_charged_attack",
+      "values": []
+    },
+    {
+      "text": "25% more Damage with Hits and Ailments for each stage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Maximum 6 Stages",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
+    "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
+    "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
+    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–5)% more Damage with Hits and Ailments for each stage",
+      "values": [
+        "+(0–5)"
+      ]
+    },
+    {
+      "text": "+(0–5)% more Damage with Hits and Ailments for each stage",
+      "values": [
+        "+(0–5)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Damage while at maximum Stages",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

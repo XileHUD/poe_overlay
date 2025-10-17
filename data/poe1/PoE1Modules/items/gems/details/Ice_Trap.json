@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Trap",
     "DropLevel": "28",
+    "BaseType": "Ice Trap",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Damage, Mineable, Area, Trapped, Cold, AreaSpell",
@@ -415,5 +416,97 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap that creates a series of icy runic explosions when triggered, dealing cold damage to all enemies caught in the blasts.",
+  "explicitMods": [
+    {
+      "text": "Deals (88–1275) to (132–1912) Cold Damage",
+      "values": [
+        "(88–1275)",
+        "(132–1912)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Base tertiary radius is 0.6 metres",
+      "values": [
+        "0.6"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 0.9 metres",
+      "values": [
+        "0.9"
+      ]
+    },
+    {
+      "text": "Deals (88–1275) to (132–1912) Cold Damage",
+      "values": [
+        "(88–1275)",
+        "(132–1912)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base radius is 1.8 metres",
+      "values": [
+        "1.8"
+      ]
+    },
+    {
+      "text": "Base tertiary radius is 0.6 metres",
+      "values": [
+        "0.6"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 0.9 metres",
+      "values": [
+        "0.9"
+      ]
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–15)% Chance for Trap to Trigger an additional time",
+      "values": [
+        "(0–15)"
+      ]
+    },
+    {
+      "text": "(0–15)% Chance for Trap to Trigger an additional time",
+      "values": [
+        "(0–15)"
+      ]
+    }
+  ]
 }

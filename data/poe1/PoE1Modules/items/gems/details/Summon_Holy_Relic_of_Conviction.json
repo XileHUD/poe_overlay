@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Summon Holy Relic of Conviction",
     "TargetTypes": "Ground, Enemy",
     "Type": "Triggerable, Mineable, Minion, MinionsCanExplode, Multicastable, Spell, Totemable, Trappable, CreatesMinion, Cooldown",
     "MinionType": "Damage, Spell, Area, Triggered, Physical",
@@ -332,5 +333,117 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summon a Holy Relic that stays near you. When you hit an enemy with an attack, the Holy Relic triggers a spell with a short cooldown, that deals physical damage to enemies in an area around a nearby enemy.",
+  "explicitMods": [
+    {
+      "text": "Maximum 2 Summoned Holy Relics",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "(0–76)% more Minion Movement Speed",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "Minions cannot Taunt Enemies",
+      "values": []
+    },
+    {
+      "text": "Maximum 2 Summoned Holy Relics",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "(0–76)% more Minion Movement Speed",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "Minions cannot Taunt Enemies",
+      "values": []
+    },
+    {
+      "text": "active skill minion from alternate gem index [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [4,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [16]",
+      "values": []
+    },
+    {
+      "text": "holy relic targets nearest enemy [1]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "Maximum 2 Summoned Holy Relics",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "(0–136)% more Minion Movement Speed",
+      "values": [
+        "(0–136)"
+      ]
+    },
+    {
+      "text": "Minions cannot Taunt Enemies",
+      "values": []
+    },
+    {
+      "text": "active skill minion from alternate gem index [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [4,100]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [16]",
+      "values": []
+    },
+    {
+      "text": "holy relic targets nearest enemy [1]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Minions have (0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Minions have (0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Minions have (0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

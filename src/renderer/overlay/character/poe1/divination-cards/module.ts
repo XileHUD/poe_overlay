@@ -126,12 +126,12 @@ export function render(list: DivinationCard[]): void {
   state.tagCounts = { ...tagCounts };
 
   panel.innerHTML = `
-    <div style='display:flex; gap:6px; align-items:center; margin-bottom:6px;'>
+    <div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
       <input id='divCardsSearch' type='text' placeholder='Search divination cards...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
       <button id='divCardsClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-    <div id='divCardsTagFiltersRow' style='display:flex; justify-content:center; width:100%;'>
-      <div id='divCardsTagFilters' style='display:inline-flex; flex-wrap:wrap; gap:4px; margin-bottom:4px;'></div>
+    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+      <div id='divCardsTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; justify-content:center;'></div>
     </div>
     <div id='divCardsWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap:10px;'></div>`;
   
@@ -169,7 +169,7 @@ export function render(list: DivinationCard[]): void {
     const border=`rgba(${r},${g},${b},0.6)`; 
     const l=0.2126*r+0.7152*g+0.0722*b; 
     const color=active?(l>180?'#000':'#fff'):'var(--text-primary)';
-    return `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:999px; border:1px solid ${border}; background:${bg}; color:${color};`;
+    return `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; border:1px solid ${border}; background:${bg}; color:${color};`;
   }
   
   function renderTagFilters() {
@@ -206,7 +206,7 @@ export function render(list: DivinationCard[]): void {
     if (needsShowMore) {
       const showMoreBtn = document.createElement('div');
       showMoreBtn.textContent = tagsExpanded ? 'Show Less' : `Show More (${sortedTags.length - MAX_TAGS_COLLAPSED} more)`;
-      showMoreBtn.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--border-color); border-radius:999px; background:var(--bg-secondary); color:var(--text-secondary); font-style:italic;';
+      showMoreBtn.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-secondary); color:var(--text-secondary); font-style:italic;';
       showMoreBtn.addEventListener('click', () => {
         tagsExpanded = !tagsExpanded;
         renderTagFilters();
@@ -218,7 +218,7 @@ export function render(list: DivinationCard[]): void {
     if (state.selectedTags.size > 0) {
       const reset = document.createElement('div');
       reset.textContent = 'Reset';
-      reset.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:999px; border:1px solid var(--accent-red); background:var(--accent-red); color:#fff;';
+      reset.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; border:1px solid var(--accent-red); background:var(--accent-red); color:#fff;';
       reset.addEventListener('click', () => {
         state.selectedTags.clear();
         applyFilter();

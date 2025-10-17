@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Exert, Trigger, Warcry, Corpses",
     "DropLevel": "24",
+    "BaseType": "General's Cry",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Buff, Area, Duration, Warcry, Cooldown",
@@ -457,5 +458,143 @@
   "description": "Requires 1 Corpse per General even with*  Redblade Banner *(3 corpses = 3 generals) does NOT work with Projectile skills UNLESS they have the MELEE tag as well.",
   "stats": [
     "Requires 1 Corpse per General even with*  Redblade Banner *(3 corpses = 3 generals) does NOT work with Projectile skills UNLESS they have the MELEE tag as well."
+  ],
+  "gemDescription": "Performs a warcry, taunting nearby enemies to attack the user, and summoning Mirage Warriors from nearby corpses. The Mirage Warriors each use a linked attack skill once before dissipating.",
+  "explicitMods": [
+    {
+      "text": "Base duration is (4–4.9) seconds",
+      "values": [
+        "(4–4.9)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Warcry Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Maximum 5 Summoned Mirage Warriors",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Summons Mirage Warriors from 2 corpses per 5 Power, minimum 1 corpse",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Counts total Power of Enemies and Corpses in Range",
+      "values": []
+    },
+    {
+      "text": "Supported Strike Skills cannot target additional Enemies",
+      "values": []
+    },
+    {
+      "text": "Attacks with Supported Skills count as Exerted",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (51–60)% less Damage",
+      "values": [
+        "(51–60)"
+      ]
+    },
+    {
+      "text": "Supported Skills are used by Mirage Warriors Summoned by General's CrySupported Skills count as Triggered",
+      "values": []
+    },
+    {
+      "text": "Base duration is (4–4.9) seconds",
+      "values": [
+        "(4–4.9)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Warcry Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Maximum 5 Summoned Mirage Warriors",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Summons Mirage Warriors from 2 corpses per 5 Power, minimum 1 corpse",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Counts total Power of Enemies and Corpses in Range",
+      "values": []
+    },
+    {
+      "text": "base deal no attack damage [1]",
+      "values": []
+    },
+    {
+      "text": "base deal no secondary damage [1]",
+      "values": []
+    },
+    {
+      "text": "base deal no spell damage [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Supported Strike Skills cannot target additional Enemies",
+      "values": []
+    },
+    {
+      "text": "Attacks with Supported Skills count as Exerted",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (51–60)% less Damage",
+      "values": [
+        "(51–60)"
+      ]
+    },
+    {
+      "text": "Supported Skills are used by Mirage Warriors Summoned by General's CrySupported Skills count as Triggered",
+      "values": []
+    },
+    {
+      "text": "base damage not from skill user [1]",
+      "values": []
+    },
+    {
+      "text": "force lite skill effects [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Maximum +(0–1) Summoned Mirage Warrior",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Maximum +(0–1) Summoned Mirage Warrior",
+      "values": [
+        "+(0–1)"
+      ]
+    }
   ]
 }

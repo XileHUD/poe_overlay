@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Firestorm",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Damage, Area, Duration, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, Cascadable, CanRapidFire, AreaSpell",
     "ActiveSkillsCode": "firestorm"
@@ -371,5 +372,162 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "A fixed number of flaming bolts rain down in a spiral, culminating in the central one impacting the targeted location. They explode when landing, dealing damage to nearby enemies and leaving burning ground, which deals fire damage over time.",
+  "explicitMods": [
+    {
+      "text": "Deals (256.8–3995.3) Base Fire Damage per second",
+      "values": [
+        "(256.8–3995.3)"
+      ]
+    },
+    {
+      "text": "Burning Ground lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (224–3487) to (336–5230) Fire Damage",
+      "values": [
+        "(224–3487)",
+        "(336–5230)"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "16 Bolts",
+      "values": [
+        "16"
+      ]
+    },
+    {
+      "text": "Impacts have 20% more Area of Effect",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Base radius is 1.3 metres",
+      "values": [
+        "1.3"
+      ]
+    },
+    {
+      "text": "Deals (256.8–3995.3) Base Fire Damage per second",
+      "values": [
+        "(256.8–3995.3)"
+      ]
+    },
+    {
+      "text": "Burning Ground lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (224–3487) to (336–5230) Fire Damage",
+      "values": [
+        "(224–3487)",
+        "(336–5230)"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "16 Bolts",
+      "values": [
+        "16"
+      ]
+    },
+    {
+      "text": "Impacts have 20% more Area of Effect",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Base radius is 1.3 metres",
+      "values": [
+        "1.3"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (22–295) to (34–442) Physical Damage",
+      "values": [
+        "(22–295)",
+        "(34–442)"
+      ]
+    },
+    {
+      "text": "Base duration is 0.9 seconds",
+      "values": [
+        "0.9"
+      ]
+    },
+    {
+      "text": "One impact every 0.3 seconds",
+      "values": [
+        "0.3"
+      ]
+    },
+    {
+      "text": "Base radius is 1 metre",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "firestorm base area of effect +% [-50]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "monster penalty against minions damage +% final vs player minions [-25]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.2) metres",
+      "values": [
+        "(0–0.2)"
+      ]
+    }
+  ]
 }

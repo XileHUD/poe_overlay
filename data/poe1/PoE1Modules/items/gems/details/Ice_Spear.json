@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Projectile",
     "DropLevel": "12",
+    "BaseType": "Ice Spear",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Projectile, ProjectilesFromUser, Damage, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cold, CanRapidFire",
@@ -415,5 +416,93 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Launches shards of ice in rapid succession. After travelling a short distance they change to a second form, which moves much faster and pierces through enemies.",
+  "explicitMods": [
+    {
+      "text": "Deals (22–568) to (33–852) Cold Damage",
+      "values": [
+        "(22–568)",
+        "(33–852)"
+      ]
+    },
+    {
+      "text": "Fires 2 Projectiles",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Second form has 600% increased Critical Strike Chance",
+      "values": [
+        "600"
+      ]
+    },
+    {
+      "text": "Second form has +(30–49)% to Critical Strike Multiplier",
+      "values": [
+        "+(30–49)"
+      ]
+    },
+    {
+      "text": "Second form has 300% more Projectile Speed",
+      "values": [
+        "300"
+      ]
+    },
+    {
+      "text": "Deals (22–568) to (33–852) Cold Damage",
+      "values": [
+        "(22–568)",
+        "(33–852)"
+      ]
+    },
+    {
+      "text": "Fires 2 Projectiles",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Second form has 600% increased Critical Strike Chance",
+      "values": [
+        "600"
+      ]
+    },
+    {
+      "text": "Second form has +(30–49)% to Critical Strike Multiplier",
+      "values": [
+        "+(30–49)"
+      ]
+    },
+    {
+      "text": "Second form has 300% more Projectile Speed",
+      "values": [
+        "300"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "projectile random angle based on distance to target location % [35]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Second form has +(0–40)% to Critical Strike Multiplier",
+      "values": [
+        "+(0–40)"
+      ]
+    },
+    {
+      "text": "Second form has +(0–40)% to Critical Strike Multiplier",
+      "values": [
+        "+(0–40)"
+      ]
+    }
+  ]
 }

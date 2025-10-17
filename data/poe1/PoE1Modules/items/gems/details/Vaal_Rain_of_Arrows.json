@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Rain of Arrows",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, MirageArcherCanUse, Area, ProjectileSpeed, ProjectileNumber, Totemable, Trappable, Mineable, Triggerable, Rain",
@@ -332,5 +333,135 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires multiple arrows into the air, to land in multiple sequences after a delay, each starting at the targeted location and spreading outwards in all directions. Each arrow deals damage in an area around it. Half of the arrows will land directly on targets if there are targets in their range.",
+  "explicitMods": [
+    {
+      "text": "Fires (28–34) Arrows",
+      "values": [
+        "(28–34)"
+      ]
+    },
+    {
+      "text": "Fires 4 additional sequences of arrows",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Maim on Hit",
+      "values": []
+    },
+    {
+      "text": "150% increased Effect of Maim",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "Fires (28–34) Arrows",
+      "values": [
+        "(28–34)"
+      ]
+    },
+    {
+      "text": "Fires 4 additional sequences of arrows",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Maim on Hit",
+      "values": []
+    },
+    {
+      "text": "150% increased Effect of Maim",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "cannot pierce [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Fires 10 additional Arrows",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "33% less Attack Speed",
+      "values": [
+        "33"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [-25]",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "cannot pierce [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Maimed enemies have 30% reduced Movement Speed)",
+    "(Maimed enemies have 30% reduced Movement Speed)",
+    "(Maimed enemies have 30% reduced Movement Speed)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–4) Arrows",
+      "values": [
+        "+(0–4)"
+      ]
+    },
+    {
+      "text": "Fires +(0–4) Arrows",
+      "values": [
+        "+(0–4)"
+      ]
+    }
+  ]
 }

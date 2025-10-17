@@ -3,6 +3,7 @@
   "slug": "Lightning_Tendrils",
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
+    "BaseType": "Lightning Tendrils",
     "Class": "Skill Gems",
     "TargetTypes": ", ,",
     "Type": "Spell, Damage, Area, Totemable, Lightning, Channel, AreaSpell",
@@ -413,5 +414,81 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "While you channel this skill, it releases pulses of electrical energy, dealing lightning damage in a semicircular area in front of you.",
+  "explicitMods": [
+    {
+      "text": "Deals (1–75) to (6–1420) Lightning Damage",
+      "values": [
+        "(1–75)",
+        "(6–1420)"
+      ]
+    },
+    {
+      "text": "Releases a Stronger Pulse every 3 PulsesStronger Pulses always Critically Strike",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Base radius is (2.4–3.1) metres",
+      "values": [
+        "(2.4–3.1)"
+      ]
+    },
+    {
+      "text": "Deals (1–75) to (6–1420) Lightning Damage",
+      "values": [
+        "(1–75)",
+        "(6–1420)"
+      ]
+    },
+    {
+      "text": "Releases a Stronger Pulse every 3 PulsesStronger Pulses always Critically Strike",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Base radius is (2.4–3.1) metres",
+      "values": [
+        "(2.4–3.1)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Lightning Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, each Lightning Tendrils Repeat has 4% increased Area of Effect per Enemy Hit",
+      "values": [
+        "4"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–40)% to Critical Strike Multiplier",
+      "values": [
+        "+(0–40)"
+      ]
+    },
+    {
+      "text": "+(0–40)% to Critical Strike Multiplier",
+      "values": [
+        "+(0–40)"
+      ]
+    }
+  ]
 }

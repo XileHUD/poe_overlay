@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Purifying Flame of Revelations",
     "TargetTypes": "Enemy, Ground,",
     "Type": "Spell, Area, Damage, Duration, Trappable, Totemable, Mineable, Triggerable, Multicastable, Fire, CanRapidFire, AreaSpell, Physical",
     "ActiveSkillsCode": "purifying_flame_alt_x"
@@ -371,5 +372,146 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "A wave of divine fire deals damage in a line, then creates Consecrated Ground and deals damage in an area around the targeted location. A larger shockwave then expands outwards, damaging enemies standing on Consecrated Ground that were not already hit.",
+  "explicitMods": [
+    {
+      "text": "Deals (5–860) to (7–1291) Physical Damage",
+      "values": [
+        "(5–860)",
+        "(7–1291)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+(0.5–1.1) metres to radius of Consecrated Ground",
+      "values": [
+        "+(0.5–1.1)"
+      ]
+    },
+    {
+      "text": "Shockwave deals 110% more Damage",
+      "values": [
+        "110"
+      ]
+    },
+    {
+      "text": "Deals (5–860) to (7–1291) Physical Damage",
+      "values": [
+        "(5–860)",
+        "(7–1291)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+(0.5–1.1) metres to radius of Consecrated Ground",
+      "values": [
+        "+(0.5–1.1)"
+      ]
+    },
+    {
+      "text": "Shockwave deals 110% more Damage",
+      "values": [
+        "110"
+      ]
+    },
+    {
+      "text": "ignite art variation [7]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (5–4669) to (7–7004) Physical Damage",
+      "values": [
+        "(5–4669)",
+        "(7–7004)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "+(0.5–1.6) metres to radius of Consecrated Ground",
+      "values": [
+        "+(0.5–1.6)"
+      ]
+    },
+    {
+      "text": "Shockwave deals 110% more Damage",
+      "values": [
+        "110"
+      ]
+    },
+    {
+      "text": "ignite art variation [7]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "visual hit effect elemental is holy [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Shockwave deals +(0–30)% more Damage",
+      "values": [
+        "+(0–30)"
+      ]
+    },
+    {
+      "text": "Shockwave deals +(0–30)% more Damage",
+      "values": [
+        "+(0–30)"
+      ]
+    },
+    {
+      "text": "Shockwave deals +(0–30)% more Damage",
+      "values": [
+        "+(0–30)"
+      ]
+    }
+  ]
 }

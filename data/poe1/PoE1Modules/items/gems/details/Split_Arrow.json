@@ -3,6 +3,7 @@
   "slug": "Split_Arrow",
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
+    "BaseType": "Split Arrow",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
@@ -374,5 +375,57 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires multiple arrows at different targets.",
+  "explicitMods": [
+    {
+      "text": "Fires (5–9) Arrows",
+      "values": [
+        "(5–9)"
+      ]
+    },
+    {
+      "text": "Fires (5–9) Arrows",
+      "values": [
+        "(5–9)"
+      ]
+    },
+    {
+      "text": "active skill projectile speed +% variation final [50]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "(7–10)% increased Projectile Damage",
+      "values": [
+        "(7–10)"
+      ]
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, Split Arrow fires Projectiles in Parallel",
+      "values": []
+    },
+    {
+      "text": "local unique jewel split arrow projectiles fire in parallel y dist with 40 dex in radius [5]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–4) Arrows",
+      "values": [
+        "+(0–4)"
+      ]
+    },
+    {
+      "text": "Fires +(0–4) Arrows",
+      "values": [
+        "+(0–4)"
+      ]
+    }
+  ]
 }

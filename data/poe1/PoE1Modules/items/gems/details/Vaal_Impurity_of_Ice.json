@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Purity of Ice",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Cold, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
     "ActiveSkillsCode": "purity_of_ice"
@@ -371,5 +372,166 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts an aura that reduces cold damage taken and provides freeze and chill immunity to you and nearby allies, and makes hits against nearby enemies ignore their cold resistance.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "+(1.4–2) metres to radius",
+      "values": [
+        "+(1.4–2)"
+      ]
+    },
+    {
+      "text": "(0–76)% increased effect of Aura",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain 5% additional maximum Cold Resistance",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "You and nearby allies are Immune to Chill",
+      "values": []
+    },
+    {
+      "text": "You and nearby allies are Immune to Freeze",
+      "values": []
+    },
+    {
+      "text": "Nearby Enemies' Cold Resistance is Ignored by Hits",
+      "values": []
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "+(1.4–2) metres to radius",
+      "values": [
+        "+(1.4–2)"
+      ]
+    },
+    {
+      "text": "(0–76)% increased effect of Aura",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain 5% additional maximum Cold Resistance",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "You and nearby allies are Immune to Chill",
+      "values": []
+    },
+    {
+      "text": "You and nearby allies are Immune to Freeze",
+      "values": []
+    },
+    {
+      "text": "Nearby Enemies' Cold Resistance is Ignored by Hits",
+      "values": []
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "damage_+%",
+      "values": []
+    },
+    {
+      "text": "life_regeneration_rate_per_minute_%",
+      "values": []
+    },
+    {
+      "text": "base_maximum_cold_damage_resistance_%",
+      "values": []
+    },
+    {
+      "text": "base_additional_physical_damage_reduction_%",
+      "values": []
+    },
+    {
+      "text": "attack_and_cast_speed_+%",
+      "values": []
+    },
+    {
+      "text": "base_immune_to_freeze",
+      "values": []
+    },
+    {
+      "text": "base_immune_to_chill",
+      "values": []
+    },
+    {
+      "text": "base_life_mana_es_recovery_rate_+%",
+      "values": []
+    },
+    {
+      "text": "+(0–3.4) metres to radius",
+      "values": [
+        "+(0–3.4)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (22–56)% additional Cold Resistance",
+      "values": [
+        "(22–56)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (0–5)% additional maximum Cold Resistance",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Maximum Resistances cannot be raised above 90%)",
+    "(Maximum Resistances cannot be raised above 90%)",
+    "(Maximum Resistances cannot be raised above 90%)",
+    "(Maximum Resistances cannot be raised above 90%)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

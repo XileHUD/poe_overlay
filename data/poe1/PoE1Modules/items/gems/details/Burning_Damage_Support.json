@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Burning",
     "DropLevel": "31",
+    "BaseType": "Burning Damage Support",
     "Class": "Support Gems",
     "Icon": "b",
     "ItemType": "Metadata/Items/Gems/SupportGemIncreasedBurningDamage",
@@ -373,5 +374,35 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies, or can deal burning damage directly.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (20–34)% more Burning Damage",
+      "values": [
+        "(20–34)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (20–34)% more Burning Damage",
+      "values": [
+        "(20–34)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Burning Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Burning Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

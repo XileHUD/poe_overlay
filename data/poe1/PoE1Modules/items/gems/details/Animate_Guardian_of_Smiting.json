@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Animate Guardian of Smiting",
     "TargetTypes": "Armour, Ground",
     "Type": "Spell, Minion, MinionsCanExplode, Totemable, Triggerable, CreatesMinion, Lightning",
     "MinionType": "Attack, Melee, MeleeSingleTarget, Multistrikeable",
@@ -372,5 +373,105 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Animates a melee weapon or armour, attaching it to an invisible Guardian that fights by your side using Smite of Divine Judgement, ignoring weapon restrictions. Animating multiple items attaches them to the same Guardian. You cannot animate unidentified items. Cannot be used by Traps or Mines. If your Guardian dies you cannot summon an Animated Guardian again in that area.",
+  "explicitMods": [
+    {
+      "text": "Can use Items requiring up to Level (33–100)",
+      "values": [
+        "(33–100)"
+      ]
+    },
+    {
+      "text": "Minion deals (0–38)% more Damage",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Can use Items requiring up to Level (33–100)",
+      "values": [
+        "(33–100)"
+      ]
+    },
+    {
+      "text": "Minion deals (0–38)% more Damage",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "active skill minion from alternate gem index [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [28,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [3]",
+      "values": []
+    },
+    {
+      "text": "emerge speed +% [100]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "Can use Items requiring up to Level (33–100)",
+      "values": [
+        "(33–100)"
+      ]
+    },
+    {
+      "text": "Minion deals (0–68)% more Damage",
+      "values": [
+        "(0–68)"
+      ]
+    },
+    {
+      "text": "active skill minion from alternate gem index [1]",
+      "values": []
+    },
+    {
+      "text": "base display minion actor level [28,100]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [3]",
+      "values": []
+    },
+    {
+      "text": "emerge speed +% [100]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Minion Movement Speed",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Minion Movement Speed",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Minion Movement Speed",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

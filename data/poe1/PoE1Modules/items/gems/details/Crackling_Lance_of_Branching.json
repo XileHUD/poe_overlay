@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Crackling Lance of Branching",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Area, Damage, Lightning, Trappable, Mineable, Totemable, Triggerable, AreaSpell, Multicastable, CanRapidFire",
     "ActiveSkillsCode": "crackling_lance_alt_x"
@@ -331,5 +332,76 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Release a beam which deals lightning damage to enemies in a long area in front of you, and has several smaller beams branch off from it at an angle, hitting more enemies to the sides.",
+  "explicitMods": [
+    {
+      "text": "Deals (55–905) to (166–2715) Lightning Damage",
+      "values": [
+        "(55–905)",
+        "(166–2715)"
+      ]
+    },
+    {
+      "text": "50% increased branching angle",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Deals (55–905) to (166–2715) Lightning Damage",
+      "values": [
+        "(55–905)",
+        "(166–2715)"
+      ]
+    },
+    {
+      "text": "50% increased branching angle",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (55–5367) to (166–16100) Lightning Damage",
+      "values": [
+        "(55–5367)",
+        "(166–16100)"
+      ]
+    },
+    {
+      "text": "50% increased branching angle",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Area of Effect",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Area of Effect",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Area of Effect",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

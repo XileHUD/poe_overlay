@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Cyclone",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Rune Daggers, Warstaves",
     "TargetTypes": "Ground,",
     "Type": "Attack, Area, Melee, Movement, Channel",
@@ -252,5 +253,115 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Spin and attack in place, damaging nearby enemies and pulling others towards you. While using this skill, you cannot be stunned or knocked back. Cannot be supported by Ruthless.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Can't be Evaded",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "Knocks Enemies Back on Hit",
+      "values": []
+    },
+    {
+      "text": "Knockback direction is reversed",
+      "values": []
+    },
+    {
+      "text": "10% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "30% less Movement Speed",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "50% chance to gain a Frenzy Charge on Hit",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Knockback pushes Enemies away when Hit)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–5)% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "(0–5)% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

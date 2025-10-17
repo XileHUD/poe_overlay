@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Lightning Trap of Sparking",
     "TargetTypes": "Enemy",
     "Type": "Spell, Damage, Projectile, ProjectilesFromUser, Trapped, Mineable, Lightning",
     "ActiveSkillsCode": "lightning_trap_alt_x"
@@ -411,5 +412,211 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap that launches projectiles through the enemy that set it off, dealing lightning damage to them and subsequent targets.",
+  "explicitMods": [
+    {
+      "text": "Deals (19–791) to (56–2374) Lightning Damage",
+      "values": [
+        "(19–791)",
+        "(56–2374)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Fires 5 Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Chains +2 Times",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "20% chance to Shock enemies",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Projectiles can Chain when colliding with terrain",
+      "values": []
+    },
+    {
+      "text": "(80–118)% increased Critical Strike Chance against Shocked Enemies",
+      "values": [
+        "(80–118)"
+      ]
+    },
+    {
+      "text": "(0–19)% increased Effect of Shock",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Deals (19–791) to (56–2374) Lightning Damage",
+      "values": [
+        "(19–791)",
+        "(56–2374)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Fires 5 Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Chains +2 Times",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "20% chance to Shock enemies",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Projectiles can Chain when colliding with terrain",
+      "values": []
+    },
+    {
+      "text": "(80–118)% increased Critical Strike Chance against Shocked Enemies",
+      "values": [
+        "(80–118)"
+      ]
+    },
+    {
+      "text": "(0–19)% increased Effect of Shock",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (19–3872) to (56–11616) Lightning Damage",
+      "values": [
+        "(19–3872)",
+        "(56–11616)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Fires 5 Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Chains +2 Times",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "20% chance to Shock enemies",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Projectiles can Chain when colliding with terrain",
+      "values": []
+    },
+    {
+      "text": "(80–148)% increased Critical Strike Chance against Shocked Enemies",
+      "values": [
+        "(80–148)"
+      ]
+    },
+    {
+      "text": "(0–34)% increased Effect of Shock",
+      "values": [
+        "(0–34)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–15)% Chance for Trap to Trigger an additional time",
+      "values": [
+        "(0–15)"
+      ]
+    },
+    {
+      "text": "(0–15)% Chance for Trap to Trigger an additional time",
+      "values": [
+        "(0–15)"
+      ]
+    },
+    {
+      "text": "(0–15)% Chance for Trap to Trigger an additional time",
+      "values": [
+        "(0–15)"
+      ]
+    }
+  ]
 }

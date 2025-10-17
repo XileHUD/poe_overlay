@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "24",
+    "BaseType": "Haste",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Instant, AreaSpell, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -454,5 +455,75 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Casts an aura that increases the movement speed, attack speed and cast speed of you and your allies.",
+  "explicitMods": [
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (10–16)% increased Movement Speed",
+      "values": [
+        "(10–16)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (15–24)% increased Attack Speed",
+      "values": [
+        "(15–24)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (15–24)% increased Cast Speed",
+      "values": [
+        "(15–24)"
+      ]
+    },
+    {
+      "text": "+(0–1.9) metres to radius",
+      "values": [
+        "+(0–1.9)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (10–16)% increased Movement Speed",
+      "values": [
+        "(10–16)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (15–24)% increased Attack Speed",
+      "values": [
+        "(15–24)"
+      ]
+    },
+    {
+      "text": "You and nearby allies gain (15–24)% increased Cast Speed",
+      "values": [
+        "(15–24)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

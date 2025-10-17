@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Hit, Stun, Armour, Evasion, Distance",
     "DropLevel": "4",
+    "BaseType": "Shield Charge",
     "Class": "Skill Gems",
     "Weapon": "Shields",
     "TargetTypes": "Ground, Enemy,",
@@ -456,5 +457,107 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Charges at a targeted location or enemy, pushing away enemies in your path and repeatedly dealing off-hand damage in a small area in front of you. You deal damage in a larger area when you reach the target. The further you travel, the more damage you deal, and the greater your chance of stunning enemies.",
+  "explicitMods": [
+    {
+      "text": "(9–252) to (13–378) Base Off Hand Physical Damage",
+      "values": [
+        "(9–252)",
+        "(13–378)"
+      ]
+    },
+    {
+      "text": "(3–8) to (5–12) Added Physical Damage per 15 Armour or Evasion Rating on Shield",
+      "values": [
+        "(3–8)",
+        "(5–12)"
+      ]
+    },
+    {
+      "text": "100% more Damage with Hits at Maximum Charge Distance",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "75% increased Stun Threshold reduction on enemies at Maximum charge distance",
+      "values": [
+        "75"
+      ]
+    },
+    {
+      "text": "(90–109)% increased Movement Speed",
+      "values": [
+        "(90–109)"
+      ]
+    },
+    {
+      "text": "(9–252) to (13–378) Base Off Hand Physical Damage",
+      "values": [
+        "(9–252)",
+        "(13–378)"
+      ]
+    },
+    {
+      "text": "(3–8) to (5–12) Added Physical Damage per 15 Armour or Evasion Rating on Shield",
+      "values": [
+        "(3–8)",
+        "(5–12)"
+      ]
+    },
+    {
+      "text": "100% more Damage with Hits at Maximum Charge Distance",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "75% increased Stun Threshold reduction on enemies at Maximum charge distance",
+      "values": [
+        "75"
+      ]
+    },
+    {
+      "text": "(90–109)% increased Movement Speed",
+      "values": [
+        "(90–109)"
+      ]
+    },
+    {
+      "text": "attack is melee override [1]",
+      "values": []
+    },
+    {
+      "text": "ignores proximity shield [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "shield charge attack time +30% if no charge [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(The Stun Threshold determines how much Damage can Stun something)",
+    "(The Stun Threshold determines how much Damage can Stun something)",
+    "(The Stun Threshold determines how much Damage can Stun something)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Movement Speed",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Movement Speed",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

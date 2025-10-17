@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Immortal Call",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, Duration, Totemable, Triggerable, Instant, Guard, Cooldown",
     "ActiveSkillsCode": "immortal_call"
@@ -371,5 +372,123 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Discharges Endurance Charges, making the character unable to die or gain Vaal souls for a short time, proportional to how many endurance charges were expended.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 0.4 seconds",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "(100–157)% increased Buff Duration per Endurance Charge removed",
+      "values": [
+        "(100–157)"
+      ]
+    },
+    {
+      "text": "Buff expiry rate cannot be modified",
+      "values": []
+    },
+    {
+      "text": "Base duration is 0.4 seconds",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "(100–157)% increased Buff Duration per Endurance Charge removed",
+      "values": [
+        "(100–157)"
+      ]
+    },
+    {
+      "text": "Buff expiry rate cannot be modified",
+      "values": []
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "immortal call prevent all damage [1]",
+      "values": []
+    },
+    {
+      "text": "cannot_die",
+      "values": []
+    },
+    {
+      "text": "cannot_gain_souls",
+      "values": []
+    },
+    {
+      "text": "Base duration is 1 seconds",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "20% increased Buff Duration per Endurance Charge removed",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "This Skill's Cooldown does not recover during its effect",
+      "values": []
+    },
+    {
+      "text": "(25–42)% less Elemental Damage taken",
+      "values": [
+        "(25–42)"
+      ]
+    },
+    {
+      "text": "(25–42)% less Physical Damage taken",
+      "values": [
+        "(25–42)"
+      ]
+    },
+    {
+      "text": "15% less Physical Damage taken per Endurance Charge removed",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Skill Effect Duration",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Skill Effect Duration",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Kill, Freeze",
     "DropLevel": "31",
+    "BaseType": "Ice Bite Support",
     "Class": "Support Gems",
     "Icon": "K",
     "ItemType": "Metadata/Items/Gems/SupportGemFrenzyChargeOnSlayingFrozenEnemy",
@@ -413,5 +414,267 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill you use to hit enemies yourself. Cannot support skills used by totems, traps, or mines.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have 15% chance to Freeze",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Supported Skills have (50–69)% chance to gain a Frenzy Charge on Killing a Frozen Enemy",
+      "values": [
+        "(50–69)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (8–69) to (12–103) added Cold Damage",
+      "values": [
+        "(8–69)",
+        "(12–103)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (2–15) to (3–23) added Cold Damage per Frenzy Charge",
+      "values": [
+        "(2–15)",
+        "(3–23)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 15% chance to Freeze",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Supported Skills have (50–69)% chance to gain a Frenzy Charge on Killing a Frozen Enemy",
+      "values": [
+        "(50–69)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (8–69) to (12–103) added Cold Damage",
+      "values": [
+        "(8–69)",
+        "(12–103)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (2–15) to (3–23) added Cold Damage per Frenzy Charge",
+      "values": [
+        "(2–15)",
+        "(3–23)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Bonechill",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Hypothermia",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Cold Penetration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Added Cold Damage",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Inspiration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Elemental Penetration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Immolate",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Unbound Ailments",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Inspiration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Innervate",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Bonechill",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Hypothermia",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Cold Penetration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 1 Added Cold Damage",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Inspiration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 18 Ice Bite",
+      "values": [
+        "18"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 18 Innervate",
+      "values": [
+        "18"
+      ]
+    },
+    {
+      "text": "Grants Summon Harbinger of Storms Skill",
+      "values": []
+    },
+    {
+      "text": "+(100–150) to Evasion Rating",
+      "values": [
+        "+(100–150)"
+      ]
+    },
+    {
+      "text": "+(40–60) to maximum Energy Shield",
+      "values": [
+        "+(40–60)"
+      ]
+    },
+    {
+      "text": "+(60–80) to maximum Life",
+      "values": [
+        "+(60–80)"
+      ]
+    },
+    {
+      "text": "+(10–15)% to all Elemental Resistances",
+      "values": [
+        "+(10–15)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 18 Ice Bite",
+      "values": [
+        "18"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 18 Innervate",
+      "values": [
+        "18"
+      ]
+    },
+    {
+      "text": "Grants Summon Greater Harbinger of Storms Skill",
+      "values": []
+    },
+    {
+      "text": "+(100–150) to Evasion Rating",
+      "values": [
+        "+(100–150)"
+      ]
+    },
+    {
+      "text": "+(40–60) to maximum Energy Shield",
+      "values": [
+        "+(40–60)"
+      ]
+    },
+    {
+      "text": "+(60–80) to maximum Life",
+      "values": [
+        "+(60–80)"
+      ]
+    },
+    {
+      "text": "+(10–15)% to all Elemental Resistances",
+      "values": [
+        "+(10–15)"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–2)% increased Damage per Frenzy Charge",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–2)% increased Damage per Frenzy Charge",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

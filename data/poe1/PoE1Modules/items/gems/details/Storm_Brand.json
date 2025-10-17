@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit, Duration, Brand",
     "DropLevel": "12",
+    "BaseType": "Storm Brand",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, Lightning, Chains, Duration, Totemable, Trappable, Mineable, Triggerable, Multicastable, Brand, AreaSpell",
@@ -418,5 +419,133 @@
   "stats": [
     "Maximum Active Brands: All brands share a limit of three (3) active brand limit. This can be split between the two brand skills (2-1) or all of one type. Passive skills can increase the number of active brands that are allowed to be active at a time.",
     "Maximum Brand Attachment: By default, you may only have one brand of any kind attached to a single target at any time. Taking the Keystone Runebinder allows you to place a second brand on a single target. Like the Active Brand limit these brands may either be split (1-1) or both the same type of brand."
+  ],
+  "gemDescription": "Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, firing beams which deal damage to nearby enemies and those around them. The brand will detach if the enemy dies.",
+  "explicitMods": [
+    {
+      "text": "Deals (3–92) to (8–277) Lightning Damage",
+      "values": [
+        "(3–92)",
+        "(8–277)"
+      ]
+    },
+    {
+      "text": "Activates every 0.5 seconds while Attached",
+      "values": [
+        "0.5"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+      "values": []
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Can be Attached for a total Duration of 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Sends beams to 3 Enemies, including the Branded Enemy",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Deals (80–130)% more Damage with Hits against Branded Enemy",
+      "values": [
+        "(80–130)"
+      ]
+    },
+    {
+      "text": "Deals (3–92) to (8–277) Lightning Damage",
+      "values": [
+        "(3–92)",
+        "(8–277)"
+      ]
+    },
+    {
+      "text": "Activates every 0.5 seconds while Attached",
+      "values": [
+        "0.5"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+      "values": []
+    },
+    {
+      "text": "Can be Detached for a total Duration of 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Can be Attached for a total Duration of 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Sends beams to 3 Enemies, including the Branded Enemy",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Deals (80–130)% more Damage with Hits against Branded Enemy",
+      "values": [
+        "(80–130)"
+      ]
+    },
+    {
+      "text": "base number of sigils allowed per target [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "base_damage_taken_+%",
+      "values": []
+    },
+    {
+      "text": "branded_enemy_explode_for_25%_life_as_chaos_on_death_chance_%",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Sends beams to +(0–1) Enemy",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Sends beams to +(0–1) Enemy",
+      "values": [
+        "+(0–1)"
+      ]
+    }
   ]
 }

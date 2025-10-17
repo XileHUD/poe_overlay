@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Leech",
     "DropLevel": "31",
+    "BaseType": "Life Leech Support",
     "Class": "Support Gems",
     "Icon": "l",
     "ItemType": "Metadata/Items/Gems/SupportGemLifeLeech",
@@ -333,5 +334,70 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies, causing those hits to leech life based on damage dealt.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have (2–3.9)% of Damage Leeched as Life",
+      "values": [
+        "(2–3.9)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (2–3.9)% of Damage Leeched as Life",
+      "values": [
+        "(2–3.9)"
+      ]
+    },
+    {
+      "text": "Socketed Minion Gems are Supported by Level 16 Life Leech",
+      "values": [
+        "16"
+      ]
+    },
+    {
+      "text": "(150–200)% increased Energy Shield",
+      "values": [
+        "(150–200)"
+      ]
+    },
+    {
+      "text": "Minions cannot be Blinded",
+      "values": []
+    },
+    {
+      "text": "Minions have 15% chance to Blind Enemies on hit",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Found Magic Items drop Identified",
+      "values": []
+    },
+    {
+      "text": "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
+    "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage while Leeching Life",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Damage while Leeching Life",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

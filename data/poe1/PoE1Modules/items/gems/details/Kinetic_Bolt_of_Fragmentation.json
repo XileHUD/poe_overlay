@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Kinetic Bolt of Fragmentation",
     "Weapon": "Wands",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Attack, Projectile, ProjectilesFromUser, Trappable, Mineable, Totemable, RangedAttack, Triggerable",
@@ -292,5 +293,101 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fire a projectile from your wand that changes direction in a zig-zag pattern at regular intervals or when hitting enemies. Each time it changes direction, a secondary projectile breaks off, flying in the direction it changed away from. Multiple of these projectiles can hit the same target.",
+  "explicitMods": [
+    {
+      "text": "Projectile changes direction 2 times",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Fires 2 additional Projectiles",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Modifiers which would cause projectiles to Fork instead cause them to change direction additional times",
+      "values": []
+    },
+    {
+      "text": "Projectile changes direction 2 times",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Fires 2 additional Projectiles",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Modifiers which would cause projectiles to Fork instead cause them to change direction additional times",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "projectiles can shotgun [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "Projectile changes direction 2 times",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Fires 2 additional Projectiles",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Modifiers which would cause projectiles to Fork instead cause them to change direction additional times",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "projectiles can shotgun [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Projectile changes direction (0–1) times",
+      "values": [
+        "(0–1)"
+      ]
+    },
+    {
+      "text": "Projectile changes direction (0–1) times",
+      "values": [
+        "(0–1)"
+      ]
+    },
+    {
+      "text": "Projectile changes direction (0–1) times",
+      "values": [
+        "(0–1)"
+      ]
+    }
+  ]
 }

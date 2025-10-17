@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Aura, Curse",
     "DropLevel": "72",
+    "BaseType": "Awakened Generosity Support",
     "Class": "Support Gems",
     "Icon": "G",
     "ItemType": "Metadata/Items/Gems/SupportGemGenerosityPlus",
@@ -214,5 +215,55 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Supports aura skills that affect you and allies, increasing the aura's effect on allies, but preventing it from affecting you at all. Cannot support curse auras, or other auras that only affect enemies. Cannot support skills used by totems. Cannot modify the skills of minions.",
+  "explicitMods": [
+    {
+      "text": "+(0–1) to Level of Supported Aura Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Supported Auras do not affect you",
+      "values": []
+    },
+    {
+      "text": "Non-Curse Auras from Supported Skills have (40–44)% increased Effect",
+      "values": [
+        "(40–44)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Level of Supported Aura Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Supported Auras do not affect you",
+      "values": []
+    },
+    {
+      "text": "Non-Curse Auras from Supported Skills have (40–44)% increased Effect",
+      "values": [
+        "(40–44)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–40)% increased Aura Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–40)% increased Aura Area of Effect",
+      "values": [
+        "(0–40)"
+      ]
+    }
   ]
 }

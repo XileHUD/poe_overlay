@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Minion, Golem",
     "DropLevel": "34",
+    "BaseType": "Summon Carrion Golem",
     "Class": "Skill Gems",
     "TargetTypes": "Ground",
     "Type": "Triggerable, Physical, Mineable, Minion, MinionsCanExplode, Multicastable, Spell, Totemable, Trappable, Golem, CreatesMinion, Cooldown",
@@ -455,5 +456,173 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a Carrion Golem that grants added physical damage for your non-golem minions. The Carrion Golem attacks with a series of slashes that increase in speed and damage, as well as a cascade of bone spikes, and deals more damage for each of your non-golem minions near it.",
+  "explicitMods": [
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Golems deal 5% more Damage per Non-Golem Minion near them, up to 50%",
+      "values": [
+        "5",
+        "50"
+      ]
+    },
+    {
+      "text": "Golems grant (7–27) to (11–41) additional Physical Damage for Non-Golem Minions",
+      "values": [
+        "(7–27)",
+        "(11–41)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Golems deal 5% more Damage per Non-Golem Minion near them, up to 50%",
+      "values": [
+        "5",
+        "50"
+      ]
+    },
+    {
+      "text": "Golems grant (7–27) to (11–41) additional Physical Damage for Non-Golem Minions",
+      "values": [
+        "(7–27)",
+        "(11–41)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [34,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [7]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 60% more Attack Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "bone golem attack speed +% final after third combo index [200]",
+      "values": []
+    },
+    {
+      "text": "bone golem damage +% final after third combo index [20]",
+      "values": []
+    },
+    {
+      "text": "Deals 35% less Attack Damage",
+      "values": [
+        "35"
+      ]
+    },
+    {
+      "text": "+0.1 metres to radius",
+      "values": [
+        "+0.1"
+      ]
+    },
+    {
+      "text": "Causes +4 Bursts",
+      "values": [
+        "+4"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 125% more Attack Damage",
+      "values": [
+        "125"
+      ]
+    },
+    {
+      "text": "Base radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [30]",
+      "values": []
+    },
+    {
+      "text": "disable attack repeats [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "spell maximum action distance +% [-90]",
+      "values": []
+    },
+    {
+      "text": "Deals 130% more Attack Damage",
+      "values": [
+        "130"
+      ]
+    },
+    {
+      "text": "100% more Area of Effect",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Causes +4 Bursts",
+      "values": [
+        "+4"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Buff Effect",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Buff Effect",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

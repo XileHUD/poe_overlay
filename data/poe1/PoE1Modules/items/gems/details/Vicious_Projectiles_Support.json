@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Projectile",
     "DropLevel": "18",
+    "BaseType": "Vicious Projectiles Support",
     "Class": "Support Gems",
     "Icon": "d",
     "ItemType": "Metadata/Items/Gems/SupportGemPhysicalProjectileAttackDamage",
@@ -413,5 +414,71 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports projectile attack skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (30–49)% more Chaos Damage over Time",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (30–49)% more Physical Damage over Time",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (30–49)% more Physical Projectile Attack Damage",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 10% less Projectile Attack Speed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (30–49)% more Chaos Damage over Time",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (30–49)% more Physical Damage over Time",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (30–49)% more Physical Projectile Attack Damage",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 10% less Projectile Attack Speed",
+      "values": [
+        "10"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Physical Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Physical Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

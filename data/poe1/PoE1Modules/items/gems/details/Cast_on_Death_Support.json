@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Trigger, Minion",
     "DropLevel": "38",
+    "BaseType": "Cast on Death Support",
     "Class": "Support Gems",
     "Icon": "!",
     "ItemType": "Metadata/Items/Gems/SupportGemCastOnDeath",
@@ -387,5 +388,120 @@
     "Cast on Death Support",
     "Cast on Death Support",
     "Cast on Death Support is a Support gem. It causes linked spells to trigger when the player is killed. Note that this does not trigger on minion deaths."
+  ],
+  "gemDescription": "Each supported spell skill will be triggered when you die. Cannot support skills used by totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.",
+  "explicitMods": [
+    {
+      "text": "(0–152)% more Damage while Dead",
+      "values": [
+        "(0–152)"
+      ]
+    },
+    {
+      "text": "100% chance to Trigger Supported Non-Minion Spells on Death",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Supported Skills Cost nothing",
+      "values": []
+    },
+    {
+      "text": "(0–152)% more Damage while Dead",
+      "values": [
+        "(0–152)"
+      ]
+    },
+    {
+      "text": "100% chance to Trigger Supported Non-Minion Spells on Death",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Supported Skills Cost nothing",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "spell only castable on death [1]",
+      "values": []
+    },
+    {
+      "text": "spell uncastable if triggerable [1]",
+      "values": []
+    },
+    {
+      "text": "Socketed Gems are supported by Level 20 Cast on Death",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "+(10–15) to all Attributes",
+      "values": [
+        "+(10–15)"
+      ]
+    },
+    {
+      "text": "20% increased Damage when on Low Life",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(60–100)% increased Armour and Energy Shield",
+      "values": [
+        "(60–100)"
+      ]
+    },
+    {
+      "text": "+(50–70) to maximum Energy Shield",
+      "values": [
+        "+(50–70)"
+      ]
+    },
+    {
+      "text": "20% reduced Mana Regeneration Rate",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "+(43–61)% to Chaos Resistance",
+      "values": [
+        "+(43–61)"
+      ]
+    },
+    {
+      "text": "(You are on Low Life if you have 50% of your Maximum Life or less)",
+      "values": []
+    },
+    {
+      "text": "(Attributes are Strength, Dexterity, and Intelligence)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(You are on Low Life if you have 50% of your Maximum Life or less)",
+    "(Attributes are Strength, Dexterity, and Intelligence)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–60)% increased Area of Effect while Dead",
+      "values": [
+        "(0–60)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–60)% increased Area of Effect while Dead",
+      "values": [
+        "(0–60)"
+      ]
+    }
   ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Knockback, Stun, Exert, Slam, Melee, Warcry, Armour, Buff, Distance",
     "DropLevel": "16",
+    "BaseType": "Seismic Cry",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Buff, Area, Duration, Warcry, Cooldown",
@@ -415,5 +416,153 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Performs a warcry, taunting nearby enemies to attack the user and exerting subsequent slam attacks. The user and nearby allies gain a buff that increases their armour and stun threshold.",
+  "explicitMods": [
+    {
+      "text": "200% increased Knockback Distance",
+      "values": []
+    },
+    {
+      "text": "Base duration is (2.5–3.4) seconds",
+      "values": [
+        "(2.5–3.4)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Warcry Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Knocks back and Interrupts Enemies in a smaller Area",
+      "values": []
+    },
+    {
+      "text": "Buff grants 15% increased Stun Threshold per 5 Power, counting a maximum of 25 Power",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Buff grants 5% more Armour per 5 Power, counting a maximum of 25 Power",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Exerts the next 6 Melee Slam Attacks you perform",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Exerted Attacks have 50% more Area of Effect",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Counts total Power of Enemies in Range",
+      "values": []
+    },
+    {
+      "text": "200% increased Knockback Distance",
+      "values": []
+    },
+    {
+      "text": "Base duration is (2.5–3.4) seconds",
+      "values": [
+        "(2.5–3.4)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Warcry Speed",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Knocks back and Interrupts Enemies in a smaller Area",
+      "values": []
+    },
+    {
+      "text": "Buff grants 15% increased Stun Threshold per 5 Power, counting a maximum of 25 Power",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Buff grants 5% more Armour per 5 Power, counting a maximum of 25 Power",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Exerts the next 6 Melee Slam Attacks you perform",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Exerted Attacks have 50% more Area of Effect",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Counts total Power of Enemies in Range",
+      "values": []
+    },
+    {
+      "text": "base deal no attack damage [1]",
+      "values": []
+    },
+    {
+      "text": "base deal no secondary damage [1]",
+      "values": []
+    },
+    {
+      "text": "base deal no spell damage [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "stun_threshold_+%",
+      "values": []
+    },
+    {
+      "text": "armour_+%_final_from_seismic_cry_buff",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
+    "(The Stun Threshold determines how much Damage can Stun something)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
+    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
+    "(The Stun Threshold determines how much Damage can Stun something)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
+    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
+    "(The Stun Threshold determines how much Damage can Stun something)",
+    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

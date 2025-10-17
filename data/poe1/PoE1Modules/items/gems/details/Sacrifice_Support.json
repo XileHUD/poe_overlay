@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "DropLevel": "31",
+    "BaseType": "Sacrifice Support",
     "Class": "Support Gems",
     "Icon": "^",
     "ItemType": "Metadata/Items/Gems/SupportGemSacrifice",
@@ -332,5 +333,37 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports spell skills that hit enemies and have no reservation. Cannot support brand skills, orb skills, channelling skills, arcane skills, Vaal skills or skills used by traps or mines. Cannot modify the skills of minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Spells Sacrifice 20% of your current Life when Cast to gain added Chaos Damage equal to (35–54)% of Sacrificed Life",
+      "values": [
+        "20",
+        "(35–54)"
+      ]
+    },
+    {
+      "text": "Supported Spells Sacrifice 20% of your current Life when Cast to gain added Chaos Damage equal to (35–54)% of Sacrificed Life",
+      "values": [
+        "20",
+        "(35–54)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Chaos Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Chaos Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

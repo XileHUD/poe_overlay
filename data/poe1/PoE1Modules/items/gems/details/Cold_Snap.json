@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Chill, Modifiers",
     "DropLevel": "16",
+    "BaseType": "Cold Snap",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cold, Cascadable, Duration, ChillingArea, AreaSpell, Cooldown",
@@ -455,5 +456,143 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a sudden burst of cold in a targeted area, damaging enemies. Also creates an expanding area which is filled with chilled ground, and deals cold damage over time to enemies. Enemies that die while in the area have a chance to grant Frenzy Charges. The cooldown can be bypassed by expending a Frenzy Charge.",
+  "explicitMods": [
+    {
+      "text": "Deals (34–1717) to (51–2575) Cold Damage",
+      "values": [
+        "(34–1717)",
+        "(51–2575)"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Deals (28.6–2259.5) Base Cold Damage per second",
+      "values": [
+        "(28.6–2259.5)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Burst Base radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Chilled Ground Base final radius is 3 metres",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Chilled Ground Base initial radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "25% chance to gain a Frenzy Charge when an Enemy Dies while in this Skill's Area",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Deals (34–1717) to (51–2575) Cold Damage",
+      "values": [
+        "(34–1717)",
+        "(51–2575)"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Deals (28.6–2259.5) Base Cold Damage per second",
+      "values": [
+        "(28.6–2259.5)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Burst Base radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Chilled Ground Base final radius is 3 metres",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Chilled Ground Base initial radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "25% chance to gain a Frenzy Charge when an Enemy Dies while in this Skill's Area",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Cold Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Cold Snap grants Power Charges instead of Frenzy Charges when Enemies die in its AreaWith at least 40 Intelligence in Radius, Cold Snap's Cooldown can be bypassed by Power Charges instead of Frenzy Charges",
+      "values": []
+    },
+    {
+      "text": "buff_impl_stat",
+      "values": []
+    },
+    {
+      "text": "base_cold_damage_taken_per_minute",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Effect of Chill",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Effect of Chill",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

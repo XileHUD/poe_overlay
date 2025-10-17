@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Accuracy, Minion, Spectre, Resistance",
     "DropLevel": "28",
+    "BaseType": "Raise Spectre",
     "Class": "Skill Gems",
     "TargetTypes": "Corpse,",
     "Type": "Spell, Minion, MinionsCanExplode, Trappable, Totemable, Mineable, Multicastable, Triggerable, CanRapidFire, CreatesMinion",
@@ -495,5 +496,437 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Raises a spectral version of a defeated foe as a minion to fight for you in battle.",
+  "explicitMods": [
+    {
+      "text": "Maximum (1–2) Raised Spectre",
+      "values": [
+        "(1–2)"
+      ]
+    },
+    {
+      "text": "Minions have +30% to all Elemental Resistances",
+      "values": [
+        "+30"
+      ]
+    },
+    {
+      "text": "55% more Minion Movement Speed",
+      "values": [
+        "55"
+      ]
+    },
+    {
+      "text": "Minion Movement Speed is Capped",
+      "values": []
+    },
+    {
+      "text": "Raised Spectres are Level (28–70)",
+      "values": [
+        "(28–70)"
+      ]
+    },
+    {
+      "text": "Minions have (105–776) additional Accuracy Rating",
+      "values": [
+        "(105–776)"
+      ]
+    },
+    {
+      "text": "Maximum (1–2) Raised Spectre",
+      "values": [
+        "(1–2)"
+      ]
+    },
+    {
+      "text": "Minions have +30% to all Elemental Resistances",
+      "values": [
+        "+30"
+      ]
+    },
+    {
+      "text": "55% more Minion Movement Speed",
+      "values": [
+        "55"
+      ]
+    },
+    {
+      "text": "Minion Movement Speed is Capped",
+      "values": []
+    },
+    {
+      "text": "Raised Spectres are Level (28–70)",
+      "values": [
+        "(28–70)"
+      ]
+    },
+    {
+      "text": "Minions have (105–776) additional Accuracy Rating",
+      "values": [
+        "(105–776)"
+      ]
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "(180–220)% increased Energy Shield",
+      "values": [
+        "(180–220)"
+      ]
+    },
+    {
+      "text": "Raised Spectres have (50–100)% increased maximum Life",
+      "values": [
+        "(50–100)"
+      ]
+    },
+    {
+      "text": "Gain Arcane Surge when you deal a Critical Strike",
+      "values": []
+    },
+    {
+      "text": "Your Raised Spectres also gain Arcane Surge when you do",
+      "values": []
+    },
+    {
+      "text": "(50–100)% increased Spell Critical Strike Chance per Raised Spectre",
+      "values": [
+        "(50–100)"
+      ]
+    },
+    {
+      "text": "veiled mod seed [1,30000]",
+      "values": []
+    },
+    {
+      "text": "veiled mod type [4]",
+      "values": []
+    },
+    {
+      "text": "(Arcane Surge grants 20% increased Cast Speed and 30% increased Mana Regeneration rate, for 4 seconds)",
+      "values": []
+    },
+    {
+      "text": "(40–60)% increased Energy Shield",
+      "values": [
+        "(40–60)"
+      ]
+    },
+    {
+      "text": "+20 to maximum Life",
+      "values": [
+        "+20"
+      ]
+    },
+    {
+      "text": "+20 to maximum Mana",
+      "values": [
+        "+20"
+      ]
+    },
+    {
+      "text": "+1 to Level of all Raise Zombie Gems",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "+1 to Level of all Raise Spectre Gems",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "(5–15)% increased Movement Speed",
+      "values": [
+        "(5–15)"
+      ]
+    },
+    {
+      "text": "+2 to Level of Socketed Minion Gems",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "Minions deal (60–80)% increased Damage",
+      "values": [
+        "(60–80)"
+      ]
+    },
+    {
+      "text": "+1% Chance to Block Attack Damage per Summoned Skeleton",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "2% increased Attack and Cast Speed per Summoned Raging Spirit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Regenerate 0.6% of Life per second for each Raised Zombie",
+      "values": [
+        "0.6"
+      ]
+    },
+    {
+      "text": "30% increased Mana Regeneration Rate per Raised Spectre",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Cannot be used with Chaos Inoculation",
+      "values": []
+    },
+    {
+      "text": "+(10–20) to Intelligence",
+      "values": [
+        "+(10–20)"
+      ]
+    },
+    {
+      "text": "Minions have (20–30)% increased Movement Speed",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "Minions deal (50–70)% increased Damage",
+      "values": [
+        "(50–70)"
+      ]
+    },
+    {
+      "text": "+1 to maximum number of Raised Zombies",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "+1 to maximum number of Spectres",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "+1 to maximum number of Skeletons",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Reserves 30% of Life",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "25% increased Strength Requirement",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Minions have (30–40)% increased maximum Life",
+      "values": [
+        "(30–40)"
+      ]
+    },
+    {
+      "text": "(150–200)% increased Skeleton Duration",
+      "values": [
+        "(150–200)"
+      ]
+    },
+    {
+      "text": "Minions deal (30–40)% increased Damage",
+      "values": [
+        "(30–40)"
+      ]
+    },
+    {
+      "text": "+(1–2) to maximum number of Raised Zombies",
+      "values": [
+        "+(1–2)"
+      ]
+    },
+    {
+      "text": "+(1–2) to maximum number of Spectres",
+      "values": [
+        "+(1–2)"
+      ]
+    },
+    {
+      "text": "+(1–2) to maximum number of Skeletons",
+      "values": [
+        "+(1–2)"
+      ]
+    },
+    {
+      "text": "25% increased Strength Requirement",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Minions have (30–40)% increased maximum Life",
+      "values": [
+        "(30–40)"
+      ]
+    },
+    {
+      "text": "Minions have (80–100)% increased Movement Speed",
+      "values": [
+        "(80–100)"
+      ]
+    },
+    {
+      "text": "(150–200)% increased Skeleton Duration",
+      "values": [
+        "(150–200)"
+      ]
+    },
+    {
+      "text": "Minions deal (30–40)% increased Damage",
+      "values": [
+        "(30–40)"
+      ]
+    },
+    {
+      "text": "+(1–2) to maximum number of Raised Zombies",
+      "values": [
+        "+(1–2)"
+      ]
+    },
+    {
+      "text": "+(1–2) to maximum number of Spectres",
+      "values": [
+        "+(1–2)"
+      ]
+    },
+    {
+      "text": "+(1–2) to maximum number of Skeletons",
+      "values": [
+        "+(1–2)"
+      ]
+    },
+    {
+      "text": "+2 to maximum number of Spectres",
+      "values": [
+        "+2"
+      ]
+    },
+    {
+      "text": "(40–50)% reduced Mana Cost of Raise Spectre",
+      "values": [
+        "(40–50)"
+      ]
+    },
+    {
+      "text": "Raised Spectres have (800–1000)% increased Critical Strike Chance",
+      "values": [
+        "(800–1000)"
+      ]
+    },
+    {
+      "text": "Raised Spectres have a Base Duration of 20 secondsSpectres do not travel between Areas",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(8–12)% increased maximum Life",
+      "values": [
+        "(8–12)"
+      ]
+    },
+    {
+      "text": "Regenerate 2% of Life per second",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Flasks do not apply to you",
+      "values": []
+    },
+    {
+      "text": "Flasks you Use apply to your Raised Zombies and Spectres",
+      "values": []
+    },
+    {
+      "text": "Minions have (6–8)% increased Area of Effect",
+      "values": [
+        "(6–8)"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Raised Spectres have a 50% chance to gain Soul Eater for 20 seconds on Kill",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "(While you have Soul Eater, you consume the souls of anything killed nearby, gaining 5% increased Attack and Cast speed for each. You lose 1 soul every 0.5 seconds if you have not eaten any souls Recently. Maximum of 45 souls consumed)",
+      "values": []
+    },
+    {
+      "text": "Has 4 Abyssal Sockets",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "(120–150)% increased Energy Shield",
+      "values": [
+        "(120–150)"
+      ]
+    },
+    {
+      "text": "+(1–2) to Level of all Minion Skill Gems",
+      "values": [
+        "+(1–2)"
+      ]
+    },
+    {
+      "text": "+1 to maximum number of Raised Spectres per Socketed Ghastly Eye Jewel",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "You cannot have Non-Spectre Minions",
+      "values": []
+    },
+    {
+      "text": "(Only Abyss Jewels can be Socketed in Abyssal Sockets)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Arcane Surge grants 20% increased Cast Speed and 30% increased Mana Regeneration rate, for 4 seconds)",
+    "(While you have Soul Eater, you consume the souls of anything killed nearby, gaining 5% increased Attack and Cast speed for each. You lose 1 soul every 0.5 seconds if you have not eaten any souls Recently. Maximum of 45 souls consumed)",
+    "(Only Abyss Jewels can be Socketed in Abyssal Sockets)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Minions have +(0–20)% to all Elemental Resistances",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Minions have +(0–20)% to all Elemental Resistances",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

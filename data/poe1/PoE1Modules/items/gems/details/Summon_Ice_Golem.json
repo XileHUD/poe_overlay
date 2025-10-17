@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Accuracy, Golem",
     "DropLevel": "34",
+    "BaseType": "Summon Ice Golem",
     "Class": "Skill Gems",
     "TargetTypes": "Ground",
     "Type": "Triggerable, Cold, Mineable, Minion, MinionsCanExplode, Multicastable, Spell, Totemable, Trappable, Golem, CreatesMinion, Cooldown",
@@ -495,5 +496,166 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons an Ice Golem that grants you increased Critical Strike Chance and Accuracy. The Ice Golem can use an icy barrage spell and a chilling spinning attack in addition to its melee attack.",
+  "explicitMods": [
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Golems grant 40% increased Critical Strike Chance",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Golems grant +(132–420) to Accuracy Rating",
+      "values": [
+        "+(132–420)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Character Size",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Maximum 1 Summoned Golem",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Golems grant 40% increased Critical Strike Chance",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Golems grant +(132–420) to Accuracy Rating",
+      "values": [
+        "+(132–420)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [34,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [6]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "75% more Movement Speed",
+      "values": [
+        "75"
+      ]
+    },
+    {
+      "text": "cyclone extra distance [40]",
+      "values": []
+    },
+    {
+      "text": "cyclone places ground ice [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 499.5 to 749.2 Cold Damage",
+      "values": [
+        "499.5",
+        "749.2"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "monster reverse point blank damage -% at minimum range [25]",
+      "values": []
+    },
+    {
+      "text": "Deals 999 to 1498 Cold Damage",
+      "values": [
+        "999",
+        "1498"
+      ]
+    },
+    {
+      "text": "Fires 13 additional Projectiles",
+      "values": [
+        "13"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "monster reverse point blank damage -% at minimum range [25]",
+      "values": []
+    },
+    {
+      "text": "Deals 1205 to 1808 Cold Damage",
+      "values": [
+        "1205",
+        "1808"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Buff Effect",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Buff Effect",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

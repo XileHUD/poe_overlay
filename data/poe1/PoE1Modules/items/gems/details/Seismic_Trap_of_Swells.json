@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Seismic Trap of Swells",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Damage, Mineable, Area, Trapped, AreaSpell, Physical, Cooldown",
     "ActiveSkillsCode": "seismic_trap_alt_x"
@@ -331,5 +332,110 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap which, once triggered, releases a number of waves. Each wave deals damage in a series of small bursts in a line, ending with a larger burst.",
+  "explicitMods": [
+    {
+      "text": "Deals (81–1060) to (121–1589) Physical Damage",
+      "values": [
+        "(81–1060)",
+        "(121–1589)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Releases 3 waves",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Deals (81–1060) to (121–1589) Physical Damage",
+      "values": [
+        "(81–1060)",
+        "(121–1589)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Releases 3 waves",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (81–5368) to (121–8051) Physical Damage",
+      "values": [
+        "(81–5368)",
+        "(121–8051)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Releases 3 waves",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Releases +(0–1) wave",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Releases +(0–1) wave",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Releases +(0–1) wave",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

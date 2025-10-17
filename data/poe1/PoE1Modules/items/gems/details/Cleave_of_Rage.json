@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Cleave of Rage",
     "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, Area, Multistrikeable, Melee, ThresholdJewelArea, DualWieldOnly, DualWieldRequiresDifferentTypes",
@@ -292,5 +293,116 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "The character swings both their weapons in an arc, damaging monsters in an area in front of them. Requires dual wielding both an Axe and a Sword.",
+  "explicitMods": [
+    {
+      "text": "When Dual Wielding, Deals 60% Damage from each Weapon combined",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "+0.1 metres to Radius per 5 Rage",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Gain 2 Rage on Attack Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "When Dual Wielding, Deals 60% Damage from each Weapon combined",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "+0.1 metres to Radius per 5 Rage",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Gain 2 Rage on Attack Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill double hits when dual wielding [1]",
+      "values": []
+    },
+    {
+      "text": "When Dual Wielding, Deals 60% Damage from each Weapon combined",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "+0.1 metres to Radius per 5 Rage",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Gain 2 Rage on Attack Hit",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill double hits when dual wielding [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
+    "(Only one Hit every 0.5 seconds can cause you to gain Rage)",
+    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
+    "(Only one Hit every 0.5 seconds can cause you to gain Rage)",
+    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
+    "(Only one Hit every 0.5 seconds can cause you to gain Rage)",
+    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
+    "(Only one Hit every 0.5 seconds can cause you to gain Rage)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Gain (0–1) Rage on Attack Hit",
+      "values": [
+        "(0–1)"
+      ]
+    },
+    {
+      "text": "Gain (0–1) Rage on Attack Hit",
+      "values": [
+        "(0–1)"
+      ]
+    },
+    {
+      "text": "Gain (0–1) Rage on Attack Hit",
+      "values": [
+        "(0–1)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Cyclone of Tumult",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Rune Daggers, Warstaves",
     "TargetTypes": "Ground,",
     "Type": "Attack, Area, Melee, Movement, Channel",
@@ -292,5 +293,171 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back.",
+  "explicitMods": [
+    {
+      "text": "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "25% more Attack Speed per Stage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Gains 1 Stage every 0.4 seconds while Channelling",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "+0.1 metres to radius per Stage",
+      "values": [
+        "+0.1"
+      ]
+    },
+    {
+      "text": "10% less Movement Speed per Stage",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Lose 1 Stage every 0.4 seconds while not Channelling",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Maximum 5 Stages",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "25% more Attack Speed per Stage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Gains 1 Stage every 0.4 seconds while Channelling",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "+0.1 metres to radius per Stage",
+      "values": [
+        "+0.1"
+      ]
+    },
+    {
+      "text": "10% less Movement Speed per Stage",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Lose 1 Stage every 0.4 seconds while not Channelling",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Maximum 5 Stages",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "25% more Attack Speed per Stage",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Gains 1 Stage every 0.4 seconds while Channelling",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "+0.1 metres to radius per Stage",
+      "values": [
+        "+0.1"
+      ]
+    },
+    {
+      "text": "10% less Movement Speed per Stage",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Lose 1 Stage every 0.4 seconds while not Channelling",
+      "values": [
+        "0.4"
+      ]
+    },
+    {
+      "text": "Maximum 5 Stages",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–5)% more Attack Speed per Stage",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "(0–5)% more Attack Speed per Stage",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "(0–5)% more Attack Speed per Stage",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

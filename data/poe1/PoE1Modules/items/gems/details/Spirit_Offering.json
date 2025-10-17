@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Duration, Minion",
     "DropLevel": "12",
+    "BaseType": "Spirit Offering",
     "Class": "Skill Gems",
     "TargetTypes": "Corpse,",
     "Type": "Spell, Buff, Duration, Triggerable, Minion, Trappable, Mineable, Totemable, Offering",
@@ -455,5 +456,113 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Consumes a corpse, granting increased critical strike chance and additional critical strike multiplier to your minions. The skill consumes other nearby corpses, increasing the duration for each corpse consumed.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Additional 1 seconds Base Duration per extra corpse Consumed",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Grants Minions (110–148)% increased Critical Strike Chance",
+      "values": [
+        "(110–148)"
+      ]
+    },
+    {
+      "text": "Grants Minions +(30–39)% to Critical Strike Multiplier",
+      "values": [
+        "+(30–39)"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Additional 1 seconds Base Duration per extra corpse Consumed",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Grants Minions (110–148)% increased Critical Strike Chance",
+      "values": [
+        "(110–148)"
+      ]
+    },
+    {
+      "text": "Grants Minions +(30–39)% to Critical Strike Multiplier",
+      "values": [
+        "+(30–39)"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "Trigger Level 20 Bone Offering, Flesh Offering, Spirit Offering every 5 seconds in sequenceOffering Skills Triggered this way also affect you",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(100–130)% increased Energy Shield",
+      "values": [
+        "(100–130)"
+      ]
+    },
+    {
+      "text": "(6–10)% increased maximum Life",
+      "values": [
+        "(6–10)"
+      ]
+    },
+    {
+      "text": "buff impl stat [0]",
+      "values": []
+    },
+    {
+      "text": "veiled mod seed [2,60000]",
+      "values": []
+    },
+    {
+      "text": "veiled mod type [3]",
+      "values": []
+    },
+    {
+      "text": "base_critical_strike_multiplier_+",
+      "values": []
+    },
+    {
+      "text": "critical_strike_chance_+%",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Effect of Offering",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Effect of Offering",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

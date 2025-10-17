@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Chain, Block, Buff, Shock",
     "DropLevel": "16",
+    "BaseType": "Tempest Shield",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Damage, RequiresShield, TotemCastsAlone, Lightning, Chains, Buff, HasReservation, Cooldown, Totemable, Instant, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse",
@@ -415,5 +416,85 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Enchants your shield with the power of storms, which lashes out to deal arcing lightning damage to attackers when you block them.",
+  "explicitMods": [
+    {
+      "text": "Deals (38–896) to (115–2688) Lightning Damage",
+      "values": [
+        "(38–896)",
+        "(115–2688)"
+      ]
+    },
+    {
+      "text": "Chains +1 Times",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Buff grants +(18–25)% Chance to Block Spell Damage while holding a Shield",
+      "values": [
+        "+(18–25)"
+      ]
+    },
+    {
+      "text": "Buff grants Immunity to Shock",
+      "values": []
+    },
+    {
+      "text": "Deals (38–896) to (115–2688) Lightning Damage",
+      "values": [
+        "(38–896)",
+        "(115–2688)"
+      ]
+    },
+    {
+      "text": "Chains +1 Times",
+      "values": [
+        "+1"
+      ]
+    },
+    {
+      "text": "Buff grants +(18–25)% Chance to Block Spell Damage while holding a Shield",
+      "values": [
+        "+(18–25)"
+      ]
+    },
+    {
+      "text": "Buff grants Immunity to Shock",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "skill override pvp scaling time ms [700]",
+      "values": []
+    },
+    {
+      "text": "shield_spell_block_%",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% chance to Shock enemies",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% chance to Shock enemies",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Trap, Modifiers",
     "DropLevel": "10",
+    "BaseType": "Siphoning Trap",
     "Class": "Skill Gems",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Duration, Mineable, Area, Trapped, Cold, DamageOverTime, DegenOnlySpellDamage, NonHitChill, ElementalStatus, AreaSpell, Cooldown",
@@ -575,5 +576,167 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap that applies debuff beams to a number of nearby enemies for a duration. The beams chill enemies and deal cold damage over time. A beam is also applied to you, granting life and mana regeneration based on the number of debuff beams affecting enemies.",
+  "explicitMods": [
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Deals (16.5–908.2) Base Cold Damage per second",
+      "values": [
+        "(16.5–908.2)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Applies beams to the closest 10 Enemies",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Regenerate (12.7–324.4) Life per second while any Enemy is affected",
+      "values": [
+        "(12.7–324.4)"
+      ]
+    },
+    {
+      "text": "Regenerate (2.9–17.2) Mana per second while any Enemy is affected",
+      "values": [
+        "(2.9–17.2)"
+      ]
+    },
+    {
+      "text": "Regenerate (1.3–32.4) Life per second for each affected Enemy",
+      "values": [
+        "(1.3–32.4)"
+      ]
+    },
+    {
+      "text": "Regenerate (0.3–1.7) Mana per second for each affected Enemy",
+      "values": [
+        "(0.3–1.7)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is 3 seconds",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Deals (16.5–908.2) Base Cold Damage per second",
+      "values": [
+        "(16.5–908.2)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Applies beams to the closest 10 Enemies",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Regenerate (12.7–324.4) Life per second while any Enemy is affected",
+      "values": [
+        "(12.7–324.4)"
+      ]
+    },
+    {
+      "text": "Regenerate (2.9–17.2) Mana per second while any Enemy is affected",
+      "values": [
+        "(2.9–17.2)"
+      ]
+    },
+    {
+      "text": "Regenerate (1.3–32.4) Life per second for each affected Enemy",
+      "values": [
+        "(1.3–32.4)"
+      ]
+    },
+    {
+      "text": "Regenerate (0.3–1.7) Mana per second for each affected Enemy",
+      "values": [
+        "(0.3–1.7)"
+      ]
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base_cold_damage_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "base_cooldown_speed_+%",
+      "values": []
+    },
+    {
+      "text": "action_speed_+%_while_chilled",
+      "values": []
+    },
+    {
+      "text": "buff_impl_stat",
+      "values": []
+    },
+    {
+      "text": "base_life_regeneration_rate_per_minute",
+      "values": []
+    },
+    {
+      "text": "base_mana_regeneration_rate_per_minute",
+      "values": []
+    },
+    {
+      "text": "base_damage_taken_+%",
+      "values": []
+    },
+    {
+      "text": "base_energy_shield_regeneration_rate_per_minute_%",
+      "values": []
+    },
+    {
+      "text": "buff_impl_stat",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Applies beams to the closest +(0–4) Enemies",
+      "values": [
+        "+(0–4)"
+      ]
+    },
+    {
+      "text": "Applies beams to the closest +(0–4) Enemies",
+      "values": [
+        "+(0–4)"
+      ]
+    }
+  ]
 }

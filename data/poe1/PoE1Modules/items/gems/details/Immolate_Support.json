@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Burning",
     "DropLevel": "38",
+    "BaseType": "Immolate Support",
     "Class": "Support Gems",
     "Icon": "m",
     "ItemType": "Metadata/Items/Gems/SupportGemImmolate",
@@ -373,5 +374,73 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (42–205) to (63–308) added Fire Damage against Burning Enemies",
+      "values": [
+        "(42–205)",
+        "(63–308)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (42–205) to (63–308) added Fire Damage against Burning Enemies",
+      "values": [
+        "(42–205)",
+        "(63–308)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Elemental Penetration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Immolate",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Unbound Ailments",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Inspiration",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 15 Innervate",
+      "values": [
+        "15"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Fire Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Fire Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

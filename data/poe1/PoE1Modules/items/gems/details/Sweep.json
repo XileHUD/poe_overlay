@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit",
     "DropLevel": "12",
+    "BaseType": "Sweep",
     "Class": "Skill Gems",
     "Weapon": "Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Warstaves",
     "TargetTypes": "Ground, Enemy",
@@ -376,5 +377,55 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Swings a two handed melee weapon in a circle, knocking back monsters around the character.",
+  "explicitMods": [
+    {
+      "text": "Knocks Enemies Back on Hit",
+      "values": []
+    },
+    {
+      "text": "+(0–0.4) metres to radius",
+      "values": [
+        "+(0–0.4)"
+      ]
+    },
+    {
+      "text": "Knocks Enemies Back on Hit",
+      "values": []
+    },
+    {
+      "text": "+(0–0.4) metres to radius",
+      "values": [
+        "+(0–0.4)"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Knockback pushes Enemies away when Hit)",
+    "(Knockback pushes Enemies away when Hit)",
+    "(Knockback pushes Enemies away when Hit)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–0.4) metres to radius",
+      "values": [
+        "+(0–0.4)"
+      ]
+    },
+    {
+      "text": "+(0–0.4) metres to radius",
+      "values": [
+        "+(0–0.4)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Buff, Shock",
     "DropLevel": "16",
+    "BaseType": "Galvanic Field",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Damage, Area, Buff, Duration, Lightning, Chains, Orb, Triggerable",
@@ -455,5 +456,149 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Applies a buff boosting chance to shock. When you shock an enemy while you have this buff, creates a spherical field of energy attached to the shocked enemy for a duration, which will damage it and other nearby enemies with beams of lightning. The strength of the field depends on the magnitude of shock affecting the enemy when it is created.",
+  "explicitMods": [
+    {
+      "text": "Deals (1–56) to (23–1067) Lightning Damage",
+      "values": [
+        "(1–56)",
+        "(23–1067)"
+      ]
+    },
+    {
+      "text": "Cannot inflict Shock",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Fires a beam every 0.1 seconds",
+      "values": [
+        "0.1"
+      ]
+    },
+    {
+      "text": "Can target each enemy only once every (0.5–0.7) seconds",
+      "values": [
+        "(0.5–0.7)"
+      ]
+    },
+    {
+      "text": "Field gains (10–15)% more Damage with Hits per 5% Shock Effect on Enemy when created",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "Field gains +0.1 metres to radius per 10% Shock Effect on Enemy when created",
+      "values": [
+        "+0.1"
+      ]
+    },
+    {
+      "text": "Maximum 1 Field",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Buff Grants 20% chance to Shock enemies",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Deals (1–56) to (23–1067) Lightning Damage",
+      "values": [
+        "(1–56)",
+        "(23–1067)"
+      ]
+    },
+    {
+      "text": "Cannot inflict Shock",
+      "values": []
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Fires a beam every 0.1 seconds",
+      "values": [
+        "0.1"
+      ]
+    },
+    {
+      "text": "Can target each enemy only once every (0.5–0.7) seconds",
+      "values": [
+        "(0.5–0.7)"
+      ]
+    },
+    {
+      "text": "Field gains (10–15)% more Damage with Hits per 5% Shock Effect on Enemy when created",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "Field gains +0.1 metres to radius per 10% Shock Effect on Enemy when created",
+      "values": [
+        "+0.1"
+      ]
+    },
+    {
+      "text": "Maximum 1 Field",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Buff Grants 20% chance to Shock enemies",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "skill can add multiple charges per action [1]",
+      "values": []
+    },
+    {
+      "text": "shock_duration_+%",
+      "values": []
+    },
+    {
+      "text": "base_chance_to_shock_%",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
+    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Buff grants +(0–20)% chance to Shock enemies",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "Buff grants +(0–20)% chance to Shock enemies",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

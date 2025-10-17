@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Kill, Melee, Trigger",
     "DropLevel": "38",
+    "BaseType": "Cast on Melee Kill Support",
     "Class": "Support Gems",
     "Icon": "&",
     "ItemType": "Metadata/Items/Gems/SupportGemCastOnKill",
@@ -391,5 +392,67 @@
     "Cast on Melee Kill Support",
     "Cast on Melee Kill Support",
     "Cast on Melee Kill Support is a Support gem. It causes linked Spell to trigger when the player kills an enemy with the melee Attack portion of a supported melee skill."
+  ],
+  "gemDescription": "Must support both a melee attack skill and a spell skill to work. The attack skill will trigger a spell when it kills an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.",
+  "explicitMods": [
+    {
+      "text": "Supported Melee Attacks will Trigger a Supported Spell on Kill",
+      "values": []
+    },
+    {
+      "text": "Supported Spells have (20–39)% more Spell Damage",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "Supported Melee Attacks will Trigger a Supported Spell on Kill",
+      "values": []
+    },
+    {
+      "text": "Supported Spells have (20–39)% more Spell Damage",
+      "values": [
+        "(20–39)"
+      ]
+    },
+    {
+      "text": "cast spell on linked melee kill [1]",
+      "values": []
+    },
+    {
+      "text": "spell uncastable if triggerable [1]",
+      "values": []
+    },
+    {
+      "text": "triggered skill uses main hand or averaged attack time for pvp scaling [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Attack Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Attack Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Spell Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

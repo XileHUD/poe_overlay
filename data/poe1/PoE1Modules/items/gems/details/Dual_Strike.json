@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Hit, Ailment",
+    "BaseType": "Dual Strike",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Two Hand Axes, Sceptres, Rune Daggers",
     "TargetTypes": "Ground, Enemy",
@@ -375,5 +376,89 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Attacks with both weapons, dealing the damage of both in one strike. Dual wield only. Does not work with wands.",
+  "explicitMods": [
+    {
+      "text": "100% more Critical Strike Chance against Enemies that are on Full Life",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "60% more Damage with Hits and Ailments against Enemies that are on Full Life",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "100% more Critical Strike Chance against Enemies that are on Full Life",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "60% more Damage with Hits and Ailments against Enemies that are on Full Life",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "skill double hits when dual wielding [1]",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Attack Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, Dual Strike has (20–30)% increasedAccuracy Rating while wielding a Sword",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, Dual Strike has (10–15)% increased AttackSpeed while wielding a Claw",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, Dual Strike has +(20–30)% to Critical StrikeMultiplier while wielding a Dagger",
+      "values": [
+        "+(20–30)"
+      ]
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, Dual Strike Hits Intimidate Enemies for4 seconds while wielding an Axe",
+      "values": []
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, Dual Strike deals Splash Damageto surrounding targets while wielding a Mace",
+      "values": []
+    },
+    {
+      "text": "(Intimidated enemies take 10% increased Attack Damage)",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Intimidated enemies take 10% increased Attack Damage)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–30)% more Damage with Hits and Ailments against Enemies that are on Full Life",
+      "values": [
+        "+(0–30)"
+      ]
+    },
+    {
+      "text": "+(0–30)% more Damage with Hits and Ailments against Enemies that are on Full Life",
+      "values": [
+        "+(0–30)"
+      ]
+    }
+  ]
 }

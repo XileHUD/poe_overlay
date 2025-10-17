@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "18",
+    "BaseType": "Increased Critical Damage Support",
     "Class": "Support Gems",
     "Icon": "c",
     "ItemType": "Metadata/Items/Gems/SupportGemIncreasedCriticalDamage",
@@ -332,5 +333,35 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills have +(100–138)% to Critical Strike Multiplier",
+      "values": [
+        "+(100–138)"
+      ]
+    },
+    {
+      "text": "Supported Skills have +(100–138)% to Critical Strike Multiplier",
+      "values": [
+        "+(100–138)"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have +(0–10)% to Critical Strike Multiplier",
+      "values": [
+        "+(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have +(0–10)% to Critical Strike Multiplier",
+      "values": [
+        "+(0–10)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Shockwave",
     "Weapon": "One Hand Maces, Staves, Two Hand Maces, Sceptres, Warstaves",
     "TargetTypes": "Enemy, Ground",
     "Type": "Attack, Area, Damage, Triggerable, Triggered, Melee, SkillGrantedBySupport",
@@ -332,5 +333,113 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports melee attack skills. Cannot support triggered attacks, attacks used by things other than you, or skills which create minions.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills will Trigger Shockwave on Melee Hit",
+      "values": []
+    },
+    {
+      "text": "Supported Skills can only be used with Maces, Sceptres or Staves",
+      "values": []
+    },
+    {
+      "text": "+(0–0.3) metres to radius",
+      "values": [
+        "+(0–0.3)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Supported Skills will Trigger Shockwave on Melee Hit",
+      "values": []
+    },
+    {
+      "text": "Supported Skills can only be used with Maces, Sceptres or Staves",
+      "values": []
+    },
+    {
+      "text": "+(0–0.3) metres to radius",
+      "values": [
+        "+(0–0.3)"
+      ]
+    },
+    {
+      "text": "(0–38)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "triggered by shockwave support [1]",
+      "values": []
+    },
+    {
+      "text": "+(0–0.7) metres to radius",
+      "values": [
+        "+(0–0.7)"
+      ]
+    },
+    {
+      "text": "(0–68)% increased Cooldown Recovery Rate",
+      "values": [
+        "(0–68)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "triggered by shockwave support [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Warstaves are considered Staves)",
+    "(Warstaves are considered Staves)",
+    "(Warstaves are considered Staves)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Melee Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Melee Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Melee Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Melee Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Melee Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Duration, Link, Chill, Modifiers",
     "DropLevel": "38",
+    "BaseType": "Frigid Bond Support",
     "Class": "Support Gems",
     "Icon": "f",
     "ItemType": "Metadata/Items/Gems/SupportGemFrigidBond",
@@ -333,5 +334,70 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports link skills.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills Damage and Chill Enemies between you and Linked Targets",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (355.9–3566.4) Base Cold Damage per second",
+      "values": [
+        "(355.9–3566.4)"
+      ]
+    },
+    {
+      "text": "Damage and Chill Linger for a Base Duration of 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to Supported Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Supported Skills Damage and Chill Enemies between you and Linked Targets",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (355.9–3566.4) Base Cold Damage per second",
+      "values": [
+        "(355.9–3566.4)"
+      ]
+    },
+    {
+      "text": "Damage and Chill Linger for a Base Duration of 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to Supported Skill's Damage Over Time effect",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(The effects still apply to enemies after leaving the link)",
+    "(Chill reduces Enemy Action Speed by 10%)",
+    "(The effects still apply to enemies after leaving the link)",
+    "(Chill reduces Enemy Action Speed by 10%)",
+    "(The effects still apply to enemies after leaving the link)",
+    "(Chill reduces Enemy Action Speed by 10%)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Damage and Chill Linger for a Base Duration of +(0–2) seconds",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Damage and Chill Linger for a Base Duration of +(0–2) seconds",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

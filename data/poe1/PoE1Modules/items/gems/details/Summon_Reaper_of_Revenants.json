@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Summon Reaper of Revenants",
     "TargetTypes": "Enemy, Ground,",
     "Type": "Triggerable, Mineable, Minion, MinionsCanExplode, Spell, Totemable, Trappable, CreatesMinion, Multicastable, CanRapidFire",
     "MinionType": "Attack, Melee, Damage, Area, Movement, Multistrikeable, Duration",
@@ -412,5 +413,143 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a Reaper which uses a variety of slashing area attacks. The presence of any Reapers weakens your other non-Reaper minions, and Reapers will consume them to temporarily empower and heal themselves.",
+  "explicitMods": [
+    {
+      "text": "25% reduced Character Size",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Maximum (3–4) Summoned Reapers",
+      "values": [
+        "(3–4)"
+      ]
+    },
+    {
+      "text": "Minions deal 30% less Damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Reapers cause your Non-Reaper Minions to deal (20–29)% less Damage",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "Reapers cause your Non-Reaper Minions to have (20–29)% less Maximum Life",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "25% reduced Character Size",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Maximum (3–4) Summoned Reapers",
+      "values": [
+        "(3–4)"
+      ]
+    },
+    {
+      "text": "Minions deal 30% less Damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Reapers cause your Non-Reaper Minions to deal (20–29)% less Damage",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "Reapers cause your Non-Reaper Minions to have (20–29)% less Maximum Life",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [28,70]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [18]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    },
+    {
+      "text": "25% reduced Character Size",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Maximum (3–5) Summoned Reapers",
+      "values": [
+        "(3–5)"
+      ]
+    },
+    {
+      "text": "Minions deal 30% less Damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Reapers cause your Non-Reaper Minions to deal (20–37)% less Damage",
+      "values": [
+        "(20–37)"
+      ]
+    },
+    {
+      "text": "Reapers cause your Non-Reaper Minions to have (20–37)% less Maximum Life",
+      "values": [
+        "(20–37)"
+      ]
+    },
+    {
+      "text": "base display minion actor level [28,100]",
+      "values": []
+    },
+    {
+      "text": "display minion monster type [18]",
+      "values": []
+    },
+    {
+      "text": "infinite minion duration [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–40)% increased Minion Movement Speed",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Minion Movement Speed",
+      "values": [
+        "(0–40)"
+      ]
+    },
+    {
+      "text": "(0–40)% increased Minion Movement Speed",
+      "values": [
+        "(0–40)"
+      ]
+    }
+  ]
 }

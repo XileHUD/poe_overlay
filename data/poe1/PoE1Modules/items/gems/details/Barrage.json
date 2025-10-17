@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Projectile",
     "DropLevel": "12",
+    "BaseType": "Barrage",
     "Class": "Skill Gems",
     "Weapon": "Wands, Bows",
     "TargetTypes": "Ground, Enemy",
@@ -336,5 +337,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "After a short preparation time, you fire individual projectiles repeatedly with a Bow or Wand. These projectiles have a small randomised spread. This skill cannot be Triggered.",
+  "explicitMods": [
+    {
+      "text": "Fires 5 Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Fires Projectiles sequentially",
+      "values": []
+    },
+    {
+      "text": "Fires 5 Projectiles",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Fires Projectiles sequentially",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "(7–10)% increased Projectile Damage",
+      "values": [
+        "(7–10)"
+      ]
+    },
+    {
+      "text": "With at least 40 Dexterity in Radius, Barrage fires an additional 6 projectiles simultaneously on the first and final attacks",
+      "values": [
+        "6"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–1) Projectile",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Fires +(0–1) Projectile",
+      "values": [
+        "+(0–1)"
+      ]
+    }
+  ]
 }

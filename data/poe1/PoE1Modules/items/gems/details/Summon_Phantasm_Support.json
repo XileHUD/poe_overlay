@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Hit, Kill, Minion, Phantasm",
     "DropLevel": "4",
+    "BaseType": "Summon Phantasm Support",
     "Class": "Support Gems",
     "Icon": "G",
     "ItemType": "Metadata/Items/Gems/SupportGemSummonGhostOnKill",
@@ -415,5 +416,121 @@
   "description": "This support gem has an interesting interaction with Soulwrest, increasing the limit of summoned phantasms. However, Soulwrest phantasms come from a trigger effect and therefore can not be supported by Spell Echo Support.",
   "stats": [
     "This support gem has an interesting interaction with Soulwrest, increasing the limit of summoned phantasms. However, Soulwrest phantasms come from a trigger effect and therefore can not be supported by Spell Echo Support."
+  ],
+  "gemDescription": "Supports skills that can hit enemies, or create minions. When those skills or minions kill enemies, or hit rare or unique enemies they will have a chance to summon a Phantasm minion, which uses a piercing projectile spell that deals physical damage.",
+  "explicitMods": [
+    {
+      "text": "(50–69)% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow",
+      "values": [
+        "(50–69)"
+      ]
+    },
+    {
+      "text": "Maximum (5–10) Summoned Phantasm",
+      "values": [
+        "(5–10)"
+      ]
+    },
+    {
+      "text": "20% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, Hit a Rare or Unique Enemy",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Phantasms last 15 seconds",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "(50–69)% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow",
+      "values": [
+        "(50–69)"
+      ]
+    },
+    {
+      "text": "Maximum (5–10) Summoned Phantasm",
+      "values": [
+        "(5–10)"
+      ]
+    },
+    {
+      "text": "20% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, Hit a Rare or Unique Enemy",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Phantasms last 15 seconds",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "phantasm maximum added physical damage to grant [3,65]",
+      "values": []
+    },
+    {
+      "text": "phantasm minimum added physical damage to grant [2,42]",
+      "values": []
+    },
+    {
+      "text": "skill can own support ghosts [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 547.3 to 820.9 Physical Damage",
+      "values": [
+        "547.3",
+        "820.9"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "Deals 547.3 to 820.9 Physical Damage",
+      "values": [
+        "547.3",
+        "820.9"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% chance to Summon a Phantasm when Supported Skills, or Non-Phantasm Minionsfrom Supported Skills, deal a Killing Blow",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

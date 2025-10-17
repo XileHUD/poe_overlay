@@ -4,6 +4,7 @@
   "metadata": {
     "Acronym": "Hexproof, Hit, Duration, Curse, Hex",
     "DropLevel": "72",
+    "BaseType": "Awakened Hextouch Support",
     "Class": "Support Gems",
     "Icon": "&",
     "ItemType": "Metadata/Items/Gems/SupportGemCurseOnHitPlus",
@@ -214,5 +215,91 @@
   "description": "This item can be acquired from the following monsters:",
   "stats": [
     "This item can be acquired from the following monsters:"
+  ],
+  "gemDescription": "Must support both a skill that hits enemies, and a hex curse skill to work. The hex will be applied when enemies are hit by the other skill. Cannot support totems, traps, or mines. Minions cannot apply hexes this way.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills apply supported Curses on Hit",
+      "values": []
+    },
+    {
+      "text": "You cannot Cast Supported Curse Spells",
+      "values": []
+    },
+    {
+      "text": "35% less Effect of Supported Curses",
+      "values": [
+        "35"
+      ]
+    },
+    {
+      "text": "Supported Skills have (26–30)% reduced Curse Duration",
+      "values": [
+        "(26–30)"
+      ]
+    },
+    {
+      "text": "Hexes applied by Supported Curse Skills have (10–18)% chance to affect Hexproof Enemies",
+      "values": [
+        "(10–18)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Level of Supported Curse Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "Supported Skills apply supported Curses on Hit",
+      "values": []
+    },
+    {
+      "text": "You cannot Cast Supported Curse Spells",
+      "values": []
+    },
+    {
+      "text": "35% less Effect of Supported Curses",
+      "values": [
+        "35"
+      ]
+    },
+    {
+      "text": "Supported Skills have (26–30)% reduced Curse Duration",
+      "values": [
+        "(26–30)"
+      ]
+    },
+    {
+      "text": "Hexes applied by Supported Curse Skills have (10–18)% chance to affect Hexproof Enemies",
+      "values": [
+        "(10–18)"
+      ]
+    },
+    {
+      "text": "+(0–1) to Level of Supported Curse Skill Gems",
+      "values": [
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "curse triggered by hextouch [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–10)% increased Curse Duration",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–10)% increased Curse Duration",
+      "values": [
+        "(0–10)"
+      ]
+    }
   ]
 }

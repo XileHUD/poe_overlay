@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Discharge of Misery",
     "TargetTypes": "Any",
     "Type": "Spell, Damage, Area, Multicastable, Triggerable, Fire, Cold, Lightning, CanRapidFire, AreaSpell, Nova",
     "ActiveSkillsCode": "discharge_alt_x"
@@ -411,5 +412,136 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Discharge all the character's charges to deal elemental damage to all nearby monsters.",
+  "explicitMods": [
+    {
+      "text": "Deals (25–234) to (75–701) base Lightning Damage per Power Charge removed",
+      "values": [
+        "(25–234)",
+        "(75–701)"
+      ]
+    },
+    {
+      "text": "Deals (40–374) to (60–561) base Fire Damage per Endurance Charge removed",
+      "values": [
+        "(40–374)",
+        "(60–561)"
+      ]
+    },
+    {
+      "text": "Deals (40–374) to (60–561) base Cold Damage per Frenzy Charge removed",
+      "values": [
+        "(40–374)",
+        "(60–561)"
+      ]
+    },
+    {
+      "text": "Base radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "20% more Area of Effect per Charge removed",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Deals (25–234) to (75–701) base Lightning Damage per Power Charge removed",
+      "values": [
+        "(25–234)",
+        "(75–701)"
+      ]
+    },
+    {
+      "text": "Deals (40–374) to (60–561) base Fire Damage per Endurance Charge removed",
+      "values": [
+        "(40–374)",
+        "(60–561)"
+      ]
+    },
+    {
+      "text": "Deals (40–374) to (60–561) base Cold Damage per Frenzy Charge removed",
+      "values": [
+        "(40–374)",
+        "(60–561)"
+      ]
+    },
+    {
+      "text": "Base radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "20% more Area of Effect per Charge removed",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (25–929) to (75–2786) base Lightning Damage per Power Charge removed",
+      "values": [
+        "(25–929)",
+        "(75–2786)"
+      ]
+    },
+    {
+      "text": "Deals (40–1486) to (60–2228) base Fire Damage per Endurance Charge removed",
+      "values": [
+        "(40–1486)",
+        "(60–2228)"
+      ]
+    },
+    {
+      "text": "Deals (40–1486) to (60–2228) base Cold Damage per Frenzy Charge removed",
+      "values": [
+        "(40–1486)",
+        "(60–2228)"
+      ]
+    },
+    {
+      "text": "Base radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "20% more Area of Effect per Charge removed",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–10)% chance to deal Damage without removing Charges",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% chance to deal Damage without removing Charges",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% chance to deal Damage without removing Charges",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

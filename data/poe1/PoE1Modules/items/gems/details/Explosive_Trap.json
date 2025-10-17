@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Trap",
+    "BaseType": "Explosive Trap",
     "Class": "Skill Gems",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Damage, Mineable, Area, Trapped, Fire, AreaSpell, Physical",
@@ -574,5 +575,121 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap that creates an explosion when triggered, dealing spell damage in an area around it. A number of smaller explosions occur within a secondary area around the trap in quick succession after the first.",
+  "explicitMods": [
+    {
+      "text": "Deals (4–437) to (6–655) Physical Damage",
+      "values": [
+        "(4–437)",
+        "(6–655)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base explosion radius is (1.2–1.8) metres",
+      "values": [
+        "(1.2–1.8)"
+      ]
+    },
+    {
+      "text": "Base smaller explosion radius is (0.7–1.3) metres",
+      "values": [
+        "(0.7–1.3)"
+      ]
+    },
+    {
+      "text": "Base secondary radius is (1.2–1.8) metres",
+      "values": [
+        "(1.2–1.8)"
+      ]
+    },
+    {
+      "text": "Causes (3–7) smaller explosionsSmaller explosions have between 30% reduced and 30% increased base radius at random",
+      "values": [
+        "(3–7)"
+      ]
+    },
+    {
+      "text": "Deals (4–437) to (6–655) Physical Damage",
+      "values": [
+        "(4–437)",
+        "(6–655)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base explosion radius is (1.2–1.8) metres",
+      "values": [
+        "(1.2–1.8)"
+      ]
+    },
+    {
+      "text": "Base smaller explosion radius is (0.7–1.3) metres",
+      "values": [
+        "(0.7–1.3)"
+      ]
+    },
+    {
+      "text": "Base secondary radius is (1.2–1.8) metres",
+      "values": [
+        "(1.2–1.8)"
+      ]
+    },
+    {
+      "text": "Causes (3–7) smaller explosionsSmaller explosions have between 30% reduced and 30% increased base radius at random",
+      "values": [
+        "(3–7)"
+      ]
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Causes +(0–2) smaller explosions",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Causes +(0–2) smaller explosions",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Cold Snap",
     "TargetTypes": "Ground, Enemy,",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cold, Cascadable, Duration, ChillingArea, AreaSpell, Cooldown",
     "ActiveSkillsCode": "cold_snap"
@@ -411,5 +412,204 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a sudden burst of cold around you, damaging enemies. This also creates a chilling area around you which expands and deals cold damage over time to surrounding enemies in addition to chilling them. Enemies that die while in the area grant Frenzy Charges, and you will passively gain Frenzy Charges while there are enemies in the area.",
+  "explicitMods": [
+    {
+      "text": "Deals (45–1872) to (68–2807) Cold Damage",
+      "values": [
+        "(45–1872)",
+        "(68–2807)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (37.6–2924.2) Base Cold Damage per second",
+      "values": [
+        "(37.6–2924.2)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Always Freezes enemies",
+      "values": []
+    },
+    {
+      "text": "Base radius is 3.2 metres",
+      "values": [
+        "3.2"
+      ]
+    },
+    {
+      "text": "Base tertiary radius is 3.6 metres",
+      "values": [
+        "3.6"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Gain a Frenzy Charge when an Enemy Dies while in this Skill's AreaEvery second, gain a Frenzy Charge if an Enemy is in this Skill's Area",
+      "values": []
+    },
+    {
+      "text": "Deals (45–1872) to (68–2807) Cold Damage",
+      "values": [
+        "(45–1872)",
+        "(68–2807)"
+      ]
+    },
+    {
+      "text": "Base duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (37.6–2924.2) Base Cold Damage per second",
+      "values": [
+        "(37.6–2924.2)"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "Always Freezes enemies",
+      "values": []
+    },
+    {
+      "text": "Base radius is 3.2 metres",
+      "values": [
+        "3.2"
+      ]
+    },
+    {
+      "text": "Base tertiary radius is 3.6 metres",
+      "values": [
+        "3.6"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 2 metres",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Gain a Frenzy Charge when an Enemy Dies while in this Skill's AreaEvery second, gain a Frenzy Charge if an Enemy is in this Skill's Area",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "buff_impl_stat",
+      "values": []
+    },
+    {
+      "text": "Deals 1 to 1 Cold Damage",
+      "values": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "text": "Base duration is 7 seconds",
+      "values": [
+        "7"
+      ]
+    },
+    {
+      "text": "Deals (57–997.4) Base Cold Damage per second",
+      "values": [
+        "(57–997.4)"
+      ]
+    },
+    {
+      "text": "200% more Effect of Chill",
+      "values": [
+        "200"
+      ]
+    },
+    {
+      "text": "Base radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Base tertiary radius is 3 metres",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "active skill area of effect radius +% final [-50]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Effect of Chill",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Effect of Chill",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

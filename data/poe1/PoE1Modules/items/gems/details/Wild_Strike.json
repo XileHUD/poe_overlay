@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Projectile, Pierce, Chain",
     "DropLevel": "28",
+    "BaseType": "Wild Strike",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
@@ -456,5 +457,133 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Your melee weapon strikes enemies, converting physical damage to a random element. Then, depending on the element chosen, it releases a fiery explosion, an arcing bolt of lightning, or an icy wave. It will avoid choosing the same element twice in a row.",
+  "explicitMods": [
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Beams Chain (4–7) Times",
+      "values": [
+        "(4–7)"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "(0–19)% increased Area of Effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire, Cold or Lightning Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Beams Chain (4–7) Times",
+      "values": [
+        "(4–7)"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "(0–19)% increased Area of Effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire, Cold or Lightning Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "fixed projectile spread [70]",
+      "values": []
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Elemental Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With 40 total Strength and Intelligence in Radius, Prismatic Skills deal 50% less Cold Damage",
+      "values": []
+    },
+    {
+      "text": "With 40 total Strength and Intelligence in Radius, Prismatic Skills cannot choose Cold",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Elemental Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With 40 total Dexterity and Strength in Radius, Prismatic Skills deal 50% less Lightning Damage",
+      "values": []
+    },
+    {
+      "text": "With 40 total Dexterity and Strength in Radius, Prismatic Skills cannot choose Lightning",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Elemental Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With 40 total Intelligence and Dexterity in Radius, Prismatic Skills deal 50% less Fire Damage",
+      "values": []
+    },
+    {
+      "text": "With 40 total Intelligence and Dexterity in Radius, Prismatic Skills cannot choose Fire",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% chance to Freeze, Shock and Ignite",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% chance to Freeze, Shock and Ignite",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

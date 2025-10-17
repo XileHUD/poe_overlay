@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Duration, Minion, Block",
     "DropLevel": "12",
+    "BaseType": "Bone Offering",
     "Class": "Skill Gems",
     "TargetTypes": "Corpse,",
     "Type": "Spell, Buff, Duration, Triggerable, Minion, Trappable, Mineable, Totemable, Offering",
@@ -455,5 +456,137 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Consumes a corpse, granting all of your minions the power to block both attacks and spells. The skill consumes other nearby corpses, increasing the duration for each corpse consumed.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Additional 1 seconds Base Duration per extra corpse Consumed",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Grants Minions +(25–35)% Chance to Block Attack Damage",
+      "values": [
+        "+(25–35)"
+      ]
+    },
+    {
+      "text": "Grants Minions +(25–34)% Chance to Block Spell Damage",
+      "values": [
+        "+(25–34)"
+      ]
+    },
+    {
+      "text": "Grants Minions 4% of Life Regenerated per Second if they have Blocked recently",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Additional 1 seconds Base Duration per extra corpse Consumed",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Grants Minions +(25–35)% Chance to Block Attack Damage",
+      "values": [
+        "+(25–35)"
+      ]
+    },
+    {
+      "text": "Grants Minions +(25–34)% Chance to Block Spell Damage",
+      "values": [
+        "+(25–34)"
+      ]
+    },
+    {
+      "text": "Grants Minions 4% of Life Regenerated per Second if they have Blocked recently",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "Trigger Level 20 Bone Offering, Flesh Offering, Spirit Offering every 5 seconds in sequenceOffering Skills Triggered this way also affect you",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "(100–130)% increased Energy Shield",
+      "values": [
+        "(100–130)"
+      ]
+    },
+    {
+      "text": "(6–10)% increased maximum Life",
+      "values": [
+        "(6–10)"
+      ]
+    },
+    {
+      "text": "buff impl stat [0]",
+      "values": []
+    },
+    {
+      "text": "veiled mod seed [2,60000]",
+      "values": []
+    },
+    {
+      "text": "veiled mod type [3]",
+      "values": []
+    },
+    {
+      "text": "base_cast_speed_+%",
+      "values": []
+    },
+    {
+      "text": "monster_base_block_%",
+      "values": []
+    },
+    {
+      "text": "base_spell_block_%",
+      "values": []
+    },
+    {
+      "text": "life_regeneration_rate_per_minute_%_if_blocked_recently",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Recently refers to the past 4 seconds)",
+    "(Recently refers to the past 4 seconds)",
+    "(Recently refers to the past 4 seconds)"
+  ],
+  "qualityMods": [
+    {
+      "text": "(0–10)% increased Effect of Offering",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "(0–10)% increased Effect of Offering",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

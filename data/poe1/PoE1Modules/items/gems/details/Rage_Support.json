@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Hit, Rage",
     "DropLevel": "18",
+    "BaseType": "Rage Support",
     "Class": "Support Gems",
     "Icon": "g",
     "ItemType": "Metadata/Items/Gems/SupportGemRage",
@@ -333,5 +334,80 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports melee attack skills. Minions cannot gain rage.",
+  "explicitMods": [
+    {
+      "text": "Gain 3 Rage on Attack Hit",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Supported Skills have (10–19)% increased Attack Speed while you have at least 10 Rage",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Gain 3 Rage on Attack Hit",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Supported Skills have (10–19)% increased Attack Speed while you have at least 10 Rage",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 30 Rage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "(120–150)% increased Armour",
+      "values": [
+        "(120–150)"
+      ]
+    },
+    {
+      "text": "(10–25)% reduced Rage Cost of Skills",
+      "values": [
+        "(10–25)"
+      ]
+    },
+    {
+      "text": "Vaal Attack Skills you Use yourself Cost Rage instead of requiring Souls",
+      "values": []
+    },
+    {
+      "text": "You cannot gain Rage during Soul Gain Prevention",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
+    "(Only one Hit every 0.5 seconds can cause you to gain Rage)",
+    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
+    "(Only one Hit every 0.5 seconds can cause you to gain Rage)",
+    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
+    "(Only one Hit every 0.5 seconds can cause you to gain Rage)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Attack Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Attack Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

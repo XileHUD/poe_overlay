@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Sunder of Earthbreaking",
     "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy, SELF_ORIGIN",
     "Type": "Attack, Area, Multistrikeable, Melee, Slam, Totemable",
@@ -332,5 +333,143 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slams the ground, creating a wave of churning terrain that damages enemies in a sequence of areas in front of you. A number of enemies hit by the wave will release a shockwave, damaging other enemies around them. Requires a Mace, Sceptre, Axe, Staff or Unarmed.",
+  "explicitMods": [
+    {
+      "text": "(0–38)% more Area of Effect",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Shockwaves deal 40% less Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Wave causes Shockwaves from up to 3 Enemies in each Area",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Wave has 75% reduced delay between Areas",
+      "values": [
+        "75"
+      ]
+    },
+    {
+      "text": "Wave Damages 6 Areas",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "(0–38)% more Area of Effect",
+      "values": [
+        "(0–38)"
+      ]
+    },
+    {
+      "text": "Shockwaves deal 40% less Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Wave causes Shockwaves from up to 3 Enemies in each Area",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Wave has 75% reduced delay between Areas",
+      "values": [
+        "75"
+      ]
+    },
+    {
+      "text": "Wave Damages 6 Areas",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "base sunder wave delay ms [400]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "(0–68)% more Area of Effect",
+      "values": [
+        "(0–68)"
+      ]
+    },
+    {
+      "text": "Shockwaves deal 40% less Damage",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "Wave causes Shockwaves from up to 3 Enemies in each Area",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Wave has 75% reduced delay between Areas",
+      "values": [
+        "75"
+      ]
+    },
+    {
+      "text": "Wave Damages 6 Areas",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "base sunder wave delay ms [400]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Wave Damages (0–2) Areas",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Wave Damages (0–2) Areas",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Wave Damages (0–2) Areas",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

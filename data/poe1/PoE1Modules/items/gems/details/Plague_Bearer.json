@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Poison",
     "DropLevel": "24",
+    "BaseType": "Plague Bearer",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, Chaos, Area, Instant, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown, KillNoDamageModifiers",
@@ -375,5 +376,95 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Gain an Incubating buff, adding to its Plague Value as you inflict poisons. Use the skill again to begin Infecting, dealing chaos damage over time to nearby enemies until the Plague Value is depleted. Your damage modifiers don't apply to this skill's damage. Using the skill again alternates between Incubating and Infecting.",
+  "explicitMods": [
+    {
+      "text": "+(0–0.3) metres to radius",
+      "values": [
+        "+(0–0.3)"
+      ]
+    },
+    {
+      "text": "20% less Damage with Poison while Incubating and not at Maximum Plague Value",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "When you inflict Poison while Incubating, adds 40% of the Expected PoisonDamage to Plague Value",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "While Infecting, deals Chaos Damage per second equal to 12% of the Plague Value when Infecting began, and loses Plague Value at the same rate",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "+(0–0.3) metres to radius",
+      "values": [
+        "+(0–0.3)"
+      ]
+    },
+    {
+      "text": "20% less Damage with Poison while Incubating and not at Maximum Plague Value",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "When you inflict Poison while Incubating, adds 40% of the Expected PoisonDamage to Plague Value",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "While Infecting, deals Chaos Damage per second equal to 12% of the Plague Value when Infecting began, and loses Plague Value at the same rate",
+      "values": [
+        "12"
+      ]
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "corrosive shroud maximum stored poison damage [4000,1000000]",
+      "values": []
+    },
+    {
+      "text": "corrosive_shroud_gains_%_of_damage_from_inflicted_poisons",
+      "values": []
+    },
+    {
+      "text": "base_chaos_damage_taken_per_minute",
+      "values": []
+    },
+    {
+      "text": "base_chaos_damage_taken_per_minute",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(The Expected Damage of Poison is its Damage per second multiplied by its Duration)",
+    "(The Expected Damage of Poison is its Damage per second multiplied by its Duration)",
+    "(The Expected Damage of Poison is its Damage per second multiplied by its Duration)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Plague Bearer deals Damage based on an additional +(0–4)% of Plague Value",
+      "values": [
+        "+(0–4)"
+      ]
+    },
+    {
+      "text": "Plague Bearer deals Damage based on an additional +(0–4)% of Plague Value",
+      "values": [
+        "+(0–4)"
+      ]
+    }
+  ]
 }

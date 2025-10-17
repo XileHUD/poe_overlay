@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Arctic Armour",
     "TargetTypes": "Any",
     "Type": "Spell, Buff, Totemable, Duration, HasReservation, TotemCastsAlone, Cold, ElementalStatus, Instant, NonHitChill, ChillingArea, AreaSpell, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
     "ActiveSkillsCode": "arctic_armour"
@@ -371,5 +372,131 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Immediately encases you in ice, protecting you for a duration or until you take damage from a number of hits, and also grants a buff once the cast time has finished. You cannot move or perform non-instant actions while in the ice. When the ice breaks, the buff is also removed.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "You take 90% less Damage from Hits and count as Frozen",
+      "values": [
+        "90"
+      ]
+    },
+    {
+      "text": "Ice breaks after you take 3 Damaging Hits or Duration expires",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Buff grants (5–30.6) Mana Regeneration per second",
+      "values": [
+        "(5–30.6)"
+      ]
+    },
+    {
+      "text": "Buff grants (20–395) Energy Shield Regeneration per second",
+      "values": [
+        "(20–395)"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+      "values": []
+    },
+    {
+      "text": "You take 90% less Damage from Hits and count as Frozen",
+      "values": [
+        "90"
+      ]
+    },
+    {
+      "text": "Ice breaks after you take 3 Damaging Hits or Duration expires",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Buff grants (5–30.6) Mana Regeneration per second",
+      "values": [
+        "(5–30.6)"
+      ]
+    },
+    {
+      "text": "Buff grants (20–395) Energy Shield Regeneration per second",
+      "values": [
+        "(20–395)"
+      ]
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "vaal_arctic_armour_damage_taken_+%_final_from_hits",
+      "values": []
+    },
+    {
+      "text": "Base duration is (2.5–5.9) seconds",
+      "values": [
+        "(2.5–5.9)"
+      ]
+    },
+    {
+      "text": "Buff grants (11–28)% less Physical Damage taken from Hits while stationary",
+      "values": [
+        "(11–28)"
+      ]
+    },
+    {
+      "text": "Buff grants (11–28)% less Fire Damage taken from Hits while stationary",
+      "values": [
+        "(11–28)"
+      ]
+    },
+    {
+      "text": "Chill Enemy for 0.5 seconds when Hit, reducing their Action Speed by 30%",
+      "values": [
+        "0.5"
+      ]
+    },
+    {
+      "text": "Buff grants Immunity to Freeze",
+      "values": []
+    },
+    {
+      "text": "ground ice art variation [6]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% increased Skill Effect Duration",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% increased Skill Effect Duration",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

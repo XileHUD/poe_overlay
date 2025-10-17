@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "DropLevel": "18",
+    "BaseType": "Physical to Lightning Support",
     "Class": "Support Gems",
     "Icon": "x",
     "ItemType": "Metadata/Items/Gems/SupportGemPhysicalToLightning",
@@ -372,5 +373,47 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills gain (10–29)% of Physical Damage as Extra Lightning Damage",
+      "values": [
+        "(10–29)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Supported Skills gain (10–29)% of Physical Damage as Extra Lightning Damage",
+      "values": [
+        "(10–29)"
+      ]
+    },
+    {
+      "text": "Supported Skills have 50% of Physical Damage Converted to Lightning Damage",
+      "values": [
+        "50"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Physical Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Physical Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

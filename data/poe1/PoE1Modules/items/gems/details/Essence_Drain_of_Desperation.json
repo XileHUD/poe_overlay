@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Essence Drain of Desperation",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Projectile, ProjectilesFromUser, Duration, Totemable, Multicastable, DamageOverTime, Chaos, Damage, Triggerable, CanRapidFire, Area, AreaSpell, Trappable, Mineable",
     "ActiveSkillsCode": "essence_drain_alt_x"
@@ -371,5 +372,124 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires a projectile that applies a damage over time debuff when it hits. You lose Life and Energy Shield equal to a portion of the debuff damage. The debuff is spread by Contagion.",
+  "explicitMods": [
+    {
+      "text": "Deals (12–926) to (18–1389) Chaos Damage",
+      "values": [
+        "(12–926)",
+        "(18–1389)"
+      ]
+    },
+    {
+      "text": "Deals (91.1–4726.1) Base Chaos Damage per second",
+      "values": [
+        "(91.1–4726.1)"
+      ]
+    },
+    {
+      "text": "Base duration is 3.8 seconds",
+      "values": [
+        "3.8"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Lose Life and Energy Shield equal to 0.3% of Debuff Damage",
+      "values": [
+        "0.3"
+      ]
+    },
+    {
+      "text": "Deals (12–926) to (18–1389) Chaos Damage",
+      "values": [
+        "(12–926)",
+        "(18–1389)"
+      ]
+    },
+    {
+      "text": "Deals (91.1–4726.1) Base Chaos Damage per second",
+      "values": [
+        "(91.1–4726.1)"
+      ]
+    },
+    {
+      "text": "Base duration is 3.8 seconds",
+      "values": [
+        "3.8"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Lose Life and Energy Shield equal to 0.3% of Debuff Damage",
+      "values": [
+        "0.3"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (12–6154) to (18–9232) Chaos Damage",
+      "values": [
+        "(12–6154)",
+        "(18–9232)"
+      ]
+    },
+    {
+      "text": "Deals (91.1–25429.6) Base Chaos Damage per second",
+      "values": [
+        "(91.1–25429.6)"
+      ]
+    },
+    {
+      "text": "Base duration is 3.8 seconds",
+      "values": [
+        "3.8"
+      ]
+    },
+    {
+      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Lose Life and Energy Shield equal to 0.3% of Debuff Damage",
+      "values": [
+        "0.3"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base duration is (0–0.4) seconds",
+      "values": [
+        "(0–0.4)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–0.4) seconds",
+      "values": [
+        "(0–0.4)"
+      ]
+    },
+    {
+      "text": "Base duration is (0–0.4) seconds",
+      "values": [
+        "(0–0.4)"
+      ]
+    }
+  ]
 }

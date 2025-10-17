@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Bleeding",
     "DropLevel": "4",
+    "BaseType": "Puncture",
     "Class": "Skill Gems",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
@@ -416,5 +417,67 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Punctures enemies with your Bow, causing a bleeding debuff, which will be affected by modifiers to skill duration.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "(30–49)% more Damage with Bleeding",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Causes Bleeding",
+      "values": []
+    },
+    {
+      "text": "Base duration is 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "(30–49)% more Damage with Bleeding",
+      "values": [
+        "(30–49)"
+      ]
+    },
+    {
+      "text": "Causes Bleeding",
+      "values": []
+    },
+    {
+      "text": "bleed duration is skill duration [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
+    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–20)% more Damage with Bleeding",
+      "values": [
+        "+(0–20)"
+      ]
+    },
+    {
+      "text": "+(0–20)% more Damage with Bleeding",
+      "values": [
+        "+(0–20)"
+      ]
+    }
+  ]
 }

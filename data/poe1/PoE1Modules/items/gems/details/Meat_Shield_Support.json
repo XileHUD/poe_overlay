@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Hit, Minion, Taunt, Ailment",
     "DropLevel": "31",
+    "BaseType": "Meat Shield Support",
     "Class": "Support Gems",
     "Icon": "v",
     "ItemType": "Metadata/Items/Gems/SupportGemMeatShield",
@@ -453,5 +454,113 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports skills which create Minions.",
+  "explicitMods": [
+    {
+      "text": "Minions from Supported Skills have 20% chance to Taunt on Hit",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Supported Skills have (10–29)% increased Minion Movement Speed",
+      "values": [
+        "(10–29)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills deal (20–30)% more Damage with Hits and Ailments to Enemies that are Near you",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills take (15–24)% less Damage",
+      "values": [
+        "(15–24)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills are Defensive",
+      "values": []
+    },
+    {
+      "text": "Minions from Supported Skills have 20% chance to Taunt on Hit",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Supported Skills have (10–29)% increased Minion Movement Speed",
+      "values": [
+        "(10–29)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills deal (20–30)% more Damage with Hits and Ailments to Enemies that are Near you",
+      "values": [
+        "(20–30)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills take (15–24)% less Damage",
+      "values": [
+        "(15–24)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills are Defensive",
+      "values": []
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 1 Meat Shield",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "(100–140)% increased Armour and Energy Shield",
+      "values": [
+        "(100–140)"
+      ]
+    },
+    {
+      "text": "+(50–80) to maximum Life",
+      "values": [
+        "+(50–80)"
+      ]
+    },
+    {
+      "text": "(5–8)% increased Damage per Raised Zombie",
+      "values": [
+        "(5–8)"
+      ]
+    },
+    {
+      "text": "1% less Elemental Damage taken per Raised Zombie",
+      "values": [
+        "1"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Defensive minions have their targeting range lowered to a maximum value. They always target enemies around you)",
+    "(Defensive minions have their targeting range lowered to a maximum value. They always target enemies around you)",
+    "(Defensive minions have their targeting range lowered to a maximum value. They always target enemies around you)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Minions from Supported Skills take (0–5)% less Damage",
+      "values": [
+        "(0–5)"
+      ]
+    },
+    {
+      "text": "Minions from Supported Skills take (0–5)% less Damage",
+      "values": [
+        "(0–5)"
+      ]
+    }
+  ]
 }

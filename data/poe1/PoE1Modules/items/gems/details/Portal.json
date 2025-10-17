@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "DropLevel": "10",
+    "BaseType": "Portal",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Trappable, Totemable, Mineable, Triggerable, TotemCastsAlone",
@@ -104,5 +105,27 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Creates a portal to the current area's town.",
+  "explicitMods": [
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–60)% increased Cast Speed",
+      "values": [
+        "(0–60)"
+      ]
+    },
+    {
+      "text": "(0–60)% increased Cast Speed",
+      "values": [
+        "(0–60)"
+      ]
+    }
+  ]
 }

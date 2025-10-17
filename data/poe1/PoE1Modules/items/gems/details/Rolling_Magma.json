@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Projectile, Chain",
+    "BaseType": "Rolling Magma",
     "Class": "Skill Gems",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Damage, Area, Trappable, Mineable, Totemable, Triggerable, Fire, Projectile, ProjectilesFromUser, Multicastable, Chains, CanRapidFire, AreaSpell",
@@ -454,5 +455,109 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Lob a fiery orb that deals area damage as it hits the ground. The skill chains, bouncing forward to deal damage multiple times.",
+  "explicitMods": [
+    {
+      "text": "Deals (9–1245) to (12–1868) Fire Damage",
+      "values": [
+        "(9–1245)",
+        "(12–1868)"
+      ]
+    },
+    {
+      "text": "Chains +(2–3) Times",
+      "values": [
+        "+(2–3)"
+      ]
+    },
+    {
+      "text": "+(0–0.4) metres to radius",
+      "values": [
+        "+(0–0.4)"
+      ]
+    },
+    {
+      "text": "Projectiles can Chain when impacting the groundProjectiles do not change direction when Chaining",
+      "values": []
+    },
+    {
+      "text": "Deals (9–1245) to (12–1868) Fire Damage",
+      "values": [
+        "(9–1245)",
+        "(12–1868)"
+      ]
+    },
+    {
+      "text": "Chains +(2–3) Times",
+      "values": [
+        "+(2–3)"
+      ]
+    },
+    {
+      "text": "+(0–0.4) metres to radius",
+      "values": [
+        "+(0–0.4)"
+      ]
+    },
+    {
+      "text": "Projectiles can Chain when impacting the groundProjectiles do not change direction when Chaining",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "console skill dont chase [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "monster projectile variation [1]",
+      "values": []
+    },
+    {
+      "text": "(10–15)% increased Fire Damage",
+      "values": [
+        "(10–15)"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Rolling Magma deals 50% less Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Rolling Magma deals 40% more Damage per Chain",
+      "values": [
+        "40"
+      ]
+    },
+    {
+      "text": "With at least 40 Intelligence in Radius, Rolling Magmahas 10% increased Area of Effect per Chain",
+      "values": [
+        "10"
+      ]
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Chains +(0–2) Times",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Chains +(0–2) Times",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

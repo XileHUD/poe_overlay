@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Hit, Maim",
     "DropLevel": "8",
+    "BaseType": "Maim Support",
     "Class": "Support Gems",
     "Icon": "m",
     "ItemType": "Metadata/Items/Gems/SupportGemMaim",
@@ -333,5 +334,63 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills, or other skills that can maim enemies.",
+  "explicitMods": [
+    {
+      "text": "Supported Skills deal (10–19)% more Physical Damage",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Supported Attacks have 30% chance to Maim on Hit",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Enemies Maimed by Supported Skills take 10% increased Physical Damage",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (10–19)% more Physical Damage",
+      "values": [
+        "(10–19)"
+      ]
+    },
+    {
+      "text": "Supported Attacks have 30% chance to Maim on Hit",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Enemies Maimed by Supported Skills take 10% increased Physical Damage",
+      "values": [
+        "10"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Maimed enemies have 30% reduced Movement Speed)",
+    "(Maimed enemies have 30% reduced Movement Speed)",
+    "(Maimed enemies have 30% reduced Movement Speed)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–20)% increased Effect of Maim",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–20)% increased Effect of Maim",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

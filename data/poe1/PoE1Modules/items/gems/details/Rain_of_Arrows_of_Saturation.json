@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Rain of Arrows of Saturation",
     "Weapon": "Bows",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, RangedAttack, MirageArcherCanUse, Area, ProjectileSpeed, ProjectileNumber, Totemable, Trappable, Mineable, Triggerable, Rain",
@@ -292,5 +293,73 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Fires multiple arrows into the air, to slowly land in sequence after a delay, starting at the targeted location and spreading outwards in all directions. Each arrow deals damage in an area around it. Half of the arrows will land directly on targets if there are targets in their range.",
+  "explicitMods": [
+    {
+      "text": "Fires (27–33) Arrows",
+      "values": [
+        "(27–33)"
+      ]
+    },
+    {
+      "text": "Fires (27–33) Arrows",
+      "values": [
+        "(27–33)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "cannot pierce [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    },
+    {
+      "text": "Fires +(27–39) Arrows",
+      "values": [
+        "+(27–39)"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "cannot pierce [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–8) Arrows",
+      "values": [
+        "+(0–8)"
+      ]
+    },
+    {
+      "text": "Fires +(0–8) Arrows",
+      "values": [
+        "+(0–8)"
+      ]
+    }
+  ]
 }

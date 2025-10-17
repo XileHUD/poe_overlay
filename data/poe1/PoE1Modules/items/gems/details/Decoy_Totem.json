@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
     "Acronym": "Totem",
     "DropLevel": "4",
+    "BaseType": "Decoy Totem",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Trappable, Mineable, Area, SummonsTotem, Multicastable, AreaSpell, Cooldown",
@@ -375,5 +376,79 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Summons a totem that taunts nearby monsters to attack it.",
+  "explicitMods": [
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–76)% increased Totem Life",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "Totems Summoned by this Skill cannot Evade",
+      "values": []
+    },
+    {
+      "text": "Totem lasts 8 seconds",
+      "values": [
+        "8"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–76)% increased Totem Life",
+      "values": [
+        "(0–76)"
+      ]
+    },
+    {
+      "text": "Summons a Totem which uses this Skill",
+      "values": []
+    },
+    {
+      "text": "Totems Summoned by this Skill cannot Evade",
+      "values": []
+    },
+    {
+      "text": "base deal no damage [1]",
+      "values": []
+    },
+    {
+      "text": "base skill is totemified [1]",
+      "values": []
+    },
+    {
+      "text": "base totem range [60]",
+      "values": []
+    },
+    {
+      "text": "totem ignores cooldown [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "(0–20)% more Totem Life",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "(0–20)% more Totem Life",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

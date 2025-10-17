@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Shatter",
     "DropLevel": "12",
+    "BaseType": "Earthshatter",
     "Class": "Skill Gems",
     "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
     "TargetTypes": "Ground, Enemy,",
@@ -376,5 +377,89 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Slam the ground, sending out rectangular fissures that deal area damage to enemies and thrust a spike from the ground when they end. Warcries or other Slam Attacks performed by you or allied players near any spike will cause them to shatter, damaging surrounding enemies. Works with Maces, Sceptres, Axes, Staves and Unarmed.",
+  "explicitMods": [
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "(0–19)% more Area of Effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Shattering Spikes deal 30% less damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Creates 5 fissures",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Maximum 15 Spikes",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "(0–19)% more Area of Effect",
+      "values": [
+        "(0–19)"
+      ]
+    },
+    {
+      "text": "Shattering Spikes deal 30% less damage",
+      "values": [
+        "30"
+      ]
+    },
+    {
+      "text": "Creates 5 fissures",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Maximum 15 Spikes",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "+(0–3) Maximum SpikesCreates +(0–1) fissure",
+      "values": [
+        "+(0–3)",
+        "+(0–1)"
+      ]
+    },
+    {
+      "text": "+(0–3) Maximum SpikesCreates +(0–1) fissure",
+      "values": [
+        "+(0–3)",
+        "+(0–1)"
+      ]
+    }
+  ]
 }

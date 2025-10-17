@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Chance",
     "Acronym": "Projectile, Fork",
     "DropLevel": "31",
+    "BaseType": "Fork Support",
     "Class": "Support Gems",
     "Icon": "Y",
     "ItemType": "Metadata/Items/Gems/SupportGemFork",
@@ -333,5 +334,47 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports projectile skills, making their projectiles fork into two projectiles the first time they hit an enemy and don't pierce it.",
+  "explicitMods": [
+    {
+      "text": "Projectiles from Supported Skills Fork",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (-9–10)% less Projectile Damage",
+      "values": [
+        "(-9–10)"
+      ]
+    },
+    {
+      "text": "Projectiles from Supported Skills Fork",
+      "values": []
+    },
+    {
+      "text": "Supported Skills deal (-9–10)% less Projectile Damage",
+      "values": [
+        "(-9–10)"
+      ]
+    },
+    {
+      "text": "terrain arrow attachment chance reduction +% [100]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
     "Acronym": "Aura, Banner, Valour, Duration, Block",
     "DropLevel": "24",
+    "BaseType": "Dread Banner",
     "Class": "Skill Gems",
     "TargetTypes": "Ground",
     "Type": "Buff, Area, Spell, Duration, Aura, Instant, AreaSpell, AuraDuration, Banner, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
@@ -455,5 +456,175 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "You must gain Valour from melee combat to use this skill, which will consume all Valour to place a banner with an aura. The aura will be larger and more powerful the more Valour was consumed. The banner lasts for a duration, but will end early if you leave the aura, or use the skill again while it's active.",
+  "explicitMods": [
+    {
+      "text": "Base radius is 2.4 metres",
+      "values": [
+        "2.4"
+      ]
+    },
+    {
+      "text": "While you have no placed Banner, you can gain Valour",
+      "values": []
+    },
+    {
+      "text": "(5–10)% more Area of Effect per Valour consumed",
+      "values": [
+        "(5–10)"
+      ]
+    },
+    {
+      "text": "(5–10)% more Aura effect per Valour consumed",
+      "values": [
+        "(5–10)"
+      ]
+    },
+    {
+      "text": "Banner grants +4% Chance to Block Attack Damage to You and Allies",
+      "values": [
+        "+4"
+      ]
+    },
+    {
+      "text": "Base Duration of 10 seconds after being Placed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Banner causes you and Allies to Recover (9–34) Life when Blocking",
+      "values": [
+        "(9–34)"
+      ]
+    },
+    {
+      "text": "Base radius is 2.4 metres",
+      "values": [
+        "2.4"
+      ]
+    },
+    {
+      "text": "While you have no placed Banner, you can gain Valour",
+      "values": []
+    },
+    {
+      "text": "(5–10)% more Area of Effect per Valour consumed",
+      "values": [
+        "(5–10)"
+      ]
+    },
+    {
+      "text": "(5–10)% more Aura effect per Valour consumed",
+      "values": [
+        "(5–10)"
+      ]
+    },
+    {
+      "text": "Banner grants +4% Chance to Block Attack Damage to You and Allies",
+      "values": [
+        "+4"
+      ]
+    },
+    {
+      "text": "Base Duration of 10 seconds after being Placed",
+      "values": [
+        "10"
+      ]
+    },
+    {
+      "text": "Banner causes you and Allies to Recover (9–34) Life when Blocking",
+      "values": [
+        "(9–34)"
+      ]
+    },
+    {
+      "text": "Having a placed Banner does not prevent you gaining Valour",
+      "values": []
+    },
+    {
+      "text": "(25–40)% increased Melee Damage",
+      "values": [
+        "(25–40)"
+      ]
+    },
+    {
+      "text": "+(60–90) to maximum Life",
+      "values": [
+        "+(60–90)"
+      ]
+    },
+    {
+      "text": "(25–50)% increased Valour gained",
+      "values": [
+        "(25–50)"
+      ]
+    },
+    {
+      "text": "(Valour is gained while you have a Banner skill and augments the power of those skills)",
+      "values": []
+    },
+    {
+      "text": "(By default you gain 1 Valour on Melee Kill, or on Melee Hit against Rare or Unique enemies, no more than once every 0.5 seconds, up to a maximum of 50)",
+      "values": []
+    },
+    {
+      "text": "damage_+%",
+      "values": []
+    },
+    {
+      "text": "base_resist_all_elements_%",
+      "values": []
+    },
+    {
+      "text": "life_regeneration_rate_per_minute_%",
+      "values": []
+    },
+    {
+      "text": "base_additional_physical_damage_reduction_%",
+      "values": []
+    },
+    {
+      "text": "additional_block_%",
+      "values": []
+    },
+    {
+      "text": "attack_and_cast_speed_+%",
+      "values": []
+    },
+    {
+      "text": "attack_damage_+%",
+      "values": []
+    },
+    {
+      "text": "recover_X_life_on_block",
+      "values": []
+    },
+    {
+      "text": "base_life_mana_es_recovery_rate_+%",
+      "values": []
+    }
+  ],
+  "modDescriptions": [
+    "(By default you gain 1 Valour on Melee Kill, or on Melee Hit against Rare or Unique enemies, no more than once every 0.5 seconds, up to a maximum of 50)",
+    "(By default you gain 1 Valour on Melee Kill, or on Melee Hit against Rare or Unique enemies, no more than once every 0.5 seconds, up to a maximum of 50)",
+    "(By default you gain 1 Valour on Melee Kill, or on Melee Hit against Rare or Unique enemies, no more than once every 0.5 seconds, up to a maximum of 50)",
+    "(Valour is gained while you have a Banner skill and augments the power of those skills)",
+    "(By default you gain 1 Valour on Melee Kill, or on Melee Hit against Rare or Unique enemies, no more than once every 0.5 seconds, up to a maximum of 50)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Base Duration of (0–2) seconds after being Placed",
+      "values": [
+        "(0–2)"
+      ]
+    },
+    {
+      "text": "Base Duration of (0–2) seconds after being Placed",
+      "values": [
+        "(0–2)"
+      ]
+    }
+  ]
 }

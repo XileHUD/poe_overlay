@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Frenzy of Onslaught",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy",
     "Type": "Attack, MeleeSingleTarget, Multistrikeable, Melee",
@@ -292,5 +293,91 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Perform a strike with a melee weapon that gives the character a frenzy charge if it hits. Frenzy charges increase your attack speed.",
+  "explicitMods": [
+    {
+      "text": "5% more Attack Damage per Frenzy Charge",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "5% more Attack Speed per Frenzy Charge",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Consume all Frenzy Charges when you Hit an enemy while at maximum Frenzy Charges to gain Onslaught for 1 second per Charge consumed",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "5% more Attack Damage per Frenzy Charge",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "5% more Attack Speed per Frenzy Charge",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Consume all Frenzy Charges when you Hit an enemy while at maximum Frenzy Charges to gain Onslaught for 1 second per Charge consumed",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "5% more Attack Damage per Frenzy Charge",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "5% more Attack Speed per Frenzy Charge",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Consume all Frenzy Charges when you Hit an enemy while at maximum Frenzy Charges to gain Onslaught for 1 second per Charge consumed",
+      "values": [
+        "1"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Onslaught grants 20% increased Attack, Cast, and Movement Speed)",
+    "(Onslaught grants 20% increased Attack, Cast, and Movement Speed)",
+    "(Onslaught grants 20% increased Attack, Cast, and Movement Speed)",
+    "(Onslaught grants 20% increased Attack, Cast, and Movement Speed)"
+  ],
+  "qualityMods": [
+    {
+      "text": "+(0–2)% more Attack Damage per Frenzy Charge+(0–2)% more Attack Speed per Frenzy Charge",
+      "values": [
+        "+(0–2)",
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "+(0–2)% more Attack Damage per Frenzy Charge+(0–2)% more Attack Speed per Frenzy Charge",
+      "values": [
+        "+(0–2)",
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "+(0–2)% more Attack Damage per Frenzy Charge+(0–2)% more Attack Speed per Frenzy Charge",
+      "values": [
+        "+(0–2)",
+        "+(0–2)"
+      ]
+    }
+  ]
 }

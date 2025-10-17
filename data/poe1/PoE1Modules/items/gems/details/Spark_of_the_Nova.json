@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Spark of the Nova",
     "TargetTypes": "Ground, Enemy",
     "Type": "Spell, Projectile, ProjectilesFromUser, Damage, Duration, Trappable, Totemable, Mineable, Multicastable, Triggerable, Lightning, CanRapidFire",
     "ActiveSkillsCode": "spark_alt_x"
@@ -371,5 +372,106 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Launches unpredictable sparks in all directions that move randomly until they hit an enemy or expire.",
+  "explicitMods": [
+    {
+      "text": "Deals (2–111) to (30–2113) Lightning Damage",
+      "values": [
+        "(2–111)",
+        "(30–2113)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Fires (8–12) Projectiles",
+      "values": [
+        "(8–12)"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "Deals (2–111) to (30–2113) Lightning Damage",
+      "values": [
+        "(2–111)",
+        "(30–2113)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Fires (8–12) Projectiles",
+      "values": [
+        "(8–12)"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (2–406) to (30–7722) Lightning Damage",
+      "values": [
+        "(2–406)",
+        "(30–7722)"
+      ]
+    },
+    {
+      "text": "Base duration is 2 seconds",
+      "values": [
+        "2"
+      ]
+    },
+    {
+      "text": "Fires (8–15) Projectiles",
+      "values": [
+        "(8–15)"
+      ]
+    },
+    {
+      "text": "Fires Projectiles in a circle",
+      "values": []
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Fires +(0–2) Projectiles",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Alchemy",
     "Acronym": "Bleeding",
     "DropLevel": "38",
+    "BaseType": "Rupture Support",
     "Class": "Support Gems",
     "Icon": "R",
     "ItemType": "Metadata/Items/Gems/SupportGemRupture",
@@ -373,5 +374,59 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Supports attack skills.",
+  "explicitMods": [
+    {
+      "text": "Critical Strikes with Supported Skills that inflict Bleeding also inflict Rupture",
+      "values": []
+    },
+    {
+      "text": "Targets take (20–29)% more Damage from Bleeding per Rupture on them from Supported Skills",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "Bleeding expires 25% more quickly per Rupture from Supported Skills on targets",
+      "values": [
+        "25"
+      ]
+    },
+    {
+      "text": "Critical Strikes with Supported Skills that inflict Bleeding also inflict Rupture",
+      "values": []
+    },
+    {
+      "text": "Targets take (20–29)% more Damage from Bleeding per Rupture on them from Supported Skills",
+      "values": [
+        "(20–29)"
+      ]
+    },
+    {
+      "text": "Bleeding expires 25% more quickly per Rupture from Supported Skills on targets",
+      "values": [
+        "25"
+      ]
+    }
+  ],
+  "modDescriptions": [
+    "(Up to 3 Ruptures can be inflicted on a target, lasting 3 seconds each)",
+    "(Up to 3 Ruptures can be inflicted on a target, lasting 3 seconds each)",
+    "(Up to 3 Ruptures can be inflicted on a target, lasting 3 seconds each)"
+  ],
+  "qualityMods": [
+    {
+      "text": "Supported Skills have (0–20)% increased Critical Strike Chance",
+      "values": [
+        "(0–20)"
+      ]
+    },
+    {
+      "text": "Supported Skills have (0–20)% increased Critical Strike Chance",
+      "values": [
+        "(0–20)"
+      ]
+    }
+  ]
 }

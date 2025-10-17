@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
     "Acronym": "Ignite",
+    "BaseType": "Explosive Trap of Shrapnel",
     "TargetTypes": "Enemy, Ground",
     "Type": "Spell, Damage, Mineable, Area, Trapped, Fire, AreaSpell, Physical",
     "ActiveSkillsCode": "explosive_trap_alt_x"
@@ -491,5 +492,182 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a trap that creates an explosion when triggered, dealing spell damage in an area around it. A number of smaller explosions occur within a secondary area around the trap in quick succession after the first.",
+  "explicitMods": [
+    {
+      "text": "Deals (5–635) to (8–952) Physical Damage",
+      "values": [
+        "(5–635)",
+        "(8–952)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base explosion radius is (1.2–1.8) metres",
+      "values": [
+        "(1.2–1.8)"
+      ]
+    },
+    {
+      "text": "Base smaller explosion radius is (0.7–1.3) metres",
+      "values": [
+        "(0.7–1.3)"
+      ]
+    },
+    {
+      "text": "Base secondary radius is (2.4–3) metres",
+      "values": [
+        "(2.4–3)"
+      ]
+    },
+    {
+      "text": "Causes (3–7) smaller explosionsSmaller explosions have between 30% reduced and 30% increased base radius at random",
+      "values": [
+        "(3–7)"
+      ]
+    },
+    {
+      "text": "Deals (5–635) to (8–952) Physical Damage",
+      "values": [
+        "(5–635)",
+        "(8–952)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base explosion radius is (1.2–1.8) metres",
+      "values": [
+        "(1.2–1.8)"
+      ]
+    },
+    {
+      "text": "Base smaller explosion radius is (0.7–1.3) metres",
+      "values": [
+        "(0.7–1.3)"
+      ]
+    },
+    {
+      "text": "Base secondary radius is (2.4–3) metres",
+      "values": [
+        "(2.4–3)"
+      ]
+    },
+    {
+      "text": "Causes (3–7) smaller explosionsSmaller explosions have between 30% reduced and 30% increased base radius at random",
+      "values": [
+        "(3–7)"
+      ]
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "Deals (5–2494) to (8–3741) Physical Damage",
+      "values": [
+        "(5–2494)",
+        "(8–3741)"
+      ]
+    },
+    {
+      "text": "Trap lasts 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "50% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Base explosion radius is (1.2–2.3) metres",
+      "values": [
+        "(1.2–2.3)"
+      ]
+    },
+    {
+      "text": "Base smaller explosion radius is (0.7–1.8) metres",
+      "values": [
+        "(0.7–1.8)"
+      ]
+    },
+    {
+      "text": "Base secondary radius is (2.4–3.5) metres",
+      "values": [
+        "(2.4–3.5)"
+      ]
+    },
+    {
+      "text": "Causes (3–10) smaller explosionsSmaller explosions have between 30% reduced and 30% increased base radius at random",
+      "values": [
+        "(3–10)"
+      ]
+    },
+    {
+      "text": "base skill is trapped [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Causes +(0–2) smaller explosions",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Causes +(0–2) smaller explosions",
+      "values": [
+        "+(0–2)"
+      ]
+    },
+    {
+      "text": "Causes +(0–2) smaller explosions",
+      "values": [
+        "+(0–2)"
+      ]
+    }
+  ]
 }

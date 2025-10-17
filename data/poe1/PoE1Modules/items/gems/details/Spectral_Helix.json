@@ -5,6 +5,7 @@
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "Acronym": "Projectile, Modifiers",
     "DropLevel": "12",
+    "BaseType": "Spectral Helix",
     "Class": "Skill Gems",
     "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
     "TargetTypes": "Ground, Enemy,",
@@ -376,5 +377,51 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "Throws a spectral copy of your melee weapon. It spins around while flying in a large spiral, damaging enemies in its path, and bouncing if it collides with walls.",
+  "explicitMods": [
+    {
+      "text": "Bounces up to 3 timesModifiers to number of Projectiles instead apply to the number of Bounces",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Spirals through 4.25 rotations",
+      "values": [
+        "4.25"
+      ]
+    },
+    {
+      "text": "Bounces up to 3 timesModifiers to number of Projectiles instead apply to the number of Bounces",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Spirals through 4.25 rotations",
+      "values": [
+        "4.25"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "values": [
+        "(0–10)"
+      ]
+    },
+    {
+      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "values": [
+        "(0–10)"
+      ]
+    }
+  ]
 }

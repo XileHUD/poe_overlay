@@ -4,6 +4,7 @@
   "metadata": {
     "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
     "DropLevel": "12",
+    "BaseType": "Ice Nova",
     "Class": "Skill Gems",
     "TargetTypes": "Any",
     "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Cold, CanRapidFire, AreaSpell, Nova",
@@ -414,5 +415,53 @@
     }
   ],
   "description": "",
-  "stats": []
+  "stats": [],
+  "gemDescription": "A circle of ice expands from the caster.",
+  "explicitMods": [
+    {
+      "text": "Deals (23–988) to (34–1481) Cold Damage",
+      "values": [
+        "(23–988)",
+        "(34–1481)"
+      ]
+    },
+    {
+      "text": "Base radius is (2.6–3) metres",
+      "values": [
+        "(2.6–3)"
+      ]
+    },
+    {
+      "text": "Deals (23–988) to (34–1481) Cold Damage",
+      "values": [
+        "(23–988)",
+        "(34–1481)"
+      ]
+    },
+    {
+      "text": "Base radius is (2.6–3) metres",
+      "values": [
+        "(2.6–3)"
+      ]
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    }
+  ]
 }

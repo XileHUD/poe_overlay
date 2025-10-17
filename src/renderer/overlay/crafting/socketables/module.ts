@@ -126,7 +126,9 @@ export function render(list: Socketable[]): void {
       <input id='socketableSearch' type='text' placeholder='Search...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
       <button id='socketableClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
-  <div id='socketableTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 8px; justify-content:center; width:100%;'></div>
+    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+      <div id='socketableTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
+    </div>
     <div id='socketableList' style='display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:10px; align-items:stretch;'></div>
     </div>`;
 
@@ -159,11 +161,11 @@ export function render(list: Socketable[]): void {
     curated.forEach(tag=>{ const key=tag.toLowerCase(); const active=state.selectedTags.has(key);
       const btn=document.createElement('button'); const count=state.tagCounts[tag]||0; btn.className='sock-tag'; btn.setAttribute('data-tag', key);
       btn.textContent = count? `${tag} (${count})` : tag;
-      btn.style.cssText = `padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; ${chipCss(tag, active)}`;
+      btn.style.cssText = `padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; ${chipCss(tag, active)}`;
       btn.addEventListener('click',()=>{ if(active) state.selectedTags.delete(key); else state.selectedTags.add(key); apply(state.input?.value||''); renderTagFilters(); });
       tagWrap.appendChild(btn);
     });
-    if(state.selectedTags.size){ const reset=document.createElement('button'); reset.textContent='Reset'; reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:999px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'; reset.addEventListener('click',()=>{ state.selectedTags.clear(); apply(state.input?.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); }
+    if(state.selectedTags.size){ const reset=document.createElement('button'); reset.textContent='Reset'; reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'; reset.addEventListener('click',()=>{ state.selectedTags.clear(); apply(state.input?.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); }
   }
 
   function matchTags(e: Socketable){ if(!state.selectedTags.size) return true; const lc=((e as any).__tags||[]).map((t:string)=>t.toLowerCase()); return [...state.selectedTags].every(t=> lc.includes(t)); }
