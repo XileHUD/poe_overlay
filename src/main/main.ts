@@ -63,7 +63,7 @@ export interface OverlayUpdateCheckResult {
 type OverlaySnapshot =
     | { kind: 'item'; sourceText?: string | null; payload: { item: any; modifiers: any[]; category: string } }
     | { kind: 'unique'; sourceText?: string | null; payload: { item: any } }
-    | { kind: 'gems'; sourceText?: string | null; payload: { tab: string; action?: string; delay?: number } }
+    | { kind: 'gems'; sourceText?: string | null; payload: { tab: string; action?: string; gemName?: string; delay?: number } }
     | { kind: 'default'; sourceText?: string | null; payload?: Record<string, unknown> };
 
 function normalizeVersionString(version: string | null | undefined): string | null {
@@ -1666,15 +1666,19 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                     }
 
                     if (parsed.category === 'Gems') {
+                        const gemName = parsed.name || parsed.baseType || '';
                         this.rememberOverlaySnapshot({
                             kind: 'gems',
                             sourceText: rawText,
-                            payload: { tab: 'characterTab', action: 'gems', delay: 140 }
+                            payload: { tab: 'characterTab', action: 'gems', gemName, delay: 140 }
                         });
                         this.showOverlay(undefined, { focus: false });
                         setTimeout(() => {
                             this.safeSendToOverlay('set-active-tab', 'characterTab');
                             this.safeSendToOverlay('invoke-action', 'gems');
+                            if (gemName && this.overlayVersion === 'poe1') {
+                                this.safeSendToOverlay('show-poe1-gem-detail', { gemName });
+                            }
                         }, 140);
                         return true;
                     }
@@ -2227,12 +2231,15 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 return true;
             }
             case 'gems': {
-                const { tab, action, delay = 140 } = snapshot.payload;
+                const { tab, action, gemName, delay = 140 } = snapshot.payload;
                 this.rememberOverlaySnapshot(snapshot);
                 this.bringOverlayToFront(opts);
                 setTimeout(() => {
                     if (tab) this.safeSendToOverlay('set-active-tab', tab);
                     if (action) this.safeSendToOverlay('invoke-action', action);
+                    if (gemName && this.overlayVersion === 'poe1') {
+                        this.safeSendToOverlay('show-poe1-gem-detail', { gemName });
+                    }
                 }, delay);
                 console.log('[Overlay] restoreLastOverlayView -> gems restored');
                 return true;
@@ -2638,16 +2645,20 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                         if ((parsed.rarity || '').toLowerCase() === 'unique') {
                             this.showUniqueItem(parsed, { silent: true, focus: false }, trimmed);
                         } else if (parsed.category === 'Gems') {
+                            const gemName = parsed.name || parsed.baseType || '';
                             this.rememberOverlaySnapshot({
                                 kind: 'gems',
                                 sourceText: trimmed,
-                                payload: { tab: 'characterTab', action: 'gems', delay: 140 }
+                                payload: { tab: 'characterTab', action: 'gems', gemName, delay: 140 }
                             });
                             // Gem handling - switch to character tab and show gems panel
                             this.showOverlay(undefined, { silent: true, focus: false });
                             setTimeout(() => {
                                 this.safeSendToOverlay('set-active-tab', 'characterTab');
                                 this.safeSendToOverlay('invoke-action', 'gems');
+                                if (gemName && this.overlayVersion === 'poe1') {
+                                    this.safeSendToOverlay('show-poe1-gem-detail', { gemName });
+                                }
                             }, 140);
                         } else {
                             let modifiers: any[] = [];

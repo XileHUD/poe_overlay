@@ -250,6 +250,57 @@ const SOCKET_COSTS: { [key: number]: number } = {
   6: 350
 };
 
+// Bench craft costs for coloring sockets
+// Format: "XR" = at least X red sockets
+interface BenchCraft {
+  red: number;
+  green: number;
+  blue: number;
+  cost: number;
+  name: string;
+}
+
+const BENCH_CRAFTS: BenchCraft[] = [
+  // Single color
+  { red: 1, green: 0, blue: 0, cost: 4, name: '1R' },
+  { red: 0, green: 1, blue: 0, cost: 4, name: '1G' },
+  { red: 0, green: 0, blue: 1, cost: 4, name: '1B' },
+  { red: 2, green: 0, blue: 0, cost: 25, name: '2R' },
+  { red: 0, green: 2, blue: 0, cost: 25, name: '2G' },
+  { red: 0, green: 0, blue: 2, cost: 25, name: '2B' },
+  { red: 3, green: 0, blue: 0, cost: 120, name: '3R' },
+  { red: 0, green: 3, blue: 0, cost: 120, name: '3G' },
+  { red: 0, green: 0, blue: 3, cost: 120, name: '3B' },
+  // Hybrid 1+1
+  { red: 1, green: 1, blue: 0, cost: 15, name: '1R1G' },
+  { red: 1, green: 0, blue: 1, cost: 15, name: '1R1B' },
+  { red: 0, green: 1, blue: 1, cost: 15, name: '1G1B' },
+  // Hybrid 2+1
+  { red: 2, green: 1, blue: 0, cost: 100, name: '2R1G' },
+  { red: 2, green: 0, blue: 1, cost: 100, name: '2R1B' },
+  { red: 1, green: 2, blue: 0, cost: 100, name: '1R2G' },
+  { red: 0, green: 2, blue: 1, cost: 100, name: '2G1B' },
+  { red: 1, green: 0, blue: 2, cost: 100, name: '1R2B' },
+  { red: 0, green: 1, blue: 2, cost: 100, name: '1G2B' },
+];
+
+// Find cheapest bench craft that guarantees the needed colors
+// Returns null if no bench craft covers the requirement
+function findCheapestBenchCraft(neededRed: number, neededGreen: number, neededBlue: number): BenchCraft | null {
+  let cheapest: BenchCraft | null = null;
+  
+  for (const craft of BENCH_CRAFTS) {
+    // Check if this craft guarantees at least the needed colors
+    if (craft.red >= neededRed && craft.green >= neededGreen && craft.blue >= neededBlue) {
+      if (!cheapest || craft.cost < cheapest.cost) {
+        cheapest = craft;
+      }
+    }
+  }
+  
+  return cheapest;
+}
+
 // Calculate Jeweller's Method costs (socket add/remove technique)
 // Returns starting chromatic cost + jeweller steps + total
 function calculateJewellerMethod(
@@ -291,6 +342,11 @@ function calculateJewellerMethod(
     const startChance = combinationProbability(startRed, startGreen, startBlue, probs, startSockets);
     const chromaticCost = startChance > 0 ? (1 / startChance) : 0;
     
+    // Check if bench craft is cheaper than chromatics
+    const benchCraft = findCheapestBenchCraft(startRed, startGreen, startBlue);
+    const finalChromaticCost = (benchCraft && benchCraft.cost < chromaticCost) ? benchCraft.cost : chromaticCost;
+    const usedBench = (benchCraft && benchCraft.cost < chromaticCost);
+    
     // Now calculate jeweller cost for remaining sockets
     let jewellerCost = 0;
     let remainingRed = red - startRed;
@@ -327,10 +383,10 @@ function calculateJewellerMethod(
     
     results.push({
       startSockets,
-      chromaticCost,
+      chromaticCost: finalChromaticCost,
       jewellerCost,
-      totalCostDescription: `${formatNumber(chromaticCost)} chr + ${formatNumber(jewellerCost)} jew`,
-      description: `Start ${startSockets} sockets (${startRed}R${startGreen}G${startBlue}B) → ${desiredSockets}`
+      totalCostDescription: `${formatNumber(finalChromaticCost)} chr + ${formatNumber(jewellerCost)} jew`,
+      description: `Start ${startSockets} sockets (${[startRed > 0 ? `${startRed}R` : '', startGreen > 0 ? `${startGreen}G` : '', startBlue > 0 ? `${startBlue}B` : ''].filter(Boolean).join(' ')})${usedBench ? ' [bench]' : ''} → ${desiredSockets}`
     });
   }
   

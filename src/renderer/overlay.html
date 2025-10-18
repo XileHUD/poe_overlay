@@ -3861,6 +3861,38 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
             }
+            
+            // PoE1 Gem Detail handler (for copied gems)
+            if (window.electronAPI && window.electronAPI.onShowPoe1GemDetail && !window.__xilehudPoe1GemBound) {
+                window.__xilehudPoe1GemBound = true;
+                window.electronAPI.onShowPoe1GemDetail((payload) => {
+                    try {
+                        console.log('[onShowPoe1GemDetail] Opening PoE1 Gem:', payload);
+                        
+                        // Attempt to show gem detail by name
+                        const ensure = (attempts=5) => {
+                            if (window.OverlayPoe1Gems && typeof window.OverlayPoe1Gems.showDetailByName === 'function') {
+                                try { 
+                                    window.OverlayPoe1Gems.showDetailByName(payload.gemName); 
+                                    console.log('[onShowPoe1GemDetail] PoE1 Gem detail shown for:', payload.gemName);
+                                } catch (e) {
+                                    console.error('[onShowPoe1GemDetail] Error showing PoE1 gem detail:', e);
+                                }
+                                return;
+                            }
+                            if (attempts>0) {
+                                console.log('[onShowPoe1GemDetail] Waiting for PoE1 Gems module, attempts left:', attempts);
+                                setTimeout(()=>ensure(attempts-1),120);
+                            } else {
+                                console.error('[onShowPoe1GemDetail] PoE1 Gems module not available after retries');
+                            }
+                        };
+                        ensure();
+                    } catch (e) { 
+                        console.error('[onShowPoe1GemDetail] PoE1 gem focus failed:', e); 
+                    }
+                });
+            }
         } catch {}
         if (!window.__xilehudUniqueBound) setTimeout(attachUniqueHandler, 300);
     };

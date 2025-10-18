@@ -81,6 +81,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
     onShowPoe1UniqueItem: (callback: (data: { name: string; baseType: string }) => void) => {
         ipcRenderer.on('show-poe1-unique-item', (_event, data) => callback(data));
     },
+    onShowPoe1GemDetail: (callback: (data: { gemName: string }) => void) => {
+        ipcRenderer.on('show-poe1-gem-detail', (_event, data) => callback(data));
+    },
     
     // Notify main process that overlay is ready
     overlayReady: () => ipcRenderer.send('overlay-ready'),

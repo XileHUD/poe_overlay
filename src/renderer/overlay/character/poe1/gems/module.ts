@@ -1088,3 +1088,90 @@ function renderChart(canvas: HTMLCanvasElement, columnName: string, levelProgres
   
   ctx.fillText(titleText, width / 2, 15);
 }
+
+/**
+ * Convert a gem name to its slug format for looking up details.
+ * Examples:
+ *   "Lightning Strike" -> "lightning_strike"
+ *   "Awakened Deadly Ailments Support" -> "awakened_deadly_ailments_support"
+ *   "Enlighten Support" -> "enlighten_support"
+ */
+function gemNameToSlug(gemName: string): string {
+  if (!gemName) return '';
+  return gemName
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '_');
+}
+
+/**
+ * Find the gem slug for a given gem name by searching the cache.
+ * This is more reliable than just converting the name to slug format
+ * because gems might have special naming conventions.
+ */
+async function findGemSlugByName(gemName: string): Promise<string | null> {
+  try {
+    // Ensure we have the gems cache loaded
+    if (!state.cache) {
+      const data = await (window as any).electronAPI.getPoe1Gems?.();
+      if (!data || data.error) return null;
+      state.cache = data.gems || {};
+    }
+
+    // Get all gems
+    let allGems: Gem[] = [];
+    if (Array.isArray(state.cache)) {
+      allGems = state.cache;
+    } else if (state.cache && !Array.isArray(state.cache) && (state.cache.SkillGemsGem || state.cache.SupportGemsGem || state.cache.AwakenedGem)) {
+      allGems = [
+        ...(state.cache.SkillGemsGem || []),
+        ...(state.cache.SupportGemsGem || []),
+        ...(state.cache.AwakenedGem || [])
+      ];
+    }
+
+    // Try to find exact match first
+    const exactMatch = allGems.find(gem => gem.name === gemName);
+    if (exactMatch && exactMatch.slug) {
+      return exactMatch.slug;
+    }
+
+    // Try case-insensitive match
+    const lowerGemName = gemName.toLowerCase();
+    const caseInsensitiveMatch = allGems.find(gem => 
+      gem.name?.toLowerCase() === lowerGemName
+    );
+    if (caseInsensitiveMatch && caseInsensitiveMatch.slug) {
+      return caseInsensitiveMatch.slug;
+    }
+
+    // Fallback: convert name to slug format
+    return gemNameToSlug(gemName);
+  } catch (e) {
+    console.error('[Gems] Error finding gem slug:', e);
+    return gemNameToSlug(gemName);
+  }
+}
+
+/**
+ * Show gem detail by name (called when a gem is copied in-game)
+ */
+export async function showDetailByName(gemName: string): Promise<void> {
+  if (!gemName) {
+    console.warn('[Gems] showDetailByName called with empty name');
+    return;
+  }
+
+  console.log('[Gems] Looking up gem:', gemName);
+  const slug = await findGemSlugByName(gemName);
+  
+  if (!slug) {
+    console.error('[Gems] Could not find slug for gem:', gemName);
+    // Fallback: show the list
+    await showList();
+    return;
+  }
+
+  console.log('[Gems] Found slug:', slug, 'for gem:', gemName);
+  await showDetail(slug);
+}

@@ -105,6 +105,7 @@ declare global {
     OverlayPoe1Gems?: {
       showList: () => Promise<void>;
       showDetail: (gemSlug: string) => Promise<void>;
+      showDetailByName: (gemName: string) => Promise<void>;
     };
     OverlayRegex?: {
       show: () => Promise<void>;
