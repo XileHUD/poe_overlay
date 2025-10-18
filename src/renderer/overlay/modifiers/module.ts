@@ -249,7 +249,7 @@ function evaluateSearchTokens(index: SearchIndex, tokens: SearchToken[], rawTerm
 function isAggregatedCategory(): boolean {
   const currentCategory = (window as any).currentModifierCategory;
   if (!currentCategory) return false;
-  const AGGREGATED_CATEGORIES = ['ALL', 'DESECRATED', 'ESSENCE', 'CORRUPTED', 'SOCKETABLE', 'SOCKETABLES'];
+  const AGGREGATED_CATEGORIES = ['ALL', 'DESECRATED', 'ESSENCE', 'CORRUPTED', 'SOCKETABLES'];
   return AGGREGATED_CATEGORIES.includes(currentCategory.toUpperCase());
 }
 
@@ -1143,7 +1143,7 @@ export function computeWhittling(data: ModifierData): WhittlingResult | null {
  * When clicked, toggles the corresponding filter chip and triggers re-render.
  * Also updates inline tag styling to visually indicate active filter state.
  */
-function attachInlineTagClickHandlers(activeTags: Set<string>, tagRGB: (tag: string) => number[]): void {
+function attachInlineTagClickHandlers(tagModes: Map<string, string>, tagRGB: (tag: string) => number[]): void {
   try {
     const resultsWrapper = document.getElementById('modResultsWrapper');
     if (!resultsWrapper) return;
@@ -1155,9 +1155,9 @@ function attachInlineTagClickHandlers(activeTags: Set<string>, tagRGB: (tag: str
       const tagName = tagEl.getAttribute('data-tag') || '';
       if (!tagName) return;
 
-      // Update styling based on active state
-      const isActive = activeTags.has(tagName);
-      updateInlineTagStyle(tagEl as HTMLElement, tagName, isActive, tagRGB);
+      // Update styling based on filter mode
+      const mode = tagModes.get(tagName) || '';
+      updateInlineTagStyle(tagEl as HTMLElement, tagName, mode, tagRGB);
 
       // Remove any existing listeners to prevent duplicates
       const oldHandler = (tagEl as any).__tagClickHandler;
@@ -1192,20 +1192,33 @@ function attachInlineTagClickHandlers(activeTags: Set<string>, tagRGB: (tag: str
 }
 
 /**
- * Update inline tag styling to reflect active/inactive state.
+ * Update inline tag styling to reflect filter mode (include/exclude/none).
  */
-function updateInlineTagStyle(tagEl: HTMLElement, tagName: string, isActive: boolean, tagRGB: (tag: string) => number[]): void {
+function updateInlineTagStyle(tagEl: HTMLElement, tagName: string, mode: string, tagRGB: (tag: string) => number[]): void {
   const [r, g, b] = tagRGB(tagName);
-  const bg = isActive ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
-  const border = `rgba(${r},${g},${b},0.6)`;
-  const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  const color = isActive ? (luma > 180 ? '#000' : '#fff') : 'var(--text-primary)';
+  let bg: string, border: string, color: string;
+  
+  if (mode === 'include') {
+    bg = `rgba(${r},${g},${b},0.9)`;
+    border = `rgba(${r},${g},${b},0.6)`;
+    const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    color = luma > 180 ? '#000' : '#fff';
+  } else if (mode === 'exclude') {
+    bg = `rgba(200,60,60,0.85)`;
+    border = `rgba(180,40,40,0.8)`;
+    color = '#fff';
+  } else {
+    bg = `rgba(${r},${g},${b},0.22)`;
+    border = `rgba(${r},${g},${b},0.6)`;
+    color = 'var(--text-primary)';
+  }
   
   tagEl.style.background = bg;
   tagEl.style.borderColor = border;
   tagEl.style.color = color;
   tagEl.style.cursor = 'pointer';
-  tagEl.classList.toggle('active', isActive);
+  tagEl.classList.toggle('active', mode === 'include');
+  tagEl.classList.toggle('exclude', mode === 'exclude');
 }
 
 /**
@@ -1249,7 +1262,22 @@ export function renderFilteredContent(data: any){
   const ilvlMin = Number((document.getElementById('ilvl-min') as HTMLInputElement | null)?.value || 0) || 0;
   const ilvlMaxRaw = (document.getElementById('ilvl-max') as HTMLInputElement | null)?.value || '';
   const ilvlMax = ilvlMaxRaw === '' ? null : (Number(ilvlMaxRaw)||0);
-  const activeTags = Array.from(document.querySelectorAll('.filter-tag.active')).map(el => el.getAttribute('data-tag') || (el.textContent||'').replace(/ \(\d+\)$/,''));
+  
+  // Collect filter tags by mode (include/exclude)
+  const includeTags: string[] = [];
+  const excludeTags: string[] = [];
+  document.querySelectorAll('.filter-tag').forEach(el => {
+    const mode = el.getAttribute('data-filter-mode') || '';
+    const tag = el.getAttribute('data-tag') || '';
+    if (mode === 'include' && tag) includeTags.push(tag);
+    if (mode === 'exclude' && tag) excludeTags.push(tag);
+  });
+  
+  // Get tag filter mode (AND/OR)
+  const tagFilterMode = document.getElementById('tagFilterModeToggle')?.getAttribute('data-mode') || 'and';
+  
+  // Legacy: keep activeTags for backward compatibility
+  const activeTags = includeTags;
 
   const canComputeWhittling = isWhittlingFeatureEnabled();
   const whittlingResult = canComputeWhittling ? computeWhittling(data as ModifierData) : null;
@@ -1298,7 +1326,8 @@ export function renderFilteredContent(data: any){
   const ilvlFilteringActive = (ilvlMin > 0) || (ilvlMax != null && ilvlMax > 0);
   // noFilters previously ignored ilvl filters causing them to do nothing when used alone
   const noFilters = (!hasSearch)
-    && activeTags.length === 0
+    && includeTags.length === 0
+    && excludeTags.length === 0
     && (!currentAttribute || categoryHasAttribute || !attributeMetaAvailable)
     && activeDomain === 'all'
     && !ilvlFilteringActive; // ensure ilvl filters trigger pipeline
@@ -1337,7 +1366,27 @@ export function renderFilteredContent(data: any){
             : { passes: true, matchedFuzzy: 0, matchedStrict: 0 };
           const matchesSearch = !hasSearch || searchEval.passes;
           const expandedTags = (()=>{ const base = Array.isArray(mod.tags) ? mod.tags.slice() : []; const extra = deriveTagsFromMod(mod); return Array.from(new Set([...(base||[]), ...extra])); })();
-          const matchesTags = activeTags.length === 0 || (expandedTags.length>0 && activeTags.every(t => expandedTags.includes(t)));
+          
+          // Tag filtering with include/exclude and AND/OR logic
+          let matchesTags = true;
+          if (includeTags.length > 0 || excludeTags.length > 0) {
+            // Check included tags (must match based on AND/OR mode)
+            let matchesInclude = true;
+            if (includeTags.length > 0) {
+              if (tagFilterMode === 'and') {
+                // AND: all included tags must be present
+                matchesInclude = includeTags.every(t => expandedTags.includes(t));
+              } else {
+                // OR: at least one included tag must be present
+                matchesInclude = includeTags.some(t => expandedTags.includes(t));
+              }
+            }
+            
+            // Check excluded tags (none should be present)
+            const matchesExclude = excludeTags.length === 0 || !excludeTags.some(t => expandedTags.includes(t));
+            
+            matchesTags = matchesInclude && matchesExclude;
+          }
           let matchesAttribute = true;
           if (currentAttribute && attributeMetaAvailable && !categoryHasAttribute) {
             matchesAttribute = (
@@ -1441,6 +1490,14 @@ export function renderFilteredContent(data: any){
   // Build filters bar (tags + optional attribute buttons)
   const prevActive = new Set(activeTags);
   const prevAttr = currentAttribute || '';
+  
+  // Build tag modes map for inline tag styling
+  const tagModes = new Map<string, string>();
+  document.querySelectorAll('.filter-tag').forEach(el => {
+    const tag = el.getAttribute('data-tag') || '';
+    const mode = el.getAttribute('data-filter-mode') || '';
+    if (tag) tagModes.set(tag, mode);
+  });
   const tagCounts: Record<string, number> = {};
   (data.modifiers||[]).forEach((section:any)=>{
     (section.mods||[]).forEach((m:any)=>{
@@ -1509,19 +1566,50 @@ export function renderFilteredContent(data: any){
     // Default fallback
     return [120,144,156];  // Slate gray
   };
-  const chipCss = (tag: string, active: boolean) => {
+  const chipCss = (tag: string, mode: string) => {
     const [r,g,b] = tagRGB(tag);
-    const bg = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
-    const border = `rgba(${r},${g},${b},0.6)`;
-    const luma = 0.2126*r+0.7152*g+0.0722*b;
-    const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)';
-    return `padding:2px 8px; font-size:11px; border:1px solid ${border}; border-radius:999px; background:${bg}; color:${color}; cursor:pointer;`;
+    let bg: string, border: string, color: string;
+    
+    if (mode === 'include') {
+      bg = `rgba(${r},${g},${b},0.9)`;
+      border = `rgba(${r},${g},${b},0.6)`;
+      const luma = 0.2126*r+0.7152*g+0.0722*b;
+      color = luma>180? '#000':'#fff';
+    } else if (mode === 'exclude') {
+      // Red-tinted for NOT filter
+      bg = `rgba(200,60,60,0.85)`;
+      border = `rgba(180,40,40,0.8)`;
+      color = '#fff';
+    } else {
+      // Inactive - grey background like scarabs page
+      bg = `rgba(${r},${g},${b},0.22)`;
+      border = `rgba(${r},${g},${b},0.6)`;
+      color = 'var(--text-primary)';
+    }
+    
+    const prefix = mode === 'exclude' ? 'NOT ' : '';
+    return {
+      style: `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; line-height:1; display:inline-block; border-radius:4px; border:1px solid ${border}; background:${bg}; color:${color};`,
+      prefix,
+      bg,
+      border,
+      color
+    };
   };
   const filtersHtml = `
-    <div id="filtersBar" style="display:flex; flex-direction:column; gap:8px; margin:2px 0 8px; padding:0; width:100%;">
-      ${attrButtons.length? `<div style="display:flex; gap:6px; align-items:center; justify-content:center; width:100%;"><span style="font-size:11px; color:var(--text-secondary);">Attribute</span>${attrButtons.map(a=>`<button class="attribute-btn${prevAttr===a?' active':''}" data-attr="${a}" style="padding:2px 8px; font-size:11px; border:1px solid var(--border-color); border-radius:999px; background:${prevAttr===a?'var(--accent-blue)':'var(--bg-tertiary)'}; color:${prevAttr===a?'#fff':'var(--text-primary)'}; cursor:pointer;">${a.toUpperCase()}</button>`).join('')}</div>` : ''}
-      <div style="display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;">
-        ${sortedTags.map(t=>`<button class="filter-tag${prevActive.has(t)?' active':''}" data-tag="${t}" style="${chipCss(t, prevActive.has(t))}">${t} (${tagCounts[t]||0})</button>`).join('')}
+    <div id="filtersBar" style="display:flex; flex-direction:column; gap:0; margin:0 0 6px 0; padding:0; width:100%;">
+      ${attrButtons.length? `<div style="display:flex; gap:6px; align-items:center; justify-content:center; width:100%; margin-bottom:2px;"><span style="font-size:11px; color:var(--text-secondary);">Attribute</span>${attrButtons.map(a=>`<button class="attribute-btn${prevAttr===a?' active':''}" data-attr="${a}" style="padding:2px 8px; font-size:11px; border:1px solid var(--border-color); border-radius:999px; background:${prevAttr===a?'var(--accent-blue)':'var(--bg-tertiary)'}; color:${prevAttr===a?'#fff':'var(--text-primary)'}; cursor:pointer;">${a.toUpperCase()}</button>`).join('')}</div>` : ''}<div style="background:var(--bg-secondary); border-radius:4px; padding:5px 6px; display:flex; gap:6px; width:100%; position:relative; top:-6px;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:1px; flex-shrink:0;">
+          <span style="font-size:0.625rem; color:var(--text-secondary); white-space:nowrap;">Filter:</span>
+          <button id="tagFilterModeToggle" data-mode="and" style="padding:3px 10px; font-size:0.688rem; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-primary); cursor:pointer; font-weight:600;">AND</button>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:4px; justify-content:center; align-items:flex-start; flex:1;">
+          ${sortedTags.map(t=>{
+            const mode = prevActive.has(t) ? 'include' : '';
+            const css = chipCss(t, mode);
+            return `<div class="filter-tag${mode?' active':''}" data-tag="${t}" data-filter-mode="${mode}" style="${css.style}">${css.prefix}${t} (${tagCounts[t]||0})</div>`;
+          }).join('')}
+        </div>
       </div>
     </div>`;
 
@@ -1549,10 +1637,56 @@ export function renderFilteredContent(data: any){
   if (filtersWrapper.getAttribute('data-signature') !== filterSignature) {
     filtersWrapper.setAttribute('data-signature', filterSignature);
     filtersWrapper.innerHTML = filtersHtml;
+    // Pull the entire filters block closer to the toolbar and keep consistent bottom spacing
     try {
+      (filtersWrapper as HTMLElement).style.marginTop = '-6px';
+      (filtersWrapper as HTMLElement).style.marginBottom = '6px';
+    } catch {}
+    try {
+      // Tag filter mode toggle (AND/OR)
+      const modeToggle = document.getElementById('tagFilterModeToggle');
+      if (modeToggle) {
+        modeToggle.addEventListener('click', () => {
+          const currentMode = modeToggle.getAttribute('data-mode') || 'and';
+          const nextMode = currentMode === 'and' ? 'or' : 'and';
+          modeToggle.setAttribute('data-mode', nextMode);
+          modeToggle.textContent = nextMode.toUpperCase();
+          modeToggle.style.background = nextMode === 'or' ? 'var(--accent-blue)' : 'var(--bg-tertiary)';
+          modeToggle.style.color = nextMode === 'or' ? '#fff' : 'var(--text-primary)';
+          if ((window as any).originalData) renderFilteredContent((window as any).originalData);
+        });
+      }
+      
       filtersWrapper.querySelectorAll('.filter-tag').forEach(chip => {
         chip.addEventListener('click', () => {
-          chip.classList.toggle('active');
+          // Cycle through states: none → include → exclude → none
+          const currentMode = chip.getAttribute('data-filter-mode') || '';
+          const tag = chip.getAttribute('data-tag') || '';
+          let nextMode = '';
+          
+          if (currentMode === '') {
+            nextMode = 'include';
+            chip.classList.add('active');
+          } else if (currentMode === 'include') {
+            nextMode = 'exclude';
+            chip.classList.add('exclude');
+            chip.classList.remove('active');
+          } else {
+            nextMode = '';
+            chip.classList.remove('active', 'exclude');
+          }
+          
+          chip.setAttribute('data-filter-mode', nextMode);
+          
+          // Update chip styling and text - only update colors, not font-size
+          const css = chipCss(tag, nextMode);
+          const el = chip as HTMLElement;
+          el.style.background = css.bg;
+          el.style.borderColor = css.border;
+          el.style.color = css.color;
+          const count = tagCounts[tag] || 0;
+          chip.textContent = `${css.prefix}${tag} (${count})`;
+          
           if ((window as any).originalData) renderFilteredContent((window as any).originalData);
         });
       });
@@ -1568,12 +1702,16 @@ export function renderFilteredContent(data: any){
   }
 
   try {
-    // Sync chip active states without rebuilding DOM to prevent layout shift
+    // Sync chip states without rebuilding DOM to prevent layout shift
     filtersWrapper.querySelectorAll('.filter-tag').forEach(chip => {
       const key = chip.getAttribute('data-tag') || '';
-      const isActive = prevActive.has(key);
-      chip.classList.toggle('active', isActive);
-      chip.setAttribute('style', chipCss(key, isActive));
+      const mode = chip.getAttribute('data-filter-mode') || '';
+      const css = chipCss(key, mode);
+      chip.setAttribute('style', css.style);
+      const count = tagCounts[key] || 0;
+      chip.textContent = `${css.prefix}${key} (${count})`;
+      chip.classList.toggle('active', mode === 'include');
+      chip.classList.toggle('exclude', mode === 'exclude');
     });
     filtersWrapper.querySelectorAll('.attribute-btn').forEach(btn => {
       const attr = btn.getAttribute('data-attr') || '';
@@ -1661,7 +1799,7 @@ export function renderFilteredContent(data: any){
   const attachEventHandlers = () => {
     try {
       // Ensure inline tags are wired after results are in the DOM
-      attachInlineTagClickHandlers(prevActive, tagRGB);
+      attachInlineTagClickHandlers(tagModes, tagRGB);
 
       (window as any).__lastFilteredSections = (filteredData.modifiers || []).map((s:any)=>({ ...s }));
       resultsWrapper.querySelectorAll('.pin-section-btn').forEach(btn => {
