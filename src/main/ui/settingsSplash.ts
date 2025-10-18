@@ -175,8 +175,8 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
 
   return new Promise((resolve) => {
     const { width, height } = screen.getPrimaryDisplay().workAreaSize;
-    const splashWidth = 550;
-    const splashHeight = 600;
+    const splashWidth = 960;
+    const splashHeight = 640;
     let initialX = Math.round(width / 2 - splashWidth / 2);
     let initialY = Math.round(height / 2 - splashHeight / 2);
 
@@ -635,10 +635,13 @@ function buildSettingsSplashHtml(
       display: flex;
       flex-direction: column;
       height: 100vh;
+      border: 1px solid rgba(240, 173, 78, 0.3);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(240, 173, 78, 0.15);
+      border-radius: 8px;
     }
     
     .header {
-      padding: 16px 24px;
+      padding: 14px 24px 12px;
       background: linear-gradient(135deg, rgba(240, 173, 78, 0.12) 0%, rgba(240, 173, 78, 0.06) 100%);
       border-bottom: 2px solid rgba(240, 173, 78, 0.25);
       display: flex;
@@ -646,6 +649,7 @@ function buildSettingsSplashHtml(
       align-items: center;
       flex-shrink: 0;
       -webkit-app-region: drag;
+      border-radius: 8px 8px 0 0;
     }
     
     .header-title {
@@ -690,43 +694,108 @@ function buildSettingsSplashHtml(
       transform: scale(1.1);
     }
     
+    /* Tab Navigation */
+    .tab-nav {
+      display: flex;
+      background: var(--bg-secondary);
+      border-bottom: 2px solid var(--border-color);
+      padding: 0 20px;
+      gap: 4px;
+      flex-shrink: 0;
+      -webkit-app-region: no-drag;
+    }
+    
+    .tab-button {
+      padding: 12px 28px;
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+    }
+    
+    .tab-button:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.03);
+    }
+    
+    .tab-button.active {
+      color: var(--accent-orange);
+      border-bottom-color: var(--accent-orange);
+      background: rgba(240, 173, 78, 0.06);
+    }
+    
+    .tab-button .tab-icon {
+      margin-right: 8px;
+      font-size: 16px;
+    }
+    
+    /* Content Wrapper */
     .content-wrapper {
       flex: 1;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Tab Panels */
+    .tab-panel {
+      display: none;
+      flex: 1;
+      padding: 24px 32px;
       overflow-y: auto;
-      padding: 24px;
+      animation: fadeIn 0.25s ease;
+    }
+    
+    .tab-panel.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
     /* Dark scrollbar */
-    .content-wrapper::-webkit-scrollbar {
-      width: 12px;
+    .tab-panel::-webkit-scrollbar {
+      width: 10px;
     }
     
-    .content-wrapper::-webkit-scrollbar-track {
-      background: var(--bg-secondary);
-      border-radius: 6px;
+    .tab-panel::-webkit-scrollbar-track {
+      background: var(--bg-primary);
     }
     
-    .content-wrapper::-webkit-scrollbar-thumb {
+    .tab-panel::-webkit-scrollbar-thumb {
       background: var(--bg-tertiary);
-      border-radius: 6px;
-      border: 2px solid var(--bg-secondary);
+      border-radius: 5px;
     }
     
-    .content-wrapper::-webkit-scrollbar-thumb:hover {
+    .tab-panel::-webkit-scrollbar-thumb:hover {
       background: #505050;
     }
     
     .section {
-      margin-bottom: 16px;
-      padding: 16px;
+      margin-bottom: 24px;
+      padding: 20px 24px;
       background: var(--bg-secondary);
       border: 1px solid var(--border-color);
       border-radius: 8px;
     }
     
     .section-title {
-      margin: 0 0 12px;
-      font-size: 15px;
+      margin: 0 0 14px;
+      font-size: 16px;
       font-weight: 600;
       color: var(--text-primary);
       display: flex;
@@ -735,9 +804,29 @@ function buildSettingsSplashHtml(
     }
     
     .section-desc {
-      margin: 0 0 12px;
-      font-size: 12px;
+      margin: 0 0 16px;
+      font-size: 13px;
       color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .section-content {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Grid for multi-column layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    @media (max-width: 800px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
     }
 
     .game-choice-grid {
@@ -993,13 +1082,33 @@ function buildSettingsSplashHtml(
       background-color: white;
     }
     
-    .footer {
+    /* Empty state for tabs with minimal content */
+    .empty-state {
       display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-      margin-top: 24px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border-color);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      min-height: 300px;
+    }
+    
+    .empty-state-icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+      opacity: 0.3;
+    }
+    
+    .empty-state-text {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    
+    .empty-state-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
     }
     
     .update-status {
@@ -1135,44 +1244,30 @@ function buildSettingsSplashHtml(
     <button class="close-btn" id="closeBtn">×</button>
   </div>
   
-  <div class="content-wrapper">
-  <!-- Updates Section -->
-  <div class="section">
-    <div class="section-title">🔄 Updates</div>
-    <div class="section-desc">Keep your overlay up-to-date with the latest features and fixes</div>
-    <div class="setting-item">
-      <div class="setting-label">
-        <span class="setting-label-text">Current Version</span>
-        <span class="setting-label-desc">v${appVersion}</span>
-      </div>
-      <span class="setting-label-text" id="latestVersionDisplay" style="color: var(--text-secondary); font-size: 12px;">Latest: -</span>
-    </div>
-    <div class="setting-item">
-      <div class="setting-label">
-        <span class="setting-label-text">Check for Updates</span>
-        <span class="setting-label-desc">Checks for new versions on GitHub</span>
-      </div>
-      <button class="btn btn-green" id="checkUpdatesBtn">
-        <span id="updateBtnText">Check Now</span>
-      </button>
-    </div>
-    <button class="btn btn-orange" id="downloadUpdateBtn" style="display: none; margin-top: 10px;">Download Update</button>
-    <div id="updateStatus" class="update-status"></div>
+  <!-- Tab Navigation -->
+  <div class="tab-nav">
+    <button class="tab-button active" data-tab="general">
+      <span class="tab-icon">🏠</span>General
+    </button>
+    <button class="tab-button" data-tab="controls">
+      <span class="tab-icon">🎮</span>Controls
+    </button>
+    <button class="tab-button" data-tab="trading">
+      <span class="tab-icon">📊</span>Trading
+    </button>
+    <button class="tab-button" data-tab="appearance">
+      <span class="tab-icon">🎨</span>Appearance
+    </button>
+    <button class="tab-button" data-tab="data">
+      <span class="tab-icon">📁</span>Data
+    </button>
   </div>
   
-  <!-- Features Section -->
-  <div class="section">
-    <div class="section-title">🎯 Features</div>
-    <div class="section-desc">Enable or disable specific overlay features</div>
-    <div class="setting-item">
-      <div class="setting-label">
-        <span class="setting-label-text">Feature Selection</span>
-        <span class="setting-label-desc">Choose which features to load</span>
-      </div>
-      <button class="btn btn-primary" id="featuresBtn">Configure Features</button>
-    </div>
-  </div>
-
+  <div class="content-wrapper">
+    
+    <!-- GENERAL TAB -->
+    <div class="tab-panel active" data-panel="general">
+      
   <!-- Overlay Version Section -->
   <div class="section">
     <div class="section-title">🛡 Overlay Version</div>
@@ -1189,23 +1284,54 @@ function buildSettingsSplashHtml(
     <button class="btn btn-green" id="saveOverlayVersionBtn" style="display: none; margin-top: 12px;">Save Overlay Version</button>
     <div class="setting-status" id="overlayVersionStatus"></div>
   </div>
-  
-  <!-- Merchant History League Section -->
-  <div class="section">
-    <div class="section-title">📊 Merchant History</div>
-    <div class="section-desc">Choose which trade league to track for merchant history</div>
-    <div class="setting-item">
-      <div class="setting-label">
-        <span class="setting-label-text">Trade League</span>
-        <span class="setting-label-desc">Select the league for tracking your merchant trades</span>
+
+  <!-- Two Column Grid for Features and Updates -->
+  <div class="grid-2">
+    
+    <!-- Features Section -->
+    <div class="section">
+      <div class="section-title">🎯 Features</div>
+      <div class="section-desc">Enable or disable specific overlay features</div>
+      <div class="setting-item">
+        <div class="setting-label">
+          <span class="setting-label-text">Feature Selection</span>
+          <span class="setting-label-desc">Choose which features to load</span>
+        </div>
+        <button class="btn btn-primary" id="featuresBtn">Configure Features</button>
       </div>
-      <select class="btn btn-secondary" id="leagueSelect" style="min-width: 220px;">
-        ${leagueOptionsMarkup}
-      </select>
     </div>
-    <button class="btn btn-green" id="saveLeagueBtn" style="margin-top: 10px; display: none;">Save League</button>
-  </div>
-  
+      
+    <!-- Updates Section -->
+    <div class="section">
+      <div class="section-title">🔄 Updates</div>
+      <div class="section-desc">Keep your overlay up-to-date with the latest features and fixes</div>
+      <div class="setting-item">
+        <div class="setting-label">
+          <span class="setting-label-text">Current Version</span>
+          <span class="setting-label-desc">v${appVersion}</span>
+        </div>
+        <span class="setting-label-text" id="latestVersionDisplay" style="color: var(--text-secondary); font-size: 12px;">Latest: -</span>
+      </div>
+      <div class="setting-item">
+        <div class="setting-label">
+          <span class="setting-label-text">Check for Updates</span>
+          <span class="setting-label-desc">Checks for new versions on GitHub</span>
+        </div>
+        <button class="btn btn-green" id="checkUpdatesBtn">
+          <span id="updateBtnText">Check Now</span>
+        </button>
+      </div>
+      <button class="btn btn-orange" id="downloadUpdateBtn" style="display: none; margin-top: 10px;">Download Update</button>
+      <div id="updateStatus" class="update-status"></div>
+    </div>
+    
+  </div><!-- End grid-2 -->
+    
+    </div><!-- End General Tab -->
+    
+    <!-- CONTROLS TAB -->
+    <div class="tab-panel" data-panel="controls">
+      
   <!-- Controls Section -->
   <div class="section">
     <div class="section-title">🎮 Controls</div>
@@ -1229,6 +1355,84 @@ function buildSettingsSplashHtml(
       </div>
     </div>
   </div>
+      
+    </div><!-- End Controls Tab -->
+    
+    <!-- TRADING TAB -->
+    <div class="tab-panel" data-panel="trading">
+      
+  <!-- Merchant History League Section -->
+  <div class="section">
+    <div class="section-title">📊 Merchant History League</div>
+    <div class="section-desc">Choose which trade league to track for merchant history</div>
+    <div class="setting-item">
+      <div class="setting-label">
+        <span class="setting-label-text">Trade League</span>
+        <span class="setting-label-desc">Select the league for tracking your merchant trades</span>
+      </div>
+      <select class="btn btn-secondary" id="leagueSelect" style="min-width: 220px;">
+        ${leagueOptionsMarkup}
+      </select>
+    </div>
+    <button class="btn btn-green" id="saveLeagueBtn" style="margin-top: 10px; display: none;">Save League</button>
+  </div>
+  
+  <!-- Merchant History Automation -->
+  <div class="section">
+    <div class="section-title">🗓 Merchant History Automation</div>
+    <div class="section-desc">Control how often the overlay polls merchant history in the background</div>
+    
+    <!-- Two Column Grid for Auto-Fetch Settings -->
+    <div class="grid-2">
+      
+      <!-- Enable Auto-Fetch -->
+      <div style="padding: 16px; background: rgba(255, 193, 7, 0.08); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 8px;">
+        <div style="font-weight: 600; font-size: 14px; margin-bottom: 12px; color: var(--text-primary);">⚙️ Enable Auto-Fetch</div>
+        <div class="setting-item" style="border: none; padding: 0;">
+          <div class="setting-label">
+            <span class="setting-label-text">Auto-Fetch Toggle</span>
+            <span class="setting-label-desc">Automatically fetch merchant history from trade site (smart interval based on rate limit headers)</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="merchantHistoryAutoFetchToggle" ${merchantHistoryAutoFetch !== false ? 'checked' : ''}>
+            <span class="switch-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Override Interval -->
+      <div style="padding: 16px; background: rgba(255, 193, 7, 0.08); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 8px;">
+        <div style="font-weight: 600; font-size: 14px; margin-bottom: 12px; color: var(--text-primary);">⏱️ Override Interval</div>
+        <div class="setting-item" style="border: none; padding: 0;">
+          <div class="setting-label">
+            <span class="setting-label-text">Fixed Interval (optional)</span>
+            <span class="setting-label-desc">Force a fixed interval instead of smart fetching. Leave empty for automatic. Min 15 min.</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <input type="number" min="15" max="240" step="5" value="${merchantHistoryRefreshInterval || ''}" placeholder="Auto" class="text-input" id="merchantHistoryIntervalInput" style="width: 100px; padding: 6px 8px; font-size: 13px;">
+            <span class="slider-value" id="merchantHistoryIntervalDisplay" style="font-size: 12px;">${merchantHistoryRefreshInterval ? merchantHistoryRefreshInterval + ' min' : 'Smart Auto'}</span>
+          </div>
+        </div>
+      </div>
+      
+    </div><!-- End grid-2 -->
+
+    <div style="margin-top: 12px; display: flex; gap: 8px;">
+      <button class="btn btn-green" id="saveMerchantHistorySettingsBtn" style="display: none;">Save Settings</button>
+    </div>
+
+    <div style="margin-top: 12px; padding: 10px; background: rgba(244, 67, 54, 0.1); border: 1px solid rgba(244, 67, 54, 0.3); border-radius: 6px; font-size: 11px; line-height: 1.5; color: var(--text-secondary);">
+      <strong style="color: var(--accent-red);">⚠️ WARNING:</strong> Do not change these settings unless you know what you're doing!<br>
+      By default, the overlay uses <strong>smart fetching</strong> based on rate limit headers from the trade site for optimal performance.<br>
+      Only set a manual interval if you experience issues or heavily use the trade history in your browser.<br>
+      <strong>Going below 15 minutes will almost certainly get you rate-limited by the history site.</strong>
+    </div>
+  </div>
+      
+    </div><!-- End Trading Tab -->
+    
+    <!-- APPEARANCE TAB -->
+    <div class="tab-panel" data-panel="appearance">
   
   <!-- Appearance Section -->
   <div class="section">
@@ -1259,6 +1463,11 @@ function buildSettingsSplashHtml(
     </div>
     <button class="btn btn-green" id="saveFontSizeBtn" style="margin-top: 10px; display: none;">Save Font Size</button>
   </div>
+      
+    </div><!-- End Appearance Tab -->
+    
+    <!-- DATA TAB -->
+    <div class="tab-panel" data-panel="data">
   
   <!-- Data Section -->
   <div class="section">
@@ -1280,54 +1489,36 @@ function buildSettingsSplashHtml(
     </div>
     <div id="dataReloadStatus" class="data-reload-status"></div>
   </div>
-  
-  <!-- Merchant History Automation -->
-  <div class="section">
-    <div class="section-title">🗓 Merchant History Automation</div>
-    <div class="section-desc">Control how often the overlay polls merchant history in the background</div>
-    <div style="padding: 12px; background: rgba(255, 193, 7, 0.08); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 8px;">
-      <div style="font-weight: 600; font-size: 13px; margin-bottom: 8px; color: var(--text-primary);">⚙️ Merchant History Auto-Fetch</div>
       
-      <div class="setting-item" style="margin-bottom: 12px;">
-        <div class="setting-label">
-          <span class="setting-label-text">Enable Auto-Fetch</span>
-          <span class="setting-label-desc">Automatically fetch merchant history from trade site (smart interval based on rate limit headers)</span>
-        </div>
-        <label class="switch">
-          <input type="checkbox" id="merchantHistoryAutoFetchToggle" ${merchantHistoryAutoFetch !== false ? 'checked' : ''}>
-          <span class="switch-slider"></span>
-        </label>
-      </div>
-
-      <div class="setting-item">
-        <div class="setting-label">
-          <span class="setting-label-text">Override Auto-Fetch Interval (optional)</span>
-          <span class="setting-label-desc">Force a fixed interval instead of smart fetching. Leave empty for automatic. Minimum 15 minutes.</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 12px; flex: 1; max-width: 400px;">
-          <input type="number" min="15" max="240" step="5" value="${merchantHistoryRefreshInterval || ''}" placeholder="Auto" class="text-input" id="merchantHistoryIntervalInput" style="width: 100px; padding: 6px 8px; font-size: 13px;">
-          <span class="slider-value" id="merchantHistoryIntervalDisplay">${merchantHistoryRefreshInterval ? merchantHistoryRefreshInterval + ' min' : 'Smart Auto'}</span>
-        </div>
-      </div>
-
-      <div style="margin-top: 12px; display: flex; gap: 8px;">
-        <button class="btn btn-green" id="saveMerchantHistorySettingsBtn" style="display: none;">Save Settings</button>
-      </div>
-
-      <div style="margin-top: 12px; padding: 10px; background: rgba(244, 67, 54, 0.1); border: 1px solid rgba(244, 67, 54, 0.3); border-radius: 6px; font-size: 11px; line-height: 1.5; color: var(--text-secondary);">
-        <strong style="color: var(--accent-red);">⚠️ WARNING:</strong> Do not change these settings unless you know what you're doing!<br>
-        By default, the overlay uses <strong>smart fetching</strong> based on rate limit headers from the trade site for optimal performance.<br>
-        Only set a manual interval if you experience issues or heavily use the trade history in your browser.<br>
-        <strong>Going below 15 minutes will almost certainly get you rate-limited by the history site.</strong>
-      </div>
-    </div>
-  </div>
-  
+    </div><!-- End Data Tab -->
+    
   </div><!-- end content-wrapper -->
   
   <script>
     (function() {
       const { ipcRenderer } = require('electron');
+      
+      // Tab switching functionality
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabPanels = document.querySelectorAll('.tab-panel');
+      
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const targetTab = button.getAttribute('data-tab');
+          
+          // Update button states
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          
+          // Update panel visibility
+          tabPanels.forEach(panel => {
+            panel.classList.remove('active');
+            if (panel.getAttribute('data-panel') === targetTab) {
+              panel.classList.add('active');
+            }
+          });
+        });
+      });
       
       // Close buttons (header X)
       const closeBtns = document.querySelectorAll('#closeBtn');
