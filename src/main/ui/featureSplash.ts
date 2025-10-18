@@ -18,13 +18,62 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
   const safeConfig: FeatureConfig = {
     ...DEFAULT_FEATURES,
     ...config,
-    crafting: { ...DEFAULT_FEATURES.crafting, ...config.crafting },
-    poe1Crafting: { ...DEFAULT_FEATURES.poe1Crafting, ...(config.poe1Crafting || {}) },
-    character: { ...DEFAULT_FEATURES.character, ...config.character },
-    poe1Character: { ...DEFAULT_FEATURES.poe1Character, ...(config.poe1Character || {}) },
-    items: { ...DEFAULT_FEATURES.items, ...config.items },
-    poe1Items: { ...DEFAULT_FEATURES.poe1Items, ...(config.poe1Items || {}) },
-    tools: { ...DEFAULT_FEATURES.tools, ...(config.tools || {}) }
+    crafting: {
+      ...DEFAULT_FEATURES.crafting,
+      ...(config.crafting || {}),
+      subcategories: {
+        ...DEFAULT_FEATURES.crafting.subcategories,
+        ...((config.crafting && config.crafting.subcategories) || {})
+      }
+    },
+    poe1Crafting: {
+      ...DEFAULT_FEATURES.poe1Crafting,
+      ...(config.poe1Crafting || {}),
+      subcategories: {
+        ...DEFAULT_FEATURES.poe1Crafting.subcategories,
+        ...((config.poe1Crafting && config.poe1Crafting.subcategories) || {})
+      }
+    },
+    character: {
+      ...DEFAULT_FEATURES.character,
+      ...(config.character || {}),
+      subcategories: {
+        ...DEFAULT_FEATURES.character.subcategories,
+        ...((config.character && config.character.subcategories) || {})
+      }
+    },
+    poe1Character: {
+      ...DEFAULT_FEATURES.poe1Character,
+      ...(config.poe1Character || {}),
+      subcategories: {
+        ...DEFAULT_FEATURES.poe1Character.subcategories,
+        ...((config.poe1Character && config.poe1Character.subcategories) || {})
+      }
+    },
+    items: {
+      ...DEFAULT_FEATURES.items,
+      ...(config.items || {}),
+      subcategories: {
+        ...DEFAULT_FEATURES.items.subcategories,
+        ...((config.items && config.items.subcategories) || {})
+      }
+    },
+    poe1Items: {
+      ...DEFAULT_FEATURES.poe1Items,
+      ...(config.poe1Items || {}),
+      subcategories: {
+        ...DEFAULT_FEATURES.poe1Items.subcategories,
+        ...((config.poe1Items && config.poe1Items.subcategories) || {})
+      }
+    },
+    tools: {
+      ...DEFAULT_FEATURES.tools,
+      ...(config.tools || {}),
+      subcategories: {
+        ...DEFAULT_FEATURES.tools.subcategories,
+        ...((config.tools && config.tools.subcategories) || {})
+      }
+    }
   };
   
   const overlayClass = overlayVersion === 'poe1' ? 'poe1-mode' : 'poe2-mode';
@@ -514,6 +563,10 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
         <input type="checkbox" id="feat-tools-poe1-regex" ${checked(safeConfig.tools.subcategories.poe1Regex)}/>
         <label for="feat-tools-poe1-regex">Map Regex</label>
       </div>
+      <div class="feature-sub poe1-only">
+        <input type="checkbox" id="feat-tools-poe1-vorici" ${checked(safeConfig.tools.subcategories.poe1Vorici)}/>
+        <label for="feat-tools-poe1-vorici">Vorici Calculator</label>
+      </div>
     </div>
   </div>
 
@@ -648,6 +701,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       document.getElementById('feat-tools').checked = preset.tools.enabled;
       document.getElementById('feat-tools-regex').checked = preset.tools.subcategories.regex;
   document.getElementById('feat-tools-poe1-regex').checked = preset.tools.subcategories.poe1Regex;
+    document.getElementById('feat-tools-poe1-vorici').checked = preset.tools.subcategories.poe1Vorici;
       
       // Update visibility
       GROUP_ORDER.forEach(group => {
@@ -740,7 +794,8 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
           enabled: document.getElementById('feat-tools').checked,
           subcategories: {
             regex: document.getElementById('feat-tools-regex').checked,
-            poe1Regex: document.getElementById('feat-tools-poe1-regex').checked
+            poe1Regex: document.getElementById('feat-tools-poe1-regex').checked,
+            poe1Vorici: document.getElementById('feat-tools-poe1-vorici').checked
           }
         },
         merchant: document.getElementById('feat-merchant').checked

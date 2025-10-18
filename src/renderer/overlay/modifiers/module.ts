@@ -1589,7 +1589,7 @@ export function renderFilteredContent(data: any){
     
     const prefix = mode === 'exclude' ? 'NOT ' : '';
     return {
-      style: `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; line-height:1; display:inline-block; border-radius:4px; border:1px solid ${border}; background:${bg}; color:${color};`,
+      style: `cursor:pointer; user-select:none; padding:2px 6px; line-height:1; display:inline-block; border-radius:4px; border:1px solid ${border}; background:${bg}; color:${color};`,
       prefix,
       bg,
       border,

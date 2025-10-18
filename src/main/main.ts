@@ -1017,7 +1017,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 enabled: false,
                 subcategories: {
                     regex: false,
-                    poe1Regex: false
+                    poe1Regex: false,
+                    poe1Vorici: false
                 }
             },
             merchant: false

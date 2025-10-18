@@ -121,5 +121,12 @@ declare global {
       hide: () => void;
       reset: () => void;
     };
+    OverlayPoe1Vorici?: {
+      show: () => Promise<void>;
+      hide: () => void;
+      reset: () => void;
+      applyItem: (payload: any) => void;
+    };
+    pendingVoriciData?: any;
   }
 }

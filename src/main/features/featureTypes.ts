@@ -49,6 +49,7 @@ export interface Poe1ItemsSubcategories {
 export interface ToolsSubcategories {
   regex: boolean;
   poe1Regex: boolean;
+  poe1Vorici: boolean;
 }
 
 export interface FeatureConfig {
@@ -151,7 +152,8 @@ export const DEFAULT_FEATURES: FeatureConfig = {
     enabled: true,
     subcategories: {
       regex: true,
-      poe1Regex: true
+      poe1Regex: true,
+      poe1Vorici: true
     }
   },
   merchant: true
@@ -223,7 +225,8 @@ export const MINIMAL_FEATURES: FeatureConfig = {
     enabled: false,
     subcategories: {
       regex: false,
-      poe1Regex: false
+      poe1Regex: false,
+      poe1Vorici: false
     }
   },
   merchant: true
@@ -294,7 +297,8 @@ export const ALL_FEATURES: FeatureConfig = {
     enabled: true,
     subcategories: {
       regex: true,
-      poe1Regex: true
+      poe1Regex: true,
+      poe1Vorici: true
     }
   },
   merchant: true

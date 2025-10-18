@@ -418,6 +418,10 @@
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v4H4z"/><path d="M4 12h16v4H4z"/><path d="M4 20h16"/></svg></span>
                         <span>Map Regex</span>
                     </div>
+                    <div class="tools-menu-item poe1-only" data-action="poe1-vorici" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06A1.65 1.65 0 0015 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0l-.06-.06A1.65 1.65 0 008.6 19.4a1.65 1.65 0 00-1.82-.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 008.6 9a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0l.06.06A1.65 1.65 0 0015 9a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 13c0 .4.16.78.44 1.06z"/></svg></span>
+                        <span>Vorici Calculator</span>
+                    </div>
                 </div>
             </div>
             <button id="tabHistory" class="tab" style="background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px; display:inline-flex; align-items:center; gap:4px;">
@@ -774,7 +778,8 @@
         modifiers: true,
         crafting: true,
         character: true,
-        history: true
+        history: true,
+        tools: true
     };
 
     function setFeatureAvailability(flags) {
@@ -783,6 +788,7 @@
         if (typeof flags.crafting === 'boolean') featureAvailability.crafting = flags.crafting;
         if (typeof flags.character === 'boolean') featureAvailability.character = flags.character;
         if (typeof flags.history === 'boolean') featureAvailability.history = flags.history;
+        if (typeof flags.tools === 'boolean') featureAvailability.tools = flags.tools;
     }
 
     function isViewAvailable(view) {
@@ -1019,6 +1025,7 @@
     if (key === 'merchant history') { markHistoryAction(); return; }
     if (key === 'regex builder') { markToolsAction('regex'); return; }
     if (key === 'map regex') { markToolsAction('poe1-regex'); return; }
+    if (key === 'vorici calculator') { markToolsAction('poe1-vorici'); return; }
     }
 
     async function runStoredAction(action) {
@@ -1187,6 +1194,27 @@
                 if (window.OverlayRegexPoe1?.show) { try { window.OverlayRegexPoe1.show(); } catch {} }
                 setHeader('Map Regex');
                 recordHeaderAction('Map Regex');
+                return true;
+            }
+
+            if (action === 'tools:poe1-vorici') {
+                const menuItem = document.querySelector('#toolsMenu .tools-menu-item[data-action="poe1-vorici"]');
+                if (menuItem && window.getComputedStyle(menuItem).display === 'none') return false;
+                setActiveTab('toolsTab');
+                closeAllMenus();
+                setView('crafting');
+                if (window.OverlayPoe1Vorici?.show) { try { await window.OverlayPoe1Vorici.show(); } catch {} }
+                // Apply pending Vorici data if available
+                if (window.pendingVoriciData && window.OverlayPoe1Vorici?.applyItem) {
+                    try {
+                        window.OverlayPoe1Vorici.applyItem(window.pendingVoriciData);
+                        console.log('Applied pending Vorici data');
+                    } catch (err) {
+                        console.warn('Failed to apply pending Vorici data', err);
+                    }
+                }
+                setHeader('Vorici Calculator');
+                recordHeaderAction('Vorici Calculator');
                 return true;
             }
         } catch (err) {
@@ -2444,6 +2472,7 @@
                     // Tools menu
                     const toolsRaw = enabledFeatures.tools;
                     const toolsConfig = (toolsRaw && typeof toolsRaw === 'object') ? toolsRaw : { enabled: !!toolsRaw, subcategories: {} };
+                    let toolsAnyEnabled = false;
                     
                     console.log('[FeatureFilter] Tools config:', {
                         raw: toolsRaw,
@@ -2473,6 +2502,8 @@
                                     shouldShow = !poe1Mode && !!subs.regex;
                                 } else if (action === 'poe1-regex') {
                                     shouldShow = poe1Mode && !!subs.poe1Regex;
+                                } else if (action === 'poe1-vorici') {
+                                    shouldShow = poe1Mode && !!subs.poe1Vorici;
                                 }
 
                                 console.log('[FeatureFilter] Tools item:', {
@@ -2501,6 +2532,8 @@
                         } else {
                             console.log('[FeatureFilter] Tools tab should be visible');
                         }
+
+                        toolsAnyEnabled = anySubEnabled;
                     }
                     if (document.getElementById('toolsTab')) craftingViewEnabled = true;
 
@@ -2510,7 +2543,8 @@
                         modifiers: modifiersEnabled,
                         crafting: craftingViewEnabled,
                         character: characterViewEnabled,
-                        history: historyEnabled
+                        history: historyEnabled,
+                        tools: toolsAnyEnabled
                     });
 
                     if (overlayHasAnyFeatures) {
@@ -2856,43 +2890,6 @@
                             setTimeout(() => retryShow(readyFn, runFn, attempts - 1), 120);
                         };
 
-                        // Route checks - order matters!
-                        // Hard rule: Handle unique items first - use simple text detection like essences
-                        const isUnique = /unique/i.test(name) || /unique/i.test(baseType) || /unique/i.test(blob) || 
-                                        data.isUnique || /unique/i.test(rarity) || frameType === '3' || String(frameType) === '3' ||
-                                        /\bUniques\//i.test(icon);
-                        
-                        if (isUnique) {
-                            console.log('Unique item detected via simple pattern matching like essences:', {
-                                name: name,
-                                baseType: baseType,
-                                blob: blob,
-                                category: category,
-                                rarity: rarity,
-                                frameType: frameType,
-                                icon: icon,
-                                isUniqueFlag: data.isUnique
-                            });
-                            // Uniques page is PoE2-only for now
-                            if (overlayVersionMode === 'poe2') {
-                                prepareCrafting('Uniques', 'itemsTab');
-                                retryShow(
-                                    () => !!(window.OverlayUniques && typeof window.OverlayUniques.show === 'function'),
-                                    async () => {
-                                        try { await showUniques(); } catch {}
-                                        // Removed auto highlight to prevent unintended scroll movement
-                                    }
-                                );
-                            } else {
-                                // PoE1 mode - just open overlay on last visited page (Modifiers)
-                                console.log('Unique copied in PoE1 mode - opening on last page');
-                                setActiveTab('tabModifier');
-                                setView('modifiers');
-                                setHeader('Modifier');
-                            }
-                            return;
-                        }
-
                         const normalizedCategory = String(category || '').toLowerCase();
                         const itemClass = (item.itemClass || '').toLowerCase();
                         const isEssence = normalizedCategory === 'essences' ||
@@ -2917,8 +2914,57 @@
                             ((itemClass.includes('stackable currency') || itemClass.includes('currency')) && /orb|scroll|bauble|whetstone|chisel|fusing|jeweller|chromatic|binding|annul|mirror|regret|exalted|chaos|splinter|fragment|sextant|compass|coin|prism|catalyst|harvest|fossil|resonator|blessing|prophecy|favour|perandus|remnant|ancient/i.test(blob))
                         );
                         const isPoe1DivinationCard = isPoe1Mode && (normalizedCategory === 'divination_cards' || itemClass.includes('divination card') || blob.includes('divination card'));
+                        const socketsPoe1 = Array.isArray(item?.socketsPoe1) ? item.socketsPoe1 : null;
+                        const totalSocketsPoe1 = socketsPoe1 ? socketsPoe1.flat().filter(Boolean).length : 0;
+                        const voriciMenuItem = document.querySelector('#toolsMenu .tools-menu-item[data-action="poe1-vorici"]');
+                        const voriciFeatureEnabled = !!voriciMenuItem && window.getComputedStyle(voriciMenuItem).display !== 'none';
+                        const voriciAutoEligible = isPoe1Mode && voriciFeatureEnabled && totalSocketsPoe1 > 0;
+                        const voriciSocketedItems = Array.isArray(item?.socketedItems) ? item.socketedItems : [];
 
-                        // (unique via frame/icon was handled above)
+                        // Store Vorici data if eligible (regardless of item type - uniques can be colored too!)
+                        if (voriciAutoEligible) {
+                            window.pendingVoriciData = {
+                                item,
+                                socketsPoe1,
+                                socketedItems: voriciSocketedItems,
+                                requirements: item.requirements || {},
+                                quality: item.quality,
+                                name,
+                                baseType
+                            };
+                            console.log('Stored Vorici data for item with sockets:', totalSocketsPoe1);
+                        }
+
+                        // Route checks - order matters!
+                        // Hard rule: Handle unique items first - use simple text detection like essences
+                        const isUnique = /unique/i.test(name) || /unique/i.test(baseType) || /unique/i.test(blob) || 
+                                        data.isUnique || /unique/i.test(rarity) || frameType === '3' || String(frameType) === '3' ||
+                                        /\bUniques\//i.test(icon);
+
+                        if (isUnique) {
+                            console.log('Unique item detected:', {
+                                name: name,
+                                baseType: baseType,
+                                hasVoriciData: !!window.pendingVoriciData
+                            });
+                            // Uniques page is PoE2-only for now
+                            if (overlayVersionMode === 'poe2') {
+                                prepareCrafting('Uniques', 'itemsTab');
+                                retryShow(
+                                    () => !!(window.OverlayUniques && typeof window.OverlayUniques.show === 'function'),
+                                    async () => {
+                                        try { await showUniques(); } catch {}
+                                    }
+                                );
+                            } else {
+                                // PoE1 mode - just open overlay on last visited page (Modifiers)
+                                console.log('Unique copied in PoE1 mode - opening on last page (Vorici data stored if has sockets)');
+                                setActiveTab('tabModifier');
+                                setView('modifiers');
+                                setHeader('Modifier');
+                            }
+                            return;
+                        }
 
                         if (isEssence) {
                             if (overlayVersionMode === 'poe2') {
@@ -3117,6 +3163,21 @@
                                 }
                             );
                             return;
+                        }
+
+                        // Store Vorici data if eligible, but don't auto-open
+                        if (voriciAutoEligible) {
+                            // Store data in global for later use when user manually opens Vorici
+                            window.pendingVoriciData = {
+                                item,
+                                socketsPoe1,
+                                socketedItems: voriciSocketedItems,
+                                requirements: item.requirements || {},
+                                quality: item.quality,
+                                name,
+                                baseType
+                            };
+                            console.log('Stored Vorici data for item with sockets:', totalSocketsPoe1);
                         }
 
                         // Default: Modifiers view
@@ -3872,6 +3933,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (window.OverlayRegexPoe1?.show) { try { window.OverlayRegexPoe1.show(); } catch {} }
                     setHeader('Map Regex');
                     recordHeaderAction('Map Regex');
+                } else if (action === 'poe1-vorici') {
+                    setView('crafting');
+                    if (window.OverlayPoe1Vorici?.show) { try { await window.OverlayPoe1Vorici.show(); } catch {} }
+                    // Apply pending Vorici data if available
+                    if (window.pendingVoriciData && window.OverlayPoe1Vorici?.applyItem) {
+                        try {
+                            window.OverlayPoe1Vorici.applyItem(window.pendingVoriciData);
+                            console.log('Applied pending Vorici data');
+                        } catch (err) {
+                            console.warn('Failed to apply pending Vorici data', err);
+                        }
+                    }
+                    setHeader('Vorici Calculator');
+                    recordHeaderAction('Vorici Calculator');
                 }
             });
         });
