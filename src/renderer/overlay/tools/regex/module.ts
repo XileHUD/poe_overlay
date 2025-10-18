@@ -179,64 +179,92 @@ function render(): void {
   panel.style.overflow = 'hidden';
   panel.classList.add('regex-mode');
     panel.innerHTML = `
-      <div id='regexToolRoot' class='regex-tool-root' style='display:flex; flex-direction:column; gap:12px;'>
-        <!-- Row 1: Chips + Save/Load -->
-        <div class='regex-top'>
-          <div id='regexChips' class='regex-chips'>
-            ${renderChip('rarity','Rarity')}
-            ${renderChip('pack','Pack Size')}
-            ${renderChip('rare','Rare Monsters')}
-            ${renderChip('mod','Additional Modifier')}
+      <div id='regexToolRoot' class='regex-tool-root'>
+        <div class='poe2-main-layout'>
+          <div class='poe2-left-panel'>
+            <div class='poe2-save-controls'>
+              <input id='saveName' class='poe2-save-input' type='text' placeholder='Preset name...' />
+              <button id='saveBtn' class='poe2-save-btn' title='Save preset'>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                  <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                  <polyline points="7 3 7 8 15 8"></polyline>
+                </svg>
+              </button>
+              <select id='savedRegex' class='poe2-load-select'>
+                <option value=''>Load preset...</option>
+                ${Object.keys(state.saved).map(k=>`<option value='${k}'>${k}</option>`).join('')}
+              </select>
+              <button id='delSavedBtn' class='poe2-save-btn poe2-delete-btn' title='Delete preset'>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  <line x1="10" y1="11" x2="10" y2="17"></line>
+                  <line x1="14" y1="11" x2="14" y2="17"></line>
+                </svg>
+              </button>
+            </div>
+
+            <div class='poe2-filter-section'>
+              <div class='poe2-section-title'>Tag Filters</div>
+              <div id='regexChips' class='poe2-chips'>
+                ${renderChip('rarity','Rarity')}
+                ${renderChip('pack','Pack Size')}
+                ${renderChip('rare','Rare Monsters')}
+                ${renderChip('mod','Additional Modifier')}
+              </div>
+            </div>
+
+            <div class='poe2-filter-section'>
+              <div class='poe2-section-title'>Waystone Filters</div>
+              <div class='poe2-filter-grid'>
+                <label class='poe2-filter-label'>Waystone %</label>
+                <select id='waystonePct' class='poe2-filter-input' style='width:100px;'>
+                  <option value=''>--</option>
+                  ${[100,200,300,400,500,600,700,800].map(v=>`<option value='${v}' ${state.waystoneChance===v?"selected":""}>${v}%+</option>`).join('')}
+                </select>
+                <label class='poe2-filter-label'>Delir %</label>
+                <input id='delirPct' type='number' value='${state.deliriousPct??''}' placeholder='N' class='poe2-filter-input' style='width:100px;'>
+              </div>
+            </div>
+
+            <div class='poe2-filter-section'>
+              <div class='poe2-section-title'>Base Stats</div>
+              <div class='poe2-filter-grid'>
+                <label class='poe2-filter-label'>Rarity %</label>
+                <input id='baseRarity' type='number' value='${state.baseRarityPct??''}' placeholder='—' class='poe2-filter-input'>
+                <label class='poe2-filter-label'>Pack %</label>
+                <input id='basePack' type='number' value='${state.basePackSizePct??''}' placeholder='—' class='poe2-filter-input'>
+                <label class='poe2-filter-label'>Magic %</label>
+                <input id='baseMagic' type='number' value='${state.baseMagicPct??''}' placeholder='—' class='poe2-filter-input'>
+                <label class='poe2-filter-label'>Rare %</label>
+                <input id='baseRare' type='number' value='${state.baseRarePct??''}' placeholder='—' class='poe2-filter-input'>
+                <label class='poe2-filter-label'>Corruption</label>
+                <select id='corrFilter' class='poe2-filter-input'>
+                  <option value=''>Any</option>
+                  <option value='corrupted' ${state.corrupted===true?'selected':''}>Corrupted</option>
+                  <option value='uncorrupted' ${state.corrupted===false?'selected':''}>Uncorrupted</option>
+                </select>
+              </div>
+            </div>
           </div>
-          <div class='regex-save'>
-            <select id='savedRegex' class='regex-input' style='width:140px;'>
-              <option value=''>Saved...</option>
-              ${Object.keys(state.saved).map(k=>`<option value='${k}'>${k}</option>`).join('')}
-            </select>
-            <input id='saveName' class='regex-input' type='text' placeholder='Name' style='width:110px;'>
-            <button id='saveBtn' class='regex-btn'>Save</button>
-            <button id='delSavedBtn' title='Delete selected saved regex' class='regex-btn regex-btn-danger' style='padding:6px 10px;'>Del</button>
+
+          <div class='poe2-right-panel'>
+            <div class='poe2-search-bar'>
+              <input id='regexSearch' type='text' placeholder='Search mods...' class='poe2-regex-input'>
+            </div>
+            <div id='regexMods' class='poe2-regex-list'></div>
+            <div class='poe2-regex-footer'>
+              <div id='regexCharCount' class='regex-count'>Regex (0/50 chars)</div>
+              <div class='poe2-regex-actions'>
+                <button id='copyRegex' class='regex-btn'>Copy</button>
+                <button id='regexReset' class='regex-btn regex-btn-danger'>Reset</button>
+              </div>
+            </div>
+            <input id='regexOutput' type='text' readonly class='poe2-regex-output' />
           </div>
         </div>
-        <!-- Row 2: Filters (packs removed, add base stats) -->
-        <div class='regex-filters'>
-          <label style='font-size:11px;'>Waystone %</label>
-          <select id='waystonePct' class='regex-input' style='width:80px;'>
-            <option value=''>--</option>
-            ${[100,200,300,400,500,600,700,800].map(v=>`<option value='${v}' ${state.waystoneChance===v?"selected":""}>${v}%+</option>`).join('')}
-          </select>
-          <label style='font-size:11px;'>Delir %</label>
-          <input id='delirPct' type='number' value='${state.deliriousPct??''}' placeholder='N' class='regex-input' style='width:70px;'>
-          <label style='font-size:11px;'>Rarity %</label>
-          <input id='baseRarity' type='number' value='${state.baseRarityPct??''}' placeholder='—' class='regex-input' style='width:60px;'>
-          <label style='font-size:11px;'>Pack %</label>
-          <input id='basePack' type='number' value='${state.basePackSizePct??''}' placeholder='—' class='regex-input' style='width:60px;'>
-          <label style='font-size:11px;'>Magic %</label>
-          <input id='baseMagic' type='number' value='${state.baseMagicPct??''}' placeholder='—' class='regex-input' style='width:60px;'>
-          <label style='font-size:11px;'>Rare %</label>
-          <input id='baseRare' type='number' value='${state.baseRarePct??''}' placeholder='—' class='regex-input' style='width:60px;'>
-          <label style='font-size:11px;'>Corruption</label>
-          <select id='corrFilter' class='regex-input' style='width:110px;'>
-            <option value=''>Any</option>
-            <option value='corrupted' ${state.corrupted===true?'selected':''}>Corrupted</option>
-            <option value='uncorrupted' ${state.corrupted===false?'selected':''}>Uncorrupted</option>
-          </select>
-          <span style='margin-left:auto; font-size:10px; opacity:.6;'>Click mod to cycle include/exclude</span>
-        </div>
-        <!-- Row 3: Search (full width) -->
-        <div class='regex-search' style='width:100%;'>
-          <input id='regexSearch' type='text' placeholder='Search mods...' class='regex-input' style='width:100%;'>
-        </div>
-        <!-- Row 4: Mods list (info text moved inside for height savings) -->
-  <div id='regexMods' style='display:flex; flex-direction:column; gap:4px; overflow:auto; border:1px solid var(--border-color); border-radius:6px; padding:6px; background:var(--bg-tertiary); flex:1 1 auto; min-height:180px;'>
-          <div id='regexInfoCycle' style='cursor:pointer; font-size:10px; opacity:.55; padding:2px 0 6px 0;'>Click mod to cycle include / exclude • fragments are shortest unique substrings</div>
-        </div>
-        <!-- Row 5: Combined Results at bottom -->
-        <div class='regex-bottom-results'>
-          <div class='regex-label-row'><span id='regexCharCount'>Regex (0/50 chars)</span><div style='display:flex; gap:6px;'><button id='copyRegex' class='regex-copy-btn'>Copy</button><button id='regexReset' class='regex-btn regex-btn-danger'>Reset</button></div></div>
-          <input id='regexOutput' type='text' readonly class='regex-output' style='width:100%;'>
-        </div>
-  </div>`;
+      </div>`;
 
   (panel.querySelector('#waystonePct') as HTMLSelectElement)?.addEventListener('change', e => { const v=(e.target as HTMLSelectElement).value; state.waystoneChance = v?parseInt(v):null; updateOutput(); });
   (panel.querySelector('#delirPct') as HTMLInputElement)?.addEventListener('input', e => { const v=(e.target as HTMLInputElement).value; state.deliriousPct = v?parseInt(v):null; updateOutput(); });
@@ -344,21 +372,48 @@ function renderChip(key: string, label: string){
 function drawMods(){
   const list = document.getElementById('regexMods'); if (!list) return;
   const q = state.search;
-  const rows = MODS.map((m, idx) => ({...m, idx, stem: getIncludeFragment(idx)}))
+  const allRows = MODS.map((m, idx) => ({...m, idx, stem: getIncludeFragment(idx)}))
     .filter(m => !q || m.label.toLowerCase().includes(q))
     .filter(m => filterByChips(m));
-  list.innerHTML = rows.map(m => {
-    const inc = state.include.has(m.idx);
-    const exc = state.exclude.has(m.idx);
-    let border = 'var(--border-color)';
-    let bg = 'var(--bg-secondary)';
-    if (inc){ border='var(--accent-blue)'; bg='rgba(0,128,255,0.25)'; }
-    if (exc){ border='var(--accent-red)'; bg='rgba(255,0,0,0.25)'; }
+  
+  // Separate selected and unselected mods
+  const selectedMods = allRows.filter(m => state.include.has(m.idx) || state.exclude.has(m.idx));
+  const unselectedMods = allRows.filter(m => !state.include.has(m.idx) && !state.exclude.has(m.idx));
+  
+  let html = '';
+  
+  // Render selected mods section if there are any
+  if (selectedMods.length > 0) {
+    html += `<div class='poe2-selected-header'>Selected Mods (${selectedMods.length})</div>`;
+    html += selectedMods.map(m => {
+      const inc = state.include.has(m.idx);
+      const exc = state.exclude.has(m.idx);
+      let border = 'var(--border-color)';
+      let bg = 'var(--bg-secondary)';
+      if (inc){ border='var(--accent-blue)'; bg='rgba(0,128,255,0.25)'; }
+      if (exc){ border='var(--accent-red)'; bg='rgba(255,0,0,0.25)'; }
+      return `<div class='regex-mod' data-idx='${m.idx}' style='padding:4px 6px; border:1px solid ${border}; background:${bg}; border-radius:4px; cursor:pointer; font-size:11px; line-height:1.25; user-select:none;'>
+        <div>${m.label}</div>
+        <div style='font-size:10px; opacity:.7; margin-top:2px;'>${m.stem}</div>
+      </div>`;
+    }).join('');
+    
+    // Add separator
+    html += `<div class='poe2-mods-separator'></div>`;
+  }
+  
+  // Render unselected mods
+  html += unselectedMods.map(m => {
+    const border = 'var(--border-color)';
+    const bg = 'var(--bg-secondary)';
     return `<div class='regex-mod' data-idx='${m.idx}' style='padding:4px 6px; border:1px solid ${border}; background:${bg}; border-radius:4px; cursor:pointer; font-size:11px; line-height:1.25; user-select:none;'>
       <div>${m.label}</div>
       <div style='font-size:10px; opacity:.7; margin-top:2px;'>${m.stem}</div>
     </div>`;
   }).join('');
+  
+  list.innerHTML = html;
+  
   list.querySelectorAll('.regex-mod').forEach(el => {
     el.addEventListener('click', () => {
       const idx = parseInt((el as HTMLElement).dataset.idx||'0');
@@ -433,34 +488,67 @@ function escapeBaseFragment(s: string): string {
   const style = document.createElement('style');
   style.id = id;
   style.textContent = `
-  #regexToolRoot { display:flex; flex-direction:column; height:100%; flex:1 1 auto; min-height:0; }
-  #regexToolRoot > * { box-sizing:border-box; }
+  /* Base container styles */
+  #regexToolRoot { display:flex; flex-direction:column; height:100%; flex:1 1 auto; min-height:600px; }
+  .regex-tool-root { display:flex; flex-direction:column; height:100%; }
+  
+  /* Main grid layout - side by side */
+  .poe2-main-layout { display:grid; grid-template-columns:320px 1fr; gap:12px; height:100%; overflow:hidden; }
+  .poe2-left-panel { display:flex; flex-direction:column; gap:8px; overflow-y:auto; padding-right:4px; }
+  .poe2-right-panel { display:flex; flex-direction:column; gap:8px; overflow:hidden; }
+  
+  /* Save/Load controls */
+  .poe2-save-controls { display:grid; grid-template-columns:1fr auto 1fr auto; gap:6px; align-items:center; padding:8px; border:1px solid var(--border-color); border-radius:6px; background:var(--bg-tertiary); }
+  .poe2-save-input { padding:4px 6px; font-size:11px; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-secondary); color:var(--text-primary); min-width:0; }
+  .poe2-load-select { padding:4px 6px; font-size:11px; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-secondary); color:var(--text-primary); cursor:pointer; min-width:0; }
+  .poe2-save-btn { padding:6px 8px; font-size:11px; border-radius:4px; border:1px solid var(--border-color); background:var(--bg-secondary); color:var(--text-primary); cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .poe2-save-btn svg { display:block; }
+  .poe2-save-btn:hover { background:var(--accent-blue); border-color:var(--accent-blue); color:#fff; }
+  .poe2-delete-btn:hover { background:var(--accent-red); border-color:var(--accent-red); color:#fff; }
+  
+  /* Filter sections */
+  .poe2-filter-section { display:flex; flex-direction:column; gap:6px; border:1px solid var(--border-color); border-radius:6px; padding:8px; background:var(--bg-tertiary); }
+  .poe2-section-title { font-size:12px; font-weight:600; color:var(--text-primary); margin-bottom:4px; }
+  .poe2-chips { display:flex; gap:6px; flex-wrap:wrap; }
+  .regex-chip { padding:3px 8px; border:1px solid var(--border-color); background:var(--bg-secondary); color:var(--text-primary); border-radius:12px; cursor:pointer; user-select:none; transition:background .15s,border-color .15s; font-size:11px; line-height:1; }
+  
+  /* Filter grid for inputs */
+  .poe2-filter-grid { display:grid; grid-template-columns:auto 1fr; gap:6px 8px; align-items:center; }
+  .poe2-filter-label { font-size:11px; color:var(--text-primary); }
+  .poe2-filter-input { padding:4px 6px; font-size:11px; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-secondary); color:var(--text-primary); width:100%; }
+  
+  /* Right panel - search and mods list */
+  .poe2-search-bar { display:flex; gap:8px; align-items:center; padding:8px; border:1px solid var(--border-color); border-radius:6px; background:var(--bg-tertiary); }
+  .poe2-regex-input { flex:1; padding:6px 8px; font-size:12px; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-secondary); color:var(--text-primary); min-width:0; }
+  .poe2-regex-input::placeholder { color:var(--text-secondary); opacity:0.6; }
+  
+  /* Mods list */
+  .poe2-regex-list { flex:1; overflow-y:auto; border:1px solid var(--border-color); border-radius:6px; padding:6px; background:var(--bg-tertiary); min-height:0; }
+  .poe2-selected-header { font-size:12px; font-weight:600; color:var(--text-primary); padding:8px 6px 6px 6px; margin-bottom:4px; border-bottom:1px solid var(--border-color); }
+  .poe2-mods-separator { height:1px; background:var(--border-color); margin:12px 0; }
+  .regex-mod { padding:4px 6px; border:1px solid var(--border-color); background:var(--bg-secondary); border-radius:4px; cursor:pointer; font-size:11px; line-height:1.25; user-select:none; margin-bottom:6px; }
+  .regex-mod:hover { filter:brightness(1.15); }
+  
+  /* Footer with regex output */
+  .poe2-regex-footer { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:8px; border:1px solid var(--border-color); border-radius:6px; background:var(--bg-tertiary); }
+  .poe2-regex-actions { display:flex; gap:6px; }
+  .regex-count { font-size:10px; color:var(--text-secondary); }
+  .regex-btn { padding:4px 10px; font-size:11px; border-radius:4px; border:1px solid var(--border-color); background:var(--bg-secondary); color:var(--text-primary); cursor:pointer; }
+  .regex-btn:hover { background:var(--accent-blue); border-color:var(--accent-blue); color:#fff; }
+  .regex-btn.regex-btn-danger { border-color:var(--accent-red); color:var(--accent-red); }
+  .regex-btn.regex-btn-danger:hover { background:var(--accent-red); border-color:var(--accent-red); color:#fff; }
+  .poe2-regex-output { width:100%; padding:6px 8px; font-size:11px; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-secondary); color:var(--accent-blue); font-family:monospace; }
+  
+  /* Legacy compatibility */
   .regex-input { background: var(--bg-secondary); border:1px solid var(--border-color); color: var(--text-primary); border-radius:6px; padding:6px 8px; font-size:11px; }
   .regex-input:focus { outline:1px solid var(--accent-blue); }
   .regex-output { background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--accent-blue); border-radius:8px; padding:10px 12px; font-size:11px; font-family:monospace; width:100%; }
-  .regex-mod:hover { filter:brightness(1.15); }
-  .regex-chip { transition:background .15s,border-color .15s; font-size:11px; line-height:1; }
-  .regex-copy-btn, .regex-btn { background: var(--accent-blue); color:#fff; border:1px solid var(--accent-blue); padding:6px 14px; border-radius:18px; cursor:pointer; font-size:11px; line-height:1; font-weight:500; letter-spacing:.3px; }
-  .regex-copy-btn:hover, .regex-btn:hover { filter:brightness(1.2); }
-  .regex-btn-danger { background:#c63b3b; border-color:#c63b3b; color:#fff; }
-  .regex-btn-danger:hover { filter:brightness(1.15); }
-  .regex-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
-  .regex-chips { display:flex; gap:6px; flex-wrap:wrap; }
-  .regex-save { display:flex; gap:6px; align-items:center; }
-  .regex-save select, .regex-save input { height:30px; }
-  .regex-include-exclude { display:flex; gap:12px; }
-  .regex-include-exclude .col { flex:1; display:flex; flex-direction:column; gap:4px; }
-  .regex-label-row { display:flex; justify-content:space-between; align-items:center; font-size:11px; font-weight:600; padding:0 2px; }
-  .regex-filters { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-  .regex-search { width:100%; }
-  .regex-bottom-results { display:flex; flex-direction:column; gap:4px; margin-top:6px; flex:0 0 auto; }
-  #regexMods { min-height:180px; flex:1 1 auto; }
+  .regex-copy-btn { background: var(--accent-blue); color:#fff; border:1px solid var(--accent-blue); padding:6px 14px; border-radius:18px; cursor:pointer; font-size:11px; line-height:1; font-weight:500; letter-spacing:.3px; }
+  .regex-copy-btn:hover { filter:brightness(1.2); }
+  
+  /* Panel mode adjustments */
   #craftingPanel.regex-mode { display:flex !important; flex-direction:column; overflow:hidden; }
   #craftingPanel.regex-mode > #regexToolRoot { flex:1 1 auto; display:flex; flex-direction:column; min-height:0; }
-  #craftingPanel.regex-mode #regexMods { flex:1 1 auto; min-height:180px; }
-  #craftingPanel.regex-mode .regex-bottom-results { margin-top:8px; }
-  /* Allow panel to grow with window; parent container should stretch */
-  .regex-bottom-results .regex-label-row { display:flex; justify-content:space-between; align-items:center; font-size:11px; font-weight:600; padding:0 2px; }
   `;
   document.head.appendChild(style);
 })();
