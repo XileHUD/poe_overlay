@@ -341,7 +341,8 @@ export class FeatureService {
       config.tools = {
         enabled: false,
         subcategories: {
-          regex: false
+          regex: false,
+          poe1Regex: false
         }
       };
     }

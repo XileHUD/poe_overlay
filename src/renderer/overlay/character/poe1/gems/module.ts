@@ -584,27 +584,19 @@ function renderDetail(): void {
   const orig = gemImg?.imageLocal ? `poe1/${gemImg.imageLocal}` : '';
   const imgHtml = orig ? `<img class='gem-detail-img' src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${orig}' decoding='async' style='width:64px; height:64px; object-fit:contain; margin-right:12px;'>` : '';
 
-  const description = detail.description || (gemImg as any)?.description || '';
   const gemDescription = detail.gemDescription || '';
+  const description = detail.description || (gemImg as any)?.description || '';
   
-  // Only show gemDescription if it's different from description (avoid duplication)
-  const showBothDescriptions = description && gemDescription && description.trim() !== gemDescription.trim();
+  // Prefer gemDescription (cleaner), fall back to description, ignore "This item can be acquired..." sections
+  const cleanDescription = gemDescription || description;
   
-  const descriptionHtml = description ? `
+  const descriptionHtml = cleanDescription ? `
     <div style='background:var(--bg-secondary); padding:12px; border-radius:6px; margin-bottom:12px; font-size:13px; line-height:1.6; color:var(--text-primary);'>
-      ${description}
+      ${cleanDescription}
     </div>
   ` : '';
 
-  // Gem description from secDescrText - only show if different from main description
-  const gemDescriptionHtml = (showBothDescriptions || (!description && gemDescription)) ? `
-    <div style='background:var(--bg-secondary); padding:12px; border-radius:6px; margin-bottom:12px;'>
-      <div style='font-weight:600; margin-bottom:8px; color:var(--text-primary);'>Description</div>
-      <div style='font-size:13px; line-height:1.6; color:var(--text-secondary); font-style:italic;'>
-        ${gemDescription}
-      </div>
-    </div>
-  ` : '';
+  const gemDescriptionHtml = ''; // No longer needed - using single clean description above
 
   // Deduplicate and filter explicit mods
   const uniqueExplicitMods = deduplicateAndFilter(detail.explicitMods);
@@ -822,7 +814,7 @@ function renderDetail(): void {
                   'Level', 'Requires Level', 'RequiresLevel', 'Req Level',
                   'Str', 'Dex', 'Int', 'Strength', 'Dexterity', 'Intelligence',
                   'Cost', 'Mana Cost', 'ManaCost', 'Mana', 'Mana Reserved',
-                  'Experience', 'Exp', 'Soul Cost', 'Cooldown'
+                  'Experience', 'Exp', 'Soul Cost'
                 ]);
                 
                 const lowerColKey = colKey.toLowerCase();
@@ -830,8 +822,7 @@ function renderDetail(): void {
                                   lowerColKey.includes('level') || 
                                   lowerColKey.includes('cost') || 
                                   lowerColKey.includes('exp') ||
-                                  lowerColKey.includes('require') ||
-                                  lowerColKey.includes('cooldown');
+                                  lowerColKey.includes('require');
                 
                 // Calculate delta from previous level (ONLY for damage/defense/special stats, NOT metadata)
                 let deltaHtml = '';
@@ -852,7 +843,8 @@ function renderDetail(): void {
                     const delta = current - prev;
                     
                     if (Math.abs(delta) > 0.001) {
-                      const deltaColor = delta > 0 ? '#51cf66' : '#ff6b6b';
+                      // NEW values are ALWAYS better - always show in green
+                      const deltaColor = '#51cf66';
                       const deltaSign = delta > 0 ? '+' : '';
                       const deltaFormatted = Math.abs(delta) >= 10 ? delta.toFixed(1) : delta.toFixed(2);
                       deltaHtml = ` <span style="color:${deltaColor}; font-size:10px;">(${deltaSign}${deltaFormatted})</span>`;

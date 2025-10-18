@@ -1016,7 +1016,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             tools: {
                 enabled: false,
                 subcategories: {
-                    regex: false
+                    regex: false,
+                    poe1Regex: false
                 }
             },
             merchant: false
@@ -2724,6 +2725,13 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                             subcategories: {
                                 uniques: config.poe1Items?.subcategories?.uniques ?? disabled.poe1Items.subcategories.uniques,
                                 bases: config.poe1Items?.subcategories?.bases ?? disabled.poe1Items.subcategories.bases
+                            }
+                        },
+                        tools: {
+                            enabled: config.tools?.enabled ?? disabled.tools.enabled,
+                            subcategories: {
+                                regex: false,
+                                poe1Regex: config.tools?.subcategories?.poe1Regex ?? disabled.tools.subcategories.poe1Regex
                             }
                         }
                     };

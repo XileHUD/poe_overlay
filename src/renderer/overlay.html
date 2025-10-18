@@ -410,9 +410,13 @@
                 </span>
                 <span>Tools ▾</span>
                 <div id="toolsMenu" style="display:none; position:absolute; left:0; bottom:100%; transform: translateY(-4px); background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; padding:4px; z-index:320; min-width:140px; box-shadow:0 4px 14px rgba(0,0,0,0.55);">
-                    <div class="tools-menu-item" data-action="regex" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                    <div class="tools-menu-item poe2-only" data-action="regex" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg></span>
-                        <span>Regex</span>
+                        <span>Regex Builder</span>
+                    </div>
+                    <div class="tools-menu-item poe1-only" data-action="poe1-regex" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v4H4z"/><path d="M4 12h16v4H4z"/><path d="M4 20h16"/></svg></span>
+                        <span>Map Regex</span>
                     </div>
                 </div>
             </div>
@@ -1003,7 +1007,8 @@
     if (key === 'uniques') { markItemsAction('uniques'); return; }
     if (key === 'bases') { markItemsAction('bases'); return; }
     if (key === 'merchant history') { markHistoryAction(); return; }
-    if (key === 'regex') { markToolsAction('regex'); return; }
+    if (key === 'regex builder') { markToolsAction('regex'); return; }
+    if (key === 'map regex') { markToolsAction('poe1-regex'); return; }
     }
 
     async function runStoredAction(action) {
@@ -1158,8 +1163,20 @@
                 closeAllMenus();
                 setView('crafting');
                 if (window.OverlayRegex?.show) { try { await window.OverlayRegex.show(); } catch {} }
-                setHeader('Regex');
-                                            recordHeaderAction('Socketables'); // Record action for Socketables
+                setHeader('Regex Builder');
+                recordHeaderAction('Regex Builder');
+                return true;
+            }
+
+            if (action === 'tools:poe1-regex') {
+                const menuItem = document.querySelector('#toolsMenu .tools-menu-item[data-action="poe1-regex"]');
+                if (menuItem && window.getComputedStyle(menuItem).display === 'none') return false;
+                setActiveTab('toolsTab');
+                closeAllMenus();
+                setView('crafting');
+                if (window.OverlayRegexPoe1?.show) { try { window.OverlayRegexPoe1.show(); } catch {} }
+                setHeader('Map Regex');
+                recordHeaderAction('Map Regex');
                 return true;
             }
         } catch (err) {
@@ -1197,6 +1214,7 @@
                 if (await runStoredAction(`items:${key}`)) return true;
             }
             if (await runStoredAction('tools:regex')) return true;
+            if (await runStoredAction('tools:poe1-regex')) return true;
         }
 
         if (featureAvailability.history) {
@@ -2267,22 +2285,46 @@
                     if (document.getElementById('itemsTab')) craftingViewEnabled = true;
                     
                     // Tools menu
-                    if (enabledFeatures.tools && !enabledFeatures.tools.enabled) {
+                    const toolsRaw = enabledFeatures.tools;
+                    const toolsConfig = (toolsRaw && typeof toolsRaw === 'object') ? toolsRaw : { enabled: !!toolsRaw, subcategories: {} };
+                    
+                    console.log('[FeatureFilter] Tools config:', {
+                        raw: toolsRaw,
+                        config: toolsConfig,
+                        mode: overlayVersionMode
+                    });
+                    
+                    if (!toolsConfig.enabled) {
+                        console.log('[FeatureFilter] Tools not enabled, removing tab');
                         const toolsTab = document.getElementById('toolsTab');
                         if (toolsTab) toolsTab.remove();
-                    } else if (enabledFeatures.tools?.enabled) {
+                    } else {
                         const toolsMenu = document.getElementById('toolsMenu');
-                        const subs = enabledFeatures.tools.subcategories || {};
+                        const subs = toolsConfig.subcategories || {};
+                        const poe1Mode = overlayVersionMode === 'poe1';
                         let anySubEnabled = false;
-                        
+
+                        console.log('[FeatureFilter] Tools subcategories:', subs);
+
                         if (toolsMenu) {
                             const items = toolsMenu.querySelectorAll('.tools-menu-item');
                             items.forEach(item => {
                                 const action = item.getAttribute('data-action');
                                 let shouldShow = false;
-                                
-                                if (action === 'regex' && subs.regex) shouldShow = true;
-                                
+
+                                if (action === 'regex') {
+                                    shouldShow = !poe1Mode && !!subs.regex;
+                                } else if (action === 'poe1-regex') {
+                                    shouldShow = poe1Mode && !!subs.poe1Regex;
+                                }
+
+                                console.log('[FeatureFilter] Tools item:', {
+                                    action,
+                                    shouldShow,
+                                    poe1Mode,
+                                    subs
+                                });
+
                                 if (shouldShow) {
                                     anySubEnabled = true;
                                     item.style.display = '';
@@ -2291,11 +2333,16 @@
                                 }
                             });
                         }
-                        
+
+                        console.log('[FeatureFilter] Any tools sub enabled:', anySubEnabled);
+
                         // Hide entire Tools tab if no subcategories enabled
                         if (!anySubEnabled) {
+                            console.log('[FeatureFilter] No tools subs enabled, removing tab');
                             const toolsTab = document.getElementById('toolsTab');
                             if (toolsTab) toolsTab.remove();
+                        } else {
+                            console.log('[FeatureFilter] Tools tab should be visible');
                         }
                     }
                     if (document.getElementById('toolsTab')) craftingViewEnabled = true;
@@ -3636,8 +3683,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Regex tool occupies crafting panel style container for now
                     setView('crafting');
                     if (window.OverlayRegex?.show) { try { await window.OverlayRegex.show(); } catch {} }
-                    setHeader('Regex');
-                    recordHeaderAction('Regex');
+                    setHeader('Regex Builder');
+                    recordHeaderAction('Regex Builder');
+                } else if (action === 'poe1-regex') {
+                    setView('crafting');
+                    if (window.OverlayRegexPoe1?.show) { try { window.OverlayRegexPoe1.show(); } catch {} }
+                    setHeader('Map Regex');
+                    recordHeaderAction('Map Regex');
                 }
             });
         });

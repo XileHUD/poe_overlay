@@ -23,7 +23,8 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
     character: { ...DEFAULT_FEATURES.character, ...config.character },
     poe1Character: { ...DEFAULT_FEATURES.poe1Character, ...(config.poe1Character || {}) },
     items: { ...DEFAULT_FEATURES.items, ...config.items },
-    poe1Items: { ...DEFAULT_FEATURES.poe1Items, ...(config.poe1Items || {}) }
+    poe1Items: { ...DEFAULT_FEATURES.poe1Items, ...(config.poe1Items || {}) },
+    tools: { ...DEFAULT_FEATURES.tools, ...(config.tools || {}) }
   };
   
   const overlayClass = overlayVersion === 'poe1' ? 'poe1-mode' : 'poe2-mode';
@@ -498,16 +499,20 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
   </div>
 
   <!-- Tools (with subcategories) -->
-  <div class="feature-group poe2-only">
+  <div class="feature-group">
     <div class="feature-main" onclick="toggleGroup('tools')">
-      <input type="checkbox" id="feat-tools" ${checked(config.tools.enabled)} onclick="event.stopPropagation()"/>
+      <input type="checkbox" id="feat-tools" ${checked(safeConfig.tools.enabled)} onclick="event.stopPropagation()"/>
       <label for="feat-tools">Tools</label>
-      <span class="expand-icon ${config.tools.enabled ? 'expanded' : ''}">▶</span>
+      <span class="expand-icon ${safeConfig.tools.enabled ? 'expanded' : ''}">▶</span>
     </div>
-    <div class="feature-subs ${config.tools.enabled ? 'visible' : ''}" id="subs-tools">
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-tools-regex" ${checked(config.tools.subcategories.regex)}/>
+    <div class="feature-subs ${safeConfig.tools.enabled ? 'visible' : ''}" id="subs-tools">
+      <div class="feature-sub poe2-only">
+        <input type="checkbox" id="feat-tools-regex" ${checked(safeConfig.tools.subcategories.regex)}/>
         <label for="feat-tools-regex">Regex Builder</label>
+      </div>
+      <div class="feature-sub poe1-only">
+        <input type="checkbox" id="feat-tools-poe1-regex" ${checked(safeConfig.tools.subcategories.poe1Regex)}/>
+        <label for="feat-tools-poe1-regex">Map Regex</label>
       </div>
     </div>
   </div>
@@ -642,6 +647,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       // Tools
       document.getElementById('feat-tools').checked = preset.tools.enabled;
       document.getElementById('feat-tools-regex').checked = preset.tools.subcategories.regex;
+  document.getElementById('feat-tools-poe1-regex').checked = preset.tools.subcategories.poe1Regex;
       
       // Update visibility
       GROUP_ORDER.forEach(group => {
@@ -733,7 +739,8 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
         tools: {
           enabled: document.getElementById('feat-tools').checked,
           subcategories: {
-            regex: document.getElementById('feat-tools-regex').checked
+            regex: document.getElementById('feat-tools-regex').checked,
+            poe1Regex: document.getElementById('feat-tools-poe1-regex').checked
           }
         },
         merchant: document.getElementById('feat-merchant').checked

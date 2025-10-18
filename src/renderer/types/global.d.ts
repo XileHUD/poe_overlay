@@ -116,5 +116,10 @@ declare global {
       // Returns the site-style combined quoted OR regex
       buildSiteRegex?: () => string;
     };
+    OverlayRegexPoe1?: {
+      show: () => void;
+      hide: () => void;
+      reset: () => void;
+    };
   }
 }
