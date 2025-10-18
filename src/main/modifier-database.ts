@@ -416,22 +416,42 @@ export class ModifierDatabase {
             return this.getAllAggregated();
         }
         
-        // PoE2-only virtual categories
+        // PoE2-only virtual categories - load from pre-generated files
         if (this.gameVersion === 'poe2') {
             if (norm === 'DESECRATED' || /^_+DESECRATED_+$/.test(raw)) {
-                console.log('Aggregating DESECRATED modifiers from JSON cache');
+                console.log('Loading pre-generated Desecrated aggregate');
+                const data = this.jsonCache.get('Desecrated');
+                if (data && Array.isArray(data)) {
+                    return this.formatModifierData(data);
+                }
+                console.log('Desecrated file not found, falling back to live aggregation');
                 return this.getDomainAggregated('desecrated');
             }
             if (norm === 'ESSENCE') {
-                console.log('Aggregating ESSENCE modifiers from JSON cache');
+                console.log('Loading pre-generated Essence aggregate');
+                const data = this.jsonCache.get('Essence');
+                if (data && Array.isArray(data)) {
+                    return this.formatModifierData(data);
+                }
+                console.log('Essence file not found, falling back to live aggregation');
                 return this.getDomainAggregated('essence');
             }
             if (norm === 'CORRUPTED') {
-                console.log('Aggregating CORRUPTED modifiers from JSON cache');
+                console.log('Loading pre-generated Corrupted aggregate');
+                const data = this.jsonCache.get('Corrupted');
+                if (data && Array.isArray(data)) {
+                    return this.formatModifierData(data);
+                }
+                console.log('Corrupted file not found, falling back to live aggregation');
                 return this.getDomainAggregated('corrupted');
             }
             if (norm === 'SOCKETABLE' || norm === 'SOCKETABLES') {
-                console.log('Aggregating SOCKETABLE modifiers from JSON cache');
+                console.log('Loading pre-generated Socketable aggregate');
+                const data = this.jsonCache.get('Socketable');
+                if (data && Array.isArray(data)) {
+                    return this.formatModifierData(data);
+                }
+                console.log('Socketable file not found, falling back to live aggregation');
                 return this.getDomainAggregated('socketable');
             }
         }
@@ -904,14 +924,40 @@ export class ModifierDatabase {
                 const relicSubs = cats.filter(c => /_Relic$/i.test(c));
                 if (relicSubs.length && !out.includes('Relics')) out.push('Relics');
             } else {
-                // PoE2 - add all categories
-                out.push(...cats);
-                
+                // PoE2 - add all categories except aggregated/special files
+                for (const cat of cats) {
+                    // Skip pre-generated aggregate files (accessed via virtual categories)
+                    if (cat === 'Corrupted' || 
+                        cat === 'Desecrated' || 
+                        cat === 'Essence' || 
+                        cat === 'Socketable') {
+                        continue;
+                    }
+                    
+                    // Skip special format files (Essences, Socketables, etc.)
+                    if (cat === 'Essences' || 
+                        cat === 'Socketables' ||
+                        cat === 'Bases' ||
+                        cat === 'Gems' ||
+                        cat === 'Liquid_Emotions' ||
+                        cat === 'Omens' ||
+                        cat === 'Catalysts' ||
+                        cat === 'Annoints' ||
+                        cat === 'Ascendancy_Passives' ||
+                        cat === 'Atlas_Nodes' ||
+                        cat === 'Keystones' ||
+                        cat === 'Keywords' ||
+                        cat === 'Currency' ||
+                        cat === 'Uniques') {
+                        continue;
+                    }
+                    
+                    out.push(cat);
+                }
+
                 const relicSubs = cats.filter(c => /_Relic$/i.test(c));
                 if (relicSubs.length && !out.includes('Relics')) out.push('Relics');
-            }
-            
-            return out;
+            }            return out;
         }
 
         return [];

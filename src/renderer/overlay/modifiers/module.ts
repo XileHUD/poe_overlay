@@ -1707,7 +1707,18 @@ export function renderFilteredContent(data: any){
       const key = chip.getAttribute('data-tag') || '';
       const mode = chip.getAttribute('data-filter-mode') || '';
       const css = chipCss(key, mode);
-      chip.setAttribute('style', css.style);
+      // Update individual style properties instead of using setAttribute to preserve font-size scaling
+      const el = chip as HTMLElement;
+      el.style.cursor = 'pointer';
+      el.style.userSelect = 'none';
+      el.style.padding = '2px 6px';
+      el.style.lineHeight = '1';
+      el.style.display = 'inline-block';
+      el.style.borderRadius = '4px';
+      el.style.borderColor = css.border;
+      el.style.background = css.bg;
+      el.style.color = css.color;
+      el.style.border = `1px solid ${css.border}`;
       const count = tagCounts[key] || 0;
       chip.textContent = `${css.prefix}${key} (${count})`;
       chip.classList.toggle('active', mode === 'include');
@@ -1717,7 +1728,14 @@ export function renderFilteredContent(data: any){
       const attr = btn.getAttribute('data-attr') || '';
       const isActive = attr && attr === prevAttr;
       btn.classList.toggle('active', !!isActive);
-      btn.setAttribute('style', `padding:2px 8px; font-size:11px; border:1px solid var(--border-color); border-radius:999px; background:${isActive ? 'var(--accent-blue)' : 'var(--bg-tertiary)'}; color:${isActive ? '#fff' : 'var(--text-primary)'}; cursor:pointer;`);
+      // Update individual style properties instead of using setAttribute to preserve font-size scaling
+      const el = btn as HTMLElement;
+      el.style.padding = '2px 8px';
+      el.style.border = '1px solid var(--border-color)';
+      el.style.borderRadius = '999px';
+      el.style.background = isActive ? 'var(--accent-blue)' : 'var(--bg-tertiary)';
+      el.style.color = isActive ? '#fff' : 'var(--text-primary)';
+      el.style.cursor = 'pointer';
     });
   } catch {}
 
