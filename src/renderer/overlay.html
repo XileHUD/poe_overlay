@@ -473,6 +473,7 @@
 
     const LAST_CONTEXT_KEY = 'xilehud:last-view-context';
     let firstSelectableCategory = null;
+    let categoryDropdownFilter = '';
 
     const UPDATE_RELEASE_URL = 'https://github.com/XileHUD/poe_overlay/releases/latest';
     let startupUpdateCheckTriggered = false;
@@ -772,6 +773,7 @@
     const featureAvailability = {
         modifiers: true,
         crafting: true,
+        character: true,
         history: true
     };
 
@@ -779,26 +781,29 @@
         if (!flags) return;
         if (typeof flags.modifiers === 'boolean') featureAvailability.modifiers = flags.modifiers;
         if (typeof flags.crafting === 'boolean') featureAvailability.crafting = flags.crafting;
+        if (typeof flags.character === 'boolean') featureAvailability.character = flags.character;
         if (typeof flags.history === 'boolean') featureAvailability.history = flags.history;
     }
 
     function isViewAvailable(view) {
         if (view === 'modifiers') return !!featureAvailability.modifiers;
         if (view === 'history') return !!featureAvailability.history;
-        if (view === 'crafting' || view === 'character') return !!featureAvailability.crafting;
+        if (view === 'crafting') return !!featureAvailability.crafting;
+        if (view === 'character') return !!featureAvailability.character;
         return true;
     }
 
     function pickFirstAvailableView(preferred) {
         const order = [];
         if (preferred) order.push(preferred);
-        order.push('modifiers', 'crafting', 'history');
+        order.push('modifiers', 'character', 'crafting', 'history');
         const seen = new Set();
         for (const view of order) {
             if (seen.has(view)) continue;
             seen.add(view);
             if (view === 'modifiers' && featureAvailability.modifiers) return 'modifiers';
-            if ((view === 'crafting' || view === 'character') && featureAvailability.crafting) return 'crafting';
+            if (view === 'character' && featureAvailability.character) return 'character';
+            if (view === 'crafting' && featureAvailability.crafting) return 'crafting';
             if (view === 'history' && featureAvailability.history) return 'history';
         }
         return null;
@@ -876,9 +881,11 @@
     const previousView = activeView;
     let targetView = view;
         if (view === 'modifiers' && !featureAvailability.modifiers) {
-            targetView = pickFirstAvailableView('crafting');
-        } else if ((view === 'crafting' || view === 'character') && !featureAvailability.crafting) {
-            targetView = pickFirstAvailableView(view === 'crafting' ? 'history' : undefined);
+            targetView = pickFirstAvailableView('character');
+        } else if (view === 'crafting' && !featureAvailability.crafting) {
+            targetView = featureAvailability.character ? 'character' : pickFirstAvailableView('history');
+        } else if (view === 'character' && !featureAvailability.character) {
+            targetView = featureAvailability.crafting ? 'crafting' : pickFirstAvailableView('modifiers');
         } else if (view === 'history' && !featureAvailability.history) {
             targetView = pickFirstAvailableView('modifiers');
         }
@@ -909,7 +916,7 @@
         }
 
         // ALWAYS remove ALL view classes first
-        document.body.classList.remove('crafting-mode', 'view-history', 'view-modifiers');
+    document.body.classList.remove('crafting-mode', 'view-history', 'view-modifiers', 'view-character');
         
         // ALWAYS hide ALL containers first
         if (content) content.style.display = 'none';
@@ -928,15 +935,18 @@
                 whittlingInfo.style.display = 'inline-flex';
             }
             try { window.OverlayHistory?.onLeaveView?.(); } catch {}
-        } else if (view === 'crafting'){
+        } else if (view === 'crafting' || view === 'character'){
             if (crafting) { 
                 crafting.style.display = 'block'; 
-                if (previousView !== 'crafting') {
+                if (previousView !== view) {
                     crafting.innerHTML = ''; 
                 }
             }
             setControlPanelVisible(false);
             document.body.classList.add('crafting-mode');
+            if (view === 'character') {
+                document.body.classList.add('view-character');
+            }
             // Hide whittling badge on crafting views
             const whittlingInfo = document.getElementById('whittlingInfo');
             if (whittlingInfo) whittlingInfo.style.display = 'none';
@@ -1055,13 +1065,13 @@
             }
 
             if (action.startsWith('character:')) {
-                if (!featureAvailability.crafting) return false;
+                if (!featureAvailability.character) return false;
                 const key = action.slice('character:'.length);
                 const menuItem = document.querySelector(`#characterMenu .character-menu-item[data-action="${key}"]`);
                 if (menuItem && window.getComputedStyle(menuItem).display === 'none') return false;
                 if (key === 'gems') {
                     setActiveTab('characterTab');
-                    setView('crafting');
+                    setView('character');
                     await showGems();
                     setHeader('Gems');
                     recordHeaderAction('Gems');
@@ -1069,7 +1079,7 @@
                 }
                 if (key === 'keystones') {
                     setActiveTab('characterTab');
-                    setView('crafting');
+                    setView('character');
                     await showKeystones();
                     setHeader('Keystones');
                     recordHeaderAction('Keystones');
@@ -1077,7 +1087,7 @@
                 }
                 if (key === 'asc-passives') {
                     setActiveTab('characterTab');
-                    setView('crafting');
+                    setView('character');
                     await showAscendancyPassives();
                     setHeader('Ascendancy Passives');
                     recordHeaderAction('Ascendancy Passives');
@@ -1085,7 +1095,7 @@
                 }
                 if (key === 'atlas-nodes') {
                     setActiveTab('characterTab');
-                    setView('crafting');
+                    setView('character');
                     await showAtlasNodes();
                     setHeader('Atlas Nodes');
                     recordHeaderAction('Atlas Nodes');
@@ -1093,7 +1103,7 @@
                 }
                 if (key === 'quest-passives') {
                     setActiveTab('characterTab');
-                    setView('crafting');
+                    setView('character');
                     if (window.OverlayQuestPassives?.show) { try { await window.OverlayQuestPassives.show(); } catch {} }
                     setHeader('Quest Passives');
                     recordHeaderAction('Quest Passives');
@@ -1101,7 +1111,7 @@
                 }
                 if (key === 'glossar') {
                     setActiveTab('characterTab');
-                    setView('crafting');
+                    setView('character');
                     try { await showGlossar(); } catch {}
                     setHeader('Glossar');
                     recordHeaderAction('Glossar');
@@ -1109,7 +1119,7 @@
                 }
                 if (key === 'poe1-divination-cards') {
                     setActiveTab('characterTab');
-                    setView('crafting');
+                    setView('character');
                     if (window.OverlayPoe1DivinationCards?.show) { try { await window.OverlayPoe1DivinationCards.show(); } catch {} }
                     setHeader('Divination Cards');
                     recordHeaderAction('Divination Cards');
@@ -1117,7 +1127,7 @@
                 }
                 if (key === 'poe1-tattoos') {
                     setActiveTab('characterTab');
-                    setView('crafting');
+                    setView('character');
                     if (window.OverlayPoe1Tattoos?.show) { try { await window.OverlayPoe1Tattoos.show(); } catch {} }
                     setHeader('Tattoos');
                     recordHeaderAction('Tattoos');
@@ -1125,7 +1135,7 @@
                 }
                 if (key === 'poe1-gems-list') {
                     setActiveTab('characterTab');
-                    setView('crafting');
+                    setView('character');
                     if (window.OverlayPoe1Gems?.showList) { try { await window.OverlayPoe1Gems.showList(); } catch {} }
                     setHeader('Gems');
                     recordHeaderAction('Gems');
@@ -1658,16 +1668,66 @@
         wrapper.classList.toggle('open', shouldOpen);
         button.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
         menu.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+        if (shouldOpen) {
+            setTimeout(() => {
+                const searchInput = menu.querySelector('.category-menu-search input');
+                if (searchInput) {
+                    try {
+                        searchInput.focus();
+                        searchInput.setSelectionRange(searchInput.value.length, searchInput.value.length);
+                    } catch {}
+                }
+            }, 0);
+        }
     }
 
     function closeCategoryMenu() {
         toggleCategoryMenu(false);
     }
 
-    function renderCategoryMenu(items, selectedValue) {
+    function renderCategoryMenu(items, selectedValue, options = {}) {
         const { menu } = getCategoryDropdownElements();
         if (!menu) return;
         menu.innerHTML = '';
+
+        let searchInputRef = null;
+        if (options.showSearch) {
+            const searchWrap = document.createElement('div');
+            searchWrap.className = 'category-menu-search';
+            const searchInput = document.createElement('input');
+            searchInput.type = 'search';
+            searchInput.placeholder = 'Filter categories...';
+            searchInput.autocomplete = 'off';
+            searchInput.spellcheck = false;
+            searchInput.value = options.filterValue || '';
+            searchInput.setAttribute('aria-label', 'Filter modifier categories');
+            searchInput.addEventListener('input', (event) => {
+                const val = (event.target && typeof event.target.value === 'string') ? event.target.value : '';
+                if (typeof options.onFilterChange === 'function') {
+                    options.onFilterChange(val);
+                }
+            });
+            searchInput.addEventListener('keydown', (event) => {
+                if (event.key === 'ArrowDown') {
+                    event.preventDefault();
+                    const firstItem = menu.querySelector('.category-menu-item');
+                    if (firstItem) firstItem.focus();
+                } else if (event.key === 'Escape') {
+                    if (searchInput.value) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        searchInput.value = '';
+                        if (typeof options.onFilterChange === 'function') {
+                            options.onFilterChange('');
+                        }
+                    }
+                }
+            });
+            searchWrap.appendChild(searchInput);
+            menu.appendChild(searchWrap);
+            searchInputRef = searchInput;
+        }
+
         const frag = document.createDocumentFragment();
         items.forEach((item, index) => {
             if (item.type === 'group-label') {
@@ -1731,11 +1791,40 @@
                     }
                     closeCategoryMenu();
                 });
+                btn.addEventListener('keydown', (event) => {
+                    if (event.key === 'ArrowUp') {
+                        const siblings = Array.from(menu.querySelectorAll('.category-menu-item'));
+                        const currentIdx = siblings.indexOf(btn);
+                        if (currentIdx > 0) {
+                            siblings[currentIdx - 1].focus();
+                            event.preventDefault();
+                        } else if (searchInputRef) {
+                            searchInputRef.focus();
+                            event.preventDefault();
+                        }
+                    } else if (event.key === 'ArrowDown') {
+                        const siblings = Array.from(menu.querySelectorAll('.category-menu-item'));
+                        const currentIdx = siblings.indexOf(btn);
+                        if (currentIdx >= 0 && currentIdx < siblings.length - 1) {
+                            siblings[currentIdx + 1].focus();
+                            event.preventDefault();
+                        }
+                    }
+                });
                 frag.appendChild(btn);
             }
         });
         menu.appendChild(frag);
         updateCategoryMenuSelection(selectedValue || '');
+
+        if (options.autoFocusSearch && searchInputRef) {
+            setTimeout(() => {
+                try {
+                    searchInputRef.focus();
+                    searchInputRef.setSelectionRange(searchInputRef.value.length, searchInputRef.value.length);
+                } catch {}
+            }, 0);
+        }
     }
 
     function syncCategorySelectAppearance() {
@@ -1844,6 +1933,19 @@
         return meta;
     }
 
+    function formatCategoryLabel(category) {
+        if (!category) return '';
+        let label = String(category);
+        try {
+            label = decodeURIComponent(label);
+        } catch {}
+        label = label.replace(/_/g, ' ').trim();
+        label = label.replace(/\bPoe1\b/gi, 'PoE1');
+        label = label.replace(/\bPoe2\b/gi, 'PoE2');
+        label = label.replace(/\bMavens\b/i, "Maven's");
+        return label;
+    }
+
     // Populate category dropdown on load
         async function populateCategoryDropdown() {
             if (!window.electronAPI || !window.electronAPI.getAllCategories) return;
@@ -1851,8 +1953,7 @@
                 const rawCategories = await window.electronAPI.getAllCategories();
                 const categorySelect = document.getElementById('categorySelect');
                 if (!categorySelect) return;
-                const previous = categorySelect.value;
-        const categories = (rawCategories || []).filter((entry) => String(entry || '').toUpperCase() !== 'ALL');
+                const categories = (rawCategories || []).filter((entry) => String(entry || '').toUpperCase() !== 'ALL');
         
         // Version-specific aggregated categories
         const POE2_AGGREGATED = ['DESECRATED','ESSENCE','CORRUPTED','SOCKETABLE','SOCKETABLES'];
@@ -1875,6 +1976,7 @@
                         if (POE1_DOMAINS.includes(u)) return 'domains';
                         
                         // Special gear (unique items that don't fit normal categories)
+                        if (u === 'WARSTAVES') return 'special_gear';
                         if (u.match(/^(CONVOKING_WAND|FISHING_ROD|RUNE_DAGGER|STEEL_BRACER|THRUSTING_ONE_HAND|UNSET_RING|WARSTAFF)/)) {
                             return 'special_gear';
                         }
@@ -1924,7 +2026,7 @@
                 const buckets = overlayVersionMode === 'poe1' ? poe1Buckets : poe2Buckets;
                 
                 const nonModifierCats = new Set([
-                    'LIQUID_EMOTIONS','ANNOINTS','ESSENCES','OMENS','CATALYSTS','SOCKETABLES','SOCKETABLE','GEMS','KEYSTONES','ASCENDANCY_PASSIVES','ATLAS_NODES','KEYWORDS','UNIQUES','BASES','CURRENCY'
+                    'LIQUID_EMOTIONS','ANNOINTS','ESSENCES','OMENS','CATALYSTS','SOCKETABLES','SOCKETABLE','GEMS','KEYSTONES','ASCENDANCY_PASSIVES','ATLAS_NODES','KEYWORDS','UNIQUES','BASES','CURRENCY','GEAR','UNIQUE_MAPS','UNIQUE MAPS'
                 ]);
                 // First, put all aggregated explicitly into the aggregated bucket (preserve our preferred order)
                 const aggregatedAdded = new Set();
@@ -1957,7 +2059,11 @@
                 }
 
                 async function buildOptions(filterText='') {
-                    categorySelect.innerHTML = `<option value="">${filterText? 'Filter: '+filterText : 'Select category...'}</option>`;
+                    const normalizedFilter = (filterText || '').toLowerCase();
+                    const matchesFilter = (label) => !normalizedFilter || label.toLowerCase().includes(normalizedFilter);
+
+                    const safeFilterText = escapeHtml(filterText || '');
+                    categorySelect.innerHTML = `<option value="">${normalizedFilter ? `Filtering: "${safeFilterText}"` : 'Select category...'}</option>`;
                     const placeholder = categorySelect.options[0];
                     if (placeholder) {
                         placeholder.classList.add('category-placeholder');
@@ -1965,10 +2071,14 @@
                         placeholder.dataset.iconUrl = '';
                         placeholder.dataset.textColor = ATTRIBUTE_STYLES.none.textColor;
                     }
+
                     const menuItems = [];
-                    const f = filterText.toLowerCase();
-                    async function addGroup(label, list, transform=(c)=>c.replace(/_/g,' '), upper=false) {
-                        const subset = f ? list.filter(c => transform(c).toLowerCase().includes(f)) : list.slice();
+
+                    async function addGroup(label, list, transform) {
+                        const subset = (list || []).filter((c) => {
+                            const display = transform ? transform(c) : formatCategoryLabel(c);
+                            return matchesFilter(display);
+                        });
                         if (!subset.length) return;
                         const groupLabel = document.createElement('option');
                         groupLabel.textContent = label;
@@ -1976,10 +2086,11 @@
                         groupLabel.classList.add('category-group-label');
                         categorySelect.appendChild(groupLabel);
                         menuItems.push({ type: 'group-label', label });
+
                         const ordered = subset.slice().sort();
                         for (const c of ordered) {
                             const opt = document.createElement('option');
-                            const display = upper ? transform(c).toUpperCase() : transform(c);
+                            const display = transform ? transform(c) : formatCategoryLabel(c);
                             opt.value = c;
                             opt.textContent = display;
                             const meta = await ensureMeta(c);
@@ -1988,6 +2099,7 @@
                             categorySelect.appendChild(opt);
                             menuItems.push({ type: 'option', meta });
                         }
+
                         const div = document.createElement('option');
                         div.textContent = '──────────';
                         div.disabled = true;
@@ -1995,64 +2107,99 @@
                         categorySelect.appendChild(div);
                         menuItems.push({ type: 'divider' });
                     }
-                    // Version-specific group rendering
+
                     if (overlayVersionMode === 'poe1') {
-                        // PoE1 sections - correct order
-                        await addGroup('— Gear —', buckets.gear, c=>c.replace(/_/g,' '));
-                        await addGroup('— Special Gear —', buckets.special_gear, c=>c.replace(/_/g,' '));
-                        await addGroup('— Jewels —', buckets.jewels, c=>c.replace(/_/g,' '));
-                        await addGroup('— Flasks —', buckets.flasks, c=>c.replace(/_/g,' '));
-                        await addGroup('— Extra —', buckets.extra, c=>c.replace(/_/g,' '));
-                        await addGroup('— Influences —', buckets.influences, c=>c.replace(/_/g,' '));
-                        await addGroup('— Eldritch —', buckets.eldritch, c=>{
-                            const name = c.replace(/ELDRITCH_/,'').replace(/_/g,' ');
-                            if (c.toUpperCase().includes('EATER')) return 'Eater of Worlds';
-                            if (c.toUpperCase().includes('SEARING')) return 'Searing Exarch';
-                            return name;
+                        await addGroup('— Gear —', buckets.gear, (c) => formatCategoryLabel(c));
+                        await addGroup('— Special Gear —', buckets.special_gear, (c) => formatCategoryLabel(c));
+                        await addGroup('— Jewels —', buckets.jewels, (c) => formatCategoryLabel(c));
+                        await addGroup('— Flasks —', buckets.flasks, (c) => formatCategoryLabel(c));
+                        await addGroup('— Extra —', buckets.extra, (c) => formatCategoryLabel(c));
+                        await addGroup('— Influences —', buckets.influences, (c) => formatCategoryLabel(c));
+                        await addGroup('— Eldritch —', buckets.eldritch, (c) => {
+                            const upper = c.toUpperCase();
+                            if (upper.includes('EATER')) return 'Eater of Worlds';
+                            if (upper.includes('SEARING')) return 'Searing Exarch';
+                            return formatCategoryLabel(c.replace(/ELDRITCH_/i, ''));
                         });
-                        await addGroup('— Domains —', buckets.domains, c=>c.replace(/_/g,' '));
-                        await addGroup('— Aggregated —', buckets.aggregated, c=>c.replace(/_/g,' ').toUpperCase(), true);
-                        await addGroup('— Idols —', buckets.idols, c=>c.replace(/_/g,' '));
-                        await addGroup('— Charms —', buckets.charms, c=>c.replace(/_/g,' '));
-                        await addGroup('— Other —', buckets.other, c=>c.replace(/_/g,' '));
+                        await addGroup('— Domains —', buckets.domains, (c) => formatCategoryLabel(c));
+                        await addGroup('— Aggregated —', buckets.aggregated, (c) => formatCategoryLabel(c).toUpperCase());
+                        await addGroup('— Idols —', buckets.idols, (c) => formatCategoryLabel(c));
+                        await addGroup('— Charms —', buckets.charms, (c) => formatCategoryLabel(c));
+                        await addGroup('— Other —', buckets.other, (c) => formatCategoryLabel(c));
                     } else {
-                        // PoE2 sections
-                        await addGroup('— Aggregated —', buckets.aggregated, c=>c.toUpperCase(), true);
-                        await addGroup('— Gear —', buckets.gear);
-                        await addGroup('— Waystones —', buckets.waystones);
-                        await addGroup('— Relics —', buckets.relics, c=>{
-                            const name = c.replace(/_/g,' ');
+                        await addGroup('— Aggregated —', buckets.aggregated, (c) => formatCategoryLabel(c).toUpperCase());
+                        await addGroup('— Gear —', buckets.gear, (c) => formatCategoryLabel(c));
+                        await addGroup('— Waystones —', buckets.waystones, (c) => formatCategoryLabel(c));
+                        await addGroup('— Relics —', buckets.relics, (c) => {
+                            const name = formatCategoryLabel(c);
                             const u = c.toUpperCase();
-                            if (u.includes('SEAL')) return name + ' [2x1]';
-                            if (u.includes('URN')) return name + ' [1x2]';
-                            if (u.includes('TAPESTRY')) return name + ' [3x1]';
-                            if (u.includes('AMPHORA')) return name + ' [1x3]';
-                            if (u.includes('INCENSE')) return name + ' [4x1]';
-                            if (u.includes('VASE')) return name + ' [1x4]';
-                            if (u.includes('COFFER')) return name + ' [2x2]';
+                            if (u.includes('SEAL')) return `${name} [2x1]`;
+                            if (u.includes('URN')) return `${name} [1x2]`;
+                            if (u.includes('TAPESTRY')) return `${name} [3x1]`;
+                            if (u.includes('AMPHORA')) return `${name} [1x3]`;
+                            if (u.includes('INCENSE')) return `${name} [4x1]`;
+                            if (u.includes('VASE')) return `${name} [1x4]`;
+                            if (u.includes('COFFER')) return `${name} [2x2]`;
                             return name;
                         });
-                        await addGroup('— Flasks & Charms —', buckets.flasks, c=>c.replace(/_/g,' '));
-                        await addGroup('— Jewels —', buckets.jewels, c=>c.replace(/_/g,' '));
-                        await addGroup('— Tablets —', buckets.tablets, c=>c.replace(/_/g,' '));
-                        await addGroup('— Mechanics —', buckets.mechanics, c=>c.replace(/_/g,' '));
+                        await addGroup('— Flasks & Charms —', buckets.flasks, (c) => formatCategoryLabel(c));
+                        await addGroup('— Jewels —', buckets.jewels, (c) => formatCategoryLabel(c));
+                        await addGroup('— Tablets —', buckets.tablets, (c) => formatCategoryLabel(c));
+                        await addGroup('— Mechanics —', buckets.mechanics, (c) => formatCategoryLabel(c));
                     }
+
                     if (menuItems.length && menuItems[menuItems.length - 1]?.type === 'divider') {
                         menuItems.pop();
                     }
+
                     return menuItems;
                 }
-                // initial build with no filter
-                const menuItems = await buildOptions('');
-                const realOptions = Array.from(categorySelect.options || []).filter(opt => !opt.disabled && opt.value);
-                firstSelectableCategory = realOptions.length ? realOptions[0].value : null;
-                if (previous && realOptions.some(opt => opt.value === previous)) {
-                    categorySelect.value = previous;
-                }
-                renderCategoryMenu(menuItems || [], categorySelect.value || previous || '');
+
+                let rebuildMenu;
+                let filterDebounceId = 0;
+
+                const handleFilterChange = (value) => {
+                    const next = typeof value === 'string' ? value : '';
+                    window.clearTimeout(filterDebounceId);
+                    filterDebounceId = window.setTimeout(() => {
+                        if (typeof rebuildMenu === 'function') {
+                            rebuildMenu(next);
+                        }
+                    }, 90);
+                };
+
+                rebuildMenu = async (filterText) => {
+                    categoryDropdownFilter = filterText || '';
+                    const selectedBefore = categorySelect.value;
+                    const menuItems = await buildOptions(categoryDropdownFilter);
+                    const realOptions = Array.from(categorySelect.options || []).filter(opt => !opt.disabled && opt.value);
+
+                    if (!firstSelectableCategory && realOptions.length) {
+                        firstSelectableCategory = realOptions[0].value;
+                    }
+
+                    if (selectedBefore && realOptions.some(opt => opt.value === selectedBefore)) {
+                        categorySelect.value = selectedBefore;
+                    } else if (!realOptions.some(opt => opt.value === categorySelect.value)) {
+                        categorySelect.selectedIndex = 0;
+                    }
+
+                    const { wrapper } = getCategoryDropdownElements();
+                    const shouldFocusSearch = !!(wrapper && wrapper.classList.contains('open'));
+
+                    renderCategoryMenu(menuItems || [], categorySelect.value || '', {
+                        showSearch: true,
+                        filterValue: categoryDropdownFilter,
+                        autoFocusSearch: shouldFocusSearch,
+                        onFilterChange: handleFilterChange
+                    });
+
+                    syncCategorySelectAppearance();
+                    window.__missingCategoryIcons = Array.from(missingCategoryIconNames);
+                };
+
+                await rebuildMenu(categoryDropdownFilter);
                 closeCategoryMenu();
-                syncCategorySelectAppearance();
-                window.__missingCategoryIcons = Array.from(missingCategoryIconNames);
             } catch (err) {
                 console.warn('[populateCategoryDropdown] failed', err);
             }
@@ -2076,6 +2223,7 @@
                     let modifiersEnabled = !!enabledFeatures.modifiers;
                     let historyEnabled = !!enabledFeatures.merchant;
                     let craftingViewEnabled = false;
+                    let characterViewEnabled = false;
 
                     // Hide Modifier tab if disabled (version-aware: check poe1Modifiers for PoE1, modifiers for PoE2)
                     const modifiersConfig = overlayVersionMode === 'poe1' ? enabledFeatures.poe1Modifiers : enabledFeatures.modifiers;
@@ -2176,6 +2324,10 @@
 
                     const poe2CharacterEnabled = !!(poe2CharacterConfig && poe2CharacterConfig.enabled);
                     const poe1CharacterEnabled = !!(poe1CharacterConfig && poe1CharacterConfig.enabled);
+                    const poe2Subs = poe2CharacterConfig?.subcategories || {};
+                    const poe1Subs = poe1CharacterConfig?.subcategories || {};
+                    const poe2GemsEnabled = poe2CharacterEnabled && !!poe2Subs.gems;
+                    const poe1GemsEnabled = poe1CharacterEnabled && isPoe1Mode && !!poe1Subs.gems;
 
                     if (!poe2CharacterEnabled && !poe1CharacterEnabled) {
                         console.log('[FeatureFilter] Hiding Character tab (no character features enabled)');
@@ -2183,8 +2335,6 @@
                         if (charTab) charTab.remove();
                     } else {
                         const charMenu = document.getElementById('characterMenu');
-                        const poe2Subs = poe2CharacterConfig?.subcategories || {};
-                        const poe1Subs = poe1CharacterConfig?.subcategories || {};
                         let anySubEnabled = false;
 
                         console.log('[FeatureFilter] Character subcategories:', { poe2: poe2Subs, poe1: poe1Subs });
@@ -2230,7 +2380,14 @@
                             console.log('[FeatureFilter] Character tab should be visible');
                         }
                     }
-                    if (document.getElementById('characterTab')) craftingViewEnabled = true;
+                    const charTabEl = document.getElementById('characterTab');
+                    if (charTabEl) {
+                        craftingViewEnabled = true;
+                        characterViewEnabled = true;
+                    } else if (poe2GemsEnabled || poe1GemsEnabled) {
+                        // Even if the tab is hidden (e.g., user disables menu access), leave character view available for auto-routing.
+                        characterViewEnabled = true;
+                    }
                     
                     // Filter Items submenu items (version-aware: check poe1Items for PoE1, items for PoE2)
                     const itemsConfig = overlayVersionMode === 'poe1' ? enabledFeatures.poe1Items : enabledFeatures.items;
@@ -2347,11 +2504,12 @@
                     }
                     if (document.getElementById('toolsTab')) craftingViewEnabled = true;
 
-                    overlayHasAnyFeatures = modifiersEnabled || craftingViewEnabled || historyEnabled;
+                    overlayHasAnyFeatures = modifiersEnabled || craftingViewEnabled || characterViewEnabled || historyEnabled;
 
                     setFeatureAvailability({
                         modifiers: modifiersEnabled,
                         crafting: craftingViewEnabled,
+                        character: characterViewEnabled,
                         history: historyEnabled
                     });
 
@@ -2758,6 +2916,7 @@
                             normalizedCategory === 'currency' ||
                             ((itemClass.includes('stackable currency') || itemClass.includes('currency')) && /orb|scroll|bauble|whetstone|chisel|fusing|jeweller|chromatic|binding|annul|mirror|regret|exalted|chaos|splinter|fragment|sextant|compass|coin|prism|catalyst|harvest|fossil|resonator|blessing|prophecy|favour|perandus|remnant|ancient/i.test(blob))
                         );
+                        const isPoe1DivinationCard = isPoe1Mode && (normalizedCategory === 'divination_cards' || itemClass.includes('divination card') || blob.includes('divination card'));
 
                         // (unique via frame/icon was handled above)
 
@@ -2913,7 +3072,6 @@
                         }
 
                         if (isGem) {
-                            // Gems page is PoE2-only for now
                             if (overlayVersionMode === 'poe2') {
                                 // Route to Character > Gems directly (no crafting mode)
                                 setActiveTab('characterTab');
@@ -2929,11 +3087,35 @@
                                     }
                                 );
                             } else {
-                                console.log('Gem copied in PoE1 mode - opening on last page');
-                                setActiveTab('tabModifier');
-                                setView('modifiers');
-                                setHeader('Modifier');
+                                setActiveTab('characterTab');
+                                setView('character');
+                                retryShow(
+                                    () => !!(window.OverlayPoe1Gems && typeof window.OverlayPoe1Gems.showList === 'function'),
+                                    async () => {
+                                        try {
+                                            await window.OverlayPoe1Gems.showList();
+                                            setHeader('Gems');
+                                            recordHeaderAction('Gems');
+                                        } catch {}
+                                    }
+                                );
                             }
+                            return;
+                        }
+
+                        if (isPoe1DivinationCard) {
+                            setActiveTab('characterTab');
+                            setView('crafting');
+                            retryShow(
+                                () => !!(window.OverlayPoe1DivinationCards && typeof window.OverlayPoe1DivinationCards.show === 'function'),
+                                async () => {
+                                    try {
+                                        await window.OverlayPoe1DivinationCards.show();
+                                        setHeader('Divination Cards');
+                                        recordHeaderAction('Divination Cards');
+                                    } catch {}
+                                }
+                            );
                             return;
                         }
 
@@ -3497,8 +3679,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeAllMenus();
                 const action = item.getAttribute('data-action');
                 if (characterMenu) characterMenu.style.display = 'none';
-                // Switch to crafting/character view using single source of truth
-                setView('crafting');
+                // Switch to character view using single source of truth
+                setView('character');
                 if (action === 'quest-passives') {
                     if (window.OverlayQuestPassives?.show) { try { await window.OverlayQuestPassives.show(); } catch {} }
                     setHeader('Quest Passives');
@@ -4394,7 +4576,7 @@ function renderGems(groups){
                                     try { setHeader('Merchant History'); } catch {}
                                 }
                             });
-                            window.electronAPI.onInvokeAction?.((action)=>{
+                            window.electronAPI.onInvokeAction?.(async (action)=>{
                                 if (action === 'regex') {
                                     try { if (window.OverlayRegex?.show) { window.OverlayRegex.show(); setHeader('Regex'); } } catch {}
                                 }
@@ -4414,18 +4596,21 @@ function renderGems(groups){
                                 }
                                 if (action === 'gems') {
                                     try {
-                                        // Gems page is PoE2-only for now
-                                        if (overlayVersionMode !== 'poe2') {
-                                            console.log('[onInvokeAction] Gems not available in', overlayVersionMode, 'mode - opening on last page');
-                                            setActiveTab('tabModifier');
-                                            setView('modifiers');
-                                            setHeader('Modifier');
+                                        if (!featureAvailability.character) {
+                                            console.log('[onInvokeAction] Character view disabled - skipping gems');
                                             return;
                                         }
                                         setActiveTab('characterTab');
-                                        setView('crafting'); // Still use crafting view (shares craftingPanel div)
-                                        showGems();
+                                        setView('character');
+                                        if (overlayVersionMode === 'poe2') {
+                                            await showGems();
+                                        } else {
+                                            if (window.OverlayPoe1Gems?.showList) {
+                                                await window.OverlayPoe1Gems.showList();
+                                            }
+                                        }
                                         setHeader('Gems');
+                                        recordHeaderAction('Gems');
                                     } catch {}
                                 }
                             });

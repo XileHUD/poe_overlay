@@ -1,3 +1,50 @@
+const POE1_BASETYPE_CATEGORY_OVERRIDES: Record<string, string> = {
+    'bone ring': 'Bone_Ring',
+    'replica bone ring': 'Bone_Ring',
+    'unset ring': 'Unset_Ring',
+    'burst band': 'Burst_Band',
+    'replica burst band': 'Burst_Band',
+    'precise arrowhead': 'Precise_Arrowhead',
+    'obsidian sharpening stone': 'Obsidian_Sharpening_Stone',
+    'master lockpick': 'Master_Lockpick',
+    'steel bracers': 'Steel_Bracers',
+    'thaumaturgical sensing charm': 'Thaumaturgical_Sensing_Charm',
+    'thaumetic flashpowder': 'Thaumetic_Flashpowder',
+    'thaumaturgical ward': 'Thaumaturgical_Ward',
+    'grandmaster keyring': 'Grandmaster_Keyring',
+    'silkweave sole': 'Silkweave_Sole',
+    'regicide disguise kit': 'Regicide_Disguise_Kit',
+    'thaumetic blowtorch': 'Thaumetic_Blowtorch',
+    'whisper-woven cloak': 'Whisper-woven_Cloak',
+    'foliate brooch': 'Foliate_Brooch',
+    'runic crown': 'Runic_Crown',
+    'runic sabatons': 'Runic_Sabatons',
+    'runic gauntlets': 'Runic_Gauntlets',
+    'convoking wand': 'Convoking_Wand',
+    'bone spirit shield': 'Bone_Spirit_Shield',
+    'iron flask': 'Iron_Flask',
+    'silver flask': 'Silver_Flask',
+    'ursine charm': 'Ursine_Charm',
+    'lupine charm': 'Lupine_Charm',
+    'corvine charm': 'Corvine_Charm',
+    'minor idol': 'Minor_Idol',
+    'kamasan idol': 'Kamasan_Idol',
+    'totemic idol': 'Totemic_Idol',
+    'noble idol': 'Noble_Idol',
+    'burial idol': 'Burial_Idol',
+    'conqueror idol': 'Conqueror_Idol',
+    'murderous eye jewel': 'Murderous_Eye_Jewel',
+    'searching eye jewel': 'Searching_Eye_Jewel',
+    'hypnotic eye jewel': 'Hypnotic_Eye_Jewel',
+    'ghastly eye jewel': 'Ghastly_Eye_Jewel',
+    'timeless jewel': 'Timeless_Jewel',
+    'cobalt jewel': 'Cobalt_Jewel',
+    'crimson jewel': 'Crimson_Jewel',
+    'viridian jewel': 'Viridian_Jewel',
+    'prismatic jewel': 'Prismatic_Jewel',
+    "maven's invitation: the feared": 'Mavens_Invitation%3A_The_Feared'
+};
+
 export interface OrganizedModifier {
     name?: string;         // For explicit mods: "Fugitive", "of the Polar Bear"
     tier?: number;         // For explicit mods: 1, 2, 3
@@ -86,9 +133,15 @@ export class ItemParser {
         'Rings': 'Rings',
         'Amulets': 'Amulets',
     'Charms': 'Charms',
+    'Trinkets': 'Trinkets',
+    'Contracts': 'Contracts',
+    'Blueprints': 'Blueprints',
+        'Tinctures': 'Tinctures',
         // Flasks
         'Life Flasks': 'Life_Flasks',
         'Mana Flasks': 'Mana_Flasks',
+    'Utility Flasks': 'Utility_Flasks',
+    'Hybrid Flasks': 'Hybrid_Flasks',
         // Special categories
         'Relics': 'Relics',
         'Relic': 'Relics',
@@ -131,6 +184,10 @@ export class ItemParser {
         'Support Gems': 'Gems',
         'Spirit Gems': 'Gems',
         'Lineage Supports': 'Gems',
+        'Divination Cards': 'Divination_Cards',
+        'Rune Daggers': 'Rune_Daggers',
+        'Thrusting One Hand Swords': 'Thrusting_One_Hand_Swords',
+        'Abyss Jewels': 'Jewels',
         // New PoE2 item classes
         'Uncut Skill Gems': 'Gems',
         'Uncut Spirit Gems': 'Gems',
@@ -165,7 +222,7 @@ export class ItemParser {
         const statusFlags = this.extractStatusFlags(lines, normalizedText);
         const socketData = this.extractSockets(normalizedText);
         
-        const attributeType = this.determineAttributeType(requirements);
+    const attributeType = this.determineAttributeType(requirements, itemClass, baseType, lines);
         let category = this.determineCategory(itemClass, attributeType, baseType, name);
         
         // Only log successful parses (suppress unknown/empty spam during clipboard polling)
@@ -813,20 +870,38 @@ export class ItemParser {
         return result;
     }
 
-    private determineAttributeType(requirements: ParsedItem['requirements']): string {
+    private determineAttributeType(
+        requirements: ParsedItem['requirements'],
+        itemClass: string,
+        baseType: string,
+        lines: string[]
+    ): string {
         const hasStr = requirements.str && requirements.str > 0;
         const hasDex = requirements.dex && requirements.dex > 0;
         const hasInt = requirements.int && requirements.int > 0;
 
+        const attributeItemClasses = new Set(['Body Armours', 'Helmets', 'Gloves', 'Boots', 'Shields']);
+        if (this.game === 'poe1' && attributeItemClasses.has(itemClass)) {
+            const inferred = this.inferAttributeFromDefences(lines, baseType);
+            if (inferred) {
+                return inferred;
+            }
+        }
+
         if (hasStr && hasDex && hasInt) {
-            // If all three, determine the highest two
+            // If all three stats are present, drop the lowest requirement and normalize the pair
             const attrs = [
-                { type: 'str', value: requirements.str || 0 },
-                { type: 'dex', value: requirements.dex || 0 },
-                { type: 'int', value: requirements.int || 0 }
+                { type: 'str', value: requirements.str ?? 0 },
+                { type: 'dex', value: requirements.dex ?? 0 },
+                { type: 'int', value: requirements.int ?? 0 }
             ].sort((a, b) => b.value - a.value);
 
-            return `${attrs[0].type}_${attrs[1].type}`;
+            const topTwo = attrs.slice(0, 2).map(attr => attr.type);
+            const pair = new Set(topTwo);
+            if (pair.has('str') && pair.has('dex')) return 'str_dex';
+            if (pair.has('str') && pair.has('int')) return 'str_int';
+            if (pair.has('dex') && pair.has('int')) return 'dex_int';
+            return 'str_dex';
         }
 
         if (hasStr && hasDex) return 'str_dex';
@@ -839,11 +914,42 @@ export class ItemParser {
         return 'str'; // Default fallback
     }
 
+    private inferAttributeFromDefences(lines: string[], baseType: string): string | null {
+        const hasArmour = lines.some(line => /^Armour:\s*\d+/i.test(line));
+        const hasEvasion = lines.some(line => /^Evasion Rating:\s*\d+/i.test(line));
+        const hasEnergyShield = lines.some(line => /^Energy Shield:\s*\d+/i.test(line));
+
+        if (!hasArmour && !hasEvasion && !hasEnergyShield) {
+            if (/(gauntlet|greave|sabatons?|helm|towe?r shield|kite shield|buckler|tower shield)/i.test(baseType)) {
+                return 'str';
+            }
+            return null;
+        }
+
+        if (hasArmour && !hasEvasion && !hasEnergyShield) return 'str';
+        if (!hasArmour && hasEvasion && !hasEnergyShield) return 'dex';
+        if (!hasArmour && !hasEvasion && hasEnergyShield) return 'int';
+        if (hasArmour && hasEvasion && !hasEnergyShield) return 'str_dex';
+        if (hasArmour && !hasEvasion && hasEnergyShield) return 'str_int';
+        if (!hasArmour && hasEvasion && hasEnergyShield) return 'dex_int';
+
+        return null;
+    }
+
     private determineCategory(itemClass: string, attributeType: string, baseType: string, name: string): string {
         // Special-case early exits before unknown check
         // Socketables (Runes / Soul Cores)
         if (/^Socketable$/i.test(itemClass)) {
             return 'Socketables';
+        }
+        if (/^Divination Cards?$/i.test(itemClass)) {
+            return 'Divination_Cards';
+        }
+        if (/^Map Fragments$/i.test(itemClass)) {
+            const fragmentSource = `${name} ${baseType}`.toLowerCase();
+            if (/scarab/.test(fragmentSource)) return 'Scarabs';
+            if (/allflame|ember/.test(fragmentSource)) return 'Embers';
+            // Fall through for other fragment types – handled by default logic.
         }
         const baseCategory = this.categoryMappings[itemClass] || (itemClass === 'Jewels' ? 'Jewels' : '');
         if (!baseCategory) {
@@ -899,10 +1005,33 @@ export class ItemParser {
             if (/time[-\s]*lost\s+ruby/i.test(bt)) return 'Time-Lost_Ruby';
             if (/time[-\s]*lost\s+emerald/i.test(bt)) return 'Time-Lost_Emerald';
             if (/time[-\s]*lost\s+sapphire/i.test(bt)) return 'Time-Lost_Sapphire';
+            if (/searching\s+eye/i.test(bt)) return 'Searching_Eye_Jewel';
+            if (/murderous\s+eye/i.test(bt)) return 'Murderous_Eye_Jewel';
+            if (/hypnotic\s+eye/i.test(bt)) return 'Hypnotic_Eye_Jewel';
+            if (/ghastly\s+eye/i.test(bt)) return 'Ghastly_Eye_Jewel';
+            if (/timeless\s+jewel/i.test(bt)) return 'Timeless_Jewel';
+            if (/prismatic\s+jewel/i.test(bt)) return 'Prismatic_Jewel';
+            if (/crimson\s+jewel/i.test(bt)) return 'Crimson_Jewel';
+            if (/viridian\s+jewel/i.test(bt)) return 'Viridian_Jewel';
+            if (/cobalt\s+jewel/i.test(bt)) return 'Cobalt_Jewel';
             if (/ruby/i.test(bt)) return 'Ruby';
             if (/emerald/i.test(bt)) return 'Emerald';
             if (/sapphire/i.test(bt)) return 'Sapphire';
             return 'Jewels'; // fallback generic
+        }
+
+        if (this.game === 'poe1') {
+            const bt = (baseType || name || '').toLowerCase();
+            const override = POE1_BASETYPE_CATEGORY_OVERRIDES[bt];
+            if (override) {
+                return override;
+            }
+            if (bt.startsWith('blueprint')) {
+                return 'Blueprints';
+            }
+            if (bt.startsWith('contract')) {
+                return 'Contracts';
+            }
         }
 
         // Relics: map to specific relic type if baseType indicates it

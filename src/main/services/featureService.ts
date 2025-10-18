@@ -22,7 +22,31 @@ const MODIFIER_CATEGORY_PATTERNS = [
   'Tablet', 'Precursor_Tablet', '*_Precursor_Tablet',
   'Jewels', 'Ruby', 'Emerald', 'Sapphire', 'Time-Lost_*',
   'Stackable_Currency',
+  'Tinctures',
   'Strongbox', 'Strongbox_Uniques', 'Expedition_Logbook'
+];
+
+const POE1_MODIFIER_CATEGORY_PATTERNS = [
+  'Claws', 'Daggers', 'Wands', 'One_Hand_Swords', 'Thrusting_One_Hand_Swords',
+  'One_Hand_Axes', 'One_Hand_Maces', 'Sceptres', 'Rune_Daggers', 'Bows', 'Staves',
+  'Two_Hand_Swords', 'Two_Hand_Axes', 'Two_Hand_Maces', 'Warstaves', 'Fishing_Rods',
+  'Amulets', 'Rings', 'Belts', 'Trinkets', 'Gloves_str', 'Gloves_dex', 'Gloves_int',
+  'Gloves_str_dex', 'Gloves_str_int', 'Gloves_dex_int', 'Boots_str', 'Boots_dex', 'Boots_int',
+  'Boots_str_dex', 'Boots_str_int', 'Boots_dex_int', 'Body_Armours_str', 'Body_Armours_dex',
+  'Body_Armours_int', 'Body_Armours_str_dex', 'Body_Armours_str_int', 'Body_Armours_dex_int',
+  'Body_Armours_str_dex_int', 'Helmets_str', 'Helmets_dex', 'Helmets_int', 'Helmets_str_dex',
+  'Helmets_str_int', 'Helmets_dex_int', 'Quivers', 'Shields_str', 'Shields_dex', 'Shields_int',
+  'Shields_str_dex', 'Shields_str_int', 'Shields_dex_int', 'Crimson_Jewel', 'Viridian_Jewel',
+  'Cobalt_Jewel', 'Prismatic_Jewel', 'Murderous_Eye_Jewel', 'Searching_Eye_Jewel',
+  'Hypnotic_Eye_Jewel', 'Ghastly_Eye_Jewel', 'Timeless_Jewel', 'Life_Flasks', 'Mana_Flasks',
+  'Hybrid_Flasks', 'Utility_Flasks', 'Tinctures', 'Mavens_Invitation%3A_The_Feared', 'Unset_Ring',
+  'Iron_Flask', 'Bone_Ring', 'Convoking_Wand', 'Bone_Spirit_Shield', 'Runic_Crown',
+  'Runic_Sabatons', 'Runic_Gauntlets', 'Silver_Flask', 'Ursine_Charm', 'Lupine_Charm',
+  'Corvine_Charm', 'Minor_Idol', 'Kamasan_Idol', 'Totemic_Idol', 'Noble_Idol', 'Burial_Idol',
+  'Conqueror_Idol', 'Contracts', 'Blueprints', 'Obsidian_Sharpening_Stone', 'Precise_Arrowhead',
+  'Burst_Band', 'Master_Lockpick', 'Steel_Bracers', 'Thaumaturgical_Sensing_Charm',
+  'Thaumetic_Flashpowder', 'Thaumaturgical_Ward', 'Grandmaster_Keyring', 'Silkweave_Sole',
+  'Regicide_Disguise_Kit', 'Thaumetic_Blowtorch', 'Whisper-woven_Cloak', 'Foliate_Brooch'
 ];
 
 const CRAFTING_CATEGORY_MAP: Record<string, keyof CraftingSubcategories> = {
@@ -51,6 +75,20 @@ const ITEM_CATEGORY_MAP: Record<string, keyof ItemsSubcategories> = {
 const POE1_ITEM_CATEGORY_MAP: Record<string, keyof Poe1ItemsSubcategories> = {
   Poe1_Uniques: 'uniques',
   Poe1_Bases: 'bases'
+};
+
+const POE1_CRAFTING_CATEGORY_MAP: Record<string, keyof Poe1CraftingSubcategories> = {
+  Scarabs: 'scarabs',
+  Currency: 'currency',
+  Essences: 'essences',
+  Fossils: 'fossils',
+  Embers: 'embers'
+};
+
+const POE1_CHARACTER_CATEGORY_MAP: Record<string, keyof Poe1CharacterSubcategories> = {
+  Divination_Cards: 'divinationCards',
+  Tattoos: 'tattoos',
+  Gems: 'gems'
 };
 
 export class FeatureService {
@@ -158,8 +196,12 @@ export class FeatureService {
     const categories: string[] = [];
 
     // Modifiers (all gear/weapons/etc.)
-    if (config.modifiers) {
+    if (config.modifiers || config.poe1Modifiers) {
       categories.push(...MODIFIER_CATEGORY_PATTERNS);
+    }
+
+    if (config.poe1Modifiers) {
+      categories.push(...POE1_MODIFIER_CATEGORY_PATTERNS);
     }
 
     // Crafting subcategories
@@ -179,11 +221,32 @@ export class FeatureService {
       // Note: questPassives doesn't need a JSON (local state only)
     }
 
+    if (config.poe1Character?.enabled) {
+      const c = config.poe1Character.subcategories;
+      for (const [categoryName, key] of Object.entries(POE1_CHARACTER_CATEGORY_MAP)) {
+        if (c[key]) categories.push(categoryName);
+      }
+    }
+
     // Items subcategories
     if (config.items?.enabled) {
       const i = config.items.subcategories;
       for (const [categoryName, key] of Object.entries(ITEM_CATEGORY_MAP)) {
         if (i[key]) categories.push(categoryName);
+      }
+    }
+
+    if (config.poe1Items?.enabled) {
+      const i = config.poe1Items.subcategories;
+      for (const [categoryName, key] of Object.entries(POE1_ITEM_CATEGORY_MAP)) {
+        if (i[key]) categories.push(categoryName);
+      }
+    }
+
+    if (config.poe1Crafting?.enabled) {
+      const c = config.poe1Crafting.subcategories;
+      for (const [categoryName, key] of Object.entries(POE1_CRAFTING_CATEGORY_MAP)) {
+        if (c[key]) categories.push(categoryName);
       }
     }
 
@@ -202,7 +265,11 @@ export class FeatureService {
     const config = this.getConfig();
 
     if (this.matchesAnyPattern(MODIFIER_CATEGORY_PATTERNS, value)) {
-      return !!config.modifiers;
+      return !!(config.modifiers || config.poe1Modifiers);
+    }
+
+    if (this.matchesAnyPattern(POE1_MODIFIER_CATEGORY_PATTERNS, value)) {
+      return !!config.poe1Modifiers;
     }
 
     if (this.matchesMappedCategory(CRAFTING_CATEGORY_MAP, value, () => !!config.crafting?.enabled, config.crafting?.subcategories)) {
@@ -214,6 +281,18 @@ export class FeatureService {
     }
 
     if (this.matchesMappedCategory(ITEM_CATEGORY_MAP, value, () => !!config.items?.enabled, config.items?.subcategories)) {
+      return true;
+    }
+
+    if (this.matchesMappedCategory(POE1_CRAFTING_CATEGORY_MAP, value, () => !!config.poe1Crafting?.enabled, config.poe1Crafting?.subcategories)) {
+      return true;
+    }
+
+    if (this.matchesMappedCategory(POE1_CHARACTER_CATEGORY_MAP, value, () => !!config.poe1Character?.enabled, config.poe1Character?.subcategories)) {
+      return true;
+    }
+
+    if (this.matchesMappedCategory(POE1_ITEM_CATEGORY_MAP, value, () => !!config.poe1Items?.enabled, config.poe1Items?.subcategories)) {
       return true;
     }
 
