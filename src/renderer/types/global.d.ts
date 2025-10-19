@@ -25,12 +25,14 @@ declare global {
       getPoe1Fossils?: () => Promise<any>;
       getPoe1Currency?: () => Promise<any>;
       getPoe1Scarabs?: () => Promise<any>;
-  getPoe1Runegrafts?: () => Promise<any>;
+      getPoe1Horticrafting?: () => Promise<any>;
+      getPoe1Bestiary?: () => Promise<any>;
+      getPoe1Runegrafts?: () => Promise<any>;
       getPoe1DivinationCards?: () => Promise<any>;
       getPoe1Tattoos?: () => Promise<any>;
       getPoe1Gems?: () => Promise<any>;
       getPoe1GemDetail?: (gemSlug: string) => Promise<any>;
-  getPoe1AscendancyNotables?: () => Promise<any>;
+    getPoe1AscendancyNotables?: () => Promise<any>;
     };
     OverlayUtils?: {
       escapeHtml: (s: any) => string;
@@ -101,6 +103,16 @@ declare global {
       render: (list: any[]) => void;
     };
     OverlayPoe1Runegrafts?: {
+      show: () => Promise<void>;
+      render: (list: any[]) => void;
+      reload: () => Promise<void>;
+    };
+    OverlayPoe1Horticrafting?: {
+      show: () => Promise<void>;
+      render: (list: any[]) => void;
+      reload: () => Promise<void>;
+    };
+    OverlayPoe1Bestiary?: {
       show: () => Promise<void>;
       render: (list: any[]) => void;
       reload: () => Promise<void>;

@@ -210,6 +210,8 @@ export function registerDataIpc(deps: DataIpcDeps) {
   let poe1FossilsCache: any | undefined;
   let poe1CurrencyCache: any | undefined;
   let poe1ScarabsCache: any | undefined;
+  let poe1HorticraftingCache: any | undefined;
+  let poe1BestiaryCache: any | undefined;
   let poe1RunegraftsCache: any | undefined;
   let poe1DivinationCardsCache: any | undefined;
   let poe1TattoosCache: any | undefined;
@@ -346,6 +348,38 @@ export function registerDataIpc(deps: DataIpcDeps) {
       poe1ScarabsCache = { error: e?.message || 'unknown_error' };
     }
     return poe1ScarabsCache;
+  };
+
+  const loadPoe1Horticrafting = () => {
+    try {
+      const dataDir = deps.getDataDir();
+      const horticraftingPath = path.join(dataDir, 'crafting', 'horticrafting', 'Horticrafting.json');
+      if (fs.existsSync(horticraftingPath)) {
+        const raw = fs.readFileSync(horticraftingPath, 'utf-8');
+        poe1HorticraftingCache = JSON.parse(raw);
+      } else {
+        poe1HorticraftingCache = { error: 'not_found', filePath: horticraftingPath };
+      }
+    } catch (e: any) {
+      poe1HorticraftingCache = { error: e?.message || 'unknown_error' };
+    }
+    return poe1HorticraftingCache;
+  };
+
+  const loadPoe1Bestiary = () => {
+    try {
+      const dataDir = deps.getDataDir();
+      const bestiaryPath = path.join(dataDir, 'crafting', 'bestiary', 'Bestiary.json');
+      if (fs.existsSync(bestiaryPath)) {
+        const raw = fs.readFileSync(bestiaryPath, 'utf-8');
+        poe1BestiaryCache = JSON.parse(raw);
+      } else {
+        poe1BestiaryCache = { error: 'not_found', filePath: bestiaryPath };
+      }
+    } catch (e: any) {
+      poe1BestiaryCache = { error: e?.message || 'unknown_error' };
+    }
+    return poe1BestiaryCache;
   };
 
   const loadPoe1Runegrafts = () => {
@@ -502,6 +536,8 @@ export function registerDataIpc(deps: DataIpcDeps) {
   cacheInvalidators.set('poe1:fossils', () => { poe1FossilsCache = undefined; });
   cacheInvalidators.set('poe1:currency', () => { poe1CurrencyCache = undefined; });
   cacheInvalidators.set('poe1:scarabs', () => { poe1ScarabsCache = undefined; });
+  cacheInvalidators.set('poe1:horticrafting', () => { poe1HorticraftingCache = undefined; });
+  cacheInvalidators.set('poe1:bestiary', () => { poe1BestiaryCache = undefined; });
   cacheInvalidators.set('poe1:runegrafts', () => { poe1RunegraftsCache = undefined; });
   cacheInvalidators.set('poe1:divinationCards', () => { poe1DivinationCardsCache = undefined; });
   cacheInvalidators.set('poe1:tattoos', () => { poe1TattoosCache = undefined; });
@@ -516,6 +552,8 @@ export function registerDataIpc(deps: DataIpcDeps) {
     queuePreload('poe1:fossils', async () => { poe1FossilsCache = undefined; loadPoe1Fossils(); });
     queuePreload('poe1:currency', async () => { poe1CurrencyCache = undefined; loadPoe1Currency(); });
     queuePreload('poe1:scarabs', async () => { poe1ScarabsCache = undefined; loadPoe1Scarabs(); });
+  queuePreload('poe1:horticrafting', async () => { poe1HorticraftingCache = undefined; loadPoe1Horticrafting(); });
+  queuePreload('poe1:bestiary', async () => { poe1BestiaryCache = undefined; loadPoe1Bestiary(); });
     queuePreload('poe1:runegrafts', async () => { poe1RunegraftsCache = undefined; loadPoe1Runegrafts(); });
     queuePreload('poe1:divinationCards', async () => { poe1DivinationCardsCache = undefined; loadPoe1DivinationCards(); });
     queuePreload('poe1:tattoos', async () => { poe1TattoosCache = undefined; loadPoe1Tattoos(); });
@@ -602,6 +640,30 @@ export function registerDataIpc(deps: DataIpcDeps) {
         loadPoe1Scarabs();
       }
       return poe1ScarabsCache;
+    } catch (e: any) {
+      return { error: e?.message || 'unknown_error' };
+    }
+  });
+
+  try { ipcMain.removeHandler('get-poe1-horticrafting'); } catch {}
+  ipcMain.handle('get-poe1-horticrafting', async () => {
+    try {
+      if (typeof poe1HorticraftingCache === 'undefined') {
+        loadPoe1Horticrafting();
+      }
+      return poe1HorticraftingCache;
+    } catch (e: any) {
+      return { error: e?.message || 'unknown_error' };
+    }
+  });
+
+  try { ipcMain.removeHandler('get-poe1-bestiary'); } catch {}
+  ipcMain.handle('get-poe1-bestiary', async () => {
+    try {
+      if (typeof poe1BestiaryCache === 'undefined') {
+        loadPoe1Bestiary();
+      }
+      return poe1BestiaryCache;
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }

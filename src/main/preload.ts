@@ -57,6 +57,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
     getPoe1Fossils: () => ipcRenderer.invoke('get-poe1-fossils'),
     getPoe1Currency: () => ipcRenderer.invoke('get-poe1-currency'),
     getPoe1Scarabs: () => ipcRenderer.invoke('get-poe1-scarabs'),
+    getPoe1Horticrafting: () => ipcRenderer.invoke('get-poe1-horticrafting'),
+    getPoe1Bestiary: () => ipcRenderer.invoke('get-poe1-bestiary'),
     getPoe1Runegrafts: () => ipcRenderer.invoke('get-poe1-runegrafts'),
     getPoe1DivinationCards: () => ipcRenderer.invoke('get-poe1-divination-cards'),
     getPoe1Tattoos: () => ipcRenderer.invoke('get-poe1-tattoos'),

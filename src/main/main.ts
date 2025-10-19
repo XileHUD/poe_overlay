@@ -974,6 +974,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 enabled: false,
                 subcategories: {
                     runegrafts: false,
+                    horticrafting: false,
+                    bestiary: false,
                     scarabs: false,
                     currency: false,
                     essences: false,

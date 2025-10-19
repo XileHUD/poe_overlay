@@ -83,7 +83,9 @@ const POE1_CRAFTING_CATEGORY_MAP: Record<string, keyof Poe1CraftingSubcategories
   Currency: 'currency',
   Essences: 'essences',
   Fossils: 'fossils',
-  Embers: 'embers'
+  Embers: 'embers',
+  Horticrafting: 'horticrafting',
+  Bestiary: 'bestiary'
 };
 
 const POE1_CHARACTER_CATEGORY_MAP: Record<string, keyof Poe1CharacterSubcategories> = {
@@ -375,11 +377,22 @@ export class FeatureService {
       config.poe1Crafting = {
         enabled: false,
         subcategories: {
+          runegrafts: false,
           scarabs: false,
           currency: false,
           essences: false,
           fossils: false,
-          embers: false
+          embers: false,
+          horticrafting: false,
+          bestiary: false
+        }
+      } as { enabled: boolean; subcategories: Poe1CraftingSubcategories };
+    } else if (config.poe1Crafting?.enabled) {
+      config.poe1Crafting = {
+        enabled: true,
+        subcategories: {
+          ...DEFAULT_FEATURES.poe1Crafting.subcategories,
+          ...(config.poe1Crafting.subcategories || {})
         }
       } as { enabled: boolean; subcategories: Poe1CraftingSubcategories };
     }

@@ -27,6 +27,8 @@ import './overlay/items/poe1/bases/globals';
 // Crafting panels (PoE1)
 import './overlay/crafting/poe1/scarabs/globals';
 import './overlay/crafting/poe1/runegrafts/globals';
+import './overlay/crafting/poe1/horticrafting/globals';
+import './overlay/crafting/poe1/bestiary/globals';
 import './overlay/crafting/poe1/currency/globals';
 import './overlay/crafting/poe1/essences/globals';
 import './overlay/crafting/poe1/fossils/globals';

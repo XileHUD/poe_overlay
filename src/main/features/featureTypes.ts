@@ -20,6 +20,8 @@ export interface Poe1CraftingSubcategories {
   essences: boolean;
   fossils: boolean;
   embers: boolean;
+  horticrafting: boolean;
+  bestiary: boolean;
 }
 
 export interface CharacterSubcategories {
@@ -115,7 +117,9 @@ export const DEFAULT_FEATURES: FeatureConfig = {
       currency: true,
       essences: true,
       fossils: true,
-      embers: true
+      embers: true,
+      horticrafting: true,
+      bestiary: true
     }
   },
   character: {
@@ -190,7 +194,9 @@ export const MINIMAL_FEATURES: FeatureConfig = {
       currency: false,
       essences: false,
       fossils: false,
-      embers: false
+      embers: false,
+      horticrafting: false,
+      bestiary: false
     }
   },
   character: {
@@ -264,7 +270,9 @@ export const ALL_FEATURES: FeatureConfig = {
       currency: true,
       essences: true,
       fossils: true,
-      embers: true
+      embers: true,
+      horticrafting: true,
+      bestiary: true
     }
   },
   character: {

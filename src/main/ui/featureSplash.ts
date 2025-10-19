@@ -413,6 +413,14 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
         <input type="checkbox" id="feat-poe1-craft-embers" ${checked(safeConfig.poe1Crafting.subcategories.embers)}/>
         <label for="feat-poe1-craft-embers">Embers</label>
       </div>
+      <div class="feature-sub">
+        <input type="checkbox" id="feat-poe1-craft-horticrafting" ${checked(safeConfig.poe1Crafting.subcategories.horticrafting)}/>
+        <label for="feat-poe1-craft-horticrafting">Horticrafting</label>
+      </div>
+      <div class="feature-sub">
+        <input type="checkbox" id="feat-poe1-craft-bestiary" ${checked(safeConfig.poe1Crafting.subcategories.bestiary)}/>
+        <label for="feat-poe1-craft-bestiary">Bestiary</label>
+      </div>
     </div>
   </div>
 
@@ -680,6 +688,8 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       document.getElementById('feat-poe1-craft-essences').checked = preset.poe1Crafting.subcategories.essences;
       document.getElementById('feat-poe1-craft-fossils').checked = preset.poe1Crafting.subcategories.fossils;
       document.getElementById('feat-poe1-craft-embers').checked = preset.poe1Crafting.subcategories.embers;
+    document.getElementById('feat-poe1-craft-horticrafting').checked = preset.poe1Crafting.subcategories.horticrafting;
+    document.getElementById('feat-poe1-craft-bestiary').checked = preset.poe1Crafting.subcategories.bestiary;
       
       // Character
       document.getElementById('feat-character').checked = preset.character.enabled;
@@ -765,7 +775,9 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
             currency: document.getElementById('feat-poe1-craft-currency').checked,
             essences: document.getElementById('feat-poe1-craft-essences').checked,
             fossils: document.getElementById('feat-poe1-craft-fossils').checked,
-            embers: document.getElementById('feat-poe1-craft-embers').checked
+            embers: document.getElementById('feat-poe1-craft-embers').checked,
+            horticrafting: document.getElementById('feat-poe1-craft-horticrafting').checked,
+            bestiary: document.getElementById('feat-poe1-craft-bestiary').checked
           }
         },
         character: {

@@ -331,6 +331,14 @@
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v10l-7 4-7-4V7z"/><path d="M9 8l3 2 3-2"/><path d="M9 12l3 2 3-2"/></svg></span>
                         <span>Runegrafts</span>
                     </div>
+                    <div class="crafting-menu-item poe1-only" data-action="poe1-horticrafting" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C7.5 4 5 7.8 5 12.5A6.5 6.5 0 0011.5 19c4.7 0 7.5-3.5 7.5-7.5C19 7 16 4 12 2z"/><path d="M7 18c1.5-2.5 4-4 7-4"/></svg></span>
+                        <span>Horticrafting</span>
+                    </div>
+                    <div class="crafting-menu-item poe1-only" data-action="poe1-bestiary" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c3 0 5-2 5-4s-2-3-5-3-5 1-5 3 2 4 5 4z"/><circle cx="7" cy="9" r="2" fill="currentColor" stroke="none"/><circle cx="12" cy="7" r="2" fill="currentColor" stroke="none"/><circle cx="17" cy="9" r="2" fill="currentColor" stroke="none"/><circle cx="9" cy="13" r="1.8" fill="currentColor" stroke="none"/><circle cx="15" cy="13" r="1.8" fill="currentColor" stroke="none"/></svg></span>
+                        <span>Bestiary</span>
+                    </div>
                     <div class="crafting-menu-item poe1-only" data-action="poe1-currency" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="3"/><circle cx="16" cy="12" r="3"/><path d="M8 9V5m0 14v-4m8-6V5m0 14v-4"/></svg></span>
                         <span>Currency</span>
@@ -1018,6 +1026,8 @@
     if (key === 'catalysts') { markCraftingAction('catalysts'); return; }
     if (key === 'socketables') { markCraftingAction('socketables'); return; }
     if (key === 'poe1 runegrafts' || key === 'runegrafts') { markCraftingAction('poe1-runegrafts'); return; }
+    if (key === 'poe1 horticrafting' || key === 'horticrafting') { markCraftingAction('poe1-horticrafting'); return; }
+    if (key === 'poe1 bestiary' || key === 'bestiary') { markCraftingAction('poe1-bestiary'); return; }
     if (key === 'poe1 scarabs') { markCraftingAction('poe1-scarabs'); return; }
     if (key === 'poe1 currency') { markCraftingAction('poe1-currency'); return; }
     if (key === 'poe1 essences') { markCraftingAction('poe1-essences'); return; }
@@ -1076,6 +1086,8 @@
                 if (key === 'socketables') { await showSocketables(); setHeader('Socketables'); recordHeaderAction('Socketables'); return true; }
                 // PoE1 Crafting actions
                 if (key === 'poe1-runegrafts') { await showPoe1Runegrafts(); setHeader('PoE1 Runegrafts'); recordHeaderAction('PoE1 Runegrafts'); return true; }
+                if (key === 'poe1-horticrafting') { await showPoe1Horticrafting(); setHeader('PoE1 Horticrafting'); recordHeaderAction('PoE1 Horticrafting'); return true; }
+                if (key === 'poe1-bestiary') { await showPoe1Bestiary(); setHeader('PoE1 Bestiary'); recordHeaderAction('PoE1 Bestiary'); return true; }
                 if (key === 'poe1-scarabs') { await showPoe1Scarabs(); setHeader('PoE1 Scarabs'); recordHeaderAction('PoE1 Scarabs'); return true; }
                 if (key === 'poe1-currency') { await showPoe1Currency(); setHeader('PoE1 Currency'); recordHeaderAction('PoE1 Currency'); return true; }
                 if (key === 'poe1-essences') { await showPoe1Essences(); setHeader('PoE1 Essences'); recordHeaderAction('PoE1 Essences'); return true; }
@@ -1260,7 +1272,7 @@
         }
 
         if (featureAvailability.crafting) {
-            const craftingActions = ['liquid-emotions', 'annoints', 'essences', 'omens', 'currency', 'catalysts', 'socketables', 'poe1-runegrafts', 'poe1-scarabs', 'poe1-currency', 'poe1-essences', 'poe1-fossils', 'poe1-embers'];
+            const craftingActions = ['liquid-emotions', 'annoints', 'essences', 'omens', 'currency', 'catalysts', 'socketables', 'poe1-runegrafts', 'poe1-horticrafting', 'poe1-bestiary', 'poe1-scarabs', 'poe1-currency', 'poe1-essences', 'poe1-fossils', 'poe1-embers'];
             for (const key of craftingActions) {
                 if (await runStoredAction(`crafting:${key}`)) return true;
             }
@@ -1345,6 +1357,8 @@
     function renderEssences(list){ if (window.OverlayEssences && window.OverlayEssences.render) { try { return window.OverlayEssences.render(list); } catch {} } }
     // PoE1 Crafting
     async function showPoe1Runegrafts(){ if (window.OverlayPoe1Runegrafts && window.OverlayPoe1Runegrafts.show) { try { return await window.OverlayPoe1Runegrafts.show(); } catch {} } }
+    async function showPoe1Horticrafting(){ if (window.OverlayPoe1Horticrafting && window.OverlayPoe1Horticrafting.show) { try { return await window.OverlayPoe1Horticrafting.show(); } catch {} } }
+    async function showPoe1Bestiary(){ if (window.OverlayPoe1Bestiary && window.OverlayPoe1Bestiary.show) { try { return await window.OverlayPoe1Bestiary.show(); } catch {} } }
     async function showPoe1Scarabs(){ if (window.OverlayPoe1Scarabs && window.OverlayPoe1Scarabs.show) { try { return await window.OverlayPoe1Scarabs.show(); } catch {} } }
     function renderPoe1Scarabs(list){ if (window.OverlayPoe1Scarabs && window.OverlayPoe1Scarabs.render) { try { return window.OverlayPoe1Scarabs.render(list); } catch {} } }
     async function showPoe1Currency(){ if (window.OverlayPoe1Currency && window.OverlayPoe1Currency.show) { try { return await window.OverlayPoe1Currency.show(); } catch {} } }
@@ -2334,6 +2348,8 @@
                                 // PoE1 crafting items
                                 if (action === 'poe1-scarabs' && subs.scarabs) shouldShow = true;
                                 if (action === 'poe1-runegrafts' && subs.runegrafts) shouldShow = true;
+                                if (action === 'poe1-horticrafting' && subs.horticrafting) shouldShow = true;
+                                if (action === 'poe1-bestiary' && subs.bestiary) shouldShow = true;
                                 if (action === 'poe1-currency' && subs.currency) shouldShow = true;
                                 if (action === 'poe1-essences' && subs.essences) shouldShow = true;
                                 if (action === 'poe1-fossils' && subs.fossils) shouldShow = true;
@@ -2932,9 +2948,12 @@
                         const isPoe1Scarabs = isPoe1Mode && (normalizedCategory === 'scarabs' || /scarab/i.test(blob));
                         const isPoe1Fossils = isPoe1Mode && (normalizedCategory === 'fossils' || /fossil/i.test(blob));
                         const isPoe1Runegrafts = isPoe1Mode && (normalizedCategory === 'runegrafts' || /runegraft/i.test(blob));
+                        const isPoe1Horticrafting = isPoe1Mode && (normalizedCategory === 'horticrafting' || /crystallised lifeforce|lifeforce/i.test(blob) || /horticrafting/i.test(blob));
+                        // Beast detection: Stackable Currency + typical beast name patterns (Farric/Fenumal/Saqawine/Craicic + creature type)
+                        const isPoe1Bestiary = isPoe1Mode && itemClass.includes('stackable currency') && /\b(farric|fenumal|saqawine|craicic)\s+/i.test(baseType);
                         const isPoe1Allflames = isPoe1Mode && (normalizedCategory === 'embers' || /allflame|ember/i.test(blob));
                         const isPoe1Essence = isPoe1Mode && isEssence;
-                        const isPoe1Currency = isPoe1Mode && !isPoe1Scarabs && !isPoe1Fossils && !isPoe1Runegrafts && !isPoe1Allflames && !isPoe1Essence && (
+                        const isPoe1Currency = isPoe1Mode && !isPoe1Scarabs && !isPoe1Fossils && !isPoe1Runegrafts && !isPoe1Horticrafting && !isPoe1Bestiary && !isPoe1Allflames && !isPoe1Essence && (
                             normalizedCategory === 'currency' ||
                             ((itemClass.includes('stackable currency') || itemClass.includes('currency')) && /orb|scroll|bauble|whetstone|chisel|fusing|jeweller|chromatic|binding|annul|mirror|regret|exalted|chaos|splinter|fragment|sextant|compass|coin|prism|catalyst|harvest|fossil|resonator|blessing|prophecy|favour|perandus|remnant|ancient/i.test(blob))
                         );
@@ -3082,6 +3101,24 @@
                             retryShow(
                                 () => !!(window.OverlayPoe1Runegrafts && typeof window.OverlayPoe1Runegrafts.show === 'function'),
                                 async () => { try { await showPoe1Runegrafts(); } catch {} }
+                            );
+                            return;
+                        }
+
+                        if (isPoe1Horticrafting) {
+                            prepareCrafting('PoE1 Horticrafting');
+                            retryShow(
+                                () => !!(window.OverlayPoe1Horticrafting && typeof window.OverlayPoe1Horticrafting.show === 'function'),
+                                async () => { try { await showPoe1Horticrafting(); } catch {} }
+                            );
+                            return;
+                        }
+
+                        if (isPoe1Bestiary) {
+                            prepareCrafting('PoE1 Bestiary');
+                            retryShow(
+                                () => !!(window.OverlayPoe1Bestiary && typeof window.OverlayPoe1Bestiary.show === 'function'),
+                                async () => { try { await showPoe1Bestiary(); } catch {} }
                             );
                             return;
                         }
@@ -3271,7 +3308,7 @@
                 craftingMenu.querySelectorAll('.crafting-menu-item').forEach(item => {
                     item.addEventListener('click', async (e) => {
                         const action = item.getAttribute('data-action');
-                        craftingMenu.style.display = 'none';
+                        closeAllMenus();
                         if (!action) {
                             console.warn('[CraftingMenu] Click without action payload');
                             return;
@@ -3281,6 +3318,8 @@
                         if (!handled) {
                             console.warn('[CraftingMenu] No handler resolved for crafting action', action);
                         }
+                        // Ensure craftingTab remains visually active after menu closes
+                        setActiveTab('craftingTab');
                     });
                 });
             }
