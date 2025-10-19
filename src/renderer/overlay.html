@@ -122,9 +122,10 @@
                 <div id="categorySelectMenu" class="category-select-menu" role="listbox" aria-hidden="true"></div>
                 <select id="categorySelect" class="cp-select category-select-native" aria-hidden="true" tabindex="-1"></select>
             </div>
-        </div>
-        <div id="searchInputWrap" class="cp-search-wrap" style="flex:0 0 auto;">
-            <input id="search-input" class="cp-search" type="text" placeholder="Search..." style="width:150px;" />
+            <!-- Attribute filter buttons (STR/DEX/INT) -->
+            <div id="attributeFilters" class="attr-filters" style="display:none; align-items:center; gap:4px; flex:0 0 auto;">
+                <!-- Attribute buttons will be dynamically rendered here -->
+            </div>
         </div>
         <div id="ilvlControls" style="display:flex; align-items:center; gap:4px; flex:0 0 auto; white-space:nowrap;">
             <label style="font-size:11px; color:var(--text-secondary);">iLvl</label>
@@ -135,6 +136,9 @@
         <div id="domainFilters" class="cp-filters" style="display:flex; align-items:center; gap:4px; flex:0 0 auto; white-space:nowrap;">
             <span class="cp-filters-label" style="font-size:11px; color:var(--text-secondary);">Show:</span>
             <!-- Domain toggle buttons will be dynamically rendered here -->
+        </div>
+        <div id="searchInputWrap" class="cp-search-wrap" style="flex:0 0 auto;">
+            <input id="search-input" class="cp-search" type="text" placeholder="Search..." style="width:150px;" />
         </div>
         <button id="clearFilters" class="pin-btn cp-clear" style="margin-left:auto; flex:0 0 auto;">Clear</button>
         </div>
@@ -1778,6 +1782,11 @@
         if (!menu) return;
         menu.innerHTML = '';
 
+        // Track collapsed groups (persisted across renders)
+        if (!window.__collapsedCategoryGroups) {
+            window.__collapsedCategoryGroups = new Set();
+        }
+
         let searchInputRef = null;
         if (options.showSearch) {
             const searchWrap = document.createElement('div');
@@ -1817,15 +1826,85 @@
         }
 
         const frag = document.createDocumentFragment();
+        let currentGroupLabel = null;
+        let currentGroupName = null; // Store the actual group name
+        let currentGroupItems = [];
+        
+        const finalizeGroup = () => {
+            if (currentGroupLabel && currentGroupItems.length > 0) {
+                const isCollapsed = window.__collapsedCategoryGroups.has(currentGroupName);
+                
+                frag.appendChild(currentGroupLabel);
+                currentGroupItems.forEach(item => {
+                    if (isCollapsed) {
+                        item.style.display = 'none';
+                        item.classList.add('group-collapsed');
+                    } else {
+                        item.style.display = '';
+                        item.classList.remove('group-collapsed');
+                    }
+                    frag.appendChild(item);
+                });
+                
+                currentGroupItems = [];
+                currentGroupLabel = null;
+                currentGroupName = null;
+            }
+        };
+        
         items.forEach((item, index) => {
             if (item.type === 'group-label') {
+                // Finalize previous group if any
+                finalizeGroup();
+                
+                const groupName = item.label;
+                currentGroupName = groupName; // Store the group name
+                
                 const labelEl = document.createElement('div');
                 labelEl.className = 'category-menu-group-label';
                 labelEl.textContent = item.label;
-                frag.appendChild(labelEl);
+                labelEl.style.cursor = 'pointer';
+                labelEl.style.userSelect = 'none';
+                
+                const isCollapsed = window.__collapsedCategoryGroups.has(groupName);
+                
+                // Add collapse indicator
+                const indicator = document.createElement('span');
+                indicator.className = 'group-collapse-indicator';
+                indicator.textContent = isCollapsed ? '▶' : '▼';
+                indicator.style.marginRight = '6px';
+                indicator.style.fontSize = '10px';
+                labelEl.insertBefore(indicator, labelEl.firstChild);
+                
+                if (isCollapsed) {
+                    labelEl.classList.add('collapsed');
+                }
+                
+                // Toggle collapse on click
+                labelEl.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent dropdown from closing
+                    e.preventDefault();
+                    
+                    const groupName = item.label;
+                    const isCurrentlyCollapsed = window.__collapsedCategoryGroups.has(groupName);
+                    
+                    if (isCurrentlyCollapsed) {
+                        window.__collapsedCategoryGroups.delete(groupName);
+                    } else {
+                        window.__collapsedCategoryGroups.add(groupName);
+                    }
+                    
+                    // Re-render menu to apply changes
+                    renderCategoryMenu(items, selectedValue, options);
+                });
+                
+                currentGroupLabel = labelEl;
                 return;
             }
             if (item.type === 'divider') {
+                // Finalize current group before adding divider
+                finalizeGroup();
+                
                 if (index === items.length - 1) return;
                 const divider = document.createElement('div');
                 divider.className = 'category-menu-divider';
@@ -1881,7 +1960,7 @@
                 });
                 btn.addEventListener('keydown', (event) => {
                     if (event.key === 'ArrowUp') {
-                        const siblings = Array.from(menu.querySelectorAll('.category-menu-item'));
+                        const siblings = Array.from(menu.querySelectorAll('.category-menu-item:not(.group-collapsed)'));
                         const currentIdx = siblings.indexOf(btn);
                         if (currentIdx > 0) {
                             siblings[currentIdx - 1].focus();
@@ -1891,7 +1970,7 @@
                             event.preventDefault();
                         }
                     } else if (event.key === 'ArrowDown') {
-                        const siblings = Array.from(menu.querySelectorAll('.category-menu-item'));
+                        const siblings = Array.from(menu.querySelectorAll('.category-menu-item:not(.group-collapsed)'));
                         const currentIdx = siblings.indexOf(btn);
                         if (currentIdx >= 0 && currentIdx < siblings.length - 1) {
                             siblings[currentIdx + 1].focus();
@@ -1899,9 +1978,19 @@
                         }
                     }
                 });
-                frag.appendChild(btn);
+                
+                // Add to current group
+                if (currentGroupLabel) {
+                    currentGroupItems.push(btn);
+                } else {
+                    frag.appendChild(btn);
+                }
             }
         });
+        
+        // Finalize last group if any
+        finalizeGroup();
+        
         menu.appendChild(frag);
         updateCategoryMenuSelection(selectedValue || '');
 
@@ -4160,6 +4249,8 @@ function switchCategory(){
     renderCategoryDetail(data);
     try { setHeader('Modifier', cat.replace(/_/g,' ')); } catch {}
     markModifiersCategory(cat);
+    // Update attribute filter buttons
+    try { updateAttributeFilterUI(cat); } catch (err) { console.warn('Failed to update attribute filters:', err); }
     switchCategoryLocked = false; // Unlock after successful load
     }).catch(err=>{
         console.error('switchCategory error', err);
@@ -4168,6 +4259,61 @@ function switchCategory(){
         switchCategoryLocked = false; // Unlock after error
     });
 }
+
+// ===== Attribute Filter Integration =====
+function initAttributeFilters() {
+    if (!window.AttributeFilter) {
+        console.warn('AttributeFilter module not loaded');
+        return;
+    }
+    
+    const container = document.getElementById('attributeFilters');
+    if (!container) {
+        console.warn('attributeFilters container not found');
+        return;
+    }
+    
+    // Initial render will happen when category switches
+    console.log('Attribute filters initialized');
+}
+
+function updateAttributeFilterUI(category) {
+    if (!window.AttributeFilter || !category) return;
+    
+    const container = document.getElementById('attributeFilters');
+    if (!container) return;
+    
+    // Check if category supports attribute filtering
+    if (!window.AttributeFilter.supportsAttributeFilter(category)) {
+        container.style.display = 'none';
+        container.innerHTML = '';
+        return;
+    }
+    
+    // Create or update buttons
+    window.AttributeFilter.createAttributeButtons(
+        'attributeFilters',
+        category,
+        (newCategory) => {
+            // Switch to the new category when attribute is toggled
+            const select = document.getElementById('categorySelect');
+            if (select) {
+                select.value = newCategory;
+                switchCategory();
+            }
+        }
+    );
+}
+
+// Initialize attribute filters on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        initAttributeFilters();
+    } catch (err) {
+        console.error('Failed to initialize attribute filters:', err);
+    }
+});
+
 
 async function openModifiersCategory(cat, options){
     const select = document.getElementById('categorySelect');

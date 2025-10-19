@@ -213,6 +213,43 @@ body {
     justify-content: center;
 }
 
+/* Attribute filter buttons (STR/DEX/INT) - similar to domain toggles */
+.attr-filter-btn {
+    padding: 2px 0;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    color: var(--text-secondary);
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    white-space: nowrap;
+    width: 40px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.attr-filter-btn:hover {
+    background: var(--bg-secondary);
+    border-color: var(--accent-blue);
+}
+
+.attr-filter-btn.active {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: white;
+}
+
+.attr-filters {
+    display: none;
+    gap: 4px;
+}
+
+
 .header {
     background: var(--bg-secondary);
     padding: 6px 10px;  /* Reduced from 8px 12px */
@@ -1121,6 +1158,21 @@ body {
     text-transform: uppercase;
     padding: 6px 14px 4px 14px;
     color: var(--text-secondary);
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.category-menu-group-label:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+.category-menu-group-label .group-collapse-indicator {
+    display: inline-block;
+    transition: transform 0.2s ease;
+    margin-right: 6px;
+    font-size: 10px;
 }
 
 .category-menu-divider {
