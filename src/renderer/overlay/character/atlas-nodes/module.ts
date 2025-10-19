@@ -1,6 +1,7 @@
 import { bindImageFallback } from "../../crafting/utils/imageFallback";
 import { TRANSPARENT_PLACEHOLDER, createPlaceholderSvg } from "../../crafting/utils/imagePlaceholder";
-import { sanitizeCraftingHtml } from "../../utils";
+import { applyFilterChipChrome, sanitizeCraftingHtml } from "../../utils";
+import { buildPoe2ChipChrome } from "../../shared/filterChips";
 import { prepareCharacterPanel } from "../utils";
 
 type AtlasNode = {
@@ -141,31 +142,32 @@ function renderTagFilters(): void {
 	CURATED_TAGS.forEach(tag => {
 		const key = tag.toLowerCase();
 		const count = state.tagCounts[tag] || 0;
+		if (!count) return;
 		const active = state.selectedTags.has(key);
-		const button = document.createElement("button");
-		button.type = "button";
-		button.className = "key-tag";
-		button.dataset.tag = key;
-		button.textContent = count ? `${tag} (${count})` : tag;
-		const [r, g, b] = tagPalette(tag);
-		const background = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
-		const border = `1px solid rgba(${r},${g},${b},0.6)`;
-		const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-		const color = active ? (luma > 180 ? "#000" : "#fff") : "var(--text-primary)";
-		button.style.cssText = `padding:3px 8px; font-size:11px; cursor:pointer; border-radius:4px; border:${border}; background:${background}; color:${color};`;
-		button.addEventListener("click", () => {
+		const chip = document.createElement("div");
+		chip.dataset.tag = key;
+		chip.textContent = count ? `${tag} (${count})` : tag;
+		applyFilterChipChrome(chip, buildPoe2ChipChrome(tagPalette(tag), active), {
+			padding: "3px 10px",
+			fontWeight: active ? "600" : "500"
+		});
+		chip.style.margin = "0 4px 4px 0";
+		chip.addEventListener("click", () => {
 			if (active) state.selectedTags.delete(key);
 			else state.selectedTags.add(key);
 			renderTagFilters();
 			applyFilter();
 		});
-		wrap.appendChild(button);
+		wrap.appendChild(chip);
 	});
 	if (state.selectedTags.size) {
-		const reset = document.createElement("button");
-		reset.type = "button";
+		const reset = document.createElement("div");
 		reset.textContent = "Reset";
-		reset.style.cssText = "padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);";
+		applyFilterChipChrome(reset, { border: "1px solid var(--accent-red)", background: "var(--accent-red)", color: "#fff" }, {
+			padding: "3px 10px",
+			fontWeight: "600"
+		});
+		reset.style.margin = "0 4px 4px 0";
 		reset.addEventListener("click", () => {
 			state.selectedTags.clear();
 			renderTagFilters();

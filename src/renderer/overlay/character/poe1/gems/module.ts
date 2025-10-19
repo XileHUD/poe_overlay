@@ -1,4 +1,5 @@
 // PoE1 Gems module with list and detail views
+import { applyFilterChipChrome, type ChipChrome } from "../../../utils";
 import { bindImageFallback } from "../../../crafting/utils/imageFallback";
 import { TRANSPARENT_PLACEHOLDER } from "../../../crafting/utils/imagePlaceholder";
 import { resolveLocalImage } from "../../../crafting/utils/localImage";
@@ -227,18 +228,18 @@ function renderList(): void {
     return [120, 144, 156]; // Default gray
   }
 
-  // Simplified chipCss matching Bases pattern
-  function chipCss(tag: string, active: boolean) {
+  // Simplified chip chrome matching Bases pattern
+  function chipChrome(tag: string, active: boolean): ChipChrome {
     const [r, g, b] = tagRGB(tag);
-    const bg = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
-    const border = `rgba(${r},${g},${b},0.6)`;
+    const background = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
+    const border = `1px solid rgba(${r},${g},${b},0.6)`;
     const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
     const color = active ? (luma > 180 ? '#000' : '#fff') : 'var(--text-primary)';
-    return `border:1px solid ${border}; background:${bg}; color:${color};`;
+    return { border, background, color };
   }
 
   // Chip CSS for type filters with preset colors
-  function typeChipCss(type: string, active: boolean) {
+  function typeChipChrome(type: string, active: boolean): ChipChrome {
     const typeColors: Record<string, string> = {
       'Skill': '255,87,34',      // Deep Orange
       'Support': '156,39,176',   // Purple
@@ -247,11 +248,11 @@ function renderList(): void {
     };
     const rgb = typeColors[type] || '120,144,156';
     const [r, g, b] = rgb.split(',').map(Number);
-    const bg = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
-    const border = `rgba(${r},${g},${b},0.6)`;
+    const background = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
+    const border = `1px solid rgba(${r},${g},${b},0.6)`;
     const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
     const color = active ? (luma > 180 ? '#000' : '#fff') : 'var(--text-primary)';
-    return `border:1px solid ${border}; background:${bg}; color:${color};`;
+    return { border, background, color };
   }
 
   function renderTypeFilters() {
@@ -260,7 +261,8 @@ function renderList(): void {
     ['Skill', 'Support', 'Awakened', 'Transfigured'].forEach(type => {
       const el = document.createElement('div');
       el.textContent = type;
-      el.style.cssText = `cursor:pointer; user-select:none; padding:6px 14px; font-size:11px; border-radius:4px; ${typeChipCss(type, selectedGemTypes.has(type))}`;
+      const active = selectedGemTypes.has(type);
+      applyFilterChipChrome(el, typeChipChrome(type, active), { padding: '6px 14px', fontWeight: active ? '600' : '500' });
       el.style.minWidth = '100px';
       el.style.textAlign = 'center';
       el.addEventListener('click', () => {
@@ -295,7 +297,9 @@ function renderList(): void {
       const count = state.tagCounts[tag];
       const el = document.createElement('div');
       el.textContent = `${tag} (${count})`;
-      el.style.cssText = `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; ${chipCss(tag, state.selectedTags.has(tag))}`;
+      const active = state.selectedTags.has(tag);
+      applyFilterChipChrome(el, chipChrome(tag, active), { padding: '3px 10px', fontWeight: active ? '600' : '500' });
+      el.style.margin = '0 4px 4px 0';
       el.addEventListener('click', () => {
         if (state.selectedTags.has(tag)) {
           state.selectedTags.delete(tag);
@@ -312,7 +316,14 @@ function renderList(): void {
     if (needsShowMore) {
       const showMoreBtn = document.createElement('div');
       showMoreBtn.textContent = tagsExpanded ? 'Show Less' : `Show More (${sortedTags.length - MAX_TAGS_COLLAPSED} more)`;
-      showMoreBtn.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-secondary); font-style:italic;';
+      showMoreBtn.style.cursor = 'pointer';
+      showMoreBtn.style.userSelect = 'none';
+      showMoreBtn.style.padding = '2px 6px';
+      showMoreBtn.style.border = '1px solid var(--border-color)';
+      showMoreBtn.style.borderRadius = '4px';
+      showMoreBtn.style.background = 'var(--bg-tertiary)';
+      showMoreBtn.style.color = 'var(--text-secondary)';
+      showMoreBtn.style.fontStyle = 'italic';
       showMoreBtn.addEventListener('click', () => {
         tagsExpanded = !tagsExpanded;
         renderTagFilters();
@@ -324,7 +335,8 @@ function renderList(): void {
     if (state.selectedTags.size > 0) {
       const reset = document.createElement('div');
       reset.textContent = 'Reset';
-      reset.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--accent-red); border-radius:4px; background:var(--accent-red); color:#fff';
+      applyFilterChipChrome(reset, { border: '1px solid var(--accent-red)', background: 'var(--accent-red)', color: '#fff' }, { padding: '3px 10px', fontWeight: '600' });
+      reset.style.margin = '0 4px 4px 0';
       reset.addEventListener('click', () => {
         state.selectedTags.clear();
         applyFilter();

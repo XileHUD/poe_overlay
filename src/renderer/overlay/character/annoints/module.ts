@@ -2,6 +2,7 @@ import { applyFilterChipChrome, type ChipChrome, sanitizeCraftingHtml } from "..
 import { bindImageFallback } from "../../crafting/utils/imageFallback";
 import { TRANSPARENT_PLACEHOLDER } from "../../crafting/utils/imagePlaceholder";
 import { prepareCharacterPanel } from "../utils";
+import { buildPoe2ChipChrome } from "../../shared/filterChips";
 
 export type Annoint = {
   name: string;
@@ -107,12 +108,18 @@ function chipChrome(tag: string, active: boolean): ChipChrome {
     minion: [142, 68, 173],
     mechanics: [96, 125, 139]
   };
-  const [r, g, b] = palette[key] ?? [120, 144, 156];
-  const background = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
-  const border = `1px solid rgba(${r},${g},${b},0.6)`;
-  const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  const color = active ? (luma > 180 ? "#000" : "#fff") : "var(--text-primary)";
-  return { border, background, color };
+  return buildPoe2ChipChrome(palette[key] ?? [120, 144, 156], active);
+}
+
+function paintTagChip(chip: HTMLElement, tag: string, active: boolean, count: number): void {
+  chip.dataset.tag = tag.toLowerCase();
+  chip.dataset.count = String(count);
+  chip.textContent = count ? `${tag} (${count})` : tag;
+  applyFilterChipChrome(chip, chipChrome(tag, active), {
+    padding: "3px 10px",
+    fontWeight: active ? "600" : "500",
+  });
+  chip.style.margin = "0 4px 4px 0";
 }
 
 function renderTagFilters(tagWrap: HTMLElement): void {
@@ -120,35 +127,26 @@ function renderTagFilters(tagWrap: HTMLElement): void {
   TAGS.forEach(tag => {
     const key = tag.toLowerCase();
     const count = state.tagCounts[tag] || 0;
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.dataset.tag = key;
-    btn.textContent = count ? `${tag} (${count})` : tag;
-    applyFilterChipChrome(btn, chipChrome(tag, state.selectedTags.has(key)), {
-      padding: "3px 10px",
-      fontWeight: state.selectedTags.has(key) ? "600" : "500",
-      textTransform: "none"
-    });
-    btn.style.margin = "0 4px 4px 0";
-    btn.addEventListener("click", () => {
+    if (!count) return;
+    const chip = document.createElement("div");
+    paintTagChip(chip, tag, state.selectedTags.has(key), count);
+    chip.addEventListener("click", () => {
       if (state.selectedTags.has(key)) {
         state.selectedTags.delete(key);
       } else {
         state.selectedTags.add(key);
       }
-      renderTagFilters(tagWrap);
       applyFilter();
+      renderTagFilters(tagWrap);
     });
-    tagWrap.appendChild(btn);
+    tagWrap.appendChild(chip);
   });
   if (state.selectedTags.size) {
-    const reset = document.createElement("button");
-    reset.type = "button";
+    const reset = document.createElement("div");
     reset.textContent = "Reset";
     applyFilterChipChrome(reset, { border: "1px solid var(--accent-red)", background: "var(--accent-red)", color: "#fff" }, {
       padding: "3px 10px",
-      fontWeight: "600",
-      textTransform: "none"
+      fontWeight: "600"
     });
     reset.style.margin = "0 4px 4px 0";
     reset.addEventListener("click", () => {
@@ -327,6 +325,7 @@ function render(panel: HTMLElement): void {
   tagWrap.style.display = "flex";
   tagWrap.style.flexWrap = "wrap";
   tagWrap.style.gap = "6px";
+  tagWrap.style.justifyContent = "center";
   tagShell.appendChild(tagWrap);
 
   const cards = document.createElement("div");

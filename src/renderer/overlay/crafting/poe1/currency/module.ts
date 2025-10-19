@@ -1,4 +1,5 @@
 // PoE1 Currency module
+import { applyFilterChipChrome, type ChipChrome } from "../../../utils";
 import { bindImageFallback } from "../../utils/imageFallback";
 import { TRANSPARENT_PLACEHOLDER } from "../../utils/imagePlaceholder";
 import { resolveLocalImage } from "../../utils/localImage";
@@ -162,13 +163,13 @@ export function render(list: CurrencyItem[]): void {
     return [120, 144, 156];
   }
 
-  function chipCss(tag: string, active: boolean) {
+  function chipChrome(tag: string, active: boolean): ChipChrome {
     const [r, g, b] = tagRGB(tag);
-    const bg = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
-    const border = `rgba(${r},${g},${b},0.6)`;
+    const background = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
+    const border = `1px solid rgba(${r},${g},${b},0.6)`;
     const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
     const color = active ? (luma > 180 ? '#000' : '#fff') : 'var(--text-primary)';
-    return `border:1px solid ${border}; background:${bg}; color:${color};`;
+    return { border, background, color };
   }
 
   function highlight(s: string): string {
@@ -193,10 +194,10 @@ export function render(list: CurrencyItem[]): void {
     available.forEach(tag => {
       const active = state.selectedTags.has(tag);
       const count = state.tagCounts[tag] || 0;
-      const btn = document.createElement('button');
-      btn.type = 'button';
+      const btn = document.createElement('div');
       btn.textContent = count ? `${tag} (${count})` : tag;
-      btn.style.cssText = `padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; ${chipCss(tag, active)}`;
+      applyFilterChipChrome(btn, chipChrome(tag, active), { padding: '3px 10px', fontWeight: active ? '600' : '500' });
+      btn.style.margin = '0 4px 4px 0';
       btn.addEventListener('click', () => {
         if (active) state.selectedTags.delete(tag); else state.selectedTags.add(tag);
         apply(state.input?.value || '');
@@ -206,10 +207,10 @@ export function render(list: CurrencyItem[]): void {
     });
 
     if (state.selectedTags.size) {
-      const reset = document.createElement('button');
-      reset.type = 'button';
+      const reset = document.createElement('div');
       reset.textContent = 'Reset filters';
-      reset.style.cssText = 'padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);';
+      applyFilterChipChrome(reset, { border: '1px solid var(--accent-red)', background: 'var(--accent-red)', color: '#fff' }, { padding: '3px 10px', fontWeight: '600' });
+      reset.style.margin = '0 4px 4px 0';
       reset.addEventListener('click', () => {
         state.selectedTags.clear();
         apply(state.input?.value || '');

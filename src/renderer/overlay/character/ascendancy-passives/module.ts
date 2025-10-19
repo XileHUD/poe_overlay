@@ -1,6 +1,7 @@
 import { bindImageFallback } from "../../crafting/utils/imageFallback";
 import { TRANSPARENT_PLACEHOLDER, createPlaceholderSvg } from "../../crafting/utils/imagePlaceholder";
-import { sanitizeCraftingHtml } from "../../utils";
+import { applyFilterChipChrome, sanitizeCraftingHtml } from "../../utils";
+import { buildPoe2ChipChrome } from "../../shared/filterChips";
 import { prepareCharacterPanel } from "../utils";
 
 type AscendancyPassive = {
@@ -70,12 +71,15 @@ function renderFilters(): void {
 	if (!wrap) return;
 	wrap.innerHTML = "";
 	state.classes.forEach(asc => {
-		const button = document.createElement("button");
-		button.type = "button";
+		const chip = document.createElement("div");
 		const active = state.selectedAscendancies.has(asc);
-		button.textContent = asc;
-		button.style.cssText = `padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; border:1px solid var(--border-color); background:${active ? 'var(--accent-blue)' : 'var(--bg-tertiary)'}; color:${active ? '#fff' : 'var(--text-primary)'};`;
-		button.addEventListener("click", () => {
+		chip.textContent = asc;
+		applyFilterChipChrome(chip, buildPoe2ChipChrome([120, 144, 156], active), {
+			padding: "3px 10px",
+			fontWeight: active ? "600" : "500"
+		});
+		chip.style.margin = "0 4px 4px 0";
+		chip.addEventListener("click", () => {
 			if (active) {
 				state.selectedAscendancies.delete(asc);
 			} else {
@@ -84,13 +88,16 @@ function renderFilters(): void {
 			renderFilters();
 			applyFilter();
 		});
-		wrap.appendChild(button);
+		wrap.appendChild(chip);
 	});
 	if (state.selectedAscendancies.size) {
-		const reset = document.createElement("button");
-		reset.type = "button";
+		const reset = document.createElement("div");
 		reset.textContent = "Reset";
-		reset.style.cssText = "padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);";
+		applyFilterChipChrome(reset, { border: "1px solid var(--accent-red)", background: "var(--accent-red)", color: "#fff" }, {
+			padding: "3px 10px",
+			fontWeight: "600"
+		});
+		reset.style.margin = "0 4px 4px 0";
 		reset.addEventListener("click", () => {
 			state.selectedAscendancies.clear();
 			renderFilters();

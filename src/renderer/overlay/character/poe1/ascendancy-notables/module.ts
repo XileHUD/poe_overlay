@@ -1,3 +1,4 @@
+import { applyFilterChipChrome, type ChipChrome } from '../../../utils';
 import { bindImageFallback } from '../../../crafting/utils/imageFallback';
 import { TRANSPARENT_PLACEHOLDER } from '../../../crafting/utils/imagePlaceholder';
 
@@ -84,12 +85,12 @@ function tagHash(tag: string): number {
   return Math.abs(hash);
 }
 
-function chipCss(tag: string, active: boolean): string {
+function chipChrome(tag: string, active: boolean): ChipChrome {
   const hue = tagHash(tag) % 360;
-  const bg = active ? `hsl(${hue}, 60%, 45%)` : `hsl(${hue}, 32%, 24%)`;
-  const border = `hsl(${hue}, 65%, 52%)`;
+  const background = active ? `hsl(${hue}, 60%, 45%)` : `hsl(${hue}, 32%, 24%)`;
+  const border = `1px solid hsl(${hue}, 65%, 52%)`;
   const color = active ? '#fff' : 'var(--text-primary)';
-  return `cursor:pointer; user-select:none; padding:2px 8px; font-size:11px; border-radius:4px; border:1px solid ${border}; background:${bg}; color:${color}; transition:opacity 0.15s ease;`;
+  return { border, background, color };
 }
 
 function highlight(text: string): string {
@@ -174,7 +175,8 @@ export function render(dataset: AscendancyDataset): void {
       const active = selected.has(value);
       const chip = document.createElement('div');
       chip.textContent = value;
-      chip.style.cssText = chipCss(value, active);
+      applyFilterChipChrome(chip, chipChrome(value, active), { padding: '3px 10px', fontWeight: active ? '600' : '500' });
+      chip.style.margin = '0 4px 4px 0';
       chip.addEventListener('click', () => {
         if (active) {
           selected.delete(value);
@@ -190,7 +192,8 @@ export function render(dataset: AscendancyDataset): void {
     if (selected.size) {
       const reset = document.createElement('div');
       reset.textContent = 'Clear';
-      reset.style.cssText = 'cursor:pointer; user-select:none; padding:2px 8px; font-size:11px; border-radius:4px; border:1px solid var(--accent-red); background:var(--accent-red); color:#fff;';
+      applyFilterChipChrome(reset, { border: '1px solid var(--accent-red)', background: 'var(--accent-red)', color: '#fff' }, { padding: '3px 10px', fontWeight: '600' });
+      reset.style.margin = '0 4px 4px 0';
       reset.addEventListener('click', () => {
         selected.clear();
         apply(state.searchInput?.value || '');

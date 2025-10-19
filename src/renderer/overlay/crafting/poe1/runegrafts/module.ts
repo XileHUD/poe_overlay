@@ -1,3 +1,4 @@
+import { applyFilterChipChrome, type ChipChrome } from '../../../utils';
 import { bindImageFallback } from '../../utils/imageFallback';
 import { TRANSPARENT_PLACEHOLDER } from '../../utils/imagePlaceholder';
 
@@ -104,12 +105,12 @@ function tagHash(tag: string): number {
   return Math.abs(hash);
 }
 
-function chipCss(tag: string, active: boolean): string {
+function chipChrome(tag: string, active: boolean): ChipChrome {
   const hue = tagHash(tag) % 360;
-  const bg = active ? `hsl(${hue}, 58%, 42%)` : `hsl(${hue}, 34%, 24%)`;
-  const border = `hsl(${hue}, 58%, 48%)`;
+  const background = active ? `hsl(${hue}, 58%, 42%)` : `hsl(${hue}, 34%, 24%)`;
+  const border = `1px solid hsl(${hue}, 58%, 48%)`;
   const color = active ? '#fff' : 'var(--text-primary)';
-  return `cursor:pointer; user-select:none; padding:2px 8px; font-size:11px; border-radius:4px; border:1px solid ${border}; background:${bg}; color:${color}; transition:opacity 0.15s ease;`;
+  return { border, background, color };
 }
 
 function deriveTags(item: RunegraftItem): string[] {
@@ -186,7 +187,8 @@ export function render(list: RunegraftItem[]): void {
       const active = state.selectedTags.has(tag);
       const el = document.createElement('div');
       el.textContent = state.tagCounts[tag] ? `${tag} (${state.tagCounts[tag]})` : tag;
-      el.style.cssText = chipCss(tag, active);
+      applyFilterChipChrome(el, chipChrome(tag, active), { padding: '3px 10px', fontWeight: active ? '600' : '500' });
+      el.style.margin = '0 4px 4px 0';
       el.addEventListener('click', () => {
         if (active) {
           state.selectedTags.delete(tag);
@@ -201,7 +203,8 @@ export function render(list: RunegraftItem[]): void {
     if (state.selectedTags.size) {
       const reset = document.createElement('div');
       reset.textContent = 'Reset';
-      reset.style.cssText = 'cursor:pointer; user-select:none; padding:2px 8px; font-size:11px; border-radius:4px; border:1px solid var(--accent-red); background:var(--accent-red); color:#fff;';
+      applyFilterChipChrome(reset, { border: '1px solid var(--accent-red)', background: 'var(--accent-red)', color: '#fff' }, { padding: '3px 10px', fontWeight: '600' });
+      reset.style.margin = '0 4px 4px 0';
       reset.addEventListener('click', () => {
         state.selectedTags.clear();
         apply(state.input?.value || '');

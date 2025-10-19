@@ -1,4 +1,6 @@
 // Bases panel module: encapsulates Bases UI logic with filters and sorting
+import { applyFilterChipChrome, type ChipChrome } from "../../utils";
+import { buildPoe2ChipChrome } from "../../shared/filterChips";
 import { bindImageFallback } from "../utils/imageFallback";
 import { TRANSPARENT_PLACEHOLDER } from "../utils/imagePlaceholder";
 import { escapeHtml } from "../../utils";
@@ -170,7 +172,9 @@ function tagRGB(tag: string): [number,number,number]{ const t=(tag||'').toLowerC
   if(t==='physical') return [158,158,158];
   if(t==='block') return [120,144,156];
   return [120,144,156]; }
-function chipCss(tag: string, active: boolean){ const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color};`; }
+function chipChrome(tag: string, active: boolean): ChipChrome {
+  return buildPoe2ChipChrome(tagRGB(tag), active);
+}
 
 export function render(groups: BaseGroups): void {
   const panel=ensurePanel();
@@ -282,7 +286,8 @@ export function render(groups: BaseGroups): void {
       const active=selectedTags.has(tag);
       const count = tagCounts[tag]||0;
       btn.textContent = count ? `${tag} (${count})` : tag;
-      (btn as HTMLElement).style.cssText = `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; ${chipCss(tag, active)}`;
+      applyFilterChipChrome(btn, chipChrome(tag, active), { padding: '3px 10px', fontWeight: active ? '600' : '500' });
+      btn.style.margin = '0 4px 4px 0';
       btn.addEventListener('click',()=>{ active?selectedTags.delete(tag):selectedTags.add(tag); build(); renderTagFilters(); });
       tagWrap.appendChild(btn);
     });
@@ -291,7 +296,14 @@ export function render(groups: BaseGroups): void {
     if (needsShowMore) {
       const showMoreBtn = document.createElement('div');
       showMoreBtn.textContent = tagsExpanded ? 'Show Less' : `Show More (${allTags.length - MAX_TAGS_COLLAPSED} more)`;
-      showMoreBtn.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-secondary); color:var(--text-secondary); font-style:italic;';
+      showMoreBtn.style.cursor = 'pointer';
+      showMoreBtn.style.userSelect = 'none';
+      showMoreBtn.style.padding = '2px 6px';
+      showMoreBtn.style.border = '1px solid var(--border-color)';
+      showMoreBtn.style.borderRadius = '4px';
+      showMoreBtn.style.background = 'var(--bg-secondary)';
+      showMoreBtn.style.color = 'var(--text-secondary)';
+      showMoreBtn.style.fontStyle = 'italic';
       showMoreBtn.addEventListener('click', () => {
         tagsExpanded = !tagsExpanded;
         renderTagFilters();
@@ -300,7 +312,7 @@ export function render(groups: BaseGroups): void {
     }
     
     // Reset button
-    if(selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; (reset as HTMLElement).style.cssText='cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--accent-red); border-radius:4px; background:var(--accent-red); color:#fff'; reset.addEventListener('click',()=>{ selectedTags.clear(); build(); renderTagFilters(); }); tagWrap.appendChild(reset); }
+  if(selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; applyFilterChipChrome(reset, { border: '1px solid var(--accent-red)', background: 'var(--accent-red)', color: '#fff' }, { padding: '3px 10px', fontWeight: '600' }); reset.style.margin = '0 4px 4px 0'; reset.addEventListener('click',()=>{ selectedTags.clear(); build(); renderTagFilters(); }); tagWrap.appendChild(reset); }
   }
   function baseMatchesTags(b: BaseItem){ if(!selectedTags.size) return true; if(!b.__tags) return false; return [...selectedTags].every(t=> (b.__tags as string[]).includes(t)); }
   function matchesDefenseQuick(b: BaseItem){

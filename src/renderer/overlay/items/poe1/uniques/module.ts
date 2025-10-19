@@ -307,21 +307,30 @@ export function render(): void {
   const container = panel.querySelector('#poe1UniquesContainer') as HTMLElement;
   const countEl = panel.querySelector('#poe1UniquesCount') as HTMLElement;
   
-  // Get tag color
-  const getTagColor = (tag: string): string => {
-    if (tag === 'Replica') return 'var(--accent-orange)';
-    if (tag === 'Fire') return '#ff4500';
-    if (tag === 'Cold') return '#4682b4';
-    if (tag === 'Lightning') return '#daa520';
-    if (tag === 'Chaos') return '#8b008b';
-    if (tag === 'Physical') return '#8b4513';
-    if (tag === 'Life') return '#dc143c';
-    if (tag === 'Mana') return '#4169e1';
-    if (tag === 'Energy Shield') return '#4169e1';
-    if (tag === 'Armour') return '#b8860b';
-    if (tag === 'Evasion') return '#228b22';
-    if (tag === 'Critical') return '#ff1493';
-    return 'var(--border-color)';
+  // Get tag color - returns RGB values for opacity control
+  const getTagColor = (tag: string): [number, number, number] => {
+    if (tag === 'Replica') return [255, 152, 0]; // Orange
+    if (tag === 'Fire') return [255, 69, 0];
+    if (tag === 'Cold') return [70, 130, 180];
+    if (tag === 'Lightning') return [218, 165, 32];
+    if (tag === 'Chaos') return [139, 0, 139];
+    if (tag === 'Physical') return [139, 69, 19];
+    if (tag === 'Life') return [220, 20, 60];
+    if (tag === 'Mana') return [65, 105, 225];
+    if (tag === 'Energy Shield') return [65, 105, 225];
+    if (tag === 'Armour') return [184, 134, 11];
+    if (tag === 'Evasion') return [34, 139, 34];
+    if (tag === 'Critical') return [255, 20, 147];
+    return [120, 144, 156]; // Default grey
+  };
+  
+  const getChipStyle = (tag: string, isActive: boolean): string => {
+    const [r, g, b] = getTagColor(tag);
+    const bg = isActive ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
+    const border = `rgba(${r},${g},${b},0.6)`;
+    const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    const color = isActive ? (luma > 180 ? '#000' : '#fff') : 'var(--text-primary)';
+    return `border:1px solid ${border}; background:${bg}; color:${color};`;
   };
   
   let updateListFrame = 0;
@@ -363,19 +372,23 @@ export function render(): void {
       const chip = document.createElement('div');
       chip.textContent = `${tag} (${count})`;
       
-      const tagColor = getTagColor(tag);
-      chip.style.cssText = [
-        'cursor:pointer',
-        'user-select:none',
-        'padding:4px 12px',
-        'font-size:11px',
-        'border-radius:4px',
-        `border:1px solid ${isActive ? tagColor : 'var(--border-color)'}`,
-        `background:${isActive ? tagColor : 'var(--bg-secondary)'}`,
-        `color:${isActive ? '#fff' : 'var(--text-primary)'}`,
-        'transition: all 0.15s ease',
-        isActive ? 'font-weight: 600' : ''
-      ].join(';');
+      // Apply individual style properties to preserve user font scaling
+      chip.style.cursor = 'pointer';
+      chip.style.userSelect = 'none';
+      chip.style.padding = '4px 12px';
+      chip.style.borderRadius = '4px';
+      chip.style.transition = 'all 0.15s ease';
+      if (isActive) chip.style.fontWeight = '600';
+      
+      // Apply color styles from getChipStyle
+      const [r, g, b] = getTagColor(tag);
+      const bg = isActive ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
+      const border = `rgba(${r},${g},${b},0.6)`;
+      const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+      const color = isActive ? (luma > 180 ? '#000' : '#fff') : 'var(--text-primary)';
+      chip.style.border = `1px solid ${border}`;
+      chip.style.background = bg;
+      chip.style.color = color;
       
       chip.addEventListener('click', () => {
         if (selectedFilters.has(tag)) {
@@ -393,7 +406,16 @@ export function render(): void {
     if (needsShowMore) {
       const showMoreBtn = document.createElement('div');
       showMoreBtn.textContent = tagsExpanded ? 'Show Less' : `Show More (${tagsWithCounts.length - MAX_TAGS_COLLAPSED} more)`;
-      showMoreBtn.style.cssText = 'cursor:pointer; user-select:none; padding:4px 12px; font-size:11px; border-radius:4px; border:1px solid var(--border-color); background:var(--bg-secondary); color:var(--text-secondary); font-style:italic; transition: all 0.15s ease';
+      // Apply individual style properties to preserve user font scaling
+      showMoreBtn.style.cursor = 'pointer';
+      showMoreBtn.style.userSelect = 'none';
+      showMoreBtn.style.padding = '4px 12px';
+      showMoreBtn.style.borderRadius = '4px';
+      showMoreBtn.style.border = '1px solid var(--border-color)';
+      showMoreBtn.style.background = 'var(--bg-secondary)';
+      showMoreBtn.style.color = 'var(--text-secondary)';
+      showMoreBtn.style.fontStyle = 'italic';
+      showMoreBtn.style.transition = 'all 0.15s ease';
       showMoreBtn.addEventListener('click', () => {
         tagsExpanded = !tagsExpanded;
         renderFilterChips(visibleItems);

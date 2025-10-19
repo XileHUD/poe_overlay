@@ -1,5 +1,6 @@
 // Uniques panel module: encapsulates Uniques UI and logic and exposes a window facade for overlay.html delegation
-import { sanitizeCraftingHtml } from "../../utils";
+import { applyFilterChipChrome, type ChipChrome, sanitizeCraftingHtml } from "../../utils";
+import { buildPoe2ChipChrome } from "../../shared/filterChips";
 import { bindImageFallback } from "../utils/imageFallback";
 import { TRANSPARENT_PLACEHOLDER } from "../utils/imagePlaceholder";
 import { resolveLocalImage } from "../utils/localImage";
@@ -87,7 +88,6 @@ export function render(groups: UniqueGroups): void {
   const panel = ensurePanel();
   state.groups = groups || {};
   const order = ["Weapon","Armour","Other"];
-  const totalItems = order.reduce((sum, sec) => sum + ((state.groups as any)[sec]||[]).length, 0);
 
   // Build tag set and counts from mods
   const uniqueTags = new Set<string>();
@@ -167,7 +167,9 @@ export function render(groups: UniqueGroups): void {
     if(t==='movement' || t==='attack speed' || t==='speed') return [67,160,71];
     if(t==='elemental') return [255,152,0];
     return [120,144,156]; }
-  function chipCss(tag: string, active: boolean): string { const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color};`; }
+  function chipChrome(tag: string, active: boolean): ChipChrome {
+    return buildPoe2ChipChrome(tagRGB(tag), active);
+  }
 
   function renderTagFilters(): void {
     if (!tagWrap) return; tagWrap.innerHTML='';
@@ -176,14 +178,16 @@ export function render(groups: UniqueGroups): void {
       const active = selectedTags.has(tag);
       const count = tagCounts[tag] || 0;
       btn.textContent = count ? `${tag} (${count})` : tag;
-      (btn as HTMLElement).style.cssText = `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; ${chipCss(tag, active)}`;
+      applyFilterChipChrome(btn, chipChrome(tag, active), { padding: '3px 10px', fontWeight: active ? '600' : '500' });
+      btn.style.margin = '0 4px 4px 0';
       btn.addEventListener('click',()=>{ active?selectedTags.delete(tag):selectedTags.add(tag); build(searchEl?.value||''); renderTagFilters(); });
       tagWrap.appendChild(btn);
     });
     if (selectedTags.size) {
       const reset=document.createElement('div');
       reset.textContent='Reset';
-      (reset as HTMLElement).style.cssText='cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--accent-red); border-radius:4px; background:var(--accent-red); color:#fff';
+      applyFilterChipChrome(reset, { border: '1px solid var(--accent-red)', background: 'var(--accent-red)', color: '#fff' }, { padding: '3px 10px', fontWeight: '600' });
+      reset.style.margin = '0 4px 4px 0';
       reset.addEventListener('click',()=>{ selectedTags.clear(); build(searchEl?.value||''); renderTagFilters(); });
       tagWrap.appendChild(reset);
     }

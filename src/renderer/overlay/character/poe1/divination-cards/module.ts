@@ -1,4 +1,5 @@
 // PoE1 Divination Cards module
+import { applyFilterChipChrome, type ChipChrome } from "../../../utils";
 import { bindImageFallback } from "../../../crafting/utils/imageFallback";
 import { TRANSPARENT_PLACEHOLDER } from "../../../crafting/utils/imagePlaceholder";
 import { resolveLocalImage } from "../../../crafting/utils/localImage";
@@ -163,13 +164,13 @@ export function render(list: DivinationCard[]): void {
     return [120, 120, 120];
   }
 
-  function chipCss(tag: string, active: boolean){
-    const [r,g,b]=tagRGB(tag); 
-    const bg=active?`rgba(${r},${g},${b},0.9)`:`rgba(${r},${g},${b},0.22)`; 
-    const border=`rgba(${r},${g},${b},0.6)`; 
-    const l=0.2126*r+0.7152*g+0.0722*b; 
-    const color=active?(l>180?'#000':'#fff'):'var(--text-primary)';
-    return `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; border:1px solid ${border}; background:${bg}; color:${color};`;
+  function chipChrome(tag: string, active: boolean): ChipChrome {
+    const [r, g, b] = tagRGB(tag);
+    const background = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
+    const border = `1px solid rgba(${r},${g},${b},0.6)`;
+    const l = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    const color = active ? (l > 180 ? '#000' : '#fff') : 'var(--text-primary)';
+    return { border, background, color };
   }
   
   function renderTagFilters() {
@@ -192,7 +193,8 @@ export function render(list: DivinationCard[]): void {
       const isActive = state.selectedTags.has(tag);
       const el = document.createElement('div');
       el.textContent = `${tag} (${count})`;
-      el.style.cssText = chipCss(tag, isActive);
+      applyFilterChipChrome(el, chipChrome(tag, isActive), { padding: '3px 10px', fontWeight: isActive ? '600' : '500' });
+      el.style.margin = '0 4px 4px 0';
       el.addEventListener('click', () => {
         if (isActive) state.selectedTags.delete(tag);
         else state.selectedTags.add(tag);
@@ -206,7 +208,14 @@ export function render(list: DivinationCard[]): void {
     if (needsShowMore) {
       const showMoreBtn = document.createElement('div');
       showMoreBtn.textContent = tagsExpanded ? 'Show Less' : `Show More (${sortedTags.length - MAX_TAGS_COLLAPSED} more)`;
-      showMoreBtn.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-secondary); color:var(--text-secondary); font-style:italic;';
+      showMoreBtn.style.cursor = 'pointer';
+      showMoreBtn.style.userSelect = 'none';
+      showMoreBtn.style.padding = '2px 6px';
+      showMoreBtn.style.border = '1px solid var(--border-color)';
+      showMoreBtn.style.borderRadius = '4px';
+      showMoreBtn.style.background = 'var(--bg-secondary)';
+      showMoreBtn.style.color = 'var(--text-secondary)';
+      showMoreBtn.style.fontStyle = 'italic';
       showMoreBtn.addEventListener('click', () => {
         tagsExpanded = !tagsExpanded;
         renderTagFilters();
@@ -218,7 +227,8 @@ export function render(list: DivinationCard[]): void {
     if (state.selectedTags.size > 0) {
       const reset = document.createElement('div');
       reset.textContent = 'Reset';
-      reset.style.cssText = 'cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; border:1px solid var(--accent-red); background:var(--accent-red); color:#fff;';
+      applyFilterChipChrome(reset, { border: '1px solid var(--accent-red)', background: 'var(--accent-red)', color: '#fff' }, { padding: '3px 10px', fontWeight: '600' });
+      reset.style.margin = '0 4px 4px 0';
       reset.addEventListener('click', () => {
         state.selectedTags.clear();
         applyFilter();

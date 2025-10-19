@@ -1,3 +1,4 @@
+import { applyFilterChipChrome, type ChipChrome } from "../../../utils";
 import { bindImageFallback } from "../../../crafting/utils/imageFallback";
 import { TRANSPARENT_PLACEHOLDER } from "../../../crafting/utils/imagePlaceholder";
 import { resolveLocalImage } from "../../../crafting/utils/localImage";
@@ -225,13 +226,13 @@ function tagRGB(tag: string): [number, number, number] {
   return [120, 120, 120];
 }
 
-function chipCss(tag: string, active: boolean): string {
+function chipChrome(tag: string, active: boolean): ChipChrome {
   const [r, g, b] = tagRGB(tag);
-  const border = `rgba(${r},${g},${b},0.6)`;
-  const bg = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.2)`;
+  const background = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.2)`;
+  const border = `1px solid rgba(${r},${g},${b},0.6)`;
   const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
   const color = active ? (luma > 180 ? "#000" : "#fff") : "var(--text-primary)";
-  return `border:1px solid ${border}; background:${bg}; color:${color}; cursor:pointer; user-select:none; padding:2px 10px; font-size:11px; border-radius:4px; transition:opacity 0.15s;`;
+  return { border, background, color };
 }
 
 function normalizePayload(payload: RawPayload | undefined): AnointmentEntry[] {
@@ -302,8 +303,7 @@ function renderTags(container: HTMLElement): void {
   const tags = buildTagList();
   container.innerHTML = tags.map(({ label, count }) => {
     const key = label.toLowerCase();
-    const active = state.selectedTags.has(key);
-    return `<button class="poe1-anoint-tag" data-tag="${escapeAttr(key)}" data-label="${escapeAttr(label)}" style="${chipCss(label, active)}">${escapeHtml(label)} <span style='opacity:.75;'>(${count})</span></button>`;
+    return `<button class="poe1-anoint-tag" data-tag="${escapeAttr(key)}" data-label="${escapeAttr(label)}">${escapeHtml(label)} <span style='opacity:.75;'>(${count})</span></button>`;
   }).join(" ");
   state.tagButtons = Array.from(container.querySelectorAll<HTMLElement>(".poe1-anoint-tag"));
   state.tagButtons.forEach((btn) => {
@@ -319,6 +319,7 @@ function renderTags(container: HTMLElement): void {
       applyFilter();
     });
   });
+  updateTagStyles();
 }
 
 function updateTagStyles(): void {
@@ -326,7 +327,8 @@ function updateTagStyles(): void {
     const key = (btn.getAttribute("data-tag") || "").toLowerCase();
     const label = btn.getAttribute("data-label") || key;
     const active = state.selectedTags.has(key);
-    (btn as HTMLElement).style.cssText = chipCss(label, active);
+    applyFilterChipChrome(btn as HTMLElement, chipChrome(label, active), { padding: '3px 10px', fontWeight: active ? '600' : '500' });
+    btn.style.margin = '0 4px 4px 0';
   });
 }
 

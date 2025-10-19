@@ -1,4 +1,5 @@
-import { escapeHtml } from '../utils';
+import { escapeHtml, applyFilterChipChrome, type ChipChrome } from '../utils';
+import { buildPoe2ChipChrome, buildPoe2ExcludeChrome } from '../shared/filterChips';
 import { getDomainToggles, getPrimaryToggles, getOverflowToggles, domainMatchesToggle, isBaseDomain, type OverlayGameVersion } from './versionConfig';
 
 // Modifier panel controller + render pipeline extracted from overlay.html
@@ -1511,7 +1512,7 @@ export function renderFilteredContent(data: any){
   // attributeMetaAvailable already computed above
   const attrButtons = attributeMetaAvailable ? ['str','dex','int'] : [];
   // Colored chip helpers similar to other panels
-  const tagRGB = (tag: string) => {
+  const tagRGB = (tag: string): [number, number, number] => {
     const t=(tag||'').toLowerCase();
     // Elemental damage types
     if (t==='fire') return [220,68,61];           // Red
@@ -1566,35 +1567,27 @@ export function renderFilteredContent(data: any){
     // Default fallback
     return [120,144,156];  // Slate gray
   };
-  const chipCss = (tag: string, mode: string) => {
-    const [r,g,b] = tagRGB(tag);
-    let bg: string, border: string, color: string;
-    
-    if (mode === 'include') {
-      bg = `rgba(${r},${g},${b},0.9)`;
-      border = `rgba(${r},${g},${b},0.6)`;
-      const luma = 0.2126*r+0.7152*g+0.0722*b;
-      color = luma>180? '#000':'#fff';
-    } else if (mode === 'exclude') {
-      // Red-tinted for NOT filter
-      bg = `rgba(200,60,60,0.85)`;
-      border = `rgba(180,40,40,0.8)`;
-      color = '#fff';
-    } else {
-      // Inactive - grey background like scarabs page
-      bg = `rgba(${r},${g},${b},0.22)`;
-      border = `rgba(${r},${g},${b},0.6)`;
-      color = 'var(--text-primary)';
+  type ChipMode = '' | 'include' | 'exclude';
+
+  const chipChrome = (tag: string, mode: ChipMode): ChipChrome => {
+    if (mode === 'exclude') {
+      return buildPoe2ExcludeChrome();
     }
-    
-    const prefix = mode === 'exclude' ? 'NOT ' : '';
-    return {
-      style: `cursor:pointer; user-select:none; padding:2px 6px; line-height:1; display:inline-block; border-radius:4px; border:1px solid ${border}; background:${bg}; color:${color};`,
-      prefix,
-      bg,
-      border,
-      color
-    };
+    return buildPoe2ChipChrome(tagRGB(tag), mode === 'include');
+  };
+
+  const paintFilterChip = (chip: HTMLElement, modeOverride?: ChipMode) => {
+    const tag = chip.getAttribute('data-tag') || '';
+    const modeAttr = (chip.getAttribute('data-filter-mode') as ChipMode) || '';
+    const mode = modeOverride ?? modeAttr;
+    const count = Number(chip.getAttribute('data-count') || '0') || 0;
+    const chrome = chipChrome(tag, mode);
+    applyFilterChipChrome(chip, chrome, { padding: '3px 10px', fontWeight: mode === 'include' ? '600' : '500' });
+    chip.style.margin = '0 4px 4px 0';
+    chip.setAttribute('data-filter-mode', mode);
+    chip.textContent = `${mode === 'exclude' ? 'NOT ' : ''}${tag} (${count})`;
+    chip.classList.toggle('active', mode === 'include');
+    chip.classList.toggle('exclude', mode === 'exclude');
   };
   const filtersHtml = `
     <div id="filtersBar" style="display:flex; flex-direction:column; gap:0; margin:0 0 6px 0; padding:0; width:100%;">
@@ -1606,8 +1599,8 @@ export function renderFilteredContent(data: any){
         <div style="display:flex; flex-wrap:wrap; gap:4px; justify-content:center; align-items:flex-start; flex:1;">
           ${sortedTags.map(t=>{
             const mode = prevActive.has(t) ? 'include' : '';
-            const css = chipCss(t, mode);
-            return `<div class="filter-tag${mode?' active':''}" data-tag="${t}" data-filter-mode="${mode}" style="${css.style}">${css.prefix}${t} (${tagCounts[t]||0})</div>`;
+            const count = tagCounts[t] || 0;
+            return `<div class="filter-tag${mode?' active':''}" data-tag="${t}" data-filter-mode="${mode}" data-count="${count}"></div>`;
           }).join('')}
         </div>
       </div>
@@ -1636,7 +1629,8 @@ export function renderFilteredContent(data: any){
 
   if (filtersWrapper.getAttribute('data-signature') !== filterSignature) {
     filtersWrapper.setAttribute('data-signature', filterSignature);
-    filtersWrapper.innerHTML = filtersHtml;
+  filtersWrapper.innerHTML = filtersHtml;
+  filtersWrapper.querySelectorAll('.filter-tag').forEach(chip => paintFilterChip(chip as HTMLElement));
     // Pull the entire filters block closer to the toolbar and keep consistent bottom spacing
     try {
       (filtersWrapper as HTMLElement).style.marginTop = '-6px';
@@ -1666,26 +1660,15 @@ export function renderFilteredContent(data: any){
           
           if (currentMode === '') {
             nextMode = 'include';
-            chip.classList.add('active');
           } else if (currentMode === 'include') {
             nextMode = 'exclude';
-            chip.classList.add('exclude');
-            chip.classList.remove('active');
           } else {
             nextMode = '';
-            chip.classList.remove('active', 'exclude');
           }
           
           chip.setAttribute('data-filter-mode', nextMode);
-          
-          // Update chip styling and text - only update colors, not font-size
-          const css = chipCss(tag, nextMode);
-          const el = chip as HTMLElement;
-          el.style.background = css.bg;
-          el.style.borderColor = css.border;
-          el.style.color = css.color;
-          const count = tagCounts[tag] || 0;
-          chip.textContent = `${css.prefix}${tag} (${count})`;
+          chip.setAttribute('data-count', String(tagCounts[tag] || 0));
+          paintFilterChip(chip as HTMLElement, nextMode as ChipMode);
           
           if ((window as any).originalData) renderFilteredContent((window as any).originalData);
         });
@@ -1705,24 +1688,10 @@ export function renderFilteredContent(data: any){
     // Sync chip states without rebuilding DOM to prevent layout shift
     filtersWrapper.querySelectorAll('.filter-tag').forEach(chip => {
       const key = chip.getAttribute('data-tag') || '';
-      const mode = chip.getAttribute('data-filter-mode') || '';
-      const css = chipCss(key, mode);
-      // Update individual style properties instead of using setAttribute to preserve font-size scaling
-      const el = chip as HTMLElement;
-      el.style.cursor = 'pointer';
-      el.style.userSelect = 'none';
-      el.style.padding = '2px 6px';
-      el.style.lineHeight = '1';
-      el.style.display = 'inline-block';
-      el.style.borderRadius = '4px';
-      el.style.borderColor = css.border;
-      el.style.background = css.bg;
-      el.style.color = css.color;
-      el.style.border = `1px solid ${css.border}`;
+      const mode = (chip.getAttribute('data-filter-mode') as ChipMode) || '';
       const count = tagCounts[key] || 0;
-      chip.textContent = `${css.prefix}${key} (${count})`;
-      chip.classList.toggle('active', mode === 'include');
-      chip.classList.toggle('exclude', mode === 'exclude');
+      chip.setAttribute('data-count', String(count));
+      paintFilterChip(chip as HTMLElement, mode);
     });
     filtersWrapper.querySelectorAll('.attribute-btn').forEach(btn => {
       const attr = btn.getAttribute('data-attr') || '';

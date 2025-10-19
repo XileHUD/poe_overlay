@@ -1,3 +1,4 @@
+import { applyFilterChipChrome, type ChipChrome } from '../../../utils';
 import { bindImageFallback } from '../../utils/imageFallback';
 import { TRANSPARENT_PLACEHOLDER } from '../../utils/imagePlaceholder';
 
@@ -23,6 +24,7 @@ type State = {
   search: HTMLInputElement | null;
   selectedTags: Set<string>;
   tagCounts: Record<string, number>;
+  tagsExpanded: boolean;
 };
 
 const FALLBACK_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="9" font-family="sans-serif">LF</text></svg>';
@@ -33,7 +35,8 @@ const state: State = {
   filtered: [],
   search: null,
   selectedTags: new Set<string>(),
-  tagCounts: {}
+  tagCounts: {},
+  tagsExpanded: false
 };
 
 function ensurePanel(): HTMLElement {
@@ -74,13 +77,17 @@ function tagHash(tag: string): number {
   return Math.abs(hash);
 }
 
-function chipCss(tag: string, active: boolean): string {
+function chipCss(tag: string, active: boolean) {
   const hue = tagHash(tag) % 360;
   const bg = active ? `hsl(${hue}, 62%, 44%)` : `hsl(${hue}, 32%, 24%)`;
   const border = `hsl(${hue}, 58%, 52%)`;
   const color = active ? '#fff' : 'var(--text-primary)';
-  return `cursor:pointer; user-select:none; padding:2px 8px; font-size:11px; border-radius:4px; border:1px solid ${border}; background:${bg}; color:${color}; transition:opacity 0.15s ease;`;
+  return {border: `1px solid ${border}`, background: bg, color};
 }
+
+  function chipChrome(tag: string, active: boolean): ChipChrome {
+    return chipCss(tag, active);
+  }
 
 function deriveFilterTags(recipe: HorticraftingRecipe): string[] {
   const tags = new Set<string>();
@@ -165,12 +172,15 @@ export function render(list: HorticraftingRecipe[]): void {
   function renderTagFilters(): void {
     if (!tagWrap) return;
     tagWrap.innerHTML = '';
-    allTags.forEach((tag) => {
+    const MAX_TAGS_COLLAPSED = 21;
+    const tagsToShow = state.tagsExpanded ? allTags : allTags.slice(0, MAX_TAGS_COLLAPSED);
+    tagsToShow.forEach((tag) => {
       const active = state.selectedTags.has(tag);
       const el = document.createElement('div');
       const count = state.tagCounts[tag] || 0;
       el.textContent = count ? `${formatTagLabel(tag)} (${count})` : formatTagLabel(tag);
-      el.style.cssText = chipCss(tag, active);
+      applyFilterChipChrome(el, chipChrome(tag, active), { padding: '3px 10px', fontWeight: active ? '600' : '500' });
+      el.style.margin = '0 4px 4px 0';
       el.addEventListener('click', () => {
         if (active) {
           state.selectedTags.delete(tag);
@@ -182,10 +192,29 @@ export function render(list: HorticraftingRecipe[]): void {
       });
       tagWrap.appendChild(el);
     });
+    if (allTags.length > MAX_TAGS_COLLAPSED) {
+      const showMore = document.createElement('div');
+      showMore.textContent = state.tagsExpanded ? 'Show Less' : 'Show More';
+      showMore.style.padding = '3px 10px';
+      showMore.style.margin = '0 4px 4px 0';
+      showMore.style.border = '1px solid var(--border-color)';
+      showMore.style.borderRadius = '4px';
+      showMore.style.background = 'var(--bg-secondary)';
+      showMore.style.color = 'var(--text-primary)';
+      showMore.style.cursor = 'pointer';
+      showMore.style.fontSize = '11px';
+      showMore.style.fontWeight = '500';
+      showMore.addEventListener('click', () => {
+        state.tagsExpanded = !state.tagsExpanded;
+        renderTagFilters();
+      });
+      tagWrap.appendChild(showMore);
+    }
     if (state.selectedTags.size) {
       const reset = document.createElement('div');
       reset.textContent = 'Clear filters';
-      reset.style.cssText = 'cursor:pointer; user-select:none; padding:2px 8px; font-size:11px; border-radius:4px; border:1px solid var(--accent-red); background:var(--accent-red); color:#fff;';
+      applyFilterChipChrome(reset, { border: '1px solid var(--accent-red)', background: 'var(--accent-red)', color: '#fff' }, { padding: '3px 10px', fontWeight: '600' });
+      reset.style.margin = '0 4px 4px 0';
       reset.addEventListener('click', () => {
         state.selectedTags.clear();
         apply(state.search?.value || '');

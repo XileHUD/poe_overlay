@@ -491,33 +491,42 @@ function renderPrepared(): void {
       });
     });
 
-    // Color mapping for different tag types
-    const getTagColor = (tag: string): string => {
+    // Color mapping for different tag types - returns RGB values for opacity control
+    const getTagColor = (tag: string): [number, number, number] => {
       // Defense types
-      if (tag === 'Armour') return '#b8860b'; // Gold
-      if (tag === 'Evasion') return '#228b22'; // Green
-      if (tag === 'Energy Shield') return '#4169e1'; // Blue
+      if (tag === 'Armour') return [184, 134, 11]; // Gold
+      if (tag === 'Evasion') return [34, 139, 34]; // Green
+      if (tag === 'Energy Shield') return [65, 105, 225]; // Blue
       
       // Damage types
-      if (tag === 'Physical') return '#8b4513'; // Brown
-      if (tag === 'Fire') return '#ff4500'; // Red-Orange
-      if (tag === 'Cold') return '#4682b4'; // Steel Blue
-      if (tag === 'Lightning') return '#daa520'; // Goldenrod
-      if (tag === 'Chaos') return '#8b008b'; // Dark Magenta
-      if (tag === 'Elemental') return '#ff6347'; // Tomato
+      if (tag === 'Physical') return [139, 69, 19]; // Brown
+      if (tag === 'Fire') return [255, 69, 0]; // Red-Orange
+      if (tag === 'Cold') return [70, 130, 180]; // Steel Blue
+      if (tag === 'Lightning') return [218, 165, 32]; // Goldenrod
+      if (tag === 'Chaos') return [139, 0, 139]; // Dark Magenta
+      if (tag === 'Elemental') return [255, 99, 71]; // Tomato
       
       // Attributes
-      if (tag === 'Strength') return '#dc143c'; // Crimson
-      if (tag === 'Dexterity') return '#32cd32'; // Lime Green
-      if (tag === 'Intelligence') return '#4169e1'; // Royal Blue
+      if (tag === 'Strength') return [220, 20, 60]; // Crimson
+      if (tag === 'Dexterity') return [50, 205, 50]; // Lime Green
+      if (tag === 'Intelligence') return [65, 105, 225]; // Royal Blue
       
       // Other
-      if (tag === 'Attack' || tag === 'Weapon') return '#cd853f'; // Peru
-      if (tag === 'Spell') return '#9370db'; // Medium Purple
-      if (tag === 'Critical') return '#ff1493'; // Deep Pink
-      if (tag === 'Block') return '#708090'; // Slate Gray
+      if (tag === 'Attack' || tag === 'Weapon') return [205, 133, 63]; // Peru
+      if (tag === 'Spell') return [147, 112, 219]; // Medium Purple
+      if (tag === 'Critical') return [255, 20, 147]; // Deep Pink
+      if (tag === 'Block') return [112, 128, 144]; // Slate Gray
       
-      return 'var(--border-color)'; // Default
+      return [120, 144, 156]; // Default grey
+    };
+    
+    const getChipStyle = (tag: string, active: boolean): string => {
+      const [r, g, b] = getTagColor(tag);
+      const bg = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
+      const border = `rgba(${r},${g},${b},0.6)`;
+      const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+      const color = active ? (luma > 180 ? '#000' : '#fff') : 'var(--text-primary)';
+      return `border:1px solid ${border}; background:${bg}; color:${color};`;
     };
 
     allTags.forEach((tag) => {
@@ -528,19 +537,23 @@ function renderPrepared(): void {
       const chip = document.createElement('div');
       chip.textContent = count ? `${tag} (${count})` : tag;
       
-      const tagColor = getTagColor(tag);
-      chip.style.cssText = [
-        'cursor:pointer',
-        'user-select:none',
-        'padding:4px 12px',
-        'font-size:11px',
-        'border-radius:4px',
-        `border:1px solid ${active ? tagColor : 'var(--border-color)'}`,
-        `background:${active ? tagColor : 'var(--bg-secondary)'}`,
-        `color:${active ? '#fff' : 'var(--text-primary)'}`,
-        'transition: all 0.15s ease',
-        active ? 'font-weight: 600' : ''
-      ].join(';');
+      // Apply individual style properties to preserve user font scaling
+      chip.style.cursor = 'pointer';
+      chip.style.userSelect = 'none';
+      chip.style.padding = '4px 12px';
+      chip.style.borderRadius = '4px';
+      chip.style.transition = 'all 0.15s ease';
+      if (active) chip.style.fontWeight = '600';
+      
+      // Apply color styles from getChipStyle
+      const [r, g, b] = getTagColor(tag);
+      const bg = active ? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
+      const border = `rgba(${r},${g},${b},0.6)`;
+      const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+      const color = active ? (luma > 180 ? '#000' : '#fff') : 'var(--text-primary)';
+      chip.style.border = `1px solid ${border}`;
+      chip.style.background = bg;
+      chip.style.color = color;
       
       chip.addEventListener('click', () => {
         if (active) {

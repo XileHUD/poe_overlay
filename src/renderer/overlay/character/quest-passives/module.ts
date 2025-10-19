@@ -1,34 +1,11 @@
 // Quest Passives module extracted from overlay.html
 // Provides show(), build(), render() wired to window.OverlayQuestPassives
 
-type QpModel = { acts: Array<{ title:string; summary:string; steps:Array<{ id:string; text:string; notes?:string[]; tags?:string[] }> }>; tagSet: string[] };
+import { applyFilterChipChrome } from "../../utils";
+import { buildPoe2ChipChrome } from "../../shared/filterChips";
+import { prepareCharacterPanel } from "../utils";
 
-function prepareCharacterPanel(label: string){
-  const tabMod=document.getElementById('tabModifier')!;
-  const craftingTab=document.getElementById('craftingTab')!;
-  const itemsTab=document.getElementById('itemsTab')!;
-  const charTab=document.getElementById('characterTab')!;
-  tabMod.classList.remove('active');
-  (craftingTab as any).style.background='var(--bg-tertiary)'; (craftingTab as any).style.color='var(--text-primary)';
-  (itemsTab as any).style.background='var(--bg-tertiary)'; (itemsTab as any).style.color='var(--text-primary)';
-  (charTab as any).style.background='var(--accent-blue)'; (charTab as any).style.color='#fff';
-  const content = document.getElementById('content'); if (content) (content as any).style.display='none';
-  const hist = document.getElementById('historyContainer'); if (hist) (hist as any).style.display='none';
-  // Don't set inline display:none - let CSS handle visibility via body classes
-  const mhi = document.getElementById('modifierHeaderInfo'); if (mhi) (mhi as any).style.display='none';
-  const wi = document.getElementById('whittlingInfo'); if (wi) (wi as any).style.display='none';
-  // Do not force show control panel; overlay shell manages it
-  (window as any).OverlayAnnoints?.hide?.();
-  document.body.classList.add('crafting-mode');
-  let panel=document.getElementById('craftingPanel');
-  if(!panel){
-    panel=document.createElement('div');
-    panel.id='craftingPanel'; panel.className='content'; (panel as any).style.padding='8px';
-    const footer=document.getElementById('footer')!; footer.parentNode!.insertBefore(panel, footer);
-  }
-  (panel as any).style.display='';
-  return panel as HTMLElement;
-}
+type QpModel = { acts: Array<{ title:string; summary:string; steps:Array<{ id:string; text:string; notes?:string[]; tags?:string[] }> }>; tagSet: string[] };
 
 export function buildQuestPassivesData(): QpModel{
   const TAGS = ['Spirit','Resistance','Life','Gem','Passive Skill','Relic','Charm','Mana','Dexterity','Intelligence','Movement','Strength'];
@@ -147,20 +124,26 @@ export function render(model: QpModel){
     if(!tagWrap) return; tagWrap.innerHTML='';
     const counts = recomputeCounts();
     model.tagSet.forEach(tag=>{
-      const btn=document.createElement('button');
-      btn.className='qp-chip';
+      const chip=document.createElement('div');
       const isActive=selectedTags.has(tag);
-      if(isActive) btn.classList.add('active');
       const count = counts[tag]||0;
-      btn.textContent = count ? `${tag} (${count})` : tag;
-      btn.addEventListener('click', ()=>{ isActive?selectedTags.delete(tag):selectedTags.add(tag); build(searchEl?.value||''); renderTagFilters(); });
-      tagWrap.appendChild(btn);
+      chip.textContent = count ? `${tag} (${count})` : tag;
+      applyFilterChipChrome(chip, buildPoe2ChipChrome([120, 144, 156], isActive), {
+        padding: "3px 10px",
+        fontWeight: isActive ? "600" : "500"
+      });
+      chip.style.margin = "0 4px 4px 0";
+      chip.addEventListener('click', ()=>{ isActive?selectedTags.delete(tag):selectedTags.add(tag); build(searchEl?.value||''); renderTagFilters(); });
+      tagWrap.appendChild(chip);
     });
     if(selectedTags.size){
-      const reset=document.createElement('button');
-      reset.className='qp-chip';
-      (reset as any).style.background='var(--accent-red)'; (reset as any).style.borderColor='var(--accent-red)'; (reset as any).style.color='#fff';
-      reset.textContent='×'; reset.title='Clear filters';
+      const reset=document.createElement('div');
+      reset.textContent='Reset';
+      applyFilterChipChrome(reset, { border: "1px solid var(--accent-red)", background: "var(--accent-red)", color: "#fff" }, {
+        padding: "3px 10px",
+        fontWeight: "600"
+      });
+      reset.style.margin = "0 4px 4px 0";
       reset.addEventListener('click',()=>{ selectedTags.clear(); build(searchEl?.value||''); renderTagFilters(); });
       tagWrap.appendChild(reset);
     }
