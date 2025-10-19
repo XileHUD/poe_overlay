@@ -1911,13 +1911,37 @@ export function patchCreateModItem(){
 }
 
 export function clearAllFilters(){
-  const search = document.getElementById('search-input') as HTMLInputElement | null; if (search) search.value='';
-  document.querySelectorAll('.filter-tag.active').forEach(chip=>{
-    chip.classList.remove('active');
+  // Clear search input
+  const search = document.getElementById('search-input') as HTMLInputElement | null; 
+  if (search) search.value='';
+  
+  // Clear ilvl filters
+  const ilvlMin = document.getElementById('ilvl-min') as HTMLInputElement | null;
+  const ilvlMax = document.getElementById('ilvl-max') as HTMLInputElement | null;
+  if (ilvlMin) ilvlMin.value = '';
+  if (ilvlMax) ilvlMax.value = '';
+  
+  // Clear all filter chips (both active and exclude states)
+  document.querySelectorAll('.filter-tag').forEach(chip=>{
+    chip.classList.remove('active', 'exclude');
+    chip.setAttribute('data-filter-mode', '');
     const any = chip as any;
-    if(any && any.style){ any.style.background='var(--bg-tertiary)'; any.style.color='var(--text-primary)'; }
-  })
+    if(any && any.style){ 
+      any.style.background='var(--bg-tertiary)'; 
+      any.style.color='var(--text-primary)'; 
+      any.style.borderColor='var(--border-color)';
+    }
+  });
+  
+  // Clear attribute filters
   document.querySelectorAll('.attribute-btn.active').forEach(btn=> btn.classList.remove('active'));
+  
+  // Reset tag filter mode to AND
+  const tagFilterModeToggle = document.getElementById('tagFilterModeToggle');
+  if (tagFilterModeToggle) {
+    tagFilterModeToggle.setAttribute('data-mode', 'and');
+    tagFilterModeToggle.textContent = 'AND';
+  }
   
   // Clear domain filters - reset to "All" using version-aware config
   const gameVersion = currentOverlayVersionMode;
