@@ -78,6 +78,7 @@ const POE1_ITEM_CATEGORY_MAP: Record<string, keyof Poe1ItemsSubcategories> = {
 };
 
 const POE1_CRAFTING_CATEGORY_MAP: Record<string, keyof Poe1CraftingSubcategories> = {
+  Runegrafts: 'runegrafts',
   Scarabs: 'scarabs',
   Currency: 'currency',
   Essences: 'essences',
@@ -86,6 +87,7 @@ const POE1_CRAFTING_CATEGORY_MAP: Record<string, keyof Poe1CraftingSubcategories
 };
 
 const POE1_CHARACTER_CATEGORY_MAP: Record<string, keyof Poe1CharacterSubcategories> = {
+  Ascendancy_Notables: 'ascendancyNotables',
   Divination_Cards: 'divinationCards',
   Tattoos: 'tattoos',
   Gems: 'gems'

@@ -14,6 +14,7 @@ export interface CraftingSubcategories {
 }
 
 export interface Poe1CraftingSubcategories {
+  runegrafts: boolean;
   scarabs: boolean;
   currency: boolean;
   essences: boolean;
@@ -31,6 +32,7 @@ export interface CharacterSubcategories {
 }
 
 export interface Poe1CharacterSubcategories {
+  ascendancyNotables: boolean;
   divinationCards: boolean;
   tattoos: boolean;
   gems: boolean;
@@ -108,6 +110,7 @@ export const DEFAULT_FEATURES: FeatureConfig = {
   poe1Crafting: {
     enabled: true,
     subcategories: {
+      runegrafts: true,
       scarabs: true,
       currency: true,
       essences: true,
@@ -129,6 +132,7 @@ export const DEFAULT_FEATURES: FeatureConfig = {
   poe1Character: {
     enabled: true,
     subcategories: {
+      ascendancyNotables: true,
       divinationCards: true,
       tattoos: true,
       gems: true
@@ -181,6 +185,7 @@ export const MINIMAL_FEATURES: FeatureConfig = {
   poe1Crafting: {
     enabled: false,
     subcategories: {
+      runegrafts: false,
       scarabs: false,
       currency: false,
       essences: false,
@@ -202,6 +207,7 @@ export const MINIMAL_FEATURES: FeatureConfig = {
   poe1Character: {
     enabled: false,
     subcategories: {
+      ascendancyNotables: false,
       divinationCards: false,
       tattoos: false,
       gems: false
@@ -253,6 +259,7 @@ export const ALL_FEATURES: FeatureConfig = {
   poe1Crafting: {
     enabled: true,
     subcategories: {
+      runegrafts: true,
       scarabs: true,
       currency: true,
       essences: true,
@@ -274,6 +281,7 @@ export const ALL_FEATURES: FeatureConfig = {
   poe1Character: {
     enabled: true,
     subcategories: {
+      ascendancyNotables: true,
       divinationCards: true,
       tattoos: true,
       gems: true

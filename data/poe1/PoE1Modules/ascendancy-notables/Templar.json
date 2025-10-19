@@ -1,0 +1,291 @@
+{
+  "slug": "Ascendancy_Notables_Templar",
+  "character": "Templar",
+  "notables": [
+    {
+      "name": "Righteous Providence",
+      "slug": "Righteous_Providence",
+      "ascendancy": "Inquisitor",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "1% increased Critical Strike Chance per point of Strength or Intelligence, whichever is lower",
+        "+50 to Strength and Intelligence"
+      ],
+      "imageLocal": "ascendancy-notables/templar/righteous_providence.webp"
+    },
+    {
+      "name": "Inevitable Judgement",
+      "slug": "Inevitable_Judgement",
+      "ascendancy": "Inquisitor",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "Critical Strikes ignore Enemy Monster Elemental Resistances",
+        "Non-Critical Strikes Penetrate 10% of Enemy Elemental Resistances",
+        "(Ignoring Resistances means your Damage cannot be modified in any way by any Resistance stats)"
+      ],
+      "imageLocal": "ascendancy-notables/templar/inevitable_judgement.webp"
+    },
+    {
+      "name": "Augury of Penitence",
+      "slug": "Augury_of_Penitence",
+      "ascendancy": "Inquisitor",
+      "character": "Templar",
+      "properties": {
+        "Radius": "60"
+      },
+      "mods": [
+        "Nearby Enemies deal 8% less Elemental Damage",
+        "Nearby Enemies take 16% increased Elemental Damage"
+      ],
+      "imageLocal": "ascendancy-notables/templar/augury_of_penitence.webp"
+    },
+    {
+      "name": "Sanctuary",
+      "slug": "Sanctuary",
+      "ascendancy": "Inquisitor",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "Consecrated Ground you create applies 15% increased Damage taken to Enemies",
+        "You have Consecrated Ground around you while stationary",
+        "(Allies on your Consecrated Ground Regenerate a percentage of their Maximum Life per second, and Curses have 50% reduced effect on them)"
+      ],
+      "imageLocal": "ascendancy-notables/templar/sanctuary.webp"
+    },
+    {
+      "name": "Pious Path",
+      "slug": "Pious_Path",
+      "ascendancy": "Inquisitor",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "Consecrated Ground you create causes Life Regeneration toalso Recover Energy Shield for you and Allies",
+        "Effects of Consecrated Ground you create Linger for 4 seconds",
+        "(The effects of the ground still apply to you, allies or enemies after leaving its area)"
+      ],
+      "imageLocal": "ascendancy-notables/templar/pious_path.webp"
+    },
+    {
+      "name": "Instruments of Zeal",
+      "slug": "Instruments_of_Zeal",
+      "ascendancy": "Inquisitor",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "Gain 1 Fanatic Charge every second if you've Attacked in the past second",
+        "Gain Fanaticism for 4 seconds on reaching Maximum Fanatic Charges",
+        "Lose all Fanatic Charges on reaching Maximum Fanatic Charges",
+        "+4 to Maximum Fanatic Charges",
+        "(Fanaticism grants Spells you Cast yourself 75% more Cast Speed, 75% reduced Cost and 75% increased Area of Effect)"
+      ],
+      "imageLocal": "ascendancy-notables/templar/instruments_of_zeal.webp"
+    },
+    {
+      "name": "Instruments of Virtue",
+      "slug": "Instruments_of_Virtue",
+      "ascendancy": "Inquisitor",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "10% more Attack Damage for each Non-Instant Spell you've Cast in the past 8 seconds, up to a maximum of 30%",
+        "Battlemage",
+        "(Gain Added Spell Damage equal to the Damage of your Main Hand Weapon)"
+      ],
+      "imageLocal": "ascendancy-notables/templar/instruments_of_virtue.webp"
+    },
+    {
+      "name": "Divine Guidance",
+      "slug": "Divine_Guidance",
+      "ascendancy": "Hierophant",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "30% increased maximum Mana",
+        "10% of Damage is taken from Mana before Life",
+        "Transfiguration of Mind",
+        "(Increases and Reductions to Maximum Mana also apply to Damage at 30% of their value)"
+      ],
+      "imageLocal": "ascendancy-notables/templar/divine_guidance.webp"
+    },
+    {
+      "name": "Sanctuary of Thought",
+      "slug": "Sanctuary_of_Thought",
+      "ascendancy": "Hierophant",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "Gain 20% of Maximum Mana as Extra Maximum Energy Shield",
+        "1% increased Area of Effect per 50 Unreserved Maximum Mana, up to 100%",
+        "Regenerate 1% of Mana per second"
+      ],
+      "imageLocal": "ascendancy-notables/templar/sanctuary_of_thought.webp"
+    },
+    {
+      "name": "Pursuit of Faith",
+      "slug": "Pursuit_of_Faith",
+      "ascendancy": "Hierophant",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "100% increased Totem Duration",
+        "+1 to maximum number of Summoned Totems",
+        "100% increased Totem Placement speed"
+      ],
+      "imageLocal": "ascendancy-notables/templar/pursuit_of_faith.webp"
+    },
+    {
+      "name": "Ritual of Awakening",
+      "slug": "Ritual_of_Awakening",
+      "ascendancy": "Hierophant",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "5% more Damage per Summoned Totem",
+        "Regenerate 0.5% of Mana per second for each Summoned Totem",
+        "You and your Totems Regenerate 1% of Life per second for each Summoned Totem"
+      ],
+      "imageLocal": "ascendancy-notables/templar/ritual_of_awakening.webp"
+    },
+    {
+      "name": "Conviction of Power",
+      "slug": "Conviction_of_Power",
+      "ascendancy": "Hierophant",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "+4 to Minimum Endurance Charges",
+        "+4 to Minimum Power Charges",
+        "+1 to Maximum Power Charges and Maximum Endurance Charges"
+      ],
+      "imageLocal": "ascendancy-notables/templar/conviction_of_power.webp"
+    },
+    {
+      "name": "Illuminated Devotion",
+      "slug": "Illuminated_Devotion",
+      "ascendancy": "Hierophant",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "Non-Damaging Ailments have 50% reduced Effect on you while you have Arcane Surge",
+        "30% increased Area of Effect while you have Arcane Surge",
+        "0.5% of Spell Damage Leeched as Life while you have Arcane Surge",
+        "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
+      ],
+      "imageLocal": "ascendancy-notables/templar/illuminated_devotion.webp"
+    },
+    {
+      "name": "Arcane Blessing",
+      "slug": "Arcane_Blessing",
+      "ascendancy": "Hierophant",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "Arcane Surge grants 20% more Spell Damage to you",
+        "Gain Arcane Surge when you or your Totems Hit an Enemy with a Spell",
+        "(Arcane Surge grants 20% increased Cast Speed and 30% increased Mana Regeneration rate, for 4 seconds)"
+      ],
+      "imageLocal": "ascendancy-notables/templar/arcane_blessing.webp"
+    },
+    {
+      "name": "Sign of Purpose",
+      "slug": "Sign_of_Purpose",
+      "ascendancy": "Hierophant",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "Brands have 100% more Activation Frequency if 75% of Attached Duration expired",
+        "Brand Recall has 100% increased Cooldown Recovery Rate"
+      ],
+      "imageLocal": "ascendancy-notables/templar/sign_of_purpose.webp"
+    },
+    {
+      "name": "Time of Need",
+      "slug": "Time_of_Need",
+      "ascendancy": "Guardian",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "Every 4 seconds, remove Curses and Elemental Ailments from you",
+        "Every 4 seconds, Regenerate 100% of Life over one second",
+        "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
+      ],
+      "imageLocal": "ascendancy-notables/templar/time_of_need.webp"
+    },
+    {
+      "name": "Radiant Faith",
+      "slug": "Radiant_Faith",
+      "ascendancy": "Guardian",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "Grants Armour equal to 25% of your Reserved Mana to you and nearby Allies",
+        "Grants maximum Energy Shield equal to 10% of your Reserved Mana toyou and nearby Allies"
+      ],
+      "imageLocal": "ascendancy-notables/templar/radiant_faith.webp"
+    },
+    {
+      "name": "Bastion of Hope",
+      "slug": "Bastion_of_Hope",
+      "ascendancy": "Guardian",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "If you've Attacked Recently, you and nearby Allies have +25% Chance to Block Attack Damage",
+        "If you've Cast a Spell Recently, you and nearby Allies have +25% Chance to Block Spell Damage",
+        "(Recently refers to the past 4 seconds)"
+      ],
+      "imageLocal": "ascendancy-notables/templar/bastion_of_hope.webp"
+    },
+    {
+      "name": "Harmony of Purpose",
+      "slug": "Harmony_of_Purpose",
+      "ascendancy": "Guardian",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "Gain a random shrine buff every 10 seconds"
+      ],
+      "imageLocal": "ascendancy-notables/templar/harmony_of_purpose.webp"
+    },
+    {
+      "name": "Unwavering Faith",
+      "slug": "Unwavering_Faith",
+      "ascendancy": "Guardian",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "50% increased Reservation Efficiency of Skills"
+      ],
+      "imageLocal": "ascendancy-notables/templar/unwavering_faith.webp"
+    },
+    {
+      "name": "Radiant Crusade",
+      "slug": "Radiant_Crusade",
+      "ascendancy": "Guardian",
+      "character": "Templar",
+      "properties": {},
+      "mods": [
+        "Grants Level 20 Summon Sentinel of Radiance Skill",
+        "20% of Damage from Hits is taken from your Sentinel of Radiance's Life before you",
+        "(Summons a Sentinel of Radiance which follows you and attacks enemies in melee, while burning enemies around it and taking a portion of damage from hits for you. You can only have one Sentinel of Radiance)"
+      ],
+      "imageLocal": "ascendancy-notables/templar/radiant_crusade.webp"
+    },
+    {
+      "name": "Unwavering Crusade",
+      "slug": "Unwavering_Crusade",
+      "ascendancy": "Guardian",
+      "character": "Templar",
+      "properties": {
+        "Radius": "60"
+      },
+      "mods": [
+        "25% chance to Trigger Level 20 Summon Elemental Relic when you or a nearby Ally Kill an Enemy, or Hit a Rare or Unique Enemy",
+        "(Summons a Relic of a random element that stays near you. Depending on the element chosen, the relic minion will have an Anger, Hatred, or Wrath aura. These relics explode when they die, dealing elemental damage to enemies around them. If you already have a relic of the chosen element, its duration will be refreshed instead of summoning a new one)"
+      ],
+      "imageLocal": "ascendancy-notables/templar/unwavering_crusade.webp"
+    }
+  ]
+}

@@ -394,6 +394,10 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
         <label for="feat-poe1-craft-scarabs">Scarabs</label>
       </div>
       <div class="feature-sub">
+        <input type="checkbox" id="feat-poe1-craft-runegrafts" ${checked(safeConfig.poe1Crafting.subcategories.runegrafts)}/>
+        <label for="feat-poe1-craft-runegrafts">Runegrafts</label>
+      </div>
+      <div class="feature-sub">
         <input type="checkbox" id="feat-poe1-craft-currency" ${checked(safeConfig.poe1Crafting.subcategories.currency)}/>
         <label for="feat-poe1-craft-currency">Currency</label>
       </div>
@@ -497,6 +501,10 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       <div class="feature-sub">
         <input type="checkbox" id="feat-poe1-char-divcards" ${checked(safeConfig.poe1Character.subcategories.divinationCards)}/>
         <label for="feat-poe1-char-divcards">Divination Cards</label>
+      </div>
+      <div class="feature-sub">
+        <input type="checkbox" id="feat-poe1-char-asc-notables" ${checked(safeConfig.poe1Character.subcategories.ascendancyNotables)}/>
+        <label for="feat-poe1-char-asc-notables">Ascendancy Notables</label>
       </div>
       <div class="feature-sub">
         <input type="checkbox" id="feat-poe1-char-tattoos" ${checked(safeConfig.poe1Character.subcategories.tattoos)}/>
@@ -667,6 +675,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       // PoE1 Crafting
       document.getElementById('feat-poe1-crafting').checked = preset.poe1Crafting.enabled;
       document.getElementById('feat-poe1-craft-scarabs').checked = preset.poe1Crafting.subcategories.scarabs;
+  document.getElementById('feat-poe1-craft-runegrafts').checked = preset.poe1Crafting.subcategories.runegrafts;
       document.getElementById('feat-poe1-craft-currency').checked = preset.poe1Crafting.subcategories.currency;
       document.getElementById('feat-poe1-craft-essences').checked = preset.poe1Crafting.subcategories.essences;
       document.getElementById('feat-poe1-craft-fossils').checked = preset.poe1Crafting.subcategories.fossils;
@@ -684,6 +693,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       // PoE1 Character
       document.getElementById('feat-poe1-character').checked = preset.poe1Character.enabled;
       document.getElementById('feat-poe1-char-divcards').checked = preset.poe1Character.subcategories.divinationCards;
+  document.getElementById('feat-poe1-char-asc-notables').checked = preset.poe1Character.subcategories.ascendancyNotables;
       document.getElementById('feat-poe1-char-tattoos').checked = preset.poe1Character.subcategories.tattoos;
       document.getElementById('feat-poe1-char-gems').checked = preset.poe1Character.subcategories.gems;
       
@@ -750,6 +760,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
         poe1Crafting: {
           enabled: document.getElementById('feat-poe1-crafting').checked,
           subcategories: {
+            runegrafts: document.getElementById('feat-poe1-craft-runegrafts').checked,
             scarabs: document.getElementById('feat-poe1-craft-scarabs').checked,
             currency: document.getElementById('feat-poe1-craft-currency').checked,
             essences: document.getElementById('feat-poe1-craft-essences').checked,
@@ -771,6 +782,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
         poe1Character: {
           enabled: document.getElementById('feat-poe1-character').checked,
           subcategories: {
+            ascendancyNotables: document.getElementById('feat-poe1-char-asc-notables').checked,
             divinationCards: document.getElementById('feat-poe1-char-divcards').checked,
             tattoos: document.getElementById('feat-poe1-char-tattoos').checked,
             gems: document.getElementById('feat-poe1-char-gems').checked

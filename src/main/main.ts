@@ -650,7 +650,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 if (!fs.existsSync(itemsDir)) {
                     return { valid: false, reason: 'poe1_missing_items_dir' };
                 }
-                const expectedSubdirs = ['currency', 'essences', 'fossils', 'embers', 'scarabs'];
+                const expectedSubdirs = ['currency', 'essences', 'fossils', 'embers', 'scarabs', 'runegrafts'];
                 const hasExpected = expectedSubdirs.some((dir) => fs.existsSync(path.join(itemsDir, dir)));
                 if (!hasExpected) {
                     return { valid: false, reason: 'poe1_missing_expected_categories' };
@@ -973,6 +973,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             poe1Crafting: {
                 enabled: false,
                 subcategories: {
+                    runegrafts: false,
                     scarabs: false,
                     currency: false,
                     essences: false,
@@ -994,6 +995,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             poe1Character: {
                 enabled: false,
                 subcategories: {
+                    ascendancyNotables: false,
                     divinationCards: false,
                     tattoos: false,
                     gems: false
@@ -2717,6 +2719,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                         poe1Crafting: {
                             enabled: config.poe1Crafting?.enabled ?? disabled.poe1Crafting.enabled,
                             subcategories: {
+                                runegrafts: config.poe1Crafting?.subcategories?.runegrafts ?? disabled.poe1Crafting.subcategories.runegrafts,
                                 scarabs: config.poe1Crafting?.subcategories?.scarabs ?? disabled.poe1Crafting.subcategories.scarabs,
                                 currency: config.poe1Crafting?.subcategories?.currency ?? disabled.poe1Crafting.subcategories.currency,
                                 essences: config.poe1Crafting?.subcategories?.essences ?? disabled.poe1Crafting.subcategories.essences,
@@ -2727,6 +2730,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                         poe1Character: {
                             enabled: config.poe1Character?.enabled ?? disabled.poe1Character.enabled,
                             subcategories: {
+                                ascendancyNotables: config.poe1Character?.subcategories?.ascendancyNotables ?? disabled.poe1Character.subcategories.ascendancyNotables,
                                 divinationCards: config.poe1Character?.subcategories?.divinationCards ?? disabled.poe1Character.subcategories.divinationCards,
                                 tattoos: config.poe1Character?.subcategories?.tattoos ?? disabled.poe1Character.subcategories.tattoos,
                                 gems: config.poe1Character?.subcategories?.gems ?? disabled.poe1Character.subcategories.gems

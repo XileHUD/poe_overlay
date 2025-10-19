@@ -951,6 +951,11 @@ export class ItemParser {
             if (/allflame|ember/.test(fragmentSource)) return 'Embers';
             // Fall through for other fragment types – handled by default logic.
         }
+        // PoE1: Runegraft detection
+        if (/^Stackable Currency$/i.test(itemClass)) {
+            const runegraftCheck = `${name} ${baseType}`.toLowerCase();
+            if (/runegraft/.test(runegraftCheck)) return 'Runegrafts';
+        }
         const baseCategory = this.categoryMappings[itemClass] || (itemClass === 'Jewels' ? 'Jewels' : '');
         if (!baseCategory) {
             // Only log if itemClass is not empty (suppress spam when clipboard is empty/junk during polling)

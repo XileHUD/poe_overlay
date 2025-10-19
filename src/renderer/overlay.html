@@ -327,6 +327,10 @@
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-1.5 1.5-3 3.5-3 6 0 1.5.5 3 1.5 4l-4 4c-1 1-1.5 2.5-1.5 4s.5 3 1.5 4l4-4c1 1 2.5 1.5 4 1.5 2.5 0 4.5-1.5 6-3L12 2z"/></svg></span>
                         <span>Scarabs</span>
                     </div>
+                    <div class="crafting-menu-item poe1-only" data-action="poe1-runegrafts" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v10l-7 4-7-4V7z"/><path d="M9 8l3 2 3-2"/><path d="M9 12l3 2 3-2"/></svg></span>
+                        <span>Runegrafts</span>
+                    </div>
                     <div class="crafting-menu-item poe1-only" data-action="poe1-currency" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="3"/><circle cx="16" cy="12" r="3"/><path d="M8 9V5m0 14v-4m8-6V5m0 14v-4"/></svg></span>
                         <span>Currency</span>
@@ -372,6 +376,10 @@
                     <div class="character-menu-item poe1-only" data-action="poe1-divination-cards" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10h8M8 14h5"/></svg></span>
                         <span>Divination Cards</span>
+                    </div>
+                    <div class="character-menu-item poe1-only" data-action="poe1-asc-notables" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></span>
+                        <span>Ascendancy Notables</span>
                     </div>
                     <div class="character-menu-item poe1-only" data-action="poe1-tattoos" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
@@ -1009,6 +1017,7 @@
     if (key === 'currency') { markCraftingAction('currency'); return; }
     if (key === 'catalysts') { markCraftingAction('catalysts'); return; }
     if (key === 'socketables') { markCraftingAction('socketables'); return; }
+    if (key === 'poe1 runegrafts' || key === 'runegrafts') { markCraftingAction('poe1-runegrafts'); return; }
     if (key === 'poe1 scarabs') { markCraftingAction('poe1-scarabs'); return; }
     if (key === 'poe1 currency') { markCraftingAction('poe1-currency'); return; }
     if (key === 'poe1 essences') { markCraftingAction('poe1-essences'); return; }
@@ -1019,6 +1028,9 @@
     if (key === 'keystones') { markCharacterAction('keystones'); return; }
     if (key === 'ascendancy passives') { markCharacterAction('asc-passives'); return; }
     if (key === 'atlas nodes') { markCharacterAction('atlas-nodes'); return; }
+    if (key === 'ascendancy notables') { markCharacterAction('poe1-asc-notables'); return; }
+    if (key === 'divination cards') { markCharacterAction('poe1-divination-cards'); return; }
+    if (key === 'tattoos') { markCharacterAction('poe1-tattoos'); return; }
     if (key === 'glossar') { markCharacterAction('glossar'); return; }
     if (key === 'uniques') { markItemsAction('uniques'); return; }
     if (key === 'bases') { markItemsAction('bases'); return; }
@@ -1063,6 +1075,7 @@
                 if (key === 'catalysts') { await showCatalysts(); setHeader('Catalysts'); recordHeaderAction('Catalysts'); return true; }
                 if (key === 'socketables') { await showSocketables(); setHeader('Socketables'); recordHeaderAction('Socketables'); return true; }
                 // PoE1 Crafting actions
+                if (key === 'poe1-runegrafts') { await showPoe1Runegrafts(); setHeader('PoE1 Runegrafts'); recordHeaderAction('PoE1 Runegrafts'); return true; }
                 if (key === 'poe1-scarabs') { await showPoe1Scarabs(); setHeader('PoE1 Scarabs'); recordHeaderAction('PoE1 Scarabs'); return true; }
                 if (key === 'poe1-currency') { await showPoe1Currency(); setHeader('PoE1 Currency'); recordHeaderAction('PoE1 Currency'); return true; }
                 if (key === 'poe1-essences') { await showPoe1Essences(); setHeader('PoE1 Essences'); recordHeaderAction('PoE1 Essences'); return true; }
@@ -1130,6 +1143,14 @@
                     if (window.OverlayPoe1DivinationCards?.show) { try { await window.OverlayPoe1DivinationCards.show(); } catch {} }
                     setHeader('Divination Cards');
                     recordHeaderAction('Divination Cards');
+                    return true;
+                }
+                if (key === 'poe1-asc-notables') {
+                    setActiveTab('characterTab');
+                    setView('character');
+                    if (window.OverlayPoe1AscendancyNotables?.show) { try { await window.OverlayPoe1AscendancyNotables.show(); } catch {} }
+                    setHeader('Ascendancy Notables');
+                    recordHeaderAction('Ascendancy Notables');
                     return true;
                 }
                 if (key === 'poe1-tattoos') {
@@ -1239,11 +1260,11 @@
         }
 
         if (featureAvailability.crafting) {
-            const craftingActions = ['liquid-emotions', 'annoints', 'essences', 'omens', 'currency', 'catalysts', 'socketables', 'poe1-scarabs', 'poe1-currency', 'poe1-essences', 'poe1-fossils', 'poe1-embers'];
+            const craftingActions = ['liquid-emotions', 'annoints', 'essences', 'omens', 'currency', 'catalysts', 'socketables', 'poe1-runegrafts', 'poe1-scarabs', 'poe1-currency', 'poe1-essences', 'poe1-fossils', 'poe1-embers'];
             for (const key of craftingActions) {
                 if (await runStoredAction(`crafting:${key}`)) return true;
             }
-            const characterActions = ['gems', 'keystones', 'asc-passives', 'atlas-nodes', 'quest-passives', 'glossar', 'poe1-divination-cards', 'poe1-tattoos', 'poe1-gems-list'];
+            const characterActions = ['gems', 'keystones', 'asc-passives', 'atlas-nodes', 'quest-passives', 'glossar', 'poe1-divination-cards', 'poe1-asc-notables', 'poe1-tattoos', 'poe1-gems-list'];
             for (const key of characterActions) {
                 if (await runStoredAction(`character:${key}`)) return true;
             }
@@ -1323,6 +1344,7 @@
     async function showEssences(){ if (window.OverlayEssences && window.OverlayEssences.show) { try { return await window.OverlayEssences.show(); } catch {} } }
     function renderEssences(list){ if (window.OverlayEssences && window.OverlayEssences.render) { try { return window.OverlayEssences.render(list); } catch {} } }
     // PoE1 Crafting
+    async function showPoe1Runegrafts(){ if (window.OverlayPoe1Runegrafts && window.OverlayPoe1Runegrafts.show) { try { return await window.OverlayPoe1Runegrafts.show(); } catch {} } }
     async function showPoe1Scarabs(){ if (window.OverlayPoe1Scarabs && window.OverlayPoe1Scarabs.show) { try { return await window.OverlayPoe1Scarabs.show(); } catch {} } }
     function renderPoe1Scarabs(list){ if (window.OverlayPoe1Scarabs && window.OverlayPoe1Scarabs.render) { try { return window.OverlayPoe1Scarabs.render(list); } catch {} } }
     async function showPoe1Currency(){ if (window.OverlayPoe1Currency && window.OverlayPoe1Currency.show) { try { return await window.OverlayPoe1Currency.show(); } catch {} } }
@@ -2311,6 +2333,7 @@
                                 
                                 // PoE1 crafting items
                                 if (action === 'poe1-scarabs' && subs.scarabs) shouldShow = true;
+                                if (action === 'poe1-runegrafts' && subs.runegrafts) shouldShow = true;
                                 if (action === 'poe1-currency' && subs.currency) shouldShow = true;
                                 if (action === 'poe1-essences' && subs.essences) shouldShow = true;
                                 if (action === 'poe1-fossils' && subs.fossils) shouldShow = true;
@@ -2384,6 +2407,7 @@
 
                                 if (poe1CharacterEnabled && isPoe1Mode) {
                                     if (action === 'poe1-divination-cards' && poe1Subs.divinationCards) shouldShow = true;
+                                    if (action === 'poe1-asc-notables' && poe1Subs.ascendancyNotables) shouldShow = true;
                                     if (action === 'poe1-tattoos' && poe1Subs.tattoos) shouldShow = true;
                                     if (action === 'poe1-gems-list' && poe1Subs.gems) shouldShow = true;
                                 }
@@ -2907,9 +2931,10 @@
                         const isPoe1Mode = overlayVersionMode === 'poe1';
                         const isPoe1Scarabs = isPoe1Mode && (normalizedCategory === 'scarabs' || /scarab/i.test(blob));
                         const isPoe1Fossils = isPoe1Mode && (normalizedCategory === 'fossils' || /fossil/i.test(blob));
+                        const isPoe1Runegrafts = isPoe1Mode && (normalizedCategory === 'runegrafts' || /runegraft/i.test(blob));
                         const isPoe1Allflames = isPoe1Mode && (normalizedCategory === 'embers' || /allflame|ember/i.test(blob));
                         const isPoe1Essence = isPoe1Mode && isEssence;
-                        const isPoe1Currency = isPoe1Mode && !isPoe1Scarabs && !isPoe1Fossils && !isPoe1Allflames && !isPoe1Essence && (
+                        const isPoe1Currency = isPoe1Mode && !isPoe1Scarabs && !isPoe1Fossils && !isPoe1Runegrafts && !isPoe1Allflames && !isPoe1Essence && (
                             normalizedCategory === 'currency' ||
                             ((itemClass.includes('stackable currency') || itemClass.includes('currency')) && /orb|scroll|bauble|whetstone|chisel|fusing|jeweller|chromatic|binding|annul|mirror|regret|exalted|chaos|splinter|fragment|sextant|compass|coin|prism|catalyst|harvest|fossil|resonator|blessing|prophecy|favour|perandus|remnant|ancient/i.test(blob))
                         );
@@ -3048,6 +3073,15 @@
                             retryShow(
                                 () => !!(window.OverlayPoe1Fossils && typeof window.OverlayPoe1Fossils.show === 'function'),
                                 async () => { try { await showPoe1Fossils(); } catch {} }
+                            );
+                            return;
+                        }
+
+                        if (isPoe1Runegrafts) {
+                            prepareCrafting('PoE1 Runegrafts');
+                            retryShow(
+                                () => !!(window.OverlayPoe1Runegrafts && typeof window.OverlayPoe1Runegrafts.show === 'function'),
+                                async () => { try { await showPoe1Runegrafts(); } catch {} }
                             );
                             return;
                         }
@@ -3769,6 +3803,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (window.OverlayPoe1DivinationCards?.show) { try { await window.OverlayPoe1DivinationCards.show(); } catch {} }
                     setHeader('Divination Cards');
                     recordHeaderAction('Divination Cards');
+                } else if (action === 'poe1-asc-notables') {
+                    if (window.OverlayPoe1AscendancyNotables?.show) { try { await window.OverlayPoe1AscendancyNotables.show(); } catch {} }
+                    setHeader('Ascendancy Notables');
+                    recordHeaderAction('Ascendancy Notables');
                 } else if (action === 'poe1-tattoos') {
                     if (window.OverlayPoe1Tattoos?.show) { try { await window.OverlayPoe1Tattoos.show(); } catch {} }
                     setHeader('Tattoos');

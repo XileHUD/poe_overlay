@@ -210,9 +210,11 @@ export function registerDataIpc(deps: DataIpcDeps) {
   let poe1FossilsCache: any | undefined;
   let poe1CurrencyCache: any | undefined;
   let poe1ScarabsCache: any | undefined;
+  let poe1RunegraftsCache: any | undefined;
   let poe1DivinationCardsCache: any | undefined;
   let poe1TattoosCache: any | undefined;
   let poe1GemsCache: any | undefined;
+  let poe1AscendancyNotablesCache: any | undefined;
 
   const classifyReplicaCategory = (baseType: string): 'WeaponUnique' | 'ArmourUnique' | 'OtherUnique' => {
     const lower = (baseType || '').toLowerCase();
@@ -346,6 +348,22 @@ export function registerDataIpc(deps: DataIpcDeps) {
     return poe1ScarabsCache;
   };
 
+  const loadPoe1Runegrafts = () => {
+    try {
+      const dataDir = deps.getDataDir();
+      const runegraftsPath = path.join(dataDir, 'items', 'runegrafts', 'Runegrafts.json');
+      if (fs.existsSync(runegraftsPath)) {
+        const raw = fs.readFileSync(runegraftsPath, 'utf-8');
+        poe1RunegraftsCache = JSON.parse(raw);
+      } else {
+        poe1RunegraftsCache = { error: 'not_found', filePath: runegraftsPath };
+      }
+    } catch (e: any) {
+      poe1RunegraftsCache = { error: e?.message || 'unknown_error' };
+    }
+    return poe1RunegraftsCache;
+  };
+
   const loadPoe1DivinationCards = () => {
     try {
       const dataDir = deps.getDataDir();
@@ -396,6 +414,53 @@ export function registerDataIpc(deps: DataIpcDeps) {
     return poe1GemsCache;
   };
 
+  const loadPoe1AscendancyNotables = () => {
+    try {
+      const dataDir = deps.getDataDir();
+      const notablesDir = path.join(dataDir, 'ascendancy-notables');
+      const bundle = {
+        slug: 'Ascendancy_Notables',
+        notables: [] as any[],
+        classes: [] as string[],
+        ascendancies: [] as string[]
+      };
+
+      if (fs.existsSync(notablesDir)) {
+        const files = fs.readdirSync(notablesDir).filter((file) => file.toLowerCase().endsWith('.json'));
+        const classSet = new Set<string>();
+        const ascendancySet = new Set<string>();
+
+        for (const file of files) {
+          try {
+            const raw = fs.readFileSync(path.join(notablesDir, file), 'utf-8');
+            const parsed = JSON.parse(raw);
+            const character = typeof parsed?.character === 'string' ? parsed.character : '';
+            if (Array.isArray(parsed?.notables)) {
+              for (const notable of parsed.notables) {
+                const clone = { ...notable };
+                if (character && !clone.character) clone.character = character;
+                if (clone.character) classSet.add(String(clone.character));
+                if (clone.ascendancy) ascendancySet.add(String(clone.ascendancy));
+                bundle.notables.push(clone);
+              }
+            }
+          } catch (innerError: any) {
+            console.warn('[DataHandlers] Failed to parse PoE1 Ascendancy Notables file:', file, innerError);
+          }
+        }
+
+        bundle.classes = Array.from(classSet).filter(Boolean).sort((a, b) => a.localeCompare(b));
+        bundle.ascendancies = Array.from(ascendancySet).filter(Boolean).sort((a, b) => a.localeCompare(b));
+        poe1AscendancyNotablesCache = bundle;
+      } else {
+        poe1AscendancyNotablesCache = { error: 'not_found', filePath: notablesDir };
+      }
+    } catch (e: any) {
+      poe1AscendancyNotablesCache = { error: e?.message || 'unknown_error' };
+    }
+    return poe1AscendancyNotablesCache;
+  };
+
   const loadPoe1Bases = () => {
     try {
       const dataDir = deps.getDataDir();
@@ -437,9 +502,11 @@ export function registerDataIpc(deps: DataIpcDeps) {
   cacheInvalidators.set('poe1:fossils', () => { poe1FossilsCache = undefined; });
   cacheInvalidators.set('poe1:currency', () => { poe1CurrencyCache = undefined; });
   cacheInvalidators.set('poe1:scarabs', () => { poe1ScarabsCache = undefined; });
+  cacheInvalidators.set('poe1:runegrafts', () => { poe1RunegraftsCache = undefined; });
   cacheInvalidators.set('poe1:divinationCards', () => { poe1DivinationCardsCache = undefined; });
   cacheInvalidators.set('poe1:tattoos', () => { poe1TattoosCache = undefined; });
   cacheInvalidators.set('poe1:gems', () => { poe1GemsCache = undefined; });
+  cacheInvalidators.set('poe1:ascendancyNotables', () => { poe1AscendancyNotablesCache = undefined; });
 
   if (overlayVersion === 'poe1') {
     queuePreload('poe1:uniques', async () => { poe1UniquesCache = undefined; loadPoe1Uniques(); });
@@ -449,9 +516,11 @@ export function registerDataIpc(deps: DataIpcDeps) {
     queuePreload('poe1:fossils', async () => { poe1FossilsCache = undefined; loadPoe1Fossils(); });
     queuePreload('poe1:currency', async () => { poe1CurrencyCache = undefined; loadPoe1Currency(); });
     queuePreload('poe1:scarabs', async () => { poe1ScarabsCache = undefined; loadPoe1Scarabs(); });
+    queuePreload('poe1:runegrafts', async () => { poe1RunegraftsCache = undefined; loadPoe1Runegrafts(); });
     queuePreload('poe1:divinationCards', async () => { poe1DivinationCardsCache = undefined; loadPoe1DivinationCards(); });
     queuePreload('poe1:tattoos', async () => { poe1TattoosCache = undefined; loadPoe1Tattoos(); });
     queuePreload('poe1:gems', async () => { poe1GemsCache = undefined; loadPoe1Gems(); });
+    queuePreload('poe1:ascendancyNotables', async () => { poe1AscendancyNotablesCache = undefined; loadPoe1AscendancyNotables(); });
   }
 
   try { ipcMain.removeHandler('get-poe1-uniques'); } catch {}
@@ -538,6 +607,18 @@ export function registerDataIpc(deps: DataIpcDeps) {
     }
   });
 
+  try { ipcMain.removeHandler('get-poe1-runegrafts'); } catch {}
+  ipcMain.handle('get-poe1-runegrafts', async () => {
+    try {
+      if (typeof poe1RunegraftsCache === 'undefined') {
+        loadPoe1Runegrafts();
+      }
+      return poe1RunegraftsCache;
+    } catch (e: any) {
+      return { error: e?.message || 'unknown_error' };
+    }
+  });
+
   try { ipcMain.removeHandler('get-poe1-divination-cards'); } catch {}
   ipcMain.handle('get-poe1-divination-cards', async () => {
     try {
@@ -569,6 +650,18 @@ export function registerDataIpc(deps: DataIpcDeps) {
         loadPoe1Gems();
       }
       return poe1GemsCache;
+    } catch (e: any) {
+      return { error: e?.message || 'unknown_error' };
+    }
+  });
+
+  try { ipcMain.removeHandler('get-poe1-ascendancy-notables'); } catch {}
+  ipcMain.handle('get-poe1-ascendancy-notables', async () => {
+    try {
+      if (typeof poe1AscendancyNotablesCache === 'undefined') {
+        loadPoe1AscendancyNotables();
+      }
+      return poe1AscendancyNotablesCache;
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }

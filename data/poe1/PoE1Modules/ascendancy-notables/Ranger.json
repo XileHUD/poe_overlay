@@ -1,0 +1,309 @@
+{
+  "slug": "Ascendancy_Notables_Ranger",
+  "character": "Ranger",
+  "notables": [
+    {
+      "name": "Oath of Spring",
+      "slug": "Oath_of_Spring",
+      "ascendancy": "Warden",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Maximum Effect of Shock is 2% increased Damage taken",
+        "You can apply up to 50 Shocks to each Enemy"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/oath_of_spring.webp"
+    },
+    {
+      "name": "Oath of Winter",
+      "slug": "Oath_of_Winter",
+      "ascendancy": "Warden",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Enemies you Freeze remain Frozen for at least 2 seconds",
+        "Hits that fail to Freeze due to insufficient Freeze Duration inflict Hoarfrost",
+        "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+        "(Freezes that would have a duration of 0.3 seconds or below are not inflicted)",
+        "(Hoarfrost lasts 10 seconds and can be inflicted multiple times, each refreshing the duration of existing Hoarfrost on the target. Each Hoarfost increases Freeze Duration on the target by 20%. All Hoarfrost is removed if the target is Frozen)"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/oath_of_winter.webp"
+    },
+    {
+      "name": "Mother's Teachings",
+      "slug": "Mothers_Teachings",
+      "ascendancy": "Warden",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Grants Level 20 Barkskin Skill",
+        "(Adopt the power of the forest, gradually covering your body in bark. Getting hit by enemy attacks causes bark to be removed. You take reduced damage from physical attack hits the more bark builds up, but higher chance to evade when less covered in bark)"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/mothers_teachings.webp"
+    },
+    {
+      "name": "Lesson of the Seasons",
+      "slug": "Lesson_of_the_Seasons",
+      "ascendancy": "Warden",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "-15 Fire, Cold and Lightning Damage taken from Spell Hits per Bark",
+        "Prevent +2% of Suppressed Spell Damage per Bark below maximum",
+        "Lose 1 Bark when Hit by Enemy Spell Damage"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/lesson_of_the_seasons.webp"
+    },
+    {
+      "name": "Oath of Summer",
+      "slug": "Oath_of_Summer",
+      "ascendancy": "Warden",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Hits that would Ignite instead Scorch",
+        "You can inflict an additional Scorch on each Enemy",
+        "(Scorched Enemies have their Elemental Resistances lowered by up to 30%, based on the Fire Damage of the Hit, for 4 seconds)"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/oath_of_summer.webp"
+    },
+    {
+      "name": "Avatar of the Wilds",
+      "slug": "Avatar_of_the_Wilds",
+      "ascendancy": "Warden",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Grants Level 20 Unbound Avatar Skill",
+        "Gain 1 Unbound Fury when you inflict an Elemental Ailment with a Hit on an Enemy, no more than once every 0.2 seconds for each type of AilmentCannot gain Unbound Fury while Unbound",
+        "Your Hits always inflict Freeze, Shock and Ignite while Unbound",
+        "80% more Elemental Damage while Unbound",
+        "(Unbound Avatar requires 100 Unbound Fury to use and causes you to become Unbound for 10 seconds, which has no effects beyond those listed here)"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/avatar_of_the_wilds.webp"
+    },
+    {
+      "name": "Experienced Herbalist",
+      "slug": "Experienced_Herbalist",
+      "ascendancy": "Warden",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "You can have an additional Tincture active"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/experienced_herbalist.webp"
+    },
+    {
+      "name": "Enduring Suffusion",
+      "slug": "Enduring_Suffusion",
+      "ascendancy": "Warden",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Tincture Effects Linger on you for 0.5 seconds per Mana Burn on you when the Tincture was deactivated, up to a maximum of 6 seconds",
+        "Tinctures applied to you have 30% less Mana Burn rate",
+        "(Tinctures periodically inflict Mana Burn on you while active)"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/enduring_suffusion.webp"
+    },
+    {
+      "name": "Focal Point",
+      "slug": "Focal_Point",
+      "ascendancy": "Deadeye",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "75% increased Effect of your Marks",
+        "25% less Damage taken from other Enemies near your Marked Enemy",
+        "Your Mark Transfers to another Enemy when Marked Enemy dies"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/focal_point.webp"
+    },
+    {
+      "name": "Ricochet",
+      "slug": "Ricochet",
+      "ascendancy": "Deadeye",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Skills Chain +1 times",
+        "Projectiles have 30% chance to be able to Chain when colliding with terrain"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/ricochet.webp"
+    },
+    {
+      "name": "Endless Munitions",
+      "slug": "Endless_Munitions",
+      "ascendancy": "Deadeye",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Skills fire 2 additional Projectiles"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/endless_munitions.webp"
+    },
+    {
+      "name": "Far Shot",
+      "slug": "Far_Shot",
+      "ascendancy": "Deadeye",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Projectiles gain Damage as they travel farther, dealing upto 30% more Damage with Hits and Ailments",
+        "Projectile Barrages have no spread"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/far_shot.webp"
+    },
+    {
+      "name": "Avidity",
+      "slug": "Avidity",
+      "ascendancy": "Deadeye",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "5% more Accuracy Rating per Frenzy Charge",
+        "Gain a Frenzy Charge each second while Moving",
+        "+1 to Maximum Frenzy Charges"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/avidity.webp"
+    },
+    {
+      "name": "Gathering Winds",
+      "slug": "Gathering_Winds",
+      "ascendancy": "Deadeye",
+      "character": "Ranger",
+      "properties": {
+        "Radius": "60"
+      },
+      "mods": [
+        "Gain 1 Gale Force when you use a Skill10% increased Effect of Tailwind on you per Gale Force",
+        "(Each instance of Gale Force lasts 4 seconds. Maximum 10 Gale Force)",
+        "You and nearby Allies have Tailwind",
+        "(Tailwind increases Action Speed by 8%)"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/gathering_winds.webp"
+    },
+    {
+      "name": "Occupying Force",
+      "slug": "Occupying_Force",
+      "ascendancy": "Deadeye",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Mirage Archers are not attached to you",
+        "+2 to maximum number of Summoned Mirage Archers",
+        "Cannot Summon Mirage Archers while near your Mirage Archers"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/occupying_force.webp"
+    },
+    {
+      "name": "Wind Ward",
+      "slug": "Wind_Ward",
+      "ascendancy": "Deadeye",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "4% less Damage taken per Gale Force",
+        "Lose all Gale Force when Hit"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/wind_ward.webp"
+    },
+    {
+      "name": "Nature's Adrenaline",
+      "slug": "Natures_Adrenaline",
+      "ascendancy": "Pathfinder",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Flasks gain 3 Charges every 3 seconds"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/natures_adrenaline.webp"
+    },
+    {
+      "name": "Master Surgeon",
+      "slug": "Master_Surgeon",
+      "ascendancy": "Pathfinder",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Life Flask Effects are not removed when Unreserved Life is FilledLife Flask Effects do not Queue",
+        "50% less Life Recovery from Flasks"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/master_surgeon.webp"
+    },
+    {
+      "name": "Nature's Boon",
+      "slug": "Natures_Boon",
+      "ascendancy": "Pathfinder",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Magic Utility Flasks applied to you have 30% increased Effect"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/natures_boon.webp"
+    },
+    {
+      "name": "Master Alchemist",
+      "slug": "Master_Alchemist",
+      "ascendancy": "Pathfinder",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Removes Elemental Ailments when you use a Flask",
+        "50% chance for Flasks you use to not consume Charges",
+        "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/master_alchemist.webp"
+    },
+    {
+      "name": "Master Distiller",
+      "slug": "Master_Distiller",
+      "ascendancy": "Pathfinder",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Grant bonuses to Non-Channelling Skills you use by consuming 3 Charges from a Flask ofeach of the following types, if possible:",
+        "If Diamond Flask Charges are consumed, 150% increased Critical Strike Chance",
+        "If Bismuth Flask Charges are consumed, Penetrate 20% Elemental Resistances",
+        "If Amethyst Flask Charges are consumed, 25% of Physical Damage as Extra Chaos Damage"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/master_distiller.webp"
+    },
+    {
+      "name": "Nature's Reprisal",
+      "slug": "Natures_Reprisal",
+      "ascendancy": "Pathfinder",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "25% chance to inflict Withered for 2 seconds on Hit",
+        "50% increased Effect of Withered",
+        "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/natures_reprisal.webp"
+    },
+    {
+      "name": "Master Toxicist",
+      "slug": "Master_Toxicist",
+      "ascendancy": "Pathfinder",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "When you kill a Poisoned Enemy during any Flask Effect, nearby Enemies are Poisoned",
+        "Poisons you inflict during any Flask Effect have 20% chance to deal 100% more Damage"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/master_toxicist.webp"
+    },
+    {
+      "name": "Seasoned Hunter",
+      "slug": "Seasoned_Hunter",
+      "ascendancy": "Warden",
+      "character": "Ranger",
+      "properties": {},
+      "mods": [
+        "Tincture Effects also apply to Ranged Weapons"
+      ],
+      "imageLocal": "ascendancy-notables/ranger/seasoned_hunter.webp"
+    }
+  ]
+}

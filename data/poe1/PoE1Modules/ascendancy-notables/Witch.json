@@ -1,0 +1,324 @@
+{
+  "slug": "Ascendancy_Notables_Witch",
+  "character": "Witch",
+  "notables": [
+    {
+      "name": "Profane Bloom",
+      "slug": "Profane_Bloom",
+      "ascendancy": "Occultist",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "Cursed Enemies you or your Minions Kill have a 50% chance to Explode, dealing a quarter of their maximum Life as Chaos Damage"
+      ],
+      "imageLocal": "ascendancy-notables/witch/profane_bloom.webp"
+    },
+    {
+      "name": "Unholy Authority",
+      "slug": "Unholy_Authority",
+      "ascendancy": "Occultist",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "You can apply an additional Curse",
+        "Your Hexes can affect Hexproof Enemies"
+      ],
+      "imageLocal": "ascendancy-notables/witch/unholy_authority.webp"
+    },
+    {
+      "name": "Vile Bastion",
+      "slug": "Vile_Bastion",
+      "ascendancy": "Occultist",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "Regenerate 100 Energy Shield per second",
+        "Cannot Be Stunned while you have Energy Shield",
+        "Maximum Energy Shield is increased by Chance to Block Spell Damage"
+      ],
+      "imageLocal": "ascendancy-notables/witch/vile_bastion.webp"
+    },
+    {
+      "name": "Void Beacon",
+      "slug": "Void_Beacon",
+      "ascendancy": "Occultist",
+      "character": "Witch",
+      "properties": {
+        "Radius": "60"
+      },
+      "mods": [
+        "Nearby Enemies have -20% to Cold Resistance",
+        "Nearby Enemies have -20% to Chaos Resistance",
+        "Nearby Enemies have 100% reduced Life Regeneration rate"
+      ],
+      "imageLocal": "ascendancy-notables/witch/void_beacon.webp"
+    },
+    {
+      "name": "Forbidden Power",
+      "slug": "Forbidden_Power",
+      "ascendancy": "Occultist",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "6% increased Area of Effect per Power Charge",
+        "6% increased Damage per Power Charge",
+        "Gain a Power Charge after Spending a total of 200 Mana",
+        "+1 to Maximum Power Charges",
+        "occultist_power_charge_on_mana_spent"
+      ],
+      "imageLocal": "ascendancy-notables/witch/forbidden_power.webp"
+    },
+    {
+      "name": "Withering Presence",
+      "slug": "Withering_Presence",
+      "ascendancy": "Occultist",
+      "character": "Witch",
+      "properties": {
+        "Radius": "60"
+      },
+      "mods": [
+        "+60% to Chaos Resistance",
+        "15% more Chaos Damage",
+        "Every second, inflict Withered on nearby Enemies for 15 seconds",
+        "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)",
+        "Nearby Hindered Enemies deal 15% reduced Damage over Time",
+        "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)"
+      ],
+      "imageLocal": "ascendancy-notables/witch/withering_presence.webp"
+    },
+    {
+      "name": "Frigid Wake",
+      "slug": "Frigid_Wake",
+      "ascendancy": "Occultist",
+      "character": "Witch",
+      "properties": {
+        "Radius": "60"
+      },
+      "mods": [
+        "Cannot be Chilled",
+        "Cannot be Frozen",
+        "15% more Cold Damage",
+        "Every 4 seconds, 50% chance to Freeze nearby Non-Frozen Enemies for 0.4 seconds",
+        "Nearby Chilled Enemies deal 10% reduced Damage with Hits",
+        "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)"
+      ],
+      "imageLocal": "ascendancy-notables/witch/frigid_wake.webp"
+    },
+    {
+      "name": "Liege of the Primordial",
+      "slug": "Liege_of_the_Primordial",
+      "ascendancy": "Elementalist",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "Summoned Golems are Immune to Elemental Damage",
+        "100% increased Effect of Buffs granted by your Golems",
+        "Summoned Golems are Resummoned 4 seconds after being Killed",
+        "+2 to maximum number of Summoned Golems"
+      ],
+      "imageLocal": "ascendancy-notables/witch/liege_of_the_primordial.webp"
+    },
+    {
+      "name": "Mastermind of Discord",
+      "slug": "Mastermind_of_Discord",
+      "ascendancy": "Elementalist",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "Exposure you inflict applies an extra -25% to the affected Resistance",
+        "Regenerate 1% of Mana per second if you've inflicted Exposure Recently",
+        "(Recently refers to the past 4 seconds)"
+      ],
+      "imageLocal": "ascendancy-notables/witch/mastermind_of_discord.webp"
+    },
+    {
+      "name": "Heart of Destruction",
+      "slug": "Heart_of_Destruction",
+      "ascendancy": "Elementalist",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "Gain Convergence when you Hit a Unique Enemy, no more than once every 8 seconds",
+        "60% increased Area of Effect while you don't have Convergence",
+        "(Convergence grants 30% more Elemental Damage and lasts 4 seconds)"
+      ],
+      "imageLocal": "ascendancy-notables/witch/heart_of_destruction.webp"
+    },
+    {
+      "name": "Bastion of Elements",
+      "slug": "Bastion_of_Elements",
+      "ascendancy": "Elementalist",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "Triggers Level 20 Primal Aegis when AllocatedPrimal Aegis can take 75 Elemental Damage per Allocated Notable Passive Skill",
+        "Other Aegis Skills are Disabled",
+        "Cannot take Reflected Elemental Damage",
+        "(Primal Aegis calls forth a protective aegis which takes elemental damage from hits for you until depleted. The aegis will be restored to its full value after a short delay if you stop taking elemental damage from hits, or if depleted)"
+      ],
+      "imageLocal": "ascendancy-notables/witch/bastion_of_elements.webp"
+    },
+    {
+      "name": "Bringer of Ruin",
+      "slug": "Bringer_of_Ruin",
+      "ascendancy": "Elementalist",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "66% increased Effect of Herald Buffs on you",
+        "66% increased Mana Reservation Efficiency of Herald Skills"
+      ],
+      "imageLocal": "ascendancy-notables/witch/bringer_of_ruin.webp"
+    },
+    {
+      "name": "Shaper of Flames",
+      "slug": "Shaper_of_Flames",
+      "ascendancy": "Elementalist",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "Hits always Ignite",
+        "All Damage can Ignite",
+        "Enemies Ignited by you have 40% of Physical Damage they deal converted to Fire",
+        "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
+      ],
+      "imageLocal": "ascendancy-notables/witch/shaper_of_flames.webp"
+    },
+    {
+      "name": "Shaper of Storms",
+      "slug": "Shaper_of_Storms",
+      "ascendancy": "Elementalist",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "Hits always Shock",
+        "Shocks from your Hits always increase Damage taken by at least 25%",
+        "All Damage can Shock",
+        "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)"
+      ],
+      "imageLocal": "ascendancy-notables/witch/shaper_of_storms.webp"
+    },
+    {
+      "name": "Shaper of Winter",
+      "slug": "Shaper_of_Winter",
+      "ascendancy": "Elementalist",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "All Damage with Hits can Chill",
+        "Your Chills can reduce Action Speed by up to a maximum of 40%",
+        "Enemies Chilled by your Hits lessen their Damage dealt by half of Chill Effect",
+        "(Chill reduces Enemy Action Speed by up to 30%, depending on the amount of Cold Damage in the hit, for 2 seconds)"
+      ],
+      "imageLocal": "ascendancy-notables/witch/shaper_of_winter.webp"
+    },
+    {
+      "name": "Mindless Aggression",
+      "slug": "Mindless_Aggression",
+      "ascendancy": "Necromancer",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "Minions have 20% more Maximum Life",
+        "Minions deal 10% more Damage"
+      ],
+      "imageLocal": "ascendancy-notables/witch/mindless_aggression.webp"
+    },
+    {
+      "name": "Unnatural Strength",
+      "slug": "Unnatural_Strength",
+      "ascendancy": "Necromancer",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "Minions have Unholy Might",
+        "(Unholy Might grants 100% of Physical Damage converted to Chaos Damage and 25% chance to apply Withered on Hit)"
+      ],
+      "imageLocal": "ascendancy-notables/witch/unnatural_strength.webp"
+    },
+    {
+      "name": "Bone Barrier",
+      "slug": "Bone_Barrier",
+      "ascendancy": "Necromancer",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "1% additional Physical Damage Reduction per Minion, up to 10%",
+        "1% of Damage Dealt by your Minions is Leeched to you as Life",
+        "Minions gain 40% of Maximum Life as Extra Maximum Energy Shield"
+      ],
+      "imageLocal": "ascendancy-notables/witch/bone_barrier.webp"
+    },
+    {
+      "name": "Mistress of Sacrifice",
+      "slug": "Mistress_of_Sacrifice",
+      "ascendancy": "Necromancer",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "Your Offering Skills also affect you",
+        "Your Offerings have 50% reduced Effect on you",
+        "40% increased Skill Effect Duration"
+      ],
+      "imageLocal": "ascendancy-notables/witch/mistress_of_sacrifice.webp"
+    },
+    {
+      "name": "Essence Glutton",
+      "slug": "Essence_Glutton",
+      "ascendancy": "Necromancer",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "For each nearby corpse, you and nearby Allies Regenerate 0.2% of Energy Shield per second, up to 2.0% per second",
+        "For each nearby corpse, you and nearby Allies Regenerate 5 Manaper second, up to 50 per second",
+        "Regenerate 8% of Energy Shield over 2 seconds when you Consume a corpse",
+        "Regenerate 4% of Mana over 2 seconds when you Consume a corpse"
+      ],
+      "imageLocal": "ascendancy-notables/witch/essence_glutton.webp"
+    },
+    {
+      "name": "Commander of Darkness",
+      "slug": "Commander_of_Darkness",
+      "ascendancy": "Necromancer",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "Auras from your Skills grant 3% increased Attack and CastSpeed to you and Allies",
+        "You and nearby Allies deal 30% increased Damage",
+        "You and nearby Allies have +30% to Elemental Resistances",
+        "(Auras can only grant bonuses to things they affect)"
+      ],
+      "imageLocal": "ascendancy-notables/witch/commander_of_darkness.webp"
+    },
+    {
+      "name": "Plaguebringer",
+      "slug": "Plaguebringer",
+      "ascendancy": "Necromancer",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "If you've Consumed a corpse Recently, you and your Minions have 30% increased Area of Effect",
+        "With at least one nearby corpse, you and nearby Allies deal 10% more Damage",
+        "With at least one nearby corpse, nearby Enemies deal 10% reduced Damage",
+        "(Recently refers to the past 4 seconds)"
+      ],
+      "imageLocal": "ascendancy-notables/witch/plaguebringer.webp"
+    },
+    {
+      "name": "Corpse Pact",
+      "slug": "Corpse_Pact",
+      "ascendancy": "Necromancer",
+      "character": "Witch",
+      "properties": {},
+      "mods": [
+        "2% increased Attack and Cast Speed for each corpse Consumed Recently, up to a maximum of 200%",
+        "Enemies near corpses you Spawned Recently are Chilled and Shocked",
+        "(Recently refers to the past 4 seconds)",
+        "(Killing an Enemy is not Spawning a corpse)",
+        "(Shock increases Damage taken by 15%)",
+        "(Chill reduces Enemy Action Speed by 10%)"
+      ],
+      "imageLocal": "ascendancy-notables/witch/corpse_pact.webp"
+    }
+  ]
+}
