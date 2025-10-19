@@ -163,10 +163,10 @@ export function render(list: HorticraftingRecipe[]): void {
   const listWrap = panel.querySelector('#horticraftingList') as HTMLElement | null;
 
   function formatTagLabel(tag: string): string {
-    if (tag.startsWith('Tag: ')) return tag.replace('Tag: ', 'Tag · ');
-    if (tag.startsWith('Action: ')) return tag.replace('Action: ', 'Action · ');
-    if (tag.startsWith('Lifeforce: ')) return tag.replace('Lifeforce: ', 'Lifeforce · ');
-    return tag;
+    return tag
+      .replace(/^Tag:\s*/i, '')
+      .replace(/^Action:\s*/i, '')
+      .replace(/^Lifeforce:\s*/i, '');
   }
 
   function renderTagFilters(): void {

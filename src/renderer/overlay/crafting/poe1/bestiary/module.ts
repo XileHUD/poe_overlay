@@ -95,9 +95,6 @@ function chipChrome(tag: string, active: boolean): ChipChrome {
 function deriveFilterTags(recipe: BestiaryRecipe): string[] {
   const tags = new Set<string>();
   if (recipe.category) tags.add(`Category: ${recipe.category}`);
-  (recipe.genericSlots || []).forEach(slot => {
-    if (slot?.requirement) tags.add(`Requirement: ${slot.requirement}`);
-  });
   if (recipe.notes && recipe.notes.length) tags.add('Has Notes');
   return Array.from(tags);
 }
@@ -162,9 +159,7 @@ export function render(list: BestiaryRecipe[]): void {
   const listWrap = panel.querySelector('#bestiaryList') as HTMLElement | null;
 
   function formatTagLabel(tag: string): string {
-    if (tag.startsWith('Category: ')) return tag.replace('Category: ', 'Category · ');
-    if (tag.startsWith('Requirement: ')) return tag.replace('Requirement: ', 'Requirement · ');
-    return tag;
+    return tag.replace(/^Category:\s*/i, '');
   }
 
   function renderTagFilters(): void {
@@ -251,8 +246,8 @@ export function render(list: BestiaryRecipe[]): void {
       const row = document.createElement('div');
       row.style.cssText = 'display:grid; grid-template-columns:minmax(280px,2.1fr) minmax(200px,1.5fr) minmax(200px,1.2fr); gap:12px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:6px; padding:10px;';
 
-      const categoryBadge = recipe.category ? `<span style="display:inline-flex; align-items:center; padding:2px 8px; font-size:11px; border-radius:4px; background:var(--accent-purple); color:#fff;">${recipe.category}</span>` : '';
-      const resultLine = recipe.result && recipe.result !== recipe.title ? `<div style='font-size:11px; color:var(--text-muted);'>Result: ${highlight(recipe.result)}</div>` : '';
+  const categoryBadge = recipe.category ? `<span style="display:inline-flex; align-items:center; padding:2px 8px; font-size:11px; border-radius:4px; background:var(--accent-purple); color:#fff;">${recipe.category}</span>` : '';
+  const primaryLine = highlight(recipe.result || recipe.title || 'Unknown Bestiary Recipe');
       const notesHtml = (recipe.notes || []).map(note => `<div style='font-size:11px; color:var(--text-muted);'>• ${highlight(note)}</div>`).join('');
 
       const beastsHtml = (recipe.beasts || []).map((beast) => {
@@ -276,8 +271,7 @@ export function render(list: BestiaryRecipe[]): void {
       row.innerHTML = `
         <div style='display:flex; flex-direction:column; gap:6px;'>
           ${categoryBadge}
-          <div style='font-weight:600; font-size:13px;'>${highlight(recipe.title || 'Unknown Bestiary Recipe')}</div>
-          ${resultLine}
+          <div style='font-weight:600; font-size:13px;'>${primaryLine}</div>
           ${notesHtml ? `<div style='margin-top:4px; display:flex; flex-direction:column; gap:2px;'>${notesHtml}</div>` : ''}
         </div>
         <div style='display:flex; flex-direction:column; gap:6px;'>${beastsHtml || `<div style='color:var(--text-muted); font-size:11px;'>No beasts listed.</div>`}</div>

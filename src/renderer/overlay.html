@@ -1089,14 +1089,14 @@
                 if (key === 'catalysts') { await showCatalysts(); setHeader('Catalysts'); recordHeaderAction('Catalysts'); return true; }
                 if (key === 'socketables') { await showSocketables(); setHeader('Socketables'); recordHeaderAction('Socketables'); return true; }
                 // PoE1 Crafting actions
-                if (key === 'poe1-runegrafts') { await showPoe1Runegrafts(); setHeader('PoE1 Runegrafts'); recordHeaderAction('PoE1 Runegrafts'); return true; }
-                if (key === 'poe1-horticrafting') { await showPoe1Horticrafting(); setHeader('PoE1 Horticrafting'); recordHeaderAction('PoE1 Horticrafting'); return true; }
-                if (key === 'poe1-bestiary') { await showPoe1Bestiary(); setHeader('PoE1 Bestiary'); recordHeaderAction('PoE1 Bestiary'); return true; }
-                if (key === 'poe1-scarabs') { await showPoe1Scarabs(); setHeader('PoE1 Scarabs'); recordHeaderAction('PoE1 Scarabs'); return true; }
-                if (key === 'poe1-currency') { await showPoe1Currency(); setHeader('PoE1 Currency'); recordHeaderAction('PoE1 Currency'); return true; }
-                if (key === 'poe1-essences') { await showPoe1Essences(); setHeader('PoE1 Essences'); recordHeaderAction('PoE1 Essences'); return true; }
-                if (key === 'poe1-fossils') { await showPoe1Fossils(); setHeader('PoE1 Fossils'); recordHeaderAction('PoE1 Fossils'); return true; }
-                if (key === 'poe1-embers') { await showPoe1Embers(); setHeader('PoE1 Allflames'); recordHeaderAction('PoE1 Allflames'); return true; }
+                if (key === 'poe1-runegrafts') { await showPoe1Runegrafts(); setHeader('Runegrafts'); recordHeaderAction('Runegrafts'); return true; }
+                if (key === 'poe1-horticrafting') { await showPoe1Horticrafting(); setHeader('Horticrafting'); recordHeaderAction('Horticrafting'); return true; }
+                if (key === 'poe1-bestiary') { await showPoe1Bestiary(); setHeader('Bestiary'); recordHeaderAction('Bestiary'); return true; }
+                if (key === 'poe1-scarabs') { await showPoe1Scarabs(); setHeader('Scarabs'); recordHeaderAction('Scarabs'); return true; }
+                if (key === 'poe1-currency') { await showPoe1Currency(); setHeader('Currency'); recordHeaderAction('Currency'); return true; }
+                if (key === 'poe1-essences') { await showPoe1Essences(); setHeader('Essences'); recordHeaderAction('Essences'); return true; }
+                if (key === 'poe1-fossils') { await showPoe1Fossils(); setHeader('Fossils'); recordHeaderAction('Fossils'); return true; }
+                if (key === 'poe1-embers') { await showPoe1Embers(); setHeader('Allflames'); recordHeaderAction('Allflames'); return true; }
                 return false;
             }
 
@@ -1181,8 +1181,8 @@
                     setActiveTab('characterTab');
                     setView('character');
                     if (window.OverlayPoe1Anointments?.show) { try { await window.OverlayPoe1Anointments.show(); } catch {} }
-                    setHeader('PoE1 Anointments');
-                    recordHeaderAction('PoE1 Anointments');
+                    setHeader('Anointments');
+                    recordHeaderAction('Anointments');
                     return true;
                 }
                 if (key === 'poe1-tattoos') {
@@ -3878,8 +3878,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     recordHeaderAction('Ascendancy Notables');
                 } else if (action === 'poe1-anointments') {
                     if (window.OverlayPoe1Anointments?.show) { try { await window.OverlayPoe1Anointments.show(); } catch {} }
-                    setHeader('PoE1 Anointments');
-                    recordHeaderAction('PoE1 Anointments');
+                    setHeader('Anointments');
+                    recordHeaderAction('Anointments');
                 } else if (action === 'poe1-tattoos') {
                     if (window.OverlayPoe1Tattoos?.show) { try { await window.OverlayPoe1Tattoos.show(); } catch {} }
                     setHeader('Tattoos');
