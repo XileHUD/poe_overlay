@@ -36,6 +36,7 @@ export interface CharacterSubcategories {
 export interface Poe1CharacterSubcategories {
   ascendancyNotables: boolean;
   divinationCards: boolean;
+  anointments: boolean;
   tattoos: boolean;
   gems: boolean;
 }
@@ -138,6 +139,7 @@ export const DEFAULT_FEATURES: FeatureConfig = {
     subcategories: {
       ascendancyNotables: true,
       divinationCards: true,
+      anointments: true,
       tattoos: true,
       gems: true
     }
@@ -215,6 +217,7 @@ export const MINIMAL_FEATURES: FeatureConfig = {
     subcategories: {
       ascendancyNotables: false,
       divinationCards: false,
+      anointments: false,
       tattoos: false,
       gems: false
     }
@@ -291,6 +294,7 @@ export const ALL_FEATURES: FeatureConfig = {
     subcategories: {
       ascendancyNotables: true,
       divinationCards: true,
+      anointments: true,
       tattoos: true,
       gems: true
     }

@@ -999,6 +999,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 subcategories: {
                     ascendancyNotables: false,
                     divinationCards: false,
+                    anointments: false,
                     tattoos: false,
                     gems: false
                 }
@@ -2734,6 +2735,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                             subcategories: {
                                 ascendancyNotables: config.poe1Character?.subcategories?.ascendancyNotables ?? disabled.poe1Character.subcategories.ascendancyNotables,
                                 divinationCards: config.poe1Character?.subcategories?.divinationCards ?? disabled.poe1Character.subcategories.divinationCards,
+                                anointments: config.poe1Character?.subcategories?.anointments ?? disabled.poe1Character.subcategories.anointments,
                                 tattoos: config.poe1Character?.subcategories?.tattoos ?? disabled.poe1Character.subcategories.tattoos,
                                 gems: config.poe1Character?.subcategories?.gems ?? disabled.poe1Character.subcategories.gems
                             }

@@ -217,6 +217,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   let poe1TattoosCache: any | undefined;
   let poe1GemsCache: any | undefined;
   let poe1AscendancyNotablesCache: any | undefined;
+  let poe1AnointmentsCache: any | undefined;
 
   const classifyReplicaCategory = (baseType: string): 'WeaponUnique' | 'ArmourUnique' | 'OtherUnique' => {
     const lower = (baseType || '').toLowerCase();
@@ -495,6 +496,40 @@ export function registerDataIpc(deps: DataIpcDeps) {
     return poe1AscendancyNotablesCache;
   };
 
+  const loadPoe1Anointments = () => {
+    try {
+      const dataDir = deps.getDataDir();
+
+      const tryResolveBaseDir = (): string => {
+        const direct = path.join(dataDir, 'crafting', 'anointments');
+        if (fs.existsSync(direct)) return direct;
+        const nested = path.join(dataDir, 'PoE1Modules', 'crafting', 'anointments');
+        if (fs.existsSync(nested)) return nested;
+        return direct;
+      };
+
+      const baseDir = tryResolveBaseDir();
+      const amuletsPath = path.join(baseDir, 'AnointUniqueAmulets.json');
+      const ringsPath = path.join(baseDir, 'AnointRings.json');
+
+      const loadFile = (filePath: string) => {
+        if (fs.existsSync(filePath)) {
+          const raw = fs.readFileSync(filePath, 'utf-8');
+          return JSON.parse(raw);
+        }
+        return { error: 'not_found', filePath };
+      };
+
+      poe1AnointmentsCache = {
+        amulets: loadFile(amuletsPath),
+        rings: loadFile(ringsPath)
+      };
+    } catch (e: any) {
+      poe1AnointmentsCache = { error: e?.message || 'unknown_error' };
+    }
+    return poe1AnointmentsCache;
+  };
+
   const loadPoe1Bases = () => {
     try {
       const dataDir = deps.getDataDir();
@@ -541,6 +576,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   cacheInvalidators.set('poe1:runegrafts', () => { poe1RunegraftsCache = undefined; });
   cacheInvalidators.set('poe1:divinationCards', () => { poe1DivinationCardsCache = undefined; });
   cacheInvalidators.set('poe1:tattoos', () => { poe1TattoosCache = undefined; });
+  cacheInvalidators.set('poe1:anointments', () => { poe1AnointmentsCache = undefined; });
   cacheInvalidators.set('poe1:gems', () => { poe1GemsCache = undefined; });
   cacheInvalidators.set('poe1:ascendancyNotables', () => { poe1AscendancyNotablesCache = undefined; });
 
@@ -556,7 +592,8 @@ export function registerDataIpc(deps: DataIpcDeps) {
   queuePreload('poe1:bestiary', async () => { poe1BestiaryCache = undefined; loadPoe1Bestiary(); });
     queuePreload('poe1:runegrafts', async () => { poe1RunegraftsCache = undefined; loadPoe1Runegrafts(); });
     queuePreload('poe1:divinationCards', async () => { poe1DivinationCardsCache = undefined; loadPoe1DivinationCards(); });
-    queuePreload('poe1:tattoos', async () => { poe1TattoosCache = undefined; loadPoe1Tattoos(); });
+  queuePreload('poe1:tattoos', async () => { poe1TattoosCache = undefined; loadPoe1Tattoos(); });
+  queuePreload('poe1:anointments', async () => { poe1AnointmentsCache = undefined; loadPoe1Anointments(); });
     queuePreload('poe1:gems', async () => { poe1GemsCache = undefined; loadPoe1Gems(); });
     queuePreload('poe1:ascendancyNotables', async () => { poe1AscendancyNotablesCache = undefined; loadPoe1AscendancyNotables(); });
   }
@@ -700,6 +737,18 @@ export function registerDataIpc(deps: DataIpcDeps) {
         loadPoe1Tattoos();
       }
       return poe1TattoosCache;
+    } catch (e: any) {
+      return { error: e?.message || 'unknown_error' };
+    }
+  });
+
+  try { ipcMain.removeHandler('get-poe1-anointments'); } catch {}
+  ipcMain.handle('get-poe1-anointments', async () => {
+    try {
+      if (typeof poe1AnointmentsCache === 'undefined') {
+        loadPoe1Anointments();
+      }
+      return poe1AnointmentsCache;
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }

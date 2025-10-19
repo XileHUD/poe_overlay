@@ -29,6 +29,7 @@ declare global {
       getPoe1Bestiary?: () => Promise<any>;
       getPoe1Runegrafts?: () => Promise<any>;
       getPoe1DivinationCards?: () => Promise<any>;
+  getPoe1Anointments?: () => Promise<any>;
       getPoe1Tattoos?: () => Promise<any>;
       getPoe1Gems?: () => Promise<any>;
       getPoe1GemDetail?: (gemSlug: string) => Promise<any>;
@@ -101,6 +102,12 @@ declare global {
     OverlayPoe1DivinationCards?: {
       show: () => Promise<void>;
       render: (list: any[]) => void;
+    };
+    OverlayPoe1Anointments?: {
+      show: () => Promise<void>;
+      render: (list: any[]) => void;
+      applyFilter: () => void;
+      reload: () => Promise<void>;
     };
     OverlayPoe1Runegrafts?: {
       show: () => Promise<void>;

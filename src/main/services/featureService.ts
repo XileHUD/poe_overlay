@@ -91,6 +91,9 @@ const POE1_CRAFTING_CATEGORY_MAP: Record<string, keyof Poe1CraftingSubcategories
 const POE1_CHARACTER_CATEGORY_MAP: Record<string, keyof Poe1CharacterSubcategories> = {
   Ascendancy_Notables: 'ascendancyNotables',
   Divination_Cards: 'divinationCards',
+  AnointUniqueAmulets: 'anointments',
+  AnointRings: 'anointments',
+  Anointments: 'anointments',
   Tattoos: 'tattoos',
   Gems: 'gems'
 };
@@ -409,6 +412,27 @@ export class FeatureService {
           glossar: false
         }
       };
+    }
+
+    if (!config.poe1Character?.enabled) {
+      config.poe1Character = {
+        enabled: false,
+        subcategories: {
+          ascendancyNotables: false,
+          divinationCards: false,
+          anointments: false,
+          tattoos: false,
+          gems: false
+        }
+      } as { enabled: boolean; subcategories: Poe1CharacterSubcategories };
+    } else if (config.poe1Character?.enabled) {
+      config.poe1Character = {
+        enabled: true,
+        subcategories: {
+          ...DEFAULT_FEATURES.poe1Character.subcategories,
+          ...(config.poe1Character.subcategories || {})
+        }
+      } as { enabled: boolean; subcategories: Poe1CharacterSubcategories };
     }
 
     if (!config.items?.enabled) {

@@ -46,6 +46,7 @@ import './overlay/character/quest-passives/globals';
 // Character: PoE1
 import './overlay/character/poe1/divination-cards/globals';
 import './overlay/character/poe1/ascendancy-notables/globals';
+import './overlay/character/poe1/anointments/globals';
 import './overlay/character/poe1/tattoos/globals';
 import './overlay/character/poe1/gems/globals';
 

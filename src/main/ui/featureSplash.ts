@@ -515,6 +515,10 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
         <label for="feat-poe1-char-asc-notables">Ascendancy Notables</label>
       </div>
       <div class="feature-sub">
+        <input type="checkbox" id="feat-poe1-char-anointments" ${checked(safeConfig.poe1Character.subcategories.anointments)}/>
+        <label for="feat-poe1-char-anointments">Anointments</label>
+      </div>
+      <div class="feature-sub">
         <input type="checkbox" id="feat-poe1-char-tattoos" ${checked(safeConfig.poe1Character.subcategories.tattoos)}/>
         <label for="feat-poe1-char-tattoos">Tattoos</label>
       </div>
@@ -704,6 +708,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       document.getElementById('feat-poe1-character').checked = preset.poe1Character.enabled;
       document.getElementById('feat-poe1-char-divcards').checked = preset.poe1Character.subcategories.divinationCards;
   document.getElementById('feat-poe1-char-asc-notables').checked = preset.poe1Character.subcategories.ascendancyNotables;
+    document.getElementById('feat-poe1-char-anointments').checked = preset.poe1Character.subcategories.anointments;
       document.getElementById('feat-poe1-char-tattoos').checked = preset.poe1Character.subcategories.tattoos;
       document.getElementById('feat-poe1-char-gems').checked = preset.poe1Character.subcategories.gems;
       
@@ -796,6 +801,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
           subcategories: {
             ascendancyNotables: document.getElementById('feat-poe1-char-asc-notables').checked,
             divinationCards: document.getElementById('feat-poe1-char-divcards').checked,
+            anointments: document.getElementById('feat-poe1-char-anointments').checked,
             tattoos: document.getElementById('feat-poe1-char-tattoos').checked,
             gems: document.getElementById('feat-poe1-char-gems').checked
           }
