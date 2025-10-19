@@ -9,7 +9,6 @@ import './overlay/history/globals';
 
 // Crafting panels (already migrated)
 import './overlay/crafting/liquid/globals';
-import './overlay/crafting/annoints/globals';
 import './overlay/crafting/essences/globals';
 import './overlay/crafting/catalysts/globals';
 import './overlay/crafting/socketables/globals';
@@ -40,8 +39,23 @@ import './overlay/crafting/glossar/globals';
 // Modifiers (filter/render pipeline)
 import './overlay/modifiers/globals';
 
+// Character: Annoints
+import './overlay/character/annoints/globals';
+
+// Character: Keystones
+import './overlay/character/keystones/globals';
+
 // Character: Quest Passives
 import './overlay/character/quest-passives/globals';
+
+// Character: Gems
+import './overlay/character/gems/globals';
+
+// Character: Ascendancy Passives
+import './overlay/character/ascendancy-passives/globals';
+
+// Character: Atlas Nodes
+import './overlay/character/atlas-nodes/globals';
 
 // Character: PoE1
 import './overlay/character/poe1/divination-cards/globals';

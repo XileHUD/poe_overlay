@@ -298,10 +298,6 @@
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C9 7 7 9.5 7 13a5 5 0 0010 0c0-3.5-2-6-5-11z"/></svg></span>
                         <span>Liquid Emotions</span>
                     </div>
-                    <div class="crafting-menu-item poe2-only" data-action="annoints" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
-                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-9 4 4 8-12" /><path d="M2 4h6"/></svg></span>
-                        <span>Annoints</span>
-                    </div>
                     <div class="crafting-menu-item poe2-only" data-action="essences" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l6 6-6 14-6-14 6-6z"/></svg></span>
                         <span>Essences</span>
@@ -364,6 +360,10 @@
                     <div class="character-menu-item" data-action="quest-passives" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v4H4z"/><path d="M4 12h16v8H4z"/></svg></span>
                         <span>Quest Passives</span>
+                    </div>
+                    <div class="character-menu-item" data-action="annoints" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-9 4 4 8-12" /><path d="M2 4h6"/></svg></span>
+                        <span>Annoints</span>
                     </div>
                     <div class="character-menu-item" data-action="keystones" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3 8-7 10-4-2-7-5-7-10V6l7-4z"/></svg></span>
@@ -1023,7 +1023,7 @@
         if (!title) return;
         const key = String(title).toLowerCase();
     if (key === 'liquid emotions') { markCraftingAction('liquid-emotions'); return; }
-    if (key === 'annoints') { markCraftingAction('annoints'); return; }
+    if (key === 'annoints') { markCharacterAction('annoints'); return; }
     if (key === 'essences') { markCraftingAction('essences'); return; }
     if (key === 'omens') { markCraftingAction('omens'); return; }
     if (key === 'currency') { markCraftingAction('currency'); return; }
@@ -1083,7 +1083,6 @@
                 closeAllMenus();
                 setView('crafting');
                 if (key === 'liquid-emotions') { await showLiquidEmotions(); setHeader('Liquid Emotions'); recordHeaderAction('Liquid Emotions'); return true; }
-                if (key === 'annoints') { await showAnnoints(); setHeader('Annoints'); recordHeaderAction('Annoints'); return true; }
                 if (key === 'essences') { await showEssences(); setHeader('Essences'); recordHeaderAction('Essences'); return true; }
                 if (key === 'omens') { await showOmens(); setHeader('Omens'); recordHeaderAction('Omens'); return true; }
                 if (key === 'currency') { await showCurrency(); setHeader('Currency'); recordHeaderAction('Currency'); return true; }
@@ -1144,6 +1143,14 @@
                     if (window.OverlayQuestPassives?.show) { try { await window.OverlayQuestPassives.show(); } catch {} }
                     setHeader('Quest Passives');
                     recordHeaderAction('Quest Passives');
+                    return true;
+                }
+                if (key === 'annoints') {
+                    setActiveTab('characterTab');
+                    setView('character');
+                    await showAnnoints();
+                    setHeader('Annoints');
+                    recordHeaderAction('Annoints');
                     return true;
                 }
                 if (key === 'glossar') {
@@ -1285,11 +1292,11 @@
         }
 
         if (featureAvailability.crafting) {
-            const craftingActions = ['liquid-emotions', 'annoints', 'essences', 'omens', 'currency', 'catalysts', 'socketables', 'poe1-runegrafts', 'poe1-horticrafting', 'poe1-bestiary', 'poe1-scarabs', 'poe1-currency', 'poe1-essences', 'poe1-fossils', 'poe1-embers'];
+            const craftingActions = ['liquid-emotions', 'essences', 'omens', 'currency', 'catalysts', 'socketables', 'poe1-runegrafts', 'poe1-horticrafting', 'poe1-bestiary', 'poe1-scarabs', 'poe1-currency', 'poe1-essences', 'poe1-fossils', 'poe1-embers'];
             for (const key of craftingActions) {
                 if (await runStoredAction(`crafting:${key}`)) return true;
             }
-            const characterActions = ['gems', 'keystones', 'asc-passives', 'atlas-nodes', 'quest-passives', 'glossar', 'poe1-divination-cards', 'poe1-asc-notables', 'poe1-anointments', 'poe1-tattoos', 'poe1-gems-list'];
+            const characterActions = ['gems', 'keystones', 'asc-passives', 'atlas-nodes', 'quest-passives', 'annoints', 'glossar', 'poe1-divination-cards', 'poe1-asc-notables', 'poe1-anointments', 'poe1-tattoos', 'poe1-gems-list'];
             for (const key of characterActions) {
                 if (await runStoredAction(`character:${key}`)) return true;
             }
@@ -1366,6 +1373,10 @@
     function renderGlossar(list){ if (window.OverlayGlossar && window.OverlayGlossar.render) { try { return window.OverlayGlossar.render(list); } catch {} } }
     // Annoints, Essences
     async function showAnnoints(){ if (window.OverlayAnnoints && window.OverlayAnnoints.show) { try { return await window.OverlayAnnoints.show(); } catch {} } }
+    async function showKeystones(){ if (window.OverlayKeystones && window.OverlayKeystones.show) { try { return await window.OverlayKeystones.show(); } catch {} } }
+    async function showGems(){ if (window.OverlayGems && window.OverlayGems.show) { try { return await window.OverlayGems.show(); } catch {} } }
+    async function showAscendancyPassives(){ if (window.OverlayAscendancyPassives && window.OverlayAscendancyPassives.show) { try { return await window.OverlayAscendancyPassives.show(); } catch {} } }
+    async function showAtlasNodes(){ if (window.OverlayAtlasNodes && window.OverlayAtlasNodes.show) { try { return await window.OverlayAtlasNodes.show(); } catch {} } }
     async function showEssences(){ if (window.OverlayEssences && window.OverlayEssences.show) { try { return await window.OverlayEssences.show(); } catch {} } }
     function renderEssences(list){ if (window.OverlayEssences && window.OverlayEssences.render) { try { return window.OverlayEssences.render(list); } catch {} } }
     // PoE1 Crafting
@@ -2351,7 +2362,6 @@
                                 
                                 // PoE2 crafting items
                                 if (action === 'liquid-emotions' && subs.liquidEmotions) shouldShow = true;
-                                if (action === 'annoints' && subs.annoints) shouldShow = true;
                                 if (action === 'essences' && subs.essences) shouldShow = true;
                                 if (action === 'omens' && subs.omens) shouldShow = true;
                                 if (action === 'currency' && subs.currency) shouldShow = true;
@@ -2427,6 +2437,7 @@
 
                                 if (poe2CharacterEnabled) {
                                     if (action === 'quest-passives' && poe2Subs.questPassives) shouldShow = true;
+                                    if (action === 'annoints' && poe2Subs.annoints) shouldShow = true;
                                     if (action === 'keystones' && poe2Subs.keystones) shouldShow = true;
                                     if (action === 'asc-passives' && poe2Subs.ascendancyPassives) shouldShow = true;
                                     if (action === 'atlas-nodes' && poe2Subs.atlasNodes) shouldShow = true;
@@ -3834,6 +3845,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     setHeader('Quest Passives');
                     recordHeaderAction('Quest Passives');
                     
+                } else if (action === 'annoints') {
+                    await showAnnoints();
+                    setHeader('Annoints');
+                    recordHeaderAction('Annoints');
+                    
                 } else if (action === 'keystones') {
                     await showKeystones();
                     setHeader('Keystones');
@@ -4260,436 +4276,11 @@ window.openModifiersCategory = openModifiersCategory;
 
 // ===== Glossar (inline removed; delegated via wrappers defined above) =====
 
-// ===== Keystones (Character submenu) =====
-async function showKeystones(){
-    window.__lastPanel='keystones';
-    prepareCharacterPanel('Keystones');
-    craftingPanelEl.innerHTML='<div class="no-mods">Loading...</div>';
-    try{
-        const data = await window.electronAPI.getKeystones();
-        if(!data || data.error){ craftingPanelEl.innerHTML=`<div style="color:var(--accent-red);">Failed to load Keystones (${data?.error||'unknown'})</div>`; return; }
-        renderKeystones(data.keystones||[]);
-    }catch(e){ craftingPanelEl.innerHTML='<div style="color:var(--accent-red);">Exception loading Keystones</div>'; }
-}
-// ===== Ascendancy Passives (Character submenu) =====
-async function showAscendancyPassives(){
-    window.__lastPanel='asc_passives';
-    prepareCharacterPanel('Ascendancy Passives');
-    craftingPanelEl.innerHTML='<div class="no-mods">Loading...</div>';
-    try {
-        const data = await window.electronAPI.getAscendancyPassives();
-        if(!data || data.error){ craftingPanelEl.innerHTML=`<div style="color:var(--accent-red);">Failed to load Ascendancy Passives (${data?.error||'unknown'})</div>`; return; }
-        renderAscendancyPassives(data.passives||[]);
-    } catch(e){ craftingPanelEl.innerHTML='<div style="color:var(--accent-red);">Exception loading Ascendancy Passives</div>'; }
-}
-function renderAscendancyPassives(list){
-    const panel=craftingPanelEl; if(!panel) return;
-    panel.innerHTML=`<div class='page-inner'><div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
-        <input id='ascSearch' type='text' placeholder='Search ascendancy passives...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
-        <button id='ascClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
-    </div>
-    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
-    <div id='ascClassFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
-    </div>
-    <div id='ascWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:10px;'></div></div>`;
-    const searchEl=panel.querySelector('#ascSearch');
-    const clearBtn=panel.querySelector('#ascClear');
-    const filterWrap=panel.querySelector('#ascClassFilters');
-    const wrap=panel.querySelector('#ascWrap');
-    const classes = Array.from(new Set(list.map(p=>p.ascendancy).filter(Boolean))).sort();
-    const selected = new Set();
-    function chipCss(active){ return `padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; border:1px solid var(--border-color); background:${active?'var(--accent-blue)':'var(--bg-tertiary)'}; color:${active?'#fff':'var(--text-primary)'};`; }
-    function renderFilters(){ if(!filterWrap) return; filterWrap.innerHTML=''; classes.forEach(c=>{ const active=selected.has(c); const btn=document.createElement('button'); btn.textContent=c; btn.style.cssText=chipCss(active); btn.addEventListener('click',()=>{ if(active) selected.delete(c); else selected.add(c); build(searchEl.value||''); renderFilters(); }); filterWrap.appendChild(btn); }); if(selected.size){ const reset=document.createElement('button'); reset.textContent='Reset'; reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'; reset.addEventListener('click',()=>{ selected.clear(); build(''); renderFilters(); }); filterWrap.appendChild(reset);} }
-    function highlight(s){ return (s||"")
-       .replace(/(\d+\s*[–-]\s*\d+)/g,'<span class="mod-value">$1</span>')
-       .replace(/(?<![A-Za-z0-9>])([+\-]?\d+)(?![A-Za-z0-9<])/g,'<span class="mod-value">$1</span>')
-       .replace(/(\d+%)/g,'<span class="mod-value">$1</span>'); }
-    function matchesClass(p){ if(!selected.size) return true; return selected.has(p.ascendancy); }
-    function build(filter=''){
-        if(!wrap) return; wrap.innerHTML='';
-        const f=filter.toLowerCase();
-        const filtered = list.filter(p=>{ const blob=`${p.name} ${(p.explicitMods||[]).join(' ')}`.toLowerCase(); const searchOk = !f || blob.includes(f); return searchOk && matchesClass(p); });
-        filtered.forEach(p=>{
-            const card=document.createElement('div');
-            card.style.background='var(--bg-card)';
-            card.style.border='1px solid var(--border-color)';
-            card.style.borderRadius='6px';
-            card.style.padding='6px';
-            card.style.display='flex';
-            card.style.flexDirection='column';
-            card.style.gap='4px';
-            // Clean mods: remove inline skill icons (grantsSkill) then highlight numbers
-            const cleanedMods = (p.explicitMods||[]).map(m=> m.replace(/<img[^>]*grantsSkill[^>]*>/ig,'').replace(/<img[^>]*>/ig,'').trim()).filter(Boolean);
-            const mods = cleanedMods.map(m=>highlight(m)).join('<br>');
-            const _ap = getImagePath(p);
-            const imgHtml = p.image || p.imageLocal ? `<img src='' data-orig-src='${_ap}' class='asc-img' style='width:46px; height:46px; object-fit:contain; flex:0 0 46px;'>` : '';
-            const metaParts = [];
-            if(p.ascendancy) metaParts.push(`<span style="background:var(--accent-blue); color:#fff; padding:2px 8px; border-radius:12px; font-size:11px; font-weight:600; letter-spacing:0.3px;">${p.ascendancy}</span>`);
-            if(p.character) metaParts.push(`<span style="background:var(--bg-tertiary); color:var(--text-primary); padding:2px 8px; border-radius:12px; font-size:11px;">${p.character}</span>`);
-            if(p.stack_current!=null && p.stack_max!=null) metaParts.push(`<span>Stack: ${p.stack_current} / ${p.stack_max}</span>`);
-            card.innerHTML = `<div style='display:flex; gap:10px; align-items:flex-start;'>${imgHtml}<div style='display:flex; flex-direction:column; gap:6px; flex:1;'><div style='font-weight:600; font-size:13px;'>${p.name}</div><div style='display:flex; gap:6px; flex-wrap:wrap;'>${metaParts.join('')}</div><div style='font-size:11px;'>${mods}</div></div></div>`;
-            wrap.appendChild(card);
-        });
-        const svg = "<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><rect width='30' height='30' rx='6' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='9' font-family='sans-serif'>?</text></svg>";
-        const placeholder = 'data:image/svg+xml;utf8,'+encodeURIComponent(svg);
-    wrap.querySelectorAll('img.asc-img').forEach(img=>{ if(img._fb) return; img._fb=true; img.addEventListener('error',()=>{ img.src=placeholder; img.style.opacity='0.5'; img.style.filter='grayscale(1)'; },{once:true}); img.addEventListener('load',()=>{ if(img.src!==placeholder){ img.style.opacity='1'; img.style.filter='none'; } }, { once:true }); });
-    }
-    searchEl.addEventListener('input',()=>build(searchEl.value));
-    clearBtn.addEventListener('click',()=>{ searchEl.value=''; selected.clear(); build(''); renderFilters(); searchEl.focus(); });
-    build('');
-    renderFilters();
-}
-function renderKeystones(list){
-    const panel=craftingPanelEl; if(!panel) return;
-    panel.innerHTML=`<div class='page-inner'><div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
-        <input id='keystoneSearch' type='text' placeholder='Search keystones...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
-        <button id='keystoneClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
-    </div>
-    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
-    <div id='keystoneTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
-    </div>
-    <div id='keystoneWrap' style='display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; align-items:stretch;'></div></div>`;
-    // Don't set inline display:none - let CSS handle visibility via body classes
-    const searchEl=panel.querySelector('#keystoneSearch');
-    const clearBtn=panel.querySelector('#keystoneClear');
-    const tagWrap=panel.querySelector('#keystoneTagFilters');
-    const wrap=panel.querySelector('#keystoneWrap');
-    // Tag coloring helpers
-    function tagRGB(tag){ const t=(tag||'').toLowerCase();
-        if(t==='fire' || t==='life') return [220,68,61];
-        if(t==='cold' || t==='mana') return [66,165,245];
-        if(t==='lightning') return [255,213,79];
-        if(t==='chaos' || t==='minion') return [156,39,176];
-        if(t==='energy shield' || t==='es') return [38,198,218];
-        if(t==='defences' || t==='armour' || t==='armor') return [109,76,65];
-        if(t==='evasion') return [46,125,50];
-        if(t==='resistances') return [255,112,67];
-        if(t==='projectile') return [255,179,0];
-        if(t==='area') return [171,71,188];
-        if(t==='critical' || t==='crit') return [255,179,0];
-        if(t==='spell') return [92,107,192];
-        if(t==='attack') return [121,85,72];
-        if(t==='damage' || t==='ailments' || t==='mechanics') return [96,125,139];
-        if(t==='movement' || t==='attack speed' || t==='speed') return [67,160,71];
-        if(t==='elemental') return [255,152,0];
-        return [120,144,156]; }
-    function chipCss(tag, active){ const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color}; border-radius:4px;`; }
-    // Curated tag set same as Annoints
-    const curatedTags = ['Damage','Ailments','Attributes','Energy Shield','Defences','Life','Mana','Fire','Cold','Lightning','Chaos','Resistances','Projectile','Area','Critical','Spell','Attack','Minion','Mechanics'];
-    const selected = new Set();
-    // Derive tags from keystone text
-    function deriveTags(k){ const text=`${k.name||''} ${String(k.description||'')}`; const tags=new Set();
-        if(/Damage/i.test(text)) tags.add('Damage');
-        if(/Ailment|Bleed|Ignite|Chill|Freeze|Shock|Poison|Stun|Electrocute/i.test(text)) tags.add('Ailments');
-        if(/Attribute|Strength|Dexterity|Intelligence/i.test(text)) tags.add('Attributes');
-        if(/Energy Shield|\bES\b/i.test(text)) tags.add('Energy Shield');
-        if(/Armour|Armor|Evasion/i.test(text)) tags.add('Defences');
-        if(/\bLife\b/i.test(text)) tags.add('Life');
-        if(/\bMana\b/i.test(text)) tags.add('Mana');
-        if(/\bFire\b/i.test(text)) tags.add('Fire');
-        if(/\bCold\b/i.test(text)) tags.add('Cold');
-        if(/Lightning|Electrocute/i.test(text)) tags.add('Lightning');
-        if(/\bChaos\b/i.test(text)) tags.add('Chaos');
-        if(/Resist/i.test(text)) tags.add('Resistances');
-        if(/Projectile/i.test(text)) tags.add('Projectile');
-        if(/\bArea\b/i.test(text)) tags.add('Area');
-        if(/Critical/i.test(text)) tags.add('Critical');
-        if(/Cast|Spell/i.test(text)) tags.add('Spell');
-        if(/\bAttack\b/i.test(text)) tags.add('Attack');
-        if(/Minion/i.test(text)) tags.add('Minion');
-        if(/Trap|Totem|Trigger/i.test(text)) tags.add('Mechanics');
-        return [...tags]; }
-    // Precompute item tags and counts
-    list.forEach(k=>{ k.__tags = deriveTags(k); });
-    const tagCounts = Object.fromEntries(curatedTags.map(t=>[t,0]));
-    list.forEach(k=> (k.__tags||[]).forEach(t=>{ if(tagCounts[t]!=null) tagCounts[t]++; }));
-    function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; curatedTags.forEach(tag=>{ const active=selected.has(tag.toLowerCase()); const btn=document.createElement('button'); const count=tagCounts[tag]||0; btn.className='key-tag'; btn.setAttribute('data-tag', tag.toLowerCase()); btn.textContent = count? `${tag} (${count})` : tag; btn.style.cssText = `padding:3px 8px; font-size:11px; cursor:pointer; ${chipCss(tag, active)}`; btn.addEventListener('click',()=>{ if(active) selected.delete(tag.toLowerCase()); else selected.add(tag.toLowerCase()); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(btn); }); if(selected.size){ const reset=document.createElement('button'); reset.textContent='Reset'; reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'; reset.addEventListener('click',()=>{ selected.clear(); build(''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
-    function matchTags(k){ if(!selected.size) return true; const lc=(k.__tags||[]).map(t=>t.toLowerCase()); return [...selected].every(t=> lc.includes(t)); }
-    function build(filter=''){
-        wrap.innerHTML='';
-        const f=filter.toLowerCase();
-        list.filter(k=>{ const matchesSearch = !f || k.name.toLowerCase().includes(f) || (k.description||'').toLowerCase().includes(f); return matchesSearch && matchTags(k); }).forEach(k=>{
-            const card=document.createElement('div');
-            card.className='keystone-card';
-            card.style.background='var(--bg-card)';
-            card.style.border='1px solid var(--border-color)';
-            card.style.borderRadius='6px';
-            card.style.padding='6px';
-            card.style.display='flex';
-            card.style.flexDirection='column';
-            card.style.gap='4px';
-            card.style.height='100%';
-            const kp = getImagePath(k);
-            const imgHtml = k.image || k.imageLocal ? `<img src='' data-orig-src='${kp}' class='keystone-img' style='width:30px; height:30px; object-fit:contain;'>` : `<img src='' class='keystone-img' style='width:30px; height:30px; object-fit:contain;'>`;
-            card.innerHTML=`<div style='display:flex; gap:6px; align-items:center;'>${imgHtml}<div style='font-weight:600;'>${k.name}</div></div><div style='font-size:11px;'>${k.description||''}</div>`;
-            wrap.appendChild(card);
-        });
-        // Image fallback placeholder
-        const placeholderSvg = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><rect width='30' height='30' rx='6' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='9' font-family='sans-serif'>?</text></svg>`)}`;
-        wrap.querySelectorAll('img.keystone-img').forEach(function(img){
-            if(img._fb) return; img._fb=true; img.loading= img.loading || 'lazy'; img.decoding='async';
-            img.addEventListener('error', function(){ img.src=placeholderSvg; img.style.opacity='0.5'; img.style.filter='grayscale(1)'; });
-            img.addEventListener('load', function(){ if(img.src!==placeholderSvg){ img.style.opacity='1'; img.style.filter='none'; }});
-        });
-    }
-    searchEl.addEventListener('input',()=>build(searchEl.value));
-    clearBtn.addEventListener('click',()=>{searchEl.value=''; selected.clear(); build(''); renderTagFilters(); searchEl.focus();});
-    build('');
-    renderTagFilters();
-}
-    // ===== Atlas Nodes (Character submenu) =====
-async function showAtlasNodes(){
-    window.__lastPanel='atlas_nodes';
-    prepareCharacterPanel('Atlas Nodes');
-    craftingPanelEl.innerHTML='<div class="no-mods">Loading...</div>';
-    try{
-        const data = await window.electronAPI.getAtlasNodes();
-        if(!data || data.error){ craftingPanelEl.innerHTML=`<div style="color:var(--accent-red);">Failed to load Atlas Nodes (${data?.error||'unknown'})</div>`; return; }
-        renderAtlasNodes(data.nodes||[]);
-    }catch(e){ craftingPanelEl.innerHTML='<div style="color:var(--accent-red);">Exception loading Atlas Nodes</div>'; }
-}
-function renderAtlasNodes(list){
-    const panel=craftingPanelEl; if(!panel) return;
-    panel.innerHTML=`<div class='page-inner'><div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
-        <input id='atlasSearch' type='text' placeholder='Search atlas nodes...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
-        <button id='atlasClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
-    </div>
-    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
-    <div id='atlasTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
-    </div>
-    <div id='atlasWrap' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:10px;'></div></div>`;
-    const searchEl=panel.querySelector('#atlasSearch');
-    const clearBtn=panel.querySelector('#atlasClear');
-    const tagWrap=panel.querySelector('#atlasTagFilters');
-    const wrap=panel.querySelector('#atlasWrap');
-    function tagRGB(tag){ const t=(tag||'').toLowerCase();
-        if(t==='fire' || t==='life') return [220,68,61];
-        if(t==='cold' || t==='mana') return [66,165,245];
-        if(t==='lightning') return [255,213,79];
-        if(t==='chaos' || t==='minion') return [156,39,176];
-        if(t==='energy shield' || t==='es') return [38,198,218];
-        if(t==='defences' || t==='armour' || t==='armor') return [109,76,65];
-        if(t==='evasion') return [46,125,50];
-        if(t==='resistances') return [255,112,67];
-        if(t==='projectile') return [255,179,0];
-        if(t==='area') return [171,71,188];
-        if(t==='critical' || t==='crit') return [255,179,0];
-        if(t==='spell') return [92,107,192];
-        if(t==='attack') return [121,85,72];
-        if(t==='damage' || t==='ailments' || t==='mechanics') return [96,125,139];
-        if(t==='movement' || t==='attack speed' || t==='speed') return [67,160,71];
-        if(t==='elemental') return [255,152,0];
-        return [120,144,156]; }
-    function chipCss(tag, active){ const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color}; border-radius:4px;`; }
-    // Requested tag set for Atlas Nodes
-    const curatedTags = [
-        'quantity','rarity','explicit','prefix','suffix','delirium','breach','expedition','runic','remnants','spirit','ritual','azmeri','essence','strongbox','shrine','boss','waystone','rogue','biome','monster pack size','rare','magic'
-    ];
-    const selected = new Set();
-    function deriveTags(n){ const text=`${n.name||''} ${String(n.description||'')}`.toLowerCase(); const tags=new Set();
-        if(/\bquantity\b|item\s+quantity/i.test(text)) tags.add('quantity');
-        if(/\brarity\b|item\s+rarity/i.test(text)) tags.add('rarity');
-    if(/\bexplicit\b/i.test(text)) tags.add('explicit');
-    if(/\bprefix(es)?\b/i.test(text)) tags.add('prefix');
-        if(/\bsuffix(es)?\b/i.test(text)) tags.add('suffix');
-        if(/\bdelirium\b/i.test(text)) tags.add('delirium');
-        if(/\bbreach\b/i.test(text)) tags.add('breach');
-        if(/\bexpedition\b/i.test(text)) tags.add('expedition');
-        if(/\brunic\b/i.test(text)) tags.add('runic');
-        if(/\bremnants?\b/i.test(text)) tags.add('remnants');
-        if(/\bspirit\b/i.test(text)) tags.add('spirit');
-        if(/\britual\b/i.test(text)) tags.add('ritual');
-        if(/\bazmeri\b/i.test(text)) tags.add('azmeri');
-        if(/\bessence\b/i.test(text)) tags.add('essence');
-        if(/\bstrongbox\b/i.test(text)) tags.add('strongbox');
-        if(/\bshrine\b/i.test(text)) tags.add('shrine');
-        if(/\bboss\b/i.test(text)) tags.add('boss');
-        if(/\bwaystone\b/i.test(text)) tags.add('waystone');
-        if(/\brogue\b/i.test(text)) tags.add('rogue');
-        if(/\bbiome\b/i.test(text)) tags.add('biome');
-        if(/monster\s+pack\s+size/i.test(text)) tags.add('monster pack size');
-        if(/\brare\b/i.test(text)) tags.add('rare');
-        if(/\bmagic\b/i.test(text)) tags.add('magic');
-        return [...tags]; }
-    list.forEach(n=>{ n.__tags = deriveTags(n); });
-    const tagCounts = Object.fromEntries(curatedTags.map(t=>[t,0]));
-    list.forEach(n=> (n.__tags||[]).forEach(t=>{ if(tagCounts[t]!=null) tagCounts[t]++; }));
-    function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; curatedTags.forEach(tag=>{ const active=selected.has(tag.toLowerCase()); const btn=document.createElement('button'); const count=tagCounts[tag]||0; btn.className='key-tag'; btn.setAttribute('data-tag', tag.toLowerCase()); btn.textContent = count? `${tag} (${count})` : tag; btn.style.cssText = `padding:3px 8px; font-size:11px; cursor:pointer; ${chipCss(tag, active)}`; btn.addEventListener('click',()=>{ if(active) selected.delete(tag.toLowerCase()); else selected.add(tag.toLowerCase()); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(btn); }); if(selected.size){ const reset=document.createElement('button'); reset.textContent='Reset'; reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'; reset.addEventListener('click',()=>{ selected.clear(); build(''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
-    function matchTags(n){ if(!selected.size) return true; const lc=(n.__tags||[]).map(t=>t.toLowerCase()); return [...selected].every(t=> lc.includes(t)); }
-    function build(filter=''){
-        wrap.innerHTML='';
-        const f=filter.toLowerCase();
-        list.filter(n=>{ const matchesSearch = !f || n.name.toLowerCase().includes(f) || (n.description||'').toLowerCase().includes(f); return matchesSearch && matchTags(n); }).forEach(n=>{
-            const card=document.createElement('div');
-            card.style.background='var(--bg-card)';
-            card.style.border='1px solid var(--border-color)';
-            card.style.borderRadius='6px';
-            card.style.padding='8px';
-            card.style.display='flex';
-            card.style.flexDirection='column';
-            card.style.gap='6px';
-            card.style.height='100%';
-            const ap=getImagePath(n);
-            const title=`<div style='display:flex; align-items:center; gap:6px;'><img src='' data-orig-src='${ap}' class='atlas-img' style='width:28px; height:28px; object-fit:contain;'/><div style='font-weight:700; font-size:15px;'>${n.name}</div></div>`;
-            const bodyHtml = (n.description_html || escapeHtml(n.description || '')).trim();
-            const body = `<div style='font-size:12px; line-height:1.35;'>${bodyHtml}</div>`;
-            card.innerHTML=title+body;
-            wrap.appendChild(card);
-        });
-        // Add image fallback for atlas nodes
-        const placeholderSvg = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><rect width='28' height='28' rx='6' fill='#222'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#555' font-size='8' font-family='sans-serif'>?</text></svg>`)}`;
-        wrap.querySelectorAll('img.atlas-img').forEach(function(img){
-            if(img._fb) return; img._fb=true; img.loading='lazy'; img.decoding='async';
-            img.addEventListener('error', function(){ img.src=placeholderSvg; img.style.opacity='0.5'; img.style.filter='grayscale(1)'; });
-            img.addEventListener('load', function(){ if(img.src!==placeholderSvg){ img.style.opacity='1'; img.style.filter='none'; }});
-        });
-    }
-    searchEl.addEventListener('input',()=>build(searchEl.value));
-    clearBtn.addEventListener('click',()=>{ searchEl.value=''; build(''); searchEl.focus(); });
-    // Prevent any stray anchor clicks inside list
-    panel.addEventListener('click',(e)=>{ const target = e.target && ((e.target)); const a = target && target.closest ? target.closest('a') : null; if(a){ e.preventDefault(); e.stopPropagation(); }});
-    renderTagFilters();
-    build('');
-}
+// ===== Keystones (Character submenu) delegated to module =====
+// ===== Ascendancy Passives (Character submenu) delegated to module =====
+    // ===== Atlas Nodes (Character submenu) delegated to module =====
 
-// ===== Gems (Character submenu) =====
-async function showGems(){
-    window.__lastPanel='gems';
-    prepareCharacterPanel('Gems');
-    craftingPanelEl.innerHTML='<div class="no-mods">Loading...</div>';
-    // Reset scroll position to top when showing gems (with delay to ensure content is rendered)
-    setTimeout(() => {
-        if (craftingPanelEl) craftingPanelEl.scrollTop = 0;
-    }, 10);
-    try{
-        const data = await window.electronAPI.getGems();
-        if(!data || data.error){ craftingPanelEl.innerHTML=`<div style=\"color:var(--accent-red);\">Failed to load Gems (${data?.error||'unknown'})</div>`; return; }
-        renderGems(data.gems||{});
-    }catch(e){ craftingPanelEl.innerHTML='<div style=\"color:var(--accent-red);\">Exception loading Gems</div>'; }
-}
-function renderGems(groups){
-    const panel=craftingPanelEl; if(!panel) return;
-    const order=[["skill","Skill Gems"],["support","Support Gems"],["spirit","Spirit Gems"],["lineage","Lineage Supports"]];
-    const skillTags=new Set();
-    order.forEach(([key, label]) => { (groups[key]||[]).forEach(g => { (g.tags||[]).filter(Boolean).forEach(tag => skillTags.add(tag)); }); });
-    const sortedTags=[...skillTags].sort((a,b)=>a.localeCompare(b));
-    const tagCounts = {};
-    order.forEach(([key])=>{ (groups[key]||[]).forEach(g=>{ (g.tags||[]).forEach(t=>{ tagCounts[t] = (tagCounts[t]||0)+1; }); }); });
-    panel.innerHTML=`<div style='display:flex; gap:6px; align-items:center; margin-bottom:6px;'>
-        <input id='gemSearch' type='text' placeholder='Search gems...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
-        <button id='gemClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
-    </div>
-    <div style='display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:4px;'>
-    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; flex:1;'>
-    <div id='gemTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; justify-content:center; width:100%;'></div>
-    </div>
-      <button id='gemImgLogBtn' title='Show recent image request log' style='padding:2px 6px; font-size:11px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer;'>Img Log</button>
-    </div>
-    <div id='gemImgDiag' style='display:none; flex-direction:column; gap:4px; margin-bottom:8px;'></div>
-    <div id='gemSections' style='display:flex; flex-direction:column; gap:14px;'></div>`;
-    const searchEl=panel.querySelector('#gemSearch');
-    const clearBtn=panel.querySelector('#gemClear');
-    const container=panel.querySelector('#gemSections');
-    const tagWrap=panel.querySelector('#gemTagFilters');
-    const imgDiag=panel.querySelector('#gemImgDiag');
-    const imgLogBtn=panel.querySelector('#gemImgLogBtn');
-    if(imgLogBtn) imgLogBtn.style.display='none';
-    const selectedTags=new Set();
-    function tagRGB(tag){ const t=(tag||'').toLowerCase();
-        if(t==='fire' || t==='life') return [220,68,61];
-        if(t==='cold' || t==='mana') return [66,165,245];
-        if(t==='lightning') return [255,213,79];
-        if(t==='chaos' || t==='minion') return [156,39,176];
-        if(t==='energy shield' || t==='es') return [38,198,218];
-        if(t==='armour' || t==='armor' || t==='defences') return [109,76,65];
-        if(t==='evasion') return [46,125,50];
-        if(t==='resistances' || t==='resist') return [255,112,67];
-        if(t==='projectile') return [255,179,0];
-        if(t==='area') return [171,71,188];
-        if(t==='critical' || t==='crit') return [255,179,0];
-        if(t==='spell') return [92,107,192];
-        if(t==='attack') return [121,85,72];
-        if(t==='damage' || t==='ailments' || t==='mechanics') return [96,125,139];
-        if(t==='movement' || t==='attack speed' || t==='speed') return [67,160,71];
-        if(t==='elemental') return [255,152,0];
-        return [120,144,156]; }
-    function chipCss(tag, active){ const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color}; border-radius:4px;`; }
-    function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; sortedTags.forEach(tag=>{ const btn=document.createElement('div'); const active=selectedTags.has(tag); const count = tagCounts[tag]||0; btn.textContent = count ? `${tag} (${count})` : tag; btn.style.cssText = `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; ${chipCss(tag, active)}`; btn.addEventListener('click',()=>{ active?selectedTags.delete(tag):selectedTags.add(tag); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(btn); }); if(selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; reset.style.cursor='pointer'; reset.style.userSelect='none'; reset.style.padding='2px 6px'; reset.style.fontSize='11px'; reset.style.border='1px solid var(--accent-red)'; reset.style.borderRadius='4px'; reset.style.background='var(--accent-red)'; reset.style.color='#fff'; reset.addEventListener('click',()=>{ selectedTags.clear(); build(searchEl.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
-    function gemMatches(g){ if(selectedTags.size===0) return true; const desc=(g.description||'').toLowerCase(); return [...selectedTags].every(t=> (g.tags&&g.tags.includes(t)) || desc.includes(t.toLowerCase())); }
-    function build(filter=''){
-        container.innerHTML='';
-        const f=filter.toLowerCase();
-        order.forEach(([key,label])=>{
-            const list=(groups[key]||[]).filter(g=>{
-                const matchesSearch=!f || g.name.toLowerCase().includes(f) || (g.type||'').toLowerCase().includes(f) || (g.description||'').toLowerCase().includes(f);
-                return matchesSearch && gemMatches(g);
-            });
-            if(!list.length) return;
-            const section=document.createElement('div');
-            section.innerHTML=`<div style='font-weight:600; font-size:14px; margin-bottom:4px;'>${label} (${list.length})</div>`;
-            const wrap=document.createElement('div'); wrap.style.display='grid'; wrap.style.gridTemplateColumns='repeat(auto-fit, minmax(230px, 1fr))'; wrap.style.gap='10px';
-            list.forEach(g=>{
-                const card=document.createElement('div');
-                card.style.background='var(--bg-card)'; card.style.border='1px solid var(--border-color)'; card.style.borderRadius='6px'; card.style.padding='6px'; card.style.display='flex'; card.style.flexDirection='column'; card.style.gap='4px';
-                const gp = getImagePath(g);
-                const imgHtml = g.image || g.imageLocal ?`<img class='gem-img' src='' data-orig-src='${gp}' loading='lazy' decoding='async' style='width:28px; height:28px; object-fit:contain;'>`:'';
-                const base=`<div style='display:flex; gap:6px; align-items:center;'>${imgHtml}<div style='font-weight:600;'>${g.name}</div></div><div style='font-size:10px; color:var(--text-muted);'>${g.type||''}</div><div style='font-size:11px; max-height:120px; overflow:auto;'>${g.description||''}</div>`;
-                const tagsRow = `<div style='font-size:10px; display:flex; flex-wrap:wrap; gap:4px;'>${(g.tags||[]).length? (g.tags||[]).map(t=>'<span style="background:var(--bg-tertiary); padding:2px 4px; border-radius:3px; line-height:1;">'+t+'</span>').join('') : '<span style="opacity:.5;">No tags</span>'}</div>`;
-                card.innerHTML=base+tagsRow;
-                wrap.appendChild(card);
-            });
-            section.appendChild(wrap); container.appendChild(section);
-        });
-        // Image fallback
-                const placeholder='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><rect width="28" height="28" rx="4" fill="%23222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23555" font-size="8" font-family="sans-serif">?</text></svg>';
-                container.querySelectorAll('img.gem-img').forEach(img=>{
-                    if(img._fb)return; img._fb=true; const orig=img.getAttribute('data-orig-src')||img.src; img.setAttribute('data-orig-src', orig);
-                    img.addEventListener('error',()=>{
-                        if(!img.dataset.retry){ img.dataset.retry='1'; const bust=orig+(orig.includes('?')?'&':'?')+'r='+Date.now(); img.src=bust; return; }
-                        img.src=placeholder; img.style.opacity='0.55'; img.style.filter='grayscale(1)';
-                        try { (window).__imageErrorEvents = (window).__imageErrorEvents || []; (window).__imageErrorEvents.push({ ts:Date.now(), phase:'failed', src:orig }); } catch {}
-                    });
-                });
-    }
-    searchEl.addEventListener('input',()=>build(searchEl.value));
-    clearBtn.addEventListener('click',()=>{ searchEl.value=''; build(''); searchEl.focus(); });
-        imgLogBtn.addEventListener('click', async ()=>{
-                try {
-                    const log = await window.electronAPI.getImageLog?.();
-                    if(!imgDiag)return; if(!log||!log.length){ imgDiag.style.display='flex'; imgDiag.innerHTML='<div style="font-size:11px; color:var(--text-muted);">No image log entries.</div>'; return; }
-                    imgDiag.style.display='flex';
-                    imgDiag.innerHTML = `<div style='font-size:11px; font-weight:600;'>Recent Image Requests (${log.length})</div>`+
-                        `<div style='max-height:160px; overflow:auto; font-size:10px; line-height:1.25; background:var(--bg-tertiary); padding:4px; border:1px solid var(--border-color); border-radius:4px;'>`+
-                        log.slice().reverse().map(e=>`<div style='margin-bottom:4px;'>${e.status?`<span style='color:${e.status>=200&&e.status<300?'#6fbf73':'var(--accent-red)'};'>${e.status}</span>`:`<span style='color:var(--accent-red);'>ERR</span>`} <span style='opacity:.7;'>${e.method}</span> <span>${e.url}</span>${e.error?`<div style='color:var(--accent-red);'>${e.error}</div>`:''}</div>`).join('')+
-                        `</div>`;
-                        // Attempt a targeted retry for 403 images (might succeed with new headers)
-                                    const forbidden = (log||[]).filter(e=>e.status===403).map(e=>e.url);
-                                    if(forbidden.length){
-                                        const allImgs = Array.from(document.querySelectorAll('img.gem-img'));
-                                        allImgs.forEach(function(img){
-                                            var orig = img.getAttribute('data-orig-src') || img.src;
-                                            if(forbidden.includes(orig) && !img.dataset.retry403){
-                                                img.dataset.retry403='1';
-                                                setTimeout(function(){ img.src = orig + (orig.includes('?')?'&':'?')+'reh='+Date.now(); }, 100);
-                                            }
-                                        });
-                                    }
-                } catch(err) {
-                    if(imgDiag){ imgDiag.style.display='flex'; imgDiag.innerHTML='<div style="color:var(--accent-red); font-size:11px;">Failed to fetch image log</div>'; }
-                }
-        });
-        build('');
-        renderTagFilters();
-    // Shared debug hotkey (Ctrl+Shift+I) to toggle gem img log button
-    if(!window.__gemImgDebugHotkey){
-        window.__gemImgDebugHotkey=true;
-        window.addEventListener('keydown',function(e){
-            if(e.ctrlKey && e.shiftKey && e.code==='KeyI'){
-                if(imgLogBtn){ imgLogBtn.style.display = imgLogBtn.style.display==='none' ? '' : 'none'; }
-            }
-        });
-    }
-}
+// ===== Gems (Character submenu) delegated to module =====
 
 // --- Generic auto-resolve for bundled images (gems / atlas / ascendancy / keystones / bases / uniques) ---
 // NEW SYSTEM: Images use imageLocal field with clean paths like "keystones/avatar_of_fire.webp"
