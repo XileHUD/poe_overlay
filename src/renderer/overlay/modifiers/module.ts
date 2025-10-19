@@ -1,6 +1,7 @@
 import { escapeHtml, applyFilterChipChrome, type ChipChrome } from '../utils';
 import { buildPoe2ChipChrome, buildPoe2ExcludeChrome } from '../shared/filterChips';
 import { getDomainToggles, getPrimaryToggles, getOverflowToggles, domainMatchesToggle, isBaseDomain, type OverlayGameVersion } from './versionConfig';
+import { renderModifierVirtualList, cleanupModifierVirtualScroll, type ModSection as VirtualModSection } from './virtualScroll';
 
 // Modifier panel controller + render pipeline extracted from overlay.html
 // Exposes a stable API used by overlay.html wrappers. No DOM structure changes.
@@ -1708,109 +1709,117 @@ export function renderFilteredContent(data: any){
     });
   } catch {}
 
-  // Progressive rendering for better performance with many domains (PoE1)
-  const domainEntries = Object.entries(groupedByDomain);
-  const CHUNK_SIZE = 5; // Render 5 domain sections at a time
-  
-  // Clear results wrapper
-  resultsWrapper.innerHTML = '';
-  
-  // Show loading indicator if we have many domains
-  if (domainEntries.length > 10) {
-    const loadingDiv = document.createElement('div');
-    loadingDiv.className = 'mod-loading-indicator';
-    loadingDiv.style.cssText = 'text-align:center; padding:20px; color:var(--text-secondary); font-size:12px;';
-    loadingDiv.textContent = `Loading ${domainEntries.length} domain sections...`;
-    resultsWrapper.appendChild(loadingDiv);
-  }
-  
-  // Function to render a chunk of domains
-  let currentChunkIndex = 0;
-  const renderChunk = () => {
-    const start = currentChunkIndex * CHUNK_SIZE;
-    const end = Math.min(start + CHUNK_SIZE, domainEntries.length);
-    
-    // Remove loading indicator on first chunk
-    if (currentChunkIndex === 0) {
-      resultsWrapper.innerHTML = '';
-    }
-    
-    // Create fragment for efficient DOM insertion
-    const fragment = document.createDocumentFragment();
-    
-    for (let i = start; i < end; i++) {
-      const [domain, domainSections] = domainEntries[i] as any[];
-      const hasPrefix = (domainSections as any).prefix;
-      const hasSuffix = (domainSections as any).suffix;
-      const hasNone = (domainSections as any).none;
-      
-      const container = document.createElement('div');
-      container.className = 'domain-container';
-      
-      const domainId = `domain-${domain}`;
-      let html = '';
-      
-      if (hasPrefix || hasSuffix) {
-        html = `
-          <div class="domain-sections open" id="${domainId}">
-            ${hasPrefix ? renderSection(hasPrefix, domainId) : '<div></div>'}
-            ${hasSuffix ? renderSection(hasSuffix, domainId) : '<div></div>'}
-          </div>`;
-      } else {
-        html = `
-          <div class="domain-sections open" id="${domainId}">
-            ${renderSection((hasNone || ((domainSections as any).list && (domainSections as any).list[0]) || { mods: [] }), domainId)}
-          </div>`;
-      }
-      
-      container.innerHTML = html;
-      fragment.appendChild(container);
-    }
-    
-    // Append chunk to results
-    resultsWrapper.appendChild(fragment);
-    
-    currentChunkIndex++;
-    
-    // Schedule next chunk if there are more
-    if (end < domainEntries.length) {
-      // Use requestAnimationFrame for smooth rendering
-      requestAnimationFrame(renderChunk);
-    } else {
-      // All chunks rendered - attach event handlers
-      attachEventHandlers();
-    }
-  };
-  
-  // Function to attach event handlers after all rendering is complete
-  const attachEventHandlers = () => {
-    try {
-      // Ensure inline tags are wired after results are in the DOM
-      attachInlineTagClickHandlers(tagModes, tagRGB);
+  const domainEntries = Object.entries(groupedByDomain).filter(([, descriptor]) => {
+    const list = (descriptor as any)?.list ?? [];
+    return list.some((section: any) => Array.isArray(section?.mods) && section.mods.length > 0);
+  });
 
-      (window as any).__lastFilteredSections = (filteredData.modifiers || []).map((s:any)=>({ ...s }));
-      resultsWrapper.querySelectorAll('.pin-section-btn').forEach(btn => {
-        btn.addEventListener('click', (ev) => {
-          ev.stopPropagation();
-          const domain = (btn as HTMLElement).getAttribute('data-domain') || '';
-          const side = (btn as HTMLElement).getAttribute('data-side') || 'none';
-          try {
-            const payload = buildSectionPopoutPayload(domain, side);
-            if ((window as any).electronAPI?.openModPopout) {
-              (window as any).electronAPI.openModPopout(payload);
-            } else {
-              console.warn('openModPopout API unavailable');
-            }
-          } catch(e){ console.error('Failed to build popout payload', e); }
-        });
-      });
-    } catch (err) {
-      console.error('Error attaching event handlers:', err);
-    }
+  // Persist filtered sections for pop-out payloads
+  (window as any).__lastFilteredSections = (filteredData.modifiers || []).map((section: any) => ({
+    ...section,
+    mods: Array.isArray(section.mods) ? section.mods.map((mod: any) => ({ ...mod })) : []
+  }));
+
+  ensureDomainCollapseStyles();
+
+  if (!domainEntries.length) {
+    cleanupModifierVirtualScroll();
+    resultsWrapper.innerHTML = '<div class="mod-empty-state" style="padding:16px; text-align:center; color:var(--text-secondary);">No modifiers matched the current filters.</div>';
+    return;
+  }
+
+  const ensurePinDelegation = () => {
+    const marker = '__pinDelegateBound';
+    if ((resultsWrapper as any)[marker]) return;
+    resultsWrapper.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+      const button = target.closest('.pin-section-btn') as HTMLElement | null;
+      if (!button) return;
+      event.preventDefault();
+      event.stopPropagation();
+      const domainAttr = button.getAttribute('data-domain') || '';
+      const sideAttr = button.getAttribute('data-side') || 'none';
+      try {
+        const payload = buildSectionPopoutPayload(domainAttr, sideAttr);
+        if ((window as any).electronAPI?.openModPopout) {
+          (window as any).electronAPI.openModPopout(payload);
+        } else {
+          console.warn('openModPopout API unavailable');
+        }
+      } catch (error) {
+        console.error('Failed to build popout payload', error);
+      }
+    });
+    (resultsWrapper as any)[marker] = true;
   };
-  
-  // Start progressive rendering
-  renderChunk();
+
+  ensurePinDelegation();
+
+  const buildDomainId = (domain: string) => `domain-${String(domain ?? 'other')}`.replace(/[^a-zA-Z0-9_-]+/g, '-');
+
+  type DomainDescriptor = {
+    prefix?: any;
+    suffix?: any;
+    none?: any;
+    list: any[];
+  };
+
+  type DomainVirtualSection = VirtualModSection & {
+    data: {
+      domain: string;
+      descriptor: DomainDescriptor;
+      domainId: string;
+    };
+  };
+
+  const virtualSections: DomainVirtualSection[] = domainEntries.map(([domain, descriptor]) => {
+    const domainId = buildDomainId(domain);
+    return {
+      key: domainId,
+      data: {
+        domain,
+        descriptor: descriptor as DomainDescriptor,
+        domainId
+      }
+    };
+  });
+
+  const renderDomainElement = (section: DomainVirtualSection): HTMLElement => {
+    const container = document.createElement('div');
+    container.className = 'domain-container';
+    const { descriptor, domainId } = section.data;
+    const hasPrefix = descriptor.prefix;
+    const hasSuffix = descriptor.suffix;
+    const fallback = descriptor.none || (descriptor.list && descriptor.list[0]) || { mods: [] };
+
+    if (hasPrefix || hasSuffix) {
+      container.innerHTML = `
+        <div class="domain-sections open" id="${domainId}">
+          ${hasPrefix ? renderSection(descriptor.prefix, domainId) : '<div></div>'}
+          ${hasSuffix ? renderSection(descriptor.suffix, domainId) : '<div></div>'}
+        </div>`;
+    } else {
+      container.innerHTML = `
+        <div class="domain-sections open" id="${domainId}">
+          ${renderSection(fallback, domainId)}
+        </div>`;
+    }
+
+    return container;
+  };
+
+  // Clear existing content before virtualization mounts
+  resultsWrapper.innerHTML = '';
+
+  renderModifierVirtualList(
+    virtualSections,
+    resultsWrapper,
+    (section) => renderDomainElement(section as DomainVirtualSection),
+    () => {
+      attachInlineTagClickHandlers(tagModes, tagRGB);
+    }
+  );
 }
 
 interface PopoutSectionPayloadMod {

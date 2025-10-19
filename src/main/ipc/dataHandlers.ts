@@ -1,8 +1,10 @@
 import { ipcMain, shell } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
+import { promises as fsp } from 'fs';
 import { ModifierDatabase } from '../modifier-database';
 import type { OverlayVersion } from '../../types/overlayVersion.js';
+import { JsonCache } from '../utils/jsonCache.js';
 
 // Centralized registration for data-related IPC handlers (JSON catalogs, modifiers, etc.)
 // OverlayApp will provide getDataDir function and modifierDatabase instance.
@@ -17,9 +19,72 @@ export interface DataIpcDeps {
 export function registerDataIpc(deps: DataIpcDeps) {
   const { modifierDatabase } = deps;
 
+  const jsonCache = new JsonCache();
+  modifierDatabase.setFileCache(jsonCache);
+
   const cacheInvalidators = new Map<string, () => void>();
   const preloadTasks: Array<() => Promise<void>> = [];
   const overlayVersion = deps.getOverlayVersion();
+
+  const toDataPath = (...segments: string[]) => path.join(deps.getDataDir(), ...segments);
+
+  const cloneJson = <T>(value: T): T => {
+    if (value === null || typeof value !== 'object') {
+      return value;
+    }
+    try {
+      return structuredClone(value);
+    } catch {
+      return JSON.parse(JSON.stringify(value));
+    }
+  };
+
+  const loadJsonSafe = async <T>(...segments: string[]) => {
+    const filePath = toDataPath(...segments);
+    try {
+      const data = await jsonCache.get<T>(filePath);
+      return { ok: true as const, data };
+    } catch (err: any) {
+      const code = err?.code === 'ENOENT' ? 'not_found' : err?.message || 'unknown_error';
+      return { ok: false as const, error: code, filePath };
+    }
+  };
+
+  const createCachedLoader = <T>(cacheKey: string, factory: () => Promise<T | { error: string; filePath?: string }>) => {
+    let cache: (T | { error: string; filePath?: string }) | undefined;
+    let inflight: Promise<T | { error: string; filePath?: string }> | null = null;
+
+    const load = async () => {
+      if (typeof cache !== 'undefined') {
+        return cache;
+      }
+      if (inflight) {
+        return inflight;
+      }
+
+      inflight = (async () => {
+        try {
+          const result = await factory();
+          cache = result;
+          return result;
+        } catch (err: any) {
+          const error = err?.message || 'unknown_error';
+          cache = { error };
+          return cache;
+        } finally {
+          inflight = null;
+        }
+      })();
+
+      return inflight;
+    };
+
+    cacheInvalidators.set(cacheKey, () => {
+      cache = undefined;
+    });
+
+    return load;
+  };
 
   const queuePreload = (name: string, loader: () => Promise<void>) => {
     preloadTasks.push(async () => {
@@ -38,6 +103,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   };
 
   const invalidateCaches = () => {
+    jsonCache.clear();
     for (const [key, clear] of cacheInvalidators.entries()) {
       try {
         clear();
@@ -135,13 +201,14 @@ export function registerDataIpc(deps: DataIpcDeps) {
     let cachedValue: any;
     let hasCache = false;
 
-    const loadFromDisk = () => {
-      const filePath = path.join(deps.getDataDir(), fileName);
-      if (fs.existsSync(filePath)) {
-        const raw = fs.readFileSync(filePath, 'utf-8');
-        cachedValue = JSON.parse(raw);
-      } else {
-        cachedValue = { error: 'not_found', filePath };
+    const filePath = toDataPath(fileName);
+
+    const loadFromDisk = async (force = false) => {
+      try {
+        cachedValue = await jsonCache.get(filePath, { force });
+      } catch (err: any) {
+        const errorCode = err?.code === 'ENOENT' ? 'not_found' : err?.message || 'unknown_error';
+        cachedValue = { error: errorCode, filePath };
       }
       hasCache = true;
       return cachedValue;
@@ -150,6 +217,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
     const clearCache = () => {
       cachedValue = undefined;
       hasCache = false;
+      jsonCache.clear(filePath);
     };
 
     if (useCache) {
@@ -159,7 +227,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
     if (options?.preload) {
       queuePreload(cacheKey, async () => {
         clearCache();
-        loadFromDisk();
+        await loadFromDisk(true);
       });
     }
 
@@ -167,11 +235,11 @@ export function registerDataIpc(deps: DataIpcDeps) {
       try {
         if (useCache) {
           if (!hasCache) {
-            loadFromDisk();
+            await loadFromDisk();
           }
           return cachedValue;
         }
-        return loadFromDisk();
+        return await loadFromDisk(true);
       } catch (e: any) {
         return { error: e?.message || 'unknown_error' };
       }
@@ -203,21 +271,6 @@ export function registerDataIpc(deps: DataIpcDeps) {
   });
 
   // PoE1-specific handlers
-  let poe1UniquesCache: any | undefined;
-  let poe1BasesCache: any | undefined;
-  let poe1EssencesCache: any | undefined;
-  let poe1EmbersCache: any | undefined;
-  let poe1FossilsCache: any | undefined;
-  let poe1CurrencyCache: any | undefined;
-  let poe1ScarabsCache: any | undefined;
-  let poe1HorticraftingCache: any | undefined;
-  let poe1BestiaryCache: any | undefined;
-  let poe1RunegraftsCache: any | undefined;
-  let poe1DivinationCardsCache: any | undefined;
-  let poe1TattoosCache: any | undefined;
-  let poe1GemsCache: any | undefined;
-  let poe1AscendancyNotablesCache: any | undefined;
-  let poe1AnointmentsCache: any | undefined;
 
   const classifyReplicaCategory = (baseType: string): 'WeaponUnique' | 'ArmourUnique' | 'OtherUnique' => {
     const lower = (baseType || '').toLowerCase();
@@ -239,372 +292,242 @@ export function registerDataIpc(deps: DataIpcDeps) {
     return container;
   };
 
-  const loadPoe1Uniques = () => {
-    try {
-      const dataDir = deps.getDataDir();
-      const uniquesPath = path.join(dataDir, 'items', 'uniques', 'Uniques.json');
-      let uniques: any = { uniques: { WeaponUnique: [], ArmourUnique: [], OtherUnique: [] } };
+  const loadPoe1Uniques = createCachedLoader('poe1:uniques', async () => {
+    const uniquesResult = await loadJsonSafe<any>('items', 'uniques', 'Uniques.json');
+    if (!uniquesResult.ok) {
+      return { error: uniquesResult.error, filePath: uniquesResult.filePath };
+    }
 
-      if (fs.existsSync(uniquesPath)) {
-        const raw = fs.readFileSync(uniquesPath, 'utf-8');
-        uniques = JSON.parse(raw);
+    const uniques = ensureUniqueBuckets(cloneJson(uniquesResult.data ?? { uniques: {} }));
+
+    const replicaResult = await loadJsonSafe<any>('items', 'uniques', 'ReplicaUniques.json');
+    if (replicaResult.ok) {
+      const replicaUniques = replicaResult.data?.uniques?.ReplicaUnique || [];
+      for (const replica of Array.isArray(replicaUniques) ? replicaUniques : []) {
+        const bucket = classifyReplicaCategory(replica?.baseType || '');
+        uniques.uniques[bucket].push(replica);
       }
+    } else if (replicaResult.error !== 'not_found') {
+      console.warn('[DataIPC] Failed to load ReplicaUniques.json', replicaResult.error);
+    }
 
-      ensureUniqueBuckets(uniques);
+    return uniques;
+  });
 
-      const replicaPath = path.join(dataDir, 'items', 'uniques', 'ReplicaUniques.json');
-      if (fs.existsSync(replicaPath)) {
-        const raw = fs.readFileSync(replicaPath, 'utf-8');
-        const replicaData = JSON.parse(raw);
-        const replicaUniques = replicaData?.uniques?.ReplicaUnique || [];
+  const loadPoe1Essences = createCachedLoader('poe1:essences', async () => {
+    const result = await loadJsonSafe<any>('items', 'essences', 'Essences.json');
+    if (!result.ok) {
+      return { error: result.error, filePath: result.filePath };
+    }
+    return result.data;
+  });
 
-        for (const replica of replicaUniques) {
-          const bucket = classifyReplicaCategory(replica.baseType || '');
-          uniques.uniques[bucket].push(replica);
+  const loadPoe1Embers = createCachedLoader('poe1:embers', async () => {
+    const result = await loadJsonSafe<any>('items', 'embers', 'Embers.json');
+    if (!result.ok) {
+      return { error: result.error, filePath: result.filePath };
+    }
+    return result.data;
+  });
+
+  const loadPoe1Fossils = createCachedLoader('poe1:fossils', async () => {
+    const result = await loadJsonSafe<any>('items', 'fossils', 'Fossils.json');
+    if (!result.ok) {
+      return { error: result.error, filePath: result.filePath };
+    }
+    return result.data;
+  });
+
+  const loadPoe1Currency = createCachedLoader('poe1:currency', async () => {
+    const result = await loadJsonSafe<any>('items', 'currency', 'Currency.json');
+    if (!result.ok) {
+      return { error: result.error, filePath: result.filePath };
+    }
+    return result.data;
+  });
+
+  const loadPoe1Scarabs = createCachedLoader('poe1:scarabs', async () => {
+    const result = await loadJsonSafe<any>('items', 'scarabs', 'Scarabs.json');
+    if (!result.ok) {
+      return { error: result.error, filePath: result.filePath };
+    }
+    return result.data;
+  });
+
+  const loadPoe1Horticrafting = createCachedLoader('poe1:horticrafting', async () => {
+    const result = await loadJsonSafe<any>('crafting', 'horticrafting', 'Horticrafting.json');
+    if (!result.ok) {
+      return { error: result.error, filePath: result.filePath };
+    }
+    return result.data;
+  });
+
+  const loadPoe1Bestiary = createCachedLoader('poe1:bestiary', async () => {
+    const result = await loadJsonSafe<any>('crafting', 'bestiary', 'Bestiary.json');
+    if (!result.ok) {
+      return { error: result.error, filePath: result.filePath };
+    }
+    return result.data;
+  });
+
+  const loadPoe1Runegrafts = createCachedLoader('poe1:runegrafts', async () => {
+    const result = await loadJsonSafe<any>('items', 'runegrafts', 'Runegrafts.json');
+    if (!result.ok) {
+      return { error: result.error, filePath: result.filePath };
+    }
+    return result.data;
+  });
+
+  const loadPoe1DivinationCards = createCachedLoader('poe1:divinationCards', async () => {
+    const result = await loadJsonSafe<any>('items', 'divination-cards', 'DivinationCards.json');
+    if (!result.ok) {
+      return { error: result.error, filePath: result.filePath };
+    }
+    return result.data;
+  });
+
+  const loadPoe1Tattoos = createCachedLoader('poe1:tattoos', async () => {
+    const result = await loadJsonSafe<any>('items', 'tattoos', 'Tattoos.json');
+    if (!result.ok) {
+      return { error: result.error, filePath: result.filePath };
+    }
+    return result.data;
+  });
+
+  const loadPoe1Gems = createCachedLoader('poe1:gems', async () => {
+    const result = await loadJsonSafe<any>('items', 'gems', 'Gems.json');
+    if (!result.ok) {
+      return { error: result.error, filePath: result.filePath };
+    }
+    const gemsPayload = Array.isArray(result.data?.gems) ? result.data.gems : [];
+    return { gems: cloneJson(gemsPayload) };
+  });
+
+  const loadPoe1AscendancyNotables = createCachedLoader('poe1:ascendancyNotables', async () => {
+    const notablesDir = toDataPath('ascendancy-notables');
+    if (!fs.existsSync(notablesDir)) {
+      return { error: 'not_found', filePath: notablesDir };
+    }
+
+    const bundle = {
+      slug: 'Ascendancy_Notables',
+      notables: [] as any[],
+      classes: [] as string[],
+      ascendancies: [] as string[],
+    };
+
+    const classSet = new Set<string>();
+    const ascendancySet = new Set<string>();
+
+    const files = (await fsp.readdir(notablesDir)).filter(file => file.toLowerCase().endsWith('.json'));
+    for (const file of files) {
+      try {
+        const fileResult = await loadJsonSafe<any>('ascendancy-notables', file);
+        if (!fileResult.ok) {
+          if (fileResult.error !== 'not_found') {
+            console.warn('[DataHandlers] Failed to load PoE1 Ascendancy Notables file:', file, fileResult.error);
+          }
+          continue;
         }
-      }
-
-      poe1UniquesCache = uniques;
-    } catch (e: any) {
-      poe1UniquesCache = { error: e?.message || 'unknown_error' };
-    }
-    return poe1UniquesCache;
-  };
-
-  const loadPoe1Essences = () => {
-    try {
-      const dataDir = deps.getDataDir();
-      const essencesPath = path.join(dataDir, 'items', 'essences', 'Essences.json');
-      if (fs.existsSync(essencesPath)) {
-        const raw = fs.readFileSync(essencesPath, 'utf-8');
-        poe1EssencesCache = JSON.parse(raw);
-      } else {
-        poe1EssencesCache = { error: 'not_found', filePath: essencesPath };
-      }
-    } catch (e: any) {
-      poe1EssencesCache = { error: e?.message || 'unknown_error' };
-    }
-    return poe1EssencesCache;
-  };
-
-  const loadPoe1Embers = () => {
-    try {
-      const dataDir = deps.getDataDir();
-      const embersPath = path.join(dataDir, 'items', 'embers', 'Embers.json');
-      if (fs.existsSync(embersPath)) {
-        const raw = fs.readFileSync(embersPath, 'utf-8');
-        poe1EmbersCache = JSON.parse(raw);
-      } else {
-        poe1EmbersCache = { error: 'not_found', filePath: embersPath };
-      }
-    } catch (e: any) {
-      poe1EmbersCache = { error: e?.message || 'unknown_error' };
-    }
-    return poe1EmbersCache;
-  };
-
-  const loadPoe1Fossils = () => {
-    try {
-      const dataDir = deps.getDataDir();
-      const fossilsPath = path.join(dataDir, 'items', 'fossils', 'Fossils.json');
-      if (fs.existsSync(fossilsPath)) {
-        const raw = fs.readFileSync(fossilsPath, 'utf-8');
-        poe1FossilsCache = JSON.parse(raw);
-      } else {
-        poe1FossilsCache = { error: 'not_found', filePath: fossilsPath };
-      }
-    } catch (e: any) {
-      poe1FossilsCache = { error: e?.message || 'unknown_error' };
-    }
-    return poe1FossilsCache;
-  };
-
-  const loadPoe1Currency = () => {
-    try {
-      const dataDir = deps.getDataDir();
-      const currencyPath = path.join(dataDir, 'items', 'currency', 'Currency.json');
-      if (fs.existsSync(currencyPath)) {
-        const raw = fs.readFileSync(currencyPath, 'utf-8');
-        poe1CurrencyCache = JSON.parse(raw);
-      } else {
-        poe1CurrencyCache = { error: 'not_found', filePath: currencyPath };
-      }
-    } catch (e: any) {
-      poe1CurrencyCache = { error: e?.message || 'unknown_error' };
-    }
-    return poe1CurrencyCache;
-  };
-
-  const loadPoe1Scarabs = () => {
-    try {
-      const dataDir = deps.getDataDir();
-      const scarabsPath = path.join(dataDir, 'items', 'scarabs', 'Scarabs.json');
-      if (fs.existsSync(scarabsPath)) {
-        const raw = fs.readFileSync(scarabsPath, 'utf-8');
-        poe1ScarabsCache = JSON.parse(raw);
-      } else {
-        poe1ScarabsCache = { error: 'not_found', filePath: scarabsPath };
-      }
-    } catch (e: any) {
-      poe1ScarabsCache = { error: e?.message || 'unknown_error' };
-    }
-    return poe1ScarabsCache;
-  };
-
-  const loadPoe1Horticrafting = () => {
-    try {
-      const dataDir = deps.getDataDir();
-      const horticraftingPath = path.join(dataDir, 'crafting', 'horticrafting', 'Horticrafting.json');
-      if (fs.existsSync(horticraftingPath)) {
-        const raw = fs.readFileSync(horticraftingPath, 'utf-8');
-        poe1HorticraftingCache = JSON.parse(raw);
-      } else {
-        poe1HorticraftingCache = { error: 'not_found', filePath: horticraftingPath };
-      }
-    } catch (e: any) {
-      poe1HorticraftingCache = { error: e?.message || 'unknown_error' };
-    }
-    return poe1HorticraftingCache;
-  };
-
-  const loadPoe1Bestiary = () => {
-    try {
-      const dataDir = deps.getDataDir();
-      const bestiaryPath = path.join(dataDir, 'crafting', 'bestiary', 'Bestiary.json');
-      if (fs.existsSync(bestiaryPath)) {
-        const raw = fs.readFileSync(bestiaryPath, 'utf-8');
-        poe1BestiaryCache = JSON.parse(raw);
-      } else {
-        poe1BestiaryCache = { error: 'not_found', filePath: bestiaryPath };
-      }
-    } catch (e: any) {
-      poe1BestiaryCache = { error: e?.message || 'unknown_error' };
-    }
-    return poe1BestiaryCache;
-  };
-
-  const loadPoe1Runegrafts = () => {
-    try {
-      const dataDir = deps.getDataDir();
-      const runegraftsPath = path.join(dataDir, 'items', 'runegrafts', 'Runegrafts.json');
-      if (fs.existsSync(runegraftsPath)) {
-        const raw = fs.readFileSync(runegraftsPath, 'utf-8');
-        poe1RunegraftsCache = JSON.parse(raw);
-      } else {
-        poe1RunegraftsCache = { error: 'not_found', filePath: runegraftsPath };
-      }
-    } catch (e: any) {
-      poe1RunegraftsCache = { error: e?.message || 'unknown_error' };
-    }
-    return poe1RunegraftsCache;
-  };
-
-  const loadPoe1DivinationCards = () => {
-    try {
-      const dataDir = deps.getDataDir();
-      const cardsPath = path.join(dataDir, 'items', 'divination-cards', 'DivinationCards.json');
-      if (fs.existsSync(cardsPath)) {
-        const raw = fs.readFileSync(cardsPath, 'utf-8');
-        poe1DivinationCardsCache = JSON.parse(raw);
-      } else {
-        poe1DivinationCardsCache = { error: 'not_found', filePath: cardsPath };
-      }
-    } catch (e: any) {
-      poe1DivinationCardsCache = { error: e?.message || 'unknown_error' };
-    }
-    return poe1DivinationCardsCache;
-  };
-
-  const loadPoe1Tattoos = () => {
-    try {
-      const dataDir = deps.getDataDir();
-      const tattoosPath = path.join(dataDir, 'items', 'tattoos', 'Tattoos.json');
-      if (fs.existsSync(tattoosPath)) {
-        const raw = fs.readFileSync(tattoosPath, 'utf-8');
-        poe1TattoosCache = JSON.parse(raw);
-      } else {
-        poe1TattoosCache = { error: 'not_found', filePath: tattoosPath };
-      }
-    } catch (e: any) {
-      poe1TattoosCache = { error: e?.message || 'unknown_error' };
-    }
-    return poe1TattoosCache;
-  };
-
-  const loadPoe1Gems = () => {
-    try {
-      const dataDir = deps.getDataDir();
-      const gemsPath = path.join(dataDir, 'items', 'gems', 'Gems.json');
-      if (fs.existsSync(gemsPath)) {
-        const raw = fs.readFileSync(gemsPath, 'utf-8');
-        const data = JSON.parse(raw);
-        // Extract the gems array from the new structure {slug: "Gems", gems: [...]}
-        poe1GemsCache = { gems: data.gems || [] };
-      } else {
-        poe1GemsCache = { error: 'not_found', filePath: gemsPath };
-      }
-    } catch (e: any) {
-      poe1GemsCache = { error: e?.message || 'unknown_error' };
-    }
-    return poe1GemsCache;
-  };
-
-  const loadPoe1AscendancyNotables = () => {
-    try {
-      const dataDir = deps.getDataDir();
-      const notablesDir = path.join(dataDir, 'ascendancy-notables');
-      const bundle = {
-        slug: 'Ascendancy_Notables',
-        notables: [] as any[],
-        classes: [] as string[],
-        ascendancies: [] as string[]
-      };
-
-      if (fs.existsSync(notablesDir)) {
-        const files = fs.readdirSync(notablesDir).filter((file) => file.toLowerCase().endsWith('.json'));
-        const classSet = new Set<string>();
-        const ascendancySet = new Set<string>();
-
-        for (const file of files) {
-          try {
-            const raw = fs.readFileSync(path.join(notablesDir, file), 'utf-8');
-            const parsed = JSON.parse(raw);
-            const character = typeof parsed?.character === 'string' ? parsed.character : '';
-            if (Array.isArray(parsed?.notables)) {
-              for (const notable of parsed.notables) {
-                const clone = { ...notable };
-                if (character && !clone.character) clone.character = character;
-                if (clone.character) classSet.add(String(clone.character));
-                if (clone.ascendancy) ascendancySet.add(String(clone.ascendancy));
-                bundle.notables.push(clone);
-              }
-            }
-          } catch (innerError: any) {
-            console.warn('[DataHandlers] Failed to parse PoE1 Ascendancy Notables file:', file, innerError);
+        const parsed = fileResult.data;
+        const character = typeof parsed?.character === 'string' ? parsed.character : '';
+        if (Array.isArray(parsed?.notables)) {
+          for (const notable of parsed.notables) {
+            const clone = { ...notable };
+            if (character && !clone.character) clone.character = character;
+            if (clone.character) classSet.add(String(clone.character));
+            if (clone.ascendancy) ascendancySet.add(String(clone.ascendancy));
+            bundle.notables.push(clone);
           }
         }
-
-        bundle.classes = Array.from(classSet).filter(Boolean).sort((a, b) => a.localeCompare(b));
-        bundle.ascendancies = Array.from(ascendancySet).filter(Boolean).sort((a, b) => a.localeCompare(b));
-        poe1AscendancyNotablesCache = bundle;
-      } else {
-        poe1AscendancyNotablesCache = { error: 'not_found', filePath: notablesDir };
+      } catch (innerError) {
+        console.warn('[DataHandlers] Failed to parse PoE1 Ascendancy Notables file:', file, innerError);
       }
-    } catch (e: any) {
-      poe1AscendancyNotablesCache = { error: e?.message || 'unknown_error' };
     }
-    return poe1AscendancyNotablesCache;
-  };
 
-  const loadPoe1Anointments = () => {
-    try {
-      const dataDir = deps.getDataDir();
+    bundle.classes = Array.from(classSet).filter(Boolean).sort((a, b) => a.localeCompare(b));
+    bundle.ascendancies = Array.from(ascendancySet).filter(Boolean).sort((a, b) => a.localeCompare(b));
+    return bundle;
+  });
 
-      const tryResolveBaseDir = (): string => {
-        const direct = path.join(dataDir, 'crafting', 'anointments');
-        if (fs.existsSync(direct)) return direct;
-        const nested = path.join(dataDir, 'PoE1Modules', 'crafting', 'anointments');
-        if (fs.existsSync(nested)) return nested;
-        return direct;
-      };
+  const loadPoe1Anointments = createCachedLoader('poe1:anointments', async () => {
+    const dataDir = deps.getDataDir();
 
-      const baseDir = tryResolveBaseDir();
-      const amuletsPath = path.join(baseDir, 'AnointUniqueAmulets.json');
-      const ringsPath = path.join(baseDir, 'AnointRings.json');
+    const tryResolveBaseDir = (): string => {
+      const direct = path.join(dataDir, 'crafting', 'anointments');
+      if (fs.existsSync(direct)) return direct;
+      const nested = path.join(dataDir, 'PoE1Modules', 'crafting', 'anointments');
+      if (fs.existsSync(nested)) return nested;
+      return direct;
+    };
 
-      const loadFile = (filePath: string) => {
-        if (fs.existsSync(filePath)) {
-          const raw = fs.readFileSync(filePath, 'utf-8');
-          return JSON.parse(raw);
-        }
-        return { error: 'not_found', filePath };
-      };
+    const baseDir = tryResolveBaseDir();
 
-      poe1AnointmentsCache = {
-        amulets: loadFile(amuletsPath),
-        rings: loadFile(ringsPath)
-      };
-    } catch (e: any) {
-      poe1AnointmentsCache = { error: e?.message || 'unknown_error' };
-    }
-    return poe1AnointmentsCache;
-  };
-
-  const loadPoe1Bases = () => {
-    try {
-      const dataDir = deps.getDataDir();
-      const basesPath = path.join(dataDir, 'items', 'bases', 'Bases.json');
-      if (fs.existsSync(basesPath)) {
-        const raw = fs.readFileSync(basesPath, 'utf-8');
-        const data = JSON.parse(raw);
-
-        const cleanItem = (item: any) => {
-          if (item && typeof item === 'object') {
-            if (item.icon) delete item.icon;
-            if (item.image && typeof item.image === 'string' && item.image.includes('poedb')) delete item.image;
-          }
-          return item;
-        };
-
-        if (data.bases) {
-          Object.keys(data.bases).forEach(category => {
-            if (Array.isArray(data.bases[category])) {
-              data.bases[category] = data.bases[category].map(cleanItem);
-            }
-          });
-        }
-
-        poe1BasesCache = data;
-      } else {
-        poe1BasesCache = { error: 'not_found', filePath: basesPath };
+    const loadFile = async (fileName: string) => {
+      const filePath = path.join(baseDir, fileName);
+      try {
+        return await jsonCache.get(filePath);
+      } catch (err: any) {
+        const error = err?.code === 'ENOENT' ? 'not_found' : err?.message || 'unknown_error';
+        return { error, filePath };
       }
-    } catch (e: any) {
-      poe1BasesCache = { error: e?.message || 'unknown_error' };
-    }
-    return poe1BasesCache;
-  };
+    };
 
-  cacheInvalidators.set('poe1:uniques', () => { poe1UniquesCache = undefined; });
-  cacheInvalidators.set('poe1:bases', () => { poe1BasesCache = undefined; });
-  cacheInvalidators.set('poe1:essences', () => { poe1EssencesCache = undefined; });
-  cacheInvalidators.set('poe1:embers', () => { poe1EmbersCache = undefined; });
-  cacheInvalidators.set('poe1:fossils', () => { poe1FossilsCache = undefined; });
-  cacheInvalidators.set('poe1:currency', () => { poe1CurrencyCache = undefined; });
-  cacheInvalidators.set('poe1:scarabs', () => { poe1ScarabsCache = undefined; });
-  cacheInvalidators.set('poe1:horticrafting', () => { poe1HorticraftingCache = undefined; });
-  cacheInvalidators.set('poe1:bestiary', () => { poe1BestiaryCache = undefined; });
-  cacheInvalidators.set('poe1:runegrafts', () => { poe1RunegraftsCache = undefined; });
-  cacheInvalidators.set('poe1:divinationCards', () => { poe1DivinationCardsCache = undefined; });
-  cacheInvalidators.set('poe1:tattoos', () => { poe1TattoosCache = undefined; });
-  cacheInvalidators.set('poe1:anointments', () => { poe1AnointmentsCache = undefined; });
-  cacheInvalidators.set('poe1:gems', () => { poe1GemsCache = undefined; });
-  cacheInvalidators.set('poe1:ascendancyNotables', () => { poe1AscendancyNotablesCache = undefined; });
+    return {
+      amulets: await loadFile('AnointUniqueAmulets.json'),
+      rings: await loadFile('AnointRings.json')
+    };
+  });
+
+  const loadPoe1Bases = createCachedLoader('poe1:bases', async () => {
+    const result = await loadJsonSafe<any>('items', 'bases', 'Bases.json');
+    if (!result.ok) {
+      return { error: result.error, filePath: result.filePath };
+    }
+
+    const data = cloneJson(result.data ?? {});
+
+    const cleanItem = (item: any) => {
+      if (item && typeof item === 'object') {
+        if (item.icon) delete item.icon;
+        if (item.image && typeof item.image === 'string' && item.image.includes('poedb')) delete item.image;
+      }
+      return item;
+    };
+
+    if (data.bases && typeof data.bases === 'object') {
+      Object.keys(data.bases).forEach(category => {
+        if (Array.isArray((data.bases as any)[category])) {
+          (data.bases as any)[category] = (data.bases as any)[category].map(cleanItem);
+        }
+      });
+    }
+
+    return data;
+  });
 
   if (overlayVersion === 'poe1') {
-    queuePreload('poe1:uniques', async () => { poe1UniquesCache = undefined; loadPoe1Uniques(); });
-    queuePreload('poe1:bases', async () => { poe1BasesCache = undefined; loadPoe1Bases(); });
-    queuePreload('poe1:essences', async () => { poe1EssencesCache = undefined; loadPoe1Essences(); });
-    queuePreload('poe1:embers', async () => { poe1EmbersCache = undefined; loadPoe1Embers(); });
-    queuePreload('poe1:fossils', async () => { poe1FossilsCache = undefined; loadPoe1Fossils(); });
-    queuePreload('poe1:currency', async () => { poe1CurrencyCache = undefined; loadPoe1Currency(); });
-    queuePreload('poe1:scarabs', async () => { poe1ScarabsCache = undefined; loadPoe1Scarabs(); });
-  queuePreload('poe1:horticrafting', async () => { poe1HorticraftingCache = undefined; loadPoe1Horticrafting(); });
-  queuePreload('poe1:bestiary', async () => { poe1BestiaryCache = undefined; loadPoe1Bestiary(); });
-    queuePreload('poe1:runegrafts', async () => { poe1RunegraftsCache = undefined; loadPoe1Runegrafts(); });
-    queuePreload('poe1:divinationCards', async () => { poe1DivinationCardsCache = undefined; loadPoe1DivinationCards(); });
-  queuePreload('poe1:tattoos', async () => { poe1TattoosCache = undefined; loadPoe1Tattoos(); });
-  queuePreload('poe1:anointments', async () => { poe1AnointmentsCache = undefined; loadPoe1Anointments(); });
-    queuePreload('poe1:gems', async () => { poe1GemsCache = undefined; loadPoe1Gems(); });
-    queuePreload('poe1:ascendancyNotables', async () => { poe1AscendancyNotablesCache = undefined; loadPoe1AscendancyNotables(); });
+    queuePreload('poe1:uniques', async () => { await loadPoe1Uniques(); });
+    queuePreload('poe1:bases', async () => { await loadPoe1Bases(); });
+    queuePreload('poe1:essences', async () => { await loadPoe1Essences(); });
+    queuePreload('poe1:embers', async () => { await loadPoe1Embers(); });
+    queuePreload('poe1:fossils', async () => { await loadPoe1Fossils(); });
+    queuePreload('poe1:currency', async () => { await loadPoe1Currency(); });
+    queuePreload('poe1:scarabs', async () => { await loadPoe1Scarabs(); });
+    queuePreload('poe1:horticrafting', async () => { await loadPoe1Horticrafting(); });
+    queuePreload('poe1:bestiary', async () => { await loadPoe1Bestiary(); });
+    queuePreload('poe1:runegrafts', async () => { await loadPoe1Runegrafts(); });
+    queuePreload('poe1:divinationCards', async () => { await loadPoe1DivinationCards(); });
+    queuePreload('poe1:tattoos', async () => { await loadPoe1Tattoos(); });
+    queuePreload('poe1:anointments', async () => { await loadPoe1Anointments(); });
+    queuePreload('poe1:gems', async () => { await loadPoe1Gems(); });
+    queuePreload('poe1:ascendancyNotables', async () => { await loadPoe1AscendancyNotables(); });
   }
 
   try { ipcMain.removeHandler('get-poe1-uniques'); } catch {}
   ipcMain.handle('get-poe1-uniques', async () => {
     try {
-      if (typeof poe1UniquesCache === 'undefined') {
-        loadPoe1Uniques();
-      }
-      return poe1UniquesCache;
+      return await loadPoe1Uniques();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }
@@ -613,10 +536,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   try { ipcMain.removeHandler('get-poe1-bases'); } catch {}
   ipcMain.handle('get-poe1-bases', async () => {
     try {
-      if (typeof poe1BasesCache === 'undefined') {
-        loadPoe1Bases();
-      }
-      return poe1BasesCache;
+      return await loadPoe1Bases();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }
@@ -625,10 +545,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   try { ipcMain.removeHandler('get-poe1-essences'); } catch {}
   ipcMain.handle('get-poe1-essences', async () => {
     try {
-      if (typeof poe1EssencesCache === 'undefined') {
-        loadPoe1Essences();
-      }
-      return poe1EssencesCache;
+      return await loadPoe1Essences();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }
@@ -637,10 +554,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   try { ipcMain.removeHandler('get-poe1-embers'); } catch {}
   ipcMain.handle('get-poe1-embers', async () => {
     try {
-      if (typeof poe1EmbersCache === 'undefined') {
-        loadPoe1Embers();
-      }
-      return poe1EmbersCache;
+      return await loadPoe1Embers();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }
@@ -649,10 +563,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   try { ipcMain.removeHandler('get-poe1-fossils'); } catch {}
   ipcMain.handle('get-poe1-fossils', async () => {
     try {
-      if (typeof poe1FossilsCache === 'undefined') {
-        loadPoe1Fossils();
-      }
-      return poe1FossilsCache;
+      return await loadPoe1Fossils();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }
@@ -661,10 +572,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   try { ipcMain.removeHandler('get-poe1-currency'); } catch {}
   ipcMain.handle('get-poe1-currency', async () => {
     try {
-      if (typeof poe1CurrencyCache === 'undefined') {
-        loadPoe1Currency();
-      }
-      return poe1CurrencyCache;
+      return await loadPoe1Currency();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }
@@ -673,10 +581,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   try { ipcMain.removeHandler('get-poe1-scarabs'); } catch {}
   ipcMain.handle('get-poe1-scarabs', async () => {
     try {
-      if (typeof poe1ScarabsCache === 'undefined') {
-        loadPoe1Scarabs();
-      }
-      return poe1ScarabsCache;
+      return await loadPoe1Scarabs();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }
@@ -685,10 +590,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   try { ipcMain.removeHandler('get-poe1-horticrafting'); } catch {}
   ipcMain.handle('get-poe1-horticrafting', async () => {
     try {
-      if (typeof poe1HorticraftingCache === 'undefined') {
-        loadPoe1Horticrafting();
-      }
-      return poe1HorticraftingCache;
+      return await loadPoe1Horticrafting();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }
@@ -697,10 +599,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   try { ipcMain.removeHandler('get-poe1-bestiary'); } catch {}
   ipcMain.handle('get-poe1-bestiary', async () => {
     try {
-      if (typeof poe1BestiaryCache === 'undefined') {
-        loadPoe1Bestiary();
-      }
-      return poe1BestiaryCache;
+      return await loadPoe1Bestiary();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }
@@ -709,10 +608,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   try { ipcMain.removeHandler('get-poe1-runegrafts'); } catch {}
   ipcMain.handle('get-poe1-runegrafts', async () => {
     try {
-      if (typeof poe1RunegraftsCache === 'undefined') {
-        loadPoe1Runegrafts();
-      }
-      return poe1RunegraftsCache;
+      return await loadPoe1Runegrafts();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }
@@ -721,10 +617,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   try { ipcMain.removeHandler('get-poe1-divination-cards'); } catch {}
   ipcMain.handle('get-poe1-divination-cards', async () => {
     try {
-      if (typeof poe1DivinationCardsCache === 'undefined') {
-        loadPoe1DivinationCards();
-      }
-      return poe1DivinationCardsCache;
+      return await loadPoe1DivinationCards();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }
@@ -733,10 +626,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   try { ipcMain.removeHandler('get-poe1-tattoos'); } catch {}
   ipcMain.handle('get-poe1-tattoos', async () => {
     try {
-      if (typeof poe1TattoosCache === 'undefined') {
-        loadPoe1Tattoos();
-      }
-      return poe1TattoosCache;
+      return await loadPoe1Tattoos();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }
@@ -745,10 +635,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   try { ipcMain.removeHandler('get-poe1-anointments'); } catch {}
   ipcMain.handle('get-poe1-anointments', async () => {
     try {
-      if (typeof poe1AnointmentsCache === 'undefined') {
-        loadPoe1Anointments();
-      }
-      return poe1AnointmentsCache;
+      return await loadPoe1Anointments();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }
@@ -757,10 +644,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   try { ipcMain.removeHandler('get-poe1-gems'); } catch {}
   ipcMain.handle('get-poe1-gems', async () => {
     try {
-      if (typeof poe1GemsCache === 'undefined') {
-        loadPoe1Gems();
-      }
-      return poe1GemsCache;
+      return await loadPoe1Gems();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }
@@ -769,10 +653,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
   try { ipcMain.removeHandler('get-poe1-ascendancy-notables'); } catch {}
   ipcMain.handle('get-poe1-ascendancy-notables', async () => {
     try {
-      if (typeof poe1AscendancyNotablesCache === 'undefined') {
-        loadPoe1AscendancyNotables();
-      }
-      return poe1AscendancyNotablesCache;
+      return await loadPoe1AscendancyNotables();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }
@@ -781,13 +662,12 @@ export function registerDataIpc(deps: DataIpcDeps) {
   try { ipcMain.removeHandler('get-poe1-gem-detail'); } catch {}
   ipcMain.handle('get-poe1-gem-detail', async (_event, gemSlug: string) => {
     try {
-      const dataDir = deps.getDataDir();
-      const detailPath = path.join(dataDir, 'items', 'gems', 'details', `${gemSlug}.json`);
-      if (fs.existsSync(detailPath)) {
-        const raw = fs.readFileSync(detailPath, 'utf-8');
-        return JSON.parse(raw);
-      } else {
-        return { error: 'not_found', filePath: detailPath };
+      const detailPath = toDataPath('items', 'gems', 'details', `${gemSlug}.json`);
+      try {
+        return await jsonCache.get(detailPath);
+      } catch (err: any) {
+        const error = err?.code === 'ENOENT' ? 'not_found' : err?.message || 'unknown_error';
+        return { error, filePath: detailPath };
       }
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };

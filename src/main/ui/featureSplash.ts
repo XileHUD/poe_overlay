@@ -437,10 +437,6 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
         <label for="feat-craft-liquid">Liquid Emotions</label>
       </div>
       <div class="feature-sub">
-        <input type="checkbox" id="feat-craft-annoints" ${checked(safeConfig.crafting.subcategories.annoints)}/>
-        <label for="feat-craft-annoints">Annoints</label>
-      </div>
-      <div class="feature-sub">
         <input type="checkbox" id="feat-craft-essences" ${checked(safeConfig.crafting.subcategories.essences)}/>
         <label for="feat-craft-essences">Essences</label>
       </div>
@@ -474,6 +470,10 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       <div class="feature-sub">
         <input type="checkbox" id="feat-char-quests" ${checked(safeConfig.character.subcategories.questPassives)}/>
         <label for="feat-char-quests">Quest Passives</label>
+      </div>
+      <div class="feature-sub">
+        <input type="checkbox" id="feat-char-annoints" ${checked(safeConfig.character.subcategories.annoints)}/>
+        <label for="feat-char-annoints">Annoints</label>
       </div>
       <div class="feature-sub">
         <input type="checkbox" id="feat-char-keystones" ${checked(safeConfig.character.subcategories.keystones)}/>
@@ -677,7 +677,6 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       // Crafting
       document.getElementById('feat-crafting').checked = preset.crafting.enabled;
       document.getElementById('feat-craft-liquid').checked = preset.crafting.subcategories.liquidEmotions;
-      document.getElementById('feat-craft-annoints').checked = preset.crafting.subcategories.annoints;
       document.getElementById('feat-craft-essences').checked = preset.crafting.subcategories.essences;
       document.getElementById('feat-craft-omens').checked = preset.crafting.subcategories.omens;
       document.getElementById('feat-craft-currency').checked = preset.crafting.subcategories.currency;
@@ -698,6 +697,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       // Character
       document.getElementById('feat-character').checked = preset.character.enabled;
       document.getElementById('feat-char-quests').checked = preset.character.subcategories.questPassives;
+  document.getElementById('feat-char-annoints').checked = preset.character.subcategories.annoints;
       document.getElementById('feat-char-keystones').checked = preset.character.subcategories.keystones;
       document.getElementById('feat-char-asc').checked = preset.character.subcategories.ascendancyPassives;
       document.getElementById('feat-char-atlas').checked = preset.character.subcategories.atlasNodes;
@@ -764,7 +764,6 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
           enabled: document.getElementById('feat-crafting').checked,
           subcategories: {
             liquidEmotions: document.getElementById('feat-craft-liquid').checked,
-            annoints: document.getElementById('feat-craft-annoints').checked,
             essences: document.getElementById('feat-craft-essences').checked,
             omens: document.getElementById('feat-craft-omens').checked,
             currency: document.getElementById('feat-craft-currency').checked,
@@ -789,6 +788,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
           enabled: document.getElementById('feat-character').checked,
           subcategories: {
             questPassives: document.getElementById('feat-char-quests').checked,
+            annoints: document.getElementById('feat-char-annoints').checked,
             keystones: document.getElementById('feat-char-keystones').checked,
             ascendancyPassives: document.getElementById('feat-char-asc').checked,
             atlasNodes: document.getElementById('feat-char-atlas').checked,

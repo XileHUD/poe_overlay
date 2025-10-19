@@ -1,7 +1,8 @@
 // Currency module: displays generic stackable currency (excluding Omens/Catalysts) similar to Essences
+import { applyFilterChipChrome, type ChipChrome } from "../../utils";
+import { buildPoe2ChipChrome } from "../../shared/filterChips";
 import { bindImageFallback } from "../utils/imageFallback";
 import { TRANSPARENT_PLACEHOLDER } from "../utils/imagePlaceholder";
-import { resolveLocalImage } from "../utils/localImage";
 
 export type CurrencyItem = {
   slug?: string;
@@ -141,7 +142,7 @@ export function render(list: CurrencyItem[]): void {
       .replace(/(\d+%)/g,'<span class="mod-value">$1</span>');
   }
 
-  function tagRGB(tag: string){
+  function tagRGB(tag: string): [number, number, number]{
     const t = tag.toLowerCase();
     if(t==='orb' || t==='augment') return [121,85,72];
     if(t==='reroll' || t==='reroll values') return [255,112,67];
@@ -160,11 +161,10 @@ export function render(list: CurrencyItem[]): void {
     if(t==='feather' || t==='key') return [109,76,65];
     return [80,110,120];
   }
-  function chipCss(tag: string, active: boolean){
-    const [r,g,b]=tagRGB(tag); const bg=active?`rgba(${r},${g},${b},0.9)`:`rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const l=0.2126*r+0.7152*g+0.0722*b; const color=active?(l>180?'#000':'#fff'):'var(--text-primary)';
-    return `cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; border:1px solid ${border}; background:${bg}; color:${color};`;
+  function chipChrome(tag: string, active: boolean): ChipChrome {
+    return buildPoe2ChipChrome(tagRGB(tag), active);
   }
-  function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; allTags.forEach(tag=>{ const active=state.selectedTags.has(tag); const el=document.createElement('div'); el.textContent = state.tagCounts[tag]? `${tag} (${state.tagCounts[tag]})` : tag; el.style.cssText=chipCss(tag, active); el.addEventListener('click',()=>{ active?state.selectedTags.delete(tag):state.selectedTags.add(tag); apply(state.input?.value||''); renderTagFilters(); }); tagWrap.appendChild(el); }); if(state.selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; reset.style.cssText='cursor:pointer; user-select:none; padding:2px 6px; font-size:11px; border-radius:4px; border:1px solid var(--accent-red); background:var(--accent-red); color:#fff;'; reset.addEventListener('click',()=>{ state.selectedTags.clear(); apply(state.input?.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
+  function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML=''; allTags.forEach(tag=>{ const active=state.selectedTags.has(tag); const el=document.createElement('div'); el.textContent = state.tagCounts[tag]? `${tag} (${state.tagCounts[tag]})` : tag; applyFilterChipChrome(el, chipChrome(tag, active), { fontWeight: active ? '600' : '500' }); el.addEventListener('click',()=>{ active?state.selectedTags.delete(tag):state.selectedTags.add(tag); apply(state.input?.value||''); renderTagFilters(); }); tagWrap.appendChild(el); }); if(state.selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; applyFilterChipChrome(reset, { border: '1px solid var(--accent-red)', background: 'var(--accent-red)', color: '#fff' }, { fontWeight: '600' }); reset.addEventListener('click',()=>{ state.selectedTags.clear(); apply(state.input?.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); } }
 
   function apply(filter='') {
     if (!wrap) return;

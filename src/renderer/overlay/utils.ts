@@ -171,3 +171,46 @@ export function sanitizeCraftingHtml(html: any): string {
   out = out.replace(/ on\w+="[^"]*"/gi,'');
   return out;
 }
+
+export type ChipChrome = {
+  border: string;
+  background: string;
+  color: string;
+};
+
+export type ChipStyleOptions = {
+  padding?: string;
+  borderRadius?: string;
+  display?: string;
+  gap?: string;
+  alignItems?: string;
+  textTransform?: string;
+  fontWeight?: string;
+};
+
+export function applyFilterChipChrome(el: HTMLElement, chrome: ChipChrome, opts: ChipStyleOptions = {}): void {
+  const {
+    padding = '2px 6px',
+    borderRadius = '4px',
+    display = 'inline-flex',
+    gap = '4px',
+    alignItems = 'center',
+    textTransform,
+    fontWeight,
+  } = opts;
+
+  el.style.cursor = 'pointer';
+  el.style.userSelect = 'none';
+  el.style.padding = padding;
+  el.style.borderRadius = borderRadius;
+  el.style.border = chrome.border;
+  el.style.background = chrome.background;
+  el.style.color = chrome.color;
+  el.style.display = display;
+  el.style.alignItems = alignItems;
+  el.style.gap = gap;
+  el.style.textTransform = textTransform ?? '';
+  el.style.fontWeight = fontWeight ?? '500';
+  el.style.transition = 'background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease';
+  el.style.outline = 'none';
+}

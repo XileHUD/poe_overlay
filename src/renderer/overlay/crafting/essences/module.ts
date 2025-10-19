@@ -1,7 +1,8 @@
 // Essences module: encapsulates Essences crafting UI
+import { applyFilterChipChrome, type ChipChrome } from "../../utils";
+import { buildPoe2ChipChrome } from "../../shared/filterChips";
 import { bindImageFallback } from "../utils/imageFallback";
 import { TRANSPARENT_PLACEHOLDER } from "../utils/imagePlaceholder";
-import { resolveLocalImage } from "../utils/localImage";
 
 export type Essence = {
   slug?: string;
@@ -127,21 +128,19 @@ export function render(list: Essence[]): void {
   state.cache.forEach(addTagsFor);
 
   panel.innerHTML = `
-    <div class='page-inner'>
-      <div style='display:flex; gap:6px; align-items:center; margin-bottom:6px;'>
-        <input id='essenceSearch' type='text' placeholder='Search...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
-        <button id='essenceClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
-      </div>
-      <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
-        <div id='essenceTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
-      </div>
-      <div id='essenceList' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:10px;'></div>
-    </div>`;
+    <div style='display:flex; gap:6px; align-items:center; margin-bottom:6px;'>
+      <input id='essenceSearch' type='text' placeholder='Search essences...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
+      <button id='essenceClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
+    </div>
+    <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
+      <div id='essenceTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; justify-content:center; width:100%;'></div>
+    </div>
+    <div id='essenceList' style='display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:10px;'></div>`;
   state.input = panel.querySelector('#essenceSearch') as HTMLInputElement | null;
   const listEl = panel.querySelector('#essenceList') as HTMLElement | null;
   const tagWrap = panel.querySelector('#essenceTagFilters') as HTMLElement | null;
 
-  function tagRGB(tag: string) {
+  function tagRGB(tag: string): [number, number, number] {
     const t = (tag||'').toLowerCase();
     if (t==='fire' || t==='life') return [220,68,61];
     if (t==='cold' || t==='mana') return [66,165,245];
@@ -161,13 +160,8 @@ export function render(list: Essence[]): void {
     if (t==='elemental') return [255,152,0];
     return [120,144,156];
   }
-  function chipCss(tag: string, active: boolean){
-    const [r,g,b]=tagRGB(tag);
-    const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`;
-    const border=`rgba(${r},${g},${b},0.6)`;
-    const luma=0.2126*r+0.7152*g+0.0722*b;
-    const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)';
-    return `border:1px solid ${border}; background:${bg}; color:${color};`;
+  function chipChrome(tag: string, active: boolean): ChipChrome {
+    return buildPoe2ChipChrome(tagRGB(tag), active);
   }
   function renderTagFilters(){
     if (!tagWrap) return;
@@ -177,10 +171,10 @@ export function render(list: Essence[]): void {
       const active = state.selectedTags.has(lc);
       const count = state.tagCounts[tag] || 0;
       if (!count) return;
-      const el = document.createElement('button');
+      const el = document.createElement('div');
       el.className = 'essence-tag';
       el.textContent = count ? `${tag} (${count})` : tag;
-      el.style.cssText = `padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; ${chipCss(tag, active)}`;
+      applyFilterChipChrome(el, chipChrome(tag, active), { fontWeight: active ? '600' : '500' });
       el.addEventListener('click', () => {
         if (active) state.selectedTags.delete(lc); else state.selectedTags.add(lc);
         apply(state.input?.value || '');
@@ -189,9 +183,9 @@ export function render(list: Essence[]): void {
       tagWrap.appendChild(el);
     });
     if (state.selectedTags.size) {
-      const reset=document.createElement('button');
+      const reset=document.createElement('div');
       reset.textContent='Reset';
-      reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);';
+      applyFilterChipChrome(reset, { border: '1px solid var(--accent-red)', background: 'var(--accent-red)', color: '#fff' }, { fontWeight: '600' });
       reset.addEventListener('click', ()=>{ state.selectedTags.clear(); apply(''); renderTagFilters(); });
       tagWrap.appendChild(reset);
     }

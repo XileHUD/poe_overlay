@@ -962,7 +962,6 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 enabled: false,
                 subcategories: {
                     liquidEmotions: false,
-                    annoints: false,
                     essences: false,
                     omens: false,
                     currency: false,
@@ -987,6 +986,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 enabled: false,
                 subcategories: {
                     questPassives: false,
+                    annoints: false,
                     keystones: false,
                     ascendancyPassives: false,
                     atlasNodes: false,

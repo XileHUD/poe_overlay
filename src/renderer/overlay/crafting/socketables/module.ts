@@ -1,7 +1,8 @@
 // Socketables module: encapsulates socketable crafting UI (refactored to grid + shared image fallback)
+import { applyFilterChipChrome, type ChipChrome } from "../../utils";
+import { buildPoe2ChipChrome } from "../../shared/filterChips";
 import { bindImageFallback } from "../utils/imageFallback";
 import { TRANSPARENT_PLACEHOLDER } from "../utils/imagePlaceholder";
-import { resolveLocalImage } from "../utils/localImage";
 
 export type Socketable = {
   slug?: string;
@@ -121,51 +122,53 @@ export function render(list: Socketable[]): void {
   });
 
   panel.innerHTML = `
-    <div class='page-inner'>
-    <div style='display:flex; gap:6px; align-items:center; margin-bottom:8px;'>
-      <input id='socketableSearch' type='text' placeholder='Search...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
+    <div style='display:flex; gap:6px; align-items:center; margin-bottom:6px;'>
+      <input id='socketableSearch' type='text' placeholder='Search socketables...' style='flex:1; padding:4px 8px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:12px;'>
       <button id='socketableClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
     </div>
     <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
-      <div id='socketableTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
+      <div id='socketableTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; justify-content:center; width:100%;'></div>
     </div>
-    <div id='socketableList' style='display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:10px; align-items:stretch;'></div>
-    </div>`;
+    <div id='socketableList' style='display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:10px; align-items:stretch;'></div>`;
 
   state.input = panel.querySelector('#socketableSearch') as HTMLInputElement | null;
   const listEl = panel.querySelector('#socketableList') as HTMLElement | null;
   const tagWrap = panel.querySelector('#socketableTagFilters') as HTMLElement | null;
 
-  function tagRGB(tag: string){ const t=(tag||'').toLowerCase();
-    if(t==='fire' || t==='life') return [220,68,61];
-    if(t==='cold' || t==='mana') return [66,165,245];
-    if(t==='lightning') return [255,213,79];
-    if(t==='chaos' || t==='minion') return [156,39,176];
-    if(t==='energy shield' || t==='es') return [38,198,218];
-    if(t==='defences' || t==='armour' || t==='armor') return [109,76,65];
-    if(t==='evasion') return [46,125,50];
-    if(t==='resistances') return [255,112,67];
-    if(t==='projectile') return [255,179,0];
-    if(t==='area') return [171,71,188];
-    if(t==='critical' || t==='crit') return [255,179,0];
-    if(t==='spell') return [92,107,192];
-    if(t==='attack') return [121,85,72];
-    if(t==='damage' || t==='ailments' || t==='mechanics') return [96,125,139];
-    if(t==='movement' || t==='attack speed' || t==='speed') return [67,160,71];
-    if(t==='elemental') return [255,152,0];
-    return [120,144,156]; }
-  function chipCss(tag: string, active: boolean){ const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color};`; }
+  function tagRGB(tag: string): [number, number, number] {
+    const t = (tag || '').toLowerCase();
+    if (t === 'fire' || t === 'life') return [220, 68, 61];
+    if (t === 'cold' || t === 'mana') return [66, 165, 245];
+    if (t === 'lightning') return [255, 213, 79];
+    if (t === 'chaos' || t === 'minion') return [156, 39, 176];
+    if (t === 'energy shield' || t === 'es') return [38, 198, 218];
+    if (t === 'defences' || t === 'armour' || t === 'armor') return [109, 76, 65];
+    if (t === 'evasion') return [46, 125, 50];
+    if (t === 'resistances') return [255, 112, 67];
+    if (t === 'projectile') return [255, 179, 0];
+    if (t === 'area') return [171, 71, 188];
+    if (t === 'critical' || t === 'crit') return [255, 179, 0];
+    if (t === 'spell') return [92, 107, 192];
+    if (t === 'attack') return [121, 85, 72];
+    if (t === 'damage' || t === 'ailments' || t === 'mechanics') return [96, 125, 139];
+    if (t === 'movement' || t === 'attack speed' || t === 'speed') return [67, 160, 71];
+    if (t === 'elemental') return [255, 152, 0];
+    return [120, 144, 156];
+  }
+  function chipChrome(tag: string, active: boolean): ChipChrome {
+    return buildPoe2ChipChrome(tagRGB(tag), active);
+  }
 
   function renderTagFilters(){ if(!tagWrap) return; tagWrap.innerHTML='';
     const curated = ['Damage','Ailments','Attributes','Energy Shield','Defences','Life','Mana','Fire','Cold','Lightning','Chaos','Resistances','Projectile','Area','Critical','Spell','Attack','Minion','Mechanics'];
     curated.forEach(tag=>{ const key=tag.toLowerCase(); const active=state.selectedTags.has(key);
-      const btn=document.createElement('button'); const count=state.tagCounts[tag]||0; btn.className='sock-tag'; btn.setAttribute('data-tag', key);
-      btn.textContent = count? `${tag} (${count})` : tag;
-      btn.style.cssText = `padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; ${chipCss(tag, active)}`;
-      btn.addEventListener('click',()=>{ if(active) state.selectedTags.delete(key); else state.selectedTags.add(key); apply(state.input?.value||''); renderTagFilters(); });
-      tagWrap.appendChild(btn);
+      const el=document.createElement('div'); const count=state.tagCounts[tag]||0; el.className='sock-tag'; el.setAttribute('data-tag', key);
+      el.textContent = count? `${tag} (${count})` : tag;
+      applyFilterChipChrome(el, chipChrome(tag, active), { fontWeight: active ? '600' : '500' });
+      el.addEventListener('click',()=>{ if(active) state.selectedTags.delete(key); else state.selectedTags.add(key); apply(state.input?.value||''); renderTagFilters(); });
+      tagWrap.appendChild(el);
     });
-    if(state.selectedTags.size){ const reset=document.createElement('button'); reset.textContent='Reset'; reset.style.cssText='padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'; reset.addEventListener('click',()=>{ state.selectedTags.clear(); apply(state.input?.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); }
+    if(state.selectedTags.size){ const reset=document.createElement('div'); reset.textContent='Reset'; applyFilterChipChrome(reset, { border: '1px solid var(--accent-red)', background: 'var(--accent-red)', color: '#fff' }, { fontWeight: '600' }); reset.addEventListener('click',()=>{ state.selectedTags.clear(); apply(state.input?.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); }
   }
 
   function matchTags(e: Socketable){ if(!state.selectedTags.size) return true; const lc=((e as any).__tags||[]).map((t:string)=>t.toLowerCase()); return [...state.selectedTags].every(t=> lc.includes(t)); }

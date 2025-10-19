@@ -1,8 +1,16 @@
 // Virtual scrolling for modifier lists to handle large aggregated categories
-import { escapeHtml } from '../utils';
+
+export interface ModSection {
+  key: string;
+  data?: any;
+  element?: HTMLElement;
+}
 
 interface VirtualScrollState {
   container: HTMLElement | null;
+  itemsWrapper: HTMLElement | null;
+  topSpacer: HTMLElement | null;
+  bottomSpacer: HTMLElement | null;
   scrollContainer: HTMLElement | null;
   items: ModSection[];
   itemHeight: number;
@@ -11,42 +19,40 @@ interface VirtualScrollState {
   visibleEnd: number;
   totalHeight: number;
   lastScrollTop: number;
-  renderCallback: (section: ModSection) => string;
+  renderCallback: (section: ModSection) => HTMLElement;
+  afterRender: ((sections: ModSection[]) => void) | null;
   isInitialized: boolean;
-}
-
-interface ModSection {
-  domain: string;
-  side: string;
-  mods: any[];
-  html?: string; // pre-rendered HTML
 }
 
 const virtualState: VirtualScrollState = {
   container: null,
+  itemsWrapper: null,
+  topSpacer: null,
+  bottomSpacer: null,
   scrollContainer: null,
   items: [],
-  itemHeight: 120, // Estimated height per section
-  bufferSize: 5, // Number of extra items to render above/below viewport
+  itemHeight: 140, // initial guess, refined after first render
+  bufferSize: 6, // Number of extra items to render above/below viewport
   visibleStart: 0,
   visibleEnd: 0,
   totalHeight: 0,
   lastScrollTop: 0,
-  renderCallback: () => '',
+  renderCallback: () => document.createElement('div'),
+  afterRender: null,
   isInitialized: false,
 };
 
 let scrollThrottleTimer: number | null = null;
 
-export function initModifierVirtualScroll(
-  scrollContainer: HTMLElement,
-  renderCallback: (section: ModSection) => string
-): void {
-  virtualState.scrollContainer = scrollContainer;
-  virtualState.renderCallback = renderCallback;
-  virtualState.isInitialized = true;
+export function initModifierVirtualScroll(scrollContainer: HTMLElement): void {
+  if (virtualState.scrollContainer === scrollContainer) return;
 
-  // Attach scroll listener with throttling
+  if (virtualState.scrollContainer) {
+    virtualState.scrollContainer.removeEventListener('scroll', handleScroll);
+  }
+
+  virtualState.scrollContainer = scrollContainer;
+  virtualState.isInitialized = true;
   scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
 }
 
@@ -55,13 +61,15 @@ function handleScroll(): void {
 
   scrollThrottleTimer = window.setTimeout(() => {
     scrollThrottleTimer = null;
-    updateVisibleRange();
-    renderVisibleSections();
+    const changed = updateVisibleRange();
+    if (changed) {
+      renderVisibleSections();
+    }
   }, 16); // 60fps
 }
 
-function updateVisibleRange(): void {
-  if (!virtualState.scrollContainer) return;
+function updateVisibleRange(): boolean {
+  if (!virtualState.scrollContainer) return false;
 
   const scrollTop = virtualState.scrollContainer.scrollTop;
   const viewportHeight = virtualState.scrollContainer.clientHeight;
@@ -76,70 +84,122 @@ function updateVisibleRange(): void {
     Math.ceil((scrollTop + viewportHeight) / virtualState.itemHeight) + virtualState.bufferSize
   );
 
+  if (startIndex === virtualState.visibleStart && endIndex === virtualState.visibleEnd) {
+    virtualState.lastScrollTop = scrollTop;
+    return false;
+  }
+
   virtualState.visibleStart = startIndex;
   virtualState.visibleEnd = endIndex;
   virtualState.lastScrollTop = scrollTop;
+  return true;
 }
 
 function renderVisibleSections(): void {
-  if (!virtualState.container || !virtualState.isInitialized) return;
+  if (!virtualState.container || !virtualState.itemsWrapper || !virtualState.topSpacer || !virtualState.bottomSpacer) return;
 
   const visibleSections = virtualState.items.slice(
     virtualState.visibleStart,
     virtualState.visibleEnd
   );
 
-  // Calculate offset for the first visible item
-  const offsetTop = virtualState.visibleStart * virtualState.itemHeight;
+  const estimatedTop = virtualState.visibleStart * virtualState.itemHeight;
+  virtualState.topSpacer.style.height = `${Math.max(0, estimatedTop)}px`;
 
-  // Render only visible sections
-  const html = visibleSections
-    .map((section) => section.html || virtualState.renderCallback(section))
-    .join('');
+  // Clear current rendered nodes by detaching (preserving listeners)
+  const wrapper = virtualState.itemsWrapper;
+  while (wrapper.firstChild) {
+    wrapper.removeChild(wrapper.firstChild);
+  }
 
-  virtualState.container.innerHTML = `
-    <div style="height: ${offsetTop}px;"></div>
-    ${html}
-    <div style="height: ${Math.max(0, virtualState.totalHeight - offsetTop - (visibleSections.length * virtualState.itemHeight))}px;"></div>
-  `;
+  visibleSections.forEach((section) => {
+    let element = section.element;
+    if (!element) {
+      element = virtualState.renderCallback(section);
+      section.element = element;
+    }
+    wrapper.appendChild(element);
+  });
+
+  const renderedNodes = Array.from(wrapper.children) as HTMLElement[];
+  const renderedHeight = renderedNodes.reduce((sum, node) => sum + node.offsetHeight, 0);
+  const averageHeight = renderedNodes.length > 0 ? renderedHeight / renderedNodes.length : virtualState.itemHeight;
+
+  const tailSpace = Math.max(0, virtualState.totalHeight - estimatedTop - renderedHeight);
+  virtualState.bottomSpacer.style.height = `${tailSpace}px`;
+
+  if (renderedNodes.length > 0 && Math.abs(averageHeight - virtualState.itemHeight) > 4) {
+    virtualState.itemHeight = averageHeight;
+    virtualState.totalHeight = virtualState.itemHeight * virtualState.items.length;
+    const recalculatedTop = virtualState.visibleStart * virtualState.itemHeight;
+    virtualState.topSpacer.style.height = `${Math.max(0, recalculatedTop)}px`;
+    const recalculatedTail = Math.max(0, virtualState.totalHeight - recalculatedTop - renderedHeight);
+    virtualState.bottomSpacer.style.height = `${recalculatedTail}px`;
+  }
+
+  if (virtualState.afterRender) {
+    virtualState.afterRender(visibleSections);
+  }
 }
 
 export function renderModifierVirtualList(
   sections: ModSection[],
   resultsWrapper: HTMLElement,
-  renderCallback: (section: ModSection) => string
+  renderCallback: (section: ModSection) => HTMLElement,
+  afterRender?: (sections: ModSection[]) => void
 ): void {
-  // Pre-render all sections and cache them (this is still fast, it's the DOM insertion that's slow)
-  const sectionsWithHtml = sections.map((section) => ({
-    ...section,
-    html: renderCallback(section),
-  }));
+  if (!resultsWrapper) return;
 
-  virtualState.items = sectionsWithHtml;
+  virtualState.items = sections;
+  virtualState.renderCallback = renderCallback;
+  virtualState.afterRender = afterRender ?? null;
   virtualState.totalHeight = sections.length * virtualState.itemHeight;
+  virtualState.visibleStart = 0;
+  virtualState.visibleEnd = 0;
 
-  // Create or reuse container
   let container = resultsWrapper.querySelector('#mod-virtual-container') as HTMLElement | null;
   if (!container) {
     container = document.createElement('div');
     container.id = 'mod-virtual-container';
     container.style.position = 'relative';
+    container.style.width = '100%';
     container.style.minHeight = `${virtualState.totalHeight}px`;
     resultsWrapper.innerHTML = '';
     resultsWrapper.appendChild(container);
+
+    const topSpacer = document.createElement('div');
+    topSpacer.className = 'mod-virtual-spacer top';
+    const itemsWrapper = document.createElement('div');
+    itemsWrapper.className = 'mod-virtual-items';
+    const bottomSpacer = document.createElement('div');
+    bottomSpacer.className = 'mod-virtual-spacer bottom';
+
+    container.appendChild(topSpacer);
+    container.appendChild(itemsWrapper);
+    container.appendChild(bottomSpacer);
+
+    virtualState.topSpacer = topSpacer;
+    virtualState.itemsWrapper = itemsWrapper;
+    virtualState.bottomSpacer = bottomSpacer;
   } else {
     container.style.minHeight = `${virtualState.totalHeight}px`;
+    virtualState.topSpacer = container.querySelector('.mod-virtual-spacer.top') as HTMLElement | null;
+    virtualState.itemsWrapper = container.querySelector('.mod-virtual-items') as HTMLElement | null;
+    virtualState.bottomSpacer = container.querySelector('.mod-virtual-spacer.bottom') as HTMLElement | null;
+    if (virtualState.itemsWrapper) {
+      while (virtualState.itemsWrapper.firstChild) {
+        virtualState.itemsWrapper.removeChild(virtualState.itemsWrapper.firstChild);
+      }
+    }
   }
 
   virtualState.container = container;
 
-  // Initialize scroll handling if not already done
   const contentDiv = document.getElementById('content');
-  if (contentDiv && !virtualState.isInitialized) {
-    initModifierVirtualScroll(contentDiv, renderCallback);
+  if (contentDiv) {
+    initModifierVirtualScroll(contentDiv);
   }
 
-  // Initial render
   updateVisibleRange();
   renderVisibleSections();
 }
@@ -150,12 +210,20 @@ export function cleanupModifierVirtualScroll(): void {
   }
   virtualState.isInitialized = false;
   virtualState.container = null;
+  virtualState.itemsWrapper = null;
+  virtualState.topSpacer = null;
+  virtualState.bottomSpacer = null;
   virtualState.scrollContainer = null;
   virtualState.items = [];
+  virtualState.afterRender = null;
 }
 
 // Helper to measure actual section height dynamically
-export function measureSectionHeight(resultsWrapper: HTMLElement, sampleSection: ModSection, renderCallback: (section: ModSection) => string): void {
+export function measureSectionHeight(
+  resultsWrapper: HTMLElement,
+  sampleSection: ModSection,
+  renderCallback: (section: ModSection) => HTMLElement
+): void {
   if (!sampleSection || !resultsWrapper) return;
 
   try {
@@ -164,7 +232,8 @@ export function measureSectionHeight(resultsWrapper: HTMLElement, sampleSection:
     tempDiv.style.position = 'absolute';
     tempDiv.style.visibility = 'hidden';
     tempDiv.style.width = `${resultsWrapper.clientWidth}px`;
-    tempDiv.innerHTML = renderCallback(sampleSection);
+    const element = renderCallback(sampleSection);
+    tempDiv.appendChild(element);
 
     resultsWrapper.appendChild(tempDiv);
     const measuredHeight = tempDiv.getBoundingClientRect().height;

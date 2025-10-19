@@ -5,7 +5,6 @@
 
 export interface CraftingSubcategories {
   liquidEmotions: boolean;
-  annoints: boolean;
   essences: boolean;
   omens: boolean;
   currency: boolean;
@@ -26,6 +25,7 @@ export interface Poe1CraftingSubcategories {
 
 export interface CharacterSubcategories {
   questPassives: boolean;
+  annoints: boolean;
   keystones: boolean;
   ascendancyPassives: boolean;
   atlasNodes: boolean;
@@ -102,7 +102,6 @@ export const DEFAULT_FEATURES: FeatureConfig = {
     enabled: true,
     subcategories: {
       liquidEmotions: true,
-      annoints: true,
       essences: true,
       omens: true,
       currency: true,
@@ -127,6 +126,7 @@ export const DEFAULT_FEATURES: FeatureConfig = {
     enabled: true,
     subcategories: {
       questPassives: true,
+      annoints: true,
       keystones: true,
       ascendancyPassives: true,
       atlasNodes: true,
@@ -180,7 +180,6 @@ export const MINIMAL_FEATURES: FeatureConfig = {
     enabled: false,
     subcategories: {
       liquidEmotions: false,
-      annoints: false,
       essences: false,
       omens: false,
       currency: false,
@@ -205,6 +204,7 @@ export const MINIMAL_FEATURES: FeatureConfig = {
     enabled: false,
     subcategories: {
       questPassives: false,
+      annoints: false,
       keystones: false,
       ascendancyPassives: false,
       atlasNodes: false,
@@ -257,7 +257,6 @@ export const ALL_FEATURES: FeatureConfig = {
     enabled: true,
     subcategories: {
       liquidEmotions: true,
-      annoints: true,
       essences: true,
       omens: true,
       currency: true,
@@ -282,6 +281,7 @@ export const ALL_FEATURES: FeatureConfig = {
     enabled: true,
     subcategories: {
       questPassives: true,
+      annoints: true,
       keystones: true,
       ascendancyPassives: true,
       atlasNodes: true,

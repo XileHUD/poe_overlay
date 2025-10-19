@@ -51,7 +51,6 @@ const POE1_MODIFIER_CATEGORY_PATTERNS = [
 
 const CRAFTING_CATEGORY_MAP: Record<string, keyof CraftingSubcategories> = {
   Liquid_Emotions: 'liquidEmotions',
-  Annoints: 'annoints',
   Essences: 'essences',
   Omens: 'omens',
   Currency: 'currency',
@@ -61,6 +60,7 @@ const CRAFTING_CATEGORY_MAP: Record<string, keyof CraftingSubcategories> = {
 
 const CHARACTER_CATEGORY_MAP: Record<string, keyof CharacterSubcategories> = {
   Keystones: 'keystones',
+  Annoints: 'annoints',
   Ascendancy_Passives: 'ascendancyPassives',
   Atlas_Nodes: 'atlasNodes',
   Gems: 'gems',
@@ -114,16 +114,20 @@ export class FeatureService {
       return DEFAULT_FEATURES;
     }
 
-    return {
+    const merged: FeatureConfig = {
       ...DEFAULT_FEATURES,
       ...stored,
       crafting: {
         ...DEFAULT_FEATURES.crafting,
         ...(stored.crafting || {}),
-        subcategories: {
-          ...DEFAULT_FEATURES.crafting.subcategories,
-          ...(stored.crafting?.subcategories || {})
-        }
+        subcategories: (() => {
+          const mergedSubs = {
+            ...DEFAULT_FEATURES.crafting.subcategories,
+            ...(stored.crafting?.subcategories || {})
+          } as CraftingSubcategories & Record<string, unknown>;
+          delete mergedSubs.annoints;
+          return mergedSubs as CraftingSubcategories;
+        })()
       },
       poe1Crafting: {
         ...DEFAULT_FEATURES.poe1Crafting,
@@ -174,6 +178,14 @@ export class FeatureService {
         }
       }
     };
+
+  const legacyAnnoints = (stored.crafting?.subcategories as any)?.annoints;
+    const hasCharacterAnnoints = Object.prototype.hasOwnProperty.call(stored.character?.subcategories || {}, 'annoints');
+    if (typeof legacyAnnoints === 'boolean' && !hasCharacterAnnoints) {
+      merged.character.subcategories.annoints = legacyAnnoints;
+    }
+
+    return merged;
   }
 
   /**
@@ -366,13 +378,22 @@ export class FeatureService {
         enabled: false,
         subcategories: {
           liquidEmotions: false,
-          annoints: false,
           essences: false,
           omens: false,
           currency: false,
           catalysts: false,
           socketables: false
         }
+      };
+    } else if (config.crafting?.enabled) {
+      const subs = {
+        ...DEFAULT_FEATURES.crafting.subcategories,
+        ...(config.crafting.subcategories || {})
+      } as CraftingSubcategories & Record<string, unknown>;
+      delete subs.annoints;
+      config.crafting = {
+        enabled: true,
+        subcategories: subs as CraftingSubcategories
       };
     }
 
@@ -405,6 +426,7 @@ export class FeatureService {
         enabled: false,
         subcategories: {
           questPassives: false,
+          annoints: false,
           keystones: false,
           ascendancyPassives: false,
           atlasNodes: false,
@@ -412,6 +434,14 @@ export class FeatureService {
           glossar: false
         }
       };
+    } else if (config.character?.enabled) {
+      config.character = {
+        enabled: true,
+        subcategories: {
+          ...DEFAULT_FEATURES.character.subcategories,
+          ...(config.character.subcategories || {})
+        }
+      } as { enabled: boolean; subcategories: CharacterSubcategories };
     }
 
     if (!config.poe1Character?.enabled) {

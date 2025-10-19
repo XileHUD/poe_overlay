@@ -32,6 +32,8 @@ interface PreparedBase {
   statMap: Record<string, number>;
   slugCandidates: string[];
   tags: string[];
+  tagSet: Set<string>;
+  searchText: string;
 }
 
 const CATEGORY_SLUG_MAP: Record<string, string[]> = {
@@ -203,6 +205,18 @@ function prepareBases(raw: RawBaseGroups | null | undefined): PreparedBase[] {
       const { lines, stats } = buildPropertySummary(props);
       const slugCandidates = getSlugCandidates(category, item, stats);
       const tags = deriveTags(category, item, lines);
+      const tagSet = new Set<string>(tags);
+      const searchText = [
+        category,
+        item.name,
+        ...(Array.isArray(item.implicitMods) ? item.implicitMods : []),
+        ...lines,
+        ...tags
+      ]
+        .filter(Boolean)
+        .map((part) => String(part).toLowerCase())
+        .join(' ');
+
       result.push({
         name: item.name,
         category,
@@ -212,14 +226,15 @@ function prepareBases(raw: RawBaseGroups | null | undefined): PreparedBase[] {
         propertyLines: lines,
         statMap: stats,
         slugCandidates,
-        tags
+        tags,
+        tagSet,
+        searchText
       });
     });
   }
 
   return result;
 }
-
 function buildPropertySummary(input: Record<string, number | string> | undefined): { lines: string[]; stats: Record<string, number> } {
   const lines: string[] = [];
   const stats: Record<string, number> = {};
@@ -600,6 +615,11 @@ function renderPrepared(): void {
   };
 
   let updateListFrame = 0;
+  const RENDER_BATCH_SIZE = 24;
+  const RENDER_TIME_BUDGET = 12;
+  let renderToken = 0;
+  let searchDebounce: number | undefined;
+  const SEARCH_DEBOUNCE_MS = 120;
   const scheduleUpdateList = () => {
     if (updateListFrame) {
       cancelAnimationFrame(updateListFrame);
@@ -612,24 +632,14 @@ function renderPrepared(): void {
 
   const updateList = () => {
     const query = searchValue.trim().toLowerCase();
+    const token = ++renderToken;
+
     const filtered = state.prepared.filter((base) => {
       if (selectedCategory !== 'All' && base.category !== selectedCategory) return false;
-      if (query) {
-        const haystack = [
-          base.name,
-          base.category,
-          ...base.implicitMods,
-          ...base.propertyLines,
-          base.tags.join(' ')
-        ]
-          .join(' ')
-          .toLowerCase();
-        if (!haystack.includes(query)) return false;
-      }
+      if (query && !base.searchText.includes(query)) return false;
       if (selectedTags.size) {
-        const tags = new Set(base.tags);
         for (const tag of selectedTags) {
-          if (!tags.has(tag)) return false;
+          if (!base.tagSet.has(tag)) return false;
         }
       }
       return true;
@@ -644,7 +654,6 @@ function renderPrepared(): void {
     });
 
     listContainer.innerHTML = '';
-    const fragment = document.createDocumentFragment();
 
     if (!groups.size) {
       const empty = document.createElement('div');
@@ -655,7 +664,11 @@ function renderPrepared(): void {
       return;
     }
 
+    const fragment = document.createDocumentFragment();
     const sortedCategories = Array.from(groups.keys()).sort((a, b) => a.localeCompare(b));
+
+    type RenderQueueEntry = { grid: HTMLElement; items: PreparedBase[] };
+    const renderQueue: RenderQueueEntry[] = [];
 
     sortedCategories.forEach((cat) => {
       const section = document.createElement('div');
@@ -663,14 +676,15 @@ function renderPrepared(): void {
       header.style.fontWeight = '600';
       header.style.fontSize = '14px';
       header.style.margin = '0 0 6px 4px';
-      header.textContent = `${cat.replace(/_/g, ' ')} (${groups.get(cat)!.length})`;
+      const sourceItems = groups.get(cat)!;
+      header.textContent = `${cat.replace(/_/g, ' ')} (${sourceItems.length})`;
 
       const grid = document.createElement('div');
       grid.style.display = 'grid';
       grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
       grid.style.gap = '12px';
 
-      const items = groups.get(cat)!;
+      const items = sourceItems.slice();
       items.sort((a, b) => {
         if (currentSort === 'default') {
           return a.name.localeCompare(b.name);
@@ -681,9 +695,7 @@ function renderPrepared(): void {
         return bv - av;
       });
 
-      items.forEach((base) => {
-        grid.appendChild(buildCard(base));
-      });
+      renderQueue.push({ grid, items });
 
       section.appendChild(header);
       section.appendChild(grid);
@@ -691,27 +703,52 @@ function renderPrepared(): void {
     });
 
     listContainer.appendChild(fragment);
-
-    bindImageFallback(
-      listContainer,
-      'img.base-img',
-      `<svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110"><rect width="110" height="110" rx="8" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="14" font-family="sans-serif">IMG</text></svg>`,
-      0.55
-    );
-
-    attachModifierButtons(listContainer);
-
-    listContainer.querySelectorAll<HTMLElement>('[data-add-tag]').forEach((el) => {
-      el.addEventListener('click', (ev) => {
-        ev.stopPropagation();
-        const tag = el.dataset.addTag;
-        if (!tag) return;
-        selectedTags.add(tag);
-        scheduleUpdateList();
-      });
-    });
-
     renderTagFilters(filtered);
+
+    const finalize = () => {
+      if (token !== renderToken) return;
+      bindImageFallback(
+        listContainer,
+        'img.base-img',
+        `<svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110"><rect width="110" height="110" rx="8" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="14" font-family="sans-serif">IMG</text></svg>`,
+        0.55
+      );
+
+      attachModifierButtons(listContainer);
+
+      listContainer.querySelectorAll<HTMLElement>('[data-add-tag]').forEach((el) => {
+        el.addEventListener('click', (ev) => {
+          ev.stopPropagation();
+          const tag = el.dataset.addTag;
+          if (!tag) return;
+          selectedTags.add(tag);
+          scheduleUpdateList();
+        });
+      });
+    };
+
+    const processQueue = () => {
+      if (token !== renderToken) return;
+      const start = performance.now();
+      while (renderQueue.length && performance.now() - start < RENDER_TIME_BUDGET) {
+        const entry = renderQueue[0];
+        let processed = 0;
+        while (entry.items.length && processed < RENDER_BATCH_SIZE) {
+          entry.grid.appendChild(buildCard(entry.items.shift()!));
+          processed++;
+        }
+        if (!entry.items.length) {
+          renderQueue.shift();
+        }
+      }
+      if (renderQueue.length && token === renderToken) {
+        requestAnimationFrame(processQueue);
+      } else if (token === renderToken) {
+        finalize();
+      }
+    };
+
+    requestAnimationFrame(processQueue);
   };
 
   categorySelect.value = selectedCategory;
@@ -729,12 +766,21 @@ function renderPrepared(): void {
 
   searchInput.addEventListener('input', () => {
     searchValue = searchInput.value;
-    scheduleUpdateList();
+    if (searchDebounce) {
+      window.clearTimeout(searchDebounce);
+    }
+    searchDebounce = window.setTimeout(() => {
+      scheduleUpdateList();
+    }, SEARCH_DEBOUNCE_MS);
   });
 
   clearButton.addEventListener('click', () => {
     searchValue = '';
     searchInput.value = '';
+    if (searchDebounce) {
+      window.clearTimeout(searchDebounce);
+      searchDebounce = undefined;
+    }
     scheduleUpdateList();
   });
 

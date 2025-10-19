@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { promises as fsp } from 'fs';
 import { getVersionConfig, getVirtualCategories, isBaseDomain, type OverlayGameVersion } from './config/modifierVersionConfig.js';
+import { JsonCache } from './utils/jsonCache.js';
 
 export interface ModifierData {
     domain: string;
@@ -30,22 +31,34 @@ export interface ModifierData {
     }>;
 }
 
+interface LoadOptions {
+    force?: boolean;
+}
+
 export class ModifierDatabase {
     private jsonCache: Map<string, any> = new Map();
     private dataPath: string;
     private gameVersion: OverlayGameVersion;
+    private fileCache?: JsonCache;
+    private loadingPromise: Promise<void> | null = null;
 
-    constructor(dataPath: string, autoLoad: boolean = true, gameVersion: OverlayGameVersion = 'poe2') {
+    constructor(dataPath: string, autoLoad: boolean = true, gameVersion: OverlayGameVersion = 'poe2', fileCache?: JsonCache) {
         this.dataPath = dataPath;
         this.gameVersion = gameVersion;
+        this.fileCache = fileCache;
         if (autoLoad) {
-            this.loadFromJson();
+            void this.loadAsync().catch((err) => {
+                console.warn('[ModifierDatabase] Initial async load failed', err);
+            });
         }
     }
 
     setDataPath(newPath: string) {
         if (newPath && newPath !== this.dataPath) {
             this.dataPath = newPath;
+            this.jsonCache.clear();
+            this.loadingPromise = null;
+            (this as any).__loadingPromise = null;
         }
     }
 
@@ -53,142 +66,101 @@ export class ModifierDatabase {
         this.gameVersion = version;
     }
 
+    setFileCache(cache?: JsonCache) {
+        this.fileCache = cache;
+    }
+
+    private runExclusiveLoad(runner: () => Promise<void>): Promise<void> {
+        if (this.loadingPromise) {
+            return this.loadingPromise;
+        }
+
+        const task = (async () => {
+            try {
+                await runner();
+            } finally {
+                this.loadingPromise = null;
+                (this as any).__loadingPromise = null;
+            }
+        })();
+
+        this.loadingPromise = task;
+        (this as any).__loadingPromise = task;
+        return task;
+    }
+
+    private async ensureLoaded(): Promise<void> {
+        if (this.loadingPromise) {
+            await this.loadingPromise;
+            if (this.jsonCache.size > 0) {
+                return;
+            }
+        }
+
+        if (this.jsonCache.size === 0) {
+            await this.loadAsync();
+        }
+    }
+
     getDataPath(): string {
         return this.dataPath;
     }
 
-    reload() {
+    async reload(onProgress?: (msg: string) => void): Promise<void> {
         this.jsonCache.clear();
-        this.loadFromJson();
+        await this.loadAsync(onProgress, { force: true });
     }
 
     private loadFromJson() {
-        try {
-            console.log(`Attempting to load JSON from: ${this.dataPath}`);
-            if (!fs.existsSync(this.dataPath)) {
-                console.warn(`Data path does not exist: ${this.dataPath}`);
-                return;
-            }
+        void this.loadAsync(undefined, { force: true }).catch((error) => {
+            console.error('Error loading modifier JSON files:', error);
+        });
+    }
 
-            const files = fs.readdirSync(this.dataPath);
-            console.log(`Found ${files.length} files in data directory`);
-            
-            for (const file of files) {
-                if (file.endsWith('.json')) {
-                    const category = file.replace('.json', '');
-                    const filePath = path.join(this.dataPath, file);
-                    console.log(`Loading JSON file: ${filePath}`);
-                    const raw = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-                    if (category === 'Bases') {
-                        // Skip loading into modifier cache; handled via dedicated IPC for items tab.
-                        this.jsonCache.set(category, raw); // still store raw for retrieval if desired
-                        console.log('Stored Bases dataset (not treated as modifier category)');
-                        continue;
-                    }
-                    // Support two shapes:
-                    // 1) Flat array of mod rows (legacy + mechanics we emit as array)
-                    // 2) Object with a top-level key (e.g. Liquid_Emotions.json) we ignore for aggregated logic
-                    if (Array.isArray(raw)) {
-                        this.jsonCache.set(category, raw);
-                        console.log(`Loaded category ${category} with ${raw.length} items`);
-                    } else if (raw && Array.isArray(raw.emotions)) {
-                        // Special handling for Liquid Emotions – treat each emotion as a single 'mod' row surrogate
-                        const mapped = raw.emotions.map((e: any) => ({
-                            category,
-                            domain: 'normal',
-                            side: 'none',
-                            text_html: e.explicitMods?.join('<br>') || e.enchantMods?.join('<br>') || e.name,
-                            text_plain: (e.explicitMods?.join(' | ') || e.enchantMods?.join(' | ') || e.name) || '',
-                            tier: null,
-                            ilvl: null,
-                            weight: 0,
-                            weight_pct: 0,
-                            tags: ['emotion'],
-                            modal_id: null,
-                            family_name: null,
-                            tiers: []
-                        }));
-                        this.jsonCache.set(category, mapped);
-                        console.log(`Loaded category ${category} (emotions mapped) with ${mapped.length} items`);
-                    } else if (raw && Array.isArray(raw.omens)) {
-                        // Omens: treat each omen as a single mod row with explicit mods joined
-                        const mapped = raw.omens.map((o: any) => ({
-                            category,
-                            domain: 'omen',
-                            side: 'none',
-                            text_html: `<strong>${o.name}</strong><br>${(o.explicitMods||[]).join('<br>')}`,
-                            text_plain: [o.name, ...(o.explicitMods||[])].join(' | '),
-                            tier: null,
-                            ilvl: null,
-                            weight: 0,
-                            weight_pct: 0,
-                            tags: ['omen'],
-                            modal_id: null,
-                            family_name: null,
-                            tiers: []
-                        }));
-                        this.jsonCache.set(category, mapped);
-                        console.log(`Loaded category ${category} (omens mapped) with ${mapped.length} items`);
-                    } else if (raw && raw.gems && typeof raw.gems === 'object') {
-                        // Gems: flatten all gem groups into a single domain with tag for group
-                        const groups = raw.gems;
-                        const flat: any[] = [];
-                        for (const grp of Object.keys(groups)) {
-                            const arr = groups[grp] || [];
-                            arr.forEach((g: any) => {
-                                flat.push({
-                                    category,
-                                    domain: 'gem',
-                                    side: 'none',
-                                    text_html: `<strong>${g.name}</strong><br>${g.description||''}`,
-                                    text_plain: [g.name, g.description || ''].join(' - ').trim(),
-                                    tier: null,
-                                    ilvl: null,
-                                    weight: 0,
-                                    weight_pct: 0,
-                                    tags: ['gem', grp, ...(g.tags||[])],
-                                    modal_id: null,
-                                    family_name: null,
-                                    tiers: []
-                                });
-                            });
-                        }
-                        this.jsonCache.set(category, flat);
-                        console.log(`Loaded category ${category} (gems flattened) with ${flat.length} items`);
-                    } else {
-                        // Unsupported shape – store empty to avoid crashes
-                        this.jsonCache.set(category, []);
-                        console.log(`Loaded category ${category} with 0 items (unrecognized shape)`);
-                    }
-                }
-            }
-            
-            console.log(`Loaded ${this.jsonCache.size} categories from JSON files`);
-        } catch (error) {
-            console.error('Error loading JSON files:', error);
+    // Shared helper so async loaders can reuse the injected JsonCache when available.
+    private async readJsonFile(filePath: string): Promise<any> {
+        if (this.fileCache) {
+            return await this.fileCache.get(filePath);
         }
+        const rawTxt = await fsp.readFile(filePath, 'utf8');
+        return JSON.parse(rawTxt);
     }
 
     /**
      * Asynchronous, incremental loader so UI (splash) can update while files are processed.
      * @param onProgress optional callback receiving human readable status text
      */
-    async loadAsync(onProgress?: (msg: string) => void) {
-        try {
+    async loadAsync(onProgress?: (msg: string) => void, options: LoadOptions = {}): Promise<void> {
+        if (options.force && this.loadingPromise) {
+            await this.loadingPromise;
+        } else if (this.loadingPromise) {
+            return this.loadingPromise;
+        }
+
+        if (!options.force && this.jsonCache.size > 0) {
+            return;
+        }
+
+        return this.runExclusiveLoad(async () => {
+            this.jsonCache.clear();
+
             if (!fs.existsSync(this.dataPath)) {
                 onProgress?.('Data path missing');
                 return;
             }
+
             const files = (await fsp.readdir(this.dataPath)).filter(f => f.endsWith('.json'));
             const total = files.length;
             let processed = 0;
+
             onProgress?.(`Loading modifiers (0/${total})`);
+
             for (const file of files) {
                 try {
-                    const category = file.replace('.json','');
+                    const category = file.replace('.json', '');
                     const filePath = path.join(this.dataPath, file);
-                    const rawTxt = await fsp.readFile(filePath, 'utf8');
-                    const raw = JSON.parse(rawTxt);
+                    const raw = await this.readJsonFile(filePath);
+
                     if (category === 'Bases') {
                         this.jsonCache.set(category, raw);
                     } else if (Array.isArray(raw)) {
@@ -215,8 +187,8 @@ export class ModifierDatabase {
                             category,
                             domain: 'omen',
                             side: 'none',
-                            text_html: `<strong>${o.name}</strong><br>${(o.explicitMods||[]).join('<br>')}`,
-                            text_plain: [o.name, ...(o.explicitMods||[])].join(' | '),
+                            text_html: `<strong>${o.name}</strong><br>${(o.explicitMods || []).join('<br>')}`,
+                            text_plain: [o.name, ...(o.explicitMods || [])].join(' | '),
                             tier: null,
                             ilvl: null,
                             weight: 0,
@@ -228,20 +200,21 @@ export class ModifierDatabase {
                         }));
                         this.jsonCache.set(category, mapped);
                     } else if (raw && raw.gems && typeof raw.gems === 'object') {
-                        const groups = raw.gems; const flat: any[] = [];
+                        const groups = raw.gems;
+                        const flat: any[] = [];
                         for (const grp of Object.keys(groups)) {
                             for (const g of groups[grp] || []) {
                                 flat.push({
                                     category,
                                     domain: 'gem',
                                     side: 'none',
-                                    text_html: `<strong>${g.name}</strong><br>${g.description||''}`,
+                                    text_html: `<strong>${g.name}</strong><br>${g.description || ''}`,
                                     text_plain: [g.name, g.description || ''].join(' - ').trim(),
                                     tier: null,
                                     ilvl: null,
                                     weight: 0,
                                     weight_pct: 0,
-                                    tags: ['gem', grp, ...(g.tags||[])],
+                                    tags: ['gem', grp, ...(g.tags || [])],
                                     modal_id: null,
                                     family_name: null,
                                     tiers: []
@@ -255,18 +228,17 @@ export class ModifierDatabase {
                 } catch (e) {
                     console.warn('Failed loading', file, e);
                 }
+
                 processed++;
                 if (processed % 3 === 0 || processed === total) {
                     onProgress?.(`Loading modifiers (${processed}/${total})`);
                 }
-                // Yield so splash can repaint
+
                 await new Promise(r => setTimeout(r, 0));
             }
+
             onProgress?.(`Loaded ${this.jsonCache.size} categories`);
-        } catch (e) {
-            console.error('Async load error', e);
-            onProgress?.('Modifier load failed');
-        }
+        });
     }
 
     /**
@@ -275,16 +247,21 @@ export class ModifierDatabase {
      * @param enabledCategories Array of category names or patterns (e.g., "Body_Armours_*")
      * @param onProgress Optional progress callback
      */
-    async loadAsyncFiltered(enabledCategories: string[], onProgress?: (msg: string) => void) {
-        try {
+    async loadAsyncFiltered(enabledCategories: string[], onProgress?: (msg: string) => void): Promise<void> {
+        if (this.loadingPromise) {
+            await this.loadingPromise;
+        }
+
+        return this.runExclusiveLoad(async () => {
+            this.jsonCache.clear();
+
             if (!fs.existsSync(this.dataPath)) {
                 onProgress?.('Data path missing');
                 return;
             }
 
             const allFiles = (await fsp.readdir(this.dataPath)).filter(f => f.endsWith('.json'));
-            
-            // Filter files by pattern matching
+
             const filesToLoad = allFiles.filter(file => {
                 const category = file.replace('.json', '');
                 return this.matchesEnabledPattern(category, enabledCategories);
@@ -292,17 +269,15 @@ export class ModifierDatabase {
 
             const total = filesToLoad.length;
             let processed = 0;
-            
+
             onProgress?.(`Loading ${total}/${allFiles.length} enabled categories...`);
 
             for (const file of filesToLoad) {
                 try {
-                    const category = file.replace('.json','');
+                    const category = file.replace('.json', '');
                     const filePath = path.join(this.dataPath, file);
-                    const rawTxt = await fsp.readFile(filePath, 'utf8');
-                    const raw = JSON.parse(rawTxt);
-                    
-                    // Same parsing logic as loadAsync
+                    const raw = await this.readJsonFile(filePath);
+
                     if (category === 'Bases') {
                         this.jsonCache.set(category, raw);
                     } else if (Array.isArray(raw)) {
@@ -329,8 +304,8 @@ export class ModifierDatabase {
                             category,
                             domain: 'omen',
                             side: 'none',
-                            text_html: `<strong>${o.name}</strong><br>${(o.explicitMods||[]).join('<br>')}`,
-                            text_plain: [o.name, ...(o.explicitMods||[])].join(' | '),
+                            text_html: `<strong>${o.name}</strong><br>${(o.explicitMods || []).join('<br>')}`,
+                            text_plain: [o.name, ...(o.explicitMods || [])].join(' | '),
                             tier: null,
                             ilvl: null,
                             weight: 0,
@@ -342,20 +317,21 @@ export class ModifierDatabase {
                         }));
                         this.jsonCache.set(category, mapped);
                     } else if (raw && raw.gems && typeof raw.gems === 'object') {
-                        const groups = raw.gems; const flat: any[] = [];
+                        const groups = raw.gems;
+                        const flat: any[] = [];
                         for (const grp of Object.keys(groups)) {
                             for (const g of groups[grp] || []) {
                                 flat.push({
                                     category,
                                     domain: 'gem',
                                     side: 'none',
-                                    text_html: `<strong>${g.name}</strong><br>${g.description||''}`,
+                                    text_html: `<strong>${g.name}</strong><br>${g.description || ''}`,
                                     text_plain: [g.name, g.description || ''].join(' - ').trim(),
                                     tier: null,
                                     ilvl: null,
                                     weight: 0,
                                     weight_pct: 0,
-                                    tags: ['gem', grp, ...(g.tags||[])],
+                                    tags: ['gem', grp, ...(g.tags || [])],
                                     modal_id: null,
                                     family_name: null,
                                     tiers: []
@@ -369,19 +345,17 @@ export class ModifierDatabase {
                 } catch (e) {
                     console.warn('Failed loading', file, e);
                 }
+
                 processed++;
                 if (processed % 3 === 0 || processed === total) {
                     onProgress?.(`Loading ${processed}/${total} categories...`);
                 }
-                // Yield so splash can repaint
+
                 await new Promise(r => setTimeout(r, 0));
             }
-            
+
             onProgress?.(`Loaded ${this.jsonCache.size} categories (skipped ${allFiles.length - total})`);
-        } catch (e) {
-            console.error('Async filtered load error', e);
-            onProgress?.('Modifier load failed');
-        }
+        });
     }
 
     /**

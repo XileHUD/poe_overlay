@@ -1,6 +1,7 @@
 // Liquid Emotions module: renders the Liquid Emotions crafting panel and exposes an imperative API
 import { TRANSPARENT_PLACEHOLDER } from "../utils/imagePlaceholder";
-import { sanitizeCraftingHtml } from "../../utils";
+import { applyFilterChipChrome, type ChipChrome, sanitizeCraftingHtml } from "../../utils";
+import { buildPoe2ChipChrome } from "../../shared/filterChips";
 import { bindImageFallback } from "../utils/imageFallback";
 
 export type LiquidEmotionItem = {
@@ -20,6 +21,21 @@ const state = {
   selectedTags: new Set<string>(),
   tagCounts: {} as Record<string, number>,
 };
+
+function chipChrome(tag: string, active: boolean): ChipChrome {
+  const key = tag.toLowerCase();
+  const palette: Record<string, [number, number, number]> = {
+    "additional modifier": [156, 39, 176],
+    "rarity of items": [255, 193, 7],
+    "pack size": [3, 155, 229],
+    "magic monsters": [121, 134, 203],
+    splinters: [255, 112, 67],
+    tablets: [0, 188, 212],
+    "waystones found": [102, 187, 106],
+    "rare monsters": [244, 81, 30],
+  };
+  return buildPoe2ChipChrome(palette[key] ?? [64, 120, 192], active);
+}
 
 function ensurePanel(): HTMLElement {
   if (state.panelEl && document.body.contains(state.panelEl)) return state.panelEl;
@@ -131,10 +147,25 @@ export function render(items: LiquidEmotionItem[]): void {
     'Additional Modifier', 'Rarity of items', 'Pack size', 'Magic Monsters', 'Splinters', 'Tablets', 'Waystones found', 'Rare Monsters'
   ];
 
+  const tagCounts: Record<string, number> = Object.fromEntries(fixedChips.map(label => [label.toLowerCase(), 0]));
+
   const cards: string[] = [];
   for (const item of items) {
+    const haystack = [
+      item.name,
+      ...(item.enchantMods || []),
+      ...(item.explicitMods || [])
+    ].join(' ').toLowerCase();
+    const tagsForItem: string[] = [];
+    fixedChips.forEach(label => {
+      const key = label.toLowerCase();
+      if (haystack.includes(key)) {
+        tagsForItem.push(key);
+        tagCounts[key] = (tagCounts[key] || 0) + 1;
+      }
+    });
     cards.push(`
-      <div class='liquid-emotion-card' data-slug='${item.slug||""}' data-name='${(item.name||"").replace(/'/g,"&#39;")}' style='background:var(--bg-card); border:1px solid var(--border-color); border-radius:6px; padding:6px; display:flex; flex-direction:column; gap:4px; transition:border-color .25s; height:100%'>
+      <div class='liquid-emotion-card' data-slug='${item.slug||""}' data-name='${(item.name||"").replace(/'/g,"&#39;")}' data-tags='${tagsForItem.join("|")}' style='background:var(--bg-card); border:1px solid var(--border-color); border-radius:6px; padding:6px; display:flex; flex-direction:column; gap:4px; transition:border-color .25s; height:100%'>
         <div style='display:flex; align-items:center; gap:6px;'>
           ${(item.imageLocal || item.image) ? `<img class='currency-img' src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${item.imageLocal || item.image}' alt='' loading='lazy' decoding='async' style='width:28px; height:28px; object-fit:contain;'>` : ''}
           <div style='font-weight:600; line-height:1.2;'>${item.name}</div>
@@ -144,6 +175,8 @@ export function render(items: LiquidEmotionItem[]): void {
         ${item.explicitMods && item.explicitMods.length ? `<div style='font-size:11px;'>${(item.explicitMods||[]).map((m)=>sanitizeCraftingHtml(m)).join('<br>')}</div>` : ''}
       </div>`);
   }
+
+  state.tagCounts = { ...tagCounts };
 
   panel.innerHTML = `
     <div class='page-inner'>
@@ -162,20 +195,37 @@ export function render(items: LiquidEmotionItem[]): void {
   const clearBtn = panel.querySelector('#leClear') as HTMLButtonElement | null;
   const listEl = panel.querySelector('#leList') as HTMLElement | null;
   const tagWrap = panel.querySelector('#leTagFilters') as HTMLElement | null;
-  function chip(tag: string, active: boolean){
-    return `<button data-chip='${tag}' style='padding:3px 8px; font-size:11px; border-radius:4px; cursor:pointer; border:1px solid var(--border-color); background:${active? 'var(--accent-blue)' : 'var(--bg-tertiary)'}; color:${active? '#fff':'var(--text-primary)'};'>${tag}</button>`;
-  }
   function renderFixedChips(){
-    if(!tagWrap) return; tagWrap.innerHTML = fixedChips.map(c=>chip(c, state.selectedTags.has(c.toLowerCase()))).join(' ')+ (state.selectedTags.size? ` <button id='leChipReset' style='padding:3px 10px; font-size:11px; border-radius:4px; cursor:pointer; background:var(--accent-red); color:#fff; border:1px solid var(--accent-red);'>Reset</button>` : '');
-    tagWrap.querySelectorAll('button[data-chip]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const name = (btn as HTMLElement).getAttribute('data-chip')||''; const key=name.toLowerCase();
+    if(!tagWrap) return;
+    tagWrap.innerHTML = '';
+    fixedChips.forEach(label => {
+      const key = label.toLowerCase();
+      const active = state.selectedTags.has(key);
+      const count = state.tagCounts[key] || 0;
+      const chip = document.createElement('div');
+      chip.textContent = count ? `${label} (${count})` : label;
+      applyFilterChipChrome(chip, chipChrome(label, active), { fontWeight: active ? '600' : '500', padding: '3px 10px' });
+      chip.style.margin = '0 4px 4px 0';
+      chip.dataset.chip = key;
+      chip.addEventListener('click', () => {
         if(state.selectedTags.has(key)) state.selectedTags.delete(key); else state.selectedTags.add(key);
         apply(searchEl?.value||'');
         renderFixedChips();
       });
+      tagWrap.appendChild(chip);
     });
-    tagWrap.querySelector('#leChipReset')?.addEventListener('click', ()=>{ state.selectedTags.clear(); apply(searchEl?.value||''); renderFixedChips(); });
+    if (state.selectedTags.size) {
+      const reset = document.createElement('div');
+      reset.textContent = 'Reset';
+      applyFilterChipChrome(reset, { border: '1px solid var(--accent-red)', background: 'var(--accent-red)', color: '#fff' }, { fontWeight: '600', padding: '3px 10px' });
+      reset.style.margin = '0 4px 4px 0';
+      reset.addEventListener('click', () => {
+        state.selectedTags.clear();
+        apply(searchEl?.value || '');
+        renderFixedChips();
+      });
+      tagWrap.appendChild(reset);
+    }
   }
   const apply = (q: string) => {
     const f = (q||'').toLowerCase().trim();
@@ -184,9 +234,8 @@ export function render(items: LiquidEmotionItem[]): void {
     cards.forEach((card) => {
       const name = (card.getAttribute('data-name')||'').toLowerCase();
       const slug = (card.getAttribute('data-slug')||'').toLowerCase();
-      // Tag filtering checks the inner text of the card
-      const text = card.textContent?.toLowerCase() || '';
-      const tagsOk = !state.selectedTags.size || [...state.selectedTags].every(t => text.includes(t) || (t==='energy shield' && /energy\s*shield|\bes\b/.test(text)) || (t==='dot' && /damage over time|degeneration|bleed|ignite/.test(text)));
+      const cardTags = new Set((card.getAttribute('data-tags') || '').split('|').filter(Boolean));
+      const tagsOk = !state.selectedTags.size || [...state.selectedTags].every(t => cardTags.has(t));
       card.style.display = ((!f || name.includes(f) || slug.includes(f)) && tagsOk) ? '' : 'none';
     });
   };

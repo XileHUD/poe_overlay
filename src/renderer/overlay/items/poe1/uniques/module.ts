@@ -25,6 +25,7 @@ type PreparedUnique = {
   category: string;
   tags: string[];
   searchText: string;
+  tagSet: Set<string>;
 };
 
 const state = {
@@ -103,7 +104,8 @@ function prepareUniques(groups: Poe1UniqueGroups): PreparedUnique[] {
         item,
         category,
         tags,
-        searchText
+        searchText,
+        tagSet: new Set<string>(tags)
       };
 
       const key = `${(item.name || '').toLowerCase()}|${(item.baseType || '').toLowerCase()}`;
@@ -334,6 +336,11 @@ export function render(): void {
   };
   
   let updateListFrame = 0;
+  const RENDER_BATCH_SIZE = 24;
+  const RENDER_TIME_BUDGET = 12;
+  let renderToken = 0;
+  let searchDebounce: number | undefined;
+  const SEARCH_DEBOUNCE_MS = 120;
 
   const scheduleUpdateList = () => {
     if (updateListFrame) {
@@ -438,94 +445,109 @@ export function render(): void {
   // Update items list
   const updateList = () => {
     const query = searchValue.trim().toLowerCase();
-    container.innerHTML = '';
-    const fragment = document.createDocumentFragment();
-    
+    const token = ++renderToken;
+
     const categoryLabelsShort: Record<string, string> = {
       WeaponUnique: 'Weapon',
       ArmourUnique: 'Armour',
       OtherUnique: 'Other'
     };
-    
-    // Filter items
-    const filtered = state.prepared.filter(p => {
-      // Category filter
+
+    const filtered = state.prepared.filter((p) => {
       if (selectedCategory !== 'All' && p.category !== selectedCategory) return false;
-      
-      // Search filter
       if (query && !p.searchText.includes(query)) return false;
-      
-      // Tag filters (AND logic - must have all selected tags)
       if (selectedFilters.size > 0) {
-        const itemTags = new Set(p.tags);
         for (const tag of selectedFilters) {
-          if (!itemTags.has(tag)) return false;
+          if (!p.tagSet.has(tag)) return false;
         }
       }
-      
       return true;
     });
-    
-    if (filtered.length === 0) {
+
+    container.innerHTML = '';
+
+    if (!filtered.length) {
       container.innerHTML = `<div class='no-mods'>No uniques found</div>`;
       countEl.textContent = '0 uniques';
-      renderFilterChips([]); // Update tag counts
+      renderFilterChips([]);
       return;
     }
-    
-    // Group by category
+
     const groups = new Map<string, PreparedUnique[]>();
-    filtered.forEach(p => {
+    filtered.forEach((p) => {
       if (!groups.has(p.category)) {
         groups.set(p.category, []);
       }
       groups.get(p.category)!.push(p);
     });
-    
-    // Render each category
+
+    const fragment = document.createDocumentFragment();
     const sortedCategories = Array.from(groups.keys()).sort();
-    
-    sortedCategories.forEach(cat => {
+
+    type RenderQueueEntry = { grid: HTMLElement; items: PreparedUnique[] };
+    const renderQueue: RenderQueueEntry[] = [];
+
+    sortedCategories.forEach((cat) => {
       const items = groups.get(cat)!;
-      
-  const section = document.createElement('div');
-  section.style.marginBottom = '12px';
-      
+
+      const section = document.createElement('div');
+      section.style.marginBottom = '12px';
+
       const header = document.createElement('div');
       header.style.fontWeight = '600';
       header.style.fontSize = '14px';
       header.style.margin = '0 0 8px 0';
       header.textContent = `${categoryLabelsShort[cat]} (${items.length})`;
       section.appendChild(header);
-      
-      // Items grid - 3 per row
+
       const grid = document.createElement('div');
       grid.style.display = 'grid';
       grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
-  grid.style.gap = '10px';
-      
-      items.forEach(p => {
-        const card = buildItemCard(p.item);
-        grid.appendChild(card);
-      });
-      
+      grid.style.gap = '10px';
+
+      renderQueue.push({ grid, items: items.slice() });
+
       section.appendChild(grid);
       fragment.appendChild(section);
     });
-    
+
     container.appendChild(fragment);
     countEl.textContent = `${filtered.length} uniques`;
-    
-    // Resolve image paths and apply fallbacks
-    bindImageFallback(
-      container,
-      'img.unique-img',
-      `<svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110"><rect width="110" height="110" rx="8" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="14" font-family="sans-serif">IMG</text></svg>`,
-      0.55
-    );
-
-    // Update filter chips with new counts
     renderFilterChips(filtered);
+
+    const finalize = () => {
+      if (token !== renderToken) return;
+      bindImageFallback(
+        container,
+        'img.unique-img',
+        `<svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110"><rect width="110" height="110" rx="8" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="14" font-family="sans-serif">IMG</text></svg>`,
+        0.55
+      );
+    };
+
+    const processQueue = () => {
+      if (token !== renderToken) return;
+      const start = performance.now();
+      while (renderQueue.length && performance.now() - start < RENDER_TIME_BUDGET) {
+        const entry = renderQueue[0];
+        let processed = 0;
+        while (entry.items.length && processed < RENDER_BATCH_SIZE) {
+          const next = entry.items.shift()!;
+          entry.grid.appendChild(buildItemCard(next.item));
+          processed++;
+        }
+        if (!entry.items.length) {
+          renderQueue.shift();
+        }
+      }
+      if (renderQueue.length && token === renderToken) {
+        requestAnimationFrame(processQueue);
+      } else if (token === renderToken) {
+        finalize();
+      }
+    };
+
+    requestAnimationFrame(processQueue);
   };
   
   // Build individual item card
@@ -677,12 +699,21 @@ export function render(): void {
   
   searchInput.addEventListener('input', () => {
     searchValue = searchInput.value;
-    scheduleUpdateList();
+    if (searchDebounce) {
+      window.clearTimeout(searchDebounce);
+    }
+    searchDebounce = window.setTimeout(() => {
+      scheduleUpdateList();
+    }, SEARCH_DEBOUNCE_MS);
   });
   
   clearButton.addEventListener('click', () => {
     searchValue = '';
     searchInput.value = '';
+    if (searchDebounce) {
+      window.clearTimeout(searchDebounce);
+      searchDebounce = undefined;
+    }
     scheduleUpdateList();
   });
   

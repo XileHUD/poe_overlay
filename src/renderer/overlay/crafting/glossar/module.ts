@@ -1,4 +1,6 @@
 // Glossar (Keywords) panel module
+import { applyFilterChipChrome, type ChipChrome } from "../../utils";
+import { buildPoe2ChipChrome } from "../../shared/filterChips";
 
 export type GlossEntry = { name: string; description_plain?: string; description_html?: string; __tags?: string[] };
 
@@ -88,25 +90,29 @@ export function render(entries: GlossEntry[]): void {
 
   list.forEach(e=>{ e.__tags = deriveTags(e); });
 
-  function tagRGB(tag: string): [number,number,number]{ const t=(tag||'').toLowerCase();
-    if(t==='fire' || t==='life') return [220,68,61];
-    if(t==='cold' || t==='mana') return [66,165,245];
-    if(t==='lightning') return [255,213,79];
-    if(t==='chaos' || t==='minion') return [156,39,176];
-    if(t==='energy shield' || t==='es') return [38,198,218];
-    if(t==='armour' || t==='armor' || t==='defences') return [109,76,65];
-    if(t==='evasion') return [46,125,50];
-    if(t==='resistances' || t==='resist') return [255,112,67];
-    if(t==='projectile') return [255,179,0];
-    if(t==='area') return [171,71,188];
-    if(t==='critical' || t==='crit') return [255,179,0];
-    if(t==='spell') return [92,107,192];
-    if(t==='attack') return [121,85,72];
-    if(t==='damage' || t==='ailments' || t==='mechanics') return [96,125,139];
-    if(t==='movement' || t==='attack speed' || t==='speed') return [67,160,71];
-    if(t==='elemental') return [255,152,0];
-    return [120,144,156]; }
-  function chipCss(tag: string, active: boolean){ const [r,g,b]=tagRGB(tag); const bg = active? `rgba(${r},${g},${b},0.9)` : `rgba(${r},${g},${b},0.22)`; const border=`rgba(${r},${g},${b},0.6)`; const luma=0.2126*r+0.7152*g+0.0722*b; const color = active ? (luma>180? '#000':'#fff') : 'var(--text-primary)'; return `border:1px solid ${border}; background:${bg}; color:${color};`; }
+  function tagRGB(tag: string): [number, number, number] {
+    const t = (tag || '').toLowerCase();
+    if (t === 'fire' || t === 'life') return [220, 68, 61];
+    if (t === 'cold' || t === 'mana') return [66, 165, 245];
+    if (t === 'lightning') return [255, 213, 79];
+    if (t === 'chaos' || t === 'minion') return [156, 39, 176];
+    if (t === 'energy shield' || t === 'es') return [38, 198, 218];
+    if (t === 'armour' || t === 'armor' || t === 'defences') return [109, 76, 65];
+    if (t === 'evasion') return [46, 125, 50];
+    if (t === 'resistances' || t === 'resist') return [255, 112, 67];
+    if (t === 'projectile') return [255, 179, 0];
+    if (t === 'area') return [171, 71, 188];
+    if (t === 'critical' || t === 'crit') return [255, 179, 0];
+    if (t === 'spell') return [92, 107, 192];
+    if (t === 'attack') return [121, 85, 72];
+    if (t === 'damage' || t === 'ailments' || t === 'mechanics') return [96, 125, 139];
+    if (t === 'movement' || t === 'attack speed' || t === 'speed') return [67, 160, 71];
+    if (t === 'elemental') return [255, 152, 0];
+    return [120, 144, 156];
+  }
+  function chipChrome(tag: string, active: boolean): ChipChrome {
+    return buildPoe2ChipChrome(tagRGB(tag), active);
+  }
 
   const total = list.length|0;
   const controls = `<div style='display:flex; gap:6px; align-items:center; margin-bottom:6px;'>
@@ -114,7 +120,7 @@ export function render(entries: GlossEntry[]): void {
     <button id='glossClear' class='pin-btn' style='padding:4px 8px;'>Clear</button>
   </div>
   <div style='background:var(--bg-secondary); padding:8px; border-radius:6px; margin-bottom:8px;'>
-    <div id='glossTagFilters' style='display:flex; flex-wrap:wrap; gap:6px; justify-content:center; width:100%;'></div>
+    <div id='glossTagFilters' style='display:flex; flex-wrap:wrap; gap:4px; justify-content:center; width:100%;'></div>
   </div>
   <div id='glossList' style='display:flex; flex-direction:column; gap:8px;'></div>`;
   const panelEl = ensurePanel();
@@ -131,13 +137,13 @@ export function render(entries: GlossEntry[]): void {
     curatedTags.forEach(tag=>{
       const active = selected.has(tag);
       const count = list.filter(e=> (e.__tags||[]).includes(tag)).length;
-      const btn=document.createElement('button');
-      btn.textContent = count ? `${tag} (${count})` : tag;
-      (btn as HTMLElement).style.cssText = `cursor:pointer; user-select:none; padding:3px 8px; font-size:11px; border-radius:4px; ${chipCss(tag, active)}`;
-      btn.addEventListener('click',()=>{ active?selected.delete(tag):selected.add(tag); build(input.value||''); renderTagFilters(); });
-      tagWrap.appendChild(btn);
+      const chip=document.createElement('div');
+      chip.textContent = count ? `${tag} (${count})` : tag;
+      applyFilterChipChrome(chip, chipChrome(tag, active), { fontWeight: active ? '600' : '500' });
+      chip.addEventListener('click',()=>{ active?selected.delete(tag):selected.add(tag); build(input.value||''); renderTagFilters(); });
+      tagWrap.appendChild(chip);
     });
-    if(selected.size){ const reset=document.createElement('button'); reset.textContent='Reset'; (reset as HTMLElement).style.cssText='cursor:pointer; user-select:none; padding:3px 8px; font-size:11px; border:1px solid var(--accent-red); border-radius:4px; background:var(--accent-red); color:#fff'; reset.addEventListener('click',()=>{ selected.clear(); build(input.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); }
+    if(selected.size){ const reset=document.createElement('div'); reset.textContent='Reset'; applyFilterChipChrome(reset, { border: '1px solid var(--accent-red)', background: 'var(--accent-red)', color: '#fff' }, { fontWeight: '600' }); reset.addEventListener('click',()=>{ selected.clear(); build(input.value||''); renderTagFilters(); }); tagWrap.appendChild(reset); }
   }
 
   const highlight=(s: string)=> s
