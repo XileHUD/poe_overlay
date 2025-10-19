@@ -97,19 +97,24 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       --text-muted: #808080;
       --border-color: #404040;
       --accent-blue: #4a9eff;
+      --accent-green: #5cb85c;
       --accent-orange: #f0ad4e;
+      --accent-red: #d9534f;
     }
     
     * { box-sizing: border-box; }
     
     body {
       margin: 0;
-      padding: 24px;
+      padding: 0;
       font-family: 'Segoe UI', Roboto, Arial, sans-serif;
       background: var(--bg-primary);
       color: var(--text-primary);
-      overflow-y: auto;
+      overflow: hidden;
       user-select: none;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
     }
     
     body.poe1-mode .poe2-only {
@@ -120,77 +125,128 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       display: none !important;
     }
     
-    /* Dark scrollbar */
-    body::-webkit-scrollbar {
-      width: 12px;
+    .header {
+      padding: 16px 24px;
+      background: linear-gradient(135deg, rgba(240, 173, 78, 0.12) 0%, rgba(240, 173, 78, 0.06) 100%);
+      border-bottom: 2px solid rgba(240, 173, 78, 0.25);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+      -webkit-app-region: drag;
     }
     
-    body::-webkit-scrollbar-track {
-      background: var(--bg-secondary);
-      border-radius: 6px;
-    }
-    
-    body::-webkit-scrollbar-thumb {
-      background: var(--bg-tertiary);
-      border-radius: 6px;
-      border: 2px solid var(--bg-secondary);
-    }
-    
-    body::-webkit-scrollbar-thumb:hover {
-      background: #444c56;
-    }
-    
-    h1 {
-      margin: 0 0 8px;
-      font-size: 20px;
-      color: var(--accent-orange);
-      font-weight: 600;
+    .header-title {
       display: flex;
       align-items: center;
       gap: 10px;
-      justify-content: space-between;
+    }
+    
+    .header-title h1 {
+      margin: 0;
+      font-size: 20px;
+      color: var(--accent-orange);
+      font-weight: 600;
+    }
+    
+    .header-subtitle {
+      margin: 4px 0 0 34px;
+      font-size: 12px;
+      color: var(--text-secondary);
     }
     
     .close-btn {
-      background: none;
-      border: none;
-      color: var(--text-secondary);
+      width: 32px;
+      height: 32px;
+      background: rgba(217, 83, 79, 0.15);
+      border: 2px solid rgba(217, 83, 79, 0.4);
+      border-radius: 50%;
+      color: var(--accent-red);
       font-size: 20px;
       cursor: pointer;
-      padding: 4px 8px;
-      border-radius: 4px;
-      transition: all 0.15s ease;
-      line-height: 1;
-      width: 28px;
-      height: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      -webkit-app-region: no-drag;
     }
     
     .close-btn:hover {
-      background: var(--bg-tertiary);
-      color: var(--text-primary);
+      background: rgba(217, 83, 79, 0.3);
+      border-color: var(--accent-red);
+      transform: scale(1.1);
     }
     
-    .subtitle {
-      margin: 0 0 24px;
-      font-size: 13px;
-      color: var(--text-secondary);
+    .content-wrapper {
+      flex: 1;
+      overflow: hidden;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .features-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      overflow: hidden;
+    }
+    
+    .feature-column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow: hidden;
     }
     
     .feature-group {
-      margin-bottom: 12px;
       border: 1px solid var(--border-color);
       border-radius: 6px;
       overflow: hidden;
+      background: var(--bg-secondary);
+      flex-shrink: 0;
+    }
+    
+    .simple-checkbox {
+      padding: 10px 14px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      flex-shrink: 0;
+    }
+    
+    .simple-checkbox:hover {
+      background: var(--bg-tertiary);
+    }
+    
+    .simple-checkbox input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      margin: 0;
+      flex-shrink: 0;
+    }
+    
+    .simple-checkbox label {
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0;
+      flex: 1;
     }
     
     .feature-main {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 12px 14px;
+      padding: 10px 12px;
       background: var(--bg-secondary);
       cursor: pointer;
       transition: background 0.15s ease;
@@ -215,7 +271,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
     
     .feature-main label {
       cursor: pointer;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       flex: 1;
       margin: 0;
@@ -223,7 +279,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
     
     .expand-icon {
       color: var(--text-secondary);
-      font-size: 12px;
+      font-size: 10px;
       transition: transform 0.2s ease;
       flex-shrink: 0;
     }
@@ -234,19 +290,34 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
     
     .feature-subs {
       background: rgba(0, 0, 0, 0.2);
-      padding: 8px 0;
+      padding: 6px 0;
       display: none;
+      max-height: 180px;
+      overflow-y: auto;
     }
     
     .feature-subs.visible {
       display: block;
     }
     
+    .feature-subs::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    .feature-subs::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+    
+    .feature-subs::-webkit-scrollbar-thumb {
+      background: var(--bg-tertiary);
+      border-radius: 4px;
+    }
+    
     .feature-sub {
-      padding: 8px 14px 8px 44px;
+      padding: 6px 12px 6px 38px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       transition: background 0.15s ease;
     }
     
@@ -255,8 +326,8 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
     }
     
     .feature-sub input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
+      width: 15px;
+      height: 15px;
       cursor: pointer;
       margin: 0;
       flex-shrink: 0;
@@ -264,22 +335,34 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
     
     .feature-sub label {
       cursor: pointer;
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-primary);
       margin: 0;
     }
     
-    .buttons {
-      margin-top: 24px;
+    .footer {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
       gap: 10px;
-      justify-content: center;
+      margin-top: 16px;
       padding-top: 16px;
       border-top: 1px solid var(--border-color);
+      flex-shrink: 0;
+    }
+    
+    .preset-buttons {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 8px;
     }
     
     button {
-      padding: 10px 20px;
+      padding: 8px 16px;
       border: none;
       border-radius: 6px;
       font-size: 13px;
@@ -307,299 +390,264 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
     .btn-secondary:hover {
       background: #454545;
     }
-    
-    .warning {
-      padding: 10px 14px;
-      background: rgba(240, 173, 78, 0.1);
-      border: 1px solid rgba(240, 173, 78, 0.3);
-      border-radius: 6px;
-      font-size: 12px;
-      color: var(--text-secondary);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    
-    .warning::before {
-      content: "⚠️";
-      font-size: 16px;
-    }
-    
-    .simple-checkbox {
-      margin-bottom: 12px;
-      padding: 12px 14px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      transition: background 0.15s ease;
-    }
-    
-    .simple-checkbox:hover {
-      background: var(--bg-tertiary);
-    }
-    
-    .simple-checkbox input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-      margin: 0;
-    }
-    
-    .simple-checkbox label {
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
-      margin: 0;
-    }
   </style>
 </head>
 <body class="${overlayClass}">
-  <h1>
-    <span>🎯 Feature Selection</span>
-    <button class="close-btn" onclick="closeWindow()" title="Close">✕</button>
-  </h1>
-  <p class="subtitle">Choose which features you want to use. You can change this later from the tray menu.</p>
+  <div class="header">
+    <div>
+      <div class="header-title">
+        <h1>🎯 Feature Selection</h1>
+      </div>
+      <div class="header-subtitle">Choose which features you want to use. You can change this later from the tray menu.</div>
+    </div>
+    <button class="close-btn" onclick="closeWindow()" title="Close">×</button>
+  </div>
   
-  <div class="warning">
-    Enabling fewer features will make the overlay start faster and use less memory.
-  </div>
+  <div class="content-wrapper">
+    <div class="features-grid">
+      <!-- Left Column -->
+      <div class="feature-column">
+        <!-- Modifiers PoE2 -->
+        <div class="simple-checkbox poe2-only">
+          <input type="checkbox" id="feat-modifiers" ${checked(safeConfig.modifiers)}/>
+          <label for="feat-modifiers">Modifiers (PoE2)</label>
+        </div>
 
-  <!-- Modifiers PoE2 (simple checkbox, no subs) -->
-  <div class="simple-checkbox poe2-only">
-    <input type="checkbox" id="feat-modifiers" ${checked(safeConfig.modifiers)}/>
-    <label for="feat-modifiers">Modifiers (PoE2 - gear, weapons, jewels, etc.)</label>
-  </div>
+        <!-- Modifiers PoE1 -->
+        <div class="simple-checkbox poe1-only">
+          <input type="checkbox" id="feat-poe1-modifiers" ${checked(safeConfig.poe1Modifiers)}/>
+          <label for="feat-poe1-modifiers">Modifiers (PoE1)</label>
+        </div>
 
-  <!-- Modifiers PoE1 (simple checkbox, no subs) -->
-  <div class="simple-checkbox poe1-only">
-    <input type="checkbox" id="feat-poe1-modifiers" ${checked(safeConfig.poe1Modifiers)}/>
-    <label for="feat-poe1-modifiers">Modifiers (PoE1)</label>
-  </div>
+        <!-- Crafting PoE2 -->
+        <div class="feature-group poe2-only">
+          <div class="feature-main" onclick="toggleGroup('crafting')">
+            <input type="checkbox" id="feat-crafting" ${checked(safeConfig.crafting.enabled)} onclick="event.stopPropagation()"/>
+            <label for="feat-crafting">Crafting (PoE2)</label>
+            <span class="expand-icon ${safeConfig.crafting.enabled ? 'expanded' : ''}">▶</span>
+          </div>
+          <div class="feature-subs ${safeConfig.crafting.enabled ? 'visible' : ''}" id="subs-crafting">
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-craft-liquid" ${checked(safeConfig.crafting.subcategories.liquidEmotions)}/>
+              <label for="feat-craft-liquid">Liquid Emotions</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-craft-essences" ${checked(safeConfig.crafting.subcategories.essences)}/>
+              <label for="feat-craft-essences">Essences</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-craft-omens" ${checked(safeConfig.crafting.subcategories.omens)}/>
+              <label for="feat-craft-omens">Omens</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-craft-currency" ${checked(safeConfig.crafting.subcategories.currency)}/>
+              <label for="feat-craft-currency">Currency</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-craft-catalysts" ${checked(safeConfig.crafting.subcategories.catalysts)}/>
+              <label for="feat-craft-catalysts">Catalysts</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-craft-socketables" ${checked(safeConfig.crafting.subcategories.socketables)}/>
+              <label for="feat-craft-socketables">Socketables</label>
+            </div>
+          </div>
+        </div>
 
-  <!-- PoE1 Crafting (with subcategories) -->
-  <div class="feature-group poe1-only">
-    <div class="feature-main" onclick="toggleGroup('poe1Crafting')">
-      <input type="checkbox" id="feat-poe1-crafting" ${checked(safeConfig.poe1Crafting.enabled)} onclick="event.stopPropagation()"/>
-      <label for="feat-poe1-crafting">Crafting (PoE1)</label>
-      <span class="expand-icon ${safeConfig.poe1Crafting.enabled ? 'expanded' : ''}">▶</span>
-    </div>
-    <div class="feature-subs ${safeConfig.poe1Crafting.enabled ? 'visible' : ''}" id="subs-poe1Crafting">
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-poe1-craft-scarabs" ${checked(safeConfig.poe1Crafting.subcategories.scarabs)}/>
-        <label for="feat-poe1-craft-scarabs">Scarabs</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-poe1-craft-runegrafts" ${checked(safeConfig.poe1Crafting.subcategories.runegrafts)}/>
-        <label for="feat-poe1-craft-runegrafts">Runegrafts</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-poe1-craft-currency" ${checked(safeConfig.poe1Crafting.subcategories.currency)}/>
-        <label for="feat-poe1-craft-currency">Currency</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-poe1-craft-essences" ${checked(safeConfig.poe1Crafting.subcategories.essences)}/>
-        <label for="feat-poe1-craft-essences">Essences</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-poe1-craft-fossils" ${checked(safeConfig.poe1Crafting.subcategories.fossils)}/>
-        <label for="feat-poe1-craft-fossils">Fossils</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-poe1-craft-embers" ${checked(safeConfig.poe1Crafting.subcategories.embers)}/>
-        <label for="feat-poe1-craft-embers">Embers</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-poe1-craft-horticrafting" ${checked(safeConfig.poe1Crafting.subcategories.horticrafting)}/>
-        <label for="feat-poe1-craft-horticrafting">Horticrafting</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-poe1-craft-bestiary" ${checked(safeConfig.poe1Crafting.subcategories.bestiary)}/>
-        <label for="feat-poe1-craft-bestiary">Bestiary</label>
-      </div>
-    </div>
-  </div>
+        <!-- PoE1 Crafting -->
+        <div class="feature-group poe1-only">
+          <div class="feature-main" onclick="toggleGroup('poe1Crafting')">
+            <input type="checkbox" id="feat-poe1-crafting" ${checked(safeConfig.poe1Crafting.enabled)} onclick="event.stopPropagation()"/>
+            <label for="feat-poe1-crafting">Crafting (PoE1)</label>
+            <span class="expand-icon ${safeConfig.poe1Crafting.enabled ? 'expanded' : ''}">▶</span>
+          </div>
+          <div class="feature-subs ${safeConfig.poe1Crafting.enabled ? 'visible' : ''}" id="subs-poe1Crafting">
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-craft-scarabs" ${checked(safeConfig.poe1Crafting.subcategories.scarabs)}/>
+              <label for="feat-poe1-craft-scarabs">Scarabs</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-craft-runegrafts" ${checked(safeConfig.poe1Crafting.subcategories.runegrafts)}/>
+              <label for="feat-poe1-craft-runegrafts">Runegrafts</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-craft-currency" ${checked(safeConfig.poe1Crafting.subcategories.currency)}/>
+              <label for="feat-poe1-craft-currency">Currency</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-craft-essences" ${checked(safeConfig.poe1Crafting.subcategories.essences)}/>
+              <label for="feat-poe1-craft-essences">Essences</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-craft-fossils" ${checked(safeConfig.poe1Crafting.subcategories.fossils)}/>
+              <label for="feat-poe1-craft-fossils">Fossils</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-craft-embers" ${checked(safeConfig.poe1Crafting.subcategories.embers)}/>
+              <label for="feat-poe1-craft-embers">Embers</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-craft-horticrafting" ${checked(safeConfig.poe1Crafting.subcategories.horticrafting)}/>
+              <label for="feat-poe1-craft-horticrafting">Horticrafting</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-craft-bestiary" ${checked(safeConfig.poe1Crafting.subcategories.bestiary)}/>
+              <label for="feat-poe1-craft-bestiary">Bestiary</label>
+            </div>
+          </div>
+        </div>
 
-  <!-- Crafting (with subcategories) -->
-  <div class="feature-group poe2-only">
-    <div class="feature-main" onclick="toggleGroup('crafting')">
-      <input type="checkbox" id="feat-crafting" ${checked(safeConfig.crafting.enabled)} onclick="event.stopPropagation()"/>
-      <label for="feat-crafting">Crafting</label>
-      <span class="expand-icon ${safeConfig.crafting.enabled ? 'expanded' : ''}">▶</span>
-    </div>
-    <div class="feature-subs ${safeConfig.crafting.enabled ? 'visible' : ''}" id="subs-crafting">
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-craft-liquid" ${checked(safeConfig.crafting.subcategories.liquidEmotions)}/>
-        <label for="feat-craft-liquid">Liquid Emotions</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-craft-essences" ${checked(safeConfig.crafting.subcategories.essences)}/>
-        <label for="feat-craft-essences">Essences</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-craft-omens" ${checked(safeConfig.crafting.subcategories.omens)}/>
-        <label for="feat-craft-omens">Omens</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-craft-currency" ${checked(safeConfig.crafting.subcategories.currency)}/>
-        <label for="feat-craft-currency">Currency</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-craft-catalysts" ${checked(safeConfig.crafting.subcategories.catalysts)}/>
-        <label for="feat-craft-catalysts">Catalysts</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-craft-socketables" ${checked(safeConfig.crafting.subcategories.socketables)}/>
-        <label for="feat-craft-socketables">Socketables</label>
-      </div>
-    </div>
-  </div>
+        <!-- Character PoE2 -->
+        <div class="feature-group poe2-only">
+          <div class="feature-main" onclick="toggleGroup('character')">
+            <input type="checkbox" id="feat-character" ${checked(safeConfig.character.enabled)} onclick="event.stopPropagation()"/>
+            <label for="feat-character">Character (PoE2)</label>
+            <span class="expand-icon ${safeConfig.character.enabled ? 'expanded' : ''}">▶</span>
+          </div>
+          <div class="feature-subs ${safeConfig.character.enabled ? 'visible' : ''}" id="subs-character">
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-char-quests" ${checked(safeConfig.character.subcategories.questPassives)}/>
+              <label for="feat-char-quests">Quest Passives</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-char-annoints" ${checked(safeConfig.character.subcategories.annoints)}/>
+              <label for="feat-char-annoints">Annoints</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-char-keystones" ${checked(safeConfig.character.subcategories.keystones)}/>
+              <label for="feat-char-keystones">Keystones</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-char-asc" ${checked(safeConfig.character.subcategories.ascendancyPassives)}/>
+              <label for="feat-char-asc">Ascendancy Passives</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-char-atlas" ${checked(safeConfig.character.subcategories.atlasNodes)}/>
+              <label for="feat-char-atlas">Atlas Nodes</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-char-gems" ${checked(safeConfig.character.subcategories.gems)}/>
+              <label for="feat-char-gems">Gems</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-char-glossar" ${checked(safeConfig.character.subcategories.glossar)}/>
+              <label for="feat-char-glossar">Glossar</label>
+            </div>
+          </div>
+        </div>
 
-  <!-- Character (with subcategories) -->
-  <div class="feature-group poe2-only">
-    <div class="feature-main" onclick="toggleGroup('character')">
-      <input type="checkbox" id="feat-character" ${checked(safeConfig.character.enabled)} onclick="event.stopPropagation()"/>
-      <label for="feat-character">Character</label>
-      <span class="expand-icon ${safeConfig.character.enabled ? 'expanded' : ''}">▶</span>
-    </div>
-    <div class="feature-subs ${safeConfig.character.enabled ? 'visible' : ''}" id="subs-character">
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-char-quests" ${checked(safeConfig.character.subcategories.questPassives)}/>
-        <label for="feat-char-quests">Quest Passives</label>
+        <!-- PoE1 Character -->
+        <div class="feature-group poe1-only">
+          <div class="feature-main" onclick="toggleGroup('poe1Character')">
+            <input type="checkbox" id="feat-poe1-character" ${checked(safeConfig.poe1Character.enabled)} onclick="event.stopPropagation()"/>
+            <label for="feat-poe1-character">Character (PoE1)</label>
+            <span class="expand-icon ${safeConfig.poe1Character.enabled ? 'expanded' : ''}">▶</span>
+          </div>
+          <div class="feature-subs ${safeConfig.poe1Character.enabled ? 'visible' : ''}" id="subs-poe1Character">
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-char-divcards" ${checked(safeConfig.poe1Character.subcategories.divinationCards)}/>
+              <label for="feat-poe1-char-divcards">Divination Cards</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-char-asc-notables" ${checked(safeConfig.poe1Character.subcategories.ascendancyNotables)}/>
+              <label for="feat-poe1-char-asc-notables">Ascendancy Notables</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-char-anointments" ${checked(safeConfig.poe1Character.subcategories.anointments)}/>
+              <label for="feat-poe1-char-anointments">Anointments</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-char-tattoos" ${checked(safeConfig.poe1Character.subcategories.tattoos)}/>
+              <label for="feat-poe1-char-tattoos">Tattoos</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-char-gems" ${checked(safeConfig.poe1Character.subcategories.gems)}/>
+              <label for="feat-poe1-char-gems">Gems</label>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-char-annoints" ${checked(safeConfig.character.subcategories.annoints)}/>
-        <label for="feat-char-annoints">Annoints</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-char-keystones" ${checked(safeConfig.character.subcategories.keystones)}/>
-        <label for="feat-char-keystones">Keystones</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-char-asc" ${checked(safeConfig.character.subcategories.ascendancyPassives)}/>
-        <label for="feat-char-asc">Ascendancy Passives</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-char-atlas" ${checked(safeConfig.character.subcategories.atlasNodes)}/>
-        <label for="feat-char-atlas">Atlas Nodes</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-char-gems" ${checked(safeConfig.character.subcategories.gems)}/>
-        <label for="feat-char-gems">Gems</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-char-glossar" ${checked(safeConfig.character.subcategories.glossar)}/>
-        <label for="feat-char-glossar">Glossar</label>
-      </div>
-    </div>
-  </div>
 
-  <!-- PoE1 Character (with subcategories) -->
-  <div class="feature-group poe1-only">
-    <div class="feature-main" onclick="toggleGroup('poe1Character')">
-      <input type="checkbox" id="feat-poe1-character" ${checked(safeConfig.poe1Character.enabled)} onclick="event.stopPropagation()"/>
-      <label for="feat-poe1-character">Character (PoE1)</label>
-      <span class="expand-icon ${safeConfig.poe1Character.enabled ? 'expanded' : ''}">▶</span>
-    </div>
-    <div class="feature-subs ${safeConfig.poe1Character.enabled ? 'visible' : ''}" id="subs-poe1Character">
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-poe1-char-divcards" ${checked(safeConfig.poe1Character.subcategories.divinationCards)}/>
-        <label for="feat-poe1-char-divcards">Divination Cards</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-poe1-char-asc-notables" ${checked(safeConfig.poe1Character.subcategories.ascendancyNotables)}/>
-        <label for="feat-poe1-char-asc-notables">Ascendancy Notables</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-poe1-char-anointments" ${checked(safeConfig.poe1Character.subcategories.anointments)}/>
-        <label for="feat-poe1-char-anointments">Anointments</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-poe1-char-tattoos" ${checked(safeConfig.poe1Character.subcategories.tattoos)}/>
-        <label for="feat-poe1-char-tattoos">Tattoos</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-poe1-char-gems" ${checked(safeConfig.poe1Character.subcategories.gems)}/>
-        <label for="feat-poe1-char-gems">Gems</label>
-      </div>
-    </div>
-  </div>
+      <!-- Right Column -->
+      <div class="feature-column">
+        <!-- Items PoE2 -->
+        <div class="feature-group poe2-only">
+          <div class="feature-main" onclick="toggleGroup('items')">
+            <input type="checkbox" id="feat-items" ${checked(safeConfig.items.enabled)} onclick="event.stopPropagation()"/>
+            <label for="feat-items">Items (PoE2)</label>
+            <span class="expand-icon ${safeConfig.items.enabled ? 'expanded' : ''}">▶</span>
+          </div>
+          <div class="feature-subs ${safeConfig.items.enabled ? 'visible' : ''}" id="subs-items">
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-items-uniques" ${checked(safeConfig.items.subcategories.uniques)}/>
+              <label for="feat-items-uniques">Uniques</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-items-bases" ${checked(safeConfig.items.subcategories.bases)}/>
+              <label for="feat-items-bases">Bases</label>
+            </div>
+          </div>
+        </div>
 
-  <!-- Items (with subcategories) -->
-  <div class="feature-group poe2-only">
-    <div class="feature-main" onclick="toggleGroup('items')">
-      <input type="checkbox" id="feat-items" ${checked(safeConfig.items.enabled)} onclick="event.stopPropagation()"/>
-      <label for="feat-items">Items (PoE2)</label>
-      <span class="expand-icon ${safeConfig.items.enabled ? 'expanded' : ''}">▶</span>
-    </div>
-    <div class="feature-subs ${safeConfig.items.enabled ? 'visible' : ''}" id="subs-items">
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-items-uniques" ${checked(safeConfig.items.subcategories.uniques)}/>
-        <label for="feat-items-uniques">Uniques</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-items-bases" ${checked(safeConfig.items.subcategories.bases)}/>
-        <label for="feat-items-bases">Bases</label>
-      </div>
-    </div>
-  </div>
+        <!-- PoE1 Items -->
+        <div class="feature-group poe1-only">
+          <div class="feature-main" onclick="toggleGroup('poe1Items')">
+            <input type="checkbox" id="feat-poe1-items" ${checked(safeConfig.poe1Items.enabled)} onclick="event.stopPropagation()"/>
+            <label for="feat-poe1-items">Items (PoE1)</label>
+            <span class="expand-icon ${safeConfig.poe1Items.enabled ? 'expanded' : ''}">▶</span>
+          </div>
+          <div class="feature-subs ${safeConfig.poe1Items.enabled ? 'visible' : ''}" id="subs-poe1Items">
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-items-uniques" ${checked(safeConfig.poe1Items.subcategories.uniques)}/>
+              <label for="feat-poe1-items-uniques">Uniques</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-items-bases" ${checked(safeConfig.poe1Items.subcategories.bases)}/>
+              <label for="feat-poe1-items-bases">Bases</label>
+            </div>
+          </div>
+        </div>
 
-  <!-- PoE1 Items (with subcategories) -->
-  <div class="feature-group poe1-only">
-    <div class="feature-main" onclick="toggleGroup('poe1Items')">
-      <input type="checkbox" id="feat-poe1-items" ${checked(safeConfig.poe1Items.enabled)} onclick="event.stopPropagation()"/>
-      <label for="feat-poe1-items">Items (PoE1)</label>
-      <span class="expand-icon ${safeConfig.poe1Items.enabled ? 'expanded' : ''}">▶</span>
-    </div>
-    <div class="feature-subs ${safeConfig.poe1Items.enabled ? 'visible' : ''}" id="subs-poe1Items">
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-poe1-items-uniques" ${checked(safeConfig.poe1Items.subcategories.uniques)}/>
-        <label for="feat-poe1-items-uniques">Uniques</label>
-      </div>
-      <div class="feature-sub">
-        <input type="checkbox" id="feat-poe1-items-bases" ${checked(safeConfig.poe1Items.subcategories.bases)}/>
-        <label for="feat-poe1-items-bases">Bases</label>
-      </div>
-    </div>
-  </div>
+        <!-- Tools -->
+        <div class="feature-group">
+          <div class="feature-main" onclick="toggleGroup('tools')">
+            <input type="checkbox" id="feat-tools" ${checked(safeConfig.tools.enabled)} onclick="event.stopPropagation()"/>
+            <label for="feat-tools">Tools</label>
+            <span class="expand-icon ${safeConfig.tools.enabled ? 'expanded' : ''}">▶</span>
+          </div>
+          <div class="feature-subs ${safeConfig.tools.enabled ? 'visible' : ''}" id="subs-tools">
+            <div class="feature-sub poe2-only">
+              <input type="checkbox" id="feat-tools-regex" ${checked(safeConfig.tools.subcategories.regex)}/>
+              <label for="feat-tools-regex">Regex Builder</label>
+            </div>
+            <div class="feature-sub poe1-only">
+              <input type="checkbox" id="feat-tools-poe1-regex" ${checked(safeConfig.tools.subcategories.poe1Regex)}/>
+              <label for="feat-tools-poe1-regex">Map Regex</label>
+            </div>
+            <div class="feature-sub poe1-only">
+              <input type="checkbox" id="feat-tools-poe1-vorici" ${checked(safeConfig.tools.subcategories.poe1Vorici)}/>
+              <label for="feat-tools-poe1-vorici">Vorici Calculator</label>
+            </div>
+          </div>
+        </div>
 
-  <!-- Tools (with subcategories) -->
-  <div class="feature-group">
-    <div class="feature-main" onclick="toggleGroup('tools')">
-      <input type="checkbox" id="feat-tools" ${checked(safeConfig.tools.enabled)} onclick="event.stopPropagation()"/>
-      <label for="feat-tools">Tools</label>
-      <span class="expand-icon ${safeConfig.tools.enabled ? 'expanded' : ''}">▶</span>
-    </div>
-    <div class="feature-subs ${safeConfig.tools.enabled ? 'visible' : ''}" id="subs-tools">
-      <div class="feature-sub poe2-only">
-        <input type="checkbox" id="feat-tools-regex" ${checked(safeConfig.tools.subcategories.regex)}/>
-        <label for="feat-tools-regex">Regex Builder</label>
-      </div>
-      <div class="feature-sub poe1-only">
-        <input type="checkbox" id="feat-tools-poe1-regex" ${checked(safeConfig.tools.subcategories.poe1Regex)}/>
-        <label for="feat-tools-poe1-regex">Map Regex</label>
-      </div>
-      <div class="feature-sub poe1-only">
-        <input type="checkbox" id="feat-tools-poe1-vorici" ${checked(safeConfig.tools.subcategories.poe1Vorici)}/>
-        <label for="feat-tools-poe1-vorici">Vorici Calculator</label>
+        <!-- Merchant History -->
+        <div class="simple-checkbox poe2-only">
+          <input type="checkbox" id="feat-merchant" ${checked(config.merchant)}/>
+          <label for="feat-merchant">Merchant History</label>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Merchant (simple checkbox, no subs) -->
-  <div class="simple-checkbox poe2-only">
-    <input type="checkbox" id="feat-merchant" ${checked(config.merchant)}/>
-    <label for="feat-merchant">Merchant History</label>
-  </div>
-
-  <div class="buttons">
-    <button class="btn-secondary" onclick="loadPreset('minimal')">Minimal</button>
-    <button class="btn-secondary" onclick="loadPreset('recommended')">All Features</button>
-    <button class="btn-primary" onclick="saveAndContinue()">Save & Continue</button>
+    <div class="footer">
+      <div class="preset-buttons">
+        <button class="btn-secondary" onclick="loadPreset('minimal')">Minimal</button>
+        <button class="btn-secondary" onclick="loadPreset('recommended')">All Features</button>
+      </div>
+      <div class="action-buttons">
+        <button class="btn-primary" onclick="saveAndContinue()">Save & Continue</button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -881,11 +929,15 @@ export function showFeatureSplash(currentConfig?: FeatureConfig, overlayVersion:
     const path = require('path');
     const preloadPath = path.join(__dirname, '..', 'preload.js');
     
+    // Use wide design similar to settings splash
+    const splashWidth = 960;
+    const splashHeight = 770;
+    
     const win = new BrowserWindow({
-      width: 550,
-      height: Math.min(750, height - 100),
-      x: Math.round(width / 2 - 275),
-      y: Math.round(height / 2 - 375),
+      width: splashWidth,
+      height: splashHeight,
+      x: Math.round(width / 2 - splashWidth / 2),
+      y: Math.round(height / 2 - splashHeight / 2),
       frame: false,
       resizable: false,
       alwaysOnTop: true,
