@@ -88,6 +88,9 @@ export function renderHistoryDetail(idx: number): void {
   const ilvl = item?.ilvl || item?.itemLevel || "";
   const corrupted = !!(item?.corrupted || (item?.flags && item.flags.corrupted));
   
+  // Check if this is an incomplete "ITEM" entry
+  const isIncompleteItem = name === "Item" || name === "ITEM";
+  
   // Rarity (prefer explicit rarity field, fallback via frameType mapping)
   const frameMap: Record<number, string> = { 0: 'Normal', 1: 'Magic', 2: 'Rare', 3: 'Unique' };
   const rarityRaw: string | undefined = (item?.rarity && String(item.rarity)) || (item?.frameType != null ? frameMap[item.frameType] : undefined);
@@ -360,6 +363,21 @@ export function renderHistoryDetail(idx: number): void {
           </div>
         </div>
       </div>
+      ${isIncompleteItem ? `
+      <div style="margin-top: 16px; padding: 12px 14px; background: rgba(33, 150, 243, 0.08); border-left: 3px solid rgba(33, 150, 243, 0.5); border-radius: 4px; font-size: 12px; line-height: 1.65; color: var(--text-secondary);">
+        <div style="display: flex; align-items: flex-start; gap: 10px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px; color: rgba(33, 150, 243, 0.9);">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <div>
+            <strong style="color: var(--text-primary); font-size: 12px;">About Incomplete Item Data</strong><br>
+            <span style="margin-top: 4px; display: block;">When items appear as "ITEM" without images or statistics, the trade API is returning incomplete data. This limitation also affects the official trade site. XileHUD automatically tracks these placeholder entries and updates them with complete information once the API provides proper data. These entries are preserved to maintain accurate profit totals and chart continuity.</span>
+          </div>
+        </div>
+      </div>
+      ` : ''}
     </div>
   `;
             

@@ -23,8 +23,14 @@ export interface UserSettings {
   clipboardDelayMigrated?: boolean; // Internal flag to avoid repeating clipboard delay resets
   clipboardDelayMigratedV2?: boolean; // Flag for 2025-10 migration to new hotkey system defaults
   clipboardDelayMigratedV3?: boolean; // Flag for resetting all clipboard delays to Auto (2025-10-11)
+  // Legacy merchant history settings (deprecated - use version-specific ones below)
   merchantHistoryLeague?: string; // Preferred league for merchant history fetches
   merchantHistoryLeagueSource?: 'auto' | 'manual'; // Whether league was auto-detected or manually chosen
+  // Version-specific merchant history settings
+  merchantHistoryLeaguePoe1?: string; // PoE1-specific league for merchant history
+  merchantHistoryLeagueSourcePoe1?: 'auto' | 'manual'; // PoE1 league source
+  merchantHistoryLeaguePoe2?: string; // PoE2-specific league for merchant history
+  merchantHistoryLeagueSourcePoe2?: 'auto' | 'manual'; // PoE2 league source
   merchantHistoryAutoFetch?: boolean; // Enable/disable automatic history fetching (default: true)
   merchantHistoryRefreshInterval?: number; // Auto-fetch interval in minutes (default: 30, min: 15)
   historyAutoCleanupDone?: boolean; // Flag to track if auto-cleanup has been performed on first start

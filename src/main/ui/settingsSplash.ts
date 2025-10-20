@@ -27,10 +27,10 @@ const POE2_LEAGUES: LeagueOption[] = [
 ];
 
 const POE1_LEAGUES: LeagueOption[] = [
-  { value: 'Secret', label: 'Secret (Placeholder League)' },
-  { value: 'Secret Hardcore', label: 'Secret Hardcore (Placeholder League)' },
+  { value: 'Keepers of the Flame', label: 'Keepers of the Flame (Softcore)' },
+  { value: 'HC Keepers of the Flame', label: 'HC Keepers of the Flame' },
   { value: 'Standard', label: 'Standard' },
-  { value: 'Standard Hardcore', label: 'Standard Hardcore' }
+  { value: 'Hardcore', label: 'Hardcore' }
 ];
 
 // Get version from package.json
@@ -183,6 +183,12 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
     try {
       if (overlayWindow && !overlayWindow.isDestroyed()) {
         const overlayBounds = overlayWindow.getBounds();
+        
+        // Center the settings splash on the overlay window
+        initialX = Math.round(overlayBounds.x + overlayBounds.width / 2 - splashWidth / 2);
+        initialY = Math.round(overlayBounds.y + overlayBounds.height / 2 - splashHeight / 2);
+        
+        // Ensure it stays within screen bounds
         const display = screen.getDisplayMatching(overlayBounds);
         const workArea = (display.workArea || display.workAreaSize || { width, height, x: 0, y: 0 }) as any;
         const workX = typeof workArea.x === 'number' ? workArea.x : 0;
@@ -190,24 +196,14 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
         const workWidth = typeof workArea.width === 'number' ? workArea.width : width;
         const workHeight = typeof workArea.height === 'number' ? workArea.height : height;
 
-        let candidateX = overlayBounds.x + overlayBounds.width + 16;
-        if (candidateX + splashWidth > workX + workWidth) {
-          candidateX = overlayBounds.x - splashWidth - 16;
+        if (initialX < workX) initialX = workX + 16;
+        if (initialY < workY) initialY = workY + 16;
+        if (initialX + splashWidth > workX + workWidth) {
+          initialX = workX + workWidth - splashWidth - 16;
         }
-        if (candidateX < workX) {
-          candidateX = workX + 16;
+        if (initialY + splashHeight > workY + workHeight) {
+          initialY = workY + workHeight - splashHeight - 16;
         }
-
-        let candidateY = overlayBounds.y;
-        if (candidateY + splashHeight > workY + workHeight) {
-          candidateY = workY + workHeight - splashHeight - 16;
-        }
-        if (candidateY < workY) {
-          candidateY = workY + 16;
-        }
-
-        initialX = Math.round(candidateX);
-        initialY = Math.round(candidateY);
       }
     } catch {}
 
@@ -272,9 +268,11 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
     });
 
   const fontSize = settingsService.get('fontSize') || 100;
-  // Read from config file - it's always synchronously updated when league changes
-  const storedMerchantLeague = settingsService.get('merchantHistoryLeague');
-  const storedMerchantLeagueSource = settingsService.get('merchantHistoryLeagueSource');
+  // Read from config file - use version-specific league settings
+  const leagueKey = currentOverlayVersion === 'poe1' ? 'merchantHistoryLeaguePoe1' : 'merchantHistoryLeaguePoe2';
+  const sourceKey = currentOverlayVersion === 'poe1' ? 'merchantHistoryLeagueSourcePoe1' : 'merchantHistoryLeagueSourcePoe2';
+  const storedMerchantLeague = settingsService.get(leagueKey);
+  const storedMerchantLeagueSource = settingsService.get(sourceKey);
   const leagueOptions = currentOverlayVersion === 'poe1' ? POE1_LEAGUES : POE2_LEAGUES;
   const defaultLeague = leagueOptions[0]?.value ?? '';
   const trimmedStoredLeague = typeof storedMerchantLeague === 'string' ? storedMerchantLeague.trim() : '';
@@ -291,8 +289,8 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       merchantHistoryLeague = defaultLeague;
       if (merchantHistoryLeague) {
         try {
-          settingsService.set('merchantHistoryLeague', merchantHistoryLeague);
-          settingsService.set('merchantHistoryLeagueSource', 'auto');
+          settingsService.set(leagueKey, merchantHistoryLeague);
+          settingsService.set(sourceKey, 'auto');
         } catch (err) {
           console.warn('[Settings] Failed to reset merchant league for overlay version:', err);
         }
@@ -469,9 +467,12 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
     // Handle league save
     ipcMain.on('settings-save-league', (event, league: string) => {
       try {
-        settingsService.set('merchantHistoryLeague', league);
-        settingsService.set('merchantHistoryLeagueSource', 'manual');
-        console.log('[Settings] Saved merchant history league:', league);
+        // Save to version-specific settings
+        const leagueKey = currentOverlayVersion === 'poe1' ? 'merchantHistoryLeaguePoe1' : 'merchantHistoryLeaguePoe2';
+        const sourceKey = currentOverlayVersion === 'poe1' ? 'merchantHistoryLeagueSourcePoe1' : 'merchantHistoryLeagueSourcePoe2';
+        settingsService.set(leagueKey, league);
+        settingsService.set(sourceKey, 'manual');
+        console.log('[Settings] Saved merchant history league for', currentOverlayVersion, ':', league);
         // Notify Main instance to update its state and notify renderer
         onLeagueSave(league);
       } catch (error) {
@@ -1231,6 +1232,52 @@ function buildSettingsSplashHtml(
       gap: 8px;
       justify-content: center;
     }
+    
+    /* Info boxes */
+    .info-box {
+      display: flex;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: rgba(0, 0, 0, 0.25);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    
+    .info-box.info-important {
+      border-color: rgba(240, 173, 78, 0.4);
+      background: rgba(240, 173, 78, 0.08);
+    }
+    
+    .info-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    
+    .info-content {
+      flex: 1;
+    }
+    
+    .info-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    
+    .info-text {
+      color: var(--text-secondary);
+    }
+    
+    .info-text strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    
+    .info-text ul {
+      color: var(--text-secondary);
+    }
   </style>
 </head>
 <body>
@@ -1354,6 +1401,25 @@ function buildSettingsSplashHtml(
         </div>
       </div>
     </div>
+    
+    <!-- Admin Privilege Info -->
+    <div class="info-box info-important" style="margin-top: 16px;">
+      <div class="info-icon">⚠️</div>
+      <div class="info-content">
+        <div class="info-title">Item Copy Not Working? Check Administrator Privileges</div>
+        <div class="info-text">
+          If Path of Exile is running as administrator (e.g., via Steam "Run as administrator" or compatibility settings), 
+          the overlay must also run as administrator for the item copy feature to work. This is a Windows security restriction 
+          that prevents non-elevated apps from sending input to elevated processes.
+          <br><br>
+          <strong>Solutions:</strong>
+          <ul style="margin: 8px 0 0 20px; padding: 0;">
+            <li>Run the overlay as administrator when PoE runs elevated, OR</li>
+            <li>Disable "Run as administrator" for Path of Exile</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
       
     </div><!-- End Controls Tab -->
@@ -1375,6 +1441,21 @@ function buildSettingsSplashHtml(
       </select>
     </div>
     <button class="btn btn-green" id="saveLeagueBtn" style="margin-top: 10px; display: none;">Save League</button>
+    
+    <!-- Info about incomplete item data -->
+    <div style="margin-top: 16px; padding: 12px 14px; background: rgba(33, 150, 243, 0.08); border-left: 3px solid rgba(33, 150, 243, 0.5); border-radius: 4px; font-size: 12px; line-height: 1.65; color: var(--text-secondary);">
+      <div style="display: flex; align-items: flex-start; gap: 10px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px; color: rgba(33, 150, 243, 0.9);">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <div>
+          <strong style="color: var(--text-primary); font-size: 12px;">About Incomplete Item Data</strong><br>
+          <span style="margin-top: 4px; display: block;">When items appear as "ITEM" without images or statistics, the trade API is returning incomplete data. This limitation also affects the official trade site. XileHUD automatically tracks these placeholder entries and updates them with complete information once the API provides proper data. These entries are preserved to maintain accurate profit totals and chart continuity.</span>
+        </div>
+      </div>
+    </div>
   </div>
   
   <!-- Merchant History Automation -->
