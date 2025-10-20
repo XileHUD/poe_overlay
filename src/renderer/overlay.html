@@ -74,6 +74,14 @@
             body.overlay-poe1-mode #noFeaturesPlaceholder .no-features-title {
                 color: var(--accent-orange);
             }
+            body.overlay-poe1-mode #tabHistory {
+                pointer-events: none;
+                opacity: 0.45;
+            }
+            body.overlay-poe1-mode #historyRefreshBtn {
+                opacity: 0.45;
+                cursor: not-allowed;
+            }
             /* PoE1/PoE2 menu item visibility */
             .poe1-only { display: none !important; }
             .poe2-only { display: flex !important; }
@@ -563,6 +571,14 @@
         if (noFeaturesMessageEl) noFeaturesMessageEl.textContent = message || '';
     }
 
+    function setHistoryControlsDisabled(disabled) {
+        const refreshBtn = document.getElementById('historyRefreshBtn');
+        if (refreshBtn) {
+            refreshBtn.disabled = !!disabled;
+            refreshBtn.setAttribute('aria-disabled', disabled ? 'true' : 'false');
+        }
+    }
+
     function applyOverlayVersionMode(mode) {
         const normalized = mode === 'poe1' ? 'poe1' : 'poe2';
         overlayVersionMode = normalized;
@@ -574,6 +590,8 @@
         
         // PoE1 mode now has modifiers feature enabled
         if (normalized === 'poe1') {
+            setHistoryControlsDisabled(true);
+            try { window.OverlayHistory?.stopHistoryAutoRefresh?.(); } catch {}
             document.body.classList.add('overlay-poe1-mode');
             document.body.classList.remove('overlay-no-features');
             setHeader('Path of Exile 1', 'Modifiers');
@@ -585,6 +603,8 @@
             return;
         }
         
+        setHistoryControlsDisabled(false);
+        try { window.OverlayHistory?.ensureHistoryAutoRefresh?.(); } catch {}
         document.body.classList.remove('overlay-poe1-mode');
         if (!overlayHasAnyFeatures) {
             document.body.classList.add('overlay-no-features');
@@ -2417,7 +2437,7 @@
                         modifiersEnabled = true;
                     }
                     
-                    // Hide Merchant History tab if disabled
+                    // Handle Merchant History tab - hide if disabled, grey out if PoE1 mode
                     if (!enabledFeatures.merchant) {
                         console.log('[FeatureFilter] Hiding Merchant History tab (merchant disabled)');
                         const histTab = document.getElementById('tabHistory');
@@ -2425,6 +2445,15 @@
                         historyEnabled = false;
                     } else {
                         historyEnabled = true;
+                        // In PoE1 mode, keep tab visible but greyed out
+                        if (overlayVersionMode === 'poe1') {
+                            const histTab = document.getElementById('tabHistory');
+                            if (histTab) {
+                                histTab.style.opacity = '0.45';
+                                histTab.style.cursor = 'not-allowed';
+                                console.log('[FeatureFilter] Merchant History tab greyed out for PoE1 mode');
+                            }
+                        }
                     }
                     
                     // Filter Crafting submenu items (PoE2 and PoE1)
@@ -3067,7 +3096,9 @@
                         const isPoe1Bestiary = isPoe1Mode && itemClass.includes('stackable currency') && /\b(farric|fenumal|saqawine|craicic)\s+/i.test(baseType);
                         const isPoe1Allflames = isPoe1Mode && (normalizedCategory === 'embers' || /allflame|ember/i.test(blob));
                         const isPoe1Essence = isPoe1Mode && isEssence;
-                        const isPoe1Currency = isPoe1Mode && !isPoe1Scarabs && !isPoe1Fossils && !isPoe1Runegrafts && !isPoe1Horticrafting && !isPoe1Bestiary && !isPoe1Allflames && !isPoe1Essence && (
+                        // Oil detection: Silver Oil, Golden Oil, etc. - route to Anointments
+                        const isPoe1Oil = isPoe1Mode && (normalizedCategory === 'annoints' || /\boil\b/i.test(blob));
+                        const isPoe1Currency = isPoe1Mode && !isPoe1Scarabs && !isPoe1Fossils && !isPoe1Runegrafts && !isPoe1Horticrafting && !isPoe1Bestiary && !isPoe1Allflames && !isPoe1Essence && !isPoe1Oil && (
                             normalizedCategory === 'currency' ||
                             ((itemClass.includes('stackable currency') || itemClass.includes('currency')) && /orb|scroll|bauble|whetstone|chisel|fusing|jeweller|chromatic|binding|annul|mirror|regret|exalted|chaos|splinter|fragment|sextant|compass|coin|prism|catalyst|harvest|fossil|resonator|blessing|prophecy|favour|perandus|remnant|ancient/i.test(blob))
                         );
@@ -3242,6 +3273,22 @@
                             retryShow(
                                 () => !!(window.OverlayPoe1Embers && typeof window.OverlayPoe1Embers.show === 'function'),
                                 async () => { try { await showPoe1Embers(); } catch {} }
+                            );
+                            return;
+                        }
+
+                        if (isPoe1Oil) {
+                            setActiveTab('characterTab');
+                            setView('character');
+                            retryShow(
+                                () => !!(window.OverlayPoe1Anointments && typeof window.OverlayPoe1Anointments.show === 'function'),
+                                async () => {
+                                    try {
+                                        await window.OverlayPoe1Anointments.show();
+                                        setHeader('Anointments');
+                                        recordHeaderAction('Anointments');
+                                    } catch {}
+                                }
                             );
                             return;
                         }
@@ -3505,6 +3552,10 @@
             // History tab toggle: show history container and hide modifiers/crafting
             if (tabHist) {
                 tabHist.addEventListener('click', () => {
+                    if (overlayVersionMode === 'poe1') {
+                        console.log('Merchant tab is disabled in PoE1 mode');
+                        return;
+                    }
                     setActiveTab('tabHistory');
                     closeAllMenus();
                     // Use strong view gate

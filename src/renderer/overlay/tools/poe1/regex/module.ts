@@ -837,10 +837,10 @@ function ensureStyle(): void {
   const style = document.createElement('style');
   style.id = 'poe1RegexStyles';
   style.textContent = `
-    .poe1-regex-root { display:flex; flex-direction:column; height:100%; min-height:600px; }
-    .poe1-main-layout { display:grid; grid-template-columns:350px 1fr; gap:12px; height:100%; overflow:hidden; }
-    .poe1-left-panel { display:flex; flex-direction:column; gap:8px; overflow-y:auto; padding-right:4px; }
-    .poe1-right-panel { display:flex; flex-direction:column; gap:8px; overflow:hidden; }
+  .poe1-regex-root { display:flex; flex-direction:column; height:100%; min-height:600px; width:100%; min-width:920px; flex:1 1 auto; }
+  .poe1-main-layout { display:grid; grid-template-columns:350px minmax(540px, 1fr); gap:12px; height:100%; overflow:hidden; width:100%; }
+  .poe1-left-panel { display:flex; flex-direction:column; gap:8px; overflow-y:auto; padding-right:4px; min-width:350px; }
+  .poe1-right-panel { display:flex; flex-direction:column; gap:8px; overflow:hidden; min-width:540px; }
     .poe1-search-bar { display:flex; gap:8px; align-items:center; padding:8px; border:1px solid var(--border-color); border-radius:6px; background:var(--bg-tertiary); }
     .poe1-regex-input { flex:1; padding:6px 8px; font-size:12px; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-secondary); color:var(--text-primary); min-width:0; }
     .poe1-regex-input::placeholder { color:var(--text-secondary); opacity:0.6; }

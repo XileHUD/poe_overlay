@@ -64,10 +64,22 @@ import { updateSessionUI, attachLoginButtonLogic } from './sessionManager';
 import { attachRefreshButtonLogic } from './refreshButton';
 import { initializeHistoryLeagueControls, formatLeagueLabel } from './historyLeague';
 
+function isHistoryDisabledForPoe1(): boolean {
+  try {
+    return ((window as any).__overlayVersionMode || 'poe2') === 'poe1';
+  } catch {
+    return false;
+  }
+}
+
 const renderListWithDetail = (renderDetailCallback: (idx: number) => void) => renderHistoryList(renderDetailCallback);
 const renderDetailForIndex = (idx: number) => renderHistoryDetail(idx);
 
 async function performFullRefresh(): Promise<boolean | void> {
+  if (isHistoryDisabledForPoe1()) {
+    console.log('[History] performFullRefresh skipped in PoE1 mode');
+    return;
+  }
   return await refreshHistory(
     (renderDetailCallback) => renderListWithDetail(renderDetailCallback),
     (idx) => renderDetailForIndex(idx)
@@ -88,6 +100,11 @@ async function performGuardedRefresh(origin: string): Promise<void> {
 }
 
 function startAutoRefreshLoop(): void {
+  if (isHistoryDisabledForPoe1()) {
+    console.log('[History] Auto-refresh suppressed in PoE1 mode');
+    autoRefreshManager.stopAutoRefresh();
+    return;
+  }
   autoRefreshManager.startAutoRefresh(
     async () => {
       await performGuardedRefresh('auto-refresh');
@@ -167,6 +184,25 @@ export function onEnterView(): void {
 
 export function onLeaveView(): void {
   viewOnLeave();
+}
+
+function stopHistoryAutoRefresh(): void {
+  autoRefreshManager.stopAutoRefresh();
+}
+
+async function ensureHistoryAutoRefresh(): Promise<void> {
+  if (isHistoryDisabledForPoe1()) {
+    autoRefreshManager.stopAutoRefresh();
+    return;
+  }
+  try {
+    const loggedIn = await updateSessionUI();
+    if (loggedIn) {
+      startAutoRefreshLoop();
+    }
+  } catch (e) {
+    console.warn('[History] ensureHistoryAutoRefresh failed:', e);
+  }
 }
 
 // Initialize on load
@@ -583,5 +619,7 @@ export {
   recomputeChartSeriesFromStore,
   drawHistoryChart,
   updateHistoryChartFromTotals,
-  updateSessionUI
+  updateSessionUI,
+  stopHistoryAutoRefresh,
+  ensureHistoryAutoRefresh
 };

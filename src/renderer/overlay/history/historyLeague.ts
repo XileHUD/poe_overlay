@@ -22,17 +22,45 @@ export interface LeagueOption {
 
 export type LeaguePromptReason = 'manual-open' | 'auto-hardcore' | 'empty-data';
 
-export const SOFTCORE_LEAGUE = 'Rise of the Abyssal';
-export const HARDCORE_LEAGUE = 'HC Rise of the Abyssal';
-export const STANDARD_LEAGUE = 'Standard';
-export const LEGACY_HARDCORE_LEAGUE = 'Hardcore';
+// PoE1 leagues
+export const POE1_SOFTCORE_LEAGUE = 'Keepers of the Flame';
+export const POE1_HARDCORE_LEAGUE = 'Hardcore Keepers of the Flame';
+export const POE1_STANDARD_LEAGUE = 'Standard';
+export const POE1_LEGACY_HARDCORE_LEAGUE = 'Hardcore';
 
-const LEAGUE_OPTIONS: LeagueOption[] = [
-  { id: SOFTCORE_LEAGUE, label: 'Rise of the Abyssal', tag: 'Softcore', hint: 'Default trade league' },
-  { id: HARDCORE_LEAGUE, label: 'HC Rise of the Abyssal', tag: 'Hardcore', hint: 'Deletes characters on death' },
-  { id: STANDARD_LEAGUE, label: 'Standard', tag: 'Legacy', hint: 'Permanent league' },
-  { id: LEGACY_HARDCORE_LEAGUE, label: 'Hardcore', tag: 'Legacy HC', hint: 'Legacy hardcore league' }
+// PoE2 leagues
+export const POE2_SOFTCORE_LEAGUE = 'Rise of the Abyssal';
+export const POE2_HARDCORE_LEAGUE = 'HC Rise of the Abyssal';
+export const POE2_STANDARD_LEAGUE = 'Standard';
+export const POE2_LEGACY_HARDCORE_LEAGUE = 'Hardcore';
+
+// Default exports for backward compatibility (will be version-aware)
+export const SOFTCORE_LEAGUE = POE2_SOFTCORE_LEAGUE;
+export const HARDCORE_LEAGUE = POE2_HARDCORE_LEAGUE;
+export const STANDARD_LEAGUE = POE2_STANDARD_LEAGUE;
+export const LEGACY_HARDCORE_LEAGUE = POE2_LEGACY_HARDCORE_LEAGUE;
+
+const POE1_LEAGUE_OPTIONS: LeagueOption[] = [
+  { id: POE1_SOFTCORE_LEAGUE, label: 'Keepers of the Flame', tag: 'Softcore', hint: 'Default trade league' },
+  { id: POE1_HARDCORE_LEAGUE, label: 'Hardcore Keepers of the Flame', tag: 'Hardcore', hint: 'Deletes characters on death' },
+  { id: POE1_STANDARD_LEAGUE, label: 'Standard', tag: 'Legacy', hint: 'Permanent league' },
+  { id: POE1_LEGACY_HARDCORE_LEAGUE, label: 'Hardcore', tag: 'Legacy HC', hint: 'Legacy hardcore league' }
 ];
+
+const POE2_LEAGUE_OPTIONS: LeagueOption[] = [
+  { id: POE2_SOFTCORE_LEAGUE, label: 'Rise of the Abyssal', tag: 'Softcore', hint: 'Default trade league' },
+  { id: POE2_HARDCORE_LEAGUE, label: 'HC Rise of the Abyssal', tag: 'Hardcore', hint: 'Deletes characters on death' },
+  { id: POE2_STANDARD_LEAGUE, label: 'Standard', tag: 'Legacy', hint: 'Permanent league' },
+  { id: POE2_LEGACY_HARDCORE_LEAGUE, label: 'Hardcore', tag: 'Legacy HC', hint: 'Legacy hardcore league' }
+];
+
+function getOverlayVersionMode(): 'poe1' | 'poe2' {
+  return ((window as any).__overlayVersionMode || 'poe2') === 'poe1' ? 'poe1' : 'poe2';
+}
+
+function getActiveLeagueOptions(): LeagueOption[] {
+  return getOverlayVersionMode() === 'poe1' ? POE1_LEAGUE_OPTIONS : POE2_LEAGUE_OPTIONS;
+}
 
 interface LeagueUpdateOptions {
   persist?: boolean;
@@ -143,7 +171,7 @@ function renderPromptButtons(highlight?: string): void {
   if (!promptButtonsEl) return;
   promptButtonsEl.innerHTML = '';
 
-  LEAGUE_OPTIONS.forEach((option) => {
+  getActiveLeagueOptions().forEach((option) => {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'history-league-option';
@@ -223,7 +251,7 @@ export function getLeaguePreference(): LeaguePreference {
 }
 
 export function getLeagueOptions(): LeagueOption[] {
-  return LEAGUE_OPTIONS.map((opt) => ({ ...opt }));
+  return getActiveLeagueOptions().map((opt) => ({ ...opt }));
 }
 
 export function setLeaguePreference(league: string, source: LeagueSource, options?: LeagueUpdateOptions): Promise<LeagueUpdateResult> {

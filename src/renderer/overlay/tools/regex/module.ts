@@ -489,13 +489,13 @@ function escapeBaseFragment(s: string): string {
   style.id = id;
   style.textContent = `
   /* Base container styles */
-  #regexToolRoot { display:flex; flex-direction:column; height:100%; flex:1 1 auto; min-height:600px; }
-  .regex-tool-root { display:flex; flex-direction:column; height:100%; }
+  #regexToolRoot { display:flex; flex-direction:column; height:100%; flex:1 1 auto; min-height:600px; min-width:800px; width:100%; }
+  .regex-tool-root { display:flex; flex-direction:column; height:100%; min-width:800px; width:100%; }
   
   /* Main grid layout - side by side */
-  .poe2-main-layout { display:grid; grid-template-columns:320px 1fr; gap:12px; height:100%; overflow:hidden; }
-  .poe2-left-panel { display:flex; flex-direction:column; gap:8px; overflow-y:auto; padding-right:4px; }
-  .poe2-right-panel { display:flex; flex-direction:column; gap:8px; overflow:hidden; }
+  .poe2-main-layout { display:grid; grid-template-columns:320px minmax(480px, 1fr); gap:12px; height:100%; overflow:hidden; width:100%; }
+  .poe2-left-panel { display:flex; flex-direction:column; gap:8px; overflow-y:auto; padding-right:4px; min-width:320px; }
+  .poe2-right-panel { display:flex; flex-direction:column; gap:8px; overflow:hidden; min-width:480px; }
   
   /* Save/Load controls */
   .poe2-save-controls { display:grid; grid-template-columns:1fr auto 1fr auto; gap:6px; align-items:center; padding:8px; border:1px solid var(--border-color); border-radius:6px; background:var(--bg-tertiary); }

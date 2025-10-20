@@ -150,9 +150,12 @@ export function createTray(params: CreateTrayParams): Tray | null {
 
   try { tray.setToolTip('XileHUD'); } catch {}
   
-  // Windows fix: Use click event to manually popup menu with proper z-order
-  // This ensures the menu appears on top of all windows
+  // Improved double-click detection for tray icon
+  // Use a shorter delay and track click count to distinguish single vs double clicks
   let clickTimer: NodeJS.Timeout | null = null;
+  let clickCount = 0;
+  let lastClickTime = 0;
+  
   const clearClickTimer = () => {
     if (clickTimer) {
       clearTimeout(clickTimer);
@@ -162,14 +165,34 @@ export function createTray(params: CreateTrayParams): Tray | null {
 
   try {
     tray.on('click', () => {
+      const now = Date.now();
+      const timeSinceLastClick = now - lastClickTime;
+      lastClickTime = now;
+      
+      // If clicks are within double-click window (typically 400ms on Windows),
+      // increment count, otherwise reset
+      if (timeSinceLastClick < 400) {
+        clickCount++;
+      } else {
+        clickCount = 1;
+      }
+      
       clearClickTimer();
+      
+      // Wait to see if another click comes (double-click)
       clickTimer = setTimeout(() => {
         clickTimer = null;
-        try { tray?.popUpContextMenu(contextMenu); } catch {}
-      }, 220);
+        // If only single click, show context menu
+        if (clickCount === 1) {
+          try { tray?.popUpContextMenu(contextMenu); } catch {}
+        }
+        clickCount = 0;
+      }, 180); // Reduced delay for snappier response
     });
+    
     tray.on('right-click', () => {
       clearClickTimer();
+      clickCount = 0;
       try { tray?.popUpContextMenu(contextMenu); } catch {}
     });
   } catch {}
@@ -177,6 +200,7 @@ export function createTray(params: CreateTrayParams): Tray | null {
   try {
     tray.on('double-click', () => {
       clearClickTimer();
+      clickCount = 0; // Reset count after double-click
       if (onShowOverlay) onShowOverlay();
       else onToggleOverlay();
     });

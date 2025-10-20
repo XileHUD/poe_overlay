@@ -241,6 +241,14 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       margin: 0;
       flex: 1;
     }
+
+    .feature-note {
+      display: block;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-left: 28px;
+      margin-top: 4px;
+    }
     
     .feature-main {
       display: flex;
@@ -632,9 +640,10 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
         </div>
 
         <!-- Merchant History -->
-        <div class="simple-checkbox poe2-only">
+        <div class="simple-checkbox merchant-option">
           <input type="checkbox" id="feat-merchant" ${checked(config.merchant)}/>
           <label for="feat-merchant">Merchant History</label>
+          <span class="feature-note poe1-only">PoE1 mode keeps the tab read-only with refresh disabled until the new league launches and the API is online.</span>
         </div>
       </div>
     </div>
@@ -804,6 +813,12 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
     
     function saveAndContinue() {
       console.log('[FeatureSplash] Save button clicked!');
+      
+      const merchantCheckbox = document.getElementById('feat-merchant');
+      console.log('[FeatureSplash] Merchant checkbox element:', merchantCheckbox);
+      console.log('[FeatureSplash] Merchant checkbox checked:', merchantCheckbox?.checked);
+      console.log('[FeatureSplash] Merchant checkbox type:', merchantCheckbox?.type);
+      console.log('[FeatureSplash] Merchant checkbox visible:', merchantCheckbox ? window.getComputedStyle(merchantCheckbox.parentElement).display : 'N/A');
       
       const config = {
         modifiers: document.getElementById('feat-modifiers').checked,

@@ -1,6 +1,7 @@
 import { BrowserWindow, session } from 'electron';
 import { httpGetRaw } from './http';
 import { rateLimiter } from '../services/rateLimiter';
+import type { OverlayVersion } from '../../types/overlayVersion.js';
 
 export interface PoeHistoryResponse { 
   ok: boolean; 
@@ -13,7 +14,11 @@ export interface PoeHistoryResponse {
 }
 
 export class PoeSessionHelper {
-  constructor(private getAccountName: () => string | null, private setAccountName: (n: string | null)=>void) {}
+  constructor(
+    private getAccountName: () => string | null,
+    private setAccountName: (n: string | null) => void,
+    private getOverlayVersion: () => OverlayVersion
+  ) {}
 
   async hasSession(): Promise<boolean> {
     try {
@@ -23,11 +28,13 @@ export class PoeSessionHelper {
   }
 
   async fetchHistory(league: string): Promise<PoeHistoryResponse> {
-    const url = `https://www.pathofexile.com/api/trade2/history/${encodeURIComponent(league)}`;
+    const overlayVersion = this.safeOverlayVersion();
+    const tradeRoot = overlayVersion === 'poe1' ? 'trade' : 'trade2';
+    const url = `https://www.pathofexile.com/api/${tradeRoot}/history/${encodeURIComponent(league)}`;
     try {
       const { statusCode, body, headers } = await httpGetRaw(url, {
         Accept: 'application/json',
-        Referer: 'https://www.pathofexile.com/trade2',
+        Referer: `https://www.pathofexile.com/${tradeRoot}`,
         'X-Requested-With': 'XMLHttpRequest'
       }, 12000);
 
@@ -91,6 +98,15 @@ export class PoeSessionHelper {
       const probe = await this.fetchHistory(defaultLeague);
       return !!probe.ok && probe.status === 200;
     } catch { return false; }
+  }
+
+  private safeOverlayVersion(): OverlayVersion {
+    try {
+      const value = this.getOverlayVersion();
+      return value === 'poe1' ? 'poe1' : 'poe2';
+    } catch {
+      return 'poe2';
+    }
   }
 
   openLoginWindow(): Promise<{ loggedIn: boolean; accountName?: string | null }>{

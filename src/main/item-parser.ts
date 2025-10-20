@@ -968,6 +968,8 @@ export class ItemParser {
             const stackableBlob = `${name} ${baseType}`.toLowerCase();
             if (/essence/.test(stackableBlob)) return 'Essences';
             if (/catalyst/.test(stackableBlob)) return 'Catalysts';
+            // Match oils (Silver Oil, Golden Oil, etc.) - route to PoE1 Anointments
+            if (/\boil\b/.test(stackableBlob)) return 'Annoints';
             // Match any item containing "Liquid" (covers all liquid emotions: Liquid Paranoia, Concentrated Liquid Isolation, Diluted Liquid Ire, etc.)
             if (/liquid/i.test(name) || /liquid/i.test(baseType)) {
                 return 'Liquid_Emotions';
@@ -992,6 +994,8 @@ export class ItemParser {
             const stackableBlob = `${name} ${baseType}`.toLowerCase();
             if (/essence/.test(stackableBlob)) return 'Essences';
             if (/catalyst/.test(stackableBlob)) return 'Catalysts';
+            // Match oils (Silver Oil, Golden Oil, etc.) - route to PoE1 Anointments
+            if (/\boil\b/.test(stackableBlob)) return 'Annoints';
             // Match any item containing "Liquid" (covers all liquid emotions)
             if (/liquid/.test(stackableBlob)) return 'Liquid_Emotions';
             if (/^omen\s+of\s+/i.test(name)) return 'Omens';

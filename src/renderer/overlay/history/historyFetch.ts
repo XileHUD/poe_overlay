@@ -21,6 +21,14 @@ import { sendHistoryToPopout } from './historyPopout';
 import { recomputeChartSeriesFromStore, drawHistoryChart, updateHistoryChartFromTotals } from './historyChart';
 import { getLeaguePreference, setLeaguePreference, showLeaguePrompt, formatLeagueLabel } from './historyLeague';
 
+function isPoe1Mode(): boolean {
+  try {
+    return ((window as any).__overlayVersionMode || 'poe2') === 'poe1';
+  } catch {
+    return false;
+  }
+}
+
 function extractRowsFromResponse(res: any): any[] {
   if (!res) return [];
   const payload = (res as any).data ?? res;
@@ -118,6 +126,10 @@ export async function refreshHistory(
   renderListCallback: (renderDetailCallback: (idx: number) => void) => void,
   renderDetailCallback: (idx: number) => void
 ): Promise<boolean | void> {
+  if (isPoe1Mode()) {
+    console.log('[History] Refresh blocked in PoE1 mode');
+    return;
+  }
   // Defensive: log the types we were passed (helps diagnose minified t() errors)
   try {
     const rlType = typeof renderListCallback;
@@ -493,6 +505,10 @@ export async function refreshHistoryIfAllowed(
   renderListCallback: (renderDetailCallback: (idx: number) => void) => void,
   renderDetailCallback: (idx: number) => void
 ): Promise<boolean | void> {
+  if (isPoe1Mode()) {
+    console.log('[History] refreshHistoryIfAllowed skipped in PoE1 mode', { origin });
+    return false;
+  }
   try {
     if (typeof renderListCallback !== 'function' || typeof renderDetailCallback !== 'function') {
       console.warn('[History] refreshHistoryIfAllowed invoked with bad callbacks', { origin, renderListCallbackType: typeof renderListCallback, renderDetailCallbackType: typeof renderDetailCallback });
