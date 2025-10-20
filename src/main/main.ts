@@ -273,7 +273,11 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
     private armedCaptureUntil: number = 0; // time window (ms epoch) during which clipboard events are accepted
     private dataDirCache: string | null = null;
     private imageCache = new ImageCacheService();
-    private poeSession = new PoeSessionHelper(() => this.poeAccountName, (n) => { this.poeAccountName = n; });
+    private poeSession = new PoeSessionHelper(
+        () => this.poeAccountName,
+        (n) => { this.poeAccountName = n; },
+        () => this.overlayVersion
+    );
     private shortcutAwaitingCapture = false; // tracks if current Ctrl+Q press is still waiting for an item
     private pendingCategory: string | null = null; // category queued before overlay loads
     private pendingTab: string | null = null; // tab to activate after load (e.g. 'modifiers')
@@ -306,6 +310,24 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
     private readonly handleGlobalMouseDown = () => {
         this.hideTargetIndicator();
     };
+
+    /**
+     * Get version-specific league setting key
+     */
+    private getLeagueSettingKey(): 'merchantHistoryLeaguePoe1' | 'merchantHistoryLeaguePoe2' {
+        return this.overlayVersion === 'poe1' ? 'merchantHistoryLeaguePoe1' : 'merchantHistoryLeaguePoe2';
+    }
+    
+    /**
+     * Get version-specific league source setting key
+     */
+    private getLeagueSourceSettingKey(): 'merchantHistoryLeagueSourcePoe1' | 'merchantHistoryLeagueSourcePoe2' {
+        return this.overlayVersion === 'poe1' ? 'merchantHistoryLeagueSourcePoe1' : 'merchantHistoryLeagueSourcePoe2';
+    }
+
+    private getDefaultLeague(): string {
+        return this.overlayVersion === 'poe1' ? 'Keepers of the Flame' : 'Rise of the Abyssal';
+    }
 
     constructor() {
         app.whenReady().then(async () => {
@@ -341,8 +363,14 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             this.initializeFontSize();
 
             try {
-                const storedLeagueRaw = this.settingsService.get('merchantHistoryLeague');
-                const storedSource = this.settingsService.get('merchantHistoryLeagueSource');
+                // Migrate legacy settings to version-specific ones
+                await this.migrateMerchantHistorySettings();
+                
+                // Load version-specific league settings
+                const leagueKey = this.getLeagueSettingKey();
+                const sourceKey = this.getLeagueSourceSettingKey();
+                const storedLeagueRaw = this.settingsService.get(leagueKey);
+                const storedSource = this.settingsService.get(sourceKey);
                 const trimmedLeague = typeof storedLeagueRaw === 'string' ? storedLeagueRaw.trim() : '';
                 const hasManualPreference = storedSource === 'manual' && trimmedLeague.length > 0;
 
@@ -350,13 +378,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                     this.merchantHistoryLeague = trimmedLeague;
                     this.merchantHistoryLeagueSource = 'manual';
                 } else {
-                    this.merchantHistoryLeague = 'Rise of the Abyssal';
+                    this.merchantHistoryLeague = this.getDefaultLeague();
                     this.merchantHistoryLeagueSource = 'auto';
-
-                    if (trimmedLeague.length > 0 || storedSource === 'auto') {
-                        this.settingsService.clear('merchantHistoryLeague');
-                        this.settingsService.clear('merchantHistoryLeagueSource');
-                    }
                 }
             } catch {}
             
@@ -1071,6 +1094,18 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
         // Update instance variables
         this.merchantHistoryLeague = trimmedLeague;
         this.merchantHistoryLeagueSource = 'manual';
+        
+        // Persist to version-specific settings
+        if (this.settingsService) {
+            const leagueKey = this.getLeagueSettingKey();
+            const sourceKey = this.getLeagueSourceSettingKey();
+            try {
+                this.settingsService.set(leagueKey, trimmedLeague);
+                this.settingsService.set(sourceKey, 'manual');
+            } catch (err) {
+                console.error('[Main] Failed to persist league change:', err);
+            }
+        }
 
         // Notify overlay renderer of the league change
         if (this.overlayWindow && !this.overlayWindow.isDestroyed()) {
@@ -1758,7 +1793,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
         const targetLeague = (typeof league === 'string' && league.trim()) ? league.trim() : this.merchantHistoryLeague;
         return this.poeSession.fetchHistory(targetLeague);
     }
-    private async isAuthenticated() { return this.poeSession.isAuthenticatedProbe(this.merchantHistoryLeague || 'Rise of the Abyssal'); }
+    private async isAuthenticated() { return this.poeSession.isAuthenticatedProbe(this.merchantHistoryLeague || this.getDefaultLeague()); }
 
 
     // Best-effort copy trigger: send real Ctrl/Command+C sequence to force a copy in PoE
@@ -2718,6 +2753,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
 
                     return {
                         ...disabled,
+                        merchant: config.merchant ?? disabled.merchant,
                         poe1Modifiers: config.poe1Modifiers ?? disabled.poe1Modifiers,
                         poe1Crafting: {
                             enabled: config.poe1Crafting?.enabled ?? disabled.poe1Crafting.enabled,
@@ -2751,7 +2787,8 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                             enabled: config.tools?.enabled ?? disabled.tools.enabled,
                             subcategories: {
                                 regex: false,
-                                poe1Regex: config.tools?.subcategories?.poe1Regex ?? disabled.tools.subcategories.poe1Regex
+                                poe1Regex: config.tools?.subcategories?.poe1Regex ?? disabled.tools.subcategories.poe1Regex,
+                                poe1Vorici: config.tools?.subcategories?.poe1Vorici ?? disabled.tools.subcategories.poe1Vorici
                             }
                         }
                     };
@@ -2929,7 +2966,17 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 return { loggedIn: false, cookiePresent: false, accountName: null };
             }
             
-            // Verify session by checking if we can access the trade page
+            // If we have a cookie AND we've successfully fetched history in the last 30 minutes,
+            // trust that the session is valid (avoid fragile trade page checks)
+            const recentSuccessThreshold = 30 * 60 * 1000; // 30 minutes
+            const hasRecentSuccess = this.lastHistoryFetchAt > 0 && 
+                                    (Date.now() - this.lastHistoryFetchAt) < recentSuccessThreshold;
+            
+            if (hasRecentSuccess) {
+                return { loggedIn: true, cookiePresent: hasCookie, accountName: this.poeAccountName };
+            }
+            
+            // For stale/new sessions, verify by checking if we can access the trade page
             try {
                 const cookies = await session.defaultSession.cookies.get({ domain: 'pathofexile.com' });
                 const cookieStr = cookies.map((c: any) => `${c.name}=${c.value}`).join('; ');
@@ -2948,7 +2995,9 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 return { loggedIn, cookiePresent: hasCookie, accountName: this.poeAccountName };
             } catch (e) {
                 console.warn('[Session] Failed to verify login status:', e);
-                return { loggedIn: false, cookiePresent: hasCookie, accountName: this.poeAccountName };
+                // If verification fails but we have a cookie, optimistically assume logged in
+                // (The actual history fetch will fail gracefully if session is truly invalid)
+                return { loggedIn: true, cookiePresent: hasCookie, accountName: this.poeAccountName };
             }
         });
 
@@ -2964,6 +3013,22 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         });
 
         ipcMain.handle('poe-fetch-history', async (_e, league: string) => {
+            // Disable merchant history fetching for PoE1 until league launches
+            if (this.overlayVersion === 'poe1') {
+                return {
+                    ok: false,
+                    status: 503,
+                    data: null,
+                    headers: {},
+                    error: 'PoE1 merchant history is currently disabled. The feature will be enabled when Keepers of the Flame league launches.',
+                    rateLimited: false,
+                    retryAfter: null,
+                    accountName: this.poeAccountName,
+                    lastFetchAt: this.lastHistoryFetchAt,
+                    league: this.merchantHistoryLeague
+                };
+            }
+            
             // Rate limiter handles ALL timing - no manual interval checks
             const targetLeague = (typeof league === 'string' && league.trim()) ? league.trim() : this.merchantHistoryLeague;
             const { ok, status, data, headers, error, rateLimited, retryAfter } = await this.fetchPoeHistory(targetLeague);
@@ -3031,8 +3096,10 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         // Removed: poe-scrape-open-history (deprecated scraping approach)
 
         ipcMain.handle('history-get-league', async () => {
-            const storedLeagueRaw = this.settingsService?.get('merchantHistoryLeague');
-            const storedSource = this.settingsService?.get('merchantHistoryLeagueSource');
+            const leagueKey = this.getLeagueSettingKey();
+            const sourceKey = this.getLeagueSourceSettingKey();
+            const storedLeagueRaw = this.settingsService?.get(leagueKey);
+            const storedSource = this.settingsService?.get(sourceKey);
             const hasStoredPreference = storedSource === 'manual'
                 && typeof storedLeagueRaw === 'string'
                 && storedLeagueRaw.trim().length > 0;
@@ -3046,7 +3113,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
 
         ipcMain.handle('history-set-league', async (_event, payload: { league?: string; source?: 'auto' | 'manual' }) => {
             const nextLeagueRaw = typeof payload?.league === 'string' ? payload.league.trim() : '';
-            const nextLeague = nextLeagueRaw || this.merchantHistoryLeague || 'Rise of the Abyssal';
+            const nextLeague = nextLeagueRaw || this.merchantHistoryLeague || this.getDefaultLeague();
             const nextSource: 'auto' | 'manual' = payload?.source === 'manual' ? 'manual' : 'auto';
 
             const leagueChanged = nextLeague !== this.merchantHistoryLeague;
@@ -3056,12 +3123,15 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
             this.merchantHistoryLeagueSource = nextSource;
 
             if ((leagueChanged || sourceChanged) && this.settingsService) {
+                const leagueKey = this.getLeagueSettingKey();
+                const sourceKey = this.getLeagueSourceSettingKey();
+                
                 if (this.merchantHistoryLeagueSource === 'manual') {
-                    try { this.settingsService.set('merchantHistoryLeague', this.merchantHistoryLeague); } catch {}
-                    try { this.settingsService.set('merchantHistoryLeagueSource', this.merchantHistoryLeagueSource); } catch {}
+                    try { this.settingsService.set(leagueKey, this.merchantHistoryLeague); } catch {}
+                    try { this.settingsService.set(sourceKey, this.merchantHistoryLeagueSource); } catch {}
                 } else {
-                    try { this.settingsService.clear('merchantHistoryLeague'); } catch {}
-                    try { this.settingsService.clear('merchantHistoryLeagueSource'); } catch {}
+                    try { this.settingsService.clear(leagueKey); } catch {}
+                    try { this.settingsService.clear(sourceKey); } catch {}
                 }
             }
 
@@ -3080,9 +3150,10 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
             } catch {}
             try {
                 const cfgDir = this.getUserConfigDir();
-                const targetLeague = league || this.merchantHistoryLeague || 'Rise of the Abyssal';
+                const targetLeague = league || this.merchantHistoryLeague || this.getDefaultLeague();
                 const safeLeagueName = targetLeague.replace(/[^a-zA-Z0-9_-]/g, '_');
-                const file = path.join(cfgDir, `merchant-history-${safeLeagueName}.json`);
+                const gameVersion = this.overlayVersion; // 'poe1' or 'poe2'
+                const file = path.join(cfgDir, `merchant-history-${gameVersion}-${safeLeagueName}.json`);
                 
                 if (fs.existsSync(file)) {
                     const raw = fs.readFileSync(file, 'utf8');
@@ -3106,9 +3177,10 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         ipcMain.handle('history-save', async (_e, store: any, league?: string) => {
             try {
                 const cfgDir = this.getUserConfigDir();
-                const targetLeague = league || this.merchantHistoryLeague || 'Rise of the Abyssal';
+                const targetLeague = league || this.merchantHistoryLeague || this.getDefaultLeague();
                 const safeLeagueName = targetLeague.replace(/[^a-zA-Z0-9_-]/g, '_');
-                const file = path.join(cfgDir, `merchant-history-${safeLeagueName}.json`);
+                const gameVersion = this.overlayVersion; // 'poe1' or 'poe2'
+                const file = path.join(cfgDir, `merchant-history-${gameVersion}-${safeLeagueName}.json`);
                 
                 try { if (!fs.existsSync(cfgDir)) fs.mkdirSync(cfgDir, { recursive: true }); } catch {}
                 const dataToSave = {
@@ -3178,10 +3250,93 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         // Fallback scraping handlers removed
     }
 
+    // ---- Merchant history settings migration ----
+    /**
+     * Migrate legacy single merchantHistoryLeague setting to version-specific settings
+     */
+    private async migrateMerchantHistorySettings(): Promise<void> {
+        if (!this.settingsService) return;
+        
+        try {
+            const legacyLeague = this.settingsService.get('merchantHistoryLeague');
+            const legacySource = this.settingsService.get('merchantHistoryLeagueSource');
+            
+            // Only migrate if legacy settings exist and version-specific ones don't
+            if (legacyLeague && typeof legacyLeague === 'string') {
+                const trimmedLegacy = legacyLeague.trim();
+                
+                // Determine which version this league belongs to based on league name
+                const isPoe1League = /Keepers of the Flame|Standard|Hardcore/i.test(trimmedLegacy);
+                const isPoe2League = /Rise of the Abyssal|Standard|Hardcore/i.test(trimmedLegacy);
+                
+                // If it's the current version's league, migrate it
+                if (this.overlayVersion === 'poe1' && isPoe1League) {
+                    const existingPoe1 = this.settingsService.get('merchantHistoryLeaguePoe1');
+                    if (!existingPoe1) {
+                        this.settingsService.set('merchantHistoryLeaguePoe1', trimmedLegacy);
+                        this.settingsService.set('merchantHistoryLeagueSourcePoe1', legacySource || 'auto');
+                        console.log('[Migration] Migrated PoE1 league from legacy setting:', trimmedLegacy);
+                    }
+                } else if (this.overlayVersion === 'poe2' && isPoe2League) {
+                    const existingPoe2 = this.settingsService.get('merchantHistoryLeaguePoe2');
+                    if (!existingPoe2) {
+                        this.settingsService.set('merchantHistoryLeaguePoe2', trimmedLegacy);
+                        this.settingsService.set('merchantHistoryLeagueSourcePoe2', legacySource || 'auto');
+                        console.log('[Migration] Migrated PoE2 league from legacy setting:', trimmedLegacy);
+                    }
+                }
+                
+                // Clear legacy settings after successful migration
+                this.settingsService.clear('merchantHistoryLeague');
+                this.settingsService.clear('merchantHistoryLeagueSource');
+            }
+        } catch (err) {
+            console.warn('[Migration] Failed to migrate merchant history settings:', err);
+        }
+    }
+
     // ---- Legacy merchant-history migration ----
     private async migrateLegacyMerchantHistory(): Promise<void> {
         try {
             const cfgDir = this.getUserConfigDir();
+            
+            // STEP 1: Migrate per-league files WITHOUT game version prefix to new format WITH prefix
+            // This handles the most recent format (merchant-history-{league}.json -> merchant-history-{gameVersion}-{league}.json)
+            try {
+                const allFiles = fs.readdirSync(cfgDir);
+                const oldFormatPattern = /^merchant-history-([^-].+)\.json$/; // Matches merchant-history-{league}.json but NOT merchant-history-poe1-{league}.json
+                
+                for (const file of allFiles) {
+                    const match = file.match(oldFormatPattern);
+                    if (!match) continue;
+                    
+                    const leaguePart = match[1];
+                    const oldPath = path.join(cfgDir, file);
+                    
+                    // Determine which game version this league belongs to
+                    let gameVersion: 'poe1' | 'poe2';
+                    if (/Keepers_of_the_Flame|HC_Keepers_of_the_Flame/i.test(leaguePart)) {
+                        gameVersion = 'poe1';
+                    } else {
+                        // Default to poe2 for all other leagues (Rise of the Abyssal, Standard, Hardcore)
+                        gameVersion = 'poe2';
+                    }
+                    
+                    const newPath = path.join(cfgDir, `merchant-history-${gameVersion}-${leaguePart}.json`);
+                    
+                    // Only migrate if new file doesn't exist
+                    if (!fs.existsSync(newPath)) {
+                        console.log(`[Migration] Renaming ${file} to merchant-history-${gameVersion}-${leaguePart}.json`);
+                        fs.renameSync(oldPath, newPath);
+                    } else {
+                        console.log(`[Migration] Skipping ${file} - new format file already exists`);
+                    }
+                }
+            } catch (migErr) {
+                console.warn('[Migration] Failed to migrate per-league history files:', migErr);
+            }
+            
+            // STEP 2: Migrate original single-file format (merchant-history.json) if it still exists
             const oldFile = path.join(cfgDir, 'merchant-history.json');
             
             // If old single-league file exists, migrate it to the current league
@@ -3194,9 +3349,10 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 fs.writeFileSync(backupFile, raw);
                 
                 // Determine which league this data belongs to (default to current)
-                const targetLeague = this.merchantHistoryLeague || 'Rise of the Abyssal';
+                const targetLeague = this.merchantHistoryLeague || this.getDefaultLeague();
                 const safeLeagueName = targetLeague.replace(/[^a-zA-Z0-9_-]/g, '_');
-                const newFile = path.join(cfgDir, `merchant-history-${safeLeagueName}.json`);
+                const gameVersion = this.overlayVersion;
+                const newFile = path.join(cfgDir, `merchant-history-${gameVersion}-${safeLeagueName}.json`);
                 
                 // Only migrate if the new file doesn't exist or is empty
                 if (!fs.existsSync(newFile)) {
