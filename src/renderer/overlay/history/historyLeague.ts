@@ -58,8 +58,73 @@ function getOverlayVersionMode(): 'poe1' | 'poe2' {
   return ((window as any).__overlayVersionMode || 'poe2') === 'poe1' ? 'poe1' : 'poe2';
 }
 
+type PendingPromptState = { reason: LeaguePromptReason; options?: { previousLeague?: string; newLeague?: string; message?: string; highlight?: string } };
+
+let currentOverlayMode: 'poe1' | 'poe2' = getOverlayVersionMode();
+let leagueStateInitialized = false;
+let pendingPrompt: PendingPromptState | null = null;
+
+function queuePrompt(reason: LeaguePromptReason, options?: { previousLeague?: string; newLeague?: string; message?: string; highlight?: string }): void {
+  pendingPrompt = { reason, options };
+}
+
+function flushPendingPrompt(): void {
+  if (!pendingPrompt) return;
+  const queued = pendingPrompt;
+  pendingPrompt = null;
+  showPrompt(queued.reason, queued.options);
+}
+
+function getLeagueOptionsForMode(mode: 'poe1' | 'poe2'): LeagueOption[] {
+  return mode === 'poe1' ? POE1_LEAGUE_OPTIONS : POE2_LEAGUE_OPTIONS;
+}
+
+function getDefaultLeagueForMode(mode: 'poe1' | 'poe2'): string {
+  return mode === 'poe1' ? POE1_SOFTCORE_LEAGUE : POE2_SOFTCORE_LEAGUE;
+}
+
+function normalizeLeagueId(value: string): string {
+  return (value || '').trim().toLowerCase();
+}
+
+function isLeagueValidForMode(mode: 'poe1' | 'poe2', league: string): boolean {
+  if (!league) return false;
+  const normalized = normalizeLeagueId(league);
+  return getLeagueOptionsForMode(mode).some((option) => normalizeLeagueId(option.id) === normalized);
+}
+
+function ensureLeagueValidForMode(mode: 'poe1' | 'poe2'): boolean {
+  const current = (historyState.league || '').trim();
+  if (current && isLeagueValidForMode(mode, current)) {
+    return false;
+  }
+
+  const fallback = getDefaultLeagueForMode(mode);
+  const changed = historyState.league !== fallback;
+  historyState.league = fallback;
+  historyState.leagueSource = 'auto';
+  historyState.leagueExplicitlySet = false;
+
+  if (changed) {
+    resetHistoryStoreForLeagueChange();
+  }
+
+  return changed;
+}
+
+const LEAGUE_LABELS: Record<string, string> = {
+  [normalizeLeagueId(POE1_SOFTCORE_LEAGUE)]: 'Softcore • Keepers of the Flame',
+  [normalizeLeagueId(POE2_SOFTCORE_LEAGUE)]: 'Softcore • Rise of the Abyssal',
+  [normalizeLeagueId(POE1_HARDCORE_LEAGUE)]: 'Hardcore • Keepers of the Flame',
+  [normalizeLeagueId(POE2_HARDCORE_LEAGUE)]: 'Hardcore • Rise of the Abyssal',
+  [normalizeLeagueId(POE1_STANDARD_LEAGUE)]: 'Standard',
+  [normalizeLeagueId(POE2_STANDARD_LEAGUE)]: 'Standard',
+  [normalizeLeagueId(POE1_LEGACY_HARDCORE_LEAGUE)]: 'Hardcore (Legacy)',
+  [normalizeLeagueId(POE2_LEGACY_HARDCORE_LEAGUE)]: 'Hardcore (Legacy)'
+};
+
 function getActiveLeagueOptions(): LeagueOption[] {
-  return getOverlayVersionMode() === 'poe1' ? POE1_LEAGUE_OPTIONS : POE2_LEAGUE_OPTIONS;
+  return getLeagueOptionsForMode(getOverlayVersionMode());
 }
 
 interface LeagueUpdateOptions {
@@ -233,10 +298,12 @@ function updateLeagueButton(): void {
 export function formatLeagueLabel(league: string): string {
   const trimmed = (league || '').trim();
   if (!trimmed) return 'Unknown';
-  if (trimmed === HARDCORE_LEAGUE) return 'Hardcore • Rise of the Abyssal';
-  if (trimmed === SOFTCORE_LEAGUE) return 'Softcore • Rise of the Abyssal';
-  if (trimmed === STANDARD_LEAGUE) return 'Standard';
-  if (trimmed === LEGACY_HARDCORE_LEAGUE) return 'Hardcore (Legacy)';
+  const normalized = normalizeLeagueId(trimmed);
+  if (LEAGUE_LABELS[normalized]) return LEAGUE_LABELS[normalized];
+  if (/^hardcore keepers of the flame$/i.test(trimmed)) return 'Hardcore • Keepers of the Flame';
+  if (/^hardcore rise of the abyssal$/i.test(trimmed)) return 'Hardcore • Rise of the Abyssal';
+  if (/^keepers of the flame$/i.test(trimmed)) return 'Softcore • Keepers of the Flame';
+  if (/^rise of the abyssal$/i.test(trimmed)) return 'Softcore • Rise of the Abyssal';
   if (/^Hardcore/i.test(trimmed)) {
     const rest = trimmed.replace(/^Hardcore\s*/i, '').trim();
     return rest ? `Hardcore • ${rest}` : 'Hardcore';
@@ -245,7 +312,10 @@ export function formatLeagueLabel(league: string): string {
 }
 
 export function getLeaguePreference(): LeaguePreference {
-  const league = (historyState.league || SOFTCORE_LEAGUE).trim() || SOFTCORE_LEAGUE;
+  const mode = getOverlayVersionMode();
+  ensureLeagueValidForMode(mode);
+  const fallback = getDefaultLeagueForMode(mode);
+  const league = (historyState.league || fallback).trim() || fallback;
   const source = historyState.leagueSource === 'manual' ? 'manual' : 'auto';
   return { league, source };
 }
@@ -255,7 +325,11 @@ export function getLeagueOptions(): LeagueOption[] {
 }
 
 export function setLeaguePreference(league: string, source: LeagueSource, options?: LeagueUpdateOptions): Promise<LeagueUpdateResult> {
-  const trimmed = (league || '').trim() || SOFTCORE_LEAGUE;
+  const mode = getOverlayVersionMode();
+  const fallback = getDefaultLeagueForMode(mode);
+  const requested = (league || '').trim();
+  const isValid = requested ? isLeagueValidForMode(mode, requested) : false;
+  const trimmed = (isValid ? requested : fallback) || fallback;
   const prevLeague = historyState.league;
   const prevSource: LeagueSource = historyState.leagueSource === 'manual' ? 'manual' : 'auto';
 
@@ -266,8 +340,10 @@ export function setLeaguePreference(league: string, source: LeagueSource, option
   historyState.leagueSource = source;
   
   // Mark as explicitly set when user manually selects or when loaded from persisted preference
-  if (source === 'manual' || options?.reason === 'init') {
+  if (source === 'manual') {
     historyState.leagueExplicitlySet = true;
+  } else if (!isValid) {
+    historyState.leagueExplicitlySet = false;
   }
 
   if (leagueChanged && options?.resetStore !== false) {
@@ -284,45 +360,120 @@ export function setLeaguePreference(league: string, source: LeagueSource, option
     }
   }
 
+  if (!options?.skipButtonUpdate) {
+    updateLeagueButton();
+  }
+
   return Promise.resolve({ leagueChanged, sourceChanged });
 }
 
-export async function initializeHistoryLeagueControls(callbacks: { onManualLeagueChange: ManualLeagueChangeHandler; onManualChangePrep: ManualChangePrepHandler }): Promise<void> {
-  manualChangeHandler = callbacks.onManualLeagueChange;
-  manualChangePrepHandler = callbacks.onManualChangePrep;
+export async function initializeHistoryLeagueState(): Promise<void> {
+  currentOverlayMode = getOverlayVersionMode();
+  
+  console.log('[HistoryLeague] initializeHistoryLeagueState - overlayMode:', currentOverlayMode, 'historyState.league:', historyState.league);
 
-  await ensureDomReady();
+  if (leagueStateInitialized) {
+    console.log('[HistoryLeague] Already initialized, returning early');
+    return;
+  }
 
   try {
     const pref = await getElectronAPI().historyGetLeaguePreference?.();
-    
-    // Use the hasStoredPreference flag from main process to determine if user has actually saved a preference
+
     const hasStoredPreference = pref && (pref as any).hasStoredPreference === true;
+    const mode = currentOverlayMode;
+    const fallback = getDefaultLeagueForMode(mode);
     
+    console.log('[HistoryLeague] Bootstrap - hasStored:', hasStoredPreference, 'mode:', mode, 'fallback:', fallback, 'pref:', pref);
+
     if (hasStoredPreference) {
-      // User has a real stored preference - use it and mark as explicitly set
-      const league = (pref?.league || SOFTCORE_LEAGUE).trim() || SOFTCORE_LEAGUE;
-      const source: LeagueSource = pref?.source === 'manual' ? 'manual' : 'auto';
-      await setLeaguePreference(league, source, { persist: false, resetStore: false, reason: 'init' });
-      console.log('[HistoryLeague] Loaded stored league preference:', league, '(source:', source, ')');
+      const rawLeague = typeof pref?.league === 'string' ? pref.league.trim() : '';
+      const leagueIsValid = rawLeague ? isLeagueValidForMode(mode, rawLeague) : false;
+      const leagueToApply = leagueIsValid ? rawLeague : fallback;
+      const source: LeagueSource = leagueIsValid && pref?.source === 'manual' ? 'manual' : 'auto';
+
+      await setLeaguePreference(leagueToApply, source, { persist: false, resetStore: false, reason: 'init', skipButtonUpdate: true });
+
+      if (!leagueIsValid) {
+        historyState.leagueExplicitlySet = false;
+        console.log(`[HistoryLeague] Stored league "${rawLeague}" is not valid for ${mode}; using default ${leagueToApply}`);
+        try {
+          getElectronAPI().historySetLeaguePreference?.({ league: leagueToApply, source: 'auto' });
+        } catch (err) {
+          console.warn('[HistoryLeague] Failed to persist fallback league after validation', err);
+        }
+        queuePrompt('manual-open', {
+          message: 'Pick the trade league you want to track before refreshing history.',
+          highlight: historyState.league
+        });
+      } else {
+        historyState.leagueExplicitlySet = source === 'manual';
+        console.log('[HistoryLeague] Loaded stored league preference:', leagueToApply, '(source:', source, ')');
+      }
     } else {
-      // No stored preference - set default but DON'T mark as explicitly set
-      console.log('[HistoryLeague] No stored league preference - using default (user must confirm in Settings)');
-      historyState.league = SOFTCORE_LEAGUE;
+      console.log('[HistoryLeague] No stored preference - ensuring league valid for mode:', mode);
+      const changed = ensureLeagueValidForMode(mode);
       historyState.leagueSource = 'auto';
-      historyState.leagueExplicitlySet = false; // Force user to select league
-      // Surface the prompt immediately so the user knows to pick a league
-      showLeaguePrompt('manual-open', {
+      historyState.leagueExplicitlySet = false;
+      if (changed) {
+        console.log(`[HistoryLeague] Set default league to ${historyState.league} for ${mode}`);
+      } else {
+        console.log(`[HistoryLeague] League already valid: ${historyState.league}`);
+      }
+      queuePrompt('manual-open', {
         message: 'Pick the trade league you want to track before refreshing history.',
         highlight: historyState.league
       });
     }
   } catch (err) {
     console.warn('[HistoryLeague] Failed to load stored league preference', err);
-    // On error, use current state but don't mark as explicitly set
-    historyState.league = historyState.league || SOFTCORE_LEAGUE;
+    const mode = currentOverlayMode;
+    ensureLeagueValidForMode(mode);
     historyState.leagueSource = historyState.leagueSource === 'manual' ? 'manual' : 'auto';
     historyState.leagueExplicitlySet = false;
+  }
+
+  leagueStateInitialized = true;
+  console.log('[HistoryLeague] Bootstrap complete - league:', historyState.league, 'source:', historyState.leagueSource, 'mode:', currentOverlayMode);
+}
+
+export async function initializeHistoryLeagueControls(callbacks: { onManualLeagueChange: ManualLeagueChangeHandler; onManualChangePrep: ManualChangePrepHandler }): Promise<void> {
+  manualChangeHandler = callbacks.onManualLeagueChange;
+  manualChangePrepHandler = callbacks.onManualChangePrep;
+
+  if (!leagueStateInitialized) {
+    await initializeHistoryLeagueState();
+  }
+
+  await ensureDomReady();
+  ensureElements();
+
+  updateLeagueButton();
+  flushPendingPrompt();
+
+  try {
+    getElectronAPI().onOverlayVersionMode?.((mode: string) => {
+      const normalized: 'poe1' | 'poe2' = mode === 'poe1' ? 'poe1' : 'poe2';
+      if (normalized === currentOverlayMode) return;
+      currentOverlayMode = normalized;
+
+      const leagueChanged = ensureLeagueValidForMode(normalized);
+      updateLeagueButton();
+
+      if (leagueChanged) {
+        try {
+          getElectronAPI().historySetLeaguePreference?.({ league: historyState.league, source: historyState.leagueSource });
+        } catch (err) {
+          console.warn('[HistoryLeague] Failed to sync league after overlay version change', err);
+        }
+        showLeaguePrompt('manual-open', {
+          message: 'Pick the trade league you want to track before refreshing history.',
+          highlight: historyState.league
+        });
+      }
+    });
+  } catch (err) {
+    console.warn('[HistoryLeague] Failed to subscribe to overlay version changes', err);
   }
 }
 
@@ -336,5 +487,9 @@ export function maybeShowPendingLeaguePrompt(): void {
 }
 
 export function showLeaguePrompt(reason: LeaguePromptReason, opts?: { previousLeague?: string; newLeague?: string; message?: string; highlight?: string }): void {
+  if (!manualChangeHandler || document.readyState === 'loading') {
+    queuePrompt(reason, opts);
+    return;
+  }
   showPrompt(reason, opts);
 }

@@ -141,7 +141,7 @@ export interface SettingsSplashParams {
   settingsService: SettingsService;
   featureService: any; // FeatureService
   currentHotkey: string;
-  getDataDir: () => string;
+  getConfigDir: () => string;
   reloadData: () => void;
   onHotkeySave: (newKey: string) => void;
   onLeagueSave: (league: string) => void;
@@ -160,7 +160,7 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
     settingsService,
     featureService,
     currentHotkey,
-    getDataDir,
+    getConfigDir,
     reloadData,
     onHotkeySave,
     onLeagueSave,
@@ -304,7 +304,7 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
   const appVersion = getAppVersion();
   const html = buildSettingsSplashHtml(
     currentHotkey, 
-    getDataDir(), 
+    getConfigDir(), 
     Number(fontSize), 
     appVersion, 
     String(merchantHistoryLeague),
@@ -521,12 +521,12 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       }
     });
 
-    // Handle open data folder
+    // Handle open config folder
     ipcMain.once('settings-open-folder', async () => {
       try {
-        await shell.openPath(getDataDir());
+        await shell.openPath(getConfigDir());
       } catch (error) {
-        console.error('Failed to open data folder:', error);
+        console.error('Failed to open config folder:', error);
       }
     });
 
@@ -576,7 +576,7 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
  */
 function buildSettingsSplashHtml(
   currentHotkey: string,
-  dataDir: string,
+  configDir: string,
   fontSize: number,
   appVersion: string,
   merchantHistoryLeague: string,
@@ -593,6 +593,7 @@ function buildSettingsSplashHtml(
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
+  const safeConfigDir = escapeHtml(configDir);
 
   const effectiveLeagueOptions = (leagueOptions && leagueOptions.length) ? leagueOptions : POE2_LEAGUES;
   const leagueOptionsMarkup = effectiveLeagueOptions
@@ -1556,8 +1557,8 @@ function buildSettingsSplashHtml(
     <div class="section-desc">Manage your overlay data and cache</div>
     <div class="setting-item">
       <div class="setting-label">
-        <span class="setting-label-text">Data Folder</span>
-        <span class="setting-label-desc" style="max-width: 280px; word-break: break-all;">${dataDir}</span>
+  <span class="setting-label-text">Config Folder</span>
+  <span class="setting-label-desc" style="max-width: 280px; word-break: break-all;">${safeConfigDir}</span>
       </div>
       <button class="btn btn-secondary" id="openFolderBtn">Open Folder</button>
     </div>
@@ -1962,7 +1963,7 @@ function buildSettingsSplashHtml(
         }
       });
       
-      // Open data folder
+  // Open config folder
       document.getElementById('openFolderBtn').addEventListener('click', () => {
         ipcRenderer.send('settings-open-folder');
       });

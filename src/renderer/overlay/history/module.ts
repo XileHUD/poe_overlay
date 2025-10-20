@@ -62,7 +62,7 @@ import {
 import { autoRefreshManager } from './autoRefresh';
 import { updateSessionUI, attachLoginButtonLogic } from './sessionManager';
 import { attachRefreshButtonLogic } from './refreshButton';
-import { initializeHistoryLeagueControls, formatLeagueLabel } from './historyLeague';
+import { initializeHistoryLeagueControls, initializeHistoryLeagueState, formatLeagueLabel } from './historyLeague';
 
 function isHistoryDisabledForPoe1(): boolean {
   try {
@@ -207,6 +207,12 @@ async function ensureHistoryAutoRefresh(): Promise<void> {
 
 // Initialize on load
 (async function init() {
+  console.log('[History] Module init starting - current overlayMode:', (window as any).__overlayVersionMode);
+  
+  // Initialize league state BEFORE loading from disk
+  await initializeHistoryLeagueState();
+  console.log('[History] League state initialized, league is:', historyState.league);
+
   // Load from disk
   await initHistoryFromLocal(
     () => recomputeTotalsFromEntries(historyState.store),

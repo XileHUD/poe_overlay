@@ -513,7 +513,20 @@
 
     const UPDATE_RELEASE_URL = 'https://github.com/XileHUD/poe_overlay/releases/latest';
     let startupUpdateCheckTriggered = false;
-    let overlayVersionMode = 'poe2';
+    
+    // Read overlay version from query parameter BEFORE modules load
+    let overlayVersionMode = 'poe2'; // default fallback
+    try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const versionParam = urlParams.get('version');
+        if (versionParam === 'poe1' || versionParam === 'poe2') {
+            overlayVersionMode = versionParam;
+            console.log('[Overlay] Version mode from URL param:', overlayVersionMode);
+        }
+    } catch (e) {
+        console.warn('[Overlay] Failed to read version param:', e);
+    }
+    
     window.__overlayVersionMode = overlayVersionMode;
     let pendingOverlayVersionMode = null;
     let overlayHasAnyFeatures = true;

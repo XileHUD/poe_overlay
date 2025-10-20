@@ -32,6 +32,7 @@ import { showSettingsSplash } from './ui/settingsSplash.js';
 import { showOverlayVersionPrompt } from './ui/overlayVersionPrompt.js';
 import { MerchantHistoryExportService } from './services/merchantHistoryExport.js';
 import { MerchantHistoryCleanupService } from './services/merchantHistoryCleanup.js';
+import { backupMerchantHistories } from './services/merchantHistoryBackup.js';
 import { showRestartDialog, type RestartDialogOptions } from './ui/restartDialog.js';
 import { showToast } from './utils/toastNotification.js';
 import { registerDataIpc } from './ipc/dataHandlers.js';
@@ -287,7 +288,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
     private lastProcessedItemText: string = ''; // track last processed item to avoid duplicate handling
     private lastOverlaySnapshot: OverlaySnapshot | null = null;
     private lastHistoryFetchAt: number = 0; // global merchant history fetch timestamp (ms)
-    private merchantHistoryLeague: string = 'Rise of the Abyssal';
+    private merchantHistoryLeague: string = ''; // Will be set during initialization based on version
     private merchantHistoryLeagueSource: 'auto' | 'manual' = 'auto';
     private pendingDefaultView = false; // request renderer to show last/default view when no item provided
     private readonly HISTORY_FETCH_MIN_INTERVAL = 5 * 60 * 1000; // 5 minutes
@@ -374,14 +375,60 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 const trimmedLeague = typeof storedLeagueRaw === 'string' ? storedLeagueRaw.trim() : '';
                 const hasManualPreference = storedSource === 'manual' && trimmedLeague.length > 0;
 
-                if (hasManualPreference) {
+                // Validate that the stored league matches the current game version
+                const defaultLeague = this.getDefaultLeague();
+                let leagueIsValid = false;
+                if (trimmedLeague) {
+                    if (this.overlayVersion === 'poe1') {
+                        leagueIsValid = /Keepers of the Flame|HC Keepers of the Flame|Standard|Hardcore/i.test(trimmedLeague);
+                    } else {
+                        leagueIsValid = /Rise of the Abyssal|HC Rise of the Abyssal|Standard|Hardcore/i.test(trimmedLeague);
+                    }
+                }
+
+                if (hasManualPreference && leagueIsValid) {
                     this.merchantHistoryLeague = trimmedLeague;
                     this.merchantHistoryLeagueSource = 'manual';
                 } else {
-                    this.merchantHistoryLeague = this.getDefaultLeague();
+                    // Use default league for this version
+                    this.merchantHistoryLeague = defaultLeague;
                     this.merchantHistoryLeagueSource = 'auto';
+                    // Clear invalid stored preference
+                    if (trimmedLeague && !leagueIsValid) {
+                        console.log(`[Init] Cleared invalid league "${trimmedLeague}" for ${this.overlayVersion}, using default: ${defaultLeague}`);
+                        try {
+                            this.settingsService.clear(leagueKey);
+                            this.settingsService.clear(sourceKey);
+                        } catch {}
+                    }
                 }
             } catch {}
+            
+            // Run one-time legacy merchant history migration
+            try {
+                this.updateSplash('Checking merchant history migration...');
+                await this.migrateLegacyMerchantHistory();
+            } catch (err) {
+                console.warn('[Init] Merchant history migration failed:', err);
+            }
+            
+            // Backup merchant history files on startup
+            try {
+                this.updateSplash('Backing up merchant history...');
+                const configDir = this.getUserConfigDir();
+                const backupResult = await backupMerchantHistories(configDir, 10);
+                if (backupResult.backedUpFiles.length > 0) {
+                    console.log(`[Init] Backed up ${backupResult.backedUpFiles.length} merchant history file(s)`);
+                    if (backupResult.cleanedOldBackups > 0) {
+                        console.log(`[Init] Cleaned ${backupResult.cleanedOldBackups} old backup(s)`);
+                    }
+                }
+                if (backupResult.errors.length > 0) {
+                    console.warn('[Init] Backup errors:', backupResult.errors);
+                }
+            } catch (err) {
+                console.warn('[Init] Merchant history backup failed:', err);
+            }
             
             if (this.overlayVersion === 'poe1') {
                 this.markFeatureSplashSeen('poe1');
@@ -1062,7 +1109,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 settingsService: this.settingsService!,
                 featureService: this.featureService!,
                 currentHotkey: this.getHotkeyKey(),
-                getDataDir: () => this.getDataDir(),
+                getConfigDir: () => this.getUserConfigDir(),
                 reloadData: () => (this.modifierDatabase as any)?.reload?.(),
                 onHotkeySave: (newKey: string) => this.saveHotkey(newKey),
                 onLeagueSave: (league: string) => this.handleLeagueChange(league),
@@ -1171,6 +1218,9 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
     private async cleanupMerchantHistory(): Promise<void> {
         try {
             const configDir = this.getUserConfigDir();
+            const activeLeague = this.merchantHistoryLeague || this.getDefaultLeague();
+            const safeLeagueName = activeLeague.replace(/[^a-zA-Z0-9_-]/g, '_');
+            const cleanupKey = `${this.overlayVersion}-${safeLeagueName}`;
             const { dialog, BrowserWindow } = await import('electron');
             
             // Scan all leagues to see what needs cleaning
@@ -1269,7 +1319,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 }
             } else {
                 // Clean current league only
-                const cleanupResult = await MerchantHistoryCleanupService.cleanupHistory(configDir, this.merchantHistoryLeague);
+                const cleanupResult = await MerchantHistoryCleanupService.cleanupHistory(configDir, cleanupKey);
 
                 if (cleanupResult.success && (cleanupResult.removedCount > 0 || cleanupResult.mergedCount > 0)) {
                     let message = '✅ Cleanup complete:\n';
@@ -1549,9 +1599,11 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
 
         // Load the overlay UI
         if (process.env.NODE_ENV === 'development') {
-            this.overlayWindow.loadURL('http://localhost:5173/overlay');
+            this.overlayWindow.loadURL(`http://localhost:5173/overlay?version=${this.overlayVersion}`);
         } else {
-            this.overlayWindow.loadFile(path.join(__dirname, '../renderer/src/renderer/overlay.html'));
+            this.overlayWindow.loadFile(path.join(__dirname, '../renderer/src/renderer/overlay.html'), {
+                query: { version: this.overlayVersion }
+            });
         }
         
         // Enable F12 to open DevTools
@@ -3145,9 +3197,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         try { ipcMain.removeHandler('history-load'); } catch {}
         try { ipcMain.removeHandler('history-save'); } catch {}
         ipcMain.handle('history-load', async (_e, league?: string) => {
-            try {
-                await this.migrateLegacyMerchantHistory();
-            } catch {}
+            // Migration is now done only once at app startup, not on every load
             try {
                 const cfgDir = this.getUserConfigDir();
                 const targetLeague = league || this.merchantHistoryLeague || this.getDefaultLeague();
@@ -3300,11 +3350,18 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         try {
             const cfgDir = this.getUserConfigDir();
             
+            // Check if migration has already been completed
+            const migrationFlagFile = path.join(cfgDir, '.merchant-history-migration-done');
+            if (fs.existsSync(migrationFlagFile)) {
+                return; // Migration already done, skip
+            }
+            
             // STEP 1: Migrate per-league files WITHOUT game version prefix to new format WITH prefix
             // This handles the most recent format (merchant-history-{league}.json -> merchant-history-{gameVersion}-{league}.json)
             try {
                 const allFiles = fs.readdirSync(cfgDir);
-                const oldFormatPattern = /^merchant-history-([^-].+)\.json$/; // Matches merchant-history-{league}.json but NOT merchant-history-poe1-{league}.json
+                // Only match files that DON'T already have poe1/poe2 prefix
+                const oldFormatPattern = /^merchant-history-(?!poe[12]-)(.+)\.json$/;
                 
                 for (const file of allFiles) {
                     const match = file.match(oldFormatPattern);
@@ -3376,6 +3433,12 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 const migratedFile = path.join(cfgDir, 'merchant-history.json.migrated');
                 fs.renameSync(oldFile, migratedFile);
             }
+            
+            // Mark migration as complete
+            try {
+                fs.writeFileSync(migrationFlagFile, new Date().toISOString());
+                console.log('[Migration] Merchant history migration completed successfully');
+            } catch {}
         } catch (e) {
             console.error('[Migration] Failed to migrate legacy merchant history:', e);
         }

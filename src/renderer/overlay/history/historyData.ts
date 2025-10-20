@@ -48,12 +48,23 @@ export interface HistoryState {
 }
 
 /**
+ * Get default league based on game version
+ * NOTE: This is called lazily to ensure overlay version mode is set before reading it
+ */
+function getVersionDefaultLeague(): string {
+  const mode = (window as any).__overlayVersionMode;
+  return mode === 'poe1' ? 'Keepers of the Flame' : 'Rise of the Abyssal';
+}
+
+/**
  * Global history state
+ * NOTE: league field is initialized to empty string and will be set by initializeHistoryLeagueState()
+ * This prevents using the wrong default if overlay version mode hasn't been set yet.
  */
 export const historyState: HistoryState = {
   items: [],
   selectedIndex: 0,
-  league: "Rise of the Abyssal",
+  league: '', // Will be set by initializeHistoryLeagueState() based on stored preference or overlay version
   leagueSource: 'auto',
   leagueExplicitlySet: false, // Will be set to true when user selects league in Settings or after first successful fetch
   store: { entries: [], totals: {}, lastSync: 0, lastFetchAt: 0 },
@@ -110,8 +121,10 @@ export async function initHistoryFromLocal(
     drawChart: () => void;
   }
 ): Promise<void> {
+  console.log('[HistoryData] initHistoryFromLocal - loading history for league:', historyState.league);
   try {
     const saved = await (window as any).electronAPI?.historyLoad?.(historyState.league);
+    console.log('[HistoryData] historyLoad returned:', saved ? 'data' : 'null', 'for league:', historyState.league);
     if (saved && typeof saved === 'object') {
   const entries = Array.isArray((saved as any).entries) ? (saved as any).entries : [];
   const totals = (saved as any).totals && typeof (saved as any).totals === 'object' ? (saved as any).totals : {};
