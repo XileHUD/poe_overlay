@@ -13,7 +13,7 @@ Lightweight PoE1 and PoE2 item & modifier overlay – copy an item, see the data
 <br />
 
 <a href="https://youtu.be/m6PkfTIK-1E" target="_blank" rel="noopener noreferrer" title="Watch the latest XileHUD feature showcase on YouTube">
-	<img src="./screenshots/YT.png" alt="XileHUD Feature Showcase (YouTube)" width="720" />
+	<img src="./screenshots/YT2.png" alt="XileHUD Feature Showcase (YouTube)" width="720" />
 </a><br/>
 <sub><a href="https://youtu.be/m6PkfTIK-1E" target="_blank" rel="noopener noreferrer"><em>Latest video: Full PoE1 & PoE2 Support Overview</em></a></sub>
 
