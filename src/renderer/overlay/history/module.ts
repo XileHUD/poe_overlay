@@ -209,6 +209,17 @@ async function ensureHistoryAutoRefresh(): Promise<void> {
 (async function init() {
   console.log('[History] Module init starting - current overlayMode:', (window as any).__overlayVersionMode);
   
+  // Load saved rate limit headers for display (before any fetch)
+  try {
+    const savedHeaders = await (window as any).electronAPI.poeGetSavedRateLimitHeaders();
+    if (savedHeaders) {
+      console.log('[History] Loaded saved rate limit headers from storage');
+      setRateLimitInfo(savedHeaders);
+    }
+  } catch (e) {
+    console.warn('[History] Failed to load saved rate limit headers:', e);
+  }
+  
   // Initialize league state BEFORE loading from disk
   await initializeHistoryLeagueState();
   console.log('[History] League state initialized, league is:', historyState.league);

@@ -168,7 +168,12 @@ export async function refreshHistory(
   
   try {
     let rows: any[] = [];
-  let res: any = await (window as any).electronAPI.poeFetchHistory(historyState.league);
+    let res: any = await (window as any).electronAPI.poeFetchHistory(historyState.league);
+    
+    // Track last response status for debugging
+    if (res?.status !== undefined) {
+      historyState.lastResponseStatus = res.status;
+    }
     
     // ========== Handle Rate Limiting ==========
     if ((res as any)?.rateLimited) {

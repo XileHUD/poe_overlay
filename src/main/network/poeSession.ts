@@ -35,7 +35,8 @@ export class PoeSessionHelper {
       const { statusCode, body, headers } = await httpGetRaw(url, {
         Accept: 'application/json',
         Referer: `https://www.pathofexile.com/${tradeRoot}`,
-        'X-Requested-With': 'XMLHttpRequest'
+        'X-Requested-With': 'XMLHttpRequest',
+        'User-Agent': 'XileHUD/0.3.0 (contact: hello@xile.wtf)'
       }, 12000);
 
       // Update rate limiter with server headers
@@ -84,7 +85,13 @@ export class PoeSessionHelper {
       }
 
       if (statusCode === 401 || statusCode === 403) {
+        rateLimiter.recordError(statusCode);
         return { ok: false, status: statusCode, error: 'Unauthorized' };
+      }
+
+      // Record other 4xx errors for exponential backoff
+      if (statusCode >= 400 && statusCode < 500) {
+        rateLimiter.recordError(statusCode);
       }
 
       return { ok: false, status: statusCode, error: `HTTP ${statusCode}` };

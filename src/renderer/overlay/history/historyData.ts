@@ -45,6 +45,7 @@ export interface HistoryState {
   rateLimitUntil: number;
   globalMinInterval?: number;
   remoteLastFetchAt?: number;
+  lastResponseStatus?: number; // HTTP status code from last fetch attempt (200, 429, 401, etc.)
 }
 
 /**
@@ -75,6 +76,7 @@ export const historyState: HistoryState = {
   // Minimum interval between remote fetches (default 15 minutes unless server enforces higher/lower)
   globalMinInterval: 900_000,
   remoteLastFetchAt: 0,
+  lastResponseStatus: undefined, // Will be set after first fetch attempt
 };
 
 /**

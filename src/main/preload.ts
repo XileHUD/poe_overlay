@@ -103,6 +103,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     poeGetSession: () => ipcRenderer.invoke('poe-get-session'),
     poeLogin: () => ipcRenderer.invoke('poe-login'),
     poeFetchHistory: (league: string) => ipcRenderer.invoke('poe-fetch-history', league),
+    poeGetSavedRateLimitHeaders: () => ipcRenderer.invoke('poe-get-saved-rate-limit-headers'),
     // Fallback scraping removed
     poeOpenHistoryWindow: () => ipcRenderer.invoke('poe-open-history-window'),
     // Fallback scraping removed

@@ -34,6 +34,10 @@ export interface UserSettings {
   merchantHistoryAutoFetch?: boolean; // Enable/disable automatic history fetching (default: true)
   merchantHistoryRefreshInterval?: number; // Auto-fetch interval in minutes (default: 30, min: 15)
   historyAutoCleanupDone?: boolean; // Flag to track if auto-cleanup has been performed on first start
+  // Rate limit persistence
+  rateLimitRules?: string; // Last known rate limit rules (e.g., "5:60:60,10:600:120")
+  rateLimitState?: string; // Last known rate limit state (e.g., "0:60:55,3:600:510")
+  rateLimitTimestamp?: number; // Timestamp when rate limit info was saved (ms since epoch)
 }
 
 export class SettingsService {

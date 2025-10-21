@@ -236,6 +236,8 @@ export function updateRefreshButtonUI(
 function buildTooltip(base: string): string {
   try {
     const ts = historyState.remoteLastFetchAt || historyState.lastRefreshAt || 0;
+    let suffix = '';
+    
     if (ts) {
       const diff = Date.now() - ts;
       const secs = Math.floor(diff / 1000);
@@ -246,8 +248,17 @@ function buildTooltip(base: string): string {
       else {
         const hrs = Math.floor(mins / 60); const rem = mins % 60; when = `${hrs}h${rem? ' '+rem+'m':''} ago`;
       }
-      return base + `\n\nLast refresh: ${when}`;
+      suffix = `\n\nLast refresh: ${when}`;
+    } else {
+      suffix = '\n\nLast refresh: (none)';
     }
+    
+    // Add status code if available
+    if (historyState.lastResponseStatus !== undefined) {
+      suffix += `\nLast request: ${historyState.lastResponseStatus}`;
+    }
+    
+    return base + suffix;
   } catch {}
   return base + '\n\nLast refresh: (none)';
 }

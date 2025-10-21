@@ -339,6 +339,26 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             this.settingsService = new SettingsService(this.getUserConfigDir());
             this.featureService = new FeatureService(this.settingsService);
 
+            // Initialize rate limiter persistence
+            rateLimiter.setSaveCallback((rules, state) => {
+                try {
+                    if (!this.settingsService) return;
+                    this.settingsService.set('rateLimitRules', rules);
+                    this.settingsService.set('rateLimitState', state);
+                    this.settingsService.set('rateLimitTimestamp', Date.now());
+                } catch (err) {
+                    console.warn('[RateLimiter] Failed to save to settings:', err);
+                }
+            });
+
+            // Load saved rate limit state if available
+            const savedRules = this.settingsService.get('rateLimitRules');
+            const savedState = this.settingsService.get('rateLimitState');
+            const savedTimestamp = this.settingsService.get('rateLimitTimestamp');
+            if (savedRules && savedState && savedTimestamp) {
+                rateLimiter.loadFromStorage(savedRules, savedState, savedTimestamp);
+            }
+
             let overlayVersionSetting = this.settingsService.get('overlayVersion');
             if (!isOverlayVersion(overlayVersionSetting)) {
                 this.updateSplash('Awaiting overlay version selection...');
@@ -3112,6 +3132,10 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
             const budget = rateLimiter.canRequest();
             const status = rateLimiter.getStatus();
             return { budget, status };
+        });
+
+        ipcMain.handle('poe-get-saved-rate-limit-headers', async () => {
+            return rateLimiter.getCurrentHeaders();
         });
 
 

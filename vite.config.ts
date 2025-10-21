@@ -8,8 +8,7 @@ export default defineConfig({
     outDir: 'dist/renderer',
     rollupOptions: {
       input: {
-        overlay: path.resolve(__dirname, 'src/renderer/overlay.html'),
-        settings: path.resolve(__dirname, 'src/renderer/settings.html')
+        overlay: path.resolve(__dirname, 'src/renderer/overlay.html')
       }
     },
     emptyOutDir: true
