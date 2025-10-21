@@ -1,28 +1,53 @@
 // PoE1 Uniques module: Displays all PoE1 unique items including replicas with virtual scrolling
-import { highlightNumbers, getImagePath, ensurePanel, setupItemsPanelUI, escapeHtml } from '../../shared/itemUtils';
+import { highlightNumbers, ensurePanel, setupItemsPanelUI, escapeHtml } from '../../shared/itemUtils';
 import { bindImageFallback } from '../../../crafting/utils/imageFallback';
 import { TRANSPARENT_PLACEHOLDER } from '../../../crafting/utils/imagePlaceholder';
 
+// Local helper for PoE1 uniques images - returns path that IPC handler can resolve
+function getUniqueImagePath(item: Poe1UniqueItem): string {
+  if (item.imageLocal) {
+    // Return path with poe1/ prefix so IPC handler finds it in bundled-images/poe1/
+    return `poe1/${item.imageLocal}`;
+  }
+  return item.image || '';
+}
+
+type Poe1UniqueCategoryGroup = 'weapon' | 'armour' | 'accessory' | 'jewel' | 'flask' | 'misc';
+
 type Poe1UniqueItem = {
+  id: string;
   name: string;
   baseType: string;
+  group: Poe1UniqueCategoryGroup;
   slug?: string;
   image?: string;
   imageLocal?: string;
   explicitMods?: string[];
   flavourText?: string;
-  mods?: string[]; // Legacy replica uniques
+  isReplica?: boolean;
+  isCorrupted?: boolean;
+  isRelic?: boolean;
 };
 
-type Poe1UniqueGroups = {
-  WeaponUnique: Poe1UniqueItem[];
-  ArmourUnique: Poe1UniqueItem[];
-  OtherUnique: Poe1UniqueItem[];
+type Poe1UniqueCategory = {
+  id: string;
+  name: string;
+  group: Poe1UniqueCategoryGroup;
+  total?: number;
+  items: Poe1UniqueItem[];
+};
+
+type Poe1UniquesPayload = {
+  slug?: string;
+  generatedAt?: string;
+  totalCategories?: number;
+  totalItems?: number;
+  categories: Poe1UniqueCategory[];
 };
 
 type PreparedUnique = {
   item: Poe1UniqueItem;
-  category: string;
+  category: Poe1UniqueCategory;
   tags: string[];
   searchText: string;
   tagSet: Set<string>;
@@ -30,14 +55,14 @@ type PreparedUnique = {
 
 const state = {
   panelEl: null as HTMLElement | null,
-  groups: null as Poe1UniqueGroups | null,
+  payload: null as Poe1UniquesPayload | null,
   prepared: [] as PreparedUnique[],
 };
 
 let searchValue = '';
-let selectedCategory = 'All';
+let selectedCategoryId = 'all';
 const selectedFilters = new Set<string>();
-let tagsExpanded = false; // Track Show More/Less state
+let tagsExpanded = false;
 
 /**
  * Show the PoE1 Uniques panel
@@ -53,23 +78,23 @@ export async function show(): Promise<void> {
   setTimeout(() => { panel.scrollTop = 0; }, 10);
   
   // Only reset filters on first load
-  const isFirstLoad = !state.groups;
+  const isFirstLoad = !state.payload;
   if (isFirstLoad) {
     searchValue = '';
-    selectedCategory = 'All';
+    selectedCategoryId = 'all';
     selectedFilters.clear();
   }
   
   try {
-    if (!state.groups) {
+    if (!state.payload) {
       const data = await (window as any).electronAPI.getPoe1Uniques();
       if (!data || data.error) {
         panel.innerHTML = `<div style='color:var(--accent-red);'>Failed to load PoE1 Uniques (${data?.error || 'unknown'})</div>`;
         return;
       }
-      state.groups = data.uniques || { WeaponUnique: [], ArmourUnique: [], OtherUnique: [] };
-      if (state.groups) {
-        state.prepared = prepareUniques(state.groups);
+      state.payload = data;
+      if (state.payload) {
+        state.prepared = prepareUniques(state.payload);
       }
     }
     
@@ -83,53 +108,31 @@ export async function show(): Promise<void> {
 /**
  * Prepare uniques with extracted tags for filtering
  */
-function prepareUniques(groups: Poe1UniqueGroups): PreparedUnique[] {
-  const dedup = new Map<string, PreparedUnique>();
-  const categories = ['WeaponUnique', 'ArmourUnique', 'OtherUnique'] as const;
+function prepareUniques(payload: Poe1UniquesPayload): PreparedUnique[] {
+  const prepared: PreparedUnique[] = [];
   
-  categories.forEach(category => {
-    const items = groups[category] || [];
+  payload.categories.forEach(category => {
+    const items = category.items || [];
     items.forEach(item => {
-      const tags = extractTags(item, category);
-      // Note: searchText includes ALL mods (including those not displayed), so search/filter work even for hidden mods
+      const tags = extractTags(item);
       const searchText = [
         item.name,
         item.baseType,
         ...(item.explicitMods || []),
-        ...(item.mods || []),
         item.flavourText || ''
       ].join(' ').toLowerCase();
       
-      const prepared: PreparedUnique = {
+      prepared.push({
         item,
         category,
         tags,
         searchText,
         tagSet: new Set<string>(tags)
-      };
-
-      const key = `${(item.name || '').toLowerCase()}|${(item.baseType || '').toLowerCase()}`;
-      const preferredCategory = getPreferredCategoryForBase(item.baseType || '');
-      const existing = dedup.get(key);
-
-      if (!existing) {
-        dedup.set(key, prepared);
-        return;
-      }
-
-      const existingMatchesPreferred = existing.category === preferredCategory;
-      const currentMatchesPreferred = category === preferredCategory;
-
-      if (currentMatchesPreferred && !existingMatchesPreferred) {
-        dedup.set(key, prepared);
-        return;
-      }
-
-      // If both match or neither match the preferred category, keep the first entry.
+      });
     });
   });
   
-  return Array.from(dedup.values());
+  return prepared;
 }
 
 function getPreferredCategoryForBase(baseType: string): 'WeaponUnique' | 'ArmourUnique' | 'OtherUnique' {
@@ -191,17 +194,16 @@ function getPreferredCategoryForBase(baseType: string): 'WeaponUnique' | 'Armour
 /**
  * Extract filter tags from unique item
  */
-function extractTags(item: Poe1UniqueItem, category: string): string[] {
+function extractTags(item: Poe1UniqueItem): string[] {
   const tags = new Set<string>();
   
   // Replica tag
-  if (item.name?.startsWith('Replica ')) {
+  if (item.isReplica || item.name?.startsWith('Replica ')) {
     tags.add('Replica');
   }
   
   // Combine all text for analysis
-  const allMods = [...(item.explicitMods || []), ...(item.mods || [])];
-  const fullText = [item.name, item.baseType, ...allMods].join(' ').toLowerCase();
+  const fullText = [item.name, item.baseType, ...(item.explicitMods || [])].join(' ').toLowerCase();
   
   // Damage types
   if (/\bfire\b|burning|ignite|combustion/.test(fullText)) tags.add('Fire');
@@ -254,19 +256,20 @@ export function render(): void {
   const panel = ensurePanel();
   if (!state.prepared.length) return;
   
-  const categoryLabels: Record<string, string> = {
-    All: 'All Categories',
-    WeaponUnique: 'Weapon',
-    ArmourUnique: 'Armour',
-    OtherUnique: 'Other'
-  };
-  
   // Extract all available tags from prepared uniques
   const allTags = new Set<string>();
   state.prepared.forEach(p => {
     p.tags.forEach(tag => allTags.add(tag));
   });
   const sortedTags = Array.from(allTags).sort((a, b) => a.localeCompare(b));
+  
+  // Build categories dropdown options
+  const categoryOptions = ['<option value="all">All Categories</option>'];
+  if (state.payload) {
+    state.payload.categories.forEach(cat => {
+      categoryOptions.push(`<option value="${cat.id}">${cat.name} (${cat.total || cat.items.length})</option>`);
+    });
+  }
   
   // Build UI
   panel.innerHTML = `
@@ -288,10 +291,7 @@ export function render(): void {
       
       <div style='display:flex; gap:8px; margin-bottom:12px; align-items:center; flex-wrap:wrap;'>
         <select id='poe1UniquesCategory' style='padding:6px 10px; background:var(--bg-tertiary); border:1px solid var(--border-color); color:var(--text-primary); border-radius:4px; font-size:12px; cursor:pointer;'>
-          <option value='All'>All Categories</option>
-          <option value='WeaponUnique'>Weapon Uniques</option>
-          <option value='ArmourUnique'>Armour Uniques</option>
-          <option value='OtherUnique'>Other Uniques</option>
+          ${categoryOptions.join('')}
         </select>
         <div style='font-size:11px; color:var(--text-secondary);'>
           <span id='poe1UniquesCount'>${state.prepared.length} uniques</span>
@@ -308,6 +308,13 @@ export function render(): void {
   const filterChipsContainer = panel.querySelector('#poe1UniquesFilterChips') as HTMLElement | null;
   const container = panel.querySelector('#poe1UniquesContainer') as HTMLElement;
   const countEl = panel.querySelector('#poe1UniquesCount') as HTMLElement;
+  
+  const categoryLabels: Record<string, string> = {
+    All: 'All Categories',
+    WeaponUnique: 'Weapon',
+    ArmourUnique: 'Armour',
+    OtherUnique: 'Other'
+  };
   
   // Get tag color - returns RGB values for opacity control
   const getTagColor = (tag: string): [number, number, number] => {
@@ -454,7 +461,7 @@ export function render(): void {
     };
 
     const filtered = state.prepared.filter((p) => {
-      if (selectedCategory !== 'All' && p.category !== selectedCategory) return false;
+      if (selectedCategoryId !== 'all' && p.category.id !== selectedCategoryId) return false;
       if (query && !p.searchText.includes(query)) return false;
       if (selectedFilters.size > 0) {
         for (const tag of selectedFilters) {
@@ -475,10 +482,11 @@ export function render(): void {
 
     const groups = new Map<string, PreparedUnique[]>();
     filtered.forEach((p) => {
-      if (!groups.has(p.category)) {
-        groups.set(p.category, []);
+      const key = p.category.id;
+      if (!groups.has(key)) {
+        groups.set(key, []);
       }
-      groups.get(p.category)!.push(p);
+      groups.get(key)!.push(p);
     });
 
     const fragment = document.createDocumentFragment();
@@ -487,8 +495,9 @@ export function render(): void {
     type RenderQueueEntry = { grid: HTMLElement; items: PreparedUnique[] };
     const renderQueue: RenderQueueEntry[] = [];
 
-    sortedCategories.forEach((cat) => {
-      const items = groups.get(cat)!;
+    sortedCategories.forEach((catId) => {
+      const items = groups.get(catId)!;
+      const catName = items[0].category.name;
 
       const section = document.createElement('div');
       section.style.marginBottom = '12px';
@@ -497,7 +506,7 @@ export function render(): void {
       header.style.fontWeight = '600';
       header.style.fontSize = '14px';
       header.style.margin = '0 0 8px 0';
-      header.textContent = `${categoryLabelsShort[cat]} (${items.length})`;
+      header.textContent = `${catName} (${items.length})`;
       section.appendChild(header);
 
       const grid = document.createElement('div');
@@ -589,7 +598,7 @@ export function render(): void {
     img.src = TRANSPARENT_PLACEHOLDER;
     img.loading = 'lazy';
     img.decoding = 'async';
-    const imgPath = getImagePath(item);
+    const imgPath = getUniqueImagePath(item);
     if (imgPath) {
       img.setAttribute('data-orig-src', imgPath);
     }
@@ -612,7 +621,7 @@ export function render(): void {
     nameBlock.style.gap = '4px';
     nameBlock.style.minWidth = '0';
     
-    const modLines = (item.explicitMods && item.explicitMods.length > 0) ? item.explicitMods : (item.mods || []);
+    const modLines = item.explicitMods || [];
     
     // Name
     const title = document.createElement('div');
@@ -645,7 +654,7 @@ export function render(): void {
       const MAX_INLINE = 12; // expanded inline threshold
       const initialCount = Math.min(MAX_INLINE, modLines.length);
       const displayMods = modLines.slice(0, initialCount);
-      mods.innerHTML = displayMods.map(m => highlightNumbers(escapeHtml(m))).join('<br>');
+      mods.innerHTML = displayMods.map((m: string) => highlightNumbers(escapeHtml(m))).join('<br>');
       
       if (modLines.length > initialCount) {
         const more = document.createElement('div');
@@ -659,11 +668,11 @@ export function render(): void {
         more.textContent = `+${modLines.length - initialCount} more...`;
         
         const hiddenMods = modLines.slice(initialCount);
-        more.title = hiddenMods.map(m => m.replace(/<[^>]*>/g, '')).join('\n');
+        more.title = hiddenMods.map((m: string) => m.replace(/<[^>]*>/g, '')).join('\n');
         
         more.addEventListener('click', () => {
           // Expand to show all mods inline
-          mods.innerHTML = modLines.map(m => highlightNumbers(escapeHtml(m))).join('<br>');
+          mods.innerHTML = modLines.map((m: string) => highlightNumbers(escapeHtml(m))).join('<br>');
         });
         
         mods.appendChild(more);
@@ -688,12 +697,12 @@ export function render(): void {
   }
   
   // Set initial values
-  categorySelect.value = selectedCategory;
+  categorySelect.value = selectedCategoryId;
   searchInput.value = searchValue;
   
   // Event handlers
   categorySelect.addEventListener('change', () => {
-    selectedCategory = categorySelect.value;
+    selectedCategoryId = categorySelect.value;
     scheduleUpdateList();
   });
   
@@ -722,7 +731,7 @@ export function render(): void {
 }
 
 export async function reload(): Promise<void> {
-  state.groups = null;
+  state.payload = null;
   state.prepared = [];
   await show();
 }

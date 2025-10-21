@@ -272,24 +272,199 @@ export function registerDataIpc(deps: DataIpcDeps) {
 
   // PoE1-specific handlers
 
-  const classifyReplicaCategory = (baseType: string): 'WeaponUnique' | 'ArmourUnique' | 'OtherUnique' => {
-    const lower = (baseType || '').toLowerCase();
-    const weaponKeywords = ['sword', 'axe', 'mace', 'bow', 'wand', 'dagger', 'claw', 'staff', 'sceptre', 'scepter', 'quiver', 'hammer', 'flail', 'spear', 'crossbow'];
-    const armourKeywords = ['helmet', 'helm', 'hood', 'circlet', 'hat', 'body', 'armour', 'armor', 'robe', 'plate', 'mail', 'glove', 'gauntlet', 'mitten', 'boot', 'sandal', 'greave', 'shield', 'buckler', 'tower', 'belt'];
+  type Poe1UniqueCategoryGroup = 'weapon' | 'armour' | 'accessory' | 'jewel' | 'flask' | 'misc';
 
-    if (weaponKeywords.some(keyword => lower.includes(keyword))) return 'WeaponUnique';
-    if (armourKeywords.some(keyword => lower.includes(keyword))) return 'ArmourUnique';
-    return 'OtherUnique';
+  interface Poe1UniqueRequirement {
+    text: string;
+    level?: number;
+    str?: number;
+    dex?: number;
+    int?: number;
+  }
+
+  interface Poe1UniqueItem {
+    id: string;
+    name: string;
+    baseType: string;
+    group: Poe1UniqueCategoryGroup;
+    imageLocal?: string;
+    properties?: string[];
+    requirements?: Poe1UniqueRequirement[];
+    implicitMods?: string[];
+    explicitMods?: string[];
+    enchantMods?: string[];
+    craftedMods?: string[];
+    veiledMods?: string[];
+    fracturedMods?: string[];
+    utilityMods?: string[];
+    grantedEffects?: string[];
+    secondaryMods?: string[];
+    mods?: string[];
+    textBlocks?: string[];
+    notes?: string[];
+    flavourText?: string;
+    isReplica?: boolean;
+    isCorrupted?: boolean;
+    isRelic?: boolean;
+  }
+
+  interface Poe1UniqueCategory {
+    id: string;
+    name: string;
+    group: Poe1UniqueCategoryGroup;
+    total?: number;
+    items: Poe1UniqueItem[];
+  }
+
+  interface Poe1UniqueDataset {
+    slug: string;
+    generatedAt?: string;
+    totalCategories: number;
+    totalItems: number;
+    categories: Poe1UniqueCategory[];
+  }
+
+  const slugifyIdentifier = (value: string): string => {
+    return (value || '')
+      .toLowerCase()
+      .trim()
+      .replace(/['`’]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/-{2,}/g, '-')
+      .replace(/^-|-$/g, '');
   };
 
-  const ensureUniqueBuckets = (container: any) => {
-    if (!container.uniques || typeof container.uniques !== 'object') {
-      container.uniques = {};
+  const ensureStringArray = (value: any): string[] | undefined => {
+    if (!value) return undefined;
+    const arr = Array.isArray(value) ? value : [value];
+    const cleaned = arr
+      .map(entry => (typeof entry === 'string' ? entry : String(entry ?? '')).trim())
+      .filter(Boolean);
+    return cleaned.length ? cleaned : undefined;
+  };
+
+  const normalizeNumber = (value: any): number | undefined => {
+    if (typeof value === 'number' && Number.isFinite(value)) return value;
+    if (typeof value === 'string' && value.trim()) {
+      const parsed = Number.parseInt(value.trim(), 10);
+      if (Number.isFinite(parsed)) return parsed;
     }
-    if (!Array.isArray(container.uniques.WeaponUnique)) container.uniques.WeaponUnique = [];
-    if (!Array.isArray(container.uniques.ArmourUnique)) container.uniques.ArmourUnique = [];
-    if (!Array.isArray(container.uniques.OtherUnique)) container.uniques.OtherUnique = [];
-    return container;
+    return undefined;
+  };
+
+  const normalizeRequirement = (value: any): Poe1UniqueRequirement | null => {
+    if (!value || typeof value !== 'object') return null;
+    const text = typeof value.text === 'string' ? value.text.trim() : '';
+    if (!text) return null;
+    return {
+      text,
+      level: normalizeNumber((value as any).level),
+      str: normalizeNumber((value as any).str),
+      dex: normalizeNumber((value as any).dex),
+      int: normalizeNumber((value as any).int)
+    };
+  };
+
+  const normalizeUniquesDataset = (raw: any): Poe1UniqueDataset => {
+    const dataset: Poe1UniqueDataset = {
+      slug: typeof raw?.slug === 'string' && raw.slug.trim() ? raw.slug.trim() : 'poe1-uniques',
+      generatedAt: typeof raw?.generatedAt === 'string' ? raw.generatedAt : undefined,
+      totalCategories: 0,
+      totalItems: 0,
+      categories: []
+    };
+
+    const allowedGroups: Poe1UniqueCategoryGroup[] = ['weapon', 'armour', 'accessory', 'jewel', 'flask', 'misc'];
+    const categories = Array.isArray(raw?.categories) ? raw.categories : [];
+
+    dataset.categories = categories.map((category: any, categoryIndex: number) => {
+      const name = typeof category?.name === 'string' && category.name.trim() ? category.name.trim() : `Category ${categoryIndex + 1}`;
+      const group = allowedGroups.includes(category?.group) ? category.group : 'misc';
+      const id = typeof category?.id === 'string' && category.id.trim() ? category.id.trim() : slugifyIdentifier(name) || `category-${categoryIndex + 1}`;
+
+      const itemsRaw = Array.isArray(category?.items) ? category.items : [];
+      const items: Poe1UniqueItem[] = itemsRaw.map((item: any, itemIndex: number) => {
+        const itemName = typeof item?.name === 'string' ? item.name.trim() : '';
+        const baseType = typeof item?.baseType === 'string' ? item.baseType.trim() : '';
+        const fallbackId = `${id}-item-${itemIndex + 1}`;
+        const normalizedId = typeof item?.id === 'string' && item.id.trim()
+          ? item.id.trim()
+          : slugifyIdentifier(`${itemName}-${baseType}`) || slugifyIdentifier(itemName) || fallbackId;
+
+        const requirementList = Array.isArray(item?.requirements)
+          ? (item.requirements as any[])
+              .map(normalizeRequirement)
+              .filter((req): req is Poe1UniqueRequirement => Boolean(req))
+          : undefined;
+
+        return {
+          id: normalizedId,
+          name: itemName,
+          baseType,
+          group,
+          imageLocal: typeof item?.imageLocal === 'string' ? item.imageLocal : undefined,
+          properties: ensureStringArray(item?.properties),
+          requirements: requirementList,
+          implicitMods: ensureStringArray(item?.implicitMods),
+          explicitMods: ensureStringArray(item?.explicitMods),
+          enchantMods: ensureStringArray(item?.enchantMods),
+          craftedMods: ensureStringArray(item?.craftedMods),
+          veiledMods: ensureStringArray(item?.veiledMods),
+          fracturedMods: ensureStringArray(item?.fracturedMods),
+          utilityMods: ensureStringArray(item?.utilityMods),
+          grantedEffects: ensureStringArray(item?.grantedEffects),
+          secondaryMods: ensureStringArray(item?.secondaryMods),
+          mods: ensureStringArray(item?.mods),
+          textBlocks: ensureStringArray(item?.textBlocks),
+          notes: ensureStringArray(item?.notes),
+          flavourText: typeof item?.flavourText === 'string' ? item.flavourText.trim() || undefined : undefined,
+          isReplica: item?.isReplica ? true : undefined,
+          isCorrupted: item?.isCorrupted ? true : undefined,
+          isRelic: item?.isRelic ? true : undefined
+        };
+      });
+
+      items.sort((a, b) => a.name.localeCompare(b.name));
+
+      return {
+        id,
+        name,
+        group,
+        total: items.length,
+        items
+      };
+    });
+
+    dataset.totalCategories = dataset.categories.length;
+    dataset.totalItems = dataset.categories.reduce((sum, category) => sum + (category.total ?? 0), 0);
+    return dataset;
+  };
+
+  const classifyReplicaGroup = (baseType: string): Poe1UniqueCategoryGroup => {
+    const lower = (baseType || '').toLowerCase();
+    if (!lower) return 'misc';
+    if (/(sword|axe|mace|bow|wand|dagger|claw|staff|sceptre|scepter|quiver|hammer|flail|spear|crossbow|rod)/.test(lower)) return 'weapon';
+    if (/(helmet|helm|hood|circlet|hat|mask|body|armour|armor|robe|plate|mail|glove|gauntlet|mitt|boot|sandal|greave|shield|buckler|tower|crown|grip|gauntlets|sabatons|bracers)/.test(lower)) return 'armour';
+    if (/(ring|amulet|belt|talisman|trinket|locket|brooch)/.test(lower)) return 'accessory';
+    if (/(flask|tincture|vial)/.test(lower)) return 'flask';
+    if (/(jewel)/.test(lower)) return 'jewel';
+    if (/(idol|charm)/.test(lower)) return 'misc';
+    return 'misc';
+  };
+
+  const findCategoryByBaseType = (categories: Poe1UniqueCategory[], baseType: string): Poe1UniqueCategory | undefined => {
+    if (!baseType) return undefined;
+    const lower = baseType.toLowerCase();
+    for (const category of categories) {
+      if (category.items.some(item => (item.baseType || '').toLowerCase() === lower)) {
+        return category;
+      }
+    }
+    return undefined;
+  };
+
+  const findCategoryByGroup = (categories: Poe1UniqueCategory[], group: Poe1UniqueCategoryGroup): Poe1UniqueCategory | undefined => {
+    return categories.find(category => category.group === group);
   };
 
   const loadPoe1Uniques = createCachedLoader('poe1:uniques', async () => {
@@ -298,20 +473,8 @@ export function registerDataIpc(deps: DataIpcDeps) {
       return { error: uniquesResult.error, filePath: uniquesResult.filePath };
     }
 
-    const uniques = ensureUniqueBuckets(cloneJson(uniquesResult.data ?? { uniques: {} }));
-
-    const replicaResult = await loadJsonSafe<any>('items', 'uniques', 'ReplicaUniques.json');
-    if (replicaResult.ok) {
-      const replicaUniques = replicaResult.data?.uniques?.ReplicaUnique || [];
-      for (const replica of Array.isArray(replicaUniques) ? replicaUniques : []) {
-        const bucket = classifyReplicaCategory(replica?.baseType || '');
-        uniques.uniques[bucket].push(replica);
-      }
-    } else if (replicaResult.error !== 'not_found') {
-      console.warn('[DataIPC] Failed to load ReplicaUniques.json', replicaResult.error);
-    }
-
-    return uniques;
+    const dataset = normalizeUniquesDataset(cloneJson(uniquesResult.data ?? {}));
+    return dataset;
   });
 
   const loadPoe1Essences = createCachedLoader('poe1:essences', async () => {
