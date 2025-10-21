@@ -82,8 +82,10 @@ export class RateLimiter {
         // Calculate new reset time
         const newReset = Math.max(0, reset - elapsedSec);
         
-        // If reset time has passed, the bucket is fully restored
-        const remaining = newReset === 0 ? rule.maxRequests : Math.max(0, rule.maxRequests - used);
+        // Keep last known usage state - DON'T auto-restore budget even if reset passed
+        // We don't know if user made requests elsewhere (browser, etc.)
+        // Only the server can tell us the real current state
+        const remaining = Math.max(0, rule.maxRequests - used);
         
         return {
           remaining,
