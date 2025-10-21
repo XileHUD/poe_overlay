@@ -413,7 +413,7 @@ function renderUtilityControls(panel: HTMLElement): void {
     label.textContent = def.label;
 
     const input = document.createElement('input');
-    input.type = 'text';
+    input.type = 'number';
     input.id = `poe1Utility-${def.key}`;
     input.className = 'poe1-utility-input';
     input.value = state.utilities[def.key].value;
@@ -472,7 +472,7 @@ function renderQualityControls(panel: HTMLElement): void {
     label.textContent = def.label;
 
     const input = document.createElement('input');
-    input.type = 'text';
+    input.type = 'number';
     input.id = `poe1Quality-${def.key}`;
     input.className = 'poe1-utility-input';
     input.value = state.qualityTypes[def.key].value;

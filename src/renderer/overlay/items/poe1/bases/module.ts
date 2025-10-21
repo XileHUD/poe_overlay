@@ -87,7 +87,7 @@ const CATEGORY_SLUG_MAP: Record<string, string[]> = {
   One_Hand_Maces: ['One_Hand_Maces'],
   One_Hand_Swords: ['One_Hand_Swords'],
   Quivers: ['Quivers'],
-  Rings: ['Rings', 'Unset_Ring'],
+  Rings: ['Rings'],
   Sceptres: ['Sceptres'],
   Shields: [
     'Shields_str',

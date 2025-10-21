@@ -150,7 +150,16 @@ export function renderHistoryDetail(idx: number): void {
     for (const prop of properties) {
       const name = (prop?.name || '').toString().toLowerCase();
       if (!name) continue;
-      if (!candidates.some(c => name.includes(c))) continue;
+      // Use exact word matching to avoid false positives (e.g., 'ar' matching 'rarity')
+      // Check if the property name matches any candidate exactly or starts with it followed by a space
+      const matches = candidates.some(c => {
+        const lowerC = c.toLowerCase();
+        return name === lowerC || 
+               name.startsWith(lowerC + ' ') || 
+               name.endsWith(' ' + lowerC) ||
+               name.includes(' ' + lowerC + ' ');
+      });
+      if (!matches) continue;
       const vals: any[] = Array.isArray(prop?.values) ? prop.values : [];
       if (!vals.length) continue;
       const first = vals[0];
@@ -180,6 +189,36 @@ export function renderHistoryDetail(idx: number): void {
       if (val !== undefined && val > 0) {
         const display = val.toLocaleString();
         defenseTags.push(`<span class="meta-tag ${def.cls}" title="${escapeHtml(def.label)}">${escapeHtml(def.label)}: ${escapeHtml(display)}</span>`);
+      }
+    });
+  } catch {}
+  
+  // Waystone and map-specific stats (Monster Pack Size, Waystone Drop Chance, Item Rarity, etc.)
+  try {
+    const mapStats = [
+      { name: 'Monster Pack Size', cls: 'meta-pack-size' },
+      { name: 'Waystone Drop Chance', cls: 'meta-waystone-rarity' },
+      { name: 'Item Rarity', cls: 'meta-item-rarity' },
+      { name: 'Rare Monsters', cls: 'meta-rare-monsters' },
+      { name: 'Magic Monsters', cls: 'meta-magic-monsters' },
+      { name: 'Experience', cls: 'meta-experience' },
+      { name: 'Gold', cls: 'meta-gold' }
+    ];
+    mapStats.forEach(stat => {
+      for (const prop of properties) {
+        const propName = (prop?.name || '').toString();
+        if (propName === stat.name) {
+          const vals: any[] = Array.isArray(prop?.values) ? prop.values : [];
+          if (vals.length) {
+            const first = vals[0];
+            const raw = Array.isArray(first) ? first[0] : first;
+            if (raw) {
+              const displayValue = raw.toString();
+              defenseTags.push(`<span class="meta-tag ${stat.cls}" title="${escapeHtml(stat.name)}">${escapeHtml(stat.name)}: ${escapeHtml(displayValue)}</span>`);
+            }
+          }
+          break;
+        }
       }
     });
   } catch {}

@@ -1594,6 +1594,13 @@ body.crafting-mode #controlPanel { display: none !important; }
 .item-meta-tags .meta-tag.meta-armour { border-color:#8c6b3a; color:#ffe1a8; background:rgba(140,107,58,0.2); }
 .item-meta-tags .meta-tag.meta-evasion { border-color:#3f6aa1; color:#cfe3ff; background:rgba(63,106,161,0.18); }
 .item-meta-tags .meta-tag.meta-energy { border-color:#7b40b3; color:#ead6ff; background:rgba(123,64,179,0.18); }
+.item-meta-tags .meta-tag.meta-pack-size { border-color:#4a9b6f; color:#c9ffde; background:rgba(74,155,111,0.2); }
+.item-meta-tags .meta-tag.meta-waystone-rarity { border-color:#d4af37; color:#fff9d4; background:rgba(212,175,55,0.2); }
+.item-meta-tags .meta-tag.meta-item-rarity { border-color:#d4af37; color:#fff9d4; background:rgba(212,175,55,0.2); }
+.item-meta-tags .meta-tag.meta-rare-monsters { border-color:#e67e22; color:#ffe4d1; background:rgba(230,126,34,0.2); }
+.item-meta-tags .meta-tag.meta-magic-monsters { border-color:#5c9bd1; color:#d6ebff; background:rgba(92,155,209,0.2); }
+.item-meta-tags .meta-tag.meta-experience { border-color:#9b59b6; color:#f3e5ff; background:rgba(155,89,182,0.2); }
+.item-meta-tags .meta-tag.meta-gold { border-color:#f39c12; color:#fff5d9; background:rgba(243,156,18,0.2); }
 .item-meta-stack .sockets-row { margin:0; }
 .item-meta-stack .rune-mods { display:flex; flex-direction:column; gap:4px; }
 
