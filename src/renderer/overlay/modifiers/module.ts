@@ -286,13 +286,16 @@ function renderSection(section: any, domainId?: string){
   const sectionId = `section-${section.domain}-${side}`;
   const arrowId = `arrow-${sectionId}`;
   const mods: any[] = Array.isArray(section.mods) ? section.mods : [];
+  const hasItemMatches = mods.some((mod: any) => Boolean(mod?.__isOnItem));
+  const sectionClasses = ['section-group', `domain-${section.domain}`];
+  if (hasItemMatches) sectionClasses.push('has-my-mod');
   // Prefer an effective precomputed total if provided (post-filter recalculation)
   const totalWeight = typeof section._effectiveTotalWeight === 'number'
     ? section._effectiveTotalWeight
     : mods.reduce((sum: number, mod: any) => sum + (mod.weight || 0), 0);
   const maxIlvl = mods.reduce((max: number, mod: any) => Math.max(max, mod.ilvl || 0), 0);
   return `
-  <div class="section-group domain-${section.domain}">
+  <div class="${sectionClasses.join(' ')}">
     <div class="section-header" ${domainId?`onclick=\"window.OverlayModifiers&&window.OverlayModifiers.toggleDomainFromSection&&window.OverlayModifiers.toggleDomainFromSection('${domainId}', '${arrowId}')\"`:''}>
       <div class="section-title">
         <span class="collapse-arrow" id="${arrowId}">▼</span>
@@ -312,6 +315,17 @@ function renderSection(section: any, domainId?: string){
           
           let displayText = mod.text || mod.text_plain;
           let variantBadge = '';
+          const onItem = Boolean((mod as any).__isOnItem);
+          const matchCanonical = (mod as any).__itemMatchCanonical ? String((mod as any).__itemMatchCanonical) : '';
+          const modClasses = ['mod-item'];
+          if (onItem) modClasses.push('my-mod');
+          const modAttributes: string[] = [
+            `class="${modClasses.join(' ')}"`,
+            `id="mod-${section.domain}-${side}-${modIndex}"`,
+            `onclick="window.OverlayModifiers&&window.OverlayModifiers.toggleTiers&&window.OverlayModifiers.toggleTiers('${section.domain}', '${side}', ${modIndex})"`
+          ];
+          if (onItem) modAttributes.push('data-on-item="true"');
+          if (matchCanonical) modAttributes.push(`data-item-canonical="${escapeHtml(matchCanonical)}"`);
           
           if (isEldritch && hasManyTiers && mod.tiers.length > 0) {
             // Show only first tier's text for Eldritch mods with many variants
@@ -320,7 +334,7 @@ function renderSection(section: any, domainId?: string){
           }
           
           return `
-          <div class="mod-item" id="mod-${section.domain}-${side}-${modIndex}" onclick="window.OverlayModifiers&&window.OverlayModifiers.toggleTiers&&window.OverlayModifiers.toggleTiers('${section.domain}', '${side}', ${modIndex})">
+          <div ${modAttributes.join(' ')}>
             <div class="mod-text" style="cursor:pointer;">
               ${highlightText(formatJoinedModText(sanitizeTierPlainText(displayText)))}
               ${variantBadge}
@@ -329,6 +343,7 @@ function renderSection(section: any, domainId?: string){
             <div class="mod-meta">
               ${isAggregatedCategory() && mod.category ? `<span class="tag category-tag" data-tag="${mod.category}" style="user-select:none; cursor:pointer;">${mod.category.replace(/_/g, ' ').toUpperCase()}</span>` : ''}
               ${(()=>{ const explicit = Array.isArray(mod.tags)? mod.tags: []; const derived = deriveTagsFromMod(mod); const all = Array.from(new Set([...(explicit||[]), ...derived])); return all.map((t:string)=>`<span class="tag" data-tag="${t}" style="user-select:none; cursor:pointer;">${t}</span>`).join(''); })()}
+              ${onItem ? '<span class="mod-badge badge-my-mod" title="Modifier currently on your item">MY MOD</span>' : ''}
               <span class="spacer"></span>
               ${mod.ilvl ? `<span class="mod-badge badge-ilvl">iLvl ${mod.ilvl}</span>` : ''}
               ${renderTierBadge(mod)}
@@ -478,6 +493,12 @@ type WhittlingResult = {
   blockedReason: 'corrupted' | 'sanctified' | 'fractured' | null;
 };
 
+type ItemModCatalog = {
+  total: number;
+  canonicalCounts: Map<string, number>;
+  canonicalSides: Map<string, Array<string | null>>;
+};
+
 function pushToMap<T>(map: Map<string, T[]>, key: string | null | undefined, value: T): void {
   const normalized = key ? key : '';
   if (!normalized) return;
@@ -542,6 +563,151 @@ function canonicalizeDatabaseText(raw: string | null | undefined): string {
 
 function canonicalizeItemText(raw: string | null | undefined): string {
   return canonicalizeBaseText(raw, false);
+}
+
+function canonicalizeClipboardValue(value: any): string {
+  if (value == null) return '';
+  const normalized = normalizeSearchText(String(value));
+  if (!normalized) return '';
+  return canonicalizeItemText(normalized);
+}
+
+function canonicalizeDatabaseValue(value: any): string {
+  if (value == null) return '';
+  const normalized = normalizeSearchText(String(value));
+  if (!normalized) return '';
+  return canonicalizeDatabaseText(normalized);
+}
+
+function buildItemModCatalog(lines: string[] | undefined): ItemModCatalog {
+  const entries = parseItemModifiers(lines);
+  const canonicalCounts = new Map<string, number>();
+  const canonicalSides = new Map<string, Array<string | null>>();
+
+  for (const entry of entries) {
+    const canonical = canonicalizeClipboardValue(entry?.value);
+    if (!canonical) continue;
+    const count = canonicalCounts.get(canonical) ?? 0;
+    canonicalCounts.set(canonical, count + 1);
+    const bucket = canonicalSides.get(canonical);
+    const side = entry?.side ? String(entry.side).toLowerCase() : null;
+    if (bucket) bucket.push(side);
+    else canonicalSides.set(canonical, [side]);
+  }
+
+  return {
+    total: entries.length,
+    canonicalCounts,
+    canonicalSides
+  };
+}
+
+function collectModCanonicalCandidates(mod: any): string[] {
+  const candidates = new Set<string>();
+  const push = (value: any) => {
+    const canonical = canonicalizeDatabaseValue(value);
+    if (canonical) candidates.add(canonical);
+  };
+
+  push(mod?.text_plain ?? mod?.text);
+  push(mod?.text);
+  push(mod?.text_html);
+
+  if (Array.isArray(mod?.tiers)) {
+    mod.tiers.forEach((tier: any) => {
+      push(tier?.text_plain ?? tier?.text);
+      push(tier?.text);
+      push(tier?.text_html);
+    });
+  }
+
+  return Array.from(candidates);
+}
+
+function resolveItemMatch(
+  candidates: string[],
+  sectionSide: string | null,
+  catalog: ItemModCatalog | null | undefined,
+  usage: Map<string, number>
+): string | null {
+  if (!catalog || catalog.total === 0 || !candidates.length) {
+    return null;
+  }
+
+  const normalizedSide = sectionSide ? sectionSide.toLowerCase() : null;
+  let fallback: string | null = null;
+
+  for (const candidate of candidates) {
+    if (!candidate) continue;
+    const total = catalog.canonicalCounts.get(candidate);
+    if (!total) continue;
+    const consumed = usage.get(candidate) ?? 0;
+    if (consumed >= total) continue;
+
+    const sides = catalog.canonicalSides.get(candidate) || [];
+    const hasSideMatch = sides.length === 0 || sides.some((side) => {
+      if (!side) return true;
+      if (!normalizedSide) return true;
+      return side === normalizedSide;
+    });
+
+    if (hasSideMatch) {
+      usage.set(candidate, consumed + 1);
+      return candidate;
+    }
+
+    if (fallback === null) {
+      fallback = candidate;
+    }
+  }
+
+  if (fallback) {
+    const total = catalog.canonicalCounts.get(fallback) ?? 0;
+    const consumed = usage.get(fallback) ?? 0;
+    if (consumed < total) {
+      usage.set(fallback, consumed + 1);
+      return fallback;
+    }
+  }
+
+  return null;
+}
+
+function applyItemMatchesToSections(sections: any[] | undefined, catalog: ItemModCatalog | null): number {
+  let matchCount = 0;
+  if (!Array.isArray(sections)) {
+    return matchCount;
+  }
+
+  const usage = new Map<string, number>();
+
+  sections.forEach(section => {
+    if (!section || !Array.isArray(section.mods)) return;
+    const side = typeof section.side === 'string'
+      ? section.side.toLowerCase()
+      : (typeof section.type === 'string' ? section.type.toLowerCase() : null);
+
+    section.mods.forEach((mod: any) => {
+      if (!mod) return;
+
+      if (Object.prototype.hasOwnProperty.call(mod, '__isOnItem')) delete mod.__isOnItem;
+      if (Object.prototype.hasOwnProperty.call(mod, '__itemMatchCanonical')) delete mod.__itemMatchCanonical;
+
+      if (!catalog || catalog.total === 0) return;
+
+      const candidates = collectModCanonicalCandidates(mod);
+      if (!candidates.length) return;
+
+      const match = resolveItemMatch(candidates, side, catalog, usage);
+      if (!match) return;
+
+      mod.__isOnItem = true;
+      mod.__itemMatchCanonical = match;
+      matchCount += 1;
+    });
+  });
+
+  return matchCount;
 }
 
 function formatWhittlingDisplay(value: string): string {
@@ -1264,6 +1430,13 @@ export function renderFilteredContent(data: any){
   const ilvlMin = Number((document.getElementById('ilvl-min') as HTMLInputElement | null)?.value || 0) || 0;
   const ilvlMaxRaw = (document.getElementById('ilvl-max') as HTMLInputElement | null)?.value || '';
   const ilvlMax = ilvlMaxRaw === '' ? null : (Number(ilvlMaxRaw)||0);
+  const clipboardLines = Array.isArray((data as any)?.item?.modifiers)
+    ? ((data as any).item?.modifiers as string[]).slice()
+    : [];
+  const itemCatalog = buildItemModCatalog(clipboardLines);
+  const catalogForMatching = itemCatalog.total > 0 ? itemCatalog : null;
+  const baseSections = Array.isArray(data?.modifiers) ? data.modifiers : [];
+  const totalItemMatches = applyItemMatchesToSections(baseSections, catalogForMatching);
   
   // Collect filter tags by mode (include/exclude)
   const includeTags: string[] = [];
@@ -1289,23 +1462,38 @@ export function renderFilteredContent(data: any){
   // Get active domain filter using version-aware config
   const gameVersion = currentOverlayVersionMode;
   const allToggles = getDomainToggles(gameVersion);
+  const myModsButton = document.getElementById('toggleMyMods') as HTMLButtonElement | null;
+  const hasClipboardMods = itemCatalog.total > 0;
+  
+  // Check for My Mods toggle first (in filters section)
+  const myModsFilterActive = myModsButton?.classList.contains('active') ?? false;
   
   let activeToggle: any = null;
-  for (const toggle of allToggles) {
-    const btn = document.getElementById(toggle.id);
-    if (btn && btn.classList.contains('active')) {
-      activeToggle = toggle;
-      break;
+  if (!myModsFilterActive) {
+    for (const toggle of allToggles) {
+      const btn = document.getElementById(toggle.id);
+      if (btn && btn.classList.contains('active')) {
+        activeToggle = toggle;
+        break;
+      }
     }
   }
   
   // Default to 'all' if no button is active
-  const activeDomain = activeToggle ? activeToggle.domain : 'all';
+  let activeDomain: any = myModsFilterActive ? 'myMods' : (activeToggle ? activeToggle.domain : 'all');
+  if (!hasClipboardMods && activeDomain === 'myMods') {
+    activeDomain = 'all';
+    if (myModsButton) {
+      myModsButton.classList.remove('active');
+      myModsButton.style.background = 'var(--bg-tertiary)';
+      myModsButton.style.color = 'var(--text-primary)';
+    }
+  }
   
   console.log('Active domain filter:', activeDomain, '(version:', gameVersion, ')');
   
   const currentAttribute = (document.querySelector('.attribute-btn.active') as HTMLElement | null)?.dataset.attr;
-    const attributeMetaAvailable = Array.isArray(data?.modifiers) && data.modifiers.some((sec:any) =>
+    const attributeMetaAvailable = Array.isArray(baseSections) && baseSections.some((sec:any) =>
       (sec && Array.isArray(sec.attributes)) || (sec && Array.isArray(sec.mods) && sec.mods.some((m:any) => Array.isArray(m.attributes)))
     );
 
@@ -1317,7 +1505,7 @@ export function renderFilteredContent(data: any){
   
   // Debug: log all available domains and their sections
   console.log('=== DOMAIN DEBUG ===');
-  (data.modifiers || []).forEach((section: any, i: number) => {
+  (baseSections || []).forEach((section: any, i: number) => {
     const domain = section.domain || 'undefined';
     const side = section.side || section.type || 'none';
     const modCount = (section.mods || []).length;
@@ -1334,12 +1522,13 @@ export function renderFilteredContent(data: any){
     && activeDomain === 'all'
     && !ilvlFilteringActive; // ensure ilvl filters trigger pipeline
   if (noFilters) {
-    filteredData.modifiers = data.modifiers;
+    filteredData.modifiers = baseSections;
   } else {
-    filteredData.modifiers = data.modifiers
+    filteredData.modifiers = baseSections
       .filter((section:any) => {
         // Filter by domain if a specific domain is selected
         if (activeDomain === 'all') return true;
+        if (myModsFilterActive) return true;
         
         const sectionDomain = String(section.domain || '').toLowerCase();
         
@@ -1447,6 +1636,9 @@ export function renderFilteredContent(data: any){
           
           if (!(matchesSearch && matchesTags && matchesAttribute && matchesIlvl)) return null;
           const copy = { ...mod } as any;
+          const onItem = Boolean(mod.__isOnItem);
+          const matchCanonical = onItem ? String(mod.__itemMatchCanonical || '') : '';
+          if (myModsFilterActive && !onItem) return null;
           if (ilvlFilteringActive || hasSearch) copy.tiers = newTiers; // pruned tiers for ilvl or search
           // Recompute mod weight from remaining tiers if tier weights exist
           if (Array.isArray(copy.tiers) && copy.tiers.length>0) {
@@ -1456,6 +1648,13 @@ export function renderFilteredContent(data: any){
           if (hasSearch) {
             const score = (searchEval.matchedFuzzy * 10) + searchEval.matchedStrict;
             copy.__searchScore = score;
+          }
+          if (onItem) {
+            copy.__isOnItem = true;
+            if (matchCanonical) copy.__itemMatchCanonical = matchCanonical;
+          } else {
+            if (Object.prototype.hasOwnProperty.call(copy, '__isOnItem')) delete copy.__isOnItem;
+            if (Object.prototype.hasOwnProperty.call(copy, '__itemMatchCanonical')) delete copy.__itemMatchCanonical;
           }
           return copy;
         }).filter(Boolean) as any[];
@@ -1501,7 +1700,7 @@ export function renderFilteredContent(data: any){
     if (tag) tagModes.set(tag, mode);
   });
   const tagCounts: Record<string, number> = {};
-  (data.modifiers||[]).forEach((section:any)=>{
+  (baseSections||[]).forEach((section:any)=>{
     (section.mods||[]).forEach((m:any)=>{
       const explicit = Array.isArray(m.tags) ? m.tags : [];
       const derived = deriveTagsFromMod(m);
@@ -1593,9 +1792,10 @@ export function renderFilteredContent(data: any){
   const filtersHtml = `
     <div id="filtersBar" style="display:flex; flex-direction:column; gap:0; margin:0 0 6px 0; padding:0; width:100%;">
       ${attrButtons.length? `<div style="display:flex; gap:6px; align-items:center; justify-content:center; width:100%; margin-bottom:2px;"><span style="font-size:11px; color:var(--text-secondary);">Attribute</span>${attrButtons.map(a=>`<button class="attribute-btn${prevAttr===a?' active':''}" data-attr="${a}" style="padding:2px 8px; font-size:11px; border:1px solid var(--border-color); border-radius:999px; background:${prevAttr===a?'var(--accent-blue)':'var(--bg-tertiary)'}; color:${prevAttr===a?'#fff':'var(--text-primary)'}; cursor:pointer;">${a.toUpperCase()}</button>`).join('')}</div>` : ''}<div style="background:var(--bg-secondary); border-radius:4px; padding:5px 6px; display:flex; gap:6px; width:100%; position:relative; top:-6px;">
-        <div style="display:flex; flex-direction:column; align-items:center; gap:1px; flex-shrink:0;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:2px; flex-shrink:0;">
           <span style="font-size:0.625rem; color:var(--text-secondary); white-space:nowrap;">Filter:</span>
           <button id="tagFilterModeToggle" data-mode="and" style="padding:3px 10px; font-size:0.688rem; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-primary); cursor:pointer; font-weight:600;">AND</button>
+          <button id="toggleMyMods" data-domain="myMods" style="margin-top:4px; padding:2px 8px; font-size:0.688rem; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-primary); cursor:pointer; font-weight:600; min-width:68px;" title="Show only modifiers currently on the copied item">My Mods</button>
         </div>
         <div style="display:flex; flex-wrap:wrap; gap:4px; justify-content:center; align-items:flex-start; flex:1;">
           ${sortedTags.map(t=>{
@@ -1648,6 +1848,29 @@ export function renderFilteredContent(data: any){
           modeToggle.textContent = nextMode.toUpperCase();
           modeToggle.style.background = nextMode === 'or' ? 'var(--accent-blue)' : 'var(--bg-tertiary)';
           modeToggle.style.color = nextMode === 'or' ? '#fff' : 'var(--text-primary)';
+          if ((window as any).originalData) renderFilteredContent((window as any).originalData);
+        });
+      }
+
+      // My Mods toggle
+      const myModsToggle = document.getElementById('toggleMyMods');
+      if (myModsToggle) {
+        myModsToggle.addEventListener('click', () => {
+          if ((myModsToggle as HTMLButtonElement).disabled) return;
+          
+          const isActive = myModsToggle.classList.contains('active');
+          myModsToggle.classList.toggle('active', !isActive);
+          myModsToggle.style.background = !isActive ? 'var(--accent-orange)' : 'var(--bg-tertiary)';
+          myModsToggle.style.color = !isActive ? '#1b1b1b' : 'var(--text-primary)';
+          
+          // Deactivate all domain toggles when My Mods is active
+          const gameVersion = currentOverlayVersionMode;
+          const allToggles = getDomainToggles(gameVersion);
+          allToggles.forEach(toggle => {
+            const btn = document.getElementById(toggle.id);
+            if (btn) btn.classList.remove('active');
+          });
+          
           if ((window as any).originalData) renderFilteredContent((window as any).originalData);
         });
       }
@@ -1707,6 +1930,20 @@ export function renderFilteredContent(data: any){
       el.style.color = isActive ? '#fff' : 'var(--text-primary)';
       el.style.cursor = 'pointer';
     });
+    
+    // Update My Mods button state on every render
+    const myModsBtn = document.getElementById('toggleMyMods') as HTMLButtonElement | null;
+    if (myModsBtn) {
+      const isActive = myModsBtn.classList.contains('active');
+      myModsBtn.disabled = !hasClipboardMods;
+      myModsBtn.style.opacity = hasClipboardMods ? '1' : '0.45';
+      myModsBtn.style.cursor = hasClipboardMods ? 'pointer' : 'not-allowed';
+      if (!hasClipboardMods && isActive) {
+        myModsBtn.classList.remove('active');
+        myModsBtn.style.background = 'var(--bg-tertiary)';
+        myModsBtn.style.color = 'var(--text-primary)';
+      }
+    }
   } catch {}
 
   const domainEntries = Object.entries(groupedByDomain).filter(([, descriptor]) => {

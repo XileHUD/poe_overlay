@@ -725,6 +725,7 @@
             const btn = document.createElement('button');
             btn.id = toggle.id;
             btn.className = 'domain-toggle' + (index === 0 ? ' active' : '');
+            btn.type = 'button';
             // Store domain as JSON if it's an array
             btn.dataset.domain = Array.isArray(toggle.domain) ? JSON.stringify(toggle.domain) : toggle.domain;
             btn.textContent = toggle.label;
@@ -749,6 +750,7 @@
                 const btn = document.createElement('button');
                 btn.id = toggle.id;
                 btn.className = 'domain-toggle overflow-item';
+                btn.type = 'button';
                 btn.dataset.domain = Array.isArray(toggle.domain) ? JSON.stringify(toggle.domain) : toggle.domain;
                 btn.textContent = toggle.label;
                 btn.style.cssText = 'display:block; width:100%; text-align:left; padding:6px 12px; border:none; background:transparent; color:var(--text-primary); cursor:pointer; font-size:12px;';
@@ -781,6 +783,9 @@
             const btn = document.getElementById(id);
             if (btn) {
                 btn.addEventListener('click', () => {
+                    if ((btn instanceof HTMLButtonElement && btn.disabled) || btn.classList.contains('disabled')) {
+                        return;
+                    }
                     // Remove active class from all domain buttons
                     allDomainButtonIds.forEach(otherId => {
                         const otherBtn = document.getElementById(otherId);
@@ -3449,7 +3454,9 @@
                         window.originalData = data;
                         try { window.OverlayModifiers?.mechanicsPostProcess?.(data); } catch {}
                         renderFilteredContent(data);
-                        setHeader('Modifier');
+                        // Set header with category subtitle if available
+                        const categorySubtitle = item.category ? formatCategoryLabel(item.category) : '';
+                        setHeader('Modifiers', categorySubtitle);
                     } catch (e) { console.warn('onItemData handling failed', e); }
                 });
             }
