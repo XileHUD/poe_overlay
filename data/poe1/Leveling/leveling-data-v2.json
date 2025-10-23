@@ -487,6 +487,551 @@
           "zoneId": "2_6_12"
         }
       ]
+    },
+    {
+      "actNumber": 2,
+      "actName": "The Bandit Lords",
+      "recommendedEndLevel": 22,
+      "steps": [
+        {
+          "id": "a2_forest_1",
+          "type": "navigation",
+          "zone": "The Southern Forest",
+          "description": "Follow the edge path to The Forest Encampment",
+          "hint": "High-density zone - great for experience catch-up if underleveled",
+          "layoutTip": "Follow the zone edge to reach town. Kill enemy packs for quick experience gains as this zone has excellent density.",
+          "checkable": true,
+          "zoneId": "1_2_1"
+        },
+        {
+          "id": "a2_town1_1",
+          "type": "navigation",
+          "zone": "The Forest Encampment",
+          "description": "Enter The Old Fields",
+          "checkable": true,
+          "zoneId": "1_2_town"
+        },
+        {
+          "id": "a2_fields_1",
+          "type": "optional",
+          "zone": "The Old Fields",
+          "description": "Place Portal at The Den entrance",
+          "hint": "Only needed if getting 2nd Quicksilver Flask",
+          "optionalNote": "[LEAGUE START] Optional flask/belt quest chain",
+          "layoutTip": "Follow the road to locate The Den entrance. Place portal here if doing the optional Quicksilver Flask quest.",
+          "checkable": true,
+          "zoneId": "1_2_2"
+        },
+        {
+          "id": "a2_fields_2",
+          "type": "navigation",
+          "zone": "The Old Fields",
+          "description": "Follow road to The Crossroads",
+          "hint": "The road leads directly to the zone exit",
+          "layoutTip": "Follow the road - it always leads to The Crossroads.",
+          "checkable": true,
+          "zoneId": "1_2_2"
+        },
+        {
+          "id": "a2_crossroads_1",
+          "type": "waypoint",
+          "zone": "The Crossroads",
+          "description": "Activate Waypoint",
+          "hint": "Static layout - Waypoint is always at center",
+          "layoutTip": "The Crossroads has a static layout. The Waypoint is always located in the center of the zone.",
+          "checkable": true,
+          "zoneId": "1_2_3"
+        },
+        {
+          "id": "a2_crossroads_2",
+          "type": "optional",
+          "zone": "The Crossroads",
+          "description": "Waypoint to Town or take Portal to complete Den quest",
+          "hint": "Kill White Beast, then talk to Yeena for reward",
+          "optionalNote": "[LEAGUE START] Optional flask/belt quest",
+          "checkable": true,
+          "zoneId": "1_2_town"
+        },
+        {
+          "id": "a2_crossroads_3",
+          "type": "navigation",
+          "zone": "The Crossroads",
+          "description": "Head to Chamber of Sins Level 1",
+          "hint": "Exit is roughly northwest from the Waypoint",
+          "checkable": true,
+          "zoneId": "1_2_6_1"
+        },
+        {
+          "id": "a2_chamber1_1",
+          "type": "navigation",
+          "zone": "Chamber of Sins Level 1",
+          "description": "Enter Chamber of Sins Level 2",
+          "hint": "Find the circular inner room - exit is behind Waypoint",
+          "layoutTip": "Find the entrance to the central circular chamber. The Waypoint is always next to the passage leading to Level 2. Head to the passage behind the Waypoint to proceed.",
+          "checkable": true,
+          "zoneId": "1_2_6_1"
+        },
+        {
+          "id": "a2_chamber2_1",
+          "type": "navigation",
+          "zone": "Chamber of Sins Level 2",
+          "description": "Reach the central room",
+          "hint": "Waypoint icon on minimap points toward the exit",
+          "layoutTip": "Navigate to the central room. Use the Waypoint icon on your minimap as a guide - it points toward the exit direction.",
+          "checkable": true,
+          "zoneId": "1_2_6_2"
+        },
+        {
+          "id": "a2_chamber2_2",
+          "type": "trial",
+          "zone": "Chamber of Sins Level 2",
+          "description": "Complete Trial of Ascendancy",
+          "optionalNote": "[LEAGUE START] League-start recommended",
+          "checkable": true,
+          "zoneId": "1_2_6_2"
+        },
+        {
+          "id": "a2_chamber2_3",
+          "type": "kill_boss",
+          "zone": "Chamber of Sins Level 2",
+          "description": "Kill Fidelitas and collect Baleful Gem",
+          "recommendedLevel": 15,
+          "hint": "Located in a long corridor. Aim for Level 14-15",
+          "layoutTip": "Find the long corridor extending from the central room. Fidelitas awaits at the end.",
+          "checkable": true,
+          "zoneId": "1_2_6_2"
+        },
+        {
+          "id": "a2_chamber2_4",
+          "type": "town",
+          "zone": "Chamber of Sins Level 2",
+          "description": "Return to town (Relog)",
+          "checkable": true,
+          "zoneId": "1_2_town"
+        },
+        {
+          "id": "a2_town2_1",
+          "type": "npc_quest",
+          "zone": "The Forest Encampment",
+          "description": "Talk to Greust",
+          "quest": "Intruders in Black",
+          "reward": "Level 16 Skill Gems (Utility & Heralds)",
+          "checkable": true,
+          "zoneId": "1_2_town"
+        },
+        {
+          "id": "a2_town2_2",
+          "type": "waypoint",
+          "zone": "The Forest Encampment",
+          "description": "Waypoint to Riverways",
+          "checkable": true,
+          "zoneId": "1_2_7"
+        },
+        {
+          "id": "a2_riverways_1",
+          "type": "waypoint",
+          "zone": "The Riverways",
+          "description": "Activate Waypoint",
+          "hint": "Follow the road to find it",
+          "layoutTip": "Follow the main road. The Waypoint is located along the path. Note: Broken bridges require movement skills like Flame Dash, Leap Slam, or Lightning Warp to cross.",
+          "checkable": true,
+          "zoneId": "1_2_7"
+        },
+        {
+          "id": "a2_riverways_2",
+          "type": "navigation",
+          "zone": "The Riverways",
+          "description": "Follow road to Western Forest",
+          "hint": "Continue along the main path",
+          "checkable": true,
+          "zoneId": "1_2_7"
+        },
+        {
+          "id": "a2_western_1",
+          "type": "waypoint",
+          "zone": "The Western Forest",
+          "description": "Activate Waypoint",
+          "hint": "Follow the road to locate it",
+          "layoutTip": "Follow the main road to find the Waypoint.",
+          "checkable": true,
+          "zoneId": "1_2_9"
+        },
+        {
+          "id": "a2_western_2",
+          "type": "navigation",
+          "zone": "The Western Forest",
+          "description": "Enter The Weaver's Chambers",
+          "hint": "Opposite side of road from Waypoint",
+          "layoutTip": "The entrance to Weaver's Chambers is on the opposite side of the road from the Waypoint. Alira's camp is on the same side as the entrance, accessible via a small rocky path.",
+          "checkable": true,
+          "zoneId": "1_2_10"
+        },
+        {
+          "id": "a2_weaver_1",
+          "type": "kill_boss",
+          "zone": "The Weaver's Chambers",
+          "description": "Kill The Weaver and collect Maligaro's Spike",
+          "recommendedLevel": 16,
+          "hint": "Head northwest from entrance. If blocked, go north",
+          "layoutTip": "From the entrance, follow the left wall. Head northwest - if you hit a dead end, redirect north.",
+          "checkable": true,
+          "zoneId": "1_2_10"
+        },
+        {
+          "id": "a2_weaver_2",
+          "type": "town",
+          "zone": "The Weaver's Chambers",
+          "description": "Return to town (Relog)",
+          "checkable": true,
+          "zoneId": "1_2_town"
+        },
+        {
+          "id": "a2_town3_1",
+          "type": "npc_quest",
+          "zone": "The Forest Encampment",
+          "description": "Talk to Silk",
+          "quest": "Sharp and Cruel",
+          "reward": "Level 18 Support Gems",
+          "checkable": true,
+          "zoneId": "1_2_town"
+        },
+        {
+          "id": "a2_town3_2",
+          "type": "waypoint",
+          "zone": "The Forest Encampment",
+          "description": "Waypoint to Crossroads",
+          "checkable": true,
+          "zoneId": "1_2_3"
+        },
+        {
+          "id": "a2_crossroads_4",
+          "type": "navigation",
+          "zone": "The Crossroads",
+          "description": "Head to Broken Bridge",
+          "hint": "Exit is roughly north from center",
+          "checkable": true,
+          "zoneId": "1_2_4"
+        },
+        {
+          "id": "a2_bridge_1",
+          "type": "optional",
+          "zone": "The Broken Bridge",
+          "description": "Find hidden chest with 3 Rogue Exiles",
+          "hint": "Follow road to Waypoint, look for ruins nearby",
+          "optionalNote": "Optional reward chest",
+          "layoutTip": "Follow the road to the Waypoint. Search nearby for ruins containing a chest guarded by 3 Rogue Exiles.",
+          "checkable": true,
+          "zoneId": "1_2_4"
+        },
+        {
+          "id": "a2_bridge_2",
+          "type": "kill_boss",
+          "zone": "The Broken Bridge",
+          "description": "Kill Kraityn and collect his Amulet",
+          "hint": "Follow the road to find Kraityn's camp",
+          "layoutTip": "Continue following the main road until you reach Kraityn's bandit camp.",
+          "checkable": true,
+          "zoneId": "1_2_4"
+        },
+        {
+          "id": "a2_bridge_3",
+          "type": "town",
+          "zone": "The Broken Bridge",
+          "description": "Return to town (Relog)",
+          "checkable": true,
+          "zoneId": "1_2_town"
+        },
+        {
+          "id": "a2_town4_1",
+          "type": "waypoint",
+          "zone": "The Forest Encampment",
+          "description": "Waypoint to Riverways",
+          "checkable": true,
+          "zoneId": "1_2_7"
+        },
+        {
+          "id": "a2_riverways_3",
+          "type": "navigation",
+          "zone": "The Riverways",
+          "description": "Find trail between two pillars to Wetlands",
+          "hint": "Look for the distinctive two-pillar entrance",
+          "layoutTip": "Search for a trail marked by two standing pillars. This is the entrance to The Wetlands.",
+          "checkable": true,
+          "zoneId": "1_2_12"
+        },
+        {
+          "id": "a2_wetlands_1",
+          "type": "kill_boss",
+          "zone": "The Wetlands",
+          "description": "Kill Oak and collect his Amulet",
+          "hint": "Look for the arena structure - only large building in zone",
+          "layoutTip": "Oak's camp features a distinctive arena structure - the only large building in the zone. Usually located north or northwest, rarely southeast. Look for zigzag edges on the minimap.",
+          "checkable": true,
+          "zoneId": "1_2_12"
+        },
+        {
+          "id": "a2_wetlands_2",
+          "type": "waypoint",
+          "zone": "The Wetlands",
+          "description": "Activate Waypoint",
+          "checkable": true,
+          "zoneId": "1_2_12"
+        },
+        {
+          "id": "a2_wetlands_3",
+          "type": "waypoint",
+          "zone": "The Wetlands",
+          "description": "Waypoint to Western Forest",
+          "checkable": true,
+          "zoneId": "1_2_9"
+        },
+        {
+          "id": "a2_western_3",
+          "type": "kill_boss",
+          "zone": "The Western Forest",
+          "description": "Kill or Help Alira",
+          "hint": "Head southwest on road to torch, then follow side path",
+          "layoutTip": "Follow the main road to a torch marker. From there, take the small rocky side path to reach Alira's camp. If helping Alira, collect The Apex afterward.",
+          "checkable": true,
+          "zoneId": "1_2_9"
+        },
+        {
+          "id": "a2_western_4",
+          "type": "quest",
+          "zone": "The Western Forest",
+          "description": "Kill Arteri and collect Thaumetic Emblem",
+          "hint": "Continue along main road to Blackguard camp",
+          "layoutTip": "Follow the main road to its end where the Blackguard camp is located.",
+          "checkable": true,
+          "zoneId": "1_2_9"
+        },
+        {
+          "id": "a2_western_5",
+          "type": "quest",
+          "zone": "The Western Forest",
+          "description": "Activate the Seal or Relog to town",
+          "hint": "Unlocks passage to Vaal Ruins",
+          "checkable": true,
+          "zoneId": "1_2_9"
+        },
+        {
+          "id": "a2_town5_1",
+          "type": "npc_quest",
+          "zone": "The Forest Encampment",
+          "description": "Talk to Eramir (if killed all bandits)",
+          "quest": "Deal with the Bandits",
+          "reward": "The Apex (if killed all)",
+          "hint": "Skip if you helped a bandit",
+          "checkable": true,
+          "zoneId": "1_2_town"
+        },
+        {
+          "id": "a2_town5_2",
+          "type": "waypoint",
+          "zone": "The Forest Encampment",
+          "description": "Waypoint to Act 1 Town",
+          "checkable": true,
+          "zoneId": "1_1_town"
+        },
+        {
+          "id": "a2_act1town_1",
+          "type": "passive",
+          "zone": "Lioneye's Watch",
+          "description": "Talk to Bestel for Passive Point",
+          "quest": "The Way Forward",
+          "reward": "⭐ PASSIVE POINT",
+          "checkable": true,
+          "zoneId": "1_1_town"
+        },
+        {
+          "id": "a2_act1town_2",
+          "type": "optional",
+          "zone": "Lioneye's Watch",
+          "description": "Get remaining Act 1 gems from Nessa",
+          "hint": "If not collected earlier",
+          "checkable": true,
+          "zoneId": "1_1_town"
+        },
+        {
+          "id": "a2_act1town_3",
+          "type": "waypoint",
+          "zone": "Lioneye's Watch",
+          "description": "Waypoint to Crossroads",
+          "checkable": true,
+          "zoneId": "1_2_3"
+        },
+        {
+          "id": "a2_crossroads_5",
+          "type": "navigation",
+          "zone": "The Crossroads",
+          "description": "Head to Fellshrine Ruins",
+          "hint": "Exit is roughly east from center",
+          "checkable": true,
+          "zoneId": "1_2_15"
+        },
+        {
+          "id": "a2_fellshrine_1",
+          "type": "navigation",
+          "zone": "The Fellshrine Ruins",
+          "description": "Follow road to The Crypt",
+          "hint": "Kill insect packs to maintain flask and frenzy charges",
+          "layoutTip": "Follow the main road through the zone. Kill small insect groups along the way to keep your Quicksilver Flask and Frenzy Charges active.",
+          "checkable": true,
+          "zoneId": "1_2_15"
+        },
+        {
+          "id": "a2_crypt1_1",
+          "type": "trial",
+          "zone": "The Crypt Level 1",
+          "description": "Complete Trial of Ascendancy",
+          "optionalNote": "[LEAGUE START] League-start recommended",
+          "hint": "Same path leads to both Trial and Level 2",
+          "layoutTip": "Draw a horizontal line through the starting room. If the Waypoint is below, follow the wall opposite the Waypoint. If above, follow the wall behind it. This leads to both the Trial and Crypt Level 2.",
+          "checkable": true,
+          "zoneId": "1_2_5_1"
+        },
+        {
+          "id": "a2_crypt1_2",
+          "type": "navigation",
+          "zone": "The Crypt Level 1",
+          "description": "Enter The Crypt Level 2",
+          "checkable": true,
+          "zoneId": "1_2_5_2"
+        },
+        {
+          "id": "a2_crypt2_1",
+          "type": "quest",
+          "zone": "The Crypt Level 2",
+          "description": "Find altar and collect Golden Hand",
+          "hint": "Search diagonally opposite the entrance",
+          "layoutTip": "The altar with the Golden Hand is typically found diagonally opposite from the entrance.",
+          "checkable": true,
+          "zoneId": "1_2_5_2"
+        },
+        {
+          "id": "a2_crypt2_2",
+          "type": "town",
+          "zone": "The Crypt Level 2",
+          "description": "Return to town (Portal or Relog)",
+          "hint": "Portal recommended - Relog sends to Act 1",
+          "checkable": true,
+          "zoneId": "1_2_town"
+        },
+        {
+          "id": "a2_town6_1",
+          "type": "npc_quest",
+          "zone": "The Forest Encampment",
+          "description": "Talk to Yeena",
+          "quest": "Through Sacred Ground",
+          "reward": "Quest progression",
+          "checkable": true,
+          "zoneId": "1_2_town"
+        },
+        {
+          "id": "a2_town6_2",
+          "type": "waypoint",
+          "zone": "The Forest Encampment",
+          "description": "Waypoint to Wetlands",
+          "checkable": true,
+          "zoneId": "1_2_12"
+        },
+        {
+          "id": "a2_wetlands_4",
+          "type": "quest",
+          "zone": "The Wetlands",
+          "description": "Poison the tree roots and enter Vaal Ruins",
+          "hint": "Use the Thaumetic Emblem on the roots",
+          "checkable": true,
+          "zoneId": "1_2_11"
+        },
+        {
+          "id": "a2_vaal_1",
+          "type": "navigation",
+          "zone": "The Vaal Ruins",
+          "description": "Find and enter The Northern Forest",
+          "hint": "S-shaped or L-shaped zone layout",
+          "layoutTip": "Walk forward until hitting a dead end or zone edge, then turn in the direction the zone continues. The zone is typically S-shaped or L-shaped.",
+          "checkable": true,
+          "zoneId": "1_2_8"
+        },
+        {
+          "id": "a2_northern_1",
+          "type": "navigation",
+          "zone": "The Northern Forest",
+          "description": "Enter The Caverns",
+          "hint": "Rituals offer great experience and guaranteed Omens",
+          "layoutTip": "Follow the waterside eastern edge heading north to find the entrance.",
+          "checkable": true,
+          "zoneId": "1_2_14_2"
+        },
+        {
+          "id": "a2_caverns_1",
+          "type": "waypoint",
+          "zone": "The Caverns",
+          "description": "Activate Waypoint",
+          "checkable": true,
+          "zoneId": "1_2_14_2"
+        },
+        {
+          "id": "a2_caverns_2",
+          "type": "optional",
+          "zone": "The Caverns",
+          "description": "Find hidden crafting recipe",
+          "hint": "Locked door with 2 pillar switches",
+          "optionalNote": "[LEAGUE START] Hidden recipe room",
+          "layoutTip": "Search for a locked door with two small pillar switches nearby. Activate both to open the secret door.",
+          "checkable": true,
+          "zoneId": "1_2_14_2"
+        },
+        {
+          "id": "a2_caverns_3",
+          "type": "navigation",
+          "zone": "The Caverns",
+          "description": "Find entrance to Ancient Pyramid",
+          "hint": "Search the corners of the zone",
+          "layoutTip": "The entrance is typically located in one of the zone's corners.",
+          "checkable": true,
+          "zoneId": "1_2_14_3"
+        },
+        {
+          "id": "a2_pyramid_1",
+          "type": "navigation",
+          "zone": "The Ancient Pyramid",
+          "description": "Navigate to Pyramid Apex",
+          "hint": "1st stairs in random corner, 2nd diagonally opposite",
+          "layoutTip": "Outside the first floor, each staircase to the next level is always diagonally opposite from where you entered. The first stairs are in a random corner.",
+          "checkable": true,
+          "zoneId": "1_2_14_3"
+        },
+        {
+          "id": "a2_apex_1",
+          "type": "kill_boss",
+          "zone": "Pyramid Apex",
+          "description": "Kill Vaal Oversoul (Act 2 Final Boss)",
+          "recommendedLevel": 22,
+          "hint": "Aim for Level 20-22",
+          "checkable": true,
+          "zoneId": "1_2_14_3"
+        },
+        {
+          "id": "a2_apex_2",
+          "type": "optional",
+          "zone": "Pyramid Apex",
+          "description": "Activate crafting bench",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_2_14_3"
+        },
+        {
+          "id": "a2_apex_3",
+          "type": "navigation",
+          "zone": "Pyramid Apex",
+          "description": "Enter The City of Sarn (Act 3)",
+          "hint": "Recommend portal/relog to sell items first",
+          "checkable": true,
+          "zoneId": "1_3_1"
+        }
+      ]
     }
   ],
   "allZones": [

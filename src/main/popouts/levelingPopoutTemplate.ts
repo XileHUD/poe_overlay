@@ -37,7 +37,33 @@ export function buildLevelingPopoutHtml(): string {
   .window.minimal-mode .leveling-group.current{background:rgba(40,50,44,1)!important;}
     .header{padding:10px 14px;background:linear-gradient(135deg,rgba(40,44,52,0.98),rgba(30,34,42,0.98));cursor:default;-webkit-app-region:drag;display:flex;align-items:center;gap:10px;border-bottom:2px solid rgba(254,192,118,0.3);border-radius:10px 10px 0 0;}
     .zone-icon{font-size:18px;line-height:1;text-shadow:0 2px 4px rgba(0,0,0,0.5);}
-    .header-content{flex:1;display:flex;flex-direction:column;gap:2px;}
+    .header-content{flex:1;display:flex;flex-direction:column;gap:6px;}
+    .act-selector-wrapper{position:relative;-webkit-app-region:no-drag;}
+    .act-selector-btn{display:flex;align-items:center;gap:8px;padding:6px 12px;background:linear-gradient(135deg,rgba(60,64,72,0.9),rgba(50,54,62,0.9));border:1px solid rgba(254,192,118,0.4);border-radius:6px;cursor:pointer;font-size:12px;font-weight:700;color:#FEC076;transition:all 0.15s;min-width:180px;box-shadow:0 2px 6px rgba(0,0,0,0.3);}
+    .act-selector-btn:hover{background:linear-gradient(135deg,rgba(70,74,82,1),rgba(60,64,72,1));border-color:rgba(254,192,118,0.6);box-shadow:0 3px 8px rgba(0,0,0,0.4);}
+    .act-selector-btn.open{border-color:rgba(254,192,118,0.8);box-shadow:0 0 12px rgba(254,192,118,0.3);}
+    .act-selector-label{flex:1;display:flex;flex-direction:column;gap:1px;}
+    .act-selector-title{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#FEC076;}
+    .act-selector-name{font-size:10px;color:rgba(255,255,255,0.6);font-weight:500;font-style:italic;}
+    .act-progress-mini{font-size:9px;color:rgba(255,255,255,0.5);font-weight:600;margin-left:auto;}
+    .act-dropdown-arrow{font-size:10px;color:rgba(255,255,255,0.6);transition:transform 0.2s;}
+    .act-selector-btn.open .act-dropdown-arrow{transform:rotate(180deg);}
+    .act-dropdown{position:absolute;top:calc(100% + 4px);left:0;right:0;background:rgba(25,28,35,0.98);border:1px solid rgba(254,192,118,0.4);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.6);max-height:400px;overflow-y:auto;z-index:1000;display:none;}
+    .act-dropdown.open{display:block;animation:dropdownFadeIn 0.15s ease-out;}
+    @keyframes dropdownFadeIn{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
+    .act-dropdown-item{display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;transition:all 0.15s;border-bottom:1px solid rgba(255,255,255,0.05);}
+    .act-dropdown-item:last-child{border-bottom:none;}
+    .act-dropdown-item:hover{background:rgba(74,158,255,0.15);}
+    .act-dropdown-item.active{background:linear-gradient(90deg,rgba(254,192,118,0.2),rgba(254,192,118,0.1));border-left:3px solid rgba(254,192,118,0.8);}
+    .act-dropdown-item.active:hover{background:linear-gradient(90deg,rgba(254,192,118,0.25),rgba(254,192,118,0.15));}
+    .act-dropdown-num{font-size:13px;font-weight:700;color:#FEC076;min-width:50px;}
+    .act-dropdown-info{flex:1;display:flex;flex-direction:column;gap:3px;}
+    .act-dropdown-name{font-size:11px;font-weight:600;color:rgba(255,255,255,0.9);}
+    .act-dropdown-progress{display:flex;align-items:center;gap:6px;}
+    .act-progress-bar{flex:1;height:4px;background:rgba(0,0,0,0.4);border-radius:2px;overflow:hidden;}
+    .act-progress-fill{height:100%;background:linear-gradient(90deg,#4ade80,#22c55e);transition:width 0.3s;}
+    .act-progress-text{font-size:9px;color:rgba(255,255,255,0.6);font-weight:600;min-width:45px;text-align:right;}
+    .act-complete-badge{font-size:10px;color:#4ade80;font-weight:700;}
     .title{font-size:14px;font-weight:700;color:#FEC076;text-shadow:0 1px 2px rgba(0,0,0,0.5);}
     .subtitle{font-size:10px;color:rgba(255,255,255,0.6);font-weight:500;}
     .header-buttons{display:flex;gap:6px;-webkit-app-region:no-drag;}
@@ -125,6 +151,10 @@ export function buildLevelingPopoutHtml(): string {
     .layout-tip-icon:hover{opacity:1;}
     .layout-tip-icon .tooltip{background:rgba(74,158,255,0.15);border-color:rgba(74,158,255,0.6);color:#4a9eff;white-space:normal;max-width:250px;font-weight:500;}
     ::-webkit-scrollbar{width:8px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:rgba(254,192,118,0.3);border-radius:4px;}::-webkit-scrollbar-thumb:hover{background:rgba(254,192,118,0.5);}
+    .act-dropdown::-webkit-scrollbar{width:6px;}
+    .act-dropdown::-webkit-scrollbar-track{background:rgba(0,0,0,0.2);border-radius:3px;}
+    .act-dropdown::-webkit-scrollbar-thumb{background:rgba(254,192,118,0.4);border-radius:3px;}
+    .act-dropdown::-webkit-scrollbar-thumb:hover{background:rgba(254,192,118,0.6);}
   </style>
 </head>
 <body>
@@ -132,14 +162,26 @@ export function buildLevelingPopoutHtml(): string {
   <div class='header'>
     <span class='zone-icon'>⚡</span>
     <div class='header-content'>
-      <div class='title' id='headerTitle'>Act 1 - The Awakening</div>
+      <div class='act-selector-wrapper' id='actSelectorWrapper'>
+        <div class='act-selector-btn' id='actSelectorBtn'>
+          <div class='act-selector-label'>
+            <div class='act-selector-title'>
+              <span id='actSelectorText'>Act 1</span>
+              <span class='act-progress-mini' id='actProgressMini'>0/0</span>
+            </div>
+            <div class='act-selector-name' id='actSelectorName'>The Awakening</div>
+          </div>
+          <span class='act-dropdown-arrow'>▼</span>
+        </div>
+        <div class='act-dropdown' id='actDropdown'>
+          <!-- Dropdown items will be dynamically inserted here -->
+        </div>
+      </div>
       <div class='subtitle' id='headerSubtitle'>Loading...</div>
     </div>
     <div class='header-buttons'>
       <button class='header-btn' id='minimalBtn' title='Ultra minimal view'>◧</button>
       <button class='header-btn' id='settingsBtn' title='Settings'>⚙️</button>
-      <button class='header-btn' id='backBtn' title='Show completed' style='display:none;'>◀</button>
-      <button class='header-btn' id='layoutBtn' title='Toggle layout'>⇄</button>
       <div class='close' onclick='window.close()'>×</div>
     </div>
   </div>
@@ -176,6 +218,10 @@ export function buildLevelingPopoutHtml(): string {
     <div class='setting-row'>
       <span class='setting-label'>Group by Zone</span>
       <input type='checkbox' class='setting-checkbox' id='groupByZone' checked />
+    </div>
+    <div class='setting-row'>
+      <span class='setting-label'>Wide Layout Mode</span>
+      <input type='checkbox' class='setting-checkbox' id='wideLayoutToggle' />
     </div>
     <div class='setting-row'>
       <span class='setting-label'>Auto-detect Zone Changes</span>
@@ -235,6 +281,7 @@ let state = {
   visibleSteps: 99,
   completedSteps: new Set(),
   levelingData: null,
+  currentActIndex: 0, // Currently selected act (0-based index)
   timer: {
     isRunning: false,
     startTime: 0,
@@ -301,14 +348,108 @@ function groupStepsByZone(steps) {
   return grouped;
 }
 
+function saveState() {
+  ipcRenderer.invoke('save-current-act-index', state.currentActIndex);
+}
+
+function renderActSwitcher() {
+  if (!state.levelingData) return;
+  
+  const actSelectorBtn = document.getElementById('actSelectorBtn');
+  const actSelectorText = document.getElementById('actSelectorText');
+  const actSelectorName = document.getElementById('actSelectorName');
+  const actProgressMini = document.getElementById('actProgressMini');
+  const actDropdown = document.getElementById('actDropdown');
+  const actSelectorWrapper = document.getElementById('actSelectorWrapper');
+  
+  if (!actSelectorBtn || !actSelectorText || !actSelectorName || !actProgressMini || !actDropdown) return;
+  
+  const acts = state.levelingData.acts;
+  const currentAct = acts[state.currentActIndex];
+  
+  // Update button to show current act
+  if (currentAct) {
+    const actSteps = currentAct.steps;
+    const completedInAct = actSteps.filter(s => state.completedSteps.has(s.id)).length;
+    const totalInAct = actSteps.length;
+    
+    actSelectorText.textContent = 'Act ' + currentAct.actNumber;
+    actSelectorName.textContent = currentAct.actName;
+    actProgressMini.textContent = completedInAct + '/' + totalInAct;
+  }
+  
+  // Build dropdown items
+  const dropdownItems = acts.map((act, index) => {
+    const actSteps = act.steps;
+    const completedInAct = actSteps.filter(s => state.completedSteps.has(s.id)).length;
+    const totalInAct = actSteps.length;
+    const progressPct = totalInAct > 0 ? Math.round((completedInAct / totalInAct) * 100) : 0;
+    const isComplete = completedInAct === totalInAct && totalInAct > 0;
+    const isActive = index === state.currentActIndex;
+    
+    const classes = ['act-dropdown-item'];
+    if (isActive) classes.push('active');
+    
+    return \`<div class="\${classes.join(' ')}" data-act-index="\${index}">
+      <div class="act-dropdown-num">Act \${act.actNumber}</div>
+      <div class="act-dropdown-info">
+        <div class="act-dropdown-name">\${escapeHtml(act.actName)}</div>
+        <div class="act-dropdown-progress">
+          <div class="act-progress-bar">
+            <div class="act-progress-fill" style="width:\${progressPct}%"></div>
+          </div>
+          <div class="act-progress-text">\${completedInAct}/\${totalInAct}</div>
+        </div>
+      </div>
+      \${isComplete ? '<div class="act-complete-badge">✓ Complete</div>' : ''}
+    </div>\`;
+  }).join('');
+  
+  actDropdown.innerHTML = dropdownItems;
+  
+  // Toggle dropdown on button click
+  actSelectorBtn.onclick = (e) => {
+    e.stopPropagation();
+    const isOpen = actDropdown.classList.contains('open');
+    if (isOpen) {
+      actDropdown.classList.remove('open');
+      actSelectorBtn.classList.remove('open');
+    } else {
+      actDropdown.classList.add('open');
+      actSelectorBtn.classList.add('open');
+    }
+  };
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (actSelectorWrapper && !actSelectorWrapper.contains(e.target)) {
+      actDropdown.classList.remove('open');
+      actSelectorBtn.classList.remove('open');
+    }
+  });
+  
+  // Add click handlers to dropdown items
+  actDropdown.querySelectorAll('.act-dropdown-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const actIndex = parseInt(item.getAttribute('data-act-index'), 10);
+      if (!isNaN(actIndex) && actIndex !== state.currentActIndex) {
+        state.currentActIndex = actIndex;
+        state.timer.currentAct = actIndex + 1;
+        saveState();
+        actDropdown.classList.remove('open');
+        actSelectorBtn.classList.remove('open');
+        render();
+      }
+    });
+  });
+}
+
 function render() {
   if (!state.levelingData) return;
   
   const list = document.getElementById('stepsList');
-  const backBtn = document.getElementById('backBtn');
-  const layoutBtn = document.getElementById('layoutBtn');
   const minimalBtn = document.getElementById('minimalBtn');
-  const headerTitle = document.getElementById('headerTitle');
   const headerSubtitle = document.getElementById('headerSubtitle');
   const progressFill = document.getElementById('progressFill');
   const progressText = document.getElementById('progressText');
@@ -338,10 +479,14 @@ function render() {
   
   // Apply layout mode
   list.className = 'list ' + (state.mode === 'wide' ? 'wide' : '');
-  layoutBtn.textContent = state.mode === 'wide' ? '⇅' : '⇄';
   
-  // Get all steps
-  const act = state.levelingData.acts[0];
+  // Render act switcher
+  renderActSwitcher();
+  
+  // Get current act
+  const act = state.levelingData.acts[state.currentActIndex];
+  if (!act) return;
+  
   let allSteps = act.steps;
   
   // Filter optional
@@ -372,19 +517,9 @@ function render() {
   // Update header
   if (visible.length > 0) {
     const currentZone = visible[0].zone;
-    headerTitle.textContent = currentZone; // Zone already has ⚡ icon
-    headerSubtitle.textContent = 'Act 1 - The Awakening • '+completedCount+'/'+totalSteps+' completed';
+    headerSubtitle.textContent = currentZone + ' • ' + completedCount + '/' + totalSteps + ' completed';
   } else {
-    headerTitle.textContent = 'Act 1 Complete!';
-    headerSubtitle.textContent = '🎉 Well done!';
-  }
-  
-  // Show back button
-  backBtn.style.display = (grouped.length > visible.length) ? 'flex' : 'none';
-  if (state.showCompleted) {
-    backBtn.classList.add('active');
-  } else {
-    backBtn.classList.remove('active');
+    headerSubtitle.textContent = act.actName + ' Complete! 🎉 (' + completedCount + '/' + totalSteps + ')';
   }
   
   // Render - keep minimal controls at the beginning
@@ -397,7 +532,9 @@ function render() {
     if (isMultiStep) {
       const groupOpacity = isCurrent ? 1 : Math.max(0.5, 1 - (groupIdx * 0.15));
       const currentClass = isCurrent ? ' current' : '';
-  return '<div class="leveling-group'+currentClass+'" style="opacity:'+groupOpacity+';"><div class="zone-header" data-zone="'+escapeHtml(group.zone)+'"><input type="checkbox" class="zone-checkbox" data-action="toggle-zone" data-zone="'+escapeHtml(group.zone)+'" '+(group.allChecked?'checked':'')+' /><div class="zone-name">📍 '+escapeHtml(group.zone)+' ('+group.steps.length+' tasks)</div><button class="skip-to-btn" data-action="skip-to" data-zone-index="'+groupIdx+'" title="Skip to this zone (auto-complete all previous steps)">⏭️</button></div><div class="task-list">'+group.steps.map(step => {
+      // Store the first step ID of this zone for skip-to functionality
+      const firstStepId = group.steps[0]?.id || '';
+  return '<div class="leveling-group'+currentClass+'" style="opacity:'+groupOpacity+';"><div class="zone-header" data-zone="'+escapeHtml(group.zone)+'"><input type="checkbox" class="zone-checkbox" data-action="toggle-zone" data-zone="'+escapeHtml(group.zone)+'" '+(group.allChecked?'checked':'')+' /><div class="zone-name">📍 '+escapeHtml(group.zone)+' ('+group.steps.length+' tasks)</div><button class="skip-to-btn" data-action="skip-to" data-first-step-id="'+firstStepId+'" title="Skip to this zone (auto-complete all previous steps)">⏭️</button></div><div class="task-list">'+group.steps.map(step => {
         const checked = state.completedSteps.has(step.id);
     const stepType = STEP_TYPES[step.type] || STEP_TYPES.navigation;
     const cleanDesc = cleanDescription(step.description);
@@ -474,16 +611,31 @@ function render() {
   document.querySelectorAll('[data-action="skip-to"]').forEach(el => {
     el.addEventListener('click', (e) => {
       e.stopPropagation(); // Prevent triggering zone header click
-      const zoneIndex = parseInt(el.getAttribute('data-zone-index') || '0', 10);
+      const firstStepId = el.getAttribute('data-first-step-id');
       
-      // Complete all steps in all zones BEFORE this zone
-      for (let i = 0; i < zoneIndex; i++) {
-        grouped[i].steps.forEach(step => {
-          state.completedSteps.add(step.id);
-        });
+      if (!firstStepId) {
+        console.warn('[Skip To] No first step ID found');
+        return;
       }
       
-      console.log('[Skip To] Auto-completed all steps up to zone index ' + zoneIndex);
+      // Find the index of this step in allSteps
+      const targetIndex = allSteps.findIndex(s => s.id === firstStepId);
+      
+      if (targetIndex === -1) {
+        console.warn('[Skip To] Target step not found:', firstStepId);
+        return;
+      }
+      
+      // Complete all steps BEFORE the target step
+      let completedCount = 0;
+      for (let i = 0; i < targetIndex; i++) {
+        if (!state.completedSteps.has(allSteps[i].id)) {
+          state.completedSteps.add(allSteps[i].id);
+          completedCount++;
+        }
+      }
+      
+      console.log('[Skip To] Auto-completed ' + completedCount + ' steps before step: ' + firstStepId);
       ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
       render();
     });
@@ -510,6 +662,11 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
     state.completedSteps = new Set(result.progress);
     console.log('Loaded saved progress:', result.progress.length, 'steps completed');
   }
+  // Load saved act index
+  if (result.currentActIndex !== undefined && result.currentActIndex !== null) {
+    state.currentActIndex = result.currentActIndex;
+    state.timer.currentAct = result.currentActIndex + 1;
+  }
   // Initialize slider values to match state
   document.getElementById('fontSizeSlider').value = state.fontSize;
   document.getElementById('fontSizeValue').textContent = state.fontSize + 'px';
@@ -517,6 +674,7 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
   document.getElementById('opacityValue').textContent = state.opacity + '%';
   document.getElementById('visibleStepsSlider').value = state.visibleSteps;
   document.getElementById('visibleStepsValue').textContent = state.visibleSteps >= 99 ? 'All' : state.visibleSteps.toString();
+  document.getElementById('wideLayoutToggle').checked = state.mode === 'wide';
   render();
 }).catch(err => {
   console.error('Failed to load:', err);
@@ -534,25 +692,6 @@ document.getElementById('settingsBtn').addEventListener('click', () => {
     panel.classList.add('visible');
     btn.classList.add('active');
   }
-});
-
-document.getElementById('backBtn').addEventListener('click', () => {
-  state.showCompleted = !state.showCompleted;
-  render();
-});
-
-document.getElementById('layoutBtn').addEventListener('click', () => {
-  state.mode = state.mode === 'tall' ? 'wide' : 'tall';
-  ipcRenderer.send('leveling-set-layout', state.mode);
-  
-  // Request preset window size
-  if (state.mode === 'wide') {
-    ipcRenderer.send('leveling-resize-preset', { width: 1200, height: 400 });
-  } else {
-    ipcRenderer.send('leveling-resize-preset', { width: 400, height: 800 });
-  }
-  
-  render();
 });
 
 document.getElementById('minimalBtn').addEventListener('click', () => {
@@ -591,6 +730,20 @@ document.getElementById('showOptional').addEventListener('change', (e) => {
 
 document.getElementById('groupByZone').addEventListener('change', (e) => {
   state.groupByZone = e.target.checked;
+  render();
+});
+
+document.getElementById('wideLayoutToggle').addEventListener('change', (e) => {
+  state.mode = e.target.checked ? 'wide' : 'tall';
+  ipcRenderer.send('leveling-set-layout', state.mode);
+  
+  // Request preset window size
+  if (state.mode === 'wide') {
+    ipcRenderer.send('leveling-resize-preset', { width: 1200, height: 400 });
+  } else {
+    ipcRenderer.send('leveling-resize-preset', { width: 400, height: 800 });
+  }
+  
   render();
 });
 
@@ -717,7 +870,8 @@ document.getElementById('timerReset').addEventListener('click', resetTimer);
 // Prev/Next button handlers
 function handlePrevBtn() {
   if (!state.levelingData) return;
-  const act = state.levelingData.acts[0];
+  const act = state.levelingData.acts[state.currentActIndex];
+  if (!act) return;
   let allSteps = act.steps;
   if (!state.showOptional) {
     allSteps = allSteps.filter(s => s.type !== 'optional');
@@ -749,7 +903,8 @@ function handlePrevBtn() {
 
 function handleNextBtn() {
   if (!state.levelingData) return;
-  const act = state.levelingData.acts[0];
+  const act = state.levelingData.acts[state.currentActIndex];
+  if (!act) return;
   let allSteps = act.steps;
   if (!state.showOptional) {
     allSteps = allSteps.filter(s => s.type !== 'optional');
@@ -778,7 +933,8 @@ ipcRenderer.on('zone-entered', (event, zoneName) => {
   
   console.log('Zone entered from Client.txt:', zoneName);
   
-  const act = state.levelingData.acts[0];
+  const act = state.levelingData.acts[state.currentActIndex];
+  if (!act) return;
   const allSteps = act.steps;
   
   // Find the first step in the zone we just entered

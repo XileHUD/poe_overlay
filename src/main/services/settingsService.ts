@@ -19,6 +19,7 @@ export interface UserSettings {
     size?: { width: number; height: number };
     wideMode?: boolean;
     progress?: string[]; // Array of completed step IDs
+    currentActIndex?: number; // Currently selected act (0-based index)
   };
   hotkey?: {
     key: string; // e.g., "Q", "E", "1", "F1", etc.

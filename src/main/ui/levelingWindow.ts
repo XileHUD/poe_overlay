@@ -241,9 +241,11 @@ export class LevelingWindow {
   private registerIpcHandlers(): void {
     // Provide leveling data to renderer
     ipcMain.handle('get-leveling-data', async () => {
+      const saved = this.settingsService.get('levelingWindow');
       return {
         data: this.levelingData,
-        progress: Array.from(this.completedSteps)
+        progress: Array.from(this.completedSteps),
+        currentActIndex: saved?.currentActIndex ?? 0
       };
     });
 
@@ -251,6 +253,15 @@ export class LevelingWindow {
     ipcMain.handle('save-leveling-progress', async (event, stepIds: string[]) => {
       this.completedSteps = new Set(stepIds);
       this.saveProgress();
+      return true;
+    });
+
+    // Save current act index
+    ipcMain.handle('save-current-act-index', async (event, actIndex: number) => {
+      this.settingsService.update('levelingWindow', (c) => ({
+        ...c,
+        currentActIndex: actIndex
+      }));
       return true;
     });
 
