@@ -1119,7 +1119,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 subcategories: {
                     regex: false,
                     poe1Regex: false,
-                    poe1Vorici: false
+                    poe1Vorici: false,
+                    poe1Leveling: false
                 }
             },
             merchant: false
@@ -2872,7 +2873,8 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                             subcategories: {
                                 regex: false,
                                 poe1Regex: config.tools?.subcategories?.poe1Regex ?? disabled.tools.subcategories.poe1Regex,
-                                poe1Vorici: config.tools?.subcategories?.poe1Vorici ?? disabled.tools.subcategories.poe1Vorici
+                                poe1Vorici: config.tools?.subcategories?.poe1Vorici ?? disabled.tools.subcategories.poe1Vorici,
+                                poe1Leveling: config.tools?.subcategories?.poe1Leveling ?? disabled.tools.subcategories.poe1Leveling
                             }
                         }
                     };

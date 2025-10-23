@@ -636,6 +636,10 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
               <input type="checkbox" id="feat-tools-poe1-vorici" ${checked(safeConfig.tools.subcategories.poe1Vorici)}/>
               <label for="feat-tools-poe1-vorici">Vorici Calculator</label>
             </div>
+            <div class="feature-sub poe1-only">
+              <input type="checkbox" id="feat-tools-poe1-leveling" ${checked(safeConfig.tools.subcategories.poe1Leveling)}/>
+              <label for="feat-tools-poe1-leveling">Leveling Overlay</label>
+            </div>
           </div>
         </div>
 
@@ -784,6 +788,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       document.getElementById('feat-tools-regex').checked = preset.tools.subcategories.regex;
   document.getElementById('feat-tools-poe1-regex').checked = preset.tools.subcategories.poe1Regex;
     document.getElementById('feat-tools-poe1-vorici').checked = preset.tools.subcategories.poe1Vorici;
+    document.getElementById('feat-tools-poe1-leveling').checked = preset.tools.subcategories.poe1Leveling;
       
       // Update visibility
       GROUP_ORDER.forEach(group => {
@@ -888,7 +893,8 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
           subcategories: {
             regex: document.getElementById('feat-tools-regex').checked,
             poe1Regex: document.getElementById('feat-tools-poe1-regex').checked,
-            poe1Vorici: document.getElementById('feat-tools-poe1-vorici').checked
+            poe1Vorici: document.getElementById('feat-tools-poe1-vorici').checked,
+            poe1Leveling: document.getElementById('feat-tools-poe1-leveling').checked
           }
         },
         merchant: document.getElementById('feat-merchant').checked

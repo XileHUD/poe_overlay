@@ -491,7 +491,8 @@ export class FeatureService {
         subcategories: {
           regex: false,
           poe1Regex: false,
-          poe1Vorici: false
+          poe1Vorici: false,
+          poe1Leveling: false
         }
       };
     }
