@@ -1,0 +1,922 @@
+{
+  "version": "2.0",
+  "dataType": "zone_lookup",
+  "description": "Zone registry for POE1 leveling guide auto-detection system",
+  "lastUpdated": "2025-10-23",
+  "gameVersion": "POE1",
+  "zonesByAct": [
+    {
+      "actId": 1,
+      "actTitle": "The Awakening",
+      "locations": [
+        {
+          "zoneKey": "1_1_1",
+          "zoneName": "The Twilight Strand",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_1_town",
+          "zoneName": "Lioneye's Watch",
+          "zoneType": "town"
+        },
+        {
+          "zoneKey": "1_1_2",
+          "zoneName": "The Coast",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_1_2a",
+          "zoneName": "The Tidal Island",
+          "zoneType": "optional"
+        },
+        {
+          "zoneKey": "1_1_3",
+          "zoneName": "The Mud Flats",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_1_3a",
+          "zoneName": "The Fetid Pool",
+          "zoneType": "optional"
+        },
+        {
+          "zoneKey": "1_1_4_1",
+          "zoneName": "The Submerged Passage",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_1_4_0",
+          "zoneName": "The Flooded Depths",
+          "zoneType": "optional"
+        },
+        {
+          "zoneKey": "1_1_5",
+          "zoneName": "The Ledge",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_1_6",
+          "zoneName": "The Climb",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_1_7_1",
+          "zoneName": "The Lower Prison",
+          "alternativeName": "The Prison",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_1_7_2",
+          "zoneName": "The Upper Prison",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_1_8",
+          "zoneName": "Prisoner's Gate",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_1_9",
+          "zoneName": "The Ship Graveyard",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_1_9a",
+          "zoneName": "The Ship Graveyard Cave",
+          "zoneType": "optional"
+        },
+        {
+          "zoneKey": "1_1_11_1",
+          "zoneName": "The Cavern of Wrath",
+          "alternativeName": "Merveil's Caverns",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_1_11_2",
+          "zoneName": "The Cavern of Anger",
+          "zoneType": "story"
+        }
+      ]
+    },
+    {
+      "actId": 2,
+      "actTitle": "The Bandit Lords",
+      "locations": [
+        {
+          "zoneKey": "1_2_1",
+          "zoneName": "The Southern Forest",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_2_town",
+          "zoneName": "The Forest Encampment",
+          "zoneType": "town"
+        },
+        {
+          "zoneKey": "1_2_2",
+          "zoneName": "The Old Fields",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_2_2a",
+          "zoneName": "The Den",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_2_3",
+          "zoneName": "The Crossroads",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_2_4",
+          "zoneName": "The Broken Bridge",
+          "zoneType": "optional"
+        },
+        {
+          "zoneKey": "1_2_6_1",
+          "zoneName": "The Chamber of Sins Level 1",
+          "alternativeName": "The Chamber of Sins",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_2_6_2",
+          "zoneName": "The Chamber of Sins Level 2",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_2_15",
+          "zoneName": "The Fellshrine Ruins",
+          "zoneType": "optional"
+        },
+        {
+          "zoneKey": "1_2_5_1",
+          "zoneName": "The Crypt Level 1",
+          "alternativeName": "The Crypt",
+          "zoneType": "optional"
+        },
+        {
+          "zoneKey": "1_2_5_2",
+          "zoneName": "The Crypt Level 2",
+          "zoneType": "optional"
+        },
+        {
+          "zoneKey": "1_2_7",
+          "zoneName": "The Riverways",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_2_8",
+          "zoneName": "The Northern Forest",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_2_9",
+          "zoneName": "The Western Forest",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_2_10",
+          "zoneName": "The Weaver's Chambers",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_2_11",
+          "zoneName": "The Vaal Ruins",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_2_12",
+          "zoneName": "The Wetlands",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_2_13",
+          "zoneName": "The Dread Thicket",
+          "zoneType": "optional"
+        },
+        {
+          "zoneKey": "1_2_14_2",
+          "zoneName": "The Caverns",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_2_14_3",
+          "zoneName": "The Ancient Pyramid",
+          "zoneType": "story",
+          "hasRecipe": true
+        }
+      ]
+    },
+    {
+      "actId": 3,
+      "actTitle": "The Eternal Nightmare",
+      "locations": [
+        {
+          "zoneKey": "1_3_1",
+          "zoneName": "The City of Sarn",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_3_town",
+          "zoneName": "The Sarn Encampment",
+          "zoneType": "town"
+        },
+        {
+          "zoneKey": "1_3_2",
+          "zoneName": "The Slums",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_3_3_1",
+          "zoneName": "The Crematorium",
+          "zoneType": "optional",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_3_10_1",
+          "zoneName": "The Sewers",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_3_5",
+          "zoneName": "The Marketplace",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_3_6",
+          "zoneName": "The Catacombs",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_3_7",
+          "zoneName": "The Battlefront",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_3_8_1",
+          "zoneName": "The Solaris Temple Level 1",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_3_8_2",
+          "zoneName": "The Solaris Temple Level 2",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_3_9",
+          "zoneName": "The Docks",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_3_13",
+          "zoneName": "The Ebony Barracks",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_3_14_1",
+          "zoneName": "The Lunaris Temple Level 1",
+          "alternativeName": "The Lunaris Temple",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_3_14_2",
+          "zoneName": "The Lunaris Temple Level 2",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_3_15",
+          "zoneName": "The Imperial Gardens",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_3_17_1",
+          "zoneName": "The Library",
+          "zoneType": "optional"
+        },
+        {
+          "zoneKey": "1_3_17_2",
+          "zoneName": "The Archives",
+          "zoneType": "optional",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_3_18_1",
+          "zoneName": "The Sceptre of God",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_3_18_2",
+          "zoneName": "The Upper Sceptre of God",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "Labyrinth_Airlock",
+          "zoneName": "Aspirants' Plaza",
+          "zoneType": "labyrinth"
+        }
+      ]
+    },
+    {
+      "actId": 4,
+      "actTitle": "The Fall of Oriath",
+      "locations": [
+        {
+          "zoneKey": "1_4_1",
+          "zoneName": "The Aqueduct",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_4_town",
+          "zoneName": "Highgate",
+          "zoneType": "town"
+        },
+        {
+          "zoneKey": "1_4_2",
+          "zoneName": "The Dried Lake",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_4_3_1",
+          "zoneName": "The Mines Level 1",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_4_3_2",
+          "zoneName": "The Mines Level 2",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_4_3_3",
+          "zoneName": "The Crystal Veins",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_4_4_1",
+          "zoneName": "Kaom's Dream",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_4_4_3",
+          "zoneName": "Kaom's Stronghold",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_4_5_1",
+          "zoneName": "Daresso's Dream",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_4_5_2",
+          "zoneName": "The Grand Arena",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_4_6_1",
+          "zoneName": "The Belly of the Beast Level 1",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_4_6_2",
+          "zoneName": "The Belly of the Beast Level 2",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_4_6_3",
+          "zoneName": "The Harvest",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_4_7",
+          "zoneName": "The Ascent",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "Labyrinth_Airlock",
+          "zoneName": "Aspirants' Plaza",
+          "zoneType": "labyrinth"
+        }
+      ]
+    },
+    {
+      "actId": 5,
+      "actTitle": "The Fall of Oriath Part 2",
+      "locations": [
+        {
+          "zoneKey": "1_5_1",
+          "zoneName": "The Slave Pens",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_5_town",
+          "zoneName": "Overseer's Tower",
+          "zoneType": "town"
+        },
+        {
+          "zoneKey": "1_5_2",
+          "zoneName": "The Control Blocks",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_5_3",
+          "zoneName": "Oriath Square",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_5_4",
+          "zoneName": "The Templar Courts",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_5_5",
+          "zoneName": "The Chamber of Innocence",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_5_4b",
+          "zoneName": "The Torched Courts",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_5_3b",
+          "zoneName": "The Ruined Square",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "1_5_6",
+          "zoneName": "The Ossuary",
+          "zoneType": "optional",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_5_7",
+          "zoneName": "The Reliquary",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "1_5_8",
+          "zoneName": "The Cathedral Rooftop",
+          "zoneType": "story"
+        }
+      ]
+    },
+    {
+      "actId": 6,
+      "actTitle": "The Brine King",
+      "locations": [
+        {
+          "zoneKey": "2_6_town",
+          "zoneName": "Lioneye's Watch",
+          "zoneType": "town"
+        },
+        {
+          "zoneKey": "2_6_1",
+          "zoneName": "The Twilight Strand",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_6_2",
+          "zoneName": "The Coast",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_6_3",
+          "zoneName": "The Tidal Island",
+          "zoneType": "optional"
+        },
+        {
+          "zoneKey": "2_6_4",
+          "zoneName": "The Mud Flats",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_6_5",
+          "zoneName": "The Karui Fortress",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_6_6",
+          "zoneName": "The Ridge",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_6_7_1",
+          "zoneName": "The Lower Prison",
+          "alternativeName": "The Prison",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_6_7_2",
+          "zoneName": "Shavronne's Tower",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_6_8",
+          "zoneName": "Prisoner's Gate",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_6_9",
+          "zoneName": "The Western Forest",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_6_10",
+          "zoneName": "The Riverways",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_6_11",
+          "zoneName": "The Wetlands",
+          "zoneType": "optional"
+        },
+        {
+          "zoneKey": "2_6_12",
+          "zoneName": "The Southern Forest",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_6_13",
+          "zoneName": "The Cavern of Anger",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_6_14",
+          "zoneName": "The Beacon",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_6_15",
+          "zoneName": "The Brine King's Reef",
+          "zoneType": "story"
+        }
+      ]
+    },
+    {
+      "actId": 7,
+      "actTitle": "The Arakaali",
+      "locations": [
+        {
+          "zoneKey": "2_7_town",
+          "zoneName": "The Bridge Encampment",
+          "zoneType": "town"
+        },
+        {
+          "zoneKey": "2_7_1",
+          "zoneName": "The Broken Bridge",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_7_2",
+          "zoneName": "The Crossroads",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_7_3",
+          "zoneName": "The Fellshrine Ruins",
+          "zoneType": "optional"
+        },
+        {
+          "zoneKey": "2_7_4",
+          "zoneName": "The Crypt",
+          "zoneType": "optional",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_7_5_1",
+          "zoneName": "The Chamber of Sins Level 1",
+          "alternativeName": "The Chamber of Sins",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_7_5_2",
+          "zoneName": "The Chamber of Sins Level 2",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_7_5_map",
+          "zoneName": "Maligaro's Sanctum",
+          "zoneType": "optional"
+        },
+        {
+          "zoneKey": "2_7_6",
+          "zoneName": "The Den",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_7_7",
+          "zoneName": "The Ashen Fields",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_7_8",
+          "zoneName": "The Northern Forest",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_7_9",
+          "zoneName": "The Dread Thicket",
+          "zoneType": "optional",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_7_10",
+          "zoneName": "The Causeway",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_7_11",
+          "zoneName": "The Vaal City",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_7_12_1",
+          "zoneName": "The Temple of Decay Level 1",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_7_12_2",
+          "zoneName": "The Temple of Decay Level 2",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "Labyrinth_Airlock",
+          "zoneName": "Aspirants' Plaza",
+          "zoneType": "labyrinth"
+        }
+      ]
+    },
+    {
+      "actId": 8,
+      "actTitle": "The Lunaris and Solaris",
+      "locations": [
+        {
+          "zoneKey": "2_8_1",
+          "zoneName": "The Sarn Ramparts",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_8_town",
+          "zoneName": "The Sarn Encampment",
+          "zoneType": "town"
+        },
+        {
+          "zoneKey": "2_8_2_1",
+          "zoneName": "The Toxic Conduits",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_8_2_2",
+          "zoneName": "Doedre's Cesspool",
+          "alternativeName": "The Toxic Conduits",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_8_3",
+          "zoneName": "The Grand Promenade",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_8_5",
+          "zoneName": "The Bath House",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_8_4",
+          "zoneName": "The High Gardens",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_8_6",
+          "zoneName": "The Lunaris Concourse",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_8_7_1_",
+          "zoneName": "The Lunaris Temple Level 1",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_8_7_2",
+          "zoneName": "The Lunaris Temple Level 2",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_8_8",
+          "zoneName": "The Quay",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_8_9",
+          "zoneName": "The Grain Gate",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_8_10",
+          "zoneName": "The Imperial Fields",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_8_11",
+          "zoneName": "The Solaris Concourse",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_8_12_1",
+          "zoneName": "The Solaris Temple Level 1",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_8_12_2",
+          "zoneName": "The Solaris Temple Level 2",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_8_13",
+          "zoneName": "The Harbour Bridge",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_8_14",
+          "zoneName": "The Hidden Underbelly",
+          "zoneType": "story"
+        }
+      ]
+    },
+    {
+      "actId": 9,
+      "actTitle": "The Desolate Land",
+      "locations": [
+        {
+          "zoneKey": "2_9_1",
+          "zoneName": "The Blood Aqueduct",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_9_town",
+          "zoneName": "Highgate",
+          "zoneType": "town"
+        },
+        {
+          "zoneKey": "2_9_2",
+          "zoneName": "The Descent",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_9_3",
+          "zoneName": "The Vastiri Desert",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_9_4",
+          "zoneName": "The Oasis",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_9_5",
+          "zoneName": "The Foothills",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_9_6",
+          "zoneName": "The Boiling Lake",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_9_7",
+          "zoneName": "The Tunnel",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_9_8",
+          "zoneName": "The Quarry",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_9_9",
+          "zoneName": "The Refinery",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_9_10_1",
+          "zoneName": "The Belly of the Beast",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_9_10_2",
+          "zoneName": "The Rotting Core",
+          "zoneType": "story"
+        }
+      ]
+    },
+    {
+      "actId": 10,
+      "actTitle": "The Fall of Oriath Finale",
+      "locations": [
+        {
+          "zoneKey": "2_10_town",
+          "zoneName": "Oriath Docks",
+          "zoneType": "town"
+        },
+        {
+          "zoneKey": "2_10_1",
+          "zoneName": "The Cathedral Rooftop",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_10_2",
+          "zoneName": "The Ravaged Square",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_10_8",
+          "zoneName": "The Reliquary",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_10_7",
+          "zoneName": "The Control Blocks",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_10_9",
+          "zoneName": "The Ossuary",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_10_3",
+          "zoneName": "The Torched Courts",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_10_4",
+          "zoneName": "The Desecrated Chambers",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "2_10_5",
+          "zoneName": "The Canals",
+          "zoneType": "story"
+        },
+        {
+          "zoneKey": "2_10_6",
+          "zoneName": "The Feeding Trough",
+          "zoneType": "story",
+          "hasRecipe": true
+        },
+        {
+          "zoneKey": "Labyrinth_Airlock",
+          "zoneName": "Aspirants' Plaza",
+          "zoneType": "labyrinth"
+        }
+      ]
+    },
+    {
+      "actId": 11,
+      "actTitle": "Epilogue",
+      "locations": [
+        {
+          "zoneKey": "2_11_endgame_town",
+          "zoneName": "Karui Shores",
+          "zoneType": "town",
+          "hasRecipe": true
+        }
+      ]
+    }
+  ]
+}

@@ -1032,751 +1032,704 @@
           "zoneId": "1_3_1"
         }
       ]
-    }
-  ],
-  "allZones": [
-    {
-      "zones": [
-        {
-          "id": "1_1_1",
-          "name": "The Twilight Strand"
-        },
-        {
-          "id": "1_1_town",
-          "name": "Lioneye's Watch"
-        },
-        {
-          "id": "1_1_2",
-          "name": "The Coast"
-        },
-        {
-          "id": "1_1_2a",
-          "name": "The Tidal Island"
-        },
-        {
-          "id": "1_1_3",
-          "name": "The Mud Flats"
-        },
-        {
-          "id": "1_1_3a",
-          "name": "The Fetid Pool"
-        },
-        {
-          "id": "1_1_4_1",
-          "name": "The Submerged Passage"
-        },
-        {
-          "id": "1_1_4_0",
-          "name": "The Flooded Depths"
-        },
-        {
-          "id": "1_1_5",
-          "name": "The Ledge"
-        },
-        {
-          "id": "1_1_6",
-          "name": "The Climb"
-        },
-        {
-          "mapName": "The Prison",
-          "id": "1_1_7_1",
-          "name": "The Lower Prison"
-        },
-        {
-          "id": "1_1_7_2",
-          "name": "The Upper Prison"
-        },
-        {
-          "id": "1_1_8",
-          "name": "Prisoner's Gate"
-        },
-        {
-          "id": "1_1_9",
-          "name": "The Ship Graveyard"
-        },
-        {
-          "id": "1_1_9a",
-          "name": "The Ship Graveyard Cave"
-        },
-        {
-          "mapName": "Merveil's Caverns",
-          "id": "1_1_11_1",
-          "name": "The Cavern of Wrath"
-        },
-        {
-          "id": "1_1_11_2",
-          "name": "The Cavern of Anger"
-        }
-      ],
-      "actNumber": 1
     },
     {
-      "zones": [
+      "actNumber": 3,
+      "actName": "The Eternal Nightmare",
+      "recommendedEndLevel": 33,
+      "steps": [
         {
-          "id": "1_2_1",
-          "name": "The Southern Forest"
+          "id": "a3_sarn_1",
+          "type": "quest",
+          "zone": "The City of Sarn",
+          "description": "Help Clarissa (kill Blackguard members nearby)",
+          "hint": "Clarissa is at a pillar near the first staircase to the Docks area",
+          "layoutTip": "Clear all Blackguard members near Clarissa for her to stand up and become interactable. She's always positioned near a pillar adjacent to the first staircase.",
+          "checkable": true,
+          "zoneId": "1_3_1"
         },
         {
-          "id": "1_2_town",
-          "name": "The Forest Encampment"
+          "id": "a3_sarn_2",
+          "type": "optional",
+          "zone": "The City of Sarn",
+          "description": "Activate Crafting Bench",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_1"
         },
         {
-          "id": "1_2_2",
-          "name": "The Old Fields"
+          "id": "a3_sarn_3",
+          "type": "npc_quest",
+          "zone": "The City of Sarn",
+          "description": "Talk to Clarissa",
+          "checkable": true,
+          "zoneId": "1_3_1"
         },
         {
-          "id": "1_2_2a",
-          "name": "The Den"
+          "id": "a3_sarn_4",
+          "type": "town",
+          "zone": "The City of Sarn",
+          "description": "Follow edge path to The Sarn Encampment",
+          "hint": "Follow the 5 o'clock edge",
+          "checkable": true,
+          "zoneId": "1_3_town"
         },
         {
-          "id": "1_2_3",
-          "name": "The Crossroads"
+          "id": "a3_town1_1",
+          "type": "navigation",
+          "zone": "The Sarn Encampment",
+          "description": "Enter The Slums",
+          "checkable": true,
+          "zoneId": "1_3_2"
         },
         {
-          "id": "1_2_4",
-          "name": "The Broken Bridge"
+          "id": "a3_slums_1",
+          "type": "navigation",
+          "zone": "The Slums",
+          "description": "Find and enter The Crematorium",
+          "hint": "Search diagonally opposite from entrance",
+          "layoutTip": "Move away from the dead-end at zone start. The Crematorium entrance is typically found diagonally opposite from where you entered the Slums.",
+          "checkable": true,
+          "zoneId": "1_3_3_1"
         },
         {
-          "mapName": "The Chamber of Sins",
-          "id": "1_2_6_1",
-          "name": "The Chamber of Sins Level 1"
+          "id": "a3_crematorium_1",
+          "type": "trial",
+          "zone": "The Crematorium",
+          "description": "Complete Trial of Ascendancy",
+          "hint": "Visible in fog while still undiscovered",
+          "optionalNote": "[LEAGUE START] League-start recommended",
+          "checkable": true,
+          "zoneId": "1_3_3_1"
         },
         {
-          "id": "1_2_6_2",
-          "name": "The Chamber of Sins Level 2"
+          "id": "a3_crematorium_2",
+          "type": "kill_boss",
+          "zone": "The Crematorium",
+          "description": "Kill Piety for Tolman's Bracelet",
+          "hint": "Boss location visible in fog",
+          "checkable": true,
+          "zoneId": "1_3_3_1"
         },
         {
-          "id": "1_2_15",
-          "name": "The Fellshrine Ruins"
+          "id": "a3_crematorium_3",
+          "type": "optional",
+          "zone": "The Crematorium",
+          "description": "Activate Crafting Bench",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_3_1"
         },
         {
-          "mapName": "The Crypt",
-          "id": "1_2_5_1",
-          "name": "The Crypt Level 1"
+          "id": "a3_crematorium_4",
+          "type": "town",
+          "zone": "The Crematorium",
+          "description": "Return to town (Relog)",
+          "checkable": true,
+          "zoneId": "1_3_town"
         },
         {
-          "id": "1_2_5_2",
-          "name": "The Crypt Level 2"
+          "id": "a3_town2_1",
+          "type": "npc_quest",
+          "zone": "The Sarn Encampment",
+          "description": "Talk to Maramoa",
+          "quest": "Lost in Love",
+          "reward": "Level 24 Skill Gems (Curses/Auras)",
+          "checkable": true,
+          "zoneId": "1_3_town"
         },
         {
-          "id": "1_2_7",
-          "name": "The Riverways"
+          "id": "a3_town2_2",
+          "type": "npc_quest",
+          "zone": "The Sarn Encampment",
+          "description": "Talk to Clarissa for Sewer Keys",
+          "checkable": true,
+          "zoneId": "1_3_town"
         },
         {
-          "id": "1_2_8",
-          "name": "The Northern Forest"
+          "id": "a3_town2_3",
+          "type": "navigation",
+          "zone": "The Sarn Encampment",
+          "description": "Return to The Slums",
+          "checkable": true,
+          "zoneId": "1_3_2"
         },
         {
-          "id": "1_2_9",
-          "name": "The Western Forest"
+          "id": "a3_slums_2",
+          "type": "quest",
+          "zone": "The Slums",
+          "description": "Find and open Sewer Grating",
+          "checkable": true,
+          "zoneId": "1_3_2"
         },
         {
-          "id": "1_2_10",
-          "name": "The Weaver's Chambers"
+          "id": "a3_slums_3",
+          "type": "navigation",
+          "zone": "The Slums",
+          "description": "Enter The Sewers",
+          "checkable": true,
+          "zoneId": "1_3_10_1"
         },
         {
-          "id": "1_2_11",
-          "name": "The Vaal Ruins"
+          "id": "a3_sewers_1",
+          "type": "waypoint",
+          "zone": "The Sewers",
+          "description": "Activate Waypoint",
+          "checkable": true,
+          "zoneId": "1_3_10_1"
         },
         {
-          "id": "1_2_12",
-          "name": "The Wetlands"
+          "id": "a3_sewers_2",
+          "type": "quest",
+          "zone": "The Sewers",
+          "description": "Collect all 3 Platinum Busts",
+          "hint": "2nd bust location indicates 3rd bust direction",
+          "layoutTip": "After big room with WP: if 2nd bust is found in a large room, the 3rd bust is at 12 o'clock from exit. Otherwise, it's at 2 o'clock. In small room layout after WP, the 3rd bust is south.",
+          "checkable": true,
+          "zoneId": "1_3_10_1"
         },
         {
-          "id": "1_2_13",
-          "name": "The Dread Thicket"
+          "id": "a3_sewers_3",
+          "type": "navigation",
+          "zone": "The Sewers",
+          "description": "Enter The Marketplace",
+          "checkable": true,
+          "zoneId": "1_3_5"
         },
         {
-          "id": "1_2_14_2",
-          "name": "The Caverns",
-          "craftingRecipe": "Vaal Skill Damage I"
+          "id": "a3_market_1",
+          "type": "waypoint",
+          "zone": "The Marketplace",
+          "description": "Activate Waypoint",
+          "hint": "Zone extends based on water location",
+          "layoutTip": "If water is west of entrance, zone extends north. Otherwise, zone extends west. Search for the arch to find the waypoint. From waypoint, follow the east wall to find The Battlefront.",
+          "checkable": true,
+          "zoneId": "1_3_5"
         },
         {
-          "id": "1_2_14_3",
-          "name": "The Ancient Pyramid",
-          "craftingRecipe": "Spell Damage I"
+          "id": "a3_market_2",
+          "type": "navigation",
+          "zone": "The Marketplace",
+          "description": "Find and enter The Catacombs",
+          "hint": "Located nearby waypoint",
+          "checkable": true,
+          "zoneId": "1_3_6"
+        },
+        {
+          "id": "a3_catacombs_1",
+          "type": "trial",
+          "zone": "The Catacombs",
+          "description": "Complete Trial of Ascendancy",
+          "hint": "Move east from starting room if possible, north otherwise",
+          "layoutTip": "After entering, prioritize moving east. If blocked, head north instead. This pathing leads efficiently to the trial.",
+          "optionalNote": "[LEAGUE START] League-start recommended",
+          "checkable": true,
+          "zoneId": "1_3_6"
+        },
+        {
+          "id": "a3_catacombs_2",
+          "type": "optional",
+          "zone": "The Catacombs",
+          "description": "Activate Crafting Bench",
+          "hint": "Often found parallel to arena entrance wall",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_6"
+        },
+        {
+          "id": "a3_catacombs_3",
+          "type": "town",
+          "zone": "The Catacombs",
+          "description": "Return to town (Relog)",
+          "checkable": true,
+          "zoneId": "1_3_town"
+        },
+        {
+          "id": "a3_town3_1",
+          "type": "passive",
+          "zone": "The Sarn Encampment",
+          "description": "Talk to Hargan for Passive Point",
+          "quest": "Victario's Secrets",
+          "reward": "⭐ PASSIVE POINT",
+          "hint": "Check vendors for 4-link items if Level 23+",
+          "checkable": true,
+          "zoneId": "1_3_town"
+        },
+        {
+          "id": "a3_town3_2",
+          "type": "waypoint",
+          "zone": "The Sarn Encampment",
+          "description": "Waypoint to The Marketplace",
+          "checkable": true,
+          "zoneId": "1_3_5"
+        },
+        {
+          "id": "a3_market_3",
+          "type": "navigation",
+          "zone": "The Marketplace",
+          "description": "Enter The Battlefront",
+          "hint": "Usually 1 or 12 o'clock, rarely 5 o'clock",
+          "checkable": true,
+          "zoneId": "1_3_7"
+        },
+        {
+          "id": "a3_battlefront_1",
+          "type": "waypoint",
+          "zone": "The Battlefront",
+          "description": "Head northwest to activate Waypoint",
+          "hint": "Waypoint is on first elevation layer",
+          "checkable": true,
+          "zoneId": "1_3_7"
+        },
+        {
+          "id": "a3_battlefront_2",
+          "type": "quest",
+          "zone": "The Battlefront",
+          "description": "Head 5 o'clock to collect Ribbon Spool",
+          "checkable": true,
+          "zoneId": "1_3_7"
+        },
+        {
+          "id": "a3_battlefront_3",
+          "type": "optional",
+          "zone": "The Battlefront",
+          "description": "Enter Solaris Temple Level 1 (if not Level 23½)",
+          "hint": "Head 1 o'clock to entrance. If already Level 23½+, skip to Docks",
+          "optionalNote": "For XP if underleveled",
+          "checkable": true,
+          "zoneId": "1_3_8_1"
+        },
+        {
+          "id": "a3_solaris1_1",
+          "type": "navigation",
+          "zone": "The Solaris Temple Level 1",
+          "description": "Navigate to Solaris Temple Level 2",
+          "hint": "Walk forward until wall, turn toward zone extension",
+          "layoutTip": "Move forward until hitting a wall. Check if zone extends further in that direction. If yes, move around the wall and continue forward. If not, turn toward the zone extension and proceed.",
+          "optionalNote": "For XP if underleveled",
+          "checkable": true,
+          "zoneId": "1_3_8_2"
+        },
+        {
+          "id": "a3_solaris2_1",
+          "type": "waypoint",
+          "zone": "The Solaris Temple Level 2",
+          "description": "Activate Waypoint",
+          "optionalNote": "For XP if underleveled",
+          "checkable": true,
+          "zoneId": "1_3_8_2"
+        },
+        {
+          "id": "a3_solaris2_2",
+          "type": "optional",
+          "zone": "The Solaris Temple Level 2",
+          "description": "Activate Crafting Bench",
+          "hint": "Near waypoint in Eternal Laboratory arena",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_8_2"
+        },
+        {
+          "id": "a3_solaris2_3",
+          "type": "waypoint",
+          "zone": "The Solaris Temple Level 2",
+          "description": "Waypoint to The Battlefront",
+          "optionalNote": "For XP if underleveled",
+          "checkable": true,
+          "zoneId": "1_3_7"
+        },
+        {
+          "id": "a3_battlefront_4",
+          "type": "navigation",
+          "zone": "The Battlefront",
+          "description": "Head 7 o'clock to The Docks",
+          "recommendedLevel": 24,
+          "hint": "North of waypoint, at end of river",
+          "checkable": true,
+          "zoneId": "1_3_9"
+        },
+        {
+          "id": "a3_docks_1",
+          "type": "quest",
+          "zone": "The Docks",
+          "description": "Find Thaumetic Sulphite",
+          "hint": "Excellent zone for XP farming",
+          "layoutTip": "You spawn near a corner. Follow the opposite direction along the wall until you locate the Thaumetic Sulphite.",
+          "checkable": true,
+          "zoneId": "1_3_9"
+        },
+        {
+          "id": "a3_docks_2",
+          "type": "town",
+          "zone": "The Docks",
+          "description": "Return to town (Relog)",
+          "checkable": true,
+          "zoneId": "1_3_town"
+        },
+        {
+          "id": "a3_town4_1",
+          "type": "waypoint",
+          "zone": "The Sarn Encampment",
+          "description": "Waypoint to Solaris Temple Level 2",
+          "checkable": true,
+          "zoneId": "1_3_8_2"
+        },
+        {
+          "id": "a3_solaris2_4",
+          "type": "npc_quest",
+          "zone": "The Solaris Temple Level 2",
+          "description": "Talk to Dialla",
+          "quest": "The Ribbon Spool",
+          "reward": "Rare Amulet",
+          "hint": "Follow red carpet",
+          "checkable": true,
+          "zoneId": "1_3_8_2"
+        },
+        {
+          "id": "a3_solaris2_5",
+          "type": "npc_quest",
+          "zone": "The Solaris Temple Level 2",
+          "description": "Talk to Dialla again for Infernal Talc",
+          "quest": "Fiery Dust",
+          "checkable": true,
+          "zoneId": "1_3_8_2"
+        },
+        {
+          "id": "a3_solaris2_6",
+          "type": "waypoint",
+          "zone": "The Solaris Temple Level 2",
+          "description": "Waypoint to The Sewers",
+          "checkable": true,
+          "zoneId": "1_3_10_1"
+        },
+        {
+          "id": "a3_sewers_4",
+          "type": "quest",
+          "zone": "The Sewers",
+          "description": "Use Infernal Talc on Undying Blockage",
+          "checkable": true,
+          "zoneId": "1_3_10_1"
+        },
+        {
+          "id": "a3_sewers_5",
+          "type": "optional",
+          "zone": "The Sewers",
+          "description": "Activate Crafting Bench",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_10_1"
+        },
+        {
+          "id": "a3_sewers_6",
+          "type": "navigation",
+          "zone": "The Sewers",
+          "description": "Enter The Ebony Barracks",
+          "checkable": true,
+          "zoneId": "1_3_13"
+        },
+        {
+          "id": "a3_barracks_1",
+          "type": "waypoint",
+          "zone": "The Ebony Barracks",
+          "description": "Activate Waypoint",
+          "layoutTip": "Zone is semi-static. Head north-east to find waypoint. Only variation is whether Gravicius and exit are in line or exit faces east.",
+          "checkable": true,
+          "zoneId": "1_3_13"
+        },
+        {
+          "id": "a3_barracks_2",
+          "type": "optional",
+          "zone": "The Ebony Barracks",
+          "description": "Head 7 o'clock to kill General Gravicius",
+          "hint": "Rewards Level 28 Skill Gems",
+          "optionalNote": "Optional boss for gem rewards",
+          "checkable": true,
+          "zoneId": "1_3_13"
+        },
+        {
+          "id": "a3_barracks_3",
+          "type": "navigation",
+          "zone": "The Ebony Barracks",
+          "description": "Head 7 o'clock to Lunaris Temple Level 1",
+          "checkable": true,
+          "zoneId": "1_3_14_1"
+        },
+        {
+          "id": "a3_lunaris1_1",
+          "type": "navigation",
+          "zone": "The Lunaris Temple Level 1",
+          "description": "Navigate to Lunaris Temple Level 2",
+          "hint": "Follow red carpet",
+          "checkable": true,
+          "zoneId": "1_3_14_2"
+        },
+        {
+          "id": "a3_lunaris2_1",
+          "type": "kill_boss",
+          "zone": "The Lunaris Temple Level 2",
+          "description": "Kill Piety for Tower Key",
+          "recommendedLevel": 27,
+          "hint": "Follow stairs going up, then single wagon at fork",
+          "layoutTip": "Choose paths with stairs going up. At the fork with wagons, take the path with a single wagon. Stay consistent with movement pattern (clockwise or counter-clockwise).",
+          "checkable": true,
+          "zoneId": "1_3_14_2"
+        },
+        {
+          "id": "a3_lunaris2_2",
+          "type": "optional",
+          "zone": "The Lunaris Temple Level 2",
+          "description": "Activate Crafting Bench",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_14_2"
+        },
+        {
+          "id": "a3_lunaris2_3",
+          "type": "town",
+          "zone": "The Lunaris Temple Level 2",
+          "description": "Return to town (Relog)",
+          "checkable": true,
+          "zoneId": "1_3_town"
+        },
+        {
+          "id": "a3_town5_1",
+          "type": "passive",
+          "zone": "The Sarn Encampment",
+          "description": "Talk to Grigor for Passive Point",
+          "quest": "Piety's Pets",
+          "reward": "⭐ PASSIVE POINT",
+          "checkable": true,
+          "zoneId": "1_3_town"
+        },
+        {
+          "id": "a3_town5_2",
+          "type": "npc_quest",
+          "zone": "The Sarn Encampment",
+          "description": "Talk to Maramoa",
+          "quest": "Sever the Right Hand",
+          "reward": "Level 28 Skill Gems",
+          "checkable": true,
+          "zoneId": "1_3_town"
+        },
+        {
+          "id": "a3_town5_3",
+          "type": "optional",
+          "zone": "The Sarn Encampment",
+          "description": "Visit Hideout or buy gems from Lilly Roth",
+          "hint": "Check for off-class support gems",
+          "optionalNote": "[NON-LEAGUE START] Optional - buy missing gems",
+          "checkable": true,
+          "zoneId": "1_3_town"
+        },
+        {
+          "id": "a3_town5_4",
+          "type": "waypoint",
+          "zone": "The Sarn Encampment",
+          "description": "Waypoint to The Ebony Barracks",
+          "checkable": true,
+          "zoneId": "1_3_13"
+        },
+        {
+          "id": "a3_barracks_4",
+          "type": "navigation",
+          "zone": "The Ebony Barracks",
+          "description": "Head 1 o'clock to The Imperial Gardens",
+          "checkable": true,
+          "zoneId": "1_3_15"
+        },
+        {
+          "id": "a3_gardens_1",
+          "type": "waypoint",
+          "zone": "The Imperial Gardens",
+          "description": "Follow road and activate Waypoint",
+          "layoutTip": "Follow the main road through the zone. The waypoint is along this path.",
+          "checkable": true,
+          "zoneId": "1_3_15"
+        },
+        {
+          "id": "a3_gardens_2",
+          "type": "optional",
+          "zone": "The Imperial Gardens",
+          "description": "Head 12 o'clock off-road for Trial of Ascendancy",
+          "hint": "North corner, off the main road",
+          "layoutTip": "From waypoint, head to the north corner away from the road to find the trial.",
+          "optionalNote": "[LEAGUE START] League-start recommended",
+          "checkable": true,
+          "zoneId": "1_3_15"
+        },
+        {
+          "id": "a3_gardens_3",
+          "type": "optional",
+          "zone": "The Imperial Gardens",
+          "description": "Activate Crafting Bench",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_15"
+        },
+        {
+          "id": "a3_gardens_4",
+          "type": "optional",
+          "zone": "The Imperial Gardens",
+          "description": "Return to town (Relog)",
+          "optionalNote": "[LEAGUE START] League-start only after Trial",
+          "checkable": true,
+          "zoneId": "1_3_town"
+        },
+        {
+          "id": "a3_town6_1",
+          "type": "optional",
+          "zone": "The Sarn Encampment",
+          "description": "Waypoint to The Imperial Gardens",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_15"
+        },
+        {
+          "id": "a3_gardens_5",
+          "type": "optional",
+          "zone": "The Imperial Gardens",
+          "description": "Head 7 o'clock to The Library",
+          "hint": "For Level 31 and off-class support gems",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_17_1"
+        },
+        {
+          "id": "a3_library_1",
+          "type": "waypoint",
+          "zone": "The Library",
+          "description": "Activate Waypoint",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_17_1"
+        },
+        {
+          "id": "a3_library_2",
+          "type": "navigation",
+          "zone": "The Library",
+          "description": "Find loose candle and enter The Archives",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_17_2"
+        },
+        {
+          "id": "a3_archives_1",
+          "type": "quest",
+          "zone": "The Archives",
+          "description": "Collect all 4 Golden Pages",
+          "hint": "Hidden crafting bench: candle in narrow corridor",
+          "layoutTip": "Traverse the zone in a clockwise pattern to efficiently collect all pages.",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_17_2"
+        },
+        {
+          "id": "a3_archives_2",
+          "type": "town",
+          "zone": "The Archives",
+          "description": "Return to town (Relog)",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_town"
+        },
+        {
+          "id": "a3_town7_1",
+          "type": "optional",
+          "zone": "The Sarn Encampment",
+          "description": "Gather some currency",
+          "hint": "Prepare for gem purchases",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_town"
+        },
+        {
+          "id": "a3_town7_2",
+          "type": "waypoint",
+          "zone": "The Sarn Encampment",
+          "description": "Waypoint to The Library",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_17_1"
+        },
+        {
+          "id": "a3_library_3",
+          "type": "npc_quest",
+          "zone": "The Library",
+          "description": "Talk to Siosa",
+          "quest": "A Fixture of Fate",
+          "reward": "Level 31 and off-class Support Gems",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_17_1"
+        },
+        {
+          "id": "a3_library_4",
+          "type": "waypoint",
+          "zone": "The Library",
+          "description": "Waypoint to The Imperial Gardens",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "1_3_15"
+        },
+        {
+          "id": "a3_gardens_6",
+          "type": "optional",
+          "zone": "The Imperial Gardens",
+          "description": "Complete Normal Labyrinth (Level 33)",
+          "hint": "Build-dependent. Another reminder follows later",
+          "layoutTip": "Waypoint to town, enter Aspirants' Plaza from town.",
+          "optionalNote": "[EARLY LAB] Optional, build-dependent",
+          "recommendedLevel": 33,
+          "checkable": true,
+          "zoneId": "Labyrinth_Airlock"
+        },
+        {
+          "id": "a3_gardens_7",
+          "type": "navigation",
+          "zone": "The Imperial Gardens",
+          "description": "Follow wagons to Sceptre of God",
+          "hint": "Follow the road with wagons",
+          "checkable": true,
+          "zoneId": "1_3_18_1"
+        },
+        {
+          "id": "a3_sceptre1_1",
+          "type": "navigation",
+          "zone": "The Sceptre of God",
+          "description": "Navigate to Upper Sceptre of God",
+          "hint": "Floors are circular - arena stairs spawn every 90°",
+          "layoutTip": "Traverse clockwise while staying in the inner square. Move in the direction stairs place you. If no door in that direction, check the opposite side first.",
+          "checkable": true,
+          "zoneId": "1_3_18_2"
+        },
+        {
+          "id": "a3_sceptre2_1",
+          "type": "kill_boss",
+          "zone": "The Upper Sceptre of God",
+          "description": "Find and enter Tower Rooftop arena",
+          "recommendedLevel": 28,
+          "hint": "Same layout rules - head 1 o'clock after Scion cage",
+          "layoutTip": "Follow same navigation rules as Sceptre of God. After passing the Scion cage, head toward 1 o'clock to reach the rooftop.",
+          "checkable": true,
+          "zoneId": "1_3_18_2"
+        },
+        {
+          "id": "a3_sceptre2_2",
+          "type": "kill_boss",
+          "zone": "The Upper Sceptre of God",
+          "description": "Kill Dominus",
+          "checkable": true,
+          "zoneId": "1_3_18_2"
+        },
+        {
+          "id": "a3_sceptre2_3",
+          "type": "navigation",
+          "zone": "The Upper Sceptre of God",
+          "description": "Enter The Aqueduct (Act 4)",
+          "checkable": true,
+          "zoneId": "1_4_1"
         }
-      ],
-      "actNumber": 2
-    },
-    {
-      "zones": [
-        {
-          "id": "1_3_1",
-          "name": "The City of Sarn",
-          "craftingRecipe": "Movement Speed I"
-        },
-        {
-          "id": "1_3_town",
-          "name": "The Sarn Encampment"
-        },
-        {
-          "id": "1_3_2",
-          "name": "The Slums"
-        },
-        {
-          "id": "1_3_3_1",
-          "name": "The Crematorium",
-          "craftingRecipe": "Defences I"
-        },
-        {
-          "id": "1_3_10_1",
-          "name": "The Sewers",
-          "craftingRecipe": "Physical Damage I"
-        },
-        {
-          "id": "1_3_5",
-          "name": "The Marketplace"
-        },
-        {
-          "id": "1_3_6",
-          "name": "The Catacombs",
-          "craftingRecipe": "Elemental Damage with Attacks I"
-        },
-        {
-          "id": "1_3_7",
-          "name": "The Battlefront"
-        },
-        {
-          "id": "1_3_8_1",
-          "name": "The Solaris Temple Level 1"
-        },
-        {
-          "id": "1_3_8_2",
-          "name": "The Solaris Temple Level 2",
-          "craftingRecipe": "Fire Damage I"
-        },
-        {
-          "id": "1_3_9",
-          "name": "The Docks"
-        },
-        {
-          "id": "1_3_13",
-          "name": "The Ebony Barracks"
-        },
-        {
-          "mapName": "The Lunaris Temple",
-          "id": "1_3_14_1",
-          "name": "The Lunaris Temple Level 1"
-        },
-        {
-          "id": "1_3_14_2",
-          "name": "The Lunaris Temple Level 2",
-          "craftingRecipe": "Lightning Damage I"
-        },
-        {
-          "id": "1_3_15",
-          "name": "The Imperial Gardens",
-          "craftingRecipe": "All Attributes I"
-        },
-        {
-          "id": "1_3_17_1",
-          "name": "The Library"
-        },
-        {
-          "id": "1_3_17_2",
-          "name": "The Archives",
-          "craftingRecipe": "Life and Mana Regeneration I"
-        },
-        {
-          "id": "1_3_18_1",
-          "name": "The Sceptre of God"
-        },
-        {
-          "id": "1_3_18_2",
-          "name": "The Upper Sceptre of God"
-        },
-        {
-          "id": "Labyrinth_Airlock",
-          "name": "Aspirants' Plaza"
-        }
-      ],
-      "actNumber": 3
-    },
-    {
-      "zones": [
-        {
-          "id": "1_4_1",
-          "name": "The Aqueduct"
-        },
-        {
-          "id": "1_4_town",
-          "name": "Highgate"
-        },
-        {
-          "id": "1_4_2",
-          "name": "The Dried Lake",
-          "craftingRecipe": "Attack, Cast and Warcry Speed I"
-        },
-        {
-          "id": "1_4_3_1",
-          "name": "The Mines Level 1",
-          "craftingRecipe": "Socket Colours"
-        },
-        {
-          "id": "1_4_3_2",
-          "name": "The Mines Level 2"
-        },
-        {
-          "id": "1_4_3_3",
-          "name": "The Crystal Veins",
-          "craftingRecipe": "Cold Damage I"
-        },
-        {
-          "id": "1_4_4_1",
-          "name": "Kaom's Dream"
-        },
-        {
-          "id": "1_4_4_3",
-          "name": "Kaom's Stronghold",
-          "craftingRecipe": "Socket Links - 2 to 4 Linked Sockets"
-        },
-        {
-          "id": "1_4_5_1",
-          "name": "Daresso's Dream"
-        },
-        {
-          "id": "1_4_5_2",
-          "name": "The Grand Arena",
-          "craftingRecipe": "Socket Numbers - 2 to 4 Sockets"
-        },
-        {
-          "id": "1_4_6_1",
-          "name": "The Belly of the Beast Level 1"
-        },
-        {
-          "id": "1_4_6_2",
-          "name": "The Belly of the Beast Level 2",
-          "craftingRecipe": "Elemental Resistances II"
-        },
-        {
-          "id": "1_4_6_3",
-          "name": "The Harvest"
-        },
-        {
-          "id": "1_4_7",
-          "name": "The Ascent",
-          "craftingRecipe": "Ailment, Stun and Curse Mitigation I"
-        },
-        {
-          "id": "Labyrinth_Airlock",
-          "name": "Aspirants' Plaza"
-        }
-      ],
-      "actNumber": 4
-    },
-    {
-      "zones": [
-        {
-          "id": "1_5_1",
-          "name": "The Slave Pens"
-        },
-        {
-          "id": "1_5_town",
-          "name": "Overseer's Tower"
-        },
-        {
-          "id": "1_5_2",
-          "name": "The Control Blocks"
-        },
-        {
-          "id": "1_5_3",
-          "name": "Oriath Square"
-        },
-        {
-          "id": "1_5_4",
-          "name": "The Templar Courts"
-        },
-        {
-          "id": "1_5_5",
-          "name": "The Chamber of Innocence",
-          "craftingRecipe": "Movement Speed and Exerted Attacks II"
-        },
-        {
-          "id": "1_5_4b",
-          "name": "The Torched Courts"
-        },
-        {
-          "id": "1_5_3b",
-          "name": "The Ruined Square"
-        },
-        {
-          "id": "1_5_6",
-          "name": "The Ossuary",
-          "craftingRecipe": "Physical Damage II"
-        },
-        {
-          "id": "1_5_7",
-          "name": "The Reliquary",
-          "craftingRecipe": "Accuracy I"
-        },
-        {
-          "id": "1_5_8",
-          "name": "The Cathedral Rooftop"
-        }
-      ],
-      "actNumber": 5
-    },
-    {
-      "zones": [
-        {
-          "id": "2_6_town",
-          "name": "Lioneye's Watch"
-        },
-        {
-          "id": "2_6_1",
-          "name": "The Twilight Strand"
-        },
-        {
-          "id": "2_6_2",
-          "name": "The Coast"
-        },
-        {
-          "id": "2_6_3",
-          "name": "The Tidal Island"
-        },
-        {
-          "id": "2_6_4",
-          "name": "The Mud Flats"
-        },
-        {
-          "id": "2_6_5",
-          "name": "The Karui Fortress",
-          "craftingRecipe": "Defences II"
-        },
-        {
-          "id": "2_6_6",
-          "name": "The Ridge"
-        },
-        {
-          "mapName": "The Prison",
-          "id": "2_6_7_1",
-          "name": "The Lower Prison",
-          "craftingRecipe": "Double Resistances I"
-        },
-        {
-          "id": "2_6_7_2",
-          "name": "Shavronne's Tower",
-          "craftingRecipe": "Spell Damage II"
-        },
-        {
-          "id": "2_6_8",
-          "name": "Prisoner's Gate"
-        },
-        {
-          "id": "2_6_9",
-          "name": "The Western Forest",
-          "craftingRecipe": "Attributes II"
-        },
-        {
-          "id": "2_6_10",
-          "name": "The Riverways"
-        },
-        {
-          "id": "2_6_11",
-          "name": "The Wetlands"
-        },
-        {
-          "id": "2_6_12",
-          "name": "The Southern Forest"
-        },
-        {
-          "id": "2_6_13",
-          "name": "The Cavern of Anger"
-        },
-        {
-          "id": "2_6_14",
-          "name": "The Beacon",
-          "craftingRecipe": "Life and Mana II"
-        },
-        {
-          "id": "2_6_15",
-          "name": "The Brine King's Reef"
-        }
-      ],
-      "actNumber": 6
-    },
-    {
-      "zones": [
-        {
-          "id": "2_7_town",
-          "name": "The Bridge Encampment"
-        },
-        {
-          "id": "2_7_1",
-          "name": "The Broken Bridge"
-        },
-        {
-          "id": "2_7_2",
-          "name": "The Crossroads"
-        },
-        {
-          "id": "2_7_3",
-          "name": "The Fellshrine Ruins"
-        },
-        {
-          "id": "2_7_4",
-          "name": "The Crypt",
-          "craftingRecipe": "Damage over Time I"
-        },
-        {
-          "mapName": "The Chamber of Sins",
-          "id": "2_7_5_1",
-          "name": "The Chamber of Sins Level 1",
-          "craftingRecipe": "Lightning Damage II"
-        },
-        {
-          "id": "2_7_5_2",
-          "name": "The Chamber of Sins Level 2",
-          "craftingRecipe": "Mana Regen I"
-        },
-        {
-          "id": "2_7_5_map",
-          "name": "Maligaro's Sanctum"
-        },
-        {
-          "id": "2_7_6",
-          "name": "The Den"
-        },
-        {
-          "id": "2_7_7",
-          "name": "The Ashen Fields"
-        },
-        {
-          "id": "2_7_8",
-          "name": "The Northern Forest"
-        },
-        {
-          "id": "2_7_9",
-          "name": "The Dread Thicket",
-          "craftingRecipe": "Fire Damage II"
-        },
-        {
-          "id": "2_7_10",
-          "name": "The Causeway",
-          "craftingRecipe": "Cold Damage II"
-        },
-        {
-          "id": "2_7_11",
-          "name": "The Vaal City"
-        },
-        {
-          "id": "2_7_12_1",
-          "name": "The Temple of Decay Level 1"
-        },
-        {
-          "id": "2_7_12_2",
-          "name": "The Temple of Decay Level 2",
-          "craftingRecipe": "Chaos Damage I"
-        },
-        {
-          "id": "Labyrinth_Airlock",
-          "name": "Aspirants' Plaza"
-        }
-      ],
-      "actNumber": 7
-    },
-    {
-      "zones": [
-        {
-          "id": "2_8_1",
-          "name": "The Sarn Ramparts"
-        },
-        {
-          "id": "2_8_town",
-          "name": "The Sarn Encampment"
-        },
-        {
-          "id": "2_8_2_1",
-          "name": "The Toxic Conduits"
-        },
-        {
-          "mapName": "The Toxic Conduits",
-          "id": "2_8_2_2",
-          "name": "Doedre's Cesspool",
-          "craftingRecipe": "Elemental Resistances III"
-        },
-        {
-          "id": "2_8_3",
-          "name": "The Grand Promenade"
-        },
-        {
-          "id": "2_8_5",
-          "name": "The Bath House",
-          "craftingRecipe": "Flask Duration I"
-        },
-        {
-          "id": "2_8_4",
-          "name": "The High Gardens"
-        },
-        {
-          "id": "2_8_6",
-          "name": "The Lunaris Concourse"
-        },
-        {
-          "id": "2_8_7_1_",
-          "name": "The Lunaris Temple Level 1"
-        },
-        {
-          "id": "2_8_7_2",
-          "name": "The Lunaris Temple Level 2",
-          "craftingRecipe": "Minions I"
-        },
-        {
-          "id": "2_8_8",
-          "name": "The Quay"
-        },
-        {
-          "id": "2_8_9",
-          "name": "The Grain Gate"
-        },
-        {
-          "id": "2_8_10",
-          "name": "The Imperial Fields"
-        },
-        {
-          "id": "2_8_11",
-          "name": "The Solaris Concourse"
-        },
-        {
-          "id": "2_8_12_1",
-          "name": "The Solaris Temple Level 1"
-        },
-        {
-          "id": "2_8_12_2",
-          "name": "The Solaris Temple Level 2",
-          "craftingRecipe": "Traps and Mines I"
-        },
-        {
-          "id": "2_8_13",
-          "name": "The Harbour Bridge"
-        },
-        {
-          "id": "2_8_14",
-          "name": "The Hidden Underbelly"
-        }
-      ],
-      "actNumber": 8
-    },
-    {
-      "zones": [
-        {
-          "id": "2_9_1",
-          "name": "The Blood Aqueduct"
-        },
-        {
-          "id": "2_9_town",
-          "name": "Highgate"
-        },
-        {
-          "id": "2_9_2",
-          "name": "The Descent"
-        },
-        {
-          "id": "2_9_3",
-          "name": "The Vastiri Desert",
-          "craftingRecipe": "Attack and Cast Speed II"
-        },
-        {
-          "id": "2_9_4",
-          "name": "The Oasis"
-        },
-        {
-          "id": "2_9_5",
-          "name": "The Foothills"
-        },
-        {
-          "id": "2_9_6",
-          "name": "The Boiling Lake",
-          "craftingRecipe": "Spell Damage III"
-        },
-        {
-          "id": "2_9_7",
-          "name": "The Tunnel",
-          "craftingRecipe": "All Attributes II"
-        },
-        {
-          "id": "2_9_8",
-          "name": "The Quarry",
-          "craftingRecipe": "Physical Damage III"
-        },
-        {
-          "id": "2_9_9",
-          "name": "The Refinery",
-          "craftingRecipe": "Trigger a Socketed Spell when you Use a Skill"
-        },
-        {
-          "id": "2_9_10_1",
-          "name": "The Belly of the Beast"
-        },
-        {
-          "id": "2_9_10_2",
-          "name": "The Rotting Core"
-        }
-      ],
-      "actNumber": 9
-    },
-    {
-      "zones": [
-        {
-          "id": "2_10_town",
-          "name": "Oriath Docks"
-        },
-        {
-          "id": "2_10_1",
-          "name": "The Cathedral Rooftop"
-        },
-        {
-          "id": "2_10_2",
-          "name": "The Ravaged Square"
-        },
-        {
-          "id": "2_10_8",
-          "name": "The Reliquary"
-        },
-        {
-          "id": "2_10_7",
-          "name": "The Control Blocks"
-        },
-        {
-          "id": "2_10_9",
-          "name": "The Ossuary",
-          "craftingRecipe": "Chaos Damage II"
-        },
-        {
-          "id": "2_10_3",
-          "name": "The Torched Courts"
-        },
-        {
-          "id": "2_10_4",
-          "name": "The Desecrated Chambers",
-          "craftingRecipe": "Accuracy II"
-        },
-        {
-          "id": "2_10_5",
-          "name": "The Canals"
-        },
-        {
-          "id": "2_10_6",
-          "name": "The Feeding Trough",
-          "craftingRecipe": "Life and Mana III"
-        },
-        {
-          "id": "Labyrinth_Airlock",
-          "name": "Aspirants' Plaza"
-        }
-      ],
-      "actNumber": 10
-    },
-    {
-      "zones": [
-        {
-          "id": "2_11_endgame_town",
-          "name": "Karui Shores",
-          "craftingRecipe": "Movement Speed and Flask Enchantments III"
-        }
-      ],
-      "actNumber": 11
+      ]
     }
   ]
 }

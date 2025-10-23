@@ -150,6 +150,20 @@ export function buildLevelingPopoutHtml(): string {
     .layout-tip-icon{display:inline-flex;font-size:11px;cursor:help;position:relative;margin-left:6px;opacity:0.6;color:#4a9eff;}
     .layout-tip-icon:hover{opacity:1;}
     .layout-tip-icon .tooltip{background:rgba(74,158,255,0.15);border-color:rgba(74,158,255,0.6);color:#4a9eff;white-space:normal;max-width:250px;font-weight:500;}
+    
+    /* Timer Tooltip Styles */
+    .timer-tooltip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:linear-gradient(135deg, rgba(30,30,40,0.98) 0%, rgba(20,20,30,0.98) 100%);border:2px solid rgba(254,192,118,0.6);padding:12px 16px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.7), 0 0 20px rgba(254,192,118,0.2);pointer-events:none;opacity:0;transition:opacity 0.3s ease, transform 0.3s ease;z-index:10000;min-width:220px;transform:translateX(-50%) translateY(5px);}
+    .timer-display:hover .timer-tooltip{opacity:1;transform:translateX(-50%) translateY(0);}
+    .timer-tooltip-header{font-size:13px;font-weight:700;color:#fec076;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(254,192,118,0.3);text-align:center;letter-spacing:0.5px;text-transform:uppercase;}
+    .timer-tooltip-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:12px;color:#e0e0e0;}
+    .timer-tooltip-row.current{background:rgba(254,192,118,0.1);margin:0 -8px;padding:6px 8px;border-radius:5px;border-left:3px solid #fec076;}
+    .timer-tooltip-row.total{margin-top:8px;padding-top:10px;border-top:1px solid rgba(254,192,118,0.3);font-weight:700;font-size:13px;color:#fec076;}
+    .timer-tooltip-label{font-weight:600;color:#b8b8b8;display:flex;align-items:center;gap:6px;}
+    .timer-tooltip-row.current .timer-tooltip-label{color:#fec076;}
+    .timer-tooltip-value{font-family:monospace;font-size:13px;font-weight:700;color:#fff;letter-spacing:0.5px;}
+    .timer-tooltip-row.total .timer-tooltip-value{color:#fec076;font-size:14px;}
+    .timer-display{position:relative;cursor:help;}
+    
     ::-webkit-scrollbar{width:8px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:rgba(254,192,118,0.3);border-radius:4px;}::-webkit-scrollbar-thumb:hover{background:rgba(254,192,118,0.5);}
     .act-dropdown::-webkit-scrollbar{width:6px;}
     .act-dropdown::-webkit-scrollbar-track{background:rgba(0,0,0,0.2);border-radius:3px;}
@@ -287,7 +301,8 @@ let state = {
     startTime: 0,
     elapsed: 0,
     currentAct: 1
-  }
+  },
+  actTimers: {} // Store completion time for each act: { 1: 1234567, 2: 2345678, ... }
 };
 
 let timerInterval = null;
@@ -350,6 +365,70 @@ function groupStepsByZone(steps) {
 
 function saveState() {
   ipcRenderer.invoke('save-current-act-index', state.currentActIndex);
+  ipcRenderer.invoke('save-act-timers', state.actTimers);
+}
+
+function checkActCompletionAndAdvance() {
+  if (!state.levelingData) return;
+  
+  const acts = state.levelingData.acts;
+  const currentAct = acts[state.currentActIndex];
+  
+  if (!currentAct || !currentAct.steps) return;
+  
+  // Check if ALL steps in current act are completed
+  const allSteps = currentAct.steps;
+  const completedCount = allSteps.filter(s => state.completedSteps.has(s.id)).length;
+  const allCompleted = allSteps.length > 0 && completedCount === allSteps.length;
+  
+  console.log('[Act ' + currentAct.actNumber + '] Completion check: ' + (allCompleted ? 'COMPLETE' : 'INCOMPLETE') + ' (' + completedCount + '/' + allSteps.length + ')');
+  
+  if (allCompleted) {
+    // Save completion time for this act
+    const actNum = currentAct.actNumber;
+    if (!state.actTimers[actNum]) {
+      state.actTimers[actNum] = state.timer.elapsed;
+      saveState();
+      console.log('Act ' + actNum + ' completed in ' + formatTime(state.timer.elapsed));
+    }
+    
+    // Auto-advance to next act if available
+    if (state.currentActIndex < acts.length - 1) {
+      const nextActIndex = state.currentActIndex + 1;
+      console.log('Auto-advancing from Act ' + actNum + ' to Act ' + acts[nextActIndex].actNumber);
+      
+      state.currentActIndex = nextActIndex;
+      state.timer.currentAct = state.currentActIndex + 1;
+      
+      // Reset timer for next act (start fresh)
+      state.timer.startTime = Date.now();
+      state.timer.elapsed = 0;
+      
+      saveState();
+      render(); // Re-render to show new act
+    } else {
+      console.log('All acts completed!');
+      render(); // Still need to re-render to update UI
+    }
+  } else {
+    // Not complete, just re-render to update UI
+    render();
+  }
+}
+
+function formatTime(ms) {
+  const totalSeconds = Math.floor(ms / 1000);
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+  
+  if (hours > 0) {
+    return \`\${hours}h \${minutes}m \${seconds}s\`;
+  } else if (minutes > 0) {
+    return \`\${minutes}m \${seconds}s\`;
+  } else {
+    return \`\${seconds}s\`;
+  }
 }
 
 function renderActSwitcher() {
@@ -390,7 +469,15 @@ function renderActSwitcher() {
     const classes = ['act-dropdown-item'];
     if (isActive) classes.push('active');
     
-    return \`<div class="\${classes.join(' ')}" data-act-index="\${index}">
+    // Calculate time info for tooltip
+    const actNum = act.actNumber;
+    const actTime = state.actTimers[actNum];
+    const timeStr = actTime ? formatTime(actTime) : 'Not completed';
+    const totalTime = Object.values(state.actTimers).reduce((sum, t) => sum + t, 0);
+    const totalTimeStr = totalTime > 0 ? formatTime(totalTime) : '0s';
+    const tooltipTitle = \`Act \${actNum} Time: \${timeStr}\\nTotal Time: \${totalTimeStr}\`;
+    
+    return \`<div class="\${classes.join(' ')}" data-act-index="\${index}" title="\${escapeHtml(tooltipTitle)}">
       <div class="act-dropdown-num">Act \${act.actNumber}</div>
       <div class="act-dropdown-info">
         <div class="act-dropdown-name">\${escapeHtml(act.actName)}</div>
@@ -500,7 +587,59 @@ function render() {
   const progressPct = totalSteps > 0 ? Math.round((completedCount / totalSteps) * 100) : 0;
   progressFill.style.width = progressPct + '%';
   progressText.textContent = progressPct + '%';
-  if (progressFillFooter) progressFillFooter.style.width = progressPct + '%';
+  if (progressFillFooter) {
+    progressFillFooter.style.width = progressPct + '%';
+    
+    // Add timer tooltip to footer progress bar
+    const totalTime = Object.values(state.actTimers).reduce((sum, t) => sum + t, 0);
+    const totalTimeStr = totalTime > 0 ? formatTime(totalTime) : '0s';
+    const currentActNum = act.actNumber;
+    const currentActTime = state.actTimers[currentActNum];
+    const currentActTimeStr = currentActTime ? formatTime(currentActTime) : 'In progress';
+    
+    // Build styled tooltip HTML
+    const acts = state.levelingData.acts;
+    let tooltipHTML = '<div class="timer-tooltip">';
+    tooltipHTML += '<div class="timer-tooltip-header">⏱️ Act Timers</div>';
+    
+    // Current act (highlighted)
+    tooltipHTML += '<div class="timer-tooltip-row current">';
+    tooltipHTML += '<span class="timer-tooltip-label">▶ Act ' + currentActNum + '</span>';
+    tooltipHTML += '<span class="timer-tooltip-value">' + currentActTimeStr + '</span>';
+    tooltipHTML += '</div>';
+    
+    // Other completed acts
+    acts.forEach((a, idx) => {
+      const aNum = a.actNumber;
+      if (aNum !== currentActNum) {
+        const aTime = state.actTimers[aNum];
+        if (aTime) {
+          tooltipHTML += '<div class="timer-tooltip-row">';
+          tooltipHTML += '<span class="timer-tooltip-label">Act ' + aNum + '</span>';
+          tooltipHTML += '<span class="timer-tooltip-value">' + formatTime(aTime) + '</span>';
+          tooltipHTML += '</div>';
+        }
+      }
+    });
+    
+    // Total time (highlighted)
+    tooltipHTML += '<div class="timer-tooltip-row total">';
+    tooltipHTML += '<span class="timer-tooltip-label">📊 Total Time</span>';
+    tooltipHTML += '<span class="timer-tooltip-value">' + totalTimeStr + '</span>';
+    tooltipHTML += '</div>';
+    
+    tooltipHTML += '</div>';
+    
+    // Add tooltip to timer display
+    const timerDisplay = document.getElementById('timerDisplay');
+    if (timerDisplay) {
+      // Remove old tooltip if exists
+      const oldTooltip = timerDisplay.querySelector('.timer-tooltip');
+      if (oldTooltip) oldTooltip.remove();
+      // Add new tooltip
+      timerDisplay.insertAdjacentHTML('beforeend', tooltipHTML);
+    }
+  }
   if (progressTextFooter) progressTextFooter.textContent = progressPct + '%';
   
   // Group steps
@@ -575,7 +714,8 @@ function render() {
   
   // Event listeners
   document.querySelectorAll('[data-action="toggle-step"]').forEach(el => {
-    el.addEventListener('change', () => {
+    el.addEventListener('change', (e) => {
+      e.stopPropagation(); // Prevent event bubbling
       const stepId = el.getAttribute('data-step-id');
       if (state.completedSteps.has(stepId)) {
         state.completedSteps.delete(stepId);
@@ -583,12 +723,17 @@ function render() {
         state.completedSteps.add(stepId);
       }
       ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
-      render();
+      
+      // Check for act completion BEFORE re-rendering
+      setTimeout(() => {
+        checkActCompletionAndAdvance();
+      }, 100);
     });
   });
   
   document.querySelectorAll('[data-action="toggle-zone"]').forEach(el => {
-    el.addEventListener('change', () => {
+    el.addEventListener('change', (e) => {
+      e.stopPropagation(); // Prevent event bubbling
       const zoneName = el.getAttribute('data-zone');
       const group = grouped.find(g => g.zone === zoneName);
       if (!group) return;
@@ -603,7 +748,11 @@ function render() {
       });
       
       ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
-      render();
+      
+      // Check for act completion BEFORE re-rendering
+      setTimeout(() => {
+        checkActCompletionAndAdvance();
+      }, 100);
     });
   });
   
@@ -657,6 +806,17 @@ function render() {
 // Load data and saved progress
 ipcRenderer.invoke('get-leveling-data').then(result => {
   state.levelingData = result.data;
+  
+  // Debug: Log loaded acts
+  if (state.levelingData && state.levelingData.acts) {
+    console.log('=== LEVELING DATA LOADED ===');
+    console.log('Total acts loaded:', state.levelingData.acts.length);
+    state.levelingData.acts.forEach((a, idx) => {
+      console.log('  [' + idx + '] Act ' + a.actNumber + ': ' + a.actName + ' (' + (a.steps ? a.steps.length : 0) + ' steps)');
+    });
+    console.log('===========================');
+  }
+  
   // Load saved progress
   if (result.progress && Array.isArray(result.progress)) {
     state.completedSteps = new Set(result.progress);
@@ -666,6 +826,11 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
   if (result.currentActIndex !== undefined && result.currentActIndex !== null) {
     state.currentActIndex = result.currentActIndex;
     state.timer.currentAct = result.currentActIndex + 1;
+  }
+  // Load saved act timers
+  if (result.actTimers) {
+    state.actTimers = result.actTimers;
+    console.log('Loaded act timers:', state.actTimers);
   }
   // Initialize slider values to match state
   document.getElementById('fontSizeSlider').value = state.fontSize;

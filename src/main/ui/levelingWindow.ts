@@ -13,6 +13,7 @@ export class LevelingWindow {
   private window: BrowserWindow | null = null;
   private settingsService: SettingsService;
   private levelingData: any = null;
+  private zoneRegistry: any = null;
   private completedSteps: Set<string> = new Set();
   private layoutMode: 'tall' | 'wide' = 'tall';
   private isWideMode = false;
@@ -22,6 +23,7 @@ export class LevelingWindow {
     const saved = this.settingsService.get('levelingWindow');
     this.isWideMode = saved?.wideMode ?? false;
     this.loadLevelingData();
+    this.loadZoneRegistry();
     this.loadProgress();
     this.registerIpcHandlers();
   }
@@ -179,8 +181,14 @@ export class LevelingWindow {
       for (const dataPath of possiblePaths) {
         if (fs.existsSync(dataPath)) {
           const rawData = fs.readFileSync(dataPath, 'utf-8');
-          this.levelingData = JSON.parse(rawData);
+          const parsedData = JSON.parse(rawData);
+          // Filter to only include acts that have steps
+          if (parsedData && parsedData.acts) {
+            parsedData.acts = parsedData.acts.filter((act: any) => act.steps && act.steps.length > 0);
+          }
+          this.levelingData = parsedData;
           console.log('[LevelingWindow] Data loaded from:', dataPath);
+          console.log('[LevelingWindow] Loaded acts:', parsedData.acts.map((a: any) => `Act ${a.actNumber}`).join(', '));
           loaded = true;
           break;
         }
@@ -193,6 +201,38 @@ export class LevelingWindow {
     } catch (err) {
       console.error('[LevelingWindow] Failed to load leveling data:', err);
       this.levelingData = this.getEmbeddedData();
+    }
+  }
+
+  private loadZoneRegistry(): void {
+    try {
+      // Try multiple possible paths for zone registry
+      const possiblePaths = [
+        path.join(app.getAppPath(), 'data', 'poe1', 'Leveling', 'poe1-zone-registry.json'),
+        path.join(process.cwd(), 'data', 'poe1', 'Leveling', 'poe1-zone-registry.json'),
+        path.join(__dirname, '../../data/poe1/Leveling/poe1-zone-registry.json'),
+        path.join(__dirname, '../../../data/poe1/Leveling/poe1-zone-registry.json'),
+      ];
+      
+      let loaded = false;
+      for (const dataPath of possiblePaths) {
+        if (fs.existsSync(dataPath)) {
+          const rawData = fs.readFileSync(dataPath, 'utf-8');
+          this.zoneRegistry = JSON.parse(rawData);
+          console.log('[LevelingWindow] Zone registry loaded from:', dataPath);
+          console.log('[LevelingWindow] Zone registry version:', this.zoneRegistry.version);
+          loaded = true;
+          break;
+        }
+      }
+      
+      if (!loaded) {
+        console.warn('[LevelingWindow] Zone registry file not found');
+        this.zoneRegistry = { version: '2.0', zonesByAct: [] };
+      }
+    } catch (err) {
+      console.error('[LevelingWindow] Failed to load zone registry:', err);
+      this.zoneRegistry = { version: '2.0', zonesByAct: [] };
     }
   }
 
@@ -245,8 +285,14 @@ export class LevelingWindow {
       return {
         data: this.levelingData,
         progress: Array.from(this.completedSteps),
-        currentActIndex: saved?.currentActIndex ?? 0
+        currentActIndex: saved?.currentActIndex ?? 0,
+        actTimers: saved?.actTimers ?? {}
       };
+    });
+
+    // Provide zone registry data to renderer
+    ipcMain.handle('get-zone-registry', async () => {
+      return this.zoneRegistry;
     });
 
     // Save progress
@@ -261,6 +307,15 @@ export class LevelingWindow {
       this.settingsService.update('levelingWindow', (c) => ({
         ...c,
         currentActIndex: actIndex
+      }));
+      return true;
+    });
+
+    // Save act timers
+    ipcMain.handle('save-act-timers', async (event, actTimers: Record<number, number>) => {
+      this.settingsService.update('levelingWindow', (c) => ({
+        ...c,
+        actTimers: actTimers
       }));
       return true;
     });
