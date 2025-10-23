@@ -3,7 +3,7 @@
  * Handles loading, saving, and querying enabled features.
  */
 
-import { FeatureConfig, DEFAULT_FEATURES, CraftingSubcategories, CharacterSubcategories, Poe1CharacterSubcategories, ItemsSubcategories, Poe1ItemsSubcategories, Poe1CraftingSubcategories } from '../features/featureTypes.js';
+import { FeatureConfig, DEFAULT_FEATURES, CraftingSubcategories, CharacterSubcategories, Poe1CharacterSubcategories, ItemsSubcategories, Poe1ItemsSubcategories, Poe1CraftingSubcategories, ToolsSubcategories } from '../features/featureTypes.js';
 import { SettingsService } from './settingsService.js';
 
 const MODIFIER_CATEGORY_PATTERNS = [
@@ -169,14 +169,7 @@ export class FeatureService {
           ...(stored.poe1Items?.subcategories || {})
         }
       },
-      tools: {
-        ...DEFAULT_FEATURES.tools,
-        ...(stored.tools || {}),
-        subcategories: {
-          ...DEFAULT_FEATURES.tools.subcategories,
-          ...(stored.tools?.subcategories || {})
-        }
-      }
+      tools: stored.tools || DEFAULT_FEATURES.tools
     };
 
   const legacyAnnoints = (stored.crafting?.subcategories as any)?.annoints;
@@ -495,6 +488,18 @@ export class FeatureService {
           poe1Leveling: false
         }
       };
+    } else if (config.tools?.enabled) {
+      const subs = config.tools.subcategories || {};
+
+      config.tools = {
+        enabled: true,
+        subcategories: {
+          regex: !!subs.regex,
+          poe1Regex: !!subs.poe1Regex,
+          poe1Vorici: !!subs.poe1Vorici,
+          poe1Leveling: !!subs.poe1Leveling
+        }
+      } as { enabled: boolean; subcategories: ToolsSubcategories };
     }
   }
 }

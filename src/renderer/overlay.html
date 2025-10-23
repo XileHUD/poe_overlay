@@ -87,6 +87,10 @@
             .poe2-only { display: flex !important; }
             body.overlay-poe1-mode .poe1-only { display: flex !important; }
             body.overlay-poe1-mode .poe2-only { display: none !important; }
+            /* Feature-hidden must override poe1-only/poe2-only classes */
+            .feature-hidden,
+            body.overlay-poe1-mode .feature-hidden,
+            body.overlay-poe2-mode .feature-hidden { display: none !important; }
         </style>
 </head>
 <body>
@@ -2737,9 +2741,13 @@
 
                                 if (shouldShow) {
                                     anySubEnabled = true;
+                                    item.classList.remove('feature-hidden');
                                     item.style.display = '';
+                                    item.hidden = false;
                                 } else {
+                                    item.classList.add('feature-hidden');
                                     item.style.display = 'none';
+                                    item.hidden = true;
                                 }
                             });
                         }

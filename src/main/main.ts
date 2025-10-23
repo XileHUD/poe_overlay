@@ -310,6 +310,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
     private blurHandlingInProgress = false;
     private removeUiohookMouseDown: (() => void) | null = null;
     private overlayVersion: OverlayVersion = 'poe2';
+    private levelingOnlyMode = false;
     private readonly handleGlobalMouseDown = () => {
         this.hideTargetIndicator();
     };
@@ -378,6 +379,12 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             const resolvedOverlayVersion: OverlayVersion = isOverlayVersion(overlayVersionSetting) ? overlayVersionSetting : 'poe2';
             this.overlayVersion = resolvedOverlayVersion;
             console.log('[Init] Overlay version set to', this.overlayVersion);
+
+            this.levelingOnlyMode = this.computeLevelingOnlyMode();
+            console.log('[Init] Leveling-only mode:', this.levelingOnlyMode);
+            if (this.levelingOnlyMode) {
+                console.log('[Init] PoE1 leveling overlay only mode detected - will skip main overlay creation');
+            }
 
             this.migrateLegacyFeatureSplashFlag();
 
@@ -486,12 +493,17 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
 
             this.updateSplash('Resolving data path');
             const initialDataPath = this.resolveInitialDataPath();
-            
+
             if (this.overlayVersion === 'poe1') {
-                this.updateSplash('PoE1 mode: loading PoE1 data');
                 const modifiersPath = this.getModifiersDir();
                 this.modifierDatabase = new ModifierDatabase(modifiersPath, false, 'poe1');
-                await this.modifierDatabase.loadAsync((msg) => this.updateSplash(msg));
+
+                if (this.levelingOnlyMode) {
+                    this.updateSplash('PoE1 leveling overlay mode - skipping modifier catalogs');
+                } else {
+                    this.updateSplash('PoE1 mode: loading PoE1 data');
+                    await this.modifierDatabase.loadAsync((msg) => this.updateSplash(msg));
+                }
             } else {
                 this.updateSplash('Loading enabled features');
                 const featureLoader = new FeatureLoader(
@@ -505,7 +517,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 this.modifierDatabase = modifierDatabase as any;
             }
 
-            if (this.modifierDatabase) {
+            if (this.modifierDatabase && !this.levelingOnlyMode) {
                 this.updateSplash('Modifiers loaded');
                 try {
                     const cats = await this.modifierDatabase.getAllCategories();
@@ -513,75 +525,107 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 } catch {}
             }
 
-            this.updateSplash('Starting parsers');
             this.itemParser = new ItemParser(this.overlayVersion as 'poe1' | 'poe2');
             this.clipboardMonitor = new ClipboardMonitor();
             this.keyboardMonitor = new KeyboardMonitor();
-            try { this.keyboardMonitor!.start(); } catch {}
-            try { this.keyboardMonitor?.on?.('mouse-down', this.handleGlobalMouseDown); } catch {}
 
-            const hookLogger = (message: string, details?: unknown) => {
-                if (details) {
-                    console.debug(message, details);
-                } else {
-                    console.debug(message);
-                }
-            };
-            const hookReady = await initializeUiohookTrigger(hookLogger);
-            if (hookReady) {
-                try {
-                    this.removeUiohookMouseDown = await registerGlobalMouseDown(() => this.handleGlobalMouseDown(), hookLogger);
-                } catch (err) {
-                    console.warn('[Overlay] Failed to attach uIOhook mouse listener', err);
-                }
+            if (this.levelingOnlyMode) {
+                this.updateSplash('Leveling overlay mode - skipping capture services');
+                this.uiohookInitialized = false;
+                this.removeUiohookMouseDown = null;
             } else {
-                console.warn('[Overlay] uIOhook trigger unavailable; global mouse-down listener disabled');
-            }
-            this.uiohookInitialized = hookReady;
-            if (!hookReady) {
-                console.warn('[Hotkey] uIOhook unavailable, falling back to RobotJS/SendKeys');
+                this.updateSplash('Starting parsers');
+                try { this.keyboardMonitor!.start(); } catch {}
+                try { this.keyboardMonitor?.on?.('mouse-down', this.handleGlobalMouseDown); } catch {}
+
+                const hookLogger = (message: string, details?: unknown) => {
+                    if (details) {
+                        console.debug(message, details);
+                    } else {
+                        console.debug(message);
+                    }
+                };
+                const hookReady = await initializeUiohookTrigger(hookLogger);
+                if (hookReady) {
+                    try {
+                        this.removeUiohookMouseDown = await registerGlobalMouseDown(() => this.handleGlobalMouseDown(), hookLogger);
+                    } catch (err) {
+                        console.warn('[Overlay] Failed to attach uIOhook mouse listener', err);
+                    }
+                } else {
+                    console.warn('[Overlay] uIOhook trigger unavailable; global mouse-down listener disabled');
+                }
+                this.uiohookInitialized = hookReady;
+                if (!hookReady) {
+                    console.warn('[Hotkey] uIOhook unavailable, falling back to RobotJS/SendKeys');
+                }
             }
 
-            this.updateSplash('Creating overlay window');
-            this.createOverlayWindow();
-            
-            this.floatingButton = new FloatingButton({
-                settingsService: this.settingsService
-            });
-            
+            if (!this.levelingOnlyMode) {
+                this.updateSplash('Creating overlay window');
+                this.createOverlayWindow();
+
+                this.floatingButton = new FloatingButton({
+                    settingsService: this.settingsService
+                });
+            } else {
+                this.updateSplash('Leveling overlay mode - skipping main overlay window');
+                this.floatingButton = null;
+            }
+
             this.levelingWindow = new LevelingWindow({
                 settingsService: this.settingsService
             });
-            
+
             this.updateSplash('Creating tray');
             this.tray = createTray({
                 onToggleOverlay: () => this.toggleOverlayWithAllCategory(),
-                onOpenModifiers: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','modifiers'); },140); },
-                onOpenHistory: () => { this.toggleOverlayWithAllCategory(); setTimeout(()=> { this.safeSendToOverlay('set-active-tab','history'); this.safeSendToOverlay('invoke-action','merchant-history'); },180); },
+                onOpenModifiers: () => {
+                    if (this.levelingOnlyMode) return;
+                    this.toggleOverlayWithAllCategory();
+                    setTimeout(() => { this.safeSendToOverlay('set-active-tab','modifiers'); }, 140);
+                },
+                onOpenHistory: () => {
+                    if (this.levelingOnlyMode) return;
+                    this.toggleOverlayWithAllCategory();
+                    setTimeout(() => {
+                        this.safeSendToOverlay('set-active-tab','history');
+                        this.safeSendToOverlay('invoke-action','merchant-history');
+                    }, 180);
+                },
                 onExportHistory: () => this.exportMerchantHistoryToCsv(),
                 onCleanupHistory: () => this.cleanupMerchantHistory(),
                 onQuit: () => app.quit(),
-                onToggleFloatingButton: () => this.toggleFloatingButton(),
+                onToggleFloatingButton: this.levelingOnlyMode ? undefined : () => this.toggleFloatingButton(),
                 onOpenSettings: () => this.openSettings(),
-                onShowOverlay: () => this.showDefaultOverlay({ focus: true }),
+                onShowOverlay: this.levelingOnlyMode
+                    ? () => this.levelingWindow?.toggle()
+                    : () => this.showDefaultOverlay({ focus: true }),
                 currentHotkeyLabel: this.getHotkeyKey(),
                 featureVisibility: this.overlayVersion === 'poe2'
                     ? {
                         modifiers: this.featureService?.isFeatureEnabled('modifiers') ?? false,
                         merchantHistory: this.featureService?.isFeatureEnabled('merchant') ?? false
                     }
-                    : {
-                        modifiers: true, // PoE1 has modifiers feature
-                        merchantHistory: false
-                    }
+                    : this.levelingOnlyMode
+                        ? {
+                            modifiers: false,
+                            merchantHistory: false
+                        }
+                        : {
+                            modifiers: true, // PoE1 has modifiers feature
+                            merchantHistory: false
+                        }
             });
             this.updateSplash('Registering shortcuts');
             this.registerShortcuts();
             this.updateSplash('Setting up services');
             this.setupIPC();
-            this.setupClipboardMonitoring();
+            if (!this.levelingOnlyMode) {
+                this.setupClipboardMonitoring();
+                try { (this.clipboardMonitor as any).start?.(); } catch {}
+            }
             this.imageCache.init();
-            try { (this.clipboardMonitor as any).start?.(); } catch {}
 
             // Auto-update configuration
             try {
@@ -670,7 +714,15 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             }
             
             // Keep the final ready message visible a bit longer so users notice
-            setTimeout(()=> this.closeSplash(), 3000);
+            setTimeout(() => {
+                this.closeSplash();
+                
+                // In leveling-only mode, show the leveling window to prevent app from quitting
+                if (this.levelingOnlyMode && this.levelingWindow) {
+                    console.log('[Init] Leveling-only mode - showing leveling window');
+                    this.levelingWindow.show();
+                }
+            }, 3000);
         });
     }
 
@@ -967,9 +1019,6 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
      * Show feature selection splash (first launch or manual config)
      */
     private async showFeatureSelection(): Promise<void> {
-        if (this.overlayVersion !== 'poe2') {
-            return;
-        }
         try {
             const selectedConfig = await showFeatureSplash(undefined, this.overlayVersion);
             if (selectedConfig) {
@@ -1714,6 +1763,11 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
 
     // Attempt to capture the currently hovered item from the game by issuing a copy and parsing clipboard
     private async captureItemFromGame(): Promise<boolean> {
+        if (this.levelingOnlyMode) {
+            console.log('[Hotkey] Leveling-only mode - skipping item capture');
+            return false;
+        }
+
         const now = Date.now();
         this.armedCaptureUntil = now + 1200;
         this.lastCopyTimestamp = now;
@@ -2585,6 +2639,11 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
     }
 
     private toggleOverlayWithAllCategory() {
+        if (this.levelingOnlyMode) {
+            this.levelingWindow?.toggle();
+            return;
+        }
+        
         if (this.isOverlayVisible) {
             this.hideOverlay();
         } else {
@@ -2594,6 +2653,11 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
 
     // Toggle overlay from floating button - enables pinned mode
     private toggleOverlayFromButton() {
+        if (this.levelingOnlyMode) {
+            this.levelingWindow?.toggle();
+            return;
+        }
+        
         if (this.isOverlayVisible) {
             this.hideOverlay();
         } else {
@@ -2679,6 +2743,55 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         }
     }
 
+    private computeLevelingOnlyMode(): boolean {
+        if (this.overlayVersion !== 'poe1') return false;
+        if (!this.featureService) return false;
+
+        try {
+            const config = this.featureService.getConfig();
+            console.log('[LevelingOnly] Evaluating with config.tools:', config.tools);
+            if (!config.tools?.enabled || !config.tools.subcategories?.poe1Leveling) {
+                return false;
+            }
+
+            // In PoE1 mode, only check PoE1-specific features
+            const otherFlags = [
+                config.poe1Modifiers,
+                config.poe1Crafting?.enabled,
+                config.poe1Character?.enabled,
+                config.poe1Items?.enabled,
+                config.merchant,
+                config.tools.subcategories.regex,
+                config.tools.subcategories.poe1Regex,
+                config.tools.subcategories.poe1Vorici
+            ];
+
+            const isLevelingOnly = otherFlags.every(flag => !flag);
+            console.log('[LevelingOnly] Other feature flags:', otherFlags, '=>', isLevelingOnly);
+            return isLevelingOnly;
+        } catch (error) {
+            console.warn('[Hotkey] Failed to evaluate leveling-only mode', error);
+            return false;
+        }
+    }
+
+    private shouldRouteHotkeyToLeveling(): boolean {
+        return this.levelingOnlyMode;
+    }
+
+    private handleLevelingOnlyHotkey(): void {
+        if (!this.levelingWindow) {
+            console.warn('[Hotkey] Leveling window not initialized');
+            return;
+        }
+
+        if (this.isOverlayVisible) {
+            this.hideOverlay();
+        }
+
+        this.levelingWindow.toggle();
+    }
+
     // Global keyboard shortcuts and simulation logic
     // This method GUARANTEES a hotkey will be registered, falling back to Q if necessary
     private registerShortcuts() {
@@ -2708,6 +2821,12 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
             this.shortcutAwaitingCapture = true;
 
             try {
+                if (this.shouldRouteHotkeyToLeveling()) {
+                    console.log('[Hotkey] Leveling-only mode active - toggling leveling overlay');
+                    this.handleLevelingOnlyHotkey();
+                    return;
+                }
+
                 // CAPTURE FIRST, then show overlay with results
                 // Don't show overlay before capture - it steals focus from game
                 const itemCaptured = await this.captureItemFromGame();
@@ -2723,7 +2842,8 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
             } finally {
                 this.shortcutAwaitingCapture = false;
             }
-        };        const floatingButtonHandler = () => {
+        };
+        const floatingButtonHandler = () => {
             this.toggleFloatingButton();
         };
         
@@ -2742,6 +2862,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
 
     // Monitors clipboard for external (manual) copies while armed
     private setupClipboardMonitoring() {
+        if (this.levelingOnlyMode) return;
         try {
             if (!this.clipboardMonitor) return;
             this.clipboardMonitor.on('text-changed', async (text: string) => {
@@ -2832,6 +2953,12 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         ipcMain.handle('get-enabled-features', () => {
             try {
                 const config = this.featureService?.getConfig() || this.buildDisabledFeatureConfig();
+
+                console.log('[IPC:get-enabled-features] Resolved config:', JSON.stringify({
+                    tools: config.tools,
+                    poe1Tools: config.tools?.subcategories,
+                    overlayVersion: this.overlayVersion
+                }));
 
                 if (this.overlayVersion === 'poe1') {
                     const disabled = this.buildDisabledFeatureConfig();

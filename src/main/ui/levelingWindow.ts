@@ -286,7 +286,8 @@ export class LevelingWindow {
         data: this.levelingData,
         progress: Array.from(this.completedSteps),
         currentActIndex: saved?.currentActIndex ?? 0,
-        actTimers: saved?.actTimers ?? {}
+        actTimers: saved?.actTimers ?? {},
+        settings: saved?.uiSettings ?? {}
       };
     });
 
@@ -316,6 +317,15 @@ export class LevelingWindow {
       this.settingsService.update('levelingWindow', (c) => ({
         ...c,
         actTimers: actTimers
+      }));
+      return true;
+    });
+
+    // Save UI settings
+    ipcMain.handle('save-leveling-settings', async (event, uiSettings: any) => {
+      this.settingsService.update('levelingWindow', (c) => ({
+        ...c,
+        uiSettings: uiSettings
       }));
       return true;
     });

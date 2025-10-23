@@ -300,6 +300,11 @@ export function buildLevelingPopoutHtml(): string {
       <span class='setting-value' id='fontSizeValue'>12px</span>
     </div>
     <div class='setting-row'>
+      <span class='setting-label'>Zoom Level</span>
+      <input type='range' class='setting-slider' id='zoomSlider' min='50' max='150' value='100' />
+      <span class='setting-value' id='zoomValue'>100%</span>
+    </div>
+    <div class='setting-row'>
       <span class='setting-label'>Visible Steps</span>
       <input type='range' class='setting-slider' id='visibleStepsSlider' min='1' max='99' value='99' />
       <span class='setting-value' id='visibleStepsValue'>All</span>
@@ -374,6 +379,7 @@ let state = {
   autoDetectZones: true,
   opacity: 96,
   fontSize: 12,
+  zoom: 100,
   minimalMode: 'normal', // 'normal', 'minimal', 'ultra'
   visibleSteps: 99,
   completedSteps: new Set(),
@@ -449,6 +455,18 @@ function groupStepsByZone(steps) {
 function saveState() {
   ipcRenderer.invoke('save-current-act-index', state.currentActIndex);
   ipcRenderer.invoke('save-act-timers', state.actTimers);
+  // Save UI settings
+  ipcRenderer.invoke('save-leveling-settings', {
+    opacity: state.opacity,
+    fontSize: state.fontSize,
+    zoom: state.zoom,
+    minimalMode: state.minimalMode,
+    mode: state.mode,
+    visibleSteps: state.visibleSteps,
+    showHints: state.showHints,
+    showOptional: state.showOptional,
+    groupByZone: state.groupByZone
+  });
 }
 
 function checkActCompletionAndAdvance() {
@@ -638,6 +656,10 @@ function render() {
   // Apply font size
   document.documentElement.style.setProperty('--font-size', state.fontSize + 'px');
   
+  // Apply zoom level
+  const zoomDecimal = (state.zoom / 100).toFixed(2);
+  mainWindow.style.zoom = zoomDecimal;
+  
   // Apply minimal mode classes
   mainWindow.classList.remove('minimal-mode', 'ultra-minimal-mode');
   minimalBtn.classList.remove('active', 'ultra');
@@ -647,6 +669,7 @@ function render() {
   if (state.minimalMode === 'minimal') {
     mainWindow.classList.add('minimal-mode');
     minimalBtn.classList.add('active');
+    // Immediately disable click-through
     ipcRenderer.send('set-ignore-mouse-events', false);
   } else if (state.minimalMode === 'ultra') {
     mainWindow.classList.add('ultra-minimal-mode');
@@ -657,12 +680,14 @@ function render() {
       dragHandle.dataset.ultraHandlersSet = 'true';
       let isOverHeader = false;
       
-      dragHandle.addEventListener('mouseenter', () => {
+      const mouseEnterHandler = () => {
         isOverHeader = true;
-        ipcRenderer.send('set-ignore-mouse-events', false);
-      });
+        if (state.minimalMode === 'ultra') {
+          ipcRenderer.send('set-ignore-mouse-events', false);
+        }
+      };
       
-      dragHandle.addEventListener('mouseleave', () => {
+      const mouseLeaveHandler = () => {
         isOverHeader = false;
         // Small delay to prevent flicker when clicking buttons
         setTimeout(() => {
@@ -670,17 +695,30 @@ function render() {
             ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
           }
         }, 50);
-      });
+      };
+      
+      dragHandle.addEventListener('mouseenter', mouseEnterHandler);
+      dragHandle.addEventListener('mouseleave', mouseLeaveHandler);
+      
+      // Store handlers for cleanup
+      dragHandle._ultraMouseHandlers = { mouseEnterHandler, mouseLeaveHandler };
       
       // Start with click-through enabled
       ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
     }
   } else {
-    // Normal mode - ensure click-through is OFF and clean up handlers flag
+    // Normal mode - immediately disable click-through and clean up handlers
+    ipcRenderer.send('set-ignore-mouse-events', false);
+    
     if (dragHandle) {
+      // Remove event listeners if they exist
+      if (dragHandle._ultraMouseHandlers) {
+        dragHandle.removeEventListener('mouseenter', dragHandle._ultraMouseHandlers.mouseEnterHandler);
+        dragHandle.removeEventListener('mouseleave', dragHandle._ultraMouseHandlers.mouseLeaveHandler);
+        delete dragHandle._ultraMouseHandlers;
+      }
       delete dragHandle.dataset.ultraHandlersSet;
     }
-    ipcRenderer.send('set-ignore-mouse-events', false);
   }
   
   // Apply layout mode
@@ -947,10 +985,12 @@ function render() {
   if (goToUltraBtn) goToUltraBtn.addEventListener('click', () => {
     state.minimalMode = 'ultra';
     render();
+    saveState();
   });
   if (backToNormalBtn) backToNormalBtn.addEventListener('click', () => {
     state.minimalMode = 'normal';
     render();
+    saveState();
   });
   
   // Position tooltips dynamically to prevent cutoff
@@ -1025,14 +1065,32 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
     state.actTimers = result.actTimers;
     console.log('Loaded act timers:', state.actTimers);
   }
+  // Load saved UI settings
+  if (result.settings) {
+    if (result.settings.opacity !== undefined) state.opacity = result.settings.opacity;
+    if (result.settings.fontSize !== undefined) state.fontSize = result.settings.fontSize;
+    if (result.settings.zoom !== undefined) state.zoom = result.settings.zoom;
+    if (result.settings.minimalMode !== undefined) state.minimalMode = result.settings.minimalMode;
+    if (result.settings.mode !== undefined) state.mode = result.settings.mode;
+    if (result.settings.visibleSteps !== undefined) state.visibleSteps = result.settings.visibleSteps;
+    if (result.settings.showHints !== undefined) state.showHints = result.settings.showHints;
+    if (result.settings.showOptional !== undefined) state.showOptional = result.settings.showOptional;
+    if (result.settings.groupByZone !== undefined) state.groupByZone = result.settings.groupByZone;
+    console.log('Loaded UI settings:', result.settings);
+  }
   // Initialize slider values to match state
   document.getElementById('fontSizeSlider').value = state.fontSize;
   document.getElementById('fontSizeValue').textContent = state.fontSize + 'px';
+  document.getElementById('zoomSlider').value = state.zoom;
+  document.getElementById('zoomValue').textContent = state.zoom + '%';
   document.getElementById('opacitySlider').value = state.opacity;
   document.getElementById('opacityValue').textContent = state.opacity + '%';
   document.getElementById('visibleStepsSlider').value = state.visibleSteps;
   document.getElementById('visibleStepsValue').textContent = state.visibleSteps >= 99 ? 'All' : state.visibleSteps.toString();
   document.getElementById('wideLayoutToggle').checked = state.mode === 'wide';
+  document.getElementById('showHints').checked = state.showHints;
+  document.getElementById('showOptional').checked = state.showOptional;
+  document.getElementById('groupByZone').checked = state.groupByZone;
   
   render();
 }).catch(err => {
@@ -1061,6 +1119,7 @@ document.querySelectorAll('#minimalBtn').forEach(btn => {
     if (state.minimalMode === 'normal') {
       state.minimalMode = 'minimal';
       render();
+      saveState();
     }
   });
 });
@@ -1069,12 +1128,21 @@ document.getElementById('opacitySlider').addEventListener('input', (e) => {
   state.opacity = parseInt(e.target.value);
   document.getElementById('opacityValue').textContent = state.opacity + '%';
   render();
+  saveState();
 });
 
 document.getElementById('fontSizeSlider').addEventListener('input', (e) => {
   state.fontSize = parseInt(e.target.value);
   document.getElementById('fontSizeValue').textContent = state.fontSize + 'px';
   render();
+  saveState();
+});
+
+document.getElementById('zoomSlider').addEventListener('input', (e) => {
+  state.zoom = parseInt(e.target.value);
+  document.getElementById('zoomValue').textContent = state.zoom + '%';
+  render();
+  saveState();
 });
 
 document.getElementById('visibleStepsSlider').addEventListener('input', (e) => {
@@ -1082,21 +1150,25 @@ document.getElementById('visibleStepsSlider').addEventListener('input', (e) => {
   const valueText = state.visibleSteps >= 99 ? 'All' : state.visibleSteps.toString();
   document.getElementById('visibleStepsValue').textContent = valueText;
   render();
+  saveState();
 });
 
 document.getElementById('showHints').addEventListener('change', (e) => {
   state.showHints = e.target.checked;
   render();
+  saveState();
 });
 
 document.getElementById('showOptional').addEventListener('change', (e) => {
   state.showOptional = e.target.checked;
   render();
+  saveState();
 });
 
 document.getElementById('groupByZone').addEventListener('change', (e) => {
   state.groupByZone = e.target.checked;
   render();
+  saveState();
 });
 
 document.getElementById('wideLayoutToggle').addEventListener('change', (e) => {
