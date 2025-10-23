@@ -10,18 +10,77 @@ export function buildLevelingPopoutHtml(): string {
     :root{--font-size:12px;}
     html,body{font-family:'Segoe UI',Arial,sans-serif;font-size:var(--font-size);color:#ddd;background:transparent;-webkit-user-select:none;overflow:hidden;width:100%;height:100%;}
     .window{display:flex;flex-direction:column;height:100vh;border:2px solid rgba(254,192,118,0.4);border-radius:12px;box-shadow:0 12px 48px rgba(0,0,0,0.9);}
+    /* Minimal Mode - slim drag header */
     .window.minimal-mode{border:none!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;}
-  .window.minimal-mode .header-content,
-  .window.minimal-mode .header-buttons,
-  .window.minimal-mode .close,
+    .window.minimal-mode .header{-webkit-app-region:no-drag;pointer-events:none!important;padding:0!important;background:transparent!important;border:none!important;min-height:0!important;height:0!important;overflow:visible!important;}
+    .window.minimal-mode .drag-handle{display:flex!important;flex-direction:column;position:absolute;top:0;left:0;right:0;height:24px;background:rgba(32,36,44,0.85);backdrop-filter:blur(4px);border-bottom:1px solid rgba(74,222,128,0.2);padding:4px 6px;gap:0px;z-index:100;pointer-events:auto!important;-webkit-app-region:drag;}
+    .window.minimal-mode .drag-handle-row{display:flex;align-items:center;gap:4px;width:100%;-webkit-app-region:drag;}
+    .window.minimal-mode .drag-handle-icon{font-size:10px;color:rgba(255,255,255,0.3);cursor:move;-webkit-app-region:drag;}
+    .window.minimal-mode .drag-handle .minimal-nav{display:flex!important;gap:4px;margin-right:auto;-webkit-app-region:no-drag;}
+    .window.minimal-mode .drag-handle .minimal-btn{width:auto!important;height:16px!important;font-size:9px!important;padding:0 6px!important;display:flex!important;align-items:center;justify-content:center;pointer-events:auto!important;-webkit-app-region:no-drag;opacity:0.7;transition:opacity 0.2s;background:rgba(74,222,128,0.2);border:1px solid rgba(74,222,128,0.3);color:rgba(255,255,255,0.9);border-radius:3px;}
+    .window.minimal-mode .drag-handle .minimal-btn:hover{opacity:1!important;background:rgba(74,222,128,0.3);}
+    .window.minimal-mode .drag-handle .header-btn{width:20px!important;height:16px!important;font-size:10px!important;display:flex!important;align-items:center;justify-content:center;pointer-events:auto!important;-webkit-app-region:no-drag;opacity:0.5;transition:opacity 0.2s;}
+    .window.minimal-mode .drag-handle .header-btn:hover{opacity:1!important;}
+    .window.minimal-mode .drag-handle-info{display:none!important;}
+    .window.minimal-mode #backToNormalBtn{display:none!important;}
+    .window.minimal-mode #goToUltraBtn{display:flex!important;}
+    .window.minimal-mode .header-content,
+    .window.minimal-mode .header-buttons,
+    .window.minimal-mode .zone-icon,
+    .window.minimal-mode .close,
     .window.minimal-mode .controls,
-    .window.minimal-mode .settings-panel{display:none!important;}
-    .window.minimal-mode .header{padding:4px;background:transparent!important;border:none!important;min-height:auto;}
-    .window.minimal-mode .zone-icon{display:none;}
-    .window.minimal-mode .list{padding:4px;}
-  .window.minimal-mode .footer{background:transparent!important;border:none!important;padding:4px 8px;display:flex;flex-direction:column;gap:8px;align-items:stretch;}
-  .window.minimal-mode .footer-progress{display:flex;}
+    .window.minimal-mode .settings-panel,
+    .window.minimal-mode .minimal-controls{display:none!important;}
+    .window.minimal-mode .footer{background:transparent!important;border:none!important;padding:4px 8px;}
+    .window.minimal-mode .list{padding:28px 4px 4px 4px!important;}
+    
+    /* Ultra Minimal Mode - click-through with no interactivity */
+    .window.ultra-minimal-mode{border:none!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;}
+    .window.ultra-minimal-mode .header{-webkit-app-region:no-drag;pointer-events:none!important;padding:0!important;background:transparent!important;border:none!important;min-height:0!important;height:0!important;overflow:visible!important;}
+    .window.ultra-minimal-mode .drag-handle{display:flex!important;flex-direction:column;position:absolute;top:0;left:0;right:0;height:auto;background:rgba(32,36,44,0.85);backdrop-filter:blur(4px);border-bottom:1px solid rgba(74,158,255,0.2);padding:4px 6px;gap:2px;z-index:100;pointer-events:auto!important;-webkit-app-region:drag;}
+    .window.ultra-minimal-mode .drag-handle-row{display:flex;align-items:center;gap:4px;width:100%;-webkit-app-region:drag;}
+    .window.ultra-minimal-mode .drag-handle-icon{font-size:10px;color:rgba(255,255,255,0.3);cursor:move;-webkit-app-region:drag;}
+    .window.ultra-minimal-mode .drag-handle .minimal-nav{display:flex!important;gap:4px;margin-right:auto;-webkit-app-region:no-drag;}
+    .window.ultra-minimal-mode .drag-handle .minimal-btn{width:auto!important;height:16px!important;font-size:9px!important;padding:0 6px!important;display:flex!important;align-items:center;justify-content:center;pointer-events:auto!important;-webkit-app-region:no-drag;opacity:0.7;transition:opacity 0.2s;background:rgba(74,158,255,0.2);border:1px solid rgba(74,158,255,0.3);color:rgba(255,255,255,0.9);border-radius:3px;}
+    .window.ultra-minimal-mode .drag-handle .minimal-btn:hover{opacity:1!important;background:rgba(74,158,255,0.3);}
+    .window.ultra-minimal-mode .drag-handle .header-btn{width:20px!important;height:16px!important;font-size:10px!important;display:flex!important;align-items:center;justify-content:center;pointer-events:auto!important;-webkit-app-region:no-drag;opacity:0.5;transition:opacity 0.2s;}
+    .window.ultra-minimal-mode .drag-handle .header-btn:hover{opacity:1!important;}
+    .window.ultra-minimal-mode .drag-handle-info{display:flex!important;flex-direction:row;gap:6px;align-items:center;padding-left:14px;-webkit-app-region:no-drag;pointer-events:auto!important;}
+    .window.ultra-minimal-mode .drag-handle-timer{font-size:9px;color:rgba(255,255,255,0.8);font-weight:600;white-space:nowrap;cursor:default;}
+    .window.ultra-minimal-mode .drag-handle-progress{display:flex;align-items:center;gap:4px;flex:1;min-width:0;}
+    .window.ultra-minimal-mode .drag-handle-progress-bar{flex:1;height:4px;background:rgba(0,0,0,0.4);border-radius:2px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);}
+    .window.ultra-minimal-mode .drag-handle-progress-fill{height:100%;background:linear-gradient(90deg,#4ade80,#22c55e);transition:width 0.3s;box-shadow:0 0 6px rgba(74,222,128,0.5);}
+    .window.ultra-minimal-mode .drag-handle-progress-text{font-size:8px;color:rgba(255,255,255,0.7);font-weight:600;min-width:28px;text-align:right;}
+    .window.ultra-minimal-mode .timer-controls{display:flex!important;gap:3px;-webkit-app-region:no-drag;}
+    .window.ultra-minimal-mode .timer-btn{width:auto!important;height:14px!important;font-size:8px!important;padding:0 4px!important;background:rgba(74,158,255,0.2)!important;border:1px solid rgba(74,158,255,0.3)!important;color:rgba(255,255,255,0.8)!important;border-radius:3px!important;cursor:pointer!important;pointer-events:auto!important;-webkit-app-region:no-drag;opacity:0.7;transition:opacity 0.2s;}
+    .window.ultra-minimal-mode .timer-btn:hover{opacity:1!important;background:rgba(74,158,255,0.4)!important;}
+    .window.ultra-minimal-mode #goToUltraBtn{display:none!important;}
+    .window.ultra-minimal-mode #backToNormalBtn{display:flex!important;}
+    .window.ultra-minimal-mode .header-content,
+    .window.ultra-minimal-mode .header-buttons,
+    .window.ultra-minimal-mode .zone-icon,
+    .window.ultra-minimal-mode .close,
+    .window.ultra-minimal-mode .controls,
+    .window.ultra-minimal-mode .settings-panel,
+    .window.ultra-minimal-mode .footer,
+    .window.ultra-minimal-mode .minimal-controls{display:none!important;}
+    .window.ultra-minimal-mode .step-checkbox,
+    .window.ultra-minimal-mode .zone-checkbox,
+    .window.ultra-minimal-mode .task-checkbox{display:none!important;}
+    .window.ultra-minimal-mode .leveling-step{background:rgba(32,36,44,0.85)!important;border:1px solid rgba(74,158,255,0.15)!important;}
+    .window.ultra-minimal-mode .leveling-step.current{background:rgba(50,54,64,0.9)!important;border-color:rgba(74,158,255,0.3)!important;}
+    .window.ultra-minimal-mode .leveling-group{background:rgba(32,36,44,0.85)!important;border:1px solid rgba(74,222,128,0.15)!important;}
+    .window.ultra-minimal-mode .leveling-group.current{background:rgba(40,50,44,0.9)!important;border-color:rgba(74,222,128,0.3)!important;}
+    .window.ultra-minimal-mode .list{padding:40px 4px 4px 4px!important;}
+    .window.ultra-minimal-mode .list::-webkit-scrollbar{display:none!important;}
+    .window.ultra-minimal-mode .list{scrollbar-width:none!important;-ms-overflow-style:none!important;}
+    .drag-handle{display:none;}
+    .drag-handle-row{display:none;}
+    .drag-handle-info{display:none;}
+    #goToUltraBtn{display:none;}
+    #backToNormalBtn{display:none;}
     #minimalBtn.active{background:rgba(138,43,226,0.5);border-color:rgba(138,43,226,0.9);color:#fff;}
+    #minimalBtn.ultra{background:rgba(255,0,255,0.6);border-color:rgba(255,0,255,1);color:#fff;}
     .minimal-controls{display:none;gap:4px;margin-bottom:4px;align-items:stretch;}
     .window.minimal-mode .minimal-controls{display:flex;}
     .minimal-nav{display:flex;gap:4px;flex:1;}
@@ -78,7 +137,7 @@ export function buildLevelingPopoutHtml(): string {
     .progress-bar{flex:1;height:8px;background:rgba(0,0,0,0.4);border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);}
     .progress-fill{height:100%;background:linear-gradient(90deg,#4ade80,#22c55e);transition:width 0.3s;box-shadow:0 0 10px rgba(74,222,128,0.5);}
     .progress-text{font-size:10px;color:rgba(255,255,255,0.7);font-weight:600;min-width:60px;text-align:right;}
-    .list{flex:1;overflow-y:auto;overflow-x:visible;padding:12px;display:flex;flex-direction:column;box-sizing:border-box;}
+    .list{flex:1;overflow-y:auto;overflow-x:hidden;padding:12px;display:flex;flex-direction:column;box-sizing:border-box;}
     .list.wide{flex-direction:row;overflow-x:auto;overflow-y:hidden;gap:12px;align-items:stretch;}
     .list.wide .leveling-group{margin-bottom:0;min-width:320px;max-width:320px;flex-shrink:0;display:flex;flex-direction:column;}
     .list.wide .leveling-step{margin-bottom:0;min-width:320px;max-width:320px;flex-shrink:0;}
@@ -97,7 +156,7 @@ export function buildLevelingPopoutHtml(): string {
     .info-btn:hover .info-tooltip{visibility:visible;}
     .info-tooltip a{color:#4a9eff;text-decoration:none;font-weight:600;}
     .info-tooltip a:hover{text-decoration:underline;}
-  .footer{padding:8px 12px;background:rgba(30,34,40,0.85);border-top:1px solid rgba(255,255,255,0.1);display:flex;gap:12px;align-items:center;justify-content:space-between;-webkit-app-region:no-drag;}
+  .footer{padding:8px 12px;background:rgba(30,34,40,0.85);border-top:1px solid rgba(255,255,255,0.1);display:flex;gap:12px;align-items:center;justify-content:space-between;-webkit-app-region:no-drag;overflow:visible;position:relative;}
   .footer-progress{display:none;flex-direction:column;gap:4px;flex:1;}
   .footer-row{display:flex;align-items:center;gap:10px;width:100%;}
   .footer-progress .progress-bar{height:6px;}
@@ -107,7 +166,7 @@ export function buildLevelingPopoutHtml(): string {
     .timer-btn{padding:4px 10px;background:rgba(60,64,72,0.8);border:1px solid rgba(255,255,255,0.2);border-radius:4px;cursor:pointer;font-size:10px;color:rgba(255,255,255,0.9);transition:all 0.15s;font-weight:600;}
     .timer-btn:hover{background:rgba(74,158,255,0.7);border-color:rgba(74,158,255,1);color:#fff;}
     .timer-btn.active{background:rgba(74,222,128,0.3);border-color:rgba(74,222,128,0.8);color:#4ade80;}
-  .leveling-group{margin-bottom:12px;background:rgba(74,222,128,0.03);border:1px solid rgba(74,222,128,0.15);border-left:3px solid rgba(74,222,128,0.4);border-radius:8px;padding:12px;transition:all 0.2s;overflow:visible;box-sizing:border-box;}
+  .leveling-group{margin-bottom:12px;background:rgba(74,222,128,0.03);border:1px solid rgba(74,222,128,0.15);border-left:3px solid rgba(74,222,128,0.4);border-radius:8px;padding:12px;transition:all 0.2s;overflow:visible;box-sizing:border-box;position:relative;}
     .leveling-group.current{background:rgba(74,222,128,0.08);border-color:rgba(74,222,128,0.3);border-left-color:rgba(74,222,128,0.8);}
     .leveling-group:hover{background:rgba(74,222,128,0.05);border-color:rgba(74,222,128,0.2);}
     .zone-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(74,222,128,0.2);cursor:pointer;}
@@ -120,24 +179,24 @@ export function buildLevelingPopoutHtml(): string {
     .task-checkbox{display:table-cell;width:24px;vertical-align:top;padding:2px 4px 0 0;}
     .task-checkbox input{width:20px;height:20px;cursor:pointer;}
   .task-bullet{display:table-cell;width:30px;text-align:center;vertical-align:top;font-size:calc(var(--font-size) + 2px);padding:2px 4px 0 0;}
-  .task-content{display:table-cell;width:auto;vertical-align:top;padding:0;}
+  .task-content{display:table-cell;width:auto;vertical-align:top;padding:0;position:relative;}
   .task-desc{color:#ddd;line-height:1.4;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;padding-left:2px;font-size:var(--font-size);}
   .task-desc-text{display:inline-block;word-break:break-word;}
   .task-desc.checked{color:#888;text-decoration:line-through;opacity:0.6;}
     .task-hint{font-size:calc(var(--font-size) - 2px);color:#999;font-style:italic;margin-top:2px;}
     .task-reward{font-size:calc(var(--font-size) - 2px);color:#4ade80;margin-top:2px;}
-  .leveling-step{display:flex;gap:10px;padding:14px 12px;margin-bottom:8px;background:rgba(255,255,255,0.03);border-left:3px solid rgba(255,255,255,0.3);border-radius:8px;transition:all 0.25s;overflow:visible;}
+  .leveling-step{display:flex;gap:10px;padding:14px 12px;margin-bottom:8px;background:rgba(255,255,255,0.03);border-left:3px solid rgba(255,255,255,0.3);border-radius:8px;transition:all 0.25s;overflow:visible;position:relative;}
     .leveling-step.current{background:rgba(255,255,255,0.15);padding:16px 14px;box-shadow:0 2px 8px rgba(0,0,0,0.3);border-left-color:rgba(254,192,118,0.8);}
     .leveling-step.priority{border-left-width:4px;}
     .leveling-step.priority.current{box-shadow:0 0 20px rgba(254,192,118,0.3);}
     .step-checkbox{width:18px;height:18px;min-width:18px;margin-top:2px;cursor:pointer;flex-shrink:0;}
-  .step-content{flex:1 1 auto;display:grid;grid-template-columns:1fr;gap:6px;}
+  .step-content{flex:1 1 auto;display:grid;grid-template-columns:1fr;gap:6px;position:relative;}
   .step-main{display:grid;grid-template-columns:28px 1fr;align-items:flex-start;gap:8px;}
     .step-icon-wrap{width:28px;height:28px;min-width:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(255,255,255,0.2);grid-column:1;}
     .step-icon{font-size:16px;line-height:1;}
-  .step-desc-wrap{grid-column:2;display:flex;flex-direction:column;gap:4px;min-width:0;}
+  .step-desc-wrap{grid-column:2;display:flex;flex-direction:column;gap:4px;min-width:0;position:relative;}
     .zone-label{font-size:calc(var(--font-size) - 2px);color:rgba(254,192,118,0.7);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;}
-  .step-desc{color:#fff;font-weight:600;line-height:1.4;font-size:calc(var(--font-size) + 1px);word-wrap:break-word;overflow-wrap:break-word;display:block;word-break:break-word;padding-left:0;margin-left:0;text-indent:0;}
+  .step-desc{color:#fff;font-weight:600;line-height:1.4;font-size:calc(var(--font-size) + 1px);word-wrap:break-word;overflow-wrap:break-word;display:block;word-break:break-word;padding-left:0;margin-left:0;text-indent:0;position:relative;}
   .step-desc-text{display:block;word-break:break-word;padding-left:0;margin-left:0;text-indent:0;-webkit-font-smoothing:antialiased;}
     .step-desc.checked{color:#888;text-decoration:line-through;opacity:0.6;}
     .step-meta{display:flex;flex-wrap:wrap;gap:8px;padding-left:36px;font-size:calc(var(--font-size) - 1px);}
@@ -145,15 +204,17 @@ export function buildLevelingPopoutHtml(): string {
     .step-hint{padding:4px 10px 4px 36px;font-size:calc(var(--font-size) - 1px);color:#b8b8b8;line-height:1.4;font-style:italic;}
     .league-icon{display:inline-flex;font-size:12px;cursor:help;position:relative;margin-left:4px;opacity:0.7;}
     .league-icon:hover{opacity:1;}
-    .tooltip{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:rgba(20,20,28,0.98);border:1px solid rgba(254,192,118,0.5);padding:6px 10px;border-radius:6px;font-size:10px;color:#ddd;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity 0.2s;margin-bottom:4px;z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,0.5);}
+    .league-icon .tooltip{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:rgba(20,20,28,0.98);border:1px solid rgba(254,192,118,0.5);padding:6px 10px;border-radius:6px;font-size:10px;color:#ddd;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity 0.2s;margin-bottom:4px;z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,0.5);}
     .league-icon:hover .tooltip{opacity:1;}
-    .layout-tip-icon{display:inline-flex;font-size:11px;cursor:help;position:relative;margin-left:6px;opacity:0.6;color:#4a9eff;}
-    .layout-tip-icon:hover{opacity:1;}
-    .layout-tip-icon .tooltip{background:rgba(74,158,255,0.15);border-color:rgba(74,158,255,0.6);color:#4a9eff;white-space:normal;max-width:250px;font-weight:500;}
+    .layout-tip-icon{display:inline-flex;cursor:help;position:relative;margin-left:6px;}
+    .layout-tip-icon .more-pill{display:inline-block;padding:2px 8px;background:rgba(74,158,255,0.2);border:1px solid rgba(74,158,255,0.5);border-radius:10px;font-size:10px;color:#4a9eff;font-weight:600;opacity:0.8;transition:all 0.2s;}
+    .layout-tip-icon:hover .more-pill{opacity:1;background:rgba(74,158,255,0.3);border-color:rgba(74,158,255,0.7);}
+    .layout-tip-icon .tooltip{position:fixed;background:rgba(20,20,28,0.98);border:2px solid rgba(74,158,255,0.8);color:#e0e0e0;white-space:normal;word-wrap:break-word;overflow-wrap:break-word;width:320px;max-width:90vw;font-weight:400;font-size:11px;line-height:1.5;padding:12px 14px;box-shadow:0 8px 24px rgba(0,0,0,0.9), 0 0 40px rgba(74,158,255,0.3);pointer-events:none;opacity:0;transition:opacity 0.2s;z-index:99999;border-radius:8px;}
+    .layout-tip-icon:hover .tooltip{opacity:1;}
     
     /* Timer Tooltip Styles */
-    .timer-tooltip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:linear-gradient(135deg, rgba(30,30,40,0.98) 0%, rgba(20,20,30,0.98) 100%);border:2px solid rgba(254,192,118,0.6);padding:12px 16px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.7), 0 0 20px rgba(254,192,118,0.2);pointer-events:none;opacity:0;transition:opacity 0.3s ease, transform 0.3s ease;z-index:10000;min-width:220px;transform:translateX(-50%) translateY(5px);}
-    .timer-display:hover .timer-tooltip{opacity:1;transform:translateX(-50%) translateY(0);}
+    .timer-tooltip{position:fixed;bottom:auto;left:auto;background:linear-gradient(135deg, rgba(30,30,40,0.98) 0%, rgba(20,20,30,0.98) 100%);border:2px solid rgba(254,192,118,0.6);padding:12px 16px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.7), 0 0 20px rgba(254,192,118,0.2);pointer-events:none;opacity:0;transition:opacity 0.3s ease, transform 0.3s ease;z-index:99999;min-width:220px;}
+    .timer-display:hover .timer-tooltip{opacity:1;}
     .timer-tooltip-header{font-size:13px;font-weight:700;color:#fec076;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(254,192,118,0.3);text-align:center;letter-spacing:0.5px;text-transform:uppercase;}
     .timer-tooltip-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:12px;color:#e0e0e0;}
     .timer-tooltip-row.current{background:rgba(254,192,118,0.1);margin:0 -8px;padding:6px 8px;border-radius:5px;border-left:3px solid #fec076;}
@@ -173,6 +234,28 @@ export function buildLevelingPopoutHtml(): string {
 </head>
 <body>
 <div class='window' id='mainWindow'>
+  <div class='drag-handle' id='dragHandle'>
+    <div class='drag-handle-row'>
+      <span class='drag-handle-icon'>⋮⋮</span>
+      <div class='minimal-nav'>
+        <button class='minimal-btn' id='minimalPrevBtn'>◀ Prev</button>
+        <button class='minimal-btn' id='minimalNextBtn'>Next ▶</button>
+      </div>
+      <button class='header-btn' id='goToUltraBtn' title='Go to Ultra Minimal'>⬇</button>
+      <button class='header-btn' id='backToNormalBtn' title='Back to Normal'>⬆</button>
+    </div>
+    <div class='drag-handle-info'>
+      <div class='drag-handle-timer' id='dragHandleTimer'>Act1 00:00</div>
+      <div class='drag-handle-progress'>
+        <div class='drag-handle-progress-bar'><div class='drag-handle-progress-fill' id='dragHandleProgressFill' style='width:0%'></div></div>
+        <div class='drag-handle-progress-text' id='dragHandleProgressText'>0%</div>
+      </div>
+      <div class='timer-controls'>
+        <button class='timer-btn' id='dragTimerStartPause' title='Start/Pause timer'>Start</button>
+        <button class='timer-btn' id='dragTimerReset' title='Reset timer'>Reset</button>
+      </div>
+    </div>
+  </div>
   <div class='header'>
     <span class='zone-icon'>⚡</span>
     <div class='header-content'>
@@ -194,7 +277,7 @@ export function buildLevelingPopoutHtml(): string {
       <div class='subtitle' id='headerSubtitle'>Loading...</div>
     </div>
     <div class='header-buttons'>
-      <button class='header-btn' id='minimalBtn' title='Ultra minimal view'>◧</button>
+      <button class='header-btn' id='minimalBtn' title='Minimize to compact view'>◧</button>
       <button class='header-btn' id='settingsBtn' title='Settings'>⚙️</button>
       <div class='close' onclick='window.close()'>×</div>
     </div>
@@ -291,7 +374,7 @@ let state = {
   autoDetectZones: true,
   opacity: 96,
   fontSize: 12,
-  minimalMode: false,
+  minimalMode: 'normal', // 'normal', 'minimal', 'ultra'
   visibleSteps: 99,
   completedSteps: new Set(),
   levelingData: null,
@@ -332,7 +415,7 @@ function getLeagueIcon(step) {
 
 function getLayoutTipIcon(step) {
   if (!step.layoutTip) return '';
-  return '<span class="layout-tip-icon">💡<span class="tooltip">'+escapeHtml(step.layoutTip)+'</span></span>';
+  return '<span class="layout-tip-icon"><span class="more-pill">...</span><span class="tooltip">'+escapeHtml(step.layoutTip)+'</span></span>';
 }
 
 function groupStepsByZone(steps) {
@@ -545,7 +628,7 @@ function render() {
   const mainWindow = document.getElementById('mainWindow');
   
   // Apply opacity - fix CSS gradient syntax (only if NOT in minimal mode)
-  if (!state.minimalMode) {
+  if (state.minimalMode === 'normal') {
     const opacityDecimal = (state.opacity / 100).toFixed(2);
     mainWindow.style.background = \`linear-gradient(135deg,rgba(20,20,28,\${opacityDecimal}),rgba(15,15,22,\${opacityDecimal}))\`;
   } else {
@@ -555,13 +638,49 @@ function render() {
   // Apply font size
   document.documentElement.style.setProperty('--font-size', state.fontSize + 'px');
   
-  // Apply minimal mode
-  if (state.minimalMode) {
+  // Apply minimal mode classes
+  mainWindow.classList.remove('minimal-mode', 'ultra-minimal-mode');
+  minimalBtn.classList.remove('active', 'ultra');
+  
+  const dragHandle = document.getElementById('dragHandle');
+
+  if (state.minimalMode === 'minimal') {
     mainWindow.classList.add('minimal-mode');
     minimalBtn.classList.add('active');
+    ipcRenderer.send('set-ignore-mouse-events', false);
+  } else if (state.minimalMode === 'ultra') {
+    mainWindow.classList.add('ultra-minimal-mode');
+    minimalBtn.classList.add('ultra');
+    
+    // Setup mouse handlers only once (check if not already set)
+    if (dragHandle && !dragHandle.dataset.ultraHandlersSet) {
+      dragHandle.dataset.ultraHandlersSet = 'true';
+      let isOverHeader = false;
+      
+      dragHandle.addEventListener('mouseenter', () => {
+        isOverHeader = true;
+        ipcRenderer.send('set-ignore-mouse-events', false);
+      });
+      
+      dragHandle.addEventListener('mouseleave', () => {
+        isOverHeader = false;
+        // Small delay to prevent flicker when clicking buttons
+        setTimeout(() => {
+          if (!isOverHeader && state.minimalMode === 'ultra') {
+            ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
+          }
+        }, 50);
+      });
+      
+      // Start with click-through enabled
+      ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
+    }
   } else {
-    mainWindow.classList.remove('minimal-mode');
-    minimalBtn.classList.remove('active');
+    // Normal mode - ensure click-through is OFF and clean up handlers flag
+    if (dragHandle) {
+      delete dragHandle.dataset.ultraHandlersSet;
+    }
+    ipcRenderer.send('set-ignore-mouse-events', false);
   }
   
   // Apply layout mode
@@ -638,9 +757,39 @@ function render() {
       if (oldTooltip) oldTooltip.remove();
       // Add new tooltip
       timerDisplay.insertAdjacentHTML('beforeend', tooltipHTML);
+      
+      // Position tooltip dynamically on hover
+      const tooltip = timerDisplay.querySelector('.timer-tooltip');
+      if (tooltip) {
+        timerDisplay.addEventListener('mouseenter', function positionTooltip() {
+          const rect = timerDisplay.getBoundingClientRect();
+          const tooltipRect = tooltip.getBoundingClientRect();
+          
+          // Position above the timer, centered
+          const left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+          const bottom = window.innerHeight - rect.top + 10;
+          
+          tooltip.style.left = Math.max(10, left) + 'px';
+          tooltip.style.bottom = bottom + 'px';
+        });
+      }
     }
   }
   if (progressTextFooter) progressTextFooter.textContent = progressPct + '%';
+  
+  // Update drag-handle progress and timer (for ultra minimal mode)
+  const dragHandleProgressFill = document.getElementById('dragHandleProgressFill');
+  const dragHandleProgressText = document.getElementById('dragHandleProgressText');
+  const dragHandleTimer = document.getElementById('dragHandleTimer');
+  
+  if (dragHandleProgressFill) dragHandleProgressFill.style.width = progressPct + '%';
+  if (dragHandleProgressText) dragHandleProgressText.textContent = progressPct + '%';
+  if (dragHandleTimer) {
+    const currentActNum = act.actNumber;
+    const currentActTime = state.actTimers[currentActNum] || 0;
+    const timeStr = currentActTime > 0 ? formatTime(currentActTime) : '00:00';
+    dragHandleTimer.textContent = 'Act' + currentActNum + ' ' + timeStr;
+  }
   
   // Group steps
   const grouped = groupStepsByZone(allSteps);
@@ -661,9 +810,6 @@ function render() {
     headerSubtitle.textContent = act.actName + ' Complete! 🎉 (' + completedCount + '/' + totalSteps + ')';
   }
   
-  // Render - keep minimal controls at the beginning
-  const minimalControlsHtml = '<div class="minimal-controls"><div class="minimal-nav"><button class="minimal-btn" id="minimalPrevBtn">◀ Prev</button><button class="minimal-btn" id="minimalNextBtn">Next ▶</button></div><button class="minimal-restore" id="minimalRestoreBtn">◧</button></div>';
-  
   const stepsHtml = visible.map((group, groupIdx) => {
     const isCurrent = groupIdx === 0;
     const isMultiStep = group.steps.length > 1;
@@ -678,7 +824,7 @@ function render() {
     const stepType = STEP_TYPES[step.type] || STEP_TYPES.navigation;
     const cleanDesc = cleanDescription(step.description);
         const leagueIcon = getLeagueIcon(step);
-  const layoutTipIcon = (!state.showHints && step.layoutTip) ? getLayoutTipIcon(step) : '';
+  const layoutTipIcon = step.layoutTip ? getLayoutTipIcon(step) : '';
         const hintHtml = state.showHints && step.hint ? '<div class="task-hint">💡 '+escapeHtml(step.hint)+'</div>' : '';
         const rewardHtml = step.reward ? '<div class="task-reward">🎁 '+escapeHtml(step.reward)+'</div>' : '';
         
@@ -695,7 +841,7 @@ function render() {
       
       const cleanDesc = cleanDescription(step.description);
       const leagueIcon = getLeagueIcon(step);
-  const layoutTipIcon = (!state.showHints && step.layoutTip) ? getLayoutTipIcon(step) : '';
+  const layoutTipIcon = step.layoutTip ? getLayoutTipIcon(step) : '';
   const stepTextHtml = '<span class="step-desc-text">'+escapeHtml(cleanDesc)+'</span>';
       const hintHtml = state.showHints && step.hint ? '<div class="step-hint">💡 '+escapeHtml(step.hint)+'</div>' : '';
       
@@ -710,7 +856,7 @@ function render() {
     }
   }).join('');
   
-  list.innerHTML = minimalControlsHtml + stepsHtml;
+  list.innerHTML = stepsHtml;
   
   // Event listeners
   document.querySelectorAll('[data-action="toggle-step"]').forEach(el => {
@@ -790,16 +936,63 @@ function render() {
     });
   });
   
-  // Minimal mode button listeners (these are in the DOM now)
+  // Minimal mode button listeners (drag-handle buttons are always in DOM)
   const minimalPrevBtn = document.getElementById('minimalPrevBtn');
   const minimalNextBtn = document.getElementById('minimalNextBtn');
-  const minimalRestoreBtn = document.getElementById('minimalRestoreBtn');
+  const goToUltraBtn = document.getElementById('goToUltraBtn');
+  const backToNormalBtn = document.getElementById('backToNormalBtn');
   
   if (minimalPrevBtn) minimalPrevBtn.addEventListener('click', handlePrevBtn);
   if (minimalNextBtn) minimalNextBtn.addEventListener('click', handleNextBtn);
-  if (minimalRestoreBtn) minimalRestoreBtn.addEventListener('click', () => {
-    state.minimalMode = false;
+  if (goToUltraBtn) goToUltraBtn.addEventListener('click', () => {
+    state.minimalMode = 'ultra';
     render();
+  });
+  if (backToNormalBtn) backToNormalBtn.addEventListener('click', () => {
+    state.minimalMode = 'normal';
+    render();
+  });
+  
+  // Position tooltips dynamically to prevent cutoff
+  document.querySelectorAll('.layout-tip-icon').forEach(icon => {
+    const tooltip = icon.querySelector('.tooltip');
+    if (tooltip) {
+      icon.addEventListener('mouseenter', () => {
+        const iconRect = icon.getBoundingClientRect();
+        const tooltipRect = tooltip.getBoundingClientRect();
+        
+        // Center horizontally on the icon
+        const centerX = iconRect.left + (iconRect.width / 2);
+        tooltip.style.left = centerX + 'px';
+        tooltip.style.transform = 'translateX(-50%)';
+        
+        // Position vertically - above the icon by default
+        const spaceAbove = iconRect.top;
+        const spaceBelow = window.innerHeight - iconRect.bottom;
+        
+        if (spaceAbove > tooltipRect.height + 10 || spaceAbove > spaceBelow) {
+          // Show above
+          tooltip.style.top = (iconRect.top - 8) + 'px';
+          tooltip.style.transform = 'translateX(-50%) translateY(-100%)';
+        } else {
+          // Show below
+          tooltip.style.top = (iconRect.bottom + 8) + 'px';
+          tooltip.style.transform = 'translateX(-50%)';
+        }
+        
+        // Ensure it doesn't go off-screen horizontally
+        setTimeout(() => {
+          const finalRect = tooltip.getBoundingClientRect();
+          if (finalRect.left < 10) {
+            tooltip.style.left = '10px';
+            tooltip.style.transform = 'translateX(0)';
+          } else if (finalRect.right > window.innerWidth - 10) {
+            tooltip.style.left = (window.innerWidth - 10) + 'px';
+            tooltip.style.transform = 'translateX(-100%)';
+          }
+        }, 0);
+      });
+    }
   });
 }
 
@@ -840,6 +1033,7 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
   document.getElementById('visibleStepsSlider').value = state.visibleSteps;
   document.getElementById('visibleStepsValue').textContent = state.visibleSteps >= 99 ? 'All' : state.visibleSteps.toString();
   document.getElementById('wideLayoutToggle').checked = state.mode === 'wide';
+  
   render();
 }).catch(err => {
   console.error('Failed to load:', err);
@@ -859,9 +1053,16 @@ document.getElementById('settingsBtn').addEventListener('click', () => {
   }
 });
 
-document.getElementById('minimalBtn').addEventListener('click', () => {
-  state.minimalMode = !state.minimalMode;
-  render();
+// Attach event listener to all minimal buttons (header only)
+document.querySelectorAll('#minimalBtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Header button: only works in normal mode (button is hidden in minimal/ultra)
+    // Cycle: normal -> minimal
+    if (state.minimalMode === 'normal') {
+      state.minimalMode = 'minimal';
+      render();
+    }
+  });
 });
 
 document.getElementById('opacitySlider').addEventListener('input', (e) => {
@@ -968,15 +1169,26 @@ document.getElementById('cleanLogBtn').addEventListener('click', async () => {
 
 // Reset progress button handler
 document.getElementById('resetProgressBtn').addEventListener('click', async () => {
-  const confirmed = confirm('⚠️ WARNING: This will reset ALL your leveling progress to zero. You will start from the beginning. Are you absolutely sure?');
+  const confirmed = confirm('⚠️ WARNING: This will reset ALL act progress, completed steps, and timers!\\n\\nAre you sure you want to continue?');
   if (!confirmed) return;
   
   const result = await ipcRenderer.invoke('reset-leveling-progress');
   if (result) {
+    // Reset frontend state
     state.completedSteps.clear();
     state.showCompleted = false;
+    state.timer.elapsed = 0;
+    state.timer.display = '00:00';
+    state.currentActIndex = 0;
+    
+    // Update UI
     render();
-    alert('✅ Progress reset successfully! Starting fresh.');
+    
+    // Update timer display
+    const timerDisplay = document.querySelector('.timer-display');
+    if (timerDisplay) {
+      timerDisplay.textContent = '⏱️ 00:00';
+    }
   }
 });
 
@@ -987,8 +1199,14 @@ function updateTimerDisplay() {
   const seconds = totalSeconds % 60;
   const timeStr = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
   const displayText = 'Act' + state.timer.currentAct + ' ' + timeStr;
+  
+  // Update main timer display (footer)
   const mainDisplay = document.getElementById('timerDisplay');
   if (mainDisplay) mainDisplay.textContent = displayText;
+  
+  // Update drag handle timer display (minimal/ultra modes)
+  const dragDisplay = document.getElementById('dragHandleTimer');
+  if (dragDisplay) dragDisplay.textContent = displayText;
 }
 
 function startTimer() {
@@ -996,9 +1214,14 @@ function startTimer() {
     state.timer.isRunning = true;
     state.timer.startTime = Date.now() - state.timer.elapsed;
     const mainBtn = document.getElementById('timerStartPause');
+    const dragBtn = document.getElementById('dragTimerStartPause');
     if (mainBtn) {
       mainBtn.textContent = 'Pause';
       mainBtn.classList.add('active');
+    }
+    if (dragBtn) {
+      dragBtn.textContent = 'Pause';
+      dragBtn.classList.add('active');
     }
     
     timerInterval = setInterval(() => {
@@ -1015,9 +1238,14 @@ function pauseTimer() {
     state.timer.isRunning = false;
     clearInterval(timerInterval);
     const mainBtn = document.getElementById('timerStartPause');
+    const dragBtn = document.getElementById('dragTimerStartPause');
     if (mainBtn) {
       mainBtn.textContent = 'Start';
       mainBtn.classList.remove('active');
+    }
+    if (dragBtn) {
+      dragBtn.textContent = 'Start';
+      dragBtn.classList.remove('active');
     }
   }
 }
@@ -1031,6 +1259,12 @@ function resetTimer() {
 
 document.getElementById('timerStartPause').addEventListener('click', startTimer);
 document.getElementById('timerReset').addEventListener('click', resetTimer);
+
+// Drag-handle timer buttons (same functionality as footer timer buttons)
+const dragTimerStartPause = document.getElementById('dragTimerStartPause');
+const dragTimerReset = document.getElementById('dragTimerReset');
+if (dragTimerStartPause) dragTimerStartPause.addEventListener('click', startTimer);
+if (dragTimerReset) dragTimerReset.addEventListener('click', resetTimer);
 
 // Prev/Next button handlers
 function handlePrevBtn() {

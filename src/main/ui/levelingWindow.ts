@@ -323,6 +323,13 @@ export class LevelingWindow {
     // Reset progress
     ipcMain.handle('reset-leveling-progress', async () => {
       this.completedSteps = new Set();
+      // Reset act timers and current act index
+      const saved = this.settingsService.get('levelingWindow');
+      if (saved) {
+        saved.actTimers = {};
+        saved.currentActIndex = 0;
+        this.settingsService.set('levelingWindow', saved);
+      }
       this.saveProgress();
       return true;
     });
@@ -339,6 +346,13 @@ export class LevelingWindow {
     ipcMain.on('leveling-resize-preset', (event, size: { width: number; height: number }) => {
       if (this.window && !this.window.isDestroyed()) {
         this.window.setSize(size.width, size.height, true);
+      }
+    });
+
+    // Set click-through (ignore mouse events)
+    ipcMain.on('set-ignore-mouse-events', (event, ignore: boolean, options?: { forward: boolean }) => {
+      if (this.window && !this.window.isDestroyed()) {
+        this.window.setIgnoreMouseEvents(ignore, options);
       }
     });
 
