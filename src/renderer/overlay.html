@@ -454,6 +454,10 @@
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06A1.65 1.65 0 0015 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0l-.06-.06A1.65 1.65 0 008.6 19.4a1.65 1.65 0 00-1.82-.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 008.6 9a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0l.06.06A1.65 1.65 0 0015 9a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 13c0 .4.16.78.44 1.06z"/></svg></span>
                         <span>Vorici Calculator</span>
                     </div>
+                    <div class="tools-menu-item poe1-only" data-action="poe1-leveling" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+                        <span>Leveling Guide</span>
+                    </div>
                 </div>
             </div>
             <button id="tabHistory" class="tab" style="background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px; display:inline-flex; align-items:center; gap:4px;">
@@ -1310,6 +1314,21 @@
                 }
                 setHeader('Vorici Calculator');
                 recordHeaderAction('Vorici Calculator');
+                return true;
+            }
+
+            if (action === 'tools:poe1-leveling') {
+                const menuItem = document.querySelector('#toolsMenu .tools-menu-item[data-action="poe1-leveling"]');
+                if (menuItem && window.getComputedStyle(menuItem).display === 'none') return false;
+                
+                // Toggle the separate leveling window instead of embedding in overlay
+                try {
+                    await window.electronAPI.toggleLevelingWindow();
+                } catch (err) {
+                    console.error('Failed to toggle leveling window', err);
+                }
+                
+                recordHeaderAction('Leveling Guide');
                 return true;
             }
         } catch (err) {
@@ -4250,6 +4269,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     setHeader('Vorici Calculator');
                     recordHeaderAction('Vorici Calculator');
+                } else if (action === 'poe1-leveling') {
+                    // Toggle the separate leveling window
+                    try {
+                        await window.electronAPI.toggleLevelingWindow();
+                    } catch (err) {
+                        console.error('Failed to toggle leveling window', err);
+                    }
+                    recordHeaderAction('Leveling Guide');
                 }
             });
         });

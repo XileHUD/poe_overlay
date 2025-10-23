@@ -34,6 +34,7 @@ declare global {
       getPoe1Gems?: () => Promise<any>;
       getPoe1GemDetail?: (gemSlug: string) => Promise<any>;
     getPoe1AscendancyNotables?: () => Promise<any>;
+      toggleLevelingWindow?: () => Promise<void>;
     };
     OverlayUtils?: {
       escapeHtml: (s: any) => string;
@@ -158,6 +159,13 @@ declare global {
       hide: () => void;
       reset: () => void;
       applyItem: (payload: any) => void;
+    };
+    OverlayPoe1Leveling?: {
+      show: () => Promise<void>;
+      hide: () => void;
+      reset: () => void;
+      isVisible: () => boolean;
+      detectZone: (zoneId: string) => void;
     };
     pendingVoriciData?: any;
   }

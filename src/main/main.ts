@@ -22,6 +22,7 @@ import { createTray } from './ui/trayService.js';
 import { initializeUiohookTrigger, registerGlobalMouseDown, shutdownUiohookTrigger, triggerCopyShortcut } from './hotkeys/uiohook-trigger.js';
 // NodeNext sometimes fails transiently on newly added files with explicit .js; use extensionless for TS while runtime still resolves .js after build
 import { FloatingButton } from './ui/floatingButton';
+import { LevelingWindow } from './ui/levelingWindow';
 import { HotkeyConfigurator } from './ui/hotkeyConfigurator';
 import { SettingsService, type UserSettings } from './services/settingsService.js';
 import { FeatureService } from './services/featureService.js';
@@ -293,6 +294,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
     private pendingDefaultView = false; // request renderer to show last/default view when no item provided
     private readonly HISTORY_FETCH_MIN_INTERVAL = 5 * 60 * 1000; // 5 minutes
     private floatingButton: FloatingButton | null = null;
+    private levelingWindow: LevelingWindow | null = null;
     private settingsService: SettingsService | null = null;
     private featureService: FeatureService | null = null;
     private hotkeyConfigurator: HotkeyConfigurator | null = null;
@@ -544,6 +546,10 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             this.createOverlayWindow();
             
             this.floatingButton = new FloatingButton({
+                settingsService: this.settingsService
+            });
+            
+            this.levelingWindow = new LevelingWindow({
                 settingsService: this.settingsService
             });
             
@@ -1515,6 +1521,12 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             ipcMain.handle('debug-get-image-log', () => {
                 return diag.slice(-150); // last entries
             });
+            
+            // Leveling window toggle
+            ipcMain.handle('toggle-leveling-window', () => {
+                this.levelingWindow?.toggle();
+            });
+            
             // Image caching (renderer will explicitly invoke to cache successes)
             ipcMain.handle('cache-image', async (_e, url: string) => {
                 try {

@@ -68,6 +68,7 @@ import './overlay/character/poe1/gems/globals';
 import './overlay/tools/regex/globals';
 import './overlay/tools/poe1/regex/globals';
 import './overlay/tools/poe1/vorici/globals';
+import './overlay/tools/poe1/leveling/globals';
 
 function enableNumberScrollWheel(): void {
     const precisionFromStep = (step: string): number => {

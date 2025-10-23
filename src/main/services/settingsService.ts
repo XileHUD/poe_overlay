@@ -13,6 +13,13 @@ export interface UserSettings {
     position?: { x: number; y: number };
     pinned?: boolean;
   };
+  levelingWindow?: {
+    enabled?: boolean;
+    position?: { x: number; y: number };
+    size?: { width: number; height: number };
+    wideMode?: boolean;
+    progress?: string[]; // Array of completed step IDs
+  };
   hotkey?: {
     key: string; // e.g., "Q", "E", "1", "F1", etc.
     useCtrl?: boolean; // when true (default), register as Ctrl/Cmd + key; when false, register as single key
@@ -38,6 +45,10 @@ export interface UserSettings {
   rateLimitRules?: string; // Last known rate limit rules (e.g., "5:60:60,10:600:120")
   rateLimitState?: string; // Last known rate limit state (e.g., "0:60:55,3:600:510")
   rateLimitTimestamp?: number; // Timestamp when rate limit info was saved (ms since epoch)
+  // Client.txt path settings for zone auto-detection
+  clientTxtPath?: string; // Custom path to Client.txt if user manually selected it
+  clientTxtAutoDetected?: boolean; // Whether the path was auto-detected or manually set
+  clientTxtLastChecked?: number; // Timestamp of last auto-detection attempt
 }
 
 export class SettingsService {

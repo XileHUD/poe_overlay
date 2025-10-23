@@ -141,6 +141,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
     getSetting: (key: string) => ipcRenderer.invoke('get-setting', key),
     setSetting: (key: string, value: any) => ipcRenderer.invoke('set-setting', key, value),
     
+    // Leveling window
+    toggleLevelingWindow: () => ipcRenderer.invoke('toggle-leveling-window'),
+    
     // Feature configuration
     getEnabledFeatures: () => ipcRenderer.invoke('get-enabled-features'),
     saveFeatureConfig: (config: any) => ipcRenderer.send('save-feature-config', config),

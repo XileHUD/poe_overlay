@@ -1,0 +1,820 @@
+// Leveling popout HTML with all logic embedded inline
+export function buildLevelingPopoutHtml(): string {
+  return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'/>
+  <title>PoE1 Leveling Guide</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{--font-size:12px;}
+    html,body{font-family:'Segoe UI',Arial,sans-serif;font-size:var(--font-size);color:#ddd;background:transparent;-webkit-user-select:none;overflow:hidden;width:100%;height:100%;}
+    .window{display:flex;flex-direction:column;height:100vh;border:2px solid rgba(254,192,118,0.4);border-radius:12px;box-shadow:0 12px 48px rgba(0,0,0,0.9);}
+    .window.minimal-mode{border:none!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;}
+  .window.minimal-mode .header-content,
+  .window.minimal-mode .header-buttons,
+  .window.minimal-mode .close,
+    .window.minimal-mode .controls,
+    .window.minimal-mode .settings-panel{display:none!important;}
+    .window.minimal-mode .header{padding:4px;background:transparent!important;border:none!important;min-height:auto;}
+    .window.minimal-mode .zone-icon{display:none;}
+    .window.minimal-mode .list{padding:4px;}
+  .window.minimal-mode .footer{background:transparent!important;border:none!important;padding:4px 8px;display:flex;flex-direction:column;gap:8px;align-items:stretch;}
+  .window.minimal-mode .footer-progress{display:flex;}
+    #minimalBtn.active{background:rgba(138,43,226,0.5);border-color:rgba(138,43,226,0.9);color:#fff;}
+    .minimal-controls{display:none;gap:4px;margin-bottom:4px;align-items:stretch;}
+    .window.minimal-mode .minimal-controls{display:flex;}
+    .minimal-nav{display:flex;gap:4px;flex:1;}
+    .minimal-btn{flex:1;padding:8px 12px;background:rgba(30,34,40,0.95);border:1px solid rgba(255,255,255,0.2);border-radius:6px;cursor:pointer;font-size:11px;color:rgba(255,255,255,0.9);transition:all 0.15s;font-weight:600;}
+    .minimal-btn:hover{background:rgba(74,158,255,0.8);border-color:rgba(74,158,255,1);color:#fff;}
+    .minimal-restore{padding:8px 14px;background:rgba(138,43,226,0.5);border:1px solid rgba(138,43,226,0.9);border-radius:6px;cursor:pointer;font-size:11px;color:#fff;transition:all 0.15s;font-weight:600;flex-shrink:0;}
+    .minimal-restore:hover{background:rgba(138,43,226,0.7);border-color:rgba(138,43,226,1);}
+  .task-bullet{width:26px;height:20px;display:flex;align-items:center;justify-content:center;font-size:14px;line-height:1;margin-top:2px;flex-shrink:0;}
+  /* Opaque cards in minimal mode - always fully readable */
+  .window.minimal-mode .leveling-step{background:rgba(32,36,44,0.98)!important;}
+  .window.minimal-mode .leveling-step.current{background:rgba(50,54,64,1)!important;}
+  .window.minimal-mode .leveling-group{background:rgba(32,36,44,0.98)!important;border-color:rgba(74,222,128,0.4)!important;}
+  .window.minimal-mode .leveling-group.current{background:rgba(40,50,44,1)!important;}
+    .header{padding:10px 14px;background:linear-gradient(135deg,rgba(40,44,52,0.98),rgba(30,34,42,0.98));cursor:default;-webkit-app-region:drag;display:flex;align-items:center;gap:10px;border-bottom:2px solid rgba(254,192,118,0.3);border-radius:10px 10px 0 0;}
+    .zone-icon{font-size:18px;line-height:1;text-shadow:0 2px 4px rgba(0,0,0,0.5);}
+    .header-content{flex:1;display:flex;flex-direction:column;gap:2px;}
+    .title{font-size:14px;font-weight:700;color:#FEC076;text-shadow:0 1px 2px rgba(0,0,0,0.5);}
+    .subtitle{font-size:10px;color:rgba(255,255,255,0.6);font-weight:500;}
+    .header-buttons{display:flex;gap:6px;-webkit-app-region:no-drag;}
+    .header-btn{width:28px;height:28px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;background:rgba(60,64,72,0.75);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.15s;color:rgba(255,255,255,0.8);padding:0;line-height:1;}
+    .header-btn:hover{background:rgba(74,158,255,0.8);border-color:rgba(74,158,255,1);color:#fff;transform:scale(1.05);}
+    .header-btn.active{background:rgba(74,222,128,0.3);border-color:rgba(74,222,128,0.8);color:#4ade80;}
+    .close{background:rgba(192,57,43,0.75);width:28px;height:28px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all 0.15s;-webkit-app-region:no-drag;}
+    .close:hover{background:rgba(231,76,60,0.9);border-color:rgba(231,76,60,1);color:#fff;}
+    .controls{padding:8px 12px;background:rgba(30,34,40,0.85);border-bottom:1px solid rgba(255,255,255,0.1);display:flex;gap:8px;align-items:center;-webkit-app-region:no-drag;}
+    .control-btn{padding:6px 12px;background:rgba(60,64,72,0.8);border:1px solid rgba(255,255,255,0.2);border-radius:6px;cursor:pointer;font-size:11px;color:rgba(255,255,255,0.9);transition:all 0.15s;font-weight:600;}
+    .control-btn:hover{background:rgba(74,158,255,0.7);border-color:rgba(74,158,255,1);color:#fff;transform:translateY(-1px);}
+    .progress-bar{flex:1;height:8px;background:rgba(0,0,0,0.4);border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);}
+    .progress-fill{height:100%;background:linear-gradient(90deg,#4ade80,#22c55e);transition:width 0.3s;box-shadow:0 0 10px rgba(74,222,128,0.5);}
+    .progress-text{font-size:10px;color:rgba(255,255,255,0.7);font-weight:600;min-width:60px;text-align:right;}
+    .list{flex:1;overflow-y:auto;overflow-x:visible;padding:12px;display:flex;flex-direction:column;box-sizing:border-box;}
+    .list.wide{flex-direction:row;overflow-x:auto;overflow-y:hidden;gap:12px;align-items:stretch;}
+    .list.wide .leveling-group{margin-bottom:0;min-width:320px;max-width:320px;flex-shrink:0;display:flex;flex-direction:column;}
+    .list.wide .leveling-step{margin-bottom:0;min-width:320px;max-width:320px;flex-shrink:0;}
+    .settings-panel{background:rgba(20,24,30,0.95);border-top:1px solid rgba(255,255,255,0.1);padding:12px;display:none;flex-direction:column;gap:10px;}
+    .settings-panel.visible{display:flex;}
+    .setting-row{display:flex;align-items:center;gap:10px;}
+    .setting-label{flex:1;font-size:11px;color:rgba(255,255,255,0.8);font-weight:500;}
+    .setting-checkbox{width:16px;height:16px;cursor:pointer;}
+    .setting-slider{flex:1;height:6px;-webkit-appearance:none;background:rgba(255,255,255,0.1);border-radius:3px;outline:none;}
+    .setting-slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#4ade80;cursor:pointer;}
+    .setting-value{min-width:40px;text-align:right;font-size:11px;color:rgba(255,255,255,0.7);font-weight:600;}
+    .info-btn{width:20px;height:20px;border-radius:50%;background:rgba(74,158,255,0.3);border:1px solid rgba(74,158,255,0.6);color:rgba(74,158,255,1);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;}
+    .info-btn:hover{background:rgba(74,158,255,0.5);border-color:rgba(74,158,255,0.9);}
+    .info-btn:active{background:rgba(74,158,255,0.7);transform:scale(0.95);}
+    .info-tooltip{visibility:hidden;position:absolute;bottom:100%;right:0;margin-bottom:8px;padding:10px;background:rgba(30,34,40,0.98);border:1px solid rgba(74,158,255,0.6);border-radius:6px;font-size:10px;color:rgba(255,255,255,0.9);width:280px;z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,0.5);line-height:1.4;}
+    .info-btn:hover .info-tooltip{visibility:visible;}
+    .info-tooltip a{color:#4a9eff;text-decoration:none;font-weight:600;}
+    .info-tooltip a:hover{text-decoration:underline;}
+  .footer{padding:8px 12px;background:rgba(30,34,40,0.85);border-top:1px solid rgba(255,255,255,0.1);display:flex;gap:12px;align-items:center;justify-content:space-between;-webkit-app-region:no-drag;}
+  .footer-progress{display:none;flex-direction:column;gap:4px;flex:1;}
+  .footer-row{display:flex;align-items:center;gap:10px;width:100%;}
+  .footer-progress .progress-bar{height:6px;}
+  .footer-progress .progress-text{font-size:10px;text-align:left;min-width:0;}
+    .timer-display{font-size:12px;color:#4ade80;font-weight:700;font-family:monospace;min-width:90px;}
+    .timer-controls{display:flex;gap:6px;margin-left:auto;}
+    .timer-btn{padding:4px 10px;background:rgba(60,64,72,0.8);border:1px solid rgba(255,255,255,0.2);border-radius:4px;cursor:pointer;font-size:10px;color:rgba(255,255,255,0.9);transition:all 0.15s;font-weight:600;}
+    .timer-btn:hover{background:rgba(74,158,255,0.7);border-color:rgba(74,158,255,1);color:#fff;}
+    .timer-btn.active{background:rgba(74,222,128,0.3);border-color:rgba(74,222,128,0.8);color:#4ade80;}
+  .leveling-group{margin-bottom:12px;background:rgba(74,222,128,0.03);border:1px solid rgba(74,222,128,0.15);border-left:3px solid rgba(74,222,128,0.4);border-radius:8px;padding:12px;transition:all 0.2s;overflow:visible;box-sizing:border-box;}
+    .leveling-group.current{background:rgba(74,222,128,0.08);border-color:rgba(74,222,128,0.3);border-left-color:rgba(74,222,128,0.8);}
+    .leveling-group:hover{background:rgba(74,222,128,0.05);border-color:rgba(74,222,128,0.2);}
+    .zone-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(74,222,128,0.2);cursor:pointer;}
+    .zone-checkbox{width:18px;height:18px;cursor:pointer;accent-color:#4ade80;}
+    .skip-to-btn{margin-left:auto;background:transparent;border:none;color:#888;padding:2px 4px;cursor:pointer;font-size:calc(var(--font-size) - 1px);opacity:0.5;transition:opacity 0.2s;}
+    .skip-to-btn:hover{opacity:1;color:#aaa;}
+    .zone-name{flex:1;font-weight:700;color:#4ade80;font-size:calc(var(--font-size) + 1px);}
+    .task-list{display:flex;flex-direction:column;gap:6px;padding:0;margin:0;}
+  .task-item{display:table;width:100%;table-layout:fixed;border-collapse:collapse;font-size:var(--font-size);}
+    .task-checkbox{display:table-cell;width:24px;vertical-align:top;padding:2px 4px 0 0;}
+    .task-checkbox input{width:20px;height:20px;cursor:pointer;}
+  .task-bullet{display:table-cell;width:30px;text-align:center;vertical-align:top;font-size:calc(var(--font-size) + 2px);padding:2px 4px 0 0;}
+  .task-content{display:table-cell;width:auto;vertical-align:top;padding:0;}
+  .task-desc{color:#ddd;line-height:1.4;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;padding-left:2px;font-size:var(--font-size);}
+  .task-desc-text{display:inline-block;word-break:break-word;}
+  .task-desc.checked{color:#888;text-decoration:line-through;opacity:0.6;}
+    .task-hint{font-size:calc(var(--font-size) - 2px);color:#999;font-style:italic;margin-top:2px;}
+    .task-reward{font-size:calc(var(--font-size) - 2px);color:#4ade80;margin-top:2px;}
+  .leveling-step{display:flex;gap:10px;padding:14px 12px;margin-bottom:8px;background:rgba(255,255,255,0.03);border-left:3px solid rgba(255,255,255,0.3);border-radius:8px;transition:all 0.25s;overflow:visible;}
+    .leveling-step.current{background:rgba(255,255,255,0.15);padding:16px 14px;box-shadow:0 2px 8px rgba(0,0,0,0.3);border-left-color:rgba(254,192,118,0.8);}
+    .leveling-step.priority{border-left-width:4px;}
+    .leveling-step.priority.current{box-shadow:0 0 20px rgba(254,192,118,0.3);}
+    .step-checkbox{width:18px;height:18px;min-width:18px;margin-top:2px;cursor:pointer;flex-shrink:0;}
+  .step-content{flex:1 1 auto;display:grid;grid-template-columns:1fr;gap:6px;}
+  .step-main{display:grid;grid-template-columns:28px 1fr;align-items:flex-start;gap:8px;}
+    .step-icon-wrap{width:28px;height:28px;min-width:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(255,255,255,0.2);grid-column:1;}
+    .step-icon{font-size:16px;line-height:1;}
+  .step-desc-wrap{grid-column:2;display:flex;flex-direction:column;gap:4px;min-width:0;}
+    .zone-label{font-size:calc(var(--font-size) - 2px);color:rgba(254,192,118,0.7);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;}
+  .step-desc{color:#fff;font-weight:600;line-height:1.4;font-size:calc(var(--font-size) + 1px);word-wrap:break-word;overflow-wrap:break-word;display:block;word-break:break-word;padding-left:0;margin-left:0;text-indent:0;}
+  .step-desc-text{display:block;word-break:break-word;padding-left:0;margin-left:0;text-indent:0;-webkit-font-smoothing:antialiased;}
+    .step-desc.checked{color:#888;text-decoration:line-through;opacity:0.6;}
+    .step-meta{display:flex;flex-wrap:wrap;gap:8px;padding-left:36px;font-size:calc(var(--font-size) - 1px);}
+    .badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:4px;border:1px solid;font-size:calc(var(--font-size) - 2px);font-weight:600;}
+    .step-hint{padding:4px 10px 4px 36px;font-size:calc(var(--font-size) - 1px);color:#b8b8b8;line-height:1.4;font-style:italic;}
+    .league-icon{display:inline-flex;font-size:12px;cursor:help;position:relative;margin-left:4px;opacity:0.7;}
+    .league-icon:hover{opacity:1;}
+    .tooltip{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:rgba(20,20,28,0.98);border:1px solid rgba(254,192,118,0.5);padding:6px 10px;border-radius:6px;font-size:10px;color:#ddd;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity 0.2s;margin-bottom:4px;z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,0.5);}
+    .league-icon:hover .tooltip{opacity:1;}
+    .layout-tip-icon{display:inline-flex;font-size:11px;cursor:help;position:relative;margin-left:6px;opacity:0.6;color:#4a9eff;}
+    .layout-tip-icon:hover{opacity:1;}
+    .layout-tip-icon .tooltip{background:rgba(74,158,255,0.15);border-color:rgba(74,158,255,0.6);color:#4a9eff;white-space:normal;max-width:250px;font-weight:500;}
+    ::-webkit-scrollbar{width:8px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:rgba(254,192,118,0.3);border-radius:4px;}::-webkit-scrollbar-thumb:hover{background:rgba(254,192,118,0.5);}
+  </style>
+</head>
+<body>
+<div class='window' id='mainWindow'>
+  <div class='header'>
+    <span class='zone-icon'>⚡</span>
+    <div class='header-content'>
+      <div class='title' id='headerTitle'>Act 1 - The Awakening</div>
+      <div class='subtitle' id='headerSubtitle'>Loading...</div>
+    </div>
+    <div class='header-buttons'>
+      <button class='header-btn' id='minimalBtn' title='Ultra minimal view'>◧</button>
+      <button class='header-btn' id='settingsBtn' title='Settings'>⚙️</button>
+      <button class='header-btn' id='backBtn' title='Show completed' style='display:none;'>◀</button>
+      <button class='header-btn' id='layoutBtn' title='Toggle layout'>⇄</button>
+      <div class='close' onclick='window.close()'>×</div>
+    </div>
+  </div>
+  <div class='controls'>
+    <button class='control-btn' id='prevBtn' title='Previous step'>◀ Prev</button>
+    <button class='control-btn' id='nextBtn' title='Next step'>Next ▶</button>
+    <div class='progress-bar'><div class='progress-fill' id='progressFill' style='width:0%'></div></div>
+    <div class='progress-text' id='progressText'>0%</div>
+  </div>
+  <div class='settings-panel' id='settingsPanel'>
+    <div class='setting-row'>
+      <span class='setting-label'>Overlay Opacity</span>
+      <input type='range' class='setting-slider' id='opacitySlider' min='20' max='100' value='96' />
+      <span class='setting-value' id='opacityValue'>96%</span>
+    </div>
+    <div class='setting-row'>
+      <span class='setting-label'>Font Size</span>
+      <input type='range' class='setting-slider' id='fontSizeSlider' min='10' max='18' value='12' />
+      <span class='setting-value' id='fontSizeValue'>12px</span>
+    </div>
+    <div class='setting-row'>
+      <span class='setting-label'>Visible Steps</span>
+      <input type='range' class='setting-slider' id='visibleStepsSlider' min='1' max='99' value='99' />
+      <span class='setting-value' id='visibleStepsValue'>All</span>
+    </div>
+    <div class='setting-row'>
+      <span class='setting-label'>Show Hints</span>
+      <input type='checkbox' class='setting-checkbox' id='showHints' checked />
+    </div>
+    <div class='setting-row'>
+      <span class='setting-label'>Show Optional Steps</span>
+      <input type='checkbox' class='setting-checkbox' id='showOptional' checked />
+    </div>
+    <div class='setting-row'>
+      <span class='setting-label'>Group by Zone</span>
+      <input type='checkbox' class='setting-checkbox' id='groupByZone' checked />
+    </div>
+    <div class='setting-row'>
+      <span class='setting-label'>Auto-detect Zone Changes</span>
+      <input type='checkbox' class='setting-checkbox' id='autoDetectZones' checked />
+    </div>
+    <div class='setting-row' style='flex-direction:column;gap:6px;align-items:stretch;'>
+      <div style='display:flex;align-items:center;gap:6px;'>
+        <span class='setting-label'>Client.txt Path (for auto zone detection)</span>
+        <div class='info-btn' id='gggPolicyBtn' title='Click to view GGG Developer Policy'>
+          ℹ️
+          <div class='info-tooltip'>
+            Reading the client.txt is <strong>officially allowed by GGG</strong>:<br><br>
+            "Reading the game's log files is okay as long as the user is aware of what you are doing with that data."<br><br>
+            Click the button to view the official policy →
+          </div>
+        </div>
+      </div>
+      <div style='display:flex;gap:6px;'>
+        <button class='control-btn' id='autoDetectPath' style='flex:1;font-size:10px;padding:4px 8px;'>Auto Detect</button>
+        <button class='control-btn' id='selectPath' style='flex:1;font-size:10px;padding:4px 8px;'>Select File</button>
+      </div>
+      <div style='font-size:9px;color:rgba(255,255,255,0.5);word-break:break-all;' id='clientPathDisplay'>Not configured</div>
+      <button class='control-btn' id='cleanLogBtn' style='font-size:10px;padding:4px 8px;background:rgba(192,57,43,0.5);' title='Clear all content from Client.txt (helps with performance)'>🗑️ Clean Log File</button>
+    </div>
+    <div class='setting-row' style='flex-direction:column;gap:6px;align-items:stretch;'>
+      <span class='setting-label'>⚠️ Danger Zone</span>
+      <button class='control-btn' id='resetProgressBtn' style='font-size:10px;padding:4px 8px;background:rgba(192,57,43,0.7);border-color:rgba(192,57,43,0.9);' title='Reset all leveling progress to start over'>🔄 Reset All Progress</button>
+    </div>
+  </div>
+  <div class='list' id='stepsList'></div>
+  <div class='footer'>
+    <div class='footer-progress' id='footerProgress'>
+      <div class='progress-bar'><div class='progress-fill' id='progressFillFooter' style='width:0%'></div></div>
+      <div class='progress-text' id='progressTextFooter'>0%</div>
+    </div>
+    <div class='footer-row'>
+      <div class='timer-display' id='timerDisplay'>Act1 00:00</div>
+      <div class='timer-controls'>
+        <button class='timer-btn' id='timerStartPause' title='Start/Pause timer'>Start</button>
+        <button class='timer-btn' id='timerReset' title='Reset timer'>Reset</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+const {ipcRenderer} = require('electron');
+let state = {
+  mode: 'tall',
+  showCompleted: false,
+  groupByZone: true,
+  showHints: true,
+  showOptional: true,
+  autoDetectZones: true,
+  opacity: 96,
+  fontSize: 12,
+  minimalMode: false,
+  visibleSteps: 99,
+  completedSteps: new Set(),
+  levelingData: null,
+  timer: {
+    isRunning: false,
+    startTime: 0,
+    elapsed: 0,
+    currentAct: 1
+  }
+};
+
+let timerInterval = null;
+
+const STEP_TYPES = {
+  navigation: { icon: '➜', color: '#E0E0E0', label: 'Navigate' },
+  waypoint: { icon: '⚑', color: '#00D4FF', label: 'Waypoint' },
+  town: { icon: '🏛', color: '#FEC076', label: 'Town' },
+  npc_quest: { icon: '💬', color: '#FFB84D', label: 'Quest Turn-in' },
+  quest: { icon: '❗', color: '#FFEB3B', label: 'Quest Objective' },
+  kill_boss: { icon: '☠', color: '#FF5252', label: 'Boss Fight' },
+  trial: { icon: '⚗', color: '#4ADE80', label: 'Labyrinth Trial' },
+  passive: { icon: '★', color: '#4ADE80', label: 'Passive Point' },
+  optional: { icon: 'ℹ', color: '#9E9E9E', label: 'Optional' }
+};
+
+function escapeHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function cleanDescription(desc) {
+  return (desc || '').replace(/^\\\[LEAGUE START\\\]\s*/i, '');
+}
+
+function getLeagueIcon(step) {
+  if (!step.optionalNote || !step.optionalNote.toLowerCase().includes('league')) return '';
+  return '<span class="league-icon">🏁<span class="tooltip">League Start Recommended</span></span>';
+}
+
+function getLayoutTipIcon(step) {
+  if (!step.layoutTip) return '';
+  return '<span class="layout-tip-icon">💡<span class="tooltip">'+escapeHtml(step.layoutTip)+'</span></span>';
+}
+
+function groupStepsByZone(steps) {
+  if (!state.groupByZone) return steps.map(s => ({zone:s.zone,steps:[s],allChecked:state.completedSteps.has(s.id),layoutTip:s.layoutTip}));
+  
+  const grouped = [];
+  for (let i = 0; i < steps.length; i++) {
+    const step = steps[i];
+    
+    if (grouped.length > 0) {
+      const lastGroup = grouped[grouped.length - 1];
+      
+      // Group ALL steps with the same zone together, regardless of type
+      if (lastGroup.zone === step.zone) {
+        lastGroup.steps.push(step);
+        lastGroup.allChecked = lastGroup.steps.every(s => state.completedSteps.has(s.id));
+        continue;
+      }
+    }
+    
+    grouped.push({
+      zone: step.zone,
+      steps: [step],
+      allChecked: state.completedSteps.has(step.id),
+      layoutTip: step.layoutTip
+    });
+  }
+  return grouped;
+}
+
+function render() {
+  if (!state.levelingData) return;
+  
+  const list = document.getElementById('stepsList');
+  const backBtn = document.getElementById('backBtn');
+  const layoutBtn = document.getElementById('layoutBtn');
+  const minimalBtn = document.getElementById('minimalBtn');
+  const headerTitle = document.getElementById('headerTitle');
+  const headerSubtitle = document.getElementById('headerSubtitle');
+  const progressFill = document.getElementById('progressFill');
+  const progressText = document.getElementById('progressText');
+  const progressFillFooter = document.getElementById('progressFillFooter');
+  const progressTextFooter = document.getElementById('progressTextFooter');
+  const mainWindow = document.getElementById('mainWindow');
+  
+  // Apply opacity - fix CSS gradient syntax (only if NOT in minimal mode)
+  if (!state.minimalMode) {
+    const opacityDecimal = (state.opacity / 100).toFixed(2);
+    mainWindow.style.background = \`linear-gradient(135deg,rgba(20,20,28,\${opacityDecimal}),rgba(15,15,22,\${opacityDecimal}))\`;
+  } else {
+    mainWindow.style.background = 'transparent';
+  }
+  
+  // Apply font size
+  document.documentElement.style.setProperty('--font-size', state.fontSize + 'px');
+  
+  // Apply minimal mode
+  if (state.minimalMode) {
+    mainWindow.classList.add('minimal-mode');
+    minimalBtn.classList.add('active');
+  } else {
+    mainWindow.classList.remove('minimal-mode');
+    minimalBtn.classList.remove('active');
+  }
+  
+  // Apply layout mode
+  list.className = 'list ' + (state.mode === 'wide' ? 'wide' : '');
+  layoutBtn.textContent = state.mode === 'wide' ? '⇅' : '⇄';
+  
+  // Get all steps
+  const act = state.levelingData.acts[0];
+  let allSteps = act.steps;
+  
+  // Filter optional
+  if (!state.showOptional) {
+    allSteps = allSteps.filter(s => s.type !== 'optional');
+  }
+  
+  // Calculate progress
+  const totalSteps = allSteps.length;
+  const completedCount = allSteps.filter(s => state.completedSteps.has(s.id)).length;
+  const progressPct = totalSteps > 0 ? Math.round((completedCount / totalSteps) * 100) : 0;
+  progressFill.style.width = progressPct + '%';
+  progressText.textContent = progressPct + '%';
+  if (progressFillFooter) progressFillFooter.style.width = progressPct + '%';
+  if (progressTextFooter) progressTextFooter.textContent = progressPct + '%';
+  
+  // Group steps
+  const grouped = groupStepsByZone(allSteps);
+  
+  // Filter completed zones - always hide fully completed zones
+  let visible = grouped.filter(g => !g.allChecked);
+  
+  // Limit to visible steps
+  if (state.visibleSteps > 0 && state.visibleSteps < visible.length) {
+    visible = visible.slice(0, state.visibleSteps);
+  }
+  
+  // Update header
+  if (visible.length > 0) {
+    const currentZone = visible[0].zone;
+    headerTitle.textContent = currentZone; // Zone already has ⚡ icon
+    headerSubtitle.textContent = 'Act 1 - The Awakening • '+completedCount+'/'+totalSteps+' completed';
+  } else {
+    headerTitle.textContent = 'Act 1 Complete!';
+    headerSubtitle.textContent = '🎉 Well done!';
+  }
+  
+  // Show back button
+  backBtn.style.display = (grouped.length > visible.length) ? 'flex' : 'none';
+  if (state.showCompleted) {
+    backBtn.classList.add('active');
+  } else {
+    backBtn.classList.remove('active');
+  }
+  
+  // Render - keep minimal controls at the beginning
+  const minimalControlsHtml = '<div class="minimal-controls"><div class="minimal-nav"><button class="minimal-btn" id="minimalPrevBtn">◀ Prev</button><button class="minimal-btn" id="minimalNextBtn">Next ▶</button></div><button class="minimal-restore" id="minimalRestoreBtn">◧</button></div>';
+  
+  const stepsHtml = visible.map((group, groupIdx) => {
+    const isCurrent = groupIdx === 0;
+    const isMultiStep = group.steps.length > 1;
+    
+    if (isMultiStep) {
+      const groupOpacity = isCurrent ? 1 : Math.max(0.5, 1 - (groupIdx * 0.15));
+      const currentClass = isCurrent ? ' current' : '';
+  return '<div class="leveling-group'+currentClass+'" style="opacity:'+groupOpacity+';"><div class="zone-header" data-zone="'+escapeHtml(group.zone)+'"><input type="checkbox" class="zone-checkbox" data-action="toggle-zone" data-zone="'+escapeHtml(group.zone)+'" '+(group.allChecked?'checked':'')+' /><div class="zone-name">📍 '+escapeHtml(group.zone)+' ('+group.steps.length+' tasks)</div><button class="skip-to-btn" data-action="skip-to" data-zone-index="'+groupIdx+'" title="Skip to this zone (auto-complete all previous steps)">⏭️</button></div><div class="task-list">'+group.steps.map(step => {
+        const checked = state.completedSteps.has(step.id);
+    const stepType = STEP_TYPES[step.type] || STEP_TYPES.navigation;
+    const cleanDesc = cleanDescription(step.description);
+        const leagueIcon = getLeagueIcon(step);
+  const layoutTipIcon = (!state.showHints && step.layoutTip) ? getLayoutTipIcon(step) : '';
+        const hintHtml = state.showHints && step.hint ? '<div class="task-hint">💡 '+escapeHtml(step.hint)+'</div>' : '';
+        const rewardHtml = step.reward ? '<div class="task-reward">🎁 '+escapeHtml(step.reward)+'</div>' : '';
+        
+  return '<div class="task-item"><div class="task-checkbox"><input type="checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /></div><div class="task-bullet" style="color:'+stepType.color+';">'+stepType.icon+'</div><div class="task-content"><div class="task-desc '+(checked?'checked':'')+'">'+escapeHtml(cleanDesc)+leagueIcon+layoutTipIcon+'</div>'+hintHtml+rewardHtml+'</div></div>';
+      }).join('')+'</div></div>';
+    } else {
+      const step = group.steps[0];
+      const checked = state.completedSteps.has(step.id);
+      const stepType = STEP_TYPES[step.type] || STEP_TYPES.navigation;
+      const isHighPriority = ['passive','kill_boss','trial'].includes(step.type);
+      const opacity = isCurrent ? 1 : Math.max(0.5, 1 - (groupIdx * 0.15));
+  const bgColor = isCurrent ? (isHighPriority ? 'rgba(254,192,118,0.20)' : 'rgba(255,255,255,0.16)') : 'rgba(255,255,255,0.03)';
+      const padding = isCurrent ? '16px 14px' : '14px 12px';
+      
+      const cleanDesc = cleanDescription(step.description);
+      const leagueIcon = getLeagueIcon(step);
+  const layoutTipIcon = (!state.showHints && step.layoutTip) ? getLayoutTipIcon(step) : '';
+  const stepTextHtml = '<span class="step-desc-text">'+escapeHtml(cleanDesc)+'</span>';
+      const hintHtml = state.showHints && step.hint ? '<div class="step-hint">💡 '+escapeHtml(step.hint)+'</div>' : '';
+      
+      const metaItems = [];
+      if (step.quest) metaItems.push('<div class="badge" style="background:#fec07615;border-color:#fec07640;color:#fec076;">📜 '+escapeHtml(step.quest)+'</div>');
+      if (step.reward) metaItems.push('<div class="badge" style="background:#4ade8015;border-color:#4ade8040;color:#4ade80;">🎁 '+escapeHtml(step.reward)+'</div>');
+      if (step.recommendedLevel) metaItems.push('<div class="badge" style="background:#ffd70015;border-color:#ffd70040;color:#ffd700;">Level '+step.recommendedLevel+'</div>');
+      const metaHtml = metaItems.length > 0 ? '<div class="step-meta">'+metaItems.join('')+'</div>' : '';
+      
+  const borderColor = isCurrent ? '#fdd68a' : stepType.color;
+  return '<div class="leveling-step '+(isCurrent?'current':'')+' '+(isHighPriority?'priority':'')+'" style="opacity:'+opacity+';background:'+bgColor+';padding:'+padding+';border-left-color:'+borderColor+';"><input type="checkbox" class="step-checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /><div class="step-content"><div class="step-main"><div class="step-icon-wrap" style="background:'+stepType.color+'22;border-color:'+stepType.color+'44;"><span class="step-icon" style="color:'+stepType.color+';">'+stepType.icon+'</span></div><div class="step-desc-wrap">'+(isCurrent&&step.zone?'<div class="zone-label">'+escapeHtml(step.zone)+'</div>':'')+'<div class="step-desc '+(checked?'checked':'')+'">'+stepTextHtml+leagueIcon+layoutTipIcon+'</div></div></div>'+metaHtml+hintHtml+'</div></div>';
+    }
+  }).join('');
+  
+  list.innerHTML = minimalControlsHtml + stepsHtml;
+  
+  // Event listeners
+  document.querySelectorAll('[data-action="toggle-step"]').forEach(el => {
+    el.addEventListener('change', () => {
+      const stepId = el.getAttribute('data-step-id');
+      if (state.completedSteps.has(stepId)) {
+        state.completedSteps.delete(stepId);
+      } else {
+        state.completedSteps.add(stepId);
+      }
+      ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
+      render();
+    });
+  });
+  
+  document.querySelectorAll('[data-action="toggle-zone"]').forEach(el => {
+    el.addEventListener('change', () => {
+      const zoneName = el.getAttribute('data-zone');
+      const group = grouped.find(g => g.zone === zoneName);
+      if (!group) return;
+      
+      const allChecked = group.steps.every(s => state.completedSteps.has(s.id));
+      group.steps.forEach(step => {
+        if (allChecked) {
+          state.completedSteps.delete(step.id);
+        } else {
+          state.completedSteps.add(step.id);
+        }
+      });
+      
+      ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
+      render();
+    });
+  });
+  
+  // Skip-to button handlers
+  document.querySelectorAll('[data-action="skip-to"]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent triggering zone header click
+      const zoneIndex = parseInt(el.getAttribute('data-zone-index') || '0', 10);
+      
+      // Complete all steps in all zones BEFORE this zone
+      for (let i = 0; i < zoneIndex; i++) {
+        grouped[i].steps.forEach(step => {
+          state.completedSteps.add(step.id);
+        });
+      }
+      
+      console.log('[Skip To] Auto-completed all steps up to zone index ' + zoneIndex);
+      ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
+      render();
+    });
+  });
+  
+  // Minimal mode button listeners (these are in the DOM now)
+  const minimalPrevBtn = document.getElementById('minimalPrevBtn');
+  const minimalNextBtn = document.getElementById('minimalNextBtn');
+  const minimalRestoreBtn = document.getElementById('minimalRestoreBtn');
+  
+  if (minimalPrevBtn) minimalPrevBtn.addEventListener('click', handlePrevBtn);
+  if (minimalNextBtn) minimalNextBtn.addEventListener('click', handleNextBtn);
+  if (minimalRestoreBtn) minimalRestoreBtn.addEventListener('click', () => {
+    state.minimalMode = false;
+    render();
+  });
+}
+
+// Load data and saved progress
+ipcRenderer.invoke('get-leveling-data').then(result => {
+  state.levelingData = result.data;
+  // Load saved progress
+  if (result.progress && Array.isArray(result.progress)) {
+    state.completedSteps = new Set(result.progress);
+    console.log('Loaded saved progress:', result.progress.length, 'steps completed');
+  }
+  // Initialize slider values to match state
+  document.getElementById('fontSizeSlider').value = state.fontSize;
+  document.getElementById('fontSizeValue').textContent = state.fontSize + 'px';
+  document.getElementById('opacitySlider').value = state.opacity;
+  document.getElementById('opacityValue').textContent = state.opacity + '%';
+  document.getElementById('visibleStepsSlider').value = state.visibleSteps;
+  document.getElementById('visibleStepsValue').textContent = state.visibleSteps >= 99 ? 'All' : state.visibleSteps.toString();
+  render();
+}).catch(err => {
+  console.error('Failed to load:', err);
+  document.getElementById('stepsList').innerHTML = '<div style="padding:20px;text-align:center;color:#ff6b6b;">Failed to load data</div>';
+});
+
+// Button handlers
+document.getElementById('settingsBtn').addEventListener('click', () => {
+  const panel = document.getElementById('settingsPanel');
+  const btn = document.getElementById('settingsBtn');
+  if (panel.classList.contains('visible')) {
+    panel.classList.remove('visible');
+    btn.classList.remove('active');
+  } else {
+    panel.classList.add('visible');
+    btn.classList.add('active');
+  }
+});
+
+document.getElementById('backBtn').addEventListener('click', () => {
+  state.showCompleted = !state.showCompleted;
+  render();
+});
+
+document.getElementById('layoutBtn').addEventListener('click', () => {
+  state.mode = state.mode === 'tall' ? 'wide' : 'tall';
+  ipcRenderer.send('leveling-set-layout', state.mode);
+  
+  // Request preset window size
+  if (state.mode === 'wide') {
+    ipcRenderer.send('leveling-resize-preset', { width: 1200, height: 400 });
+  } else {
+    ipcRenderer.send('leveling-resize-preset', { width: 400, height: 800 });
+  }
+  
+  render();
+});
+
+document.getElementById('minimalBtn').addEventListener('click', () => {
+  state.minimalMode = !state.minimalMode;
+  render();
+});
+
+document.getElementById('opacitySlider').addEventListener('input', (e) => {
+  state.opacity = parseInt(e.target.value);
+  document.getElementById('opacityValue').textContent = state.opacity + '%';
+  render();
+});
+
+document.getElementById('fontSizeSlider').addEventListener('input', (e) => {
+  state.fontSize = parseInt(e.target.value);
+  document.getElementById('fontSizeValue').textContent = state.fontSize + 'px';
+  render();
+});
+
+document.getElementById('visibleStepsSlider').addEventListener('input', (e) => {
+  state.visibleSteps = parseInt(e.target.value);
+  const valueText = state.visibleSteps >= 99 ? 'All' : state.visibleSteps.toString();
+  document.getElementById('visibleStepsValue').textContent = valueText;
+  render();
+});
+
+document.getElementById('showHints').addEventListener('change', (e) => {
+  state.showHints = e.target.checked;
+  render();
+});
+
+document.getElementById('showOptional').addEventListener('change', (e) => {
+  state.showOptional = e.target.checked;
+  render();
+});
+
+document.getElementById('groupByZone').addEventListener('change', (e) => {
+  state.groupByZone = e.target.checked;
+  render();
+});
+
+document.getElementById('autoDetectZones').addEventListener('change', (e) => {
+  state.autoDetectZones = e.target.checked;
+  // Notify backend to start/stop watching
+  ipcRenderer.invoke('toggle-auto-detect-zones', e.target.checked);
+});
+
+// Client.txt path handlers
+document.getElementById('autoDetectPath').addEventListener('click', async () => {
+  const result = await ipcRenderer.invoke('auto-detect-client-txt');
+  if (result.success) {
+    document.getElementById('clientPathDisplay').textContent = result.path;
+    document.getElementById('clientPathDisplay').style.color = 'rgba(74,222,128,0.8)';
+  } else {
+    document.getElementById('clientPathDisplay').textContent = 'Not found - please select manually';
+    document.getElementById('clientPathDisplay').style.color = 'rgba(255,82,82,0.8)';
+  }
+});
+
+document.getElementById('selectPath').addEventListener('click', async () => {
+  const result = await ipcRenderer.invoke('select-client-txt');
+  if (result.success) {
+    document.getElementById('clientPathDisplay').textContent = result.path;
+    document.getElementById('clientPathDisplay').style.color = 'rgba(74,222,128,0.8)';
+  }
+});
+
+// Load saved client.txt path on startup
+ipcRenderer.invoke('get-client-txt-path').then(result => {
+  if (result.path) {
+    document.getElementById('clientPathDisplay').textContent = result.path;
+    document.getElementById('clientPathDisplay').style.color = result.autoDetected 
+      ? 'rgba(74,158,255,0.8)' 
+      : 'rgba(74,222,128,0.8)';
+  }
+});
+
+// GGG Policy info button handler
+document.getElementById('gggPolicyBtn').addEventListener('click', () => {
+  require('electron').shell.openExternal('https://www.pathofexile.com/developer/docs#policy');
+});
+
+// Clean log button handler
+document.getElementById('cleanLogBtn').addEventListener('click', async () => {
+  const confirmed = confirm('This will clear all content from Client.txt. The game will continue writing new logs. Are you sure?');
+  if (!confirmed) return;
+  
+  const result = await ipcRenderer.invoke('clean-client-txt');
+  if (result.success) {
+    alert('✅ Client.txt has been cleaned successfully!');
+  } else {
+    alert('❌ Failed to clean Client.txt: ' + (result.error || 'Unknown error'));
+  }
+});
+
+// Reset progress button handler
+document.getElementById('resetProgressBtn').addEventListener('click', async () => {
+  const confirmed = confirm('⚠️ WARNING: This will reset ALL your leveling progress to zero. You will start from the beginning. Are you absolutely sure?');
+  if (!confirmed) return;
+  
+  const result = await ipcRenderer.invoke('reset-leveling-progress');
+  if (result) {
+    state.completedSteps.clear();
+    state.showCompleted = false;
+    render();
+    alert('✅ Progress reset successfully! Starting fresh.');
+  }
+});
+
+// Timer functions
+function updateTimerDisplay() {
+  const totalSeconds = Math.floor(state.timer.elapsed / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  const timeStr = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+  const displayText = 'Act' + state.timer.currentAct + ' ' + timeStr;
+  const mainDisplay = document.getElementById('timerDisplay');
+  if (mainDisplay) mainDisplay.textContent = displayText;
+}
+
+function startTimer() {
+  if (!state.timer.isRunning) {
+    state.timer.isRunning = true;
+    state.timer.startTime = Date.now() - state.timer.elapsed;
+    const mainBtn = document.getElementById('timerStartPause');
+    if (mainBtn) {
+      mainBtn.textContent = 'Pause';
+      mainBtn.classList.add('active');
+    }
+    
+    timerInterval = setInterval(() => {
+      state.timer.elapsed = Date.now() - state.timer.startTime;
+      updateTimerDisplay();
+    }, 100);
+  } else {
+    pauseTimer();
+  }
+}
+
+function pauseTimer() {
+  if (state.timer.isRunning) {
+    state.timer.isRunning = false;
+    clearInterval(timerInterval);
+    const mainBtn = document.getElementById('timerStartPause');
+    if (mainBtn) {
+      mainBtn.textContent = 'Start';
+      mainBtn.classList.remove('active');
+    }
+  }
+}
+
+function resetTimer() {
+  pauseTimer();
+  state.timer.elapsed = 0;
+  state.timer.startTime = 0;
+  updateTimerDisplay();
+}
+
+document.getElementById('timerStartPause').addEventListener('click', startTimer);
+document.getElementById('timerReset').addEventListener('click', resetTimer);
+
+// Prev/Next button handlers
+function handlePrevBtn() {
+  if (!state.levelingData) return;
+  const act = state.levelingData.acts[0];
+  let allSteps = act.steps;
+  if (!state.showOptional) {
+    allSteps = allSteps.filter(s => s.type !== 'optional');
+  }
+  
+  const grouped = groupStepsByZone(allSteps);
+  
+  // Find the LAST fully completed zone
+  let lastCompletedZone = null;
+  for (let i = grouped.length - 1; i >= 0; i--) {
+    if (grouped[i].allChecked) {
+      lastCompletedZone = grouped[i];
+      break;
+    }
+  }
+  
+  if (lastCompletedZone) {
+    // Auto-uncheck all steps in that zone
+    lastCompletedZone.steps.forEach(step => {
+      state.completedSteps.delete(step.id);
+    });
+    console.log('[PREV] Auto-unchecked last completed zone: ' + lastCompletedZone.zone);
+    ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
+    render();
+  } else {
+    console.log('[PREV] No completed zones to show');
+  }
+}
+
+function handleNextBtn() {
+  if (!state.levelingData) return;
+  const act = state.levelingData.acts[0];
+  let allSteps = act.steps;
+  if (!state.showOptional) {
+    allSteps = allSteps.filter(s => s.type !== 'optional');
+  }
+  
+  // Find first uncompleted step and check it
+  const nextStep = allSteps.find(s => !state.completedSteps.has(s.id));
+  if (nextStep) {
+    state.completedSteps.add(nextStep.id);
+    ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
+    render();
+  }
+}
+
+document.getElementById('prevBtn').addEventListener('click', handlePrevBtn);
+document.getElementById('nextBtn').addEventListener('click', handleNextBtn);
+
+ipcRenderer.on('leveling-layout-mode', (event, mode) => {
+  state.mode = mode;
+  render();
+});
+
+// Listen for zone entry events from Client.txt watcher
+ipcRenderer.on('zone-entered', (event, zoneName) => {
+  if (!state.levelingData || !state.autoDetectZones) return;
+  
+  console.log('Zone entered from Client.txt:', zoneName);
+  
+  const act = state.levelingData.acts[0];
+  const allSteps = act.steps;
+  
+  // Find the first step in the zone we just entered
+  const enteredZoneStepIndex = allSteps.findIndex(step => {
+    const stepZone = step.zone.toLowerCase().replace(/[⚡🗺️📍]/g, '').trim();
+    const enteredZone = zoneName.toLowerCase().trim();
+    return stepZone === enteredZone;
+  });
+  
+  if (enteredZoneStepIndex === -1) {
+    console.log('Zone not found in leveling guide:', zoneName);
+    return;
+  }
+  
+  console.log('Found zone at step index:', enteredZoneStepIndex);
+  
+  // Auto-complete all uncompleted steps BEFORE this zone (only move forward)
+  let completedCount = 0;
+  for (let i = 0; i < enteredZoneStepIndex; i++) {
+    const step = allSteps[i];
+    if (!state.completedSteps.has(step.id)) {
+      state.completedSteps.add(step.id);
+      completedCount++;
+      console.log('Auto-completed previous step:', step.description, 'in', step.zone);
+    }
+  }
+  
+  if (completedCount > 0) {
+    ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
+    console.log('Auto-completed ' + completedCount + ' previous step(s) before entering ' + zoneName);
+    render();
+  } else {
+    console.log('No previous steps to complete - already up to date');
+  }
+});
+</script>
+</body>
+</html>`;
+}
