@@ -225,6 +225,42 @@ export function buildLevelingPopoutHtml(): string {
     .timer-tooltip-row.total .timer-tooltip-value{color:#fec076;font-size:14px;}
     .timer-display{position:relative;cursor:help;}
     
+    /* History Modal Styles */
+    .history-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:999999;backdrop-filter:blur(8px);animation:fadeIn 0.2s;}
+    .history-modal-overlay.visible{display:flex;}
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+    .history-modal{background:linear-gradient(135deg, rgba(25,28,35,0.98) 0%, rgba(20,23,30,0.98) 100%);border:2px solid rgba(254,192,118,0.6);border-radius:12px;max-width:720px;width:90vw;max-height:85vh;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.9), 0 0 40px rgba(254,192,118,0.3);animation:slideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);}
+    @keyframes slideIn{from{transform:scale(0.8) translateY(-20px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
+    .history-modal-header{padding:14px 18px;background:linear-gradient(135deg, rgba(254,192,118,0.15) 0%, rgba(254,192,118,0.05) 100%);border-bottom:2px solid rgba(254,192,118,0.3);display:flex;align-items:center;justify-content:space-between;}
+    .history-modal-title{font-size:16px;font-weight:700;color:#fec076;display:flex;align-items:center;gap:8px;letter-spacing:0.5px;}
+    .history-modal-close{background:rgba(192,57,43,0.7);border:1px solid rgba(192,57,43,0.9);color:#fff;font-size:16px;width:26px;height:26px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+    .history-modal-close:hover{background:rgba(231,76,60,0.9);transform:scale(1.1);}
+    .history-modal-content{padding:12px 16px;overflow-y:auto;max-height:calc(85vh - 100px);}
+    .history-acts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px;}
+    .history-act-section{padding:12px;background:rgba(40,44,52,0.5);border-left:3px solid rgba(74,158,255,0.6);border-radius:6px;cursor:pointer;transition:all 0.2s;}
+    .history-act-section:hover{background:rgba(40,44,52,0.7);border-left-color:rgba(74,158,255,0.9);}
+    .history-act-section.expanded{background:rgba(40,44,52,0.8);}
+    .history-act-header{font-size:14px;font-weight:700;color:#4a9eff;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;}
+    .history-act-title{display:flex;align-items:center;gap:6px;}
+    .history-expand-icon{font-size:12px;color:#9ca3af;transition:transform 0.2s;}
+    .history-act-section.expanded .history-expand-icon{transform:rotate(180deg);}
+    .history-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:0;}
+    .history-stat{padding:6px 8px;background:rgba(30,34,42,0.8);border-radius:4px;border:1px solid rgba(255,255,255,0.08);}
+    .history-stat-label{font-size:9px;color:#9ca3af;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:1px;}
+    .history-stat-value{font-size:13px;font-weight:700;font-family:monospace;color:#fff;}
+    .history-stat-value.best{color:#4ade80;}
+    .history-stat-value.average{color:#9ca3af;}
+    .history-runs-container{max-height:0;overflow:hidden;transition:max-height 0.3s ease-out,margin-top 0.3s ease-out;}
+    .history-act-section.expanded .history-runs-container{max-height:500px;margin-top:10px;}
+    .history-runs-header{font-size:11px;font-weight:600;color:#b8b8b8;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;}
+    .history-run-item{padding:5px 8px;background:rgba(30,34,42,0.5);border-radius:3px;margin-bottom:3px;display:flex;justify-content:space-between;align-items:center;font-size:11px;border-left:2px solid transparent;}
+    .history-run-item.is-best{border-left-color:#4ade80;background:rgba(74,222,128,0.1);}
+    .history-run-time{font-family:monospace;font-weight:700;color:#fff;font-size:11px;}
+    .history-run-date{color:#9ca3af;font-size:9px;}
+    .history-run-date{color:#9ca3af;font-size:10px;}
+    .history-empty{text-align:center;padding:40px 20px;color:#9ca3af;font-size:14px;}
+    .history-empty-icon{font-size:48px;margin-bottom:12px;opacity:0.5;}
+    
     ::-webkit-scrollbar{width:8px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:rgba(254,192,118,0.3);border-radius:4px;}::-webkit-scrollbar-thumb:hover{background:rgba(254,192,118,0.5);}
     .act-dropdown::-webkit-scrollbar{width:6px;}
     .act-dropdown::-webkit-scrollbar-track{background:rgba(0,0,0,0.2);border-radius:3px;}
@@ -349,6 +385,13 @@ export function buildLevelingPopoutHtml(): string {
       <button class='control-btn' id='cleanLogBtn' style='font-size:10px;padding:4px 8px;background:rgba(192,57,43,0.5);' title='Clear all content from Client.txt (helps with performance)'>🗑️ Clean Log File</button>
     </div>
     <div class='setting-row' style='flex-direction:column;gap:6px;align-items:stretch;'>
+      <span class='setting-label'>📊 Run History</span>
+      <div style='display:flex;gap:6px;'>
+        <button class='control-btn' id='viewHistoryBtn' style='font-size:10px;padding:4px 8px;background:rgba(74,158,255,0.7);border-color:rgba(74,158,255,0.9);flex:1;' title='View and manage run history'>📈 View Run History</button>
+        <button class='control-btn' id='resetHistoryBtn' style='font-size:10px;padding:4px 8px;background:rgba(192,57,43,0.7);border-color:rgba(192,57,43,0.9);flex:1;' title='Delete all run history'>🗑️ Reset Run History</button>
+      </div>
+    </div>
+    <div class='setting-row' style='flex-direction:column;gap:6px;align-items:stretch;'>
       <span class='setting-label'>⚠️ Danger Zone</span>
       <button class='control-btn' id='resetProgressBtn' style='font-size:10px;padding:4px 8px;background:rgba(192,57,43,0.7);border-color:rgba(192,57,43,0.9);' title='Reset all leveling progress to start over'>🔄 Reset All Progress</button>
     </div>
@@ -360,10 +403,23 @@ export function buildLevelingPopoutHtml(): string {
       <div class='progress-text' id='progressTextFooter'>0%</div>
     </div>
     <div class='footer-row'>
-      <div class='timer-display' id='timerDisplay'>Act1 00:00</div>
+      <div class='timer-display' id='timerDisplay'><span id='timerText'>Act1 00:00</span></div>
       <div class='timer-controls'>
         <button class='timer-btn' id='timerStartPause' title='Start/Pause timer'>Start</button>
         <button class='timer-btn' id='timerReset' title='Reset timer'>Reset</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- History Modal -->
+  <div class='history-modal-overlay' id='historyModal'>
+    <div class='history-modal'>
+      <div class='history-modal-header'>
+        <div class='history-modal-title'>📊 Run History</div>
+        <button class='history-modal-close' id='closeHistoryModal'>×</button>
+      </div>
+      <div class='history-modal-content' id='historyModalContent'>
+        <!-- Content will be populated dynamically -->
       </div>
     </div>
   </div>
@@ -489,6 +545,12 @@ function checkActCompletionAndAdvance() {
     const actNum = currentAct.actNumber;
     if (!state.actTimers[actNum]) {
       state.actTimers[actNum] = state.timer.elapsed;
+      
+      // Save this run to history database
+      ipcRenderer.invoke('save-run', actNum, state.timer.elapsed).then(() => {
+        console.log('Act ' + actNum + ' run saved to history: ' + formatTime(state.timer.elapsed));
+      });
+      
       saveState();
       console.log('Act ' + actNum + ' completed in ' + formatTime(state.timer.elapsed));
     }
@@ -633,6 +695,125 @@ function renderActSwitcher() {
   });
 }
 
+// Build timer tooltip with run comparison data
+async function buildTimerTooltip(act) {
+  const timerDisplay = document.getElementById('timerDisplay');
+  if (!timerDisplay) return;
+  
+  const currentActNum = act.actNumber;
+  const currentActTime = state.actTimers[currentActNum];
+  
+  // Get current elapsed time for live comparison
+  const currentElapsed = state.timer.elapsed;
+  const isCurrentActRunning = state.timer.currentAct === currentActNum;
+  
+  // Use completed time if available, otherwise use current elapsed if this is the active act
+  const displayTime = currentActTime || (isCurrentActRunning ? currentElapsed : null);
+  const currentActTimeStr = displayTime ? formatTime(displayTime) : 'Not started';
+  
+  // Fetch comparison data from run history
+  const comparison = await ipcRenderer.invoke('get-run-comparison', currentActNum);
+  
+  // Calculate total time
+  const totalTime = Object.values(state.actTimers).reduce((sum, t) => sum + t, 0);
+  const totalTimeStr = totalTime > 0 ? formatTime(totalTime) : '0s';
+  
+  // Build styled tooltip HTML
+  const acts = state.levelingData.acts;
+  let tooltipHTML = '<div class="timer-tooltip">';
+  tooltipHTML += '<div class="timer-tooltip-header">⏱️ Act Timers</div>';
+  
+  // Current act (highlighted) with comparison
+  tooltipHTML += '<div class="timer-tooltip-row current">';
+  tooltipHTML += '<span class="timer-tooltip-label">▶ Act ' + currentActNum + '</span>';
+  tooltipHTML += '<span class="timer-tooltip-value">' + currentActTimeStr;
+  
+  // Add live comparison even during run
+  if (displayTime && comparison && comparison.totalRuns > 0) {
+    const isBetter = comparison.best && displayTime <= comparison.best;
+    const diffFromBest = comparison.best ? displayTime - comparison.best : 0;
+    
+    if (comparison.best && diffFromBest !== 0) {
+      const sign = diffFromBest > 0 ? '+' : '';
+      const color = diffFromBest > 0 ? '#ff6b6b' : '#4ade80';
+      tooltipHTML += ' <span style="color:' + color + ';font-size:10px;margin-left:4px;">(' + sign + formatTime(Math.abs(diffFromBest)) + ' vs best)</span>';
+    }
+    
+    if (isBetter && currentActTime) {
+      tooltipHTML += ' <span style="color:#4ade80;font-size:10px;margin-left:4px;">🏆 NEW BEST!</span>';
+    } else if (isBetter && isCurrentActRunning) {
+      tooltipHTML += ' <span style="color:#4ade80;font-size:10px;margin-left:4px;">✨ On pace!</span>';
+    }
+  } else if (displayTime && comparison && comparison.totalRuns === 0) {
+    tooltipHTML += ' <span style="color:#9ca3af;font-size:10px;margin-left:4px;">(First run!)</span>';
+  }
+  
+  tooltipHTML += '</span>';
+  tooltipHTML += '</div>';
+  
+  // Show comparison stats if available
+  if (comparison && comparison.totalRuns > 0) {
+    if (comparison.best) {
+      tooltipHTML += '<div class="timer-tooltip-row">';
+      tooltipHTML += '<span class="timer-tooltip-label">🏆 Personal Best</span>';
+      tooltipHTML += '<span class="timer-tooltip-value" style="color:#4ade80;">' + formatTime(comparison.best) + '</span>';
+      tooltipHTML += '</div>';
+    }
+    
+    if (comparison.average) {
+      tooltipHTML += '<div class="timer-tooltip-row">';
+      tooltipHTML += '<span class="timer-tooltip-label">📊 Average (' + comparison.totalRuns + ' runs)</span>';
+      tooltipHTML += '<span class="timer-tooltip-value" style="color:#9ca3af;">' + formatTime(comparison.average) + '</span>';
+      tooltipHTML += '</div>';
+    }
+  }
+  
+  // Other completed acts
+  acts.forEach((a, idx) => {
+    const aNum = a.actNumber;
+    if (aNum !== currentActNum) {
+      const aTime = state.actTimers[aNum];
+      if (aTime) {
+        tooltipHTML += '<div class="timer-tooltip-row">';
+        tooltipHTML += '<span class="timer-tooltip-label">Act ' + aNum + '</span>';
+        tooltipHTML += '<span class="timer-tooltip-value">' + formatTime(aTime) + '</span>';
+        tooltipHTML += '</div>';
+      }
+    }
+  });
+  
+  // Total time (highlighted)
+  tooltipHTML += '<div class="timer-tooltip-row total">';
+  tooltipHTML += '<span class="timer-tooltip-label">📊 Total Time</span>';
+  tooltipHTML += '<span class="timer-tooltip-value">' + totalTimeStr + '</span>';
+  tooltipHTML += '</div>';
+  
+  tooltipHTML += '</div>';
+  
+  // Remove old tooltip if exists
+  const oldTooltip = timerDisplay.querySelector('.timer-tooltip');
+  if (oldTooltip) oldTooltip.remove();
+  
+  // Add new tooltip
+  timerDisplay.insertAdjacentHTML('beforeend', tooltipHTML);
+  
+  // Position tooltip dynamically on hover
+  const tooltip = timerDisplay.querySelector('.timer-tooltip');
+  if (tooltip) {
+    timerDisplay.addEventListener('mouseenter', function positionTooltip() {
+      const rect = timerDisplay.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+      
+      // Position above the timer, centered
+      const left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+      const bottom = window.innerHeight - rect.top + 10;
+      
+      tooltip.style.left = Math.max(10, left) + 'px';
+      tooltip.style.bottom = bottom + 'px';
+    });
+  }
+}
+
 function render() {
   if (!state.levelingData) return;
   
@@ -747,71 +928,8 @@ function render() {
   if (progressFillFooter) {
     progressFillFooter.style.width = progressPct + '%';
     
-    // Add timer tooltip to footer progress bar
-    const totalTime = Object.values(state.actTimers).reduce((sum, t) => sum + t, 0);
-    const totalTimeStr = totalTime > 0 ? formatTime(totalTime) : '0s';
-    const currentActNum = act.actNumber;
-    const currentActTime = state.actTimers[currentActNum];
-    const currentActTimeStr = currentActTime ? formatTime(currentActTime) : 'In progress';
-    
-    // Build styled tooltip HTML
-    const acts = state.levelingData.acts;
-    let tooltipHTML = '<div class="timer-tooltip">';
-    tooltipHTML += '<div class="timer-tooltip-header">⏱️ Act Timers</div>';
-    
-    // Current act (highlighted)
-    tooltipHTML += '<div class="timer-tooltip-row current">';
-    tooltipHTML += '<span class="timer-tooltip-label">▶ Act ' + currentActNum + '</span>';
-    tooltipHTML += '<span class="timer-tooltip-value">' + currentActTimeStr + '</span>';
-    tooltipHTML += '</div>';
-    
-    // Other completed acts
-    acts.forEach((a, idx) => {
-      const aNum = a.actNumber;
-      if (aNum !== currentActNum) {
-        const aTime = state.actTimers[aNum];
-        if (aTime) {
-          tooltipHTML += '<div class="timer-tooltip-row">';
-          tooltipHTML += '<span class="timer-tooltip-label">Act ' + aNum + '</span>';
-          tooltipHTML += '<span class="timer-tooltip-value">' + formatTime(aTime) + '</span>';
-          tooltipHTML += '</div>';
-        }
-      }
-    });
-    
-    // Total time (highlighted)
-    tooltipHTML += '<div class="timer-tooltip-row total">';
-    tooltipHTML += '<span class="timer-tooltip-label">📊 Total Time</span>';
-    tooltipHTML += '<span class="timer-tooltip-value">' + totalTimeStr + '</span>';
-    tooltipHTML += '</div>';
-    
-    tooltipHTML += '</div>';
-    
-    // Add tooltip to timer display
-    const timerDisplay = document.getElementById('timerDisplay');
-    if (timerDisplay) {
-      // Remove old tooltip if exists
-      const oldTooltip = timerDisplay.querySelector('.timer-tooltip');
-      if (oldTooltip) oldTooltip.remove();
-      // Add new tooltip
-      timerDisplay.insertAdjacentHTML('beforeend', tooltipHTML);
-      
-      // Position tooltip dynamically on hover
-      const tooltip = timerDisplay.querySelector('.timer-tooltip');
-      if (tooltip) {
-        timerDisplay.addEventListener('mouseenter', function positionTooltip() {
-          const rect = timerDisplay.getBoundingClientRect();
-          const tooltipRect = tooltip.getBoundingClientRect();
-          
-          // Position above the timer, centered
-          const left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
-          const bottom = window.innerHeight - rect.top + 10;
-          
-          tooltip.style.left = Math.max(10, left) + 'px';
-          tooltip.style.bottom = bottom + 'px';
-        });
-      }
-    }
+    // Build timer tooltip with run comparisons
+    buildTimerTooltip(act);
   }
   if (progressTextFooter) progressTextFooter.textContent = progressPct + '%';
   
@@ -1247,6 +1365,127 @@ document.getElementById('cleanLogBtn').addEventListener('click', async () => {
   }
 });
 
+// View run history button handler
+document.getElementById('viewHistoryBtn').addEventListener('click', async () => {
+  const allHistories = await ipcRenderer.invoke('get-all-run-histories');
+  const modal = document.getElementById('historyModal');
+  const content = document.getElementById('historyModalContent');
+  
+  if (!allHistories || Object.keys(allHistories).length === 0) {
+    content.innerHTML = \`
+      <div class="history-empty">
+        <div class="history-empty-icon">📊</div>
+        <div>No run history recorded yet.</div>
+        <div style="margin-top:8px;font-size:12px;opacity:0.7;">Complete some acts to start building your history!</div>
+      </div>
+    \`;
+    modal.classList.add('visible');
+    return;
+  }
+  
+  // Build formatted HTML for each act in a grid
+  const actNumbers = Object.keys(allHistories).map(Number).sort((a, b) => a - b);
+  let html = '<div class="history-acts-grid">';
+  
+  for (const actNum of actNumbers) {
+    const runs = allHistories[actNum] || [];
+    if (runs.length === 0) continue;
+    
+    // Calculate stats
+    const times = runs.map(r => r.time);
+    const best = Math.min(...times);
+    const worst = Math.max(...times);
+    const average = Math.round(times.reduce((sum, t) => sum + t, 0) / times.length);
+    
+    html += \`
+      <div class="history-act-section" data-act="\${actNum}">
+        <div class="history-act-header">
+          <div class="history-act-title">⚡ Act \${actNum}</div>
+          <div class="history-expand-icon">▼</div>
+        </div>
+        <div class="history-stats">
+          <div class="history-stat">
+            <div class="history-stat-label">🏆 Best</div>
+            <div class="history-stat-value best">\${formatTime(best)}</div>
+          </div>
+          <div class="history-stat">
+            <div class="history-stat-label">📊 Avg</div>
+            <div class="history-stat-value average">\${formatTime(average)}</div>
+          </div>
+          <div class="history-stat">
+            <div class="history-stat-label">Runs</div>
+            <div class="history-stat-value">\${runs.length}</div>
+          </div>
+          <div class="history-stat">
+            <div class="history-stat-label">📉 Worst</div>
+            <div class="history-stat-value">\${formatTime(worst)}</div>
+          </div>
+        </div>
+        <div class="history-runs-container">
+          <div class="history-runs-header">Recent Runs</div>
+    \`;
+    
+    // Show last 10 runs
+    const recent = runs.slice(-10).reverse();
+    recent.forEach((run) => {
+      const date = new Date(run.timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const timeStr = formatTime(run.time);
+      const isBest = run.time === best;
+      const bestClass = isBest ? ' is-best' : '';
+      const bestIcon = isBest ? ' 🏆' : '';
+      
+      html += \`
+        <div class="history-run-item\${bestClass}">
+          <span class="history-run-time">\${timeStr}\${bestIcon}</span>
+          <span class="history-run-date">\${date}</span>
+        </div>
+      \`;
+    });
+    
+    html += '</div></div>';
+  }
+  
+  html += '</div>';
+  content.innerHTML = html;
+  
+  // Add click handlers for expand/collapse
+  content.querySelectorAll('.history-act-section').forEach(section => {
+    section.addEventListener('click', (e) => {
+      // Don't toggle if clicking on a run item
+      if (e.target.closest('.history-run-item')) return;
+      section.classList.toggle('expanded');
+    });
+  });
+  
+  modal.classList.add('visible');
+});
+
+// Close history modal
+document.getElementById('closeHistoryModal').addEventListener('click', () => {
+  const modal = document.getElementById('historyModal');
+  modal.classList.remove('visible');
+});
+
+// Close modal when clicking overlay
+document.getElementById('historyModal').addEventListener('click', (e) => {
+  if (e.target.id === 'historyModal') {
+    e.target.classList.remove('visible');
+  }
+});
+
+// Reset run history button handler
+document.getElementById('resetHistoryBtn').addEventListener('click', async () => {
+  const confirmed = confirm('⚠️ WARNING: This will delete ALL run history for ALL acts!\\n\\nAre you sure you want to continue?');
+  if (!confirmed) return;
+  
+  const result = await ipcRenderer.invoke('clear-all-run-history');
+  if (result) {
+    alert('✅ All run history has been cleared successfully!');
+  } else {
+    alert('❌ Failed to clear run history.');
+  }
+});
+
 // Reset progress button handler
 document.getElementById('resetProgressBtn').addEventListener('click', async () => {
   const confirmed = confirm('⚠️ WARNING: This will reset ALL act progress, completed steps, and timers!\\n\\nAre you sure you want to continue?');
@@ -1265,9 +1504,9 @@ document.getElementById('resetProgressBtn').addEventListener('click', async () =
     render();
     
     // Update timer display
-    const timerDisplay = document.querySelector('.timer-display');
-    if (timerDisplay) {
-      timerDisplay.textContent = '⏱️ 00:00';
+    const timerText = document.getElementById('timerText');
+    if (timerText) {
+      timerText.textContent = 'Act1 00:00';
     }
   }
 });
@@ -1280,9 +1519,9 @@ function updateTimerDisplay() {
   const timeStr = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
   const displayText = 'Act' + state.timer.currentAct + ' ' + timeStr;
   
-  // Update main timer display (footer)
-  const mainDisplay = document.getElementById('timerDisplay');
-  if (mainDisplay) mainDisplay.textContent = displayText;
+  // Update main timer display text only (not the entire element to preserve tooltip)
+  const mainDisplayText = document.getElementById('timerText');
+  if (mainDisplayText) mainDisplayText.textContent = displayText;
   
   // Update drag handle timer display (minimal/ultra modes)
   const dragDisplay = document.getElementById('dragHandleTimer');

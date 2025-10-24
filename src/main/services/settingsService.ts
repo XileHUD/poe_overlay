@@ -21,6 +21,7 @@ export interface UserSettings {
     progress?: string[]; // Array of completed step IDs
     currentActIndex?: number; // Currently selected act (0-based index)
     actTimers?: Record<number, number>; // Completion time for each act: { 1: 123456, 2: 234567, ... }
+    runHistory?: Record<number, Array<{ time: number; timestamp: number; date: string }>>; // Historical run times per act
     uiSettings?: {
       opacity?: number;
       fontSize?: number;
@@ -42,6 +43,7 @@ export interface UserSettings {
     progress?: string[]; // Array of completed step IDs
     currentActIndex?: number; // Currently selected act (0-based index)
     actTimers?: Record<number, number>; // Completion time for each act: { 1: 123456, 2: 234567, ... }
+    runHistory?: Record<number, Array<{ time: number; timestamp: number; date: string }>>; // Historical run times per act
     uiSettings?: {
       opacity?: number;
       fontSize?: number;
@@ -63,6 +65,7 @@ export interface UserSettings {
     progress?: string[]; // Array of completed step IDs
     currentActIndex?: number; // Currently selected act (0-based index)
     actTimers?: Record<number, number>; // Completion time for each act: { 1: 123456, 2: 234567, ... }
+    runHistory?: Record<number, Array<{ time: number; timestamp: number; date: string }>>; // Historical run times per act
     uiSettings?: {
       opacity?: number;
       fontSize?: number;

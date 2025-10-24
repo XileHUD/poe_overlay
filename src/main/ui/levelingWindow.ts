@@ -378,6 +378,114 @@ export class LevelingWindow {
       return true;
     });
 
+    // Get run history for an act
+    ipcMain.handle('get-run-history', async (event, actNumber: number) => {
+      const saved = this.settingsService.get(this.getLevelingWindowKey());
+      const runHistory = saved?.runHistory || {};
+      return runHistory[actNumber] || [];
+    });
+
+    // Get all run histories
+    ipcMain.handle('get-all-run-histories', async () => {
+      const saved = this.settingsService.get(this.getLevelingWindowKey());
+      return saved?.runHistory || {};
+    });
+
+    // Save a completed run for an act
+    ipcMain.handle('save-run', async (event, actNumber: number, time: number) => {
+      const saved = this.settingsService.get(this.getLevelingWindowKey());
+      const runHistory = saved?.runHistory || {};
+      
+      if (!runHistory[actNumber]) {
+        runHistory[actNumber] = [];
+      }
+      
+      // Add new run with timestamp
+      runHistory[actNumber].push({
+        time: time,
+        timestamp: Date.now(),
+        date: new Date().toISOString()
+      });
+      
+      // Keep only last 50 runs per act to prevent bloat
+      if (runHistory[actNumber].length > 50) {
+        runHistory[actNumber] = runHistory[actNumber].slice(-50);
+      }
+      
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+        ...c,
+        runHistory: runHistory
+      }));
+      
+      return true;
+    });
+
+    // Get best and previous run times for an act
+    ipcMain.handle('get-run-comparison', async (event, actNumber: number) => {
+      const saved = this.settingsService.get(this.getLevelingWindowKey());
+      const runHistory = saved?.runHistory || {};
+      const runs = runHistory[actNumber] || [];
+      
+      if (runs.length === 0) {
+        return { best: null, previous: null, averag: null };
+      }
+      
+      // Get best time
+      const best = Math.min(...runs.map((r: any) => r.time));
+      
+      // Get previous time (last completed run)
+      const previous = runs.length > 0 ? runs[runs.length - 1].time : null;
+      
+      // Get average
+      const average = runs.length > 0 
+        ? Math.round(runs.reduce((sum: number, r: any) => sum + r.time, 0) / runs.length)
+        : null;
+      
+      return { best, previous, average, totalRuns: runs.length };
+    });
+
+    // Delete a specific run
+    ipcMain.handle('delete-run', async (event, actNumber: number, timestamp: number) => {
+      const saved = this.settingsService.get(this.getLevelingWindowKey());
+      const runHistory = saved?.runHistory || {};
+      
+      if (runHistory[actNumber]) {
+        runHistory[actNumber] = runHistory[actNumber].filter((r: any) => r.timestamp !== timestamp);
+        
+        this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+          ...c,
+          runHistory: runHistory
+        }));
+      }
+      
+      return true;
+    });
+
+    // Clear all runs for an act
+    ipcMain.handle('clear-act-runs', async (event, actNumber: number) => {
+      const saved = this.settingsService.get(this.getLevelingWindowKey());
+      const runHistory = saved?.runHistory || {};
+      
+      delete runHistory[actNumber];
+      
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+        ...c,
+        runHistory: runHistory
+      }));
+      
+      return true;
+    });
+
+    // Clear all run history
+    ipcMain.handle('clear-all-run-history', async () => {
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+        ...c,
+        runHistory: {}
+      }));
+      
+      return true;
+    });
+
     // Reset progress
     ipcMain.handle('reset-leveling-progress', async () => {
       this.completedSteps = new Set();
