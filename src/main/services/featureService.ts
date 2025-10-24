@@ -483,6 +483,7 @@ export class FeatureService {
         enabled: false,
         subcategories: {
           regex: false,
+          poe2Leveling: false,
           poe1Regex: false,
           poe1Vorici: false,
           poe1Leveling: false
@@ -495,6 +496,7 @@ export class FeatureService {
         enabled: true,
         subcategories: {
           regex: !!subs.regex,
+          poe2Leveling: !!subs.poe2Leveling,
           poe1Regex: !!subs.poe1Regex,
           poe1Vorici: !!subs.poe1Vorici,
           poe1Leveling: !!subs.poe1Leveling

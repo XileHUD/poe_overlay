@@ -5,14 +5,17 @@ import fs from 'fs';
 import path from 'path';
 import { app } from 'electron';
 import { execSync } from 'child_process';
+import type { OverlayVersion } from '../../types/overlayVersion.js';
 
 export interface LevelingWindowParams {
   settingsService: SettingsService;
+  overlayVersion: OverlayVersion;
 }
 
 export class LevelingWindow {
   private window: BrowserWindow | null = null;
   private settingsService: SettingsService;
+  private overlayVersion: OverlayVersion;
   private levelingData: any = null;
   private zoneRegistry: any = null;
   private completedSteps: Set<string> = new Set();
@@ -21,7 +24,8 @@ export class LevelingWindow {
 
   constructor(params: LevelingWindowParams) {
     this.settingsService = params.settingsService;
-    const saved = this.settingsService.get('levelingWindow');
+    this.overlayVersion = params.overlayVersion;
+    const saved = this.settingsService.get(this.getLevelingWindowKey());
     this.isWideMode = saved?.wideMode ?? false;
     this.loadLevelingData();
     this.loadZoneRegistry();
@@ -32,13 +36,38 @@ export class LevelingWindow {
     this.autoDetectClientTxtOnStartup();
   }
 
+  // Helper methods to get game-specific setting keys
+  private getClientTxtPathKey(): 'clientTxtPathPoe1' | 'clientTxtPathPoe2' {
+    return this.overlayVersion === 'poe1' ? 'clientTxtPathPoe1' : 'clientTxtPathPoe2';
+  }
+
+  private getClientTxtAutoDetectedKey(): 'clientTxtAutoDetectedPoe1' | 'clientTxtAutoDetectedPoe2' {
+    return this.overlayVersion === 'poe1' ? 'clientTxtAutoDetectedPoe1' : 'clientTxtAutoDetectedPoe2';
+  }
+
+  private getClientTxtLastCheckedKey(): 'clientTxtLastCheckedPoe1' | 'clientTxtLastCheckedPoe2' {
+    return this.overlayVersion === 'poe1' ? 'clientTxtLastCheckedPoe1' : 'clientTxtLastCheckedPoe2';
+  }
+
+  private getClientTxtDetectionAttemptedKey(): 'clientTxtDetectionAttemptedPoe1' | 'clientTxtDetectionAttemptedPoe2' {
+    return this.overlayVersion === 'poe1' ? 'clientTxtDetectionAttemptedPoe1' : 'clientTxtDetectionAttemptedPoe2';
+  }
+
+  private getClientTxtNotificationShownKey(): 'clientTxtNotificationShownPoe1' | 'clientTxtNotificationShownPoe2' {
+    return this.overlayVersion === 'poe1' ? 'clientTxtNotificationShownPoe1' : 'clientTxtNotificationShownPoe2';
+  }
+
+  private getLevelingWindowKey(): 'levelingWindowPoe1' | 'levelingWindowPoe2' {
+    return this.overlayVersion === 'poe1' ? 'levelingWindowPoe1' : 'levelingWindowPoe2';
+  }
+
   show(): void {
     if (this.window && !this.window.isDestroyed()) {
       this.window.show();
       return;
     }
     this.createWindow();
-    this.settingsService.update('levelingWindow', (c) => ({ ...c, enabled: true }));
+    this.settingsService.update(this.getLevelingWindowKey(), (c) => ({ ...c, enabled: true }));
   }
 
   hide(): void {
@@ -47,7 +76,7 @@ export class LevelingWindow {
       this.window.close();
       this.window = null;
     }
-    this.settingsService.update('levelingWindow', (c) => ({ ...c, enabled: false }));
+    this.settingsService.update(this.getLevelingWindowKey(), (c) => ({ ...c, enabled: false }));
   }
 
   toggle(): void {
@@ -60,7 +89,7 @@ export class LevelingWindow {
 
   toggleWideMode(): void {
     this.isWideMode = !this.isWideMode;
-    this.settingsService.update('levelingWindow', (c) => ({
+    this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
       ...c,
       wideMode: this.isWideMode,
     }));
@@ -73,7 +102,7 @@ export class LevelingWindow {
   }
 
   private createWindow(): void {
-    const saved = this.settingsService.get('levelingWindow');
+    const saved = this.settingsService.get(this.getLevelingWindowKey());
     const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 
     const { w, h } = this.getTargetSize();
@@ -141,7 +170,7 @@ export class LevelingWindow {
   }
 
   private getTargetSize(): { w: number; h: number } {
-    const saved = this.settingsService.get('levelingWindow');
+    const saved = this.settingsService.get(this.getLevelingWindowKey());
 
     if (saved?.size) {
       return { w: saved.size.width, h: saved.size.height };
@@ -156,7 +185,7 @@ export class LevelingWindow {
   private savePosition(): void {
     if (!this.window || this.window.isDestroyed()) return;
     const b = this.window.getBounds();
-    this.settingsService.update('levelingWindow', (c) => ({
+    this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
       ...(c || {}),
       position: { x: b.x, y: b.y },
     }));
@@ -165,7 +194,7 @@ export class LevelingWindow {
   private saveSize(): void {
     if (!this.window || this.window.isDestroyed()) return;
     const b = this.window.getBounds();
-    this.settingsService.update('levelingWindow', (c) => ({
+    this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
       ...(c || {}),
       size: { width: b.width, height: b.height },
     }));
@@ -173,13 +202,15 @@ export class LevelingWindow {
 
   private loadLevelingData(): void {
     try {
+      const gameFolder = this.overlayVersion; // 'poe1' or 'poe2'
+      
       // Try multiple possible paths (including extraResources path for packaged app)
       const possiblePaths = [
-        path.join(process.resourcesPath || '', 'data', 'poe1', 'Leveling', 'leveling-data-v2.json'), // Packaged app
-        path.join(app.getAppPath(), 'data', 'poe1', 'Leveling', 'leveling-data-v2.json'),
-        path.join(process.cwd(), 'data', 'poe1', 'Leveling', 'leveling-data-v2.json'),
-        path.join(__dirname, '../../data/poe1/Leveling/leveling-data-v2.json'),
-        path.join(__dirname, '../../../data/poe1/Leveling/leveling-data-v2.json'),
+        path.join(process.resourcesPath || '', 'data', gameFolder, 'Leveling', 'leveling-data-v2.json'), // Packaged app
+        path.join(app.getAppPath(), 'data', gameFolder, 'Leveling', 'leveling-data-v2.json'),
+        path.join(process.cwd(), 'data', gameFolder, 'Leveling', 'leveling-data-v2.json'),
+        path.join(__dirname, `../../data/${gameFolder}/Leveling/leveling-data-v2.json`),
+        path.join(__dirname, `../../../data/${gameFolder}/Leveling/leveling-data-v2.json`),
       ];
       
       let loaded = false;
@@ -192,7 +223,7 @@ export class LevelingWindow {
             parsedData.acts = parsedData.acts.filter((act: any) => act.steps && act.steps.length > 0);
           }
           this.levelingData = parsedData;
-          console.log('[LevelingWindow] Data loaded from:', dataPath);
+          console.log(`[LevelingWindow] ${gameFolder.toUpperCase()} data loaded from:`, dataPath);
           console.log('[LevelingWindow] Loaded acts:', parsedData.acts.map((a: any) => `Act ${a.actNumber}`).join(', '));
           loaded = true;
           break;
@@ -211,13 +242,15 @@ export class LevelingWindow {
 
   private loadZoneRegistry(): void {
     try {
+      const gameFolder = this.overlayVersion; // 'poe1' or 'poe2'
+      
       // Try multiple possible paths for zone registry (including extraResources path for packaged app)
       const possiblePaths = [
-        path.join(process.resourcesPath || '', 'data', 'poe1', 'Leveling', 'poe1-zone-registry.json'), // Packaged app
-        path.join(app.getAppPath(), 'data', 'poe1', 'Leveling', 'poe1-zone-registry.json'),
-        path.join(process.cwd(), 'data', 'poe1', 'Leveling', 'poe1-zone-registry.json'),
-        path.join(__dirname, '../../data/poe1/Leveling/poe1-zone-registry.json'),
-        path.join(__dirname, '../../../data/poe1/Leveling/poe1-zone-registry.json'),
+        path.join(process.resourcesPath || '', 'data', gameFolder, 'Leveling', `${gameFolder}-zone-registry.json`), // Packaged app
+        path.join(app.getAppPath(), 'data', gameFolder, 'Leveling', `${gameFolder}-zone-registry.json`),
+        path.join(process.cwd(), 'data', gameFolder, 'Leveling', `${gameFolder}-zone-registry.json`),
+        path.join(__dirname, `../../data/${gameFolder}/Leveling/${gameFolder}-zone-registry.json`),
+        path.join(__dirname, `../../../data/${gameFolder}/Leveling/${gameFolder}-zone-registry.json`),
       ];
       
       let loaded = false;
@@ -225,7 +258,7 @@ export class LevelingWindow {
         if (fs.existsSync(dataPath)) {
           const rawData = fs.readFileSync(dataPath, 'utf-8');
           this.zoneRegistry = JSON.parse(rawData);
-          console.log('[LevelingWindow] Zone registry loaded from:', dataPath);
+          console.log(`[LevelingWindow] ${gameFolder.toUpperCase()} zone registry loaded from:`, dataPath);
           console.log('[LevelingWindow] Zone registry version:', this.zoneRegistry.version);
           loaded = true;
           break;
@@ -233,7 +266,7 @@ export class LevelingWindow {
       }
       
       if (!loaded) {
-        console.warn('[LevelingWindow] Zone registry file not found');
+        console.warn(`[LevelingWindow] ${gameFolder.toUpperCase()} zone registry file not found`);
         this.zoneRegistry = { version: '2.0', zonesByAct: [] };
       }
     } catch (err) {
@@ -271,14 +304,14 @@ export class LevelingWindow {
   }
 
   private loadProgress(): void {
-    const saved = this.settingsService.get('levelingWindow');
+    const saved = this.settingsService.get(this.getLevelingWindowKey());
     if (saved && saved.progress && Array.isArray(saved.progress)) {
       this.completedSteps = new Set(saved.progress);
     }
   }
 
   private saveProgress(): void {
-    this.settingsService.update('levelingWindow', (c) => ({ 
+    this.settingsService.update(this.getLevelingWindowKey(), (c) => ({ 
       ...c, 
       progress: Array.from(this.completedSteps) 
     }));
@@ -287,11 +320,20 @@ export class LevelingWindow {
   private registerIpcHandlers(): void {
     // Provide leveling data to renderer
     ipcMain.handle('get-leveling-data', async () => {
-      const saved = this.settingsService.get('levelingWindow');
+      const saved = this.settingsService.get(this.getLevelingWindowKey());
+      
+      // Validate that currentActIndex is valid for the loaded data
+      let currentActIndex = saved?.currentActIndex ?? 0;
+      if (this.levelingData?.acts && currentActIndex >= this.levelingData.acts.length) {
+        // Reset to 0 if the saved index is out of bounds (e.g., switching from POE1 to POE2)
+        console.log(`[LevelingWindow] currentActIndex ${currentActIndex} out of bounds, resetting to 0`);
+        currentActIndex = 0;
+      }
+      
       return {
         data: this.levelingData,
         progress: Array.from(this.completedSteps),
-        currentActIndex: saved?.currentActIndex ?? 0,
+        currentActIndex: currentActIndex,
         actTimers: saved?.actTimers ?? {},
         settings: saved?.uiSettings ?? {}
       };
@@ -309,9 +351,9 @@ export class LevelingWindow {
       return true;
     });
 
-    // Save current act index
-    ipcMain.handle('save-current-act-index', async (event, actIndex: number) => {
-      this.settingsService.update('levelingWindow', (c) => ({
+    // Set current act index
+    ipcMain.handle('set-current-act-index', async (event, actIndex: number) => {
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
         ...c,
         currentActIndex: actIndex
       }));
@@ -320,7 +362,7 @@ export class LevelingWindow {
 
     // Save act timers
     ipcMain.handle('save-act-timers', async (event, actTimers: Record<number, number>) => {
-      this.settingsService.update('levelingWindow', (c) => ({
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
         ...c,
         actTimers: actTimers
       }));
@@ -329,7 +371,7 @@ export class LevelingWindow {
 
     // Save UI settings
     ipcMain.handle('save-leveling-settings', async (event, uiSettings: any) => {
-      this.settingsService.update('levelingWindow', (c) => ({
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
         ...c,
         uiSettings: uiSettings
       }));
@@ -340,11 +382,11 @@ export class LevelingWindow {
     ipcMain.handle('reset-leveling-progress', async () => {
       this.completedSteps = new Set();
       // Reset act timers and current act index
-      const saved = this.settingsService.get('levelingWindow');
+      const saved = this.settingsService.get(this.getLevelingWindowKey());
       if (saved) {
         saved.actTimers = {};
         saved.currentActIndex = 0;
-        this.settingsService.set('levelingWindow', saved);
+        this.settingsService.set(this.getLevelingWindowKey(), saved);
       }
       this.saveProgress();
       return true;
@@ -379,10 +421,10 @@ export class LevelingWindow {
       if (processDir) {
         const processBasedPath = path.join(processDir, 'logs', 'Client.txt');
         if (fs.existsSync(processBasedPath)) {
-          this.settingsService.set('clientTxtPath', processBasedPath);
-          this.settingsService.set('clientTxtAutoDetected', true);
-          this.settingsService.set('clientTxtLastChecked', Date.now());
-          console.log('[LevelingWindow] Found Client.txt via running process');
+          this.settingsService.set(this.getClientTxtPathKey(), processBasedPath);
+          this.settingsService.set(this.getClientTxtAutoDetectedKey(), true);
+          this.settingsService.set(this.getClientTxtLastCheckedKey(), Date.now());
+          console.log(`[LevelingWindow] Found ${this.overlayVersion.toUpperCase()} Client.txt via running process`);
           return { success: true, path: processBasedPath };
         }
       }
@@ -396,29 +438,37 @@ export class LevelingWindow {
         }
       });
 
-      const relativePaths = [
-        'Program Files (x86)\\Steam\\steamapps\\common\\Path of Exile\\logs\\Client.txt',
-        'Program Files\\Steam\\steamapps\\common\\Path of Exile\\logs\\Client.txt',
-        'Steam\\steamapps\\common\\Path of Exile\\logs\\Client.txt',
-        'SteamLibrary\\steamapps\\common\\Path of Exile\\logs\\Client.txt',
-        'Program Files (x86)\\Grinding Gear Games\\Path of Exile\\logs\\Client.txt',
-        'Grinding Gear Games\\Path of Exile\\logs\\Client.txt'
-      ];
+      // Different folder names for POE1 vs POE2
+      const gameFolders = this.overlayVersion === 'poe1' 
+        ? ['Path of Exile', 'Path of Exile 1']
+        : ['Path of Exile 2', 'Path of Exile II', 'PathOfExile2'];
+
+      const relativePaths: string[] = [];
+      for (const gameFolder of gameFolders) {
+        relativePaths.push(
+          `Program Files (x86)\\Steam\\steamapps\\common\\${gameFolder}\\logs\\Client.txt`,
+          `Program Files\\Steam\\steamapps\\common\\${gameFolder}\\logs\\Client.txt`,
+          `Steam\\steamapps\\common\\${gameFolder}\\logs\\Client.txt`,
+          `SteamLibrary\\steamapps\\common\\${gameFolder}\\logs\\Client.txt`,
+          `Program Files (x86)\\Grinding Gear Games\\${gameFolder}\\logs\\Client.txt`,
+          `Grinding Gear Games\\${gameFolder}\\logs\\Client.txt`
+        );
+      }
 
       for (const drive of driveLetters) {
         for (const rel of relativePaths) {
           const testPath = path.join(drive + ':\\', rel);
           if (fs.existsSync(testPath)) {
-            this.settingsService.set('clientTxtPath', testPath);
-            this.settingsService.set('clientTxtAutoDetected', true);
-            this.settingsService.set('clientTxtLastChecked', Date.now());
-            console.log('[LevelingWindow] Found Client.txt via path scanning');
+            this.settingsService.set(this.getClientTxtPathKey(), testPath);
+            this.settingsService.set(this.getClientTxtAutoDetectedKey(), true);
+            this.settingsService.set(this.getClientTxtLastCheckedKey(), Date.now());
+            console.log(`[LevelingWindow] Found ${this.overlayVersion.toUpperCase()} Client.txt via path scanning`);
             return { success: true, path: testPath };
           }
         }
       }
 
-      console.log('[LevelingWindow] Could not auto-detect Client.txt');
+      console.log(`[LevelingWindow] Could not auto-detect ${this.overlayVersion.toUpperCase()} Client.txt`);
       return { success: false, path: null };
     });
 
@@ -426,7 +476,7 @@ export class LevelingWindow {
     ipcMain.handle('select-client-txt', async () => {
       const { dialog } = await import('electron');
       const result = await dialog.showOpenDialog({
-        title: 'Select Client.txt',
+        title: `Select ${this.overlayVersion.toUpperCase()} Client.txt`,
         defaultPath: 'C:\\Program Files (x86)',
         filters: [
           { name: 'Text Files', extensions: ['txt'] },
@@ -437,9 +487,9 @@ export class LevelingWindow {
 
       if (!result.canceled && result.filePaths.length > 0) {
         const selectedPath = result.filePaths[0];
-        this.settingsService.set('clientTxtPath', selectedPath);
-        this.settingsService.set('clientTxtAutoDetected', false);
-        this.settingsService.set('clientTxtLastChecked', Date.now());
+        this.settingsService.set(this.getClientTxtPathKey(), selectedPath);
+        this.settingsService.set(this.getClientTxtAutoDetectedKey(), false);
+        this.settingsService.set(this.getClientTxtLastCheckedKey(), Date.now());
         return { success: true, path: selectedPath };
       }
 
@@ -448,8 +498,8 @@ export class LevelingWindow {
 
     // Get current client.txt path
     ipcMain.handle('get-client-txt-path', async () => {
-      const savedPath = this.settingsService.get('clientTxtPath');
-      const autoDetected = this.settingsService.get('clientTxtAutoDetected') ?? false;
+      const savedPath = this.settingsService.get(this.getClientTxtPathKey());
+      const autoDetected = this.settingsService.get(this.getClientTxtAutoDetectedKey()) ?? false;
       
       // Validate that the path actually exists
       let exists = false;
@@ -467,20 +517,20 @@ export class LevelingWindow {
     // Clean client.txt file
     ipcMain.handle('clean-client-txt', async () => {
       try {
-        const clientPath = this.settingsService.get('clientTxtPath');
+        const clientPath = this.settingsService.get(this.getClientTxtPathKey());
         if (!clientPath) {
-          return { success: false, error: 'Client.txt path not configured' };
+          return { success: false, error: `${this.overlayVersion.toUpperCase()} Client.txt path not configured` };
         }
         
         if (!fs.existsSync(clientPath)) {
-          return { success: false, error: 'Client.txt file not found at configured path' };
+          return { success: false, error: `${this.overlayVersion.toUpperCase()} Client.txt file not found at configured path` };
         }
 
         // Clear the file by writing an empty string
         fs.writeFileSync(clientPath, '', 'utf8');
         return { success: true };
       } catch (error) {
-        console.error('Error cleaning Client.txt:', error);
+        console.error(`Error cleaning ${this.overlayVersion.toUpperCase()} Client.txt:`, error);
         return { success: false, error: String(error) };
       }
     });
@@ -533,39 +583,39 @@ export class LevelingWindow {
    */
   private async autoDetectClientTxtOnStartup(): Promise<void> {
     // Check if we've already attempted detection
-    const detectionAttempted = this.settingsService.get('clientTxtDetectionAttempted');
-    const existingPath = this.settingsService.get('clientTxtPath');
+    const detectionAttempted = this.settingsService.get(this.getClientTxtDetectionAttemptedKey());
+    const existingPath = this.settingsService.get(this.getClientTxtPathKey());
     
     // Skip if we've already tried OR if user has manually set a path
-    if (detectionAttempted || (existingPath && !this.settingsService.get('clientTxtAutoDetected'))) {
-      console.log('[LevelingWindow] Skipping auto-detection (already attempted or manually set)');
+    if (detectionAttempted || (existingPath && !this.settingsService.get(this.getClientTxtAutoDetectedKey()))) {
+      console.log(`[LevelingWindow] Skipping ${this.overlayVersion.toUpperCase()} auto-detection (already attempted or manually set)`);
       return;
     }
 
     // If we have an existing auto-detected path, verify it still exists
-    if (existingPath && this.settingsService.get('clientTxtAutoDetected')) {
+    if (existingPath && this.settingsService.get(this.getClientTxtAutoDetectedKey())) {
       if (fs.existsSync(existingPath)) {
-        console.log('[LevelingWindow] Using existing auto-detected path:', existingPath);
+        console.log(`[LevelingWindow] Using existing auto-detected ${this.overlayVersion.toUpperCase()} path:`, existingPath);
         return;
       } else {
-        console.log('[LevelingWindow] Previous auto-detected path no longer exists, re-detecting');
+        console.log(`[LevelingWindow] Previous auto-detected ${this.overlayVersion.toUpperCase()} path no longer exists, re-detecting`);
       }
     }
 
-    console.log('[LevelingWindow] Attempting auto-detection of Client.txt...');
+    console.log(`[LevelingWindow] Attempting auto-detection of ${this.overlayVersion.toUpperCase()} Client.txt...`);
     
     // Mark that we've attempted detection (even if it fails)
-    this.settingsService.set('clientTxtDetectionAttempted', true);
+    this.settingsService.set(this.getClientTxtDetectionAttemptedKey(), true);
     
     // Try to find from running process first
     const processDir = this.findPoeProcessPath();
     if (processDir) {
       const processBasedPath = path.join(processDir, 'logs', 'Client.txt');
       if (fs.existsSync(processBasedPath)) {
-        this.settingsService.set('clientTxtPath', processBasedPath);
-        this.settingsService.set('clientTxtAutoDetected', true);
-        this.settingsService.set('clientTxtLastChecked', Date.now());
-        console.log('[LevelingWindow] Auto-detected Client.txt via running process:', processBasedPath);
+        this.settingsService.set(this.getClientTxtPathKey(), processBasedPath);
+        this.settingsService.set(this.getClientTxtAutoDetectedKey(), true);
+        this.settingsService.set(this.getClientTxtLastCheckedKey(), Date.now());
+        console.log(`[LevelingWindow] Auto-detected ${this.overlayVersion.toUpperCase()} Client.txt via running process:`, processBasedPath);
         return;
       }
     }
@@ -579,36 +629,44 @@ export class LevelingWindow {
       }
     });
 
-    const relativePaths = [
-      'Program Files (x86)\\Steam\\steamapps\\common\\Path of Exile\\logs\\Client.txt',
-      'Program Files\\Steam\\steamapps\\common\\Path of Exile\\logs\\Client.txt',
-      'Steam\\steamapps\\common\\Path of Exile\\logs\\Client.txt',
-      'SteamLibrary\\steamapps\\common\\Path of Exile\\logs\\Client.txt',
-      'Program Files (x86)\\Grinding Gear Games\\Path of Exile\\logs\\Client.txt',
-      'Grinding Gear Games\\Path of Exile\\logs\\Client.txt'
-    ];
+    // Different folder names for POE1 vs POE2
+    const gameFolders = this.overlayVersion === 'poe1' 
+      ? ['Path of Exile', 'Path of Exile 1']
+      : ['Path of Exile 2', 'Path of Exile II', 'PathOfExile2'];
+
+    const relativePaths: string[] = [];
+    for (const gameFolder of gameFolders) {
+      relativePaths.push(
+        `Program Files (x86)\\Steam\\steamapps\\common\\${gameFolder}\\logs\\Client.txt`,
+        `Program Files\\Steam\\steamapps\\common\\${gameFolder}\\logs\\Client.txt`,
+        `Steam\\steamapps\\common\\${gameFolder}\\logs\\Client.txt`,
+        `SteamLibrary\\steamapps\\common\\${gameFolder}\\logs\\Client.txt`,
+        `Program Files (x86)\\Grinding Gear Games\\${gameFolder}\\logs\\Client.txt`,
+        `Grinding Gear Games\\${gameFolder}\\logs\\Client.txt`
+      );
+    }
 
     for (const drive of driveLetters) {
       for (const rel of relativePaths) {
         const testPath = path.join(drive + ':\\', rel);
         if (fs.existsSync(testPath)) {
-          this.settingsService.set('clientTxtPath', testPath);
-          this.settingsService.set('clientTxtAutoDetected', true);
-          this.settingsService.set('clientTxtLastChecked', Date.now());
-          console.log('[LevelingWindow] Auto-detected Client.txt via path scanning:', testPath);
+          this.settingsService.set(this.getClientTxtPathKey(), testPath);
+          this.settingsService.set(this.getClientTxtAutoDetectedKey(), true);
+          this.settingsService.set(this.getClientTxtLastCheckedKey(), Date.now());
+          console.log(`[LevelingWindow] Auto-detected ${this.overlayVersion.toUpperCase()} Client.txt via path scanning:`, testPath);
           return;
         }
       }
     }
 
     // If we get here, we couldn't find Client.txt
-    console.log('[LevelingWindow] Could not auto-detect Client.txt');
+    console.log(`[LevelingWindow] Could not auto-detect ${this.overlayVersion.toUpperCase()} Client.txt`);
     
     // Show notification if not already shown
-    const notificationShown = this.settingsService.get('clientTxtNotificationShown');
+    const notificationShown = this.settingsService.get(this.getClientTxtNotificationShownKey());
     if (!notificationShown) {
       this.showClientTxtNotFoundNotification();
-      this.settingsService.set('clientTxtNotificationShown', true);
+      this.settingsService.set(this.getClientTxtNotificationShownKey(), true);
     }
   }
 
@@ -622,9 +680,9 @@ export class LevelingWindow {
     setTimeout(() => {
       dialog.showMessageBox({
         type: 'info',
-        title: 'Client.txt Not Found',
+        title: `${this.overlayVersion.toUpperCase()} Client.txt Not Found`,
         message: 'Auto Zone Detection',
-        detail: 'We couldn\'t automatically detect the Path of Exile Client.txt file.\n\n' +
+        detail: `We couldn\'t automatically detect the ${this.overlayVersion.toUpperCase()} Client.txt file.\n\n` +
                 'If you want to use auto zone detection in the leveling overlay, ' +
                 'please set the path manually in the leveling overlay settings.\n\n' +
                 'This message will only be shown once.',
@@ -641,14 +699,14 @@ export class LevelingWindow {
     // Stop any existing watcher
     this.stopClientTxtWatcher();
 
-    const clientPath = this.settingsService.get('clientTxtPath');
+    const clientPath = this.settingsService.get(this.getClientTxtPathKey());
     if (!clientPath || !fs.existsSync(clientPath)) {
-      console.log('Client.txt not configured or not found, skipping file watch');
+      console.log(`${this.overlayVersion.toUpperCase()} Client.txt not configured or not found, skipping file watch`);
       return;
     }
 
     this.clientTxtPath = clientPath;
-    console.log('Starting Client.txt watcher at:', clientPath);
+    console.log(`Starting ${this.overlayVersion.toUpperCase()} Client.txt watcher at:`, clientPath);
     
     // Initialize last position to end of file
     try {
@@ -697,19 +755,40 @@ export class LevelingWindow {
       console.log('New content:', newContent.substring(0, 200)); // Log first 200 chars
 
       // Parse for zone entry lines
-      // Format: 2025/06/13 09:49:29 98539734 cff94598 [INFO Client 39308] : You have entered The Forest Encampment.
-      const zoneRegex = /\[INFO Client \d+\] : You have entered (.+)\./g;
-      let match;
+      // POE1 Format: 2025/06/13 09:49:29 98539734 cff94598 [INFO Client 39308] : You have entered The Forest Encampment.
+      // POE2 Format: 2025/10/24 12:20:06 46081515 775aed1e [INFO Client 14056] [SCENE] Set Source [Clearfell]
+      
       let matchCount = 0;
       
-      while ((match = zoneRegex.exec(newContent)) !== null) {
-        const zoneName = match[1].trim();
-        matchCount++;
-        console.log(`[${matchCount}] Detected zone entry:`, zoneName);
+      if (this.overlayVersion === 'poe1') {
+        // POE1: "You have entered <zone name>."
+        const zoneRegex = /\[INFO Client \d+\] : You have entered (.+)\./g;
+        let match;
         
-        // Send to renderer to auto-check the step
-        if (this.window && !this.window.isDestroyed()) {
-          this.window.webContents.send('zone-entered', zoneName);
+        while ((match = zoneRegex.exec(newContent)) !== null) {
+          const zoneName = match[1].trim();
+          matchCount++;
+          console.log(`[${matchCount}] POE1 Detected zone entry:`, zoneName);
+          
+          // Send to renderer to auto-check the step
+          if (this.window && !this.window.isDestroyed()) {
+            this.window.webContents.send('zone-entered', zoneName);
+          }
+        }
+      } else {
+        // POE2: "[SCENE] Set Source [<zone name>]"
+        const zoneRegex = /\[INFO Client \d+\] \[SCENE\] Set Source \[(.+?)\]/g;
+        let match;
+        
+        while ((match = zoneRegex.exec(newContent)) !== null) {
+          const zoneName = match[1].trim();
+          matchCount++;
+          console.log(`[${matchCount}] POE2 Detected zone entry:`, zoneName);
+          
+          // Send to renderer to auto-check the step
+          if (this.window && !this.window.isDestroyed()) {
+            this.window.webContents.send('zone-entered', zoneName);
+          }
         }
       }
 

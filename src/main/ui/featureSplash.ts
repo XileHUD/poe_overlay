@@ -628,6 +628,10 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
               <input type="checkbox" id="feat-tools-regex" ${checked(safeConfig.tools.subcategories.regex)}/>
               <label for="feat-tools-regex">Regex Builder</label>
             </div>
+            <div class="feature-sub poe2-only">
+              <input type="checkbox" id="feat-tools-poe2-leveling" ${checked(safeConfig.tools.subcategories.poe2Leveling)}/>
+              <label for="feat-tools-poe2-leveling">Leveling Overlay</label>
+            </div>
             <div class="feature-sub poe1-only">
               <input type="checkbox" id="feat-tools-poe1-regex" ${checked(safeConfig.tools.subcategories.poe1Regex)}/>
               <label for="feat-tools-poe1-regex">Map Regex</label>
@@ -786,9 +790,10 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       // Tools
       document.getElementById('feat-tools').checked = preset.tools.enabled;
       document.getElementById('feat-tools-regex').checked = preset.tools.subcategories.regex;
-  document.getElementById('feat-tools-poe1-regex').checked = preset.tools.subcategories.poe1Regex;
-    document.getElementById('feat-tools-poe1-vorici').checked = preset.tools.subcategories.poe1Vorici;
-    document.getElementById('feat-tools-poe1-leveling').checked = preset.tools.subcategories.poe1Leveling;
+      document.getElementById('feat-tools-poe2-leveling').checked = preset.tools.subcategories.poe2Leveling;
+      document.getElementById('feat-tools-poe1-regex').checked = preset.tools.subcategories.poe1Regex;
+      document.getElementById('feat-tools-poe1-vorici').checked = preset.tools.subcategories.poe1Vorici;
+      document.getElementById('feat-tools-poe1-leveling').checked = preset.tools.subcategories.poe1Leveling;
       
       // Update visibility
       GROUP_ORDER.forEach(group => {
@@ -892,6 +897,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
           enabled: document.getElementById('feat-tools').checked,
           subcategories: {
             regex: document.getElementById('feat-tools-regex').checked,
+            poe2Leveling: document.getElementById('feat-tools-poe2-leveling').checked,
             poe1Regex: document.getElementById('feat-tools-poe1-regex').checked,
             poe1Vorici: document.getElementById('feat-tools-poe1-vorici').checked,
             poe1Leveling: document.getElementById('feat-tools-poe1-leveling').checked

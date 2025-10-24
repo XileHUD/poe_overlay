@@ -574,7 +574,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             }
 
             this.levelingWindow = new LevelingWindow({
-                settingsService: this.settingsService
+                settingsService: this.settingsService,
+                overlayVersion: this.overlayVersion
             });
 
             this.updateSplash('Creating tray');
@@ -1167,6 +1168,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 enabled: false,
                 subcategories: {
                     regex: false,
+                    poe2Leveling: false,
                     poe1Regex: false,
                     poe1Vorici: false,
                     poe1Leveling: false
@@ -2746,27 +2748,41 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
     }
 
     private computeLevelingOnlyMode(): boolean {
-        if (this.overlayVersion !== 'poe1') return false;
         if (!this.featureService) return false;
 
         try {
             const config = this.featureService.getConfig();
             console.log('[LevelingOnly] Evaluating with config.tools:', config.tools);
-            if (!config.tools?.enabled || !config.tools.subcategories?.poe1Leveling) {
+            
+            // Check if leveling overlay is enabled for the current game mode
+            const isLevelingEnabled = this.overlayVersion === 'poe1'
+                ? config.tools?.enabled && config.tools.subcategories?.poe1Leveling
+                : config.tools?.enabled && config.tools.subcategories?.poe2Leveling;
+            
+            if (!isLevelingEnabled) {
                 return false;
             }
 
-            // In PoE1 mode, only check PoE1-specific features
-            const otherFlags = [
-                config.poe1Modifiers,
-                config.poe1Crafting?.enabled,
-                config.poe1Character?.enabled,
-                config.poe1Items?.enabled,
-                config.merchant,
-                config.tools.subcategories.regex,
-                config.tools.subcategories.poe1Regex,
-                config.tools.subcategories.poe1Vorici
-            ];
+            // Check game-specific features based on overlay version
+            const otherFlags = this.overlayVersion === 'poe1'
+                ? [
+                    config.poe1Modifiers,
+                    config.poe1Crafting?.enabled,
+                    config.poe1Character?.enabled,
+                    config.poe1Items?.enabled,
+                    config.merchant,
+                    config.tools.subcategories.regex,
+                    config.tools.subcategories.poe1Regex,
+                    config.tools.subcategories.poe1Vorici
+                  ]
+                : [
+                    config.modifiers,
+                    config.crafting?.enabled,
+                    config.character?.enabled,
+                    config.items?.enabled,
+                    config.merchant,
+                    config.tools.subcategories.regex
+                  ];
 
             const isLevelingOnly = otherFlags.every(flag => !flag);
             console.log('[LevelingOnly] Other feature flags:', otherFlags, '=>', isLevelingOnly);

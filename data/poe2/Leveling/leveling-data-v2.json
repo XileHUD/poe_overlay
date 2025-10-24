@@ -1,0 +1,2613 @@
+{
+  "acts": [
+    {
+      "actNumber": 1,
+      "actName": "Grelwood",
+      "recommendedEndLevel": 25,
+      "steps": [
+        {
+          "id": "poe2_a1_riverbank_1",
+          "type": "kill_boss",
+          "zone": "The Riverbank",
+          "description": "Kill The Bloated Miller",
+          "hint": "Starting boss - use skill point after kill",
+          "checkable": true,
+          "zoneId": "g1_1"
+        },
+        {
+          "id": "poe2_a1_riverbank_2",
+          "type": "town",
+          "zone": "The Riverbank",
+          "description": "Enter Clearfell Encampment",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_town1_1",
+          "type": "npc_quest",
+          "zone": "Clearfell Encampment",
+          "description": "Talk to Renly",
+          "reward": "Skill Gem",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_town1_2",
+          "type": "navigation",
+          "zone": "Clearfell Encampment",
+          "description": "Enter Clearfell",
+          "checkable": true,
+          "zoneId": "g1_2"
+        },
+        {
+          "id": "poe2_a1_clearfell_1",
+          "type": "optional",
+          "zone": "Clearfell",
+          "description": "Optional: Complete Devourer Arena in Mud Burrow for Skill + Support Gem",
+          "hint": "After arena, portal out, talk to Renly, waypoint back to Clearfell",
+          "optionalNote": "Provides skill gem and support gem",
+          "checkable": true,
+          "zoneId": "g1_3"
+        },
+        {
+          "id": "poe2_a1_clearfell_2",
+          "type": "kill_boss",
+          "zone": "Clearfell",
+          "description": "Kill Beira of the Rotten Pack",
+          "hint": "Grants Cold Resistance bonus",
+          "checkable": true,
+          "zoneId": "g1_2"
+        },
+        {
+          "id": "poe2_a1_clearfell_3",
+          "type": "navigation",
+          "zone": "Clearfell",
+          "description": "Enter The Grelwood",
+          "checkable": true,
+          "zoneId": "g1_4"
+        },
+        {
+          "id": "poe2_a1_grelwood_1",
+          "type": "waypoint",
+          "zone": "The Grelwood",
+          "description": "Activate Waypoint",
+          "checkable": true,
+          "zoneId": "g1_4"
+        },
+        {
+          "id": "poe2_a1_grelwood_2",
+          "type": "quest",
+          "zone": "The Grelwood",
+          "description": "Summon Una near waypoint",
+          "hint": "Important NPC for quest progression",
+          "checkable": true,
+          "zoneId": "g1_4"
+        },
+        {
+          "id": "poe2_a1_grelwood_3",
+          "type": "navigation",
+          "zone": "The Grelwood",
+          "description": "Go to The Grim Tangle for waypoint",
+          "hint": "Diamond-shaped zone - find waypoint for orientation",
+          "layoutTip": "This is a 2-task zone: Find waypoint AND enter The Grim Tangle",
+          "checkable": true,
+          "zoneId": "g1_6"
+        },
+        {
+          "id": "poe2_a1_grimtangle_1",
+          "type": "waypoint",
+          "zone": "The Grim Tangle",
+          "description": "Activate Waypoint",
+          "checkable": true,
+          "zoneId": "g1_6"
+        },
+        {
+          "id": "poe2_a1_grimtangle_2",
+          "type": "optional",
+          "zone": "The Grim Tangle",
+          "description": "Optional: Complete Brambleghast Arena or visit Hut for Witch support + flasks",
+          "optionalNote": "Brambleghast arena often near Red Vale entrance",
+          "checkable": true,
+          "zoneId": "g1_6"
+        },
+        {
+          "id": "poe2_a1_grimtangle_3",
+          "type": "navigation",
+          "zone": "The Grim Tangle",
+          "description": "Enter The Red Vale",
+          "hint": "Often located near Brambleghast arena",
+          "checkable": true,
+          "zoneId": "g1_5"
+        },
+        {
+          "id": "poe2_a1_redvale_1",
+          "type": "quest",
+          "zone": "The Red Vale",
+          "description": "Activate 3 Obelisks of Rust",
+          "hint": "Collect 3 quest runes from obelisks",
+          "checkable": true,
+          "zoneId": "g1_5"
+        },
+        {
+          "id": "poe2_a1_redvale_2",
+          "type": "kill_boss",
+          "zone": "The Red Vale",
+          "description": "Kill The Rust King",
+          "reward": "Runed Girdle, Runed Guard, Runed Skull Cap",
+          "checkable": true,
+          "zoneId": "g1_5"
+        },
+        {
+          "id": "poe2_a1_redvale_3",
+          "type": "town",
+          "zone": "The Red Vale",
+          "description": "Portal to Clearfell Encampment",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_town2_1",
+          "type": "npc_quest",
+          "zone": "Clearfell Encampment",
+          "description": "Talk to Renly",
+          "quest": "Turn in Runed Spikes quest",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_town2_2",
+          "type": "waypoint",
+          "zone": "Clearfell Encampment",
+          "description": "Waypoint to The Grelwood",
+          "checkable": true,
+          "zoneId": "g1_4"
+        },
+        {
+          "id": "poe2_a1_grelwood_4",
+          "type": "quest",
+          "zone": "The Grelwood",
+          "description": "Activate 3 Runic Seals",
+          "checkable": true,
+          "zoneId": "g1_4"
+        },
+        {
+          "id": "poe2_a1_grelwood_5",
+          "type": "town",
+          "zone": "The Grelwood",
+          "description": "Portal to Clearfell Encampment",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_town3_1",
+          "type": "npc_quest",
+          "zone": "Clearfell Encampment",
+          "description": "Talk to Una",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_town3_2",
+          "type": "waypoint",
+          "zone": "Clearfell Encampment",
+          "description": "Waypoint to The Grim Tangle",
+          "checkable": true,
+          "zoneId": "g1_6"
+        },
+        {
+          "id": "poe2_a1_grimtangle_4",
+          "type": "optional",
+          "zone": "The Grim Tangle",
+          "description": "Optional: Complete Rotten Druid Arena for support gem",
+          "optionalNote": "Additional support gem",
+          "checkable": true,
+          "zoneId": "g1_6"
+        },
+        {
+          "id": "poe2_a1_grimtangle_5",
+          "type": "navigation",
+          "zone": "The Grim Tangle",
+          "description": "Enter Cemetery of the Eternals",
+          "checkable": true,
+          "zoneId": "g1_7"
+        },
+        {
+          "id": "poe2_a1_cemetery_1",
+          "type": "npc_quest",
+          "zone": "Cemetery of the Eternals",
+          "description": "Talk to Lachlann",
+          "checkable": true,
+          "zoneId": "g1_7"
+        },
+        {
+          "id": "poe2_a1_cemetery_2",
+          "type": "optional",
+          "zone": "Cemetery of the Eternals",
+          "description": "Optional: Find Ring in Ancient Ruin at zone edge",
+          "optionalNote": "Ancient Ruin located at edge of zone",
+          "checkable": true,
+          "zoneId": "g1_7"
+        },
+        {
+          "id": "poe2_a1_cemetery_3",
+          "type": "navigation",
+          "zone": "Cemetery of the Eternals",
+          "description": "Enter Tomb of the Consort",
+          "hint": "Located opposite of waypoint",
+          "checkable": true,
+          "zoneId": "g1_9"
+        },
+        {
+          "id": "poe2_a1_tombconsort_1",
+          "type": "optional",
+          "zone": "Tomb of the Consort",
+          "description": "Optional: Find Knight support gem in Haunted Treasure",
+          "optionalNote": "Knight support in haunted treasure checkpoint",
+          "checkable": true,
+          "zoneId": "g1_9"
+        },
+        {
+          "id": "poe2_a1_tombconsort_2",
+          "type": "kill_boss",
+          "zone": "Tomb of the Consort",
+          "description": "Kill Asinia, the Praetor's Consort",
+          "reward": "Asinia's Memorial Key Piece",
+          "checkable": true,
+          "zoneId": "g1_9"
+        },
+        {
+          "id": "poe2_a1_tombconsort_3",
+          "type": "navigation",
+          "zone": "Tomb of the Consort",
+          "description": "Return to Cemetery of the Eternals",
+          "checkable": true,
+          "zoneId": "g1_7"
+        },
+        {
+          "id": "poe2_a1_cemetery_4",
+          "type": "optional",
+          "zone": "Cemetery of the Eternals",
+          "description": "Optional: Find Ring in Ancient Ruin at zone edge",
+          "optionalNote": "Ancient Ruin located at edge of zone",
+          "checkable": true,
+          "zoneId": "g1_7"
+        },
+        {
+          "id": "poe2_a1_cemetery_5",
+          "type": "navigation",
+          "zone": "Cemetery of the Eternals",
+          "description": "Enter Mausoleum of the Praetor",
+          "checkable": true,
+          "zoneId": "g1_8"
+        },
+        {
+          "id": "poe2_a1_mausoleum_1",
+          "type": "kill_boss",
+          "zone": "Mausoleum of the Praetor",
+          "description": "Kill Draven, the Eternal Praetor",
+          "reward": "Draven's Memorial Key Piece",
+          "checkable": true,
+          "zoneId": "g1_8"
+        },
+        {
+          "id": "poe2_a1_mausoleum_2",
+          "type": "navigation",
+          "zone": "Mausoleum of the Praetor",
+          "description": "Return to Cemetery of the Eternals",
+          "checkable": true,
+          "zoneId": "g1_7"
+        },
+        {
+          "id": "poe2_a1_cemetery_6",
+          "type": "npc_quest",
+          "zone": "Cemetery of the Eternals",
+          "description": "Talk to Lachlann",
+          "checkable": true,
+          "zoneId": "g1_7"
+        },
+        {
+          "id": "poe2_a1_cemetery_7",
+          "type": "kill_boss",
+          "zone": "Cemetery of the Eternals",
+          "description": "Kill Lachlann of Endless Lament",
+          "reward": "Count Lachlann's Ring",
+          "hint": "When gate opens, respawn via ESC menu",
+          "checkable": true,
+          "zoneId": "g1_7"
+        },
+        {
+          "id": "poe2_a1_cemetery_8",
+          "type": "navigation",
+          "zone": "Cemetery of the Eternals",
+          "description": "Enter Hunting Grounds",
+          "checkable": true,
+          "zoneId": "g1_11"
+        },
+        {
+          "id": "poe2_a1_hunting_1",
+          "type": "npc_quest",
+          "zone": "Hunting Grounds",
+          "description": "Talk to Delwyn",
+          "checkable": true,
+          "zoneId": "g1_11"
+        },
+        {
+          "id": "poe2_a1_hunting_2",
+          "type": "kill_boss",
+          "zone": "Hunting Grounds",
+          "description": "Kill The Crowbell",
+          "reward": "2 Skill Points",
+          "hint": "Follow edge of zone to find Crowbell",
+          "layoutTip": "2 tasks: Kill Crowbell AND enter Farmlands for waypoint",
+          "checkable": true,
+          "zoneId": "g1_11"
+        },
+        {
+          "id": "poe2_a1_hunting_3",
+          "type": "optional",
+          "zone": "Hunting Grounds",
+          "description": "Optional: Complete Dryadic Ritual or Ritual Altar for support/skill gems",
+          "optionalNote": "Dryadic Ritual or Ritual Altar rewards",
+          "checkable": true,
+          "zoneId": "g1_11"
+        },
+        {
+          "id": "poe2_a1_hunting_4",
+          "type": "navigation",
+          "zone": "Hunting Grounds",
+          "description": "Follow edge to Freythorn",
+          "checkable": true,
+          "zoneId": "g1_12"
+        },
+        {
+          "id": "poe2_a1_freythorn_1",
+          "type": "quest",
+          "zone": "Freythorn",
+          "description": "Complete 3 small and 1 large ritual",
+          "hint": "If you find large ritual early, check swirls pointing to missing ones",
+          "checkable": true,
+          "zoneId": "g1_12"
+        },
+        {
+          "id": "poe2_a1_freythorn_2",
+          "type": "kill_boss",
+          "zone": "Freythorn",
+          "description": "Kill The King in the Mists",
+          "reward": "30 Spirit bonus",
+          "checkable": true,
+          "zoneId": "g1_12"
+        },
+        {
+          "id": "poe2_a1_freythorn_3",
+          "type": "npc_quest",
+          "zone": "Freythorn",
+          "description": "Talk to Finn",
+          "checkable": true,
+          "zoneId": "g1_12"
+        },
+        {
+          "id": "poe2_a1_freythorn_4",
+          "type": "town",
+          "zone": "Freythorn",
+          "description": "Portal to Clearfell Encampment",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_town4_1",
+          "type": "npc_quest",
+          "zone": "Clearfell Encampment",
+          "description": "Talk to Finn",
+          "reward": "Elemental Resistance Charm (League Start Only)",
+          "optionalNote": "[LEAGUE START] League-start only",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_town4_2",
+          "type": "waypoint",
+          "zone": "Clearfell Encampment",
+          "description": "Waypoint to Ogham Farmlands",
+          "checkable": true,
+          "zoneId": "g1_13_1"
+        },
+        {
+          "id": "poe2_a1_farmlands_1",
+          "type": "waypoint",
+          "zone": "Ogham Farmlands",
+          "description": "Activate Waypoint",
+          "checkable": true,
+          "zoneId": "g1_13_1"
+        },
+        {
+          "id": "poe2_a1_farmlands_2",
+          "type": "quest",
+          "zone": "Ogham Farmlands",
+          "description": "Find Hut and collect Una's Lute",
+          "hint": "Roads can be blocked - walk around if needed. Hut is straight along road.",
+          "checkable": true,
+          "zoneId": "g1_13_1"
+        },
+        {
+          "id": "poe2_a1_farmlands_3",
+          "type": "optional",
+          "zone": "Ogham Farmlands",
+          "description": "Optional: Find and clear Crop Circle for skill gem",
+          "optionalNote": "Crop Circle checkpoint on map",
+          "checkable": true,
+          "zoneId": "g1_13_1"
+        },
+        {
+          "id": "poe2_a1_farmlands_4",
+          "type": "navigation",
+          "zone": "Ogham Farmlands",
+          "description": "Follow road to Ogham Village",
+          "checkable": true,
+          "zoneId": "g1_13_2"
+        },
+        {
+          "id": "poe2_a1_village_1",
+          "type": "waypoint",
+          "zone": "Ogham Village",
+          "description": "Activate Waypoint",
+          "checkable": true,
+          "zoneId": "g1_13_2"
+        },
+        {
+          "id": "poe2_a1_village_2",
+          "type": "town",
+          "zone": "Ogham Village",
+          "description": "Portal to Clearfell Encampment",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_town5_1",
+          "type": "npc_quest",
+          "zone": "Clearfell Encampment",
+          "description": "Talk to Una - Turn in Hooded One quest",
+          "quest": "The Hooded One",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_town5_2",
+          "type": "npc_quest",
+          "zone": "Clearfell Encampment",
+          "description": "Talk to Una - Receive Book of Specialization",
+          "reward": "Book of Specialization (Ascendancy)",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_town5_3",
+          "type": "waypoint",
+          "zone": "Clearfell Encampment",
+          "description": "Waypoint to Ogham Village",
+          "checkable": true,
+          "zoneId": "g1_13_2"
+        },
+        {
+          "id": "poe2_a1_village_3",
+          "type": "quest",
+          "zone": "Ogham Village",
+          "description": "Find Workshop and collect Smithing Tools",
+          "reward": "Salvage Bench unlock (League Start Only)",
+          "hint": "Workshop also has Artificer NPC and optional rune",
+          "optionalNote": "[LEAGUE START] First character only - unlocks salvage bench",
+          "checkable": true,
+          "zoneId": "g1_13_2"
+        },
+        {
+          "id": "poe2_a1_village_4",
+          "type": "kill_boss",
+          "zone": "Ogham Village",
+          "description": "Kill The Executioner",
+          "hint": "Located at end of zone",
+          "checkable": true,
+          "zoneId": "g1_13_2"
+        },
+        {
+          "id": "poe2_a1_village_5",
+          "type": "npc_quest",
+          "zone": "Ogham Village",
+          "description": "Use Lever and talk to Leitis",
+          "checkable": true,
+          "zoneId": "g1_13_2"
+        },
+        {
+          "id": "poe2_a1_village_6",
+          "type": "navigation",
+          "zone": "Ogham Village",
+          "description": "Enter The Manor Ramparts",
+          "checkable": true,
+          "zoneId": "g1_14"
+        },
+        {
+          "id": "poe2_a1_ramparts_1",
+          "type": "waypoint",
+          "zone": "The Manor Ramparts",
+          "description": "Activate Waypoint",
+          "checkable": true,
+          "zoneId": "g1_14"
+        },
+        {
+          "id": "poe2_a1_ramparts_2",
+          "type": "optional",
+          "zone": "The Manor Ramparts",
+          "description": "Optional: Find Hanged Man support gem along outer edge",
+          "optionalNote": "Support gem along outer edge",
+          "checkable": true,
+          "zoneId": "g1_14"
+        },
+        {
+          "id": "poe2_a1_ramparts_3",
+          "type": "town",
+          "zone": "The Manor Ramparts",
+          "description": "Portal to Clearfell Encampment",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_town6_1",
+          "type": "npc_quest",
+          "zone": "Clearfell Encampment",
+          "description": "Talk to NPCs",
+          "reward": "2 Skill Points",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_town6_2",
+          "type": "waypoint",
+          "zone": "Clearfell Encampment",
+          "description": "Waypoint to The Manor Ramparts",
+          "checkable": true,
+          "zoneId": "g1_14"
+        },
+        {
+          "id": "poe2_a1_ramparts_4",
+          "type": "navigation",
+          "zone": "The Manor Ramparts",
+          "description": "Follow inner edge to Ogham Manor",
+          "checkable": true,
+          "zoneId": "g1_15"
+        },
+        {
+          "id": "poe2_a1_manor_1",
+          "type": "kill_boss",
+          "zone": "Ogham Manor",
+          "description": "Floor 1: Kill Candlemass, the Living Rite",
+          "reward": "Life bonus",
+          "hint": "Find hole, check surroundings to progress",
+          "checkable": true,
+          "zoneId": "g1_15"
+        },
+        {
+          "id": "poe2_a1_manor_2",
+          "type": "kill_boss",
+          "zone": "Ogham Manor",
+          "description": "Floor 3 Arena: Kill Count Geonor",
+          "hint": "Final boss of Act 1",
+          "checkable": true,
+          "zoneId": "g1_15"
+        },
+        {
+          "id": "poe2_a1_manor_3",
+          "type": "town",
+          "zone": "Ogham Manor",
+          "description": "Portal to Clearfell Encampment",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_town7_1",
+          "type": "npc_quest",
+          "zone": "Clearfell Encampment",
+          "description": "Talk to NPCs",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_town7_2",
+          "type": "npc_quest",
+          "zone": "Clearfell Encampment",
+          "description": "Talk to Hooded One",
+          "quest": "Complete Act 1",
+          "checkable": true,
+          "zoneId": "g1_town"
+        },
+        {
+          "id": "poe2_a1_complete",
+          "type": "navigation",
+          "zone": "Clearfell Encampment",
+          "description": "Proceed to Act 2",
+          "checkable": true,
+          "zoneId": "g2_1"
+        }
+      ]
+    },
+  {
+    "actNumber": 2,
+    "actName": "The Vastiri Desert",
+    "recommendedEndLevel": 45,
+    "steps": [
+      {
+        "id": "poe2_a2_outskirts_1",
+        "type": "kill_boss",
+        "zone": "Vastiri Outskirts",
+        "description": "Kill Rathbreaker",
+        "hint": "Follow edge to find long passage to arena",
+        "checkable": true,
+        "zoneId": "g2_1"
+      },
+      {
+        "id": "poe2_a2_outskirts_2",
+        "type": "town",
+        "zone": "Vastiri Outskirts",
+        "description": "Portal to town, enter The Ardura Caravan",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town1_1",
+        "type": "npc_quest",
+        "zone": "The Ardura Caravan",
+        "description": "Talk to Hooded One and Asala",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town1_2",
+        "type": "navigation",
+        "zone": "The Ardura Caravan",
+        "description": "Desert Map: Enter Mawdun Quarry",
+        "checkable": true,
+        "zoneId": "g2_10_1"
+      },
+      {
+        "id": "poe2_a2_quarry_1",
+        "type": "navigation",
+        "zone": "Mawdun Quarry",
+        "description": "Follow checkpoints, enter Mawdun Mine",
+        "hint": "Optional: Artificer in Faridun Cache (side area) - skill gem vendor",
+        "checkable": true,
+        "zoneId": "g2_10_2"
+      },
+      {
+        "id": "poe2_a2_mine_1",
+        "type": "waypoint",
+        "zone": "Mawdun Mine",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g2_10_2"
+      },
+      {
+        "id": "poe2_a2_mine_2",
+        "type": "kill_boss",
+        "zone": "Mawdun Mine",
+        "description": "Kill Rudja, the Dread Engineer",
+        "hint": "Arena is usually north or east",
+        "checkable": true,
+        "zoneId": "g2_10_2"
+      },
+      {
+        "id": "poe2_a2_mine_3",
+        "type": "npc_quest",
+        "zone": "Mawdun Mine",
+        "description": "Open Cage, talk to Risu",
+        "checkable": true,
+        "zoneId": "g2_10_2"
+      },
+      {
+        "id": "poe2_a2_mine_4",
+        "type": "town",
+        "zone": "Mawdun Mine",
+        "description": "Portal to The Ardura Caravan",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town2_1",
+        "type": "npc_quest",
+        "zone": "The Ardura Caravan",
+        "description": "Talk to Risu",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town2_2",
+        "type": "navigation",
+        "zone": "The Ardura Caravan",
+        "description": "Desert Map: Enter The Halani Gates (blocked)",
+        "checkable": true,
+        "zoneId": "g2_3a"
+      },
+      {
+        "id": "poe2_a2_gates1_1",
+        "type": "npc_quest",
+        "zone": "The Halani Gates",
+        "description": "Talk to Asala",
+        "checkable": true,
+        "zoneId": "g2_3a"
+      },
+      {
+        "id": "poe2_a2_gates1_2",
+        "type": "town",
+        "zone": "The Halani Gates",
+        "description": "Return to The Ardura Caravan",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town3_1",
+        "type": "npc_quest",
+        "zone": "The Ardura Caravan",
+        "description": "Talk to Risu and Asala",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town3_2",
+        "type": "navigation",
+        "zone": "The Ardura Caravan",
+        "description": "Desert Map: Enter Traitor's Passage",
+        "checkable": true,
+        "zoneId": "g2_2"
+      },
+      {
+        "id": "poe2_a2_passage_1",
+        "type": "waypoint",
+        "zone": "Traitor's Passage",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g2_2"
+      },
+      {
+        "id": "poe2_a2_passage_2",
+        "type": "quest_item",
+        "zone": "Traitor's Passage",
+        "description": "Activate Ancient Seal (middle of zone)",
+        "checkable": true,
+        "zoneId": "g2_2"
+      },
+      {
+        "id": "poe2_a2_passage_3",
+        "type": "quest_item",
+        "zone": "Traitor's Passage",
+        "description": "Activate 3 Runic Seals",
+        "checkable": true,
+        "zoneId": "g2_2"
+      },
+      {
+        "id": "poe2_a2_passage_4",
+        "type": "kill_boss",
+        "zone": "Traitor's Passage",
+        "description": "Kill Balbala, the Traitor, take Balbala's Barya",
+        "hint": "Follow wall with paper talismans",
+        "checkable": true,
+        "zoneId": "g2_2"
+      },
+      {
+        "id": "poe2_a2_passage_5",
+        "type": "navigation",
+        "zone": "Traitor's Passage",
+        "description": "Enter The Halani Gates",
+        "checkable": true,
+        "zoneId": "g2_3"
+      },
+      {
+        "id": "poe2_a2_gates2_1",
+        "type": "waypoint",
+        "zone": "The Halani Gates",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g2_3"
+      },
+      {
+        "id": "poe2_a2_gates2_2",
+        "type": "npc_quest",
+        "zone": "The Halani Gates",
+        "description": "Summon Asala",
+        "checkable": true,
+        "zoneId": "g2_3"
+      },
+      {
+        "id": "poe2_a2_gates2_3",
+        "type": "kill_boss",
+        "zone": "The Halani Gates",
+        "description": "Defeat Jamanra, the Risen King",
+        "hint": "Follow canyon, use stairs after boss",
+        "checkable": true,
+        "zoneId": "g2_3"
+      },
+      {
+        "id": "poe2_a2_gates2_4",
+        "type": "navigation",
+        "zone": "The Halani Gates",
+        "description": "Go to sandstorm deeper in area",
+        "checkable": true,
+        "zoneId": "g2_3"
+      },
+      {
+        "id": "poe2_a2_gates2_5",
+        "type": "town",
+        "zone": "The Halani Gates",
+        "description": "Portal to The Ardura Caravan",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town4_1",
+        "type": "npc_quest",
+        "zone": "The Ardura Caravan",
+        "description": "Talk to Zarka",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town4_2",
+        "type": "navigation",
+        "zone": "The Ardura Caravan",
+        "description": "Desert Map: Enter Trial of the Sekhemas, tag Waypoint, return to Town",
+        "hint": "Optional: Complete Trial for Ascendancy - can do now or later",
+        "checkable": true,
+        "zoneId": "g2_13"
+      },
+      {
+        "id": "poe2_a2_town5_1",
+        "type": "npc_quest",
+        "zone": "The Ardura Caravan",
+        "description": "Talk to Asala",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town5_2",
+        "type": "navigation",
+        "zone": "The Ardura Caravan",
+        "description": "Desert Map: Enter Keth",
+        "checkable": true,
+        "zoneId": "g2_4_1"
+      },
+      {
+        "id": "poe2_a2_keth_1",
+        "type": "quest_item",
+        "zone": "Keth",
+        "description": "Kill serpents for Kabala Clan Relic",
+        "checkable": true,
+        "zoneId": "g2_4_1"
+      },
+      {
+        "id": "poe2_a2_keth_2",
+        "type": "kill_boss",
+        "zone": "Keth",
+        "description": "Kill Kabala, Constrictor Queen",
+        "reward": "2 Skill Points",
+        "checkable": true,
+        "zoneId": "g2_4_1"
+      },
+      {
+        "id": "poe2_a2_keth_3",
+        "type": "navigation",
+        "zone": "Keth",
+        "description": "Follow edge, find bridge to The Lost City",
+        "hint": "Optional: Amulet from Shrine of Hotak (check arena stairs)",
+        "checkable": true,
+        "zoneId": "g2_4_2"
+      },
+      {
+        "id": "poe2_a2_lostcity_1",
+        "type": "navigation",
+        "zone": "The Lost City",
+        "description": "Enter Buried Shrines",
+        "hint": "Optional: Spirit in sarcophagus OR jewel from scarab",
+        "checkable": true,
+        "zoneId": "g2_4_3"
+      },
+      {
+        "id": "poe2_a2_shrines_1",
+        "type": "navigation",
+        "zone": "Buried Shrines",
+        "description": "Go to Heart of Keth",
+        "hint": "Optional: Resist Ring from elemental offering",
+        "checkable": true,
+        "zoneId": "g2_4_3"
+      },
+      {
+        "id": "poe2_a2_heart_1",
+        "type": "kill_boss",
+        "zone": "Heart of Keth",
+        "description": "Kill Azarian, the Forsaken Son",
+        "checkable": true,
+        "zoneId": "g2_4_3"
+      },
+      {
+        "id": "poe2_a2_heart_2",
+        "type": "npc_quest",
+        "zone": "Heart of Keth",
+        "description": "Talk to Water Goddess (Halani)",
+        "checkable": true,
+        "zoneId": "g2_4_3"
+      },
+      {
+        "id": "poe2_a2_heart_3",
+        "type": "quest_item",
+        "zone": "Heart of Keth",
+        "description": "Take Cinders, ignite Goddess, take Essence of Water",
+        "checkable": true,
+        "zoneId": "g2_4_3"
+      },
+      {
+        "id": "poe2_a2_heart_4",
+        "type": "town",
+        "zone": "Heart of Keth",
+        "description": "Portal to The Ardura Caravan",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town6_1",
+        "type": "npc_quest",
+        "zone": "The Ardura Caravan",
+        "description": "Talk to Zarka",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town6_2",
+        "type": "navigation",
+        "zone": "The Ardura Caravan",
+        "description": "Desert Map: Enter Mastodon Badlands",
+        "checkable": true,
+        "zoneId": "g2_5_1"
+      },
+      {
+        "id": "poe2_a2_badlands_1",
+        "type": "navigation",
+        "zone": "Mastodon Badlands",
+        "description": "Enter The Bone Pits",
+        "hint": "Optional: Support gem in Fossilized Memorial | League: Lightless Passage > Well of Souls (once per league)",
+        "checkable": true,
+        "zoneId": "g2_5_2"
+      },
+      {
+        "id": "poe2_a2_bonepits_1",
+        "type": "waypoint",
+        "zone": "The Bone Pits",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g2_5_2"
+      },
+      {
+        "id": "poe2_a2_bonepits_2",
+        "type": "quest_item",
+        "zone": "The Bone Pits",
+        "description": "Kill monsters for Sun Clan Relic",
+        "hint": "Kill hyenas on the way",
+        "checkable": true,
+        "zoneId": "g2_5_2"
+      },
+      {
+        "id": "poe2_a2_bonepits_3",
+        "type": "navigation",
+        "zone": "The Bone Pits",
+        "description": "Go to Blackrib Pit",
+        "checkable": true,
+        "zoneId": "g2_5_2"
+      },
+      {
+        "id": "poe2_a2_blackrib_1",
+        "type": "kill_boss",
+        "zone": "Blackrib Pit",
+        "description": "Kill Iktab, the Deathlord and Ekbab, Ancient Steed, take Mastodon Tusks",
+        "checkable": true,
+        "zoneId": "g2_5_2"
+      },
+      {
+        "id": "poe2_a2_blackrib_2",
+        "type": "town",
+        "zone": "Blackrib Pit",
+        "description": "Portal to The Ardura Caravan",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town7_1",
+        "type": "npc_quest",
+        "zone": "The Ardura Caravan",
+        "description": "Talk to Zarka",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town7_2",
+        "type": "navigation",
+        "zone": "The Ardura Caravan",
+        "description": "Desert Map: Enter Valley of the Titans",
+        "checkable": true,
+        "zoneId": "g2_6"
+      },
+      {
+        "id": "poe2_a2_valley_1",
+        "type": "waypoint",
+        "zone": "Valley of the Titans",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g2_6"
+      },
+      {
+        "id": "poe2_a2_valley_2",
+        "type": "quest_item",
+        "zone": "Valley of the Titans",
+        "description": "Insert relics near Waypoint, activate Medallion (Charm bonus)",
+        "checkable": true,
+        "zoneId": "g2_6"
+      },
+      {
+        "id": "poe2_a2_valley_3",
+        "type": "quest_item",
+        "zone": "Valley of the Titans",
+        "description": "Activate 3 Ancient Seals (outer/inner edges)",
+        "checkable": true,
+        "zoneId": "g2_6"
+      },
+      {
+        "id": "poe2_a2_valley_4",
+        "type": "navigation",
+        "zone": "Valley of the Titans",
+        "description": "Enter The Titan Grotto",
+        "checkable": true,
+        "zoneId": "g2_7"
+      },
+      {
+        "id": "poe2_a2_grotto_1",
+        "type": "kill_boss",
+        "zone": "The Titan Grotto",
+        "description": "Kill Zalmarath, the Colossus, take The Flame Ruby",
+        "checkable": true,
+        "zoneId": "g2_7"
+      },
+      {
+        "id": "poe2_a2_grotto_2",
+        "type": "town",
+        "zone": "The Titan Grotto",
+        "description": "Portal to The Ardura Caravan",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town8_1",
+        "type": "npc_quest",
+        "zone": "The Ardura Caravan",
+        "description": "Talk to Zarka (get Horn)",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town8_2",
+        "type": "npc_quest",
+        "zone": "The Ardura Caravan",
+        "description": "Talk to Asala",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town8_3",
+        "type": "navigation",
+        "zone": "The Ardura Caravan",
+        "description": "Desert Map: Return to Traitor's Passage",
+        "checkable": true,
+        "zoneId": "g2_2"
+      },
+      {
+        "id": "poe2_a2_passage2_1",
+        "type": "quest_item",
+        "zone": "Traitor's Passage",
+        "description": "Sound the Horn at front of caravan",
+        "checkable": true,
+        "zoneId": "g2_2"
+      },
+      {
+        "id": "poe2_a2_passage2_2",
+        "type": "npc_quest",
+        "zone": "Traitor's Passage",
+        "description": "Talk to Asala",
+        "checkable": true,
+        "zoneId": "g2_2"
+      },
+      {
+        "id": "poe2_a2_passage2_3",
+        "type": "navigation",
+        "zone": "Traitor's Passage",
+        "description": "Desert Map: Enter Deshar",
+        "checkable": true,
+        "zoneId": "g2_8"
+      },
+      {
+        "id": "poe2_a2_deshar_1",
+        "type": "quest_item",
+        "zone": "Deshar",
+        "description": "Find Lailuma's Body (Fallen Dekhara), take Final Letter",
+        "hint": "Optional: Artificer in skeleton side area",
+        "checkable": true,
+        "zoneId": "g2_8"
+      },
+      {
+        "id": "poe2_a2_deshar_2",
+        "type": "kill_boss",
+        "zone": "Deshar",
+        "description": "Kill Hunin, Storm Caller and Mugin, Frost Bringer, take Djinn Barya",
+        "checkable": true,
+        "zoneId": "g2_8"
+      },
+      {
+        "id": "poe2_a2_deshar_3",
+        "type": "navigation",
+        "zone": "Deshar",
+        "description": "Enter Path of Mourning",
+        "checkable": true,
+        "zoneId": "g2_9_1"
+      },
+      {
+        "id": "poe2_a2_mourning_1",
+        "type": "navigation",
+        "zone": "Path of Mourning",
+        "description": "Enter Spires of Deshar",
+        "checkable": true,
+        "zoneId": "g2_9_2"
+      },
+      {
+        "id": "poe2_a2_spires_1",
+        "type": "waypoint",
+        "zone": "Spires of Deshar",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g2_9_2"
+      },
+      {
+        "id": "poe2_a2_spires_2",
+        "type": "quest_item",
+        "zone": "Spires of Deshar",
+        "description": "Activate Sisters of Garukhan shrine (Lightning Resistance)",
+        "checkable": true,
+        "zoneId": "g2_9_2"
+      },
+      {
+        "id": "poe2_a2_spires_3",
+        "type": "kill_boss",
+        "zone": "Spires of Deshar",
+        "description": "Kill Tor Gul, the Defiler",
+        "hint": "Find G-pattern or reach far end of zone",
+        "checkable": true,
+        "zoneId": "g2_9_2"
+      },
+      {
+        "id": "poe2_a2_spires_4",
+        "type": "town",
+        "zone": "Spires of Deshar",
+        "description": "Portal to The Ardura Caravan",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town9_1",
+        "type": "npc_quest",
+        "zone": "The Ardura Caravan",
+        "description": "Give Final Letter to Shambrin",
+        "reward": "2 Skill Points",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town9_2",
+        "type": "npc_quest",
+        "zone": "The Ardura Caravan",
+        "description": "Talk to Asala",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town9_3",
+        "type": "navigation",
+        "zone": "The Ardura Caravan",
+        "description": "Desert Map: Enter The Dreadnought",
+        "checkable": true,
+        "zoneId": "g2_12_1"
+      },
+      {
+        "id": "poe2_a2_dreadnought_1",
+        "type": "navigation",
+        "zone": "The Dreadnought",
+        "description": "Enter Dreadnought Vanguard",
+        "checkable": true,
+        "zoneId": "g2_12_2"
+      },
+      {
+        "id": "poe2_a2_vanguard_1",
+        "type": "waypoint",
+        "zone": "Dreadnought Vanguard",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g2_12_2"
+      },
+      {
+        "id": "poe2_a2_vanguard_2",
+        "type": "kill_boss",
+        "zone": "Dreadnought Vanguard",
+        "description": "Kill Jamanra, the Abomination",
+        "checkable": true,
+        "zoneId": "g2_12_2"
+      },
+      {
+        "id": "poe2_a2_vanguard_3",
+        "type": "town",
+        "zone": "Dreadnought Vanguard",
+        "description": "Portal to The Ardura Caravan",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town10_1",
+        "type": "npc_quest",
+        "zone": "The Ardura Caravan",
+        "description": "Talk to Hooded One",
+        "checkable": true,
+        "zoneId": "g2_town"
+      },
+      {
+        "id": "poe2_a2_town10_2",
+        "type": "npc_quest",
+        "zone": "The Ardura Caravan",
+        "description": "Talk to Asala - Proceed to Act 3",
+        "checkable": true,
+        "zoneId": "g3_1"
+      }
+    ]
+  },
+  {
+    "actNumber": 3,
+    "actName": "The Vaal Corrupted Lands",
+    "recommendedEndLevel": 65,
+    "steps": [
+      {
+        "id": "poe2_a3_marsh_1",
+        "type": "navigation",
+        "zone": "Sandswept Marsh",
+        "description": "Enter Ziggurat Encampment",
+        "hint": "Optional: Skill gem arena (Rootdredge) | Ring (Hanging Tree) | Jeweller (Orok Camp near exit)",
+        "checkable": true,
+        "zoneId": "g3_town"
+      },
+      {
+        "id": "poe2_a3_town1_1",
+        "type": "npc_quest",
+        "zone": "Ziggurat Encampment",
+        "description": "Talk to NPCs",
+        "checkable": true,
+        "zoneId": "g3_town"
+      },
+      {
+        "id": "poe2_a3_town1_2",
+        "type": "navigation",
+        "zone": "Ziggurat Encampment",
+        "description": "Enter Jungle Ruins (top)",
+        "checkable": true,
+        "zoneId": "g3_3"
+      },
+      {
+        "id": "poe2_a3_ruins_1",
+        "type": "waypoint",
+        "zone": "Jungle Ruins",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g3_3"
+      },
+      {
+        "id": "poe2_a3_ruins_2",
+        "type": "kill_boss",
+        "zone": "Jungle Ruins",
+        "description": "Kill Mighty Silverfist",
+        "reward": "2 Skill Points",
+        "hint": "Optional: Belt from Jungle Grave",
+        "checkable": true,
+        "zoneId": "g3_3"
+      },
+      {
+        "id": "poe2_a3_ruins_3",
+        "type": "navigation",
+        "zone": "Jungle Ruins",
+        "description": "Enter Venom Crypts (near WP)",
+        "checkable": true,
+        "zoneId": "g3_4"
+      },
+      {
+        "id": "poe2_a3_crypts_1",
+        "type": "quest_item",
+        "zone": "Venom Crypts",
+        "description": "Take Corpse-snake Venom from Corpse (end of zone)",
+        "checkable": true,
+        "zoneId": "g3_4"
+      },
+      {
+        "id": "poe2_a3_crypts_2",
+        "type": "town",
+        "zone": "Venom Crypts",
+        "description": "Portal to Ziggurat Encampment",
+        "checkable": true,
+        "zoneId": "g3_town"
+      },
+      {
+        "id": "poe2_a3_town2_1",
+        "type": "npc_quest",
+        "zone": "Ziggurat Encampment",
+        "description": "Talk to Servi - Choose permanent buff + Artificer unlock",
+        "hint": "FINAL CHOICE - Cannot be changed later!",
+        "checkable": true,
+        "zoneId": "g3_town"
+      },
+      {
+        "id": "poe2_a3_town2_2",
+        "type": "navigation",
+        "zone": "Ziggurat Encampment",
+        "description": "Waypoint to Jungle Ruins, enter Infested Barrens (opposite from WP)",
+        "checkable": true,
+        "zoneId": "g3_2_1"
+      },
+      {
+        "id": "poe2_a3_barrens_1",
+        "type": "waypoint",
+        "zone": "Infested Barrens",
+        "description": "Tag Waypoint, summon Alva",
+        "hint": "WP may require entering 2 side zones along edge",
+        "checkable": true,
+        "zoneId": "g3_2_1"
+      },
+      {
+        "id": "poe2_a3_barrens_2",
+        "type": "navigation",
+        "zone": "Infested Barrens",
+        "description": "Enter Azak Bog",
+        "checkable": true,
+        "zoneId": "g3_7"
+      },
+      {
+        "id": "poe2_a3_bog_1",
+        "type": "waypoint",
+        "zone": "Azak Bog",
+        "description": "Tag Waypoint, summon Servi",
+        "hint": "Optional: Flameskin Ritual (25% rarity/fire-res, near center)",
+        "checkable": true,
+        "zoneId": "g3_7"
+      },
+      {
+        "id": "poe2_a3_bog_2",
+        "type": "kill_boss",
+        "zone": "Azak Bog",
+        "description": "Kill Ignagduk, the Bog Witch, take Ghastly Spear",
+        "reward": "30 Spirit bonus",
+        "checkable": true,
+        "zoneId": "g3_7"
+      },
+      {
+        "id": "poe2_a3_bog_3",
+        "type": "town",
+        "zone": "Azak Bog",
+        "description": "Portal to Ziggurat Encampment",
+        "checkable": true,
+        "zoneId": "g3_town"
+      },
+      {
+        "id": "poe2_a3_town3_1",
+        "type": "npc_quest",
+        "zone": "Ziggurat Encampment",
+        "description": "Talk to Servi (get Ailment Charm)",
+        "checkable": true,
+        "zoneId": "g3_town"
+      },
+      {
+        "id": "poe2_a3_town3_2",
+        "type": "navigation",
+        "zone": "Ziggurat Encampment",
+        "description": "Waypoint to Infested Barrens, enter Chimeral Wetlands (opposite Azak Bog)",
+        "checkable": true,
+        "zoneId": "g3_5"
+      },
+      {
+        "id": "poe2_a3_wetlands_1",
+        "type": "waypoint",
+        "zone": "Chimeral Wetlands",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g3_5"
+      },
+      {
+        "id": "poe2_a3_wetlands_2",
+        "type": "kill_boss",
+        "zone": "Chimeral Wetlands",
+        "description": "Kill Xyclucian, the Chimera, take Chimeral Inscribed Ultimatum",
+        "hint": "Follow edge; if you find Temple of Chaos first, follow opposite edge",
+        "checkable": true,
+        "zoneId": "g3_5"
+      },
+      {
+        "id": "poe2_a3_wetlands_3",
+        "type": "navigation",
+        "zone": "Chimeral Wetlands",
+        "description": "Enter Jiquani's Machinarium (within boss arena)",
+        "checkable": true,
+        "zoneId": "g3_6_1"
+      },
+      {
+        "id": "poe2_a3_machinarium_1",
+        "type": "waypoint",
+        "zone": "Jiquani's Machinarium",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g3_6_1"
+      },
+      {
+        "id": "poe2_a3_machinarium_2",
+        "type": "navigation",
+        "zone": "Jiquani's Machinarium",
+        "description": "Waypoint to Chimeral Wetlands, enter Temple of Chaos",
+        "hint": "If found previously, waypoint to it; otherwise follow opposite edge",
+        "checkable": true,
+        "zoneId": "g3_10"
+      },
+      {
+        "id": "poe2_a3_temple_1",
+        "type": "waypoint",
+        "zone": "Temple of Chaos",
+        "description": "Tag Waypoint, then Waypoint to Jiquani's Machinarium",
+        "hint": "Optional: Complete Trial for Ascendancy - can do now or later",
+        "checkable": true,
+        "zoneId": "g3_10"
+      },
+      {
+        "id": "poe2_a3_machinarium_3",
+        "type": "npc_quest",
+        "zone": "Jiquani's Machinarium",
+        "description": "Summon Alva, take Small Soul Core, activate Stone Altar",
+        "checkable": true,
+        "zoneId": "g3_6_1"
+      },
+      {
+        "id": "poe2_a3_machinarium_4",
+        "type": "quest_item",
+        "zone": "Jiquani's Machinarium",
+        "description": "Find 2 more Small Soul Cores, activate Stone Altars",
+        "checkable": true,
+        "zoneId": "g3_6_1"
+      },
+      {
+        "id": "poe2_a3_machinarium_5",
+        "type": "kill_boss",
+        "zone": "Jiquani's Machinarium",
+        "description": "Kill Blackjaw, the Remnant",
+        "reward": "Fire Resistance boost",
+        "hint": "Search side-edges for locked room with stairs",
+        "checkable": true,
+        "zoneId": "g3_6_1"
+      },
+      {
+        "id": "poe2_a3_machinarium_6",
+        "type": "navigation",
+        "zone": "Jiquani's Machinarium",
+        "description": "Follow red trace to Jiquani's Sanctum",
+        "checkable": true,
+        "zoneId": "g3_6_2"
+      },
+      {
+        "id": "poe2_a3_sanctum_1",
+        "type": "waypoint",
+        "zone": "Jiquani's Sanctum",
+        "description": "Tag Waypoint, summon Alva",
+        "checkable": true,
+        "zoneId": "g3_6_2"
+      },
+      {
+        "id": "poe2_a3_sanctum_2",
+        "type": "quest_item",
+        "zone": "Jiquani's Sanctum",
+        "description": "Find 2 Medium Soul Cores, start 2 Generators (V-shape corners)",
+        "hint": "Divided zone - each side has find cores, start generator, return to start tasks",
+        "checkable": true,
+        "zoneId": "g3_6_2"
+      },
+      {
+        "id": "poe2_a3_sanctum_3",
+        "type": "quest_item",
+        "zone": "Jiquani's Sanctum",
+        "description": "Activate Large Soul Core near Alva",
+        "checkable": true,
+        "zoneId": "g3_6_2"
+      },
+      {
+        "id": "poe2_a3_sanctum_4",
+        "type": "kill_boss",
+        "zone": "Jiquani's Sanctum",
+        "description": "Kill Zicoatl, Warden of the Core, take Large Soul Core",
+        "checkable": true,
+        "zoneId": "g3_6_2"
+      },
+      {
+        "id": "poe2_a3_sanctum_5",
+        "type": "navigation",
+        "zone": "Jiquani's Sanctum",
+        "description": "Waypoint to Infested Barrens",
+        "checkable": true,
+        "zoneId": "g3_2_1"
+      },
+      {
+        "id": "poe2_a3_barrens_3",
+        "type": "quest_item",
+        "zone": "Infested Barrens",
+        "description": "Insert Large Soul Core at Stone Altar (near WP)",
+        "checkable": true,
+        "zoneId": "g3_2_1"
+      },
+      {
+        "id": "poe2_a3_barrens_4",
+        "type": "navigation",
+        "zone": "Infested Barrens",
+        "description": "Enter Matlan Waterways (nearby)",
+        "checkable": true,
+        "zoneId": "g3_2_2"
+      },
+      {
+        "id": "poe2_a3_waterways_1",
+        "type": "quest_item",
+        "zone": "Matlan Waterways",
+        "description": "Pull all Canal Levers, pull large Canal Lever (end of zone)",
+        "checkable": true,
+        "zoneId": "g3_2_2"
+      },
+      {
+        "id": "poe2_a3_waterways_2",
+        "type": "town",
+        "zone": "Matlan Waterways",
+        "description": "Portal to Ziggurat Encampment",
+        "checkable": true,
+        "zoneId": "g3_town"
+      },
+      {
+        "id": "poe2_a3_town4_1",
+        "type": "npc_quest",
+        "zone": "Ziggurat Encampment",
+        "description": "Go down stairs, talk to Alva",
+        "checkable": true,
+        "zoneId": "g3_town"
+      },
+      {
+        "id": "poe2_a3_town4_2",
+        "type": "navigation",
+        "zone": "Ziggurat Encampment",
+        "description": "Enter Drowned City",
+        "checkable": true,
+        "zoneId": "g3_8"
+      },
+      {
+        "id": "poe2_a3_drowned_1",
+        "type": "waypoint",
+        "zone": "Drowned City",
+        "description": "Tag Waypoint, summon Oswald",
+        "checkable": true,
+        "zoneId": "g3_8"
+      },
+      {
+        "id": "poe2_a3_drowned_2",
+        "type": "navigation",
+        "zone": "Drowned City",
+        "description": "Enter Molten Vault",
+        "checkable": true,
+        "zoneId": "g3_9"
+      },
+      {
+        "id": "poe2_a3_vault_1",
+        "type": "waypoint",
+        "zone": "Molten Vault",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g3_9"
+      },
+      {
+        "id": "poe2_a3_vault_2",
+        "type": "kill_boss",
+        "zone": "Molten Vault",
+        "description": "Use Lever, pull Sluice Gate Lever, kill Mektul, the Forgemaster, take Hammer of Kamasa",
+        "hint": "Optional: Do now or later - Talk to Oswald after for reforging bench",
+        "checkable": true,
+        "zoneId": "g3_9"
+      },
+      {
+        "id": "poe2_a3_vault_3",
+        "type": "navigation",
+        "zone": "Molten Vault",
+        "description": "Waypoint to Drowned City, enter Apex of Filth",
+        "checkable": true,
+        "zoneId": "g3_11"
+      },
+      {
+        "id": "poe2_a3_apex_1",
+        "type": "waypoint",
+        "zone": "Apex of Filth",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g3_11"
+      },
+      {
+        "id": "poe2_a3_apex_2",
+        "type": "kill_boss",
+        "zone": "Apex of Filth",
+        "description": "Kill Queen of Filth (end of zone), take Temple Door Idol",
+        "hint": "Optional: Quality flasks from Cauldron - find/loot 3 mushrooms in zone",
+        "checkable": true,
+        "zoneId": "g3_11"
+      },
+      {
+        "id": "poe2_a3_apex_3",
+        "type": "town",
+        "zone": "Apex of Filth",
+        "description": "Portal to Ziggurat Encampment",
+        "checkable": true,
+        "zoneId": "g3_town"
+      },
+      {
+        "id": "poe2_a3_town5_1",
+        "type": "npc_quest",
+        "zone": "Ziggurat Encampment",
+        "description": "Talk to Alva (down stairs), open door",
+        "checkable": true,
+        "zoneId": "g3_town"
+      },
+      {
+        "id": "poe2_a3_town5_2",
+        "type": "navigation",
+        "zone": "Ziggurat Encampment",
+        "description": "Enter Temple of Kopec",
+        "checkable": true,
+        "zoneId": "g3_12"
+      },
+      {
+        "id": "poe2_a3_kopec_1",
+        "type": "kill_boss",
+        "zone": "Temple of Kopec",
+        "description": "Climb stairs twice (corner of pyramid), kill Ketzuli, High Priest of the Sun",
+        "checkable": true,
+        "zoneId": "g3_12"
+      },
+      {
+        "id": "poe2_a3_kopec_2",
+        "type": "npc_quest",
+        "zone": "Temple of Kopec",
+        "description": "Summon Alva, investigate platform, enter gateway",
+        "checkable": true,
+        "zoneId": "g3_12"
+      },
+      {
+        "id": "poe2_a3_kopec_3",
+        "type": "waypoint",
+        "zone": "Temple of Kopec",
+        "description": "Tag Waypoint (behind gateway), go down stairs",
+        "checkable": true,
+        "zoneId": "g3_12"
+      },
+      {
+        "id": "poe2_a3_kopec_4",
+        "type": "navigation",
+        "zone": "Temple of Kopec",
+        "description": "Enter Utzaal",
+        "checkable": true,
+        "zoneId": "g3_14"
+      },
+      {
+        "id": "poe2_a3_utzaal_1",
+        "type": "waypoint",
+        "zone": "Utzaal",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g3_14"
+      },
+      {
+        "id": "poe2_a3_utzaal_2",
+        "type": "kill_boss",
+        "zone": "Utzaal",
+        "description": "Follow war-cry sound, kill Viper Napuatzi",
+        "hint": "Kill Goliaths for Sacrificial Heart on the way (also drops next zone)",
+        "checkable": true,
+        "zoneId": "g3_14"
+      },
+      {
+        "id": "poe2_a3_utzaal_3",
+        "type": "navigation",
+        "zone": "Utzaal",
+        "description": "Enter Aggorat",
+        "checkable": true,
+        "zoneId": "g3_16"
+      },
+      {
+        "id": "poe2_a3_aggorat_1",
+        "type": "waypoint",
+        "zone": "Aggorat",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g3_16"
+      },
+      {
+        "id": "poe2_a3_aggorat_2",
+        "type": "quest_item",
+        "zone": "Aggorat",
+        "description": "Kill Goliaths for Sacrificial Heart (if needed), find plaza altar",
+        "checkable": true,
+        "zoneId": "g3_16"
+      },
+      {
+        "id": "poe2_a3_aggorat_3",
+        "type": "quest_item",
+        "zone": "Aggorat",
+        "description": "Take Sacrificial Dagger, place and stab Sacrificial Heart at Blood Sacrifice altar",
+        "reward": "2 Skill Points",
+        "hint": "Altar is north of plaza - direct path often blocked",
+        "checkable": true,
+        "zoneId": "g3_16"
+      },
+      {
+        "id": "poe2_a3_aggorat_4",
+        "type": "navigation",
+        "zone": "Aggorat",
+        "description": "Enter Black Chambers (east or southwest of Blood Sacrifice)",
+        "checkable": true,
+        "zoneId": "g3_17"
+      },
+      {
+        "id": "poe2_a3_chambers_1",
+        "type": "waypoint",
+        "zone": "Black Chambers",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g3_17"
+      },
+      {
+        "id": "poe2_a3_chambers_2",
+        "type": "kill_boss",
+        "zone": "Black Chambers",
+        "description": "Kill Doryani, Royal Thaumaturge and Doryani's Triumph",
+        "hint": "Zone: mazes connected by bridges",
+        "checkable": true,
+        "zoneId": "g3_17"
+      },
+      {
+        "id": "poe2_a3_chambers_3",
+        "type": "npc_quest",
+        "zone": "Black Chambers",
+        "description": "Talk to Doryani",
+        "checkable": true,
+        "zoneId": "g3_17"
+      },
+      {
+        "id": "poe2_a3_chambers_4",
+        "type": "town",
+        "zone": "Black Chambers",
+        "description": "Portal to Ziggurat Encampment",
+        "checkable": true,
+        "zoneId": "g3_town"
+      },
+      {
+        "id": "poe2_a3_town6_1",
+        "type": "npc_quest",
+        "zone": "Ziggurat Encampment",
+        "description": "Talk to Doryani (apocalypse cutscene), talk to Alva - Proceed to Act 4",
+        "checkable": true,
+        "zoneId": "g4_town"
+      }
+    ]
+  },
+  {
+    "actNumber": 4,
+    "actName": "The Karui Shores",
+    "recommendedEndLevel": 75,
+    "steps": [
+      {
+        "id": "poe2_a4_town1_1",
+        "type": "npc_quest",
+        "zone": "Kingsmarch",
+        "description": "Talk to Doryani, talk to Alva (Book Charter), talk to Makoru - Sail to Isle of Kin",
+        "checkable": true,
+        "zoneId": "g4_town"
+      },
+      {
+        "id": "poe2_a4_kin_1",
+        "type": "kill_boss",
+        "zone": "Isle of Kin",
+        "description": "Kill The Blind Beast",
+        "reward": "2 Skill Points",
+        "hint": "Optional: Jeweller in Delve Site (edge) | Skill/Support in Beast Pen",
+        "checkable": true,
+        "zoneId": "g4_1_1"
+      },
+      {
+        "id": "poe2_a4_kin_2",
+        "type": "navigation",
+        "zone": "Isle of Kin",
+        "description": "Enter Volcanic Warrens",
+        "checkable": true,
+        "zoneId": "g4_1_2"
+      },
+      {
+        "id": "poe2_a4_warrens_1",
+        "type": "kill_boss",
+        "zone": "Volcanic Warrens",
+        "description": "Kill Krutog, Lord of Kin (end of zone), talk to Hooded One",
+        "hint": "Optional: Fire/Lightning Ring (10% quality) in Volcanic Nest - element based on boss killed last",
+        "checkable": true,
+        "zoneId": "g4_1_2"
+      },
+      {
+        "id": "poe2_a4_warrens_2",
+        "type": "town",
+        "zone": "Volcanic Warrens",
+        "description": "Return to Ship, talk to Makoru - Sail to Abandoned Prison",
+        "checkable": true,
+        "zoneId": "g4_5_1"
+      },
+      {
+        "id": "poe2_a4_prison_1",
+        "type": "quest_item",
+        "zone": "Abandoned Prison",
+        "description": "Kill monsters for Chapel Key, open Chapel Door, tag Waypoint",
+        "checkable": true,
+        "zoneId": "g4_5_1"
+      },
+      {
+        "id": "poe2_a4_prison_2",
+        "type": "quest_item",
+        "zone": "Abandoned Prison",
+        "description": "Activate Goddess of Justice (Flask recovery, can change later), use Levers",
+        "checkable": true,
+        "zoneId": "g4_5_1"
+      },
+      {
+        "id": "poe2_a4_prison_3",
+        "type": "navigation",
+        "zone": "Abandoned Prison",
+        "description": "Enter Solitary Confinement",
+        "checkable": true,
+        "zoneId": "g4_5_2"
+      },
+      {
+        "id": "poe2_a4_solitary_1",
+        "type": "kill_boss",
+        "zone": "Solitary Confinement",
+        "description": "Use Levers, kill The Prisoner, talk to Hooded One",
+        "checkable": true,
+        "zoneId": "g4_5_2"
+      },
+      {
+        "id": "poe2_a4_solitary_2",
+        "type": "town",
+        "zone": "Solitary Confinement",
+        "description": "Return to Ship, talk to Makoru - Sail to Whakapanu Island",
+        "checkable": true,
+        "zoneId": "g4_3_1"
+      },
+      {
+        "id": "poe2_a4_whakapanu_1",
+        "type": "navigation",
+        "zone": "Whakapanu Island",
+        "description": "Enter Singing Caverns",
+        "hint": "Optional: Support in Crabshell Cave | Skill/Spirit/Support - kill Great White for Fin (turn in to Kaimana in Ngakanu)",
+        "checkable": true,
+        "zoneId": "g4_3_2"
+      },
+      {
+        "id": "poe2_a4_caverns_1",
+        "type": "kill_boss",
+        "zone": "Singing Caverns",
+        "description": "Kill Diamora, Song of Death, talk to Hooded One",
+        "hint": "Optional: All-res Amulet - find Pearl in Clam",
+        "checkable": true,
+        "zoneId": "g4_3_2"
+      },
+      {
+        "id": "poe2_a4_caverns_2",
+        "type": "town",
+        "zone": "Singing Caverns",
+        "description": "Return to Ship, talk to Makoru - Sail to Shrike Island",
+        "checkable": true,
+        "zoneId": "g4_7"
+      },
+      {
+        "id": "poe2_a4_shrike_1",
+        "type": "kill_boss",
+        "zone": "Shrike Island",
+        "description": "Kill Scourge of the Skies, talk to Hooded One",
+        "hint": "Optional: Map piece in Corpse Nest",
+        "checkable": true,
+        "zoneId": "g4_7"
+      },
+      {
+        "id": "poe2_a4_shrike_2",
+        "type": "town",
+        "zone": "Shrike Island",
+        "description": "Return to Ship, talk to Makoru - Sail to Eye of Hinekora",
+        "hint": "NOTE: One of the first four islands will have Matiki to rescue (randomized each league)",
+        "checkable": true,
+        "zoneId": "g4_4_1"
+      },
+      {
+        "id": "poe2_a4_hinekora_1",
+        "type": "npc_quest",
+        "zone": "Eye of Hinekora",
+        "description": "Talk to Matiki and NPCs, activate Well of Hinekora",
+        "checkable": true,
+        "zoneId": "g4_4_1"
+      },
+      {
+        "id": "poe2_a4_hinekora_2",
+        "type": "quest_item",
+        "zone": "Eye of Hinekora",
+        "description": "Complete 3 tests, click Pay your Respects",
+        "reward": "Mana boost",
+        "hint": "Spirit boost at waterfall between 2nd and 3rd test | Respects in Silent Hall (side area)",
+        "checkable": true,
+        "zoneId": "g4_4_1"
+      },
+      {
+        "id": "poe2_a4_hinekora_3",
+        "type": "navigation",
+        "zone": "Eye of Hinekora",
+        "description": "Enter Halls of the Dead (further down)",
+        "checkable": true,
+        "zoneId": "g4_4_2"
+      },
+      {
+        "id": "poe2_a4_halls_1",
+        "type": "waypoint",
+        "zone": "Halls of the Dead",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g4_4_2"
+      },
+      {
+        "id": "poe2_a4_halls_2",
+        "type": "quest_item",
+        "zone": "Halls of the Dead",
+        "description": "Complete 3 tests for Tattoos: Tawhoa (Dex/Lightning), Tasalio (Int/Cold), Ngamahu (Str/Fire)",
+        "hint": "Talk to totems to turn in Tattoos",
+        "checkable": true,
+        "zoneId": "g4_4_2"
+      },
+      {
+        "id": "poe2_a4_halls_3",
+        "type": "kill_boss",
+        "zone": "Halls of the Dead",
+        "description": "Defeat Yama The White, take Silver Coin",
+        "checkable": true,
+        "zoneId": "g4_4_2"
+      },
+      {
+        "id": "poe2_a4_halls_4",
+        "type": "navigation",
+        "zone": "Halls of the Dead",
+        "description": "Enter Trial of the Ancestors",
+        "checkable": true,
+        "zoneId": "g4_4_3"
+      },
+      {
+        "id": "poe2_a4_trial_1",
+        "type": "npc_quest",
+        "zone": "Trial of the Ancestors",
+        "description": "Tag Waypoint, talk to Navali, take Tattoo of Hinekora",
+        "reward": "2 Skill Points",
+        "checkable": true,
+        "zoneId": "g4_4_3"
+      },
+      {
+        "id": "poe2_a4_trial_2",
+        "type": "town",
+        "zone": "Trial of the Ancestors",
+        "description": "Return to Ship, talk to Makoru - Sail to Arastas",
+        "checkable": true,
+        "zoneId": "g4_8b"
+      },
+      {
+        "id": "poe2_a4_arastas_1",
+        "type": "waypoint",
+        "zone": "Arastas (hostile)",
+        "description": "Tag Waypoint, talk to Missionary Lorandis, follow him outside",
+        "hint": "Optional: 3 Exalts & Regals in Bells",
+        "checkable": true,
+        "zoneId": "g4_8b"
+      },
+      {
+        "id": "poe2_a4_arastas_2",
+        "type": "kill_boss",
+        "zone": "Arastas (hostile)",
+        "description": "Destroy forcefield, kill Torvian, Hand of the Saviour",
+        "checkable": true,
+        "zoneId": "g4_8b"
+      },
+      {
+        "id": "poe2_a4_arastas_3",
+        "type": "navigation",
+        "zone": "Arastas (hostile)",
+        "description": "Enter The Excavation",
+        "checkable": true,
+        "zoneId": "g4_10"
+      },
+      {
+        "id": "poe2_a4_excavation_1",
+        "type": "kill_boss",
+        "zone": "The Excavation",
+        "description": "Kill Benedictus, First Herald of Utopia, enter forge",
+        "checkable": true,
+        "zoneId": "g4_10"
+      },
+      {
+        "id": "poe2_a4_excavation_2",
+        "type": "npc_quest",
+        "zone": "The Excavation",
+        "description": "Talk to Hooded One, portal to Town",
+        "checkable": true,
+        "zoneId": "g4_town"
+      },
+      {
+        "id": "poe2_a4_town2_1",
+        "type": "npc_quest",
+        "zone": "Kingsmarch",
+        "description": "Talk to NPCs, talk to Rhodri (at ship) - Sail to Ngakanu",
+        "hint": "Optional: Talk to Rog (trade All-res Amulet for Pearl) | Kedge Bay side-content (Liquid Emotions, Map piece, Skill gem) | Makoru sail to Plunder's Point",
+        "checkable": true,
+        "zoneId": "g4_11_1b"
+      },
+      {
+        "id": "poe2_a4_ngakanu_1",
+        "type": "navigation",
+        "zone": "Ngakanu (hostile)",
+        "description": "Enter Heart of the Tribe",
+        "hint": "Greater Jeweller: Abyss encounter",
+        "checkable": true,
+        "zoneId": "g4_11_2"
+      },
+      {
+        "id": "poe2_a4_heart_1",
+        "type": "waypoint",
+        "zone": "Heart of the Tribe",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "g4_11_2"
+      },
+      {
+        "id": "poe2_a4_heart_2",
+        "type": "kill_boss",
+        "zone": "Heart of the Tribe",
+        "description": "Defeat Tavakai (the Chieftain, the Fallen, and the Consumed), portal to Town",
+        "checkable": true,
+        "zoneId": "g4_11_2"
+      },
+      {
+        "id": "poe2_a4_town3_1",
+        "type": "npc_quest",
+        "zone": "Kingsmarch",
+        "description": "Talk to NPCs, talk to Hooded One - Proceed to Act 5 (Ogham, Vastiri, or Mount Kriar)",
+        "checkable": true,
+        "zoneId": "g4_town"
+      }
+    ]
+  },
+  {
+    "actNumber": 5,
+    "actName": "Interlude: Ogham",
+    "recommendedEndLevel": 78,
+    "steps": [
+      {
+        "id": "poe2_a5_town1_1",
+        "type": "npc_quest",
+        "zone": "The Refuge",
+        "description": "Talk to Renly, enter Scorched Farmlands",
+        "checkable": true,
+        "zoneId": "p1_1"
+      },
+      {
+        "id": "poe2_a5_farmlands_1",
+        "type": "kill_boss",
+        "zone": "Scorched Farmlands",
+        "description": "Kill Heldra of the Black Pyre and Isolde of the White Shroud near Wall of Darkness",
+        "hint": "Optional: Skill gem from corpse along the road",
+        "checkable": true,
+        "zoneId": "p1_1"
+      },
+      {
+        "id": "poe2_a5_farmlands_2",
+        "type": "navigation",
+        "zone": "Scorched Farmlands",
+        "description": "Enter Stones of Serle",
+        "checkable": true,
+        "zoneId": "p1_2"
+      },
+      {
+        "id": "poe2_a5_serle_1",
+        "type": "quest_item",
+        "zone": "Stones of Serle",
+        "description": "Activate all Runed Megaliths, go to center rune",
+        "checkable": true,
+        "zoneId": "p1_2"
+      },
+      {
+        "id": "poe2_a5_serle_2",
+        "type": "kill_boss",
+        "zone": "Stones of Serle",
+        "description": "Kill Siora, Blade of the Mists, talk to Una",
+        "checkable": true,
+        "zoneId": "p1_2"
+      },
+      {
+        "id": "poe2_a5_serle_3",
+        "type": "navigation",
+        "zone": "Stones of Serle",
+        "description": "Return to Scorched Farmlands, go to Wall of Darkness, enter The Blackwood",
+        "checkable": true,
+        "zoneId": "p1_3"
+      },
+      {
+        "id": "poe2_a5_blackwood_1",
+        "type": "navigation",
+        "zone": "The Blackwood",
+        "description": "Enter Holten",
+        "hint": "Optional: Omens in Omen Altars",
+        "checkable": true,
+        "zoneId": "p1_4"
+      },
+      {
+        "id": "poe2_a5_holten_1",
+        "type": "navigation",
+        "zone": "Holten",
+        "description": "Tag Waypoint in Holten Estate (in-out), enter Wolvenhold",
+        "hint": "Optional: Rune trader near water",
+        "checkable": true,
+        "zoneId": "p1_5"
+      },
+      {
+        "id": "poe2_a5_wolvenhold_1",
+        "type": "kill_boss",
+        "zone": "Wolvenhold",
+        "description": "Kill Oswin, the Dread Warden",
+        "reward": "2 Skill Points",
+        "checkable": true,
+        "zoneId": "p1_5"
+      },
+      {
+        "id": "poe2_a5_wolvenhold_2",
+        "type": "navigation",
+        "zone": "Wolvenhold",
+        "description": "Waypoint to Holten Estate",
+        "checkable": true,
+        "zoneId": "p1_6"
+      },
+      {
+        "id": "poe2_a5_estate_1",
+        "type": "kill_boss",
+        "zone": "Holten Estate",
+        "description": "Kill Thane Wulfric and Lady Elswyth (ground floor), portal to Town",
+        "checkable": true,
+        "zoneId": "p1_town"
+      },
+      {
+        "id": "poe2_a5_town2_1",
+        "type": "npc_quest",
+        "zone": "The Refuge",
+        "description": "Talk to Renly, talk to Hooded One - Proceed to Vastiri (Act 6)",
+        "checkable": true,
+        "zoneId": "p2_town"
+      },
+      {
+        "id": "poe2_a5_checklist",
+        "type": "town",
+        "zone": "The Refuge",
+        "description": "Check Character → Quest Passives to verify all passive boosts collected!",
+        "hint": "Make sure you collected all skill points, spirit boosts, and other passive rewards",
+        "checkable": true,
+        "zoneId": "p2_town"
+      }
+    ]
+  },
+  {
+    "actNumber": 6,
+    "actName": "Interlude: Vastiri",
+    "recommendedEndLevel": 81,
+    "steps": [
+      {
+        "id": "poe2_a6_town1_1",
+        "type": "npc_quest",
+        "zone": "The Khari Bazaar",
+        "description": "Talk to Asala, talk to Zarka, enter The Khari Crossing",
+        "checkable": true,
+        "zoneId": "p2_1"
+      },
+      {
+        "id": "poe2_a6_crossing_1",
+        "type": "kill_boss",
+        "zone": "The Khari Crossing",
+        "description": "Activate Wayfinder's Seal, kill Akthi and Anundr, portal to Town",
+        "hint": "Seal usually 3 or 2 o'clock from arena entrance",
+        "checkable": true,
+        "zoneId": "p2_town"
+      },
+      {
+        "id": "poe2_a6_town2_1",
+        "type": "npc_quest",
+        "zone": "The Khari Bazaar",
+        "description": "Talk to Risu (Book of Specialization), return to The Khari Crossing",
+        "reward": "2 Skill Points",
+        "checkable": true,
+        "zoneId": "p2_1"
+      },
+      {
+        "id": "poe2_a6_crossing_2",
+        "type": "quest_item",
+        "zone": "The Khari Crossing",
+        "description": "Activate Wayfinder's Seal, find Skullmaw Stairway, take Molten One's Gift",
+        "reward": "Life boost",
+        "hint": "Follow arrow under you",
+        "checkable": true,
+        "zoneId": "p2_1"
+      },
+      {
+        "id": "poe2_a6_crossing_3",
+        "type": "navigation",
+        "zone": "The Khari Crossing",
+        "description": "Find Merchant Torbik, enter The Galai Gates (usually 7 or 6 o'clock from Torbik)",
+        "checkable": true,
+        "zoneId": "p2_5"
+      },
+      {
+        "id": "poe2_a6_crossing_4",
+        "type": "navigation",
+        "zone": "The Khari Crossing",
+        "description": "Waypoint to Pools of Khatal (via crossing seal), enter Sel Khari Sanctuary",
+        "checkable": true,
+        "zoneId": "p2_3"
+      },
+      {
+        "id": "poe2_a6_sanctuary_1",
+        "type": "waypoint",
+        "zone": "Sel Khari Sanctuary",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "p2_3"
+      },
+      {
+        "id": "poe2_a6_sanctuary_2",
+        "type": "kill_boss",
+        "zone": "Sel Khari Sanctuary",
+        "description": "Kill Elzarah, the Cobra Lord, talk to Asala, portal to Town",
+        "hint": "Optional: Ring/Amulet/Jewel - loot 2 Baryas, insert into pedestals (side edges)",
+        "checkable": true,
+        "zoneId": "p2_town"
+      },
+      {
+        "id": "poe2_a6_town3_1",
+        "type": "npc_quest",
+        "zone": "The Khari Bazaar",
+        "description": "Talk to NPCs, waypoint to The Galai Gates",
+        "checkable": true,
+        "zoneId": "p2_5"
+      },
+      {
+        "id": "poe2_a6_galai_1",
+        "type": "waypoint",
+        "zone": "The Galai Gates",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "p2_5"
+      },
+      {
+        "id": "poe2_a6_galai_2",
+        "type": "kill_boss",
+        "zone": "The Galai Gates",
+        "description": "Kill Vornas, the Fell Flame, enter Qimah",
+        "checkable": true,
+        "zoneId": "p2_6"
+      },
+      {
+        "id": "poe2_a6_qimah_1",
+        "type": "waypoint",
+        "zone": "Qimah",
+        "description": "Tag Waypoint, activate Seven Pillars (boost can be changed anytime)",
+        "hint": "Seven Pillars is a side area",
+        "checkable": true,
+        "zoneId": "p2_6"
+      },
+      {
+        "id": "poe2_a6_qimah_2",
+        "type": "npc_quest",
+        "zone": "Qimah",
+        "description": "Summon Jado (end of zone), enter Qimah Reservoir",
+        "checkable": true,
+        "zoneId": "p2_7"
+      },
+      {
+        "id": "poe2_a6_reservoir_1",
+        "type": "waypoint",
+        "zone": "Qimah Reservoir",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "p2_7"
+      },
+      {
+        "id": "poe2_a6_reservoir_2",
+        "type": "kill_boss",
+        "zone": "Qimah Reservoir",
+        "description": "Kill Azmadi, the Faridun Prince, activate Grand Barya",
+        "hint": "Optional: Currency - loot 2 vials for 2 wells",
+        "checkable": true,
+        "zoneId": "p2_7"
+      },
+      {
+        "id": "poe2_a6_reservoir_3",
+        "type": "npc_quest",
+        "zone": "Qimah Reservoir",
+        "description": "Talk to Jado, portal to Town",
+        "checkable": true,
+        "zoneId": "p2_town"
+      },
+      {
+        "id": "poe2_a6_town4_1",
+        "type": "npc_quest",
+        "zone": "The Khari Bazaar",
+        "description": "Talk to NPCs, talk to Hooded One - Proceed to Mount Kriar (Act 7)",
+        "checkable": true,
+        "zoneId": "p3_town"
+      },
+      {
+        "id": "poe2_a6_checklist",
+        "type": "town",
+        "zone": "The Khari Bazaar",
+        "description": "Check Character → Quest Passives to verify all passive boosts collected!",
+        "hint": "Make sure you collected all skill points, life/mana boosts, and other passive rewards",
+        "checkable": true,
+        "zoneId": "p3_town"
+      }
+    ]
+  },
+  {
+    "actNumber": 7,
+    "actName": "Interlude: Mount Kriar",
+    "recommendedEndLevel": 84,
+    "steps": [
+      {
+        "id": "poe2_a7_town1_1",
+        "type": "npc_quest",
+        "zone": "The Glade",
+        "description": "Talk to Doryani, enter Ashen Forest",
+        "checkable": true,
+        "zoneId": "p3_1"
+      },
+      {
+        "id": "poe2_a7_forest_1",
+        "type": "navigation",
+        "zone": "Ashen Forest",
+        "description": "Enter Kriar Village",
+        "hint": "Optional: Skill gem in Ancient Monument",
+        "checkable": true,
+        "zoneId": "p3_2"
+      },
+      {
+        "id": "poe2_a7_village_1",
+        "type": "waypoint",
+        "zone": "Kriar Village",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "p3_2"
+      },
+      {
+        "id": "poe2_a7_village_2",
+        "type": "kill_boss",
+        "zone": "Kriar Village",
+        "description": "Kill Lythara, the Wayward Spear",
+        "reward": "40 Spirit boost",
+        "checkable": true,
+        "zoneId": "p3_2"
+      },
+      {
+        "id": "poe2_a7_village_3",
+        "type": "navigation",
+        "zone": "Kriar Village",
+        "description": "Enter Glacial Tarn",
+        "checkable": true,
+        "zoneId": "p3_3"
+      },
+      {
+        "id": "poe2_a7_tarn_1",
+        "type": "waypoint",
+        "zone": "Glacial Tarn",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "p3_3"
+      },
+      {
+        "id": "poe2_a7_tarn_2",
+        "type": "kill_boss",
+        "zone": "Glacial Tarn",
+        "description": "Kill Rakkar, the Frozen Talon, tag Waypoint in Kriar Peaks (in-out)",
+        "checkable": true,
+        "zoneId": "p3_3"
+      },
+      {
+        "id": "poe2_a7_tarn_3",
+        "type": "navigation",
+        "zone": "Glacial Tarn",
+        "description": "Enter Howling Caves",
+        "checkable": true,
+        "zoneId": "p3_4"
+      },
+      {
+        "id": "poe2_a7_caves_1",
+        "type": "waypoint",
+        "zone": "Howling Caves",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "p3_4"
+      },
+      {
+        "id": "poe2_a7_caves_2",
+        "type": "kill_boss",
+        "zone": "Howling Caves",
+        "description": "Kill The Abominable Yeti, take Icy Tusks, portal to Town",
+        "checkable": true,
+        "zoneId": "p3_town"
+      },
+      {
+        "id": "poe2_a7_town2_1",
+        "type": "npc_quest",
+        "zone": "The Glade",
+        "description": "Talk to Hilda (Book of Specialization), waypoint to Kriar Peaks",
+        "reward": "2 Skill Points",
+        "checkable": true,
+        "zoneId": "p3_5"
+      },
+      {
+        "id": "poe2_a7_peaks_1",
+        "type": "npc_quest",
+        "zone": "Kriar Peaks",
+        "description": "Take gift from Elder Madox (item of choice), enter Etched Ravine",
+        "hint": "Elder Madox - long, narrow passage along the edge",
+        "checkable": true,
+        "zoneId": "p3_6"
+      },
+      {
+        "id": "poe2_a7_ravine_1",
+        "type": "waypoint",
+        "zone": "Etched Ravine",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "p3_6"
+      },
+      {
+        "id": "poe2_a7_ravine_2",
+        "type": "kill_boss",
+        "zone": "Etched Ravine",
+        "description": "Kill Stormgore, the Guardian, enter The Cuachic Vault",
+        "checkable": true,
+        "zoneId": "p3_7"
+      },
+      {
+        "id": "poe2_a7_vault_1",
+        "type": "waypoint",
+        "zone": "The Cuachic Vault",
+        "description": "Tag Waypoint",
+        "checkable": true,
+        "zoneId": "p3_7"
+      },
+      {
+        "id": "poe2_a7_vault_2",
+        "type": "kill_boss",
+        "zone": "The Cuachic Vault",
+        "description": "Kill Zelina and Zolin (Blood Priestess and Priest), summon Doryani, portal to Town",
+        "checkable": true,
+        "zoneId": "p3_town"
+      },
+      {
+        "id": "poe2_a7_town3_1",
+        "type": "town",
+        "zone": "The Glade",
+        "description": "Waypoint to Kingsmarch (Act 4 town)",
+        "checkable": true,
+        "zoneId": "g4_town"
+      },
+      {
+        "id": "poe2_a7_kingsmarch_1",
+        "type": "npc_quest",
+        "zone": "Kingsmarch",
+        "description": "Talk to NPCs, talk to Hooded One (Book of Specialization) - Travel to Oriath",
+        "reward": "2 Skill Points",
+        "checkable": true,
+        "zoneId": "g_endgame_town"
+      },
+      {
+        "id": "poe2_a7_checklist",
+        "type": "town",
+        "zone": "Kingsmarch",
+        "description": "Check Character → Quest Passives to verify all passive boosts collected!",
+        "hint": "Make sure you collected all skill points, spirit boosts, and other passive rewards before endgame",
+        "checkable": true,
+        "zoneId": "g_endgame_town"
+      },
+      {
+        "id": "poe2_a7_endgame_1",
+        "type": "npc_quest",
+        "zone": "The Ziggurat Refuge",
+        "description": "Talk to Alva, talk to Doryani, use Map Device - Run one map to unlock mapping",
+        "checkable": true,
+        "zoneId": "g_endgame_town"
+      },
+      {
+        "id": "poe2_a7_endgame_2",
+        "type": "town",
+        "zone": "The Ziggurat Refuge",
+        "description": "Start mapping in hideout - Leveling guide complete!",
+        "checkable": true,
+        "zoneId": "g_endgame_town"
+      }
+    ]
+  }
+  ],
+  "metadata": {
+    "version": "2.0",
+    "lastUpdated": "2025-10-24",
+    "game": "poe2"
+  },
+  "stepTypes": {
+    "waypoint": {
+      "icon": "map-marker",
+      "color": "#4CAF50",
+      "label": "Waypoint"
+    },
+    "navigation": {
+      "icon": "arrow-right",
+      "color": "#2196F3",
+      "label": "Navigation"
+    },
+    "kill_boss": {
+      "icon": "skull",
+      "color": "#F44336",
+      "label": "Boss Fight"
+    },
+    "quest_item": {
+      "icon": "package",
+      "color": "#FF9800",
+      "label": "Quest Item"
+    },
+    "npc_quest": {
+      "icon": "user",
+      "color": "#9C27B0",
+      "label": "Talk to NPC"
+    },
+    "town": {
+      "icon": "home",
+      "color": "#607D8B",
+      "label": "Return to Town"
+    },
+    "trial": {
+      "icon": "star",
+      "color": "#FFC107",
+      "label": "Trial"
+    },
+    "quest": {
+      "icon": "clipboard",
+      "color": "#00BCD4",
+      "label": "Quest"
+    },
+    "passive_point": {
+      "icon": "circle",
+      "color": "#8BC34A",
+      "label": "Passive Point"
+    },
+    "optional": {
+      "icon": "info",
+      "color": "#9E9E9E",
+      "label": "Optional"
+    }
+  }
+}

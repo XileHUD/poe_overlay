@@ -56,6 +56,7 @@ export interface ToolsSubcategories {
   poe1Regex: boolean;
   poe1Vorici: boolean;
   poe1Leveling: boolean;
+  poe2Leveling: boolean;
 }
 
 export interface FeatureConfig {
@@ -165,7 +166,8 @@ export const DEFAULT_FEATURES: FeatureConfig = {
       regex: true,
       poe1Regex: true,
       poe1Vorici: true,
-      poe1Leveling: true
+      poe1Leveling: true,
+      poe2Leveling: true
     }
   },
   merchant: true
@@ -244,7 +246,8 @@ export const MINIMAL_FEATURES: FeatureConfig = {
       regex: false,
       poe1Regex: false,
       poe1Vorici: false,
-      poe1Leveling: false
+      poe1Leveling: false,
+      poe2Leveling: false
     }
   },
   merchant: true
@@ -322,7 +325,8 @@ export const ALL_FEATURES: FeatureConfig = {
       regex: true,
       poe1Regex: true,
       poe1Vorici: true,
-      poe1Leveling: true
+      poe1Leveling: true,
+      poe2Leveling: true
     }
   },
   merchant: true

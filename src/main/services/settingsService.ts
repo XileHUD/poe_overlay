@@ -33,6 +33,48 @@ export interface UserSettings {
       groupByZone?: boolean;
     };
   };
+  // Game-specific leveling window state (POE1)
+  levelingWindowPoe1?: {
+    enabled?: boolean;
+    position?: { x: number; y: number };
+    size?: { width: number; height: number };
+    wideMode?: boolean;
+    progress?: string[]; // Array of completed step IDs
+    currentActIndex?: number; // Currently selected act (0-based index)
+    actTimers?: Record<number, number>; // Completion time for each act: { 1: 123456, 2: 234567, ... }
+    uiSettings?: {
+      opacity?: number;
+      fontSize?: number;
+      zoom?: number;
+      minimalMode?: string;
+      mode?: string;
+      visibleSteps?: number;
+      showHints?: boolean;
+      showOptional?: boolean;
+      groupByZone?: boolean;
+    };
+  };
+  // Game-specific leveling window state (POE2)
+  levelingWindowPoe2?: {
+    enabled?: boolean;
+    position?: { x: number; y: number };
+    size?: { width: number; height: number };
+    wideMode?: boolean;
+    progress?: string[]; // Array of completed step IDs
+    currentActIndex?: number; // Currently selected act (0-based index)
+    actTimers?: Record<number, number>; // Completion time for each act: { 1: 123456, 2: 234567, ... }
+    uiSettings?: {
+      opacity?: number;
+      fontSize?: number;
+      zoom?: number;
+      minimalMode?: string;
+      mode?: string;
+      visibleSteps?: number;
+      showHints?: boolean;
+      showOptional?: boolean;
+      groupByZone?: boolean;
+    };
+  };
   hotkey?: {
     key: string; // e.g., "Q", "E", "1", "F1", etc.
     useCtrl?: boolean; // when true (default), register as Ctrl/Cmd + key; when false, register as single key
@@ -58,12 +100,23 @@ export interface UserSettings {
   rateLimitRules?: string; // Last known rate limit rules (e.g., "5:60:60,10:600:120")
   rateLimitState?: string; // Last known rate limit state (e.g., "0:60:55,3:600:510")
   rateLimitTimestamp?: number; // Timestamp when rate limit info was saved (ms since epoch)
-  // Client.txt path settings for zone auto-detection
-  clientTxtPath?: string; // Custom path to Client.txt if user manually selected it
-  clientTxtAutoDetected?: boolean; // Whether the path was auto-detected or manually set
-  clientTxtLastChecked?: number; // Timestamp of last auto-detection attempt
-  clientTxtDetectionAttempted?: boolean; // Flag to track if we've tried to auto-detect on this install
-  clientTxtNotificationShown?: boolean; // Flag to track if we've shown the "not found" notification
+  // Client.txt path settings for zone auto-detection - separate for POE1 and POE2
+  clientTxtPathPoe1?: string; // POE1 Client.txt path
+  clientTxtPathPoe2?: string; // POE2 Client.txt path
+  clientTxtAutoDetectedPoe1?: boolean; // Whether POE1 path was auto-detected
+  clientTxtAutoDetectedPoe2?: boolean; // Whether POE2 path was auto-detected
+  clientTxtLastCheckedPoe1?: number; // Timestamp of last POE1 auto-detection
+  clientTxtLastCheckedPoe2?: number; // Timestamp of last POE2 auto-detection
+  clientTxtDetectionAttemptedPoe1?: boolean; // Flag for POE1 auto-detection attempt
+  clientTxtDetectionAttemptedPoe2?: boolean; // Flag for POE2 auto-detection attempt
+  clientTxtNotificationShownPoe1?: boolean; // Flag for POE1 "not found" notification
+  clientTxtNotificationShownPoe2?: boolean; // Flag for POE2 "not found" notification
+  // Legacy settings (kept for migration)
+  clientTxtPath?: string;
+  clientTxtAutoDetected?: boolean;
+  clientTxtLastChecked?: number;
+  clientTxtDetectionAttempted?: boolean;
+  clientTxtNotificationShown?: boolean;
 }
 
 export class SettingsService {
