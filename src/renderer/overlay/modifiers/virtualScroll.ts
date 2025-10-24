@@ -4,6 +4,7 @@ export interface ModSection {
   key: string;
   data?: any;
   element?: HTMLElement;
+  measuredHeight?: number; // Store actual measured height per section
 }
 
 interface VirtualScrollState {
@@ -22,7 +23,10 @@ interface VirtualScrollState {
   renderCallback: (section: ModSection) => HTMLElement;
   afterRender: ((sections: ModSection[]) => void) | null;
   isInitialized: boolean;
+  cumulativeHeights: number[]; // Cache cumulative positions for fast lookup
 }
+
+const ENABLE_VIRTUAL_SCROLL = false; // Temporary safety switch until new virtual scroll implementation lands
 
 const virtualState: VirtualScrollState = {
   container: null,
@@ -31,8 +35,8 @@ const virtualState: VirtualScrollState = {
   bottomSpacer: null,
   scrollContainer: null,
   items: [],
-  itemHeight: 140, // initial guess, refined after first render
-  bufferSize: 6, // Number of extra items to render above/below viewport
+  itemHeight: 200, // initial estimate for domains (larger than before)
+  bufferSize: 3, // Reduced buffer to minimize jumping
   visibleStart: 0,
   visibleEnd: 0,
   totalHeight: 0,
@@ -40,6 +44,7 @@ const virtualState: VirtualScrollState = {
   renderCallback: () => document.createElement('div'),
   afterRender: null,
   isInitialized: false,
+  cumulativeHeights: [], // Cache for fast position lookup
 };
 
 let scrollThrottleTimer: number | null = null;
@@ -74,15 +79,46 @@ function updateVisibleRange(): boolean {
   const scrollTop = virtualState.scrollContainer.scrollTop;
   const viewportHeight = virtualState.scrollContainer.clientHeight;
 
-  // Calculate which sections should be visible
-  const startIndex = Math.max(
-    0,
-    Math.floor(scrollTop / virtualState.itemHeight) - virtualState.bufferSize
-  );
-  const endIndex = Math.min(
-    virtualState.items.length,
-    Math.ceil((scrollTop + viewportHeight) / virtualState.itemHeight) + virtualState.bufferSize
-  );
+  // Use cached cumulative heights for fast binary search
+  const cumHeights = virtualState.cumulativeHeights;
+  if (!cumHeights.length) {
+    virtualState.visibleStart = 0;
+    virtualState.visibleEnd = 0;
+    virtualState.lastScrollTop = scrollTop;
+    return false;
+  }
+  
+  // Binary search for start index
+  let startIndex = 0;
+  let left = 0;
+  let right = cumHeights.length - 1;
+  
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (cumHeights[mid] <= scrollTop) {
+      startIndex = mid;
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+  startIndex = Math.max(0, startIndex - virtualState.bufferSize);
+  
+  // Binary search for end index
+  let endIndex = cumHeights.length;
+  left = 0;
+  right = cumHeights.length - 1;
+  
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (cumHeights[mid] < scrollTop + viewportHeight) {
+      endIndex = mid + 1;
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+  endIndex = Math.min(virtualState.items.length, Math.max(endIndex, startIndex + 1) + virtualState.bufferSize);
 
   if (startIndex === virtualState.visibleStart && endIndex === virtualState.visibleEnd) {
     virtualState.lastScrollTop = scrollTop;
@@ -103,15 +139,19 @@ function renderVisibleSections(): void {
     virtualState.visibleEnd
   );
 
-  const estimatedTop = virtualState.visibleStart * virtualState.itemHeight;
-  virtualState.topSpacer.style.height = `${Math.max(0, estimatedTop)}px`;
+  // Use cached cumulative heights for exact spacer calculation
+  const topSpacerHeight = virtualState.visibleStart > 0 
+    ? virtualState.cumulativeHeights[virtualState.visibleStart - 1] 
+    : 0;
+  virtualState.topSpacer.style.height = `${Math.max(0, topSpacerHeight)}px`;
 
-  // Clear current rendered nodes by detaching (preserving listeners)
+  // Clear current rendered nodes
   const wrapper = virtualState.itemsWrapper;
   while (wrapper.firstChild) {
     wrapper.removeChild(wrapper.firstChild);
   }
 
+  // Render visible sections (heights are pre-measured, just render)
   visibleSections.forEach((section) => {
     let element = section.element;
     if (!element) {
@@ -121,25 +161,75 @@ function renderVisibleSections(): void {
     wrapper.appendChild(element);
   });
 
-  const renderedNodes = Array.from(wrapper.children) as HTMLElement[];
-  const renderedHeight = renderedNodes.reduce((sum, node) => sum + node.offsetHeight, 0);
-  const averageHeight = renderedNodes.length > 0 ? renderedHeight / renderedNodes.length : virtualState.itemHeight;
-
-  const tailSpace = Math.max(0, virtualState.totalHeight - estimatedTop - renderedHeight);
-  virtualState.bottomSpacer.style.height = `${tailSpace}px`;
-
-  if (renderedNodes.length > 0 && Math.abs(averageHeight - virtualState.itemHeight) > 4) {
-    virtualState.itemHeight = averageHeight;
-    virtualState.totalHeight = virtualState.itemHeight * virtualState.items.length;
-    const recalculatedTop = virtualState.visibleStart * virtualState.itemHeight;
-    virtualState.topSpacer.style.height = `${Math.max(0, recalculatedTop)}px`;
-    const recalculatedTail = Math.max(0, virtualState.totalHeight - recalculatedTop - renderedHeight);
-    virtualState.bottomSpacer.style.height = `${recalculatedTail}px`;
+  // Calculate bottom spacer using total height - top - visible content
+  let visibleHeight = 0;
+  if (virtualState.visibleEnd > virtualState.visibleStart) {
+    if (virtualState.visibleEnd - 1 < virtualState.cumulativeHeights.length) {
+      const endHeight = virtualState.cumulativeHeights[virtualState.visibleEnd - 1];
+      visibleHeight = endHeight - topSpacerHeight;
+    } else {
+      visibleHeight = virtualState.totalHeight - topSpacerHeight;
+    }
   }
+  const bottomSpacerHeight = virtualState.totalHeight - topSpacerHeight - visibleHeight;
+  virtualState.bottomSpacer.style.height = `${Math.max(0, bottomSpacerHeight)}px`;
 
   if (virtualState.afterRender) {
     virtualState.afterRender(visibleSections);
   }
+}
+
+// Pre-measure all section heights once to avoid recalculations during scrolling
+function preMeasureAllHeights(resultsWrapper: HTMLElement): void {
+  if (!virtualState.itemsWrapper) return;
+  
+  const wrapper = virtualState.itemsWrapper;
+  const measurementWidth = virtualState.container?.clientWidth
+    || resultsWrapper.clientWidth
+    || wrapper.clientWidth
+    || window.innerWidth;
+  
+  const tempContainer = document.createElement('div');
+  tempContainer.style.position = 'absolute';
+  tempContainer.style.visibility = 'hidden';
+  tempContainer.style.width = `${measurementWidth}px`;
+  tempContainer.style.left = '0';
+  tempContainer.style.top = '0';
+  
+  // Render and measure all sections
+  virtualState.items.forEach((section) => {
+    const element = virtualState.renderCallback(section);
+    section.element = element;
+    tempContainer.appendChild(element);
+  });
+  
+  wrapper.parentElement?.appendChild(tempContainer);
+  
+  // Measure all heights and build cumulative height cache
+  let cumulativeHeight = 0;
+  virtualState.cumulativeHeights = [];
+  
+  virtualState.items.forEach((section, idx) => {
+    if (section.element) {
+      const height = section.element.offsetHeight;
+      if (height > 0) {
+        section.measuredHeight = height;
+      } else {
+        section.measuredHeight = virtualState.itemHeight;
+      }
+    } else {
+      section.measuredHeight = virtualState.itemHeight;
+    }
+    
+    cumulativeHeight += section.measuredHeight;
+    virtualState.cumulativeHeights.push(cumulativeHeight);
+  });
+  
+  // Clean up temp container
+  wrapper.parentElement?.removeChild(tempContainer);
+  
+  // Set total height
+  virtualState.totalHeight = cumulativeHeight;
 }
 
 export function renderModifierVirtualList(
@@ -149,6 +239,23 @@ export function renderModifierVirtualList(
   afterRender?: (sections: ModSection[]) => void
 ): void {
   if (!resultsWrapper) return;
+
+  if (!ENABLE_VIRTUAL_SCROLL) {
+    cleanupModifierVirtualScroll();
+    resultsWrapper.innerHTML = '';
+    const container = document.createElement('div');
+    container.className = 'mod-virtual-disabled';
+    const fragment = document.createDocumentFragment();
+    sections.forEach((section) => {
+      const element = renderCallback(section);
+      section.element = element;
+      fragment.appendChild(element);
+    });
+    container.appendChild(fragment);
+    resultsWrapper.appendChild(container);
+    if (afterRender) afterRender(sections);
+    return;
+  }
 
   virtualState.items = sections;
   virtualState.renderCallback = renderCallback;
@@ -200,6 +307,12 @@ export function renderModifierVirtualList(
     initModifierVirtualScroll(contentDiv);
   }
 
+  // Pre-measure all heights once before any scrolling
+  preMeasureAllHeights(resultsWrapper);
+  if (container) {
+    container.style.minHeight = `${virtualState.totalHeight}px`;
+  }
+
   updateVisibleRange();
   renderVisibleSections();
 }
@@ -216,6 +329,7 @@ export function cleanupModifierVirtualScroll(): void {
   virtualState.scrollContainer = null;
   virtualState.items = [];
   virtualState.afterRender = null;
+  virtualState.cumulativeHeights = [];
 }
 
 // Helper to measure actual section height dynamically
