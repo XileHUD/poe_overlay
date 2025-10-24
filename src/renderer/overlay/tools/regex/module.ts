@@ -224,7 +224,7 @@ function render(): void {
                   ${[100,200,300,400,500,600,700,800].map(v=>`<option value='${v}' ${state.waystoneChance===v?"selected":""}>${v}%+</option>`).join('')}
                 </select>
                 <label class='poe2-filter-label'>Delir %</label>
-                <input id='delirPct' type='number' value='${state.deliriousPct??''}' placeholder='N' class='poe2-filter-input' style='width:100px;'>
+                <input id='delirPct' type='number' min='0' value='${state.deliriousPct??''}' placeholder='N' class='poe2-filter-input' style='width:100px;'>
               </div>
             </div>
 
@@ -232,13 +232,13 @@ function render(): void {
               <div class='poe2-section-title'>Base Stats</div>
               <div class='poe2-filter-grid'>
                 <label class='poe2-filter-label'>Rarity %</label>
-                <input id='baseRarity' type='number' value='${state.baseRarityPct??''}' placeholder='—' class='poe2-filter-input'>
+                <input id='baseRarity' type='number' min='0' value='${state.baseRarityPct??''}' placeholder='—' class='poe2-filter-input'>
                 <label class='poe2-filter-label'>Pack %</label>
-                <input id='basePack' type='number' value='${state.basePackSizePct??''}' placeholder='—' class='poe2-filter-input'>
+                <input id='basePack' type='number' min='0' value='${state.basePackSizePct??''}' placeholder='—' class='poe2-filter-input'>
                 <label class='poe2-filter-label'>Magic %</label>
-                <input id='baseMagic' type='number' value='${state.baseMagicPct??''}' placeholder='—' class='poe2-filter-input'>
+                <input id='baseMagic' type='number' min='0' value='${state.baseMagicPct??''}' placeholder='—' class='poe2-filter-input'>
                 <label class='poe2-filter-label'>Rare %</label>
-                <input id='baseRare' type='number' value='${state.baseRarePct??''}' placeholder='—' class='poe2-filter-input'>
+                <input id='baseRare' type='number' min='0' value='${state.baseRarePct??''}' placeholder='—' class='poe2-filter-input'>
                 <label class='poe2-filter-label'>Corruption</label>
                 <select id='corrFilter' class='poe2-filter-input'>
                   <option value=''>Any</option>
@@ -526,8 +526,8 @@ function escapeBaseFragment(s: string): string {
   .poe2-regex-list { flex:1; overflow-y:auto; border:1px solid var(--border-color); border-radius:6px; padding:6px; background:var(--bg-tertiary); min-height:0; }
   .poe2-selected-header { font-size:12px; font-weight:600; color:var(--text-primary); padding:8px 6px 6px 6px; margin-bottom:4px; border-bottom:1px solid var(--border-color); }
   .poe2-mods-separator { height:1px; background:var(--border-color); margin:12px 0; }
-  .regex-mod { padding:4px 6px; border:1px solid var(--border-color); background:var(--bg-secondary); border-radius:4px; cursor:pointer; font-size:11px; line-height:1.25; user-select:none; margin-bottom:6px; }
-  .regex-mod:hover { filter:brightness(1.15); }
+  .regex-mod { padding:4px 6px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); border-radius:4px; cursor:pointer; font-size:11px; line-height:1.25; user-select:none; margin-bottom:6px; }
+  .regex-mod:hover { filter:brightness(1.3); }
   
   /* Footer with regex output */
   .poe2-regex-footer { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:8px; border:1px solid var(--border-color); border-radius:6px; background:var(--bg-tertiary); }

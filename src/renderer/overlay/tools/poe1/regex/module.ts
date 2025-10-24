@@ -368,14 +368,20 @@ function drawMods(): void {
 function createModRow(mod: RegexMod): HTMLElement {
   const row = document.createElement('div');
   row.className = 'poe1-regex-row';
+  if (mod.isT17) row.classList.add('is-t17');
   row.dataset.modId = String(mod.id);
 
   const status = state.include.has(mod.id) ? 'include' : state.exclude.has(mod.id) ? 'exclude' : 'neutral';
   row.dataset.state = status;
 
+  // Split mod text by pipe to separate main text from bonuses
+  const parts = mod.display.split('|');
+  const mainText = parts.slice(0, -1).join('|') || parts[0];
+  const bonuses = parts.length > 1 && parts[parts.length - 1].includes('+') ? parts[parts.length - 1] : '';
+
   const title = document.createElement('div');
   title.className = 'poe1-regex-label';
-  title.textContent = mod.display;
+  title.textContent = bonuses ? mainText : mod.display;
   row.appendChild(title);
 
   const meta = document.createElement('div');
@@ -383,6 +389,7 @@ function createModRow(mod: RegexMod): HTMLElement {
   const tags: string[] = [];
   if (mod.isT17) tags.push('T17');
   if (!mod.isT17) tags.push('Core');
+  if (bonuses) tags.push(bonuses.trim());
   meta.textContent = tags.join(' · ');
   row.appendChild(meta);
 
@@ -416,6 +423,7 @@ function renderUtilityControls(panel: HTMLElement): void {
     input.type = 'number';
     input.id = `poe1Utility-${def.key}`;
     input.className = 'poe1-utility-input';
+    input.min = '0';
     input.value = state.utilities[def.key].value;
     input.addEventListener('input', () => {
       state.utilities[def.key].value = input.value;
@@ -475,6 +483,7 @@ function renderQualityControls(panel: HTMLElement): void {
     input.type = 'number';
     input.id = `poe1Quality-${def.key}`;
     input.className = 'poe1-utility-input';
+    input.min = '0';
     input.value = state.qualityTypes[def.key].value;
     input.addEventListener('input', () => {
       state.qualityTypes[def.key].value = input.value;
@@ -876,7 +885,8 @@ function ensureStyle(): void {
     .poe1-regex-list { flex:1; overflow-y:auto; border:1px solid var(--border-color); border-radius:6px; padding:6px; background:var(--bg-tertiary); min-height:0; }
     .poe1-selected-header { font-size:12px; font-weight:600; color:var(--text-primary); padding:8px 6px 6px 6px; margin-bottom:4px; border-bottom:1px solid var(--border-color); }
     .poe1-mods-separator { height:1px; background:var(--border-color); margin:12px 0; }
-    .poe1-regex-row { border:1px solid var(--border-color); border-radius:4px; padding:6px; margin-bottom:6px; cursor:pointer; user-select:none; }
+    .poe1-regex-row { border:1px solid rgba(255,255,255,0.15); border-radius:4px; padding:6px; margin-bottom:6px; cursor:pointer; user-select:none; background:rgba(255,255,255,0.05); }
+    .poe1-regex-row.is-t17 { border-color:rgba(157,78,221,0.3); background:rgba(157,78,221,0.08); }
     .poe1-regex-row[data-state="include"] { border-color:var(--accent-blue); background:rgba(0,123,255,0.18); }
     .poe1-regex-row[data-state="exclude"] { border-color:var(--accent-red); background:rgba(220,53,69,0.18); }
     .poe1-regex-label { font-size:11px; line-height:1.3; color:var(--text-primary); }
