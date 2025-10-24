@@ -25,6 +25,8 @@ interface VirtualScrollState {
   isInitialized: boolean;
   cumulativeHeights: number[]; // Cache cumulative positions for fast lookup
   resizeObserver: ResizeObserver | null; // Observe dynamic height changes
+  firstRenderDone?: boolean; // Apply an initial overscan on fresh mount to avoid first-scroll hitch
+  hasPrimedScroll?: boolean; // Ensure we warm the scroll pipeline before user interacts
 }
 
 // Re-enable virtual scrolling with a safer, dynamic-height strategy
@@ -37,8 +39,8 @@ const virtualState: VirtualScrollState = {
   bottomSpacer: null,
   scrollContainer: null,
   items: [],
-  itemHeight: 240, // conservative initial estimate for a domain section
-  bufferSize: 3, // Reduced buffer to minimize jumping
+  itemHeight: 180, // more realistic initial estimate (domains are ~150-250px)
+  bufferSize: 8, // Large buffer to preload more content and reduce first-scroll hitch
   visibleStart: 0,
   visibleEnd: 0,
   totalHeight: 0,
@@ -48,6 +50,8 @@ const virtualState: VirtualScrollState = {
   isInitialized: false,
   cumulativeHeights: [], // Cache for fast position lookup
   resizeObserver: null,
+  firstRenderDone: false,
+  hasPrimedScroll: false,
 };
 
 let scrollThrottleTimer: number | null = null;
@@ -92,7 +96,7 @@ function handleScroll(): void {
     if (changed) {
       renderVisibleSections();
     }
-  }, 16); // 60fps
+  }, 8); // Faster response (120fps) to reduce perceived lag on first scroll
 }
 
 function updateVisibleRange(): boolean {
@@ -155,6 +159,19 @@ function updateVisibleRange(): boolean {
 
 function renderVisibleSections(): void {
   if (!virtualState.container || !virtualState.itemsWrapper || !virtualState.topSpacer || !virtualState.bottomSpacer) return;
+
+  // On the very first render of a category, overscan an extra window (≈2x viewport) to avoid first-scroll hitch
+  if (!virtualState.firstRenderDone) {
+    const viewportHeight = virtualState.scrollContainer?.clientHeight || window.innerHeight || 800;
+    const estimatedPerViewport = Math.max(4, Math.ceil(viewportHeight / Math.max(virtualState.itemHeight, 1)));
+    const initialExtra = estimatedPerViewport * 2; // preload two additional viewports worth of sections
+    if (virtualState.visibleStart === 0) {
+      const newEnd = Math.min(virtualState.items.length, Math.max(virtualState.visibleEnd, estimatedPerViewport + initialExtra));
+      if (newEnd !== virtualState.visibleEnd) {
+        virtualState.visibleEnd = newEnd;
+      }
+    }
+  }
 
   const visibleSections = virtualState.items.slice(
     virtualState.visibleStart,
@@ -219,6 +236,35 @@ function renderVisibleSections(): void {
   if (virtualState.afterRender) {
     virtualState.afterRender(visibleSections);
   }
+
+  // CRITICAL FIX: If this was the first render, use requestAnimationFrame to measure heights
+  // in the NEXT frame AFTER the browser has committed the layout. This ensures measurements
+  // happen before the user can scroll, avoiding the first-scroll hitch.
+  if (!virtualState.firstRenderDone && virtualState.visibleStart === 0) {
+    virtualState.firstRenderDone = true;
+    
+    // Double-rAF: ensures we measure AFTER browser has fully committed layout and paint
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (!virtualState.itemsWrapper) return;
+        const wrapperChildren = virtualState.itemsWrapper.children;
+        for (let i = 0; i < wrapperChildren.length; i++) {
+          const el = wrapperChildren[i] as HTMLElement;
+          const idxAttr = el.getAttribute('data-vs-index');
+          const index = idxAttr ? parseInt(idxAttr, 10) : (virtualState.visibleStart + i);
+          if (Number.isFinite(index)) {
+            const h = Math.round(el.getBoundingClientRect().height);
+            if (h > 0) onSectionMeasured(index, h);
+          }
+        }
+        // Update spacers after measuring
+        updateSpacers();
+
+        // Warm the scroll pipeline now that measurements are stable
+        primeInitialScroll();
+      });
+    });
+  }
 }
 
 // Update cumulative heights when a section's measured height changes
@@ -227,7 +273,7 @@ function onSectionMeasured(index: number, measuredHeight: number): void {
   const section = virtualState.items[index];
   if (!section) return;
   const prev = section.measuredHeight ?? virtualState.itemHeight;
-  if (Math.abs(prev - measuredHeight) < 1) return; // ignore tiny diffs
+  if (Math.abs(prev - measuredHeight) < 2) return; // ignore tiny diffs (2px tolerance)
 
   const delta = measuredHeight - prev;
   section.measuredHeight = measuredHeight;
@@ -238,27 +284,66 @@ function onSectionMeasured(index: number, measuredHeight: number): void {
   }
   virtualState.totalHeight += delta;
 
+  // Update container height
+  if (virtualState.container) {
+    virtualState.container.style.minHeight = `${virtualState.totalHeight}px`;
+  }
+
   // If the changed section is above current viewport, maintain visual position by shifting scrollTop
   if (virtualState.scrollContainer && index < virtualState.visibleStart) {
     virtualState.scrollContainer.scrollTop += delta;
   }
 
-  // Update spacers to reflect new total/top heights without forcing re-render churn
-  if (virtualState.topSpacer && virtualState.bottomSpacer) {
-    const topSpacerHeight = virtualState.visibleStart > 0
-      ? virtualState.cumulativeHeights[virtualState.visibleStart - 1]
-      : 0;
-    virtualState.topSpacer.style.height = `${Math.max(0, topSpacerHeight)}px`;
+  // Update spacers immediately to reflect new heights
+  updateSpacers();
+}
 
-    let visibleHeight = 0;
-    if (virtualState.visibleEnd > virtualState.visibleStart) {
-      const endIdx = virtualState.visibleEnd - 1;
-      const endHeight = virtualState.cumulativeHeights[Math.min(endIdx, virtualState.cumulativeHeights.length - 1)] || 0;
-      visibleHeight = Math.max(0, endHeight - topSpacerHeight);
-    }
-    const bottomSpacerHeight = virtualState.totalHeight - topSpacerHeight - visibleHeight;
-    virtualState.bottomSpacer.style.height = `${Math.max(0, bottomSpacerHeight)}px`;
+function updateSpacers(): void {
+  if (!virtualState.topSpacer || !virtualState.bottomSpacer) return;
+
+  const topSpacerHeight = virtualState.visibleStart > 0
+    ? virtualState.cumulativeHeights[virtualState.visibleStart - 1]
+    : 0;
+  virtualState.topSpacer.style.height = `${Math.max(0, topSpacerHeight)}px`;
+
+  let visibleHeight = 0;
+  if (virtualState.visibleEnd > virtualState.visibleStart) {
+    const endIdx = virtualState.visibleEnd - 1;
+    const endHeight = virtualState.cumulativeHeights[Math.min(endIdx, virtualState.cumulativeHeights.length - 1)] || 0;
+    visibleHeight = Math.max(0, endHeight - topSpacerHeight);
   }
+  const bottomSpacerHeight = virtualState.totalHeight - topSpacerHeight - visibleHeight;
+  virtualState.bottomSpacer.style.height = `${Math.max(0, bottomSpacerHeight)}px`;
+}
+
+function primeInitialScroll(): void {
+  if (virtualState.hasPrimedScroll || !virtualState.scrollContainer) return;
+  const sc = virtualState.scrollContainer;
+  const originalTop = sc.scrollTop;
+
+  // If there isn't enough content to scroll, nothing to prime
+  if (sc.scrollHeight <= sc.clientHeight + 1) {
+    virtualState.hasPrimedScroll = true;
+    return;
+  }
+
+  virtualState.hasPrimedScroll = true;
+
+  // Programmatically nudge the scroll position to exercise the scroll pipeline ahead of user input
+  const scrolledMax = sc.scrollHeight - sc.clientHeight;
+  const target = Math.min(scrolledMax, originalTop + Math.max(1, Math.min(2, scrolledMax - originalTop)));
+  if (target !== originalTop) {
+    sc.scrollTop = target;
+    updateVisibleRange();
+    renderVisibleSections();
+  }
+
+  requestAnimationFrame(() => {
+    if (!virtualState.scrollContainer) return;
+    virtualState.scrollContainer.scrollTop = originalTop;
+    updateVisibleRange();
+    renderVisibleSections();
+  });
 }
 
 export function renderModifierVirtualList(
@@ -289,6 +374,8 @@ export function renderModifierVirtualList(
   virtualState.items = sections;
   virtualState.renderCallback = renderCallback;
   virtualState.afterRender = afterRender ?? null;
+  virtualState.firstRenderDone = false;
+  virtualState.hasPrimedScroll = false;
   // Initialize cumulative heights with estimates; they will refine via ResizeObserver
   virtualState.cumulativeHeights = new Array(sections.length);
   let cum = 0;
@@ -343,6 +430,7 @@ export function renderModifierVirtualList(
 
   virtualState.container = container;
 
+  // Attach scroll listener immediately (before rendering) so it's ready
   const contentDiv = document.getElementById('content');
   if (contentDiv) {
     initModifierVirtualScroll(contentDiv);
@@ -355,6 +443,8 @@ export function renderModifierVirtualList(
 
   updateVisibleRange();
   renderVisibleSections();
+
+  // REMOVED: Force reflow is redundant; double-rAF in renderVisibleSections handles timing better
 }
 
 export function cleanupModifierVirtualScroll(): void {

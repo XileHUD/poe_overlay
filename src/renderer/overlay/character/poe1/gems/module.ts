@@ -424,8 +424,17 @@ function renderList(): void {
       
       card.innerHTML = `
         ${imgHtml}
-        <div style='flex:1; min-width:0; display:flex; flex-direction:column; gap:2px;'>
-          <div style='font-weight:600; font-size:13px; ${colorStyle}'>${gem.name||''}</div>
+        <div style='flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; position:relative;'>
+          <div style='display:flex; align-items:center; justify-content:space-between; gap:4px;'>
+            <div style='font-weight:600; font-size:13px; ${colorStyle} flex:1; min-width:0;'>${gem.name||''}</div>
+            <div style='display:inline-flex; align-items:center; gap:3px; padding:2px 6px; background:rgba(66,165,245,0.15); border:1px solid rgba(66,165,245,0.4); border-radius:4px; font-size:9px; font-weight:600; color:#42A5F5; white-space:nowrap; flex-shrink:0;'>
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor" style="opacity:0.8;">
+                <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                <path d="M1.5 8a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-13 0zM8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+              </svg>
+              Details
+            </div>
+          </div>
           ${descriptionHtml}
           ${tagsHtml ? `<div style='margin-top:2px;'>${tagsHtml}</div>` : ''}
         </div>`;
