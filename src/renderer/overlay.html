@@ -2878,6 +2878,7 @@
             });
             // Header actions
             if (closeBtn) closeBtn.addEventListener('click', ()=>{ try { window.electronAPI?.hideOverlay?.(); } catch {} });
+            
             function updatePinUI(pinned){ if (!pinBtn) return; pinBtn.classList.toggle('active', !!pinned); pinBtn.textContent = pinned ? 'Pinned' : 'Pin'; }
             if (pinBtn) pinBtn.addEventListener('click', ()=>{ try { const isPinned = pinBtn.classList.contains('active'); window.electronAPI?.setPinned?.(!isPinned); updatePinUI(!isPinned); } catch {} });
             try { window.electronAPI?.onPinnedChanged?.((p)=> updatePinUI(p)); } catch {}
@@ -3086,7 +3087,7 @@
                 }
                 if (window.originalData) try { renderFilteredContent(window.originalData); } catch {}
             });
-            
+
             // Domain toggle buttons are now rendered dynamically via renderDomainToggles()
             // called from applyOverlayVersionMode()
             
@@ -3533,6 +3534,11 @@
                     item.addEventListener('click', async (e) => {
                         const action = item.getAttribute('data-action');
                         closeAllMenus();
+                        
+                        // Mark this item as active, remove from siblings
+                        craftingMenu.querySelectorAll('.crafting-menu-item').forEach(i => i.classList.remove('active'));
+                        item.classList.add('active');
+                        
                         if (!action) {
                             console.warn('[CraftingMenu] Click without action payload');
                             return;
@@ -4039,6 +4045,11 @@ document.addEventListener('DOMContentLoaded', () => {
             item.addEventListener('click', async () => {
                 setActiveTab('characterTab');
                 closeAllMenus();
+                
+                // Mark this item as active, remove from siblings
+                characterMenu.querySelectorAll('.character-menu-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
                 const action = item.getAttribute('data-action');
                 if (characterMenu) characterMenu.style.display = 'none';
                 // Switch to character view using single source of truth
@@ -4247,6 +4258,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (itemsMenu) itemsMenu.addEventListener('click', (e) => { e.stopPropagation(); });
         if (itemsMenu) itemsMenu.querySelectorAll('.items-menu-item').forEach(item => {
             item.addEventListener('click', async () => {
+                // Mark this item as active, remove from siblings
+                itemsMenu.querySelectorAll('.items-menu-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
                 const action = item.getAttribute('data-action');
                 await runItemsAction(action);
             });
@@ -4266,6 +4281,11 @@ document.addEventListener('DOMContentLoaded', () => {
             item.addEventListener('click', async () => {
                 setActiveTab('toolsTab');
                 closeAllMenus();
+                
+                // Mark this item as active, remove from siblings
+                toolsMenu.querySelectorAll('.tools-menu-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
                 const action = item.getAttribute('data-action');
                 if (toolsMenu) toolsMenu.style.display = 'none';
                 if (action === 'regex') {

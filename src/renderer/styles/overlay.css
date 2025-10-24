@@ -52,6 +52,24 @@
 .menu-icon svg { width: 14px; height: 14px; stroke: currentColor; }
 .dropdown-with-icons > div .menu-icon { margin-right: 6px; }
 
+/* Submenu item hover and active states */
+.crafting-menu-item:hover,
+.character-menu-item:hover,
+.items-menu-item:hover,
+.tools-menu-item:hover {
+    background: rgba(52, 152, 219, 0.2) !important; /* Soft blue background */
+    border-radius: 4px;
+}
+
+.crafting-menu-item.active,
+.character-menu-item.active,
+.items-menu-item.active,
+.tools-menu-item.active {
+    background: var(--accent-blue) !important; /* Solid blue background */
+    color: #fff !important;
+    border-radius: 4px;
+}
+
 
 /* Clean CSS: Only hide history elements when not in history view */
 body:not(.view-history) #historyContainer,
@@ -827,6 +845,36 @@ body {
     font-weight: 600; /* bolder for readability */
     color: var(--text-primary);
     line-height: 1.4;
+}
+
+/* Compact tiers mode - hide tier names and show badges inline with text */
+body.compact-tiers .tier-item {
+    padding: 6px 10px;
+    margin-bottom: 4px;
+}
+
+body.compact-tiers .tier-line {
+    display: none; /* Hide the entire tier name line */
+}
+
+body.compact-tiers .tier-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+body.compact-tiers .tier-badges-compact {
+    display: inline-flex !important;
+    gap: 4px;
+    align-items: center;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+/* Normal mode - hide compact badges */
+body:not(.compact-tiers) .tier-badges-compact {
+    display: none !important;
 }
 
 .tier-badge {

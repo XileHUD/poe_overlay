@@ -1750,6 +1750,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             }, 500);
         });
 
+
+
         // Save bounds when resized (if resizable in future)
         this.overlayWindow.on('resized', () => {
             this.saveWindowBounds();

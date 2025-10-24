@@ -272,7 +272,24 @@ function renderTierBadge(mod: any): string {
   const headerTier = extractTierNumber(mod?.headerTierNumber);
   const whittlingTier = extractTierNumber(mod?.whittlingTierNumber);
   const dataTier = extractTierNumber(mod?.tier);
-  const displayTier = headerTier ?? whittlingTier ?? dataTier;
+  
+  // For multi-mods, calculate max tier count from any single group
+  let displayTier = headerTier ?? whittlingTier ?? dataTier;
+  
+  if (mod.tiers && mod.tiers.length > 0) {
+    const counts = new Map<string, number>();
+    mod.tiers.forEach((t:any)=> { 
+      const key = groupKeyForTierText(String(t.text_plain||t.text||'')); 
+      counts.set(key, (counts.get(key)||0)+1); 
+    });
+    
+    // If multi-mod (more than one group), use max count from any group
+    if (counts.size > 1) {
+      const maxGroupCount = Math.max(...Array.from(counts.values()));
+      displayTier = maxGroupCount;
+    }
+  }
+  
   if (displayTier == null) return '';
   const mismatch = dataTier != null && dataTier !== displayTier;
   const tooltip = mismatch ? ` title="Clipboard tier T${displayTier}; Database tier T${dataTier}"` : '';
@@ -357,24 +374,47 @@ function renderSection(section: any, domainId?: string){
                   const counts = new Map<string, number>();
                   mod.tiers.forEach((t:any)=>{ const key = groupKeyForTierText(String(t.text_plain||t.text||'')); counts.set(key, (counts.get(key)||0)+1); });
                   counts.forEach((cnt, key)=> groups.set(key, cnt)); // start from count and decrement
-                  return mod.tiers.map((tier:any)=>{
+                  
+                  // Check if this is a multi-mod (has more than one distinct group)
+                  const uniqueGroups = Array.from(counts.keys());
+                  const isMultiMod = uniqueGroups.length > 1;
+                  
+                  let lastKey: string | null = null;
+                  let html = '';
+                  
+                  mod.tiers.forEach((tier:any, index:number)=>{
                     const key = groupKeyForTierText(String(tier.text_plain||tier.text||''));
                     const current = groups.get(key) || counts.get(key) || 1;
                     const label = `T${current}`;
                     groups.set(key, Math.max(0, current - 1));
-                    return `
-                      <div class="tier-item">
+                    
+                    // Add divider between different groups for multi-mods
+                    if (isMultiMod && lastKey !== null && lastKey !== key) {
+                      html += `<div class="tier-group-divider" style="border-top: 2px solid var(--accent-blue); margin: 8px 0; opacity: 0.4;"></div>`;
+                    }
+                    lastKey = key;
+                    
+                    // Generate badges HTML (used in both normal and compact modes)
+                    const badgesHtml = `
+                      ${tier.tier_level ? `<span class="tier-badge tier-ilvl">iLvl ${tier.tier_level}</span>` : ''}
+                      <span class="tier-badge tier-number">${label}</span>
+                      ${tier.weight > 0 ? `<span class="tier-badge tier-weight" title="${(mod.weight && mod.weight>0 ? ((tier.weight/mod.weight)*100).toFixed(1) : '0.0')}% of mod">${tier.weight}</span>` : ''}
+                    `;
+                    
+                    html += `
+                      <div class="tier-item" title="${String(tier.tier_name||'').replace(/^\s*(?:i?l?v?l?\s*\d+|T?\d+)\s*[-:]?\s*/i,'')}">
                         <div class="tier-line">
                           <span class="tier-name">${String(tier.tier_name||'').replace(/^\s*(?:i?l?v?l?\s*\d+|T?\d+)\s*[-:]?\s*/i,'')}</span>
-                            <div class="tier-badges"> 
-                            ${tier.tier_level ? `<span class="tier-badge tier-ilvl">iLvl ${tier.tier_level}</span>` : ''}
-                            <span class="tier-badge tier-number">${label}</span>
-                            ${tier.weight > 0 ? `<span class="tier-badge tier-weight" title="${(mod.weight && mod.weight>0 ? ((tier.weight/mod.weight)*100).toFixed(1) : '0.0')}% of mod">${tier.weight}</span>` : ''}
-                          </div>
+                          <div class="tier-badges tier-badges-normal">${badgesHtml}</div>
                         </div>
-                        <div class="tier-text">${highlightText(formatJoinedModText(sanitizeTierPlainText(String(tier.text_plain || tier.text || ''))))} </div>
+                        <div class="tier-text">
+                          <span class="tier-text-content">${highlightText(formatJoinedModText(sanitizeTierPlainText(String(tier.text_plain || tier.text || ''))))}</span>
+                          <span class="tier-badges-compact" style="display:none;">${badgesHtml}</span>
+                        </div>
                       </div>`;
-                  }).join('');
+                  });
+                  
+                  return html;
                 })()}
               </div>
             `: ''}
@@ -1795,7 +1835,9 @@ export function renderFilteredContent(data: any){
         <div style="display:flex; flex-direction:column; align-items:center; gap:2px; flex-shrink:0;">
           <span style="font-size:0.625rem; color:var(--text-secondary); white-space:nowrap;">Filter:</span>
           <button id="tagFilterModeToggle" data-mode="and" style="padding:3px 10px; font-size:0.688rem; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-primary); cursor:pointer; font-weight:600;">AND</button>
-          <button id="toggleMyMods" data-domain="myMods" style="margin-top:4px; padding:2px 8px; font-size:0.688rem; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-primary); cursor:pointer; font-weight:600; min-width:68px;" title="Show only modifiers currently on the copied item">My Mods</button>
+          <button id="toggleMyMods" data-domain="myMods" style="padding:3px 10px; font-size:0.688rem; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-primary); cursor:pointer; font-weight:600; display:flex; align-items:center; justify-content:center;" title="Show only modifiers currently on your item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </button>
         </div>
         <div style="display:flex; flex-wrap:wrap; gap:4px; justify-content:center; align-items:flex-start; flex:1;">
           ${sortedTags.map(t=>{
@@ -1874,6 +1916,9 @@ export function renderFilteredContent(data: any){
           if ((window as any).originalData) renderFilteredContent((window as any).originalData);
         });
       }
+
+      // Always enable compact tiers mode by default
+      document.body.classList.add('compact-tiers');
       
       filtersWrapper.querySelectorAll('.filter-tag').forEach(chip => {
         chip.addEventListener('click', () => {
