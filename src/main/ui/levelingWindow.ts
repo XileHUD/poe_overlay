@@ -169,8 +169,9 @@ export class LevelingWindow {
 
   private loadLevelingData(): void {
     try {
-      // Try multiple possible paths
+      // Try multiple possible paths (including extraResources path for packaged app)
       const possiblePaths = [
+        path.join(process.resourcesPath || '', 'data', 'poe1', 'Leveling', 'leveling-data-v2.json'), // Packaged app
         path.join(app.getAppPath(), 'data', 'poe1', 'Leveling', 'leveling-data-v2.json'),
         path.join(process.cwd(), 'data', 'poe1', 'Leveling', 'leveling-data-v2.json'),
         path.join(__dirname, '../../data/poe1/Leveling/leveling-data-v2.json'),
@@ -206,8 +207,9 @@ export class LevelingWindow {
 
   private loadZoneRegistry(): void {
     try {
-      // Try multiple possible paths for zone registry
+      // Try multiple possible paths for zone registry (including extraResources path for packaged app)
       const possiblePaths = [
+        path.join(process.resourcesPath || '', 'data', 'poe1', 'Leveling', 'poe1-zone-registry.json'), // Packaged app
         path.join(app.getAppPath(), 'data', 'poe1', 'Leveling', 'poe1-zone-registry.json'),
         path.join(process.cwd(), 'data', 'poe1', 'Leveling', 'poe1-zone-registry.json'),
         path.join(__dirname, '../../data/poe1/Leveling/poe1-zone-registry.json'),

@@ -152,10 +152,18 @@ export interface SettingsSplashParams {
   overlayVersion: OverlayVersion;
 }
 
+// Track active settings window to prevent multiple instances
+let activeSettingsWindow: BrowserWindow | null = null;
+
 /**
  * Show settings splash and wait for user interaction
  */
 export async function showSettingsSplash(params: SettingsSplashParams): Promise<void> {
+  // If a settings window is already open, focus it instead of creating a new one
+  if (activeSettingsWindow && !activeSettingsWindow.isDestroyed()) {
+    activeSettingsWindow.focus();
+    return;
+  }
   const {
     settingsService,
     featureService,
@@ -222,6 +230,19 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
         nodeIntegration: true,
         contextIsolation: false,
         preload: undefined
+      }
+    });
+
+    // Track this as the active settings window
+    activeSettingsWindow = window;
+
+    // Ensure settings window stays on top of overlay
+    window.setAlwaysOnTop(true, 'screen-saver', 1);
+    
+    // Re-enforce always-on-top when it loses focus
+    window.on('blur', () => {
+      if (!window.isDestroyed()) {
+        window.setAlwaysOnTop(true, 'screen-saver', 1);
       }
     });
 
@@ -559,6 +580,9 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
     });
 
     window.on('closed', () => {
+      // Clear the active settings window reference
+      activeSettingsWindow = null;
+      
       // Cleanup IPC handlers
       ipcMain.removeAllListeners('settings-check-updates');
       ipcMain.removeAllListeners('settings-font-size-preview');

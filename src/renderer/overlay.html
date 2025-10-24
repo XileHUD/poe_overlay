@@ -2513,36 +2513,42 @@
                         
                         console.log('[FeatureFilter] Crafting enabled, checking subcategories:', subs);
                         
+                        const poe1Mode = overlayVersionMode === 'poe1';
+                        
                         if (craftMenu) {
                             const items = craftMenu.querySelectorAll('.crafting-menu-item');
                             items.forEach(item => {
                                 const action = item.getAttribute('data-action');
                                 let shouldShow = false;
                                 
-                                // PoE2 crafting items
-                                if (action === 'liquid-emotions' && subs.liquidEmotions) shouldShow = true;
-                                if (action === 'essences' && subs.essences) shouldShow = true;
-                                if (action === 'omens' && subs.omens) shouldShow = true;
-                                if (action === 'currency' && subs.currency) shouldShow = true;
-                                if (action === 'catalysts' && subs.catalysts) shouldShow = true;
-                                if (action === 'socketables' && subs.socketables) shouldShow = true;
+                                // PoE2 crafting items - only show in PoE2 mode
+                                if (action === 'liquid-emotions' && !poe1Mode && subs.liquidEmotions) shouldShow = true;
+                                if (action === 'essences' && !poe1Mode && subs.essences) shouldShow = true;
+                                if (action === 'omens' && !poe1Mode && subs.omens) shouldShow = true;
+                                if (action === 'currency' && !poe1Mode && subs.currency) shouldShow = true;
+                                if (action === 'catalysts' && !poe1Mode && subs.catalysts) shouldShow = true;
+                                if (action === 'socketables' && !poe1Mode && subs.socketables) shouldShow = true;
                                 
-                                // PoE1 crafting items
-                                if (action === 'poe1-scarabs' && subs.scarabs) shouldShow = true;
-                                if (action === 'poe1-runegrafts' && subs.runegrafts) shouldShow = true;
-                                if (action === 'poe1-horticrafting' && subs.horticrafting) shouldShow = true;
-                                if (action === 'poe1-bestiary' && subs.bestiary) shouldShow = true;
-                                if (action === 'poe1-currency' && subs.currency) shouldShow = true;
-                                if (action === 'poe1-essences' && subs.essences) shouldShow = true;
-                                if (action === 'poe1-fossils' && subs.fossils) shouldShow = true;
-                                if (action === 'poe1-embers' && subs.embers) shouldShow = true;
+                                // PoE1 crafting items - only show in PoE1 mode
+                                if (action === 'poe1-scarabs' && poe1Mode && subs.scarabs) shouldShow = true;
+                                if (action === 'poe1-runegrafts' && poe1Mode && subs.runegrafts) shouldShow = true;
+                                if (action === 'poe1-horticrafting' && poe1Mode && subs.horticrafting) shouldShow = true;
+                                if (action === 'poe1-bestiary' && poe1Mode && subs.bestiary) shouldShow = true;
+                                if (action === 'poe1-currency' && poe1Mode && subs.currency) shouldShow = true;
+                                if (action === 'poe1-essences' && poe1Mode && subs.essences) shouldShow = true;
+                                if (action === 'poe1-fossils' && poe1Mode && subs.fossils) shouldShow = true;
+                                if (action === 'poe1-embers' && poe1Mode && subs.embers) shouldShow = true;
                                 
                                 if (shouldShow) {
                                     anySubEnabled = true;
+                                    item.classList.remove('feature-hidden');
                                     item.style.display = '';
+                                    item.hidden = false;
                                     console.log('[FeatureFilter] Showing crafting item:', action);
                                 } else {
+                                    item.classList.add('feature-hidden');
                                     item.style.display = 'none';
+                                    item.hidden = true;
                                 }
                             });
                         }
@@ -2594,7 +2600,7 @@
                                 const action = item.getAttribute('data-action');
                                 let shouldShow = false;
 
-                                if (poe2CharacterEnabled) {
+                                if (poe2CharacterEnabled && !isPoe1Mode) {
                                     if (action === 'quest-passives' && poe2Subs.questPassives) shouldShow = true;
                                     if (action === 'annoints' && poe2Subs.annoints) shouldShow = true;
                                     if (action === 'keystones' && poe2Subs.keystones) shouldShow = true;
@@ -2614,10 +2620,14 @@
 
                                 if (shouldShow) {
                                     anySubEnabled = true;
+                                    item.classList.remove('feature-hidden');
                                     item.style.display = '';
+                                    item.hidden = false;
                                     console.log('[FeatureFilter] Showing character item:', action);
                                 } else {
+                                    item.classList.add('feature-hidden');
                                     item.style.display = 'none';
+                                    item.hidden = true;
                                 }
                             });
                         }
@@ -2664,10 +2674,14 @@
                                 
                                 if (shouldShow) {
                                     anySubEnabled = true;
+                                    item.classList.remove('feature-hidden');
                                     item.style.display = '';
+                                    item.hidden = false;
                                     if (action) enabledItemActions.push(action);
                                 } else {
+                                    item.classList.add('feature-hidden');
                                     item.style.display = 'none';
+                                    item.hidden = true;
                                 }
                             });
                         }
