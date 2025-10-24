@@ -62,6 +62,8 @@ export interface UserSettings {
   clientTxtPath?: string; // Custom path to Client.txt if user manually selected it
   clientTxtAutoDetected?: boolean; // Whether the path was auto-detected or manually set
   clientTxtLastChecked?: number; // Timestamp of last auto-detection attempt
+  clientTxtDetectionAttempted?: boolean; // Flag to track if we've tried to auto-detect on this install
+  clientTxtNotificationShown?: boolean; // Flag to track if we've shown the "not found" notification
 }
 
 export class SettingsService {

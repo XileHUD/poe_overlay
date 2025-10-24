@@ -1215,9 +1215,17 @@ document.getElementById('selectPath').addEventListener('click', async () => {
 ipcRenderer.invoke('get-client-txt-path').then(result => {
   if (result.path) {
     document.getElementById('clientPathDisplay').textContent = result.path;
-    document.getElementById('clientPathDisplay').style.color = result.autoDetected 
-      ? 'rgba(74,158,255,0.8)' 
-      : 'rgba(74,222,128,0.8)';
+    
+    // Only show green if file actually exists, otherwise show red/yellow
+    if (result.exists) {
+      // Green for manually set and exists, blue for auto-detected and exists
+      document.getElementById('clientPathDisplay').style.color = result.autoDetected 
+        ? 'rgba(74,158,255,0.8)'  // Blue for auto-detected
+        : 'rgba(74,222,128,0.8)';  // Green for manually set
+    } else {
+      // Red if path is saved but file doesn't exist
+      document.getElementById('clientPathDisplay').style.color = 'rgba(255,82,82,0.8)';
+    }
   }
 });
 

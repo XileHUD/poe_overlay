@@ -4,6 +4,7 @@ import { buildLevelingPopoutHtml } from '../popouts/levelingPopoutTemplate.js';
 import fs from 'fs';
 import path from 'path';
 import { app } from 'electron';
+import { execSync } from 'child_process';
 
 export interface LevelingWindowParams {
   settingsService: SettingsService;
@@ -26,6 +27,9 @@ export class LevelingWindow {
     this.loadZoneRegistry();
     this.loadProgress();
     this.registerIpcHandlers();
+    
+    // Auto-detect client.txt on first run (if not already attempted)
+    this.autoDetectClientTxtOnStartup();
   }
 
   show(): void {
@@ -370,6 +374,20 @@ export class LevelingWindow {
 
     // Auto-detect client.txt path
     ipcMain.handle('auto-detect-client-txt', async () => {
+      // First, try to find the path from a running POE process
+      const processDir = this.findPoeProcessPath();
+      if (processDir) {
+        const processBasedPath = path.join(processDir, 'logs', 'Client.txt');
+        if (fs.existsSync(processBasedPath)) {
+          this.settingsService.set('clientTxtPath', processBasedPath);
+          this.settingsService.set('clientTxtAutoDetected', true);
+          this.settingsService.set('clientTxtLastChecked', Date.now());
+          console.log('[LevelingWindow] Found Client.txt via running process');
+          return { success: true, path: processBasedPath };
+        }
+      }
+
+      // Fall back to scanning common locations
       const driveLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(letter => {
         try {
           return fs.existsSync(letter + ':\\');
@@ -394,11 +412,13 @@ export class LevelingWindow {
             this.settingsService.set('clientTxtPath', testPath);
             this.settingsService.set('clientTxtAutoDetected', true);
             this.settingsService.set('clientTxtLastChecked', Date.now());
+            console.log('[LevelingWindow] Found Client.txt via path scanning');
             return { success: true, path: testPath };
           }
         }
       }
 
+      console.log('[LevelingWindow] Could not auto-detect Client.txt');
       return { success: false, path: null };
     });
 
@@ -428,9 +448,20 @@ export class LevelingWindow {
 
     // Get current client.txt path
     ipcMain.handle('get-client-txt-path', async () => {
-      const path = this.settingsService.get('clientTxtPath');
+      const savedPath = this.settingsService.get('clientTxtPath');
       const autoDetected = this.settingsService.get('clientTxtAutoDetected') ?? false;
-      return { path, autoDetected };
+      
+      // Validate that the path actually exists
+      let exists = false;
+      if (savedPath && typeof savedPath === 'string') {
+        try {
+          exists = fs.existsSync(savedPath);
+        } catch {
+          exists = false;
+        }
+      }
+      
+      return { path: savedPath, autoDetected, exists };
     });
 
     // Clean client.txt file
@@ -471,6 +502,140 @@ export class LevelingWindow {
   private clientTxtWatcher: fs.FSWatcher | null = null;
   private clientTxtPath: string | null = null;
   private lastFilePosition: number = 0;
+
+  /**
+   * Try to find the Path of Exile installation directory by looking for running processes
+   */
+  private findPoeProcessPath(): string | null {
+    try {
+      // Use PowerShell to get process path (more reliable than wmic on modern Windows)
+      const command = `powershell -Command "Get-Process | Where-Object {$_.ProcessName -like '*PathOfExile*'} | Select-Object -ExpandProperty Path"`;
+      const output = execSync(command, { encoding: 'utf8', timeout: 5000 });
+      
+      if (output && output.trim()) {
+        // Get the first matching process path
+        const processPath = output.trim().split('\n')[0].trim();
+        if (processPath && fs.existsSync(processPath)) {
+          // Get the directory containing the exe
+          const processDir = path.dirname(processPath);
+          console.log('[LevelingWindow] Found POE process at:', processDir);
+          return processDir;
+        }
+      }
+    } catch (error) {
+      console.log('[LevelingWindow] Could not detect running POE process:', error);
+    }
+    return null;
+  }
+
+  /**
+   * Auto-detect client.txt path on startup (only runs once per installation)
+   */
+  private async autoDetectClientTxtOnStartup(): Promise<void> {
+    // Check if we've already attempted detection
+    const detectionAttempted = this.settingsService.get('clientTxtDetectionAttempted');
+    const existingPath = this.settingsService.get('clientTxtPath');
+    
+    // Skip if we've already tried OR if user has manually set a path
+    if (detectionAttempted || (existingPath && !this.settingsService.get('clientTxtAutoDetected'))) {
+      console.log('[LevelingWindow] Skipping auto-detection (already attempted or manually set)');
+      return;
+    }
+
+    // If we have an existing auto-detected path, verify it still exists
+    if (existingPath && this.settingsService.get('clientTxtAutoDetected')) {
+      if (fs.existsSync(existingPath)) {
+        console.log('[LevelingWindow] Using existing auto-detected path:', existingPath);
+        return;
+      } else {
+        console.log('[LevelingWindow] Previous auto-detected path no longer exists, re-detecting');
+      }
+    }
+
+    console.log('[LevelingWindow] Attempting auto-detection of Client.txt...');
+    
+    // Mark that we've attempted detection (even if it fails)
+    this.settingsService.set('clientTxtDetectionAttempted', true);
+    
+    // Try to find from running process first
+    const processDir = this.findPoeProcessPath();
+    if (processDir) {
+      const processBasedPath = path.join(processDir, 'logs', 'Client.txt');
+      if (fs.existsSync(processBasedPath)) {
+        this.settingsService.set('clientTxtPath', processBasedPath);
+        this.settingsService.set('clientTxtAutoDetected', true);
+        this.settingsService.set('clientTxtLastChecked', Date.now());
+        console.log('[LevelingWindow] Auto-detected Client.txt via running process:', processBasedPath);
+        return;
+      }
+    }
+
+    // Fall back to scanning common locations
+    const driveLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(letter => {
+      try {
+        return fs.existsSync(letter + ':\\');
+      } catch {
+        return false;
+      }
+    });
+
+    const relativePaths = [
+      'Program Files (x86)\\Steam\\steamapps\\common\\Path of Exile\\logs\\Client.txt',
+      'Program Files\\Steam\\steamapps\\common\\Path of Exile\\logs\\Client.txt',
+      'Steam\\steamapps\\common\\Path of Exile\\logs\\Client.txt',
+      'SteamLibrary\\steamapps\\common\\Path of Exile\\logs\\Client.txt',
+      'Program Files (x86)\\Grinding Gear Games\\Path of Exile\\logs\\Client.txt',
+      'Grinding Gear Games\\Path of Exile\\logs\\Client.txt'
+    ];
+
+    for (const drive of driveLetters) {
+      for (const rel of relativePaths) {
+        const testPath = path.join(drive + ':\\', rel);
+        if (fs.existsSync(testPath)) {
+          this.settingsService.set('clientTxtPath', testPath);
+          this.settingsService.set('clientTxtAutoDetected', true);
+          this.settingsService.set('clientTxtLastChecked', Date.now());
+          console.log('[LevelingWindow] Auto-detected Client.txt via path scanning:', testPath);
+          return;
+        }
+      }
+    }
+
+    // If we get here, we couldn't find Client.txt
+    console.log('[LevelingWindow] Could not auto-detect Client.txt');
+    
+    // Show notification if not already shown
+    const notificationShown = this.settingsService.get('clientTxtNotificationShown');
+    if (!notificationShown) {
+      this.showClientTxtNotFoundNotification();
+      this.settingsService.set('clientTxtNotificationShown', true);
+    }
+  }
+
+  /**
+   * Show a notification when Client.txt cannot be found
+   */
+  private showClientTxtNotFoundNotification(): void {
+    const { dialog } = require('electron');
+    
+    // Use setTimeout to avoid blocking startup
+    setTimeout(() => {
+      dialog.showMessageBox({
+        type: 'info',
+        title: 'Client.txt Not Found',
+        message: 'Auto Zone Detection',
+        detail: 'We couldn\'t automatically detect the Path of Exile Client.txt file.\n\n' +
+                'If you want to use auto zone detection in the leveling overlay, ' +
+                'please set the path manually in the leveling overlay settings.\n\n' +
+                'This message will only be shown once.',
+        buttons: ['OK'],
+        defaultId: 0,
+        noLink: true
+      }).catch((err: any) => {
+        console.error('[LevelingWindow] Error showing notification:', err);
+      });
+    }, 1000);
+  }
 
   private startClientTxtWatcher() {
     // Stop any existing watcher
