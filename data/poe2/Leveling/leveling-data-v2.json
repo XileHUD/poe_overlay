@@ -3,7 +3,6 @@
     {
       "actNumber": 1,
       "actName": "Grelwood",
-      "recommendedEndLevel": 25,
       "steps": [
         {
           "id": "poe2_a1_riverbank_1",
@@ -630,7 +629,6 @@
   {
     "actNumber": 2,
     "actName": "The Vastiri Desert",
-    "recommendedEndLevel": 45,
     "steps": [
       {
         "id": "poe2_a2_outskirts_1",
@@ -1268,7 +1266,6 @@
   {
     "actNumber": 3,
     "actName": "The Vaal Corrupted Lands",
-    "recommendedEndLevel": 65,
     "steps": [
       {
         "id": "poe2_a3_marsh_1",
@@ -1806,7 +1803,6 @@
   {
     "actNumber": 4,
     "actName": "The Karui Shores",
-    "recommendedEndLevel": 75,
     "steps": [
       {
         "id": "poe2_a4_town1_1",
@@ -2099,7 +2095,6 @@
   {
     "actNumber": 5,
     "actName": "Interlude: Ogham",
-    "recommendedEndLevel": 78,
     "steps": [
       {
         "id": "poe2_a5_town1_1",
@@ -2200,22 +2195,12 @@
         "description": "Talk to Renly, talk to Hooded One - Proceed to Vastiri (Act 6)",
         "checkable": true,
         "zoneId": "p2_town"
-      },
-      {
-        "id": "poe2_a5_checklist",
-        "type": "town",
-        "zone": "The Refuge",
-        "description": "Check Character → Quest Passives to verify all passive boosts collected!",
-        "hint": "Make sure you collected all skill points, spirit boosts, and other passive rewards",
-        "checkable": true,
-        "zoneId": "p2_town"
       }
     ]
   },
   {
     "actNumber": 6,
     "actName": "Interlude: Vastiri",
-    "recommendedEndLevel": 81,
     "steps": [
       {
         "id": "poe2_a6_town1_1",
@@ -2359,22 +2344,12 @@
         "description": "Talk to NPCs, talk to Hooded One - Proceed to Mount Kriar (Act 7)",
         "checkable": true,
         "zoneId": "p3_town"
-      },
-      {
-        "id": "poe2_a6_checklist",
-        "type": "town",
-        "zone": "The Khari Bazaar",
-        "description": "Check Character → Quest Passives to verify all passive boosts collected!",
-        "hint": "Make sure you collected all skill points, life/mana boosts, and other passive rewards",
-        "checkable": true,
-        "zoneId": "p3_town"
       }
     ]
   },
   {
     "actNumber": 7,
     "actName": "Interlude: Mount Kriar",
-    "recommendedEndLevel": 84,
     "steps": [
       {
         "id": "poe2_a7_town1_1",

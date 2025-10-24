@@ -459,11 +459,17 @@ export class LevelingWindow {
         for (const rel of relativePaths) {
           const testPath = path.join(drive + ':\\', rel);
           if (fs.existsSync(testPath)) {
-            this.settingsService.set(this.getClientTxtPathKey(), testPath);
-            this.settingsService.set(this.getClientTxtAutoDetectedKey(), true);
-            this.settingsService.set(this.getClientTxtLastCheckedKey(), Date.now());
-            console.log(`[LevelingWindow] Found ${this.overlayVersion.toUpperCase()} Client.txt via path scanning`);
-            return { success: true, path: testPath };
+            // Validate the path matches the current version
+            const testDir = path.dirname(path.dirname(testPath)); // Go up from logs/Client.txt to game root
+            if (this.isPathValidForVersion(testDir)) {
+              this.settingsService.set(this.getClientTxtPathKey(), testPath);
+              this.settingsService.set(this.getClientTxtAutoDetectedKey(), true);
+              this.settingsService.set(this.getClientTxtLastCheckedKey(), Date.now());
+              console.log(`[LevelingWindow] Found ${this.overlayVersion.toUpperCase()} Client.txt via path scanning`);
+              return { success: true, path: testPath };
+            } else {
+              console.log(`[LevelingWindow] Rejected path (wrong version):`, testPath);
+            }
           }
         }
       }
@@ -563,19 +569,58 @@ export class LevelingWindow {
       const output = execSync(command, { encoding: 'utf8', timeout: 5000 });
       
       if (output && output.trim()) {
-        // Get the first matching process path
-        const processPath = output.trim().split('\n')[0].trim();
-        if (processPath && fs.existsSync(processPath)) {
-          // Get the directory containing the exe
-          const processDir = path.dirname(processPath);
-          console.log('[LevelingWindow] Found POE process at:', processDir);
-          return processDir;
+        // Get all matching process paths
+        const processPaths = output.trim().split('\n').map(p => p.trim()).filter(Boolean);
+        
+        // Filter for version-specific paths
+        for (const processPath of processPaths) {
+          if (processPath && fs.existsSync(processPath)) {
+            const processDir = path.dirname(processPath);
+            
+            // Validate this path matches the current overlay version
+            if (this.isPathValidForVersion(processDir)) {
+              console.log(`[LevelingWindow] Found ${this.overlayVersion.toUpperCase()} process at:`, processDir);
+              return processDir;
+            } else {
+              console.log(`[LevelingWindow] Rejected path (wrong version):`, processDir);
+            }
+          }
         }
       }
     } catch (error) {
       console.log('[LevelingWindow] Could not detect running POE process:', error);
     }
     return null;
+  }
+
+  /**
+   * Check if a path is valid for the current overlay version.
+   * Prevents cross-contamination between PoE1 and PoE2 paths.
+   */
+  private isPathValidForVersion(dirPath: string): boolean {
+    const normalizedPath = dirPath.toLowerCase().replace(/\\/g, '/');
+    
+    if (this.overlayVersion === 'poe1') {
+      // PoE1 should NOT contain "path of exile 2" or similar patterns
+      if (normalizedPath.includes('path of exile 2') || 
+          normalizedPath.includes('path of exile ii') ||
+          normalizedPath.includes('pathofexile2') ||
+          normalizedPath.includes('pathofexileii') ||
+          normalizedPath.includes('poe2')) {
+        return false;
+      }
+      // Valid if it contains "path of exile" (but not the above)
+      return normalizedPath.includes('path of exile');
+    } else {
+      // PoE2 MUST contain "2" or "ii" in the path
+      if (normalizedPath.includes('path of exile 2') || 
+          normalizedPath.includes('path of exile ii') ||
+          normalizedPath.includes('pathofexile2') ||
+          normalizedPath.includes('pathofexileii')) {
+        return true;
+      }
+      return false;
+    }
   }
 
   /**
@@ -592,11 +637,19 @@ export class LevelingWindow {
       return;
     }
 
-    // If we have an existing auto-detected path, verify it still exists
+    // If we have an existing auto-detected path, verify it still exists AND is for the correct version
     if (existingPath && this.settingsService.get(this.getClientTxtAutoDetectedKey())) {
       if (fs.existsSync(existingPath)) {
-        console.log(`[LevelingWindow] Using existing auto-detected ${this.overlayVersion.toUpperCase()} path:`, existingPath);
-        return;
+        const existingDir = path.dirname(path.dirname(existingPath)); // Go up from logs/Client.txt to game root
+        if (this.isPathValidForVersion(existingDir)) {
+          console.log(`[LevelingWindow] Using existing auto-detected ${this.overlayVersion.toUpperCase()} path:`, existingPath);
+          return;
+        } else {
+          console.log(`[LevelingWindow] Previous auto-detected path is for wrong game version, re-detecting`);
+          // Clear the invalid path
+          this.settingsService.clear(this.getClientTxtPathKey());
+          this.settingsService.clear(this.getClientTxtAutoDetectedKey());
+        }
       } else {
         console.log(`[LevelingWindow] Previous auto-detected ${this.overlayVersion.toUpperCase()} path no longer exists, re-detecting`);
       }
@@ -650,11 +703,17 @@ export class LevelingWindow {
       for (const rel of relativePaths) {
         const testPath = path.join(drive + ':\\', rel);
         if (fs.existsSync(testPath)) {
-          this.settingsService.set(this.getClientTxtPathKey(), testPath);
-          this.settingsService.set(this.getClientTxtAutoDetectedKey(), true);
-          this.settingsService.set(this.getClientTxtLastCheckedKey(), Date.now());
-          console.log(`[LevelingWindow] Auto-detected ${this.overlayVersion.toUpperCase()} Client.txt via path scanning:`, testPath);
-          return;
+          // Validate the path matches the current version
+          const testDir = path.dirname(path.dirname(testPath)); // Go up from logs/Client.txt to game root
+          if (this.isPathValidForVersion(testDir)) {
+            this.settingsService.set(this.getClientTxtPathKey(), testPath);
+            this.settingsService.set(this.getClientTxtAutoDetectedKey(), true);
+            this.settingsService.set(this.getClientTxtLastCheckedKey(), Date.now());
+            console.log(`[LevelingWindow] Auto-detected ${this.overlayVersion.toUpperCase()} Client.txt via path scanning:`, testPath);
+            return;
+          } else {
+            console.log(`[LevelingWindow] Rejected path (wrong version):`, testPath);
+          }
         }
       }
     }

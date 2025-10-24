@@ -453,7 +453,7 @@ function groupStepsByZone(steps) {
 }
 
 function saveState() {
-  ipcRenderer.invoke('save-current-act-index', state.currentActIndex);
+  ipcRenderer.invoke('set-current-act-index', state.currentActIndex);
   ipcRenderer.invoke('save-act-timers', state.actTimers);
   // Save UI settings
   ipcRenderer.invoke('save-leveling-settings', {

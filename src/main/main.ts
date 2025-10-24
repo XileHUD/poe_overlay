@@ -805,12 +805,18 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                     return { valid: false, reason: 'poe1_missing_expected_categories' };
                 }
             } else {
-                // PoE2: just check if directory exists and has some JSON files
+                // PoE2: require presence of core modifier files to differentiate from leveling payloads
                 try {
                     const files = fs.readdirSync(normalized);
-                    const hasJsonFiles = files.some(f => f.endsWith('.json'));
-                    if (!hasJsonFiles) {
+                    const jsonFiles = files.filter(f => f.toLowerCase().endsWith('.json'));
+                    if (jsonFiles.length === 0) {
                         return { valid: false, reason: 'poe2_missing_json_files' };
+                    }
+
+                    const coreFiles = new Set(['uniques.json', 'liquid_emotions.json', 'essences.json', 'socketables.json']);
+                    const hasCoreFile = jsonFiles.some(f => coreFiles.has(f.toLowerCase()));
+                    if (!hasCoreFile && jsonFiles.length < 10) {
+                        return { valid: false, reason: 'poe2_missing_core_files' };
                     }
                 } catch {
                     return { valid: false, reason: 'poe2_read_error' };
@@ -904,12 +910,18 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                         return poe1Modules;
                     }
                 }
-                // PoE2 or fallback: look for first subdirectory (e.g., "Rise of the Abyssal")
+                // PoE2 or fallback: prefer the first valid data directory (e.g., "Rise of the Abyssal")
                 const entries = fs.readdirSync(base)
                     .map((entry) => path.join(base, entry))
                     .filter((fullPath) => {
                         try { return fs.statSync(fullPath).isDirectory(); } catch { return false; }
                     });
+
+                const validEntry = entries.find((entry) => this.validateDataDirCandidate(entry, version).valid);
+                if (validEntry) {
+                    return validEntry;
+                }
+
                 if (entries.length > 0) {
                     return entries[0];
                 }
