@@ -44,6 +44,35 @@ export interface UserSettings {
     currentActIndex?: number; // Currently selected act (0-based index)
     actTimers?: Record<number, number>; // Completion time for each act: { 1: 123456, 2: 234567, ... }
     runHistory?: Record<number, Array<{ time: number; timestamp: number; date: string }>>; // Historical run times per act
+    characterLevel?: number; // Current character level (from client.txt)
+    characterName?: string; // Character name (from client.txt)
+    characterClass?: string; // Character class (from client.txt)
+    pobBuild?: {
+      code: string;
+      className: string;
+      ascendancyName: string;
+      characterName: string;
+      level: number;
+      allocatedNodes: number[];
+      treeProgression: Array<{
+        actNumber: number;
+        recommendedLevel: number;
+        nodeIds: number[];
+        totalPoints: number;
+        newNodesFromPreviousAct: number[];
+      }>;
+      gems: Array<{
+        name: string;
+        level: number;
+        quest?: string;
+        act: number;
+        availableFrom?: string;
+        vendor?: string;
+        isSupport: boolean;
+      }>;
+      treeVersion: string;
+      importedAt: number;
+    };
     uiSettings?: {
       opacity?: number;
       fontSize?: number;
@@ -66,6 +95,32 @@ export interface UserSettings {
     currentActIndex?: number; // Currently selected act (0-based index)
     actTimers?: Record<number, number>; // Completion time for each act: { 1: 123456, 2: 234567, ... }
     runHistory?: Record<number, Array<{ time: number; timestamp: number; date: string }>>; // Historical run times per act
+    pobBuild?: {
+      code: string;
+      className: string;
+      ascendancyName: string;
+      characterName: string;
+      level: number;
+      allocatedNodes: number[];
+      treeProgression: Array<{
+        actNumber: number;
+        recommendedLevel: number;
+        nodeIds: number[];
+        totalPoints: number;
+        newNodesFromPreviousAct: number[];
+      }>;
+      gems: Array<{
+        name: string;
+        level: number;
+        quest?: string;
+        act: number;
+        availableFrom?: string;
+        vendor?: string;
+        isSupport: boolean;
+      }>;
+      treeVersion: string;
+      importedAt: number;
+    };
     uiSettings?: {
       opacity?: number;
       fontSize?: number;

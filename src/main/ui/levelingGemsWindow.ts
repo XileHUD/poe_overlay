@@ -1,0 +1,726 @@
+import { BrowserWindow, ipcMain } from 'electron';
+import type { OverlayVersion } from '../../types/overlayVersion.js';
+import type { SettingsService } from '../services/settingsService.js';
+import gemsData from '../../data/leveling-data/gems.json';
+import gemColoursData from '../../data/leveling-data/gem-colours.json';
+import questsData from '../../data/leveling-data/quests.json';
+
+interface LevelingGemsWindowOptions {
+  settingsService: SettingsService;
+  overlayVersion: OverlayVersion;
+  parentWindow?: BrowserWindow;
+}
+
+let gemsWindow: BrowserWindow | null = null;
+
+export function openLevelingGemsWindow(options: LevelingGemsWindowOptions): BrowserWindow {
+  const { settingsService, overlayVersion, parentWindow } = options;
+
+  // If window already exists, focus it
+  if (gemsWindow && !gemsWindow.isDestroyed()) {
+    gemsWindow.focus();
+    return gemsWindow;
+  }
+
+  // Get saved window position or use defaults
+  const settingsKey = overlayVersion === 'poe1' ? 'levelingWindowPoe1' : 'levelingWindowPoe2';
+  const savedSettings = settingsService.get(settingsKey) || {};
+  const gemsWindowSettings = (savedSettings as any).gemsWindow || {};
+  const { x = 100, y = 100, width = 450, height = 600 } = gemsWindowSettings;
+
+  gemsWindow = new BrowserWindow({
+    width,
+    height,
+    x,
+    y,
+    frame: false,
+    transparent: true,
+    resizable: true,
+    skipTaskbar: true,
+    alwaysOnTop: true,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
+    parent: parentWindow,
+  });
+
+  gemsWindow.setIgnoreMouseEvents(false);
+
+  // Get current PoB build data and current act
+  const pobBuild = (savedSettings as any).pobBuild || null;
+  const currentActIndex = (savedSettings as any).currentActIndex || 0;
+  const currentAct = currentActIndex + 1; // Convert index to act number
+
+  const html = buildLevelingGemsWindowHtml(pobBuild, currentAct, overlayVersion);
+  gemsWindow.loadURL(`data:text/html;charset=utf-8,${encodeURIComponent(html)}`);
+
+  // Save position on move
+  gemsWindow.on('move', () => {
+    if (!gemsWindow || gemsWindow.isDestroyed()) return;
+    const [newX, newY] = gemsWindow.getPosition();
+    settingsService.update(settingsKey, (current: any) => ({
+      ...current,
+      gemsWindow: {
+        ...(current.gemsWindow || {}),
+        x: newX,
+        y: newY,
+      },
+    }));
+  });
+
+  // Save size on resize
+  gemsWindow.on('resize', () => {
+    if (!gemsWindow || gemsWindow.isDestroyed()) return;
+    const [newWidth, newHeight] = gemsWindow.getSize();
+    settingsService.update(settingsKey, (current: any) => ({
+      ...current,
+      gemsWindow: {
+        ...(current.gemsWindow || {}),
+        width: newWidth,
+        height: newHeight,
+      },
+    }));
+  });
+
+  gemsWindow.on('closed', () => {
+    gemsWindow = null;
+  });
+
+  return gemsWindow;
+}
+
+export function updateLevelingGemsWindow(currentAct: number, overlayVersion: OverlayVersion, settingsService: SettingsService) {
+  if (!gemsWindow || gemsWindow.isDestroyed()) return;
+
+  // Send act update to renderer
+  gemsWindow.webContents.send('gems-window-act-changed', currentAct);
+}
+
+export function updateLevelingGemsWindowBuild(pobBuild: any, overlayVersion: OverlayVersion, settingsService: SettingsService) {
+  if (!gemsWindow || gemsWindow.isDestroyed()) return;
+
+  // Send build update to renderer
+  gemsWindow.webContents.send('gems-window-build-updated', pobBuild);
+}
+
+export function closeLevelingGemsWindow() {
+  if (gemsWindow && !gemsWindow.isDestroyed()) {
+    gemsWindow.close();
+    gemsWindow = null;
+  }
+}
+
+function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayVersion: OverlayVersion): string {
+  const className = pobBuild?.className || 'No Build Loaded';
+  const ascendancy = pobBuild?.ascendancyName || '';
+  const level = pobBuild?.level || 0;
+
+  // Inject JSON data
+  const gemsJSON = JSON.stringify(gemsData);
+  const gemColoursJSON = JSON.stringify(gemColoursData);
+  const questsJSON = JSON.stringify(questsData);
+
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2d2d2d;
+      --bg-tertiary: #3a3a3a;
+      --bg-card: #252525;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0b0;
+      --text-muted: #808080;
+      --border-color: #404040;
+      --accent-blue: #4a9eff;
+      --accent-green: #5cb85c;
+      --accent-red: #d9534f;
+      --gem-str: #ff4444;
+      --gem-dex: #44ff44;
+      --gem-int: #4444ff;
+    }
+    
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow: hidden;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(74, 158, 255, 0.15);
+      border-radius: 8px;
+    }
+    
+    .header {
+      padding: 12px 20px;
+      background: linear-gradient(135deg, rgba(74, 158, 255, 0.12) 0%, rgba(74, 158, 255, 0.06) 100%);
+      border-bottom: 2px solid rgba(74, 158, 255, 0.25);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+      -webkit-app-region: drag;
+      border-radius: 8px 8px 0 0;
+    }
+    
+    .header-title {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    
+    .header-title h1 {
+      margin: 0;
+      font-size: 18px;
+      color: var(--accent-blue);
+      font-weight: 600;
+    }
+    
+    .header-subtitle {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+    
+    .header-controls {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      -webkit-app-region: no-drag;
+    }
+    
+    .act-nav-btn {
+      width: 28px;
+      height: 28px;
+      background: rgba(74, 158, 255, 0.15);
+      border: 2px solid rgba(74, 158, 255, 0.4);
+      border-radius: 50%;
+      color: var(--accent-blue);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    
+    .act-nav-btn:hover:not(.disabled) {
+      background: rgba(74, 158, 255, 0.3);
+      border-color: var(--accent-blue);
+      transform: scale(1.1);
+    }
+    
+    .act-nav-btn.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    
+    .close-btn {
+      width: 32px;
+      height: 32px;
+      background: rgba(217, 83, 79, 0.15);
+      border: 2px solid rgba(217, 83, 79, 0.4);
+      border-radius: 50%;
+      color: var(--accent-red);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+    
+    .close-btn:hover {
+      background: rgba(217, 83, 79, 0.3);
+      border-color: var(--accent-red);
+      transform: scale(1.1);
+    }
+    
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .no-build {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--text-muted);
+      gap: 12px;
+    }
+    
+    .no-build-icon {
+      font-size: 64px;
+      opacity: 0.3;
+    }
+    
+    .no-build-text {
+      font-size: 14px;
+    }
+    
+    .socket-group {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .socket-group-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .socket-group-icon {
+      font-size: 16px;
+    }
+    
+    .socket-group-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-blue);
+      flex: 1;
+    }
+    
+    .socket-count {
+      font-size: 11px;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    
+    .gems-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    
+    .gem-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 4px;
+      border-left: 3px solid var(--gem-color);
+      transition: all 0.2s;
+    }
+    
+    .gem-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .gem-item.str {
+      --gem-color: var(--gem-str);
+    }
+    
+    .gem-item.dex {
+      --gem-color: var(--gem-dex);
+    }
+    
+    .gem-item.int {
+      --gem-color: var(--gem-int);
+    }
+    
+    .gem-item.support {
+      opacity: 0.85;
+    }
+    
+    .gem-icon {
+      font-size: 14px;
+      width: 20px;
+      text-align: center;
+    }
+    
+    .gem-name {
+      flex: 1;
+      font-size: 12px;
+      color: var(--text-primary);
+    }
+    
+    .gem-name.support {
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+    
+    .gem-level {
+      font-size: 10px;
+      color: var(--text-muted);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+    
+    .gem-quest-info {
+      font-size: 10px;
+      color: var(--accent-green);
+      padding: 2px 6px;
+      border-radius: 3px;
+      background: rgba(74, 222, 128, 0.1);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+    }
+    
+    .gem-quest-info.buy {
+      color: var(--accent-blue);
+      background: rgba(74, 158, 255, 0.1);
+      border-color: rgba(74, 158, 255, 0.3);
+    }
+    
+    .act-filter {
+      background: var(--bg-secondary);
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    
+    .act-filter-label {
+      color: var(--text-secondary);
+    }
+    
+    .act-filter-value {
+      color: var(--accent-blue);
+      font-weight: 600;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--bg-tertiary);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(74, 158, 255, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-title">
+      <h1>💎 Gem Links</h1>
+      <div class="header-subtitle">${ascendancy || className} - Level ${level}</div>
+    </div>
+    <div class="header-controls">
+      <div class="act-nav-btn" id="prevActBtn" onclick="changeAct(-1)" title="Previous Act">◀</div>
+      <div class="act-nav-btn" id="nextActBtn" onclick="changeAct(1)" title="Next Act">▶</div>
+      <div class="close-btn" onclick="closeWindow()">×</div>
+    </div>
+  </div>
+  
+  <div class="content" id="content">
+    <!-- Content will be rendered by JavaScript -->
+  </div>
+  
+  <script>
+    const { ipcRenderer } = require('electron');
+    const path = require('path');
+    const fs = require('fs');
+    
+    let currentBuild = ${JSON.stringify(pobBuild)};
+    let currentAct = ${currentAct};
+    let gemDatabase = {};
+    let gemColours = {};
+    let questData = {};
+    
+    // Injected JSON data from main process
+    const INJECTED_GEMS_DATA = ${gemsJSON};
+    const INJECTED_GEM_COLOURS = ${gemColoursJSON};
+    const INJECTED_QUESTS_DATA = ${questsJSON};
+    
+    // Load gem database
+    async function loadGemDatabase() {
+      try {
+        gemDatabase = INJECTED_GEMS_DATA;
+        console.log('[GemsWindow] Loaded', Object.keys(gemDatabase).length, 'gems from injected data');
+      } catch (err) {
+        console.error('[GemsWindow] Failed to load gem database:', err);
+        gemDatabase = {};
+      }
+    }
+    
+    // Load gem colors data
+    async function loadGemColors() {
+      try {
+        gemColours = INJECTED_GEM_COLOURS;
+        console.log('[GemsWindow] Loaded gem color mapping:', gemColours);
+      } catch (err) {
+        console.error('[GemsWindow] Failed to load gem colors:', err);
+        gemColours = {
+          'strength': '#ff3333',
+          'dexterity': '#33ff33',
+          'intelligence': '#3333ff',
+          'none': '#ffffff'
+        };
+      }
+    }
+    
+    // Load quest data for gem rewards
+    async function loadQuestData() {
+      try {
+        questData = INJECTED_QUESTS_DATA;
+        console.log('[GemsWindow] Loaded quests data from injected data');
+      } catch (err) {
+        console.error('Failed to load quest data:', err);
+      }
+    }
+    
+    function getGemColor(gemName) {
+      const cleanName = gemName.replace(/^Support: /, '');
+      
+      // Try to get color from gem database using gem-colours.json mapping
+      if (gemDatabase && gemColours && Object.keys(gemDatabase).length > 0) {
+        const gemEntry = Object.values(gemDatabase).find(
+          (g) => g.name.toLowerCase() === cleanName.toLowerCase()
+        );
+        if (gemEntry) {
+          const attribute = gemEntry.primary_attribute;
+          console.log(\`[GemsWindow] Gem "\${cleanName}" -> attribute: \${attribute}\`);
+          
+          // Map full attribute name to short code for CSS class
+          if (attribute === 'strength') return 'str';
+          if (attribute === 'dexterity') return 'dex';
+          if (attribute === 'intelligence') return 'int';
+          
+          return 'int'; // Fallback
+        } else {
+          console.log(\`[GemsWindow] NO MATCH in database for: \${cleanName}\`);
+        }
+      }
+      
+      // Fallback to blue for unknown gems
+      return 'int';
+    }
+    
+    function getGemIcon(gemName) {
+      if (gemName.startsWith('Support: ')) return '◆';
+      return '◇';
+    }
+    
+    function getGemQuestInfo(gem, actNum) {
+      // The gem already has quest info from matchGemsToQuestSteps
+      // Since we're now showing the correct skill set for the act, just check if gem has quest info
+      if (!gem.quest && !gem.vendor) {
+        return null;
+      }
+      
+      return {
+        type: gem.rewardType === 'quest' ? 'TAKE' : 'BUY',
+        quest: gem.quest || 'Unknown Quest',
+        npc: gem.vendor || 'Unknown NPC'
+      };
+    }
+    
+    function renderGems() {
+      const content = document.getElementById('content');
+      
+      // Check if we have skill sets (preferred) or fall back to socket groups
+      const hasSkillSets = currentBuild && currentBuild.skillSets && currentBuild.skillSets.length > 0;
+      const hasSocketGroups = currentBuild && currentBuild.socketGroups && currentBuild.socketGroups.length > 0;
+      
+      if (!hasSkillSets && !hasSocketGroups) {
+        content.innerHTML = \`
+          <div class="no-build">
+            <div class="no-build-icon">💎</div>
+            <div class="no-build-text">No gem setup available</div>
+            <div class="no-build-text" style="font-size: 12px; opacity: 0.7;">Import a PoB build to see your gem links</div>
+          </div>
+        \`;
+        return;
+      }
+      
+      // Determine which skill set we're showing
+      let currentSkillSetTitle = 'Act ' + currentAct;
+      if (hasSkillSets && currentBuild.skillSets[currentAct - 1]) {
+        currentSkillSetTitle = currentBuild.skillSets[currentAct - 1].title || ('Act ' + currentAct);
+      }
+      
+      let html = \`
+        <div class="act-filter">
+          <span class="act-filter-label">Showing gems for:</span>
+          <span class="act-filter-value">\${currentSkillSetTitle}</span>
+        </div>
+      \`;
+      
+      // Determine which socket groups to use based on current act
+      let socketGroupsToShow = [];
+      
+      if (hasSkillSets) {
+        // Use skill set by index (currentAct - 1)
+        // If currentAct is beyond skill sets length, use the last one
+        const skillSetIndex = Math.min(currentAct - 1, currentBuild.skillSets.length - 1);
+        const matchedSkillSet = currentBuild.skillSets[skillSetIndex];
+        
+        if (matchedSkillSet) {
+          console.log(\`[GemsWindow] Using skill set "\${matchedSkillSet.title}" (index \${skillSetIndex}) for page \${currentAct}\`);
+          socketGroupsToShow = matchedSkillSet.socketGroups || [];
+        }
+      } else {
+        // Fallback to old logic using socketGroups directly
+        socketGroupsToShow = currentBuild.socketGroups;
+      }
+      
+      // Group socket groups by size
+      const sortedGroups = [...socketGroupsToShow].sort((a, b) => b.gems.length - a.gems.length);
+      
+      for (const group of sortedGroups) {
+        if (!group.gems || group.gems.length === 0) continue;
+        
+        const socketCount = group.gems.length;
+        const linkIcon = socketCount === 6 ? '🔗' : socketCount === 5 ? '⛓️' : socketCount >= 3 ? '🔗' : '⚡';
+        const linkLabel = socketCount >= 2 ? \`\${socketCount}-Link\` : \`\${socketCount} Socket\`;
+        
+        html += \`
+          <div class="socket-group">
+            <div class="socket-group-header">
+              <span class="socket-group-icon">\${linkIcon}</span>
+              <span class="socket-group-title">\${group.label || 'Socket Group'}</span>
+              <span class="socket-count">\${linkLabel}</span>
+            </div>
+            <div class="gems-list">
+        \`;
+        
+        for (const gem of group.gems) {
+          const gemName = gem.nameSpec || gem.gemId || 'Unknown Gem';
+          const isSupport = gemName.startsWith('Support: ');
+          const colorClass = getGemColor(gemName);
+          const icon = getGemIcon(gemName);
+          const level = gem.level || 1;
+          const quality = gem.quality || 0;
+          
+          console.log(\`[GemsWindow] Rendering gem: \${gemName}, colorClass: \${colorClass}\`);
+          
+          // Get actual color hex value for styling icon
+          const colorHex = colorClass === 'str' ? '#ff4444' : 
+                          colorClass === 'dex' ? '#44ff44' : '#4444ff';
+          
+          const questInfo = getGemQuestInfo(gem, currentAct);
+          const questBadge = questInfo 
+            ? \`<span class="gem-quest-info \${questInfo.type === 'BUY' ? 'buy' : ''}" title="\${questInfo.type} from \${questInfo.npc}\${questInfo.quest ? ' - ' + questInfo.quest : ''}">\${questInfo.type}</span>\`
+            : '';
+          
+          // Build tooltip text
+          const tooltipParts = [];
+          if (gem.quest) tooltipParts.push(\`Quest: \${gem.quest}\`);
+          if (gem.vendor) tooltipParts.push(\`Vendor: \${gem.vendor}\`);
+          if (gem.rewardType) tooltipParts.push(\`Type: \${gem.rewardType === 'quest' ? 'TAKE' : 'BUY'}\`);
+          const tooltipText = tooltipParts.length > 0 ? tooltipParts.join(' | ') : '';
+          
+          html += \`
+            <div class="gem-item \${colorClass} \${isSupport ? 'support' : ''}" title="\${tooltipText}">
+              <span class="gem-icon" style="color: \${colorHex};">\${icon}</span>
+              <span class="gem-name \${isSupport ? 'support' : ''}">\${gemName.replace('Support: ', '')}</span>
+              \${questBadge}
+              <span class="gem-level">L\${level}\${quality > 0 ? ' Q' + quality : ''}</span>
+            </div>
+          \`;
+        }
+        
+        html += \`
+            </div>
+          </div>
+        \`;
+      }
+      
+      content.innerHTML = html;
+      
+      // Update navigation button states
+      updateNavButtons();
+    }
+    
+    function updateNavButtons() {
+      const prevBtn = document.getElementById('prevActBtn');
+      const nextBtn = document.getElementById('nextActBtn');
+      const maxPages = currentBuild && currentBuild.skillSets ? currentBuild.skillSets.length : 10;
+      
+      if (prevBtn) {
+        if (currentAct <= 1) {
+          prevBtn.classList.add('disabled');
+        } else {
+          prevBtn.classList.remove('disabled');
+        }
+      }
+      
+      if (nextBtn) {
+        if (currentAct >= maxPages) {
+          nextBtn.classList.add('disabled');
+        } else {
+          nextBtn.classList.remove('disabled');
+        }
+      }
+    }
+    
+    function changeAct(delta) {
+      // Determine max pages based on skill sets available
+      const maxPages = currentBuild && currentBuild.skillSets ? currentBuild.skillSets.length : 10;
+      
+      const newAct = currentAct + delta;
+      if (newAct < 1 || newAct > maxPages) return;
+      
+      currentAct = newAct;
+      renderGems();
+    }
+    
+    function closeWindow() {
+      ipcRenderer.send('leveling-gems-window-close');
+    }
+    
+    // Listen for act changes
+    ipcRenderer.on('gems-window-act-changed', (event, newAct) => {
+      currentAct = newAct;
+      renderGems();
+    });
+    
+    // Listen for build updates
+    ipcRenderer.on('gems-window-build-updated', (event, newBuild) => {
+      currentBuild = newBuild;
+      renderGems();
+    });
+    
+    // Initialize
+    (async () => {
+      await loadGemDatabase();
+      await loadGemColors();
+      await loadQuestData();
+      renderGems();
+    })();
+  </script>
+</body>
+</html>
+  `;
+}

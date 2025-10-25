@@ -1,11 +1,22 @@
 import { BrowserWindow, screen, ipcMain } from 'electron';
 import { SettingsService } from '../services/settingsService.js';
 import { buildLevelingPopoutHtml } from '../popouts/levelingPopoutTemplate.js';
+import { openLevelingSettingsSplash } from './levelingSettingsSplash.js';
+import { openPobInfoBar, closePobInfoBar, updatePobInfoBar } from './pobInfoBar.js';
+import { openLevelingGemsWindow, updateLevelingGemsWindow, updateLevelingGemsWindowBuild, closeLevelingGemsWindow } from './levelingGemsWindow.js';
 import fs from 'fs';
 import path from 'path';
 import { app } from 'electron';
 import { execSync } from 'child_process';
 import type { OverlayVersion } from '../../types/overlayVersion.js';
+import { 
+  parsePobCode, 
+  extractUniqueGems, 
+  matchGemsToQuestSteps,
+  calculateTreeProgressionByAct,
+  type StoredPobBuild,
+  type GemSocketGroup
+} from '../../shared/pob/index.js';
 
 export interface LevelingWindowParams {
   settingsService: SettingsService;
@@ -138,6 +149,25 @@ export class LevelingWindow {
 
     // Load inline HTML (like floating button does)
     this.window.loadURL(this.buildDataUrl());
+    
+    // Auto-open DevTools for debugging
+    this.window.webContents.openDevTools({ mode: 'detach' });
+
+    // Check if there's a saved PoB build and auto-open the info bar
+    this.window.webContents.once('did-finish-load', () => {
+      const saved = this.settingsService.get(this.getLevelingWindowKey());
+      const pobBuild = (saved as any)?.pobBuild;
+      if (pobBuild) {
+        console.log('[LevelingWindow] Found saved PoB build, opening info bar');
+        const currentActIndex = (saved as any)?.currentActIndex ?? 0;
+        openPobInfoBar({
+          settingsService: this.settingsService,
+          overlayVersion: this.overlayVersion,
+          pobBuild: pobBuild,
+          currentAct: currentActIndex + 1
+        });
+      }
+    });
 
     this.window.on('moved', () => {
       this.savePosition();
@@ -357,6 +387,17 @@ export class LevelingWindow {
         ...c,
         currentActIndex: actIndex
       }));
+      
+      // Update gems window with new act
+      updateLevelingGemsWindow(actIndex + 1, this.overlayVersion, this.settingsService);
+      
+      // Update PoB info bar with new act
+      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+      const pobBuild = (currentSettings as any).pobBuild;
+      if (pobBuild) {
+        updatePobInfoBar(pobBuild, actIndex + 1);
+      }
+      
       return true;
     });
 
@@ -522,6 +563,99 @@ export class LevelingWindow {
       }
     });
 
+    // Open leveling settings splash
+    ipcMain.handle('open-leveling-settings', async () => {
+      openLevelingSettingsSplash({
+        settingsService: this.settingsService,
+        overlayVersion: this.overlayVersion,
+        overlayWindow: this.window
+      });
+      return true;
+    });
+
+    // Handle settings updates from settings splash
+    ipcMain.on('leveling-settings-update', (event, updates: any) => {
+      this.settingsService.update(this.getLevelingWindowKey(), (current) => ({
+        ...current,
+        ...updates
+      }));
+      
+      // Notify renderer of setting changes
+      if (this.window && !this.window.isDestroyed()) {
+        this.window.webContents.send('leveling-settings-changed', updates);
+      }
+    });
+
+    // Open gems window from PoB info bar
+    ipcMain.on('open-pob-gems-window', () => {
+      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+      const pobBuild = (currentSettings as any).pobBuild || null;
+      const currentActIndex = (currentSettings as any).currentActIndex || 0;
+      const currentAct = currentActIndex + 1; // Convert index to act number
+      
+      if (!pobBuild) {
+        console.warn('[LevelingWindow] Cannot open gems window - no PoB build loaded');
+        return;
+      }
+      
+      console.log('[LevelingWindow] Opening gems window for Act', currentAct);
+      
+      openLevelingGemsWindow({
+        settingsService: this.settingsService,
+        overlayVersion: this.overlayVersion,
+        parentWindow: this.window || undefined
+      });
+    });
+
+    // Close gems window
+    ipcMain.on('leveling-gems-window-close', () => {
+      closeLevelingGemsWindow();
+    });
+    
+    // Act changed - notify gems window
+    ipcMain.on('leveling-act-changed', (event, actNumber: number) => {
+      updateLevelingGemsWindow(actNumber, this.overlayVersion, this.settingsService);
+    });
+    
+    // Show PoB info bar
+    ipcMain.on('show-pob-info-bar', () => {
+      const config = this.settingsService.get(this.getLevelingWindowKey());
+      const pobBuild = config?.pobBuild as any;
+      
+      if (pobBuild) {
+        const currentAct = (config?.currentActIndex || 0) + 1;
+        openPobInfoBar({
+          settingsService: this.settingsService,
+          overlayVersion: this.overlayVersion,
+          pobBuild: pobBuild,
+          currentAct: currentAct
+        });
+      }
+    });
+
+    // Import PoB build from settings splash
+    ipcMain.handle('import-pob-from-settings', async (event, code: string) => {
+      return await this.importPobCode(code);
+    });
+
+    // Remove PoB build
+    ipcMain.handle('remove-pob-build', async () => {
+      this.settingsService.update(this.getLevelingWindowKey(), (c: any) => ({
+        ...c,
+        pobBuild: undefined
+      }));
+      
+      // Close PoB info bar
+      closePobInfoBar();
+      
+      // Notify renderer
+      if (this.window && !this.window.isDestroyed()) {
+        this.window.webContents.send('pob-build-removed');
+      }
+      
+      return { success: true };
+    });
+
     // Auto-detect client.txt path
     ipcMain.handle('auto-detect-client-txt', async () => {
       // First, try to find the path from a running POE process
@@ -586,8 +720,8 @@ export class LevelingWindow {
       return { success: false, path: null };
     });
 
-    // Manual select client.txt path
-    ipcMain.handle('select-client-txt', async () => {
+    // Manual select client.txt path (shared logic)
+    const selectClientTxt = async () => {
       const { dialog } = await import('electron');
       const result = await dialog.showOpenDialog({
         title: `Select ${this.overlayVersion.toUpperCase()} Client.txt`,
@@ -608,7 +742,10 @@ export class LevelingWindow {
       }
 
       return { success: false, path: null };
-    });
+    };
+
+    ipcMain.handle('select-client-txt', selectClientTxt);
+    ipcMain.handle('select-client-txt-path', selectClientTxt);
 
     // Get current client.txt path
     ipcMain.handle('get-client-txt-path', async () => {
@@ -657,6 +794,17 @@ export class LevelingWindow {
         this.stopClientTxtWatcher();
       }
       return { success: true };
+    });
+
+    // Import PoB code
+    ipcMain.handle('import-pob-code', async (event, code: string) => {
+      return await this.importPobCode(code);
+    });
+
+    // Get stored PoB build
+    ipcMain.handle('get-pob-build', async () => {
+      const saved = this.settingsService.get(this.getLevelingWindowKey());
+      return saved?.pobBuild || null;
     });
 
     // Start watching client.txt for zone changes
@@ -921,14 +1069,15 @@ export class LevelingWindow {
 
       console.log('New content:', newContent.substring(0, 200)); // Log first 200 chars
 
-      // Parse for zone entry lines
-      // POE1 Format: 2025/06/13 09:49:29 98539734 cff94598 [INFO Client 39308] : You have entered The Forest Encampment.
-      // POE2 Format: 2025/10/24 12:20:06 46081515 775aed1e [INFO Client 14056] [SCENE] Set Source [Clearfell]
+      // Parse for zone entry lines and level ups
+      // POE1 Zone Format: 2025/06/13 09:49:29 98539734 cff94598 [INFO Client 39308] : You have entered The Forest Encampment.
+      // POE1 Level Format: 2025/06/14 03:26:55 161985515 cff945b9 [INFO Client 34512] : SnakeInHerFissure (Marauder) is now level 2
+      // POE2 Zone Format: 2025/10/24 12:20:06 46081515 775aed1e [INFO Client 14056] [SCENE] Set Source [Clearfell]
       
       let matchCount = 0;
       
       if (this.overlayVersion === 'poe1') {
-        // POE1: "You have entered <zone name>."
+        // POE1: Zone detection
         const zoneRegex = /\[INFO Client \d+\] : You have entered (.+)\./g;
         let match;
         
@@ -940,6 +1089,31 @@ export class LevelingWindow {
           // Send to renderer to auto-check the step
           if (this.window && !this.window.isDestroyed()) {
             this.window.webContents.send('zone-entered', zoneName);
+          }
+        }
+
+        // POE1: Level-up detection
+        const levelRegex = /\[INFO Client \d+\] : (.+?) \((\w+)\) is now level (\d+)/g;
+        while ((match = levelRegex.exec(newContent)) !== null) {
+          const [, characterName, className, levelStr] = match;
+          const level = parseInt(levelStr, 10);
+          console.log(`[POE1] Character level up: ${characterName} (${className}) → Level ${level}`);
+
+          // Store character info and level
+          this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+            ...c,
+            characterLevel: level,
+            characterName: characterName,
+            characterClass: className
+          }));
+
+          // Send to renderer
+          if (this.window && !this.window.isDestroyed()) {
+            this.window.webContents.send('character-level-up', {
+              name: characterName,
+              class: className,
+              level: level
+            });
           }
         }
       } else {
@@ -976,6 +1150,187 @@ export class LevelingWindow {
     if (this.clientTxtWatcher) {
       this.clientTxtWatcher.close();
       this.clientTxtWatcher = null;
+    }
+  }
+
+  private async importPobCode(code: string): Promise<any> {
+    try {
+      console.log('[PoB Import] Parsing PoB code...');
+      
+      // Parse PoB code (now async to support fetching pobb.in URLs)
+      const build = await parsePobCode(code);
+      if (!build) {
+        return { success: false, error: 'Invalid PoB code' };
+      }
+
+      console.log('[PoB Import] Build parsed:', {
+        class: build.className,
+        ascendancy: build.ascendancyName,
+        level: build.level,
+        treeSpecs: build.treeSpecs.length,
+        gems: build.gems.length
+      });
+
+      // Use the first tree spec (typically "Early Game" or default)
+      const firstTreeSpec = build.treeSpecs[0];
+      const allocatedNodes = firstTreeSpec.allocatedNodes;
+
+      console.log('[PoB Import] Using tree spec:', firstTreeSpec.title);
+      console.log('[PoB Import] Tree specs available:', build.treeSpecs.map(s => s.title).join(', '));
+
+      // Calculate tree progression by act
+      const treeProgression = calculateTreeProgressionByAct(
+        allocatedNodes,
+        build.level
+      );
+
+      console.log('[PoB Import] Tree progression calculated for', treeProgression.length, 'acts');
+
+      // Extract unique gems from ALL skill sets (not just first one)
+      const allSocketGroups: GemSocketGroup[] = [];
+      if (build.skillSets && build.skillSets.length > 0) {
+        // Collect socket groups from all skill sets
+        for (const skillSet of build.skillSets) {
+          allSocketGroups.push(...skillSet.socketGroups);
+        }
+        console.log('[PoB Import] Collected', allSocketGroups.length, 'socket groups from', build.skillSets.length, 'skill sets');
+      } else {
+        // Fallback to build.gems if no skill sets
+        allSocketGroups.push(...build.gems);
+      }
+      
+      const uniqueGems = extractUniqueGems(allSocketGroups);
+      
+      // Match gems to quest steps using quest data
+      const gemsWithQuests = matchGemsToQuestSteps(uniqueGems, this.levelingData, build.className);
+
+      console.log('[PoB Import] Gems extracted:', gemsWithQuests.length, 'unique gems from all acts');
+      
+      // Create a map of gem name -> quest info for easy lookup
+      const gemQuestMap = new Map<string, any>();
+      for (const gem of gemsWithQuests) {
+        gemQuestMap.set(gem.name.toLowerCase(), gem);
+      }
+      
+      // Enrich socket groups with quest info
+      const enrichedSocketGroups = build.gems.map(group => ({
+        ...group,
+        gems: group.gems.map(gem => {
+          const questInfo = gemQuestMap.get((gem.nameSpec || '').toLowerCase());
+          return questInfo ? { ...gem, ...questInfo } : gem;
+        })
+      }));
+
+      // Enrich ALL skill sets with quest info (not just the first one)
+      const enrichedSkillSets = (build.skillSets || []).map(skillSet => ({
+        ...skillSet,
+        socketGroups: skillSet.socketGroups.map(group => ({
+          ...group,
+          gems: group.gems.map(gem => {
+            const questInfo = gemQuestMap.get((gem.nameSpec || '').toLowerCase());
+            return questInfo ? { ...gem, ...questInfo } : gem;
+          })
+        }))
+      }));
+
+      console.log('[PoB Import] Enriched', enrichedSkillSets.length, 'skill sets with quest data');
+
+      // Create a flat list of ALL gems from ALL enriched skill sets (preserving per-act data)
+      // Use a Map to deduplicate by (gemName + act + quest) to avoid showing same gem multiple times
+      const gemMap = new Map<string, any>();
+      
+      for (const skillSet of enrichedSkillSets) {
+        for (const group of skillSet.socketGroups) {
+          for (const gem of group.gems) {
+            if (gem.enabled !== false && gem.nameSpec) {
+              // Create unique key: gemName + act + quest to deduplicate gems that appear in multiple skill sets
+              const uniqueKey = `${gem.nameSpec}|${gem.act || 0}|${gem.quest || 'none'}`;
+              
+              // Only add if not already present (prevents duplicates from multiple skill sets using same gems)
+              if (!gemMap.has(uniqueKey)) {
+                gemMap.set(uniqueKey, {
+                  name: gem.nameSpec,
+                  level: gem.level || 1,
+                  quality: gem.quality || 0,
+                  enabled: gem.enabled,
+                  // Quest info from enrichment
+                  act: gem.act,
+                  quest: gem.quest,
+                  vendor: gem.vendor,
+                  rewardType: gem.rewardType,
+                  isSupport: gem.isSupport,
+                  availableFrom: gem.availableFrom
+                });
+              }
+            }
+          }
+        }
+      }
+      
+      const allEnrichedGems = Array.from(gemMap.values());
+      
+      console.log('[PoB Import] Flattened', allEnrichedGems.length, 'unique enriched gems from all skill sets');
+      console.log('[PoB Import] Gems per act:', 
+        Array.from(new Set(allEnrichedGems.map(g => g.act)))
+          .sort()
+          .map(act => `Act ${act}: ${allEnrichedGems.filter(g => g.act === act).length} gems`)
+          .join(', ')
+      );
+
+      // Store PoB build in settings
+      const pobBuild: StoredPobBuild = {
+        code: code,
+        className: build.className,
+        ascendancyName: build.ascendancyName,
+        characterName: build.characterName,
+        level: build.level,
+        treeSpecs: build.treeSpecs, // Store ALL specs
+        allocatedNodes: allocatedNodes, // Current selected spec nodes
+        treeProgression: treeProgression,
+        gems: allEnrichedGems, // Flat list of ALL gems from ALL skill sets with per-act quest info
+        socketGroups: enrichedSocketGroups, // Socket groups with quest info (from first skill set)
+        skillSets: enrichedSkillSets, // ALL skill sets with quest info enriched
+        treeVersion: build.treeVersion,
+        importedAt: Date.now()
+      };
+
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+        ...c,
+        pobBuild: pobBuild
+      }));
+
+      console.log('[PoB Import] Build saved to settings');
+
+      // Send update to renderer
+      if (this.window && !this.window.isDestroyed()) {
+        this.window.webContents.send('pob-build-imported', pobBuild);
+      }
+
+      // Open PoB info bar with tree and gems buttons
+      const currentActIndex = this.settingsService.get(this.getLevelingWindowKey())?.currentActIndex ?? 0;
+      openPobInfoBar({
+        settingsService: this.settingsService,
+        overlayVersion: this.overlayVersion,
+        pobBuild: pobBuild,
+        currentAct: currentActIndex + 1
+      });
+
+      return {
+        success: true,
+        build: {
+          className: build.className,
+          ascendancyName: build.ascendancyName,
+          level: build.level,
+          totalNodes: firstTreeSpec.allocatedNodes.length,
+          gemsFound: gemsWithQuests.length
+        }
+      };
+    } catch (error: any) {
+      console.error('[PoB Import] Error:', error);
+      return {
+        success: false,
+        error: error.message || 'Failed to import PoB code'
+      };
     }
   }
 

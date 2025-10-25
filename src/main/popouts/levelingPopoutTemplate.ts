@@ -1,5 +1,15 @@
+// Import JSON data to inject into template
+import gemsData from '../../data/leveling-data/gems.json';
+import questsData from '../../data/leveling-data/quests.json';
+import gemColoursData from '../../data/leveling-data/gem-colours.json';
+
 // Leveling popout HTML with all logic embedded inline
 export function buildLevelingPopoutHtml(): string {
+  // Inject JSON data into the template
+  const gemsJSON = JSON.stringify(gemsData);
+  const questsJSON = JSON.stringify(questsData);
+  const gemColoursJSON = JSON.stringify(gemColoursData);
+  
   return `<!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +39,6 @@ export function buildLevelingPopoutHtml(): string {
     .window.minimal-mode .zone-icon,
     .window.minimal-mode .close,
     .window.minimal-mode .controls,
-    .window.minimal-mode .settings-panel,
     .window.minimal-mode .minimal-controls{display:none!important;}
     .window.minimal-mode .footer{background:transparent!important;border:none!important;padding:4px 8px;}
     .window.minimal-mode .list{padding:28px 4px 4px 4px!important;}
@@ -61,7 +70,6 @@ export function buildLevelingPopoutHtml(): string {
     .window.ultra-minimal-mode .zone-icon,
     .window.ultra-minimal-mode .close,
     .window.ultra-minimal-mode .controls,
-    .window.ultra-minimal-mode .settings-panel,
     .window.ultra-minimal-mode .footer,
     .window.ultra-minimal-mode .minimal-controls{display:none!important;}
     .window.ultra-minimal-mode .step-checkbox,
@@ -141,21 +149,6 @@ export function buildLevelingPopoutHtml(): string {
     .list.wide{flex-direction:row;overflow-x:auto;overflow-y:hidden;gap:12px;align-items:stretch;}
     .list.wide .leveling-group{margin-bottom:0;min-width:320px;max-width:320px;flex-shrink:0;display:flex;flex-direction:column;}
     .list.wide .leveling-step{margin-bottom:0;min-width:320px;max-width:320px;flex-shrink:0;}
-    .settings-panel{background:rgba(20,24,30,0.95);border-top:1px solid rgba(255,255,255,0.1);padding:12px;display:none;flex-direction:column;gap:10px;}
-    .settings-panel.visible{display:flex;}
-    .setting-row{display:flex;align-items:center;gap:10px;}
-    .setting-label{flex:1;font-size:11px;color:rgba(255,255,255,0.8);font-weight:500;}
-    .setting-checkbox{width:16px;height:16px;cursor:pointer;}
-    .setting-slider{flex:1;height:6px;-webkit-appearance:none;background:rgba(255,255,255,0.1);border-radius:3px;outline:none;}
-    .setting-slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#4ade80;cursor:pointer;}
-    .setting-value{min-width:40px;text-align:right;font-size:11px;color:rgba(255,255,255,0.7);font-weight:600;}
-    .info-btn{width:20px;height:20px;border-radius:50%;background:rgba(74,158,255,0.3);border:1px solid rgba(74,158,255,0.6);color:rgba(74,158,255,1);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;}
-    .info-btn:hover{background:rgba(74,158,255,0.5);border-color:rgba(74,158,255,0.9);}
-    .info-btn:active{background:rgba(74,158,255,0.7);transform:scale(0.95);}
-    .info-tooltip{visibility:hidden;position:absolute;bottom:100%;right:0;margin-bottom:8px;padding:10px;background:rgba(30,34,40,0.98);border:1px solid rgba(74,158,255,0.6);border-radius:6px;font-size:10px;color:rgba(255,255,255,0.9);width:280px;z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,0.5);line-height:1.4;}
-    .info-btn:hover .info-tooltip{visibility:visible;}
-    .info-tooltip a{color:#4a9eff;text-decoration:none;font-weight:600;}
-    .info-tooltip a:hover{text-decoration:underline;}
   .footer{padding:8px 12px;background:rgba(30,34,40,0.85);border-top:1px solid rgba(255,255,255,0.1);display:flex;gap:12px;align-items:center;justify-content:space-between;-webkit-app-region:no-drag;overflow:visible;position:relative;}
   .footer-progress{display:none;flex-direction:column;gap:4px;flex:1;}
   .footer-row{display:flex;align-items:center;gap:10px;width:100%;}
@@ -224,6 +217,16 @@ export function buildLevelingPopoutHtml(): string {
     .timer-tooltip-value{font-family:monospace;font-size:13px;font-weight:700;color:#fff;letter-spacing:0.5px;}
     .timer-tooltip-row.total .timer-tooltip-value{color:#fec076;font-size:14px;}
     .timer-display{position:relative;cursor:help;}
+    
+    /* PoB Gem Compact Display Styles */
+    .pob-gem-compact{display:flex;align-items:center;gap:6px;padding:2px 0;font-size:calc(var(--font-size) - 1px);line-height:1.4;}
+    .pob-gem-pill{display:inline-flex;align-items:center;gap:3px;padding:5px 12px;border-radius:6px;transition:all 0.15s;border:none;}
+    .pob-gem-pill:hover{background:rgba(255,255,255,0.08);transform:translateX(2px);}
+    .pob-gem-icon{font-size:10px;line-height:1;}
+    .pob-gem-verb{font-weight:600;color:rgba(255,255,255,0.9);font-size:calc(var(--font-size) - 2px);text-transform:uppercase;letter-spacing:0.5px;min-width:32px;}
+    .pob-gem-name-inline{font-weight:500;flex:1;}
+    .pob-gem-vendor{font-size:calc(var(--font-size) - 2px);color:rgba(255,255,255,0.5);font-style:italic;margin-left:auto;}
+    .pob-gem-cost{font-size:12px;opacity:0.7;margin-left:6px;}
     
     /* History Modal Styles */
     .history-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:999999;backdrop-filter:blur(8px);animation:fadeIn 0.2s;}
@@ -324,78 +327,6 @@ export function buildLevelingPopoutHtml(): string {
     <div class='progress-bar'><div class='progress-fill' id='progressFill' style='width:0%'></div></div>
     <div class='progress-text' id='progressText'>0%</div>
   </div>
-  <div class='settings-panel' id='settingsPanel'>
-    <div class='setting-row'>
-      <span class='setting-label'>Overlay Opacity</span>
-      <input type='range' class='setting-slider' id='opacitySlider' min='20' max='100' value='96' />
-      <span class='setting-value' id='opacityValue'>96%</span>
-    </div>
-    <div class='setting-row'>
-      <span class='setting-label'>Font Size</span>
-      <input type='range' class='setting-slider' id='fontSizeSlider' min='10' max='18' value='12' />
-      <span class='setting-value' id='fontSizeValue'>12px</span>
-    </div>
-    <div class='setting-row'>
-      <span class='setting-label'>Zoom Level</span>
-      <input type='range' class='setting-slider' id='zoomSlider' min='50' max='150' value='100' />
-      <span class='setting-value' id='zoomValue'>100%</span>
-    </div>
-    <div class='setting-row'>
-      <span class='setting-label'>Visible Steps</span>
-      <input type='range' class='setting-slider' id='visibleStepsSlider' min='1' max='99' value='99' />
-      <span class='setting-value' id='visibleStepsValue'>All</span>
-    </div>
-    <div class='setting-row'>
-      <span class='setting-label'>Show Hints</span>
-      <input type='checkbox' class='setting-checkbox' id='showHints' checked />
-    </div>
-    <div class='setting-row'>
-      <span class='setting-label'>Show Optional Steps</span>
-      <input type='checkbox' class='setting-checkbox' id='showOptional' checked />
-    </div>
-    <div class='setting-row'>
-      <span class='setting-label'>Group by Zone</span>
-      <input type='checkbox' class='setting-checkbox' id='groupByZone' checked />
-    </div>
-    <div class='setting-row'>
-      <span class='setting-label'>Wide Layout Mode</span>
-      <input type='checkbox' class='setting-checkbox' id='wideLayoutToggle' />
-    </div>
-    <div class='setting-row'>
-      <span class='setting-label'>Auto-detect Zone Changes</span>
-      <input type='checkbox' class='setting-checkbox' id='autoDetectZones' checked />
-    </div>
-    <div class='setting-row' style='flex-direction:column;gap:6px;align-items:stretch;'>
-      <div style='display:flex;align-items:center;gap:6px;'>
-        <span class='setting-label'>Client.txt Path (for auto zone detection)</span>
-        <div class='info-btn' id='gggPolicyBtn' title='Click to view GGG Developer Policy'>
-          ℹ️
-          <div class='info-tooltip'>
-            Reading the client.txt is <strong>officially allowed by GGG</strong>:<br><br>
-            "Reading the game's log files is okay as long as the user is aware of what you are doing with that data."<br><br>
-            Click the button to view the official policy →
-          </div>
-        </div>
-      </div>
-      <div style='display:flex;gap:6px;'>
-        <button class='control-btn' id='autoDetectPath' style='flex:1;font-size:10px;padding:4px 8px;'>Auto Detect</button>
-        <button class='control-btn' id='selectPath' style='flex:1;font-size:10px;padding:4px 8px;'>Select File</button>
-      </div>
-      <div style='font-size:9px;color:rgba(255,255,255,0.5);word-break:break-all;' id='clientPathDisplay'>Not configured</div>
-      <button class='control-btn' id='cleanLogBtn' style='font-size:10px;padding:4px 8px;background:rgba(192,57,43,0.5);' title='Clear all content from Client.txt (helps with performance)'>🗑️ Clean Log File</button>
-    </div>
-    <div class='setting-row' style='flex-direction:column;gap:6px;align-items:stretch;'>
-      <span class='setting-label'>📊 Run History</span>
-      <div style='display:flex;gap:6px;'>
-        <button class='control-btn' id='viewHistoryBtn' style='font-size:10px;padding:4px 8px;background:rgba(74,158,255,0.7);border-color:rgba(74,158,255,0.9);flex:1;' title='View and manage run history'>📈 View Run History</button>
-        <button class='control-btn' id='resetHistoryBtn' style='font-size:10px;padding:4px 8px;background:rgba(192,57,43,0.7);border-color:rgba(192,57,43,0.9);flex:1;' title='Delete all run history'>🗑️ Reset Run History</button>
-      </div>
-    </div>
-    <div class='setting-row' style='flex-direction:column;gap:6px;align-items:stretch;'>
-      <span class='setting-label'>⚠️ Danger Zone</span>
-      <button class='control-btn' id='resetProgressBtn' style='font-size:10px;padding:4px 8px;background:rgba(192,57,43,0.7);border-color:rgba(192,57,43,0.9);' title='Reset all leveling progress to start over'>🔄 Reset All Progress</button>
-    </div>
-  </div>
   <div class='list' id='stepsList'></div>
   <div class='footer'>
     <div class='footer-progress' id='footerProgress'>
@@ -426,6 +357,63 @@ export function buildLevelingPopoutHtml(): string {
 </div>
 <script>
 const {ipcRenderer} = require('electron');
+
+// Load gem database for colors and quest data for gem matching
+let gemDatabase = null;
+let questsDatabase = null;
+let gemColours = null;
+
+// Injected JSON data from main process
+const INJECTED_GEMS_DATA = ${gemsJSON};
+const INJECTED_QUESTS_DATA = ${questsJSON};
+const INJECTED_GEM_COLOURS = ${gemColoursJSON};
+
+async function loadGemDatabase() {
+  if (gemDatabase) return gemDatabase;
+  try {
+    gemDatabase = INJECTED_GEMS_DATA;
+    console.log('[GemDB] Loaded', Object.keys(gemDatabase).length, 'gems');
+  } catch (err) {
+    console.error('[GemDB] Failed to load gem database:', err);
+    gemDatabase = {};
+  }
+  return gemDatabase;
+}
+
+async function loadQuestsDatabase() {
+  if (questsDatabase) return questsDatabase;
+  try {
+    questsDatabase = INJECTED_QUESTS_DATA;
+    console.log('[QuestsDB] Loaded', Object.keys(questsDatabase).length, 'quests');
+  } catch (err) {
+    console.error('[QuestsDB] Failed to load quests database:', err);
+    questsDatabase = {};
+  }
+  return questsDatabase;
+}
+
+async function loadGemColours() {
+  if (gemColours) return gemColours;
+  try {
+    gemColours = INJECTED_GEM_COLOURS;
+    console.log('[GemColours] Loaded gem color mapping:', gemColours);
+  } catch (err) {
+    console.error('[GemColours] Failed to load gem colours:', err);
+    // Fallback colors
+    gemColours = {
+      'strength': '#ff3333',
+      'dexterity': '#33ff33',
+      'intelligence': '#3333ff',
+      'none': '#ffffff'
+    };
+  }
+  return gemColours;
+}
+
+
+// Initialize databases
+Promise.all([loadGemDatabase(), loadQuestsDatabase(), loadGemColours()]);
+
 let state = {
   mode: 'tall',
   showCompleted: false,
@@ -440,6 +428,7 @@ let state = {
   visibleSteps: 99,
   completedSteps: new Set(),
   levelingData: null,
+  pobBuild: null,
   currentActIndex: 0, // Currently selected act (0-based index)
   timer: {
     isRunning: false,
@@ -478,6 +467,114 @@ function getLeagueIcon(step) {
 function getLayoutTipIcon(step) {
   if (!step.layoutTip) return '';
   return '<span class="layout-tip-icon"><span class="more-pill">...</span><span class="tooltip">'+escapeHtml(step.layoutTip)+'</span></span>';
+}
+
+function getPobGemsForStep(step, actNumber) {
+  if (!state.pobBuild || !state.pobBuild.gems) {
+    console.log('[getPobGemsForStep] No PoB build or gems available');
+    return [];
+  }
+  
+  // Only show gems for quest hand-in steps (npc_quest type)
+  if (step.type !== 'npc_quest') return [];
+  if (!step.quest) return [];
+  
+  console.log('[getPobGemsForStep] Checking step:', step.quest, 'Act:', actNumber);
+  console.log('[getPobGemsForStep] Total gems in PoB build:', state.pobBuild.gems.length);
+  console.log('[getPobGemsForStep] Gems with act', actNumber + ':', state.pobBuild.gems.filter(g => g.act === actNumber).length);
+  console.log('[getPobGemsForStep] All gem acts:', state.pobBuild.gems.map(g => 'Act ' + g.act + ': ' + g.name).join(', '));
+  
+  // Filter gems that could come from this quest
+  const candidateGems = state.pobBuild.gems.filter(gem => {
+    if (gem.act !== actNumber) return false;
+    if (!gem.quest) return false;
+    
+    const stepQuest = step.quest.toLowerCase();
+    const gemQuest = gem.quest.toLowerCase();
+    
+    return stepQuest === gemQuest || 
+           stepQuest.includes(gemQuest) || 
+           gemQuest.includes(stepQuest);
+  });
+  
+  console.log('[getPobGemsForStep] Candidate gems:', candidateGems.map(g => g.name + ' (quest: ' + g.quest + ')'));
+  
+  if (candidateGems.length === 0) return [];
+  
+  // Use the rewardType already set by gemMatcher - it knows quest vs vendor correctly
+  const results = candidateGems.map((gem) => {
+    return {
+      name: gem.name,
+      rewardType: gem.rewardType, // Respect the actual quest/vendor designation
+      act: gem.act,
+      quest: gem.quest,
+      vendor: gem.vendor,
+      isSupport: gem.isSupport
+    };
+  });
+  
+  if (results.length > 0) {
+    console.log('[getPobGemsForStep] Found', results.length, 'gems for', step.quest, ':', 
+                results.map(function(g) { return g.name + ' (' + g.rewardType + ')'; }).join(', '));
+  }
+  
+  return results;
+}
+
+function renderPobGemList(gems) {
+  if (!gems || gems.length === 0) return '';
+  
+  let html = '';
+  
+  gems.forEach(gem => {
+    const color = getGemColor(gem);
+    const verb = gem.rewardType === 'vendor' ? 'Buy' : 'Take';
+    const cost = gem.rewardType === 'vendor' ? getGemCost(gem) : '';
+    const npcName = gem.vendor || 'NPC';
+    
+    html += '<div class="pob-gem-compact">';
+    // Use opaque background colors (30 instead of 12 for better visibility)
+    html += '<span class="pob-gem-pill" style="border-left:3px solid ' + color + ';background:' + color + '30;">';
+    html += '<span class="pob-gem-verb">' + verb + '</span>';
+    html += '<span class="pob-gem-name-inline">' + escapeHtml(gem.name) + '</span>';
+    html += '<span class="pob-gem-vendor">from ' + escapeHtml(npcName) + '</span>';
+    if (cost) {
+      html += '<span class="pob-gem-cost">' + cost + '</span>';
+    }
+    html += '</span>';
+    html += '</div>';
+  });
+  
+  return html;
+}
+
+function getGemColor(gem) {
+  // Try to get color from gem database using gem-colours.json mapping
+  if (gemDatabase && gemColours) {
+    const gemEntry = Object.values(gemDatabase).find(
+      (g) => g.name.toLowerCase() === gem.name.toLowerCase()
+    );
+    if (gemEntry) {
+      // Use gem-colours.json mapping (loaded from leveling data)
+      return gemColours[gemEntry.primary_attribute] || gemColours['none'] || '#9d7dff';
+    }
+  }
+  
+  // Fallback based on support gem status
+  if (gem.isSupport) {
+    return '#4a9eff'; // Blue for support
+  }
+  return '#4ade80'; // Green default
+}
+
+function getGemCost(gem) {
+  // Cost based on required level
+  const level = gem.level || 1;
+  if (level < 8) return '🔷'; // Wisdom scroll
+  if (level < 16) return '🔸'; // Transmutation
+  if (level < 28) return '🔶'; // Alteration
+  if (level < 38) return '🟡'; // Chance
+  return '🟠'; // Alchemy
 }
 
 function groupStepsByZone(steps) {
@@ -549,6 +646,8 @@ function checkActCompletionAndAdvance() {
       // Save this run to history database
       ipcRenderer.invoke('save-run', actNum, state.timer.elapsed).then(() => {
         console.log('Act ' + actNum + ' run saved to history: ' + formatTime(state.timer.elapsed));
+        // Rebuild tooltip after saving to show updated comparison
+        buildTimerTooltip(currentAct);
       });
       
       saveState();
@@ -689,6 +788,10 @@ function renderActSwitcher() {
         saveState();
         actDropdown.classList.remove('open');
         actSelectorBtn.classList.remove('open');
+        
+        // Notify gems window of act change
+        ipcRenderer.send('leveling-act-changed', actIndex + 1);
+        
         render();
       }
     });
@@ -975,7 +1078,7 @@ function render() {
       const currentClass = isCurrent ? ' current' : '';
       // Store the first step ID of this zone for skip-to functionality
       const firstStepId = group.steps[0]?.id || '';
-  return '<div class="leveling-group'+currentClass+'" style="opacity:'+groupOpacity+';"><div class="zone-header" data-zone="'+escapeHtml(group.zone)+'"><input type="checkbox" class="zone-checkbox" data-action="toggle-zone" data-zone="'+escapeHtml(group.zone)+'" '+(group.allChecked?'checked':'')+' /><div class="zone-name">📍 '+escapeHtml(group.zone)+' ('+group.steps.length+' tasks)</div><button class="skip-to-btn" data-action="skip-to" data-first-step-id="'+firstStepId+'" title="Skip to this zone (auto-complete all previous steps)">⏭️</button></div><div class="task-list">'+group.steps.map(step => {
+  return '<div class="leveling-group'+currentClass+'" style="opacity:'+groupOpacity+';"><div class="zone-header" data-zone="'+escapeHtml(group.zone)+'"><input type="checkbox" class="zone-checkbox" data-action="toggle-zone" data-zone="'+escapeHtml(group.zone)+'" '+(group.allChecked?'checked':'')+' /><div class="zone-name">📍 '+escapeHtml(group.zone)+' ('+group.steps.length+' tasks)'+'</div><button class="skip-to-btn" data-action="skip-to" data-first-step-id="'+firstStepId+'" title="Skip to this zone (auto-complete all previous steps)">⏭️</button></div><div class="task-list">'+group.steps.map(step => {
         const checked = state.completedSteps.has(step.id);
     const stepType = STEP_TYPES[step.type] || STEP_TYPES.navigation;
     const cleanDesc = cleanDescription(step.description);
@@ -984,7 +1087,11 @@ function render() {
         const hintHtml = state.showHints && step.hint ? '<div class="task-hint">💡 '+escapeHtml(step.hint)+'</div>' : '';
         const rewardHtml = step.reward ? '<div class="task-reward">🎁 '+escapeHtml(step.reward)+'</div>' : '';
         
-  return '<div class="task-item"><div class="task-checkbox"><input type="checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /></div><div class="task-bullet" style="color:'+stepType.color+';">'+stepType.icon+'</div><div class="task-content"><div class="task-desc '+(checked?'checked':'')+'">'+escapeHtml(cleanDesc)+leagueIcon+layoutTipIcon+'</div>'+hintHtml+rewardHtml+'</div></div>';
+        // Get PoB gems for this step
+        const pobGems = getPobGemsForStep(step, act.actNumber);
+        const pobGemsHtml = renderPobGemList(pobGems);
+        
+  return '<div class="task-item"><div class="task-checkbox"><input type="checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /></div><div class="task-bullet" style="color:'+stepType.color+';">'+stepType.icon+'</div><div class="task-content"><div class="task-desc '+(checked?'checked':'')+'">'+escapeHtml(cleanDesc)+leagueIcon+layoutTipIcon+'</div>'+hintHtml+rewardHtml+pobGemsHtml+'</div></div>';
       }).join('')+'</div></div>';
     } else {
       const step = group.steps[0];
@@ -1007,8 +1114,12 @@ function render() {
       if (step.recommendedLevel) metaItems.push('<div class="badge" style="background:#ffd70015;border-color:#ffd70040;color:#ffd700;">Level '+step.recommendedLevel+'</div>');
       const metaHtml = metaItems.length > 0 ? '<div class="step-meta">'+metaItems.join('')+'</div>' : '';
       
+      // Get PoB gems for this step
+      const pobGems = getPobGemsForStep(step, act.actNumber);
+      const pobGemsHtml = renderPobGemList(pobGems);
+      
   const borderColor = isCurrent ? '#fdd68a' : stepType.color;
-  return '<div class="leveling-step '+(isCurrent?'current':'')+' '+(isHighPriority?'priority':'')+'" style="opacity:'+opacity+';background:'+bgColor+';padding:'+padding+';border-left-color:'+borderColor+';"><input type="checkbox" class="step-checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /><div class="step-content"><div class="step-main"><div class="step-icon-wrap" style="background:'+stepType.color+'22;border-color:'+stepType.color+'44;"><span class="step-icon" style="color:'+stepType.color+';">'+stepType.icon+'</span></div><div class="step-desc-wrap">'+(isCurrent&&step.zone?'<div class="zone-label">'+escapeHtml(step.zone)+'</div>':'')+'<div class="step-desc '+(checked?'checked':'')+'">'+stepTextHtml+leagueIcon+layoutTipIcon+'</div></div></div>'+metaHtml+hintHtml+'</div></div>';
+  return '<div class="leveling-step '+(isCurrent?'current':'')+' '+(isHighPriority?'priority':'')+'" style="opacity:'+opacity+';background:'+bgColor+';padding:'+padding+';border-left-color:'+borderColor+';"><input type="checkbox" class="step-checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /><div class="step-content"><div class="step-main"><div class="step-icon-wrap" style="background:'+stepType.color+'22;border-color:'+stepType.color+'44;"><span class="step-icon" style="color:'+stepType.color+';">'+stepType.icon+'</span></div><div class="step-desc-wrap">'+(isCurrent&&step.zone?'<div class="zone-label">'+escapeHtml(step.zone)+'</div>':'')+'<div class="step-desc '+(checked?'checked':'')+'">'+stepTextHtml+leagueIcon+layoutTipIcon+'</div></div></div>'+metaHtml+hintHtml+pobGemsHtml+'</div></div>';
     }
   }).join('');
   
@@ -1196,19 +1307,38 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
     if (result.settings.groupByZone !== undefined) state.groupByZone = result.settings.groupByZone;
     console.log('Loaded UI settings:', result.settings);
   }
-  // Initialize slider values to match state
-  document.getElementById('fontSizeSlider').value = state.fontSize;
-  document.getElementById('fontSizeValue').textContent = state.fontSize + 'px';
-  document.getElementById('zoomSlider').value = state.zoom;
-  document.getElementById('zoomValue').textContent = state.zoom + '%';
-  document.getElementById('opacitySlider').value = state.opacity;
-  document.getElementById('opacityValue').textContent = state.opacity + '%';
-  document.getElementById('visibleStepsSlider').value = state.visibleSteps;
-  document.getElementById('visibleStepsValue').textContent = state.visibleSteps >= 99 ? 'All' : state.visibleSteps.toString();
-  document.getElementById('wideLayoutToggle').checked = state.mode === 'wide';
-  document.getElementById('showHints').checked = state.showHints;
-  document.getElementById('showOptional').checked = state.showOptional;
-  document.getElementById('groupByZone').checked = state.groupByZone;
+  
+  // Load PoB build after data is loaded
+  loadPobBuild();
+  
+  // Listen for settings changes from the settings splash
+  ipcRenderer.on('leveling-settings-changed', (event, updates) => {
+    console.log('Settings updated from splash:', updates);
+    
+    // Update state with new settings
+    if (updates.opacity !== undefined) state.opacity = updates.opacity;
+    if (updates.fontSize !== undefined) state.fontSize = updates.fontSize;
+    if (updates.zoomLevel !== undefined) state.zoom = updates.zoomLevel;
+    if (updates.visibleSteps !== undefined) state.visibleSteps = updates.visibleSteps;
+    if (updates.showHints !== undefined) state.showHints = updates.showHints;
+    if (updates.showOptional !== undefined) state.showOptional = updates.showOptional;
+    if (updates.groupByZone !== undefined) state.groupByZone = updates.groupByZone;
+    if (updates.autoDetectZones !== undefined) state.autoDetectZones = updates.autoDetectZones;
+    if (updates.wideMode !== undefined) {
+      state.mode = updates.wideMode ? 'wide' : 'tall';
+      ipcRenderer.send('leveling-set-layout', state.mode);
+      
+      // Request preset window size
+      if (state.mode === 'wide') {
+        ipcRenderer.send('leveling-resize-preset', { width: 1200, height: 400 });
+      } else {
+        ipcRenderer.send('leveling-resize-preset', { width: 400, height: 800 });
+      }
+    }
+    
+    render();
+    saveState();
+  });
   
   render();
 }).catch(err => {
@@ -1217,17 +1347,12 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
 });
 
 // Button handlers
-document.getElementById('settingsBtn').addEventListener('click', () => {
-  const panel = document.getElementById('settingsPanel');
-  const btn = document.getElementById('settingsBtn');
-  if (panel.classList.contains('visible')) {
-    panel.classList.remove('visible');
-    btn.classList.remove('active');
-  } else {
-    panel.classList.add('visible');
-    btn.classList.add('active');
-  }
-});
+const settingsBtn = document.getElementById('settingsBtn');
+if (settingsBtn) {
+  settingsBtn.addEventListener('click', () => {
+    ipcRenderer.invoke('open-leveling-settings');
+  });
+}
 
 // Attach event listener to all minimal buttons (header only)
 document.querySelectorAll('#minimalBtn').forEach(btn => {
@@ -1242,131 +1367,10 @@ document.querySelectorAll('#minimalBtn').forEach(btn => {
   });
 });
 
-document.getElementById('opacitySlider').addEventListener('input', (e) => {
-  state.opacity = parseInt(e.target.value);
-  document.getElementById('opacityValue').textContent = state.opacity + '%';
-  render();
-  saveState();
-});
-
-document.getElementById('fontSizeSlider').addEventListener('input', (e) => {
-  state.fontSize = parseInt(e.target.value);
-  document.getElementById('fontSizeValue').textContent = state.fontSize + 'px';
-  render();
-  saveState();
-});
-
-document.getElementById('zoomSlider').addEventListener('input', (e) => {
-  state.zoom = parseInt(e.target.value);
-  document.getElementById('zoomValue').textContent = state.zoom + '%';
-  render();
-  saveState();
-});
-
-document.getElementById('visibleStepsSlider').addEventListener('input', (e) => {
-  state.visibleSteps = parseInt(e.target.value);
-  const valueText = state.visibleSteps >= 99 ? 'All' : state.visibleSteps.toString();
-  document.getElementById('visibleStepsValue').textContent = valueText;
-  render();
-  saveState();
-});
-
-document.getElementById('showHints').addEventListener('change', (e) => {
-  state.showHints = e.target.checked;
-  render();
-  saveState();
-});
-
-document.getElementById('showOptional').addEventListener('change', (e) => {
-  state.showOptional = e.target.checked;
-  render();
-  saveState();
-});
-
-document.getElementById('groupByZone').addEventListener('change', (e) => {
-  state.groupByZone = e.target.checked;
-  render();
-  saveState();
-});
-
-document.getElementById('wideLayoutToggle').addEventListener('change', (e) => {
-  state.mode = e.target.checked ? 'wide' : 'tall';
-  ipcRenderer.send('leveling-set-layout', state.mode);
-  
-  // Request preset window size
-  if (state.mode === 'wide') {
-    ipcRenderer.send('leveling-resize-preset', { width: 1200, height: 400 });
-  } else {
-    ipcRenderer.send('leveling-resize-preset', { width: 400, height: 800 });
-  }
-  
-  render();
-});
-
-document.getElementById('autoDetectZones').addEventListener('change', (e) => {
-  state.autoDetectZones = e.target.checked;
-  // Notify backend to start/stop watching
-  ipcRenderer.invoke('toggle-auto-detect-zones', e.target.checked);
-});
-
-// Client.txt path handlers
-document.getElementById('autoDetectPath').addEventListener('click', async () => {
-  const result = await ipcRenderer.invoke('auto-detect-client-txt');
-  if (result.success) {
-    document.getElementById('clientPathDisplay').textContent = result.path;
-    document.getElementById('clientPathDisplay').style.color = 'rgba(74,222,128,0.8)';
-  } else {
-    document.getElementById('clientPathDisplay').textContent = 'Not found - please select manually';
-    document.getElementById('clientPathDisplay').style.color = 'rgba(255,82,82,0.8)';
-  }
-});
-
-document.getElementById('selectPath').addEventListener('click', async () => {
-  const result = await ipcRenderer.invoke('select-client-txt');
-  if (result.success) {
-    document.getElementById('clientPathDisplay').textContent = result.path;
-    document.getElementById('clientPathDisplay').style.color = 'rgba(74,222,128,0.8)';
-  }
-});
-
-// Load saved client.txt path on startup
-ipcRenderer.invoke('get-client-txt-path').then(result => {
-  if (result.path) {
-    document.getElementById('clientPathDisplay').textContent = result.path;
-    
-    // Only show green if file actually exists, otherwise show red/yellow
-    if (result.exists) {
-      // Green for manually set and exists, blue for auto-detected and exists
-      document.getElementById('clientPathDisplay').style.color = result.autoDetected 
-        ? 'rgba(74,158,255,0.8)'  // Blue for auto-detected
-        : 'rgba(74,222,128,0.8)';  // Green for manually set
-    } else {
-      // Red if path is saved but file doesn't exist
-      document.getElementById('clientPathDisplay').style.color = 'rgba(255,82,82,0.8)';
-    }
-  }
-});
-
-// GGG Policy info button handler
-document.getElementById('gggPolicyBtn').addEventListener('click', () => {
-  require('electron').shell.openExternal('https://www.pathofexile.com/developer/docs#policy');
-});
-
-// Clean log button handler
-document.getElementById('cleanLogBtn').addEventListener('click', async () => {
-  const confirmed = confirm('This will clear all content from Client.txt. The game will continue writing new logs. Are you sure?');
-  if (!confirmed) return;
-  
-  const result = await ipcRenderer.invoke('clean-client-txt');
-  if (result.success) {
-    alert('✅ Client.txt has been cleaned successfully!');
-  } else {
-    alert('❌ Failed to clean Client.txt: ' + (result.error || 'Unknown error'));
-  }
-});
-
 // View run history button handler
-document.getElementById('viewHistoryBtn').addEventListener('click', async () => {
+const viewHistoryBtn = document.getElementById('viewHistoryBtn');
+if (viewHistoryBtn) {
+  viewHistoryBtn.addEventListener('click', async () => {
   const allHistories = await ipcRenderer.invoke('get-all-run-histories');
   const modal = document.getElementById('historyModal');
   const content = document.getElementById('historyModalContent');
@@ -1458,36 +1462,53 @@ document.getElementById('viewHistoryBtn').addEventListener('click', async () => 
   });
   
   modal.classList.add('visible');
-});
+  });
+}
 
 // Close history modal
-document.getElementById('closeHistoryModal').addEventListener('click', () => {
-  const modal = document.getElementById('historyModal');
-  modal.classList.remove('visible');
-});
+const closeHistoryModal = document.getElementById('closeHistoryModal');
+if (closeHistoryModal) {
+  closeHistoryModal.addEventListener('click', () => {
+    const modal = document.getElementById('historyModal');
+    modal.classList.remove('visible');
+  });
+}
 
 // Close modal when clicking overlay
-document.getElementById('historyModal').addEventListener('click', (e) => {
-  if (e.target.id === 'historyModal') {
-    e.target.classList.remove('visible');
-  }
-});
-
+const historyModal = document.getElementById('historyModal');
+if (historyModal) {
+  historyModal.addEventListener('click', (e) => {
+    if (e.target.id === 'historyModal') {
+      e.target.classList.remove('visible');
+    }
+  });
+}
 // Reset run history button handler
-document.getElementById('resetHistoryBtn').addEventListener('click', async () => {
-  const confirmed = confirm('⚠️ WARNING: This will delete ALL run history for ALL acts!\\n\\nAre you sure you want to continue?');
-  if (!confirmed) return;
-  
-  const result = await ipcRenderer.invoke('clear-all-run-history');
-  if (result) {
-    alert('✅ All run history has been cleared successfully!');
-  } else {
-    alert('❌ Failed to clear run history.');
-  }
-});
+const resetHistoryBtn = document.getElementById('resetHistoryBtn');
+if (resetHistoryBtn) {
+  resetHistoryBtn.addEventListener('click', async () => {
+    const confirmed = confirm('⚠️ WARNING: This will delete ALL run history for ALL acts!\\n\\nAre you sure you want to continue?');
+    if (!confirmed) return;
+    
+    const result = await ipcRenderer.invoke('clear-all-run-history');
+    if (result) {
+      alert('✅ All run history has been cleared successfully!');
+      // Rebuild tooltip to reflect cleared history
+      const acts = state.levelingData.acts;
+      const currentAct = acts[state.currentActIndex];
+      if (currentAct) {
+        buildTimerTooltip(currentAct);
+      }
+    } else {
+      alert('❌ Failed to clear run history.');
+    }
+  });
+}
 
 // Reset progress button handler
-document.getElementById('resetProgressBtn').addEventListener('click', async () => {
+const resetProgressBtn = document.getElementById('resetProgressBtn');
+if (resetProgressBtn) {
+  resetProgressBtn.addEventListener('click', async () => {
   const confirmed = confirm('⚠️ WARNING: This will reset ALL act progress, completed steps, and timers!\\n\\nAre you sure you want to continue?');
   if (!confirmed) return;
   
@@ -1500,6 +1521,9 @@ document.getElementById('resetProgressBtn').addEventListener('click', async () =
     state.timer.display = '00:00';
     state.currentActIndex = 0;
     
+    // Reset act timers
+    state.actTimers = {};
+    
     // Update UI
     render();
     
@@ -1508,7 +1532,108 @@ document.getElementById('resetProgressBtn').addEventListener('click', async () =
     if (timerText) {
       timerText.textContent = 'Act1 00:00';
     }
+    
+    // Rebuild tooltip to reflect reset state
+    const acts = state.levelingData.acts;
+    const currentAct = acts[state.currentActIndex];
+    if (currentAct) {
+      buildTimerTooltip(currentAct);
+    }
+    
+    alert('✅ All progress has been reset!');
+  } else {
+    alert('❌ Failed to reset progress.');
   }
+  });
+}
+
+// PoB Import handler
+const importPobBtn = document.getElementById('importPobBtn');
+if (importPobBtn) {
+  importPobBtn.addEventListener('click', async () => {
+  const input = document.getElementById('pobCodeInput');
+  const status = document.getElementById('pobStatus');
+  const buildInfo = document.getElementById('pobBuildInfo');
+  const code = input.value.trim();
+  
+  if (!code) {
+    status.textContent = '⚠️ Please paste a PoB code or URL';
+    status.style.color = 'rgba(255,193,7,0.8)';
+    status.style.display = 'block';
+    return;
+  }
+  
+  status.textContent = '⏳ Importing build...';
+  status.style.color = 'rgba(74,158,255,0.8)';
+  status.style.display = 'block';
+  buildInfo.style.display = 'none';
+  
+  const result = await ipcRenderer.invoke('import-pob-code', code);
+  
+  if (result.success) {
+    status.textContent = '✅ Build imported successfully!';
+    status.style.color = 'rgba(74,222,128,0.8)';
+    
+    buildInfo.innerHTML = \`
+      <strong>\${result.build.className}</strong> \${result.build.ascendancyName ? '(' + result.build.ascendancyName + ')' : ''}<br>
+      Level \${result.build.level} | \${result.build.totalNodes} passive nodes | \${result.build.gemsFound} gems
+    \`;
+    buildInfo.style.display = 'block';
+    
+    // Clear input
+    input.value = '';
+    
+    // Reload PoB build data and update UI
+    loadPobBuild();
+    
+    setTimeout(() => {
+      status.style.display = 'none';
+    }, 3000);
+  } else {
+    status.textContent = '❌ Import failed: ' + (result.error || 'Unknown error');
+    status.style.color = 'rgba(255,82,82,0.8)';
+  }
+  });
+}
+
+async function loadPobBuild() {
+  const build = await ipcRenderer.invoke('get-pob-build');
+  state.pobBuild = build;
+  
+  if (build) {
+    console.log('[loadPobBuild] Build loaded with', build.gems?.length || 0, 'gems');
+    
+    // Show tree icon
+    const treeIcon = document.getElementById('treeIcon');
+    if (treeIcon) {
+      treeIcon.classList.add('visible');
+      updateTreeTooltip();
+    }
+    
+    // Update build info display if visible
+    const buildInfo = document.getElementById('pobBuildInfo');
+    if (buildInfo && buildInfo.style.display !== 'none') {
+      const firstTreeSpec = build.treeSpecs[0];
+      buildInfo.innerHTML = \`
+        <strong>\${build.className}</strong> \${build.ascendancyName ? '(' + build.ascendancyName + ')' : ''}<br>
+        Level \${build.level} | \${firstTreeSpec.allocatedNodes.length} passive nodes | \${build.gems.length} gems
+      \`;
+    }
+    
+    // Re-render the leveling steps to show gems
+    render();
+  }
+}
+
+// Listen for PoB import events
+ipcRenderer.on('pob-build-imported', (event, build) => {
+  console.log('PoB build imported:', build);
+  loadPobBuild();
+});
+
+// Listen for character level-up events
+ipcRenderer.on('character-level-up', (event, data) => {
+  console.log('Character level up:', data);
 });
 
 // Timer functions
@@ -1576,8 +1701,10 @@ function resetTimer() {
   updateTimerDisplay();
 }
 
-document.getElementById('timerStartPause').addEventListener('click', startTimer);
-document.getElementById('timerReset').addEventListener('click', resetTimer);
+const timerStartPause = document.getElementById('timerStartPause');
+const timerReset = document.getElementById('timerReset');
+if (timerStartPause) timerStartPause.addEventListener('click', startTimer);
+if (timerReset) timerReset.addEventListener('click', resetTimer);
 
 // Drag-handle timer buttons (same functionality as footer timer buttons)
 const dragTimerStartPause = document.getElementById('dragTimerStartPause');
@@ -1637,8 +1764,10 @@ function handleNextBtn() {
   }
 }
 
-document.getElementById('prevBtn').addEventListener('click', handlePrevBtn);
-document.getElementById('nextBtn').addEventListener('click', handleNextBtn);
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+if (prevBtn) prevBtn.addEventListener('click', handlePrevBtn);
+if (nextBtn) nextBtn.addEventListener('click', handleNextBtn);
 
 ipcRenderer.on('leveling-layout-mode', (event, mode) => {
   state.mode = mode;

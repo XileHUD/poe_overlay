@@ -35,14 +35,16 @@
     "electron": "28.3.0",
     "electron-builder": "23.6.0",
     "tsx": "^4.0.0",
-  "typescript": "^5.0.0",
-  "vite": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0"
   },
   "dependencies": {
+    "@xmldom/xmldom": "^0.8.11",
     "clipboardy": "^4.0.0",
     "electron-forge": "^5.2.4",
     "electron-updater": "^6.3.5",
-    "uiohook-napi": "^1.5.4"
+    "uiohook-napi": "^1.5.4",
+    "xmldom": "^0.6.0"
   },
   "build": {
     "appId": "com.xilehud.overlay",

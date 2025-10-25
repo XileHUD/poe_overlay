@@ -1,0 +1,868 @@
+/**
+ * Leveling Settings Splash
+ * Separate window for leveling overlay settings
+ */
+
+import { BrowserWindow, ipcMain, screen } from 'electron';
+import type { SettingsService } from '../services/settingsService.js';
+import type { OverlayVersion } from '../../types/overlayVersion.js';
+
+interface LevelingSettingsSplashParams {
+  settingsService: SettingsService;
+  overlayVersion: OverlayVersion;
+  overlayWindow?: any; // Reference to main overlay window if needed
+}
+
+let activeSettingsWindow: BrowserWindow | null = null;
+
+export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams): void {
+  // If already open, just focus it
+  if (activeSettingsWindow && !activeSettingsWindow.isDestroyed()) {
+    activeSettingsWindow.focus();
+    return;
+  }
+
+  const { settingsService, overlayVersion } = params;
+  
+  // Get current settings
+  const levelingKey = overlayVersion === 'poe1' ? 'levelingWindowPoe1' : 'levelingWindowPoe2';
+  const currentSettings = settingsService.get(levelingKey) || {};
+  
+  // Window dimensions
+  const splashWidth = 700;
+  const splashHeight = 600;
+  
+  // Try to center on screen
+  let initialX = Math.floor((screen.getPrimaryDisplay().workAreaSize.width - splashWidth) / 2);
+  let initialY = Math.floor((screen.getPrimaryDisplay().workAreaSize.height - splashHeight) / 2);
+
+  const window = new BrowserWindow({
+    width: splashWidth,
+    height: splashHeight,
+    x: initialX,
+    y: initialY,
+    frame: false,
+    transparent: true,
+    resizable: false,
+    alwaysOnTop: true,
+    skipTaskbar: true,
+    show: false,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+      preload: undefined
+    }
+  });
+
+  // Track as active settings window
+  activeSettingsWindow = window;
+
+  // Keep on top
+  window.setAlwaysOnTop(true, 'screen-saver', 1);
+  
+  window.on('blur', () => {
+    if (!window.isDestroyed()) {
+      window.setAlwaysOnTop(true, 'screen-saver', 1);
+    }
+  });
+
+  // Build HTML
+  const html = buildLevelingSettingsSplashHtml(currentSettings, overlayVersion);
+  
+  window.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
+  
+  window.once('ready-to-show', () => {
+    window.show();
+  });
+
+  // Handle close button
+  ipcMain.once('leveling-settings-close', () => {
+    if (!window.isDestroyed()) {
+      window.close();
+    }
+  });
+
+  window.on('closed', () => {
+    activeSettingsWindow = null;
+  });
+}
+
+function buildLevelingSettingsSplashHtml(
+  currentSettings: any,
+  overlayVersion: OverlayVersion
+): string {
+  // Extract all current settings with proper defaults
+  const groupByZone = currentSettings.uiSettings?.groupByZone ?? true;
+  const showHints = currentSettings.uiSettings?.showHints ?? true;
+  const showOptional = currentSettings.uiSettings?.showOptional ?? true;
+  const autoDetectZones = currentSettings.uiSettings?.autoDetectZones ?? true;
+  const opacity = currentSettings.uiSettings?.opacity ?? 96;
+  const fontSize = currentSettings.uiSettings?.fontSize ?? 12;
+  const zoomLevel = currentSettings.uiSettings?.zoomLevel ?? 100;
+  const visibleSteps = currentSettings.uiSettings?.visibleSteps ?? 99;
+  const wideMode = currentSettings.wideMode ?? false;
+  const clientTxtPathKey = overlayVersion === 'poe1' ? 'clientTxtPathPoe1' : 'clientTxtPathPoe2';
+  const clientTxtPath = currentSettings[clientTxtPathKey] || 'Not configured';
+  
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2d2d2d;
+      --bg-tertiary: #3a3a3a;
+      --bg-card: #252525;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0b0;
+      --text-muted: #808080;
+      --border-color: #404040;
+      --accent-blue: #4a9eff;
+      --accent-green: #5cb85c;
+      --accent-orange: #f0ad4e;
+      --accent-red: #d9534f;
+    }
+    
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow: hidden;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(74, 222, 128, 0.15);
+      border-radius: 8px;
+    }
+    
+    .header {
+      padding: 14px 24px 12px;
+      background: linear-gradient(135deg, rgba(74, 222, 128, 0.12) 0%, rgba(74, 222, 128, 0.06) 100%);
+      border-bottom: 2px solid rgba(74, 222, 128, 0.25);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+      -webkit-app-region: drag;
+      border-radius: 8px 8px 0 0;
+    }
+    
+    .header-title h1 {
+      margin: 0;
+      font-size: 20px;
+      color: var(--accent-green);
+      font-weight: 600;
+    }
+    
+    .header-subtitle {
+      margin: 4px 0 0 0;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    
+    .close-btn {
+      width: 32px;
+      height: 32px;
+      background: rgba(217, 83, 79, 0.15);
+      border: 2px solid rgba(217, 83, 79, 0.4);
+      border-radius: 50%;
+      color: var(--accent-red);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      -webkit-app-region: no-drag;
+    }
+    
+    .close-btn:hover {
+      background: rgba(217, 83, 79, 0.3);
+      border-color: var(--accent-red);
+      transform: scale(1.1);
+    }
+    
+    .tab-nav {
+      display: flex;
+      background: var(--bg-secondary);
+      border-bottom: 2px solid var(--border-color);
+      padding: 0 20px;
+      gap: 4px;
+      flex-shrink: 0;
+      -webkit-app-region: no-drag;
+    }
+    
+    .tab-button {
+      padding: 12px 28px;
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+    }
+    
+    .tab-button:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.03);
+    }
+    
+    .tab-button.active {
+      color: var(--accent-green);
+      border-bottom-color: var(--accent-green);
+    }
+    
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+    }
+    
+    .tab-panel {
+      display: none;
+    }
+    
+    .tab-panel.active {
+      display: block;
+    }
+    
+    .setting-group {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    
+    .setting-group-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent-green);
+      margin: 0 0 16px 0;
+    }
+    
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .setting-item:last-child {
+      border-bottom: none;
+    }
+    
+    .setting-label {
+      flex: 1;
+    }
+    
+    .setting-name {
+      font-size: 14px;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    
+    .setting-description {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    
+    .toggle-switch {
+      position: relative;
+      width: 48px;
+      height: 24px;
+      background: var(--bg-tertiary);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+      border: 1px solid var(--border-color);
+    }
+    
+    .toggle-switch.active {
+      background: var(--accent-green);
+      border-color: var(--accent-green);
+    }
+    
+    .toggle-slider {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 18px;
+      height: 18px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+    
+    .toggle-switch.active .toggle-slider {
+      transform: translateX(24px);
+    }
+    
+    .slider-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    input[type="range"] {
+      width: 200px;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--bg-tertiary);
+      outline: none;
+      -webkit-appearance: none;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      cursor: pointer;
+    }
+    
+    .range-value {
+      min-width: 50px;
+      text-align: right;
+      color: var(--accent-green);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    
+    .file-path-display {
+      font-size: 11px;
+      color: var(--text-muted);
+      padding: 8px 12px;
+      background: var(--bg-tertiary);
+      border-radius: 4px;
+      word-break: break-all;
+      margin-top: 8px;
+      font-family: 'Consolas', monospace;
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    
+    .action-btn {
+      flex: 1;
+      padding: 8px 16px;
+      background: rgba(74, 222, 128, 0.2);
+      border: 1px solid rgba(74, 222, 128, 0.4);
+      border-radius: 6px;
+      color: var(--accent-green);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .action-btn:hover {
+      background: rgba(74, 222, 128, 0.3);
+      border-color: var(--accent-green);
+    }
+    
+    .action-btn.danger {
+      background: rgba(217, 83, 79, 0.2);
+      border-color: rgba(217, 83, 79, 0.4);
+      color: var(--accent-red);
+    }
+    
+    .action-btn.danger:hover {
+      background: rgba(217, 83, 79, 0.3);
+      border-color: var(--accent-red);
+    }
+    
+    .info-box {
+      background: rgba(74, 158, 255, 0.1);
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      border-radius: 6px;
+      padding: 12px;
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    
+    .info-box strong {
+      color: var(--accent-blue);
+    }
+    
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--bg-tertiary);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(74, 222, 128, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-title">
+      <div>
+        <h1>⚙️ Leveling Overlay Settings</h1>
+        <div class="header-subtitle">Configure your Path of Exile leveling experience</div>
+      </div>
+    </div>
+    <div class="close-btn" onclick="closeSettings()">×</div>
+  </div>
+  
+  <div class="tab-nav">
+    <button class="tab-button active" onclick="switchTab('display')">Display</button>
+    <button class="tab-button" onclick="switchTab('behavior')">Behavior</button>
+    <button class="tab-button" onclick="switchTab('integration')">Integration</button>
+    <button class="tab-button" onclick="switchTab('pob')">PoB Import</button>
+    <button class="tab-button" onclick="switchTab('advanced')">Advanced</button>
+  </div>
+  
+  <div class="content">
+    <!-- Display Tab -->
+    <div class="tab-panel active" id="tab-display">
+      <div class="setting-group">
+        <h3 class="setting-group-title">Visual Options</h3>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Overlay Opacity</div>
+            <div class="setting-description">Adjust transparency of the overlay background</div>
+          </div>
+          <div class="slider-container">
+            <input type="range" min="20" max="100" value="${opacity}" oninput="updateSetting('opacity', parseInt(this.value))" id="opacitySlider"/>
+            <span class="range-value" id="opacity-value">${opacity}%</span>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Font Size</div>
+            <div class="setting-description">Adjust text size throughout the overlay</div>
+          </div>
+          <div class="slider-container">
+            <input type="range" min="10" max="18" value="${fontSize}" oninput="updateSetting('fontSize', parseInt(this.value))" id="fontSizeSlider"/>
+            <span class="range-value" id="fontSize-value">${fontSize}px</span>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Zoom Level</div>
+            <div class="setting-description">Scale the entire overlay interface</div>
+          </div>
+          <div class="slider-container">
+            <input type="range" min="50" max="150" value="${zoomLevel}" oninput="updateSetting('zoomLevel', parseInt(this.value))" id="zoomSlider"/>
+            <span class="range-value" id="zoomLevel-value">${zoomLevel}%</span>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Visible Steps</div>
+            <div class="setting-description">Limit how many quest steps are shown at once</div>
+          </div>
+          <div class="slider-container">
+            <input type="range" min="1" max="99" value="${visibleSteps}" oninput="updateSetting('visibleSteps', parseInt(this.value))" id="visibleStepsSlider"/>
+            <span class="range-value" id="visibleSteps-value">${visibleSteps === 99 ? 'All' : visibleSteps}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Behavior Tab -->
+    <div class="tab-panel" id="tab-behavior">
+      <div class="setting-group">
+        <h3 class="setting-group-title">Display Behavior</h3>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Group by Zone</div>
+            <div class="setting-description">Group quest steps by zone for better organization</div>
+          </div>
+          <div class="toggle-switch ${groupByZone ? 'active' : ''}" onclick="toggleSetting(this, 'groupByZone')">
+            <div class="toggle-slider"></div>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Show Hints</div>
+            <div class="setting-description">Display helpful tips and guidance for quest steps</div>
+          </div>
+          <div class="toggle-switch ${showHints ? 'active' : ''}" onclick="toggleSetting(this, 'showHints')">
+            <div class="toggle-slider"></div>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Show Optional Steps</div>
+            <div class="setting-description">Include optional quests and tasks in the guide</div>
+          </div>
+          <div class="toggle-switch ${showOptional ? 'active' : ''}" onclick="toggleSetting(this, 'showOptional')">
+            <div class="toggle-slider"></div>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Wide Layout Mode</div>
+            <div class="setting-description">Use a wider horizontal layout (requires restart)</div>
+          </div>
+          <div class="toggle-switch ${wideMode ? 'active' : ''}" onclick="toggleSetting(this, 'wideMode')">
+            <div class="toggle-slider"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Integration Tab -->
+    <div class="tab-panel" id="tab-integration">
+      <div class="setting-group">
+        <h3 class="setting-group-title">Client.txt Integration</h3>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Auto-detect Zone Changes</div>
+            <div class="setting-description">Automatically track your progress by reading Client.txt</div>
+          </div>
+          <div class="toggle-switch ${autoDetectZones ? 'active' : ''}" onclick="toggleSetting(this, 'autoDetectZones')">
+            <div class="toggle-slider"></div>
+          </div>
+        </div>
+        
+        <div class="setting-item" style="flex-direction: column; align-items: stretch;">
+          <div class="setting-label">
+            <div class="setting-name">Client.txt Path</div>
+            <div class="setting-description">Location of your Path of Exile Client.txt log file</div>
+          </div>
+          
+          <div class="file-path-display" id="clientPathDisplay">${clientTxtPath}</div>
+          
+          <div class="button-group">
+            <button class="action-btn" onclick="autoDetectPath()">🔍 Auto Detect</button>
+            <button class="action-btn" onclick="selectPath()">📁 Browse...</button>
+          </div>
+          
+          <div class="button-group">
+            <button class="action-btn danger" onclick="cleanLogFile()">🗑️ Clean Log File</button>
+          </div>
+          
+          <div class="info-box">
+            <strong>GGG Policy:</strong> Reading the game's log files is officially allowed by GGG.<br>
+            "Reading the game's log files is okay as long as the user is aware of what you are doing with that data."<br>
+            Cleaning the log file can improve game performance by removing old entries.
+          </div>
+        </div>
+      </div>
+      
+      <div class="setting-group">
+        <h3 class="setting-group-title">Path of Building Integration</h3>
+        
+        <div class="setting-item" style="flex-direction: column; align-items: stretch;">
+          <div class="setting-label">
+            <div class="setting-name">Import PoB Build</div>
+            <div class="setting-description">Paste PoB code or pobb.in URL to show gem links and passive tree</div>
+          </div>
+          
+          <textarea 
+            class="pob-input" 
+            id="pobCodeInput" 
+            placeholder="Paste your PoB code or pobb.in URL here..." 
+            rows="4"
+            style="width:100%;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:12px;color:#fff;font-family:'Consolas',monospace;font-size:11px;resize:vertical;margin-top:8px;"
+          ></textarea>
+          
+          <div class="button-group" style="margin-top:8px;">
+            <button class="action-btn" onclick="importPobBuild()" style="flex:1;">⬆️ Import Build</button>
+            <button class="action-btn danger" onclick="removePobBuild()" style="flex:0.5;">🗑️ Remove</button>
+          </div>
+          
+          <div id="pobStatus" style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:8px;display:none;"></div>
+          <div id="pobBuildInfo" style="font-size:12px;color:rgba(74,222,128,0.9);margin-top:8px;padding:10px;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);border-radius:6px;display:none;"></div>
+          
+          <div class="info-box" style="margin-top:8px;">
+            <strong>Note:</strong> Importing a build will show gem links and passive tree in separate windows.<br>
+            Gem recommendations will appear in quest steps based on your current act.
+          </div>
+          
+          <div class="setting-item" style="margin-top:12px;">
+            <div class="setting-label">
+              <div class="setting-name">PoB Info Bar</div>
+              <div class="setting-description">Show/hide the floating PoB build info bar</div>
+            </div>
+            <button class="action-btn" onclick="showPobInfoBar()">👁️ Show Info Bar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PoB Import Tab -->
+    <div class="tab-panel" id="tab-pob">
+      <div class="setting-group">
+        <h3 class="setting-group-title">Path of Building Integration</h3>
+        
+        <div class="info-box" style="margin-bottom: 16px;">
+          <strong>ℹ️ About PoB Import:</strong><br/>
+          Import builds from Path of Building to see skill gems and passive tree progression while leveling. 
+          The overlay will show which gems to pick up from quest rewards and track your passive tree allocation.
+        </div>
+        
+        <div class="setting-item" style="flex-direction: column; align-items: stretch; ${overlayVersion === 'poe2' ? 'opacity: 0.5; pointer-events: none;' : ''}">
+          <div class="setting-label">
+            <div class="setting-name">Import PoB Build Code</div>
+            <div class="setting-description">Paste your Path of Building code or pobb.in link${overlayVersion === 'poe2' ? ' (Coming soon for PoE 2)' : ''}</div>
+          </div>
+          <textarea 
+            id="pobCodeInput" 
+            placeholder="Paste PoB code or pobb.in link here..." 
+            style="width: 100%; min-height: 120px; margin-top: 8px; padding: 12px; 
+                   background: var(--bg-tertiary); border: 1px solid var(--border-color); 
+                   border-radius: 6px; color: var(--text-primary); font-family: monospace; 
+                   font-size: 11px; resize: vertical;"
+            ${overlayVersion === 'poe2' ? 'disabled' : ''}
+          ></textarea>
+          <button class="action-btn primary" onclick="importPobCode()" style="margin-top: 8px;" ${overlayVersion === 'poe2' ? 'disabled' : ''}>
+            📥 Import Build
+          </button>
+        </div>
+        
+        <div class="setting-item" style="flex-direction: column; align-items: stretch;">
+          <div class="setting-label">
+            <div class="setting-name">Current Build</div>
+            <div class="setting-description">Currently loaded Path of Building build</div>
+          </div>
+          <div id="pobBuildInfo" style="margin-top: 8px; padding: 12px; background: var(--bg-tertiary); 
+                                       border: 1px solid var(--border-color); border-radius: 6px; 
+                                       font-size: 12px; color: var(--text-secondary);">
+            No build imported
+          </div>
+          <button class="action-btn danger" onclick="clearPobBuild()" style="margin-top: 8px;" id="clearPobBtn" disabled>
+            🗑️ Clear Build
+          </button>
+        </div>
+      </div>
+      
+      <div class="setting-group" style="${overlayVersion === 'poe2' ? 'opacity: 0.5; pointer-events: none;' : ''}">
+        <h3 class="setting-group-title">PoB Windows</h3>
+        
+        <div class="setting-item" style="flex-direction: column; align-items: stretch;">
+          <div class="setting-label">
+            <div class="setting-name">Gem Links Window</div>
+            <div class="setting-description">Floating window showing your gem socket groups per act</div>
+          </div>
+          <button class="action-btn primary" onclick="openGemsWindow()" style="margin-top: 8px;">
+            💎 Open Gems Window
+          </button>
+        </div>
+        
+        <div class="setting-item" style="flex-direction: column; align-items: stretch;">
+          <div class="setting-label">
+            <div class="setting-name">Build Info Bar</div>
+            <div class="setting-description">Quick access to PoB build information and controls</div>
+          </div>
+          <button class="action-btn primary" onclick="openPobInfoBar()" style="margin-top: 8px;">
+            📊 Open Info Bar
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Advanced Tab -->
+    <div class="tab-panel" id="tab-advanced">
+      <div class="setting-group">
+        <h3 class="setting-group-title">Advanced Options</h3>
+        
+        <div class="setting-item" style="flex-direction: column; align-items: stretch;">
+          <div class="setting-label">
+            <div class="setting-name">Reset Progress</div>
+            <div class="setting-description">Clear all completed quest steps and start fresh</div>
+          </div>
+          <button class="action-btn danger" onclick="resetProgress()" style="margin-top: 8px;">🔄 Reset All Progress</button>
+        </div>
+        
+        <div class="setting-item" style="flex-direction: column; align-items: stretch;">
+          <div class="setting-label">
+            <div class="setting-name">Clear Run History</div>
+            <div class="setting-description">Delete all saved act completion times</div>
+          </div>
+          <button class="action-btn danger" onclick="clearHistory()" style="margin-top: 8px;">🗑️ Clear All History</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    const { ipcRenderer } = require('electron');
+    
+    function switchTab(tabName) {
+      // Update buttons
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Update panels
+      document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+      document.getElementById('tab-' + tabName).classList.add('active');
+    }
+    
+    function toggleSetting(element, setting) {
+      element.classList.toggle('active');
+      const value = element.classList.contains('active');
+      updateSetting(setting, value);
+    }
+    
+    function updateSetting(key, value) {
+      // Update display if it's a slider
+      const valueDisplay = document.getElementById(key + '-value');
+      if (valueDisplay) {
+        if (key === 'visibleSteps') {
+          valueDisplay.textContent = value === 99 ? 'All' : value;
+        } else if (key === 'opacity' || key === 'zoomLevel') {
+          valueDisplay.textContent = value + '%';
+        } else if (key === 'fontSize') {
+          valueDisplay.textContent = value + 'px';
+        }
+      }
+      
+      // Send update to main process
+      ipcRenderer.send('leveling-settings-update', { [key]: value });
+    }
+    
+    function autoDetectPath() {
+      ipcRenderer.invoke('auto-detect-client-txt').then(result => {
+        if (result.success) {
+          document.getElementById('clientPathDisplay').textContent = result.path;
+        } else {
+          alert('Could not auto-detect Client.txt. Please use Browse to select it manually.');
+        }
+      });
+    }
+    
+    function selectPath() {
+      ipcRenderer.invoke('select-client-txt-path').then(result => {
+        if (result.success) {
+          document.getElementById('clientPathDisplay').textContent = result.path;
+        }
+      });
+    }
+    
+    function cleanLogFile() {
+      if (confirm('This will clear all content from Client.txt. The file will be recreated by the game. Continue?')) {
+        ipcRenderer.invoke('clean-client-txt').then(result => {
+          if (result.success) {
+            alert('Client.txt has been cleaned successfully!');
+          } else {
+            alert('Failed to clean Client.txt: ' + (result.error || 'Unknown error'));
+          }
+        });
+      }
+    }
+    
+    function resetProgress() {
+      if (confirm('This will reset all your leveling progress. Are you sure?')) {
+        ipcRenderer.invoke('reset-leveling-progress').then(() => {
+          alert('Progress has been reset!');
+        });
+      }
+    }
+    
+    function clearHistory() {
+      if (confirm('This will delete all your saved run times. Are you sure?')) {
+        ipcRenderer.invoke('clear-all-run-history').then(() => {
+          alert('Run history has been cleared!');
+        });
+      }
+    }
+    
+    function importPobCode() {
+      const pobCode = document.getElementById('pobCodeInput').value.trim();
+      if (!pobCode) {
+        alert('Please paste a PoB code or pobb.in URL first.');
+        return;
+      }
+      
+      const infoEl = document.getElementById('pobBuildInfo');
+      const clearBtn = document.getElementById('clearPobBtn');
+      
+      infoEl.textContent = 'Importing build...';
+      infoEl.style.color = 'var(--text-secondary)';
+      
+      ipcRenderer.invoke('import-pob-from-settings', pobCode).then(result => {
+        if (result.success) {
+          infoEl.innerHTML = \`
+            <div style="color: var(--accent-green); font-weight: 600; margin-bottom: 8px;">✅ Build Imported Successfully!</div>
+            <div><strong>\${result.build.className}</strong> \${result.build.ascendancyName ? '(' + result.build.ascendancyName + ')' : ''}</div>
+            <div style="margin-top: 4px;">Level \${result.build.level} | \${result.build.totalNodes || 0} passive nodes | \${result.build.gemsFound || 0} gems</div>
+          \`;
+          
+          clearBtn.disabled = false;
+          
+          // Clear the input
+          document.getElementById('pobCodeInput').value = '';
+        } else {
+          infoEl.innerHTML = \`<div style="color: var(--accent-red);">❌ \${result.error || 'Failed to import build'}</div>\`;
+        }
+      }).catch(err => {
+        infoEl.innerHTML = \`<div style="color: var(--accent-red);">❌ Error: \${err.message}</div>\`;
+      });
+    }
+    
+    function clearPobBuild() {
+      if (!confirm('Remove the current PoB build? This will clear gem recommendations and tree data.')) {
+        return;
+      }
+      
+      ipcRenderer.invoke('remove-pob-build').then(() => {
+        document.getElementById('pobBuildInfo').textContent = 'No build imported';
+        document.getElementById('pobBuildInfo').style.color = 'var(--text-secondary)';
+        document.getElementById('clearPobBtn').disabled = true;
+      });
+    }
+    
+    function openGemsWindow() {
+      ipcRenderer.send('open-gems-window');
+    }
+    
+    function openPobInfoBar() {
+      ipcRenderer.send('show-pob-info-bar');
+    }
+    
+    function showPobInfoBar() {
+      ipcRenderer.send('show-pob-info-bar');
+    }
+    
+    
+    function closeSettings() {
+      ipcRenderer.send('leveling-settings-close');
+    }
+  </script>
+</body>
+</html>
+  `;
+}
