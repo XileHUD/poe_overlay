@@ -4,6 +4,7 @@ import { buildLevelingPopoutHtml } from '../popouts/levelingPopoutTemplate.js';
 import { openLevelingSettingsSplash } from './levelingSettingsSplash.js';
 import { openPobInfoBar, closePobInfoBar, updatePobInfoBar } from './pobInfoBar.js';
 import { openLevelingGemsWindow, updateLevelingGemsWindow, updateLevelingGemsWindowBuild, closeLevelingGemsWindow } from './levelingGemsWindow.js';
+import { createPassiveTreeWindow, sendTreeData } from '../windows/levelingTreeWindow.js';
 import fs from 'fs';
 import path from 'path';
 import { app } from 'electron';
@@ -605,6 +606,35 @@ export class LevelingWindow {
         overlayVersion: this.overlayVersion,
         parentWindow: this.window || undefined
       });
+    });
+
+    // Open passive tree window from PoB info bar
+    ipcMain.on('open-pob-tree-window', () => {
+      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+      const pobBuild = (currentSettings as any).pobBuild || null;
+      
+      if (!pobBuild || !pobBuild.treeSpecs || pobBuild.treeSpecs.length === 0) {
+        console.warn('[LevelingWindow] Cannot open tree window - no PoB build with trees loaded');
+        return;
+      }
+      
+      console.log('[LevelingWindow] Opening tree window with', pobBuild.treeSpecs.length, 'tree specs');
+      
+      const onTreeWindowReady = () => {
+        console.log('[LevelingWindow] Tree window reported ready, sending data');
+        sendTreeData(pobBuild.treeSpecs);
+      };
+
+      ipcMain.once('tree-window-ready', onTreeWindowReady);
+
+      const treeWindow = createPassiveTreeWindow();
+      
+      // If window already loaded (existing instance), send data immediately and cleanup listener
+      if (!treeWindow.webContents.isLoading()) {
+        ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
+        console.log('[LevelingWindow] Tree window already loaded, sending data immediately');
+        sendTreeData(pobBuild.treeSpecs);
+      }
     });
 
     // Close gems window

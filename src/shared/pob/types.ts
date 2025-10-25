@@ -21,10 +21,18 @@ export interface ParsedPobBuild {
 export interface TreeSpec {
   title: string; // "Early Game", "Act 5", "End Game", etc.
   nodes: string; // Comma-separated node IDs
-  url?: string; // Optional tree URL
+  url?: string; // Tree URL in PoB format
   allocatedNodes: number[];
   classId?: number;
   ascendClassId?: number;
+  // Parsed URL data
+  parsedUrl?: {
+    version: number;
+    classId: number;
+    ascendancyId: number;
+    nodes: string[];
+    masteries: Record<string, string>;
+  };
 }
 
 export interface GemSocketGroup {

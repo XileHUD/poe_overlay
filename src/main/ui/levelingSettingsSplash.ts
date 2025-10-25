@@ -581,46 +581,6 @@ function buildLevelingSettingsSplashHtml(
           </div>
         </div>
       </div>
-      
-      <div class="setting-group">
-        <h3 class="setting-group-title">Path of Building Integration</h3>
-        
-        <div class="setting-item" style="flex-direction: column; align-items: stretch;">
-          <div class="setting-label">
-            <div class="setting-name">Import PoB Build</div>
-            <div class="setting-description">Paste PoB code or pobb.in URL to show gem links and passive tree</div>
-          </div>
-          
-          <textarea 
-            class="pob-input" 
-            id="pobCodeInput" 
-            placeholder="Paste your PoB code or pobb.in URL here..." 
-            rows="4"
-            style="width:100%;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:12px;color:#fff;font-family:'Consolas',monospace;font-size:11px;resize:vertical;margin-top:8px;"
-          ></textarea>
-          
-          <div class="button-group" style="margin-top:8px;">
-            <button class="action-btn" onclick="importPobBuild()" style="flex:1;">⬆️ Import Build</button>
-            <button class="action-btn danger" onclick="removePobBuild()" style="flex:0.5;">🗑️ Remove</button>
-          </div>
-          
-          <div id="pobStatus" style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:8px;display:none;"></div>
-          <div id="pobBuildInfo" style="font-size:12px;color:rgba(74,222,128,0.9);margin-top:8px;padding:10px;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);border-radius:6px;display:none;"></div>
-          
-          <div class="info-box" style="margin-top:8px;">
-            <strong>Note:</strong> Importing a build will show gem links and passive tree in separate windows.<br>
-            Gem recommendations will appear in quest steps based on your current act.
-          </div>
-          
-          <div class="setting-item" style="margin-top:12px;">
-            <div class="setting-label">
-              <div class="setting-name">PoB Info Bar</div>
-              <div class="setting-description">Show/hide the floating PoB build info bar</div>
-            </div>
-            <button class="action-btn" onclick="showPobInfoBar()">👁️ Show Info Bar</button>
-          </div>
-        </div>
-      </div>
     </div>
     
     <!-- PoB Import Tab -->

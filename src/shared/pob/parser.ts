@@ -5,8 +5,10 @@
  */
 
 import { DOMParser } from '@xmldom/xmldom';
-import { ParsedPobBuild, GemSocketGroup, GemInfo, TreeSpec, SkillSet } from './types.js';
+import { ParsedPobBuild, TreeSpec, GemSocketGroup, GemInfo, SkillSet } from './types';
+import { parseTreeUrl } from './treeParser';
 import { decodePobCode } from './decoder.js';
+import { nodeLookup } from './treeLoader';  // Import to filter invalid nodes
 
 export async function parsePobCode(code: string): Promise<ParsedPobBuild | null> {
   try {
@@ -54,13 +56,27 @@ export async function parsePobCode(code: string): Promise<ParsedPobBuild | null>
       const urlElement = spec.getElementsByTagName('URL')[0];
       const url = urlElement?.textContent?.trim();
       
+      // Parse tree URL to extract version, class, nodes
+      let parsedUrl;
+      if (url) {
+        try {
+          parsedUrl = parseTreeUrl(url);
+          // Filter nodes to only include ones that exist in the tree (like exile-leveling does)
+          parsedUrl.nodes = parsedUrl.nodes.filter(nodeId => nodeLookup[nodeId] !== undefined);
+          console.log(`[PoB Parser] Parsed tree "${title}": ${parsedUrl.nodes.length} valid nodes (filtered from tree)`);
+        } catch (error) {
+          console.error(`[PoB Parser] Failed to parse tree URL for "${title}":`, error);
+        }
+      }
+      
       treeSpecs.push({
         title,
         nodes,
         url,
         allocatedNodes,
         classId: parseInt(spec.getAttribute('classId') || '0', 10),
-        ascendClassId: parseInt(spec.getAttribute('ascendClassId') || '0', 10)
+        ascendClassId: parseInt(spec.getAttribute('ascendClassId') || '0', 10),
+        parsedUrl
       });
       
       // Use tree version from first spec
