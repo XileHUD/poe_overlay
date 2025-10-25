@@ -136,14 +136,14 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
     }
     
     .pob-bar {
-      background: linear-gradient(135deg, rgba(40, 44, 52, 0.95), rgba(30, 34, 42, 0.95));
-      border: 2px solid rgba(74, 222, 128, 0.4);
-      border-radius: 8px;
-      padding: 8px 12px;
+      background: rgba(26, 26, 26, 0.9);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      border-radius: 6px;
+      padding: 4px 8px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
       -webkit-app-region: drag;
       height: 100%;
     }
@@ -155,8 +155,8 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
     }
     
     .class-name {
-      font-size: 13px;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 600;
       color: #4ade80;
       white-space: nowrap;
       overflow: hidden;
@@ -164,34 +164,33 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
     }
     
     .class-details {
-      font-size: 10px;
-      color: rgba(255, 255, 255, 0.6);
-      margin-top: 2px;
+      font-size: 9px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 1px;
     }
     
     .button-group {
       display: flex;
-      gap: 6px;
+      gap: 4px;
       -webkit-app-region: no-drag;
     }
     
     .pob-btn {
-      padding: 6px 12px;
-      background: rgba(74, 222, 128, 0.2);
-      border: 1px solid rgba(74, 222, 128, 0.4);
-      border-radius: 4px;
+      padding: 3px 8px;
+      background: rgba(74, 222, 128, 0.1);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      border-radius: 3px;
       color: #4ade80;
-      font-size: 11px;
-      font-weight: 600;
+      font-size: 10px;
+      font-weight: 500;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.15s;
       white-space: nowrap;
     }
     
     .pob-btn:hover {
-      background: rgba(74, 222, 128, 0.35);
-      border-color: #4ade80;
-      transform: translateY(-1px);
+      background: rgba(74, 222, 128, 0.2);
+      border-color: rgba(74, 222, 128, 0.5);
     }
     
     .pob-btn:active {
@@ -199,26 +198,25 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
     }
     
     .close-btn {
-      width: 20px;
-      height: 20px;
-      background: rgba(217, 83, 79, 0.2);
-      border: 1px solid rgba(217, 83, 79, 0.4);
-      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      background: rgba(217, 83, 79, 0.1);
+      border: 1px solid rgba(217, 83, 79, 0.3);
+      border-radius: 3px;
       color: #d9534f;
-      font-size: 14px;
+      font-size: 12px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s;
+      transition: all 0.15s;
       flex-shrink: 0;
       -webkit-app-region: no-drag;
     }
     
     .close-btn:hover {
-      background: rgba(217, 83, 79, 0.4);
-      border-color: #d9534f;
-      transform: scale(1.1);
+      background: rgba(217, 83, 79, 0.2);
+      border-color: rgba(217, 83, 79, 0.5);
     }
   </style>
 </head>

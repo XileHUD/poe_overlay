@@ -219,14 +219,14 @@ export function buildLevelingPopoutHtml(): string {
     .timer-display{position:relative;cursor:help;}
     
     /* PoB Gem Compact Display Styles */
-    .pob-gem-compact{display:flex;align-items:center;gap:6px;padding:2px 0;font-size:calc(var(--font-size) - 1px);line-height:1.4;}
-    .pob-gem-pill{display:inline-flex;align-items:center;gap:3px;padding:5px 12px;border-radius:6px;transition:all 0.15s;border:none;}
-    .pob-gem-pill:hover{background:rgba(255,255,255,0.08);transform:translateX(2px);}
-    .pob-gem-icon{font-size:10px;line-height:1;}
-    .pob-gem-verb{font-weight:600;color:rgba(255,255,255,0.9);font-size:calc(var(--font-size) - 2px);text-transform:uppercase;letter-spacing:0.5px;min-width:32px;}
-    .pob-gem-name-inline{font-weight:500;flex:1;}
-    .pob-gem-vendor{font-size:calc(var(--font-size) - 2px);color:rgba(255,255,255,0.5);font-style:italic;margin-left:auto;}
-    .pob-gem-cost{font-size:12px;opacity:0.7;margin-left:6px;}
+    .pob-gem-compact{display:flex;align-items:center;gap:4px;padding:1px 0;font-size:calc(var(--font-size) - 1px);line-height:1.3;}
+    .pob-gem-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:3px;transition:all 0.12s;border:none;font-size:calc(var(--font-size) - 1px);}
+    .pob-gem-pill:hover{background:rgba(255,255,255,0.05);transform:translateX(1px);}
+    .pob-gem-icon{font-size:9px;line-height:1;}
+    .pob-gem-verb{font-weight:500;color:rgba(255,255,255,0.85);font-size:calc(var(--font-size) - 2px);text-transform:uppercase;letter-spacing:0.3px;min-width:28px;}
+    .pob-gem-name-inline{font-weight:500;flex:1;font-size:calc(var(--font-size) - 1px);}
+    .pob-gem-vendor{font-size:calc(var(--font-size) - 2px);color:rgba(255,255,255,0.4);font-style:italic;margin-left:auto;}
+    .pob-gem-cost{font-size:10px;opacity:0.6;margin-left:4px;}
     
     /* History Modal Styles */
     .history-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:999999;backdrop-filter:blur(8px);animation:fadeIn 0.2s;}
@@ -533,8 +533,8 @@ function renderPobGemList(gems) {
     const npcName = gem.vendor || 'NPC';
     
     html += '<div class="pob-gem-compact">';
-    // Use opaque background colors (30 instead of 12 for better visibility)
-    html += '<span class="pob-gem-pill" style="border-left:3px solid ' + color + ';background:' + color + '30;">';
+    // Use subtle background colors with thin border for slick look
+    html += '<span class="pob-gem-pill" style="border-left:2px solid ' + color + ';background:' + color + '18;">';
     html += '<span class="pob-gem-verb">' + verb + '</span>';
     html += '<span class="pob-gem-name-inline">' + escapeHtml(gem.name) + '</span>';
     html += '<span class="pob-gem-vendor">from ' + escapeHtml(npcName) + '</span>';
@@ -1629,6 +1629,21 @@ async function loadPobBuild() {
 ipcRenderer.on('pob-build-imported', (event, build) => {
   console.log('PoB build imported:', build);
   loadPobBuild();
+});
+
+// Listen for PoB build removal
+ipcRenderer.on('pob-build-removed', () => {
+  console.log('[levelingPopout] PoB build removed - clearing gem recommendations');
+  state.pobBuild = null;
+  
+  // Hide tree icon
+  const treeIcon = document.getElementById('treeIcon');
+  if (treeIcon) {
+    treeIcon.classList.remove('visible');
+  }
+  
+  // Re-render to clear gem recommendations from tasks
+  render();
 });
 
 // Listen for character level-up events

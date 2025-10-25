@@ -150,9 +150,6 @@ export class LevelingWindow {
 
     // Load inline HTML (like floating button does)
     this.window.loadURL(this.buildDataUrl());
-    
-    // Auto-open DevTools for debugging
-    this.window.webContents.openDevTools({ mode: 'detach' });
 
     // Check if there's a saved PoB build and auto-open the info bar
     this.window.webContents.once('did-finish-load', () => {

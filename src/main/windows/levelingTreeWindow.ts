@@ -84,25 +84,19 @@ function buildTreeWindowHtml(): string {
 
     #header {
       background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-      padding: 12px 16px;
+      padding: 4px 8px;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       border-bottom: 1px solid #3a3a3a;
       -webkit-app-region: drag;
       cursor: move;
-    }
-
-    #header h1 {
-      font-size: 16px;
-      font-weight: 600;
-      color: #c8c8c8;
-      user-select: none;
+      min-height: 20px;
     }
 
     #header-controls {
       display: flex;
-      gap: 8px;
+      gap: 4px;
       -webkit-app-region: no-drag;
     }
 
@@ -110,11 +104,11 @@ function buildTreeWindowHtml(): string {
       background: transparent;
       color: #888;
       border: 1px solid #444;
-      width: 24px;
-      height: 24px;
-      border-radius: 4px;
+      width: 20px;
+      height: 20px;
+      border-radius: 3px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 11px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -128,23 +122,29 @@ function buildTreeWindowHtml(): string {
     }
 
     #navigation {
-      background: #1a1a1a;
-      padding: 10px 16px;
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      background: rgba(26, 26, 26, 0.95);
+      padding: 8px;
       display: flex;
-      gap: 10px;
+      gap: 6px;
       align-items: center;
-      border-bottom: 1px solid #2a2a2a;
+      border: 1px solid #3a3a3a;
+      border-radius: 6px;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
 
     #spec-selector {
       background: #2a2a2a;
       color: #c8c8c8;
       border: 1px solid #3a3a3a;
-      padding: 6px 12px;
+      padding: 5px 10px;
       border-radius: 4px;
-      font-size: 13px;
+      font-size: 12px;
       cursor: pointer;
-      flex: 1;
+      min-width: 180px;
     }
 
     #spec-selector:hover {
@@ -155,10 +155,10 @@ function buildTreeWindowHtml(): string {
       background: #2a2a2a;
       color: #c8c8c8;
       border: 1px solid #3a3a3a;
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 4px;
       cursor: pointer;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
       transition: all 0.2s;
     }
@@ -310,23 +310,22 @@ function buildTreeWindowHtml(): string {
 <body>
   <div id="window-container">
     <div id="header">
-      <h1 id="spec-title">Passive Skill Tree</h1>
       <div id="header-controls">
         <button class="header-btn" onclick="window.close()" title="Close">✕</button>
       </div>
     </div>
 
-    <div id="navigation">
-      <button id="prev-btn" onclick="previousSpec()">◄</button>
-      <select id="spec-selector" onchange="selectSpec()">
-        <option value="0">Loading...</option>
-      </select>
-      <button id="next-btn" onclick="nextSpec()">►</button>
-    </div>
-
     <div id="viewport-container">
       <div id="tree-viewport">
         <div id="tree-content"></div>
+      </div>
+
+      <div id="navigation">
+        <button id="prev-btn" onclick="previousSpec()">◄</button>
+        <select id="spec-selector" onchange="selectSpec()">
+          <option value="0">Loading...</option>
+        </select>
+        <button id="next-btn" onclick="nextSpec()">►</button>
       </div>
 
       <div id="zoom-controls">
@@ -433,9 +432,6 @@ function buildTreeWindowHtml(): string {
 
       const currentSpec = currentSpecs[currentIndex];
       const previousSpec = currentIndex > 0 ? currentSpecs[currentIndex - 1] : null;
-
-      document.getElementById('spec-title').textContent = 
-        currentSpec.title || \`Tree \${currentIndex + 1}\`;
 
       // Calculate delta (like exile-leveling's buildUrlTreeDelta)
       const currentNodes = new Set(currentSpec.parsedUrl?.nodes || []);

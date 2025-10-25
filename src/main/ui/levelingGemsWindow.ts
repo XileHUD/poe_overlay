@@ -164,98 +164,99 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
     }
     
     .header {
-      padding: 12px 20px;
-      background: linear-gradient(135deg, rgba(74, 158, 255, 0.12) 0%, rgba(74, 158, 255, 0.06) 100%);
-      border-bottom: 2px solid rgba(74, 158, 255, 0.25);
+      padding: 4px 8px;
+      background: rgba(26, 26, 26, 0.85);
+      border-bottom: 1px solid rgba(74, 158, 255, 0.2);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-shrink: 0;
       -webkit-app-region: drag;
       border-radius: 8px 8px 0 0;
+      min-height: 24px;
     }
     
     .header-title {
       display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    
-    .header-title h1 {
-      margin: 0;
-      font-size: 18px;
-      color: var(--accent-blue);
-      font-weight: 600;
-    }
-    
-    .header-subtitle {
+      align-items: center;
+      gap: 8px;
       font-size: 11px;
       color: var(--text-secondary);
     }
     
+    .header-title h1 {
+      margin: 0;
+      font-size: 11px;
+      color: var(--accent-blue);
+      font-weight: 500;
+    }
+    
+    .header-subtitle {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+    
     .header-controls {
       display: flex;
-      gap: 8px;
+      gap: 4px;
       align-items: center;
       -webkit-app-region: no-drag;
     }
     
     .act-nav-btn {
-      width: 28px;
-      height: 28px;
-      background: rgba(74, 158, 255, 0.15);
-      border: 2px solid rgba(74, 158, 255, 0.4);
-      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      background: rgba(74, 158, 255, 0.1);
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      border-radius: 3px;
       color: var(--accent-blue);
-      font-size: 16px;
+      font-size: 11px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s ease;
+      transition: all 0.15s ease;
       flex-shrink: 0;
     }
     
     .act-nav-btn:hover:not(.disabled) {
-      background: rgba(74, 158, 255, 0.3);
-      border-color: var(--accent-blue);
-      transform: scale(1.1);
+      background: rgba(74, 158, 255, 0.2);
+      border-color: rgba(74, 158, 255, 0.5);
     }
     
     .act-nav-btn.disabled {
-      opacity: 0.3;
+      opacity: 0.25;
       cursor: not-allowed;
     }
     
     .close-btn {
-      width: 32px;
-      height: 32px;
-      background: rgba(217, 83, 79, 0.15);
-      border: 2px solid rgba(217, 83, 79, 0.4);
-      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      background: rgba(217, 83, 79, 0.1);
+      border: 1px solid rgba(217, 83, 79, 0.3);
+      border-radius: 3px;
       color: var(--accent-red);
-      font-size: 20px;
+      font-size: 12px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s ease;
+      transition: all 0.15s ease;
       flex-shrink: 0;
     }
     
     .close-btn:hover {
-      background: rgba(217, 83, 79, 0.3);
-      border-color: var(--accent-red);
-      transform: scale(1.1);
+      background: rgba(217, 83, 79, 0.2);
+      border-color: rgba(217, 83, 79, 0.5);
     }
     
     .content {
       flex: 1;
       overflow-y: auto;
-      padding: 16px;
+      padding: 10px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 8px;
     }
     
     .no-build {
@@ -278,40 +279,40 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
     }
     
     .socket-group {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 12px;
+      background: rgba(37, 37, 37, 0.6);
+      border: 1px solid rgba(64, 64, 64, 0.5);
+      border-radius: 6px;
+      padding: 8px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
     
     .socket-group-header {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      gap: 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     }
     
     .socket-group-icon {
-      font-size: 16px;
+      font-size: 13px;
     }
     
     .socket-group-title {
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 500;
       color: var(--accent-blue);
       flex: 1;
     }
     
     .socket-count {
-      font-size: 11px;
+      font-size: 9px;
       color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2px 8px;
-      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 1px 6px;
+      border-radius: 3px;
     }
     
     .gems-list {
@@ -323,16 +324,16 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
     .gem-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 8px;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 4px;
-      border-left: 3px solid var(--gem-color);
-      transition: all 0.2s;
+      gap: 6px;
+      padding: 4px 6px;
+      background: rgba(255, 255, 255, 0.015);
+      border-radius: 3px;
+      border-left: 2px solid var(--gem-color);
+      transition: all 0.15s;
     }
     
     .gem-item:hover {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.04);
     }
     
     .gem-item.str {
@@ -352,14 +353,14 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
     }
     
     .gem-icon {
-      font-size: 14px;
-      width: 20px;
+      font-size: 12px;
+      width: 16px;
       text-align: center;
     }
     
     .gem-name {
       flex: 1;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-primary);
     }
     
@@ -369,27 +370,27 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
     }
     
     .gem-level {
-      font-size: 10px;
+      font-size: 9px;
       color: var(--text-muted);
       background: rgba(0, 0, 0, 0.3);
-      padding: 2px 6px;
-      border-radius: 3px;
+      padding: 1px 4px;
+      border-radius: 2px;
       font-family: monospace;
     }
     
     .gem-quest-info {
-      font-size: 10px;
+      font-size: 9px;
       color: var(--accent-green);
-      padding: 2px 6px;
-      border-radius: 3px;
-      background: rgba(74, 222, 128, 0.1);
-      border: 1px solid rgba(74, 222, 128, 0.3);
+      padding: 1px 5px;
+      border-radius: 2px;
+      background: rgba(74, 222, 128, 0.08);
+      border: 1px solid rgba(74, 222, 128, 0.25);
     }
     
     .gem-quest-info.buy {
       color: var(--accent-blue);
-      background: rgba(74, 158, 255, 0.1);
-      border-color: rgba(74, 158, 255, 0.3);
+      background: rgba(74, 158, 255, 0.08);
+      border-color: rgba(74, 158, 255, 0.25);
     }
     
     .act-filter {
