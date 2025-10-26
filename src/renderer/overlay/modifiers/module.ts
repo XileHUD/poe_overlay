@@ -369,24 +369,22 @@ function renderSection(section: any, domainId?: string){
             ${mod.tiers && mod.tiers.length > 0 ? `
               <div class="tier-list" id="tiers-${section.domain}-${side}-${modIndex}" style="display:none;">
                 ${(()=>{
-                  // Build per-group reverse numbering
-                  const groups = new Map<string, number>();
-                  const counts = new Map<string, number>();
-                  mod.tiers.forEach((t:any)=>{ const key = groupKeyForTierText(String(t.text_plain||t.text||'')); counts.set(key, (counts.get(key)||0)+1); });
-                  counts.forEach((cnt, key)=> groups.set(key, cnt)); // start from count and decrement
+                  // Use preserved original tier numbers instead of recalculating from filtered array
+                  // This ensures that when filters hide some tiers, the remaining ones keep their true tier numbers
                   
                   // Check if this is a multi-mod (has more than one distinct group)
-                  const uniqueGroups = Array.from(counts.keys());
-                  const isMultiMod = uniqueGroups.length > 1;
+                  const groupKeys = new Set<string>();
+                  mod.tiers.forEach((t:any)=>{ groupKeys.add(groupKeyForTierText(String(t.text_plain||t.text||''))); });
+                  const isMultiMod = groupKeys.size > 1;
                   
                   let lastKey: string | null = null;
                   let html = '';
                   
                   mod.tiers.forEach((tier:any, index:number)=>{
                     const key = groupKeyForTierText(String(tier.text_plain||tier.text||''));
-                    const current = groups.get(key) || counts.get(key) || 1;
-                    const label = `T${current}`;
-                    groups.set(key, Math.max(0, current - 1));
+                    // Use the preserved original tier number, not a recalculated one
+                    const tierNum = typeof tier.__originalTierNumber === 'number' ? tier.__originalTierNumber : (mod.tiers.length - index);
+                    const label = `T${tierNum}`;
                     
                     // Add divider between different groups for multi-mods
                     if (isMultiMod && lastKey !== null && lastKey !== key) {
@@ -1628,6 +1626,19 @@ export function renderFilteredContent(data: any){
           // iLvl filtering logic (non-mutating; clone per mod)
           let matchesIlvl = true;
           let newTiers = Array.isArray(mod.tiers) ? [...mod.tiers] : [];
+          
+          // Preserve original tier numbers before filtering
+          // Calculate tier numbers based on position in FULL array (reverse order: first = highest tier)
+          if (newTiers.length > 0) {
+            newTiers.forEach((tier: any, idx: number) => {
+              if (!tier) return;
+              // Only set if not already set (preserve existing calculations)
+              if (typeof tier.__originalTierNumber !== 'number') {
+                tier.__originalTierNumber = newTiers.length - idx;
+              }
+            });
+          }
+          
           if (ilvlFilteringActive) {
             const baseIlvl = Number(mod.ilvl ?? mod.level ?? 0) || 0;
             const maxCap = (ilvlMax == null || ilvlMax <= 0) ? Infinity : ilvlMax;
