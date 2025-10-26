@@ -163,6 +163,8 @@ export class FloatingButton {
     -webkit-app-region:no-drag;
     backdrop-filter: blur(6px);
     font-weight:700;
+    -webkit-user-select:none;
+    user-select:none;
   }
   
   .close-button:hover {
@@ -250,6 +252,8 @@ export class FloatingButton {
     z-index:1; 
     -webkit-app-region:no-drag;
     backdrop-filter: blur(8px);
+    -webkit-user-select:none;
+    user-select:none;
   }
   
   .main-button:hover { 
@@ -287,6 +291,8 @@ export class FloatingButton {
     z-index:10; 
     -webkit-app-region:no-drag;
     backdrop-filter: blur(6px);
+    -webkit-user-select:none;
+    user-select:none;
   }
   
   body.pinned .pin-button { 

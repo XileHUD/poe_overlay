@@ -1,10 +1,10 @@
-import { BrowserWindow, screen, ipcMain } from 'electron';
+import { BrowserWindow, screen, ipcMain, globalShortcut } from 'electron';
 import { SettingsService } from '../services/settingsService.js';
 import { buildLevelingPopoutHtml } from '../popouts/levelingPopoutTemplate.js';
 import { openLevelingSettingsSplash } from './levelingSettingsSplash.js';
 import { openPobInfoBar, closePobInfoBar, updatePobInfoBar } from './pobInfoBar.js';
-import { openLevelingGemsWindow, updateLevelingGemsWindow, updateLevelingGemsWindowBuild, closeLevelingGemsWindow } from './levelingGemsWindow.js';
-import { createPassiveTreeWindow, sendTreeData } from '../windows/levelingTreeWindow.js';
+import { openLevelingGemsWindow, updateLevelingGemsWindow, updateLevelingGemsWindowBuild, closeLevelingGemsWindow, isGemsWindowOpen } from './levelingGemsWindow.js';
+import { createPassiveTreeWindow, sendTreeData, isTreeWindowOpen, closeTreeWindow } from '../windows/levelingTreeWindow.js';
 import fs from 'fs';
 import path from 'path';
 import { app } from 'electron';
@@ -33,6 +33,7 @@ export class LevelingWindow {
   private completedSteps: Set<string> = new Set();
   private layoutMode: 'tall' | 'wide' = 'tall';
   private isWideMode = false;
+  private registeredHotkeys: string[] = [];
 
   constructor(params: LevelingWindowParams) {
     this.settingsService = params.settingsService;
@@ -43,6 +44,7 @@ export class LevelingWindow {
     this.loadZoneRegistry();
     this.loadProgress();
     this.registerIpcHandlers();
+    this.registerHotkeys();
     
     // Auto-detect client.txt on first run (if not already attempted)
     this.autoDetectClientTxtOnStartup();
@@ -416,6 +418,7 @@ export class LevelingWindow {
         ...c,
         uiSettings: uiSettings
       }));
+      
       return true;
     });
 
@@ -616,6 +619,23 @@ export class LevelingWindow {
       if (this.window && !this.window.isDestroyed()) {
         this.window.webContents.send('leveling-settings-changed', updates);
       }
+    });
+
+    // Handle hotkey updates from settings splash
+    ipcMain.on('leveling-hotkey-update', (event, { hotkeyName, accelerator }) => {
+      const current = this.settingsService.get(this.getLevelingWindowKey()) || {};
+      const currentHotkeys = (current as any).hotkeys || {};
+      
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+        ...c,
+        hotkeys: {
+          ...currentHotkeys,
+          [hotkeyName]: accelerator
+        }
+      } as any));
+      
+      // Re-register hotkeys
+      this.registerHotkeys();
     });
 
     // Open gems window from PoB info bar
@@ -1392,6 +1412,114 @@ export class LevelingWindow {
         success: false,
         error: error.message || 'Failed to import PoB code'
       };
+    }
+  }
+
+  private registerHotkeys(): void {
+    // Unregister all previously registered hotkeys
+    for (const accelerator of this.registeredHotkeys) {
+      try {
+        globalShortcut.unregister(accelerator);
+      } catch (e) {
+        console.warn('[LevelingWindow] Failed to unregister hotkey:', accelerator, e);
+      }
+    }
+    this.registeredHotkeys = [];
+    
+    // Get current hotkey settings
+    const settings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+    const hotkeys = (settings as any).hotkeys || {};
+    
+    // Register prev hotkey
+    if (hotkeys.prev) {
+      try {
+        globalShortcut.register(hotkeys.prev, () => {
+          if (this.window && !this.window.isDestroyed()) {
+            this.window.webContents.send('hotkey-action', 'prev');
+          }
+        });
+        this.registeredHotkeys.push(hotkeys.prev);
+        console.log('[LevelingWindow] Registered prev hotkey:', hotkeys.prev);
+      } catch (e) {
+        console.error('[LevelingWindow] Failed to register prev hotkey:', hotkeys.prev, e);
+      }
+    }
+    
+    // Register next hotkey
+    if (hotkeys.next) {
+      try {
+        globalShortcut.register(hotkeys.next, () => {
+          if (this.window && !this.window.isDestroyed()) {
+            this.window.webContents.send('hotkey-action', 'next');
+          }
+        });
+        this.registeredHotkeys.push(hotkeys.next);
+        console.log('[LevelingWindow] Registered next hotkey:', hotkeys.next);
+      } catch (e) {
+        console.error('[LevelingWindow] Failed to register next hotkey:', hotkeys.next, e);
+      }
+    }
+    
+    // Register tree hotkey
+    if (hotkeys.tree) {
+      try {
+        globalShortcut.register(hotkeys.tree, () => {
+          // Toggle tree window (close if open, open if closed)
+          if (isTreeWindowOpen()) {
+            closeTreeWindow();
+            console.log('[LevelingWindow] Tree window closed via hotkey');
+          } else {
+            const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+            const pobBuild = (currentSettings as any).pobBuild || null;
+            
+            if (pobBuild && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
+              const onTreeWindowReady = () => {
+                sendTreeData(pobBuild.treeSpecs, this.overlayVersion);
+              };
+              ipcMain.once('tree-window-ready', onTreeWindowReady);
+              const treeWindow = createPassiveTreeWindow();
+              if (!treeWindow.webContents.isLoading()) {
+                ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
+                sendTreeData(pobBuild.treeSpecs, this.overlayVersion);
+              }
+              console.log('[LevelingWindow] Tree window opened via hotkey');
+            }
+          }
+        });
+        this.registeredHotkeys.push(hotkeys.tree);
+        console.log('[LevelingWindow] Registered tree hotkey:', hotkeys.tree);
+      } catch (e) {
+        console.error('[LevelingWindow] Failed to register tree hotkey:', hotkeys.tree, e);
+      }
+    }
+    
+    // Register gems hotkey
+    if (hotkeys.gems) {
+      try {
+        globalShortcut.register(hotkeys.gems, () => {
+          // Toggle gems window (close if open, open if closed)
+          if (isGemsWindowOpen()) {
+            closeLevelingGemsWindow();
+            console.log('[LevelingWindow] Gems window closed via hotkey');
+          } else {
+            const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+            const pobBuild = (currentSettings as any).pobBuild || null;
+            
+            if (pobBuild) {
+              openLevelingGemsWindow({
+                settingsService: this.settingsService,
+                overlayVersion: this.overlayVersion,
+                parentWindow: this.window || undefined
+              });
+              console.log('[LevelingWindow] Gems window opened via hotkey');
+            }
+          }
+        });
+        this.registeredHotkeys.push(hotkeys.gems);
+        console.log('[LevelingWindow] Registered gems hotkey:', hotkeys.gems);
+      } catch (e) {
+        console.error('[LevelingWindow] Failed to register gems hotkey:', hotkeys.gems, e);
+      }
     }
   }
 

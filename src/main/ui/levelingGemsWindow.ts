@@ -111,6 +111,10 @@ export function closeLevelingGemsWindow() {
   }
 }
 
+export function isGemsWindowOpen(): boolean {
+  return gemsWindow !== null && !gemsWindow.isDestroyed();
+}
+
 function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayVersion: OverlayVersion): string {
   const className = pobBuild?.className || 'No Build Loaded';
   const ascendancy = pobBuild?.ascendancyName || '';

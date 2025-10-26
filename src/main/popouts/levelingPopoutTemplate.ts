@@ -19,9 +19,16 @@ export function buildLevelingPopoutHtml(): string {
     *{margin:0;padding:0;box-sizing:border-box;}
     :root{--font-size:12px;}
     html,body{font-family:'Segoe UI',Arial,sans-serif;font-size:var(--font-size);color:#ddd;background:transparent;-webkit-user-select:none;overflow:hidden;width:100%;height:100%;}
+    
+    /* Disable all transitions when applying settings */
+    .no-transitions,
+    .no-transitions * {
+      transition: none !important;
+    }
+    
     .window{display:flex;flex-direction:column;height:100vh;border:2px solid rgba(254,192,118,0.4);border-radius:12px;box-shadow:0 12px 48px rgba(0,0,0,0.9);}
     /* Minimal Mode - slim drag header */
-    .window.minimal-mode{border:none!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;}
+    .window.minimal-mode{pointer-events:none!important;border:none!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;}
     .window.minimal-mode .header{-webkit-app-region:no-drag;pointer-events:none!important;padding:0!important;background:transparent!important;border:none!important;min-height:0!important;height:0!important;overflow:visible!important;}
     .window.minimal-mode .drag-handle{display:flex!important;flex-direction:column;position:absolute;top:0;left:0;right:0;height:24px;background:rgba(32,36,44,0.85);backdrop-filter:blur(4px);border-bottom:1px solid rgba(74,222,128,0.2);padding:4px 6px;gap:0px;z-index:100;pointer-events:auto!important;-webkit-app-region:drag;}
     .window.minimal-mode .drag-handle-row{display:flex;align-items:center;gap:4px;width:100%;-webkit-app-region:drag;}
@@ -31,7 +38,15 @@ export function buildLevelingPopoutHtml(): string {
     .window.minimal-mode .drag-handle .minimal-btn:hover{opacity:1!important;background:rgba(74,222,128,0.3);}
     .window.minimal-mode .drag-handle .header-btn{width:20px!important;height:16px!important;font-size:10px!important;display:flex!important;align-items:center;justify-content:center;pointer-events:auto!important;-webkit-app-region:no-drag;opacity:0.5;transition:opacity 0.2s;}
     .window.minimal-mode .drag-handle .header-btn:hover{opacity:1!important;}
-    .window.minimal-mode .drag-handle-info{display:none!important;}
+    .window.minimal-mode .drag-handle{height:auto!important;gap:2px!important;}
+    .window.minimal-mode .drag-handle-info{display:flex!important;flex-direction:row;gap:6px;align-items:center;padding:4px 14px;-webkit-app-region:no-drag;pointer-events:auto!important;}
+    .window.minimal-mode .drag-handle-timer{font-size:9px;color:rgba(255,255,255,0.8);font-weight:600;white-space:nowrap;cursor:default;font-family:monospace;}
+    .window.minimal-mode .drag-handle-progress{display:flex;align-items:center;gap:4px;flex:1;min-width:0;}
+    .window.minimal-mode .drag-handle-progress-bar{flex:1;height:4px;background:rgba(0,0,0,0.4);border-radius:2px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);}
+    .window.minimal-mode .drag-handle-progress-fill{height:100%;background:linear-gradient(90deg,#4ade80,#22c55e);transition:width 0.3s;box-shadow:0 0 6px rgba(74,222,128,0.5);}
+    .window.minimal-mode .drag-handle-progress-text{font-size:8px;color:rgba(255,255,255,0.7);font-weight:600;min-width:28px;text-align:right;}
+    .window.minimal-mode .timer-btn{width:auto!important;height:14px!important;font-size:8px!important;padding:0 4px!important;background:rgba(74,222,128,0.2)!important;border:1px solid rgba(74,222,128,0.3)!important;color:rgba(255,255,255,0.8)!important;border-radius:3px!important;cursor:pointer!important;pointer-events:auto!important;-webkit-app-region:no-drag;opacity:0.7;transition:opacity 0.2s;}
+    .window.minimal-mode .timer-btn:hover{opacity:1!important;background:rgba(74,222,128,0.4)!important;}
     .window.minimal-mode #backToNormalBtn{display:none!important;}
     .window.minimal-mode #goToUltraBtn{display:flex!important;}
     .window.minimal-mode .header-content,
@@ -39,9 +54,14 @@ export function buildLevelingPopoutHtml(): string {
     .window.minimal-mode .zone-icon,
     .window.minimal-mode .close,
     .window.minimal-mode .controls,
+    .window.minimal-mode .timer-row,
     .window.minimal-mode .minimal-controls{display:none!important;}
-    .window.minimal-mode .footer{background:transparent!important;border:none!important;padding:4px 8px;}
-    .window.minimal-mode .list{padding:28px 4px 4px 4px!important;}
+    .window.minimal-mode .footer{display:none!important;}
+    .window.minimal-mode .list{padding:48px 4px 4px 4px!important;pointer-events:auto!important;}
+    .window.minimal-mode .list::-webkit-scrollbar{display:none!important;}
+    .window.minimal-mode .list{scrollbar-width:none!important;-ms-overflow-style:none!important;}
+    .window.minimal-mode .leveling-step,
+    .window.minimal-mode .leveling-group{pointer-events:auto!important;}
     
     /* Ultra Minimal Mode - click-through with no interactivity */
     .window.ultra-minimal-mode{border:none!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;}
@@ -54,8 +74,8 @@ export function buildLevelingPopoutHtml(): string {
     .window.ultra-minimal-mode .drag-handle .minimal-btn:hover{opacity:1!important;background:rgba(74,158,255,0.3);}
     .window.ultra-minimal-mode .drag-handle .header-btn{width:20px!important;height:16px!important;font-size:10px!important;display:flex!important;align-items:center;justify-content:center;pointer-events:auto!important;-webkit-app-region:no-drag;opacity:0.5;transition:opacity 0.2s;}
     .window.ultra-minimal-mode .drag-handle .header-btn:hover{opacity:1!important;}
-    .window.ultra-minimal-mode .drag-handle-info{display:flex!important;flex-direction:row;gap:6px;align-items:center;padding-left:14px;-webkit-app-region:no-drag;pointer-events:auto!important;}
-    .window.ultra-minimal-mode .drag-handle-timer{font-size:9px;color:rgba(255,255,255,0.8);font-weight:600;white-space:nowrap;cursor:default;}
+    .window.ultra-minimal-mode .drag-handle-info{display:flex!important;flex-direction:row;gap:6px;align-items:center;padding:4px 14px;-webkit-app-region:no-drag;pointer-events:auto!important;}
+    .window.ultra-minimal-mode .drag-handle-timer{font-size:9px;color:rgba(255,255,255,0.8);font-weight:600;white-space:nowrap;cursor:default;font-family:monospace;}
     .window.ultra-minimal-mode .drag-handle-progress{display:flex;align-items:center;gap:4px;flex:1;min-width:0;}
     .window.ultra-minimal-mode .drag-handle-progress-bar{flex:1;height:4px;background:rgba(0,0,0,0.4);border-radius:2px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);}
     .window.ultra-minimal-mode .drag-handle-progress-fill{height:100%;background:linear-gradient(90deg,#4ade80,#22c55e);transition:width 0.3s;box-shadow:0 0 6px rgba(74,222,128,0.5);}
@@ -70,6 +90,7 @@ export function buildLevelingPopoutHtml(): string {
     .window.ultra-minimal-mode .zone-icon,
     .window.ultra-minimal-mode .close,
     .window.ultra-minimal-mode .controls,
+    .window.ultra-minimal-mode .timer-row,
     .window.ultra-minimal-mode .footer,
     .window.ultra-minimal-mode .minimal-controls{display:none!important;}
     .window.ultra-minimal-mode .step-checkbox,
@@ -79,12 +100,20 @@ export function buildLevelingPopoutHtml(): string {
     .window.ultra-minimal-mode .leveling-step.current{background:rgba(50,54,64,0.9)!important;border-color:rgba(74,158,255,0.3)!important;}
     .window.ultra-minimal-mode .leveling-group{background:rgba(32,36,44,0.85)!important;border:1px solid rgba(74,222,128,0.15)!important;}
     .window.ultra-minimal-mode .leveling-group.current{background:rgba(40,50,44,0.9)!important;border-color:rgba(74,222,128,0.3)!important;}
-    .window.ultra-minimal-mode .list{padding:40px 4px 4px 4px!important;}
+    .window.ultra-minimal-mode .list{padding:44px 4px 4px 4px!important;}
     .window.ultra-minimal-mode .list::-webkit-scrollbar{display:none!important;}
     .window.ultra-minimal-mode .list{scrollbar-width:none!important;-ms-overflow-style:none!important;}
     .drag-handle{display:none;}
     .drag-handle-row{display:none;}
     .drag-handle-info{display:none;}
+    
+    /* Timer row in normal mode - below controls */
+    .timer-row{display:flex;flex-direction:row;gap:8px;align-items:center;padding:8px 12px;background:rgba(40,44,52,0.6);border-bottom:1px solid rgba(255,255,255,0.08);-webkit-app-region:no-drag;}
+    .timer-display{font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;font-family:monospace;flex:1;}
+    .timer-controls{display:flex;gap:6px;}
+    .timer-btn{padding:5px 10px;background:rgba(50,54,62,0.75);border:1px solid rgba(255,255,255,0.18);border-radius:4px;cursor:pointer;font-size:11px;color:rgba(255,255,255,0.85);transition:all 0.12s;font-weight:500;white-space:nowrap;}
+    .timer-btn:hover{background:rgba(74,158,255,0.6);border-color:rgba(74,158,255,0.9);color:#fff;}
+    
     #goToUltraBtn{display:none;}
     #backToNormalBtn{display:none;}
     #minimalBtn.active{background:rgba(138,43,226,0.5);border-color:rgba(138,43,226,0.9);color:#fff;}
@@ -146,19 +175,10 @@ export function buildLevelingPopoutHtml(): string {
     .progress-fill{height:100%;background:linear-gradient(90deg,#4ade80,#22c55e);transition:width 0.3s;box-shadow:0 0 10px rgba(74,222,128,0.5);}
     .progress-text{font-size:10px;color:rgba(255,255,255,0.7);font-weight:600;min-width:60px;text-align:right;}
     .list{flex:1;overflow-y:auto;overflow-x:hidden;padding:12px;display:flex;flex-direction:column;box-sizing:border-box;}
-    .list.wide{flex-direction:row;overflow-x:auto;overflow-y:hidden;gap:12px;align-items:stretch;}
-    .list.wide .leveling-group{margin-bottom:0;min-width:320px;max-width:320px;flex-shrink:0;display:flex;flex-direction:column;}
-    .list.wide .leveling-step{margin-bottom:0;min-width:320px;max-width:320px;flex-shrink:0;}
-  .footer{padding:8px 12px;background:rgba(30,34,40,0.85);border-top:1px solid rgba(255,255,255,0.1);display:flex;gap:12px;align-items:center;justify-content:space-between;-webkit-app-region:no-drag;overflow:hidden;position:relative;}
-  .footer-progress{display:none;flex-direction:column;gap:4px;flex:1;min-width:0;}
-  .footer-row{display:flex;align-items:center;gap:10px;width:100%;min-width:0;}
-  .footer-progress .progress-bar{height:6px;}
-  .footer-progress .progress-text{font-size:10px;text-align:left;min-width:0;}
-    .timer-display{font-size:12px;color:#4ade80;font-weight:700;font-family:monospace;min-width:90px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-    .timer-controls{display:flex;gap:6px;margin-left:auto;flex-shrink:0;overflow:hidden;}
-    .timer-btn{padding:4px 10px;background:rgba(60,64,72,0.8);border:1px solid rgba(255,255,255,0.2);border-radius:4px;cursor:pointer;font-size:10px;color:rgba(255,255,255,0.9);transition:all 0.15s;font-weight:600;}
-    .timer-btn:hover{background:rgba(74,158,255,0.7);border-color:rgba(74,158,255,1);color:#fff;}
-    .timer-btn.active{background:rgba(74,222,128,0.3);border-color:rgba(74,222,128,0.8);color:#4ade80;}
+    .list.wide{flex-direction:row;overflow-x:auto;overflow-y:hidden;gap:12px;align-items:flex-start;}
+    .list.wide .leveling-group{margin-bottom:0;min-width:320px;max-width:320px;flex-shrink:0;display:flex;flex-direction:column;height:fit-content;}
+    .list.wide .leveling-step{margin-bottom:0;min-width:320px;max-width:320px;flex-shrink:0;height:fit-content;}
+  .footer{display:none!important;}
   .leveling-group{margin-bottom:12px;background:rgba(74,222,128,0.03);border:1px solid rgba(74,222,128,0.15);border-left:3px solid rgba(74,222,128,0.4);border-radius:8px;padding:12px;transition:all 0.2s;overflow:visible;box-sizing:border-box;position:relative;}
     .leveling-group.current{background:rgba(74,222,128,0.08);border-color:rgba(74,222,128,0.3);border-left-color:rgba(74,222,128,0.8);}
     .leveling-group:hover{background:rgba(74,222,128,0.05);border-color:rgba(74,222,128,0.2);}
@@ -323,24 +343,18 @@ export function buildLevelingPopoutHtml(): string {
   </div>
   <div class='controls'>
     <button class='control-btn' id='prevBtn' title='Previous step'>◀ Prev</button>
-    <button class='control-btn' id='nextBtn' title='Next step'>Next ▶</button>
     <div class='progress-bar'><div class='progress-fill' id='progressFill' style='width:0%'></div></div>
     <div class='progress-text' id='progressText'>0%</div>
+    <button class='control-btn' id='nextBtn' title='Next step'>Next ▶</button>
+  </div>
+  <div class='timer-row'>
+    <div class='timer-display' id='timerDisplay'><span id='timerText'>Act1 00:00</span></div>
+    <div class='timer-controls'>
+      <button class='timer-btn' id='timerStartPause' title='Start/Pause timer'>Start</button>
+      <button class='timer-btn' id='timerReset' title='Reset timer'>Reset</button>
+    </div>
   </div>
   <div class='list' id='stepsList'></div>
-  <div class='footer'>
-    <div class='footer-progress' id='footerProgress'>
-      <div class='progress-bar'><div class='progress-fill' id='progressFillFooter' style='width:0%'></div></div>
-      <div class='progress-text' id='progressTextFooter'>0%</div>
-    </div>
-    <div class='footer-row'>
-      <div class='timer-display' id='timerDisplay'><span id='timerText'>Act1 00:00</span></div>
-      <div class='timer-controls'>
-        <button class='timer-btn' id='timerStartPause' title='Start/Pause timer'>Start</button>
-        <button class='timer-btn' id='timerReset' title='Reset timer'>Reset</button>
-      </div>
-    </div>
-  </div>
   
   <!-- History Modal -->
   <div class='history-modal-overlay' id='historyModal'>
@@ -717,6 +731,7 @@ function updateViewMode() {
   if (state.minimalMode === 'minimal') {
     mainWindow.classList.add('minimal-mode');
     minimalBtn.classList.add('active');
+    // Minimal mode is NOT click-through - window is fully interactable
     ipcRenderer.send('set-ignore-mouse-events', false);
     
     // Clean up ultra handlers if switching from ultra
@@ -1170,7 +1185,9 @@ function render() {
       const currentClass = isCurrent ? ' current' : '';
       // Store the first step ID of this zone for skip-to functionality
       const firstStepId = group.steps[0]?.id || '';
-  return '<div class="leveling-group'+currentClass+'" style="opacity:'+groupOpacity+';"><div class="zone-header" data-zone="'+escapeHtml(group.zone)+'"><input type="checkbox" class="zone-checkbox" data-action="toggle-zone" data-zone="'+escapeHtml(group.zone)+'" '+(group.allChecked?'checked':'')+' /><div class="zone-name">📍 '+escapeHtml(group.zone)+' ('+group.steps.length+' tasks)'+'</div><button class="skip-to-btn" data-action="skip-to" data-first-step-id="'+firstStepId+'" title="Skip to this zone (auto-complete all previous steps)">⏭️</button></div><div class="task-list">'+group.steps.map(step => {
+      // Hide skip-to button on the first incomplete zone (groupIdx === 0)
+      const skipToBtn = groupIdx === 0 ? '' : '<button class="skip-to-btn" data-action="skip-to" data-first-step-id="'+firstStepId+'" title="Skip to this zone (auto-complete all previous steps)">⏭️</button>';
+  return '<div class="leveling-group'+currentClass+'" style="opacity:'+groupOpacity+';"><div class="zone-header" data-zone="'+escapeHtml(group.zone)+'"><input type="checkbox" class="zone-checkbox" data-action="toggle-zone" data-zone="'+escapeHtml(group.zone)+'" '+(group.allChecked?'checked':'')+' /><div class="zone-name">📍 '+escapeHtml(group.zone)+' ('+group.steps.length+' tasks)'+'</div>'+skipToBtn+'</div><div class="task-list">'+group.steps.map(step => {
         const checked = state.completedSteps.has(step.id);
     const stepType = STEP_TYPES[step.type] || STEP_TYPES.navigation;
     const cleanDesc = cleanDescription(step.description);
@@ -1428,7 +1445,14 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
       }
     }
     
+    // Disable transitions during settings-triggered render for instant feedback
+    document.body.classList.add('no-transitions');
     render();
+    // Re-enable transitions after render completes (next frame)
+    requestAnimationFrame(() => {
+      document.body.classList.remove('no-transitions');
+    });
+    
     saveState();
   });
   
@@ -1862,12 +1886,27 @@ function handleNextBtn() {
     allSteps = allSteps.filter(s => s.type !== 'optional');
   }
   
-  // Find first uncompleted step and check it
-  const nextStep = allSteps.find(s => !state.completedSteps.has(s.id));
-  if (nextStep) {
-    state.completedSteps.add(nextStep.id);
+  const grouped = groupStepsByZone(allSteps);
+  
+  // Find the FIRST incomplete zone
+  let firstIncompleteZone = null;
+  for (let i = 0; i < grouped.length; i++) {
+    if (!grouped[i].allChecked) {
+      firstIncompleteZone = grouped[i];
+      break;
+    }
+  }
+  
+  if (firstIncompleteZone) {
+    // Auto-check all steps in that zone
+    firstIncompleteZone.steps.forEach(step => {
+      state.completedSteps.add(step.id);
+    });
+    console.log('[NEXT] Auto-checked first incomplete zone: ' + firstIncompleteZone.zone);
     ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
     render();
+  } else {
+    console.log('[NEXT] All zones completed');
   }
 }
 
@@ -1922,6 +1961,33 @@ ipcRenderer.on('zone-entered', (event, zoneName) => {
     render();
   } else {
     console.log('No previous steps to complete - already up to date');
+  }
+});
+
+// Listen for hotkey actions
+ipcRenderer.on('hotkey-action', (event, action) => {
+  console.log('[Hotkey] Action triggered:', action);
+  
+  if (action === 'prev') {
+    // Find and click the prev button (works in all modes)
+    const prevBtn = document.getElementById('prevBtn');
+    const minimalPrevBtn = document.getElementById('minimalPrevBtn');
+    
+    if (prevBtn && prevBtn.offsetParent !== null) {
+      prevBtn.click();
+    } else if (minimalPrevBtn && minimalPrevBtn.offsetParent !== null) {
+      minimalPrevBtn.click();
+    }
+  } else if (action === 'next') {
+    // Find and click the next button (works in all modes)
+    const nextBtn = document.getElementById('nextBtn');
+    const minimalNextBtn = document.getElementById('minimalNextBtn');
+    
+    if (nextBtn && nextBtn.offsetParent !== null) {
+      nextBtn.click();
+    } else if (minimalNextBtn && minimalNextBtn.offsetParent !== null) {
+      minimalNextBtn.click();
+    }
   }
 });
 </script>

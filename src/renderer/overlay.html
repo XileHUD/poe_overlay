@@ -91,6 +91,18 @@
             .feature-hidden,
             body.overlay-poe1-mode .feature-hidden,
             body.overlay-poe2-mode .feature-hidden { display: none !important; }
+            
+            /* Prevent text selection on tab buttons */
+            .tab,
+            .tab *,
+            button,
+            .crafting-menu-item,
+            .character-menu-item,
+            .items-menu-item,
+            .tools-menu-item {
+                -webkit-user-select: none;
+                user-select: none;
+            }
         </style>
 </head>
 <body>

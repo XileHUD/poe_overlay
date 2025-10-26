@@ -918,3 +918,14 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     gameVersion,
   });
 }
+
+export function isTreeWindowOpen(): boolean {
+  return treeWindow !== null && !treeWindow.isDestroyed();
+}
+
+export function closeTreeWindow() {
+  if (treeWindow && !treeWindow.isDestroyed()) {
+    treeWindow.close();
+    treeWindow = null;
+  }
+}

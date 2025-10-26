@@ -28,6 +28,10 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
   const levelingKey = overlayVersion === 'poe1' ? 'levelingWindowPoe1' : 'levelingWindowPoe2';
   const currentSettings = settingsService.get(levelingKey) || {};
   
+  // Get client.txt path separately (stored at root level)
+  const clientTxtPathKey = overlayVersion === 'poe1' ? 'clientTxtPathPoe1' : 'clientTxtPathPoe2';
+  const clientTxtPath = settingsService.get(clientTxtPathKey) || 'Not configured';
+  
   // Window dimensions
   const splashWidth = 675;
   const splashHeight = 396;
@@ -67,7 +71,7 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
   });
 
   // Build HTML
-  const html = buildLevelingSettingsSplashHtml(currentSettings, overlayVersion);
+  const html = buildLevelingSettingsSplashHtml(currentSettings, overlayVersion, clientTxtPath);
   
   window.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
   
@@ -89,7 +93,8 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
 
 function buildLevelingSettingsSplashHtml(
   currentSettings: any,
-  overlayVersion: OverlayVersion
+  overlayVersion: OverlayVersion,
+  clientTxtPath: string
 ): string {
   // Extract all current settings with proper defaults
   const groupByZone = currentSettings.uiSettings?.groupByZone ?? true;
@@ -101,8 +106,13 @@ function buildLevelingSettingsSplashHtml(
   const zoomLevel = currentSettings.uiSettings?.zoomLevel ?? 100;
   const visibleSteps = currentSettings.uiSettings?.visibleSteps ?? 99;
   const wideMode = currentSettings.wideMode ?? false;
-  const clientTxtPathKey = overlayVersion === 'poe1' ? 'clientTxtPathPoe1' : 'clientTxtPathPoe2';
-  const clientTxtPath = currentSettings[clientTxtPathKey] || 'Not configured';
+  
+  // Extract hotkeys with defaults
+  const hotkeys = currentSettings.hotkeys || {};
+  const hotkeyPrev = hotkeys.prev || 'Not Set';
+  const hotkeyNext = hotkeys.next || 'Not Set';
+  const hotkeyTree = hotkeys.tree || 'Not Set';
+  const hotkeyGems = hotkeys.gems || 'Not Set';
   
   return `
 <!DOCTYPE html>
@@ -416,6 +426,53 @@ function buildLevelingSettingsSplashHtml(
       color: var(--accent-blue);
     }
     
+    .hotkey-input {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 6px 12px;
+      color: var(--text-primary);
+      font-size: 11px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      min-width: 120px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    
+    .hotkey-input:hover {
+      border-color: var(--accent-blue);
+      background: rgba(74, 158, 255, 0.05);
+    }
+    
+    .hotkey-input.recording {
+      border-color: var(--accent-green);
+      background: rgba(74, 222, 128, 0.1);
+      animation: pulse 1s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    
+    .hotkey-clear {
+      background: transparent;
+      border: 1px solid rgba(217, 83, 79, 0.3);
+      color: var(--accent-red);
+      padding: 4px 8px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 10px;
+      margin-left: 6px;
+      transition: all 0.15s;
+    }
+    
+    .hotkey-clear:hover {
+      background: rgba(217, 83, 79, 0.1);
+      border-color: rgba(217, 83, 79, 0.5);
+    }
+    
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -448,6 +505,7 @@ function buildLevelingSettingsSplashHtml(
   <div class="tab-nav">
     <button class="tab-button active" onclick="switchTab('display')">Display</button>
     <button class="tab-button" onclick="switchTab('behavior')">Behavior</button>
+    <button class="tab-button" onclick="switchTab('hotkeys')">Hotkeys</button>
     <button class="tab-button" onclick="switchTab('integration')">Integration</button>
     <button class="tab-button" onclick="switchTab('pob')">PoB Import</button>
     <button class="tab-button" onclick="switchTab('advanced')">Advanced</button>
@@ -532,8 +590,8 @@ function buildLevelingSettingsSplashHtml(
         
         <div class="setting-item">
           <div class="setting-label">
-            <div class="setting-name">Show Optional Steps</div>
-            <div class="setting-description">Include optional quests and tasks in the guide</div>
+            <div class="setting-name">First League Run Mode</div>
+            <div class="setting-description">Shows optional quests and extra content (disable for faster repeated runs)</div>
           </div>
           <div class="toggle-switch ${showOptional ? 'active' : ''}" onclick="toggleSetting(this, 'showOptional')">
             <div class="toggle-slider"></div>
@@ -549,6 +607,66 @@ function buildLevelingSettingsSplashHtml(
             <div class="toggle-slider"></div>
           </div>
         </div>
+      </div>
+    </div>
+    
+    <!-- Hotkeys Tab -->
+    <div class="tab-panel" id="tab-hotkeys">
+      <div class="setting-group">
+        <h3 class="setting-group-title">Navigation Hotkeys</h3>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Previous Step</div>
+            <div class="setting-description">Go to previous quest step (works in all view modes)</div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div class="hotkey-input" id="hotkey-prev" onclick="captureHotkey('prev')">${hotkeyPrev}</div>
+            <button class="hotkey-clear" onclick="clearHotkey('prev')">Clear</button>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Next Step</div>
+            <div class="setting-description">Go to next quest step (works in all view modes)</div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div class="hotkey-input" id="hotkey-next" onclick="captureHotkey('next')">${hotkeyNext}</div>
+            <button class="hotkey-clear" onclick="clearHotkey('next')">Clear</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="setting-group">
+        <h3 class="setting-group-title">PoB Window Hotkeys</h3>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Toggle Passive Tree</div>
+            <div class="setting-description">Open/close passive tree window</div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div class="hotkey-input" id="hotkey-tree" onclick="captureHotkey('tree')">${hotkeyTree}</div>
+            <button class="hotkey-clear" onclick="clearHotkey('tree')">Clear</button>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Toggle Gems</div>
+            <div class="setting-description">Open/close gems window</div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div class="hotkey-input" id="hotkey-gems" onclick="captureHotkey('gems')">${hotkeyGems}</div>
+            <button class="hotkey-clear" onclick="clearHotkey('gems')">Clear</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="info-box">
+        <strong>How to set hotkeys:</strong> Click on a hotkey field and press your desired key combination.
+        Supports modifiers like Ctrl, Alt, Shift. Examples: F1, Ctrl+N, Alt+G, Shift+T
       </div>
     </div>
     
@@ -842,6 +960,95 @@ function buildLevelingSettingsSplashHtml(
     
     function showPobInfoBar() {
       ipcRenderer.send('show-pob-info-bar');
+    }
+    
+    // Hotkey capture system
+    let capturingHotkeyFor = null;
+    
+    function captureHotkey(hotkeyName) {
+      capturingHotkeyFor = hotkeyName;
+      const inputEl = document.getElementById('hotkey-' + hotkeyName);
+      inputEl.textContent = 'Press key...';
+      inputEl.classList.add('recording');
+      
+      // Listen for next keydown
+      document.addEventListener('keydown', handleHotkeyCapture, { once: true });
+    }
+    
+    function handleHotkeyCapture(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      if (!capturingHotkeyFor) return;
+      
+      const hotkeyName = capturingHotkeyFor;
+      const inputEl = document.getElementById('hotkey-' + hotkeyName);
+      
+      // Build accelerator string
+      const modifiers = [];
+      if (e.ctrlKey) modifiers.push('Ctrl');
+      if (e.altKey) modifiers.push('Alt');
+      if (e.shiftKey) modifiers.push('Shift');
+      
+      // Get the key name
+      let key = e.key;
+      
+      // Normalize key names for Electron accelerator format
+      const keyMap = {
+        ' ': 'Space',
+        'ArrowUp': 'Up',
+        'ArrowDown': 'Down',
+        'ArrowLeft': 'Left',
+        'ArrowRight': 'Right',
+        'Delete': 'Delete',
+        'Insert': 'Insert',
+        'Home': 'Home',
+        'End': 'End',
+        'PageUp': 'PageUp',
+        'PageDown': 'PageDown'
+      };
+      
+      if (keyMap[key]) {
+        key = keyMap[key];
+      } else if (key.length === 1) {
+        key = key.toUpperCase();
+      } else if (key.startsWith('F') && !isNaN(key.substring(1))) {
+        // F1-F24 keys are already in correct format
+        key = key;
+      } else if (['Control', 'Alt', 'Shift', 'Meta'].includes(key)) {
+        // Modifier-only press, ignore
+        inputEl.textContent = 'Not Set';
+        inputEl.classList.remove('recording');
+        capturingHotkeyFor = null;
+        return;
+      }
+      
+      // Build full accelerator
+      const parts = [...modifiers, key];
+      const accelerator = parts.join('+');
+      
+      // Update display
+      inputEl.textContent = accelerator;
+      inputEl.classList.remove('recording');
+      
+      // Save hotkey
+      updateHotkey(hotkeyName, accelerator);
+      
+      capturingHotkeyFor = null;
+    }
+    
+    function clearHotkey(hotkeyName) {
+      const inputEl = document.getElementById('hotkey-' + hotkeyName);
+      inputEl.textContent = 'Not Set';
+      updateHotkey(hotkeyName, null);
+    }
+    
+    function updateHotkey(hotkeyName, accelerator) {
+      // Send to main process to save
+      ipcRenderer.send('leveling-hotkey-update', { 
+        hotkeyName, 
+        accelerator 
+      });
     }
     
     
