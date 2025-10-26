@@ -653,8 +653,13 @@ function checkActCompletionAndAdvance() {
   
   if (!currentAct || !currentAct.steps) return;
   
-  // Check if ALL steps in current act are completed
-  const allSteps = currentAct.steps;
+  // Check if ALL required/visible steps in current act are completed
+  // Apply same filtering as render: exclude optional and hidden steps when showOptional is false
+  let allSteps = currentAct.steps;
+  if (!state.showOptional) {
+    allSteps = allSteps.filter(s => s.type !== 'optional' && s.hidden !== 'optional');
+  }
+  
   const completedCount = allSteps.filter(s => state.completedSteps.has(s.id)).length;
   const allCompleted = allSteps.length > 0 && completedCount === allSteps.length;
   
@@ -1386,6 +1391,9 @@ function render() {
       });
     }
   });
+  
+  // Update timer display to reflect current act selection
+  updateTimerDisplay();
 }
 
 // Load data and saved progress
@@ -1652,32 +1660,47 @@ if (resetProgressBtn) {
   const confirmed = confirm('⚠️ WARNING: This will reset ALL act progress, completed steps, and timers!\\n\\nAre you sure you want to continue?');
   if (!confirmed) return;
   
+  // Use pauseTimer to properly stop the timer
+  pauseTimer();
+  
   const result = await ipcRenderer.invoke('reset-leveling-progress');
   if (result) {
-    // Reset frontend state
+    // Reload all data from backend to get the fresh reset state
+    const freshData = await ipcRenderer.invoke('get-leveling-data');
+    
+    // Reset frontend state with fresh backend data
     state.completedSteps.clear();
-    state.showCompleted = false;
-    state.timer.elapsed = 0;
-    state.timer.display = '00:00';
-    state.currentActIndex = 0;
-    
-    // Reset act timers
-    state.actTimers = {};
-    
-    // Update UI
-    render();
-    
-    // Update timer display
-    const timerText = document.getElementById('timerText');
-    if (timerText) {
-      timerText.textContent = 'Act1 00:00';
+    if (freshData.progress && Array.isArray(freshData.progress)) {
+      state.completedSteps = new Set(freshData.progress);
     }
     
+    state.currentActIndex = freshData.currentActIndex || 0;
+    state.actTimers = freshData.actTimers || {};
+    
+    // Reset timer state
+    state.timer.isRunning = false;
+    state.timer.startTime = 0;
+    state.timer.elapsed = 0;
+    state.timer.currentAct = state.currentActIndex + 1;
+    
+    // Reset character info
+    state.characterName = freshData.characterName || null;
+    state.characterClass = freshData.characterClass || null;
+    state.characterLevel = freshData.characterLevel || null;
+    
+    // Update character display
+    updateCharacterDisplay();
+    
+    // Force re-render with the reset state
+    render();
+    
     // Rebuild tooltip to reflect reset state
-    const acts = state.levelingData.acts;
-    const currentAct = acts[state.currentActIndex];
-    if (currentAct) {
-      buildTimerTooltip(currentAct);
+    if (state.levelingData) {
+      const acts = state.levelingData.acts;
+      const currentAct = acts[state.currentActIndex];
+      if (currentAct) {
+        await buildTimerTooltip(currentAct);
+      }
     }
     
     alert('✅ All progress has been reset!');
@@ -1797,6 +1820,31 @@ ipcRenderer.on('character-level-up', (event, data) => {
   
   // Trigger UI update
   updateCharacterDisplay();
+
+  // If main process uses this event to signal a full progress reset
+  // it sends { name: null, class: null, level: null }. Treat that as a reset signal
+  const isResetSignal = data && data.name === null && data.class === null && (data.level === null || data.level === undefined);
+  if (isResetSignal) {
+    console.log('[Reset] Received reset signal from main. Clearing local state and UI.');
+
+    // Clear completed steps and act timers
+    state.completedSteps.clear();
+    state.actTimers = {};
+
+    // Reset to Act 1
+    state.currentActIndex = 0;
+
+    // Stop and reset timer cleanly
+    pauseTimer();
+    state.timer.isRunning = false;
+    state.timer.startTime = 0;
+    state.timer.elapsed = 0;
+    state.timer.currentAct = 1;
+
+    // Persist and re-render
+    saveState();
+    render(); // render() will call updateTimerDisplay()
+  }
 });
 
 // Timer functions
@@ -1805,7 +1853,10 @@ function updateTimerDisplay() {
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
   const timeStr = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
-  const displayText = 'Act' + state.timer.currentAct + ' ' + timeStr;
+  
+  // Show the currently selected act if timer isn't running, otherwise show timer's tracked act
+  const displayActNum = state.timer.isRunning ? state.timer.currentAct : (state.currentActIndex + 1);
+  const displayText = 'Act' + displayActNum + ' ' + timeStr;
   
   // Update main timer display text only (not the entire element to preserve tooltip)
   const mainDisplayText = document.getElementById('timerText');
