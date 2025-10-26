@@ -29,8 +29,8 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
   const currentSettings = settingsService.get(levelingKey) || {};
   
   // Window dimensions
-  const splashWidth = 700;
-  const splashHeight = 600;
+  const splashWidth = 675;
+  const splashHeight = 396;
   
   // Try to center on screen
   let initialX = Math.floor((screen.getPrimaryDisplay().workAreaSize.width - splashWidth) / 2);
@@ -145,9 +145,9 @@ function buildLevelingSettingsSplashHtml(
     }
     
     .header {
-      padding: 14px 24px 12px;
-      background: linear-gradient(135deg, rgba(74, 222, 128, 0.12) 0%, rgba(74, 222, 128, 0.06) 100%);
-      border-bottom: 2px solid rgba(74, 222, 128, 0.25);
+      padding: 6px 12px;
+      background: rgba(26, 26, 26, 0.92);
+      border-bottom: 1px solid rgba(74, 222, 128, 0.2);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -158,67 +158,66 @@ function buildLevelingSettingsSplashHtml(
     
     .header-title h1 {
       margin: 0;
-      font-size: 20px;
+      font-size: 14px;
       color: var(--accent-green);
       font-weight: 600;
     }
     
     .header-subtitle {
-      margin: 4px 0 0 0;
-      font-size: 12px;
+      margin: 2px 0 0 0;
+      font-size: 10px;
       color: var(--text-secondary);
     }
     
     .close-btn {
-      width: 32px;
-      height: 32px;
-      background: rgba(217, 83, 79, 0.15);
-      border: 2px solid rgba(217, 83, 79, 0.4);
-      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      background: rgba(217, 83, 79, 0.1);
+      border: 1px solid rgba(217, 83, 79, 0.3);
+      border-radius: 4px;
       color: var(--accent-red);
-      font-size: 20px;
+      font-size: 14px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s ease;
+      transition: all 0.15s ease;
       flex-shrink: 0;
       -webkit-app-region: no-drag;
     }
     
     .close-btn:hover {
-      background: rgba(217, 83, 79, 0.3);
-      border-color: var(--accent-red);
-      transform: scale(1.1);
+      background: rgba(217, 83, 79, 0.2);
+      border-color: rgba(217, 83, 79, 0.5);
     }
     
     .tab-nav {
       display: flex;
       background: var(--bg-secondary);
-      border-bottom: 2px solid var(--border-color);
-      padding: 0 20px;
-      gap: 4px;
+      border-bottom: 1px solid var(--border-color);
+      padding: 0 12px;
+      gap: 2px;
       flex-shrink: 0;
       -webkit-app-region: no-drag;
     }
     
     .tab-button {
-      padding: 12px 28px;
+      padding: 8px 20px;
       background: transparent;
       border: none;
       color: var(--text-secondary);
-      font-size: 14px;
+      font-size: 11px;
       font-weight: 500;
       cursor: pointer;
       position: relative;
-      transition: all 0.2s ease;
+      transition: all 0.15s ease;
       border-bottom: 2px solid transparent;
-      margin-bottom: -2px;
+      margin-bottom: -1px;
     }
     
     .tab-button:hover {
       color: var(--text-primary);
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.02);
     }
     
     .tab-button.active {
@@ -229,7 +228,7 @@ function buildLevelingSettingsSplashHtml(
     .content {
       flex: 1;
       overflow-y: auto;
-      padding: 24px;
+      padding: 12px;
     }
     
     .tab-panel {
@@ -241,26 +240,26 @@ function buildLevelingSettingsSplashHtml(
     }
     
     .setting-group {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 16px;
+      background: rgba(37, 37, 37, 0.6);
+      border: 1px solid rgba(64, 64, 64, 0.5);
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 10px;
     }
     
     .setting-group-title {
-      font-size: 16px;
+      font-size: 12px;
       font-weight: 600;
       color: var(--accent-green);
-      margin: 0 0 16px 0;
+      margin: 0 0 10px 0;
     }
     
     .setting-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     }
     
     .setting-item:last-child {
@@ -272,24 +271,24 @@ function buildLevelingSettingsSplashHtml(
     }
     
     .setting-name {
-      font-size: 14px;
+      font-size: 11px;
       color: var(--text-primary);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     
     .setting-description {
-      font-size: 12px;
+      font-size: 10px;
       color: var(--text-muted);
     }
     
     .toggle-switch {
       position: relative;
-      width: 48px;
-      height: 24px;
+      width: 40px;
+      height: 20px;
       background: var(--bg-tertiary);
-      border-radius: 12px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.2s;
       border: 1px solid var(--border-color);
     }
     
@@ -302,27 +301,27 @@ function buildLevelingSettingsSplashHtml(
       position: absolute;
       top: 2px;
       left: 2px;
-      width: 18px;
-      height: 18px;
+      width: 14px;
+      height: 14px;
       background: white;
       border-radius: 50%;
-      transition: transform 0.3s;
+      transition: transform 0.2s;
     }
     
     .toggle-switch.active .toggle-slider {
-      transform: translateX(24px);
+      transform: translateX(20px);
     }
     
     .slider-container {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
     }
     
     input[type="range"] {
-      width: 200px;
-      height: 6px;
-      border-radius: 3px;
+      width: 160px;
+      height: 4px;
+      border-radius: 2px;
       background: var(--bg-tertiary);
       outline: none;
       -webkit-appearance: none;
@@ -330,76 +329,87 @@ function buildLevelingSettingsSplashHtml(
     
     input[type="range"]::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 16px;
-      height: 16px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: var(--accent-green);
       cursor: pointer;
     }
     
     .range-value {
-      min-width: 50px;
+      min-width: 40px;
       text-align: right;
       color: var(--accent-green);
       font-weight: 600;
-      font-size: 13px;
+      font-size: 11px;
     }
     
     .file-path-display {
-      font-size: 11px;
+      font-size: 10px;
       color: var(--text-muted);
-      padding: 8px 12px;
+      padding: 6px 10px;
       background: var(--bg-tertiary);
-      border-radius: 4px;
+      border-radius: 3px;
       word-break: break-all;
-      margin-top: 8px;
+      margin-top: 6px;
       font-family: 'Consolas', monospace;
     }
     
     .button-group {
       display: flex;
-      gap: 8px;
-      margin-top: 8px;
+      gap: 6px;
+      margin-top: 6px;
     }
     
     .action-btn {
       flex: 1;
-      padding: 8px 16px;
-      background: rgba(74, 222, 128, 0.2);
-      border: 1px solid rgba(74, 222, 128, 0.4);
-      border-radius: 6px;
+      padding: 6px 12px;
+      background: rgba(74, 222, 128, 0.15);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      border-radius: 4px;
       color: var(--accent-green);
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 500;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.15s;
     }
     
     .action-btn:hover {
-      background: rgba(74, 222, 128, 0.3);
-      border-color: var(--accent-green);
+      background: rgba(74, 222, 128, 0.25);
+      border-color: rgba(74, 222, 128, 0.5);
     }
     
     .action-btn.danger {
-      background: rgba(217, 83, 79, 0.2);
-      border-color: rgba(217, 83, 79, 0.4);
+      background: rgba(217, 83, 79, 0.15);
+      border-color: rgba(217, 83, 79, 0.3);
       color: var(--accent-red);
     }
     
     .action-btn.danger:hover {
-      background: rgba(217, 83, 79, 0.3);
-      border-color: var(--accent-red);
+      background: rgba(217, 83, 79, 0.25);
+      border-color: rgba(217, 83, 79, 0.5);
+    }
+    
+    .action-btn.primary {
+      background: rgba(74, 158, 255, 0.15);
+      border-color: rgba(74, 158, 255, 0.3);
+      color: var(--accent-blue);
+    }
+    
+    .action-btn.primary:hover {
+      background: rgba(74, 158, 255, 0.25);
+      border-color: rgba(74, 158, 255, 0.5);
     }
     
     .info-box {
-      background: rgba(74, 158, 255, 0.1);
-      border: 1px solid rgba(74, 158, 255, 0.3);
-      border-radius: 6px;
-      padding: 12px;
-      margin-top: 8px;
-      font-size: 11px;
+      background: rgba(74, 158, 255, 0.08);
+      border: 1px solid rgba(74, 158, 255, 0.25);
+      border-radius: 4px;
+      padding: 8px 10px;
+      margin-top: 6px;
+      font-size: 10px;
       color: var(--text-secondary);
-      line-height: 1.5;
+      line-height: 1.4;
     }
     
     .info-box strong {
@@ -591,13 +601,13 @@ function buildLevelingSettingsSplashHtml(
         <div class="info-box" style="margin-bottom: 16px;">
           <strong>ℹ️ About PoB Import:</strong><br/>
           Import builds from Path of Building to see skill gems and passive tree progression while leveling. 
-          The overlay will show which gems to pick up from quest rewards and track your passive tree allocation.
+          The overlay will show ${overlayVersion === 'poe1' ? 'which gems to pick up from quest rewards and track' : 'skill gems and'} your passive tree allocation.
         </div>
         
-        <div class="setting-item" style="flex-direction: column; align-items: stretch; ${overlayVersion === 'poe2' ? 'opacity: 0.5; pointer-events: none;' : ''}">
+        <div class="setting-item" style="flex-direction: column; align-items: stretch;">
           <div class="setting-label">
             <div class="setting-name">Import PoB Build Code</div>
-            <div class="setting-description">Paste your Path of Building code or pobb.in link${overlayVersion === 'poe2' ? ' (Coming soon for PoE 2)' : ''}</div>
+            <div class="setting-description">Paste your Path of Building code or pobb.in link</div>
           </div>
           <textarea 
             id="pobCodeInput" 
@@ -606,9 +616,8 @@ function buildLevelingSettingsSplashHtml(
                    background: var(--bg-tertiary); border: 1px solid var(--border-color); 
                    border-radius: 6px; color: var(--text-primary); font-family: monospace; 
                    font-size: 11px; resize: vertical;"
-            ${overlayVersion === 'poe2' ? 'disabled' : ''}
           ></textarea>
-          <button class="action-btn primary" onclick="importPobCode()" style="margin-top: 8px;" ${overlayVersion === 'poe2' ? 'disabled' : ''}>
+          <button class="action-btn primary" onclick="importPobCode()" style="margin-top: 8px;">
             📥 Import Build
           </button>
         </div>
@@ -658,6 +667,14 @@ function buildLevelingSettingsSplashHtml(
     <div class="tab-panel" id="tab-advanced">
       <div class="setting-group">
         <h3 class="setting-group-title">Advanced Options</h3>
+        
+        <div class="setting-item" style="flex-direction: column; align-items: stretch;">
+          <div class="setting-label">
+            <div class="setting-name">Act Speedrunning Summary</div>
+            <div class="setting-description">View completion times for all acts</div>
+          </div>
+          <button class="action-btn primary" onclick="showActSummary()" style="margin-top: 8px;">📊 View Act Times</button>
+        </div>
         
         <div class="setting-item" style="flex-direction: column; align-items: stretch;">
           <div class="setting-label">
@@ -758,6 +775,16 @@ function buildLevelingSettingsSplashHtml(
           alert('Run history has been cleared!');
         });
       }
+    }
+    
+    function showActSummary() {
+      ipcRenderer.invoke('get-act-times-summary').then(summary => {
+        if (summary) {
+          alert(summary);
+        } else {
+          alert('No act times recorded yet. Complete some acts to see your times!');
+        }
+      });
     }
     
     function importPobCode() {

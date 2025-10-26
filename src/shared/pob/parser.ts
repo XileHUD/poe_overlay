@@ -8,10 +8,13 @@ import { DOMParser } from '@xmldom/xmldom';
 import { ParsedPobBuild, TreeSpec, GemSocketGroup, GemInfo, SkillSet } from './types';
 import { parseTreeUrl } from './treeParser';
 import { decodePobCode } from './decoder.js';
-import { nodeLookup } from './treeLoader';  // Import to filter invalid nodes
+import { nodeLookup, nodeLookupPoe2 } from './treeLoader';  // Import both lookups
 
-export async function parsePobCode(code: string): Promise<ParsedPobBuild | null> {
+export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 'poe1'): Promise<ParsedPobBuild | null> {
   try {
+    // Use the correct node lookup based on game version
+    const lookup = gameVersion === 'poe2' ? nodeLookupPoe2 : nodeLookup;
+    
     // Decode Base64 + Zlib (now handles pobb.in URLs)
     const xmlString = await decodePobCode(code);
     if (!xmlString) {
@@ -62,7 +65,7 @@ export async function parsePobCode(code: string): Promise<ParsedPobBuild | null>
         try {
           parsedUrl = parseTreeUrl(url);
           // Filter nodes to only include ones that exist in the tree (like exile-leveling does)
-          parsedUrl.nodes = parsedUrl.nodes.filter(nodeId => nodeLookup[nodeId] !== undefined);
+          parsedUrl.nodes = parsedUrl.nodes.filter(nodeId => lookup[nodeId] !== undefined);
           console.log(`[PoB Parser] Parsed tree "${title}": ${parsedUrl.nodes.length} valid nodes (filtered from tree)`);
         } catch (error) {
           console.error(`[PoB Parser] Failed to parse tree URL for "${title}":`, error);

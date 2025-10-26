@@ -343,6 +343,7 @@ function buildTreeWindowHtml(): string {
     let treeViewBox = '';
     let currentSpecs = [];
     let currentIndex = 0;
+    let currentGameVersion = 'poe1'; // Track game version
     let isPanning = false;
     let lastPanPosition = { x: 0, y: 0 };
 
@@ -357,7 +358,7 @@ function buildTreeWindowHtml(): string {
         return;
       }
 
-      const { specs, treeSvg, viewBox } = payload;
+      const { specs, treeSvg, viewBox, gameVersion } = payload;
 
       if (!specs || specs.length === 0) {
         console.error('[Tree Window] No specs received!');
@@ -368,6 +369,7 @@ function buildTreeWindowHtml(): string {
       treeViewBox = viewBox || '';
       currentSpecs = specs;
       currentIndex = 0;
+      currentGameVersion = gameVersion || 'poe1'; // Store game version
 
       console.log('[Tree Window] Calling populateSelector...');
       populateSelector();
@@ -465,34 +467,38 @@ function buildTreeWindowHtml(): string {
           try { skillTreeMod = require(cwd + '/packages/overlay/dist/shared/pob/treeLoader.js'); } catch (_e1) {}
           if (!skillTreeMod) { try { skillTreeMod = require(cwd + '/dist/shared/pob/treeLoader.js'); } catch (_e2) {} }
         }
-        if (skillTreeMod && skillTreeMod.skillTree) {
-          const st = skillTreeMod.skillTree;
-          const nodesActiveSet = new Set(nodesActive);
-          const nodesAddedSet = new Set(nodesAdded);
-          const nodesRemovedSet = new Set(nodesRemoved);
+        if (skillTreeMod) {
+          // Use the correct tree based on game version
+          const st = currentGameVersion === 'poe2' ? skillTreeMod.skillTreePoe2 : skillTreeMod.skillTree;
+          
+          if (st) {
+            const nodesActiveSet = new Set(nodesActive);
+            const nodesAddedSet = new Set(nodesAdded);
+            const nodesRemovedSet = new Set(nodesRemoved);
 
-          for (const graph of st.graphs) {
-            for (const conn of graph.connections) {
-              const id = conn.a + '-' + conn.b;
-              const aIsActive = nodesActiveSet.has(conn.a);
-              const bIsActive = nodesActiveSet.has(conn.b);
-              const aIsAdded = nodesAddedSet.has(conn.a);
-              const bIsAdded = nodesAddedSet.has(conn.b);
-              const aIsRemoved = nodesRemovedSet.has(conn.a);
-              const bIsRemoved = nodesRemovedSet.has(conn.b);
+            for (const graph of st.graphs) {
+              for (const conn of graph.connections) {
+                const id = conn.a + '-' + conn.b;
+                const aIsActive = nodesActiveSet.has(conn.a);
+                const bIsActive = nodesActiveSet.has(conn.b);
+                const aIsAdded = nodesAddedSet.has(conn.a);
+                const bIsAdded = nodesAddedSet.has(conn.b);
+                const aIsRemoved = nodesRemovedSet.has(conn.a);
+                const bIsRemoved = nodesRemovedSet.has(conn.b);
 
-              if (aIsActive && bIsActive) {
-                connectionActiveIds.push(id);
-              }
-              if ((aIsAdded && (bIsAdded || bIsActive)) || (bIsAdded && (aIsAdded || aIsActive))) {
-                connectionAddedIds.push(id);
-              }
-              if ((aIsRemoved && (bIsRemoved || bIsActive)) || (bIsRemoved && (aIsRemoved || aIsActive))) {
-                connectionRemovedIds.push(id);
+                if (aIsActive && bIsActive) {
+                  connectionActiveIds.push(id);
+                }
+                if ((aIsAdded && (bIsAdded || bIsActive)) || (bIsAdded && (aIsAdded || aIsActive))) {
+                  connectionAddedIds.push(id);
+                }
+                if ((aIsRemoved && (bIsRemoved || bIsActive)) || (bIsRemoved && (aIsRemoved || aIsActive))) {
+                  connectionRemovedIds.push(id);
+                }
               }
             }
+            console.log('[Tree] Built connection lists: active=' + connectionActiveIds.length + ', added=' + connectionAddedIds.length + ', removed=' + connectionRemovedIds.length);
           }
-          console.log('[Tree] Built connection lists: active=' + connectionActiveIds.length + ', added=' + connectionAddedIds.length + ', removed=' + connectionRemovedIds.length);
         }
       } catch (e) {
         console.warn('[Tree] Could not build connection lists:', e && e.message ? e.message : e);
@@ -867,7 +873,7 @@ export function getPassiveTreeWindow(): BrowserWindow | null {
   return treeWindow;
 }
 
-export function sendTreeData(treeSpecs: any[]): void {
+export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'poe1'): void {
   if (!treeWindow || treeWindow.isDestroyed()) {
     console.warn('[Tree Window] Cannot send tree data - window not available');
     return;
@@ -878,9 +884,20 @@ export function sendTreeData(treeSpecs: any[]): void {
 
   try {
     const template = require('../../shared/pob/treeLoader');
-    treeSvg = template.svg;
-    viewBox = template.viewBox;
+    
+    // Use appropriate tree based on game version
+    if (gameVersion === 'poe2') {
+      treeSvg = template.poe2Template?.svg || '';
+      viewBox = template.poe2Template?.viewBox || '';
+      console.log('[Tree Window] Using PoE2 tree template');
+    } else {
+      treeSvg = template.svg;
+      viewBox = template.viewBox;
+      console.log('[Tree Window] Using PoE1 tree template');
+    }
+    
     console.log('[Tree Window] Prepared template for payload', {
+      gameVersion,
       svgLength: treeSvg?.length || 0,
       viewBox,
     });
@@ -891,11 +908,13 @@ export function sendTreeData(treeSpecs: any[]): void {
   console.log('[Tree Window] Sending tree data to renderer', {
     specCount: treeSpecs?.length || 0,
     hasSvg: !!treeSvg,
+    gameVersion,
   });
 
   treeWindow.webContents.send('tree-data-update', {
     specs: treeSpecs,
     treeSvg,
     viewBox,
+    gameVersion,
   });
 }

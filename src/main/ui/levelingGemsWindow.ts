@@ -395,13 +395,20 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
     
     .act-filter {
       background: var(--bg-secondary);
-      padding: 8px 12px;
-      border-radius: 6px;
+      padding: 6px 8px;
+      border-radius: 4px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 8px;
-      font-size: 12px;
+      font-size: 11px;
       margin-bottom: 8px;
+    }
+    
+    .act-filter-info {
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
     
     .act-filter-label {
@@ -411,6 +418,11 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
     .act-filter-value {
       color: var(--accent-blue);
       font-weight: 600;
+    }
+    
+    .act-filter-controls {
+      display: flex;
+      gap: 4px;
     }
     
     ::-webkit-scrollbar {
@@ -438,8 +450,6 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
       <div class="header-subtitle">${ascendancy || className} - Level ${level}</div>
     </div>
     <div class="header-controls">
-      <div class="act-nav-btn" id="prevActBtn" onclick="changeAct(-1)" title="Previous Act">◀</div>
-      <div class="act-nav-btn" id="nextActBtn" onclick="changeAct(1)" title="Next Act">▶</div>
       <div class="close-btn" onclick="closeWindow()">×</div>
     </div>
   </div>
@@ -573,8 +583,14 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
       
       let html = \`
         <div class="act-filter">
-          <span class="act-filter-label">Showing gems for:</span>
-          <span class="act-filter-value">\${currentSkillSetTitle}</span>
+          <div class="act-filter-info">
+            <span class="act-filter-label">Showing gems for:</span>
+            <span class="act-filter-value">\${currentSkillSetTitle}</span>
+          </div>
+          <div class="act-filter-controls">
+            <div class="act-nav-btn" id="prevActBtn" onclick="changeAct(-1)" title="Previous Act">◀</div>
+            <div class="act-nav-btn" id="nextActBtn" onclick="changeAct(1)" title="Next Act">▶</div>
+          </div>
         </div>
       \`;
       

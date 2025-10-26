@@ -539,6 +539,38 @@ export class LevelingWindow {
       return true;
     });
 
+    // Get act times summary
+    ipcMain.handle('get-act-times-summary', async () => {
+      const saved = this.settingsService.get(this.getLevelingWindowKey());
+      if (!saved || !saved.actTimers || Object.keys(saved.actTimers).length === 0) {
+        return null;
+      }
+
+      const formatTime = (ms: number) => {
+        const totalSeconds = Math.floor(ms / 1000);
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        return minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+      };
+
+      const lines: string[] = ['Act Speedrunning Summary\n========================'];
+      let total = 0;
+
+      const actTimers = saved.actTimers;
+      Object.keys(actTimers).sort((a, b) => parseInt(a) - parseInt(b)).forEach(actNum => {
+        const time = actTimers[parseInt(actNum)];
+        if (time !== undefined) {
+          lines.push('Act ' + actNum + ': ' + formatTime(time));
+          total += time;
+        }
+      });
+
+      lines.push('------------------------');
+      lines.push('Total: ' + formatTime(total));
+      
+      return lines.join('\n');
+    });
+
     // Set layout mode
     ipcMain.on('leveling-set-layout', (event, mode: 'tall' | 'wide') => {
       this.layoutMode = mode;
@@ -615,11 +647,11 @@ export class LevelingWindow {
         return;
       }
       
-      console.log('[LevelingWindow] Opening tree window with', pobBuild.treeSpecs.length, 'tree specs');
+      console.log('[LevelingWindow] Opening tree window with', pobBuild.treeSpecs.length, 'tree specs for', this.overlayVersion);
       
       const onTreeWindowReady = () => {
         console.log('[LevelingWindow] Tree window reported ready, sending data');
-        sendTreeData(pobBuild.treeSpecs);
+        sendTreeData(pobBuild.treeSpecs, this.overlayVersion);
       };
 
       ipcMain.once('tree-window-ready', onTreeWindowReady);
@@ -630,7 +662,7 @@ export class LevelingWindow {
       if (!treeWindow.webContents.isLoading()) {
         ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
         console.log('[LevelingWindow] Tree window already loaded, sending data immediately');
-        sendTreeData(pobBuild.treeSpecs);
+        sendTreeData(pobBuild.treeSpecs, this.overlayVersion);
       }
     });
 
@@ -1185,7 +1217,7 @@ export class LevelingWindow {
       console.log('[PoB Import] Parsing PoB code...');
       
       // Parse PoB code (now async to support fetching pobb.in URLs)
-      const build = await parsePobCode(code);
+      const build = await parsePobCode(code, this.overlayVersion);
       if (!build) {
         return { success: false, error: 'Invalid PoB code' };
       }
