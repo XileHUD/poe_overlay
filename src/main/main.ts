@@ -383,7 +383,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             this.levelingOnlyMode = this.computeLevelingOnlyMode();
             console.log('[Init] Leveling-only mode:', this.levelingOnlyMode);
             if (this.levelingOnlyMode) {
-                console.log('[Init] PoE1 leveling overlay only mode detected - will skip main overlay creation');
+                console.log(`[Init] ${this.overlayVersion.toUpperCase()} leveling overlay only mode detected - will skip main overlay creation`);
             }
 
             this.migrateLegacyFeatureSplashFlag();
@@ -2783,7 +2783,6 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                     config.poe1Character?.enabled,
                     config.poe1Items?.enabled,
                     config.merchant,
-                    config.tools.subcategories.regex,
                     config.tools.subcategories.poe1Regex,
                     config.tools.subcategories.poe1Vorici
                   ]

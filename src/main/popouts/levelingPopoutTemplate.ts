@@ -693,6 +693,98 @@ function formatTime(ms) {
   }
 }
 
+// Optimized view mode update - only updates classes and mouse events WITHOUT re-rendering content
+function updateViewMode() {
+  const mainWindow = document.getElementById('mainWindow');
+  const minimalBtn = document.getElementById('minimalBtn');
+  const dragHandle = document.getElementById('dragHandle');
+  
+  if (!mainWindow || !minimalBtn) return;
+  
+  // Remove all mode classes
+  mainWindow.classList.remove('minimal-mode', 'ultra-minimal-mode');
+  minimalBtn.classList.remove('active', 'ultra');
+  
+  // Update background based on mode
+  if (state.minimalMode === 'normal') {
+    const opacityDecimal = (state.opacity / 100).toFixed(2);
+    mainWindow.style.background = \`linear-gradient(135deg,rgba(20,20,28,\${opacityDecimal}),rgba(15,15,22,\${opacityDecimal}))\`;
+  } else {
+    mainWindow.style.background = 'transparent';
+  }
+  
+  // Apply mode-specific settings
+  if (state.minimalMode === 'minimal') {
+    mainWindow.classList.add('minimal-mode');
+    minimalBtn.classList.add('active');
+    ipcRenderer.send('set-ignore-mouse-events', false);
+    
+    // Clean up ultra handlers if switching from ultra
+    if (dragHandle && dragHandle._ultraMouseHandlers) {
+      dragHandle.removeEventListener('mouseenter', dragHandle._ultraMouseHandlers.mouseEnterHandler);
+      dragHandle.removeEventListener('mouseleave', dragHandle._ultraMouseHandlers.mouseLeaveHandler);
+      delete dragHandle._ultraMouseHandlers;
+      delete dragHandle.dataset.ultraHandlersSet;
+    }
+  } else if (state.minimalMode === 'ultra') {
+    mainWindow.classList.add('ultra-minimal-mode');
+    minimalBtn.classList.add('ultra');
+    
+    // Setup mouse handlers only once
+    if (dragHandle && !dragHandle.dataset.ultraHandlersSet) {
+      dragHandle.dataset.ultraHandlersSet = 'true';
+      let isOverHeader = false;
+      
+      const mouseEnterHandler = () => {
+        isOverHeader = true;
+        if (state.minimalMode === 'ultra') {
+          ipcRenderer.send('set-ignore-mouse-events', false);
+        }
+      };
+      
+      const mouseLeaveHandler = () => {
+        isOverHeader = false;
+        setTimeout(() => {
+          if (!isOverHeader && state.minimalMode === 'ultra') {
+            ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
+          }
+        }, 50);
+      };
+      
+      dragHandle.addEventListener('mouseenter', mouseEnterHandler);
+      dragHandle.addEventListener('mouseleave', mouseLeaveHandler);
+      dragHandle._ultraMouseHandlers = { mouseEnterHandler, mouseLeaveHandler };
+      
+      ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
+    }
+  } else {
+    // Normal mode
+    ipcRenderer.send('set-ignore-mouse-events', false);
+    
+    if (dragHandle && dragHandle._ultraMouseHandlers) {
+      dragHandle.removeEventListener('mouseenter', dragHandle._ultraMouseHandlers.mouseEnterHandler);
+      dragHandle.removeEventListener('mouseleave', dragHandle._ultraMouseHandlers.mouseLeaveHandler);
+      delete dragHandle._ultraMouseHandlers;
+      delete dragHandle.dataset.ultraHandlersSet;
+    }
+  }
+}
+
+function formatTime(ms) {
+  const totalSeconds = Math.floor(ms / 1000);
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+  
+  if (hours > 0) {
+    return \`\${hours}h \${minutes}m \${seconds}s\`;
+  } else if (minutes > 0) {
+    return \`\${minutes}m \${seconds}s\`;
+  } else {
+    return \`\${seconds}s\`;
+  }
+}
+
 function renderActSwitcher() {
   if (!state.levelingData) return;
   
@@ -1213,12 +1305,12 @@ function render() {
   if (minimalNextBtn) minimalNextBtn.addEventListener('click', handleNextBtn);
   if (goToUltraBtn) goToUltraBtn.addEventListener('click', () => {
     state.minimalMode = 'ultra';
-    render();
+    updateViewMode(); // Use optimized update instead of full render
     saveState();
   });
   if (backToNormalBtn) backToNormalBtn.addEventListener('click', () => {
     state.minimalMode = 'normal';
-    render();
+    updateViewMode(); // Use optimized update instead of full render
     saveState();
   });
   
@@ -1361,7 +1453,7 @@ document.querySelectorAll('#minimalBtn').forEach(btn => {
     // Cycle: normal -> minimal
     if (state.minimalMode === 'normal') {
       state.minimalMode = 'minimal';
-      render();
+      updateViewMode(); // Use optimized update instead of full render
       saveState();
     }
   });

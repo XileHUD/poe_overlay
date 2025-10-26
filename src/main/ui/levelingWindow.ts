@@ -79,6 +79,8 @@ export class LevelingWindow {
       return;
     }
     this.createWindow();
+    // Restart client.txt watcher when window is recreated
+    this.startClientTxtWatcher();
     this.settingsService.update(this.getLevelingWindowKey(), (c) => ({ ...c, enabled: true }));
   }
 

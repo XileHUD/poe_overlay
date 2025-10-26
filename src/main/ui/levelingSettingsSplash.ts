@@ -848,6 +848,27 @@ function buildLevelingSettingsSplashHtml(
     function closeSettings() {
       ipcRenderer.send('leveling-settings-close');
     }
+    
+    // Initialize: Load existing PoB build if any
+    (function initializePobDisplay() {
+      ipcRenderer.invoke('get-pob-build').then(pobBuild => {
+        const infoEl = document.getElementById('pobBuildInfo');
+        const clearBtn = document.getElementById('clearPobBtn');
+        
+        if (pobBuild && pobBuild.className) {
+          infoEl.innerHTML = \`
+            <div style="color: var(--accent-green); font-weight: 600; margin-bottom: 8px;">✅ Build Loaded</div>
+            <div><strong>\${pobBuild.className}</strong> \${pobBuild.ascendancyName ? '(' + pobBuild.ascendancyName + ')' : ''}</div>
+            <div style="margin-top: 4px;">Level \${pobBuild.level} | \${pobBuild.totalNodes || 0} passive nodes | \${pobBuild.gemsFound || 0} gems</div>
+          \`;
+          clearBtn.disabled = false;
+        } else {
+          infoEl.textContent = 'No build imported';
+          infoEl.style.color = 'var(--text-secondary)';
+          clearBtn.disabled = true;
+        }
+      });
+    })();
   </script>
 </body>
 </html>

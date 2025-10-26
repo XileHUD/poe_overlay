@@ -10,7 +10,7 @@ import { JsonCache } from '../utils/jsonCache.js';
 // OverlayApp will provide getDataDir function and modifierDatabase instance.
 export interface DataIpcDeps {
   getDataDir(): string;
-  modifierDatabase: ModifierDatabase;
+  modifierDatabase: ModifierDatabase | null; // Can be null in leveling-only mode
   getUserConfigDir(): string; // for persistence of data dir selection
   getOverlayVersion(): OverlayVersion;
   validateDataDir?(dirPath: string): { valid: boolean; reason?: string };
@@ -20,7 +20,11 @@ export function registerDataIpc(deps: DataIpcDeps) {
   const { modifierDatabase } = deps;
 
   const jsonCache = new JsonCache();
-  modifierDatabase.setFileCache(jsonCache);
+  
+  // Only set file cache if modifierDatabase exists (in leveling-only mode, it may be null)
+  if (modifierDatabase) {
+    modifierDatabase.setFileCache(jsonCache);
+  }
 
   const cacheInvalidators = new Map<string, () => void>();
   const preloadTasks: Array<() => Promise<void>> = [];
@@ -114,14 +118,23 @@ export function registerDataIpc(deps: DataIpcDeps) {
   };
 
   ipcMain.handle('get-modifier-data', async (_event, category: string) => {
+    if (!modifierDatabase) {
+      return []; // Return empty array in leveling-only mode
+    }
     return await modifierDatabase.getModifiersForCategory(category);
   });
 
   ipcMain.handle('search-modifiers', async (_event, query: string, category?: string) => {
+    if (!modifierDatabase) {
+      return []; // Return empty array in leveling-only mode
+    }
     return await modifierDatabase.searchModifiers(query, category);
   });
 
   ipcMain.handle('get-all-categories', async () => {
+    if (!modifierDatabase) {
+      return []; // Return empty array in leveling-only mode
+    }
     try {
       const maybePromise = (modifierDatabase as any).__loadingPromise;
       if (maybePromise && typeof maybePromise.then === 'function') {
