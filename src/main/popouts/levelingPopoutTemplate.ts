@@ -764,7 +764,7 @@ function updateViewMode() {
     if (dragHandle && !dragHandle.dataset.ultraHandlersSet) {
       dragHandle.dataset.ultraHandlersSet = 'true';
       let isOverHeader = false;
-
+88978
       const mouseEnterHandler = () => {
         isOverHeader = true;
         if (state.minimalMode === 'ultra') enableWindowInput();
@@ -1140,7 +1140,7 @@ function render() {
   
   // Filter optional
   if (!state.showOptional) {
-    allSteps = allSteps.filter(s => s.type !== 'optional');
+    allSteps = allSteps.filter(s => s.type !== 'optional' && s.hidden !== 'optional');
   }
   
   // Calculate progress
@@ -1907,7 +1907,7 @@ function handlePrevBtn() {
   if (!act) return;
   let allSteps = act.steps;
   if (!state.showOptional) {
-    allSteps = allSteps.filter(s => s.type !== 'optional');
+    allSteps = allSteps.filter(s => s.type !== 'optional' && s.hidden !== 'optional');
   }
   
   const grouped = groupStepsByZone(allSteps);
@@ -1940,7 +1940,7 @@ function handleNextBtn() {
   if (!act) return;
   let allSteps = act.steps;
   if (!state.showOptional) {
-    allSteps = allSteps.filter(s => s.type !== 'optional');
+    allSteps = allSteps.filter(s => s.type !== 'optional' && s.hidden !== 'optional');
   }
   
   const grouped = groupStepsByZone(allSteps);

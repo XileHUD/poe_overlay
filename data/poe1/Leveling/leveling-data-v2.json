@@ -260,6 +260,7 @@
           "description": "Complete Trial of Ascendancy",
           "hint": "Usually at 1 o'clock in the zone",
           "optionalNote": "[LEAGUE START] League-start recommended",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "2_6_7_1",
           "zoneMapName": "The Prison"
@@ -584,6 +585,7 @@
           "zone": "Chamber of Sins Level 2",
           "description": "Complete Trial of Ascendancy",
           "optionalNote": "[LEAGUE START] League-start recommended",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "1_2_6_2"
         },
@@ -880,6 +882,7 @@
           "optionalNote": "[LEAGUE START] League-start recommended",
           "hint": "Same path leads to both Trial and Level 2",
           "layoutTip": "Draw a horizontal line through the starting room. If the Waypoint is below, follow the wall opposite the Waypoint. If above, follow the wall behind it. This leads to both the Trial and Crypt Level 2.",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "1_2_5_1"
         },
@@ -1089,6 +1092,7 @@
           "description": "Complete Trial of Ascendancy",
           "hint": "Visible in fog while still undiscovered",
           "optionalNote": "[LEAGUE START] League-start recommended",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "1_3_3_1"
         },
@@ -1213,6 +1217,7 @@
           "hint": "Move east from starting room if possible, north otherwise",
           "layoutTip": "After entering, prioritize moving east. If blocked, head north instead. This pathing leads efficiently to the trial.",
           "optionalNote": "[LEAGUE START] League-start recommended",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "1_3_6"
         },
@@ -1544,6 +1549,7 @@
           "hint": "North corner, off the main road",
           "layoutTip": "From waypoint, head to the north corner away from the road to find the trial.",
           "optionalNote": "[LEAGUE START] League-start recommended",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "1_3_15"
         },
@@ -1670,6 +1676,7 @@
           "layoutTip": "Waypoint to town, enter Aspirants' Plaza from town.",
           "optionalNote": "[EARLY LAB] Optional, build-dependent",
           "recommendedLevel": 33,
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "Labyrinth_Airlock"
         },
@@ -1879,6 +1886,7 @@
           "description": "Complete Normal Labyrinth",
           "hint": "If not done yet. Waypoint to Act 3 Town, enter Aspirants' Plaza",
           "optionalNote": "[LAB] Complete if not done earlier",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "Labyrinth_Airlock"
         },
@@ -2739,6 +2747,7 @@
           "hint": "Follow right wall from waypoint to find the trial",
           "layoutTip": "Follow the right wall from waypoint to locate the trial. After trial, either backtrack to Shavronne's Tower exit or continue right wall if exit not found yet.",
           "optionalNote": "[LEAGUE START] League-start only",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "2_6_7_1",
           "zoneMapName": "The Prison"
@@ -3060,6 +3069,7 @@
           "description": "Complete Trial of Ascendancy",
           "hint": "Trial is mandatory for progression",
           "optionalNote": "[LEAGUE START] League-start only",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "2_7_4"
         },
@@ -3219,6 +3229,7 @@
           "zone": "Chamber of Sins Level 2",
           "description": "Complete Trial of Ascendancy",
           "optionalNote": "[LEAGUE START] League-start only",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "2_7_5_2"
         },
@@ -3265,6 +3276,7 @@
           "hint": "Build-dependent timing - another reminder later if skipped",
           "recommendedLevel": 55,
           "optionalNote": "Early option - can be delayed to start of Act 8",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "2_7_7"
         },
@@ -3505,6 +3517,7 @@
           "description": "Regular option: Complete Cruel Labyrinth",
           "hint": "Recommended timing if not done earlier",
           "optionalNote": "Complete if skipped at Ashen Fields",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "2_7_town"
         },
@@ -3613,6 +3626,7 @@
           "description": "Complete Cruel Labyrinth",
           "hint": "Latest recommended timing for Lab 2",
           "optionalNote": "Complete now if not done earlier",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "2_8_1"
         },
@@ -3827,6 +3841,7 @@
           "description": "Complete Trial of Ascendancy",
           "hint": "Look for quest marker on minimap",
           "optionalNote": "[LEAGUE START] League-start only",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "2_8_5"
         },
@@ -4233,6 +4248,7 @@
           "description": "Complete Trial of Ascendancy",
           "hint": "Found at the first tunnel split (East/West)",
           "optionalNote": "[LEAGUE START] League-start recommended",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "2_9_7"
         },
@@ -4597,6 +4613,7 @@
           "description": "Complete Labyrinth Trial",
           "hint": "Follow one edge until you find the trial",
           "optionalNote": "[LEAGUE START] League-start only",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "2_10_9"
         },
@@ -4606,6 +4623,7 @@
           "zone": "The Ossuary",
           "description": "Return to town (Relog)",
           "optionalNote": "[LEAGUE START] League-start only",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "2_10_town"
         },
@@ -4616,6 +4634,7 @@
           "description": "Complete Merciless Labyrinth",
           "hint": "Recommended before fighting Kitava",
           "optionalNote": "[LEAGUE START] League-start recommended",
+          "hidden": "optional",
           "checkable": true,
           "zoneId": "2_10_town"
         },
