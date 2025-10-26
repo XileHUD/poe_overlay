@@ -698,14 +698,15 @@ function buildLevelingSettingsSplashHtml(
             <button class="action-btn" onclick="selectPath()">📁 Browse...</button>
           </div>
           
-          <div class="button-group">
-            <button class="action-btn danger" onclick="cleanLogFile()">🗑️ Clean Log File</button>
-          </div>
-          
           <div class="info-box">
             <strong>GGG Policy:</strong> Reading the game's log files is officially allowed by GGG.<br>
             "Reading the game's log files is okay as long as the user is aware of what you are doing with that data."<br>
-            Cleaning the log file can improve game performance by removing old entries.
+            Cleaning the log file can improve game performance by removing old entries.<br><br>
+            <strong>⚠️ Troubleshooting:</strong> If auto-detection doesn't work, try running the app as administrator. Some antivirus or system permissions may block file access.
+          </div>
+          
+          <div class="button-group">
+            <button class="action-btn danger" onclick="cleanLogFile()">🗑️ Clean Log File</button>
           </div>
         </div>
       </div>

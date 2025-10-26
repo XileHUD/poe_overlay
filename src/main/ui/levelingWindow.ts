@@ -34,6 +34,9 @@ export class LevelingWindow {
   private layoutMode: 'tall' | 'wide' = 'tall';
   private isWideMode = false;
   private registeredHotkeys: string[] = [];
+  // Ultra-mode hover tracker
+  private ultraHoverInterval: NodeJS.Timeout | null = null;
+  private ultraHoverActive: boolean = false;
 
   constructor(params: LevelingWindowParams) {
     this.settingsService = params.settingsService;
@@ -181,6 +184,7 @@ export class LevelingWindow {
 
     this.window.on('closed', () => {
       this.stopClientTxtWatcher();
+      this.stopUltraHoverTracker();
       this.window = null;
     });
 
@@ -367,7 +371,10 @@ export class LevelingWindow {
         progress: Array.from(this.completedSteps),
         currentActIndex: currentActIndex,
         actTimers: saved?.actTimers ?? {},
-        settings: saved?.uiSettings ?? {}
+        settings: saved?.uiSettings ?? {},
+        characterName: saved?.characterName ?? null,
+        characterClass: saved?.characterClass ?? null,
+        characterLevel: saved?.characterLevel ?? null
       };
     });
 
@@ -533,14 +540,28 @@ export class LevelingWindow {
     // Reset progress
     ipcMain.handle('reset-leveling-progress', async () => {
       this.completedSteps = new Set();
-      // Reset act timers and current act index
+      
+      // Reset act timers, current act index, and character info
       const saved = this.settingsService.get(this.getLevelingWindowKey());
       if (saved) {
         saved.actTimers = {};
         saved.currentActIndex = 0;
+        saved.characterLevel = undefined;
+        saved.characterName = undefined;
+        saved.characterClass = undefined;
         this.settingsService.set(this.getLevelingWindowKey(), saved);
       }
       this.saveProgress();
+      
+      // Notify renderer to clear character display
+      if (this.window && !this.window.isDestroyed()) {
+        this.window.webContents.send('character-level-up', {
+          name: null,
+          class: null,
+          level: null
+        });
+      }
+      
       return true;
     });
 
@@ -595,6 +616,19 @@ export class LevelingWindow {
     ipcMain.on('set-ignore-mouse-events', (event, ignore: boolean, options?: { forward: boolean }) => {
       if (this.window && !this.window.isDestroyed()) {
         this.window.setIgnoreMouseEvents(ignore, options);
+      }
+    });
+
+    // Ultra mode: renderer notifies main to enable header hover tracking
+    ipcMain.on('ultra-mode-change', (_event, payload: { enabled: boolean }) => {
+      const enabled = !!(payload && payload.enabled);
+      if (enabled) {
+        this.startUltraHoverTracker();
+      } else {
+        this.stopUltraHoverTracker();
+        if (this.window && !this.window.isDestroyed()) {
+          this.window.setIgnoreMouseEvents(false);
+        }
       }
     });
 
@@ -1212,13 +1246,45 @@ export class LevelingWindow {
             this.window.webContents.send('zone-entered', zoneName);
           }
         }
+
+        // POE2: Level-up detection
+        const levelRegex = /\[INFO Client \d+\] : (.+?) \((\w+)\) is now level (\d+)/g;
+        while ((match = levelRegex.exec(newContent)) !== null) {
+          const [, characterName, className, levelStr] = match;
+          const level = parseInt(levelStr, 10);
+          console.log(`[POE2] Character level up: ${characterName} (${className}) → Level ${level}`);
+
+          // Store character info and level
+          this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+            ...c,
+            characterLevel: level,
+            characterName: characterName,
+            characterClass: className
+          }));
+
+          // Send to renderer
+          if (this.window && !this.window.isDestroyed()) {
+            this.window.webContents.send('character-level-up', {
+              name: characterName,
+              class: className,
+              level: level
+            });
+          }
+        }
       }
 
       if (matchCount === 0) {
         console.log('No zone entries found in new content');
       }
-    } catch (error) {
-      console.error('Error reading Client.txt changes:', error);
+    } catch (error: any) {
+      // Provide more detailed error information
+      if (error.code === 'EACCES' || error.code === 'EPERM') {
+        console.error('[Client.txt] Access denied - file may be locked by antivirus or permissions issue:', error.message);
+      } else if (error.code === 'ENOENT') {
+        console.error('[Client.txt] File not found - it may have been moved or deleted:', error.message);
+      } else {
+        console.error('[Client.txt] Error reading file changes:', error);
+      }
     }
   }
 
@@ -1231,6 +1297,42 @@ export class LevelingWindow {
     if (this.clientTxtWatcher) {
       this.clientTxtWatcher.close();
       this.clientTxtWatcher = null;
+    }
+  }
+
+  // Toggle window click-through based on cursor hovering the ultra header area
+  private startUltraHoverTracker() {
+    if (this.ultraHoverInterval) return;
+    this.ultraHoverActive = true;
+    const headerHeight = 72; // px, matches ultra header stack
+    const pollIntervalMs = 40;
+
+    this.ultraHoverInterval = setInterval(() => {
+      if (!this.window || this.window.isDestroyed()) return;
+      try {
+        const bounds = this.window.getBounds();
+        const pt = screen.getCursorScreenPoint();
+        const withinX = pt.x >= bounds.x && pt.x <= bounds.x + bounds.width;
+        const withinY = pt.y >= bounds.y && pt.y <= bounds.y + headerHeight;
+        const overHeader = withinX && withinY;
+
+        if (overHeader) {
+          this.window.setIgnoreMouseEvents(false);
+        } else {
+          this.window.setIgnoreMouseEvents(true, { forward: true });
+        }
+      } catch (e) {
+        // Fail-safe: keep window interactive
+        this.window?.setIgnoreMouseEvents(false);
+      }
+    }, pollIntervalMs);
+  }
+
+  private stopUltraHoverTracker() {
+    this.ultraHoverActive = false;
+    if (this.ultraHoverInterval) {
+      clearInterval(this.ultraHoverInterval);
+      this.ultraHoverInterval = null;
     }
   }
 

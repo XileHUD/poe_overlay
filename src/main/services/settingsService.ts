@@ -84,6 +84,12 @@ export interface UserSettings {
       showOptional?: boolean;
       groupByZone?: boolean;
     };
+    hotkeys?: {
+      prev?: string;
+      next?: string;
+      tree?: string;
+      gems?: string;
+    };
   };
   // Game-specific leveling window state (POE2)
   levelingWindowPoe2?: {
@@ -95,6 +101,9 @@ export interface UserSettings {
     currentActIndex?: number; // Currently selected act (0-based index)
     actTimers?: Record<number, number>; // Completion time for each act: { 1: 123456, 2: 234567, ... }
     runHistory?: Record<number, Array<{ time: number; timestamp: number; date: string }>>; // Historical run times per act
+    characterLevel?: number; // Current character level (from client.txt)
+    characterName?: string; // Character name (from client.txt)
+    characterClass?: string; // Character class (from client.txt)
     pobBuild?: {
       code: string;
       className: string;
@@ -131,6 +140,12 @@ export interface UserSettings {
       showHints?: boolean;
       showOptional?: boolean;
       groupByZone?: boolean;
+    };
+    hotkeys?: {
+      prev?: string;
+      next?: string;
+      tree?: string;
+      gems?: string;
     };
   };
   hotkey?: {

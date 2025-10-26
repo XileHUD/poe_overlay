@@ -57,7 +57,7 @@ export function buildLevelingPopoutHtml(): string {
     .window.minimal-mode .timer-row,
     .window.minimal-mode .minimal-controls{display:none!important;}
     .window.minimal-mode .footer{display:none!important;}
-    .window.minimal-mode .list{padding:48px 4px 4px 4px!important;pointer-events:auto!important;}
+    .window.minimal-mode .list{padding:76px 4px 4px 4px!important;pointer-events:auto!important;}
     .window.minimal-mode .list::-webkit-scrollbar{display:none!important;}
     .window.minimal-mode .list{scrollbar-width:none!important;-ms-overflow-style:none!important;}
     .window.minimal-mode .leveling-step,
@@ -66,15 +66,17 @@ export function buildLevelingPopoutHtml(): string {
     /* Ultra Minimal Mode - click-through with no interactivity */
     .window.ultra-minimal-mode{border:none!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;}
     .window.ultra-minimal-mode .header{-webkit-app-region:no-drag;pointer-events:none!important;padding:0!important;background:transparent!important;border:none!important;min-height:0!important;height:0!important;overflow:visible!important;}
-    .window.ultra-minimal-mode .drag-handle{display:flex!important;flex-direction:column;position:absolute;top:0;left:0;right:0;height:auto;background:rgba(32,36,44,0.85);backdrop-filter:blur(4px);border-bottom:1px solid rgba(74,158,255,0.2);padding:4px 6px;gap:2px;z-index:100;pointer-events:auto!important;-webkit-app-region:drag;}
-    .window.ultra-minimal-mode .drag-handle-row{display:flex;align-items:center;gap:4px;width:100%;-webkit-app-region:drag;}
-    .window.ultra-minimal-mode .drag-handle-icon{font-size:10px;color:rgba(255,255,255,0.3);cursor:move;-webkit-app-region:drag;}
+  .window.ultra-minimal-mode .drag-handle{display:flex!important;flex-direction:column;position:absolute;top:0;left:0;right:0;height:auto;background:rgba(32,36,44,0.85);backdrop-filter:blur(4px);border-bottom:1px solid rgba(74,158,255,0.2);padding:4px 6px;gap:2px;z-index:100;pointer-events:auto!important;-webkit-app-region:drag;}
+    .window.ultra-minimal-mode .ultra-drag-overlay{display:block!important;}
+    .window.ultra-minimal-mode #minimalCharacterInfo{pointer-events:none!important;}
+    .window.ultra-minimal-mode .drag-handle-row{display:flex;align-items:center;gap:4px;width:100%;position:relative;z-index:10;}
+    .window.ultra-minimal-mode .drag-handle-icon{font-size:10px;color:rgba(255,255,255,0.3);cursor:move;pointer-events:none!important;}
     .window.ultra-minimal-mode .drag-handle .minimal-nav{display:flex!important;gap:4px;margin-right:auto;-webkit-app-region:no-drag;}
-    .window.ultra-minimal-mode .drag-handle .minimal-btn{width:auto!important;height:16px!important;font-size:9px!important;padding:0 6px!important;display:flex!important;align-items:center;justify-content:center;pointer-events:auto!important;-webkit-app-region:no-drag;opacity:0.7;transition:opacity 0.2s;background:rgba(74,158,255,0.2);border:1px solid rgba(74,158,255,0.3);color:rgba(255,255,255,0.9);border-radius:3px;}
+    .window.ultra-minimal-mode .drag-handle .minimal-btn{width:auto!important;height:16px!important;font-size:9px!important;padding:0 6px!important;display:flex!important;align-items:center;justify-content:center;pointer-events:auto!important;-webkit-app-region:no-drag;opacity:0.7;transition:opacity 0.2s;background:rgba(74,158,255,0.2);border:1px solid rgba(74,158,255,0.3);color:rgba(255,255,255,0.9);border-radius:3px;position:relative;z-index:10;}
     .window.ultra-minimal-mode .drag-handle .minimal-btn:hover{opacity:1!important;background:rgba(74,158,255,0.3);}
-    .window.ultra-minimal-mode .drag-handle .header-btn{width:20px!important;height:16px!important;font-size:10px!important;display:flex!important;align-items:center;justify-content:center;pointer-events:auto!important;-webkit-app-region:no-drag;opacity:0.5;transition:opacity 0.2s;}
+    .window.ultra-minimal-mode .drag-handle .header-btn{width:20px!important;height:16px!important;font-size:10px!important;display:flex!important;align-items:center;justify-content:center;pointer-events:auto!important;-webkit-app-region:no-drag;opacity:0.5;transition:opacity 0.2s;position:relative;z-index:10;}
     .window.ultra-minimal-mode .drag-handle .header-btn:hover{opacity:1!important;}
-    .window.ultra-minimal-mode .drag-handle-info{display:flex!important;flex-direction:row;gap:6px;align-items:center;padding:4px 14px;-webkit-app-region:no-drag;pointer-events:auto!important;}
+    .window.ultra-minimal-mode .drag-handle-info{display:flex!important;flex-direction:row;gap:6px;align-items:center;padding:4px 14px;-webkit-app-region:no-drag;pointer-events:auto!important;position:relative;z-index:10;}
     .window.ultra-minimal-mode .drag-handle-timer{font-size:9px;color:rgba(255,255,255,0.8);font-weight:600;white-space:nowrap;cursor:default;font-family:monospace;}
     .window.ultra-minimal-mode .drag-handle-progress{display:flex;align-items:center;gap:4px;flex:1;min-width:0;}
     .window.ultra-minimal-mode .drag-handle-progress-bar{flex:1;height:4px;background:rgba(0,0,0,0.4);border-radius:2px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);}
@@ -100,12 +102,13 @@ export function buildLevelingPopoutHtml(): string {
     .window.ultra-minimal-mode .leveling-step.current{background:rgba(50,54,64,0.9)!important;border-color:rgba(74,158,255,0.3)!important;}
     .window.ultra-minimal-mode .leveling-group{background:rgba(32,36,44,0.85)!important;border:1px solid rgba(74,222,128,0.15)!important;}
     .window.ultra-minimal-mode .leveling-group.current{background:rgba(40,50,44,0.9)!important;border-color:rgba(74,222,128,0.3)!important;}
-    .window.ultra-minimal-mode .list{padding:44px 4px 4px 4px!important;}
+    .window.ultra-minimal-mode .list{padding:72px 4px 4px 4px!important;pointer-events:none!important;}
     .window.ultra-minimal-mode .list::-webkit-scrollbar{display:none!important;}
     .window.ultra-minimal-mode .list{scrollbar-width:none!important;-ms-overflow-style:none!important;}
     .drag-handle{display:none;}
     .drag-handle-row{display:none;}
     .drag-handle-info{display:none;}
+    .ultra-drag-overlay{display:none;}
     
     /* Timer row in normal mode - below controls */
     .timer-row{display:flex;flex-direction:row;gap:8px;align-items:center;padding:8px 12px;background:rgba(40,44,52,0.6);border-bottom:1px solid rgba(255,255,255,0.08);-webkit-app-region:no-drag;}
@@ -294,6 +297,8 @@ export function buildLevelingPopoutHtml(): string {
 <body>
 <div class='window' id='mainWindow'>
   <div class='drag-handle' id='dragHandle'>
+    <div class='ultra-drag-overlay' style='position:absolute;top:0;left:0;right:0;bottom:0;-webkit-app-region:drag;pointer-events:auto;z-index:1;'></div>
+    <div id='minimalCharacterInfo' style='font-size:9px;color:rgba(255,255,255,0.85);font-weight:600;text-align:center;padding:2px 6px;background:rgba(0,0,0,0.3);border-radius:3px;margin-bottom:2px;display:none;user-select:none;-webkit-user-select:none;cursor:move;position:relative;z-index:2;'></div>
     <div class='drag-handle-row'>
       <span class='drag-handle-icon'>⋮⋮</span>
       <div class='minimal-nav'>
@@ -349,6 +354,7 @@ export function buildLevelingPopoutHtml(): string {
   </div>
   <div class='timer-row'>
     <div class='timer-display' id='timerDisplay'><span id='timerText'>Act1 00:00</span></div>
+    <div id='characterInfo' style='font-size:11px;color:rgba(255,255,255,0.8);font-weight:600;margin-left:auto;margin-right:8px;display:none;'></div>
     <div class='timer-controls'>
       <button class='timer-btn' id='timerStartPause' title='Start/Pause timer'>Start</button>
       <button class='timer-btn' id='timerReset' title='Reset timer'>Reset</button>
@@ -444,6 +450,9 @@ let state = {
   levelingData: null,
   pobBuild: null,
   currentActIndex: 0, // Currently selected act (0-based index)
+  characterName: null,
+  characterClass: null,
+  characterLevel: null,
   timer: {
     isRunning: false,
     startTime: 0,
@@ -731,8 +740,9 @@ function updateViewMode() {
   if (state.minimalMode === 'minimal') {
     mainWindow.classList.add('minimal-mode');
     minimalBtn.classList.add('active');
-    // Minimal mode is NOT click-through - window is fully interactable
+  // Minimal mode is NOT click-through - window is fully interactable
     ipcRenderer.send('set-ignore-mouse-events', false);
+  ipcRenderer.send('ultra-mode-change', { enabled: false });
     
     // Clean up ultra handlers if switching from ultra
     if (dragHandle && dragHandle._ultraMouseHandlers) {
@@ -742,39 +752,43 @@ function updateViewMode() {
       delete dragHandle.dataset.ultraHandlersSet;
     }
   } else if (state.minimalMode === 'ultra') {
+  ipcRenderer.send('ultra-mode-change', { enabled: true });
     mainWindow.classList.add('ultra-minimal-mode');
     minimalBtn.classList.add('ultra');
-    
+    // In ultra mode we keep the window click-through by default and only enable input
+    // while hovering the header so it can be dragged and buttons clicked.
+    const enableWindowInput = () => ipcRenderer.send('set-ignore-mouse-events', false);
+    const disableWindowInput = () => ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
+
     // Setup mouse handlers only once
     if (dragHandle && !dragHandle.dataset.ultraHandlersSet) {
       dragHandle.dataset.ultraHandlersSet = 'true';
       let isOverHeader = false;
-      
+
       const mouseEnterHandler = () => {
         isOverHeader = true;
-        if (state.minimalMode === 'ultra') {
-          ipcRenderer.send('set-ignore-mouse-events', false);
-        }
+        if (state.minimalMode === 'ultra') enableWindowInput();
       };
-      
+
       const mouseLeaveHandler = () => {
         isOverHeader = false;
         setTimeout(() => {
-          if (!isOverHeader && state.minimalMode === 'ultra') {
-            ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
-          }
+          if (!isOverHeader && state.minimalMode === 'ultra') disableWindowInput();
         }, 50);
       };
-      
+
       dragHandle.addEventListener('mouseenter', mouseEnterHandler);
       dragHandle.addEventListener('mouseleave', mouseLeaveHandler);
+      // @ts-ignore - store handlers for cleanup
       dragHandle._ultraMouseHandlers = { mouseEnterHandler, mouseLeaveHandler };
-      
-      ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
     }
+
+    // Default to click-through when switching into ultra (main also enforces)
+    ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
   } else {
     // Normal mode
     ipcRenderer.send('set-ignore-mouse-events', false);
+    ipcRenderer.send('ultra-mode-change', { enabled: false });
     
     if (dragHandle && dragHandle._ultraMouseHandlers) {
       dragHandle.removeEventListener('mouseenter', dragHandle._ultraMouseHandlers.mouseEnterHandler);
@@ -1417,8 +1431,18 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
     console.log('Loaded UI settings:', result.settings);
   }
   
+  // Load saved character info
+  if (result.characterName) state.characterName = result.characterName;
+  if (result.characterClass) state.characterClass = result.characterClass;
+  if (result.characterLevel !== undefined && result.characterLevel !== null) {
+    state.characterLevel = result.characterLevel;
+  }
+  
   // Load PoB build after data is loaded
   loadPobBuild();
+  
+  // Update character display
+  updateCharacterDisplay();
   
   // Listen for settings changes from the settings splash
   ipcRenderer.on('leveling-settings-changed', (event, updates) => {
@@ -1765,6 +1789,14 @@ ipcRenderer.on('pob-build-removed', () => {
 // Listen for character level-up events
 ipcRenderer.on('character-level-up', (event, data) => {
   console.log('Character level up:', data);
+  
+  // Update state with new character info (handle reset with null values)
+  if (data.name !== undefined) state.characterName = data.name;
+  if (data.class !== undefined) state.characterClass = data.class;
+  if (data.level !== undefined) state.characterLevel = data.level;
+  
+  // Trigger UI update
+  updateCharacterDisplay();
 });
 
 // Timer functions
@@ -1783,6 +1815,31 @@ function updateTimerDisplay() {
   const dragDisplay = document.getElementById('dragHandleTimer');
   if (dragDisplay) dragDisplay.textContent = displayText;
 }
+
+function updateCharacterDisplay() {
+  // Format: "Name (Class) Lv.XX" or just level if no name
+  let displayText = '';
+  
+  if (state.characterName && state.characterClass && state.characterLevel !== null) {
+    displayText = state.characterName + ' (' + state.characterClass + ') Lv.' + state.characterLevel;
+  } else if (state.characterLevel !== null) {
+    displayText = 'Level ' + state.characterLevel;
+  }
+  
+  // Update all character display elements
+  const normalDisplay = document.getElementById('characterInfo');
+  const minimalDisplay = document.getElementById('minimalCharacterInfo');
+  
+  if (normalDisplay) {
+    normalDisplay.textContent = displayText;
+    normalDisplay.style.display = displayText ? 'block' : 'none';
+  }
+  if (minimalDisplay) {
+    minimalDisplay.textContent = displayText;
+    minimalDisplay.style.display = displayText ? 'block' : 'none';
+  }
+}
+
 
 function startTimer() {
   if (!state.timer.isRunning) {
