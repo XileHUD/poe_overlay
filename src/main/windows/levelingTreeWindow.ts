@@ -400,6 +400,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
     let currentSpecs = [];
     let currentIndex = 0;
     let currentGameVersion = 'poe1'; // Track game version
+    let currentTreeData = null; // Store tree data for connection coloring
     let isPanning = false;
     let lastPanPosition = { x: 0, y: 0 };
     let isUltraMinimal = ${ultraMinimal};
@@ -415,7 +416,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
         return;
       }
 
-      const { specs, treeSvg, viewBox, gameVersion, currentAct, characterLevel } = payload;
+      const { specs, treeSvg, viewBox, treeData, gameVersion, currentAct, characterLevel } = payload;
 
       if (!specs || specs.length === 0) {
         console.error('[Tree Window] No specs received!');
@@ -426,6 +427,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       treeViewBox = viewBox || '';
       currentSpecs = specs;
       currentGameVersion = gameVersion || 'poe1'; // Store game version
+      currentTreeData = treeData; // Store tree data for connection lookup
       
       // Use smart matching to find the best spec to display initially
       const bestSpecIndex = findBestTreeSpec(specs, currentAct || 1, characterLevel || 1);
@@ -631,50 +633,36 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       const connectionAddedIds = [];
       const connectionRemovedIds = [];
 
-      // Load skillTree to get actual connections
-      try {
-        let skillTreeMod = null;
-        let cwd = '';
-        try { cwd = (window && window.process && typeof window.process.cwd === 'function') ? window.process.cwd() : ''; } catch (_e0) {}
-        if (cwd) {
-          try { skillTreeMod = require(cwd + '/packages/overlay/dist/shared/pob/treeLoader.js'); } catch (_e1) {}
-          if (!skillTreeMod) { try { skillTreeMod = require(cwd + '/dist/shared/pob/treeLoader.js'); } catch (_e2) {} }
-        }
-        if (skillTreeMod) {
-          // Use the correct tree based on game version
-          const st = currentGameVersion === 'poe2' ? skillTreeMod.skillTreePoe2 : skillTreeMod.skillTree;
-          
-          if (st) {
-            const nodesActiveSet = new Set(nodesActive);
-            const nodesAddedSet = new Set(nodesAdded);
-            const nodesRemovedSet = new Set(nodesRemoved);
+      // Use tree data from payload instead of require()
+      if (currentTreeData && currentTreeData.graphs) {
+        const nodesActiveSet = new Set(nodesActive);
+        const nodesAddedSet = new Set(nodesAdded);
+        const nodesRemovedSet = new Set(nodesRemoved);
 
-            for (const graph of st.graphs) {
-              for (const conn of graph.connections) {
-                const id = conn.a + '-' + conn.b;
-                const aIsActive = nodesActiveSet.has(conn.a);
-                const bIsActive = nodesActiveSet.has(conn.b);
-                const aIsAdded = nodesAddedSet.has(conn.a);
-                const bIsAdded = nodesAddedSet.has(conn.b);
-                const aIsRemoved = nodesRemovedSet.has(conn.a);
-                const bIsRemoved = nodesRemovedSet.has(conn.b);
+        for (const graph of currentTreeData.graphs) {
+          for (const conn of graph.connections) {
+            const id = conn.a + '-' + conn.b;
+            const aIsActive = nodesActiveSet.has(conn.a);
+            const bIsActive = nodesActiveSet.has(conn.b);
+            const aIsAdded = nodesAddedSet.has(conn.a);
+            const bIsAdded = nodesAddedSet.has(conn.b);
+            const aIsRemoved = nodesRemovedSet.has(conn.a);
+            const bIsRemoved = nodesRemovedSet.has(conn.b);
 
-                if (aIsActive && bIsActive) {
-                  connectionActiveIds.push(id);
-                }
-                if ((aIsAdded && (bIsAdded || bIsActive)) || (bIsAdded && (aIsAdded || aIsActive))) {
-                  connectionAddedIds.push(id);
-                }
-                if ((aIsRemoved && (bIsRemoved || bIsActive)) || (bIsRemoved && (aIsRemoved || aIsActive))) {
-                  connectionRemovedIds.push(id);
-                }
-              }
+            if (aIsActive && bIsActive) {
+              connectionActiveIds.push(id);
             }
-            console.log('[Tree] Built connection lists: active=' + connectionActiveIds.length + ', added=' + connectionAddedIds.length + ', removed=' + connectionRemovedIds.length);
+            if ((aIsAdded && (bIsAdded || bIsActive)) || (bIsAdded && (aIsAdded || aIsActive))) {
+              connectionAddedIds.push(id);
+            }
+            if ((aIsRemoved && (bIsRemoved || bIsActive)) || (bIsRemoved && (aIsRemoved || aIsActive))) {
+              connectionRemovedIds.push(id);
+            }
           }
         }
-      } catch (e) {
-        console.warn('[Tree] Could not build connection lists:', e && e.message ? e.message : e);
+        console.log('[Tree] Built connection lists: active=' + connectionActiveIds.length + ', added=' + connectionAddedIds.length + ', removed=' + connectionRemovedIds.length);
+      } else {
+        console.warn('[Tree] No tree data available for connection coloring');
       }
 
       const activeConnStyles = connectionActiveIds.map(id => \`#c\${id}\`).join(', ');
@@ -1065,6 +1053,7 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
 
   let treeSvg = '';
   let viewBox = '';
+  let treeData: any = null;
 
   try {
     const template = require('../../shared/pob/treeLoader');
@@ -1073,10 +1062,12 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     if (gameVersion === 'poe2') {
       treeSvg = template.poe2Template?.svg || '';
       viewBox = template.poe2Template?.viewBox || '';
+      treeData = template.skillTreePoe2;
       console.log('[Tree Window] Using PoE2 tree template');
     } else {
       treeSvg = template.svg;
       viewBox = template.viewBox;
+      treeData = template.skillTree;
       console.log('[Tree Window] Using PoE1 tree template');
     }
     
@@ -1084,6 +1075,7 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
       gameVersion,
       svgLength: treeSvg?.length || 0,
       viewBox,
+      hasTreeData: !!treeData,
     });
   } catch (err) {
     console.error('[Tree Window] Failed to load tree template for payload:', err);
@@ -1109,6 +1101,7 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     specs: filteredSpecs,
     treeSvg,
     viewBox,
+    treeData,
     gameVersion,
     currentAct,
     characterLevel,
