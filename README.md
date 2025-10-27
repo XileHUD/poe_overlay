@@ -12,14 +12,14 @@ Lightweight PoE1 and PoE2 item & modifier overlay – copy an item, see the data
 
 <br />
 
-<a href="https://youtu.be/m6PkfTIK-1E" target="_blank" rel="noopener noreferrer" title="Watch the latest XileHUD feature showcase on YouTube">
-	<img src="./screenshots/YT2.png" alt="XileHUD Feature Showcase (YouTube)" width="720" />
+<a href="https://www.youtube.com/watch?v=S_K_4U-rByU" target="_blank" rel="noopener noreferrer" title="Watch the latest XileHUD feature showcase on YouTube">
+	<img src="./screenshots/YT04.png" alt="XileHUD Feature Showcase (YouTube)" width="720" />
 </a><br/>
-<sub><a href="https://youtu.be/m6PkfTIK-1E" target="_blank" rel="noopener noreferrer"><em>Latest video: Full PoE1 & PoE2 Support Overview</em></a></sub>
+<sub><a href="https://www.youtube.com/watch?v=S_K_4U-rByU" target="_blank" rel="noopener noreferrer"><em>Latest video: Leveling Overlay + PoB Integration</em></a></sub>
 
 <br />
 
-<sub><a href="https://www.youtube.com/watch?v=a2E4FvXQ6PU" target="_blank" rel="noopener noreferrer"><em>Previous video (v0.2.0+): Whittling Helper, Merchant History Improvements, Feature Selector</em></a></sub>
+<sub><a href="https://youtu.be/m6PkfTIK-1E" target="_blank" rel="noopener noreferrer"><em>Previous video: Full PoE1 & PoE2 Support Overview</em></a></sub>
 
 <br />
 
@@ -35,6 +35,21 @@ I initially created this HUD for my personal use. As a self-employed trader, I s
 ---
 
 ## ✨ Features
+
+### Leveling Overlay
+A comprehensive leveling companion for both PoE1 (Acts 1-10) and PoE2 (Acts 1-7). The overlay provides optimized step-by-step guides with automatic zone detection via Client.txt monitoring, so you never miss a quest reward, waypoint, or trial.
+
+**Key Features:**
+- Complete act-by-act guides for PoE1 and PoE2
+- Auto-detection of zone changes with progress tracking
+- Full Path of Building integration: import builds and view recommended gems, passive tree progression, gear sets, and notes
+- Floating windows for gems and passive tree with interactive zoom/pan controls
+- Multiple view modes: Normal, Minimal (compact header), and Ultra-Minimal (click-through overlay)
+- Speedrun timer with run history database, comparisons (best/previous/average), and detailed statistics
+- Customizable hotkeys for navigation, passive tree toggle, and gems window toggle
+- Leveling-only mode for minimal resource usage
+
+_Images coming soon_
 
 ### Merchant History
 One of the core motivations for this project. In-game, the vendor history is capped at the last 100 items and doesn't show the items themselves. XileHUD provides a local, searchable, and filterable history of your merchant interactions, allowing you to save and analyze more than just the last 100 transactions. Over recent versions, more filter options and quality-of-life features have been continuously added.
