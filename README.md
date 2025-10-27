@@ -291,6 +291,11 @@ This project is not affiliated with or endorsed by Grinding Gear Games.
 - [Siveran](https://github.com/Siveran/siveran.github.io)
 - [UIOHook](https://github.com/kwhat/libuiohook)
 - [SnosMe](https://github.com/SnosMe/uiohook-napi)
+
+Leveling-Overlay:
+
+- [EXILE-LEVELING](https://github.com/HeartofPhos/exile-leveling)
+- [Lailloken (Exile-UI)](https://github.com/Lailloken/Exile-UI)
 ---
 
 ## 🔧 Building From Source

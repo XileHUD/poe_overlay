@@ -562,6 +562,10 @@ function buildLevelingSettingsSplashHtml(
             <span class="range-value" id="visibleSteps-value">${visibleSteps === 99 ? 'All' : visibleSteps}</span>
           </div>
         </div>
+
+        <div class="button-group">
+          <button class="action-btn" onclick="resetDisplaySettings()">🔄 Reset Display to Defaults</button>
+        </div>
       </div>
     </div>
     
@@ -857,6 +861,27 @@ function buildLevelingSettingsSplashHtml(
       updateSetting(setting, value);
     }
     
+    // Batch settings updates to avoid spamming IPC/render during slider drags
+    const _pendingUpdates = {};
+    let _rafScheduled = false;
+    let _fallbackTimer = null;
+    function _flushPending() {
+      if (Object.keys(_pendingUpdates).length === 0) return;
+      ipcRenderer.send('leveling-settings-update', { ..._pendingUpdates });
+      for (const k in _pendingUpdates) delete _pendingUpdates[k];
+      _rafScheduled = false;
+      if (_fallbackTimer) { clearTimeout(_fallbackTimer); _fallbackTimer = null; }
+    }
+    function _scheduleSend() {
+      if (_rafScheduled) return;
+      _rafScheduled = true;
+      // Coalesce to next frame for smoothness
+      requestAnimationFrame(_flushPending);
+      // Fallback in case rAF is throttled (e.g., background)
+      if (_fallbackTimer) clearTimeout(_fallbackTimer);
+      _fallbackTimer = setTimeout(_flushPending, 120);
+    }
+
     function updateSetting(key, value) {
       // Update display if it's a slider
       const valueDisplay = document.getElementById(key + '-value');
@@ -870,8 +895,34 @@ function buildLevelingSettingsSplashHtml(
         }
       }
       
-      // Send update to main process
-      ipcRenderer.send('leveling-settings-update', { [key]: value });
+      // Batch-send update to main process (smooth sliders)
+      _pendingUpdates[key] = value;
+      _scheduleSend();
+    }
+
+    // Reset the Display tab sliders to sensible defaults and apply immediately
+    function resetDisplaySettings() {
+      const defaults = { opacity: 96, fontSize: 12, zoomLevel: 100, visibleSteps: 99 };
+
+      // Update sliders' UI
+      const opacityEl = document.getElementById('opacitySlider');
+      const fontEl = document.getElementById('fontSizeSlider');
+      const zoomEl = document.getElementById('zoomSlider');
+      const stepsEl = document.getElementById('visibleStepsSlider');
+
+      if (opacityEl) opacityEl.value = String(defaults.opacity);
+      if (fontEl) fontEl.value = String(defaults.fontSize);
+      if (zoomEl) zoomEl.value = String(defaults.zoomLevel);
+      if (stepsEl) stepsEl.value = String(defaults.visibleSteps);
+
+      // Use the same update path so displays and overlay update via fast-path
+      updateSetting('opacity', defaults.opacity);
+      updateSetting('fontSize', defaults.fontSize);
+      updateSetting('zoomLevel', defaults.zoomLevel);
+      updateSetting('visibleSteps', defaults.visibleSteps);
+
+      // Flush immediately so user sees the effect without waiting
+      _flushPending();
     }
     
     function autoDetectPath() {
@@ -989,77 +1040,96 @@ function buildLevelingSettingsSplashHtml(
     
     // Hotkey capture system
     let capturingHotkeyFor = null;
+    let _hotkeyKeydownHandler = null;
     
     function captureHotkey(hotkeyName) {
+      // If we're already capturing another, cancel it first
+      if (_hotkeyKeydownHandler) {
+        document.removeEventListener('keydown', _hotkeyKeydownHandler, true);
+        _hotkeyKeydownHandler = null;
+      }
+
       capturingHotkeyFor = hotkeyName;
       const inputEl = document.getElementById('hotkey-' + hotkeyName);
-      inputEl.textContent = 'Press key...';
+      inputEl.textContent = 'Press combination...';
       inputEl.classList.add('recording');
       
-      // Listen for next keydown
-      document.addEventListener('keydown', handleHotkeyCapture, { once: true });
-    }
-    
-    function handleHotkeyCapture(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      if (!capturingHotkeyFor) return;
-      
-      const hotkeyName = capturingHotkeyFor;
-      const inputEl = document.getElementById('hotkey-' + hotkeyName);
-      
-      // Build accelerator string
-      const modifiers = [];
-      if (e.ctrlKey) modifiers.push('Ctrl');
-      if (e.altKey) modifiers.push('Alt');
-      if (e.shiftKey) modifiers.push('Shift');
-      
-      // Get the key name
-      let key = e.key;
-      
-      // Normalize key names for Electron accelerator format
-      const keyMap = {
-        ' ': 'Space',
-        'ArrowUp': 'Up',
-        'ArrowDown': 'Down',
-        'ArrowLeft': 'Left',
-        'ArrowRight': 'Right',
-        'Delete': 'Delete',
-        'Insert': 'Insert',
-        'Home': 'Home',
-        'End': 'End',
-        'PageUp': 'PageUp',
-        'PageDown': 'PageDown'
-      };
-      
-      if (keyMap[key]) {
-        key = keyMap[key];
-      } else if (key.length === 1) {
-        key = key.toUpperCase();
-      } else if (key.startsWith('F') && !isNaN(key.substring(1))) {
-        // F1-F24 keys are already in correct format
-        key = key;
-      } else if (['Control', 'Alt', 'Shift', 'Meta'].includes(key)) {
-        // Modifier-only press, ignore
-        inputEl.textContent = 'Not Set';
+      // Listen until we receive a non-modifier key (so Ctrl/Shift + Key works)
+      _hotkeyKeydownHandler = function handleHotkeyCapture(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (!capturingHotkeyFor) return;
+
+        // Allow Esc to cancel
+        if (e.key === 'Escape') {
+          inputEl.textContent = 'Not Set';
+          inputEl.classList.remove('recording');
+          capturingHotkeyFor = null;
+          document.removeEventListener('keydown', _hotkeyKeydownHandler, true);
+          _hotkeyKeydownHandler = null;
+          return;
+        }
+
+        // Ignore pure modifier presses; keep listening for the actual key
+        if (['Control', 'Alt', 'Shift', 'Meta'].includes(e.key)) {
+          return; // keep capturing
+        }
+
+        const hotkeyName = capturingHotkeyFor;
+        
+        // Build accelerator string
+        const modifiers = [];
+        if (e.ctrlKey) modifiers.push('Ctrl');
+        if (e.altKey) modifiers.push('Alt');
+        if (e.shiftKey) modifiers.push('Shift');
+        
+        // Get the key name
+        let key = e.key;
+        
+        // Normalize key names for Electron accelerator format
+        const keyMap = {
+          ' ': 'Space',
+          'ArrowUp': 'Up',
+          'ArrowDown': 'Down',
+          'ArrowLeft': 'Left',
+          'ArrowRight': 'Right',
+          'Delete': 'Delete',
+          'Insert': 'Insert',
+          'Home': 'Home',
+          'End': 'End',
+          'PageUp': 'PageUp',
+          'PageDown': 'PageDown'
+        };
+        
+        if (keyMap[key]) {
+          key = keyMap[key];
+        } else if (key.length === 1) {
+          key = key.toUpperCase();
+        } else if (key.startsWith('F') && !isNaN(key.substring(1))) {
+          // F1-F24 keys are already in correct format
+          key = key;
+        }
+        
+        // Build full accelerator
+        const parts = [...modifiers, key];
+        const accelerator = parts.join('+');
+        
+        // Update display
+        inputEl.textContent = accelerator || 'Not Set';
         inputEl.classList.remove('recording');
+        
+        // Save hotkey
+        updateHotkey(hotkeyName, accelerator);
+        
+        // Cleanup listener
         capturingHotkeyFor = null;
-        return;
-      }
-      
-      // Build full accelerator
-      const parts = [...modifiers, key];
-      const accelerator = parts.join('+');
-      
-      // Update display
-      inputEl.textContent = accelerator;
-      inputEl.classList.remove('recording');
-      
-      // Save hotkey
-      updateHotkey(hotkeyName, accelerator);
-      
-      capturingHotkeyFor = null;
+        document.removeEventListener('keydown', _hotkeyKeydownHandler, true);
+        _hotkeyKeydownHandler = null;
+      };
+
+      // Use capture phase to avoid other handlers swallowing the event
+      document.addEventListener('keydown', _hotkeyKeydownHandler, true);
     }
     
     function clearHotkey(hotkeyName) {

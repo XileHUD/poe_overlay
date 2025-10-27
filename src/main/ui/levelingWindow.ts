@@ -55,6 +55,8 @@ export class LevelingWindow {
     this.autoDetectClientTxtOnStartup();
   }
 
+  // Hotkeys are global again; no foreground gating.
+
   // Helper methods to get game-specific setting keys
   private getClientTxtPathKey(): 'clientTxtPathPoe1' | 'clientTxtPathPoe2' {
     return this.overlayVersion === 'poe1' ? 'clientTxtPathPoe1' : 'clientTxtPathPoe2';
@@ -97,6 +99,8 @@ export class LevelingWindow {
       this.window.close();
       this.window = null;
     }
+    // Stop Client.txt monitoring when window is hidden
+    this.stopClientTxtWatcher();
     this.settingsService.update(this.getLevelingWindowKey(), (c) => ({ ...c, enabled: false }));
   }
 
@@ -985,8 +989,8 @@ export class LevelingWindow {
       return saved?.pobBuild || null;
     });
 
-    // Start watching client.txt for zone changes
-    this.startClientTxtWatcher();
+    // Note: Client.txt watcher is started/stopped via show()/hide() methods
+    // to ensure it only runs when the leveling window is actually open
   }
 
   private clientTxtWatcher: fs.FSWatcher | null = null;
@@ -1228,9 +1232,15 @@ export class LevelingWindow {
       const stats = fs.statSync(filePath);
       const currentSize = stats.size;
 
-      // Only read if file has grown
-      if (currentSize <= this.lastFilePosition) {
-        console.log('File size unchanged or decreased, skipping');
+      // Handle truncation or rotation: if file shrank, reset pointer to 0 to avoid missing new lines
+      if (currentSize < this.lastFilePosition) {
+        console.log('Client.txt appears truncated or rotated. Resetting read position to 0.');
+        this.lastFilePosition = 0;
+      }
+
+      // Only read if file has grown beyond last position
+      if (currentSize === this.lastFilePosition) {
+        // No new content
         return;
       }
 
@@ -1302,8 +1312,11 @@ export class LevelingWindow {
           updateTreeWindowContext((saved as any)?.currentActIndex + 1 || 1, level);
         }
       } else {
-        // POE2: "[SCENE] Set Source [<zone name>]"
-        const zoneRegex = /\[INFO Client \d+\] \[SCENE\] Set Source \[(.+?)\]/g;
+        // POE2: Handle both formats, with or without parentheses around [Zone]
+        // Examples observed:
+        //   [SCENE] Set Source [Clearfell]
+        //   [SCENE] Set Source ([Lioneye's Watch])
+        const zoneRegex = /\[INFO Client \d+\] \[SCENE\]\s*Set Source\s*\(?\[(.+?)\]\)?/g;
         let match;
         
         while ((match = zoneRegex.exec(newContent)) !== null) {
@@ -1312,6 +1325,17 @@ export class LevelingWindow {
           console.log(`[${matchCount}] POE2 Detected zone entry:`, zoneName);
           
           // Send to renderer to auto-check the step
+          if (this.window && !this.window.isDestroyed()) {
+            this.window.webContents.send('zone-entered', zoneName);
+          }
+        }
+
+        // Fallback: also look for "You have entered <Zone>." lines which can appear in POE2
+        const enteredRegex = /\[INFO Client \d+\] : You have entered (.+)\./g;
+        while ((match = enteredRegex.exec(newContent)) !== null) {
+          const zoneName = match[1].trim();
+          matchCount++;
+          console.log(`[${matchCount}] POE2 Detected zone entry (fallback):`, zoneName);
           if (this.window && !this.window.isDestroyed()) {
             this.window.webContents.send('zone-entered', zoneName);
           }

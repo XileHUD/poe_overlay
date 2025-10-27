@@ -43,6 +43,10 @@ const modSearchCache = new WeakMap<any, SearchIndex>();
 type OverlayVersionMode = 'poe1' | 'poe2';
 let currentOverlayVersionMode: OverlayVersionMode = 'poe2';
 
+// Cache for item matching to avoid re-computing on every render
+let lastItemModifiersHash: string = '';
+let lastMatchedSectionsCache: WeakMap<any, boolean> = new WeakMap();
+
 export function setOverlayVersionMode(mode: string | null | undefined): void {
   currentOverlayVersionMode = mode === 'poe1' ? 'poe1' : 'poe2';
 }
@@ -633,6 +637,8 @@ function buildItemModCatalog(lines: string[] | undefined): ItemModCatalog {
     else canonicalSides.set(canonical, [side]);
   }
 
+  console.log(`[ItemMatch] Built catalog with ${entries.length} mods, ${canonicalCounts.size} unique canonical forms`);
+
   return {
     total: entries.length,
     canonicalCounts,
@@ -712,6 +718,7 @@ function resolveItemMatch(
 }
 
 function applyItemMatchesToSections(sections: any[] | undefined, catalog: ItemModCatalog | null): number {
+  const startTime = performance.now();
   let matchCount = 0;
   if (!Array.isArray(sections)) {
     return matchCount;
@@ -719,8 +726,26 @@ function applyItemMatchesToSections(sections: any[] | undefined, catalog: ItemMo
 
   const usage = new Map<string, number>();
 
+  // Early exit: if no items to match, just clear flags
+  if (!catalog || catalog.total === 0) {
+    sections.forEach(section => {
+      if (!section || !Array.isArray(section.mods)) return;
+      section.mods.forEach((mod: any) => {
+        if (!mod) return;
+        if (Object.prototype.hasOwnProperty.call(mod, '__isOnItem')) delete mod.__isOnItem;
+        if (Object.prototype.hasOwnProperty.call(mod, '__itemMatchCanonical')) delete mod.__itemMatchCanonical;
+      });
+    });
+    return 0;
+  }
+
+  let totalModsChecked = 0;
   sections.forEach(section => {
     if (!section || !Array.isArray(section.mods)) return;
+    
+    // Early exit: if we've matched all item mods, no need to continue
+    if (matchCount >= catalog.total) return;
+    
     const side = typeof section.side === 'string'
       ? section.side.toLowerCase()
       : (typeof section.type === 'string' ? section.type.toLowerCase() : null);
@@ -731,8 +756,11 @@ function applyItemMatchesToSections(sections: any[] | undefined, catalog: ItemMo
       if (Object.prototype.hasOwnProperty.call(mod, '__isOnItem')) delete mod.__isOnItem;
       if (Object.prototype.hasOwnProperty.call(mod, '__itemMatchCanonical')) delete mod.__itemMatchCanonical;
 
-      if (!catalog || catalog.total === 0) return;
+      // Early exit: if we've matched all item mods, no need to continue
+      if (matchCount >= catalog.total) return;
 
+      totalModsChecked++;
+      
       const candidates = collectModCanonicalCandidates(mod);
       if (!candidates.length) return;
 
@@ -744,6 +772,9 @@ function applyItemMatchesToSections(sections: any[] | undefined, catalog: ItemMo
       matchCount += 1;
     });
   });
+
+  const elapsed = performance.now() - startTime;
+  console.log(`[ItemMatch] Checked ${totalModsChecked} mods, found ${matchCount}/${catalog.total} matches in ${elapsed.toFixed(2)}ms`);
 
   return matchCount;
 }
@@ -1474,7 +1505,6 @@ export function renderFilteredContent(data: any){
   const itemCatalog = buildItemModCatalog(clipboardLines);
   const catalogForMatching = itemCatalog.total > 0 ? itemCatalog : null;
   const baseSections = Array.isArray(data?.modifiers) ? data.modifiers : [];
-  const totalItemMatches = applyItemMatchesToSections(baseSections, catalogForMatching);
   
   // Collect filter tags by mode (include/exclude)
   const includeTags: string[] = [];
@@ -1559,30 +1589,91 @@ export function renderFilteredContent(data: any){
     && (!currentAttribute || categoryHasAttribute || !attributeMetaAvailable)
     && activeDomain === 'all'
     && !ilvlFilteringActive; // ensure ilvl filters trigger pipeline
+  
+  // PERFORMANCE OPTIMIZATION: Filter by domain FIRST before applying item matches
+  // This way we only check mods that will actually be displayed
+  let domainFilteredSections: any[];
   if (noFilters) {
-    filteredData.modifiers = baseSections;
+    domainFilteredSections = baseSections;
   } else {
-    filteredData.modifiers = baseSections
-      .filter((section:any) => {
-        // Filter by domain if a specific domain is selected
-        if (activeDomain === 'all') return true;
-        if (myModsFilterActive) return true;
-        
-        const sectionDomain = String(section.domain || '').toLowerCase();
-        
-        // Handle 'base'/'normal' toggle - show non-special domains
-        if (activeDomain === 'normal' || activeDomain === 'base') {
-          return isBaseDomain(gameVersion, sectionDomain);
-        }
-        
-        // Handle multi-domain toggles (e.g., Eldritch = eater + searing)
-        if (Array.isArray(activeDomain)) {
-          return activeDomain.some(d => d.toLowerCase() === sectionDomain);
-        }
-        
-        // Single domain match
-        return activeDomain.toLowerCase() === sectionDomain;
-      })
+    domainFilteredSections = baseSections.filter((section:any) => {
+      // Filter by domain if a specific domain is selected
+      if (activeDomain === 'all') return true;
+      if (myModsFilterActive) return true;
+      
+      const sectionDomain = String(section.domain || '').toLowerCase();
+      
+      // Handle 'base'/'normal' toggle - show non-special domains
+      if (activeDomain === 'normal' || activeDomain === 'base') {
+        return isBaseDomain(gameVersion, sectionDomain);
+      }
+      
+      // Handle multi-domain toggles (e.g., Eldritch = eater + searing)
+      if (Array.isArray(activeDomain)) {
+        return activeDomain.some(d => d.toLowerCase() === sectionDomain);
+      }
+      
+      // Single domain match
+      return activeDomain.toLowerCase() === sectionDomain;
+    });
+  }
+  
+  // Apply item matching with caching to avoid re-computation
+  let totalItemMatches = 0;
+  if (catalogForMatching) {
+    // Create hash of current item modifiers to detect changes
+    const currentHash = JSON.stringify(clipboardLines.slice().sort());
+    const itemChanged = currentHash !== lastItemModifiersHash;
+    
+    if (itemChanged) {
+      console.log('[ItemMatch] Item changed, clearing cache and re-matching');
+      lastItemModifiersHash = currentHash;
+      lastMatchedSectionsCache = new WeakMap();
+      totalItemMatches = applyItemMatchesToSections(domainFilteredSections, catalogForMatching);
+    } else {
+      // Item hasn't changed - check if we've already matched these sections
+      const alreadyMatched = domainFilteredSections.every(section => 
+        lastMatchedSectionsCache.has(section)
+      );
+      
+      if (alreadyMatched) {
+        console.log('[ItemMatch] Using cached matches (item unchanged)');
+        // Count existing matches
+        domainFilteredSections.forEach(section => {
+          if (section && Array.isArray(section.mods)) {
+            section.mods.forEach((mod: any) => {
+              if (mod && (mod as any).__isOnItem) {
+                totalItemMatches++;
+              }
+            });
+          }
+        });
+      } else {
+        console.log('[ItemMatch] Cache miss - re-matching filtered sections');
+        totalItemMatches = applyItemMatchesToSections(domainFilteredSections, catalogForMatching);
+        // Mark these sections as matched
+        domainFilteredSections.forEach(section => {
+          lastMatchedSectionsCache.set(section, true);
+        });
+      }
+    }
+  } else {
+    // No item to match - clear all flags
+    lastItemModifiersHash = '';
+    domainFilteredSections.forEach(section => {
+      if (!section || !Array.isArray(section.mods)) return;
+      section.mods.forEach((mod: any) => {
+        if (!mod) return;
+        if (Object.prototype.hasOwnProperty.call(mod, '__isOnItem')) delete mod.__isOnItem;
+        if (Object.prototype.hasOwnProperty.call(mod, '__itemMatchCanonical')) delete mod.__itemMatchCanonical;
+      });
+    });
+  }
+  
+  if (noFilters) {
+    filteredData.modifiers = domainFilteredSections;
+  } else {
+    filteredData.modifiers = domainFilteredSections
       .map((section:any) => {
         // Helper to derive tier level consistently
         const getTierLevel = (t:any) => Number(t?.tier_level ?? t?.ilvl ?? t?.level ?? t?.req_ilvl ?? t?.required_level ?? 0) || 0;

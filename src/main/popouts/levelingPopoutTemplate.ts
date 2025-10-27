@@ -27,7 +27,12 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
       transition: none !important;
     }
     
-    .window{display:flex;flex-direction:column;height:100vh;border:2px solid rgba(254,192,118,0.4);border-radius:12px;box-shadow:0 12px 48px rgba(0,0,0,0.9);}
+    /* Unscaled outer frame to preserve border/shadow at any zoom */
+    .window-frame{display:flex;flex-direction:column;height:100vh;border:2px solid rgba(254,192,118,0.4);border-radius:12px;box-shadow:0 12px 48px rgba(0,0,0,0.9);background:transparent;overflow:visible;}
+    .window-frame.frame-minimal,.window-frame.frame-ultra{border:none!important;border-radius:0!important;box-shadow:none!important;}
+    /* Inner content gets zoom applied; remove its own border/shadow */
+    .window{display:flex;flex-direction:column;height:100%;border:none;border-radius:12px;box-shadow:none;}
+    
     /* Minimal Mode - slim drag header */
     .window.minimal-mode{pointer-events:none!important;border:none!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;}
     .window.minimal-mode .header{-webkit-app-region:no-drag;pointer-events:none!important;padding:0!important;background:transparent!important;border:none!important;min-height:0!important;height:0!important;overflow:visible!important;}
@@ -298,7 +303,8 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
   </style>
 </head>
 <body>
-<div class='window' id='mainWindow'>
+<div class='window-frame' id='windowFrame'>
+  <div class='window' id='mainWindow'>
   <div class='drag-handle' id='dragHandle'>
     <div class='ultra-drag-overlay' style='position:absolute;top:0;left:0;right:0;bottom:0;-webkit-app-region:drag;pointer-events:auto;z-index:1;'></div>
     <div id='minimalCharacterInfo' style='font-size:9px;color:rgba(255,255,255,0.85);font-weight:600;text-align:center;padding:2px 6px;background:rgba(0,0,0,0.3);border-radius:3px;margin-bottom:2px;display:none;user-select:none;-webkit-user-select:none;cursor:move;position:relative;z-index:2;'></div>
@@ -377,6 +383,7 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
       </div>
     </div>
   </div>
+</div>
 </div>
 <script>
 const {ipcRenderer} = require('electron');
@@ -826,6 +833,7 @@ function formatTime(ms) {
 // Optimized view mode update - only updates classes and mouse events WITHOUT re-rendering content
 function updateViewMode() {
   const mainWindow = document.getElementById('mainWindow');
+  const windowFrame = document.getElementById('windowFrame');
   const minimalBtn = document.getElementById('minimalBtn');
   const dragHandle = document.getElementById('dragHandle');
   
@@ -834,6 +842,7 @@ function updateViewMode() {
   // Remove all mode classes
   mainWindow.classList.remove('minimal-mode', 'ultra-minimal-mode');
   minimalBtn.classList.remove('active', 'ultra');
+  if (windowFrame) windowFrame.classList.remove('frame-minimal','frame-ultra');
   
   // Update background based on mode
   if (state.minimalMode === 'normal') {
@@ -847,6 +856,7 @@ function updateViewMode() {
   if (state.minimalMode === 'minimal') {
     mainWindow.classList.add('minimal-mode');
     minimalBtn.classList.add('active');
+    if (windowFrame) windowFrame.classList.add('frame-minimal');
   // Minimal mode is NOT click-through - window is fully interactable
     ipcRenderer.send('set-ignore-mouse-events', false);
   ipcRenderer.send('ultra-mode-change', { enabled: false });
@@ -862,6 +872,7 @@ function updateViewMode() {
   ipcRenderer.send('ultra-mode-change', { enabled: true });
     mainWindow.classList.add('ultra-minimal-mode');
     minimalBtn.classList.add('ultra');
+    if (windowFrame) windowFrame.classList.add('frame-ultra');
     // In ultra mode we keep the window click-through by default and only enable input
     // while hovering the header so it can be dragged and buttons clicked.
     const enableWindowInput = () => ipcRenderer.send('set-ignore-mouse-events', false);
@@ -871,7 +882,6 @@ function updateViewMode() {
     if (dragHandle && !dragHandle.dataset.ultraHandlersSet) {
       dragHandle.dataset.ultraHandlersSet = 'true';
       let isOverHeader = false;
-88978
       const mouseEnterHandler = () => {
         isOverHeader = true;
         if (state.minimalMode === 'ultra') enableWindowInput();
@@ -896,6 +906,7 @@ function updateViewMode() {
     // Normal mode
     ipcRenderer.send('set-ignore-mouse-events', false);
     ipcRenderer.send('ultra-mode-change', { enabled: false });
+    if (windowFrame) windowFrame.classList.remove('frame-minimal','frame-ultra');
     
     if (dragHandle && dragHandle._ultraMouseHandlers) {
       dragHandle.removeEventListener('mouseenter', dragHandle._ultraMouseHandlers.mouseEnterHandler);
@@ -1159,6 +1170,7 @@ function render() {
   const progressFillFooter = document.getElementById('progressFillFooter');
   const progressTextFooter = document.getElementById('progressTextFooter');
   const mainWindow = document.getElementById('mainWindow');
+  const windowFrame = document.getElementById('windowFrame');
   
   // Apply opacity - fix CSS gradient syntax (only if NOT in minimal mode)
   if (state.minimalMode === 'normal') {
@@ -1178,17 +1190,20 @@ function render() {
   // Apply minimal mode classes
   mainWindow.classList.remove('minimal-mode', 'ultra-minimal-mode');
   minimalBtn.classList.remove('active', 'ultra');
+  if (windowFrame) windowFrame.classList.remove('frame-minimal','frame-ultra');
   
   const dragHandle = document.getElementById('dragHandle');
 
   if (state.minimalMode === 'minimal') {
     mainWindow.classList.add('minimal-mode');
     minimalBtn.classList.add('active');
+    if (windowFrame) windowFrame.classList.add('frame-minimal');
     // Immediately disable click-through
     ipcRenderer.send('set-ignore-mouse-events', false);
   } else if (state.minimalMode === 'ultra') {
     mainWindow.classList.add('ultra-minimal-mode');
     minimalBtn.classList.add('ultra');
+    if (windowFrame) windowFrame.classList.add('frame-ultra');
     
     // Setup mouse handlers only once (check if not already set)
     if (dragHandle && !dragHandle.dataset.ultraHandlersSet) {
@@ -1224,6 +1239,7 @@ function render() {
   } else {
     // Normal mode - immediately disable click-through and clean up handlers
     ipcRenderer.send('set-ignore-mouse-events', false);
+    if (windowFrame) windowFrame.classList.remove('frame-minimal','frame-ultra');
     
     if (dragHandle) {
       // Remove event listeners if they exist
@@ -1283,35 +1299,38 @@ function render() {
   
   // Group steps
   const grouped = groupStepsByZone(allSteps);
-  
-  // Filter completed zones - always hide fully completed zones
-  let visible = grouped.filter(g => !g.allChecked);
-  
-  // Limit to visible steps
-  if (state.visibleSteps > 0 && state.visibleSteps < visible.length) {
-    visible = visible.slice(0, state.visibleSteps);
-  }
-  
+
+  // Determine first incomplete group for header and apply visible limit
+  const firstIncompleteGroup = grouped.find(g => !g.allChecked);
+  const visibleLimit = state.visibleSteps && state.visibleSteps > 0 ? state.visibleSteps : Number.MAX_SAFE_INTEGER;
+
   // Update header
-  if (visible.length > 0) {
-    const currentZone = visible[0].zone;
+  if (firstIncompleteGroup) {
+    const currentZone = firstIncompleteGroup.zone;
     headerSubtitle.textContent = currentZone + ' • ' + completedCount + '/' + totalSteps + ' completed';
   } else {
     headerSubtitle.textContent = act.actName + ' Complete! 🎉 (' + completedCount + '/' + totalSteps + ')';
   }
-  
-  const stepsHtml = visible.map((group, groupIdx) => {
-    const isCurrent = groupIdx === 0;
+
+  // Render ALL groups once; hide completed groups and any incomplete groups beyond the visible limit
+  let incompleteCounter = 0;
+  const stepsHtml = grouped.map((group) => {
+    const isIncomplete = !group.allChecked;
+    const currentIndex = isIncomplete ? (++incompleteCounter) : 0;
+    const withinLimit = isIncomplete && currentIndex <= visibleLimit;
+    const isCurrent = isIncomplete && currentIndex === 1;
+    const baseDisplay = isIncomplete ? (withinLimit ? '' : 'display:none;') : 'display:none;'; // always hide completed groups
     const isMultiStep = group.steps.length > 1;
     
     if (isMultiStep) {
-      const groupOpacity = isCurrent ? 1 : Math.max(0.5, 1 - (groupIdx * 0.15));
+      const pos = isCurrent ? 1 : currentIndex;
+      const groupOpacity = isCurrent ? 1 : Math.max(0.5, 1 - ((pos - 1) * 0.15));
       const currentClass = isCurrent ? ' current' : '';
       // Store the first step ID of this zone for skip-to functionality
       const firstStepId = group.steps[0]?.id || '';
-      // Hide skip-to button on the first incomplete zone (groupIdx === 0)
-      const skipToBtn = groupIdx === 0 ? '' : '<button class="skip-to-btn" data-action="skip-to" data-first-step-id="'+firstStepId+'" title="Skip to this zone (auto-complete all previous steps)">⏭️</button>';
-  return '<div class="leveling-group'+currentClass+'" style="opacity:'+groupOpacity+';"><div class="zone-header" data-zone="'+escapeHtml(group.zone)+'"><input type="checkbox" class="zone-checkbox" data-action="toggle-zone" data-zone="'+escapeHtml(group.zone)+'" '+(group.allChecked?'checked':'')+' /><div class="zone-name">📍 '+escapeHtml(group.zone)+' ('+group.steps.length+' tasks)'+'</div>'+skipToBtn+'</div><div class="task-list">'+group.steps.map(step => {
+      // Hide skip-to button on the first incomplete zone
+      const skipToBtn = isCurrent ? '' : '<button class="skip-to-btn" data-action="skip-to" data-first-step-id="'+firstStepId+'" title="Skip to this zone (auto-complete all previous steps)">⏭️</button>';
+  return '<div class="leveling-group'+currentClass+'" data-incomplete-index="'+currentIndex+'" data-visible="'+(withinLimit?'true':'false')+'" style="'+baseDisplay+'opacity:'+groupOpacity+';"><div class="zone-header" data-zone="'+escapeHtml(group.zone)+'"><input type="checkbox" class="zone-checkbox" data-action="toggle-zone" data-zone="'+escapeHtml(group.zone)+'" '+(group.allChecked?'checked':'')+' /><div class="zone-name">📍 '+escapeHtml(group.zone)+' ('+group.steps.length+' tasks)'+'</div>'+skipToBtn+'</div><div class="task-list">'+group.steps.map(step => {
         const checked = state.completedSteps.has(step.id);
     const stepType = STEP_TYPES[step.type] || STEP_TYPES.navigation;
     const cleanDesc = cleanDescription(step.description);
@@ -1331,7 +1350,8 @@ function render() {
       const checked = state.completedSteps.has(step.id);
       const stepType = STEP_TYPES[step.type] || STEP_TYPES.navigation;
       const isHighPriority = ['passive','kill_boss','trial'].includes(step.type);
-      const opacity = isCurrent ? 1 : Math.max(0.5, 1 - (groupIdx * 0.15));
+      const pos = isCurrent ? 1 : currentIndex;
+      const opacity = isCurrent ? 1 : Math.max(0.5, 1 - ((pos - 1) * 0.15));
   const bgColor = isCurrent ? (isHighPriority ? 'rgba(254,192,118,0.20)' : 'rgba(255,255,255,0.16)') : 'rgba(255,255,255,0.03)';
       const padding = isCurrent ? '16px 14px' : '14px 12px';
       
@@ -1352,32 +1372,14 @@ function render() {
       const pobGemsHtml = renderPobGemList(pobGems);
       
   const borderColor = isCurrent ? '#fdd68a' : stepType.color;
-  return '<div class="leveling-step '+(isCurrent?'current':'')+' '+(isHighPriority?'priority':'')+'" style="opacity:'+opacity+';background:'+bgColor+';padding:'+padding+';border-left-color:'+borderColor+';"><input type="checkbox" class="step-checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /><div class="step-content"><div class="step-main"><div class="step-icon-wrap" style="background:'+stepType.color+'22;border-color:'+stepType.color+'44;"><span class="step-icon" style="color:'+stepType.color+';">'+stepType.icon+'</span></div><div class="step-desc-wrap">'+(isCurrent&&step.zone?'<div class="zone-label">'+escapeHtml(step.zone)+'</div>':'')+'<div class="step-desc '+(checked?'checked':'')+'">'+stepTextHtml+leagueIcon+layoutTipIcon+'</div></div></div>'+metaHtml+hintHtml+pobGemsHtml+'</div></div>';
+  return '<div class="leveling-group'+(isCurrent?' current':'')+'" data-incomplete-index="'+currentIndex+'" data-visible="'+(withinLimit?'true':'false')+'" style="'+baseDisplay+'"><div class="leveling-step '+(isCurrent?'current':'')+' '+(isHighPriority?'priority':'')+'" style="opacity:'+opacity+';background:'+bgColor+';padding:'+padding+';border-left-color:'+borderColor+';"><input type="checkbox" class="step-checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /><div class="step-content"><div class="step-main"><div class="step-icon-wrap" style="background:'+stepType.color+'22;border-color:'+stepType.color+'44;"><span class="step-icon" style="color:'+stepType.color+';">'+stepType.icon+'</span></div><div class="step-desc-wrap">'+(isCurrent&&step.zone?'<div class="zone-label">'+escapeHtml(step.zone)+'</div>':'')+'<div class="step-desc '+(checked?'checked':'')+'">'+stepTextHtml+leagueIcon+layoutTipIcon+'</div></div></div>'+metaHtml+hintHtml+pobGemsHtml+'</div></div></div>';
     }
   }).join('');
   
   list.innerHTML = stepsHtml;
   
-  // Resolve all gem images asynchronously
-  const gemImages = list.querySelectorAll('img[data-gem-img]');
-  console.log('[LevelingPopout] Found', gemImages.length, 'gem images to resolve');
-  gemImages.forEach(async (img) => {
-    const localPath = img.getAttribute('data-gem-img');
-    if (localPath) {
-      try {
-        const resolvedPath = await resolveGemImageIpc(localPath);
-        if (resolvedPath) {
-          img.src = resolvedPath;
-          img.style.display = '';
-          console.log('[LevelingPopout] Image resolved:', localPath, '->', resolvedPath);
-        } else {
-          console.warn('[LevelingPopout] Image not found:', localPath);
-        }
-      } catch (err) {
-        console.error('[LevelingPopout] Failed to resolve gem image:', localPath, err);
-      }
-    }
-  });
+  // Resolve gem images for VISIBLE groups only
+  resolveGemImagesIn(list);
   
   // Event listeners
   document.querySelectorAll('[data-action="toggle-step"]').forEach(el => {
@@ -1522,6 +1524,87 @@ function render() {
   updateTimerDisplay();
 }
 
+// Lightweight style updates for smooth slider drags (no full render)
+function applyBasicUiTuning(updates) {
+  const mainWindow = document.getElementById('mainWindow');
+  if (!mainWindow) return;
+
+  if (updates.opacity !== undefined) {
+    const opacityDecimal = (updates.opacity / 100).toFixed(2);
+    if (state.minimalMode === 'normal') {
+      mainWindow.style.background = 'linear-gradient(135deg,rgba(20,20,28,' + opacityDecimal + '),rgba(15,15,22,' + opacityDecimal + '))';
+    } else {
+      mainWindow.style.background = 'transparent';
+    }
+  }
+  if (updates.fontSize !== undefined) {
+    document.documentElement.style.setProperty('--font-size', updates.fontSize + 'px');
+  }
+  if (updates.zoomLevel !== undefined) {
+    const zoomDecimal = (updates.zoomLevel / 100).toFixed(2);
+    mainWindow.style.zoom = zoomDecimal;
+  }
+  if (updates.visibleSteps !== undefined) {
+    applyVisibleStepsLimit(updates.visibleSteps);
+  }
+}
+
+// Toggle visibility of groups cheaply based on visible step limit
+function applyVisibleStepsLimit(limit) {
+  const list = document.getElementById('stepsList');
+  if (!list) return;
+  const groups = list.querySelectorAll('.leveling-group[data-incomplete-index]');
+  const visibleLimit = (limit && limit > 0) ? limit : Number.MAX_SAFE_INTEGER;
+  groups.forEach((group) => {
+    const idx = parseInt(group.getAttribute('data-incomplete-index') || '0', 10);
+    if (!idx) {
+      // Completed groups are always hidden
+      group.style.display = 'none';
+      group.setAttribute('data-visible', 'false');
+      return;
+    }
+    const shouldShow = idx <= visibleLimit;
+    const wasVisible = group.getAttribute('data-visible') === 'true';
+    if (shouldShow) {
+      group.style.display = '';
+      group.setAttribute('data-visible', 'true');
+      if (!wasVisible) {
+        // Lazy-resolve images for newly shown groups only
+        resolveGemImagesIn(group);
+      }
+    } else {
+      group.style.display = 'none';
+      group.setAttribute('data-visible', 'false');
+    }
+  });
+}
+
+// Resolve gem images within a scope (document or container)
+function resolveGemImagesIn(root) {
+  const scope = root || document;
+  const selector = '.leveling-group[data-visible="true"] img[data-gem-img]';
+  const gemImages = scope.querySelectorAll(selector);
+  console.log('[LevelingPopout] Resolving', gemImages.length, 'gem images in scope');
+  gemImages.forEach(async (img) => {
+    const localPath = img.getAttribute('data-gem-img');
+    if (localPath && !img.getAttribute('data-img-resolved')) {
+      try {
+        const resolvedPath = await resolveGemImageIpc(localPath);
+        if (resolvedPath) {
+          img.src = resolvedPath;
+          img.style.display = '';
+          img.setAttribute('data-img-resolved', 'true');
+          console.log('[LevelingPopout] Image resolved:', localPath, '->', resolvedPath);
+        } else {
+          console.warn('[LevelingPopout] Image not found:', localPath);
+        }
+      } catch (err) {
+        console.error('[LevelingPopout] Failed to resolve gem image:', localPath, err);
+      }
+    }
+  });
+}
+
 // Load data and saved progress
 ipcRenderer.invoke('get-leveling-data').then(result => {
   state.levelingData = result.data;
@@ -1601,6 +1684,16 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
       } else {
         ipcRenderer.send('leveling-resize-preset', { width: 400, height: 800 });
       }
+    }
+
+    // Fast path: only lightweight UI changes (opacity/fontSize/zoom/visibleSteps)
+    const onlyLightweight = Object.keys(updates).every(k => (
+      k === 'opacity' || k === 'fontSize' || k === 'zoomLevel' || k === 'visibleSteps'
+    ));
+    if (onlyLightweight) {
+      applyBasicUiTuning(updates);
+      // Intentionally skip saveState here to avoid disk churn during slider drags
+      return;
     }
     
     // Disable transitions during settings-triggered render for instant feedback
