@@ -173,6 +173,7 @@ function extractSocketGroups(container: Element | null): GemSocketGroup[] {
       const quality = parseInt(gemElement.getAttribute('quality') || '0', 10);
       const gemEnabled = gemElement.getAttribute('enabled') !== 'false';
       const skillId = gemElement.getAttribute('skillId') || undefined;
+      const supportGem = gemElement.getAttribute('supportGem') === 'true';
 
       if (!nameSpec) {
         return;
@@ -183,7 +184,8 @@ function extractSocketGroups(container: Element | null): GemSocketGroup[] {
         level,
         quality,
         enabled: gemEnabled,
-        skillId
+        skillId,
+        supportGem
       });
     });
 

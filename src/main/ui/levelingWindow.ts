@@ -143,6 +143,7 @@ export class LevelingWindow {
         nodeIntegration: true,
         contextIsolation: false,
         backgroundThrottling: false,
+        webSecurity: false,
       },
     });
 
@@ -157,6 +158,9 @@ export class LevelingWindow {
 
     // Load inline HTML (like floating button does)
     this.window.loadURL(this.buildDataUrl());
+
+  // Open DevTools on overlay load for debugging image resolution
+  try { this.window.webContents.openDevTools({ mode: 'detach' }); } catch {}
 
     // Check if there's a saved PoB build and auto-open the info bar
     this.window.webContents.once('did-finish-load', () => {
@@ -1626,7 +1630,7 @@ export class LevelingWindow {
   }
 
   private buildDataUrl(): string {
-    const html = buildLevelingPopoutHtml();
+    const html = buildLevelingPopoutHtml(this.overlayVersion);
     return `data:text/html;charset=utf-8,${encodeURIComponent(html)}`;
   }
 }

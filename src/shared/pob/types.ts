@@ -54,6 +54,7 @@ export interface GemInfo {
   quality: number;
   enabled: boolean;
   skillId?: string;
+  supportGem?: boolean; // From PoB XML supportGem attribute
 }
 
 export interface GemRequirement {

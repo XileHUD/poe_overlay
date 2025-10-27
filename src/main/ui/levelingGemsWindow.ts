@@ -41,11 +41,15 @@ export function openLevelingGemsWindow(options: LevelingGemsWindowOptions): Brow
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
+      webSecurity: false,
     },
     parent: parentWindow,
   });
 
   gemsWindow.setIgnoreMouseEvents(false);
+
+  // Open dev tools for debugging
+  gemsWindow.webContents.openDevTools({ mode: 'detach' });
 
   // Get current PoB build data and current act
   const pobBuild = (savedSettings as any).pobBuild || null;
@@ -320,8 +324,8 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
     }
     
     .gems-list {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 6px;
     }
     
@@ -362,10 +366,28 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
       text-align: center;
     }
     
+    .gem-image {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    
+    .gem-image.poe2 {
+      border-radius: 4px;
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 2px;
+    }
+    
     .gem-name {
       flex: 1;
       font-size: 11px;
       color: var(--text-primary);
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     
     .gem-name.support {
@@ -472,6 +494,7 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
     let gemDatabase = {};
     let gemColours = {};
     let questData = {};
+    const overlayVersion = '${overlayVersion}';
     
     // Injected JSON data from main process
     const INJECTED_GEMS_DATA = ${gemsJSON};
@@ -515,17 +538,21 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
       }
     }
     
-    function getGemColor(gemName) {
-      const cleanName = gemName.replace(/^Support: /, '');
+    function getGemColor(gemName, isSupport) {
+      // PoE1 database uses "<Name> Support" naming; PoE2 uses base names
+      const lookupName = (overlayVersion === 'poe1' && isSupport)
+        ? gemName + ' Support'
+        : gemName;
+      const cleanName = lookupName.replace(/^Support: /, '');
       
-      // Try to get color from gem database using gem-colours.json mapping
-      if (gemDatabase && gemColours && Object.keys(gemDatabase).length > 0) {
+      // Try to get color from gem database (available for PoE1)
+      if (overlayVersion === 'poe1' && gemDatabase && gemColours && Object.keys(gemDatabase).length > 0) {
         const gemEntry = Object.values(gemDatabase).find(
           (g) => g.name.toLowerCase() === cleanName.toLowerCase()
         );
         if (gemEntry) {
           const attribute = gemEntry.primary_attribute;
-          console.log(\`[GemsWindow] Gem "\${cleanName}" -> attribute: \${attribute}\`);
+          console.log(\`[GemsWindow] Gem "\${gemName}" (lookup: "\${cleanName}") -> attribute: \${attribute}\`);
           
           // Map full attribute name to short code for CSS class
           if (attribute === 'strength') return 'str';
@@ -534,7 +561,7 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
           
           return 'int'; // Fallback
         } else {
-          console.log(\`[GemsWindow] NO MATCH in database for: \${cleanName}\`);
+          console.log(\`[GemsWindow] NO MATCH in database for: \${cleanName} (original: \${gemName}, isSupport: \${isSupport})\`);
         }
       }
       
@@ -542,9 +569,83 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
       return 'int';
     }
     
+    // Robust support detection that doesn't depend solely on PoB attribute
+    function computeIsSupport(gem) {
+      const gemName = (gem.nameSpec || gem.gemId || '').trim();
+      const fromPob = gem.supportGem === true || gem.isSupport === true;
+      const nameHints = /^Support:\s*/.test(gemName) || /\s+Support$/i.test(gemName);
+      const skillIdHints = typeof gem.skillId === 'string' && /support/i.test(gem.skillId);
+      let dbHints = false;
+      try {
+        if (gemDatabase && Object.keys(gemDatabase).length > 0) {
+          const want = (gemName + ' Support').toLowerCase();
+          dbHints = Object.values(gemDatabase).some((g) => {
+            const n = g && g.name;
+            return typeof n === 'string' && n.toLowerCase() === want;
+          });
+        }
+      } catch {}
+      const result = !!(fromPob || nameHints || skillIdHints || dbHints);
+      if (!fromPob && result) {
+        console.log('[GemsWindow] Heuristic marked as support:', { gemName, skillId: gem.skillId, dbHints });
+      }
+      return result;
+    }
+
     function getGemIcon(gemName) {
       if (gemName.startsWith('Support: ')) return '◆';
       return '◇';
+    }
+    
+  // Helper to get gem image path - aligned with asset layout
+    function getGemImagePath(gemName, isSupport) {
+      // Remove "Support: " prefix
+      const cleanName = gemName.replace(/^Support: /, '');
+      
+      // Convert to lowercase and replace spaces/special chars with underscores
+      const slug = cleanName
+        .toLowerCase()
+        .replace(/[:']/g, '')
+        .replace(/\\s+/g, '_')
+        .replace(/-/g, '_')
+        .replace(/[()]/g, '')
+        .trim();
+      
+  // PoE1 has separate _support images; PoE2 uses the base icon for supports
+  const filename = (overlayVersion === 'poe1' && isSupport) ? (slug + '_support') : slug;
+      
+      // Determine game version folder
+      const folder = overlayVersion === 'poe1' ? 'poe1/gems' : 'gems';
+      
+      // Return the bundled image path (relative, will be resolved via electronAPI)
+      return folder + '/' + filename + '.webp';
+    }
+    
+    // Async: resolve gem image via IPC - single path version
+    async function resolveGemImage(img, localPath) {
+      if (!localPath) return;
+      try {
+        const resolvedPath = await (async () => {
+          try { return await ipcRenderer.invoke('get-bundled-image-path', localPath); } catch { return null; }
+        })() || (await (window.electronAPI?.getBundledImagePath?.(localPath)));
+        if (resolvedPath) {
+          img.src = resolvedPath;
+          img.style.display = '';
+          console.log('[GemsWindow] Image resolved:', localPath, '->', resolvedPath);
+        } else {
+          console.warn('[GemsWindow] Image not found:', localPath);
+          img.style.display = 'none';
+          if (img.nextElementSibling) {
+            img.nextElementSibling.style.display = 'inline';
+          }
+        }
+      } catch (err) {
+        console.error('[GemsWindow] Error resolving image:', localPath, err);
+        img.style.display = 'none';
+        if (img.nextElementSibling) {
+          img.nextElementSibling.style.display = 'inline';
+        }
+      }
     }
     
     function getGemQuestInfo(gem, actNum) {
@@ -638,8 +739,13 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
         
         for (const gem of group.gems) {
           const gemName = gem.nameSpec || gem.gemId || 'Unknown Gem';
-          const isSupport = gemName.startsWith('Support: ');
-          const colorClass = getGemColor(gemName);
+          // Robust support detection
+          const isSupport = computeIsSupport(gem);
+          
+          // DEBUG: Log support detection
+          console.log('[GemsWindow] Gem:', gemName, '| gem.supportGem:', gem.supportGem, '| gem.isSupport:', gem.isSupport, '| skillId:', gem.skillId, '| computed isSupport:', isSupport);
+          
+          const colorClass = getGemColor(gemName, isSupport);
           const icon = getGemIcon(gemName);
           const level = gem.level || 1;
           const quality = gem.quality || 0;
@@ -662,14 +768,19 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
           if (gem.rewardType) tooltipParts.push(\`Type: \${gem.rewardType === 'quest' ? 'TAKE' : 'BUY'}\`);
           const tooltipText = tooltipParts.length > 0 ? tooltipParts.join(' | ') : '';
           
-          html += \`
-            <div class="gem-item \${colorClass} \${isSupport ? 'support' : ''}" title="\${tooltipText}">
-              <span class="gem-icon" style="color: \${colorHex};">\${icon}</span>
-              <span class="gem-name \${isSupport ? 'support' : ''}">\${gemName.replace('Support: ', '')}</span>
-              \${questBadge}
-              <span class="gem-level">L\${level}\${quality > 0 ? ' Q' + quality : ''}</span>
-            </div>
-          \`;
+          // Get gem image path - EXACT same logic as working task list
+          const imagePath = getGemImagePath(gemName, isSupport);
+          const imageClass = overlayVersion === 'poe2' ? 'gem-image poe2' : 'gem-image';
+          
+          // Build gem item HTML with safe string concatenation to avoid nested template pitfalls
+          html += '<div class="gem-item ' + colorClass + (isSupport ? ' support' : '') + '" title="' + tooltipText + '">';
+          if (imagePath) {
+            html += '<img data-gem-img="' + imagePath + '" class="' + imageClass + '" style="display:none;" />';
+          }
+          html += '<span class="gem-name ' + (isSupport ? 'support' : '') + '">' + gemName.replace('Support: ', '') + '</span>';
+          html += questBadge;
+          html += '<span class="gem-level">L' + level + (quality > 0 ? ' Q' + quality : '') + '</span>';
+          html += '</div>';
         }
         
         html += \`
@@ -679,6 +790,15 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
       }
       
       content.innerHTML = html;
+      
+      // Resolve all gem images asynchronously - same as task list
+      const gemImages = content.querySelectorAll('img[data-gem-img]');
+      gemImages.forEach(img => {
+        const localPath = img.getAttribute('data-gem-img');
+        if (localPath) {
+          resolveGemImage(img, localPath);
+        }
+      });
       
       // Update navigation button states
       updateNavButtons();

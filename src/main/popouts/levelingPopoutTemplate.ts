@@ -2,9 +2,10 @@
 import gemsData from '../../data/leveling-data/gems.json';
 import questsData from '../../data/leveling-data/quests.json';
 import gemColoursData from '../../data/leveling-data/gem-colours.json';
+import type { OverlayVersion } from '../../types/overlayVersion.js';
 
 // Leveling popout HTML with all logic embedded inline
-export function buildLevelingPopoutHtml(): string {
+export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1'): string {
   // Inject JSON data into the template
   const gemsJSON = JSON.stringify(gemsData);
   const questsJSON = JSON.stringify(questsData);
@@ -246,6 +247,8 @@ export function buildLevelingPopoutHtml(): string {
     .pob-gem-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:3px;transition:all 0.12s;border:none;font-size:calc(var(--font-size) - 1px);}
     .pob-gem-pill:hover{background:rgba(255,255,255,0.05);transform:translateX(1px);}
     .pob-gem-icon{font-size:9px;line-height:1;}
+    .pob-gem-image{width:20px;height:20px;object-fit:contain;flex-shrink:0;}
+    .pob-gem-image.poe2{border-radius:3px;border:1px solid rgba(74,158,255,0.3);background:rgba(0,0,0,0.3);padding:2px;}
     .pob-gem-verb{font-weight:500;color:rgba(255,255,255,0.85);font-size:calc(var(--font-size) - 2px);text-transform:uppercase;letter-spacing:0.3px;min-width:28px;}
     .pob-gem-name-inline{font-weight:500;flex:1;font-size:calc(var(--font-size) - 1px);}
     .pob-gem-vendor{font-size:calc(var(--font-size) - 2px);color:rgba(255,255,255,0.4);font-style:italic;margin-left:auto;}
@@ -378,6 +381,9 @@ export function buildLevelingPopoutHtml(): string {
 <script>
 const {ipcRenderer} = require('electron');
 
+// Overlay version
+const overlayVersion = '${overlayVersion}';
+
 // Load gem database for colors and quest data for gem matching
 let gemDatabase = null;
 let questsDatabase = null;
@@ -492,6 +498,9 @@ function getLayoutTipIcon(step) {
   return '<span class="layout-tip-icon"><span class="more-pill">...</span><span class="tooltip">'+escapeHtml(step.layoutTip)+'</span></span>';
 }
 
+// Track which gems have been shown to avoid duplicates
+const shownGems = new Set();
+
 function getPobGemsForStep(step, actNumber) {
   if (!state.pobBuild || !state.pobBuild.gems) {
     console.log('[getPobGemsForStep] No PoB build or gems available');
@@ -508,24 +517,70 @@ function getPobGemsForStep(step, actNumber) {
   console.log('[getPobGemsForStep] All gem acts:', state.pobBuild.gems.map(g => 'Act ' + g.act + ': ' + g.name).join(', '));
   
   // Filter gems that could come from this quest
+  // Use smart matching: exact first, then partial if no exact match
   const candidateGems = state.pobBuild.gems.filter(gem => {
     if (gem.act !== actNumber) return false;
     if (!gem.quest) return false;
     
-    const stepQuest = step.quest.toLowerCase();
-    const gemQuest = gem.quest.toLowerCase();
+    const stepQuest = step.quest.toLowerCase().trim();
+    const gemQuest = gem.quest.toLowerCase().trim();
     
-    return stepQuest === gemQuest || 
-           stepQuest.includes(gemQuest) || 
-           gemQuest.includes(stepQuest);
+    // Exact match preferred
+    if (stepQuest === gemQuest) return true;
+    
+    // For partial matches, require significant overlap to avoid false positives
+    // Only match if one is fully contained in the other AND they share key words
+    const stepWords = stepQuest.split(/\s+/);
+    const gemWords = gemQuest.split(/\s+/);
+    const sharedWords = stepWords.filter(w => w.length > 3 && gemWords.includes(w));
+    
+    // Require at least 2 shared significant words for partial match
+    if (sharedWords.length >= 2) {
+      return stepQuest.includes(gemQuest) || gemQuest.includes(stepQuest);
+    }
+    
+    return false;
   });
   
+  console.log('[getPobGemsForStep] Step quest:', step.quest);
   console.log('[getPobGemsForStep] Candidate gems:', candidateGems.map(g => g.name + ' (quest: ' + g.quest + ')'));
   
   if (candidateGems.length === 0) return [];
   
-  // Use the rewardType already set by gemMatcher - it knows quest vs vendor correctly
-  const results = candidateGems.map((gem) => {
+  // Deduplicate gems by name within this quest - prefer quest rewards over vendor purchases
+  const gemMap = new Map();
+  for (const gem of candidateGems) {
+    const existing = gemMap.get(gem.name);
+    if (!existing) {
+      gemMap.set(gem.name, gem);
+    } else {
+      // Prefer quest reward over vendor
+      if (gem.rewardType === 'quest' && existing.rewardType === 'vendor') {
+        gemMap.set(gem.name, gem);
+      }
+    }
+  }
+  
+  // Filter out gems that have already been shown, UNLESS it's a quest reward (TAKE)
+  // This allows "BUY Flame Dash" at level 8, then "TAKE Flame Dash" at level 10 movement skill reward
+  const filteredResults = Array.from(gemMap.values()).filter(gem => {
+    const gemKey = gem.name.toLowerCase();
+    const alreadyShown = shownGems.has(gemKey);
+    const isQuestReward = gem.rewardType === 'quest';
+    
+    // Always show quest rewards, even if shown before (because you need to TAKE them)
+    // For vendor purchases, only show if not shown before
+    if (alreadyShown && !isQuestReward) {
+      console.log('[getPobGemsForStep] Skipping duplicate vendor gem:', gem.name);
+      return false;
+    }
+    
+    return true;
+  });
+  
+  // Mark gems as shown and build results
+  const results = filteredResults.map((gem) => {
+    shownGems.add(gem.name.toLowerCase());
     return {
       name: gem.name,
       rewardType: gem.rewardType, // Respect the actual quest/vendor designation
@@ -555,9 +610,17 @@ function renderPobGemList(gems) {
     const cost = gem.rewardType === 'vendor' ? getGemCost(gem) : '';
     const npcName = gem.vendor || 'NPC';
     
+    // Get gem image path
+    const imagePath = getGemImagePath(gem.name);
+    const imageClass = overlayVersion === 'poe2' ? 'pob-gem-image poe2' : 'pob-gem-image';
+    
     html += '<div class="pob-gem-compact">';
     // Use subtle background colors with thin border for slick look
     html += '<span class="pob-gem-pill" style="border-left:2px solid ' + color + ';background:' + color + '18;">';
+    // Add gem image placeholder with data attribute (will be resolved after render)
+    if (imagePath) {
+      html += '<img data-gem-img="' + imagePath + '" class="' + imageClass + '" style="display:none;" />';
+    }
     html += '<span class="pob-gem-verb">' + verb + '</span>';
     html += '<span class="pob-gem-name-inline">' + escapeHtml(gem.name) + '</span>';
     html += '<span class="pob-gem-vendor">from ' + escapeHtml(npcName) + '</span>';
@@ -569,6 +632,45 @@ function renderPobGemList(gems) {
   });
   
   return html;
+}
+
+// Helper to get gem image path - converts gem name to expected filename format
+function getGemImagePath(gemName) {
+  // Check if it's a support gem (has "Support: " prefix)
+  const isSupport = gemName.startsWith('Support: ');
+  
+  // Remove "Support: " prefix
+  const cleanName = gemName.replace(/^Support: /, '');
+  
+  // Convert to lowercase and replace spaces/special chars with underscores
+  const slug = cleanName
+    .toLowerCase()
+    .replace(/[:']/g, '')  // Remove colons and apostrophes
+    .replace(/\\s+/g, '_')  // Replace spaces with underscores
+    .replace(/-/g, '_')    // Replace hyphens with underscores
+    .replace(/[()]/g, '')  // Remove parentheses
+    .trim();
+  
+  // Add _support suffix for support gems
+  const filename = isSupport ? slug + '_support' : slug;
+  
+  // Determine game version folder
+  const folder = overlayVersion === 'poe1' ? 'poe1/gems' : 'gems';
+  
+  // Return the bundled image path (relative, will be resolved via IPC)
+  return folder + '/' + filename + '.webp';
+}
+
+// Async function to resolve gem image through IPC
+async function resolveGemImageIpc(localPath) {
+  if (!localPath) return null;
+  try {
+    const resolvedPath = await ipcRenderer.invoke('get-bundled-image-path', localPath);
+    return resolvedPath;
+  } catch (err) {
+    console.error('[LevelingPopout] Error resolving image:', localPath, err);
+    return null;
+  }
 }
 
 function getGemColor(gem) {
@@ -1046,6 +1148,9 @@ async function buildTimerTooltip(act) {
 function render() {
   if (!state.levelingData) return;
   
+  // Clear shown gems tracker for fresh render
+  shownGems.clear();
+  
   const list = document.getElementById('stepsList');
   const minimalBtn = document.getElementById('minimalBtn');
   const headerSubtitle = document.getElementById('headerSubtitle');
@@ -1252,6 +1357,27 @@ function render() {
   }).join('');
   
   list.innerHTML = stepsHtml;
+  
+  // Resolve all gem images asynchronously
+  const gemImages = list.querySelectorAll('img[data-gem-img]');
+  console.log('[LevelingPopout] Found', gemImages.length, 'gem images to resolve');
+  gemImages.forEach(async (img) => {
+    const localPath = img.getAttribute('data-gem-img');
+    if (localPath) {
+      try {
+        const resolvedPath = await resolveGemImageIpc(localPath);
+        if (resolvedPath) {
+          img.src = resolvedPath;
+          img.style.display = '';
+          console.log('[LevelingPopout] Image resolved:', localPath, '->', resolvedPath);
+        } else {
+          console.warn('[LevelingPopout] Image not found:', localPath);
+        }
+      } catch (err) {
+        console.error('[LevelingPopout] Failed to resolve gem image:', localPath, err);
+      }
+    }
+  });
   
   // Event listeners
   document.querySelectorAll('[data-action="toggle-step"]').forEach(el => {
