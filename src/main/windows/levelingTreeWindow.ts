@@ -5,7 +5,7 @@
  * Shows delta between tree specs (active/added/removed nodes).
  */
 
-import { BrowserWindow, screen } from 'electron';
+import { BrowserWindow, screen, ipcMain } from 'electron';
 import * as fs from 'fs';
 import * as path from 'path';
 import { app } from 'electron';
@@ -13,30 +13,40 @@ import { app } from 'electron';
 const TREE_WINDOW_BOUNDS_FILE = path.join(app.getPath('userData'), 'tree-window-bounds.json');
 
 let treeWindow: BrowserWindow | null = null;
+let currentUltraMinimal: boolean = false;
 
-function saveTreeWindowBounds(bounds: { x: number; y: number; width: number; height: number }) {
+interface TreeWindowState {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  ultraMinimal?: boolean;
+}
+
+function saveTreeWindowBounds(bounds: { x: number; y: number; width: number; height: number }, ultraMinimal?: boolean) {
   try {
-    fs.writeFileSync(TREE_WINDOW_BOUNDS_FILE, JSON.stringify(bounds), 'utf-8');
+    const state: TreeWindowState = { ...bounds, ultraMinimal };
+    fs.writeFileSync(TREE_WINDOW_BOUNDS_FILE, JSON.stringify(state), 'utf-8');
   } catch (err) {
     console.error('[Tree Window] Failed to save bounds:', err);
   }
 }
 
-function loadTreeWindowBounds(): { x: number; y: number; width: number; height: number } | null {
+function loadTreeWindowBounds(): TreeWindowState | null {
   try {
     if (fs.existsSync(TREE_WINDOW_BOUNDS_FILE)) {
       const data = fs.readFileSync(TREE_WINDOW_BOUNDS_FILE, 'utf-8');
-      const bounds = JSON.parse(data);
+      const state = JSON.parse(data);
       
       // Validate bounds are on screen
       const displays = screen.getAllDisplays();
       const isOnScreen = displays.some(display => {
         const area = display.workArea;
-        return bounds.x >= area.x && bounds.x < area.x + area.width &&
-               bounds.y >= area.y && bounds.y < area.y + area.height;
+        return state.x >= area.x && state.x < area.x + area.width &&
+               state.y >= area.y && state.y < area.y + area.height;
       });
       
-      return isOnScreen ? bounds : null;
+      return isOnScreen ? state : null;
     }
   } catch (err) {
     console.error('[Tree Window] Failed to load bounds:', err);
@@ -44,7 +54,7 @@ function loadTreeWindowBounds(): { x: number; y: number; width: number; height: 
   return null;
 }
 
-function buildTreeWindowHtml(): string {
+function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,6 +129,51 @@ function buildTreeWindowHtml(): string {
       background: #3a3a3a;
       color: #c8c8c8;
       border-color: #555;
+    }
+    
+    .header-btn.minimal-btn.active {
+      background: rgba(74, 158, 255, 0.3);
+      border-color: rgba(74, 158, 255, 0.6);
+      color: #4a9eff;
+    }
+    
+    /* Ultra Minimal Mode */
+    body.ultra-minimal #window-container {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      pointer-events: none;
+    }
+    
+    body.ultra-minimal #header {
+      background: transparent;
+      border-bottom: none;
+      pointer-events: auto;
+    }
+    
+    body.ultra-minimal #viewport-container {
+      background: transparent;
+      pointer-events: auto;
+    }
+    
+    body.ultra-minimal #navigation {
+      background: rgba(26, 26, 26, 0.7);
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      backdrop-filter: blur(4px);
+      pointer-events: auto;
+    }
+    
+    body.ultra-minimal #spec-selector {
+      background: rgba(42, 42, 42, 0.7);
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      min-width: 120px;
+      padding: 3px 6px;
+      font-size: 11px;
+    }
+    
+    body.ultra-minimal .nav-btn {
+      background: rgba(42, 42, 42, 0.7);
+      border: 1px solid rgba(74, 158, 255, 0.3);
     }
 
     #navigation {
@@ -311,6 +366,7 @@ function buildTreeWindowHtml(): string {
   <div id="window-container">
     <div id="header">
       <div id="header-controls">
+        <button class="header-btn minimal-btn" onclick="toggleMinimalMode()" id="minimalBtn" title="Toggle Ultra Minimal Mode">◐</button>
         <button class="header-btn" onclick="window.close()" title="Close">✕</button>
       </div>
     </div>
@@ -346,6 +402,7 @@ function buildTreeWindowHtml(): string {
     let currentGameVersion = 'poe1'; // Track game version
     let isPanning = false;
     let lastPanPosition = { x: 0, y: 0 };
+    let isUltraMinimal = ${ultraMinimal};
 
     window.addEventListener('error', (event) => {
       console.error('[Tree Window] Uncaught error:', event.message, event.filename, event.lineno, event.colno);
@@ -358,7 +415,7 @@ function buildTreeWindowHtml(): string {
         return;
       }
 
-      const { specs, treeSvg, viewBox, gameVersion } = payload;
+      const { specs, treeSvg, viewBox, gameVersion, currentAct, characterLevel } = payload;
 
       if (!specs || specs.length === 0) {
         console.error('[Tree Window] No specs received!');
@@ -368,19 +425,118 @@ function buildTreeWindowHtml(): string {
       treeSvgData = treeSvg || '';
       treeViewBox = viewBox || '';
       currentSpecs = specs;
-      currentIndex = 0;
       currentGameVersion = gameVersion || 'poe1'; // Store game version
+      
+      // Use smart matching to find the best spec to display initially
+      const bestSpecIndex = findBestTreeSpec(specs, currentAct || 1, characterLevel || 1);
+      currentIndex = bestSpecIndex;
 
       console.log('[Tree Window] Calling populateSelector...');
       populateSelector();
       console.log('[Tree Window] Calling renderTree...');
       renderTree();
     });
+    
+    // Helper to parse level range from spec title (same logic as gems window)
+    function parseLevelRange(title) {
+      if (!title) return null;
+      
+      const rangeMatch = title.match(/(\d+)\s*[-–—]\s*(\d+)/);
+      if (rangeMatch) {
+        const min = parseInt(rangeMatch[1], 10);
+        const max = parseInt(rangeMatch[2], 10);
+        if (!isNaN(min) && !isNaN(max)) {
+          return { min, max };
+        }
+      }
+      
+      const singleMatch = title.match(/(?:level|lv|lvl)?\s*(\d+)/i);
+      if (singleMatch) {
+        const level = parseInt(singleMatch[1], 10);
+        if (!isNaN(level)) {
+          return { min: level, max: level };
+        }
+      }
+      
+      return null;
+    }
+    
+    // Helper to detect if a spec name contains act reference
+    function hasActReference(title) {
+      if (!title) return false;
+      const lower = title.toLowerCase();
+      return /act\s*\d+/.test(lower);
+    }
+    
+    // Helper to extract act number from title
+    function extractActNumber(title) {
+      if (!title) return null;
+      const match = title.toLowerCase().match(/act\s*(\d+)/);
+      if (match) {
+        return parseInt(match[1], 10);
+      }
+      return null;
+    }
+    
+    // Find best matching tree spec based on act (preferred) or level (fallback)
+    function findBestTreeSpec(specs, currentAct, characterLevel) {
+      if (!specs || specs.length === 0) return 0;
+      
+      console.log(\`[Tree Window] Finding best tree spec for act \${currentAct}, level \${characterLevel}\`);
+      
+      // First, try to find by act reference
+      for (let i = 0; i < specs.length; i++) {
+        const spec = specs[i];
+        if (hasActReference(spec.title)) {
+          const actNum = extractActNumber(spec.title);
+          if (actNum === currentAct) {
+            console.log(\`[Tree Window] Matched by act: "\${spec.title}" (index \${i})\`);
+            return i;
+          }
+        }
+      }
+      
+      // Fallback: match by level range
+      console.log(\`[Tree Window] No act match found, trying level-based matching for level \${characterLevel}\`);
+      for (let i = 0; i < specs.length; i++) {
+        const spec = specs[i];
+        const range = parseLevelRange(spec.title);
+        if (range && characterLevel >= range.min && characterLevel <= range.max) {
+          console.log(\`[Tree Window] Matched by level: "\${spec.title}" (range \${range.min}-\${range.max}, index \${i})\`);
+          return i;
+        }
+      }
+      
+      // Ultimate fallback: use index-based matching (old behavior)
+      const fallbackIndex = Math.min(currentAct - 1, specs.length - 1);
+      console.log(\`[Tree Window] Using fallback index-based match: index \${fallbackIndex}\`);
+      return fallbackIndex;
+    }
+    
+    // Listen for context updates (act/level changes)
+    ipcRenderer.on('tree-context-update', (event, payload) => {
+      const { currentAct, characterLevel } = payload;
+      if (currentSpecs && currentSpecs.length > 0) {
+        const bestSpecIndex = findBestTreeSpec(currentSpecs, currentAct, characterLevel);
+        if (bestSpecIndex !== currentIndex) {
+          console.log(\`[Tree Window] Context changed, switching from spec \${currentIndex} to \${bestSpecIndex}\`);
+          currentIndex = bestSpecIndex;
+          document.getElementById('spec-selector').value = currentIndex;
+          renderTree();
+        }
+      }
+    });
 
     // Notify main process that renderer is ready to receive data
     // Use setTimeout to ensure listener is fully registered
     setTimeout(() => {
       ipcRenderer.send('tree-window-ready');
+      
+      // Apply saved minimal mode state
+      if (isUltraMinimal) {
+        document.body.classList.add('ultra-minimal');
+        document.getElementById('minimalBtn').classList.add('active');
+      }
     }, 100);
 
     function populateSelector() {
@@ -390,6 +546,24 @@ function buildTreeWindowHtml(): string {
       ).join('');
       selector.value = currentIndex;
       updateNavigation();
+    }
+    
+    function toggleMinimalMode() {
+      isUltraMinimal = !isUltraMinimal;
+      const body = document.body;
+      const btn = document.getElementById('minimalBtn');
+      
+      if (isUltraMinimal) {
+        body.classList.add('ultra-minimal');
+        btn.classList.add('active');
+      } else {
+        body.classList.remove('ultra-minimal');
+        btn.classList.remove('active');
+      }
+      
+      // Just notify main process (no click-through needed)
+      const { ipcRenderer } = require('electron');
+      ipcRenderer.send('tree-window-toggle-minimal', isUltraMinimal);
     }
 
     function selectSpec() {
@@ -821,6 +995,8 @@ export function createPassiveTreeWindow(): BrowserWindow {
   const savedBounds = loadTreeWindowBounds();
   const defaultBounds = { width: 900, height: 700, x: 120, y: 120 };
   const bounds = savedBounds || defaultBounds;
+  const ultraMinimal = savedBounds?.ultraMinimal || false;
+  currentUltraMinimal = ultraMinimal;
 
   treeWindow = new BrowserWindow({
     width: bounds.width,
@@ -840,7 +1016,7 @@ export function createPassiveTreeWindow(): BrowserWindow {
 
   treeWindow.setIgnoreMouseEvents(false);
 
-  const html = buildTreeWindowHtml();
+  const html = buildTreeWindowHtml(ultraMinimal);
   const base64Html = Buffer.from(html, 'utf-8').toString('base64');
   treeWindow.loadURL(`data:text/html;charset=utf-8;base64,${base64Html}`);
 
@@ -856,7 +1032,7 @@ export function createPassiveTreeWindow(): BrowserWindow {
   const saveBounds = () => {
     if (!treeWindow || treeWindow.isDestroyed()) return;
     const bounds = treeWindow.getBounds();
-    saveTreeWindowBounds(bounds);
+    saveTreeWindowBounds(bounds, currentUltraMinimal);
   };
 
   treeWindow.on('moved', saveBounds);
@@ -864,6 +1040,15 @@ export function createPassiveTreeWindow(): BrowserWindow {
 
   treeWindow.on('closed', () => {
     treeWindow = null;
+  });
+  
+  // Handle ultra minimal mode toggle
+  ipcMain.on('tree-window-toggle-minimal', (event, isMinimal) => {
+    if (!treeWindow || treeWindow.isDestroyed()) return;
+    currentUltraMinimal = isMinimal;
+    // Save the state immediately
+    const bounds = treeWindow.getBounds();
+    saveTreeWindowBounds(bounds, currentUltraMinimal);
   });
 
   return treeWindow;
@@ -873,7 +1058,7 @@ export function getPassiveTreeWindow(): BrowserWindow | null {
   return treeWindow;
 }
 
-export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'poe1'): void {
+export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'poe1', currentAct: number = 1, characterLevel: number = 1): void {
   if (!treeWindow || treeWindow.isDestroyed()) {
     console.warn('[Tree Window] Cannot send tree data - window not available');
     return;
@@ -909,6 +1094,8 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     specCount: treeSpecs?.length || 0,
     hasSvg: !!treeSvg,
     gameVersion,
+    currentAct,
+    characterLevel,
   });
 
   treeWindow.webContents.send('tree-data-update', {
@@ -916,11 +1103,23 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     treeSvg,
     viewBox,
     gameVersion,
+    currentAct,
+    characterLevel,
   });
 }
 
 export function isTreeWindowOpen(): boolean {
   return treeWindow !== null && !treeWindow.isDestroyed();
+}
+
+export function updateTreeWindowContext(currentAct: number, characterLevel: number): void {
+  if (!treeWindow || treeWindow.isDestroyed()) return;
+  
+  // Send context update so the tree window can re-evaluate the best spec
+  treeWindow.webContents.send('tree-context-update', {
+    currentAct,
+    characterLevel,
+  });
 }
 
 export function closeTreeWindow() {

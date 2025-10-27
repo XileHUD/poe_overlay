@@ -26,7 +26,7 @@ export function openLevelingGemsWindow(options: LevelingGemsWindowOptions): Brow
   const settingsKey = overlayVersion === 'poe1' ? 'levelingWindowPoe1' : 'levelingWindowPoe2';
   const savedSettings = settingsService.get(settingsKey) || {};
   const gemsWindowSettings = (savedSettings as any).gemsWindow || {};
-  const { x = 100, y = 100, width = 450, height = 600 } = gemsWindowSettings;
+  const { x = 100, y = 100, width = 450, height = 600, ultraMinimal = false } = gemsWindowSettings;
 
   gemsWindow = new BrowserWindow({
     width,
@@ -48,15 +48,13 @@ export function openLevelingGemsWindow(options: LevelingGemsWindowOptions): Brow
 
   gemsWindow.setIgnoreMouseEvents(false);
 
-  // Open dev tools for debugging
-  gemsWindow.webContents.openDevTools({ mode: 'detach' });
-
   // Get current PoB build data and current act
   const pobBuild = (savedSettings as any).pobBuild || null;
   const currentActIndex = (savedSettings as any).currentActIndex || 0;
   const currentAct = currentActIndex + 1; // Convert index to act number
+  const characterLevel = (savedSettings as any).characterLevel || 1;
 
-  const html = buildLevelingGemsWindowHtml(pobBuild, currentAct, overlayVersion);
+  const html = buildLevelingGemsWindowHtml(pobBuild, currentAct, characterLevel, overlayVersion, ultraMinimal);
   gemsWindow.loadURL(`data:text/html;charset=utf-8,${encodeURIComponent(html)}`);
 
   // Save position on move
@@ -90,6 +88,23 @@ export function openLevelingGemsWindow(options: LevelingGemsWindowOptions): Brow
   gemsWindow.on('closed', () => {
     gemsWindow = null;
   });
+  
+  // Handle ultra minimal mode toggle
+  ipcMain.on('gems-window-toggle-minimal', (event, isMinimal) => {
+    if (!gemsWindow || gemsWindow.isDestroyed()) return;
+    
+    // Don't use click-through at all - we need buttons to work
+    // Instead, we'll just make the window transparent and rely on CSS
+    
+    // Save minimal mode state
+    settingsService.update(settingsKey, (current: any) => ({
+      ...current,
+      gemsWindow: {
+        ...(current.gemsWindow || {}),
+        ultraMinimal: isMinimal,
+      },
+    }));
+  });
 
   return gemsWindow;
 }
@@ -108,6 +123,13 @@ export function updateLevelingGemsWindowBuild(pobBuild: any, overlayVersion: Ove
   gemsWindow.webContents.send('gems-window-build-updated', pobBuild);
 }
 
+export function updateLevelingGemsWindowCharacterLevel(level: number) {
+  if (!gemsWindow || gemsWindow.isDestroyed()) return;
+
+  // Send character level update to renderer
+  gemsWindow.webContents.send('character-level-up', { level });
+}
+
 export function closeLevelingGemsWindow() {
   if (gemsWindow && !gemsWindow.isDestroyed()) {
     gemsWindow.close();
@@ -119,7 +141,7 @@ export function isGemsWindowOpen(): boolean {
   return gemsWindow !== null && !gemsWindow.isDestroyed();
 }
 
-function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayVersion: OverlayVersion): string {
+function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characterLevel: number, overlayVersion: OverlayVersion, ultraMinimal: boolean = false): string {
   const className = pobBuild?.className || 'No Build Loaded';
   const ascendancy = pobBuild?.ascendancyName || '';
   const level = pobBuild?.level || 0;
@@ -237,6 +259,32 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
       cursor: not-allowed;
     }
     
+    .minimal-btn {
+      width: 20px;
+      height: 20px;
+      background: rgba(74, 158, 255, 0.1);
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      border-radius: 3px;
+      color: var(--accent-blue);
+      font-size: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+    
+    .minimal-btn:hover {
+      background: rgba(74, 158, 255, 0.2);
+      border-color: rgba(74, 158, 255, 0.5);
+    }
+    
+    .minimal-btn.active {
+      background: rgba(74, 158, 255, 0.3);
+      border-color: rgba(74, 158, 255, 0.6);
+    }
+    
     .close-btn {
       width: 20px;
       height: 20px;
@@ -258,13 +306,47 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
       border-color: rgba(217, 83, 79, 0.5);
     }
     
+    /* Ultra Minimal Mode */
+    body.ultra-minimal {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      pointer-events: none;
+    }
+    
+    body.ultra-minimal .header {
+      background: transparent;
+      border-bottom: none;
+      pointer-events: auto;
+    }
+    
+    body.ultra-minimal .content {
+      background: transparent;
+      pointer-events: auto;
+    }
+    
+    body.ultra-minimal .socket-group {
+      pointer-events: auto;
+    }
+    
+    body.ultra-minimal .gem-item {
+      pointer-events: auto;
+    }
+    
     .content {
       flex: 1;
       overflow-y: auto;
+      overflow-x: hidden;
       padding: 10px;
       display: flex;
       flex-direction: column;
       gap: 8px;
+      opacity: 1;
+      transition: opacity 0.1s ease;
+    }
+    
+    .content.updating {
+      opacity: 0;
     }
     
     .no-build {
@@ -299,28 +381,21 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
     .socket-group-header {
       display: flex;
       align-items: center;
-      gap: 6px;
-      padding-bottom: 4px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    }
-    
-    .socket-group-icon {
-      font-size: 13px;
-    }
-    
-    .socket-group-title {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--accent-blue);
-      flex: 1;
+      gap: 4px;
+      padding-bottom: 6px;
+      margin-bottom: 6px;
+      border-bottom: 1px solid rgba(74, 158, 255, 0.15);
     }
     
     .socket-count {
       font-size: 9px;
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.04);
-      padding: 1px 6px;
+      color: rgba(150, 150, 150, 0.8);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      background: rgba(50, 50, 50, 0.5);
+      padding: 2px 6px;
       border-radius: 3px;
+      border: 1px solid rgba(100, 100, 100, 0.3);
     }
     
     .gems-list {
@@ -476,6 +551,7 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
       <div class="header-subtitle">${ascendancy || className} - Level ${level}</div>
     </div>
     <div class="header-controls">
+      <div class="minimal-btn" onclick="toggleMinimalMode()" id="minimalBtn" title="Toggle Ultra Minimal Mode">◐</div>
       <div class="close-btn" onclick="closeWindow()">×</div>
     </div>
   </div>
@@ -491,6 +567,8 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
     
     let currentBuild = ${JSON.stringify(pobBuild)};
     let currentAct = ${currentAct};
+    let characterLevel = ${characterLevel}; // Current character level from client.txt
+    let isUltraMinimal = ${ultraMinimal};
     let gemDatabase = {};
     let gemColours = {};
     let questData = {};
@@ -662,6 +740,86 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
       };
     }
     
+    // Helper to parse level range from set title
+    // Examples: "1-14 level", "15-23", "Level 1-12", "Act1 level 1-23"
+    function parseLevelRange(title) {
+      if (!title) return null;
+      
+      // Match patterns like: "1-14", "level 1-14", "1-14 level", "Level 1-14"
+      const rangeMatch = title.match(/(\d+)\s*[-–—]\s*(\d+)/);
+      if (rangeMatch) {
+        const min = parseInt(rangeMatch[1], 10);
+        const max = parseInt(rangeMatch[2], 10);
+        if (!isNaN(min) && !isNaN(max)) {
+          return { min, max };
+        }
+      }
+      
+      // Match single level like "Level 14" or "14 level"
+      const singleMatch = title.match(/(?:level|lv|lvl)?\s*(\d+)/i);
+      if (singleMatch) {
+        const level = parseInt(singleMatch[1], 10);
+        if (!isNaN(level)) {
+          return { min: level, max: level };
+        }
+      }
+      
+      return null;
+    }
+    
+    // Helper to detect if a set name contains act reference
+    function hasActReference(title) {
+      if (!title) return false;
+      const lower = title.toLowerCase();
+      // Match "act 1", "act1", "act 2", etc.
+      return /act\s*\d+/.test(lower);
+    }
+    
+    // Helper to extract act number from title
+    function extractActNumber(title) {
+      if (!title) return null;
+      const match = title.toLowerCase().match(/act\s*(\d+)/);
+      if (match) {
+        return parseInt(match[1], 10);
+      }
+      return null;
+    }
+    
+    // Find best matching skill set based on act (preferred) or level (fallback)
+    function findBestSkillSet(skillSets, currentAct, characterLevel) {
+      if (!skillSets || skillSets.length === 0) return null;
+      
+      console.log(\`[GemsWindow] Finding best skill set for act \${currentAct}, level \${characterLevel}\`);
+      
+      // First, try to find by act reference
+      for (let i = 0; i < skillSets.length; i++) {
+        const set = skillSets[i];
+        if (hasActReference(set.title)) {
+          const actNum = extractActNumber(set.title);
+          if (actNum === currentAct) {
+            console.log(\`[GemsWindow] Matched by act: "\${set.title}" (index \${i})\`);
+            return { set, index: i };
+          }
+        }
+      }
+      
+      // Fallback: match by level range
+      console.log(\`[GemsWindow] No act match found, trying level-based matching for level \${characterLevel}\`);
+      for (let i = 0; i < skillSets.length; i++) {
+        const set = skillSets[i];
+        const range = parseLevelRange(set.title);
+        if (range && characterLevel >= range.min && characterLevel <= range.max) {
+          console.log(\`[GemsWindow] Matched by level: "\${set.title}" (range \${range.min}-\${range.max}, index \${i})\`);
+          return { set, index: i };
+        }
+      }
+      
+      // Ultimate fallback: use index-based matching (old behavior)
+      const fallbackIndex = Math.min(currentAct - 1, skillSets.length - 1);
+      console.log(\`[GemsWindow] Using fallback index-based match: index \${fallbackIndex}\`);
+      return { set: skillSets[fallbackIndex], index: fallbackIndex };
+    }
+    
     function renderGems() {
       const content = document.getElementById('content');
       
@@ -680,10 +838,18 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
         return;
       }
       
-      // Determine which skill set we're showing
+      // Determine which skill set we're showing using smart matching
       let currentSkillSetTitle = 'Act ' + currentAct;
-      if (hasSkillSets && currentBuild.skillSets[currentAct - 1]) {
-        currentSkillSetTitle = currentBuild.skillSets[currentAct - 1].title || ('Act ' + currentAct);
+      let matchedSkillSet = null;
+      let skillSetIndex = currentAct - 1; // Default fallback
+      
+      if (hasSkillSets) {
+        const result = findBestSkillSet(currentBuild.skillSets, currentAct, characterLevel);
+        if (result) {
+          matchedSkillSet = result.set;
+          skillSetIndex = result.index;
+          currentSkillSetTitle = result.set.title || ('Act ' + currentAct);
+        }
       }
       
       let html = \`
@@ -699,19 +865,12 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
         </div>
       \`;
       
-      // Determine which socket groups to use based on current act
+      // Determine which socket groups to use based on matched skill set
       let socketGroupsToShow = [];
       
-      if (hasSkillSets) {
-        // Use skill set by index (currentAct - 1)
-        // If currentAct is beyond skill sets length, use the last one
-        const skillSetIndex = Math.min(currentAct - 1, currentBuild.skillSets.length - 1);
-        const matchedSkillSet = currentBuild.skillSets[skillSetIndex];
-        
-        if (matchedSkillSet) {
-          console.log(\`[GemsWindow] Using skill set "\${matchedSkillSet.title}" (index \${skillSetIndex}) for page \${currentAct}\`);
-          socketGroupsToShow = matchedSkillSet.socketGroups || [];
-        }
+      if (hasSkillSets && matchedSkillSet) {
+        console.log(\`[GemsWindow] Using skill set "\${matchedSkillSet.title}" (index \${skillSetIndex}) for page \${currentAct}\`);
+        socketGroupsToShow = matchedSkillSet.socketGroups || [];
       } else {
         // Fallback to old logic using socketGroups directly
         socketGroupsToShow = currentBuild.socketGroups;
@@ -724,14 +883,12 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
         if (!group.gems || group.gems.length === 0) continue;
         
         const socketCount = group.gems.length;
-        const linkIcon = socketCount === 6 ? '🔗' : socketCount === 5 ? '⛓️' : socketCount >= 3 ? '🔗' : '⚡';
-        const linkLabel = socketCount >= 2 ? \`\${socketCount}-Link\` : \`\${socketCount} Socket\`;
+        const socketWord = socketCount === 1 ? 'Socket' : 'Sockets';
+        const linkLabel = socketCount >= 2 ? \`\${socketCount}-Link\` : \`\${socketCount} \${socketWord}\`;
         
         html += \`
           <div class="socket-group">
             <div class="socket-group-header">
-              <span class="socket-group-icon">\${linkIcon}</span>
-              <span class="socket-group-title">\${group.label || 'Socket Group'}</span>
               <span class="socket-count">\${linkLabel}</span>
             </div>
             <div class="gems-list">
@@ -804,6 +961,20 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
       updateNavButtons();
     }
     
+    function smoothRenderGems() {
+      const content = document.getElementById('content');
+      
+      // Fade out content first
+      content.classList.add('updating');
+      
+      // Wait for fade out, then render new content
+      setTimeout(() => {
+        renderGems();
+        // Fade content back in
+        content.classList.remove('updating');
+      }, 100);
+    }
+    
     function updateNavButtons() {
       const prevBtn = document.getElementById('prevActBtn');
       const nextBtn = document.getElementById('nextActBtn');
@@ -834,7 +1005,24 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
       if (newAct < 1 || newAct > maxPages) return;
       
       currentAct = newAct;
-      renderGems();
+      smoothRenderGems();
+    }
+    
+    function toggleMinimalMode() {
+      isUltraMinimal = !isUltraMinimal;
+      const body = document.body;
+      const btn = document.getElementById('minimalBtn');
+      
+      if (isUltraMinimal) {
+        body.classList.add('ultra-minimal');
+        btn.classList.add('active');
+      } else {
+        body.classList.remove('ultra-minimal');
+        btn.classList.remove('active');
+      }
+      
+      // Notify main process to save state
+      ipcRenderer.send('gems-window-toggle-minimal', isUltraMinimal);
     }
     
     function closeWindow() {
@@ -844,13 +1032,22 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
     // Listen for act changes
     ipcRenderer.on('gems-window-act-changed', (event, newAct) => {
       currentAct = newAct;
-      renderGems();
+      smoothRenderGems();
     });
     
     // Listen for build updates
     ipcRenderer.on('gems-window-build-updated', (event, newBuild) => {
       currentBuild = newBuild;
-      renderGems();
+      smoothRenderGems();
+    });
+    
+    // Listen for character level updates
+    ipcRenderer.on('character-level-up', (event, data) => {
+      if (data && typeof data.level === 'number') {
+        console.log(\`[GemsWindow] Character level updated: \${data.level}\`);
+        characterLevel = data.level;
+        smoothRenderGems();
+      }
     });
     
     // Initialize
@@ -859,6 +1056,12 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, overlayV
       await loadGemColors();
       await loadQuestData();
       renderGems();
+      
+      // Apply saved minimal mode state
+      if (isUltraMinimal) {
+        document.body.classList.add('ultra-minimal');
+        document.getElementById('minimalBtn').classList.add('active');
+      }
     })();
   </script>
 </body>
