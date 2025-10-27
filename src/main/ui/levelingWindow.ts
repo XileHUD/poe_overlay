@@ -697,6 +697,14 @@ export class LevelingWindow {
       
       if (isGemsWindowOpen()) {
         closeLevelingGemsWindow();
+        // Ensure leveling guide remains visible and on top after closing
+        if (this.window && !this.window.isDestroyed()) {
+          try {
+            this.window.show();
+            this.window.focus();
+            this.window.setAlwaysOnTop(true, 'pop-up-menu');
+          } catch {}
+        }
         console.log('[LevelingWindow] Gems window closed (toggle)');
       } else {
         console.log('[LevelingWindow] Opening gems window for Act', currentAct);
@@ -747,6 +755,14 @@ export class LevelingWindow {
       
       if (isNotesWindowOpen()) {
         closeNotesWindow();
+        // Ensure leveling guide remains visible and on top after closing
+        if (this.window && !this.window.isDestroyed()) {
+          try {
+            this.window.show();
+            this.window.focus();
+            this.window.setAlwaysOnTop(true, 'pop-up-menu');
+          } catch {}
+        }
         console.log('[LevelingWindow] Notes window closed (toggle)');
       } else {
         console.log('[LevelingWindow] Opening notes window');
@@ -765,6 +781,14 @@ export class LevelingWindow {
       
       if (isGearWindowOpen()) {
         closeGearWindow();
+        // Ensure leveling guide remains visible and on top after closing
+        if (this.window && !this.window.isDestroyed()) {
+          try {
+            this.window.show();
+            this.window.focus();
+            this.window.setAlwaysOnTop(true, 'pop-up-menu');
+          } catch {}
+        }
         console.log('[LevelingWindow] Gear window closed (toggle)');
       } else {
         console.log('[LevelingWindow] Opening gear window');
@@ -1717,6 +1741,14 @@ export class LevelingWindow {
           // Toggle gems window (close if open, open if closed)
           if (isGemsWindowOpen()) {
             closeLevelingGemsWindow();
+            // Keep the leveling guide visible and focused
+            if (this.window && !this.window.isDestroyed()) {
+              try {
+                this.window.show();
+                this.window.focus();
+                this.window.setAlwaysOnTop(true, 'pop-up-menu');
+              } catch {}
+            }
             console.log('[LevelingWindow] Gems window closed via hotkey');
           } else {
             const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
@@ -1745,6 +1777,14 @@ export class LevelingWindow {
         globalShortcut.register(hotkeys.gear, () => {
           if (isGearWindowOpen()) {
             closeGearWindow();
+            // Keep the leveling guide visible and focused
+            if (this.window && !this.window.isDestroyed()) {
+              try {
+                this.window.show();
+                this.window.focus();
+                this.window.setAlwaysOnTop(true, 'pop-up-menu');
+              } catch {}
+            }
             console.log('[LevelingWindow] Gear window closed via hotkey');
           } else {
             const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
@@ -1772,6 +1812,14 @@ export class LevelingWindow {
         globalShortcut.register(hotkeys.notes, () => {
           if (isNotesWindowOpen()) {
             closeNotesWindow();
+            // Keep the leveling guide visible and focused
+            if (this.window && !this.window.isDestroyed()) {
+              try {
+                this.window.show();
+                this.window.focus();
+                this.window.setAlwaysOnTop(true, 'pop-up-menu');
+              } catch {}
+            }
             console.log('[LevelingWindow] Notes window closed via hotkey');
           } else {
             const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
