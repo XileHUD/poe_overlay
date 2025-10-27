@@ -4,6 +4,8 @@ import { buildLevelingPopoutHtml } from '../popouts/levelingPopoutTemplate.js';
 import { openLevelingSettingsSplash } from './levelingSettingsSplash.js';
 import { openPobInfoBar, closePobInfoBar, updatePobInfoBar } from './pobInfoBar.js';
 import { openLevelingGemsWindow, updateLevelingGemsWindow, updateLevelingGemsWindowBuild, updateLevelingGemsWindowCharacterLevel, closeLevelingGemsWindow, isGemsWindowOpen } from './levelingGemsWindow.js';
+import { openLevelingNotesWindow, updateNotesWindow, closeNotesWindow, isNotesWindowOpen } from './levelingNotesWindow.js';
+import { openLevelingGearWindow, updateGearWindow, closeGearWindow, isGearWindowOpen } from './levelingGearWindow.js';
 import { createPassiveTreeWindow, sendTreeData, updateTreeWindowContext, isTreeWindowOpen, closeTreeWindow } from '../windows/levelingTreeWindow.js';
 import fs from 'fs';
 import path from 'path';
@@ -677,7 +679,7 @@ export class LevelingWindow {
       this.registerHotkeys();
     });
 
-    // Open gems window from PoB info bar
+    // Open/toggle gems window from PoB info bar
     ipcMain.on('open-pob-gems-window', () => {
       const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
       const pobBuild = (currentSettings as any).pobBuild || null;
@@ -689,16 +691,20 @@ export class LevelingWindow {
         return;
       }
       
-      console.log('[LevelingWindow] Opening gems window for Act', currentAct);
-      
-      openLevelingGemsWindow({
-        settingsService: this.settingsService,
-        overlayVersion: this.overlayVersion,
-        parentWindow: this.window || undefined
-      });
+      if (isGemsWindowOpen()) {
+        closeLevelingGemsWindow();
+        console.log('[LevelingWindow] Gems window closed (toggle)');
+      } else {
+        console.log('[LevelingWindow] Opening gems window for Act', currentAct);
+        openLevelingGemsWindow({
+          settingsService: this.settingsService,
+          overlayVersion: this.overlayVersion,
+          parentWindow: this.window || undefined
+        });
+      }
     });
 
-    // Open passive tree window from PoB info bar
+    // Open/toggle passive tree window from PoB info bar
     ipcMain.on('open-pob-tree-window', () => {
       const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
       const pobBuild = (currentSettings as any).pobBuild || null;
@@ -708,32 +714,77 @@ export class LevelingWindow {
         return;
       }
       
-      console.log('[LevelingWindow] Opening tree window with', pobBuild.treeSpecs.length, 'tree specs for', this.overlayVersion);
-      
-      const saved = this.settingsService.get(this.getLevelingWindowKey());
-      const currentActIndex = (saved as any)?.currentActIndex || 0;
-      const characterLevel = (saved as any)?.characterLevel || 1;
-      
-      const onTreeWindowReady = () => {
-        console.log('[LevelingWindow] Tree window reported ready, sending data');
-        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel);
-      };
+      if (isTreeWindowOpen()) {
+        closeTreeWindow();
+        console.log('[LevelingWindow] Tree window closed (toggle)');
+      } else {
+        console.log('[LevelingWindow] Opening tree window with', pobBuild.treeSpecs.length, 'tree specs for', this.overlayVersion);
+        const saved = this.settingsService.get(this.getLevelingWindowKey());
+        const currentActIndex = (saved as any)?.currentActIndex || 0;
+        const characterLevel = (saved as any)?.characterLevel || 1;
+        const onTreeWindowReady = () => {
+          console.log('[LevelingWindow] Tree window reported ready, sending data');
+          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel);
+        };
+        ipcMain.once('tree-window-ready', onTreeWindowReady);
+        const treeWindow = createPassiveTreeWindow();
+        if (!treeWindow.webContents.isLoading()) {
+          ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
+          console.log('[LevelingWindow] Tree window already loaded, sending data immediately');
+          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel);
+        }
+      }
+    });
 
-      ipcMain.once('tree-window-ready', onTreeWindowReady);
-
-      const treeWindow = createPassiveTreeWindow();
+    // Open/toggle notes window from PoB info bar
+    ipcMain.on('open-pob-notes-window', () => {
+      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+      const pobBuild = (currentSettings as any).pobBuild || null;
       
-      // If window already loaded (existing instance), send data immediately and cleanup listener
-      if (!treeWindow.webContents.isLoading()) {
-        ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
-        console.log('[LevelingWindow] Tree window already loaded, sending data immediately');
-        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel);
+      if (isNotesWindowOpen()) {
+        closeNotesWindow();
+        console.log('[LevelingWindow] Notes window closed (toggle)');
+      } else {
+        console.log('[LevelingWindow] Opening notes window');
+        openLevelingNotesWindow({
+          settingsService: this.settingsService,
+          overlayVersion: this.overlayVersion,
+          parentWindow: this.window || undefined
+        });
+      }
+    });
+
+    // Open/toggle gear window from PoB info bar
+    ipcMain.on('open-pob-gear-window', () => {
+      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+      const pobBuild = (currentSettings as any).pobBuild || null;
+      
+      if (isGearWindowOpen()) {
+        closeGearWindow();
+        console.log('[LevelingWindow] Gear window closed (toggle)');
+      } else {
+        console.log('[LevelingWindow] Opening gear window');
+        openLevelingGearWindow({
+          settingsService: this.settingsService,
+          overlayVersion: this.overlayVersion,
+          parentWindow: this.window || undefined
+        });
       }
     });
 
     // Close gems window
     ipcMain.on('leveling-gems-window-close', () => {
       closeLevelingGemsWindow();
+    });
+    
+    // Close notes window
+    ipcMain.on('leveling-notes-window-close', () => {
+      closeNotesWindow();
+    });
+    
+    // Close gear window
+    ipcMain.on('leveling-gear-window-close', () => {
+      closeGearWindow();
     });
     
     // Act changed - notify gems window and tree window
@@ -1380,12 +1431,21 @@ export class LevelingWindow {
         gems: build.gems.length
       });
 
-      // Use the first tree spec (typically "Early Game" or default)
-      const firstTreeSpec = build.treeSpecs[0];
+      // Filter out header-only tree specs with no nodes before saving/using
+      const hasNodes = (spec: any) => {
+        const a = Array.isArray(spec?.parsedUrl?.nodes) ? spec.parsedUrl.nodes : [];
+        const b = Array.isArray(spec?.allocatedNodes) ? spec.allocatedNodes : [];
+        return (a.length > 0) || (b.length > 0);
+      };
+      const filteredTreeSpecs = (build.treeSpecs || []).filter(hasNodes);
+      const treeSpecsToUse = filteredTreeSpecs.length > 0 ? filteredTreeSpecs : build.treeSpecs;
+
+      // Use the first non-empty tree spec
+      const firstTreeSpec = treeSpecsToUse[0];
       const allocatedNodes = firstTreeSpec.allocatedNodes;
 
-      console.log('[PoB Import] Using tree spec:', firstTreeSpec.title);
-      console.log('[PoB Import] Tree specs available:', build.treeSpecs.map(s => s.title).join(', '));
+  console.log('[PoB Import] Using tree spec:', firstTreeSpec.title);
+  console.log('[PoB Import] Tree specs available:', treeSpecsToUse.map(s => s.title).join(', '));
 
       // Calculate tree progression by act
       const treeProgression = calculateTreeProgressionByAct(
@@ -1493,13 +1553,15 @@ export class LevelingWindow {
         ascendancyName: build.ascendancyName,
         characterName: build.characterName,
         level: build.level,
-        treeSpecs: build.treeSpecs, // Store ALL specs
+  treeSpecs: treeSpecsToUse, // Store only non-empty specs
         allocatedNodes: allocatedNodes, // Current selected spec nodes
         treeProgression: treeProgression,
         gems: allEnrichedGems, // Flat list of ALL gems from ALL skill sets with per-act quest info
         socketGroups: enrichedSocketGroups, // Socket groups with quest info (from first skill set)
         skillSets: enrichedSkillSets, // ALL skill sets with quest info enriched
+        itemSets: build.itemSets, // Item sets (gear)
         treeVersion: build.treeVersion,
+        notes: build.notes, // Notes from PoB Notes tab
         importedAt: Date.now()
       };
 
@@ -1650,6 +1712,60 @@ export class LevelingWindow {
         console.log('[LevelingWindow] Registered gems hotkey:', hotkeys.gems);
       } catch (e) {
         console.error('[LevelingWindow] Failed to register gems hotkey:', hotkeys.gems, e);
+      }
+    }
+
+    // Register gear hotkey
+    if (hotkeys.gear) {
+      try {
+        globalShortcut.register(hotkeys.gear, () => {
+          if (isGearWindowOpen()) {
+            closeGearWindow();
+            console.log('[LevelingWindow] Gear window closed via hotkey');
+          } else {
+            const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+            const pobBuild = (currentSettings as any).pobBuild || null;
+            if (pobBuild && pobBuild.itemSets && pobBuild.itemSets.length > 0) {
+              openLevelingGearWindow({
+                settingsService: this.settingsService,
+                overlayVersion: this.overlayVersion,
+                parentWindow: this.window || undefined
+              });
+              console.log('[LevelingWindow] Gear window opened via hotkey');
+            }
+          }
+        });
+        this.registeredHotkeys.push(hotkeys.gear);
+        console.log('[LevelingWindow] Registered gear hotkey:', hotkeys.gear);
+      } catch (e) {
+        console.error('[LevelingWindow] Failed to register gear hotkey:', hotkeys.gear, e);
+      }
+    }
+
+    // Register notes hotkey
+    if (hotkeys.notes) {
+      try {
+        globalShortcut.register(hotkeys.notes, () => {
+          if (isNotesWindowOpen()) {
+            closeNotesWindow();
+            console.log('[LevelingWindow] Notes window closed via hotkey');
+          } else {
+            const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+            const pobBuild = (currentSettings as any).pobBuild || null;
+            if (pobBuild) {
+              openLevelingNotesWindow({
+                settingsService: this.settingsService,
+                overlayVersion: this.overlayVersion,
+                parentWindow: this.window || undefined
+              });
+              console.log('[LevelingWindow] Notes window opened via hotkey');
+            }
+          }
+        });
+        this.registeredHotkeys.push(hotkeys.notes);
+        console.log('[LevelingWindow] Registered notes hotkey:', hotkeys.notes);
+      } catch (e) {
+        console.error('[LevelingWindow] Failed to register notes hotkey:', hotkeys.notes, e);
       }
     }
   }

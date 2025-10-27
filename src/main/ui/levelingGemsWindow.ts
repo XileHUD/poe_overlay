@@ -785,15 +785,26 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
       return null;
     }
     
+    // Helper: filter out empty header-style skill sets (no gems in any socket group)
+    function filterNonEmptySkillSets(skillSets) {
+      if (!Array.isArray(skillSets)) return [];
+      return skillSets.filter(set => {
+        const groups = set && Array.isArray(set.socketGroups) ? set.socketGroups : [];
+        return groups.some(g => Array.isArray(g.gems) && g.gems.length > 0);
+      });
+    }
+
     // Find best matching skill set based on act (preferred) or level (fallback)
     function findBestSkillSet(skillSets, currentAct, characterLevel) {
       if (!skillSets || skillSets.length === 0) return null;
+      const nonEmptySets = filterNonEmptySkillSets(skillSets);
+      if (nonEmptySets.length === 0) return null;
       
       console.log(\`[GemsWindow] Finding best skill set for act \${currentAct}, level \${characterLevel}\`);
       
       // First, try to find by act reference
-      for (let i = 0; i < skillSets.length; i++) {
-        const set = skillSets[i];
+      for (let i = 0; i < nonEmptySets.length; i++) {
+        const set = nonEmptySets[i];
         if (hasActReference(set.title)) {
           const actNum = extractActNumber(set.title);
           if (actNum === currentAct) {
@@ -805,8 +816,8 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
       
       // Fallback: match by level range
       console.log(\`[GemsWindow] No act match found, trying level-based matching for level \${characterLevel}\`);
-      for (let i = 0; i < skillSets.length; i++) {
-        const set = skillSets[i];
+      for (let i = 0; i < nonEmptySets.length; i++) {
+        const set = nonEmptySets[i];
         const range = parseLevelRange(set.title);
         if (range && characterLevel >= range.min && characterLevel <= range.max) {
           console.log(\`[GemsWindow] Matched by level: "\${set.title}" (range \${range.min}-\${range.max}, index \${i})\`);
@@ -815,9 +826,9 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
       }
       
       // Ultimate fallback: use index-based matching (old behavior)
-      const fallbackIndex = Math.min(currentAct - 1, skillSets.length - 1);
+      const fallbackIndex = Math.min(currentAct - 1, nonEmptySets.length - 1);
       console.log(\`[GemsWindow] Using fallback index-based match: index \${fallbackIndex}\`);
-      return { set: skillSets[fallbackIndex], index: fallbackIndex };
+      return { set: nonEmptySets[fallbackIndex], index: fallbackIndex };
     }
     
     function renderGems() {

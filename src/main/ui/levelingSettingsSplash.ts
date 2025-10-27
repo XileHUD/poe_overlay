@@ -113,6 +113,8 @@ function buildLevelingSettingsSplashHtml(
   const hotkeyNext = hotkeys.next || 'Not Set';
   const hotkeyTree = hotkeys.tree || 'Not Set';
   const hotkeyGems = hotkeys.gems || 'Not Set';
+  const hotkeyGear = hotkeys.gear || 'Not Set';
+  const hotkeyNotes = hotkeys.notes || 'Not Set';
   
   return `
 <!DOCTYPE html>
@@ -660,6 +662,28 @@ function buildLevelingSettingsSplashHtml(
           <div style="display: flex; align-items: center;">
             <div class="hotkey-input" id="hotkey-gems" onclick="captureHotkey('gems')">${hotkeyGems}</div>
             <button class="hotkey-clear" onclick="clearHotkey('gems')">Clear</button>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Toggle Gear</div>
+            <div class="setting-description">Open/close gear window</div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div class="hotkey-input" id="hotkey-gear" onclick="captureHotkey('gear')">${hotkeyGear}</div>
+            <button class="hotkey-clear" onclick="clearHotkey('gear')">Clear</button>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Toggle Notes</div>
+            <div class="setting-description">Open/close notes window</div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div class="hotkey-input" id="hotkey-notes" onclick="captureHotkey('notes')">${hotkeyNotes}</div>
+            <button class="hotkey-clear" onclick="clearHotkey('notes')">Clear</button>
           </div>
         </div>
       </div>

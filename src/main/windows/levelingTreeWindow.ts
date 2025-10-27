@@ -283,7 +283,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       will-change: transform;
     }
 
-    /* Tree styling - match exile-leveling colors */
+  
     svg .nodes {
       fill: hsl(215, 15%, 50%);
       stroke: hsl(215, 15%, 50%);
@@ -609,7 +609,6 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       const currentSpec = currentSpecs[currentIndex];
       const previousSpec = currentIndex > 0 ? currentSpecs[currentIndex - 1] : null;
 
-      // Calculate delta (like exile-leveling's buildUrlTreeDelta)
       const currentNodes = new Set(currentSpec.parsedUrl?.nodes || []);
       const previousNodes = new Set(previousSpec?.parsedUrl?.nodes || []);
 
@@ -622,12 +621,12 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
         console.log('[Tree] Sample added nodes:', nodesAdded.slice(0, 5));
       }
 
-      // Generate CSS for node highlighting (like exile-leveling's Handlebars template)
+      // Generate CSS for node highlighting
       const activeStyles = nodesActive.map(id => \`#n\${id}\`).join(', ');
       const addedStyles = nodesAdded.map(id => \`#n\${id}\`).join(', ');
       const removedStyles = nodesRemoved.map(id => \`#n\${id}\`).join(', ');
       
-      // Build connection ID lists from actual graph connections (exile-leveling approach)
+      // Build connection ID lists from actual graph connections
       const connectionActiveIds = [];
       const connectionAddedIds = [];
       const connectionRemovedIds = [];
@@ -1090,8 +1089,16 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     console.error('[Tree Window] Failed to load tree template for payload:', err);
   }
 
+  // Filter out empty header-style specs (no allocated nodes)
+  const filteredSpecs = Array.isArray(treeSpecs) ? treeSpecs.filter((spec) => {
+    const a = (spec as any)?.parsedUrl?.nodes;
+    const b = (spec as any)?.allocatedNodes;
+    const hasNodes = (Array.isArray(a) && a.length > 0) || (Array.isArray(b) && b.length > 0);
+    return !!hasNodes;
+  }) : [];
+
   console.log('[Tree Window] Sending tree data to renderer', {
-    specCount: treeSpecs?.length || 0,
+    specCount: filteredSpecs?.length || 0,
     hasSvg: !!treeSvg,
     gameVersion,
     currentAct,
@@ -1099,7 +1106,7 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
   });
 
   treeWindow.webContents.send('tree-data-update', {
-    specs: treeSpecs,
+    specs: filteredSpecs,
     treeSvg,
     viewBox,
     gameVersion,

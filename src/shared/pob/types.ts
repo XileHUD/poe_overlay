@@ -15,7 +15,31 @@ export interface ParsedPobBuild {
   treeSpecs: TreeSpec[];
   gems: GemSocketGroup[];
   skillSets?: SkillSet[];
+  itemSets?: ItemSet[];
   treeVersion: string;
+  notes?: string; // Build notes from PoB Notes tab
+}
+
+export interface ItemSet {
+  id: number;
+  title: string;
+  useSecondWeaponSet?: boolean;
+  items: Record<string, Item>; // Keyed by slot name
+}
+
+export interface Item {
+  id: number;
+  rawText: string; // Full item text from PoB
+  name?: string;
+  baseName?: string;
+  rarity?: string; // Normal, Magic, Rare, Unique
+  itemLevel?: number;
+  quality?: number;
+  sockets?: string;
+  variant?: number;
+  mods?: string[]; // Explicit mods
+  implicitMods?: string[]; // Implicit mods
+  craftedMods?: string[]; // Crafted mods
 }
 
 export interface TreeSpec {
@@ -99,9 +123,11 @@ export interface StoredPobBuild {
   gems: GemRequirement[]; // Flat list of unique gems with quest info
   socketGroups?: GemSocketGroup[]; // Socket groups with quest info enriched
   skillSets?: SkillSet[];
+  itemSets?: ItemSet[];
   questGemAssignments?: Record<string, QuestGemAssignment[]>;
   treeVersion: string;
   importedAt: number;
+  notes?: string; // Build notes from PoB Notes tab
 }
 
 export interface PassiveTreeNode {

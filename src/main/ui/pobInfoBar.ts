@@ -31,7 +31,7 @@ export function openPobInfoBar(params: PobInfoBarParams): void {
   const { settingsService, overlayVersion, pobBuild, currentAct } = params;
   
   // Small draggable bar dimensions
-  const barWidth = 450; // Increased from 320
+  const barWidth = 600; // Increased to accommodate Gear button
   const barHeight = 60;
   
   // Get saved position or use defaults
@@ -119,14 +119,21 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
   const ascendancy = pobBuild.ascendancyName || '';
   const level = pobBuild.level || 1;
   
-  return `
-<!DOCTYPE html>
-<html lang="en">
+  // Determine availability of features to conditionally render buttons
+  const hasAnyGear = !!(pobBuild.itemSets && pobBuild.itemSets.some(set => set && set.items && Object.keys(set.items || {}).length > 0));
+  const hasAnyTree = !!(pobBuild.treeSpecs && pobBuild.treeSpecs.some(spec => {
+    const a = (spec as any)?.allocatedNodes;
+    const p = (spec as any)?.parsedUrl?.nodes;
+    return (Array.isArray(a) && a.length > 0) || (Array.isArray(p) && p.length > 0);
+  }));
+  const hasNotes = !!(pobBuild.notes && pobBuild.notes.trim().length > 0);
+
+  return `<!DOCTYPE html>
+<html>
 <head>
   <meta charset="utf-8"/>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    
     body {
       font-family: 'Segoe UI', Roboto, Arial, sans-serif;
       background: transparent;
@@ -134,7 +141,6 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
       overflow: hidden;
       user-select: none;
     }
-    
     .pob-bar {
       background: rgba(26, 26, 26, 0.9);
       border: 1px solid rgba(74, 222, 128, 0.3);
@@ -147,34 +153,10 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
       -webkit-app-region: drag;
       height: 100%;
     }
-    
-    .class-info {
-      flex: 1;
-      min-width: 0;
-      -webkit-app-region: drag;
-    }
-    
-    .class-name {
-      font-size: 11px;
-      font-weight: 600;
-      color: #4ade80;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    
-    .class-details {
-      font-size: 9px;
-      color: rgba(255, 255, 255, 0.5);
-      margin-top: 1px;
-    }
-    
-    .button-group {
-      display: flex;
-      gap: 4px;
-      -webkit-app-region: no-drag;
-    }
-    
+    .class-info { flex: 1; min-width: 0; -webkit-app-region: drag; }
+    .class-name { font-size: 11px; font-weight: 600; color: #4ade80; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .class-details { font-size: 9px; color: rgba(255, 255, 255, 0.5); margin-top: 1px; }
+    .button-group { display: flex; gap: 4px; -webkit-app-region: no-drag; }
     .pob-btn {
       padding: 3px 8px;
       background: rgba(74, 222, 128, 0.1);
@@ -187,16 +169,8 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
       transition: all 0.15s;
       white-space: nowrap;
     }
-    
-    .pob-btn:hover {
-      background: rgba(74, 222, 128, 0.2);
-      border-color: rgba(74, 222, 128, 0.5);
-    }
-    
-    .pob-btn:active {
-      transform: translateY(0);
-    }
-    
+    .pob-btn:hover { background: rgba(74, 222, 128, 0.2); border-color: rgba(74, 222, 128, 0.5); }
+    .pob-btn:active { transform: translateY(0); }
     .close-btn {
       width: 18px;
       height: 18px;
@@ -213,11 +187,7 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
       flex-shrink: 0;
       -webkit-app-region: no-drag;
     }
-    
-    .close-btn:hover {
-      background: rgba(217, 83, 79, 0.2);
-      border-color: rgba(217, 83, 79, 0.5);
-    }
+    .close-btn:hover { background: rgba(217, 83, 79, 0.2); border-color: rgba(217, 83, 79, 0.5); }
   </style>
 </head>
 <body>
@@ -226,42 +196,57 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
       <div class="class-name" id="className">${className}${ascendancy ? ' (' + ascendancy + ')' : ''}</div>
       <div class="class-details">Level ${level} • Act ${currentAct}</div>
     </div>
-    <div class="button-group">
+    <div class="button-group" id="buttonGroup">
       <button class="pob-btn" onclick="openGems()" title="View gem links for current act">💎 Gems</button>
-      <button class="pob-btn" onclick="openTree()" title="View passive tree progression">🌳 Tree</button>
+      ${hasAnyTree ? '<button class="pob-btn" onclick="openTree()" title="View passive tree progression">🌳 Tree</button>' : ''}
+      ${hasAnyGear ? '<button class="pob-btn" onclick="openGear()" title="View gear sets from PoB">⚔️ Gear</button>' : ''}
+      ${hasNotes ? '<button class="pob-btn" onclick="openNotes()" title="View build notes from PoB">📝 Notes</button>' : ''}
     </div>
     <div class="close-btn" onclick="closeBar()">×</div>
   </div>
-  
+
   <script>
     const { ipcRenderer } = require('electron');
-    
+
+    function computeButtons(build) {
+      const hasAnyGear = !!(build.itemSets && build.itemSets.some(set => set && set.items && Object.keys(set.items || {}).length > 0));
+      const hasAnyTree = !!(build.treeSpecs && build.treeSpecs.some(spec => {
+        const a = (spec)?.allocatedNodes;
+        const p = (spec)?.parsedUrl?.nodes;
+        return (Array.isArray(a) && a.length > 0) || (Array.isArray(p) && p.length > 0);
+      }));
+      const hasNotes = !!(build.notes && build.notes.trim().length > 0);
+
+      const parts = [
+        '<button class="pob-btn" onclick="openGems()" title="View gem links for current act">💎 Gems</button>'
+      ];
+      if (hasAnyTree) parts.push('<button class="pob-btn" onclick="openTree()" title="View passive tree progression">🌳 Tree</button>');
+      if (hasAnyGear) parts.push('<button class="pob-btn" onclick="openGear()" title="View gear sets from PoB">⚔️ Gear</button>');
+      if (hasNotes) parts.push('<button class="pob-btn" onclick="openNotes()" title="View build notes from PoB">📝 Notes</button>');
+      return parts.join('');
+    }
+
     // Listen for updates
     ipcRenderer.on('pob-info-update', (event, data) => {
       const { build, currentAct } = data;
       const className = build.className || 'Unknown';
       const ascendancy = build.ascendancyName || '';
       const level = build.level || 1;
-      
-      document.getElementById('className').textContent = 
-        className + (ascendancy ? ' (' + ascendancy + ')' : '');
-      document.querySelector('.class-details').textContent = 
-        \`Level \${level} • Act \${currentAct}\`;
+
+      document.getElementById('className').textContent = className + (ascendancy ? ' (' + ascendancy + ')' : '');
+      document.querySelector('.class-details').textContent = \`Level \${level} • Act \${currentAct}\`;
+
+      // Refresh buttons
+      const group = document.getElementById('buttonGroup');
+      if (group) group.innerHTML = computeButtons(build);
     });
-    
-    function openGems() {
-      ipcRenderer.send('open-pob-gems-window');
-    }
-    
-    function openTree() {
-      ipcRenderer.send('open-pob-tree-window');
-    }
-    
-    function closeBar() {
-      ipcRenderer.send('pob-info-bar-close');
-    }
+
+    function openGems() { ipcRenderer.send('open-pob-gems-window'); }
+    function openTree() { ipcRenderer.send('open-pob-tree-window'); }
+    function openGear() { ipcRenderer.send('open-pob-gear-window'); }
+    function openNotes() { ipcRenderer.send('open-pob-notes-window'); }
+    function closeBar() { ipcRenderer.send('pob-info-bar-close'); }
   </script>
 </body>
-</html>
-  `;
+</html>`;
 }
