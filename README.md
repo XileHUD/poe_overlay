@@ -315,10 +315,19 @@ Leveling-Overlay:
 
 ## 🔧 Building From Source
 
-1. Install dependencies (this folder): `npm install`
-2. Development run (hot reload main + renderer): `npm run dev`
-3. Type check: `npm run typecheck`
-4. Package installer: `npm run dist:unsigned` (or `npm run dist` when codesign configured)
+```bash
+# Install dependencies
+npm install
+
+# Build the application
+npm run build
+
+# Start the overlay
+npm run start
+
+# Package unsigned installer
+npm run dist:unsigned
+```
 
 All required data JSON files reside under `data/poe2/<League>/` inside this repository so no external folders are needed.
 
