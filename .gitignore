@@ -13,6 +13,8 @@ Thumbs.db
 # Local data/config (user)
 /config/
 **/config/
+# But allow source config files that are part of the codebase
+!src/main/config/
 # User data (Electron stores under %APPDATA%/XileHUD/overlay) – not in repo
 # Nothing to ignore here; just a note.
 
