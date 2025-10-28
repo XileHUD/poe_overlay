@@ -2253,9 +2253,12 @@ function handleNextBtn() {
     });
     console.log('[NEXT] Auto-checked first incomplete zone: ' + firstIncompleteZone.zone);
     ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
-    render();
+    // After updating progress, check if the act is now complete and advance if so
+    setTimeout(() => { try { checkActCompletionAndAdvance(); } catch { render(); } }, 50);
   } else {
     console.log('[NEXT] All zones completed');
+    // Nothing left to check in this act; trigger act completion handler to auto-advance
+    setTimeout(() => { try { checkActCompletionAndAdvance(); } catch { render(); } }, 50);
   }
 }
 
