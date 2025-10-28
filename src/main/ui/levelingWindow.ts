@@ -203,6 +203,35 @@ export class LevelingWindow {
       this.window = null;
     });
 
+    // Extra z-order protection: on blur (e.g. user clicks the game), aggressively
+    // re-assert always-on-top and moveTop for this leveling window. This helps
+    // when minimal/ultra modes interact oddly with some fullscreen/borderless games
+    // where the OS can demote our window despite setAlwaysOnTop.
+    try {
+      this.window.on('blur', () => {
+        if (!this.window || this.window.isDestroyed() || !this.window.isVisible()) return;
+
+        // Fire a few nudges over time to try and regain topmost state.
+        const nudge = () => {
+          try {
+            // Reassert high-level topmost
+            this.window?.setAlwaysOnTop(true, 'screen-saver', 1);
+            // If moveTop is available (native window helper), call it
+            if (typeof (this.window as any).moveTop === 'function') {
+              try { (this.window as any).moveTop(); } catch {}
+            }
+          } catch {}
+        };
+
+        // Immediate and delayed nudges
+        setTimeout(nudge, 20);
+        setTimeout(nudge, 120);
+        setTimeout(nudge, 500);
+      });
+    } catch (e) {
+      // Non-fatal
+    }
+
     // Setup IPC handlers
     this.setupIpcHandlers();
   }
