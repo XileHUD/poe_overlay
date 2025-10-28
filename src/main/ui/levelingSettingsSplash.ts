@@ -4,6 +4,7 @@
  */
 
 import { BrowserWindow, ipcMain, screen } from 'electron';
+import { registerOverlayWindow } from './windowZManager.js';
 import type { SettingsService } from '../services/settingsService.js';
 import type { OverlayVersion } from '../../types/overlayVersion.js';
 
@@ -63,14 +64,8 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
   // Track as active settings window
   activeSettingsWindow = window;
 
-  // Keep on top
-  window.setAlwaysOnTop(true, 'screen-saver', 1);
-  
-  window.on('blur', () => {
-    if (!window.isDestroyed()) {
-      window.setAlwaysOnTop(true, 'screen-saver', 1);
-    }
-  });
+  // Register for managed z-order and visibility
+  try { registerOverlayWindow('levelingSettings', window); } catch {}
 
   // Build HTML
   const html = buildLevelingSettingsSplashHtml(currentSettings, overlayVersion, clientTxtPath);
@@ -868,6 +863,15 @@ function buildLevelingSettingsSplashHtml(
   
   <script>
     const { ipcRenderer } = require('electron');
+    // Ensure clicking this window brings it to front above other overlays
+    try {
+      document.addEventListener('mousedown', () => {
+        try { ipcRenderer.send('overlay-window-focus', 'levelingSettings'); } catch {}
+      }, { capture: true });
+      window.addEventListener('focus', () => {
+        try { ipcRenderer.send('overlay-window-focus', 'levelingSettings'); } catch {}
+      });
+    } catch {}
     
     function switchTab(tabName) {
       // Update buttons

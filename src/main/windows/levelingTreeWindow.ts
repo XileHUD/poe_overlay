@@ -6,6 +6,7 @@
  */
 
 import { BrowserWindow, screen, ipcMain } from 'electron';
+import { registerOverlayWindow } from '../ui/windowZManager.js';
 import * as fs from 'fs';
 import * as path from 'path';
 import { app } from 'electron';
@@ -78,6 +79,8 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       display: flex;
       flex-direction: column;
       -webkit-app-region: no-drag;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     #window-container {
@@ -394,6 +397,15 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
 
   <script>
     const { ipcRenderer } = require('electron');
+    // Ensure clicking this window brings it to front above other overlays
+    try {
+      document.addEventListener('mousedown', () => {
+        try { ipcRenderer.send('overlay-window-focus', 'tree'); } catch {}
+      }, { capture: true });
+      window.addEventListener('focus', () => {
+        try { ipcRenderer.send('overlay-window-focus', 'tree'); } catch {}
+      });
+    } catch {}
     
     let treeSvgData = '';
     let treeViewBox = '';
@@ -1260,6 +1272,9 @@ export function createPassiveTreeWindow(): BrowserWindow {
   });
 
   treeWindow.setIgnoreMouseEvents(false);
+
+  // Register with overlay z-order manager
+  try { registerOverlayWindow('tree', treeWindow); } catch {}
 
   const html = buildTreeWindowHtml(ultraMinimal);
   const base64Html = Buffer.from(html, 'utf-8').toString('base64');

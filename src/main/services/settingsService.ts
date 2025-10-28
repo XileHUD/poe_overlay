@@ -249,9 +249,7 @@ export class SettingsService {
     const before = this.settings[key];
     this.settings[key] = updater(this.settings[key]);
     const after = this.settings[key];
-    console.log(`[SettingsService] update(${String(key)}): before=`, before, 'after=', after);
     this.save();
-    console.log(`[SettingsService] saved to ${this.configPath}`);
   }
 
   clear<K extends keyof UserSettings>(key: K): void {

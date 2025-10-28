@@ -19,7 +19,7 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
     :root{--font-size:12px;}
-    html,body{font-family:'Segoe UI',Arial,sans-serif;font-size:var(--font-size);color:#ddd;background:transparent;-webkit-user-select:none;overflow:hidden;width:100%;height:100%;}
+  html,body{font-family:'Segoe UI',Arial,sans-serif;font-size:var(--font-size);color:#ddd;background:transparent;-webkit-user-select:none;user-select:none;overflow:hidden;width:100%;height:100%;}
     
     /* Disable all transitions when applying settings */
     .no-transitions,

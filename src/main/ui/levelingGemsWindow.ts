@@ -1,4 +1,5 @@
 import { BrowserWindow, ipcMain } from 'electron';
+import { registerOverlayWindow, bringToFront } from './windowZManager.js';
 import type { OverlayVersion } from '../../types/overlayVersion.js';
 import type { SettingsService } from '../services/settingsService.js';
 import gemsData from '../../data/leveling-data/gems.json';
@@ -43,10 +44,18 @@ export function openLevelingGemsWindow(options: LevelingGemsWindowOptions): Brow
       contextIsolation: false,
       webSecurity: false,
     },
-    parent: parentWindow,
+    // Important: avoid owned/parent windows so z-order among overlays is free on Windows
+    // Parent windows force a z-order group on Win32 where children cannot rise above other top-level windows
+    // which breaks click-to-front across sibling overlays. We intentionally do NOT set `parent` here.
   });
 
   gemsWindow.setIgnoreMouseEvents(false);
+  // Debounce timers for position/size saves
+  let _moveTimer = null as any;
+  let _resizeTimer = null as any;
+
+  // Register and elevate when shown/focused
+  try { registerOverlayWindow('gems', gemsWindow); } catch {}
 
   // Get current PoB build data and current act
   const pobBuild = (savedSettings as any).pobBuild || null;
@@ -71,29 +80,37 @@ export function openLevelingGemsWindow(options: LevelingGemsWindowOptions): Brow
   // Save position on move
   gemsWindow.on('move', () => {
     if (!gemsWindow || gemsWindow.isDestroyed()) return;
-    const [newX, newY] = gemsWindow.getPosition();
-    settingsService.update(settingsKey, (current: any) => ({
-      ...current,
-      gemsWindow: {
-        ...(current.gemsWindow || {}),
-        x: newX,
-        y: newY,
-      },
-    }));
+    if (_moveTimer) clearTimeout(_moveTimer);
+    _moveTimer = setTimeout(() => {
+      if (!gemsWindow || gemsWindow.isDestroyed()) return;
+      const [newX, newY] = gemsWindow.getPosition();
+      settingsService.update(settingsKey, (current: any) => ({
+        ...current,
+        gemsWindow: {
+          ...(current.gemsWindow || {}),
+          x: newX,
+          y: newY,
+        },
+      }));
+    }, 150);
   });
 
   // Save size on resize
   gemsWindow.on('resize', () => {
     if (!gemsWindow || gemsWindow.isDestroyed()) return;
-    const [newWidth, newHeight] = gemsWindow.getSize();
-    settingsService.update(settingsKey, (current: any) => ({
-      ...current,
-      gemsWindow: {
-        ...(current.gemsWindow || {}),
-        width: newWidth,
-        height: newHeight,
-      },
-    }));
+    if (_resizeTimer) clearTimeout(_resizeTimer);
+    _resizeTimer = setTimeout(() => {
+      if (!gemsWindow || gemsWindow.isDestroyed()) return;
+      const [newWidth, newHeight] = gemsWindow.getSize();
+      settingsService.update(settingsKey, (current: any) => ({
+        ...current,
+        gemsWindow: {
+          ...(current.gemsWindow || {}),
+          width: newWidth,
+          height: newHeight,
+        },
+      }));
+    }, 150);
   });
 
   gemsWindow.on('closed', () => {
@@ -196,6 +213,7 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
       color: var(--text-primary);
       overflow: hidden;
       user-select: none;
+      -webkit-user-select: none;
       display: flex;
       flex-direction: column;
       height: 100vh;
@@ -575,6 +593,15 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
     const { ipcRenderer } = require('electron');
     const path = require('path');
     const fs = require('fs');
+    // Ensure clicking this window brings it to front above other overlays
+    try {
+      document.addEventListener('mousedown', () => {
+        try { ipcRenderer.send('overlay-window-focus', 'gems'); } catch {}
+      }, { capture: true });
+      window.addEventListener('focus', () => {
+        try { ipcRenderer.send('overlay-window-focus', 'gems'); } catch {}
+      });
+    } catch {}
     
     let currentBuild = ${JSON.stringify(pobBuild)};
     let currentAct = ${currentAct};

@@ -140,6 +140,7 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
       color: #fff;
       overflow: hidden;
       user-select: none;
+      -webkit-user-select: none;
     }
     .pob-bar {
       background: rgba(26, 26, 26, 0.9);

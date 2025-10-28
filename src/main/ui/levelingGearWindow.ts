@@ -1,4 +1,5 @@
 import { BrowserWindow, ipcMain } from 'electron';
+import { registerOverlayWindow } from './windowZManager.js';
 import type { OverlayVersion } from '../../types/overlayVersion.js';
 import type { SettingsService } from '../services/settingsService.js';
 import type { ItemSet } from '../../shared/pob/types.js';
@@ -41,10 +42,17 @@ export function openLevelingGearWindow(options: LevelingGearWindowOptions): Brow
       contextIsolation: false,
       webSecurity: false,
     },
-    parent: parentWindow,
+    // Important: do not set `parent` so this overlay remains a top-level window.
+    // Owned windows on Windows are grouped above their owner and cannot freely reorder across groups.
   });
 
   gearWindow.setIgnoreMouseEvents(false);
+  // Debounce timers for position/size saves
+  let _moveTimer = null as any;
+  let _resizeTimer = null as any;
+
+  // Register and participate in managed z-order
+  try { registerOverlayWindow('gear', gearWindow); } catch {}
 
   // Get current PoB build gear
   const pobBuild = (savedSettings as any).pobBuild || null;
@@ -60,29 +68,37 @@ export function openLevelingGearWindow(options: LevelingGearWindowOptions): Brow
   // Save position on move
   gearWindow.on('move', () => {
     if (!gearWindow || gearWindow.isDestroyed()) return;
-    const [newX, newY] = gearWindow.getPosition();
-    settingsService.update(settingsKey, (current: any) => ({
-      ...current,
-      gearWindow: {
-        ...(current.gearWindow || {}),
-        x: newX,
-        y: newY,
-      },
-    }));
+    if (_moveTimer) clearTimeout(_moveTimer);
+    _moveTimer = setTimeout(() => {
+      if (!gearWindow || gearWindow.isDestroyed()) return;
+      const [newX, newY] = gearWindow.getPosition();
+      settingsService.update(settingsKey, (current: any) => ({
+        ...current,
+        gearWindow: {
+          ...(current.gearWindow || {}),
+          x: newX,
+          y: newY,
+        },
+      }));
+    }, 150);
   });
 
   // Save size on resize
   gearWindow.on('resize', () => {
     if (!gearWindow || gearWindow.isDestroyed()) return;
-    const [newWidth, newHeight] = gearWindow.getSize();
-    settingsService.update(settingsKey, (current: any) => ({
-      ...current,
-      gearWindow: {
-        ...(current.gearWindow || {}),
-        width: newWidth,
-        height: newHeight,
-      },
-    }));
+    if (_resizeTimer) clearTimeout(_resizeTimer);
+    _resizeTimer = setTimeout(() => {
+      if (!gearWindow || gearWindow.isDestroyed()) return;
+      const [newWidth, newHeight] = gearWindow.getSize();
+      settingsService.update(settingsKey, (current: any) => ({
+        ...current,
+        gearWindow: {
+          ...(current.gearWindow || {}),
+          width: newWidth,
+          height: newHeight,
+        },
+      }));
+    }, 150);
   });
 
   gearWindow.on('closed', () => {
@@ -232,6 +248,7 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
       color: var(--text-primary);
       overflow: hidden;
       user-select: none;
+      -webkit-user-select: none;
       display: flex;
       flex-direction: column;
       height: 100vh;
@@ -682,6 +699,15 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
   
   <script>
     const { ipcRenderer } = require('electron');
+    // Ensure clicking this window brings it to front above other overlays
+    try {
+      document.addEventListener('mousedown', () => {
+        try { ipcRenderer.send('overlay-window-focus', 'gear'); } catch {}
+      }, { capture: true });
+      window.addEventListener('focus', () => {
+        try { ipcRenderer.send('overlay-window-focus', 'gear'); } catch {}
+      });
+    } catch {}
     
     let isUltraMinimal = ${ultraMinimal};
     let allItemSets = ${JSON.stringify(itemSets)};

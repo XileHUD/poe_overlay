@@ -1,4 +1,5 @@
 import { BrowserWindow, ipcMain } from 'electron';
+import { registerOverlayWindow } from './windowZManager.js';
 import type { OverlayVersion } from '../../types/overlayVersion.js';
 import type { SettingsService } from '../services/settingsService.js';
 
@@ -40,10 +41,16 @@ export function openLevelingNotesWindow(options: LevelingNotesWindowOptions): Br
       contextIsolation: false,
       webSecurity: false,
     },
-    parent: parentWindow,
+    // Avoid `parent` relationship to keep this as a top-level window for proper z-ordering on Windows.
   });
 
   notesWindow.setIgnoreMouseEvents(false);
+  // Debounce timers for position/size saves
+  let _moveTimer = null as any;
+  let _resizeTimer = null as any;
+
+  // Register for managed z-order
+  try { registerOverlayWindow('notes', notesWindow); } catch {}
 
   // Get current PoB build notes
   const pobBuild = (savedSettings as any).pobBuild || null;
@@ -55,29 +62,37 @@ export function openLevelingNotesWindow(options: LevelingNotesWindowOptions): Br
   // Save position on move
   notesWindow.on('move', () => {
     if (!notesWindow || notesWindow.isDestroyed()) return;
-    const [newX, newY] = notesWindow.getPosition();
-    settingsService.update(settingsKey, (current: any) => ({
-      ...current,
-      notesWindow: {
-        ...(current.notesWindow || {}),
-        x: newX,
-        y: newY,
-      },
-    }));
+    if (_moveTimer) clearTimeout(_moveTimer);
+    _moveTimer = setTimeout(() => {
+      if (!notesWindow || notesWindow.isDestroyed()) return;
+      const [newX, newY] = notesWindow.getPosition();
+      settingsService.update(settingsKey, (current: any) => ({
+        ...current,
+        notesWindow: {
+          ...(current.notesWindow || {}),
+          x: newX,
+          y: newY,
+        },
+      }));
+    }, 150);
   });
 
   // Save size on resize
   notesWindow.on('resize', () => {
     if (!notesWindow || notesWindow.isDestroyed()) return;
-    const [newWidth, newHeight] = notesWindow.getSize();
-    settingsService.update(settingsKey, (current: any) => ({
-      ...current,
-      notesWindow: {
-        ...(current.notesWindow || {}),
-        width: newWidth,
-        height: newHeight,
-      },
-    }));
+    if (_resizeTimer) clearTimeout(_resizeTimer);
+    _resizeTimer = setTimeout(() => {
+      if (!notesWindow || notesWindow.isDestroyed()) return;
+      const [newWidth, newHeight] = notesWindow.getSize();
+      settingsService.update(settingsKey, (current: any) => ({
+        ...current,
+        notesWindow: {
+          ...(current.notesWindow || {}),
+          width: newWidth,
+          height: newHeight,
+        },
+      }));
+    }, 150);
   });
 
   notesWindow.on('closed', () => {
@@ -149,6 +164,7 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
       color: var(--text-primary);
       overflow: hidden;
       user-select: none;
+      -webkit-user-select: none;
       display: flex;
       flex-direction: column;
       height: 100vh;
@@ -258,7 +274,8 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
       white-space: pre-wrap;
       word-wrap: break-word;
       font-family: 'Consolas', 'Monaco', monospace;
-      user-select: text;
+      user-select: none;
+      -webkit-user-select: none;
     }
     
     .no-notes {
@@ -350,6 +367,15 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
   
   <script>
     const { ipcRenderer } = require('electron');
+    // Ensure clicking this window brings it to front above other overlays
+    try {
+      document.addEventListener('mousedown', () => {
+        try { ipcRenderer.send('overlay-window-focus', 'notes'); } catch {}
+      }, { capture: true });
+      window.addEventListener('focus', () => {
+        try { ipcRenderer.send('overlay-window-focus', 'notes'); } catch {}
+      });
+    } catch {}
     
     let isUltraMinimal = ${ultraMinimal};
     
