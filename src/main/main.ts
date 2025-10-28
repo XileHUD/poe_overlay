@@ -3641,7 +3641,47 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
     // (Removed legacy direct network helpers)
 }
 
-// Start the application
-new OverlayApp();
+// Single instance lock: only allow one instance of the app to run
+// If user tries to run the app again, focus the existing instance instead
+const gotTheLock = app.requestSingleInstanceLock();
+
+if (!gotTheLock) {
+    // Another instance is already running, quit this one
+    console.log('[SingleInstance] Another instance is already running. Quitting...');
+    app.quit();
+} else {
+    // This is the first instance
+    app.on('second-instance', (event, commandLine, workingDirectory) => {
+        console.log('[SingleInstance] Second instance detected. Focusing existing overlay...');
+        
+        // Find the OverlayApp instance and show its windows
+        // Since OverlayApp is instantiated below, we need to handle this via a global reference
+        if ((global as any).__overlayAppInstance) {
+            const overlayApp = (global as any).__overlayAppInstance;
+            
+            // Show the overlay window if it exists
+            if (overlayApp.overlayWindow && !overlayApp.overlayWindow.isDestroyed()) {
+                overlayApp.overlayWindow.show();
+                overlayApp.overlayWindow.focus();
+                overlayApp.isOverlayVisible = true;
+            }
+            
+            // If leveling window exists, show it
+            if (overlayApp.levelingWindow) {
+                try {
+                    overlayApp.levelingWindow.show();
+                } catch (e) {
+                    console.warn('[SingleInstance] Error showing leveling window:', e);
+                }
+            }
+        }
+    });
+
+    // Start the application
+    const overlayApp = new OverlayApp();
+    
+    // Store global reference for second-instance handler
+    (global as any).__overlayAppInstance = overlayApp;
+}
 
 // Helpers outside the class for path resolution might also be methods on the class.
