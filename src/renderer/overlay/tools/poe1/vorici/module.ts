@@ -666,8 +666,9 @@ function updateOutputs(): void {
     return;
   }
   
-  if (totalColors !== state.sockets) {
-    showError(`Color sum (${totalColors}) must match total sockets (${state.sockets}).`);
+  // Allow wildcards: totalColors can be less than sockets (remaining sockets are wildcards)
+  if (totalColors > state.sockets) {
+    showError(`Color sum (${totalColors}) cannot exceed total sockets (${state.sockets}).`);
     if (elements.probSummary) elements.probSummary.textContent = 'Chance: N/A';
     if (elements.craftTable) elements.craftTable.innerHTML = '';
     return;
