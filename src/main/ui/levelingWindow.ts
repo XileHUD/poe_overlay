@@ -3,7 +3,7 @@ import { SettingsService } from '../services/settingsService.js';
 import { buildLevelingPopoutHtml } from '../popouts/levelingPopoutTemplate.js';
 import { registerOverlayWindow, bringToFront } from './windowZManager.js';
 import { openLevelingSettingsSplash } from './levelingSettingsSplash.js';
-import { openPobInfoBar, closePobInfoBar, updatePobInfoBar } from './pobInfoBar.js';
+import { openPobInfoBar, closePobInfoBar, updatePobInfoBar, isPobInfoBarOpen } from './pobInfoBar.js';
 import { openLevelingGemsWindow, updateLevelingGemsWindow, updateLevelingGemsWindowBuild, updateLevelingGemsWindowCharacterLevel, closeLevelingGemsWindow, isGemsWindowOpen } from './levelingGemsWindow.js';
 import { openLevelingNotesWindow, updateNotesWindow, closeNotesWindow, isNotesWindowOpen } from './levelingNotesWindow.js';
 import { openLevelingGearWindow, updateGearWindow, updateGearWindowContext, closeGearWindow, isGearWindowOpen } from './levelingGearWindow.js';
@@ -1876,6 +1876,54 @@ export class LevelingWindow {
         console.log('[LevelingWindow] Registered notes hotkey:', hotkeys.notes);
       } catch (e) {
         console.error('[LevelingWindow] Failed to register notes hotkey:', hotkeys.notes, e);
+      }
+    }
+
+    // Register PoB Info Bar toggle hotkey
+    if ((hotkeys as any).pobBar) {
+      const accel = (hotkeys as any).pobBar as string;
+      try {
+        globalShortcut.register(accel, () => {
+          const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+          const pobBuild = (currentSettings as any).pobBuild || null;
+          if (isPobInfoBarOpen()) {
+            closePobInfoBar();
+            // Reassert leveling overlay order without stealing focus
+            try { bringToFront('leveling'); } catch {}
+            console.log('[LevelingWindow] PoB Info Bar closed via hotkey');
+          } else if (pobBuild) {
+            const currentActIndex = (currentSettings as any)?.currentActIndex ?? 0;
+            openPobInfoBar({
+              settingsService: this.settingsService,
+              overlayVersion: this.overlayVersion,
+              pobBuild,
+              currentAct: currentActIndex + 1,
+            });
+            console.log('[LevelingWindow] PoB Info Bar opened via hotkey');
+          } else {
+            console.log('[LevelingWindow] PoB Info Bar hotkey pressed but no build is loaded');
+          }
+        });
+        this.registeredHotkeys.push(accel);
+        console.log('[LevelingWindow] Registered PoB Info Bar hotkey:', accel);
+      } catch (e) {
+        console.error('[LevelingWindow] Failed to register PoB Info Bar hotkey:', accel, e);
+      }
+    }
+
+    // Register Leveling window toggle hotkey
+    if ((hotkeys as any).leveling) {
+      const accel = (hotkeys as any).leveling as string;
+      try {
+        globalShortcut.register(accel, () => {
+          // Toggle the main leveling window visibility
+          this.toggle();
+          console.log('[LevelingWindow] Leveling window toggled via hotkey');
+        });
+        this.registeredHotkeys.push(accel);
+        console.log('[LevelingWindow] Registered Leveling window hotkey:', accel);
+      } catch (e) {
+        console.error('[LevelingWindow] Failed to register Leveling window hotkey:', accel, e);
       }
     }
   }

@@ -94,6 +94,10 @@ export interface UserSettings {
       next?: string;
       tree?: string;
       gems?: string;
+      gear?: string;
+      notes?: string;
+      pobBar?: string; // Toggle the PoB Info Bar
+      leveling?: string; // Toggle the main leveling window
     };
   };
   // Game-specific leveling window state (POE2)
@@ -156,6 +160,10 @@ export interface UserSettings {
       next?: string;
       tree?: string;
       gems?: string;
+      gear?: string;
+      notes?: string;
+      pobBar?: string; // Toggle the PoB Info Bar
+      leveling?: string; // Toggle the main leveling window
     };
   };
   hotkey?: {

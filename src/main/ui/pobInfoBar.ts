@@ -17,6 +17,10 @@ interface PobInfoBarParams {
 
 let activePobInfoBar: BrowserWindow | null = null;
 
+export function isPobInfoBarOpen(): boolean {
+  return !!activePobInfoBar && !activePobInfoBar.isDestroyed() && activePobInfoBar.isVisible();
+}
+
 export function openPobInfoBar(params: PobInfoBarParams): void {
   // If already open, update it
   if (activePobInfoBar && !activePobInfoBar.isDestroyed()) {

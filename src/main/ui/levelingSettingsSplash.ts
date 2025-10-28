@@ -114,6 +114,8 @@ function buildLevelingSettingsSplashHtml(
   const hotkeyGems = hotkeys.gems || 'Not Set';
   const hotkeyGear = hotkeys.gear || 'Not Set';
   const hotkeyNotes = hotkeys.notes || 'Not Set';
+  const hotkeyPobBar = hotkeys.pobBar || 'Not Set';
+  const hotkeyLeveling = hotkeys.leveling || 'Not Set';
   
   return `
 <!DOCTYPE html>
@@ -711,6 +713,31 @@ function buildLevelingSettingsSplashHtml(
         </div>
       </div>
       
+      <div class="setting-group">
+        <h3 class="setting-group-title">Overlay Hotkeys</h3>
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Toggle Build Info Bar</div>
+            <div class="setting-description">Open/close the PoB build info bar</div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div class="hotkey-input" id="hotkey-pobBar" onclick="captureHotkey('pobBar')">${hotkeyPobBar}</div>
+            <button class="hotkey-clear" onclick="clearHotkey('pobBar')">Clear</button>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Toggle Leveling Window</div>
+            <div class="setting-description">Show/hide the main leveling overlay window</div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div class="hotkey-input" id="hotkey-leveling" onclick="captureHotkey('leveling')">${hotkeyLeveling}</div>
+            <button class="hotkey-clear" onclick="clearHotkey('leveling')">Clear</button>
+          </div>
+        </div>
+      </div>
+
       <div class="info-box">
         <strong>How to set hotkeys:</strong> Click on a hotkey field and press your desired key combination.
         Supports modifiers like Ctrl, Alt, Shift. Examples: F1, Ctrl+N, Alt+G, Shift+T
