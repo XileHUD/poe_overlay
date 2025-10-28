@@ -655,10 +655,32 @@ export class LevelingWindow {
 
     // Handle settings updates from settings splash
     ipcMain.on('leveling-settings-update', (event, updates: any) => {
-      this.settingsService.update(this.getLevelingWindowKey(), (current) => ({
-        ...current,
-        ...updates
-      }));
+      try { console.log('[LevelingWindow] settings-update incoming:', updates); } catch {}
+      this.settingsService.update(this.getLevelingWindowKey(), (current: any) => {
+        const updated: any = { ...(current || {}) };
+        
+        // UI settings should be nested under uiSettings
+        const uiSettingKeys = ['opacity', 'fontSize', 'zoomLevel', 'visibleSteps', 'groupByZone', 'showHints', 'showOptional', 'showTreeNodeDetails'];
+        const uiUpdates: any = {};
+        const otherUpdates: any = {};
+        
+        for (const [key, value] of Object.entries(updates)) {
+          if (uiSettingKeys.includes(key)) {
+            uiUpdates[key] = value;
+          } else {
+            otherUpdates[key] = value;
+          }
+        }
+        
+        // Merge UI settings properly
+        if (Object.keys(uiUpdates).length > 0) {
+          updated.uiSettings = { ...((current || {}).uiSettings || {}), ...uiUpdates };
+        }
+        
+        const finalSettings = { ...updated, ...otherUpdates };
+        try { console.log('[LevelingWindow] settings-update merged:', finalSettings?.uiSettings); } catch {}
+        return finalSettings;
+      });
       
       // Notify renderer of setting changes
       if (this.window && !this.window.isDestroyed()) {

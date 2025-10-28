@@ -83,6 +83,7 @@ export interface UserSettings {
       showHints?: boolean;
       showOptional?: boolean;
       groupByZone?: boolean;
+      showTreeNodeDetails?: boolean;
     };
     hotkeys?: {
       prev?: string;
@@ -140,6 +141,7 @@ export interface UserSettings {
       showHints?: boolean;
       showOptional?: boolean;
       groupByZone?: boolean;
+      showTreeNodeDetails?: boolean;
     };
     hotkeys?: {
       prev?: string;
@@ -184,6 +186,7 @@ export interface UserSettings {
   clientTxtDetectionAttemptedPoe2?: boolean; // Flag for POE2 auto-detection attempt
   clientTxtNotificationShownPoe1?: boolean; // Flag for POE1 "not found" notification
   clientTxtNotificationShownPoe2?: boolean; // Flag for POE2 "not found" notification
+  showTreeNodeDetailsOnHover?: boolean; // Show node name and stats on hover in passive tree window (default: false)
   // Legacy settings (kept for migration)
   clientTxtPath?: string;
   clientTxtAutoDetected?: boolean;
@@ -235,8 +238,12 @@ export class SettingsService {
   }
 
   update<K extends keyof UserSettings>(key: K, updater: (current: UserSettings[K]) => UserSettings[K]): void {
+    const before = this.settings[key];
     this.settings[key] = updater(this.settings[key]);
+    const after = this.settings[key];
+    console.log(`[SettingsService] update(${String(key)}): before=`, before, 'after=', after);
     this.save();
+    console.log(`[SettingsService] saved to ${this.configPath}`);
   }
 
   clear<K extends keyof UserSettings>(key: K): void {

@@ -28,6 +28,8 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
   const levelingKey = overlayVersion === 'poe1' ? 'levelingWindowPoe1' : 'levelingWindowPoe2';
   const currentSettings = settingsService.get(levelingKey) || {};
   
+  console.log(`[LevelingSettingsSplash] Opening settings for ${levelingKey}, uiSettings:`, currentSettings.uiSettings);
+  
   // Get client.txt path separately (stored at root level)
   const clientTxtPathKey = overlayVersion === 'poe1' ? 'clientTxtPathPoe1' : 'clientTxtPathPoe2';
   const clientTxtPath = settingsService.get(clientTxtPathKey) || 'Not configured';
@@ -101,6 +103,7 @@ function buildLevelingSettingsSplashHtml(
   const showHints = currentSettings.uiSettings?.showHints ?? true;
   const showOptional = currentSettings.uiSettings?.showOptional ?? true;
   const autoDetectZones = currentSettings.uiSettings?.autoDetectZones ?? true;
+  const showTreeNodeDetails = currentSettings.uiSettings?.showTreeNodeDetails ?? false;
   const opacity = currentSettings.uiSettings?.opacity ?? 96;
   const fontSize = currentSettings.uiSettings?.fontSize ?? 12;
   const zoomLevel = currentSettings.uiSettings?.zoomLevel ?? 100;
@@ -613,6 +616,16 @@ function buildLevelingSettingsSplashHtml(
             <div class="toggle-slider"></div>
           </div>
         </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Show Tree Node Details on Hover</div>
+            <div class="setting-description">Display node name and stats when hovering over passive tree nodes</div>
+          </div>
+          <div class="toggle-switch ${showTreeNodeDetails ? 'active' : ''}" onclick="toggleSetting(this, 'showTreeNodeDetails')">
+            <div class="toggle-slider"></div>
+          </div>
+        </div>
       </div>
     </div>
     
@@ -899,6 +912,16 @@ function buildLevelingSettingsSplashHtml(
       _pendingUpdates[key] = value;
       _scheduleSend();
     }
+
+    // Ensure any pending updates are flushed when the window is closed or hidden
+    window.addEventListener('beforeunload', () => {
+      try { _flushPending(); } catch { /* no-op */ }
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') {
+        try { _flushPending(); } catch { /* no-op */ }
+      }
+    });
 
     // Reset the Display tab sliders to sensible defaults and apply immediately
     function resetDisplaySettings() {

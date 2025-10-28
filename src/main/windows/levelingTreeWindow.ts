@@ -437,6 +437,9 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       populateSelector();
       console.log('[Tree Window] Calling renderTree...');
       renderTree();
+      
+      // Setup tooltips after tree data is loaded
+      setupNodeTooltips();
     });
     
     // Helper to parse level range from spec title (same logic as gems window)
@@ -1017,6 +1020,120 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       zoomViewBoxToPoint(svgElement, mouseX, mouseY, scaleFactor);
     });
 
+    // Setup node hover tooltips if setting is enabled
+    async function setupNodeTooltips() {
+      try {
+        const { ipcRenderer } = require('electron');
+        
+        // Get the setting from leveling window UI settings
+        // Use local variable (not on window) and default to poe1
+        const overlayVersion = (typeof currentGameVersion !== 'undefined' && currentGameVersion) ? currentGameVersion : 'poe1';
+        const levelingKey = overlayVersion === 'poe1' ? 'levelingWindowPoe1' : 'levelingWindowPoe2';
+        const levelingSettings = await ipcRenderer.invoke('get-setting', levelingKey);
+        const showTooltips = levelingSettings?.uiSettings?.showTreeNodeDetails || false;
+        
+        console.log('[Tree] Overlay version:', overlayVersion);
+        console.log('[Tree] Leveling settings:', levelingSettings);
+        console.log('[Tree] Show tooltips setting:', showTooltips);
+        
+        if (!showTooltips) {
+          console.log('[Tree] Node tooltips disabled');
+          return;
+        }
+        
+        console.log('[Tree] Setting up node tooltips...');
+        
+        // Create tooltip element
+        const tooltip = document.createElement('div');
+        tooltip.id = 'node-tooltip';
+        tooltip.style.cssText = \`
+          position: fixed;
+          background: rgba(0, 0, 0, 0.95);
+          color: white;
+          padding: 12px 16px;
+          border-radius: 6px;
+          font-size: 13px;
+          line-height: 1.6;
+          pointer-events: none;
+          z-index: 100000;
+          display: none;
+          max-width: 350px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        \`;
+        document.body.appendChild(tooltip);
+        
+        // Get current tree data (use local variable, not window)
+        const treeData = (typeof currentTreeData !== 'undefined') ? currentTreeData : null;
+        if (!treeData || !treeData.graphs) {
+          console.warn('[Tree] No tree data available for tooltips');
+          return;
+        }
+        
+        // Build a lookup map of all nodes from all graphs
+        const nodeLookup = {};
+        treeData.graphs.forEach(graph => {
+          if (graph.nodes) {
+            Object.entries(graph.nodes).forEach(([nodeId, nodeData]) => {
+              nodeLookup[nodeId] = nodeData;
+            });
+          }
+        });
+        
+        console.log('[Tree] Built node lookup with', Object.keys(nodeLookup).length, 'nodes');
+        
+        // Add hover listeners to all node circles in the SVG
+        document.addEventListener('mouseover', (e) => {
+          const target = e.target;
+          const tag = (target && target.tagName ? String(target.tagName) : '').toLowerCase();
+          const elemId = (target && target.id) ? String(target.id) : '';
+          if (tag === 'circle' && elemId && elemId.startsWith('n')) {
+            const nodeId = elemId.substring(1); // Remove 'n' prefix
+            const nodeData = nodeLookup[nodeId];
+            
+            if (nodeData) {
+              const nodeName = nodeData.text || 'Unknown Node';
+              const stats = nodeData.stats || [];
+              
+              let tooltipHTML = \`<div style="font-weight: 600; margin-bottom: 8px; color: #4a9eff;">\${nodeName}</div>\`;
+              if (stats.length > 0) {
+                tooltipHTML += \`<div style="color: #b0b0b0; font-size: 12px;">\`;
+                stats.forEach(stat => {
+                  tooltipHTML += \`<div style="margin: 2px 0;">• \${stat}</div>\`;
+                });
+                tooltipHTML += \`</div>\`;
+              }
+              
+              tooltip.innerHTML = tooltipHTML;
+              tooltip.style.display = 'block';
+              
+              // Position tooltip near mouse
+              const updateTooltipPosition = (event) => {
+                tooltip.style.left = (event.clientX + 15) + 'px';
+                tooltip.style.top = (event.clientY + 15) + 'px';
+              };
+              
+              updateTooltipPosition(e);
+              
+              const mouseMoveHandler = (event) => updateTooltipPosition(event);
+              const mouseOutHandler = () => {
+                tooltip.style.display = 'none';
+                document.removeEventListener('mousemove', mouseMoveHandler);
+                if (target && target.removeEventListener) target.removeEventListener('mouseout', mouseOutHandler);
+              };
+              
+              document.addEventListener('mousemove', mouseMoveHandler);
+              if (target && target.addEventListener) target.addEventListener('mouseout', mouseOutHandler);
+            }
+          }
+        });
+        
+        console.log('[Tree] Node tooltips enabled');
+      } catch (e) {
+        console.error('[Tree] Failed to setup tooltips:', e);
+      }
+    }
+
     console.log('[Tree Window] Ready');
   </script>
 </body>
@@ -1062,6 +1179,17 @@ export function createPassiveTreeWindow(): BrowserWindow {
     const cleanMessage = message.split('(data:text/html')[0].trim();
     if (cleanMessage) {
       console.log('[Tree Window console][' + level + '] ' + cleanMessage);
+    }
+  });
+
+  // Enable F12 to open DevTools for debugging
+  treeWindow.webContents.on('before-input-event', (event, input) => {
+    if (input.key === 'F12' && input.type === 'keyDown' && treeWindow) {
+      if (treeWindow.webContents.isDevToolsOpened()) {
+        treeWindow.webContents.closeDevTools();
+      } else {
+        treeWindow.webContents.openDevTools({ mode: 'detach' });
+      }
     }
   });
 

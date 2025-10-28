@@ -454,6 +454,7 @@ let state = {
   showHints: true,
   showOptional: true,
   autoDetectZones: true,
+  showTreeNodeDetails: false,
   opacity: 96,
   fontSize: 12,
   zoom: 100,
@@ -750,7 +751,8 @@ function saveState() {
     visibleSteps: state.visibleSteps,
     showHints: state.showHints,
     showOptional: state.showOptional,
-    groupByZone: state.groupByZone
+    groupByZone: state.groupByZone,
+    showTreeNodeDetails: state.showTreeNodeDetails
   });
 }
 
@@ -1645,6 +1647,7 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
     if (result.settings.showHints !== undefined) state.showHints = result.settings.showHints;
     if (result.settings.showOptional !== undefined) state.showOptional = result.settings.showOptional;
     if (result.settings.groupByZone !== undefined) state.groupByZone = result.settings.groupByZone;
+    if (result.settings.showTreeNodeDetails !== undefined) state.showTreeNodeDetails = result.settings.showTreeNodeDetails;
     console.log('Loaded UI settings:', result.settings);
   }
   
@@ -1673,6 +1676,7 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
     if (updates.showHints !== undefined) state.showHints = updates.showHints;
     if (updates.showOptional !== undefined) state.showOptional = updates.showOptional;
     if (updates.groupByZone !== undefined) state.groupByZone = updates.groupByZone;
+    if (updates.showTreeNodeDetails !== undefined) state.showTreeNodeDetails = updates.showTreeNodeDetails;
     if (updates.autoDetectZones !== undefined) state.autoDetectZones = updates.autoDetectZones;
     if (updates.wideMode !== undefined) {
       state.mode = updates.wideMode ? 'wide' : 'tall';
