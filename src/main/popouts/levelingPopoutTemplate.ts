@@ -187,7 +187,11 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     .list.wide{flex-direction:row;overflow-x:auto;overflow-y:hidden;gap:12px;align-items:flex-start;}
     .list.wide .leveling-group{margin-bottom:0;min-width:320px;max-width:320px;flex-shrink:0;display:flex;flex-direction:column;height:fit-content;}
     .list.wide .leveling-step{margin-bottom:0;min-width:320px;max-width:320px;flex-shrink:0;height:fit-content;}
-  .footer{display:none!important;}
+  /* Footer bar (visible in normal mode; hidden in minimal/ultra via mode rules) */
+  .footer{display:flex;align-items:center;justify-content:space-between;padding:4px 8px;background:rgba(26,26,26,0.85);border-top:1px solid rgba(255,255,255,0.08);-webkit-app-region:drag;gap:8px;}
+  .footer-actions{-webkit-app-region:no-drag;display:flex;align-items:center;gap:6px;}
+  #updateBadge{display:none;background:rgba(254,192,118,0.9);border:1px solid rgba(254,192,118,1);color:#111;border-radius:4px;padding:3px 8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2px;cursor:pointer;}
+  #updateBadge:hover{filter:brightness(1.08);}
   .leveling-group{margin-bottom:12px;background:rgba(74,222,128,0.03);border:1px solid rgba(74,222,128,0.15);border-left:3px solid rgba(74,222,128,0.4);border-radius:8px;padding:12px;transition:all 0.2s;overflow:visible;box-sizing:border-box;position:relative;}
     .leveling-group.current{background:rgba(74,222,128,0.08);border-color:rgba(74,222,128,0.3);border-left-color:rgba(74,222,128,0.8);}
     .leveling-group:hover{background:rgba(74,222,128,0.05);border-color:rgba(74,222,128,0.2);}
@@ -370,6 +374,16 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     </div>
   </div>
   <div class='list' id='stepsList'></div>
+  
+  <!-- Footer with update badge -->
+  <div class='footer' id='footer'>
+    <div style='display:flex;align-items:center;gap:8px;'>
+      <!-- Left side can hold tabs/labels later if needed -->
+    </div>
+    <div class='footer-actions'>
+      <button id='updateBadge' title='New update available'>New Update</button>
+    </div>
+  </div>
   
   <!-- History Modal -->
   <div class='history-modal-overlay' id='historyModal'>
@@ -2325,6 +2339,59 @@ ipcRenderer.on('hotkey-action', (event, action) => {
     }
   }
 });
+
+// --- Update badge wiring (mirrors main overlay) ---
+try {
+  const UPDATE_RELEASE_URL = 'https://github.com/XileHUD/poe_overlay/releases/latest';
+  const updateBadgeBtn = document.getElementById('updateBadge');
+  let startupUpdateCheckTriggered = false;
+
+  function showUpdateBadge(info) {
+    if (!updateBadgeBtn) return;
+    updateBadgeBtn.style.display = 'inline-flex';
+  if (updateBadgeBtn) updateBadgeBtn.dataset.version = info?.version ? String(info.version) : '';
+    const normalized = info?.version ? String(info.version).replace(/^v/i, '') : '';
+    const message = info?.message || 'A new update is available. Click to open the latest release.';
+  if (updateBadgeBtn) updateBadgeBtn.title = normalized ? (message + "\\n(v" + normalized + ")") : message;
+  }
+
+  function hideUpdateBadge() {
+    if (!updateBadgeBtn) return;
+    updateBadgeBtn.style.display = 'none';
+  try { delete updateBadgeBtn.dataset.version; } catch {}
+  updateBadgeBtn.title = '';
+  }
+
+  async function triggerStartupUpdateCheck() {
+    if (startupUpdateCheckTriggered) return;
+    startupUpdateCheckTriggered = true;
+    try {
+      const result = await ipcRenderer.invoke('check-updates');
+      if (result && typeof result === 'object' && result.available) {
+        showUpdateBadge(result);
+      } else {
+        hideUpdateBadge();
+      }
+    } catch {
+      hideUpdateBadge();
+    }
+  }
+
+  if (updateBadgeBtn) {
+    updateBadgeBtn.addEventListener('click', () => {
+      try {
+        ipcRenderer.send('open-releases-page');
+      } catch {
+        try { window.open(UPDATE_RELEASE_URL, '_blank', 'noopener'); } catch {}
+      }
+    });
+  }
+
+  // Delay the update check slightly after initial render
+  setTimeout(() => { try { triggerStartupUpdateCheck(); } catch {} }, 1200);
+} catch (e) {
+  console.warn('[Leveling] Update badge wiring failed:', e);
+}
 </script>
 </body>
 </html>`;
