@@ -614,6 +614,37 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       const currentNodes = new Set(currentSpec.parsedUrl?.nodes || []);
       const previousNodes = new Set(previousSpec?.parsedUrl?.nodes || []);
 
+      // Track which nodes are in ascendancy graphs for special styling
+      const ascendancyNodes = new Set();
+      let activeAscendancyName = null;
+      
+      // Add ascendancy start node if we have an ascendancy selected
+      // This node is implicit and not included in the PoB node list, but needs to be colored
+      if (currentSpec.parsedUrl?.ascendancyId && currentTreeData && currentTreeData.ascendancies) {
+        // Find the ascendancy by ID (ascendancy IDs in PoB are numeric, but our tree data uses string keys)
+        for (const [ascKey, ascData] of Object.entries(currentTreeData.ascendancies)) {
+          // Match by index or by checking if we have nodes allocated in that ascendancy graph
+          const ascGraph = currentTreeData.graphs[ascData.graphIndex];
+          if (ascGraph && ascGraph.nodes) {
+            // Check if any of our current nodes are in this ascendancy graph
+            const hasNodesInThisAsc = [...currentNodes].some(nodeId => ascGraph.nodes[nodeId]);
+            if (hasNodesInThisAsc) {
+              const ascendancyStartNodeId = ascData.startNodeId;
+              activeAscendancyName = ascKey;
+              console.log('[Tree] Found ascendancy start node:', ascendancyStartNodeId, 'for', ascKey);
+              currentNodes.add(ascendancyStartNodeId);
+              
+              // Mark all nodes in this ascendancy graph for special styling
+              for (const nodeId of Object.keys(ascGraph.nodes)) {
+                ascendancyNodes.add(nodeId);
+              }
+              ascendancyNodes.add(ascendancyStartNodeId);
+              break;
+            }
+          }
+        }
+      }
+
       const nodesActive = [...previousNodes].filter(id => currentNodes.has(id));
       const nodesAdded = [...currentNodes].filter(id => !previousNodes.has(id));
       const nodesRemoved = [...previousNodes].filter(id => !currentNodes.has(id));
@@ -624,9 +655,22 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       }
 
       // Generate CSS for node highlighting
-      const activeStyles = nodesActive.map(id => \`#n\${id}\`).join(', ');
-      const addedStyles = nodesAdded.map(id => \`#n\${id}\`).join(', ');
-      const removedStyles = nodesRemoved.map(id => \`#n\${id}\`).join(', ');
+      // Separate ascendancy nodes from regular nodes for different styling
+      const activeAscNodes = nodesActive.filter(id => ascendancyNodes.has(id));
+      const addedAscNodes = nodesAdded.filter(id => ascendancyNodes.has(id));
+      const removedAscNodes = nodesRemoved.filter(id => ascendancyNodes.has(id));
+      
+      const activeRegularNodes = nodesActive.filter(id => !ascendancyNodes.has(id));
+      const addedRegularNodes = nodesAdded.filter(id => !ascendancyNodes.has(id));
+      const removedRegularNodes = nodesRemoved.filter(id => !ascendancyNodes.has(id));
+      
+      const activeStyles = activeRegularNodes.map(id => \`#n\${id}\`).join(', ');
+      const addedStyles = addedRegularNodes.map(id => \`#n\${id}\`).join(', ');
+      const removedStyles = removedRegularNodes.map(id => \`#n\${id}\`).join(', ');
+      
+      const activeAscStyles = activeAscNodes.map(id => \`#n\${id}\`).join(', ');
+      const addedAscStyles = addedAscNodes.map(id => \`#n\${id}\`).join(', ');
+      const removedAscStyles = removedAscNodes.map(id => \`#n\${id}\`).join(', ');
       
       // Build connection ID lists from actual graph connections
       const connectionActiveIds = [];
@@ -669,9 +713,6 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       const addedConnStyles = connectionAddedIds.map(id => \`#c\${id}\`).join(', ');
       const removedConnStyles = connectionRemovedIds.map(id => \`#c\${id}\`).join(', ');
 
-      // Get ascendancy ID if present
-      const ascendancyId = currentSpec.parsedUrl?.ascendancyId;
-
       const dynamicCSS = \`
         <style id="tree-dynamic-css">
           svg .nodes { fill: hsl(215, 15%, 50%); stroke: hsl(215, 15%, 50%); stroke-width: 0; }
@@ -679,10 +720,19 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
           svg .mastery { fill: transparent; stroke: transparent; }
           svg .border { fill: none; stroke: hsl(215, 15%, 40%); stroke-width: 20; }
           svg .ascendancy { opacity: 0.15; }
-          \${ascendancyId ? \`svg .ascendancy.\${ascendancyId} { opacity: 1 !important; }\` : ''}
+          \${activeAscendancyName ? \`svg .ascendancy.\${activeAscendancyName} { opacity: 1 !important; }\` : ''}
+          
+          /* Regular nodes - standard styling */
           \${activeStyles ? \`svg :is(\${activeStyles}) { fill: hsl(200, 80%, 50%) !important; stroke: hsl(200, 80%, 50%) !important; }\` : ''}
           \${addedStyles ? \`svg :is(\${addedStyles}) { fill: hsl(120, 90%, 50%) !important; stroke: hsl(120, 90%, 50%) !important; }\` : ''}
           \${removedStyles ? \`svg :is(\${removedStyles}) { fill: hsl(0, 90%, 50%) !important; stroke: hsl(0, 90%, 50%) !important; }\` : ''}
+          
+          /* Ascendancy nodes - same colors, parent group opacity handles visibility */
+          \${activeAscStyles ? \`svg :is(\${activeAscStyles}) { fill: hsl(200, 80%, 50%) !important; stroke: hsl(200, 80%, 50%) !important; }\` : ''}
+          \${addedAscStyles ? \`svg :is(\${addedAscStyles}) { fill: hsl(120, 90%, 50%) !important; stroke: hsl(120, 90%, 50%) !important; }\` : ''}
+          \${removedAscStyles ? \`svg :is(\${removedAscStyles}) { fill: hsl(0, 90%, 50%) !important; stroke: hsl(0, 90%, 50%) !important; }\` : ''}
+          
+          /* Connections - standard styling */
           \${activeConnStyles ? \`svg :is(\${activeConnStyles}) { stroke: hsl(200, 80%, 40%) !important; stroke-width: 35 !important; }\` : ''}
           \${addedConnStyles ? \`svg :is(\${addedConnStyles}) { stroke: hsl(120, 90%, 40%) !important; stroke-width: 35 !important; }\` : ''}
           \${removedConnStyles ? \`svg :is(\${removedConnStyles}) { stroke: hsl(0, 90%, 40%) !important; stroke-width: 35 !important; }\` : ''}
