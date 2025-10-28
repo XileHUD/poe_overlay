@@ -47,6 +47,9 @@ export interface UserSettings {
     characterLevel?: number; // Current character level (from client.txt)
     characterName?: string; // Character name (from client.txt)
     characterClass?: string; // Character class (from client.txt)
+    selectedTreeIndex?: number; // User's last manually selected tree spec index
+    selectedGemsIndex?: number; // User's last manually selected gems set index
+    selectedGearIndex?: number; // User's last manually selected gear set index
     pobBuild?: {
       code: string;
       className: string;
@@ -84,6 +87,7 @@ export interface UserSettings {
       showOptional?: boolean;
       groupByZone?: boolean;
       showTreeNodeDetails?: boolean;
+      autoDetectLevelingSets?: boolean; // Auto-detect tree/gems/gear sets based on act/level (default: true)
     };
     hotkeys?: {
       prev?: string;
@@ -105,6 +109,9 @@ export interface UserSettings {
     characterLevel?: number; // Current character level (from client.txt)
     characterName?: string; // Character name (from client.txt)
     characterClass?: string; // Character class (from client.txt)
+    selectedTreeIndex?: number; // User's last manually selected tree spec index
+    selectedGemsIndex?: number; // User's last manually selected gems set index
+    selectedGearIndex?: number; // User's last manually selected gear set index
     pobBuild?: {
       code: string;
       className: string;
@@ -142,6 +149,7 @@ export interface UserSettings {
       showOptional?: boolean;
       groupByZone?: boolean;
       showTreeNodeDetails?: boolean;
+      autoDetectLevelingSets?: boolean; // Auto-detect tree/gems/gear sets based on act/level (default: true)
     };
     hotkeys?: {
       prev?: string;

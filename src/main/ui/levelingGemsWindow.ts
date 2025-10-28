@@ -51,10 +51,21 @@ export function openLevelingGemsWindow(options: LevelingGemsWindowOptions): Brow
   // Get current PoB build data and current act
   const pobBuild = (savedSettings as any).pobBuild || null;
   const currentActIndex = (savedSettings as any).currentActIndex || 0;
-  const currentAct = currentActIndex + 1; // Convert index to act number
   const characterLevel = (savedSettings as any).characterLevel || 1;
+  const savedGemsIndex = (savedSettings as any).selectedGemsIndex ?? -1;
+  const autoDetectEnabled = (savedSettings as any).uiSettings?.autoDetectLevelingSets ?? true;
+  
+  // Determine initial act: use saved index if available and valid, otherwise use current game act
+  let initialAct;
+  if (savedGemsIndex >= 0 && !autoDetectEnabled) {
+    // User has manually selected a set and auto-detect is off
+    initialAct = savedGemsIndex + 1; // Convert 0-based index to 1-based act
+  } else {
+    // Use current game act
+    initialAct = currentActIndex + 1;
+  }
 
-  const html = buildLevelingGemsWindowHtml(pobBuild, currentAct, characterLevel, overlayVersion, ultraMinimal);
+  const html = buildLevelingGemsWindowHtml(pobBuild, initialAct, characterLevel, overlayVersion, ultraMinimal, autoDetectEnabled, savedGemsIndex);
   gemsWindow.loadURL(`data:text/html;charset=utf-8,${encodeURIComponent(html)}`);
 
   // Save position on move
@@ -141,7 +152,7 @@ export function isGemsWindowOpen(): boolean {
   return gemsWindow !== null && !gemsWindow.isDestroyed();
 }
 
-function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characterLevel: number, overlayVersion: OverlayVersion, ultraMinimal: boolean = false): string {
+function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characterLevel: number, overlayVersion: OverlayVersion, ultraMinimal: boolean = false, autoDetectEnabled: boolean = true, savedGemsIndex: number = -1): string {
   const className = pobBuild?.className || 'No Build Loaded';
   const ascendancy = pobBuild?.ascendancyName || '';
   const level = pobBuild?.level || 0;
@@ -569,6 +580,8 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
     let currentAct = ${currentAct};
     let characterLevel = ${characterLevel}; // Current character level from client.txt
     let isUltraMinimal = ${ultraMinimal};
+    let autoDetectEnabled = ${autoDetectEnabled};
+    let savedGemsIndex = ${savedGemsIndex};
     let gemDatabase = {};
     let gemColours = {};
     let questData = {};
@@ -1016,6 +1029,10 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
       if (newAct < 1 || newAct > maxPages) return;
       
       currentAct = newAct;
+      
+      // Save the user's manual selection (convert 1-based act to 0-based index)
+      ipcRenderer.send('gems-set-selected', currentAct - 1);
+      
       smoothRenderGems();
     }
     

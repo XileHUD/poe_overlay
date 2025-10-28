@@ -404,6 +404,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
     let isPanning = false;
     let lastPanPosition = { x: 0, y: 0 };
     let isUltraMinimal = ${ultraMinimal};
+    let autoDetectEnabled = true; // Track auto-detect setting
 
     window.addEventListener('error', (event) => {
       console.error('[Tree Window] Uncaught error:', event.message, event.filename, event.lineno, event.colno);
@@ -416,7 +417,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
         return;
       }
 
-      const { specs, treeSvg, viewBox, treeData, gameVersion, currentAct, characterLevel } = payload;
+      const { specs, treeSvg, viewBox, treeData, gameVersion, currentAct, characterLevel, autoDetectEnabled: autoDetectFromPayload, savedTreeIndex } = payload;
 
       if (!specs || specs.length === 0) {
         console.error('[Tree Window] No specs received!');
@@ -428,10 +429,38 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       currentSpecs = specs;
       currentGameVersion = gameVersion || 'poe1'; // Store game version
       currentTreeData = treeData; // Store tree data for connection lookup
+      autoDetectEnabled = autoDetectFromPayload ?? true; // Store auto-detect setting (default to true if undefined)
       
-      // Use smart matching to find the best spec to display initially
-      const bestSpecIndex = findBestTreeSpec(specs, currentAct || 1, characterLevel || 1);
-      currentIndex = bestSpecIndex;
+      // Determine initial spec index: use auto-detect if enabled, otherwise use saved selection
+      let initialIndex;
+      if (autoDetectEnabled) {
+        // Use smart matching to find the best spec to display initially
+        const bestIndex = findBestTreeSpec(specs, currentAct || 1, characterLevel || 1);
+        
+        if (bestIndex >= 0) {
+          // Found a good match
+          initialIndex = bestIndex;
+          console.log('[Tree Window] Auto-detect enabled, found best spec:', initialIndex);
+        } else if (typeof savedTreeIndex === 'number' && savedTreeIndex >= 0 && savedTreeIndex < specs.length) {
+          // No good match, use saved selection
+          initialIndex = savedTreeIndex;
+          console.log('[Tree Window] Auto-detect enabled, no good match, using saved selection:', initialIndex);
+        } else {
+          // No good match and no saved selection, use 0
+          initialIndex = 0;
+          console.log('[Tree Window] Auto-detect enabled, no good match, defaulting to index 0');
+        }
+      } else if (typeof savedTreeIndex === 'number' && savedTreeIndex >= 0 && savedTreeIndex < specs.length) {
+        // Use saved selection
+        initialIndex = savedTreeIndex;
+        console.log('[Tree Window] Auto-detect disabled, using saved selection:', initialIndex);
+      } else {
+        // Fallback to 0 if no saved index
+        initialIndex = 0;
+        console.log('[Tree Window] No saved selection, defaulting to index 0');
+      }
+      
+      currentIndex = initialIndex;
 
       console.log('[Tree Window] Calling populateSelector...');
       populateSelector();
@@ -484,8 +513,9 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
     }
     
     // Find best matching tree spec based on act (preferred) or level (fallback)
+    // Returns index of best match, or -1 if no good match found
     function findBestTreeSpec(specs, currentAct, characterLevel) {
-      if (!specs || specs.length === 0) return 0;
+      if (!specs || specs.length === 0) return -1;
       
       console.log(\`[Tree Window] Finding best tree spec for act \${currentAct}, level \${characterLevel}\`);
       
@@ -512,22 +542,64 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
         }
       }
       
-      // Ultimate fallback: use index-based matching (old behavior)
-      const fallbackIndex = Math.min(currentAct - 1, specs.length - 1);
-      console.log(\`[Tree Window] Using fallback index-based match: index \${fallbackIndex}\`);
-      return fallbackIndex;
+      // Node count fallback: find tree with closest node count to character level
+      // Only use this if we couldn't match by act or level
+      console.log(\`[Tree Window] No act/level match found, trying node count matching for level \${characterLevel}\`);
+      
+      // Estimate expected nodes: level - 1 (accounting for no point at level 1)
+      // In PoE1, players also lose 2 points from bandit rewards, but we'll keep it simple
+      const expectedNodes = Math.max(1, characterLevel - 1);
+      
+      let bestMatchIndex = -1;
+      let bestMatchDiff = Infinity;
+      
+      for (let i = 0; i < specs.length; i++) {
+        const spec = specs[i];
+        if (spec.nodeCount === undefined) continue;
+        
+        // Prefer trees with node count <= expected (don't suggest overpowered builds)
+        // Calculate difference, penalizing trees with too many nodes
+        const diff = spec.nodeCount <= expectedNodes
+          ? Math.abs(expectedNodes - spec.nodeCount) // Reward close matches below expected
+          : (spec.nodeCount - expectedNodes) * 2; // Penalize overspec'd trees more heavily
+        
+        if (diff < bestMatchDiff) {
+          bestMatchDiff = diff;
+          bestMatchIndex = i;
+        }
+      }
+      
+      if (bestMatchIndex !== -1) {
+        console.log(\`[Tree Window] Matched by node count: "\${specs[bestMatchIndex].title}" (\${specs[bestMatchIndex].nodeCount} nodes, expected ~\${expectedNodes}, index \${bestMatchIndex})\`);
+        return bestMatchIndex;
+      }
+      
+      // No good match found - return -1 so caller can use saved selection
+      console.log(\`[Tree Window] No good match found, returning -1 to use saved selection\`);
+      return -1;
     }
     
     // Listen for context updates (act/level changes)
     ipcRenderer.on('tree-context-update', (event, payload) => {
       const { currentAct, characterLevel } = payload;
+      
+      // Only run auto-detection if enabled
+      if (!autoDetectEnabled) {
+        console.log(\`[Tree Window] Auto-detect disabled, keeping current selection: \${currentIndex}\`);
+        return;
+      }
+      
       if (currentSpecs && currentSpecs.length > 0) {
         const bestSpecIndex = findBestTreeSpec(currentSpecs, currentAct, characterLevel);
-        if (bestSpecIndex !== currentIndex) {
+        
+        // Only switch if we found a good match (>= 0) and it's different
+        if (bestSpecIndex >= 0 && bestSpecIndex !== currentIndex) {
           console.log(\`[Tree Window] Context changed, switching from spec \${currentIndex} to \${bestSpecIndex}\`);
           currentIndex = bestSpecIndex;
           document.getElementById('spec-selector').value = currentIndex;
           renderTree();
+        } else if (bestSpecIndex < 0) {
+          console.log(\`[Tree Window] Context changed, but no good match found, keeping current selection: \${currentIndex}\`);
         }
       }
     });
@@ -546,9 +618,18 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
 
     function populateSelector() {
       const selector = document.getElementById('spec-selector');
-      selector.innerHTML = currentSpecs.map((spec, i) => 
-        \`<option value="\${i}">\${spec.title || \`Tree \${i + 1}\`}</option>\`
-      ).join('');
+      
+      selector.innerHTML = currentSpecs.map((spec, i) => {
+        let displayName = spec.title || \`Tree \${i + 1}\`;
+        
+        // Always append node count for informational purposes
+        if (spec.nodeCount !== undefined) {
+          displayName = \`\${displayName} (\${spec.nodeCount} Nodes)\`;
+        }
+        
+        return \`<option value="\${i}">\${displayName}</option>\`;
+      }).join('');
+      
       selector.value = currentIndex;
       updateNavigation();
     }
@@ -574,6 +655,10 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
     function selectSpec() {
       currentIndex = parseInt(document.getElementById('spec-selector').value);
       renderTree();
+      
+      // Save user's manual selection
+      const { ipcRenderer } = require('electron');
+      ipcRenderer.send('tree-spec-selected', currentIndex);
     }
 
     function previousSpec() {
@@ -581,6 +666,9 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
         currentIndex--;
         document.getElementById('spec-selector').value = currentIndex;
         renderTree();
+        // Persist user's manual selection when navigating with prev button
+        const { ipcRenderer } = require('electron');
+        ipcRenderer.send('tree-spec-selected', currentIndex);
       }
     }
 
@@ -589,6 +677,9 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
         currentIndex++;
         document.getElementById('spec-selector').value = currentIndex;
         renderTree();
+        // Persist user's manual selection when navigating with next button
+        const { ipcRenderer } = require('electron');
+        ipcRenderer.send('tree-spec-selected', currentIndex);
       }
     }
 
@@ -1223,7 +1314,7 @@ export function getPassiveTreeWindow(): BrowserWindow | null {
   return treeWindow;
 }
 
-export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'poe1', currentAct: number = 1, characterLevel: number = 1): void {
+export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'poe1', currentAct: number = 1, characterLevel: number = 1, autoDetectEnabled: boolean = true, savedTreeIndex?: number): void {
   if (!treeWindow || treeWindow.isDestroyed()) {
     console.warn('[Tree Window] Cannot send tree data - window not available');
     return;
@@ -1273,6 +1364,8 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     gameVersion,
     currentAct,
     characterLevel,
+    autoDetectEnabled,
+    savedTreeIndex,
   });
 
   treeWindow.webContents.send('tree-data-update', {
@@ -1283,6 +1376,8 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     gameVersion,
     currentAct,
     characterLevel,
+    autoDetectEnabled,
+    savedTreeIndex,
   });
 }
 

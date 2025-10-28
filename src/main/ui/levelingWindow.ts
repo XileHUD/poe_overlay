@@ -5,7 +5,7 @@ import { openLevelingSettingsSplash } from './levelingSettingsSplash.js';
 import { openPobInfoBar, closePobInfoBar, updatePobInfoBar } from './pobInfoBar.js';
 import { openLevelingGemsWindow, updateLevelingGemsWindow, updateLevelingGemsWindowBuild, updateLevelingGemsWindowCharacterLevel, closeLevelingGemsWindow, isGemsWindowOpen } from './levelingGemsWindow.js';
 import { openLevelingNotesWindow, updateNotesWindow, closeNotesWindow, isNotesWindowOpen } from './levelingNotesWindow.js';
-import { openLevelingGearWindow, updateGearWindow, closeGearWindow, isGearWindowOpen } from './levelingGearWindow.js';
+import { openLevelingGearWindow, updateGearWindow, updateGearWindowContext, closeGearWindow, isGearWindowOpen } from './levelingGearWindow.js';
 import { createPassiveTreeWindow, sendTreeData, updateTreeWindowContext, isTreeWindowOpen, closeTreeWindow } from '../windows/levelingTreeWindow.js';
 import fs from 'fs';
 import path from 'path';
@@ -407,9 +407,11 @@ export class LevelingWindow {
       // Update gems window with new act
       updateLevelingGemsWindow(actIndex + 1, this.overlayVersion, this.settingsService);
       
-      // Update tree window with new act
+      // Update tree and gear windows with new act
       const saved = this.settingsService.get(this.getLevelingWindowKey());
-      updateTreeWindowContext(actIndex + 1, (saved as any)?.characterLevel || 1);
+      const characterLevel = (saved as any)?.characterLevel || 1;
+      updateTreeWindowContext(actIndex + 1, characterLevel);
+      updateGearWindowContext(actIndex + 1, characterLevel);
       
       // Update PoB info bar with new act
       const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
@@ -660,7 +662,7 @@ export class LevelingWindow {
         const updated: any = { ...(current || {}) };
         
         // UI settings should be nested under uiSettings
-        const uiSettingKeys = ['opacity', 'fontSize', 'zoomLevel', 'visibleSteps', 'groupByZone', 'showHints', 'showOptional', 'showTreeNodeDetails'];
+        const uiSettingKeys = ['opacity', 'fontSize', 'zoomLevel', 'visibleSteps', 'groupByZone', 'showHints', 'showOptional', 'showTreeNodeDetails', 'autoDetectLevelingSets'];
         const uiUpdates: any = {};
         const otherUpdates: any = {};
         
@@ -754,18 +756,23 @@ export class LevelingWindow {
       } else {
         console.log('[LevelingWindow] Opening tree window with', pobBuild.treeSpecs.length, 'tree specs for', this.overlayVersion);
         const saved = this.settingsService.get(this.getLevelingWindowKey());
+        console.log('[LevelingWindow] Loaded settings from key:', this.getLevelingWindowKey());
+        console.log('[LevelingWindow] Full saved settings:', JSON.stringify(saved, null, 2));
         const currentActIndex = (saved as any)?.currentActIndex || 0;
         const characterLevel = (saved as any)?.characterLevel || 1;
+        const autoDetectEnabled = (saved as any)?.uiSettings?.autoDetectLevelingSets ?? true;
+        const savedTreeIndex = (saved as any)?.selectedTreeIndex;
+        console.log('[LevelingWindow] Extracted values: autoDetect=', autoDetectEnabled, 'savedTreeIndex=', savedTreeIndex);
         const onTreeWindowReady = () => {
           console.log('[LevelingWindow] Tree window reported ready, sending data');
-          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel);
+          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
         };
         ipcMain.once('tree-window-ready', onTreeWindowReady);
         const treeWindow = createPassiveTreeWindow();
         if (!treeWindow.webContents.isLoading()) {
           ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
           console.log('[LevelingWindow] Tree window already loaded, sending data immediately');
-          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel);
+          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
         }
       }
     });
@@ -819,6 +826,16 @@ export class LevelingWindow {
           overlayVersion: this.overlayVersion,
           parentWindow: this.window || undefined
         });
+        
+        // Send initial context for auto-detection
+        const saved = this.settingsService.get(this.getLevelingWindowKey());
+        const currentAct = (saved as any)?.currentActIndex + 1 || 1;
+        const characterLevel = (saved as any)?.characterLevel || 1;
+        
+        // Use setTimeout to ensure window is ready
+        setTimeout(() => {
+          updateGearWindowContext(currentAct, characterLevel);
+        }, 100);
       }
     });
 
@@ -837,12 +854,36 @@ export class LevelingWindow {
       closeGearWindow();
     });
     
-    // Act changed - notify gems window and tree window
+    // Handle tree spec selection (save user's manual choice)
+    ipcMain.on('tree-spec-selected', (event, specIndex: number) => {
+      console.log('[LevelingWindow] Saving tree spec selection:', specIndex, 'to key:', this.getLevelingWindowKey());
+      this.settingsService.update(this.getLevelingWindowKey(), (current: any) => {
+        const updated = {
+          ...current,
+          selectedTreeIndex: specIndex, // Root-level persistent selection
+        };
+        console.log('[LevelingWindow] Updated settings:', updated);
+        return updated;
+      });
+      console.log('[LevelingWindow] Settings saved successfully');
+    });
+    
+    // Handle gems set selection (save user's manual choice)
+    ipcMain.on('gems-set-selected', (event, setIndex: number) => {
+      this.settingsService.update(this.getLevelingWindowKey(), (current: any) => ({
+        ...current,
+        selectedGemsIndex: setIndex, // Root-level persistent selection
+      }));
+    });
+    
+    // Act changed - notify gems, tree, and gear windows
     ipcMain.on('leveling-act-changed', (event, actNumber: number) => {
       updateLevelingGemsWindow(actNumber, this.overlayVersion, this.settingsService);
       
       const saved = this.settingsService.get(this.getLevelingWindowKey());
-      updateTreeWindowContext(actNumber, (saved as any)?.characterLevel || 1);
+      const characterLevel = (saved as any)?.characterLevel || 1;
+      updateTreeWindowContext(actNumber, characterLevel);
+      updateGearWindowContext(actNumber, characterLevel);
     });
     
     // Show PoB info bar
@@ -1353,9 +1394,11 @@ export class LevelingWindow {
           // Update gems window with new character level
           updateLevelingGemsWindowCharacterLevel(level);
           
-          // Update tree window context with new level
+          // Update tree and gear windows context with new level
           const saved = this.settingsService.get(this.getLevelingWindowKey());
-          updateTreeWindowContext((saved as any)?.currentActIndex + 1 || 1, level);
+          const currentAct = (saved as any)?.currentActIndex + 1 || 1;
+          updateTreeWindowContext(currentAct, level);
+          updateGearWindowContext(currentAct, level);
         }
       } else {
         // POE2: Handle both formats, with or without parentheses around [Zone]
@@ -1414,9 +1457,11 @@ export class LevelingWindow {
           // Update gems window with new character level
           updateLevelingGemsWindowCharacterLevel(level);
           
-          // Update tree window context with new level
+          // Update tree and gear windows context with new level
           const saved = this.settingsService.get(this.getLevelingWindowKey());
-          updateTreeWindowContext((saved as any)?.currentActIndex + 1 || 1, level);
+          const currentAct = (saved as any)?.currentActIndex + 1 || 1;
+          updateTreeWindowContext(currentAct, level);
+          updateGearWindowContext(currentAct, level);
         }
       }
 
@@ -1735,15 +1780,17 @@ export class LevelingWindow {
             if (pobBuild && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
               const currentActIndex = (currentSettings as any)?.currentActIndex || 0;
               const characterLevel = (currentSettings as any)?.characterLevel || 1;
+              const autoDetectEnabled = (currentSettings as any)?.uiSettings?.autoDetectLevelingSets ?? true;
+              const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
               
               const onTreeWindowReady = () => {
-                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel);
+                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
               };
               ipcMain.once('tree-window-ready', onTreeWindowReady);
               const treeWindow = createPassiveTreeWindow();
               if (!treeWindow.webContents.isLoading()) {
                 ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
-                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel);
+                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
               }
               console.log('[LevelingWindow] Tree window opened via hotkey');
             }

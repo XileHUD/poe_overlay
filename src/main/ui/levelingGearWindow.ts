@@ -49,9 +49,12 @@ export function openLevelingGearWindow(options: LevelingGearWindowOptions): Brow
   // Get current PoB build gear
   const pobBuild = (savedSettings as any).pobBuild || null;
   const itemSets = pobBuild?.itemSets || [];
-  const selectedSetIndex = gearWindowSettings.selectedSetIndex || 0;
-
-  const html = buildLevelingGearWindowHtml(itemSets, overlayVersion, ultraMinimal, pobBuild, selectedSetIndex, hideInfo);
+  
+  // Use root-level persistent selection, fallback to gearWindow.selectedSetIndex for backwards compatibility
+  const savedGearIndex = (savedSettings as any).selectedGearIndex ?? gearWindowSettings.selectedSetIndex ?? 0;
+  const autoDetectEnabled = (savedSettings as any).uiSettings?.autoDetectLevelingSets ?? true;
+  
+  const html = buildLevelingGearWindowHtml(itemSets, overlayVersion, ultraMinimal, pobBuild, savedGearIndex, hideInfo, autoDetectEnabled);
   gearWindow.loadURL(`data:text/html;charset=utf-8,${encodeURIComponent(html)}`);
 
   // Save position on move
@@ -104,12 +107,14 @@ export function openLevelingGearWindow(options: LevelingGearWindowOptions): Brow
   ipcMain.on('gear-window-set-selected', (event, setIndex) => {
     if (!gearWindow || gearWindow.isDestroyed()) return;
     
-    // Save selected set index
+    // Save selected set index at root level (for persistent user selection)
+    // and also in gearWindow for backwards compatibility
     settingsService.update(settingsKey, (current: any) => ({
       ...current,
+      selectedGearIndex: setIndex, // Root-level persistent selection
       gearWindow: {
         ...(current.gearWindow || {}),
-        selectedSetIndex: setIndex,
+        selectedSetIndex: setIndex, // Backwards compatibility
       },
     }));
   });
@@ -138,13 +143,23 @@ export function isGearWindowOpen(): boolean {
   return gearWindow !== null && !gearWindow.isDestroyed();
 }
 
+export function updateGearWindowContext(currentAct: number, characterLevel: number): void {
+  if (!gearWindow || gearWindow.isDestroyed()) return;
+  
+  // Send context update so the gear window can re-evaluate the best set
+  gearWindow.webContents.send('gear-context-update', {
+    currentAct,
+    characterLevel,
+  });
+}
+
 export function closeGearWindow(): void {
   if (gearWindow && !gearWindow.isDestroyed()) {
     gearWindow.close();
   }
 }
 
-function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: OverlayVersion, ultraMinimal: boolean, pobBuild: any, selectedSetIndex: number, hideInfo: boolean): string {
+function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: OverlayVersion, ultraMinimal: boolean, pobBuild: any, selectedSetIndex: number, hideInfo: boolean, autoDetectEnabled: boolean): string {
   const className = pobBuild?.className || 'No Build Loaded';
   const ascendancy = pobBuild?.ascendancyName || '';
   const characterName = pobBuild?.characterName || '';
@@ -671,6 +686,9 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
     let isUltraMinimal = ${ultraMinimal};
     let allItemSets = ${JSON.stringify(itemSets)};
     let currentSetIndex = ${currentSetIndex};
+    let currentAct = 1;
+    let characterLevel = 1;
+    let autoDetectEnabled = ${autoDetectEnabled};
     
     function itemHasContent(item) {
       if (!item) return false;
@@ -690,6 +708,86 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
         }
         return false;
       });
+    }
+    
+    // Helper to parse level range from set title
+    function parseLevelRange(title) {
+      if (!title) return null;
+      
+      // Match patterns like: "1-14", "level 1-14", "1-14 level", "Level 1-14"
+      const rangeMatch = title.match(/(\\d+)\\s*[-–—]\\s*(\\d+)/);
+      if (rangeMatch) {
+        const min = parseInt(rangeMatch[1], 10);
+        const max = parseInt(rangeMatch[2], 10);
+        if (!isNaN(min) && !isNaN(max)) {
+          return { min, max };
+        }
+      }
+      
+      // Match single level like "Level 14" or "14 level"
+      const singleMatch = title.match(/(?:level|lv|lvl)?\\s*(\\d+)/i);
+      if (singleMatch) {
+        const level = parseInt(singleMatch[1], 10);
+        if (!isNaN(level)) {
+          return { min: level, max: level };
+        }
+      }
+      
+      return null;
+    }
+    
+    // Helper to detect if a set name contains act reference
+    function hasActReference(title) {
+      if (!title) return false;
+      const lower = title.toLowerCase();
+      // Match "act 1", "act1", "act 2", etc.
+      return /act\\s*\\d+/.test(lower);
+    }
+    
+    // Helper to extract act number from title
+    function extractActNumber(title) {
+      if (!title) return null;
+      const match = title.toLowerCase().match(/act\\s*(\\d+)/);
+      if (match) {
+        return parseInt(match[1], 10);
+      }
+      return null;
+    }
+    
+    // Find best matching gear set based on act (preferred) or level (fallback)
+    function findBestGearSet(gearSets, actNum, charLevel) {
+      if (!gearSets || gearSets.length === 0) return -1;
+      const nonEmptySets = filterItemSets(gearSets);
+      if (nonEmptySets.length === 0) return -1;
+      
+      console.log(\`[GearWindow] Finding best gear set for act \${actNum}, level \${charLevel}\`);
+      
+      // First, try to find by act reference
+      for (let i = 0; i < nonEmptySets.length; i++) {
+        const set = nonEmptySets[i];
+        if (hasActReference(set.title)) {
+          const setActNum = extractActNumber(set.title);
+          if (setActNum === actNum) {
+            console.log(\`[GearWindow] Matched by act: "\${set.title}" (index \${i})\`);
+            return i;
+          }
+        }
+      }
+      
+      // Fallback: match by level range
+      console.log(\`[GearWindow] No act match found, trying level-based matching for level \${charLevel}\`);
+      for (let i = 0; i < nonEmptySets.length; i++) {
+        const set = nonEmptySets[i];
+        const range = parseLevelRange(set.title);
+        if (range && charLevel >= range.min && charLevel <= range.max) {
+          console.log(\`[GearWindow] Matched by level: "\${set.title}" (range \${range.min}-\${range.max}, index \${i})\`);
+          return i;
+        }
+      }
+      
+      // No match found - don't default to 0
+      console.log(\`[GearWindow] No suitable gear set found for act \${actNum}, level \${charLevel}\`);
+      return -1;
     }
     
     function toggleMinimalMode() {
@@ -930,6 +1028,33 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
         currentSetIndex = 0;
       }
       renderCurrentSet();
+    });
+    
+    // Listen for context updates (act/level changes)
+    ipcRenderer.on('gear-context-update', (event, payload) => {
+      const { currentAct: newAct, characterLevel: newLevel } = payload;
+      currentAct = newAct || 1;
+      characterLevel = newLevel || 1;
+      
+      // Only run auto-detection if enabled
+      if (!autoDetectEnabled) {
+        console.log(\`[GearWindow] Auto-detect disabled, keeping current selection: \${currentSetIndex}\`);
+        return;
+      }
+      
+      // Run auto-detection to find best gear set
+      const visibleSets = filterItemSets(allItemSets);
+      if (visibleSets && visibleSets.length > 0) {
+        const bestIndex = findBestGearSet(allItemSets, currentAct, characterLevel);
+        if (bestIndex !== -1 && bestIndex !== currentSetIndex) {
+          console.log(\`[GearWindow] Context changed, switching from set \${currentSetIndex} to \${bestIndex}\`);
+          currentSetIndex = bestIndex;
+          const selector = document.getElementById('setSelector');
+          if (selector) selector.value = currentSetIndex;
+          ipcRenderer.send('gear-window-set-selected', currentSetIndex);
+          renderCurrentSet();
+        }
+      }
     });
     
     // Initialize

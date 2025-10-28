@@ -47,6 +47,7 @@ export interface TreeSpec {
   nodes: string; // Comma-separated node IDs
   url?: string; // Tree URL in PoB format
   allocatedNodes: number[];
+  nodeCount?: number; // Total number of allocated nodes (for smart naming and fallback detection)
   classId?: number;
   ascendClassId?: number;
   // Parsed URL data

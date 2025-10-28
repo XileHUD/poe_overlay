@@ -104,6 +104,7 @@ function buildLevelingSettingsSplashHtml(
   const showOptional = currentSettings.uiSettings?.showOptional ?? true;
   const autoDetectZones = currentSettings.uiSettings?.autoDetectZones ?? true;
   const showTreeNodeDetails = currentSettings.uiSettings?.showTreeNodeDetails ?? false;
+  const autoDetectLevelingSets = currentSettings.uiSettings?.autoDetectLevelingSets ?? true;
   const opacity = currentSettings.uiSettings?.opacity ?? 96;
   const fontSize = currentSettings.uiSettings?.fontSize ?? 12;
   const zoomLevel = currentSettings.uiSettings?.zoomLevel ?? 100;
@@ -623,6 +624,16 @@ function buildLevelingSettingsSplashHtml(
             <div class="setting-description">Display node name and stats when hovering over passive tree nodes</div>
           </div>
           <div class="toggle-switch ${showTreeNodeDetails ? 'active' : ''}" onclick="toggleSetting(this, 'showTreeNodeDetails')">
+            <div class="toggle-slider"></div>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Auto Detect Correct Tree/Gems/Gear Sets</div>
+            <div class="setting-description">Automatically select the best matching set based on your current act and level</div>
+          </div>
+          <div class="toggle-switch ${autoDetectLevelingSets ? 'active' : ''}" onclick="toggleSetting(this, 'autoDetectLevelingSets')">
             <div class="toggle-slider"></div>
           </div>
         </div>

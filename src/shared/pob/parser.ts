@@ -81,11 +81,17 @@ export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 
       if (!hasAnyNodes) {
         console.log(`[PoB Parser] Skipping header-only tree spec: "${title}"`);
       } else {
+        // Count allocated nodes (use parsedUrl nodes if available, otherwise allocatedNodes)
+        const nodeCount = url && parsedUrl?.nodes
+          ? parsedUrl.nodes.length
+          : allocatedNodes.length;
+        
         treeSpecs.push({
           title,
           nodes,
           url,
           allocatedNodes,
+          nodeCount, // Store node count for smart naming and fallback detection
           classId: parseInt(spec.getAttribute('classId') || '0', 10),
           ascendClassId: parseInt(spec.getAttribute('ascendClassId') || '0', 10),
           parsedUrl
