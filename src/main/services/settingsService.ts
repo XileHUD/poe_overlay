@@ -3,6 +3,17 @@ import * as path from 'path';
 import type { FeatureConfig } from '../features/featureTypes.js';
 import type { OverlayVersion } from '../../types/overlayVersion.js';
 
+/**
+ * Custom hotkey definition for user-defined clipboard paste actions
+ */
+export interface CustomHotkey {
+  id: string; // Unique identifier (UUID)
+  name: string; // User-friendly name (e.g., "Movement Boots")
+  command: string; // Text/regex/command to paste (e.g., "/hideout" or regex pattern)
+  hotkey: string; // Hotkey string (e.g., "Ctrl+Numpad1")
+  pressEnter: boolean; // Whether to press Enter after pasting
+}
+
 export interface UserSettings {
   enabledFeatures?: FeatureConfig;
   seenFeatureSplash?: boolean; // Track if user has seen feature selection splash at least once
@@ -98,7 +109,9 @@ export interface UserSettings {
       notes?: string;
       pobBar?: string; // Toggle the PoB Info Bar
       leveling?: string; // Toggle the main leveling window
+      logout?: string; // Quick logout via /exit command
     };
+    customHotkeys?: CustomHotkey[]; // User-defined hotkeys for clipboard paste actions
   };
   // Game-specific leveling window state (POE2)
   levelingWindowPoe2?: {
@@ -164,7 +177,18 @@ export interface UserSettings {
       notes?: string;
       pobBar?: string; // Toggle the PoB Info Bar
       leveling?: string; // Toggle the main leveling window
+      logout?: string; // Quick logout via /exit command
     };
+    customHotkeys?: CustomHotkey[]; // User-defined hotkeys for clipboard paste actions
+  };
+  // Leveling settings window state (per-game)
+  levelingSettingsWindowPoe1?: {
+    position?: { x: number; y: number };
+    size?: { width: number; height: number };
+  };
+  levelingSettingsWindowPoe2?: {
+    position?: { x: number; y: number };
+    size?: { width: number; height: number };
   };
   hotkey?: {
     key: string; // e.g., "Q", "E", "1", "F1", etc.

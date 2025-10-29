@@ -1,5 +1,5 @@
 import { BrowserWindow, screen, ipcMain, globalShortcut } from 'electron';
-import { SettingsService } from '../services/settingsService.js';
+import { SettingsService, type CustomHotkey } from '../services/settingsService.js';
 import { buildLevelingPopoutHtml } from '../popouts/levelingPopoutTemplate.js';
 import { registerOverlayWindow, bringToFront } from './windowZManager.js';
 import { openLevelingSettingsSplash } from './levelingSettingsSplash.js';
@@ -8,6 +8,8 @@ import { openLevelingGemsWindow, updateLevelingGemsWindow, updateLevelingGemsWin
 import { openLevelingNotesWindow, updateNotesWindow, closeNotesWindow, isNotesWindowOpen } from './levelingNotesWindow.js';
 import { openLevelingGearWindow, updateGearWindow, updateGearWindowContext, closeGearWindow, isGearWindowOpen } from './levelingGearWindow.js';
 import { createPassiveTreeWindow, sendTreeData, updateTreeWindowContext, isTreeWindowOpen, closeTreeWindow } from '../windows/levelingTreeWindow.js';
+import { levelingHotkeyManager } from '../hotkeys/levelingHotkeyManager.js';
+import { executeLogout, typeInChat } from '../utils/chatCommand.js';
 import fs from 'fs';
 import path from 'path';
 import { app } from 'electron';
@@ -763,6 +765,17 @@ export class LevelingWindow {
           ...currentHotkeys,
           [hotkeyName]: accelerator
         }
+      } as any));
+      
+      // Re-register hotkeys
+      this.registerHotkeys();
+    });
+
+    // Handle custom hotkeys update
+    ipcMain.on('leveling-custom-hotkeys-update', (event, customHotkeys: CustomHotkey[]) => {
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+        ...c,
+        customHotkeys
       } as any));
       
       // Re-register hotkeys
@@ -1803,15 +1816,12 @@ export class LevelingWindow {
     }
   }
 
-  private registerHotkeys(): void {
+  private async registerHotkeys(): Promise<void> {
+    // Initialize UIOhook if not already done
+    await levelingHotkeyManager.initialize();
+    
     // Unregister all previously registered hotkeys
-    for (const accelerator of this.registeredHotkeys) {
-      try {
-        globalShortcut.unregister(accelerator);
-      } catch (e) {
-        console.warn('[LevelingWindow] Failed to unregister hotkey:', accelerator, e);
-      }
-    }
+    levelingHotkeyManager.unregisterAll();
     this.registeredHotkeys = [];
     
     // Get current hotkey settings
@@ -1820,206 +1830,220 @@ export class LevelingWindow {
     
     // Register prev hotkey
     if (hotkeys.prev) {
-      try {
-        globalShortcut.register(hotkeys.prev, () => {
-          if (this.window && !this.window.isDestroyed()) {
-            this.window.webContents.send('hotkey-action', 'prev');
-          }
-        });
+      const success = levelingHotkeyManager.register('prev', hotkeys.prev, () => {
+        if (this.window && !this.window.isDestroyed()) {
+          this.window.webContents.send('hotkey-action', 'prev');
+        }
+      });
+      if (success) {
         this.registeredHotkeys.push(hotkeys.prev);
         console.log('[LevelingWindow] Registered prev hotkey:', hotkeys.prev);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register prev hotkey:', hotkeys.prev, e);
       }
     }
     
     // Register next hotkey
     if (hotkeys.next) {
-      try {
-        globalShortcut.register(hotkeys.next, () => {
-          if (this.window && !this.window.isDestroyed()) {
-            this.window.webContents.send('hotkey-action', 'next');
-          }
-        });
+      const success = levelingHotkeyManager.register('next', hotkeys.next, () => {
+        if (this.window && !this.window.isDestroyed()) {
+          this.window.webContents.send('hotkey-action', 'next');
+        }
+      });
+      if (success) {
         this.registeredHotkeys.push(hotkeys.next);
         console.log('[LevelingWindow] Registered next hotkey:', hotkeys.next);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register next hotkey:', hotkeys.next, e);
       }
     }
     
     // Register tree hotkey
     if (hotkeys.tree) {
-      try {
-        globalShortcut.register(hotkeys.tree, () => {
-          // Toggle tree window (close if open, open if closed)
-          if (isTreeWindowOpen()) {
-            closeTreeWindow();
-            console.log('[LevelingWindow] Tree window closed via hotkey');
-          } else {
-            const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-            const pobBuild = (currentSettings as any).pobBuild || null;
+      const success = levelingHotkeyManager.register('tree', hotkeys.tree, () => {
+        // Toggle tree window (close if open, open if closed)
+        if (isTreeWindowOpen()) {
+          closeTreeWindow();
+          console.log('[LevelingWindow] Tree window closed via hotkey');
+        } else {
+          const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+          const pobBuild = (currentSettings as any).pobBuild || null;
+          
+          if (pobBuild && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
+            const currentActIndex = (currentSettings as any)?.currentActIndex || 0;
+            const characterLevel = (currentSettings as any)?.characterLevel || 1;
+            const autoDetectEnabled = (currentSettings as any)?.uiSettings?.autoDetectLevelingSets ?? true;
+            const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
             
-            if (pobBuild && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
-              const currentActIndex = (currentSettings as any)?.currentActIndex || 0;
-              const characterLevel = (currentSettings as any)?.characterLevel || 1;
-              const autoDetectEnabled = (currentSettings as any)?.uiSettings?.autoDetectLevelingSets ?? true;
-              const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
-              
-              const onTreeWindowReady = () => {
-                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
-              };
-              ipcMain.once('tree-window-ready', onTreeWindowReady);
-              const treeWindow = createPassiveTreeWindow();
-              if (!treeWindow.webContents.isLoading()) {
-                ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
-                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
-              }
-              console.log('[LevelingWindow] Tree window opened via hotkey');
+            const onTreeWindowReady = () => {
+              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
+            };
+            ipcMain.once('tree-window-ready', onTreeWindowReady);
+            const treeWindow = createPassiveTreeWindow();
+            if (!treeWindow.webContents.isLoading()) {
+              ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
+              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
             }
+            console.log('[LevelingWindow] Tree window opened via hotkey');
           }
-        });
+        }
+      });
+      if (success) {
         this.registeredHotkeys.push(hotkeys.tree);
         console.log('[LevelingWindow] Registered tree hotkey:', hotkeys.tree);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register tree hotkey:', hotkeys.tree, e);
       }
     }
     
     // Register gems hotkey
     if (hotkeys.gems) {
-      try {
-        globalShortcut.register(hotkeys.gems, () => {
-          // Toggle gems window (close if open, open if closed)
-          if (isGemsWindowOpen()) {
-            closeLevelingGemsWindow();
-            // Reassert leveling overlay order without stealing focus
-            try { bringToFront('leveling'); } catch {}
-            console.log('[LevelingWindow] Gems window closed via hotkey');
-          } else {
-            const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-            const pobBuild = (currentSettings as any).pobBuild || null;
-            
-            if (pobBuild) {
-              openLevelingGemsWindow({
-                settingsService: this.settingsService,
-                overlayVersion: this.overlayVersion,
-                parentWindow: this.window || undefined
-              });
-              console.log('[LevelingWindow] Gems window opened via hotkey');
-            }
+      const success = levelingHotkeyManager.register('gems', hotkeys.gems, () => {
+        // Toggle gems window (close if open, open if closed)
+        if (isGemsWindowOpen()) {
+          closeLevelingGemsWindow();
+          // Reassert leveling overlay order without stealing focus
+          try { bringToFront('leveling'); } catch {}
+          console.log('[LevelingWindow] Gems window closed via hotkey');
+        } else {
+          const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+          const pobBuild = (currentSettings as any).pobBuild || null;
+          
+          if (pobBuild) {
+            openLevelingGemsWindow({
+              settingsService: this.settingsService,
+              overlayVersion: this.overlayVersion,
+              parentWindow: this.window || undefined
+            });
+            console.log('[LevelingWindow] Gems window opened via hotkey');
           }
-        });
+        }
+      });
+      if (success) {
         this.registeredHotkeys.push(hotkeys.gems);
         console.log('[LevelingWindow] Registered gems hotkey:', hotkeys.gems);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register gems hotkey:', hotkeys.gems, e);
       }
     }
 
     // Register gear hotkey
     if (hotkeys.gear) {
-      try {
-        globalShortcut.register(hotkeys.gear, () => {
-          if (isGearWindowOpen()) {
-            closeGearWindow();
-            // Reassert leveling overlay order without stealing focus
-            try { bringToFront('leveling'); } catch {}
-            console.log('[LevelingWindow] Gear window closed via hotkey');
-          } else {
-            const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-            const pobBuild = (currentSettings as any).pobBuild || null;
-            if (pobBuild && pobBuild.itemSets && pobBuild.itemSets.length > 0) {
-              openLevelingGearWindow({
-                settingsService: this.settingsService,
-                overlayVersion: this.overlayVersion,
-                parentWindow: this.window || undefined
-              });
-              console.log('[LevelingWindow] Gear window opened via hotkey');
-            }
+      const success = levelingHotkeyManager.register('gear', hotkeys.gear, () => {
+        if (isGearWindowOpen()) {
+          closeGearWindow();
+          // Reassert leveling overlay order without stealing focus
+          try { bringToFront('leveling'); } catch {}
+          console.log('[LevelingWindow] Gear window closed via hotkey');
+        } else {
+          const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+          const pobBuild = (currentSettings as any).pobBuild || null;
+          if (pobBuild && pobBuild.itemSets && pobBuild.itemSets.length > 0) {
+            openLevelingGearWindow({
+              settingsService: this.settingsService,
+              overlayVersion: this.overlayVersion,
+              parentWindow: this.window || undefined
+            });
+            console.log('[LevelingWindow] Gear window opened via hotkey');
           }
-        });
+        }
+      });
+      if (success) {
         this.registeredHotkeys.push(hotkeys.gear);
         console.log('[LevelingWindow] Registered gear hotkey:', hotkeys.gear);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register gear hotkey:', hotkeys.gear, e);
       }
     }
 
     // Register notes hotkey
     if (hotkeys.notes) {
-      try {
-        globalShortcut.register(hotkeys.notes, () => {
-          if (isNotesWindowOpen()) {
-            closeNotesWindow();
-            // Reassert leveling overlay order without stealing focus
-            try { bringToFront('leveling'); } catch {}
-            console.log('[LevelingWindow] Notes window closed via hotkey');
-          } else {
-            const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-            const pobBuild = (currentSettings as any).pobBuild || null;
-            if (pobBuild) {
-              openLevelingNotesWindow({
-                settingsService: this.settingsService,
-                overlayVersion: this.overlayVersion,
-                parentWindow: this.window || undefined
-              });
-              console.log('[LevelingWindow] Notes window opened via hotkey');
-            }
+      const success = levelingHotkeyManager.register('notes', hotkeys.notes, () => {
+        if (isNotesWindowOpen()) {
+          closeNotesWindow();
+          // Reassert leveling overlay order without stealing focus
+          try { bringToFront('leveling'); } catch {}
+          console.log('[LevelingWindow] Notes window closed via hotkey');
+        } else {
+          const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+          const pobBuild = (currentSettings as any).pobBuild || null;
+          if (pobBuild) {
+            openLevelingNotesWindow({
+              settingsService: this.settingsService,
+              overlayVersion: this.overlayVersion,
+              parentWindow: this.window || undefined
+            });
+            console.log('[LevelingWindow] Notes window opened via hotkey');
           }
-        });
+        }
+      });
+      if (success) {
         this.registeredHotkeys.push(hotkeys.notes);
         console.log('[LevelingWindow] Registered notes hotkey:', hotkeys.notes);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register notes hotkey:', hotkeys.notes, e);
       }
     }
 
     // Register PoB Info Bar toggle hotkey
     if ((hotkeys as any).pobBar) {
       const accel = (hotkeys as any).pobBar as string;
-      try {
-        globalShortcut.register(accel, () => {
-          const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-          const pobBuild = (currentSettings as any).pobBuild || null;
-          if (isPobInfoBarOpen()) {
-            closePobInfoBar();
-            // Reassert leveling overlay order without stealing focus
-            try { bringToFront('leveling'); } catch {}
-            console.log('[LevelingWindow] PoB Info Bar closed via hotkey');
-          } else if (pobBuild) {
-            const currentActIndex = (currentSettings as any)?.currentActIndex ?? 0;
-            openPobInfoBar({
-              settingsService: this.settingsService,
-              overlayVersion: this.overlayVersion,
-              pobBuild,
-              currentAct: currentActIndex + 1,
-            });
-            console.log('[LevelingWindow] PoB Info Bar opened via hotkey');
-          } else {
-            console.log('[LevelingWindow] PoB Info Bar hotkey pressed but no build is loaded');
-          }
-        });
+      const success = levelingHotkeyManager.register('pobBar', accel, () => {
+        const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+        const pobBuild = (currentSettings as any).pobBuild || null;
+        if (isPobInfoBarOpen()) {
+          closePobInfoBar();
+          // Reassert leveling overlay order without stealing focus
+          try { bringToFront('leveling'); } catch {}
+          console.log('[LevelingWindow] PoB Info Bar closed via hotkey');
+        } else if (pobBuild) {
+          const currentActIndex = (currentSettings as any)?.currentActIndex ?? 0;
+          openPobInfoBar({
+            settingsService: this.settingsService,
+            overlayVersion: this.overlayVersion,
+            pobBuild,
+            currentAct: currentActIndex + 1,
+          });
+          console.log('[LevelingWindow] PoB Info Bar opened via hotkey');
+        } else {
+          console.log('[LevelingWindow] PoB Info Bar hotkey pressed but no build is loaded');
+        }
+      });
+      if (success) {
         this.registeredHotkeys.push(accel);
         console.log('[LevelingWindow] Registered PoB Info Bar hotkey:', accel);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register PoB Info Bar hotkey:', accel, e);
       }
     }
 
     // Register Leveling window toggle hotkey
     if ((hotkeys as any).leveling) {
       const accel = (hotkeys as any).leveling as string;
-      try {
-        globalShortcut.register(accel, () => {
-          // Toggle the main leveling window visibility
-          this.toggle();
-          console.log('[LevelingWindow] Leveling window toggled via hotkey');
-        });
+      const success = levelingHotkeyManager.register('leveling', accel, () => {
+        // Toggle the main leveling window visibility
+        this.toggle();
+        console.log('[LevelingWindow] Leveling window toggled via hotkey');
+      });
+      if (success) {
         this.registeredHotkeys.push(accel);
         console.log('[LevelingWindow] Registered Leveling window hotkey:', accel);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register Leveling window hotkey:', accel, e);
+      }
+    }
+
+    // Register Logout hotkey
+    if ((hotkeys as any).logout) {
+      const accel = (hotkeys as any).logout as string;
+      const success = levelingHotkeyManager.register('logout', accel, async () => {
+        console.log('[LevelingWindow] Logout hotkey pressed - executing /exit command');
+        await executeLogout();
+      });
+      if (success) {
+        this.registeredHotkeys.push(accel);
+        console.log('[LevelingWindow] Registered Logout hotkey:', accel);
+      }
+    }
+
+    // Register Custom Hotkeys
+    const customHotkeys = (settings as any).customHotkeys as CustomHotkey[] | undefined;
+    if (customHotkeys && customHotkeys.length > 0) {
+      for (const customHotkey of customHotkeys) {
+        if (customHotkey.hotkey) {
+          const success = levelingHotkeyManager.register(`custom-${customHotkey.id}`, customHotkey.hotkey, async () => {
+            console.log(`[LevelingWindow] Custom hotkey "${customHotkey.name}" pressed - pasting: ${customHotkey.command}`);
+            await typeInChat(customHotkey.command, customHotkey.pressEnter);
+          });
+          if (success) {
+            this.registeredHotkeys.push(customHotkey.hotkey);
+            console.log(`[LevelingWindow] Registered custom hotkey "${customHotkey.name}":`, customHotkey.hotkey);
+          }
+        }
       }
     }
   }

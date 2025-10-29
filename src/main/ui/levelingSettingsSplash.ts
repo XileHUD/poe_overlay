@@ -35,22 +35,38 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
   const clientTxtPathKey = overlayVersion === 'poe1' ? 'clientTxtPathPoe1' : 'clientTxtPathPoe2';
   const clientTxtPath = settingsService.get(clientTxtPathKey) || 'Not configured';
   
-  // Window dimensions
-  const splashWidth = 675;
-  const splashHeight = 475; // Increased by 20% from 396
+  // Get saved window state (position and size)
+  const settingsWindowKey = overlayVersion === 'poe1' ? 'levelingSettingsWindowPoe1' : 'levelingSettingsWindowPoe2';
+  const savedWindowState = settingsService.get(settingsWindowKey) || {};
   
-  // Try to center on screen
-  let initialX = Math.floor((screen.getPrimaryDisplay().workAreaSize.width - splashWidth) / 2);
-  let initialY = Math.floor((screen.getPrimaryDisplay().workAreaSize.height - splashHeight) / 2);
+  // Window dimensions with defaults
+  const defaultWidth = 675;
+  const defaultHeight = 475;
+  const savedWidth = savedWindowState.size?.width || defaultWidth;
+  const savedHeight = savedWindowState.size?.height || defaultHeight;
+  
+  // Position: use saved position or center on screen
+  let initialX: number;
+  let initialY: number;
+  
+  if (savedWindowState.position) {
+    initialX = savedWindowState.position.x;
+    initialY = savedWindowState.position.y;
+  } else {
+    initialX = Math.floor((screen.getPrimaryDisplay().workAreaSize.width - savedWidth) / 2);
+    initialY = Math.floor((screen.getPrimaryDisplay().workAreaSize.height - savedHeight) / 2);
+  }
 
   const window = new BrowserWindow({
-    width: splashWidth,
-    height: splashHeight,
+    width: savedWidth,
+    height: savedHeight,
+    minWidth: 600,
+    minHeight: 400,
     x: initialX,
     y: initialY,
     frame: false,
     transparent: true,
-    resizable: false,
+    resizable: true,
     alwaysOnTop: true,
     skipTaskbar: true,
     show: false,
@@ -67,6 +83,29 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
   // Register for managed z-order and visibility
   try { registerOverlayWindow('levelingSettings', window); } catch {}
 
+  // Save position and size when moved or resized
+  let saveTimeout: NodeJS.Timeout | null = null;
+  
+  const saveWindowState = () => {
+    if (window.isDestroyed()) return;
+    
+    const [x, y] = window.getPosition();
+    const [width, height] = window.getSize();
+    
+    settingsService.update(settingsWindowKey, () => ({
+      position: { x, y },
+      size: { width, height }
+    }));
+  };
+  
+  const debouncedSave = () => {
+    if (saveTimeout) clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(saveWindowState, 500);
+  };
+  
+  window.on('move', debouncedSave);
+  window.on('resize', debouncedSave);
+
   // Build HTML
   const html = buildLevelingSettingsSplashHtml(currentSettings, overlayVersion, clientTxtPath);
   
@@ -79,11 +118,13 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
   // Handle close button
   ipcMain.once('leveling-settings-close', () => {
     if (!window.isDestroyed()) {
+      saveWindowState(); // Final save before closing
       window.close();
     }
   });
 
   window.on('closed', () => {
+    if (saveTimeout) clearTimeout(saveTimeout);
     activeSettingsWindow = null;
   });
 }
@@ -116,6 +157,39 @@ function buildLevelingSettingsSplashHtml(
   const hotkeyNotes = hotkeys.notes || 'Not Set';
   const hotkeyPobBar = hotkeys.pobBar || 'Not Set';
   const hotkeyLeveling = hotkeys.leveling || 'Not Set';
+  const hotkeyLogout = hotkeys.logout || 'Not Set';
+  
+  // Extract custom hotkeys with default examples if not present
+  const customHotkeys = currentSettings.customHotkeys || [
+    {
+      id: 'default-hideout',
+      name: 'Hideout',
+      command: '/hideout',
+      hotkey: 'Not Set',
+      pressEnter: true
+    },
+    {
+      id: 'default-dnd',
+      name: 'Do not disturb',
+      command: '/dnd',
+      hotkey: 'Not Set',
+      pressEnter: true
+    },
+    {
+      id: 'default-passives',
+      name: 'Passives',
+      command: '/passives',
+      hotkey: 'Not Set',
+      pressEnter: true
+    },
+    {
+      id: 'default-movement',
+      name: 'Movement speed / 3+Links',
+      command: '-\\w-.-|(-\\w){4}|(-\\w){5}|-\\w-|Runn|rint',
+      hotkey: 'Not Set',
+      pressEnter: false
+    }
+  ];
   
   return `
 <!DOCTYPE html>
@@ -475,6 +549,112 @@ function buildLevelingSettingsSplashHtml(
       background: rgba(217, 83, 79, 0.1);
       border-color: rgba(217, 83, 79, 0.5);
     }
+
+    .custom-hotkey-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 10px;
+      transition: all 0.2s;
+    }
+
+    .custom-hotkey-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .custom-hotkey-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .custom-hotkey-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .custom-hotkey-name {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      color: #e0e0e0;
+      padding: 6px 10px;
+      font-size: 11px;
+      outline: none;
+      transition: all 0.15s;
+    }
+
+    .custom-hotkey-name:focus {
+      border-color: var(--accent-green);
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .custom-hotkey-command {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      color: #e0e0e0;
+      padding: 6px 10px;
+      font-size: 10px;
+      font-family: 'Courier New', monospace;
+      outline: none;
+      transition: all 0.15s;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .custom-hotkey-command:focus {
+      border-color: var(--accent-green);
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .custom-hotkey-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .hotkey-delete {
+      background: transparent;
+      border: 1px solid rgba(217, 83, 79, 0.3);
+      color: var(--accent-red);
+      padding: 4px 8px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.15s;
+      line-height: 1;
+    }
+
+    .hotkey-delete:hover {
+      background: rgba(217, 83, 79, 0.2);
+      border-color: rgba(217, 83, 79, 0.6);
+    }
+
+    .custom-hotkey-enter-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.7);
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .custom-hotkey-enter-toggle input[type="checkbox"] {
+      cursor: pointer;
+      width: 14px;
+      height: 14px;
+    }
+
+    .custom-hotkey-enter-toggle:hover {
+      color: rgba(255, 255, 255, 0.9);
+    }
     
     ::-webkit-scrollbar {
       width: 8px;
@@ -736,11 +916,73 @@ function buildLevelingSettingsSplashHtml(
             <button class="hotkey-clear" onclick="clearHotkey('leveling')">Clear</button>
           </div>
         </div>
+
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Quick Logout</div>
+            <div class="setting-description">Instantly logout using /exit command (safer than TCP disconnect)</div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div class="hotkey-input" id="hotkey-logout" onclick="captureHotkey('logout')">${hotkeyLogout}</div>
+            <button class="hotkey-clear" onclick="clearHotkey('logout')">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="setting-group" style="margin-top: 24px;">
+        <h3 class="setting-group-title">Custom Hotkeys</h3>
+        <div class="setting-description" style="margin-bottom: 16px; opacity: 0.8; font-size: 11px;">
+          Create custom hotkeys to paste commands or search patterns (e.g., regex for item filtering). Toggle "Enter" to press Enter after pasting.
+        </div>
+        
+        <div id="custom-hotkeys-list">
+          ${customHotkeys.map((hotkey: any, index: number) => `
+            <div class="custom-hotkey-item" data-index="${index}" data-id="${hotkey.id}">
+              <div class="custom-hotkey-row">
+                <input 
+                  type="text" 
+                  class="custom-hotkey-name" 
+                  placeholder="Name (e.g., Movement Boots)" 
+                  value="${hotkey.name}"
+                  onchange="updateCustomHotkey(${index}, 'name', this.value)"
+                />
+                <div class="custom-hotkey-actions">
+                  <button class="hotkey-delete" onclick="deleteCustomHotkey(${index})" title="Delete">✕</button>
+                </div>
+              </div>
+              <div class="custom-hotkey-row">
+                <input 
+                  type="text" 
+                  class="custom-hotkey-command" 
+                  placeholder="Command or regex (e.g., /hideout or -\\w-.-)" 
+                  value="${hotkey.command.replace(/"/g, '&quot;')}"
+                  onchange="updateCustomHotkey(${index}, 'command', this.value)"
+                  title="${hotkey.command}"
+                />
+              </div>
+              <div class="custom-hotkey-row">
+                <div class="hotkey-input" id="custom-hotkey-${index}" onclick="captureCustomHotkey(${index})">${hotkey.hotkey}</div>
+                <button class="hotkey-clear" onclick="clearCustomHotkey(${index})">Clear</button>
+                <label class="custom-hotkey-enter-toggle" title="Press Enter after pasting">
+                  <input 
+                    type="checkbox" 
+                    ${hotkey.pressEnter ? 'checked' : ''}
+                    onchange="updateCustomHotkey(${index}, 'pressEnter', this.checked)"
+                  />
+                  <span>Enter</span>
+                </label>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        
+        <button class="action-btn" style="margin-top: 12px;" onclick="addCustomHotkey()">+ Add Custom Hotkey</button>
       </div>
 
       <div class="info-box">
         <strong>How to set hotkeys:</strong> Click on a hotkey field and press your desired key combination.
-        Supports modifiers like Ctrl, Alt, Shift. Examples: F1, Ctrl+N, Alt+G, Shift+T
+        Supports modifiers like Ctrl, Alt, Shift. Numpad keys are supported (e.g., Numpad5, Ctrl + Numpad3).
+        Examples: F1, Ctrl+N, Alt+G, Shift+T, Numpad5
       </div>
     </div>
     
@@ -1143,49 +1385,69 @@ function buildLevelingSettingsSplashHtml(
 
         const hotkeyName = capturingHotkeyFor;
         
-        // Build accelerator string
+        // Build UIOhook-compatible hotkey string
         const modifiers = [];
         if (e.ctrlKey) modifiers.push('Ctrl');
         if (e.altKey) modifiers.push('Alt');
         if (e.shiftKey) modifiers.push('Shift');
         
-        // Get the key name
-        let key = e.key;
+        // Get the key name - IMPORTANT: Detect numpad keys!
+        let key = '';
         
-        // Normalize key names for Electron accelerator format
-        const keyMap = {
-          ' ': 'Space',
-          'ArrowUp': 'Up',
-          'ArrowDown': 'Down',
-          'ArrowLeft': 'Left',
-          'ArrowRight': 'Right',
-          'Delete': 'Delete',
-          'Insert': 'Insert',
-          'Home': 'Home',
-          'End': 'End',
-          'PageUp': 'PageUp',
-          'PageDown': 'PageDown'
-        };
+        // Check if numpad key using keyCode and location
+        const isNumpad = e.location === 3; // KeyboardEvent.DOM_KEY_LOCATION_NUMPAD
         
-        if (keyMap[key]) {
-          key = keyMap[key];
-        } else if (key.length === 1) {
-          key = key.toUpperCase();
-        } else if (key.startsWith('F') && !isNaN(key.substring(1))) {
-          // F1-F24 keys are already in correct format
-          key = key;
+        if (isNumpad) {
+          // Numpad keys - map to Numpad0-9 etc
+          const numpadMap = {
+            '0': 'Numpad0', '1': 'Numpad1', '2': 'Numpad2', '3': 'Numpad3', '4': 'Numpad4',
+            '5': 'Numpad5', '6': 'Numpad6', '7': 'Numpad7', '8': 'Numpad8', '9': 'Numpad9',
+            '.': 'NumpadDecimal', '/': 'NumpadDivide', '*': 'NumpadMultiply',
+            '-': 'NumpadSubtract', '+': 'NumpadAdd'
+          };
+          key = numpadMap[e.key] || e.key;
+        } else {
+          // Regular keys
+          const keyMap = {
+            ' ': 'Space',
+            'ArrowUp': 'ArrowUp',
+            'ArrowDown': 'ArrowDown',
+            'ArrowLeft': 'ArrowLeft',
+            'ArrowRight': 'ArrowRight',
+            'Delete': 'Delete',
+            'Insert': 'Insert',
+            'Home': 'Home',
+            'End': 'End',
+            'PageUp': 'PageUp',
+            'PageDown': 'PageDown',
+            'Enter': 'Enter',
+            'Tab': 'Tab',
+            'Backspace': 'Backspace'
+          };
+          
+          if (keyMap[e.key]) {
+            key = keyMap[e.key];
+          } else if (e.key.length === 1) {
+            key = e.key.toUpperCase();
+          } else if (e.key.startsWith('F') && !isNaN(e.key.substring(1))) {
+            // F1-F24 keys are already in correct format
+            key = e.key;
+          } else {
+            // Fallback to key as-is
+            key = e.key;
+          }
         }
         
-        // Build full accelerator
+        // Build full hotkey string (UIOhook format)
         const parts = [...modifiers, key];
-        const accelerator = parts.join('+');
+        const hotkeyString = parts.join(' + ');
         
         // Update display
-        inputEl.textContent = accelerator || 'Not Set';
+        inputEl.textContent = hotkeyString || 'Not Set';
         inputEl.classList.remove('recording');
         
         // Save hotkey
-        updateHotkey(hotkeyName, accelerator);
+        updateHotkey(hotkeyName, hotkeyString);
         
         // Cleanup listener
         capturingHotkeyFor = null;
@@ -1209,6 +1471,126 @@ function buildLevelingSettingsSplashHtml(
         hotkeyName, 
         accelerator 
       });
+    }
+    
+    // Custom Hotkey Management
+    let customHotkeysData = ${JSON.stringify(customHotkeys)};
+    
+    function captureCustomHotkey(index) {
+      const inputEl = document.getElementById('custom-hotkey-' + index);
+      inputEl.classList.add('recording');
+      inputEl.textContent = 'Press a key...';
+      
+      const handleKey = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        const parts = [];
+        if (event.ctrlKey || event.metaKey) parts.push('Ctrl');
+        if (event.altKey) parts.push('Alt');
+        if (event.shiftKey) parts.push('Shift');
+        
+        let key = event.key;
+        if (key === ' ') key = 'Space';
+        if (key === 'Control' || key === 'Alt' || key === 'Shift' || key === 'Meta') {
+          return; // Don't accept modifier-only
+        }
+        
+        // Handle numpad keys
+        if (event.code && event.code.startsWith('Numpad')) {
+          key = event.code; // e.g., "Numpad5"
+        }
+        
+        parts.push(key);
+        const accelerator = parts.join('+');
+        
+        inputEl.textContent = accelerator;
+        inputEl.classList.remove('recording');
+        
+        customHotkeysData[index].hotkey = accelerator;
+        updateCustomHotkeys();
+        
+        document.removeEventListener('keydown', handleKey);
+      };
+      
+      document.addEventListener('keydown', handleKey);
+    }
+    
+    function clearCustomHotkey(index) {
+      const inputEl = document.getElementById('custom-hotkey-' + index);
+      inputEl.textContent = 'Not Set';
+      customHotkeysData[index].hotkey = 'Not Set';
+      updateCustomHotkeys();
+    }
+    
+    function updateCustomHotkey(index, field, value) {
+      customHotkeysData[index][field] = value;
+      updateCustomHotkeys();
+    }
+    
+    function deleteCustomHotkey(index) {
+      customHotkeysData.splice(index, 1);
+      updateCustomHotkeys();
+      rebuildCustomHotkeys();
+    }
+    
+    function addCustomHotkey() {
+      const newHotkey = {
+        id: 'custom-' + Date.now(),
+        name: '',
+        command: '',
+        hotkey: 'Not Set',
+        pressEnter: false
+      };
+      customHotkeysData.push(newHotkey);
+      updateCustomHotkeys();
+      rebuildCustomHotkeys();
+    }
+    
+    function updateCustomHotkeys() {
+      ipcRenderer.send('leveling-custom-hotkeys-update', customHotkeysData);
+    }
+    
+    function rebuildCustomHotkeys() {
+      const container = document.getElementById('custom-hotkeys-list');
+      container.innerHTML = customHotkeysData.map((hotkey, index) => \`
+        <div class="custom-hotkey-item" data-index="\${index}" data-id="\${hotkey.id}">
+          <div class="custom-hotkey-row">
+            <input 
+              type="text" 
+              class="custom-hotkey-name" 
+              placeholder="Name (e.g., Movement Boots)" 
+              value="\${hotkey.name}"
+              onchange="updateCustomHotkey(\${index}, 'name', this.value)"
+            />
+            <div class="custom-hotkey-actions">
+              <button class="hotkey-delete" onclick="deleteCustomHotkey(\${index})" title="Delete">✕</button>
+            </div>
+          </div>
+          <div class="custom-hotkey-row">
+            <input 
+              type="text" 
+              class="custom-hotkey-command" 
+              placeholder="Command or regex (e.g., /hideout or -\\\\w-.-)" 
+              value="\${hotkey.command.replace(/"/g, '&quot;')}"
+              onchange="updateCustomHotkey(\${index}, 'command', this.value)"
+              title="\${hotkey.command}"
+            />
+          </div>
+          <div class="custom-hotkey-row">
+            <div class="hotkey-input" id="custom-hotkey-\${index}" onclick="captureCustomHotkey(\${index})">\${hotkey.hotkey}</div>
+            <button class="hotkey-clear" onclick="clearCustomHotkey(\${index})">Clear</button>
+            <label class="custom-hotkey-enter-toggle" title="Press Enter after pasting">
+              <input 
+                type="checkbox" 
+                \${hotkey.pressEnter ? 'checked' : ''}
+                onchange="updateCustomHotkey(\${index}, 'pressEnter', this.checked)"
+              />
+              <span>Enter</span>
+            </label>
+          </div>
+        </div>
+      \`).join('');
     }
     
     
