@@ -22,11 +22,17 @@ interface TreeWindowState {
   width: number;
   height: number;
   ultraMinimal?: boolean;
+  viewBox?: {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+  };
 }
 
-function saveTreeWindowBounds(bounds: { x: number; y: number; width: number; height: number }, ultraMinimal?: boolean) {
+function saveTreeWindowBounds(bounds: { x: number; y: number; width: number; height: number }, ultraMinimal?: boolean, viewBox?: { x: number; y: number; width: number; height: number }) {
   try {
-    const state: TreeWindowState = { ...bounds, ultraMinimal };
+    const state: TreeWindowState = { ...bounds, ultraMinimal, viewBox };
     fs.writeFileSync(TREE_WINDOW_BOUNDS_FILE, JSON.stringify(state), 'utf-8');
   } catch (err) {
     console.error('[Tree Window] Failed to save bounds:', err);
@@ -417,6 +423,25 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
     let lastPanPosition = { x: 0, y: 0 };
     let isUltraMinimal = ${ultraMinimal};
     let autoDetectEnabled = true; // Track auto-detect setting
+    let viewBoxSaveTimer = null; // Debounce timer for saving viewBox
+
+    // Debounced function to save viewBox state
+    function saveViewBoxState(svgElement) {
+      if (viewBoxSaveTimer) clearTimeout(viewBoxSaveTimer);
+      viewBoxSaveTimer = setTimeout(() => {
+        if (!svgElement) return;
+        const vb = svgElement.viewBox.baseVal;
+        if (vb && vb.width > 0 && vb.height > 0) {
+          const viewBoxData = {
+            x: vb.x,
+            y: vb.y,
+            width: vb.width,
+            height: vb.height
+          };
+          ipcRenderer.send('tree-window-viewbox-changed', viewBoxData);
+        }
+      }, 500); // Save 500ms after user stops zooming/panning
+    }
 
     window.addEventListener('error', (event) => {
       console.error('[Tree Window] Uncaught error:', event.message, event.filename, event.lineno, event.colno);
@@ -429,7 +454,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
         return;
       }
 
-      const { specs, treeSvg, viewBox, treeData, gameVersion, currentAct, characterLevel, autoDetectEnabled: autoDetectFromPayload, savedTreeIndex } = payload;
+      const { specs, treeSvg, viewBox, treeData, gameVersion, currentAct, characterLevel, autoDetectEnabled: autoDetectFromPayload, savedTreeIndex, savedViewBox } = payload;
 
       if (!specs || specs.length === 0) {
         console.error('[Tree Window] No specs received!');
@@ -478,6 +503,17 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       populateSelector();
       console.log('[Tree Window] Calling renderTree...');
       renderTree();
+      
+      // Apply saved viewBox (zoom/pan state) if available
+      if (savedViewBox && savedViewBox.x !== undefined && savedViewBox.y !== undefined && savedViewBox.width && savedViewBox.height) {
+        setTimeout(() => {
+          const svgElement = document.querySelector('#tree-svg svg');
+          if (svgElement) {
+            svgElement.setAttribute('viewBox', savedViewBox.x + ' ' + savedViewBox.y + ' ' + savedViewBox.width + ' ' + savedViewBox.height);
+            console.log('[Tree Window] Applied saved viewBox:', savedViewBox);
+          }
+        }, 100); // Small delay to ensure SVG is rendered
+      }
       
       // Setup tooltips after tree data is loaded
       setupNodeTooltips();
@@ -1006,6 +1042,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       const centerY = rect.height / 2;
       
       zoomViewBoxToPoint(svgElement, centerX, centerY, 0.8); // Smaller viewBox = zoom in
+      saveViewBoxState(svgElement);
     }
 
     function zoomOut() {
@@ -1018,6 +1055,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       const centerY = rect.height / 2;
       
       zoomViewBoxToPoint(svgElement, centerX, centerY, 1.25); // Bigger viewBox = zoom out
+      saveViewBoxState(svgElement);
     }
 
     function resetZoom() {
@@ -1026,6 +1064,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       
       const base = window.treeViewBoxBase;
       svgElement.setAttribute('viewBox', base.x + ' ' + base.y + ' ' + base.w + ' ' + base.h);
+      saveViewBoxState(svgElement);
     }
 
     function zoomViewBoxToPoint(svgElement, screenX, screenY, scaleFactor) {
@@ -1101,11 +1140,17 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
     viewport.addEventListener('mouseup', () => {
       isPanning = false;
       viewport.classList.remove('panning');
+      // Save viewBox after panning stops
+      const svgElement = document.querySelector('#tree-svg svg');
+      if (svgElement) saveViewBoxState(svgElement);
     });
 
     viewport.addEventListener('mouseleave', () => {
       isPanning = false;
       viewport.classList.remove('panning');
+      // Save viewBox after panning stops
+      const svgElement = document.querySelector('#tree-svg svg');
+      if (svgElement) saveViewBoxState(svgElement);
     });
 
     viewport.addEventListener('wheel', (e) => {
@@ -1121,6 +1166,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       // Zoom toward/away from mouse cursor
       const scaleFactor = e.deltaY > 0 ? 1.25 : 0.8;
       zoomViewBoxToPoint(svgElement, mouseX, mouseY, scaleFactor);
+      saveViewBoxState(svgElement);
     });
 
     // Setup node hover tooltips if setting is enabled
@@ -1322,6 +1368,14 @@ export function createPassiveTreeWindow(): BrowserWindow {
     saveTreeWindowBounds(bounds, currentUltraMinimal);
   });
 
+  // Handle viewBox state changes (zoom/pan)
+  ipcMain.on('tree-window-viewbox-changed', (event, viewBox: { x: number; y: number; width: number; height: number }) => {
+    if (!treeWindow || treeWindow.isDestroyed()) return;
+    // Save the viewBox state along with bounds
+    const bounds = treeWindow.getBounds();
+    saveTreeWindowBounds(bounds, currentUltraMinimal, viewBox);
+  });
+
   return treeWindow;
 }
 
@@ -1383,6 +1437,10 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     savedTreeIndex,
   });
 
+  // Load saved viewBox state
+  const savedBounds = loadTreeWindowBounds();
+  const savedViewBox = savedBounds?.viewBox;
+
   treeWindow.webContents.send('tree-data-update', {
     specs: filteredSpecs,
     treeSvg,
@@ -1393,6 +1451,7 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     characterLevel,
     autoDetectEnabled,
     savedTreeIndex,
+    savedViewBox,
   });
 }
 
