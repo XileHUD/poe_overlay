@@ -37,7 +37,7 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
   
   // Window dimensions
   const splashWidth = 675;
-  const splashHeight = 396;
+  const splashHeight = 475; // Increased by 20% from 396
   
   // Try to center on screen
   let initialX = Math.floor((screen.getPrimaryDisplay().workAreaSize.width - splashWidth) / 2);

@@ -169,7 +169,14 @@ export class FeatureService {
           ...(stored.poe1Items?.subcategories || {})
         }
       },
-      tools: stored.tools || DEFAULT_FEATURES.tools
+      tools: {
+        ...DEFAULT_FEATURES.tools,
+        ...(stored.tools || {}),
+        subcategories: {
+          ...DEFAULT_FEATURES.tools.subcategories,
+          ...(stored.tools?.subcategories || {})
+        }
+      }
     };
 
   const legacyAnnoints = (stored.crafting?.subcategories as any)?.annoints;

@@ -151,7 +151,21 @@ export class LevelingWindow {
         contextIsolation: false,
         backgroundThrottling: false,
         webSecurity: false,
+        devTools: true, // Enable DevTools for debugging
       },
+    });
+
+    // Enable F12 to open DevTools
+    this.window.webContents.on('before-input-event', (event, input) => {
+      if (input.key === 'F12' && input.type === 'keyDown') {
+        if (this.window && !this.window.isDestroyed()) {
+          if (this.window.webContents.isDevToolsOpened()) {
+            this.window.webContents.closeDevTools();
+          } else {
+            this.window.webContents.openDevTools({ mode: 'detach' });
+          }
+        }
+      }
     });
 
     // Set higher z-order (platform-tuned)
@@ -476,6 +490,17 @@ export class LevelingWindow {
         uiSettings: uiSettings
       }));
       
+      return true;
+    });
+
+    // Save character info
+    ipcMain.handle('set-character-info', async (event, info: { name?: string, class?: string, level?: number }) => {
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+        ...c,
+        characterName: info.name !== undefined ? info.name : c?.characterName,
+        characterClass: info.class !== undefined ? info.class : c?.characterClass,
+        characterLevel: info.level !== undefined ? info.level : c?.characterLevel
+      }));
       return true;
     });
 
@@ -1099,6 +1124,7 @@ export class LevelingWindow {
   private clientTxtWatcher: fs.FSWatcher | null = null;
   private clientTxtPath: string | null = null;
   private lastFilePosition: number = 0;
+  private seenZones: Array<{ zone: string; timestamp: number }> = []; // Track all zones in chronological order
 
   /**
    * Try to find the Path of Exile installation directory by looking for running processes
@@ -1397,23 +1423,47 @@ export class LevelingWindow {
       let matchCount = 0;
       
       if (this.overlayVersion === 'poe1') {
-        // POE1: Zone detection
-        const zoneRegex = /\[INFO Client \d+\] : You have entered (.+)\./g;
-        let match;
+        // POE1: Zone detection with line-by-line processing
+        const lines = newContent.split('\n');
         
-        while ((match = zoneRegex.exec(newContent)) !== null) {
-          const zoneName = match[1].trim();
-          matchCount++;
-          console.log(`[${matchCount}] POE1 Detected zone entry:`, zoneName);
-          
-          // Send to renderer to auto-check the step
-          if (this.window && !this.window.isDestroyed()) {
-            this.window.webContents.send('zone-entered', zoneName);
+        for (const line of lines) {
+          const zoneMatch = line.match(/\[INFO Client \d+\] : You have entered (.+)\./);
+          if (zoneMatch) {
+            const zoneName = zoneMatch[1].trim();
+            matchCount++;
+            console.log(`[${matchCount}] POE1 Detected zone entry:`, zoneName);
+            
+            // Extract timestamp from THIS specific line (format: 2025/10/29 12:40:21 9521312)
+            const timestampMatch = line.match(/(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2} \d+)/);
+            const timestamp = timestampMatch ? parseInt(timestampMatch[1].split(' ')[2]) : Date.now();
+            
+            // Check if we've already seen this exact zone entry
+            const alreadySeen = this.seenZones.some(z => z.zone === zoneName && z.timestamp === timestamp);
+            
+            if (!alreadySeen) {
+              // Add to seen zones
+              this.seenZones.push({ zone: zoneName, timestamp });
+              
+              // Keep only last 50 zones to prevent memory bloat
+              if (this.seenZones.length > 50) {
+                this.seenZones.shift();
+              }
+              
+              console.log(`[POE1] New zone detected: ${zoneName} (timestamp: ${timestamp})`);
+              
+              // Send to renderer to auto-check the step
+              if (this.window && !this.window.isDestroyed()) {
+                this.window.webContents.send('zone-entered', zoneName);
+              }
+            } else {
+              console.log(`[POE1] Skipping duplicate zone entry: ${zoneName}`);
+            }
           }
         }
 
         // POE1: Level-up detection
         const levelRegex = /\[INFO Client \d+\] : (.+?) \((\w+)\) is now level (\d+)/g;
+        let match;
         while ((match = levelRegex.exec(newContent)) !== null) {
           const [, characterName, className, levelStr] = match;
           const level = parseInt(levelStr, 10);
@@ -1446,37 +1496,84 @@ export class LevelingWindow {
           updateGearWindowContext(currentAct, level);
         }
       } else {
-        // POE2: Handle both formats, with or without parentheses around [Zone]
+        // POE2: Handle both formats with line-by-line processing
         // Examples observed:
         //   [SCENE] Set Source [Clearfell]
         //   [SCENE] Set Source ([Lioneye's Watch])
-        const zoneRegex = /\[INFO Client \d+\] \[SCENE\]\s*Set Source\s*\(?\[(.+?)\]\)?/g;
-        let match;
+        const lines = newContent.split('\n');
         
-        while ((match = zoneRegex.exec(newContent)) !== null) {
-          const zoneName = match[1].trim();
-          matchCount++;
-          console.log(`[${matchCount}] POE2 Detected zone entry:`, zoneName);
-          
-          // Send to renderer to auto-check the step
-          if (this.window && !this.window.isDestroyed()) {
-            this.window.webContents.send('zone-entered', zoneName);
+        for (const line of lines) {
+          // Check for SCENE format first
+          const sceneMatch = line.match(/\[INFO Client \d+\] \[SCENE\]\s*Set Source\s*\(?\[(.+?)\]\)?/);
+          if (sceneMatch) {
+            const zoneName = sceneMatch[1].trim();
+            matchCount++;
+            console.log(`[${matchCount}] POE2 Detected zone entry (SCENE):`, zoneName);
+            
+            // Extract timestamp from THIS specific line
+            const timestampMatch = line.match(/(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2} \d+)/);
+            const timestamp = timestampMatch ? parseInt(timestampMatch[1].split(' ')[2]) : Date.now();
+            
+            // Check if we've already seen this exact zone entry
+            const alreadySeen = this.seenZones.some(z => z.zone === zoneName && z.timestamp === timestamp);
+            
+            if (!alreadySeen) {
+              // Add to seen zones
+              this.seenZones.push({ zone: zoneName, timestamp });
+              
+              // Keep only last 50 zones to prevent memory bloat
+              if (this.seenZones.length > 50) {
+                this.seenZones.shift();
+              }
+              
+              console.log(`[POE2] New zone detected (SCENE): ${zoneName} (timestamp: ${timestamp})`);
+              
+              // Send to renderer to auto-check the step
+              if (this.window && !this.window.isDestroyed()) {
+                this.window.webContents.send('zone-entered', zoneName);
+              }
+            } else {
+              console.log(`[POE2] Skipping duplicate zone entry (SCENE): ${zoneName}`);
+            }
           }
-        }
-
-        // Fallback: also look for "You have entered <Zone>." lines which can appear in POE2
-        const enteredRegex = /\[INFO Client \d+\] : You have entered (.+)\./g;
-        while ((match = enteredRegex.exec(newContent)) !== null) {
-          const zoneName = match[1].trim();
-          matchCount++;
-          console.log(`[${matchCount}] POE2 Detected zone entry (fallback):`, zoneName);
-          if (this.window && !this.window.isDestroyed()) {
-            this.window.webContents.send('zone-entered', zoneName);
+          
+          // Fallback: also look for "You have entered <Zone>." format
+          const enteredMatch = line.match(/\[INFO Client \d+\] : You have entered (.+)\./);
+          if (enteredMatch) {
+            const zoneName = enteredMatch[1].trim();
+            matchCount++;
+            console.log(`[${matchCount}] POE2 Detected zone entry (fallback):`, zoneName);
+            
+            // Extract timestamp from THIS specific line
+            const timestampMatch = line.match(/(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2} \d+)/);
+            const timestamp = timestampMatch ? parseInt(timestampMatch[1].split(' ')[2]) : Date.now();
+            
+            // Check if we've already seen this exact zone entry
+            const alreadySeen = this.seenZones.some(z => z.zone === zoneName && z.timestamp === timestamp);
+            
+            if (!alreadySeen) {
+              // Add to seen zones
+              this.seenZones.push({ zone: zoneName, timestamp });
+              
+              // Keep only last 50 zones to prevent memory bloat
+              if (this.seenZones.length > 50) {
+                this.seenZones.shift();
+              }
+              
+              console.log(`[POE2] New zone detected (fallback): ${zoneName} (timestamp: ${timestamp})`);
+              
+              if (this.window && !this.window.isDestroyed()) {
+                this.window.webContents.send('zone-entered', zoneName);
+              }
+            } else {
+              console.log(`[POE2] Skipping duplicate zone entry (fallback): ${zoneName}`);
+            }
           }
         }
 
         // POE2: Level-up detection
         const levelRegex = /\[INFO Client \d+\] : (.+?) \((\w+)\) is now level (\d+)/g;
+        let match;
         while ((match = levelRegex.exec(newContent)) !== null) {
           const [, characterName, className, levelStr] = match;
           const level = parseInt(levelStr, 10);
@@ -1630,81 +1727,51 @@ export class LevelingWindow {
       
       const uniqueGems = extractUniqueGems(allSocketGroups);
       
-      // Match gems to quest steps using quest data
-      const gemsWithQuests = matchGemsToQuestSteps(uniqueGems, this.levelingData, build.className);
+      // Extract gems without quest matching - matching happens at render time per-step
+      const pobGems = matchGemsToQuestSteps(uniqueGems, this.levelingData, build.className);
 
-      console.log('[PoB Import] Gems extracted:', gemsWithQuests.length, 'unique gems from all acts');
+      console.log('[PoB Import] Extracted', pobGems.length, 'unique gems for dynamic matching');
       
-      // Create a map of gem name -> quest info for easy lookup
-      const gemQuestMap = new Map<string, any>();
-      for (const gem of gemsWithQuests) {
-        gemQuestMap.set(gem.name.toLowerCase(), gem);
-      }
-      
-      // Enrich socket groups with quest info
+      // Enrich socket groups with gem names for display
       const enrichedSocketGroups = build.gems.map(group => ({
         ...group,
         gems: group.gems.map(gem => {
-          const questInfo = gemQuestMap.get((gem.nameSpec || '').toLowerCase());
-          return questInfo ? { ...gem, ...questInfo } : gem;
+          const matchedGem = pobGems.find(g => g.name.toLowerCase() === (gem.nameSpec || '').toLowerCase());
+          return matchedGem ? { ...gem, ...matchedGem } : gem;
         })
       }));
 
-      // Enrich ALL skill sets with quest info (not just the first one)
+      // Enrich ALL skill sets with gem info (not just the first one)
       const enrichedSkillSets = (build.skillSets || []).map(skillSet => ({
         ...skillSet,
         socketGroups: skillSet.socketGroups.map(group => ({
           ...group,
           gems: group.gems.map(gem => {
-            const questInfo = gemQuestMap.get((gem.nameSpec || '').toLowerCase());
-            return questInfo ? { ...gem, ...questInfo } : gem;
+            const matchedGem = pobGems.find(g => g.name.toLowerCase() === (gem.nameSpec || '').toLowerCase());
+            return matchedGem ? { ...gem, ...matchedGem } : gem;
           })
         }))
       }));
 
-      console.log('[PoB Import] Enriched', enrichedSkillSets.length, 'skill sets with quest data');
+      console.log('[PoB Import] Enriched', enrichedSkillSets.length, 'skill sets with gem data');
 
-      // Create a flat list of ALL gems from ALL enriched skill sets (preserving per-act data)
-      // Use a Map to deduplicate by (gemName + act + quest) to avoid showing same gem multiple times
-      const gemMap = new Map<string, any>();
+      // Store the flat gem list for dynamic matching at render time
+      // No quest data attached - matching happens per-step
+      const allGems = pobGems.map(gem => ({
+        name: gem.name,
+        level: gem.level || 1,
+        quality: 0,
+        enabled: true,
+        isSupport: gem.isSupport,
+        act: 0, // Will be determined at render time
+        quest: undefined,
+        vendor: undefined,
+        rewardType: undefined as 'quest' | 'vendor' | undefined,
+        availableFrom: undefined,
+        skillSetTitle: gem.skillSetTitle // Preserve skillSet title
+      }));
       
-      for (const skillSet of enrichedSkillSets) {
-        for (const group of skillSet.socketGroups) {
-          for (const gem of group.gems) {
-            if (gem.enabled !== false && gem.nameSpec) {
-              // Create unique key: gemName + act + quest to deduplicate gems that appear in multiple skill sets
-              const uniqueKey = `${gem.nameSpec}|${gem.act || 0}|${gem.quest || 'none'}`;
-              
-              // Only add if not already present (prevents duplicates from multiple skill sets using same gems)
-              if (!gemMap.has(uniqueKey)) {
-                gemMap.set(uniqueKey, {
-                  name: gem.nameSpec,
-                  level: gem.level || 1,
-                  quality: gem.quality || 0,
-                  enabled: gem.enabled,
-                  // Quest info from enrichment
-                  act: gem.act,
-                  quest: gem.quest,
-                  vendor: gem.vendor,
-                  rewardType: gem.rewardType,
-                  isSupport: gem.isSupport,
-                  availableFrom: gem.availableFrom
-                });
-              }
-            }
-          }
-        }
-      }
-      
-      const allEnrichedGems = Array.from(gemMap.values());
-      
-      console.log('[PoB Import] Flattened', allEnrichedGems.length, 'unique enriched gems from all skill sets');
-      console.log('[PoB Import] Gems per act:', 
-        Array.from(new Set(allEnrichedGems.map(g => g.act)))
-          .sort()
-          .map(act => `Act ${act}: ${allEnrichedGems.filter(g => g.act === act).length} gems`)
-          .join(', ')
-      );
+      console.log('[PoB Import] Stored', allGems.length, 'gems for per-step matching');
 
       // Store PoB build in settings
       const pobBuild: StoredPobBuild = {
@@ -1716,9 +1783,9 @@ export class LevelingWindow {
   treeSpecs: treeSpecsToUse, // Store only non-empty specs
         allocatedNodes: allocatedNodes, // Current selected spec nodes
         treeProgression: treeProgression,
-        gems: allEnrichedGems, // Flat list of ALL gems from ALL skill sets with per-act quest info
-        socketGroups: enrichedSocketGroups, // Socket groups with quest info (from first skill set)
-        skillSets: enrichedSkillSets, // ALL skill sets with quest info enriched
+        gems: allGems, // Flat list of gems without quest data - matching happens at render time
+        socketGroups: enrichedSocketGroups, // Socket groups with gem info (from first skill set)
+        skillSets: enrichedSkillSets, // ALL skill sets with gem info enriched
         itemSets: build.itemSets, // Item sets (gear)
         treeVersion: build.treeVersion,
         notes: build.notes, // Notes from PoB Notes tab
@@ -1753,7 +1820,7 @@ export class LevelingWindow {
           ascendancyName: build.ascendancyName,
           level: build.level,
           totalNodes: firstTreeSpec.allocatedNodes.length,
-          gemsFound: gemsWithQuests.length
+          gemsFound: allGems.length
         }
       };
     } catch (error: any) {

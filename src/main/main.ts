@@ -395,6 +395,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
 
             this.migrateLegacyFeatureSplashFlag();
 
+            this.migrateLevelingOverlayDefault();
+
             this.migrateClipboardDelaySetting();
 
             this.initializeFontSize();
@@ -1005,6 +1007,52 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
         const next: Partial<Record<OverlayVersion, boolean>> = { ...(perVersion && typeof perVersion === 'object' ? perVersion : {}) };
         next.poe2 = true;
         this.settingsService.set('featureSplashSeen', next);
+    }
+
+    /**
+     * Enable leveling overlay by default for existing users upgrading from versions without it.
+     * This ensures users don't have to manually enable it in settings after upgrading.
+     */
+    private migrateLevelingOverlayDefault(): void {
+        if (!this.settingsService || !this.featureService) return;
+        
+        // Check if migration has already been done
+        const migrationDone = this.settingsService.get('levelingOverlayMigrated') === true;
+        if (migrationDone) return;
+        
+        // Get current config
+        const config = this.featureService.getConfig();
+        
+        // Check if tools is enabled but leveling subcategories are missing
+        // (indicating an upgrade from old version)
+        if (config.tools?.enabled) {
+            const subs = config.tools.subcategories || {};
+            const needsPoe2Migration = this.overlayVersion === 'poe2' && subs.poe2Leveling === undefined;
+            const needsPoe1Migration = this.overlayVersion === 'poe1' && subs.poe1Leveling === undefined;
+            
+            if (needsPoe2Migration || needsPoe1Migration) {
+                console.log('[Migration] Enabling leveling overlay by default for existing user');
+                
+                // Enable the appropriate leveling subcategory
+                if (needsPoe2Migration) {
+                    config.tools.subcategories.poe2Leveling = true;
+                }
+                if (needsPoe1Migration) {
+                    config.tools.subcategories.poe1Leveling = true;
+                }
+                
+                // Save updated config
+                try {
+                    this.featureService.saveConfig(config);
+                    console.log('[Migration] Leveling overlay enabled successfully');
+                } catch (err) {
+                    console.warn('[Migration] Failed to save leveling overlay config:', err);
+                }
+            }
+        }
+        
+        // Mark migration as done
+        this.settingsService.set('levelingOverlayMigrated', true);
     }
 
     private hasSeenFeatureSplash(version: OverlayVersion): boolean {
@@ -3285,6 +3333,13 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
             // Only update lastFetchAt on successful requests
             if (ok) {
                 this.lastHistoryFetchAt = Date.now();
+            }
+            
+            // Reset session state on 401 (expired/invalid session)
+            if (status === 401) {
+                this.lastHistoryFetchAt = 0;
+                this.poeAccountName = null;
+                console.log('[Main] Session expired (401) - reset session state');
             }
 
             if (targetLeague && targetLeague !== this.merchantHistoryLeague) {

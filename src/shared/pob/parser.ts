@@ -111,10 +111,15 @@ export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 
     // Extract gem skill sets (per-act presets)
     const skillSets = extractSkillSets(doc);
 
-    // Use the first skill set's socket groups as the default gem list (fallback to legacy <Skills>)
-    const gems = skillSets.length > 0
-      ? skillSets[0].socketGroups
-      : extractSocketGroups(doc.getElementsByTagName('Skills')[0] || null);
+    // Collect ALL gems from ALL skill sets (not just the first), fallback to legacy <Skills>
+    let gems: GemSocketGroup[] = [];
+    if (skillSets.length > 0) {
+      // Flatten all socketGroups from all skillSets into one array
+      gems = skillSets.flatMap(skillSet => skillSet.socketGroups);
+    } else {
+      // Fallback to legacy <Skills> element if no skillSets found
+      gems = extractSocketGroups(doc.getElementsByTagName('Skills')[0] || null);
+    }
 
     // Extract notes from <Notes> element
     const notesElement = doc.getElementsByTagName('Notes')[0];
@@ -160,7 +165,7 @@ function extractSkillSets(doc: Document): SkillSet[] {
       skillSetElement.getAttribute('name') ||
       `Skill Set ${index + 1}`;
 
-    const socketGroups = extractSocketGroups(skillSetElement);
+    const socketGroups = extractSocketGroups(skillSetElement, title); // Pass title to extractSocketGroups
     if (socketGroups.length > 0) {
       result.push({ title, socketGroups });
     }
@@ -169,7 +174,13 @@ function extractSkillSets(doc: Document): SkillSet[] {
   return result;
 }
 
-function extractSocketGroups(container: Element | null): GemSocketGroup[] {
+/**
+ * Extract gem socket groups from a given container element (could be <Skills> or <SkillSet>).
+ * @param container The XML element containing <Skill> elements
+ * @param skillSetTitle Optional title of the skillSet this belongs to (e.g. "Act 1", "Early maps")
+ * @returns Array of GemSocketGroup objects
+ */
+function extractSocketGroups(container: Element | null, skillSetTitle?: string): GemSocketGroup[] {
   const socketGroups: GemSocketGroup[] = [];
   if (!container) {
     return socketGroups;
@@ -215,7 +226,8 @@ function extractSocketGroups(container: Element | null): GemSocketGroup[] {
         quality,
         enabled: gemEnabled,
         skillId,
-        supportGem
+        supportGem,
+        skillSetTitle // Add the skillSet title to each gem
       });
     });
 
@@ -242,6 +254,84 @@ function extractSocketGroups(container: Element | null): GemSocketGroup[] {
 function extractItemSets(doc: Document): ItemSet[] {
   const result: ItemSet[] = [];
   const itemSetElements = Array.from(doc.getElementsByTagName('ItemSet'));
+
+  // If no explicit ItemSet elements, try to extract from root Items element (single-set builds)
+  if (itemSetElements.length === 0) {
+    const itemsElement = doc.getElementsByTagName('Items')[0];
+    if (itemsElement) {
+      const items: Record<string, Item> = {};
+      const usedItemIds = new Set<number>();
+      const slotElements = Array.from(itemsElement.getElementsByTagName('Slot'));
+
+      slotElements.forEach((slotElement) => {
+        const slotName = slotElement.getAttribute('name') || '';
+        const itemId = parseInt(slotElement.getAttribute('itemId') || '0', 10);
+
+        if (!slotName || !itemId) {
+          return;
+        }
+
+        const itemElement = findItemById(doc, itemId);
+        if (!itemElement) {
+          return;
+        }
+
+        const rawText = itemElement.textContent || '';
+        const item = parseItemText(itemId, rawText);
+        items[slotName] = item;
+        usedItemIds.add(itemId);
+      });
+
+      // Try to merge in tree-slotted jewels from the first Spec
+      try {
+        const normalize = (s: string) => (s || '')
+          .toLowerCase()
+          .replace(/[()\[\]]/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+        const isJewelish = (name?: string, base?: string) => {
+          const n = (name || '').toLowerCase();
+          const b = (base || '').toLowerCase();
+          return n.includes('jewel') || b.includes('jewel');
+        };
+
+        const specEls = Array.from(doc.getElementsByTagName('Spec'));
+        const firstSpec = specEls[0]; // Use first spec for single-set builds
+        if (firstSpec) {
+          const socketsEl = firstSpec.getElementsByTagName('Sockets')[0];
+          if (socketsEl) {
+            const socketEls = Array.from(socketsEl.getElementsByTagName('Socket'));
+            let jewelIndex = Object.keys(items).filter(k => k.startsWith('Jewel')).length + 1;
+            for (const se of socketEls) {
+              const idAttr = se.getAttribute('itemId');
+              if (!idAttr) continue;
+              const jid = parseInt(idAttr, 10);
+              if (!jid || usedItemIds.has(jid)) continue;
+              const itemElement = findItemById(doc, jid);
+              if (!itemElement) continue;
+              const rawText = itemElement.textContent || '';
+              const parsed = parseItemText(jid, rawText);
+              if (!isJewelish(parsed.name, parsed.baseName)) continue;
+              const key = `Jewel ${jewelIndex++}`;
+              items[key] = parsed;
+              usedItemIds.add(jid);
+            }
+          }
+        }
+      } catch {}
+
+      // Only add the default set if there are actually items
+      if (Object.keys(items).length > 0) {
+        result.push({
+          id: 1,
+          title: 'Gear',
+          useSecondWeaponSet: false,
+          items
+        });
+      }
+    }
+    return result;
+  }
 
   itemSetElements.forEach((itemSetElement) => {
     const id = parseInt(itemSetElement.getAttribute('id') || '1', 10);

@@ -8,7 +8,7 @@ Lightweight PoE1 and PoE2 item & modifier overlay – copy an item, see the data
 
 <br />
 
-<a href="https://discord.gg/9BUAW92AZv">💬 Join our Discord</a> • <a href="https://www.reddit.com/r/PathOfExile2/comments/1o1ed0n/i_was_frustrated_with_the_limited_merch_history/">Reddit Discussion</a>
+<a href="https://discord.gg/ePVpA95ReW">💬 Join our Discord</a> • <a href="https://www.reddit.com/r/PathOfExile2/comments/1o1ed0n/i_was_frustrated_with_the_limited_merch_history/">Reddit Discussion</a>
 
 <br />
 
@@ -48,6 +48,9 @@ A comprehensive leveling companion for both PoE1 (Acts 1-10) and PoE2 (Acts 1-7)
 - Speedrun timer with run history database, comparisons (best/previous/average), and detailed statistics
 - Customizable hotkeys for navigation, passive tree toggle, and gems window toggle
 - Leveling-only mode for minimal resource usage
+
+> **ℹ️ First-Time Setup**  
+> On first start, open the overlay with `Ctrl+Q` and navigate to **Tools → Leveling Overlay**. If you prefer to use only the leveling overlay, open the main settings and click the **Feature Selector** to uncheck everything except the leveling overlay. This will let you use only the leveling overlay, which opens with `Ctrl+Q` on start.
 
 _Images coming soon_
 
