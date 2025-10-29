@@ -252,17 +252,17 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     .timer-display{position:relative;cursor:help;}
     
     /* PoB Gem Compact Display Styles */
-    .pob-gem-compact{display:flex;align-items:center;gap:4px;padding:1px 0;font-size:calc(var(--font-size) - 1px);line-height:1.3;}
-    .pob-gem-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:3px;transition:all 0.12s;border:none;font-size:calc(var(--font-size) - 1px);flex-wrap:nowrap;}
+    .pob-gem-compact{display:flex;align-items:center;gap:4px;padding:1px 0;font-size:calc(var(--font-size) - 1px);line-height:1.3;width:100%;margin-right:8px;}
+    .pob-gem-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:3px;transition:all 0.12s;border:none;font-size:calc(var(--font-size) - 1px);flex-wrap:nowrap;flex:1;min-width:0;}
     .pob-gem-pill:hover{background:rgba(255,255,255,0.05);transform:translateX(1px);}
     .pob-gem-icon{font-size:9px;line-height:1;}
     .pob-gem-image{width:20px;height:20px;object-fit:contain;flex-shrink:0;}
     .pob-gem-image.poe2{border-radius:3px;border:1px solid rgba(74,158,255,0.3);background:rgba(0,0,0,0.3);padding:2px;}
     .pob-gem-verb{font-weight:500;color:rgba(255,255,255,0.85);font-size:calc(var(--font-size) - 2px);text-transform:uppercase;letter-spacing:0.3px;min-width:28px;flex-shrink:0;}
     .pob-gem-name-inline{font-weight:500;flex:0 1 auto;font-size:calc(var(--font-size) - 1px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px;}
-    .pob-gem-vendor{font-size:calc(var(--font-size) - 2px);color:rgba(255,255,255,0.4);font-style:italic;margin-left:auto;flex-shrink:0;white-space:nowrap;}
+    .pob-gem-vendor{font-size:calc(var(--font-size) - 2px);color:rgba(255,255,255,0.4);font-style:italic;flex-shrink:0;white-space:nowrap;min-width:50px;text-align:right;overflow:hidden;text-overflow:ellipsis;}
     .pob-gem-cost{font-size:10px;opacity:0.6;margin-left:4px;}
-    .pob-gem-set-tag{font-size:8px;padding:1px 4px;margin-left:6px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);border-radius:2px;color:rgba(255,255,255,0.45);font-weight:500;white-space:nowrap;cursor:default;}
+    .pob-gem-set-tag{font-size:8px;padding:1px 4px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);border-radius:2px;color:rgba(255,255,255,0.45);font-weight:500;white-space:nowrap;cursor:default;flex-shrink:0;min-width:60px;max-width:80px;text-align:center;overflow:hidden;text-overflow:ellipsis;}
     .pob-gem-set-tooltip{cursor:help;position:relative;}
     .pob-gem-set-tooltip:hover{background:rgba(74,222,128,0.15);color:rgba(255,255,255,0.65);}
     
@@ -526,8 +526,13 @@ function cleanSkillSetTitle(title) {
   const levelMatch = title.match(/Level\\s+(\\d+(?:-\\d+)?)/i);
   if (levelMatch) return 'Lvl ' + levelMatch[1];
   
-  // Fallback: truncate to first 5 characters + "..."
-  return title.substring(0, 5) + '...';
+  // Only truncate if there's no space in the title (single long word)
+  if (!title.includes(' ')) {
+    return title.substring(0, 5) + '...';
+  }
+  
+  // Otherwise return as-is (will be truncated by CSS if needed)
+  return title;
 }
 
 function cleanDescription(desc) {
@@ -544,8 +549,10 @@ function getLayoutTipIcon(step) {
   return '<span class="layout-tip-icon"><span class="more-pill">...</span><span class="tooltip">'+escapeHtml(step.layoutTip)+'</span></span>';
 }
 
-// Track which gems have been shown to avoid duplicates
+// Track which gems have been shown to avoid duplicates (used during seeding)
 const shownGems = new Set();
+// Cache gems per step (populated during seeding, used during render)
+const stepGemCache = new Map(); // key: "actNum-stepIndex" -> value: array of gem objects
 
 function normalizeNpcName(name) {
   return (name || '')
@@ -699,16 +706,24 @@ function isLastOccurrenceOfQuest(currentStep, questName, allSteps) {
   return true; // This is the last occurrence
 }
 
-function getPobGemsForStep(step, actNumber, allSteps = []) {
+function getPobGemsForStep(step, actNumber, allSteps = [], stepIndex = 0, isSeeding = false) {
   if (!state.pobBuild || !state.pobBuild.gems) {
-    console.log('[getPobGemsForStep] No PoB build or gems available');
     return [];
   }
 
-  if (step.type !== 'npc_quest') return [];
-  if (!step.quest) return [];
+  // Allow both 'npc_quest' and 'optional' types (optional includes vendor-only steps)
+  if (step.type !== 'npc_quest' && step.type !== 'optional') return [];
 
-  const characterClass = state.characterClass || state.pobBuild.className || 'Marauder';
+  // Create cache key for this step
+  const cacheKey = actNumber + '-' + stepIndex;
+  
+  // During rendering, return cached result if available
+  if (!isSeeding && stepGemCache.has(cacheKey)) {
+    return stepGemCache.get(cacheKey);
+  }
+
+  // ALWAYS use PoB class if available, fallback to saved character class, then default
+  const characterClass = state.pobBuild?.className || state.characterClass || 'Marauder';
 
   function extractStepNpc(desc) {
     if (!desc || typeof desc !== 'string') return null;
@@ -718,7 +733,8 @@ function getPobGemsForStep(step, actNumber, allSteps = []) {
       /^Turn in quests?\s+to\s+([A-Za-z'\s-]+)/i,
       /^Return to\s+([A-Za-z'\s-]+)/i,
       /^Visit\s+([A-Za-z'\s-]+)/i,
-      /^Give\s+.+\s+to\s+([A-Za-z'\s-]+)/i
+      /^Give\s+.+\s+to\s+([A-Za-z'\s-]+)/i,
+      /(?:Get|Buy).*gems.*from\s+([A-Za-z'\s-]+)/i
     ];
 
     for (const pattern of patterns) {
@@ -731,17 +747,66 @@ function getPobGemsForStep(step, actNumber, allSteps = []) {
   }
 
   const stepNpc = extractStepNpc(step.description || '');
-  const questIds = findQuestIdsForStep(step, actNumber, stepNpc);
+  let questIds = [];
+  
+  // DEBUG: Log step info for Act 1 vendor steps
+  if (isSeeding && actNumber === 1 && stepNpc && stepNpc.toLowerCase().includes('nessa')) {
+    console.log('[DEBUG Act1 getPobGemsForStep]', step.id, 'desc:', step.description, 'quest:', step.quest, 'npc:', stepNpc);
+  }
+  
+  // Try to find quest IDs from the step's quest field
+  if (step.quest) {
+    questIds = findQuestIdsForStep(step, actNumber, stepNpc);
+    if (isSeeding && actNumber === 1 && stepNpc && stepNpc.toLowerCase().includes('nessa')) {
+      console.log('[DEBUG Act1] Found', questIds.length, 'questIds from quest field:', questIds);
+    }
+  } else if (isSeeding && actNumber === 1 && stepNpc && stepNpc.toLowerCase().includes('nessa')) {
+    console.log('[DEBUG Act1] step.quest is falsy, will try vendor NPC lookup');
+  }
+  
+  // If no quest or no quest IDs found, but we have an NPC, find vendor quests for this NPC
+  if (questIds.length === 0 && stepNpc && questsDatabase) {
+    if (isSeeding && actNumber === 1 && stepNpc.toLowerCase().includes('nessa')) {
+      console.log('[DEBUG Act1] Starting vendor NPC search for:', stepNpc);
+    }
+    const npcLower = stepNpc.toLowerCase();
+    for (const [qId, qData] of Object.entries(questsDatabase)) {
+      // FIX: act is a string, not a number!
+      if (String(qData.act) !== String(actNumber)) continue;
+      if (!qData.reward_offers) continue;
+      
+      for (const offer of Object.values(qData.reward_offers)) {
+        // Check if this offer has vendor gems
+        if (!offer.vendor || Object.keys(offer.vendor).length === 0) continue;
+        
+        // Check if ANY vendor gem has the matching NPC
+        for (const gemData of Object.values(offer.vendor)) {
+          const gemNpcLower = (gemData.npc || '').toLowerCase();
+          if (gemNpcLower.includes(npcLower) || npcLower.includes(gemNpcLower)) {
+            questIds.push(qId);
+            if (isSeeding && actNumber === 1 && npcLower.includes('nessa')) {
+              console.log('[DEBUG Act1] Found vendor quest:', qId, 'for NPC:', gemData.npc, 'in gem vendor list');
+            }
+            break; // Found a match, move to next quest
+          }
+        }
+      }
+    }
+    if (isSeeding && actNumber === 1 && stepNpc && stepNpc.toLowerCase().includes('nessa')) {
+      console.log('[DEBUG Act1] After vendor quest search, questIds:', questIds);
+    }
+  }
 
   if (questIds.length === 0) {
+    if (isSeeding) stepGemCache.set(cacheKey, []);
     return [];
   }
 
   // Check if this is the last occurrence of the quest(s)
-  const questNames = splitStepQuestNames(step.quest);
-  const isLastOccurrence = questNames.every(qName => 
-    isLastOccurrenceOfQuest(step, qName, allSteps)
-  );
+  const questNames = step.quest ? splitStepQuestNames(step.quest) : [];
+  const isLastOccurrence = questNames.length > 0 
+    ? questNames.every(qName => isLastOccurrenceOfQuest(step, qName, allSteps))
+    : true; // For vendor-only steps (no quest), treat as last occurrence
 
   const takeGems = [];
   const buyGems = [];
@@ -789,27 +854,35 @@ function getPobGemsForStep(step, actNumber, allSteps = []) {
         if (!takenQuestIds.has(questId) && !takenGemIds.has(gemId)) {
           const questRewards = rewardOffer.quest || {};
           const questReward = questRewards[gemId];
-          if (questReward && isClassValid(questReward.classes || [], characterClass)) {
-            takeGems.push({
-              gemId,
-              name: gemData.name,
-              questId: questData.id || questId,
-              questName: questData.name,
-              questAct: questData.act,
-              rewardType: 'quest',
-              npc: rewardOffer.quest_npc,
-              isSupport: gemData.is_support,
-              skillSetTitle: pobGem.skillSetTitle, // Preserve skillSet title from POB
-            });
-            takenGemIds.add(gemId);
-            takenQuestIds.add(questId);
-            state.globalTakenGems.add(gemId); // Track globally
-            break;
+          if (questReward) {
+            const classValid = isClassValid(questReward.classes || [], characterClass);
+            // DEBUG: Log Frostblink class check
+            if (gemData.name === 'Frostblink' && isSeeding) {
+              console.log('[DEBUG Frostblink QUEST]', questId, 'offer:', Object.keys(questData.reward_offers || {}), 
+                'classes:', questReward.classes, 'charClass:', characterClass, 'valid:', classValid);
+            }
+            if (classValid) {
+              takeGems.push({
+                gemId,
+                name: gemData.name,
+                questId: questData.id || questId,
+                questName: questData.name,
+                questAct: questData.act,
+                rewardType: 'quest',
+                npc: rewardOffer.quest_npc,
+                isSupport: gemData.is_support,
+                skillSetTitle: pobGem.skillSetTitle,
+              });
+              takenGemIds.add(gemId);
+              takenQuestIds.add(questId);
+              state.globalTakenGems.add(gemId);
+              break;
+            }
           }
         }
 
-        // Check vendor rewards (BUY) - show from ALL NPCs since quest is complete
-        // Skip gems that were already taken as quest rewards
+        // Check vendor rewards (BUY)
+        // Vendor gems ARE class-restricted (can only buy if your class is in the list)
         if (!takenGemIds.has(gemId) && !state.globalTakenGems.has(gemId) && !vendorGemIds.has(gemId)) {
           const vendorRewards = rewardOffer.vendor || {};
           const vendorReward = vendorRewards[gemId];
@@ -823,7 +896,7 @@ function getPobGemsForStep(step, actNumber, allSteps = []) {
               rewardType: 'vendor',
               npc: vendorReward.npc || rewardOffer.quest_npc,
               isSupport: gemData.is_support,
-              skillSetTitle: pobGem.skillSetTitle, // Preserve skillSet title from POB
+              skillSetTitle: pobGem.skillSetTitle,
             });
             vendorGemIds.add(gemId);
             break;
@@ -834,29 +907,35 @@ function getPobGemsForStep(step, actNumber, allSteps = []) {
   }
 
   const allGems = [...takeGems, ...buyGems];
-  const filteredResults = allGems.filter((gem) => {
-    const gemKey = gem.name.toLowerCase();
-    const alreadyShown = shownGems.has(gemKey);
-    if (alreadyShown && gem.rewardType !== 'quest') {
-      return false;
-    }
-    return true;
-  });
-
-  const results = filteredResults.map((gem) => {
-    shownGems.add(gem.name.toLowerCase());
-    return {
+  
+  // During seeding: Filter by shownGems and cache the result
+  if (isSeeding) {
+    const filteredResults = allGems.filter((gem) => {
+      const gemKey = gem.name.toLowerCase();
+      if (shownGems.has(gemKey)) {
+        return false; // Skip duplicates
+      }
+      shownGems.add(gemKey); // Mark as shown
+      return true;
+    });
+    
+    const results = filteredResults.map((gem) => ({
       name: gem.name,
       rewardType: gem.rewardType,
       act: parseInt(gem.questAct) || actNumber,
       quest: gem.questName,
       vendor: gem.npc,
       isSupport: gem.isSupport,
-      skillSetTitle: gem.skillSetTitle // Preserve skillSet title
-    };
-  });
-
-  return results;
+      skillSetTitle: gem.skillSetTitle
+    }));
+    
+    stepGemCache.set(cacheKey, results); // Cache for later rendering
+    return results;
+  }
+  
+  // During rendering: This shouldn't happen as we return cached results above
+  // But just in case, return empty
+  return [];
 }
 
 function renderPobGemList(gems) {
@@ -888,7 +967,9 @@ function renderPobGemList(gems) {
     }
     html += '<span class="pob-gem-verb">' + verb + '</span>';
     html += '<span class="pob-gem-name-inline">' + escapeHtml(gem.name) + '</span>';
-    html += '<span class="pob-gem-vendor">from ' + escapeHtml(npcName) + '</span>';
+    // Spacer to push vendor and set tag to the right
+    html += '<span style="flex:1;"></span>';
+    html += '<span class="pob-gem-vendor">' + escapeHtml(npcName) + '</span>';
     if (cost) {
       html += '<span class="pob-gem-cost">' + cost + '</span>';
     }
@@ -1423,8 +1504,9 @@ async function buildTimerTooltip(act) {
 function render() {
   if (!state.levelingData) return;
   
-  // Clear shown gems tracker for fresh render
-  shownGems.clear();
+  console.log('[render] Starting render, pobBuild:', !!state.pobBuild, 'gems:', state.pobBuild?.gems?.length || 0, 'shownGems size:', shownGems.size);
+  
+  // Don't clear shownGems here - it's populated once on PoB import and persists
   
   const list = document.getElementById('stepsList');
   const minimalBtn = document.getElementById('minimalBtn');
@@ -1595,6 +1677,7 @@ function render() {
       // Hide skip-to button on the first incomplete zone
       const skipToBtn = isCurrent ? '' : '<button class="skip-to-btn" data-action="skip-to" data-first-step-id="'+firstStepId+'" title="Skip to this zone (auto-complete all previous steps)">⏭️</button>';
   return '<div class="leveling-group'+currentClass+'" data-incomplete-index="'+currentIndex+'" data-visible="'+(withinLimit?'true':'false')+'" style="'+baseDisplay+'opacity:'+groupOpacity+';"><div class="zone-header" data-zone="'+escapeHtml(group.zone)+'"><input type="checkbox" class="zone-checkbox" data-action="toggle-zone" data-zone="'+escapeHtml(group.zone)+'" '+(group.allChecked?'checked':'')+' /><div class="zone-name">📍 '+escapeHtml(group.zone)+' ('+group.steps.length+' tasks)'+'</div>'+skipToBtn+'</div><div class="task-list">'+group.steps.map(step => {
+        const stepIndex = act.steps.findIndex(s => s.id === step.id);
         const checked = state.completedSteps.has(step.id);
     const stepType = STEP_TYPES[step.type] || STEP_TYPES.navigation;
     const cleanDesc = cleanDescription(step.description);
@@ -1606,7 +1689,7 @@ function render() {
         // Get PoB gems for this step (never let errors break UI)
         let pobGems = [];
         try {
-          pobGems = getPobGemsForStep(step, act.actNumber, act.steps);
+          pobGems = getPobGemsForStep(step, act.actNumber, act.steps, stepIndex, false);
         } catch (err) {
           console.error('[LevelingPopout] getPobGemsForStep failed for step', step.id, err);
           pobGems = [];
@@ -1617,6 +1700,7 @@ function render() {
       }).join('')+'</div></div>';
     } else {
       const step = group.steps[0];
+      const stepIndex = act.steps.findIndex(s => s.id === step.id);
       const checked = state.completedSteps.has(step.id);
       const stepType = STEP_TYPES[step.type] || STEP_TYPES.navigation;
       const isHighPriority = ['passive','kill_boss','trial'].includes(step.type);
@@ -1640,7 +1724,7 @@ function render() {
       // Get PoB gems for this step (never let errors break UI)
       let pobGems = [];
       try {
-        pobGems = getPobGemsForStep(step, act.actNumber, act.steps);
+        pobGems = getPobGemsForStep(step, act.actNumber, act.steps, stepIndex, false);
       } catch (err) {
         console.error('[LevelingPopout] getPobGemsForStep failed for step', step.id, err);
         pobGems = [];
@@ -2192,7 +2276,7 @@ if (resetProgressBtn) {
       state.characterClass = state.pobBuild.className;
       console.log('[Reset] Auto-set character class from POB:', state.characterClass);
       // Save the auto-detected class
-      await ipcRenderer.invoke('set-character-info', {
+      ipcRenderer.invoke('set-character-info', {
         name: state.characterName,
         class: state.characterClass,
         level: state.characterLevel
@@ -2273,25 +2357,98 @@ if (importPobBtn) {
 async function loadPobBuild() {
   const build = await ipcRenderer.invoke('get-pob-build');
   state.pobBuild = build;
-  state.globalTakenGems.clear(); // Reset taken gems tracker when new build is loaded
+  state.globalTakenGems.clear();
+  shownGems.clear(); // Clear deduplication tracker
+  stepGemCache.clear(); // Clear step gem cache
   
   if (build) {
     console.log('[loadPobBuild] Build loaded with', build.gems?.length || 0, 'gems');
+    
+    // DEBUG: Log quest database structure
+    if (questsDatabase) {
+      console.log('[DEBUG] questsDatabase type:', typeof questsDatabase, 'keys:', Object.keys(questsDatabase).length);
+      const act1Quests = Object.entries(questsDatabase).filter(([_, q]) => String(q.act) === '1');
+      console.log('[DEBUG] Act 1 quests found:', act1Quests.length);
+      
+      act1Quests.slice(0, 3).forEach(([qId, qData]) => {
+        console.log('[DEBUG]  Quest:', qId, 'act:', qData.act, 'has reward_offers:', !!qData.reward_offers);
+        if (qData.reward_offers) {
+          Object.entries(qData.reward_offers).forEach(([classKey, offer]) => {
+            console.log('[DEBUG]    Offer:', classKey, 'quest_npc:', offer.quest_npc, 'has vendor:', !!offer.vendor);
+            if (offer.vendor) {
+              const vendorGems = Object.entries(offer.vendor).slice(0, 2);
+              vendorGems.forEach(([gemId, gemData]) => {
+                console.log('[DEBUG]      Vendor gem:', gemId.split('/').pop(), 'npc:', gemData.npc);
+              });
+            }
+          });
+        }
+      });
+    } else {
+      console.log('[DEBUG] questsDatabase is', questsDatabase);
+    }
+    
+    // Process ALL acts in order to populate cache with deduplicated gems
+    if (state.levelingData && state.levelingData.acts) {
+      console.log('[loadPobBuild] Seeding gem cache for all acts');
+      
+      for (const act of state.levelingData.acts) {
+        // Debug Act 1 steps
+        if (act.actNumber === 1) {
+          console.log('[DEBUG Act1] Processing', act.steps.length, 'steps in Act 1');
+          act.steps.forEach((step, idx) => {
+            if (step.description && step.description.toLowerCase().includes('nessa')) {
+              console.log('[DEBUG Act1 Step]', idx, step.id, 'quest:', step.quest, 'type:', step.type, 'desc:', step.description.substring(0, 80));
+            }
+          });
+        }
+        
+        for (let stepIndex = 0; stepIndex < act.steps.length; stepIndex++) {
+          const step = act.steps[stepIndex];
+          try {
+            // Pass isSeeding=true - this will filter by shownGems and cache results
+            getPobGemsForStep(step, act.actNumber, act.steps, stepIndex, true);
+          } catch (err) {
+            // Ignore errors, continue processing
+          }
+        }
+      }
+      
+      console.log('[loadPobBuild] Done seeding, cache size:', stepGemCache.size, 'shownGems:', shownGems.size);
+      
+      // DEBUG: Show cache contents
+      console.log('[DEBUG] Checking for problematic gems...');
+      const searchGems = ['momentum', 'sniper', 'faster attacks', 'volley'];
+      for (const searchName of searchGems) {
+        let foundInCache = false;
+        for (const [key, gems] of stepGemCache.entries()) {
+          const gem = gems.find(g => g.name.toLowerCase().includes(searchName));
+          if (gem) {
+            console.log('[DEBUG]', gem.name, '→ cached at', key, 'as', gem.rewardType.toUpperCase(), 'from', gem.vendor);
+            foundInCache = true;
+          }
+        }
+        if (!foundInCache) {
+          const inShownGems = Array.from(shownGems).find(g => g.includes(searchName));
+          if (inShownGems) {
+            console.log('[DEBUG]', searchName, '→ in shownGems as "' + inShownGems + '" but NOT in cache (filtered out)');
+          } else {
+            console.log('[DEBUG]', searchName, '→ NOT FOUND at all');
+          }
+        }
+      }
+    }
     
     // Auto-set character class from POB if not already set
     if (build.className && !state.characterClass) {
       state.characterClass = build.className;
       console.log('[loadPobBuild] Auto-set character class:', state.characterClass);
-      // Save it (ignore if handler isn't available)
-      try {
-        await ipcRenderer.invoke('set-character-info', {
-          name: state.characterName,
-          class: state.characterClass,
-          level: state.characterLevel
-        });
-      } catch (err) {
-        console.warn('[loadPobBuild] set-character-info handler not available, continuing');
-      }
+      // Save character info
+      ipcRenderer.invoke('set-character-info', {
+        name: state.characterName,
+        class: state.characterClass,
+        level: state.characterLevel
+      });
       updateCharacterDisplay();
     }
     
@@ -2312,7 +2469,8 @@ async function loadPobBuild() {
       \`;
     }
     
-    // Re-render the leveling steps to show gems
+    // Re-render the leveling steps to populate gem rewards with the new build
+    console.log('[loadPobBuild] Triggering re-render with', build.gems?.length || 0, 'gems in build');
     render();
   }
 }

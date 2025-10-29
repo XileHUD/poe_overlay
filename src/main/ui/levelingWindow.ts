@@ -493,6 +493,17 @@ export class LevelingWindow {
       return true;
     });
 
+    // Save character info
+    ipcMain.handle('set-character-info', async (event, info: { name?: string, class?: string, level?: number }) => {
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+        ...c,
+        characterName: info.name !== undefined ? info.name : c?.characterName,
+        characterClass: info.class !== undefined ? info.class : c?.characterClass,
+        characterLevel: info.level !== undefined ? info.level : c?.characterLevel
+      }));
+      return true;
+    });
+
     // Get run history for an act
     ipcMain.handle('get-run-history', async (event, actNumber: number) => {
       const saved = this.settingsService.get(this.getLevelingWindowKey());
