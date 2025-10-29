@@ -138,7 +138,7 @@
         {
           "id": "a1_submerged_1",
           "type": "navigation",
-          "zone": "Submerged Passage",
+          "zone": "The Submerged Passage",
           "description": "Find the bridge and place Portal",
           "hint": "Or place portal when you see Flooded Depths entrance on minimap",
           "layoutTip": "Follow the zone. Place portal at the bridge, or when you see the Flooded Depths entrance on minimap, place portal then look for the bridge.",
@@ -148,7 +148,7 @@
         {
           "id": "a1_submerged_2",
           "type": "navigation",
-          "zone": "Submerged Passage",
+          "zone": "The Submerged Passage",
           "description": "Cross bridge to enter The Ledge",
           "checkable": true,
           "zoneId": "1_1_5"
@@ -201,7 +201,7 @@
         {
           "id": "a1_submerged_3",
           "type": "navigation",
-          "zone": "Submerged Passage",
+          "zone": "The Submerged Passage",
           "description": "Find and enter Flooded Depths",
           "hint": "Usually at 6 o'clock or 1 o'clock before bridge, rarely 3 o'clock",
           "checkable": true,
@@ -349,7 +349,7 @@
         {
           "id": "a1_cavern_1",
           "type": "waypoint",
-          "zone": "Cavern of Wrath",
+          "zone": "The Cavern of Wrath",
           "description": "Activate Waypoint",
           "hint": "Follow the river in the direction the water flows",
           "checkable": true,
@@ -359,7 +359,7 @@
         {
           "id": "a1_cavern_2",
           "type": "town",
-          "zone": "Cavern of Wrath",
+          "zone": "The Cavern of Wrath",
           "description": "Waypoint to town",
           "checkable": true,
           "zoneId": "2_6_town"
@@ -393,7 +393,7 @@
         {
           "id": "a1_cave_1",
           "type": "quest",
-          "zone": "Ship Graveyard Cave",
+          "zone": "The Ship Graveyard Cave",
           "description": "Find Allflame (NPC) for quest item",
           "hint": "Search diagonally opposite the entrance",
           "layoutTip": "The Allflame and exit to Fairgraves arena are always in a diagonal line to the entrance. The pathing through the cave system is a bit more zig zag, but keep the diagonal line in mind and determine which direction the zone extends to.",
@@ -403,7 +403,7 @@
         {
           "id": "a1_cave_2",
           "type": "navigation",
-          "zone": "Ship Graveyard Cave",
+          "zone": "The Ship Graveyard Cave",
           "description": "Exit to Ship Graveyard",
           "checkable": true,
           "zoneId": "1_1_9"
@@ -455,7 +455,7 @@
         {
           "id": "a1_cavern2_1",
           "type": "navigation",
-          "zone": "Cavern of Wrath",
+          "zone": "The Cavern of Wrath",
           "description": "Follow water to Cavern of Anger",
           "hint": "Follow the water in the direction it flows",
           "checkable": true,
@@ -464,7 +464,7 @@
         {
           "id": "a1_anger_1",
           "type": "navigation",
-          "zone": "Cavern of Anger",
+          "zone": "The Cavern of Anger",
           "description": "Follow water to Merveil's Lair",
           "hint": "Follow the water",
           "checkable": true
@@ -472,19 +472,21 @@
         {
           "id": "a1_merveil_1",
           "type": "kill_boss",
-          "zone": "Merveil's Lair",
+          "zone": "The Cavern of Anger",
           "description": "Kill Merveil (Act 1 Final Boss)",
           "recommendedLevel": 12,
           "hint": "Aim to be Level 11.5-12",
-          "checkable": true
-        },
-        {
-          "id": "a1_merveil_2",
-          "type": "navigation",
-          "zone": "Merveil's Lair",
-          "description": "Enter The Southern Forest (Act 2)",
           "checkable": true,
-          "zoneId": "2_6_12"
+          "subtasks": [
+            {
+              "id": "a1_merveil_2",
+              "type": "navigation",
+              "zone": "The Southern Forest",
+              "description": "Enter The Southern Forest (Act 2)",
+              "checkable": true,
+              "zoneId": "2_6_12"
+            }
+          ]
         }
       ]
     },
@@ -562,7 +564,7 @@
         {
           "id": "a2_chamber1_1",
           "type": "navigation",
-          "zone": "Chamber of Sins Level 1",
+          "zone": "The Chamber of Sins Level 1",
           "description": "Enter Chamber of Sins Level 2",
           "hint": "Find the circular inner room - exit is behind Waypoint",
           "layoutTip": "Find the entrance to the central circular chamber. The Waypoint is always next to the passage leading to Level 2. Head to the passage behind the Waypoint to proceed.",
@@ -572,7 +574,7 @@
         {
           "id": "a2_chamber2_1",
           "type": "navigation",
-          "zone": "Chamber of Sins Level 2",
+          "zone": "The Chamber of Sins Level 2",
           "description": "Reach the central room",
           "hint": "Waypoint icon on minimap points toward the exit",
           "layoutTip": "Navigate to the central room. Use the Waypoint icon on your minimap as a guide - it points toward the exit direction.",
@@ -582,7 +584,7 @@
         {
           "id": "a2_chamber2_2",
           "type": "trial",
-          "zone": "Chamber of Sins Level 2",
+          "zone": "The Chamber of Sins Level 2",
           "description": "Complete Trial of Ascendancy",
           "optionalNote": "[LEAGUE START] League-start recommended",
           "hidden": "optional",
@@ -592,7 +594,7 @@
         {
           "id": "a2_chamber2_3",
           "type": "kill_boss",
-          "zone": "Chamber of Sins Level 2",
+          "zone": "The Chamber of Sins Level 2",
           "description": "Kill Fidelitas and collect Baleful Gem",
           "recommendedLevel": 15,
           "hint": "Located in a long corridor. Aim for Level 14-15",
@@ -603,7 +605,7 @@
         {
           "id": "a2_chamber2_4",
           "type": "town",
-          "zone": "Chamber of Sins Level 2",
+          "zone": "The Chamber of Sins Level 2",
           "description": "Return to town (Relog)",
           "checkable": true,
           "zoneId": "1_2_town"
@@ -1004,25 +1006,27 @@
           "recommendedLevel": 22,
           "hint": "Aim for Level 20-22",
           "checkable": true,
-          "zoneId": "1_2_14_3"
-        },
-        {
-          "id": "a2_apex_2",
-          "type": "optional",
-          "zone": "Pyramid Apex",
-          "description": "Activate Crafting Recipe",
-          "optionalNote": "[LEAGUE START] League-start only",
-          "checkable": true,
-          "zoneId": "1_2_14_3"
-        },
-        {
-          "id": "a2_apex_3",
-          "type": "navigation",
-          "zone": "Pyramid Apex",
-          "description": "Enter The City of Sarn (Act 3)",
-          "hint": "Recommend portal/relog to sell items first",
-          "checkable": true,
-          "zoneId": "1_3_1"
+          "zoneId": "1_2_14_3",
+          "subtasks": [
+            {
+              "id": "a2_apex_2",
+              "type": "optional",
+              "zone": "Pyramid Apex",
+              "description": "Activate Crafting Recipe",
+              "optionalNote": "[LEAGUE START] League-start only",
+              "checkable": true,
+              "zoneId": "1_2_14_3"
+            },
+            {
+              "id": "a2_apex_3",
+              "type": "navigation",
+              "zone": "Pyramid Apex",
+              "description": "Enter The City of Sarn (Act 3)",
+              "hint": "Recommend portal/relog to sell items first",
+              "checkable": true,
+              "zoneId": "1_3_1"
+            }
+          ]
         }
       ]
     },
@@ -1716,15 +1720,17 @@
           "zone": "The Upper Sceptre of God",
           "description": "Kill Dominus",
           "checkable": true,
-          "zoneId": "1_3_18_2"
-        },
-        {
-          "id": "a3_sceptre2_3",
-          "type": "navigation",
-          "zone": "The Upper Sceptre of God",
-          "description": "Enter The Aqueduct (Act 4)",
-          "checkable": true,
-          "zoneId": "1_4_1"
+          "zoneId": "1_3_18_2",
+          "subtasks": [
+            {
+              "id": "a3_sceptre2_3",
+              "type": "navigation",
+              "zone": "The Upper Sceptre of God",
+              "description": "Enter The Aqueduct (Act 4)",
+              "checkable": true,
+              "zoneId": "1_4_1"
+            }
+          ]
         }
       ]
     },
@@ -2024,7 +2030,7 @@
         {
           "id": "a4_belly1_1",
           "type": "navigation",
-          "zone": "Belly of the Beast Level 1",
+          "zone": "The Belly of the Beast Level 1",
           "description": "Navigate to Belly of the Beast Level 2",
           "hint": "Prioritize west, then north, then east. Reverse on dead ends",
           "layoutTip": "Move west if possible. If not, move north. If neither works, move east. When you hit a dead end, turn around and repeat the priority order.",
@@ -2034,7 +2040,7 @@
         {
           "id": "a4_belly2_1",
           "type": "kill_boss",
-          "zone": "Belly of the Beast Level 2",
+          "zone": "The Belly of the Beast Level 2",
           "description": "Enter Bowels of the Beast and kill Piety",
           "checkable": true,
           "zoneId": "1_4_6_2"
@@ -2042,7 +2048,7 @@
         {
           "id": "a4_belly2_2",
           "type": "quest",
-          "zone": "Belly of the Beast Level 2",
+          "zone": "The Belly of the Beast Level 2",
           "description": "Talk to Piety after defeating her",
           "checkable": true,
           "zoneId": "1_4_6_2"
@@ -2050,7 +2056,7 @@
         {
           "id": "a4_belly2_3",
           "type": "optional",
-          "zone": "Belly of the Beast Level 2",
+          "zone": "The Belly of the Beast Level 2",
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
@@ -2059,7 +2065,7 @@
         {
           "id": "a4_belly2_4",
           "type": "navigation",
-          "zone": "Belly of the Beast Level 2",
+          "zone": "The Belly of the Beast Level 2",
           "description": "Enter The Harvest",
           "checkable": true,
           "zoneId": "1_4_6_3"
@@ -2136,15 +2142,17 @@
           "hint": "Located in the encampment midway through the zone",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_4_7"
-        },
-        {
-          "id": "a4_ascent_3",
-          "type": "navigation",
-          "zone": "The Ascent",
-          "description": "Activate portal device and enter Act 5",
-          "checkable": true,
-          "zoneId": "1_5_1"
+          "zoneId": "1_4_7",
+          "subtasks": [
+            {
+              "id": "a4_ascent_3",
+              "type": "navigation",
+              "zone": "The Ascent",
+              "description": "Activate portal device and enter Act 5",
+              "checkable": true,
+              "zoneId": "1_5_1"
+            }
+          ]
         }
       ]
     },
@@ -2513,16 +2521,18 @@
           "description": "Talk to Lilly Roth",
           "quest": "The Fall of Oriath",
           "checkable": true,
-          "zoneId": "1_5_8"
-        },
-        {
-          "id": "a5_apex_3",
-          "type": "navigation",
-          "zone": "Cathedral Apex",
-          "description": "Sail to Lioneye's Watch (Act 6)",
-          "hint": "Beginning of Part 2 - you will revisit Wraeclast",
-          "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_5_8",
+          "subtasks": [
+            {
+              "id": "a5_apex_3",
+              "type": "navigation",
+              "zone": "Cathedral Apex",
+              "description": "Sail to Lioneye's Watch (Act 6)",
+              "hint": "Beginning of Part 2 - you will revisit Wraeclast",
+              "checkable": true,
+              "zoneId": "2_6_town"
+            }
+          ]
         }
       ]
     },
@@ -2980,16 +2990,18 @@
           "hint": "Final boss of Act 6",
           "layoutTip": "Follow the east edge through the reef to reach the boss arena.",
           "checkable": true,
-          "zoneId": "2_6_15"
-        },
-        {
-          "id": "a6_reef_2",
-          "type": "navigation",
-          "zone": "The Brine King's Reef",
-          "description": "Travel to The Southern Forest (Act 7)",
-          "hint": "Beginning of Act 7",
-          "checkable": true,
-          "zoneId": "2_7_2"
+          "zoneId": "2_6_15",
+          "subtasks": [
+            {
+              "id": "a6_reef_2",
+              "type": "navigation",
+              "zone": "The Brine King's Reef",
+              "description": "Travel to The Southern Forest (Act 7)",
+              "hint": "Beginning of Act 7",
+              "checkable": true,
+              "zoneId": "2_7_2"
+            }
+          ]
         }
       ]
     },
@@ -3131,7 +3143,7 @@
         {
           "id": "a7_chamber1_1",
           "type": "waypoint",
-          "zone": "Chamber of Sins Level 1",
+          "zone": "The Chamber of Sins Level 1",
           "description": "Activate Waypoint",
           "hint": "Waypoint indicates the direction to Chamber of Sins Level 2",
           "checkable": true,
@@ -3140,7 +3152,7 @@
         {
           "id": "a7_chamber1_2",
           "type": "optional",
-          "zone": "Chamber of Sins Level 1",
+          "zone": "The Chamber of Sins Level 1",
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
@@ -3149,7 +3161,7 @@
         {
           "id": "a7_chamber1_3",
           "type": "quest",
-          "zone": "Chamber of Sins Level 1",
+          "zone": "The Chamber of Sins Level 1",
           "description": "Use Maligaro's Map in the Map Device",
           "hint": "Map Device is in the central area",
           "checkable": true,
@@ -3158,7 +3170,7 @@
         {
           "id": "a7_chamber1_4",
           "type": "navigation",
-          "zone": "Chamber of Sins Level 1",
+          "zone": "The Chamber of Sins Level 1",
           "description": "Enter Maligaro's Sanctum",
           "checkable": true,
           "zoneId": "2_7_5_map"
@@ -3195,7 +3207,7 @@
         {
           "id": "a7_chamber1_5",
           "type": "optional",
-          "zone": "Chamber of Sins Level 1",
+          "zone": "The Chamber of Sins Level 1",
           "description": "Return to town and turn in quests",
           "hint": "Helena: Essence of the Artist, Weylam: Silver Locket",
           "optionalNote": "[LEAGUE START] League-start only",
@@ -3205,7 +3217,7 @@
         {
           "id": "a7_chamber1_6",
           "type": "npc_quest",
-          "zone": "Chamber of Sins Level 1",
+          "zone": "The Chamber of Sins Level 1",
           "description": "Talk to Silk for Obsidian Key",
           "quest": "Web of Secrets",
           "reward": "Obsidian Key",
@@ -3216,7 +3228,7 @@
         {
           "id": "a7_chamber1_7",
           "type": "navigation",
-          "zone": "Chamber of Sins Level 1",
+          "zone": "The Chamber of Sins Level 1",
           "description": "Find and enter Chamber of Sins Level 2",
           "hint": "Waypoint points toward the exit direction",
           "layoutTip": "Find the entrance to the inner circular room, then head to the passage behind the waypoint.",
@@ -3226,7 +3238,7 @@
         {
           "id": "a7_chamber2_1",
           "type": "trial",
-          "zone": "Chamber of Sins Level 2",
+          "zone": "The Chamber of Sins Level 2",
           "description": "Complete Trial of Ascendancy",
           "optionalNote": "[LEAGUE START] League-start only",
           "hidden": "optional",
@@ -3236,7 +3248,7 @@
         {
           "id": "a7_chamber2_2",
           "type": "optional",
-          "zone": "Chamber of Sins Level 2",
+          "zone": "The Chamber of Sins Level 2",
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
@@ -3245,7 +3257,7 @@
         {
           "id": "a7_chamber2_3",
           "type": "quest",
-          "zone": "Chamber of Sins Level 2",
+          "zone": "The Chamber of Sins Level 2",
           "description": "Unlock the Secret Passage with Obsidian Key",
           "hint": "Secret passage leads to The Den",
           "checkable": true,
@@ -3254,7 +3266,7 @@
         {
           "id": "a7_chamber2_4",
           "type": "navigation",
-          "zone": "Chamber of Sins Level 2",
+          "zone": "The Chamber of Sins Level 2",
           "description": "Enter The Den",
           "checkable": true,
           "zoneId": "2_7_6"
@@ -3550,7 +3562,7 @@
         {
           "id": "a7_temple1_1",
           "type": "navigation",
-          "zone": "Temple of Decay Level 1",
+          "zone": "The Temple of Decay Level 1",
           "description": "Navigate to Temple of Decay Level 2",
           "hint": "Stairs are diagonally opposite - move in Z-pattern",
           "layoutTip": "First floor: Follow the direction the zone extends. The stairs to Level 2 are at the diagonal opposite end from the entrance.",
@@ -3560,7 +3572,7 @@
         {
           "id": "a7_temple2_1",
           "type": "optional",
-          "zone": "Temple of Decay Level 2",
+          "zone": "The Temple of Decay Level 2",
           "description": "Activate Crafting Recipe",
           "hint": "Search for recipe while navigating",
           "optionalNote": "[LEAGUE START] League-start only",
@@ -3570,7 +3582,7 @@
         {
           "id": "a7_temple2_2",
           "type": "navigation",
-          "zone": "Temple of Decay Level 2",
+          "zone": "The Temple of Decay Level 2",
           "description": "Find entrance to Arakaali's Web",
           "hint": "Arena entrance diagonally opposite - use Z-pattern movement",
           "layoutTip": "The stairs face the direction of the intact bridge. Move in that direction until you reach a corner, then turn and move in the direction the zone extends to cross the first bridge. Continue in Z-pattern to find the arena.",
@@ -3584,16 +3596,18 @@
           "description": "Kill Arakaali",
           "hint": "Final boss of Act 7",
           "checkable": true,
-          "zoneId": "2_7_12_2"
-        },
-        {
-          "id": "a7_temple2_4",
-          "type": "navigation",
-          "zone": "Arakaali's Web",
-          "description": "Enter The Sarn Ramparts (Act 8)",
-          "hint": "Beginning of Act 8",
-          "checkable": true,
-          "zoneId": "2_8_1"
+          "zoneId": "2_7_12_2",
+          "subtasks": [
+            {
+              "id": "a7_temple2_4",
+              "type": "navigation",
+              "zone": "Arakaali's Web",
+              "description": "Enter The Sarn Ramparts (Act 8)",
+              "hint": "Beginning of Act 8",
+              "checkable": true,
+              "zoneId": "2_8_1"
+            }
+          ]
         }
       ]
     },
@@ -3761,7 +3775,7 @@
         {
           "id": "a8_solaris1_1",
           "type": "waypoint",
-          "zone": "Solaris Temple Level 1",
+          "zone": "The Solaris Temple Level 1",
           "description": "Activate Waypoint",
           "checkable": true,
           "zoneId": "2_8_12_1"
@@ -3769,7 +3783,7 @@
         {
           "id": "a8_solaris1_2",
           "type": "town",
-          "zone": "Solaris Temple Level 1",
+          "zone": "The Solaris Temple Level 1",
           "description": "Waypoint to The Sarn Encampment",
           "checkable": true,
           "zoneId": "2_8_town"
@@ -3921,7 +3935,7 @@
         {
           "id": "a8_solaris1_3",
           "type": "navigation",
-          "zone": "Solaris Temple Level 1",
+          "zone": "The Solaris Temple Level 1",
           "description": "Navigate to Solaris Temple Level 2",
           "layoutTip": "If waypoint is in the west corner, move north behind it to find the exit. If waypoint is in the east corner, go north into a room that splits west - take that western path to Level 2.",
           "checkable": true,
@@ -3930,7 +3944,7 @@
         {
           "id": "a8_solaris2_1",
           "type": "kill_boss",
-          "zone": "Solaris Temple Level 2",
+          "zone": "The Solaris Temple Level 2",
           "description": "Kill Dawn and collect the Sun Orb",
           "layoutTip": "If the room continues west or has a door west, follow the north edge west to the final room. Otherwise, it's an east variant - follow the north edge east until you can move north.",
           "checkable": true,
@@ -3939,7 +3953,7 @@
         {
           "id": "a8_solaris2_2",
           "type": "optional",
-          "zone": "Solaris Temple Level 2",
+          "zone": "The Solaris Temple Level 2",
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
@@ -3948,7 +3962,7 @@
         {
           "id": "a8_solaris2_3",
           "type": "town",
-          "zone": "Solaris Temple Level 2",
+          "zone": "The Solaris Temple Level 2",
           "description": "Return to The Sarn Encampment (Relog)",
           "checkable": true,
           "zoneId": "2_8_town"
@@ -3974,7 +3988,7 @@
         {
           "id": "a8_lunaris1_1",
           "type": "navigation",
-          "zone": "Lunaris Temple Level 1",
+          "zone": "The Lunaris Temple Level 1",
           "description": "Navigate to Lunaris Temple Level 2",
           "hint": "Follow the carpet path",
           "checkable": true,
@@ -3983,7 +3997,7 @@
         {
           "id": "a8_lunaris2_1",
           "type": "kill_boss",
-          "zone": "Lunaris Temple Level 2",
+          "zone": "The Lunaris Temple Level 2",
           "description": "Kill Dusk and collect the Moon Orb",
           "hint": "Consistent pattern: follow stairs up, single flower pot marks the fork",
           "layoutTip": "Choose either clockwise or counterclockwise and maintain that pattern. Follow stairs going upward, and look for a single flower pot at forks to guide your path.",
@@ -3993,7 +4007,7 @@
         {
           "id": "a8_lunaris2_2",
           "type": "town",
-          "zone": "Lunaris Temple Level 2",
+          "zone": "The Lunaris Temple Level 2",
           "description": "Return to The Sarn Encampment (Relog)",
           "checkable": true,
           "zoneId": "2_8_town"
@@ -4023,16 +4037,18 @@
           "hint": "Recommended Level 54+. Act 8 final boss",
           "layoutTip": "Move northeast through the middle of the bridge to find the Sky Shrine entrance.",
           "checkable": true,
-          "zoneId": "2_8_13"
-        },
-        {
-          "id": "a8_harbour_2",
-          "type": "navigation",
-          "zone": "The Harbour Bridge",
-          "description": "Enter The Blood Aqueduct (Act 9)",
-          "hint": "Beginning of Act 9. Farm to Level 58-62 here",
-          "checkable": true,
-          "zoneId": "2_9_1"
+          "zoneId": "2_8_13",
+          "subtasks": [
+            {
+              "id": "a8_harbour_2",
+              "type": "navigation",
+              "zone": "The Harbour Bridge",
+              "description": "Enter The Blood Aqueduct (Act 9)",
+              "hint": "Beginning of Act 9. Farm to Level 58-62 here",
+              "checkable": true,
+              "zoneId": "2_9_1"
+            }
+          ]
         }
       ]
     },
@@ -4383,16 +4399,18 @@
           "zone": "The Black Core",
           "description": "Talk to Sin",
           "checkable": true,
-          "zoneId": "2_9_10_2"
-        },
-        {
-          "id": "a9_blackcore_3",
-          "type": "navigation",
-          "zone": "The Black Core",
-          "description": "Talk to Lilly Roth to sail to Oriath Docks",
-          "hint": "Can portal to town during kill animation to skip loot. Waypoint from town places you near Act 10 rooftop entrance.",
-          "checkable": true,
-          "zoneId": "2_10_town"
+          "zoneId": "2_9_10_2",
+          "subtasks": [
+            {
+              "id": "a9_blackcore_3",
+              "type": "navigation",
+              "zone": "The Black Core",
+              "description": "Talk to Lilly Roth to sail to Oriath Docks",
+              "hint": "Can portal to town during kill animation to skip loot. Waypoint from town places you near Act 10 rooftop entrance.",
+              "checkable": true,
+              "zoneId": "2_10_town"
+            }
+          ]
         },
         {
           "id": "a9_town5_1",

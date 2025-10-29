@@ -199,6 +199,7 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     .zone-checkbox{width:18px;height:18px;cursor:pointer;accent-color:#4ade80;}
     .skip-to-btn{margin-left:auto;background:transparent;border:none;color:#888;padding:2px 4px;cursor:pointer;font-size:calc(var(--font-size) - 1px);opacity:0.5;transition:opacity 0.2s;}
     .skip-to-btn:hover{opacity:1;color:#aaa;}
+    .leveling-step .skip-to-btn{position:absolute;top:8px;right:8px;z-index:10;}
     .zone-name{flex:1;font-weight:700;color:#4ade80;font-size:calc(var(--font-size) + 1px);}
     .task-list{display:flex;flex-direction:column;gap:6px;padding:0;margin:0;}
   .task-item{display:table;width:100%;table-layout:fixed;border-collapse:collapse;font-size:var(--font-size);}
@@ -1708,8 +1709,11 @@ function render() {
       }
       const pobGemsHtml = renderPobGemList(pobGems);
       
+      // Add skip-to button for single tasks too (hide on first incomplete)
+      const skipToBtn = isCurrent ? '' : '<button class="skip-to-btn" data-action="skip-to" data-first-step-id="'+step.id+'" title="Skip to this task (auto-complete all previous steps)">⏭️</button>';
+      
   const borderColor = isCurrent ? '#fdd68a' : stepType.color;
-  return '<div class="leveling-group'+(isCurrent?' current':'')+'" data-incomplete-index="'+currentIndex+'" data-visible="'+(withinLimit?'true':'false')+'" style="'+baseDisplay+'"><div class="leveling-step '+(isCurrent?'current':'')+' '+(isHighPriority?'priority':'')+'" style="opacity:'+opacity+';background:'+bgColor+';padding:'+padding+';border-left-color:'+borderColor+';"><input type="checkbox" class="step-checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /><div class="step-content"><div class="step-main"><div class="step-icon-wrap" style="background:'+stepType.color+'22;border-color:'+stepType.color+'44;"><span class="step-icon" style="color:'+stepType.color+';">'+stepType.icon+'</span></div><div class="step-desc-wrap">'+(isCurrent&&step.zone?'<div class="zone-label">'+escapeHtml(step.zone)+'</div>':'')+'<div class="step-desc '+(checked?'checked':'')+'">'+stepTextHtml+leagueIcon+layoutTipIcon+'</div></div></div>'+metaHtml+hintHtml+pobGemsHtml+'</div></div></div>';
+  return '<div class="leveling-group'+(isCurrent?' current':'')+'" data-incomplete-index="'+currentIndex+'" data-visible="'+(withinLimit?'true':'false')+'" style="'+baseDisplay+'"><div class="leveling-step '+(isCurrent?'current':'')+' '+(isHighPriority?'priority':'')+'" style="opacity:'+opacity+';background:'+bgColor+';padding:'+padding+';border-left-color:'+borderColor+';position:relative;">'+skipToBtn+'<input type="checkbox" class="step-checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /><div class="step-content"><div class="step-main"><div class="step-icon-wrap" style="background:'+stepType.color+'22;border-color:'+stepType.color+'44;"><span class="step-icon" style="color:'+stepType.color+';">'+stepType.icon+'</span></div><div class="step-desc-wrap">'+(isCurrent&&step.zone?'<div class="zone-label">'+escapeHtml(step.zone)+'</div>':'')+'<div class="step-desc '+(checked?'checked':'')+'">'+stepTextHtml+leagueIcon+layoutTipIcon+'</div></div></div>'+metaHtml+hintHtml+pobGemsHtml+'</div></div></div>';
     }
   }).join('');
   
@@ -2633,10 +2637,31 @@ ipcRenderer.on('leveling-layout-mode', (event, mode) => {
 });
 
 // Listen for zone entry events from Client.txt watcher
-ipcRenderer.on('zone-entered', (event, zoneName) => {
+ipcRenderer.on('zone-entered', (event, data) => {
   if (!state.levelingData || !state.autoDetectZones) return;
   
-  console.log('[Auto-Detect] Zone entered:', zoneName);
+  const zoneName = typeof data === 'string' ? data : data.zoneName;
+  const actNumber = typeof data === 'string' ? null : data.actNumber;
+  
+  console.log('[Auto-Detect] Zone entered:', zoneName, actNumber !== null ? '(Act ' + actNumber + ')' : '');
+  
+  // If we received an act number and it's different from current act, auto-switch
+  if (actNumber !== null && state.levelingData) {
+    const currentAct = state.levelingData.acts[state.currentActIndex];
+    if (currentAct && currentAct.actNumber !== actNumber) {
+      console.log('[Auto-Detect] Act transition detected! Switching from Act ' + currentAct.actNumber + ' to Act ' + actNumber);
+      const targetActIndex = state.levelingData.acts.findIndex(a => a.actNumber === actNumber);
+      if (targetActIndex >= 0) {
+        const targetAct = state.levelingData.acts[targetActIndex];
+        ipcRenderer.invoke('set-current-act', targetAct.id);
+        state.currentActId = targetAct.id;
+        state.currentActIndex = targetActIndex;
+        render();
+        console.log('[Auto-Detect] Successfully switched to Act ' + actNumber);
+      }
+      return; // Don't auto-complete when switching acts
+    }
+  }
   
   const act = state.levelingData.acts[state.currentActIndex];
   if (!act) return;
@@ -2678,6 +2703,8 @@ ipcRenderer.on('zone-entered', (event, zoneName) => {
   // - Never auto-check any steps within the newly entered zone
   // - Always mark all steps belonging to the immediately previous contiguous zone group
 
+  const normalizeZone = (z) => z.toLowerCase().replace(/[⚡🗺️📍]/g, '').trim();
+
   // Determine previous zone contiguous range [prevStart, prevEnd]
   let prevEnd = enteredZoneStepIndex - 1;
   if (prevEnd < 0) {
@@ -2685,7 +2712,6 @@ ipcRenderer.on('zone-entered', (event, zoneName) => {
     return;
   }
 
-  const normalizeZone = (z) => z.toLowerCase().replace(/[⚡🗺️📍]/g, '').trim();
   const prevZoneName = normalizeZone(allSteps[prevEnd].zone);
 
   let prevStart = prevEnd;

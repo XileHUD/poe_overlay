@@ -371,6 +371,94 @@ export class LevelingWindow {
     }
   }
 
+  /**
+   * Check if a zone name is a valid zone in the zone registry.
+   * Uses fuzzy matching to handle "The" prefix differences.
+   * This prevents false positives from null/empty SCENE entries.
+   */
+  private isValidZone(zoneName: string): boolean {
+    if (!zoneName || zoneName.trim() === '' || zoneName === '(null)' || zoneName === 'null') {
+      return false;
+    }
+    
+    if (!this.zoneRegistry || !this.zoneRegistry.zonesByAct) {
+      return false;
+    }
+
+    // Normalize zone name for fuzzy matching (remove "The" prefix, trim, lowercase)
+    const normalizeZone = (name: string): string => {
+      return name.trim().toLowerCase().replace(/^the\s+/i, '');
+    };
+    
+    const normalizedInput = normalizeZone(zoneName);
+    
+    // Check if zone exists in any act with fuzzy matching
+    for (const act of this.zoneRegistry.zonesByAct) {
+      if (act.locations) {
+        for (const location of act.locations) {
+          // Check main zone name
+          if (normalizeZone(location.zoneName) === normalizedInput) {
+            return true;
+          }
+          // Check alternative name if it exists
+          if (location.alternativeName && normalizeZone(location.alternativeName) === normalizedInput) {
+            return true;
+          }
+        }
+      }
+    }
+    
+    return false;
+  }
+
+  /**
+   * Get zone name from area code (like "1_1_11_1").
+   * This is the CORRECT way to detect zones - area codes are unique and reliable.
+   * Based on how Exile-UI does zone detection.
+   */
+  private getZoneNameFromAreaCode(areaCode: string): string | null {
+    if (!areaCode || !this.zoneRegistry || !this.zoneRegistry.zonesByAct) {
+      return null;
+    }
+
+    // Search through all acts to find the zone with this area code
+    for (const act of this.zoneRegistry.zonesByAct) {
+      if (act.locations) {
+        for (const location of act.locations) {
+          // Check if this location has the matching area code (zoneKey)
+          if (location.zoneKey === areaCode) {
+            return location.zoneName;
+          }
+        }
+      }
+    }
+    
+    return null;
+  }
+
+  /**
+   * Get the act number from an area code.
+   * Returns null if area code not found in registry.
+   */
+  private getActNumberFromAreaCode(areaCode: string): number | null {
+    if (!areaCode || !this.zoneRegistry || !this.zoneRegistry.zonesByAct) {
+      return null;
+    }
+
+    // Search through all acts to find the zone with this area code
+    for (const act of this.zoneRegistry.zonesByAct) {
+      if (act.locations) {
+        for (const location of act.locations) {
+          if (location.zoneKey === areaCode) {
+            return act.actId; // Return the act number
+          }
+        }
+      }
+    }
+    
+    return null;
+  }
+
   private getEmbeddedData(): any {
     // Minimal embedded data for Act 1 (copied from module.ts)
     return {
@@ -1137,7 +1225,7 @@ export class LevelingWindow {
   private clientTxtWatcher: fs.FSWatcher | null = null;
   private clientTxtPath: string | null = null;
   private lastFilePosition: number = 0;
-  private seenZones: Array<{ zone: string; timestamp: number }> = []; // Track all zones in chronological order
+  private lastZoneAreaCode: string | null = null; // Track last zone area code (simple prev/current tracking)
 
   /**
    * Try to find the Path of Exile installation directory by looking for running processes
@@ -1347,13 +1435,52 @@ export class LevelingWindow {
     this.clientTxtPath = clientPath;
     console.log(`Starting ${this.overlayVersion.toUpperCase()} Client.txt watcher at:`, clientPath);
     
-    // Initialize last position to end of file
+    // Find the LAST "Generating level" entry in the file to detect current zone
     try {
       const stats = fs.statSync(clientPath);
-      this.lastFilePosition = stats.size;
-      console.log('Initial file position:', this.lastFilePosition);
+      const fileSize = stats.size;
+      
+      // Read last chunk of file (last 50KB should be enough to find recent zone)
+      const chunkSize = Math.min(50000, fileSize);
+      const buffer = Buffer.alloc(chunkSize);
+      const fd = fs.openSync(clientPath, 'r');
+      fs.readSync(fd, buffer, 0, chunkSize, fileSize - chunkSize);
+      fs.closeSync(fd);
+      
+      const recentContent = buffer.toString('utf8');
+      const lines = recentContent.split('\n');
+      
+      // Search backwards for the LAST "Generating level" entry
+      let lastZoneEntry = null;
+      for (let i = lines.length - 1; i >= 0; i--) {
+        const match = lines[i].match(/\[DEBUG Client \d+\] Generating level (\d+) area "([^"]+)" with seed (\d+)/);
+        if (match) {
+          lastZoneEntry = { areaCode: match[2], seed: match[3], level: match[1], zoneName: this.getZoneNameFromAreaCode(match[2]) };
+          console.log(`[STARTUP] Found zone entry: level ${match[1]}, area "${match[2]}", seed ${match[3]}`);
+          break;
+        }
+      }
+      
+      if (lastZoneEntry && lastZoneEntry.zoneName) {
+        const actNumber = this.getActNumberFromAreaCode(lastZoneEntry.areaCode);
+        console.log(`[STARTUP] Detected current zone: ${lastZoneEntry.areaCode} → "${lastZoneEntry.zoneName}" (Act ${actNumber})`);
+        
+        // Set as last zone (no dedup needed on startup)
+        this.lastZoneAreaCode = lastZoneEntry.areaCode;
+        
+        // Send to renderer to auto-check the current zone
+        if (this.window && !this.window.isDestroyed()) {
+          this.window.webContents.send('zone-entered', { zoneName: lastZoneEntry.zoneName, actNumber });
+        }
+      } else {
+        console.log(`[STARTUP] No recent zone detected in last ${chunkSize} bytes`);
+      }
+      
+      // Set file position to end for future monitoring
+      this.lastFilePosition = fileSize;
+      console.log(`[STARTUP] File position set to: ${this.lastFilePosition}`);
     } catch (error) {
-      console.error('Error getting initial file stats:', error);
+      console.error('[STARTUP] Error reading initial file state:', error);
       this.lastFilePosition = 0;
     }
 
@@ -1361,12 +1488,12 @@ export class LevelingWindow {
     // Check every 500ms for changes
     fs.watchFile(clientPath, { interval: 500 }, (curr, prev) => {
       if (curr.mtime > prev.mtime) {
-        console.log('File modified, checking for changes...');
+        console.log('[WATCHER] File modified, checking for changes...');
         this.handleClientTxtChange(clientPath);
       }
     });
     
-    console.log('File watcher started successfully');
+    console.log('[WATCHER] File watcher started successfully');
   }
 
   private handleClientTxtChange(filePath: string) {
@@ -1374,225 +1501,137 @@ export class LevelingWindow {
       const stats = fs.statSync(filePath);
       const currentSize = stats.size;
 
+      console.log(`[CLIENT.TXT] Current size: ${currentSize}, Last position: ${this.lastFilePosition}`);
+
       // Handle truncation or rotation: if file shrank, reset pointer to 0 to avoid missing new lines
       if (currentSize < this.lastFilePosition) {
-        console.log('Client.txt appears truncated or rotated. Resetting read position to 0.');
+        console.log('[CLIENT.TXT] File truncated or rotated. Resetting read position to 0.');
         this.lastFilePosition = 0;
       }
 
       // Only read if file has grown beyond last position
       if (currentSize === this.lastFilePosition) {
-        // No new content
+        console.log('[CLIENT.TXT] No new content (file size unchanged)');
         return;
       }
 
-      console.log(`Reading Client.txt from position ${this.lastFilePosition} to ${currentSize}`);
+      const bytesToRead = currentSize - this.lastFilePosition;
+      console.log(`[CLIENT.TXT] Reading ${bytesToRead} bytes from position ${this.lastFilePosition} to ${currentSize}`);
 
       // Read only the new content
-      const buffer = Buffer.alloc(currentSize - this.lastFilePosition);
+      const buffer = Buffer.alloc(bytesToRead);
       const fd = fs.openSync(filePath, 'r');
-      fs.readSync(fd, buffer, 0, buffer.length, this.lastFilePosition);
+      const bytesRead = fs.readSync(fd, buffer, 0, buffer.length, this.lastFilePosition);
       fs.closeSync(fd);
+
+      console.log(`[CLIENT.TXT] Actually read ${bytesRead} bytes`);
 
       const newContent = buffer.toString('utf8');
       this.lastFilePosition = currentSize;
 
-      console.log('New content:', newContent.substring(0, 200)); // Log first 200 chars
+      const lineCount = newContent.split('\n').filter(l => l.trim()).length;
+      console.log(`[CLIENT.TXT] Parsed ${lineCount} lines from new content`);
+      console.log('[CLIENT.TXT] First 300 chars:', newContent.substring(0, 300));
 
-      // Parse for zone entry lines and level ups
-      // POE1 Zone Format: 2025/06/13 09:49:29 98539734 cff94598 [INFO Client 39308] : You have entered The Forest Encampment.
-      // POE1 Level Format: 2025/06/14 03:26:55 161985515 cff945b9 [INFO Client 34512] : SnakeInHerFissure (Marauder) is now level 2
-      // POE2 Zone Format: 2025/10/24 12:20:06 46081515 775aed1e [INFO Client 14056] [SCENE] Set Source [Clearfell]
+      // CORRECT Zone Detection: Use "Generating level" pattern with area codes
+      // Format: [DEBUG Client XXXX] Generating level XX area "AREA_CODE" with seed XXXXXXXX
+      // Example: 2025/10/30 02:00:50 30813843 1186a003 [DEBUG Client 3488] Generating level 12 area "1_1_11_1" with seed 2987920182
+      // This is how Exile-UI does it - area codes are unique and never NULL
       
-      let matchCount = 0;
+      const lines = newContent.split('\n');
+      console.log(`[ZONE DETECTION] Processing ${lines.length} lines for zone detection...`);
       
-      if (this.overlayVersion === 'poe1') {
-        // POE1: Zone detection with line-by-line processing
-        const lines = newContent.split('\n');
+      let zoneDetectionCount = 0;
+      let lineNumber = 0;
+      
+      for (const line of lines) {
+        lineNumber++;
         
-        for (const line of lines) {
-          const zoneMatch = line.match(/\[INFO Client \d+\] : You have entered (.+)\./);
-          if (zoneMatch) {
-            const zoneName = zoneMatch[1].trim();
-            matchCount++;
-            console.log(`[${matchCount}] POE1 Detected zone entry:`, zoneName);
-            
-            // Extract timestamp from THIS specific line (format: 2025/10/29 12:40:21 9521312)
-            const timestampMatch = line.match(/(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2} \d+)/);
-            const timestamp = timestampMatch ? parseInt(timestampMatch[1].split(' ')[2]) : Date.now();
-            
-            // Check if we've already seen this exact zone entry
-            const alreadySeen = this.seenZones.some(z => z.zone === zoneName && z.timestamp === timestamp);
-            
-            if (!alreadySeen) {
-              // Add to seen zones
-              this.seenZones.push({ zone: zoneName, timestamp });
-              
-              // Keep only last 50 zones to prevent memory bloat
-              if (this.seenZones.length > 50) {
-                this.seenZones.shift();
-              }
-              
-              console.log(`[POE1] New zone detected: ${zoneName} (timestamp: ${timestamp})`);
-              
-              // Send to renderer to auto-check the step
-              if (this.window && !this.window.isDestroyed()) {
-                this.window.webContents.send('zone-entered', zoneName);
-              }
-            } else {
-              console.log(`[POE1] Skipping duplicate zone entry: ${zoneName}`);
-            }
-          }
-        }
-
-        // POE1: Level-up detection
-        const levelRegex = /\[INFO Client \d+\] : (.+?) \((\w+)\) is now level (\d+)/g;
-        let match;
-        while ((match = levelRegex.exec(newContent)) !== null) {
-          const [, characterName, className, levelStr] = match;
-          const level = parseInt(levelStr, 10);
-          console.log(`[POE1] Character level up: ${characterName} (${className}) → Level ${level}`);
-
-          // Store character info and level
-          this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
-            ...c,
-            characterLevel: level,
-            characterName: characterName,
-            characterClass: className
-          }));
-
-          // Send to renderer
-          if (this.window && !this.window.isDestroyed()) {
-            this.window.webContents.send('character-level-up', {
-              name: characterName,
-              class: className,
-              level: level
-            });
-          }
-          
-          // Update gems window with new character level
-          updateLevelingGemsWindowCharacterLevel(level);
-          
-          // Update tree and gear windows context with new level
-          const saved = this.settingsService.get(this.getLevelingWindowKey());
-          const currentAct = (saved as any)?.currentActIndex + 1 || 1;
-          updateTreeWindowContext(currentAct, level);
-          updateGearWindowContext(currentAct, level);
-        }
-      } else {
-        // POE2: Handle both formats with line-by-line processing
-        // Examples observed:
-        //   [SCENE] Set Source [Clearfell]
-        //   [SCENE] Set Source ([Lioneye's Watch])
-        const lines = newContent.split('\n');
+        // PRIMARY DETECTION: Area code from "Generating level" entry (uses double quotes)
+        const generatingMatch = line.match(/\[DEBUG Client \d+\] Generating level (\d+) area "([^"]+)" with seed (\d+)/);
         
-        for (const line of lines) {
-          // Check for SCENE format first
-          const sceneMatch = line.match(/\[INFO Client \d+\] \[SCENE\]\s*Set Source\s*\(?\[(.+?)\]\)?/);
-          if (sceneMatch) {
-            const zoneName = sceneMatch[1].trim();
-            matchCount++;
-            console.log(`[${matchCount}] POE2 Detected zone entry (SCENE):`, zoneName);
+        if (generatingMatch) {
+          const [fullMatch, areaLevel, areaCode, areaSeed] = generatingMatch;
+          console.log(`[ZONE DETECTION] Line ${lineNumber}: Found "Generating level" pattern`);
+          console.log(`[ZONE DETECTION]   Full match: ${fullMatch}`);
+          console.log(`[ZONE DETECTION]   Area code: "${areaCode}", Level: ${areaLevel}, Seed: ${areaSeed}`);
+          
+          // Look up the zone name from the area code using the zone registry
+          const zoneName = this.getZoneNameFromAreaCode(areaCode);
+          const actNumber = this.getActNumberFromAreaCode(areaCode);
+          
+          if (!zoneName || actNumber === null) {
+            console.log(`[ZONE DETECTION]   ❌ Unknown area code: "${areaCode}" (level ${areaLevel})`);
+            continue;
+          }
+          
+          zoneDetectionCount++;
+          console.log(`[ZONE DETECTION]   ✅ Mapped to zone: "${zoneName}" (Act ${actNumber})`);
+          
+          // Simple zone tracking: Only send if this is a DIFFERENT zone than last time
+          // NO deduplication, NO seed checking - just prev/current zone tracking
+          if (areaCode !== this.lastZoneAreaCode) {
+            console.log(`[ZONE DETECTION]   🎯 ZONE CHANGED! From "${this.lastZoneAreaCode || 'none'}" to "${areaCode}"`);
+            console.log(`[ZONE DETECTION]   Sending "${zoneName}" (Act ${actNumber}) to renderer`);
             
-            // Extract timestamp from THIS specific line
-            const timestampMatch = line.match(/(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2} \d+)/);
-            const timestamp = timestampMatch ? parseInt(timestampMatch[1].split(' ')[2]) : Date.now();
+            // Update last zone
+            this.lastZoneAreaCode = areaCode;
             
-            // Check if we've already seen this exact zone entry
-            const alreadySeen = this.seenZones.some(z => z.zone === zoneName && z.timestamp === timestamp);
-            
-            if (!alreadySeen) {
-              // Add to seen zones
-              this.seenZones.push({ zone: zoneName, timestamp });
-              
-              // Keep only last 50 zones to prevent memory bloat
-              if (this.seenZones.length > 50) {
-                this.seenZones.shift();
-              }
-              
-              console.log(`[POE2] New zone detected (SCENE): ${zoneName} (timestamp: ${timestamp})`);
-              
-              // Send to renderer to auto-check the step
-              if (this.window && !this.window.isDestroyed()) {
-                this.window.webContents.send('zone-entered', zoneName);
-              }
+            // Send zone NAME and ACT NUMBER to renderer
+            if (this.window && !this.window.isDestroyed()) {
+              this.window.webContents.send('zone-entered', { zoneName, actNumber });
             } else {
-              console.log(`[POE2] Skipping duplicate zone entry (SCENE): ${zoneName}`);
+              console.log(`[ZONE DETECTION]   ⚠️ Window not available, cannot send zone-entered event`);
             }
+          } else {
+            console.log(`[ZONE DETECTION]   ⏭️ Same zone as before: ${areaCode} (${zoneName})`);
           }
-          
-          // Fallback: also look for "You have entered <Zone>." format
-          const enteredMatch = line.match(/\[INFO Client \d+\] : You have entered (.+)\./);
-          if (enteredMatch) {
-            const zoneName = enteredMatch[1].trim();
-            matchCount++;
-            console.log(`[${matchCount}] POE2 Detected zone entry (fallback):`, zoneName);
-            
-            // Extract timestamp from THIS specific line
-            const timestampMatch = line.match(/(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2} \d+)/);
-            const timestamp = timestampMatch ? parseInt(timestampMatch[1].split(' ')[2]) : Date.now();
-            
-            // Check if we've already seen this exact zone entry
-            const alreadySeen = this.seenZones.some(z => z.zone === zoneName && z.timestamp === timestamp);
-            
-            if (!alreadySeen) {
-              // Add to seen zones
-              this.seenZones.push({ zone: zoneName, timestamp });
-              
-              // Keep only last 50 zones to prevent memory bloat
-              if (this.seenZones.length > 50) {
-                this.seenZones.shift();
-              }
-              
-              console.log(`[POE2] New zone detected (fallback): ${zoneName} (timestamp: ${timestamp})`);
-              
-              if (this.window && !this.window.isDestroyed()) {
-                this.window.webContents.send('zone-entered', zoneName);
-              }
-            } else {
-              console.log(`[POE2] Skipping duplicate zone entry (fallback): ${zoneName}`);
-            }
-          }
-        }
-
-        // POE2: Level-up detection
-        const levelRegex = /\[INFO Client \d+\] : (.+?) \((\w+)\) is now level (\d+)/g;
-        let match;
-        while ((match = levelRegex.exec(newContent)) !== null) {
-          const [, characterName, className, levelStr] = match;
-          const level = parseInt(levelStr, 10);
-          console.log(`[POE2] Character level up: ${characterName} (${className}) → Level ${level}`);
-
-          // Store character info and level
-          this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
-            ...c,
-            characterLevel: level,
-            characterName: characterName,
-            characterClass: className
-          }));
-
-          // Send to renderer
-          if (this.window && !this.window.isDestroyed()) {
-            this.window.webContents.send('character-level-up', {
-              name: characterName,
-              class: className,
-              level: level
-            });
-          }
-          
-          // Update gems window with new character level
-          updateLevelingGemsWindowCharacterLevel(level);
-          
-          // Update tree and gear windows context with new level
-          const saved = this.settingsService.get(this.getLevelingWindowKey());
-          const currentAct = (saved as any)?.currentActIndex + 1 || 1;
-          updateTreeWindowContext(currentAct, level);
-          updateGearWindowContext(currentAct, level);
         }
       }
 
-      if (matchCount === 0) {
-        console.log('No zone entries found in new content');
+      console.log(`[ZONE DETECTION] Summary: Found ${zoneDetectionCount} "Generating level" entries in ${lines.length} lines`);
+      
+      if (zoneDetectionCount === 0) {
+        console.log('[ZONE DETECTION] ⚠️ No "Generating level" entries found in new content');
+        console.log('[ZONE DETECTION] Sample lines from content:');
+        lines.slice(0, 5).forEach((line, i) => {
+          console.log(`  Line ${i + 1}: ${line.substring(0, 100)}`);
+        });
+      }
+
+      // Level-up detection (same for both POE1 and POE2)
+      const levelRegex = /\[INFO Client \d+\] : (.+?) \((\w+)\) is now level (\d+)/g;
+      let match;
+      while ((match = levelRegex.exec(newContent)) !== null) {
+        const [, characterName, className, levelStr] = match;
+        const level = parseInt(levelStr, 10);
+        console.log(`Character level up: ${characterName} (${className}) → Level ${level}`);
+
+        // Store character info and level
+        this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+          ...c,
+          characterLevel: level,
+          characterName: characterName,
+          characterClass: className
+        }));
+
+        // Send to renderer
+        if (this.window && !this.window.isDestroyed()) {
+          this.window.webContents.send('character-level-up', {
+            name: characterName,
+            class: className,
+            level: level
+          });
+        }
+        
+        // Update gems window with new character level
+        updateLevelingGemsWindowCharacterLevel(level);
+        
+        // Update tree and gear windows context with new level
+        const saved = this.settingsService.get(this.getLevelingWindowKey());
+        const currentAct = (saved as any)?.currentActIndex + 1 || 1;
+        updateTreeWindowContext(currentAct, level);
+        updateGearWindowContext(currentAct, level);
       }
     } catch (error: any) {
       // Provide more detailed error information
