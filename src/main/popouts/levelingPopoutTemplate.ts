@@ -195,6 +195,21 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
   .leveling-group{margin-bottom:12px;background:rgba(74,222,128,0.03);border:1px solid rgba(74,222,128,0.15);border-left:3px solid rgba(74,222,128,0.4);border-radius:8px;padding:12px;transition:all 0.2s;overflow:visible;box-sizing:border-box;position:relative;}
     .leveling-group.current{background:rgba(74,222,128,0.08);border-color:rgba(74,222,128,0.3);border-left-color:rgba(74,222,128,0.8);}
     .leveling-group:hover{background:rgba(74,222,128,0.05);border-color:rgba(74,222,128,0.2);}
+    /* PoB Import Task Card - Blue Variant */
+    .pob-import-card{margin-bottom:12px;background:rgba(74,158,255,0.08);border:1px solid rgba(74,158,255,0.25);border-left:3px solid rgba(74,158,255,0.6);border-radius:8px;padding:14px 12px;transition:all 0.25s;overflow:visible;position:relative;display:flex;gap:10px;}
+    .pob-import-card:hover{background:rgba(74,158,255,0.12);border-color:rgba(74,158,255,0.35);}
+    .pob-import-card .step-checkbox{width:18px;height:18px;min-width:18px;margin-top:2px;cursor:pointer;flex-shrink:0;accent-color:#4a9eff;}
+    .pob-import-card .step-content{flex:1 1 auto;display:grid;grid-template-columns:1fr;gap:8px;position:relative;}
+    .pob-import-card .step-main{display:grid;grid-template-columns:28px 1fr;align-items:flex-start;gap:8px;}
+    .pob-import-card .step-icon-wrap{width:28px;height:28px;min-width:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(74,158,255,0.5);background:rgba(74,158,255,0.15);grid-column:1;}
+    .pob-import-card .step-icon{font-size:16px;line-height:1;color:#4a9eff;}
+    .pob-import-card .step-desc-wrap{grid-column:2;display:flex;flex-direction:column;gap:6px;min-width:0;position:relative;}
+    .pob-import-card .step-desc{color:#e0f2fe;font-weight:600;line-height:1.4;font-size:calc(var(--font-size) + 1px);}
+    .pob-import-card .step-hint{padding:6px 0 0 0;font-size:calc(var(--font-size) - 1px);color:#bae6fd;line-height:1.4;font-style:italic;}
+    .pob-import-card .pob-import-btn{margin-top:8px;padding:8px 16px;background:rgba(74,158,255,0.3);border:1px solid rgba(74,158,255,0.6);border-radius:6px;color:#e0f2fe;font-weight:600;cursor:pointer;transition:all 0.2s;font-size:calc(var(--font-size));display:inline-flex;align-items:center;gap:6px;}
+    .pob-import-card .pob-import-btn:hover{background:rgba(74,158,255,0.5);border-color:rgba(74,158,255,0.8);transform:translateY(-1px);}
+    .pob-import-card.checked{opacity:0.6;}
+    .pob-import-card.checked .step-desc{color:#888;text-decoration:line-through;}
     .zone-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(74,222,128,0.2);cursor:pointer;}
     .zone-checkbox{width:18px;height:18px;cursor:pointer;accent-color:#4ade80;}
     .skip-to-btn{margin-left:auto;background:transparent;border:none;color:#888;padding:2px 4px;cursor:pointer;font-size:calc(var(--font-size) - 1px);opacity:0.5;transition:opacity 0.2s;}
@@ -1666,6 +1681,35 @@ function render() {
     headerSubtitle.textContent = act.actName + ' Complete! 🎉 (' + completedCount + '/' + totalSteps + ')';
   }
 
+  // Build PoB Import Card (only show if no PoB build imported)
+  const POB_IMPORT_TASK_ID = 'pob-import-task';
+  const pobImportChecked = state.completedSteps.has(POB_IMPORT_TASK_ID);
+  const showPobImportCard = !state.pobBuild || !state.pobBuild.gems || state.pobBuild.gems.length === 0;
+  
+  let pobImportCardHtml = '';
+  if (showPobImportCard) {
+    pobImportCardHtml = \`
+      <div class="pob-import-card \${pobImportChecked ? 'checked' : ''}" data-task-id="\${POB_IMPORT_TASK_ID}">
+        <input type="checkbox" class="step-checkbox" data-action="toggle-step" data-step-id="\${POB_IMPORT_TASK_ID}" \${pobImportChecked ? 'checked' : ''} />
+        <div class="step-content">
+          <div class="step-main">
+            <div class="step-icon-wrap">
+              <span class="step-icon">📋</span>
+            </div>
+            <div class="step-desc-wrap">
+              <div class="step-desc">Import Your PoB Build</div>
+              <div class="step-hint">Get personalized gem recommendations and passive tree tracking for your build</div>
+              <button class="pob-import-btn" onclick="openPobImportSettings()">
+                <span>⚙️</span>
+                <span>Open PoB Import Settings</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    \`;
+  }
+
   // Render ALL groups once; hide completed groups and any incomplete groups beyond the visible limit
   let incompleteCounter = 0;
   const stepsHtml = grouped.map((group) => {
@@ -1747,7 +1791,7 @@ function render() {
     }
   }).join('');
   
-  list.innerHTML = stepsHtml;
+  list.innerHTML = pobImportCardHtml + stepsHtml;
   
   // Resolve gem images for VISIBLE groups only
   resolveGemImagesIn(list);
@@ -2088,6 +2132,11 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
   document.getElementById('stepsList').innerHTML = '<div style="padding:20px;text-align:center;color:#ff6b6b;">Failed to load data</div>';
 });
 
+// Function to open settings with PoB Import tab (global for onclick handler)
+window.openPobImportSettings = function() {
+  ipcRenderer.invoke('open-leveling-settings', 'pob');
+};
+
 // Button handlers
 const settingsBtn = document.getElementById('settingsBtn');
 if (settingsBtn) {
@@ -2354,6 +2403,11 @@ if (importPobBtn) {
     
     // Reload PoB build data and update UI
     loadPobBuild();
+    
+    // Re-render to hide the PoB import card
+    setTimeout(() => {
+      render();
+    }, 100);
     
     setTimeout(() => {
       status.style.display = 'none';
@@ -2622,6 +2676,21 @@ function handlePrevBtn() {
 
 function handleNextBtn() {
   if (!state.levelingData) return;
+  
+  // First, check if we should handle the PoB import task
+  const POB_IMPORT_TASK_ID = 'pob-import-task';
+  const showPobImportCard = !state.pobBuild || !state.pobBuild.gems || state.pobBuild.gems.length === 0;
+  const pobImportNotChecked = !state.completedSteps.has(POB_IMPORT_TASK_ID);
+  
+  if (showPobImportCard && pobImportNotChecked) {
+    // Check the PoB import task
+    state.completedSteps.add(POB_IMPORT_TASK_ID);
+    console.log('[NEXT] Auto-checked PoB import task');
+    ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
+    render();
+    return;
+  }
+  
   const act = state.levelingData.acts[state.currentActIndex];
   if (!act) return;
   let allSteps = act.steps;

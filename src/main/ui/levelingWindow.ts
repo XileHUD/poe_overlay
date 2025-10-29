@@ -798,11 +798,12 @@ export class LevelingWindow {
     });
 
     // Open leveling settings splash
-    ipcMain.handle('open-leveling-settings', async () => {
+    ipcMain.handle('open-leveling-settings', async (event, tabName?: string) => {
       openLevelingSettingsSplash({
         settingsService: this.settingsService,
         overlayVersion: this.overlayVersion,
-        overlayWindow: this.window
+        overlayWindow: this.window,
+        initialTab: tabName
       });
       return true;
     });

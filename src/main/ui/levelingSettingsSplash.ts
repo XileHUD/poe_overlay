@@ -12,18 +12,23 @@ interface LevelingSettingsSplashParams {
   settingsService: SettingsService;
   overlayVersion: OverlayVersion;
   overlayWindow?: any; // Reference to main overlay window if needed
+  initialTab?: string; // Optional tab to open initially (e.g., 'pob', 'display', etc.)
 }
 
 let activeSettingsWindow: BrowserWindow | null = null;
 
 export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams): void {
-  // If already open, just focus it
+  // If already open, just focus it (and optionally switch tab)
   if (activeSettingsWindow && !activeSettingsWindow.isDestroyed()) {
     activeSettingsWindow.focus();
+    // If initialTab is specified, send message to switch to that tab
+    if (params.initialTab) {
+      activeSettingsWindow.webContents.send('switch-to-tab', params.initialTab);
+    }
     return;
   }
 
-  const { settingsService, overlayVersion } = params;
+  const { settingsService, overlayVersion, initialTab } = params;
   
   // Get current settings
   const levelingKey = overlayVersion === 'poe1' ? 'levelingWindowPoe1' : 'levelingWindowPoe2';
@@ -107,7 +112,7 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
   window.on('resize', debouncedSave);
 
   // Build HTML
-  const html = buildLevelingSettingsSplashHtml(currentSettings, overlayVersion, clientTxtPath);
+  const html = buildLevelingSettingsSplashHtml(currentSettings, overlayVersion, clientTxtPath, initialTab);
   
   window.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
   
@@ -132,7 +137,8 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
 function buildLevelingSettingsSplashHtml(
   currentSettings: any,
   overlayVersion: OverlayVersion,
-  clientTxtPath: string
+  clientTxtPath: string,
+  initialTab?: string
 ): string {
   // Extract all current settings with proper defaults
   const groupByZone = currentSettings.uiSettings?.groupByZone ?? true;
@@ -1598,6 +1604,25 @@ function buildLevelingSettingsSplashHtml(
       ipcRenderer.send('leveling-settings-close');
     }
     
+    // Listen for tab switching from external sources
+    ipcRenderer.on('switch-to-tab', (event, tabName) => {
+      if (tabName) {
+        // Programmatically switch to the specified tab
+        document.querySelectorAll('.tab-button').forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.textContent.toLowerCase().includes(tabName.toLowerCase()) || 
+              btn.getAttribute('onclick')?.includes(tabName)) {
+            btn.classList.add('active');
+          }
+        });
+        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+        const targetPanel = document.getElementById('tab-' + tabName);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+      }
+    });
+    
     // Initialize: Load existing PoB build if any
     (function initializePobDisplay() {
       ipcRenderer.invoke('get-pob-build').then(pobBuild => {
@@ -1618,6 +1643,25 @@ function buildLevelingSettingsSplashHtml(
         }
       });
     })();
+    
+    // Handle initial tab if specified
+    const initialTab = '${initialTab || ''}';
+    if (initialTab) {
+      // Wait for DOM to be ready, then switch to the specified tab
+      setTimeout(() => {
+        document.querySelectorAll('.tab-button').forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.getAttribute('onclick')?.includes(initialTab)) {
+            btn.classList.add('active');
+          }
+        });
+        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+        const targetPanel = document.getElementById('tab-' + initialTab);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+      }, 50);
+    }
   </script>
 </body>
 </html>
