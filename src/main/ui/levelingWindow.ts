@@ -1105,25 +1105,54 @@ export class LevelingWindow {
    */
   private findPoeProcessPath(): string | null {
     try {
-      // Use PowerShell to get process path (more reliable than wmic on modern Windows)
-      const command = `powershell -Command "Get-Process | Where-Object {$_.ProcessName -like '*PathOfExile*'} | Select-Object -ExpandProperty Path"`;
-      const output = execSync(command, { encoding: 'utf8', timeout: 5000 });
-      
-      if (output && output.trim()) {
-        // Get all matching process paths
-        const processPaths = output.trim().split('\n').map(p => p.trim()).filter(Boolean);
-        
-        // Filter for version-specific paths
-        for (const processPath of processPaths) {
-          if (processPath && fs.existsSync(processPath)) {
-            const processDir = path.dirname(processPath);
-            
-            // Validate this path matches the current overlay version
-            if (this.isPathValidForVersion(processDir)) {
-              console.log(`[LevelingWindow] Found ${this.overlayVersion.toUpperCase()} process at:`, processDir);
-              return processDir;
-            } else {
-              console.log(`[LevelingWindow] Rejected path (wrong version):`, processDir);
+      if (process.platform === 'linux') {
+        // Linux: scan /proc for a candidate process and use cwd or a Steam common path in cmdline
+        const procRoot = '/proc';
+        const entries = fs.readdirSync(procRoot);
+        const poe2 = this.overlayVersion === 'poe2';
+        const want = poe2
+          ? [/path\s*of\s*exile\s*2/i, /pathofexile2/i, /path\s*of\s*exile\s*ii/i]
+          : [/path\s*of\s*exile(?!\s*2|\s*ii)/i, /pathofexile(?!2)/i];
+
+        for (const e of entries) {
+          if (!/^[0-9]+$/.test(e)) continue;
+          const dir = path.join(procRoot, e);
+          try {
+            const cmdline = fs.readFileSync(path.join(dir, 'cmdline'), 'utf8');
+            const cmdLower = cmdline.toLowerCase();
+            if (!want.some(re => re.test(cmdLower))) continue;
+
+            // Prefer cwd of the process
+            try {
+              const cwd = fs.readlinkSync(path.join(dir, 'cwd'));
+              if (cwd && fs.existsSync(cwd) && this.isPathValidForVersion(cwd)) {
+                console.log(`[LevelingWindow] Found ${this.overlayVersion.toUpperCase()} process cwd:`, cwd);
+                return cwd;
+              }
+            } catch {}
+          } catch {/* per-process read failures ignored */}
+        }
+      } else {
+        // Windows: use PowerShell to get process path (more reliable than wmic on modern Windows)
+        const command = `powershell -Command "Get-Process | Where-Object {$_.ProcessName -like '*PathOfExile*'} | Select-Object -ExpandProperty Path"`;
+        const output = execSync(command, { encoding: 'utf8', timeout: 5000 });
+
+        if (output && output.trim()) {
+          // Get all matching process paths
+          const processPaths = output.trim().split('\n').map(p => p.trim()).filter(Boolean);
+          
+          // Filter for version-specific paths
+          for (const processPath of processPaths) {
+            if (processPath && fs.existsSync(processPath)) {
+              const processDir = path.dirname(processPath);
+              
+              // Validate this path matches the current overlay version
+              if (this.isPathValidForVersion(processDir)) {
+                console.log(`[LevelingWindow] Found ${this.overlayVersion.toUpperCase()} process at:`, processDir);
+                return processDir;
+              } else {
+                console.log(`[LevelingWindow] Rejected path (wrong version):`, processDir);
+              }
             }
           }
         }
