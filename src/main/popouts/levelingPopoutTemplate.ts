@@ -749,26 +749,14 @@ function getPobGemsForStep(step, actNumber, allSteps = [], stepIndex = 0, isSeed
   const stepNpc = extractStepNpc(step.description || '');
   let questIds = [];
   
-  // DEBUG: Log step info for Act 1 vendor steps
-  if (isSeeding && actNumber === 1 && stepNpc && stepNpc.toLowerCase().includes('nessa')) {
-    console.log('[DEBUG Act1 getPobGemsForStep]', step.id, 'desc:', step.description, 'quest:', step.quest, 'npc:', stepNpc);
-  }
-  
   // Try to find quest IDs from the step's quest field
   if (step.quest) {
     questIds = findQuestIdsForStep(step, actNumber, stepNpc);
-    if (isSeeding && actNumber === 1 && stepNpc && stepNpc.toLowerCase().includes('nessa')) {
-      console.log('[DEBUG Act1] Found', questIds.length, 'questIds from quest field:', questIds);
-    }
-  } else if (isSeeding && actNumber === 1 && stepNpc && stepNpc.toLowerCase().includes('nessa')) {
-    console.log('[DEBUG Act1] step.quest is falsy, will try vendor NPC lookup');
   }
+
   
   // If no quest or no quest IDs found, but we have an NPC, find vendor quests for this NPC
   if (questIds.length === 0 && stepNpc && questsDatabase) {
-    if (isSeeding && actNumber === 1 && stepNpc.toLowerCase().includes('nessa')) {
-      console.log('[DEBUG Act1] Starting vendor NPC search for:', stepNpc);
-    }
     const npcLower = stepNpc.toLowerCase();
     for (const [qId, qData] of Object.entries(questsDatabase)) {
       // FIX: act is a string, not a number!
@@ -784,16 +772,10 @@ function getPobGemsForStep(step, actNumber, allSteps = [], stepIndex = 0, isSeed
           const gemNpcLower = (gemData.npc || '').toLowerCase();
           if (gemNpcLower.includes(npcLower) || npcLower.includes(gemNpcLower)) {
             questIds.push(qId);
-            if (isSeeding && actNumber === 1 && npcLower.includes('nessa')) {
-              console.log('[DEBUG Act1] Found vendor quest:', qId, 'for NPC:', gemData.npc, 'in gem vendor list');
-            }
             break; // Found a match, move to next quest
           }
         }
       }
-    }
-    if (isSeeding && actNumber === 1 && stepNpc && stepNpc.toLowerCase().includes('nessa')) {
-      console.log('[DEBUG Act1] After vendor quest search, questIds:', questIds);
     }
   }
 
@@ -856,11 +838,6 @@ function getPobGemsForStep(step, actNumber, allSteps = [], stepIndex = 0, isSeed
           const questReward = questRewards[gemId];
           if (questReward) {
             const classValid = isClassValid(questReward.classes || [], characterClass);
-            // DEBUG: Log Frostblink class check
-            if (gemData.name === 'Frostblink' && isSeeding) {
-              console.log('[DEBUG Frostblink QUEST]', questId, 'offer:', Object.keys(questData.reward_offers || {}), 
-                'classes:', questReward.classes, 'charClass:', characterClass, 'valid:', classValid);
-            }
             if (classValid) {
               takeGems.push({
                 gemId,
@@ -2364,45 +2341,11 @@ async function loadPobBuild() {
   if (build) {
     console.log('[loadPobBuild] Build loaded with', build.gems?.length || 0, 'gems');
     
-    // DEBUG: Log quest database structure
-    if (questsDatabase) {
-      console.log('[DEBUG] questsDatabase type:', typeof questsDatabase, 'keys:', Object.keys(questsDatabase).length);
-      const act1Quests = Object.entries(questsDatabase).filter(([_, q]) => String(q.act) === '1');
-      console.log('[DEBUG] Act 1 quests found:', act1Quests.length);
-      
-      act1Quests.slice(0, 3).forEach(([qId, qData]) => {
-        console.log('[DEBUG]  Quest:', qId, 'act:', qData.act, 'has reward_offers:', !!qData.reward_offers);
-        if (qData.reward_offers) {
-          Object.entries(qData.reward_offers).forEach(([classKey, offer]) => {
-            console.log('[DEBUG]    Offer:', classKey, 'quest_npc:', offer.quest_npc, 'has vendor:', !!offer.vendor);
-            if (offer.vendor) {
-              const vendorGems = Object.entries(offer.vendor).slice(0, 2);
-              vendorGems.forEach(([gemId, gemData]) => {
-                console.log('[DEBUG]      Vendor gem:', gemId.split('/').pop(), 'npc:', gemData.npc);
-              });
-            }
-          });
-        }
-      });
-    } else {
-      console.log('[DEBUG] questsDatabase is', questsDatabase);
-    }
-    
     // Process ALL acts in order to populate cache with deduplicated gems
     if (state.levelingData && state.levelingData.acts) {
       console.log('[loadPobBuild] Seeding gem cache for all acts');
       
       for (const act of state.levelingData.acts) {
-        // Debug Act 1 steps
-        if (act.actNumber === 1) {
-          console.log('[DEBUG Act1] Processing', act.steps.length, 'steps in Act 1');
-          act.steps.forEach((step, idx) => {
-            if (step.description && step.description.toLowerCase().includes('nessa')) {
-              console.log('[DEBUG Act1 Step]', idx, step.id, 'quest:', step.quest, 'type:', step.type, 'desc:', step.description.substring(0, 80));
-            }
-          });
-        }
-        
         for (let stepIndex = 0; stepIndex < act.steps.length; stepIndex++) {
           const step = act.steps[stepIndex];
           try {
@@ -2415,28 +2358,6 @@ async function loadPobBuild() {
       }
       
       console.log('[loadPobBuild] Done seeding, cache size:', stepGemCache.size, 'shownGems:', shownGems.size);
-      
-      // DEBUG: Show cache contents
-      console.log('[DEBUG] Checking for problematic gems...');
-      const searchGems = ['momentum', 'sniper', 'faster attacks', 'volley'];
-      for (const searchName of searchGems) {
-        let foundInCache = false;
-        for (const [key, gems] of stepGemCache.entries()) {
-          const gem = gems.find(g => g.name.toLowerCase().includes(searchName));
-          if (gem) {
-            console.log('[DEBUG]', gem.name, '→ cached at', key, 'as', gem.rewardType.toUpperCase(), 'from', gem.vendor);
-            foundInCache = true;
-          }
-        }
-        if (!foundInCache) {
-          const inShownGems = Array.from(shownGems).find(g => g.includes(searchName));
-          if (inShownGems) {
-            console.log('[DEBUG]', searchName, '→ in shownGems as "' + inShownGems + '" but NOT in cache (filtered out)');
-          } else {
-            console.log('[DEBUG]', searchName, '→ NOT FOUND at all');
-          }
-        }
-      }
     }
     
     // Auto-set character class from POB if not already set

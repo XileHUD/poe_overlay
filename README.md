@@ -49,6 +49,9 @@ A comprehensive leveling companion for both PoE1 (Acts 1-10) and PoE2 (Acts 1-7)
 - Customizable hotkeys for navigation, passive tree toggle, and gems window toggle
 - Leveling-only mode for minimal resource usage
 
+> **ℹ️ First-Time Setup**  
+> On first start, open the overlay with `Ctrl+Q` and navigate to **Tools → Leveling Overlay**. If you prefer to use only the leveling overlay, open the main settings and click the **Feature Selector** to uncheck everything except the leveling overlay. This will let you use only the leveling overlay, which opens with `Ctrl+Q` on start.
+
 _Images coming soon_
 
 ### Merchant History
