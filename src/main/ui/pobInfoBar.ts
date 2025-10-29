@@ -146,6 +146,23 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
       user-select: none;
       -webkit-user-select: none;
     }
+    
+    /* Pulsating glow animation */
+    @keyframes pobBarPulse {
+      0%, 100% {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4),
+                    0 0 15px rgba(74, 222, 128, 0.3),
+                    0 0 25px rgba(74, 222, 128, 0.15);
+        border-color: rgba(74, 222, 128, 0.4);
+      }
+      50% {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4),
+                    0 0 25px rgba(74, 222, 128, 0.5),
+                    0 0 40px rgba(74, 222, 128, 0.25);
+        border-color: rgba(74, 222, 128, 0.6);
+      }
+    }
+    
     .pob-bar {
       background: rgba(26, 26, 26, 0.9);
       border: 1px solid rgba(74, 222, 128, 0.3);
@@ -157,6 +174,12 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
       -webkit-app-region: drag;
       height: 100%;
+      transition: box-shadow 0.3s, border-color 0.3s;
+    }
+    
+    /* Apply animation to pulsate class */
+    .pob-bar.pulsate {
+      animation: pobBarPulse 2s ease-in-out infinite;
     }
     .class-info { flex: 1; min-width: 0; -webkit-app-region: drag; }
     .class-name { font-size: 11px; font-weight: 600; color: #4ade80; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -196,7 +219,7 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
   </style>
 </head>
 <body>
-  <div class="pob-bar">
+  <div class="pob-bar" id="pobBar">
     <div class="class-info">
       <div class="class-name" id="className">${className}${ascendancy ? ' (' + ascendancy + ')' : ''}</div>
       <div class="class-details">Level ${level} • Act ${currentAct}</div>
@@ -212,6 +235,50 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
 
   <script>
     const { ipcRenderer } = require('electron');
+
+    // Check if this is first time seeing the PoB bar
+    let hasInteracted = false;
+    try {
+      hasInteracted = localStorage.getItem('pobBarInteracted') === 'true';
+    } catch (e) {
+      // localStorage might not be available
+    }
+
+    const pobBar = document.getElementById('pobBar');
+    
+    // If never interacted, add pulsate animation
+    if (!hasInteracted && pobBar) {
+      pobBar.classList.add('pulsate');
+    }
+
+    // Stop animation on any interaction
+    function stopPulsate() {
+      if (pobBar && pobBar.classList.contains('pulsate')) {
+        pobBar.classList.remove('pulsate');
+        try {
+          localStorage.setItem('pobBarInteracted', 'true');
+          hasInteracted = true;
+        } catch (e) {
+          // Ignore localStorage errors
+        }
+        console.log('[PoB Bar] Pulsate animation stopped');
+      }
+    }
+
+    // Add interaction listeners to all buttons
+    function addStopListeners() {
+      document.querySelectorAll('.pob-btn, .close-btn').forEach(btn => {
+        btn.addEventListener('click', stopPulsate);
+        btn.addEventListener('mousedown', stopPulsate);
+      });
+    }
+    
+    addStopListeners();
+    
+    // Listen for ANY mouse interaction on the entire window (capture phase)
+    // This catches dragging, clicking, everything
+    window.addEventListener('mousedown', stopPulsate, true);
+    window.addEventListener('click', stopPulsate, true);
 
     function computeButtons(build) {
       const hasAnyGear = !!(build.itemSets && build.itemSets.some(set => set && set.items && Object.keys(set.items || {}).length > 0));
@@ -243,7 +310,11 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
 
       // Refresh buttons
       const group = document.getElementById('buttonGroup');
-      if (group) group.innerHTML = computeButtons(build);
+      if (group) {
+        group.innerHTML = computeButtons(build);
+        // Re-add stop listeners to new buttons
+        addStopListeners();
+      }
     });
 
     function openGems() { ipcRenderer.send('open-pob-gems-window'); }

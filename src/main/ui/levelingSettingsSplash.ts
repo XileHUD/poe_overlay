@@ -1084,16 +1084,6 @@ function buildLevelingSettingsSplashHtml(
         
         <div class="setting-item" style="flex-direction: column; align-items: stretch;">
           <div class="setting-label">
-            <div class="setting-name">Gem Links Window</div>
-            <div class="setting-description">Floating window showing your gem socket groups per act</div>
-          </div>
-          <button class="action-btn primary" onclick="openGemsWindow()" style="margin-top: 8px;">
-            💎 Open Gems Window
-          </button>
-        </div>
-        
-        <div class="setting-item" style="flex-direction: column; align-items: stretch;">
-          <div class="setting-label">
             <div class="setting-name">Build Info Bar</div>
             <div class="setting-description">Quick access to PoB build information and controls</div>
           </div>
