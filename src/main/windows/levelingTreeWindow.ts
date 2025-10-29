@@ -918,7 +918,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       svgElement.style.width = '100%';
       svgElement.style.height = '100%';
 
-      // Calculate focus bounds for allocated nodes
+      // Calculate focus bounds for allocated nodes (try DOM lookup first)
       let minX = Infinity;
       let minY = Infinity;
       let maxX = -Infinity;
@@ -939,8 +939,39 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
         }
       });
 
-      console.log('[Tree] Found', foundNodes, 'allocated nodes for zoom calculation');
-      
+      console.log('[Tree] Found', foundNodes, 'allocated nodes for zoom calculation (DOM)');
+
+      // Fallback: if DOM lookup failed to find nodes (race or SVG IDs missing),
+      // compute bounds directly from the tree data (node coordinates) using the
+      // parsed PoB node IDs. This ensures we can center on selected nodes even
+      // when a saved viewBox is absent and the DOM isn't queryable yet.
+      if ((foundNodes === 0 || !isFinite(minX)) && currentTreeData && currentSpec.parsedUrl?.nodes && currentSpec.parsedUrl.nodes.length > 0) {
+        console.log('[Tree] DOM lookup failed, falling back to treeData coordinates for focus bounds');
+        const nodeLookup = {};
+        currentTreeData.graphs.forEach(graph => {
+          if (graph.nodes) Object.assign(nodeLookup, graph.nodes);
+        });
+
+        let fallbackCount = 0;
+        for (const nodeId of currentSpec.parsedUrl.nodes) {
+          const n = nodeLookup[nodeId];
+          if (n && typeof n.x === 'number' && typeof n.y === 'number') {
+            minX = Math.min(minX, n.x);
+            minY = Math.min(minY, n.y);
+            maxX = Math.max(maxX, n.x);
+            maxY = Math.max(maxY, n.y);
+            fallbackCount++;
+          }
+        }
+
+        if (fallbackCount > 0) {
+          foundNodes = fallbackCount;
+          console.log('[Tree] Fallback bounds found for', fallbackCount, 'nodes');
+        } else {
+          console.log('[Tree] Fallback also found no node coordinates');
+        }
+      }
+
       if (foundNodes > 0 && isFinite(minX)) {
         console.log('[Tree] Node bounds: minX=' + minX.toFixed(0) + ', maxX=' + maxX.toFixed(0) + ', minY=' + minY.toFixed(0) + ', maxY=' + maxY.toFixed(0));
       }

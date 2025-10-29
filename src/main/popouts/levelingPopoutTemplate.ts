@@ -2339,12 +2339,8 @@ async function loadPobBuild() {
   stepGemCache.clear(); // Clear step gem cache
   
   if (build) {
-    console.log('[loadPobBuild] Build loaded with', build.gems?.length || 0, 'gems');
-    
     // Process ALL acts in order to populate cache with deduplicated gems
     if (state.levelingData && state.levelingData.acts) {
-      console.log('[loadPobBuild] Seeding gem cache for all acts');
-      
       for (const act of state.levelingData.acts) {
         for (let stepIndex = 0; stepIndex < act.steps.length; stepIndex++) {
           const step = act.steps[stepIndex];
@@ -2356,14 +2352,11 @@ async function loadPobBuild() {
           }
         }
       }
-      
-      console.log('[loadPobBuild] Done seeding, cache size:', stepGemCache.size, 'shownGems:', shownGems.size);
     }
     
     // Auto-set character class from POB if not already set
     if (build.className && !state.characterClass) {
       state.characterClass = build.className;
-      console.log('[loadPobBuild] Auto-set character class:', state.characterClass);
       // Save character info
       ipcRenderer.invoke('set-character-info', {
         name: state.characterName,
@@ -2391,7 +2384,6 @@ async function loadPobBuild() {
     }
     
     // Re-render the leveling steps to populate gem rewards with the new build
-    console.log('[loadPobBuild] Triggering re-render with', build.gems?.length || 0, 'gems in build');
     render();
   }
 }
