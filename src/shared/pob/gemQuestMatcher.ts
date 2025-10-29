@@ -316,6 +316,7 @@ export function matchGemsForStep(
   const takeGems: GemQuestMatch[] = [];
   const buyGems: GemQuestMatch[] = [];
   const takenGemIds = new Set<string>();
+  let hasSelectedQuestReward = false; // Track if we've already selected a quest reward (only ONE per quest!)
 
   // Normalize NPC name for comparison
   const normalizedNpcFilter = npcName?.toLowerCase().trim();
@@ -338,17 +339,19 @@ export function matchGemsForStep(
 
     const [gemId, gemData] = gemEntry;
 
-    // Check all reward offers for this quest
-    for (const [rewardOfferId, rewardOffer] of Object.entries(quest.reward_offers)) {
-      const offerNpc = rewardOffer.quest_npc.toLowerCase().trim();
-      
-      // Skip if we have an NPC filter and this offer doesn't match
-      if (normalizedNpcFilter && offerNpc !== normalizedNpcFilter) {
-        continue;
-      }
+    // FIRST PASS: Check ALL reward offers for quest rewards (TAKE)
+    // This ensures we prioritize quest rewards over vendor rewards, even across multiple NPCs
+    let foundAsQuestReward = false;
+    
+    if (!takenGemIds.has(gemId)) {
+      for (const [rewardOfferId, rewardOffer] of Object.entries(quest.reward_offers)) {
+        const offerNpc = rewardOffer.quest_npc.toLowerCase().trim();
+        
+        // Skip if we have an NPC filter and this offer doesn't match
+        if (normalizedNpcFilter && offerNpc !== normalizedNpcFilter) {
+          continue;
+        }
 
-      // Check quest rewards (TAKE) - only one per quest!
-      if (!takenGemIds.has(gemId)) {
         const questReward = rewardOffer.quest[gemId];
         if (questReward) {
           const validClass =
@@ -356,24 +359,39 @@ export function matchGemsForStep(
             questReward.classes.includes(characterClass);
 
           if (validClass) {
-            takeGems.push({
-              gemId,
-              gemName: gemData.name,
-              questId: quest.id,
-              questName: quest.name,
-              questAct: quest.act,
-              rewardType: 'quest',
-              npc: rewardOffer.quest_npc,
-              isSupport: gemData.is_support,
-            });
-            takenGemIds.add(gemId); // Mark as taken so we don't show it as vendor too
+            // Only actually add as TAKE if we haven't already selected a quest reward
+            if (!hasSelectedQuestReward) {
+              takeGems.push({
+                gemId,
+                gemName: gemData.name,
+                questId: quest.id,
+                questName: quest.name,
+                questAct: quest.act,
+                rewardType: 'quest',
+                npc: rewardOffer.quest_npc,
+                isSupport: gemData.is_support,
+              });
+              takenGemIds.add(gemId); // Mark as taken so we don't show it as vendor too
+              hasSelectedQuestReward = true;
+              foundAsQuestReward = true;
+            }
             break; // Found quest reward, move to next gem
           }
         }
       }
+    }
 
-      // Check vendor rewards (BUY) - only if not taken as quest reward
-      if (!takenGemIds.has(gemId)) {
+    // SECOND PASS: Check vendor rewards (BUY)
+    // Show as BUY if: not taken as quest reward AND not already taken
+    if (!foundAsQuestReward && !takenGemIds.has(gemId)) {
+      for (const [rewardOfferId, rewardOffer] of Object.entries(quest.reward_offers)) {
+        const offerNpc = rewardOffer.quest_npc.toLowerCase().trim();
+        
+        // Skip if we have an NPC filter and this offer doesn't match
+        if (normalizedNpcFilter && offerNpc !== normalizedNpcFilter) {
+          continue;
+        }
+
         const vendorReward = rewardOffer.vendor[gemId];
         if (vendorReward) {
           const validClass =

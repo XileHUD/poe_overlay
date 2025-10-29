@@ -827,41 +827,50 @@ function getPobGemsForStep(step, actNumber, allSteps = [], stepIndex = 0, isSeed
 
       const [gemId, gemData] = gemEntry;
 
-      for (const rewardOffer of rewardOffers) {
-        // ONLY show rewards on the LAST occurrence of the quest (when it's complete)
-        if (!isLastOccurrence) {
-          continue;
-        }
+      // ONLY show rewards on the LAST occurrence of the quest (when it's complete)
+      if (!isLastOccurrence) {
+        continue;
+      }
 
-        // Check quest rewards (TAKE)
-        if (!takenQuestIds.has(questId) && !takenGemIds.has(gemId)) {
+      // FIRST PASS: Check ALL reward offers for quest rewards (TAKE)
+      // This ensures we prioritize quest rewards over vendor rewards
+      let foundAsQuestReward = false;
+      
+      if (!takenGemIds.has(gemId)) {
+        for (const rewardOffer of rewardOffers) {
           const questRewards = rewardOffer.quest || {};
           const questReward = questRewards[gemId];
           if (questReward) {
             const classValid = isClassValid(questReward.classes || [], characterClass);
             if (classValid) {
-              takeGems.push({
-                gemId,
-                name: gemData.name,
-                questId: questData.id || questId,
-                questName: questData.name,
-                questAct: questData.act,
-                rewardType: 'quest',
-                npc: rewardOffer.quest_npc,
-                isSupport: gemData.is_support,
-                skillSetTitle: pobGem.skillSetTitle,
-              });
-              takenGemIds.add(gemId);
-              takenQuestIds.add(questId);
-              state.globalTakenGems.add(gemId);
+              // Only actually add as TAKE if we haven't already taken a gem from this quest
+              if (!takenQuestIds.has(questId)) {
+                takeGems.push({
+                  gemId,
+                  name: gemData.name,
+                  questId: questData.id || questId,
+                  questName: questData.name,
+                  questAct: questData.act,
+                  rewardType: 'quest',
+                  npc: rewardOffer.quest_npc,
+                  isSupport: gemData.is_support,
+                  skillSetTitle: pobGem.skillSetTitle,
+                });
+                takenGemIds.add(gemId);
+                takenQuestIds.add(questId);
+                state.globalTakenGems.add(gemId);
+                foundAsQuestReward = true;
+              }
               break;
             }
           }
         }
+      }
 
-        // Check vendor rewards (BUY)
-        // Vendor gems ARE class-restricted (can only buy if your class is in the list)
-        if (!takenGemIds.has(gemId) && !state.globalTakenGems.has(gemId) && !vendorGemIds.has(gemId)) {
+      // SECOND PASS: Check vendor rewards (BUY)
+      // Show as BUY if: not taken as quest reward AND (not already taken from another source)
+      if (!foundAsQuestReward && !takenGemIds.has(gemId) && !state.globalTakenGems.has(gemId) && !vendorGemIds.has(gemId)) {
+        for (const rewardOffer of rewardOffers) {
           const vendorRewards = rewardOffer.vendor || {};
           const vendorReward = vendorRewards[gemId];
           if (vendorReward && isClassValid(vendorReward.classes || [], characterClass)) {
