@@ -274,8 +274,8 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
       white-space: pre-wrap;
       word-wrap: break-word;
       font-family: 'Consolas', 'Monaco', monospace;
-      user-select: none;
-      -webkit-user-select: none;
+      user-select: text;
+      -webkit-user-select: text;
     }
     
     .no-notes {

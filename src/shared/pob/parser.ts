@@ -255,6 +255,84 @@ function extractItemSets(doc: Document): ItemSet[] {
   const result: ItemSet[] = [];
   const itemSetElements = Array.from(doc.getElementsByTagName('ItemSet'));
 
+  // If no explicit ItemSet elements, try to extract from root Items element (single-set builds)
+  if (itemSetElements.length === 0) {
+    const itemsElement = doc.getElementsByTagName('Items')[0];
+    if (itemsElement) {
+      const items: Record<string, Item> = {};
+      const usedItemIds = new Set<number>();
+      const slotElements = Array.from(itemsElement.getElementsByTagName('Slot'));
+
+      slotElements.forEach((slotElement) => {
+        const slotName = slotElement.getAttribute('name') || '';
+        const itemId = parseInt(slotElement.getAttribute('itemId') || '0', 10);
+
+        if (!slotName || !itemId) {
+          return;
+        }
+
+        const itemElement = findItemById(doc, itemId);
+        if (!itemElement) {
+          return;
+        }
+
+        const rawText = itemElement.textContent || '';
+        const item = parseItemText(itemId, rawText);
+        items[slotName] = item;
+        usedItemIds.add(itemId);
+      });
+
+      // Try to merge in tree-slotted jewels from the first Spec
+      try {
+        const normalize = (s: string) => (s || '')
+          .toLowerCase()
+          .replace(/[()\[\]]/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+        const isJewelish = (name?: string, base?: string) => {
+          const n = (name || '').toLowerCase();
+          const b = (base || '').toLowerCase();
+          return n.includes('jewel') || b.includes('jewel');
+        };
+
+        const specEls = Array.from(doc.getElementsByTagName('Spec'));
+        const firstSpec = specEls[0]; // Use first spec for single-set builds
+        if (firstSpec) {
+          const socketsEl = firstSpec.getElementsByTagName('Sockets')[0];
+          if (socketsEl) {
+            const socketEls = Array.from(socketsEl.getElementsByTagName('Socket'));
+            let jewelIndex = Object.keys(items).filter(k => k.startsWith('Jewel')).length + 1;
+            for (const se of socketEls) {
+              const idAttr = se.getAttribute('itemId');
+              if (!idAttr) continue;
+              const jid = parseInt(idAttr, 10);
+              if (!jid || usedItemIds.has(jid)) continue;
+              const itemElement = findItemById(doc, jid);
+              if (!itemElement) continue;
+              const rawText = itemElement.textContent || '';
+              const parsed = parseItemText(jid, rawText);
+              if (!isJewelish(parsed.name, parsed.baseName)) continue;
+              const key = `Jewel ${jewelIndex++}`;
+              items[key] = parsed;
+              usedItemIds.add(jid);
+            }
+          }
+        }
+      } catch {}
+
+      // Only add the default set if there are actually items
+      if (Object.keys(items).length > 0) {
+        result.push({
+          id: 1,
+          title: 'Gear',
+          useSecondWeaponSet: false,
+          items
+        });
+      }
+    }
+    return result;
+  }
+
   itemSetElements.forEach((itemSetElement) => {
     const id = parseInt(itemSetElement.getAttribute('id') || '1', 10);
     const title = itemSetElement.getAttribute('title') || `Gear Set ${id}`;
