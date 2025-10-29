@@ -1687,81 +1687,51 @@ export class LevelingWindow {
       
       const uniqueGems = extractUniqueGems(allSocketGroups);
       
-      // Match gems to quest steps using quest data
-      const gemsWithQuests = matchGemsToQuestSteps(uniqueGems, this.levelingData, build.className);
+      // Extract gems without quest matching - matching happens at render time per-step
+      const pobGems = matchGemsToQuestSteps(uniqueGems, this.levelingData, build.className);
 
-      console.log('[PoB Import] Gems extracted:', gemsWithQuests.length, 'unique gems from all acts');
+      console.log('[PoB Import] Extracted', pobGems.length, 'unique gems for dynamic matching');
       
-      // Create a map of gem name -> quest info for easy lookup
-      const gemQuestMap = new Map<string, any>();
-      for (const gem of gemsWithQuests) {
-        gemQuestMap.set(gem.name.toLowerCase(), gem);
-      }
-      
-      // Enrich socket groups with quest info
+      // Enrich socket groups with gem names for display
       const enrichedSocketGroups = build.gems.map(group => ({
         ...group,
         gems: group.gems.map(gem => {
-          const questInfo = gemQuestMap.get((gem.nameSpec || '').toLowerCase());
-          return questInfo ? { ...gem, ...questInfo } : gem;
+          const matchedGem = pobGems.find(g => g.name.toLowerCase() === (gem.nameSpec || '').toLowerCase());
+          return matchedGem ? { ...gem, ...matchedGem } : gem;
         })
       }));
 
-      // Enrich ALL skill sets with quest info (not just the first one)
+      // Enrich ALL skill sets with gem info (not just the first one)
       const enrichedSkillSets = (build.skillSets || []).map(skillSet => ({
         ...skillSet,
         socketGroups: skillSet.socketGroups.map(group => ({
           ...group,
           gems: group.gems.map(gem => {
-            const questInfo = gemQuestMap.get((gem.nameSpec || '').toLowerCase());
-            return questInfo ? { ...gem, ...questInfo } : gem;
+            const matchedGem = pobGems.find(g => g.name.toLowerCase() === (gem.nameSpec || '').toLowerCase());
+            return matchedGem ? { ...gem, ...matchedGem } : gem;
           })
         }))
       }));
 
-      console.log('[PoB Import] Enriched', enrichedSkillSets.length, 'skill sets with quest data');
+      console.log('[PoB Import] Enriched', enrichedSkillSets.length, 'skill sets with gem data');
 
-      // Create a flat list of ALL gems from ALL enriched skill sets (preserving per-act data)
-      // Use a Map to deduplicate by (gemName + act + quest) to avoid showing same gem multiple times
-      const gemMap = new Map<string, any>();
+      // Store the flat gem list for dynamic matching at render time
+      // No quest data attached - matching happens per-step
+      const allGems = pobGems.map(gem => ({
+        name: gem.name,
+        level: gem.level || 1,
+        quality: 0,
+        enabled: true,
+        isSupport: gem.isSupport,
+        act: 0, // Will be determined at render time
+        quest: undefined,
+        vendor: undefined,
+        rewardType: undefined as 'quest' | 'vendor' | undefined,
+        availableFrom: undefined,
+        skillSetTitle: gem.skillSetTitle // Preserve skillSet title
+      }));
       
-      for (const skillSet of enrichedSkillSets) {
-        for (const group of skillSet.socketGroups) {
-          for (const gem of group.gems) {
-            if (gem.enabled !== false && gem.nameSpec) {
-              // Create unique key: gemName + act + quest to deduplicate gems that appear in multiple skill sets
-              const uniqueKey = `${gem.nameSpec}|${gem.act || 0}|${gem.quest || 'none'}`;
-              
-              // Only add if not already present (prevents duplicates from multiple skill sets using same gems)
-              if (!gemMap.has(uniqueKey)) {
-                gemMap.set(uniqueKey, {
-                  name: gem.nameSpec,
-                  level: gem.level || 1,
-                  quality: gem.quality || 0,
-                  enabled: gem.enabled,
-                  // Quest info from enrichment
-                  act: gem.act,
-                  quest: gem.quest,
-                  vendor: gem.vendor,
-                  rewardType: gem.rewardType,
-                  isSupport: gem.isSupport,
-                  availableFrom: gem.availableFrom
-                });
-              }
-            }
-          }
-        }
-      }
-      
-      const allEnrichedGems = Array.from(gemMap.values());
-      
-      console.log('[PoB Import] Flattened', allEnrichedGems.length, 'unique enriched gems from all skill sets');
-      console.log('[PoB Import] Gems per act:', 
-        Array.from(new Set(allEnrichedGems.map(g => g.act)))
-          .sort()
-          .map(act => `Act ${act}: ${allEnrichedGems.filter(g => g.act === act).length} gems`)
-          .join(', ')
-      );
+      console.log('[PoB Import] Stored', allGems.length, 'gems for per-step matching');
 
       // Store PoB build in settings
       const pobBuild: StoredPobBuild = {
@@ -1773,9 +1743,9 @@ export class LevelingWindow {
   treeSpecs: treeSpecsToUse, // Store only non-empty specs
         allocatedNodes: allocatedNodes, // Current selected spec nodes
         treeProgression: treeProgression,
-        gems: allEnrichedGems, // Flat list of ALL gems from ALL skill sets with per-act quest info
-        socketGroups: enrichedSocketGroups, // Socket groups with quest info (from first skill set)
-        skillSets: enrichedSkillSets, // ALL skill sets with quest info enriched
+        gems: allGems, // Flat list of gems without quest data - matching happens at render time
+        socketGroups: enrichedSocketGroups, // Socket groups with gem info (from first skill set)
+        skillSets: enrichedSkillSets, // ALL skill sets with gem info enriched
         itemSets: build.itemSets, // Item sets (gear)
         treeVersion: build.treeVersion,
         notes: build.notes, // Notes from PoB Notes tab
@@ -1810,7 +1780,7 @@ export class LevelingWindow {
           ascendancyName: build.ascendancyName,
           level: build.level,
           totalNodes: firstTreeSpec.allocatedNodes.length,
-          gemsFound: gemsWithQuests.length
+          gemsFound: allGems.length
         }
       };
     } catch (error: any) {

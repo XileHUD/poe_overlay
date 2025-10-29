@@ -253,15 +253,18 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     
     /* PoB Gem Compact Display Styles */
     .pob-gem-compact{display:flex;align-items:center;gap:4px;padding:1px 0;font-size:calc(var(--font-size) - 1px);line-height:1.3;}
-    .pob-gem-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:3px;transition:all 0.12s;border:none;font-size:calc(var(--font-size) - 1px);}
+    .pob-gem-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:3px;transition:all 0.12s;border:none;font-size:calc(var(--font-size) - 1px);flex-wrap:nowrap;}
     .pob-gem-pill:hover{background:rgba(255,255,255,0.05);transform:translateX(1px);}
     .pob-gem-icon{font-size:9px;line-height:1;}
     .pob-gem-image{width:20px;height:20px;object-fit:contain;flex-shrink:0;}
     .pob-gem-image.poe2{border-radius:3px;border:1px solid rgba(74,158,255,0.3);background:rgba(0,0,0,0.3);padding:2px;}
-    .pob-gem-verb{font-weight:500;color:rgba(255,255,255,0.85);font-size:calc(var(--font-size) - 2px);text-transform:uppercase;letter-spacing:0.3px;min-width:28px;}
-    .pob-gem-name-inline{font-weight:500;flex:1;font-size:calc(var(--font-size) - 1px);}
-    .pob-gem-vendor{font-size:calc(var(--font-size) - 2px);color:rgba(255,255,255,0.4);font-style:italic;margin-left:auto;}
+    .pob-gem-verb{font-weight:500;color:rgba(255,255,255,0.85);font-size:calc(var(--font-size) - 2px);text-transform:uppercase;letter-spacing:0.3px;min-width:28px;flex-shrink:0;}
+    .pob-gem-name-inline{font-weight:500;flex:0 1 auto;font-size:calc(var(--font-size) - 1px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px;}
+    .pob-gem-vendor{font-size:calc(var(--font-size) - 2px);color:rgba(255,255,255,0.4);font-style:italic;margin-left:auto;flex-shrink:0;white-space:nowrap;}
     .pob-gem-cost{font-size:10px;opacity:0.6;margin-left:4px;}
+    .pob-gem-set-tag{font-size:8px;padding:1px 4px;margin-left:6px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);border-radius:2px;color:rgba(255,255,255,0.45);font-weight:500;white-space:nowrap;cursor:default;}
+    .pob-gem-set-tooltip{cursor:help;position:relative;}
+    .pob-gem-set-tooltip:hover{background:rgba(74,222,128,0.15);color:rgba(255,255,255,0.65);}
     
     /* History Modal Styles */
     .history-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:999999;backdrop-filter:blur(8px);animation:fadeIn 0.2s;}
@@ -409,6 +412,7 @@ const overlayVersion = '${overlayVersion}';
 let gemDatabase = null;
 let questsDatabase = null;
 let gemColours = null;
+let questNameIndex = null;
 
 // Injected JSON data from main process
 const INJECTED_GEMS_DATA = ${gemsJSON};
@@ -431,10 +435,12 @@ async function loadQuestsDatabase() {
   if (questsDatabase) return questsDatabase;
   try {
     questsDatabase = INJECTED_QUESTS_DATA;
+    questNameIndex = null;
     console.log('[QuestsDB] Loaded', Object.keys(questsDatabase).length, 'quests');
   } catch (err) {
     console.error('[QuestsDB] Failed to load quests database:', err);
     questsDatabase = {};
+    questNameIndex = null;
   }
   return questsDatabase;
 }
@@ -488,7 +494,8 @@ let state = {
     elapsed: 0,
     currentAct: 1
   },
-  actTimers: {} // Store completion time for each act: { 1: 1234567, 2: 2345678, ... }
+  actTimers: {}, // Store completion time for each act: { 1: 1234567, 2: 2345678, ... }
+  globalTakenGems: new Set() // Track gem IDs that have been taken as quest rewards
 };
 
 let timerInterval = null;
@@ -507,6 +514,22 @@ const STEP_TYPES = {
 
 function escapeHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
+// Clean skill set title for display: extract "Act X" or "Level X" patterns, otherwise truncate
+function cleanSkillSetTitle(title) {
+  if (!title) return '';
+  
+  // Try to extract "Act X" pattern
+  const actMatch = title.match(/Act\\s+(\\d+)/i);
+  if (actMatch) return 'Act ' + actMatch[1];
+  
+  // Try to extract "Level X" or "Level X-Y" pattern
+  const levelMatch = title.match(/Level\\s+(\\d+(?:-\\d+)?)/i);
+  if (levelMatch) return 'Lvl ' + levelMatch[1];
+  
+  // Fallback: truncate to first 5 characters + "..."
+  return title.substring(0, 5) + '...';
+}
+
 function cleanDescription(desc) {
   return (desc || '').replace(/^\\\[LEAGUE START\\\]\s*/i, '');
 }
@@ -524,164 +547,315 @@ function getLayoutTipIcon(step) {
 // Track which gems have been shown to avoid duplicates
 const shownGems = new Set();
 
-function getPobGemsForStep(step, actNumber) {
+function normalizeNpcName(name) {
+  return (name || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\\s]/g, ' ')
+    .replace(/\\s+/g, ' ')
+    .trim();
+}
+
+function npcMatches(candidateNpc, stepNpc) {
+  if (!stepNpc) return true;
+  const filter = normalizeNpcName(stepNpc);
+  if (!filter) return true;
+  const candidate = normalizeNpcName(candidateNpc);
+  if (!candidate) return false;
+  return candidate === filter || candidate.includes(filter) || filter.includes(candidate);
+}
+
+function normalizeQuestKey(name) {
+  return (name || '')
+    .toLowerCase()
+    .replace(/\\(.*?\\)/g, '')
+  .replace(/['’\`]/g, '')
+    .replace(/[^a-z0-9\\s]/g, ' ')
+    .replace(/\\b(act|part)\\s*\\d+\\b/g, '')
+    .replace(/\\bquest\\b/g, '')
+    .replace(/\\s+/g, ' ')
+    .trim();
+}
+
+function getQuestKeyVariants(rawName) {
+  const variants = new Set();
+  const primary = normalizeQuestKey(rawName);
+  if (primary) {
+    variants.add(primary);
+    if (primary.startsWith('the ')) {
+      variants.add(primary.replace(/^the\\s+/, ''));
+    }
+  }
+  return Array.from(variants);
+}
+
+function splitStepQuestNames(raw) {
+  if (!raw) return [];
+  const cleaned = raw
+    .replace(/\\(.*?\\)/g, '')
+    .replace(/Quest Reward:?/ig, '')
+    .replace(/Rewards:?/ig, '')
+    .replace(/Optional:?/ig, '');
+  return cleaned
+    .split(/\\s*(?:&|,|\\/|\\+| and )\\s*/i)
+    .map(part => part.trim())
+    .filter(Boolean);
+}
+
+function ensureQuestNameIndex() {
+  if (questNameIndex) return questNameIndex;
+  questNameIndex = {};
+  if (!questsDatabase) return questNameIndex;
+  Object.values(questsDatabase).forEach((quest) => {
+    const variants = getQuestKeyVariants(quest.name);
+    variants.forEach((key) => {
+      if (!questNameIndex[key]) {
+        questNameIndex[key] = [];
+      }
+      questNameIndex[key].push(quest.id);
+    });
+  });
+  return questNameIndex;
+}
+
+function findQuestIdsForStep(step, actNumber, stepNpc) {
+  if (!step || !step.quest) return [];
+  const index = ensureQuestNameIndex();
+  const questIds = new Set();
+  const questNames = splitStepQuestNames(step.quest);
+
+  questNames.forEach((rawName) => {
+    const variants = getQuestKeyVariants(rawName);
+    let matched = false;
+    variants.forEach((variant) => {
+      const matches = index[variant];
+      if (matches) {
+        matches.forEach((id) => questIds.add(id));
+        matched = true;
+      }
+    });
+
+    if (!matched) {
+      const relaxed = variants
+        .map(v => v.replace(/\\b(the|a|an)\\s+/g, '').trim())
+        .filter(Boolean);
+      relaxed.forEach((variant) => {
+        const matches = index[variant];
+        if (matches) {
+          matches.forEach((id) => questIds.add(id));
+        }
+      });
+    }
+  });
+
+  if (questIds.size === 0 && stepNpc) {
+    Object.entries(questsDatabase || {}).forEach(([questId, quest]) => {
+      if (actNumber && quest.act && parseInt(quest.act, 10) !== actNumber) {
+        return;
+      }
+      const rewardOffers = Object.values(quest.reward_offers || {});
+      const hasMatchingNpc = rewardOffers.some((offer) => {
+        if (npcMatches(offer.quest_npc || '', stepNpc)) {
+          return true;
+        }
+        if (!offer.vendor) {
+          return false;
+        }
+        return Object.values(offer.vendor).some((vendorInfo) => npcMatches((vendorInfo && vendorInfo.npc) || '', stepNpc));
+      });
+      if (hasMatchingNpc) {
+        questIds.add(questId);
+      }
+    });
+  }
+
+  return Array.from(questIds);
+}
+
+function isClassValid(classList, characterClass) {
+  if (!Array.isArray(classList)) return false;
+  if (classList.length === 0) return true;
+  const normalizedClass = (characterClass || '').toLowerCase();
+  return classList.some((c) => c.toLowerCase() === normalizedClass);
+}
+
+function isLastOccurrenceOfQuest(currentStep, questName, allSteps) {
+  const normalizedQuestName = normalizeQuestKey(questName);
+  const currentStepIndex = allSteps.findIndex(s => s.id === currentStep.id);
+  
+  // Look ahead to see if this quest appears in any later steps
+  for (let i = currentStepIndex + 1; i < allSteps.length; i++) {
+    const futureStep = allSteps[i];
+    if (futureStep.quest) {
+      const futureQuestNames = splitStepQuestNames(futureStep.quest);
+      for (const fqName of futureQuestNames) {
+        const variants = getQuestKeyVariants(fqName);
+        if (variants.some(v => v === normalizedQuestName)) {
+          return false; // Quest appears again later
+        }
+      }
+    }
+  }
+  
+  return true; // This is the last occurrence
+}
+
+function getPobGemsForStep(step, actNumber, allSteps = []) {
   if (!state.pobBuild || !state.pobBuild.gems) {
     console.log('[getPobGemsForStep] No PoB build or gems available');
     return [];
   }
-  
-  // Only show gems for quest hand-in steps (npc_quest type)
+
   if (step.type !== 'npc_quest') return [];
   if (!step.quest) return [];
-  
-  console.log('[getPobGemsForStep] Checking step:', step.quest, 'Act:', actNumber);
-  console.log('[getPobGemsForStep] Total gems in PoB build:', state.pobBuild.gems.length);
-  console.log('[getPobGemsForStep] Gems with act', actNumber + ':', state.pobBuild.gems.filter(g => g.act === actNumber).length);
-  console.log('[getPobGemsForStep] All gem acts:', state.pobBuild.gems.map(g => 'Act ' + g.act + ': ' + g.name).join(', '));
-  
-  // Filter gems that could come from this quest
-  // Use smart matching: exact first, then partial if no exact match
-  const candidateGems = state.pobBuild.gems.filter(gem => {
-    if (gem.act !== actNumber) return false;
-    if (!gem.quest) return false;
-    
-    const stepQuest = step.quest.toLowerCase().trim();
-    const gemQuest = gem.quest.toLowerCase().trim();
-    
-    // Exact match preferred
-    if (stepQuest === gemQuest) return true;
-    
-    // For partial matches, require significant overlap to avoid false positives
-    // Only match if one is fully contained in the other AND they share key words
-    const stepWords = stepQuest.split(/\s+/);
-    const gemWords = gemQuest.split(/\s+/);
-    const sharedWords = stepWords.filter(w => w.length > 3 && gemWords.includes(w));
-    
-    // Require at least 2 shared significant words for partial match
-    if (sharedWords.length >= 2) {
-      return stepQuest.includes(gemQuest) || gemQuest.includes(stepQuest);
-    }
-    
-    return false;
-  });
-  
-  console.log('[getPobGemsForStep] Step quest:', step.quest);
-  console.log('[getPobGemsForStep] Step description:', step.description);
-  console.log('[getPobGemsForStep] Step reward label:', step.reward);
-  console.log('[getPobGemsForStep] Candidate gems:', candidateGems.map(g => g.name + ' (quest: ' + g.quest + ', npc: ' + g.vendor + ', type: ' + g.rewardType + ')'));
 
-  // Further narrow down by NPC on the step (avoid mixing rewards from different NPCs for the same quest)
-  // Example: Act 1 "The Caged Brute" has both Nessa (Support gems) and Tarkleigh (Movement/Skill gems)
-  // We must only show Nessa rewards on the Nessa step and Tarkleigh rewards on the Tarkleigh step
-  function normalizeNpcName(value) {
-    if (!value) return '';
-    return value
-      .toLowerCase()
-      .replace(/&/g, 'and')
-      .replace(/[^a-z\s]/g, '')
-      .replace(/\s+/g, ' ')
-      .trim();
-  }
+  const characterClass = state.characterClass || state.pobBuild.className || 'Marauder';
 
   function extractStepNpc(desc) {
     if (!desc || typeof desc !== 'string') return null;
-    // Strip any leading bracketed tags like [LEAGUE START]
-    const stripped = desc.replace(/^\[[^\]]*\]\s*/,'');
-    // Fixed regex: escape hyphen at end of character class to avoid "range out of order"
-    const m = stripped.match(/^Talk to\s+([A-Za-z'\s-]+)/i);
-    if (m) {
-      // Trim potential trailing text after NPC name (e.g., "Talk to Nessa, ...")
-      const name = m[1].split(',')[0].trim();
-      return name;
+    const stripped = desc.replace(/^\[[^\]]*\]\s*/, '').trim();
+    const patterns = [
+      /^(?:Talk|Speak)\s+to\s+([A-Za-z'\s-]+)/i,
+      /^Turn in quests?\s+to\s+([A-Za-z'\s-]+)/i,
+      /^Return to\s+([A-Za-z'\s-]+)/i,
+      /^Visit\s+([A-Za-z'\s-]+)/i,
+      /^Give\s+.+\s+to\s+([A-Za-z'\s-]+)/i
+    ];
+
+    for (const pattern of patterns) {
+      const match = stripped.match(pattern);
+      if (match) {
+        return match[1].split(/(?:,|\s+and\s+|\s*&\s*)/i)[0].trim();
+      }
     }
     return null;
   }
 
   const stepNpc = extractStepNpc(step.description || '');
-  const stepNameNormalized = normalizeNpcName(stepNpc);
-  const descNormalized = normalizeNpcName(step.description || '');
-  const rewardNormalized = normalizeNpcName(step.reward || '');
+  const questIds = findQuestIdsForStep(step, actNumber, stepNpc);
 
-  const npcFiltered = candidateGems.filter((gem) => {
-    const vendorNormalized = normalizeNpcName(gem.vendor);
-    if (!vendorNormalized) {
-      return false;
-    }
-
-    const matchesByExtractedNpc = stepNameNormalized && vendorNormalized === stepNameNormalized;
-    const matchesByDescription = descNormalized.includes(vendorNormalized) || vendorNormalized.includes(descNormalized);
-    const matchesByReward = rewardNormalized.includes(vendorNormalized) || vendorNormalized.includes(rewardNormalized);
-
-    const keep = matchesByExtractedNpc || matchesByDescription || matchesByReward;
-    if (!keep) {
-      console.log('[getPobGemsForStep] Excluding gem due to NPC mismatch:', {
-        gem: gem.name,
-        vendor: gem.vendor,
-        stepNpc,
-        description: step.description,
-        rewardLabel: step.reward
-      });
-    }
-    return keep;
-  });
-
-  console.log('[getPobGemsForStep] NPC-normalized step value:', stepNameNormalized, 'description norm:', descNormalized, 'reward norm:', rewardNormalized);
-  console.log('[getPobGemsForStep] After NPC filter:', npcFiltered.map(g => g.name + ' [vendor: ' + g.vendor + ', type: ' + g.rewardType + ']'));
-
-  if (npcFiltered.length === 0) {
-    console.log('[getPobGemsForStep] No gems after NPC filter - returning empty');
+  if (questIds.length === 0) {
     return [];
   }
-  
-  // Deduplicate gems by name within this quest - prefer quest rewards over vendor purchases
-  const gemMap = new Map();
-  for (const gem of npcFiltered) {
-    const existing = gemMap.get(gem.name);
-    if (!existing) {
-      gemMap.set(gem.name, gem);
-    } else {
-      // Prefer quest reward over vendor
-      if (gem.rewardType === 'quest' && existing.rewardType === 'vendor') {
-        gemMap.set(gem.name, gem);
+
+  // Check if this is the last occurrence of the quest(s)
+  const questNames = splitStepQuestNames(step.quest);
+  const isLastOccurrence = questNames.every(qName => 
+    isLastOccurrenceOfQuest(step, qName, allSteps)
+  );
+
+  const takeGems = [];
+  const buyGems = [];
+  const takenGemIds = new Set();
+  const takenQuestIds = new Set();
+  const vendorGemIds = new Set();
+
+  for (const questId of questIds) {
+    const questData = questsDatabase[questId];
+    if (!questData || !questData.reward_offers) {
+      continue;
+    }
+
+    const rewardOffers = Object.values(questData.reward_offers || {});
+    if (rewardOffers.length === 0) continue;
+
+    // Iterate through POB gems (flat array)
+    for (const pobGem of state.pobBuild.gems) {
+      // Try exact match first, then try with " Support" suffix for support gems
+      let gemEntry = Object.entries(gemDatabase).find(
+        ([, gemData]) => gemData.name.toLowerCase() === pobGem.name.toLowerCase()
+      );
+
+      // If not found and gem doesn't already have "support" in name, try with " Support" suffix
+      if (!gemEntry && !pobGem.name.toLowerCase().includes('support')) {
+        const withSupport = pobGem.name + ' Support';
+        gemEntry = Object.entries(gemDatabase).find(
+          ([, gemData]) => gemData.name.toLowerCase() === withSupport.toLowerCase()
+        );
+      }
+
+      if (!gemEntry) {
+        continue;
+      }
+
+      const [gemId, gemData] = gemEntry;
+
+      for (const rewardOffer of rewardOffers) {
+        // ONLY show rewards on the LAST occurrence of the quest (when it's complete)
+        if (!isLastOccurrence) {
+          continue;
+        }
+
+        // Check quest rewards (TAKE)
+        if (!takenQuestIds.has(questId) && !takenGemIds.has(gemId)) {
+          const questRewards = rewardOffer.quest || {};
+          const questReward = questRewards[gemId];
+          if (questReward && isClassValid(questReward.classes || [], characterClass)) {
+            takeGems.push({
+              gemId,
+              name: gemData.name,
+              questId: questData.id || questId,
+              questName: questData.name,
+              questAct: questData.act,
+              rewardType: 'quest',
+              npc: rewardOffer.quest_npc,
+              isSupport: gemData.is_support,
+              skillSetTitle: pobGem.skillSetTitle, // Preserve skillSet title from POB
+            });
+            takenGemIds.add(gemId);
+            takenQuestIds.add(questId);
+            state.globalTakenGems.add(gemId); // Track globally
+            break;
+          }
+        }
+
+        // Check vendor rewards (BUY) - show from ALL NPCs since quest is complete
+        // Skip gems that were already taken as quest rewards
+        if (!takenGemIds.has(gemId) && !state.globalTakenGems.has(gemId) && !vendorGemIds.has(gemId)) {
+          const vendorRewards = rewardOffer.vendor || {};
+          const vendorReward = vendorRewards[gemId];
+          if (vendorReward && isClassValid(vendorReward.classes || [], characterClass)) {
+            buyGems.push({
+              gemId,
+              name: gemData.name,
+              questId: questData.id || questId,
+              questName: questData.name,
+              questAct: questData.act,
+              rewardType: 'vendor',
+              npc: vendorReward.npc || rewardOffer.quest_npc,
+              isSupport: gemData.is_support,
+              skillSetTitle: pobGem.skillSetTitle, // Preserve skillSet title from POB
+            });
+            vendorGemIds.add(gemId);
+            break;
+          }
+        }
       }
     }
   }
-  
-  // Filter out gems that have already been shown, UNLESS it's a quest reward (TAKE)
-  // This allows "BUY Flame Dash" at level 8, then "TAKE Flame Dash" at level 10 movement skill reward
-  const filteredResults = Array.from(gemMap.values()).filter(gem => {
+
+  const allGems = [...takeGems, ...buyGems];
+  const filteredResults = allGems.filter((gem) => {
     const gemKey = gem.name.toLowerCase();
     const alreadyShown = shownGems.has(gemKey);
-    const isQuestReward = gem.rewardType === 'quest';
-    
-    // Always show quest rewards, even if shown before (because you need to TAKE them)
-    // For vendor purchases, only show if not shown before
-    if (alreadyShown && !isQuestReward) {
-      console.log('[getPobGemsForStep] Skipping duplicate vendor gem:', gem.name);
+    if (alreadyShown && gem.rewardType !== 'quest') {
       return false;
     }
-    
     return true;
   });
-  
-  // Mark gems as shown and build results
+
   const results = filteredResults.map((gem) => {
     shownGems.add(gem.name.toLowerCase());
     return {
       name: gem.name,
-      rewardType: gem.rewardType, // Respect the actual quest/vendor designation
-      act: gem.act,
-      quest: gem.quest,
-      vendor: gem.vendor,
-      isSupport: gem.isSupport
+      rewardType: gem.rewardType,
+      act: parseInt(gem.questAct) || actNumber,
+      quest: gem.questName,
+      vendor: gem.npc,
+      isSupport: gem.isSupport,
+      skillSetTitle: gem.skillSetTitle // Preserve skillSet title
     };
   });
-  
-  if (results.length > 0) {
-    console.log('[getPobGemsForStep] Found', results.length, 'gems for', step.quest, ':', 
-                results.map(function(g) { return g.name + ' (' + g.rewardType + ')'; }).join(', '));
-  }
-  
+
   return results;
 }
 
@@ -700,6 +874,11 @@ function renderPobGemList(gems) {
     const imagePath = getGemImagePath(gem.name);
     const imageClass = overlayVersion === 'poe2' ? 'pob-gem-image poe2' : 'pob-gem-image';
     
+    // Clean skillSet title for display
+    const skillSetTag = gem.skillSetTitle ? cleanSkillSetTitle(gem.skillSetTitle) : '';
+    const fullTitle = gem.skillSetTitle || '';
+    const isTruncated = skillSetTag.endsWith('...');
+    
     html += '<div class="pob-gem-compact">';
     // Use subtle background colors with thin border for slick look
     html += '<span class="pob-gem-pill" style="border-left:2px solid ' + color + ';background:' + color + '18;">';
@@ -712,6 +891,15 @@ function renderPobGemList(gems) {
     html += '<span class="pob-gem-vendor">from ' + escapeHtml(npcName) + '</span>';
     if (cost) {
       html += '<span class="pob-gem-cost">' + cost + '</span>';
+    }
+    // Add skill set tag if available, with tooltip for truncated names
+    if (skillSetTag) {
+      const tagStyle = 'border-color:' + color + '33;background:' + color + '08;';
+      if (isTruncated) {
+        html += '<span class="pob-gem-set-tag pob-gem-set-tooltip" style="' + tagStyle + '" title="' + escapeHtml(fullTitle) + '">' + escapeHtml(skillSetTag) + '</span>';
+      } else {
+        html += '<span class="pob-gem-set-tag" style="' + tagStyle + '">' + escapeHtml(skillSetTag) + '</span>';
+      }
     }
     html += '</span>';
     html += '</div>';
@@ -779,13 +967,8 @@ function getGemColor(gem) {
 }
 
 function getGemCost(gem) {
-  // Cost based on required level
-  const level = gem.level || 1;
-  if (level < 8) return '🔷'; // Wisdom scroll
-  if (level < 16) return '🔸'; // Transmutation
-  if (level < 28) return '🔶'; // Alteration
-  if (level < 38) return '🟡'; // Chance
-  return '🟠'; // Alchemy
+  // Disable inline cost icons (blue diamond etc.) per user request
+  return '';
 }
 
 function groupStepsByZone(steps) {
@@ -1423,7 +1606,7 @@ function render() {
         // Get PoB gems for this step (never let errors break UI)
         let pobGems = [];
         try {
-          pobGems = getPobGemsForStep(step, act.actNumber);
+          pobGems = getPobGemsForStep(step, act.actNumber, act.steps);
         } catch (err) {
           console.error('[LevelingPopout] getPobGemsForStep failed for step', step.id, err);
           pobGems = [];
@@ -1457,7 +1640,7 @@ function render() {
       // Get PoB gems for this step (never let errors break UI)
       let pobGems = [];
       try {
-        pobGems = getPobGemsForStep(step, act.actNumber);
+        pobGems = getPobGemsForStep(step, act.actNumber, act.steps);
       } catch (err) {
         console.error('[LevelingPopout] getPobGemsForStep failed for step', step.id, err);
         pobGems = [];
@@ -2004,6 +2187,18 @@ if (resetProgressBtn) {
     state.characterClass = freshData.characterClass || null;
     state.characterLevel = freshData.characterLevel || null;
     
+    // If we have a POB build, auto-set class from it
+    if (state.pobBuild && state.pobBuild.className && !state.characterClass) {
+      state.characterClass = state.pobBuild.className;
+      console.log('[Reset] Auto-set character class from POB:', state.characterClass);
+      // Save the auto-detected class
+      await ipcRenderer.invoke('set-character-info', {
+        name: state.characterName,
+        class: state.characterClass,
+        level: state.characterLevel
+      });
+    }
+    
     // Update character display
     updateCharacterDisplay();
     
@@ -2078,9 +2273,27 @@ if (importPobBtn) {
 async function loadPobBuild() {
   const build = await ipcRenderer.invoke('get-pob-build');
   state.pobBuild = build;
+  state.globalTakenGems.clear(); // Reset taken gems tracker when new build is loaded
   
   if (build) {
     console.log('[loadPobBuild] Build loaded with', build.gems?.length || 0, 'gems');
+    
+    // Auto-set character class from POB if not already set
+    if (build.className && !state.characterClass) {
+      state.characterClass = build.className;
+      console.log('[loadPobBuild] Auto-set character class:', state.characterClass);
+      // Save it (ignore if handler isn't available)
+      try {
+        await ipcRenderer.invoke('set-character-info', {
+          name: state.characterName,
+          class: state.characterClass,
+          level: state.characterLevel
+        });
+      } catch (err) {
+        console.warn('[loadPobBuild] set-character-info handler not available, continuing');
+      }
+      updateCharacterDisplay();
+    }
     
     // Show tree icon
     const treeIcon = document.getElementById('treeIcon');
@@ -2114,6 +2327,7 @@ ipcRenderer.on('pob-build-imported', (event, build) => {
 ipcRenderer.on('pob-build-removed', () => {
   console.log('[levelingPopout] PoB build removed - clearing gem recommendations');
   state.pobBuild = null;
+  state.globalTakenGems.clear(); // Reset taken gems tracker
   
   // Hide tree icon
   const treeIcon = document.getElementById('treeIcon');

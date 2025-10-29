@@ -111,10 +111,15 @@ export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 
     // Extract gem skill sets (per-act presets)
     const skillSets = extractSkillSets(doc);
 
-    // Use the first skill set's socket groups as the default gem list (fallback to legacy <Skills>)
-    const gems = skillSets.length > 0
-      ? skillSets[0].socketGroups
-      : extractSocketGroups(doc.getElementsByTagName('Skills')[0] || null);
+    // Collect ALL gems from ALL skill sets (not just the first), fallback to legacy <Skills>
+    let gems: GemSocketGroup[] = [];
+    if (skillSets.length > 0) {
+      // Flatten all socketGroups from all skillSets into one array
+      gems = skillSets.flatMap(skillSet => skillSet.socketGroups);
+    } else {
+      // Fallback to legacy <Skills> element if no skillSets found
+      gems = extractSocketGroups(doc.getElementsByTagName('Skills')[0] || null);
+    }
 
     // Extract notes from <Notes> element
     const notesElement = doc.getElementsByTagName('Notes')[0];
@@ -160,7 +165,7 @@ function extractSkillSets(doc: Document): SkillSet[] {
       skillSetElement.getAttribute('name') ||
       `Skill Set ${index + 1}`;
 
-    const socketGroups = extractSocketGroups(skillSetElement);
+    const socketGroups = extractSocketGroups(skillSetElement, title); // Pass title to extractSocketGroups
     if (socketGroups.length > 0) {
       result.push({ title, socketGroups });
     }
@@ -169,7 +174,13 @@ function extractSkillSets(doc: Document): SkillSet[] {
   return result;
 }
 
-function extractSocketGroups(container: Element | null): GemSocketGroup[] {
+/**
+ * Extract gem socket groups from a given container element (could be <Skills> or <SkillSet>).
+ * @param container The XML element containing <Skill> elements
+ * @param skillSetTitle Optional title of the skillSet this belongs to (e.g. "Act 1", "Early maps")
+ * @returns Array of GemSocketGroup objects
+ */
+function extractSocketGroups(container: Element | null, skillSetTitle?: string): GemSocketGroup[] {
   const socketGroups: GemSocketGroup[] = [];
   if (!container) {
     return socketGroups;
@@ -215,7 +226,8 @@ function extractSocketGroups(container: Element | null): GemSocketGroup[] {
         quality,
         enabled: gemEnabled,
         skillId,
-        supportGem
+        supportGem,
+        skillSetTitle // Add the skillSet title to each gem
       });
     });
 

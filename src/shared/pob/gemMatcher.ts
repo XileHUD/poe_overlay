@@ -58,7 +58,7 @@ export function extractUniqueGems(socketGroups: GemSocketGroup[]): GemRequiremen
       const metadata = normalizeGemName(gem.nameSpec);
       const key = metadata.cleanName.toLowerCase();
 
-      // Skip if already added
+      // Skip if already added - we only want the FIRST occurrence (earliest skillSet)
       if (gemMap.has(key)) {
         continue;
       }
@@ -71,7 +71,8 @@ export function extractUniqueGems(socketGroups: GemSocketGroup[]): GemRequiremen
         availableFrom: undefined,
         vendor: undefined,
         isSupport: metadata.isSupport,
-        rewardType: undefined as 'quest' | 'vendor' | undefined
+        rewardType: undefined as 'quest' | 'vendor' | undefined,
+        skillSetTitle: gem.skillSetTitle // Preserve skillSet title from POB parser
       });
     }
   }
@@ -84,56 +85,9 @@ export function matchGemsToQuestSteps(
   levelingData: any,
   characterClass: string
 ): GemRequirement[] {
-  const matched = [...gems];
-
-  console.log(`[GemMatcher] Matching ${gems.length} gems for class: ${characterClass}`);
-
-  // Step 1: Group gems by quest using findGemQuest (to know which quest each gem comes from)
-  const gemsByQuest = new Map<string, GemRequirement[]>();
-  
-  for (const gem of matched) {
-    const questMatch = findGemQuest(gem.name, characterClass);
-    if (questMatch) {
-      const questKey = questMatch.questId;
-      if (!gemsByQuest.has(questKey)) {
-        gemsByQuest.set(questKey, []);
-      }
-      gemsByQuest.get(questKey)!.push(gem);
-    } else {
-      // Fallback for unmapped gems
-      gem.act = 1;
-      gem.quest = 'Unknown - Check vendor';
-      gem.vendor = 'Various NPCs';
-      gem.rewardType = 'vendor';
-      gem.availableFrom = `${gem.name} - Check quest rewards or vendors`;
-      console.warn(`[GemMatcher] NO MATCH: ${gem.name} for ${characterClass}`);
-    }
-  }
-
-  // Step 2: For each quest, use getGemsForQuest to properly determine Take vs Buy
-  for (const [questId, questGems] of gemsByQuest.entries()) {
-    const properMatches = getGemsForQuest(questId, characterClass, questGems);
-    
-    // Update each gem with the correct rewardType and NPC from getGemsForQuest
-    for (const gem of questGems) {
-      const properMatch = properMatches.find(m => m.gemName.toLowerCase() === gem.name.toLowerCase());
-      if (properMatch) {
-        gem.act = parseInt(properMatch.questAct);
-        gem.quest = properMatch.questName;
-        gem.vendor = properMatch.npc; // Correct NPC from getGemsForQuest
-        gem.rewardType = properMatch.rewardType; // Correct Take/Buy from getGemsForQuest
-        gem.availableFrom = formatGemQuestInfo(properMatch);
-        
-        console.log(`[GemMatcher] ${gem.name} -> Act ${properMatch.questAct}, ${properMatch.questName}, ${properMatch.rewardType.toUpperCase()} from ${properMatch.npc}`);
-      }
-    }
-  }
-
-  const questCount = matched.filter(g => g.rewardType === 'quest').length;
-  const vendorCount = matched.filter(g => g.rewardType === 'vendor').length;
-  console.log(`[GemMatcher] Results: ${questCount} quest rewards (TAKE), ${vendorCount} vendor purchases (BUY)`);
-
-  return matched;
+  // Simply return the gems without pre-matching to quests
+  // Matching will happen at render time per-step to properly handle multiple reward offers
+  return gems;
 }
 
 function extractVendorName(description: string): string {

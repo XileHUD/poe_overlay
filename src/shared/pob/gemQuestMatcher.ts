@@ -297,3 +297,106 @@ export function formatGemQuestInfo(match: GemQuestMatch): string {
   const supportTag = match.isSupport ? ' (Support)' : '';
   return `${match.gemName}${supportTag} - ${type}: ${match.questName} (${match.npc}, Act ${match.questAct})`;
 }
+
+/**
+ * Matches PoB gems to a specific quest step, filtering by NPC and quest
+ * This is called at render time for each step to ensure proper gem-to-step matching
+ */
+export function matchGemsForStep(
+  pobGems: GemRequirement[],
+  questId: string,
+  npcName: string | null,
+  characterClass: string
+): { takeGems: GemQuestMatch[], buyGems: GemQuestMatch[] } {
+  const quest = quests[questId];
+  if (!quest) {
+    return { takeGems: [], buyGems: [] };
+  }
+
+  const takeGems: GemQuestMatch[] = [];
+  const buyGems: GemQuestMatch[] = [];
+  const takenGemIds = new Set<string>();
+
+  // Normalize NPC name for comparison
+  const normalizedNpcFilter = npcName?.toLowerCase().trim();
+
+  // Process each PoB gem
+  for (const pobGem of pobGems) {
+    // Normalize gem name - add " Support" if it's a support gem and doesn't have it
+    const gemNameToMatch = pobGem.isSupport && !pobGem.name.toLowerCase().includes('support')
+      ? pobGem.name + ' Support'
+      : pobGem.name;
+
+    // Find gem in database
+    const gemEntry = Object.entries(gems).find(
+      ([_, gemData]) => gemData.name.toLowerCase() === gemNameToMatch.toLowerCase()
+    );
+
+    if (!gemEntry) {
+      continue;
+    }
+
+    const [gemId, gemData] = gemEntry;
+
+    // Check all reward offers for this quest
+    for (const [rewardOfferId, rewardOffer] of Object.entries(quest.reward_offers)) {
+      const offerNpc = rewardOffer.quest_npc.toLowerCase().trim();
+      
+      // Skip if we have an NPC filter and this offer doesn't match
+      if (normalizedNpcFilter && offerNpc !== normalizedNpcFilter) {
+        continue;
+      }
+
+      // Check quest rewards (TAKE) - only one per quest!
+      if (!takenGemIds.has(gemId)) {
+        const questReward = rewardOffer.quest[gemId];
+        if (questReward) {
+          const validClass =
+            questReward.classes.length === 0 ||
+            questReward.classes.includes(characterClass);
+
+          if (validClass) {
+            takeGems.push({
+              gemId,
+              gemName: gemData.name,
+              questId: quest.id,
+              questName: quest.name,
+              questAct: quest.act,
+              rewardType: 'quest',
+              npc: rewardOffer.quest_npc,
+              isSupport: gemData.is_support,
+            });
+            takenGemIds.add(gemId); // Mark as taken so we don't show it as vendor too
+            break; // Found quest reward, move to next gem
+          }
+        }
+      }
+
+      // Check vendor rewards (BUY) - only if not taken as quest reward
+      if (!takenGemIds.has(gemId)) {
+        const vendorReward = rewardOffer.vendor[gemId];
+        if (vendorReward) {
+          const validClass =
+            vendorReward.classes.length === 0 ||
+            vendorReward.classes.includes(characterClass);
+
+          if (validClass) {
+            buyGems.push({
+              gemId,
+              gemName: gemData.name,
+              questId: quest.id,
+              questName: quest.name,
+              questAct: quest.act,
+              rewardType: 'vendor',
+              npc: vendorReward.npc,
+              isSupport: gemData.is_support,
+            });
+            break; // Found vendor reward, move to next gem
+          }
+        }
+      }
+    }
+  }
+
+  return { takeGems, buyGems };
+}

@@ -80,6 +80,7 @@ export interface GemInfo {
   enabled: boolean;
   skillId?: string;
   supportGem?: boolean; // From PoB XML supportGem attribute
+  skillSetTitle?: string; // e.g. "Act 1", "Early maps" - title of the skillSet this gem belongs to
 }
 
 export interface GemRequirement {
@@ -91,6 +92,7 @@ export interface GemRequirement {
   vendor?: string; // NPC name
   isSupport: boolean;
   rewardType?: 'quest' | 'vendor'; // Whether it's a quest reward or vendor purchase
+  skillSetTitle?: string; // e.g. "Act 1", "Early maps" - title of the skillSet this gem belongs to
 }
 
 export interface QuestGemAssignment {
