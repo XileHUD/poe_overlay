@@ -117,6 +117,8 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       display: flex;
       gap: 4px;
       -webkit-app-region: no-drag;
+      opacity: 1;
+      transition: opacity 0.3s ease;
     }
 
     .header-btn {
@@ -198,6 +200,8 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       border-radius: 6px;
       z-index: 10;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      opacity: 1;
+      transition: opacity 0.3s ease;
     }
 
     #spec-selector {
@@ -332,6 +336,8 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       border-radius: 6px;
       z-index: 10;
       pointer-events: none;
+      opacity: 1;
+      transition: opacity 0.3s ease;
     }
 
     .stat-line {
@@ -350,6 +356,8 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       display: flex;
       flex-direction: column;
       gap: 6px;
+      opacity: 1;
+      transition: opacity 0.3s ease;
     }
 
     #zoom-controls button {
@@ -368,6 +376,19 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
     #zoom-controls button:hover {
       background: #3a3a3a;
       border-color: #4a4a4a;
+    }
+
+    /* Auto-hide controls when mouse not over window */
+    body.controls-hidden #tree-stats,
+    body.controls-hidden #zoom-controls,
+    body.controls-hidden #navigation,
+    body.controls-hidden #header-controls {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    body.controls-hidden #navigation {
+      pointer-events: none;
     }
   </style>
 </head>
@@ -412,6 +433,24 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
         try { ipcRenderer.send('overlay-window-focus', 'tree'); } catch {}
       });
     } catch {}
+    
+    // Auto-hide controls when mouse leaves window
+    let hideControlsTimer = null;
+    
+    document.addEventListener('mouseenter', () => {
+      if (hideControlsTimer) {
+        clearTimeout(hideControlsTimer);
+        hideControlsTimer = null;
+      }
+      document.body.classList.remove('controls-hidden');
+    });
+    
+    document.addEventListener('mouseleave', () => {
+      // Add small delay before hiding to prevent flickering
+      hideControlsTimer = setTimeout(() => {
+        document.body.classList.add('controls-hidden');
+      }, 300);
+    });
     
     let treeSvgData = '';
     let treeViewBox = '';

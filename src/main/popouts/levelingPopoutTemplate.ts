@@ -253,7 +253,8 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     .timer-display{position:relative;cursor:help;}
     
     /* PoB Gem Compact Display Styles */
-    .pob-gem-compact{display:flex;align-items:center;gap:4px;padding:1px 0;font-size:calc(var(--font-size) - 1px);line-height:1.3;width:100%;margin-right:8px;}
+    .pob-gems-wrapper{margin-left:-36px;margin-right:-14px;padding:4px 14px 4px 36px;background:rgba(0,0,0,0.15);border-radius:4px;}
+    .pob-gem-compact{display:flex;align-items:center;gap:4px;padding:1px 0;font-size:calc(var(--font-size) - 1px);line-height:1.3;width:100%;}
     .pob-gem-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:3px;transition:all 0.12s;border:none;font-size:calc(var(--font-size) - 1px);flex-wrap:nowrap;flex:1;min-width:0;}
     .pob-gem-pill:hover{background:rgba(255,255,255,0.05);transform:translateX(1px);}
     .pob-gem-icon{font-size:9px;line-height:1;}
@@ -925,10 +926,10 @@ function getPobGemsForStep(step, actNumber, allSteps = [], stepIndex = 0, isSeed
   return [];
 }
 
-function renderPobGemList(gems) {
+function renderPobGemList(gems, currentActNumber) {
   if (!gems || gems.length === 0) return '';
   
-  let html = '';
+  let html = '<div class="pob-gems-wrapper">';
   
   gems.forEach(gem => {
     const color = getGemColor(gem);
@@ -945,9 +946,23 @@ function renderPobGemList(gems) {
     const fullTitle = gem.skillSetTitle || '';
     const isTruncated = skillSetTag.endsWith('...');
     
+    // Check if this gem is from the current act's skill set
+    let isCurrentAct = false;
+    if (gem.skillSetTitle && currentActNumber) {
+      const skillSet = gem.skillSetTitle.toLowerCase();
+      const actPattern = 'act ' + currentActNumber;
+      isCurrentAct = skillSet.indexOf(actPattern) === 0;
+    }
+
+    
+    // Apply extra saturation/brightness for current act gems - make it VERY obvious
+    const gemPillStyle = isCurrentAct 
+      ? 'border-left:3px solid ' + color + ';background:' + color + '50;' // Much brighter, thicker border
+      : 'border-left:2px solid ' + color + ';background:' + color + '18;'; // Original subtle background
+    
     html += '<div class="pob-gem-compact">';
     // Use subtle background colors with thin border for slick look
-    html += '<span class="pob-gem-pill" style="border-left:2px solid ' + color + ';background:' + color + '18;">';
+    html += '<span class="pob-gem-pill" style="' + gemPillStyle + '">';
     // Add gem image placeholder with data attribute (will be resolved after render)
     if (imagePath) {
       html += '<img data-gem-img="' + imagePath + '" class="' + imageClass + '" style="display:none;" />';
@@ -962,7 +977,11 @@ function renderPobGemList(gems) {
     }
     // Add skill set tag if available, with tooltip for truncated names
     if (skillSetTag) {
-      const tagStyle = 'border-color:' + color + '33;background:' + color + '08;';
+      // Extra saturation for current act skill set tags too - make it VERY obvious
+      const tagOpacity = isCurrentAct ? '30' : '08';
+      const tagBorderOpacity = isCurrentAct ? '80' : '33';
+      const tagFontWeight = isCurrentAct ? 'font-weight:700;' : '';
+      const tagStyle = 'border-color:' + color + tagBorderOpacity + ';background:' + color + tagOpacity + ';' + tagFontWeight;
       if (isTruncated) {
         html += '<span class="pob-gem-set-tag pob-gem-set-tooltip" style="' + tagStyle + '" title="' + escapeHtml(fullTitle) + '">' + escapeHtml(skillSetTag) + '</span>';
       } else {
@@ -972,6 +991,8 @@ function renderPobGemList(gems) {
     html += '</span>';
     html += '</div>';
   });
+  
+  html += '</div>'; // Close pob-gems-wrapper
   
   return html;
 }
@@ -1681,7 +1702,7 @@ function render() {
           console.error('[LevelingPopout] getPobGemsForStep failed for step', step.id, err);
           pobGems = [];
         }
-        const pobGemsHtml = renderPobGemList(pobGems);
+        const pobGemsHtml = renderPobGemList(pobGems, act.actNumber);
         
   return '<div class="task-item"><div class="task-checkbox"><input type="checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /></div><div class="task-bullet" style="color:'+stepType.color+';">'+stepType.icon+'</div><div class="task-content"><div class="task-desc '+(checked?'checked':'')+'">'+escapeHtml(cleanDesc)+leagueIcon+layoutTipIcon+'</div>'+hintHtml+rewardHtml+pobGemsHtml+'</div></div>';
       }).join('')+'</div></div>';
@@ -1716,7 +1737,7 @@ function render() {
         console.error('[LevelingPopout] getPobGemsForStep failed for step', step.id, err);
         pobGems = [];
       }
-      const pobGemsHtml = renderPobGemList(pobGems);
+      const pobGemsHtml = renderPobGemList(pobGems, act.actNumber);
       
       // Add skip-to button for single tasks too (hide on first incomplete)
       const skipToBtn = isCurrent ? '' : '<button class="skip-to-btn" data-action="skip-to" data-first-step-id="'+step.id+'" title="Skip to this task (auto-complete all previous steps)">⏭️</button>';
