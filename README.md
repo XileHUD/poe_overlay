@@ -8,7 +8,7 @@ Lightweight PoE1 and PoE2 item & modifier overlay – copy an item, see the data
 
 <br />
 
-<a href="https://discord.gg/9BUAW92AZv">💬 Join our Discord</a> • <a href="https://www.reddit.com/r/PathOfExile2/comments/1o1ed0n/i_was_frustrated_with_the_limited_merch_history/">Reddit Discussion</a>
+<a href="https://discord.gg/ePVpA95ReW">💬 Join our Discord</a> • <a href="https://www.reddit.com/r/PathOfExile2/comments/1o1ed0n/i_was_frustrated_with_the_limited_merch_history/">Reddit Discussion</a>
 
 <br />
 
