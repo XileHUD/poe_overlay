@@ -10,9 +10,24 @@ import * as https from 'https';
 
 /**
  * Fetch PoB code from pobb.in URL
+ * Only allows fetching from trusted pobb.in domain
  */
 async function fetchPobbinCode(url: string): Promise<string | null> {
   return new Promise((resolve) => {
+    // Validate URL is from pobb.in only
+    try {
+      const urlObj = new URL(url);
+      if (urlObj.hostname !== 'pobb.in') {
+        console.error('[PoB Decoder] Invalid hostname, only pobb.in allowed:', urlObj.hostname);
+        resolve(null);
+        return;
+      }
+    } catch (error) {
+      console.error('[PoB Decoder] Invalid URL:', error);
+      resolve(null);
+      return;
+    }
+    
     https.get(url, (res) => {
       let data = '';
       
@@ -41,6 +56,12 @@ export async function decodePobCode(code: string): Promise<string | null> {
   try {
     let base64Code = code.trim();
     
+    // Security: Limit input size to prevent DoS (10MB limit)
+    if (base64Code.length > 10 * 1024 * 1024) {
+      console.error('[PoB Decoder] Input too large, max 10MB');
+      return null;
+    }
+    
     // Handle pobb.in URLs - fetch the actual code
     if (base64Code.match(/^https?:\/\/pobb\.in\//i)) {
       console.log('[PoB Decoder] Detected pobb.in URL, fetching...');
@@ -49,6 +70,12 @@ export async function decodePobCode(code: string): Promise<string | null> {
         return null;
       }
       base64Code = fetchedCode;
+      
+      // Validate fetched code length as well
+      if (base64Code.length > 10 * 1024 * 1024) {
+        console.error('[PoB Decoder] Fetched code too large, max 10MB');
+        return null;
+      }
     }
     
     // Remove other URL prefixes if present (pastebin, etc)

@@ -10,6 +10,26 @@ import { parseTreeUrl } from './treeParser';
 import { decodePobCode } from './decoder.js';
 import { nodeLookup, nodeLookupPoe2 } from './treeLoader';  // Import both lookups
 
+/**
+ * Sanitize string to prevent XSS attacks
+ * Removes potentially dangerous characters and limits length
+ */
+function sanitizeString(str: string | null | undefined, maxLength: number = 1000): string {
+  if (!str) return '';
+  
+  // Convert to string and limit length
+  let sanitized = String(str).substring(0, maxLength);
+  
+  // Remove control characters and potential script injection patterns
+  sanitized = sanitized
+    .replace(/[<>'"]/g, '') // Remove HTML/script chars
+    .replace(/javascript:/gi, '')
+    .replace(/on\w+=/gi, '')
+    .replace(/[\x00-\x1F\x7F]/g, ''); // Remove control characters
+  
+  return sanitized.trim();
+}
+
 export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 'poe1'): Promise<ParsedPobBuild | null> {
   try {
     // Use the correct node lookup based on game version
@@ -32,14 +52,15 @@ export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 
       return null;
     }
 
-    const className = build.getAttribute('className') || '';
-    const ascendancyName = build.getAttribute('ascendClassName') || '';
+    // Sanitize all user-controlled strings to prevent XSS
+    const className = sanitizeString(build.getAttribute('className'), 100);
+    const ascendancyName = sanitizeString(build.getAttribute('ascendClassName'), 100);
     const level = parseInt(build.getAttribute('level') || '1', 10);
     const mainSocketGroup = parseInt(build.getAttribute('mainSocketGroup') || '1', 10);
 
     // Extract character name from PathOfBuilding tag
     const pobRoot = doc.getElementsByTagName('PathOfBuilding')[0];
-    const characterName = pobRoot?.getAttribute('characterName') || '';
+    const characterName = sanitizeString(pobRoot?.getAttribute('characterName'), 100);
 
     // Extract ALL passive tree specs (Early Game, Act 5, End Game, etc.)
     const specElements = doc.getElementsByTagName('Spec');
@@ -48,7 +69,7 @@ export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 
     
     for (let i = 0; i < specElements.length; i++) {
       const spec = specElements[i];
-      const title = spec.getAttribute('title') || `Tree ${i + 1}`;
+      const title = sanitizeString(spec.getAttribute('title') || `Tree ${i + 1}`, 200);
       const nodes = spec.getAttribute('nodes') || '';
       const allocatedNodes = nodes
         .split(',')
@@ -123,7 +144,9 @@ export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 
 
     // Extract notes from <Notes> element
     const notesElement = doc.getElementsByTagName('Notes')[0];
-    const notes = notesElement?.textContent?.trim() || undefined;
+    // Notes can be large but we sanitize them (keep max 50KB)
+    const rawNotes = notesElement?.textContent?.trim() || undefined;
+    const notes = rawNotes ? sanitizeString(rawNotes, 50000) : undefined;
 
     // Extract item sets
     const itemSets = extractItemSets(doc);
@@ -206,14 +229,16 @@ function extractSocketGroups(container: Element | null, skillSetTitle?: string):
         return;
       }
 
-      const nameSpec =
+      const nameSpec = sanitizeString(
         gemElement.getAttribute('nameSpec') ||
         gemElement.getAttribute('gemId') ||
-        '';
+        '',
+        200
+      );
       const level = parseInt(gemElement.getAttribute('level') || '1', 10);
       const quality = parseInt(gemElement.getAttribute('quality') || '0', 10);
       const gemEnabled = gemElement.getAttribute('enabled') !== 'false';
-      const skillId = gemElement.getAttribute('skillId') || undefined;
+      const skillId = sanitizeString(gemElement.getAttribute('skillId') || '', 200) || undefined;
       const supportGem = gemElement.getAttribute('supportGem') === 'true';
 
       if (!nameSpec) {
@@ -627,10 +652,10 @@ function parseItemText(id: number, rawText: string): Item {
 
   return {
     id,
-    rawText,
-    name,
-    baseName,
-    rarity,
+    rawText: sanitizeString(rawText, 5000), // Limit item text size
+    name: sanitizeString(name, 200),
+    baseName: sanitizeString(baseName, 200),
+    rarity: sanitizeString(rarity, 50),
     itemLevel,
     quality,
     sockets,

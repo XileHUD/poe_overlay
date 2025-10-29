@@ -436,6 +436,14 @@ const INJECTED_GEMS_DATA = ${gemsJSON};
 const INJECTED_QUESTS_DATA = ${questsJSON};
 const INJECTED_GEM_COLOURS = ${gemColoursJSON};
 
+// Security: Escape HTML to prevent XSS attacks
+function escapeHtml(str) {
+  if (str == null) return '';
+  const div = document.createElement('div');
+  div.textContent = String(str);
+  return div.innerHTML;
+}
+
 async function loadGemDatabase() {
   if (gemDatabase) return gemDatabase;
   try {
@@ -2390,9 +2398,16 @@ if (importPobBtn) {
     status.textContent = '✅ Build imported successfully!';
     status.style.color = 'rgba(74,222,128,0.8)';
     
+    // Safely display build info with escaped HTML
+    const className = escapeHtml(result.build.className);
+    const ascendancyName = result.build.ascendancyName ? escapeHtml(result.build.ascendancyName) : '';
+    const level = parseInt(result.build.level, 10) || 0;
+    const totalNodes = parseInt(result.build.totalNodes, 10) || 0;
+    const gemsFound = parseInt(result.build.gemsFound, 10) || 0;
+    
     buildInfo.innerHTML = \`
-      <strong>\${result.build.className}</strong> \${result.build.ascendancyName ? '(' + result.build.ascendancyName + ')' : ''}<br>
-      Level \${result.build.level} | \${result.build.totalNodes} passive nodes | \${result.build.gemsFound} gems
+      <strong>\${className}</strong> \${ascendancyName ? '(' + ascendancyName + ')' : ''}<br>
+      Level \${level} | \${totalNodes} passive nodes | \${gemsFound} gems
     \`;
     buildInfo.style.display = 'block';
     
@@ -2463,9 +2478,15 @@ async function loadPobBuild() {
     const buildInfo = document.getElementById('pobBuildInfo');
     if (buildInfo && buildInfo.style.display !== 'none') {
       const firstTreeSpec = build.treeSpecs[0];
+      const className = escapeHtml(build.className);
+      const ascendancyName = build.ascendancyName ? escapeHtml(build.ascendancyName) : '';
+      const level = parseInt(build.level, 10) || 0;
+      const nodeCount = Array.isArray(firstTreeSpec.allocatedNodes) ? firstTreeSpec.allocatedNodes.length : 0;
+      const gemCount = Array.isArray(build.gems) ? build.gems.length : 0;
+      
       buildInfo.innerHTML = \`
-        <strong>\${build.className}</strong> \${build.ascendancyName ? '(' + build.ascendancyName + ')' : ''}<br>
-        Level \${build.level} | \${firstTreeSpec.allocatedNodes.length} passive nodes | \${build.gems.length} gems
+        <strong>\${className}</strong> \${ascendancyName ? '(' + ascendancyName + ')' : ''}<br>
+        Level \${level} | \${nodeCount} passive nodes | \${gemCount} gems
       \`;
     }
     
