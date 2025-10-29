@@ -1099,6 +1099,7 @@ export class LevelingWindow {
   private clientTxtWatcher: fs.FSWatcher | null = null;
   private clientTxtPath: string | null = null;
   private lastFilePosition: number = 0;
+  private seenZones: Array<{ zone: string; timestamp: number }> = []; // Track all zones in chronological order
 
   /**
    * Try to find the Path of Exile installation directory by looking for running processes
@@ -1368,23 +1369,47 @@ export class LevelingWindow {
       let matchCount = 0;
       
       if (this.overlayVersion === 'poe1') {
-        // POE1: Zone detection
-        const zoneRegex = /\[INFO Client \d+\] : You have entered (.+)\./g;
-        let match;
+        // POE1: Zone detection with line-by-line processing
+        const lines = newContent.split('\n');
         
-        while ((match = zoneRegex.exec(newContent)) !== null) {
-          const zoneName = match[1].trim();
-          matchCount++;
-          console.log(`[${matchCount}] POE1 Detected zone entry:`, zoneName);
-          
-          // Send to renderer to auto-check the step
-          if (this.window && !this.window.isDestroyed()) {
-            this.window.webContents.send('zone-entered', zoneName);
+        for (const line of lines) {
+          const zoneMatch = line.match(/\[INFO Client \d+\] : You have entered (.+)\./);
+          if (zoneMatch) {
+            const zoneName = zoneMatch[1].trim();
+            matchCount++;
+            console.log(`[${matchCount}] POE1 Detected zone entry:`, zoneName);
+            
+            // Extract timestamp from THIS specific line (format: 2025/10/29 12:40:21 9521312)
+            const timestampMatch = line.match(/(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2} \d+)/);
+            const timestamp = timestampMatch ? parseInt(timestampMatch[1].split(' ')[2]) : Date.now();
+            
+            // Check if we've already seen this exact zone entry
+            const alreadySeen = this.seenZones.some(z => z.zone === zoneName && z.timestamp === timestamp);
+            
+            if (!alreadySeen) {
+              // Add to seen zones
+              this.seenZones.push({ zone: zoneName, timestamp });
+              
+              // Keep only last 50 zones to prevent memory bloat
+              if (this.seenZones.length > 50) {
+                this.seenZones.shift();
+              }
+              
+              console.log(`[POE1] New zone detected: ${zoneName} (timestamp: ${timestamp})`);
+              
+              // Send to renderer to auto-check the step
+              if (this.window && !this.window.isDestroyed()) {
+                this.window.webContents.send('zone-entered', zoneName);
+              }
+            } else {
+              console.log(`[POE1] Skipping duplicate zone entry: ${zoneName}`);
+            }
           }
         }
 
         // POE1: Level-up detection
         const levelRegex = /\[INFO Client \d+\] : (.+?) \((\w+)\) is now level (\d+)/g;
+        let match;
         while ((match = levelRegex.exec(newContent)) !== null) {
           const [, characterName, className, levelStr] = match;
           const level = parseInt(levelStr, 10);
@@ -1417,37 +1442,84 @@ export class LevelingWindow {
           updateGearWindowContext(currentAct, level);
         }
       } else {
-        // POE2: Handle both formats, with or without parentheses around [Zone]
+        // POE2: Handle both formats with line-by-line processing
         // Examples observed:
         //   [SCENE] Set Source [Clearfell]
         //   [SCENE] Set Source ([Lioneye's Watch])
-        const zoneRegex = /\[INFO Client \d+\] \[SCENE\]\s*Set Source\s*\(?\[(.+?)\]\)?/g;
-        let match;
+        const lines = newContent.split('\n');
         
-        while ((match = zoneRegex.exec(newContent)) !== null) {
-          const zoneName = match[1].trim();
-          matchCount++;
-          console.log(`[${matchCount}] POE2 Detected zone entry:`, zoneName);
-          
-          // Send to renderer to auto-check the step
-          if (this.window && !this.window.isDestroyed()) {
-            this.window.webContents.send('zone-entered', zoneName);
+        for (const line of lines) {
+          // Check for SCENE format first
+          const sceneMatch = line.match(/\[INFO Client \d+\] \[SCENE\]\s*Set Source\s*\(?\[(.+?)\]\)?/);
+          if (sceneMatch) {
+            const zoneName = sceneMatch[1].trim();
+            matchCount++;
+            console.log(`[${matchCount}] POE2 Detected zone entry (SCENE):`, zoneName);
+            
+            // Extract timestamp from THIS specific line
+            const timestampMatch = line.match(/(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2} \d+)/);
+            const timestamp = timestampMatch ? parseInt(timestampMatch[1].split(' ')[2]) : Date.now();
+            
+            // Check if we've already seen this exact zone entry
+            const alreadySeen = this.seenZones.some(z => z.zone === zoneName && z.timestamp === timestamp);
+            
+            if (!alreadySeen) {
+              // Add to seen zones
+              this.seenZones.push({ zone: zoneName, timestamp });
+              
+              // Keep only last 50 zones to prevent memory bloat
+              if (this.seenZones.length > 50) {
+                this.seenZones.shift();
+              }
+              
+              console.log(`[POE2] New zone detected (SCENE): ${zoneName} (timestamp: ${timestamp})`);
+              
+              // Send to renderer to auto-check the step
+              if (this.window && !this.window.isDestroyed()) {
+                this.window.webContents.send('zone-entered', zoneName);
+              }
+            } else {
+              console.log(`[POE2] Skipping duplicate zone entry (SCENE): ${zoneName}`);
+            }
           }
-        }
-
-        // Fallback: also look for "You have entered <Zone>." lines which can appear in POE2
-        const enteredRegex = /\[INFO Client \d+\] : You have entered (.+)\./g;
-        while ((match = enteredRegex.exec(newContent)) !== null) {
-          const zoneName = match[1].trim();
-          matchCount++;
-          console.log(`[${matchCount}] POE2 Detected zone entry (fallback):`, zoneName);
-          if (this.window && !this.window.isDestroyed()) {
-            this.window.webContents.send('zone-entered', zoneName);
+          
+          // Fallback: also look for "You have entered <Zone>." format
+          const enteredMatch = line.match(/\[INFO Client \d+\] : You have entered (.+)\./);
+          if (enteredMatch) {
+            const zoneName = enteredMatch[1].trim();
+            matchCount++;
+            console.log(`[${matchCount}] POE2 Detected zone entry (fallback):`, zoneName);
+            
+            // Extract timestamp from THIS specific line
+            const timestampMatch = line.match(/(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2} \d+)/);
+            const timestamp = timestampMatch ? parseInt(timestampMatch[1].split(' ')[2]) : Date.now();
+            
+            // Check if we've already seen this exact zone entry
+            const alreadySeen = this.seenZones.some(z => z.zone === zoneName && z.timestamp === timestamp);
+            
+            if (!alreadySeen) {
+              // Add to seen zones
+              this.seenZones.push({ zone: zoneName, timestamp });
+              
+              // Keep only last 50 zones to prevent memory bloat
+              if (this.seenZones.length > 50) {
+                this.seenZones.shift();
+              }
+              
+              console.log(`[POE2] New zone detected (fallback): ${zoneName} (timestamp: ${timestamp})`);
+              
+              if (this.window && !this.window.isDestroyed()) {
+                this.window.webContents.send('zone-entered', zoneName);
+              }
+            } else {
+              console.log(`[POE2] Skipping duplicate zone entry (fallback): ${zoneName}`);
+            }
           }
         }
 
         // POE2: Level-up detection
         const levelRegex = /\[INFO Client \d+\] : (.+?) \((\w+)\) is now level (\d+)/g;
+        let match;
         while ((match = levelRegex.exec(newContent)) !== null) {
           const [, characterName, className, levelStr] = match;
           const level = parseInt(levelStr, 10);

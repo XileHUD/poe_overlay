@@ -2276,43 +2276,84 @@ ipcRenderer.on('leveling-layout-mode', (event, mode) => {
 ipcRenderer.on('zone-entered', (event, zoneName) => {
   if (!state.levelingData || !state.autoDetectZones) return;
   
-  console.log('Zone entered from Client.txt:', zoneName);
+  console.log('[Auto-Detect] Zone entered:', zoneName);
   
   const act = state.levelingData.acts[state.currentActIndex];
   if (!act) return;
   const allSteps = act.steps;
   
-  // Find the first step in the zone we just entered
-  const enteredZoneStepIndex = allSteps.findIndex(step => {
-    const stepZone = step.zone.toLowerCase().replace(/[⚡🗺️📍]/g, '').trim();
-    const enteredZone = zoneName.toLowerCase().trim();
-    return stepZone === enteredZone;
-  });
+  // Determine progression anchor: first uncompleted step index
+  let firstUncompletedIndex = allSteps.findIndex(s => !state.completedSteps.has(s.id));
+  if (firstUncompletedIndex === -1) firstUncompletedIndex = allSteps.length; // everything done
+
+  // Find the nearest upcoming step in this zone at or after the progression anchor
+  let enteredZoneStepIndex = -1;
+  const normalizedEntered = zoneName.toLowerCase().trim();
+  for (let i = firstUncompletedIndex; i < allSteps.length; i++) {
+    const stepZone = allSteps[i].zone.toLowerCase().replace(/[⚡🗺️📍]/g, '').trim();
+    if (stepZone === normalizedEntered) {
+      enteredZoneStepIndex = i;
+      break;
+    }
+  }
+  // Fallback: if not found ahead, pick the last occurrence of this zone in the act
+  if (enteredZoneStepIndex === -1) {
+    for (let i = allSteps.length - 1; i >= 0; i--) {
+      const stepZone = allSteps[i].zone.toLowerCase().replace(/[⚡🗺️📍]/g, '').trim();
+      if (stepZone === normalizedEntered) {
+        enteredZoneStepIndex = i;
+        break;
+      }
+    }
+  }
   
   if (enteredZoneStepIndex === -1) {
-    console.log('Zone not found in leveling guide:', zoneName);
+    console.log('[Auto-Detect] Zone not found in leveling guide:', zoneName);
     return;
   }
   
-  console.log('Found zone at step index:', enteredZoneStepIndex);
-  
-  // Auto-complete all uncompleted steps BEFORE this zone (only move forward)
+  console.log('[Auto-Detect] Found zone at step index:', enteredZoneStepIndex);
+
+  // Strategy: When entering a NEW zone, fully complete the PREVIOUS zone's task only.
+  // - Never auto-check any steps within the newly entered zone
+  // - Always mark all steps belonging to the immediately previous contiguous zone group
+
+  // Determine previous zone contiguous range [prevStart, prevEnd]
+  let prevEnd = enteredZoneStepIndex - 1;
+  if (prevEnd < 0) {
+    console.log('[Auto-Detect] No previous zone exists before the entered zone. Nothing to complete.');
+    return;
+  }
+
+  const normalizeZone = (z) => z.toLowerCase().replace(/[⚡🗺️📍]/g, '').trim();
+  const prevZoneName = normalizeZone(allSteps[prevEnd].zone);
+
+  let prevStart = prevEnd;
+  for (let i = prevEnd - 1; i >= 0; i--) {
+    if (normalizeZone(allSteps[i].zone) === prevZoneName) {
+      prevStart = i;
+    } else {
+      break;
+    }
+  }
+
+  // Mark only the previous zone group as completed
   let completedCount = 0;
-  for (let i = 0; i < enteredZoneStepIndex; i++) {
+  for (let i = prevStart; i <= prevEnd; i++) {
     const step = allSteps[i];
     if (!state.completedSteps.has(step.id)) {
       state.completedSteps.add(step.id);
       completedCount++;
-      console.log('Auto-completed previous step:', step.description, 'in', step.zone);
+      console.log('[Auto-Detect] Auto-completed previous zone step:', step.description, 'in', step.zone);
     }
   }
-  
+
   if (completedCount > 0) {
     ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
-    console.log('Auto-completed ' + completedCount + ' previous step(s) before entering ' + zoneName);
+  console.log('[Auto-Detect] Completed ' + completedCount + ' step(s) in previous zone before entering ' + zoneName);
     render();
   } else {
-    console.log('No previous steps to complete - already up to date');
+    console.log('[Auto-Detect] Previous zone already fully completed');
   }
 });
 
