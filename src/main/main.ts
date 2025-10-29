@@ -1490,6 +1490,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
         let windowIcon: string | undefined = undefined;
         for (const p of iconPathCandidates) { try { if (fs.existsSync(p)) { windowIcon = p; break; } } catch {} }
 
+        const isLinux = process.platform === 'linux';
         this.overlayWindow = new BrowserWindow({
             width: windowWidth,
             height: windowHeight,
@@ -1506,7 +1507,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             resizable: true, // allow height-only resize (width constrained below)
             transparent: true,
             show: false,
-            focusable: false,  // Start as non-focusable to avoid intercepting game input
+            // For native dragging via system titlebar on Linux, allow focus
+            focusable: isLinux ? true : false,  // Start as non-focusable on other platforms to avoid intercepting game input
             icon: windowIcon,
             // Critical for windowed fullscreen games: ensure overlay stays above game
             type: process.platform === 'win32' ? 'toolbar' : undefined
