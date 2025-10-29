@@ -52,7 +52,11 @@ export function createTray(params: CreateTrayParams): Tray | null {
       path.join(process.cwd(), 'packages', 'overlay'),
       path.join(process.cwd(), 'packages', 'overlay', 'build')
     ];
-    const names = ['xile512.ico','icon.ico','xilehudICO.ico'];
+    // Platform-aware icon priority
+    const isLinux = process.platform === 'linux';
+    const names = isLinux 
+      ? ['xile512.png', 'xilehud.png', 'icon.png', 'xile512.ico', 'xilehudICO.ico', 'icon.ico']
+      : ['xile512.ico', 'icon.ico', 'xilehudICO.ico', 'xile512.png', 'xilehud.png', 'icon.png'];
     const candidates: string[] = [];
     for (const r of roots) {
       for (const n of names) candidates.push(path.join(r, n));
@@ -148,6 +152,8 @@ export function createTray(params: CreateTrayParams): Tray | null {
     { label: 'Quit', click: () => (onQuit ? onQuit() : app.quit()) }
   ]);
 
+  // Always set a context menu for platforms (notably Linux) that depend on it for showing menus
+  try { tray.setContextMenu(contextMenu); } catch {}
   try { tray.setToolTip('XileHUD'); } catch {}
   
   // Improved double-click detection for tray icon
@@ -164,46 +170,63 @@ export function createTray(params: CreateTrayParams): Tray | null {
   };
 
   try {
-    tray.on('click', () => {
-      const now = Date.now();
-      const timeSinceLastClick = now - lastClickTime;
-      lastClickTime = now;
-      
-      // If clicks are within double-click window (typically 400ms on Windows),
-      // increment count, otherwise reset
-      if (timeSinceLastClick < 400) {
-        clickCount++;
-      } else {
-        clickCount = 1;
-      }
-      
-      clearClickTimer();
-      
-      // Wait to see if another click comes (double-click)
-      clickTimer = setTimeout(() => {
-        clickTimer = null;
-        // If only single click, show context menu
-        if (clickCount === 1) {
-          try { tray?.popUpContextMenu(contextMenu); } catch {}
-        }
+    if (process.platform === 'linux') {
+      // On many Linux environments, relying on setContextMenu is most reliable.
+      // Show the menu on both left and right click for consistency across DEs.
+      tray.on('click', () => {
+        clearClickTimer();
         clickCount = 0;
-      }, 180); // Reduced delay for snappier response
-    });
-    
-    tray.on('right-click', () => {
-      clearClickTimer();
-      clickCount = 0;
-      try { tray?.popUpContextMenu(contextMenu); } catch {}
-    });
+        try { tray?.popUpContextMenu(contextMenu); } catch {}
+      });
+      tray.on('right-click', () => {
+        clearClickTimer();
+        clickCount = 0;
+        try { tray?.popUpContextMenu(contextMenu); } catch {}
+      });
+    } else {
+      tray.on('click', () => {
+        const now = Date.now();
+        const timeSinceLastClick = now - lastClickTime;
+        lastClickTime = now;
+        
+        // If clicks are within double-click window (typically 400ms on Windows),
+        // increment count, otherwise reset
+        if (timeSinceLastClick < 400) {
+          clickCount++;
+        } else {
+          clickCount = 1;
+        }
+        
+        clearClickTimer();
+        
+        // Wait to see if another click comes (double-click)
+        clickTimer = setTimeout(() => {
+          clickTimer = null;
+          // If only single click, show context menu
+          if (clickCount === 1) {
+            try { tray?.popUpContextMenu(contextMenu); } catch {}
+          }
+          clickCount = 0;
+        }, 180); // Reduced delay for snappier response
+      });
+      
+      tray.on('right-click', () => {
+        clearClickTimer();
+        clickCount = 0;
+        try { tray?.popUpContextMenu(contextMenu); } catch {}
+      });
+    }
   } catch {}
   
   try {
-    tray.on('double-click', () => {
-      clearClickTimer();
-      clickCount = 0; // Reset count after double-click
-      if (onShowOverlay) onShowOverlay();
-      else onToggleOverlay();
-    });
+    if (process.platform !== 'linux') {
+      tray.on('double-click', () => {
+        clearClickTimer();
+        clickCount = 0; // Reset count after double-click
+        if (onShowOverlay) onShowOverlay();
+        else onToggleOverlay();
+      });
+    }
   } catch {}
 
   return tray;
