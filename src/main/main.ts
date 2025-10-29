@@ -3279,6 +3279,13 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
             if (ok) {
                 this.lastHistoryFetchAt = Date.now();
             }
+            
+            // Reset session state on 401 (expired/invalid session)
+            if (status === 401) {
+                this.lastHistoryFetchAt = 0;
+                this.poeAccountName = null;
+                console.log('[Main] Session expired (401) - reset session state');
+            }
 
             if (targetLeague && targetLeague !== this.merchantHistoryLeague) {
                 this.merchantHistoryLeague = targetLeague;

@@ -184,38 +184,80 @@ export async function refreshHistory(
     // ========== Handle Fetch Failure ==========
     if (!(res as any)?.ok) {
       historyState.lastRefreshAt = Date.now();
+      
+      // Check if we got a 401 Unauthorized response (expired session)
+      const is401 = (res as any)?.status === 401;
+      
+      // Update session UI (this will set button to "Login" if session is invalid)
       const loggedIn = await updateSessionUI();
       
-      // If not logged in and no cached data, show login prompt
-      if (!loggedIn && (!historyState.items || historyState.items.length === 0)) {
-        (histList as HTMLElement).innerHTML = '<div class="no-mods" style="padding:8px;">Please log in to pathofexile.com to view history.</div>';
-      } else if (historyState.store.entries && historyState.store.entries.length > 0) {
-        // Re-render from cache
-        const all = (historyState.store.entries || []).slice().reverse();
-        historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
-        historyState.selectedIndex = 0;
-        renderListCallback(renderDetailCallback);
-        renderDetailCallback(0);
-        renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
-          try { updateHistoryChartFromTotals(totals); } catch {}
-        }, { entries: historyState.items });
-        renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+      // Handle 401 specifically - cookie expired
+      if (is401) {
+        // Show clear message about expired session
+        if (historyState.store.entries && historyState.store.entries.length > 0) {
+          // Re-render from cache
+          const all = (historyState.store.entries || []).slice().reverse();
+          historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+          historyState.selectedIndex = 0;
           renderListCallback(renderDetailCallback);
+          renderDetailCallback(0);
           renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
             try { updateHistoryChartFromTotals(totals); } catch {}
           }, { entries: historyState.items });
-        });
-        try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
-      }
-      
-      // Show error badge
-      const info = document.getElementById("historyInfoBadge");
-      if (info) {
-        (info as HTMLElement).style.display = "";
-        (info as HTMLElement).textContent = loggedIn ? "Fetch failed" : "Not logged in";
-        setTimeout(() => {
-          if (info) (info as HTMLElement).style.display = "none";
-        }, 4000);
+          renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+            renderListCallback(renderDetailCallback);
+            renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+              try { updateHistoryChartFromTotals(totals); } catch {}
+            }, { entries: historyState.items });
+          });
+          try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+        } else {
+          // No cached data, show login prompt
+          (histList as HTMLElement).innerHTML = '<div class="no-mods" style="padding:8px;">Your session has expired. Please log in again to pathofexile.com.</div>';
+        }
+        
+        // Show error badge with clear message
+        const info = document.getElementById("historyInfoBadge");
+        if (info) {
+          (info as HTMLElement).style.display = "";
+          (info as HTMLElement).textContent = "Session expired • Please login again";
+          setTimeout(() => {
+            if (info) (info as HTMLElement).style.display = "none";
+          }, 6000);
+        }
+      } else {
+        // Other errors (not 401)
+        // If not logged in and no cached data, show login prompt
+        if (!loggedIn && (!historyState.items || historyState.items.length === 0)) {
+          (histList as HTMLElement).innerHTML = '<div class="no-mods" style="padding:8px;">Please log in to pathofexile.com to view history.</div>';
+        } else if (historyState.store.entries && historyState.store.entries.length > 0) {
+          // Re-render from cache
+          const all = (historyState.store.entries || []).slice().reverse();
+          historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+          historyState.selectedIndex = 0;
+          renderListCallback(renderDetailCallback);
+          renderDetailCallback(0);
+          renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+            try { updateHistoryChartFromTotals(totals); } catch {}
+          }, { entries: historyState.items });
+          renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+            renderListCallback(renderDetailCallback);
+            renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+              try { updateHistoryChartFromTotals(totals); } catch {}
+            }, { entries: historyState.items });
+          });
+          try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+        }
+        
+        // Show error badge
+        const info = document.getElementById("historyInfoBadge");
+        if (info) {
+          (info as HTMLElement).style.display = "";
+          (info as HTMLElement).textContent = loggedIn ? "Fetch failed" : "Not logged in";
+          setTimeout(() => {
+            if (info) (info as HTMLElement).style.display = "none";
+          }, 4000);
+        }
       }
       
       try { updateHistoryRefreshButton(); } catch {}
