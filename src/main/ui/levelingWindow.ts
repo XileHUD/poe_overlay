@@ -1135,10 +1135,7 @@ export class LevelingWindow {
         // Linux: scan /proc for a candidate process and use cwd or a Steam common path in cmdline
         const procRoot = '/proc';
         const entries = fs.readdirSync(procRoot);
-        const poe2 = this.overlayVersion === 'poe2';
-        const want = poe2
-          ? [/path\s*of\s*exile\s*2/i, /pathofexile2/i, /path\s*of\s*exile\s*ii/i]
-          : [/path\s*of\s*exile(?!\s*2|\s*ii)/i, /pathofexile(?!2)/i];
+        const want = /.*pathofexile.*/i;
 
         for (const e of entries) {
           if (!/^[0-9]+$/.test(e)) continue;
@@ -1146,9 +1143,8 @@ export class LevelingWindow {
           try {
             const cmdline = fs.readFileSync(path.join(dir, 'cmdline'), 'utf8');
             const cmdLower = cmdline.toLowerCase();
-            if (!want.some(re => re.test(cmdLower))) continue;
+            if (!want.test(cmdLower)) continue;
 
-            // Prefer cwd of the process
             try {
               const cwd = fs.readlinkSync(path.join(dir, 'cwd'));
               if (cwd && fs.existsSync(cwd) && this.isPathValidForVersion(cwd)) {
@@ -1156,7 +1152,7 @@ export class LevelingWindow {
                 return cwd;
               }
             } catch {}
-          } catch {/* per-process read failures ignored */}
+          } catch {}
         }
       } else {
         // Windows: use PowerShell to get process path (more reliable than wmic on modern Windows)
