@@ -151,7 +151,21 @@ export class LevelingWindow {
         contextIsolation: false,
         backgroundThrottling: false,
         webSecurity: false,
+        devTools: true, // Enable DevTools for debugging
       },
+    });
+
+    // Enable F12 to open DevTools
+    this.window.webContents.on('before-input-event', (event, input) => {
+      if (input.key === 'F12' && input.type === 'keyDown') {
+        if (this.window && !this.window.isDestroyed()) {
+          if (this.window.webContents.isDevToolsOpened()) {
+            this.window.webContents.closeDevTools();
+          } else {
+            this.window.webContents.openDevTools({ mode: 'detach' });
+          }
+        }
+      }
     });
 
     // Set higher z-order (platform-tuned)

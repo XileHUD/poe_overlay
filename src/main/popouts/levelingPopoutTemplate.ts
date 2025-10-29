@@ -566,13 +566,76 @@ function getPobGemsForStep(step, actNumber) {
   });
   
   console.log('[getPobGemsForStep] Step quest:', step.quest);
-  console.log('[getPobGemsForStep] Candidate gems:', candidateGems.map(g => g.name + ' (quest: ' + g.quest + ')'));
-  
-  if (candidateGems.length === 0) return [];
+  console.log('[getPobGemsForStep] Step description:', step.description);
+  console.log('[getPobGemsForStep] Step reward label:', step.reward);
+  console.log('[getPobGemsForStep] Candidate gems:', candidateGems.map(g => g.name + ' (quest: ' + g.quest + ', npc: ' + g.vendor + ', type: ' + g.rewardType + ')'));
+
+  // Further narrow down by NPC on the step (avoid mixing rewards from different NPCs for the same quest)
+  // Example: Act 1 "The Caged Brute" has both Nessa (Support gems) and Tarkleigh (Movement/Skill gems)
+  // We must only show Nessa rewards on the Nessa step and Tarkleigh rewards on the Tarkleigh step
+  function normalizeNpcName(value) {
+    if (!value) return '';
+    return value
+      .toLowerCase()
+      .replace(/&/g, 'and')
+      .replace(/[^a-z\s]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function extractStepNpc(desc) {
+    if (!desc || typeof desc !== 'string') return null;
+    // Strip any leading bracketed tags like [LEAGUE START]
+    const stripped = desc.replace(/^\[[^\]]*\]\s*/,'');
+    // Fixed regex: escape hyphen at end of character class to avoid "range out of order"
+    const m = stripped.match(/^Talk to\s+([A-Za-z'\s-]+)/i);
+    if (m) {
+      // Trim potential trailing text after NPC name (e.g., "Talk to Nessa, ...")
+      const name = m[1].split(',')[0].trim();
+      return name;
+    }
+    return null;
+  }
+
+  const stepNpc = extractStepNpc(step.description || '');
+  const stepNameNormalized = normalizeNpcName(stepNpc);
+  const descNormalized = normalizeNpcName(step.description || '');
+  const rewardNormalized = normalizeNpcName(step.reward || '');
+
+  const npcFiltered = candidateGems.filter((gem) => {
+    const vendorNormalized = normalizeNpcName(gem.vendor);
+    if (!vendorNormalized) {
+      return false;
+    }
+
+    const matchesByExtractedNpc = stepNameNormalized && vendorNormalized === stepNameNormalized;
+    const matchesByDescription = descNormalized.includes(vendorNormalized) || vendorNormalized.includes(descNormalized);
+    const matchesByReward = rewardNormalized.includes(vendorNormalized) || vendorNormalized.includes(rewardNormalized);
+
+    const keep = matchesByExtractedNpc || matchesByDescription || matchesByReward;
+    if (!keep) {
+      console.log('[getPobGemsForStep] Excluding gem due to NPC mismatch:', {
+        gem: gem.name,
+        vendor: gem.vendor,
+        stepNpc,
+        description: step.description,
+        rewardLabel: step.reward
+      });
+    }
+    return keep;
+  });
+
+  console.log('[getPobGemsForStep] NPC-normalized step value:', stepNameNormalized, 'description norm:', descNormalized, 'reward norm:', rewardNormalized);
+  console.log('[getPobGemsForStep] After NPC filter:', npcFiltered.map(g => g.name + ' [vendor: ' + g.vendor + ', type: ' + g.rewardType + ']'));
+
+  if (npcFiltered.length === 0) {
+    console.log('[getPobGemsForStep] No gems after NPC filter - returning empty');
+    return [];
+  }
   
   // Deduplicate gems by name within this quest - prefer quest rewards over vendor purchases
   const gemMap = new Map();
-  for (const gem of candidateGems) {
+  for (const gem of npcFiltered) {
     const existing = gemMap.get(gem.name);
     if (!existing) {
       gemMap.set(gem.name, gem);
@@ -1357,8 +1420,14 @@ function render() {
         const hintHtml = state.showHints && step.hint ? '<div class="task-hint">💡 '+escapeHtml(step.hint)+'</div>' : '';
         const rewardHtml = step.reward ? '<div class="task-reward">🎁 '+escapeHtml(step.reward)+'</div>' : '';
         
-        // Get PoB gems for this step
-        const pobGems = getPobGemsForStep(step, act.actNumber);
+        // Get PoB gems for this step (never let errors break UI)
+        let pobGems = [];
+        try {
+          pobGems = getPobGemsForStep(step, act.actNumber);
+        } catch (err) {
+          console.error('[LevelingPopout] getPobGemsForStep failed for step', step.id, err);
+          pobGems = [];
+        }
         const pobGemsHtml = renderPobGemList(pobGems);
         
   return '<div class="task-item"><div class="task-checkbox"><input type="checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /></div><div class="task-bullet" style="color:'+stepType.color+';">'+stepType.icon+'</div><div class="task-content"><div class="task-desc '+(checked?'checked':'')+'">'+escapeHtml(cleanDesc)+leagueIcon+layoutTipIcon+'</div>'+hintHtml+rewardHtml+pobGemsHtml+'</div></div>';
@@ -1385,8 +1454,14 @@ function render() {
       if (step.recommendedLevel) metaItems.push('<div class="badge" style="background:#ffd70015;border-color:#ffd70040;color:#ffd700;">Level '+step.recommendedLevel+'</div>');
       const metaHtml = metaItems.length > 0 ? '<div class="step-meta">'+metaItems.join('')+'</div>' : '';
       
-      // Get PoB gems for this step
-      const pobGems = getPobGemsForStep(step, act.actNumber);
+      // Get PoB gems for this step (never let errors break UI)
+      let pobGems = [];
+      try {
+        pobGems = getPobGemsForStep(step, act.actNumber);
+      } catch (err) {
+        console.error('[LevelingPopout] getPobGemsForStep failed for step', step.id, err);
+        pobGems = [];
+      }
       const pobGemsHtml = renderPobGemList(pobGems);
       
   const borderColor = isCurrent ? '#fdd68a' : stepType.color;
