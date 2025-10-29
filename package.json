@@ -101,6 +101,11 @@
         }
       ]
     },
+    "linux": {
+      "target": ["AppImage"],
+      "category": "Utility",
+      "executableName": "xilehud"
+    },
     "nsis": {
       "oneClick": true,
       "perMachine": false,
