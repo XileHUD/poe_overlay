@@ -3499,6 +3499,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         // Settings get/set for auto-cleanup flag
         try { ipcMain.removeHandler('get-setting'); } catch {}
         try { ipcMain.removeHandler('set-setting'); } catch {}
+        try { ipcMain.removeHandler('get-my-mods-enabled'); } catch {}
         ipcMain.handle('get-setting', async (_e, key: string) => {
             try {
                 return this.settingsService?.get(key as keyof UserSettings);
@@ -3514,6 +3515,14 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
             } catch (e: any) {
                 console.error(`[IPC:set-setting] Error setting ${key}:`, e);
                 return { ok: false, error: e?.message };
+            }
+        });
+        ipcMain.handle('get-my-mods-enabled', async () => {
+            try {
+                return this.settingsService?.get('myModsEnabled') || false;
+            } catch (e) {
+                console.error('[IPC:get-my-mods-enabled] Error:', e);
+                return false;
             }
         });
 

@@ -228,6 +228,8 @@ export interface UserSettings {
   clientTxtNotificationShownPoe2?: boolean; // Flag for POE2 "not found" notification
   showTreeNodeDetailsOnHover?: boolean; // Show node name and stats on hover in passive tree window (default: false)
   levelingOverlayMigrated?: boolean; // Flag to track if leveling overlay has been enabled for existing users (v0.4+ migration)
+  // My Mods feature toggle
+  myModsEnabled?: boolean; // Enable/disable My Mods feature (default: false)
   // Legacy settings (kept for migration)
   clientTxtPath?: string;
   clientTxtAutoDetected?: boolean;

@@ -932,7 +932,7 @@ function buildLevelingSettingsSplashHtml(
       <div class="setting-group" style="margin-top: 24px;">
         <h3 class="setting-group-title">Custom Hotkeys</h3>
         <div class="setting-description" style="margin-bottom: 16px; opacity: 0.8; font-size: 11px;">
-          Create custom hotkeys to paste commands or search patterns (e.g., regex for item filtering). Toggle "Enter" to press Enter after pasting.
+          Create custom hotkeys to paste commands or search patterns (e.g., regex for item filtering). Check "Enter" to open chat and send command.
         </div>
         
         <div id="custom-hotkeys-list">

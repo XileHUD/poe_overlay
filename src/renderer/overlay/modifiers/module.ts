@@ -43,6 +43,10 @@ const modSearchCache = new WeakMap<any, SearchIndex>();
 type OverlayVersionMode = 'poe1' | 'poe2';
 let currentOverlayVersionMode: OverlayVersionMode = 'poe2';
 
+// My Mods feature toggle state
+let myModsFeatureEnabled: boolean = false;
+let myModsFeatureLoaded: boolean = false; // Track if we've loaded the setting
+
 // Cache for item matching to avoid re-computing on every render
 let lastItemModifiersHash: string = '';
 let lastMatchedSectionsCache: WeakMap<any, boolean> = new WeakMap();
@@ -722,6 +726,12 @@ function applyItemMatchesToSections(sections: any[] | undefined, catalog: ItemMo
   let matchCount = 0;
   if (!Array.isArray(sections)) {
     return matchCount;
+  }
+
+  // Skip My Mods calculations only if settings are loaded and feature is disabled.
+  // If settings haven't loaded yet, optimistically allow calculation so the UI works immediately.
+  if (myModsFeatureLoaded && !myModsFeatureEnabled) {
+    return 0;
   }
 
   const usage = new Map<string, number>();
@@ -1534,7 +1544,10 @@ export function renderFilteredContent(data: any){
   const hasClipboardMods = itemCatalog.total > 0;
   
   // Check for My Mods toggle first (in filters section)
-  const myModsFilterActive = myModsButton?.classList.contains('active') ?? false;
+  // But only allow it if the feature is enabled
+  // Treat feature as enabled until settings explicitly load and say otherwise
+  const featureAllowsMyMods = !(myModsFeatureLoaded && !myModsFeatureEnabled);
+  const myModsFilterActive = (myModsButton?.classList.contains('active') ?? false) && featureAllowsMyMods;
   
   let activeToggle: any = null;
   if (!myModsFilterActive) {
@@ -1549,7 +1562,8 @@ export function renderFilteredContent(data: any){
   
   // Default to 'all' if no button is active
   let activeDomain: any = myModsFilterActive ? 'myMods' : (activeToggle ? activeToggle.domain : 'all');
-  if (!hasClipboardMods && activeDomain === 'myMods') {
+  // Fallback to 'all' if My Mods is active but either feature is disabled or no items in clipboard
+  if (((myModsFeatureLoaded && !myModsFeatureEnabled) || !hasClipboardMods) && activeDomain === 'myMods') {
     activeDomain = 'all';
     if (myModsButton) {
       myModsButton.classList.remove('active');
@@ -1999,8 +2013,83 @@ export function renderFilteredContent(data: any){
       // My Mods toggle
       const myModsToggle = document.getElementById('toggleMyMods');
       if (myModsToggle) {
+        // Check if My Mods feature is enabled
+        let isMyModsFeatureEnabled = false;
+        
+        const updateMyModsButtonState = () => {
+          if (!isMyModsFeatureEnabled) {
+            (myModsToggle as HTMLButtonElement).disabled = true;
+            myModsToggle.style.opacity = '0.45';
+            myModsToggle.style.cursor = 'not-allowed';
+            myModsToggle.title = 'Please activate the My Mods feature in settings';
+            // Remove active state if feature is disabled
+            if (myModsToggle.classList.contains('active')) {
+              myModsToggle.classList.remove('active');
+              myModsToggle.style.background = 'var(--bg-tertiary)';
+              myModsToggle.style.color = 'var(--text-primary)';
+            }
+          } else if (!hasClipboardMods) {
+            (myModsToggle as HTMLButtonElement).disabled = true;
+            myModsToggle.style.opacity = '0.45';
+            myModsToggle.style.cursor = 'not-allowed';
+            myModsToggle.title = 'Copy an item to clipboard to use this feature';
+          } else {
+            (myModsToggle as HTMLButtonElement).disabled = false;
+            myModsToggle.style.opacity = '1';
+            myModsToggle.style.cursor = 'pointer';
+            myModsToggle.title = 'Show only modifiers currently on your item';
+          }
+        };
+        
+        // Fetch initial setting state
+        try {
+          const settingPromise = (window as any).electronAPI?.getMyModsEnabled?.();
+          if (settingPromise && typeof settingPromise.then === 'function') {
+            settingPromise.then((enabled: boolean) => {
+              isMyModsFeatureEnabled = Boolean(enabled);
+              myModsFeatureEnabled = isMyModsFeatureEnabled; // Update global state
+              myModsFeatureLoaded = true; // Mark as loaded
+              updateMyModsButtonState();
+            }).catch((e: any) => {
+              console.warn('[Modifiers] Failed to get My Mods enabled setting:', e);
+              isMyModsFeatureEnabled = false;
+              myModsFeatureEnabled = false; // Update global state
+              myModsFeatureLoaded = true; // Mark as loaded even on error
+              updateMyModsButtonState();
+            });
+          } else {
+            isMyModsFeatureEnabled = false;
+            myModsFeatureEnabled = false; // Update global state
+            myModsFeatureLoaded = true; // Mark as loaded
+            updateMyModsButtonState();
+          }
+        } catch (e) {
+          console.warn('[Modifiers] Failed to get My Mods enabled setting:', e);
+          isMyModsFeatureEnabled = false;
+          myModsFeatureEnabled = false; // Update global state
+          myModsFeatureLoaded = true; // Mark as loaded even on error
+          updateMyModsButtonState();
+        }
+        
+        // Listen for setting changes
+        try {
+          (window as any).electronAPI?.onMyModsEnabledChanged?.((enabled: boolean) => {
+            isMyModsFeatureEnabled = Boolean(enabled);
+            myModsFeatureEnabled = isMyModsFeatureEnabled; // Update global state
+            myModsFeatureLoaded = true; // Mark as loaded
+            updateMyModsButtonState();
+            // Re-render if it was active and now disabled
+            if (!enabled && myModsToggle.classList.contains('active')) {
+              if ((window as any).originalData) renderFilteredContent((window as any).originalData);
+            }
+          });
+        } catch (e) {
+          console.warn('[Modifiers] Failed to listen for My Mods setting changes:', e);
+        }
+        
         myModsToggle.addEventListener('click', () => {
           if ((myModsToggle as HTMLButtonElement).disabled) return;
+          if (!isMyModsFeatureEnabled) return; // Extra safety check
           
           const isActive = myModsToggle.classList.contains('active');
           myModsToggle.classList.toggle('active', !isActive);
@@ -2082,13 +2171,36 @@ export function renderFilteredContent(data: any){
     const myModsBtn = document.getElementById('toggleMyMods') as HTMLButtonElement | null;
     if (myModsBtn) {
       const isActive = myModsBtn.classList.contains('active');
-      myModsBtn.disabled = !hasClipboardMods;
-      myModsBtn.style.opacity = hasClipboardMods ? '1' : '0.45';
-      myModsBtn.style.cursor = hasClipboardMods ? 'pointer' : 'not-allowed';
-      if (!hasClipboardMods && isActive) {
-        myModsBtn.classList.remove('active');
-        myModsBtn.style.background = 'var(--bg-tertiary)';
-        myModsBtn.style.color = 'var(--text-primary)';
+      
+      // Check if feature is disabled
+      if (myModsFeatureLoaded && !myModsFeatureEnabled) {
+        // Feature is disabled - keep button disabled
+        myModsBtn.disabled = true;
+        myModsBtn.style.opacity = '0.45';
+        myModsBtn.style.cursor = 'not-allowed';
+        myModsBtn.title = 'Please activate the My Mods feature in settings';
+        if (isActive) {
+          myModsBtn.classList.remove('active');
+          myModsBtn.style.background = 'var(--bg-tertiary)';
+          myModsBtn.style.color = 'var(--text-primary)';
+        }
+      } else if (!hasClipboardMods) {
+        // Feature enabled (or not loaded yet) but no clipboard item parsed yet
+        myModsBtn.disabled = true;
+        myModsBtn.style.opacity = '0.45';
+        myModsBtn.style.cursor = 'not-allowed';
+        myModsBtn.title = 'Copy an item to clipboard to use this feature';
+        if (isActive) {
+          myModsBtn.classList.remove('active');
+          myModsBtn.style.background = 'var(--bg-tertiary)';
+          myModsBtn.style.color = 'var(--text-primary)';
+        }
+      } else {
+        // Feature enabled (or not loaded yet) AND we have an item -> allow clicking
+        myModsBtn.disabled = false;
+        myModsBtn.style.opacity = '1';
+        myModsBtn.style.cursor = 'pointer';
+        myModsBtn.title = 'Show only modifiers currently on your item';
       }
     }
   } catch {}
@@ -2202,8 +2314,43 @@ export function renderFilteredContent(data: any){
     (section) => renderDomainElement(section as DomainVirtualSection),
     () => {
       attachInlineTagClickHandlers(tagModes, tagRGB);
+      // Also finalize My Mods button state once virtual list has mounted
+      try {
+        const myModsBtn = document.getElementById('toggleMyMods') as HTMLButtonElement | null;
+        if (myModsBtn) {
+          const featureDisabled = (myModsFeatureLoaded && !myModsFeatureEnabled);
+          if (!featureDisabled) {
+            const hasRenderedMyMods = !!resultsWrapper.querySelector('[data-on-item="true"]');
+            const enable = hasRenderedMyMods || (typeof hasClipboardMods === 'boolean' ? hasClipboardMods : false);
+            myModsBtn.disabled = !enable;
+            myModsBtn.style.opacity = enable ? '1' : '0.45';
+            myModsBtn.style.cursor = enable ? 'pointer' : 'not-allowed';
+            myModsBtn.title = enable
+              ? 'Show only modifiers currently on your item'
+              : (hasClipboardMods ? 'No matching modifiers found for this item' : 'Copy an item to clipboard to use this feature');
+          }
+        }
+      } catch {}
     }
   );
+
+  // Late pass: after the browser paints, run a final DOM-based check to avoid race conditions
+  try {
+    requestAnimationFrame(() => {
+      const myModsBtn = document.getElementById('toggleMyMods') as HTMLButtonElement | null;
+      if (!myModsBtn) return;
+      const featureDisabled = (myModsFeatureLoaded && !myModsFeatureEnabled);
+      if (featureDisabled) return; // respect explicit OFF
+      const hasRenderedMyMods = !!resultsWrapper.querySelector('[data-on-item="true"]');
+      const enable = hasRenderedMyMods || (typeof hasClipboardMods === 'boolean' ? hasClipboardMods : false);
+      myModsBtn.disabled = !enable;
+      myModsBtn.style.opacity = enable ? '1' : '0.45';
+      myModsBtn.style.cursor = enable ? 'pointer' : 'not-allowed';
+      myModsBtn.title = enable
+        ? 'Show only modifiers currently on your item'
+        : (hasClipboardMods ? 'No matching modifiers found for this item' : 'Copy an item to clipboard to use this feature');
+    });
+  } catch {}
 }
 
 interface PopoutSectionPayloadMod {

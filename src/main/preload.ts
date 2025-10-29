@@ -140,6 +140,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
     // Settings
     getSetting: (key: string) => ipcRenderer.invoke('get-setting', key),
     setSetting: (key: string, value: any) => ipcRenderer.invoke('set-setting', key, value),
+    getMyModsEnabled: () => ipcRenderer.invoke('get-my-mods-enabled'),
+    onMyModsEnabledChanged: (callback: (enabled: boolean) => void) => {
+        ipcRenderer.on('my-mods-enabled-changed', (_event, enabled) => callback(enabled));
+    },
     
     // Leveling window
     toggleLevelingWindow: () => ipcRenderer.invoke('toggle-leveling-window'),
