@@ -1453,7 +1453,7 @@ export function getPassiveTreeWindow(): BrowserWindow | null {
   return treeWindow;
 }
 
-export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'poe1', currentAct: number = 1, characterLevel: number = 1, autoDetectEnabled: boolean = true, savedTreeIndex?: number): void {
+export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'poe1', currentAct: number = 1, characterLevel: number = 1, autoDetectEnabled: boolean = true, savedTreeIndex?: number, treeVersion: string = '3_26'): void {
   if (!treeWindow || treeWindow.isDestroyed()) {
     console.warn('[Tree Window] Cannot send tree data - window not available');
     return;
@@ -1466,21 +1466,31 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
   try {
     const template = require('../../shared/pob/treeLoader');
     
-    // Use appropriate tree based on game version
+    // Use appropriate tree based on game version and tree version
     if (gameVersion === 'poe2') {
       treeSvg = template.poe2Template?.svg || '';
       viewBox = template.poe2Template?.viewBox || '';
       treeData = template.skillTreePoe2;
       console.log('[Tree Window] Using PoE2 tree template');
     } else {
-      treeSvg = template.svg;
-      viewBox = template.viewBox;
-      treeData = template.skillTree;
-      console.log('[Tree Window] Using PoE1 tree template');
+      // For PoE1, use tree version to select the correct tree
+      if (treeVersion === '3_27') {
+        treeSvg = template.template327?.svg || '';
+        viewBox = template.template327?.viewBox || '';
+        treeData = template.skillTree327;
+        console.log('[Tree Window] Using PoE1 3.27 tree template');
+      } else {
+        // Default to 3.26
+        treeSvg = template.template326?.svg || '';
+        viewBox = template.template326?.viewBox || '';
+        treeData = template.skillTree326;
+        console.log('[Tree Window] Using PoE1 3.26 tree template');
+      }
     }
     
     console.log('[Tree Window] Prepared template for payload', {
       gameVersion,
+      treeVersion,
       svgLength: treeSvg?.length || 0,
       viewBox,
       hasTreeData: !!treeData,
@@ -1501,6 +1511,7 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     specCount: filteredSpecs?.length || 0,
     hasSvg: !!treeSvg,
     gameVersion,
+    treeVersion,
     currentAct,
     characterLevel,
     autoDetectEnabled,
@@ -1517,6 +1528,7 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     viewBox,
     treeData,
     gameVersion,
+    treeVersion,
     currentAct,
     characterLevel,
     autoDetectEnabled,

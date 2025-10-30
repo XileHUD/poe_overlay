@@ -8,7 +8,7 @@ import { DOMParser } from '@xmldom/xmldom';
 import { ParsedPobBuild, TreeSpec, GemSocketGroup, GemInfo, SkillSet, ItemSet, Item } from './types';
 import { parseTreeUrl } from './treeParser';
 import { decodePobCode } from './decoder.js';
-import { nodeLookup, nodeLookupPoe2 } from './treeLoader';  // Import both lookups
+import { nodeLookup326, nodeLookup327, nodeLookupPoe2 } from './treeLoader';  // Import all lookups
 
 /**
  * Sanitize string to prevent XSS attacks
@@ -32,9 +32,6 @@ function sanitizeString(str: string | null | undefined, maxLength: number = 1000
 
 export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 'poe1'): Promise<ParsedPobBuild | null> {
   try {
-    // Use the correct node lookup based on game version
-    const lookup = gameVersion === 'poe2' ? nodeLookupPoe2 : nodeLookup;
-    
     // Decode Base64 + Zlib (now handles pobb.in URLs)
     const xmlString = await decodePobCode(code);
     if (!xmlString) {
@@ -62,10 +59,37 @@ export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 
     const pobRoot = doc.getElementsByTagName('PathOfBuilding')[0];
     const characterName = sanitizeString(pobRoot?.getAttribute('characterName'), 100);
 
-    // Extract ALL passive tree specs (Early Game, Act 5, End Game, etc.)
+    // Extract tree version first to determine which node lookup to use
     const specElements = doc.getElementsByTagName('Spec');
+    let treeVersion = '3_26'; // Default to 3.26
+    
+    // Try to get tree version from first spec that has it
+    for (let i = 0; i < specElements.length; i++) {
+      const spec = specElements[i];
+      const specTreeVersion = spec.getAttribute('treeVersion');
+      if (specTreeVersion) {
+        treeVersion = specTreeVersion;
+        break;
+      }
+    }
+    
+    // Select the correct node lookup based on game version and tree version
+    let lookup: any;
+    if (gameVersion === 'poe2') {
+      lookup = nodeLookupPoe2;
+    } else {
+      // For PoE1, use tree version to select lookup
+      if (treeVersion === '3_27') {
+        lookup = nodeLookup327;
+        console.log('[PoB Parser] Using 3.27 tree lookup');
+      } else {
+        lookup = nodeLookup326;
+        console.log('[PoB Parser] Using 3.26 tree lookup');
+      }
+    }
+
+    // Extract ALL passive tree specs (Early Game, Act 5, End Game, etc.)
     const treeSpecs: TreeSpec[] = [];
-    let treeVersion = '3_25';
     
     for (let i = 0; i < specElements.length; i++) {
       const spec = specElements[i];
@@ -117,10 +141,6 @@ export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 
           ascendClassId: parseInt(spec.getAttribute('ascendClassId') || '0', 10),
           parsedUrl
         });
-        // Use tree version from first included spec
-        if (treeSpecs.length === 1) {
-          treeVersion = spec.getAttribute('treeVersion') || '3_25';
-        }
       }
     }
 

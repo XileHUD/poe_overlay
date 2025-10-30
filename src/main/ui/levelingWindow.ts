@@ -1011,14 +1011,14 @@ export class LevelingWindow {
   const savedTreeIndex = (saved as any)?.selectedTreeIndex;
         const onTreeWindowReady = () => {
           console.log('[LevelingWindow] Tree window reported ready, sending data');
-          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
+          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
         };
         ipcMain.once('tree-window-ready', onTreeWindowReady);
         const treeWindow = createPassiveTreeWindow();
         if (!treeWindow.webContents.isLoading()) {
           ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
           console.log('[LevelingWindow] Tree window already loaded, sending data immediately');
-          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
+          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
         }
       }
     });
@@ -1286,7 +1286,7 @@ export class LevelingWindow {
           
           // Update tree window if open
           if (isTreeWindowOpen() && activeBuild.treeSpecs && activeBuild.treeSpecs.length > 0) {
-            sendTreeData(activeBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
+            sendTreeData(activeBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, activeBuild.treeVersion);
           }
           
           // Update gear window if open
@@ -2119,7 +2119,7 @@ export class LevelingWindow {
       
       // Update tree window if open
       if (isTreeWindowOpen() && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
-        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
+        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
       }
       
       // Update gear window if open
@@ -2205,13 +2205,13 @@ export class LevelingWindow {
             const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
             
             const onTreeWindowReady = () => {
-              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
+              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
             };
             ipcMain.once('tree-window-ready', onTreeWindowReady);
             const treeWindow = createPassiveTreeWindow();
             if (!treeWindow.webContents.isLoading()) {
               ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
-              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
+              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
             }
           }
         }
@@ -2328,13 +2328,13 @@ export class LevelingWindow {
           // Open tree window if there are tree specs
           if (pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
             const onTreeWindowReady = () => {
-              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
+              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
             };
             ipcMain.once('tree-window-ready', onTreeWindowReady);
             const treeWindow = createPassiveTreeWindow();
             if (!treeWindow.webContents.isLoading()) {
               ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
-              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
+              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
             }
           }
           
