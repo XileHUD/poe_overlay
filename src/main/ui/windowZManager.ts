@@ -11,6 +11,8 @@ const windows = new Map<string, BrowserWindow>();
 let ipcInstalled = false;
 let appHooksInstalled = false;
 let lastActiveName: string | null = null;
+let windowBeingDragged: string | null = null; // Track if a window is actively being dragged
+let pendingFocusRequest: { name: string; timeout: NodeJS.Timeout } | null = null;
 
 function safe(fn: () => void) {
   try { fn(); } catch { /* noop */ }
@@ -37,13 +39,44 @@ export function registerOverlayWindow(name: string, win: BrowserWindow) {
   windows.set(name, win);
   configureOverlayWindow(win);
 
-  // Maintain top-most order on focus/show
-  win.on('focus', () => setActiveWindow(name));
-  win.on('show', () => setActiveWindow(name));
+  // Track drag start to prevent z-order changes during drag
+  win.on('will-move', () => {
+    windowBeingDragged = name;
+    // Cancel any pending focus request while dragging
+    if (pendingFocusRequest) {
+      clearTimeout(pendingFocusRequest.timeout);
+      pendingFocusRequest = null;
+    }
+  });
+
+  // Track drag end
+  win.on('moved', () => {
+    // Small delay to ensure drag is complete before re-enabling z-order changes
+    setTimeout(() => {
+      windowBeingDragged = null;
+    }, 100);
+  });
+
+  // Maintain top-most order on focus/show (but not during drag)
+  win.on('focus', () => {
+    if (!windowBeingDragged) {
+      setActiveWindow(name);
+    }
+  });
+  
+  win.on('show', () => {
+    if (!windowBeingDragged) {
+      setActiveWindow(name);
+    }
+  });
+  
   // If user clicks into the game (external app), our overlay window blurs. On Windows, the
   // game often reasserts top-of-topmost; re-bump the leveling overlay shortly after.
   if (process.platform === 'win32') {
     win.on('blur', () => {
+      // Don't interfere if a window is being dragged
+      if (windowBeingDragged) return;
+      
       // If focus is not on another overlay window, assume it went to the game/another app.
       const focused = BrowserWindow.getFocusedWindow();
       const focusedIsOverlay = focused ? Array.from(windows.values()).some(w => w === focused) : false;
@@ -59,6 +92,9 @@ export function registerOverlayWindow(name: string, win: BrowserWindow) {
   }
   win.on('closed', () => {
     windows.delete(name);
+    if (windowBeingDragged === name) {
+      windowBeingDragged = null;
+    }
   });
 
   // Install IPC once to allow renderer to request fronting on pointer down
@@ -66,7 +102,30 @@ export function registerOverlayWindow(name: string, win: BrowserWindow) {
     ipcInstalled = true;
     try {
       ipcMain.on('overlay-window-focus', (_event, winName: string) => {
-        if (typeof winName === 'string') setActiveWindow(winName);
+        if (typeof winName === 'string') {
+          // Don't immediately change focus during drag - defer it slightly
+          // This prevents interference with drag operations
+          if (windowBeingDragged) {
+            // Ignore focus requests while dragging
+            return;
+          }
+          
+          // Clear any pending focus request
+          if (pendingFocusRequest) {
+            clearTimeout(pendingFocusRequest.timeout);
+          }
+          
+          // Defer focus change slightly to let drag operations settle
+          pendingFocusRequest = {
+            name: winName,
+            timeout: setTimeout(() => {
+              pendingFocusRequest = null;
+              if (!windowBeingDragged) {
+                setActiveWindow(winName);
+              }
+            }, 50)
+          };
+        }
       });
     } catch {}
   }
@@ -76,6 +135,9 @@ export function registerOverlayWindow(name: string, win: BrowserWindow) {
     appHooksInstalled = true;
     try {
       app.on('browser-window-blur', () => {
+        // Don't interfere if a window is being dragged
+        if (windowBeingDragged) return;
+        
         // Defer a bit to let the game assert z-order, then move overlays above it.
         setTimeout(() => {
           const focused = BrowserWindow.getFocusedWindow();
@@ -103,6 +165,9 @@ export function unregisterOverlayWindow(name: string) {
 }
 
 export function setActiveWindow(name: string) {
+  // Don't change z-order while a window is being dragged
+  if (windowBeingDragged) return;
+  
   const active = windows.get(name);
   if (!active || active.isDestroyed()) return;
   lastActiveName = name;
