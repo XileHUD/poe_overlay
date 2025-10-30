@@ -2869,7 +2869,7 @@ ipcRenderer.on('zone-entered', (event, data) => {
       return;
     }
     
-    if (zoneId !== firstUncompletedStep.nextZoneId) {
+    if (zoneId !== firstUncompletedStep.nextZoneId && !(firstUncompletedStep.alternativeNextZoneId && zoneId === firstUncompletedStep.alternativeNextZoneId)) {
       console.log('[Auto-Detect] Destination mismatch: entered "' + zoneId + '" but expected "' + firstUncompletedStep.nextZoneId + '". Ignoring.');
       state.lastDetectedZoneId = zoneId;
       return;
@@ -2967,7 +2967,7 @@ ipcRenderer.on('zone-entered', (event, data) => {
     return;
   }
   
-  if (zoneId === firstUncompletedStep.nextZoneId) {
+  if (zoneId === firstUncompletedStep.nextZoneId || (firstUncompletedStep.alternativeNextZoneId && zoneId === firstUncompletedStep.alternativeNextZoneId)) {
     console.log('[Auto-Detect] ✅ Entered zone "' + zoneId + '" matches expected next zone!');
     
     // Complete ALL tasks in the current zone (the whole zone card)
