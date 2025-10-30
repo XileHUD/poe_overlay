@@ -2,6 +2,7 @@ interface LevelingStep {
   id: string;
   type: string;
   zone: string;
+  zoneId?: string; // Unique zone identifier for grouping
   description: string;
   hint?: string;
   layoutTip?: string; // Detailed zone navigation tips
@@ -15,6 +16,7 @@ interface LevelingStep {
 
 interface GroupedStep {
   zone: string;
+  zoneId?: string; // Track zone ID for proper grouping
   steps: LevelingStep[];
   allChecked: boolean;
   layoutTip?: string; // Use first step's layout tip
@@ -231,14 +233,19 @@ function groupStepsByZone(steps: LevelingStep[]): GroupedStep[] {
     if (grouped.length > 0) {
       const lastGroup = grouped[grouped.length - 1];
       
-      // Group if same zone and not a high-priority step
-      const isHighPriority = ['passive', 'kill_boss', 'trial'].includes(step.type);
-      const lastIsHighPriority = lastGroup.steps.some(s => ['passive', 'kill_boss', 'trial'].includes(s.type));
+      // Group if same zone ID (or fall back to zone name if no ID)
+      const sameZone = step.zoneId && lastGroup.zoneId 
+        ? lastGroup.zoneId === step.zoneId
+        : lastGroup.zone === step.zone;
       
-      if (lastGroup.zone === step.zone && !isHighPriority && !lastIsHighPriority) {
+      if (sameZone) {
         // Add to existing group
         lastGroup.steps.push(step);
         lastGroup.allChecked = lastGroup.steps.every(s => s.checked);
+        // Update layoutTip to use the first non-empty one
+        if (!lastGroup.layoutTip && step.layoutTip) {
+          lastGroup.layoutTip = step.layoutTip;
+        }
         continue;
       }
     }
@@ -246,6 +253,7 @@ function groupStepsByZone(steps: LevelingStep[]): GroupedStep[] {
     // Create new group
     grouped.push({
       zone: step.zone,
+      zoneId: step.zoneId,
       steps: [step],
       allChecked: step.checked || false,
       layoutTip: step.layoutTip
@@ -582,6 +590,314 @@ function createStepElement(step: LevelingStep, index: number): HTMLElement {
   return stepEl;
 }
 
+function createSingleStepWithZone(step: LevelingStep, zoneName: string, index: number): HTMLElement {
+  console.log('[Leveling] Creating single step with zone:', zoneName, 'for step:', step.description);
+  const stepEl = document.createElement('div');
+  const isCurrent = index === 0;
+  const isHighPriority = ['passive', 'trial', 'kill_boss'].includes(step.type);
+  
+  // Determine background and border based on type
+  let bgColor = 'rgba(255, 255, 255, 0.03)';
+  let borderColor = getStepColor(step.type);
+  
+  if (isCurrent) {
+    bgColor = isHighPriority 
+      ? 'rgba(254, 192, 118, 0.12)' 
+      : 'rgba(255, 255, 255, 0.08)';
+  }
+  
+  const opacity = isCurrent ? 1 : Math.max(0.4, 1 - (index * 0.2));
+  
+  stepEl.className = 'leveling-step';
+  stepEl.style.cssText = `
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: ${isCurrent ? '12px' : '10px'};
+    margin-bottom: 6px;
+    background: ${bgColor};
+    border-left: ${isHighPriority ? '4px' : '3px'} solid ${borderColor};
+    border-radius: 6px;
+    opacity: ${opacity};
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: ${isCurrent ? '13px' : '12px'};
+    position: relative;
+    overflow: hidden;
+  `;
+  
+  // Add glow effect for high priority current steps
+  if (isCurrent && isHighPriority) {
+    stepEl.style.boxShadow = `0 0 20px rgba(${step.type === 'passive' ? '74, 222, 128' : '254, 192, 118'}, 0.3)`;
+  }
+  
+  // Zone name header (prominent and visible)
+  const zoneHeader = document.createElement('div');
+  zoneHeader.style.cssText = `
+    font-size: 12px;
+    color: #4ADE80;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 6px 8px;
+    margin-bottom: 8px;
+    background: rgba(74, 222, 128, 0.12);
+    border-radius: 4px;
+    border-left: 3px solid #4ADE80;
+  `;
+  zoneHeader.textContent = `📍 ${zoneName}`;
+  stepEl.appendChild(zoneHeader);
+  
+  // Main content row
+  const contentRow = document.createElement('div');
+  contentRow.style.cssText = 'display: flex; gap: 10px; align-items: flex-start;';
+  
+  // Checkbox
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.checked = step.checked || false;
+  checkbox.style.cssText = `
+    margin-top: 2px;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    accent-color: ${borderColor};
+  `;
+  checkbox.addEventListener('change', () => {
+    toggleStepCompletion(step.id);
+  });
+  
+  // Content wrapper
+  const content = document.createElement('div');
+  content.style.cssText = 'flex: 1; display: flex; flex-direction: column; gap: 6px;';
+  
+  // Main row: icon + description
+  const mainRow = document.createElement('div');
+  mainRow.style.cssText = 'display: flex; align-items: flex-start; gap: 8px;';
+  
+  // Icon with background
+  const iconWrapper = document.createElement('div');
+  iconWrapper.style.cssText = `
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: ${borderColor}22;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid ${borderColor}44;
+  `;
+  
+  const icon = document.createElement('span');
+  icon.textContent = getStepIcon(step.type);
+  icon.style.cssText = `
+    color: ${borderColor};
+    font-size: 16px;
+    line-height: 1;
+  `;
+  iconWrapper.appendChild(icon);
+  
+  // Description
+  const desc = document.createElement('div');
+  desc.textContent = step.description;
+  desc.style.cssText = `
+    color: ${step.checked ? '#888' : (isCurrent ? '#fff' : '#ddd')};
+    text-decoration: ${step.checked ? 'line-through' : 'none'};
+    font-weight: ${isCurrent ? '600' : '500'};
+    line-height: 1.4;
+    flex: 1;
+  `;
+  
+  mainRow.appendChild(iconWrapper);
+  mainRow.appendChild(desc);
+  content.appendChild(mainRow);
+  
+  // Meta information row
+  const hasMetaInfo = step.quest || step.reward || step.recommendedLevel;
+  if (hasMetaInfo) {
+    const metaRow = document.createElement('div');
+    metaRow.style.cssText = `
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-left: 36px;
+      font-size: 11px;
+    `;
+    
+    if (step.quest) {
+      const questBadge = createBadge('📜', step.quest, '#FEC076');
+      metaRow.appendChild(questBadge);
+    }
+    
+    if (step.reward) {
+      const rewardBadge = createBadge('🎁', step.reward, '#4ADE80');
+      metaRow.appendChild(rewardBadge);
+    }
+    
+    if (step.recommendedLevel) {
+      const levelBadge = createBadge('Lv', String(step.recommendedLevel), '#FFD700');
+      metaRow.appendChild(levelBadge);
+    }
+    
+    content.appendChild(metaRow);
+  }
+  
+  // Hint - show short hints inline, long hints as tooltip
+  if (settings.showHints && step.hint && isCurrent) {
+    const isShortHint = step.hint.length <= 40;
+    
+    if (isShortHint) {
+      const hintEl = document.createElement('div');
+      hintEl.style.cssText = `
+        padding: 4px 10px 4px 36px;
+        font-size: 11px;
+        color: #B8B8B8;
+        line-height: 1.4;
+        font-style: italic;
+      `;
+      hintEl.textContent = `💡 ${step.hint}`;
+      content.appendChild(hintEl);
+    } else {
+      const hintIcon = document.createElement('span');
+      hintIcon.innerHTML = '💡';
+      hintIcon.style.cssText = `
+        position: absolute;
+        top: 12px;
+        right: ${step.layoutTip ? '44px' : '12px'};
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: help;
+        font-size: 14px;
+        opacity: 0.6;
+        transition: opacity 0.2s;
+        z-index: 10;
+      `;
+      
+      const hintTooltip = document.createElement('div');
+      hintTooltip.textContent = step.hint;
+      hintTooltip.style.cssText = `
+        position: absolute;
+        top: -8px;
+        right: ${step.layoutTip ? '72px' : '40px'};
+        background: linear-gradient(135deg, rgba(30, 30, 40, 0.98) 0%, rgba(20, 20, 30, 0.98) 100%);
+        border: 1px solid rgba(180, 180, 180, 0.5);
+        border-radius: 8px;
+        padding: 12px 14px;
+        max-width: 280px;
+        font-size: 11px;
+        color: #E0E0E0;
+        line-height: 1.5;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateX(10px);
+        transition: opacity 0.2s, transform 0.2s;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        white-space: normal;
+        backdrop-filter: blur(8px);
+      `;
+      
+      hintIcon.addEventListener('mouseenter', () => {
+        hintIcon.style.opacity = '1';
+        hintTooltip.style.opacity = '1';
+        hintTooltip.style.transform = 'translateX(0)';
+      });
+      
+      hintIcon.addEventListener('mouseleave', () => {
+        hintIcon.style.opacity = '0.6';
+        hintTooltip.style.opacity = '0';
+        hintTooltip.style.transform = 'translateX(10px)';
+      });
+      
+      stepEl.appendChild(hintIcon);
+      stepEl.appendChild(hintTooltip);
+    }
+  }
+  
+  // Layout tip
+  if (step.layoutTip) {
+    const tooltipIcon = document.createElement('div');
+    tooltipIcon.innerHTML = '🗺️';
+    tooltipIcon.style.cssText = `
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: help;
+      font-size: 14px;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+      z-index: 10;
+    `;
+    
+    const tooltip = document.createElement('div');
+    tooltip.textContent = step.layoutTip;
+    tooltip.style.cssText = `
+      position: absolute;
+      top: -8px;
+      right: 40px;
+      background: linear-gradient(135deg, rgba(30, 30, 40, 0.98) 0%, rgba(20, 20, 30, 0.98) 100%);
+      border: 1px solid rgba(254, 192, 118, 0.5);
+      border-radius: 8px;
+      padding: 12px 14px;
+      max-width: 280px;
+      font-size: 11px;
+      color: #E0E0E0;
+      line-height: 1.5;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      white-space: normal;
+      backdrop-filter: blur(8px);
+    `;
+    
+    tooltipIcon.addEventListener('mouseenter', () => {
+      tooltipIcon.style.opacity = '1';
+      tooltip.style.opacity = '1';
+      tooltip.style.transform = 'translateX(0)';
+    });
+    
+    tooltipIcon.addEventListener('mouseleave', () => {
+      tooltipIcon.style.opacity = '0.6';
+      tooltip.style.opacity = '0';
+      tooltip.style.transform = 'translateX(10px)';
+    });
+    
+    stepEl.appendChild(tooltipIcon);
+    stepEl.appendChild(tooltip);
+  }
+  
+  // Optional note
+  if (step.optionalNote) {
+    const noteEl = document.createElement('div');
+    noteEl.style.cssText = `
+      padding-left: 36px;
+      font-size: 10px;
+      color: #888;
+      font-style: italic;
+    `;
+    noteEl.textContent = `Note: ${step.optionalNote}`;
+    content.appendChild(noteEl);
+  }
+  
+  contentRow.appendChild(checkbox);
+  contentRow.appendChild(content);
+  stepEl.appendChild(contentRow);
+  
+  return stepEl;
+}
+
 function createGroupedStepElement(group: GroupedStep, index: number): HTMLElement {
   const isCurrent = index === 0;
   const borderColor = '#4ADE80'; // Green for zone groups
@@ -646,7 +962,10 @@ function createGroupedStepElement(group: GroupedStep, index: number): HTMLElemen
     font-size: 14px;
     flex: 1;
   `;
-  zoneName.textContent = `📍 ${group.zone} (${group.steps.length} tasks)`;
+  // Show task count for multi-step zones, just zone name for single-step
+  zoneName.textContent = group.steps.length > 1 
+    ? `📍 ${group.zone} (${group.steps.length} tasks)` 
+    : `📍 ${group.zone}`;
   
   zoneHeader.appendChild(masterCheckbox);
   zoneHeader.appendChild(zoneName);
@@ -863,12 +1182,16 @@ function renderSteps(): void {
   grouped.forEach((group, index) => {
     let stepEl: HTMLElement;
     
+    console.log(`[Leveling] Group ${index}: ${group.zone} with ${group.steps.length} step(s)`);
+    
     if (group.steps.length > 1) {
-      // Multiple steps in same zone - use grouped view
+      // Multiple steps in same zone - use grouped view with zone header
+      console.log('[Leveling] Creating GROUPED element for', group.zone);
       stepEl = createGroupedStepElement(group, index);
     } else {
-      // Single step - use normal view
-      stepEl = createStepElement(group.steps[0], index);
+      // Single step - use simpler card view with zone name shown
+      console.log('[Leveling] Creating SINGLE element for', group.zone);
+      stepEl = createSingleStepWithZone(group.steps[0], group.zone, index);
     }
     
     if (elements.stepsContainer) {

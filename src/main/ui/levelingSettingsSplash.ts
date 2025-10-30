@@ -145,6 +145,7 @@ function buildLevelingSettingsSplashHtml(
   const showHints = currentSettings.uiSettings?.showHints ?? true;
   const showOptional = currentSettings.uiSettings?.showOptional ?? true;
   const autoDetectZones = currentSettings.uiSettings?.autoDetectZones ?? true;
+  const autoDetectMode = currentSettings.uiSettings?.autoDetectMode ?? 'hybrid';
   const showTreeNodeDetails = currentSettings.uiSettings?.showTreeNodeDetails ?? false;
   const autoDetectLevelingSets = currentSettings.uiSettings?.autoDetectLevelingSets ?? true;
   const opacity = currentSettings.uiSettings?.opacity ?? 96;
@@ -679,6 +680,36 @@ function buildLevelingSettingsSplashHtml(
     ::-webkit-scrollbar-thumb:hover {
       background: rgba(74, 222, 128, 0.3);
     }
+    
+    .setting-select {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--bg-secondary);
+      border: 1px solid rgba(74, 222, 128, 0.2);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .setting-select:hover {
+      border-color: rgba(74, 222, 128, 0.4);
+      background: rgba(74, 222, 128, 0.05);
+    }
+    
+    .setting-select:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      background: rgba(74, 222, 128, 0.08);
+    }
+    
+    .setting-select option {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      padding: 8px;
+    }
   </style>
 </head>
 <body>
@@ -1021,6 +1052,25 @@ function buildLevelingSettingsSplashHtml(
         
         <div class="setting-item" style="flex-direction: column; align-items: stretch;">
           <div class="setting-label">
+            <div class="setting-name">Auto-detect Mode</div>
+            <div class="setting-description">Controls how zone changes trigger task completion</div>
+          </div>
+          
+          <select class="setting-select" id="autoDetectModeSelect" onchange="updateAutoDetectMode(this.value)">
+            <option value="hybrid" ${autoDetectMode === 'hybrid' ? 'selected' : ''}>Hybrid (Recommended)</option>
+            <option value="strict" ${autoDetectMode === 'strict' ? 'selected' : ''}>Strict</option>
+            <option value="trust" ${autoDetectMode === 'trust' ? 'selected' : ''}>Trust</option>
+          </select>
+          
+          <div class="info-box" style="margin-top: 8px; font-size: 13px;">
+            <strong>Hybrid (Default):</strong> Only auto-completes tasks if you enter the correct next zone. Prevents false positives if you accidentally visit wrong zones.<br><br>
+            <strong>Strict:</strong> Validates that the entered zone matches your next expected task. Same as Hybrid but with stricter logging for debugging.<br><br>
+            <strong>Trust:</strong> Always auto-completes previous zone when entering any new zone. Can cause false positives if you skip around.
+          </div>
+        </div>
+        
+        <div class="setting-item" style="flex-direction: column; align-items: stretch;">
+          <div class="setting-label">
             <div class="setting-name">Client.txt Path</div>
             <div class="setting-description">Location of your Path of Exile Client.txt log file</div>
           </div>
@@ -1164,6 +1214,10 @@ function buildLevelingSettingsSplashHtml(
       element.classList.toggle('active');
       const value = element.classList.contains('active');
       updateSetting(setting, value);
+    }
+    
+    function updateAutoDetectMode(mode) {
+      updateSetting('autoDetectMode', mode);
     }
     
     // Batch settings updates to avoid spamming IPC/render during slider drags

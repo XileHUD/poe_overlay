@@ -147,7 +147,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
     
     // Leveling window
     toggleLevelingWindow: () => ipcRenderer.invoke('toggle-leveling-window'),
-    debugCenterLevelingWindow: () => ipcRenderer.invoke('debug-center-leveling-window'),
     
     // Feature configuration
     getEnabledFeatures: () => ipcRenderer.invoke('get-enabled-features'),

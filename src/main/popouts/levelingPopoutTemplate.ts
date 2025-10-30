@@ -499,6 +499,7 @@ let state = {
   showHints: true,
   showOptional: true,
   autoDetectZones: true,
+  autoDetectMode: 'hybrid', // 'strict' | 'trust' | 'hybrid' (default: hybrid)
   showTreeNodeDetails: false,
   autoDetectLevelingSets: true,
   opacity: 96,
@@ -572,6 +573,51 @@ function getLeagueIcon(step) {
 function getLayoutTipIcon(step) {
   if (!step.layoutTip) return '';
   return '<span class="layout-tip-icon"><span class="more-pill">...</span><span class="tooltip">'+escapeHtml(step.layoutTip)+'</span></span>';
+}
+
+function getHintIcon(hint) {
+  if (!hint) return '💡';
+  
+  const lowerHint = hint.toLowerCase();
+  
+  // Check for specific directional keywords (most specific first)
+  // Diagonal directions (8 directions)
+  if (lowerHint.includes('north-east') || lowerHint.includes('northeast')) return '↗️';
+  if (lowerHint.includes('north-west') || lowerHint.includes('northwest')) return '↖️';
+  if (lowerHint.includes('south-east') || lowerHint.includes('southeast')) return '↘️';
+  if (lowerHint.includes('south-west') || lowerHint.includes('southwest')) return '↙️';
+  
+  // Cardinal directions
+  if (lowerHint.includes('north')) return '⬆️';
+  if (lowerHint.includes('south')) return '⬇️';
+  if (lowerHint.includes('east')) return '➡️';
+  if (lowerHint.includes('west')) return '⬅️';
+  
+  // Clock positions (common in PoE guides)
+  if (lowerHint.includes("1 o'clock") || lowerHint.includes("2 o'clock")) return '↗️';
+  if (lowerHint.includes("4 o'clock") || lowerHint.includes("5 o'clock")) return '↘️';
+  if (lowerHint.includes("7 o'clock") || lowerHint.includes("8 o'clock")) return '↙️';
+  if (lowerHint.includes("10 o'clock") || lowerHint.includes("11 o'clock")) return '↖️';
+  if (lowerHint.includes("12 o'clock")) return '⬆️';
+  if (lowerHint.includes("3 o'clock")) return '➡️';
+  if (lowerHint.includes("6 o'clock")) return '⬇️';
+  if (lowerHint.includes("9 o'clock")) return '⬅️';
+  
+  // Movement/direction keywords
+  if (lowerHint.includes('upward') || lowerHint.includes('going up')) return '⬆️';
+  if (lowerHint.includes('downward') || lowerHint.includes('going down')) return '⬇️';
+  if (lowerHint.includes('left')) return '⬅️';
+  if (lowerHint.includes('right')) return '➡️';
+  
+  // Circular movements
+  if (lowerHint.includes('clockwise') && lowerHint.includes('counter')) return '↺';
+  if (lowerHint.includes('clockwise')) return '↻';
+  
+  // Generic movement (follow, head, move, etc.) without specific direction
+  if (lowerHint.match(/follow|head|move|go|travel|navigate|enter/i)) return '➡️';
+  
+  // Default to lightbulb for tips, hints, and other information
+  return '💡';
 }
 
 // Track which gems have been shown to avoid duplicates (used during seeding)
@@ -1082,7 +1128,7 @@ function getGemCost(gem) {
 }
 
 function groupStepsByZone(steps) {
-  if (!state.groupByZone) return steps.map(s => ({zone:s.zone,steps:[s],allChecked:state.completedSteps.has(s.id),layoutTip:s.layoutTip}));
+  if (!state.groupByZone) return steps.map(s => ({zone:s.zone,zoneId:s.zoneId,steps:[s],allChecked:state.completedSteps.has(s.id),layoutTip:s.layoutTip}));
   
   const grouped = [];
   for (let i = 0; i < steps.length; i++) {
@@ -1091,8 +1137,12 @@ function groupStepsByZone(steps) {
     if (grouped.length > 0) {
       const lastGroup = grouped[grouped.length - 1];
       
-      // Group ALL steps with the same zone together, regardless of type
-      if (lastGroup.zone === step.zone) {
+      // Group by zoneId if available, otherwise fall back to zone name
+      const sameZone = step.zoneId && lastGroup.zoneId 
+        ? lastGroup.zoneId === step.zoneId
+        : lastGroup.zone === step.zone;
+      
+      if (sameZone) {
         lastGroup.steps.push(step);
         lastGroup.allChecked = lastGroup.steps.every(s => state.completedSteps.has(s.id));
         continue;
@@ -1101,6 +1151,7 @@ function groupStepsByZone(steps) {
     
     grouped.push({
       zone: step.zone,
+      zoneId: step.zoneId,
       steps: [step],
       allChecked: state.completedSteps.has(step.id),
       layoutTip: step.layoutTip
@@ -1124,7 +1175,8 @@ function saveState() {
     showOptional: state.showOptional,
     groupByZone: state.groupByZone,
     showTreeNodeDetails: state.showTreeNodeDetails,
-    autoDetectLevelingSets: state.autoDetectLevelingSets
+    autoDetectLevelingSets: state.autoDetectLevelingSets,
+    autoDetectMode: state.autoDetectMode
   });
 }
 
@@ -1741,7 +1793,8 @@ function render() {
     const cleanDesc = cleanDescription(step.description);
         const leagueIcon = getLeagueIcon(step);
   const layoutTipIcon = step.layoutTip ? getLayoutTipIcon(step) : '';
-        const hintHtml = state.showHints && step.hint ? '<div class="task-hint">💡 '+escapeHtml(step.hint)+'</div>' : '';
+        const hintIcon = getHintIcon(step.hint);
+        const hintHtml = state.showHints && step.hint ? '<div class="task-hint">'+hintIcon+' '+escapeHtml(step.hint)+'</div>' : '';
         const rewardHtml = step.reward ? '<div class="task-reward">🎁 '+escapeHtml(step.reward)+'</div>' : '';
         
         // Get PoB gems for this step (never let errors break UI)
@@ -1757,29 +1810,24 @@ function render() {
   return '<div class="task-item"><div class="task-checkbox"><input type="checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /></div><div class="task-bullet" style="color:'+stepType.color+';">'+stepType.icon+'</div><div class="task-content"><div class="task-desc '+(checked?'checked':'')+'">'+escapeHtml(cleanDesc)+leagueIcon+layoutTipIcon+'</div>'+hintHtml+rewardHtml+pobGemsHtml+'</div></div>';
       }).join('')+'</div></div>';
     } else {
+      // Single task - render exactly like multi-task groups
       const step = group.steps[0];
       const stepIndex = act.steps.findIndex(s => s.id === step.id);
       const checked = state.completedSteps.has(step.id);
       const stepType = STEP_TYPES[step.type] || STEP_TYPES.navigation;
-      const isHighPriority = ['passive','kill_boss','trial'].includes(step.type);
       const pos = isCurrent ? 1 : currentIndex;
-      const opacity = isCurrent ? 1 : Math.max(0.5, 1 - ((pos - 1) * 0.15));
-  const bgColor = isCurrent ? (isHighPriority ? 'rgba(254,192,118,0.20)' : 'rgba(255,255,255,0.16)') : 'rgba(255,255,255,0.03)';
-      const padding = isCurrent ? '16px 14px' : '14px 12px';
+      const groupOpacity = isCurrent ? 1 : Math.max(0.5, 1 - ((pos - 1) * 0.15));
+      const currentClass = isCurrent ? ' current' : '';
+      const skipToBtn = isCurrent ? '' : '<button class="skip-to-btn" data-action="skip-to" data-first-step-id="'+step.id+'" title="Skip to this task (auto-complete all previous steps)">⏭️</button>';
       
       const cleanDesc = cleanDescription(step.description);
       const leagueIcon = getLeagueIcon(step);
-  const layoutTipIcon = step.layoutTip ? getLayoutTipIcon(step) : '';
-  const stepTextHtml = '<span class="step-desc-text">'+escapeHtml(cleanDesc)+'</span>';
-      const hintHtml = state.showHints && step.hint ? '<div class="step-hint">💡 '+escapeHtml(step.hint)+'</div>' : '';
+      const layoutTipIcon = step.layoutTip ? getLayoutTipIcon(step) : '';
+      const hintIcon = getHintIcon(step.hint);
+      const hintHtml = state.showHints && step.hint ? '<div class="task-hint">'+hintIcon+' '+escapeHtml(step.hint)+'</div>' : '';
+      const rewardHtml = step.reward ? '<div class="task-reward">🎁 '+escapeHtml(step.reward)+'</div>' : '';
       
-      const metaItems = [];
-      if (step.quest) metaItems.push('<div class="badge" style="background:#fec07615;border-color:#fec07640;color:#fec076;">📜 '+escapeHtml(step.quest)+'</div>');
-      if (step.reward) metaItems.push('<div class="badge" style="background:#4ade8015;border-color:#4ade8040;color:#4ade80;">🎁 '+escapeHtml(step.reward)+'</div>');
-      if (step.recommendedLevel) metaItems.push('<div class="badge" style="background:#ffd70015;border-color:#ffd70040;color:#ffd700;">Level '+step.recommendedLevel+'</div>');
-      const metaHtml = metaItems.length > 0 ? '<div class="step-meta">'+metaItems.join('')+'</div>' : '';
-      
-      // Get PoB gems for this step (never let errors break UI)
+      // Get PoB gems for this step
       let pobGems = [];
       try {
         pobGems = getPobGemsForStep(step, act.actNumber, act.steps, stepIndex, false);
@@ -1789,11 +1837,8 @@ function render() {
       }
       const pobGemsHtml = renderPobGemList(pobGems, act.actNumber);
       
-      // Add skip-to button for single tasks too (hide on first incomplete)
-      const skipToBtn = isCurrent ? '' : '<button class="skip-to-btn" data-action="skip-to" data-first-step-id="'+step.id+'" title="Skip to this task (auto-complete all previous steps)">⏭️</button>';
-      
-  const borderColor = isCurrent ? '#fdd68a' : stepType.color;
-  return '<div class="leveling-group'+(isCurrent?' current':'')+'" data-incomplete-index="'+currentIndex+'" data-visible="'+(withinLimit?'true':'false')+'" style="'+baseDisplay+'"><div class="leveling-step '+(isCurrent?'current':'')+' '+(isHighPriority?'priority':'')+'" style="opacity:'+opacity+';background:'+bgColor+';padding:'+padding+';border-left-color:'+borderColor+';position:relative;">'+skipToBtn+'<input type="checkbox" class="step-checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /><div class="step-content"><div class="step-main"><div class="step-icon-wrap" style="background:'+stepType.color+'22;border-color:'+stepType.color+'44;"><span class="step-icon" style="color:'+stepType.color+';">'+stepType.icon+'</span></div><div class="step-desc-wrap">'+(isCurrent&&step.zone?'<div class="zone-label">'+escapeHtml(step.zone)+'</div>':'')+'<div class="step-desc '+(checked?'checked':'')+'">'+stepTextHtml+leagueIcon+layoutTipIcon+'</div></div></div>'+metaHtml+hintHtml+pobGemsHtml+'</div></div></div>';
+      // Use exact same structure as multi-task: leveling-group → zone-header + task-list → task-item
+      return '<div class="leveling-group'+currentClass+'" data-incomplete-index="'+currentIndex+'" data-visible="'+(withinLimit?'true':'false')+'" style="'+baseDisplay+'opacity:'+groupOpacity+';"><div class="zone-header" data-zone="'+escapeHtml(group.zone)+'"><div class="zone-name">📍 '+escapeHtml(group.zone)+'</div>'+skipToBtn+'</div><div class="task-list"><div class="task-item"><div class="task-checkbox"><input type="checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /></div><div class="task-bullet" style="color:'+stepType.color+';">'+stepType.icon+'</div><div class="task-content"><div class="task-desc '+(checked?'checked':'')+'">'+escapeHtml(cleanDesc)+leagueIcon+layoutTipIcon+'</div>'+hintHtml+rewardHtml+pobGemsHtml+'</div></div></div></div>';
     }
   }).join('');
   
@@ -2068,6 +2113,7 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
     if (result.settings.groupByZone !== undefined) state.groupByZone = result.settings.groupByZone;
     if (result.settings.showTreeNodeDetails !== undefined) state.showTreeNodeDetails = result.settings.showTreeNodeDetails;
     if (result.settings.autoDetectLevelingSets !== undefined) state.autoDetectLevelingSets = result.settings.autoDetectLevelingSets;
+    if (result.settings.autoDetectMode !== undefined) state.autoDetectMode = result.settings.autoDetectMode;
     console.log('Loaded UI settings:', result.settings);
   }
   
@@ -2099,6 +2145,7 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
     if (updates.showTreeNodeDetails !== undefined) state.showTreeNodeDetails = updates.showTreeNodeDetails;
     if (updates.autoDetectLevelingSets !== undefined) state.autoDetectLevelingSets = updates.autoDetectLevelingSets;
     if (updates.autoDetectZones !== undefined) state.autoDetectZones = updates.autoDetectZones;
+    if (updates.autoDetectMode !== undefined) state.autoDetectMode = updates.autoDetectMode;
     if (updates.wideMode !== undefined) {
       state.mode = updates.wideMode ? 'wide' : 'tall';
       ipcRenderer.send('leveling-set-layout', state.mode);
@@ -2758,28 +2805,11 @@ ipcRenderer.on('leveling-layout-mode', (event, mode) => {
 ipcRenderer.on('zone-entered', (event, data) => {
   if (!state.levelingData || !state.autoDetectZones) return;
   
-  const zoneName = typeof data === 'string' ? data : data.zoneName;
-  const actNumber = typeof data === 'string' ? null : data.actNumber;
+  const zoneId = data.zoneId;
+  const zoneName = data.zoneName;
+  const actNumber = data.actNumber;
   
-  console.log('[Auto-Detect] Zone entered:', zoneName, actNumber !== null ? '(Act ' + actNumber + ')' : '');
-  
-  // If we received an act number and it's different from current act, auto-switch
-  if (actNumber !== null && state.levelingData) {
-    const currentAct = state.levelingData.acts[state.currentActIndex];
-    if (currentAct && currentAct.actNumber !== actNumber) {
-      console.log('[Auto-Detect] Act transition detected! Switching from Act ' + currentAct.actNumber + ' to Act ' + actNumber);
-      const targetActIndex = state.levelingData.acts.findIndex(a => a.actNumber === actNumber);
-      if (targetActIndex >= 0) {
-        const targetAct = state.levelingData.acts[targetActIndex];
-        ipcRenderer.invoke('set-current-act', targetAct.id);
-        state.currentActId = targetAct.id;
-        state.currentActIndex = targetActIndex;
-        render();
-        console.log('[Auto-Detect] Successfully switched to Act ' + actNumber);
-      }
-      return; // Don't auto-complete when switching acts
-    }
-  }
+  console.log('[Auto-Detect] Zone entered:', zoneId + ' (' + zoneName + ')', '| Mode:', state.autoDetectMode);
   
   const act = state.levelingData.acts[state.currentActIndex];
   if (!act) return;
@@ -2787,60 +2817,145 @@ ipcRenderer.on('zone-entered', (event, data) => {
   
   // Determine progression anchor: first uncompleted step index
   let firstUncompletedIndex = allSteps.findIndex(s => !state.completedSteps.has(s.id));
-  if (firstUncompletedIndex === -1) firstUncompletedIndex = allSteps.length; // everything done
-
-  // Find the nearest upcoming step in this zone at or after the progression anchor
-  let enteredZoneStepIndex = -1;
-  const normalizedEntered = zoneName.toLowerCase().trim();
-  for (let i = firstUncompletedIndex; i < allSteps.length; i++) {
-    const stepZone = allSteps[i].zone.toLowerCase().replace(/[⚡🗺️📍]/g, '').trim();
-    if (stepZone === normalizedEntered) {
-      enteredZoneStepIndex = i;
-      break;
-    }
+  if (firstUncompletedIndex === -1) {
+    console.log('[Auto-Detect] All steps completed in current act');
+    return;
   }
-  // Fallback: if not found ahead, pick the last occurrence of this zone in the act
-  if (enteredZoneStepIndex === -1) {
-    for (let i = allSteps.length - 1; i >= 0; i--) {
-      const stepZone = allSteps[i].zone.toLowerCase().replace(/[⚡🗺️📍]/g, '').trim();
-      if (stepZone === normalizedEntered) {
-        enteredZoneStepIndex = i;
+
+  const firstUncompletedStep = allSteps[firstUncompletedIndex];
+  const firstUncompletedZoneId = firstUncompletedStep.zoneId;
+  
+  // ============================================================================
+  // MODE 1: STRICT - Validate both source zone AND destination zone
+  // ============================================================================
+  if (state.autoDetectMode === 'strict') {
+    console.log('[Auto-Detect] STRICT MODE: Validating destination zone by ID');
+    
+    // Need to track where we came from
+    if (firstUncompletedIndex === 0) {
+      console.log('[Auto-Detect] First step - cannot validate source zone. Skipping.');
+      return;
+    }
+    
+    // Check if entered zone ID matches expected destination (first uncompleted step)
+    if (zoneId !== firstUncompletedZoneId) {
+      console.log('[Auto-Detect] Destination mismatch: entered "' + zoneId + '" but expected "' + firstUncompletedZoneId + '". Ignoring.');
+      return;
+    }
+    
+    // Find previous zone ID
+    let prevEnd = firstUncompletedIndex - 1;
+    const prevZoneId = allSteps[prevEnd].zoneId;
+    
+    // In strict mode, we would validate that we came FROM prevZoneId
+    // Since we don't track last zone in Client.txt, we'll just validate destination
+    // and complete previous zone (same as hybrid for now)
+    // TODO: Track lastZone in state for full strict validation
+    
+    console.log('[Auto-Detect] Destination validated. Completing previous zone ID: "' + prevZoneId + '" (' + allSteps[prevEnd].zone + ')');
+    
+    let prevStart = prevEnd;
+    for (let i = prevEnd - 1; i >= 0; i--) {
+      if (allSteps[i].zoneId === prevZoneId) {
+        prevStart = i;
+      } else {
         break;
       }
     }
-  }
-  
-  if (enteredZoneStepIndex === -1) {
-    console.log('[Auto-Detect] Zone not found in leveling guide:', zoneName);
+    
+    let completedCount = 0;
+    for (let i = prevStart; i <= prevEnd; i++) {
+      const step = allSteps[i];
+      if (!state.completedSteps.has(step.id)) {
+        state.completedSteps.add(step.id);
+        completedCount++;
+        console.log('[Auto-Detect] Auto-completed:', step.description, 'in', step.zone);
+      }
+    }
+    
+    if (completedCount > 0) {
+      ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
+      console.log('[Auto-Detect] STRICT: Completed ' + completedCount + ' step(s) in previous zone');
+      render();
+    }
     return;
   }
   
-  console.log('[Auto-Detect] Found zone at step index:', enteredZoneStepIndex);
-
-  // Strategy: When entering a NEW zone, fully complete the PREVIOUS zone's task only.
-  // - Never auto-check any steps within the newly entered zone
-  // - Always mark all steps belonging to the immediately previous contiguous zone group
-
-  const normalizeZone = (z) => z.toLowerCase().replace(/[⚡🗺️📍]/g, '').trim();
-
-  // Determine previous zone contiguous range [prevStart, prevEnd]
-  let prevEnd = enteredZoneStepIndex - 1;
-  if (prevEnd < 0) {
-    console.log('[Auto-Detect] No previous zone exists before the entered zone. Nothing to complete.');
+  // ============================================================================
+  // MODE 2: TRUST - Always complete previous zone when entering ANY new zone
+  // ============================================================================
+  if (state.autoDetectMode === 'trust') {
+    console.log('[Auto-Detect] TRUST MODE: Auto-completing previous zone regardless of destination');
+    
+    if (firstUncompletedIndex === 0) {
+      console.log('[Auto-Detect] No previous zone to complete.');
+      return;
+    }
+    
+    // Find previous zone WITHOUT validating destination (use zone ID)
+    let prevEnd = firstUncompletedIndex - 1;
+    const prevZoneId = allSteps[prevEnd].zoneId;
+    
+    let prevStart = prevEnd;
+    for (let i = prevEnd - 1; i >= 0; i--) {
+      if (allSteps[i].zoneId === prevZoneId) {
+        prevStart = i;
+      } else {
+        break;
+      }
+    }
+    
+    let completedCount = 0;
+    for (let i = prevStart; i <= prevEnd; i++) {
+      const step = allSteps[i];
+      if (!state.completedSteps.has(step.id)) {
+        state.completedSteps.add(step.id);
+        completedCount++;
+        console.log('[Auto-Detect] Auto-completed:', step.description, 'in', step.zone);
+      }
+    }
+    
+    if (completedCount > 0) {
+      ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
+      console.log('[Auto-Detect] TRUST: Completed ' + completedCount + ' step(s) in "' + allSteps[prevEnd].zone + '"');
+      render();
+    } else {
+      console.log('[Auto-Detect] Previous zone already completed');
+    }
     return;
   }
-
-  const prevZoneName = normalizeZone(allSteps[prevEnd].zone);
-
+  
+  // ============================================================================
+  // MODE 3: HYBRID (Default) - Only complete if destination matches next step
+  // ============================================================================
+  console.log('[Auto-Detect] HYBRID MODE: Validating destination zone by ID');
+  
+  // Verify entered zone ID matches the first uncompleted step's zone ID
+  if (zoneId !== firstUncompletedZoneId) {
+    console.log('[Auto-Detect] Entered zone ID "' + zoneId + '" does NOT match first uncompleted step zone ID "' + firstUncompletedZoneId + '". Ignoring.');
+    return;
+  }
+  
+  console.log('[Auto-Detect] Entered zone ID matches first uncompleted step! Zone:', zoneId, '(' + zoneName + ')');
+  
+  // Find the previous zone's contiguous range
+  if (firstUncompletedIndex === 0) {
+    console.log('[Auto-Detect] First uncompleted step is at index 0. No previous zone to complete.');
+    return;
+  }
+  
+  let prevEnd = firstUncompletedIndex - 1;
+  const prevZoneId = allSteps[prevEnd].zoneId;
+  
   let prevStart = prevEnd;
   for (let i = prevEnd - 1; i >= 0; i--) {
-    if (normalizeZone(allSteps[i].zone) === prevZoneName) {
+    if (allSteps[i].zoneId === prevZoneId) {
       prevStart = i;
     } else {
       break;
     }
   }
-
+  
   // Mark only the previous zone group as completed
   let completedCount = 0;
   for (let i = prevStart; i <= prevEnd; i++) {
@@ -2854,7 +2969,7 @@ ipcRenderer.on('zone-entered', (event, data) => {
 
   if (completedCount > 0) {
     ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
-  console.log('[Auto-Detect] Completed ' + completedCount + ' step(s) in previous zone before entering ' + zoneName);
+    console.log('[Auto-Detect] HYBRID: Completed ' + completedCount + ' step(s) in previous zone "' + allSteps[prevEnd].zone + '" before entering "' + zoneName + '"');
     render();
   } else {
     console.log('[Auto-Detect] Previous zone already fully completed');

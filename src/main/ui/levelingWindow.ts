@@ -898,7 +898,7 @@ export class LevelingWindow {
         const updated: any = { ...(current || {}) };
         
         // UI settings should be nested under uiSettings
-        const uiSettingKeys = ['opacity', 'fontSize', 'zoomLevel', 'visibleSteps', 'groupByZone', 'showHints', 'showOptional', 'showTreeNodeDetails', 'autoDetectLevelingSets'];
+        const uiSettingKeys = ['opacity', 'fontSize', 'zoomLevel', 'visibleSteps', 'groupByZone', 'showHints', 'showOptional', 'showTreeNodeDetails', 'autoDetectLevelingSets', 'autoDetectZones', 'autoDetectMode'];
         const uiUpdates: any = {};
         const otherUpdates: any = {};
         
@@ -1581,7 +1581,7 @@ export class LevelingWindow {
         
         // Send to renderer to auto-check the current zone
         if (this.window && !this.window.isDestroyed()) {
-          this.window.webContents.send('zone-entered', { zoneName: lastZoneEntry.zoneName, actNumber });
+          this.window.webContents.send('zone-entered', { zoneId: lastZoneEntry.areaCode, zoneName: lastZoneEntry.zoneName, actNumber });
         }
       } else {
         console.log(`[STARTUP] No recent zone detected in last ${chunkSize} bytes`);
@@ -1683,14 +1683,14 @@ export class LevelingWindow {
           // NO deduplication, NO seed checking - just prev/current zone tracking
           if (areaCode !== this.lastZoneAreaCode) {
             console.log(`[ZONE DETECTION]   🎯 ZONE CHANGED! From "${this.lastZoneAreaCode || 'none'}" to "${areaCode}"`);
-            console.log(`[ZONE DETECTION]   Sending "${zoneName}" (Act ${actNumber}) to renderer`);
+            console.log(`[ZONE DETECTION]   Sending zoneId "${areaCode}" / zoneName "${zoneName}" (Act ${actNumber}) to renderer`);
             
             // Update last zone
             this.lastZoneAreaCode = areaCode;
             
-            // Send zone NAME and ACT NUMBER to renderer
+            // Send zone ID, zone NAME, and ACT NUMBER to renderer
             if (this.window && !this.window.isDestroyed()) {
-              this.window.webContents.send('zone-entered', { zoneName, actNumber });
+              this.window.webContents.send('zone-entered', { zoneId: areaCode, zoneName, actNumber });
             } else {
               console.log(`[ZONE DETECTION]   ⚠️ Window not available, cannot send zone-entered event`);
             }
