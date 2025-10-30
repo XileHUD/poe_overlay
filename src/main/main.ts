@@ -575,6 +575,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 this.floatingButton = null;
             }
 
+            console.log(`[Main] Creating LevelingWindow instance for ${this.overlayVersion.toUpperCase()}...`);
             this.levelingWindow = new LevelingWindow({
                 settingsService: this.settingsService,
                 overlayVersion: this.overlayVersion
@@ -604,6 +605,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 onShowOverlay: this.levelingOnlyMode
                     ? () => this.levelingWindow?.toggle()
                     : () => this.showDefaultOverlay({ focus: true }),
+                onForceLevelingToPrimary: () => this.forceLevelingToPrimaryMonitor(),
                 currentHotkeyLabel: this.getHotkeyKey(),
                 featureVisibility: this.overlayVersion === 'poe2'
                     ? {
@@ -1636,7 +1638,21 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             
             // Leveling window toggle
             ipcMain.handle('toggle-leveling-window', () => {
-                this.levelingWindow?.toggle();
+                try {
+                    if (this.levelingWindow) {
+                        this.levelingWindow.toggle();
+                        return { success: true };
+                    } else {
+                        const error = 'levelingWindow is null or undefined - cannot toggle!';
+                        console.warn('[IPC Handler] ❌', error);
+                        return { success: false, error };
+                    }
+                } catch (error) {
+                    const errorMsg = error instanceof Error ? error.message : String(error);
+                    const errorStack = error instanceof Error ? error.stack : undefined;
+                    console.error('[IPC Handler] ❌ Exception in toggle-leveling-window:', error);
+                    return { success: false, error: errorMsg, stack: errorStack };
+                }
             });
             
             // Image caching (renderer will explicitly invoke to cache successes)
@@ -2745,6 +2761,14 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
             ...(this.settingsService.get('floatingButton') || {}),
             enabled: isVisible
         });
+    }
+
+    // Force leveling overlay to primary monitor (via tray menu)
+    private forceLevelingToPrimaryMonitor() {
+        if (!this.levelingWindow) return;
+        
+        // Call the IPC handler directly
+        this.levelingWindow.forceToPrimaryMonitor();
     }
 
     // Get current hotkey (default to "Ctrl+Q", with validation)

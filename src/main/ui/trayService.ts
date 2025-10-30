@@ -12,6 +12,7 @@ export interface CreateTrayParams {
   onToggleFloatingButton?: () => void;
   onOpenSettings?: () => void;
   onShowOverlay?: () => void;
+  onForceLevelingToPrimary?: () => void;
   currentHotkeyLabel?: string;
   featureVisibility?: {
     modifiers?: boolean;
@@ -30,6 +31,7 @@ export function createTray(params: CreateTrayParams): Tray | null {
     onToggleFloatingButton,
     onOpenSettings,
     onShowOverlay,
+    onForceLevelingToPrimary,
     currentHotkeyLabel = 'Ctrl+Q',
     featureVisibility
   } = params;
@@ -141,8 +143,9 @@ export function createTray(params: CreateTrayParams): Tray | null {
     { type: 'separator', visible: showModifiers || showMerchantHistory },
     { label: 'Toggle Floating Button', click: () => onToggleFloatingButton?.(), visible: !!onToggleFloatingButton },
     { type: 'separator', visible: !!onToggleFloatingButton },
+    { label: 'Move Leveling Overlay to Primary Monitor', click: () => onForceLevelingToPrimary?.(), visible: !!onForceLevelingToPrimary },
     { label: 'Settings...', click: () => onOpenSettings?.(), visible: !!onOpenSettings },
-    { type: 'separator', visible: !!onOpenSettings },
+    { type: 'separator', visible: !!onOpenSettings || !!onForceLevelingToPrimary },
     { label: `Show/Hide (${currentHotkeyLabel})`, click: () => onToggleOverlay() },
     { type: 'separator' },
     { label: 'Quit', click: () => (onQuit ? onQuit() : app.quit()) }

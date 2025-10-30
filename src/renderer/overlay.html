@@ -4349,17 +4349,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (action === 'poe1-leveling') {
                     // Toggle the separate leveling window
                     try {
-                        await window.electronAPI.toggleLevelingWindow();
+                        const result = await window.electronAPI.toggleLevelingWindow();
+                        if (result && !result.success) {
+                            console.error('[Tools Menu] Failed to toggle leveling window:', result.error);
+                            if (result.stack) {
+                                console.error('[Tools Menu] Stack trace:', result.stack);
+                            }
+                        }
                     } catch (err) {
-                        console.error('Failed to toggle leveling window', err);
+                        console.error('[Tools Menu] Error toggling leveling window:', err);
                     }
                     recordHeaderAction('Leveling Guide');
                 } else if (action === 'poe2-leveling') {
                     // Toggle the separate leveling window
                     try {
-                        await window.electronAPI.toggleLevelingWindow();
+                        const result = await window.electronAPI.toggleLevelingWindow();
+                        if (result && !result.success) {
+                            console.error('[Tools Menu] Failed to toggle leveling window:', result.error);
+                            if (result.stack) {
+                                console.error('[Tools Menu] Stack trace:', result.stack);
+                            }
+                        }
                     } catch (err) {
-                        console.error('Failed to toggle leveling window', err);
+                        console.error('[Tools Menu] Error toggling leveling window:', err);
                     }
                     recordHeaderAction('Leveling Guide');
                 }

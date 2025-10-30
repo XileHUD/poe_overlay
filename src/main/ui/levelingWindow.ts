@@ -90,8 +90,8 @@ export class LevelingWindow {
       this.window.show();
       return;
     }
+    
     this.createWindow();
-    // Restart client.txt watcher when window is recreated
     this.startClientTxtWatcher();
     this.settingsService.update(this.getLevelingWindowKey(), (c) => ({ ...c, enabled: true }));
   }
@@ -102,13 +102,38 @@ export class LevelingWindow {
       this.window.close();
       this.window = null;
     }
-    // Stop Client.txt monitoring when window is hidden
     this.stopClientTxtWatcher();
     this.settingsService.update(this.getLevelingWindowKey(), (c) => ({ ...c, enabled: false }));
   }
 
   toggle(): void {
     this.isVisible() ? this.hide() : this.show();
+  }
+
+  forceToPrimaryMonitor(): void {
+    if (!this.window || this.window.isDestroyed()) {
+      console.warn('[LevelingWindow] Cannot force to primary - window not open');
+      return;
+    }
+    
+    const primaryDisplay = screen.getPrimaryDisplay();
+    const { width, height } = primaryDisplay.workAreaSize;
+    const primaryBounds = primaryDisplay.bounds;
+    const { w, h } = this.getTargetSize();
+    
+    // Position on primary monitor (top-right corner with margin)
+    const x = Math.round(primaryBounds.x + width - w - 20);
+    const y = primaryBounds.y + 20;
+    
+    this.window.setPosition(x, y);
+    
+    // Save the new position
+    this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+      ...c,
+      position: { x, y }
+    }));
+    
+    console.log(`[LevelingWindow] Forced window to primary monitor at (${x}, ${y})`);
   }
 
   isVisible(): boolean {
@@ -131,11 +156,58 @@ export class LevelingWindow {
 
   private createWindow(): void {
     const saved = this.settingsService.get(this.getLevelingWindowKey());
-    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+    
+    const primaryDisplay = screen.getPrimaryDisplay();
+    const { width, height } = primaryDisplay.workAreaSize;
+    const primaryBounds = primaryDisplay.bounds;
+    
+    // Get all displays to check if saved position is off-screen
+    const allDisplays = screen.getAllDisplays();
 
     const { w, h } = this.getTargetSize();
-    const x = saved?.position?.x ?? Math.round(width - w - 20);
-    const y = saved?.position?.y ?? 20;
+    let x = saved?.position?.x ?? Math.round(width - w - 20);
+    let y = saved?.position?.y ?? 20;
+    let positionReset = false;
+    
+    // Check if the saved position is visible on any current display
+    if (saved?.position) {
+      const savedX = saved.position.x;
+      const savedY = saved.position.y;
+      
+      // Check if ANY part of the window would be visible on ANY display
+      const isOnScreen = allDisplays.some(display => {
+        const bounds = display.bounds;
+        // Window is visible if it overlaps with the display bounds
+        const windowRight = savedX + w;
+        const windowBottom = savedY + h;
+        const displayRight = bounds.x + bounds.width;
+        const displayBottom = bounds.y + bounds.height;
+        
+        const horizontalOverlap = savedX < displayRight && windowRight > bounds.x;
+        const verticalOverlap = savedY < displayBottom && windowBottom > bounds.y;
+        
+        return horizontalOverlap && verticalOverlap;
+      });
+      
+      if (!isOnScreen) {
+        console.warn(`[LevelingWindow] Saved position is off-screen (monitor disconnected?), moving to primary display`);
+        // Use primary display bounds to ensure window is within the primary screen
+        x = Math.round(primaryBounds.x + width - w - 20);
+        y = primaryBounds.y + 20;
+        positionReset = true;
+      }
+    }
+    
+    // Only reset position if it's completely off-screen (already handled above)
+    // Do NOT clamp to primary display - allow positioning on secondary monitors
+    
+    // Save the corrected position immediately if we reset it
+    if (positionReset) {
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+        ...c,
+        position: { x, y }
+      }));
+    }
 
     this.window = new BrowserWindow({
       width: w,
@@ -153,103 +225,114 @@ export class LevelingWindow {
         contextIsolation: false,
         backgroundThrottling: false,
         webSecurity: false,
-        devTools: true, // Enable DevTools for debugging
+        devTools: true,
       },
     });
 
     // Enable F12 to open DevTools
     this.window.webContents.on('before-input-event', (event, input) => {
-      if (input.key === 'F12' && input.type === 'keyDown') {
-        if (this.window && !this.window.isDestroyed()) {
-          if (this.window.webContents.isDevToolsOpened()) {
-            this.window.webContents.closeDevTools();
-          } else {
-            this.window.webContents.openDevTools({ mode: 'detach' });
+        if (input.key === 'F12' && input.type === 'keyDown') {
+          if (this.window && !this.window.isDestroyed()) {
+            if (this.window.webContents.isDevToolsOpened()) {
+              this.window.webContents.closeDevTools();
+            } else {
+              this.window.webContents.openDevTools({ mode: 'detach' });
+            }
           }
         }
-      }
-    });
-
-    // Set higher z-order (platform-tuned)
-    try {
-      if (process.platform === 'win32') {
-        this.window.setAlwaysOnTop(true, 'screen-saver');
-      } else {
-        this.window.setAlwaysOnTop(true, 'pop-up-menu');
-      }
-    } catch (e) {
-      console.warn('[LevelingWindow] Failed to set z-order:', e);
-    }
-
-    this.window.setIgnoreMouseEvents(false);
-
-    // Register with overlay z-order manager for consistent behavior
-    try { registerOverlayWindow('leveling', this.window); } catch {}
-
-    // Load inline HTML (like floating button does)
-    this.window.loadURL(this.buildDataUrl());
-
-    // Check if there's a saved PoB build and auto-open the info bar
-    this.window.webContents.once('did-finish-load', () => {
-      const saved = this.settingsService.get(this.getLevelingWindowKey());
-      const pobBuild = (saved as any)?.pobBuild;
-      if (pobBuild) {
-        console.log('[LevelingWindow] Found saved PoB build, opening info bar');
-        const currentActIndex = (saved as any)?.currentActIndex ?? 0;
-        openPobInfoBar({
-          settingsService: this.settingsService,
-          overlayVersion: this.overlayVersion,
-          pobBuild: pobBuild,
-          currentAct: currentActIndex + 1
-        });
-      }
-    });
-
-    this.window.on('moved', () => {
-      this.savePosition();
-    });
-
-    this.window.on('resize', () => {
-      this.saveSize();
-    });
-
-    this.window.on('closed', () => {
-      this.stopClientTxtWatcher();
-      this.stopUltraHoverTracker();
-      this.window = null;
-    });
-
-    // Extra z-order protection: on blur (e.g. user clicks the game), aggressively
-    // re-assert always-on-top and moveTop for this leveling window. This helps
-    // when minimal/ultra modes interact oddly with some fullscreen/borderless games
-    // where the OS can demote our window despite setAlwaysOnTop.
-    try {
-      this.window.on('blur', () => {
-        if (!this.window || this.window.isDestroyed() || !this.window.isVisible()) return;
-
-        // Fire a few nudges over time to try and regain topmost state.
-        const nudge = () => {
-          try {
-            // Reassert high-level topmost
-            this.window?.setAlwaysOnTop(true, 'screen-saver', 1);
-            // If moveTop is available (native window helper), call it
-            if (typeof (this.window as any).moveTop === 'function') {
-              try { (this.window as any).moveTop(); } catch {}
-            }
-          } catch {}
-        };
-
-        // Immediate and delayed nudges
-        setTimeout(nudge, 20);
-        setTimeout(nudge, 120);
-        setTimeout(nudge, 500);
       });
-    } catch (e) {
-      // Non-fatal
-    }
 
-    // Setup IPC handlers
-    this.setupIpcHandlers();
+      // Set higher z-order (platform-tuned)
+      console.log(`[LevelingWindow] Setting z-order (platform: ${process.platform})...`);
+      try {
+        if (process.platform === 'win32') {
+          this.window.setAlwaysOnTop(true, 'screen-saver');
+        } else {
+          this.window.setAlwaysOnTop(true, 'pop-up-menu');
+        }
+        console.log(`[LevelingWindow] ✓ Z-order set successfully`);
+      } catch (e) {
+        console.warn('[LevelingWindow] ⚠ Failed to set z-order:', e);
+      }
+
+      this.window.setIgnoreMouseEvents(false);
+
+      // Register with overlay z-order manager for consistent behavior
+      console.log(`[LevelingWindow] Registering window with overlay z-order manager...`);
+      try { 
+        registerOverlayWindow('leveling', this.window);
+        console.log(`[LevelingWindow] ✓ Registered with overlay manager`);
+      } catch (e) {
+        console.warn(`[LevelingWindow] ⚠ Failed to register with overlay manager:`, e);
+      }
+
+      // Load inline HTML (like floating button does)
+      console.log(`[LevelingWindow] Loading window HTML via data URL...`);
+      const dataUrl = this.buildDataUrl();
+      this.window.loadURL(dataUrl);
+      console.log(`[LevelingWindow] ✓ Window HTML loaded`);
+
+      // Check if there's a saved PoB build and auto-open the info bar
+      this.window.webContents.once('did-finish-load', () => {
+        const saved = this.settingsService.get(this.getLevelingWindowKey());
+        const pobBuild = (saved as any)?.pobBuild;
+        if (pobBuild) {
+          const currentActIndex = (saved as any)?.currentActIndex ?? 0;
+          openPobInfoBar({
+            settingsService: this.settingsService,
+            overlayVersion: this.overlayVersion,
+            pobBuild: pobBuild,
+            currentAct: currentActIndex + 1
+          });
+        }
+      });
+
+      this.window.on('moved', () => {
+        this.savePosition();
+      });
+
+      this.window.on('resize', () => {
+        this.saveSize();
+      });
+
+      this.window.on('closed', () => {
+        console.log(`[LevelingWindow] Window 'closed' event fired`);
+        this.stopClientTxtWatcher();
+        this.stopUltraHoverTracker();
+        this.window = null;
+      });
+
+      // Extra z-order protection: on blur (e.g. user clicks the game), aggressively
+      // re-assert always-on-top and moveTop for this leveling window. This helps
+      // when minimal/ultra modes interact oddly with some fullscreen/borderless games
+      // where the OS can demote our window despite setAlwaysOnTop.
+      try {
+        this.window.on('blur', () => {
+          if (!this.window || this.window.isDestroyed() || !this.window.isVisible()) return;
+
+          // Fire a few nudges over time to try and regain topmost state.
+          const nudge = () => {
+            try {
+              // Reassert high-level topmost
+              this.window?.setAlwaysOnTop(true, 'screen-saver', 1);
+              // If moveTop is available (native window helper), call it
+              if (typeof (this.window as any).moveTop === 'function') {
+                try { (this.window as any).moveTop(); } catch {}
+              }
+            } catch {}
+          };
+
+          // Immediate and delayed nudges
+          setTimeout(nudge, 20);
+          setTimeout(nudge, 120);
+          setTimeout(nudge, 500);
+        });
+      } catch (e) {
+        // Non-fatal
+      }
+
+      // Setup IPC handlers
+      this.setupIpcHandlers();
   }
 
   private setupIpcHandlers(): void {
@@ -1043,6 +1126,33 @@ export class LevelingWindow {
           currentAct: currentAct
         });
       }
+    });
+
+    // Force window to primary monitor
+    ipcMain.handle('force-to-primary-monitor', async () => {
+      if (!this.window || this.window.isDestroyed()) {
+        return { success: false, message: 'Window not open' };
+      }
+      
+      const primaryDisplay = screen.getPrimaryDisplay();
+      const { width, height } = primaryDisplay.workAreaSize;
+      const primaryBounds = primaryDisplay.bounds;
+      const { w, h } = this.getTargetSize();
+      
+      // Position on primary monitor (top-right corner with margin)
+      const x = Math.round(primaryBounds.x + width - w - 20);
+      const y = primaryBounds.y + 20;
+      
+      this.window.setPosition(x, y);
+      
+      // Save the new position
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+        ...c,
+        position: { x, y }
+      }));
+      
+      console.log(`[LevelingWindow] Moved window to primary monitor at (${x}, ${y})`);
+      return { success: true };
     });
 
     // Import PoB build from settings splash
@@ -1877,7 +1987,6 @@ export class LevelingWindow {
       });
       if (success) {
         this.registeredHotkeys.push(hotkeys.prev);
-        console.log('[LevelingWindow] Registered prev hotkey:', hotkeys.prev);
       }
     }
     
@@ -1890,7 +1999,6 @@ export class LevelingWindow {
       });
       if (success) {
         this.registeredHotkeys.push(hotkeys.next);
-        console.log('[LevelingWindow] Registered next hotkey:', hotkeys.next);
       }
     }
     
@@ -1900,7 +2008,6 @@ export class LevelingWindow {
         // Toggle tree window (close if open, open if closed)
         if (isTreeWindowOpen()) {
           closeTreeWindow();
-          console.log('[LevelingWindow] Tree window closed via hotkey');
         } else {
           const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
           const pobBuild = (currentSettings as any).pobBuild || null;
@@ -1920,13 +2027,11 @@ export class LevelingWindow {
               ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
               sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
             }
-            console.log('[LevelingWindow] Tree window opened via hotkey');
           }
         }
       });
       if (success) {
         this.registeredHotkeys.push(hotkeys.tree);
-        console.log('[LevelingWindow] Registered tree hotkey:', hotkeys.tree);
       }
     }
     
@@ -1938,7 +2043,6 @@ export class LevelingWindow {
           closeLevelingGemsWindow();
           // Reassert leveling overlay order without stealing focus
           try { bringToFront('leveling'); } catch {}
-          console.log('[LevelingWindow] Gems window closed via hotkey');
         } else {
           const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
           const pobBuild = (currentSettings as any).pobBuild || null;
@@ -1949,13 +2053,11 @@ export class LevelingWindow {
               overlayVersion: this.overlayVersion,
               parentWindow: this.window || undefined
             });
-            console.log('[LevelingWindow] Gems window opened via hotkey');
           }
         }
       });
       if (success) {
         this.registeredHotkeys.push(hotkeys.gems);
-        console.log('[LevelingWindow] Registered gems hotkey:', hotkeys.gems);
       }
     }
 
@@ -1966,7 +2068,6 @@ export class LevelingWindow {
           closeGearWindow();
           // Reassert leveling overlay order without stealing focus
           try { bringToFront('leveling'); } catch {}
-          console.log('[LevelingWindow] Gear window closed via hotkey');
         } else {
           const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
           const pobBuild = (currentSettings as any).pobBuild || null;
@@ -1976,13 +2077,11 @@ export class LevelingWindow {
               overlayVersion: this.overlayVersion,
               parentWindow: this.window || undefined
             });
-            console.log('[LevelingWindow] Gear window opened via hotkey');
           }
         }
       });
       if (success) {
         this.registeredHotkeys.push(hotkeys.gear);
-        console.log('[LevelingWindow] Registered gear hotkey:', hotkeys.gear);
       }
     }
 
@@ -1993,7 +2092,6 @@ export class LevelingWindow {
           closeNotesWindow();
           // Reassert leveling overlay order without stealing focus
           try { bringToFront('leveling'); } catch {}
-          console.log('[LevelingWindow] Notes window closed via hotkey');
         } else {
           const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
           const pobBuild = (currentSettings as any).pobBuild || null;
@@ -2003,13 +2101,79 @@ export class LevelingWindow {
               overlayVersion: this.overlayVersion,
               parentWindow: this.window || undefined
             });
-            console.log('[LevelingWindow] Notes window opened via hotkey');
           }
         }
       });
       if (success) {
         this.registeredHotkeys.push(hotkeys.notes);
-        console.log('[LevelingWindow] Registered notes hotkey:', hotkeys.notes);
+      }
+    }
+
+    // Register "Toggle All Windows" hotkey (Gems, Tree, Gear, Notes)
+    if (hotkeys.allWindows) {
+      const success = levelingHotkeyManager.register('allWindows', hotkeys.allWindows, () => {
+        const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+        const pobBuild = (currentSettings as any).pobBuild || null;
+        
+        if (!pobBuild) return;
+        
+        // Check if ANY of the windows are open
+        const anyOpen = isGemsWindowOpen() || isTreeWindowOpen() || isGearWindowOpen() || isNotesWindowOpen();
+        
+        if (anyOpen) {
+          // Close all windows
+          if (isGemsWindowOpen()) closeLevelingGemsWindow();
+          if (isTreeWindowOpen()) closeTreeWindow();
+          if (isGearWindowOpen()) closeGearWindow();
+          if (isNotesWindowOpen()) closeNotesWindow();
+          // Reassert leveling overlay order
+          try { bringToFront('leveling'); } catch {}
+        } else {
+          // Open all windows
+          const currentActIndex = (currentSettings as any)?.currentActIndex || 0;
+          const characterLevel = (currentSettings as any)?.characterLevel || 1;
+          const autoDetectEnabled = (currentSettings as any)?.uiSettings?.autoDetectLevelingSets ?? true;
+          const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
+          
+          // Open gems window
+          openLevelingGemsWindow({
+            settingsService: this.settingsService,
+            overlayVersion: this.overlayVersion,
+            parentWindow: this.window || undefined
+          });
+          
+          // Open tree window if there are tree specs
+          if (pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
+            const onTreeWindowReady = () => {
+              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
+            };
+            ipcMain.once('tree-window-ready', onTreeWindowReady);
+            const treeWindow = createPassiveTreeWindow();
+            if (!treeWindow.webContents.isLoading()) {
+              ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
+              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
+            }
+          }
+          
+          // Open gear window if there are item sets
+          if (pobBuild.itemSets && pobBuild.itemSets.length > 0) {
+            openLevelingGearWindow({
+              settingsService: this.settingsService,
+              overlayVersion: this.overlayVersion,
+              parentWindow: this.window || undefined
+            });
+          }
+          
+          // Open notes window
+          openLevelingNotesWindow({
+            settingsService: this.settingsService,
+            overlayVersion: this.overlayVersion,
+            parentWindow: this.window || undefined
+          });
+        }
+      });
+      if (success) {
+        this.registeredHotkeys.push(hotkeys.allWindows);
       }
     }
 
@@ -2023,7 +2187,6 @@ export class LevelingWindow {
           closePobInfoBar();
           // Reassert leveling overlay order without stealing focus
           try { bringToFront('leveling'); } catch {}
-          console.log('[LevelingWindow] PoB Info Bar closed via hotkey');
         } else if (pobBuild) {
           const currentActIndex = (currentSettings as any)?.currentActIndex ?? 0;
           openPobInfoBar({
@@ -2032,14 +2195,10 @@ export class LevelingWindow {
             pobBuild,
             currentAct: currentActIndex + 1,
           });
-          console.log('[LevelingWindow] PoB Info Bar opened via hotkey');
-        } else {
-          console.log('[LevelingWindow] PoB Info Bar hotkey pressed but no build is loaded');
         }
       });
       if (success) {
         this.registeredHotkeys.push(accel);
-        console.log('[LevelingWindow] Registered PoB Info Bar hotkey:', accel);
       }
     }
 
@@ -2049,11 +2208,9 @@ export class LevelingWindow {
       const success = levelingHotkeyManager.register('leveling', accel, () => {
         // Toggle the main leveling window visibility
         this.toggle();
-        console.log('[LevelingWindow] Leveling window toggled via hotkey');
       });
       if (success) {
         this.registeredHotkeys.push(accel);
-        console.log('[LevelingWindow] Registered Leveling window hotkey:', accel);
       }
     }
 
@@ -2061,12 +2218,10 @@ export class LevelingWindow {
     if ((hotkeys as any).logout) {
       const accel = (hotkeys as any).logout as string;
       const success = levelingHotkeyManager.register('logout', accel, async () => {
-        console.log('[LevelingWindow] Logout hotkey pressed - executing /exit command');
         await executeLogout();
       });
       if (success) {
         this.registeredHotkeys.push(accel);
-        console.log('[LevelingWindow] Registered Logout hotkey:', accel);
       }
     }
 
@@ -2076,12 +2231,10 @@ export class LevelingWindow {
       for (const customHotkey of customHotkeys) {
         if (customHotkey.hotkey) {
           const success = levelingHotkeyManager.register(`custom-${customHotkey.id}`, customHotkey.hotkey, async () => {
-            console.log(`[LevelingWindow] Custom hotkey "${customHotkey.name}" pressed - pasting: ${customHotkey.command}`);
             await typeInChat(customHotkey.command, customHotkey.pressEnter);
           });
           if (success) {
             this.registeredHotkeys.push(customHotkey.hotkey);
-            console.log(`[LevelingWindow] Registered custom hotkey "${customHotkey.name}":`, customHotkey.hotkey);
           }
         }
       }

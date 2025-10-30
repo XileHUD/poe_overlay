@@ -161,6 +161,7 @@ function buildLevelingSettingsSplashHtml(
   const hotkeyGems = hotkeys.gems || 'Not Set';
   const hotkeyGear = hotkeys.gear || 'Not Set';
   const hotkeyNotes = hotkeys.notes || 'Not Set';
+  const hotkeyAllWindows = hotkeys.allWindows || 'Not Set';
   const hotkeyPobBar = hotkeys.pobBar || 'Not Set';
   const hotkeyLeveling = hotkeys.leveling || 'Not Set';
   const hotkeyLogout = hotkeys.logout || 'Not Set';
@@ -895,6 +896,17 @@ function buildLevelingSettingsSplashHtml(
           <div style="display: flex; align-items: center;">
             <div class="hotkey-input" id="hotkey-notes" onclick="captureHotkey('notes')">${hotkeyNotes}</div>
             <button class="hotkey-clear" onclick="clearHotkey('notes')">Clear</button>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Toggle All Windows</div>
+            <div class="setting-description">Open/close Gems, Tree, Gear, and Notes windows all at once</div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div class="hotkey-input" id="hotkey-allWindows" onclick="captureHotkey('allWindows')">${hotkeyAllWindows}</div>
+            <button class="hotkey-clear" onclick="clearHotkey('allWindows')">Clear</button>
           </div>
         </div>
       </div>

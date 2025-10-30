@@ -21,9 +21,6 @@ class LevelingHotkeyManager {
   private registeredHotkeys: RegisteredHotkey[] = [];
   private uiohookInitialized = false;
   private keydownHandler: ((event: UiohookKeyboardEvent) => void) | null = null;
-  private logger = (msg: string, details?: unknown) => {
-    console.log(`[LevelingHotkeys] ${msg}`, details || '');
-  };
 
   /**
    * Initialize UIOhook if not already initialized
@@ -33,15 +30,14 @@ class LevelingHotkeyManager {
       return true;
     }
 
-    const success = await initializeUiohookTrigger(this.logger);
+    const success = await initializeUiohookTrigger(() => {});
     if (!success) {
-      this.logger('Failed to initialize UIOhook');
+      console.warn('[LevelingHotkeys] Failed to initialize UIOhook');
       return false;
     }
 
     this.uiohookInitialized = true;
     this.attachKeydownListener();
-    this.logger('UIOhook initialized successfully');
     return true;
   }
 
@@ -60,9 +56,8 @@ class LevelingHotkeyManager {
       };
       
       mod.uIOhook.on('keydown', this.keydownHandler);
-      this.logger('Keydown listener attached');
     }).catch((err) => {
-      this.logger('Failed to attach keydown listener', err);
+      console.warn('[LevelingHotkeys] Failed to attach keydown listener', err);
     });
   }
 
@@ -75,7 +70,7 @@ class LevelingHotkeyManager {
         try {
           registered.callback();
         } catch (err) {
-          this.logger(`Error in hotkey callback for ${registered.name}`, err);
+          console.error(`[LevelingHotkeys] Error in hotkey callback for ${registered.name}`, err);
         }
         break; // Only trigger first match
       }
@@ -94,7 +89,6 @@ class LevelingHotkeyManager {
     // Parse hotkey string
     const hotkey = stringToHotkey(hotkeyString);
     if (!hotkey) {
-      this.logger(`Invalid hotkey string: ${hotkeyString}`);
       return false;
     }
 
@@ -103,11 +97,9 @@ class LevelingHotkeyManager {
     if (existingIndex !== -1) {
       // Update existing
       this.registeredHotkeys[existingIndex] = { name, hotkey, callback };
-      this.logger(`Updated hotkey ${name}: ${hotkeyString}`);
     } else {
       // Add new
       this.registeredHotkeys.push({ name, hotkey, callback });
-      this.logger(`Registered hotkey ${name}: ${hotkeyString}`);
     }
 
     return true;
@@ -120,7 +112,6 @@ class LevelingHotkeyManager {
     const index = this.registeredHotkeys.findIndex(h => h.name === name);
     if (index !== -1) {
       this.registeredHotkeys.splice(index, 1);
-      this.logger(`Unregistered hotkey: ${name}`);
     }
   }
 
@@ -129,7 +120,6 @@ class LevelingHotkeyManager {
    */
   unregisterAll(): void {
     this.registeredHotkeys = [];
-    this.logger('Unregistered all hotkeys');
   }
 
   /**
@@ -141,10 +131,9 @@ class LevelingHotkeyManager {
         if (this.keydownHandler) {
           mod.uIOhook.removeListener('keydown', this.keydownHandler);
           this.keydownHandler = null;
-          this.logger('Keydown listener detached');
         }
       }).catch((err) => {
-        this.logger('Error detaching keydown listener', err);
+        console.warn('[LevelingHotkeys] Error detaching keydown listener', err);
       });
     }
     this.unregisterAll();
