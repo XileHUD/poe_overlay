@@ -310,8 +310,8 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
     }
 
     svg .mastery {
-      fill: transparent;
-      stroke: transparent;
+      fill: hsl(215, 15%, 40%);
+      stroke: hsl(215, 15%, 40%);
     }
 
     svg .border {
@@ -898,7 +898,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
         <style id="tree-dynamic-css">
           svg .nodes { fill: hsl(215, 15%, 50%); stroke: hsl(215, 15%, 50%); stroke-width: 0; }
           svg .connections { fill: none; stroke: hsl(215, 15%, 40%); stroke-width: 20; }
-          svg .mastery { fill: transparent; stroke: transparent; }
+          svg .mastery { fill: hsl(215, 15%, 40%); stroke: hsl(215, 15%, 40%); }
           svg .border { fill: none; stroke: hsl(215, 15%, 40%); stroke-width: 20; }
           svg .ascendancy { opacity: 0.15; }
           \${activeAscendancyName ? \`svg .ascendancy.\${activeAscendancyName} { opacity: 1 !important; }\` : ''}

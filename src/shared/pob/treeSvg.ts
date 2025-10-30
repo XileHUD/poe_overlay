@@ -238,8 +238,8 @@ export function buildTemplate(tree: SkillTreeData, nodeLookup: NodeLookup): {
 }
 
 #{{ styleId }} .${GROUP_NODE_CLASS} .${NODE_MASTERY_CLASS} {
-  fill: transparent;
-  stroke: transparent;
+  fill: hsl(215, 15%, 40%);
+  stroke: hsl(215, 15%, 40%);
 }
 
 #{{ styleId }} .${GROUP_CONNECTION_CLASS} {
