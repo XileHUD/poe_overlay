@@ -2599,7 +2599,7 @@
           "description": "Enter The Torched Courts",
           "checkable": true,
           "zoneId": "1_5_5",
-          "nextZoneId": "1_5_3a"
+          "nextZoneId": "1_5_4b"
         },
         {
           "id": "a5_torched_1",
@@ -2608,7 +2608,7 @@
           "description": "Enter The Ruined Square",
           "hint": "Move counter-clockwise through the zone",
           "checkable": true,
-          "zoneId": "1_5_3a",
+          "zoneId": "1_5_4b",
           "nextZoneId": "1_5_3b"
         },
         {
@@ -4644,7 +4644,7 @@
           "layoutTip": "Stick to the east edge. If you spawn in the north corner, move south. Otherwise, move north.",
           "checkable": true,
           "zoneId": "2_9_4",
-          "nextZoneId": "2_9_4_1"
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_oasis_2",
@@ -4653,25 +4653,25 @@
           "description": "Enter The Sand Pit",
           "checkable": true,
           "zoneId": "2_9_4",
-          "nextZoneId": "2_9_4_1"
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_sandpit_1",
           "type": "kill_boss",
-          "zone": "The Sand Pit",
+          "zone": "The Oasis",
           "description": "Kill Shakari",
           "checkable": true,
-          "zoneId": "2_9_4_1",
+          "zoneId": "2_9_4",
           "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_sandpit_2",
           "type": "town",
-          "zone": "The Sand Pit",
+          "zone": "The Oasis",
           "description": "Return to Highgate (Relog)",
           "hint": "Portal places you next to the waypoint",
           "checkable": true,
-          "zoneId": "2_9_4_1",
+          "zoneId": "2_9_4",
           "nextZoneId": "2_9_town"
         },
         {
@@ -4840,37 +4840,37 @@
           "layoutTip": "Enter the second tunnel in the main room to progress. Follow the linear path through the nightmare sequences.",
           "checkable": true,
           "zoneId": "2_9_10_2",
-          "nextZoneId": "2_9_10_3"
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_blackcore_1",
           "type": "kill_boss",
-          "zone": "The Black Heart",
+          "zone": "The Rotting Core",
           "description": "Kill The Depraved Trinity",
           "recommendedLevel": 60,
           "hint": "Act 9 final boss. Recommended Level 60+",
           "checkable": true,
-          "zoneId": "2_9_10_3",
+          "zoneId": "2_9_10_2",
           "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_blackcore_2",
           "type": "npc_quest",
-          "zone": "The Black Heart",
+          "zone": "The Rotting Core",
           "description": "Talk to Sin",
           "checkable": true,
-          "zoneId": "2_9_10_3",
+          "zoneId": "2_9_10_2",
           "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_blackcore_3",
           "type": "navigation",
-          "zone": "The Black Heart",
+          "zone": "The Rotting Core",
           "description": "Talk to Lilly Roth to sail to Oriath Docks",
           "hint": "Can portal to town during kill animation to skip loot. Waypoint from town places you near Act 10 rooftop entrance.",
           "checkable": true,
-          "zoneId": "2_9_10_3",
-          "nextZoneId": "2_9_town"
+          "zoneId": "2_9_10_2",
+          "nextZoneId": "2_10_town"
         },
         {
           "id": "a9_town5_1",
