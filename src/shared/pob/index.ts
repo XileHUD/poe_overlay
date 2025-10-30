@@ -7,6 +7,18 @@ export { parsePobCode } from './parser.js';
 export { extractUniqueGems, matchGemsToQuestSteps } from './gemMatcher.js';
 export { findGemQuest, matchPobGemsToQuests, getGemsForQuest, formatGemQuestInfo, matchGemsForStep } from './gemQuestMatcher.js';
 export { calculateTreeProgressionByAct, getRecommendedActForLevel } from './treeProgression.js';
+export {
+  createEmptyBuildsList,
+  addBuild,
+  deleteBuild,
+  renameBuild,
+  setActiveBuild,
+  getActiveBuild,
+  getBuildById,
+  getAllBuilds,
+  buildNameExists,
+  migrateLegacyBuild
+} from './buildManager.js';
 export type {
   ParsedPobBuild,
   GemSocketGroup,
@@ -16,5 +28,8 @@ export type {
   StoredPobBuild,
   PassiveTreeNode,
   PassiveTreeData,
-  TreeSpec
+  TreeSpec,
+  PobBuildEntry,
+  PobBuildsList
 } from './types.js';
+

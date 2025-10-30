@@ -500,6 +500,7 @@ let state = {
   showOptional: true,
   autoDetectZones: true,
   autoDetectMode: 'hybrid', // 'strict' | 'trust' | 'hybrid' (default: hybrid)
+  lastDetectedZoneId: null, // For strict mode: track last zone to validate source
   showTreeNodeDetails: false,
   autoDetectLevelingSets: true,
   opacity: 96,
@@ -2548,6 +2549,12 @@ ipcRenderer.on('pob-build-imported', (event, build) => {
   loadPobBuild();
 });
 
+// Listen for PoB build updates (activate)
+ipcRenderer.on('pob-build-updated', (event, build) => {
+  console.log('PoB build updated/activated:', build);
+  loadPobBuild();
+});
+
 // Listen for PoB build removal
 ipcRenderer.on('pob-build-removed', () => {
   console.log('[levelingPopout] PoB build removed - clearing gem recommendations');
@@ -2809,7 +2816,7 @@ ipcRenderer.on('zone-entered', (event, data) => {
   const zoneName = data.zoneName;
   const actNumber = data.actNumber;
   
-  console.log('[Auto-Detect] Zone entered:', zoneId + ' (' + zoneName + ')', '| Mode:', state.autoDetectMode);
+  console.log('[Auto-Detect] Zone entered:', zoneId + ' (' + zoneName + ')', 'Act', actNumber, '| Mode:', state.autoDetectMode);
   
   const act = state.levelingData.acts[state.currentActIndex];
   if (!act) return;
@@ -2819,6 +2826,16 @@ ipcRenderer.on('zone-entered', (event, data) => {
   let firstUncompletedIndex = allSteps.findIndex(s => !state.completedSteps.has(s.id));
   if (firstUncompletedIndex === -1) {
     console.log('[Auto-Detect] All steps completed in current act');
+    
+    // Check if we should auto-advance to next act
+    if (state.currentActIndex + 1 < state.levelingData.acts.length) {
+      const nextAct = state.levelingData.acts[state.currentActIndex + 1];
+      if (nextAct.steps.length > 0 && nextAct.steps[0].zoneId === zoneId) {
+        console.log('[Auto-Detect] Auto-switching to Act ' + (state.currentActIndex + 2));
+        state.currentActIndex++;
+        render();
+      }
+    }
     return;
   }
 
@@ -2826,153 +2843,164 @@ ipcRenderer.on('zone-entered', (event, data) => {
   const firstUncompletedZoneId = firstUncompletedStep.zoneId;
   
   // ============================================================================
-  // MODE 1: STRICT - Validate both source zone AND destination zone
+  // MODE 1: STRICT - Validate BOTH source zone AND destination zone
   // ============================================================================
   if (state.autoDetectMode === 'strict') {
-    console.log('[Auto-Detect] STRICT MODE: Validating destination zone by ID');
+    console.log('[Auto-Detect] STRICT MODE: Validating source AND destination');
     
-    // Need to track where we came from
-    if (firstUncompletedIndex === 0) {
-      console.log('[Auto-Detect] First step - cannot validate source zone. Skipping.');
+    // Track last zone we were in
+    if (!state.lastDetectedZoneId) {
+      state.lastDetectedZoneId = zoneId;
+      console.log('[Auto-Detect] First zone detected, setting lastZone to: ' + zoneId);
       return;
     }
     
-    // Check if entered zone ID matches expected destination (first uncompleted step)
-    if (zoneId !== firstUncompletedZoneId) {
-      console.log('[Auto-Detect] Destination mismatch: entered "' + zoneId + '" but expected "' + firstUncompletedZoneId + '". Ignoring.');
+    // Check SOURCE: Did we come from the current uncompleted step's zone?
+    if (state.lastDetectedZoneId !== firstUncompletedZoneId) {
+      console.log('[Auto-Detect] Source mismatch: came from "' + state.lastDetectedZoneId + '" but expected "' + firstUncompletedZoneId + '". Ignoring.');
+      state.lastDetectedZoneId = zoneId;
       return;
     }
     
-    // Find previous zone ID
-    let prevEnd = firstUncompletedIndex - 1;
-    const prevZoneId = allSteps[prevEnd].zoneId;
-    
-    // In strict mode, we would validate that we came FROM prevZoneId
-    // Since we don't track last zone in Client.txt, we'll just validate destination
-    // and complete previous zone (same as hybrid for now)
-    // TODO: Track lastZone in state for full strict validation
-    
-    console.log('[Auto-Detect] Destination validated. Completing previous zone ID: "' + prevZoneId + '" (' + allSteps[prevEnd].zone + ')');
-    
-    let prevStart = prevEnd;
-    for (let i = prevEnd - 1; i >= 0; i--) {
-      if (allSteps[i].zoneId === prevZoneId) {
-        prevStart = i;
-      } else {
-        break;
-      }
+    // Check DESTINATION: Does entered zone match the nextZoneId?
+    if (!firstUncompletedStep.nextZoneId) {
+      console.log('[Auto-Detect] No nextZoneId on current step. Ignoring.');
+      state.lastDetectedZoneId = zoneId;
+      return;
     }
     
+    if (zoneId !== firstUncompletedStep.nextZoneId) {
+      console.log('[Auto-Detect] Destination mismatch: entered "' + zoneId + '" but expected "' + firstUncompletedStep.nextZoneId + '". Ignoring.');
+      state.lastDetectedZoneId = zoneId;
+      return;
+    }
+    
+    // Both source AND destination validated!
+    console.log('[Auto-Detect] ✅ STRICT: Source "' + state.lastDetectedZoneId + '" AND destination "' + zoneId + '" validated!');
+    
+    // Complete ALL tasks in the current zone (the whole zone card)
+    const currentZoneId = firstUncompletedStep.zoneId;
     let completedCount = 0;
-    for (let i = prevStart; i <= prevEnd; i++) {
+    
+    for (let i = firstUncompletedIndex; i < allSteps.length; i++) {
       const step = allSteps[i];
+      if (step.zoneId !== currentZoneId) break; // Stop when we reach a different zone
+      
       if (!state.completedSteps.has(step.id)) {
         state.completedSteps.add(step.id);
         completedCount++;
-        console.log('[Auto-Detect] Auto-completed:', step.description, 'in', step.zone);
+        console.log('[Auto-Detect] Auto-completed: "' + step.description + '"');
       }
     }
     
-    if (completedCount > 0) {
-      ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
-      console.log('[Auto-Detect] STRICT: Completed ' + completedCount + ' step(s) in previous zone');
-      render();
+    console.log('[Auto-Detect] STRICT: Completed ' + completedCount + ' step(s) in zone "' + firstUncompletedStep.zone + '"');
+    state.lastDetectedZoneId = zoneId;
+    ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
+    
+    // Check if we just completed the last step in the current act
+    const allCompleted = allSteps.every(s => state.completedSteps.has(s.id));
+    if (allCompleted && state.currentActIndex + 1 < state.levelingData.acts.length) {
+      const nextAct = state.levelingData.acts[state.currentActIndex + 1];
+      if (nextAct.steps.length > 0 && nextAct.steps[0].zoneId === zoneId) {
+        console.log('[Auto-Detect] ✅ Act ' + (state.currentActIndex + 1) + ' complete! Auto-switching to Act ' + (state.currentActIndex + 2));
+        state.currentActIndex++;
+      }
     }
+    
+    render();
     return;
   }
   
   // ============================================================================
-  // MODE 2: TRUST - Always complete previous zone when entering ANY new zone
+  // MODE 2: TRUST - Complete current step when entering ANY different zone
   // ============================================================================
   if (state.autoDetectMode === 'trust') {
-    console.log('[Auto-Detect] TRUST MODE: Auto-completing previous zone regardless of destination');
+    console.log('[Auto-Detect] TRUST MODE: Checking if zone changed');
     
-    if (firstUncompletedIndex === 0) {
-      console.log('[Auto-Detect] No previous zone to complete.');
-      return;
-    }
-    
-    // Find previous zone WITHOUT validating destination (use zone ID)
-    let prevEnd = firstUncompletedIndex - 1;
-    const prevZoneId = allSteps[prevEnd].zoneId;
-    
-    let prevStart = prevEnd;
-    for (let i = prevEnd - 1; i >= 0; i--) {
-      if (allSteps[i].zoneId === prevZoneId) {
-        prevStart = i;
-      } else {
-        break;
+    // Just check if entered zone is DIFFERENT from current step's zone
+    if (zoneId !== firstUncompletedZoneId) {
+      console.log('[Auto-Detect] ✅ TRUST: Zone changed from "' + firstUncompletedZoneId + '" to "' + zoneId + '"');
+      
+      // Complete ALL tasks in the current zone (the whole zone card)
+      const currentZoneId = firstUncompletedStep.zoneId;
+      let completedCount = 0;
+      
+      for (let i = firstUncompletedIndex; i < allSteps.length; i++) {
+        const step = allSteps[i];
+        if (step.zoneId !== currentZoneId) break; // Stop when we reach a different zone
+        
+        if (!state.completedSteps.has(step.id)) {
+          state.completedSteps.add(step.id);
+          completedCount++;
+          console.log('[Auto-Detect] Auto-completed: "' + step.description + '"');
+        }
       }
+      
+      console.log('[Auto-Detect] TRUST: Completed ' + completedCount + ' step(s) in zone "' + firstUncompletedStep.zone + '"');
+      ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
+      
+      // Check if we just completed the last step in the current act
+      const allCompleted = allSteps.every(s => state.completedSteps.has(s.id));
+      if (allCompleted && state.currentActIndex + 1 < state.levelingData.acts.length) {
+        const nextAct = state.levelingData.acts[state.currentActIndex + 1];
+        if (nextAct.steps.length > 0 && nextAct.steps[0].zoneId === zoneId) {
+          console.log('[Auto-Detect] ✅ Act ' + (state.currentActIndex + 1) + ' complete! Auto-switching to Act ' + (state.currentActIndex + 2));
+          state.currentActIndex++;
+        }
+      }
+      
+      render();
+    } else {
+      console.log('[Auto-Detect] Still in same zone "' + zoneId + '". Ignoring.');
     }
+    return;
+  }
+  
+  // ============================================================================
+  // MODE 3: HYBRID (Default) - Check if entered zone matches first uncompleted step's nextZoneId
+  // ============================================================================
+  console.log('[Auto-Detect] HYBRID MODE: Checking if entered zone matches next expected zone');
+  
+  // Simple logic: If entered zoneId matches the first uncompleted step's nextZoneId, complete that zone
+  if (!firstUncompletedStep.nextZoneId) {
+    console.log('[Auto-Detect] First uncompleted step has no nextZoneId (last step in act?). Ignoring.');
+    return;
+  }
+  
+  if (zoneId === firstUncompletedStep.nextZoneId) {
+    console.log('[Auto-Detect] ✅ Entered zone "' + zoneId + '" matches expected next zone!');
     
+    // Complete ALL tasks in the current zone (the whole zone card)
+    const currentZoneId = firstUncompletedStep.zoneId;
     let completedCount = 0;
-    for (let i = prevStart; i <= prevEnd; i++) {
+    
+    for (let i = firstUncompletedIndex; i < allSteps.length; i++) {
       const step = allSteps[i];
+      if (step.zoneId !== currentZoneId) break; // Stop when we reach a different zone
+      
       if (!state.completedSteps.has(step.id)) {
         state.completedSteps.add(step.id);
         completedCount++;
-        console.log('[Auto-Detect] Auto-completed:', step.description, 'in', step.zone);
+        console.log('[Auto-Detect] Auto-completed: "' + step.description + '"');
       }
     }
     
-    if (completedCount > 0) {
-      ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
-      console.log('[Auto-Detect] TRUST: Completed ' + completedCount + ' step(s) in "' + allSteps[prevEnd].zone + '"');
-      render();
-    } else {
-      console.log('[Auto-Detect] Previous zone already completed');
-    }
-    return;
-  }
-  
-  // ============================================================================
-  // MODE 3: HYBRID (Default) - Only complete if destination matches next step
-  // ============================================================================
-  console.log('[Auto-Detect] HYBRID MODE: Validating destination zone by ID');
-  
-  // Verify entered zone ID matches the first uncompleted step's zone ID
-  if (zoneId !== firstUncompletedZoneId) {
-    console.log('[Auto-Detect] Entered zone ID "' + zoneId + '" does NOT match first uncompleted step zone ID "' + firstUncompletedZoneId + '". Ignoring.');
-    return;
-  }
-  
-  console.log('[Auto-Detect] Entered zone ID matches first uncompleted step! Zone:', zoneId, '(' + zoneName + ')');
-  
-  // Find the previous zone's contiguous range
-  if (firstUncompletedIndex === 0) {
-    console.log('[Auto-Detect] First uncompleted step is at index 0. No previous zone to complete.');
-    return;
-  }
-  
-  let prevEnd = firstUncompletedIndex - 1;
-  const prevZoneId = allSteps[prevEnd].zoneId;
-  
-  let prevStart = prevEnd;
-  for (let i = prevEnd - 1; i >= 0; i--) {
-    if (allSteps[i].zoneId === prevZoneId) {
-      prevStart = i;
-    } else {
-      break;
-    }
-  }
-  
-  // Mark only the previous zone group as completed
-  let completedCount = 0;
-  for (let i = prevStart; i <= prevEnd; i++) {
-    const step = allSteps[i];
-    if (!state.completedSteps.has(step.id)) {
-      state.completedSteps.add(step.id);
-      completedCount++;
-      console.log('[Auto-Detect] Auto-completed previous zone step:', step.description, 'in', step.zone);
-    }
-  }
-
-  if (completedCount > 0) {
+    console.log('[Auto-Detect] HYBRID: Completed ' + completedCount + ' step(s) in zone "' + firstUncompletedStep.zone + '"');
     ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
-    console.log('[Auto-Detect] HYBRID: Completed ' + completedCount + ' step(s) in previous zone "' + allSteps[prevEnd].zone + '" before entering "' + zoneName + '"');
+    
+    // Check if we just completed the last step in the current act
+    const allCompleted = allSteps.every(s => state.completedSteps.has(s.id));
+    if (allCompleted && state.currentActIndex + 1 < state.levelingData.acts.length) {
+      const nextAct = state.levelingData.acts[state.currentActIndex + 1];
+      if (nextAct.steps.length > 0 && nextAct.steps[0].zoneId === zoneId) {
+        console.log('[Auto-Detect] ✅ Act ' + (state.currentActIndex + 1) + ' complete! Auto-switching to Act ' + (state.currentActIndex + 2));
+        state.currentActIndex++;
+      }
+    }
+    
     render();
   } else {
-    console.log('[Auto-Detect] Previous zone already fully completed');
+    console.log('[Auto-Detect] Entered zone "' + zoneId + '" does NOT match expected next zone "' + firstUncompletedStep.nextZoneId + '". Ignoring.');
   }
 });
 

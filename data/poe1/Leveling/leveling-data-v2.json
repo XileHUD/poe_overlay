@@ -13,7 +13,8 @@
           "hint": "Guaranteed Level Up to Level 2",
           "layoutTip": "Walk East/North-East along the coastline. Hillock is always at the far East end. Ignore all enemies - only grab weapon, skill gem, and support gem.",
           "checkable": true,
-          "zoneId": "1_1_1"
+          "zoneId": "1_1_1",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a1_twilight_2",
@@ -21,7 +22,8 @@
           "zone": "The Twilight Strand",
           "description": "Enter Lioneye's Watch",
           "checkable": true,
-          "zoneId": "1_1_1"
+          "zoneId": "1_1_1",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a1_town1_1",
@@ -31,7 +33,8 @@
           "quest": "Enemy at the Gate",
           "reward": "Level 1 Skill Gem",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_1_2"
         },
         {
           "id": "a1_town1_2",
@@ -39,7 +42,8 @@
           "zone": "Lioneye's Watch",
           "description": "Enter The Coast",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_1_2"
         },
         {
           "id": "a1_coast_1",
@@ -47,7 +51,8 @@
           "zone": "The Coast",
           "description": "Activate Waypoint",
           "checkable": true,
-          "zoneId": "1_1_2"
+          "zoneId": "1_1_2",
+          "nextZoneId": "1_1_3"
         },
         {
           "id": "a1_coast_2",
@@ -56,7 +61,8 @@
           "description": "Rush to Mud Flats",
           "hint": "No need to kill enemies - next zones will suffice to reach Level 4. Click corpses for loot.",
           "checkable": true,
-          "zoneId": "1_1_2"
+          "zoneId": "1_1_2",
+          "nextZoneId": "1_1_3"
         },
         {
           "id": "a1_mudflats_1",
@@ -66,7 +72,8 @@
           "hint": "The streams form a triangle or line pattern",
           "layoutTip": "All 3 nests are in a triangle pattern. The zone has three major layout variants: East, North, and South. Look for quest markers and the exit in the general direction of the variant.",
           "checkable": true,
-          "zoneId": "1_1_3"
+          "zoneId": "1_1_3",
+          "nextZoneId": "1_1_2"
         },
         {
           "id": "a1_mudflats_2",
@@ -74,7 +81,8 @@
           "zone": "The Mud Flats",
           "description": "Find and enter Submerged Passage",
           "checkable": true,
-          "zoneId": "1_1_3"
+          "zoneId": "1_1_3",
+          "nextZoneId": "1_1_2"
         },
         {
           "id": "a1_mudflats_3",
@@ -83,7 +91,8 @@
           "description": "Waypoint back to The Coast",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_1_3"
+          "zoneId": "1_1_3",
+          "nextZoneId": "1_1_2"
         },
         {
           "id": "a1_coast_3",
@@ -92,7 +101,8 @@
           "description": "Enter The Tidal Island",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_1_2"
+          "zoneId": "1_1_2",
+          "nextZoneId": "1_1_2a"
         },
         {
           "id": "a1_tidal_1",
@@ -104,7 +114,8 @@
           "recommendedLevel": 4,
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_1_2a"
+          "zoneId": "1_1_2a",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a1_tidal_2",
@@ -113,7 +124,8 @@
           "description": "Return to town (Relog)",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_1_2a"
+          "zoneId": "1_1_2a",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a1_town2_1",
@@ -124,7 +136,8 @@
           "reward": "Quicksilver Flask, Level 4 Support Gems",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_1_4_1"
         },
         {
           "id": "a1_town2_2",
@@ -133,7 +146,8 @@
           "description": "Waypoint to Submerged Passage",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_1_4_1"
         },
         {
           "id": "a1_submerged_1",
@@ -143,7 +157,8 @@
           "hint": "Or place portal when you see Flooded Depths entrance on minimap",
           "layoutTip": "Follow the zone. Place portal at the bridge, or when you see the Flooded Depths entrance on minimap, place portal then look for the bridge.",
           "checkable": true,
-          "zoneId": "1_1_4_1"
+          "zoneId": "1_1_4_1",
+          "nextZoneId": "1_1_5"
         },
         {
           "id": "a1_submerged_2",
@@ -151,7 +166,8 @@
           "zone": "The Submerged Passage",
           "description": "Cross bridge to enter The Ledge",
           "checkable": true,
-          "zoneId": "1_1_4_1"
+          "zoneId": "1_1_4_1",
+          "nextZoneId": "1_1_5"
         },
         {
           "id": "a1_ledge_1",
@@ -161,7 +177,8 @@
           "hint": "Safer route: follow the cliff. Avoid Kuduku the False God (totem boss with AoE explosion)",
           "layoutTip": "Stick to the mountain side wall until you get out of the goat passage, then stick to the water side wall to avoid the AoE explosion of Kuduku the False God.",
           "checkable": true,
-          "zoneId": "1_1_5"
+          "zoneId": "1_1_5",
+          "nextZoneId": "1_1_6"
         },
         {
           "id": "a1_climb_1",
@@ -170,7 +187,8 @@
           "description": "Follow the west edge to Lower Prison",
           "hint": "Follow the west edge from the entrance",
           "checkable": true,
-          "zoneId": "1_1_6"
+          "zoneId": "1_1_6",
+          "nextZoneId": "1_1_7_1"
         },
         {
           "id": "a1_prison_1",
@@ -179,7 +197,8 @@
           "description": "Activate Waypoint",
           "checkable": true,
           "zoneId": "1_1_7_1",
-          "zoneMapName": "The Prison"
+          "zoneMapName": "The Prison",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a1_prison_2",
@@ -187,7 +206,8 @@
           "zone": "The Lower Prison",
           "description": "Waypoint to town",
           "checkable": true,
-          "zoneId": "1_1_7_1"
+          "zoneId": "1_1_7_1",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a1_town3_1",
@@ -196,7 +216,8 @@
           "description": "Take Portal back to Submerged Passage",
           "optionalNote": "[LEAGUE START] Skip if not league start - buy gems from Lilly Roth instead",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_1_4_1"
         },
         {
           "id": "a1_submerged_3",
@@ -205,7 +226,8 @@
           "description": "Find and enter Flooded Depths",
           "hint": "Usually at 6 o'clock or 1 o'clock before bridge, rarely 3 o'clock",
           "checkable": true,
-          "zoneId": "1_1_4_1"
+          "zoneId": "1_1_4_1",
+          "nextZoneId": "1_1_4_0"
         },
         {
           "id": "a1_flooded_1",
@@ -214,7 +236,8 @@
           "description": "Kill Deep Dweller",
           "hint": "Search diagonally opposite the entrance",
           "checkable": true,
-          "zoneId": "1_1_4_0"
+          "zoneId": "1_1_4_0",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a1_flooded_2",
@@ -222,7 +245,8 @@
           "zone": "The Flooded Depths",
           "description": "Return to town (Relog)",
           "checkable": true,
-          "zoneId": "1_1_4_0"
+          "zoneId": "1_1_4_0",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a1_town4_1",
@@ -232,7 +256,8 @@
           "quest": "The Dweller of the Deep",
           "reward": "⭐ PASSIVE POINT",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_1_7_1"
         },
         {
           "id": "a1_town4_2",
@@ -242,7 +267,8 @@
           "quest": "The Caged Brute",
           "reward": "Level 8 Support Gems",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_1_7_1"
         },
         {
           "id": "a1_town4_3",
@@ -250,7 +276,8 @@
           "zone": "Lioneye's Watch",
           "description": "Waypoint to Lower Prison",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_1_7_1"
         },
         {
           "id": "a1_prison_3",
@@ -262,7 +289,8 @@
           "hidden": "optional",
           "checkable": true,
           "zoneId": "1_1_7_1",
-          "zoneMapName": "The Prison"
+          "zoneMapName": "The Prison",
+          "nextZoneId": "1_1_7_2"
         },
         {
           "id": "a1_prison_4",
@@ -270,7 +298,8 @@
           "zone": "The Lower Prison",
           "description": "Enter The Upper Prison",
           "checkable": true,
-          "zoneId": "1_1_7_1"
+          "zoneId": "1_1_7_1",
+          "nextZoneId": "1_1_7_2"
         },
         {
           "id": "a1_upperprison_1",
@@ -280,7 +309,8 @@
           "hint": "High chance for Quicksilver Flask. Vendor: QSF + Aug + Boots = MS Boots",
           "layoutTip": "Check north-east first, if dead end, turn around. Then follow the outer wall. This read is not guaranteed to find the strongbox or be the fastest, but it will lead to the exit.",
           "checkable": true,
-          "zoneId": "1_1_7_2"
+          "zoneId": "1_1_7_2",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a1_upperprison_2",
@@ -290,7 +320,8 @@
           "recommendedLevel": 10,
           "hint": "Aim to be Level 8-10",
           "checkable": true,
-          "zoneId": "1_1_7_2"
+          "zoneId": "1_1_7_2",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a1_upperprison_3",
@@ -298,7 +329,8 @@
           "zone": "The Upper Prison",
           "description": "Return to town (Relog)",
           "checkable": true,
-          "zoneId": "1_1_7_2"
+          "zoneId": "1_1_7_2",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a1_town5_1",
@@ -308,7 +340,8 @@
           "quest": "The Caged Brute",
           "reward": "Level 10 Movement Skills",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_1_8"
         },
         {
           "id": "a1_town5_2",
@@ -316,7 +349,8 @@
           "zone": "Lioneye's Watch",
           "description": "Waypoint to Prisoner's Gate",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_1_8"
         },
         {
           "id": "a1_gate_1",
@@ -326,7 +360,8 @@
           "hint": "Exit is always on a lower layer than entrance - follow downward slopes",
           "layoutTip": "The exit is always on a lower layer than the entrance. The correct path has several slopes/ledges down. One side of the zone is a massive mountain wall - find the ledge side, then follow the downward slopes.",
           "checkable": true,
-          "zoneId": "1_1_8"
+          "zoneId": "1_1_8",
+          "nextZoneId": "1_1_9"
         },
         {
           "id": "a1_shipyard_1",
@@ -335,7 +370,8 @@
           "description": "Find Ship Graveyard Cave entrance and place Portal",
           "layoutTip": "Follow the cliff side until you see the Ship Graveyard Cave entrance or the Cavern of Wrath entrance. If you see the cave first, place a portal near it and search for Cavern of Wrath. If you find Cavern of Wrath first, enter, get WP, exit and search for cave.",
           "checkable": true,
-          "zoneId": "1_1_9"
+          "zoneId": "1_1_9",
+          "nextZoneId": "1_1_11_1"
         },
         {
           "id": "a1_shipyard_2",
@@ -343,7 +379,8 @@
           "zone": "The Ship Graveyard",
           "description": "Find and enter Cavern of Wrath",
           "checkable": true,
-          "zoneId": "1_1_9"
+          "zoneId": "1_1_9",
+          "nextZoneId": "1_1_11_1"
         },
         {
           "id": "a1_cavern_1",
@@ -353,7 +390,8 @@
           "hint": "Follow the river in the direction the water flows",
           "checkable": true,
           "zoneId": "1_1_11_1",
-          "zoneMapName": "Merveil's Caverns"
+          "zoneMapName": "Merveil's Caverns",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a1_cavern_2",
@@ -361,7 +399,8 @@
           "zone": "The Cavern of Wrath",
           "description": "Waypoint to town",
           "checkable": true,
-          "zoneId": "1_1_11_1"
+          "zoneId": "1_1_11_1",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a1_town6_1",
@@ -371,7 +410,8 @@
           "quest": "The Siren's Cadence",
           "reward": "Level 12 Skill Gems",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_1_9"
         },
         {
           "id": "a1_town6_2",
@@ -379,7 +419,8 @@
           "zone": "Lioneye's Watch",
           "description": "Take Portal to Ship Graveyard",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_1_9"
         },
         {
           "id": "a1_shipyard_3",
@@ -387,7 +428,8 @@
           "zone": "The Ship Graveyard",
           "description": "Enter Ship Graveyard Cave",
           "checkable": true,
-          "zoneId": "1_1_9"
+          "zoneId": "1_1_9",
+          "nextZoneId": "1_1_9a"
         },
         {
           "id": "a1_cave_1",
@@ -397,7 +439,8 @@
           "hint": "Search diagonally opposite the entrance",
           "layoutTip": "The Allflame and exit to Fairgraves arena are always in a diagonal line to the entrance. The pathing through the cave system is a bit more zig zag, but keep the diagonal line in mind and determine which direction the zone extends to.",
           "checkable": true,
-          "zoneId": "1_1_9a"
+          "zoneId": "1_1_9a",
+          "nextZoneId": "1_1_9"
         },
         {
           "id": "a1_cave_2",
@@ -405,7 +448,8 @@
           "zone": "The Ship Graveyard Cave",
           "description": "Exit to Ship Graveyard",
           "checkable": true,
-          "zoneId": "1_1_9a"
+          "zoneId": "1_1_9a",
+          "nextZoneId": "1_1_9"
         },
         {
           "id": "a1_shipyard_4",
@@ -413,7 +457,8 @@
           "zone": "The Ship Graveyard",
           "description": "Kill Fairgraves",
           "checkable": true,
-          "zoneId": "1_1_9"
+          "zoneId": "1_1_9",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a1_shipyard_5",
@@ -421,7 +466,8 @@
           "zone": "The Ship Graveyard",
           "description": "Return to town (Relog)",
           "checkable": true,
-          "zoneId": "1_1_9"
+          "zoneId": "1_1_9",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a1_town7_1",
@@ -431,7 +477,8 @@
           "quest": "The Marooned Mariner",
           "reward": "⭐ PASSIVE POINT",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_1_11_1"
         },
         {
           "id": "a1_town7_2",
@@ -440,7 +487,8 @@
           "description": "Get remaining Act 1 gems from Nessa",
           "hint": "Or revisit during Act 2",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_1_11_1"
         },
         {
           "id": "a1_town7_3",
@@ -448,7 +496,8 @@
           "zone": "Lioneye's Watch",
           "description": "Waypoint to Cavern of Wrath",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_1_11_1"
         },
         {
           "id": "a1_cavern2_1",
@@ -457,7 +506,8 @@
           "description": "Follow water to Cavern of Anger",
           "hint": "Follow the water in the direction it flows",
           "checkable": true,
-          "zoneId": "1_1_11_1"
+          "zoneId": "1_1_11_1",
+          "nextZoneId": "1_1_11_2"
         },
         {
           "id": "a1_anger_1",
@@ -477,7 +527,8 @@
               "checkable": true,
               "zoneId": "1_2_1"
             }
-          ]
+          ],
+          "nextZoneId": "1_2_1"
         }
       ]
     },
@@ -494,7 +545,8 @@
           "hint": "High-density zone - great for experience catch-up if underleveled",
           "layoutTip": "Follow the zone edge to reach town. Kill enemy packs for quick experience gains as this zone has excellent density.",
           "checkable": true,
-          "zoneId": "1_2_1"
+          "zoneId": "1_2_1",
+          "nextZoneId": "1_2_town"
         },
         {
           "id": "a2_town1_1",
@@ -502,7 +554,8 @@
           "zone": "The Forest Encampment",
           "description": "Enter The Old Fields",
           "checkable": true,
-          "zoneId": "1_2_town"
+          "zoneId": "1_2_town",
+          "nextZoneId": "1_2_2"
         },
         {
           "id": "a2_fields_1",
@@ -513,7 +566,8 @@
           "optionalNote": "[LEAGUE START] Optional flask/belt quest chain",
           "layoutTip": "Follow the road to locate The Den entrance. Place portal here if doing the optional Quicksilver Flask quest.",
           "checkable": true,
-          "zoneId": "1_2_2"
+          "zoneId": "1_2_2",
+          "nextZoneId": "1_2_3"
         },
         {
           "id": "a2_fields_2",
@@ -522,7 +576,8 @@
           "description": "Follow road to The Crossroads",
           "hint": "The road leads directly to the zone exit",
           "checkable": true,
-          "zoneId": "1_2_2"
+          "zoneId": "1_2_2",
+          "nextZoneId": "1_2_3"
         },
         {
           "id": "a2_crossroads_1",
@@ -531,7 +586,8 @@
           "description": "Activate Waypoint",
           "hint": "Static layout - Waypoint is always at center",
           "checkable": true,
-          "zoneId": "1_2_3"
+          "zoneId": "1_2_3",
+          "nextZoneId": "1_2_6_1"
         },
         {
           "id": "a2_crossroads_2",
@@ -541,7 +597,8 @@
           "hint": "Kill White Beast, then talk to Yeena for reward",
           "optionalNote": "[LEAGUE START] Optional flask/belt quest",
           "checkable": true,
-          "zoneId": "1_2_3"
+          "zoneId": "1_2_3",
+          "nextZoneId": "1_2_6_1"
         },
         {
           "id": "a2_crossroads_3",
@@ -550,7 +607,8 @@
           "description": "Head to Chamber of Sins Level 1",
           "hint": "Exit is roughly northwest from the Waypoint",
           "checkable": true,
-          "zoneId": "1_2_3"
+          "zoneId": "1_2_3",
+          "nextZoneId": "1_2_6_1"
         },
         {
           "id": "a2_chamber1_1",
@@ -560,7 +618,8 @@
           "hint": "Find the circular inner room - exit is behind Waypoint",
           "layoutTip": "Find the entrance to the central circular chamber. The Waypoint is always next to the passage leading to Level 2. Head to the passage behind the Waypoint to proceed.",
           "checkable": true,
-          "zoneId": "1_2_6_1"
+          "zoneId": "1_2_6_1",
+          "nextZoneId": "1_2_6_2"
         },
         {
           "id": "a2_chamber2_1",
@@ -570,7 +629,8 @@
           "hint": "Waypoint icon on minimap points toward the exit",
           "layoutTip": "Navigate to the central room. Use the Waypoint icon on your minimap as a guide - it points toward the exit direction.",
           "checkable": true,
-          "zoneId": "1_2_6_2"
+          "zoneId": "1_2_6_2",
+          "nextZoneId": "1_2_town"
         },
         {
           "id": "a2_chamber2_2",
@@ -580,7 +640,8 @@
           "optionalNote": "[LEAGUE START] League-start recommended",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "1_2_6_2"
+          "zoneId": "1_2_6_2",
+          "nextZoneId": "1_2_town"
         },
         {
           "id": "a2_chamber2_3",
@@ -591,7 +652,8 @@
           "hint": "Located in a long corridor. Aim for Level 14-15",
           "layoutTip": "Find the long corridor extending from the central room. Fidelitas awaits at the end.",
           "checkable": true,
-          "zoneId": "1_2_6_2"
+          "zoneId": "1_2_6_2",
+          "nextZoneId": "1_2_town"
         },
         {
           "id": "a2_chamber2_4",
@@ -599,7 +661,8 @@
           "zone": "The Chamber of Sins Level 2",
           "description": "Return to town (Relog)",
           "checkable": true,
-          "zoneId": "1_2_6_2"
+          "zoneId": "1_2_6_2",
+          "nextZoneId": "1_2_town"
         },
         {
           "id": "a2_town2_1",
@@ -619,7 +682,8 @@
               "checkable": true,
               "zoneId": "1_2_town"
             }
-          ]
+          ],
+          "nextZoneId": "1_2_7"
         },
         {
           "id": "a2_riverways_1",
@@ -639,7 +703,8 @@
               "checkable": true,
               "zoneId": "1_2_7"
             }
-          ]
+          ],
+          "nextZoneId": "1_2_9"
         },
         {
           "id": "a2_western_1",
@@ -648,7 +713,8 @@
           "description": "Activate Waypoint",
           "hint": "Follow the road to locate it",
           "checkable": true,
-          "zoneId": "1_2_9"
+          "zoneId": "1_2_9",
+          "nextZoneId": "1_2_10"
         },
         {
           "id": "a2_western_2",
@@ -658,7 +724,8 @@
           "hint": "Opposite side of road from Waypoint",
           "layoutTip": "The entrance to Weaver's Chambers is on the opposite side of the road from the Waypoint. Alira's camp is on the same side as the entrance, accessible via a small rocky path.",
           "checkable": true,
-          "zoneId": "1_2_9"
+          "zoneId": "1_2_9",
+          "nextZoneId": "1_2_10"
         },
         {
           "id": "a2_weaver_1",
@@ -669,7 +736,8 @@
           "hint": "Head northwest from entrance. If blocked, go north",
           "layoutTip": "From the entrance, follow the left wall. Head northwest - if you hit a dead end, redirect north.",
           "checkable": true,
-          "zoneId": "1_2_10"
+          "zoneId": "1_2_10",
+          "nextZoneId": "1_2_town"
         },
         {
           "id": "a2_weaver_2",
@@ -677,7 +745,8 @@
           "zone": "The Weaver's Chambers",
           "description": "Return to town (Relog)",
           "checkable": true,
-          "zoneId": "1_2_10"
+          "zoneId": "1_2_10",
+          "nextZoneId": "1_2_town"
         },
         {
           "id": "a2_town3_1",
@@ -697,7 +766,8 @@
               "checkable": true,
               "zoneId": "1_2_town"
             }
-          ]
+          ],
+          "nextZoneId": "1_2_3"
         },
         {
           "id": "a2_crossroads_4",
@@ -706,7 +776,8 @@
           "description": "Head to Broken Bridge",
           "hint": "Exit is roughly north from center",
           "checkable": true,
-          "zoneId": "1_2_3"
+          "zoneId": "1_2_3",
+          "nextZoneId": "1_2_4"
         },
         {
           "id": "a2_bridge_1",
@@ -717,7 +788,8 @@
           "optionalNote": "Optional reward chest",
           "layoutTip": "Follow the road to the Waypoint. Search nearby for ruins containing a chest guarded by 3 Rogue Exiles.",
           "checkable": true,
-          "zoneId": "1_2_4"
+          "zoneId": "1_2_4",
+          "nextZoneId": "1_2_town"
         },
         {
           "id": "a2_bridge_2",
@@ -726,7 +798,8 @@
           "description": "Kill Kraityn and collect his Amulet",
           "hint": "Follow the road to find Kraityn's camp",
           "checkable": true,
-          "zoneId": "1_2_4"
+          "zoneId": "1_2_4",
+          "nextZoneId": "1_2_town"
         },
         {
           "id": "a2_bridge_3",
@@ -734,7 +807,8 @@
           "zone": "The Broken Bridge",
           "description": "Return to town (Relog)",
           "checkable": true,
-          "zoneId": "1_2_4"
+          "zoneId": "1_2_4",
+          "nextZoneId": "1_2_town"
         },
         {
           "id": "a2_town4_1",
@@ -742,7 +816,8 @@
           "zone": "The Forest Encampment",
           "description": "Waypoint to Riverways",
           "checkable": true,
-          "zoneId": "1_2_town"
+          "zoneId": "1_2_town",
+          "nextZoneId": "1_2_7"
         },
         {
           "id": "a2_riverways_3",
@@ -752,7 +827,8 @@
           "hint": "Look for the distinctive two-pillar entrance",
           "layoutTip": "Search for a trail marked by two standing pillars. This is the entrance to The Wetlands.",
           "checkable": true,
-          "zoneId": "1_2_7"
+          "zoneId": "1_2_7",
+          "nextZoneId": "1_2_12"
         },
         {
           "id": "a2_wetlands_1",
@@ -762,7 +838,8 @@
           "hint": "Look for the arena structure - only large building in zone",
           "layoutTip": "Oak's camp features a distinctive arena structure - the only large building in the zone. Usually located north or northwest, rarely southeast. Look for zigzag edges on the minimap.",
           "checkable": true,
-          "zoneId": "1_2_12"
+          "zoneId": "1_2_12",
+          "nextZoneId": "1_2_9"
         },
         {
           "id": "a2_wetlands_2",
@@ -770,7 +847,8 @@
           "zone": "The Wetlands",
           "description": "Activate Waypoint",
           "checkable": true,
-          "zoneId": "1_2_12"
+          "zoneId": "1_2_12",
+          "nextZoneId": "1_2_9"
         },
         {
           "id": "a2_wetlands_3",
@@ -778,7 +856,8 @@
           "zone": "The Wetlands",
           "description": "Waypoint to Western Forest",
           "checkable": true,
-          "zoneId": "1_2_12"
+          "zoneId": "1_2_12",
+          "nextZoneId": "1_2_9"
         },
         {
           "id": "a2_western_3",
@@ -788,7 +867,8 @@
           "hint": "Head southwest on road to torch, then follow side path",
           "layoutTip": "Follow the main road to a torch marker. From there, take the small rocky side path to reach Alira's camp. If helping Alira, collect The Apex afterward.",
           "checkable": true,
-          "zoneId": "1_2_9"
+          "zoneId": "1_2_9",
+          "nextZoneId": "1_2_town"
         },
         {
           "id": "a2_western_4",
@@ -797,7 +877,8 @@
           "description": "Kill Arteri and collect Thaumetic Emblem",
           "hint": "Continue along main road to Blackguard camp",
           "checkable": true,
-          "zoneId": "1_2_9"
+          "zoneId": "1_2_9",
+          "nextZoneId": "1_2_town"
         },
         {
           "id": "a2_western_5",
@@ -806,7 +887,8 @@
           "description": "Use Thaumetic Emblem on Seal and collect Baleful Gem or relog to town",
           "hint": "Unlocks passage to Vaal Ruins",
           "checkable": true,
-          "zoneId": "1_2_9"
+          "zoneId": "1_2_9",
+          "nextZoneId": "1_2_town"
         },
         {
           "id": "a2_town5_1",
@@ -817,7 +899,8 @@
           "reward": "The Apex (if killed all)",
           "hint": "Skip if you helped a bandit",
           "checkable": true,
-          "zoneId": "1_2_town"
+          "zoneId": "1_2_town",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a2_town5_2",
@@ -825,7 +908,8 @@
           "zone": "The Forest Encampment",
           "description": "Waypoint to Act 1 Town",
           "checkable": true,
-          "zoneId": "1_2_town"
+          "zoneId": "1_2_town",
+          "nextZoneId": "1_1_town"
         },
         {
           "id": "a2_act1town_1",
@@ -835,7 +919,8 @@
           "quest": "The Way Forward",
           "reward": "⭐ PASSIVE POINT",
           "checkable": true,
-          "zoneId": "1_1_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_2_3"
         },
         {
           "id": "a2_act1town_2",
@@ -844,7 +929,8 @@
           "description": "Get remaining Act 1 gems from Nessa",
           "hint": "If not collected earlier",
           "checkable": true,
-          "zoneId": "1_1_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_2_3"
         },
         {
           "id": "a2_act1town_3",
@@ -852,7 +938,8 @@
           "zone": "Lioneye's Watch",
           "description": "Waypoint to Crossroads",
           "checkable": true,
-          "zoneId": "1_1_town"
+          "zoneId": "1_1_town",
+          "nextZoneId": "1_2_3"
         },
         {
           "id": "a2_crossroads_5",
@@ -861,7 +948,8 @@
           "description": "Head to Fellshrine Ruins",
           "hint": "Exit is roughly east from center",
           "checkable": true,
-          "zoneId": "1_2_3"
+          "zoneId": "1_2_3",
+          "nextZoneId": "1_2_15"
         },
         {
           "id": "a2_fellshrine_1",
@@ -871,7 +959,8 @@
           "hint": "Kill insect packs to maintain flask and frenzy charges",
           "layoutTip": "Follow the main road through the zone. Kill small insect groups along the way to keep your Quicksilver Flask and Frenzy Charges active.",
           "checkable": true,
-          "zoneId": "1_2_15"
+          "zoneId": "1_2_15",
+          "nextZoneId": "1_2_5_1"
         },
         {
           "id": "a2_crypt1_1",
@@ -883,7 +972,8 @@
           "layoutTip": "Draw a horizontal line through the starting room. If the Waypoint is below, follow the wall opposite the Waypoint. If above, follow the wall behind it. This leads to both the Trial and Crypt Level 2.",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "1_2_5_1"
+          "zoneId": "1_2_5_1",
+          "nextZoneId": "1_2_5_2"
         },
         {
           "id": "a2_crypt1_2",
@@ -891,7 +981,8 @@
           "zone": "The Crypt Level 1",
           "description": "Enter The Crypt Level 2",
           "checkable": true,
-          "zoneId": "1_2_5_1"
+          "zoneId": "1_2_5_1",
+          "nextZoneId": "1_2_5_2"
         },
         {
           "id": "a2_crypt2_1",
@@ -901,7 +992,8 @@
           "hint": "Search diagonally opposite the entrance",
           "layoutTip": "The altar with the Golden Hand is typically found diagonally opposite from the entrance.",
           "checkable": true,
-          "zoneId": "1_2_5_2"
+          "zoneId": "1_2_5_2",
+          "nextZoneId": "1_2_town"
         },
         {
           "id": "a2_crypt2_2",
@@ -910,7 +1002,8 @@
           "description": "Return to town (Portal or Relog)",
           "hint": "Portal recommended - Relog sends to Act 1",
           "checkable": true,
-          "zoneId": "1_2_5_2"
+          "zoneId": "1_2_5_2",
+          "nextZoneId": "1_2_town"
         },
         {
           "id": "a2_town6_1",
@@ -920,7 +1013,8 @@
           "quest": "Through Sacred Ground",
           "reward": "Quest progression",
           "checkable": true,
-          "zoneId": "1_2_town"
+          "zoneId": "1_2_town",
+          "nextZoneId": "1_2_12"
         },
         {
           "id": "a2_town6_2",
@@ -928,7 +1022,8 @@
           "zone": "The Forest Encampment",
           "description": "Waypoint to Wetlands",
           "checkable": true,
-          "zoneId": "1_2_town"
+          "zoneId": "1_2_town",
+          "nextZoneId": "1_2_12"
         },
         {
           "id": "a2_wetlands_4",
@@ -937,7 +1032,8 @@
           "description": "Use Baleful Gem to poison the tree roots at Vaal Ruins entrance",
           "hint": "Entrance to Vaal Ruins is near waypoint",
           "checkable": true,
-          "zoneId": "1_2_12"
+          "zoneId": "1_2_12",
+          "nextZoneId": "1_2_11"
         },
         {
           "id": "a2_wetlands_5",
@@ -945,7 +1041,8 @@
           "zone": "The Wetlands",
           "description": "Enter The Vaal Ruins",
           "checkable": true,
-          "zoneId": "1_2_12"
+          "zoneId": "1_2_12",
+          "nextZoneId": "1_2_11"
         },
         {
           "id": "a2_vaal_1",
@@ -954,7 +1051,8 @@
           "description": "Navigate through Vaal Ruins and enter The Northern Forest",
           "hint": "S-shaped or L-shaped zone. Walk forward until hitting dead end, then turn",
           "checkable": true,
-          "zoneId": "1_2_11"
+          "zoneId": "1_2_11",
+          "nextZoneId": "1_2_8"
         },
         {
           "id": "a2_northern_1",
@@ -963,7 +1061,8 @@
           "description": "Enter The Caverns",
           "hint": "Follow waterside eastern edge heading north. Rituals offer great experience.",
           "checkable": true,
-          "zoneId": "1_2_8"
+          "zoneId": "1_2_8",
+          "nextZoneId": "1_2_14_2"
         },
         {
           "id": "a2_caverns_1",
@@ -971,7 +1070,8 @@
           "zone": "The Caverns",
           "description": "Activate Waypoint",
           "checkable": true,
-          "zoneId": "1_2_14_2"
+          "zoneId": "1_2_14_2",
+          "nextZoneId": "1_2_14_3"
         },
         {
           "id": "a2_caverns_2",
@@ -982,7 +1082,8 @@
           "optionalNote": "[LEAGUE START] Hidden recipe room",
           "layoutTip": "Search for a locked door with two small pillar switches nearby. Activate both to open the secret door.",
           "checkable": true,
-          "zoneId": "1_2_14_2"
+          "zoneId": "1_2_14_2",
+          "nextZoneId": "1_2_14_3"
         },
         {
           "id": "a2_caverns_3",
@@ -991,7 +1092,8 @@
           "description": "Find entrance to Ancient Pyramid",
           "hint": "Search the corners of the zone",
           "checkable": true,
-          "zoneId": "1_2_14_2"
+          "zoneId": "1_2_14_2",
+          "nextZoneId": "1_2_14_3"
         },
         {
           "id": "a2_pyramid_1",
@@ -1001,7 +1103,8 @@
           "hint": "1st stairs in random corner, 2nd diagonally opposite",
           "layoutTip": "Outside the first floor, each staircase to the next level is always diagonally opposite from where you entered. The first stairs are in a random corner.",
           "checkable": true,
-          "zoneId": "1_2_14_3"
+          "zoneId": "1_2_14_3",
+          "nextZoneId": "1_3_1"
         },
         {
           "id": "a2_apex_1",
@@ -1031,7 +1134,8 @@
               "checkable": true,
               "zoneId": "1_3_1"
             }
-          ]
+          ],
+          "nextZoneId": "1_3_1"
         }
       ]
     },
@@ -1048,7 +1152,8 @@
           "hint": "Clarissa is at a pillar near the first staircase to the Docks area",
           "layoutTip": "Clear all Blackguard members near Clarissa for her to stand up and become interactable. She's always positioned near a pillar adjacent to the first staircase.",
           "checkable": true,
-          "zoneId": "1_3_1"
+          "zoneId": "1_3_1",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_sarn_2",
@@ -1057,7 +1162,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_3_1"
+          "zoneId": "1_3_1",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_sarn_3",
@@ -1065,7 +1171,8 @@
           "zone": "The City of Sarn",
           "description": "Talk to Clarissa",
           "checkable": true,
-          "zoneId": "1_3_1"
+          "zoneId": "1_3_1",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_sarn_4",
@@ -1074,7 +1181,8 @@
           "description": "Follow edge path to The Sarn Encampment",
           "hint": "Follow the 5 o'clock edge",
           "checkable": true,
-          "zoneId": "1_3_1"
+          "zoneId": "1_3_1",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_town1_1",
@@ -1082,7 +1190,8 @@
           "zone": "The Sarn Encampment",
           "description": "Enter The Slums",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "1_3_town",
+          "nextZoneId": "1_3_2"
         },
         {
           "id": "a3_slums_1",
@@ -1092,7 +1201,8 @@
           "hint": "Search diagonally opposite from entrance",
           "layoutTip": "Move away from the dead-end at zone start. The Crematorium entrance is typically found diagonally opposite from where you entered the Slums.",
           "checkable": true,
-          "zoneId": "1_3_2"
+          "zoneId": "1_3_2",
+          "nextZoneId": "1_3_3_1"
         },
         {
           "id": "a3_crematorium_1",
@@ -1103,7 +1213,8 @@
           "optionalNote": "[LEAGUE START] League-start recommended",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "1_3_3_1"
+          "zoneId": "1_3_3_1",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_crematorium_2",
@@ -1112,7 +1223,8 @@
           "description": "Kill Piety for Tolman's Bracelet",
           "hint": "Boss location visible in fog",
           "checkable": true,
-          "zoneId": "1_3_3_1"
+          "zoneId": "1_3_3_1",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_crematorium_3",
@@ -1121,7 +1233,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_3_3_1"
+          "zoneId": "1_3_3_1",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_crematorium_4",
@@ -1129,7 +1242,8 @@
           "zone": "The Crematorium",
           "description": "Return to town (Relog)",
           "checkable": true,
-          "zoneId": "1_3_3_1"
+          "zoneId": "1_3_3_1",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_town2_1",
@@ -1139,7 +1253,8 @@
           "quest": "Lost in Love",
           "reward": "Level 24 Skill Gems (Curses/Auras)",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "1_3_town",
+          "nextZoneId": "1_3_2"
         },
         {
           "id": "a3_town2_2",
@@ -1147,7 +1262,8 @@
           "zone": "The Sarn Encampment",
           "description": "Talk to Clarissa for Sewer Keys",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "1_3_town",
+          "nextZoneId": "1_3_2"
         },
         {
           "id": "a3_town2_3",
@@ -1155,7 +1271,8 @@
           "zone": "The Sarn Encampment",
           "description": "Return to The Slums",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "1_3_town",
+          "nextZoneId": "1_3_2"
         },
         {
           "id": "a3_slums_2",
@@ -1163,7 +1280,8 @@
           "zone": "The Slums",
           "description": "Find and open Sewer Grating",
           "checkable": true,
-          "zoneId": "1_3_2"
+          "zoneId": "1_3_2",
+          "nextZoneId": "1_3_10_1"
         },
         {
           "id": "a3_slums_3",
@@ -1171,7 +1289,8 @@
           "zone": "The Slums",
           "description": "Enter The Sewers",
           "checkable": true,
-          "zoneId": "1_3_2"
+          "zoneId": "1_3_2",
+          "nextZoneId": "1_3_10_1"
         },
         {
           "id": "a3_sewers_1",
@@ -1179,7 +1298,8 @@
           "zone": "The Sewers",
           "description": "Activate Waypoint",
           "checkable": true,
-          "zoneId": "1_3_10_1"
+          "zoneId": "1_3_10_1",
+          "nextZoneId": "1_3_5"
         },
         {
           "id": "a3_sewers_2",
@@ -1189,7 +1309,8 @@
           "hint": "2nd bust location indicates 3rd bust direction",
           "layoutTip": "After big room with WP: if 2nd bust is found in a large room, the 3rd bust is at 12 o'clock from exit. Otherwise, it's at 2 o'clock. In small room layout after WP, the 3rd bust is south.",
           "checkable": true,
-          "zoneId": "1_3_10_1"
+          "zoneId": "1_3_10_1",
+          "nextZoneId": "1_3_5"
         },
         {
           "id": "a3_sewers_3",
@@ -1197,7 +1318,8 @@
           "zone": "The Sewers",
           "description": "Enter The Marketplace",
           "checkable": true,
-          "zoneId": "1_3_10_1"
+          "zoneId": "1_3_10_1",
+          "nextZoneId": "1_3_5"
         },
         {
           "id": "a3_market_1",
@@ -1207,7 +1329,8 @@
           "hint": "Zone extends based on water location",
           "layoutTip": "If water is west of entrance, zone extends north. Otherwise, zone extends west. Search for the arch to find the waypoint. From waypoint, follow the east wall to find The Battlefront.",
           "checkable": true,
-          "zoneId": "1_3_5"
+          "zoneId": "1_3_5",
+          "nextZoneId": "1_3_6"
         },
         {
           "id": "a3_market_2",
@@ -1216,7 +1339,8 @@
           "description": "Find and enter The Catacombs",
           "hint": "Located nearby waypoint",
           "checkable": true,
-          "zoneId": "1_3_5"
+          "zoneId": "1_3_5",
+          "nextZoneId": "1_3_6"
         },
         {
           "id": "a3_catacombs_1",
@@ -1228,7 +1352,8 @@
           "optionalNote": "[LEAGUE START] League-start recommended",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "1_3_6"
+          "zoneId": "1_3_6",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_catacombs_2",
@@ -1238,7 +1363,8 @@
           "hint": "Often found parallel to arena entrance wall",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_3_6"
+          "zoneId": "1_3_6",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_catacombs_3",
@@ -1246,7 +1372,8 @@
           "zone": "The Catacombs",
           "description": "Return to town (Relog)",
           "checkable": true,
-          "zoneId": "1_3_6"
+          "zoneId": "1_3_6",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_town3_1",
@@ -1257,7 +1384,8 @@
           "reward": "⭐ PASSIVE POINT",
           "hint": "Check vendors for 4-link items if Level 23+",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "1_3_town",
+          "nextZoneId": "1_3_5"
         },
         {
           "id": "a3_town3_2",
@@ -1265,7 +1393,8 @@
           "zone": "The Sarn Encampment",
           "description": "Waypoint to The Marketplace",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "1_3_town",
+          "nextZoneId": "1_3_5"
         },
         {
           "id": "a3_market_3",
@@ -1274,7 +1403,8 @@
           "description": "Enter The Battlefront",
           "hint": "Usually 1 or 12 o'clock, rarely 5 o'clock",
           "checkable": true,
-          "zoneId": "1_3_5"
+          "zoneId": "1_3_5",
+          "nextZoneId": "1_3_7"
         },
         {
           "id": "a3_battlefront_1",
@@ -1283,7 +1413,8 @@
           "description": "Head northwest to activate Waypoint",
           "hint": "Waypoint is on first elevation layer",
           "checkable": true,
-          "zoneId": "1_3_7"
+          "zoneId": "1_3_7",
+          "nextZoneId": "1_3_8_1"
         },
         {
           "id": "a3_battlefront_2",
@@ -1291,7 +1422,8 @@
           "zone": "The Battlefront",
           "description": "Head 5 o'clock to collect Ribbon Spool",
           "checkable": true,
-          "zoneId": "1_3_7"
+          "zoneId": "1_3_7",
+          "nextZoneId": "1_3_8_1"
         },
         {
           "id": "a3_battlefront_3",
@@ -1301,7 +1433,8 @@
           "hint": "Head 1 o'clock to entrance. If already Level 23½+, skip to Docks",
           "optionalNote": "For XP if underleveled",
           "checkable": true,
-          "zoneId": "1_3_7"
+          "zoneId": "1_3_7",
+          "nextZoneId": "1_3_8_1"
         },
         {
           "id": "a3_solaris1_1",
@@ -1312,7 +1445,8 @@
           "layoutTip": "Move forward until hitting a wall. Check if zone extends further in that direction. If yes, move around the wall and continue forward. If not, turn toward the zone extension and proceed.",
           "optionalNote": "For XP if underleveled",
           "checkable": true,
-          "zoneId": "1_3_8_1"
+          "zoneId": "1_3_8_1",
+          "nextZoneId": "1_3_8_2"
         },
         {
           "id": "a3_solaris2_1",
@@ -1321,7 +1455,8 @@
           "description": "Activate Waypoint",
           "optionalNote": "For XP if underleveled",
           "checkable": true,
-          "zoneId": "1_3_8_2"
+          "zoneId": "1_3_8_2",
+          "nextZoneId": "1_3_7"
         },
         {
           "id": "a3_solaris2_2",
@@ -1331,7 +1466,8 @@
           "hint": "Near waypoint in Eternal Laboratory arena",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_3_8_2"
+          "zoneId": "1_3_8_2",
+          "nextZoneId": "1_3_7"
         },
         {
           "id": "a3_solaris2_3",
@@ -1340,7 +1476,8 @@
           "description": "Waypoint to The Battlefront",
           "optionalNote": "For XP if underleveled",
           "checkable": true,
-          "zoneId": "1_3_8_2"
+          "zoneId": "1_3_8_2",
+          "nextZoneId": "1_3_7"
         },
         {
           "id": "a3_battlefront_4",
@@ -1350,7 +1487,8 @@
           "recommendedLevel": 24,
           "hint": "North of waypoint, at end of river",
           "checkable": true,
-          "zoneId": "1_3_7"
+          "zoneId": "1_3_7",
+          "nextZoneId": "1_3_9"
         },
         {
           "id": "a3_docks_1",
@@ -1360,7 +1498,8 @@
           "hint": "Excellent zone for XP farming",
           "layoutTip": "You spawn near a corner. Follow the opposite direction along the wall until you locate the Thaumetic Sulphite.",
           "checkable": true,
-          "zoneId": "1_3_9"
+          "zoneId": "1_3_9",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_docks_2",
@@ -1368,7 +1507,8 @@
           "zone": "The Docks",
           "description": "Return to town (Relog)",
           "checkable": true,
-          "zoneId": "1_3_9"
+          "zoneId": "1_3_9",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_town4_1",
@@ -1376,7 +1516,8 @@
           "zone": "The Sarn Encampment",
           "description": "Waypoint to Solaris Temple Level 2",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "1_3_town",
+          "nextZoneId": "1_3_8_2"
         },
         {
           "id": "a3_solaris2_4",
@@ -1387,7 +1528,8 @@
           "reward": "Rare Amulet",
           "hint": "Follow red carpet",
           "checkable": true,
-          "zoneId": "1_3_8_2"
+          "zoneId": "1_3_8_2",
+          "nextZoneId": "1_3_10_1"
         },
         {
           "id": "a3_solaris2_5",
@@ -1396,7 +1538,8 @@
           "description": "Talk to Dialla again for Infernal Talc",
           "quest": "Fiery Dust",
           "checkable": true,
-          "zoneId": "1_3_8_2"
+          "zoneId": "1_3_8_2",
+          "nextZoneId": "1_3_10_1"
         },
         {
           "id": "a3_solaris2_6",
@@ -1404,7 +1547,8 @@
           "zone": "The Solaris Temple Level 2",
           "description": "Waypoint to The Sewers",
           "checkable": true,
-          "zoneId": "1_3_8_2"
+          "zoneId": "1_3_8_2",
+          "nextZoneId": "1_3_10_1"
         },
         {
           "id": "a3_sewers_4",
@@ -1412,7 +1556,8 @@
           "zone": "The Sewers",
           "description": "Use Infernal Talc on Undying Blockage",
           "checkable": true,
-          "zoneId": "1_3_10_1"
+          "zoneId": "1_3_10_1",
+          "nextZoneId": "1_3_13"
         },
         {
           "id": "a3_sewers_5",
@@ -1421,7 +1566,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_3_10_1"
+          "zoneId": "1_3_10_1",
+          "nextZoneId": "1_3_13"
         },
         {
           "id": "a3_sewers_6",
@@ -1429,7 +1575,8 @@
           "zone": "The Sewers",
           "description": "Enter The Ebony Barracks",
           "checkable": true,
-          "zoneId": "1_3_10_1"
+          "zoneId": "1_3_10_1",
+          "nextZoneId": "1_3_13"
         },
         {
           "id": "a3_barracks_1",
@@ -1438,7 +1585,8 @@
           "description": "Activate Waypoint",
           "layoutTip": "Zone is semi-static. Head north-east to find waypoint. Only variation is whether Gravicius and exit are in line or exit faces east.",
           "checkable": true,
-          "zoneId": "1_3_13"
+          "zoneId": "1_3_13",
+          "nextZoneId": "1_3_14_1"
         },
         {
           "id": "a3_barracks_2",
@@ -1448,7 +1596,8 @@
           "hint": "Rewards Level 28 Skill Gems",
           "optionalNote": "Optional boss for gem rewards",
           "checkable": true,
-          "zoneId": "1_3_13"
+          "zoneId": "1_3_13",
+          "nextZoneId": "1_3_14_1"
         },
         {
           "id": "a3_barracks_3",
@@ -1456,7 +1605,8 @@
           "zone": "The Ebony Barracks",
           "description": "Head 7 o'clock to Lunaris Temple Level 1",
           "checkable": true,
-          "zoneId": "1_3_13"
+          "zoneId": "1_3_13",
+          "nextZoneId": "1_3_14_1"
         },
         {
           "id": "a3_lunaris1_1",
@@ -1465,7 +1615,8 @@
           "description": "Navigate to Lunaris Temple Level 2",
           "hint": "Follow red carpet",
           "checkable": true,
-          "zoneId": "1_3_14_1"
+          "zoneId": "1_3_14_1",
+          "nextZoneId": "1_3_14_2"
         },
         {
           "id": "a3_lunaris2_1",
@@ -1476,7 +1627,8 @@
           "hint": "Follow stairs going up, then single wagon at fork",
           "layoutTip": "Choose paths with stairs going up. At the fork with wagons, take the path with a single wagon. Stay consistent with movement pattern (clockwise or counter-clockwise).",
           "checkable": true,
-          "zoneId": "1_3_14_2"
+          "zoneId": "1_3_14_2",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_lunaris2_2",
@@ -1485,7 +1637,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_3_14_2"
+          "zoneId": "1_3_14_2",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_lunaris2_3",
@@ -1493,7 +1646,8 @@
           "zone": "The Lunaris Temple Level 2",
           "description": "Return to town (Relog)",
           "checkable": true,
-          "zoneId": "1_3_14_2"
+          "zoneId": "1_3_14_2",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_town5_1",
@@ -1503,7 +1657,8 @@
           "quest": "Piety's Pets",
           "reward": "⭐ PASSIVE POINT",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "1_3_town",
+          "nextZoneId": "1_3_13"
         },
         {
           "id": "a3_town5_2",
@@ -1513,7 +1668,8 @@
           "quest": "Sever the Right Hand",
           "reward": "Level 28 Skill Gems",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "1_3_town",
+          "nextZoneId": "1_3_13"
         },
         {
           "id": "a3_town5_3",
@@ -1523,7 +1679,8 @@
           "hint": "Check for off-class support gems",
           "optionalNote": "[NON-LEAGUE START] Optional - buy missing gems",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "1_3_town",
+          "nextZoneId": "1_3_13"
         },
         {
           "id": "a3_town5_4",
@@ -1531,7 +1688,8 @@
           "zone": "The Sarn Encampment",
           "description": "Waypoint to The Ebony Barracks",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "1_3_town",
+          "nextZoneId": "1_3_13"
         },
         {
           "id": "a3_barracks_4",
@@ -1539,7 +1697,8 @@
           "zone": "The Ebony Barracks",
           "description": "Head 1 o'clock to The Imperial Gardens",
           "checkable": true,
-          "zoneId": "1_3_13"
+          "zoneId": "1_3_13",
+          "nextZoneId": "1_3_15"
         },
         {
           "id": "a3_gardens_1",
@@ -1548,7 +1707,8 @@
           "description": "Follow road and activate Waypoint",
           "layoutTip": "Follow the main road through the zone. The waypoint is along this path.",
           "checkable": true,
-          "zoneId": "1_3_15"
+          "zoneId": "1_3_15",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_gardens_2",
@@ -1560,7 +1720,8 @@
           "optionalNote": "[LEAGUE START] League-start recommended",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "1_3_15"
+          "zoneId": "1_3_15",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_gardens_3",
@@ -1569,7 +1730,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_3_15"
+          "zoneId": "1_3_15",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_gardens_4",
@@ -1578,7 +1740,8 @@
           "description": "Return to town (Relog)",
           "optionalNote": "[LEAGUE START] League-start only after Trial",
           "checkable": true,
-          "zoneId": "1_3_15"
+          "zoneId": "1_3_15",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_town6_1",
@@ -1587,7 +1750,8 @@
           "description": "Waypoint to The Imperial Gardens",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "1_3_town",
+          "nextZoneId": "1_3_15"
         },
         {
           "id": "a3_gardens_5",
@@ -1597,7 +1761,8 @@
           "hint": "For Level 31 and off-class support gems",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_3_15"
+          "zoneId": "1_3_15",
+          "nextZoneId": "1_3_17_1"
         },
         {
           "id": "a3_library_1",
@@ -1606,7 +1771,8 @@
           "description": "Activate Waypoint",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_3_17_1"
+          "zoneId": "1_3_17_1",
+          "nextZoneId": "1_3_17_2"
         },
         {
           "id": "a3_library_2",
@@ -1615,7 +1781,8 @@
           "description": "Find loose candle and enter The Archives",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_3_17_1"
+          "zoneId": "1_3_17_1",
+          "nextZoneId": "1_3_17_2"
         },
         {
           "id": "a3_archives_1",
@@ -1626,7 +1793,8 @@
           "layoutTip": "Traverse the zone in a clockwise pattern to efficiently collect all pages.",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_3_17_2"
+          "zoneId": "1_3_17_2",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_archives_2",
@@ -1635,7 +1803,8 @@
           "description": "Return to town (Relog)",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_3_17_2"
+          "zoneId": "1_3_17_2",
+          "nextZoneId": "1_3_town"
         },
         {
           "id": "a3_town7_1",
@@ -1645,7 +1814,8 @@
           "hint": "Prepare for gem purchases",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "1_3_town",
+          "nextZoneId": "1_3_17_1"
         },
         {
           "id": "a3_town7_2",
@@ -1654,7 +1824,8 @@
           "description": "Waypoint to The Library",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "1_3_town",
+          "nextZoneId": "1_3_17_1"
         },
         {
           "id": "a3_library_3",
@@ -1665,7 +1836,8 @@
           "reward": "Level 31 and off-class Support Gems",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_3_17_1"
+          "zoneId": "1_3_17_1",
+          "nextZoneId": "1_3_15"
         },
         {
           "id": "a3_library_4",
@@ -1674,7 +1846,8 @@
           "description": "Waypoint to The Imperial Gardens",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_3_17_1"
+          "zoneId": "1_3_17_1",
+          "nextZoneId": "1_3_15"
         },
         {
           "id": "a3_gardens_6",
@@ -1687,7 +1860,8 @@
           "recommendedLevel": 33,
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "1_3_15"
+          "zoneId": "1_3_15",
+          "nextZoneId": "1_3_18_1"
         },
         {
           "id": "a3_gardens_7",
@@ -1696,7 +1870,8 @@
           "description": "Follow wagons to Sceptre of God",
           "hint": "Follow the road with wagons",
           "checkable": true,
-          "zoneId": "1_3_15"
+          "zoneId": "1_3_15",
+          "nextZoneId": "1_3_18_1"
         },
         {
           "id": "a3_sceptre1_1",
@@ -1706,7 +1881,8 @@
           "hint": "Floors are circular - arena stairs spawn every 90°",
           "layoutTip": "Traverse clockwise while staying in the inner square. Move in the direction stairs place you. If no door in that direction, check the opposite side first.",
           "checkable": true,
-          "zoneId": "1_3_18_1"
+          "zoneId": "1_3_18_1",
+          "nextZoneId": "1_3_18_2"
         },
         {
           "id": "a3_sceptre2_1",
@@ -1717,7 +1893,8 @@
           "hint": "Same layout rules - head 1 o'clock after Scion cage",
           "layoutTip": "Follow same navigation rules as Sceptre of God. After passing the Scion cage, head toward 1 o'clock to reach the rooftop.",
           "checkable": true,
-          "zoneId": "1_3_18_2"
+          "zoneId": "1_3_18_2",
+          "nextZoneId": "1_4_1"
         },
         {
           "id": "a3_sceptre2_2",
@@ -1725,7 +1902,8 @@
           "zone": "The Upper Sceptre of God",
           "description": "Kill Dominus",
           "checkable": true,
-          "zoneId": "1_3_18_2"
+          "zoneId": "1_3_18_2",
+          "nextZoneId": "1_4_1"
         },
         {
           "id": "a3_sceptre2_3",
@@ -1733,7 +1911,8 @@
           "zone": "The Upper Sceptre of God",
           "description": "Enter The Aqueduct (Act 4)",
           "checkable": true,
-          "zoneId": "1_3_18_2"
+          "zoneId": "1_3_18_2",
+          "nextZoneId": "1_4_1"
         }
       ]
     },
@@ -1750,7 +1929,8 @@
           "hint": "Run through without killing - save time for later zones",
           "layoutTip": "Dead ends to the west or east have blue monster packs. If a walkway ends, there's always a bridge crossing over the water to the other side.",
           "checkable": true,
-          "zoneId": "1_4_1"
+          "zoneId": "1_4_1",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_aqueduct_2",
@@ -1758,7 +1938,8 @@
           "zone": "The Aqueduct",
           "description": "Enter Highgate",
           "checkable": true,
-          "zoneId": "1_4_1"
+          "zoneId": "1_4_1",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_town1_1",
@@ -1766,7 +1947,8 @@
           "zone": "Highgate",
           "description": "Enter The Dried Lake",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "1_4_town",
+          "nextZoneId": "1_4_2"
         },
         {
           "id": "a4_lake_1",
@@ -1777,7 +1959,8 @@
           "hint": "Look for the book icon on minimap - it appears before the arena",
           "layoutTip": "The first thing you'll see of Voll's arena is the book icon on the minimap 90% of the time. Once you spot the icon, move directly toward it.",
           "checkable": true,
-          "zoneId": "1_4_2"
+          "zoneId": "1_4_2",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_lake_2",
@@ -1786,7 +1969,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_4_2"
+          "zoneId": "1_4_2",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_lake_3",
@@ -1794,7 +1978,8 @@
           "zone": "The Dried Lake",
           "description": "Return to Highgate (Relog)",
           "checkable": true,
-          "zoneId": "1_4_2"
+          "zoneId": "1_4_2",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_town2_1",
@@ -1802,7 +1987,8 @@
           "zone": "Highgate",
           "description": "Enter The Mines Level 1",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "1_4_town",
+          "nextZoneId": "1_4_3_1"
         },
         {
           "id": "a4_mines1_1",
@@ -1811,7 +1997,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_4_3_1"
+          "zoneId": "1_4_3_1",
+          "nextZoneId": "1_4_3_2"
         },
         {
           "id": "a4_mines1_2",
@@ -1820,7 +2007,8 @@
           "description": "Navigate to The Mines Level 2",
           "hint": "Move northwest when possible, otherwise follow the zone",
           "checkable": true,
-          "zoneId": "1_4_3_1"
+          "zoneId": "1_4_3_1",
+          "nextZoneId": "1_4_3_2"
         },
         {
           "id": "a4_mines2_1",
@@ -1830,7 +2018,8 @@
           "hint": "Look for the glowing spirit as you progress through",
           "layoutTip": "The layout determines the path. If the zone extends south, follow it until you see Deshret's Spirit, free him, then continue forward.",
           "checkable": true,
-          "zoneId": "1_4_3_2"
+          "zoneId": "1_4_3_2",
+          "nextZoneId": "1_4_3_3"
         },
         {
           "id": "a4_mines2_2",
@@ -1838,7 +2027,8 @@
           "zone": "The Mines Level 2",
           "description": "Enter The Crystal Veins",
           "checkable": true,
-          "zoneId": "1_4_3_2"
+          "zoneId": "1_4_3_2",
+          "nextZoneId": "1_4_3_3"
         },
         {
           "id": "a4_veins_1",
@@ -1849,7 +2039,8 @@
           "hint": "Aim to reach Level 31 by this point",
           "layoutTip": "Stick to the opposite edge of whichever direction the first passage takes. This leads to both the waypoint and the zone exits.",
           "checkable": true,
-          "zoneId": "1_4_3_3"
+          "zoneId": "1_4_3_3",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_veins_2",
@@ -1858,7 +2049,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_4_3_3"
+          "zoneId": "1_4_3_3",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_veins_3",
@@ -1866,7 +2058,8 @@
           "zone": "The Crystal Veins",
           "description": "Waypoint to Highgate",
           "checkable": true,
-          "zoneId": "1_4_3_3"
+          "zoneId": "1_4_3_3",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_town3_1",
@@ -1876,7 +2069,8 @@
           "quest": "An Indomitable Spirit",
           "reward": "⭐ PASSIVE POINT",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "1_4_town",
+          "nextZoneId": "Labyrinth_Airlock"
         },
         {
           "id": "a4_town3_2",
@@ -1886,7 +2080,8 @@
           "quest": "Breaking the Seal",
           "reward": "Level 34 Skill Gems",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "1_4_town",
+          "nextZoneId": "Labyrinth_Airlock"
         },
         {
           "id": "a4_town3_2a",
@@ -1897,7 +2092,8 @@
           "optionalNote": "[LAB] If not completed earlier",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "1_4_town",
+          "nextZoneId": "Labyrinth_Airlock"
         },
         {
           "id": "a4_town3_3",
@@ -1908,7 +2104,8 @@
           "optionalNote": "[LAB] Complete if not done earlier",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "Labyrinth_Airlock"
+          "zoneId": "Labyrinth_Airlock",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_town3_4",
@@ -1916,7 +2113,8 @@
           "zone": "Highgate",
           "description": "Waypoint to The Crystal Veins",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "1_4_town",
+          "nextZoneId": "1_4_3_3"
         },
         {
           "id": "a4_veins_4",
@@ -1924,7 +2122,8 @@
           "zone": "The Crystal Veins",
           "description": "Enter Daresso's Dream",
           "checkable": true,
-          "zoneId": "1_4_3_3"
+          "zoneId": "1_4_3_3",
+          "nextZoneId": "1_4_5_1"
         },
         {
           "id": "a4_daresso_1",
@@ -1934,7 +2133,8 @@
           "hint": "Prioritize moving east, then south to reach east, then north",
           "layoutTip": "If you can move east, do so. Otherwise move south until you can go east again. When you hit the east edge, move north to the exit.",
           "checkable": true,
-          "zoneId": "1_4_5_1"
+          "zoneId": "1_4_5_1",
+          "nextZoneId": "1_4_5_2"
         },
         {
           "id": "a4_arena_1",
@@ -1944,7 +2144,8 @@
           "hint": "Follow corridors. At splits, take north or west options",
           "layoutTip": "The zone consists of arenas connected by corridors. Follow straight paths without splits. In arenas, cross directly to find the next corridor. When paths split, take the north or northwest option.",
           "checkable": true,
-          "zoneId": "1_4_5_2"
+          "zoneId": "1_4_5_2",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_arena_2",
@@ -1953,7 +2154,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_4_5_2"
+          "zoneId": "1_4_5_2",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_arena_3",
@@ -1962,7 +2164,8 @@
           "description": "Waypoint to Highgate",
           "hint": "Portal places you right next to waypoint",
           "checkable": true,
-          "zoneId": "1_4_5_2"
+          "zoneId": "1_4_5_2",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_town4_1",
@@ -1970,7 +2173,8 @@
           "zone": "Highgate",
           "description": "Waypoint to The Crystal Veins",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "1_4_town",
+          "nextZoneId": "1_4_3_3"
         },
         {
           "id": "a4_veins_5",
@@ -1978,7 +2182,8 @@
           "zone": "The Crystal Veins",
           "description": "Enter Kaom's Dream",
           "checkable": true,
-          "zoneId": "1_4_3_3"
+          "zoneId": "1_4_3_3",
+          "nextZoneId": "1_4_4_1"
         },
         {
           "id": "a4_kaom_1",
@@ -1988,7 +2193,8 @@
           "hint": "Head 1 o'clock, then follow bridges to the exit",
           "layoutTip": "Start by heading toward 1 o'clock. Then follow the bridges that connect across the zone until you reach the exit.",
           "checkable": true,
-          "zoneId": "1_4_4_1"
+          "zoneId": "1_4_4_1",
+          "nextZoneId": "1_4_4_3"
         },
         {
           "id": "a4_stronghold_1",
@@ -1997,7 +2203,8 @@
           "description": "Kill Kaom and collect Eye of Fury",
           "hint": "Enter Caldera of the King arena to fight the boss",
           "checkable": true,
-          "zoneId": "1_4_4_3"
+          "zoneId": "1_4_4_3",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_stronghold_2",
@@ -2006,7 +2213,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_4_4_3"
+          "zoneId": "1_4_4_3",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_stronghold_3",
@@ -2015,7 +2223,8 @@
           "description": "Portal to Highgate",
           "hint": "Portal places you right next to waypoint",
           "checkable": true,
-          "zoneId": "1_4_4_3"
+          "zoneId": "1_4_4_3",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_town5_1",
@@ -2023,7 +2232,8 @@
           "zone": "Highgate",
           "description": "Waypoint to The Crystal Veins",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "1_4_town",
+          "nextZoneId": "1_4_3_3"
         },
         {
           "id": "a4_veins_6",
@@ -2031,7 +2241,8 @@
           "zone": "The Crystal Veins",
           "description": "Talk to Lady Dialla",
           "checkable": true,
-          "zoneId": "1_4_3_3"
+          "zoneId": "1_4_3_3",
+          "nextZoneId": "1_4_6_1"
         },
         {
           "id": "a4_veins_7",
@@ -2039,7 +2250,8 @@
           "zone": "The Crystal Veins",
           "description": "Enter Belly of the Beast Level 1",
           "checkable": true,
-          "zoneId": "1_4_3_3"
+          "zoneId": "1_4_3_3",
+          "nextZoneId": "1_4_6_1"
         },
         {
           "id": "a4_belly1_1",
@@ -2049,7 +2261,8 @@
           "hint": "Prioritize west, then north, then east. Reverse on dead ends",
           "layoutTip": "Move west if possible. If not, move north. If neither works, move east. When you hit a dead end, turn around and repeat the priority order.",
           "checkable": true,
-          "zoneId": "1_4_6_1"
+          "zoneId": "1_4_6_1",
+          "nextZoneId": "1_4_6_2"
         },
         {
           "id": "a4_belly2_1",
@@ -2057,7 +2270,8 @@
           "zone": "The Belly of the Beast Level 2",
           "description": "Enter Bowels of the Beast and kill Piety",
           "checkable": true,
-          "zoneId": "1_4_6_2"
+          "zoneId": "1_4_6_2",
+          "nextZoneId": "1_4_6_3"
         },
         {
           "id": "a4_belly2_2",
@@ -2065,7 +2279,8 @@
           "zone": "The Belly of the Beast Level 2",
           "description": "Talk to Piety after defeating her",
           "checkable": true,
-          "zoneId": "1_4_6_2"
+          "zoneId": "1_4_6_2",
+          "nextZoneId": "1_4_6_3"
         },
         {
           "id": "a4_belly2_3",
@@ -2074,7 +2289,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_4_6_2"
+          "zoneId": "1_4_6_2",
+          "nextZoneId": "1_4_6_3"
         },
         {
           "id": "a4_belly2_4",
@@ -2082,7 +2298,8 @@
           "zone": "The Belly of the Beast Level 2",
           "description": "Enter The Harvest",
           "checkable": true,
-          "zoneId": "1_4_6_2"
+          "zoneId": "1_4_6_2",
+          "nextZoneId": "1_4_6_3"
         },
         {
           "id": "a4_harvest_1",
@@ -2092,7 +2309,8 @@
           "hint": "Static layout: 1 boss east, 2 bosses west of waypoint",
           "layoutTip": "This zone has a static layout. One boss is always east of the waypoint, and two bosses are west. You can portal to town and re-enter from waypoint between bosses if needed to manage load times.",
           "checkable": true,
-          "zoneId": "1_4_6_3"
+          "zoneId": "1_4_6_3",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_harvest_2",
@@ -2100,7 +2318,8 @@
           "zone": "The Harvest",
           "description": "Talk to Piety after killing all three",
           "checkable": true,
-          "zoneId": "1_4_6_3"
+          "zoneId": "1_4_6_3",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_harvest_3",
@@ -2110,7 +2329,8 @@
           "recommendedLevel": 35,
           "hint": "Final Act 4 boss - recommended Level 34-35",
           "checkable": true,
-          "zoneId": "1_4_6_3"
+          "zoneId": "1_4_6_3",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_harvest_4",
@@ -2118,7 +2338,8 @@
           "zone": "The Harvest",
           "description": "Return to Highgate (Relog)",
           "checkable": true,
-          "zoneId": "1_4_6_3"
+          "zoneId": "1_4_6_3",
+          "nextZoneId": "1_4_town"
         },
         {
           "id": "a4_town6_1",
@@ -2128,7 +2349,8 @@
           "quest": "The Eternal Nightmare",
           "reward": "Level 38 Support Gems",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "1_4_town",
+          "nextZoneId": "1_4_7"
         },
         {
           "id": "a4_town6_2",
@@ -2136,7 +2358,8 @@
           "zone": "Highgate",
           "description": "Enter The Ascent",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "1_4_town",
+          "nextZoneId": "1_4_7"
         },
         {
           "id": "a4_ascent_1",
@@ -2146,7 +2369,8 @@
           "hint": "Move north, cross long bridge, hug east edge after encampment",
           "layoutTip": "Move north. In the middle of the zone is a long bridge. After crossing, stick to the east edge until you pass the encampment with the crafting recipe. When the path curves west, follow it west to activate the lever.",
           "checkable": true,
-          "zoneId": "1_4_7"
+          "zoneId": "1_4_7",
+          "nextZoneId": "1_5_1"
         },
         {
           "id": "a4_ascent_2",
@@ -2166,7 +2390,8 @@
               "checkable": true,
               "zoneId": "1_5_1"
             }
-          ]
+          ],
+          "nextZoneId": "1_5_1"
         }
       ]
     },
@@ -2182,7 +2407,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_5_1"
+          "zoneId": "1_5_1",
+          "nextZoneId": "1_5_town"
         },
         {
           "id": "a5_slavepens_2",
@@ -2192,7 +2418,8 @@
           "hint": "Follow south edge to reach the corridor",
           "layoutTip": "Follow the southern edge until you reach the corridor with hanged Karui. The exit is always south of this corridor - move in a clockwise direction to reach it.",
           "checkable": true,
-          "zoneId": "1_5_1"
+          "zoneId": "1_5_1",
+          "nextZoneId": "1_5_town"
         },
         {
           "id": "a5_slavepens_3",
@@ -2201,7 +2428,8 @@
           "description": "Kill Overseer Krow",
           "hint": "Located at the end of the zone near the tower entrance",
           "checkable": true,
-          "zoneId": "1_5_1"
+          "zoneId": "1_5_1",
+          "nextZoneId": "1_5_town"
         },
         {
           "id": "a5_slavepens_4",
@@ -2209,7 +2437,8 @@
           "zone": "The Slave Pens",
           "description": "Enter Overseer's Tower",
           "checkable": true,
-          "zoneId": "1_5_1"
+          "zoneId": "1_5_1",
+          "nextZoneId": "1_5_town"
         },
         {
           "id": "a5_town1_1",
@@ -2219,7 +2448,8 @@
           "quest": "Return to Oriath",
           "reward": "Rare Ring",
           "checkable": true,
-          "zoneId": "1_5_town"
+          "zoneId": "1_5_town",
+          "nextZoneId": "1_5_2"
         },
         {
           "id": "a5_town1_2",
@@ -2227,7 +2457,8 @@
           "zone": "Overseer's Tower",
           "description": "Enter The Control Blocks",
           "checkable": true,
-          "zoneId": "1_5_town"
+          "zoneId": "1_5_town",
+          "nextZoneId": "1_5_2"
         },
         {
           "id": "a5_control_1",
@@ -2236,7 +2467,8 @@
           "description": "Collect Miasmeter",
           "hint": "Head south-west from entrance",
           "checkable": true,
-          "zoneId": "1_5_2"
+          "zoneId": "1_5_2",
+          "nextZoneId": "1_5_3"
         },
         {
           "id": "a5_control_2",
@@ -2246,7 +2478,8 @@
           "hint": "Head north from entrance - use blink skills through broken gates to skip sections",
           "layoutTip": "Move north. Use any movement skill (dash/blink) at broken gates to skip through - works both going up and down slopes.",
           "checkable": true,
-          "zoneId": "1_5_2"
+          "zoneId": "1_5_2",
+          "nextZoneId": "1_5_3"
         },
         {
           "id": "a5_control_3",
@@ -2254,7 +2487,8 @@
           "zone": "The Control Blocks",
           "description": "Enter Oriath Square",
           "checkable": true,
-          "zoneId": "1_5_2"
+          "zoneId": "1_5_2",
+          "nextZoneId": "1_5_3"
         },
         {
           "id": "a5_square_1",
@@ -2263,7 +2497,8 @@
           "description": "Enter The Templar Courts",
           "hint": "Head north from entrance",
           "checkable": true,
-          "zoneId": "1_5_3"
+          "zoneId": "1_5_3",
+          "nextZoneId": "1_5_4"
         },
         {
           "id": "a5_courts_1",
@@ -2272,7 +2507,8 @@
           "description": "Enter The Chamber of Innocence",
           "hint": "Move in a clockwise direction through the courts",
           "checkable": true,
-          "zoneId": "1_5_4"
+          "zoneId": "1_5_4",
+          "nextZoneId": "1_5_5"
         },
         {
           "id": "a5_chamber_1",
@@ -2283,7 +2519,8 @@
           "layoutTip": "Stick to the outer wall and move counter-clockwise. Each elevated platform contains a guaranteed rare monster pack - excellent zone to farm levels 40-42.",
           "recommendedLevel": 37,
           "checkable": true,
-          "zoneId": "1_5_5"
+          "zoneId": "1_5_5",
+          "nextZoneId": "1_5_town"
         },
         {
           "id": "a5_chamber_2",
@@ -2293,7 +2530,8 @@
           "hint": "Located in a side corridor about halfway through the zone",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_5_5"
+          "zoneId": "1_5_5",
+          "nextZoneId": "1_5_town"
         },
         {
           "id": "a5_sanctum_1",
@@ -2301,7 +2539,8 @@
           "zone": "The Chamber of Innocence",
           "description": "Kill High Templar Avarius",
           "checkable": true,
-          "zoneId": "1_5_5"
+          "zoneId": "1_5_5",
+          "nextZoneId": "1_5_town"
         },
         {
           "id": "a5_sanctum_2",
@@ -2309,7 +2548,8 @@
           "zone": "The Chamber of Innocence",
           "description": "Return to Overseer's Tower (Relog)",
           "checkable": true,
-          "zoneId": "1_5_5"
+          "zoneId": "1_5_5",
+          "nextZoneId": "1_5_town"
         },
         {
           "id": "a5_town2_1",
@@ -2319,7 +2559,8 @@
           "quest": "The Key to Freedom & Death to Purity",
           "reward": "Passive Point",
           "checkable": true,
-          "zoneId": "1_5_town"
+          "zoneId": "1_5_town",
+          "nextZoneId": "1_5_5"
         },
         {
           "id": "a5_town2_2",
@@ -2329,7 +2570,8 @@
           "quest": "In Service to Science",
           "reward": "Passive Point",
           "checkable": true,
-          "zoneId": "1_5_town"
+          "zoneId": "1_5_town",
+          "nextZoneId": "1_5_5"
         },
         {
           "id": "a5_town2_3",
@@ -2338,7 +2580,8 @@
           "description": "Talk to Bannon to unlock as vendor",
           "hint": "This unlocks Bannon as armor and weapon vendor in town",
           "checkable": true,
-          "zoneId": "1_5_town"
+          "zoneId": "1_5_town",
+          "nextZoneId": "1_5_5"
         },
         {
           "id": "a5_town2_4",
@@ -2346,7 +2589,8 @@
           "zone": "Overseer's Tower",
           "description": "Waypoint to The Chamber of Innocence",
           "checkable": true,
-          "zoneId": "1_5_town"
+          "zoneId": "1_5_town",
+          "nextZoneId": "1_5_5"
         },
         {
           "id": "a5_chamber_3",
@@ -2354,7 +2598,8 @@
           "zone": "The Chamber of Innocence",
           "description": "Enter The Torched Courts",
           "checkable": true,
-          "zoneId": "1_5_5"
+          "zoneId": "1_5_5",
+          "nextZoneId": "1_5_3a"
         },
         {
           "id": "a5_torched_1",
@@ -2363,7 +2608,8 @@
           "description": "Enter The Ruined Square",
           "hint": "Move counter-clockwise through the zone",
           "checkable": true,
-          "zoneId": "1_5_3a"
+          "zoneId": "1_5_3a",
+          "nextZoneId": "1_5_3b"
         },
         {
           "id": "a5_ruined_1",
@@ -2372,7 +2618,8 @@
           "description": "Activate Waypoint",
           "hint": "Fixed layout. Head south-west from entrance",
           "checkable": true,
-          "zoneId": "1_5_3b"
+          "zoneId": "1_5_3b",
+          "nextZoneId": "1_5_4"
         },
         {
           "id": "a5_ruined_2",
@@ -2380,7 +2627,8 @@
           "zone": "The Ruined Square",
           "description": "Enter The Ossuary",
           "checkable": true,
-          "zoneId": "1_5_3b"
+          "zoneId": "1_5_3b",
+          "nextZoneId": "1_5_4"
         },
         {
           "id": "a5_ossuary_1",
@@ -2390,7 +2638,8 @@
           "hint": "Located in a tomb area within the zone",
           "layoutTip": "Navigate through the ossuary to find the tomb containing the Sign of Purity. If your load times are fast, portal/relog immediately after grabbing it. Otherwise, use the lever and exit via the entrance.",
           "checkable": true,
-          "zoneId": "1_5_4"
+          "zoneId": "1_5_4",
+          "nextZoneId": "1_5_town"
         },
         {
           "id": "a5_ossuary_2",
@@ -2399,7 +2648,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_5_4"
+          "zoneId": "1_5_4",
+          "nextZoneId": "1_5_town"
         },
         {
           "id": "a5_ossuary_3",
@@ -2407,7 +2657,8 @@
           "zone": "The Ossuary",
           "description": "Return to Overseer's Tower (Relog)",
           "checkable": true,
-          "zoneId": "1_5_4"
+          "zoneId": "1_5_4",
+          "nextZoneId": "1_5_town"
         },
         {
           "id": "a5_town3_1",
@@ -2415,7 +2666,8 @@
           "zone": "Overseer's Tower",
           "description": "Waypoint to The Ruined Square",
           "checkable": true,
-          "zoneId": "1_5_town"
+          "zoneId": "1_5_town",
+          "nextZoneId": "1_5_3b"
         },
         {
           "id": "a5_ruined_3",
@@ -2424,7 +2676,8 @@
           "description": "Move to central square",
           "hint": "Head south from waypoint to reach the large central square",
           "checkable": true,
-          "zoneId": "1_5_3b"
+          "zoneId": "1_5_3b",
+          "nextZoneId": "1_5_7"
         },
         {
           "id": "a5_ruined_4",
@@ -2434,7 +2687,8 @@
           "hint": "Move east from the square center",
           "optionalNote": "[WEAPON QUEST] Optional quest",
           "checkable": true,
-          "zoneId": "1_5_3b"
+          "zoneId": "1_5_3b",
+          "nextZoneId": "1_5_7"
         },
         {
           "id": "a5_ruined_5",
@@ -2443,7 +2697,8 @@
           "description": "Enter The Reliquary",
           "hint": "From the central square, move south-east",
           "checkable": true,
-          "zoneId": "1_5_3b"
+          "zoneId": "1_5_3b",
+          "nextZoneId": "1_5_7"
         },
         {
           "id": "a5_reliquary_1",
@@ -2453,7 +2708,8 @@
           "hint": "Found near the corners - choose a direction and follow the outer edge",
           "layoutTip": "Pick clockwise or counter-clockwise and follow the outer edge of the zone. The three Kitava's Torment relics are positioned near the corners of the zone.",
           "checkable": true,
-          "zoneId": "1_5_7"
+          "zoneId": "1_5_7",
+          "nextZoneId": "1_5_town"
         },
         {
           "id": "a5_reliquary_2",
@@ -2462,7 +2718,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "1_5_7"
+          "zoneId": "1_5_7",
+          "nextZoneId": "1_5_town"
         },
         {
           "id": "a5_reliquary_3",
@@ -2471,7 +2728,8 @@
           "description": "Return to Overseer's Tower (Relog or waypoint)",
           "hint": "After collecting the third relic, waypoint or die to respawn in town (softcore only)",
           "checkable": true,
-          "zoneId": "1_5_7"
+          "zoneId": "1_5_7",
+          "nextZoneId": "1_5_town"
         },
         {
           "id": "a5_town4_1",
@@ -2481,7 +2739,8 @@
           "quest": "Kitava's Torments",
           "reward": "Passive Point",
           "checkable": true,
-          "zoneId": "1_5_town"
+          "zoneId": "1_5_town",
+          "nextZoneId": "1_5_3b"
         },
         {
           "id": "a5_town4_2",
@@ -2491,7 +2750,8 @@
           "hint": "Opens arena fight with Utula - only if you killed Utula earlier",
           "optionalNote": "[WEAPON QUEST] Optional quest",
           "checkable": true,
-          "zoneId": "1_5_town"
+          "zoneId": "1_5_town",
+          "nextZoneId": "1_5_3b"
         },
         {
           "id": "a5_town4_3",
@@ -2499,7 +2759,8 @@
           "zone": "Overseer's Tower",
           "description": "Waypoint to The Ruined Square",
           "checkable": true,
-          "zoneId": "1_5_town"
+          "zoneId": "1_5_town",
+          "nextZoneId": "1_5_3b"
         },
         {
           "id": "a5_ruined_6",
@@ -2508,7 +2769,8 @@
           "description": "Enter The Cathedral Rooftop",
           "hint": "Move south from the central square",
           "checkable": true,
-          "zoneId": "1_5_3b"
+          "zoneId": "1_5_3b",
+          "nextZoneId": "1_5_8"
         },
         {
           "id": "a5_rooftop_1",
@@ -2517,7 +2779,8 @@
           "description": "Navigate to Cathedral Apex",
           "hint": "Move north-east through the rooftop",
           "checkable": true,
-          "zoneId": "1_5_8"
+          "zoneId": "1_5_8",
+          "nextZoneId": "2_6_1"
         },
         {
           "id": "a5_apex_1",
@@ -2526,7 +2789,8 @@
           "description": "Kill Kitava",
           "hint": "Final boss of Act 5 - permanent -30% resistance penalty after death",
           "checkable": true,
-          "zoneId": "1_5_8"
+          "zoneId": "1_5_8",
+          "nextZoneId": "2_6_1"
         },
         {
           "id": "a5_apex_2",
@@ -2535,7 +2799,8 @@
           "description": "Talk to Lilly Roth",
           "quest": "The Fall of Oriath",
           "checkable": true,
-          "zoneId": "1_5_8"
+          "zoneId": "1_5_8",
+          "nextZoneId": "2_6_1"
         },
         {
           "id": "a5_apex_3",
@@ -2544,7 +2809,8 @@
           "description": "Sail to Lioneye's Watch (Act 6)",
           "hint": "Beginning of Part 2 - you will revisit Wraeclast",
           "checkable": true,
-          "zoneId": "1_5_8"
+          "zoneId": "1_5_8",
+          "nextZoneId": "2_6_1"
         }
       ]
     },
@@ -2562,7 +2828,8 @@
           "layoutTip": "Clear East to West to East pattern - faster than following the edge. Ensure you've discovered the full minimap.",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_6_1"
+          "zoneId": "2_6_1",
+          "nextZoneId": "2_6_town"
         },
         {
           "id": "a6_twilight_2",
@@ -2571,7 +2838,8 @@
           "description": "Return to Lioneye's Watch",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_6_1"
+          "zoneId": "2_6_1",
+          "nextZoneId": "2_6_town"
         },
         {
           "id": "a6_town1_1",
@@ -2581,7 +2849,8 @@
           "quest": "Fallen from Grace",
           "reward": "Respec Points",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "2_6_town",
+          "nextZoneId": "2_6_2"
         },
         {
           "id": "a6_town1_2",
@@ -2591,7 +2860,8 @@
           "hint": "Skip gems if no PoB imported",
           "optionalNote": "Skip if league-start",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "2_6_town",
+          "nextZoneId": "2_6_2"
         },
         {
           "id": "a6_town1_3",
@@ -2599,7 +2869,8 @@
           "zone": "Lioneye's Watch",
           "description": "Enter The Coast",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "2_6_town",
+          "nextZoneId": "2_6_2"
         },
         {
           "id": "a6_coast_1",
@@ -2608,7 +2879,8 @@
           "description": "Activate Waypoint",
           "layoutTip": "Move in a direct line toward the direction the zone extends - ignore layout variants.",
           "checkable": true,
-          "zoneId": "2_6_2"
+          "zoneId": "2_6_2",
+          "nextZoneId": "2_6_4"
         },
         {
           "id": "a6_coast_2",
@@ -2616,7 +2888,8 @@
           "zone": "The Coast",
           "description": "Enter The Mud Flats",
           "checkable": true,
-          "zoneId": "2_6_2"
+          "zoneId": "2_6_2",
+          "nextZoneId": "2_6_4"
         },
         {
           "id": "a6_mudflats_1",
@@ -2626,7 +2899,8 @@
           "hint": "Located at the former Submerged Passage entrance (east edge)",
           "layoutTip": "Head east until you hit the edge, then move north or south to find the Submerged entrance marked by Nessa. Queen is nearby. No need to talk to Nessa.",
           "checkable": true,
-          "zoneId": "2_6_4"
+          "zoneId": "2_6_4",
+          "nextZoneId": "2_6_5"
         },
         {
           "id": "a6_mudflats_2",
@@ -2635,7 +2909,8 @@
           "description": "Find and enter Karui Fortress",
           "hint": "From Queen, follow the north edge eastward",
           "checkable": true,
-          "zoneId": "2_6_4"
+          "zoneId": "2_6_4",
+          "nextZoneId": "2_6_5"
         },
         {
           "id": "a6_karui_1",
@@ -2644,7 +2919,8 @@
           "description": "Enter Tukohama's Keep and kill Tukohama",
           "layoutTip": "Static layout. Move east from entrance to find Tukohama's boss arena entrance.",
           "checkable": true,
-          "zoneId": "2_6_5"
+          "zoneId": "2_6_5",
+          "nextZoneId": "2_6_6"
         },
         {
           "id": "a6_karui_2",
@@ -2653,7 +2929,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_6_5"
+          "zoneId": "2_6_5",
+          "nextZoneId": "2_6_6"
         },
         {
           "id": "a6_karui_3",
@@ -2663,7 +2940,8 @@
           "hint": "After exiting Tukohama's arena, move east then north to the exit",
           "layoutTip": "Exit through the north door of the boss arena, continue east, then head north to find The Ridge exit.",
           "checkable": true,
-          "zoneId": "2_6_5"
+          "zoneId": "2_6_5",
+          "nextZoneId": "2_6_6"
         },
         {
           "id": "a6_ridge_1",
@@ -2672,7 +2950,8 @@
           "description": "Activate Waypoint",
           "layoutTip": "Follow the right wall from the entrance.",
           "checkable": true,
-          "zoneId": "2_6_6"
+          "zoneId": "2_6_6",
+          "nextZoneId": "2_6_2"
         },
         {
           "id": "a6_ridge_2",
@@ -2682,7 +2961,8 @@
           "hint": "Can portal directly to Coast or via town waypoint",
           "optionalNote": "[LEAGUE START] League-start only - if Twilight Strand was cleared",
           "checkable": true,
-          "zoneId": "2_6_6"
+          "zoneId": "2_6_6",
+          "nextZoneId": "2_6_2"
         },
         {
           "id": "a6_coast_3",
@@ -2692,7 +2972,8 @@
           "hint": "Skip if you have a strong belt equipped",
           "optionalNote": "[LEAGUE START] Only if you need belt upgrade",
           "checkable": true,
-          "zoneId": "2_6_2"
+          "zoneId": "2_6_2",
+          "nextZoneId": "2_6_3"
         },
         {
           "id": "a6_tidal_1",
@@ -2702,7 +2983,8 @@
           "layoutTip": "Head west. If you hit a ledge, turn around and take the east side to reach the storage chest.",
           "optionalNote": "[LEAGUE START] Only if you need belt upgrade",
           "checkable": true,
-          "zoneId": "2_6_3"
+          "zoneId": "2_6_3",
+          "nextZoneId": "2_6_town"
         },
         {
           "id": "a6_tidal_2",
@@ -2711,7 +2993,8 @@
           "description": "Return to town (Relog)",
           "optionalNote": "[LEAGUE START] Only if you completed Tidal Island",
           "checkable": true,
-          "zoneId": "2_6_3"
+          "zoneId": "2_6_3",
+          "nextZoneId": "2_6_town"
         },
         {
           "id": "a6_town2_1",
@@ -2722,7 +3005,8 @@
           "reward": "Respec Points (if Twilight Strand cleared)",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "2_6_town",
+          "nextZoneId": "2_6_6"
         },
         {
           "id": "a6_town2_2",
@@ -2732,7 +3016,8 @@
           "quest": "Father of War",
           "reward": "Passive Point",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "2_6_town",
+          "nextZoneId": "2_6_6"
         },
         {
           "id": "a6_town2_3",
@@ -2743,7 +3028,8 @@
           "reward": "Rare Belt",
           "optionalNote": "Only if Tidal Island completed",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "2_6_town",
+          "nextZoneId": "2_6_6"
         },
         {
           "id": "a6_town2_4",
@@ -2751,7 +3037,8 @@
           "zone": "Lioneye's Watch",
           "description": "Waypoint to The Ridge",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "2_6_town",
+          "nextZoneId": "2_6_6"
         },
         {
           "id": "a6_ridge_3",
@@ -2759,7 +3046,8 @@
           "zone": "The Ridge",
           "description": "Navigate to The Lower Prison",
           "checkable": true,
-          "zoneId": "2_6_6"
+          "zoneId": "2_6_6",
+          "nextZoneId": "2_6_7_1"
         },
         {
           "id": "a6_prison_1",
@@ -2772,7 +3060,8 @@
           "hidden": "optional",
           "checkable": true,
           "zoneId": "2_6_7_1",
-          "zoneMapName": "The Prison"
+          "zoneMapName": "The Prison",
+          "nextZoneId": "2_6_7_2"
         },
         {
           "id": "a6_prison_2",
@@ -2782,7 +3071,8 @@
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
           "zoneId": "2_6_7_1",
-          "zoneMapName": "The Prison"
+          "zoneMapName": "The Prison",
+          "nextZoneId": "2_6_7_2"
         },
         {
           "id": "a6_prison_3",
@@ -2790,7 +3080,8 @@
           "zone": "The Lower Prison",
           "description": "Enter Shavronne's Tower",
           "checkable": true,
-          "zoneId": "2_6_7_1"
+          "zoneId": "2_6_7_1",
+          "nextZoneId": "2_6_7_2"
         },
         {
           "id": "a6_tower_1",
@@ -2799,7 +3090,8 @@
           "description": "Reach the Prison Rooftop and kill Shavronne & Brutus",
           "layoutTip": "Follow the left wall from entrance on each floor.",
           "checkable": true,
-          "zoneId": "2_6_7_2"
+          "zoneId": "2_6_7_2",
+          "nextZoneId": "2_6_8"
         },
         {
           "id": "a6_tower_2",
@@ -2807,7 +3099,8 @@
           "zone": "Shavronne's Tower",
           "description": "Enter Warden's Chambers",
           "checkable": true,
-          "zoneId": "2_6_7_2"
+          "zoneId": "2_6_7_2",
+          "nextZoneId": "2_6_8"
         },
         {
           "id": "a6_chambers_1",
@@ -2816,7 +3109,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_6_7_2"
+          "zoneId": "2_6_7_2",
+          "nextZoneId": "2_6_8"
         },
         {
           "id": "a6_chambers_2",
@@ -2824,7 +3118,8 @@
           "zone": "Shavronne's Tower",
           "description": "Enter Prisoner's Gate",
           "checkable": true,
-          "zoneId": "2_6_7_2"
+          "zoneId": "2_6_7_2",
+          "nextZoneId": "2_6_8"
         },
         {
           "id": "a6_prisoners_1",
@@ -2834,7 +3129,8 @@
           "hint": "Arena is in the side area behind a ledge",
           "layoutTip": "Arena entrance is located in the side zone behind the ledge, not on the main road.",
           "checkable": true,
-          "zoneId": "2_6_8"
+          "zoneId": "2_6_8",
+          "nextZoneId": "2_6_9"
         },
         {
           "id": "a6_prisoners_2",
@@ -2843,7 +3139,8 @@
           "description": "Follow the road to Western Forest",
           "hint": "Stay on the main road to reach the exit",
           "checkable": true,
-          "zoneId": "2_6_8"
+          "zoneId": "2_6_8",
+          "nextZoneId": "2_6_9"
         },
         {
           "id": "a6_western_1",
@@ -2852,7 +3149,8 @@
           "description": "Follow the road to The Riverways",
           "hint": "Stay on the main road",
           "checkable": true,
-          "zoneId": "2_6_9"
+          "zoneId": "2_6_9",
+          "nextZoneId": "2_6_10"
         },
         {
           "id": "a6_western_2",
@@ -2862,7 +3160,8 @@
           "hint": "Side path marked by a torch on the road",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_6_9"
+          "zoneId": "2_6_9",
+          "nextZoneId": "2_6_10"
         },
         {
           "id": "a6_riverways_1",
@@ -2871,7 +3170,8 @@
           "description": "Activate Waypoint",
           "hint": "Follow the main road to find the waypoint",
           "checkable": true,
-          "zoneId": "2_6_10"
+          "zoneId": "2_6_10",
+          "nextZoneId": "2_6_11"
         },
         {
           "id": "a6_riverways_2",
@@ -2881,7 +3181,8 @@
           "hint": "Pebble path at waypoint leads to Wetlands",
           "layoutTip": "At the waypoint, look for a pebble path between two pillars - this leads to The Wetlands.",
           "checkable": true,
-          "zoneId": "2_6_10"
+          "zoneId": "2_6_10",
+          "nextZoneId": "2_6_11"
         },
         {
           "id": "a6_wetlands_1",
@@ -2891,7 +3192,8 @@
           "hint": "Head south to locate the boss arena",
           "layoutTip": "Follow the left wall until you find the Spawning Grounds arena entrance.",
           "checkable": true,
-          "zoneId": "2_6_11"
+          "zoneId": "2_6_11",
+          "nextZoneId": "2_6_town"
         },
         {
           "id": "a6_wetlands_2",
@@ -2899,7 +3201,8 @@
           "zone": "The Wetlands",
           "description": "Return to town (Relog)",
           "checkable": true,
-          "zoneId": "2_6_11"
+          "zoneId": "2_6_11",
+          "nextZoneId": "2_6_town"
         },
         {
           "id": "a6_town3_1",
@@ -2909,7 +3212,8 @@
           "quest": "Essence of Umbra, Puppet Mistress",
           "reward": "Passive Point, Rare Helmet",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "2_6_town",
+          "nextZoneId": "2_6_10"
         },
         {
           "id": "a6_town3_2",
@@ -2919,7 +3223,8 @@
           "quest": "The Cloven One",
           "reward": "Passive Point",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "2_6_town",
+          "nextZoneId": "2_6_10"
         },
         {
           "id": "a6_town3_3",
@@ -2927,7 +3232,8 @@
           "zone": "Lioneye's Watch",
           "description": "Waypoint to The Riverways",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "2_6_town",
+          "nextZoneId": "2_6_10"
         },
         {
           "id": "a6_riverways_3",
@@ -2937,7 +3243,8 @@
           "hint": "At the blocked road, head south for the exit",
           "layoutTip": "Continue along the road past the waypoint. When you reach the blockage, turn south to find the Southern Forest exit.",
           "checkable": true,
-          "zoneId": "2_6_10"
+          "zoneId": "2_6_10",
+          "nextZoneId": "2_6_12"
         },
         {
           "id": "a6_southern_1",
@@ -2947,7 +3254,8 @@
           "hint": "Great zone for experience farming if needed",
           "layoutTip": "Head east until you hit the large wall at the east edge, then travel south to find the cavern entrance.",
           "checkable": true,
-          "zoneId": "2_6_12"
+          "zoneId": "2_6_12",
+          "nextZoneId": "2_6_13"
         },
         {
           "id": "a6_cavern_1",
@@ -2957,7 +3265,8 @@
           "hint": "Arena exit usually south or east, rarely west",
           "layoutTip": "Follow along the east edge of the zone to navigate efficiently.",
           "checkable": true,
-          "zoneId": "2_6_13"
+          "zoneId": "2_6_13",
+          "nextZoneId": "2_6_14"
         },
         {
           "id": "a6_cavern_2",
@@ -2965,7 +3274,8 @@
           "zone": "The Cavern of Anger",
           "description": "Find and enter The Beacon",
           "checkable": true,
-          "zoneId": "2_6_13"
+          "zoneId": "2_6_13",
+          "nextZoneId": "2_6_14"
         },
         {
           "id": "a6_beacon_1",
@@ -2975,7 +3285,8 @@
           "hint": "Complete the pillar puzzle to reach the beacon",
           "layoutTip": "Head north and follow the north edge until you find the passage to the open beach area. Move north-east - if you find beach first, lighthouse is usually north.",
           "checkable": true,
-          "zoneId": "2_6_14"
+          "zoneId": "2_6_14",
+          "nextZoneId": "2_6_15"
         },
         {
           "id": "a6_beacon_2",
@@ -2984,7 +3295,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_6_14"
+          "zoneId": "2_6_14",
+          "nextZoneId": "2_6_15"
         },
         {
           "id": "a6_beacon_3",
@@ -2992,7 +3304,8 @@
           "zone": "The Beacon",
           "description": "Talk to Weylam and sail to Brine King's Reef",
           "checkable": true,
-          "zoneId": "2_6_14"
+          "zoneId": "2_6_14",
+          "nextZoneId": "2_6_15"
         },
         {
           "id": "a6_reef_1",
@@ -3002,7 +3315,8 @@
           "hint": "Final boss of Act 6",
           "layoutTip": "Follow the east edge through the reef to reach the boss arena.",
           "checkable": true,
-          "zoneId": "2_6_15"
+          "zoneId": "2_6_15",
+          "nextZoneId": "2_7_2"
         },
         {
           "id": "a6_reef_2",
@@ -3011,7 +3325,8 @@
           "description": "Travel to The Southern Forest (Act 7)",
           "hint": "Beginning of Act 7",
           "checkable": true,
-          "zoneId": "2_6_15"
+          "zoneId": "2_6_15",
+          "nextZoneId": "2_7_2"
         }
       ]
     },
@@ -3027,7 +3342,8 @@
           "description": "Navigate to The Broken Bridge",
           "hint": "Follow the road upward",
           "checkable": true,
-          "zoneId": "2_7_2"
+          "zoneId": "2_7_2",
+          "nextZoneId": "2_7_1"
         },
         {
           "id": "a7_bridge_1",
@@ -3036,7 +3352,8 @@
           "description": "Activate Waypoint",
           "hint": "Follow the road to the waypoint",
           "checkable": true,
-          "zoneId": "2_7_1"
+          "zoneId": "2_7_1",
+          "nextZoneId": "2_7_2"
         },
         {
           "id": "a7_bridge_2",
@@ -3047,7 +3364,8 @@
           "layoutTip": "The ruins entrance is close to the waypoint. Enter and collect the Silver Locket.",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_7_1"
+          "zoneId": "2_7_1",
+          "nextZoneId": "2_7_2"
         },
         {
           "id": "a7_bridge_3",
@@ -3055,7 +3373,8 @@
           "zone": "The Broken Bridge",
           "description": "Follow the road to The Crossroads",
           "checkable": true,
-          "zoneId": "2_7_1"
+          "zoneId": "2_7_1",
+          "nextZoneId": "2_7_2"
         },
         {
           "id": "a7_crossroads_1",
@@ -3064,7 +3383,8 @@
           "description": "Activate Waypoint",
           "hint": "Follow the road - waypoint is centrally located",
           "checkable": true,
-          "zoneId": "2_7_2"
+          "zoneId": "2_7_2",
+          "nextZoneId": "2_7_3"
         },
         {
           "id": "a7_crossroads_2",
@@ -3073,7 +3393,8 @@
           "description": "Head south from waypoint to Fellshrine Ruins",
           "hint": "North leads to Chamber of Sins, south to Fellshrine",
           "checkable": true,
-          "zoneId": "2_7_2"
+          "zoneId": "2_7_2",
+          "nextZoneId": "2_7_3"
         },
         {
           "id": "a7_fellshrine_1",
@@ -3082,7 +3403,8 @@
           "description": "Follow the road to The Crypt",
           "hint": "Stay on the main road through the ruins",
           "checkable": true,
-          "zoneId": "2_7_3"
+          "zoneId": "2_7_3",
+          "nextZoneId": "2_7_4"
         },
         {
           "id": "a7_crypt_1",
@@ -3093,7 +3415,8 @@
           "optionalNote": "[LEAGUE START] League-start only",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "2_7_4"
+          "zoneId": "2_7_4",
+          "nextZoneId": "2_7_town"
         },
         {
           "id": "a7_crypt_2",
@@ -3102,7 +3425,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_7_4"
+          "zoneId": "2_7_4",
+          "nextZoneId": "2_7_town"
         },
         {
           "id": "a7_crypt_3",
@@ -3112,7 +3436,8 @@
           "hint": "Look for the arena-marked sarcophagus",
           "layoutTip": "Draw an imaginary line through the zone. Follow the opposite wall of the waypoint - if waypoint is below the line, follow the wall behind it. If above, follow the opposite wall.",
           "checkable": true,
-          "zoneId": "2_7_4"
+          "zoneId": "2_7_4",
+          "nextZoneId": "2_7_town"
         },
         {
           "id": "a7_crypt_4",
@@ -3120,7 +3445,8 @@
           "zone": "The Crypt",
           "description": "Return to The Bridge Encampment (Relog)",
           "checkable": true,
-          "zoneId": "2_7_4"
+          "zoneId": "2_7_4",
+          "nextZoneId": "2_7_town"
         },
         {
           "id": "a7_town1_1",
@@ -3131,7 +3457,8 @@
           "reward": "Quicksilver Flask",
           "optionalNote": "[LEAGUE START] League-start only, if collected",
           "checkable": true,
-          "zoneId": "2_7_town"
+          "zoneId": "2_7_town",
+          "nextZoneId": "2_7_2"
         },
         {
           "id": "a7_town1_2",
@@ -3139,7 +3466,8 @@
           "zone": "The Bridge Encampment",
           "description": "Waypoint to The Crossroads",
           "checkable": true,
-          "zoneId": "2_7_town"
+          "zoneId": "2_7_town",
+          "nextZoneId": "2_7_2"
         },
         {
           "id": "a7_crossroads_3",
@@ -3148,7 +3476,8 @@
           "description": "Head north from waypoint to Chamber of Sins Level 1",
           "hint": "North of the waypoint leads to Chamber of Sins",
           "checkable": true,
-          "zoneId": "2_7_2"
+          "zoneId": "2_7_2",
+          "nextZoneId": "2_7_5_1"
         },
         {
           "id": "a7_chamber1_1",
@@ -3157,7 +3486,8 @@
           "description": "Activate Waypoint",
           "hint": "Waypoint indicates the direction to Chamber of Sins Level 2",
           "checkable": true,
-          "zoneId": "2_7_5_1"
+          "zoneId": "2_7_5_1",
+          "nextZoneId": "2_7_5_map"
         },
         {
           "id": "a7_chamber1_2",
@@ -3166,7 +3496,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_7_5_1"
+          "zoneId": "2_7_5_1",
+          "nextZoneId": "2_7_5_map"
         },
         {
           "id": "a7_chamber1_3",
@@ -3175,7 +3506,8 @@
           "description": "Use Maligaro's Map in the Map Device",
           "hint": "Map Device is in the central area",
           "checkable": true,
-          "zoneId": "2_7_5_1"
+          "zoneId": "2_7_5_1",
+          "nextZoneId": "2_7_5_map"
         },
         {
           "id": "a7_chamber1_4",
@@ -3183,7 +3515,8 @@
           "zone": "The Chamber of Sins Level 1",
           "description": "Enter Maligaro's Sanctum",
           "checkable": true,
-          "zoneId": "2_7_5_1"
+          "zoneId": "2_7_5_1",
+          "nextZoneId": "2_7_5_map"
         },
         {
           "id": "a7_sanctum_1",
@@ -3193,7 +3526,8 @@
           "hint": "Follow edges and bridges to reach the workshop",
           "layoutTip": "Follow the outer edges and cross the bridges in sequence to reach Maligaro's Workshop at the far end.",
           "checkable": true,
-          "zoneId": "2_7_5_map"
+          "zoneId": "2_7_5_map",
+          "nextZoneId": "2_7_5_1"
         },
         {
           "id": "a7_sanctum_2",
@@ -3202,7 +3536,8 @@
           "description": "Collect Maligaro's Venom",
           "hint": "Drops from Maligaro",
           "checkable": true,
-          "zoneId": "2_7_5_map"
+          "zoneId": "2_7_5_map",
+          "nextZoneId": "2_7_5_1"
         },
         {
           "id": "a7_sanctum_3",
@@ -3212,7 +3547,8 @@
           "hint": "Relog for league start, portal for non-league start",
           "optionalNote": "[LEAGUE START] Relog, otherwise use Portal",
           "checkable": true,
-          "zoneId": "2_7_5_map"
+          "zoneId": "2_7_5_map",
+          "nextZoneId": "2_7_5_1"
         },
         {
           "id": "a7_chamber1_5",
@@ -3222,7 +3558,8 @@
           "hint": "Helena: Essence of the Artist, Weylam: Silver Locket",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_7_5_1"
+          "zoneId": "2_7_5_1",
+          "nextZoneId": "2_7_5_2"
         },
         {
           "id": "a7_chamber1_6",
@@ -3233,7 +3570,8 @@
           "reward": "Obsidian Key",
           "hint": "Silk appears after returning from Maligaro's Sanctum",
           "checkable": true,
-          "zoneId": "2_7_5_1"
+          "zoneId": "2_7_5_1",
+          "nextZoneId": "2_7_5_2"
         },
         {
           "id": "a7_chamber1_7",
@@ -3243,7 +3581,8 @@
           "hint": "Waypoint points toward the exit direction",
           "layoutTip": "Find the entrance to the inner circular room, then head to the passage behind the waypoint.",
           "checkable": true,
-          "zoneId": "2_7_5_1"
+          "zoneId": "2_7_5_1",
+          "nextZoneId": "2_7_5_2"
         },
         {
           "id": "a7_chamber2_1",
@@ -3253,7 +3592,8 @@
           "optionalNote": "[LEAGUE START] League-start only",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "2_7_5_2"
+          "zoneId": "2_7_5_2",
+          "nextZoneId": "2_7_6"
         },
         {
           "id": "a7_chamber2_2",
@@ -3262,7 +3602,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_7_5_2"
+          "zoneId": "2_7_5_2",
+          "nextZoneId": "2_7_6"
         },
         {
           "id": "a7_chamber2_3",
@@ -3271,7 +3612,8 @@
           "description": "Unlock the Secret Passage with Obsidian Key",
           "hint": "Secret passage leads to The Den",
           "checkable": true,
-          "zoneId": "2_7_5_2"
+          "zoneId": "2_7_5_2",
+          "nextZoneId": "2_7_6"
         },
         {
           "id": "a7_chamber2_4",
@@ -3279,7 +3621,8 @@
           "zone": "The Chamber of Sins Level 2",
           "description": "Enter The Den",
           "checkable": true,
-          "zoneId": "2_7_5_2"
+          "zoneId": "2_7_5_2",
+          "nextZoneId": "2_7_6"
         },
         {
           "id": "a7_den_1",
@@ -3288,7 +3631,8 @@
           "description": "Navigate to The Ashen Fields",
           "layoutTip": "Follow the direction the zone extends. At the first intersection, turn 90° right and continue in the new direction.",
           "checkable": true,
-          "zoneId": "2_7_6"
+          "zoneId": "2_7_6",
+          "nextZoneId": "2_7_7"
         },
         {
           "id": "a7_ashen_1",
@@ -3300,7 +3644,8 @@
           "optionalNote": "Early option - can be delayed to start of Act 8",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "2_7_7"
+          "zoneId": "2_7_7",
+          "nextZoneId": "2_7_8"
         },
         {
           "id": "a7_ashen_2",
@@ -3310,7 +3655,8 @@
           "hint": "Head toward the northwest section of the zone",
           "layoutTip": "Follow the main road northwest to find the boss encounter area.",
           "checkable": true,
-          "zoneId": "2_7_7"
+          "zoneId": "2_7_7",
+          "nextZoneId": "2_7_8"
         },
         {
           "id": "a7_ashen_3",
@@ -3319,7 +3665,8 @@
           "description": "Enter The Northern Forest",
           "layoutTip": "Continue on the road after the boss area.",
           "checkable": true,
-          "zoneId": "2_7_7"
+          "zoneId": "2_7_7",
+          "nextZoneId": "2_7_8"
         },
         {
           "id": "a7_northern_1",
@@ -3329,7 +3676,8 @@
           "hint": "Place portal at Dread Thicket entrance when found",
           "layoutTip": "Move southwest to the west edge, then travel north along the west edge.",
           "checkable": true,
-          "zoneId": "2_7_8"
+          "zoneId": "2_7_8",
+          "nextZoneId": "2_7_town"
         },
         {
           "id": "a7_northern_2",
@@ -3337,7 +3685,8 @@
           "zone": "The Northern Forest",
           "description": "Waypoint to The Bridge Encampment",
           "checkable": true,
-          "zoneId": "2_7_8"
+          "zoneId": "2_7_8",
+          "nextZoneId": "2_7_town"
         },
         {
           "id": "a7_town2_1",
@@ -3347,7 +3696,8 @@
           "quest": "The Master of a Million Faces",
           "reward": "⭐ PASSIVE POINT",
           "checkable": true,
-          "zoneId": "2_7_town"
+          "zoneId": "2_7_town",
+          "nextZoneId": "2_6_town"
         },
         {
           "id": "a7_town2_2",
@@ -3358,7 +3708,8 @@
           "reward": "Quest Completion",
           "optionalNote": "Skip if league-start (already completed)",
           "checkable": true,
-          "zoneId": "2_7_town"
+          "zoneId": "2_7_town",
+          "nextZoneId": "2_6_town"
         },
         {
           "id": "a7_town2_3",
@@ -3366,7 +3717,8 @@
           "zone": "The Bridge Encampment",
           "description": "Waypoint to Lioneye's Watch (Act 6)",
           "checkable": true,
-          "zoneId": "2_7_town"
+          "zoneId": "2_7_town",
+          "nextZoneId": "2_6_town"
         },
         {
           "id": "a7_town3_1",
@@ -3376,7 +3728,8 @@
           "quest": "The Cloven One",
           "reward": "⭐ PASSIVE POINT",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "2_6_town",
+          "nextZoneId": "2_7_8"
         },
         {
           "id": "a7_town3_2",
@@ -3384,7 +3737,8 @@
           "zone": "Lioneye's Watch",
           "description": "Waypoint to The Northern Forest",
           "checkable": true,
-          "zoneId": "2_6_town"
+          "zoneId": "2_6_town",
+          "nextZoneId": "2_7_8"
         },
         {
           "id": "a7_northern_3",
@@ -3394,7 +3748,8 @@
           "hint": "Look for Dread Thicket entrance and place portal",
           "layoutTip": "Continue north along the west edge. If you find the Dread Thicket entrance, place a portal and keep moving north.",
           "checkable": true,
-          "zoneId": "2_7_8"
+          "zoneId": "2_7_8",
+          "nextZoneId": "2_7_10"
         },
         {
           "id": "a7_causeway_1",
@@ -3403,7 +3758,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_7_10"
+          "zoneId": "2_7_10",
+          "nextZoneId": "2_7_11"
         },
         {
           "id": "a7_causeway_2",
@@ -3413,7 +3769,8 @@
           "hint": "Quest item found in the zone",
           "layoutTip": "Move along the west edge to efficiently navigate the zone.",
           "checkable": true,
-          "zoneId": "2_7_10"
+          "zoneId": "2_7_10",
+          "nextZoneId": "2_7_11"
         },
         {
           "id": "a7_causeway_3",
@@ -3421,7 +3778,8 @@
           "zone": "The Causeway",
           "description": "Enter The Vaal City",
           "checkable": true,
-          "zoneId": "2_7_10"
+          "zoneId": "2_7_10",
+          "nextZoneId": "2_7_11"
         },
         {
           "id": "a7_vaal_1",
@@ -3430,7 +3788,8 @@
           "description": "Activate Waypoint",
           "layoutTip": "Move northwest. If you hit a wall, walk around it westward and continue northwest. If the wall extends more than one screen northwest, find an opening, move east, then head east/southeast to find the waypoint.",
           "checkable": true,
-          "zoneId": "2_7_11"
+          "zoneId": "2_7_11",
+          "nextZoneId": "2_7_8"
         },
         {
           "id": "a7_vaal_2",
@@ -3438,7 +3797,8 @@
           "zone": "The Vaal City",
           "description": "Waypoint to The Northern Forest",
           "checkable": true,
-          "zoneId": "2_7_11"
+          "zoneId": "2_7_11",
+          "nextZoneId": "2_7_8"
         },
         {
           "id": "a7_northern_4",
@@ -3447,7 +3807,8 @@
           "description": "Enter The Dread Thicket",
           "hint": "Use portal placed earlier if available",
           "checkable": true,
-          "zoneId": "2_7_8"
+          "zoneId": "2_7_8",
+          "nextZoneId": "2_7_9"
         },
         {
           "id": "a7_dread_1",
@@ -3456,7 +3817,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_7_9"
+          "zoneId": "2_7_9",
+          "nextZoneId": "2_7_town"
         },
         {
           "id": "a7_dread_2",
@@ -3465,7 +3827,8 @@
           "description": "Collect 7 Fireflies",
           "hint": "Fireflies are scattered throughout the zone",
           "checkable": true,
-          "zoneId": "2_7_9"
+          "zoneId": "2_7_9",
+          "nextZoneId": "2_7_town"
         },
         {
           "id": "a7_dread_3",
@@ -3474,7 +3837,8 @@
           "description": "Find Gruthkul's Den and kill Gruthkul",
           "hint": "Arena-marked den in the zone",
           "checkable": true,
-          "zoneId": "2_7_9"
+          "zoneId": "2_7_9",
+          "nextZoneId": "2_7_town"
         },
         {
           "id": "a7_dread_4",
@@ -3482,7 +3846,8 @@
           "zone": "The Dread Thicket",
           "description": "Return to The Bridge Encampment (Relog)",
           "checkable": true,
-          "zoneId": "2_7_9"
+          "zoneId": "2_7_9",
+          "nextZoneId": "2_7_town"
         },
         {
           "id": "a7_town4_1",
@@ -3492,7 +3857,8 @@
           "quest": "Kishara's Star",
           "reward": "⭐ PASSIVE POINT",
           "checkable": true,
-          "zoneId": "2_7_town"
+          "zoneId": "2_7_town",
+          "nextZoneId": "2_7_11"
         },
         {
           "id": "a7_town4_2",
@@ -3502,7 +3868,8 @@
           "quest": "Queen of Despair",
           "reward": "⭐ PASSIVE POINT, Rare Boots",
           "checkable": true,
-          "zoneId": "2_7_town"
+          "zoneId": "2_7_town",
+          "nextZoneId": "2_7_11"
         },
         {
           "id": "a7_town4_3",
@@ -3512,7 +3879,8 @@
           "hint": "Only if portal close to Azmeri Shrine",
           "optionalNote": "Situational - trade rare amulet for Greust Necklace",
           "checkable": true,
-          "zoneId": "2_7_town"
+          "zoneId": "2_7_town",
+          "nextZoneId": "2_7_11"
         },
         {
           "id": "a7_town4_4",
@@ -3523,7 +3891,8 @@
           "optionalNote": "Complete if skipped at Ashen Fields",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "2_7_town"
+          "zoneId": "2_7_town",
+          "nextZoneId": "2_7_11"
         },
         {
           "id": "a7_town4_5",
@@ -3531,7 +3900,8 @@
           "zone": "The Bridge Encampment",
           "description": "Waypoint to The Vaal City",
           "checkable": true,
-          "zoneId": "2_7_town"
+          "zoneId": "2_7_town",
+          "nextZoneId": "2_7_11"
         },
         {
           "id": "a7_vaal_3",
@@ -3541,7 +3911,8 @@
           "quest": "Lighting the Way",
           "reward": "Quest Completion",
           "checkable": true,
-          "zoneId": "2_7_11"
+          "zoneId": "2_7_11",
+          "nextZoneId": "2_7_12_1"
         },
         {
           "id": "a7_vaal_4",
@@ -3549,7 +3920,8 @@
           "zone": "The Vaal City",
           "description": "Enter Temple of Decay Level 1",
           "checkable": true,
-          "zoneId": "2_7_11"
+          "zoneId": "2_7_11",
+          "nextZoneId": "2_7_12_1"
         },
         {
           "id": "a7_temple1_1",
@@ -3559,7 +3931,8 @@
           "hint": "Stairs are diagonally opposite - move in Z-pattern",
           "layoutTip": "First floor: Follow the direction the zone extends. The stairs to Level 2 are at the diagonal opposite end from the entrance.",
           "checkable": true,
-          "zoneId": "2_7_12_1"
+          "zoneId": "2_7_12_1",
+          "nextZoneId": "2_7_12_2"
         },
         {
           "id": "a7_temple2_1",
@@ -3569,7 +3942,8 @@
           "hint": "Search for recipe while navigating",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_7_12_2"
+          "zoneId": "2_7_12_2",
+          "nextZoneId": "2_8_1"
         },
         {
           "id": "a7_temple2_2",
@@ -3579,7 +3953,8 @@
           "hint": "Arena entrance diagonally opposite - use Z-pattern movement",
           "layoutTip": "The stairs face the direction of the intact bridge. Move in that direction until you reach a corner, then turn and move in the direction the zone extends to cross the first bridge. Continue in Z-pattern to find the arena.",
           "checkable": true,
-          "zoneId": "2_7_12_2"
+          "zoneId": "2_7_12_2",
+          "nextZoneId": "2_8_1"
         },
         {
           "id": "a7_temple2_3",
@@ -3588,7 +3963,8 @@
           "description": "Kill Arakaali",
           "hint": "Final boss of Act 7",
           "checkable": true,
-          "zoneId": "2_7_12_2"
+          "zoneId": "2_7_12_2",
+          "nextZoneId": "2_8_1"
         },
         {
           "id": "a7_temple2_4",
@@ -3597,7 +3973,8 @@
           "description": "Enter The Sarn Ramparts (Act 8)",
           "hint": "Beginning of Act 8",
           "checkable": true,
-          "zoneId": "2_7_12_2"
+          "zoneId": "2_7_12_2",
+          "nextZoneId": "2_8_1"
         }
       ]
     },
@@ -3613,7 +3990,8 @@
           "description": "Navigate to the Waypoint",
           "layoutTip": "Move east along the rampart wall until you reach a corner. Turn north and continue along the wall. Enter the broken wall section to climb atop the ramparts, then follow the wall until you find stairs descending.",
           "checkable": true,
-          "zoneId": "2_8_1"
+          "zoneId": "2_8_1",
+          "nextZoneId": "2_8_town"
         },
         {
           "id": "a8_ramparts_2",
@@ -3621,7 +3999,8 @@
           "zone": "The Sarn Ramparts",
           "description": "Activate Waypoint",
           "checkable": true,
-          "zoneId": "2_8_1"
+          "zoneId": "2_8_1",
+          "nextZoneId": "2_8_town"
         },
         {
           "id": "a8_ramparts_3",
@@ -3632,7 +4011,8 @@
           "optionalNote": "Complete now if not done earlier",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "2_8_1"
+          "zoneId": "2_8_1",
+          "nextZoneId": "2_8_town"
         },
         {
           "id": "a8_ramparts_4",
@@ -3641,7 +4021,8 @@
           "description": "Travel to The Sarn Encampment",
           "hint": "At the staircase, move west or east to reach town",
           "checkable": true,
-          "zoneId": "2_8_1"
+          "zoneId": "2_8_1",
+          "nextZoneId": "2_8_town"
         },
         {
           "id": "a8_town1_1",
@@ -3649,7 +4030,8 @@
           "zone": "The Sarn Encampment",
           "description": "Enter The Toxic Conduits",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "2_8_town",
+          "nextZoneId": "2_8_2_1"
         },
         {
           "id": "a8_conduits_1",
@@ -3658,7 +4040,8 @@
           "description": "Navigate to Doedre's Cesspool",
           "layoutTip": "Go in the opposite direction the door opened. Alternatively, prioritize heading west first as two variants favor this approach.",
           "checkable": true,
-          "zoneId": "2_8_2_1"
+          "zoneId": "2_8_2_1",
+          "nextZoneId": "2_8_2_2"
         },
         {
           "id": "a8_cesspool_1",
@@ -3668,7 +4051,8 @@
           "hint": "Starting area forms a loop with one exit",
           "layoutTip": "The starting area is a circular loop with a single exit. After exiting the loop, move south as much as possible to find The Cauldron. Sticking to the west edge provides more consistent pathing.",
           "checkable": true,
-          "zoneId": "2_8_2_2"
+          "zoneId": "2_8_2_2",
+          "nextZoneId": "2_8_8"
         },
         {
           "id": "a8_cesspool_2",
@@ -3677,7 +4061,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_8_2_2"
+          "zoneId": "2_8_2_2",
+          "nextZoneId": "2_8_8"
         },
         {
           "id": "a8_cesspool_3",
@@ -3686,7 +4071,8 @@
           "description": "Exit through Sewer Outlet to The Quay",
           "hint": "Continue south after defeating Doedre",
           "checkable": true,
-          "zoneId": "2_8_2_2"
+          "zoneId": "2_8_2_2",
+          "nextZoneId": "2_8_8"
         },
         {
           "id": "a8_quay_1",
@@ -3696,7 +4082,8 @@
           "hint": "Follow the left edge along the waterside from the start",
           "layoutTip": "Upon entering, immediately stick to the left edge (waterside) and follow it to locate the Ankh.",
           "checkable": true,
-          "zoneId": "2_8_8"
+          "zoneId": "2_8_8",
+          "nextZoneId": "2_8_9"
         },
         {
           "id": "a8_quay_2",
@@ -3705,7 +4092,8 @@
           "description": "Enter Resurrection Site and kill Tolman",
           "hint": "Move northeast to find the arena entrance",
           "checkable": true,
-          "zoneId": "2_8_8"
+          "zoneId": "2_8_8",
+          "nextZoneId": "2_8_9"
         },
         {
           "id": "a8_quay_3",
@@ -3713,7 +4101,8 @@
           "zone": "The Quay",
           "description": "Find and enter The Grain Gate",
           "checkable": true,
-          "zoneId": "2_8_8"
+          "zoneId": "2_8_8",
+          "nextZoneId": "2_8_9"
         },
         {
           "id": "a8_grain_1",
@@ -3723,7 +4112,8 @@
           "hint": "Look for corpses near doorways marking important passages. Quest marker shows as a book icon",
           "layoutTip": "The zone consists of multiple areas connected by indoor passages. Important passages are marked by corpses near doorways. If entering west of waypoint, first passage is north and both quest and exit are in zone 2. If entering south of waypoint, first passage is west, quest is in zone 3, exit in zone 2.",
           "checkable": true,
-          "zoneId": "2_8_9"
+          "zoneId": "2_8_9",
+          "nextZoneId": "2_8_14"
         },
         {
           "id": "a8_grain_2",
@@ -3732,7 +4122,8 @@
           "description": "Find and enter The Underbelly",
           "hint": "Look for indoor passages marked with nearby corpses",
           "checkable": true,
-          "zoneId": "2_8_9"
+          "zoneId": "2_8_9",
+          "nextZoneId": "2_8_14"
         },
         {
           "id": "a8_underbelly_1",
@@ -3742,7 +4133,8 @@
           "hint": "Navigate west from entrance, heading south",
           "layoutTip": "Stick to the west edge and head south. When the curved tunnel leads to a T-junction, place your portal. If the curve appears west, Solaris Concourse is north and Bath House is south.",
           "checkable": true,
-          "zoneId": "2_8_14"
+          "zoneId": "2_8_14",
+          "nextZoneId": "2_8_11"
         },
         {
           "id": "a8_underbelly_2",
@@ -3751,7 +4143,8 @@
           "description": "Navigate to The Solaris Concourse",
           "hint": "From T-junction, take the correct path based on layout",
           "checkable": true,
-          "zoneId": "2_8_14"
+          "zoneId": "2_8_14",
+          "nextZoneId": "2_8_11"
         },
         {
           "id": "a8_solaris_conc_1",
@@ -3760,7 +4153,8 @@
           "description": "Find Solaris Temple Level 1 entrance",
           "layoutTip": "Move east first to identify your layout. If you see a tall wall you can blink over, move north. If you see a house edge, backtrack and go north. If neither, head north to the ledge, follow to the river, then find the fountain and go behind it for the temple entrance.",
           "checkable": true,
-          "zoneId": "2_8_11"
+          "zoneId": "2_8_11",
+          "nextZoneId": "2_8_12_1"
         },
         {
           "id": "a8_solaris1_1",
@@ -3768,7 +4162,8 @@
           "zone": "The Solaris Temple Level 1",
           "description": "Activate Waypoint",
           "checkable": true,
-          "zoneId": "2_8_12_1"
+          "zoneId": "2_8_12_1",
+          "nextZoneId": "2_8_town"
         },
         {
           "id": "a8_solaris1_2",
@@ -3776,7 +4171,8 @@
           "zone": "The Solaris Temple Level 1",
           "description": "Waypoint to The Sarn Encampment",
           "checkable": true,
-          "zoneId": "2_8_12_1"
+          "zoneId": "2_8_12_1",
+          "nextZoneId": "2_8_town"
         },
         {
           "id": "a8_town2_1",
@@ -3784,7 +4180,8 @@
           "zone": "The Sarn Encampment",
           "description": "Take Portal back to The Underbelly",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "2_8_town",
+          "nextZoneId": "2_8_14"
         },
         {
           "id": "a8_underbelly_3",
@@ -3793,7 +4190,8 @@
           "description": "Navigate to The Bath House",
           "hint": "From T-junction portal, take the southern path",
           "checkable": true,
-          "zoneId": "2_8_14"
+          "zoneId": "2_8_14",
+          "nextZoneId": "2_8_5"
         },
         {
           "id": "a8_bath_1",
@@ -3802,7 +4200,8 @@
           "description": "Place Portal near entrance",
           "hint": "Portal before exploring further",
           "checkable": true,
-          "zoneId": "2_8_5"
+          "zoneId": "2_8_5",
+          "nextZoneId": "2_8_6"
         },
         {
           "id": "a8_bath_2",
@@ -3811,7 +4210,8 @@
           "description": "Navigate to The Lunaris Concourse",
           "hint": "Follow the southwest edge",
           "checkable": true,
-          "zoneId": "2_8_5"
+          "zoneId": "2_8_5",
+          "nextZoneId": "2_8_6"
         },
         {
           "id": "a8_lunaris_conc_1",
@@ -3820,7 +4220,8 @@
           "description": "Activate Waypoint",
           "hint": "Waypoint is northeast from Bath House entrance",
           "checkable": true,
-          "zoneId": "2_8_6"
+          "zoneId": "2_8_6",
+          "nextZoneId": "2_8_town"
         },
         {
           "id": "a8_lunaris_conc_2",
@@ -3828,7 +4229,8 @@
           "zone": "The Lunaris Concourse",
           "description": "Waypoint to The Sarn Encampment",
           "checkable": true,
-          "zoneId": "2_8_6"
+          "zoneId": "2_8_6",
+          "nextZoneId": "2_8_town"
         },
         {
           "id": "a8_town3_1",
@@ -3836,7 +4238,8 @@
           "zone": "The Sarn Encampment",
           "description": "Take Portal back to The Bath House",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "2_8_town",
+          "nextZoneId": "2_8_5"
         },
         {
           "id": "a8_bath_3",
@@ -3847,7 +4250,8 @@
           "optionalNote": "[LEAGUE START] League-start only",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "2_8_5"
+          "zoneId": "2_8_5",
+          "nextZoneId": "2_8_4"
         },
         {
           "id": "a8_bath_4",
@@ -3856,7 +4260,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_8_5"
+          "zoneId": "2_8_5",
+          "nextZoneId": "2_8_4"
         },
         {
           "id": "a8_bath_5",
@@ -3865,7 +4270,8 @@
           "description": "Navigate to The High Gardens",
           "hint": "Follow the southwest edge",
           "checkable": true,
-          "zoneId": "2_8_5"
+          "zoneId": "2_8_5",
+          "nextZoneId": "2_8_4"
         },
         {
           "id": "a8_gardens_1",
@@ -3874,7 +4280,8 @@
           "description": "Enter Pools of Terror and kill Yugul",
           "hint": "Follow the main path through the gardens",
           "checkable": true,
-          "zoneId": "2_8_4"
+          "zoneId": "2_8_4",
+          "nextZoneId": "2_8_town"
         },
         {
           "id": "a8_gardens_2",
@@ -3882,7 +4289,8 @@
           "zone": "The High Gardens",
           "description": "Portal to The Sarn Encampment",
           "checkable": true,
-          "zoneId": "2_8_4"
+          "zoneId": "2_8_4",
+          "nextZoneId": "2_8_town"
         },
         {
           "id": "a8_town4_1",
@@ -3892,7 +4300,8 @@
           "quest": "The Gemling Legion",
           "reward": "⭐ PASSIVE POINT",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "2_8_town",
+          "nextZoneId": "2_8_12_1"
         },
         {
           "id": "a8_town4_2",
@@ -3902,7 +4311,8 @@
           "quest": "Essence of the Hag",
           "reward": "⭐ PASSIVE POINT",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "2_8_town",
+          "nextZoneId": "2_8_12_1"
         },
         {
           "id": "a8_town4_3",
@@ -3912,7 +4322,8 @@
           "quest": "Love is Dead",
           "reward": "⭐ PASSIVE POINT",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "2_8_town",
+          "nextZoneId": "2_8_12_1"
         },
         {
           "id": "a8_town4_4",
@@ -3920,7 +4331,8 @@
           "zone": "The Sarn Encampment",
           "description": "Waypoint to Solaris Temple Level 1",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "2_8_town",
+          "nextZoneId": "2_8_12_1"
         },
         {
           "id": "a8_solaris1_3",
@@ -3929,7 +4341,8 @@
           "description": "Navigate to Solaris Temple Level 2",
           "layoutTip": "If waypoint is in the west corner, move north behind it to find the exit. If waypoint is in the east corner, go north into a room that splits west - take that western path to Level 2.",
           "checkable": true,
-          "zoneId": "2_8_12_1"
+          "zoneId": "2_8_12_1",
+          "nextZoneId": "2_8_12_2"
         },
         {
           "id": "a8_solaris2_1",
@@ -3938,7 +4351,8 @@
           "description": "Kill Dawn and collect the Sun Orb",
           "layoutTip": "If the room continues west or has a door west, follow the north edge west to the final room. Otherwise, it's an east variant - follow the north edge east until you can move north.",
           "checkable": true,
-          "zoneId": "2_8_12_2"
+          "zoneId": "2_8_12_2",
+          "nextZoneId": "2_8_town"
         },
         {
           "id": "a8_solaris2_2",
@@ -3947,7 +4361,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_8_12_2"
+          "zoneId": "2_8_12_2",
+          "nextZoneId": "2_8_town"
         },
         {
           "id": "a8_solaris2_3",
@@ -3955,7 +4370,8 @@
           "zone": "The Solaris Temple Level 2",
           "description": "Return to The Sarn Encampment (Relog)",
           "checkable": true,
-          "zoneId": "2_8_12_2"
+          "zoneId": "2_8_12_2",
+          "nextZoneId": "2_8_town"
         },
         {
           "id": "a8_town5_1",
@@ -3963,7 +4379,8 @@
           "zone": "The Sarn Encampment",
           "description": "Waypoint to The Lunaris Concourse",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "2_8_town",
+          "nextZoneId": "2_8_6"
         },
         {
           "id": "a8_lunaris_conc_3",
@@ -3973,7 +4390,8 @@
           "hint": "From waypoint, head northwest. Door icon appears on minimap",
           "layoutTip": "The Lunaris Temple entrance is northwest of the waypoint. The exit faces either north or east - watch for the door icon on your minimap.",
           "checkable": true,
-          "zoneId": "2_8_6"
+          "zoneId": "2_8_6",
+          "nextZoneId": "2_8_7_1_"
         },
         {
           "id": "a8_lunaris1_1",
@@ -3982,7 +4400,8 @@
           "description": "Navigate to Lunaris Temple Level 2",
           "hint": "Follow the carpet path",
           "checkable": true,
-          "zoneId": "2_8_7_1_"
+          "zoneId": "2_8_7_1_",
+          "nextZoneId": "2_8_7_2"
         },
         {
           "id": "a8_lunaris2_1",
@@ -3992,7 +4411,8 @@
           "hint": "Consistent pattern: follow stairs up, single flower pot marks the fork",
           "layoutTip": "Choose either clockwise or counterclockwise and maintain that pattern. Follow stairs going upward, and look for a single flower pot at forks to guide your path.",
           "checkable": true,
-          "zoneId": "2_8_7_2"
+          "zoneId": "2_8_7_2",
+          "nextZoneId": "2_8_town"
         },
         {
           "id": "a8_lunaris2_2",
@@ -4000,7 +4420,8 @@
           "zone": "The Lunaris Temple Level 2",
           "description": "Return to The Sarn Encampment (Relog)",
           "checkable": true,
-          "zoneId": "2_8_7_2"
+          "zoneId": "2_8_7_2",
+          "nextZoneId": "2_8_town"
         },
         {
           "id": "a8_town6_1",
@@ -4008,7 +4429,8 @@
           "zone": "The Sarn Encampment",
           "description": "Waypoint to The Lunaris Concourse",
           "checkable": true,
-          "zoneId": "2_8_town"
+          "zoneId": "2_8_town",
+          "nextZoneId": "2_8_6"
         },
         {
           "id": "a8_lunaris_conc_4",
@@ -4016,7 +4438,8 @@
           "zone": "The Lunaris Concourse",
           "description": "Navigate northeast to The Harbour Bridge",
           "checkable": true,
-          "zoneId": "2_8_6"
+          "zoneId": "2_8_6",
+          "nextZoneId": "2_8_13"
         },
         {
           "id": "a8_harbour_1",
@@ -4027,7 +4450,8 @@
           "hint": "Recommended Level 54+. Act 8 final boss",
           "layoutTip": "Move northeast through the middle of the bridge to find the Sky Shrine entrance.",
           "checkable": true,
-          "zoneId": "2_8_13"
+          "zoneId": "2_8_13",
+          "nextZoneId": "2_9_1"
         },
         {
           "id": "a8_harbour_2",
@@ -4036,7 +4460,8 @@
           "description": "Enter The Blood Aqueduct (Act 9)",
           "hint": "Beginning of Act 9. Farm to Level 58-62 here",
           "checkable": true,
-          "zoneId": "2_8_13"
+          "zoneId": "2_8_13",
+          "nextZoneId": "2_9_1"
         }
       ]
     },
@@ -4053,7 +4478,8 @@
           "hint": "Optional: Talk to Sin once. Side passages contain guaranteed Magic packs for extra experience.",
           "layoutTip": "Move northeast along the aqueduct walkways. When your path ends, look for a bridge to cross to the parallel walkway. Repeat until you find the town entrance.",
           "checkable": true,
-          "zoneId": "2_9_1"
+          "zoneId": "2_9_1",
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_town1_1",
@@ -4061,7 +4487,8 @@
           "zone": "The Blood Aqueduct",
           "description": "Enter Highgate",
           "checkable": true,
-          "zoneId": "2_9_1"
+          "zoneId": "2_9_1",
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_town1_2",
@@ -4069,7 +4496,8 @@
           "zone": "Highgate",
           "description": "Exit to The Descent",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "2_9_town",
+          "nextZoneId": "2_9_2"
         },
         {
           "id": "a9_descent_1",
@@ -4078,7 +4506,8 @@
           "description": "Navigate to The Vastiri Desert",
           "layoutTip": "The first layer is always static. Exit is northeast of the entrance, along the western edge of the first layer.",
           "checkable": true,
-          "zoneId": "2_9_2"
+          "zoneId": "2_9_2",
+          "nextZoneId": "2_9_3"
         },
         {
           "id": "a9_vastiri_1",
@@ -4087,7 +4516,8 @@
           "description": "Head east to activate Waypoint",
           "hint": "Waypoint is always east of the entrance",
           "checkable": true,
-          "zoneId": "2_9_3"
+          "zoneId": "2_9_3",
+          "nextZoneId": "2_9_5"
         },
         {
           "id": "a9_vastiri_2",
@@ -4097,7 +4527,8 @@
           "hint": "Contains The Storm Blade quest item",
           "layoutTip": "The chest spawns in one of four cardinal directions (North, East, South, or West) relative to the waypoint. Can appear before or after finding the waypoint.",
           "checkable": true,
-          "zoneId": "2_9_3"
+          "zoneId": "2_9_3",
+          "nextZoneId": "2_9_5"
         },
         {
           "id": "a9_vastiri_3",
@@ -4105,7 +4536,8 @@
           "zone": "The Vastiri Desert",
           "description": "Navigate west to The Foothills",
           "checkable": true,
-          "zoneId": "2_9_3"
+          "zoneId": "2_9_3",
+          "nextZoneId": "2_9_5"
         },
         {
           "id": "a9_foothills_1",
@@ -4113,7 +4545,8 @@
           "zone": "The Foothills",
           "description": "Head north to activate Waypoint",
           "checkable": true,
-          "zoneId": "2_9_5"
+          "zoneId": "2_9_5",
+          "nextZoneId": "2_9_6"
         },
         {
           "id": "a9_foothills_2",
@@ -4121,7 +4554,8 @@
           "zone": "The Foothills",
           "description": "Enter The Boiling Lake",
           "checkable": true,
-          "zoneId": "2_9_5"
+          "zoneId": "2_9_5",
+          "nextZoneId": "2_9_6"
         },
         {
           "id": "a9_boiling_1",
@@ -4130,7 +4564,8 @@
           "description": "Kill Basilisk and collect Basilisk Acid",
           "hint": "Head northeast toward the northern corner",
           "checkable": true,
-          "zoneId": "2_9_6"
+          "zoneId": "2_9_6",
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_boiling_2",
@@ -4139,7 +4574,8 @@
           "description": "Activate Crafting Bench",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_9_6"
+          "zoneId": "2_9_6",
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_boiling_3",
@@ -4147,7 +4583,8 @@
           "zone": "The Boiling Lake",
           "description": "Return to Highgate (Relog)",
           "checkable": true,
-          "zoneId": "2_9_6"
+          "zoneId": "2_9_6",
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_town2_1",
@@ -4157,7 +4594,8 @@
           "quest": "The Storm Blade",
           "reward": "Rare Weapon or Offhand",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "2_9_town",
+          "nextZoneId": "2_9_3"
         },
         {
           "id": "a9_town2_2",
@@ -4165,7 +4603,8 @@
           "zone": "Highgate",
           "description": "Talk to Sin",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "2_9_town",
+          "nextZoneId": "2_9_3"
         },
         {
           "id": "a9_town2_3",
@@ -4175,7 +4614,8 @@
           "quest": "Queen of the Sands",
           "reward": "Bottled Storm quest item",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "2_9_town",
+          "nextZoneId": "2_9_3"
         },
         {
           "id": "a9_town2_4",
@@ -4183,7 +4623,8 @@
           "zone": "Highgate",
           "description": "Waypoint to The Vastiri Desert",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "2_9_town",
+          "nextZoneId": "2_9_3"
         },
         {
           "id": "a9_vastiri_4",
@@ -4191,7 +4632,8 @@
           "zone": "The Vastiri Desert",
           "description": "Navigate north to The Oasis",
           "checkable": true,
-          "zoneId": "2_9_3"
+          "zoneId": "2_9_3",
+          "nextZoneId": "2_9_4"
         },
         {
           "id": "a9_oasis_1",
@@ -4201,7 +4643,8 @@
           "hint": "Usually along the eastern edge",
           "layoutTip": "Stick to the east edge. If you spawn in the north corner, move south. Otherwise, move north.",
           "checkable": true,
-          "zoneId": "2_9_4"
+          "zoneId": "2_9_4",
+          "nextZoneId": "2_9_4_1"
         },
         {
           "id": "a9_oasis_2",
@@ -4209,7 +4652,8 @@
           "zone": "The Oasis",
           "description": "Enter The Sand Pit",
           "checkable": true,
-          "zoneId": "2_9_4"
+          "zoneId": "2_9_4",
+          "nextZoneId": "2_9_4_1"
         },
         {
           "id": "a9_sandpit_1",
@@ -4217,7 +4661,8 @@
           "zone": "The Sand Pit",
           "description": "Kill Shakari",
           "checkable": true,
-          "zoneId": "2_9_4_1"
+          "zoneId": "2_9_4_1",
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_sandpit_2",
@@ -4226,7 +4671,8 @@
           "description": "Return to Highgate (Relog)",
           "hint": "Portal places you next to the waypoint",
           "checkable": true,
-          "zoneId": "2_9_4_1"
+          "zoneId": "2_9_4_1",
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_town3_1",
@@ -4235,7 +4681,8 @@
           "description": "Talk to Irasha",
           "quest": "Queen of the Sands",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "2_9_town",
+          "nextZoneId": "2_9_5"
         },
         {
           "id": "a9_town3_2",
@@ -4243,7 +4690,8 @@
           "zone": "Highgate",
           "description": "Waypoint to The Foothills",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "2_9_town",
+          "nextZoneId": "2_9_5"
         },
         {
           "id": "a9_foothills_3",
@@ -4251,7 +4699,8 @@
           "zone": "The Foothills",
           "description": "Navigate west to The Tunnel",
           "checkable": true,
-          "zoneId": "2_9_5"
+          "zoneId": "2_9_5",
+          "nextZoneId": "2_9_7"
         },
         {
           "id": "a9_tunnel_1",
@@ -4262,7 +4711,8 @@
           "optionalNote": "[LEAGUE START] League-start recommended",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "2_9_7"
+          "zoneId": "2_9_7",
+          "nextZoneId": "2_9_8"
         },
         {
           "id": "a9_tunnel_2",
@@ -4272,7 +4722,8 @@
           "hint": "Located in a side corridor",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_9_7"
+          "zoneId": "2_9_7",
+          "nextZoneId": "2_9_8"
         },
         {
           "id": "a9_tunnel_3",
@@ -4281,7 +4732,8 @@
           "description": "Follow main path northeast to The Quarry",
           "hint": "Exit is northeast from the entrance",
           "checkable": true,
-          "zoneId": "2_9_7"
+          "zoneId": "2_9_7",
+          "nextZoneId": "2_9_8"
         },
         {
           "id": "a9_quarry_1",
@@ -4289,7 +4741,8 @@
           "zone": "The Quarry",
           "description": "Head west to activate Waypoint",
           "checkable": true,
-          "zoneId": "2_9_8"
+          "zoneId": "2_9_8",
+          "nextZoneId": "2_9_9"
         },
         {
           "id": "a9_quarry_2",
@@ -4298,7 +4751,8 @@
           "description": "Access Crafting Bench",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_9_8"
+          "zoneId": "2_9_8",
+          "nextZoneId": "2_9_9"
         },
         {
           "id": "a9_quarry_3",
@@ -4307,7 +4761,8 @@
           "description": "Search west and north for The Refinery",
           "hint": "Search the western and northern sections",
           "checkable": true,
-          "zoneId": "2_9_8"
+          "zoneId": "2_9_8",
+          "nextZoneId": "2_9_9"
         },
         {
           "id": "a9_refinery_1",
@@ -4317,7 +4772,8 @@
           "hint": "Follow the cart tracks to the boss arena",
           "layoutTip": "Follow the minecart tracks through the zone. The boss arena is in the north corner along the east edge. Crafting bench (if league start) is where tracks end at a grate.",
           "checkable": true,
-          "zoneId": "2_9_9"
+          "zoneId": "2_9_9",
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_refinery_2",
@@ -4327,7 +4783,8 @@
           "hint": "Found where the cart tracks end at a grate",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_9_9"
+          "zoneId": "2_9_9",
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_refinery_3",
@@ -4335,7 +4792,8 @@
           "zone": "The Refinery",
           "description": "Return to Highgate (Relog)",
           "checkable": true,
-          "zoneId": "2_9_9"
+          "zoneId": "2_9_9",
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_town4_1",
@@ -4343,7 +4801,8 @@
           "zone": "Highgate",
           "description": "Waypoint to The Quarry",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "2_9_town",
+          "nextZoneId": "2_9_8"
         },
         {
           "id": "a9_quarry_4",
@@ -4351,7 +4810,8 @@
           "zone": "The Quarry",
           "description": "Talk to Sin",
           "checkable": true,
-          "zoneId": "2_9_8"
+          "zoneId": "2_9_8",
+          "nextZoneId": "2_9_10_1"
         },
         {
           "id": "a9_quarry_5",
@@ -4359,7 +4819,8 @@
           "zone": "The Quarry",
           "description": "Search south and north to enter The Belly of the Beast",
           "checkable": true,
-          "zoneId": "2_9_8"
+          "zoneId": "2_9_8",
+          "nextZoneId": "2_9_10_1"
         },
         {
           "id": "a9_belly1_1",
@@ -4367,7 +4828,8 @@
           "zone": "The Belly of the Beast",
           "description": "Navigate to The Rotting Core",
           "checkable": true,
-          "zoneId": "2_9_10_1"
+          "zoneId": "2_9_10_1",
+          "nextZoneId": "2_9_10_2"
         },
         {
           "id": "a9_rotting_1",
@@ -4377,7 +4839,8 @@
           "hint": "Follow the zone passages. Second tunnel in main room leads forward.",
           "layoutTip": "Enter the second tunnel in the main room to progress. Follow the linear path through the nightmare sequences.",
           "checkable": true,
-          "zoneId": "2_9_10_2"
+          "zoneId": "2_9_10_2",
+          "nextZoneId": "2_9_10_3"
         },
         {
           "id": "a9_blackcore_1",
@@ -4387,7 +4850,8 @@
           "recommendedLevel": 60,
           "hint": "Act 9 final boss. Recommended Level 60+",
           "checkable": true,
-          "zoneId": "2_9_10_3"
+          "zoneId": "2_9_10_3",
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_blackcore_2",
@@ -4395,7 +4859,8 @@
           "zone": "The Black Heart",
           "description": "Talk to Sin",
           "checkable": true,
-          "zoneId": "2_9_10_3"
+          "zoneId": "2_9_10_3",
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_blackcore_3",
@@ -4404,7 +4869,8 @@
           "description": "Talk to Lilly Roth to sail to Oriath Docks",
           "hint": "Can portal to town during kill animation to skip loot. Waypoint from town places you near Act 10 rooftop entrance.",
           "checkable": true,
-          "zoneId": "2_9_10_3"
+          "zoneId": "2_9_10_3",
+          "nextZoneId": "2_9_town"
         },
         {
           "id": "a9_town5_1",
@@ -4416,7 +4882,8 @@
           "hint": "Return to town before sailing to Act 10 to claim reward",
           "optionalNote": "Complete before entering Act 10",
           "checkable": true,
-          "zoneId": "2_9_town"
+          "zoneId": "2_9_town",
+          "nextZoneId": "2_10_town"
         }
       ]
     },
@@ -4431,7 +4898,8 @@
           "zone": "Oriath Docks",
           "description": "Enter The Cathedral Rooftop",
           "checkable": true,
-          "zoneId": "2_10_town"
+          "zoneId": "2_10_town",
+          "nextZoneId": "2_10_1"
         },
         {
           "id": "a10_rooftop_1",
@@ -4441,7 +4909,8 @@
           "hint": "Bannon is North of the entrance",
           "layoutTip": "Always head South-East. Rescue Bannon North of the entrance, then the exit is in the South-East corner.",
           "checkable": true,
-          "zoneId": "2_10_1"
+          "zoneId": "2_10_1",
+          "nextZoneId": "2_10_2"
         },
         {
           "id": "a10_rooftop_2",
@@ -4449,7 +4918,8 @@
           "zone": "The Cathedral Rooftop",
           "description": "Enter Cathedral Apex and kill Plaguewing",
           "checkable": true,
-          "zoneId": "2_10_1"
+          "zoneId": "2_10_1",
+          "nextZoneId": "2_10_2"
         },
         {
           "id": "a10_rooftop_3",
@@ -4457,7 +4927,8 @@
           "zone": "The Cathedral Rooftop",
           "description": "Enter The Ravaged Square",
           "checkable": true,
-          "zoneId": "2_10_1"
+          "zoneId": "2_10_1",
+          "nextZoneId": "2_10_2"
         },
         {
           "id": "a10_square_1",
@@ -4466,7 +4937,8 @@
           "description": "Place Portal at Blood Fountain",
           "hint": "Static layout - Blood Fountain is South-East of entrance. North bridge is broken.",
           "checkable": true,
-          "zoneId": "2_10_2"
+          "zoneId": "2_10_2",
+          "nextZoneId": "2_10_3"
         },
         {
           "id": "a10_square_2",
@@ -4475,7 +4947,8 @@
           "description": "Activate Waypoint",
           "hint": "North-East from Blood Fountain. Can dash over broken bridge with movement skills, or go South-East then North",
           "checkable": true,
-          "zoneId": "2_10_2"
+          "zoneId": "2_10_2",
+          "nextZoneId": "2_10_3"
         },
         {
           "id": "a10_square_3",
@@ -4484,7 +4957,8 @@
           "description": "Enter The Torched Courts",
           "hint": "South of Waypoint, follow snake pattern",
           "checkable": true,
-          "zoneId": "2_10_2"
+          "zoneId": "2_10_2",
+          "nextZoneId": "2_10_3"
         },
         {
           "id": "a10_courts_1",
@@ -4493,7 +4967,8 @@
           "description": "Enter The Desecrated Chambers",
           "hint": "Semi-static layout. Move clockwise around the zone",
           "checkable": true,
-          "zoneId": "2_10_3"
+          "zoneId": "2_10_3",
+          "nextZoneId": "2_10_4"
         },
         {
           "id": "a10_chambers_1",
@@ -4502,7 +4977,8 @@
           "description": "Kill Avarius and collect Staff of Avarius",
           "layoutTip": "Head West along North edge until first elevated layer curves South. If there's a passage below it, it leads to boss. Otherwise, continue West to next South passage.",
           "checkable": true,
-          "zoneId": "2_10_4"
+          "zoneId": "2_10_4",
+          "nextZoneId": "2_10_town"
         },
         {
           "id": "a10_chambers_2",
@@ -4512,7 +4988,8 @@
           "hint": "In side corridor, about halfway through the zone",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_10_4"
+          "zoneId": "2_10_4",
+          "nextZoneId": "2_10_town"
         },
         {
           "id": "a10_chambers_3",
@@ -4520,7 +4997,8 @@
           "zone": "The Desecrated Chambers",
           "description": "Return to town (Relog)",
           "checkable": true,
-          "zoneId": "2_10_4"
+          "zoneId": "2_10_4",
+          "nextZoneId": "2_10_town"
         },
         {
           "id": "a10_town2_1",
@@ -4528,7 +5006,8 @@
           "zone": "Oriath Docks",
           "description": "Talk to Bannon",
           "checkable": true,
-          "zoneId": "2_10_town"
+          "zoneId": "2_10_town",
+          "nextZoneId": "2_10_2"
         },
         {
           "id": "a10_town2_2",
@@ -4538,7 +5017,8 @@
           "quest": "Death and Rebirth",
           "reward": "Rare Body Armour & ⭐ PASSIVE POINT",
           "checkable": true,
-          "zoneId": "2_10_town"
+          "zoneId": "2_10_town",
+          "nextZoneId": "2_10_2"
         },
         {
           "id": "a10_town2_3",
@@ -4546,7 +5026,8 @@
           "zone": "Oriath Docks",
           "description": "Waypoint to The Ravaged Square",
           "checkable": true,
-          "zoneId": "2_10_town"
+          "zoneId": "2_10_town",
+          "nextZoneId": "2_10_2"
         },
         {
           "id": "a10_square_4",
@@ -4556,7 +5037,8 @@
           "hint": "South-West from Blood Fountain. Look for openings in house walls twice",
           "layoutTip": "From Blood Fountain, move South-West until you find an opening in the wall made of houses. Go through and repeat once more to find the entrance.",
           "checkable": true,
-          "zoneId": "2_10_2"
+          "zoneId": "2_10_2",
+          "nextZoneId": "2_10_7"
         },
         {
           "id": "a10_control_1",
@@ -4565,7 +5047,8 @@
           "description": "Kill Vilenta",
           "hint": "Boss arena in North-West corner. Move along North edge heading West.",
           "checkable": true,
-          "zoneId": "2_10_7"
+          "zoneId": "2_10_7",
+          "nextZoneId": "2_10_town"
         },
         {
           "id": "a10_control_2",
@@ -4573,7 +5056,8 @@
           "zone": "The Control Blocks",
           "description": "Return to town (Relog)",
           "checkable": true,
-          "zoneId": "2_10_7"
+          "zoneId": "2_10_7",
+          "nextZoneId": "2_10_town"
         },
         {
           "id": "a10_town3_1",
@@ -4582,7 +5066,8 @@
           "description": "Talk to Lani for quest reward",
           "quest": "Vilenta's Vengeance",
           "checkable": true,
-          "zoneId": "2_10_town"
+          "zoneId": "2_10_town",
+          "nextZoneId": "2_10_2"
         },
         {
           "id": "a10_town3_2",
@@ -4590,7 +5075,8 @@
           "zone": "Oriath Docks",
           "description": "Waypoint to The Ravaged Square",
           "checkable": true,
-          "zoneId": "2_10_town"
+          "zoneId": "2_10_town",
+          "nextZoneId": "2_10_2"
         },
         {
           "id": "a10_square_5",
@@ -4598,7 +5084,8 @@
           "zone": "The Ravaged Square",
           "description": "Talk to Innocence to unlock The Canals",
           "checkable": true,
-          "zoneId": "2_10_2"
+          "zoneId": "2_10_2",
+          "nextZoneId": "2_10_9"
         },
         {
           "id": "a10_square_6",
@@ -4607,7 +5094,8 @@
           "description": "Enter The Ossuary",
           "optionalNote": "[LEAGUE START] League-start recommended - complete trial and Merciless Lab before Kitava",
           "checkable": true,
-          "zoneId": "2_10_2"
+          "zoneId": "2_10_2",
+          "nextZoneId": "2_10_9"
         },
         {
           "id": "a10_ossuary_1",
@@ -4616,7 +5104,8 @@
           "description": "Activate Crafting Recipe",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_10_9"
+          "zoneId": "2_10_9",
+          "nextZoneId": "2_10_town"
         },
         {
           "id": "a10_ossuary_2",
@@ -4627,7 +5116,8 @@
           "optionalNote": "[LEAGUE START] League-start only",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "2_10_9"
+          "zoneId": "2_10_9",
+          "nextZoneId": "2_10_town"
         },
         {
           "id": "a10_ossuary_3",
@@ -4637,7 +5127,8 @@
           "optionalNote": "[LEAGUE START] League-start only",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "2_10_9"
+          "zoneId": "2_10_9",
+          "nextZoneId": "2_10_town"
         },
         {
           "id": "a10_town4_1",
@@ -4648,7 +5139,8 @@
           "optionalNote": "[LEAGUE START] League-start recommended",
           "hidden": "optional",
           "checkable": true,
-          "zoneId": "2_10_town"
+          "zoneId": "2_10_town",
+          "nextZoneId": "2_10_2"
         },
         {
           "id": "a10_town4_2",
@@ -4656,7 +5148,8 @@
           "zone": "Oriath Docks",
           "description": "Waypoint to The Ravaged Square",
           "checkable": true,
-          "zoneId": "2_10_town"
+          "zoneId": "2_10_town",
+          "nextZoneId": "2_10_2"
         },
         {
           "id": "a10_square_7",
@@ -4664,7 +5157,8 @@
           "zone": "The Ravaged Square",
           "description": "Enter The Canals",
           "checkable": true,
-          "zoneId": "2_10_2"
+          "zoneId": "2_10_2",
+          "nextZoneId": "2_10_5"
         },
         {
           "id": "a10_canals_1",
@@ -4673,7 +5167,8 @@
           "description": "Enter The Feeding Trough",
           "hint": "Move North whenever possible",
           "checkable": true,
-          "zoneId": "2_10_5"
+          "zoneId": "2_10_5",
+          "nextZoneId": "2_10_6"
         },
         {
           "id": "a10_feeding_1",
@@ -4683,7 +5178,8 @@
           "hint": "On West walkway, near Sin",
           "optionalNote": "[LEAGUE START] League-start only",
           "checkable": true,
-          "zoneId": "2_10_6"
+          "zoneId": "2_10_6",
+          "nextZoneId": "2_10_town"
         },
         {
           "id": "a10_feeding_2",
@@ -4692,7 +5188,8 @@
           "description": "Talk to Sin",
           "layoutTip": "Static layout. Two walkways beside a blood-filled canal. Boss arena is always in the North corner. West walkway is recommended (contains crafting recipe).",
           "checkable": true,
-          "zoneId": "2_10_6"
+          "zoneId": "2_10_6",
+          "nextZoneId": "2_10_town"
         },
         {
           "id": "a10_feeding_3",
@@ -4701,7 +5198,8 @@
           "description": "Enter Altar of Hunger and kill Kitava",
           "hint": "Walk straight North-East on West walkway",
           "checkable": true,
-          "zoneId": "2_10_6"
+          "zoneId": "2_10_6",
+          "nextZoneId": "2_10_town"
         },
         {
           "id": "a10_feeding_4",
@@ -4709,7 +5207,8 @@
           "zone": "The Feeding Trough",
           "description": "Talk to Sin after defeating Kitava",
           "checkable": true,
-          "zoneId": "2_10_6"
+          "zoneId": "2_10_6",
+          "nextZoneId": "2_10_town"
         },
         {
           "id": "a10_feeding_5",
@@ -4717,7 +5216,8 @@
           "zone": "The Feeding Trough",
           "description": "Return to Oriath Docks",
           "checkable": true,
-          "zoneId": "2_10_6"
+          "zoneId": "2_10_6",
+          "nextZoneId": "2_10_town"
         },
         {
           "id": "a10_town5_1",
@@ -4727,7 +5227,8 @@
           "quest": "An End to Hunger",
           "reward": "⭐⭐ 2 PASSIVE POINTS",
           "checkable": true,
-          "zoneId": "2_10_town"
+          "zoneId": "2_10_town",
+          "nextZoneId": "2_11_endgame_town"
         },
         {
           "id": "a10_town5_2",
@@ -4735,7 +5236,8 @@
           "zone": "Oriath Docks",
           "description": "Talk to Lilly Roth and sail to Karui Shores",
           "checkable": true,
-          "zoneId": "2_10_town"
+          "zoneId": "2_10_town",
+          "nextZoneId": "2_11_endgame_town"
         },
         {
           "id": "a10_endgame_1",

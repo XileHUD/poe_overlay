@@ -20,8 +20,18 @@ import {
   extractUniqueGems, 
   matchGemsToQuestSteps,
   calculateTreeProgressionByAct,
+  createEmptyBuildsList,
+  addBuild,
+  deleteBuild,
+  renameBuild,
+  setActiveBuild,
+  getActiveBuild,
+  getAllBuilds,
+  migrateLegacyBuild,
   type StoredPobBuild,
-  type GemSocketGroup
+  type GemSocketGroup,
+  type PobBuildsList,
+  type PobBuildEntry
 } from '../../shared/pob/index.js';
 
 export interface LevelingWindowParams {
@@ -275,7 +285,7 @@ export class LevelingWindow {
       // Check if there's a saved PoB build and auto-open the info bar
       this.window.webContents.once('did-finish-load', () => {
         const saved = this.settingsService.get(this.getLevelingWindowKey());
-        const pobBuild = (saved as any)?.pobBuild;
+        const pobBuild = this.getActivePobBuild();
         if (pobBuild) {
           const currentActIndex = (saved as any)?.currentActIndex ?? 0;
           openPobInfoBar({
@@ -638,8 +648,7 @@ export class LevelingWindow {
       updateGearWindowContext(actIndex + 1, characterLevel);
       
       // Update PoB info bar with new act
-      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-      const pobBuild = (currentSettings as any).pobBuild;
+      const pobBuild = this.getActivePobBuild();
       if (pobBuild) {
         updatePobInfoBar(pobBuild, actIndex + 1);
       }
@@ -957,7 +966,7 @@ export class LevelingWindow {
     // Open/toggle gems window from PoB info bar
     ipcMain.on('open-pob-gems-window', () => {
       const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-      const pobBuild = (currentSettings as any).pobBuild || null;
+      const pobBuild = this.getActivePobBuild();
       const currentActIndex = (currentSettings as any).currentActIndex || 0;
       const currentAct = currentActIndex + 1; // Convert index to act number
       
@@ -983,8 +992,7 @@ export class LevelingWindow {
 
     // Open/toggle passive tree window from PoB info bar
     ipcMain.on('open-pob-tree-window', () => {
-      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-      const pobBuild = (currentSettings as any).pobBuild || null;
+      const pobBuild = this.getActivePobBuild();
       
       if (!pobBuild || !pobBuild.treeSpecs || pobBuild.treeSpecs.length === 0) {
         console.warn('[LevelingWindow] Cannot open tree window - no PoB build with trees loaded');
@@ -1017,8 +1025,7 @@ export class LevelingWindow {
 
     // Open/toggle notes window from PoB info bar
     ipcMain.on('open-pob-notes-window', () => {
-      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-      const pobBuild = (currentSettings as any).pobBuild || null;
+      const pobBuild = this.getActivePobBuild();
       
       if (isNotesWindowOpen()) {
         closeNotesWindow();
@@ -1037,8 +1044,7 @@ export class LevelingWindow {
 
     // Open/toggle gear window from PoB info bar
     ipcMain.on('open-pob-gear-window', () => {
-      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-      const pobBuild = (currentSettings as any).pobBuild || null;
+      const pobBuild = this.getActivePobBuild();
       
       if (isGearWindowOpen()) {
         closeGearWindow();
@@ -1115,7 +1121,7 @@ export class LevelingWindow {
     // Show PoB info bar
     ipcMain.on('show-pob-info-bar', () => {
       const config = this.settingsService.get(this.getLevelingWindowKey());
-      const pobBuild = config?.pobBuild as any;
+      const pobBuild = this.getActivePobBuild();
       
       if (pobBuild) {
         const currentAct = (config?.currentActIndex || 0) + 1;
@@ -1160,12 +1166,152 @@ export class LevelingWindow {
       return await this.importPobCode(code);
     });
 
-    // Remove PoB build
+    // Get all POB builds
+    ipcMain.handle('get-pob-builds-list', async () => {
+      const buildsList = this.getPobBuildsList();
+      return {
+        success: true,
+        builds: getAllBuilds(buildsList).map(entry => ({
+          id: entry.id,
+          name: entry.name,
+          isActive: entry.isActive,
+          className: entry.build.className,
+          ascendancyName: entry.build.ascendancyName,
+          level: entry.build.level,
+          createdAt: entry.createdAt,
+          updatedAt: entry.updatedAt
+        })),
+        activeId: buildsList.activeId
+      };
+    });
+
+    // Rename POB build
+    ipcMain.handle('rename-pob-build', async (event, buildId: string, newName: string) => {
+      try {
+        const buildsList = this.getPobBuildsList();
+        const updatedList = renameBuild(buildsList, buildId, newName);
+        this.savePobBuildsList(updatedList);
+        
+        // If this was the active build, update windows
+        if (updatedList.activeId === buildId) {
+          const activeBuild = getActiveBuild(updatedList);
+          if (activeBuild && this.window && !this.window.isDestroyed()) {
+            this.window.webContents.send('pob-build-updated', activeBuild);
+          }
+        }
+        
+        return { success: true };
+      } catch (error: any) {
+        return { success: false, error: error.message };
+      }
+    });
+
+    // Delete POB build
+    ipcMain.handle('delete-pob-build', async (event, buildId: string) => {
+      try {
+        const buildsList = this.getPobBuildsList();
+        const wasActive = buildsList.activeId === buildId;
+        const updatedList = deleteBuild(buildsList, buildId);
+        this.savePobBuildsList(updatedList);
+        
+        // If we deleted the active build and a new one was activated, update windows
+        if (wasActive) {
+          const newActiveBuild = getActiveBuild(updatedList);
+          if (newActiveBuild) {
+            if (this.window && !this.window.isDestroyed()) {
+              this.window.webContents.send('pob-build-updated', newActiveBuild);
+            }
+            // Update POB info bar if open
+            if (isPobInfoBarOpen()) {
+              const currentActIndex = this.settingsService.get(this.getLevelingWindowKey())?.currentActIndex ?? 0;
+              openPobInfoBar({
+                settingsService: this.settingsService,
+                overlayVersion: this.overlayVersion,
+                pobBuild: newActiveBuild,
+                currentAct: currentActIndex + 1
+              });
+            }
+          } else {
+            // No builds left, close POB info bar
+            closePobInfoBar();
+            if (this.window && !this.window.isDestroyed()) {
+              this.window.webContents.send('pob-build-removed');
+            }
+          }
+        }
+        
+        return { success: true, newActiveId: updatedList.activeId };
+      } catch (error: any) {
+        return { success: false, error: error.message };
+      }
+    });
+
+    // Activate POB build
+    ipcMain.handle('activate-pob-build', async (event, buildId: string) => {
+      try {
+        const buildsList = this.getPobBuildsList();
+        const updatedList = setActiveBuild(buildsList, buildId);
+        this.savePobBuildsList(updatedList);
+        
+        const activeBuild = getActiveBuild(updatedList);
+        if (activeBuild) {
+          // Update main window
+          if (this.window && !this.window.isDestroyed()) {
+            this.window.webContents.send('pob-build-updated', activeBuild);
+          }
+          
+          // Get current context
+          const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+          const currentActIndex = (currentSettings as any)?.currentActIndex ?? 0;
+          const characterLevel = (currentSettings as any)?.characterLevel || 1;
+          const autoDetectEnabled = (currentSettings as any)?.uiSettings?.autoDetectLevelingSets ?? true;
+          const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
+          
+          // Update POB info bar if open
+          if (isPobInfoBarOpen()) {
+            openPobInfoBar({
+              settingsService: this.settingsService,
+              overlayVersion: this.overlayVersion,
+              pobBuild: activeBuild,
+              currentAct: currentActIndex + 1
+            });
+          }
+          
+          // Update gems window if open
+          if (isGemsWindowOpen()) {
+            updateLevelingGemsWindowBuild(activeBuild, this.overlayVersion, this.settingsService);
+            updateLevelingGemsWindow(currentActIndex + 1, this.overlayVersion, this.settingsService);
+            updateLevelingGemsWindowCharacterLevel(characterLevel);
+          }
+          
+          // Update tree window if open
+          if (isTreeWindowOpen() && activeBuild.treeSpecs && activeBuild.treeSpecs.length > 0) {
+            sendTreeData(activeBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
+          }
+          
+          // Update gear window if open
+          if (isGearWindowOpen() && activeBuild.itemSets && activeBuild.itemSets.length > 0) {
+            updateGearWindow(activeBuild.itemSets);
+            updateGearWindowContext(currentActIndex + 1, characterLevel);
+          }
+          
+          // Update notes window if open
+          if (isNotesWindowOpen() && activeBuild.notes) {
+            updateNotesWindow(activeBuild.notes);
+          }
+        }
+        
+        return { success: true };
+      } catch (error: any) {
+        return { success: false, error: error.message };
+      }
+    });
+
+    // Remove PoB build (legacy - now deletes all builds)
     ipcMain.handle('remove-pob-build', async () => {
-      this.settingsService.update(this.getLevelingWindowKey(), (c: any) => ({
-        ...c,
-        pobBuild: undefined
-      }));
+      const buildsList = this.getPobBuildsList();
+      const emptyList = createEmptyBuildsList();
+      this.savePobBuildsList(emptyList);
       
       // Close PoB info bar
       closePobInfoBar();
@@ -1323,10 +1469,9 @@ export class LevelingWindow {
       return await this.importPobCode(code);
     });
 
-    // Get stored PoB build
+    // Get stored PoB build (legacy handler - returns active build)
     ipcMain.handle('get-pob-build', async () => {
-      const saved = this.settingsService.get(this.getLevelingWindowKey());
-      return saved?.pobBuild || null;
+      return this.getActivePobBuild();
     });
 
     // Note: Client.txt watcher is started/stopped via show()/hide() methods
@@ -1599,12 +1744,11 @@ export class LevelingWindow {
     // Check every 500ms for changes
     fs.watchFile(clientPath, { interval: 500 }, (curr, prev) => {
       if (curr.mtime > prev.mtime) {
-        console.log('[WATCHER] File modified, checking for changes...');
         this.handleClientTxtChange(clientPath);
       }
     });
     
-    console.log('[WATCHER] File watcher started successfully');
+    console.log('[CLIENT.TXT] Watcher started');
   }
 
   private handleClientTxtChange(filePath: string) {
@@ -1612,22 +1756,18 @@ export class LevelingWindow {
       const stats = fs.statSync(filePath);
       const currentSize = stats.size;
 
-      console.log(`[CLIENT.TXT] Current size: ${currentSize}, Last position: ${this.lastFilePosition}`);
-
       // Handle truncation or rotation: if file shrank, reset pointer to 0 to avoid missing new lines
       if (currentSize < this.lastFilePosition) {
-        console.log('[CLIENT.TXT] File truncated or rotated. Resetting read position to 0.');
+        console.log('[CLIENT.TXT] File truncated, resetting position');
         this.lastFilePosition = 0;
       }
 
       // Only read if file has grown beyond last position
       if (currentSize === this.lastFilePosition) {
-        console.log('[CLIENT.TXT] No new content (file size unchanged)');
         return;
       }
 
       const bytesToRead = currentSize - this.lastFilePosition;
-      console.log(`[CLIENT.TXT] Reading ${bytesToRead} bytes from position ${this.lastFilePosition} to ${currentSize}`);
 
       // Read only the new content
       const buffer = Buffer.alloc(bytesToRead);
@@ -1635,14 +1775,8 @@ export class LevelingWindow {
       const bytesRead = fs.readSync(fd, buffer, 0, buffer.length, this.lastFilePosition);
       fs.closeSync(fd);
 
-      console.log(`[CLIENT.TXT] Actually read ${bytesRead} bytes`);
-
       const newContent = buffer.toString('utf8');
       this.lastFilePosition = currentSize;
-
-      const lineCount = newContent.split('\n').filter(l => l.trim()).length;
-      console.log(`[CLIENT.TXT] Parsed ${lineCount} lines from new content`);
-      console.log('[CLIENT.TXT] First 300 chars:', newContent.substring(0, 300));
 
       // CORRECT Zone Detection: Use "Generating level" pattern with area codes
       // Format: [DEBUG Client XXXX] Generating level XX area "AREA_CODE" with seed XXXXXXXX
@@ -1650,40 +1784,26 @@ export class LevelingWindow {
       // This is how Exile-UI does it - area codes are unique and never NULL
       
       const lines = newContent.split('\n');
-      console.log(`[ZONE DETECTION] Processing ${lines.length} lines for zone detection...`);
-      
-      let zoneDetectionCount = 0;
-      let lineNumber = 0;
       
       for (const line of lines) {
-        lineNumber++;
-        
         // PRIMARY DETECTION: Area code from "Generating level" entry (uses double quotes)
         const generatingMatch = line.match(/\[DEBUG Client \d+\] Generating level (\d+) area "([^"]+)" with seed (\d+)/);
         
         if (generatingMatch) {
-          const [fullMatch, areaLevel, areaCode, areaSeed] = generatingMatch;
-          console.log(`[ZONE DETECTION] Line ${lineNumber}: Found "Generating level" pattern`);
-          console.log(`[ZONE DETECTION]   Full match: ${fullMatch}`);
-          console.log(`[ZONE DETECTION]   Area code: "${areaCode}", Level: ${areaLevel}, Seed: ${areaSeed}`);
+          const [, areaLevel, areaCode] = generatingMatch;
           
           // Look up the zone name from the area code using the zone registry
           const zoneName = this.getZoneNameFromAreaCode(areaCode);
           const actNumber = this.getActNumberFromAreaCode(areaCode);
           
           if (!zoneName || actNumber === null) {
-            console.log(`[ZONE DETECTION]   ❌ Unknown area code: "${areaCode}" (level ${areaLevel})`);
+            console.log(`[ZONE] Unknown area code: "${areaCode}"`);
             continue;
           }
           
-          zoneDetectionCount++;
-          console.log(`[ZONE DETECTION]   ✅ Mapped to zone: "${zoneName}" (Act ${actNumber})`);
-          
           // Simple zone tracking: Only send if this is a DIFFERENT zone than last time
-          // NO deduplication, NO seed checking - just prev/current zone tracking
           if (areaCode !== this.lastZoneAreaCode) {
-            console.log(`[ZONE DETECTION]   🎯 ZONE CHANGED! From "${this.lastZoneAreaCode || 'none'}" to "${areaCode}"`);
-            console.log(`[ZONE DETECTION]   Sending zoneId "${areaCode}" / zoneName "${zoneName}" (Act ${actNumber}) to renderer`);
+            console.log(`[ZONE] ${zoneName} (Act ${actNumber}) [${areaCode}]`);
             
             // Update last zone
             this.lastZoneAreaCode = areaCode;
@@ -1691,23 +1811,9 @@ export class LevelingWindow {
             // Send zone ID, zone NAME, and ACT NUMBER to renderer
             if (this.window && !this.window.isDestroyed()) {
               this.window.webContents.send('zone-entered', { zoneId: areaCode, zoneName, actNumber });
-            } else {
-              console.log(`[ZONE DETECTION]   ⚠️ Window not available, cannot send zone-entered event`);
             }
-          } else {
-            console.log(`[ZONE DETECTION]   ⏭️ Same zone as before: ${areaCode} (${zoneName})`);
           }
         }
-      }
-
-      console.log(`[ZONE DETECTION] Summary: Found ${zoneDetectionCount} "Generating level" entries in ${lines.length} lines`);
-      
-      if (zoneDetectionCount === 0) {
-        console.log('[ZONE DETECTION] ⚠️ No "Generating level" entries found in new content');
-        console.log('[ZONE DETECTION] Sample lines from content:');
-        lines.slice(0, 5).forEach((line, i) => {
-          console.log(`  Line ${i + 1}: ${line.substring(0, 100)}`);
-        });
       }
 
       // Level-up detection (same for both POE1 and POE2)
@@ -1804,6 +1910,53 @@ export class LevelingWindow {
     }
   }
 
+  /**
+   * Get or migrate POB builds list from settings
+   */
+  private getPobBuildsList(): PobBuildsList {
+    const saved = this.settingsService.get(this.getLevelingWindowKey()) as any;
+    
+    // If we have the new format, use it
+    if (saved?.pobBuilds) {
+      return saved.pobBuilds as PobBuildsList;
+    }
+    
+    // If we have legacy pobBuild, migrate it
+    if (saved?.pobBuild) {
+      const migrated = migrateLegacyBuild(saved.pobBuild as StoredPobBuild);
+      // Save migrated version
+      this.settingsService.update(this.getLevelingWindowKey(), (c: any) => ({
+        ...c,
+        pobBuilds: migrated,
+        pobBuild: undefined // Remove legacy field
+      }));
+      return migrated;
+    }
+    
+    // No builds yet
+    return createEmptyBuildsList();
+  }
+
+  /**
+   * Save POB builds list to settings
+   */
+  private savePobBuildsList(buildsList: PobBuildsList): void {
+    this.settingsService.update(this.getLevelingWindowKey(), (c: any) => ({
+      ...c,
+      pobBuilds: buildsList,
+      pobBuild: undefined // Ensure legacy field is removed
+    }));
+  }
+
+  /**
+   * Get the currently active POB build (for backwards compatibility)
+   */
+  private getActivePobBuild(): StoredPobBuild | null {
+    const buildsList = this.getPobBuildsList();
+    return getActiveBuild(buildsList);
+  }
+
+
   private async importPobCode(code: string): Promise<any> {
     try {
       console.log('[PoB Import] Parsing PoB code...');
@@ -1829,14 +1982,17 @@ export class LevelingWindow {
         return (a.length > 0) || (b.length > 0);
       };
       const filteredTreeSpecs = (build.treeSpecs || []).filter(hasNodes);
-      const treeSpecsToUse = filteredTreeSpecs.length > 0 ? filteredTreeSpecs : build.treeSpecs;
+      const treeSpecsToUse = filteredTreeSpecs.length > 0 ? filteredTreeSpecs : (build.treeSpecs || []);
 
       // Use the first non-empty tree spec
       const firstTreeSpec = treeSpecsToUse[0];
-      const allocatedNodes = firstTreeSpec.allocatedNodes;
+      if (!firstTreeSpec) {
+        return { success: false, error: 'No valid tree specs found in build' };
+      }
+      const allocatedNodes = firstTreeSpec.allocatedNodes || [];
 
-  console.log('[PoB Import] Using tree spec:', firstTreeSpec.title);
-  console.log('[PoB Import] Tree specs available:', treeSpecsToUse.map(s => s.title).join(', '));
+      console.log('[PoB Import] Using tree spec:', firstTreeSpec.title);
+      console.log('[PoB Import] Tree specs available:', (treeSpecsToUse || []).map((s: any) => s?.title || 'Untitled').join(', '));
 
       // Calculate tree progression by act
       const treeProgression = calculateTreeProgressionByAct(
@@ -1926,26 +2082,56 @@ export class LevelingWindow {
         importedAt: Date.now()
       };
 
-      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
-        ...c,
-        pobBuild: pobBuild
-      }));
+      // Add to builds list and set as active
+      const currentBuildsList = this.getPobBuildsList();
+      const updatedBuildsList = addBuild(currentBuildsList, pobBuild);
+      this.savePobBuildsList(updatedBuildsList);
 
-      console.log('[PoB Import] Build saved to settings');
+      console.log('[PoB Import] Build added to list and set as active');
 
       // Send update to renderer
       if (this.window && !this.window.isDestroyed()) {
         this.window.webContents.send('pob-build-imported', pobBuild);
       }
 
+      // Get current context for window updates
+      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+      const currentActIndex = (currentSettings as any)?.currentActIndex ?? 0;
+      const characterLevel = (currentSettings as any)?.characterLevel || 1;
+      const autoDetectEnabled = (currentSettings as any)?.uiSettings?.autoDetectLevelingSets ?? true;
+      const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
+
       // Open PoB info bar with tree and gems buttons
-      const currentActIndex = this.settingsService.get(this.getLevelingWindowKey())?.currentActIndex ?? 0;
       openPobInfoBar({
         settingsService: this.settingsService,
         overlayVersion: this.overlayVersion,
         pobBuild: pobBuild,
         currentAct: currentActIndex + 1
       });
+
+      // Update all open windows with the new build
+      // Update gems window if open
+      if (isGemsWindowOpen()) {
+        updateLevelingGemsWindowBuild(pobBuild, this.overlayVersion, this.settingsService);
+        updateLevelingGemsWindow(currentActIndex + 1, this.overlayVersion, this.settingsService);
+        updateLevelingGemsWindowCharacterLevel(characterLevel);
+      }
+      
+      // Update tree window if open
+      if (isTreeWindowOpen() && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
+        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
+      }
+      
+      // Update gear window if open
+      if (isGearWindowOpen() && pobBuild.itemSets && pobBuild.itemSets.length > 0) {
+        updateGearWindow(pobBuild.itemSets);
+        updateGearWindowContext(currentActIndex + 1, characterLevel);
+      }
+      
+      // Update notes window if open
+      if (isNotesWindowOpen() && pobBuild.notes) {
+        updateNotesWindow(pobBuild.notes);
+      }
 
       return {
         success: true,
@@ -2010,7 +2196,7 @@ export class LevelingWindow {
           closeTreeWindow();
         } else {
           const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-          const pobBuild = (currentSettings as any).pobBuild || null;
+          const pobBuild = this.getActivePobBuild();
           
           if (pobBuild && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
             const currentActIndex = (currentSettings as any)?.currentActIndex || 0;
@@ -2044,8 +2230,7 @@ export class LevelingWindow {
           // Reassert leveling overlay order without stealing focus
           try { bringToFront('leveling'); } catch {}
         } else {
-          const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-          const pobBuild = (currentSettings as any).pobBuild || null;
+          const pobBuild = this.getActivePobBuild();
           
           if (pobBuild) {
             openLevelingGemsWindow({
@@ -2069,8 +2254,7 @@ export class LevelingWindow {
           // Reassert leveling overlay order without stealing focus
           try { bringToFront('leveling'); } catch {}
         } else {
-          const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-          const pobBuild = (currentSettings as any).pobBuild || null;
+          const pobBuild = this.getActivePobBuild();
           if (pobBuild && pobBuild.itemSets && pobBuild.itemSets.length > 0) {
             openLevelingGearWindow({
               settingsService: this.settingsService,
@@ -2093,8 +2277,7 @@ export class LevelingWindow {
           // Reassert leveling overlay order without stealing focus
           try { bringToFront('leveling'); } catch {}
         } else {
-          const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-          const pobBuild = (currentSettings as any).pobBuild || null;
+          const pobBuild = this.getActivePobBuild();
           if (pobBuild) {
             openLevelingNotesWindow({
               settingsService: this.settingsService,
@@ -2112,8 +2295,7 @@ export class LevelingWindow {
     // Register "Toggle All Windows" hotkey (Gems, Tree, Gear, Notes)
     if (hotkeys.allWindows) {
       const success = levelingHotkeyManager.register('allWindows', hotkeys.allWindows, () => {
-        const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-        const pobBuild = (currentSettings as any).pobBuild || null;
+        const pobBuild = this.getActivePobBuild();
         
         if (!pobBuild) return;
         
@@ -2130,6 +2312,7 @@ export class LevelingWindow {
           try { bringToFront('leveling'); } catch {}
         } else {
           // Open all windows
+          const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
           const currentActIndex = (currentSettings as any)?.currentActIndex || 0;
           const characterLevel = (currentSettings as any)?.characterLevel || 1;
           const autoDetectEnabled = (currentSettings as any)?.uiSettings?.autoDetectLevelingSets ?? true;
@@ -2182,7 +2365,7 @@ export class LevelingWindow {
       const accel = (hotkeys as any).pobBar as string;
       const success = levelingHotkeyManager.register('pobBar', accel, () => {
         const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-        const pobBuild = (currentSettings as any).pobBuild || null;
+        const pobBuild = this.getActivePobBuild();
         if (isPobInfoBarOpen()) {
           closePobInfoBar();
           // Reassert leveling overlay order without stealing focus

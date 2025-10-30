@@ -39,9 +39,11 @@ async function fetchPobbinCode(url: string): Promise<string | null> {
         // Extract PoB code from textarea in HTML
         const match = data.match(/<textarea[^>]*>([\s\S]*?)<\/textarea>/);
         if (match && match[1]) {
+          console.log('[PoB Decoder] Successfully extracted code from pobb.in (length:', match[1].trim().length, ')');
           resolve(match[1].trim());
         } else {
           console.error('[PoB Decoder] Could not find PoB code in pobb.in response');
+          console.error('[PoB Decoder] Response preview:', data.substring(0, 500));
           resolve(null);
         }
       });
@@ -64,12 +66,14 @@ export async function decodePobCode(code: string): Promise<string | null> {
     
     // Handle pobb.in URLs - fetch the actual code
     if (base64Code.match(/^https?:\/\/pobb\.in\//i)) {
-      console.log('[PoB Decoder] Detected pobb.in URL, fetching...');
+      console.log('[PoB Decoder] Detected pobb.in URL, fetching...', base64Code);
       const fetchedCode = await fetchPobbinCode(base64Code);
       if (!fetchedCode) {
+        console.error('[PoB Decoder] Failed to fetch code from pobb.in');
         return null;
       }
       base64Code = fetchedCode;
+      console.log('[PoB Decoder] Fetched code length:', base64Code.length);
       
       // Validate fetched code length as well
       if (base64Code.length > 10 * 1024 * 1024) {
@@ -81,11 +85,17 @@ export async function decodePobCode(code: string): Promise<string | null> {
     // Remove other URL prefixes if present (pastebin, etc)
     base64Code = base64Code.replace(/^https?:\/\/[^\/]+\//, '');
     
+    console.log('[PoB Decoder] Decoding base64 (length:', base64Code.length, ')');
+    
     // Decode Base64
     const compressed = Buffer.from(base64Code, 'base64');
     
+    console.log('[PoB Decoder] Decompressing (compressed size:', compressed.length, ')');
+    
     // Decompress with Zlib
     const decompressed = zlib.inflateSync(compressed);
+    
+    console.log('[PoB Decoder] Decompressed size:', decompressed.length);
     
     // Convert to UTF-8 string
     return decompressed.toString('utf-8');

@@ -3,6 +3,7 @@ import { registerOverlayWindow } from './windowZManager.js';
 import type { OverlayVersion } from '../../types/overlayVersion.js';
 import type { SettingsService } from '../services/settingsService.js';
 import type { ItemSet } from '../../shared/pob/types.js';
+import { getActiveBuild } from '../../shared/pob/buildManager.js';
 
 interface LevelingGearWindowOptions {
   settingsService: SettingsService;
@@ -54,8 +55,9 @@ export function openLevelingGearWindow(options: LevelingGearWindowOptions): Brow
   // Register and participate in managed z-order
   try { registerOverlayWindow('gear', gearWindow); } catch {}
 
-  // Get current PoB build gear
-  const pobBuild = (savedSettings as any).pobBuild || null;
+  // Get current PoB build gear from the new builds list (pobBuilds) instead of legacy pobBuild
+  const pobBuilds = (savedSettings as any).pobBuilds;
+  const pobBuild = pobBuilds ? getActiveBuild(pobBuilds) : ((savedSettings as any).pobBuild || null);
   const itemSets = pobBuild?.itemSets || [];
   
   // Use root-level persistent selection, fallback to gearWindow.selectedSetIndex for backwards compatibility
@@ -878,6 +880,20 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
       gearContent.innerHTML = renderItemSet(itemSet);
     }
     
+    function smoothRenderGear() {
+      const gearContent = document.getElementById('gear-content');
+      
+      // Fade out content first
+      gearContent.classList.add('updating');
+      
+      // Wait for fade out, then render new content
+      setTimeout(() => {
+        renderCurrentSet();
+        // Fade content back in
+        gearContent.classList.remove('updating');
+      }, 100);
+    }
+    
     function renderItemSet(itemSet) {
       const gear = [];
       const flasks = [];
@@ -1053,7 +1069,7 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
       if (currentSetIndex >= allItemSets.length) {
         currentSetIndex = 0;
       }
-      renderCurrentSet();
+      smoothRenderGear();
     });
     
     // Listen for context updates (act/level changes)

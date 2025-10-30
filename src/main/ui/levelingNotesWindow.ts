@@ -2,6 +2,7 @@ import { BrowserWindow, ipcMain } from 'electron';
 import { registerOverlayWindow } from './windowZManager.js';
 import type { OverlayVersion } from '../../types/overlayVersion.js';
 import type { SettingsService } from '../services/settingsService.js';
+import { getActiveBuild } from '../../shared/pob/buildManager.js';
 
 interface LevelingNotesWindowOptions {
   settingsService: SettingsService;
@@ -52,8 +53,9 @@ export function openLevelingNotesWindow(options: LevelingNotesWindowOptions): Br
   // Register for managed z-order
   try { registerOverlayWindow('notes', notesWindow); } catch {}
 
-  // Get current PoB build notes
-  const pobBuild = (savedSettings as any).pobBuild || null;
+  // Get current PoB build notes from the new builds list (pobBuilds) instead of legacy pobBuild
+  const pobBuilds = (savedSettings as any).pobBuilds;
+  const pobBuild = pobBuilds ? getActiveBuild(pobBuilds) : ((savedSettings as any).pobBuild || null);
   const notes = pobBuild?.notes || 'No notes available.\n\nImport a PoB build with notes to see them here.';
 
   const html = buildLevelingNotesWindowHtml(notes, overlayVersion, ultraMinimal, pobBuild);
@@ -403,11 +405,20 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
     // Listen for notes updates
     ipcRenderer.on('notes-updated', (event, newNotes) => {
       const content = document.getElementById('content');
-      if (newNotes) {
-        content.innerHTML = '<div class="notes-text" id="notesText">' + parsePobNotesInBrowser(newNotes) + '</div>';
-      } else {
-        content.innerHTML = '<div class="no-notes"><div class="no-notes-icon">📝</div><div class="no-notes-text">No notes available<br><br>Import a PoB build with notes to see them here</div></div>';
-      }
+      
+      // Fade out content first
+      content.classList.add('updating');
+      
+      // Wait for fade out, then render new content
+      setTimeout(() => {
+        if (newNotes) {
+          content.innerHTML = '<div class="notes-text" id="notesText">' + parsePobNotesInBrowser(newNotes) + '</div>';
+        } else {
+          content.innerHTML = '<div class="no-notes"><div class="no-notes-icon">📝</div><div class="no-notes-text">No notes available<br><br>Import a PoB build with notes to see them here</div></div>';
+        }
+        // Fade content back in
+        content.classList.remove('updating');
+      }, 100);
     });
     
     function escapeHtml(text) {

@@ -2,6 +2,7 @@ import { BrowserWindow, ipcMain } from 'electron';
 import { registerOverlayWindow, bringToFront } from './windowZManager.js';
 import type { OverlayVersion } from '../../types/overlayVersion.js';
 import type { SettingsService } from '../services/settingsService.js';
+import { getActiveBuild } from '../../shared/pob/buildManager.js';
 import gemsData from '../../data/leveling-data/gems.json';
 import gemColoursData from '../../data/leveling-data/gem-colours.json';
 import questsData from '../../data/leveling-data/quests.json';
@@ -57,8 +58,10 @@ export function openLevelingGemsWindow(options: LevelingGemsWindowOptions): Brow
   // Register and elevate when shown/focused
   try { registerOverlayWindow('gems', gemsWindow); } catch {}
 
-  // Get current PoB build data and current act
-  const pobBuild = (savedSettings as any).pobBuild || null;
+  // Get current PoB build data from the new builds list (pobBuilds) instead of legacy pobBuild
+  const pobBuilds = (savedSettings as any).pobBuilds;
+  const pobBuild = pobBuilds ? getActiveBuild(pobBuilds) : ((savedSettings as any).pobBuild || null);
+  
   const currentActIndex = (savedSettings as any).currentActIndex || 0;
   const characterLevel = (savedSettings as any).characterLevel || 1;
   const savedGemsIndex = (savedSettings as any).selectedGemsIndex ?? -1;

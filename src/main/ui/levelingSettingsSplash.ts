@@ -710,6 +710,128 @@ function buildLevelingSettingsSplashHtml(
       color: var(--text-primary);
       padding: 8px;
     }
+
+    /* POB Builds List */
+    .pob-builds-list {
+      margin-top: 16px;
+    }
+
+    .pob-build-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 10px;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pob-build-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .pob-build-item.active {
+      border-color: var(--accent-green);
+      background: rgba(74, 222, 128, 0.05);
+    }
+
+    .pob-build-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .pob-build-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      cursor: text;
+    }
+
+    .pob-build-name input {
+      background: transparent;
+      border: none;
+      color: inherit;
+      font: inherit;
+      width: 100%;
+      outline: none;
+      padding: 0;
+    }
+
+    .pob-build-name input:focus {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .pob-build-details {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .pob-build-active-badge {
+      display: inline-block;
+      background: var(--accent-green);
+      color: white;
+      font-size: 9px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 8px;
+      text-transform: uppercase;
+    }
+
+    .pob-build-actions {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .pob-build-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 11px;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .pob-build-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .pob-build-btn.activate {
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+    }
+
+    .pob-build-btn.activate:hover {
+      background: rgba(74, 222, 128, 0.1);
+    }
+
+    .pob-build-btn.delete {
+      border-color: var(--accent-red);
+      color: var(--accent-red);
+    }
+
+    .pob-build-btn.delete:hover {
+      background: rgba(217, 83, 79, 0.1);
+    }
+
+    .pob-no-builds {
+      text-align: center;
+      padding: 24px;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
@@ -1105,6 +1227,8 @@ function buildLevelingSettingsSplashHtml(
           <strong>ℹ️ About PoB Import:</strong><br/>
           Import builds from Path of Building to see skill gems and passive tree progression while leveling. 
           The overlay will show ${overlayVersion === 'poe1' ? 'which gems to pick up from quest rewards and track' : 'skill gems and'} your passive tree allocation.
+          <br/><br/>
+          <strong>Multiple builds supported!</strong> You can now save multiple builds and switch between them easily.
         </div>
         
         <div class="setting-item" style="flex-direction: column; align-items: stretch;">
@@ -1115,7 +1239,7 @@ function buildLevelingSettingsSplashHtml(
           <textarea 
             id="pobCodeInput" 
             placeholder="Paste PoB code or pobb.in link here..." 
-            style="width: 100%; min-height: 120px; margin-top: 8px; padding: 12px; 
+            style="width: 100%; min-height: 100px; margin-top: 8px; padding: 12px; 
                    background: var(--bg-tertiary); border: 1px solid var(--border-color); 
                    border-radius: 6px; color: var(--text-primary); font-family: monospace; 
                    font-size: 11px; resize: vertical;"
@@ -1127,17 +1251,12 @@ function buildLevelingSettingsSplashHtml(
         
         <div class="setting-item" style="flex-direction: column; align-items: stretch;">
           <div class="setting-label">
-            <div class="setting-name">Current Build</div>
-            <div class="setting-description">Currently loaded Path of Building build</div>
+            <div class="setting-name">Saved Builds</div>
+            <div class="setting-description">Manage your saved Path of Building builds</div>
           </div>
-          <div id="pobBuildInfo" style="margin-top: 8px; padding: 12px; background: var(--bg-tertiary); 
-                                       border: 1px solid var(--border-color); border-radius: 6px; 
-                                       font-size: 12px; color: var(--text-secondary);">
-            No build imported
+          <div id="pobBuildsList" class="pob-builds-list">
+            <div class="pob-no-builds">No builds saved yet. Import a build above to get started.</div>
           </div>
-          <button class="action-btn danger" onclick="clearPobBuild()" style="margin-top: 8px;" id="clearPobBtn" disabled>
-            🗑️ Clear Build
-          </button>
         </div>
       </div>
       
@@ -1357,43 +1476,136 @@ function buildLevelingSettingsSplashHtml(
         return;
       }
       
-      const infoEl = document.getElementById('pobBuildInfo');
-      const clearBtn = document.getElementById('clearPobBtn');
-      
-      infoEl.textContent = 'Importing build...';
-      infoEl.style.color = 'var(--text-secondary)';
+      // Show importing indicator in input area
+      const textarea = document.getElementById('pobCodeInput');
+      const originalPlaceholder = textarea.placeholder;
+      textarea.placeholder = 'Importing...';
+      textarea.disabled = true;
       
       ipcRenderer.invoke('import-pob-from-settings', pobCode).then(result => {
+        textarea.disabled = false;
+        textarea.placeholder = originalPlaceholder;
+        
         if (result.success) {
-          infoEl.innerHTML = \`
-            <div style="color: var(--accent-green); font-weight: 600; margin-bottom: 8px;">✅ Build Imported Successfully!</div>
-            <div><strong>\${result.build.className}</strong> \${result.build.ascendancyName ? '(' + result.build.ascendancyName + ')' : ''}</div>
-            <div style="margin-top: 4px;">Level \${result.build.level} | \${result.build.totalNodes || 0} passive nodes | \${result.build.gemsFound || 0} gems</div>
-          \`;
-          
-          clearBtn.disabled = false;
-          
           // Clear the input
-          document.getElementById('pobCodeInput').value = '';
+          textarea.value = '';
+          
+          // Refresh the builds list
+          refreshPobBuildsList();
+          
+          // Show success message
+          alert(\`✅ Build imported successfully!\n\n\${result.build.className}\${result.build.ascendancyName ? ' (' + result.build.ascendancyName + ')' : ''}\nLevel \${result.build.level} | \${result.build.totalNodes || 0} nodes | \${result.build.gemsFound || 0} gems\`);
         } else {
-          infoEl.innerHTML = \`<div style="color: var(--accent-red);">❌ \${result.error || 'Failed to import build'}</div>\`;
+          alert(\`❌ Failed to import build:\n\n\${result.error || 'Unknown error'}\`);
         }
       }).catch(err => {
-        infoEl.innerHTML = \`<div style="color: var(--accent-red);">❌ Error: \${err.message}</div>\`;
+        textarea.disabled = false;
+        textarea.placeholder = originalPlaceholder;
+        alert(\`❌ Error importing build:\n\n\${err.message}\`);
+      });
+    }
+    
+    function refreshPobBuildsList() {
+      ipcRenderer.invoke('get-pob-builds-list').then(result => {
+        if (!result.success) return;
+        
+        const listContainer = document.getElementById('pobBuildsList');
+        
+        if (result.builds.length === 0) {
+          listContainer.innerHTML = '<div class="pob-no-builds">No builds saved yet. Import a build above to get started.</div>';
+          return;
+        }
+        
+        let html = '';
+        for (const build of result.builds) {
+          const isActive = build.isActive;
+          const className = build.className || 'Unknown';
+          const ascendancy = build.ascendancyName || '';
+          const level = build.level || 1;
+          
+          html += \`
+            <div class="pob-build-item \${isActive ? 'active' : ''}" data-id="\${build.id}">
+              <div class="pob-build-info">
+                <div class="pob-build-name">
+                  <input 
+                    type="text" 
+                    value="\${escapeHtml(build.name)}" 
+                    onblur="saveBuildName('\${build.id}', this.value)"
+                    onkeydown="if(event.key==='Enter')this.blur()"
+                  />
+                  \${isActive ? '<span class="pob-build-active-badge">Active</span>' : ''}
+                </div>
+                <div class="pob-build-details">
+                  \${className}\${ascendancy ? ' · ' + ascendancy : ''} · Level \${level}
+                </div>
+              </div>
+              <div class="pob-build-actions">
+                \${!isActive ? \`<button class="pob-build-btn activate" onclick="activateBuild('\${build.id}')">✓ Activate</button>\` : ''}
+                <button class="pob-build-btn delete" onclick="deleteBuild('\${build.id}')">✕ Delete</button>
+              </div>
+            </div>
+          \`;
+        }
+        
+        listContainer.innerHTML = html;
+      });
+    }
+    
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+    
+    function saveBuildName(buildId, newName) {
+      if (!newName || !newName.trim()) return;
+      
+      ipcRenderer.invoke('rename-pob-build', buildId, newName.trim()).then(result => {
+        if (!result.success) {
+          alert('Failed to rename build: ' + (result.error || 'Unknown error'));
+          refreshPobBuildsList();
+        }
+      });
+    }
+    
+    function activateBuild(buildId) {
+      ipcRenderer.invoke('activate-pob-build', buildId).then(result => {
+        if (result.success) {
+          refreshPobBuildsList();
+        } else {
+          alert('Failed to activate build: ' + (result.error || 'Unknown error'));
+        }
+      });
+    }
+    
+    function deleteBuild(buildId) {
+      if (!confirm('Delete this build? This action cannot be undone.')) {
+        return;
+      }
+      
+      ipcRenderer.invoke('delete-pob-build', buildId).then(result => {
+        if (result.success) {
+          refreshPobBuildsList();
+        } else {
+          alert('Failed to delete build: ' + (result.error || 'Unknown error'));
+        }
       });
     }
     
     function clearPobBuild() {
-      if (!confirm('Remove the current PoB build? This will clear gem recommendations and tree data.')) {
+      if (!confirm('Remove ALL PoB builds? This will clear all gem recommendations and tree data.')) {
         return;
       }
       
       ipcRenderer.invoke('remove-pob-build').then(() => {
-        document.getElementById('pobBuildInfo').textContent = 'No build imported';
-        document.getElementById('pobBuildInfo').style.color = 'var(--text-secondary)';
-        document.getElementById('clearPobBtn').disabled = true;
+        refreshPobBuildsList();
       });
     }
+    
+    // Load builds list when tab is opened
+    document.addEventListener('DOMContentLoaded', () => {
+      refreshPobBuildsList();
+    });
     
     function openGemsWindow() {
       ipcRenderer.send('open-gems-window');
