@@ -322,6 +322,7 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
   }
   const merchantHistoryAutoFetch = settingsService.get('merchantHistoryAutoFetch') !== false; // default true
   const merchantHistoryRefreshInterval = settingsService.get('merchantHistoryRefreshInterval') || 0; // 0 = smart auto
+  const myModsEnabled = settingsService.get('myModsEnabled') || false; // default false
   const appVersion = getAppVersion();
   const html = buildSettingsSplashHtml(
     currentHotkey, 
@@ -332,7 +333,8 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
     Boolean(merchantHistoryAutoFetch),
     Number(merchantHistoryRefreshInterval),
     overlayVersion,
-    displayLeagueOptions
+    displayLeagueOptions,
+    Boolean(myModsEnabled)
   );
   window.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
 
@@ -579,6 +581,22 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       }
     });
 
+    // Handle My Mods enabled toggle
+    ipcMain.on('settings-save-my-mods-enabled', (event, enabled: boolean) => {
+      try {
+        settingsService.set('myModsEnabled', enabled);
+        
+        // Notify overlay window for live update
+        if (overlayWindow && !overlayWindow.isDestroyed()) {
+          overlayWindow.webContents.send('my-mods-enabled-changed', enabled);
+        }
+        
+        event.reply('settings-my-mods-enabled-saved', { enabled });
+      } catch (error) {
+        console.error('Failed to save My Mods enabled setting:', error);
+      }
+    });
+
     window.on('closed', () => {
       // Clear the active settings window reference
       activeSettingsWindow = null;
@@ -607,7 +625,8 @@ function buildSettingsSplashHtml(
   merchantHistoryAutoFetch: boolean,
   merchantHistoryRefreshInterval: number,
   overlayVersion: OverlayVersion,
-  leagueOptions: LeagueOption[]
+  leagueOptions: LeagueOption[],
+  myModsEnabled: boolean
 ): string {
   const normalizedOverlayVersion: OverlayVersion = isOverlayVersion(overlayVersion) ? overlayVersion : 'poe2';
   const escapeHtml = (value: string): string =>
@@ -1335,6 +1354,9 @@ function buildSettingsSplashHtml(
     <button class="tab-button" data-tab="controls">
       <span class="tab-icon">🎮</span>Controls
     </button>
+    <button class="tab-button" data-tab="modifiers">
+      <span class="tab-icon">✨</span>Modifiers
+    </button>
     <button class="tab-button" data-tab="trading">
       <span class="tab-icon">📊</span>Trading
     </button>
@@ -1462,6 +1484,41 @@ function buildSettingsSplashHtml(
   </div>
       
     </div><!-- End Controls Tab -->
+    
+    <!-- MODIFIERS TAB -->
+    <div class="tab-panel" data-panel="modifiers">
+      
+  <!-- Modifiers Section -->
+  <div class="section">
+    <div class="section-title">✨ Modifier Features</div>
+    <div class="section-desc">Configure advanced modifier options</div>
+    
+    <div class="setting-item">
+      <div class="setting-label">
+        <span class="setting-label-text">My Mods</span>
+        <span class="setting-label-desc">Enable the "My Mods" filter to show only modifiers on your copied item</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="myModsEnabledToggle" ${myModsEnabled ? 'checked' : ''}>
+        <span class="switch-slider"></span>
+      </label>
+    </div>
+    <button class="btn btn-green" id="saveMyModsSettingBtn" style="display: none; margin-top: 10px;">Save Setting</button>
+    
+    <div class="info-box" style="margin-top: 16px;">
+      <div class="info-icon">ℹ️</div>
+      <div class="info-content">
+        <div class="info-title">About My Mods</div>
+        <div class="info-text">
+          When enabled, the "My Mods" button in the modifier view will allow you to filter 
+          and see only the modifiers that exist on your currently copied item. 
+          When disabled, the button will be greyed out and no calculations will be performed for this feature.
+        </div>
+      </div>
+    </div>
+  </div>
+      
+    </div><!-- End Modifiers Tab -->
     
     <!-- TRADING TAB -->
     <div class="tab-panel" data-panel="trading">
@@ -2082,6 +2139,39 @@ function buildSettingsSplashHtml(
       document.getElementById('openFolderBtn').addEventListener('click', () => {
         ipcRenderer.send('settings-open-folder');
       });
+      
+      // My Mods Feature Toggle
+      const myModsEnabledToggle = document.getElementById('myModsEnabledToggle');
+      const saveMyModsSettingBtn = document.getElementById('saveMyModsSettingBtn');
+      
+      let originalMyModsEnabled = ${myModsEnabled};
+      let pendingMyModsEnabled = originalMyModsEnabled;
+      
+      const updateMyModsSaveBtn = () => {
+        const changed = pendingMyModsEnabled !== originalMyModsEnabled;
+        saveMyModsSettingBtn.style.display = changed ? 'block' : 'none';
+      };
+      
+      if (myModsEnabledToggle) {
+        myModsEnabledToggle.addEventListener('change', (e) => {
+          pendingMyModsEnabled = e.target.checked;
+          updateMyModsSaveBtn();
+        });
+      }
+      
+      if (saveMyModsSettingBtn) {
+        saveMyModsSettingBtn.addEventListener('click', () => {
+          ipcRenderer.send('settings-save-my-mods-enabled', pendingMyModsEnabled);
+        });
+        
+        ipcRenderer.on('settings-my-mods-enabled-saved', (event, data) => {
+          console.log('My Mods enabled setting saved:', data);
+          originalMyModsEnabled = data.enabled;
+          pendingMyModsEnabled = data.enabled;
+          myModsEnabledToggle.checked = data.enabled;
+          saveMyModsSettingBtn.style.display = 'none';
+        });
+      }
       
       // Merchant History Auto-Fetch Settings
       const merchantHistoryAutoFetchToggle = document.getElementById('merchantHistoryAutoFetchToggle');

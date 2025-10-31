@@ -1,13 +1,15 @@
 import { BrowserWindow, screen, ipcMain, globalShortcut } from 'electron';
-import { SettingsService } from '../services/settingsService.js';
+import { SettingsService, type CustomHotkey } from '../services/settingsService.js';
 import { buildLevelingPopoutHtml } from '../popouts/levelingPopoutTemplate.js';
-import { registerOverlayWindow, bringToFront } from './windowZManager.js';
+import { registerOverlayWindow, unregisterOverlayWindow, bringToFront } from './windowZManager.js';
 import { openLevelingSettingsSplash } from './levelingSettingsSplash.js';
 import { openPobInfoBar, closePobInfoBar, updatePobInfoBar, isPobInfoBarOpen } from './pobInfoBar.js';
 import { openLevelingGemsWindow, updateLevelingGemsWindow, updateLevelingGemsWindowBuild, updateLevelingGemsWindowCharacterLevel, closeLevelingGemsWindow, isGemsWindowOpen } from './levelingGemsWindow.js';
 import { openLevelingNotesWindow, updateNotesWindow, closeNotesWindow, isNotesWindowOpen } from './levelingNotesWindow.js';
 import { openLevelingGearWindow, updateGearWindow, updateGearWindowContext, closeGearWindow, isGearWindowOpen } from './levelingGearWindow.js';
 import { createPassiveTreeWindow, sendTreeData, updateTreeWindowContext, isTreeWindowOpen, closeTreeWindow } from '../windows/levelingTreeWindow.js';
+import { levelingHotkeyManager } from '../hotkeys/levelingHotkeyManager.js';
+import { executeLogout, typeInChat } from '../utils/chatCommand.js';
 import fs from 'fs';
 import path from 'path';
 import { app } from 'electron';
@@ -18,8 +20,18 @@ import {
   extractUniqueGems, 
   matchGemsToQuestSteps,
   calculateTreeProgressionByAct,
+  createEmptyBuildsList,
+  addBuild,
+  deleteBuild,
+  renameBuild,
+  setActiveBuild,
+  getActiveBuild,
+  getAllBuilds,
+  migrateLegacyBuild,
   type StoredPobBuild,
-  type GemSocketGroup
+  type GemSocketGroup,
+  type PobBuildsList,
+  type PobBuildEntry
 } from '../../shared/pob/index.js';
 
 export interface LevelingWindowParams {
@@ -40,6 +52,10 @@ export class LevelingWindow {
   // Ultra-mode hover tracker
   private ultraHoverInterval: NodeJS.Timeout | null = null;
   private ultraHoverActive: boolean = false;
+  private ultraModeEnabled: boolean = false;
+  private lastIgnoreMouseState: boolean = false;
+  private setIgnoreMouseEventsListener?: (event: Electron.IpcMainEvent, ignore: boolean, options?: { forward: boolean }) => void;
+  private ultraModeChangeListener?: (event: Electron.IpcMainEvent, payload: { enabled: boolean }) => void;
 
   constructor(params: LevelingWindowParams) {
     this.settingsService = params.settingsService;
@@ -84,29 +100,98 @@ export class LevelingWindow {
   }
 
   show(): void {
+    // If window exists and is just hidden, show it
     if (this.window && !this.window.isDestroyed()) {
-      this.window.show();
+      if (!this.window.isVisible()) {
+        this.window.show();
+        // Always reset interactivity when re-showing; tracker will reassert if needed
+        this.applyIgnoreMouseEvents(false, 'show-existing');
+        try { bringToFront('leveling'); } catch {}
+      }
       return;
     }
+    
+    // Create new window
     this.createWindow();
-    // Restart client.txt watcher when window is recreated
     this.startClientTxtWatcher();
     this.settingsService.update(this.getLevelingWindowKey(), (c) => ({ ...c, enabled: true }));
   }
 
-  hide(): void {
+  close(): void {
     if (this.window && !this.window.isDestroyed()) {
       this.savePosition();
+      this.saveSize();
+      // Clean up ultra hover tracker
+      this.stopUltraHoverTracker();
+      // Unregister from overlay manager
+      unregisterOverlayWindow('leveling');
+      // Stop client.txt watcher
+      this.stopClientTxtWatcher();
+      // Close window (this will trigger 'closed' event which cleans up remaining listeners)
       this.window.close();
       this.window = null;
     }
-    // Stop Client.txt monitoring when window is hidden
-    this.stopClientTxtWatcher();
     this.settingsService.update(this.getLevelingWindowKey(), (c) => ({ ...c, enabled: false }));
   }
 
+  // Keep hide() for backwards compatibility but make it call close()
+  hide(): void {
+    this.close();
+  }
+
+  private applyIgnoreMouseEvents(enabled: boolean, source: string, options?: { forward: boolean }): void {
+    if (!this.window || this.window.isDestroyed()) return;
+
+    if (enabled && !this.ultraModeEnabled) {
+      if (this.lastIgnoreMouseState) {
+        this.window.setIgnoreMouseEvents(false);
+        this.lastIgnoreMouseState = false;
+      }
+      console.log(`[LevelingWindow] Prevented clickthrough enable from ${source} (ultra mode inactive)`);
+      return;
+    }
+
+    if (this.lastIgnoreMouseState === enabled) {
+      return;
+    }
+
+    if (enabled) {
+      this.window.setIgnoreMouseEvents(true, options ?? { forward: true });
+    } else {
+      this.window.setIgnoreMouseEvents(false);
+    }
+    this.lastIgnoreMouseState = enabled;
+    console.log(`[LevelingWindow] setIgnoreMouseEvents(${enabled ? 'ENABLED' : 'DISABLED'}) via ${source} (ultraMode=${this.ultraModeEnabled}, trackerActive=${this.ultraHoverActive})`);
+  }
+
   toggle(): void {
-    this.isVisible() ? this.hide() : this.show();
+    this.isVisible() ? this.close() : this.show();
+  }
+
+  forceToPrimaryMonitor(): void {
+    if (!this.window || this.window.isDestroyed()) {
+      console.warn('[LevelingWindow] Cannot force to primary - window not open');
+      return;
+    }
+    
+    const primaryDisplay = screen.getPrimaryDisplay();
+    const { width, height } = primaryDisplay.workAreaSize;
+    const primaryBounds = primaryDisplay.bounds;
+    const { w, h } = this.getTargetSize();
+    
+    // Position on primary monitor (top-right corner with margin)
+    const x = Math.round(primaryBounds.x + width - w - 20);
+    const y = primaryBounds.y + 20;
+    
+    this.window.setPosition(x, y);
+    
+    // Save the new position
+    this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+      ...c,
+      position: { x, y }
+    }));
+    
+    console.log(`[LevelingWindow] Forced window to primary monitor at (${x}, ${y})`);
   }
 
   isVisible(): boolean {
@@ -129,11 +214,58 @@ export class LevelingWindow {
 
   private createWindow(): void {
     const saved = this.settingsService.get(this.getLevelingWindowKey());
-    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+    
+    const primaryDisplay = screen.getPrimaryDisplay();
+    const { width, height } = primaryDisplay.workAreaSize;
+    const primaryBounds = primaryDisplay.bounds;
+    
+    // Get all displays to check if saved position is off-screen
+    const allDisplays = screen.getAllDisplays();
 
     const { w, h } = this.getTargetSize();
-    const x = saved?.position?.x ?? Math.round(width - w - 20);
-    const y = saved?.position?.y ?? 20;
+    let x = saved?.position?.x ?? Math.round(width - w - 20);
+    let y = saved?.position?.y ?? 20;
+    let positionReset = false;
+    
+    // Check if the saved position is visible on any current display
+    if (saved?.position) {
+      const savedX = saved.position.x;
+      const savedY = saved.position.y;
+      
+      // Check if ANY part of the window would be visible on ANY display
+      const isOnScreen = allDisplays.some(display => {
+        const bounds = display.bounds;
+        // Window is visible if it overlaps with the display bounds
+        const windowRight = savedX + w;
+        const windowBottom = savedY + h;
+        const displayRight = bounds.x + bounds.width;
+        const displayBottom = bounds.y + bounds.height;
+        
+        const horizontalOverlap = savedX < displayRight && windowRight > bounds.x;
+        const verticalOverlap = savedY < displayBottom && windowBottom > bounds.y;
+        
+        return horizontalOverlap && verticalOverlap;
+      });
+      
+      if (!isOnScreen) {
+        console.warn(`[LevelingWindow] Saved position is off-screen (monitor disconnected?), moving to primary display`);
+        // Use primary display bounds to ensure window is within the primary screen
+        x = Math.round(primaryBounds.x + width - w - 20);
+        y = primaryBounds.y + 20;
+        positionReset = true;
+      }
+    }
+    
+    // Only reset position if it's completely off-screen (already handled above)
+    // Do NOT clamp to primary display - allow positioning on secondary monitors
+    
+    // Save the corrected position immediately if we reset it
+    if (positionReset) {
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+        ...c,
+        position: { x, y }
+      }));
+    }
 
     this.window = new BrowserWindow({
       width: w,
@@ -151,103 +283,89 @@ export class LevelingWindow {
         contextIsolation: false,
         backgroundThrottling: false,
         webSecurity: false,
-        devTools: true, // Enable DevTools for debugging
+        devTools: true,
       },
     });
 
     // Enable F12 to open DevTools
     this.window.webContents.on('before-input-event', (event, input) => {
-      if (input.key === 'F12' && input.type === 'keyDown') {
-        if (this.window && !this.window.isDestroyed()) {
-          if (this.window.webContents.isDevToolsOpened()) {
-            this.window.webContents.closeDevTools();
-          } else {
-            this.window.webContents.openDevTools({ mode: 'detach' });
+        if (input.key === 'F12' && input.type === 'keyDown') {
+          if (this.window && !this.window.isDestroyed()) {
+            if (this.window.webContents.isDevToolsOpened()) {
+              this.window.webContents.closeDevTools();
+            } else {
+              this.window.webContents.openDevTools({ mode: 'detach' });
+            }
           }
         }
-      }
-    });
-
-    // Set higher z-order (platform-tuned)
-    try {
-      if (process.platform === 'win32') {
-        this.window.setAlwaysOnTop(true, 'screen-saver');
-      } else {
-        this.window.setAlwaysOnTop(true, 'pop-up-menu');
-      }
-    } catch (e) {
-      console.warn('[LevelingWindow] Failed to set z-order:', e);
-    }
-
-    this.window.setIgnoreMouseEvents(false);
-
-    // Register with overlay z-order manager for consistent behavior
-    try { registerOverlayWindow('leveling', this.window); } catch {}
-
-    // Load inline HTML (like floating button does)
-    this.window.loadURL(this.buildDataUrl());
-
-    // Check if there's a saved PoB build and auto-open the info bar
-    this.window.webContents.once('did-finish-load', () => {
-      const saved = this.settingsService.get(this.getLevelingWindowKey());
-      const pobBuild = (saved as any)?.pobBuild;
-      if (pobBuild) {
-        console.log('[LevelingWindow] Found saved PoB build, opening info bar');
-        const currentActIndex = (saved as any)?.currentActIndex ?? 0;
-        openPobInfoBar({
-          settingsService: this.settingsService,
-          overlayVersion: this.overlayVersion,
-          pobBuild: pobBuild,
-          currentAct: currentActIndex + 1
-        });
-      }
-    });
-
-    this.window.on('moved', () => {
-      this.savePosition();
-    });
-
-    this.window.on('resize', () => {
-      this.saveSize();
-    });
-
-    this.window.on('closed', () => {
-      this.stopClientTxtWatcher();
-      this.stopUltraHoverTracker();
-      this.window = null;
-    });
-
-    // Extra z-order protection: on blur (e.g. user clicks the game), aggressively
-    // re-assert always-on-top and moveTop for this leveling window. This helps
-    // when minimal/ultra modes interact oddly with some fullscreen/borderless games
-    // where the OS can demote our window despite setAlwaysOnTop.
-    try {
-      this.window.on('blur', () => {
-        if (!this.window || this.window.isDestroyed() || !this.window.isVisible()) return;
-
-        // Fire a few nudges over time to try and regain topmost state.
-        const nudge = () => {
-          try {
-            // Reassert high-level topmost
-            this.window?.setAlwaysOnTop(true, 'screen-saver', 1);
-            // If moveTop is available (native window helper), call it
-            if (typeof (this.window as any).moveTop === 'function') {
-              try { (this.window as any).moveTop(); } catch {}
-            }
-          } catch {}
-        };
-
-        // Immediate and delayed nudges
-        setTimeout(nudge, 20);
-        setTimeout(nudge, 120);
-        setTimeout(nudge, 500);
       });
-    } catch (e) {
-      // Non-fatal
-    }
 
-    // Setup IPC handlers
-    this.setupIpcHandlers();
+  this.applyIgnoreMouseEvents(false, 'createWindow-init');
+
+      // Register with overlay z-order manager for consistent behavior
+      // This will handle setAlwaysOnTop and setFocusable for us
+      console.log(`[LevelingWindow] Registering window with overlay z-order manager...`);
+      try { 
+        registerOverlayWindow('leveling', this.window, true, false);
+        console.log(`[LevelingWindow] ✓ Registered with overlay manager (pinned, no focus)`);
+      } catch (e) {
+        console.warn(`[LevelingWindow] ⚠ Failed to register with overlay manager:`, e);
+      }
+
+      // Load inline HTML (like floating button does)
+      console.log(`[LevelingWindow] Loading window HTML via data URL...`);
+      const dataUrl = this.buildDataUrl();
+      this.window.loadURL(dataUrl);
+      console.log(`[LevelingWindow] ✓ Window HTML loaded`);
+
+      // Check if there's a saved PoB build and auto-open the info bar
+      this.window.webContents.once('did-finish-load', () => {
+        const saved = this.settingsService.get(this.getLevelingWindowKey());
+        const pobBuild = this.getActivePobBuild();
+        if (pobBuild) {
+          const currentActIndex = (saved as any)?.currentActIndex ?? 0;
+          openPobInfoBar({
+            settingsService: this.settingsService,
+            overlayVersion: this.overlayVersion,
+            pobBuild: pobBuild,
+            currentAct: currentActIndex + 1
+          });
+        }
+      });
+
+      this.window.on('moved', () => {
+        this.savePosition();
+      });
+
+      this.window.on('resize', () => {
+        this.saveSize();
+      });
+
+      this.window.on('closed', () => {
+        console.log(`[LevelingWindow] Window 'closed' event fired`);
+        // Clean up everything
+        unregisterOverlayWindow('leveling');
+        this.stopClientTxtWatcher();
+        this.stopUltraHoverTracker();
+        
+        // Remove IPC listeners
+        if (this.setIgnoreMouseEventsListener) {
+          ipcMain.removeListener('set-ignore-mouse-events', this.setIgnoreMouseEventsListener);
+          this.setIgnoreMouseEventsListener = undefined;
+        }
+        if (this.ultraModeChangeListener) {
+          ipcMain.removeListener('ultra-mode-change', this.ultraModeChangeListener);
+          this.ultraModeChangeListener = undefined;
+        }
+        
+        // Reset state
+        this.ultraModeEnabled = false;
+        this.lastIgnoreMouseState = false;
+        this.window = null;
+      });
+
+      // Setup IPC handlers
+      this.setupIpcHandlers();
   }
 
   private setupIpcHandlers(): void {
@@ -259,8 +377,36 @@ export class LevelingWindow {
 
     ipcMain.removeHandler('leveling-close');
     ipcMain.handle('leveling-close', () => {
-      this.hide();
+      this.close();
     });
+
+    if (this.setIgnoreMouseEventsListener) {
+      ipcMain.removeListener('set-ignore-mouse-events', this.setIgnoreMouseEventsListener);
+    }
+    this.setIgnoreMouseEventsListener = (_event, ignore: boolean, options?: { forward: boolean }) => {
+      if (ignore) {
+        this.applyIgnoreMouseEvents(true, 'renderer-request', options);
+      } else {
+        this.applyIgnoreMouseEvents(false, 'renderer-request');
+      }
+    };
+    ipcMain.on('set-ignore-mouse-events', this.setIgnoreMouseEventsListener);
+
+    if (this.ultraModeChangeListener) {
+      ipcMain.removeListener('ultra-mode-change', this.ultraModeChangeListener);
+    }
+    this.ultraModeChangeListener = (_event, payload: { enabled: boolean }) => {
+      const enabled = !!(payload && payload.enabled);
+      console.log(`[LevelingWindow] ultra-mode-change -> ${enabled ? 'ENABLED' : 'DISABLED'}`);
+      this.ultraModeEnabled = enabled;
+      if (enabled) {
+        this.startUltraHoverTracker();
+      } else {
+        this.stopUltraHoverTracker();
+        this.applyIgnoreMouseEvents(false, 'ultra-mode-change-disable');
+      }
+    };
+    ipcMain.on('ultra-mode-change', this.ultraModeChangeListener);
   }
 
   private getTargetSize(): { w: number; h: number } {
@@ -369,6 +515,94 @@ export class LevelingWindow {
     }
   }
 
+  /**
+   * Check if a zone name is a valid zone in the zone registry.
+   * Uses fuzzy matching to handle "The" prefix differences.
+   * This prevents false positives from null/empty SCENE entries.
+   */
+  private isValidZone(zoneName: string): boolean {
+    if (!zoneName || zoneName.trim() === '' || zoneName === '(null)' || zoneName === 'null') {
+      return false;
+    }
+    
+    if (!this.zoneRegistry || !this.zoneRegistry.zonesByAct) {
+      return false;
+    }
+
+    // Normalize zone name for fuzzy matching (remove "The" prefix, trim, lowercase)
+    const normalizeZone = (name: string): string => {
+      return name.trim().toLowerCase().replace(/^the\s+/i, '');
+    };
+    
+    const normalizedInput = normalizeZone(zoneName);
+    
+    // Check if zone exists in any act with fuzzy matching
+    for (const act of this.zoneRegistry.zonesByAct) {
+      if (act.locations) {
+        for (const location of act.locations) {
+          // Check main zone name
+          if (normalizeZone(location.zoneName) === normalizedInput) {
+            return true;
+          }
+          // Check alternative name if it exists
+          if (location.alternativeName && normalizeZone(location.alternativeName) === normalizedInput) {
+            return true;
+          }
+        }
+      }
+    }
+    
+    return false;
+  }
+
+  /**
+   * Get zone name from area code (like "1_1_11_1").
+   * This is the CORRECT way to detect zones - area codes are unique and reliable.
+   * Based on how Exile-UI does zone detection.
+   */
+  private getZoneNameFromAreaCode(areaCode: string): string | null {
+    if (!areaCode || !this.zoneRegistry || !this.zoneRegistry.zonesByAct) {
+      return null;
+    }
+
+    // Search through all acts to find the zone with this area code
+    for (const act of this.zoneRegistry.zonesByAct) {
+      if (act.locations) {
+        for (const location of act.locations) {
+          // Check if this location has the matching area code (zoneKey)
+          if (location.zoneKey === areaCode) {
+            return location.zoneName;
+          }
+        }
+      }
+    }
+    
+    return null;
+  }
+
+  /**
+   * Get the act number from an area code.
+   * Returns null if area code not found in registry.
+   */
+  private getActNumberFromAreaCode(areaCode: string): number | null {
+    if (!areaCode || !this.zoneRegistry || !this.zoneRegistry.zonesByAct) {
+      return null;
+    }
+
+    // Search through all acts to find the zone with this area code
+    for (const act of this.zoneRegistry.zonesByAct) {
+      if (act.locations) {
+        for (const location of act.locations) {
+          if (location.zoneKey === areaCode) {
+            return act.actId; // Return the act number
+          }
+        }
+      }
+    }
+    
+    return null;
+  }
+
   private getEmbeddedData(): any {
     // Minimal embedded data for Act 1 (copied from module.ts)
     return {
@@ -465,8 +699,7 @@ export class LevelingWindow {
       updateGearWindowContext(actIndex + 1, characterLevel);
       
       // Update PoB info bar with new act
-      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-      const pobBuild = (currentSettings as any).pobBuild;
+      const pobBuild = this.getActivePobBuild();
       if (pobBuild) {
         updatePobInfoBar(pobBuild, actIndex + 1);
       }
@@ -687,32 +920,13 @@ export class LevelingWindow {
       }
     });
 
-    // Set click-through (ignore mouse events)
-    ipcMain.on('set-ignore-mouse-events', (event, ignore: boolean, options?: { forward: boolean }) => {
-      if (this.window && !this.window.isDestroyed()) {
-        this.window.setIgnoreMouseEvents(ignore, options);
-      }
-    });
-
-    // Ultra mode: renderer notifies main to enable header hover tracking
-    ipcMain.on('ultra-mode-change', (_event, payload: { enabled: boolean }) => {
-      const enabled = !!(payload && payload.enabled);
-      if (enabled) {
-        this.startUltraHoverTracker();
-      } else {
-        this.stopUltraHoverTracker();
-        if (this.window && !this.window.isDestroyed()) {
-          this.window.setIgnoreMouseEvents(false);
-        }
-      }
-    });
-
     // Open leveling settings splash
-    ipcMain.handle('open-leveling-settings', async () => {
+    ipcMain.handle('open-leveling-settings', async (event, tabName?: string) => {
       openLevelingSettingsSplash({
         settingsService: this.settingsService,
         overlayVersion: this.overlayVersion,
-        overlayWindow: this.window
+        overlayWindow: this.window,
+        initialTab: tabName
       });
       return true;
     });
@@ -724,7 +938,7 @@ export class LevelingWindow {
         const updated: any = { ...(current || {}) };
         
         // UI settings should be nested under uiSettings
-        const uiSettingKeys = ['opacity', 'fontSize', 'zoomLevel', 'visibleSteps', 'groupByZone', 'showHints', 'showOptional', 'showTreeNodeDetails', 'autoDetectLevelingSets'];
+        const uiSettingKeys = ['opacity', 'fontSize', 'zoomLevel', 'visibleSteps', 'groupByZone', 'showHints', 'showOptional', 'showTreeNodeDetails', 'autoDetectLevelingSets', 'autoDetectZones', 'autoDetectMode'];
         const uiUpdates: any = {};
         const otherUpdates: any = {};
         
@@ -769,10 +983,21 @@ export class LevelingWindow {
       this.registerHotkeys();
     });
 
+    // Handle custom hotkeys update
+    ipcMain.on('leveling-custom-hotkeys-update', (event, customHotkeys: CustomHotkey[]) => {
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+        ...c,
+        customHotkeys
+      } as any));
+      
+      // Re-register hotkeys
+      this.registerHotkeys();
+    });
+
     // Open/toggle gems window from PoB info bar
     ipcMain.on('open-pob-gems-window', () => {
       const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-      const pobBuild = (currentSettings as any).pobBuild || null;
+      const pobBuild = this.getActivePobBuild();
       const currentActIndex = (currentSettings as any).currentActIndex || 0;
       const currentAct = currentActIndex + 1; // Convert index to act number
       
@@ -798,8 +1023,7 @@ export class LevelingWindow {
 
     // Open/toggle passive tree window from PoB info bar
     ipcMain.on('open-pob-tree-window', () => {
-      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-      const pobBuild = (currentSettings as any).pobBuild || null;
+      const pobBuild = this.getActivePobBuild();
       
       if (!pobBuild || !pobBuild.treeSpecs || pobBuild.treeSpecs.length === 0) {
         console.warn('[LevelingWindow] Cannot open tree window - no PoB build with trees loaded');
@@ -818,22 +1042,21 @@ export class LevelingWindow {
   const savedTreeIndex = (saved as any)?.selectedTreeIndex;
         const onTreeWindowReady = () => {
           console.log('[LevelingWindow] Tree window reported ready, sending data');
-          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
+          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
         };
         ipcMain.once('tree-window-ready', onTreeWindowReady);
         const treeWindow = createPassiveTreeWindow();
         if (!treeWindow.webContents.isLoading()) {
           ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
           console.log('[LevelingWindow] Tree window already loaded, sending data immediately');
-          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
+          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
         }
       }
     });
 
     // Open/toggle notes window from PoB info bar
     ipcMain.on('open-pob-notes-window', () => {
-      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-      const pobBuild = (currentSettings as any).pobBuild || null;
+      const pobBuild = this.getActivePobBuild();
       
       if (isNotesWindowOpen()) {
         closeNotesWindow();
@@ -852,8 +1075,7 @@ export class LevelingWindow {
 
     // Open/toggle gear window from PoB info bar
     ipcMain.on('open-pob-gear-window', () => {
-      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-      const pobBuild = (currentSettings as any).pobBuild || null;
+      const pobBuild = this.getActivePobBuild();
       
       if (isGearWindowOpen()) {
         closeGearWindow();
@@ -930,7 +1152,7 @@ export class LevelingWindow {
     // Show PoB info bar
     ipcMain.on('show-pob-info-bar', () => {
       const config = this.settingsService.get(this.getLevelingWindowKey());
-      const pobBuild = config?.pobBuild as any;
+      const pobBuild = this.getActivePobBuild();
       
       if (pobBuild) {
         const currentAct = (config?.currentActIndex || 0) + 1;
@@ -943,17 +1165,190 @@ export class LevelingWindow {
       }
     });
 
+    // Toggle leveling guide window
+    ipcMain.on('toggle-leveling-guide', () => {
+      // Use the same toggle logic as the class method
+      this.toggle();
+    });
+
+    // Force window to primary monitor
+    ipcMain.handle('force-to-primary-monitor', async () => {
+      if (!this.window || this.window.isDestroyed()) {
+        return { success: false, message: 'Window not open' };
+      }
+      
+      const primaryDisplay = screen.getPrimaryDisplay();
+      const { width, height } = primaryDisplay.workAreaSize;
+      const primaryBounds = primaryDisplay.bounds;
+      const { w, h } = this.getTargetSize();
+      
+      // Position on primary monitor (top-right corner with margin)
+      const x = Math.round(primaryBounds.x + width - w - 20);
+      const y = primaryBounds.y + 20;
+      
+      this.window.setPosition(x, y);
+      
+      // Save the new position
+      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+        ...c,
+        position: { x, y }
+      }));
+      
+      console.log(`[LevelingWindow] Moved window to primary monitor at (${x}, ${y})`);
+      return { success: true };
+    });
+
     // Import PoB build from settings splash
     ipcMain.handle('import-pob-from-settings', async (event, code: string) => {
       return await this.importPobCode(code);
     });
 
-    // Remove PoB build
+    // Get all POB builds
+    ipcMain.handle('get-pob-builds-list', async () => {
+      const buildsList = this.getPobBuildsList();
+      return {
+        success: true,
+        builds: getAllBuilds(buildsList).map(entry => ({
+          id: entry.id,
+          name: entry.name,
+          isActive: entry.isActive,
+          className: entry.build.className,
+          ascendancyName: entry.build.ascendancyName,
+          level: entry.build.level,
+          createdAt: entry.createdAt,
+          updatedAt: entry.updatedAt
+        })),
+        activeId: buildsList.activeId
+      };
+    });
+
+    // Rename POB build
+    ipcMain.handle('rename-pob-build', async (event, buildId: string, newName: string) => {
+      try {
+        const buildsList = this.getPobBuildsList();
+        const updatedList = renameBuild(buildsList, buildId, newName);
+        this.savePobBuildsList(updatedList);
+        
+        // If this was the active build, update windows
+        if (updatedList.activeId === buildId) {
+          const activeBuild = getActiveBuild(updatedList);
+          if (activeBuild && this.window && !this.window.isDestroyed()) {
+            this.window.webContents.send('pob-build-updated', activeBuild);
+          }
+        }
+        
+        return { success: true };
+      } catch (error: any) {
+        return { success: false, error: error.message };
+      }
+    });
+
+    // Delete POB build
+    ipcMain.handle('delete-pob-build', async (event, buildId: string) => {
+      try {
+        const buildsList = this.getPobBuildsList();
+        const wasActive = buildsList.activeId === buildId;
+        const updatedList = deleteBuild(buildsList, buildId);
+        this.savePobBuildsList(updatedList);
+        
+        // If we deleted the active build and a new one was activated, update windows
+        if (wasActive) {
+          const newActiveBuild = getActiveBuild(updatedList);
+          if (newActiveBuild) {
+            if (this.window && !this.window.isDestroyed()) {
+              this.window.webContents.send('pob-build-updated', newActiveBuild);
+            }
+            // Update POB info bar if open
+            if (isPobInfoBarOpen()) {
+              const currentActIndex = this.settingsService.get(this.getLevelingWindowKey())?.currentActIndex ?? 0;
+              openPobInfoBar({
+                settingsService: this.settingsService,
+                overlayVersion: this.overlayVersion,
+                pobBuild: newActiveBuild,
+                currentAct: currentActIndex + 1
+              });
+            }
+          } else {
+            // No builds left, close POB info bar
+            closePobInfoBar();
+            if (this.window && !this.window.isDestroyed()) {
+              this.window.webContents.send('pob-build-removed');
+            }
+          }
+        }
+        
+        return { success: true, newActiveId: updatedList.activeId };
+      } catch (error: any) {
+        return { success: false, error: error.message };
+      }
+    });
+
+    // Activate POB build
+    ipcMain.handle('activate-pob-build', async (event, buildId: string) => {
+      try {
+        const buildsList = this.getPobBuildsList();
+        const updatedList = setActiveBuild(buildsList, buildId);
+        this.savePobBuildsList(updatedList);
+        
+        const activeBuild = getActiveBuild(updatedList);
+        if (activeBuild) {
+          // Update main window
+          if (this.window && !this.window.isDestroyed()) {
+            this.window.webContents.send('pob-build-updated', activeBuild);
+          }
+          
+          // Get current context
+          const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+          const currentActIndex = (currentSettings as any)?.currentActIndex ?? 0;
+          const characterLevel = (currentSettings as any)?.characterLevel || 1;
+          const autoDetectEnabled = (currentSettings as any)?.uiSettings?.autoDetectLevelingSets ?? true;
+          const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
+          
+          // Update POB info bar if open
+          if (isPobInfoBarOpen()) {
+            openPobInfoBar({
+              settingsService: this.settingsService,
+              overlayVersion: this.overlayVersion,
+              pobBuild: activeBuild,
+              currentAct: currentActIndex + 1
+            });
+          }
+          
+          // Update gems window if open
+          if (isGemsWindowOpen()) {
+            updateLevelingGemsWindowBuild(activeBuild, this.overlayVersion, this.settingsService);
+            updateLevelingGemsWindow(currentActIndex + 1, this.overlayVersion, this.settingsService);
+            updateLevelingGemsWindowCharacterLevel(characterLevel);
+          }
+          
+          // Update tree window if open
+          if (isTreeWindowOpen() && activeBuild.treeSpecs && activeBuild.treeSpecs.length > 0) {
+            sendTreeData(activeBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, activeBuild.treeVersion);
+          }
+          
+          // Update gear window if open
+          if (isGearWindowOpen() && activeBuild.itemSets && activeBuild.itemSets.length > 0) {
+            updateGearWindow(activeBuild.itemSets);
+            updateGearWindowContext(currentActIndex + 1, characterLevel);
+          }
+          
+          // Update notes window if open
+          if (isNotesWindowOpen() && activeBuild.notes) {
+            updateNotesWindow(activeBuild.notes);
+          }
+        }
+        
+        return { success: true };
+      } catch (error: any) {
+        return { success: false, error: error.message };
+      }
+    });
+
+    // Remove PoB build (legacy - now deletes all builds)
     ipcMain.handle('remove-pob-build', async () => {
-      this.settingsService.update(this.getLevelingWindowKey(), (c: any) => ({
-        ...c,
-        pobBuild: undefined
-      }));
+      const buildsList = this.getPobBuildsList();
+      const emptyList = createEmptyBuildsList();
+      this.savePobBuildsList(emptyList);
       
       // Close PoB info bar
       closePobInfoBar();
@@ -1111,10 +1506,9 @@ export class LevelingWindow {
       return await this.importPobCode(code);
     });
 
-    // Get stored PoB build
+    // Get stored PoB build (legacy handler - returns active build)
     ipcMain.handle('get-pob-build', async () => {
-      const saved = this.settingsService.get(this.getLevelingWindowKey());
-      return saved?.pobBuild || null;
+      return this.getActivePobBuild();
     });
 
     // Note: Client.txt watcher is started/stopped via show()/hide() methods
@@ -1124,7 +1518,7 @@ export class LevelingWindow {
   private clientTxtWatcher: fs.FSWatcher | null = null;
   private clientTxtPath: string | null = null;
   private lastFilePosition: number = 0;
-  private seenZones: Array<{ zone: string; timestamp: number }> = []; // Track all zones in chronological order
+  private lastZoneAreaCode: string | null = null; // Track last zone area code (simple prev/current tracking)
 
   /**
    * Try to find the Path of Exile installation directory by looking for running processes
@@ -1359,13 +1753,52 @@ export class LevelingWindow {
     this.clientTxtPath = clientPath;
     console.log(`Starting ${this.overlayVersion.toUpperCase()} Client.txt watcher at:`, clientPath);
     
-    // Initialize last position to end of file
+    // Find the LAST "Generating level" entry in the file to detect current zone
     try {
       const stats = fs.statSync(clientPath);
-      this.lastFilePosition = stats.size;
-      console.log('Initial file position:', this.lastFilePosition);
+      const fileSize = stats.size;
+      
+      // Read last chunk of file (last 50KB should be enough to find recent zone)
+      const chunkSize = Math.min(50000, fileSize);
+      const buffer = Buffer.alloc(chunkSize);
+      const fd = fs.openSync(clientPath, 'r');
+      fs.readSync(fd, buffer, 0, chunkSize, fileSize - chunkSize);
+      fs.closeSync(fd);
+      
+      const recentContent = buffer.toString('utf8');
+      const lines = recentContent.split('\n');
+      
+      // Search backwards for the LAST "Generating level" entry
+      let lastZoneEntry = null;
+      for (let i = lines.length - 1; i >= 0; i--) {
+        const match = lines[i].match(/\[DEBUG Client \d+\] Generating level (\d+) area "([^"]+)" with seed (\d+)/);
+        if (match) {
+          lastZoneEntry = { areaCode: match[2], seed: match[3], level: match[1], zoneName: this.getZoneNameFromAreaCode(match[2]) };
+          console.log(`[STARTUP] Found zone entry: level ${match[1]}, area "${match[2]}", seed ${match[3]}`);
+          break;
+        }
+      }
+      
+      if (lastZoneEntry && lastZoneEntry.zoneName) {
+        const actNumber = this.getActNumberFromAreaCode(lastZoneEntry.areaCode);
+        console.log(`[STARTUP] Detected current zone: ${lastZoneEntry.areaCode} → "${lastZoneEntry.zoneName}" (Act ${actNumber})`);
+        
+        // Set as last zone (no dedup needed on startup)
+        this.lastZoneAreaCode = lastZoneEntry.areaCode;
+        
+        // Send to renderer to auto-check the current zone
+        if (this.window && !this.window.isDestroyed()) {
+          this.window.webContents.send('zone-entered', { zoneId: lastZoneEntry.areaCode, zoneName: lastZoneEntry.zoneName, actNumber });
+        }
+      } else {
+        console.log(`[STARTUP] No recent zone detected in last ${chunkSize} bytes`);
+      }
+      
+      // Set file position to end for future monitoring
+      this.lastFilePosition = fileSize;
+      console.log(`[STARTUP] File position set to: ${this.lastFilePosition}`);
     } catch (error) {
-      console.error('Error getting initial file stats:', error);
+      console.error('[STARTUP] Error reading initial file state:', error);
       this.lastFilePosition = 0;
     }
 
@@ -1373,12 +1806,11 @@ export class LevelingWindow {
     // Check every 500ms for changes
     fs.watchFile(clientPath, { interval: 500 }, (curr, prev) => {
       if (curr.mtime > prev.mtime) {
-        console.log('File modified, checking for changes...');
         this.handleClientTxtChange(clientPath);
       }
     });
     
-    console.log('File watcher started successfully');
+    console.log('[CLIENT.TXT] Watcher started');
   }
 
   private handleClientTxtChange(filePath: string) {
@@ -1388,223 +1820,97 @@ export class LevelingWindow {
 
       // Handle truncation or rotation: if file shrank, reset pointer to 0 to avoid missing new lines
       if (currentSize < this.lastFilePosition) {
-        console.log('Client.txt appears truncated or rotated. Resetting read position to 0.');
+        console.log('[CLIENT.TXT] File truncated, resetting position');
         this.lastFilePosition = 0;
       }
 
       // Only read if file has grown beyond last position
       if (currentSize === this.lastFilePosition) {
-        // No new content
         return;
       }
 
-      console.log(`Reading Client.txt from position ${this.lastFilePosition} to ${currentSize}`);
+      const bytesToRead = currentSize - this.lastFilePosition;
 
       // Read only the new content
-      const buffer = Buffer.alloc(currentSize - this.lastFilePosition);
+      const buffer = Buffer.alloc(bytesToRead);
       const fd = fs.openSync(filePath, 'r');
-      fs.readSync(fd, buffer, 0, buffer.length, this.lastFilePosition);
+      const bytesRead = fs.readSync(fd, buffer, 0, buffer.length, this.lastFilePosition);
       fs.closeSync(fd);
 
       const newContent = buffer.toString('utf8');
       this.lastFilePosition = currentSize;
 
-      console.log('New content:', newContent.substring(0, 200)); // Log first 200 chars
-
-      // Parse for zone entry lines and level ups
-      // POE1 Zone Format: 2025/06/13 09:49:29 98539734 cff94598 [INFO Client 39308] : You have entered The Forest Encampment.
-      // POE1 Level Format: 2025/06/14 03:26:55 161985515 cff945b9 [INFO Client 34512] : SnakeInHerFissure (Marauder) is now level 2
-      // POE2 Zone Format: 2025/10/24 12:20:06 46081515 775aed1e [INFO Client 14056] [SCENE] Set Source [Clearfell]
+      // CORRECT Zone Detection: Use "Generating level" pattern with area codes
+      // Format: [DEBUG Client XXXX] Generating level XX area "AREA_CODE" with seed XXXXXXXX
+      // Example: 2025/10/30 02:00:50 30813843 1186a003 [DEBUG Client 3488] Generating level 12 area "1_1_11_1" with seed 2987920182
+      // This is how Exile-UI does it - area codes are unique and never NULL
       
-      let matchCount = 0;
+      const lines = newContent.split('\n');
       
-      if (this.overlayVersion === 'poe1') {
-        // POE1: Zone detection with line-by-line processing
-        const lines = newContent.split('\n');
+      for (const line of lines) {
+        // PRIMARY DETECTION: Area code from "Generating level" entry (uses double quotes)
+        const generatingMatch = line.match(/\[DEBUG Client \d+\] Generating level (\d+) area "([^"]+)" with seed (\d+)/);
         
-        for (const line of lines) {
-          const zoneMatch = line.match(/\[INFO Client \d+\] : You have entered (.+)\./);
-          if (zoneMatch) {
-            const zoneName = zoneMatch[1].trim();
-            matchCount++;
-            console.log(`[${matchCount}] POE1 Detected zone entry:`, zoneName);
+        if (generatingMatch) {
+          const [, areaLevel, areaCode] = generatingMatch;
+          
+          // Look up the zone name from the area code using the zone registry
+          const zoneName = this.getZoneNameFromAreaCode(areaCode);
+          const actNumber = this.getActNumberFromAreaCode(areaCode);
+          
+          if (!zoneName || actNumber === null) {
+            console.log(`[ZONE] Unknown area code: "${areaCode}"`);
+            continue;
+          }
+          
+          // Simple zone tracking: Only send if this is a DIFFERENT zone than last time
+          if (areaCode !== this.lastZoneAreaCode) {
+            console.log(`[ZONE] ${zoneName} (Act ${actNumber}) [${areaCode}]`);
             
-            // Extract timestamp from THIS specific line (format: 2025/10/29 12:40:21 9521312)
-            const timestampMatch = line.match(/(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2} \d+)/);
-            const timestamp = timestampMatch ? parseInt(timestampMatch[1].split(' ')[2]) : Date.now();
+            // Update last zone
+            this.lastZoneAreaCode = areaCode;
             
-            // Check if we've already seen this exact zone entry
-            const alreadySeen = this.seenZones.some(z => z.zone === zoneName && z.timestamp === timestamp);
-            
-            if (!alreadySeen) {
-              // Add to seen zones
-              this.seenZones.push({ zone: zoneName, timestamp });
-              
-              // Keep only last 50 zones to prevent memory bloat
-              if (this.seenZones.length > 50) {
-                this.seenZones.shift();
-              }
-              
-              console.log(`[POE1] New zone detected: ${zoneName} (timestamp: ${timestamp})`);
-              
-              // Send to renderer to auto-check the step
-              if (this.window && !this.window.isDestroyed()) {
-                this.window.webContents.send('zone-entered', zoneName);
-              }
-            } else {
-              console.log(`[POE1] Skipping duplicate zone entry: ${zoneName}`);
+            // Send zone ID, zone NAME, and ACT NUMBER to renderer
+            if (this.window && !this.window.isDestroyed()) {
+              this.window.webContents.send('zone-entered', { zoneId: areaCode, zoneName, actNumber });
             }
           }
-        }
-
-        // POE1: Level-up detection
-        const levelRegex = /\[INFO Client \d+\] : (.+?) \((\w+)\) is now level (\d+)/g;
-        let match;
-        while ((match = levelRegex.exec(newContent)) !== null) {
-          const [, characterName, className, levelStr] = match;
-          const level = parseInt(levelStr, 10);
-          console.log(`[POE1] Character level up: ${characterName} (${className}) → Level ${level}`);
-
-          // Store character info and level
-          this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
-            ...c,
-            characterLevel: level,
-            characterName: characterName,
-            characterClass: className
-          }));
-
-          // Send to renderer
-          if (this.window && !this.window.isDestroyed()) {
-            this.window.webContents.send('character-level-up', {
-              name: characterName,
-              class: className,
-              level: level
-            });
-          }
-          
-          // Update gems window with new character level
-          updateLevelingGemsWindowCharacterLevel(level);
-          
-          // Update tree and gear windows context with new level
-          const saved = this.settingsService.get(this.getLevelingWindowKey());
-          const currentAct = (saved as any)?.currentActIndex + 1 || 1;
-          updateTreeWindowContext(currentAct, level);
-          updateGearWindowContext(currentAct, level);
-        }
-      } else {
-        // POE2: Handle both formats with line-by-line processing
-        // Examples observed:
-        //   [SCENE] Set Source [Clearfell]
-        //   [SCENE] Set Source ([Lioneye's Watch])
-        const lines = newContent.split('\n');
-        
-        for (const line of lines) {
-          // Check for SCENE format first
-          const sceneMatch = line.match(/\[INFO Client \d+\] \[SCENE\]\s*Set Source\s*\(?\[(.+?)\]\)?/);
-          if (sceneMatch) {
-            const zoneName = sceneMatch[1].trim();
-            matchCount++;
-            console.log(`[${matchCount}] POE2 Detected zone entry (SCENE):`, zoneName);
-            
-            // Extract timestamp from THIS specific line
-            const timestampMatch = line.match(/(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2} \d+)/);
-            const timestamp = timestampMatch ? parseInt(timestampMatch[1].split(' ')[2]) : Date.now();
-            
-            // Check if we've already seen this exact zone entry
-            const alreadySeen = this.seenZones.some(z => z.zone === zoneName && z.timestamp === timestamp);
-            
-            if (!alreadySeen) {
-              // Add to seen zones
-              this.seenZones.push({ zone: zoneName, timestamp });
-              
-              // Keep only last 50 zones to prevent memory bloat
-              if (this.seenZones.length > 50) {
-                this.seenZones.shift();
-              }
-              
-              console.log(`[POE2] New zone detected (SCENE): ${zoneName} (timestamp: ${timestamp})`);
-              
-              // Send to renderer to auto-check the step
-              if (this.window && !this.window.isDestroyed()) {
-                this.window.webContents.send('zone-entered', zoneName);
-              }
-            } else {
-              console.log(`[POE2] Skipping duplicate zone entry (SCENE): ${zoneName}`);
-            }
-          }
-          
-          // Fallback: also look for "You have entered <Zone>." format
-          const enteredMatch = line.match(/\[INFO Client \d+\] : You have entered (.+)\./);
-          if (enteredMatch) {
-            const zoneName = enteredMatch[1].trim();
-            matchCount++;
-            console.log(`[${matchCount}] POE2 Detected zone entry (fallback):`, zoneName);
-            
-            // Extract timestamp from THIS specific line
-            const timestampMatch = line.match(/(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2} \d+)/);
-            const timestamp = timestampMatch ? parseInt(timestampMatch[1].split(' ')[2]) : Date.now();
-            
-            // Check if we've already seen this exact zone entry
-            const alreadySeen = this.seenZones.some(z => z.zone === zoneName && z.timestamp === timestamp);
-            
-            if (!alreadySeen) {
-              // Add to seen zones
-              this.seenZones.push({ zone: zoneName, timestamp });
-              
-              // Keep only last 50 zones to prevent memory bloat
-              if (this.seenZones.length > 50) {
-                this.seenZones.shift();
-              }
-              
-              console.log(`[POE2] New zone detected (fallback): ${zoneName} (timestamp: ${timestamp})`);
-              
-              if (this.window && !this.window.isDestroyed()) {
-                this.window.webContents.send('zone-entered', zoneName);
-              }
-            } else {
-              console.log(`[POE2] Skipping duplicate zone entry (fallback): ${zoneName}`);
-            }
-          }
-        }
-
-        // POE2: Level-up detection
-        const levelRegex = /\[INFO Client \d+\] : (.+?) \((\w+)\) is now level (\d+)/g;
-        let match;
-        while ((match = levelRegex.exec(newContent)) !== null) {
-          const [, characterName, className, levelStr] = match;
-          const level = parseInt(levelStr, 10);
-          console.log(`[POE2] Character level up: ${characterName} (${className}) → Level ${level}`);
-
-          // Store character info and level
-          this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
-            ...c,
-            characterLevel: level,
-            characterName: characterName,
-            characterClass: className
-          }));
-
-          // Send to renderer
-          if (this.window && !this.window.isDestroyed()) {
-            this.window.webContents.send('character-level-up', {
-              name: characterName,
-              class: className,
-              level: level
-            });
-          }
-          
-          // Update gems window with new character level
-          updateLevelingGemsWindowCharacterLevel(level);
-          
-          // Update tree and gear windows context with new level
-          const saved = this.settingsService.get(this.getLevelingWindowKey());
-          const currentAct = (saved as any)?.currentActIndex + 1 || 1;
-          updateTreeWindowContext(currentAct, level);
-          updateGearWindowContext(currentAct, level);
         }
       }
 
-      if (matchCount === 0) {
-        console.log('No zone entries found in new content');
+      // Level-up detection (same for both POE1 and POE2)
+      const levelRegex = /\[INFO Client \d+\] : (.+?) \((\w+)\) is now level (\d+)/g;
+      let match;
+      while ((match = levelRegex.exec(newContent)) !== null) {
+        const [, characterName, className, levelStr] = match;
+        const level = parseInt(levelStr, 10);
+        console.log(`Character level up: ${characterName} (${className}) → Level ${level}`);
+
+        // Store character info and level
+        this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
+          ...c,
+          characterLevel: level,
+          characterName: characterName,
+          characterClass: className
+        }));
+
+        // Send to renderer
+        if (this.window && !this.window.isDestroyed()) {
+          this.window.webContents.send('character-level-up', {
+            name: characterName,
+            class: className,
+            level: level
+          });
+        }
+        
+        // Update gems window with new character level
+        updateLevelingGemsWindowCharacterLevel(level);
+        
+        // Update tree and gear windows context with new level
+        const saved = this.settingsService.get(this.getLevelingWindowKey());
+        const currentAct = (saved as any)?.currentActIndex + 1 || 1;
+        updateTreeWindowContext(currentAct, level);
+        updateGearWindowContext(currentAct, level);
       }
     } catch (error: any) {
       // Provide more detailed error information
@@ -1632,12 +1938,22 @@ export class LevelingWindow {
 
   // Toggle window click-through based on cursor hovering the ultra header area
   private startUltraHoverTracker() {
+    // Safety: don't start if already running
     if (this.ultraHoverInterval) return;
+    
     this.ultraHoverActive = true;
     const headerHeight = 72; // px, matches ultra header stack
     const pollIntervalMs = 40;
+    console.log('[LevelingWindow] startUltraHoverTracker (ultra mode hover interval active)');
 
     this.ultraHoverInterval = setInterval(() => {
+      // Safety: stop tracker if flag was cleared (shouldn't happen, but defensive)
+      if (!this.ultraHoverActive) {
+        this.stopUltraHoverTracker();
+        this.applyIgnoreMouseEvents(false, 'ultra-hover-stop-flag');
+        return;
+      }
+      
       if (!this.window || this.window.isDestroyed()) return;
       try {
         const bounds = this.window.getBounds();
@@ -1647,13 +1963,14 @@ export class LevelingWindow {
         const overHeader = withinX && withinY;
 
         if (overHeader) {
-          this.window.setIgnoreMouseEvents(false);
+          this.applyIgnoreMouseEvents(false, 'ultra-hover-header');
         } else {
-          this.window.setIgnoreMouseEvents(true, { forward: true });
+          this.applyIgnoreMouseEvents(true, 'ultra-hover-body');
         }
       } catch (e) {
-        // Fail-safe: keep window interactive
-        this.window?.setIgnoreMouseEvents(false);
+        // Fail-safe: keep window interactive and stop tracker
+        this.stopUltraHoverTracker();
+        this.applyIgnoreMouseEvents(false, 'ultra-hover-error');
       }
     }, pollIntervalMs);
   }
@@ -1664,7 +1981,57 @@ export class LevelingWindow {
       clearInterval(this.ultraHoverInterval);
       this.ultraHoverInterval = null;
     }
+    // Always reset clickthrough when stopping tracker
+    this.applyIgnoreMouseEvents(false, 'stopUltraHoverTracker');
+    console.log('[LevelingWindow] stopUltraHoverTracker (hover interval cleared)');
   }
+
+  /**
+   * Get or migrate POB builds list from settings
+   */
+  private getPobBuildsList(): PobBuildsList {
+    const saved = this.settingsService.get(this.getLevelingWindowKey()) as any;
+    
+    // If we have the new format, use it
+    if (saved?.pobBuilds) {
+      return saved.pobBuilds as PobBuildsList;
+    }
+    
+    // If we have legacy pobBuild, migrate it
+    if (saved?.pobBuild) {
+      const migrated = migrateLegacyBuild(saved.pobBuild as StoredPobBuild);
+      // Save migrated version
+      this.settingsService.update(this.getLevelingWindowKey(), (c: any) => ({
+        ...c,
+        pobBuilds: migrated,
+        pobBuild: undefined // Remove legacy field
+      }));
+      return migrated;
+    }
+    
+    // No builds yet
+    return createEmptyBuildsList();
+  }
+
+  /**
+   * Save POB builds list to settings
+   */
+  private savePobBuildsList(buildsList: PobBuildsList): void {
+    this.settingsService.update(this.getLevelingWindowKey(), (c: any) => ({
+      ...c,
+      pobBuilds: buildsList,
+      pobBuild: undefined // Ensure legacy field is removed
+    }));
+  }
+
+  /**
+   * Get the currently active POB build (for backwards compatibility)
+   */
+  private getActivePobBuild(): StoredPobBuild | null {
+    const buildsList = this.getPobBuildsList();
+    return getActiveBuild(buildsList);
+  }
+
 
   private async importPobCode(code: string): Promise<any> {
     try {
@@ -1691,14 +2058,17 @@ export class LevelingWindow {
         return (a.length > 0) || (b.length > 0);
       };
       const filteredTreeSpecs = (build.treeSpecs || []).filter(hasNodes);
-      const treeSpecsToUse = filteredTreeSpecs.length > 0 ? filteredTreeSpecs : build.treeSpecs;
+      const treeSpecsToUse = filteredTreeSpecs.length > 0 ? filteredTreeSpecs : (build.treeSpecs || []);
 
       // Use the first non-empty tree spec
       const firstTreeSpec = treeSpecsToUse[0];
-      const allocatedNodes = firstTreeSpec.allocatedNodes;
+      if (!firstTreeSpec) {
+        return { success: false, error: 'No valid tree specs found in build' };
+      }
+      const allocatedNodes = firstTreeSpec.allocatedNodes || [];
 
-  console.log('[PoB Import] Using tree spec:', firstTreeSpec.title);
-  console.log('[PoB Import] Tree specs available:', treeSpecsToUse.map(s => s.title).join(', '));
+      console.log('[PoB Import] Using tree spec:', firstTreeSpec.title);
+      console.log('[PoB Import] Tree specs available:', (treeSpecsToUse || []).map((s: any) => s?.title || 'Untitled').join(', '));
 
       // Calculate tree progression by act
       const treeProgression = calculateTreeProgressionByAct(
@@ -1788,26 +2158,56 @@ export class LevelingWindow {
         importedAt: Date.now()
       };
 
-      this.settingsService.update(this.getLevelingWindowKey(), (c) => ({
-        ...c,
-        pobBuild: pobBuild
-      }));
+      // Add to builds list and set as active
+      const currentBuildsList = this.getPobBuildsList();
+      const updatedBuildsList = addBuild(currentBuildsList, pobBuild);
+      this.savePobBuildsList(updatedBuildsList);
 
-      console.log('[PoB Import] Build saved to settings');
+      console.log('[PoB Import] Build added to list and set as active');
 
       // Send update to renderer
       if (this.window && !this.window.isDestroyed()) {
         this.window.webContents.send('pob-build-imported', pobBuild);
       }
 
+      // Get current context for window updates
+      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+      const currentActIndex = (currentSettings as any)?.currentActIndex ?? 0;
+      const characterLevel = (currentSettings as any)?.characterLevel || 1;
+      const autoDetectEnabled = (currentSettings as any)?.uiSettings?.autoDetectLevelingSets ?? true;
+      const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
+
       // Open PoB info bar with tree and gems buttons
-      const currentActIndex = this.settingsService.get(this.getLevelingWindowKey())?.currentActIndex ?? 0;
       openPobInfoBar({
         settingsService: this.settingsService,
         overlayVersion: this.overlayVersion,
         pobBuild: pobBuild,
         currentAct: currentActIndex + 1
       });
+
+      // Update all open windows with the new build
+      // Update gems window if open
+      if (isGemsWindowOpen()) {
+        updateLevelingGemsWindowBuild(pobBuild, this.overlayVersion, this.settingsService);
+        updateLevelingGemsWindow(currentActIndex + 1, this.overlayVersion, this.settingsService);
+        updateLevelingGemsWindowCharacterLevel(characterLevel);
+      }
+      
+      // Update tree window if open
+      if (isTreeWindowOpen() && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
+        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+      }
+      
+      // Update gear window if open
+      if (isGearWindowOpen() && pobBuild.itemSets && pobBuild.itemSets.length > 0) {
+        updateGearWindow(pobBuild.itemSets);
+        updateGearWindowContext(currentActIndex + 1, characterLevel);
+      }
+      
+      // Update notes window if open
+      if (isNotesWindowOpen() && pobBuild.notes) {
+        updateNotesWindow(pobBuild.notes);
+      }
 
       return {
         success: true,
@@ -1828,15 +2228,12 @@ export class LevelingWindow {
     }
   }
 
-  private registerHotkeys(): void {
+  private async registerHotkeys(): Promise<void> {
+    // Initialize UIOhook if not already done
+    await levelingHotkeyManager.initialize();
+    
     // Unregister all previously registered hotkeys
-    for (const accelerator of this.registeredHotkeys) {
-      try {
-        globalShortcut.unregister(accelerator);
-      } catch (e) {
-        console.warn('[LevelingWindow] Failed to unregister hotkey:', accelerator, e);
-      }
-    }
+    levelingHotkeyManager.unregisterAll();
     this.registeredHotkeys = [];
     
     // Get current hotkey settings
@@ -1845,206 +2242,279 @@ export class LevelingWindow {
     
     // Register prev hotkey
     if (hotkeys.prev) {
-      try {
-        globalShortcut.register(hotkeys.prev, () => {
-          if (this.window && !this.window.isDestroyed()) {
-            this.window.webContents.send('hotkey-action', 'prev');
-          }
-        });
+      const success = levelingHotkeyManager.register('prev', hotkeys.prev, () => {
+        if (this.window && !this.window.isDestroyed()) {
+          this.window.webContents.send('hotkey-action', 'prev');
+        }
+      });
+      if (success) {
         this.registeredHotkeys.push(hotkeys.prev);
-        console.log('[LevelingWindow] Registered prev hotkey:', hotkeys.prev);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register prev hotkey:', hotkeys.prev, e);
       }
     }
     
     // Register next hotkey
     if (hotkeys.next) {
-      try {
-        globalShortcut.register(hotkeys.next, () => {
-          if (this.window && !this.window.isDestroyed()) {
-            this.window.webContents.send('hotkey-action', 'next');
-          }
-        });
+      const success = levelingHotkeyManager.register('next', hotkeys.next, () => {
+        if (this.window && !this.window.isDestroyed()) {
+          this.window.webContents.send('hotkey-action', 'next');
+        }
+      });
+      if (success) {
         this.registeredHotkeys.push(hotkeys.next);
-        console.log('[LevelingWindow] Registered next hotkey:', hotkeys.next);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register next hotkey:', hotkeys.next, e);
       }
     }
     
     // Register tree hotkey
     if (hotkeys.tree) {
-      try {
-        globalShortcut.register(hotkeys.tree, () => {
-          // Toggle tree window (close if open, open if closed)
-          if (isTreeWindowOpen()) {
-            closeTreeWindow();
-            console.log('[LevelingWindow] Tree window closed via hotkey');
-          } else {
-            const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-            const pobBuild = (currentSettings as any).pobBuild || null;
+      const success = levelingHotkeyManager.register('tree', hotkeys.tree, () => {
+        // Toggle tree window (close if open, open if closed)
+        if (isTreeWindowOpen()) {
+          closeTreeWindow();
+        } else {
+          const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+          const pobBuild = this.getActivePobBuild();
+          
+          if (pobBuild && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
+            const currentActIndex = (currentSettings as any)?.currentActIndex || 0;
+            const characterLevel = (currentSettings as any)?.characterLevel || 1;
+            const autoDetectEnabled = (currentSettings as any)?.uiSettings?.autoDetectLevelingSets ?? true;
+            const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
             
-            if (pobBuild && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
-              const currentActIndex = (currentSettings as any)?.currentActIndex || 0;
-              const characterLevel = (currentSettings as any)?.characterLevel || 1;
-              const autoDetectEnabled = (currentSettings as any)?.uiSettings?.autoDetectLevelingSets ?? true;
-              const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
-              
-              const onTreeWindowReady = () => {
-                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
-              };
-              ipcMain.once('tree-window-ready', onTreeWindowReady);
-              const treeWindow = createPassiveTreeWindow();
-              if (!treeWindow.webContents.isLoading()) {
-                ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
-                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex);
-              }
-              console.log('[LevelingWindow] Tree window opened via hotkey');
+            const onTreeWindowReady = () => {
+              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+            };
+            ipcMain.once('tree-window-ready', onTreeWindowReady);
+            const treeWindow = createPassiveTreeWindow();
+            if (!treeWindow.webContents.isLoading()) {
+              ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
+              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
             }
           }
-        });
+        }
+      });
+      if (success) {
         this.registeredHotkeys.push(hotkeys.tree);
-        console.log('[LevelingWindow] Registered tree hotkey:', hotkeys.tree);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register tree hotkey:', hotkeys.tree, e);
       }
     }
     
     // Register gems hotkey
     if (hotkeys.gems) {
-      try {
-        globalShortcut.register(hotkeys.gems, () => {
-          // Toggle gems window (close if open, open if closed)
-          if (isGemsWindowOpen()) {
-            closeLevelingGemsWindow();
-            // Reassert leveling overlay order without stealing focus
-            try { bringToFront('leveling'); } catch {}
-            console.log('[LevelingWindow] Gems window closed via hotkey');
-          } else {
-            const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-            const pobBuild = (currentSettings as any).pobBuild || null;
-            
-            if (pobBuild) {
-              openLevelingGemsWindow({
-                settingsService: this.settingsService,
-                overlayVersion: this.overlayVersion,
-                parentWindow: this.window || undefined
-              });
-              console.log('[LevelingWindow] Gems window opened via hotkey');
-            }
+      const success = levelingHotkeyManager.register('gems', hotkeys.gems, () => {
+        // Toggle gems window (close if open, open if closed)
+        if (isGemsWindowOpen()) {
+          closeLevelingGemsWindow();
+          // Reassert leveling overlay order without stealing focus
+          try { bringToFront('leveling'); } catch {}
+        } else {
+          const pobBuild = this.getActivePobBuild();
+          
+          if (pobBuild) {
+            openLevelingGemsWindow({
+              settingsService: this.settingsService,
+              overlayVersion: this.overlayVersion,
+              parentWindow: this.window || undefined
+            });
           }
-        });
+        }
+      });
+      if (success) {
         this.registeredHotkeys.push(hotkeys.gems);
-        console.log('[LevelingWindow] Registered gems hotkey:', hotkeys.gems);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register gems hotkey:', hotkeys.gems, e);
       }
     }
 
     // Register gear hotkey
     if (hotkeys.gear) {
-      try {
-        globalShortcut.register(hotkeys.gear, () => {
-          if (isGearWindowOpen()) {
-            closeGearWindow();
-            // Reassert leveling overlay order without stealing focus
-            try { bringToFront('leveling'); } catch {}
-            console.log('[LevelingWindow] Gear window closed via hotkey');
-          } else {
-            const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-            const pobBuild = (currentSettings as any).pobBuild || null;
-            if (pobBuild && pobBuild.itemSets && pobBuild.itemSets.length > 0) {
-              openLevelingGearWindow({
-                settingsService: this.settingsService,
-                overlayVersion: this.overlayVersion,
-                parentWindow: this.window || undefined
-              });
-              console.log('[LevelingWindow] Gear window opened via hotkey');
-            }
+      const success = levelingHotkeyManager.register('gear', hotkeys.gear, () => {
+        if (isGearWindowOpen()) {
+          closeGearWindow();
+          // Reassert leveling overlay order without stealing focus
+          try { bringToFront('leveling'); } catch {}
+        } else {
+          const pobBuild = this.getActivePobBuild();
+          if (pobBuild && pobBuild.itemSets && pobBuild.itemSets.length > 0) {
+            openLevelingGearWindow({
+              settingsService: this.settingsService,
+              overlayVersion: this.overlayVersion,
+              parentWindow: this.window || undefined
+            });
           }
-        });
+        }
+      });
+      if (success) {
         this.registeredHotkeys.push(hotkeys.gear);
-        console.log('[LevelingWindow] Registered gear hotkey:', hotkeys.gear);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register gear hotkey:', hotkeys.gear, e);
       }
     }
 
     // Register notes hotkey
     if (hotkeys.notes) {
-      try {
-        globalShortcut.register(hotkeys.notes, () => {
-          if (isNotesWindowOpen()) {
-            closeNotesWindow();
-            // Reassert leveling overlay order without stealing focus
-            try { bringToFront('leveling'); } catch {}
-            console.log('[LevelingWindow] Notes window closed via hotkey');
-          } else {
-            const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-            const pobBuild = (currentSettings as any).pobBuild || null;
-            if (pobBuild) {
-              openLevelingNotesWindow({
+      const success = levelingHotkeyManager.register('notes', hotkeys.notes, () => {
+        if (isNotesWindowOpen()) {
+          closeNotesWindow();
+          // Reassert leveling overlay order without stealing focus
+          try { bringToFront('leveling'); } catch {}
+        } else {
+          const pobBuild = this.getActivePobBuild();
+          if (pobBuild) {
+            openLevelingNotesWindow({
+              settingsService: this.settingsService,
+              overlayVersion: this.overlayVersion,
+              parentWindow: this.window || undefined
+            });
+          }
+        }
+      });
+      if (success) {
+        this.registeredHotkeys.push(hotkeys.notes);
+      }
+    }
+
+    // Register "Toggle All Windows" hotkey (Gems, Tree, Gear, Notes)
+    if (hotkeys.allWindows) {
+      const success = levelingHotkeyManager.register('allWindows', hotkeys.allWindows, () => {
+        const pobBuild = this.getActivePobBuild();
+        
+        if (!pobBuild) return;
+        
+        // Check if ANY of the windows are open
+        const anyOpen = isGemsWindowOpen() || isTreeWindowOpen() || isGearWindowOpen() || isNotesWindowOpen();
+        
+        if (anyOpen) {
+          // Close all windows with small delays to prevent taskbar flicker
+          if (isGemsWindowOpen()) closeLevelingGemsWindow();
+          setTimeout(() => { if (isTreeWindowOpen()) closeTreeWindow(); }, 50);
+          setTimeout(() => { if (isGearWindowOpen()) closeGearWindow(); }, 100);
+          setTimeout(() => { if (isNotesWindowOpen()) closeNotesWindow(); }, 150);
+          // Reassert leveling overlay order and ensure it's interactive
+          setTimeout(() => { 
+            try { 
+              bringToFront('leveling');
+              this.applyIgnoreMouseEvents(false, 'toggle-all-close');
+            } catch {} 
+          }, 200);
+        } else {
+          // Open all windows with small delays to prevent taskbar flicker
+          const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+          const currentActIndex = (currentSettings as any)?.currentActIndex || 0;
+          const characterLevel = (currentSettings as any)?.characterLevel || 1;
+          const autoDetectEnabled = (currentSettings as any)?.uiSettings?.autoDetectLevelingSets ?? true;
+          const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
+          
+          // Open gems window immediately
+          openLevelingGemsWindow({
+            settingsService: this.settingsService,
+            overlayVersion: this.overlayVersion,
+            parentWindow: this.window || undefined
+          });
+          
+          // Open tree window after a small delay
+          setTimeout(() => {
+            if (pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
+              const onTreeWindowReady = () => {
+                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+              };
+              ipcMain.once('tree-window-ready', onTreeWindowReady);
+              const treeWindow = createPassiveTreeWindow();
+              if (!treeWindow.webContents.isLoading()) {
+                ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
+                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+              }
+            }
+          }, 50);
+          
+          // Open gear window after a delay
+          setTimeout(() => {
+            if (pobBuild.itemSets && pobBuild.itemSets.length > 0) {
+              openLevelingGearWindow({
                 settingsService: this.settingsService,
                 overlayVersion: this.overlayVersion,
                 parentWindow: this.window || undefined
               });
-              console.log('[LevelingWindow] Notes window opened via hotkey');
             }
-          }
-        });
-        this.registeredHotkeys.push(hotkeys.notes);
-        console.log('[LevelingWindow] Registered notes hotkey:', hotkeys.notes);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register notes hotkey:', hotkeys.notes, e);
+          }, 100);
+          
+          // Open notes window after a delay
+          setTimeout(() => {
+            openLevelingNotesWindow({
+              settingsService: this.settingsService,
+              overlayVersion: this.overlayVersion,
+              parentWindow: this.window || undefined
+            });
+          }, 150);
+          
+          // After all windows are opened, bring leveling guide back to ensure it's clickable
+          setTimeout(() => {
+            try { 
+              bringToFront('leveling');
+              this.applyIgnoreMouseEvents(false, 'toggle-all-open');
+            } catch {}
+          }, 250);
+        }
+      });
+      if (success) {
+        this.registeredHotkeys.push(hotkeys.allWindows);
       }
     }
 
     // Register PoB Info Bar toggle hotkey
     if ((hotkeys as any).pobBar) {
       const accel = (hotkeys as any).pobBar as string;
-      try {
-        globalShortcut.register(accel, () => {
-          const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
-          const pobBuild = (currentSettings as any).pobBuild || null;
-          if (isPobInfoBarOpen()) {
-            closePobInfoBar();
-            // Reassert leveling overlay order without stealing focus
-            try { bringToFront('leveling'); } catch {}
-            console.log('[LevelingWindow] PoB Info Bar closed via hotkey');
-          } else if (pobBuild) {
-            const currentActIndex = (currentSettings as any)?.currentActIndex ?? 0;
-            openPobInfoBar({
-              settingsService: this.settingsService,
-              overlayVersion: this.overlayVersion,
-              pobBuild,
-              currentAct: currentActIndex + 1,
-            });
-            console.log('[LevelingWindow] PoB Info Bar opened via hotkey');
-          } else {
-            console.log('[LevelingWindow] PoB Info Bar hotkey pressed but no build is loaded');
-          }
-        });
+      const success = levelingHotkeyManager.register('pobBar', accel, () => {
+        const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+        const pobBuild = this.getActivePobBuild();
+        if (isPobInfoBarOpen()) {
+          closePobInfoBar();
+          // Reassert leveling overlay order without stealing focus
+          try { bringToFront('leveling'); } catch {}
+        } else if (pobBuild) {
+          const currentActIndex = (currentSettings as any)?.currentActIndex ?? 0;
+          openPobInfoBar({
+            settingsService: this.settingsService,
+            overlayVersion: this.overlayVersion,
+            pobBuild,
+            currentAct: currentActIndex + 1,
+          });
+        }
+      });
+      if (success) {
         this.registeredHotkeys.push(accel);
-        console.log('[LevelingWindow] Registered PoB Info Bar hotkey:', accel);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register PoB Info Bar hotkey:', accel, e);
       }
     }
 
     // Register Leveling window toggle hotkey
     if ((hotkeys as any).leveling) {
       const accel = (hotkeys as any).leveling as string;
-      try {
-        globalShortcut.register(accel, () => {
-          // Toggle the main leveling window visibility
-          this.toggle();
-          console.log('[LevelingWindow] Leveling window toggled via hotkey');
-        });
+      const success = levelingHotkeyManager.register('leveling', accel, () => {
+        // Toggle the main leveling window visibility
+        this.toggle();
+      });
+      if (success) {
         this.registeredHotkeys.push(accel);
-        console.log('[LevelingWindow] Registered Leveling window hotkey:', accel);
-      } catch (e) {
-        console.error('[LevelingWindow] Failed to register Leveling window hotkey:', accel, e);
+      }
+    }
+
+    // Register Logout hotkey
+    if ((hotkeys as any).logout) {
+      const accel = (hotkeys as any).logout as string;
+      const success = levelingHotkeyManager.register('logout', accel, async () => {
+        await executeLogout();
+      });
+      if (success) {
+        this.registeredHotkeys.push(accel);
+      }
+    }
+
+    // Register Custom Hotkeys
+    const customHotkeys = (settings as any).customHotkeys as CustomHotkey[] | undefined;
+    if (customHotkeys && customHotkeys.length > 0) {
+      for (const customHotkey of customHotkeys) {
+        if (customHotkey.hotkey) {
+          const success = levelingHotkeyManager.register(`custom-${customHotkey.id}`, customHotkey.hotkey, async () => {
+            await typeInChat(customHotkey.command, customHotkey.pressEnter);
+          });
+          if (success) {
+            this.registeredHotkeys.push(customHotkey.hotkey);
+          }
+        }
       }
     }
   }

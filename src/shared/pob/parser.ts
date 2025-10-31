@@ -8,13 +8,31 @@ import { DOMParser } from '@xmldom/xmldom';
 import { ParsedPobBuild, TreeSpec, GemSocketGroup, GemInfo, SkillSet, ItemSet, Item } from './types';
 import { parseTreeUrl } from './treeParser';
 import { decodePobCode } from './decoder.js';
-import { nodeLookup, nodeLookupPoe2 } from './treeLoader';  // Import both lookups
+import { nodeLookup326, nodeLookup327, nodeLookupPoe2 } from './treeLoader';  // Import all lookups
+
+/**
+ * Sanitize string to prevent XSS attacks
+ * Converts HTML entities for basic XSS protection
+ */
+function sanitizeString(str: string | null | undefined, maxLength: number = 1000): string {
+  if (!str) return '';
+  
+  // Convert to string and limit length
+  let sanitized = String(str).substring(0, maxLength);
+  
+  // Convert basic HTML entities to prevent XSS
+  sanitized = sanitized
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+  
+  return sanitized.trim();
+}
 
 export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 'poe1'): Promise<ParsedPobBuild | null> {
   try {
-    // Use the correct node lookup based on game version
-    const lookup = gameVersion === 'poe2' ? nodeLookupPoe2 : nodeLookup;
-    
     // Decode Base64 + Zlib (now handles pobb.in URLs)
     const xmlString = await decodePobCode(code);
     if (!xmlString) {
@@ -32,23 +50,51 @@ export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 
       return null;
     }
 
-    const className = build.getAttribute('className') || '';
-    const ascendancyName = build.getAttribute('ascendClassName') || '';
+    // Sanitize all user-controlled strings to prevent XSS
+    const className = sanitizeString(build.getAttribute('className'), 100);
+    const ascendancyName = sanitizeString(build.getAttribute('ascendClassName'), 100);
     const level = parseInt(build.getAttribute('level') || '1', 10);
     const mainSocketGroup = parseInt(build.getAttribute('mainSocketGroup') || '1', 10);
 
     // Extract character name from PathOfBuilding tag
     const pobRoot = doc.getElementsByTagName('PathOfBuilding')[0];
-    const characterName = pobRoot?.getAttribute('characterName') || '';
+    const characterName = sanitizeString(pobRoot?.getAttribute('characterName'), 100);
+
+    // Extract tree version first to determine which node lookup to use
+    const specElements = doc.getElementsByTagName('Spec');
+    let treeVersion = '3_26'; // Default to 3.26
+    
+    // Try to get tree version from first spec that has it
+    for (let i = 0; i < specElements.length; i++) {
+      const spec = specElements[i];
+      const specTreeVersion = spec.getAttribute('treeVersion');
+      if (specTreeVersion) {
+        treeVersion = specTreeVersion;
+        break;
+      }
+    }
+    
+    // Select the correct node lookup based on game version and tree version
+    let lookup: any;
+    if (gameVersion === 'poe2') {
+      lookup = nodeLookupPoe2;
+    } else {
+      // For PoE1, use tree version to select lookup
+      if (treeVersion === '3_27') {
+        lookup = nodeLookup327;
+        console.log('[PoB Parser] Using 3.27 tree lookup');
+      } else {
+        lookup = nodeLookup326;
+        console.log('[PoB Parser] Using 3.26 tree lookup');
+      }
+    }
 
     // Extract ALL passive tree specs (Early Game, Act 5, End Game, etc.)
-    const specElements = doc.getElementsByTagName('Spec');
     const treeSpecs: TreeSpec[] = [];
-    let treeVersion = '3_25';
     
     for (let i = 0; i < specElements.length; i++) {
       const spec = specElements[i];
-      const title = spec.getAttribute('title') || `Tree ${i + 1}`;
+      const title = sanitizeString(spec.getAttribute('title') || `Tree ${i + 1}`, 200);
       const nodes = spec.getAttribute('nodes') || '';
       const allocatedNodes = nodes
         .split(',')
@@ -96,10 +142,6 @@ export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 
           ascendClassId: parseInt(spec.getAttribute('ascendClassId') || '0', 10),
           parsedUrl
         });
-        // Use tree version from first included spec
-        if (treeSpecs.length === 1) {
-          treeVersion = spec.getAttribute('treeVersion') || '3_25';
-        }
       }
     }
 
@@ -123,7 +165,9 @@ export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 
 
     // Extract notes from <Notes> element
     const notesElement = doc.getElementsByTagName('Notes')[0];
-    const notes = notesElement?.textContent?.trim() || undefined;
+    // Notes can be large but we sanitize them (keep max 50KB)
+    const rawNotes = notesElement?.textContent?.trim() || undefined;
+    const notes = rawNotes ? sanitizeString(rawNotes, 50000) : undefined;
 
     // Extract item sets
     const itemSets = extractItemSets(doc);
@@ -206,14 +250,16 @@ function extractSocketGroups(container: Element | null, skillSetTitle?: string):
         return;
       }
 
-      const nameSpec =
+      const nameSpec = sanitizeString(
         gemElement.getAttribute('nameSpec') ||
         gemElement.getAttribute('gemId') ||
-        '';
+        '',
+        200
+      );
       const level = parseInt(gemElement.getAttribute('level') || '1', 10);
       const quality = parseInt(gemElement.getAttribute('quality') || '0', 10);
       const gemEnabled = gemElement.getAttribute('enabled') !== 'false';
-      const skillId = gemElement.getAttribute('skillId') || undefined;
+      const skillId = sanitizeString(gemElement.getAttribute('skillId') || '', 200) || undefined;
       const supportGem = gemElement.getAttribute('supportGem') === 'true';
 
       if (!nameSpec) {
@@ -627,10 +673,10 @@ function parseItemText(id: number, rawText: string): Item {
 
   return {
     id,
-    rawText,
-    name,
-    baseName,
-    rarity,
+    rawText: sanitizeString(rawText, 5000), // Limit item text size
+    name: sanitizeString(name, 200),
+    baseName: sanitizeString(baseName, 200),
+    rarity: sanitizeString(rarity, 50),
     itemLevel,
     quality,
     sockets,

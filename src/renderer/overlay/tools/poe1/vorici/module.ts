@@ -365,7 +365,8 @@ function calculateJewellerMethod(
       if (remainingGreen > 0) pSuccess += probs.green;
       if (remainingBlue > 0) pSuccess += probs.blue;
       
-      if (pSuccess <= 0) pSuccess = 0.01; // Safety fallback
+      // If we don't need any specific color for this socket (wildcard), any color is fine
+      if (pSuccess <= 0) pSuccess = 1; // Wildcard socket - any color works
       if (pSuccess > 1) pSuccess = 1;
       
       // Expected cost for this socket

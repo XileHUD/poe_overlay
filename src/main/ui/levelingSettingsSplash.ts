@@ -12,18 +12,23 @@ interface LevelingSettingsSplashParams {
   settingsService: SettingsService;
   overlayVersion: OverlayVersion;
   overlayWindow?: any; // Reference to main overlay window if needed
+  initialTab?: string; // Optional tab to open initially (e.g., 'pob', 'display', etc.)
 }
 
 let activeSettingsWindow: BrowserWindow | null = null;
 
 export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams): void {
-  // If already open, just focus it
+  // If already open, just focus it (and optionally switch tab)
   if (activeSettingsWindow && !activeSettingsWindow.isDestroyed()) {
     activeSettingsWindow.focus();
+    // If initialTab is specified, send message to switch to that tab
+    if (params.initialTab) {
+      activeSettingsWindow.webContents.send('switch-to-tab', params.initialTab);
+    }
     return;
   }
 
-  const { settingsService, overlayVersion } = params;
+  const { settingsService, overlayVersion, initialTab } = params;
   
   // Get current settings
   const levelingKey = overlayVersion === 'poe1' ? 'levelingWindowPoe1' : 'levelingWindowPoe2';
@@ -35,22 +40,38 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
   const clientTxtPathKey = overlayVersion === 'poe1' ? 'clientTxtPathPoe1' : 'clientTxtPathPoe2';
   const clientTxtPath = settingsService.get(clientTxtPathKey) || 'Not configured';
   
-  // Window dimensions
-  const splashWidth = 675;
-  const splashHeight = 475; // Increased by 20% from 396
+  // Get saved window state (position and size)
+  const settingsWindowKey = overlayVersion === 'poe1' ? 'levelingSettingsWindowPoe1' : 'levelingSettingsWindowPoe2';
+  const savedWindowState = settingsService.get(settingsWindowKey) || {};
   
-  // Try to center on screen
-  let initialX = Math.floor((screen.getPrimaryDisplay().workAreaSize.width - splashWidth) / 2);
-  let initialY = Math.floor((screen.getPrimaryDisplay().workAreaSize.height - splashHeight) / 2);
+  // Window dimensions with defaults
+  const defaultWidth = 675;
+  const defaultHeight = 475;
+  const savedWidth = savedWindowState.size?.width || defaultWidth;
+  const savedHeight = savedWindowState.size?.height || defaultHeight;
+  
+  // Position: use saved position or center on screen
+  let initialX: number;
+  let initialY: number;
+  
+  if (savedWindowState.position) {
+    initialX = savedWindowState.position.x;
+    initialY = savedWindowState.position.y;
+  } else {
+    initialX = Math.floor((screen.getPrimaryDisplay().workAreaSize.width - savedWidth) / 2);
+    initialY = Math.floor((screen.getPrimaryDisplay().workAreaSize.height - savedHeight) / 2);
+  }
 
   const window = new BrowserWindow({
-    width: splashWidth,
-    height: splashHeight,
+    width: savedWidth,
+    height: savedHeight,
+    minWidth: 600,
+    minHeight: 400,
     x: initialX,
     y: initialY,
     frame: false,
     transparent: true,
-    resizable: false,
+    resizable: true,
     alwaysOnTop: true,
     skipTaskbar: true,
     show: false,
@@ -65,10 +86,34 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
   activeSettingsWindow = window;
 
   // Register for managed z-order and visibility
-  try { registerOverlayWindow('levelingSettings', window); } catch {}
+  // Allow focus for this window so text inputs work
+  try { registerOverlayWindow('levelingSettings', window, true, true); } catch {}
+
+  // Save position and size when moved or resized
+  let saveTimeout: NodeJS.Timeout | null = null;
+  
+  const saveWindowState = () => {
+    if (window.isDestroyed()) return;
+    
+    const [x, y] = window.getPosition();
+    const [width, height] = window.getSize();
+    
+    settingsService.update(settingsWindowKey, () => ({
+      position: { x, y },
+      size: { width, height }
+    }));
+  };
+  
+  const debouncedSave = () => {
+    if (saveTimeout) clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(saveWindowState, 500);
+  };
+  
+  window.on('move', debouncedSave);
+  window.on('resize', debouncedSave);
 
   // Build HTML
-  const html = buildLevelingSettingsSplashHtml(currentSettings, overlayVersion, clientTxtPath);
+  const html = buildLevelingSettingsSplashHtml(currentSettings, overlayVersion, clientTxtPath, initialTab);
   
   window.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
   
@@ -79,11 +124,13 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
   // Handle close button
   ipcMain.once('leveling-settings-close', () => {
     if (!window.isDestroyed()) {
+      saveWindowState(); // Final save before closing
       window.close();
     }
   });
 
   window.on('closed', () => {
+    if (saveTimeout) clearTimeout(saveTimeout);
     activeSettingsWindow = null;
   });
 }
@@ -91,13 +138,15 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
 function buildLevelingSettingsSplashHtml(
   currentSettings: any,
   overlayVersion: OverlayVersion,
-  clientTxtPath: string
+  clientTxtPath: string,
+  initialTab?: string
 ): string {
   // Extract all current settings with proper defaults
   const groupByZone = currentSettings.uiSettings?.groupByZone ?? true;
   const showHints = currentSettings.uiSettings?.showHints ?? true;
   const showOptional = currentSettings.uiSettings?.showOptional ?? true;
   const autoDetectZones = currentSettings.uiSettings?.autoDetectZones ?? true;
+  const autoDetectMode = currentSettings.uiSettings?.autoDetectMode ?? 'hybrid';
   const showTreeNodeDetails = currentSettings.uiSettings?.showTreeNodeDetails ?? false;
   const autoDetectLevelingSets = currentSettings.uiSettings?.autoDetectLevelingSets ?? true;
   const opacity = currentSettings.uiSettings?.opacity ?? 96;
@@ -114,8 +163,42 @@ function buildLevelingSettingsSplashHtml(
   const hotkeyGems = hotkeys.gems || 'Not Set';
   const hotkeyGear = hotkeys.gear || 'Not Set';
   const hotkeyNotes = hotkeys.notes || 'Not Set';
+  const hotkeyAllWindows = hotkeys.allWindows || 'Not Set';
   const hotkeyPobBar = hotkeys.pobBar || 'Not Set';
   const hotkeyLeveling = hotkeys.leveling || 'Not Set';
+  const hotkeyLogout = hotkeys.logout || 'Not Set';
+  
+  // Extract custom hotkeys with default examples if not present
+  const customHotkeys = currentSettings.customHotkeys || [
+    {
+      id: 'default-hideout',
+      name: 'Hideout',
+      command: '/hideout',
+      hotkey: 'Not Set',
+      pressEnter: true
+    },
+    {
+      id: 'default-dnd',
+      name: 'Do not disturb',
+      command: '/dnd',
+      hotkey: 'Not Set',
+      pressEnter: true
+    },
+    {
+      id: 'default-passives',
+      name: 'Passives',
+      command: '/passives',
+      hotkey: 'Not Set',
+      pressEnter: true
+    },
+    {
+      id: 'default-movement',
+      name: 'Movement speed / 3+Links',
+      command: '-\\w-.-|(-\\w){4}|(-\\w){5}|-\\w-|Runn|rint',
+      hotkey: 'Not Set',
+      pressEnter: false
+    }
+  ];
   
   return `
 <!DOCTYPE html>
@@ -475,6 +558,112 @@ function buildLevelingSettingsSplashHtml(
       background: rgba(217, 83, 79, 0.1);
       border-color: rgba(217, 83, 79, 0.5);
     }
+
+    .custom-hotkey-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 10px;
+      transition: all 0.2s;
+    }
+
+    .custom-hotkey-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .custom-hotkey-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .custom-hotkey-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .custom-hotkey-name {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      color: #e0e0e0;
+      padding: 6px 10px;
+      font-size: 11px;
+      outline: none;
+      transition: all 0.15s;
+    }
+
+    .custom-hotkey-name:focus {
+      border-color: var(--accent-green);
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .custom-hotkey-command {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      color: #e0e0e0;
+      padding: 6px 10px;
+      font-size: 10px;
+      font-family: 'Courier New', monospace;
+      outline: none;
+      transition: all 0.15s;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .custom-hotkey-command:focus {
+      border-color: var(--accent-green);
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .custom-hotkey-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .hotkey-delete {
+      background: transparent;
+      border: 1px solid rgba(217, 83, 79, 0.3);
+      color: var(--accent-red);
+      padding: 4px 8px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.15s;
+      line-height: 1;
+    }
+
+    .hotkey-delete:hover {
+      background: rgba(217, 83, 79, 0.2);
+      border-color: rgba(217, 83, 79, 0.6);
+    }
+
+    .custom-hotkey-enter-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.7);
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .custom-hotkey-enter-toggle input[type="checkbox"] {
+      cursor: pointer;
+      width: 14px;
+      height: 14px;
+    }
+
+    .custom-hotkey-enter-toggle:hover {
+      color: rgba(255, 255, 255, 0.9);
+    }
     
     ::-webkit-scrollbar {
       width: 8px;
@@ -491,6 +680,158 @@ function buildLevelingSettingsSplashHtml(
     
     ::-webkit-scrollbar-thumb:hover {
       background: rgba(74, 222, 128, 0.3);
+    }
+    
+    .setting-select {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--bg-secondary);
+      border: 1px solid rgba(74, 222, 128, 0.2);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .setting-select:hover {
+      border-color: rgba(74, 222, 128, 0.4);
+      background: rgba(74, 222, 128, 0.05);
+    }
+    
+    .setting-select:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      background: rgba(74, 222, 128, 0.08);
+    }
+    
+    .setting-select option {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      padding: 8px;
+    }
+
+    /* POB Builds List */
+    .pob-builds-list {
+      margin-top: 16px;
+    }
+
+    .pob-build-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 10px;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pob-build-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .pob-build-item.active {
+      border-color: var(--accent-green);
+      background: rgba(74, 222, 128, 0.05);
+    }
+
+    .pob-build-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .pob-build-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      cursor: text;
+    }
+
+    .pob-build-name input {
+      background: transparent;
+      border: none;
+      color: inherit;
+      font: inherit;
+      width: 100%;
+      outline: none;
+      padding: 0;
+    }
+
+    .pob-build-name input:focus {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .pob-build-details {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .pob-build-active-badge {
+      display: inline-block;
+      background: var(--accent-green);
+      color: white;
+      font-size: 9px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 8px;
+      text-transform: uppercase;
+    }
+
+    .pob-build-actions {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .pob-build-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 11px;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .pob-build-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .pob-build-btn.activate {
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+    }
+
+    .pob-build-btn.activate:hover {
+      background: rgba(74, 222, 128, 0.1);
+    }
+
+    .pob-build-btn.delete {
+      border-color: var(--accent-red);
+      color: var(--accent-red);
+    }
+
+    .pob-build-btn.delete:hover {
+      background: rgba(217, 83, 79, 0.1);
+    }
+
+    .pob-no-builds {
+      text-align: center;
+      padding: 24px;
+      color: var(--text-muted);
+      font-size: 12px;
     }
   </style>
 </head>
@@ -711,6 +1052,17 @@ function buildLevelingSettingsSplashHtml(
             <button class="hotkey-clear" onclick="clearHotkey('notes')">Clear</button>
           </div>
         </div>
+
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Toggle All Windows</div>
+            <div class="setting-description">Open/close Gems, Tree, Gear, and Notes windows all at once</div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div class="hotkey-input" id="hotkey-allWindows" onclick="captureHotkey('allWindows')">${hotkeyAllWindows}</div>
+            <button class="hotkey-clear" onclick="clearHotkey('allWindows')">Clear</button>
+          </div>
+        </div>
       </div>
       
       <div class="setting-group">
@@ -736,11 +1088,73 @@ function buildLevelingSettingsSplashHtml(
             <button class="hotkey-clear" onclick="clearHotkey('leveling')">Clear</button>
           </div>
         </div>
+
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Quick Logout</div>
+            <div class="setting-description">Instantly logout using /exit command (safer than TCP disconnect)</div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div class="hotkey-input" id="hotkey-logout" onclick="captureHotkey('logout')">${hotkeyLogout}</div>
+            <button class="hotkey-clear" onclick="clearHotkey('logout')">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="setting-group" style="margin-top: 24px;">
+        <h3 class="setting-group-title">Custom Hotkeys</h3>
+        <div class="setting-description" style="margin-bottom: 16px; opacity: 0.8; font-size: 11px;">
+          Create custom hotkeys to paste commands or search patterns (e.g., regex for item filtering). Check "Enter" to open chat and send command.
+        </div>
+        
+        <div id="custom-hotkeys-list">
+          ${customHotkeys.map((hotkey: any, index: number) => `
+            <div class="custom-hotkey-item" data-index="${index}" data-id="${hotkey.id}">
+              <div class="custom-hotkey-row">
+                <input 
+                  type="text" 
+                  class="custom-hotkey-name" 
+                  placeholder="Name (e.g., Movement Boots)" 
+                  value="${hotkey.name}"
+                  onchange="updateCustomHotkey(${index}, 'name', this.value)"
+                />
+                <div class="custom-hotkey-actions">
+                  <button class="hotkey-delete" onclick="deleteCustomHotkey(${index})" title="Delete">✕</button>
+                </div>
+              </div>
+              <div class="custom-hotkey-row">
+                <input 
+                  type="text" 
+                  class="custom-hotkey-command" 
+                  placeholder="Command or regex (e.g., /hideout or -\\w-.-)" 
+                  value="${hotkey.command.replace(/"/g, '&quot;')}"
+                  onchange="updateCustomHotkey(${index}, 'command', this.value)"
+                  title="${hotkey.command}"
+                />
+              </div>
+              <div class="custom-hotkey-row">
+                <div class="hotkey-input" id="custom-hotkey-${index}" onclick="captureCustomHotkey(${index})">${hotkey.hotkey}</div>
+                <button class="hotkey-clear" onclick="clearCustomHotkey(${index})">Clear</button>
+                <label class="custom-hotkey-enter-toggle" title="Press Enter after pasting">
+                  <input 
+                    type="checkbox" 
+                    ${hotkey.pressEnter ? 'checked' : ''}
+                    onchange="updateCustomHotkey(${index}, 'pressEnter', this.checked)"
+                  />
+                  <span>Enter</span>
+                </label>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        
+        <button class="action-btn" style="margin-top: 12px;" onclick="addCustomHotkey()">+ Add Custom Hotkey</button>
       </div>
 
       <div class="info-box">
         <strong>How to set hotkeys:</strong> Click on a hotkey field and press your desired key combination.
-        Supports modifiers like Ctrl, Alt, Shift. Examples: F1, Ctrl+N, Alt+G, Shift+T
+        Supports modifiers like Ctrl, Alt, Shift. Numpad keys are supported (e.g., Numpad5, Ctrl + Numpad3).
+        Examples: F1, Ctrl+N, Alt+G, Shift+T, Numpad5
       </div>
     </div>
     
@@ -756,6 +1170,25 @@ function buildLevelingSettingsSplashHtml(
           </div>
           <div class="toggle-switch ${autoDetectZones ? 'active' : ''}" onclick="toggleSetting(this, 'autoDetectZones')">
             <div class="toggle-slider"></div>
+          </div>
+        </div>
+        
+        <div class="setting-item" style="flex-direction: column; align-items: stretch;">
+          <div class="setting-label">
+            <div class="setting-name">Auto-detect Mode</div>
+            <div class="setting-description">Controls how zone changes trigger task completion</div>
+          </div>
+          
+          <select class="setting-select" id="autoDetectModeSelect" onchange="updateAutoDetectMode(this.value)">
+            <option value="hybrid" ${autoDetectMode === 'hybrid' ? 'selected' : ''}>Hybrid (Recommended)</option>
+            <option value="strict" ${autoDetectMode === 'strict' ? 'selected' : ''}>Strict</option>
+            <option value="trust" ${autoDetectMode === 'trust' ? 'selected' : ''}>Trust</option>
+          </select>
+          
+          <div class="info-box" style="margin-top: 8px; font-size: 13px;">
+            <strong>Hybrid (Default):</strong> Only auto-completes tasks if you enter the correct next zone. Prevents false positives if you accidentally visit wrong zones.<br><br>
+            <strong>Strict:</strong> Validates that the entered zone matches your next expected task. Same as Hybrid but with stricter logging for debugging.<br><br>
+            <strong>Trust:</strong> Always auto-completes previous zone when entering any new zone. Can cause false positives if you skip around.
           </div>
         </div>
         
@@ -795,6 +1228,8 @@ function buildLevelingSettingsSplashHtml(
           <strong>ℹ️ About PoB Import:</strong><br/>
           Import builds from Path of Building to see skill gems and passive tree progression while leveling. 
           The overlay will show ${overlayVersion === 'poe1' ? 'which gems to pick up from quest rewards and track' : 'skill gems and'} your passive tree allocation.
+          <br/><br/>
+          <strong>Multiple builds supported!</strong> You can now save multiple builds and switch between them easily.
         </div>
         
         <div class="setting-item" style="flex-direction: column; align-items: stretch;">
@@ -805,7 +1240,7 @@ function buildLevelingSettingsSplashHtml(
           <textarea 
             id="pobCodeInput" 
             placeholder="Paste PoB code or pobb.in link here..." 
-            style="width: 100%; min-height: 120px; margin-top: 8px; padding: 12px; 
+            style="width: 100%; min-height: 100px; margin-top: 8px; padding: 12px; 
                    background: var(--bg-tertiary); border: 1px solid var(--border-color); 
                    border-radius: 6px; color: var(--text-primary); font-family: monospace; 
                    font-size: 11px; resize: vertical;"
@@ -817,32 +1252,17 @@ function buildLevelingSettingsSplashHtml(
         
         <div class="setting-item" style="flex-direction: column; align-items: stretch;">
           <div class="setting-label">
-            <div class="setting-name">Current Build</div>
-            <div class="setting-description">Currently loaded Path of Building build</div>
+            <div class="setting-name">Saved Builds</div>
+            <div class="setting-description">Manage your saved Path of Building builds</div>
           </div>
-          <div id="pobBuildInfo" style="margin-top: 8px; padding: 12px; background: var(--bg-tertiary); 
-                                       border: 1px solid var(--border-color); border-radius: 6px; 
-                                       font-size: 12px; color: var(--text-secondary);">
-            No build imported
+          <div id="pobBuildsList" class="pob-builds-list">
+            <div class="pob-no-builds">No builds saved yet. Import a build above to get started.</div>
           </div>
-          <button class="action-btn danger" onclick="clearPobBuild()" style="margin-top: 8px;" id="clearPobBtn" disabled>
-            🗑️ Clear Build
-          </button>
         </div>
       </div>
       
       <div class="setting-group" style="${overlayVersion === 'poe2' ? 'opacity: 0.5; pointer-events: none;' : ''}">
         <h3 class="setting-group-title">PoB Windows</h3>
-        
-        <div class="setting-item" style="flex-direction: column; align-items: stretch;">
-          <div class="setting-label">
-            <div class="setting-name">Gem Links Window</div>
-            <div class="setting-description">Floating window showing your gem socket groups per act</div>
-          </div>
-          <button class="action-btn primary" onclick="openGemsWindow()" style="margin-top: 8px;">
-            💎 Open Gems Window
-          </button>
-        </div>
         
         <div class="setting-item" style="flex-direction: column; align-items: stretch;">
           <div class="setting-label">
@@ -914,6 +1334,10 @@ function buildLevelingSettingsSplashHtml(
       element.classList.toggle('active');
       const value = element.classList.contains('active');
       updateSetting(setting, value);
+    }
+    
+    function updateAutoDetectMode(mode) {
+      updateSetting('autoDetectMode', mode);
     }
     
     // Batch settings updates to avoid spamming IPC/render during slider drags
@@ -1053,43 +1477,136 @@ function buildLevelingSettingsSplashHtml(
         return;
       }
       
-      const infoEl = document.getElementById('pobBuildInfo');
-      const clearBtn = document.getElementById('clearPobBtn');
-      
-      infoEl.textContent = 'Importing build...';
-      infoEl.style.color = 'var(--text-secondary)';
+      // Show importing indicator in input area
+      const textarea = document.getElementById('pobCodeInput');
+      const originalPlaceholder = textarea.placeholder;
+      textarea.placeholder = 'Importing...';
+      textarea.disabled = true;
       
       ipcRenderer.invoke('import-pob-from-settings', pobCode).then(result => {
+        textarea.disabled = false;
+        textarea.placeholder = originalPlaceholder;
+        
         if (result.success) {
-          infoEl.innerHTML = \`
-            <div style="color: var(--accent-green); font-weight: 600; margin-bottom: 8px;">✅ Build Imported Successfully!</div>
-            <div><strong>\${result.build.className}</strong> \${result.build.ascendancyName ? '(' + result.build.ascendancyName + ')' : ''}</div>
-            <div style="margin-top: 4px;">Level \${result.build.level} | \${result.build.totalNodes || 0} passive nodes | \${result.build.gemsFound || 0} gems</div>
-          \`;
-          
-          clearBtn.disabled = false;
-          
           // Clear the input
-          document.getElementById('pobCodeInput').value = '';
+          textarea.value = '';
+          
+          // Refresh the builds list
+          refreshPobBuildsList();
+          
+          // Show success message
+          alert(\`✅ Build imported successfully!\n\n\${result.build.className}\${result.build.ascendancyName ? ' (' + result.build.ascendancyName + ')' : ''}\nLevel \${result.build.level} | \${result.build.totalNodes || 0} nodes | \${result.build.gemsFound || 0} gems\`);
         } else {
-          infoEl.innerHTML = \`<div style="color: var(--accent-red);">❌ \${result.error || 'Failed to import build'}</div>\`;
+          alert(\`❌ Failed to import build:\n\n\${result.error || 'Unknown error'}\`);
         }
       }).catch(err => {
-        infoEl.innerHTML = \`<div style="color: var(--accent-red);">❌ Error: \${err.message}</div>\`;
+        textarea.disabled = false;
+        textarea.placeholder = originalPlaceholder;
+        alert(\`❌ Error importing build:\n\n\${err.message}\`);
+      });
+    }
+    
+    function refreshPobBuildsList() {
+      ipcRenderer.invoke('get-pob-builds-list').then(result => {
+        if (!result.success) return;
+        
+        const listContainer = document.getElementById('pobBuildsList');
+        
+        if (result.builds.length === 0) {
+          listContainer.innerHTML = '<div class="pob-no-builds">No builds saved yet. Import a build above to get started.</div>';
+          return;
+        }
+        
+        let html = '';
+        for (const build of result.builds) {
+          const isActive = build.isActive;
+          const className = build.className || 'Unknown';
+          const ascendancy = build.ascendancyName || '';
+          const level = build.level || 1;
+          
+          html += \`
+            <div class="pob-build-item \${isActive ? 'active' : ''}" data-id="\${build.id}">
+              <div class="pob-build-info">
+                <div class="pob-build-name">
+                  <input 
+                    type="text" 
+                    value="\${escapeHtml(build.name)}" 
+                    onblur="saveBuildName('\${build.id}', this.value)"
+                    onkeydown="if(event.key==='Enter')this.blur()"
+                  />
+                  \${isActive ? '<span class="pob-build-active-badge">Active</span>' : ''}
+                </div>
+                <div class="pob-build-details">
+                  \${className}\${ascendancy ? ' · ' + ascendancy : ''} · Level \${level}
+                </div>
+              </div>
+              <div class="pob-build-actions">
+                \${!isActive ? \`<button class="pob-build-btn activate" onclick="activateBuild('\${build.id}')">✓ Activate</button>\` : ''}
+                <button class="pob-build-btn delete" onclick="deleteBuild('\${build.id}')">✕ Delete</button>
+              </div>
+            </div>
+          \`;
+        }
+        
+        listContainer.innerHTML = html;
+      });
+    }
+    
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+    
+    function saveBuildName(buildId, newName) {
+      if (!newName || !newName.trim()) return;
+      
+      ipcRenderer.invoke('rename-pob-build', buildId, newName.trim()).then(result => {
+        if (!result.success) {
+          alert('Failed to rename build: ' + (result.error || 'Unknown error'));
+          refreshPobBuildsList();
+        }
+      });
+    }
+    
+    function activateBuild(buildId) {
+      ipcRenderer.invoke('activate-pob-build', buildId).then(result => {
+        if (result.success) {
+          refreshPobBuildsList();
+        } else {
+          alert('Failed to activate build: ' + (result.error || 'Unknown error'));
+        }
+      });
+    }
+    
+    function deleteBuild(buildId) {
+      if (!confirm('Delete this build? This action cannot be undone.')) {
+        return;
+      }
+      
+      ipcRenderer.invoke('delete-pob-build', buildId).then(result => {
+        if (result.success) {
+          refreshPobBuildsList();
+        } else {
+          alert('Failed to delete build: ' + (result.error || 'Unknown error'));
+        }
       });
     }
     
     function clearPobBuild() {
-      if (!confirm('Remove the current PoB build? This will clear gem recommendations and tree data.')) {
+      if (!confirm('Remove ALL PoB builds? This will clear all gem recommendations and tree data.')) {
         return;
       }
       
       ipcRenderer.invoke('remove-pob-build').then(() => {
-        document.getElementById('pobBuildInfo').textContent = 'No build imported';
-        document.getElementById('pobBuildInfo').style.color = 'var(--text-secondary)';
-        document.getElementById('clearPobBtn').disabled = true;
+        refreshPobBuildsList();
       });
     }
+    
+    // Load builds list when tab is opened
+    document.addEventListener('DOMContentLoaded', () => {
+      refreshPobBuildsList();
+    });
     
     function openGemsWindow() {
       ipcRenderer.send('open-gems-window');
@@ -1143,49 +1660,69 @@ function buildLevelingSettingsSplashHtml(
 
         const hotkeyName = capturingHotkeyFor;
         
-        // Build accelerator string
+        // Build UIOhook-compatible hotkey string
         const modifiers = [];
         if (e.ctrlKey) modifiers.push('Ctrl');
         if (e.altKey) modifiers.push('Alt');
         if (e.shiftKey) modifiers.push('Shift');
         
-        // Get the key name
-        let key = e.key;
+        // Get the key name - IMPORTANT: Detect numpad keys!
+        let key = '';
         
-        // Normalize key names for Electron accelerator format
-        const keyMap = {
-          ' ': 'Space',
-          'ArrowUp': 'Up',
-          'ArrowDown': 'Down',
-          'ArrowLeft': 'Left',
-          'ArrowRight': 'Right',
-          'Delete': 'Delete',
-          'Insert': 'Insert',
-          'Home': 'Home',
-          'End': 'End',
-          'PageUp': 'PageUp',
-          'PageDown': 'PageDown'
-        };
+        // Check if numpad key using keyCode and location
+        const isNumpad = e.location === 3; // KeyboardEvent.DOM_KEY_LOCATION_NUMPAD
         
-        if (keyMap[key]) {
-          key = keyMap[key];
-        } else if (key.length === 1) {
-          key = key.toUpperCase();
-        } else if (key.startsWith('F') && !isNaN(key.substring(1))) {
-          // F1-F24 keys are already in correct format
-          key = key;
+        if (isNumpad) {
+          // Numpad keys - map to Numpad0-9 etc
+          const numpadMap = {
+            '0': 'Numpad0', '1': 'Numpad1', '2': 'Numpad2', '3': 'Numpad3', '4': 'Numpad4',
+            '5': 'Numpad5', '6': 'Numpad6', '7': 'Numpad7', '8': 'Numpad8', '9': 'Numpad9',
+            '.': 'NumpadDecimal', '/': 'NumpadDivide', '*': 'NumpadMultiply',
+            '-': 'NumpadSubtract', '+': 'NumpadAdd'
+          };
+          key = numpadMap[e.key] || e.key;
+        } else {
+          // Regular keys
+          const keyMap = {
+            ' ': 'Space',
+            'ArrowUp': 'ArrowUp',
+            'ArrowDown': 'ArrowDown',
+            'ArrowLeft': 'ArrowLeft',
+            'ArrowRight': 'ArrowRight',
+            'Delete': 'Delete',
+            'Insert': 'Insert',
+            'Home': 'Home',
+            'End': 'End',
+            'PageUp': 'PageUp',
+            'PageDown': 'PageDown',
+            'Enter': 'Enter',
+            'Tab': 'Tab',
+            'Backspace': 'Backspace'
+          };
+          
+          if (keyMap[e.key]) {
+            key = keyMap[e.key];
+          } else if (e.key.length === 1) {
+            key = e.key.toUpperCase();
+          } else if (e.key.startsWith('F') && !isNaN(e.key.substring(1))) {
+            // F1-F24 keys are already in correct format
+            key = e.key;
+          } else {
+            // Fallback to key as-is
+            key = e.key;
+          }
         }
         
-        // Build full accelerator
+        // Build full hotkey string (UIOhook format)
         const parts = [...modifiers, key];
-        const accelerator = parts.join('+');
+        const hotkeyString = parts.join(' + ');
         
         // Update display
-        inputEl.textContent = accelerator || 'Not Set';
+        inputEl.textContent = hotkeyString || 'Not Set';
         inputEl.classList.remove('recording');
         
         // Save hotkey
-        updateHotkey(hotkeyName, accelerator);
+        updateHotkey(hotkeyName, hotkeyString);
         
         // Cleanup listener
         capturingHotkeyFor = null;
@@ -1211,10 +1748,149 @@ function buildLevelingSettingsSplashHtml(
       });
     }
     
+    // Custom Hotkey Management
+    let customHotkeysData = ${JSON.stringify(customHotkeys)};
+    
+    function captureCustomHotkey(index) {
+      const inputEl = document.getElementById('custom-hotkey-' + index);
+      inputEl.classList.add('recording');
+      inputEl.textContent = 'Press a key...';
+      
+      const handleKey = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        const parts = [];
+        if (event.ctrlKey || event.metaKey) parts.push('Ctrl');
+        if (event.altKey) parts.push('Alt');
+        if (event.shiftKey) parts.push('Shift');
+        
+        let key = event.key;
+        if (key === ' ') key = 'Space';
+        if (key === 'Control' || key === 'Alt' || key === 'Shift' || key === 'Meta') {
+          return; // Don't accept modifier-only
+        }
+        
+        // Handle numpad keys
+        if (event.code && event.code.startsWith('Numpad')) {
+          key = event.code; // e.g., "Numpad5"
+        }
+        
+        parts.push(key);
+        const accelerator = parts.join('+');
+        
+        inputEl.textContent = accelerator;
+        inputEl.classList.remove('recording');
+        
+        customHotkeysData[index].hotkey = accelerator;
+        updateCustomHotkeys();
+        
+        document.removeEventListener('keydown', handleKey);
+      };
+      
+      document.addEventListener('keydown', handleKey);
+    }
+    
+    function clearCustomHotkey(index) {
+      const inputEl = document.getElementById('custom-hotkey-' + index);
+      inputEl.textContent = 'Not Set';
+      customHotkeysData[index].hotkey = 'Not Set';
+      updateCustomHotkeys();
+    }
+    
+    function updateCustomHotkey(index, field, value) {
+      customHotkeysData[index][field] = value;
+      updateCustomHotkeys();
+    }
+    
+    function deleteCustomHotkey(index) {
+      customHotkeysData.splice(index, 1);
+      updateCustomHotkeys();
+      rebuildCustomHotkeys();
+    }
+    
+    function addCustomHotkey() {
+      const newHotkey = {
+        id: 'custom-' + Date.now(),
+        name: '',
+        command: '',
+        hotkey: 'Not Set',
+        pressEnter: false
+      };
+      customHotkeysData.push(newHotkey);
+      updateCustomHotkeys();
+      rebuildCustomHotkeys();
+    }
+    
+    function updateCustomHotkeys() {
+      ipcRenderer.send('leveling-custom-hotkeys-update', customHotkeysData);
+    }
+    
+    function rebuildCustomHotkeys() {
+      const container = document.getElementById('custom-hotkeys-list');
+      container.innerHTML = customHotkeysData.map((hotkey, index) => \`
+        <div class="custom-hotkey-item" data-index="\${index}" data-id="\${hotkey.id}">
+          <div class="custom-hotkey-row">
+            <input 
+              type="text" 
+              class="custom-hotkey-name" 
+              placeholder="Name (e.g., Movement Boots)" 
+              value="\${hotkey.name}"
+              onchange="updateCustomHotkey(\${index}, 'name', this.value)"
+            />
+            <div class="custom-hotkey-actions">
+              <button class="hotkey-delete" onclick="deleteCustomHotkey(\${index})" title="Delete">✕</button>
+            </div>
+          </div>
+          <div class="custom-hotkey-row">
+            <input 
+              type="text" 
+              class="custom-hotkey-command" 
+              placeholder="Command or regex (e.g., /hideout or -\\\\w-.-)" 
+              value="\${hotkey.command.replace(/"/g, '&quot;')}"
+              onchange="updateCustomHotkey(\${index}, 'command', this.value)"
+              title="\${hotkey.command}"
+            />
+          </div>
+          <div class="custom-hotkey-row">
+            <div class="hotkey-input" id="custom-hotkey-\${index}" onclick="captureCustomHotkey(\${index})">\${hotkey.hotkey}</div>
+            <button class="hotkey-clear" onclick="clearCustomHotkey(\${index})">Clear</button>
+            <label class="custom-hotkey-enter-toggle" title="Press Enter after pasting">
+              <input 
+                type="checkbox" 
+                \${hotkey.pressEnter ? 'checked' : ''}
+                onchange="updateCustomHotkey(\${index}, 'pressEnter', this.checked)"
+              />
+              <span>Enter</span>
+            </label>
+          </div>
+        </div>
+      \`).join('');
+    }
+    
     
     function closeSettings() {
       ipcRenderer.send('leveling-settings-close');
     }
+    
+    // Listen for tab switching from external sources
+    ipcRenderer.on('switch-to-tab', (event, tabName) => {
+      if (tabName) {
+        // Programmatically switch to the specified tab
+        document.querySelectorAll('.tab-button').forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.textContent.toLowerCase().includes(tabName.toLowerCase()) || 
+              btn.getAttribute('onclick')?.includes(tabName)) {
+            btn.classList.add('active');
+          }
+        });
+        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+        const targetPanel = document.getElementById('tab-' + tabName);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+      }
+    });
     
     // Initialize: Load existing PoB build if any
     (function initializePobDisplay() {
@@ -1236,6 +1912,25 @@ function buildLevelingSettingsSplashHtml(
         }
       });
     })();
+    
+    // Handle initial tab if specified
+    const initialTab = '${initialTab || ''}';
+    if (initialTab) {
+      // Wait for DOM to be ready, then switch to the specified tab
+      setTimeout(() => {
+        document.querySelectorAll('.tab-button').forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.getAttribute('onclick')?.includes(initialTab)) {
+            btn.classList.add('active');
+          }
+        });
+        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+        const targetPanel = document.getElementById('tab-' + initialTab);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+      }, 50);
+    }
   </script>
 </body>
 </html>

@@ -63,7 +63,7 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     .window.minimal-mode .timer-row,
     .window.minimal-mode .minimal-controls{display:none!important;}
     .window.minimal-mode .footer{display:none!important;}
-    .window.minimal-mode .list{padding:76px 4px 4px 4px!important;pointer-events:auto!important;}
+    .window.minimal-mode .list{padding:52px 1px 1px 1px!important;pointer-events:auto!important;}
     .window.minimal-mode .list::-webkit-scrollbar{display:none!important;}
     .window.minimal-mode .list{scrollbar-width:none!important;-ms-overflow-style:none!important;}
     .window.minimal-mode .leveling-step,
@@ -106,11 +106,13 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     .window.ultra-minimal-mode .task-checkbox{display:none!important;}
     .window.ultra-minimal-mode .leveling-step{background:rgba(32,36,44,0.85)!important;border:1px solid rgba(74,158,255,0.15)!important;}
     .window.ultra-minimal-mode .leveling-step.current{background:rgba(50,54,64,0.9)!important;border-color:rgba(74,158,255,0.3)!important;}
-    .window.ultra-minimal-mode .leveling-group{background:rgba(32,36,44,0.85)!important;border:1px solid rgba(74,222,128,0.15)!important;}
-    .window.ultra-minimal-mode .leveling-group.current{background:rgba(40,50,44,0.9)!important;border-color:rgba(74,222,128,0.3)!important;}
-    .window.ultra-minimal-mode .list{padding:72px 4px 4px 4px!important;pointer-events:none!important;}
+    .window.ultra-minimal-mode .leveling-group{padding:8px;margin-bottom:4px;border-radius:3px;background:rgba(32,36,44,0.85)!important;border:1px solid rgba(74,222,128,0.15)!important;}
+    .window.ultra-minimal-mode .leveling-group.current{border-top-left-radius:0 !important;border-top-right-radius:0 !important;background:rgba(40,50,44,0.9)!important;border-color:rgba(74,222,128,0.3)!important;}
+    .window.ultra-minimal-mode .list{padding:48px 1px 0 0!important;pointer-events:none!important;}
+    .window.ultra-minimal-mode .zone-header{margin-bottom:5px;padding-bottom:5px;border:none}
     .window.ultra-minimal-mode .list::-webkit-scrollbar{display:none!important;}
     .window.ultra-minimal-mode .list{scrollbar-width:none!important;-ms-overflow-style:none!important;}
+    .window.ultra-minimal-mode .task-list{gap:4px;}
     .drag-handle{display:none;}
     .drag-handle-row{display:none;}
     .drag-handle-info{display:none;}
@@ -195,10 +197,25 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
   .leveling-group{margin-bottom:12px;background:rgba(74,222,128,0.03);border:1px solid rgba(74,222,128,0.15);border-left:3px solid rgba(74,222,128,0.4);border-radius:8px;padding:12px;transition:all 0.2s;overflow:visible;box-sizing:border-box;position:relative;}
     .leveling-group.current{background:rgba(74,222,128,0.08);border-color:rgba(74,222,128,0.3);border-left-color:rgba(74,222,128,0.8);}
     .leveling-group:hover{background:rgba(74,222,128,0.05);border-color:rgba(74,222,128,0.2);}
+    /* PoB Import Task Card - Blue Variant */
+    .pob-import-card{margin-bottom:12px;background:rgba(74,158,255,0.08);border:1px solid rgba(74,158,255,0.25);border-left:3px solid rgba(74,158,255,0.6);border-radius:8px;padding:14px 12px;transition:all 0.25s;overflow:visible;position:relative;}
+    .pob-import-card:hover{background:rgba(74,158,255,0.12);border-color:rgba(74,158,255,0.35);}
+    .pob-import-card .step-content{flex:1 1 auto;display:grid;grid-template-columns:1fr;gap:8px;position:relative;}
+    .pob-import-card .step-main{display:grid;grid-template-columns:28px 1fr;align-items:flex-start;gap:8px;}
+    .pob-import-card .step-icon-wrap{width:28px;height:28px;min-width:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(74,158,255,0.5);background:rgba(74,158,255,0.15);grid-column:1;}
+    .pob-import-card .step-icon{font-size:16px;line-height:1;color:#4a9eff;}
+    .pob-import-card .step-desc-wrap{grid-column:2;display:flex;flex-direction:column;gap:6px;min-width:0;position:relative;}
+    .pob-import-card .step-desc{color:#e0f2fe;font-weight:600;line-height:1.4;font-size:calc(var(--font-size) + 1px);}
+    .pob-import-card .step-hint{padding:6px 0 0 0;font-size:calc(var(--font-size) - 1px);color:#bae6fd;line-height:1.4;font-style:italic;}
+    .pob-import-card .pob-import-btn{margin-top:8px;padding:8px 16px;background:rgba(74,158,255,0.3);border:1px solid rgba(74,158,255,0.6);border-radius:6px;color:#e0f2fe;font-weight:600;cursor:pointer;transition:all 0.2s;font-size:calc(var(--font-size));display:inline-flex;align-items:center;gap:6px;}
+    .pob-import-card .pob-import-btn:hover{background:rgba(74,158,255,0.5);border-color:rgba(74,158,255,0.8);transform:translateY(-1px);}
+    .pob-import-card .pob-hide-btn{position:absolute;top:8px;right:8px;padding:4px 8px;background:rgba(217,83,79,0.2);border:1px solid rgba(217,83,79,0.4);border-radius:4px;color:#ff6b6b;font-size:11px;cursor:pointer;transition:all 0.2s;opacity:0.7;}
+    .pob-import-card .pob-hide-btn:hover{opacity:1;background:rgba(217,83,79,0.3);border-color:rgba(217,83,79,0.6);}
     .zone-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(74,222,128,0.2);cursor:pointer;}
     .zone-checkbox{width:18px;height:18px;cursor:pointer;accent-color:#4ade80;}
     .skip-to-btn{margin-left:auto;background:transparent;border:none;color:#888;padding:2px 4px;cursor:pointer;font-size:calc(var(--font-size) - 1px);opacity:0.5;transition:opacity 0.2s;}
     .skip-to-btn:hover{opacity:1;color:#aaa;}
+    .leveling-step .skip-to-btn{position:absolute;top:8px;right:8px;z-index:10;}
     .zone-name{flex:1;font-weight:700;color:#4ade80;font-size:calc(var(--font-size) + 1px);}
     .task-list{display:flex;flex-direction:column;gap:6px;padding:0;margin:0;}
   .task-item{display:table;width:100%;table-layout:fixed;border-collapse:collapse;font-size:var(--font-size);}
@@ -252,17 +269,21 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     .timer-display{position:relative;cursor:help;}
     
     /* PoB Gem Compact Display Styles */
-    .pob-gem-compact{display:flex;align-items:center;gap:4px;padding:1px 0;font-size:calc(var(--font-size) - 1px);line-height:1.3;width:100%;margin-right:8px;}
-    .pob-gem-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:3px;transition:all 0.12s;border:none;font-size:calc(var(--font-size) - 1px);flex-wrap:nowrap;flex:1;min-width:0;}
-    .pob-gem-pill:hover{background:rgba(255,255,255,0.05);transform:translateX(1px);}
+    .pob-gems-wrapper{margin-left:-90px;margin-right:-14px;padding:4px 14px 4px 36px;}
+    .ultra-minimal-mode .pob-gems-wrapper{margin-left:-67px;}
+    .ultra-minimal-mode .task-bullet, .ultra-minimal-mode .skip-to-btn{display:none}
+    .ultra-minimal-mode .pob-gems-wrapper{margin-left:-35px;}
+    .pob-gem-compact{display:flex;align-items:center;gap:4px;padding:1px 0;font-size:calc(var(--font-size) - 1px);line-height:1.3;width:100%;}
+    .pob-gem-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 8px;border-radius:3px;transition:all 0.12s;border:none;font-size:calc(var(--font-size) - 1px);flex-wrap:nowrap;flex:1;min-width:0;overflow:hidden;}
+    .pob-gem-pill:hover{background:rgba(255,255,255,0.05);transform:translateY(-1px);}
     .pob-gem-icon{font-size:9px;line-height:1;}
     .pob-gem-image{width:20px;height:20px;object-fit:contain;flex-shrink:0;}
     .pob-gem-image.poe2{border-radius:3px;border:1px solid rgba(74,158,255,0.3);background:rgba(0,0,0,0.3);padding:2px;}
-    .pob-gem-verb{font-weight:500;color:rgba(255,255,255,0.85);font-size:calc(var(--font-size) - 2px);text-transform:uppercase;letter-spacing:0.3px;min-width:28px;flex-shrink:0;}
-    .pob-gem-name-inline{font-weight:500;flex:0 1 auto;font-size:calc(var(--font-size) - 1px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px;}
-    .pob-gem-vendor{font-size:calc(var(--font-size) - 2px);color:rgba(255,255,255,0.4);font-style:italic;flex-shrink:0;white-space:nowrap;min-width:50px;text-align:right;overflow:hidden;text-overflow:ellipsis;}
-    .pob-gem-cost{font-size:10px;opacity:0.6;margin-left:4px;}
-    .pob-gem-set-tag{font-size:8px;padding:1px 4px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);border-radius:2px;color:rgba(255,255,255,0.45);font-weight:500;white-space:nowrap;cursor:default;flex-shrink:0;min-width:60px;max-width:80px;text-align:center;overflow:hidden;text-overflow:ellipsis;}
+    .pob-gem-verb{font-weight:500;color:rgba(255,255,255,0.85);font-size:calc(var(--font-size) - 2px);text-transform:uppercase;letter-spacing:0.3px;flex:0 0 auto;white-space:nowrap;margin-right:2px;}
+    .pob-gem-name-inline{font-weight:500;flex:1 1 auto;font-size:calc(var(--font-size) - 1px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:60px;margin-right:8px;}
+    .pob-gem-vendor{font-size:calc(var(--font-size) - 2px);color:rgba(255,255,255,0.4);font-style:italic;flex:0 1 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:30px;max-width:80px;text-align:right;}
+    .pob-gem-cost{font-size:10px;opacity:0.6;margin-left:4px;flex-shrink:0;}
+    .pob-gem-set-tag{font-size:max(calc(var(--font-size) - 4px),8px);max-width:20%;padding:1px 4px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);border-radius:2px;color:rgba(255,255,255,0.45);font-weight:500;white-space:nowrap;cursor:default;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis;min-width:30px;max-width:80px;text-align:center;margin-left:4px;}
     .pob-gem-set-tooltip{cursor:help;position:relative;}
     .pob-gem-set-tooltip:hover{background:rgba(74,222,128,0.15);color:rgba(255,255,255,0.65);}
     
@@ -419,6 +440,14 @@ const INJECTED_GEMS_DATA = ${gemsJSON};
 const INJECTED_QUESTS_DATA = ${questsJSON};
 const INJECTED_GEM_COLOURS = ${gemColoursJSON};
 
+// Security: Escape HTML to prevent XSS attacks
+function escapeHtml(str) {
+  if (str == null) return '';
+  const div = document.createElement('div');
+  div.textContent = String(str);
+  return div.innerHTML;
+}
+
 async function loadGemDatabase() {
   if (gemDatabase) return gemDatabase;
   try {
@@ -474,6 +503,8 @@ let state = {
   showHints: true,
   showOptional: true,
   autoDetectZones: true,
+  autoDetectMode: 'hybrid', // 'strict' | 'trust' | 'hybrid' (default: hybrid)
+  lastDetectedZoneId: null, // For strict mode: track last zone to validate source
   showTreeNodeDetails: false,
   autoDetectLevelingSets: true,
   opacity: 96,
@@ -488,6 +519,7 @@ let state = {
   characterName: null,
   characterClass: null,
   characterLevel: null,
+  pobImportCardHidden: false, // Flag to permanently hide the PoB import card
   timer: {
     isRunning: false,
     startTime: 0,
@@ -547,6 +579,51 @@ function getLeagueIcon(step) {
 function getLayoutTipIcon(step) {
   if (!step.layoutTip) return '';
   return '<span class="layout-tip-icon"><span class="more-pill">...</span><span class="tooltip">'+escapeHtml(step.layoutTip)+'</span></span>';
+}
+
+function getHintIcon(hint) {
+  if (!hint) return '💡';
+  
+  const lowerHint = hint.toLowerCase();
+  
+  // Check for specific directional keywords (most specific first)
+  // Diagonal directions (8 directions)
+  if (lowerHint.includes('north-east') || lowerHint.includes('northeast')) return '↗️';
+  if (lowerHint.includes('north-west') || lowerHint.includes('northwest')) return '↖️';
+  if (lowerHint.includes('south-east') || lowerHint.includes('southeast')) return '↘️';
+  if (lowerHint.includes('south-west') || lowerHint.includes('southwest')) return '↙️';
+  
+  // Cardinal directions
+  if (lowerHint.includes('north')) return '⬆️';
+  if (lowerHint.includes('south')) return '⬇️';
+  if (lowerHint.includes('east')) return '➡️';
+  if (lowerHint.includes('west')) return '⬅️';
+  
+  // Clock positions (common in PoE guides)
+  if (lowerHint.includes("1 o'clock") || lowerHint.includes("2 o'clock")) return '↗️';
+  if (lowerHint.includes("4 o'clock") || lowerHint.includes("5 o'clock")) return '↘️';
+  if (lowerHint.includes("7 o'clock") || lowerHint.includes("8 o'clock")) return '↙️';
+  if (lowerHint.includes("10 o'clock") || lowerHint.includes("11 o'clock")) return '↖️';
+  if (lowerHint.includes("12 o'clock")) return '⬆️';
+  if (lowerHint.includes("3 o'clock")) return '➡️';
+  if (lowerHint.includes("6 o'clock")) return '⬇️';
+  if (lowerHint.includes("9 o'clock")) return '⬅️';
+  
+  // Movement/direction keywords
+  if (lowerHint.includes('upward') || lowerHint.includes('going up')) return '⬆️';
+  if (lowerHint.includes('downward') || lowerHint.includes('going down')) return '⬇️';
+  if (lowerHint.includes('left')) return '⬅️';
+  if (lowerHint.includes('right')) return '➡️';
+  
+  // Circular movements
+  if (lowerHint.includes('clockwise') && lowerHint.includes('counter')) return '↺';
+  if (lowerHint.includes('clockwise')) return '↻';
+  
+  // Generic movement (follow, head, move, etc.) without specific direction
+  if (lowerHint.match(/follow|head|move|go|travel|navigate|enter/i)) return '➡️';
+  
+  // Default to lightbulb for tips, hints, and other information
+  return '💡';
 }
 
 // Track which gems have been shown to avoid duplicates (used during seeding)
@@ -826,41 +903,50 @@ function getPobGemsForStep(step, actNumber, allSteps = [], stepIndex = 0, isSeed
 
       const [gemId, gemData] = gemEntry;
 
-      for (const rewardOffer of rewardOffers) {
-        // ONLY show rewards on the LAST occurrence of the quest (when it's complete)
-        if (!isLastOccurrence) {
-          continue;
-        }
+      // ONLY show rewards on the LAST occurrence of the quest (when it's complete)
+      if (!isLastOccurrence) {
+        continue;
+      }
 
-        // Check quest rewards (TAKE)
-        if (!takenQuestIds.has(questId) && !takenGemIds.has(gemId)) {
+      // FIRST PASS: Check ALL reward offers for quest rewards (TAKE)
+      // This ensures we prioritize quest rewards over vendor rewards
+      let foundAsQuestReward = false;
+      
+      if (!takenGemIds.has(gemId)) {
+        for (const rewardOffer of rewardOffers) {
           const questRewards = rewardOffer.quest || {};
           const questReward = questRewards[gemId];
           if (questReward) {
             const classValid = isClassValid(questReward.classes || [], characterClass);
             if (classValid) {
-              takeGems.push({
-                gemId,
-                name: gemData.name,
-                questId: questData.id || questId,
-                questName: questData.name,
-                questAct: questData.act,
-                rewardType: 'quest',
-                npc: rewardOffer.quest_npc,
-                isSupport: gemData.is_support,
-                skillSetTitle: pobGem.skillSetTitle,
-              });
-              takenGemIds.add(gemId);
-              takenQuestIds.add(questId);
-              state.globalTakenGems.add(gemId);
+              // Only actually add as TAKE if we haven't already taken a gem from this quest
+              if (!takenQuestIds.has(questId)) {
+                takeGems.push({
+                  gemId,
+                  name: gemData.name,
+                  questId: questData.id || questId,
+                  questName: questData.name,
+                  questAct: questData.act,
+                  rewardType: 'quest',
+                  npc: rewardOffer.quest_npc,
+                  isSupport: gemData.is_support,
+                  skillSetTitle: pobGem.skillSetTitle,
+                });
+                takenGemIds.add(gemId);
+                takenQuestIds.add(questId);
+                state.globalTakenGems.add(gemId);
+                foundAsQuestReward = true;
+              }
               break;
             }
           }
         }
+      }
 
-        // Check vendor rewards (BUY)
-        // Vendor gems ARE class-restricted (can only buy if your class is in the list)
-        if (!takenGemIds.has(gemId) && !state.globalTakenGems.has(gemId) && !vendorGemIds.has(gemId)) {
+      // SECOND PASS: Check vendor rewards (BUY)
+      // Show as BUY if: not taken as quest reward AND (not already taken from another source)
+      if (!foundAsQuestReward && !takenGemIds.has(gemId) && !state.globalTakenGems.has(gemId) && !vendorGemIds.has(gemId)) {
+        for (const rewardOffer of rewardOffers) {
           const vendorRewards = rewardOffer.vendor || {};
           const vendorReward = vendorRewards[gemId];
           if (vendorReward && isClassValid(vendorReward.classes || [], characterClass)) {
@@ -915,10 +1001,10 @@ function getPobGemsForStep(step, actNumber, allSteps = [], stepIndex = 0, isSeed
   return [];
 }
 
-function renderPobGemList(gems) {
+function renderPobGemList(gems, currentActNumber) {
   if (!gems || gems.length === 0) return '';
   
-  let html = '';
+  let html = '<div class="pob-gems-wrapper">';
   
   gems.forEach(gem => {
     const color = getGemColor(gem);
@@ -935,24 +1021,40 @@ function renderPobGemList(gems) {
     const fullTitle = gem.skillSetTitle || '';
     const isTruncated = skillSetTag.endsWith('...');
     
+    // Check if this gem is from the current act's skill set
+    let isCurrentAct = false;
+    if (gem.skillSetTitle && currentActNumber) {
+      const skillSet = gem.skillSetTitle.toLowerCase();
+      const actPattern = 'act ' + currentActNumber;
+      isCurrentAct = skillSet.indexOf(actPattern) === 0;
+    }
+
+    
+    // Apply extra saturation/brightness for current act gems - make it VERY obvious
+    const gemPillStyle = isCurrentAct 
+      ? 'border-left:3px solid ' + color + ';background:' + color + '50;' // Much brighter, thicker border
+      : 'border-left:2px solid ' + color + ';background:' + color + '18;'; // Original subtle background
+    
     html += '<div class="pob-gem-compact">';
     // Use subtle background colors with thin border for slick look
-    html += '<span class="pob-gem-pill" style="border-left:2px solid ' + color + ';background:' + color + '18;">';
+    html += '<span class="pob-gem-pill" style="' + gemPillStyle + '">';
     // Add gem image placeholder with data attribute (will be resolved after render)
     if (imagePath) {
       html += '<img data-gem-img="' + imagePath + '" class="' + imageClass + '" style="display:none;" />';
     }
     html += '<span class="pob-gem-verb">' + verb + '</span>';
     html += '<span class="pob-gem-name-inline">' + escapeHtml(gem.name) + '</span>';
-    // Spacer to push vendor and set tag to the right
-    html += '<span style="flex:1;"></span>';
     html += '<span class="pob-gem-vendor">' + escapeHtml(npcName) + '</span>';
     if (cost) {
       html += '<span class="pob-gem-cost">' + cost + '</span>';
     }
     // Add skill set tag if available, with tooltip for truncated names
     if (skillSetTag) {
-      const tagStyle = 'border-color:' + color + '33;background:' + color + '08;';
+      // Extra saturation for current act skill set tags too - make it VERY obvious
+      const tagOpacity = isCurrentAct ? '30' : '08';
+      const tagBorderOpacity = isCurrentAct ? '80' : '33';
+      const tagFontWeight = isCurrentAct ? 'font-weight:700;' : '';
+      const tagStyle = 'border-color:' + color + tagBorderOpacity + ';background:' + color + tagOpacity + ';' + tagFontWeight;
       if (isTruncated) {
         html += '<span class="pob-gem-set-tag pob-gem-set-tooltip" style="' + tagStyle + '" title="' + escapeHtml(fullTitle) + '">' + escapeHtml(skillSetTag) + '</span>';
       } else {
@@ -962,6 +1064,8 @@ function renderPobGemList(gems) {
     html += '</span>';
     html += '</div>';
   });
+  
+  html += '</div>'; // Close pob-gems-wrapper
   
   return html;
 }
@@ -1030,7 +1134,7 @@ function getGemCost(gem) {
 }
 
 function groupStepsByZone(steps) {
-  if (!state.groupByZone) return steps.map(s => ({zone:s.zone,steps:[s],allChecked:state.completedSteps.has(s.id),layoutTip:s.layoutTip}));
+  if (!state.groupByZone) return steps.map(s => ({zone:s.zone,zoneId:s.zoneId,steps:[s],allChecked:state.completedSteps.has(s.id),layoutTip:s.layoutTip}));
   
   const grouped = [];
   for (let i = 0; i < steps.length; i++) {
@@ -1039,8 +1143,12 @@ function groupStepsByZone(steps) {
     if (grouped.length > 0) {
       const lastGroup = grouped[grouped.length - 1];
       
-      // Group ALL steps with the same zone together, regardless of type
-      if (lastGroup.zone === step.zone) {
+      // Group by zoneId if available, otherwise fall back to zone name
+      const sameZone = step.zoneId && lastGroup.zoneId 
+        ? lastGroup.zoneId === step.zoneId
+        : lastGroup.zone === step.zone;
+      
+      if (sameZone) {
         lastGroup.steps.push(step);
         lastGroup.allChecked = lastGroup.steps.every(s => state.completedSteps.has(s.id));
         continue;
@@ -1049,6 +1157,7 @@ function groupStepsByZone(steps) {
     
     grouped.push({
       zone: step.zone,
+      zoneId: step.zoneId,
       steps: [step],
       allChecked: state.completedSteps.has(step.id),
       layoutTip: step.layoutTip
@@ -1072,7 +1181,8 @@ function saveState() {
     showOptional: state.showOptional,
     groupByZone: state.groupByZone,
     showTreeNodeDetails: state.showTreeNodeDetails,
-    autoDetectLevelingSets: state.autoDetectLevelingSets
+    autoDetectLevelingSets: state.autoDetectLevelingSets,
+    autoDetectMode: state.autoDetectMode
   });
 }
 
@@ -1556,7 +1666,13 @@ function render() {
       // Store handlers for cleanup
       dragHandle._ultraMouseHandlers = { mouseEnterHandler, mouseLeaveHandler };
       
-      // Start with click-through enabled
+      // Start with click-through enabled, but with a small delay to ensure handlers are active
+      // This fixes the issue where dragging doesn't work on initial launch in ultra mode
+      setTimeout(() => {
+        ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
+      }, 100);
+    } else {
+      // Handlers already exist, just ensure click-through is enabled
       ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
     }
   } else {
@@ -1635,6 +1751,34 @@ function render() {
     headerSubtitle.textContent = act.actName + ' Complete! 🎉 (' + completedCount + '/' + totalSteps + ')';
   }
 
+  // Build PoB Import Card (only show if no PoB build imported AND not hidden)
+  const POB_IMPORT_TASK_ID = 'pob-import-task';
+  const showPobImportCard = !state.pobImportCardHidden && (!state.pobBuild || !state.pobBuild.gems || state.pobBuild.gems.length === 0);
+  
+  let pobImportCardHtml = '';
+  if (showPobImportCard) {
+    pobImportCardHtml = \`
+      <div class="pob-import-card" data-task-id="\${POB_IMPORT_TASK_ID}">
+        <div class="step-content">
+          <div class="step-main">
+            <div class="step-icon-wrap">
+              <span class="step-icon">📋</span>
+            </div>
+            <div class="step-desc-wrap">
+              <div class="step-desc">Import Your PoB Build</div>
+              <div class="step-hint">Get personalized gem recommendations and passive tree tracking for your build</div>
+              <button class="pob-import-btn" onclick="openPobImportSettings()">
+                <span>⚙️</span>
+                <span>Open PoB Import Settings</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <button class="pob-hide-btn" onclick="hidePobImportCard()" title="Hide this card permanently">✕ Hide</button>
+      </div>
+    \`;
+  }
+
   // Render ALL groups once; hide completed groups and any incomplete groups beyond the visible limit
   let incompleteCounter = 0;
   const stepsHtml = grouped.map((group) => {
@@ -1660,7 +1804,8 @@ function render() {
     const cleanDesc = cleanDescription(step.description);
         const leagueIcon = getLeagueIcon(step);
   const layoutTipIcon = step.layoutTip ? getLayoutTipIcon(step) : '';
-        const hintHtml = state.showHints && step.hint ? '<div class="task-hint">💡 '+escapeHtml(step.hint)+'</div>' : '';
+        const hintIcon = getHintIcon(step.hint);
+        const hintHtml = state.showHints && step.hint ? '<div class="task-hint">'+hintIcon+' '+escapeHtml(step.hint)+'</div>' : '';
         const rewardHtml = step.reward ? '<div class="task-reward">🎁 '+escapeHtml(step.reward)+'</div>' : '';
         
         // Get PoB gems for this step (never let errors break UI)
@@ -1671,34 +1816,29 @@ function render() {
           console.error('[LevelingPopout] getPobGemsForStep failed for step', step.id, err);
           pobGems = [];
         }
-        const pobGemsHtml = renderPobGemList(pobGems);
+        const pobGemsHtml = renderPobGemList(pobGems, act.actNumber);
         
   return '<div class="task-item"><div class="task-checkbox"><input type="checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /></div><div class="task-bullet" style="color:'+stepType.color+';">'+stepType.icon+'</div><div class="task-content"><div class="task-desc '+(checked?'checked':'')+'">'+escapeHtml(cleanDesc)+leagueIcon+layoutTipIcon+'</div>'+hintHtml+rewardHtml+pobGemsHtml+'</div></div>';
       }).join('')+'</div></div>';
     } else {
+      // Single task - render exactly like multi-task groups
       const step = group.steps[0];
       const stepIndex = act.steps.findIndex(s => s.id === step.id);
       const checked = state.completedSteps.has(step.id);
       const stepType = STEP_TYPES[step.type] || STEP_TYPES.navigation;
-      const isHighPriority = ['passive','kill_boss','trial'].includes(step.type);
       const pos = isCurrent ? 1 : currentIndex;
-      const opacity = isCurrent ? 1 : Math.max(0.5, 1 - ((pos - 1) * 0.15));
-  const bgColor = isCurrent ? (isHighPriority ? 'rgba(254,192,118,0.20)' : 'rgba(255,255,255,0.16)') : 'rgba(255,255,255,0.03)';
-      const padding = isCurrent ? '16px 14px' : '14px 12px';
+      const groupOpacity = isCurrent ? 1 : Math.max(0.5, 1 - ((pos - 1) * 0.15));
+      const currentClass = isCurrent ? ' current' : '';
+      const skipToBtn = isCurrent ? '' : '<button class="skip-to-btn" data-action="skip-to" data-first-step-id="'+step.id+'" title="Skip to this task (auto-complete all previous steps)">⏭️</button>';
       
       const cleanDesc = cleanDescription(step.description);
       const leagueIcon = getLeagueIcon(step);
-  const layoutTipIcon = step.layoutTip ? getLayoutTipIcon(step) : '';
-  const stepTextHtml = '<span class="step-desc-text">'+escapeHtml(cleanDesc)+'</span>';
-      const hintHtml = state.showHints && step.hint ? '<div class="step-hint">💡 '+escapeHtml(step.hint)+'</div>' : '';
+      const layoutTipIcon = step.layoutTip ? getLayoutTipIcon(step) : '';
+      const hintIcon = getHintIcon(step.hint);
+      const hintHtml = state.showHints && step.hint ? '<div class="task-hint">'+hintIcon+' '+escapeHtml(step.hint)+'</div>' : '';
+      const rewardHtml = step.reward ? '<div class="task-reward">🎁 '+escapeHtml(step.reward)+'</div>' : '';
       
-      const metaItems = [];
-      if (step.quest) metaItems.push('<div class="badge" style="background:#fec07615;border-color:#fec07640;color:#fec076;">📜 '+escapeHtml(step.quest)+'</div>');
-      if (step.reward) metaItems.push('<div class="badge" style="background:#4ade8015;border-color:#4ade8040;color:#4ade80;">🎁 '+escapeHtml(step.reward)+'</div>');
-      if (step.recommendedLevel) metaItems.push('<div class="badge" style="background:#ffd70015;border-color:#ffd70040;color:#ffd700;">Level '+step.recommendedLevel+'</div>');
-      const metaHtml = metaItems.length > 0 ? '<div class="step-meta">'+metaItems.join('')+'</div>' : '';
-      
-      // Get PoB gems for this step (never let errors break UI)
+      // Get PoB gems for this step
       let pobGems = [];
       try {
         pobGems = getPobGemsForStep(step, act.actNumber, act.steps, stepIndex, false);
@@ -1706,14 +1846,14 @@ function render() {
         console.error('[LevelingPopout] getPobGemsForStep failed for step', step.id, err);
         pobGems = [];
       }
-      const pobGemsHtml = renderPobGemList(pobGems);
+      const pobGemsHtml = renderPobGemList(pobGems, act.actNumber);
       
-  const borderColor = isCurrent ? '#fdd68a' : stepType.color;
-  return '<div class="leveling-group'+(isCurrent?' current':'')+'" data-incomplete-index="'+currentIndex+'" data-visible="'+(withinLimit?'true':'false')+'" style="'+baseDisplay+'"><div class="leveling-step '+(isCurrent?'current':'')+' '+(isHighPriority?'priority':'')+'" style="opacity:'+opacity+';background:'+bgColor+';padding:'+padding+';border-left-color:'+borderColor+';"><input type="checkbox" class="step-checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /><div class="step-content"><div class="step-main"><div class="step-icon-wrap" style="background:'+stepType.color+'22;border-color:'+stepType.color+'44;"><span class="step-icon" style="color:'+stepType.color+';">'+stepType.icon+'</span></div><div class="step-desc-wrap">'+(isCurrent&&step.zone?'<div class="zone-label">'+escapeHtml(step.zone)+'</div>':'')+'<div class="step-desc '+(checked?'checked':'')+'">'+stepTextHtml+leagueIcon+layoutTipIcon+'</div></div></div>'+metaHtml+hintHtml+pobGemsHtml+'</div></div></div>';
+      // Use exact same structure as multi-task: leveling-group → zone-header + task-list → task-item
+      return '<div class="leveling-group'+currentClass+'" data-incomplete-index="'+currentIndex+'" data-visible="'+(withinLimit?'true':'false')+'" style="'+baseDisplay+'opacity:'+groupOpacity+';"><div class="zone-header" data-zone="'+escapeHtml(group.zone)+'"><div class="zone-name">📍 '+escapeHtml(group.zone)+'</div>'+skipToBtn+'</div><div class="task-list"><div class="task-item"><div class="task-checkbox"><input type="checkbox" data-action="toggle-step" data-step-id="'+step.id+'" '+(checked?'checked':'')+' style="accent-color:'+stepType.color+';" /></div><div class="task-bullet" style="color:'+stepType.color+';">'+stepType.icon+'</div><div class="task-content"><div class="task-desc '+(checked?'checked':'')+'">'+escapeHtml(cleanDesc)+leagueIcon+layoutTipIcon+'</div>'+hintHtml+rewardHtml+pobGemsHtml+'</div></div></div></div>';
     }
   }).join('');
   
-  list.innerHTML = stepsHtml;
+  list.innerHTML = pobImportCardHtml + stepsHtml;
   
   // Resolve gem images for VISIBLE groups only
   resolveGemImagesIn(list);
@@ -1730,7 +1870,10 @@ function render() {
       }
       ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
       
-      // Check for act completion BEFORE re-rendering
+      // Immediately re-render to update focused zone
+      render();
+      
+      // Check for act completion after rendering
       setTimeout(() => {
         checkActCompletionAndAdvance();
       }, 100);
@@ -1755,7 +1898,10 @@ function render() {
       
       ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
       
-      // Check for act completion BEFORE re-rendering
+      // Immediately re-render to update focused zone
+      render();
+      
+      // Check for act completion after rendering
       setTimeout(() => {
         checkActCompletionAndAdvance();
       }, 100);
@@ -1975,7 +2121,9 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
   if (result.settings) {
     if (result.settings.opacity !== undefined) state.opacity = result.settings.opacity;
     if (result.settings.fontSize !== undefined) state.fontSize = result.settings.fontSize;
+    // Handle both 'zoom' and 'zoomLevel' for backwards compatibility
     if (result.settings.zoom !== undefined) state.zoom = result.settings.zoom;
+    if (result.settings.zoomLevel !== undefined) state.zoom = result.settings.zoomLevel;
     if (result.settings.minimalMode !== undefined) state.minimalMode = result.settings.minimalMode;
     if (result.settings.mode !== undefined) state.mode = result.settings.mode;
     if (result.settings.visibleSteps !== undefined) state.visibleSteps = result.settings.visibleSteps;
@@ -1984,6 +2132,7 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
     if (result.settings.groupByZone !== undefined) state.groupByZone = result.settings.groupByZone;
     if (result.settings.showTreeNodeDetails !== undefined) state.showTreeNodeDetails = result.settings.showTreeNodeDetails;
     if (result.settings.autoDetectLevelingSets !== undefined) state.autoDetectLevelingSets = result.settings.autoDetectLevelingSets;
+    if (result.settings.autoDetectMode !== undefined) state.autoDetectMode = result.settings.autoDetectMode;
     console.log('Loaded UI settings:', result.settings);
   }
   
@@ -2015,6 +2164,7 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
     if (updates.showTreeNodeDetails !== undefined) state.showTreeNodeDetails = updates.showTreeNodeDetails;
     if (updates.autoDetectLevelingSets !== undefined) state.autoDetectLevelingSets = updates.autoDetectLevelingSets;
     if (updates.autoDetectZones !== undefined) state.autoDetectZones = updates.autoDetectZones;
+    if (updates.autoDetectMode !== undefined) state.autoDetectMode = updates.autoDetectMode;
     if (updates.wideMode !== undefined) {
       state.mode = updates.wideMode ? 'wide' : 'tall';
       ipcRenderer.send('leveling-set-layout', state.mode);
@@ -2053,6 +2203,18 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
   console.error('Failed to load:', err);
   document.getElementById('stepsList').innerHTML = '<div style="padding:20px;text-align:center;color:#ff6b6b;">Failed to load data</div>';
 });
+
+// Function to open settings with PoB Import tab (global for onclick handler)
+window.openPobImportSettings = function() {
+  ipcRenderer.invoke('open-leveling-settings', 'pob');
+};
+
+// Function to hide PoB import card permanently (global for onclick handler)
+window.hidePobImportCard = function() {
+  state.pobImportCardHidden = true;
+  saveState();
+  render();
+};
 
 // Button handlers
 const settingsBtn = document.getElementById('settingsBtn');
@@ -2309,9 +2471,16 @@ if (importPobBtn) {
     status.textContent = '✅ Build imported successfully!';
     status.style.color = 'rgba(74,222,128,0.8)';
     
+    // Safely display build info with escaped HTML
+    const className = escapeHtml(result.build.className);
+    const ascendancyName = result.build.ascendancyName ? escapeHtml(result.build.ascendancyName) : '';
+    const level = parseInt(result.build.level, 10) || 0;
+    const totalNodes = parseInt(result.build.totalNodes, 10) || 0;
+    const gemsFound = parseInt(result.build.gemsFound, 10) || 0;
+    
     buildInfo.innerHTML = \`
-      <strong>\${result.build.className}</strong> \${result.build.ascendancyName ? '(' + result.build.ascendancyName + ')' : ''}<br>
-      Level \${result.build.level} | \${result.build.totalNodes} passive nodes | \${result.build.gemsFound} gems
+      <strong>\${className}</strong> \${ascendancyName ? '(' + ascendancyName + ')' : ''}<br>
+      Level \${level} | \${totalNodes} passive nodes | \${gemsFound} gems
     \`;
     buildInfo.style.display = 'block';
     
@@ -2320,6 +2489,11 @@ if (importPobBtn) {
     
     // Reload PoB build data and update UI
     loadPobBuild();
+    
+    // Re-render to hide the PoB import card
+    setTimeout(() => {
+      render();
+    }, 100);
     
     setTimeout(() => {
       status.style.display = 'none';
@@ -2377,9 +2551,15 @@ async function loadPobBuild() {
     const buildInfo = document.getElementById('pobBuildInfo');
     if (buildInfo && buildInfo.style.display !== 'none') {
       const firstTreeSpec = build.treeSpecs[0];
+      const className = escapeHtml(build.className);
+      const ascendancyName = build.ascendancyName ? escapeHtml(build.ascendancyName) : '';
+      const level = parseInt(build.level, 10) || 0;
+      const nodeCount = Array.isArray(firstTreeSpec.allocatedNodes) ? firstTreeSpec.allocatedNodes.length : 0;
+      const gemCount = Array.isArray(build.gems) ? build.gems.length : 0;
+      
       buildInfo.innerHTML = \`
-        <strong>\${build.className}</strong> \${build.ascendancyName ? '(' + build.ascendancyName + ')' : ''}<br>
-        Level \${build.level} | \${firstTreeSpec.allocatedNodes.length} passive nodes | \${build.gems.length} gems
+        <strong>\${className}</strong> \${ascendancyName ? '(' + ascendancyName + ')' : ''}<br>
+        Level \${level} | \${nodeCount} passive nodes | \${gemCount} gems
       \`;
     }
     
@@ -2391,6 +2571,12 @@ async function loadPobBuild() {
 // Listen for PoB import events
 ipcRenderer.on('pob-build-imported', (event, build) => {
   console.log('PoB build imported:', build);
+  loadPobBuild();
+});
+
+// Listen for PoB build updates (activate)
+ipcRenderer.on('pob-build-updated', (event, build) => {
+  console.log('PoB build updated/activated:', build);
   loadPobBuild();
 });
 
@@ -2582,12 +2768,22 @@ function handlePrevBtn() {
     ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
     render();
   } else {
-    console.log('[PREV] No completed zones to show');
+    // No completed zones in current act - try to jump to previous act
+    if (state.currentActIndex > 0) {
+      console.log('[PREV] No completed zones, jumping to previous act');
+      state.currentActIndex--;
+      ipcRenderer.invoke('set-current-act', state.currentActIndex);
+      saveState();
+      render();
+    } else {
+      console.log('[PREV] Already at first act, no completed zones to show');
+    }
   }
 }
 
 function handleNextBtn() {
   if (!state.levelingData) return;
+  
   const act = state.levelingData.acts[state.currentActIndex];
   if (!act) return;
   let allSteps = act.steps;
@@ -2633,10 +2829,14 @@ ipcRenderer.on('leveling-layout-mode', (event, mode) => {
 });
 
 // Listen for zone entry events from Client.txt watcher
-ipcRenderer.on('zone-entered', (event, zoneName) => {
+ipcRenderer.on('zone-entered', (event, data) => {
   if (!state.levelingData || !state.autoDetectZones) return;
   
-  console.log('[Auto-Detect] Zone entered:', zoneName);
+  const zoneId = data.zoneId;
+  const zoneName = data.zoneName;
+  const actNumber = data.actNumber;
+  
+  console.log('[Auto-Detect] Zone entered:', zoneId + ' (' + zoneName + ')', 'Act', actNumber, '| Mode:', state.autoDetectMode);
   
   const act = state.levelingData.acts[state.currentActIndex];
   if (!act) return;
@@ -2644,76 +2844,183 @@ ipcRenderer.on('zone-entered', (event, zoneName) => {
   
   // Determine progression anchor: first uncompleted step index
   let firstUncompletedIndex = allSteps.findIndex(s => !state.completedSteps.has(s.id));
-  if (firstUncompletedIndex === -1) firstUncompletedIndex = allSteps.length; // everything done
-
-  // Find the nearest upcoming step in this zone at or after the progression anchor
-  let enteredZoneStepIndex = -1;
-  const normalizedEntered = zoneName.toLowerCase().trim();
-  for (let i = firstUncompletedIndex; i < allSteps.length; i++) {
-    const stepZone = allSteps[i].zone.toLowerCase().replace(/[⚡🗺️📍]/g, '').trim();
-    if (stepZone === normalizedEntered) {
-      enteredZoneStepIndex = i;
-      break;
-    }
-  }
-  // Fallback: if not found ahead, pick the last occurrence of this zone in the act
-  if (enteredZoneStepIndex === -1) {
-    for (let i = allSteps.length - 1; i >= 0; i--) {
-      const stepZone = allSteps[i].zone.toLowerCase().replace(/[⚡🗺️📍]/g, '').trim();
-      if (stepZone === normalizedEntered) {
-        enteredZoneStepIndex = i;
-        break;
+  if (firstUncompletedIndex === -1) {
+    console.log('[Auto-Detect] All steps completed in current act');
+    
+    // Check if we should auto-advance to next act
+    if (state.currentActIndex + 1 < state.levelingData.acts.length) {
+      const nextAct = state.levelingData.acts[state.currentActIndex + 1];
+      if (nextAct.steps.length > 0 && nextAct.steps[0].zoneId === zoneId) {
+        console.log('[Auto-Detect] Auto-switching to Act ' + (state.currentActIndex + 2));
+        state.currentActIndex++;
+        render();
       }
     }
-  }
-  
-  if (enteredZoneStepIndex === -1) {
-    console.log('[Auto-Detect] Zone not found in leveling guide:', zoneName);
-    return;
-  }
-  
-  console.log('[Auto-Detect] Found zone at step index:', enteredZoneStepIndex);
-
-  // Strategy: When entering a NEW zone, fully complete the PREVIOUS zone's task only.
-  // - Never auto-check any steps within the newly entered zone
-  // - Always mark all steps belonging to the immediately previous contiguous zone group
-
-  // Determine previous zone contiguous range [prevStart, prevEnd]
-  let prevEnd = enteredZoneStepIndex - 1;
-  if (prevEnd < 0) {
-    console.log('[Auto-Detect] No previous zone exists before the entered zone. Nothing to complete.');
     return;
   }
 
-  const normalizeZone = (z) => z.toLowerCase().replace(/[⚡🗺️📍]/g, '').trim();
-  const prevZoneName = normalizeZone(allSteps[prevEnd].zone);
-
-  let prevStart = prevEnd;
-  for (let i = prevEnd - 1; i >= 0; i--) {
-    if (normalizeZone(allSteps[i].zone) === prevZoneName) {
-      prevStart = i;
-    } else {
-      break;
+  const firstUncompletedStep = allSteps[firstUncompletedIndex];
+  const firstUncompletedZoneId = firstUncompletedStep.zoneId;
+  
+  // ============================================================================
+  // MODE 1: STRICT - Validate BOTH source zone AND destination zone
+  // ============================================================================
+  if (state.autoDetectMode === 'strict') {
+    console.log('[Auto-Detect] STRICT MODE: Validating source AND destination');
+    
+    // Track last zone we were in
+    if (!state.lastDetectedZoneId) {
+      state.lastDetectedZoneId = zoneId;
+      console.log('[Auto-Detect] First zone detected, setting lastZone to: ' + zoneId);
+      return;
     }
-  }
-
-  // Mark only the previous zone group as completed
-  let completedCount = 0;
-  for (let i = prevStart; i <= prevEnd; i++) {
-    const step = allSteps[i];
-    if (!state.completedSteps.has(step.id)) {
-      state.completedSteps.add(step.id);
-      completedCount++;
-      console.log('[Auto-Detect] Auto-completed previous zone step:', step.description, 'in', step.zone);
+    
+    // Check SOURCE: Did we come from the current uncompleted step's zone?
+    if (state.lastDetectedZoneId !== firstUncompletedZoneId) {
+      console.log('[Auto-Detect] Source mismatch: came from "' + state.lastDetectedZoneId + '" but expected "' + firstUncompletedZoneId + '". Ignoring.');
+      state.lastDetectedZoneId = zoneId;
+      return;
     }
-  }
-
-  if (completedCount > 0) {
+    
+    // Check DESTINATION: Does entered zone match the nextZoneId?
+    if (!firstUncompletedStep.nextZoneId) {
+      console.log('[Auto-Detect] No nextZoneId on current step. Ignoring.');
+      state.lastDetectedZoneId = zoneId;
+      return;
+    }
+    
+    if (zoneId !== firstUncompletedStep.nextZoneId && !(firstUncompletedStep.alternativeNextZoneId && zoneId === firstUncompletedStep.alternativeNextZoneId)) {
+      console.log('[Auto-Detect] Destination mismatch: entered "' + zoneId + '" but expected "' + firstUncompletedStep.nextZoneId + '". Ignoring.');
+      state.lastDetectedZoneId = zoneId;
+      return;
+    }
+    
+    // Both source AND destination validated!
+    console.log('[Auto-Detect] ✅ STRICT: Source "' + state.lastDetectedZoneId + '" AND destination "' + zoneId + '" validated!');
+    
+    // Complete ALL tasks in the current zone (the whole zone card)
+    const currentZoneId = firstUncompletedStep.zoneId;
+    let completedCount = 0;
+    
+    for (let i = firstUncompletedIndex; i < allSteps.length; i++) {
+      const step = allSteps[i];
+      if (step.zoneId !== currentZoneId) break; // Stop when we reach a different zone
+      
+      if (!state.completedSteps.has(step.id)) {
+        state.completedSteps.add(step.id);
+        completedCount++;
+        console.log('[Auto-Detect] Auto-completed: "' + step.description + '"');
+      }
+    }
+    
+    console.log('[Auto-Detect] STRICT: Completed ' + completedCount + ' step(s) in zone "' + firstUncompletedStep.zone + '"');
+    state.lastDetectedZoneId = zoneId;
     ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
-  console.log('[Auto-Detect] Completed ' + completedCount + ' step(s) in previous zone before entering ' + zoneName);
+    
+    // Check if we just completed the last step in the current act
+    const allCompleted = allSteps.every(s => state.completedSteps.has(s.id));
+    if (allCompleted && state.currentActIndex + 1 < state.levelingData.acts.length) {
+      const nextAct = state.levelingData.acts[state.currentActIndex + 1];
+      if (nextAct.steps.length > 0 && nextAct.steps[0].zoneId === zoneId) {
+        console.log('[Auto-Detect] ✅ Act ' + (state.currentActIndex + 1) + ' complete! Auto-switching to Act ' + (state.currentActIndex + 2));
+        state.currentActIndex++;
+      }
+    }
+    
+    render();
+    return;
+  }
+  
+  // ============================================================================
+  // MODE 2: TRUST - Complete current step when entering ANY different zone
+  // ============================================================================
+  if (state.autoDetectMode === 'trust') {
+    console.log('[Auto-Detect] TRUST MODE: Checking if zone changed');
+    
+    // Just check if entered zone is DIFFERENT from current step's zone
+    if (zoneId !== firstUncompletedZoneId) {
+      console.log('[Auto-Detect] ✅ TRUST: Zone changed from "' + firstUncompletedZoneId + '" to "' + zoneId + '"');
+      
+      // Complete ALL tasks in the current zone (the whole zone card)
+      const currentZoneId = firstUncompletedStep.zoneId;
+      let completedCount = 0;
+      
+      for (let i = firstUncompletedIndex; i < allSteps.length; i++) {
+        const step = allSteps[i];
+        if (step.zoneId !== currentZoneId) break; // Stop when we reach a different zone
+        
+        if (!state.completedSteps.has(step.id)) {
+          state.completedSteps.add(step.id);
+          completedCount++;
+          console.log('[Auto-Detect] Auto-completed: "' + step.description + '"');
+        }
+      }
+      
+      console.log('[Auto-Detect] TRUST: Completed ' + completedCount + ' step(s) in zone "' + firstUncompletedStep.zone + '"');
+      ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
+      
+      // Check if we just completed the last step in the current act
+      const allCompleted = allSteps.every(s => state.completedSteps.has(s.id));
+      if (allCompleted && state.currentActIndex + 1 < state.levelingData.acts.length) {
+        const nextAct = state.levelingData.acts[state.currentActIndex + 1];
+        if (nextAct.steps.length > 0 && nextAct.steps[0].zoneId === zoneId) {
+          console.log('[Auto-Detect] ✅ Act ' + (state.currentActIndex + 1) + ' complete! Auto-switching to Act ' + (state.currentActIndex + 2));
+          state.currentActIndex++;
+        }
+      }
+      
+      render();
+    } else {
+      console.log('[Auto-Detect] Still in same zone "' + zoneId + '". Ignoring.');
+    }
+    return;
+  }
+  
+  // ============================================================================
+  // MODE 3: HYBRID (Default) - Check if entered zone matches first uncompleted step's nextZoneId
+  // ============================================================================
+  console.log('[Auto-Detect] HYBRID MODE: Checking if entered zone matches next expected zone');
+  
+  // Simple logic: If entered zoneId matches the first uncompleted step's nextZoneId, complete that zone
+  if (!firstUncompletedStep.nextZoneId) {
+    console.log('[Auto-Detect] First uncompleted step has no nextZoneId (last step in act?). Ignoring.');
+    return;
+  }
+  
+  if (zoneId === firstUncompletedStep.nextZoneId || (firstUncompletedStep.alternativeNextZoneId && zoneId === firstUncompletedStep.alternativeNextZoneId)) {
+    console.log('[Auto-Detect] ✅ Entered zone "' + zoneId + '" matches expected next zone!');
+    
+    // Complete ALL tasks in the current zone (the whole zone card)
+    const currentZoneId = firstUncompletedStep.zoneId;
+    let completedCount = 0;
+    
+    for (let i = firstUncompletedIndex; i < allSteps.length; i++) {
+      const step = allSteps[i];
+      if (step.zoneId !== currentZoneId) break; // Stop when we reach a different zone
+      
+      if (!state.completedSteps.has(step.id)) {
+        state.completedSteps.add(step.id);
+        completedCount++;
+        console.log('[Auto-Detect] Auto-completed: "' + step.description + '"');
+      }
+    }
+    
+    console.log('[Auto-Detect] HYBRID: Completed ' + completedCount + ' step(s) in zone "' + firstUncompletedStep.zone + '"');
+    ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
+    
+    // Check if we just completed the last step in the current act
+    const allCompleted = allSteps.every(s => state.completedSteps.has(s.id));
+    if (allCompleted && state.currentActIndex + 1 < state.levelingData.acts.length) {
+      const nextAct = state.levelingData.acts[state.currentActIndex + 1];
+      if (nextAct.steps.length > 0 && nextAct.steps[0].zoneId === zoneId) {
+        console.log('[Auto-Detect] ✅ Act ' + (state.currentActIndex + 1) + ' complete! Auto-switching to Act ' + (state.currentActIndex + 2));
+        state.currentActIndex++;
+      }
+    }
+    
     render();
   } else {
-    console.log('[Auto-Detect] Previous zone already fully completed');
+    console.log('[Auto-Detect] Entered zone "' + zoneId + '" does NOT match expected next zone "' + firstUncompletedStep.nextZoneId + '". Ignoring.');
   }
 });
 

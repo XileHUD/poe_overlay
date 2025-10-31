@@ -6,7 +6,7 @@
  */
 
 import { BrowserWindow, screen, ipcMain } from 'electron';
-import { registerOverlayWindow } from '../ui/windowZManager.js';
+import { registerOverlayWindow, unregisterOverlayWindow, bringToFront } from '../ui/windowZManager.js';
 import * as fs from 'fs';
 import * as path from 'path';
 import { app } from 'electron';
@@ -15,6 +15,7 @@ const TREE_WINDOW_BOUNDS_FILE = path.join(app.getPath('userData'), 'tree-window-
 
 let treeWindow: BrowserWindow | null = null;
 let currentUltraMinimal: boolean = false;
+let currentPinned: boolean = true; // Default to always on top
 
 interface TreeWindowState {
   x: number;
@@ -22,6 +23,7 @@ interface TreeWindowState {
   width: number;
   height: number;
   ultraMinimal?: boolean;
+  pinned?: boolean; // Always on top state
   viewBox?: {
     x: number;
     y: number;
@@ -30,9 +32,9 @@ interface TreeWindowState {
   };
 }
 
-function saveTreeWindowBounds(bounds: { x: number; y: number; width: number; height: number }, ultraMinimal?: boolean, viewBox?: { x: number; y: number; width: number; height: number }) {
+function saveTreeWindowBounds(bounds: { x: number; y: number; width: number; height: number }, ultraMinimal?: boolean, viewBox?: { x: number; y: number; width: number; height: number }, pinned?: boolean) {
   try {
-    const state: TreeWindowState = { ...bounds, ultraMinimal, viewBox };
+    const state: TreeWindowState = { ...bounds, ultraMinimal, pinned, viewBox };
     fs.writeFileSync(TREE_WINDOW_BOUNDS_FILE, JSON.stringify(state), 'utf-8');
   } catch (err) {
     console.error('[Tree Window] Failed to save bounds:', err);
@@ -61,7 +63,7 @@ function loadTreeWindowBounds(): TreeWindowState | null {
   return null;
 }
 
-function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
+function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = true): string {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +81,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       font-family: 'Fontin', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: transparent;
       color: #c8c8c8;
-      overflow: hidden;
+      overflow: visible !important;
       width: 100vw;
       height: 100vh;
       display: flex;
@@ -98,7 +100,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       height: 100%;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      overflow: visible !important;
     }
 
     #header {
@@ -117,6 +119,8 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       display: flex;
       gap: 4px;
       -webkit-app-region: no-drag;
+      opacity: 1;
+      transition: opacity 0.3s ease;
     }
 
     .header-btn {
@@ -141,6 +145,12 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
     }
     
     .header-btn.minimal-btn.active {
+      background: rgba(74, 158, 255, 0.3);
+      border-color: rgba(74, 158, 255, 0.6);
+      color: #4a9eff;
+    }
+    
+    .header-btn.pin-btn.active {
       background: rgba(74, 158, 255, 0.3);
       border-color: rgba(74, 158, 255, 0.6);
       color: #4a9eff;
@@ -196,8 +206,10 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       align-items: center;
       border: 1px solid #3a3a3a;
       border-radius: 6px;
-      z-index: 10;
+      z-index: 10000;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      opacity: 1;
+      transition: opacity 0.3s ease;
     }
 
     #spec-selector {
@@ -209,10 +221,18 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       font-size: 12px;
       cursor: pointer;
       min-width: 180px;
+      position: relative;
+      z-index: 10000;
     }
 
     #spec-selector:hover {
       border-color: #4a4a4a;
+    }
+    
+    #spec-selector option {
+      background: #2a2a2a;
+      color: #c8c8c8;
+      padding: 4px;
     }
 
     #navigation button {
@@ -240,7 +260,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
     #viewport-container {
       flex: 1;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
       background: #0a0a0a;
     }
 
@@ -284,12 +304,15 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 1;
     }
 
     #tree-svg svg {
       display: block;
       transform-origin: center center;
       will-change: transform;
+      position: relative;
+      z-index: 1;
     }
 
   
@@ -306,8 +329,8 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
     }
 
     svg .mastery {
-      fill: transparent;
-      stroke: transparent;
+      fill: hsl(215, 15%, 40%);
+      stroke: hsl(215, 15%, 40%);
     }
 
     svg .border {
@@ -332,6 +355,8 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       border-radius: 6px;
       z-index: 10;
       pointer-events: none;
+      opacity: 1;
+      transition: opacity 0.3s ease;
     }
 
     .stat-line {
@@ -350,6 +375,8 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       display: flex;
       flex-direction: column;
       gap: 6px;
+      opacity: 1;
+      transition: opacity 0.3s ease;
     }
 
     #zoom-controls button {
@@ -369,12 +396,26 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       background: #3a3a3a;
       border-color: #4a4a4a;
     }
+
+    /* Auto-hide controls when mouse not over window */
+    body.controls-hidden #tree-stats,
+    body.controls-hidden #zoom-controls,
+    body.controls-hidden #navigation,
+    body.controls-hidden #header-controls {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    body.controls-hidden #navigation {
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
   <div id="window-container">
     <div id="header">
       <div id="header-controls">
+        <button class="header-btn pin-btn ${pinned ? 'active' : ''}" onclick="togglePinned()" id="pinBtn" title="Toggle Always On Top">📌</button>
         <button class="header-btn minimal-btn" onclick="toggleMinimalMode()" id="minimalBtn" title="Toggle Ultra Minimal Mode">◐</button>
         <button class="header-btn" onclick="window.close()" title="Close">✕</button>
       </div>
@@ -413,6 +454,24 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       });
     } catch {}
     
+    // Auto-hide controls when mouse leaves window
+    let hideControlsTimer = null;
+    
+    document.addEventListener('mouseenter', () => {
+      if (hideControlsTimer) {
+        clearTimeout(hideControlsTimer);
+        hideControlsTimer = null;
+      }
+      document.body.classList.remove('controls-hidden');
+    });
+    
+    document.addEventListener('mouseleave', () => {
+      // Add small delay before hiding to prevent flickering
+      hideControlsTimer = setTimeout(() => {
+        document.body.classList.add('controls-hidden');
+      }, 300);
+    });
+    
     let treeSvgData = '';
     let treeViewBox = '';
     let currentSpecs = [];
@@ -422,6 +481,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
     let isPanning = false;
     let lastPanPosition = { x: 0, y: 0 };
     let isUltraMinimal = ${ultraMinimal};
+    let isPinned = ${pinned};
     let autoDetectEnabled = true; // Track auto-detect setting
     let viewBoxSaveTimer = null; // Debounce timer for saving viewBox
 
@@ -699,6 +759,21 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       const { ipcRenderer } = require('electron');
       ipcRenderer.send('tree-window-toggle-minimal', isUltraMinimal);
     }
+    
+    function togglePinned() {
+      isPinned = !isPinned;
+      const btn = document.getElementById('pinBtn');
+      
+      if (isPinned) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+      
+      // Notify main process to change alwaysOnTop
+      const { ipcRenderer } = require('electron');
+      ipcRenderer.send('tree-window-toggle-pinned', isPinned);
+    }
 
     function selectSpec() {
       currentIndex = parseInt(document.getElementById('spec-selector').value);
@@ -859,7 +934,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
         <style id="tree-dynamic-css">
           svg .nodes { fill: hsl(215, 15%, 50%); stroke: hsl(215, 15%, 50%); stroke-width: 0; }
           svg .connections { fill: none; stroke: hsl(215, 15%, 40%); stroke-width: 20; }
-          svg .mastery { fill: transparent; stroke: transparent; }
+          svg .mastery { fill: hsl(215, 15%, 40%); stroke: hsl(215, 15%, 40%); }
           svg .border { fill: none; stroke: hsl(215, 15%, 40%); stroke-width: 20; }
           svg .ascendancy { opacity: 0.15; }
           \${activeAscendancyName ? \`svg .ascendancy.\${activeAscendancyName} { opacity: 1 !important; }\` : ''}
@@ -1262,6 +1337,14 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
         
         console.log('[Tree] Built node lookup with', Object.keys(nodeLookup).length, 'nodes');
         
+        // Get current spec to access mastery selections
+        const getCurrentMasteries = () => {
+          if (typeof currentIndex !== 'undefined' && typeof currentSpecs !== 'undefined' && currentSpecs[currentIndex]) {
+            return currentSpecs[currentIndex].parsedUrl?.masteries || {};
+          }
+          return {};
+        };
+        
         // Add hover listeners to all node circles in the SVG
         document.addEventListener('mouseover', (e) => {
           const target = e.target;
@@ -1276,7 +1359,22 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
               const stats = nodeData.stats || [];
               
               let tooltipHTML = \`<div style="font-weight: 600; margin-bottom: 8px; color: #4a9eff;">\${nodeName}</div>\`;
-              if (stats.length > 0) {
+              
+              // Check if this is a mastery node and if a specific effect is selected
+              const masteries = getCurrentMasteries();
+              const selectedEffectId = masteries[nodeId];
+              
+              if (nodeData.k === 'Mastery' && selectedEffectId && treeData.masteryEffects && treeData.masteryEffects[selectedEffectId]) {
+                const masteryEffect = treeData.masteryEffects[selectedEffectId];
+                if (masteryEffect.stats && masteryEffect.stats.length > 0) {
+                  tooltipHTML += \`<div style="color: #ffd700; font-size: 12px; font-weight: 600; margin-top: 8px;">Selected Mastery:</div>\`;
+                  tooltipHTML += \`<div style="color: #90ee90; font-size: 12px;">\`;
+                  masteryEffect.stats.forEach(stat => {
+                    tooltipHTML += \`<div style="margin: 2px 0;">• \${stat}</div>\`;
+                  });
+                  tooltipHTML += \`</div>\`;
+                }
+              } else if (stats.length > 0) {
                 tooltipHTML += \`<div style="color: #b0b0b0; font-size: 12px;">\`;
                 stats.forEach(stat => {
                   tooltipHTML += \`<div style="margin: 2px 0;">• \${stat}</div>\`;
@@ -1330,7 +1428,9 @@ export function createPassiveTreeWindow(): BrowserWindow {
   const defaultBounds = { width: 900, height: 700, x: 120, y: 120 };
   const bounds = savedBounds || defaultBounds;
   const ultraMinimal = savedBounds?.ultraMinimal || false;
+  const pinned = savedBounds?.pinned !== undefined ? savedBounds.pinned : true; // Default to always on top
   currentUltraMinimal = ultraMinimal;
+  currentPinned = pinned;
 
   treeWindow = new BrowserWindow({
     width: bounds.width,
@@ -1341,7 +1441,7 @@ export function createPassiveTreeWindow(): BrowserWindow {
     transparent: true,
     resizable: true,
     skipTaskbar: true,
-    alwaysOnTop: true,
+    alwaysOnTop: pinned,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -1351,9 +1451,9 @@ export function createPassiveTreeWindow(): BrowserWindow {
   treeWindow.setIgnoreMouseEvents(false);
 
   // Register with overlay z-order manager
-  try { registerOverlayWindow('tree', treeWindow); } catch {}
+  try { registerOverlayWindow('tree', treeWindow, pinned, false); } catch {}
 
-  const html = buildTreeWindowHtml(ultraMinimal);
+  const html = buildTreeWindowHtml(ultraMinimal, pinned);
   const base64Html = Buffer.from(html, 'utf-8').toString('base64');
   treeWindow.loadURL(`data:text/html;charset=utf-8;base64,${base64Html}`);
 
@@ -1380,13 +1480,14 @@ export function createPassiveTreeWindow(): BrowserWindow {
   const saveBounds = () => {
     if (!treeWindow || treeWindow.isDestroyed()) return;
     const bounds = treeWindow.getBounds();
-    saveTreeWindowBounds(bounds, currentUltraMinimal);
+    saveTreeWindowBounds(bounds, currentUltraMinimal, undefined, currentPinned);
   };
 
   treeWindow.on('moved', saveBounds);
   treeWindow.on('resized', saveBounds);
 
   treeWindow.on('closed', () => {
+    unregisterOverlayWindow('tree');
     treeWindow = null;
   });
   
@@ -1396,7 +1497,20 @@ export function createPassiveTreeWindow(): BrowserWindow {
     currentUltraMinimal = isMinimal;
     // Save the state immediately
     const bounds = treeWindow.getBounds();
-    saveTreeWindowBounds(bounds, currentUltraMinimal);
+    saveTreeWindowBounds(bounds, currentUltraMinimal, undefined, currentPinned);
+  });
+  
+  // Handle pin toggle
+  ipcMain.on('tree-window-toggle-pinned', (event, isPinned) => {
+    if (!treeWindow || treeWindow.isDestroyed()) return;
+    currentPinned = isPinned;
+    
+    // Update via windowZManager instead of setting directly
+    try { registerOverlayWindow('tree', treeWindow, isPinned, false); } catch {}
+    
+    // Save the state immediately
+    const bounds = treeWindow.getBounds();
+    saveTreeWindowBounds(bounds, currentUltraMinimal, undefined, currentPinned);
   });
 
   // Handle viewBox state changes (zoom/pan)
@@ -1404,8 +1518,11 @@ export function createPassiveTreeWindow(): BrowserWindow {
     if (!treeWindow || treeWindow.isDestroyed()) return;
     // Save the viewBox state along with bounds
     const bounds = treeWindow.getBounds();
-    saveTreeWindowBounds(bounds, currentUltraMinimal, viewBox);
+    saveTreeWindowBounds(bounds, currentUltraMinimal, viewBox, currentPinned);
   });
+
+  // Bring window to front when first opened
+  bringToFront('tree');
 
   return treeWindow;
 }
@@ -1414,7 +1531,7 @@ export function getPassiveTreeWindow(): BrowserWindow | null {
   return treeWindow;
 }
 
-export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'poe1', currentAct: number = 1, characterLevel: number = 1, autoDetectEnabled: boolean = true, savedTreeIndex?: number): void {
+export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'poe1', currentAct: number = 1, characterLevel: number = 1, autoDetectEnabled: boolean = true, savedTreeIndex?: number, treeVersion: string = '3_26'): void {
   if (!treeWindow || treeWindow.isDestroyed()) {
     console.warn('[Tree Window] Cannot send tree data - window not available');
     return;
@@ -1427,21 +1544,31 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
   try {
     const template = require('../../shared/pob/treeLoader');
     
-    // Use appropriate tree based on game version
+    // Use appropriate tree based on game version and tree version
     if (gameVersion === 'poe2') {
       treeSvg = template.poe2Template?.svg || '';
       viewBox = template.poe2Template?.viewBox || '';
       treeData = template.skillTreePoe2;
       console.log('[Tree Window] Using PoE2 tree template');
     } else {
-      treeSvg = template.svg;
-      viewBox = template.viewBox;
-      treeData = template.skillTree;
-      console.log('[Tree Window] Using PoE1 tree template');
+      // For PoE1, use tree version to select the correct tree
+      if (treeVersion === '3_27') {
+        treeSvg = template.template327?.svg || '';
+        viewBox = template.template327?.viewBox || '';
+        treeData = template.skillTree327;
+        console.log('[Tree Window] Using PoE1 3.27 tree template');
+      } else {
+        // Default to 3.26
+        treeSvg = template.template326?.svg || '';
+        viewBox = template.template326?.viewBox || '';
+        treeData = template.skillTree326;
+        console.log('[Tree Window] Using PoE1 3.26 tree template');
+      }
     }
     
     console.log('[Tree Window] Prepared template for payload', {
       gameVersion,
+      treeVersion,
       svgLength: treeSvg?.length || 0,
       viewBox,
       hasTreeData: !!treeData,
@@ -1462,6 +1589,7 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     specCount: filteredSpecs?.length || 0,
     hasSvg: !!treeSvg,
     gameVersion,
+    treeVersion,
     currentAct,
     characterLevel,
     autoDetectEnabled,
@@ -1478,6 +1606,7 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     viewBox,
     treeData,
     gameVersion,
+    treeVersion,
     currentAct,
     characterLevel,
     autoDetectEnabled,

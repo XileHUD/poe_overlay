@@ -12,6 +12,7 @@ export interface CreateTrayParams {
   onToggleFloatingButton?: () => void;
   onOpenSettings?: () => void;
   onShowOverlay?: () => void;
+  onForceLevelingToPrimary?: () => void;
   currentHotkeyLabel?: string;
   featureVisibility?: {
     modifiers?: boolean;
@@ -30,6 +31,7 @@ export function createTray(params: CreateTrayParams): Tray | null {
     onToggleFloatingButton,
     onOpenSettings,
     onShowOverlay,
+    onForceLevelingToPrimary,
     currentHotkeyLabel = 'Ctrl+Q',
     featureVisibility
   } = params;
@@ -145,8 +147,9 @@ export function createTray(params: CreateTrayParams): Tray | null {
     { type: 'separator', visible: showModifiers || showMerchantHistory },
     { label: 'Toggle Floating Button', click: () => onToggleFloatingButton?.(), visible: !!onToggleFloatingButton },
     { type: 'separator', visible: !!onToggleFloatingButton },
+    { label: 'Move Leveling Overlay to Primary Monitor', click: () => onForceLevelingToPrimary?.(), visible: !!onForceLevelingToPrimary },
     { label: 'Settings...', click: () => onOpenSettings?.(), visible: !!onOpenSettings },
-    { type: 'separator', visible: !!onOpenSettings },
+    { type: 'separator', visible: !!onOpenSettings || !!onForceLevelingToPrimary },
     { label: `Show/Hide (${currentHotkeyLabel})`, click: () => onToggleOverlay() },
     { type: 'separator' },
     { label: 'Quit', click: () => (onQuit ? onQuit() : app.quit()) }
@@ -156,42 +159,39 @@ export function createTray(params: CreateTrayParams): Tray | null {
   try { tray.setContextMenu(contextMenu); } catch {}
   try { tray.setToolTip('XileHUD'); } catch {}
   
-  // Improved double-click detection for tray icon
-  // Use a shorter delay and track click count to distinguish single vs double clicks
-  let clickTimer: NodeJS.Timeout | null = null;
-  let clickCount = 0;
-  let lastClickTime = 0;
+  // GNOME/AppIndicator compatibility: use setContextMenu instead of popUpContextMenu
+  // On GNOME, popUpContextMenu doesn't work and click events only trigger on double-click
+  // See: https://github.com/ubuntu/gnome-shell-extension-appindicator#features
+  const isGnome = process.platform === 'linux' && process.env.XDG_CURRENT_DESKTOP === 'GNOME';
   
-  const clearClickTimer = () => {
-    if (clickTimer) {
-      clearTimeout(clickTimer);
-      clickTimer = null;
-    }
-  };
+  if (isGnome) {
+    // On GNOME, set the context menu directly - it will appear on any click
+    try { tray.setContextMenu(contextMenu); } catch {}
+    log('Using GNOME/AppIndicator mode with setContextMenu');
+  } else {
+    // Standard behavior for Windows/macOS and other Linux DEs
+    // Improved double-click detection for tray icon
+    // Use a shorter delay and track click count to distinguish single vs double clicks
+    let clickTimer: NodeJS.Timeout | null = null;
+    let clickCount = 0;
+    let lastClickTime = 0;
+    
+    const clearClickTimer = () => {
+      if (clickTimer) {
+        clearTimeout(clickTimer);
+        clickTimer = null;
+      }
+    };
 
-  try {
-    if (process.platform === 'linux') {
-      // On many Linux environments, relying on setContextMenu is most reliable.
-      // Show the menu on both left and right click for consistency across DEs.
-      tray.on('click', () => {
-        clearClickTimer();
-        clickCount = 0;
-        try { tray?.popUpContextMenu(contextMenu); } catch {}
-      });
-      tray.on('right-click', () => {
-        clearClickTimer();
-        clickCount = 0;
-        try { tray?.popUpContextMenu(contextMenu); } catch {}
-      });
-    } else {
+    try {
       tray.on('click', () => {
         const now = Date.now();
         const timeSinceLastClick = now - lastClickTime;
         lastClickTime = now;
         
-        // If clicks are within double-click window (typically 400ms on Windows),
-        // increment count, otherwise reset
-        if (timeSinceLastClick < 400) {
+        // If clicks are within double-click window, increment count, otherwise reset
+        // Increased to 600ms for more comfortable double-clicking
+        if (timeSinceLastClick < 600) {
           clickCount++;
         } else {
           clickCount = 1;
@@ -207,7 +207,7 @@ export function createTray(params: CreateTrayParams): Tray | null {
             try { tray?.popUpContextMenu(contextMenu); } catch {}
           }
           clickCount = 0;
-        }, 180); // Reduced delay for snappier response
+        }, 300); // Increased delay for smoother double-click detection
       });
       
       tray.on('right-click', () => {
@@ -215,19 +215,17 @@ export function createTray(params: CreateTrayParams): Tray | null {
         clickCount = 0;
         try { tray?.popUpContextMenu(contextMenu); } catch {}
       });
-    }
-  } catch {}
-  
-  try {
-    if (process.platform !== 'linux') {
+    } catch {}
+    
+    try {
       tray.on('double-click', () => {
         clearClickTimer();
         clickCount = 0; // Reset count after double-click
         if (onShowOverlay) onShowOverlay();
         else onToggleOverlay();
       });
-    }
-  } catch {}
+    } catch {}
+  }
 
   return tray;
 }

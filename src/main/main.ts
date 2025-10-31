@@ -582,6 +582,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 this.floatingButton = null;
             }
 
+            console.log(`[Main] Creating LevelingWindow instance for ${this.overlayVersion.toUpperCase()}...`);
             this.levelingWindow = new LevelingWindow({
                 settingsService: this.settingsService,
                 overlayVersion: this.overlayVersion
@@ -611,6 +612,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 onShowOverlay: this.levelingOnlyMode
                     ? () => this.levelingWindow?.toggle()
                     : () => this.showDefaultOverlay({ focus: true }),
+                onForceLevelingToPrimary: () => this.forceLevelingToPrimaryMonitor(),
                 currentHotkeyLabel: this.getHotkeyKey(),
                 featureVisibility: this.overlayVersion === 'poe2'
                     ? {
@@ -1643,7 +1645,21 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             
             // Leveling window toggle
             ipcMain.handle('toggle-leveling-window', () => {
-                this.levelingWindow?.toggle();
+                try {
+                    if (this.levelingWindow) {
+                        this.levelingWindow.toggle();
+                        return { success: true };
+                    } else {
+                        const error = 'levelingWindow is null or undefined - cannot toggle!';
+                        console.warn('[IPC Handler] ❌', error);
+                        return { success: false, error };
+                    }
+                } catch (error) {
+                    const errorMsg = error instanceof Error ? error.message : String(error);
+                    const errorStack = error instanceof Error ? error.stack : undefined;
+                    console.error('[IPC Handler] ❌ Exception in toggle-leveling-window:', error);
+                    return { success: false, error: errorMsg, stack: errorStack };
+                }
             });
             
             // Image caching (renderer will explicitly invoke to cache successes)
@@ -2136,6 +2152,10 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
         this.overlayWindow.hide();
         this.isOverlayVisible = false;
     console.log('[Overlay] hideOverlay -> window hidden');
+        
+        // Clear last processed item to allow re-processing the same item after overlay is closed
+        this.lastProcessedItemText = '';
+        
         // Do not clear clipboard if a capture is in progress
         const captureInProgress = this.shortcutAwaitingCapture || Date.now() <= this.armedCaptureUntil;
         console.log('[hideOverlay] captureInProgress=', captureInProgress, 'shortcutAwaitingCapture=', this.shortcutAwaitingCapture, 'armedCaptureUntil=', this.armedCaptureUntil, 'now=', Date.now());
@@ -2752,6 +2772,14 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
             ...(this.settingsService.get('floatingButton') || {}),
             enabled: isVisible
         });
+    }
+
+    // Force leveling overlay to primary monitor (via tray menu)
+    private forceLevelingToPrimaryMonitor() {
+        if (!this.levelingWindow) return;
+        
+        // Call the IPC handler directly
+        this.levelingWindow.forceToPrimaryMonitor();
     }
 
     // Get current hotkey (default to "Ctrl+Q", with validation)
@@ -3506,6 +3534,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         // Settings get/set for auto-cleanup flag
         try { ipcMain.removeHandler('get-setting'); } catch {}
         try { ipcMain.removeHandler('set-setting'); } catch {}
+        try { ipcMain.removeHandler('get-my-mods-enabled'); } catch {}
         ipcMain.handle('get-setting', async (_e, key: string) => {
             try {
                 return this.settingsService?.get(key as keyof UserSettings);
@@ -3521,6 +3550,14 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
             } catch (e: any) {
                 console.error(`[IPC:set-setting] Error setting ${key}:`, e);
                 return { ok: false, error: e?.message };
+            }
+        });
+        ipcMain.handle('get-my-mods-enabled', async () => {
+            try {
+                return this.settingsService?.get('myModsEnabled') || false;
+            } catch (e) {
+                console.error('[IPC:get-my-mods-enabled] Error:', e);
+                return false;
             }
         });
 

@@ -133,6 +133,26 @@ export interface StoredPobBuild {
   notes?: string; // Build notes from PoB Notes tab
 }
 
+/**
+ * POB Manager - Entry in saved builds list
+ */
+export interface PobBuildEntry {
+  id: string; // Unique identifier
+  name: string; // User-defined name
+  build: StoredPobBuild; // The actual build data
+  isActive: boolean; // Whether this is the currently active build
+  createdAt: number; // Timestamp when added
+  updatedAt: number; // Timestamp when last modified
+}
+
+/**
+ * POB Manager - List of all saved builds
+ */
+export interface PobBuildsList {
+  builds: PobBuildEntry[];
+  activeId: string | null; // ID of the currently active build
+}
+
 export interface PassiveTreeNode {
   id: number;
   name: string;
