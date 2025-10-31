@@ -1,5 +1,5 @@
 import { BrowserWindow, ipcMain } from 'electron';
-import { registerOverlayWindow } from './windowZManager.js';
+import { registerOverlayWindow, updateOverlayWindowPinned } from './windowZManager.js';
 import type { OverlayVersion } from '../../types/overlayVersion.js';
 import type { SettingsService } from '../services/settingsService.js';
 import type { ItemSet } from '../../shared/pob/types.js';
@@ -26,7 +26,7 @@ export function openLevelingGearWindow(options: LevelingGearWindowOptions): Brow
   const settingsKey = overlayVersion === 'poe1' ? 'levelingWindowPoe1' : 'levelingWindowPoe2';
   const savedSettings = settingsService.get(settingsKey) || {};
   const gearWindowSettings = (savedSettings as any).gearWindow || {};
-  const { x = 200, y = 200, width = 650, height = 700, ultraMinimal = false, hideInfo = false } = gearWindowSettings;
+  const { x = 200, y = 200, width = 650, height = 700, ultraMinimal = false, hideInfo = false, pinned = true } = gearWindowSettings;
 
   gearWindow = new BrowserWindow({
     width,
@@ -37,7 +37,7 @@ export function openLevelingGearWindow(options: LevelingGearWindowOptions): Brow
     transparent: true,
     resizable: true,
     skipTaskbar: true,
-    alwaysOnTop: true,
+    alwaysOnTop: pinned,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -53,7 +53,7 @@ export function openLevelingGearWindow(options: LevelingGearWindowOptions): Brow
   let _resizeTimer = null as any;
 
   // Register and participate in managed z-order
-  try { registerOverlayWindow('gear', gearWindow); } catch {}
+  try { registerOverlayWindow('gear', gearWindow, pinned); } catch {}
 
   // Get current PoB build gear from the new builds list (pobBuilds) instead of legacy pobBuild
   const pobBuilds = (savedSettings as any).pobBuilds;
@@ -64,7 +64,7 @@ export function openLevelingGearWindow(options: LevelingGearWindowOptions): Brow
   const savedGearIndex = (savedSettings as any).selectedGearIndex ?? gearWindowSettings.selectedSetIndex ?? 0;
   const autoDetectEnabled = (savedSettings as any).uiSettings?.autoDetectLevelingSets ?? true;
   
-  const html = buildLevelingGearWindowHtml(itemSets, overlayVersion, ultraMinimal, pobBuild, savedGearIndex, hideInfo, autoDetectEnabled);
+  const html = buildLevelingGearWindowHtml(itemSets, overlayVersion, ultraMinimal, pobBuild, savedGearIndex, hideInfo, autoDetectEnabled, pinned);
   gearWindow.loadURL(`data:text/html;charset=utf-8,${encodeURIComponent(html)}`);
 
   // Save position on move
@@ -117,6 +117,25 @@ export function openLevelingGearWindow(options: LevelingGearWindowOptions): Brow
       gearWindow: {
         ...(current.gearWindow || {}),
         ultraMinimal: isMinimal,
+      },
+    }));
+  });
+  
+  // Handle pinned toggle
+  ipcMain.on('gear-window-toggle-pinned', (event, isPinned) => {
+    if (!gearWindow || gearWindow.isDestroyed()) return;
+    
+    gearWindow.setAlwaysOnTop(isPinned);
+    
+    // Update the window manager's pinned state
+    try { updateOverlayWindowPinned('gear', isPinned); } catch {}
+    
+    // Save pinned state
+    settingsService.update(settingsKey, (current: any) => ({
+      ...current,
+      gearWindow: {
+        ...(current.gearWindow || {}),
+        pinned: isPinned,
       },
     }));
   });
@@ -177,7 +196,7 @@ export function closeGearWindow(): void {
   }
 }
 
-function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: OverlayVersion, ultraMinimal: boolean, pobBuild: any, selectedSetIndex: number, hideInfo: boolean, autoDetectEnabled: boolean): string {
+function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: OverlayVersion, ultraMinimal: boolean, pobBuild: any, selectedSetIndex: number, hideInfo: boolean, autoDetectEnabled: boolean, pinned: boolean = true): string {
   const className = pobBuild?.className || 'No Build Loaded';
   const ascendancy = pobBuild?.ascendancyName || '';
   const characterName = pobBuild?.characterName || '';
@@ -299,7 +318,7 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
       -webkit-app-region: no-drag;
     }
     
-    .minimal-btn, .close-btn {
+    .minimal-btn, .close-btn, .pin-btn {
       width: 20px;
       height: 20px;
       border-radius: 3px;
@@ -324,6 +343,22 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
     }
     
     .minimal-btn.active {
+      background: rgba(74, 158, 255, 0.3);
+      border-color: rgba(74, 158, 255, 0.6);
+    }
+    
+    .pin-btn {
+      background: rgba(74, 158, 255, 0.1);
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      color: var(--accent-blue);
+    }
+    
+    .pin-btn:hover {
+      background: rgba(74, 158, 255, 0.2);
+      border-color: rgba(74, 158, 255, 0.5);
+    }
+    
+    .pin-btn.active {
       background: rgba(74, 158, 255, 0.3);
       border-color: rgba(74, 158, 255, 0.6);
     }
@@ -683,6 +718,7 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
     </div>
     <div class="header-controls">
       <div class="minimal-btn" onclick="toggleMinimalMode()" id="minimalBtn" title="Toggle Ultra Minimal Mode">◐</div>
+      <div class="pin-btn" onclick="togglePinned()" id="pinBtn" title="Toggle Always On Top">📌</div>
       <div class="close-btn" onclick="closeWindow()">×</div>
     </div>
   </div>
@@ -712,11 +748,17 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
     } catch {}
     
     let isUltraMinimal = ${ultraMinimal};
+    let isPinned = ${pinned};
     let allItemSets = ${JSON.stringify(itemSets)};
     let currentSetIndex = ${currentSetIndex};
     let currentAct = 1;
     let characterLevel = 1;
     let autoDetectEnabled = ${autoDetectEnabled};
+    
+    // Initialize pinned button state
+    if (isPinned) {
+      document.getElementById('pinBtn').classList.add('active');
+    }
     
     function itemHasContent(item) {
       if (!item) return false;
@@ -832,6 +874,17 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
       }
       
       ipcRenderer.send('gear-window-toggle-minimal', isUltraMinimal);
+    }
+    
+    function togglePinned() {
+      isPinned = !isPinned;
+      const btn = document.getElementById('pinBtn');
+      if (isPinned) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+      ipcRenderer.send('gear-window-toggle-pinned', isPinned);
     }
     
     function closeWindow() {

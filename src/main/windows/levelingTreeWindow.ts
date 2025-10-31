@@ -6,7 +6,7 @@
  */
 
 import { BrowserWindow, screen, ipcMain } from 'electron';
-import { registerOverlayWindow } from '../ui/windowZManager.js';
+import { registerOverlayWindow, updateOverlayWindowPinned } from '../ui/windowZManager.js';
 import * as fs from 'fs';
 import * as path from 'path';
 import { app } from 'electron';
@@ -15,6 +15,7 @@ const TREE_WINDOW_BOUNDS_FILE = path.join(app.getPath('userData'), 'tree-window-
 
 let treeWindow: BrowserWindow | null = null;
 let currentUltraMinimal: boolean = false;
+let currentPinned: boolean = true; // Default to always on top
 
 interface TreeWindowState {
   x: number;
@@ -22,6 +23,7 @@ interface TreeWindowState {
   width: number;
   height: number;
   ultraMinimal?: boolean;
+  pinned?: boolean; // Always on top state
   viewBox?: {
     x: number;
     y: number;
@@ -30,9 +32,9 @@ interface TreeWindowState {
   };
 }
 
-function saveTreeWindowBounds(bounds: { x: number; y: number; width: number; height: number }, ultraMinimal?: boolean, viewBox?: { x: number; y: number; width: number; height: number }) {
+function saveTreeWindowBounds(bounds: { x: number; y: number; width: number; height: number }, ultraMinimal?: boolean, viewBox?: { x: number; y: number; width: number; height: number }, pinned?: boolean) {
   try {
-    const state: TreeWindowState = { ...bounds, ultraMinimal, viewBox };
+    const state: TreeWindowState = { ...bounds, ultraMinimal, pinned, viewBox };
     fs.writeFileSync(TREE_WINDOW_BOUNDS_FILE, JSON.stringify(state), 'utf-8');
   } catch (err) {
     console.error('[Tree Window] Failed to save bounds:', err);
@@ -61,7 +63,7 @@ function loadTreeWindowBounds(): TreeWindowState | null {
   return null;
 }
 
-function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
+function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = true): string {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -143,6 +145,12 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
     }
     
     .header-btn.minimal-btn.active {
+      background: rgba(74, 158, 255, 0.3);
+      border-color: rgba(74, 158, 255, 0.6);
+      color: #4a9eff;
+    }
+    
+    .header-btn.pin-btn.active {
       background: rgba(74, 158, 255, 0.3);
       border-color: rgba(74, 158, 255, 0.6);
       color: #4a9eff;
@@ -396,6 +404,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
   <div id="window-container">
     <div id="header">
       <div id="header-controls">
+        <button class="header-btn pin-btn ${pinned ? 'active' : ''}" onclick="togglePinned()" id="pinBtn" title="Toggle Always On Top">📌</button>
         <button class="header-btn minimal-btn" onclick="toggleMinimalMode()" id="minimalBtn" title="Toggle Ultra Minimal Mode">◐</button>
         <button class="header-btn" onclick="window.close()" title="Close">✕</button>
       </div>
@@ -461,6 +470,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
     let isPanning = false;
     let lastPanPosition = { x: 0, y: 0 };
     let isUltraMinimal = ${ultraMinimal};
+    let isPinned = ${pinned};
     let autoDetectEnabled = true; // Track auto-detect setting
     let viewBoxSaveTimer = null; // Debounce timer for saving viewBox
 
@@ -737,6 +747,21 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false): string {
       // Just notify main process (no click-through needed)
       const { ipcRenderer } = require('electron');
       ipcRenderer.send('tree-window-toggle-minimal', isUltraMinimal);
+    }
+    
+    function togglePinned() {
+      isPinned = !isPinned;
+      const btn = document.getElementById('pinBtn');
+      
+      if (isPinned) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+      
+      // Notify main process to change alwaysOnTop
+      const { ipcRenderer } = require('electron');
+      ipcRenderer.send('tree-window-toggle-pinned', isPinned);
     }
 
     function selectSpec() {
@@ -1369,7 +1394,9 @@ export function createPassiveTreeWindow(): BrowserWindow {
   const defaultBounds = { width: 900, height: 700, x: 120, y: 120 };
   const bounds = savedBounds || defaultBounds;
   const ultraMinimal = savedBounds?.ultraMinimal || false;
+  const pinned = savedBounds?.pinned !== undefined ? savedBounds.pinned : true; // Default to always on top
   currentUltraMinimal = ultraMinimal;
+  currentPinned = pinned;
 
   treeWindow = new BrowserWindow({
     width: bounds.width,
@@ -1380,7 +1407,7 @@ export function createPassiveTreeWindow(): BrowserWindow {
     transparent: true,
     resizable: true,
     skipTaskbar: true,
-    alwaysOnTop: true,
+    alwaysOnTop: pinned,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -1390,9 +1417,9 @@ export function createPassiveTreeWindow(): BrowserWindow {
   treeWindow.setIgnoreMouseEvents(false);
 
   // Register with overlay z-order manager
-  try { registerOverlayWindow('tree', treeWindow); } catch {}
+  try { registerOverlayWindow('tree', treeWindow, pinned); } catch {}
 
-  const html = buildTreeWindowHtml(ultraMinimal);
+  const html = buildTreeWindowHtml(ultraMinimal, pinned);
   const base64Html = Buffer.from(html, 'utf-8').toString('base64');
   treeWindow.loadURL(`data:text/html;charset=utf-8;base64,${base64Html}`);
 
@@ -1419,7 +1446,7 @@ export function createPassiveTreeWindow(): BrowserWindow {
   const saveBounds = () => {
     if (!treeWindow || treeWindow.isDestroyed()) return;
     const bounds = treeWindow.getBounds();
-    saveTreeWindowBounds(bounds, currentUltraMinimal);
+    saveTreeWindowBounds(bounds, currentUltraMinimal, undefined, currentPinned);
   };
 
   treeWindow.on('moved', saveBounds);
@@ -1435,7 +1462,21 @@ export function createPassiveTreeWindow(): BrowserWindow {
     currentUltraMinimal = isMinimal;
     // Save the state immediately
     const bounds = treeWindow.getBounds();
-    saveTreeWindowBounds(bounds, currentUltraMinimal);
+    saveTreeWindowBounds(bounds, currentUltraMinimal, undefined, currentPinned);
+  });
+  
+  // Handle pin toggle
+  ipcMain.on('tree-window-toggle-pinned', (event, isPinned) => {
+    if (!treeWindow || treeWindow.isDestroyed()) return;
+    currentPinned = isPinned;
+    treeWindow.setAlwaysOnTop(isPinned);
+    
+    // Update the window manager's pinned state
+    try { updateOverlayWindowPinned('tree', isPinned); } catch {}
+    
+    // Save the state immediately
+    const bounds = treeWindow.getBounds();
+    saveTreeWindowBounds(bounds, currentUltraMinimal, undefined, currentPinned);
   });
 
   // Handle viewBox state changes (zoom/pan)
@@ -1443,7 +1484,7 @@ export function createPassiveTreeWindow(): BrowserWindow {
     if (!treeWindow || treeWindow.isDestroyed()) return;
     // Save the viewBox state along with bounds
     const bounds = treeWindow.getBounds();
-    saveTreeWindowBounds(bounds, currentUltraMinimal, viewBox);
+    saveTreeWindowBounds(bounds, currentUltraMinimal, viewBox, currentPinned);
   });
 
   return treeWindow;

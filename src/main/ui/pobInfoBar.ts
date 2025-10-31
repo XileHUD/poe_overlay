@@ -46,6 +46,7 @@ export function openPobInfoBar(params: PobInfoBarParams): void {
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   const initialX = pobInfoBarSettings.x ?? (width - barWidth - 20);
   const initialY = pobInfoBarSettings.y ?? 100;
+  const pinned = pobInfoBarSettings.pinned ?? true;
 
   const window = new BrowserWindow({
     width: barWidth,
@@ -55,7 +56,7 @@ export function openPobInfoBar(params: PobInfoBarParams): void {
     frame: false,
     transparent: true,
     resizable: false,
-    alwaysOnTop: true,
+    alwaysOnTop: pinned,
     skipTaskbar: true,
     show: false,
     webPreferences: {
@@ -67,11 +68,8 @@ export function openPobInfoBar(params: PobInfoBarParams): void {
 
   activePobInfoBar = window;
 
-  // Keep on top
-  window.setAlwaysOnTop(true, 'screen-saver', 1);
-
   // Build HTML
-  const html = buildPobInfoBarHtml(pobBuild, currentAct);
+  const html = buildPobInfoBarHtml(pobBuild, currentAct, pinned);
   
   window.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
   
@@ -89,6 +87,22 @@ export function openPobInfoBar(params: PobInfoBarParams): void {
         ...(current.pobInfoBar || {}),
         x: newX,
         y: newY
+      }
+    }));
+  });
+
+  // Handle pinned toggle
+  ipcMain.on('pob-info-bar-toggle-pinned', (event, isPinned) => {
+    if (!window || window.isDestroyed()) return;
+    
+    window.setAlwaysOnTop(isPinned);
+    
+    // Save pinned state
+    settingsService.update(settingsKey, (current: any) => ({
+      ...current,
+      pobInfoBar: {
+        ...(current.pobInfoBar || {}),
+        pinned: isPinned
       }
     }));
   });
@@ -118,7 +132,7 @@ export function updatePobInfoBar(pobBuild: StoredPobBuild, currentAct: number): 
   }
 }
 
-function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): string {
+function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number, pinned: boolean = true): string {
   const className = pobBuild.className || 'Unknown';
   const ascendancy = pobBuild.ascendancyName || '';
   const level = pobBuild.level || 1;
@@ -199,6 +213,26 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
     }
     .pob-btn:hover { background: rgba(74, 222, 128, 0.2); border-color: rgba(74, 222, 128, 0.5); }
     .pob-btn:active { transform: translateY(0); }
+    
+    .pin-btn {
+      width: 18px;
+      height: 18px;
+      background: rgba(74, 158, 255, 0.1);
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      border-radius: 3px;
+      color: #4a9eff;
+      font-size: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+      flex-shrink: 0;
+      -webkit-app-region: no-drag;
+    }
+    .pin-btn:hover { background: rgba(74, 158, 255, 0.2); border-color: rgba(74, 158, 255, 0.5); }
+    .pin-btn.active { background: rgba(74, 158, 255, 0.3); border-color: rgba(74, 158, 255, 0.6); }
+    
     .close-btn {
       width: 18px;
       height: 18px;
@@ -230,11 +264,19 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
       ${hasAnyGear ? '<button class="pob-btn" onclick="openGear()" title="View gear sets from PoB">⚔️ Gear</button>' : ''}
       ${hasNotes ? '<button class="pob-btn" onclick="openNotes()" title="View build notes from PoB">📝 Notes</button>' : ''}
     </div>
+    <div class="pin-btn" onclick="togglePinned()" id="pinBtn" title="Toggle Always On Top">📌</div>
     <div class="close-btn" onclick="closeBar()">×</div>
   </div>
 
   <script>
     const { ipcRenderer } = require('electron');
+
+    let isPinned = ${pinned};
+
+    // Initialize pinned button state
+    if (isPinned) {
+      document.getElementById('pinBtn').classList.add('active');
+    }
 
     // Check if this is first time seeing the PoB bar
     let hasInteracted = false;
@@ -267,7 +309,7 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
 
     // Add interaction listeners to all buttons
     function addStopListeners() {
-      document.querySelectorAll('.pob-btn, .close-btn').forEach(btn => {
+      document.querySelectorAll('.pob-btn, .close-btn, .pin-btn').forEach(btn => {
         btn.addEventListener('click', stopPulsate);
         btn.addEventListener('mousedown', stopPulsate);
       });
@@ -322,6 +364,17 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number): stri
     function openGear() { ipcRenderer.send('open-pob-gear-window'); }
     function openNotes() { ipcRenderer.send('open-pob-notes-window'); }
     function closeBar() { ipcRenderer.send('pob-info-bar-close'); }
+    
+    function togglePinned() {
+      isPinned = !isPinned;
+      const btn = document.getElementById('pinBtn');
+      if (isPinned) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+      ipcRenderer.send('pob-info-bar-toggle-pinned', isPinned);
+    }
   </script>
 </body>
 </html>`;

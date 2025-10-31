@@ -1,5 +1,5 @@
 import { BrowserWindow, ipcMain } from 'electron';
-import { registerOverlayWindow } from './windowZManager.js';
+import { registerOverlayWindow, updateOverlayWindowPinned } from './windowZManager.js';
 import type { OverlayVersion } from '../../types/overlayVersion.js';
 import type { SettingsService } from '../services/settingsService.js';
 import { getActiveBuild } from '../../shared/pob/buildManager.js';
@@ -25,7 +25,7 @@ export function openLevelingNotesWindow(options: LevelingNotesWindowOptions): Br
   const settingsKey = overlayVersion === 'poe1' ? 'levelingWindowPoe1' : 'levelingWindowPoe2';
   const savedSettings = settingsService.get(settingsKey) || {};
   const notesWindowSettings = (savedSettings as any).notesWindow || {};
-  const { x = 150, y = 150, width = 500, height = 600, ultraMinimal = false } = notesWindowSettings;
+  const { x = 150, y = 150, width = 500, height = 600, ultraMinimal = false, pinned = true } = notesWindowSettings;
 
   notesWindow = new BrowserWindow({
     width,
@@ -36,7 +36,7 @@ export function openLevelingNotesWindow(options: LevelingNotesWindowOptions): Br
     transparent: true,
     resizable: true,
     skipTaskbar: true,
-    alwaysOnTop: true,
+    alwaysOnTop: pinned,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -51,14 +51,14 @@ export function openLevelingNotesWindow(options: LevelingNotesWindowOptions): Br
   let _resizeTimer = null as any;
 
   // Register for managed z-order
-  try { registerOverlayWindow('notes', notesWindow); } catch {}
+  try { registerOverlayWindow('notes', notesWindow, pinned); } catch {}
 
   // Get current PoB build notes from the new builds list (pobBuilds) instead of legacy pobBuild
   const pobBuilds = (savedSettings as any).pobBuilds;
   const pobBuild = pobBuilds ? getActiveBuild(pobBuilds) : ((savedSettings as any).pobBuild || null);
   const notes = pobBuild?.notes || 'No notes available.\n\nImport a PoB build with notes to see them here.';
 
-  const html = buildLevelingNotesWindowHtml(notes, overlayVersion, ultraMinimal, pobBuild);
+  const html = buildLevelingNotesWindowHtml(notes, overlayVersion, ultraMinimal, pobBuild, pinned);
   notesWindow.loadURL(`data:text/html;charset=utf-8,${encodeURIComponent(html)}`);
 
   // Save position on move
@@ -114,6 +114,24 @@ export function openLevelingNotesWindow(options: LevelingNotesWindowOptions): Br
       },
     }));
   });
+  
+  // Handle pin toggle
+  ipcMain.on('notes-window-toggle-pinned', (event, isPinned) => {
+    if (!notesWindow || notesWindow.isDestroyed()) return;
+    notesWindow.setAlwaysOnTop(isPinned);
+    
+    // Update the window manager's pinned state
+    try { updateOverlayWindowPinned('notes', isPinned); } catch {}
+    
+    // Save pinned state
+    settingsService.update(settingsKey, (current: any) => ({
+      ...current,
+      notesWindow: {
+        ...(current.notesWindow || {}),
+        pinned: isPinned,
+      },
+    }));
+  });
 
   return notesWindow;
 }
@@ -133,7 +151,7 @@ export function closeNotesWindow(): void {
   }
 }
 
-function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVersion, ultraMinimal: boolean, pobBuild: any): string {
+function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVersion, ultraMinimal: boolean, pobBuild: any, pinned: boolean = true): string {
   const className = pobBuild?.className || 'No Build Loaded';
   const ascendancy = pobBuild?.ascendancyName || '';
   const characterName = pobBuild?.characterName || '';
@@ -237,6 +255,32 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
     }
     
     .minimal-btn.active {
+      background: rgba(74, 158, 255, 0.3);
+      border-color: rgba(74, 158, 255, 0.6);
+    }
+    
+    .pin-btn {
+      width: 20px;
+      height: 20px;
+      background: rgba(74, 158, 255, 0.1);
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      border-radius: 3px;
+      color: var(--accent-blue);
+      font-size: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+    
+    .pin-btn:hover {
+      background: rgba(74, 158, 255, 0.2);
+      border-color: rgba(74, 158, 255, 0.5);
+    }
+    
+    .pin-btn.active {
       background: rgba(74, 158, 255, 0.3);
       border-color: rgba(74, 158, 255, 0.6);
     }
@@ -353,6 +397,7 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
       <div class="header-subtitle">${characterName || ascendancy || className}</div>
     </div>
     <div class="header-controls">
+      <div class="pin-btn active" onclick="togglePinned()" id="pinBtn" title="Toggle Always On Top">📌</div>
       <div class="minimal-btn" onclick="toggleMinimalMode()" id="minimalBtn" title="Toggle Ultra Minimal Mode">◐</div>
       <div class="close-btn" onclick="closeWindow()">×</div>
     </div>
@@ -380,6 +425,7 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
     } catch {}
     
     let isUltraMinimal = ${ultraMinimal};
+    let isPinned = ${pinned};
     
     function toggleMinimalMode() {
       isUltraMinimal = !isUltraMinimal;
@@ -396,6 +442,20 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
       
       // Notify main process to save state
       ipcRenderer.send('notes-window-toggle-minimal', isUltraMinimal);
+    }
+    
+    function togglePinned() {
+      isPinned = !isPinned;
+      const btn = document.getElementById('pinBtn');
+      
+      if (isPinned) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+      
+      // Notify main process to change alwaysOnTop
+      ipcRenderer.send('notes-window-toggle-pinned', isPinned);
     }
     
     function closeWindow() {
