@@ -15,7 +15,6 @@ import { addToTotals, recomputeTotalsFromEntries, renderHistoryTotals } from './
 import { applyFilters, renderHistoryActiveFilters } from './historyFilters';
 import { applySort } from './historyFilters';
 import { nextAllowedRefreshAt, updateHistoryRefreshButton, setRateLimitInfo, parseRateLimitHeaders } from './historyRateLimit';
-import { autoRefreshManager } from './autoRefresh';
 import { updateSessionUI } from './sessionManager';
 import { sendHistoryToPopout } from './historyPopout';
 import { recomputeChartSeriesFromStore, drawHistoryChart, updateHistoryChartFromTotals } from './historyChart';
@@ -126,10 +125,8 @@ export async function refreshHistory(
   renderListCallback: (renderDetailCallback: (idx: number) => void) => void,
   renderDetailCallback: (idx: number) => void
 ): Promise<boolean | void> {
-  if (isPoe1Mode()) {
-    console.log('[History] Refresh blocked in PoE1 mode');
-    return;
-  }
+  // PoE1 merchant history is now enabled - removed PoE1 mode check
+  
   // Defensive: log the types we were passed (helps diagnose minified t() errors)
   try {
     const rlType = typeof renderListCallback;
@@ -275,13 +272,36 @@ export async function refreshHistory(
 
     // If no data found, show league selection prompt (no auto-detection to avoid rate-limit loops)
     if (!rows || rows.length === 0) {
-      (histList as HTMLElement).innerHTML =
-        `<div class="no-mods" style="padding:8px;">No history returned for ${formatLeagueLabel(historyState.league)}.<br/><br/>` +
-        `This usually means the selected league doesn't match your character (Softcore vs Hardcore).` +
-        `<br/><br/>Pick the correct league in <strong>Settings</strong> (top-left gear icon) to resume.</div>`;
-      showInfoBadge(`No trades found for ${formatLeagueLabel(historyState.league)}. Double-check your league choice; auto-refresh is paused until you switch.`);
-      try { autoRefreshManager.stopAutoRefresh(); } catch {}
-      showLeaguePrompt('empty-data', { previousLeague: historyState.league });
+      const hasExistingEntries = Array.isArray(historyState.store.entries) && historyState.store.entries.length > 0;
+      const leagueLabel = formatLeagueLabel(historyState.league);
+
+      const now = Date.now();
+      historyState.lastRefreshAt = now;
+      historyState.store.lastFetchAt = now;
+
+      // Save timestamp even when no data returned (critical for rate limiting!)
+      try {
+        await (window as any).electronAPI.historySave(historyState.store, historyState.league);
+      } catch (e) {
+        console.warn('[History] Failed to save timestamp after empty response:', e);
+      }
+
+      if (!hasExistingEntries) {
+        (histList as HTMLElement).innerHTML =
+          `<div class="no-mods" style="padding:8px;">We checked ${leagueLabel} but there are no merchant trades yet.<br/><br/>` +
+          `This is normal at league start or right after logging in. We'll keep auto-refreshing in the background and update as soon as data appears.` +
+          `<br/><br/>If you play in a different league (Softcore vs Hardcore), open <strong>Settings</strong> (gear icon) and switch it there.</div>`;
+        showInfoBadge(`No trades returned for ${leagueLabel} yet. We'll keep checking automatically.`);
+      } else {
+        (histList as HTMLElement).innerHTML =
+          `<div class="no-mods" style="padding:8px;">No history returned for ${leagueLabel}.<br/><br/>` +
+          `This usually means the selected league doesn't match your character (Softcore vs Hardcore).` +
+          `<br/><br/>Pick the correct league in <strong>Settings</strong> (top-left gear icon) to keep data accurate.</div>`;
+        showInfoBadge(`No trades found for ${leagueLabel}. Double-check your league choice; we'll keep auto-refreshing just in case.`);
+        showLeaguePrompt('empty-data', { previousLeague: historyState.league });
+      }
+
+      try { updateHistoryRefreshButton(); } catch {}
       return;
     }
     
@@ -552,10 +572,8 @@ export async function refreshHistoryIfAllowed(
   renderListCallback: (renderDetailCallback: (idx: number) => void) => void,
   renderDetailCallback: (idx: number) => void
 ): Promise<boolean | void> {
-  if (isPoe1Mode()) {
-    console.log('[History] refreshHistoryIfAllowed skipped in PoE1 mode', { origin });
-    return false;
-  }
+  // PoE1 merchant history is now enabled - removed PoE1 mode check
+  
   try {
     if (typeof renderListCallback !== 'function' || typeof renderDetailCallback !== 'function') {
       console.warn('[History] refreshHistoryIfAllowed invoked with bad callbacks', { origin, renderListCallbackType: typeof renderListCallback, renderDetailCallbackType: typeof renderDetailCallback });

@@ -175,7 +175,7 @@ export const DEFAULT_FEATURES: FeatureConfig = {
 
 /**
  * Minimal feature configuration (modifiers and merchant history only).
- * Note: merchant is true but will be disabled in PoE1 mode until PoE1 merchant is implemented.
+ * Merchant history is now enabled for both PoE1 and PoE2.
  */
 export const MINIMAL_FEATURES: FeatureConfig = {
   modifiers: true,

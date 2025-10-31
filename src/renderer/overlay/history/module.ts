@@ -64,12 +64,12 @@ import { updateSessionUI, attachLoginButtonLogic } from './sessionManager';
 import { attachRefreshButtonLogic } from './refreshButton';
 import { initializeHistoryLeagueControls, initializeHistoryLeagueState, formatLeagueLabel } from './historyLeague';
 
+/**
+ * Check if history is disabled for PoE1.
+ * Now enabled as of Keepers of the Flame league launch.
+ */
 function isHistoryDisabledForPoe1(): boolean {
-  try {
-    return ((window as any).__overlayVersionMode || 'poe2') === 'poe1';
-  } catch {
-    return false;
-  }
+  return false; // PoE1 merchant history is now enabled!
 }
 
 const renderListWithDetail = (renderDetailCallback: (idx: number) => void) => renderHistoryList(renderDetailCallback);

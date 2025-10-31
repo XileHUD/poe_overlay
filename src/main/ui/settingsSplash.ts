@@ -29,7 +29,7 @@ const POE2_LEAGUES: LeagueOption[] = [
 
 const POE1_LEAGUES: LeagueOption[] = [
   { value: 'Keepers of the Flame', label: 'Keepers of the Flame (Softcore)' },
-  { value: 'HC Keepers of the Flame', label: 'HC Keepers of the Flame' },
+  { value: 'Hardcore Keepers of the Flame', label: 'Hardcore Keepers of the Flame' },
   { value: 'Standard', label: 'Standard' },
   { value: 'Hardcore', label: 'Hardcore' }
 ];

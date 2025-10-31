@@ -74,14 +74,7 @@
             body.overlay-poe1-mode #noFeaturesPlaceholder .no-features-title {
                 color: var(--accent-orange);
             }
-            body.overlay-poe1-mode #tabHistory {
-                pointer-events: none;
-                opacity: 0.45;
-            }
-            body.overlay-poe1-mode #historyRefreshBtn {
-                opacity: 0.45;
-                cursor: not-allowed;
-            }
+            /* PoE1 merchant history is now enabled - removed disable CSS */
             /* PoE1/PoE2 menu item visibility */
             .poe1-only { display: none !important; }
             .poe2-only { display: flex !important; }
@@ -554,6 +547,13 @@
     window.__overlayVersionMode = overlayVersionMode;
     let pendingOverlayVersionMode = null;
     let overlayHasAnyFeatures = true;
+    const featureAvailability = {
+        modifiers: true,
+        crafting: true,
+        character: true,
+        history: true,
+        tools: true
+    };
 
     function showUpdateBadge(info) {
         if (!updateBadgeBtn) return;
@@ -621,34 +621,38 @@
         overlayVersionMode = normalized;
         window.__overlayVersionMode = normalized;
         try { window.OverlayModifiers?.setOverlayVersionMode?.(normalized); } catch {}
-        
+
         // Render version-specific domain toggles
         renderDomainToggles();
-        
-        // PoE1 mode now has modifiers feature enabled
-        if (normalized === 'poe1') {
-            setHistoryControlsDisabled(true);
-            try { window.OverlayHistory?.stopHistoryAutoRefresh?.(); } catch {}
-            document.body.classList.add('overlay-poe1-mode');
-            document.body.classList.remove('overlay-no-features');
-            setHeader('Path of Exile 1', 'Modifiers');
-            const whittlingInfo = document.getElementById('whittlingInfo');
-            if (whittlingInfo) {
-                whittlingInfo.innerHTML = '';
-                whittlingInfo.setAttribute('style', 'display:none; margin-right:6px; -webkit-app-region: no-drag;');
-            }
-            return;
+
+        const isPoe1 = normalized === 'poe1';
+        document.body.classList.toggle('overlay-poe1-mode', isPoe1);
+
+        const whittlingInfo = document.getElementById('whittlingInfo');
+        if (isPoe1 && whittlingInfo) {
+            whittlingInfo.innerHTML = '';
+            whittlingInfo.setAttribute('style', 'display:none; margin-right:6px; -webkit-app-region: no-drag;');
         }
-        
-        setHistoryControlsDisabled(false);
-        try { window.OverlayHistory?.ensureHistoryAutoRefresh?.(); } catch {}
-        document.body.classList.remove('overlay-poe1-mode');
+
+        const historyEnabled = !!featureAvailability.history;
+        setHistoryControlsDisabled(!historyEnabled);
+        try {
+            if (historyEnabled) {
+                window.OverlayHistory?.ensureHistoryAutoRefresh?.();
+            } else {
+                window.OverlayHistory?.stopHistoryAutoRefresh?.();
+            }
+        } catch {}
+
         if (!overlayHasAnyFeatures) {
             document.body.classList.add('overlay-no-features');
             updateNoFeaturesPlaceholder('Overlay features disabled', 'Enable overlay features from Settings to re-enable the Modifier, Crafting, or History views.');
         } else {
             document.body.classList.remove('overlay-no-features');
             updateNoFeaturesPlaceholder('', '');
+            if (isPoe1) {
+                setHeader('Path of Exile 1', 'Modifiers');
+            }
         }
     }
 
@@ -860,13 +864,6 @@
     }
 
     // Track which high-level views are allowed by the current feature configuration
-    const featureAvailability = {
-        modifiers: true,
-        crafting: true,
-        character: true,
-        history: true,
-        tools: true
-    };
 
     function setFeatureAvailability(flags) {
         if (!flags) return;
@@ -2517,15 +2514,12 @@
                         historyEnabled = false;
                     } else {
                         historyEnabled = true;
-                        // In PoE1 mode, keep tab visible but greyed out
-                        if (overlayVersionMode === 'poe1') {
-                            const histTab = document.getElementById('tabHistory');
-                            if (histTab) {
-                                histTab.style.opacity = '0.45';
-                                histTab.style.cursor = 'not-allowed';
-                                console.log('[FeatureFilter] Merchant History tab greyed out for PoE1 mode');
-                            }
+                        const histTab = document.getElementById('tabHistory');
+                        if (histTab) {
+                            histTab.style.opacity = '';
+                            histTab.style.cursor = '';
                         }
+                        console.log('[FeatureFilter] Merchant History enabled for', overlayVersionMode);
                     }
                     
                     // Filter Crafting submenu items (PoE2 and PoE1)
@@ -3654,14 +3648,15 @@
             // History tab toggle: show history container and hide modifiers/crafting
             if (tabHist) {
                 tabHist.addEventListener('click', () => {
-                    if (overlayVersionMode === 'poe1') {
-                        console.log('Merchant tab is disabled in PoE1 mode');
+                    if (!featureAvailability.history) {
+                        console.log('[History] Merchant tab is disabled because history feature is unavailable');
                         return;
                     }
                     setActiveTab('tabHistory');
                     closeAllMenus();
                     // Use strong view gate
                     setView('history');
+                    markHistoryAction();
                     // ensure history UI readiness
                     try { updateSessionUI(); } catch {}
                     try { if (typeof refreshHistoryIfAllowed === 'function') refreshHistoryIfAllowed('nav'); } catch {}

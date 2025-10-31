@@ -418,7 +418,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 let leagueIsValid = false;
                 if (trimmedLeague) {
                     if (this.overlayVersion === 'poe1') {
-                        leagueIsValid = /Keepers of the Flame|HC Keepers of the Flame|Standard|Hardcore/i.test(trimmedLeague);
+                        leagueIsValid = /Keepers of the Flame|Hardcore Keepers of the Flame|Standard|Hardcore/i.test(trimmedLeague);
                     } else {
                         leagueIsValid = /Rise of the Abyssal|HC Rise of the Abyssal|Standard|Hardcore/i.test(trimmedLeague);
                     }
@@ -3445,22 +3445,6 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         });
 
         ipcMain.handle('poe-fetch-history', async (_e, league: string) => {
-            // Disable merchant history fetching for PoE1 until league launches
-            if (this.overlayVersion === 'poe1') {
-                return {
-                    ok: false,
-                    status: 503,
-                    data: null,
-                    headers: {},
-                    error: 'PoE1 merchant history is currently disabled. The feature will be enabled when Keepers of the Flame league launches.',
-                    rateLimited: false,
-                    retryAfter: null,
-                    accountName: this.poeAccountName,
-                    lastFetchAt: this.lastHistoryFetchAt,
-                    league: this.merchantHistoryLeague
-                };
-            }
-            
             // Rate limiter handles ALL timing - no manual interval checks
             const targetLeague = (typeof league === 'string' && league.trim()) ? league.trim() : this.merchantHistoryLeague;
             const { ok, status, data, headers, error, rateLimited, retryAfter } = await this.fetchPoeHistory(targetLeague);

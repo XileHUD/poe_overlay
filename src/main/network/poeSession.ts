@@ -27,10 +27,52 @@ export class PoeSessionHelper {
     } catch { return false; }
   }
 
+  /**
+   * Maps display league names to API league names.
+   * PoE1 API uses shorter league names (e.g., "Keepers" instead of "Keepers of the Flame")
+   */
+  private mapLeagueNameForApi(league: string, overlayVersion: OverlayVersion): string {
+    if (overlayVersion !== 'poe1') {
+      // PoE2 leagues use full names in API
+      return league;
+    }
+
+    // PoE1 league name mapping (display name -> API name)
+    const poe1LeagueMap: Record<string, string> = {
+      'Keepers of the Flame': 'Keepers',
+      'Hardcore Keepers of the Flame': 'Hardcore Keepers',
+      'HC Keepers of the Flame': 'Hardcore Keepers',
+      'Standard': 'Standard',
+      'Hardcore': 'Hardcore'
+    };
+
+    return poe1LeagueMap[league] || league;
+  }
+
   async fetchHistory(league: string): Promise<PoeHistoryResponse> {
     const overlayVersion = this.safeOverlayVersion();
     const tradeRoot = overlayVersion === 'poe1' ? 'trade' : 'trade2';
-    const url = `https://www.pathofexile.com/api/${tradeRoot}/history/${encodeURIComponent(league)}`;
+    const apiLeagueName = this.mapLeagueNameForApi(league, overlayVersion);
+    const url = `https://www.pathofexile.com/api/${tradeRoot}/history/${encodeURIComponent(apiLeagueName)}`;
+    
+    console.log(`[PoeSession] Fetching history for ${overlayVersion} league: "${league}" -> API: "${apiLeagueName}"`);
+    
+    // Pre-flight check: ensure we have budget before making the request
+    const budget = rateLimiter.canRequest();
+    if (!budget.canRequest) {
+      console.warn('[PoeSession] Rate limit check BEFORE request - blocked:', budget.reason);
+      // Return synthetic rate-limited response to preserve existing headers for display
+      const savedHeaders = rateLimiter.getCurrentHeaders();
+      return {
+        ok: false,
+        status: 429,
+        error: budget.reason || 'Rate limited (pre-flight check)',
+        rateLimited: true,
+        retryAfter: budget.retryAfter,
+        headers: savedHeaders || {}
+      };
+    }
+    
     try {
       const { statusCode, body, headers } = await httpGetRaw(url, {
         Accept: 'application/json',

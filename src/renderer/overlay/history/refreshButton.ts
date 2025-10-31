@@ -148,20 +148,7 @@ export function updateRefreshButtonUI(
   const btn = document.getElementById('historyRefreshBtn') as HTMLButtonElement | null;
   if (!btn) return;
 
-  if (isPoe1Mode()) {
-    btn.disabled = true;
-    btn.style.opacity = '0.45';
-    btn.style.cursor = 'not-allowed';
-    btn.title = 'Merchant history is unavailable in Path of Exile 1 mode';
-    (btn as any)._retryAfter = 0;
-    try {
-      const badge = document.getElementById('historyLastRefresh');
-      if (badge) {
-        (badge as HTMLElement).style.display = 'none';
-      }
-    } catch {}
-    return;
-  }
+  // PoE1 merchant history is now enabled - removed PoE1 mode check
 
   // Don't update tooltip while hovering to prevent flicker
   if ((btn as any).matches && (btn as any).matches(':hover')) {
@@ -332,10 +319,7 @@ export function attachRefreshButtonLogic(
   (btn as any)._refreshWired = true;
 
   btn.addEventListener('click', async () => {
-    if (isPoe1Mode()) {
-      console.log('[Manual refresh] Ignored in PoE1 mode');
-      return;
-    }
+    // PoE1 merchant history is now enabled - removed PoE1 mode check
 
     // Show confirmation dialog
     const confirmed = await confirmManualRefresh();
