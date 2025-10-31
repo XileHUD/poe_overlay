@@ -2145,6 +2145,10 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
         this.overlayWindow.hide();
         this.isOverlayVisible = false;
     console.log('[Overlay] hideOverlay -> window hidden');
+        
+        // Clear last processed item to allow re-processing the same item after overlay is closed
+        this.lastProcessedItemText = '';
+        
         // Do not clear clipboard if a capture is in progress
         const captureInProgress = this.shortcutAwaitingCapture || Date.now() <= this.armedCaptureUntil;
         console.log('[hideOverlay] captureInProgress=', captureInProgress, 'shortcutAwaitingCapture=', this.shortcutAwaitingCapture, 'armedCaptureUntil=', this.armedCaptureUntil, 'now=', Date.now());
