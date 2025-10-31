@@ -392,6 +392,16 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
               });
               checkResolve();
             });
+            
+            autoUpdater.once('update-downloaded', (info: any) => {
+              event.reply('settings-update-result', {
+                available: true,
+                downloaded: true,
+                version: info.version,
+                message: `Update ready to install: v${normalizeVersion(info.version) ?? info.version}`
+              });
+              event.reply('settings-update-downloaded', info);
+            });
 
             autoUpdater.once('error', async (err: any) => {
               clearTimeout(timeoutId);
@@ -462,6 +472,18 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
           error: true,
           message: 'Failed to check for updates. Please try again later.' 
         });
+      }
+    });
+
+    // Handle install update now
+    ipcMain.on('settings-install-update-now', () => {
+      try {
+        if (autoUpdater) {
+          console.log('[Settings] User requested immediate update installation');
+          autoUpdater.quitAndInstall(false, true);
+        }
+      } catch (error) {
+        console.error('[Settings] Install update failed:', error);
       }
     });
 
@@ -1430,6 +1452,10 @@ function buildSettingsSplashHtml(
         </button>
       </div>
       <button class="btn btn-orange" id="downloadUpdateBtn" style="display: none; margin-top: 10px;">Download Update</button>
+      <button class="btn btn-green" id="installNowBtn" style="display: none; margin-top: 10px;">
+        <span style="font-weight: bold;">🔄 Install Update Now</span>
+        <span style="font-size: 11px; display: block; margin-top: 3px;">App will restart immediately</span>
+      </button>
       <div id="updateStatus" class="update-status"></div>
     </div>
     
@@ -1804,18 +1830,27 @@ function buildSettingsSplashHtml(
         // Update latest version display if available
         const latestVersionDisplay = document.getElementById('latestVersionDisplay');
         const downloadUpdateBtn = document.getElementById('downloadUpdateBtn');
+        const installNowBtn = document.getElementById('installNowBtn');
         
         if (result.version && latestVersionDisplay) {
           latestVersionDisplay.textContent = 'Latest: v' + result.version;
           latestVersionDisplay.style.color = result.available ? 'var(--accent-orange)' : 'var(--accent-green)';
         }
         
-        // Show/hide download button
+        // Show/hide buttons based on update state
         if (downloadUpdateBtn) {
-          if (result.available) {
+          if (result.available && !result.downloaded) {
             downloadUpdateBtn.style.display = 'block';
           } else {
             downloadUpdateBtn.style.display = 'none';
+          }
+        }
+        
+        if (installNowBtn) {
+          if (result.downloaded) {
+            installNowBtn.style.display = 'block';
+          } else {
+            installNowBtn.style.display = 'none';
           }
         }
         
@@ -1831,10 +1866,35 @@ function buildSettingsSplashHtml(
         }
       });
       
+      // Listen for update downloaded notification
+      ipcRenderer.on('settings-update-downloaded', (event, info) => {
+        const updateStatus = document.getElementById('updateStatus');
+        const installNowBtn = document.getElementById('installNowBtn');
+        const downloadUpdateBtn = document.getElementById('downloadUpdateBtn');
+        
+        if (updateStatus) {
+          updateStatus.className = 'update-status success';
+          updateStatus.textContent = 'Update downloaded! Click "Install Update Now" to restart and update.';
+        }
+        
+        if (installNowBtn) {
+          installNowBtn.style.display = 'block';
+        }
+        
+        if (downloadUpdateBtn) {
+          downloadUpdateBtn.style.display = 'none';
+        }
+      });
+      
       // Download update button
       document.getElementById('downloadUpdateBtn').addEventListener('click', () => {
         const { shell } = require('electron');
         shell.openExternal('https://github.com/XileHUD/poe_overlay/releases/latest');
+      });
+      
+      // Install update now button
+      document.getElementById('installNowBtn').addEventListener('click', () => {
+        ipcRenderer.send('settings-install-update-now');
       });
       
       // Feature configuration

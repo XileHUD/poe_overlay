@@ -173,4 +173,47 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     enableNumberScrollWheel();
+
+    // Auto-update notifications for main overlay
+    try {
+        const ipcRenderer = (window as any).require?.('electron')?.ipcRenderer;
+        if (ipcRenderer) {
+            ipcRenderer.on('auto-update-downloading', (_event: any, info: any) => {
+                console.log('[Overlay] Auto-update downloading:', info);
+                const notif = document.createElement('div');
+                notif.style.cssText = 'position:fixed;top:10px;right:10px;background:rgba(0,120,215,0.95);color:#fff;padding:8px 12px;border-radius:4px;font-size:12px;z-index:999999;box-shadow:0 2px 8px rgba(0,0,0,0.3);';
+                notif.textContent = 'Downloading update: ' + info.message;
+                document.body.appendChild(notif);
+                setTimeout(() => { try { notif.remove(); } catch {} }, 5000);
+            });
+
+            ipcRenderer.on('auto-update-progress', (_event: any, info: any) => {
+                console.log('[Overlay] Auto-update progress:', info.percent);
+                let progressNotif = document.getElementById('auto-update-progress-notif');
+                if (!progressNotif) {
+                    progressNotif = document.createElement('div');
+                    progressNotif.id = 'auto-update-progress-notif';
+                    progressNotif.style.cssText = 'position:fixed;top:10px;right:10px;background:rgba(0,120,215,0.95);color:#fff;padding:8px 12px;border-radius:4px;font-size:12px;z-index:999999;box-shadow:0 2px 8px rgba(0,0,0,0.3);';
+                    document.body.appendChild(progressNotif);
+                }
+                progressNotif.textContent = info.message;
+                if (info.percent === 100) {
+                    setTimeout(() => { try { progressNotif?.remove(); } catch {} }, 3000);
+                }
+            });
+
+            ipcRenderer.on('auto-update-ready', (_event: any, info: any) => {
+                console.log('[Overlay] Auto-update ready:', info);
+                const readyNotif = document.createElement('div');
+                readyNotif.style.cssText = 'position:fixed;top:10px;right:10px;background:rgba(16,185,129,0.95);color:#fff;padding:8px 12px;border-radius:4px;font-size:12px;z-index:999999;box-shadow:0 2px 8px rgba(0,0,0,0.3);cursor:pointer;';
+                readyNotif.textContent = 'Update ' + info.version + ' ready! Click to install now or it installs on quit.';
+                readyNotif.onclick = () => {
+                    try { ipcRenderer.send('settings-install-update-now'); } catch {}
+                };
+                document.body.appendChild(readyNotif);
+            });
+        }
+    } catch (err) {
+        console.warn('[Overlay] Failed to register auto-update listeners:', err);
+    }
 });

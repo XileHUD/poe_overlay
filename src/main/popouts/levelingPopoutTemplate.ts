@@ -558,8 +558,8 @@ function cleanSkillSetTitle(title) {
   const levelMatch = title.match(/Level\\s+(\\d+(?:-\\d+)?)/i);
   if (levelMatch) return 'Lvl ' + levelMatch[1];
   
-  // Only truncate if there's no space in the title (single long word)
-  if (!title.includes(' ')) {
+  // Only truncate if there's no space in the title AND it's longer than 8 characters
+  if (!title.includes(' ') && title.length > 8) {
     return title.substring(0, 5) + '...';
   }
   
@@ -3096,6 +3096,50 @@ try {
         try { window.open(UPDATE_RELEASE_URL, '_blank', 'noopener'); } catch {}
       }
     });
+  }
+
+  // Listen for auto-update ready notification from electron-updater
+  try {
+    ipcRenderer.on('auto-update-downloading', (_event, info) => {
+      console.log('[Leveling] Auto-update downloading:', info);
+      // Show small notification
+      const notif = document.createElement('div');
+      notif.style.cssText = 'position:fixed;top:10px;right:10px;background:rgba(0,120,215,0.95);color:#fff;padding:8px 12px;border-radius:4px;font-size:12px;z-index:999999;box-shadow:0 2px 8px rgba(0,0,0,0.3);';
+      notif.textContent = 'Downloading update: ' + info.message;
+      document.body.appendChild(notif);
+      setTimeout(() => { try { notif.remove(); } catch {} }, 5000);
+    });
+
+    ipcRenderer.on('auto-update-progress', (_event, info) => {
+      console.log('[Leveling] Auto-update progress:', info.percent);
+      // Update or create progress notification
+      let progressNotif = document.getElementById('auto-update-progress-notif');
+      if (!progressNotif) {
+        progressNotif = document.createElement('div');
+        progressNotif.id = 'auto-update-progress-notif';
+        progressNotif.style.cssText = 'position:fixed;top:10px;right:10px;background:rgba(0,120,215,0.95);color:#fff;padding:8px 12px;border-radius:4px;font-size:12px;z-index:999999;box-shadow:0 2px 8px rgba(0,0,0,0.3);';
+        document.body.appendChild(progressNotif);
+      }
+      progressNotif.textContent = info.message;
+      if (info.percent === 100) {
+        setTimeout(() => { try { progressNotif?.remove(); } catch {} }, 3000);
+      }
+    });
+
+    ipcRenderer.on('auto-update-ready', (_event, info) => {
+      console.log('[Leveling] Auto-update ready:', info);
+      showUpdateBadge(info);
+      // Show persistent notification
+      const readyNotif = document.createElement('div');
+      readyNotif.style.cssText = 'position:fixed;top:10px;right:10px;background:rgba(16,185,129,0.95);color:#fff;padding:8px 12px;border-radius:4px;font-size:12px;z-index:999999;box-shadow:0 2px 8px rgba(0,0,0,0.3);cursor:pointer;';
+      readyNotif.textContent = 'Update ' + info.version + ' ready! Click to install now or it installs on quit.';
+      readyNotif.onclick = () => {
+        try { ipcRenderer.send('settings-install-update-now'); } catch {}
+      };
+      document.body.appendChild(readyNotif);
+    });
+  } catch (err) {
+    console.warn('[Leveling] Failed to register auto-update listener:', err);
   }
 
   // Delay the update check slightly after initial render

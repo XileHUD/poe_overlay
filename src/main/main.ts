@@ -335,6 +335,13 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
 
     constructor() {
         app.whenReady().then(async () => {
+            // Set app user model ID for Windows tray balloons
+            try {
+                if (process.platform === 'win32') {
+                    app.setAppUserModelId('com.xilehud.overlay');
+                }
+            } catch {}
+            
             this.showSplash('Initializing application...');
             
             // Initialize settings first
@@ -637,21 +644,29 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 if (autoUpdater) {
                     // Configure updater
                     autoUpdater.autoDownload = true;
+                    try { (autoUpdater as any).allowPrerelease = true; } catch {}
                     autoUpdater.autoInstallOnAppQuit = true;
                     autoUpdater.logger = console;
-                    
-                    // Event handlers
                     autoUpdater.on('checking-for-update', () => {
                         console.log('[AutoUpdater] Checking for updates...');
                     });
                     
                     autoUpdater.on('update-available', (info: any) => {
                         console.log('[AutoUpdater] Update available:', info.version);
-                        try { 
-                            this.tray?.displayBalloon?.({ 
-                                title: 'XileHUD Update Available', 
-                                content: `Version ${info.version} is downloading...` 
-                            }); 
+                        // Send notification to overlay and leveling windows
+                        try {
+                            const updateAvailableInfo = {
+                                available: true,
+                                version: info.version,
+                                message: `Update ${info.version} is downloading...`
+                            };
+                            this.overlayWindow?.webContents.send('auto-update-downloading', updateAvailableInfo);
+                            if (this.levelingWindow) {
+                                const levelingWin = (this.levelingWindow as any).window;
+                                if (levelingWin && !levelingWin.isDestroyed()) {
+                                    levelingWin.webContents.send('auto-update-downloading', updateAvailableInfo);
+                                }
+                            }
                         } catch {}
                     });
                     
@@ -662,6 +677,20 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                     autoUpdater.on('download-progress', (progress: any) => {
                         const percent = Math.round(progress.percent);
                         console.log(`[AutoUpdater] Download progress: ${percent}%`);
+                        // Send progress to overlay and leveling windows
+                        try {
+                            const progressInfo = {
+                                percent: percent,
+                                message: `Downloading update: ${percent}%`
+                            };
+                            this.overlayWindow?.webContents.send('auto-update-progress', progressInfo);
+                            if (this.levelingWindow) {
+                                const levelingWin = (this.levelingWindow as any).window;
+                                if (levelingWin && !levelingWin.isDestroyed()) {
+                                    levelingWin.webContents.send('auto-update-progress', progressInfo);
+                                }
+                            }
+                        } catch {}
                     });
                     
                     autoUpdater.on('update-downloaded', (info: any) => {
@@ -672,6 +701,37 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                                 content: 'Version ' + info.version + ' will install when you close the overlay.\n\nYour settings and history will be preserved.' 
                             }); 
                         } catch {}
+                        
+                        // Send update notification to all windows
+                        try {
+                            const updateInfo = {
+                                available: true,
+                                version: info.version,
+                                message: `Update downloaded! Version ${info.version} will install when you close XileHUD.`
+                            };
+                            
+                            // Send to overlay window
+                            this.overlayWindow?.webContents.send('auto-update-ready', updateInfo);
+                            
+                            // Send to leveling window
+                            if (this.levelingWindow) {
+                                const levelingWin = (this.levelingWindow as any).window;
+                                if (levelingWin && !levelingWin.isDestroyed()) {
+                                    levelingWin.webContents.send('auto-update-ready', updateInfo);
+                                }
+                            }
+                            
+                            // Send to all other windows (including settings)
+                            BrowserWindow.getAllWindows().forEach(win => {
+                                if (!win.isDestroyed()) {
+                                    try {
+                                        win.webContents.send('settings-update-downloaded', info);
+                                    } catch {}
+                                }
+                            });
+                        } catch (err) {
+                            console.error('[AutoUpdater] Failed to send update notification:', err);
+                        }
                     });
                     
                     autoUpdater.on('error', (err: any) => {
