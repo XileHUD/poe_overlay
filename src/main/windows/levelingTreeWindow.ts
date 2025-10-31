@@ -81,7 +81,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       font-family: 'Fontin', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: transparent;
       color: #c8c8c8;
-      overflow: visible !important;
+      overflow: hidden;
       width: 100vw;
       height: 100vh;
       display: flex;
@@ -100,7 +100,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       height: 100%;
       display: flex;
       flex-direction: column;
-      overflow: visible !important;
+      overflow: hidden;
     }
 
     #header {
@@ -260,7 +260,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
     #viewport-container {
       flex: 1;
       position: relative;
-      overflow: visible;
+      overflow: hidden;
       background: #0a0a0a;
     }
 
