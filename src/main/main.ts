@@ -642,8 +642,23 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             // Auto-update configuration
             try {
                 if (autoUpdater) {
+                    // Check user's auto-update preference from either PoE1 or PoE2 leveling settings
+                    let autoUpdateEnabled = true; // Default to enabled
+                    try {
+                        const poe1Settings = this.settingsService.get('levelingWindowPoe1') || {};
+                        const poe2Settings = this.settingsService.get('levelingWindowPoe2') || {};
+                        // Use whichever setting is defined, prioritizing current overlay version
+                        if (this.overlayVersion === 'poe1') {
+                            autoUpdateEnabled = poe1Settings.autoUpdate ?? poe2Settings.autoUpdate ?? true;
+                        } else {
+                            autoUpdateEnabled = poe2Settings.autoUpdate ?? poe1Settings.autoUpdate ?? true;
+                        }
+                    } catch {}
+                    
+                    console.log('[AutoUpdater] Auto-update setting:', autoUpdateEnabled ? 'ENABLED' : 'DISABLED');
+                    
                     // Configure updater
-                    autoUpdater.autoDownload = true;
+                    autoUpdater.autoDownload = autoUpdateEnabled; // Only auto-download if user enabled it
                     try { (autoUpdater as any).allowPrerelease = true; } catch {}
                     autoUpdater.autoInstallOnAppQuit = true;
                     autoUpdater.logger = console;
@@ -653,6 +668,45 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                     
                     autoUpdater.on('update-available', (info: any) => {
                         console.log('[AutoUpdater] Update available:', info.version);
+                        
+                        if (!autoUpdateEnabled) {
+                            // User disabled auto-update, show notification instead
+                            console.log('[AutoUpdater] Auto-update disabled - notifying user to download manually');
+                            try {
+                                this.tray?.displayBalloon?.({
+                                    title: 'XileHUD Update Available',
+                                    content: `Version ${info.version} is available!\n\nAuto-update is disabled. Click here to open GitHub Releases, or enable auto-update in settings.`
+                                });
+                                
+                                // Set up one-time click handler to open GitHub releases
+                                const balloonClickHandler = () => {
+                                    shell.openExternal('https://github.com/XileHUD/poe_overlay/releases').catch(err => 
+                                        console.error('[AutoUpdater] Failed to open releases page:', err)
+                                    );
+                                    this.tray?.off('balloon-click', balloonClickHandler);
+                                };
+                                this.tray?.once('balloon-click', balloonClickHandler);
+                            } catch {}
+                            
+                            // Send notification to windows
+                            try {
+                                const updateNotification = {
+                                    available: true,
+                                    version: info.version,
+                                    autoUpdateDisabled: true,
+                                    message: `Update ${info.version} available - Auto-update disabled`
+                                };
+                                this.overlayWindow?.webContents.send('auto-update-manual-required', updateNotification);
+                                if (this.levelingWindow) {
+                                    const levelingWin = (this.levelingWindow as any).window;
+                                    if (levelingWin && !levelingWin.isDestroyed()) {
+                                        levelingWin.webContents.send('auto-update-manual-required', updateNotification);
+                                    }
+                                }
+                            } catch {}
+                            return;
+                        }
+                        
                         // Send notification to overlay and leveling windows
                         try {
                             const updateAvailableInfo = {

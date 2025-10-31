@@ -51,6 +51,7 @@ export interface UserSettings {
     position?: { x: number; y: number };
     size?: { width: number; height: number };
     wideMode?: boolean;
+    autoUpdate?: boolean; // Auto-update enabled/disabled (default: true)
     progress?: string[]; // Array of completed step IDs
     currentActIndex?: number; // Currently selected act (0-based index)
     actTimers?: Record<number, number>; // Completion time for each act: { 1: 123456, 2: 234567, ... }
@@ -119,6 +120,7 @@ export interface UserSettings {
     position?: { x: number; y: number };
     size?: { width: number; height: number };
     wideMode?: boolean;
+    autoUpdate?: boolean; // Auto-update enabled/disabled (default: true)
     progress?: string[]; // Array of completed step IDs
     currentActIndex?: number; // Currently selected act (0-based index)
     actTimers?: Record<number, number>; // Completion time for each act: { 1: 123456, 2: 234567, ... }

@@ -184,7 +184,7 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
 
   return new Promise((resolve) => {
     const { width, height } = screen.getPrimaryDisplay().workAreaSize;
-    const splashWidth = 960;
+    const splashWidth = 1100;
     const splashHeight = 640;
     let initialX = Math.round(width / 2 - splashWidth / 2);
     let initialY = Math.round(height / 2 - splashHeight / 2);
@@ -318,6 +318,20 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
   const merchantHistoryAutoFetch = settingsService.get('merchantHistoryAutoFetch') !== false; // default true
   const merchantHistoryRefreshInterval = settingsService.get('merchantHistoryRefreshInterval') || 0; // 0 = smart auto
   const myModsEnabled = settingsService.get('myModsEnabled') || false; // default false
+  
+  // Get auto-update preference from either PoE1 or PoE2 settings
+  let autoUpdateEnabled = true; // Default to enabled
+  try {
+    const poe1Settings = settingsService.get('levelingWindowPoe1') || {};
+    const poe2Settings = settingsService.get('levelingWindowPoe2') || {};
+    // Use whichever setting is defined, prioritizing current overlay version
+    if (overlayVersion === 'poe1') {
+      autoUpdateEnabled = (poe1Settings as any).autoUpdate ?? (poe2Settings as any).autoUpdate ?? true;
+    } else {
+      autoUpdateEnabled = (poe2Settings as any).autoUpdate ?? (poe1Settings as any).autoUpdate ?? true;
+    }
+  } catch {}
+  
   const appVersion = getAppVersion();
   const html = buildSettingsSplashHtml(
     currentHotkey, 
@@ -329,7 +343,8 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
     Number(merchantHistoryRefreshInterval),
     overlayVersion,
     displayLeagueOptions,
-    Boolean(myModsEnabled)
+    Boolean(myModsEnabled),
+    Boolean(autoUpdateEnabled)
   );
   window.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
 
@@ -613,6 +628,32 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
         console.error('Failed to save My Mods enabled setting:', error);
       }
     });
+    
+    // Handle auto-update toggle
+    ipcMain.on('settings-save-auto-update', (event, enabled: boolean) => {
+      try {
+        // Save to both PoE1 and PoE2 settings for consistency
+        const poe1Settings = settingsService.get('levelingWindowPoe1') || {};
+        const poe2Settings = settingsService.get('levelingWindowPoe2') || {};
+        
+        settingsService.set('levelingWindowPoe1', { ...poe1Settings, autoUpdate: enabled });
+        settingsService.set('levelingWindowPoe2', { ...poe2Settings, autoUpdate: enabled });
+        
+        console.log('[Settings] Auto-update setting saved:', enabled ? 'ENABLED' : 'DISABLED');
+        console.log('[Settings] NOTE: Restart required for auto-update changes to take effect');
+        
+        // Show confirmation to user
+        dialog.showMessageBox(window, {
+          type: 'info',
+          title: 'Auto-Update Setting Saved',
+          message: `Auto-update has been ${enabled ? 'enabled' : 'disabled'}.`,
+          detail: 'This change will take effect the next time you restart XileHUD.',
+          buttons: ['OK']
+        });
+      } catch (error) {
+        console.error('Failed to save auto-update setting:', error);
+      }
+    });
 
     window.on('closed', () => {
       // Clear the active settings window reference
@@ -631,6 +672,7 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       ipcMain.removeAllListeners('settings-save-league');
       ipcMain.removeAllListeners('settings-save-merchant-history-config');
       ipcMain.removeAllListeners('settings-save-my-mods-enabled');
+      ipcMain.removeAllListeners('settings-save-auto-update');
       resolve();
     });
   });
@@ -649,7 +691,8 @@ function buildSettingsSplashHtml(
   merchantHistoryRefreshInterval: number,
   overlayVersion: OverlayVersion,
   leagueOptions: LeagueOption[],
-  myModsEnabled: boolean
+  myModsEnabled: boolean,
+  autoUpdateEnabled: boolean
 ): string {
   const normalizedOverlayVersion: OverlayVersion = isOverlayVersion(overlayVersion) ? overlayVersion : 'poe2';
   const escapeHtml = (value: string): string =>
@@ -785,6 +828,10 @@ function buildSettingsSplashHtml(
       transition: all 0.2s ease;
       border-bottom: 2px solid transparent;
       margin-bottom: -2px;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     
     .tab-button:hover {
@@ -1438,6 +1485,23 @@ function buildSettingsSplashHtml(
       <div class="section-desc">Keep your overlay up-to-date with the latest features and fixes</div>
       <div class="setting-item">
         <div class="setting-label">
+          <span class="setting-label-text">Auto Update</span>
+          <span class="setting-label-desc">Automatically download and install updates</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="autoUpdateToggle" ${autoUpdateEnabled ? 'checked' : ''}>
+          <span class="switch-slider"></span>
+        </label>
+      </div>
+      <div style="padding: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: 6px; margin-bottom: 12px;">
+        <div style="font-size: 11px; line-height: 1.6; color: var(--text-secondary);">
+          <strong style="color: var(--text-primary);">When enabled:</strong> Updates download automatically in background and install when you close the app.<br>
+          <strong style="color: var(--text-primary);">When disabled:</strong> You'll be notified about updates but must download manually from 
+          <a href="#" id="githubReleasesLink" style="color: var(--accent-blue); text-decoration: none;">GitHub Releases</a>.
+        </div>
+      </div>
+      <div class="setting-item">
+        <div class="setting-label">
           <span class="setting-label-text">Current Version</span>
           <span class="setting-label-desc">v${appVersion}</span>
         </div>
@@ -1808,6 +1872,24 @@ function buildSettingsSplashHtml(
           ipcRenderer.send('settings-close');
         });
       });
+      
+      // Auto-update toggle
+      const autoUpdateToggle = document.getElementById('autoUpdateToggle');
+      if (autoUpdateToggle) {
+        autoUpdateToggle.addEventListener('change', (e) => {
+          const enabled = e.target.checked;
+          ipcRenderer.send('settings-save-auto-update', enabled);
+        });
+      }
+      
+      // GitHub releases link
+      const githubReleasesLink = document.getElementById('githubReleasesLink');
+      if (githubReleasesLink) {
+        githubReleasesLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          ipcRenderer.send('open-releases-page');
+        });
+      }
       
       // Check for updates
       const checkUpdatesBtn = document.getElementById('checkUpdatesBtn');
