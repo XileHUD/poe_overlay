@@ -2105,7 +2105,9 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
   if (result.settings) {
     if (result.settings.opacity !== undefined) state.opacity = result.settings.opacity;
     if (result.settings.fontSize !== undefined) state.fontSize = result.settings.fontSize;
+    // Handle both 'zoom' and 'zoomLevel' for backwards compatibility
     if (result.settings.zoom !== undefined) state.zoom = result.settings.zoom;
+    if (result.settings.zoomLevel !== undefined) state.zoom = result.settings.zoomLevel;
     if (result.settings.minimalMode !== undefined) state.minimalMode = result.settings.minimalMode;
     if (result.settings.mode !== undefined) state.mode = result.settings.mode;
     if (result.settings.visibleSteps !== undefined) state.visibleSteps = result.settings.visibleSteps;
