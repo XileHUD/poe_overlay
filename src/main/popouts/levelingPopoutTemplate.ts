@@ -63,7 +63,7 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     .window.minimal-mode .timer-row,
     .window.minimal-mode .minimal-controls{display:none!important;}
     .window.minimal-mode .footer{display:none!important;}
-    .window.minimal-mode .list{padding:76px 4px 4px 4px!important;pointer-events:auto!important;}
+    .window.minimal-mode .list{padding:52px 1px 1px 1px!important;pointer-events:auto!important;}
     .window.minimal-mode .list::-webkit-scrollbar{display:none!important;}
     .window.minimal-mode .list{scrollbar-width:none!important;-ms-overflow-style:none!important;}
     .window.minimal-mode .leveling-step,
@@ -106,11 +106,13 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     .window.ultra-minimal-mode .task-checkbox{display:none!important;}
     .window.ultra-minimal-mode .leveling-step{background:rgba(32,36,44,0.85)!important;border:1px solid rgba(74,158,255,0.15)!important;}
     .window.ultra-minimal-mode .leveling-step.current{background:rgba(50,54,64,0.9)!important;border-color:rgba(74,158,255,0.3)!important;}
-    .window.ultra-minimal-mode .leveling-group{background:rgba(32,36,44,0.85)!important;border:1px solid rgba(74,222,128,0.15)!important;}
-    .window.ultra-minimal-mode .leveling-group.current{background:rgba(40,50,44,0.9)!important;border-color:rgba(74,222,128,0.3)!important;}
-    .window.ultra-minimal-mode .list{padding:72px 4px 4px 4px!important;pointer-events:none!important;}
+    .window.ultra-minimal-mode .leveling-group{padding:8px;margin-bottom:4px;border-radius:3px;background:rgba(32,36,44,0.85)!important;border:1px solid rgba(74,222,128,0.15)!important;}
+    .window.ultra-minimal-mode .leveling-group.current{border-top-left-radius:0 !important;border-top-right-radius:0 !important;background:rgba(40,50,44,0.9)!important;border-color:rgba(74,222,128,0.3)!important;}
+    .window.ultra-minimal-mode .list{padding:48px 1px 0 0!important;pointer-events:none!important;}
+    .window.ultra-minimal-mode .zone-header{margin-bottom:5px;padding-bottom:5px;border:none}
     .window.ultra-minimal-mode .list::-webkit-scrollbar{display:none!important;}
     .window.ultra-minimal-mode .list{scrollbar-width:none!important;-ms-overflow-style:none!important;}
+    .window.ultra-minimal-mode .task-list{gap:4px;}
     .drag-handle{display:none;}
     .drag-handle-row{display:none;}
     .drag-handle-info{display:none;}
