@@ -1664,7 +1664,13 @@ function render() {
       // Store handlers for cleanup
       dragHandle._ultraMouseHandlers = { mouseEnterHandler, mouseLeaveHandler };
       
-      // Start with click-through enabled
+      // Start with click-through enabled, but with a small delay to ensure handlers are active
+      // This fixes the issue where dragging doesn't work on initial launch in ultra mode
+      setTimeout(() => {
+        ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
+      }, 100);
+    } else {
+      // Handlers already exist, just ensure click-through is enabled
       ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
     }
   } else {
