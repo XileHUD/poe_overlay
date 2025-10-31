@@ -12,7 +12,7 @@ import { nodeLookup326, nodeLookup327, nodeLookupPoe2 } from './treeLoader';  //
 
 /**
  * Sanitize string to prevent XSS attacks
- * Removes potentially dangerous characters and limits length
+ * Converts HTML entities for basic XSS protection
  */
 function sanitizeString(str: string | null | undefined, maxLength: number = 1000): string {
   if (!str) return '';
@@ -20,12 +20,13 @@ function sanitizeString(str: string | null | undefined, maxLength: number = 1000
   // Convert to string and limit length
   let sanitized = String(str).substring(0, maxLength);
   
-  // Remove control characters and potential script injection patterns
+  // Convert basic HTML entities to prevent XSS
   sanitized = sanitized
-    .replace(/[<>'"]/g, '') // Remove HTML/script chars
-    .replace(/javascript:/gi, '')
-    .replace(/on\w+=/gi, '')
-    .replace(/[\x00-\x1F\x7F]/g, ''); // Remove control characters
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
   
   return sanitized.trim();
 }

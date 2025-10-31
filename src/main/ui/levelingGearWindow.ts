@@ -267,7 +267,7 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
       font-family: 'Segoe UI', Roboto, Arial, sans-serif;
       background: var(--bg-primary);
       color: var(--text-primary);
-      overflow: hidden;
+      overflow: visible !important;
       user-select: none;
       -webkit-user-select: none;
       display: flex;
@@ -400,6 +400,8 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
       cursor: pointer;
       outline: none;
       -webkit-app-region: no-drag;
+      position: relative;
+      z-index: 10000;
     }
     
     .set-selector:hover {
@@ -410,6 +412,7 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
     .set-selector option {
       background: var(--bg-primary);
       color: var(--text-primary);
+      padding: 4px;
     }
     
     .set-title {

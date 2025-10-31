@@ -561,9 +561,21 @@ function escapeHtml(text: string): string {
     .replace(/'/g, '&#039;');
 }
 
+function decodeHtmlEntities(text: string): string {
+  return text
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#0?39;/g, "'");
+}
+
 function parsePobNotes(text: string): string {
-  // First escape HTML
-  let escaped = escapeHtml(text);
+  // First decode any HTML entities that might have been encoded during parsing
+  let decoded = decodeHtmlEntities(text);
+  
+  // Then escape HTML to prevent injection
+  let escaped = escapeHtml(decoded);
   
   // Parse PoB color codes
   // Format 1: ^xRRGGBB (6 hex digits)

@@ -7,6 +7,7 @@ import { BrowserWindow, ipcMain, screen } from 'electron';
 import type { SettingsService } from '../services/settingsService.js';
 import type { OverlayVersion } from '../../types/overlayVersion.js';
 import type { StoredPobBuild } from '../../shared/pob/types.js';
+import { registerOverlayWindow, unregisterOverlayWindow } from './windowZManager.js';
 
 interface PobInfoBarParams {
   settingsService: SettingsService;
@@ -68,6 +69,9 @@ export function openPobInfoBar(params: PobInfoBarParams): void {
 
   activePobInfoBar = window;
 
+  // Register with windowZManager for proper overlay behavior (prevents focus fighting)
+  registerOverlayWindow('pobInfoBar', window, pinned, false);
+
   // Build HTML
   const html = buildPobInfoBarHtml(pobBuild, currentAct, pinned);
   
@@ -95,7 +99,8 @@ export function openPobInfoBar(params: PobInfoBarParams): void {
   ipcMain.on('pob-info-bar-toggle-pinned', (event, isPinned) => {
     if (!window || window.isDestroyed()) return;
     
-    window.setAlwaysOnTop(isPinned);
+    // Update via windowZManager instead of directly
+    registerOverlayWindow('pobInfoBar', window, isPinned, false);
     
     // Save pinned state
     settingsService.update(settingsKey, (current: any) => ({
@@ -115,12 +120,14 @@ export function openPobInfoBar(params: PobInfoBarParams): void {
   });
 
   window.on('closed', () => {
+    unregisterOverlayWindow('pobInfoBar');
     activePobInfoBar = null;
   });
 }
 
 export function closePobInfoBar(): void {
   if (activePobInfoBar && !activePobInfoBar.isDestroyed()) {
+    unregisterOverlayWindow('pobInfoBar');
     activePobInfoBar.close();
     activePobInfoBar = null;
   }
@@ -250,6 +257,14 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number, pinne
       -webkit-app-region: no-drag;
     }
     .close-btn:hover { background: rgba(217, 83, 79, 0.2); border-color: rgba(217, 83, 79, 0.5); }
+    
+    .separator {
+      width: 1px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.15);
+      margin: 0 4px;
+      -webkit-app-region: no-drag;
+    }
   </style>
 </head>
 <body>
@@ -259,6 +274,8 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number, pinne
       <div class="class-details">Level ${level} • Act ${currentAct}</div>
     </div>
     <div class="button-group" id="buttonGroup">
+      <button class="pob-btn" onclick="toggleGuide()" title="Toggle leveling guide window">📋 Guide</button>
+      <div class="separator"></div>
       <button class="pob-btn" onclick="openGems()" title="View gem links for current act">💎 Gems</button>
       ${hasAnyTree ? '<button class="pob-btn" onclick="openTree()" title="View passive tree progression">🌳 Tree</button>' : ''}
       ${hasAnyGear ? '<button class="pob-btn" onclick="openGear()" title="View gear sets from PoB">⚔️ Gear</button>' : ''}
@@ -332,6 +349,8 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number, pinne
       const hasNotes = !!(build.notes && build.notes.trim().length > 0);
 
       const parts = [
+        '<button class="pob-btn" onclick="toggleGuide()" title="Toggle leveling guide window">📋 Guide</button>',
+        '<div class="separator"></div>',
         '<button class="pob-btn" onclick="openGems()" title="View gem links for current act">💎 Gems</button>'
       ];
       if (hasAnyTree) parts.push('<button class="pob-btn" onclick="openTree()" title="View passive tree progression">🌳 Tree</button>');
@@ -363,6 +382,7 @@ function buildPobInfoBarHtml(pobBuild: StoredPobBuild, currentAct: number, pinne
     function openTree() { ipcRenderer.send('open-pob-tree-window'); }
     function openGear() { ipcRenderer.send('open-pob-gear-window'); }
     function openNotes() { ipcRenderer.send('open-pob-notes-window'); }
+    function toggleGuide() { ipcRenderer.send('toggle-leveling-guide'); }
     function closeBar() { ipcRenderer.send('pob-info-bar-close'); }
     
     function togglePinned() {

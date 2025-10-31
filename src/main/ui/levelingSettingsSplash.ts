@@ -86,7 +86,8 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
   activeSettingsWindow = window;
 
   // Register for managed z-order and visibility
-  try { registerOverlayWindow('levelingSettings', window); } catch {}
+  // Allow focus for this window so text inputs work
+  try { registerOverlayWindow('levelingSettings', window, true, true); } catch {}
 
   // Save position and size when moved or resized
   let saveTimeout: NodeJS.Timeout | null = null;

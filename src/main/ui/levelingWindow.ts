@@ -1,7 +1,7 @@
 import { BrowserWindow, screen, ipcMain, globalShortcut } from 'electron';
 import { SettingsService, type CustomHotkey } from '../services/settingsService.js';
 import { buildLevelingPopoutHtml } from '../popouts/levelingPopoutTemplate.js';
-import { registerOverlayWindow, bringToFront } from './windowZManager.js';
+import { registerOverlayWindow, unregisterOverlayWindow, bringToFront } from './windowZManager.js';
 import { openLevelingSettingsSplash } from './levelingSettingsSplash.js';
 import { openPobInfoBar, closePobInfoBar, updatePobInfoBar, isPobInfoBarOpen } from './pobInfoBar.js';
 import { openLevelingGemsWindow, updateLevelingGemsWindow, updateLevelingGemsWindowBuild, updateLevelingGemsWindowCharacterLevel, closeLevelingGemsWindow, isGemsWindowOpen } from './levelingGemsWindow.js';
@@ -52,6 +52,10 @@ export class LevelingWindow {
   // Ultra-mode hover tracker
   private ultraHoverInterval: NodeJS.Timeout | null = null;
   private ultraHoverActive: boolean = false;
+  private ultraModeEnabled: boolean = false;
+  private lastIgnoreMouseState: boolean = false;
+  private setIgnoreMouseEventsListener?: (event: Electron.IpcMainEvent, ignore: boolean, options?: { forward: boolean }) => void;
+  private ultraModeChangeListener?: (event: Electron.IpcMainEvent, payload: { enabled: boolean }) => void;
 
   constructor(params: LevelingWindowParams) {
     this.settingsService = params.settingsService;
@@ -96,28 +100,72 @@ export class LevelingWindow {
   }
 
   show(): void {
+    // If window exists and is just hidden, show it
     if (this.window && !this.window.isDestroyed()) {
-      this.window.show();
+      if (!this.window.isVisible()) {
+        this.window.show();
+        // Always reset interactivity when re-showing; tracker will reassert if needed
+        this.applyIgnoreMouseEvents(false, 'show-existing');
+        try { bringToFront('leveling'); } catch {}
+      }
       return;
     }
     
+    // Create new window
     this.createWindow();
     this.startClientTxtWatcher();
     this.settingsService.update(this.getLevelingWindowKey(), (c) => ({ ...c, enabled: true }));
   }
 
-  hide(): void {
+  close(): void {
     if (this.window && !this.window.isDestroyed()) {
       this.savePosition();
+      this.saveSize();
+      // Clean up ultra hover tracker
+      this.stopUltraHoverTracker();
+      // Unregister from overlay manager
+      unregisterOverlayWindow('leveling');
+      // Stop client.txt watcher
+      this.stopClientTxtWatcher();
+      // Close window (this will trigger 'closed' event which cleans up remaining listeners)
       this.window.close();
       this.window = null;
     }
-    this.stopClientTxtWatcher();
     this.settingsService.update(this.getLevelingWindowKey(), (c) => ({ ...c, enabled: false }));
   }
 
+  // Keep hide() for backwards compatibility but make it call close()
+  hide(): void {
+    this.close();
+  }
+
+  private applyIgnoreMouseEvents(enabled: boolean, source: string, options?: { forward: boolean }): void {
+    if (!this.window || this.window.isDestroyed()) return;
+
+    if (enabled && !this.ultraModeEnabled) {
+      if (this.lastIgnoreMouseState) {
+        this.window.setIgnoreMouseEvents(false);
+        this.lastIgnoreMouseState = false;
+      }
+      console.log(`[LevelingWindow] Prevented clickthrough enable from ${source} (ultra mode inactive)`);
+      return;
+    }
+
+    if (this.lastIgnoreMouseState === enabled) {
+      return;
+    }
+
+    if (enabled) {
+      this.window.setIgnoreMouseEvents(true, options ?? { forward: true });
+    } else {
+      this.window.setIgnoreMouseEvents(false);
+    }
+    this.lastIgnoreMouseState = enabled;
+    console.log(`[LevelingWindow] setIgnoreMouseEvents(${enabled ? 'ENABLED' : 'DISABLED'}) via ${source} (ultraMode=${this.ultraModeEnabled}, trackerActive=${this.ultraHoverActive})`);
+  }
+
   toggle(): void {
-    this.isVisible() ? this.hide() : this.show();
+    this.isVisible() ? this.close() : this.show();
   }
 
   forceToPrimaryMonitor(): void {
@@ -252,26 +300,14 @@ export class LevelingWindow {
         }
       });
 
-      // Set higher z-order (platform-tuned)
-      console.log(`[LevelingWindow] Setting z-order (platform: ${process.platform})...`);
-      try {
-        if (process.platform === 'win32') {
-          this.window.setAlwaysOnTop(true, 'screen-saver');
-        } else {
-          this.window.setAlwaysOnTop(true, 'pop-up-menu');
-        }
-        console.log(`[LevelingWindow] ✓ Z-order set successfully`);
-      } catch (e) {
-        console.warn('[LevelingWindow] ⚠ Failed to set z-order:', e);
-      }
-
-      this.window.setIgnoreMouseEvents(false);
+  this.applyIgnoreMouseEvents(false, 'createWindow-init');
 
       // Register with overlay z-order manager for consistent behavior
+      // This will handle setAlwaysOnTop and setFocusable for us
       console.log(`[LevelingWindow] Registering window with overlay z-order manager...`);
       try { 
-        registerOverlayWindow('leveling', this.window);
-        console.log(`[LevelingWindow] ✓ Registered with overlay manager`);
+        registerOverlayWindow('leveling', this.window, true, false);
+        console.log(`[LevelingWindow] ✓ Registered with overlay manager (pinned, no focus)`);
       } catch (e) {
         console.warn(`[LevelingWindow] ⚠ Failed to register with overlay manager:`, e);
       }
@@ -307,39 +343,26 @@ export class LevelingWindow {
 
       this.window.on('closed', () => {
         console.log(`[LevelingWindow] Window 'closed' event fired`);
+        // Clean up everything
+        unregisterOverlayWindow('leveling');
         this.stopClientTxtWatcher();
         this.stopUltraHoverTracker();
+        
+        // Remove IPC listeners
+        if (this.setIgnoreMouseEventsListener) {
+          ipcMain.removeListener('set-ignore-mouse-events', this.setIgnoreMouseEventsListener);
+          this.setIgnoreMouseEventsListener = undefined;
+        }
+        if (this.ultraModeChangeListener) {
+          ipcMain.removeListener('ultra-mode-change', this.ultraModeChangeListener);
+          this.ultraModeChangeListener = undefined;
+        }
+        
+        // Reset state
+        this.ultraModeEnabled = false;
+        this.lastIgnoreMouseState = false;
         this.window = null;
       });
-
-      // Extra z-order protection: on blur (e.g. user clicks the game), aggressively
-      // re-assert always-on-top and moveTop for this leveling window. This helps
-      // when minimal/ultra modes interact oddly with some fullscreen/borderless games
-      // where the OS can demote our window despite setAlwaysOnTop.
-      try {
-        this.window.on('blur', () => {
-          if (!this.window || this.window.isDestroyed() || !this.window.isVisible()) return;
-
-          // Fire a few nudges over time to try and regain topmost state.
-          const nudge = () => {
-            try {
-              // Reassert high-level topmost
-              this.window?.setAlwaysOnTop(true, 'screen-saver', 1);
-              // If moveTop is available (native window helper), call it
-              if (typeof (this.window as any).moveTop === 'function') {
-                try { (this.window as any).moveTop(); } catch {}
-              }
-            } catch {}
-          };
-
-          // Immediate and delayed nudges
-          setTimeout(nudge, 20);
-          setTimeout(nudge, 120);
-          setTimeout(nudge, 500);
-        });
-      } catch (e) {
-        // Non-fatal
-      }
 
       // Setup IPC handlers
       this.setupIpcHandlers();
@@ -354,8 +377,36 @@ export class LevelingWindow {
 
     ipcMain.removeHandler('leveling-close');
     ipcMain.handle('leveling-close', () => {
-      this.hide();
+      this.close();
     });
+
+    if (this.setIgnoreMouseEventsListener) {
+      ipcMain.removeListener('set-ignore-mouse-events', this.setIgnoreMouseEventsListener);
+    }
+    this.setIgnoreMouseEventsListener = (_event, ignore: boolean, options?: { forward: boolean }) => {
+      if (ignore) {
+        this.applyIgnoreMouseEvents(true, 'renderer-request', options);
+      } else {
+        this.applyIgnoreMouseEvents(false, 'renderer-request');
+      }
+    };
+    ipcMain.on('set-ignore-mouse-events', this.setIgnoreMouseEventsListener);
+
+    if (this.ultraModeChangeListener) {
+      ipcMain.removeListener('ultra-mode-change', this.ultraModeChangeListener);
+    }
+    this.ultraModeChangeListener = (_event, payload: { enabled: boolean }) => {
+      const enabled = !!(payload && payload.enabled);
+      console.log(`[LevelingWindow] ultra-mode-change -> ${enabled ? 'ENABLED' : 'DISABLED'}`);
+      this.ultraModeEnabled = enabled;
+      if (enabled) {
+        this.startUltraHoverTracker();
+      } else {
+        this.stopUltraHoverTracker();
+        this.applyIgnoreMouseEvents(false, 'ultra-mode-change-disable');
+      }
+    };
+    ipcMain.on('ultra-mode-change', this.ultraModeChangeListener);
   }
 
   private getTargetSize(): { w: number; h: number } {
@@ -869,26 +920,6 @@ export class LevelingWindow {
       }
     });
 
-    // Set click-through (ignore mouse events)
-    ipcMain.on('set-ignore-mouse-events', (event, ignore: boolean, options?: { forward: boolean }) => {
-      if (this.window && !this.window.isDestroyed()) {
-        this.window.setIgnoreMouseEvents(ignore, options);
-      }
-    });
-
-    // Ultra mode: renderer notifies main to enable header hover tracking
-    ipcMain.on('ultra-mode-change', (_event, payload: { enabled: boolean }) => {
-      const enabled = !!(payload && payload.enabled);
-      if (enabled) {
-        this.startUltraHoverTracker();
-      } else {
-        this.stopUltraHoverTracker();
-        if (this.window && !this.window.isDestroyed()) {
-          this.window.setIgnoreMouseEvents(false);
-        }
-      }
-    });
-
     // Open leveling settings splash
     ipcMain.handle('open-leveling-settings', async (event, tabName?: string) => {
       openLevelingSettingsSplash({
@@ -1132,6 +1163,12 @@ export class LevelingWindow {
           currentAct: currentAct
         });
       }
+    });
+
+    // Toggle leveling guide window
+    ipcMain.on('toggle-leveling-guide', () => {
+      // Use the same toggle logic as the class method
+      this.toggle();
     });
 
     // Force window to primary monitor
@@ -1876,12 +1913,22 @@ export class LevelingWindow {
 
   // Toggle window click-through based on cursor hovering the ultra header area
   private startUltraHoverTracker() {
+    // Safety: don't start if already running
     if (this.ultraHoverInterval) return;
+    
     this.ultraHoverActive = true;
     const headerHeight = 72; // px, matches ultra header stack
     const pollIntervalMs = 40;
+    console.log('[LevelingWindow] startUltraHoverTracker (ultra mode hover interval active)');
 
     this.ultraHoverInterval = setInterval(() => {
+      // Safety: stop tracker if flag was cleared (shouldn't happen, but defensive)
+      if (!this.ultraHoverActive) {
+        this.stopUltraHoverTracker();
+        this.applyIgnoreMouseEvents(false, 'ultra-hover-stop-flag');
+        return;
+      }
+      
       if (!this.window || this.window.isDestroyed()) return;
       try {
         const bounds = this.window.getBounds();
@@ -1891,13 +1938,14 @@ export class LevelingWindow {
         const overHeader = withinX && withinY;
 
         if (overHeader) {
-          this.window.setIgnoreMouseEvents(false);
+          this.applyIgnoreMouseEvents(false, 'ultra-hover-header');
         } else {
-          this.window.setIgnoreMouseEvents(true, { forward: true });
+          this.applyIgnoreMouseEvents(true, 'ultra-hover-body');
         }
       } catch (e) {
-        // Fail-safe: keep window interactive
-        this.window?.setIgnoreMouseEvents(false);
+        // Fail-safe: keep window interactive and stop tracker
+        this.stopUltraHoverTracker();
+        this.applyIgnoreMouseEvents(false, 'ultra-hover-error');
       }
     }, pollIntervalMs);
   }
@@ -1908,6 +1956,9 @@ export class LevelingWindow {
       clearInterval(this.ultraHoverInterval);
       this.ultraHoverInterval = null;
     }
+    // Always reset clickthrough when stopping tracker
+    this.applyIgnoreMouseEvents(false, 'stopUltraHoverTracker');
+    console.log('[LevelingWindow] stopUltraHoverTracker (hover interval cleared)');
   }
 
   /**
@@ -2303,56 +2354,75 @@ export class LevelingWindow {
         const anyOpen = isGemsWindowOpen() || isTreeWindowOpen() || isGearWindowOpen() || isNotesWindowOpen();
         
         if (anyOpen) {
-          // Close all windows
+          // Close all windows with small delays to prevent taskbar flicker
           if (isGemsWindowOpen()) closeLevelingGemsWindow();
-          if (isTreeWindowOpen()) closeTreeWindow();
-          if (isGearWindowOpen()) closeGearWindow();
-          if (isNotesWindowOpen()) closeNotesWindow();
-          // Reassert leveling overlay order
-          try { bringToFront('leveling'); } catch {}
+          setTimeout(() => { if (isTreeWindowOpen()) closeTreeWindow(); }, 50);
+          setTimeout(() => { if (isGearWindowOpen()) closeGearWindow(); }, 100);
+          setTimeout(() => { if (isNotesWindowOpen()) closeNotesWindow(); }, 150);
+          // Reassert leveling overlay order and ensure it's interactive
+          setTimeout(() => { 
+            try { 
+              bringToFront('leveling');
+              this.applyIgnoreMouseEvents(false, 'toggle-all-close');
+            } catch {} 
+          }, 200);
         } else {
-          // Open all windows
+          // Open all windows with small delays to prevent taskbar flicker
           const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
           const currentActIndex = (currentSettings as any)?.currentActIndex || 0;
           const characterLevel = (currentSettings as any)?.characterLevel || 1;
           const autoDetectEnabled = (currentSettings as any)?.uiSettings?.autoDetectLevelingSets ?? true;
           const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
           
-          // Open gems window
+          // Open gems window immediately
           openLevelingGemsWindow({
             settingsService: this.settingsService,
             overlayVersion: this.overlayVersion,
             parentWindow: this.window || undefined
           });
           
-          // Open tree window if there are tree specs
-          if (pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
-            const onTreeWindowReady = () => {
-              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
-            };
-            ipcMain.once('tree-window-ready', onTreeWindowReady);
-            const treeWindow = createPassiveTreeWindow();
-            if (!treeWindow.webContents.isLoading()) {
-              ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
-              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+          // Open tree window after a small delay
+          setTimeout(() => {
+            if (pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
+              const onTreeWindowReady = () => {
+                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+              };
+              ipcMain.once('tree-window-ready', onTreeWindowReady);
+              const treeWindow = createPassiveTreeWindow();
+              if (!treeWindow.webContents.isLoading()) {
+                ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
+                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+              }
             }
-          }
+          }, 50);
           
-          // Open gear window if there are item sets
-          if (pobBuild.itemSets && pobBuild.itemSets.length > 0) {
-            openLevelingGearWindow({
+          // Open gear window after a delay
+          setTimeout(() => {
+            if (pobBuild.itemSets && pobBuild.itemSets.length > 0) {
+              openLevelingGearWindow({
+                settingsService: this.settingsService,
+                overlayVersion: this.overlayVersion,
+                parentWindow: this.window || undefined
+              });
+            }
+          }, 100);
+          
+          // Open notes window after a delay
+          setTimeout(() => {
+            openLevelingNotesWindow({
               settingsService: this.settingsService,
               overlayVersion: this.overlayVersion,
               parentWindow: this.window || undefined
             });
-          }
+          }, 150);
           
-          // Open notes window
-          openLevelingNotesWindow({
-            settingsService: this.settingsService,
-            overlayVersion: this.overlayVersion,
-            parentWindow: this.window || undefined
-          });
+          // After all windows are opened, bring leveling guide back to ensure it's clickable
+          setTimeout(() => {
+            try { 
+              bringToFront('leveling');
+              this.applyIgnoreMouseEvents(false, 'toggle-all-open');
+            } catch {}
+          }, 250);
         }
       });
       if (success) {

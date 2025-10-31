@@ -1,24 +1,27 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 
-// Simple manager to keep all leveling overlay windows always visible and 
-// ensure the actively interacted window stays on top of other overlay windows.
-// Baseline: all windows are always-on-top at 'pop-up-menu' level and visible on fullscreen.
-// Active: elevated to 'screen-saver' level to reliably sit above siblings and borderless games.
+// Improved overlay window manager
+// Key: Use setFocusable(false) to prevent focus fighting while keeping windows interactive
+// Windows stay always-on-top and clickable, but don't steal focus from the game
 
-type WinEntry = { name: string; win: BrowserWindow; pinned?: boolean };
+type WinEntry = { 
+  name: string; 
+  win: BrowserWindow; 
+  pinned?: boolean;
+  allowFocus?: boolean; // For windows that need text input (settings)
+};
 
 const windows = new Map<string, WinEntry>();
 let ipcInstalled = false;
 let appHooksInstalled = false;
 let lastActiveName: string | null = null;
-let windowBeingDragged: string | null = null; // Track if a window is actively being dragged
-let pendingFocusRequest: { name: string; timeout: NodeJS.Timeout } | null = null;
+let windowBeingDragged: string | null = null;
 
 function safe(fn: () => void) {
   try { fn(); } catch { /* noop */ }
 }
 
-export function configureOverlayWindow(win: BrowserWindow, pinned: boolean = true) {
+export function configureOverlayWindow(win: BrowserWindow, pinned: boolean = true, allowFocus: boolean = false) {
   if (!win || win.isDestroyed()) return;
 
   safe(() => win.setSkipTaskbar(true));
@@ -26,11 +29,20 @@ export function configureOverlayWindow(win: BrowserWindow, pinned: boolean = tru
   // Keep visible even when game is fullscreen
   safe(() => (win as any).setVisibleOnAllWorkspaces?.(true, { visibleOnFullScreen: true }));
   
+  // CRITICAL: Non-focusable windows to prevent focus fighting
+  // Exception: Settings window needs focus for text inputs
+  if (!allowFocus && typeof (win as any).setFocusable === 'function') {
+    safe(() => (win as any).setFocusable(false));
+  }
+  
+  // DO NOT set clickthrough - users need to interact with windows!
+  // Only the main overlay uses clickthrough
+  
   // Only set always-on-top if pinned
   if (pinned) {
     // Baseline on-top level for all overlay windows
     if (process.platform === 'win32') {
-      // Windows: use a higher topmost level to sit reliably above borderless games
+      // Windows: use screen-saver level to sit reliably above borderless games
       safe(() => win.setAlwaysOnTop(true, 'screen-saver', 1));
     } else {
       safe(() => win.setAlwaysOnTop(true, 'pop-up-menu', 1));
@@ -40,19 +52,14 @@ export function configureOverlayWindow(win: BrowserWindow, pinned: boolean = tru
   }
 }
 
-export function registerOverlayWindow(name: string, win: BrowserWindow, pinned: boolean = true) {
+export function registerOverlayWindow(name: string, win: BrowserWindow, pinned: boolean = true, allowFocus: boolean = false) {
   if (!win || win.isDestroyed()) return;
-  windows.set(name, { name, win, pinned });
-  configureOverlayWindow(win, pinned);
+  windows.set(name, { name, win, pinned, allowFocus });
+  configureOverlayWindow(win, pinned, allowFocus);
 
   // Track drag start to prevent z-order changes during drag
   win.on('will-move', () => {
     windowBeingDragged = name;
-    // Cancel any pending focus request while dragging
-    if (pendingFocusRequest) {
-      clearTimeout(pendingFocusRequest.timeout);
-      pendingFocusRequest = null;
-    }
   });
 
   // Track drag end
@@ -63,41 +70,6 @@ export function registerOverlayWindow(name: string, win: BrowserWindow, pinned: 
     }, 100);
   });
 
-  // Maintain top-most order on focus/show (but not during drag)
-  win.on('focus', () => {
-    if (!windowBeingDragged) {
-      setActiveWindow(name);
-    }
-  });
-  
-  win.on('show', () => {
-    if (!windowBeingDragged) {
-      setActiveWindow(name);
-    }
-  });
-  
-  // If user clicks into the game (external app), our overlay window blurs. On Windows, the
-  // game often reasserts top-of-topmost; re-bump the leveling overlay shortly after.
-  if (process.platform === 'win32') {
-    win.on('blur', () => {
-      // Don't interfere if a window is being dragged
-      if (windowBeingDragged) return;
-      
-      // If focus is not on another overlay window, assume it went to the game/another app.
-      const focused = BrowserWindow.getFocusedWindow();
-      const focusedIsOverlay = focused ? Array.from(windows.values()).some(entry => entry.win === focused) : false;
-      if (!focusedIsOverlay) {
-        setTimeout(() => {
-          const levelingEntry = windows.get('leveling');
-          if (!levelingEntry || !levelingEntry.pinned) return; // Only re-bump if pinned
-          const leveling = levelingEntry.win;
-          if (!leveling || leveling.isDestroyed() || !leveling.isVisible()) return;
-          safe(() => leveling.setAlwaysOnTop(true, 'screen-saver', 1));
-          safe(() => leveling.moveTop());
-        }, 25);
-      }
-    });
-  }
   win.on('closed', () => {
     windows.delete(name);
     if (windowBeingDragged === name) {
@@ -105,40 +77,20 @@ export function registerOverlayWindow(name: string, win: BrowserWindow, pinned: 
     }
   });
 
-  // Install IPC once to allow renderer to request fronting on pointer down
+  // Install IPC once to allow renderer to request focus changes
   if (!ipcInstalled) {
     ipcInstalled = true;
     try {
+      // Bring window to front on mousedown (z-order only, no focus change)
       ipcMain.on('overlay-window-focus', (_event, winName: string) => {
-        if (typeof winName === 'string') {
-          // Don't immediately change focus during drag - defer it slightly
-          // This prevents interference with drag operations
-          if (windowBeingDragged) {
-            // Ignore focus requests while dragging
-            return;
-          }
-          
-          // Clear any pending focus request
-          if (pendingFocusRequest) {
-            clearTimeout(pendingFocusRequest.timeout);
-          }
-          
-          // Defer focus change slightly to let drag operations settle
-          pendingFocusRequest = {
-            name: winName,
-            timeout: setTimeout(() => {
-              pendingFocusRequest = null;
-              if (!windowBeingDragged) {
-                setActiveWindow(winName);
-              }
-            }, 50)
-          };
+        if (typeof winName === 'string' && !windowBeingDragged) {
+          setActiveWindow(winName);
         }
       });
     } catch {}
   }
 
-  // Install app-level hooks (Windows): when our app loses focus to the game, re-bump overlays
+  // Install app-level hooks (Windows): when our app loses focus to the game, re-assert topmost
   if (process.platform === 'win32' && !appHooksInstalled) {
     appHooksInstalled = true;
     try {
@@ -148,10 +100,6 @@ export function registerOverlayWindow(name: string, win: BrowserWindow, pinned: 
         
         // Defer a bit to let the game assert z-order, then move overlays above it.
         setTimeout(() => {
-          const focused = BrowserWindow.getFocusedWindow();
-          const focusedIsOverlay = focused ? Array.from(windows.values()).some(entry => entry.win === focused) : false;
-          if (focusedIsOverlay) return; // Focus just moved to another overlay; no action needed
-
           // Re-assert topmost for all pinned overlays
           for (const entry of windows.values()) {
             if (!entry || !entry.pinned) continue; // Only re-bump if pinned
@@ -162,7 +110,10 @@ export function registerOverlayWindow(name: string, win: BrowserWindow, pinned: 
           }
           // Ensure last active overlay is on top among overlays
           if (lastActiveName) {
-            setActiveWindow(lastActiveName);
+            const activeEntry = windows.get(lastActiveName);
+            if (activeEntry && activeEntry.win && !activeEntry.win.isDestroyed()) {
+              safe(() => activeEntry.win.moveTop());
+            }
           }
         }, 100);
       });
@@ -174,12 +125,12 @@ export function unregisterOverlayWindow(name: string) {
   windows.delete(name);
 }
 
-export function updateOverlayWindowPinned(name: string, pinned: boolean) {
+export function updateOverlayWindowPinned(name: string, pinned: boolean, allowFocus: boolean = false) {
   const entry = windows.get(name);
   if (!entry) return;
   
   entry.pinned = pinned;
-  configureOverlayWindow(entry.win, pinned);
+  configureOverlayWindow(entry.win, pinned, allowFocus);
 }
 
 export function setActiveWindow(name: string) {
@@ -192,32 +143,10 @@ export function setActiveWindow(name: string) {
   if (!active || active.isDestroyed()) return;
   lastActiveName = name;
 
-  // Demote others to baseline level; elevate active one
-  for (const [n, entry] of windows.entries()) {
-    if (!entry) continue;
-    const w = entry.win;
-    if (!w || w.isDestroyed()) continue;
-    
-    // Only manage z-order for pinned windows
-    if (!entry.pinned) continue;
-    
-    if (n === name) {
-      if (process.platform === 'win32') {
-        // Windows: reassert topmost level and bump to top without toggling off,
-        // which can race with games grabbing topmost.
-        safe(() => w.setAlwaysOnTop(true, 'screen-saver', 1));
-        safe(() => w.moveTop());
-      } else {
-        // macOS/Linux: use higher level for the active overlay and bump in z-order
-        safe(() => w.setAlwaysOnTop(true, 'screen-saver', 1));
-        safe(() => w.moveTop());
-      }
-    } else {
-      if (process.platform !== 'win32') {
-        // Keep others on baseline level (no effect on Windows, reduces flicker elsewhere)
-        safe(() => w.setAlwaysOnTop(true, 'pop-up-menu', 1));
-      }
-    }
+  // Simply move the active window to top without changing always-on-top level
+  // This is cleaner and avoids focus fighting
+  if (activeEntry.pinned) {
+    safe(() => active.moveTop());
   }
 }
 
@@ -225,3 +154,4 @@ export function setActiveWindow(name: string) {
 export function bringToFront(name: string) {
   setActiveWindow(name);
 }
+

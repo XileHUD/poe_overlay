@@ -6,7 +6,7 @@
  */
 
 import { BrowserWindow, screen, ipcMain } from 'electron';
-import { registerOverlayWindow, updateOverlayWindowPinned } from '../ui/windowZManager.js';
+import { registerOverlayWindow, unregisterOverlayWindow, bringToFront } from '../ui/windowZManager.js';
 import * as fs from 'fs';
 import * as path from 'path';
 import { app } from 'electron';
@@ -81,7 +81,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       font-family: 'Fontin', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: transparent;
       color: #c8c8c8;
-      overflow: hidden;
+      overflow: visible !important;
       width: 100vw;
       height: 100vh;
       display: flex;
@@ -100,7 +100,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       height: 100%;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      overflow: visible !important;
     }
 
     #header {
@@ -206,7 +206,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       align-items: center;
       border: 1px solid #3a3a3a;
       border-radius: 6px;
-      z-index: 10;
+      z-index: 10000;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
       opacity: 1;
       transition: opacity 0.3s ease;
@@ -221,10 +221,18 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       font-size: 12px;
       cursor: pointer;
       min-width: 180px;
+      position: relative;
+      z-index: 10000;
     }
 
     #spec-selector:hover {
       border-color: #4a4a4a;
+    }
+    
+    #spec-selector option {
+      background: #2a2a2a;
+      color: #c8c8c8;
+      padding: 4px;
     }
 
     #navigation button {
@@ -252,7 +260,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
     #viewport-container {
       flex: 1;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
       background: #0a0a0a;
     }
 
@@ -296,12 +304,15 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 1;
     }
 
     #tree-svg svg {
       display: block;
       transform-origin: center center;
       will-change: transform;
+      position: relative;
+      z-index: 1;
     }
 
   
@@ -1326,6 +1337,14 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
         
         console.log('[Tree] Built node lookup with', Object.keys(nodeLookup).length, 'nodes');
         
+        // Get current spec to access mastery selections
+        const getCurrentMasteries = () => {
+          if (typeof currentIndex !== 'undefined' && typeof currentSpecs !== 'undefined' && currentSpecs[currentIndex]) {
+            return currentSpecs[currentIndex].parsedUrl?.masteries || {};
+          }
+          return {};
+        };
+        
         // Add hover listeners to all node circles in the SVG
         document.addEventListener('mouseover', (e) => {
           const target = e.target;
@@ -1340,7 +1359,22 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
               const stats = nodeData.stats || [];
               
               let tooltipHTML = \`<div style="font-weight: 600; margin-bottom: 8px; color: #4a9eff;">\${nodeName}</div>\`;
-              if (stats.length > 0) {
+              
+              // Check if this is a mastery node and if a specific effect is selected
+              const masteries = getCurrentMasteries();
+              const selectedEffectId = masteries[nodeId];
+              
+              if (nodeData.k === 'Mastery' && selectedEffectId && treeData.masteryEffects && treeData.masteryEffects[selectedEffectId]) {
+                const masteryEffect = treeData.masteryEffects[selectedEffectId];
+                if (masteryEffect.stats && masteryEffect.stats.length > 0) {
+                  tooltipHTML += \`<div style="color: #ffd700; font-size: 12px; font-weight: 600; margin-top: 8px;">Selected Mastery:</div>\`;
+                  tooltipHTML += \`<div style="color: #90ee90; font-size: 12px;">\`;
+                  masteryEffect.stats.forEach(stat => {
+                    tooltipHTML += \`<div style="margin: 2px 0;">• \${stat}</div>\`;
+                  });
+                  tooltipHTML += \`</div>\`;
+                }
+              } else if (stats.length > 0) {
                 tooltipHTML += \`<div style="color: #b0b0b0; font-size: 12px;">\`;
                 stats.forEach(stat => {
                   tooltipHTML += \`<div style="margin: 2px 0;">• \${stat}</div>\`;
@@ -1417,7 +1451,7 @@ export function createPassiveTreeWindow(): BrowserWindow {
   treeWindow.setIgnoreMouseEvents(false);
 
   // Register with overlay z-order manager
-  try { registerOverlayWindow('tree', treeWindow, pinned); } catch {}
+  try { registerOverlayWindow('tree', treeWindow, pinned, false); } catch {}
 
   const html = buildTreeWindowHtml(ultraMinimal, pinned);
   const base64Html = Buffer.from(html, 'utf-8').toString('base64');
@@ -1453,6 +1487,7 @@ export function createPassiveTreeWindow(): BrowserWindow {
   treeWindow.on('resized', saveBounds);
 
   treeWindow.on('closed', () => {
+    unregisterOverlayWindow('tree');
     treeWindow = null;
   });
   
@@ -1469,10 +1504,9 @@ export function createPassiveTreeWindow(): BrowserWindow {
   ipcMain.on('tree-window-toggle-pinned', (event, isPinned) => {
     if (!treeWindow || treeWindow.isDestroyed()) return;
     currentPinned = isPinned;
-    treeWindow.setAlwaysOnTop(isPinned);
     
-    // Update the window manager's pinned state
-    try { updateOverlayWindowPinned('tree', isPinned); } catch {}
+    // Update via windowZManager instead of setting directly
+    try { registerOverlayWindow('tree', treeWindow, isPinned, false); } catch {}
     
     // Save the state immediately
     const bounds = treeWindow.getBounds();
@@ -1486,6 +1520,9 @@ export function createPassiveTreeWindow(): BrowserWindow {
     const bounds = treeWindow.getBounds();
     saveTreeWindowBounds(bounds, currentUltraMinimal, viewBox, currentPinned);
   });
+
+  // Bring window to front when first opened
+  bringToFront('tree');
 
   return treeWindow;
 }

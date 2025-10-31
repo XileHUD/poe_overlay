@@ -232,7 +232,7 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
       font-family: 'Segoe UI', Roboto, Arial, sans-serif;
       background: var(--bg-primary);
       color: var(--text-primary);
-      overflow: hidden;
+      overflow: visible !important;
       user-select: none;
       -webkit-user-select: none;
       display: flex;
@@ -618,6 +618,51 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
     ::-webkit-scrollbar-thumb:hover {
       background: rgba(74, 158, 255, 0.3);
     }
+    
+    .gem-set-dropdown {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 11px;
+      cursor: pointer;
+      outline: none;
+      max-width: 200px;
+      position: relative;
+      z-index: 10000;
+    }
+    
+    .gem-set-dropdown:hover {
+      border-color: rgba(74, 158, 255, 0.5);
+      background: rgba(74, 158, 255, 0.05);
+    }
+    
+    .gem-set-dropdown option {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      padding: 4px;
+    }
+    
+    #gem-tooltip {
+      position: fixed;
+      background: rgba(30, 30, 40, 0.98);
+      color: #e0e0e0;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      line-height: 1.5;
+      pointer-events: none;
+      z-index: 100000;
+      display: none;
+      max-width: 300px;
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .gem-item {
+      cursor: help;
+    }
   </style>
 </head>
 <body>
@@ -637,6 +682,9 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
     <!-- Content will be rendered by JavaScript -->
   </div>
   
+  <!-- Custom tooltip for gem info -->
+  <div id="gem-tooltip"></div>
+  
   <script>
     const { ipcRenderer } = require('electron');
     const path = require('path');
@@ -654,6 +702,8 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
     let currentBuild = ${JSON.stringify(pobBuild)};
     let currentAct = ${currentAct};
     let characterLevel = ${characterLevel}; // Current character level from client.txt
+    let skillSetIndex = 0; // Current skill set index
+    let manualSelection = false; // Flag to track if user manually selected a set
     let isUltraMinimal = ${ultraMinimal};
     let isPinned = ${pinned};
     let autoDetectEnabled = ${autoDetectEnabled};
@@ -816,17 +866,69 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
     }
     
     function getGemQuestInfo(gem, actNum) {
-      // The gem already has quest info from matchGemsToQuestSteps
-      // Since we're now showing the correct skill set for the act, just check if gem has quest info
-      if (!gem.quest && !gem.vendor) {
+      // Look up quest info from the database for this gem
+      const gemName = gem.nameSpec || gem.gemId || gem.name || '';
+      
+      console.log('[GemsWindow] Looking up gem:', gemName, 'for act', actNum);
+      
+      // Try to find gem in database
+      let gemEntry = Object.entries(gemDatabase).find(
+        ([, gemData]) => gemData.name.toLowerCase() === gemName.toLowerCase()
+      );
+      
+      // If not found and gem doesn't have "support" in name, try with " Support" suffix
+      if (!gemEntry && !gemName.toLowerCase().includes('support')) {
+        const withSupport = gemName + ' Support';
+        gemEntry = Object.entries(gemDatabase).find(
+          ([, gemData]) => gemData.name.toLowerCase() === withSupport.toLowerCase()
+        );
+        if (gemEntry) {
+          console.log('[GemsWindow] Found gem with Support suffix:', withSupport);
+        }
+      }
+      
+      if (!gemEntry) {
+        console.log('[GemsWindow] Gem not found in database:', gemName);
         return null;
       }
       
-      return {
-        type: gem.rewardType === 'quest' ? 'TAKE' : 'BUY',
-        quest: gem.quest || 'Unknown Quest',
-        npc: gem.vendor || 'Unknown NPC'
-      };
+      const [gemId, gemData] = gemEntry;
+      console.log('[GemsWindow] Found gem in database:', gemId, gemData.name);
+      
+      // Look through quests for this act to find where this gem is available
+      for (const [questId, questDataEntry] of Object.entries(questData)) {
+        if (questDataEntry.act !== 'Act ' + actNum && questDataEntry.act !== actNum.toString()) {
+          continue;
+        }
+        
+        const rewardOffers = Object.values(questDataEntry.reward_offers || {});
+        for (const offer of rewardOffers) {
+          // Check quest rewards first (TAKE)
+          const questReward = offer.quest?.[gemId];
+          if (questReward) {
+            console.log('[GemsWindow] Found quest reward for', gemName, ':', questDataEntry.name);
+            return {
+              type: 'TAKE',
+              quest: questDataEntry.name,
+              npc: offer.quest_npc
+            };
+          }
+          
+          // Check vendor rewards (BUY)
+          const vendorReward = offer.vendor?.[gemId];
+          if (vendorReward) {
+            console.log('[GemsWindow] Found vendor reward for', gemName, ':', vendorReward.npc);
+            return {
+              type: 'BUY',
+              quest: questDataEntry.name,
+              npc: vendorReward.npc
+            };
+          }
+        }
+      }
+      
+      console.log('[GemsWindow] No quest/vendor found for', gemName, 'in act', actNum);
+      return null;
     }
     
     // Helper to parse level range from set title
@@ -941,26 +1043,31 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
       // Determine which skill set we're showing using smart matching
       let currentSkillSetTitle = 'Act ' + currentAct;
       let matchedSkillSet = null;
-      let skillSetIndex = currentAct - 1; // Default fallback
       
-      if (hasSkillSets) {
+      // Only auto-detect if user hasn't manually selected a set
+      if (!manualSelection && hasSkillSets) {
+        skillSetIndex = currentAct - 1; // Default fallback
         const result = findBestSkillSet(currentBuild.skillSets, currentAct, characterLevel);
         if (result) {
           matchedSkillSet = result.set;
           skillSetIndex = result.index;
           currentSkillSetTitle = result.set.title || ('Act ' + currentAct);
         }
+      } else if (hasSkillSets && skillSetIndex < currentBuild.skillSets.length) {
+        // Use manually selected index
+        matchedSkillSet = currentBuild.skillSets[skillSetIndex];
+        currentSkillSetTitle = matchedSkillSet.title || ('Set ' + (skillSetIndex + 1));
       }
       
       let html = \`
         <div class="act-filter">
           <div class="act-filter-info">
-            <span class="act-filter-label">Showing gems for:</span>
-            <span class="act-filter-value">\${currentSkillSetTitle}</span>
-          </div>
-          <div class="act-filter-controls">
-            <div class="act-nav-btn" id="prevActBtn" onclick="changeAct(-1)" title="Previous Act">◀</div>
-            <div class="act-nav-btn" id="nextActBtn" onclick="changeAct(1)" title="Next Act">▶</div>
+            <span class="act-filter-label">Gem Set:</span>
+            <select id="gemSetSelector" onchange="changeGemSet()" class="gem-set-dropdown">
+              \${currentBuild.skillSets.map((set, i) => \`
+                <option value="\${i}" \${i === skillSetIndex ? 'selected' : ''}>\${set.title || 'Set ' + (i + 1)}</option>
+              \`).join('')}
+            </select>
           </div>
         </div>
       \`;
@@ -978,6 +1085,9 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
       
       // Group socket groups by size
       const sortedGroups = [...socketGroupsToShow].sort((a, b) => b.gems.length - a.gems.length);
+      
+      // Start gem groups container
+      html += '<div class="gem-groups-container">';
       
       for (const group of sortedGroups) {
         if (!group.gems || group.gems.length === 0) continue;
@@ -1014,29 +1124,29 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
                           colorClass === 'dex' ? '#44ff44' : '#4444ff';
           
           const questInfo = getGemQuestInfo(gem, currentAct);
-          const questBadge = questInfo 
-            ? \`<span class="gem-quest-info \${questInfo.type === 'BUY' ? 'buy' : ''}" title="\${questInfo.type} from \${questInfo.npc}\${questInfo.quest ? ' - ' + questInfo.quest : ''}">\${questInfo.type}</span>\`
-            : '';
           
           // Build tooltip text
-          const tooltipParts = [];
-          if (gem.quest) tooltipParts.push(\`Quest: \${gem.quest}\`);
-          if (gem.vendor) tooltipParts.push(\`Vendor: \${gem.vendor}\`);
-          if (gem.rewardType) tooltipParts.push(\`Type: \${gem.rewardType === 'quest' ? 'TAKE' : 'BUY'}\`);
-          const tooltipText = tooltipParts.length > 0 ? tooltipParts.join(' | ') : '';
+          let tooltipText = '';
+          if (questInfo) {
+            const tooltipParts = [];
+            tooltipParts.push(questInfo.type + ' from ' + questInfo.npc);
+            if (questInfo.quest) tooltipParts.push('Quest: ' + questInfo.quest);
+            tooltipText = tooltipParts.join(' | ');
+          }
           
           // Get gem image path - EXACT same logic as working task list
           const imagePath = getGemImagePath(gemName, isSupport);
           const imageClass = overlayVersion === 'poe2' ? 'gem-image poe2' : 'gem-image';
           
-          // Build gem item HTML with safe string concatenation to avoid nested template pitfalls
-          html += '<div class="gem-item ' + colorClass + (isSupport ? ' support' : '') + '" title="' + tooltipText + '">';
+          // Build gem item HTML with tooltip (only add data-tooltip if we have info)
+          html += '<div class="gem-item ' + colorClass + (isSupport ? ' support' : '') + '"' + (tooltipText ? ' data-tooltip="' + tooltipText.replace(/"/g, '&quot;') + '"' : '') + '>';
           if (imagePath) {
             html += '<img data-gem-img="' + imagePath + '" class="' + imageClass + '" style="display:none;" />';
           }
+          
           html += '<span class="gem-name ' + (isSupport ? 'support' : '') + '">' + gemName.replace('Support: ', '') + '</span>';
-          html += questBadge;
           html += '<span class="gem-level">L' + level + (quality > 0 ? ' Q' + quality : '') + '</span>';
+          
           html += '</div>';
         }
         
@@ -1045,6 +1155,9 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
           </div>
         \`;
       }
+      
+      // Close gem groups container
+      html += '</div>';
       
       content.innerHTML = html;
       
@@ -1057,11 +1170,149 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
         }
       });
       
-      // Update navigation button states
-      updateNavButtons();
+      // Setup tooltip handlers
+      setupGemTooltips();
+    }
+    
+    function setupGemTooltips() {
+      const tooltip = document.getElementById('gem-tooltip');
+      const gemItems = document.querySelectorAll('.gem-item[data-tooltip]');
+      
+      console.log('[GemsWindow] Setting up tooltips. Found', gemItems.length, 'gems with tooltip data');
+      
+      if (!tooltip) {
+        console.error('[GemsWindow] Tooltip element not found!');
+        return;
+      }
+      
+      gemItems.forEach((item, index) => {
+        const tooltipText = item.getAttribute('data-tooltip');
+        if (!tooltipText) return;
+        
+        console.log('[GemsWindow] Adding tooltip to gem', index, ':', tooltipText);
+        
+        item.addEventListener('mouseenter', () => {
+          console.log('[GemsWindow] Mouse enter, showing tooltip:', tooltipText);
+          tooltip.textContent = tooltipText;
+          tooltip.style.display = 'block';
+        });
+        
+        item.addEventListener('mousemove', (e) => {
+          tooltip.style.left = (e.clientX + 10) + 'px';
+          tooltip.style.top = (e.clientY + 10) + 'px';
+        });
+        
+        item.addEventListener('mouseleave', () => {
+          console.log('[GemsWindow] Mouse leave, hiding tooltip');
+          tooltip.style.display = 'none';
+        });
+      });
+    }
+    
+    function changeGemSet() {
+      const selector = document.getElementById('gemSetSelector');
+      if (!selector) return;
+      
+      const newIndex = parseInt(selector.value);
+      
+      // Only update if the value actually changed
+      if (newIndex === skillSetIndex) {
+        console.log('[GemsWindow] Dropdown value unchanged, not re-rendering');
+        return;
+      }
+      
+      if (!isNaN(newIndex) && newIndex >= 0 && currentBuild && newIndex < currentBuild.skillSets.length) {
+        console.log('[GemsWindow] Gem set changed from', skillSetIndex, 'to', newIndex);
+        skillSetIndex = newIndex;
+        manualSelection = true; // Mark as manual selection
+        
+        // Update only the gem content area, not the entire page
+        updateGemContent();
+      }
+    }
+    
+    function updateGemContent() {
+      // Just update the gems display without re-rendering the dropdown
+      const content = document.getElementById('content');
+      if (!content) return;
+      
+      const hasSkillSets = currentBuild && currentBuild.skillSets && currentBuild.skillSets.length > 0;
+      if (!hasSkillSets || skillSetIndex >= currentBuild.skillSets.length) return;
+      
+      const matchedSkillSet = currentBuild.skillSets[skillSetIndex];
+      const socketGroupsToShow = matchedSkillSet.socketGroups || [];
+      
+      // Find the gem groups container
+      let gemGroupsContainer = content.querySelector('.gem-groups-container');
+      if (!gemGroupsContainer) {
+        // First time - render everything
+        renderGems();
+        return;
+      }
+      
+      // Build new gem groups HTML
+      let html = '';
+      for (const socketGroup of socketGroupsToShow) {
+        const gems = socketGroup.gems || [];
+        if (gems.length === 0) continue;
+        
+        html += '<div class="socket-group">';
+        
+        for (const gem of gems) {
+          const gemName = gem.nameSpec || gem.gemId || gem.name || 'Unknown Gem';
+          const isSupport = gem.isSupport || gem.supportGem || false;
+          const colorClass = getGemColor(gemName, isSupport);
+          const level = gem.level || 1;
+          const quality = gem.quality || 0;
+          
+          const questInfo = getGemQuestInfo(gem, currentAct);
+          let tooltipText = '';
+          if (questInfo) {
+            const tooltipParts = [];
+            tooltipParts.push(questInfo.type + ' from ' + questInfo.npc);
+            if (questInfo.quest) tooltipParts.push('Quest: ' + questInfo.quest);
+            tooltipText = tooltipParts.join(' | ');
+          }
+          
+          const imagePath = getGemImagePath(gemName, isSupport);
+          const imageClass = overlayVersion === 'poe2' ? 'gem-image poe2' : 'gem-image';
+          
+          html += '<div class="gem-item ' + colorClass + (isSupport ? ' support' : '') + '"' + (tooltipText ? ' data-tooltip="' + tooltipText.replace(/"/g, '&quot;') + '"' : '') + '>';
+          if (imagePath) {
+            html += '<img data-gem-img="' + imagePath + '" class="' + imageClass + '" style="display:none;" />';
+          }
+          
+          html += '<span class="gem-name ' + (isSupport ? 'support' : '') + '">' + gemName.replace('Support: ', '') + '</span>';
+          html += '<span class="gem-level">L' + level + (quality > 0 ? ' Q' + quality : '') + '</span>';
+          html += '</div>';
+        }
+        
+        html += '</div>';
+      }
+      
+      // Update the container
+      gemGroupsContainer.innerHTML = html;
+      
+      // Resolve gem images
+      const gemImages = gemGroupsContainer.querySelectorAll('img[data-gem-img]');
+      gemImages.forEach(img => {
+        const localPath = img.getAttribute('data-gem-img');
+        if (localPath) {
+          resolveGemImage(img, localPath);
+        }
+      });
+      
+      // Setup tooltips
+      setupGemTooltips();
     }
     
     function smoothRenderGems() {
+      // Don't re-render if dropdown is currently open
+      if (dropdownOpen) {
+        console.log('[GemsWindow] Skipping render - dropdown is open');
+        return;
+      }
+      
       const content = document.getElementById('content');
       
       // Fade out content first
@@ -1073,43 +1324,6 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
         // Fade content back in
         content.classList.remove('updating');
       }, 100);
-    }
-    
-    function updateNavButtons() {
-      const prevBtn = document.getElementById('prevActBtn');
-      const nextBtn = document.getElementById('nextActBtn');
-      const maxPages = currentBuild && currentBuild.skillSets ? currentBuild.skillSets.length : 10;
-      
-      if (prevBtn) {
-        if (currentAct <= 1) {
-          prevBtn.classList.add('disabled');
-        } else {
-          prevBtn.classList.remove('disabled');
-        }
-      }
-      
-      if (nextBtn) {
-        if (currentAct >= maxPages) {
-          nextBtn.classList.add('disabled');
-        } else {
-          nextBtn.classList.remove('disabled');
-        }
-      }
-    }
-    
-    function changeAct(delta) {
-      // Determine max pages based on skill sets available
-      const maxPages = currentBuild && currentBuild.skillSets ? currentBuild.skillSets.length : 10;
-      
-      const newAct = currentAct + delta;
-      if (newAct < 1 || newAct > maxPages) return;
-      
-      currentAct = newAct;
-      
-      // Save the user's manual selection (convert 1-based act to 0-based index)
-      ipcRenderer.send('gems-set-selected', currentAct - 1);
-      
-      smoothRenderGems();
     }
     
     function toggleMinimalMode() {
@@ -1150,12 +1364,14 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
     // Listen for act changes
     ipcRenderer.on('gems-window-act-changed', (event, newAct) => {
       currentAct = newAct;
+      manualSelection = false; // Reset manual selection on act change
       smoothRenderGems();
     });
     
     // Listen for build updates
     ipcRenderer.on('gems-window-build-updated', (event, newBuild) => {
       currentBuild = newBuild;
+      manualSelection = false; // Reset manual selection on build update
       smoothRenderGems();
     });
     
