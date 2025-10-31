@@ -54,7 +54,11 @@ export function createTray(params: CreateTrayParams): Tray | null {
       path.join(process.cwd(), 'packages', 'overlay'),
       path.join(process.cwd(), 'packages', 'overlay', 'build')
     ];
-    const names = ['xile512.ico','icon.ico','xilehudICO.ico'];
+    // Platform-aware icon priority
+    const isLinux = process.platform === 'linux';
+    const names = isLinux 
+      ? ['xile512.png', 'xilehud.png', 'icon.png', 'xile512.ico', 'xilehudICO.ico', 'icon.ico']
+      : ['xile512.ico', 'icon.ico', 'xilehudICO.ico', 'xile512.png', 'xilehud.png', 'icon.png'];
     const candidates: string[] = [];
     for (const r of roots) {
       for (const n of names) candidates.push(path.join(r, n));
@@ -151,6 +155,8 @@ export function createTray(params: CreateTrayParams): Tray | null {
     { label: 'Quit', click: () => (onQuit ? onQuit() : app.quit()) }
   ]);
 
+  // Always set a context menu for platforms (notably Linux) that depend on it for showing menus
+  try { tray.setContextMenu(contextMenu); } catch {}
   try { tray.setToolTip('XileHUD'); } catch {}
   
   // GNOME/AppIndicator compatibility: use setContextMenu instead of popUpContextMenu

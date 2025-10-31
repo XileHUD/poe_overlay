@@ -56,7 +56,8 @@
     },
     "files": [
       "dist/**",
-      "xile512.ico"
+      "xile512.ico",
+      "xile512.png"
     ],
     "extraResources": [
       {
@@ -100,6 +101,12 @@
           ]
         }
       ]
+    },
+    "linux": {
+      "target": ["AppImage"],
+      "category": "Utility",
+      "executableName": "xilehud",
+      "icon": "xile512.png"
     },
     "nsis": {
       "oneClick": true,
