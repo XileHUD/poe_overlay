@@ -268,7 +268,10 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     .timer-display{position:relative;cursor:help;}
     
     /* PoB Gem Compact Display Styles */
-    .pob-gems-wrapper{margin-left:-36px;margin-right:-14px;padding:4px 14px 4px 36px;}
+    .pob-gems-wrapper{margin-left:-90px;margin-right:-14px;padding:4px 14px 4px 36px;}
+    .ultra-minimal-mode .pob-gems-wrapper{margin-left:-67px;}
+    .ultra-minimal-mode .task-bullet, .ultra-minimal-mode .skip-to-btn{display:none}
+    .ultra-minimal-mode .pob-gems-wrapper{margin-left:-35px;}
     .pob-gem-compact{display:flex;align-items:center;gap:4px;padding:1px 0;font-size:calc(var(--font-size) - 1px);line-height:1.3;width:100%;}
     .pob-gem-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 8px;border-radius:3px;transition:all 0.12s;border:none;font-size:calc(var(--font-size) - 1px);flex-wrap:nowrap;flex:1;min-width:0;overflow:hidden;}
     .pob-gem-pill:hover{background:rgba(255,255,255,0.05);transform:translateY(-1px);}
@@ -279,7 +282,7 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     .pob-gem-name-inline{font-weight:500;flex:1 1 auto;font-size:calc(var(--font-size) - 1px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:60px;margin-right:8px;}
     .pob-gem-vendor{font-size:calc(var(--font-size) - 2px);color:rgba(255,255,255,0.4);font-style:italic;flex:0 1 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:30px;max-width:80px;text-align:right;}
     .pob-gem-cost{font-size:10px;opacity:0.6;margin-left:4px;flex-shrink:0;}
-    .pob-gem-set-tag{font-size:8px;padding:1px 4px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);border-radius:2px;color:rgba(255,255,255,0.45);font-weight:500;white-space:nowrap;cursor:default;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis;min-width:30px;max-width:80px;text-align:center;margin-left:4px;}
+    .pob-gem-set-tag{font-size:max(calc(var(--font-size) - 4px),8px);max-width:20%;padding:1px 4px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);border-radius:2px;color:rgba(255,255,255,0.45);font-weight:500;white-space:nowrap;cursor:default;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis;min-width:30px;max-width:80px;text-align:center;margin-left:4px;}
     .pob-gem-set-tooltip{cursor:help;position:relative;}
     .pob-gem-set-tooltip:hover{background:rgba(74,222,128,0.15);color:rgba(255,255,255,0.65);}
     
