@@ -4,7 +4,7 @@
  */
 
 import { BrowserWindow, ipcMain, screen } from 'electron';
-import { registerOverlayWindow } from './windowZManager.js';
+import { registerOverlayWindow, unregisterOverlayWindow } from './windowZManager.js';
 import type { SettingsService } from '../services/settingsService.js';
 import type { OverlayVersion } from '../../types/overlayVersion.js';
 
@@ -132,6 +132,8 @@ export function openLevelingSettingsSplash(params: LevelingSettingsSplashParams)
   window.on('closed', () => {
     if (saveTimeout) clearTimeout(saveTimeout);
     activeSettingsWindow = null;
+    // Unregister from window manager to prevent stale window references
+    unregisterOverlayWindow('levelingSettings');
   });
 }
 

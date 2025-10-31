@@ -7,6 +7,7 @@ import { BrowserWindow, ipcMain, screen, shell, dialog, app } from 'electron';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import * as https from 'https';
+import { registerOverlayWindow, unregisterOverlayWindow } from './windowZManager.js';
 import type { SettingsService } from '../services/settingsService.js';
 import { isOverlayVersion, type OverlayVersion } from '../../types/overlayVersion.js';
 
@@ -236,15 +237,9 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
     // Track this as the active settings window
     activeSettingsWindow = window;
 
-    // Ensure settings window stays on top of overlay
-    window.setAlwaysOnTop(true, 'screen-saver', 1);
-    
-    // Re-enforce always-on-top when it loses focus
-    window.on('blur', () => {
-      if (!window.isDestroyed()) {
-        window.setAlwaysOnTop(true, 'screen-saver', 1);
-      }
-    });
+    // Register with overlay window manager for consistent z-order management
+    // Allow focus for this window so text inputs work properly
+    try { registerOverlayWindow('settings', window, true, true); } catch {}
 
     ipcMain.on('settings-save-overlay-version', (event, version: unknown) => {
       try {
@@ -623,6 +618,9 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       // Clear the active settings window reference
       activeSettingsWindow = null;
       
+      // Unregister from window manager to prevent stale window references
+      unregisterOverlayWindow('settings');
+      
       // Cleanup IPC handlers
       ipcMain.removeAllListeners('settings-check-updates');
       ipcMain.removeAllListeners('settings-font-size-preview');
@@ -630,6 +628,9 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       ipcMain.removeAllListeners('settings-save-hotkey');
       ipcMain.removeAllListeners('settings-show-overlay');
       ipcMain.removeAllListeners('settings-save-overlay-version');
+      ipcMain.removeAllListeners('settings-save-league');
+      ipcMain.removeAllListeners('settings-save-merchant-history-config');
+      ipcMain.removeAllListeners('settings-save-my-mods-enabled');
       resolve();
     });
   });
