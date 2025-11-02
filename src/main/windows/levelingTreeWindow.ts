@@ -101,6 +101,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      min-height: 200px;
     }
 
     #header {
@@ -262,11 +263,13 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       position: relative;
       overflow: hidden;
       background: #0a0a0a;
+      min-height: 100px;
     }
 
     #tree-viewport {
       width: 100%;
       height: 100%;
+      min-height: 100px;
       cursor: grab;
     }
 

@@ -143,11 +143,9 @@ export function setActiveWindow(name: string) {
   if (!active || active.isDestroyed()) return;
   lastActiveName = name;
 
-  // Simply move the active window to top without changing always-on-top level
-  // This is cleaner and avoids focus fighting
-  if (activeEntry.pinned) {
-    safe(() => active.moveTop());
-  }
+  // Move the active window to top regardless of pinned status
+  // This ensures the window appears in front when opened or clicked
+  safe(() => active.moveTop());
 }
 
 // Convenience to bring any known window to front explicitly

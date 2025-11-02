@@ -1250,17 +1250,28 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
         return;
       }
       
-      // Build new gem groups HTML
+      // Group socket groups by size (same as renderGems)
+      const sortedGroups = [...socketGroupsToShow].sort((a, b) => b.gems.length - a.gems.length);
+      
+      // Build new gem groups HTML with proper structure
       let html = '';
-      for (const socketGroup of socketGroupsToShow) {
-        const gems = socketGroup.gems || [];
-        if (gems.length === 0) continue;
+      for (const group of sortedGroups) {
+        if (!group.gems || group.gems.length === 0) continue;
+        
+        const socketCount = group.gems.length;
+        const socketWord = socketCount === 1 ? 'Socket' : 'Sockets';
+        const linkLabel = socketCount >= 2 ? socketCount + '-Link' : socketCount + ' ' + socketWord;
         
         html += '<div class="socket-group">';
+        html += '<div class="socket-group-header">';
+        html += '<span class="socket-count">' + linkLabel + '</span>';
+        html += '</div>';
+        html += '<div class="gems-list">';
         
-        for (const gem of gems) {
+        for (const gem of group.gems) {
           const gemName = gem.nameSpec || gem.gemId || gem.name || 'Unknown Gem';
-          const isSupport = gem.isSupport || gem.supportGem || false;
+          // Use robust support detection (same as renderGems)
+          const isSupport = computeIsSupport(gem);
           const colorClass = getGemColor(gemName, isSupport);
           const level = gem.level || 1;
           const quality = gem.quality || 0;
@@ -1287,6 +1298,7 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
           html += '</div>';
         }
         
+        html += '</div>';
         html += '</div>';
       }
       
