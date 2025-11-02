@@ -51,7 +51,8 @@ export function openLevelingNotesWindow(options: LevelingNotesWindowOptions): Br
   let _resizeTimer = null as any;
 
   // Register for managed z-order
-  try { registerOverlayWindow('notes', notesWindow, pinned); } catch {}
+  // Set allowFocus=true so users can select and copy text (Ctrl+C)
+  try { registerOverlayWindow('notes', notesWindow, pinned, true); } catch {}
 
   // Get current PoB build notes from the new builds list (pobBuilds) instead of legacy pobBuild
   const pobBuilds = (savedSettings as any).pobBuilds;
