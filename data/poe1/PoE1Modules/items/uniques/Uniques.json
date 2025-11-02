@@ -1,8 +1,8 @@
 {
   "slug": "poe1-uniques",
-  "generatedAt": "2025-10-21T02:37:30.809Z",
+  "generatedAt": "2025-11-01T03:59:47.985Z",
   "totalCategories": 46,
-  "totalItems": 1302,
+  "totalItems": 1311,
   "categories": [
     {
       "id": "claws",
@@ -656,8 +656,8 @@
             "Adds (35–40) to (55–60) Physical Damage",
             "(22–30)% increased Critical Strike Chance",
             "+(30–40)% to Global Critical Strike Multiplier",
-            "1% of Attack Damage Leeched as Life on Critical Strike",
             "100% increased Critical Strike Chance against Enemies that are on Full Life",
+            "1% of Attack Damage Leeched as Life on Critical Strike",
             "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
           ],
           "textBlocks": [
@@ -857,10 +857,10 @@
             "+(1000–1500) to Evasion Rating",
             "(100–200)% increased Cold Damage while your Off Hand is empty",
             "+(30–40)% chance to Suppress Spell Damage while your Off Hand is empty",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ]
         },
         {
@@ -936,13 +936,13 @@
           ]
         },
         {
-          "id": "ashcaller_carved_wand",
+          "id": "ashcaller_goats_horn",
           "name": "Ashcaller",
-          "baseType": "Carved Wand",
+          "baseType": "Goat's Horn",
           "group": "weapon",
           "imageLocal": "uniques/wands/ashcaller.webp",
           "implicitMods": [
-            "(11–15)% increased Spell Damage"
+            "Adds (1–2) to (3–4) Fire Damage to Spells and Attacks"
           ],
           "explicitMods": [
             "25% chance to Trigger Level 10 Summon Raging Spirit on Kill",
@@ -953,22 +953,6 @@
           ],
           "textBlocks": [
             "(Being Covered in Ash applies 20% less Movement Speed and 20% increased Fire Damage Taken, for 4 seconds)"
-          ]
-        },
-        {
-          "id": "the_poets_pen_carved_wand",
-          "name": "The Poet's Pen",
-          "baseType": "Carved Wand",
-          "group": "weapon",
-          "imageLocal": "uniques/wands/the_poets_pen.webp",
-          "implicitMods": [
-            "(11–15)% increased Spell Damage"
-          ],
-          "explicitMods": [
-            "+1 to Level of Socketed Skill Gems per 25 Player Levels",
-            "Trigger a Socketed Spell when you Attack with this Weapon, with a 0.25 second Cooldown",
-            "Adds 3 to 5 Physical Damage to Attacks with this Weapon per 3 Player Levels",
-            "(8–12)% increased Attack Speed"
           ]
         },
         {
@@ -1016,7 +1000,7 @@
           ],
           "explicitMods": [
             "Socketed Gems fire an additional Projectile",
-            "(80–120)% increased Physical Damage",
+            "(80–140)% increased Physical Damage",
             "Adds (5–8) to (13–17) Physical Damage",
             "(5–10)% increased Attack Speed",
             "(10–20)% increased Critical Strike Chance"
@@ -1094,66 +1078,27 @@
           ]
         },
         {
-          "id": "midnight_bargain_engraved_wand",
-          "name": "Midnight Bargain",
-          "baseType": "Engraved Wand",
-          "group": "weapon",
-          "imageLocal": "uniques/wands/midnight_bargain.webp",
-          "implicitMods": [
-            "(22–26)% increased Spell Damage"
-          ],
-          "explicitMods": [
-            "Cannot be used with Chaos Inoculation",
-            "+(10–20) to Intelligence",
-            "Minions have (20–30)% increased Movement Speed",
-            "Minions deal (50–70)% increased Damage",
-            "+1 to maximum number of Raised Zombies",
-            "+1 to maximum number of Spectres",
-            "+1 to maximum number of Skeletons",
-            "Reserves 30% of Life"
-          ]
-        },
-        {
-          "id": "eclipse_solaris_engraved_wand",
+          "id": "eclipse_solaris_fauns_horn",
           "name": "Eclipse Solaris",
-          "baseType": "Engraved Wand",
+          "baseType": "Faun's Horn",
           "group": "weapon",
           "imageLocal": "uniques/wands/eclipse_solaris.webp",
           "implicitMods": [
-            "(22–26)% increased Spell Damage"
+            "Adds (5–10) to (11–13) Fire Damage to Spells and Attacks"
           ],
           "explicitMods": [
             "Adds (30–45) to (60–80) Fire Damage",
-            "(6–10)% increased Attack Speed",
+            "(20–26)% increased Attack Speed",
             "+(27–33)% to Global Critical Strike Multiplier",
-            "20% increased Light Radius",
+            "(15–20)% increased Light Radius",
             "Nearby Enemies are Blinded",
             "(120–140)% increased Critical Strike Chance against Blinded Enemies",
+            "Adds 2 to 5 Fire Damage to Attacks for every 1% your Light Radius is above base value",
             "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating)"
           ],
           "textBlocks": [
             "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating)"
           ]
-        },
-        {
-          "id": "replica_midnight_bargain_engraved_wand",
-          "name": "Replica Midnight Bargain",
-          "baseType": "Engraved Wand",
-          "group": "weapon",
-          "imageLocal": "uniques/wands/replica_midnight_bargain.webp",
-          "implicitMods": [
-            "(22–26)% increased Spell Damage"
-          ],
-          "explicitMods": [
-            "Cannot be used with Chaos Inoculation",
-            "+(10–20) to Intelligence",
-            "Minions have (40–50)% increased Movement Speed",
-            "Minions deal (50–70)% increased Damage",
-            "+6 to maximum number of Raging Spirits",
-            "Reserves 30% of Life",
-            "+3 to maximum number of Summoned Phantasms"
-          ],
-          "isReplica": true
         },
         {
           "id": "apeps_rage_omen_wand",
@@ -1179,54 +1124,13 @@
           ]
         },
         {
-          "id": "moonsorrow_imbued_wand",
-          "name": "Moonsorrow",
-          "baseType": "Imbued Wand",
-          "group": "weapon",
-          "imageLocal": "uniques/wands/moonsorrow.webp",
-          "implicitMods": [
-            "(33–37)% increased Spell Damage"
-          ],
-          "explicitMods": [
-            "Socketed Gems are supported by Level 20 Blind",
-            "+10 to Intelligence",
-            "(30–40)% increased Spell Damage",
-            "(250–275)% increased Physical Damage",
-            "(20–30)% increased Lightning Damage",
-            "10% increased Cast Speed",
-            "10% chance to Blind Enemies on hit",
-            "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)"
-          ],
-          "textBlocks": [
-            "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)"
-          ]
-        },
-        {
-          "id": "piscators_vigil_imbued_wand",
-          "name": "Piscator's Vigil",
-          "baseType": "Imbued Wand",
-          "group": "weapon",
-          "imageLocal": "uniques/wands/piscators_vigil.webp",
-          "implicitMods": [
-            "(33–37)% increased Spell Damage"
-          ],
-          "explicitMods": [
-            "No Physical Damage",
-            "(10–18)% increased Attack Speed",
-            "(20–30)% increased Critical Strike Chance",
-            "+(340–400) to Accuracy Rating",
-            "Attacks with this Weapon have (100–115)% increased Elemental Damage",
-            "Damage with Weapons Penetrates 5% Elemental Resistances"
-          ]
-        },
-        {
-          "id": "obliteration_imbued_wand",
+          "id": "obliteration_omen_wand",
           "name": "Obliteration",
-          "baseType": "Imbued Wand",
+          "baseType": "Omen Wand",
           "group": "weapon",
           "imageLocal": "uniques/wands/obliteration.webp",
           "implicitMods": [
-            "(33–37)% increased Spell Damage"
+            "(27–31)% increased Spell Damage"
           ],
           "explicitMods": [
             "Gain (30–40)% of Physical Damage as Extra Chaos Damage",
@@ -1342,6 +1246,103 @@
             "Gain (10–50)% of Physical Damage as Extra Lightning Damage",
             "+1 to maximum number of Sacred Wisps\n+1 to number of Sacred Wisps Summoned"
           ]
+        },
+        {
+          "id": "the_poets_pen_somatic_wand",
+          "name": "The Poet's Pen",
+          "baseType": "Somatic Wand",
+          "group": "weapon",
+          "imageLocal": "uniques/wands/the_poets_pen.webp",
+          "implicitMods": [
+            "Cannot roll Caster Modifiers"
+          ],
+          "explicitMods": [
+            "+1 to Level of Socketed Skill Gems per 25 Player Levels",
+            "Trigger a Socketed Spell when you Attack with this Weapon, with a 0.25 second Cooldown",
+            "Adds 3 to 5 Physical Damage to Attacks with this Weapon per 3 Player Levels",
+            "(8–12)% increased Attack Speed"
+          ]
+        },
+        {
+          "id": "moonsorrow_kinetic_wand",
+          "name": "Moonsorrow",
+          "baseType": "Kinetic Wand",
+          "group": "weapon",
+          "imageLocal": "uniques/wands/moonsorrow.webp",
+          "implicitMods": [
+            "Cannot roll Caster Modifiers"
+          ],
+          "explicitMods": [
+            "Socketed Gems are supported by Level 20 Blind",
+            "+10 to Intelligence",
+            "(30–40)% increased Spell Damage",
+            "(250–275)% increased Physical Damage",
+            "(20–30)% increased Lightning Damage",
+            "10% increased Cast Speed",
+            "10% chance to Blind Enemies on hit",
+            "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)"
+          ],
+          "textBlocks": [
+            "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)"
+          ]
+        },
+        {
+          "id": "piscators_vigil_kinetic_wand",
+          "name": "Piscator's Vigil",
+          "baseType": "Kinetic Wand",
+          "group": "weapon",
+          "imageLocal": "uniques/wands/piscators_vigil.webp",
+          "implicitMods": [
+            "Cannot roll Caster Modifiers"
+          ],
+          "explicitMods": [
+            "No Physical Damage",
+            "(10–18)% increased Attack Speed",
+            "(20–30)% increased Critical Strike Chance",
+            "+(340–400) to Accuracy Rating",
+            "Attacks with this Weapon have (100–115)% increased Elemental Damage",
+            "Damage with Weapons Penetrates 5% Elemental Resistances"
+          ]
+        },
+        {
+          "id": "midnight_bargain_calling_wand",
+          "name": "Midnight Bargain",
+          "baseType": "Calling Wand",
+          "group": "weapon",
+          "imageLocal": "uniques/wands/midnight_bargain.webp",
+          "implicitMods": [
+            "Minions deal (12–16)% increased Damage"
+          ],
+          "explicitMods": [
+            "Cannot be used with Chaos Inoculation",
+            "+(10–20) to Intelligence",
+            "Minions have (20–30)% increased Movement Speed",
+            "Minions deal (50–70)% increased Damage",
+            "+1 to maximum number of Raised Zombies",
+            "+1 to maximum number of Spectres",
+            "+1 to maximum number of Skeletons",
+            "Reserves 30% of Life"
+          ]
+        },
+        {
+          "id": "replica_midnight_bargain_calling_wand",
+          "name": "Replica Midnight Bargain",
+          "baseType": "Calling Wand",
+          "group": "weapon",
+          "imageLocal": "uniques/wands/replica_midnight_bargain.webp",
+          "implicitMods": [
+            "Minions deal (12–16)% increased Damage"
+          ],
+          "explicitMods": [
+            "Cannot be used with Chaos Inoculation",
+            "+(10–20) to Intelligence",
+            "Minions have (40–50)% increased Movement Speed",
+            "Minions deal (50–70)% increased Damage",
+            "+6 to maximum number of Raging Spirits",
+            "Reserves 30% of Life",
+            "+3 to maximum number of Summoned Phantasms"
+          ],
+          "isReplica": true
         }
       ]
     },
@@ -1403,11 +1404,11 @@
             "+(1–2) Maximum Mana per Level",
             "Unaffected by Blind",
             "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
-            "(Malediction causes 10% reduced damage dealt and 10% increased damage taken)"
+            "(Malediction causes 10% reduced Damage dealt and 10% increased Damage taken)"
           ],
           "textBlocks": [
             "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
-            "(Malediction causes 10% reduced damage dealt and 10% increased damage taken)"
+            "(Malediction causes 10% reduced Damage dealt and 10% increased Damage taken)"
           ]
         },
         {
@@ -1421,11 +1422,11 @@
           ],
           "explicitMods": [
             "Socketed Gems are Supported by Level 15 Bonechill",
+            "Socketed Gems are Supported by Level 15 Added Cold Damage",
+            "Socketed Gems are Supported by Level 15 Inspiration",
             "Socketed Gems are Supported by Level 15 Hypothermia",
             "Socketed Gems are Supported by Level 15 Ice Bite",
-            "Socketed Gems are Supported by Level 15 Cold Penetration",
-            "Socketed Gems are Supported by Level 15 Added Cold Damage",
-            "Socketed Gems are Supported by Level 15 Inspiration"
+            "Socketed Gems are Supported by Level 15 Cold Penetration"
           ]
         },
         {
@@ -1445,11 +1446,11 @@
             "+(1–2) Maximum Life per Level",
             "Unaffected by Blind",
             "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
-            "(Malediction causes 10% reduced damage dealt and 10% increased damage taken)"
+            "(Malediction causes 10% reduced Damage dealt and 10% increased Damage taken)"
           ],
           "textBlocks": [
             "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
-            "(Malediction causes 10% reduced damage dealt and 10% increased damage taken)"
+            "(Malediction causes 10% reduced Damage dealt and 10% increased Damage taken)"
           ]
         },
         {
@@ -1469,11 +1470,11 @@
             "+(1–2) Maximum Mana per Level",
             "Unaffected by Blind",
             "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
-            "(Malediction causes 10% reduced damage dealt and 10% increased damage taken)"
+            "(Malediction causes 10% reduced Damage dealt and 10% increased Damage taken)"
           ],
           "textBlocks": [
             "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
-            "(Malediction causes 10% reduced damage dealt and 10% increased damage taken)"
+            "(Malediction causes 10% reduced Damage dealt and 10% increased Damage taken)"
           ]
         },
         {
@@ -1489,9 +1490,9 @@
             "Socketed Gems are Supported by Level 15 Elemental Penetration",
             "Socketed Gems are Supported by Level 15 Immolate",
             "Socketed Gems are Supported by Level 15 Unbound Ailments",
-            "Socketed Gems are Supported by Level 15 Ice Bite",
             "Socketed Gems are Supported by Level 15 Inspiration",
-            "Socketed Gems are Supported by Level 15 Innervate"
+            "Socketed Gems are Supported by Level 15 Innervate",
+            "Socketed Gems are Supported by Level 15 Ice Bite"
           ],
           "isReplica": true
         },
@@ -1594,10 +1595,10 @@
           "explicitMods": [
             "(70–100)% increased Spell Damage",
             "(15–20)% increased Cast Speed",
-            "0.5% of Spell Damage Leeched as Life if Equipped Shield has at least 30% Chance to Block",
             "+1 to Maximum Energy Shield per 5 Armour on Equipped Shield",
             "+5 to Armour per 5 Evasion Rating on Equipped Shield",
-            "+20 to Evasion Rating per 5 Maximum Energy Shield on Equipped Shield"
+            "+20 to Evasion Rating per 5 Maximum Energy Shield on Equipped Shield",
+            "0.5% of Spell Damage Leeched as Life if Equipped Shield has at least 30% Chance to Block"
           ]
         },
         {
@@ -1796,10 +1797,10 @@
             "(6–8)% reduced Soul Gain Prevention Duration",
             "Gain an Endurance Charge, Frenzy Charge, and Power Charge when you use a Vaal Skill",
             "Shepherd of Souls",
-            "(Vaal Non-Aura Skills have 80% less Soul Cost. Vaal Non-Aura Skills have 100% increased Soul Cost per Vaal Skill used in the past 8 seconds)"
+            "(Vaal Non-Aura Skills require 80% less Souls. Vaal Non-Aura Skills require 100% increased Souls per Vaal Skill used in the past 8 seconds)"
           ],
           "textBlocks": [
-            "(Vaal Non-Aura Skills have 80% less Soul Cost. Vaal Non-Aura Skills have 100% increased Soul Cost per Vaal Skill used in the past 8 seconds)"
+            "(Vaal Non-Aura Skills require 80% less Souls. Vaal Non-Aura Skills require 100% increased Souls per Vaal Skill used in the past 8 seconds)"
           ]
         },
         {
@@ -1984,9 +1985,9 @@
             "Adds (5–8) to (15–20) Physical Damage",
             "(8–14)% increased Attack Speed",
             "Hits can't be Evaded",
-            "Attacks with this Weapon Penetrate 30% Elemental Resistances",
             "Gain 15% of Physical Attack Damage as Extra Fire Damage",
-            "Gain 15% of Physical Attack Damage as Extra Lightning Damage"
+            "Gain 15% of Physical Attack Damage as Extra Lightning Damage",
+            "Attacks with this Weapon Penetrate 30% Elemental Resistances"
           ]
         },
         {
@@ -2003,9 +2004,9 @@
             "(8–14)% increased Attack Speed",
             "100% reduced Global Accuracy Rating",
             "+(60–100)% to Critical Strike Multiplier with One Handed Melee Weapons",
-            "Attacks with this Weapon Penetrate 30% Elemental Resistances",
             "Gain 15% of Physical Attack Damage as Extra Fire Damage",
-            "Gain 15% of Physical Attack Damage as Extra Lightning Damage"
+            "Gain 15% of Physical Attack Damage as Extra Lightning Damage",
+            "Attacks with this Weapon Penetrate 30% Elemental Resistances"
           ],
           "isReplica": true
         },
@@ -2199,8 +2200,8 @@
             "Adds (60–70) to (71–80) Physical Damage",
             "25% increased Global Physical Damage with Weapons per Red Socket",
             "12% increased Global Attack Speed per Green Socket",
-            "0.4% of Physical Attack Damage Leeched as Mana per Blue Socket",
             "+0.2 metres to Melee Strike Range per White Socket",
+            "0.4% of Physical Attack Damage Leeched as Mana per Blue Socket",
             "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
             "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)"
           ],
@@ -2294,10 +2295,10 @@
           "explicitMods": [
             "Adds (75–92) to (125–154) Physical Damage",
             "(15–25)% increased Critical Strike Chance",
-            "0.3% of Physical Attack Damage Leeched as Life per Red Socket",
             "+10% to Global Critical Strike Multiplier per Green Socket",
-            "0.3% of Physical Attack Damage Leeched as Mana per Blue Socket",
             "8% increased Global Defences per White Socket",
+            "0.3% of Physical Attack Damage Leeched as Life per Red Socket",
+            "0.3% of Physical Attack Damage Leeched as Mana per Blue Socket",
             "(60–80)% increased Global Critical Strike Chance when in Main Hand",
             "+8% Chance to Block Attack Damage when in Off Hand",
             "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
@@ -2935,7 +2936,7 @@
       "id": "one-hand-maces",
       "name": "One Hand Maces",
       "group": "weapon",
-      "total": 12,
+      "total": 13,
       "items": [
         {
           "id": "gorebreaker_spiked_club",
@@ -3015,6 +3016,27 @@
           "textBlocks": [
             "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
             "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
+          ]
+        },
+        {
+          "id": "the_monastery_bell_dream_mace",
+          "name": "The Monastery Bell",
+          "baseType": "Dream Mace",
+          "group": "weapon",
+          "imageLocal": "uniques/one-hand-maces/the_monastery_bell.webp",
+          "implicitMods": [
+            "10% reduced Enemy Stun Threshold"
+          ],
+          "explicitMods": [
+            "(50–75)% increased Physical Damage",
+            "Adds (5–9) to (13–18) Physical Damage",
+            "(6–10)% increased Attack Speed",
+            "Chance to Block is Unlucky",
+            "Count as Blocking Attack Damage from the first target Hit with each Shield Attack",
+            "(Unlucky things are rolled twice and the worst result used)"
+          ],
+          "textBlocks": [
+            "(Unlucky things are rolled twice and the worst result used)"
           ]
         },
         {
@@ -3508,8 +3530,8 @@
             "(100–140)% increased Physical Damage",
             "Adds 25 to 50 Fire Damage",
             "(10–14)% increased Attack Speed",
-            "50% more Damage with Arrow Hits at Close Range",
             "Bow Knockback at Close Range",
+            "50% more Damage with Arrow Hits at Close Range",
             "(Close Range is up to 2 metres)",
             "(Knockback pushes Enemies away when Hit)"
           ],
@@ -3717,7 +3739,7 @@
       "id": "staves",
       "name": "Staves",
       "group": "weapon",
-      "total": 17,
+      "total": 18,
       "items": [
         {
           "id": "fencoil_gnarled_branch",
@@ -4051,6 +4073,27 @@
           "textBlocks": [
             "(Warstaves are considered Staves)"
           ]
+        },
+        {
+          "id": "jiquanis_potential_imperial_staff",
+          "name": "Jiquani's Potential",
+          "baseType": "Imperial Staff",
+          "group": "weapon",
+          "imageLocal": "uniques/staves/jiquanis_potential.webp",
+          "implicitMods": [
+            "+25% Chance to Block Spell Damage while wielding a Staff"
+          ],
+          "explicitMods": [
+            "(1–7)% increased Intelligence",
+            "(-17–17)% reduced maximum Life",
+            "31% increased Cost of Skills",
+            "1 to (31–53) Spell Lightning Damage per 10 Intelligence",
+            "Blood Magic",
+            "(Removes all mana. 10% more maximum Life. Skills Cost Life instead of Mana. Skills Reserve Life instead of Mana)"
+          ],
+          "textBlocks": [
+            "(Removes all mana. 10% more maximum Life. Skills Cost Life instead of Mana. Skills Reserve Life instead of Mana)"
+          ]
         }
       ]
     },
@@ -4289,9 +4332,9 @@
             "(0–50)% of Physical Damage Converted to Fire Damage",
             "(0–50)% of Physical Damage Converted to Cold Damage",
             "(0–50)% of Physical Damage Converted to Lightning Damage",
-            "Damage Penetrates (8–10)% Elemental Resistances while you are Chilled",
-            "Elemental Damage with Hits is Lucky while you are Shocked",
             "Elemental Ailments you inflict are Reflected to you",
+            "Elemental Damage with Hits is Lucky while you are Shocked",
+            "Damage Penetrates (8–10)% Elemental Resistances while you are Chilled",
             "Gain (30–40)% of Physical Damage as Extra Damage of a random Element while you are Ignited"
           ]
         },
@@ -4356,9 +4399,9 @@
             "Adds (12–14) to (15–16) Physical Damage to Attacks and Spells per Siphoning Charge",
             "Gain 4% of Non-Chaos Damage as extra Chaos Damage per Siphoning Charge",
             "1% additional Physical Damage Reduction from Hits per Siphoning Charge",
-            "0.2% of Damage Leeched as Life per Siphoning Charge",
             "Take 150 Physical Damage per Second per Siphoning Charge if you've used a Skill Recently",
             "+1 to Maximum Siphoning Charges per Elder or Shaper Item Equipped",
+            "0.2% of Damage Leeched as Life per Siphoning Charge",
             "Battlemage",
             "(Gain Added Spell Damage equal to the Damage of your Main Hand Weapon)",
             "(Recently refers to the past 4 seconds)"
@@ -5214,8 +5257,8 @@
             "Socketed Gems are supported by Level 30 Melee Splash",
             "(200–240)% increased Physical Damage",
             "1% of Physical Attack Damage Leeched as Life",
-            "1% of Physical Attack Damage Leeched as Mana",
             "Recover 5% of Life on Kill",
+            "1% of Physical Attack Damage Leeched as Mana",
             "Enemies Killed by your Hits are destroyed",
             "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
             "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
@@ -5521,10 +5564,10 @@
           "group": "weapon",
           "imageLocal": "uniques/fishing-rods/song_of_the_sirens.webp",
           "explicitMods": [
-            "Siren Worm Bait",
             "(40–50)% reduced Quantity of Fish Caught",
             "(50–60)% increased Rarity of Fish Caught",
-            "You can catch Exotic Fish"
+            "You can catch Exotic Fish",
+            "Siren Worm Bait"
           ]
         },
         {
@@ -5535,8 +5578,8 @@
           "imageLocal": "uniques/fishing-rods/reefbane.webp",
           "explicitMods": [
             "(30–40)% increased Cast Speed",
-            "Thaumaturgical Lure",
             "(10–20)% increased Quantity of Fish Caught",
+            "Thaumaturgical Lure",
             "Glows while in an Area containing a Unique Fish"
           ]
         }
@@ -5959,10 +6002,10 @@
             "(140–220)% increased Evasion Rating",
             "25% increased Chill Duration on Enemies",
             "(105–145) to (160–200) Added Cold Damage with Bow Attacks",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ]
         },
         {
@@ -5994,13 +6037,13 @@
             "(Overcapped Resistance is the amount by whch Uncapped Resistance is higher than Maximum Resistance)",
             "(Uncapped Resistance is the value Resistance would have if ignoring Maximum Resistance)",
             "(Modifiers to Chance to Suppress Spell Damage instead apply to Chance to Dodge Spell Hits at 50% of their value. Maximum Chance to Dodge Spell Hits is 75%)",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "textBlocks": [
             "(Overcapped Resistance is the amount by whch Uncapped Resistance is higher than Maximum Resistance)",
             "(Uncapped Resistance is the value Resistance would have if ignoring Maximum Resistance)",
             "(Modifiers to Chance to Suppress Spell Damage instead apply to Chance to Dodge Spell Hits at 50% of their value. Maximum Chance to Dodge Spell Hits is 75%)",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ]
         },
         {
@@ -6042,10 +6085,10 @@
             "(140–220)% increased Evasion Rating",
             "25% increased Shock Duration on Enemies",
             "(12–18) to (231–347) Added Lightning Damage with Wand Attacks",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "isReplica": true
         },
@@ -6864,10 +6907,10 @@
             "Minions have (20–30)% increased maximum Life",
             "Regenerate 1% of Life per second",
             "Minions have +(12–15)% chance to Suppress Spell Damage",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ]
         },
         {
@@ -7446,7 +7489,7 @@
       "id": "helmets",
       "name": "Helmets",
       "group": "armour",
-      "total": 110,
+      "total": 111,
       "items": [
         {
           "id": "ezomyte_peak_iron_hat",
@@ -7714,9 +7757,9 @@
           "imageLocal": "uniques/helmets/heatshiver.webp",
           "explicitMods": [
             "(80–100)% increased Evasion Rating",
-            "60% increased Mana Regeneration Rate",
             "+(20–30)% to Fire Resistance",
             "+(20–30)% to Cold Resistance",
+            "60% increased Mana Regeneration Rate",
             "Gain 1% of Cold Damage as Extra Fire Damage per 1% Chill Effect on Enemy",
             "Gain 30% of Cold Damage as Extra Fire Damage against Frozen Enemies"
           ]
@@ -7729,9 +7772,9 @@
           "imageLocal": "uniques/helmets/replica_heatshiver.webp",
           "explicitMods": [
             "(80–100)% increased Evasion Rating",
-            "60% increased Mana Regeneration Rate",
             "+(20–30)% to Cold Resistance",
             "+(20–30)% to Lightning Resistance",
+            "60% increased Mana Regeneration Rate",
             "Gain 1% of Lightning Damage as Extra Cold Damage per 2% Shock Effect on Enemy"
           ],
           "isReplica": true
@@ -7747,11 +7790,11 @@
             "(60–100)% increased Evasion Rating",
             "(20–25)% chance to Avoid Elemental Ailments",
             "Recover (100–200) Life when you Suppress Spell Damage",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
             "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
             "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
           ]
         },
@@ -7851,10 +7894,10 @@
             "+(350–500) to Evasion Rating",
             "+2 to maximum Snipe Stages",
             "+(14–20)% chance to Suppress Spell Damage while Channelling",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ]
         },
         {
@@ -8471,8 +8514,8 @@
           "imageLocal": "uniques/helmets/the_bringer_of_rain.webp",
           "explicitMods": [
             "Socketed Gems are Supported by Level 30 Melee Physical Damage",
-            "Socketed Gems are Supported by Level 30 Faster Attacks",
             "Socketed Gems are supported by Level 30 Blind",
+            "Socketed Gems are Supported by Level 30 Faster Attacks",
             "6% Chance to Block Attack Damage",
             "Adds 20 to 30 Physical Damage to Attacks",
             "(200–300)% increased Armour and Evasion",
@@ -8661,8 +8704,8 @@
           "group": "armour",
           "imageLocal": "uniques/helmets/forbidden_shako.webp",
           "explicitMods": [
-            "Socketed Gems are Supported by Level (25–35) (1–165)",
-            "Socketed Gems are Supported by Level (1–10) (1–165)",
+            "Socketed Gems are Supported by Level (25–35) (1–168)",
+            "Socketed Gems are Supported by Level (1–10) (1–168)",
             "+(25–30) to all Attributes",
             "(Attributes are Strength, Dexterity, and Intelligence)"
           ],
@@ -8773,8 +8816,8 @@
             "20% increased Damage when on Low Life",
             "(60–100)% increased Armour and Energy Shield",
             "+(50–70) to maximum Energy Shield",
-            "20% reduced Mana Regeneration Rate",
             "+(43–61)% to Chaos Resistance",
+            "20% reduced Mana Regeneration Rate",
             "(You are on Low Life if you have 50% of your Maximum Life or less)",
             "(Attributes are Strength, Dexterity, and Intelligence)"
           ],
@@ -8910,8 +8953,8 @@
           "explicitMods": [
             "+(130–160) to maximum Energy Shield",
             "+(150–200) to maximum Mana",
-            "(30–40)% increased Mana Regeneration Rate",
             "+(20–30)% to Fire Resistance",
+            "(30–40)% increased Mana Regeneration Rate",
             "20% reduced Reservation Efficiency of Skills",
             "1% increased Armour per 50 Reserved Mana"
           ]
@@ -8929,6 +8972,24 @@
             "Damage of Enemies Hitting you is Unlucky while you have a Magic Ring Equipped",
             "You are Hexproof if you have a Magic Ring in right slot",
             "Take no Extra Damage from Critical Strikes if you have a Magic Ring in left slot",
+            "(Unlucky things are rolled twice and the worst result used)"
+          ],
+          "textBlocks": [
+            "(Unlucky things are rolled twice and the worst result used)"
+          ]
+        },
+        {
+          "id": "refuge_in_isolation_paladin_crown",
+          "name": "Refuge in Isolation",
+          "baseType": "Paladin Crown",
+          "group": "armour",
+          "imageLocal": "uniques/helmets/refuge_in_isolation.webp",
+          "explicitMods": [
+            "(350–650)% increased Armour",
+            "(-50–-40)% to all Elemental Resistances",
+            "+(13–29)% to Chaos Resistance",
+            "(15–30)% of Elemental Damage from Hits taken as Physical Damage",
+            "Physical Damage of Enemies Hitting you is Unlucky",
             "(Unlucky things are rolled twice and the worst result used)"
           ],
           "textBlocks": [
@@ -9061,8 +9122,8 @@
           "group": "armour",
           "imageLocal": "uniques/helmets/the_tempests_binding.webp",
           "explicitMods": [
-            "Socketed Gems are Supported by Level 18 Ice Bite",
             "Socketed Gems are Supported by Level 18 Innervate",
+            "Socketed Gems are Supported by Level 18 Ice Bite",
             "Grants Summon Harbinger of Storms Skill",
             "+(100–150) to Evasion Rating",
             "+(40–60) to maximum Energy Shield",
@@ -9098,8 +9159,8 @@
           "group": "armour",
           "imageLocal": "uniques/helmets/the_tempests_liberation.webp",
           "explicitMods": [
-            "Socketed Gems are Supported by Level 18 Ice Bite",
             "Socketed Gems are Supported by Level 18 Innervate",
+            "Socketed Gems are Supported by Level 18 Ice Bite",
             "Grants Summon Greater Harbinger of Storms Skill",
             "+(100–150) to Evasion Rating",
             "+(40–60) to maximum Energy Shield",
@@ -9332,7 +9393,7 @@
       "id": "gloves",
       "name": "Gloves",
       "group": "armour",
-      "total": 86,
+      "total": 87,
       "items": [
         {
           "id": "lochtonial_caress_iron_gauntlets",
@@ -9396,6 +9457,25 @@
             "(100–140)% increased Armour",
             "(10–20)% chance that if you would gain Rage on Hit, you instead gain up to your maximum Rage",
             "+(1–3) to Level of all Melee Skill Gems",
+            "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)"
+          ],
+          "textBlocks": [
+            "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)"
+          ]
+        },
+        {
+          "id": "the_caged_mammoth_antique_gauntlets",
+          "name": "The Caged Mammoth",
+          "baseType": "Antique Gauntlets",
+          "group": "armour",
+          "imageLocal": "uniques/gloves/the_caged_mammoth.webp",
+          "explicitMods": [
+            "Adds (6–10) to (16–22) Physical Damage to Attacks",
+            "(8–16)% increased Attack Speed",
+            "(80–120)% increased Armour",
+            "Lose (1–3) Rage per second",
+            "5% less Damage taken per 5 Rage, up to a maximum of 30%",
+            "Maximum Rage is Halved",
             "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)"
           ],
           "textBlocks": [
@@ -9624,10 +9704,10 @@
             "+(40–50) to maximum Life",
             "(-20–-10)% to Chaos Resistance",
             "2% increased Attack Critical Strike Chance per 200 Accuracy Rating",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ]
         },
         {
@@ -10154,13 +10234,15 @@
             "Has 2 Abyssal Sockets",
             "(6–10)% increased Cast Speed",
             "(4–6)% increased maximum Life",
-            "With a Ghastly Eye Jewel Socketed, Minions have +1000 to Accuracy Rating",
             "With a Hypnotic Eye Jewel Socketed, gain Arcane Surge on Hit with Spells",
+            "With a Ghastly Eye Jewel Socketed, Minions have 25% chance to\ngain Unholy Might on Hit with Spells",
             "(Only Abyss Jewels can be Socketed in Abyssal Sockets)",
+            "(Unholy Might grants 100% of Physical Damage converted to Chaos Damage and 25% chance to apply Withered on Hit and lasts for 4 seconds)",
             "(Arcane Surge grants 20% increased Cast Speed and 30% increased Mana Regeneration rate, for 4 seconds)"
           ],
           "textBlocks": [
             "(Only Abyss Jewels can be Socketed in Abyssal Sockets)",
+            "(Unholy Might grants 100% of Physical Damage converted to Chaos Damage and 25% chance to apply Withered on Hit and lasts for 4 seconds)",
             "(Arcane Surge grants 20% increased Cast Speed and 30% increased Mana Regeneration rate, for 4 seconds)"
           ]
         },
@@ -10174,13 +10256,15 @@
             "Has 1 Abyssal Socket",
             "(6–10)% increased Cast Speed",
             "(4–6)% increased maximum Life",
-            "With a Ghastly Eye Jewel Socketed, Minions have +1000 to Accuracy Rating",
             "With a Hypnotic Eye Jewel Socketed, gain Arcane Surge on Hit with Spells",
+            "With a Ghastly Eye Jewel Socketed, Minions have 25% chance to\ngain Unholy Might on Hit with Spells",
             "(Only Abyss Jewels can be Socketed in Abyssal Sockets)",
+            "(Unholy Might grants 100% of Physical Damage converted to Chaos Damage and 25% chance to apply Withered on Hit and lasts for 4 seconds)",
             "(Arcane Surge grants 20% increased Cast Speed and 30% increased Mana Regeneration rate, for 4 seconds)"
           ],
           "textBlocks": [
             "(Only Abyss Jewels can be Socketed in Abyssal Sockets)",
+            "(Unholy Might grants 100% of Physical Damage converted to Chaos Damage and 25% chance to apply Withered on Hit and lasts for 4 seconds)",
             "(Arcane Surge grants 20% increased Cast Speed and 30% increased Mana Regeneration rate, for 4 seconds)"
           ]
         },
@@ -11156,8 +11240,8 @@
           "imageLocal": "uniques/boots/goldwyrm.webp",
           "explicitMods": [
             "(20–40)% increased Rarity of Items found",
-            "60% increased Mana Regeneration Rate",
             "+(40–50)% to Fire Resistance",
+            "60% increased Mana Regeneration Rate",
             "10% increased Movement Speed"
           ]
         },
@@ -11172,11 +11256,11 @@
             "(20–30)% increased Movement Speed",
             "Cannot be Stunned by Suppressed Spell Damage",
             "Debilitate Enemies for 4 Seconds when you Suppress their Spell Damage",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
             "(Enemies that are Debilitated have 20% less Movement Speed and deal 10% less damage)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
             "(Enemies that are Debilitated have 20% less Movement Speed and deal 10% less damage)"
           ]
         },
@@ -11285,8 +11369,8 @@
             "+(30–40) to Dexterity",
             "(300–340)% increased Evasion Rating",
             "30% increased Movement Speed",
-            "Immune to Burning Ground, Shocked Ground and Chilled Ground",
             "Regenerate 100 Life per second while moving",
+            "Immune to Burning Ground, Shocked Ground and Chilled Ground",
             "+2 to Maximum Life per 10 Dexterity"
           ]
         },
@@ -11301,10 +11385,10 @@
             "180% increased Evasion Rating",
             "+(55–75) to maximum Life",
             "30% increased Movement Speed",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ]
         },
         {
@@ -12055,9 +12139,11 @@
             "30% increased Movement Speed",
             "All Damage inflicts Poison while affected by Glorious Madness",
             "Enemies you Kill while affected by Glorious Madness have a 40% chance to Explode, dealing a quarter of their Life as Chaos Damage",
+            "(Grants Glorious Madness. While under Glorious Madness gain a random Touched Debuff every 2 seconds. Using this skill again will remove Glorious Madness and the Touched Debuffs it inflicts, but you will be unable to Embrace Madness again until the cooldown expires)",
             "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)"
           ],
           "textBlocks": [
+            "(Grants Glorious Madness. While under Glorious Madness gain a random Touched Debuff every 2 seconds. Using this skill again will remove Glorious Madness and the Touched Debuffs it inflicts, but you will be unable to Embrace Madness again until the cooldown expires)",
             "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)"
           ]
         },
@@ -12075,7 +12161,11 @@
             "(150–300)% increased Armour and Evasion",
             "30% increased Movement Speed",
             "20% chance to deal Double Damage while affected by Glorious Madness",
-            "+15 to maximum Fortification while affected by Glorious Madness"
+            "+15 to maximum Fortification while affected by Glorious Madness",
+            "(Grants Glorious Madness. While under Glorious Madness gain a random Touched Debuff every 2 seconds. Using this skill again will remove Glorious Madness and the Touched Debuffs it inflicts, but you will be unable to Embrace Madness again until the cooldown expires)"
+          ],
+          "textBlocks": [
+            "(Grants Glorious Madness. While under Glorious Madness gain a random Touched Debuff every 2 seconds. Using this skill again will remove Glorious Madness and the Touched Debuffs it inflicts, but you will be unable to Embrace Madness again until the cooldown expires)"
           ]
         },
         {
@@ -12093,11 +12183,13 @@
             "(20–40)% increased Effect of Non-Damaging Ailments",
             "You have Igniting, Chilling and Shocking Conflux while affected by Glorious Madness",
             "Immune to Elemental Ailments while affected by Glorious Madness",
+            "(Grants Glorious Madness. While under Glorious Madness gain a random Touched Debuff every 2 seconds. Using this skill again will remove Glorious Madness and the Touched Debuffs it inflicts, but you will be unable to Embrace Madness again until the cooldown expires)",
             "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
             "(While you have Elemental Conflux, all Damage from Hits will cause Chill, Shock, and Ignite)",
             "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
           ],
           "textBlocks": [
+            "(Grants Glorious Madness. While under Glorious Madness gain a random Touched Debuff every 2 seconds. Using this skill again will remove Glorious Madness and the Touched Debuffs it inflicts, but you will be unable to Embrace Madness again until the cooldown expires)",
             "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
             "(While you have Elemental Conflux, all Damage from Hits will cause Chill, Shock, and Ignite)",
             "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
@@ -12163,7 +12255,7 @@
       "id": "shields",
       "name": "Shields",
       "group": "armour",
-      "total": 70,
+      "total": 71,
       "items": [
         {
           "id": "lycosidae_rawhide_tower_shield",
@@ -12378,6 +12470,30 @@
           "textBlocks": [
             "(Recently refers to the past 4 seconds)",
             "(Intimidated enemies take 10% increased Attack Damage)"
+          ]
+        },
+        {
+          "id": "cowards_wail_ezomyte_tower_shield",
+          "name": "Cowards' Wail",
+          "baseType": "Ezomyte Tower Shield",
+          "group": "armour",
+          "imageLocal": "uniques/shields/cowards_wail.webp",
+          "implicitMods": [
+            "+(30–40) to maximum Life"
+          ],
+          "explicitMods": [
+            "(120–240)% increased Armour",
+            "+(5–10)% Chance to Block",
+            "Totems which would be killed by Enemies become Spectral Totems for 8 seconds instead",
+            "Skills used by Spectral Totems deal (40–50)% less Damage",
+            "Maximum (3–5) Spectral Totems",
+            "Unwavering Stance",
+            "(Spectral Totems are intangible, untargetable, and undamageable, have 1 maximum Life, and cannot Taunt enemies. They are no longer counted as Summoned Totems, but modifiers that affect Totems also affect Spectral Totems)",
+            "(Cannot Evade enemy Attacks. Cannot be Stunned)"
+          ],
+          "textBlocks": [
+            "(Spectral Totems are intangible, untargetable, and undamageable, have 1 maximum Life, and cannot Taunt enemies. They are no longer counted as Summoned Totems, but modifiers that affect Totems also affect Spectral Totems)",
+            "(Cannot Evade enemy Attacks. Cannot be Stunned)"
           ]
         },
         {
@@ -13174,10 +13290,10 @@
             "(200–250)% increased Armour and Evasion",
             "+(9–13)% Chance to Block",
             "You take 20% of Damage from Blocked Hits",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ]
         },
         {
@@ -13882,8 +13998,8 @@
             "Adds (13–18) to (26–32) Chaos Damage to Attacks",
             "(8–12)% increased Attack Speed",
             "+(100–120) to maximum Energy Shield",
-            "40% reduced Energy Shield Recharge Rate",
-            "80% faster start of Energy Shield Recharge"
+            "80% faster start of Energy Shield Recharge",
+            "40% reduced Energy Shield Recharge Rate"
           ]
         },
         {
@@ -14048,7 +14164,7 @@
       "id": "amulets",
       "name": "Amulets",
       "group": "accessory",
-      "total": 89,
+      "total": 91,
       "items": [
         {
           "id": "atziris_foible_paua_amulet",
@@ -14512,10 +14628,10 @@
             "You do not inherently take less Damage for having Fortification",
             "+4% chance to Suppress Spell Damage per Fortification",
             "(15–25)% increased Attack and Cast Speed while at maximum Fortification",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ]
         },
         {
@@ -14810,11 +14926,11 @@
             "+(0–5)% to all maximum Elemental Resistances",
             "(0–40)% increased Attack and Cast Speed",
             "Damage Penetrates (0–20)% Elemental Resistances",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
             "(Maximum Resistances cannot be raised above 90%)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
             "(Maximum Resistances cannot be raised above 90%)"
           ],
           "notes": [
@@ -14889,14 +15005,14 @@
             "+(10–16) to all Attributes"
           ],
           "explicitMods": [
-            "Prevent +3% of Suppressed Spell Damage",
+            "Prevent +(4–6)% of Suppressed Spell Damage",
             "+(600–1000) to Accuracy Rating",
             "+(600–1000) to Evasion Rating",
             "Cannot be Blinded",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ]
         },
         {
@@ -14952,8 +15068,8 @@
           "explicitMods": [
             "Adds (20–24) to (33–36) Cold Damage",
             "+(50–70) to maximum Life",
-            "(45–50)% increased Mana Regeneration Rate",
             "+(20–25)% to Cold Resistance",
+            "(45–50)% increased Mana Regeneration Rate",
             "Frostbite has no Reservation if Cast as an Aura",
             "Gain Maddening Presence for 10 seconds when you Kill a Rare or Unique Enemy",
             "(Nearby Enemies will be afflicted with Malignant Madness, reducing their Damage and Action Speed by 10%)"
@@ -15240,8 +15356,8 @@
             "+(20–50) to Dexterity",
             "+(20–50) to Intelligence",
             "(10–15)% increased Global Defences",
-            "Critical Strikes inflict Malignant Madness if The Eater of Worlds is dominant",
             "Kill Enemies that have 15% or lower Life on Hit if The Searing Exarch is dominant",
+            "Critical Strikes inflict Malignant Madness if The Eater of Worlds is dominant",
             "(Armour, Evasion Rating and Energy Shield are the standard Defences)",
             "(Malignant Madness reduces Damage and Action Speed by 10%, for 8 seconds)"
           ],
@@ -15284,7 +15400,7 @@
           ],
           "explicitMods": [
             "+(5–10)% to all Elemental Resistances",
-            "+3 to Level of all (1–275) Gems",
+            "+3 to Level of all (1–282) Gems",
             "(5–10)% increased Reservation Efficiency of Skills",
             "Items and Gems have (5–10)% reduced Attribute Requirements",
             "(Attributes are Strength, Dexterity, and Intelligence)"
@@ -15439,6 +15555,30 @@
             "(20–25)% chance to lose an Endurance Charge when you gain Fortification"
           ],
           "isReplica": true
+        },
+        {
+          "id": "haunting_memories_turquoise_amulet",
+          "name": "Haunting Memories",
+          "baseType": "Turquoise Amulet",
+          "group": "accessory",
+          "imageLocal": "uniques/amulets/haunting_memories.webp",
+          "implicitMods": [
+            "+(16–24) to Dexterity and Intelligence"
+          ],
+          "explicitMods": [
+            "+(6–10)% chance to Suppress Spell Damage",
+            "+(20–30) to Dexterity and Intelligence",
+            "(50–100)% of Suppressed Spell Damage taken bypasses Energy Shield",
+            "(50–100)% of Suppressed Spell Damage taken Recouped as Energy Shield",
+            "+(40–60) to maximum Energy Shield",
+            "+(40–60) to maximum Life",
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
+            "(Only Damage from Hits can be Recouped, over 4 seconds following the Hit)"
+          ],
+          "textBlocks": [
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
+            "(Only Damage from Hits can be Recouped, over 4 seconds following the Hit)"
+          ]
         },
         {
           "id": "volls_devotion_agate_amulet",
@@ -15715,8 +15855,8 @@
             "(48–56)% increased Mana Regeneration Rate"
           ],
           "explicitMods": [
-            "0.5% of Chaos Damage Leeched as Life",
             "Lose (10–15) Life per Enemy Hit with Spells",
+            "0.5% of Chaos Damage Leeched as Life",
             "Lose (20–25) Life per Enemy Hit with Attacks",
             "Skills Chain +1 times",
             "(30–40)% increased Projectile Speed",
@@ -15749,6 +15889,29 @@
           ]
         },
         {
+          "id": "bonemeld_marble_amulet",
+          "name": "Bonemeld",
+          "baseType": "Marble Amulet",
+          "group": "accessory",
+          "imageLocal": "uniques/amulets/bonemeld.webp",
+          "implicitMods": [
+            "Regenerate (1.2–1.6)% of Life per second"
+          ],
+          "explicitMods": [
+            "+(10–20) to all Attributes",
+            "+(1–2) to Level of all Minion Skill Gems",
+            "-2% to all Resistances per Minion from your Non-Vaal Skills",
+            "(3–4)% increased Defences per Minion from your Non-Vaal Skills",
+            "Minions gain added Resistances equal to 50% of your Resistances",
+            "(Attributes are Strength, Dexterity, and Intelligence)",
+            "(Armour, Evasion Rating and Energy Shield are the standard Defences)"
+          ],
+          "textBlocks": [
+            "(Attributes are Strength, Dexterity, and Intelligence)",
+            "(Armour, Evasion Rating and Energy Shield are the standard Defences)"
+          ]
+        },
+        {
           "id": "whispers_of_infinity_seaglass_amulet",
           "name": "Whispers of Infinity",
           "baseType": "Seaglass Amulet",
@@ -15759,7 +15922,7 @@
           ],
           "explicitMods": [
             "(5–10) to (20–25) Added Attack Chaos Damage per 100 Maximum Mana",
-            "+(200–400) to maximum Energy Shield",
+            "+(50–100) to maximum Energy Shield",
             "(40–60)% reduced maximum Mana",
             "Skills Cost Energy Shield instead of Mana or Life"
           ]
@@ -15890,7 +16053,7 @@
       "id": "rings",
       "name": "Rings",
       "group": "accessory",
-      "total": 108,
+      "total": 109,
       "items": [
         {
           "id": "blackheart_iron_ring",
@@ -16486,8 +16649,8 @@
           ],
           "explicitMods": [
             "20% increased maximum Mana",
-            "50% increased Mana Regeneration Rate",
             "+(30–40)% to Cold Resistance",
+            "50% increased Mana Regeneration Rate",
             "Cannot be Chilled",
             "Cannot be Frozen"
           ]
@@ -17412,9 +17575,9 @@
             "All Sockets are White",
             "Socketed Gems have Elemental Equilibrium",
             "-20% to all Elemental Resistances",
-            "+(75–100)% to Fire Resistance when Socketed with a Red Gem",
             "+(75–100)% to Cold Resistance when Socketed with a Green Gem",
             "+(75–100)% to Lightning Resistance when Socketed with a Blue Gem",
+            "+(75–100)% to Fire Resistance when Socketed with a Red Gem",
             "(Hits that deal Elemental Damage remove Exposure to those Elements and inflict Exposure to other Elements, applying -25% to Resistances)"
           ],
           "textBlocks": [
@@ -17620,9 +17783,9 @@
             "All Sockets are White",
             "Socketed Gems have Secrets of Suffering",
             "-20% to all Elemental Resistances",
-            "+(75–100)% to Fire Resistance when Socketed with a Red Gem",
             "+(75–100)% to Cold Resistance when Socketed with a Green Gem",
             "+(75–100)% to Lightning Resistance when Socketed with a Blue Gem",
+            "+(75–100)% to Fire Resistance when Socketed with a Red Gem",
             "(Cannot Ignite, Chill, Freeze or Shock\nCritical Strikes inflict Scorch, Brittle and Sapped)"
           ],
           "textBlocks": [
@@ -17768,8 +17931,8 @@
             "Adds (26–32) to (42–48) Cold Damage to Attacks",
             "(6–10)% increased maximum Energy Shield",
             "(6–10)% increased maximum Life",
-            "(60–80)% increased Attack Damage if your other Ring is a Shaper Item",
-            "Cannot be Stunned by Attacks if your other Ring is an Elder Item"
+            "(60–80)% increased Attack Damage if your opposite Ring is a Shaper Item",
+            "Cannot be Stunned by Attacks if your opposite Ring is an Elder Item"
           ]
         },
         {
@@ -17791,6 +17954,27 @@
           ],
           "textBlocks": [
             "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)"
+          ]
+        },
+        {
+          "id": "woespike_steel_ring",
+          "name": "Woespike",
+          "baseType": "Steel Ring",
+          "group": "accessory",
+          "imageLocal": "uniques/rings/woespike.webp",
+          "implicitMods": [
+            "Adds (3–4) to (10–14) Physical Damage to Attacks"
+          ],
+          "explicitMods": [
+            "+(25–40) to Strength and Dexterity",
+            "Adds (8–12) to (18–24) Physical Damage to Attacks",
+            "(10–20)% chance to Impale Enemies on Hit with Attacks",
+            "(25–40)% reduced Impale Duration",
+            "(45–60)% chance on Melee Hit for the Strongest Impale on target to last for 1 additional Hit",
+            "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+          ],
+          "textBlocks": [
+            "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
           ]
         },
         {
@@ -17828,8 +18012,8 @@
             "Adds (13–18) to (50–56) Lightning Damage to Spells",
             "(6–10)% increased maximum Energy Shield",
             "(6–10)% increased maximum Life",
-            "(60–80)% increased Spell Damage if your other Ring is an Elder Item",
-            "Cannot be Stunned by Spells if your other Ring is a Shaper Item"
+            "(60–80)% increased Spell Damage if your opposite Ring is an Elder Item",
+            "Cannot be Stunned by Spells if your opposite Ring is a Shaper Item"
           ]
         },
         {
@@ -17846,8 +18030,8 @@
             "+(20–40)% to Fire Resistance",
             "+(20–40)% to Cold Resistance",
             "(10–20)% increased Duration of Ailments on Enemies",
-            "Left Ring slot: Cover Enemies in Ash for 5 seconds when you Ignite them",
             "Right Ring slot: Cover Enemies in Frost for 5 seconds when you Freeze them",
+            "Left Ring slot: Cover Enemies in Ash for 5 seconds when you Ignite them",
             "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
             "(Being Covered in Ash applies 20% less Movement Speed and 20% increased Fire Damage Taken)",
             "(Being Covered in Frost applies 50% less Critical Strike Chance and 20% increased Cold Damage Taken)"
@@ -17886,7 +18070,7 @@
           "group": "accessory",
           "imageLocal": "uniques/rings/kalandras_touch.webp",
           "explicitMods": [
-            "Reflects your other Ring"
+            "Reflects opposite Ring"
           ]
         }
       ]
@@ -17967,8 +18151,8 @@
             "0.4% of Physical Attack Damage Leeched as Life",
             "60% increased Flask Effect Duration",
             "30% reduced Flask Charges gained during any Flask Effect",
-            "200% of Life Leech applies to Enemies as Chaos Damage",
             "15% increased Movement Speed during any Flask Effect",
+            "200% of Life Leech applies to Enemies as Chaos Damage",
             "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
           ],
           "textBlocks": [
@@ -18670,12 +18854,12 @@
             "10% reduced Armour per 50 Strength",
             "Imbalanced Guard",
             "(The Stun Threshold determines how much Damage can Stun something)",
-            "(100% chance to Defend with Double Armour. Maximum Damage Reduction for any Damage Type is 50%)",
+            "(100% chance to Defend with 200% of Armour. Maximum Damage Reduction for any Damage Type is 50%)",
             "(Armour is treated as this percentage of its actual value, only for calculating damage mitigation)"
           ],
           "textBlocks": [
             "(The Stun Threshold determines how much Damage can Stun something)",
-            "(100% chance to Defend with Double Armour. Maximum Damage Reduction for any Damage Type is 50%)",
+            "(100% chance to Defend with 200% of Armour. Maximum Damage Reduction for any Damage Type is 50%)",
             "(Armour is treated as this percentage of its actual value, only for calculating damage mitigation)"
           ]
         },
@@ -19045,8 +19229,8 @@
           ],
           "explicitMods": [
             "+(20–40) to Strength",
-            "(30–40)% less Minimum Physical Attack Damage",
             "(30–40)% more Maximum Physical Attack Damage",
+            "(30–40)% less Minimum Physical Attack Damage",
             "Adds 1 to (15–20) Physical Damage to Attacks",
             "+(80–100) to maximum Life",
             "Gain 50 Life when you Stun an Enemy"
@@ -19207,8 +19391,8 @@
           "imageLocal": "uniques/life-flasks/blood_of_the_karui.webp",
           "explicitMods": [
             "50% increased Life Recovered",
-            "(35–50)% reduced Recovery rate",
-            "Recover Full Life at the end of the Effect"
+            "Recover Full Life at the end of the Effect",
+            "(35–50)% reduced Recovery rate"
           ]
         }
       ]
@@ -19217,7 +19401,7 @@
       "id": "mana-flasks",
       "name": "Mana Flasks",
       "group": "flask",
-      "total": 4,
+      "total": 5,
       "items": [
         {
           "id": "doedres_elixir_greater_mana_flask",
@@ -19247,6 +19431,21 @@
           ],
           "textBlocks": [
             "(Last Breath recovers an amount of life per second based on mana cost. It lasts for 4 seconds, but is removed if you are hit)"
+          ]
+        },
+        {
+          "id": "wellwater_phylactery_colossal_mana_flask",
+          "name": "Wellwater Phylactery",
+          "baseType": "Colossal Mana Flask",
+          "group": "flask",
+          "imageLocal": "uniques/mana-flasks/wellwater_phylactery.webp",
+          "explicitMods": [
+            "(150–200)% increased Amount Recovered",
+            "(40–60)% less Duration",
+            "(200–300)% increased Charges per use",
+            "Removes (10–15)% of Life when Used",
+            "Starts Energy Shield Recharge when Used",
+            "Energy Shield Recharge is not delayed by Damage during Effect"
           ]
         },
         {
@@ -19531,8 +19730,8 @@
           "imageLocal": "uniques/utility-flasks/atziris_promise.webp",
           "explicitMods": [
             "Gain (5–8)% of Elemental Damage as Extra Chaos Damage during effect",
-            "2% of Chaos Damage Leeched as Life during Effect",
             "Gain (5–8)% of Physical Damage as Extra Chaos Damage during effect",
+            "2% of Chaos Damage Leeched as Life during Effect",
             "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
           ],
           "textBlocks": [
@@ -19863,7 +20062,7 @@
           "name": "Olroth's Resolve",
           "baseType": "Iron Flask",
           "group": "flask",
-          "imageLocal": "uniques/iron-flasks/olroths_resolve.png",
+          "imageLocal": "uniques/iron-flasks/olroths_resolve.webp",
           "implicitMods": [
             "Restores Ward on use"
           ],
@@ -19878,7 +20077,7 @@
           "name": "Starlight Chalice",
           "baseType": "Iron Flask",
           "group": "flask",
-          "imageLocal": "uniques/iron-flasks/starlight_chalice.png",
+          "imageLocal": "uniques/iron-flasks/starlight_chalice.webp",
           "implicitMods": [
             "Restores Ward on use"
           ],
@@ -19899,7 +20098,7 @@
           "name": "Elixir of the Unbroken Circle",
           "baseType": "Iron Flask",
           "group": "flask",
-          "imageLocal": "uniques/iron-flasks/elixir_of_the_unbroken_circle.png",
+          "imageLocal": "uniques/iron-flasks/elixir_of_the_unbroken_circle.webp",
           "implicitMods": [
             "Restores Ward on use"
           ],
@@ -19914,7 +20113,7 @@
           "name": "Vorana's Preparation",
           "baseType": "Iron Flask",
           "group": "flask",
-          "imageLocal": "uniques/iron-flasks/voranas_preparation.png",
+          "imageLocal": "uniques/iron-flasks/voranas_preparation.webp",
           "implicitMods": [
             "Restores Ward on use"
           ],
@@ -19944,7 +20143,7 @@
           "name": "Kiara's Determination",
           "baseType": "Silver Flask",
           "group": "flask",
-          "imageLocal": "uniques/silver-flasks/kiaras_determination.png",
+          "imageLocal": "uniques/silver-flasks/kiaras_determination.webp",
           "explicitMods": [
             "(60–80)% reduced Duration",
             "Immunity to Freeze, Chill, Curses and Stuns during Effect"
@@ -19955,7 +20154,7 @@
           "name": "Cinderswallow Urn",
           "baseType": "Silver Flask",
           "group": "flask",
-          "imageLocal": "uniques/silver-flasks/cinderswallow_urn.png",
+          "imageLocal": "uniques/silver-flasks/cinderswallow_urn.webp",
           "explicitMods": [
             "+(10–20) to Maximum Charges",
             "(175–200)% increased Charges per use",
@@ -20075,7 +20274,7 @@
           "name": "Brawn",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/brawn.png",
+          "imageLocal": "uniques/crimson-jewels/brawn.webp",
           "explicitMods": [
             "(4–6)% increased Strength",
             "(4–6)% increased Dexterity",
@@ -20087,7 +20286,7 @@
           "name": "Inertia",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/inertia.png",
+          "imageLocal": "uniques/crimson-jewels/inertia.webp",
           "explicitMods": [
             "+(16–24) to Strength",
             "Dexterity from Passives in Radius is Transformed to Strength"
@@ -20113,7 +20312,7 @@
           "name": "Survival Skills",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/survival_skills.png",
+          "imageLocal": "uniques/crimson-jewels/survival_skills.webp",
           "explicitMods": [
             "Flasks gain 2 Charges when you hit a Non-Unique Enemy, no more than once per second",
             "80% less Flask Charges gained from Kills"
@@ -20124,7 +20323,7 @@
           "name": "Inspired Learning",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/inspired_learning.png",
+          "imageLocal": "uniques/crimson-jewels/inspired_learning.webp",
           "explicitMods": [
             "With 4 Notables Allocated in Radius, When you Kill a Rare monster, you gain 1 of its Modifiers for 20 seconds"
           ]
@@ -20134,7 +20333,7 @@
           "name": "Martial Artistry",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/martial_artistry.png",
+          "imageLocal": "uniques/crimson-jewels/martial_artistry.webp",
           "explicitMods": [
             "+(0.3–0.4) metres to Melee Strike Range with Unarmed Attacks",
             "Passive Skills in Radius also grant: 1% increased Unarmed Attack Speed with Melee Skills",
@@ -20151,7 +20350,7 @@
           "name": "Spire of Stone",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/spire_of_stone.png",
+          "imageLocal": "uniques/crimson-jewels/spire_of_stone.webp",
           "explicitMods": [
             "3% increased Totem Life per 10 Strength Allocated in Radius",
             "Totems cannot be Stunned"
@@ -20162,7 +20361,7 @@
           "name": "Mantra of Flames",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/mantra_of_flames.png",
+          "imageLocal": "uniques/crimson-jewels/mantra_of_flames.webp",
           "explicitMods": [
             "Adds (3–5) to (8–12) Fire Attack Damage per Buff on you",
             "Adds (2–3) to (5–8) Fire Spell Damage per Buff on you"
@@ -20173,7 +20372,7 @@
           "name": "Combustibles",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/combustibles.png",
+          "imageLocal": "uniques/crimson-jewels/combustibles.webp",
           "explicitMods": [
             "10% reduced Quantity of Items found",
             "(20–30)% increased Burning Damage"
@@ -20204,11 +20403,11 @@
           "name": "Fragile Bloom",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/fragile_bloom.png",
+          "imageLocal": "uniques/crimson-jewels/fragile_bloom.webp",
           "explicitMods": [
             "Maximum 10 Fragile Regrowth",
-            "Lose all Fragile Regrowth when Hit",
             "0.7% of Life Regenerated per second per Fragile Regrowth",
+            "Lose all Fragile Regrowth when Hit",
             "Gain 1 Fragile Regrowth each second"
           ]
         },
@@ -20217,7 +20416,7 @@
           "name": "Rain of Splinters",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/rain_of_splinters.png",
+          "imageLocal": "uniques/crimson-jewels/rain_of_splinters.webp",
           "explicitMods": [
             "(30–50)% reduced Totem Damage",
             "Totems fire 2 additional Projectiles"
@@ -20232,7 +20431,7 @@
           "name": "Efficient Training",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/efficient_training.png",
+          "imageLocal": "uniques/crimson-jewels/efficient_training.webp",
           "explicitMods": [
             "+(16–24) to Strength",
             "Intelligence from Passives in Radius is Transformed to Strength"
@@ -20247,9 +20446,9 @@
           "name": "Atziri's Reign",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/atziris_reign.png",
+          "imageLocal": "uniques/crimson-jewels/atziris_reign.webp",
           "explicitMods": [
-            "(15–20)% increased Vaal Skill Effect Duration",
+            "Vaal Skills have (15–20)% increased Skill Effect Duration",
             "Vaal Skills have (15–20)% chance to regain consumed Souls when used"
           ],
           "notes": [
@@ -20262,7 +20461,7 @@
           "name": "Blood Sacrifice",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/blood_sacrifice.png",
+          "imageLocal": "uniques/crimson-jewels/blood_sacrifice.webp",
           "explicitMods": [
             "Lose 1% of Life on Kill",
             "Recover 1% of Mana on Kill",
@@ -20278,7 +20477,7 @@
           "name": "Warlord's Reach",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/warlords_reach.png",
+          "imageLocal": "uniques/crimson-jewels/warlords_reach.webp",
           "explicitMods": [
             "10% increased Attack Damage",
             "+0.2 metres to Melee Strike Range",
@@ -20293,7 +20492,7 @@
           "name": "Conqueror's Efficiency",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/conquerors_efficiency.png",
+          "imageLocal": "uniques/crimson-jewels/conquerors_efficiency.webp",
           "explicitMods": [
             "3% reduced Mana Cost of Skills",
             "4% increased Skill Effect Duration",
@@ -20305,7 +20504,7 @@
           "name": "Ancient Waystones",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/ancient_waystones.png",
+          "imageLocal": "uniques/crimson-jewels/ancient_waystones.webp",
           "explicitMods": [
             "60% reduced Cost of Aura Skills that summon Totems"
           ],
@@ -20339,7 +20538,7 @@
           "name": "Fragility",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/fragility.png",
+          "imageLocal": "uniques/crimson-jewels/fragility.webp",
           "explicitMods": [
             "-1 to Maximum Endurance Charges"
           ],
@@ -20353,7 +20552,7 @@
           "name": "Fireborn",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/fireborn.png",
+          "imageLocal": "uniques/crimson-jewels/fireborn.webp",
           "explicitMods": [
             "Increases and Reductions to other Damage Types in Radius are Transformed to apply to Fire Damage",
             "(The Damage Types are Physical, Fire, Cold, Lightning, and Chaos)"
@@ -20367,7 +20566,7 @@
           "name": "Energised Armour",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/energised_armour.png",
+          "imageLocal": "uniques/crimson-jewels/energised_armour.webp",
           "explicitMods": [
             "(15–20)% increased Armour",
             "Increases and Reductions to Energy Shield in Radius are Transformed to apply to Armour at 200% of their value"
@@ -20382,7 +20581,7 @@
           "name": "Might in All Forms",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/might_in_all_forms.png",
+          "imageLocal": "uniques/crimson-jewels/might_in_all_forms.webp",
           "explicitMods": [
             "Dexterity and Intelligence from passives in Radius count towards Strength Melee Damage bonus"
           ]
@@ -20392,7 +20591,7 @@
           "name": "Izaro's Turmoil",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/izaros_turmoil.png",
+          "imageLocal": "uniques/crimson-jewels/izaros_turmoil.webp",
           "explicitMods": [
             "(18–25)% increased Fire Damage",
             "(18–25)% increased Cold Damage",
@@ -20411,7 +20610,7 @@
           "name": "The Vigil",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/the_vigil.png",
+          "imageLocal": "uniques/crimson-jewels/the_vigil.webp",
           "explicitMods": [
             "(10–15)% increased Armour",
             "With at least 40 Strength in Radius, Hits with Vigilant Strike Fortify you and Nearby Allies for 8 seconds",
@@ -20428,7 +20627,7 @@
           "name": "Rapid Expansion",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/rapid_expansion.png",
+          "imageLocal": "uniques/crimson-jewels/rapid_expansion.webp",
           "explicitMods": [
             "(8–12)% increased Global Physical Damage",
             "With at least 40 Strength in Radius, Ground Slam\nhas a 50% increased angle",
@@ -20440,7 +20639,7 @@
           "name": "Shattered Chains",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/shattered_chains.png",
+          "imageLocal": "uniques/crimson-jewels/shattered_chains.webp",
           "explicitMods": [
             "(10–15)% increased Cold Damage",
             "With at least 40 Strength in Radius, 20% increased\nRarity of Items dropped by Enemies Shattered by Glacial Hammer"
@@ -20451,7 +20650,7 @@
           "name": "Weight of the Empire",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/weight_of_the_empire.png",
+          "imageLocal": "uniques/crimson-jewels/weight_of_the_empire.webp",
           "explicitMods": [
             "(8–12)% increased Global Physical Damage",
             "With at least 40 Strength in Radius, Heavy Strike has a\n20% chance to deal Double Damage"
@@ -20462,7 +20661,7 @@
           "name": "Emperor's Might",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/emperors_might.png",
+          "imageLocal": "uniques/crimson-jewels/emperors_might.webp",
           "explicitMods": [
             "(4–6)% increased Strength",
             "10% increased Damage",
@@ -20474,7 +20673,7 @@
           "name": "Grand Spectrum",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/grand_spectrum.png",
+          "imageLocal": "uniques/crimson-jewels/grand_spectrum.webp",
           "explicitMods": [
             "+7% to all Elemental Resistances per Grand Spectrum",
             "number of stackable unique jewels [1]"
@@ -20488,7 +20687,7 @@
           "name": "Coated Shrapnel",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/coated_shrapnel.png",
+          "imageLocal": "uniques/crimson-jewels/coated_shrapnel.webp",
           "explicitMods": [
             "Traps and Mines have a 25% chance to Poison on Hit",
             "Passive Skills in Radius also grant: Traps and Mines deal (2–3) to (4–6) added Physical Damage",
@@ -20513,7 +20712,7 @@
           "name": "Primordial Might",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/primordial_might.png",
+          "imageLocal": "uniques/crimson-jewels/primordial_might.webp",
           "explicitMods": [
             "(25–30)% increased Damage if you Summoned a Golem in the past 8 seconds",
             "Golems Summoned in the past 8 seconds deal (35–45)% increased Damage",
@@ -20531,7 +20730,7 @@
           "name": "The Red Dream",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/the_red_dream.png",
+          "imageLocal": "uniques/crimson-jewels/the_red_dream.webp",
           "explicitMods": [
             "Gain (6–10)% of Fire Damage as Extra Chaos Damage",
             "Passives granting Fire Resistance or all Elemental Resistances in Radius\nalso grant an equal chance to gain an Endurance Charge on Kill"
@@ -20542,7 +20741,7 @@
           "name": "The Red Nightmare",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/the_red_nightmare.png",
+          "imageLocal": "uniques/crimson-jewels/the_red_nightmare.webp",
           "explicitMods": [
             "Gain (6–10)% of Fire Damage as Extra Chaos Damage",
             "Passives granting Fire Resistance or all Elemental Resistances in Radius\nalso grant Chance to Block Attack Damage at 50% of its value"
@@ -20553,7 +20752,7 @@
           "name": "Winter Burial",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/winter_burial.png",
+          "imageLocal": "uniques/crimson-jewels/winter_burial.webp",
           "explicitMods": [
             "(10–15)% increased Cold Damage",
             "With at least 40 Strength in Radius, 25% of Glacial\nHammer Physical Damage Converted to Cold Damage",
@@ -20565,7 +20764,7 @@
           "name": "Wildfire",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/wildfire.png",
+          "imageLocal": "uniques/crimson-jewels/wildfire.webp",
           "explicitMods": [
             "(10–15)% increased Fire Damage",
             "With at least 40 Strength in Radius, Molten Strike Projectiles Chain on impacting ground",
@@ -20578,7 +20777,7 @@
           "name": "Overwhelming Odds",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/overwhelming_odds.png",
+          "imageLocal": "uniques/crimson-jewels/overwhelming_odds.webp",
           "explicitMods": [
             "(10–15)% increased Global Physical Damage",
             "With at least 40 Strength in Radius, Hits with Cleave Fortify",
@@ -20596,7 +20795,7 @@
           "name": "Might of the Meek",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/might_of_the_meek.png",
+          "imageLocal": "uniques/crimson-jewels/might_of_the_meek.webp",
           "explicitMods": [
             "50% increased Effect of non-Keystone Passive Skills in Radius",
             "Notable Passive Skills in Radius grant nothing"
@@ -20607,7 +20806,7 @@
           "name": "Tempered Flesh",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/tempered_flesh.png",
+          "imageLocal": "uniques/crimson-jewels/tempered_flesh.webp",
           "explicitMods": [
             "-1 Strength per 1 Strength on Allocated Passives in Radius",
             "2% increased Life Recovery Rate per 10 Strength on Allocated Passives in Radius"
@@ -20618,7 +20817,7 @@
           "name": "Combat Focus",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/combat_focus.png",
+          "imageLocal": "uniques/crimson-jewels/combat_focus.webp",
           "explicitMods": [
             "(10–15)% increased Elemental Damage",
             "With 40 total Strength and Intelligence in Radius, Prismatic Skills deal 50% less Cold Damage",
@@ -20630,7 +20829,7 @@
           "name": "Transcendent Flesh",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/transcendent_flesh.png",
+          "imageLocal": "uniques/crimson-jewels/transcendent_flesh.webp",
           "explicitMods": [
             "-1 Strength per 1 Strength on Allocated Passives in Radius",
             "+7% to Critical Strike Multiplier per 10 Strength on Unallocated Passives in Radius",
@@ -20643,7 +20842,7 @@
           "name": "Thread of Hope",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/thread_of_hope.png",
+          "imageLocal": "uniques/crimson-jewels/thread_of_hope.webp",
           "explicitMods": [
             "Only affects Passives in Small Ring",
             "Passives in Radius can be Allocated without being connected to your tree",
@@ -20659,7 +20858,7 @@
           "name": "Split Personality",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/split_personality.png",
+          "imageLocal": "uniques/crimson-jewels/split_personality.webp",
           "explicitMods": [
             "This Jewel's Socket has 25% increased effect per Allocated Passive Skill between\nit and your Class' starting location",
             "[Two random modifiers]",
@@ -20678,7 +20877,7 @@
           "name": "Replica Conqueror's Efficiency",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/replica_conquerors_efficiency.png",
+          "imageLocal": "uniques/crimson-jewels/replica_conquerors_efficiency.webp",
           "explicitMods": [
             "4% increased Skill Effect Duration",
             "+5 to Maximum Rage",
@@ -20695,12 +20894,12 @@
           "name": "Replica Fragile Bloom",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/replica_fragile_bloom.png",
+          "imageLocal": "uniques/crimson-jewels/replica_fragile_bloom.webp",
           "explicitMods": [
             "Maximum 5 Fragile Regrowth",
             "0.7% of Life Regenerated per second per Fragile Regrowth",
-            "Lose 1 Fragile Regrowth each second",
-            "Gain up to maximum Fragile Regrowth when Hit"
+            "Gain up to maximum Fragile Regrowth when Hit",
+            "Lose 1 Fragile Regrowth each second"
           ],
           "isReplica": true
         },
@@ -20709,7 +20908,7 @@
           "name": "Replica Blood Sacrifice",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/replica_blood_sacrifice.png",
+          "imageLocal": "uniques/crimson-jewels/replica_blood_sacrifice.webp",
           "explicitMods": [
             "Recover 1% of Life on Kill",
             "Recover 1% of Energy Shield on Kill",
@@ -20722,7 +20921,7 @@
           "name": "Replica Primordial Might",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/replica_primordial_might.png",
+          "imageLocal": "uniques/crimson-jewels/replica_primordial_might.webp",
           "explicitMods": [
             "-1 to maximum number of Summoned Golems",
             "(25–30)% increased Damage if you Summoned a Golem in the past 8 seconds",
@@ -20742,7 +20941,7 @@
           "name": "Dissolution of the Flesh",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/dissolution_of_the_flesh.png",
+          "imageLocal": "uniques/crimson-jewels/dissolution_of_the_flesh.webp",
           "explicitMods": [
             "Removes all Energy Shield",
             "Life that would be lost by taking Damage is instead Reserved\nuntil you take no Damage to Life for 2 seconds",
@@ -20754,7 +20953,7 @@
           "name": "Forbidden Flame",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/forbidden_flame.png",
+          "imageLocal": "uniques/crimson-jewels/forbidden_flame.webp",
           "explicitMods": [
             "Allocates Passive Skill if you have the matching modifier on Forbidden Flesh"
           ],
@@ -20768,7 +20967,7 @@
           "name": "Divine Inferno",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/divine_inferno.png",
+          "imageLocal": "uniques/crimson-jewels/divine_inferno.webp",
           "explicitMods": [
             "With at least 40 Strength in Radius, Combust is Disabled",
             "With at least 40 Strength in Radius, Attacks Exerted by Infernal Cry deal (40–60)% more Damage with Ignite"
@@ -20779,7 +20978,7 @@
           "name": "Thread of Hope",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/thread_of_hope.png",
+          "imageLocal": "uniques/crimson-jewels/thread_of_hope.webp",
           "explicitMods": [
             "Only affects Passives in Massive Ring",
             "Passives in Radius can be Allocated without being connected to your tree",
@@ -20795,7 +20994,7 @@
           "name": "Grand Spectrum",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/grand_spectrum.png",
+          "imageLocal": "uniques/crimson-jewels/grand_spectrum.webp",
           "explicitMods": [
             "+1 to Minimum Endurance Charges per Grand Spectrum",
             "number of stackable unique jewels [1]"
@@ -20809,7 +21008,7 @@
           "name": "Grand Spectrum",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/grand_spectrum.png",
+          "imageLocal": "uniques/crimson-jewels/grand_spectrum.webp",
           "explicitMods": [
             "5% increased Maximum Life per Grand Spectrum",
             "number of stackable unique jewels [1]"
@@ -20823,7 +21022,7 @@
           "name": "Firesong",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/firesong.png",
+          "imageLocal": "uniques/crimson-jewels/firesong.webp",
           "explicitMods": [
             "+(10–15)% to Fire Resistance",
             "Modifiers to Ignite Duration on you apply to all Elemental Ailments",
@@ -20838,7 +21037,7 @@
           "name": "Immutable Force",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/immutable_force.png",
+          "imageLocal": "uniques/crimson-jewels/immutable_force.webp",
           "explicitMods": [
             "(500–1000)% increased Stun and Block Recovery"
           ]
@@ -20848,7 +21047,7 @@
           "name": "Bloodnotch",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/bloodnotch.png",
+          "imageLocal": "uniques/crimson-jewels/bloodnotch.webp",
           "explicitMods": [
             "(40–60)% of Damage taken from Stunning Hits is Recovered as Life"
           ]
@@ -20858,7 +21057,7 @@
           "name": "Warrior's Tale",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/warriors_tale.png",
+          "imageLocal": "uniques/crimson-jewels/warriors_tale.webp",
           "explicitMods": [
             "100% increased effect of Tattoos in Radius"
           ]
@@ -20868,7 +21067,7 @@
           "name": "That Which Was Taken",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/that_which_was_taken.png",
+          "imageLocal": "uniques/crimson-jewels/that_which_was_taken.webp",
           "explicitMods": [
             "4 random Charm modifiers"
           ]
@@ -20878,7 +21077,7 @@
           "name": "The Adorned",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/the_adorned.png",
+          "imageLocal": "uniques/crimson-jewels/the_adorned.webp",
           "explicitMods": [
             "(0–100)% increased Effect of Jewel Socket Passive Skills containing Corrupted Magic Jewels"
           ],
@@ -20892,7 +21091,7 @@
           "name": "Replica Fragility",
           "baseType": "Crimson Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/crimson-jewels/replica_fragility.png",
+          "imageLocal": "uniques/crimson-jewels/replica_fragility.webp",
           "explicitMods": [
             "Lose an Endurance Charge each second"
           ],
@@ -20915,7 +21114,7 @@
           "name": "Fluid Motion",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/fluid_motion.png",
+          "imageLocal": "uniques/viridian-jewels/fluid_motion.webp",
           "explicitMods": [
             "+(16–24) to Dexterity",
             "Strength from Passives in Radius is Transformed to Dexterity"
@@ -20930,7 +21129,7 @@
           "name": "Intuitive Leap",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/intuitive_leap.png",
+          "imageLocal": "uniques/viridian-jewels/intuitive_leap.webp",
           "explicitMods": [
             "Passives in Radius can be Allocated without being connected to your tree"
           ]
@@ -20940,7 +21139,7 @@
           "name": "Lioneye's Fall",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/lioneyes_fall.png",
+          "imageLocal": "uniques/viridian-jewels/lioneyes_fall.webp",
           "explicitMods": [
             "Melee and Melee Weapon Type modifiers in Radius are Transformed to Bow Modifiers"
           ]
@@ -20950,7 +21149,7 @@
           "name": "Survival Instincts",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/survival_instincts.png",
+          "imageLocal": "uniques/viridian-jewels/survival_instincts.webp",
           "explicitMods": [
             "20% reduced Flask Charges gained",
             "50% increased Flask Effect Duration"
@@ -20971,14 +21170,14 @@
           "name": "Apparitions",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/apparitions.png",
+          "imageLocal": "uniques/viridian-jewels/apparitions.webp",
           "explicitMods": [
             "Minions have (5–10)% increased Movement Speed",
             "Minions have +(2–5)% chance to Suppress Spell Damage",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ]
         },
         {
@@ -20986,7 +21185,7 @@
           "name": "Hotheaded",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/hotheaded.png",
+          "imageLocal": "uniques/viridian-jewels/hotheaded.webp",
           "explicitMods": [
             "(10–20)% increased Movement Speed while Ignited",
             "(10–20)% increased Attack Speed while Ignited",
@@ -20998,7 +21197,7 @@
           "name": "Weight of Sin",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/weight_of_sin.png",
+          "imageLocal": "uniques/viridian-jewels/weight_of_sin.webp",
           "explicitMods": [
             "(15–20)% increased Chaos Damage",
             "15% reduced Movement Speed"
@@ -21042,7 +21241,7 @@
           "name": "Careful Planning",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/careful_planning.png",
+          "imageLocal": "uniques/viridian-jewels/careful_planning.webp",
           "explicitMods": [
             "+(16–24) to Dexterity",
             "Intelligence from Passives in Radius is Transformed to Dexterity"
@@ -21057,7 +21256,7 @@
           "name": "Hidden Potential",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/hidden_potential.png",
+          "imageLocal": "uniques/viridian-jewels/hidden_potential.webp",
           "explicitMods": [
             "(20–25)% increased Damage for each Magic Item Equipped",
             "(Flasks and Jewels are not Equipped)"
@@ -21075,7 +21274,7 @@
           "name": "Sacrificial Harvest",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/sacrificial_harvest.png",
+          "imageLocal": "uniques/viridian-jewels/sacrificial_harvest.webp",
           "explicitMods": [
             "(20–30)% chance to gain an additional Vaal Soul on Kill"
           ],
@@ -21089,7 +21288,7 @@
           "name": "Self-Flagellation",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/self_flagellation.png",
+          "imageLocal": "uniques/viridian-jewels/self_flagellation.webp",
           "explicitMods": [
             "(10–20)% increased Damage per Curse on you",
             "An additional Curse can be applied to you"
@@ -21104,7 +21303,7 @@
           "name": "Poacher's Aim",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/poachers_aim.png",
+          "imageLocal": "uniques/viridian-jewels/poachers_aim.webp",
           "explicitMods": [
             "Projectiles Pierce an additional Target",
             "10% increased Projectile Damage"
@@ -21115,16 +21314,16 @@
           "name": "Conqueror's Longevity",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/conquerors_longevity.png",
+          "imageLocal": "uniques/viridian-jewels/conquerors_longevity.webp",
           "explicitMods": [
             "+3% chance to Suppress Spell Damage",
             "10% chance to Avoid Elemental Ailments",
             "10% increased Life Recovery from Flasks",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
             "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
             "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
           ]
         },
@@ -21133,7 +21332,7 @@
           "name": "Chill of Corruption",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/chill_of_corruption.png",
+          "imageLocal": "uniques/viridian-jewels/chill_of_corruption.webp",
           "explicitMods": [
             "50% chance to gain an additional Vaal Soul per Enemy Shattered"
           ],
@@ -21147,7 +21346,7 @@
           "name": "Hungry Abyss",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/hungry_abyss.png",
+          "imageLocal": "uniques/viridian-jewels/hungry_abyss.webp",
           "explicitMods": [
             "With 5 Corrupted Items Equipped: Life Leech recovers based on your Chaos Damage instead",
             "(Flasks and Jewels are not Equipped)"
@@ -21165,7 +21364,7 @@
           "name": "Pacifism",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/pacifism.png",
+          "imageLocal": "uniques/viridian-jewels/pacifism.webp",
           "explicitMods": [
             "-1 to Maximum Frenzy Charges"
           ],
@@ -21179,7 +21378,7 @@
           "name": "Pugilist",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/pugilist.png",
+          "imageLocal": "uniques/viridian-jewels/pugilist.webp",
           "explicitMods": [
             "1% increased Evasion Rating per 3 Dexterity Allocated in Radius",
             "1% increased Claw Physical Damage per 3 Dexterity Allocated in Radius",
@@ -21195,7 +21394,7 @@
           "name": "Cold Steel",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/cold_steel.png",
+          "imageLocal": "uniques/viridian-jewels/cold_steel.webp",
           "explicitMods": [
             "Increases and Reductions to Physical Damage in Radius are Transformed to apply to Cold Damage",
             "Increases and Reductions to Cold Damage in Radius are Transformed to apply to Physical Damage"
@@ -21206,7 +21405,7 @@
           "name": "Static Electricity",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/static_electricity.png",
+          "imageLocal": "uniques/viridian-jewels/static_electricity.webp",
           "explicitMods": [
             "Adds 1 to 2 Lightning Damage to Attacks",
             "Adds 1 maximum Lightning Damage to Attacks per 1 Dexterity Allocated in Radius"
@@ -21217,7 +21416,7 @@
           "name": "Volley Fire",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/volley_fire.png",
+          "imageLocal": "uniques/viridian-jewels/volley_fire.webp",
           "explicitMods": [
             "(7–10)% increased Projectile Damage",
             "With at least 40 Dexterity in Radius, Barrage fires an additional 6 projectiles simultaneously on the first and final attacks"
@@ -21228,7 +21427,7 @@
           "name": "Spirit Guards",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/spirit_guards.png",
+          "imageLocal": "uniques/viridian-jewels/spirit_guards.webp",
           "explicitMods": [
             "Minions deal (8–12)% increased Damage",
             "With at least 40 Dexterity in Radius, Animate Weapon can Animate up to 20 Ranged Weapons"
@@ -21239,7 +21438,7 @@
           "name": "Pitch Darkness",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/pitch_darkness.png",
+          "imageLocal": "uniques/viridian-jewels/pitch_darkness.webp",
           "explicitMods": [
             "+10% to Fire Damage over Time Multiplier",
             "(10–15)% increased Fire Damage"
@@ -21250,7 +21449,7 @@
           "name": "Steel Spirit",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/steel_spirit.png",
+          "imageLocal": "uniques/viridian-jewels/steel_spirit.webp",
           "explicitMods": [
             "(7–10)% increased Projectile Damage",
             "With at least 40 Dexterity in Radius, each Spectral Throw Projectile gains 5% increased Damage each time it Hits"
@@ -21261,7 +21460,7 @@
           "name": "Growing Agony",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/growing_agony.png",
+          "imageLocal": "uniques/viridian-jewels/growing_agony.webp",
           "explicitMods": [
             "(8–12)% increased Damage over Time",
             "With at least 40 Dexterity in Radius, Viper Strike deals 2% increased Damage with Hits and Poison for each Poison on the Enemy",
@@ -21273,7 +21472,7 @@
           "name": "Cheap Construction",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/cheap_construction.png",
+          "imageLocal": "uniques/viridian-jewels/cheap_construction.webp",
           "explicitMods": [
             "10% reduced Trap Duration",
             "Can have up to 1 additional Trap placed at a time"
@@ -21284,7 +21483,7 @@
           "name": "Hair Trigger",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/hair_trigger.png",
+          "imageLocal": "uniques/viridian-jewels/hair_trigger.webp",
           "explicitMods": [
             "(15–25)% increased Trap Damage",
             "(40–60)% increased Trap Trigger Area of Effect"
@@ -21295,7 +21494,7 @@
           "name": "Emperor's Cunning",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/emperors_cunning.png",
+          "imageLocal": "uniques/viridian-jewels/emperors_cunning.webp",
           "explicitMods": [
             "(4–6)% increased Dexterity",
             "20% increased Global Accuracy Rating",
@@ -21307,7 +21506,7 @@
           "name": "Grand Spectrum",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/grand_spectrum.png",
+          "imageLocal": "uniques/viridian-jewels/grand_spectrum.webp",
           "explicitMods": [
             "15% increased Elemental Damage per Grand Spectrum",
             "number of stackable unique jewels [1]"
@@ -21321,7 +21520,7 @@
           "name": "Primordial Eminence",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/primordial_eminence.png",
+          "imageLocal": "uniques/viridian-jewels/primordial_eminence.webp",
           "explicitMods": [
             "Golems have (16–20)% increased Attack and Cast Speed",
             "Golems have +(800–1000) to Armour",
@@ -21334,7 +21533,7 @@
           "name": "The Green Dream",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/the_green_dream.png",
+          "imageLocal": "uniques/viridian-jewels/the_green_dream.webp",
           "explicitMods": [
             "Gain (6–10)% of Cold Damage as Extra Chaos Damage",
             "Passives granting Cold Resistance or all Elemental Resistances in Radius\nalso grant an equal chance to gain a Frenzy Charge on Kill"
@@ -21345,14 +21544,14 @@
           "name": "The Green Nightmare",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/the_green_nightmare.png",
+          "imageLocal": "uniques/viridian-jewels/the_green_nightmare.webp",
           "explicitMods": [
             "Gain (6–10)% of Cold Damage as Extra Chaos Damage",
             "Passives granting Cold Resistance or all Elemental Resistances in Radius\nalso grant Chance to Suppress Spell Damage at 70% of its value",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ]
         },
         {
@@ -21360,7 +21559,7 @@
           "name": "Sudden Ignition",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/sudden_ignition.png",
+          "imageLocal": "uniques/viridian-jewels/sudden_ignition.webp",
           "explicitMods": [
             "(10–15)% increased Fire Damage",
             "Ignited Enemies Killed by your Hits are destroyed"
@@ -21371,7 +21570,7 @@
           "name": "Ring of Blades",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/ring_of_blades.png",
+          "imageLocal": "uniques/viridian-jewels/ring_of_blades.webp",
           "explicitMods": [
             "(10–15)% increased Global Physical Damage",
             "With at least 40 Dexterity in Radius, Ethereal Knives fires additional Projectiles",
@@ -21383,11 +21582,11 @@
           "name": "Fight for Survival",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/fight_for_survival.png",
+          "imageLocal": "uniques/viridian-jewels/fight_for_survival.webp",
           "explicitMods": [
             "(10–15)% increased Cold Damage",
-            "With at least 40 Dexterity in Radius, Melee Damage\ndealt by Frost Blades Penetrates 15% Cold Resistance",
-            "With at least 40 Dexterity in Radius, Frost Blades has 25% increased Projectile Speed"
+            "With at least 40 Dexterity in Radius, Frost Blades has 25% increased Projectile Speed",
+            "With at least 40 Dexterity in Radius, Melee Damage\ndealt by Frost Blades Penetrates 15% Cold Resistance"
           ]
         },
         {
@@ -21395,7 +21594,7 @@
           "name": "Omen on the Winds",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/omen_on_the_winds.png",
+          "imageLocal": "uniques/viridian-jewels/omen_on_the_winds.webp",
           "explicitMods": [
             "(15–20)% increased Damage with Hits against Chilled Enemies",
             "With at least 40 Dexterity in Radius, Ice Shot has 25% increased Area of Effect",
@@ -21407,7 +21606,7 @@
           "name": "Might and Influence",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/might_and_influence.png",
+          "imageLocal": "uniques/viridian-jewels/might_and_influence.webp",
           "explicitMods": [
             "(10–15)% increased Attack Damage",
             "With at least 40 Dexterity in Radius, Dual Strike has (20–30)% increased\nAccuracy Rating while wielding a Sword",
@@ -21426,7 +21625,7 @@
           "name": "Collateral Damage",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/collateral_damage.png",
+          "imageLocal": "uniques/viridian-jewels/collateral_damage.webp",
           "explicitMods": [
             "(10–15)% increased Global Physical Damage",
             "With at least 40 Dexterity in Radius, Galvanic Arrow has 25% increased Area of Effect",
@@ -21465,7 +21664,7 @@
           "name": "Pure Talent",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/pure_talent.png",
+          "imageLocal": "uniques/viridian-jewels/pure_talent.webp",
           "explicitMods": [
             "While your Passive Skill Tree connects to a class' starting location, you gain:\nMarauder: Melee Skills have 25% increased Area of Effect\nDuelist: 1% of Attack Damage Leeched as Life\nRanger: 7% increased Movement Speed\nShadow: +0.5% to Critical Strike Chance\nWitch: 0.5% of Mana Regenerated per second\nTemplar: Damage Penetrates 5% Elemental Resistances\nScion: +25 to All Attributes",
             "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
@@ -21481,7 +21680,7 @@
           "name": "The Golden Rule",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/the_golden_rule.png",
+          "imageLocal": "uniques/viridian-jewels/the_golden_rule.webp",
           "explicitMods": [
             "(30–40)% increased Armour while Bleeding",
             "Bleeding you inflict is Reflected to you",
@@ -21504,7 +21703,7 @@
           "name": "Combat Focus",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/combat_focus.png",
+          "imageLocal": "uniques/viridian-jewels/combat_focus.webp",
           "explicitMods": [
             "(10–15)% increased Elemental Damage",
             "With 40 total Dexterity and Strength in Radius, Prismatic Skills deal 50% less Lightning Damage",
@@ -21516,7 +21715,7 @@
           "name": "Tempered Spirit",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/tempered_spirit.png",
+          "imageLocal": "uniques/viridian-jewels/tempered_spirit.webp",
           "explicitMods": [
             "-1 Dexterity per 1 Dexterity on Allocated Passives in Radius",
             "2% increased Movement Speed per 10 Dexterity on Allocated Passives in Radius"
@@ -21527,12 +21726,12 @@
           "name": "Transcendent Spirit",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/transcendent_spirit.png",
+          "imageLocal": "uniques/viridian-jewels/transcendent_spirit.webp",
           "explicitMods": [
             "-1 Dexterity per 1 Dexterity on Allocated Passives in Radius",
             "3% increased Movement Speed per 10 Dexterity on Allocated Passives in Radius",
-            "+125 to Accuracy Rating per 10 Dexterity on Unallocated Passives in Radius",
-            "2% reduced Movement Speed per 10 Dexterity on Unallocated Passives in Radius"
+            "2% reduced Movement Speed per 10 Dexterity on Unallocated Passives in Radius",
+            "+125 to Accuracy Rating per 10 Dexterity on Unallocated Passives in Radius"
           ]
         },
         {
@@ -21540,7 +21739,7 @@
           "name": "Unnatural Instinct",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/unnatural_instinct.png",
+          "imageLocal": "uniques/viridian-jewels/unnatural_instinct.webp",
           "explicitMods": [
             "Allocated Small Passive Skills in Radius grant nothing",
             "Grants all bonuses of Unallocated Small Passive Skills in Radius",
@@ -21572,7 +21771,7 @@
           "name": "Seething Fury",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/seething_fury.png",
+          "imageLocal": "uniques/viridian-jewels/seething_fury.webp",
           "explicitMods": [
             "(10–15)% increased Attack Damage while holding a Shield",
             "+0.15% to Off Hand Critical Strike Chance per 10 Maximum Energy Shield on Shield",
@@ -21588,16 +21787,16 @@
           "name": "Quickening Covenant",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/quickening_covenant.png",
+          "imageLocal": "uniques/viridian-jewels/quickening_covenant.webp",
           "explicitMods": [
             "Minions have (12–16)% increased Attack Speed",
             "Minions have (12–16)% increased Cast Speed",
             "Minions have +(20–24)% chance to Suppress Spell Damage",
             "Notable Passive Skills in Radius are Transformed to\ninstead grant: Minions have 25% reduced Movement Speed",
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "textBlocks": [
-            "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+            "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
           ],
           "notes": [
             "Corrupted"
@@ -21619,7 +21818,7 @@
           "name": "Replica Hotheaded",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/replica_hotheaded.png",
+          "imageLocal": "uniques/viridian-jewels/replica_hotheaded.webp",
           "explicitMods": [
             "(10–20)% increased Attack Speed while Chilled",
             "(10–20)% increased Cast Speed while Chilled",
@@ -21632,7 +21831,7 @@
           "name": "Replica Pure Talent",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/replica_pure_talent.png",
+          "imageLocal": "uniques/viridian-jewels/replica_pure_talent.webp",
           "explicitMods": [
             "While your Passive Skill Tree connects to a class' starting location, you gain:\nMarauder: 1% of Life Regenerated per second\nDuelist: +0.2 metres to Melee Strike Range\nRanger: 20% increased Flask Charges gained\nShadow: 12% increased Attack and Cast Speed\nWitch: 20% increased Skill Effect Duration\nTemplar: +4% Chance to Block Attack and Spell Damage\nScion: 30% increased Damage"
           ],
@@ -21643,7 +21842,7 @@
           "name": "Replica Cheap Construction",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/replica_cheap_construction.png",
+          "imageLocal": "uniques/viridian-jewels/replica_cheap_construction.webp",
           "explicitMods": [
             "(100–120)% increased Critical Strike Chance with Traps",
             "Can have 5 fewer Traps placed at a time"
@@ -21655,7 +21854,7 @@
           "name": "Lord of Steel",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/lord_of_steel.png",
+          "imageLocal": "uniques/viridian-jewels/lord_of_steel.webp",
           "explicitMods": [
             "10% chance to Impale Enemies on Hit with Attacks",
             "Call of Steel deals Reflected Damage with (40–50)% increased Area of Effect",
@@ -21671,7 +21870,7 @@
           "name": "Lord of Steel",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/lord_of_steel.png",
+          "imageLocal": "uniques/viridian-jewels/lord_of_steel.webp",
           "explicitMods": [
             "Impale Damage dealt to Enemies Impaled by you Overwhelms 10% Physical Damage Reduction",
             "Call of Steel has (80–100)% increased Use Speed",
@@ -21687,7 +21886,7 @@
           "name": "Lord of Steel",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/lord_of_steel.png",
+          "imageLocal": "uniques/viridian-jewels/lord_of_steel.webp",
           "explicitMods": [
             "5% increased Impale Effect",
             "Call of Steel deals Reflected Damage with (40–50)% increased Area of Effect",
@@ -21699,9 +21898,9 @@
           "name": "Impossible Escape",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/impossible_escape.png",
+          "imageLocal": "uniques/viridian-jewels/impossible_escape.webp",
           "explicitMods": [
-            "Passives in Radius of Passive Skill can be Allocated\nwithout being connected to your tree"
+            "Passive Skills in Radius of Passive Skill can be Allocated\nwithout being connected to your tree\nPassage"
           ],
           "notes": [
             "Corrupted"
@@ -21713,7 +21912,7 @@
           "name": "Grand Spectrum",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/grand_spectrum.png",
+          "imageLocal": "uniques/viridian-jewels/grand_spectrum.webp",
           "explicitMods": [
             "12% chance to Avoid Elemental Ailments per Grand Spectrum",
             "number of stackable unique jewels [1]"
@@ -21727,7 +21926,7 @@
           "name": "Grand Spectrum",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/grand_spectrum.png",
+          "imageLocal": "uniques/viridian-jewels/grand_spectrum.webp",
           "explicitMods": [
             "+1 to Minimum Frenzy Charges per Grand Spectrum",
             "number of stackable unique jewels [1]"
@@ -21741,7 +21940,7 @@
           "name": "Stormshroud",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/stormshroud.png",
+          "imageLocal": "uniques/viridian-jewels/stormshroud.webp",
           "explicitMods": [
             "+(10–15)% to Lightning Resistance",
             "Modifiers to Chance to Avoid being Shocked apply to all Elemental Ailments",
@@ -21756,7 +21955,7 @@
           "name": "Ancestral Vision",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/ancestral_vision.png",
+          "imageLocal": "uniques/viridian-jewels/ancestral_vision.webp",
           "explicitMods": [
             "+(5–10) to Dexterity",
             "Modifiers to Chance to Suppress Spell Damage also apply to Chance to Avoid Elemental Ailments at 50% of their Value",
@@ -21771,7 +21970,7 @@
           "name": "Replica Pacifism",
           "baseType": "Viridian Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/viridian-jewels/replica_pacifism.png",
+          "imageLocal": "uniques/viridian-jewels/replica_pacifism.webp",
           "explicitMods": [
             "Lose a Frenzy Charge each second"
           ],
@@ -21794,7 +21993,7 @@
           "name": "To Dust",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/to_dust.png",
+          "imageLocal": "uniques/cobalt-jewels/to_dust.webp",
           "explicitMods": [
             "(10–20)% reduced Skeleton Duration",
             "Minions deal (8–12)% increased Damage",
@@ -21812,7 +22011,7 @@
           "name": "Eldritch Knowledge",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/eldritch_knowledge.png",
+          "imageLocal": "uniques/cobalt-jewels/eldritch_knowledge.webp",
           "explicitMods": [
             "5% increased Chaos Damage per 10 Intelligence from Allocated Passives in Radius"
           ]
@@ -21836,7 +22035,7 @@
           "name": "Survival Secrets",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/survival_secrets.png",
+          "imageLocal": "uniques/cobalt-jewels/survival_secrets.webp",
           "explicitMods": [
             "Flasks applied to you have 20% reduced Effect",
             "Flasks gain 3 Charges every 3 seconds while they are inactive"
@@ -21847,7 +22046,7 @@
           "name": "Fertile Mind",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/fertile_mind.png",
+          "imageLocal": "uniques/cobalt-jewels/fertile_mind.webp",
           "explicitMods": [
             "+(16–24) to Intelligence",
             "Dexterity from Passives in Radius is Transformed to Intelligence"
@@ -21862,7 +22061,7 @@
           "name": "Fortified Legion",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/fortified_legion.png",
+          "imageLocal": "uniques/cobalt-jewels/fortified_legion.webp",
           "explicitMods": [
             "Minions have (5–15)% increased maximum Life",
             "Minions Recover 2% of their Life when they Block"
@@ -21873,7 +22072,7 @@
           "name": "Malicious Intent",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/malicious_intent.png",
+          "imageLocal": "uniques/cobalt-jewels/malicious_intent.webp",
           "explicitMods": [
             "5% chance to Gain Unholy Might for 4 seconds on Melee Kill",
             "(Unholy Might grants 100% of Physical Damage converted to Chaos Damage and 25% chance to apply Withered on Hit)"
@@ -21887,7 +22086,7 @@
           "name": "Clear Mind",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/clear_mind.png",
+          "imageLocal": "uniques/cobalt-jewels/clear_mind.webp",
           "explicitMods": [
             "(20–30)% increased Mana Regeneration Rate",
             "(40–60)% increased Spell Damage while no Mana is Reserved"
@@ -21898,7 +22097,7 @@
           "name": "Brute Force Solution",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/brute_force_solution.png",
+          "imageLocal": "uniques/cobalt-jewels/brute_force_solution.webp",
           "explicitMods": [
             "+(16–24) to Intelligence",
             "Strength from Passives in Radius is Transformed to Intelligence"
@@ -21913,7 +22112,7 @@
           "name": "Vaal Sentencing",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/vaal_sentencing.png",
+          "imageLocal": "uniques/cobalt-jewels/vaal_sentencing.webp",
           "explicitMods": [
             "(80–120)% increased Vaal Skill Critical Strike Chance"
           ],
@@ -21927,7 +22126,7 @@
           "name": "Fevered Mind",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/fevered_mind.png",
+          "imageLocal": "uniques/cobalt-jewels/fevered_mind.webp",
           "explicitMods": [
             "+(5–10) to Intelligence",
             "Notable Passive Skills in Radius are Transformed to\ninstead grant: 10% increased Mana Cost of Skills and 20% increased Spell Damage"
@@ -21942,7 +22141,7 @@
           "name": "Powerlessness",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/powerlessness.png",
+          "imageLocal": "uniques/cobalt-jewels/powerlessness.webp",
           "explicitMods": [
             "-1 to Maximum Power Charges"
           ],
@@ -21956,7 +22155,7 @@
           "name": "Assassin's Haste",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/assassins_haste.png",
+          "imageLocal": "uniques/cobalt-jewels/assassins_haste.webp",
           "explicitMods": [
             "10% increased Mana Regeneration Rate",
             "4% increased Movement Speed",
@@ -21968,7 +22167,7 @@
           "name": "Conqueror's Potency",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/conquerors_potency.png",
+          "imageLocal": "uniques/cobalt-jewels/conquerors_potency.webp",
           "explicitMods": [
             "4% increased Effect of your Curses",
             "Flasks applied to you have 8% increased Effect",
@@ -21980,7 +22179,7 @@
           "name": "Mutated Growth",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/mutated_growth.png",
+          "imageLocal": "uniques/cobalt-jewels/mutated_growth.webp",
           "explicitMods": [
             "10% increased Experience Gain for Corrupted Gems"
           ],
@@ -21994,7 +22193,7 @@
           "name": "Corrupted Energy",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/corrupted_energy.png",
+          "imageLocal": "uniques/cobalt-jewels/corrupted_energy.webp",
           "explicitMods": [
             "With 5 Corrupted Items Equipped: 50% of Chaos Damage taken does not bypass Energy Shield, and 50% of Physical Damage taken bypasses Energy Shield",
             "(Flasks and Jewels are not Equipped)"
@@ -22012,7 +22211,7 @@
           "name": "Brittle Barrier",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/brittle_barrier.png",
+          "imageLocal": "uniques/cobalt-jewels/brittle_barrier.webp",
           "explicitMods": [
             "20% faster start of Energy Shield Recharge",
             "10% increased Damage taken while on Full Energy Shield"
@@ -22027,7 +22226,7 @@
           "name": "Anatomical Knowledge",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/anatomical_knowledge.png",
+          "imageLocal": "uniques/cobalt-jewels/anatomical_knowledge.webp",
           "explicitMods": [
             "(6–8)% increased maximum Life",
             "Adds 1 to Maximum Life per 3 Intelligence Allocated in Radius"
@@ -22038,7 +22237,7 @@
           "name": "Energy From Within",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/energy_from_within.png",
+          "imageLocal": "uniques/cobalt-jewels/energy_from_within.webp",
           "explicitMods": [
             "(3–6)% increased maximum Energy Shield",
             "Increases and Reductions to Life in Radius are Transformed to apply to Energy Shield"
@@ -22053,7 +22252,7 @@
           "name": "Healthy Mind",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/healthy_mind.png",
+          "imageLocal": "uniques/cobalt-jewels/healthy_mind.webp",
           "explicitMods": [
             "(15–20)% increased maximum Mana",
             "Increases and Reductions to Life in Radius are Transformed to apply to Mana at 200% of their value"
@@ -22068,7 +22267,7 @@
           "name": "Rolling Flames",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/rolling_flames.png",
+          "imageLocal": "uniques/cobalt-jewels/rolling_flames.webp",
           "explicitMods": [
             "(10–15)% increased Fire Damage",
             "With at least 40 Intelligence in Radius, Fireball cannot ignite",
@@ -22080,7 +22279,7 @@
           "name": "Winter's Bounty",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/winters_bounty.png",
+          "imageLocal": "uniques/cobalt-jewels/winters_bounty.webp",
           "explicitMods": [
             "(10–15)% increased Cold Damage",
             "With at least 40 Intelligence in Radius, Cold Snap grants Power Charges instead of Frenzy Charges when Enemies die in its Area\nWith at least 40 Intelligence in Radius, Cold Snap's Cooldown can be bypassed by Power Charges instead of Frenzy Charges"
@@ -22091,7 +22290,7 @@
           "name": "Spirited Response",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/spirited_response.png",
+          "imageLocal": "uniques/cobalt-jewels/spirited_response.webp",
           "explicitMods": [
             "(7–10)% increased maximum Mana",
             "With at least 40 Intelligence in Radius, 10% of Damage taken Recouped as Mana if you've Warcried Recently",
@@ -22108,7 +22307,7 @@
           "name": "Dead Reckoning",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/dead_reckoning.png",
+          "imageLocal": "uniques/cobalt-jewels/dead_reckoning.webp",
           "explicitMods": [
             "Skeletons gain Added Chaos Damage equal to (20–30)% of Maximum Energy Shield on your Equipped Shield"
           ]
@@ -22118,7 +22317,7 @@
           "name": "Reckless Defence",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/reckless_defence.png",
+          "imageLocal": "uniques/cobalt-jewels/reckless_defence.webp",
           "explicitMods": [
             "+(2–6)% Chance to Block Spell Damage",
             "+(2–6)% Chance to Block Attack Damage",
@@ -22134,7 +22333,7 @@
           "name": "Unstable Payload",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/unstable_payload.png",
+          "imageLocal": "uniques/cobalt-jewels/unstable_payload.webp",
           "explicitMods": [
             "(8–12)% Chance for Traps to Trigger an additional time"
           ]
@@ -22144,7 +22343,7 @@
           "name": "Emperor's Wit",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/emperors_wit.png",
+          "imageLocal": "uniques/cobalt-jewels/emperors_wit.webp",
           "explicitMods": [
             "(4–6)% increased Intelligence",
             "30% increased Global Critical Strike Chance",
@@ -22156,7 +22355,7 @@
           "name": "Grand Spectrum",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/grand_spectrum.png",
+          "imageLocal": "uniques/cobalt-jewels/grand_spectrum.webp",
           "explicitMods": [
             "25% increased Critical Strike Chance per Grand Spectrum",
             "number of stackable unique jewels [1]"
@@ -22170,7 +22369,7 @@
           "name": "Unending Hunger",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/unending_hunger.png",
+          "imageLocal": "uniques/cobalt-jewels/unending_hunger.webp",
           "explicitMods": [
             "Minions have (6–8)% increased Area of Effect",
             "With at least 40 Intelligence in Radius, Raised Spectres have a 50% chance to gain Soul Eater for 20 seconds on Kill",
@@ -22185,7 +22384,7 @@
           "name": "Primordial Harmony",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/primordial_harmony.png",
+          "imageLocal": "uniques/cobalt-jewels/primordial_harmony.webp",
           "explicitMods": [
             "Golem Skills have (20–30)% increased Cooldown Recovery Rate",
             "Summoned Golems have (30–45)% increased Cooldown Recovery Rate",
@@ -22199,7 +22398,7 @@
           "name": "The Blue Dream",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/the_blue_dream.png",
+          "imageLocal": "uniques/cobalt-jewels/the_blue_dream.webp",
           "explicitMods": [
             "Gain (6–10)% of Lightning Damage as Extra Chaos Damage",
             "Passives granting Lightning Resistance or all Elemental Resistances in Radius\nalso grant an equal chance to gain a Power Charge on Kill"
@@ -22210,7 +22409,7 @@
           "name": "The Blue Nightmare",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/the_blue_nightmare.png",
+          "imageLocal": "uniques/cobalt-jewels/the_blue_nightmare.webp",
           "explicitMods": [
             "Gain (6–10)% of Lightning Damage as Extra Chaos Damage",
             "Passives granting Lightning Resistance or all Elemental Resistances in Radius\nalso grant Chance to Block Spell Damage at 50% of its value"
@@ -22221,7 +22420,7 @@
           "name": "Violent Dead",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/violent_dead.png",
+          "imageLocal": "uniques/cobalt-jewels/violent_dead.webp",
           "explicitMods": [
             "Minions deal (10–15)% increased Damage",
             "With at least 40 Intelligence in Radius, Raised\nZombies' Slam Attack has 100% increased Cooldown Recovery Rate",
@@ -22233,7 +22432,7 @@
           "name": "First Snow",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/first_snow.png",
+          "imageLocal": "uniques/cobalt-jewels/first_snow.webp",
           "explicitMods": [
             "(7–10)% increased Projectile Damage",
             "With at least 40 Intelligence in Radius, 25% increased Freezing Pulse Damage if\nyou've Shattered an Enemy Recently",
@@ -22249,7 +22448,7 @@
           "name": "Frozen Trail",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/frozen_trail.png",
+          "imageLocal": "uniques/cobalt-jewels/frozen_trail.webp",
           "explicitMods": [
             "(7–10)% increased Projectile Damage",
             "With at least 40 Intelligence in Radius, Frostbolt fires 2 additional Projectiles",
@@ -22261,7 +22460,7 @@
           "name": "Inevitability",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/inevitability.png",
+          "imageLocal": "uniques/cobalt-jewels/inevitability.webp",
           "explicitMods": [
             "(10–15)% increased Fire Damage",
             "With at least 40 Intelligence in Radius, Rolling Magma deals 50% less Damage",
@@ -22274,7 +22473,7 @@
           "name": "Spreading Rot",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/spreading_rot.png",
+          "imageLocal": "uniques/cobalt-jewels/spreading_rot.webp",
           "explicitMods": [
             "(7–13)% increased Chaos Damage",
             "With at least 40 Intelligence in Radius, Blight inflicts Withered for 2 seconds",
@@ -22301,7 +22500,7 @@
           "name": "Hazardous Research",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/hazardous_research.png",
+          "imageLocal": "uniques/cobalt-jewels/hazardous_research.webp",
           "explicitMods": [
             "(10–15)% increased Lightning Damage",
             "With at least 40 Intelligence in Radius, Spark fires additional Projectiles",
@@ -22313,7 +22512,7 @@
           "name": "From Dust",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/from_dust.png",
+          "imageLocal": "uniques/cobalt-jewels/from_dust.webp",
           "explicitMods": [
             "Summon 4 additional Skeletons with Summon Skeletons",
             "+1 second to Summon Skeleton Cooldown"
@@ -22324,7 +22523,7 @@
           "name": "The Long Winter",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/the_long_winter.png",
+          "imageLocal": "uniques/cobalt-jewels/the_long_winter.webp",
           "explicitMods": [
             "(10–15)% increased Cold Damage",
             "With 40 Intelligence in Radius, Glacial Cascade has an additional Burst",
@@ -22336,7 +22535,7 @@
           "name": "Soul's Wick",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/souls_wick.png",
+          "imageLocal": "uniques/cobalt-jewels/souls_wick.webp",
           "explicitMods": [
             "+2 to maximum number of Spectres",
             "(40–50)% reduced Mana Cost of Raise Spectre",
@@ -22353,7 +22552,7 @@
           "name": "Combat Focus",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/combat_focus.png",
+          "imageLocal": "uniques/cobalt-jewels/combat_focus.webp",
           "explicitMods": [
             "(10–15)% increased Elemental Damage",
             "With 40 total Intelligence and Dexterity in Radius, Prismatic Skills deal 50% less Fire Damage",
@@ -22365,7 +22564,7 @@
           "name": "Tempered Mind",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/tempered_mind.png",
+          "imageLocal": "uniques/cobalt-jewels/tempered_mind.webp",
           "explicitMods": [
             "-1 Intelligence per 1 Intelligence on Allocated Passives in Radius",
             "2% increased Mana Recovery Rate per 10 Intelligence on Allocated Passives in Radius"
@@ -22376,7 +22575,7 @@
           "name": "Transcendent Mind",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/transcendent_mind.png",
+          "imageLocal": "uniques/cobalt-jewels/transcendent_mind.webp",
           "explicitMods": [
             "-1 Intelligence per 1 Intelligence on Allocated Passives in Radius",
             "+3% to Damage over Time Multiplier per 10 Intelligence on Unallocated Passives in Radius",
@@ -22389,7 +22588,7 @@
           "name": "Fortress Covenant",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/fortress_covenant.png",
+          "imageLocal": "uniques/cobalt-jewels/fortress_covenant.webp",
           "explicitMods": [
             "Minions deal (35–45)% increased Damage",
             "Minions have +(10–12)% Chance to Block Attack Damage",
@@ -22406,7 +22605,7 @@
           "name": "Replica Reckless Defence",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/replica_reckless_defence.png",
+          "imageLocal": "uniques/cobalt-jewels/replica_reckless_defence.webp",
           "explicitMods": [
             "+(2–6)% Chance to Block Spell Damage",
             "+(2–6)% Chance to Block Attack Damage",
@@ -22419,7 +22618,7 @@
           "name": "Replica Unstable Payload",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/replica_unstable_payload.png",
+          "imageLocal": "uniques/cobalt-jewels/replica_unstable_payload.webp",
           "explicitMods": [
             "Recover (20–30) Life when your Trap is triggered by an Enemy"
           ],
@@ -22430,7 +22629,7 @@
           "name": "Endless Misery",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/endless_misery.png",
+          "imageLocal": "uniques/cobalt-jewels/endless_misery.webp",
           "explicitMods": [
             "(7–10)% increased Elemental Damage",
             "With at least 40 Intelligence in Radius, Discharge has 60% less Area of Effect",
@@ -22443,7 +22642,7 @@
           "name": "Apex Mode",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/apex_mode.png",
+          "imageLocal": "uniques/cobalt-jewels/apex_mode.webp",
           "explicitMods": [
             "(20–25)% increased Spell Damage",
             "Spells have 10% reduced Critical Strike Chance per Intensity",
@@ -22455,7 +22654,7 @@
           "name": "Nadir Mode",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/nadir_mode.png",
+          "imageLocal": "uniques/cobalt-jewels/nadir_mode.webp",
           "explicitMods": [
             "(20–25)% increased Spell Damage",
             "Spells have (30–50)% increased Critical Strike Chance per Intensity",
@@ -22467,7 +22666,7 @@
           "name": "Melding of the Flesh",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/melding_of_the_flesh.png",
+          "imageLocal": "uniques/cobalt-jewels/melding_of_the_flesh.webp",
           "explicitMods": [
             "(-80–-70)% to all Elemental Resistances",
             "(-6–-4)% to all maximum Elemental Resistances",
@@ -22483,7 +22682,7 @@
           "name": "Forbidden Flesh",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/forbidden_flesh.png",
+          "imageLocal": "uniques/cobalt-jewels/forbidden_flesh.webp",
           "explicitMods": [
             "Allocates Passive Skill if you have the matching modifier on Forbidden Flame"
           ],
@@ -22497,7 +22696,7 @@
           "name": "Grand Spectrum",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/grand_spectrum.png",
+          "imageLocal": "uniques/cobalt-jewels/grand_spectrum.webp",
           "explicitMods": [
             "Minions have +10% to Critical Strike Multiplier per Grand Spectrum",
             "number of stackable unique jewels [1]"
@@ -22511,7 +22710,7 @@
           "name": "Grand Spectrum",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/grand_spectrum.png",
+          "imageLocal": "uniques/cobalt-jewels/grand_spectrum.webp",
           "explicitMods": [
             "+1 to Minimum Power Charges per Grand Spectrum",
             "number of stackable unique jewels [1]"
@@ -22525,7 +22724,7 @@
           "name": "Witchbane",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/witchbane.png",
+          "imageLocal": "uniques/cobalt-jewels/witchbane.webp",
           "explicitMods": [
             "+(5–15) to Intelligence",
             "When you Kill an Enemy Cursed with a Non-Aura Hex, become Immune to\nCurses for remaining Hex Duration"
@@ -22536,7 +22735,7 @@
           "name": "Rational Doctrine",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/rational_doctrine.png",
+          "imageLocal": "uniques/cobalt-jewels/rational_doctrine.webp",
           "implicitMods": [
             "[One to three random synthesis implicit modifiers]"
           ],
@@ -22560,7 +22759,7 @@
           "name": "The Balance of Terror",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/the_balance_of_terror.png",
+          "imageLocal": "uniques/cobalt-jewels/the_balance_of_terror.webp",
           "explicitMods": [
             "+(10–15)% to all Elemental Resistances",
             "[Two random modifiers]"
@@ -22571,7 +22770,7 @@
           "name": "Replica Powerlessness",
           "baseType": "Cobalt Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/cobalt-jewels/replica_powerlessness.png",
+          "imageLocal": "uniques/cobalt-jewels/replica_powerlessness.webp",
           "explicitMods": [
             "Lose a Power Charge each second"
           ],
@@ -22594,7 +22793,7 @@
           "name": "Emperor's Mastery",
           "baseType": "Prismatic Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/prismatic-jewels/emperors_mastery.png",
+          "imageLocal": "uniques/prismatic-jewels/emperors_mastery.webp",
           "explicitMods": [
             "(5–7)% increased Attributes",
             "4% increased maximum Life",
@@ -22613,7 +22812,7 @@
           "name": "The Anima Stone",
           "baseType": "Prismatic Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/prismatic-jewels/the_anima_stone.png",
+          "imageLocal": "uniques/prismatic-jewels/the_anima_stone.webp",
           "explicitMods": [
             "+1 to maximum number of Summoned Golems if you have 3 Primordial Items Socketed or Equipped"
           ]
@@ -22623,7 +22822,7 @@
           "name": "Watcher's Eye",
           "baseType": "Prismatic Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/prismatic-jewels/watchers_eye.png",
+          "imageLocal": "uniques/prismatic-jewels/watchers_eye.webp",
           "explicitMods": [
             "(4–6)% increased maximum Energy Shield",
             "(4–6)% increased maximum Life",
@@ -22636,7 +22835,7 @@
           "name": "Watcher's Eye",
           "baseType": "Prismatic Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/prismatic-jewels/watchers_eye.png",
+          "imageLocal": "uniques/prismatic-jewels/watchers_eye.webp",
           "explicitMods": [
             "(4–6)% increased maximum Energy Shield",
             "(4–6)% increased maximum Life",
@@ -22649,7 +22848,7 @@
           "name": "Sublime Vision",
           "baseType": "Prismatic Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/prismatic-jewels/sublime_vision.png",
+          "imageLocal": "uniques/prismatic-jewels/sublime_vision.webp",
           "explicitMods": [
             "[Aura Bonus Modifier]"
           ]
@@ -22669,7 +22868,7 @@
           "name": "The Light of Meaning",
           "baseType": "Prismatic Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/prismatic-jewels/the_light_of_meaning.png",
+          "imageLocal": "uniques/prismatic-jewels/the_light_of_meaning.webp",
           "explicitMods": [
             "Passive Skills in Radius also grant +5 to maximum Life"
           ]
@@ -22679,7 +22878,7 @@
           "name": "Bound By Destiny",
           "baseType": "Prismatic Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/prismatic-jewels/bound_by_destiny.png",
+          "imageLocal": "uniques/prismatic-jewels/bound_by_destiny.webp",
           "explicitMods": [
             "[Random 2x influence item bonus]",
             "[Random 4x influence item bonus]",
@@ -22699,7 +22898,7 @@
           "name": "Glorious Vanity",
           "baseType": "Timeless Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/timeless-jewels/glorious_vanity.png",
+          "imageLocal": "uniques/timeless-jewels/glorious_vanity.webp",
           "explicitMods": [
             "Bathed in the blood of (100–8000) sacrificed in the name of Xibaqua\nPassives in radius are Conquered by the Vaal",
             "Historic",
@@ -22714,7 +22913,7 @@
           "name": "Militant Faith",
           "baseType": "Timeless Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/timeless-jewels/militant_faith.png",
+          "imageLocal": "uniques/timeless-jewels/militant_faith.webp",
           "explicitMods": [
             "Carved to glorify (2000–10000) new faithful converted by High Templar Maxarius\nPassives in radius are Conquered by the Templars",
             "Historic",
@@ -22730,7 +22929,7 @@
           "name": "Brutal Restraint",
           "baseType": "Timeless Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/timeless-jewels/brutal_restraint.png",
+          "imageLocal": "uniques/timeless-jewels/brutal_restraint.webp",
           "explicitMods": [
             "Denoted service of (500–8000) dekhara in the akhara of Balbala\nPassives in radius are Conquered by the Maraketh",
             "Historic",
@@ -22745,7 +22944,7 @@
           "name": "Elegant Hubris",
           "baseType": "Timeless Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/timeless-jewels/elegant_hubris.png",
+          "imageLocal": "uniques/timeless-jewels/elegant_hubris.webp",
           "explicitMods": [
             "Commissioned (2000–160000) coins to commemorate Cadiro\nPassives in radius are Conquered by the Eternal Empire",
             "Historic",
@@ -22760,7 +22959,7 @@
           "name": "Lethal Pride",
           "baseType": "Timeless Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/timeless-jewels/lethal_pride.png",
+          "imageLocal": "uniques/timeless-jewels/lethal_pride.webp",
           "explicitMods": [
             "Commanded leadership over (10000–18000) warriors under Kaom\nPassives in radius are Conquered by the Karui",
             "Historic",
@@ -22783,7 +22982,7 @@
           "name": "Tecrod's Gaze",
           "baseType": "Murderous Eye Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/murderous-eye-jewels/tecrods_gaze.png",
+          "imageLocal": "uniques/murderous-eye-jewels/tecrods_gaze.webp",
           "explicitMods": [
             "+(10–20) to Strength",
             "40% increased Main Hand Critical Strike Chance per\nMurderous Eye Jewel affecting you, up to a maximum of 200%",
@@ -22803,7 +23002,7 @@
           "name": "Ulaman's Gaze",
           "baseType": "Searching Eye Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/searching-eye-jewels/ulamans_gaze.png",
+          "imageLocal": "uniques/searching-eye-jewels/ulamans_gaze.webp",
           "explicitMods": [
             "+(10–20) to Dexterity",
             "Projectiles have 4% chance to be able to Chain when colliding with terrain per\nSearching Eye Jewel affecting you, up to a maximum of 20%"
@@ -22822,7 +23021,7 @@
           "name": "Amanamu's Gaze",
           "baseType": "Ghastly Eye Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/ghastly-eye-jewels/amanamus_gaze.png",
+          "imageLocal": "uniques/ghastly-eye-jewels/amanamus_gaze.webp",
           "explicitMods": [
             "+(5–10) to all Attributes",
             "Minions have +6% to Damage over Time Multiplier per\nGhastly Eye Jewel affecting you, up to a maximum of +30%",
@@ -22845,7 +23044,7 @@
           "name": "Kurgal's Gaze",
           "baseType": "Hypnotic Eye Jewel",
           "group": "jewel",
-          "imageLocal": "uniques/hypnotic-eye-jewels/kurgals_gaze.png",
+          "imageLocal": "uniques/hypnotic-eye-jewels/kurgals_gaze.webp",
           "explicitMods": [
             "+(10–20) to Intelligence",
             "8% increased Effect of Arcane Surge on you per\nHypnotic Eye Jewel affecting you, up to a maximum of 40%",
@@ -22868,7 +23067,7 @@
           "name": "Cadigan's Crown",
           "baseType": "Runic Crown",
           "group": "armour",
-          "imageLocal": "uniques/runic-crowns/cadigans_crown.png",
+          "imageLocal": "uniques/runic-crowns/cadigans_crown.webp",
           "explicitMods": [
             "Never deal Critical Strikes",
             "Battlemage",
@@ -22891,7 +23090,7 @@
           "name": "Medved's Challenge",
           "baseType": "Runic Gauntlets",
           "group": "armour",
-          "imageLocal": "uniques/runic-gauntlets/medveds_challenge.png",
+          "imageLocal": "uniques/runic-gauntlets/medveds_challenge.webp",
           "explicitMods": [
             "800% increased Attribute Requirements",
             "(30–50)% increased Ward",
@@ -22919,7 +23118,7 @@
           "name": "Vorana's March",
           "baseType": "Runic Sabatons",
           "group": "armour",
-          "imageLocal": "uniques/runic-sabatons/voranas_march.png",
+          "imageLocal": "uniques/runic-sabatons/voranas_march.webp",
           "explicitMods": [
             "Has no Sockets",
             "Triggers Level 20 Summon Arbalists when Equipped",
@@ -22958,7 +23157,7 @@
             "2% increased Maps found in Area"
           ],
           "explicitMods": [
-            "10% increased Pack size",
+            "10% increased Pack Size in your Maps",
             "Only 1 Portal is opened to each of your Maps"
           ]
         },
@@ -23324,10 +23523,10 @@
             "Scarabs found in your Maps cannot be Harvest Scarabs",
             "Your Maps have no chance to contain the Sacred Grove",
             "Your Maps have +5% chance to contain other Extra Content that can\nbe turned off through Atlas Passives",
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ],
           "textBlocks": [
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ]
         },
         {
@@ -23343,10 +23542,10 @@
             "Scarabs found in your Maps cannot be Abyss Scarabs",
             "Your Maps have no chance to contain Abysses",
             "Your Maps have +5% chance to contain other Extra Content that can\nbe turned off through Atlas Passives",
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ],
           "textBlocks": [
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ]
         },
         {
@@ -23362,10 +23561,10 @@
             "Scarabs found in your Maps cannot be Breach Scarabs",
             "Your Maps have no chance to contain Breaches",
             "Your Maps have +5% chance to contain other Extra Content that can\nbe turned off through Atlas Passives",
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ],
           "textBlocks": [
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ]
         },
         {
@@ -23381,10 +23580,10 @@
             "Scarabs found in your Maps cannot be Expedition Scarabs",
             "Your Maps have no chance to contain Expedition Encounters",
             "Your Maps have +5% chance to contain other Extra Content that can\nbe turned off through Atlas Passives",
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ],
           "textBlocks": [
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ]
         },
         {
@@ -23400,10 +23599,10 @@
             "Scarabs found in your Maps cannot be Legion Scarabs",
             "Your Maps have no chance to contain Legion Encounters",
             "Your Maps have +5% chance to contain other Extra Content that can\nbe turned off through Atlas Passives",
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ],
           "textBlocks": [
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ]
         },
         {
@@ -23419,10 +23618,10 @@
             "Your Maps have no chance to contain Ultimatum Encounters",
             "Scarabs found in your Maps cannot be Ultimatum Scarabs",
             "Your Maps have +5% chance to contain other Extra Content that can\nbe turned off through Atlas Passives",
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ],
           "textBlocks": [
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ]
         },
         {
@@ -23438,10 +23637,10 @@
             "Scarabs found in your Maps cannot be Blight Scarabs",
             "Your Maps have no chance to contain Blight Encounters",
             "Your Maps have +5% chance to contain other Extra Content that can\nbe turned off through Atlas Passives",
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ],
           "textBlocks": [
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ]
         },
         {
@@ -23457,10 +23656,10 @@
             "Scarabs found in your Maps cannot be Ritual Scarabs",
             "Your Maps have no chance to contain Ritual Altars",
             "Your Maps have +5% chance to contain other Extra Content that can\nbe turned off through Atlas Passives",
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ],
           "textBlocks": [
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ]
         },
         {
@@ -23473,13 +23672,13 @@
             "2% increased Maps found in Area"
           ],
           "explicitMods": [
-            "Rogue's Markers, Contracts and Blueprints cannot be found in Your Maps",
             "Your Maps have no chance to contain Smuggler's Caches",
+            "Rogue's Markers, Contracts and Blueprints cannot be found in Your Maps",
             "Your Maps have +5% chance to contain other Extra Content that can\nbe turned off through Atlas Passives",
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ],
           "textBlocks": [
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ]
         },
         {
@@ -23495,10 +23694,10 @@
             "Scarabs found in your Maps cannot be Delirium Scarabs",
             "Your Maps have no chance to contain Mirrors of Delirium",
             "Your Maps have +5% chance to contain other Extra Content that can\nbe turned off through Atlas Passives",
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ],
           "textBlocks": [
-            "(Abysses, Blight Encounters, Breaches, Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches, and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives)"
+            "(Abysses, Blight Encounters, Breaches (in Standard Leagues only), Expedition Encounters, Legion Encounters, Mirrors of Delirium, Ore Deposits, Ritual Altars, the Sacred Grove, Smuggler's Caches (in Keepers Leagues only), and Ultimatum Encounters are Extra Content that can be turned off through Atlas Passives.)"
           ]
         },
         {

@@ -38,7 +38,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -296,8 +295,7 @@
       }
     ],
     "sourceCategories": [
-      "Amulets",
-      "Rune_Daggers"
+      "Amulets"
     ]
   },
   {
@@ -2281,7 +2279,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2320,7 +2317,6 @@
     "sourceCategories": [
       "Bone_Spirit_Shield",
       "Quivers",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2358,7 +2354,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3136,7 +3131,6 @@
       "Bone_Spirit_Shield",
       "Quivers",
       "Rings",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3263,12 +3257,43 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
       "Shields_str_dex",
       "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Rune_Daggers",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Damage per Frenzy Charge",
+    "tier": 2,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 10.101,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (5–7)% increased Damage per Frenzy Charge",
+        "weight": 500,
+        "weight_pct": 5.051
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 73,
+        "text_plain": "73 (8–10)% increased Damage per Frenzy Charge",
+        "weight": 500,
+        "weight_pct": 5.051
+      }
+    ],
+    "sourceCategories": [
+      "Rune_Daggers"
     ]
   },
   {
@@ -3436,7 +3461,6 @@
     "weight": 250,
     "weight_pct": 5.263,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -3450,7 +3474,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3503,7 +3526,7 @@
     "category": "Amulets",
     "domain": "redeemer",
     "side": "suffix",
-    "text_plain": "Prevent +2% of Suppressed Spell Damage",
+    "text_plain": "Prevent +(3–5)% of Suppressed Spell Damage",
     "tier": 1,
     "ilvl": 68,
     "weight": 250,
@@ -3513,7 +3536,7 @@
       {
         "tier_name": "of Redemption",
         "tier_level": 68,
-        "text_plain": "68 Prevent +2% of Suppressed Spell Damage",
+        "text_plain": "68 Prevent +(3–5)% of Suppressed Spell Damage",
         "weight": 250,
         "weight_pct": 3.03
       }

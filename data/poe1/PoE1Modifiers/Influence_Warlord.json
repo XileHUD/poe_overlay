@@ -276,7 +276,6 @@
       "Bone_Spirit_Shield",
       "Quivers",
       "Rings",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -1219,9 +1218,7 @@
       }
     ],
     "sourceCategories": [
-      "Amulets",
-      "Sceptres",
-      "Staves"
+      "Amulets"
     ]
   },
   {
@@ -1773,7 +1770,6 @@
     "weight": 1500,
     "weight_pct": 41.667,
     "tags": [
-      "bleed",
       "damage",
       "physical",
       "attack",
@@ -2982,7 +2978,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3021,7 +3016,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3060,7 +3054,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3096,7 +3089,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3132,7 +3124,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3176,6 +3167,39 @@
       "Gloves_str_dex",
       "Gloves_str_int",
       "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Sceptres",
+    "domain": "warlord",
+    "side": "suffix",
+    "text_plain": "#% increased Damage per Endurance Charge",
+    "tier": 2,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 18.182,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Conquest",
+        "tier_level": 68,
+        "text_plain": "68 (5–7)% increased Damage per Endurance Charge",
+        "weight": 500,
+        "weight_pct": 9.091
+      },
+      {
+        "tier_name": "of the Conquest",
+        "tier_level": 73,
+        "text_plain": "73 (8–10)% increased Damage per Endurance Charge",
+        "weight": 500,
+        "weight_pct": 9.091
+      }
+    ],
+    "sourceCategories": [
+      "Sceptres",
+      "Staves"
     ]
   },
   {
@@ -3264,7 +3288,6 @@
     "weight": 1000,
     "weight_pct": 15.385,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -3688,7 +3711,6 @@
     "weight": 250,
     "weight_pct": 4.762,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -3702,7 +3724,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",

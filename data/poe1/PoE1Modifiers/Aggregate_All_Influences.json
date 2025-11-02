@@ -20,7 +20,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -748,13 +747,7 @@
     ],
     "sourceCategories": [
       "Amulets",
-      "Bows",
-      "Quivers",
-      "Staves",
-      "Two_Hand_Axes",
-      "Two_Hand_Maces",
-      "Two_Hand_Swords",
-      "Warstaves"
+      "Quivers"
     ]
   },
   {
@@ -870,7 +863,6 @@
     "weight": 1600,
     "weight_pct": 22.069,
     "tags": [
-      "resource",
       "life",
       "caster"
     ],
@@ -1489,7 +1481,6 @@
     "weight": 800,
     "weight_pct": 11.034,
     "tags": [
-      "resource",
       "mana",
       "caster"
     ],
@@ -3166,7 +3157,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3206,7 +3196,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3246,7 +3235,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3942,6 +3930,43 @@
     "category": "Bows",
     "domain": "shaper",
     "side": "suffix",
+    "text_plain": "#% increased Movement Speed",
+    "tier": 2,
+    "ilvl": 84,
+    "weight": 2000,
+    "weight_pct": 14.085,
+    "tags": [
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (3–6)% increased Movement Speed",
+        "weight": 1000,
+        "weight_pct": 7.042
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 84,
+        "text_plain": "84 (7–10)% increased Movement Speed",
+        "weight": 1000,
+        "weight_pct": 7.042
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "suffix",
     "text_plain": "Projectiles Pierce an additional TargetProjectiles Pierce # additional Targets",
     "tier": 2,
     "ilvl": 75,
@@ -4524,7 +4549,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -4542,7 +4566,6 @@
     "weight": 800,
     "weight_pct": 10,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -4556,7 +4579,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -4574,7 +4596,6 @@
     "weight": 800,
     "weight_pct": 10,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -4588,7 +4609,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -4606,7 +4626,8 @@
     "weight": 800,
     "weight_pct": 10,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -4619,7 +4640,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -6046,7 +6066,6 @@
     "weight": 1600,
     "weight_pct": 28.571,
     "tags": [
-      "resource",
       "life",
       "attack"
     ],
@@ -6209,7 +6228,8 @@
     "weight": 1600,
     "weight_pct": 27.586,
     "tags": [
-      "defences"
+      "defences",
+      "armour"
     ],
     "tiers": [
       {
@@ -6229,7 +6249,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -6356,19 +6375,12 @@
     "sourceCategories": [
       "Amulets",
       "Bone_Spirit_Shield",
-      "Bows",
       "Quivers",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
       "Shields_str_dex",
-      "Shields_str_int",
-      "Staves",
-      "Two_Hand_Axes",
-      "Two_Hand_Maces",
-      "Two_Hand_Swords",
-      "Warstaves"
+      "Shields_str_int"
     ]
   },
   {
@@ -6778,7 +6790,6 @@
     "sourceCategories": [
       "Belts",
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -6852,7 +6863,6 @@
     "weight": 800,
     "weight_pct": 14.286,
     "tags": [
-      "resource",
       "mana",
       "attack"
     ],
@@ -6894,7 +6904,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -7663,7 +7672,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -8137,7 +8145,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -8672,6 +8679,48 @@
       "Two_Hand_Maces",
       "Two_Hand_Swords",
       "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "elder",
+    "side": "suffix",
+    "text_plain": "#% increased Area of Effect",
+    "tier": 3,
+    "ilvl": 82,
+    "weight": 3000,
+    "weight_pct": 19.355,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Elder",
+        "tier_level": 68,
+        "text_plain": "68 (5–10)% increased Area of Effect",
+        "weight": 1000,
+        "weight_pct": 6.452
+      },
+      {
+        "tier_name": "of the Elder",
+        "tier_level": 75,
+        "text_plain": "75 (11–15)% increased Area of Effect",
+        "weight": 1000,
+        "weight_pct": 6.452
+      },
+      {
+        "tier_name": "of the Elder",
+        "tier_level": 82,
+        "text_plain": "82 (16–20)% increased Area of Effect",
+        "weight": 1000,
+        "weight_pct": 6.452
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
       "Warstaves"
     ]
   },
@@ -10696,7 +10745,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -11002,12 +11050,7 @@
       }
     ],
     "sourceCategories": [
-      "Amulets",
-      "Convoking_Wand",
-      "Rune_Daggers",
-      "Sceptres",
-      "Staves",
-      "Wands"
+      "Amulets"
     ]
   },
   {
@@ -11756,6 +11799,111 @@
     ]
   },
   {
+    "category": "Quivers",
+    "domain": "crusader",
+    "side": "prefix",
+    "text_plain": "#% of Physical Damage Converted to Fire Damage",
+    "tier": 2,
+    "ilvl": 71,
+    "weight": 1000,
+    "weight_pct": 25,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "fire"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Crusader's",
+        "tier_level": 68,
+        "text_plain": "68 (18–21)% of Physical Damage Converted to Fire Damage",
+        "weight": 500,
+        "weight_pct": 12.5
+      },
+      {
+        "tier_name": "Crusader's",
+        "tier_level": 71,
+        "text_plain": "71 (22–25)% of Physical Damage Converted to Fire Damage",
+        "weight": 500,
+        "weight_pct": 12.5
+      }
+    ],
+    "sourceCategories": [
+      "Quivers"
+    ]
+  },
+  {
+    "category": "Quivers",
+    "domain": "crusader",
+    "side": "prefix",
+    "text_plain": "#% of Physical Damage Converted to Cold Damage",
+    "tier": 2,
+    "ilvl": 71,
+    "weight": 1000,
+    "weight_pct": 25,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Crusader's",
+        "tier_level": 68,
+        "text_plain": "68 (18–21)% of Physical Damage Converted to Cold Damage",
+        "weight": 500,
+        "weight_pct": 12.5
+      },
+      {
+        "tier_name": "Crusader's",
+        "tier_level": 71,
+        "text_plain": "71 (22–25)% of Physical Damage Converted to Cold Damage",
+        "weight": 500,
+        "weight_pct": 12.5
+      }
+    ],
+    "sourceCategories": [
+      "Quivers"
+    ]
+  },
+  {
+    "category": "Quivers",
+    "domain": "crusader",
+    "side": "prefix",
+    "text_plain": "#% of Physical Damage Converted to Lightning Damage",
+    "tier": 2,
+    "ilvl": 71,
+    "weight": 1000,
+    "weight_pct": 25,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "lightning"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Crusader's",
+        "tier_level": 68,
+        "text_plain": "68 (18–21)% of Physical Damage Converted to Lightning Damage",
+        "weight": 500,
+        "weight_pct": 12.5
+      },
+      {
+        "tier_name": "Crusader's",
+        "tier_level": 71,
+        "text_plain": "71 (22–25)% of Physical Damage Converted to Lightning Damage",
+        "weight": 500,
+        "weight_pct": 12.5
+      }
+    ],
+    "sourceCategories": [
+      "Quivers"
+    ]
+  },
+  {
     "category": "Claws",
     "domain": "crusader",
     "side": "prefix",
@@ -11991,7 +12139,6 @@
     "weight": 1000,
     "weight_pct": 16.667,
     "tags": [
-      "resource",
       "life",
       "caster"
     ],
@@ -12373,7 +12520,6 @@
     "weight": 1500,
     "weight_pct": 34.091,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -13101,7 +13247,6 @@
       "Daggers",
       "One_Hand_Axes",
       "One_Hand_Swords",
-      "Quivers",
       "Rune_Daggers",
       "Sceptres",
       "Thrusting_One_Hand_Swords",
@@ -13143,7 +13288,6 @@
     "sourceCategories": [
       "Claws",
       "Daggers",
-      "Quivers",
       "Rune_Daggers",
       "Sceptres",
       "Staves",
@@ -13444,7 +13588,6 @@
       "One_Hand_Axes",
       "One_Hand_Maces",
       "One_Hand_Swords",
-      "Quivers",
       "Sceptres",
       "Staves",
       "Thrusting_One_Hand_Swords",
@@ -13482,7 +13625,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -13522,7 +13664,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -13564,7 +13705,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -13602,7 +13742,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -13638,7 +13777,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -13671,6 +13809,42 @@
         "tier_name": "of the Crusade",
         "tier_level": 80,
         "text_plain": "80 (16–20)% chance to inflict Lightning Exposure on Hit",
+        "weight": 500,
+        "weight_pct": 9.091
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "crusader",
+    "side": "suffix",
+    "text_plain": "#% increased Damage per Power Charge",
+    "tier": 2,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 18.182,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Crusade",
+        "tier_level": 68,
+        "text_plain": "68 (5–7)% increased Damage per Power Charge",
+        "weight": 500,
+        "weight_pct": 9.091
+      },
+      {
+        "tier_name": "of the Crusade",
+        "tier_level": 73,
+        "text_plain": "73 (8–10)% increased Damage per Power Charge",
         "weight": 500,
         "weight_pct": 9.091
       }
@@ -14293,7 +14467,8 @@
     "weight": 250,
     "weight_pct": 4.762,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -14306,7 +14481,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -14426,7 +14600,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -14684,8 +14857,7 @@
       }
     ],
     "sourceCategories": [
-      "Amulets",
-      "Rune_Daggers"
+      "Amulets"
     ]
   },
   {
@@ -16669,7 +16841,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -16708,7 +16879,6 @@
     "sourceCategories": [
       "Bone_Spirit_Shield",
       "Quivers",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -16746,7 +16916,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -17524,7 +17693,6 @@
       "Bone_Spirit_Shield",
       "Quivers",
       "Rings",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -17651,12 +17819,43 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
       "Shields_str_dex",
       "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Rune_Daggers",
+    "domain": "redeemer",
+    "side": "suffix",
+    "text_plain": "#% increased Damage per Frenzy Charge",
+    "tier": 2,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 10.101,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 68,
+        "text_plain": "68 (5–7)% increased Damage per Frenzy Charge",
+        "weight": 500,
+        "weight_pct": 5.051
+      },
+      {
+        "tier_name": "of Redemption",
+        "tier_level": 73,
+        "text_plain": "73 (8–10)% increased Damage per Frenzy Charge",
+        "weight": 500,
+        "weight_pct": 5.051
+      }
+    ],
+    "sourceCategories": [
+      "Rune_Daggers"
     ]
   },
   {
@@ -17824,7 +18023,6 @@
     "weight": 250,
     "weight_pct": 5.263,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -17838,7 +18036,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -17891,7 +18088,7 @@
     "category": "Amulets",
     "domain": "redeemer",
     "side": "suffix",
-    "text_plain": "Prevent +2% of Suppressed Spell Damage",
+    "text_plain": "Prevent +(3–5)% of Suppressed Spell Damage",
     "tier": 1,
     "ilvl": 68,
     "weight": 250,
@@ -17901,7 +18098,7 @@
       {
         "tier_name": "of Redemption",
         "tier_level": 68,
-        "text_plain": "68 Prevent +2% of Suppressed Spell Damage",
+        "text_plain": "68 Prevent +(3–5)% of Suppressed Spell Damage",
         "weight": 250,
         "weight_pct": 3.03
       }
@@ -18196,7 +18393,6 @@
     "sourceCategories": [
       "Belts",
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -18617,7 +18813,6 @@
     "weight": 1000,
     "weight_pct": 21.978,
     "tags": [
-      "resource",
       "life",
       "attack"
     ],
@@ -19240,6 +19435,78 @@
     "category": "Gloves_dex",
     "domain": "hunter",
     "side": "prefix",
+    "text_plain": "#% chance to Intimidate Enemies for # seconds on Hit",
+    "tier": 2,
+    "ilvl": 85,
+    "weight": 250,
+    "weight_pct": 9.091,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Hunter's",
+        "tier_level": 85,
+        "text_plain": "85 (7–10)% chance to Intimidate Enemies for 4 seconds on Hit",
+        "weight": 250,
+        "weight_pct": 9.091
+      },
+      {
+        "tier_name": "Elevated Hunter's",
+        "tier_level": 95,
+        "text_plain": "95 Intimidate Enemies for 4 seconds on Hit",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "hunter",
+    "side": "prefix",
+    "text_plain": "#% chance to Unnerve Enemies for # seconds on Hit",
+    "tier": 2,
+    "ilvl": 85,
+    "weight": 250,
+    "weight_pct": 9.091,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Hunter's",
+        "tier_level": 85,
+        "text_plain": "85 (7–10)% chance to Unnerve Enemies for 4 seconds on Hit",
+        "weight": 250,
+        "weight_pct": 9.091
+      },
+      {
+        "tier_name": "Elevated Hunter's",
+        "tier_level": 95,
+        "text_plain": "95 Unnerve Enemies for 4 seconds on Hit",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "hunter",
+    "side": "prefix",
     "text_plain": "Non-Vaal Strike Skills target # additional nearby Enemy",
     "tier": 2,
     "ilvl": 80,
@@ -19631,7 +19898,6 @@
     "weight": 1500,
     "weight_pct": 78.947,
     "tags": [
-      "poison",
       "damage",
       "chaos",
       "ailment"
@@ -20237,7 +20503,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -20275,7 +20540,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -20312,7 +20576,6 @@
     "sourceCategories": [
       "Bone_Spirit_Shield",
       "One_Hand_Axes",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -20711,17 +20974,10 @@
       "Claws",
       "Convoking_Wand",
       "Daggers",
-      "Gloves_dex",
-      "Gloves_dex_int",
-      "Gloves_int",
-      "Gloves_str",
-      "Gloves_str_dex",
-      "Gloves_str_int",
       "One_Hand_Axes",
       "One_Hand_Maces",
       "One_Hand_Swords",
       "Rune_Daggers",
-      "Runic_Gauntlets",
       "Sceptres",
       "Staves",
       "Thrusting_One_Hand_Swords",
@@ -21083,14 +21339,7 @@
     ],
     "sourceCategories": [
       "Convoking_Wand",
-      "Gloves_dex",
-      "Gloves_dex_int",
-      "Gloves_int",
-      "Gloves_str",
-      "Gloves_str_dex",
-      "Gloves_str_int",
       "Rune_Daggers",
-      "Runic_Gauntlets",
       "Sceptres",
       "Staves",
       "Wands"
@@ -21343,7 +21592,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -21795,7 +22043,6 @@
       "Bone_Spirit_Shield",
       "Quivers",
       "Rings",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -22738,9 +22985,7 @@
       }
     ],
     "sourceCategories": [
-      "Amulets",
-      "Sceptres",
-      "Staves"
+      "Amulets"
     ]
   },
   {
@@ -23292,7 +23537,6 @@
     "weight": 1500,
     "weight_pct": 41.667,
     "tags": [
-      "bleed",
       "damage",
       "physical",
       "attack",
@@ -24501,7 +24745,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -24540,7 +24783,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -24579,7 +24821,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -24615,7 +24856,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -24651,7 +24891,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -24695,6 +24934,39 @@
       "Gloves_str_dex",
       "Gloves_str_int",
       "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Sceptres",
+    "domain": "warlord",
+    "side": "suffix",
+    "text_plain": "#% increased Damage per Endurance Charge",
+    "tier": 2,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 18.182,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Conquest",
+        "tier_level": 68,
+        "text_plain": "68 (5–7)% increased Damage per Endurance Charge",
+        "weight": 500,
+        "weight_pct": 9.091
+      },
+      {
+        "tier_name": "of the Conquest",
+        "tier_level": 73,
+        "text_plain": "73 (8–10)% increased Damage per Endurance Charge",
+        "weight": 500,
+        "weight_pct": 9.091
+      }
+    ],
+    "sourceCategories": [
+      "Sceptres",
+      "Staves"
     ]
   },
   {
@@ -24783,7 +25055,6 @@
     "weight": 1000,
     "weight_pct": 15.385,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -25207,7 +25478,6 @@
     "weight": 250,
     "weight_pct": 4.762,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -25221,7 +25491,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",

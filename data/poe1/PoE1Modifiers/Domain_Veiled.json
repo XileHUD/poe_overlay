@@ -325,9 +325,9 @@
     "weight": 1000,
     "weight_pct": 20,
     "tags": [
-      "resource",
       "life",
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -354,7 +354,6 @@
     "weight": 1000,
     "weight_pct": 20,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -440,7 +439,6 @@
     "weight": 1000,
     "weight_pct": 20,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -864,7 +862,6 @@
       "Bone_Spirit_Shield",
       "Quivers",
       "Rings",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -903,7 +900,6 @@
       "Bone_Spirit_Shield",
       "Quivers",
       "Rings",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -942,7 +938,6 @@
       "Bone_Spirit_Shield",
       "Quivers",
       "Rings",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -1482,7 +1477,6 @@
       "Body_Armours_str_dex_int",
       "Body_Armours_str_int",
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -1681,8 +1675,7 @@
       }
     ],
     "sourceCategories": [
-      "Helmets_dex",
-      "Shields_dex"
+      "Helmets_dex"
     ]
   },
   {
@@ -1985,7 +1978,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2187,7 +2179,6 @@
       "Body_Armours_str_dex_int",
       "Body_Armours_str_int",
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2494,7 +2485,6 @@
       "Body_Armours_str_dex_int",
       "Body_Armours_str_int",
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2506,7 +2496,7 @@
     "category": "Belts",
     "domain": "veiled",
     "side": "suffix",
-    "text_plain": "Your Critical Strike Chance is Lucky while FocusedFocus has (5–8)% increased Cooldown Recovery Rategrant focus skill [1]",
+    "text_plain": "Focus has (5–8)% increased Cooldown Recovery RateYour Critical Strike Chance is Lucky while Focusedgrant focus skill [1]",
     "tier": 1,
     "ilvl": 60,
     "weight": 1000,
@@ -2518,7 +2508,7 @@
       {
         "tier_name": "of the Order",
         "tier_level": 60,
-        "text_plain": "60 Your Critical Strike Chance is Lucky while FocusedFocus has (5–8)% increased Cooldown Recovery Rategrant focus skill [1]",
+        "text_plain": "60 Focus has (5–8)% increased Cooldown Recovery RateYour Critical Strike Chance is Lucky while Focusedgrant focus skill [1]",
         "weight": 1000,
         "weight_pct": 11.628
       }
@@ -2762,7 +2752,6 @@
       "One_Hand_Swords",
       "Rune_Daggers",
       "Sceptres",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2803,7 +2792,6 @@
       "One_Hand_Swords",
       "Rune_Daggers",
       "Sceptres",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3419,7 +3407,6 @@
       "Body_Armours_str_dex_int",
       "Body_Armours_str_int",
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3717,7 +3704,6 @@
       "Runic_Crown",
       "Runic_Gauntlets",
       "Runic_Sabatons",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3785,7 +3771,6 @@
       "Runic_Crown",
       "Runic_Gauntlets",
       "Runic_Sabatons",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3853,7 +3838,6 @@
       "Runic_Crown",
       "Runic_Gauntlets",
       "Runic_Sabatons",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",

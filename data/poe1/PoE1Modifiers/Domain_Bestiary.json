@@ -77,6 +77,8 @@
       "Body_Armours_str_dex",
       "Body_Armours_str_dex_int",
       "Body_Armours_str_int",
+      "Bone_Ring",
+      "Bone_Spirit_Shield",
       "Boots_dex",
       "Boots_dex_int",
       "Boots_int",
@@ -85,6 +87,7 @@
       "Boots_str_int",
       "Bows",
       "Claws",
+      "Convoking_Wand",
       "Daggers",
       "Fishing_Rods",
       "Gloves_dex",
@@ -105,8 +108,10 @@
       "Quivers",
       "Rings",
       "Rune_Daggers",
+      "Runic_Crown",
+      "Runic_Gauntlets",
+      "Runic_Sabatons",
       "Sceptres",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -117,58 +122,134 @@
       "Two_Hand_Axes",
       "Two_Hand_Maces",
       "Two_Hand_Swords",
+      "Unset_Ring",
       "Wands",
       "Warstaves"
     ]
   },
   {
-    "category": "Bone_Ring",
+    "category": "Iron_Flask",
     "domain": "bestiary",
     "side": "suffix",
-    "text_plain": "Grants Level # Aspect of the Avian SkillGrants Level # Aspect of the Cat SkillGrants Level # Aspect of the Crab SkillGrants Level # Aspect of the Spider Skill",
-    "tier": 4,
-    "ilvl": 20,
+    "text_plain": "(45–49)% less DurationImmunity to Bleeding and Corrupted Blood during Effect",
+    "tier": 1,
+    "ilvl": 8,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
     "tiers": [
       {
-        "tier_name": "of Saqawal",
-        "tier_level": 20,
-        "text_plain": "20 Grants Level 20 Aspect of the Avian Skill",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "of Farrul",
-        "tier_level": 20,
-        "text_plain": "20 Grants Level 20 Aspect of the Cat Skill",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "of Craiceann",
-        "tier_level": 20,
-        "text_plain": "20 Grants Level 20 Aspect of the Crab Skill",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "of Fenumus",
-        "tier_level": 20,
-        "text_plain": "20 Grants Level 20 Aspect of the Spider Skill",
+        "tier_name": "of the Lizard",
+        "tier_level": 8,
+        "text_plain": "8 (45–49)% less DurationImmunity to Bleeding and Corrupted Blood during Effect",
         "weight": 0,
         "weight_pct": 0
       }
     ],
     "sourceCategories": [
-      "Bone_Ring",
-      "Bone_Spirit_Shield",
-      "Convoking_Wand",
-      "Runic_Crown",
-      "Runic_Gauntlets",
-      "Runic_Sabatons",
-      "Unset_Ring"
+      "Iron_Flask",
+      "Silver_Flask",
+      "Utility_Flasks"
+    ]
+  },
+  {
+    "category": "Iron_Flask",
+    "domain": "bestiary",
+    "side": "suffix",
+    "text_plain": "(45–49)% less DurationImmunity to Freeze and Chill during Effect",
+    "tier": 1,
+    "ilvl": 4,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Deer",
+        "tier_level": 4,
+        "text_plain": "4 (45–49)% less DurationImmunity to Freeze and Chill during Effect",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Iron_Flask",
+      "Silver_Flask",
+      "Utility_Flasks"
+    ]
+  },
+  {
+    "category": "Iron_Flask",
+    "domain": "bestiary",
+    "side": "suffix",
+    "text_plain": "(45–49)% less DurationImmunity to Ignite during EffectRemoves Burning on use",
+    "tier": 1,
+    "ilvl": 6,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Urchin",
+        "tier_level": 6,
+        "text_plain": "6 (45–49)% less DurationImmunity to Ignite during EffectRemoves Burning on use",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Iron_Flask",
+      "Silver_Flask",
+      "Utility_Flasks"
+    ]
+  },
+  {
+    "category": "Iron_Flask",
+    "domain": "bestiary",
+    "side": "suffix",
+    "text_plain": "(45–49)% less DurationImmunity to Poison during Effect",
+    "tier": 1,
+    "ilvl": 16,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Skunk",
+        "tier_level": 16,
+        "text_plain": "16 (45–49)% less DurationImmunity to Poison during Effect",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Iron_Flask",
+      "Silver_Flask",
+      "Utility_Flasks"
+    ]
+  },
+  {
+    "category": "Iron_Flask",
+    "domain": "bestiary",
+    "side": "suffix",
+    "text_plain": "(45–49)% less DurationImmunity to Shock during Effect",
+    "tier": 1,
+    "ilvl": 6,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Conger",
+        "tier_level": 6,
+        "text_plain": "6 (45–49)% less DurationImmunity to Shock during Effect",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Iron_Flask",
+      "Silver_Flask",
+      "Utility_Flasks"
     ]
   },
   {
@@ -316,121 +397,6 @@
     "sourceCategories": [
       "Life_Flasks",
       "Mana_Flasks"
-    ]
-  },
-  {
-    "category": "Utility_Flasks",
-    "domain": "bestiary",
-    "side": "suffix",
-    "text_plain": "(45–49)% less DurationImmunity to Bleeding and Corrupted Blood during Effect",
-    "tier": 1,
-    "ilvl": 8,
-    "weight": 0,
-    "weight_pct": 0,
-    "tags": [],
-    "tiers": [
-      {
-        "tier_name": "of the Lizard",
-        "tier_level": 8,
-        "text_plain": "8 (45–49)% less DurationImmunity to Bleeding and Corrupted Blood during Effect",
-        "weight": 0,
-        "weight_pct": 0
-      }
-    ],
-    "sourceCategories": [
-      "Utility_Flasks"
-    ]
-  },
-  {
-    "category": "Utility_Flasks",
-    "domain": "bestiary",
-    "side": "suffix",
-    "text_plain": "(45–49)% less DurationImmunity to Freeze and Chill during Effect",
-    "tier": 1,
-    "ilvl": 4,
-    "weight": 0,
-    "weight_pct": 0,
-    "tags": [],
-    "tiers": [
-      {
-        "tier_name": "of the Deer",
-        "tier_level": 4,
-        "text_plain": "4 (45–49)% less DurationImmunity to Freeze and Chill during Effect",
-        "weight": 0,
-        "weight_pct": 0
-      }
-    ],
-    "sourceCategories": [
-      "Utility_Flasks"
-    ]
-  },
-  {
-    "category": "Utility_Flasks",
-    "domain": "bestiary",
-    "side": "suffix",
-    "text_plain": "(45–49)% less DurationImmunity to Ignite during EffectRemoves Burning on use",
-    "tier": 1,
-    "ilvl": 6,
-    "weight": 0,
-    "weight_pct": 0,
-    "tags": [],
-    "tiers": [
-      {
-        "tier_name": "of the Urchin",
-        "tier_level": 6,
-        "text_plain": "6 (45–49)% less DurationImmunity to Ignite during EffectRemoves Burning on use",
-        "weight": 0,
-        "weight_pct": 0
-      }
-    ],
-    "sourceCategories": [
-      "Utility_Flasks"
-    ]
-  },
-  {
-    "category": "Utility_Flasks",
-    "domain": "bestiary",
-    "side": "suffix",
-    "text_plain": "(45–49)% less DurationImmunity to Poison during Effect",
-    "tier": 1,
-    "ilvl": 16,
-    "weight": 0,
-    "weight_pct": 0,
-    "tags": [],
-    "tiers": [
-      {
-        "tier_name": "of the Skunk",
-        "tier_level": 16,
-        "text_plain": "16 (45–49)% less DurationImmunity to Poison during Effect",
-        "weight": 0,
-        "weight_pct": 0
-      }
-    ],
-    "sourceCategories": [
-      "Utility_Flasks"
-    ]
-  },
-  {
-    "category": "Utility_Flasks",
-    "domain": "bestiary",
-    "side": "suffix",
-    "text_plain": "(45–49)% less DurationImmunity to Shock during Effect",
-    "tier": 1,
-    "ilvl": 6,
-    "weight": 0,
-    "weight_pct": 0,
-    "tags": [],
-    "tiers": [
-      {
-        "tier_name": "of the Conger",
-        "tier_level": 6,
-        "text_plain": "6 (45–49)% less DurationImmunity to Shock during Effect",
-        "weight": 0,
-        "weight_pct": 0
-      }
-    ],
-    "sourceCategories": [
-      "Utility_Flasks"
     ]
   }
 ]

@@ -20,7 +20,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -748,13 +747,7 @@
     ],
     "sourceCategories": [
       "Amulets",
-      "Bows",
-      "Quivers",
-      "Staves",
-      "Two_Hand_Axes",
-      "Two_Hand_Maces",
-      "Two_Hand_Swords",
-      "Warstaves"
+      "Quivers"
     ]
   },
   {
@@ -870,7 +863,6 @@
     "weight": 1600,
     "weight_pct": 22.069,
     "tags": [
-      "resource",
       "life",
       "caster"
     ],
@@ -1489,7 +1481,6 @@
     "weight": 800,
     "weight_pct": 11.034,
     "tags": [
-      "resource",
       "mana",
       "caster"
     ],
@@ -3166,7 +3157,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3206,7 +3196,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3246,7 +3235,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3942,6 +3930,43 @@
     "category": "Bows",
     "domain": "shaper",
     "side": "suffix",
+    "text_plain": "#% increased Movement Speed",
+    "tier": 2,
+    "ilvl": 84,
+    "weight": 2000,
+    "weight_pct": 14.085,
+    "tags": [
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 75,
+        "text_plain": "75 (3–6)% increased Movement Speed",
+        "weight": 1000,
+        "weight_pct": 7.042
+      },
+      {
+        "tier_name": "of Shaping",
+        "tier_level": 84,
+        "text_plain": "84 (7–10)% increased Movement Speed",
+        "weight": 1000,
+        "weight_pct": 7.042
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "shaper",
+    "side": "suffix",
     "text_plain": "Projectiles Pierce an additional TargetProjectiles Pierce # additional Targets",
     "tier": 2,
     "ilvl": 75,
@@ -4524,7 +4549,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -4542,7 +4566,6 @@
     "weight": 800,
     "weight_pct": 10,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -4556,7 +4579,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -4574,7 +4596,6 @@
     "weight": 800,
     "weight_pct": 10,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -4588,7 +4609,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -4606,7 +4626,8 @@
     "weight": 800,
     "weight_pct": 10,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -4619,7 +4640,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",

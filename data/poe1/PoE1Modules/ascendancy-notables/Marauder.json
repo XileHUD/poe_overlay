@@ -3,64 +3,61 @@
   "character": "Marauder",
   "notables": [
     {
+      "name": "Untiring",
+      "slug": "Untiring",
+      "ascendancy": "Juggernaut",
+      "mods": [
+        "40% increased Life Regeneration rate",
+        "1.5% of Physical Damage prevented from Hits in the past10 seconds is Regenerated as Life per second",
+        "juggernaut_phys_damage_prevented_as_life_regen"
+      ],
+      "properties": {},
+      "character": "Marauder",
+      "imageLocal": "ascendancy-notables/marauder/untiring.webp"
+    },
+    {
       "name": "Unstoppable",
       "slug": "Unstoppable",
       "ascendancy": "Juggernaut",
-      "character": "Marauder",
-      "properties": {},
       "mods": [
         "10% increased Movement Speed",
         "Cannot be Stunned",
         "Action Speed cannot be modified to below Base Value",
         "Movement Speed cannot be modified to below Base Value"
       ],
+      "properties": {},
+      "character": "Marauder",
       "imageLocal": "ascendancy-notables/marauder/unstoppable.webp"
     },
     {
       "name": "Unbreakable",
       "slug": "Unbreakable",
       "ascendancy": "Juggernaut",
-      "character": "Marauder",
-      "properties": {},
       "mods": [
         "Armour from Equipped Body Armour is doubled",
         "15% of Armour also applies to Chaos Damage taken from Hits"
       ],
-      "imageLocal": "ascendancy-notables/marauder/unbreakable.webp"
-    },
-    {
-      "name": "Unyielding",
-      "slug": "Unyielding",
-      "ascendancy": "Juggernaut",
-      "character": "Marauder",
       "properties": {},
-      "mods": [
-        "8% increased Damage per Endurance Charge",
-        "6% increased Area of Effect per Endurance Charge",
-        "25% chance to gain an Endurance Charge when you Stun an Enemy",
-        "10% increased Stun Duration on Enemies per Endurance Charge"
-      ],
-      "imageLocal": "ascendancy-notables/marauder/unyielding.webp"
+      "character": "Marauder",
+      "imageLocal": "ascendancy-notables/marauder/unbreakable.webp"
     },
     {
       "name": "Undeniable",
       "slug": "Undeniable",
       "ascendancy": "Juggernaut",
-      "character": "Marauder",
-      "properties": {},
       "mods": [
         "+500 to Accuracy Rating",
         "1% increased Attack Speed per 150 Accuracy Rating",
         "Gain Accuracy Rating equal to twice your Strength"
       ],
+      "properties": {},
+      "character": "Marauder",
       "imageLocal": "ascendancy-notables/marauder/undeniable.webp"
     },
     {
       "name": "Unflinching",
       "slug": "Unflinching",
       "ascendancy": "Juggernaut",
-      "character": "Marauder",
-      "properties": {},
       "mods": [
         "30% chance to gain an Endurance Charge when you are Hit",
         "25% chance that if you would gain Endurance Charges, you instead gain up to maximum Endurance Charges",
@@ -68,202 +65,205 @@
         "+1 to Maximum Endurance Charges",
         "(Recently refers to the past 4 seconds)"
       ],
+      "properties": {},
+      "character": "Marauder",
       "imageLocal": "ascendancy-notables/marauder/unflinching.webp"
     },
     {
       "name": "Unrelenting",
       "slug": "Unrelenting",
       "ascendancy": "Juggernaut",
-      "character": "Marauder",
-      "properties": {},
       "mods": [
         "1% additional Physical Damage Reduction per Endurance Charge",
         "1% additional Elemental Damage Reduction per Endurance Charge"
       ],
+      "properties": {},
+      "character": "Marauder",
       "imageLocal": "ascendancy-notables/marauder/unrelenting.webp"
     },
     {
-      "name": "Untiring",
-      "slug": "Untiring",
+      "name": "Unyielding",
+      "slug": "Unyielding",
       "ascendancy": "Juggernaut",
-      "character": "Marauder",
-      "properties": {},
       "mods": [
-        "40% increased Life Regeneration rate",
-        "1.5% of Physical Damage prevented from Hits in the past10 seconds is Regenerated as Life per second",
-        "juggernaut_phys_damage_prevented_as_life_regen"
+        "8% increased Damage per Endurance Charge",
+        "6% increased Area of Effect per Endurance Charge",
+        "25% chance to gain an Endurance Charge when you Stun an Enemy",
+        "10% increased Stun Duration on Enemies per Endurance Charge"
       ],
-      "imageLocal": "ascendancy-notables/marauder/untiring.webp"
-    },
-    {
-      "name": "War Bringer",
-      "slug": "War_Bringer",
-      "ascendancy": "Berserker",
-      "character": "Marauder",
       "properties": {},
-      "mods": [
-        "Warcries Exert twice as many Attacks"
-      ],
-      "imageLocal": "ascendancy-notables/marauder/war_bringer.webp"
-    },
-    {
-      "name": "Rite of Ruin",
-      "slug": "Rite_of_Ruin",
-      "ascendancy": "Berserker",
       "character": "Marauder",
-      "properties": {},
-      "mods": [
-        "Lose 0.1% of Life per second per Rage while you are not losing Rage",
-        "50% increased Rage Effect",
-        "(Every Rage has an inherent effect of 1% more Attack Damage, and modifiers can add extra effects to Rage)"
-      ],
-      "imageLocal": "ascendancy-notables/marauder/rite_of_ruin.webp"
-    },
-    {
-      "name": "Defy Pain",
-      "slug": "Defy_Pain",
-      "ascendancy": "Berserker",
-      "character": "Marauder",
-      "properties": {},
-      "mods": [
-        "Gain Defiance for 10 seconds on losing Life to an Enemy Hit, nomore than once every 0.3 seconds",
-        "Lose all Defiance when you reach 10 Defiance",
-        "Gain 3% of Missing Unreserved Life before being Hit by an Enemy Per Defiance"
-      ],
-      "imageLocal": "ascendancy-notables/marauder/defy_pain.webp"
+      "imageLocal": "ascendancy-notables/marauder/unyielding.webp"
     },
     {
       "name": "Ancestral Fury",
       "slug": "Ancestral_Fury",
       "ascendancy": "Berserker",
-      "character": "Marauder",
-      "properties": {},
       "mods": [
         "Strike Skills also target the previous location they were used"
       ],
+      "properties": {},
+      "character": "Marauder",
       "imageLocal": "ascendancy-notables/marauder/ancestral_fury.webp"
     },
     {
       "name": "Crave the Slaughter",
       "slug": "Crave_the_Slaughter",
       "ascendancy": "Berserker",
-      "character": "Marauder",
-      "properties": {},
       "mods": [
         "Every Rage also grants 1% increased Attack Speed",
         "Inherent Rage Loss starts 2 seconds later",
         "(This only affects the inherent loss of Rage when you haven't been Hit or gained Rage Recently)",
         "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)"
       ],
+      "properties": {},
+      "character": "Marauder",
       "imageLocal": "ascendancy-notables/marauder/crave_the_slaughter.webp"
     },
     {
       "name": "Aspect of Carnage",
       "slug": "Aspect_of_Carnage",
       "ascendancy": "Berserker",
-      "character": "Marauder",
-      "properties": {},
       "mods": [
         "10% increased Damage taken",
         "40% more Damage"
       ],
+      "properties": {},
+      "character": "Marauder",
       "imageLocal": "ascendancy-notables/marauder/aspect_of_carnage.webp"
     },
     {
       "name": "Gore Dancer",
       "slug": "Gore_Dancer",
       "ascendancy": "Berserker",
-      "character": "Marauder",
-      "properties": {},
       "mods": [
         "30% of Life Leech is Instant"
       ],
+      "properties": {},
+      "character": "Marauder",
       "imageLocal": "ascendancy-notables/marauder/gore_dancer.webp"
     },
     {
-      "name": "Sione, Sun's Roar",
-      "slug": "Sione%2C_Suns_Roar",
-      "ascendancy": "Chieftain",
-      "character": "Marauder",
-      "properties": {},
+      "name": "War Bringer",
+      "slug": "War_Bringer",
+      "ascendancy": "Berserker",
       "mods": [
-        "30% increased Warcry Buff Effect",
-        "Warcries have infinite Power",
-        "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)"
+        "Warcries Exert twice as many Attacks"
       ],
-      "imageLocal": "ascendancy-notables/marauder/sione_suns_roar.webp"
+      "properties": {},
+      "character": "Marauder",
+      "imageLocal": "ascendancy-notables/marauder/war_bringer.webp"
     },
     {
-      "name": "Ngamahu, Flame's Advance",
-      "slug": "Ngamahu%2C_Flames_Advance",
-      "ascendancy": "Chieftain",
-      "character": "Marauder",
-      "properties": {},
+      "name": "Rite of Ruin",
+      "slug": "Rite_of_Ruin",
+      "ascendancy": "Berserker",
       "mods": [
-        "Non-Unique Jewels cause Increases and Reductions to other Damage Types in a Large Radius to be Transformed to apply to Fire Damage",
-        "Non-Unique Jewels cause Small and Notable Passive Skills in a Large Radius toalso grant +3 to Strength",
-        "(Passive Skills that are not Notable, Masteries, Keystones, or Jewel Sockets are Small)"
+        "Lose 0.1% of Life per second per Rage while you are not losing Rage",
+        "50% increased Rage Effect",
+        "(Every Rage has an inherent effect of 1% more Attack Damage, and modifiers can add extra effects to Rage)"
       ],
-      "imageLocal": "ascendancy-notables/marauder/ngamahu_flames_advance.webp"
+      "properties": {},
+      "character": "Marauder",
+      "imageLocal": "ascendancy-notables/marauder/rite_of_ruin.webp"
     },
     {
-      "name": "Hinekora, Death's Fury",
-      "slug": "Hinekora%2C_Deaths_Fury",
-      "ascendancy": "Chieftain",
-      "character": "Marauder",
-      "properties": {},
+      "name": "Defy Pain",
+      "slug": "Defy_Pain",
+      "ascendancy": "Berserker",
       "mods": [
-        "Enemies you or your Totems Kill have 5% chance to Explode, dealing 500% of their maximum Life as Fire Damage"
+        "Gain Defiance for 10 seconds on losing Life to an Enemy Hit, nomore than once every 0.3 seconds",
+        "Lose all Defiance when you reach 10 Defiance",
+        "Gain 3% of Missing Unreserved Life before being Hit by an Enemy Per Defiance"
       ],
-      "imageLocal": "ascendancy-notables/marauder/hinekora_deaths_fury.webp"
+      "properties": {},
+      "character": "Marauder",
+      "imageLocal": "ascendancy-notables/marauder/defy_pain.webp"
     },
     {
       "name": "Tasalio, Cleansing Water",
-      "slug": "Tasalio%2C_Cleansing_Water",
+      "slug": "Tasalio,_Cleansing_Water",
       "ascendancy": "Chieftain",
-      "character": "Marauder",
-      "properties": {},
       "mods": [
         "Modifiers to Fire Resistance also apply to Cold and Lightning Resistances at 50% of their Value",
         "Unaffected by Ignite",
         "(Debuffs you are Unaffected by can still be placed on you, but will not actually apply their effect)"
       ],
+      "properties": {},
+      "character": "Marauder",
       "imageLocal": "ascendancy-notables/marauder/tasalio_cleansing_water.webp"
     },
     {
-      "name": "Tukohama, War's Herald",
-      "slug": "Tukohama%2C_Wars_Herald",
+      "name": "Tukohama, Wars Herald",
+      "slug": "Tukohama,_Wars_Herald",
       "ascendancy": "Chieftain",
-      "character": "Marauder",
-      "properties": {},
       "mods": [
         "Skills from Equipped Body Armour are Supported by Level 30 Ancestral Call",
         "Skills from Equipped Body Armour are Supported by Level 20 Fist of War"
       ],
+      "properties": {},
+      "character": "Marauder",
       "imageLocal": "ascendancy-notables/marauder/tukohama_wars_herald.webp"
     },
     {
-      "name": "Ramako, Sun's Light",
-      "slug": "Ramako%2C_Suns_Light",
+      "name": "Ramako, Suns Light",
+      "slug": "Ramako,_Suns_Light",
       "ascendancy": "Chieftain",
-      "character": "Marauder",
-      "properties": {},
       "mods": [
         "Nearby Enemy Monsters' Fire Resistance againstDamage over Time is -20% while you are Stationary",
         "Nearby Enemy Monsters have no Fire Resistance againstDamage over Time while you are Stationary"
       ],
+      "properties": {},
+      "character": "Marauder",
       "imageLocal": "ascendancy-notables/marauder/ramako_suns_light.webp"
     },
     {
-      "name": "Valako, Storm's Embrace",
-      "slug": "Valako%2C_Storms_Embrace",
+      "name": "Valako, Storms Embrace",
+      "slug": "Valako,_Storms_Embrace",
       "ascendancy": "Chieftain",
-      "character": "Marauder",
-      "properties": {},
       "mods": [
         "Modifiers to Maximum Fire Resistance also apply to Maximum Cold and Lightning Resistances"
       ],
+      "properties": {},
+      "character": "Marauder",
       "imageLocal": "ascendancy-notables/marauder/valako_storms_embrace.webp"
+    },
+    {
+      "name": "Sione, Suns Roar",
+      "slug": "Sione,_Suns_Roar",
+      "ascendancy": "Chieftain",
+      "mods": [
+        "30% increased Warcry Buff Effect",
+        "Warcries have infinite Power",
+        "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)"
+      ],
+      "properties": {},
+      "character": "Marauder",
+      "imageLocal": "ascendancy-notables/marauder/sione_suns_roar.webp"
+    },
+    {
+      "name": "Ngamahu, Flames Advance",
+      "slug": "Ngamahu,_Flames_Advance",
+      "ascendancy": "Chieftain",
+      "mods": [
+        "Non-Unique Jewels cause Increases and Reductions to other Damage Types in a Large Radius to be Transformed to apply to Fire Damage",
+        "Non-Unique Jewels cause Small and Notable Passive Skills in a Large Radius toalso grant +4 to Strength",
+        "(Passive Skills that are not Notable, Masteries, Keystones, or Jewel Sockets are Small)"
+      ],
+      "properties": {},
+      "character": "Marauder",
+      "imageLocal": "ascendancy-notables/marauder/ngamahu_flames_advance.webp"
+    },
+    {
+      "name": "Hinekora, Deaths Fury",
+      "slug": "Hinekora,_Deaths_Fury",
+      "ascendancy": "Chieftain",
+      "mods": [
+        "Enemies you or your Totems Kill have 5% chance to Explode, dealing 500% of their maximum Life as Fire Damage"
+      ],
+      "properties": {},
+      "character": "Marauder",
+      "imageLocal": "ascendancy-notables/marauder/hinekora_deaths_fury.webp"
     }
   ]
 }

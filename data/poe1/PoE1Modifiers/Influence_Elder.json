@@ -484,7 +484,6 @@
     "weight": 1600,
     "weight_pct": 28.571,
     "tags": [
-      "resource",
       "life",
       "attack"
     ],
@@ -647,7 +646,8 @@
     "weight": 1600,
     "weight_pct": 27.586,
     "tags": [
-      "defences"
+      "defences",
+      "armour"
     ],
     "tiers": [
       {
@@ -667,7 +667,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -794,19 +793,12 @@
     "sourceCategories": [
       "Amulets",
       "Bone_Spirit_Shield",
-      "Bows",
       "Quivers",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
       "Shields_str_dex",
-      "Shields_str_int",
-      "Staves",
-      "Two_Hand_Axes",
-      "Two_Hand_Maces",
-      "Two_Hand_Swords",
-      "Warstaves"
+      "Shields_str_int"
     ]
   },
   {
@@ -1216,7 +1208,6 @@
     "sourceCategories": [
       "Belts",
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -1290,7 +1281,6 @@
     "weight": 800,
     "weight_pct": 14.286,
     "tags": [
-      "resource",
       "mana",
       "attack"
     ],
@@ -1332,7 +1322,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2101,7 +2090,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2575,7 +2563,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3110,6 +3097,48 @@
       "Two_Hand_Maces",
       "Two_Hand_Swords",
       "Wands",
+      "Warstaves"
+    ]
+  },
+  {
+    "category": "Bows",
+    "domain": "elder",
+    "side": "suffix",
+    "text_plain": "#% increased Area of Effect",
+    "tier": 3,
+    "ilvl": 82,
+    "weight": 3000,
+    "weight_pct": 19.355,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Elder",
+        "tier_level": 68,
+        "text_plain": "68 (5–10)% increased Area of Effect",
+        "weight": 1000,
+        "weight_pct": 6.452
+      },
+      {
+        "tier_name": "of the Elder",
+        "tier_level": 75,
+        "text_plain": "75 (11–15)% increased Area of Effect",
+        "weight": 1000,
+        "weight_pct": 6.452
+      },
+      {
+        "tier_name": "of the Elder",
+        "tier_level": 82,
+        "text_plain": "82 (16–20)% increased Area of Effect",
+        "weight": 1000,
+        "weight_pct": 6.452
+      }
+    ],
+    "sourceCategories": [
+      "Bows",
+      "Staves",
+      "Two_Hand_Axes",
+      "Two_Hand_Maces",
+      "Two_Hand_Swords",
       "Warstaves"
     ]
   },

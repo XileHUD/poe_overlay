@@ -22,7 +22,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -328,12 +327,7 @@
       }
     ],
     "sourceCategories": [
-      "Amulets",
-      "Convoking_Wand",
-      "Rune_Daggers",
-      "Sceptres",
-      "Staves",
-      "Wands"
+      "Amulets"
     ]
   },
   {
@@ -1082,6 +1076,111 @@
     ]
   },
   {
+    "category": "Quivers",
+    "domain": "crusader",
+    "side": "prefix",
+    "text_plain": "#% of Physical Damage Converted to Fire Damage",
+    "tier": 2,
+    "ilvl": 71,
+    "weight": 1000,
+    "weight_pct": 25,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "fire"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Crusader's",
+        "tier_level": 68,
+        "text_plain": "68 (18–21)% of Physical Damage Converted to Fire Damage",
+        "weight": 500,
+        "weight_pct": 12.5
+      },
+      {
+        "tier_name": "Crusader's",
+        "tier_level": 71,
+        "text_plain": "71 (22–25)% of Physical Damage Converted to Fire Damage",
+        "weight": 500,
+        "weight_pct": 12.5
+      }
+    ],
+    "sourceCategories": [
+      "Quivers"
+    ]
+  },
+  {
+    "category": "Quivers",
+    "domain": "crusader",
+    "side": "prefix",
+    "text_plain": "#% of Physical Damage Converted to Cold Damage",
+    "tier": 2,
+    "ilvl": 71,
+    "weight": 1000,
+    "weight_pct": 25,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "cold"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Crusader's",
+        "tier_level": 68,
+        "text_plain": "68 (18–21)% of Physical Damage Converted to Cold Damage",
+        "weight": 500,
+        "weight_pct": 12.5
+      },
+      {
+        "tier_name": "Crusader's",
+        "tier_level": 71,
+        "text_plain": "71 (22–25)% of Physical Damage Converted to Cold Damage",
+        "weight": 500,
+        "weight_pct": 12.5
+      }
+    ],
+    "sourceCategories": [
+      "Quivers"
+    ]
+  },
+  {
+    "category": "Quivers",
+    "domain": "crusader",
+    "side": "prefix",
+    "text_plain": "#% of Physical Damage Converted to Lightning Damage",
+    "tier": 2,
+    "ilvl": 71,
+    "weight": 1000,
+    "weight_pct": 25,
+    "tags": [
+      "damage",
+      "physical",
+      "elemental",
+      "lightning"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Crusader's",
+        "tier_level": 68,
+        "text_plain": "68 (18–21)% of Physical Damage Converted to Lightning Damage",
+        "weight": 500,
+        "weight_pct": 12.5
+      },
+      {
+        "tier_name": "Crusader's",
+        "tier_level": 71,
+        "text_plain": "71 (22–25)% of Physical Damage Converted to Lightning Damage",
+        "weight": 500,
+        "weight_pct": 12.5
+      }
+    ],
+    "sourceCategories": [
+      "Quivers"
+    ]
+  },
+  {
     "category": "Claws",
     "domain": "crusader",
     "side": "prefix",
@@ -1317,7 +1416,6 @@
     "weight": 1000,
     "weight_pct": 16.667,
     "tags": [
-      "resource",
       "life",
       "caster"
     ],
@@ -1699,7 +1797,6 @@
     "weight": 1500,
     "weight_pct": 34.091,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -2427,7 +2524,6 @@
       "Daggers",
       "One_Hand_Axes",
       "One_Hand_Swords",
-      "Quivers",
       "Rune_Daggers",
       "Sceptres",
       "Thrusting_One_Hand_Swords",
@@ -2469,7 +2565,6 @@
     "sourceCategories": [
       "Claws",
       "Daggers",
-      "Quivers",
       "Rune_Daggers",
       "Sceptres",
       "Staves",
@@ -2770,7 +2865,6 @@
       "One_Hand_Axes",
       "One_Hand_Maces",
       "One_Hand_Swords",
-      "Quivers",
       "Sceptres",
       "Staves",
       "Thrusting_One_Hand_Swords",
@@ -2808,7 +2902,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2848,7 +2941,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2890,7 +2982,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2928,7 +3019,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2964,7 +3054,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2997,6 +3086,42 @@
         "tier_name": "of the Crusade",
         "tier_level": 80,
         "text_plain": "80 (16–20)% chance to inflict Lightning Exposure on Hit",
+        "weight": 500,
+        "weight_pct": 9.091
+      }
+    ],
+    "sourceCategories": [
+      "Convoking_Wand",
+      "Rune_Daggers",
+      "Sceptres",
+      "Staves",
+      "Wands"
+    ]
+  },
+  {
+    "category": "Convoking_Wand",
+    "domain": "crusader",
+    "side": "suffix",
+    "text_plain": "#% increased Damage per Power Charge",
+    "tier": 2,
+    "ilvl": 73,
+    "weight": 1000,
+    "weight_pct": 18.182,
+    "tags": [
+      "damage"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Crusade",
+        "tier_level": 68,
+        "text_plain": "68 (5–7)% increased Damage per Power Charge",
+        "weight": 500,
+        "weight_pct": 9.091
+      },
+      {
+        "tier_name": "of the Crusade",
+        "tier_level": 73,
+        "text_plain": "73 (8–10)% increased Damage per Power Charge",
         "weight": 500,
         "weight_pct": 9.091
       }
@@ -3619,7 +3744,8 @@
     "weight": 250,
     "weight_pct": 4.762,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -3632,7 +3758,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",

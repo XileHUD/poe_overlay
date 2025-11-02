@@ -92,7 +92,6 @@
       "Body_Armours_str_int",
       "Bone_Spirit_Shield",
       "Quivers",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -132,7 +131,6 @@
       "Body_Armours_str_int",
       "Bone_Spirit_Shield",
       "Quivers",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -172,7 +170,6 @@
       "Body_Armours_str_int",
       "Bone_Spirit_Shield",
       "Quivers",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -243,7 +240,6 @@
       "Helmets_str_int",
       "Quivers",
       "Runic_Crown",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -386,7 +382,6 @@
     "weight": 600,
     "weight_pct": 20,
     "tags": [
-      "resource",
       "life",
       "elemental",
       "fire"
@@ -416,7 +411,6 @@
     "weight": 600,
     "weight_pct": 20,
     "tags": [
-      "resource",
       "life",
       "elemental",
       "cold"
@@ -446,7 +440,6 @@
     "weight": 600,
     "weight_pct": 20,
     "tags": [
-      "resource",
       "life",
       "elemental",
       "lightning"
@@ -476,7 +469,6 @@
     "weight": 600,
     "weight_pct": 20,
     "tags": [
-      "resource",
       "life",
       "physical"
     ],
@@ -505,7 +497,6 @@
     "weight": 600,
     "weight_pct": 20,
     "tags": [
-      "resource",
       "life",
       "chaos"
     ],
@@ -899,7 +890,6 @@
     "weight": 1000,
     "weight_pct": 13.158,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -2139,7 +2129,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -2271,7 +2260,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2304,7 +2292,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2337,7 +2324,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2370,7 +2356,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2710,7 +2695,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life",
       "minion"
     ],
@@ -3449,7 +3433,7 @@
     "category": "Amulets",
     "domain": "delve",
     "side": "suffix",
-    "text_plain": "(15–25)% increased Vaal Skill Effect Duration",
+    "text_plain": "Vaal Skills have (15–25)% increased Skill Effect Duration",
     "tier": 1,
     "ilvl": 1,
     "weight": 2000,
@@ -3459,7 +3443,7 @@
       {
         "tier_name": "of the Underground",
         "tier_level": 1,
-        "text_plain": "1 (15–25)% increased Vaal Skill Effect Duration",
+        "text_plain": "1 Vaal Skills have (15–25)% increased Skill Effect Duration",
         "weight": 2000,
         "weight_pct": 12.195
       }
@@ -3523,7 +3507,6 @@
       "Body_Armours_str_dex_int",
       "Body_Armours_str_int",
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3569,7 +3552,6 @@
     "weight": 2000,
     "weight_pct": 11.111,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -4098,7 +4080,6 @@
     "weight": 1000,
     "weight_pct": 9.174,
     "tags": [
-      "resource",
       "life",
       "attack"
     ],
@@ -4133,7 +4114,6 @@
     "weight": 1000,
     "weight_pct": 9.174,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -4551,7 +4531,6 @@
     "weight": 2000,
     "weight_pct": 7.605,
     "tags": [
-      "resource",
       "mana",
       "caster",
       "gem"
@@ -4581,7 +4560,6 @@
       "Helmets_str_int",
       "Runic_Crown",
       "Runic_Sabatons",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -4599,7 +4577,6 @@
     "weight": 2000,
     "weight_pct": 7.605,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -4621,7 +4598,6 @@
       "One_Hand_Swords",
       "Rune_Daggers",
       "Sceptres",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -4660,7 +4636,6 @@
       "One_Hand_Swords",
       "Rune_Daggers",
       "Sceptres",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -5006,7 +4981,6 @@
       "Body_Armours_str_int",
       "Bone_Spirit_Shield",
       "Quivers",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -5066,7 +5040,6 @@
       "Runic_Crown",
       "Runic_Gauntlets",
       "Runic_Sabatons",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -5102,7 +5075,6 @@
       "Body_Armours_str_dex_int",
       "Body_Armours_str_int",
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -5162,7 +5134,6 @@
       "Runic_Crown",
       "Runic_Gauntlets",
       "Runic_Sabatons",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -5216,7 +5187,6 @@
       "Helmets_str_int",
       "Runic_Crown",
       "Runic_Sabatons",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -5392,7 +5362,6 @@
       "Helmets_str_int",
       "Runic_Crown",
       "Runic_Sabatons",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -5706,7 +5675,6 @@
       "Helmets_str_int",
       "Runic_Crown",
       "Runic_Sabatons",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -5760,7 +5728,6 @@
       "Helmets_str_int",
       "Runic_Crown",
       "Runic_Sabatons",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -5826,7 +5793,6 @@
       "One_Hand_Swords",
       "Rune_Daggers",
       "Sceptres",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -5852,7 +5818,8 @@
     "weight": 300,
     "weight_pct": 2.752,
     "tags": [
-      "defences"
+      "defences",
+      "armour"
     ],
     "tiers": [
       {
@@ -5885,7 +5852,8 @@
     "weight": 300,
     "weight_pct": 2.752,
     "tags": [
-      "defences"
+      "defences",
+      "evasion"
     ],
     "tiers": [
       {
@@ -5918,7 +5886,8 @@
     "weight": 300,
     "weight_pct": 2.752,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -6000,7 +5969,6 @@
       "Rune_Daggers",
       "Runic_Crown",
       "Sceptres",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -6074,7 +6042,6 @@
       "One_Hand_Swords",
       "Rune_Daggers",
       "Sceptres",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -6211,6 +6178,38 @@
     ]
   },
   {
+    "category": "Body_Armours_dex",
+    "domain": "delve",
+    "side": "suffix",
+    "text_plain": "(5–10)% of Damage is taken from Mana before Life",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "life",
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Underground",
+        "tier_level": 1,
+        "text_plain": "1 (5–10)% of Damage is taken from Mana before Life",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Body_Armours_dex",
+      "Body_Armours_dex_int",
+      "Body_Armours_int",
+      "Body_Armours_str",
+      "Body_Armours_str_dex",
+      "Body_Armours_str_dex_int",
+      "Body_Armours_str_int"
+    ]
+  },
+  {
     "category": "Bone_Ring",
     "domain": "delve",
     "side": "suffix",
@@ -6332,7 +6331,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "bleed",
       "physical",
       "ailment"
     ],
@@ -6354,7 +6352,6 @@
       "Gloves_str_dex",
       "Gloves_str_int",
       "Runic_Gauntlets",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -6393,7 +6390,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -6432,7 +6428,44 @@
       "Helmets_str_dex",
       "Helmets_str_int",
       "Runic_Crown",
-      "Shields_dex",
+      "Shields_dex_int",
+      "Shields_int",
+      "Shields_str",
+      "Shields_str_dex",
+      "Shields_str_int"
+    ]
+  },
+  {
+    "category": "Bone_Spirit_Shield",
+    "domain": "delve",
+    "side": "suffix",
+    "text_plain": "(3–5)% additional Physical Damage Reduction",
+    "tier": 1,
+    "ilvl": 60,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "physical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of the Underground",
+        "tier_level": 60,
+        "text_plain": "60 (3–5)% additional Physical Damage Reduction",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Bone_Spirit_Shield",
+      "Helmets_dex",
+      "Helmets_dex_int",
+      "Helmets_int",
+      "Helmets_str",
+      "Helmets_str_dex",
+      "Helmets_str_int",
+      "Quivers",
+      "Runic_Crown",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",

@@ -68,17 +68,19 @@
       "imageLocal": "runegrafts/runegraft_of_quaffing.webp"
     },
     {
-      "name": "Runegraft of Recompense",
-      "slug": "Runegraft_of_Recompense",
+      "name": "Runegraft of Refraction",
+      "slug": "Runegraft_of_Refraction",
       "properties": {
         "Stack Size": "1 / 10",
         "Replaces a Mastery Passive Skill": "",
-        "Limited to": "1 Runegraft of Recompense"
+        "Limited to": "1 Runegraft of Refraction"
       },
       "mods": [
-        "Recover 10% of Skill Mana Cost per unspent Chain when Projectiles end, up to 50%"
+        "Fire at most 1 Projectile",
+        "Skills Chain +1 times",
+        "Projectiles Fork"
       ],
-      "imageLocal": "runegrafts/runegraft_of_recompense.webp"
+      "imageLocal": "runegrafts/runegraft_of_refraction.webp"
     },
     {
       "name": "Runegraft of Restitching",
@@ -159,6 +161,19 @@
         "40% increased Global Defences"
       ],
       "imageLocal": "runegrafts/runegraft_of_the_fortress.webp"
+    },
+    {
+      "name": "Runegraft of the Gauche",
+      "slug": "Runegraft_of_the_Gauche",
+      "properties": {
+        "Stack Size": "1 / 10",
+        "Replaces a Mastery Passive Skill": "",
+        "Limited to": "1 Runegraft of the Gauche"
+      },
+      "mods": [
+        "Hit Damage with your Off Hand treats Enemy MonsterElemental Resistance values as inverted"
+      ],
+      "imageLocal": "runegrafts/runegraft_of_the_gauche.webp"
     },
     {
       "name": "Runegraft of the Jeweller",
@@ -249,7 +264,7 @@
       },
       "mods": [
         "Spells deal added Chaos Damage equal to 2% of your maximum Life",
-        "Spells have an additional Life cost equal to 8% of your Maximum Life"
+        "Spells Cost +8% of Life"
       ],
       "imageLocal": "runegrafts/runegraft_of_the_witchmark.webp"
     },

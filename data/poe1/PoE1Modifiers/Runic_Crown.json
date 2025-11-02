@@ -9,7 +9,6 @@
     "weight": 10000,
     "weight_pct": 25.461,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -383,7 +382,6 @@
     "weight": 3000,
     "weight_pct": 7.638,
     "tags": [
-      "resource",
       "life",
       "defences"
     ],
@@ -606,7 +604,6 @@
     "weight": 9000,
     "weight_pct": 12.968,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -1445,7 +1442,6 @@
     "weight": 3200,
     "weight_pct": 28.829,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -1615,7 +1611,6 @@
     "weight": 1600,
     "weight_pct": 12.121,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -1697,7 +1692,6 @@
     "weight": 2400,
     "weight_pct": 18.182,
     "tags": [
-      "resource",
       "life",
       "minion",
       "gem"
@@ -2084,7 +2078,6 @@
     "weight": 1000,
     "weight_pct": 50,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -2487,7 +2480,6 @@
     "weight": 1000,
     "weight_pct": 19.048,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -2639,7 +2631,6 @@
     "weight": 1000,
     "weight_pct": 19.048,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -3245,7 +3236,6 @@
     "weight": 1000,
     "weight_pct": 21.053,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -3311,7 +3301,6 @@
     "weight": 1500,
     "weight_pct": 31.579,
     "tags": [
-      "resource",
       "life",
       "minion"
     ],
@@ -3524,7 +3513,6 @@
     "weight": 2000,
     "weight_pct": 6.024,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -3547,7 +3535,6 @@
     "weight": 1600,
     "weight_pct": 4.819,
     "tags": [
-      "poison",
       "chaos",
       "ailment"
     ],
@@ -3571,7 +3558,6 @@
     "weight": 1600,
     "weight_pct": 4.819,
     "tags": [
-      "bleed",
       "physical",
       "attack",
       "ailment"
@@ -3619,7 +3605,6 @@
     "weight": 2000,
     "weight_pct": 6.024,
     "tags": [
-      "resource",
       "mana",
       "caster",
       "gem"
@@ -3644,7 +3629,6 @@
     "weight": 2000,
     "weight_pct": 6.024,
     "tags": [
-      "resource",
       "mana",
       "attack",
       "gem"
@@ -3669,7 +3653,6 @@
     "weight": 2000,
     "weight_pct": 6.024,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -3714,7 +3697,6 @@
     "weight": 4000,
     "weight_pct": 12.048,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -3784,7 +3766,8 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "defences"
+      "defences",
+      "evasion"
     ],
     "tiers": [
       {
@@ -3892,7 +3875,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -3915,7 +3897,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -4027,7 +4008,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -4242,7 +4222,6 @@
     "weight": 1000,
     "weight_pct": 9.091,
     "tags": [
-      "resource",
       "life",
       "mana"
     ],
@@ -4266,7 +4245,6 @@
     "weight": 1000,
     "weight_pct": 9.091,
     "tags": [
-      "resource",
       "life",
       "mana"
     ],
@@ -4290,7 +4268,8 @@
     "weight": 1000,
     "weight_pct": 9.091,
     "tags": [
-      "defences"
+      "defences",
+      "evasion"
     ],
     "tiers": [
       {
@@ -4549,7 +4528,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -4614,7 +4592,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -4672,7 +4649,8 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "defences"
+      "defences",
+      "armour"
     ],
     "tiers": [
       {
@@ -4813,7 +4791,8 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "defences"
+      "defences",
+      "armour"
     ],
     "tiers": [
       {
@@ -4870,9 +4849,10 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life",
-      "defences"
+      "defences",
+      "armour",
+      "evasion"
     ],
     "tiers": [
       {
@@ -5123,7 +5103,8 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "defences"
+      "defences",
+      "evasion"
     ],
     "tiers": [
       {
@@ -5736,7 +5717,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -5793,7 +5773,8 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -6223,7 +6204,8 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -6343,7 +6325,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -6467,13 +6448,70 @@
     "category": "Runic_Crown",
     "domain": "essence",
     "side": "prefix",
+    "text_plain": "Minions deal #% increased Damage",
+    "tier": 6,
+    "ilvl": 82,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "damage",
+      "minion"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Muttering Essence of Fear",
+        "tier_level": 10,
+        "text_plain": "10 Minions deal (13–15)% increased Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Weeping Essence of Fear",
+        "tier_level": 26,
+        "text_plain": "26 Minions deal (16–18)% increased Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Wailing Essence of Fear",
+        "tier_level": 42,
+        "text_plain": "42 Minions deal (19–21)% increased Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Screaming Essence of Fear",
+        "tier_level": 58,
+        "text_plain": "58 Minions deal (22–24)% increased Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Shrieking Essence of Fear",
+        "tier_level": 74,
+        "text_plain": "74 Minions deal (25–27)% increased Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Deafening Essence of Fear",
+        "tier_level": 82,
+        "text_plain": "82 Minions deal (28–30)% increased Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Runic_Crown",
+    "domain": "essence",
+    "side": "prefix",
     "text_plain": "# to maximum Mana",
     "tier": 3,
     "ilvl": 82,
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -6745,64 +6783,6 @@
     "category": "Runic_Crown",
     "domain": "essence",
     "side": "suffix",
-    "text_plain": "#% increased Minion Accuracy Rating",
-    "tier": 6,
-    "ilvl": 82,
-    "weight": 0,
-    "weight_pct": 0,
-    "tags": [
-      "attack",
-      "minion"
-    ],
-    "tiers": [
-      {
-        "tier_name": "Muttering Essence of Fear",
-        "tier_level": 10,
-        "text_plain": "10 (13–15)% increased Minion Accuracy Rating",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Weeping Essence of Fear",
-        "tier_level": 26,
-        "text_plain": "26 (16–18)% increased Minion Accuracy Rating",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Wailing Essence of Fear",
-        "tier_level": 42,
-        "text_plain": "42 (19–21)% increased Minion Accuracy Rating",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Screaming Essence of Fear",
-        "tier_level": 58,
-        "text_plain": "58 (22–24)% increased Minion Accuracy Rating",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Shrieking Essence of Fear",
-        "tier_level": 74,
-        "text_plain": "74 (25–27)% increased Minion Accuracy Rating",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Deafening Essence of Fear",
-        "tier_level": 82,
-        "text_plain": "82 (28–30)% increased Minion Accuracy Rating",
-        "weight": 0,
-        "weight_pct": 0
-      }
-    ]
-  },
-  {
-    "category": "Runic_Crown",
-    "domain": "essence",
-    "side": "suffix",
     "text_plain": "#% chance to Avoid being Frozen",
     "tier": 5,
     "ilvl": 1,
@@ -7008,7 +6988,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -7282,7 +7261,7 @@
     "domain": "bestiary",
     "side": "suffix",
     "text_plain": "Grants Level # Aspect of the Avian SkillGrants Level # Aspect of the Cat SkillGrants Level # Aspect of the Crab SkillGrants Level # Aspect of the Spider Skill",
-    "tier": 4,
+    "tier": 8,
     "ilvl": 20,
     "weight": 0,
     "weight_pct": 0,
@@ -7296,9 +7275,23 @@
         "weight_pct": 0
       },
       {
+        "tier_name": "of Saqawal",
+        "tier_level": 20,
+        "text_plain": "20 Grants Level 30 Aspect of the Avian Skill",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
         "tier_name": "of Farrul",
         "tier_level": 20,
         "text_plain": "20 Grants Level 20 Aspect of the Cat Skill",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of Farrul",
+        "tier_level": 20,
+        "text_plain": "20 Grants Level 30 Aspect of the Cat Skill",
         "weight": 0,
         "weight_pct": 0
       },
@@ -7310,9 +7303,47 @@
         "weight_pct": 0
       },
       {
+        "tier_name": "of Craiceann",
+        "tier_level": 20,
+        "text_plain": "20 Grants Level 30 Aspect of the Crab Skill",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
         "tier_name": "of Fenumus",
         "tier_level": 20,
         "text_plain": "20 Grants Level 20 Aspect of the Spider Skill",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of Fenumus",
+        "tier_level": 20,
+        "text_plain": "20 Grants Level 30 Aspect of the Spider Skill",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Runic_Crown",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "10% of Physical Damage from Hits taken as Fire Damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "physical",
+      "elemental",
+      "fire"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Redblade",
+        "tier_level": 1,
+        "text_plain": "1 10% of Physical Damage from Hits taken as Fire Damage",
         "weight": 0,
         "weight_pct": 0
       }
@@ -7328,7 +7359,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -7438,7 +7468,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana",
       "attack",
       "caster"
@@ -7450,6 +7479,265 @@
         "text_plain": "68 20% increased Mana Reservation Efficiency of Skills Supported by Spellslinger",
         "weight": 0,
         "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Runic_Crown",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "Your Warcries open Chests",
+    "tier": 1,
+    "ilvl": 24,
+    "weight": 250,
+    "weight_pct": 18.519,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Haunted",
+        "tier_level": 24,
+        "text_plain": "24 Your Warcries open Chests",
+        "weight": 250,
+        "weight_pct": 18.519
+      }
+    ]
+  },
+  {
+    "category": "Runic_Crown",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "+1 to Maximum Power Charges",
+    "tier": 1,
+    "ilvl": 16,
+    "weight": 250,
+    "weight_pct": 18.519,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Haunted",
+        "tier_level": 16,
+        "text_plain": "16 +1 to Maximum Power Charges",
+        "weight": 250,
+        "weight_pct": 18.519
+      }
+    ]
+  },
+  {
+    "category": "Runic_Crown",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "+1 to maximum Mana per 2 Intelligence",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 100,
+    "weight_pct": 7.407,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Haunted",
+        "tier_level": 68,
+        "text_plain": "68 +1 to maximum Mana per 2 Intelligence",
+        "weight": 100,
+        "weight_pct": 7.407
+      }
+    ]
+  },
+  {
+    "category": "Runic_Crown",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "(20–30)% increased Spell Damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 750,
+    "weight_pct": 55.556,
+    "tags": [
+      "damage",
+      "caster"
+    ],
+    "tiers": [
+      {
+        "tier_name": "Haunted",
+        "tier_level": 1,
+        "text_plain": "1 (20–30)% increased Spell Damage",
+        "weight": 750,
+        "weight_pct": 55.556
+      }
+    ]
+  },
+  {
+    "category": "Runic_Crown",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "(30–50)% increased Global Critical Strike Chance",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 500,
+    "weight_pct": 14.925,
+    "tags": [
+      "critical"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Haunting",
+        "tier_level": 1,
+        "text_plain": "1 (30–50)% increased Global Critical Strike Chance",
+        "weight": 500,
+        "weight_pct": 14.925
+      }
+    ]
+  },
+  {
+    "category": "Runic_Crown",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "(40–60)% increased Mana Regeneration Rate",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 750,
+    "weight_pct": 22.388,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Haunting",
+        "tier_level": 1,
+        "text_plain": "1 (40–60)% increased Mana Regeneration Rate",
+        "weight": 750,
+        "weight_pct": 22.388
+      }
+    ]
+  },
+  {
+    "category": "Runic_Crown",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Cannot be Blinded",
+    "tier": 1,
+    "ilvl": 38,
+    "weight": 250,
+    "weight_pct": 7.463,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Haunting",
+        "tier_level": 38,
+        "text_plain": "38 Cannot be Blinded",
+        "weight": 250,
+        "weight_pct": 7.463
+      }
+    ]
+  },
+  {
+    "category": "Runic_Crown",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "+2 to Accuracy Rating per 2 Dexterity",
+    "tier": 1,
+    "ilvl": 68,
+    "weight": 100,
+    "weight_pct": 2.985,
+    "tags": [
+      "attack"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Haunting",
+        "tier_level": 68,
+        "text_plain": "68 +2 to Accuracy Rating per 2 Dexterity",
+        "weight": 100,
+        "weight_pct": 2.985
+      }
+    ]
+  },
+  {
+    "category": "Runic_Crown",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "(8–12)% increased Cast Speed",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 500,
+    "weight_pct": 14.925,
+    "tags": [
+      "caster",
+      "speed"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Haunting",
+        "tier_level": 1,
+        "text_plain": "1 (8–12)% increased Cast Speed",
+        "weight": 500,
+        "weight_pct": 14.925
+      }
+    ]
+  },
+  {
+    "category": "Runic_Crown",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Gain Arcane Surge after Spending a total of 400 Mana",
+    "tier": 1,
+    "ilvl": 34,
+    "weight": 250,
+    "weight_pct": 7.463,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Haunting",
+        "tier_level": 34,
+        "text_plain": "34 Gain Arcane Surge after Spending a total of 400 Mana",
+        "weight": 250,
+        "weight_pct": 7.463
+      }
+    ]
+  },
+  {
+    "category": "Runic_Crown",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "(15–25)% increased Area of Effect",
+    "tier": 1,
+    "ilvl": 12,
+    "weight": 750,
+    "weight_pct": 22.388,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of Haunting",
+        "tier_level": 12,
+        "text_plain": "12 (15–25)% increased Area of Effect",
+        "weight": 750,
+        "weight_pct": 22.388
+      }
+    ]
+  },
+  {
+    "category": "Runic_Crown",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "(5–8)% increased Effect of your Curses",
+    "tier": 1,
+    "ilvl": 24,
+    "weight": 250,
+    "weight_pct": 7.463,
+    "tags": [
+      "caster",
+      "curse"
+    ],
+    "tiers": [
+      {
+        "tier_name": "of Haunting",
+        "tier_level": 24,
+        "text_plain": "24 (5–8)% increased Effect of your Curses",
+        "weight": 250,
+        "weight_pct": 7.463
       }
     ]
   },
@@ -7483,7 +7771,6 @@
     "weight": 1000,
     "weight_pct": 4.348,
     "tags": [
-      "resource",
       "life",
       "elemental",
       "cold"
@@ -7508,7 +7795,6 @@
     "weight": 1000,
     "weight_pct": 4.348,
     "tags": [
-      "resource",
       "life",
       "elemental",
       "fire"
@@ -7581,7 +7867,6 @@
     "weight": 1000,
     "weight_pct": 4.348,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -7700,7 +7985,6 @@
     "weight": 1000,
     "weight_pct": 4.348,
     "tags": [
-      "resource",
       "life",
       "elemental",
       "lightning"
@@ -7745,7 +8029,6 @@
     "weight": 1000,
     "weight_pct": 4.348,
     "tags": [
-      "resource",
       "mana",
       "gem"
     ],
@@ -7949,7 +8232,6 @@
     "weight": 1000,
     "weight_pct": 4.348,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -7972,7 +8254,8 @@
     "weight": 1000,
     "weight_pct": 4.348,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -10567,7 +10850,6 @@
     "weight": 9300,
     "weight_pct": 5.917,
     "tags": [
-      "resource",
       "life",
       "minion"
     ],
@@ -10944,7 +11226,8 @@
     "weight": 9300,
     "weight_pct": 5.848,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -12225,7 +12508,6 @@
     "weight": 3720,
     "weight_pct": 2.339,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -13078,7 +13360,6 @@
     "weight": 9300,
     "weight_pct": 5.848,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -13317,7 +13598,6 @@
     "weight": 9300,
     "weight_pct": 5.848,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -13798,7 +14078,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -13849,7 +14128,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -13879,7 +14157,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -13965,7 +14242,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -14016,7 +14292,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -14053,7 +14328,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -14090,7 +14364,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -14127,7 +14400,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -15100,7 +15372,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "poison",
       "chaos",
       "ailment"
     ],
@@ -15138,7 +15409,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "bleed",
       "physical",
       "attack",
       "ailment"
@@ -15796,7 +16066,8 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "defences"
+      "defences",
+      "armour"
     ],
     "tiers": [
       {
@@ -16231,7 +16502,8 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "defences"
+      "defences",
+      "armour"
     ],
     "tiers": [
       {
@@ -16627,7 +16899,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana",
       "gem"
     ],
@@ -16781,7 +17052,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life",
       "minion"
     ],
@@ -17416,268 +17686,6 @@
   },
   {
     "category": "Runic_Crown",
-    "domain": "normal",
-    "side": "prefix",
-    "text_plain": "Your Warcries open Chests",
-    "tier": 1,
-    "ilvl": 24,
-    "weight": 250,
-    "weight_pct": 18.519,
-    "tags": [],
-    "tiers": [
-      {
-        "tier_name": "Haunted",
-        "tier_level": 24,
-        "text_plain": "24 Your Warcries open Chests",
-        "weight": 250,
-        "weight_pct": 18.519
-      }
-    ]
-  },
-  {
-    "category": "Runic_Crown",
-    "domain": "normal",
-    "side": "prefix",
-    "text_plain": "+1 to Maximum Power Charges",
-    "tier": 1,
-    "ilvl": 16,
-    "weight": 250,
-    "weight_pct": 18.519,
-    "tags": [],
-    "tiers": [
-      {
-        "tier_name": "Haunted",
-        "tier_level": 16,
-        "text_plain": "16 +1 to Maximum Power Charges",
-        "weight": 250,
-        "weight_pct": 18.519
-      }
-    ]
-  },
-  {
-    "category": "Runic_Crown",
-    "domain": "normal",
-    "side": "prefix",
-    "text_plain": "+1 to maximum Mana per 2 Intelligence",
-    "tier": 1,
-    "ilvl": 68,
-    "weight": 100,
-    "weight_pct": 7.407,
-    "tags": [
-      "resource",
-      "mana"
-    ],
-    "tiers": [
-      {
-        "tier_name": "Haunted",
-        "tier_level": 68,
-        "text_plain": "68 +1 to maximum Mana per 2 Intelligence",
-        "weight": 100,
-        "weight_pct": 7.407
-      }
-    ]
-  },
-  {
-    "category": "Runic_Crown",
-    "domain": "normal",
-    "side": "prefix",
-    "text_plain": "(20–30)% increased Spell Damage",
-    "tier": 1,
-    "ilvl": 1,
-    "weight": 750,
-    "weight_pct": 55.556,
-    "tags": [
-      "damage",
-      "caster"
-    ],
-    "tiers": [
-      {
-        "tier_name": "Haunted",
-        "tier_level": 1,
-        "text_plain": "1 (20–30)% increased Spell Damage",
-        "weight": 750,
-        "weight_pct": 55.556
-      }
-    ]
-  },
-  {
-    "category": "Runic_Crown",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "(30–50)% increased Global Critical Strike Chance",
-    "tier": 1,
-    "ilvl": 1,
-    "weight": 500,
-    "weight_pct": 14.925,
-    "tags": [
-      "critical"
-    ],
-    "tiers": [
-      {
-        "tier_name": "of Haunting",
-        "tier_level": 1,
-        "text_plain": "1 (30–50)% increased Global Critical Strike Chance",
-        "weight": 500,
-        "weight_pct": 14.925
-      }
-    ]
-  },
-  {
-    "category": "Runic_Crown",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "(40–60)% increased Mana Regeneration Rate",
-    "tier": 1,
-    "ilvl": 1,
-    "weight": 750,
-    "weight_pct": 22.388,
-    "tags": [
-      "resource",
-      "mana"
-    ],
-    "tiers": [
-      {
-        "tier_name": "of Haunting",
-        "tier_level": 1,
-        "text_plain": "1 (40–60)% increased Mana Regeneration Rate",
-        "weight": 750,
-        "weight_pct": 22.388
-      }
-    ]
-  },
-  {
-    "category": "Runic_Crown",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "Cannot be Blinded",
-    "tier": 1,
-    "ilvl": 38,
-    "weight": 250,
-    "weight_pct": 7.463,
-    "tags": [],
-    "tiers": [
-      {
-        "tier_name": "of Haunting",
-        "tier_level": 38,
-        "text_plain": "38 Cannot be Blinded",
-        "weight": 250,
-        "weight_pct": 7.463
-      }
-    ]
-  },
-  {
-    "category": "Runic_Crown",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "+2 to Accuracy Rating per 2 Dexterity",
-    "tier": 1,
-    "ilvl": 68,
-    "weight": 100,
-    "weight_pct": 2.985,
-    "tags": [
-      "attack"
-    ],
-    "tiers": [
-      {
-        "tier_name": "of Haunting",
-        "tier_level": 68,
-        "text_plain": "68 +2 to Accuracy Rating per 2 Dexterity",
-        "weight": 100,
-        "weight_pct": 2.985
-      }
-    ]
-  },
-  {
-    "category": "Runic_Crown",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "(8–12)% increased Cast Speed",
-    "tier": 1,
-    "ilvl": 1,
-    "weight": 500,
-    "weight_pct": 14.925,
-    "tags": [
-      "caster",
-      "speed"
-    ],
-    "tiers": [
-      {
-        "tier_name": "of Haunting",
-        "tier_level": 1,
-        "text_plain": "1 (8–12)% increased Cast Speed",
-        "weight": 500,
-        "weight_pct": 14.925
-      }
-    ]
-  },
-  {
-    "category": "Runic_Crown",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "Gain Arcane Surge after Spending a total of 400 Mana",
-    "tier": 1,
-    "ilvl": 34,
-    "weight": 250,
-    "weight_pct": 7.463,
-    "tags": [
-      "resource",
-      "mana"
-    ],
-    "tiers": [
-      {
-        "tier_name": "of Haunting",
-        "tier_level": 34,
-        "text_plain": "34 Gain Arcane Surge after Spending a total of 400 Mana",
-        "weight": 250,
-        "weight_pct": 7.463
-      }
-    ]
-  },
-  {
-    "category": "Runic_Crown",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "(15–25)% increased Area of Effect",
-    "tier": 1,
-    "ilvl": 12,
-    "weight": 750,
-    "weight_pct": 22.388,
-    "tags": [],
-    "tiers": [
-      {
-        "tier_name": "of Haunting",
-        "tier_level": 12,
-        "text_plain": "12 (15–25)% increased Area of Effect",
-        "weight": 750,
-        "weight_pct": 22.388
-      }
-    ]
-  },
-  {
-    "category": "Runic_Crown",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "(5–8)% increased Effect of your Curses",
-    "tier": 1,
-    "ilvl": 24,
-    "weight": 250,
-    "weight_pct": 7.463,
-    "tags": [
-      "caster",
-      "curse"
-    ],
-    "tiers": [
-      {
-        "tier_name": "of Haunting",
-        "tier_level": 24,
-        "text_plain": "24 (5–8)% increased Effect of your Curses",
-        "weight": 250,
-        "weight_pct": 7.463
-      }
-    ]
-  },
-  {
-    "category": "Runic_Crown",
     "domain": "scourge",
     "side": "none",
     "text_plain": "# to maximum Life",
@@ -17686,7 +17694,6 @@
     "weight": 4000,
     "weight_pct": 8.529,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -17850,7 +17857,6 @@
     "weight": 1500,
     "weight_pct": 3.198,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -17887,7 +17893,6 @@
     "weight": 750,
     "weight_pct": 1.599,
     "tags": [
-      "resource",
       "life",
       "minion"
     ],
@@ -18307,7 +18312,6 @@
     "weight": 5299,
     "weight_pct": 11.299,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -18393,7 +18397,6 @@
     "weight": 1000,
     "weight_pct": 2.132,
     "tags": [
-      "resource",
       "life",
       "minion"
     ],
@@ -18438,7 +18441,6 @@
     "weight": 1600,
     "weight_pct": 3.412,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -18510,7 +18512,6 @@
     "weight": 750,
     "weight_pct": 1.599,
     "tags": [
-      "resource",
       "life",
       "minion"
     ],
@@ -18632,7 +18633,6 @@
     "weight": 1000,
     "weight_pct": 2.132,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -19069,7 +19069,6 @@
     "weight": 4000,
     "weight_pct": 12.085,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -19154,7 +19153,6 @@
     "weight": 500,
     "weight_pct": 1.511,
     "tags": [
-      "resource",
       "life",
       "minion"
     ],
@@ -19205,7 +19203,10 @@
     "weight": 4000,
     "weight_pct": 12.085,
     "tags": [
-      "defences"
+      "defences",
+      "armour",
+      "evasion",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -19337,7 +19338,6 @@
     "weight": 1000,
     "weight_pct": 3.021,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -19508,7 +19508,8 @@
     "weight": 500,
     "weight_pct": 1.511,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {

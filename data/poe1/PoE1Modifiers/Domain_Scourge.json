@@ -551,7 +551,6 @@
       "One_Hand_Axes",
       "One_Hand_Swords",
       "Rune_Daggers",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_str_dex",
       "Thrusting_One_Hand_Swords",
@@ -634,7 +633,6 @@
       "Runic_Crown",
       "Runic_Gauntlets",
       "Runic_Sabatons",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -1205,7 +1203,6 @@
       "Gloves_str_int",
       "Quivers",
       "Runic_Gauntlets",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_str_dex"
     ]
@@ -1404,7 +1401,6 @@
       "Runic_Crown",
       "Runic_Gauntlets",
       "Runic_Sabatons",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -1605,8 +1601,7 @@
       "Body_Armours_dex",
       "Boots_dex",
       "Gloves_dex",
-      "Helmets_dex",
-      "Shields_dex"
+      "Helmets_dex"
     ]
   },
   {
@@ -2061,7 +2056,6 @@
       "Helmets_str_dex",
       "Helmets_str_int",
       "Runic_Crown",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2562,7 +2556,6 @@
       "Runic_Crown",
       "Runic_Gauntlets",
       "Runic_Sabatons",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2675,7 +2668,6 @@
       "Gloves_str_int",
       "Quivers",
       "Runic_Gauntlets",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_str_dex"
     ]
@@ -3343,7 +3335,6 @@
       "Runic_Crown",
       "Runic_Gauntlets",
       "Runic_Sabatons",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3440,7 +3431,6 @@
       "Runic_Gauntlets",
       "Runic_Sabatons",
       "Sceptres",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3544,7 +3534,6 @@
       "Runic_Gauntlets",
       "Runic_Sabatons",
       "Sceptres",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3648,7 +3637,6 @@
       "Runic_Gauntlets",
       "Runic_Sabatons",
       "Sceptres",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3712,7 +3700,6 @@
       "Bone_Ring",
       "Bone_Spirit_Shield",
       "Rings",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -3846,7 +3833,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -4532,7 +4518,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -5329,7 +5314,6 @@
       "Rings",
       "Rune_Daggers",
       "Sceptres",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -5413,7 +5397,6 @@
       "Runic_Gauntlets",
       "Runic_Sabatons",
       "Sceptres",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -5558,7 +5541,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -5576,7 +5558,8 @@
     "weight": 1500,
     "weight_pct": 2.871,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -6228,47 +6211,6 @@
     ]
   },
   {
-    "category": "Shields_dex",
-    "domain": "scourge",
-    "side": "none",
-    "text_plain": "# Mana gained when you Block",
-    "tier": 3,
-    "ilvl": 68,
-    "weight": 1500,
-    "weight_pct": 2.74,
-    "tags": [
-      "mana"
-    ],
-    "tiers": [
-      {
-        "tier_name": "HellscapeUpsideGainManaOnBlock2",
-        "tier_level": 45,
-        "text_plain": "45 (31–40) Mana gained when you Block",
-        "weight": 500,
-        "weight_pct": 0.913
-      },
-      {
-        "tier_name": "HellscapeUpsideGainManaOnBlock3",
-        "tier_level": 68,
-        "text_plain": "68 (41–50) Mana gained when you Block",
-        "weight": 500,
-        "weight_pct": 0.913
-      },
-      {
-        "tier_name": "HellscapeUpsideGainManaOnBlock4",
-        "tier_level": 68,
-        "text_plain": "68 (51–60) Mana gained when you Block",
-        "weight": 500,
-        "weight_pct": 0.913
-      }
-    ],
-    "sourceCategories": [
-      "Shields_dex",
-      "Shields_dex_int",
-      "Shields_str_dex"
-    ]
-  },
-  {
     "category": "Shields_str",
     "domain": "scourge",
     "side": "none",
@@ -6545,7 +6487,6 @@
       "Helmets_str_int",
       "Runic_Crown",
       "Runic_Sabatons",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -6741,35 +6682,41 @@
     ]
   },
   {
-    "category": "Shields_dex",
+    "category": "Shields_dex_int",
     "domain": "scourge",
     "side": "none",
-    "text_plain": "Lose # Mana when you Block",
-    "tier": 2,
+    "text_plain": "# Mana gained when you Block",
+    "tier": 3,
     "ilvl": 68,
-    "weight": 1000,
-    "weight_pct": 2.516,
+    "weight": 1500,
+    "weight_pct": 2.511,
     "tags": [
       "mana"
     ],
     "tiers": [
       {
-        "tier_name": "HellscapeDownsideManaOnBlock2_",
+        "tier_name": "HellscapeUpsideGainManaOnBlock2",
         "tier_level": 45,
-        "text_plain": "45 Lose (31–40) Mana when you Block",
+        "text_plain": "45 (31–40) Mana gained when you Block",
         "weight": 500,
-        "weight_pct": 1.258
+        "weight_pct": 0.837
       },
       {
-        "tier_name": "HellscapeDownsideManaOnBlock3_____",
+        "tier_name": "HellscapeUpsideGainManaOnBlock3",
         "tier_level": 68,
-        "text_plain": "68 Lose (41–50) Mana when you Block",
+        "text_plain": "68 (41–50) Mana gained when you Block",
         "weight": 500,
-        "weight_pct": 1.258
+        "weight_pct": 0.837
+      },
+      {
+        "tier_name": "HellscapeUpsideGainManaOnBlock4",
+        "tier_level": 68,
+        "text_plain": "68 (51–60) Mana gained when you Block",
+        "weight": 500,
+        "weight_pct": 0.837
       }
     ],
     "sourceCategories": [
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_str_dex"
     ]
@@ -7036,7 +6983,6 @@
       "Rings",
       "Rune_Daggers",
       "Runic_Gauntlets",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_str_dex",
       "Thrusting_One_Hand_Swords",
@@ -7209,7 +7155,6 @@
     "weight": 1500,
     "weight_pct": 2.381,
     "tags": [
-      "bleed",
       "physical",
       "attack",
       "ailment"
@@ -7382,7 +7327,6 @@
     "weight": 1500,
     "weight_pct": 2.381,
     "tags": [
-      "poison",
       "chaos",
       "ailment"
     ],
@@ -7439,7 +7383,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -7471,7 +7414,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -7489,7 +7431,8 @@
     "weight": 1000,
     "weight_pct": 2.312,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -7545,7 +7488,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -8071,6 +8013,39 @@
     ]
   },
   {
+    "category": "Shields_dex_int",
+    "domain": "scourge",
+    "side": "none",
+    "text_plain": "Lose # Mana when you Block",
+    "tier": 2,
+    "ilvl": 68,
+    "weight": 1000,
+    "weight_pct": 1.932,
+    "tags": [
+      "mana"
+    ],
+    "tiers": [
+      {
+        "tier_name": "HellscapeDownsideManaOnBlock2_",
+        "tier_level": 45,
+        "text_plain": "45 Lose (31–40) Mana when you Block",
+        "weight": 500,
+        "weight_pct": 0.966
+      },
+      {
+        "tier_name": "HellscapeDownsideManaOnBlock3_____",
+        "tier_level": 68,
+        "text_plain": "68 Lose (41–50) Mana when you Block",
+        "weight": 500,
+        "weight_pct": 0.966
+      }
+    ],
+    "sourceCategories": [
+      "Shields_dex_int",
+      "Shields_str_dex"
+    ]
+  },
+  {
     "category": "Bone_Spirit_Shield",
     "domain": "scourge",
     "side": "none",
@@ -8080,7 +8055,8 @@
     "weight": 1000,
     "weight_pct": 1.914,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -8100,7 +8076,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -9016,7 +8991,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -9070,7 +9044,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -10800,7 +10773,6 @@
       "Runic_Gauntlets",
       "Runic_Sabatons",
       "Sceptres",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -12540,7 +12512,6 @@
       "One_Hand_Swords",
       "Rune_Daggers",
       "Sceptres",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -13333,7 +13304,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -15218,7 +15188,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -15251,7 +15220,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -15284,7 +15252,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -15316,7 +15283,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -15492,7 +15458,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",

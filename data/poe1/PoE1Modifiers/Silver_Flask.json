@@ -313,7 +313,8 @@
     "weight": 47250,
     "weight_pct": 75.904,
     "tags": [
-      "defences"
+      "defences",
+      "armour"
     ],
     "tiers": [
       {
@@ -1009,7 +1010,6 @@
     "weight": 1000,
     "weight_pct": 20,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -1074,7 +1074,6 @@
     "weight": 1000,
     "weight_pct": 20,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -1104,6 +1103,307 @@
         "text_plain": "60 (60–80)% reduced Reflected Damage taken during Effect",
         "weight": 1000,
         "weight_pct": 20
+      }
+    ]
+  },
+  {
+    "category": "Silver_Flask",
+    "domain": "bestiary",
+    "side": "suffix",
+    "text_plain": "(45–49)% less DurationImmunity to Bleeding and Corrupted Blood during Effect",
+    "tier": 1,
+    "ilvl": 8,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Lizard",
+        "tier_level": 8,
+        "text_plain": "8 (45–49)% less DurationImmunity to Bleeding and Corrupted Blood during Effect",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Silver_Flask",
+    "domain": "bestiary",
+    "side": "suffix",
+    "text_plain": "(45–49)% less DurationImmunity to Freeze and Chill during Effect",
+    "tier": 1,
+    "ilvl": 4,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Deer",
+        "tier_level": 4,
+        "text_plain": "4 (45–49)% less DurationImmunity to Freeze and Chill during Effect",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Silver_Flask",
+    "domain": "bestiary",
+    "side": "suffix",
+    "text_plain": "(45–49)% less DurationImmunity to Ignite during EffectRemoves Burning on use",
+    "tier": 1,
+    "ilvl": 6,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Urchin",
+        "tier_level": 6,
+        "text_plain": "6 (45–49)% less DurationImmunity to Ignite during EffectRemoves Burning on use",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Silver_Flask",
+    "domain": "bestiary",
+    "side": "suffix",
+    "text_plain": "(45–49)% less DurationImmunity to Poison during Effect",
+    "tier": 1,
+    "ilvl": 16,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Skunk",
+        "tier_level": 16,
+        "text_plain": "16 (45–49)% less DurationImmunity to Poison during Effect",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Silver_Flask",
+    "domain": "bestiary",
+    "side": "suffix",
+    "text_plain": "(45–49)% less DurationImmunity to Shock during Effect",
+    "tier": 1,
+    "ilvl": 6,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "of the Conger",
+        "tier_level": 6,
+        "text_plain": "6 (45–49)% less DurationImmunity to Shock during Effect",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Silver_Flask",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "#% increased effectGains no Charges during Effect#% increased DurationGains no Charges during Effect#% increased Charge RecoveryGains no Charges during Effect#% reduced Charges per useGains no Charges during Effect# to Maximum ChargesGains no Charges during EffectUsed when an adjacent Flask is usedReused at the end of this Flask's effectUsed when Charges reach fullUsed when you Use a Guard SkillUsed when you Use a Travel SkillUsed when you lose a Guard Skill BuffUsed when you Hit a Rare or Unique Enemy, if not already in effectUsed when you become FrozenUsed when you become ChilledUsed when you become ShockedUsed when you become IgnitedUsed when you start BleedingUsed when you become PoisonedUsed when you BlockUsed when you take a Savage HitUsed when you use a Life Flask",
+    "tier": 21,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Enkindling Orb",
+        "tier_level": 0,
+        "text_plain": "(60–70)% increased effectGains no Charges during Effect",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Enkindling Orb",
+        "tier_level": 0,
+        "text_plain": "(80–100)% increased DurationGains no Charges during Effect",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Enkindling Orb",
+        "tier_level": 0,
+        "text_plain": "(60–80)% increased Charge RecoveryGains no Charges during Effect",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Enkindling Orb",
+        "tier_level": 0,
+        "text_plain": "(25–35)% reduced Charges per useGains no Charges during Effect",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Enkindling Orb",
+        "tier_level": 0,
+        "text_plain": "+(40–60) to Maximum ChargesGains no Charges during Effect",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Used when an adjacent Flask is used",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Reused at the end of this Flask's effect",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Used when Charges reach full",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Used when you Use a Guard Skill",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Used when you Use a Travel Skill",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Used when you lose a Guard Skill Buff",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Used when you Hit a Rare or Unique Enemy, if not already in effect",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Used when you become Frozen",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Used when you become Chilled",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Used when you become Shocked",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Used when you become Ignited",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Used when you start Bleeding",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Used when you become Poisoned",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Used when you Block",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Used when you take a Savage Hit",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Instilling Orb",
+        "tier_level": 0,
+        "text_plain": "Used when you use a Life Flask",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Silver_Flask",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "#% reduced Charges per use. #% to this value when used#% increased Duration. #% to this value when used#% increased effect. #% to this value when used# to Maximum Charges. # to this value when used",
+    "tier": 4,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Horticrafting Station",
+        "tier_level": 1,
+        "text_plain": "1 50% reduced Charges per use. -1% to this value when used",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Horticrafting Station",
+        "tier_level": 1,
+        "text_plain": "1 100% increased Duration. -1% to this value when used",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Horticrafting Station",
+        "tier_level": 1,
+        "text_plain": "1 50% increased effect. -1% to this value when used",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Horticrafting Station",
+        "tier_level": 1,
+        "text_plain": "1 +100 to Maximum Charges. -1 to this value when used",
+        "weight": 0,
+        "weight_pct": 0
       }
     ]
   }

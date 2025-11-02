@@ -9,7 +9,6 @@
     "weight": 11000,
     "weight_pct": 12.125,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -102,7 +101,6 @@
     "weight": 12000,
     "weight_pct": 13.227,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -202,7 +200,8 @@
     "weight": 10000,
     "weight_pct": 11.023,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -287,7 +286,8 @@
     "weight": 8000,
     "weight_pct": 8.818,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -358,7 +358,8 @@
     "weight": 6000,
     "weight_pct": 6.614,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -415,9 +416,9 @@
     "weight": 6000,
     "weight_pct": 6.614,
     "tags": [
-      "resource",
       "life",
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -1069,7 +1070,6 @@
     "weight": 10000,
     "weight_pct": 8.342,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -1155,7 +1155,6 @@
     "weight": 6000,
     "weight_pct": 5.005,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -1735,7 +1734,8 @@
     "weight": 5000,
     "weight_pct": 4.171,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -1965,7 +1965,6 @@
     "weight": 12000,
     "weight_pct": 10.01,
     "tags": [
-      "resource",
       "life",
       "minion"
     ],
@@ -2359,7 +2358,6 @@
     "weight": 800,
     "weight_pct": 10,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -2382,7 +2380,6 @@
     "weight": 800,
     "weight_pct": 10,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -2405,7 +2402,8 @@
     "weight": 800,
     "weight_pct": 10,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -2461,7 +2459,6 @@
     "weight": 1600,
     "weight_pct": 27.586,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -2491,7 +2488,8 @@
     "weight": 1600,
     "weight_pct": 27.586,
     "tags": [
-      "defences"
+      "defences",
+      "armour"
     ],
     "tiers": [
       {
@@ -2640,7 +2638,8 @@
     "weight": 250,
     "weight_pct": 4.762,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -2843,7 +2842,6 @@
     "weight": 250,
     "weight_pct": 5.263,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -2976,7 +2974,6 @@
     "weight": 1000,
     "weight_pct": 100,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -3262,7 +3259,6 @@
     "weight": 250,
     "weight_pct": 4.762,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -3521,7 +3517,6 @@
     "weight": 2000,
     "weight_pct": 7.605,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -3564,7 +3559,6 @@
     "weight": 1600,
     "weight_pct": 6.084,
     "tags": [
-      "poison",
       "chaos",
       "ailment"
     ],
@@ -3588,7 +3582,6 @@
     "weight": 1600,
     "weight_pct": 6.084,
     "tags": [
-      "bleed",
       "physical",
       "attack",
       "ailment"
@@ -3636,7 +3629,6 @@
     "weight": 2000,
     "weight_pct": 7.605,
     "tags": [
-      "resource",
       "mana",
       "caster",
       "gem"
@@ -3661,7 +3653,6 @@
     "weight": 2000,
     "weight_pct": 7.605,
     "tags": [
-      "resource",
       "mana",
       "attack",
       "gem"
@@ -3686,7 +3677,6 @@
     "weight": 2000,
     "weight_pct": 7.605,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -3729,7 +3719,6 @@
     "weight": 2000,
     "weight_pct": 7.605,
     "tags": [
-      "resource",
       "life",
       "minion"
     ],
@@ -3842,7 +3831,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "bleed",
       "physical",
       "ailment"
     ],
@@ -4010,9 +3998,9 @@
     "weight": 1000,
     "weight_pct": 20,
     "tags": [
-      "resource",
       "life",
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -4360,7 +4348,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -4404,7 +4391,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -4441,7 +4427,8 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "defences"
+      "defences",
+      "armour"
     ],
     "tiers": [
       {
@@ -4582,7 +4569,8 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "defences"
+      "defences",
+      "armour"
     ],
     "tiers": [
       {
@@ -4714,9 +4702,10 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life",
-      "defences"
+      "defences",
+      "armour",
+      "evasion"
     ],
     "tiers": [
       {
@@ -5677,7 +5666,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -5885,7 +5873,8 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -5936,7 +5925,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life",
       "minion"
     ],
@@ -5990,7 +5978,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "bleed",
       "physical",
       "attack",
       "ailment"
@@ -6307,7 +6294,8 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -6427,7 +6415,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -6838,7 +6825,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life",
       "minion"
     ],
@@ -7178,7 +7164,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -7372,7 +7357,7 @@
     "domain": "bestiary",
     "side": "suffix",
     "text_plain": "Grants Level # Aspect of the Avian SkillGrants Level # Aspect of the Cat SkillGrants Level # Aspect of the Crab SkillGrants Level # Aspect of the Spider Skill",
-    "tier": 4,
+    "tier": 8,
     "ilvl": 20,
     "weight": 0,
     "weight_pct": 0,
@@ -7386,9 +7371,23 @@
         "weight_pct": 0
       },
       {
+        "tier_name": "of Saqawal",
+        "tier_level": 20,
+        "text_plain": "20 Grants Level 30 Aspect of the Avian Skill",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
         "tier_name": "of Farrul",
         "tier_level": 20,
         "text_plain": "20 Grants Level 20 Aspect of the Cat Skill",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of Farrul",
+        "tier_level": 20,
+        "text_plain": "20 Grants Level 30 Aspect of the Cat Skill",
         "weight": 0,
         "weight_pct": 0
       },
@@ -7400,9 +7399,23 @@
         "weight_pct": 0
       },
       {
+        "tier_name": "of Craiceann",
+        "tier_level": 20,
+        "text_plain": "20 Grants Level 30 Aspect of the Crab Skill",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
         "tier_name": "of Fenumus",
         "tier_level": 20,
         "text_plain": "20 Grants Level 20 Aspect of the Spider Skill",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "of Fenumus",
+        "tier_level": 20,
+        "text_plain": "20 Grants Level 30 Aspect of the Spider Skill",
         "weight": 0,
         "weight_pct": 0
       }
@@ -7800,7 +7813,6 @@
     "weight": 1000,
     "weight_pct": 5.556,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -7823,7 +7835,8 @@
     "weight": 1000,
     "weight_pct": 5.556,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -7845,7 +7858,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -7896,7 +7908,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -7926,7 +7937,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -8012,7 +8022,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -8056,7 +8065,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -8086,7 +8094,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -8165,7 +8172,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -8195,7 +8201,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -8232,7 +8237,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -9015,7 +9019,8 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "defences"
+      "defences",
+      "evasion"
     ],
     "tiers": [
       {
@@ -9037,7 +9042,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "bleed",
       "physical",
       "attack",
       "ailment"
@@ -9151,7 +9155,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "poison",
       "chaos",
       "ailment"
     ],
@@ -9189,7 +9192,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "bleed",
       "physical",
       "attack",
       "ailment"
@@ -10322,7 +10324,8 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "defences"
+      "defences",
+      "armour"
     ],
     "tiers": [
       {
@@ -10757,7 +10760,8 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "defences"
+      "defences",
+      "armour"
     ],
     "tiers": [
       {
@@ -11097,7 +11101,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -11120,7 +11123,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -11150,7 +11152,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -11180,7 +11181,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -11536,7 +11536,6 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [
-      "resource",
       "life",
       "minion"
     ],
@@ -12264,7 +12263,6 @@
     "weight": 4000,
     "weight_pct": 7.656,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -12308,7 +12306,8 @@
     "weight": 4000,
     "weight_pct": 7.656,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -12380,7 +12379,8 @@
     "weight": 1000,
     "weight_pct": 1.914,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -12706,7 +12706,8 @@
     "weight": 1500,
     "weight_pct": 2.871,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -12895,7 +12896,6 @@
     "weight": 5299,
     "weight_pct": 10.142,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -12981,7 +12981,6 @@
     "weight": 2500,
     "weight_pct": 4.785,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [
@@ -13584,7 +13583,6 @@
     "weight": 4000,
     "weight_pct": 9.249,
     "tags": [
-      "resource",
       "life"
     ],
     "tiers": [
@@ -13669,7 +13667,10 @@
     "weight": 4000,
     "weight_pct": 9.249,
     "tags": [
-      "defences"
+      "defences",
+      "armour",
+      "evasion",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -13758,7 +13759,8 @@
     "weight": 1000,
     "weight_pct": 2.312,
     "tags": [
-      "defences"
+      "defences",
+      "energy_shield"
     ],
     "tiers": [
       {
@@ -13864,7 +13866,6 @@
     "weight": 5000,
     "weight_pct": 11.561,
     "tags": [
-      "resource",
       "mana"
     ],
     "tiers": [

@@ -76,7 +76,7 @@
       "slug": "Cartography_Scarab_of_Risk",
       "description": "Area has 2 additional random Modifiers",
       "stack_size": "1 / 20",
-      "limit": "5",
+      "limit": "1",
       "properties": {},
       "mods": [],
       "imageLocal": "scarabs/cartography_scarab_of_risk.webp"
@@ -534,7 +534,7 @@
     {
       "name": "Abyss Scarab of Edifice",
       "slug": "Abyss_Scarab_of_Edifice",
-      "description": "Abysses in Area that do not lead to an Abyssal Depths lead to a Stygian Spire Abysses in Area spawn Hoards as they travel",
+      "description": "Abysses in Area that do not lead to an Abyssal Depths lead to a Stygian Spire Abyss pits in Area that do not lead to an Abyssal Depths or spawn an Abyssal Trove will spawn Minor Stygian Spires",
       "stack_size": "1 / 20",
       "limit": "1",
       "properties": {},
@@ -614,7 +614,7 @@
     {
       "name": "Essence Scarab of Stability",
       "slug": "Essence_Scarab_of_Stability",
-      "description": "Using a Remnant of Corruption in Area can only result in upgrading or transforming Essences",
+      "description": "Corrupting an Essence in Area can only result in upgrading or transforming Essences",
       "stack_size": "1 / 20",
       "limit": "1",
       "properties": {},

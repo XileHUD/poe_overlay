@@ -285,7 +285,6 @@
     "sourceCategories": [
       "Belts",
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -706,7 +705,6 @@
     "weight": 1000,
     "weight_pct": 21.978,
     "tags": [
-      "resource",
       "life",
       "attack"
     ],
@@ -1329,6 +1327,78 @@
     "category": "Gloves_dex",
     "domain": "hunter",
     "side": "prefix",
+    "text_plain": "#% chance to Intimidate Enemies for # seconds on Hit",
+    "tier": 2,
+    "ilvl": 85,
+    "weight": 250,
+    "weight_pct": 9.091,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Hunter's",
+        "tier_level": 85,
+        "text_plain": "85 (7–10)% chance to Intimidate Enemies for 4 seconds on Hit",
+        "weight": 250,
+        "weight_pct": 9.091
+      },
+      {
+        "tier_name": "Elevated Hunter's",
+        "tier_level": 95,
+        "text_plain": "95 Intimidate Enemies for 4 seconds on Hit",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "hunter",
+    "side": "prefix",
+    "text_plain": "#% chance to Unnerve Enemies for # seconds on Hit",
+    "tier": 2,
+    "ilvl": 85,
+    "weight": 250,
+    "weight_pct": 9.091,
+    "tags": [],
+    "tiers": [
+      {
+        "tier_name": "Hunter's",
+        "tier_level": 85,
+        "text_plain": "85 (7–10)% chance to Unnerve Enemies for 4 seconds on Hit",
+        "weight": 250,
+        "weight_pct": 9.091
+      },
+      {
+        "tier_name": "Elevated Hunter's",
+        "tier_level": 95,
+        "text_plain": "95 Unnerve Enemies for 4 seconds on Hit",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ],
+    "sourceCategories": [
+      "Gloves_dex",
+      "Gloves_dex_int",
+      "Gloves_int",
+      "Gloves_str",
+      "Gloves_str_dex",
+      "Gloves_str_int",
+      "Runic_Gauntlets"
+    ]
+  },
+  {
+    "category": "Gloves_dex",
+    "domain": "hunter",
+    "side": "prefix",
     "text_plain": "Non-Vaal Strike Skills target # additional nearby Enemy",
     "tier": 2,
     "ilvl": 80,
@@ -1720,7 +1790,6 @@
     "weight": 1500,
     "weight_pct": 78.947,
     "tags": [
-      "poison",
       "damage",
       "chaos",
       "ailment"
@@ -2326,7 +2395,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2364,7 +2432,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2401,7 +2468,6 @@
     "sourceCategories": [
       "Bone_Spirit_Shield",
       "One_Hand_Axes",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",
@@ -2800,17 +2866,10 @@
       "Claws",
       "Convoking_Wand",
       "Daggers",
-      "Gloves_dex",
-      "Gloves_dex_int",
-      "Gloves_int",
-      "Gloves_str",
-      "Gloves_str_dex",
-      "Gloves_str_int",
       "One_Hand_Axes",
       "One_Hand_Maces",
       "One_Hand_Swords",
       "Rune_Daggers",
-      "Runic_Gauntlets",
       "Sceptres",
       "Staves",
       "Thrusting_One_Hand_Swords",
@@ -3172,14 +3231,7 @@
     ],
     "sourceCategories": [
       "Convoking_Wand",
-      "Gloves_dex",
-      "Gloves_dex_int",
-      "Gloves_int",
-      "Gloves_str",
-      "Gloves_str_dex",
-      "Gloves_str_int",
       "Rune_Daggers",
-      "Runic_Gauntlets",
       "Sceptres",
       "Staves",
       "Wands"
@@ -3432,7 +3484,6 @@
     ],
     "sourceCategories": [
       "Bone_Spirit_Shield",
-      "Shields_dex",
       "Shields_dex_int",
       "Shields_int",
       "Shields_str",

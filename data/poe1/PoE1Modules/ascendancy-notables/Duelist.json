@@ -3,53 +3,9 @@
   "character": "Duelist",
   "notables": [
     {
-      "name": "Headsman",
-      "slug": "Headsman",
-      "ascendancy": "Slayer",
-      "character": "Duelist",
-      "properties": {},
-      "mods": [
-        "Kill Enemies that have 20% or lower Life when Hit by your Skills",
-        "Gain 10% increased Attack Speed for 20 seconds when you Kill a Rare or Unique Enemy",
-        "Gain 10% increased Movement Speed for 20 seconds when you Kill an Enemy"
-      ],
-      "imageLocal": "ascendancy-notables/duelist/headsman.webp"
-    },
-    {
-      "name": "Overwhelm",
-      "slug": "Overwhelm",
-      "ascendancy": "Slayer",
-      "character": "Duelist",
-      "properties": {
-        "Radius": "60"
-      },
-      "mods": [
-        "Base Critical Strike Chance for Attacks with Weapons is 8%",
-        "+10% to Critical Strike Multiplier per Nearby Enemy, up to +100%",
-        "Nearby Enemies have -30% to Critical Strike Multiplier"
-      ],
-      "imageLocal": "ascendancy-notables/duelist/overwhelm.webp"
-    },
-    {
-      "name": "Bane of Legends",
-      "slug": "Bane_of_Legends",
-      "ascendancy": "Slayer",
-      "character": "Duelist",
-      "properties": {},
-      "mods": [
-        "10% more Damage if you've Killed Recently",
-        "Cannot take Reflected Physical Damage",
-        "20% more Damage with Hits and Ailments against Unique Enemies",
-        "(Recently refers to the past 4 seconds)"
-      ],
-      "imageLocal": "ascendancy-notables/duelist/bane_of_legends.webp"
-    },
-    {
       "name": "Endless Hunger",
       "slug": "Endless_Hunger",
       "ascendancy": "Slayer",
-      "character": "Duelist",
-      "properties": {},
       "mods": [
         "20% increased Attack Speed while Leeching",
         "Cannot be Stunned while Leeching",
@@ -59,27 +15,27 @@
         "(Overkill Damage is any Damage from a Hit in excess of the Enemy's remaining Life)",
         "(Debuffs you are Unaffected by can still be placed on you, but will not actually apply their effect)"
       ],
+      "properties": {},
+      "character": "Duelist",
       "imageLocal": "ascendancy-notables/duelist/endless_hunger.webp"
     },
     {
       "name": "Brutal Fervour",
       "slug": "Brutal_Fervour",
       "ascendancy": "Slayer",
-      "character": "Duelist",
-      "properties": {},
       "mods": [
         "100% increased Maximum Recovery per Life Leech",
         "Life Leech effects are not removed when Unreserved Life is Filled",
         "10% reduced Damage taken while Leeching"
       ],
+      "properties": {},
+      "character": "Duelist",
       "imageLocal": "ascendancy-notables/duelist/brutal_fervour.webp"
     },
     {
       "name": "Impact",
       "slug": "Impact",
       "ascendancy": "Slayer",
-      "character": "Duelist",
-      "properties": {},
       "mods": [
         "50% increased Global Accuracy Rating",
         "+0.4 metres to Melee Strike Range",
@@ -88,49 +44,141 @@
         "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
         "(Recently refers to the past 4 seconds)"
       ],
+      "properties": {},
+      "character": "Duelist",
       "imageLocal": "ascendancy-notables/duelist/impact.webp"
     },
     {
       "name": "Masterful Form",
       "slug": "Masterful_Form",
       "ascendancy": "Slayer",
-      "character": "Duelist",
-      "properties": {},
       "mods": [
         "Your Maximum Endurance Charges is equal to your Maximum Frenzy Charges",
         "+1 to Maximum Frenzy Charges"
       ],
+      "properties": {},
+      "character": "Duelist",
       "imageLocal": "ascendancy-notables/duelist/masterful_form.webp"
+    },
+    {
+      "name": "Headsman",
+      "slug": "Headsman",
+      "ascendancy": "Slayer",
+      "mods": [
+        "Kill Enemies that have 20% or lower Life when Hit by your Skills",
+        "Gain 10% increased Attack Speed for 20 seconds when you Kill a Rare or Unique Enemy",
+        "Gain 10% increased Movement Speed for 20 seconds when you Kill an Enemy"
+      ],
+      "properties": {},
+      "character": "Duelist",
+      "imageLocal": "ascendancy-notables/duelist/headsman.webp"
+    },
+    {
+      "name": "Overwhelm",
+      "slug": "Overwhelm",
+      "ascendancy": "Slayer",
+      "mods": [
+        "Base Critical Strike Chance for Attacks with Weapons is 8%",
+        "+10% to Critical Strike Multiplier per Nearby Enemy, up to +100%",
+        "Nearby Enemies have -30% to Critical Strike Multiplier"
+      ],
+      "properties": {
+        "Radius": "60"
+      },
+      "character": "Duelist",
+      "imageLocal": "ascendancy-notables/duelist/overwhelm.webp"
+    },
+    {
+      "name": "Bane of Legends",
+      "slug": "Bane_of_Legends",
+      "ascendancy": "Slayer",
+      "mods": [
+        "10% more Damage if you've Killed Recently",
+        "Cannot take Reflected Physical Damage",
+        "20% more Damage with Hits and Ailments against Unique Enemies",
+        "(Recently refers to the past 4 seconds)"
+      ],
+      "properties": {},
+      "character": "Duelist",
+      "imageLocal": "ascendancy-notables/duelist/bane_of_legends.webp"
+    },
+    {
+      "name": "Determined Survivor",
+      "slug": "Determined_Survivor",
+      "ascendancy": "Gladiator",
+      "mods": [
+        "Gain 50% Chance to Block from Equipped Shield instead of the Shield's value",
+        "Inherent Bonuses from Dual Wielding are doubled",
+        "(Dual Wielding inherently grants +20% chance to Block Attack Damage and 10% more Attack Speed)"
+      ],
+      "properties": {},
+      "character": "Duelist",
+      "imageLocal": "ascendancy-notables/duelist/determined_survivor.webp"
+    },
+    {
+      "name": "Measured Retaliation",
+      "slug": "Measured_Retaliation",
+      "ascendancy": "Gladiator",
+      "mods": [
+        "Retaliation Skills become Usable for an additional 2 seconds",
+        "50% chance for used Retaliation Skills to remain Usable and not consume a Cooldown Use",
+        "(They will also not be put on cooldown if they remain Usable)"
+      ],
+      "properties": {},
+      "character": "Duelist",
+      "imageLocal": "ascendancy-notables/duelist/measured_retaliation.webp"
+    },
+    {
+      "name": "More Than Skill",
+      "slug": "More_Than_Skill",
+      "ascendancy": "Gladiator",
+      "mods": [
+        "Chance to Block Attack or Spell Damage is Lucky if you've Blocked Recently",
+        "(Lucky things are rolled twice and the best result used)",
+        "(Recently refers to the past 4 seconds)"
+      ],
+      "properties": {},
+      "character": "Duelist",
+      "imageLocal": "ascendancy-notables/duelist/more_than_skill.webp"
+    },
+    {
+      "name": "War of Attrition",
+      "slug": "War_of_Attrition",
+      "ascendancy": "Gladiator",
+      "mods": [
+        "Deal 1% more Damage with Hits and Ailments to Rare and Unique Enemies for each second they've ever been in your Presence, up to a maximum of 100%"
+      ],
+      "properties": {},
+      "character": "Duelist",
+      "imageLocal": "ascendancy-notables/duelist/war_of_attrition.webp"
     },
     {
       "name": "Gratuitous Violence",
       "slug": "Gratuitous_Violence",
       "ascendancy": "Gladiator",
-      "character": "Duelist",
-      "properties": {},
       "mods": [
         "Bleeding Enemies you Kill Explode, dealing 20% oftheir Maximum Life as Physical Damage"
       ],
+      "properties": {},
+      "character": "Duelist",
       "imageLocal": "ascendancy-notables/duelist/gratuitous_violence.webp"
     },
     {
       "name": "Jagged Technique",
       "slug": "Jagged_Technique",
       "ascendancy": "Gladiator",
-      "character": "Duelist",
-      "properties": {},
       "mods": [
         "Bleeding you inflict is Aggravated",
         "(Bleeding which has been Aggravated always deals higher Damage as though the target was moving)"
       ],
+      "properties": {},
+      "character": "Duelist",
       "imageLocal": "ascendancy-notables/duelist/jagged_technique.webp"
     },
     {
       "name": "Weapon Master",
       "slug": "Weapon_Master",
       "ascendancy": "Gladiator",
-      "character": "Duelist",
-      "properties": {},
       "mods": [
         "25% more Accuracy Rating while wielding a Sword",
         "20% more Area of Effect while wielding a Mace or Sceptre",
@@ -140,128 +188,41 @@
         "(Rune Daggers are considered Daggers)",
         "(You are on Low Life if you have 50% of your Maximum Life or less)"
       ],
+      "properties": {},
+      "character": "Duelist",
       "imageLocal": "ascendancy-notables/duelist/weapon_master.webp"
-    },
-    {
-      "name": "Determined Survivor",
-      "slug": "Determined_Survivor",
-      "ascendancy": "Gladiator",
-      "character": "Duelist",
-      "properties": {},
-      "mods": [
-        "Gain 50% Chance to Block from Equipped Shield instead of the Shield's value",
-        "Inherent Bonuses from Dual Wielding are doubled",
-        "(Dual Wielding inherently grants +20% chance to Block Attack Damage and 10% more Attack Speed)"
-      ],
-      "imageLocal": "ascendancy-notables/duelist/determined_survivor.webp"
-    },
-    {
-      "name": "Measured Retaliation",
-      "slug": "Measured_Retaliation",
-      "ascendancy": "Gladiator",
-      "character": "Duelist",
-      "properties": {},
-      "mods": [
-        "Retaliation Skills become Usable for an additional 2 seconds",
-        "50% chance for used Retaliation Skills to remain Usable and not consume a Cooldown Use",
-        "(They will also not be put on cooldown if they remain Usable)"
-      ],
-      "imageLocal": "ascendancy-notables/duelist/measured_retaliation.webp"
-    },
-    {
-      "name": "More Than Skill",
-      "slug": "More_Than_Skill",
-      "ascendancy": "Gladiator",
-      "character": "Duelist",
-      "properties": {},
-      "mods": [
-        "Chance to Block Attack or Spell Damage is Lucky if you've Blocked Recently",
-        "(Lucky things are rolled twice and the best result used)",
-        "(Recently refers to the past 4 seconds)"
-      ],
-      "imageLocal": "ascendancy-notables/duelist/more_than_skill.webp"
-    },
-    {
-      "name": "War of Attrition",
-      "slug": "War_of_Attrition",
-      "ascendancy": "Gladiator",
-      "character": "Duelist",
-      "properties": {},
-      "mods": [
-        "Deal 1% more Damage with Hits and Ailments to Rare and Unique Enemies for each second they've ever been in your Presence, up to a maximum of 100%"
-      ],
-      "imageLocal": "ascendancy-notables/duelist/war_of_attrition.webp"
-    },
-    {
-      "name": "Fortitude",
-      "slug": "Fortitude",
-      "ascendancy": "Champion",
-      "character": "Duelist",
-      "properties": {},
-      "mods": [
-        "Nearby Allies count as having Fortification equal to yours",
-        "You have your maximum Fortification",
-        "(Take 1% less Damage from Hits per Fortification. Maximum 20 Fortification)"
-      ],
-      "imageLocal": "ascendancy-notables/duelist/fortitude.webp"
-    },
-    {
-      "name": "Unstoppable Hero",
-      "slug": "Unstoppable_Hero",
-      "ascendancy": "Champion",
-      "character": "Duelist",
-      "properties": {},
-      "mods": [
-        "3% more Armour and Evasion Rating per Fortification above 20",
-        "3% increased Attack Speed per Fortification above 20"
-      ],
-      "imageLocal": "ascendancy-notables/duelist/unstoppable_hero.webp"
-    },
-    {
-      "name": "Worthy Causes",
-      "slug": "Worthy_Causes",
-      "ascendancy": "Champion",
-      "character": "Duelist",
-      "properties": {},
-      "mods": [
-        "Having a placed Banner does not prevent you gaining Valour",
-        "Banner Skills have 50% increased Duration"
-      ],
-      "imageLocal": "ascendancy-notables/duelist/worthy_causes.webp"
     },
     {
       "name": "Worthy Foe",
       "slug": "Worthy_Foe",
       "ascendancy": "Champion",
-      "character": "Duelist",
-      "properties": {},
       "mods": [
         "Taunt on Hit",
         "Enemies Taunted by you take 15% increased Damage",
         "Enemies Taunted by you cannot Evade Attacks",
         "(Enemies you Taunt can only target you, and deal 10% less damage to anyone else. Taunt lasts for 3 seconds)"
       ],
+      "properties": {},
+      "character": "Duelist",
       "imageLocal": "ascendancy-notables/duelist/worthy_foe.webp"
     },
     {
       "name": "Inspirational",
       "slug": "Inspirational",
       "ascendancy": "Champion",
-      "character": "Duelist",
-      "properties": {},
       "mods": [
         "30% increased effect of Non-Curse Auras from your Skills",
         "You and Allies near your Banner Regenerate 0.1% of Life per second for each Valour consumed for that Banner",
         "When you leave your Banner's Area, recover 30% of the Valour consumed for that Banner"
       ],
+      "properties": {},
+      "character": "Duelist",
       "imageLocal": "ascendancy-notables/duelist/inspirational.webp"
     },
     {
       "name": "First to Strike, Last to Fall",
-      "slug": "First_to_Strike%2C_Last_to_Fall",
+      "slug": "First_to_Strike,_Last_to_Fall",
       "ascendancy": "Champion",
-      "character": "Duelist",
-      "properties": {},
       "mods": [
         "Your Hits permanently Intimidate Enemies that are on Full Life",
         "Gain Adrenaline for 20 seconds when you reach Low Life",
@@ -272,22 +233,61 @@
         "(Adrenaline grants 100% increased Damage, 25% increased Attack, Cast and Movement Speed and 10% additional Physical Damage Reduction. You cannot gain Adrenaline if you already have it)",
         "(Adrenaline grants 100% increased Damage, 25% increased Attack, Cast and Movement Speed and 10% additional Physical Damage Reduction. You cannot gain Adrenaline if you already have it)"
       ],
+      "properties": {},
+      "character": "Duelist",
       "imageLocal": "ascendancy-notables/duelist/first_to_strike_last_to_fall.webp"
     },
     {
       "name": "Master of Metal",
       "slug": "Master_of_Metal",
       "ascendancy": "Champion",
-      "character": "Duelist",
-      "properties": {
-        "Radius": "60"
-      },
       "mods": [
         "Impales you inflict last 1 additional Hit",
         "If you've Impaled an Enemy Recently, youand nearby Allies have +1000 to Armour",
         "You and nearby Allies deal 6 to 12 added Physical Damage foreach Impale on Enemy"
       ],
+      "properties": {
+        "Radius": "60"
+      },
+      "character": "Duelist",
       "imageLocal": "ascendancy-notables/duelist/master_of_metal.webp"
+    },
+    {
+      "name": "Fortitude",
+      "slug": "Fortitude",
+      "ascendancy": "Champion",
+      "mods": [
+        "Nearby Allies count as having Fortification equal to yours",
+        "You have your maximum Fortification",
+        "(Take 1% less Damage from Hits per Fortification. Maximum 20 Fortification)"
+      ],
+      "properties": {},
+      "character": "Duelist",
+      "imageLocal": "ascendancy-notables/duelist/fortitude.webp"
+    },
+    {
+      "name": "Unstoppable Hero",
+      "slug": "Unstoppable_Hero",
+      "ascendancy": "Champion",
+      "mods": [
+        "3% more Armour and Evasion Rating per Fortification above 20",
+        "3% increased Attack Speed per Fortification above 20"
+      ],
+      "properties": {},
+      "character": "Duelist",
+      "imageLocal": "ascendancy-notables/duelist/unstoppable_hero.webp"
+    },
+    {
+      "name": "Worthy Causes",
+      "slug": "Worthy_Causes",
+      "ascendancy": "Champion",
+      "mods": [
+        "Having a placed Banner does not prevent you gaining Valour",
+        "Banner Skills have 100% increased Duration"
+      ],
+      "properties": {},
+      "character": "Duelist",
+      "imageLocal": "ascendancy-notables/duelist/worthy_causes.webp"
     }
   ]
 }

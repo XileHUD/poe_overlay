@@ -3,203 +3,201 @@
   "character": "Shadow",
   "notables": [
     {
-      "name": "Unstable Infusion",
-      "slug": "Unstable_Infusion",
-      "ascendancy": "Assassin",
-      "character": "Shadow",
-      "properties": {},
-      "mods": [
-        "10% chance to gain a Power Charge on Critical Strike",
-        "20% chance to gain a Power Charge on Non-Critical Strike",
-        "+1 to Maximum Power Charges"
-      ],
-      "imageLocal": "ascendancy-notables/shadow/unstable_infusion.webp"
-    },
-    {
-      "name": "Deadly Infusion",
-      "slug": "Deadly_Infusion",
-      "ascendancy": "Assassin",
-      "character": "Shadow",
-      "properties": {},
-      "mods": [
-        "+5% to Critical Strike Multiplier per Power Charge",
-        "+1.5% Critical Strike Chance while at maximum Power Charges"
-      ],
-      "imageLocal": "ascendancy-notables/shadow/deadly_infusion.webp"
-    },
-    {
-      "name": "Ambush and Assassinate",
-      "slug": "Ambush_and_Assassinate",
-      "ascendancy": "Assassin",
-      "character": "Shadow",
-      "properties": {},
-      "mods": [
-        "15% more Damage with Hits and Ailments against Enemies that are on Low Life",
-        "100% more Critical Strike Chance against Enemies that are on Low Life",
-        "Critical Strikes have Culling Strike",
-        "+40% to Critical Strike Multiplier against Enemies that are on Full Life",
-        "100% more Critical Strike Chance against Enemies that are on Full Life",
-        "(Culling Strike means enemies that are on 10% or lower life after your Hit are Killed)",
-        "(You are on Low Life if you have 50% of your Maximum Life or less)"
-      ],
-      "imageLocal": "ascendancy-notables/shadow/ambush_and_assassinate.webp"
-    },
-    {
-      "name": "Opportunistic",
-      "slug": "Opportunistic",
-      "ascendancy": "Assassin",
-      "character": "Shadow",
-      "properties": {},
-      "mods": [
-        "Damage from your Critical Strikes cannot be Reflected",
-        "25% more Damage while there is at most one Rare or Unique Enemy nearby",
-        "20% reduced Damage taken while there are at least two Rare or Unique Enemies nearby"
-      ],
-      "imageLocal": "ascendancy-notables/shadow/opportunistic.webp"
-    },
-    {
       "name": "Toxic Delivery",
       "slug": "Toxic_Delivery",
       "ascendancy": "Assassin",
-      "character": "Shadow",
-      "properties": {},
       "mods": [
-        "Poison you inflict with Critical Strikes deals 25% more Damage",
-        "+0.5% to Critical Strike Chance per Poison affecting Enemy, up to +2.0%"
+        "Poison you inflict with Critical Strikes deals 20% more Damage",
+        "Recover 0.5% of Life per Poison affecting Enemies you Kill",
+        "5% increased Poison Duration for each Poison you have inflicted Recently, upto a maximum of 100%",
+        "(Recently refers to the past 4 seconds)"
       ],
+      "properties": {},
+      "character": "Shadow",
       "imageLocal": "ascendancy-notables/shadow/toxic_delivery.webp"
     },
     {
-      "name": "Noxious Strike",
-      "slug": "Noxious_Strike",
+      "name": "Mystical Infusion",
+      "slug": "Mystical_Infusion",
       "ascendancy": "Assassin",
-      "character": "Shadow",
-      "properties": {},
       "mods": [
-        "40% chance to Poison on Hit",
-        "5% increased Poison Duration for each Poison you have inflicted Recently, up to a maximum of 100%",
-        "Recover 0.5% of Life per Poison affecting Enemies you Kill",
-        "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
-        "(Recently refers to the past 4 seconds)"
+        "Base Spell Critical Strike Chance of Spells is equal to that of Main Hand Weapon"
       ],
-      "imageLocal": "ascendancy-notables/shadow/noxious_strike.webp"
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/mystical_infusion.webp"
     },
     {
       "name": "Mistwalker",
       "slug": "Mistwalker",
       "ascendancy": "Assassin",
-      "character": "Shadow",
-      "properties": {},
       "mods": [
         "Gain Elusive on Critical Strike",
-        "50% increased Elusive Effect",
+        "100% increased Elusive Effect",
         "You take no Extra Damage from Critical Strikes while Elusive",
         "(Elusive initially grants 15% chance to Avoid All Damage from Hits, and 30% increased Movement Speed. The buff reduces its effect over time, removing itself at 0% effect. If you already have an Elusive buff, you cannot gain Elusive)"
       ],
+      "properties": {},
+      "character": "Shadow",
       "imageLocal": "ascendancy-notables/shadow/mistwalker.webp"
     },
     {
-      "name": "Swift Killer",
-      "slug": "Swift_Killer",
-      "ascendancy": "Trickster",
-      "character": "Shadow",
-      "properties": {},
+      "name": "Shadowed Blood",
+      "slug": "Shadowed_Blood",
+      "ascendancy": "Assassin",
       "mods": [
-        "200% increased Charge Duration",
-        "+2 to Maximum Frenzy Charges"
+        "40% of Physical Damage taken Recouped as Life",
+        "Unaffected by Damaging Ailments",
+        "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
+        "(Debuffs you are Unaffected by can still be placed on you, but will not actually apply their effect)",
+        "(Only Damage from Hits can be Recouped, over 4 seconds following the Hit)"
       ],
-      "imageLocal": "ascendancy-notables/shadow/swift_killer.webp"
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/shadowed_blood.webp"
     },
     {
-      "name": "Polymath",
-      "slug": "Polymath",
-      "ascendancy": "Trickster",
-      "character": "Shadow",
-      "properties": {},
+      "name": "Assassination Style",
+      "slug": "Assassination_Style",
+      "ascendancy": "Assassin",
       "mods": [
-        "2% more Damage for each different type of Mastery you have Allocated",
-        "Recover 1% of Life on Kill for each different type of Mastery you have Allocated",
-        "Recover 1% of Energy Shield on Kill for each different type of Mastery you have Allocated",
-        "Recover 1% of Mana on Kill for each different type of Mastery you have Allocated"
+        "(Choose one of the two attached options)"
       ],
-      "imageLocal": "ascendancy-notables/shadow/polymath.webp"
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/assassination_style.webp"
     },
     {
-      "name": "Heartstopper",
-      "slug": "Heartstopper",
-      "ascendancy": "Trickster",
-      "character": "Shadow",
-      "properties": {},
+      "name": "Infused Toxins",
+      "slug": "Infused_Toxins",
+      "ascendancy": "Assassin",
       "mods": [
-        "Every 10 seconds:Take 40% less Damage from Hits for 5 secondsTake 40% less Damage over Time for 5 seconds",
-        "(These are consecutive)",
-        "trickster damage over time taken +% final [-40]",
-        "trickster hit damage taken +% final [-40]"
+        "All Damage from Hits can Poison"
       ],
-      "imageLocal": "ascendancy-notables/shadow/heartstopper.webp"
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/infused_toxins.webp"
     },
     {
-      "name": "Escape Artist",
-      "slug": "Escape_Artist",
-      "ascendancy": "Trickster",
-      "character": "Shadow",
-      "properties": {},
+      "name": "Unstable Infusion",
+      "slug": "Unstable_Infusion",
+      "ascendancy": "Assassin",
       "mods": [
-        "+4 to Evasion Rating per 1 Maximum Energy Shield on Equipped Helmet",
-        "+1 to maximum Energy Shield per 8 Evasion Rating on Equipped Body Armour"
+        "15% chance to gain a Power Charge on Critical Strike",
+        "30% chance to gain a Power Charge on Non-Critical Strike",
+        "+1 to Maximum Power Charges"
       ],
-      "imageLocal": "ascendancy-notables/shadow/escape_artist.webp"
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/unstable_infusion.webp"
     },
     {
-      "name": "Spellbreaker",
-      "slug": "Spellbreaker",
-      "ascendancy": "Trickster",
-      "character": "Shadow",
-      "properties": {},
+      "name": "Deathmarked",
+      "slug": "Deathmarked",
+      "ascendancy": "Assassin",
       "mods": [
-        "+20% chance to Suppress Spell Damage",
-        "Prevent +10% of Suppressed Spell Damage while on Full Energy Shield",
-        "50% chance for Energy Shield Recharge to start when you Suppress Spell Damage",
-        "(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+        "Trigger Level 30 Assassin's Mark on Attack Critical Strike againsta Rare or Unique Enemy and you have no Mark",
+        "Mark Skills Cost no Mana",
+        "Marked Enemy cannot Evade Attacks",
+        "(Curses a single enemy, making them more vulnerable to Critical Strikes. Killing the cursed enemy will grant life and mana, and a power charge. You can only have one Mark at a time)"
       ],
-      "imageLocal": "ascendancy-notables/shadow/spellbreaker.webp"
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/deathmarked.webp"
     },
     {
-      "name": "One Step Ahead",
-      "slug": "One_Step_Ahead",
-      "ascendancy": "Trickster",
-      "character": "Shadow",
-      "properties": {
-        "Radius": "60"
-      },
+      "name": "Opportunistic",
+      "slug": "Opportunistic",
+      "ascendancy": "Assassin",
       "mods": [
-        "Your Action Speed is at least 108% of base value",
-        "Nearby Enemy Monsters' Action Speed is at most 92% of base value"
+        "Damage from your Critical Strikes cannot be Reflected",
+        "25% more Damage while there is at most one Rare or Unique Enemy nearby",
+        "35% less Damage taken while there are at least two Rare or Unique Enemies nearby"
       ],
-      "imageLocal": "ascendancy-notables/shadow/one_step_ahead.webp"
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/opportunistic.webp"
+    },
+    {
+      "name": "Perfect Crime",
+      "slug": "Perfect_Crime",
+      "ascendancy": "Saboteur",
+      "mods": [
+        "Triggers Level 20 Summon Triggerbots when Allocated",
+        "35% less Damage with Triggered Spells",
+        "(Summon two Triggerbots which follow you around and run towards enemies. Your Triggered Spells Trigger twice, once from each Triggerbot's location)"
+      ],
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/perfect_crime.webp"
+    },
+    {
+      "name": "Demolitions Specialist",
+      "slug": "Demolitions_Specialist",
+      "ascendancy": "Saboteur",
+      "mods": [
+        "150% increased Effect of Auras from Mines",
+        "Mines Hinder Enemies near them for 2 seconds when they Land",
+        "(Hinder reduces movement speed by 30%)"
+      ],
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/demolitions_specialist.webp"
+    },
+    {
+      "name": "Chain Reaction",
+      "slug": "Chain_Reaction",
+      "ascendancy": "Saboteur",
+      "mods": [
+        "When your Traps Trigger, your nearby Traps also Trigger",
+        "Skills used by Traps have 50% increased Area of Effect"
+      ],
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/chain_reaction.webp"
+    },
+    {
+      "name": "Bomb Specialist",
+      "slug": "Bomb_Specialist",
+      "ascendancy": "Saboteur",
+      "mods": [
+        "Hits have 30% chance to deal 50% more Area Damage",
+        "30% chance to take 50% less Area Damage from Hits"
+      ],
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/bomb_specialist.webp"
+    },
+    {
+      "name": "Shrapnel Specialist",
+      "slug": "Shrapnel_Specialist",
+      "ascendancy": "Saboteur",
+      "mods": [
+        "Projectiles have 50% chance to Return to you",
+        "Projectiles are fired in random directions"
+      ],
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/shrapnel_specialist.webp"
     },
     {
       "name": "Pyromaniac",
       "slug": "Pyromaniac",
       "ascendancy": "Saboteur",
-      "character": "Shadow",
-      "properties": {},
       "mods": [
-        "Immune to Ignite and Shock",
         "Regenerate 2% of Life per second for each Mine Detonated Recently, up to 10% per second",
         "Regenerate 2% of Life per Second for each Trap Triggered Recently, up to 10% per second",
+        "Immune to Ignite and Shock",
         "(Recently refers to the past 4 seconds)"
       ],
+      "properties": {},
+      "character": "Shadow",
       "imageLocal": "ascendancy-notables/shadow/pyromaniac.webp"
     },
     {
       "name": "Born in the Shadows",
       "slug": "Born_in_the_Shadows",
       "ascendancy": "Saboteur",
-      "character": "Shadow",
-      "properties": {
-        "Radius": "35"
-      },
       "mods": [
         "Cannot be Blinded",
         "15% reduced Damage taken from Blinded Enemies",
@@ -209,110 +207,130 @@
         "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating)",
         "generic_buff_aura"
       ],
+      "properties": {
+        "Radius": "35"
+      },
+      "character": "Shadow",
       "imageLocal": "ascendancy-notables/shadow/born_in_the_shadows.webp"
     },
     {
       "name": "Calculated Risk",
       "slug": "Calculated_Risk",
       "ascendancy": "Saboteur",
-      "character": "Shadow",
-      "properties": {},
       "mods": [
         "Your Critical Strike Chance is Lucky",
         "Damage with Hits is Unlucky",
         "(Lucky things are rolled twice and the best result used)"
       ],
+      "properties": {},
+      "character": "Shadow",
       "imageLocal": "ascendancy-notables/shadow/calculated_risk.webp"
     },
     {
       "name": "Like Clockwork",
       "slug": "Like_Clockwork",
       "ascendancy": "Saboteur",
-      "character": "Shadow",
+      "mods": [
+        "40% increased Cooldown Recovery Rate",
+        "Nearby Enemies have 10% reduced Cooldown Recovery Rate"
+      ],
       "properties": {
         "Radius": "60"
       },
-      "mods": [
-        "30% increased Cooldown Recovery Rate",
-        "Nearby Enemies have 10% reduced Cooldown Recovery Rate"
-      ],
+      "character": "Shadow",
       "imageLocal": "ascendancy-notables/shadow/like_clockwork.webp"
-    },
-    {
-      "name": "Perfect Crime",
-      "slug": "Perfect_Crime",
-      "ascendancy": "Saboteur",
-      "character": "Shadow",
-      "properties": {},
-      "mods": [
-        "Triggers Level 20 Summon Triggerbots when Allocated",
-        "35% less Damage with Triggered Spells",
-        "(Summon two Triggerbots which follow you around and run towards enemies. Your Triggered Spells Trigger twice, once from each Triggerbot's location)"
-      ],
-      "imageLocal": "ascendancy-notables/shadow/perfect_crime.webp"
-    },
-    {
-      "name": "Demolitions Specialist",
-      "slug": "Demolitions_Specialist",
-      "ascendancy": "Saboteur",
-      "character": "Shadow",
-      "properties": {},
-      "mods": [
-        "150% increased Effect of Auras from Mines",
-        "Mines Hinder Enemies near them for 2 seconds when they Land",
-        "(Hinder reduces movement speed by 30%)"
-      ],
-      "imageLocal": "ascendancy-notables/shadow/demolitions_specialist.webp"
-    },
-    {
-      "name": "Chain Reaction",
-      "slug": "Chain_Reaction",
-      "ascendancy": "Saboteur",
-      "character": "Shadow",
-      "properties": {},
-      "mods": [
-        "When your Traps Trigger, your nearby Traps also Trigger",
-        "Skills used by Traps have 50% increased Area of Effect"
-      ],
-      "imageLocal": "ascendancy-notables/shadow/chain_reaction.webp"
-    },
-    {
-      "name": "Bomb Specialist",
-      "slug": "Bomb_Specialist",
-      "ascendancy": "Saboteur",
-      "character": "Shadow",
-      "properties": {},
-      "mods": [
-        "Hits have 30% chance to deal 50% more Area Damage",
-        "30% chance to take 50% less Area Damage from Hits"
-      ],
-      "imageLocal": "ascendancy-notables/shadow/bomb_specialist.webp"
-    },
-    {
-      "name": "Shrapnel Specialist",
-      "slug": "Shrapnel_Specialist",
-      "ascendancy": "Saboteur",
-      "character": "Shadow",
-      "properties": {},
-      "mods": [
-        "Projectiles have 50% chance to Return to you",
-        "Projectiles are fired in random directions"
-      ],
-      "imageLocal": "ascendancy-notables/shadow/shrapnel_specialist.webp"
     },
     {
       "name": "Soul Drinker",
       "slug": "Soul_Drinker",
       "ascendancy": "Trickster",
-      "character": "Shadow",
-      "properties": {},
       "mods": [
         "2% of Damage Leeched as Energy Shield",
-        "20% increased Attack and Cast Speed while Leeching Energy Shield",
         "Energy Shield Leech effects are not removed when Energy Shield is Filled",
         "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
       ],
+      "properties": {},
+      "character": "Shadow",
       "imageLocal": "ascendancy-notables/shadow/soul_drinker.webp"
+    },
+    {
+      "name": "Spellbreaker",
+      "slug": "Spellbreaker",
+      "ascendancy": "Trickster",
+      "mods": [
+        "Prevent +15% of Suppressed Spell Damage while on Full Energy Shield",
+        "50% chance for Energy Shield Recharge to start when you Suppress Spell Damage",
+        "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
+      ],
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/spellbreaker.webp"
+    },
+    {
+      "name": "One Step Ahead",
+      "slug": "One_Step_Ahead",
+      "ascendancy": "Trickster",
+      "mods": [
+        "Your Action Speed is at least 90% of base value",
+        "Nearby Enemy Monsters' Action Speed is at most 90% of base value"
+      ],
+      "properties": {
+        "Radius": "60"
+      },
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/one_step_ahead.webp"
+    },
+    {
+      "name": "Swift Killer",
+      "slug": "Swift_Killer",
+      "ascendancy": "Trickster",
+      "mods": [
+        "200% increased Charge Duration",
+        "+2 to Maximum Frenzy Charges"
+      ],
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/swift_killer.webp"
+    },
+    {
+      "name": "Polymath",
+      "slug": "Polymath",
+      "ascendancy": "Trickster",
+      "mods": [
+        "2% more Damage for each different type of Mastery you have Allocated",
+        "Recover 1% of Life on Kill for each different type of Mastery you have Allocated",
+        "Recover 1% of Energy Shield on Kill for each different type of Mastery you have Allocated",
+        "Recover 1% of Mana on Kill for each different type of Mastery you have Allocated"
+      ],
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/polymath.webp"
+    },
+    {
+      "name": "Heartstopper",
+      "slug": "Heartstopper",
+      "ascendancy": "Trickster",
+      "mods": [
+        "Every 10 seconds:Take 50% less Damage from Hits for 5 secondsTake 50% less Damage over Time for 5 seconds",
+        "(These are consecutive)",
+        "trickster damage over time taken +% final [-50]",
+        "trickster hit damage taken +% final [-50]"
+      ],
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/heartstopper.webp"
+    },
+    {
+      "name": "Escape Artist",
+      "slug": "Escape_Artist",
+      "ascendancy": "Trickster",
+      "mods": [
+        "+4 to Evasion Rating per 1 Maximum Energy Shield on Equipped Helmet",
+        "+1 to maximum Energy Shield per 8 Evasion Rating on Equipped Body Armour"
+      ],
+      "properties": {},
+      "character": "Shadow",
+      "imageLocal": "ascendancy-notables/shadow/escape_artist.webp"
     }
   ]
 }
