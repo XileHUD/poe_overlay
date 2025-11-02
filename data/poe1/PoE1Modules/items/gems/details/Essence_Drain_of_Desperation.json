@@ -1,190 +1,183 @@
 {
   "name": "Essence Drain of Desperation",
   "slug": "Essence_Drain_of_Desperation",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
-    "Acronym": "Ignite",
-    "BaseType": "Essence Drain of Desperation",
-    "TargetTypes": "Ground, Enemy",
-    "Type": "Spell, Projectile, ProjectilesFromUser, Duration, Totemable, Multicastable, DamageOverTime, Chaos, Damage, Triggerable, CanRapidFire, Area, AreaSpell, Trappable, Mineable",
-    "ActiveSkillsCode": "essence_drain_alt_x"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "12",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "91.1",
       "Deals 12 to 18 Chaos Damage": "12, 18",
-      "Experience": "15,249"
+      "Experience": ""
     },
     {
       "Level": "2",
       "Requires Level": "15",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "119.7",
       "Deals 12 to 18 Chaos Damage": "16, 24",
-      "Experience": "41,517"
+      "Experience": ""
     },
     {
       "Level": "3",
       "Requires Level": "19",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "165.9",
       "Deals 12 to 18 Chaos Damage": "23, 34",
-      "Experience": "81,983"
+      "Experience": ""
     },
     {
       "Level": "4",
       "Requires Level": "23",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "226.3",
       "Deals 12 to 18 Chaos Damage": "32, 48",
-      "Experience": "147,968"
+      "Experience": ""
     },
     {
       "Level": "5",
       "Requires Level": "27",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "304",
       "Deals 12 to 18 Chaos Damage": "45, 67",
-      "Experience": "250,557"
+      "Experience": ""
     },
     {
       "Level": "6",
       "Requires Level": "31",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "406.2",
       "Deals 12 to 18 Chaos Damage": "61, 92",
-      "Experience": "405,086"
+      "Experience": ""
     },
     {
       "Level": "7",
       "Requires Level": "35",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "535.9",
       "Deals 12 to 18 Chaos Damage": "83, 124",
-      "Experience": "447,718"
+      "Experience": ""
     },
     {
       "Level": "8",
       "Requires Level": "38",
-      "Cost": "15",
+      "Mana": "15",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "656.8",
       "Deals 12 to 18 Chaos Damage": "103, 155",
-      "Experience": "615,318"
+      "Experience": ""
     },
     {
       "Level": "9",
       "Requires Level": "41",
-      "Cost": "16",
+      "Mana": "16",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "799.2",
       "Deals 12 to 18 Chaos Damage": "129, 193",
-      "Experience": "834,639"
+      "Experience": ""
     },
     {
       "Level": "10",
       "Requires Level": "44",
-      "Cost": "16",
+      "Mana": "16",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "965.9",
       "Deals 12 to 18 Chaos Damage": "159, 239",
-      "Experience": "1,570,760"
+      "Experience": ""
     },
     {
       "Level": "11",
       "Requires Level": "47",
-      "Cost": "17",
+      "Mana": "17",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "1173.2",
       "Deals 12 to 18 Chaos Damage": "197, 296",
-      "Experience": "1,633,987"
+      "Experience": ""
     },
     {
       "Level": "12",
       "Requires Level": "50",
-      "Cost": "18",
+      "Mana": "18",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "1420.6",
       "Deals 12 to 18 Chaos Damage": "243, 364",
-      "Experience": "2,151,030"
+      "Experience": ""
     },
     {
       "Level": "13",
       "Requires Level": "53",
-      "Cost": "19",
+      "Mana": "19",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "1699.7",
       "Deals 12 to 18 Chaos Damage": "298, 448",
-      "Experience": "2,812,189"
+      "Experience": ""
     },
     {
       "Level": "14",
       "Requires Level": "56",
-      "Cost": "19",
+      "Mana": "19",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "2052.9",
       "Deals 12 to 18 Chaos Damage": "366, 549",
-      "Experience": "5,099,360"
+      "Experience": ""
     },
     {
       "Level": "15",
       "Requires Level": "59",
-      "Cost": "20",
+      "Mana": "20",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "2458.2",
       "Deals 12 to 18 Chaos Damage": "448, 672",
-      "Experience": "9,400,731"
+      "Experience": ""
     },
     {
       "Level": "16",
       "Requires Level": "62",
-      "Cost": "21",
+      "Mana": "21",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "2927",
       "Deals 12 to 18 Chaos Damage": "547, 821",
-      "Experience": "15,273,366"
+      "Experience": ""
     },
     {
       "Level": "17",
       "Requires Level": "64",
-      "Cost": "21",
+      "Mana": "21",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "3309.1",
       "Deals 12 to 18 Chaos Damage": "625, 937",
-      "Experience": "26,286,582"
+      "Experience": ""
     },
     {
       "Level": "18",
       "Requires Level": "66",
-      "Cost": "22",
+      "Mana": "22",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "3713.2",
       "Deals 12 to 18 Chaos Damage": "713, 1069",
-      "Experience": "62,890,590"
+      "Experience": ""
     },
     {
       "Level": "19",
       "Requires Level": "68",
-      "Cost": "22",
+      "Mana": "22",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "4162.5",
       "Deals 12 to 18 Chaos Damage": "813, 1219",
-      "Experience": "212,046,017"
+      "Experience": ""
     },
     {
       "Level": "20",
       "Requires Level": "70",
-      "Cost": "23",
+      "Mana": "23",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "4726.1",
       "Deals 12 to 18 Chaos Damage": "926, 1389",
@@ -193,7 +186,7 @@
     {
       "Level": "21",
       "Requires Level": "72",
-      "Cost": "24",
+      "Mana": "24",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "5289.4",
       "Deals 12 to 18 Chaos Damage": "1054, 1581",
@@ -202,7 +195,7 @@
     {
       "Level": "22",
       "Requires Level": "74",
-      "Cost": "24",
+      "Mana": "24",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "5956.2",
       "Deals 12 to 18 Chaos Damage": "1200, 1799",
@@ -211,7 +204,7 @@
     {
       "Level": "23",
       "Requires Level": "76",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "6631.4",
       "Deals 12 to 18 Chaos Damage": "1364, 2046",
@@ -220,7 +213,7 @@
     {
       "Level": "24",
       "Requires Level": "78",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "7429.5",
       "Deals 12 to 18 Chaos Damage": "1551, 2326",
@@ -229,7 +222,7 @@
     {
       "Level": "25",
       "Requires Level": "80",
-      "Cost": "26",
+      "Mana": "26",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "8409.5",
       "Deals 12 to 18 Chaos Damage": "1761, 2642",
@@ -238,7 +231,7 @@
     {
       "Level": "26",
       "Requires Level": "82",
-      "Cost": "26",
+      "Mana": "26",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "9374.9",
       "Deals 12 to 18 Chaos Damage": "2000, 3000",
@@ -247,7 +240,7 @@
     {
       "Level": "27",
       "Requires Level": "84",
-      "Cost": "27",
+      "Mana": "27",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "10482",
       "Deals 12 to 18 Chaos Damage": "2270, 3405",
@@ -256,7 +249,7 @@
     {
       "Level": "28",
       "Requires Level": "86",
-      "Cost": "27",
+      "Mana": "27",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "11622.5",
       "Deals 12 to 18 Chaos Damage": "2575, 3862",
@@ -265,7 +258,7 @@
     {
       "Level": "29",
       "Requires Level": "88",
-      "Cost": "28",
+      "Mana": "28",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "13128",
       "Deals 12 to 18 Chaos Damage": "2920, 4379",
@@ -274,7 +267,7 @@
     {
       "Level": "30",
       "Requires Level": "90",
-      "Cost": "28",
+      "Mana": "28",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "14707.2",
       "Deals 12 to 18 Chaos Damage": "3309, 4964",
@@ -283,7 +276,7 @@
     {
       "Level": "31",
       "Requires Level": "91",
-      "Cost": "28",
+      "Mana": "28",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "15410.7",
       "Deals 12 to 18 Chaos Damage": "3522, 5284",
@@ -292,7 +285,7 @@
     {
       "Level": "32",
       "Requires Level": "92",
-      "Cost": "29",
+      "Mana": "29",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "16337.4",
       "Deals 12 to 18 Chaos Damage": "3749, 5624",
@@ -301,7 +294,7 @@
     {
       "Level": "33",
       "Requires Level": "93",
-      "Cost": "29",
+      "Mana": "29",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "17387.1",
       "Deals 12 to 18 Chaos Damage": "3990, 5985",
@@ -310,7 +303,7 @@
     {
       "Level": "34",
       "Requires Level": "94",
-      "Cost": "29",
+      "Mana": "29",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "18207.7",
       "Deals 12 to 18 Chaos Damage": "4246, 6369",
@@ -319,7 +312,7 @@
     {
       "Level": "35",
       "Requires Level": "95",
-      "Cost": "29",
+      "Mana": "29",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "19295.5",
       "Deals 12 to 18 Chaos Damage": "4518, 6777",
@@ -328,7 +321,7 @@
     {
       "Level": "36",
       "Requires Level": "96",
-      "Cost": "30",
+      "Mana": "30",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "20195.8",
       "Deals 12 to 18 Chaos Damage": "4807, 7210",
@@ -337,7 +330,7 @@
     {
       "Level": "37",
       "Requires Level": "97",
-      "Cost": "30",
+      "Mana": "30",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "21396.8",
       "Deals 12 to 18 Chaos Damage": "5114, 7671",
@@ -346,7 +339,7 @@
     {
       "Level": "38",
       "Requires Level": "98",
-      "Cost": "30",
+      "Mana": "30",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "22761.3",
       "Deals 12 to 18 Chaos Damage": "5440, 8160",
@@ -355,7 +348,7 @@
     {
       "Level": "39",
       "Requires Level": "99",
-      "Cost": "30",
+      "Mana": "30",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "24110.2",
       "Deals 12 to 18 Chaos Damage": "5786, 8680",
@@ -364,7 +357,7 @@
     {
       "Level": "40",
       "Requires Level": "100",
-      "Cost": "31",
+      "Mana": "31",
       "Base Damage": "100%, 100%",
       "Deals 91.1 Base Chaos Damage per second": "25429.6",
       "Deals 12 to 18 Chaos Damage": "6154, 9232",

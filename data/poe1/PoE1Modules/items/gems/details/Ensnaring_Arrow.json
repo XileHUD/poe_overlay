@@ -1,25 +1,13 @@
 {
   "name": "Ensnaring Arrow",
   "slug": "Ensnaring_Arrow",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
-    "Acronym": "Hit, Projectile",
-    "DropLevel": "16",
-    "BaseType": "Ensnaring Arrow",
-    "Class": "Skill Gems",
-    "Weapon": "Bows",
-    "TargetTypes": "Ground, Enemy",
-    "Type": "Attack, RangedAttack, MirageArcherCanUse, Projectile, ProjectilesFromUser, Trappable, Mineable, Totemable, Triggerable, Area",
-    "ItemType": "Metadata/Items/Gems/SkillGemEnsnaringArrow",
-    "ActiveSkillsCode": "ensnaring_arrow",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "16",
       "Dex": "41",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "140%, 140%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "15",
       "Experience": "49,725"
@@ -28,7 +16,7 @@
       "Level": "2",
       "Requires Level": "20",
       "Dex": "50",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "141.8%, 141.8%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "15",
       "Experience": "95,714"
@@ -37,7 +25,7 @@
       "Level": "3",
       "Requires Level": "24",
       "Dex": "58",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "143.7%, 143.7%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "16",
       "Experience": "169,595"
@@ -46,7 +34,7 @@
       "Level": "4",
       "Requires Level": "28",
       "Dex": "67",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "145.5%, 145.5%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "16",
       "Experience": "199,345"
@@ -55,7 +43,7 @@
       "Level": "5",
       "Requires Level": "31",
       "Dex": "73",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "147.4%, 147.4%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "16",
       "Experience": "285,815"
@@ -64,7 +52,7 @@
       "Level": "6",
       "Requires Level": "34",
       "Dex": "79",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "149.2%, 149.2%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "16",
       "Experience": "401,344"
@@ -73,7 +61,7 @@
       "Level": "7",
       "Requires Level": "37",
       "Dex": "85",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "151.1%, 151.1%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "17",
       "Experience": "554,379"
@@ -82,7 +70,7 @@
       "Level": "8",
       "Requires Level": "40",
       "Dex": "92",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "152.9%, 152.9%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "17",
       "Experience": "755,049"
@@ -91,7 +79,7 @@
       "Level": "9",
       "Requires Level": "43",
       "Dex": "98",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "154.7%, 154.7%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "17",
       "Experience": "1,016,533"
@@ -100,7 +88,7 @@
       "Level": "10",
       "Requires Level": "46",
       "Dex": "104",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "156.6%, 156.6%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "17",
       "Experience": "1,898,602"
@@ -109,7 +97,7 @@
       "Level": "11",
       "Requires Level": "49",
       "Dex": "111",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "158.4%, 158.4%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "18",
       "Experience": "1,964,019"
@@ -118,7 +106,7 @@
       "Level": "12",
       "Requires Level": "52",
       "Dex": "117",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "160.3%, 160.3%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "18",
       "Experience": "2,573,731"
@@ -127,7 +115,7 @@
       "Level": "13",
       "Requires Level": "55",
       "Dex": "123",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "162.1%, 162.1%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "18",
       "Experience": "4,676,439"
@@ -136,7 +124,7 @@
       "Level": "14",
       "Requires Level": "58",
       "Dex": "130",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "163.9%, 163.9%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "18",
       "Experience": "3,017,327"
@@ -145,7 +133,7 @@
       "Level": "15",
       "Requires Level": "60",
       "Dex": "134",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "165.8%, 165.8%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "19",
       "Experience": "7,823,001"
@@ -154,7 +142,7 @@
       "Level": "16",
       "Requires Level": "62",
       "Dex": "138",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "167.6%, 167.6%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "19",
       "Experience": "15,264,208"
@@ -163,7 +151,7 @@
       "Level": "17",
       "Requires Level": "64",
       "Dex": "142",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "169.5%, 169.5%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "19",
       "Experience": "26,272,845"
@@ -172,7 +160,7 @@
       "Level": "18",
       "Requires Level": "66",
       "Dex": "146",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "171.3%, 171.3%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "19",
       "Experience": "62,872,274"
@@ -181,7 +169,7 @@
       "Level": "19",
       "Requires Level": "68",
       "Dex": "151",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "173.2%, 173.2%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "20",
       "Experience": "212,023,122"
@@ -190,7 +178,7 @@
       "Level": "20",
       "Requires Level": "70",
       "Dex": "155",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "175%, 175%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "20",
       "Experience": ""
@@ -199,7 +187,7 @@
       "Level": "21",
       "Requires Level": "72",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "176.8%, 176.8%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "20",
       "Experience": ""
@@ -208,7 +196,7 @@
       "Level": "22",
       "Requires Level": "74",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "178.7%, 178.7%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "21",
       "Experience": ""
@@ -217,7 +205,7 @@
       "Level": "23",
       "Requires Level": "76",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "180.5%, 180.5%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "21",
       "Experience": ""
@@ -226,7 +214,7 @@
       "Level": "24",
       "Requires Level": "78",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "182.4%, 182.4%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "21",
       "Experience": ""
@@ -235,7 +223,7 @@
       "Level": "25",
       "Requires Level": "80",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "184.2%, 184.2%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "21",
       "Experience": ""
@@ -244,7 +232,7 @@
       "Level": "26",
       "Requires Level": "82",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "186.1%, 186.1%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "22",
       "Experience": ""
@@ -253,7 +241,7 @@
       "Level": "27",
       "Requires Level": "84",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "187.9%, 187.9%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "22",
       "Experience": ""
@@ -262,7 +250,7 @@
       "Level": "28",
       "Requires Level": "86",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "189.7%, 189.7%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "22",
       "Experience": ""
@@ -271,7 +259,7 @@
       "Level": "29",
       "Requires Level": "88",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "191.6%, 191.6%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "22",
       "Experience": ""
@@ -280,7 +268,7 @@
       "Level": "30",
       "Requires Level": "90",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "193.4%, 193.4%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "23",
       "Experience": ""
@@ -289,7 +277,7 @@
       "Level": "31",
       "Requires Level": "91",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "194.3%, 194.3%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "23",
       "Experience": ""
@@ -298,7 +286,7 @@
       "Level": "32",
       "Requires Level": "92",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "195.3%, 195.3%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "23",
       "Experience": ""
@@ -307,7 +295,7 @@
       "Level": "33",
       "Requires Level": "93",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "196.2%, 196.2%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "23",
       "Experience": ""
@@ -316,7 +304,7 @@
       "Level": "34",
       "Requires Level": "94",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "197.1%, 197.1%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "23",
       "Experience": ""
@@ -325,7 +313,7 @@
       "Level": "35",
       "Requires Level": "95",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "198%, 198%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "23",
       "Experience": ""
@@ -334,7 +322,7 @@
       "Level": "36",
       "Requires Level": "96",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "198.9%, 198.9%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "23",
       "Experience": ""
@@ -343,7 +331,7 @@
       "Level": "37",
       "Requires Level": "97",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "199.9%, 199.9%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "24",
       "Experience": ""
@@ -352,7 +340,7 @@
       "Level": "38",
       "Requires Level": "98",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "200.8%, 200.8%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "24",
       "Experience": ""
@@ -361,7 +349,7 @@
       "Level": "39",
       "Requires Level": "99",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "201.7%, 201.7%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "24",
       "Experience": ""
@@ -370,7 +358,7 @@
       "Level": "40",
       "Requires Level": "100",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "202.6%, 202.6%",
       "Ensnared Enemies take 15% increased Projectile Damage from Attack Hits": "24",
       "Experience": ""

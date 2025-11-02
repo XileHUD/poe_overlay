@@ -1,0 +1,134 @@
+{
+  "slug": "FoulbornPassives",
+  "total": 10,
+  "sections": [
+    {
+      "title": "Passive",
+      "total": 10,
+      "items": [
+        {
+          "name": "Esh of the Storm",
+          "slug": "Esh_of_the_Storm",
+          "passiveType": "notable",
+          "groupLabel": null,
+          "group": null,
+          "mods": [
+            "Your Hits ignore Enemy Monster Lightning Resistances if all Equipped Rings are Synaptic Rings",
+            "+2 to Level of all Lightning Skill Gems if at least 4 Foulborn Unique Items are Equipped",
+            "+30 to Intelligence"
+          ],
+          "imageLocal": "foulborn-passives/esh_of_the_storm.webp"
+        },
+        {
+          "name": "Tul of the Blizzard",
+          "slug": "Tul_of_the_Blizzard",
+          "passiveType": "notable",
+          "groupLabel": null,
+          "group": null,
+          "mods": [
+            "30% increased Freeze Duration on Enemies",
+            "+2 to Level of all Cold Skill Gems if at least 4 Foulborn Unique Items are Equipped",
+            "Your Hits ignore Enemy Monster Cold Resistances if all Equipped Rings are Cryonic Rings"
+          ],
+          "imageLocal": "foulborn-passives/tul_of_the_blizzard.webp"
+        },
+        {
+          "name": "Flawed Seeds",
+          "slug": "Flawed_Seeds",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [
+            "25% chance for Wombgifts to Birth an additional Currency Item",
+            "Wombgifts have a chance to Birth Foulborn Currency at Level 68 and above"
+          ],
+          "imageLocal": "foulborn-passives/flawed_seeds.webp"
+        },
+        {
+          "name": "Mutation Cultivation",
+          "slug": "Mutation_Cultivation",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [
+            "25% chance for Wombgifts to Birth an additional Currency Item",
+            "100% increased chance for Birthed Currency to be Graft Implants",
+            "100% increased chance for Birthed Currency to be Foulborn Currency"
+          ],
+          "imageLocal": "foulborn-passives/mutation_cultivation.webp"
+        },
+        {
+          "name": "Foulborn Ancestry",
+          "slug": "Foulborn_Ancestry",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "100% increased chance for Birthed Uniques to be Breach Specific",
+            "Birthed Uniques have 30% increased chance to be Foulborn"
+          ],
+          "imageLocal": "foulborn-passives/foulborn_ancestry.webp"
+        },
+        {
+          "name": "Foulborn Gluttony",
+          "slug": "Foulborn_Gluttony",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "50% chance for Ancient Wombgifts to Birth an additional Item",
+            "Birthed Uniques have 30% increased chance to be Foulborn"
+          ],
+          "imageLocal": "foulborn-passives/foulborn_gluttony.webp"
+        },
+        {
+          "name": "Corrupted Flesh",
+          "slug": "Corrupted_Flesh",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "Birthed Uniques have 100% increased chance to be Foulborn",
+            "Birthed Non-Foulborn Unique Items are Corrupted"
+          ],
+          "imageLocal": "foulborn-passives/corrupted_flesh.webp"
+        },
+        {
+          "name": "Extremely Foul",
+          "slug": "Extremely_Foul",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "Birthed Foulborn Uniques have a 20% chance of multiple Foulborn Modifiers",
+            "Birthed Uniques have 50% increased chance to be Foulborn"
+          ],
+          "imageLocal": "foulborn-passives/extremely_foul.webp"
+        },
+        {
+          "name": "Remembered Origins",
+          "slug": "Remembered_Origins",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "300% increased chance for Birthed Uniques to be Breach Specific",
+            "Birthed Uniques have 100% reduced chance to be Foulborn"
+          ],
+          "imageLocal": "foulborn-passives/remembered_origins.webp"
+        },
+        {
+          "name": "Cleansed of Impurity",
+          "slug": "Cleansed_of_Impurity",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "Birthed Uniques have 150% reduced chance to be Foulborn"
+          ],
+          "imageLocal": "foulborn-passives/cleansed_of_impurity.webp"
+        }
+      ]
+    }
+  ]
+}

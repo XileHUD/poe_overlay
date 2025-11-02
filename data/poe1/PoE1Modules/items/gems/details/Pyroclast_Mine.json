@@ -1,28 +1,16 @@
 {
   "name": "Pyroclast Mine",
   "slug": "Pyroclast_Mine",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xOrb of Chance",
-    "Acronym": "Hit, Mine, Projectile",
-    "DropLevel": "28",
-    "BaseType": "Pyroclast Mine",
-    "Class": "Skill Gems",
-    "TargetTypes": "Ground, Enemy",
-    "Type": "Spell, Damage, Projectile, Fire, RemoteMined, Area, HasReservation, Aura, AuraAffectsEnemies, ProjectilesNotFromUser, Nova, AuraNotOnCaster",
-    "ItemType": "Metadata/Items/Gems/SkillGemFireNovaMine",
-    "ActiveSkillsCode": "pyroclast_mine",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "28",
       "Int": "42",
       "Dex": "29",
-      "Reservation": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "26, 39",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "1, 2, 64, 96",
+      "Deals 35 to 52 Fire Damage": "35, 52",
       "Experience": "199,345"
     },
     {
@@ -30,10 +18,9 @@
       "Requires Level": "31",
       "Int": "46",
       "Dex": "32",
-      "Reservation": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "31, 46",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "2, 2, 77, 116",
+      "Deals 35 to 52 Fire Damage": "42, 62",
       "Experience": "285,815"
     },
     {
@@ -41,10 +28,9 @@
       "Requires Level": "34",
       "Int": "50",
       "Dex": "35",
-      "Reservation": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "37, 55",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "2, 3, 92, 138",
+      "Deals 35 to 52 Fire Damage": "50, 75",
       "Experience": "401,344"
     },
     {
@@ -52,10 +38,9 @@
       "Requires Level": "37",
       "Int": "54",
       "Dex": "37",
-      "Reservation": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "44, 66",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "2, 3, 109, 164",
+      "Deals 35 to 52 Fire Damage": "59, 89",
       "Experience": "554,379"
     },
     {
@@ -63,10 +48,9 @@
       "Requires Level": "40",
       "Int": "58",
       "Dex": "40",
-      "Reservation": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "52, 78",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "3, 4, 129, 194",
+      "Deals 35 to 52 Fire Damage": "70, 105",
       "Experience": "477,437"
     },
     {
@@ -74,10 +58,9 @@
       "Requires Level": "42",
       "Int": "61",
       "Dex": "42",
-      "Reservation": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "58, 87",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "3, 4, 145, 217",
+      "Deals 35 to 52 Fire Damage": "78, 117",
       "Experience": "583,786"
     },
     {
@@ -85,10 +68,9 @@
       "Requires Level": "44",
       "Int": "63",
       "Dex": "44",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "64, 97",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "3, 5, 161, 242",
+      "Deals 35 to 52 Fire Damage": "87, 131",
       "Experience": "710,359"
     },
     {
@@ -96,10 +78,9 @@
       "Requires Level": "46",
       "Int": "66",
       "Dex": "46",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "72, 108",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "4, 5, 179, 269",
+      "Deals 35 to 52 Fire Damage": "97, 145",
       "Experience": "1,355,511"
     },
     {
@@ -107,10 +88,9 @@
       "Requires Level": "48",
       "Int": "69",
       "Dex": "48",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "80, 120",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "4, 6, 199, 299",
+      "Deals 35 to 52 Fire Damage": "108, 162",
       "Experience": "1,138,877"
     },
     {
@@ -118,10 +98,9 @@
       "Requires Level": "50",
       "Int": "71",
       "Dex": "49",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "89, 133",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "4, 7, 222, 332",
+      "Deals 35 to 52 Fire Damage": "120, 179",
       "Experience": "1,368,233"
     },
     {
@@ -129,10 +108,9 @@
       "Requires Level": "52",
       "Int": "74",
       "Dex": "51",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "98, 147",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "5, 7, 246, 369",
+      "Deals 35 to 52 Fire Damage": "133, 199",
       "Experience": "1,638,338"
     },
     {
@@ -140,10 +118,9 @@
       "Requires Level": "54",
       "Int": "76",
       "Dex": "53",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "109, 163",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "5, 8, 272, 409",
+      "Deals 35 to 52 Fire Damage": "147, 221",
       "Experience": "1,956,648"
     },
     {
@@ -151,10 +128,9 @@
       "Requires Level": "56",
       "Int": "79",
       "Dex": "55",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "121, 181",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "6, 9, 302, 452",
+      "Deals 35 to 52 Fire Damage": "163, 244",
       "Experience": "3,655,184"
     },
     {
@@ -162,10 +138,9 @@
       "Requires Level": "58",
       "Int": "82",
       "Dex": "57",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "133, 200",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "7, 10, 334, 500",
+      "Deals 35 to 52 Fire Damage": "180, 270",
       "Experience": "3,017,327"
     },
     {
@@ -173,10 +148,9 @@
       "Requires Level": "60",
       "Int": "84",
       "Dex": "59",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "147, 221",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "7, 11, 369, 553",
+      "Deals 35 to 52 Fire Damage": "199, 299",
       "Experience": "7,759,995"
     },
     {
@@ -184,10 +158,9 @@
       "Requires Level": "62",
       "Int": "87",
       "Dex": "60",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "163, 244",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "8, 12, 407, 611",
+      "Deals 35 to 52 Fire Damage": "220, 330",
       "Experience": "15,138,193"
     },
     {
@@ -195,10 +168,9 @@
       "Requires Level": "64",
       "Int": "90",
       "Dex": "62",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "180, 270",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "9, 13, 449, 674",
+      "Deals 35 to 52 Fire Damage": "243, 364",
       "Experience": "26,083,825"
     },
     {
@@ -206,10 +178,9 @@
       "Requires Level": "66",
       "Int": "92",
       "Dex": "64",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "198, 297",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "10, 15, 495, 743",
+      "Deals 35 to 52 Fire Damage": "267, 401",
       "Experience": "62,620,247"
     },
     {
@@ -217,10 +188,9 @@
       "Requires Level": "68",
       "Int": "95",
       "Dex": "66",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "218, 327",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "11, 16, 546, 819",
+      "Deals 35 to 52 Fire Damage": "295, 442",
       "Experience": "211,708,088"
     },
     {
@@ -228,10 +198,9 @@
       "Requires Level": "70",
       "Int": "98",
       "Dex": "68",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "240, 361",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "12, 18, 601, 901",
+      "Deals 35 to 52 Fire Damage": "325, 487",
       "Experience": ""
     },
     {
@@ -239,10 +208,9 @@
       "Requires Level": "72",
       "Int": "",
       "Dex": "",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "265, 397",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "13, 20, 661, 992",
+      "Deals 35 to 52 Fire Damage": "357, 536",
       "Experience": ""
     },
     {
@@ -250,10 +218,9 @@
       "Requires Level": "74",
       "Int": "",
       "Dex": "",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "291, 436",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "15, 22, 727, 1091",
+      "Deals 35 to 52 Fire Damage": "393, 589",
       "Experience": ""
     },
     {
@@ -261,10 +228,9 @@
       "Requires Level": "76",
       "Int": "",
       "Dex": "",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "320, 480",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "16, 24, 799, 1199",
+      "Deals 35 to 52 Fire Damage": "432, 648",
       "Experience": ""
     },
     {
@@ -272,10 +238,9 @@
       "Requires Level": "78",
       "Int": "",
       "Dex": "",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "351, 527",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "18, 26, 878, 1317",
+      "Deals 35 to 52 Fire Damage": "474, 711",
       "Experience": ""
     },
     {
@@ -283,10 +248,9 @@
       "Requires Level": "80",
       "Int": "",
       "Dex": "",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "386, 579",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "19, 29, 964, 1446",
+      "Deals 35 to 52 Fire Damage": "521, 781",
       "Experience": ""
     },
     {
@@ -294,10 +258,9 @@
       "Requires Level": "82",
       "Int": "",
       "Dex": "",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "423, 635",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "21, 32, 1058, 1587",
+      "Deals 35 to 52 Fire Damage": "571, 857",
       "Experience": ""
     },
     {
@@ -305,10 +268,9 @@
       "Requires Level": "84",
       "Int": "",
       "Dex": "",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "464, 696",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "23, 35, 1161, 1741",
+      "Deals 35 to 52 Fire Damage": "627, 940",
       "Experience": ""
     },
     {
@@ -316,10 +278,9 @@
       "Requires Level": "86",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "509, 764",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "25, 38, 1273, 1909",
+      "Deals 35 to 52 Fire Damage": "687, 1031",
       "Experience": ""
     },
     {
@@ -327,10 +288,9 @@
       "Requires Level": "88",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "558, 837",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "28, 42, 1395, 2092",
+      "Deals 35 to 52 Fire Damage": "753, 1130",
       "Experience": ""
     },
     {
@@ -338,10 +298,9 @@
       "Requires Level": "90",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "611, 917",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "31, 46, 1528, 2292",
+      "Deals 35 to 52 Fire Damage": "825, 1237",
       "Experience": ""
     },
     {
@@ -349,10 +308,9 @@
       "Requires Level": "91",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "639, 959",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "32, 48, 1599, 2398",
+      "Deals 35 to 52 Fire Damage": "863, 1295",
       "Experience": ""
     },
     {
@@ -360,10 +318,9 @@
       "Requires Level": "92",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "669, 1004",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "33, 50, 1673, 2509",
+      "Deals 35 to 52 Fire Damage": "903, 1355",
       "Experience": ""
     },
     {
@@ -371,10 +328,9 @@
       "Requires Level": "93",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "700, 1050",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "35, 53, 1750, 2625",
+      "Deals 35 to 52 Fire Damage": "945, 1418",
       "Experience": ""
     },
     {
@@ -382,10 +338,9 @@
       "Requires Level": "94",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "732, 1099",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "37, 55, 1831, 2747",
+      "Deals 35 to 52 Fire Damage": "989, 1483",
       "Experience": ""
     },
     {
@@ -393,10 +348,9 @@
       "Requires Level": "95",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "766, 1149",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "38, 57, 1916, 2873",
+      "Deals 35 to 52 Fire Damage": "1034, 1552",
       "Experience": ""
     },
     {
@@ -404,10 +358,9 @@
       "Requires Level": "96",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "801, 1202",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "40, 60, 2004, 3005",
+      "Deals 35 to 52 Fire Damage": "1082, 1623",
       "Experience": ""
     },
     {
@@ -415,10 +368,9 @@
       "Requires Level": "97",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "838, 1257",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "42, 63, 2096, 3143",
+      "Deals 35 to 52 Fire Damage": "1132, 1697",
       "Experience": ""
     },
     {
@@ -426,10 +378,9 @@
       "Requires Level": "98",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "877, 1315",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "44, 66, 2192, 3287",
+      "Deals 35 to 52 Fire Damage": "1183, 1775",
       "Experience": ""
     },
     {
@@ -437,10 +388,9 @@
       "Requires Level": "99",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "917, 1375",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "46, 69, 2292, 3438",
+      "Deals 35 to 52 Fire Damage": "1238, 1856",
       "Experience": ""
     },
     {
@@ -448,16 +398,15 @@
       "Requires Level": "100",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
-      "Deals 26 to 39 Fire Damage": "959, 1438",
-      "Each Mine Adds 1 to 2 Fire Damage to Hits against Enemies near it, upto a maximum of 64 to 96": "48, 72, 2396, 3594",
+      "Deals 35 to 52 Fire Damage": "1294, 1941",
       "Experience": ""
     }
   ],
   "description": "",
   "stats": [],
-  "gemDescription": "Throws a mine that deals damage in an area when detonated, then launches fiery projectiles that rain down around it, each exploding to deal damage in a smaller area.",
+  "gemDescription": "Throws a mine that deals damage in an area when detonated, then launches fiery projectiles that rain down around it, each exploding to deal damage in a smaller area. Placed mines apply a fire exposure aura to nearby enemies.",
   "explicitMods": [
     {
       "text": "Mine lasts 5 seconds",
@@ -466,10 +415,10 @@
       ]
     },
     {
-      "text": "Deals (26–240) to (39–361) Fire Damage",
+      "text": "Deals (35–325) to (52–487) Fire Damage",
       "values": [
-        "(26–240)",
-        "(39–361)"
+        "(35–325)",
+        "(52–487)"
       ]
     },
     {
@@ -485,16 +434,13 @@
       ]
     },
     {
-      "text": "Fires an additional Projectile for every 4 prior Mines in Detonation Sequence",
+      "text": "Fires an additional Projectile for every 3 prior Mines in Detonation Sequence",
       "values": []
     },
     {
-      "text": "Each Mine Adds (1–12) to (2–18) Fire Damage to Hits against Enemies near it, upto a maximum of (64–601) to (96–901)",
+      "text": "Fire Exposure Aura applies -15% to Fire Resistance",
       "values": [
-        "(1–12)",
-        "(2–18)",
-        "(64–601)",
-        "(96–901)"
+        "-15"
       ]
     },
     {
@@ -504,10 +450,10 @@
       ]
     },
     {
-      "text": "Deals (26–240) to (39–361) Fire Damage",
+      "text": "Deals (35–325) to (52–487) Fire Damage",
       "values": [
-        "(26–240)",
-        "(39–361)"
+        "(35–325)",
+        "(52–487)"
       ]
     },
     {
@@ -523,16 +469,13 @@
       ]
     },
     {
-      "text": "Fires an additional Projectile for every 4 prior Mines in Detonation Sequence",
+      "text": "Fires an additional Projectile for every 3 prior Mines in Detonation Sequence",
       "values": []
     },
     {
-      "text": "Each Mine Adds (1–12) to (2–18) Fire Damage to Hits against Enemies near it, upto a maximum of (64–601) to (96–901)",
+      "text": "Fire Exposure Aura applies -15% to Fire Resistance",
       "values": [
-        "(1–12)",
-        "(2–18)",
-        "(64–601)",
-        "(96–901)"
+        "-15"
       ]
     },
     {
@@ -545,6 +488,10 @@
     },
     {
       "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "exposure uses aura effect +% instead of effect +% [1]",
       "values": []
     },
     {

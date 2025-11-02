@@ -1,19 +1,12 @@
 {
   "name": "Vaal Fireball",
   "slug": "Vaal_Fireball",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
-    "Acronym": "Ignite",
-    "BaseType": "Fireball",
-    "TargetTypes": "Ground, Enemy",
-    "Type": "Projectile, ProjectilesFromUser, Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, CanRapidFire, AreaSpell",
-    "ActiveSkillsCode": "fireball"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "1",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "9, 14",
       "Base radius is 0.9 metres": "0.9",
@@ -22,7 +15,7 @@
     {
       "Level": "2",
       "Requires Level": "2",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "10, 16",
       "Base radius is 0.9 metres": "0.9",
@@ -31,7 +24,7 @@
     {
       "Level": "3",
       "Requires Level": "4",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "13, 20",
       "Base radius is 0.9 metres": "1",
@@ -40,7 +33,7 @@
     {
       "Level": "4",
       "Requires Level": "7",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "19, 28",
       "Base radius is 0.9 metres": "1",
@@ -49,7 +42,7 @@
     {
       "Level": "5",
       "Requires Level": "11",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "28, 42",
       "Base radius is 0.9 metres": "1",
@@ -58,7 +51,7 @@
     {
       "Level": "6",
       "Requires Level": "16",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "43, 65",
       "Base radius is 0.9 metres": "1.1",
@@ -67,7 +60,7 @@
     {
       "Level": "7",
       "Requires Level": "20",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "60, 91",
       "Base radius is 0.9 metres": "1.1",
@@ -76,7 +69,7 @@
     {
       "Level": "8",
       "Requires Level": "24",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "83, 124",
       "Base radius is 0.9 metres": "1.1",
@@ -85,7 +78,7 @@
     {
       "Level": "9",
       "Requires Level": "28",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "111, 167",
       "Base radius is 0.9 metres": "1.1",
@@ -94,7 +87,7 @@
     {
       "Level": "10",
       "Requires Level": "32",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "148, 222",
       "Base radius is 0.9 metres": "1.2",
@@ -103,7 +96,7 @@
     {
       "Level": "11",
       "Requires Level": "36",
-      "Cost": "15",
+      "Mana": "15",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "195, 292",
       "Base radius is 0.9 metres": "1.2",
@@ -112,7 +105,7 @@
     {
       "Level": "12",
       "Requires Level": "40",
-      "Cost": "16",
+      "Mana": "16",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "255, 383",
       "Base radius is 0.9 metres": "1.2",
@@ -121,7 +114,7 @@
     {
       "Level": "13",
       "Requires Level": "44",
-      "Cost": "18",
+      "Mana": "18",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "332, 498",
       "Base radius is 0.9 metres": "1.2",
@@ -130,7 +123,7 @@
     {
       "Level": "14",
       "Requires Level": "48",
-      "Cost": "19",
+      "Mana": "19",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "429, 643",
       "Base radius is 0.9 metres": "1.3",
@@ -139,7 +132,7 @@
     {
       "Level": "15",
       "Requires Level": "52",
-      "Cost": "20",
+      "Mana": "20",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "552, 828",
       "Base radius is 0.9 metres": "1.3",
@@ -148,7 +141,7 @@
     {
       "Level": "16",
       "Requires Level": "56",
-      "Cost": "21",
+      "Mana": "21",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "707, 1061",
       "Base radius is 0.9 metres": "1.3",
@@ -157,7 +150,7 @@
     {
       "Level": "17",
       "Requires Level": "60",
-      "Cost": "22",
+      "Mana": "22",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "903, 1354",
       "Base radius is 0.9 metres": "1.3",
@@ -166,7 +159,7 @@
     {
       "Level": "18",
       "Requires Level": "64",
-      "Cost": "23",
+      "Mana": "23",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "1149, 1723",
       "Base radius is 0.9 metres": "1.4",
@@ -175,7 +168,7 @@
     {
       "Level": "19",
       "Requires Level": "67",
-      "Cost": "24",
+      "Mana": "24",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "1374, 2061",
       "Base radius is 0.9 metres": "1.4",
@@ -184,7 +177,7 @@
     {
       "Level": "20",
       "Requires Level": "70",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "1640, 2460",
       "Base radius is 0.9 metres": "1.4",
@@ -193,7 +186,7 @@
     {
       "Level": "21",
       "Requires Level": "72",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "1845, 2767",
       "Base radius is 0.9 metres": "1.4",
@@ -202,7 +195,7 @@
     {
       "Level": "22",
       "Requires Level": "74",
-      "Cost": "26",
+      "Mana": "26",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "2073, 3110",
       "Base radius is 0.9 metres": "1.5",
@@ -211,7 +204,7 @@
     {
       "Level": "23",
       "Requires Level": "76",
-      "Cost": "26",
+      "Mana": "26",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "2328, 3493",
       "Base radius is 0.9 metres": "1.5",
@@ -220,7 +213,7 @@
     {
       "Level": "24",
       "Requires Level": "78",
-      "Cost": "27",
+      "Mana": "27",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "2614, 3921",
       "Base radius is 0.9 metres": "1.5",
@@ -229,7 +222,7 @@
     {
       "Level": "25",
       "Requires Level": "80",
-      "Cost": "27",
+      "Mana": "27",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "2933, 4400",
       "Base radius is 0.9 metres": "1.5",
@@ -238,7 +231,7 @@
     {
       "Level": "26",
       "Requires Level": "82",
-      "Cost": "28",
+      "Mana": "28",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "3289, 4934",
       "Base radius is 0.9 metres": "1.5",
@@ -247,7 +240,7 @@
     {
       "Level": "27",
       "Requires Level": "84",
-      "Cost": "28",
+      "Mana": "28",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "3687, 5531",
       "Base radius is 0.9 metres": "1.6",
@@ -256,7 +249,7 @@
     {
       "Level": "28",
       "Requires Level": "86",
-      "Cost": "29",
+      "Mana": "29",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "4131, 6197",
       "Base radius is 0.9 metres": "1.6",
@@ -265,7 +258,7 @@
     {
       "Level": "29",
       "Requires Level": "88",
-      "Cost": "30",
+      "Mana": "30",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "4627, 6940",
       "Base radius is 0.9 metres": "1.6",
@@ -274,7 +267,7 @@
     {
       "Level": "30",
       "Requires Level": "90",
-      "Cost": "30",
+      "Mana": "30",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "5180, 7770",
       "Base radius is 0.9 metres": "1.6",
@@ -283,7 +276,7 @@
     {
       "Level": "31",
       "Requires Level": "91",
-      "Cost": "30",
+      "Mana": "30",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "5480, 8219",
       "Base radius is 0.9 metres": "1.6",
@@ -292,7 +285,7 @@
     {
       "Level": "32",
       "Requires Level": "92",
-      "Cost": "31",
+      "Mana": "31",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "5796, 8694",
       "Base radius is 0.9 metres": "1.6",
@@ -301,7 +294,7 @@
     {
       "Level": "33",
       "Requires Level": "93",
-      "Cost": "31",
+      "Mana": "31",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "6131, 9196",
       "Base radius is 0.9 metres": "1.6",
@@ -310,7 +303,7 @@
     {
       "Level": "34",
       "Requires Level": "94",
-      "Cost": "31",
+      "Mana": "31",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "6484, 9726",
       "Base radius is 0.9 metres": "1.7",
@@ -319,7 +312,7 @@
     {
       "Level": "35",
       "Requires Level": "95",
-      "Cost": "31",
+      "Mana": "31",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "6856, 10285",
       "Base radius is 0.9 metres": "1.7",
@@ -328,7 +321,7 @@
     {
       "Level": "36",
       "Requires Level": "96",
-      "Cost": "32",
+      "Mana": "32",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "7250, 10875",
       "Base radius is 0.9 metres": "1.7",
@@ -337,7 +330,7 @@
     {
       "Level": "37",
       "Requires Level": "97",
-      "Cost": "32",
+      "Mana": "32",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "7665, 11498",
       "Base radius is 0.9 metres": "1.7",
@@ -346,7 +339,7 @@
     {
       "Level": "38",
       "Requires Level": "98",
-      "Cost": "32",
+      "Mana": "32",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "8104, 12156",
       "Base radius is 0.9 metres": "1.7",
@@ -355,7 +348,7 @@
     {
       "Level": "39",
       "Requires Level": "99",
-      "Cost": "33",
+      "Mana": "33",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "8567, 12850",
       "Base radius is 0.9 metres": "1.7",
@@ -364,7 +357,7 @@
     {
       "Level": "40",
       "Requires Level": "100",
-      "Cost": "33",
+      "Mana": "33",
       "Base Damage": "100%, 100%",
       "Deals 9 to 14 Fire Damage": "9055, 13583",
       "Base radius is 0.9 metres": "1.7",

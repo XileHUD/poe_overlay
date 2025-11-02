@@ -74,7 +74,8 @@ const ITEM_CATEGORY_MAP: Record<string, keyof ItemsSubcategories> = {
 
 const POE1_ITEM_CATEGORY_MAP: Record<string, keyof Poe1ItemsSubcategories> = {
   Poe1_Uniques: 'uniques',
-  Poe1_Bases: 'bases'
+  Poe1_Bases: 'bases',
+  Poe1_Keepers: 'keepers'
 };
 
 const POE1_CRAFTING_CATEGORY_MAP: Record<string, keyof Poe1CraftingSubcategories> = {
@@ -480,8 +481,18 @@ export class FeatureService {
         enabled: false,
         subcategories: {
           uniques: false,
-          bases: false
+          bases: false,
+          keepers: false
         }
+      };
+    } else if (config.poe1Items?.enabled) {
+      const subs = {
+        ...DEFAULT_FEATURES.poe1Items.subcategories,
+        ...(config.poe1Items.subcategories || {})
+      } as Poe1ItemsSubcategories;
+      config.poe1Items = {
+        enabled: true,
+        subcategories: subs
       };
     }
 

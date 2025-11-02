@@ -1337,7 +1337,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 enabled: false,
                 subcategories: {
                     uniques: false,
-                    bases: false
+                    bases: false,
+                    keepers: false
                 }
             },
             tools: {
@@ -3211,7 +3212,8 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                             enabled: config.poe1Items?.enabled ?? disabled.poe1Items.enabled,
                             subcategories: {
                                 uniques: config.poe1Items?.subcategories?.uniques ?? disabled.poe1Items.subcategories.uniques,
-                                bases: config.poe1Items?.subcategories?.bases ?? disabled.poe1Items.subcategories.bases
+                                bases: config.poe1Items?.subcategories?.bases ?? disabled.poe1Items.subcategories.bases,
+                                keepers: config.poe1Items?.subcategories?.keepers ?? disabled.poe1Items.subcategories.keepers
                             }
                         },
                         tools: {

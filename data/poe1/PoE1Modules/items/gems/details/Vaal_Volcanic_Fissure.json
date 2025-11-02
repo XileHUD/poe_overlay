@@ -1,15 +1,7 @@
 {
   "name": "Vaal Volcanic Fissure",
   "slug": "Vaal_Volcanic_Fissure",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
-    "Acronym": "Ignite",
-    "BaseType": "Volcanic Fissure",
-    "Weapon": "One Hand Axes, One Hand Maces, Staves, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
-    "TargetTypes": "Ground, Enemy, SELF_ORIGIN",
-    "Type": "Attack, Projectile, Area, Melee, Slam, Fire, Multistrikeable, RangedAttack, ProjectilesNotFromUser, Totemable",
-    "ActiveSkillsCode": "volcanic_fissure"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
@@ -321,6 +313,24 @@
       ]
     },
     {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
+      ]
+    },
+    {
+      "text": "50% more Area of Effect",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Fissure erupts 5 additional times",
+      "values": [
+        "5"
+      ]
+    },
+    {
       "text": "Fires 9 Projectiles",
       "values": [
         "9"
@@ -374,6 +384,42 @@
       "text": "50% more Area of Effect",
       "values": [
         "50"
+      ]
+    },
+    {
+      "text": "Fissure erupts 5 additional times",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "cannot cancel skill before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "projectiles not offset [1]",
+      "values": []
+    },
+    {
+      "text": "show number of projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "skill cannot be stunned before contact point [1]",
+      "values": []
+    },
+    {
+      "text": "60% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "60"
       ]
     },
     {

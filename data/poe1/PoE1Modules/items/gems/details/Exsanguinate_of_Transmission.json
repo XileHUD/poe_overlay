@@ -1,412 +1,405 @@
 {
   "name": "Exsanguinate of Transmission",
   "slug": "Exsanguinate_of_Transmission",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
-    "Acronym": "Ignite",
-    "BaseType": "Exsanguinate of Transmission",
-    "TargetTypes": "Ground, Enemy",
-    "Type": "Spell, Damage, Trappable, Totemable, Mineable, Chains, Multicastable, Triggerable, Physical, CanRapidFire, DamageOverTime, Duration",
-    "ActiveSkillsCode": "exsanguinate_alt_x"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "12",
-      "Cost": "16",
+      "Mana": "16",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "4, 5",
-      "Deals 26.3 Base Physical Damage per second": "26.3",
+      "Deals 30.2 Base Physical Damage per second": "30.2",
       "Chains +6 Times": "6",
-      "Experience": "15,249"
+      "Experience": ""
     },
     {
       "Level": "2",
       "Requires Level": "15",
-      "Cost": "18",
+      "Mana": "18",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "5, 7",
-      "Deals 26.3 Base Physical Damage per second": "34.5",
+      "Deals 30.2 Base Physical Damage per second": "39.6",
       "Chains +6 Times": "6",
-      "Experience": "41,517"
+      "Experience": ""
     },
     {
       "Level": "3",
       "Requires Level": "19",
-      "Cost": "21",
+      "Mana": "21",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "7, 10",
-      "Deals 26.3 Base Physical Damage per second": "48.3",
+      "Deals 30.2 Base Physical Damage per second": "55.5",
       "Chains +6 Times": "6",
-      "Experience": "81,983"
+      "Experience": ""
     },
     {
       "Level": "4",
       "Requires Level": "23",
-      "Cost": "23",
+      "Mana": "23",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "10, 14",
-      "Deals 26.3 Base Physical Damage per second": "66.3",
+      "Deals 30.2 Base Physical Damage per second": "76.2",
       "Chains +6 Times": "7",
-      "Experience": "147,968"
+      "Experience": ""
     },
     {
       "Level": "5",
       "Requires Level": "27",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "13, 20",
-      "Deals 26.3 Base Physical Damage per second": "89.6",
+      "Deals 30.2 Base Physical Damage per second": "103.1",
       "Chains +6 Times": "7",
-      "Experience": "250,557"
+      "Experience": ""
     },
     {
       "Level": "6",
       "Requires Level": "31",
-      "Cost": "26",
+      "Mana": "26",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "19, 28",
-      "Deals 26.3 Base Physical Damage per second": "119.8",
+      "Deals 30.2 Base Physical Damage per second": "137.8",
       "Chains +6 Times": "7",
-      "Experience": "405,086"
+      "Experience": ""
     },
     {
       "Level": "7",
       "Requires Level": "35",
-      "Cost": "28",
+      "Mana": "28",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "25, 38",
-      "Deals 26.3 Base Physical Damage per second": "158.5",
+      "Deals 30.2 Base Physical Damage per second": "182.3",
       "Chains +6 Times": "7",
-      "Experience": "447,718"
+      "Experience": ""
     },
     {
       "Level": "8",
       "Requires Level": "38",
-      "Cost": "30",
+      "Mana": "30",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "31, 47",
-      "Deals 26.3 Base Physical Damage per second": "195",
+      "Deals 30.2 Base Physical Damage per second": "224.3",
       "Chains +6 Times": "7",
-      "Experience": "615,318"
+      "Experience": ""
     },
     {
       "Level": "9",
       "Requires Level": "41",
-      "Cost": "32",
+      "Mana": "32",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "39, 57",
-      "Deals 26.3 Base Physical Damage per second": "238.9",
+      "Deals 30.2 Base Physical Damage per second": "274.8",
       "Chains +6 Times": "8",
-      "Experience": "834,639"
+      "Experience": ""
     },
     {
       "Level": "10",
       "Requires Level": "44",
-      "Cost": "33",
+      "Mana": "33",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "47, 71",
-      "Deals 26.3 Base Physical Damage per second": "291.7",
+      "Deals 30.2 Base Physical Damage per second": "335.4",
       "Chains +6 Times": "8",
-      "Experience": "1,570,760"
+      "Experience": ""
     },
     {
       "Level": "11",
       "Requires Level": "47",
-      "Cost": "34",
+      "Mana": "34",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "58, 88",
-      "Deals 26.3 Base Physical Damage per second": "355",
+      "Deals 30.2 Base Physical Damage per second": "408.2",
       "Chains +6 Times": "8",
-      "Experience": "1,633,987"
+      "Experience": ""
     },
     {
       "Level": "12",
       "Requires Level": "50",
-      "Cost": "35",
+      "Mana": "35",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "72, 108",
-      "Deals 26.3 Base Physical Damage per second": "430.7",
+      "Deals 30.2 Base Physical Damage per second": "495.3",
       "Chains +6 Times": "8",
-      "Experience": "2,151,030"
+      "Experience": ""
     },
     {
       "Level": "13",
       "Requires Level": "53",
-      "Cost": "37",
+      "Mana": "37",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "88, 132",
-      "Deals 26.3 Base Physical Damage per second": "521.3",
+      "Deals 30.2 Base Physical Damage per second": "599.5",
       "Chains +6 Times": "9",
-      "Experience": "2,812,189"
+      "Experience": ""
     },
     {
       "Level": "14",
       "Requires Level": "56",
-      "Cost": "39",
+      "Mana": "39",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "107, 162",
-      "Deals 26.3 Base Physical Damage per second": "629.4",
+      "Deals 30.2 Base Physical Damage per second": "723.8",
       "Chains +6 Times": "9",
-      "Experience": "5,099,360"
+      "Experience": ""
     },
     {
       "Level": "15",
       "Requires Level": "59",
-      "Cost": "40",
+      "Mana": "40",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "131, 197",
-      "Deals 26.3 Base Physical Damage per second": "758.3",
+      "Deals 30.2 Base Physical Damage per second": "872.1",
       "Chains +6 Times": "9",
-      "Experience": "9,400,731"
+      "Experience": ""
     },
     {
       "Level": "16",
       "Requires Level": "62",
-      "Cost": "42",
+      "Mana": "42",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "160, 240",
-      "Deals 26.3 Base Physical Damage per second": "911.8",
+      "Deals 30.2 Base Physical Damage per second": "1048.6",
       "Chains +6 Times": "9",
-      "Experience": "15,273,366"
+      "Experience": ""
     },
     {
       "Level": "17",
       "Requires Level": "64",
-      "Cost": "43",
+      "Mana": "43",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "182, 273",
-      "Deals 26.3 Base Physical Damage per second": "1032.9",
+      "Deals 30.2 Base Physical Damage per second": "1187.9",
       "Chains +6 Times": "9",
-      "Experience": "26,286,582"
+      "Experience": ""
     },
     {
       "Level": "18",
       "Requires Level": "66",
-      "Cost": "44",
+      "Mana": "44",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "207, 310",
-      "Deals 26.3 Base Physical Damage per second": "1169.2",
+      "Deals 30.2 Base Physical Damage per second": "1344.6",
       "Chains +6 Times": "10",
-      "Experience": "62,890,590"
+      "Experience": ""
     },
     {
       "Level": "19",
       "Requires Level": "68",
-      "Cost": "45",
+      "Mana": "45",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "235, 353",
-      "Deals 26.3 Base Physical Damage per second": "1322.5",
+      "Deals 30.2 Base Physical Damage per second": "1520.8",
       "Chains +6 Times": "10",
-      "Experience": "212,046,017"
+      "Experience": ""
     },
     {
       "Level": "20",
       "Requires Level": "70",
-      "Cost": "46",
+      "Mana": "46",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "268, 401",
-      "Deals 26.3 Base Physical Damage per second": "1494.7",
+      "Deals 30.2 Base Physical Damage per second": "1718.9",
       "Chains +6 Times": "10",
       "Experience": ""
     },
     {
       "Level": "21",
       "Requires Level": "72",
-      "Cost": "47",
+      "Mana": "47",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "304, 456",
-      "Deals 26.3 Base Physical Damage per second": "1688.2",
+      "Deals 30.2 Base Physical Damage per second": "1941.4",
       "Chains +6 Times": "10",
       "Experience": ""
     },
     {
       "Level": "22",
       "Requires Level": "74",
-      "Cost": "48",
+      "Mana": "48",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "344, 517",
-      "Deals 26.3 Base Physical Damage per second": "1905.4",
+      "Deals 30.2 Base Physical Damage per second": "2191.3",
       "Chains +6 Times": "10",
       "Experience": ""
     },
     {
       "Level": "23",
       "Requires Level": "76",
-      "Cost": "49",
+      "Mana": "49",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "391, 586",
-      "Deals 26.3 Base Physical Damage per second": "2149.4",
+      "Deals 30.2 Base Physical Damage per second": "2471.8",
       "Chains +6 Times": "11",
       "Experience": ""
     },
     {
       "Level": "24",
       "Requires Level": "78",
-      "Cost": "50",
+      "Mana": "50",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "443, 664",
-      "Deals 26.3 Base Physical Damage per second": "2422.9",
+      "Deals 30.2 Base Physical Damage per second": "2786.3",
       "Chains +6 Times": "11",
       "Experience": ""
     },
     {
       "Level": "25",
       "Requires Level": "80",
-      "Cost": "51",
+      "Mana": "51",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "502, 753",
-      "Deals 26.3 Base Physical Damage per second": "2729.7",
+      "Deals 30.2 Base Physical Damage per second": "3139.2",
       "Chains +6 Times": "11",
       "Experience": ""
     },
     {
       "Level": "26",
       "Requires Level": "82",
-      "Cost": "52",
+      "Mana": "52",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "568, 852",
-      "Deals 26.3 Base Physical Damage per second": "3073.7",
+      "Deals 30.2 Base Physical Damage per second": "3534.7",
       "Chains +6 Times": "11",
       "Experience": ""
     },
     {
       "Level": "27",
       "Requires Level": "84",
-      "Cost": "53",
+      "Mana": "53",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "643, 965",
-      "Deals 26.3 Base Physical Damage per second": "3459.2",
+      "Deals 30.2 Base Physical Damage per second": "3978.1",
       "Chains +6 Times": "11",
       "Experience": ""
     },
     {
       "Level": "28",
       "Requires Level": "86",
-      "Cost": "54",
+      "Mana": "54",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "728, 1092",
-      "Deals 26.3 Base Physical Damage per second": "3890.8",
+      "Deals 30.2 Base Physical Damage per second": "4474.4",
       "Chains +6 Times": "12",
       "Experience": ""
     },
     {
       "Level": "29",
       "Requires Level": "88",
-      "Cost": "55",
+      "Mana": "55",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "823, 1235",
-      "Deals 26.3 Base Physical Damage per second": "4374.4",
+      "Deals 30.2 Base Physical Damage per second": "5030.5",
       "Chains +6 Times": "12",
       "Experience": ""
     },
     {
       "Level": "30",
       "Requires Level": "90",
-      "Cost": "56",
+      "Mana": "56",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "931, 1395",
-      "Deals 26.3 Base Physical Damage per second": "4915.6",
+      "Deals 30.2 Base Physical Damage per second": "5652.9",
       "Chains +6 Times": "12",
       "Experience": ""
     },
     {
       "Level": "31",
       "Requires Level": "91",
-      "Cost": "57",
+      "Mana": "57",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "989, 1483",
-      "Deals 26.3 Base Physical Damage per second": "5229.8",
+      "Deals 30.2 Base Physical Damage per second": "6014.3",
       "Chains +6 Times": "12",
       "Experience": ""
     },
     {
       "Level": "32",
       "Requires Level": "92",
-      "Cost": "58",
+      "Mana": "58",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "1051, 1577",
-      "Deals 26.3 Base Physical Damage per second": "5563.5",
+      "Deals 30.2 Base Physical Damage per second": "6398.1",
       "Chains +6 Times": "12",
       "Experience": ""
     },
     {
       "Level": "33",
       "Requires Level": "93",
-      "Cost": "58",
+      "Mana": "58",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "1117, 1676",
-      "Deals 26.3 Base Physical Damage per second": "5917.6",
+      "Deals 30.2 Base Physical Damage per second": "6805.2",
       "Chains +6 Times": "12",
       "Experience": ""
     },
     {
       "Level": "34",
       "Requires Level": "94",
-      "Cost": "59",
+      "Mana": "59",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "1187, 1781",
-      "Deals 26.3 Base Physical Damage per second": "6293",
+      "Deals 30.2 Base Physical Damage per second": "7236.9",
       "Chains +6 Times": "13",
       "Experience": ""
     },
     {
       "Level": "35",
       "Requires Level": "95",
-      "Cost": "59",
+      "Mana": "59",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "1262, 1892",
-      "Deals 26.3 Base Physical Damage per second": "6691.6",
+      "Deals 30.2 Base Physical Damage per second": "7695.3",
       "Chains +6 Times": "13",
       "Experience": ""
     },
     {
       "Level": "36",
       "Requires Level": "96",
-      "Cost": "60",
+      "Mana": "60",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "1340, 2011",
-      "Deals 26.3 Base Physical Damage per second": "7114.1",
+      "Deals 30.2 Base Physical Damage per second": "8181.3",
       "Chains +6 Times": "13",
       "Experience": ""
     },
     {
       "Level": "37",
       "Requires Level": "97",
-      "Cost": "60",
+      "Mana": "60",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "1424, 2136",
-      "Deals 26.3 Base Physical Damage per second": "7562.3",
+      "Deals 30.2 Base Physical Damage per second": "8696.6",
       "Chains +6 Times": "13",
       "Experience": ""
     },
     {
       "Level": "38",
       "Requires Level": "98",
-      "Cost": "60",
+      "Mana": "60",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "1513, 2270",
-      "Deals 26.3 Base Physical Damage per second": "8037.3",
+      "Deals 30.2 Base Physical Damage per second": "9242.9",
       "Chains +6 Times": "13",
       "Experience": ""
     },
     {
       "Level": "39",
       "Requires Level": "99",
-      "Cost": "61",
+      "Mana": "61",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "1607, 2411",
-      "Deals 26.3 Base Physical Damage per second": "8541.3",
+      "Deals 30.2 Base Physical Damage per second": "9822.6",
       "Chains +6 Times": "13",
       "Experience": ""
     },
     {
       "Level": "40",
       "Requires Level": "100",
-      "Cost": "61",
+      "Mana": "61",
       "Base Damage": "100%, 100%",
       "Deals 4 to 5 Physical Damage": "1707, 2562",
-      "Deals 26.3 Base Physical Damage per second": "9075.9",
+      "Deals 30.2 Base Physical Damage per second": "10437.4",
       "Chains +6 Times": "13",
       "Experience": ""
     }
@@ -423,9 +416,9 @@
       ]
     },
     {
-      "text": "Deals (26.3–1494.7) Base Physical Damage per second",
+      "text": "Deals (30.2–1718.9) Base Physical Damage per second",
       "values": [
-        "(26.3–1494.7)"
+        "(30.2–1718.9)"
       ]
     },
     {
@@ -458,9 +451,9 @@
       ]
     },
     {
-      "text": "Deals (26.3–1494.7) Base Physical Damage per second",
+      "text": "Deals (30.2–1718.9) Base Physical Damage per second",
       "values": [
-        "(26.3–1494.7)"
+        "(30.2–1718.9)"
       ]
     },
     {
@@ -493,9 +486,9 @@
       ]
     },
     {
-      "text": "Deals (26.3–9075.9) Base Physical Damage per second",
+      "text": "Deals (30.2–10437.4) Base Physical Damage per second",
       "values": [
-        "(26.3–9075.9)"
+        "(30.2–10437.4)"
       ]
     },
     {

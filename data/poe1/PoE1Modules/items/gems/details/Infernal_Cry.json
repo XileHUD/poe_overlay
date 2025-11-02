@@ -1,15 +1,7 @@
 {
   "name": "Infernal Cry",
   "slug": "Infernal_Cry",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
-    "Acronym": "Ignite",
-    "BaseType": "Combust",
-    "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
-    "TargetTypes": "Enemy, Ground",
-    "Type": "Attack, Area, Damage, Triggerable, Triggered, Melee, InbuiltTrigger",
-    "ActiveSkillsCode": "infernal_cry_on_hit_explosion"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
@@ -263,12 +255,6 @@
       ]
     },
     {
-      "text": "Base secondary duration is (2.5–3.4) seconds",
-      "values": [
-        "(2.5–3.4)"
-      ]
-    },
-    {
       "text": "(0–38)% increased Warcry Speed",
       "values": [
         "(0–38)"
@@ -303,6 +289,12 @@
     {
       "text": "Counts total Power of Enemies in Range",
       "values": []
+    },
+    {
+      "text": "Base Debuff Duration is (2.5–3.4) seconds",
+      "values": [
+        "(2.5–3.4)"
+      ]
     },
     {
       "text": "60% of Physical Damage Converted to Fire Damage",
@@ -321,12 +313,6 @@
       ]
     },
     {
-      "text": "Base secondary duration is (2.5–3.4) seconds",
-      "values": [
-        "(2.5–3.4)"
-      ]
-    },
-    {
       "text": "(0–38)% increased Warcry Speed",
       "values": [
         "(0–38)"
@@ -361,6 +347,12 @@
     {
       "text": "Counts total Power of Enemies in Range",
       "values": []
+    },
+    {
+      "text": "Base Debuff Duration is (2.5–3.4) seconds",
+      "values": [
+        "(2.5–3.4)"
+      ]
     },
     {
       "text": "base deal no attack damage [1]",

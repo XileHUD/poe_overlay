@@ -22,6 +22,7 @@ import './overlay/crafting/bases/globals';
 // Items panels (PoE1)
 import './overlay/items/poe1/uniques/globals';
 import './overlay/items/poe1/bases/globals';
+import './overlay/items/poe1/keepers/globals';
 
 // Crafting panels (PoE1)
 import './overlay/crafting/poe1/scarabs/globals';

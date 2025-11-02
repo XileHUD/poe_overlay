@@ -1,25 +1,14 @@
 {
   "name": "Conversion Trap",
   "slug": "Conversion_Trap",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
-    "Acronym": "Trigger, Duration, Trap",
-    "DropLevel": "4",
-    "BaseType": "Conversion Trap",
-    "Class": "Skill Gems",
-    "TargetTypes": "Enemy",
-    "Type": "Spell, Duration, Mineable, Trapped, Cooldown",
-    "ItemType": "Metadata/Items/Gems/SkillGemConversionTrap",
-    "ActiveSkillsCode": "conversion_trap",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "4",
       "Int": "0",
       "Dex": "0",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "5.3",
       "Experience": "841"
@@ -29,7 +18,7 @@
       "Requires Level": "6",
       "Int": "0",
       "Dex": "0",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "5.5",
       "Experience": "3,099"
@@ -39,7 +28,7 @@
       "Requires Level": "9",
       "Int": "17",
       "Dex": "0",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "5.8",
       "Experience": "7,433"
@@ -49,7 +38,7 @@
       "Requires Level": "12",
       "Int": "21",
       "Dex": "14",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "6",
       "Experience": "22,895"
@@ -59,7 +48,7 @@
       "Requires Level": "16",
       "Int": "26",
       "Dex": "18",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "6.3",
       "Experience": "49,725"
@@ -69,7 +58,7 @@
       "Requires Level": "20",
       "Int": "31",
       "Dex": "22",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "6.5",
       "Experience": "95,714"
@@ -79,7 +68,7 @@
       "Requires Level": "24",
       "Int": "37",
       "Dex": "25",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "6.8",
       "Experience": "169,595"
@@ -89,7 +78,7 @@
       "Requires Level": "28",
       "Int": "42",
       "Dex": "29",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "7",
       "Experience": "283,759"
@@ -99,7 +88,7 @@
       "Requires Level": "32",
       "Int": "47",
       "Dex": "33",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "7.3",
       "Experience": "453,996"
@@ -109,7 +98,7 @@
       "Requires Level": "36",
       "Int": "53",
       "Dex": "37",
-      "Cost": "16",
+      "Mana": "16",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "7.5",
       "Experience": "703,128"
@@ -119,7 +108,7 @@
       "Requires Level": "40",
       "Int": "58",
       "Dex": "40",
-      "Cost": "17",
+      "Mana": "17",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "7.8",
       "Experience": "1,061,223"
@@ -129,7 +118,7 @@
       "Requires Level": "44",
       "Int": "63",
       "Dex": "44",
-      "Cost": "19",
+      "Mana": "19",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "8",
       "Experience": "2,065,870"
@@ -139,7 +128,7 @@
       "Requires Level": "48",
       "Int": "69",
       "Dex": "48",
-      "Cost": "20",
+      "Mana": "20",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "8.3",
       "Experience": "2,507,110"
@@ -149,7 +138,7 @@
       "Requires Level": "52",
       "Int": "74",
       "Dex": "51",
-      "Cost": "20",
+      "Mana": "20",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "8.5",
       "Experience": "2,573,731"
@@ -159,7 +148,7 @@
       "Requires Level": "55",
       "Int": "78",
       "Dex": "54",
-      "Cost": "21",
+      "Mana": "21",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "8.8",
       "Experience": "7,611,351"
@@ -169,7 +158,7 @@
       "Requires Level": "58",
       "Int": "82",
       "Dex": "57",
-      "Cost": "22",
+      "Mana": "22",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "9",
       "Experience": "13,437,908"
@@ -179,7 +168,7 @@
       "Requires Level": "61",
       "Int": "86",
       "Dex": "60",
-      "Cost": "23",
+      "Mana": "23",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "9.3",
       "Experience": "25,052,147"
@@ -189,7 +178,7 @@
       "Requires Level": "64",
       "Int": "90",
       "Dex": "62",
-      "Cost": "23",
+      "Mana": "23",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "9.5",
       "Experience": "43,869,436"
@@ -199,7 +188,7 @@
       "Requires Level": "67",
       "Int": "94",
       "Dex": "65",
-      "Cost": "23",
+      "Mana": "23",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "9.8",
       "Experience": "242,081,178"
@@ -209,7 +198,7 @@
       "Requires Level": "70",
       "Int": "98",
       "Dex": "68",
-      "Cost": "23",
+      "Mana": "23",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "10",
       "Experience": ""
@@ -219,7 +208,7 @@
       "Requires Level": "72",
       "Int": "",
       "Dex": "",
-      "Cost": "24",
+      "Mana": "24",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "10.3",
       "Experience": ""
@@ -229,7 +218,7 @@
       "Requires Level": "74",
       "Int": "",
       "Dex": "",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "10.5",
       "Experience": ""
@@ -239,7 +228,7 @@
       "Requires Level": "76",
       "Int": "",
       "Dex": "",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "10.8",
       "Experience": ""
@@ -249,7 +238,7 @@
       "Requires Level": "78",
       "Int": "",
       "Dex": "",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "11",
       "Experience": ""
@@ -259,7 +248,7 @@
       "Requires Level": "80",
       "Int": "",
       "Dex": "",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "11.3",
       "Experience": ""
@@ -269,7 +258,7 @@
       "Requires Level": "82",
       "Int": "",
       "Dex": "",
-      "Cost": "26",
+      "Mana": "26",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "11.5",
       "Experience": ""
@@ -279,7 +268,7 @@
       "Requires Level": "84",
       "Int": "",
       "Dex": "",
-      "Cost": "27",
+      "Mana": "27",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "11.8",
       "Experience": ""
@@ -289,7 +278,7 @@
       "Requires Level": "86",
       "Int": "",
       "Dex": "",
-      "Cost": "27",
+      "Mana": "27",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "12",
       "Experience": ""
@@ -299,7 +288,7 @@
       "Requires Level": "88",
       "Int": "",
       "Dex": "",
-      "Cost": "27",
+      "Mana": "27",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "12.3",
       "Experience": ""
@@ -309,7 +298,7 @@
       "Requires Level": "90",
       "Int": "",
       "Dex": "",
-      "Cost": "28",
+      "Mana": "28",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "12.5",
       "Experience": ""
@@ -319,7 +308,7 @@
       "Requires Level": "91",
       "Int": "",
       "Dex": "",
-      "Cost": "29",
+      "Mana": "29",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "12.65",
       "Experience": ""
@@ -329,7 +318,7 @@
       "Requires Level": "92",
       "Int": "",
       "Dex": "",
-      "Cost": "29",
+      "Mana": "29",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "12.8",
       "Experience": ""
@@ -339,7 +328,7 @@
       "Requires Level": "93",
       "Int": "",
       "Dex": "",
-      "Cost": "29",
+      "Mana": "29",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "12.9",
       "Experience": ""
@@ -349,7 +338,7 @@
       "Requires Level": "94",
       "Int": "",
       "Dex": "",
-      "Cost": "29",
+      "Mana": "29",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "13",
       "Experience": ""
@@ -359,7 +348,7 @@
       "Requires Level": "95",
       "Int": "",
       "Dex": "",
-      "Cost": "30",
+      "Mana": "30",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "13.15",
       "Experience": ""
@@ -369,7 +358,7 @@
       "Requires Level": "96",
       "Int": "",
       "Dex": "",
-      "Cost": "31",
+      "Mana": "31",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "13.3",
       "Experience": ""
@@ -379,7 +368,7 @@
       "Requires Level": "97",
       "Int": "",
       "Dex": "",
-      "Cost": "31",
+      "Mana": "31",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "13.4",
       "Experience": ""
@@ -389,7 +378,7 @@
       "Requires Level": "98",
       "Int": "",
       "Dex": "",
-      "Cost": "31",
+      "Mana": "31",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "13.5",
       "Experience": ""
@@ -399,7 +388,7 @@
       "Requires Level": "99",
       "Int": "",
       "Dex": "",
-      "Cost": "32",
+      "Mana": "32",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "13.65",
       "Experience": ""
@@ -409,7 +398,7 @@
       "Requires Level": "100",
       "Int": "",
       "Dex": "",
-      "Cost": "33",
+      "Mana": "33",
       "Base Damage": "100%, 100%",
       "Base duration is 5.3 seconds": "13.8",
       "Experience": ""

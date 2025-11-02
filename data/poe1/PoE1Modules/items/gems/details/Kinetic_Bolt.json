@@ -1,24 +1,13 @@
 {
   "name": "Kinetic Bolt",
   "slug": "Kinetic_Bolt",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
-    "Acronym": "Projectile, Fork, Modifiers",
-    "BaseType": "Kinetic Bolt",
-    "Class": "Skill Gems",
-    "Weapon": "Wands",
-    "TargetTypes": "Ground, Enemy,",
-    "Type": "Attack, Projectile, ProjectilesFromUser, Trappable, Mineable, Totemable, RangedAttack, Triggerable",
-    "ItemType": "Metadata/Items/Gems/SkillGemKineticBolt",
-    "ActiveSkillsCode": "kinetic_bolt",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "1",
       "Int": "0",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "160%, 160%",
       "Projectile changes direction 5 times": "5",
       "Experience": "70"
@@ -27,7 +16,7 @@
       "Level": "2",
       "Requires Level": "2",
       "Int": "0",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "163.2%, 163.2%",
       "Projectile changes direction 5 times": "5",
       "Experience": "308"
@@ -36,7 +25,7 @@
       "Level": "3",
       "Requires Level": "4",
       "Int": "16",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "166.3%, 166.3%",
       "Projectile changes direction 5 times": "6",
       "Experience": "1,554"
@@ -45,7 +34,7 @@
       "Level": "4",
       "Requires Level": "7",
       "Int": "22",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "169.5%, 169.5%",
       "Projectile changes direction 5 times": "6",
       "Experience": "6,667"
@@ -54,7 +43,7 @@
       "Level": "5",
       "Requires Level": "11",
       "Int": "31",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "172.6%, 172.6%",
       "Projectile changes direction 5 times": "6",
       "Experience": "26,047"
@@ -63,7 +52,7 @@
       "Level": "6",
       "Requires Level": "16",
       "Int": "41",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "175.8%, 175.8%",
       "Projectile changes direction 5 times": "6",
       "Experience": "49,725"
@@ -72,7 +61,7 @@
       "Level": "7",
       "Requires Level": "20",
       "Int": "50",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "178.9%, 178.9%",
       "Projectile changes direction 5 times": "6",
       "Experience": "95,714"
@@ -81,7 +70,7 @@
       "Level": "8",
       "Requires Level": "24",
       "Int": "58",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "182.1%, 182.1%",
       "Projectile changes direction 5 times": "6",
       "Experience": "169,595"
@@ -90,7 +79,7 @@
       "Level": "9",
       "Requires Level": "28",
       "Int": "67",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "185.3%, 185.3%",
       "Projectile changes direction 5 times": "7",
       "Experience": "283,759"
@@ -99,7 +88,7 @@
       "Level": "10",
       "Requires Level": "32",
       "Int": "75",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "188.4%, 188.4%",
       "Projectile changes direction 5 times": "7",
       "Experience": "453,996"
@@ -108,7 +97,7 @@
       "Level": "11",
       "Requires Level": "36",
       "Int": "83",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "191.6%, 191.6%",
       "Projectile changes direction 5 times": "7",
       "Experience": "703,128"
@@ -117,7 +106,7 @@
       "Level": "12",
       "Requires Level": "40",
       "Int": "92",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "194.7%, 194.7%",
       "Projectile changes direction 5 times": "7",
       "Experience": "1,061,223"
@@ -126,7 +115,7 @@
       "Level": "13",
       "Requires Level": "44",
       "Int": "100",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "197.9%, 197.9%",
       "Projectile changes direction 5 times": "7",
       "Experience": "2,065,870"
@@ -135,7 +124,7 @@
       "Level": "14",
       "Requires Level": "48",
       "Int": "109",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "201.1%, 201.1%",
       "Projectile changes direction 5 times": "7",
       "Experience": "2,507,110"
@@ -144,7 +133,7 @@
       "Level": "15",
       "Requires Level": "52",
       "Int": "117",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "204.2%, 204.2%",
       "Projectile changes direction 5 times": "8",
       "Experience": "5,798,936"
@@ -153,7 +142,7 @@
       "Level": "16",
       "Requires Level": "56",
       "Int": "125",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "207.4%, 207.4%",
       "Projectile changes direction 5 times": "8",
       "Experience": "15,083,919"
@@ -162,7 +151,7 @@
       "Level": "17",
       "Requires Level": "60",
       "Int": "134",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "210.5%, 210.5%",
       "Projectile changes direction 5 times": "8",
       "Experience": "27,792,735"
@@ -171,7 +160,7 @@
       "Level": "18",
       "Requires Level": "64",
       "Int": "142",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "213.7%, 213.7%",
       "Projectile changes direction 5 times": "8",
       "Experience": "43,869,739"
@@ -180,7 +169,7 @@
       "Level": "19",
       "Requires Level": "67",
       "Int": "148",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "216.8%, 216.8%",
       "Projectile changes direction 5 times": "8",
       "Experience": "242,081,556"
@@ -189,7 +178,7 @@
       "Level": "20",
       "Requires Level": "70",
       "Int": "155",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "220%, 220%",
       "Projectile changes direction 5 times": "8",
       "Experience": ""
@@ -198,7 +187,7 @@
       "Level": "21",
       "Requires Level": "72",
       "Int": "",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "223.2%, 223.2%",
       "Projectile changes direction 5 times": "9",
       "Experience": ""
@@ -207,7 +196,7 @@
       "Level": "22",
       "Requires Level": "74",
       "Int": "",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "226.3%, 226.3%",
       "Projectile changes direction 5 times": "9",
       "Experience": ""
@@ -216,7 +205,7 @@
       "Level": "23",
       "Requires Level": "76",
       "Int": "",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "229.5%, 229.5%",
       "Projectile changes direction 5 times": "9",
       "Experience": ""
@@ -225,7 +214,7 @@
       "Level": "24",
       "Requires Level": "78",
       "Int": "",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "232.6%, 232.6%",
       "Projectile changes direction 5 times": "9",
       "Experience": ""
@@ -234,7 +223,7 @@
       "Level": "25",
       "Requires Level": "80",
       "Int": "",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "235.8%, 235.8%",
       "Projectile changes direction 5 times": "9",
       "Experience": ""
@@ -243,7 +232,7 @@
       "Level": "26",
       "Requires Level": "82",
       "Int": "",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "238.9%, 238.9%",
       "Projectile changes direction 5 times": "9",
       "Experience": ""
@@ -252,7 +241,7 @@
       "Level": "27",
       "Requires Level": "84",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "242.1%, 242.1%",
       "Projectile changes direction 5 times": "10",
       "Experience": ""
@@ -261,7 +250,7 @@
       "Level": "28",
       "Requires Level": "86",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "245.3%, 245.3%",
       "Projectile changes direction 5 times": "10",
       "Experience": ""
@@ -270,7 +259,7 @@
       "Level": "29",
       "Requires Level": "88",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "248.4%, 248.4%",
       "Projectile changes direction 5 times": "10",
       "Experience": ""
@@ -279,7 +268,7 @@
       "Level": "30",
       "Requires Level": "90",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "251.6%, 251.6%",
       "Projectile changes direction 5 times": "10",
       "Experience": ""
@@ -288,7 +277,7 @@
       "Level": "31",
       "Requires Level": "91",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "253.2%, 253.2%",
       "Projectile changes direction 5 times": "10",
       "Experience": ""
@@ -297,7 +286,7 @@
       "Level": "32",
       "Requires Level": "92",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "254.7%, 254.7%",
       "Projectile changes direction 5 times": "10",
       "Experience": ""
@@ -306,7 +295,7 @@
       "Level": "33",
       "Requires Level": "93",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "256.3%, 256.3%",
       "Projectile changes direction 5 times": "10",
       "Experience": ""
@@ -315,7 +304,7 @@
       "Level": "34",
       "Requires Level": "94",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "257.9%, 257.9%",
       "Projectile changes direction 5 times": "10",
       "Experience": ""
@@ -324,7 +313,7 @@
       "Level": "35",
       "Requires Level": "95",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "259.5%, 259.5%",
       "Projectile changes direction 5 times": "10",
       "Experience": ""
@@ -333,7 +322,7 @@
       "Level": "36",
       "Requires Level": "96",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "261.1%, 261.1%",
       "Projectile changes direction 5 times": "11",
       "Experience": ""
@@ -342,7 +331,7 @@
       "Level": "37",
       "Requires Level": "97",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "262.6%, 262.6%",
       "Projectile changes direction 5 times": "11",
       "Experience": ""
@@ -351,7 +340,7 @@
       "Level": "38",
       "Requires Level": "98",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "264.2%, 264.2%",
       "Projectile changes direction 5 times": "11",
       "Experience": ""
@@ -360,7 +349,7 @@
       "Level": "39",
       "Requires Level": "99",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "265.8%, 265.8%",
       "Projectile changes direction 5 times": "11",
       "Experience": ""
@@ -369,7 +358,7 @@
       "Level": "40",
       "Requires Level": "100",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "267.4%, 267.4%",
       "Projectile changes direction 5 times": "11",
       "Experience": ""

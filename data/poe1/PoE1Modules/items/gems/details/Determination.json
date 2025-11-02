@@ -1,18 +1,7 @@
 {
   "name": "Determination",
   "slug": "Determination",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xOrb of Alteration",
-    "Acronym": "Armour",
-    "DropLevel": "24",
-    "BaseType": "Determination",
-    "Class": "Skill Gems",
-    "TargetTypes": "Any",
-    "Type": "Spell, Area, Buff, HasReservation, TotemCastsAlone, Totemable, Aura, Instant, AreaSpell, Physical, CanHaveBlessing, InstantNoRepeatWhenHeld, InstantShiftAttackForLeftMouse, Cooldown",
-    "ItemType": "Metadata/Items/Gems/SkillGemDetermination",
-    "ActiveSkillsCode": "determination",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
@@ -415,9 +404,10 @@
       "Experience": ""
     }
   ],
-  "description": "This skill's effect is similar to the effect of Grace for evasion. If the player has Iron Reflexes allocated, they do the same, but Grace is usually better than Determination. With no evasion specific nodes allocated, the player needs to have 5049 base armour (maximum of which is around 9000 without specific uniques) from equipment and passives for a level 20 Determination to be better than a level 20 Grace with Iron Reflexes.",
+  "description": "This skill's effect is similar to the effect of Grace for evasion. If the player has Iron Reflexes allocated, they do the same, but Grace is usually better than Determination. With no evasion specific nodes allocated, the player needs to have 5049 base armour (maximum of which is around 9000 without specific uniques) from  Equipment\nand passives for a level 20 Determination to be better than a level 20 Grace with Iron Reflexes.",
   "stats": [
-    "This skill's effect is similar to the effect of Grace for evasion. If the player has Iron Reflexes allocated, they do the same, but Grace is usually better than Determination. With no evasion specific nodes allocated, the player needs to have 5049 base armour (maximum of which is around 9000 without specific uniques) from equipment and passives for a level 20 Determination to be better than a level 20 Grace with Iron Reflexes."
+    "This skill's effect is similar to the effect of Grace for evasion. If the player has Iron Reflexes allocated, they do the same, but Grace is usually better than Determination. With no evasion specific nodes allocated, the player needs to have 5049 base armour (maximum of which is around 9000 without specific uniques) from  Equipment",
+    "and passives for a level 20 Determination to be better than a level 20 Grace with Iron Reflexes."
   ],
   "gemDescription": "Casts an aura that grants armour to you and your allies.",
   "explicitMods": [

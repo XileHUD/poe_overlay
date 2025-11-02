@@ -34,6 +34,7 @@ declare global {
       getPoe1Gems?: () => Promise<any>;
       getPoe1GemDetail?: (gemSlug: string) => Promise<any>;
     getPoe1AscendancyNotables?: () => Promise<any>;
+  getPoe1Keepers?: () => Promise<any>;
       toggleLevelingWindow?: () => Promise<void>;
     };
     OverlayUtils?: {
@@ -138,6 +139,10 @@ declare global {
       showList: () => Promise<void>;
       showDetail: (gemSlug: string) => Promise<void>;
       showDetailByName: (gemName: string) => Promise<void>;
+    };
+    OverlayPoe1Keepers?: {
+      show: () => Promise<void>;
+      reload: () => Promise<void>;
     };
     OverlayRegex?: {
       show: () => Promise<void>;

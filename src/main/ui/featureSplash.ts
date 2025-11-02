@@ -613,6 +613,10 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
               <input type="checkbox" id="feat-poe1-items-bases" ${checked(safeConfig.poe1Items.subcategories.bases)}/>
               <label for="feat-poe1-items-bases">Bases</label>
             </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-poe1-items-keepers" ${checked(safeConfig.poe1Items.subcategories.keepers)}/>
+              <label for="feat-poe1-items-keepers">Keepers</label>
+            </div>
           </div>
         </div>
 
@@ -786,6 +790,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       document.getElementById('feat-poe1-items').checked = preset.poe1Items.enabled;
       document.getElementById('feat-poe1-items-uniques').checked = preset.poe1Items.subcategories.uniques;
       document.getElementById('feat-poe1-items-bases').checked = preset.poe1Items.subcategories.bases;
+  document.getElementById('feat-poe1-items-keepers').checked = preset.poe1Items.subcategories.keepers;
       
       // Tools
       document.getElementById('feat-tools').checked = preset.tools.enabled;
@@ -890,7 +895,8 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
           enabled: document.getElementById('feat-poe1-items').checked,
           subcategories: {
             uniques: document.getElementById('feat-poe1-items-uniques').checked,
-            bases: document.getElementById('feat-poe1-items-bases').checked
+            bases: document.getElementById('feat-poe1-items-bases').checked,
+            keepers: document.getElementById('feat-poe1-items-keepers').checked
           }
         },
         tools: {

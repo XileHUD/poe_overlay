@@ -1,0 +1,182 @@
+{
+  "slug": "KeepersGems",
+  "total": 22,
+  "items": [
+    {
+      "name": "Heart of Flame",
+      "slug": "Heart_of_Flame",
+      "description": "When you are missing Life, this Graft will apply a Buff that takes some Damage from Hits for you before being depleted. When you are struck while the Buff is active, this skill will fire a nova of fiery projectiles which explode on impact.",
+      "tags": [],
+      "color": "str",
+      "imageLocal": "gems/heart_of_flame.webp"
+    },
+    {
+      "name": "His Burning Message",
+      "slug": "His_Burning_Message",
+      "description": "When commanded, this Graft will cause a cataclysmic eruption that leaves multiple geysers of flame in its wake. These geysers will regularly fire off fiery mortars, firing more in a burst whenever you use a warcry. Triggering warcries will not cause these bursts of mortars.",
+      "tags": [],
+      "color": "str",
+      "imageLocal": "gems/his_burning_message.webp"
+    },
+    {
+      "name": "Call the Pyre",
+      "slug": "Call_the_Pyre",
+      "description": "When you Attack with this Graft equipped, it will call forth pillars of ashen flame. These pillars deal Fire damage in an area, and cover Enemies they hit in Ash.",
+      "tags": [],
+      "color": "str",
+      "imageLocal": "gems/call_the_pyre.webp"
+    },
+    {
+      "name": "The Grey Wind Howls",
+      "slug": "The_Grey_Wind_Howls",
+      "description": "While afflicted with an Elemental Ailment while this Graft is equipped, it will remove all Elemental Ailments from you and grant you Physical Damage gained as Extra of the Elemental Damage Types that match the removed Ailments.",
+      "tags": [],
+      "color": "str",
+      "imageLocal": "gems/the_grey_wind_howls.webp"
+    },
+    {
+      "name": "Return to Dust",
+      "slug": "Return_to_Dust",
+      "description": "This Graft will periodically target Rare or Unique Enemies in range, calling forth massive hands which slam down dealing high damage and stunning.",
+      "tags": [],
+      "color": "str",
+      "imageLocal": "gems/return_to_dust.webp"
+    },
+    {
+      "name": "Seize the Flesh",
+      "slug": "Seize_the_Flesh",
+      "description": "When you use a Warcry, this Graft will cause spires of bone to erupt from the earth around you. When you use an Exerted Attack, these spires will explode to deal damage in an area around them, inflicting Bleeding and Impaling Enemies.",
+      "tags": [],
+      "color": "str",
+      "imageLocal": "gems/seize_the_flesh.webp"
+    },
+    {
+      "name": "Tender Embrace",
+      "slug": "Tender_Embrace",
+      "description": "While you are on Low Life, this Graft will periodically apply a buff to you which grants life recovery rate, as well as an Endurance Charge.",
+      "tags": [],
+      "color": "str",
+      "imageLocal": "gems/tender_embrace.webp"
+    },
+    {
+      "name": "Conflagration",
+      "slug": "Conflagration",
+      "description": "Fire arrows into the air that rain down around the targeted area, dealing area damage on impact and leaving the arrows stuck in the ground for a duration. If you move close to a stuck arrow, it will explode, dealing area damage and applying a fire damage over time debuff, as well as causing other stuck arrows in range to also explode.",
+      "tags": [],
+      "color": "dex",
+      "imageLocal": "gems/conflagration.webp"
+    },
+    {
+      "name": "Thunderstorm",
+      "slug": "Thunderstorm",
+      "description": "Fires an arrow into the air to land at a targeted location. On impact, deals area damage and creates a thunderstorm which blinds enemies within it. Entering the thunderstorm will cause it to gain stages, and leaving it will cause it to dissipate. Leaving the storm while it is at maximum stages will cause it to explode, dealing damage and triggering Thunderburst. You must use this skill yourself, it cannot be used by Totems, Traps, Mines, or other objects that use skills for you.",
+      "tags": [],
+      "color": "dex",
+      "imageLocal": "gems/thunderstorm.webp"
+    },
+    {
+      "name": "Dance in the White",
+      "slug": "Dance_in_the_White",
+      "description": "When commanded, this Graft will call forth a devastating tornado which rapidly deals cold damage to Enemies within it. When you Critically Strike with an Attack while the Tornado is active, it will fire off a nova of icicle projectiles.",
+      "tags": [],
+      "color": "dex",
+      "imageLocal": "gems/dance_in_the_white.webp"
+    },
+    {
+      "name": "Falling Crystals",
+      "slug": "Falling_Crystals",
+      "description": "While equipped, this Graft will periodically fling icy mortars at Enemies in range that are Chilled or Frozen.",
+      "tags": [],
+      "color": "dex",
+      "imageLocal": "gems/falling_crystals.webp"
+    },
+    {
+      "name": "Wall of Force",
+      "slug": "Wall_of_Force",
+      "description": "Creates a wall of force which allies and enemies can pass through, but allied projectiles which can collide with enemies will also collide with this wall, and can chain from it to other targets. Projectiles can only collide with a single Wall of Force, and no more than once.",
+      "tags": [],
+      "color": "int",
+      "imageLocal": "gems/wall_of_force.webp"
+    },
+    {
+      "name": "Kinetic Rain",
+      "slug": "Kinetic_Rain",
+      "description": "Swing your wand to cause a number of projectiles to rain down within a large area in front of you, directly targeting the locations of enemies in the area. The locations where each projectile will land are shown with markers before they fall. Each projectile explodes when hitting the ground, dealing area damage and triggering Kinetic Anomaly. Cannot be used by Totems, Traps, or Mines.",
+      "tags": [],
+      "color": "int",
+      "imageLocal": "gems/kinetic_rain.webp"
+    },
+    {
+      "name": "Kinetic Rain of Impact",
+      "slug": "Kinetic_Rain_of_Impact",
+      "description": "Swing your wand to cause a number of projectiles to rain down within a large area in front of you, directly targeting the locations of enemies in the area. The locations where each projectile will land are shown with markers before they fall. Each projectile explodes when hitting the ground, dealing area damage.",
+      "tags": [],
+      "color": "int",
+      "imageLocal": "gems/kinetic_rain_of_impact.webp"
+    },
+    {
+      "name": "Somatic Shell",
+      "slug": "Somatic_Shell",
+      "description": "Fire a damaging projectile from your wand which aims itself towards an enemy and applies a shell to the first enemy struck. Damage from hits against that target is taken from the shell first. If fully depleted, the shell will explode, dealing area damage and firing a projectile at another target to apply a new shell to it. If multiple projectiles are fired by an exploding shell, only the first one to hit a target can apply a shell.",
+      "tags": [],
+      "color": "int",
+      "imageLocal": "gems/somatic_shell.webp"
+    },
+    {
+      "name": "Kinetic Fusillade",
+      "slug": "Kinetic_Fusillade",
+      "description": "Wave your wand to create a hovering kinetic projectile. After a short duration, the projectile is fired at an enemy, dealing area damage on impact and chaining to further targets. Using this attack again will reset the duration for all hovering projectiles. Multiple projectiles fired in sequence will attempt to target different enemies. Cannot be directly used by traps or mines.",
+      "tags": [],
+      "color": "int",
+      "imageLocal": "gems/kinetic_fusillade.webp"
+    },
+    {
+      "name": "Wreathed in Light",
+      "slug": "Wreathed_in_Light",
+      "description": "When commanded, this Graft will call down a ring of lightning bolts, dealing lightning damage and leaving behind Radiant ground.",
+      "tags": [],
+      "color": "int",
+      "imageLocal": "gems/wreathed_in_light.webp"
+    },
+    {
+      "name": "Enervating Grasp",
+      "slug": "Enervating_Grasp",
+      "description": "When commanded, this Graft will summon forth a field of grasping hands, each of which clutches an enervating orb of Lightning. When an Enemy is near a hand, the orb it clutches will detonate to deal Lightning Damage and Sap on Hit.",
+      "tags": [],
+      "color": "int",
+      "imageLocal": "gems/enervating_grasp.webp"
+    },
+    {
+      "name": "The Great Avalanche",
+      "slug": "The_Great_Avalanche",
+      "description": "When you use an Offering skill, this Graft will summon an army of Hiveborn Breach Monsters to do your bidding. These summoned monsters have their Physical Damage converted to Cold, and have a chance to apply Brittle on Hit.",
+      "tags": [],
+      "color": "int",
+      "imageLocal": "gems/the_great_avalanche.webp"
+    },
+    {
+      "name": "Windburst Support",
+      "slug": "Windburst_Support",
+      "description": "Supports Attack Skills, causing them to trigger Windburst on hit after you've travelled a certain distance. Cannot support triggered skills or skills used by things other than you. Cannot modify the skills of minions.",
+      "tags": [],
+      "color": "dex",
+      "imageLocal": "gems/windburst_support.webp"
+    },
+    {
+      "name": "Living Lightning Support",
+      "slug": "Living_Lightning_Support",
+      "description": "Supports Skills which cause Damaging Hits, causing them to trigger Summon Living Lightning when dealing lightning damage. Cannot support skills used by totems, traps, or mines. Cannot modify the skills of Minions.",
+      "tags": [],
+      "color": "int",
+      "imageLocal": "gems/living_lightning_support.webp"
+    },
+    {
+      "name": "Kinetic Instability Support",
+      "slug": "Kinetic_Instability_Support",
+      "description": "Supports Wand Attacks, granting them a chance to trigger Kinetic Flux on kill. Cannot support triggered skills or skills used by things other than you. Cannot modify the skills of minions.",
+      "tags": [],
+      "color": "int",
+      "imageLocal": "gems/kinetic_instability_support.webp"
+    }
+  ]
+}

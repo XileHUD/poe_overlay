@@ -66,6 +66,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     getPoe1Gems: () => ipcRenderer.invoke('get-poe1-gems'),
     getPoe1GemDetail: (gemSlug: string) => ipcRenderer.invoke('get-poe1-gem-detail', gemSlug),
     getPoe1AscendancyNotables: () => ipcRenderer.invoke('get-poe1-ascendancy-notables'),
+    getPoe1Keepers: () => ipcRenderer.invoke('get-poe1-keepers'),
     // Diagnostics
     getImageLog: () => ipcRenderer.invoke('debug-get-image-log'),
     cacheImage: (url: string) => ipcRenderer.invoke('cache-image', url),

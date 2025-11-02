@@ -440,6 +440,10 @@
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/></svg></span>
                         <span>Bases</span>
                     </div>
+                    <div class="items-menu-item poe1-only" data-action="keepers" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                        <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 2.5 5 5.3 5 8.5a5 5 0 01-10 0C7 7.3 9 4.5 12 2z"/><path d="M12 22a6 6 0 01-6-6h12a6 6 0 01-6 6z"/></svg></span>
+                        <span>Keepers</span>
+                    </div>
                 </div>
             </div>
             <div class="tab" id="toolsTab" style="position:relative; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px; font-size: 12px; cursor:pointer; display:inline-flex; align-items:center; gap:4px;">
@@ -1112,6 +1116,7 @@
     if (key === 'glossar') { markCharacterAction('glossar'); return; }
     if (key === 'uniques') { markItemsAction('uniques'); return; }
     if (key === 'bases') { markItemsAction('bases'); return; }
+    if (key === 'keepers') { markItemsAction('keepers'); return; }
     if (key === 'merchant history') { markHistoryAction(); return; }
     if (key === 'regex builder') { markToolsAction('regex'); return; }
     if (key === 'map regex') { markToolsAction('poe1-regex'); return; }
@@ -1276,6 +1281,7 @@
                 setView('crafting');
                 if (key === 'uniques') { await showUniques(); setHeader('Uniques'); recordHeaderAction('Uniques'); return true; }
                 if (key === 'bases') { await showBases(); setHeader('Bases'); recordHeaderAction('Bases'); return true; }
+                if (key === 'keepers') { await showKeepers(); setHeader('Keepers'); recordHeaderAction('Keepers'); return true; }
                 return false;
             }
 
@@ -1459,6 +1465,11 @@
             if (window.OverlayBases && window.OverlayBases.show) { 
                 try { return await window.OverlayBases.show(); } catch {} 
             }
+        }
+    }
+    async function showKeepers(){
+        if (window.OverlayPoe1Keepers && window.OverlayPoe1Keepers.show) {
+            try { return await window.OverlayPoe1Keepers.show(); } catch {}
         }
     }
     function renderBases(groups){ if (window.OverlayBases && window.OverlayBases.render) { try { return window.OverlayBases.render(groups); } catch {} } }
@@ -2696,6 +2707,7 @@
                                 
                                 if (action === 'uniques' && subs.uniques) shouldShow = true;
                                 if (action === 'bases' && subs.bases) shouldShow = true;
+                                if (action === 'keepers' && subs.keepers) shouldShow = true;
                                 
                                 if (shouldShow) {
                                     anySubEnabled = true;
@@ -4266,6 +4278,11 @@ document.addEventListener('DOMContentLoaded', () => {
             setHeader('Bases');
             recordHeaderAction('Bases');
             markItemsAction('bases');
+        } else if (action === 'keepers') {
+            await showKeepers();
+            setHeader('Keepers');
+            recordHeaderAction('Keepers');
+            markItemsAction('keepers');
         }
     }
 

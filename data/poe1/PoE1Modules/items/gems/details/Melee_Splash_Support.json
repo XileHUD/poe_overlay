@@ -1,16 +1,7 @@
 {
   "name": "Melee Splash Support",
   "slug": "Melee_Splash_Support",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
-    "Acronym": "Melee",
-    "DropLevel": "8",
-    "BaseType": "Melee Splash Support",
-    "Class": "Support Gems",
-    "Icon": "S",
-    "ItemType": "Metadata/Items/Gems/SupportGemMeleeSplash",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
@@ -388,15 +379,15 @@
       ]
     },
     {
-      "text": "1% of Physical Attack Damage Leeched as Mana",
-      "values": [
-        "1"
-      ]
-    },
-    {
       "text": "Recover 5% of Life on Kill",
       "values": [
         "5"
+      ]
+    },
+    {
+      "text": "1% of Physical Attack Damage Leeched as Mana",
+      "values": [
+        "1"
       ]
     },
     {

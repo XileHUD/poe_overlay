@@ -1,25 +1,14 @@
 {
   "name": "Searing Bond",
   "slug": "Searing_Bond",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
-    "Acronym": "Totem, Modifiers",
-    "DropLevel": "12",
-    "BaseType": "Searing Bond",
-    "Class": "Skill Gems",
-    "TargetTypes": "Any,",
-    "Type": "Spell, DamageOverTime, Trappable, Mineable, TotemCastsAlone, CausesBurning, SummonsTotem, Triggerable, Fire, DegenOnlySpellDamage",
-    "ItemType": "Metadata/Items/Gems/SkillGemSearingBond",
-    "ActiveSkillsCode": "searing_bond",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "12",
       "Str": "21",
       "Int": "14",
-      "Cost": "18",
+      "Mana": "18",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "32.2",
       "Experience": "15,249"
@@ -29,7 +18,7 @@
       "Requires Level": "15",
       "Str": "25",
       "Int": "17",
-      "Cost": "19",
+      "Mana": "19",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "43.9",
       "Experience": "41,517"
@@ -39,7 +28,7 @@
       "Requires Level": "19",
       "Str": "30",
       "Int": "21",
-      "Cost": "20",
+      "Mana": "20",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "64.8",
       "Experience": "81,983"
@@ -49,7 +38,7 @@
       "Requires Level": "23",
       "Str": "35",
       "Int": "25",
-      "Cost": "21",
+      "Mana": "21",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "94",
       "Experience": "147,968"
@@ -59,7 +48,7 @@
       "Requires Level": "27",
       "Str": "41",
       "Int": "28",
-      "Cost": "23",
+      "Mana": "23",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "134.3",
       "Experience": "250,557"
@@ -69,7 +58,7 @@
       "Requires Level": "31",
       "Str": "46",
       "Int": "32",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "189.5",
       "Experience": "405,086"
@@ -79,7 +68,7 @@
       "Requires Level": "35",
       "Str": "51",
       "Int": "36",
-      "Cost": "27",
+      "Mana": "27",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "264.9",
       "Experience": "447,718"
@@ -89,7 +78,7 @@
       "Requires Level": "38",
       "Str": "55",
       "Int": "38",
-      "Cost": "29",
+      "Mana": "29",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "338.7",
       "Experience": "615,318"
@@ -99,7 +88,7 @@
       "Requires Level": "41",
       "Str": "59",
       "Int": "41",
-      "Cost": "31",
+      "Mana": "31",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "431.4",
       "Experience": "834,639"
@@ -109,7 +98,7 @@
       "Requires Level": "44",
       "Str": "63",
       "Int": "44",
-      "Cost": "33",
+      "Mana": "33",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "547.5",
       "Experience": "1,570,760"
@@ -119,7 +108,7 @@
       "Requires Level": "47",
       "Str": "67",
       "Int": "47",
-      "Cost": "35",
+      "Mana": "35",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "692.8",
       "Experience": "1,633,987"
@@ -129,7 +118,7 @@
       "Requires Level": "50",
       "Str": "71",
       "Int": "49",
-      "Cost": "37",
+      "Mana": "37",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "874.1",
       "Experience": "2,151,030"
@@ -139,7 +128,7 @@
       "Requires Level": "53",
       "Str": "75",
       "Int": "52",
-      "Cost": "39",
+      "Mana": "39",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "1100.1",
       "Experience": "2,812,189"
@@ -149,7 +138,7 @@
       "Requires Level": "56",
       "Str": "79",
       "Int": "55",
-      "Cost": "40",
+      "Mana": "40",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "1381.5",
       "Experience": "5,099,360"
@@ -159,7 +148,7 @@
       "Requires Level": "59",
       "Str": "83",
       "Int": "58",
-      "Cost": "42",
+      "Mana": "42",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "1731.1",
       "Experience": "9,400,731"
@@ -169,7 +158,7 @@
       "Requires Level": "62",
       "Str": "87",
       "Int": "60",
-      "Cost": "44",
+      "Mana": "44",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "2165.1",
       "Experience": "15,273,366"
@@ -179,7 +168,7 @@
       "Requires Level": "64",
       "Str": "90",
       "Int": "62",
-      "Cost": "46",
+      "Mana": "46",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "2510.9",
       "Experience": "26,286,582"
@@ -189,7 +178,7 @@
       "Requires Level": "66",
       "Str": "92",
       "Int": "64",
-      "Cost": "48",
+      "Mana": "48",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "2909.8",
       "Experience": "62,890,590"
@@ -199,7 +188,7 @@
       "Requires Level": "68",
       "Str": "95",
       "Int": "66",
-      "Cost": "50",
+      "Mana": "50",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "3369.6",
       "Experience": "212,046,017"
@@ -209,7 +198,7 @@
       "Requires Level": "70",
       "Str": "98",
       "Int": "68",
-      "Cost": "51",
+      "Mana": "51",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "3899.6",
       "Experience": ""
@@ -219,7 +208,7 @@
       "Requires Level": "72",
       "Str": "",
       "Int": "",
-      "Cost": "53",
+      "Mana": "53",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "4510.1",
       "Experience": ""
@@ -229,7 +218,7 @@
       "Requires Level": "74",
       "Str": "",
       "Int": "",
-      "Cost": "53",
+      "Mana": "53",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "5213",
       "Experience": ""
@@ -239,7 +228,7 @@
       "Requires Level": "76",
       "Str": "",
       "Int": "",
-      "Cost": "54",
+      "Mana": "54",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "6022.1",
       "Experience": ""
@@ -249,7 +238,7 @@
       "Requires Level": "78",
       "Str": "",
       "Int": "",
-      "Cost": "56",
+      "Mana": "56",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "6953",
       "Experience": ""
@@ -259,7 +248,7 @@
       "Requires Level": "80",
       "Str": "",
       "Int": "",
-      "Cost": "58",
+      "Mana": "58",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "8023.5",
       "Experience": ""
@@ -269,7 +258,7 @@
       "Requires Level": "82",
       "Str": "",
       "Int": "",
-      "Cost": "59",
+      "Mana": "59",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "9254.4",
       "Experience": ""
@@ -279,7 +268,7 @@
       "Requires Level": "84",
       "Str": "",
       "Int": "",
-      "Cost": "59",
+      "Mana": "59",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "10668.9",
       "Experience": ""
@@ -289,7 +278,7 @@
       "Requires Level": "86",
       "Str": "",
       "Int": "",
-      "Cost": "61",
+      "Mana": "61",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "12294.1",
       "Experience": ""
@@ -299,7 +288,7 @@
       "Requires Level": "88",
       "Str": "",
       "Int": "",
-      "Cost": "62",
+      "Mana": "62",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "14160.7",
       "Experience": ""
@@ -309,7 +298,7 @@
       "Requires Level": "90",
       "Str": "",
       "Int": "",
-      "Cost": "62",
+      "Mana": "62",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "16303.8",
       "Experience": ""
@@ -319,7 +308,7 @@
       "Requires Level": "91",
       "Str": "",
       "Int": "",
-      "Cost": "63",
+      "Mana": "63",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "17491.5",
       "Experience": ""
@@ -329,7 +318,7 @@
       "Requires Level": "92",
       "Str": "",
       "Int": "",
-      "Cost": "64",
+      "Mana": "64",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "18763.8",
       "Experience": ""
@@ -339,7 +328,7 @@
       "Requires Level": "93",
       "Str": "",
       "Int": "",
-      "Cost": "65",
+      "Mana": "65",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "20126.7",
       "Experience": ""
@@ -349,7 +338,7 @@
       "Requires Level": "94",
       "Str": "",
       "Int": "",
-      "Cost": "65",
+      "Mana": "65",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "21586.6",
       "Experience": ""
@@ -359,7 +348,7 @@
       "Requires Level": "95",
       "Str": "",
       "Int": "",
-      "Cost": "66",
+      "Mana": "66",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "23150.2",
       "Experience": ""
@@ -369,7 +358,7 @@
       "Requires Level": "96",
       "Str": "",
       "Int": "",
-      "Cost": "67",
+      "Mana": "67",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "24824.8",
       "Experience": ""
@@ -379,7 +368,7 @@
       "Requires Level": "97",
       "Str": "",
       "Int": "",
-      "Cost": "67",
+      "Mana": "67",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "26618.2",
       "Experience": ""
@@ -389,7 +378,7 @@
       "Requires Level": "98",
       "Str": "",
       "Int": "",
-      "Cost": "68",
+      "Mana": "68",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "28538.6",
       "Experience": ""
@@ -399,7 +388,7 @@
       "Requires Level": "99",
       "Str": "",
       "Int": "",
-      "Cost": "69",
+      "Mana": "69",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "30595",
       "Experience": ""
@@ -409,7 +398,7 @@
       "Requires Level": "100",
       "Str": "",
       "Int": "",
-      "Cost": "70",
+      "Mana": "70",
       "Base Damage": "100%, 100%",
       "Deals 32.2 Base Fire Damage per second": "32796.7",
       "Experience": ""

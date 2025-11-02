@@ -1,0 +1,897 @@
+{
+  "slug": "BloodlineAscendancy",
+  "total": 76,
+  "items": [
+    {
+      "name": "Chaos Bloodline",
+      "slug": "Chaos_Bloodline",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Chaos Bloodline",
+      "mods": [],
+      "imageLocal": "bloodline-passives/chaos_bloodline.webp"
+    },
+    {
+      "name": "Corruption's Embrace",
+      "slug": "Corruptions_Embrace",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Chaos Bloodline",
+      "mods": [
+        "You have Shepherd of Souls if at least 4 Corrupted Items are Equipped",
+        "You have Everlasting Sacrifice if at least 6 Corrupted Items are Equipped",
+        "You have Sacrifice of Blood if at least 8 Corrupted Items are Equipped",
+        "(Vaal Non-Aura Skills require 80% less Souls. Vaal Non-Aura Skills require 100% increased Souls per Vaal Skill used in the past 8 seconds)",
+        "(Life Recovery from Regeneration grants Blood Barrier while on Full Life. Maximum Blood Barrier is equal to 30% of your Maximum Life. Damage from Hits is taken from Blood Barrier before your Life or Energy Shield. 50% less Life Regeneration Rate)",
+        "(When you reach full Energy Shield, Sacrifice all Energy Shield to gain +5% to all Maximum Resistances for 4 seconds)"
+      ],
+      "imageLocal": "bloodline-passives/corruptions_embrace.webp"
+    },
+    {
+      "name": "Deceitful Servant",
+      "slug": "Deceitful_Servant",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Chaos Bloodline",
+      "mods": [],
+      "imageLocal": "bloodline-passives/deceitful_servant.webp"
+    },
+    {
+      "name": "Priest of Yaomac",
+      "slug": "Priest_of_Yaomac",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Chaos Bloodline",
+      "mods": [
+        "20% reduced Soul Gain Prevention Duration",
+        "Vaal Skills require 30% less Souls per Use",
+        "Vaal Skills have 20% chance to regain consumed Souls when used"
+      ],
+      "imageLocal": "bloodline-passives/priest_of_yaomac.webp"
+    },
+    {
+      "name": "Priest of Kopec",
+      "slug": "Priest_of_Kopec",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Chaos Bloodline",
+      "mods": [
+        "Vaal Skills deal 1% more Damage per Soul Required",
+        "Vaal Skills require 40% increased Souls per Use",
+        "Vaal Skills can store +1 Use"
+      ],
+      "imageLocal": "bloodline-passives/priest_of_kopec.webp"
+    },
+    {
+      "name": "Priest of Kamasa",
+      "slug": "Priest_of_Kamasa",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Chaos Bloodline",
+      "mods": [
+        "Vaal Skills have 50% increased Skill Effect Duration",
+        "Vaal Skills have 50% increased Area of Effect",
+        "50% increased Effect of Auras from your Vaal Skills"
+      ],
+      "imageLocal": "bloodline-passives/priest_of_kamasa.webp"
+    },
+    {
+      "name": "Life",
+      "slug": "Life",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Chaos Bloodline",
+      "mods": [
+        "8% increased maximum Life"
+      ],
+      "imageLocal": "bloodline-passives/life.webp"
+    },
+    {
+      "name": "Vaal Souls",
+      "slug": "Vaal_Souls",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Chaos Bloodline",
+      "mods": [
+        "Gain 1 Vaal Soul per second"
+      ],
+      "imageLocal": "bloodline-passives/vaal_souls.webp"
+    },
+    {
+      "name": "Oshabi Bloodline",
+      "slug": "Oshabi_Bloodline",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Oshabi Bloodline",
+      "mods": [],
+      "imageLocal": "bloodline-passives/oshabi_bloodline.webp"
+    },
+    {
+      "name": "The Primal Owl",
+      "slug": "The_Primal_Owl",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Oshabi Bloodline",
+      "mods": [
+        "Unsealed Spells gain 5% more Damage each time their effects Reoccur",
+        "Skills supported by Unleash have +3 to maximum number of Seals"
+      ],
+      "imageLocal": "bloodline-passives/the_primal_owl.webp"
+    },
+    {
+      "name": "Seal gain frequency",
+      "slug": "Seal_gain_frequency",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Oshabi Bloodline",
+      "mods": [
+        "Skills Supported by Unleash have 20% increased Seal gain frequency"
+      ],
+      "imageLocal": "bloodline-passives/seal_gain_frequency.webp"
+    },
+    {
+      "name": "The Wild Bear",
+      "slug": "The_Wild_Bear",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Oshabi Bloodline",
+      "mods": [
+        "+20 to Maximum Rage",
+        "Lose all Rage on reaching Maximum Rage and gain Wild Savageryfor 1 second per 10 Rage lost this way",
+        "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
+        "(Wild Savagery grants 100% increased Physical Damage, 10% increased Action Speed, Hits ignore Enemy Physical Damage Reduction and Cannot be Stunned)"
+      ],
+      "imageLocal": "bloodline-passives/the_wild_bear.webp"
+    },
+    {
+      "name": "Rage",
+      "slug": "Rage",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Oshabi Bloodline",
+      "mods": [
+        "Gain 2 Rage on Attack Hit",
+        "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
+        "(Only one Hit every 0.5 seconds can cause you to gain Rage)"
+      ],
+      "imageLocal": "bloodline-passives/rage.webp"
+    },
+    {
+      "name": "The Vivid Cat",
+      "slug": "The_Vivid_Cat",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Oshabi Bloodline",
+      "mods": [
+        "Elusive has 50% chance to be removed from you at 100% effect",
+        "50% increased Stealth while Elusive",
+        "(Elusive initially grants 15% chance to Avoid All Damage from Hits, and 30% increased Movement Speed. The buff reduces its effect over time, removing itself at 0% effect. If you already have an Elusive buff, you cannot gain Elusive)"
+      ],
+      "imageLocal": "bloodline-passives/the_vivid_cat.webp"
+    },
+    {
+      "name": "Elusive effect",
+      "slug": "Elusive_effect",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Oshabi Bloodline",
+      "mods": [
+        "20% increased Elusive Effect",
+        "(Elusive initially grants 15% chance to Avoid All Damage from Hits, and 30% increased Movement Speed. The buff reduces its effect over time, removing itself at 0% effect. If you already have an Elusive buff, you cannot gain Elusive)"
+      ],
+      "imageLocal": "bloodline-passives/elusive_effect.webp"
+    },
+    {
+      "name": "Nameless Bloodline",
+      "slug": "Nameless_Bloodline",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Nameless Bloodline",
+      "mods": [],
+      "imageLocal": "bloodline-passives/nameless_bloodline.webp"
+    },
+    {
+      "name": "The Unseen Hand",
+      "slug": "The_Unseen_Hand",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Nameless Bloodline",
+      "mods": [
+        "+1 Ring Slot"
+      ],
+      "imageLocal": "bloodline-passives/the_unseen_hand.webp"
+    },
+    {
+      "name": "Toad's Price",
+      "slug": "Toads_Price",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Nameless Bloodline",
+      "mods": [
+        "Unaffected by Poison",
+        "Utility Flasks are Disabled",
+        "(Debuffs you are Unaffected by can still be placed on you, but will not actually apply their effect)"
+      ],
+      "imageLocal": "bloodline-passives/toads_price.webp"
+    },
+    {
+      "name": "Serpent's Price",
+      "slug": "Serpents_Price",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Nameless Bloodline",
+      "mods": [
+        "Unaffected by Curses",
+        "Can't use Amulets",
+        "(Debuffs you are Unaffected by can still be placed on you, but will not actually apply their effect)"
+      ],
+      "imageLocal": "bloodline-passives/serpents_price.webp"
+    },
+    {
+      "name": "Beetle's Price",
+      "slug": "Beetles_Price",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Nameless Bloodline",
+      "mods": [
+        "Unaffected by Bleeding",
+        "Can't use Belts",
+        "(Debuffs you are Unaffected by can still be placed on you, but will not actually apply their effect)"
+      ],
+      "imageLocal": "bloodline-passives/beetles_price.webp"
+    },
+    {
+      "name": "Unlight Silhouette",
+      "slug": "Unlight_Silhouette",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Nameless Bloodline",
+      "mods": [
+        "Skills gain Added Chaos Damage equal to 20% of Life Cost, if Life Cost is not higher than the maximum you could spend",
+        "Skills gain a Base Life Cost equal to 100% of Base Mana Cost"
+      ],
+      "imageLocal": "bloodline-passives/unlight_silhouette.webp"
+    },
+    {
+      "name": "Life",
+      "slug": "Life",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Nameless Bloodline",
+      "mods": [
+        "8% increased maximum Life"
+      ],
+      "imageLocal": "bloodline-passives/life.webp"
+    },
+    {
+      "name": "Catarina Bloodline",
+      "slug": "Catarina_Bloodline",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Catarina Bloodline",
+      "mods": [],
+      "imageLocal": "bloodline-passives/catarina_bloodline.webp"
+    },
+    {
+      "name": "Death Offering",
+      "slug": "_Death_Offering",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Catarina Bloodline",
+      "mods": [
+        "50% increased effect of Offerings",
+        "Offerings Kill affected Damagable targets when Offering Duration expires"
+      ],
+      "imageLocal": "bloodline-passives/death_offering.webp"
+    },
+    {
+      "name": "Offering Duration",
+      "slug": "Offering_Duration",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Catarina Bloodline",
+      "mods": [
+        "Offering Skills have 20% increased Duration"
+      ],
+      "imageLocal": "bloodline-passives/offering_duration.webp"
+    },
+    {
+      "name": "Umbral Army",
+      "slug": "Umbral_Army",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Catarina Bloodline",
+      "mods": [
+        "2% increased Attack and Cast Speed per Summoned Raging Spirit",
+        "15% increased Attack Damage per Raised Zombie",
+        "10% increased Defences per Raised Spectre",
+        "2% increased Movement Speed per Summoned Phantasm",
+        "6% increased Spell Damage per Summoned Skeleton"
+      ],
+      "imageLocal": "bloodline-passives/umbral_army.webp"
+    },
+    {
+      "name": "Minion Life",
+      "slug": "Minion_Life",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Catarina Bloodline",
+      "mods": [
+        "Minions have 25% increased maximum Life"
+      ],
+      "imageLocal": "bloodline-passives/minion_life.webp"
+    },
+    {
+      "name": "Prolonged Servitude",
+      "slug": "Prolonged_Servitude",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Catarina Bloodline",
+      "mods": [
+        "Minions deal 15% more Damage while they are on Low Life",
+        "Minions cannot be Killed, but die 6 seconds after being reduced to 1 Life",
+        "(You are on Low Life if you have 50% of your Maximum Life or less)"
+      ],
+      "imageLocal": "bloodline-passives/prolonged_servitude.webp"
+    },
+    {
+      "name": "Minion Damage",
+      "slug": "Minion_Damage",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Catarina Bloodline",
+      "mods": [
+        "Minions deal 25% increased Damage"
+      ],
+      "imageLocal": "bloodline-passives/minion_damage.webp"
+    },
+    {
+      "name": "Aul Bloodline",
+      "slug": "Aul_Bloodline",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Aul Bloodline",
+      "mods": [],
+      "imageLocal": "bloodline-passives/aul_bloodline.webp"
+    },
+    {
+      "name": "Precursor's Release",
+      "slug": "_Precursors_Release",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Aul Bloodline",
+      "mods": [
+        "Action Speed cannot be modified to below Base Value if you have Equipped Boots with no Socketed Gems",
+        "Cannot be Stunned if you have an Equipped Helmet with no Socketed Gems",
+        "Elemental Ailments cannot be inflicted on you if you have an Equipped Body Armour with no Socketed Gems",
+        "Take no Extra Damage from Critical Strikes if you have Equipped Gloves with no Socketed Gems",
+        "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
+      ],
+      "imageLocal": "bloodline-passives/precursors_release.webp"
+    },
+    {
+      "name": "Defences",
+      "slug": "Defences",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Aul Bloodline",
+      "mods": [
+        "15% increased Global Defences",
+        "(Armour, Evasion Rating and Energy Shield are the standard Defences)"
+      ],
+      "imageLocal": "bloodline-passives/defences.webp"
+    },
+    {
+      "name": "Legacy of the King",
+      "slug": "Legacy_of_the_King",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Aul Bloodline",
+      "mods": [],
+      "imageLocal": "bloodline-passives/legacy_of_the_king.webp"
+    },
+    {
+      "name": "Charge Duration",
+      "slug": "Charge_Duration",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Aul Bloodline",
+      "mods": [
+        "30% increased Endurance, Frenzy and Power Charge Duration"
+      ],
+      "imageLocal": "bloodline-passives/charge_duration.webp"
+    },
+    {
+      "name": "The King's Contempt",
+      "slug": "The_Kings_Contempt",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Aul Bloodline",
+      "mods": [
+        "Discipline has 50% increased Aura Effect while you have no Power Charges",
+        "Wrath has 50% increased Aura Effect while at maximum Power Charges"
+      ],
+      "imageLocal": "bloodline-passives/the_kings_contempt.webp"
+    },
+    {
+      "name": "The King's Heritage",
+      "slug": "The_Kings_Heritage",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Aul Bloodline",
+      "mods": [
+        "Determination has 50% increased Aura Effect while you have no Endurance Charges",
+        "Anger has 50% increased Aura Effect while at maximum Endurance Charges"
+      ],
+      "imageLocal": "bloodline-passives/the_kings_heritage.webp"
+    },
+    {
+      "name": "The King's Might",
+      "slug": "The_Kings_Might",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Aul Bloodline",
+      "mods": [
+        "Grace has 50% increased Aura Effect while you have no Frenzy Charges",
+        "Hatred has 50% increased Aura Effect while at maximum Frenzy Charges"
+      ],
+      "imageLocal": "bloodline-passives/the_kings_might.webp"
+    },
+    {
+      "name": "Lycia Bloodline",
+      "slug": "Lycia_Bloodline",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Lycia Bloodline",
+      "mods": [],
+      "imageLocal": "bloodline-passives/lycia_bloodline.webp"
+    },
+    {
+      "name": "Bitter Heresy",
+      "slug": "Bitter_Heresy",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Lycia Bloodline",
+      "mods": [
+        "Create Profane Ground instead of Consecrated Ground",
+        "Profane Ground you create inflicts Malediction on Enemies",
+        "Profane Ground you create also affects you and your Allies, granting Chaotic Might",
+        "(Hits against Enemies on Profane Ground have 100% increased Critical Strike Chance, and Curses have 10% increased Effect on them)",
+        "(Malediction causes 10% reduced Damage dealt and 10% increased Damage taken)",
+        "(Chaotic Might grants 30% of Physical Damage as extra Chaos Damage)"
+      ],
+      "imageLocal": "bloodline-passives/bitter_heresy.webp"
+    },
+    {
+      "name": "Curse Effect",
+      "slug": "Curse_Effect",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Lycia Bloodline",
+      "mods": [
+        "10% increased Effect of your Curses"
+      ],
+      "imageLocal": "bloodline-passives/curse_effect.webp"
+    },
+    {
+      "name": "Sinner Saint",
+      "slug": "Sinner_Saint",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Lycia Bloodline",
+      "mods": [
+        "50% of Lightning Damage Converted to Chaos Damage",
+        "50% of Cold Damage Converted to Chaos Damage",
+        "50% of Fire Damage Converted to Chaos Damage"
+      ],
+      "imageLocal": "bloodline-passives/sinner_saint.webp"
+    },
+    {
+      "name": "Chaos Damage",
+      "slug": "Chaos_Damage",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Lycia Bloodline",
+      "mods": [
+        "25% increased Chaos Damage"
+      ],
+      "imageLocal": "bloodline-passives/chaos_damage.webp"
+    },
+    {
+      "name": "Farewell to Flesh",
+      "slug": "Farewell_to_Flesh",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Lycia Bloodline",
+      "mods": [
+        "Herald Skills have 2% more Buff Effect for every 1% of Maximum Mana they Reserve",
+        "Herald Skills and Minions from Herald Skills deal 1% more Damage for every 1% of Maximum Life those Skills Reserve"
+      ],
+      "imageLocal": "bloodline-passives/farewell_to_flesh.webp"
+    },
+    {
+      "name": "Herald and Minion Damage",
+      "slug": "Herald_and_Minion_Damage",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Lycia Bloodline",
+      "mods": [
+        "Herald Skills deal 20% increased Damage",
+        "Minions deal 20% increased Damage while you are affected by a Herald"
+      ],
+      "imageLocal": "bloodline-passives/herald_and_minion_damage.webp"
+    },
+    {
+      "name": "Olroth Bloodline",
+      "slug": "Olroth_Bloodline",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Olroth Bloodline",
+      "mods": [],
+      "imageLocal": "bloodline-passives/olroth_bloodline.webp"
+    },
+    {
+      "name": "Enhanced Starlight",
+      "slug": "Enhanced_Starlight",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Olroth Bloodline",
+      "mods": [
+        "Damage taken bypasses Unbroken Ward if the Hit deals less Damage than 15% of Ward",
+        "40% increased Ward from Equipped Armour Items"
+      ],
+      "imageLocal": "bloodline-passives/enhanced_starlight.webp"
+    },
+    {
+      "name": "Ward",
+      "slug": "Ward",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Olroth Bloodline",
+      "mods": [
+        "15% increased Ward from Equipped Armour Items"
+      ],
+      "imageLocal": "bloodline-passives/ward.webp"
+    },
+    {
+      "name": "Volatile Runes",
+      "slug": "Volatile_Runes",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Olroth Bloodline",
+      "mods": [
+        "Trigger Level 20 Ward Shatter when your Ward Breaks",
+        "has trigger when ward breaks [1]",
+        "track ward broken in the past 2 seconds [1]",
+        "(Explodes when your Ward is broken, dealing Physical Spell Damage around you equal to a percentage of your Ward and inflicting Enervation on Hit, a debuff that lowers Movement Speed by 20% and prevents Life and Energy Shield Recovery for 4 seconds)"
+      ],
+      "imageLocal": "bloodline-passives/volatile_runes.webp"
+    },
+    {
+      "name": "Runic Boon",
+      "slug": "Runic_Boon",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Olroth Bloodline",
+      "mods": [],
+      "imageLocal": "bloodline-passives/runic_boon.webp"
+    },
+    {
+      "name": "Boon of the River",
+      "slug": "Boon_of_the_River",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Olroth Bloodline",
+      "mods": [
+        "5% chance to Restore your Ward on Hit"
+      ],
+      "imageLocal": "bloodline-passives/boon_of_the_river.webp"
+    },
+    {
+      "name": "Boon of the Mountain",
+      "slug": "Boon_of_the_Mountain",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Olroth Bloodline",
+      "mods": [
+        "30% less Damage Taken from Damage over Time while you have Unbroken Ward"
+      ],
+      "imageLocal": "bloodline-passives/boon_of_the_mountain.webp"
+    },
+    {
+      "name": "Boon of the Sun",
+      "slug": "Boon_of_the_Sun",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Olroth Bloodline",
+      "mods": [
+        "20% faster Restoration of Ward per Enemy Hit taken Recently",
+        "(Recently refers to the past 4 seconds)"
+      ],
+      "imageLocal": "bloodline-passives/boon_of_the_sun.webp"
+    },
+    {
+      "name": "Farrul Bloodline",
+      "slug": "Farrul_Bloodline",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Farrul Bloodline",
+      "mods": [],
+      "imageLocal": "bloodline-passives/farrul_bloodline.webp"
+    },
+    {
+      "name": "Huntleader",
+      "slug": "Huntleader",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Farrul Bloodline",
+      "mods": [
+        "Trigger Level 20 Summon Spectral Tiger on Critical Strike",
+        "(Summons a spectral tiger companion that attacks nearby enemies and dies after a duration. Each spectral tiger grants you a buff that increases Critical Strike Chance, and increases Attack and Cast Speed. If you have the maximum number of them, refreshes the duration and life of an existing one instead)"
+      ],
+      "imageLocal": "bloodline-passives/huntleader.webp"
+    },
+    {
+      "name": "Minion Damage",
+      "slug": "Minion_Damage",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Farrul Bloodline",
+      "mods": [
+        "Minions deal 25% increased Damage"
+      ],
+      "imageLocal": "bloodline-passives/minion_damage.webp"
+    },
+    {
+      "name": "Primal Roar",
+      "slug": "Primal_Roar",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Farrul Bloodline",
+      "mods": [
+        "2% increased Attack Speed per Minion, up to a maximum of 80%",
+        "Minions deal 80% increased Damage if you have Warcried Recently"
+      ],
+      "imageLocal": "bloodline-passives/primal_roar.webp"
+    },
+    {
+      "name": "Warcry Speed",
+      "slug": "Warcry_Speed",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Farrul Bloodline",
+      "mods": [
+        "25% increased Warcry Speed"
+      ],
+      "imageLocal": "bloodline-passives/warcry_speed.webp"
+    },
+    {
+      "name": "Farrul's Will",
+      "slug": "Farruls_Will",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Farrul Bloodline",
+      "mods": [],
+      "imageLocal": "bloodline-passives/farruls_will.webp"
+    },
+    {
+      "name": "Farric Will",
+      "slug": "Farric_Will",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Farrul Bloodline",
+      "mods": [
+        "Raised Beast Spectres have Farrul's Farric Presence",
+        "Raised Beast Spectres have 3 additional modifiers randomly chosen in each Area",
+        "(Farrul's Farric Presence is an Aura which grants 80% increased Accuracy Rating, 120% increased Critical Strike Chance and Take no Extra Damage from Critical Hits)"
+      ],
+      "imageLocal": "bloodline-passives/farric_will.webp"
+    },
+    {
+      "name": "Fertile Will",
+      "slug": "Fertile_Will",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Farrul Bloodline",
+      "mods": [
+        "Raised Beast Spectres have Farrul's Fertile Presence",
+        "Raised Beast Spectres have 3 additional modifiers randomly chosen in each Area",
+        "(Farrul's Fertile Presence is an Aura which grants 100% increased Damage, Regenerate 3% of Life per second and Cannot be Stunned)"
+      ],
+      "imageLocal": "bloodline-passives/fertile_will.webp"
+    },
+    {
+      "name": "Wild Will",
+      "slug": "Wild_Will",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Farrul Bloodline",
+      "mods": [
+        "Raised Beast Spectres have Farrul's Wild Presence",
+        "Raised Beast Spectres have 3 additional modifiers randomly chosen in each Area",
+        "(Farrul's Wild Presence is an Aura which grants 20% increased Attack, Cast and Movement Speed and prevents Action Speed from being lowered below the Base Value)"
+      ],
+      "imageLocal": "bloodline-passives/wild_will.webp"
+    },
+    {
+      "name": "Maximum Spectres and Minion Life",
+      "slug": "Maximum_Spectres_and_Minion_Life",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Farrul Bloodline",
+      "mods": [
+        "Minions have 25% increased maximum Life",
+        "Maximum number of Raised Spectres is 1",
+        "can see monster type beasts [1]"
+      ],
+      "imageLocal": "bloodline-passives/maximum_spectres_and_minion_life.webp"
+    },
+    {
+      "name": "Delirious",
+      "slug": "Delirious",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Delirious Bloodline",
+      "mods": [],
+      "imageLocal": "bloodline-passives/delirious.webp"
+    },
+    {
+      "name": "You're the crazy one!",
+      "slug": "Youre_the_crazy_one!",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Delirious Bloodline",
+      "mods": [
+        "Grants Level 1 Embrace Madness Skill",
+        "While affected by Glorious Madness, inflict Mania on nearby Enemies every second",
+        "unique insanity do weird things [1]",
+        "(Grants Glorious Madness. While under Glorious Madness gain a random Touched Debuff every 2 seconds. Using this skill again will remove Glorious Madness and the Touched Debuffs it inflicts, but you will be unable to Embrace Madness again until the cooldown expires)",
+        "(Mania applies 4% increased Damage taken, 2% reduced Action Speed and 10% reduced Life and Energy Shield Recovery Rate for 15 seconds, and can be inflicted up to 15 times)"
+      ],
+      "imageLocal": "bloodline-passives/youre_the_crazy_one.webp"
+    },
+    {
+      "name": "Debuff Expiry Rate",
+      "slug": "Debuff_Expiry_Rate",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Delirious Bloodline",
+      "mods": [
+        "Debuffs on you expire 15% faster"
+      ],
+      "imageLocal": "bloodline-passives/debuff_expiry_rate.webp"
+    },
+    {
+      "name": "It wasn't me!",
+      "slug": "It_wasnt_me!",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Delirious Bloodline",
+      "mods": [
+        "Grants Level 20 Misty Reflection Skill",
+        "unique insanity do weird things [1]",
+        "(Dash backwards, leaving a short-lived mist copy of yourself that Taunts nearby Enemies for a short duration. The copy can be damaged by Enemies, and copies that are killed by an Enemy will apply a debuff in an area that makes affected targets take 30% increased Damage and deal 30% less Damage for 4 seconds)"
+      ],
+      "imageLocal": "bloodline-passives/it_wasnt_me.webp"
+    },
+    {
+      "name": "Cooldown Recovery Rate",
+      "slug": "Cooldown_Recovery_Rate",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Delirious Bloodline",
+      "mods": [
+        "15% increased Cooldown Recovery Rate"
+      ],
+      "imageLocal": "bloodline-passives/cooldown_recovery_rate.webp"
+    },
+    {
+      "name": "That didn't happen!",
+      "slug": "That_didnt_happen!",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Delirious Bloodline",
+      "mods": [
+        "Take 40% less Damage from Hits",
+        "Four seconds after each Hit you take, lose Life equal to 40% of the Damage taken from that Hit",
+        "Non-Cluster, Non-Passage Jewels Socketed in your Passive Skill Tree have no effect",
+        "unique insanity do weird things [1]"
+      ],
+      "imageLocal": "bloodline-passives/that_didnt_happen.webp"
+    },
+    {
+      "name": "Life Recovery rate",
+      "slug": "Life_Recovery_rate",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Delirious Bloodline",
+      "mods": [
+        "10% increased Life Recovery rate"
+      ],
+      "imageLocal": "bloodline-passives/life_recovery_rate.webp"
+    },
+    {
+      "name": "Breachlord",
+      "slug": "Breachlord",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Breachlord Bloodline",
+      "mods": [],
+      "imageLocal": "bloodline-passives/breachlord.webp"
+    },
+    {
+      "name": "Esh of the Storm",
+      "slug": "Esh_of_the_Storm",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Breachlord Bloodline",
+      "mods": [
+        "Your Hits ignore Enemy Monster Lightning Resistances if all Equipped Rings are Synaptic Rings",
+        "+2 to Level of all Lightning Skill Gems if at least 4 Foulborn Unique Items are Equipped",
+        "+30 to Intelligence"
+      ],
+      "imageLocal": "bloodline-passives/esh_of_the_storm.webp"
+    },
+    {
+      "name": "Lightning Damage",
+      "slug": "_Lightning_Damage",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Breachlord Bloodline",
+      "mods": [
+        "25% increased Lightning Damage"
+      ],
+      "imageLocal": "bloodline-passives/lightning_damage.webp"
+    },
+    {
+      "name": "Tul of the Blizzard",
+      "slug": "Tul_of_the_Blizzard",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Breachlord Bloodline",
+      "mods": [
+        "30% increased Freeze Duration on Enemies",
+        "+2 to Level of all Cold Skill Gems if at least 4 Foulborn Unique Items are Equipped",
+        "Your Hits ignore Enemy Monster Cold Resistances if all Equipped Rings are Cryonic Rings"
+      ],
+      "imageLocal": "bloodline-passives/tul_of_the_blizzard.webp"
+    },
+    {
+      "name": "Cold Damage",
+      "slug": "Cold_Damage",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Breachlord Bloodline",
+      "mods": [
+        "25% increased Cold Damage"
+      ],
+      "imageLocal": "bloodline-passives/cold_damage.webp"
+    },
+    {
+      "name": "Otherworldly Appendages",
+      "slug": "Otherworldly_Appendages",
+      "passiveType": "notable",
+      "groupLabel": "Bloodline",
+      "group": "Breachlord Bloodline",
+      "mods": [
+        "Take 15% less Lightning Damage with at least one Eshgraft grafted to you",
+        "Take 15% less Cold Damage with at least one Tulgraft grafted to you",
+        "Take 15% less Physical Damage with at least one Uulgraft grafted to you",
+        "Take 15% less Fire Damage with at least one Xophgraft grafted to you",
+        "Nearby Enemies take 100% increased Damage from Graft Skills"
+      ],
+      "imageLocal": "bloodline-passives/otherworldly_appendages.webp"
+    },
+    {
+      "name": "Maximum Life",
+      "slug": "Maximum_Life",
+      "passiveType": "basic",
+      "groupLabel": "Bloodline",
+      "group": "Breachlord Bloodline",
+      "mods": [
+        "8% increased maximum Life"
+      ],
+      "imageLocal": "bloodline-passives/maximum_life.webp"
+    }
+  ]
+}

@@ -1,24 +1,13 @@
 {
   "name": "Heavy Strike",
   "slug": "Heavy_Strike",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
-    "Acronym": "Stun",
-    "BaseType": "Heavy Strike",
-    "Class": "Skill Gems",
-    "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Warstaves",
-    "TargetTypes": "Ground, Enemy",
-    "Type": "Attack, MeleeSingleTarget, Multistrikeable, Melee",
-    "ItemType": "Metadata/Items/Gems/SkillGemHeavyStrike",
-    "ActiveSkillsCode": "heavy_strike",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "1",
       "Str": "0",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "224.3%, 224.3%",
       "20% chance to deal Double Damage": "20",
       "Experience": "70"
@@ -27,7 +16,7 @@
       "Level": "2",
       "Requires Level": "2",
       "Str": "0",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "234.1%, 234.1%",
       "20% chance to deal Double Damage": "21",
       "Experience": "308"
@@ -36,7 +25,7 @@
       "Level": "3",
       "Requires Level": "4",
       "Str": "16",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "244.9%, 244.9%",
       "20% chance to deal Double Damage": "22",
       "Experience": "1,554"
@@ -45,7 +34,7 @@
       "Level": "4",
       "Requires Level": "7",
       "Str": "22",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "256.5%, 256.5%",
       "20% chance to deal Double Damage": "23",
       "Experience": "6,667"
@@ -54,7 +43,7 @@
       "Level": "5",
       "Requires Level": "11",
       "Str": "31",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "269.3%, 269.3%",
       "20% chance to deal Double Damage": "24",
       "Experience": "26,047"
@@ -63,7 +52,7 @@
       "Level": "6",
       "Requires Level": "16",
       "Str": "41",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "283.1%, 283.1%",
       "20% chance to deal Double Damage": "25",
       "Experience": "49,725"
@@ -72,7 +61,7 @@
       "Level": "7",
       "Requires Level": "20",
       "Str": "50",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "297.1%, 297.1%",
       "20% chance to deal Double Damage": "26",
       "Experience": "95,714"
@@ -81,7 +70,7 @@
       "Level": "8",
       "Requires Level": "24",
       "Str": "58",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "311.8%, 311.8%",
       "20% chance to deal Double Damage": "27",
       "Experience": "169,595"
@@ -90,7 +79,7 @@
       "Level": "9",
       "Requires Level": "28",
       "Str": "67",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "327.3%, 327.3%",
       "20% chance to deal Double Damage": "28",
       "Experience": "283,759"
@@ -99,7 +88,7 @@
       "Level": "10",
       "Requires Level": "32",
       "Str": "75",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "343.3%, 343.3%",
       "20% chance to deal Double Damage": "29",
       "Experience": "453,996"
@@ -108,7 +97,7 @@
       "Level": "11",
       "Requires Level": "36",
       "Str": "83",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "360.3%, 360.3%",
       "20% chance to deal Double Damage": "30",
       "Experience": "703,128"
@@ -117,7 +106,7 @@
       "Level": "12",
       "Requires Level": "40",
       "Str": "92",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "378%, 378%",
       "20% chance to deal Double Damage": "31",
       "Experience": "1,061,223"
@@ -126,7 +115,7 @@
       "Level": "13",
       "Requires Level": "44",
       "Str": "100",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "396.6%, 396.6%",
       "20% chance to deal Double Damage": "32",
       "Experience": "2,065,870"
@@ -135,7 +124,7 @@
       "Level": "14",
       "Requires Level": "48",
       "Str": "109",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "416.1%, 416.1%",
       "20% chance to deal Double Damage": "33",
       "Experience": "2,507,110"
@@ -144,7 +133,7 @@
       "Level": "15",
       "Requires Level": "52",
       "Str": "117",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "436.5%, 436.5%",
       "20% chance to deal Double Damage": "34",
       "Experience": "5,798,936"
@@ -153,7 +142,7 @@
       "Level": "16",
       "Requires Level": "56",
       "Str": "125",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "458%, 458%",
       "20% chance to deal Double Damage": "35",
       "Experience": "15,083,919"
@@ -162,7 +151,7 @@
       "Level": "17",
       "Requires Level": "60",
       "Str": "134",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "480.4%, 480.4%",
       "20% chance to deal Double Damage": "36",
       "Experience": "27,792,735"
@@ -171,7 +160,7 @@
       "Level": "18",
       "Requires Level": "64",
       "Str": "142",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "503.9%, 503.9%",
       "20% chance to deal Double Damage": "37",
       "Experience": "43,869,739"
@@ -180,7 +169,7 @@
       "Level": "19",
       "Requires Level": "67",
       "Str": "148",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "527.7%, 527.7%",
       "20% chance to deal Double Damage": "38",
       "Experience": "242,081,556"
@@ -189,7 +178,7 @@
       "Level": "20",
       "Requires Level": "70",
       "Str": "155",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "552.5%, 552.5%",
       "20% chance to deal Double Damage": "39",
       "Experience": ""
@@ -198,7 +187,7 @@
       "Level": "21",
       "Requires Level": "72",
       "Str": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "577.7%, 577.7%",
       "20% chance to deal Double Damage": "40",
       "Experience": ""
@@ -207,7 +196,7 @@
       "Level": "22",
       "Requires Level": "74",
       "Str": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "604%, 604%",
       "20% chance to deal Double Damage": "41",
       "Experience": ""
@@ -216,7 +205,7 @@
       "Level": "23",
       "Requires Level": "76",
       "Str": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "631.3%, 631.3%",
       "20% chance to deal Double Damage": "42",
       "Experience": ""
@@ -225,7 +214,7 @@
       "Level": "24",
       "Requires Level": "78",
       "Str": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "660%, 660%",
       "20% chance to deal Double Damage": "43",
       "Experience": ""
@@ -234,7 +223,7 @@
       "Level": "25",
       "Requires Level": "80",
       "Str": "",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "689.9%, 689.9%",
       "20% chance to deal Double Damage": "44",
       "Experience": ""
@@ -243,7 +232,7 @@
       "Level": "26",
       "Requires Level": "82",
       "Str": "",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "721.2%, 721.2%",
       "20% chance to deal Double Damage": "45",
       "Experience": ""
@@ -252,7 +241,7 @@
       "Level": "27",
       "Requires Level": "84",
       "Str": "",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "754%, 754%",
       "20% chance to deal Double Damage": "46",
       "Experience": ""
@@ -261,7 +250,7 @@
       "Level": "28",
       "Requires Level": "86",
       "Str": "",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "788.1%, 788.1%",
       "20% chance to deal Double Damage": "47",
       "Experience": ""
@@ -270,7 +259,7 @@
       "Level": "29",
       "Requires Level": "88",
       "Str": "",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "823.8%, 823.8%",
       "20% chance to deal Double Damage": "48",
       "Experience": ""
@@ -279,7 +268,7 @@
       "Level": "30",
       "Requires Level": "90",
       "Str": "",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "861.1%, 861.1%",
       "20% chance to deal Double Damage": "49",
       "Experience": ""
@@ -288,7 +277,7 @@
       "Level": "31",
       "Requires Level": "91",
       "Str": "",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "917.7%, 917.7%",
       "20% chance to deal Double Damage": "49",
       "Experience": ""
@@ -297,7 +286,7 @@
       "Level": "32",
       "Requires Level": "92",
       "Str": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "938.4%, 938.4%",
       "20% chance to deal Double Damage": "50",
       "Experience": ""
@@ -306,7 +295,7 @@
       "Level": "33",
       "Requires Level": "93",
       "Str": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "959.7%, 959.7%",
       "20% chance to deal Double Damage": "50",
       "Experience": ""
@@ -315,7 +304,7 @@
       "Level": "34",
       "Requires Level": "94",
       "Str": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "981.4%, 981.4%",
       "20% chance to deal Double Damage": "51",
       "Experience": ""
@@ -324,7 +313,7 @@
       "Level": "35",
       "Requires Level": "95",
       "Str": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "1003.6%, 1003.6%",
       "20% chance to deal Double Damage": "51",
       "Experience": ""
@@ -333,7 +322,7 @@
       "Level": "36",
       "Requires Level": "96",
       "Str": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "1026.2%, 1026.2%",
       "20% chance to deal Double Damage": "52",
       "Experience": ""
@@ -342,7 +331,7 @@
       "Level": "37",
       "Requires Level": "97",
       "Str": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "1049.4%, 1049.4%",
       "20% chance to deal Double Damage": "52",
       "Experience": ""
@@ -351,7 +340,7 @@
       "Level": "38",
       "Requires Level": "98",
       "Str": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "1073.2%, 1073.2%",
       "20% chance to deal Double Damage": "53",
       "Experience": ""
@@ -360,7 +349,7 @@
       "Level": "39",
       "Requires Level": "99",
       "Str": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "1097.4%, 1097.4%",
       "20% chance to deal Double Damage": "53",
       "Experience": ""
@@ -369,7 +358,7 @@
       "Level": "40",
       "Requires Level": "100",
       "Str": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "1122.2%, 1122.2%",
       "20% chance to deal Double Damage": "54",
       "Experience": ""

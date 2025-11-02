@@ -1,129 +1,121 @@
 {
   "name": "Spectral Helix of Trarthus",
   "slug": "Spectral_Helix_of_Trarthus",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
-    "Acronym": "Ignite",
-    "BaseType": "Spectral Helix of Trarthus",
-    "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
-    "TargetTypes": "Ground, Enemy,",
-    "Type": "Attack, RangedAttack, Projectile, ProjectilesFromUser, Trapped",
-    "ActiveSkillsCode": "spectral_helix_alt_y"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "12",
       "Base Damage": "120%, 120%",
-      "Experience": "15,249"
+      "Experience": ""
     },
     {
       "Level": "2",
       "Requires Level": "15",
       "Base Damage": "124.4%, 124.4%",
-      "Experience": "41,517"
+      "Experience": ""
     },
     {
       "Level": "3",
       "Requires Level": "19",
       "Base Damage": "128.8%, 128.8%",
-      "Experience": "81,983"
+      "Experience": ""
     },
     {
       "Level": "4",
       "Requires Level": "23",
       "Base Damage": "133.3%, 133.3%",
-      "Experience": "147,968"
+      "Experience": ""
     },
     {
       "Level": "5",
       "Requires Level": "27",
       "Base Damage": "137.7%, 137.7%",
-      "Experience": "250,557"
+      "Experience": ""
     },
     {
       "Level": "6",
       "Requires Level": "31",
       "Base Damage": "142.1%, 142.1%",
-      "Experience": "405,086"
+      "Experience": ""
     },
     {
       "Level": "7",
       "Requires Level": "35",
       "Base Damage": "146.5%, 146.5%",
-      "Experience": "447,718"
+      "Experience": ""
     },
     {
       "Level": "8",
       "Requires Level": "38",
       "Base Damage": "150.9%, 150.9%",
-      "Experience": "615,318"
+      "Experience": ""
     },
     {
       "Level": "9",
       "Requires Level": "41",
       "Base Damage": "155.4%, 155.4%",
-      "Experience": "834,639"
+      "Experience": ""
     },
     {
       "Level": "10",
       "Requires Level": "44",
       "Base Damage": "159.8%, 159.8%",
-      "Experience": "1,570,760"
+      "Experience": ""
     },
     {
       "Level": "11",
       "Requires Level": "47",
       "Base Damage": "164.2%, 164.2%",
-      "Experience": "1,633,987"
+      "Experience": ""
     },
     {
       "Level": "12",
       "Requires Level": "50",
       "Base Damage": "168.6%, 168.6%",
-      "Experience": "2,151,030"
+      "Experience": ""
     },
     {
       "Level": "13",
       "Requires Level": "53",
       "Base Damage": "173.1%, 173.1%",
-      "Experience": "2,812,189"
+      "Experience": ""
     },
     {
       "Level": "14",
       "Requires Level": "56",
       "Base Damage": "177.5%, 177.5%",
-      "Experience": "5,099,360"
+      "Experience": ""
     },
     {
       "Level": "15",
       "Requires Level": "59",
       "Base Damage": "181.9%, 181.9%",
-      "Experience": "9,400,731"
+      "Experience": ""
     },
     {
       "Level": "16",
       "Requires Level": "62",
       "Base Damage": "186.3%, 186.3%",
-      "Experience": "15,273,366"
+      "Experience": ""
     },
     {
       "Level": "17",
       "Requires Level": "64",
       "Base Damage": "190.7%, 190.7%",
-      "Experience": "26,286,582"
+      "Experience": ""
     },
     {
       "Level": "18",
       "Requires Level": "66",
       "Base Damage": "195.2%, 195.2%",
-      "Experience": "62,890,590"
+      "Experience": ""
     },
     {
       "Level": "19",
       "Requires Level": "68",
       "Base Damage": "199.6%, 199.6%",
-      "Experience": "212,046,017"
+      "Experience": ""
     },
     {
       "Level": "20",
@@ -257,15 +249,15 @@
   "gemDescription": "Throws a trap which, once triggered, fires a spectral copy of your melee weapon. It spins around while flying in a large spiral, damaging enemies in its path, and bouncing if it collides with walls. If dual wielding, each Trap thrown will randomly use either the main hand or off hand weapon.",
   "explicitMods": [
     {
-      "text": "Throw up to 1 additional Trap if dual wielding",
-      "values": [
-        "1"
-      ]
-    },
-    {
       "text": "Trap lasts 4 seconds",
       "values": [
         "4"
+      ]
+    },
+    {
+      "text": "Throw up to 1 additional Trap if dual wielding",
+      "values": [
+        "1"
       ]
     },
     {
@@ -287,15 +279,15 @@
       ]
     },
     {
-      "text": "Throw up to 1 additional Trap if dual wielding",
-      "values": [
-        "1"
-      ]
-    },
-    {
       "text": "Trap lasts 4 seconds",
       "values": [
         "4"
+      ]
+    },
+    {
+      "text": "Throw up to 1 additional Trap if dual wielding",
+      "values": [
+        "1"
       ]
     },
     {
@@ -329,15 +321,19 @@
       "values": []
     },
     {
-      "text": "Throw up to 1 additional Trap if dual wielding",
-      "values": [
-        "1"
-      ]
+      "text": "projectiles ignore wall of force [1]",
+      "values": []
     },
     {
       "text": "Trap lasts +4 seconds",
       "values": [
         "+4"
+      ]
+    },
+    {
+      "text": "Throw up to 1 additional Trap if dual wielding",
+      "values": [
+        "1"
       ]
     },
     {
@@ -376,15 +372,15 @@
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "text": "Projectiles that have Pierced deal (0–20)% more Damage",
       "values": [
-        "(0–10)"
+        "(0–20)"
       ]
     },
     {
-      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "text": "Projectiles that have Pierced deal (0–20)% more Damage",
       "values": [
-        "(0–10)"
+        "(0–20)"
       ]
     }
   ]

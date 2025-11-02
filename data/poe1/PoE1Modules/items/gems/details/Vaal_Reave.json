@@ -1,20 +1,12 @@
 {
   "name": "Vaal Reave",
   "slug": "Vaal_Reave",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
-    "Acronym": "Ignite",
-    "BaseType": "Reave",
-    "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, Rune Daggers",
-    "TargetTypes": "Ground, Enemy",
-    "Type": "Attack, Area, Multistrikeable, Melee",
-    "ActiveSkillsCode": "reave"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "12",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "232.7%, 232.7%",
       "# metres to radius": "0",
       "Experience": ""
@@ -22,7 +14,7 @@
     {
       "Level": "2",
       "Requires Level": "15",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "243.1%, 243.1%",
       "# metres to radius": "0",
       "Experience": ""
@@ -30,7 +22,7 @@
     {
       "Level": "3",
       "Requires Level": "19",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "254.5%, 254.5%",
       "# metres to radius": "0",
       "Experience": ""
@@ -38,7 +30,7 @@
     {
       "Level": "4",
       "Requires Level": "23",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "266.4%, 266.4%",
       "# metres to radius": "0",
       "Experience": ""
@@ -46,7 +38,7 @@
     {
       "Level": "5",
       "Requires Level": "27",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "278.9%, 278.9%",
       "# metres to radius": "0",
       "Experience": ""
@@ -54,7 +46,7 @@
     {
       "Level": "6",
       "Requires Level": "31",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "291.8%, 291.8%",
       "# metres to radius": "0",
       "Experience": ""
@@ -62,7 +54,7 @@
     {
       "Level": "7",
       "Requires Level": "35",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "305.5%, 305.5%",
       "# metres to radius": "0",
       "Experience": ""
@@ -70,7 +62,7 @@
     {
       "Level": "8",
       "Requires Level": "38",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "319%, 319%",
       "# metres to radius": "0",
       "Experience": ""
@@ -78,7 +70,7 @@
     {
       "Level": "9",
       "Requires Level": "41",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "333.4%, 333.4%",
       "# metres to radius": "0",
       "Experience": ""
@@ -86,7 +78,7 @@
     {
       "Level": "10",
       "Requires Level": "44",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "348.3%, 348.3%",
       "# metres to radius": "0.1",
       "Experience": ""
@@ -94,7 +86,7 @@
     {
       "Level": "11",
       "Requires Level": "47",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "363.7%, 363.7%",
       "# metres to radius": "0.1",
       "Experience": ""
@@ -102,7 +94,7 @@
     {
       "Level": "12",
       "Requires Level": "50",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "380%, 380%",
       "# metres to radius": "0.1",
       "Experience": ""
@@ -110,7 +102,7 @@
     {
       "Level": "13",
       "Requires Level": "53",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "396.9%, 396.9%",
       "# metres to radius": "0.1",
       "Experience": ""
@@ -118,7 +110,7 @@
     {
       "Level": "14",
       "Requires Level": "56",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "414.6%, 414.6%",
       "# metres to radius": "0.1",
       "Experience": ""
@@ -126,7 +118,7 @@
     {
       "Level": "15",
       "Requires Level": "59",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "433.1%, 433.1%",
       "# metres to radius": "0.1",
       "Experience": ""
@@ -134,7 +126,7 @@
     {
       "Level": "16",
       "Requires Level": "62",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "452.3%, 452.3%",
       "# metres to radius": "0.1",
       "Experience": ""
@@ -142,7 +134,7 @@
     {
       "Level": "17",
       "Requires Level": "64",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "471.6%, 471.6%",
       "# metres to radius": "0.1",
       "Experience": ""
@@ -150,7 +142,7 @@
     {
       "Level": "18",
       "Requires Level": "66",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "491.8%, 491.8%",
       "# metres to radius": "0.1",
       "Experience": ""
@@ -158,7 +150,7 @@
     {
       "Level": "19",
       "Requires Level": "68",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "512.7%, 512.7%",
       "# metres to radius": "0.1",
       "Experience": ""
@@ -166,7 +158,7 @@
     {
       "Level": "20",
       "Requires Level": "70",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "534.6%, 534.6%",
       "# metres to radius": "0.2",
       "Experience": ""
@@ -174,7 +166,7 @@
     {
       "Level": "21",
       "Requires Level": "72",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "557.5%, 557.5%",
       "# metres to radius": "0.2",
       "Experience": ""
@@ -182,7 +174,7 @@
     {
       "Level": "22",
       "Requires Level": "74",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "581.3%, 581.3%",
       "# metres to radius": "0.2",
       "Experience": ""
@@ -190,7 +182,7 @@
     {
       "Level": "23",
       "Requires Level": "76",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "606%, 606%",
       "# metres to radius": "0.2",
       "Experience": ""
@@ -198,7 +190,7 @@
     {
       "Level": "24",
       "Requires Level": "78",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "631.9%, 631.9%",
       "# metres to radius": "0.2",
       "Experience": ""
@@ -206,7 +198,7 @@
     {
       "Level": "25",
       "Requires Level": "80",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "658.8%, 658.8%",
       "# metres to radius": "0.2",
       "Experience": ""
@@ -214,7 +206,7 @@
     {
       "Level": "26",
       "Requires Level": "82",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "686.9%, 686.9%",
       "# metres to radius": "0.2",
       "Experience": ""
@@ -222,7 +214,7 @@
     {
       "Level": "27",
       "Requires Level": "84",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "716.2%, 716.2%",
       "# metres to radius": "0.2",
       "Experience": ""
@@ -230,7 +222,7 @@
     {
       "Level": "28",
       "Requires Level": "86",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "746.7%, 746.7%",
       "# metres to radius": "0.2",
       "Experience": ""
@@ -238,7 +230,7 @@
     {
       "Level": "29",
       "Requires Level": "88",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "778.5%, 778.5%",
       "# metres to radius": "0.2",
       "Experience": ""
@@ -246,7 +238,7 @@
     {
       "Level": "30",
       "Requires Level": "90",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "811.6%, 811.6%",
       "# metres to radius": "0.3",
       "Experience": ""
@@ -254,7 +246,7 @@
     {
       "Level": "31",
       "Requires Level": "91",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "861.5%, 861.5%",
       "# metres to radius": "0.3",
       "Experience": ""
@@ -262,7 +254,7 @@
     {
       "Level": "32",
       "Requires Level": "92",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "879.8%, 879.8%",
       "# metres to radius": "0.3",
       "Experience": ""
@@ -270,7 +262,7 @@
     {
       "Level": "33",
       "Requires Level": "93",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "898.5%, 898.5%",
       "# metres to radius": "0.3",
       "Experience": ""
@@ -278,7 +270,7 @@
     {
       "Level": "34",
       "Requires Level": "94",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "917.6%, 917.6%",
       "# metres to radius": "0.3",
       "Experience": ""
@@ -286,7 +278,7 @@
     {
       "Level": "35",
       "Requires Level": "95",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "937%, 937%",
       "# metres to radius": "0.3",
       "Experience": ""
@@ -294,7 +286,7 @@
     {
       "Level": "36",
       "Requires Level": "96",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "956.9%, 956.9%",
       "# metres to radius": "0.3",
       "Experience": ""
@@ -302,7 +294,7 @@
     {
       "Level": "37",
       "Requires Level": "97",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "977.3%, 977.3%",
       "# metres to radius": "0.3",
       "Experience": ""
@@ -310,7 +302,7 @@
     {
       "Level": "38",
       "Requires Level": "98",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "998.1%, 998.1%",
       "# metres to radius": "0.3",
       "Experience": ""
@@ -318,7 +310,7 @@
     {
       "Level": "39",
       "Requires Level": "99",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "1019.2%, 1019.2%",
       "# metres to radius": "0.3",
       "Experience": ""
@@ -326,7 +318,7 @@
     {
       "Level": "40",
       "Requires Level": "100",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "1040.9%, 1040.9%",
       "# metres to radius": "0.3",
       "Experience": ""

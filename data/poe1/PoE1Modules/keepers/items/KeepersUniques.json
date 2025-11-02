@@ -1,0 +1,431 @@
+{
+  "slug": "KeepersUniques",
+  "total": 25,
+  "items": [
+    {
+      "name": "Bitter Instinct",
+      "slug": "Bitter_Instinct",
+      "baseType": "Spiny Round Shield",
+      "implicitMods": [
+        "60% increased Block Recovery"
+      ],
+      "explicitMods": [
+        "(170-250)% increased Armour and Evasion",
+        "Reflects (200-300) Physical Damage to Melee Attackers",
+        "Retaliation Skills deal (50-100)% increased Damage",
+        "Retaliation Skills become Usable for (50-100)% longer",
+        "Damaging Retaliation Skills become Usable every 4 seconds"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/bitter_instinct.webp"
+    },
+    {
+      "name": "Bonemeld",
+      "slug": "Bonemeld",
+      "baseType": "Marble Amulet",
+      "implicitMods": [
+        "Regenerate (1.2-1.6)% of Life per second"
+      ],
+      "explicitMods": [
+        "+(10-20) to all Attributes",
+        "+(1-2) to Level of all Minion Skill Gems",
+        "-2% to all Resistances per Minion from your Non-Vaal Skills",
+        "(3-4)% increased Defences per Minion from your Non-Vaal Skills",
+        "Minions gain added Resistances equal to 50% of your Resistances",
+        "(Attributes are Strength, Dexterity, and Intelligence)",
+        "(Armour, Evasion Rating and Energy Shield are the standard Defences)"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/bonemeld.webp"
+    },
+    {
+      "name": "Cowards' Wail",
+      "slug": "Cowards_Wail",
+      "baseType": "Ezomyte Tower Shield",
+      "implicitMods": [
+        "+(30-40) to maximum Life"
+      ],
+      "explicitMods": [
+        "(120-240)% increased Armour",
+        "+(5-10)% Chance to Block",
+        "Totems which would be killed by Enemies become Spectral Totems for 8 seconds instead",
+        "Skills used by Spectral Totems deal (40-50)% less Damage",
+        "Maximum (3-5) Spectral Totems",
+        "Unwavering Stance",
+        "(Spectral Totems are intangible, untargetable, and undamageable, have 1 maximum Life, and cannot Taunt enemies. They are no longer counted as Summoned Totems, but modifiers that affect Totems also affect Spectral Totems)",
+        "(Cannot Evade enemy Attacks. Cannot be Stunned)"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/cowards_wail.webp"
+    },
+    {
+      "name": "Festering Resentment",
+      "slug": "Festering_Resentment",
+      "baseType": "Demon Dagger",
+      "implicitMods": [
+        "40% increased Global Critical Strike Chance"
+      ],
+      "explicitMods": [
+        "Trigger a Socketed Spell when you Block, with a 0.25 second Cooldown",
+        "+(30-45)% Chance to Block Spell Damage while in Off Hand",
+        "(100-150)% increased Spell Damage",
+        "(100-150)% increased Damage with Poison",
+        "Triggered Spells Poison on Hit",
+        "All Damage with Triggered Spells can Poison"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/festering_resentment.webp"
+    },
+    {
+      "name": "Hand of the Lords",
+      "slug": "Hand_of_the_Lords",
+      "baseType": "Carnal Mitts",
+      "implicitMods": [],
+      "explicitMods": [
+        "You cannot Cast Socketed Hex Curse SkillsInflict Socketed Hexes on Enemies that trigger your Traps",
+        "Grants Level 30 Will of the Lords Skill",
+        "400% increased Attribute Requirements",
+        "(120-160)% increased Evasion and Energy Shield",
+        "(6-12)% increased Trap Throwing Speed",
+        "Can have up to (3-5) additional Traps placed at a time",
+        "(Attributes are Strength, Dexterity, and Intelligence)"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/hand_of_the_lords.webp"
+    },
+    {
+      "name": "Haunting Memories",
+      "slug": "Haunting_Memories",
+      "baseType": "Turquoise Amulet",
+      "implicitMods": [
+        "+(16-24) to Dexterity and Intelligence"
+      ],
+      "explicitMods": [
+        "+(6-10)% chance to Suppress Spell Damage",
+        "+(20-30) to Dexterity and Intelligence",
+        "(50-100)% of Suppressed Spell Damage taken bypasses Energy Shield",
+        "(50-100)% of Suppressed Spell Damage taken Recouped as Energy Shield",
+        "+(40-60) to maximum Energy Shield",
+        "+(40-60) to maximum Life",
+        "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
+        "(Only Damage from Hits can be Recouped, over 4 seconds following the Hit)"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/haunting_memories.webp"
+    },
+    {
+      "name": "Jiquani's Potential",
+      "slug": "Jiquanis_Potential",
+      "baseType": "Imperial Staff",
+      "implicitMods": [
+        "+25% Chance to Block Spell Damage while wielding a Staff"
+      ],
+      "explicitMods": [
+        "(1-7)% increased Intelligence",
+        "(-17-17)% reduced maximum Life",
+        "31% increased Cost of Skills",
+        "1 to (31-53) Spell Lightning Damage per 10 Intelligence",
+        "Blood Magic",
+        "(Removes all mana. 10% more maximum Life. Skills Cost Life instead of Mana. Skills Reserve Life instead of Mana)"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/jiquanis_potential.webp"
+    },
+    {
+      "name": "Lost Unity",
+      "slug": "Lost_Unity",
+      "baseType": "Formless Ring",
+      "implicitMods": [
+        "(5-7)% increased Global Defences"
+      ],
+      "explicitMods": [
+        "Grants Level 30 Herald of the Hive Skill",
+        "+(10-20)% to all Elemental Resistances",
+        "+(23-37)% to Chaos Resistance"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/lost_unity.webp"
+    },
+    {
+      "name": "Refuge in Isolation",
+      "slug": "Refuge_in_Isolation",
+      "baseType": "Paladin Crown",
+      "implicitMods": [],
+      "explicitMods": [
+        "(350-650)% increased Armour",
+        "(-50--40)% to all Elemental Resistances",
+        "+(13-29)% to Chaos Resistance",
+        "(15-30)% of Elemental Damage from Hits taken as Physical Damage",
+        "Physical Damage of Enemies Hitting you is Unlucky",
+        "(Unlucky things are rolled twice and the worst result used)"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/refuge_in_isolation.webp"
+    },
+    {
+      "name": "Rigwald's Hunt",
+      "slug": "Rigwalds_Hunt",
+      "baseType": "General's Brigandine",
+      "implicitMods": [],
+      "explicitMods": [
+        "(160-200)% increased Armour and Evasion",
+        "Minions have (20-30)% increased Movement Speed",
+        "Minions have 1% chance to deal Double Damage per Fortification on you",
+        "(30-40)% increased Fortification Duration",
+        "Minions have (6-12)% increased Attack Speed",
+        "Increases and Reductions to Minion Maximum Life also apply to you at 15% of their value"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/rigwalds_hunt.webp"
+    },
+    {
+      "name": "The Caged Mammoth",
+      "slug": "The_Caged_Mammoth",
+      "baseType": "Antique Gauntlets",
+      "implicitMods": [],
+      "explicitMods": [
+        "Adds (6-10) to (16-22) Physical Damage to Attacks",
+        "(8-16)% increased Attack Speed",
+        "(80-120)% increased Armour",
+        "Lose (1-3) Rage per second",
+        "5% less Damage taken per 5 Rage, up to a maximum of 30%",
+        "Maximum Rage is Halved",
+        "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/the_caged_mammoth.webp"
+    },
+    {
+      "name": "The Golden Charlatan",
+      "slug": "The_Golden_Charlatan",
+      "baseType": null,
+      "implicitMods": [],
+      "explicitMods": [],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/the_golden_charlatan.webp"
+    },
+    {
+      "name": "The Grey Wind",
+      "slug": "The_Grey_Wind",
+      "baseType": "Spectral Axe",
+      "implicitMods": [],
+      "explicitMods": [
+        "(30-50)% increased Fire Damage",
+        "Attacks with this Weapon have Added Fire Damage equal to (8-12)% of Player's Maximum Life",
+        "Each Rage also grants +2% to Fire Damage Over Time Multiplier",
+        "Nearby Enemies have Fire Exposure while at maximum Rage",
+        "(-5-5) to Maximum Rage",
+        "(Fire Exposure applies -10% to Fire Resistance for 4 seconds)",
+        "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/the_grey_wind.webp"
+    },
+    {
+      "name": "The Hallowed Monarch",
+      "slug": "The_Hallowed_Monarch",
+      "baseType": "Faithful Helmet",
+      "implicitMods": [],
+      "explicitMods": [
+        "(150-230)% increased Armour",
+        "+(25-35)% to all Elemental Resistances",
+        "50% increased Light Radius",
+        "Link Skills can target Damageable Minions",
+        "Your Linked Minions take (65-75)% less Damage",
+        "On Killing a Rare monster, a random Linked Minion gains its Modifiers for 60 seconds"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/the_hallowed_monarch.webp"
+    },
+    {
+      "name": "The Monastery Bell",
+      "slug": "The_Monastery_Bell",
+      "baseType": "Dream Mace",
+      "implicitMods": [
+        "10% reduced Enemy Stun Threshold"
+      ],
+      "explicitMods": [
+        "(50-75)% increased Physical Damage",
+        "Adds (5-9) to (13-18) Physical Damage",
+        "(6-10)% increased Attack Speed",
+        "Chance to Block is Unlucky",
+        "Count as Blocking Attack Damage from the first target Hit with each Shield Attack",
+        "(Unlucky things are rolled twice and the worst result used)"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/the_monastery_bell.webp"
+    },
+    {
+      "name": "The Sundered Will",
+      "slug": "The_Sundered_Will",
+      "baseType": "Fugitive Ring",
+      "implicitMods": [
+        "+2% to maximum Chaos ResistanceCannot roll Modifiers of Non-Chaos Damage Types"
+      ],
+      "explicitMods": [
+        "+(7-13) to all Attributes",
+        "Adds (7-11) to (17-23) Chaos Damage",
+        "+(13-29)% to Chaos Resistance",
+        "(20-30)% increased Area of Effect of Aura Skills",
+        "(20-35)% reduced Reservation Efficiency of Skills",
+        "Increases and Reductions to Chaos Damage also apply to Effect ofAuras from Chaos Skills at (10-15)% of their value, up to a maximum of 150%",
+        "(Attributes are Strength, Dexterity, and Intelligence)"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/the_sundered_will.webp"
+    },
+    {
+      "name": "The Unseen Hue",
+      "slug": "The_Unseen_Hue",
+      "baseType": "Opal Ring",
+      "implicitMods": [
+        "(15-25)% increased Elemental Damage"
+      ],
+      "explicitMods": [
+        "+(5-30)% to Fire Resistance",
+        "+(5-30)% to Cold Resistance",
+        "+(5-30)% to Lightning Resistance",
+        "(6-12)% increased Attack and Cast Speed",
+        "(10-20)% increased Effect of Non-Damaging Ailments",
+        "Hits with Prismatic Skills always Scorch",
+        "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
+        "(Scorched Enemies have their Elemental Resistances lowered by up to 30%, based on the Fire Damage of the Hit, for 4 seconds)"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/the_unseen_hue.webp"
+    },
+    {
+      "name": "The Will of Esh",
+      "slug": "The_Will_of_Esh",
+      "baseType": "Synaptic Ring",
+      "implicitMods": [
+        "+2% to maximum Lightning ResistanceCannot roll Modifiers of Non-Lightning Damage Types"
+      ],
+      "explicitMods": [
+        "+(15-25) to Intelligence",
+        "Adds (1-2) to (43-56) Lightning Damage",
+        "+(20-30)% to Lightning Resistance",
+        "(20-30)% increased Area of Effect of Aura Skills",
+        "(20-35)% reduced Reservation Efficiency of Skills",
+        "Increases and Reductions to Lightning Damage also apply to Effect ofAuras from Lightning Skills at (10-15)% of their value, up to a maximum of 150%"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/the_will_of_esh.webp"
+    },
+    {
+      "name": "The Will of Tul",
+      "slug": "The_Will_of_Tul",
+      "baseType": "Cryonic Ring",
+      "implicitMods": [
+        "+2% to maximum Cold ResistanceCannot roll Modifiers of Non-Cold Damage Types"
+      ],
+      "explicitMods": [
+        "+(15-25) to Dexterity",
+        "Adds (8-12) to (18-26) Cold Damage",
+        "+(20-30)% to Cold Resistance",
+        "(20-30)% increased Area of Effect of Aura Skills",
+        "(20-35)% reduced Reservation Efficiency of Skills",
+        "Increases and Reductions to Cold Damage also apply to Effect ofAuras from Cold Skills at (10-15)% of their value, up to a maximum of 150%"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/the_will_of_tul.webp"
+    },
+    {
+      "name": "The Will of Uul-Netol",
+      "slug": "The_Will_of_Uul-Netol",
+      "baseType": "Organic Ring",
+      "implicitMods": [
+        "3% additional Physical Damage ReductionCannot roll Modifiers of Non-Physical Damage Types"
+      ],
+      "explicitMods": [
+        "+(15-25) to Strength",
+        "Adds (8-12) to (14-20) Physical Damage",
+        "(20-30)% increased Armour",
+        "(20-30)% increased Area of Effect of Aura Skills",
+        "(20-35)% reduced Reservation Efficiency of Skills",
+        "Increases and Reductions to Physical Damage also apply to Effect ofAuras from Physical Skills at (10-15)% of their value, up to a maximum of 150%"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/the_will_of_uul_netol.webp"
+    },
+    {
+      "name": "The Will of Xoph",
+      "slug": "The_Will_of_Xoph",
+      "baseType": "Enthalpic Ring",
+      "implicitMods": [
+        "+2% to maximum Fire ResistanceCannot roll Modifiers of Non-Fire Damage Types"
+      ],
+      "explicitMods": [
+        "+(15-25) to Strength",
+        "Adds (10-14) to (26-34) Fire Damage",
+        "+(20-30)% to Fire Resistance",
+        "(20-30)% increased Area of Effect of Aura Skills",
+        "(20-35)% reduced Reservation Efficiency of Skills",
+        "Increases and Reductions to Fire Damage also apply to Effect ofAuras from Fire Skills at (10-15)% of their value, up to a maximum of 150%"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/the_will_of_xoph.webp"
+    },
+    {
+      "name": "Unlight Extant",
+      "slug": "Unlight_Extant",
+      "baseType": "Sage Wand",
+      "implicitMods": [
+        "(17-21)% increased Spell Damage"
+      ],
+      "explicitMods": [
+        "(31-43)% increased Chaos Damage",
+        "(7-13)% increased Cast Speed",
+        "+1 to Level of all Chaos Spell Skill Gems",
+        "Chaos Skills inflict up to 15 Withered Debuffs on Hit for (5-7) seconds",
+        "Cannot Inflict Wither on targets that are not on Full Life",
+        "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/unlight_extant.webp"
+    },
+    {
+      "name": "Wellwater Phylactery",
+      "slug": "Wellwater_Phylactery",
+      "baseType": "Colossal Mana Flask",
+      "implicitMods": [],
+      "explicitMods": [
+        "(150-200)% increased Amount Recovered",
+        "(40-60)% less Duration",
+        "(200-300)% increased Charges per use",
+        "Removes (10-15)% of Life when Used",
+        "Starts Energy Shield Recharge when Used",
+        "Energy Shield Recharge is not delayed by Damage during Effect"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/wellwater_phylactery.webp"
+    },
+    {
+      "name": "Wing of the Wyvern",
+      "slug": "Wing_of_the_Wyvern",
+      "baseType": null,
+      "implicitMods": [],
+      "explicitMods": [],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/wing_of_the_wyvern.webp"
+    },
+    {
+      "name": "Woespike",
+      "slug": "Woespike",
+      "baseType": "Steel Ring",
+      "implicitMods": [
+        "Adds (3-4) to (10-14) Physical Damage to Attacks"
+      ],
+      "explicitMods": [
+        "+(25-40) to Strength and Dexterity",
+        "Adds (8-12) to (18-24) Physical Damage to Attacks",
+        "(10-20)% chance to Impale Enemies on Hit with Attacks",
+        "(25-40)% reduced Impale Duration",
+        "(45-60)% chance on Melee Hit for the Strongest Impale on target to last for 1 additional Hit",
+        "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+      ],
+      "flavourText": [],
+      "imageLocal": "keepers-uniques/woespike.webp"
+    }
+  ]
+}

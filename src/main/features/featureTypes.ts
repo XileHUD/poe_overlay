@@ -49,6 +49,7 @@ export interface ItemsSubcategories {
 export interface Poe1ItemsSubcategories {
   uniques: boolean;
   bases: boolean;
+  keepers: boolean;
 }
 
 export interface ToolsSubcategories {
@@ -157,7 +158,8 @@ export const DEFAULT_FEATURES: FeatureConfig = {
     enabled: true,
     subcategories: {
       uniques: true,
-      bases: true
+      bases: true,
+      keepers: true
     }
   },
   tools: {
@@ -237,7 +239,8 @@ export const MINIMAL_FEATURES: FeatureConfig = {
     enabled: false,
     subcategories: {
       uniques: false,
-      bases: false
+      bases: false,
+      keepers: false
     }
   },
   tools: {
@@ -316,7 +319,8 @@ export const ALL_FEATURES: FeatureConfig = {
     enabled: true,
     subcategories: {
       uniques: true,
-      bases: true
+      bases: true,
+      keepers: true
     }
   },
   tools: {

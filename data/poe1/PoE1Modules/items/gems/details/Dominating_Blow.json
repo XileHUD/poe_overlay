@@ -1,26 +1,14 @@
 {
   "name": "Dominating Blow",
   "slug": "Dominating_Blow",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xOrb of Chance",
-    "Acronym": "Hit, Sentinel",
-    "DropLevel": "28",
-    "BaseType": "Dominating Blow",
-    "Class": "Skill Gems",
-    "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Rune Daggers, Warstaves",
-    "TargetTypes": "Ground, Enemy",
-    "Type": "Attack, Minion, Duration, MinionsCanExplode, MeleeSingleTarget, Multistrikeable, Melee, CreatesMinion",
-    "ItemType": "Metadata/Items/Gems/SkillGemDominatingBlow",
-    "ActiveSkillsCode": "dominating_blow",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "28",
       "Str": "42",
       "Int": "29",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "249.8%, 249.8%",
       "Minion Level": "2",
       "Experience": "199,345"
@@ -30,7 +18,7 @@
       "Requires Level": "31",
       "Str": "46",
       "Int": "32",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "258.3%, 258.3%",
       "Minion Level": "4",
       "Experience": "285,815"
@@ -40,7 +28,7 @@
       "Requires Level": "34",
       "Str": "50",
       "Int": "35",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "267.1%, 267.1%",
       "Minion Level": "6",
       "Experience": "401,344"
@@ -50,7 +38,7 @@
       "Requires Level": "37",
       "Str": "54",
       "Int": "37",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "276.1%, 276.1%",
       "Minion Level": "8",
       "Experience": "554,379"
@@ -60,7 +48,7 @@
       "Requires Level": "40",
       "Str": "58",
       "Int": "40",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "285.5%, 285.5%",
       "Minion Level": "10",
       "Experience": "477,437"
@@ -70,7 +58,7 @@
       "Requires Level": "42",
       "Str": "61",
       "Int": "42",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "294.7%, 294.7%",
       "Minion Level": "12",
       "Experience": "583,786"
@@ -80,7 +68,7 @@
       "Requires Level": "44",
       "Str": "63",
       "Int": "44",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "304.2%, 304.2%",
       "Minion Level": "14",
       "Experience": "710,359"
@@ -90,7 +78,7 @@
       "Requires Level": "46",
       "Str": "66",
       "Int": "46",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "314%, 314%",
       "Minion Level": "16",
       "Experience": "1,355,511"
@@ -100,7 +88,7 @@
       "Requires Level": "48",
       "Str": "69",
       "Int": "48",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "324.1%, 324.1%",
       "Minion Level": "18",
       "Experience": "1,138,877"
@@ -110,7 +98,7 @@
       "Requires Level": "50",
       "Str": "71",
       "Int": "49",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "334.5%, 334.5%",
       "Minion Level": "20",
       "Experience": "1,368,233"
@@ -120,7 +108,7 @@
       "Requires Level": "52",
       "Str": "74",
       "Int": "51",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "345.3%, 345.3%",
       "Minion Level": "22",
       "Experience": "1,638,338"
@@ -130,7 +118,7 @@
       "Requires Level": "54",
       "Str": "76",
       "Int": "53",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "356.3%, 356.3%",
       "Minion Level": "24",
       "Experience": "1,956,648"
@@ -140,7 +128,7 @@
       "Requires Level": "56",
       "Str": "79",
       "Int": "55",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "367.8%, 367.8%",
       "Minion Level": "26",
       "Experience": "3,655,184"
@@ -150,7 +138,7 @@
       "Requires Level": "58",
       "Str": "82",
       "Int": "57",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "379.6%, 379.6%",
       "Minion Level": "28",
       "Experience": "3,017,327"
@@ -160,7 +148,7 @@
       "Requires Level": "60",
       "Str": "84",
       "Int": "59",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "391.8%, 391.8%",
       "Minion Level": "30",
       "Experience": "7,759,995"
@@ -170,7 +158,7 @@
       "Requires Level": "62",
       "Str": "87",
       "Int": "60",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "404.4%, 404.4%",
       "Minion Level": "32",
       "Experience": "15,138,193"
@@ -180,7 +168,7 @@
       "Requires Level": "64",
       "Str": "90",
       "Int": "62",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "417.4%, 417.4%",
       "Minion Level": "34",
       "Experience": "26,083,825"
@@ -190,7 +178,7 @@
       "Requires Level": "66",
       "Str": "92",
       "Int": "64",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "430.7%, 430.7%",
       "Minion Level": "36",
       "Experience": "62,620,247"
@@ -200,7 +188,7 @@
       "Requires Level": "68",
       "Str": "95",
       "Int": "66",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "444.5%, 444.5%",
       "Minion Level": "38",
       "Experience": "211,708,088"
@@ -210,7 +198,7 @@
       "Requires Level": "70",
       "Str": "98",
       "Int": "68",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "458.7%, 458.7%",
       "Minion Level": "40",
       "Experience": ""
@@ -220,7 +208,7 @@
       "Requires Level": "72",
       "Str": "",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "473.5%, 473.5%",
       "Minion Level": "42",
       "Experience": ""
@@ -230,7 +218,7 @@
       "Requires Level": "74",
       "Str": "",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "488.6%, 488.6%",
       "Minion Level": "44",
       "Experience": ""
@@ -240,7 +228,7 @@
       "Requires Level": "76",
       "Str": "",
       "Int": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "504.2%, 504.2%",
       "Minion Level": "46",
       "Experience": ""
@@ -250,7 +238,7 @@
       "Requires Level": "78",
       "Str": "",
       "Int": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "520.4%, 520.4%",
       "Minion Level": "48",
       "Experience": ""
@@ -260,7 +248,7 @@
       "Requires Level": "80",
       "Str": "",
       "Int": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "537%, 537%",
       "Minion Level": "50",
       "Experience": ""
@@ -270,7 +258,7 @@
       "Requires Level": "82",
       "Str": "",
       "Int": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "554.2%, 554.2%",
       "Minion Level": "52",
       "Experience": ""
@@ -280,7 +268,7 @@
       "Requires Level": "84",
       "Str": "",
       "Int": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "571.9%, 571.9%",
       "Minion Level": "54",
       "Experience": ""
@@ -290,7 +278,7 @@
       "Requires Level": "86",
       "Str": "",
       "Int": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "590.2%, 590.2%",
       "Minion Level": "56",
       "Experience": ""
@@ -300,7 +288,7 @@
       "Requires Level": "88",
       "Str": "",
       "Int": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "609%, 609%",
       "Minion Level": "58",
       "Experience": ""
@@ -310,7 +298,7 @@
       "Requires Level": "90",
       "Str": "",
       "Int": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "628.4%, 628.4%",
       "Minion Level": "60",
       "Experience": ""
@@ -320,7 +308,7 @@
       "Requires Level": "91",
       "Str": "",
       "Int": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "656.7%, 656.7%",
       "Minion Level": "62",
       "Experience": ""
@@ -330,7 +318,7 @@
       "Requires Level": "92",
       "Str": "",
       "Int": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "667.2%, 667.2%",
       "Minion Level": "64",
       "Experience": ""
@@ -340,7 +328,7 @@
       "Requires Level": "93",
       "Str": "",
       "Int": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "677.9%, 677.9%",
       "Minion Level": "66",
       "Experience": ""
@@ -350,7 +338,7 @@
       "Requires Level": "94",
       "Str": "",
       "Int": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "688.7%, 688.7%",
       "Minion Level": "68",
       "Experience": ""
@@ -360,7 +348,7 @@
       "Requires Level": "95",
       "Str": "",
       "Int": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "699.6%, 699.6%",
       "Minion Level": "70",
       "Experience": ""
@@ -370,7 +358,7 @@
       "Requires Level": "96",
       "Str": "",
       "Int": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "710.7%, 710.7%",
       "Minion Level": "72",
       "Experience": ""
@@ -380,7 +368,7 @@
       "Requires Level": "97",
       "Str": "",
       "Int": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "722.1%, 722.1%",
       "Minion Level": "74",
       "Experience": ""
@@ -390,7 +378,7 @@
       "Requires Level": "98",
       "Str": "",
       "Int": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "733.6%, 733.6%",
       "Minion Level": "76",
       "Experience": ""
@@ -400,7 +388,7 @@
       "Requires Level": "99",
       "Str": "",
       "Int": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "745.3%, 745.3%",
       "Minion Level": "78",
       "Experience": ""
@@ -410,7 +398,7 @@
       "Requires Level": "100",
       "Str": "",
       "Int": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "757.1%, 757.1%",
       "Minion Level": "80",
       "Experience": ""

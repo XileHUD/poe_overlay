@@ -129,12 +129,15 @@ function renderList(): void {
   const panel = ensurePanel();
   if (!state.cache) return;
 
-  // Handle both old structure (with SkillGemsGem/SupportGemsGem/AwakenedGem) and new structure (flat array)
+  // Handle multiple structure formats:
+  // state.cache should be either:
+  // 1. Array of gem objects (current structure after IPC loads data.gems)
+  // 2. Object with SkillGemsGem/SupportGemsGem/AwakenedGem (old legacy structure)
   let allGems: Gem[] = [];
   if (Array.isArray(state.cache)) {
-    // New structure: state.cache is directly the gems array
+    // Direct array of gems (current structure)
     allGems = state.cache;
-  } else if (!Array.isArray(state.cache) && (state.cache.SkillGemsGem || state.cache.SupportGemsGem || state.cache.AwakenedGem)) {
+  } else if (state.cache.SkillGemsGem || state.cache.SupportGemsGem || state.cache.AwakenedGem) {
     // Old structure: gems organized by type
     allGems = [
       ...(state.cache.SkillGemsGem || []),
@@ -146,17 +149,59 @@ function renderList(): void {
     allGems = [];
   }
 
+  console.log('[Gems] Total gems loaded:', allGems.length);
+  console.log('[Gems] Sample gem:', allGems[0]);
+
   state.selectedTags.clear();
   state.tagCounts = {};
 
   const tagCounts: Record<string, number> = {};
 
+  // Generate smart tags from gem names and descriptions if tags don't exist
   allGems.forEach(gem => {
-    const tags = Array.isArray(gem.tags) ? gem.tags : [];
+    let tags = Array.isArray(gem.tags) && gem.tags.length > 0 ? gem.tags : [];
+    
+    // If no tags, generate them from name and description
+    if (tags.length === 0) {
+      const smartTags: string[] = [];
+      const text = `${gem.name || ''} ${(gem as any).description || ''}`.toLowerCase();
+      
+      // Damage types
+      if (/\b(fire|burning|ignite|flame)\b/.test(text)) smartTags.push('Fire');
+      if (/\b(cold|chill|freeze|frost|ice)\b/.test(text)) smartTags.push('Cold');
+      if (/\b(lightning|shock|electric)\b/.test(text)) smartTags.push('Lightning');
+      if (/\b(chaos|poison|wither)\b/.test(text)) smartTags.push('Chaos');
+      if (/\b(physical|bleed|impale)\b/.test(text)) smartTags.push('Physical');
+      
+      // Skill types
+      if (/\b(attack|weapon|melee|bow|strike|slam|shot)\b/.test(text)) smartTags.push('Attack');
+      if (/\b(spell|cast|nova|blast|bolt)\b/.test(text)) smartTags.push('Spell');
+      if (/\b(minion|summon|zombie|skeleton|spectre|golem)\b/.test(text)) smartTags.push('Minion');
+      if (/\b(aura|banner|stance)\b/.test(text)) smartTags.push('Aura');
+      if (/\b(curse|hex|mark)\b/.test(text)) smartTags.push('Curse');
+      if (/\b(trap|mine)\b/.test(text)) smartTags.push('Trap/Mine');
+      if (/\b(totem)\b/.test(text)) smartTags.push('Totem');
+      if (/\b(warcry|cry)\b/.test(text)) smartTags.push('Warcry');
+      if (/\b(movement|travel|dash|leap|blink)\b/.test(text)) smartTags.push('Movement');
+      if (/\b(guard|block|shield|armour)\b/.test(text)) smartTags.push('Defence');
+      
+      // Support indicators
+      if (gem.name && /support/i.test(gem.name)) smartTags.push('Support');
+      if (gem.name && /awakened/i.test(gem.name)) smartTags.push('Awakened');
+      if (gem.name && /vaal/i.test(gem.name)) smartTags.push('Vaal');
+      
+      tags = smartTags;
+      // Store generated tags back to gem for consistency
+      (gem as any).tags = smartTags;
+    }
+    
     tags.forEach(tag => {
       tagCounts[tag] = (tagCounts[tag] || 0) + 1;
     });
   });
+
+  console.log('[Gems] Tag counts:', tagCounts);
+  console.log('[Gems] Total unique tags:', Object.keys(tagCounts).length);
 
   state.tagCounts = { ...tagCounts };
 
@@ -170,7 +215,7 @@ function renderList(): void {
       <div id='gemTypeFilters' style='display:flex; gap:6px; justify-content:center; margin-bottom:8px; flex-wrap:wrap;'></div>
       <div id='gemTagFilters' style='display:flex; gap:4px; flex-wrap:wrap; justify-content:center;'></div>
     </div>
-    <div id='gemsWrap' style='display:grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap:10px;'></div>`;
+    <div id='gemsWrap' style='display:grid; grid-template-columns: repeat(2, 1fr); gap:16px;'></div>`;
   
   state.input = panel.querySelector('#gemsSearch') as HTMLInputElement | null;
   const wrap = panel.querySelector('#gemsWrap') as HTMLElement | null;
@@ -182,8 +227,9 @@ function renderList(): void {
   let tagsExpanded = false; // Track Show More/Less state for gem tags
 
   function getGemType(gem: Gem): string {
-    if (gem.isTransfigured) return 'Transfigured';
     const name = gem.name || '';
+    // Check for isTransfigured property OR name pattern " of "
+    if (gem.isTransfigured || / of /.test(name)) return 'Transfigured';
     if (name.startsWith('Awakened ')) return 'Awakened';
     if (name.endsWith(' Support') || name.includes(' Support ')) return 'Support';
     return 'Skill';
@@ -350,11 +396,11 @@ function renderList(): void {
   function applyFilter() {
     const query = (state.input?.value || '').toLowerCase().trim();
     
-    // Get all gems from cache (handle both new flat array and old structure)
+    // Get all gems from cache
     let allGems: Gem[] = [];
     if (Array.isArray(state.cache)) {
       allGems = state.cache;
-    } else if (state.cache && !Array.isArray(state.cache)) {
+    } else if (state.cache && (state.cache.SkillGemsGem || state.cache.SupportGemsGem || state.cache.AwakenedGem)) {
       // Old structure with separate arrays
       allGems = [
         ...(state.cache.SkillGemsGem || []),
@@ -388,59 +434,141 @@ function renderList(): void {
     }
     state.filtered.forEach(gem => {
       const card = document.createElement('div');
-      card.style.background = 'var(--bg-card)';
+      card.style.background = 'linear-gradient(135deg, rgba(30,36,42,0.95), rgba(20,24,28,0.95))';
       card.style.border = '2px solid rgba(144,164,174,0.3)';
-      card.style.borderRadius = '6px';
-      card.style.padding = '8px';
+      card.style.borderRadius = '8px';
+      card.style.padding = '16px';
       card.style.display = 'flex';
-      card.style.gap = '8px';
+      card.style.flexDirection = 'row';
+      card.style.gap = '16px';
       card.style.alignItems = 'flex-start';
-      card.style.minHeight = '70px';
       card.style.cursor = 'pointer';
-      card.style.transition = 'transform 0.15s, box-shadow 0.15s, border-color 0.15s';
-      card.style.background = 'var(--bg-secondary)';
+      card.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease';
+      card.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
       
       card.addEventListener('mouseenter', () => {
         card.style.transform = 'translateY(-2px)';
-        card.style.boxShadow = '0 4px 12px rgba(0,0,0,0.4)';
-        card.style.borderColor = 'rgba(144,164,174,0.6)';
+        card.style.boxShadow = '0 6px 16px rgba(0,0,0,0.5)';
+        card.style.borderColor = 'rgba(144,164,174,0.7)';
+        card.style.background = 'linear-gradient(135deg, rgba(35,42,50,0.95), rgba(25,30,36,0.95))';
       });
       card.addEventListener('mouseleave', () => {
         card.style.transform = '';
-        card.style.boxShadow = '';
+        card.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
         card.style.borderColor = 'rgba(144,164,174,0.3)';
+        card.style.background = 'linear-gradient(135deg, rgba(30,36,42,0.95), rgba(20,24,28,0.95))';
       });
       card.addEventListener('click', () => {
         if (gem.slug) showDetail(gem.slug);
       });
       
-      const orig = gem.imageLocal ? `poe1/${gem.imageLocal}` : '';
-      const imgHtml = orig ? `<img class='gem-img' src='${TRANSPARENT_PLACEHOLDER}' data-orig-src='${orig}' decoding='async' style='width:48px; height:48px; object-fit:contain; flex-shrink:0;'>` : '<div style="width:48px; height:48px; flex-shrink:0;"></div>';
-      const colorStyle = gem.color ? `color:${gem.color};` : '';
-      const tags = Array.isArray(gem.tags) ? gem.tags : [];
-      const description = (gem as any).description || '';
-      const descriptionHtml = description ? `<div style='font-size:11px; color:var(--text-secondary); line-height:1.4; margin-bottom:4px;'>${description}</div>` : '';
-      const tagsHtml = tags.map((t:string)=>`<span style='display:inline-block; padding:1px 4px; margin:1px 2px 0 0; font-size:9px; border-radius:3px; background:rgba(144,164,174,0.18); border:1px solid rgba(144,164,174,0.4); color:var(--text-secondary);'>${t}</span>`).join('');
+      // Left side: Image
+      const imgWrap = document.createElement('div');
+      imgWrap.style.flex = '0 0 auto';
+      imgWrap.style.display = 'flex';
+      imgWrap.style.alignItems = 'center';
+      imgWrap.style.justifyContent = 'center';
       
-      card.innerHTML = `
-        ${imgHtml}
-        <div style='flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; position:relative;'>
-          <div style='display:flex; align-items:center; justify-content:space-between; gap:4px;'>
-            <div style='font-weight:600; font-size:13px; ${colorStyle} flex:1; min-width:0;'>${gem.name||''}</div>
-            <div style='display:inline-flex; align-items:center; gap:3px; padding:2px 6px; background:rgba(66,165,245,0.15); border:1px solid rgba(66,165,245,0.4); border-radius:4px; font-size:9px; font-weight:600; color:#42A5F5; white-space:nowrap; flex-shrink:0;'>
-              <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor" style="opacity:0.8;">
-                <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
-                <path d="M1.5 8a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-13 0zM8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
-              </svg>
-              Details
-            </div>
-          </div>
-          ${descriptionHtml}
-          ${tagsHtml ? `<div style='margin-top:2px;'>${tagsHtml}</div>` : ''}
-        </div>`;
+      const img = document.createElement('img');
+      img.className = 'gem-img';
+      img.src = TRANSPARENT_PLACEHOLDER;
+      const orig = gem.imageLocal ? `poe1/${gem.imageLocal}` : '';
+      if (orig) img.setAttribute('data-orig-src', orig);
+      img.decoding = 'async';
+      img.style.width = '96px';
+      img.style.height = '96px';
+      img.style.objectFit = 'contain';
+      img.style.borderRadius = '8px';
+      img.style.background = 'rgba(255,255,255,0.03)';
+      img.style.padding = '8px';
+      img.style.border = '1px solid rgba(255,255,255,0.1)';
+      
+      imgWrap.appendChild(img);
+      card.appendChild(imgWrap);
+      
+      // Right side: Content
+      const contentBlock = document.createElement('div');
+      contentBlock.style.flex = '1';
+      contentBlock.style.display = 'flex';
+      contentBlock.style.flexDirection = 'column';
+      contentBlock.style.gap = '8px';
+      contentBlock.style.minWidth = '0';
+      
+      // Header with name and details chip
+      const header = document.createElement('div');
+      header.style.display = 'flex';
+      header.style.alignItems = 'center';
+      header.style.justifyContent = 'space-between';
+      header.style.gap = '8px';
+      header.style.paddingBottom = '8px';
+      header.style.borderBottom = '1px solid rgba(144,164,174,0.2)';
+      
+      const nameDiv = document.createElement('div');
+      nameDiv.style.fontWeight = '600';
+      nameDiv.style.fontSize = '16px';
+      nameDiv.style.flex = '1';
+      nameDiv.style.minWidth = '0';
+      if (gem.color) nameDiv.style.color = gem.color;
+      nameDiv.textContent = gem.name || '';
+      header.appendChild(nameDiv);
+      
+      const detailsChip = document.createElement('div');
+      detailsChip.style.display = 'inline-flex';
+      detailsChip.style.alignItems = 'center';
+      detailsChip.style.gap = '3px';
+      detailsChip.style.padding = '3px 8px';
+      detailsChip.style.background = 'rgba(66,165,245,0.15)';
+      detailsChip.style.border = '1px solid rgba(66,165,245,0.4)';
+      detailsChip.style.borderRadius = '4px';
+      detailsChip.style.fontSize = '10px';
+      detailsChip.style.fontWeight = '600';
+      detailsChip.style.color = '#42A5F5';
+      detailsChip.style.whiteSpace = 'nowrap';
+      detailsChip.style.flexShrink = '0';
+      detailsChip.innerHTML = `Details <span style="margin-left:3px;">→</span>`;
+      header.appendChild(detailsChip);
+      
+      contentBlock.appendChild(header);
+      
+      // Description
+      const description = (gem as any).description || '';
+      if (description) {
+        const descDiv = document.createElement('div');
+        descDiv.style.fontSize = '13px';
+        descDiv.style.color = 'var(--text-secondary)';
+        descDiv.style.lineHeight = '1.5';
+        descDiv.textContent = description;
+        contentBlock.appendChild(descDiv);
+      }
+      
+      // Tags
+      const tags = Array.isArray(gem.tags) ? gem.tags : [];
+      if (tags.length > 0) {
+        const tagsDiv = document.createElement('div');
+        tagsDiv.style.display = 'flex';
+        tagsDiv.style.flexWrap = 'wrap';
+        tagsDiv.style.gap = '4px';
+        
+        tags.forEach((tag: string) => {
+          const tagSpan = document.createElement('span');
+          tagSpan.style.display = 'inline-block';
+          tagSpan.style.padding = '2px 6px';
+          tagSpan.style.fontSize = '10px';
+          tagSpan.style.borderRadius = '3px';
+          tagSpan.style.background = 'rgba(144,164,174,0.18)';
+          tagSpan.style.border = '1px solid rgba(144,164,174,0.4)';
+          tagSpan.style.color = 'var(--text-secondary)';
+          tagSpan.textContent = tag;
+          tagsDiv.appendChild(tagSpan);
+        });
+        
+        contentBlock.appendChild(tagsDiv);
+      }
+      
+      card.appendChild(contentBlock);
       wrap.appendChild(card);
     });
-    bindImageFallback(wrap, '.gem-img', '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><rect width="48" height="48" rx="4" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="12" font-family="sans-serif">?</text></svg>', 0.5);
+    bindImageFallback(wrap, '.gem-img', '<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 48 48"><rect width="48" height="48" rx="4" fill="#222"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#555" font-size="12" font-family="sans-serif">?</text></svg>', 0.5);
   }
 
   const backBtn = panel.querySelector('#gemsBackBtn') as HTMLButtonElement | null;
@@ -1143,7 +1271,8 @@ async function findGemSlugByName(gemName: string): Promise<string | null> {
     let allGems: Gem[] = [];
     if (Array.isArray(state.cache)) {
       allGems = state.cache;
-    } else if (state.cache && !Array.isArray(state.cache) && (state.cache.SkillGemsGem || state.cache.SupportGemsGem || state.cache.AwakenedGem)) {
+    } else if (state.cache && (state.cache.SkillGemsGem || state.cache.SupportGemsGem || state.cache.AwakenedGem)) {
+      // Old structure with separate arrays
       allGems = [
         ...(state.cache.SkillGemsGem || []),
         ...(state.cache.SupportGemsGem || []),

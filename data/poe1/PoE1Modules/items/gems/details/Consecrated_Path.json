@@ -1,26 +1,14 @@
 {
   "name": "Consecrated Path",
   "slug": "Consecrated_Path",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xOrb of Chance",
-    "Acronym": "Hit",
-    "DropLevel": "28",
-    "BaseType": "Consecrated Path",
-    "Class": "Skill Gems",
-    "Weapon": "One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Unarmed, Warstaves",
-    "TargetTypes": "Ground, ,",
-    "Type": "Melee, Attack, Area, Movement, Triggerable, Damage, Duration, Fire, Slam, Totemable",
-    "ItemType": "Metadata/Items/Gems/SkillGemConsecratedPath",
-    "ActiveSkillsCode": "consecrated_path",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "28",
       "Str": "42",
       "Int": "29",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "227%, 227%",
       "Experience": "199,345"
     },
@@ -29,7 +17,7 @@
       "Requires Level": "31",
       "Str": "46",
       "Int": "32",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "234.7%, 234.7%",
       "Experience": "285,815"
     },
@@ -38,7 +26,7 @@
       "Requires Level": "34",
       "Str": "50",
       "Int": "35",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "242.8%, 242.8%",
       "Experience": "401,344"
     },
@@ -47,7 +35,7 @@
       "Requires Level": "37",
       "Str": "54",
       "Int": "37",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "251.1%, 251.1%",
       "Experience": "554,379"
     },
@@ -56,7 +44,7 @@
       "Requires Level": "40",
       "Str": "58",
       "Int": "40",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "259.6%, 259.6%",
       "Experience": "477,437"
     },
@@ -65,7 +53,7 @@
       "Requires Level": "42",
       "Str": "61",
       "Int": "42",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "267.9%, 267.9%",
       "Experience": "583,786"
     },
@@ -74,7 +62,7 @@
       "Requires Level": "44",
       "Str": "63",
       "Int": "44",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "276.6%, 276.6%",
       "Experience": "710,359"
     },
@@ -83,7 +71,7 @@
       "Requires Level": "46",
       "Str": "66",
       "Int": "46",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "285.4%, 285.4%",
       "Experience": "1,355,511"
     },
@@ -92,7 +80,7 @@
       "Requires Level": "48",
       "Str": "69",
       "Int": "48",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "294.7%, 294.7%",
       "Experience": "1,138,877"
     },
@@ -101,7 +89,7 @@
       "Requires Level": "50",
       "Str": "71",
       "Int": "49",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "304.1%, 304.1%",
       "Experience": "1,368,233"
     },
@@ -110,7 +98,7 @@
       "Requires Level": "52",
       "Str": "74",
       "Int": "51",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "313.9%, 313.9%",
       "Experience": "1,638,338"
     },
@@ -119,7 +107,7 @@
       "Requires Level": "54",
       "Str": "76",
       "Int": "53",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "323.9%, 323.9%",
       "Experience": "1,956,648"
     },
@@ -128,7 +116,7 @@
       "Requires Level": "56",
       "Str": "79",
       "Int": "55",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "334.4%, 334.4%",
       "Experience": "3,655,184"
     },
@@ -137,7 +125,7 @@
       "Requires Level": "58",
       "Str": "82",
       "Int": "57",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "345.1%, 345.1%",
       "Experience": "3,017,327"
     },
@@ -146,7 +134,7 @@
       "Requires Level": "60",
       "Str": "84",
       "Int": "59",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "356.1%, 356.1%",
       "Experience": "7,759,995"
     },
@@ -155,7 +143,7 @@
       "Requires Level": "62",
       "Str": "87",
       "Int": "60",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "367.6%, 367.6%",
       "Experience": "15,138,193"
     },
@@ -164,7 +152,7 @@
       "Requires Level": "64",
       "Str": "90",
       "Int": "62",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "379.4%, 379.4%",
       "Experience": "26,083,825"
     },
@@ -173,7 +161,7 @@
       "Requires Level": "66",
       "Str": "92",
       "Int": "64",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "391.5%, 391.5%",
       "Experience": "62,620,247"
     },
@@ -182,7 +170,7 @@
       "Requires Level": "68",
       "Str": "95",
       "Int": "66",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "404.1%, 404.1%",
       "Experience": "211,708,088"
     },
@@ -191,7 +179,7 @@
       "Requires Level": "70",
       "Str": "98",
       "Int": "68",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "417%, 417%",
       "Experience": ""
     },
@@ -200,7 +188,7 @@
       "Requires Level": "72",
       "Str": "",
       "Int": "",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "430.4%, 430.4%",
       "Experience": ""
     },
@@ -209,7 +197,7 @@
       "Requires Level": "74",
       "Str": "",
       "Int": "",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "444.1%, 444.1%",
       "Experience": ""
     },
@@ -218,7 +206,7 @@
       "Requires Level": "76",
       "Str": "",
       "Int": "",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "458.3%, 458.3%",
       "Experience": ""
     },
@@ -227,7 +215,7 @@
       "Requires Level": "78",
       "Str": "",
       "Int": "",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "473.1%, 473.1%",
       "Experience": ""
     },
@@ -236,7 +224,7 @@
       "Requires Level": "80",
       "Str": "",
       "Int": "",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "488.1%, 488.1%",
       "Experience": ""
     },
@@ -245,7 +233,7 @@
       "Requires Level": "82",
       "Str": "",
       "Int": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "503.7%, 503.7%",
       "Experience": ""
     },
@@ -254,7 +242,7 @@
       "Requires Level": "84",
       "Str": "",
       "Int": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "519.9%, 519.9%",
       "Experience": ""
     },
@@ -263,7 +251,7 @@
       "Requires Level": "86",
       "Str": "",
       "Int": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "536.5%, 536.5%",
       "Experience": ""
     },
@@ -272,7 +260,7 @@
       "Requires Level": "88",
       "Str": "",
       "Int": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "553.7%, 553.7%",
       "Experience": ""
     },
@@ -281,7 +269,7 @@
       "Requires Level": "90",
       "Str": "",
       "Int": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "571.4%, 571.4%",
       "Experience": ""
     },
@@ -290,7 +278,7 @@
       "Requires Level": "91",
       "Str": "",
       "Int": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "597%, 597%",
       "Experience": ""
     },
@@ -299,7 +287,7 @@
       "Requires Level": "92",
       "Str": "",
       "Int": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "606.6%, 606.6%",
       "Experience": ""
     },
@@ -308,7 +296,7 @@
       "Requires Level": "93",
       "Str": "",
       "Int": "",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "616.2%, 616.2%",
       "Experience": ""
     },
@@ -317,7 +305,7 @@
       "Requires Level": "94",
       "Str": "",
       "Int": "",
-      "Cost": "15",
+      "Mana": "15",
       "Base Damage": "626%, 626%",
       "Experience": ""
     },
@@ -326,7 +314,7 @@
       "Requires Level": "95",
       "Str": "",
       "Int": "",
-      "Cost": "15",
+      "Mana": "15",
       "Base Damage": "636%, 636%",
       "Experience": ""
     },
@@ -335,7 +323,7 @@
       "Requires Level": "96",
       "Str": "",
       "Int": "",
-      "Cost": "15",
+      "Mana": "15",
       "Base Damage": "646.2%, 646.2%",
       "Experience": ""
     },
@@ -344,7 +332,7 @@
       "Requires Level": "97",
       "Str": "",
       "Int": "",
-      "Cost": "15",
+      "Mana": "15",
       "Base Damage": "656.4%, 656.4%",
       "Experience": ""
     },
@@ -353,7 +341,7 @@
       "Requires Level": "98",
       "Str": "",
       "Int": "",
-      "Cost": "15",
+      "Mana": "15",
       "Base Damage": "666.9%, 666.9%",
       "Experience": ""
     },
@@ -362,7 +350,7 @@
       "Requires Level": "99",
       "Str": "",
       "Int": "",
-      "Cost": "15",
+      "Mana": "15",
       "Base Damage": "677.5%, 677.5%",
       "Experience": ""
     },
@@ -371,7 +359,7 @@
       "Requires Level": "100",
       "Str": "",
       "Int": "",
-      "Cost": "15",
+      "Mana": "15",
       "Base Damage": "688.2%, 688.2%",
       "Experience": ""
     }

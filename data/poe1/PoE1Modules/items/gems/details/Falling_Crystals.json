@@ -1,0 +1,500 @@
+{
+  "name": "Falling Crystals",
+  "slug": "Falling_Crystals",
+  "metadata": {},
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "1",
+      "Int": "0",
+      "Dex": "0",
+      "CooldownTime": "1025",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "11, 16",
+      "Experience": "2"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "2",
+      "Int": "0",
+      "Dex": "0",
+      "CooldownTime": "1000",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "13, 19",
+      "Experience": "1"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "4",
+      "Int": "0",
+      "Dex": "0",
+      "CooldownTime": "975",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "17, 26",
+      "Experience": "1"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "7",
+      "Int": "0",
+      "Dex": "14",
+      "CooldownTime": "950",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "26, 39",
+      "Experience": "1"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "11",
+      "Int": "14",
+      "Dex": "19",
+      "CooldownTime": "925",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "43, 64",
+      "Experience": "1"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "16",
+      "Int": "18",
+      "Dex": "26",
+      "CooldownTime": "900",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "76, 114",
+      "Experience": "1"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "20",
+      "Int": "22",
+      "Dex": "31",
+      "CooldownTime": "875",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "117, 175",
+      "Experience": "1"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "24",
+      "Int": "25",
+      "Dex": "37",
+      "CooldownTime": "850",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "176, 264",
+      "Experience": "1"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "28",
+      "Int": "29",
+      "Dex": "42",
+      "CooldownTime": "825",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "262, 393",
+      "Experience": "1"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "32",
+      "Int": "33",
+      "Dex": "47",
+      "CooldownTime": "800",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "385, 578",
+      "Experience": "1"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "36",
+      "Int": "37",
+      "Dex": "53",
+      "CooldownTime": "775",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "562, 843",
+      "Experience": "1"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "40",
+      "Int": "40",
+      "Dex": "58",
+      "CooldownTime": "750",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "813, 1219",
+      "Experience": "1"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "44",
+      "Int": "44",
+      "Dex": "63",
+      "CooldownTime": "725",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "1168, 1753",
+      "Experience": "1"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "48",
+      "Int": "48",
+      "Dex": "69",
+      "CooldownTime": "700",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "1670, 2505",
+      "Experience": "1"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "52",
+      "Int": "51",
+      "Dex": "74",
+      "CooldownTime": "675",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "2376, 3564",
+      "Experience": "1"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "56",
+      "Int": "55",
+      "Dex": "79",
+      "CooldownTime": "650",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "3366, 5049",
+      "Experience": "1"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "60",
+      "Int": "59",
+      "Dex": "84",
+      "CooldownTime": "625",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "4751, 7126",
+      "Experience": "1"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "64",
+      "Int": "62",
+      "Dex": "90",
+      "CooldownTime": "600",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "6683, 10025",
+      "Experience": "1"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "67",
+      "Int": "65",
+      "Dex": "94",
+      "CooldownTime": "575",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "8616, 12924",
+      "Experience": "1"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Int": "68",
+      "Dex": "98",
+      "CooldownTime": "550",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "11091, 16637",
+      "Experience": "1"
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "540",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "13114, 19671",
+      "Experience": "1"
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "530",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "15497, 23245",
+      "Experience": "1"
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "520",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "18302, 27452",
+      "Experience": "1"
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "510",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "21603, 32404",
+      "Experience": "1"
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "500",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "25486, 38229",
+      "Experience": "1"
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "490",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "30052, 45078",
+      "Experience": "1"
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "480",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "35420, 53130",
+      "Experience": "1"
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "470",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "41727, 62591",
+      "Experience": "1"
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "460",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "49136, 73704",
+      "Experience": "1"
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "450",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "57837, 86755",
+      "Experience": "1"
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "440",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "62739, 94109",
+      "Experience": "1"
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "430",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "68050, 102075",
+      "Experience": "1"
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "420",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "73804, 110706",
+      "Experience": "1"
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "410",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "80037, 120055",
+      "Experience": "1"
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "400",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "86788, 130182",
+      "Experience": "1"
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "390",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "94100, 141149",
+      "Experience": "1"
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "380",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "102018, 153027",
+      "Experience": "1"
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "370",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "110594, 165891",
+      "Experience": "1"
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "360",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "119880, 179819",
+      "Experience": "1"
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Int": "",
+      "Dex": "",
+      "CooldownTime": "350",
+      "Base Damage": "100%, 100%",
+      "Deals 11 to 16 Cold Damage": "129934, 194901",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": [],
+  "gemDescription": "While equipped, this Graft will periodically fling icy mortars at Enemies in range that are Chilled or Frozen.",
+  "explicitMods": [
+    {
+      "text": "Deals (11–129934) to (16–194901) Cold Damage",
+      "values": [
+        "(11–129934)",
+        "(16–194901)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Fires mortars at up to 4 additional Chilled or Frozen targets in range",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Cannot Freeze",
+      "values": []
+    },
+    {
+      "text": "Cannot inflict Chill",
+      "values": []
+    },
+    {
+      "text": "Base radius is 4.5 metres",
+      "values": [
+        "4.5"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 1 metre",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Deals (11–129934) to (16–194901) Cold Damage",
+      "values": [
+        "(11–129934)",
+        "(16–194901)"
+      ]
+    },
+    {
+      "text": "Projectiles Pierce all Targets",
+      "values": []
+    },
+    {
+      "text": "Fires mortars at up to 4 additional Chilled or Frozen targets in range",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Cannot Freeze",
+      "values": []
+    },
+    {
+      "text": "Cannot inflict Chill",
+      "values": []
+    },
+    {
+      "text": "Base radius is 4.5 metres",
+      "values": [
+        "4.5"
+      ]
+    },
+    {
+      "text": "Base secondary radius is 1 metre",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "is graft skill [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": []
+}

@@ -1,210 +1,202 @@
 {
   "name": "Summon Reaper of Revenants",
   "slug": "Summon_Reaper_of_Revenants",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
-    "Acronym": "Ignite",
-    "BaseType": "Summon Reaper of Revenants",
-    "TargetTypes": "Enemy, Ground,",
-    "Type": "Triggerable, Mineable, Minion, MinionsCanExplode, Spell, Totemable, Trappable, CreatesMinion, Multicastable, CanRapidFire",
-    "MinionType": "Attack, Melee, Damage, Area, Movement, Multistrikeable, Duration",
-    "ActiveSkillsCode": "summon_reaper_alt_x"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "28",
-      "Cost": "15",
+      "Mana": "15",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "20",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "20",
       "Maximum 3 Summoned Reapers": "3",
-      "Experience": "199,345"
+      "Experience": ""
     },
     {
       "Level": "2",
       "Requires Level": "31",
-      "Cost": "16",
+      "Mana": "16",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "20",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "20",
       "Maximum 3 Summoned Reapers": "3",
-      "Experience": "285,815"
+      "Experience": ""
     },
     {
       "Level": "3",
       "Requires Level": "34",
-      "Cost": "17",
+      "Mana": "17",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "21",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "21",
       "Maximum 3 Summoned Reapers": "3",
-      "Experience": "401,344"
+      "Experience": ""
     },
     {
       "Level": "4",
       "Requires Level": "37",
-      "Cost": "18",
+      "Mana": "18",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "21",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "21",
       "Maximum 3 Summoned Reapers": "3",
-      "Experience": "554,379"
+      "Experience": ""
     },
     {
       "Level": "5",
       "Requires Level": "40",
-      "Cost": "19",
+      "Mana": "19",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "22",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "22",
       "Maximum 3 Summoned Reapers": "3",
-      "Experience": "477,437"
+      "Experience": ""
     },
     {
       "Level": "6",
       "Requires Level": "42",
-      "Cost": "19",
+      "Mana": "19",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "22",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "22",
       "Maximum 3 Summoned Reapers": "3",
-      "Experience": "583,786"
+      "Experience": ""
     },
     {
       "Level": "7",
       "Requires Level": "44",
-      "Cost": "20",
+      "Mana": "20",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "23",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "23",
       "Maximum 3 Summoned Reapers": "3",
-      "Experience": "710,359"
+      "Experience": ""
     },
     {
       "Level": "8",
       "Requires Level": "46",
-      "Cost": "21",
+      "Mana": "21",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "23",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "23",
       "Maximum 3 Summoned Reapers": "3",
-      "Experience": "1,355,511"
+      "Experience": ""
     },
     {
       "Level": "9",
       "Requires Level": "48",
-      "Cost": "21",
+      "Mana": "21",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "24",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "24",
       "Maximum 3 Summoned Reapers": "3",
-      "Experience": "1,138,877"
+      "Experience": ""
     },
     {
       "Level": "10",
       "Requires Level": "50",
-      "Cost": "22",
+      "Mana": "22",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "24",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "24",
       "Maximum 3 Summoned Reapers": "3",
-      "Experience": "1,368,233"
+      "Experience": ""
     },
     {
       "Level": "11",
       "Requires Level": "52",
-      "Cost": "22",
+      "Mana": "22",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "25",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "25",
       "Maximum 3 Summoned Reapers": "3",
-      "Experience": "1,638,338"
+      "Experience": ""
     },
     {
       "Level": "12",
       "Requires Level": "54",
-      "Cost": "23",
+      "Mana": "23",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "25",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "25",
       "Maximum 3 Summoned Reapers": "3",
-      "Experience": "1,956,648"
+      "Experience": ""
     },
     {
       "Level": "13",
       "Requires Level": "56",
-      "Cost": "24",
+      "Mana": "24",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "26",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "26",
       "Maximum 3 Summoned Reapers": "4",
-      "Experience": "3,655,184"
+      "Experience": ""
     },
     {
       "Level": "14",
       "Requires Level": "58",
-      "Cost": "24",
+      "Mana": "24",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "26",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "26",
       "Maximum 3 Summoned Reapers": "4",
-      "Experience": "3,017,327"
+      "Experience": ""
     },
     {
       "Level": "15",
       "Requires Level": "60",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "27",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "27",
       "Maximum 3 Summoned Reapers": "4",
-      "Experience": "7,759,995"
+      "Experience": ""
     },
     {
       "Level": "16",
       "Requires Level": "62",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "27",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "27",
       "Maximum 3 Summoned Reapers": "4",
-      "Experience": "15,138,193"
+      "Experience": ""
     },
     {
       "Level": "17",
       "Requires Level": "64",
-      "Cost": "26",
+      "Mana": "26",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "28",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "28",
       "Maximum 3 Summoned Reapers": "4",
-      "Experience": "26,083,825"
+      "Experience": ""
     },
     {
       "Level": "18",
       "Requires Level": "66",
-      "Cost": "27",
+      "Mana": "27",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "28",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "28",
       "Maximum 3 Summoned Reapers": "4",
-      "Experience": "62,620,247"
+      "Experience": ""
     },
     {
       "Level": "19",
       "Requires Level": "68",
-      "Cost": "27",
+      "Mana": "27",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "29",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "29",
       "Maximum 3 Summoned Reapers": "4",
-      "Experience": "211,708,088"
+      "Experience": ""
     },
     {
       "Level": "20",
       "Requires Level": "70",
-      "Cost": "28",
+      "Mana": "28",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "29",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "29",
@@ -214,7 +206,7 @@
     {
       "Level": "21",
       "Requires Level": "72",
-      "Cost": "29",
+      "Mana": "29",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "30",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "30",
@@ -224,7 +216,7 @@
     {
       "Level": "22",
       "Requires Level": "74",
-      "Cost": "29",
+      "Mana": "29",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "30",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "30",
@@ -234,7 +226,7 @@
     {
       "Level": "23",
       "Requires Level": "76",
-      "Cost": "30",
+      "Mana": "30",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "31",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "31",
@@ -244,7 +236,7 @@
     {
       "Level": "24",
       "Requires Level": "78",
-      "Cost": "30",
+      "Mana": "30",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "31",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "31",
@@ -254,7 +246,7 @@
     {
       "Level": "25",
       "Requires Level": "80",
-      "Cost": "31",
+      "Mana": "31",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "32",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "32",
@@ -264,7 +256,7 @@
     {
       "Level": "26",
       "Requires Level": "82",
-      "Cost": "32",
+      "Mana": "32",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "32",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "32",
@@ -274,7 +266,7 @@
     {
       "Level": "27",
       "Requires Level": "84",
-      "Cost": "32",
+      "Mana": "32",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "33",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "33",
@@ -284,7 +276,7 @@
     {
       "Level": "28",
       "Requires Level": "86",
-      "Cost": "33",
+      "Mana": "33",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "33",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "33",
@@ -294,7 +286,7 @@
     {
       "Level": "29",
       "Requires Level": "88",
-      "Cost": "33",
+      "Mana": "33",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "34",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "34",
@@ -304,7 +296,7 @@
     {
       "Level": "30",
       "Requires Level": "90",
-      "Cost": "34",
+      "Mana": "34",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "34",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "34",
@@ -314,7 +306,7 @@
     {
       "Level": "31",
       "Requires Level": "91",
-      "Cost": "34",
+      "Mana": "34",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "34",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "34",
@@ -324,7 +316,7 @@
     {
       "Level": "32",
       "Requires Level": "92",
-      "Cost": "35",
+      "Mana": "35",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "35",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "35",
@@ -334,7 +326,7 @@
     {
       "Level": "33",
       "Requires Level": "93",
-      "Cost": "35",
+      "Mana": "35",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "35",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "35",
@@ -344,7 +336,7 @@
     {
       "Level": "34",
       "Requires Level": "94",
-      "Cost": "35",
+      "Mana": "35",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "35",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "35",
@@ -354,7 +346,7 @@
     {
       "Level": "35",
       "Requires Level": "95",
-      "Cost": "36",
+      "Mana": "36",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "35",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "35",
@@ -364,7 +356,7 @@
     {
       "Level": "36",
       "Requires Level": "96",
-      "Cost": "36",
+      "Mana": "36",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "36",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "36",
@@ -374,7 +366,7 @@
     {
       "Level": "37",
       "Requires Level": "97",
-      "Cost": "36",
+      "Mana": "36",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "36",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "36",
@@ -384,7 +376,7 @@
     {
       "Level": "38",
       "Requires Level": "98",
-      "Cost": "37",
+      "Mana": "37",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "36",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "36",
@@ -394,7 +386,7 @@
     {
       "Level": "39",
       "Requires Level": "99",
-      "Cost": "37",
+      "Mana": "37",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "36",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "36",
@@ -404,7 +396,7 @@
     {
       "Level": "40",
       "Requires Level": "100",
-      "Cost": "37",
+      "Mana": "37",
       "Base Damage": "100%, 100%",
       "Reapers cause your Non-Reaper Minions to deal 20% less Damage": "37",
       "Reapers cause your Non-Reaper Minions to have 20% less Maximum Life": "37",

@@ -1,25 +1,14 @@
 {
   "name": "Cobra Lash",
   "slug": "Cobra_Lash",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xScroll of Wisdom",
-    "Acronym": "Hit, Chain, Ailment, Poison",
-    "BaseType": "Cobra Lash",
-    "Class": "Skill Gems",
-    "Weapon": "Claws, Daggers, Rune Daggers",
-    "TargetTypes": "Ground, Enemy",
-    "Type": "Attack, RangedAttack, Projectile, ProjectilesFromUser, Damage, Triggerable, Chaos",
-    "ItemType": "Metadata/Items/Gems/SkillGemCobraLash",
-    "ActiveSkillsCode": "cobra_lash",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "1",
       "Int": "0",
       "Dex": "0",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "125%, 125%",
       "Chains +3 Times": "3",
       "Experience": "70"
@@ -29,7 +18,7 @@
       "Requires Level": "2",
       "Int": "0",
       "Dex": "0",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "129.2%, 129.2%",
       "Chains +3 Times": "3",
       "Experience": "308"
@@ -39,7 +28,7 @@
       "Requires Level": "4",
       "Int": "0",
       "Dex": "0",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "133.4%, 133.4%",
       "Chains +3 Times": "3",
       "Experience": "1,554"
@@ -49,7 +38,7 @@
       "Requires Level": "7",
       "Int": "0",
       "Dex": "14",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "137.6%, 137.6%",
       "Chains +3 Times": "3",
       "Experience": "6,667"
@@ -59,7 +48,7 @@
       "Requires Level": "11",
       "Int": "14",
       "Dex": "19",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "141.8%, 141.8%",
       "Chains +3 Times": "3",
       "Experience": "26,047"
@@ -69,7 +58,7 @@
       "Requires Level": "16",
       "Int": "18",
       "Dex": "26",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "146.1%, 146.1%",
       "Chains +3 Times": "3",
       "Experience": "49,725"
@@ -79,7 +68,7 @@
       "Requires Level": "20",
       "Int": "22",
       "Dex": "31",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "150.3%, 150.3%",
       "Chains +3 Times": "3",
       "Experience": "95,714"
@@ -89,7 +78,7 @@
       "Requires Level": "24",
       "Int": "25",
       "Dex": "37",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "154.5%, 154.5%",
       "Chains +3 Times": "3",
       "Experience": "169,595"
@@ -99,7 +88,7 @@
       "Requires Level": "28",
       "Int": "29",
       "Dex": "42",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "158.7%, 158.7%",
       "Chains +3 Times": "4",
       "Experience": "283,759"
@@ -109,7 +98,7 @@
       "Requires Level": "32",
       "Int": "33",
       "Dex": "47",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "162.9%, 162.9%",
       "Chains +3 Times": "4",
       "Experience": "453,996"
@@ -119,7 +108,7 @@
       "Requires Level": "36",
       "Int": "37",
       "Dex": "53",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "167.1%, 167.1%",
       "Chains +3 Times": "4",
       "Experience": "703,128"
@@ -129,7 +118,7 @@
       "Requires Level": "40",
       "Int": "40",
       "Dex": "58",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "171.3%, 171.3%",
       "Chains +3 Times": "4",
       "Experience": "1,061,223"
@@ -139,7 +128,7 @@
       "Requires Level": "44",
       "Int": "44",
       "Dex": "63",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "175.5%, 175.5%",
       "Chains +3 Times": "4",
       "Experience": "2,065,870"
@@ -149,7 +138,7 @@
       "Requires Level": "48",
       "Int": "48",
       "Dex": "69",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "179.7%, 179.7%",
       "Chains +3 Times": "4",
       "Experience": "2,507,110"
@@ -159,7 +148,7 @@
       "Requires Level": "52",
       "Int": "51",
       "Dex": "74",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "183.9%, 183.9%",
       "Chains +3 Times": "4",
       "Experience": "5,798,936"
@@ -169,7 +158,7 @@
       "Requires Level": "56",
       "Int": "55",
       "Dex": "79",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "188.2%, 188.2%",
       "Chains +3 Times": "4",
       "Experience": "15,083,919"
@@ -179,7 +168,7 @@
       "Requires Level": "60",
       "Int": "59",
       "Dex": "84",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "192.4%, 192.4%",
       "Chains +3 Times": "5",
       "Experience": "27,792,735"
@@ -189,7 +178,7 @@
       "Requires Level": "64",
       "Int": "62",
       "Dex": "90",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "196.6%, 196.6%",
       "Chains +3 Times": "5",
       "Experience": "43,869,739"
@@ -199,7 +188,7 @@
       "Requires Level": "67",
       "Int": "65",
       "Dex": "94",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "200.8%, 200.8%",
       "Chains +3 Times": "5",
       "Experience": "242,081,556"
@@ -209,7 +198,7 @@
       "Requires Level": "70",
       "Int": "68",
       "Dex": "98",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "205%, 205%",
       "Chains +3 Times": "5",
       "Experience": ""
@@ -219,7 +208,7 @@
       "Requires Level": "72",
       "Int": "",
       "Dex": "",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "209.2%, 209.2%",
       "Chains +3 Times": "5",
       "Experience": ""
@@ -229,7 +218,7 @@
       "Requires Level": "74",
       "Int": "",
       "Dex": "",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "213.4%, 213.4%",
       "Chains +3 Times": "5",
       "Experience": ""
@@ -239,7 +228,7 @@
       "Requires Level": "76",
       "Int": "",
       "Dex": "",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "217.6%, 217.6%",
       "Chains +3 Times": "5",
       "Experience": ""
@@ -249,7 +238,7 @@
       "Requires Level": "78",
       "Int": "",
       "Dex": "",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "221.8%, 221.8%",
       "Chains +3 Times": "5",
       "Experience": ""
@@ -259,7 +248,7 @@
       "Requires Level": "80",
       "Int": "",
       "Dex": "",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "226.1%, 226.1%",
       "Chains +3 Times": "6",
       "Experience": ""
@@ -269,7 +258,7 @@
       "Requires Level": "82",
       "Int": "",
       "Dex": "",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "230.3%, 230.3%",
       "Chains +3 Times": "6",
       "Experience": ""
@@ -279,7 +268,7 @@
       "Requires Level": "84",
       "Int": "",
       "Dex": "",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "234.5%, 234.5%",
       "Chains +3 Times": "6",
       "Experience": ""
@@ -289,7 +278,7 @@
       "Requires Level": "86",
       "Int": "",
       "Dex": "",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "238.7%, 238.7%",
       "Chains +3 Times": "6",
       "Experience": ""
@@ -299,7 +288,7 @@
       "Requires Level": "88",
       "Int": "",
       "Dex": "",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "242.9%, 242.9%",
       "Chains +3 Times": "6",
       "Experience": ""
@@ -309,7 +298,7 @@
       "Requires Level": "90",
       "Int": "",
       "Dex": "",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "247.1%, 247.1%",
       "Chains +3 Times": "6",
       "Experience": ""
@@ -319,7 +308,7 @@
       "Requires Level": "91",
       "Int": "",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "249.2%, 249.2%",
       "Chains +3 Times": "6",
       "Experience": ""
@@ -329,7 +318,7 @@
       "Requires Level": "92",
       "Int": "",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "251.3%, 251.3%",
       "Chains +3 Times": "6",
       "Experience": ""
@@ -339,7 +328,7 @@
       "Requires Level": "93",
       "Int": "",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "253.4%, 253.4%",
       "Chains +3 Times": "7",
       "Experience": ""
@@ -349,7 +338,7 @@
       "Requires Level": "94",
       "Int": "",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "255.5%, 255.5%",
       "Chains +3 Times": "7",
       "Experience": ""
@@ -359,7 +348,7 @@
       "Requires Level": "95",
       "Int": "",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "257.6%, 257.6%",
       "Chains +3 Times": "7",
       "Experience": ""
@@ -369,7 +358,7 @@
       "Requires Level": "96",
       "Int": "",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "259.7%, 259.7%",
       "Chains +3 Times": "7",
       "Experience": ""
@@ -379,7 +368,7 @@
       "Requires Level": "97",
       "Int": "",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "261.8%, 261.8%",
       "Chains +3 Times": "7",
       "Experience": ""
@@ -389,7 +378,7 @@
       "Requires Level": "98",
       "Int": "",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "263.9%, 263.9%",
       "Chains +3 Times": "7",
       "Experience": ""
@@ -399,7 +388,7 @@
       "Requires Level": "99",
       "Int": "",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "266.1%, 266.1%",
       "Chains +3 Times": "7",
       "Experience": ""
@@ -409,7 +398,7 @@
       "Requires Level": "100",
       "Int": "",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "268.2%, 268.2%",
       "Chains +3 Times": "7",
       "Experience": ""

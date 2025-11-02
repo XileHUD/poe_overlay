@@ -1,293 +1,285 @@
 {
   "name": "Vaal Spectral Throw",
   "slug": "Vaal_Spectral_Throw",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
-    "Acronym": "Ignite",
-    "BaseType": "Spectral Throw",
-    "Weapon": "Claws, Daggers, One Hand Swords, Thrusting One Hand Swords, One Hand Axes, One Hand Maces, Staves, Two Hand Swords, Two Hand Axes, Two Hand Maces, Sceptres, Rune Daggers, Warstaves",
-    "TargetTypes": "Ground, Enemy",
-    "Type": "Attack, RangedAttack, Projectile, ProjectilesFromUser",
-    "ActiveSkillsCode": "spectral_throw"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "1",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Experience": ""
     },
     {
       "Level": "2",
       "Requires Level": "2",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "102.6%, 102.6%",
       "Experience": ""
     },
     {
       "Level": "3",
       "Requires Level": "4",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "105.3%, 105.3%",
       "Experience": ""
     },
     {
       "Level": "4",
       "Requires Level": "7",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "107.9%, 107.9%",
       "Experience": ""
     },
     {
       "Level": "5",
       "Requires Level": "11",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "110.5%, 110.5%",
       "Experience": ""
     },
     {
       "Level": "6",
       "Requires Level": "16",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "113.2%, 113.2%",
       "Experience": ""
     },
     {
       "Level": "7",
       "Requires Level": "20",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "115.8%, 115.8%",
       "Experience": ""
     },
     {
       "Level": "8",
       "Requires Level": "24",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "118.4%, 118.4%",
       "Experience": ""
     },
     {
       "Level": "9",
       "Requires Level": "28",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "121.1%, 121.1%",
       "Experience": ""
     },
     {
       "Level": "10",
       "Requires Level": "32",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "123.7%, 123.7%",
       "Experience": ""
     },
     {
       "Level": "11",
       "Requires Level": "36",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "126.3%, 126.3%",
       "Experience": ""
     },
     {
       "Level": "12",
       "Requires Level": "40",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "128.9%, 128.9%",
       "Experience": ""
     },
     {
       "Level": "13",
       "Requires Level": "44",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "131.6%, 131.6%",
       "Experience": ""
     },
     {
       "Level": "14",
       "Requires Level": "48",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "134.2%, 134.2%",
       "Experience": ""
     },
     {
       "Level": "15",
       "Requires Level": "52",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "136.8%, 136.8%",
       "Experience": ""
     },
     {
       "Level": "16",
       "Requires Level": "56",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "139.5%, 139.5%",
       "Experience": ""
     },
     {
       "Level": "17",
       "Requires Level": "60",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "142.1%, 142.1%",
       "Experience": ""
     },
     {
       "Level": "18",
       "Requires Level": "64",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "144.7%, 144.7%",
       "Experience": ""
     },
     {
       "Level": "19",
       "Requires Level": "67",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "147.4%, 147.4%",
       "Experience": ""
     },
     {
       "Level": "20",
       "Requires Level": "70",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "150%, 150%",
       "Experience": ""
     },
     {
       "Level": "21",
       "Requires Level": "72",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "152.6%, 152.6%",
       "Experience": ""
     },
     {
       "Level": "22",
       "Requires Level": "74",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "155.3%, 155.3%",
       "Experience": ""
     },
     {
       "Level": "23",
       "Requires Level": "76",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "157.9%, 157.9%",
       "Experience": ""
     },
     {
       "Level": "24",
       "Requires Level": "78",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "160.5%, 160.5%",
       "Experience": ""
     },
     {
       "Level": "25",
       "Requires Level": "80",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "163.2%, 163.2%",
       "Experience": ""
     },
     {
       "Level": "26",
       "Requires Level": "82",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "165.8%, 165.8%",
       "Experience": ""
     },
     {
       "Level": "27",
       "Requires Level": "84",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "168.4%, 168.4%",
       "Experience": ""
     },
     {
       "Level": "28",
       "Requires Level": "86",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "171.1%, 171.1%",
       "Experience": ""
     },
     {
       "Level": "29",
       "Requires Level": "88",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "173.7%, 173.7%",
       "Experience": ""
     },
     {
       "Level": "30",
       "Requires Level": "90",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "176.3%, 176.3%",
       "Experience": ""
     },
     {
       "Level": "31",
       "Requires Level": "91",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "177.6%, 177.6%",
       "Experience": ""
     },
     {
       "Level": "32",
       "Requires Level": "92",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "178.9%, 178.9%",
       "Experience": ""
     },
     {
       "Level": "33",
       "Requires Level": "93",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "180.3%, 180.3%",
       "Experience": ""
     },
     {
       "Level": "34",
       "Requires Level": "94",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "181.6%, 181.6%",
       "Experience": ""
     },
     {
       "Level": "35",
       "Requires Level": "95",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "182.9%, 182.9%",
       "Experience": ""
     },
     {
       "Level": "36",
       "Requires Level": "96",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "184.2%, 184.2%",
       "Experience": ""
     },
     {
       "Level": "37",
       "Requires Level": "97",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "185.5%, 185.5%",
       "Experience": ""
     },
     {
       "Level": "38",
       "Requires Level": "98",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "186.8%, 186.8%",
       "Experience": ""
     },
     {
       "Level": "39",
       "Requires Level": "99",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "188.2%, 188.2%",
       "Experience": ""
     },
     {
       "Level": "40",
       "Requires Level": "100",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "189.5%, 189.5%",
       "Experience": ""
     }
@@ -356,21 +348,21 @@
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "text": "Projectiles that have Pierced deal (0–20)% more Damage",
       "values": [
-        "(0–10)"
+        "(0–20)"
       ]
     },
     {
-      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "text": "Projectiles that have Pierced deal (0–20)% more Damage",
       "values": [
-        "(0–10)"
+        "(0–20)"
       ]
     },
     {
-      "text": "Projectiles that have Pierced deal (0–10)% more Damage",
+      "text": "Projectiles that have Pierced deal (0–20)% more Damage",
       "values": [
-        "(0–10)"
+        "(0–20)"
       ]
     }
   ]

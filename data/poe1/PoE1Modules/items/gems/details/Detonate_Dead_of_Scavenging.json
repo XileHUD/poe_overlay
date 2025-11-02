@@ -1,190 +1,183 @@
 {
   "name": "Detonate Dead of Scavenging",
   "slug": "Detonate_Dead_of_Scavenging",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
-    "Acronym": "Ignite",
-    "BaseType": "Detonate Dead of Scavenging",
-    "TargetTypes": "Corpse,",
-    "Type": "Spell, Damage, Area, Trappable, Totemable, Mineable, Multicastable, Triggerable, Fire, Cascadable, DestroysCorpse, CanRapidFire, AreaSpell",
-    "ActiveSkillsCode": "detonate_dead_alt_x"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "4",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "2.8",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "20",
-      "Experience": "841"
+      "Experience": ""
     },
     {
       "Level": "2",
       "Requires Level": "6",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "2.8",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "20.5",
-      "Experience": "3,099"
+      "Experience": ""
     },
     {
       "Level": "3",
       "Requires Level": "9",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "2.8",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "21",
-      "Experience": "7,433"
+      "Experience": ""
     },
     {
       "Level": "4",
       "Requires Level": "12",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "2.8",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "21.5",
-      "Experience": "22,895"
+      "Experience": ""
     },
     {
       "Level": "5",
       "Requires Level": "16",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "2.9",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "22",
-      "Experience": "49,725"
+      "Experience": ""
     },
     {
       "Level": "6",
       "Requires Level": "20",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "2.9",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "22.5",
-      "Experience": "95,714"
+      "Experience": ""
     },
     {
       "Level": "7",
       "Requires Level": "24",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "2.9",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "23",
-      "Experience": "169,595"
+      "Experience": ""
     },
     {
       "Level": "8",
       "Requires Level": "28",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "2.9",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "23.5",
-      "Experience": "283,759"
+      "Experience": ""
     },
     {
       "Level": "9",
       "Requires Level": "32",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "2.9",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "24",
-      "Experience": "453,996"
+      "Experience": ""
     },
     {
       "Level": "10",
       "Requires Level": "36",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "24.5",
-      "Experience": "703,128"
+      "Experience": ""
     },
     {
       "Level": "11",
       "Requires Level": "40",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "25",
-      "Experience": "1,061,223"
+      "Experience": ""
     },
     {
       "Level": "12",
       "Requires Level": "44",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "25.5",
-      "Experience": "2,065,870"
+      "Experience": ""
     },
     {
       "Level": "13",
       "Requires Level": "48",
-      "Cost": "15",
+      "Mana": "15",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "26",
-      "Experience": "2,507,110"
+      "Experience": ""
     },
     {
       "Level": "14",
       "Requires Level": "52",
-      "Cost": "16",
+      "Mana": "16",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "26.5",
-      "Experience": "2,573,731"
+      "Experience": ""
     },
     {
       "Level": "15",
       "Requires Level": "55",
-      "Cost": "16",
+      "Mana": "16",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.1",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "27",
-      "Experience": "7,611,351"
+      "Experience": ""
     },
     {
       "Level": "16",
       "Requires Level": "58",
-      "Cost": "17",
+      "Mana": "17",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.1",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "27.5",
-      "Experience": "13,437,908"
+      "Experience": ""
     },
     {
       "Level": "17",
       "Requires Level": "61",
-      "Cost": "18",
+      "Mana": "18",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.1",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "28",
-      "Experience": "25,052,147"
+      "Experience": ""
     },
     {
       "Level": "18",
       "Requires Level": "64",
-      "Cost": "18",
+      "Mana": "18",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.1",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "28.5",
-      "Experience": "43,869,436"
+      "Experience": ""
     },
     {
       "Level": "19",
       "Requires Level": "67",
-      "Cost": "19",
+      "Mana": "19",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.1",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "29",
-      "Experience": "242,081,178"
+      "Experience": ""
     },
     {
       "Level": "20",
       "Requires Level": "70",
-      "Cost": "20",
+      "Mana": "20",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.2",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "29.5",
@@ -193,7 +186,7 @@
     {
       "Level": "21",
       "Requires Level": "72",
-      "Cost": "20",
+      "Mana": "20",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.2",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "30",
@@ -202,7 +195,7 @@
     {
       "Level": "22",
       "Requires Level": "74",
-      "Cost": "21",
+      "Mana": "21",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.2",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "30.5",
@@ -211,7 +204,7 @@
     {
       "Level": "23",
       "Requires Level": "76",
-      "Cost": "21",
+      "Mana": "21",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.2",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "31",
@@ -220,7 +213,7 @@
     {
       "Level": "24",
       "Requires Level": "78",
-      "Cost": "21",
+      "Mana": "21",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.2",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "31.5",
@@ -229,7 +222,7 @@
     {
       "Level": "25",
       "Requires Level": "80",
-      "Cost": "22",
+      "Mana": "22",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.3",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "32",
@@ -238,7 +231,7 @@
     {
       "Level": "26",
       "Requires Level": "82",
-      "Cost": "22",
+      "Mana": "22",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.3",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "32.5",
@@ -247,7 +240,7 @@
     {
       "Level": "27",
       "Requires Level": "84",
-      "Cost": "23",
+      "Mana": "23",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.3",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "33",
@@ -256,7 +249,7 @@
     {
       "Level": "28",
       "Requires Level": "86",
-      "Cost": "23",
+      "Mana": "23",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.3",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "33.5",
@@ -265,7 +258,7 @@
     {
       "Level": "29",
       "Requires Level": "88",
-      "Cost": "24",
+      "Mana": "24",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.3",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "34",
@@ -274,7 +267,7 @@
     {
       "Level": "30",
       "Requires Level": "90",
-      "Cost": "24",
+      "Mana": "24",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.4",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "34.5",
@@ -283,7 +276,7 @@
     {
       "Level": "31",
       "Requires Level": "91",
-      "Cost": "24",
+      "Mana": "24",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.4",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "34.7",
@@ -292,7 +285,7 @@
     {
       "Level": "32",
       "Requires Level": "92",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.4",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "35",
@@ -301,7 +294,7 @@
     {
       "Level": "33",
       "Requires Level": "93",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.4",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "35.2",
@@ -310,7 +303,7 @@
     {
       "Level": "34",
       "Requires Level": "94",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.4",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "35.5",
@@ -319,7 +312,7 @@
     {
       "Level": "35",
       "Requires Level": "95",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.5",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "35.7",
@@ -328,7 +321,7 @@
     {
       "Level": "36",
       "Requires Level": "96",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.5",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "36",
@@ -337,7 +330,7 @@
     {
       "Level": "37",
       "Requires Level": "97",
-      "Cost": "26",
+      "Mana": "26",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.5",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "36.2",
@@ -346,7 +339,7 @@
     {
       "Level": "38",
       "Requires Level": "98",
-      "Cost": "26",
+      "Mana": "26",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.5",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "36.5",
@@ -355,7 +348,7 @@
     {
       "Level": "39",
       "Requires Level": "99",
-      "Cost": "26",
+      "Mana": "26",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.5",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "36.7",
@@ -364,7 +357,7 @@
     {
       "Level": "40",
       "Requires Level": "100",
-      "Cost": "26",
+      "Mana": "26",
       "Base Damage": "100%, 100%",
       "Base radius is 2.8 metres": "3.6",
       "Explosion deals base Fire Damage equal to 20% of the corpse's Maximum Life": "37",

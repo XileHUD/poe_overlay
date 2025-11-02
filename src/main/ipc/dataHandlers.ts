@@ -682,6 +682,38 @@ export function registerDataIpc(deps: DataIpcDeps) {
     return data;
   });
 
+  const loadKeepersDataset = async (...segments: string[]) => {
+    const result = await loadJsonSafe<any>(...segments);
+    if (!result.ok) {
+      return { error: result.error, filePath: result.filePath };
+    }
+    return cloneJson(result.data ?? {});
+  };
+
+  const loadPoe1Keepers = createCachedLoader('poe1:keepers', async () => {
+    const [items, uniques, gems, grafts, foulbornUniques, bloodlineAscendancy, foulbornPassives, genesisTree] = await Promise.all([
+      loadKeepersDataset('keepers', 'items', 'KeepersItems.json'),
+      loadKeepersDataset('keepers', 'items', 'KeepersUniques.json'),
+      loadKeepersDataset('keepers', 'items', 'gems', 'KeepersGems.json'),
+      loadKeepersDataset('keepers', 'items', 'Grafts.json'),
+      loadKeepersDataset('keepers', 'items', 'FoulbornUniques.json'),
+      loadKeepersDataset('keepers', 'passives', 'BloodlineAscendancy.json'),
+      loadKeepersDataset('keepers', 'passives', 'FoulbornPassives.json'),
+      loadKeepersDataset('keepers', 'passives', 'GenesisTree.json')
+    ]);
+
+    return {
+      items,
+      uniques,
+      gems,
+      grafts,
+      foulbornUniques,
+      bloodlineAscendancy,
+      foulbornPassives,
+      genesisTree
+    };
+  });
+
   if (overlayVersion === 'poe1') {
     queuePreload('poe1:uniques', async () => { await loadPoe1Uniques(); });
     queuePreload('poe1:bases', async () => { await loadPoe1Bases(); });
@@ -698,6 +730,7 @@ export function registerDataIpc(deps: DataIpcDeps) {
     queuePreload('poe1:anointments', async () => { await loadPoe1Anointments(); });
     queuePreload('poe1:gems', async () => { await loadPoe1Gems(); });
     queuePreload('poe1:ascendancyNotables', async () => { await loadPoe1AscendancyNotables(); });
+    queuePreload('poe1:keepers', async () => { await loadPoe1Keepers(); });
   }
 
   try { ipcMain.removeHandler('get-poe1-uniques'); } catch {}
@@ -713,6 +746,15 @@ export function registerDataIpc(deps: DataIpcDeps) {
   ipcMain.handle('get-poe1-bases', async () => {
     try {
       return await loadPoe1Bases();
+    } catch (e: any) {
+      return { error: e?.message || 'unknown_error' };
+    }
+  });
+
+  try { ipcMain.removeHandler('get-poe1-keepers'); } catch {}
+  ipcMain.handle('get-poe1-keepers', async () => {
+    try {
+      return await loadPoe1Keepers();
     } catch (e: any) {
       return { error: e?.message || 'unknown_error' };
     }

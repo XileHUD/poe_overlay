@@ -1,16 +1,7 @@
 {
   "name": "Innervate Support",
   "slug": "Innervate_Support",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xOrb of Chance",
-    "Acronym": "Kill, Shock",
-    "DropLevel": "31",
-    "BaseType": "Innervate Support",
-    "Class": "Support Gems",
-    "Icon": "K",
-    "ItemType": "Metadata/Items/Gems/SupportGemOnslaughtOnSlayingShockedEnemy",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
@@ -378,10 +369,6 @@
   "gemDescription": "Supports any skill you use to hit enemies yourself. Cannot support skills used by totems, traps, or mines.",
   "explicitMods": [
     {
-      "text": "Gain Innervation on Killing a Shocked Enemy with Supported Skills",
-      "values": []
-    },
-    {
       "text": "Innervation grants (1–8) to (17–145) Lightning Damage",
       "values": [
         "(1–8)",
@@ -393,6 +380,10 @@
       "values": [
         "8"
       ]
+    },
+    {
+      "text": "Gain Innervation on Killing a Shocked Enemy with Supported Skills",
+      "values": []
     },
     {
       "text": "Supported Skills have 20% chance to Shock",
@@ -408,10 +399,6 @@
       ]
     },
     {
-      "text": "Gain Innervation on Killing a Shocked Enemy with Supported Skills",
-      "values": []
-    },
-    {
       "text": "Innervation grants (1–8) to (17–145) Lightning Damage",
       "values": [
         "(1–8)",
@@ -423,6 +410,10 @@
       "values": [
         "8"
       ]
+    },
+    {
+      "text": "Gain Innervation on Killing a Shocked Enemy with Supported Skills",
+      "values": []
     },
     {
       "text": "Supported Skills have 20% chance to Shock",
@@ -456,12 +447,6 @@
       ]
     },
     {
-      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
-      "values": [
-        "15"
-      ]
-    },
-    {
       "text": "Socketed Gems are Supported by Level 15 Inspiration",
       "values": [
         "15"
@@ -474,13 +459,19 @@
       ]
     },
     {
-      "text": "Socketed Gems are Supported by Level 18 Ice Bite",
+      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
+      "values": [
+        "15"
+      ]
+    },
+    {
+      "text": "Socketed Gems are Supported by Level 18 Innervate",
       "values": [
         "18"
       ]
     },
     {
-      "text": "Socketed Gems are Supported by Level 18 Innervate",
+      "text": "Socketed Gems are Supported by Level 18 Ice Bite",
       "values": [
         "18"
       ]
@@ -514,13 +505,13 @@
       ]
     },
     {
-      "text": "Socketed Gems are Supported by Level 18 Ice Bite",
+      "text": "Socketed Gems are Supported by Level 18 Innervate",
       "values": [
         "18"
       ]
     },
     {
-      "text": "Socketed Gems are Supported by Level 18 Innervate",
+      "text": "Socketed Gems are Supported by Level 18 Ice Bite",
       "values": [
         "18"
       ]

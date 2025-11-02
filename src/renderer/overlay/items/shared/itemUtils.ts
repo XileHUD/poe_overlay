@@ -21,7 +21,7 @@ export function getImagePath(item: any): string {
   // Use imageLocal field (clean local paths)
   if (item.imageLocal) {
     // Check if it's a PoE1 path (contains folders like weaponunique, armourunique, replica-uniques, uniques/, etc.)
-    const isPoe1 = /^(weaponunique|armourunique|otherunique|replica-uniques|uniques\/|amulets|belts|body_armours|boots|bows|claws|currency|daggers|divination-cards|embers|essences|fishing_rods|fossils|gloves|helmets|hybrid_flasks|life_flasks|mana_flasks|one_hand_axes|one_hand_maces|one_hand_swords|quivers|rings|sceptres|shields|skillgemsgem|supportgemsgem|staves|tattoos|thrusting_one_hand_swords|tinctures|two_hand_axes|two_hand_maces|two_hand_swords|utility_flasks|wands|warstaves|awakenedgem)\//i.test(item.imageLocal);
+  const isPoe1 = /^(weaponunique|armourunique|otherunique|replica-uniques|uniques\/|amulets|belts|bloodline-passives|body_armours|boots|bows|claws|currency|daggers|divination-cards|embers|essences|fishing_rods|fossils|foulborn-passives|foulborn-uniques|genesis-tree|grafts|gloves|helmets|hybrid_flasks|keepers-gems|keepers-items|keepers-uniques|life_flasks|mana_flasks|one_hand_axes|one_hand_maces|one_hand_swords|quivers|rings|sceptres|shields|skillgemsgem|supportgemsgem|staves|tattoos|thrusting_one_hand_swords|tinctures|two_hand_axes|two_hand_maces|two_hand_swords|utility_flasks|wands|warstaves|awakenedgem)\//i.test(item.imageLocal);
     
     if (isPoe1) {
       // PoE1 images are in bundled-images/poe1/

@@ -1,25 +1,14 @@
 {
   "name": "Penance Brand",
   "slug": "Penance_Brand",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xOrb of Chance",
-    "Acronym": "Duration, Ailment",
-    "DropLevel": "28",
-    "BaseType": "Penance Brand",
-    "Class": "Skill Gems",
-    "TargetTypes": "Ground, Enemy",
-    "Type": "Spell, Damage, Area, Physical, Lightning, Duration, Totemable, Trappable, Mineable, Triggerable, Multicastable, Brand, AreaSpell",
-    "ItemType": "Metadata/Items/Gems/SkillGemPenanceBrand",
-    "ActiveSkillsCode": "penance_brand",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "28",
       "Str": "29",
       "Int": "42",
-      "Cost": "15",
+      "Mana": "15",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "177, 265",
       "Experience": "199,345"
@@ -29,7 +18,7 @@
       "Requires Level": "31",
       "Str": "32",
       "Int": "46",
-      "Cost": "15",
+      "Mana": "15",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "219, 328",
       "Experience": "285,815"
@@ -39,7 +28,7 @@
       "Requires Level": "34",
       "Str": "35",
       "Int": "50",
-      "Cost": "16",
+      "Mana": "16",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "269, 404",
       "Experience": "401,344"
@@ -49,7 +38,7 @@
       "Requires Level": "37",
       "Str": "37",
       "Int": "54",
-      "Cost": "17",
+      "Mana": "17",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "330, 495",
       "Experience": "554,379"
@@ -59,7 +48,7 @@
       "Requires Level": "40",
       "Str": "40",
       "Int": "58",
-      "Cost": "18",
+      "Mana": "18",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "403, 604",
       "Experience": "477,437"
@@ -69,7 +58,7 @@
       "Requires Level": "42",
       "Str": "42",
       "Int": "61",
-      "Cost": "19",
+      "Mana": "19",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "459, 689",
       "Experience": "583,786"
@@ -79,7 +68,7 @@
       "Requires Level": "44",
       "Str": "44",
       "Int": "63",
-      "Cost": "19",
+      "Mana": "19",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "523, 784",
       "Experience": "710,359"
@@ -89,7 +78,7 @@
       "Requires Level": "46",
       "Str": "46",
       "Int": "66",
-      "Cost": "20",
+      "Mana": "20",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "594, 891",
       "Experience": "1,355,511"
@@ -99,7 +88,7 @@
       "Requires Level": "48",
       "Str": "48",
       "Int": "69",
-      "Cost": "21",
+      "Mana": "21",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "674, 1011",
       "Experience": "1,138,877"
@@ -109,7 +98,7 @@
       "Requires Level": "50",
       "Str": "49",
       "Int": "71",
-      "Cost": "21",
+      "Mana": "21",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "764, 1146",
       "Experience": "1,368,233"
@@ -119,7 +108,7 @@
       "Requires Level": "52",
       "Str": "51",
       "Int": "74",
-      "Cost": "22",
+      "Mana": "22",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "865, 1297",
       "Experience": "1,638,338"
@@ -129,7 +118,7 @@
       "Requires Level": "54",
       "Str": "53",
       "Int": "76",
-      "Cost": "22",
+      "Mana": "22",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "978, 1467",
       "Experience": "1,956,648"
@@ -139,7 +128,7 @@
       "Requires Level": "56",
       "Str": "55",
       "Int": "79",
-      "Cost": "23",
+      "Mana": "23",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "1105, 1658",
       "Experience": "3,655,184"
@@ -149,7 +138,7 @@
       "Requires Level": "58",
       "Str": "57",
       "Int": "82",
-      "Cost": "24",
+      "Mana": "24",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "1248, 1872",
       "Experience": "3,017,327"
@@ -159,7 +148,7 @@
       "Requires Level": "60",
       "Str": "59",
       "Int": "84",
-      "Cost": "24",
+      "Mana": "24",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "1408, 2111",
       "Experience": "7,759,995"
@@ -169,7 +158,7 @@
       "Requires Level": "62",
       "Str": "60",
       "Int": "87",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "1586, 2380",
       "Experience": "15,138,193"
@@ -179,7 +168,7 @@
       "Requires Level": "64",
       "Str": "62",
       "Int": "90",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "1787, 2680",
       "Experience": "26,083,825"
@@ -189,7 +178,7 @@
       "Requires Level": "66",
       "Str": "64",
       "Int": "92",
-      "Cost": "26",
+      "Mana": "26",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "2010, 3016",
       "Experience": "62,620,247"
@@ -199,7 +188,7 @@
       "Requires Level": "68",
       "Str": "66",
       "Int": "95",
-      "Cost": "27",
+      "Mana": "27",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "2261, 3391",
       "Experience": "211,708,088"
@@ -209,7 +198,7 @@
       "Requires Level": "70",
       "Str": "68",
       "Int": "98",
-      "Cost": "27",
+      "Mana": "27",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "2541, 3811",
       "Experience": ""
@@ -219,7 +208,7 @@
       "Requires Level": "72",
       "Str": "",
       "Int": "",
-      "Cost": "28",
+      "Mana": "28",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "2853, 4280",
       "Experience": ""
@@ -229,7 +218,7 @@
       "Requires Level": "74",
       "Str": "",
       "Int": "",
-      "Cost": "28",
+      "Mana": "28",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "3203, 4804",
       "Experience": ""
@@ -239,7 +228,7 @@
       "Requires Level": "76",
       "Str": "",
       "Int": "",
-      "Cost": "29",
+      "Mana": "29",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "3593, 5389",
       "Experience": ""
@@ -249,7 +238,7 @@
       "Requires Level": "78",
       "Str": "",
       "Int": "",
-      "Cost": "30",
+      "Mana": "30",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "4028, 6042",
       "Experience": ""
@@ -259,7 +248,7 @@
       "Requires Level": "80",
       "Str": "",
       "Int": "",
-      "Cost": "30",
+      "Mana": "30",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "4514, 6771",
       "Experience": ""
@@ -269,7 +258,7 @@
       "Requires Level": "82",
       "Str": "",
       "Int": "",
-      "Cost": "31",
+      "Mana": "31",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "5056, 7583",
       "Experience": ""
@@ -279,7 +268,7 @@
       "Requires Level": "84",
       "Str": "",
       "Int": "",
-      "Cost": "31",
+      "Mana": "31",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "5660, 8490",
       "Experience": ""
@@ -289,7 +278,7 @@
       "Requires Level": "86",
       "Str": "",
       "Int": "",
-      "Cost": "32",
+      "Mana": "32",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "6333, 9500",
       "Experience": ""
@@ -299,7 +288,7 @@
       "Requires Level": "88",
       "Str": "",
       "Int": "",
-      "Cost": "32",
+      "Mana": "32",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "7084, 10626",
       "Experience": ""
@@ -309,7 +298,7 @@
       "Requires Level": "90",
       "Str": "",
       "Int": "",
-      "Cost": "33",
+      "Mana": "33",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "7920, 11880",
       "Experience": ""
@@ -319,7 +308,7 @@
       "Requires Level": "91",
       "Str": "",
       "Int": "",
-      "Cost": "33",
+      "Mana": "33",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "8373, 12559",
       "Experience": ""
@@ -329,7 +318,7 @@
       "Requires Level": "92",
       "Str": "",
       "Int": "",
-      "Cost": "34",
+      "Mana": "34",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "8851, 13277",
       "Experience": ""
@@ -339,7 +328,7 @@
       "Requires Level": "93",
       "Str": "",
       "Int": "",
-      "Cost": "34",
+      "Mana": "34",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "9356, 14033",
       "Experience": ""
@@ -349,7 +338,7 @@
       "Requires Level": "94",
       "Str": "",
       "Int": "",
-      "Cost": "34",
+      "Mana": "34",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "9888, 14832",
       "Experience": ""
@@ -359,7 +348,7 @@
       "Requires Level": "95",
       "Str": "",
       "Int": "",
-      "Cost": "35",
+      "Mana": "35",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "10450, 15674",
       "Experience": ""
@@ -369,7 +358,7 @@
       "Requires Level": "96",
       "Str": "",
       "Int": "",
-      "Cost": "35",
+      "Mana": "35",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "11042, 16563",
       "Experience": ""
@@ -379,7 +368,7 @@
       "Requires Level": "97",
       "Str": "",
       "Int": "",
-      "Cost": "35",
+      "Mana": "35",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "11667, 17501",
       "Experience": ""
@@ -389,7 +378,7 @@
       "Requires Level": "98",
       "Str": "",
       "Int": "",
-      "Cost": "35",
+      "Mana": "35",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "12327, 18490",
       "Experience": ""
@@ -399,7 +388,7 @@
       "Requires Level": "99",
       "Str": "",
       "Int": "",
-      "Cost": "36",
+      "Mana": "36",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "13022, 19534",
       "Experience": ""
@@ -409,7 +398,7 @@
       "Requires Level": "100",
       "Str": "",
       "Int": "",
-      "Cost": "36",
+      "Mana": "36",
       "Base Damage": "100%, 100%",
       "Deals 177 to 265 Physical Damage": "13756, 20634",
       "Experience": ""

@@ -1,25 +1,14 @@
 {
   "name": "Icicle Mine",
   "slug": "Icicle_Mine",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
-    "Acronym": "Hit, Mine, Projectile",
-    "DropLevel": "12",
-    "BaseType": "Icicle Mine",
-    "Class": "Skill Gems",
-    "TargetTypes": "Ground, Enemy",
-    "Type": "Spell, Damage, Projectile, RemoteMined, Cold, HasReservation, ProjectilesFromUser, Aura, Area, AuraAffectsEnemies, AuraNotOnCaster",
-    "ItemType": "Metadata/Items/Gems/SkillGemFreezeMine",
-    "ActiveSkillsCode": "icicle_mine",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "12",
       "Int": "21",
       "Dex": "14",
-      "Reservation": "3",
+      "Mana": "3",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "16, 24",
       "Experience": "15,249"
@@ -29,7 +18,7 @@
       "Requires Level": "15",
       "Int": "25",
       "Dex": "17",
-      "Reservation": "3",
+      "Mana": "3",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "20, 31",
       "Experience": "41,517"
@@ -39,7 +28,7 @@
       "Requires Level": "19",
       "Int": "30",
       "Dex": "21",
-      "Reservation": "3",
+      "Mana": "3",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "28, 41",
       "Experience": "81,983"
@@ -49,7 +38,7 @@
       "Requires Level": "23",
       "Int": "35",
       "Dex": "25",
-      "Reservation": "3",
+      "Mana": "3",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "36, 55",
       "Experience": "147,968"
@@ -59,7 +48,7 @@
       "Requires Level": "27",
       "Int": "41",
       "Dex": "28",
-      "Reservation": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "47, 71",
       "Experience": "250,557"
@@ -69,7 +58,7 @@
       "Requires Level": "31",
       "Int": "46",
       "Dex": "32",
-      "Reservation": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "61, 92",
       "Experience": "405,086"
@@ -79,7 +68,7 @@
       "Requires Level": "35",
       "Int": "51",
       "Dex": "36",
-      "Reservation": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "78, 117",
       "Experience": "447,718"
@@ -89,7 +78,7 @@
       "Requires Level": "38",
       "Int": "55",
       "Dex": "38",
-      "Reservation": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "93, 139",
       "Experience": "615,318"
@@ -99,7 +88,7 @@
       "Requires Level": "41",
       "Int": "59",
       "Dex": "41",
-      "Reservation": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "111, 166",
       "Experience": "834,639"
@@ -109,7 +98,7 @@
       "Requires Level": "44",
       "Int": "63",
       "Dex": "44",
-      "Reservation": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "131, 196",
       "Experience": "1,570,760"
@@ -119,7 +108,7 @@
       "Requires Level": "47",
       "Int": "67",
       "Dex": "47",
-      "Reservation": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "155, 232",
       "Experience": "1,633,987"
@@ -129,7 +118,7 @@
       "Requires Level": "50",
       "Int": "71",
       "Dex": "49",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "182, 273",
       "Experience": "2,151,030"
@@ -139,7 +128,7 @@
       "Requires Level": "53",
       "Int": "75",
       "Dex": "52",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "214, 321",
       "Experience": "2,812,189"
@@ -149,7 +138,7 @@
       "Requires Level": "56",
       "Int": "79",
       "Dex": "55",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "251, 376",
       "Experience": "5,099,360"
@@ -159,7 +148,7 @@
       "Requires Level": "59",
       "Int": "83",
       "Dex": "58",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "294, 440",
       "Experience": "9,400,731"
@@ -169,7 +158,7 @@
       "Requires Level": "62",
       "Int": "87",
       "Dex": "60",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "343, 514",
       "Experience": "15,273,366"
@@ -179,7 +168,7 @@
       "Requires Level": "64",
       "Int": "90",
       "Dex": "62",
-      "Reservation": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "380, 569",
       "Experience": "26,286,582"
@@ -189,7 +178,7 @@
       "Requires Level": "66",
       "Int": "92",
       "Dex": "64",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "420, 630",
       "Experience": "62,890,590"
@@ -199,7 +188,7 @@
       "Requires Level": "68",
       "Int": "95",
       "Dex": "66",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "465, 697",
       "Experience": "212,046,017"
@@ -209,7 +198,7 @@
       "Requires Level": "70",
       "Int": "98",
       "Dex": "68",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "514, 771",
       "Experience": ""
@@ -219,7 +208,7 @@
       "Requires Level": "72",
       "Int": "",
       "Dex": "",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "568, 851",
       "Experience": ""
@@ -229,7 +218,7 @@
       "Requires Level": "74",
       "Int": "",
       "Dex": "",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "627, 940",
       "Experience": ""
@@ -239,7 +228,7 @@
       "Requires Level": "76",
       "Int": "",
       "Dex": "",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "691, 1037",
       "Experience": ""
@@ -249,7 +238,7 @@
       "Requires Level": "78",
       "Int": "",
       "Dex": "",
-      "Reservation": "6",
+      "Mana": "6",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "762, 1144",
       "Experience": ""
@@ -259,7 +248,7 @@
       "Requires Level": "80",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "840, 1260",
       "Experience": ""
@@ -269,7 +258,7 @@
       "Requires Level": "82",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "926, 1389",
       "Experience": ""
@@ -279,7 +268,7 @@
       "Requires Level": "84",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "1019, 1529",
       "Experience": ""
@@ -289,7 +278,7 @@
       "Requires Level": "86",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "1122, 1683",
       "Experience": ""
@@ -299,7 +288,7 @@
       "Requires Level": "88",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "1234, 1851",
       "Experience": ""
@@ -309,7 +298,7 @@
       "Requires Level": "90",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "1357, 2036",
       "Experience": ""
@@ -319,7 +308,7 @@
       "Requires Level": "91",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "1423, 2135",
       "Experience": ""
@@ -329,7 +318,7 @@
       "Requires Level": "92",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "1492, 2238",
       "Experience": ""
@@ -339,7 +328,7 @@
       "Requires Level": "93",
       "Int": "",
       "Dex": "",
-      "Reservation": "7",
+      "Mana": "7",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "1564, 2346",
       "Experience": ""
@@ -349,7 +338,7 @@
       "Requires Level": "94",
       "Int": "",
       "Dex": "",
-      "Reservation": "8",
+      "Mana": "8",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "1639, 2459",
       "Experience": ""
@@ -359,7 +348,7 @@
       "Requires Level": "95",
       "Int": "",
       "Dex": "",
-      "Reservation": "8",
+      "Mana": "8",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "1718, 2577",
       "Experience": ""
@@ -369,7 +358,7 @@
       "Requires Level": "96",
       "Int": "",
       "Dex": "",
-      "Reservation": "8",
+      "Mana": "8",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "1801, 2701",
       "Experience": ""
@@ -379,7 +368,7 @@
       "Requires Level": "97",
       "Int": "",
       "Dex": "",
-      "Reservation": "8",
+      "Mana": "8",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "1887, 2831",
       "Experience": ""
@@ -389,7 +378,7 @@
       "Requires Level": "98",
       "Int": "",
       "Dex": "",
-      "Reservation": "8",
+      "Mana": "8",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "1977, 2966",
       "Experience": ""
@@ -399,7 +388,7 @@
       "Requires Level": "99",
       "Int": "",
       "Dex": "",
-      "Reservation": "8",
+      "Mana": "8",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "2072, 3108",
       "Experience": ""
@@ -409,7 +398,7 @@
       "Requires Level": "100",
       "Int": "",
       "Dex": "",
-      "Reservation": "8",
+      "Mana": "8",
       "Base Damage": "100%, 100%",
       "Deals 16 to 24 Cold Damage": "2170, 3256",
       "Experience": ""

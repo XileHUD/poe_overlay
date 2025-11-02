@@ -1,0 +1,1684 @@
+{
+  "slug": "GenesisTree",
+  "total": 153,
+  "sections": [
+    {
+      "title": "Tree Passive",
+      "total": 153,
+      "items": [
+        {
+          "name": "ChayulaTreeStartNode",
+          "slug": "ChayulaTreeStartNode",
+          "passiveType": "other",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [],
+          "imageLocal": "genesis-tree/chayulatreestartnode.webp"
+        },
+        {
+          "name": "ChayulaTreeEquipmentStartNode",
+          "slug": "ChayulaTreeEquipmentStartNode",
+          "passiveType": "other",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [],
+          "imageLocal": "genesis-tree/chayulatreeequipmentstartnode.webp"
+        },
+        {
+          "name": "ChayulaTreeCurrencyStartNode",
+          "slug": "ChayulaTreeCurrencyStartNode",
+          "passiveType": "other",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [],
+          "imageLocal": "genesis-tree/chayulatreecurrencystartnode.webp"
+        },
+        {
+          "name": "ChayulaTreeUniqueItemsStartNode",
+          "slug": "ChayulaTreeUniqueItemsStartNode",
+          "passiveType": "other",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [],
+          "imageLocal": "genesis-tree/chayulatreeuniqueitemsstartnode.webp"
+        },
+        {
+          "name": "ChayulaTreeMiscItemsStartNode",
+          "slug": "ChayulaTreeMiscItemsStartNode",
+          "passiveType": "other",
+          "groupLabel": "Genesis",
+          "group": "Miscellany",
+          "mods": [],
+          "imageLocal": "genesis-tree/chayulatreemiscitemsstartnode.webp"
+        },
+        {
+          "name": "Graft Item Womb",
+          "slug": "Graft_Item_Womb",
+          "passiveType": "keystone",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [],
+          "imageLocal": "genesis-tree/graft_item_womb.webp"
+        },
+        {
+          "name": "Equipment Item Womb",
+          "slug": "Equipment_Item_Womb",
+          "passiveType": "keystone",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [],
+          "imageLocal": "genesis-tree/equipment_item_womb.webp"
+        },
+        {
+          "name": "Currency Item Womb",
+          "slug": "Currency_Item_Womb",
+          "passiveType": "keystone",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [],
+          "imageLocal": "genesis-tree/currency_item_womb.webp"
+        },
+        {
+          "name": "Unique Item Womb",
+          "slug": "Unique_Item_Womb",
+          "passiveType": "keystone",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [],
+          "imageLocal": "genesis-tree/unique_item_womb.webp"
+        },
+        {
+          "name": "Mysterious Item Womb",
+          "slug": "Mysterious_Item_Womb",
+          "passiveType": "keystone",
+          "groupLabel": "Genesis",
+          "group": "Miscellany",
+          "mods": [],
+          "imageLocal": "genesis-tree/mysterious_item_womb.webp"
+        },
+        {
+          "name": "Esh Curation",
+          "slug": "Esh_Curation",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [
+            "400% increased chance for Birthed Grafts to be Eshgrafts"
+          ],
+          "imageLocal": "genesis-tree/esh_curation.webp"
+        },
+        {
+          "name": "Uul-Netol Curation",
+          "slug": "Uul-Netol_Curation",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [
+            "400% increased chance for Birthed Grafts to be Uulgrafts"
+          ],
+          "imageLocal": "genesis-tree/uul_netol_curation.webp"
+        },
+        {
+          "name": "Tul Curation",
+          "slug": "Tul_Curation",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [
+            "400% increased chance for Birthed Grafts to be Tulgrafts"
+          ],
+          "imageLocal": "genesis-tree/tul_curation.webp"
+        },
+        {
+          "name": "Xoph Curation",
+          "slug": "Xoph_Curation",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [
+            "400% increased chance for Birthed Grafts to be Xophgrafts"
+          ],
+          "imageLocal": "genesis-tree/xoph_curation.webp"
+        },
+        {
+          "name": "Increased Item Level",
+          "slug": "Increased_Item_Level",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [
+            "Birthed Grafts have +1 to Item Level"
+          ],
+          "imageLocal": "genesis-tree/increased_item_level.webp"
+        },
+        {
+          "name": "Modifier Tier Rating",
+          "slug": "Modifier_Tier_Rating",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [
+            "Birthed Grafts have +20 to Modifier Tier Rating",
+            "(Raising Modifier Tier Rating excludes lower tier Modifiers from rolling, distributing their roll chance among higher tier Modifiers of the same Modifier type)"
+          ],
+          "imageLocal": "genesis-tree/modifier_tier_rating.webp"
+        },
+        {
+          "name": "Modifier Tier Rating",
+          "slug": "Modifier_Tier_Rating",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [
+            "Birthed Grafts have +40 to Modifier Tier Rating",
+            "(Raising Modifier Tier Rating excludes lower tier Modifiers from rolling, distributing their roll chance among higher tier Modifiers of the same Modifier type)"
+          ],
+          "imageLocal": "genesis-tree/modifier_tier_rating.webp"
+        },
+        {
+          "name": "Item Rarity",
+          "slug": "Item_Rarity",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [
+            "Birthed Grafts have 50% increased Rarity"
+          ],
+          "imageLocal": "genesis-tree/item_rarity.webp"
+        },
+        {
+          "name": "Additional Item Chance",
+          "slug": "Additional_Item_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [
+            "30% chance for Wombgifts to Birth an additional Graft"
+          ],
+          "imageLocal": "genesis-tree/additional_item_chance.webp"
+        },
+        {
+          "name": "Unguided Maturation",
+          "slug": "Unguided_Maturation",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [
+            "Birthed Grafts have a random amount of Quality",
+            "(Graft Quality increases the amount of Graftblood Stored)"
+          ],
+          "imageLocal": "genesis-tree/unguided_maturation.webp"
+        },
+        {
+          "name": "Item Rarity",
+          "slug": "Item_Rarity",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [
+            "Birthed Grafts have 25% increased Rarity"
+          ],
+          "imageLocal": "genesis-tree/item_rarity.webp"
+        },
+        {
+          "name": "Additional Item Chance",
+          "slug": "Additional_Item_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [
+            "60% chance for Wombgifts to Birth an additional Graft"
+          ],
+          "imageLocal": "genesis-tree/additional_item_chance.webp"
+        },
+        {
+          "name": "Item Level",
+          "slug": "Item_Level",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [
+            "Birthed Grafts have +1 to Item Level"
+          ],
+          "imageLocal": "genesis-tree/item_level.webp"
+        },
+        {
+          "name": "Additional Item Chance",
+          "slug": "Additional_Item_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [
+            "60% chance for Wombgifts to Birth an additional Graft"
+          ],
+          "imageLocal": "genesis-tree/additional_item_chance.webp"
+        },
+        {
+          "name": "Modifier Tier Rating",
+          "slug": "Modifier_Tier_Rating",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Grafts",
+          "mods": [
+            "Birthed Grafts have +40 to Modifier Tier Rating",
+            "(Raising Modifier Tier Rating excludes lower tier Modifiers from rolling, distributing their roll chance among higher tier Modifiers of the same Modifier type)"
+          ],
+          "imageLocal": "genesis-tree/modifier_tier_rating.webp"
+        },
+        {
+          "name": "Item Level",
+          "slug": "Item_Level",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has +1 to Item Level"
+          ],
+          "imageLocal": "genesis-tree/item_level.webp"
+        },
+        {
+          "name": "Modifier Tier Rating",
+          "slug": "Modifier_Tier_Rating",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has +50 to Modifier Tier Rating",
+            "(Raising Modifier Tier Rating excludes lower tier Modifiers from rolling, distributing their roll chance among higher tier Modifiers of the same Modifier type)"
+          ],
+          "imageLocal": "genesis-tree/modifier_tier_rating.webp"
+        },
+        {
+          "name": "Additional Item Chance",
+          "slug": "Additional_Item_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "50% chance for Wombgifts to Birth an additional Equipment Item"
+          ],
+          "imageLocal": "genesis-tree/additional_item_chance.webp"
+        },
+        {
+          "name": "Divine Rolls",
+          "slug": "Divine_Rolls",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Values of the random modifiers on Birthed Equipment are rolled an additional time keeping the best outcome"
+          ],
+          "imageLocal": "genesis-tree/divine_rolls.webp"
+        },
+        {
+          "name": "Socket and Link Count",
+          "slug": "Socket_and_Link_Count",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment rolls Sockets and Links +10 times, keeping the best outcome"
+          ],
+          "imageLocal": "genesis-tree/socket_and_link_count.webp"
+        },
+        {
+          "name": "Additional Item Chance",
+          "slug": "Additional_Item_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "50% chance for Wombgifts to Birth an additional Equipment Item"
+          ],
+          "imageLocal": "genesis-tree/additional_item_chance.webp"
+        },
+        {
+          "name": "Devoted Technique",
+          "slug": "Devoted_Technique",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [],
+          "imageLocal": "genesis-tree/devoted_technique.webp"
+        },
+        {
+          "name": "Forsaken Technique",
+          "slug": "Forsaken_Technique",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [],
+          "imageLocal": "genesis-tree/forsaken_technique.webp"
+        },
+        {
+          "name": "Devoted Soul",
+          "slug": "Devoted_Soul",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [],
+          "imageLocal": "genesis-tree/devoted_soul.webp"
+        },
+        {
+          "name": "Forsaken Soul",
+          "slug": "Forsaken_Soul",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [],
+          "imageLocal": "genesis-tree/forsaken_soul.webp"
+        },
+        {
+          "name": "Devoted Zeal",
+          "slug": "Devoted_Zeal",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [],
+          "imageLocal": "genesis-tree/devoted_zeal.webp"
+        },
+        {
+          "name": "Forsaken Zeal",
+          "slug": "Forsaken_Zeal",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [],
+          "imageLocal": "genesis-tree/forsaken_zeal.webp"
+        },
+        {
+          "name": "Increased Physical Modifier Chance",
+          "slug": "Increased_Physical_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 1000% increased chance for Physical Modifiers"
+          ],
+          "imageLocal": "genesis-tree/increased_physical_modifier_chance.webp"
+        },
+        {
+          "name": "Increased Fire Modifier Chance",
+          "slug": "Increased_Fire_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 1000% increased chance for Fire Modifiers"
+          ],
+          "imageLocal": "genesis-tree/increased_fire_modifier_chance.webp"
+        },
+        {
+          "name": "Increased Cold Modifier Chance",
+          "slug": "Increased_Cold_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 1000% increased chance for Cold Modifiers"
+          ],
+          "imageLocal": "genesis-tree/increased_cold_modifier_chance.webp"
+        },
+        {
+          "name": "Increased Lightning Modifier Chance",
+          "slug": "Increased_Lightning_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 1000% increased chance for Lightning Modifiers"
+          ],
+          "imageLocal": "genesis-tree/increased_lightning_modifier_chance.webp"
+        },
+        {
+          "name": "Increased Chaos Modifier Chance",
+          "slug": "Increased_Chaos_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 1000% increased chance for Chaos Modifiers"
+          ],
+          "imageLocal": "genesis-tree/increased_chaos_modifier_chance.webp"
+        },
+        {
+          "name": "Increased Life Modifier Chance",
+          "slug": "Increased_Life_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 1000% increased chance for Life Modifiers"
+          ],
+          "imageLocal": "genesis-tree/increased_life_modifier_chance.webp"
+        },
+        {
+          "name": "Increased Mana Modifier Chance",
+          "slug": "Increased_Mana_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 1000% increased chance for Mana Modifiers"
+          ],
+          "imageLocal": "genesis-tree/increased_mana_modifier_chance.webp"
+        },
+        {
+          "name": "Increased Defences Modifier Chance",
+          "slug": "Increased_Defences_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 1000% increased chance for Defence Modifiers"
+          ],
+          "imageLocal": "genesis-tree/increased_defences_modifier_chance.webp"
+        },
+        {
+          "name": "Increased Attributes Modifier Chance",
+          "slug": "Increased_Attributes_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 1000% increased chance for Attribute Modifiers"
+          ],
+          "imageLocal": "genesis-tree/increased_attributes_modifier_chance.webp"
+        },
+        {
+          "name": "Increased Resistance Modifier Chance",
+          "slug": "Increased_Resistance_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 1000% increased chance for Resistance Modifiers"
+          ],
+          "imageLocal": "genesis-tree/increased_resistance_modifier_chance.webp"
+        },
+        {
+          "name": "Increased Attack Modifier Chance",
+          "slug": "Increased_Attack_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 1000% increased chance for Attack Modifiers"
+          ],
+          "imageLocal": "genesis-tree/increased_attack_modifier_chance.webp"
+        },
+        {
+          "name": "Increased Caster Modifier Chance",
+          "slug": "Increased_Caster_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 1000% increased chance for Caster Modifiers"
+          ],
+          "imageLocal": "genesis-tree/increased_caster_modifier_chance.webp"
+        },
+        {
+          "name": "Increased Critical Modifier Chance",
+          "slug": "Increased_Critical_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 1000% increased chance for Critical Modifiers"
+          ],
+          "imageLocal": "genesis-tree/increased_critical_modifier_chance.webp"
+        },
+        {
+          "name": "Increased Speed Modifier Chance",
+          "slug": "Increased_Speed_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 1000% increased chance for Speed Modifiers"
+          ],
+          "imageLocal": "genesis-tree/increased_speed_modifier_chance.webp"
+        },
+        {
+          "name": "Reduced Physical Modifier Chance",
+          "slug": "Reduced_Physical_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 80% reduced chance for Physical Modifiers"
+          ],
+          "imageLocal": "genesis-tree/reduced_physical_modifier_chance.webp"
+        },
+        {
+          "name": "Reduced Fire Modifier Chance",
+          "slug": "Reduced_Fire_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 80% reduced chance for Fire Modifiers"
+          ],
+          "imageLocal": "genesis-tree/reduced_fire_modifier_chance.webp"
+        },
+        {
+          "name": "Reduced Cold Modifier Chance",
+          "slug": "Reduced_Cold_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 80% reduced chance for Cold Modifiers"
+          ],
+          "imageLocal": "genesis-tree/reduced_cold_modifier_chance.webp"
+        },
+        {
+          "name": "Reduced Lightning Modifier Chance",
+          "slug": "Reduced_Lightning_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 80% reduced chance for Lightning Modifiers"
+          ],
+          "imageLocal": "genesis-tree/reduced_lightning_modifier_chance.webp"
+        },
+        {
+          "name": "Reduced Chaos Modifier Chance",
+          "slug": "Reduced_Chaos_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 80% reduced chance for Chaos Modifiers"
+          ],
+          "imageLocal": "genesis-tree/reduced_chaos_modifier_chance.webp"
+        },
+        {
+          "name": "Reduced Life Modifier Chance",
+          "slug": "Reduced_Life_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 80% reduced chance for Life Modifiers"
+          ],
+          "imageLocal": "genesis-tree/reduced_life_modifier_chance.webp"
+        },
+        {
+          "name": "Reduced Mana Modifier Chance",
+          "slug": "Reduced_Mana_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 80% reduced chance for Mana Modifiers"
+          ],
+          "imageLocal": "genesis-tree/reduced_mana_modifier_chance.webp"
+        },
+        {
+          "name": "Reduced Defences Modifier Chance",
+          "slug": "Reduced_Defences_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 80% reduced chance for Defence Modifiers"
+          ],
+          "imageLocal": "genesis-tree/reduced_defences_modifier_chance.webp"
+        },
+        {
+          "name": "Reduced Attributes Modifier Chance",
+          "slug": "Reduced_Attributes_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 80% reduced chance for Attribute Modifiers"
+          ],
+          "imageLocal": "genesis-tree/reduced_attributes_modifier_chance.webp"
+        },
+        {
+          "name": "Reduced Resistance Modifier Chance",
+          "slug": "Reduced_Resistance_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 80% reduced chance for Resistance Modifiers"
+          ],
+          "imageLocal": "genesis-tree/reduced_resistance_modifier_chance.webp"
+        },
+        {
+          "name": "Reduced Attack Modifier Chance",
+          "slug": "Reduced_Attack_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 80% reduced chance for Attack Modifiers"
+          ],
+          "imageLocal": "genesis-tree/reduced_attack_modifier_chance.webp"
+        },
+        {
+          "name": "Reduced Caster Modifier Chance",
+          "slug": "Reduced_Caster_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 80% reduced chance for Caster Modifiers"
+          ],
+          "imageLocal": "genesis-tree/reduced_caster_modifier_chance.webp"
+        },
+        {
+          "name": "Reduced Critical Modifier Chance",
+          "slug": "Reduced_Critical_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 80% reduced chance for Critical Modifiers"
+          ],
+          "imageLocal": "genesis-tree/reduced_critical_modifier_chance.webp"
+        },
+        {
+          "name": "Reduced Speed Modifier Chance",
+          "slug": "Reduced_Speed_Modifier_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 80% reduced chance for Speed Modifiers"
+          ],
+          "imageLocal": "genesis-tree/reduced_speed_modifier_chance.webp"
+        },
+        {
+          "name": "Severing",
+          "slug": "Severing",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has the lowest Level Modifier removed"
+          ],
+          "imageLocal": "genesis-tree/severing.webp"
+        },
+        {
+          "name": "Solid Cysts",
+          "slug": "Solid_Cysts",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has 33% chance to be Fractured"
+          ],
+          "imageLocal": "genesis-tree/solid_cysts.webp"
+        },
+        {
+          "name": "Additional Item Chance",
+          "slug": "Additional_Item_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "25% chance for Wombgifts to Birth an additional Equipment Item"
+          ],
+          "imageLocal": "genesis-tree/additional_item_chance.webp"
+        },
+        {
+          "name": "Modifier Tier Rating",
+          "slug": "Modifier_Tier_Rating",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment has +25 to Modifier Tier Rating",
+            "(Raising Modifier Tier Rating excludes lower tier Modifiers from rolling, distributing their roll chance among higher tier Modifiers of the same Modifier type)"
+          ],
+          "imageLocal": "genesis-tree/modifier_tier_rating.webp"
+        },
+        {
+          "name": "Arterial Mesh",
+          "slug": "Arterial_Mesh",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Equipment rolls Sockets and Links +150 times, keeping the best outcome"
+          ],
+          "imageLocal": "genesis-tree/arterial_mesh.webp"
+        },
+        {
+          "name": "Basic Nurturing",
+          "slug": "Basic_Nurturing",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "Birthed Weapons and Armour have a random amount of Quality"
+          ],
+          "imageLocal": "genesis-tree/basic_nurturing.webp"
+        },
+        {
+          "name": "Guardian Flesh",
+          "slug": "Guardian_Flesh",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "400% increased chance for Birthed Equipment to be Armour",
+            "Birthed Equipment has +1 to Item Level"
+          ],
+          "imageLocal": "genesis-tree/guardian_flesh.webp"
+        },
+        {
+          "name": "Martial Flesh",
+          "slug": "Martial_Flesh",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "400% increased chance for Birthed Equipment to be Weapons",
+            "Birthed Equipment has +1 to Item Level"
+          ],
+          "imageLocal": "genesis-tree/martial_flesh.webp"
+        },
+        {
+          "name": "Glittering Flesh",
+          "slug": "Glittering_Flesh",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "400% increased chance for Birthed Equipment to be Jewellery",
+            "Birthed Equipment has +1 to Item Level"
+          ],
+          "imageLocal": "genesis-tree/glittering_flesh.webp"
+        },
+        {
+          "name": "Increased One-Handed Melee Weapons Chance",
+          "slug": "Increased_One-Handed_Melee_Weapons_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "5000% increased chance for Birthed Equipment to be One-Handed Melee Weapons"
+          ],
+          "imageLocal": "genesis-tree/increased_one_handed_melee_weapons_chance.webp"
+        },
+        {
+          "name": "Increased Two-Handed Melee Weapons Chance",
+          "slug": "Increased_Two-Handed_Melee_Weapons_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "5000% increased chance for Birthed Equipment to be Two-Handed Melee Weapons"
+          ],
+          "imageLocal": "genesis-tree/increased_two_handed_melee_weapons_chance.webp"
+        },
+        {
+          "name": "Increased Ranged Weapons Chance",
+          "slug": "Increased_Ranged_Weapons_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "5000% increased chance for Birthed Equipment to be Ranged Weapons"
+          ],
+          "imageLocal": "genesis-tree/increased_ranged_weapons_chance.webp"
+        },
+        {
+          "name": "Increased Shields Chance",
+          "slug": "Increased_Shields_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "5000% increased chance for Birthed Equipment to be Shields"
+          ],
+          "imageLocal": "genesis-tree/increased_shields_chance.webp"
+        },
+        {
+          "name": "Increased Quivers Chance",
+          "slug": "Increased_Quivers_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "5000% increased chance for Birthed Equipment to be Quivers"
+          ],
+          "imageLocal": "genesis-tree/increased_quivers_chance.webp"
+        },
+        {
+          "name": "Increased Helmets Chance",
+          "slug": "Increased_Helmets_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "5000% increased chance for Birthed Equipment to be Helmets"
+          ],
+          "imageLocal": "genesis-tree/increased_helmets_chance.webp"
+        },
+        {
+          "name": "Increased Body Armour Chance",
+          "slug": "Increased_Body_Armour_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "5000% increased chance for Birthed Equipment to be Body Armour"
+          ],
+          "imageLocal": "genesis-tree/increased_body_armour_chance.webp"
+        },
+        {
+          "name": "Increased Boots Chance",
+          "slug": "Increased_Boots_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "5000% increased chance for Birthed Equipment to be Boots"
+          ],
+          "imageLocal": "genesis-tree/increased_boots_chance.webp"
+        },
+        {
+          "name": "Increased Gloves Chance",
+          "slug": "Increased_Gloves_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "5000% increased chance for Birthed Equipment to be Gloves"
+          ],
+          "imageLocal": "genesis-tree/increased_gloves_chance.webp"
+        },
+        {
+          "name": "Increased Belts Chance",
+          "slug": "Increased_Belts_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "5000% increased chance for Birthed Equipment to be Belts"
+          ],
+          "imageLocal": "genesis-tree/increased_belts_chance.webp"
+        },
+        {
+          "name": "Increased Rings Chance",
+          "slug": "Increased_Rings_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "5000% increased chance for Birthed Equipment to be Rings"
+          ],
+          "imageLocal": "genesis-tree/increased_rings_chance.webp"
+        },
+        {
+          "name": "Increased Amulets Chance",
+          "slug": "Increased_Amulets_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "5000% increased chance for Birthed Equipment to be Amulets"
+          ],
+          "imageLocal": "genesis-tree/increased_amulets_chance.webp"
+        },
+        {
+          "name": "Increased Jewels Chance",
+          "slug": "Increased_Jewels_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "5000% increased chance for Birthed Equipment to be Jewels",
+            "Provisioning Wombgifts may instead Birth Jewels"
+          ],
+          "imageLocal": "genesis-tree/increased_jewels_chance.webp"
+        },
+        {
+          "name": "More Dexterity Items",
+          "slug": "More_Dexterity_Items",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "300% more chance for Birthed Equipment to have Dexterity Requirements"
+          ],
+          "imageLocal": "genesis-tree/more_dexterity_items.webp"
+        },
+        {
+          "name": "More Strength Items",
+          "slug": "More_Strength_Items",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "300% more chance for Birthed Equipment to have Strength Requirements"
+          ],
+          "imageLocal": "genesis-tree/more_strength_items.webp"
+        },
+        {
+          "name": "More Intelligence Items",
+          "slug": "More_Intelligence_Items",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "300% more chance for Birthed Equipment to have Intelligence Requirements"
+          ],
+          "imageLocal": "genesis-tree/more_intelligence_items.webp"
+        },
+        {
+          "name": "Less Dexterity Items",
+          "slug": "Less_Dexterity_Items",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "85% less chance for Birthed Equipment to have Dexterity Requirements"
+          ],
+          "imageLocal": "genesis-tree/less_dexterity_items.webp"
+        },
+        {
+          "name": "Less Strength Items",
+          "slug": "Less_Strength_Items",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "85% less chance for Birthed Equipment to have Strength Requirements"
+          ],
+          "imageLocal": "genesis-tree/less_strength_items.webp"
+        },
+        {
+          "name": "Less Intelligence Items",
+          "slug": "Less_Intelligence_Items",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Equipment",
+          "mods": [
+            "85% less chance for Birthed Equipment to have Intelligence Requirements"
+          ],
+          "imageLocal": "genesis-tree/less_intelligence_items.webp"
+        },
+        {
+          "name": "Prodigal Offspring",
+          "slug": "Prodigal_Offspring",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [
+            "25% chance for Wombgifts to Birth 3 additional Currency Items",
+            "3% chance for Wombgifts to Birth 10 additional Currency Items"
+          ],
+          "imageLocal": "genesis-tree/prodigal_offspring.webp"
+        },
+        {
+          "name": "Flawed Seeds",
+          "slug": "Flawed_Seeds",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [
+            "25% chance for Wombgifts to Birth an additional Currency Item",
+            "Wombgifts have a chance to Birth Foulborn Currency at Level 68 and above"
+          ],
+          "imageLocal": "genesis-tree/flawed_seeds.webp"
+        },
+        {
+          "name": "Additional Currency Chance",
+          "slug": "Additional_Currency_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [
+            "50% chance for Wombgifts to Birth an additional Currency Item"
+          ],
+          "imageLocal": "genesis-tree/additional_currency_chance.webp"
+        },
+        {
+          "name": "Graft Implant Chance",
+          "slug": "Graft_Implant_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [
+            "50% increased chance for Birthed Currency to be Graft Implants"
+          ],
+          "imageLocal": "genesis-tree/graft_implant_chance.webp"
+        },
+        {
+          "name": "Foulborn Currency Chance",
+          "slug": "Foulborn_Currency_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [
+            "50% increased chance for Birthed Currency to be Foulborn Currency"
+          ],
+          "imageLocal": "genesis-tree/foulborn_currency_chance.webp"
+        },
+        {
+          "name": "Mutation Cultivation",
+          "slug": "Mutation_Cultivation",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [
+            "25% chance for Wombgifts to Birth an additional Currency Item",
+            "100% increased chance for Birthed Currency to be Graft Implants",
+            "100% increased chance for Birthed Currency to be Foulborn Currency"
+          ],
+          "imageLocal": "genesis-tree/mutation_cultivation.webp"
+        },
+        {
+          "name": "Fertile Genesis",
+          "slug": "Fertile_Genesis",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [
+            "Birthed Currency Items are rolled an additional time keeping the rarest outcome"
+          ],
+          "imageLocal": "genesis-tree/fertile_genesis.webp"
+        },
+        {
+          "name": "Wild Growth",
+          "slug": "Wild_Growth",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [
+            "5% chance for Birthed Currency to drop as a full stack"
+          ],
+          "imageLocal": "genesis-tree/wild_growth.webp"
+        },
+        {
+          "name": "Encrusted Fruit",
+          "slug": "Encrusted_Fruit",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [
+            "50% chance for Birthed Currency to drop as Gold instead"
+          ],
+          "imageLocal": "genesis-tree/encrusted_fruit.webp"
+        },
+        {
+          "name": "Reflexive Contractions",
+          "slug": "Reflexive_Contractions",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [
+            "Birthed Currency is instead dropped as many random Currency Shards"
+          ],
+          "imageLocal": "genesis-tree/reflexive_contractions.webp"
+        },
+        {
+          "name": "Grasping Flesh",
+          "slug": "Grasping_Flesh",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [
+            "25% chance for Wombgifts to Birth an additional Currency Item",
+            "Wombgifts have a chance to Birth Graft Implants"
+          ],
+          "imageLocal": "genesis-tree/grasping_flesh.webp"
+        },
+        {
+          "name": "Additional Currency Chance",
+          "slug": "Additional_Currency_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Currency",
+          "mods": [
+            "50% chance for Wombgifts to Birth an additional Currency Item"
+          ],
+          "imageLocal": "genesis-tree/additional_currency_chance.webp"
+        },
+        {
+          "name": "Unstable Growth",
+          "slug": "Unstable_Growth",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "Birthed Unique Weapons and Armour have a random amount of Quality"
+          ],
+          "imageLocal": "genesis-tree/unstable_growth.webp"
+        },
+        {
+          "name": "Recessive Genes",
+          "slug": "Recessive_Genes",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "Birthed Uniques are rolled an additional time keeping the rarest outcome"
+          ],
+          "imageLocal": "genesis-tree/recessive_genes.webp"
+        },
+        {
+          "name": "Foulborn Chance",
+          "slug": "Foulborn_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "Birthed Uniques have 15% increased chance to be Foulborn"
+          ],
+          "imageLocal": "genesis-tree/foulborn_chance.webp"
+        },
+        {
+          "name": "Foulborn Chance",
+          "slug": "Foulborn_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "Birthed Uniques have 15% increased chance to be Foulborn"
+          ],
+          "imageLocal": "genesis-tree/foulborn_chance.webp"
+        },
+        {
+          "name": "Foulborn Chance",
+          "slug": "Foulborn_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "Birthed Uniques have 15% increased chance to be Foulborn"
+          ],
+          "imageLocal": "genesis-tree/foulborn_chance.webp"
+        },
+        {
+          "name": "Foulborn Chance",
+          "slug": "Foulborn_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "Birthed Uniques have 15% increased chance to be Foulborn"
+          ],
+          "imageLocal": "genesis-tree/foulborn_chance.webp"
+        },
+        {
+          "name": "Foulborn Chance",
+          "slug": "Foulborn_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "Birthed Uniques have 15% increased chance to be Foulborn"
+          ],
+          "imageLocal": "genesis-tree/foulborn_chance.webp"
+        },
+        {
+          "name": "Foulborn Ancestry",
+          "slug": "Foulborn_Ancestry",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "100% increased chance for Birthed Uniques to be Breach Specific",
+            "Birthed Uniques have 30% increased chance to be Foulborn"
+          ],
+          "imageLocal": "genesis-tree/foulborn_ancestry.webp"
+        },
+        {
+          "name": "Foulborn Gluttony",
+          "slug": "Foulborn_Gluttony",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "50% chance for Ancient Wombgifts to Birth an additional Item",
+            "Birthed Uniques have 30% increased chance to be Foulborn"
+          ],
+          "imageLocal": "genesis-tree/foulborn_gluttony.webp"
+        },
+        {
+          "name": "Lucky Sockets",
+          "slug": "Lucky_Sockets",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "Birthed Unique Weapons and Armour roll Sockets and Links +10 times keeping the best outcome"
+          ],
+          "imageLocal": "genesis-tree/lucky_sockets.webp"
+        },
+        {
+          "name": "Corrupted Flesh",
+          "slug": "Corrupted_Flesh",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "Birthed Uniques have 100% increased chance to be Foulborn",
+            "Birthed Non-Foulborn Unique Items are Corrupted"
+          ],
+          "imageLocal": "genesis-tree/corrupted_flesh.webp"
+        },
+        {
+          "name": "Guardian Lineage",
+          "slug": "Guardian_Lineage",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "100% increased chance for Birthed Unique Items to be Armour"
+          ],
+          "imageLocal": "genesis-tree/guardian_lineage.webp"
+        },
+        {
+          "name": "Martial Lineage",
+          "slug": "Martial_Lineage",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "100% increased chance for Birthed Unique Items to be Weapons"
+          ],
+          "imageLocal": "genesis-tree/martial_lineage.webp"
+        },
+        {
+          "name": "Glittering Lineage",
+          "slug": "Glittering_Lineage",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "100% increased chance for Birthed Unique Items to be Jewellery"
+          ],
+          "imageLocal": "genesis-tree/glittering_lineage.webp"
+        },
+        {
+          "name": "Increased One-Handed Melee Weapons Chance",
+          "slug": "Increased_One-Handed_Melee_Weapons_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "1000% increased chance for Birthed Unique Items to be One-Handed Melee Weapons"
+          ],
+          "imageLocal": "genesis-tree/increased_one_handed_melee_weapons_chance.webp"
+        },
+        {
+          "name": "Increased Two-Handed Melee Weapons Chance",
+          "slug": "Increased_Two-Handed_Melee_Weapons_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "1000% increased chance for Birthed Unique Items to be Two-Handed Melee Weapons"
+          ],
+          "imageLocal": "genesis-tree/increased_two_handed_melee_weapons_chance.webp"
+        },
+        {
+          "name": "Increased Ranged Weapons Chance",
+          "slug": "Increased_Ranged_Weapons_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "1000% increased chance for Birthed Unique Items to be Ranged Weapons"
+          ],
+          "imageLocal": "genesis-tree/increased_ranged_weapons_chance.webp"
+        },
+        {
+          "name": "Increased Shields Chance",
+          "slug": "Increased_Shields_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "1000% increased chance for Birthed Unique Items to be Shields"
+          ],
+          "imageLocal": "genesis-tree/increased_shields_chance.webp"
+        },
+        {
+          "name": "Increased Quivers Chance",
+          "slug": "Increased_Quivers_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "500% increased chance for Birthed Unique Items to be Quivers"
+          ],
+          "imageLocal": "genesis-tree/increased_quivers_chance.webp"
+        },
+        {
+          "name": "Increased Helmets Chance",
+          "slug": "Increased_Helmets_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "1000% increased chance for Birthed Unique Items to be Helmets"
+          ],
+          "imageLocal": "genesis-tree/increased_helmets_chance.webp"
+        },
+        {
+          "name": "Increased Body Armour Chance",
+          "slug": "Increased_Body_Armour_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "1000% increased chance for Birthed Unique Items to be Body Armour"
+          ],
+          "imageLocal": "genesis-tree/increased_body_armour_chance.webp"
+        },
+        {
+          "name": "Increased Boots Chance",
+          "slug": "Increased_Boots_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "1000% increased chance for Birthed Unique Items to be Boots"
+          ],
+          "imageLocal": "genesis-tree/increased_boots_chance.webp"
+        },
+        {
+          "name": "Increased Gloves Chance",
+          "slug": "Increased_Gloves_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "1000% increased chance for Birthed Unique Items to be Gloves"
+          ],
+          "imageLocal": "genesis-tree/increased_gloves_chance.webp"
+        },
+        {
+          "name": "Increased Belts Chance",
+          "slug": "Increased_Belts_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "1000% increased chance for Birthed Unique Items to be Belts"
+          ],
+          "imageLocal": "genesis-tree/increased_belts_chance.webp"
+        },
+        {
+          "name": "Increased Rings Chance",
+          "slug": "Increased_Rings_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "1000% increased chance for Birthed Unique Items to be Rings"
+          ],
+          "imageLocal": "genesis-tree/increased_rings_chance.webp"
+        },
+        {
+          "name": "Increased Amulets Chance",
+          "slug": "Increased_Amulets_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "1000% increased chance for Birthed Unique Items to be Amulets"
+          ],
+          "imageLocal": "genesis-tree/increased_amulets_chance.webp"
+        },
+        {
+          "name": "Increased Jewels Chance",
+          "slug": "Increased_Jewels_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "500% increased chance for Birthed Unique Items to be Jewels"
+          ],
+          "imageLocal": "genesis-tree/increased_jewels_chance.webp"
+        },
+        {
+          "name": "Increased Flasks Chance",
+          "slug": "Increased_Flasks_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "500% increased chance for Birthed Unique Items to be Flasks"
+          ],
+          "imageLocal": "genesis-tree/increased_flasks_chance.webp"
+        },
+        {
+          "name": "More Dexterity Items",
+          "slug": "More_Dexterity_Items",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "300% increased chance for Birthed Unique Items to have Dexterity Requirements"
+          ],
+          "imageLocal": "genesis-tree/more_dexterity_items.webp"
+        },
+        {
+          "name": "More Strength Items",
+          "slug": "More_Strength_Items",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "300% increased chance for Birthed Unique Items to have Strength Requirements"
+          ],
+          "imageLocal": "genesis-tree/more_strength_items.webp"
+        },
+        {
+          "name": "More Intelligence Items",
+          "slug": "More_Intelligence_Items",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "300% increased chance for Birthed Unique Items to have Intelligence Requirements"
+          ],
+          "imageLocal": "genesis-tree/more_intelligence_items.webp"
+        },
+        {
+          "name": "Less Dexterity Items",
+          "slug": "Less_Dexterity_Items",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "85% reduced chance for Birthed Unique Items to have Dexterity Requirements"
+          ],
+          "imageLocal": "genesis-tree/less_dexterity_items.webp"
+        },
+        {
+          "name": "Less Strength Items",
+          "slug": "Less_Strength_Items",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "85% reduced chance for Birthed Unique Items to have Strength Requirements"
+          ],
+          "imageLocal": "genesis-tree/less_strength_items.webp"
+        },
+        {
+          "name": "Less Intelligence Items",
+          "slug": "Less_Intelligence_Items",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "85% reduced chance for Birthed Unique Items to have Intelligence Requirements"
+          ],
+          "imageLocal": "genesis-tree/less_intelligence_items.webp"
+        },
+        {
+          "name": "Throbbing Veins",
+          "slug": "Throbbing_Veins",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "Birthed Unique Weapons and Armour roll Sockets and Links +150 times keeping the best outcome"
+          ],
+          "imageLocal": "genesis-tree/throbbing_veins.webp"
+        },
+        {
+          "name": "Extremely Foul",
+          "slug": "Extremely_Foul",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "Birthed Foulborn Uniques have a 20% chance of multiple Foulborn Modifiers",
+            "Birthed Uniques have 50% increased chance to be Foulborn"
+          ],
+          "imageLocal": "genesis-tree/extremely_foul.webp"
+        },
+        {
+          "name": "Lord's Descent",
+          "slug": "Lords_Descent",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "150% increased chance for Birthed Uniques to be Breach Specific"
+          ],
+          "imageLocal": "genesis-tree/lords_descent.webp"
+        },
+        {
+          "name": "Remembered Origins",
+          "slug": "Remembered_Origins",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "300% increased chance for Birthed Uniques to be Breach Specific",
+            "Birthed Uniques have 100% reduced chance to be Foulborn"
+          ],
+          "imageLocal": "genesis-tree/remembered_origins.webp"
+        },
+        {
+          "name": "Cleansed of Impurity",
+          "slug": "Cleansed_of_Impurity",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Unique Items",
+          "mods": [
+            "Birthed Uniques have 150% reduced chance to be Foulborn"
+          ],
+          "imageLocal": "genesis-tree/cleansed_of_impurity.webp"
+        },
+        {
+          "name": "Additional Item Chance",
+          "slug": "Additional_Item_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Miscellany",
+          "mods": [
+            "25% chance for Mysterious Wombgifts to Birth an additional Item"
+          ],
+          "imageLocal": "genesis-tree/additional_item_chance.webp"
+        },
+        {
+          "name": "Additional Item Chance",
+          "slug": "Additional_Item_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Miscellany",
+          "mods": [
+            "25% chance for Mysterious Wombgifts to Birth an additional Item"
+          ],
+          "imageLocal": "genesis-tree/additional_item_chance.webp"
+        },
+        {
+          "name": "Artificial Selection",
+          "slug": "Artificial_Selection",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Miscellany",
+          "mods": [
+            "50% increased chance for Mysterious Wombgifts to Birth infrequently found Items"
+          ],
+          "imageLocal": "genesis-tree/artificial_selection.webp"
+        },
+        {
+          "name": "Parthenogenesis",
+          "slug": "Parthenogenesis",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Miscellany",
+          "mods": [
+            "Mysterious Wombgifts may Birth other Wombgifts"
+          ],
+          "imageLocal": "genesis-tree/parthenogenesis.webp"
+        },
+        {
+          "name": "Provisioning Wombgift Chance",
+          "slug": "Provisioning_Wombgift_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Miscellany",
+          "mods": [
+            "800% increased chance for Mysterious Wombgifts to Birth Provisioning Wombgifts"
+          ],
+          "imageLocal": "genesis-tree/provisioning_wombgift_chance.webp"
+        },
+        {
+          "name": "Growing Wombgift Chance",
+          "slug": "Growing_Wombgift_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Miscellany",
+          "mods": [
+            "800% increased chance for Mysterious Wombgifts to Birth Growing Wombgifts"
+          ],
+          "imageLocal": "genesis-tree/growing_wombgift_chance.webp"
+        },
+        {
+          "name": "Lavish Wombgift Chance",
+          "slug": "Lavish_Wombgift_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Miscellany",
+          "mods": [
+            "800% increased chance for Mysterious Wombgifts to Birth Lavish Wombgifts"
+          ],
+          "imageLocal": "genesis-tree/lavish_wombgift_chance.webp"
+        },
+        {
+          "name": "Ancient Wombgift Chance",
+          "slug": "Ancient_Wombgift_Chance",
+          "passiveType": "basic",
+          "groupLabel": "Genesis",
+          "group": "Miscellany",
+          "mods": [
+            "800% increased chance for Mysterious Wombgifts to Birth Ancient Wombgifts"
+          ],
+          "imageLocal": "genesis-tree/ancient_wombgift_chance.webp"
+        },
+        {
+          "name": "Natural Selection",
+          "slug": "Natural_Selection",
+          "passiveType": "notable",
+          "groupLabel": "Genesis",
+          "group": "Miscellany",
+          "mods": [
+            "100% chance for Mysterious Wombgifts to Birth an additional Item",
+            "25% increased chance for Mysterious Wombgifts to Birth commonly found Items"
+          ],
+          "imageLocal": "genesis-tree/natural_selection.webp"
+        }
+      ]
+    }
+  ]
+}

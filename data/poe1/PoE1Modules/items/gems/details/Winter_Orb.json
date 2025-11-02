@@ -1,24 +1,13 @@
 {
   "name": "Winter Orb",
   "slug": "Winter_Orb",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xOrb of Chance",
-    "Acronym": "Channelling, Duration, Projectile",
-    "DropLevel": "28",
-    "BaseType": "Winter Orb",
-    "Class": "Skill Gems",
-    "TargetTypes": "Ground",
-    "Type": "Spell, Channel, Cold, Damage, Area, Duration, Projectile, Totemable, AreaSpell, ProjectilesNotFromUser, Orb",
-    "ItemType": "Metadata/Items/Gems/SkillGemWinterOrb",
-    "ActiveSkillsCode": "winter_orb",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "28",
       "Int": "67",
-      "Cost": "2",
+      "Mana": "2",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "39, 49",
       "Experience": "199,345"
@@ -27,7 +16,7 @@
       "Level": "2",
       "Requires Level": "31",
       "Int": "73",
-      "Cost": "2",
+      "Mana": "2",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "47, 59",
       "Experience": "285,815"
@@ -36,7 +25,7 @@
       "Level": "3",
       "Requires Level": "34",
       "Int": "79",
-      "Cost": "2",
+      "Mana": "2",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "56, 70",
       "Experience": "401,344"
@@ -45,7 +34,7 @@
       "Level": "4",
       "Requires Level": "37",
       "Int": "85",
-      "Cost": "3",
+      "Mana": "3",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "67, 83",
       "Experience": "554,379"
@@ -54,7 +43,7 @@
       "Level": "5",
       "Requires Level": "40",
       "Int": "92",
-      "Cost": "3",
+      "Mana": "3",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "79, 99",
       "Experience": "477,437"
@@ -63,7 +52,7 @@
       "Level": "6",
       "Requires Level": "42",
       "Int": "96",
-      "Cost": "3",
+      "Mana": "3",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "88, 110",
       "Experience": "583,786"
@@ -72,7 +61,7 @@
       "Level": "7",
       "Requires Level": "44",
       "Int": "100",
-      "Cost": "3",
+      "Mana": "3",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "98, 122",
       "Experience": "710,359"
@@ -81,7 +70,7 @@
       "Level": "8",
       "Requires Level": "46",
       "Int": "104",
-      "Cost": "3",
+      "Mana": "3",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "109, 136",
       "Experience": "1,355,511"
@@ -90,7 +79,7 @@
       "Level": "9",
       "Requires Level": "48",
       "Int": "109",
-      "Cost": "3",
+      "Mana": "3",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "121, 151",
       "Experience": "1,138,877"
@@ -99,7 +88,7 @@
       "Level": "10",
       "Requires Level": "50",
       "Int": "113",
-      "Cost": "3",
+      "Mana": "3",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "134, 168",
       "Experience": "1,368,233"
@@ -108,7 +97,7 @@
       "Level": "11",
       "Requires Level": "52",
       "Int": "117",
-      "Cost": "3",
+      "Mana": "3",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "149, 186",
       "Experience": "1,638,338"
@@ -117,7 +106,7 @@
       "Level": "12",
       "Requires Level": "54",
       "Int": "121",
-      "Cost": "3",
+      "Mana": "3",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "165, 206",
       "Experience": "1,956,648"
@@ -126,7 +115,7 @@
       "Level": "13",
       "Requires Level": "56",
       "Int": "125",
-      "Cost": "3",
+      "Mana": "3",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "182, 227",
       "Experience": "3,655,184"
@@ -135,7 +124,7 @@
       "Level": "14",
       "Requires Level": "58",
       "Int": "130",
-      "Cost": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "201, 251",
       "Experience": "3,017,327"
@@ -144,7 +133,7 @@
       "Level": "15",
       "Requires Level": "60",
       "Int": "134",
-      "Cost": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "222, 277",
       "Experience": "7,759,995"
@@ -153,7 +142,7 @@
       "Level": "16",
       "Requires Level": "62",
       "Int": "138",
-      "Cost": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "245, 306",
       "Experience": "15,138,193"
@@ -162,7 +151,7 @@
       "Level": "17",
       "Requires Level": "64",
       "Int": "142",
-      "Cost": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "270, 337",
       "Experience": "26,083,825"
@@ -171,7 +160,7 @@
       "Level": "18",
       "Requires Level": "66",
       "Int": "146",
-      "Cost": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "297, 371",
       "Experience": "62,620,247"
@@ -180,7 +169,7 @@
       "Level": "19",
       "Requires Level": "68",
       "Int": "151",
-      "Cost": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "327, 409",
       "Experience": "211,708,088"
@@ -189,7 +178,7 @@
       "Level": "20",
       "Requires Level": "70",
       "Int": "155",
-      "Cost": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "360, 450",
       "Experience": ""
@@ -198,7 +187,7 @@
       "Level": "21",
       "Requires Level": "72",
       "Int": "",
-      "Cost": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "395, 494",
       "Experience": ""
@@ -207,7 +196,7 @@
       "Level": "22",
       "Requires Level": "74",
       "Int": "",
-      "Cost": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "434, 543",
       "Experience": ""
@@ -216,7 +205,7 @@
       "Level": "23",
       "Requires Level": "76",
       "Int": "",
-      "Cost": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "477, 596",
       "Experience": ""
@@ -225,7 +214,7 @@
       "Level": "24",
       "Requires Level": "78",
       "Int": "",
-      "Cost": "4",
+      "Mana": "4",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "523, 654",
       "Experience": ""
@@ -234,7 +223,7 @@
       "Level": "25",
       "Requires Level": "80",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "574, 717",
       "Experience": ""
@@ -243,7 +232,7 @@
       "Level": "26",
       "Requires Level": "82",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "629, 786",
       "Experience": ""
@@ -252,7 +241,7 @@
       "Level": "27",
       "Requires Level": "84",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "689, 861",
       "Experience": ""
@@ -261,7 +250,7 @@
       "Level": "28",
       "Requires Level": "86",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "754, 943",
       "Experience": ""
@@ -270,7 +259,7 @@
       "Level": "29",
       "Requires Level": "88",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "826, 1032",
       "Experience": ""
@@ -279,7 +268,7 @@
       "Level": "30",
       "Requires Level": "90",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "904, 1130",
       "Experience": ""
@@ -288,7 +277,7 @@
       "Level": "31",
       "Requires Level": "91",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "945, 1181",
       "Experience": ""
@@ -297,7 +286,7 @@
       "Level": "32",
       "Requires Level": "92",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "988, 1236",
       "Experience": ""
@@ -306,7 +295,7 @@
       "Level": "33",
       "Requires Level": "93",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "1034, 1292",
       "Experience": ""
@@ -315,7 +304,7 @@
       "Level": "34",
       "Requires Level": "94",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "1081, 1351",
       "Experience": ""
@@ -324,7 +313,7 @@
       "Level": "35",
       "Requires Level": "95",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "1130, 1412",
       "Experience": ""
@@ -333,7 +322,7 @@
       "Level": "36",
       "Requires Level": "96",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "1181, 1476",
       "Experience": ""
@@ -342,7 +331,7 @@
       "Level": "37",
       "Requires Level": "97",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "1235, 1543",
       "Experience": ""
@@ -351,7 +340,7 @@
       "Level": "38",
       "Requires Level": "98",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "1290, 1613",
       "Experience": ""
@@ -360,7 +349,7 @@
       "Level": "39",
       "Requires Level": "99",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "1349, 1686",
       "Experience": ""
@@ -369,7 +358,7 @@
       "Level": "40",
       "Requires Level": "100",
       "Int": "",
-      "Cost": "5",
+      "Mana": "5",
       "Base Damage": "100%, 100%",
       "Deals 39 to 49 Cold Damage": "1409, 1762",
       "Experience": ""
@@ -405,27 +394,27 @@
       ]
     },
     {
-      "text": "Fires projectiles every 1.6 seconds",
+      "text": "Fires projectiles every 1.2 seconds",
       "values": [
-        "1.6"
-      ]
-    },
-    {
-      "text": "125% more Projectile Frequency while Channelling",
-      "values": [
-        "125"
-      ]
-    },
-    {
-      "text": "20% increased Projectile Frequency per Stage",
-      "values": [
-        "20"
+        "1.2"
       ]
     },
     {
       "text": "Maximum 8 Stages",
       "values": [
         "8"
+      ]
+    },
+    {
+      "text": "80% more Projectile Frequency while Channelling",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "20% increased Projectile Frequency per Stage",
+      "values": [
+        "20"
       ]
     },
     {
@@ -452,27 +441,27 @@
       ]
     },
     {
-      "text": "Fires projectiles every 1.6 seconds",
+      "text": "Fires projectiles every 1.2 seconds",
       "values": [
-        "1.6"
-      ]
-    },
-    {
-      "text": "125% more Projectile Frequency while Channelling",
-      "values": [
-        "125"
-      ]
-    },
-    {
-      "text": "20% increased Projectile Frequency per Stage",
-      "values": [
-        "20"
+        "1.2"
       ]
     },
     {
       "text": "Maximum 8 Stages",
       "values": [
         "8"
+      ]
+    },
+    {
+      "text": "80% more Projectile Frequency while Channelling",
+      "values": [
+        "80"
+      ]
+    },
+    {
+      "text": "20% increased Projectile Frequency per Stage",
+      "values": [
+        "20"
       ]
     },
     {

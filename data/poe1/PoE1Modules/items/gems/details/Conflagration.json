@@ -1,0 +1,575 @@
+{
+  "name": "Conflagration",
+  "slug": "Conflagration",
+  "metadata": {},
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "28",
+      "Dex": "67",
+      "Mana": "9",
+      "Base Damage": "30%, 30%",
+      "Deals 157.2 Base Fire Damage per second": "157.2",
+      "Base explosion radius is 1.5 metres": "1, 1.5",
+      "Experience": "199,345"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "31",
+      "Dex": "73",
+      "Mana": "9",
+      "Base Damage": "30.3%, 30.3%",
+      "Deals 157.2 Base Fire Damage per second": "198.7",
+      "Base explosion radius is 1.5 metres": "1, 1.5",
+      "Experience": "285,815"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "34",
+      "Dex": "79",
+      "Mana": "10",
+      "Base Damage": "30.6%, 30.6%",
+      "Deals 157.2 Base Fire Damage per second": "249.8",
+      "Base explosion radius is 1.5 metres": "1, 1.6",
+      "Experience": "401,344"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "37",
+      "Dex": "85",
+      "Mana": "10",
+      "Base Damage": "30.9%, 30.9%",
+      "Deals 157.2 Base Fire Damage per second": "312.5",
+      "Base explosion radius is 1.5 metres": "1, 1.6",
+      "Experience": "554,379"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "40",
+      "Dex": "92",
+      "Mana": "10",
+      "Base Damage": "31.2%, 31.2%",
+      "Deals 157.2 Base Fire Damage per second": "389.4",
+      "Base explosion radius is 1.5 metres": "1, 1.6",
+      "Experience": "477,437"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "42",
+      "Dex": "96",
+      "Mana": "10",
+      "Base Damage": "31.5%, 31.5%",
+      "Deals 157.2 Base Fire Damage per second": "449.9",
+      "Base explosion radius is 1.5 metres": "1, 1.6",
+      "Experience": "583,786"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "44",
+      "Dex": "100",
+      "Mana": "10",
+      "Base Damage": "31.8%, 31.8%",
+      "Deals 157.2 Base Fire Damage per second": "519.2",
+      "Base explosion radius is 1.5 metres": "1, 1.7",
+      "Experience": "710,359"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "46",
+      "Dex": "104",
+      "Mana": "11",
+      "Base Damage": "32.1%, 32.1%",
+      "Deals 157.2 Base Fire Damage per second": "598.2",
+      "Base explosion radius is 1.5 metres": "1, 1.7",
+      "Experience": "1,355,511"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Dex": "109",
+      "Mana": "11",
+      "Base Damage": "32.4%, 32.4%",
+      "Deals 157.2 Base Fire Damage per second": "688.4",
+      "Base explosion radius is 1.5 metres": "1, 1.7",
+      "Experience": "1,138,877"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Dex": "113",
+      "Mana": "11",
+      "Base Damage": "32.7%, 32.7%",
+      "Deals 157.2 Base Fire Damage per second": "791.2",
+      "Base explosion radius is 1.5 metres": "1, 1.7",
+      "Experience": "1,368,233"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Dex": "117",
+      "Mana": "11",
+      "Base Damage": "32.9%, 32.9%",
+      "Deals 157.2 Base Fire Damage per second": "908.3",
+      "Base explosion radius is 1.5 metres": "1, 1.8",
+      "Experience": "1,638,338"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Dex": "121",
+      "Mana": "11",
+      "Base Damage": "33.2%, 33.2%",
+      "Deals 157.2 Base Fire Damage per second": "1041.7",
+      "Base explosion radius is 1.5 metres": "1, 1.8",
+      "Experience": "1,956,648"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Dex": "125",
+      "Mana": "11",
+      "Base Damage": "33.5%, 33.5%",
+      "Deals 157.2 Base Fire Damage per second": "1193.6",
+      "Base explosion radius is 1.5 metres": "1, 1.8",
+      "Experience": "3,655,184"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Dex": "130",
+      "Mana": "12",
+      "Base Damage": "33.8%, 33.8%",
+      "Deals 157.2 Base Fire Damage per second": "1366.3",
+      "Base explosion radius is 1.5 metres": "1, 1.8",
+      "Experience": "3,017,327"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Dex": "134",
+      "Mana": "12",
+      "Base Damage": "34.1%, 34.1%",
+      "Deals 157.2 Base Fire Damage per second": "1562.6",
+      "Base explosion radius is 1.5 metres": "1, 1.9",
+      "Experience": "7,759,995"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Dex": "138",
+      "Mana": "12",
+      "Base Damage": "34.4%, 34.4%",
+      "Deals 157.2 Base Fire Damage per second": "1785.6",
+      "Base explosion radius is 1.5 metres": "1, 1.9",
+      "Experience": "15,138,193"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Dex": "142",
+      "Mana": "12",
+      "Base Damage": "34.7%, 34.7%",
+      "Deals 157.2 Base Fire Damage per second": "2039",
+      "Base explosion radius is 1.5 metres": "1, 1.9",
+      "Experience": "26,083,825"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Dex": "146",
+      "Mana": "12",
+      "Base Damage": "35%, 35%",
+      "Deals 157.2 Base Fire Damage per second": "2326.5",
+      "Base explosion radius is 1.5 metres": "1, 1.9",
+      "Experience": "62,620,247"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Dex": "151",
+      "Mana": "12",
+      "Base Damage": "35.3%, 35.3%",
+      "Deals 157.2 Base Fire Damage per second": "2652.8",
+      "Base explosion radius is 1.5 metres": "1, 2",
+      "Experience": "211,708,088"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Dex": "155",
+      "Mana": "13",
+      "Base Damage": "35.6%, 35.6%",
+      "Deals 157.2 Base Fire Damage per second": "3022.8",
+      "Base explosion radius is 1.5 metres": "1, 2",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Dex": "",
+      "Mana": "13",
+      "Base Damage": "35.9%, 35.9%",
+      "Deals 157.2 Base Fire Damage per second": "3442.2",
+      "Base explosion radius is 1.5 metres": "1, 2",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Dex": "",
+      "Mana": "13",
+      "Base Damage": "36.2%, 36.2%",
+      "Deals 157.2 Base Fire Damage per second": "3917.6",
+      "Base explosion radius is 1.5 metres": "1, 2",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Dex": "",
+      "Mana": "13",
+      "Base Damage": "36.5%, 36.5%",
+      "Deals 157.2 Base Fire Damage per second": "4456",
+      "Base explosion radius is 1.5 metres": "1, 2.1",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Dex": "",
+      "Mana": "13",
+      "Base Damage": "36.8%, 36.8%",
+      "Deals 157.2 Base Fire Damage per second": "5065.6",
+      "Base explosion radius is 1.5 metres": "1, 2.1",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Dex": "",
+      "Mana": "13",
+      "Base Damage": "37.1%, 37.1%",
+      "Deals 157.2 Base Fire Damage per second": "5755.7",
+      "Base explosion radius is 1.5 metres": "1, 2.1",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Dex": "",
+      "Mana": "14",
+      "Base Damage": "37.4%, 37.4%",
+      "Deals 157.2 Base Fire Damage per second": "6536.5",
+      "Base explosion radius is 1.5 metres": "1, 2.1",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Dex": "",
+      "Mana": "14",
+      "Base Damage": "37.7%, 37.7%",
+      "Deals 157.2 Base Fire Damage per second": "7419.7",
+      "Base explosion radius is 1.5 metres": "1, 2.2",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Dex": "",
+      "Mana": "14",
+      "Base Damage": "38%, 38%",
+      "Deals 157.2 Base Fire Damage per second": "8418.5",
+      "Base explosion radius is 1.5 metres": "1, 2.2",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Dex": "",
+      "Mana": "14",
+      "Base Damage": "38.3%, 38.3%",
+      "Deals 157.2 Base Fire Damage per second": "9547.5",
+      "Base explosion radius is 1.5 metres": "1, 2.2",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Dex": "",
+      "Mana": "14",
+      "Base Damage": "38.5%, 38.5%",
+      "Deals 157.2 Base Fire Damage per second": "10823.4",
+      "Base explosion radius is 1.5 metres": "1, 2.2",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Dex": "",
+      "Mana": "14",
+      "Base Damage": "38.7%, 38.7%",
+      "Deals 157.2 Base Fire Damage per second": "11522.2",
+      "Base explosion radius is 1.5 metres": "1, 2.3",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Dex": "",
+      "Mana": "14",
+      "Base Damage": "38.8%, 38.8%",
+      "Deals 157.2 Base Fire Damage per second": "12264.9",
+      "Base explosion radius is 1.5 metres": "1, 2.3",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Dex": "",
+      "Mana": "14",
+      "Base Damage": "39%, 39%",
+      "Deals 157.2 Base Fire Damage per second": "13054.2",
+      "Base explosion radius is 1.5 metres": "1, 2.3",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Dex": "",
+      "Mana": "15",
+      "Base Damage": "39.1%, 39.1%",
+      "Deals 157.2 Base Fire Damage per second": "13893",
+      "Base explosion radius is 1.5 metres": "1, 2.3",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Dex": "",
+      "Mana": "15",
+      "Base Damage": "39.3%, 39.3%",
+      "Deals 157.2 Base Fire Damage per second": "14784.3",
+      "Base explosion radius is 1.5 metres": "1, 2.4",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Dex": "",
+      "Mana": "15",
+      "Base Damage": "39.4%, 39.4%",
+      "Deals 157.2 Base Fire Damage per second": "15731.3",
+      "Base explosion radius is 1.5 metres": "1, 2.4",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Dex": "",
+      "Mana": "15",
+      "Base Damage": "39.6%, 39.6%",
+      "Deals 157.2 Base Fire Damage per second": "16737.6",
+      "Base explosion radius is 1.5 metres": "1, 2.4",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Dex": "",
+      "Mana": "15",
+      "Base Damage": "39.7%, 39.7%",
+      "Deals 157.2 Base Fire Damage per second": "17806.6",
+      "Base explosion radius is 1.5 metres": "1, 2.4",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Dex": "",
+      "Mana": "15",
+      "Base Damage": "39.9%, 39.9%",
+      "Deals 157.2 Base Fire Damage per second": "18942.3",
+      "Base explosion radius is 1.5 metres": "1, 2.5",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Dex": "",
+      "Mana": "15",
+      "Base Damage": "40%, 40%",
+      "Deals 157.2 Base Fire Damage per second": "20148.7",
+      "Base explosion radius is 1.5 metres": "1, 2.5",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": [],
+  "gemDescription": "Fire arrows into the air that rain down around the targeted area, dealing area damage on impact and leaving the arrows stuck in the ground for a duration. If you move close to a stuck arrow, it will explode, dealing area damage and applying a fire damage over time debuff, as well as causing other stuck arrows in range to also explode.",
+  "explicitMods": [
+    {
+      "text": "Deals (157.2–3022.8) Base Fire Damage per second",
+      "values": [
+        "(157.2–3022.8)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Arrows after the first fall within a Base radius of 3 metres",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Base explosion radius is (1.5–2) metres",
+      "values": [
+        "(1.5–2)"
+      ]
+    },
+    {
+      "text": "Impact Base radius is 1 metre",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Explosion deals 50% more Damage with Hits and Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Maximum 20 stuck arrows",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Base Debuff Duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "Deals (157.2–3022.8) Base Fire Damage per second",
+      "values": [
+        "(157.2–3022.8)"
+      ]
+    },
+    {
+      "text": "Base duration is 6 seconds",
+      "values": [
+        "6"
+      ]
+    },
+    {
+      "text": "Fires 3 Projectiles",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "100% of Physical Damage Converted to Fire Damage",
+      "values": [
+        "100"
+      ]
+    },
+    {
+      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+      "values": []
+    },
+    {
+      "text": "Arrows after the first fall within a Base radius of 3 metres",
+      "values": [
+        "3"
+      ]
+    },
+    {
+      "text": "Base explosion radius is (1.5–2) metres",
+      "values": [
+        "(1.5–2)"
+      ]
+    },
+    {
+      "text": "Impact Base radius is 1 metre",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Explosion deals 50% more Damage with Hits and Ailments",
+      "values": [
+        "50"
+      ]
+    },
+    {
+      "text": "Maximum 20 stuck arrows",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "text": "Base Debuff Duration is 4 seconds",
+      "values": [
+        "4"
+      ]
+    },
+    {
+      "text": "base is projectile [1]",
+      "values": []
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "blast rain arrow delay ms [90]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire arrows [1]",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Explosion deals (0–30)% more Damage with Hits and Ailments",
+      "values": [
+        "(0–30)"
+      ]
+    },
+    {
+      "text": "Explosion deals (0–30)% more Damage with Hits and Ailments",
+      "values": [
+        "(0–30)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,639 @@
+{
+  "name": "Somatic Shell",
+  "slug": "Somatic_Shell",
+  "metadata": {},
+  "levelProgression": [
+    {
+      "Level": "1",
+      "Requires Level": "28",
+      "Int": "67",
+      "Mana": "7",
+      "Base Damage": "20%, 20%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 168",
+      "Maximum 3 Somatic Shells": "3",
+      "Experience": "199,345"
+    },
+    {
+      "Level": "2",
+      "Requires Level": "31",
+      "Int": "73",
+      "Mana": "8",
+      "Base Damage": "21.6%, 21.6%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 325",
+      "Maximum 3 Somatic Shells": "3",
+      "Experience": "285,815"
+    },
+    {
+      "Level": "3",
+      "Requires Level": "34",
+      "Int": "79",
+      "Mana": "8",
+      "Base Damage": "23.2%, 23.2%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 500",
+      "Maximum 3 Somatic Shells": "3",
+      "Experience": "401,344"
+    },
+    {
+      "Level": "4",
+      "Requires Level": "37",
+      "Int": "85",
+      "Mana": "8",
+      "Base Damage": "24.7%, 24.7%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 817",
+      "Maximum 3 Somatic Shells": "4",
+      "Experience": "554,379"
+    },
+    {
+      "Level": "5",
+      "Requires Level": "40",
+      "Int": "92",
+      "Mana": "8",
+      "Base Damage": "26.3%, 26.3%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 1038",
+      "Maximum 3 Somatic Shells": "4",
+      "Experience": "477,437"
+    },
+    {
+      "Level": "6",
+      "Requires Level": "42",
+      "Int": "96",
+      "Mana": "8",
+      "Base Damage": "27.9%, 27.9%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 1287",
+      "Maximum 3 Somatic Shells": "4",
+      "Experience": "583,786"
+    },
+    {
+      "Level": "7",
+      "Requires Level": "44",
+      "Int": "100",
+      "Mana": "8",
+      "Base Damage": "29.5%, 29.5%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 1547",
+      "Maximum 3 Somatic Shells": "4",
+      "Experience": "710,359"
+    },
+    {
+      "Level": "8",
+      "Requires Level": "46",
+      "Int": "104",
+      "Mana": "8",
+      "Base Damage": "31.1%, 31.1%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 1821",
+      "Maximum 3 Somatic Shells": "4",
+      "Experience": "1,355,511"
+    },
+    {
+      "Level": "9",
+      "Requires Level": "48",
+      "Int": "109",
+      "Mana": "9",
+      "Base Damage": "32.6%, 32.6%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 2176",
+      "Maximum 3 Somatic Shells": "4",
+      "Experience": "1,138,877"
+    },
+    {
+      "Level": "10",
+      "Requires Level": "50",
+      "Int": "113",
+      "Mana": "9",
+      "Base Damage": "34.2%, 34.2%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 2657",
+      "Maximum 3 Somatic Shells": "5",
+      "Experience": "1,368,233"
+    },
+    {
+      "Level": "11",
+      "Requires Level": "52",
+      "Int": "117",
+      "Mana": "9",
+      "Base Damage": "35.8%, 35.8%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 2945",
+      "Maximum 3 Somatic Shells": "5",
+      "Experience": "1,638,338"
+    },
+    {
+      "Level": "12",
+      "Requires Level": "54",
+      "Int": "121",
+      "Mana": "9",
+      "Base Damage": "37.4%, 37.4%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 3095",
+      "Maximum 3 Somatic Shells": "5",
+      "Experience": "1,956,648"
+    },
+    {
+      "Level": "13",
+      "Requires Level": "56",
+      "Int": "125",
+      "Mana": "9",
+      "Base Damage": "38.9%, 38.9%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 3515",
+      "Maximum 3 Somatic Shells": "5",
+      "Experience": "3,655,184"
+    },
+    {
+      "Level": "14",
+      "Requires Level": "58",
+      "Int": "130",
+      "Mana": "9",
+      "Base Damage": "40.5%, 40.5%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 3935",
+      "Maximum 3 Somatic Shells": "5",
+      "Experience": "3,017,327"
+    },
+    {
+      "Level": "15",
+      "Requires Level": "60",
+      "Int": "134",
+      "Mana": "9",
+      "Base Damage": "42.1%, 42.1%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 4580",
+      "Maximum 3 Somatic Shells": "6",
+      "Experience": "7,759,995"
+    },
+    {
+      "Level": "16",
+      "Requires Level": "62",
+      "Int": "138",
+      "Mana": "10",
+      "Base Damage": "43.7%, 43.7%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 4934",
+      "Maximum 3 Somatic Shells": "6",
+      "Experience": "15,138,193"
+    },
+    {
+      "Level": "17",
+      "Requires Level": "64",
+      "Int": "142",
+      "Mana": "10",
+      "Base Damage": "45.3%, 45.3%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 5545",
+      "Maximum 3 Somatic Shells": "6",
+      "Experience": "26,083,825"
+    },
+    {
+      "Level": "18",
+      "Requires Level": "66",
+      "Int": "146",
+      "Mana": "10",
+      "Base Damage": "46.8%, 46.8%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 5762",
+      "Maximum 3 Somatic Shells": "6",
+      "Experience": "62,620,247"
+    },
+    {
+      "Level": "19",
+      "Requires Level": "68",
+      "Int": "151",
+      "Mana": "10",
+      "Base Damage": "48.4%, 48.4%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 5983",
+      "Maximum 3 Somatic Shells": "6",
+      "Experience": "211,708,088"
+    },
+    {
+      "Level": "20",
+      "Requires Level": "70",
+      "Int": "155",
+      "Mana": "10",
+      "Base Damage": "50%, 50%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 6214",
+      "Maximum 3 Somatic Shells": "6",
+      "Experience": ""
+    },
+    {
+      "Level": "21",
+      "Requires Level": "72",
+      "Int": "",
+      "Mana": "10",
+      "Base Damage": "51.6%, 51.6%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 6447",
+      "Maximum 3 Somatic Shells": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "22",
+      "Requires Level": "74",
+      "Int": "",
+      "Mana": "10",
+      "Base Damage": "53.2%, 53.2%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 6685",
+      "Maximum 3 Somatic Shells": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "23",
+      "Requires Level": "76",
+      "Int": "",
+      "Mana": "10",
+      "Base Damage": "54.7%, 54.7%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 6929",
+      "Maximum 3 Somatic Shells": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "24",
+      "Requires Level": "78",
+      "Int": "",
+      "Mana": "11",
+      "Base Damage": "56.3%, 56.3%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 7179",
+      "Maximum 3 Somatic Shells": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "25",
+      "Requires Level": "80",
+      "Int": "",
+      "Mana": "11",
+      "Base Damage": "57.9%, 57.9%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 7438",
+      "Maximum 3 Somatic Shells": "7",
+      "Experience": ""
+    },
+    {
+      "Level": "26",
+      "Requires Level": "82",
+      "Int": "",
+      "Mana": "11",
+      "Base Damage": "59.5%, 59.5%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 7699",
+      "Maximum 3 Somatic Shells": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "27",
+      "Requires Level": "84",
+      "Int": "",
+      "Mana": "11",
+      "Base Damage": "61.1%, 61.1%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 7966",
+      "Maximum 3 Somatic Shells": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "28",
+      "Requires Level": "86",
+      "Int": "",
+      "Mana": "11",
+      "Base Damage": "62.6%, 62.6%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 8240",
+      "Maximum 3 Somatic Shells": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "29",
+      "Requires Level": "88",
+      "Int": "",
+      "Mana": "11",
+      "Base Damage": "64.2%, 64.2%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 8520",
+      "Maximum 3 Somatic Shells": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "30",
+      "Requires Level": "90",
+      "Int": "",
+      "Mana": "11",
+      "Base Damage": "65.8%, 65.8%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 8807",
+      "Maximum 3 Somatic Shells": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "31",
+      "Requires Level": "91",
+      "Int": "",
+      "Mana": "11",
+      "Base Damage": "66.6%, 66.6%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 9098",
+      "Maximum 3 Somatic Shells": "8",
+      "Experience": ""
+    },
+    {
+      "Level": "32",
+      "Requires Level": "92",
+      "Int": "",
+      "Mana": "11",
+      "Base Damage": "67.4%, 67.4%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 9395",
+      "Maximum 3 Somatic Shells": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "33",
+      "Requires Level": "93",
+      "Int": "",
+      "Mana": "12",
+      "Base Damage": "68.2%, 68.2%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 9700",
+      "Maximum 3 Somatic Shells": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "34",
+      "Requires Level": "94",
+      "Int": "",
+      "Mana": "12",
+      "Base Damage": "68.9%, 68.9%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 10014",
+      "Maximum 3 Somatic Shells": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "35",
+      "Requires Level": "95",
+      "Int": "",
+      "Mana": "12",
+      "Base Damage": "69.7%, 69.7%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 10339",
+      "Maximum 3 Somatic Shells": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "36",
+      "Requires Level": "96",
+      "Int": "",
+      "Mana": "12",
+      "Base Damage": "70.5%, 70.5%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 10674",
+      "Maximum 3 Somatic Shells": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "37",
+      "Requires Level": "97",
+      "Int": "",
+      "Mana": "12",
+      "Base Damage": "71.3%, 71.3%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 11020",
+      "Maximum 3 Somatic Shells": "9",
+      "Experience": ""
+    },
+    {
+      "Level": "38",
+      "Requires Level": "98",
+      "Int": "",
+      "Mana": "12",
+      "Base Damage": "72.1%, 72.1%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 11377",
+      "Maximum 3 Somatic Shells": "10",
+      "Experience": ""
+    },
+    {
+      "Level": "39",
+      "Requires Level": "99",
+      "Int": "",
+      "Mana": "12",
+      "Base Damage": "72.9%, 72.9%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 11746",
+      "Maximum 3 Somatic Shells": "10",
+      "Experience": ""
+    },
+    {
+      "Level": "40",
+      "Requires Level": "100",
+      "Int": "",
+      "Mana": "12",
+      "Base Damage": "73.7%, 73.7%",
+      "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take 168 Damage before exploding": "100, 12126",
+      "Maximum 3 Somatic Shells": "10",
+      "Experience": ""
+    }
+  ],
+  "description": "",
+  "stats": [],
+  "gemDescription": "Fire a damaging projectile from your wand which aims itself towards an enemy and applies a shell to the first enemy struck. Damage from hits against that target is taken from the shell first. If fully depleted, the shell will explode, dealing area damage and firing a projectile at another target to apply a new shell to it. If multiple projectiles are fired by an exploding shell, only the first one to hit a target can apply a shell.",
+  "explicitMods": [
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Damage from this Skill cannot be taken from Shells",
+      "values": []
+    },
+    {
+      "text": "750% more Area Damage",
+      "values": [
+        "750"
+      ]
+    },
+    {
+      "text": "Base explosion radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take (168–6214) Damage before exploding",
+      "values": [
+        "(168–6214)"
+      ]
+    },
+    {
+      "text": "Shell cannot be reapplied to same target for 0.2 seconds after explosion",
+      "values": [
+        "0.2"
+      ]
+    },
+    {
+      "text": "Maximum (3–6) Somatic Shells",
+      "values": [
+        "(3–6)"
+      ]
+    },
+    {
+      "text": "Projectiles fired from explosion can apply no more than 1 new Shell",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Damage from this Skill cannot be taken from Shells",
+      "values": []
+    },
+    {
+      "text": "750% more Area Damage",
+      "values": [
+        "750"
+      ]
+    },
+    {
+      "text": "Base explosion radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Shell cannot be reapplied to same target for 0.2 seconds after explosion",
+      "values": [
+        "0.2"
+      ]
+    },
+    {
+      "text": "Projectiles fired from explosion can apply no more than 1 new Shell",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Damage from this Skill cannot be taken from Shells",
+      "values": []
+    },
+    {
+      "text": "750% more Area Damage",
+      "values": [
+        "750"
+      ]
+    },
+    {
+      "text": "Base explosion radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take (168–6214) Damage before exploding",
+      "values": [
+        "(168–6214)"
+      ]
+    },
+    {
+      "text": "Shell cannot be reapplied to same target for 0.2 seconds after explosion",
+      "values": [
+        "0.2"
+      ]
+    },
+    {
+      "text": "Maximum (3–6) Somatic Shells",
+      "values": [
+        "(3–6)"
+      ]
+    },
+    {
+      "text": "Projectiles fired from explosion can apply no more than 1 new Shell",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
+      "values": [
+        "150"
+      ]
+    },
+    {
+      "text": "Base duration is 5 seconds",
+      "values": [
+        "5"
+      ]
+    },
+    {
+      "text": "Damage from this Skill cannot be taken from Shells",
+      "values": []
+    },
+    {
+      "text": "750% more Area Damage",
+      "values": [
+        "750"
+      ]
+    },
+    {
+      "text": "Base explosion radius is 1.5 metres",
+      "values": [
+        "1.5"
+      ]
+    },
+    {
+      "text": "Shell cannot be reapplied to same target for 0.2 seconds after explosion",
+      "values": [
+        "0.2"
+      ]
+    },
+    {
+      "text": "Projectiles fired from explosion can apply no more than 1 new Shell",
+      "values": [
+        "1"
+      ]
+    },
+    {
+      "text": "base skill show average damage instead of dps [1]",
+      "values": []
+    },
+    {
+      "text": "is area damage [1]",
+      "values": []
+    },
+    {
+      "text": "is not projectile override [1]",
+      "values": []
+    },
+    {
+      "text": "skill can fire wand projectiles [1]",
+      "values": []
+    },
+    {
+      "text": "kinetic_shell_absorb_%",
+      "values": []
+    }
+  ],
+  "modDescriptions": [],
+  "qualityMods": [
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    },
+    {
+      "text": "Base radius is (0–0.3) metres",
+      "values": [
+        "(0–0.3)"
+      ]
+    }
+  ]
+}

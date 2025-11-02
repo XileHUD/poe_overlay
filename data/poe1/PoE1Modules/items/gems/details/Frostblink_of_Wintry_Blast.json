@@ -1,190 +1,183 @@
 {
   "name": "Frostblink of Wintry Blast",
   "slug": "Frostblink_of_Wintry_Blast",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 3xArmourer's Scrap · Normal: 25000xGold",
-    "Acronym": "Ignite",
-    "BaseType": "Frostblink of Wintry Blast",
-    "TargetTypes": "Enemy, Ground,",
-    "Type": "Spell, Movement, Triggerable, Cold, Travel, Area, Triggerable, Damage, Totemable, Trappable, Mineable, Multicastable, DynamicCooldown",
-    "ActiveSkillsCode": "frostblink_alt_x"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "4",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "7, 11",
       "# metres to radius": "0",
-      "Experience": "841"
+      "Experience": ""
     },
     {
       "Level": "2",
       "Requires Level": "6",
-      "Cost": "13",
+      "Mana": "13",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "9, 14",
       "# metres to radius": "0",
-      "Experience": "3,099"
+      "Experience": ""
     },
     {
       "Level": "3",
       "Requires Level": "9",
-      "Cost": "14",
+      "Mana": "14",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "13, 19",
       "# metres to radius": "0",
-      "Experience": "7,433"
+      "Experience": ""
     },
     {
       "Level": "4",
       "Requires Level": "12",
-      "Cost": "15",
+      "Mana": "15",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "17, 25",
       "# metres to radius": "0",
-      "Experience": "22,895"
+      "Experience": ""
     },
     {
       "Level": "5",
       "Requires Level": "16",
-      "Cost": "16",
+      "Mana": "16",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "24, 36",
       "# metres to radius": "0",
-      "Experience": "49,725"
+      "Experience": ""
     },
     {
       "Level": "6",
       "Requires Level": "20",
-      "Cost": "17",
+      "Mana": "17",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "34, 50",
       "# metres to radius": "0.1",
-      "Experience": "95,714"
+      "Experience": ""
     },
     {
       "Level": "7",
       "Requires Level": "24",
-      "Cost": "18",
+      "Mana": "18",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "46, 69",
       "# metres to radius": "0.1",
-      "Experience": "169,595"
+      "Experience": ""
     },
     {
       "Level": "8",
       "Requires Level": "28",
-      "Cost": "19",
+      "Mana": "19",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "62, 93",
       "# metres to radius": "0.1",
-      "Experience": "283,759"
+      "Experience": ""
     },
     {
       "Level": "9",
       "Requires Level": "32",
-      "Cost": "20",
+      "Mana": "20",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "82, 123",
       "# metres to radius": "0.1",
-      "Experience": "453,996"
+      "Experience": ""
     },
     {
       "Level": "10",
       "Requires Level": "36",
-      "Cost": "21",
+      "Mana": "21",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "108, 163",
       "# metres to radius": "0.1",
-      "Experience": "703,128"
+      "Experience": ""
     },
     {
       "Level": "11",
       "Requires Level": "40",
-      "Cost": "21",
+      "Mana": "21",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "142, 213",
       "# metres to radius": "0.2",
-      "Experience": "1,061,223"
+      "Experience": ""
     },
     {
       "Level": "12",
       "Requires Level": "44",
-      "Cost": "22",
+      "Mana": "22",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "185, 277",
       "# metres to radius": "0.2",
-      "Experience": "2,065,870"
+      "Experience": ""
     },
     {
       "Level": "13",
       "Requires Level": "48",
-      "Cost": "23",
+      "Mana": "23",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "239, 358",
       "# metres to radius": "0.2",
-      "Experience": "2,507,110"
+      "Experience": ""
     },
     {
       "Level": "14",
       "Requires Level": "52",
-      "Cost": "24",
+      "Mana": "24",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "308, 461",
       "# metres to radius": "0.2",
-      "Experience": "2,573,731"
+      "Experience": ""
     },
     {
       "Level": "15",
       "Requires Level": "55",
-      "Cost": "25",
+      "Mana": "25",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "371, 556",
       "# metres to radius": "0.2",
-      "Experience": "7,611,351"
+      "Experience": ""
     },
     {
       "Level": "16",
       "Requires Level": "58",
-      "Cost": "26",
+      "Mana": "26",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "446, 669",
       "# metres to radius": "0.3",
-      "Experience": "13,437,908"
+      "Experience": ""
     },
     {
       "Level": "17",
       "Requires Level": "61",
-      "Cost": "27",
+      "Mana": "27",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "535, 803",
       "# metres to radius": "0.3",
-      "Experience": "25,052,147"
+      "Experience": ""
     },
     {
       "Level": "18",
       "Requires Level": "64",
-      "Cost": "28",
+      "Mana": "28",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "641, 962",
       "# metres to radius": "0.3",
-      "Experience": "43,869,436"
+      "Experience": ""
     },
     {
       "Level": "19",
       "Requires Level": "67",
-      "Cost": "29",
+      "Mana": "29",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "767, 1150",
       "# metres to radius": "0.3",
-      "Experience": "242,081,178"
+      "Experience": ""
     },
     {
       "Level": "20",
       "Requires Level": "70",
-      "Cost": "30",
+      "Mana": "30",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "916, 1374",
       "# metres to radius": "0.3",
@@ -193,7 +186,7 @@
     {
       "Level": "21",
       "Requires Level": "72",
-      "Cost": "31",
+      "Mana": "31",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "1030, 1545",
       "# metres to radius": "0.4",
@@ -202,7 +195,7 @@
     {
       "Level": "22",
       "Requires Level": "74",
-      "Cost": "32",
+      "Mana": "32",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "1158, 1737",
       "# metres to radius": "0.4",
@@ -211,7 +204,7 @@
     {
       "Level": "23",
       "Requires Level": "76",
-      "Cost": "33",
+      "Mana": "33",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "1301, 1951",
       "# metres to radius": "0.4",
@@ -220,7 +213,7 @@
     {
       "Level": "24",
       "Requires Level": "78",
-      "Cost": "34",
+      "Mana": "34",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "1460, 2191",
       "# metres to radius": "0.4",
@@ -229,7 +222,7 @@
     {
       "Level": "25",
       "Requires Level": "80",
-      "Cost": "35",
+      "Mana": "35",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "1639, 2458",
       "# metres to radius": "0.4",
@@ -238,7 +231,7 @@
     {
       "Level": "26",
       "Requires Level": "82",
-      "Cost": "36",
+      "Mana": "36",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "1838, 2758",
       "# metres to radius": "0.5",
@@ -247,7 +240,7 @@
     {
       "Level": "27",
       "Requires Level": "84",
-      "Cost": "37",
+      "Mana": "37",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "2061, 3092",
       "# metres to radius": "0.5",
@@ -256,7 +249,7 @@
     {
       "Level": "28",
       "Requires Level": "86",
-      "Cost": "38",
+      "Mana": "38",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "2310, 3465",
       "# metres to radius": "0.5",
@@ -265,7 +258,7 @@
     {
       "Level": "29",
       "Requires Level": "88",
-      "Cost": "39",
+      "Mana": "39",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "2587, 3881",
       "# metres to radius": "0.5",
@@ -274,7 +267,7 @@
     {
       "Level": "30",
       "Requires Level": "90",
-      "Cost": "39",
+      "Mana": "39",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "2897, 4346",
       "# metres to radius": "0.5",
@@ -283,7 +276,7 @@
     {
       "Level": "31",
       "Requires Level": "91",
-      "Cost": "40",
+      "Mana": "40",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "3065, 4598",
       "# metres to radius": "0.5",
@@ -292,7 +285,7 @@
     {
       "Level": "32",
       "Requires Level": "92",
-      "Cost": "40",
+      "Mana": "40",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "3243, 4864",
       "# metres to radius": "0.6",
@@ -301,7 +294,7 @@
     {
       "Level": "33",
       "Requires Level": "93",
-      "Cost": "41",
+      "Mana": "41",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "3430, 5145",
       "# metres to radius": "0.6",
@@ -310,7 +303,7 @@
     {
       "Level": "34",
       "Requires Level": "94",
-      "Cost": "41",
+      "Mana": "41",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "3628, 5442",
       "# metres to radius": "0.6",
@@ -319,7 +312,7 @@
     {
       "Level": "35",
       "Requires Level": "95",
-      "Cost": "42",
+      "Mana": "42",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "3837, 5755",
       "# metres to radius": "0.6",
@@ -328,7 +321,7 @@
     {
       "Level": "36",
       "Requires Level": "96",
-      "Cost": "42",
+      "Mana": "42",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "4058, 6086",
       "# metres to radius": "0.6",
@@ -337,7 +330,7 @@
     {
       "Level": "37",
       "Requires Level": "97",
-      "Cost": "43",
+      "Mana": "43",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "4290, 6436",
       "# metres to radius": "0.6",
@@ -346,7 +339,7 @@
     {
       "Level": "38",
       "Requires Level": "98",
-      "Cost": "43",
+      "Mana": "43",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "4536, 6804",
       "# metres to radius": "0.6",
@@ -355,7 +348,7 @@
     {
       "Level": "39",
       "Requires Level": "99",
-      "Cost": "44",
+      "Mana": "44",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "4796, 7194",
       "# metres to radius": "0.6",
@@ -364,7 +357,7 @@
     {
       "Level": "40",
       "Requires Level": "100",
-      "Cost": "44",
+      "Mana": "44",
       "Base Damage": "100%, 100%",
       "Deals 7 to 11 Cold Damage": "5070, 7605",
       "# metres to radius": "0.6",

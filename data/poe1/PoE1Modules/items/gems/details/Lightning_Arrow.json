@@ -1,25 +1,13 @@
 {
   "name": "Lightning Arrow",
   "slug": "Lightning_Arrow",
-  "metadata": {
-    "Cost": "iLvl 1: Normal: 1xOrb of Transmutation",
-    "Acronym": "Hit, Shock",
-    "DropLevel": "12",
-    "BaseType": "Lightning Arrow",
-    "Class": "Skill Gems",
-    "Weapon": "Bows",
-    "TargetTypes": "Ground, Enemy",
-    "Type": "Attack, RangedAttack, MirageArcherCanUse, Area, Projectile, ProjectilesFromUser, Totemable, Trappable, Mineable, Lightning, Triggerable",
-    "ItemType": "Metadata/Items/Gems/SkillGemLightningArrow",
-    "ActiveSkillsCode": "lightning_arrow",
-    "Reference": "poe.ninja, Community Wiki"
-  },
+  "metadata": {},
   "levelProgression": [
     {
       "Level": "1",
       "Requires Level": "12",
       "Dex": "33",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "149.5%, 149.5%",
       "Shocks Enemies as though dealing 100% more Damage": "100",
       "Experience": "15,249"
@@ -28,7 +16,7 @@
       "Level": "2",
       "Requires Level": "15",
       "Dex": "39",
-      "Cost": "6",
+      "Mana": "6",
       "Base Damage": "151%, 151%",
       "Shocks Enemies as though dealing 100% more Damage": "110",
       "Experience": "41,517"
@@ -37,7 +25,7 @@
       "Level": "3",
       "Requires Level": "19",
       "Dex": "48",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "152.4%, 152.4%",
       "Shocks Enemies as though dealing 100% more Damage": "120",
       "Experience": "81,983"
@@ -46,7 +34,7 @@
       "Level": "4",
       "Requires Level": "23",
       "Dex": "56",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "153.9%, 153.9%",
       "Shocks Enemies as though dealing 100% more Damage": "130",
       "Experience": "147,968"
@@ -55,7 +43,7 @@
       "Level": "5",
       "Requires Level": "27",
       "Dex": "64",
-      "Cost": "7",
+      "Mana": "7",
       "Base Damage": "155.4%, 155.4%",
       "Shocks Enemies as though dealing 100% more Damage": "140",
       "Experience": "250,557"
@@ -64,7 +52,7 @@
       "Level": "6",
       "Requires Level": "31",
       "Dex": "73",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "156.7%, 156.7%",
       "Shocks Enemies as though dealing 100% more Damage": "150",
       "Experience": "405,086"
@@ -73,7 +61,7 @@
       "Level": "7",
       "Requires Level": "35",
       "Dex": "81",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "158.2%, 158.2%",
       "Shocks Enemies as though dealing 100% more Damage": "160",
       "Experience": "447,718"
@@ -82,7 +70,7 @@
       "Level": "8",
       "Requires Level": "38",
       "Dex": "88",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "159.6%, 159.6%",
       "Shocks Enemies as though dealing 100% more Damage": "170",
       "Experience": "615,318"
@@ -91,7 +79,7 @@
       "Level": "9",
       "Requires Level": "41",
       "Dex": "94",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "161.1%, 161.1%",
       "Shocks Enemies as though dealing 100% more Damage": "180",
       "Experience": "834,639"
@@ -100,7 +88,7 @@
       "Level": "10",
       "Requires Level": "44",
       "Dex": "100",
-      "Cost": "8",
+      "Mana": "8",
       "Base Damage": "162.6%, 162.6%",
       "Shocks Enemies as though dealing 100% more Damage": "190",
       "Experience": "1,570,760"
@@ -109,7 +97,7 @@
       "Level": "11",
       "Requires Level": "47",
       "Dex": "106",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "164%, 164%",
       "Shocks Enemies as though dealing 100% more Damage": "200",
       "Experience": "1,633,987"
@@ -118,7 +106,7 @@
       "Level": "12",
       "Requires Level": "50",
       "Dex": "113",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "165.5%, 165.5%",
       "Shocks Enemies as though dealing 100% more Damage": "210",
       "Experience": "2,151,030"
@@ -127,7 +115,7 @@
       "Level": "13",
       "Requires Level": "53",
       "Dex": "119",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "167%, 167%",
       "Shocks Enemies as though dealing 100% more Damage": "220",
       "Experience": "2,812,189"
@@ -136,7 +124,7 @@
       "Level": "14",
       "Requires Level": "56",
       "Dex": "125",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "168.4%, 168.4%",
       "Shocks Enemies as though dealing 100% more Damage": "230",
       "Experience": "5,099,360"
@@ -145,7 +133,7 @@
       "Level": "15",
       "Requires Level": "59",
       "Dex": "132",
-      "Cost": "9",
+      "Mana": "9",
       "Base Damage": "169.9%, 169.9%",
       "Shocks Enemies as though dealing 100% more Damage": "240",
       "Experience": "9,400,731"
@@ -154,7 +142,7 @@
       "Level": "16",
       "Requires Level": "62",
       "Dex": "138",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "171.2%, 171.2%",
       "Shocks Enemies as though dealing 100% more Damage": "250",
       "Experience": "15,273,366"
@@ -163,7 +151,7 @@
       "Level": "17",
       "Requires Level": "64",
       "Dex": "142",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "172.7%, 172.7%",
       "Shocks Enemies as though dealing 100% more Damage": "260",
       "Experience": "26,286,582"
@@ -172,7 +160,7 @@
       "Level": "18",
       "Requires Level": "66",
       "Dex": "146",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "174.2%, 174.2%",
       "Shocks Enemies as though dealing 100% more Damage": "270",
       "Experience": "62,890,590"
@@ -181,7 +169,7 @@
       "Level": "19",
       "Requires Level": "68",
       "Dex": "151",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "175.6%, 175.6%",
       "Shocks Enemies as though dealing 100% more Damage": "280",
       "Experience": "212,046,017"
@@ -190,7 +178,7 @@
       "Level": "20",
       "Requires Level": "70",
       "Dex": "155",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "177.1%, 177.1%",
       "Shocks Enemies as though dealing 100% more Damage": "290",
       "Experience": ""
@@ -199,7 +187,7 @@
       "Level": "21",
       "Requires Level": "72",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "178.6%, 178.6%",
       "Shocks Enemies as though dealing 100% more Damage": "300",
       "Experience": ""
@@ -208,7 +196,7 @@
       "Level": "22",
       "Requires Level": "74",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "180%, 180%",
       "Shocks Enemies as though dealing 100% more Damage": "310",
       "Experience": ""
@@ -217,7 +205,7 @@
       "Level": "23",
       "Requires Level": "76",
       "Dex": "",
-      "Cost": "10",
+      "Mana": "10",
       "Base Damage": "181.5%, 181.5%",
       "Shocks Enemies as though dealing 100% more Damage": "320",
       "Experience": ""
@@ -226,7 +214,7 @@
       "Level": "24",
       "Requires Level": "78",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "183%, 183%",
       "Shocks Enemies as though dealing 100% more Damage": "330",
       "Experience": ""
@@ -235,7 +223,7 @@
       "Level": "25",
       "Requires Level": "80",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "184.3%, 184.3%",
       "Shocks Enemies as though dealing 100% more Damage": "340",
       "Experience": ""
@@ -244,7 +232,7 @@
       "Level": "26",
       "Requires Level": "82",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "185.8%, 185.8%",
       "Shocks Enemies as though dealing 100% more Damage": "350",
       "Experience": ""
@@ -253,7 +241,7 @@
       "Level": "27",
       "Requires Level": "84",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "187.2%, 187.2%",
       "Shocks Enemies as though dealing 100% more Damage": "360",
       "Experience": ""
@@ -262,7 +250,7 @@
       "Level": "28",
       "Requires Level": "86",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "188.7%, 188.7%",
       "Shocks Enemies as though dealing 100% more Damage": "370",
       "Experience": ""
@@ -271,7 +259,7 @@
       "Level": "29",
       "Requires Level": "88",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "190.2%, 190.2%",
       "Shocks Enemies as though dealing 100% more Damage": "380",
       "Experience": ""
@@ -280,7 +268,7 @@
       "Level": "30",
       "Requires Level": "90",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "191.6%, 191.6%",
       "Shocks Enemies as though dealing 100% more Damage": "390",
       "Experience": ""
@@ -289,7 +277,7 @@
       "Level": "31",
       "Requires Level": "91",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "192.4%, 192.4%",
       "Shocks Enemies as though dealing 100% more Damage": "400",
       "Experience": ""
@@ -298,7 +286,7 @@
       "Level": "32",
       "Requires Level": "92",
       "Dex": "",
-      "Cost": "11",
+      "Mana": "11",
       "Base Damage": "193.1%, 193.1%",
       "Shocks Enemies as though dealing 100% more Damage": "410",
       "Experience": ""
@@ -307,7 +295,7 @@
       "Level": "33",
       "Requires Level": "93",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "193.8%, 193.8%",
       "Shocks Enemies as though dealing 100% more Damage": "420",
       "Experience": ""
@@ -316,7 +304,7 @@
       "Level": "34",
       "Requires Level": "94",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "194.6%, 194.6%",
       "Shocks Enemies as though dealing 100% more Damage": "430",
       "Experience": ""
@@ -325,7 +313,7 @@
       "Level": "35",
       "Requires Level": "95",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "195.3%, 195.3%",
       "Shocks Enemies as though dealing 100% more Damage": "440",
       "Experience": ""
@@ -334,7 +322,7 @@
       "Level": "36",
       "Requires Level": "96",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "196%, 196%",
       "Shocks Enemies as though dealing 100% more Damage": "450",
       "Experience": ""
@@ -343,7 +331,7 @@
       "Level": "37",
       "Requires Level": "97",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "196.8%, 196.8%",
       "Shocks Enemies as though dealing 100% more Damage": "460",
       "Experience": ""
@@ -352,7 +340,7 @@
       "Level": "38",
       "Requires Level": "98",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "197.5%, 197.5%",
       "Shocks Enemies as though dealing 100% more Damage": "470",
       "Experience": ""
@@ -361,7 +349,7 @@
       "Level": "39",
       "Requires Level": "99",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "198.1%, 198.1%",
       "Shocks Enemies as though dealing 100% more Damage": "480",
       "Experience": ""
@@ -370,7 +358,7 @@
       "Level": "40",
       "Requires Level": "100",
       "Dex": "",
-      "Cost": "12",
+      "Mana": "12",
       "Base Damage": "198.8%, 198.8%",
       "Shocks Enemies as though dealing 100% more Damage": "490",
       "Experience": ""

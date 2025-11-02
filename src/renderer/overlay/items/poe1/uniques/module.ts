@@ -511,8 +511,8 @@ export function render(): void {
 
       const grid = document.createElement('div');
       grid.style.display = 'grid';
-      grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
-      grid.style.gap = '10px';
+      grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(280px, 1fr))';
+      grid.style.gap = '14px';
 
       renderQueue.push({ grid, items: items.slice() });
 
@@ -563,35 +563,53 @@ export function render(): void {
   function buildItemCard(item: Poe1UniqueItem): HTMLElement {
     const card = document.createElement('div');
     card.style.width = '100%';
-    card.style.background = 'var(--bg-card)';
+    card.style.background = 'linear-gradient(180deg, rgba(30,36,42,0.8), rgba(20,24,28,0.8))';
     card.style.border = '1px solid var(--border-color)';
     card.style.borderRadius = '8px';
-    card.style.padding = '8px';
+    card.style.padding = '14px';
     card.style.display = 'flex';
     card.style.flexDirection = 'column';
-    card.style.gap = '8px';
-    card.style.transition = 'all 0.2s ease';
+    card.style.gap = '10px';
+    card.style.transition = 'border-color 0.2s ease';
     
     card.addEventListener('mouseenter', () => {
       card.style.borderColor = 'var(--accent-orange)';
-      card.style.transform = 'translateY(-2px)';
     });
     card.addEventListener('mouseleave', () => {
       card.style.borderColor = 'var(--border-color)';
-      card.style.transform = 'translateY(0)';
     });
     
-    // Top row: image + name/base
-    const topRow = document.createElement('div');
-    topRow.style.display = 'flex';
-    topRow.style.gap = '10px';
-    topRow.style.alignItems = 'center';
-
-    const imgWrap = document.createElement('div');
-    imgWrap.style.flex = '0 0 auto';
-    imgWrap.style.display = 'flex';
-    imgWrap.style.alignItems = 'center';
-    imgWrap.style.justifyContent = 'center';
+    const modLines = item.explicitMods || [];
+    
+    // Extract descriptions from mods FIRST (before displaying)
+    const descriptions: string[] = [];
+    const cleanedModLines = modLines.map(mod => {
+      let cleanMod = mod;
+      const matches = mod.match(/\([^)]{15,}\)/g);
+      if (matches) {
+        matches.forEach(match => {
+          if (/\b(You|While|Grants|Elusive|your|you|if|when|the|The|are|have|is|cannot|grants|Cannot)\b/.test(match)) {
+            descriptions.push(match.replace(/[()]/g, '').trim());
+            cleanMod = cleanMod.replace(match, '').replace(/\s*•\s*$/, '').replace(/\s+$/, '').trim();
+          }
+        });
+      }
+      
+      if (/^(Cannot|Grants|You|While|Enemies|Minions)\b/i.test(cleanMod) && !/\d/.test(cleanMod)) {
+        descriptions.push(cleanMod);
+        cleanMod = '';
+      }
+      
+      return cleanMod;
+    }).filter(m => m.length > 0);
+    
+    // Header with image and title
+    const header = document.createElement('div');
+    header.style.display = 'flex';
+    header.style.gap = '12px';
+    header.style.alignItems = 'center';
+    header.style.paddingBottom = '10px';
+    header.style.borderBottom = '1px solid rgba(255,152,0,0.2)';
 
     const img = document.createElement('img');
     img.className = 'unique-img';
@@ -603,95 +621,144 @@ export function render(): void {
       img.setAttribute('data-orig-src', imgPath);
     }
     img.alt = item.name;
-    img.style.width = '80px';
-    img.style.height = '100px';
+    img.style.width = '64px';
+    img.style.height = '64px';
     img.style.objectFit = 'contain';
     img.style.imageRendering = '-webkit-optimize-contrast';
     img.style.opacity = '0';
     img.style.transition = 'opacity 0.3s ease';
+    img.style.borderRadius = '8px';
+    img.style.background = 'rgba(255,255,255,0.05)';
+    img.style.flexShrink = '0';
 
-    imgWrap.appendChild(img);
-    topRow.appendChild(imgWrap);
+    header.appendChild(img);
     
-    // Name + base next to image
-    const nameBlock = document.createElement('div');
-    nameBlock.style.flex = '1';
-    nameBlock.style.display = 'flex';
-    nameBlock.style.flexDirection = 'column';
-    nameBlock.style.gap = '4px';
-    nameBlock.style.minWidth = '0';
-    
-    const modLines = item.explicitMods || [];
+    // Title wrapper (name + base type)
+    const titleWrap = document.createElement('div');
+    titleWrap.style.display = 'flex';
+    titleWrap.style.flexDirection = 'column';
+    titleWrap.style.gap = '4px';
+    titleWrap.style.flex = '1';
+    titleWrap.style.minWidth = '0';
     
     // Name
     const title = document.createElement('div');
     title.style.fontWeight = '600';
     title.style.fontSize = '15px';
     title.style.color = 'var(--accent-orange)';
-    title.style.lineHeight = '1.3';
+    title.style.lineHeight = '1.2';
     title.textContent = item.name;
-    nameBlock.appendChild(title);
+    titleWrap.appendChild(title);
     
     // Base type
     const baseType = document.createElement('div');
-    baseType.style.fontSize = '11px';
-    baseType.style.color = 'var(--text-secondary)';
+    baseType.style.fontSize = '12px';
+    baseType.style.color = 'rgba(255,255,255,0.5)';
     baseType.textContent = item.baseType;
-    nameBlock.appendChild(baseType);
+    titleWrap.appendChild(baseType);
 
-    topRow.appendChild(nameBlock);
-    card.appendChild(topRow);
+    header.appendChild(titleWrap);
     
-    // Mods below (full width)
-    if (modLines.length > 0) {
-      const mods = document.createElement('div');
-      mods.style.fontSize = '11px';
-      mods.style.color = 'var(--text-primary)';
-      mods.style.paddingTop = '6px';
-      mods.style.borderTop = '1px solid var(--border-color)';
-      mods.style.lineHeight = '1.35';
+    // Details chip with descriptions (if any)
+    if (descriptions.length > 0) {
+      const detailsChip = document.createElement('div');
+      detailsChip.style.display = 'inline-flex';
+      detailsChip.style.alignItems = 'center';
+      detailsChip.style.gap = '4px';
+      detailsChip.style.padding = '4px 8px';
+      detailsChip.style.background = 'rgba(255,152,0,0.15)';
+      detailsChip.style.border = '1px solid rgba(255,152,0,0.4)';
+      detailsChip.style.borderRadius = '4px';
+      detailsChip.style.fontSize = '10px';
+      detailsChip.style.fontWeight = '600';
+      detailsChip.style.color = 'var(--accent-orange)';
+      detailsChip.style.whiteSpace = 'nowrap';
+      detailsChip.style.flexShrink = '0';
+      detailsChip.style.cursor = 'help';
+      detailsChip.innerHTML = `Details <span style="margin-left:2px;">⌵</span>`;
       
-      const MAX_INLINE = 12; // expanded inline threshold
-      const initialCount = Math.min(MAX_INLINE, modLines.length);
-      const displayMods = modLines.slice(0, initialCount);
-      mods.innerHTML = displayMods.map((m: string) => highlightNumbers(escapeHtml(m))).join('<br>');
+      // Create tooltip
+      const tooltip = document.createElement('div');
+      tooltip.style.position = 'absolute';
+      tooltip.style.display = 'none';
+      tooltip.style.background = 'rgba(20,20,20,0.95)';
+      tooltip.style.border = '1px solid rgba(255,152,0,0.5)';
+      tooltip.style.borderRadius = '6px';
+      tooltip.style.padding = '10px 14px';
+      tooltip.style.fontSize = '12px';
+      tooltip.style.color = 'rgba(220,220,220,0.9)';
+      tooltip.style.maxWidth = '400px';
+      tooltip.style.zIndex = '10000';
+      tooltip.style.pointerEvents = 'none';
+      tooltip.style.whiteSpace = 'pre-wrap';
+      tooltip.innerHTML = descriptions.map(d => `• ${escapeHtml(d)}`).join('\n\n');
+      document.body.appendChild(tooltip);
       
-      if (modLines.length > initialCount) {
-        const more = document.createElement('div');
-        more.style.color = 'var(--text-secondary)';
-        more.style.fontStyle = 'italic';
-        more.style.marginTop = '4px';
-        more.style.fontSize = '10px';
-        more.style.cursor = 'pointer';
-        more.style.textDecoration = 'underline dotted';
-        more.style.textDecorationColor = 'var(--text-secondary)';
-        more.textContent = `+${modLines.length - initialCount} more...`;
-        
-        const hiddenMods = modLines.slice(initialCount);
-        more.title = hiddenMods.map((m: string) => m.replace(/<[^>]*>/g, '')).join('\n');
-        
-        more.addEventListener('click', () => {
-          // Expand to show all mods inline
-          mods.innerHTML = modLines.map((m: string) => highlightNumbers(escapeHtml(m))).join('<br>');
-        });
-        
-        mods.appendChild(more);
-      }
+      detailsChip.addEventListener('mouseenter', (e: MouseEvent) => {
+        const rect = detailsChip.getBoundingClientRect();
+        tooltip.style.display = 'block';
+        tooltip.style.left = `${rect.left}px`;
+        tooltip.style.top = `${rect.bottom + 5}px`;
+      });
       
-      card.appendChild(mods);
+      detailsChip.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+      });
+      
+      // Cleanup
+      card.addEventListener('DOMNodeRemoved', () => {
+        if (tooltip.parentNode) {
+          tooltip.parentNode.removeChild(tooltip);
+        }
+      });
+      
+      header.appendChild(detailsChip);
     }
+    
+    card.appendChild(header);
+    
+    // Mods section (using cleaned mods without descriptions)
+    const mods = document.createElement('div');
+    mods.style.fontSize = '13px';
+    mods.style.lineHeight = '1.5';
+    mods.style.color = 'var(--text-color)';
+    mods.style.flex = '1';
+    mods.style.overflow = 'hidden';
+
+    if (cleanedModLines.length > 12) {
+      const first12 = cleanedModLines.slice(0, 12);
+      const remaining = cleanedModLines.length - 12;
+      mods.innerHTML = first12.map((m: string) => highlightNumbers(escapeHtml(m))).join('<br>');
+      const showMore = document.createElement('div');
+      showMore.style.marginTop = '6px';
+      showMore.style.fontSize = '12px';
+      showMore.style.color = 'var(--accent-blue)';
+      showMore.style.cursor = 'pointer';
+      showMore.style.userSelect = 'none';
+      showMore.textContent = `+${remaining} more...`;
+      showMore.onclick = (e: Event) => {
+        e.stopPropagation();
+        mods.innerHTML = cleanedModLines.map((m: string) => highlightNumbers(escapeHtml(m))).join('<br>');
+      };
+      mods.appendChild(showMore);
+    } else {
+      mods.innerHTML = cleanedModLines.map((m: string) => highlightNumbers(escapeHtml(m))).join('<br>');
+    }
+    card.appendChild(mods);
     
     // Flavour text
     if (item.flavourText) {
       const flavour = document.createElement('div');
-      flavour.style.fontSize = '10px';
+      flavour.style.fontSize = '11px';
       flavour.style.color = 'var(--accent-orange)';
-      flavour.style.marginTop = '4px';
       flavour.style.fontStyle = 'italic';
-      flavour.style.opacity = '0.8';
+      flavour.style.opacity = '0.7';
+      flavour.style.paddingTop = '8px';
+      flavour.style.borderTop = '1px solid rgba(255,152,0,0.15)';
       flavour.textContent = item.flavourText;
       card.appendChild(flavour);
     }
+
 
     return card;
   }
