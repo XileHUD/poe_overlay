@@ -1189,7 +1189,7 @@ function buildLevelingSettingsSplashHtml(
           
           <div class="info-box" style="margin-top: 8px; font-size: 13px;">
             <strong>Hybrid (Default):</strong> Only auto-completes tasks if you enter the correct next zone. Prevents false positives if you accidentally visit wrong zones.<br><br>
-            <strong>Strict:</strong> Validates that the entered zone matches your next expected task. Same as Hybrid but with stricter logging for debugging.<br><br>
+            <strong>Strict:</strong> Validates both the destination AND source zone before auto-completing. Most accurate mode but requires exact zone transitions.<br><br>
             <strong>Trust:</strong> Always auto-completes previous zone when entering any new zone. Can cause false positives if you skip around.
           </div>
         </div>

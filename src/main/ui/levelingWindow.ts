@@ -111,8 +111,11 @@ export class LevelingWindow {
       return;
     }
     
-    // Create new window
+    // Create new window and show it
     this.createWindow();
+    if (this.window && !this.window.isDestroyed()) {
+      this.window.show();
+    }
     this.startClientTxtWatcher();
     this.settingsService.update(this.getLevelingWindowKey(), (c) => ({ ...c, enabled: true }));
   }
@@ -278,6 +281,7 @@ export class LevelingWindow {
       skipTaskbar: true,
       resizable: true,
       hasShadow: false,
+      show: false,  // Don't show window automatically - only when explicitly requested
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,

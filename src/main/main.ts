@@ -582,11 +582,9 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 this.floatingButton = null;
             }
 
-            console.log(`[Main] Creating LevelingWindow instance for ${this.overlayVersion.toUpperCase()}...`);
-            this.levelingWindow = new LevelingWindow({
-                settingsService: this.settingsService,
-                overlayVersion: this.overlayVersion
-            });
+            // Don't create leveling window here - create it lazily when user requests it
+            // Exception: In leveling-only mode, we'll create and show it at the end of initialization
+            console.log(`[Main] Leveling window will be created on-demand for ${this.overlayVersion.toUpperCase()}`);
 
             this.updateSplash('Creating tray');
             this.tray = createTray({
@@ -837,9 +835,14 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 this.closeSplash();
                 
                 // In leveling-only mode, show the leveling window to prevent app from quitting
-                if (this.levelingOnlyMode && this.levelingWindow) {
-                    console.log('[Init] Leveling-only mode - showing leveling window');
-                    this.levelingWindow.show();
+                if (this.levelingOnlyMode) {
+                    console.log('[Init] Leveling-only mode - creating and showing leveling window');
+                    this.ensureLevelingWindow().show();
+                } else {
+                    // Show overlay on startup to help users see the window
+                    // Use focus: true to ensure it appears in front and users can see it
+                    console.log('[Init] Showing overlay on startup to help users find the window');
+                    this.showDefaultOverlay({ focus: true });
                 }
             }, 3000);
         });
@@ -1103,6 +1106,23 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
         
         // Fallback to same as items dir
         return this.resolveInitialDataPath();
+    }
+
+    /**
+     * Lazy initialization of leveling window - only create when user requests it
+     */
+    private ensureLevelingWindow(): LevelingWindow {
+        if (!this.levelingWindow) {
+            if (!this.settingsService) {
+                throw new Error('Cannot create leveling window: settingsService is not initialized');
+            }
+            console.log(`[Main] Creating LevelingWindow instance on-demand for ${this.overlayVersion.toUpperCase()}...`);
+            this.levelingWindow = new LevelingWindow({
+                settingsService: this.settingsService,
+                overlayVersion: this.overlayVersion
+            });
+        }
+        return this.levelingWindow;
     }
 
     private migrateLegacyFeatureSplashFlag(): void {
@@ -1754,19 +1774,12 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             // Leveling window toggle
             ipcMain.handle('toggle-leveling-window', () => {
                 try {
-                    if (this.levelingWindow) {
-                        this.levelingWindow.toggle();
-                        return { success: true };
-                    } else {
-                        const error = 'levelingWindow is null or undefined - cannot toggle!';
-                        console.warn('[IPC Handler] ❌', error);
-                        return { success: false, error };
-                    }
+                    this.ensureLevelingWindow().toggle();
+                    return { success: true };
                 } catch (error) {
-                    const errorMsg = error instanceof Error ? error.message : String(error);
-                    const errorStack = error instanceof Error ? error.stack : undefined;
-                    console.error('[IPC Handler] ❌ Exception in toggle-leveling-window:', error);
-                    return { success: false, error: errorMsg, stack: errorStack };
+                    const message = error instanceof Error ? error.message : String(error);
+                    console.error('[IPC Handler] toggle-leveling-window error:', message);
+                    return { success: false, error: message };
                 }
             });
             
@@ -2884,10 +2897,11 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
 
     // Force leveling overlay to primary monitor (via tray menu)
     private forceLevelingToPrimaryMonitor() {
-        if (!this.levelingWindow) return;
-        
-        // Call the IPC handler directly
-        this.levelingWindow.forceToPrimaryMonitor();
+        try {
+            this.ensureLevelingWindow().forceToPrimaryMonitor();
+        } catch (error) {
+            console.error('[forceLevelingToPrimaryMonitor] Error:', error);
+        }
     }
 
     // Get current hotkey (default to "Ctrl+Q", with validation)
@@ -3000,16 +3014,15 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
     }
 
     private handleLevelingOnlyHotkey(): void {
-        if (!this.levelingWindow) {
-            console.warn('[Hotkey] Leveling window not initialized');
-            return;
-        }
+        try {
+            if (this.isOverlayVisible) {
+                this.hideOverlay();
+            }
 
-        if (this.isOverlayVisible) {
-            this.hideOverlay();
+            this.ensureLevelingWindow().toggle();
+        } catch (error) {
+            console.error('[Hotkey] Failed to toggle leveling window:', error);
         }
-
-        this.levelingWindow.toggle();
     }
 
     // Global keyboard shortcuts and simulation logic
