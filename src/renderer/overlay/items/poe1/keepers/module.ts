@@ -267,53 +267,6 @@ function createModList(mods?: string[]): HTMLElement {
     list.appendChild(li);
   });
   
-  // Add Description tooltip item if we found any
-  if (descriptions.length > 0) {
-    const descLi = document.createElement('li');
-    descLi.style.marginTop = '8px';
-    descLi.style.padding = '4px 8px';
-    descLi.style.background = 'rgba(100,100,100,0.15)';
-    descLi.style.border = '1px solid rgba(150,150,150,0.3)';
-    descLi.style.borderRadius = '4px';
-    descLi.style.fontSize = '11px';
-    descLi.style.color = 'rgba(200,200,200,0.7)';
-    descLi.style.fontStyle = 'italic';
-    descLi.style.cursor = 'help';
-    descLi.style.textAlign = 'center';
-    descLi.style.listStyle = 'none';
-    descLi.textContent = 'Descriptions (hover)';
-    
-    // Create tooltip content
-    const tooltip = document.createElement('div');
-    tooltip.style.position = 'absolute';
-    tooltip.style.display = 'none';
-    tooltip.style.background = 'rgba(20,20,20,0.95)';
-    tooltip.style.border = '1px solid rgba(200,200,200,0.5)';
-    tooltip.style.borderRadius = '4px';
-    tooltip.style.padding = '8px 12px';
-    tooltip.style.fontSize = '12px';
-    tooltip.style.color = 'rgba(220,220,220,0.9)';
-    tooltip.style.maxWidth = '400px';
-    tooltip.style.zIndex = '10000';
-    tooltip.style.pointerEvents = 'none';
-    tooltip.style.whiteSpace = 'pre-wrap';
-    tooltip.innerHTML = descriptions.map(d => `• ${escapeHtml(d)}`).join('\n\n');
-    document.body.appendChild(tooltip);
-    
-    descLi.addEventListener('mouseenter', (e: MouseEvent) => {
-      const rect = descLi.getBoundingClientRect();
-      tooltip.style.display = 'block';
-      tooltip.style.left = `${rect.left}px`;
-      tooltip.style.top = `${rect.bottom + 5}px`;
-    });
-    
-    descLi.addEventListener('mouseleave', () => {
-      tooltip.style.display = 'none';
-    });
-    
-    list.appendChild(descLi);
-  }
-  
   return list;
 }
 
@@ -424,15 +377,6 @@ function renderItemsSection(sectionEl: HTMLElement, payload: KeepersPayload): vo
           typeEl.textContent = item.type;
           body.appendChild(typeEl);
         }
-        if (item.description) {
-          const descEl = document.createElement('div');
-          descEl.className = 'keepers-item-subtitle';
-          descEl.style.marginTop = '6px';
-          descEl.style.fontSize = '11px';
-          descEl.style.color = 'var(--text-secondary)';
-          descEl.innerHTML = highlightNumbers(escapeHtml(item.description));
-          body.appendChild(descEl);
-        }
         grid.appendChild(card);
         card.appendChild(body);
       });
@@ -528,16 +472,16 @@ function renderUniquesSection(sectionEl: HTMLElement, payload: KeepersPayload): 
         detailsChip.style.alignItems = 'center';
         detailsChip.style.gap = '4px';
         detailsChip.style.padding = '4px 8px';
-        detailsChip.style.background = 'rgba(255,152,0,0.15)';
-        detailsChip.style.border = '1px solid rgba(255,152,0,0.4)';
+        detailsChip.style.background = 'rgba(88,130,193,0.12)';
+        detailsChip.style.border = '1px solid rgba(88,130,193,0.3)';
         detailsChip.style.borderRadius = '4px';
         detailsChip.style.fontSize = '10px';
         detailsChip.style.fontWeight = '600';
-        detailsChip.style.color = 'var(--accent-orange)';
+        detailsChip.style.color = 'rgba(150,170,190,0.9)';
         detailsChip.style.whiteSpace = 'nowrap';
         detailsChip.style.flexShrink = '0';
         detailsChip.style.cursor = 'help';
-        detailsChip.innerHTML = `Details <span style="margin-left:2px;">⌵</span>`;
+        detailsChip.innerHTML = `Details <span style="margin-left:2px;">◯</span>`;
         
         // Create tooltip
         const tooltip = document.createElement('div');
