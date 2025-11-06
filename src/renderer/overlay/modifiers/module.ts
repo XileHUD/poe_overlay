@@ -1856,7 +1856,8 @@ export function renderFilteredContent(data: any){
     if (tag) tagModes.set(tag, mode);
   });
   const tagCounts: Record<string, number> = {};
-  (baseSections||[]).forEach((section:any)=>{
+  // Use domainFilteredSections instead of baseSections to count only mods in the active domain
+  (domainFilteredSections||[]).forEach((section:any)=>{
     (section.mods||[]).forEach((m:any)=>{
       const explicit = Array.isArray(m.tags) ? m.tags : [];
       const derived = deriveTagsFromMod(m);
