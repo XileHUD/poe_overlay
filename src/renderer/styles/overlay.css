@@ -1537,13 +1537,21 @@ body:not(.compact-tiers) .tier-badges-compact {
 .badge-corrupted { display:inline-block; padding:1px 6px; border-radius:999px; font-size:10px; background:#7a2b2b; color:#ffdede; border:1px solid #a33; margin-left:6px; }
 
 /* Sockets & Runes */
-.sockets-row { display:flex; align-items:center; gap:4px; flex-wrap:wrap; }
-.socket-group { display:flex; gap:2px; }
-.socket { width:26px; height:26px; border:1px solid rgba(255,255,255,0.15); border-radius:4px; background:#111; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+.sockets-row { display:flex; align-items:center; gap:3px; flex-wrap:wrap; }
+.socket-group { display:flex; gap:1.5px; align-items:center; }
+.socket { width:18px; height:18px; border:1px solid rgba(255,255,255,0.15); border-radius:3px; background:#111; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
 .socket.rune { border-color:#a88a3a; background:#1e1a10; }
 .socket.empty { opacity:0.25; }
+.socket.red { border-color:#dc443d; background:radial-gradient(circle, rgba(220,68,61,0.25) 0%, rgba(220,68,61,0.08) 70%, rgba(17,17,17,0.5) 100%); }
+.socket.green { border-color:#4caf50; background:radial-gradient(circle, rgba(76,175,80,0.25) 0%, rgba(76,175,80,0.08) 70%, rgba(17,17,17,0.5) 100%); }
+.socket.blue { border-color:#42a5f5; background:radial-gradient(circle, rgba(66,165,245,0.25) 0%, rgba(66,165,245,0.08) 70%, rgba(17,17,17,0.5) 100%); }
+.socket.white { border-color:#e0e0e0; background:radial-gradient(circle, rgba(224,224,224,0.25) 0%, rgba(224,224,224,0.08) 70%, rgba(17,17,17,0.5) 100%); }
+.socket.empty.red, .socket.empty.green, .socket.empty.blue, .socket.empty.white { opacity:0.7; }
 .socket img { width:100%; height:100%; object-fit:cover; display:block; }
-.socket-link { width:14px; height:2px; background:linear-gradient(90deg,rgba(255,255,255,0.5),rgba(255,255,255,0.05)); align-self:center; border-radius:2px; }
+.socket-link { width:8px; height:1.5px; align-self:center; border-radius:1px; }
+.socket-link.socket-link-connected { background:linear-gradient(90deg,rgba(255,255,255,0.6),rgba(255,255,255,0.6)); }
+.socket-link.socket-link-gap { background:linear-gradient(90deg,rgba(255,255,255,0.15),rgba(255,255,255,0.05)); }
+.socket-link-badge { display:inline-block; padding:1px 6px; margin-left:6px; border-radius:3px; font-size:10px; font-weight:600; background:linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.1)); border:1px solid rgba(212,175,55,0.4); color:#ffd769; white-space:nowrap; }
 .rune-mods { margin-top:6px; display:flex; flex-direction:column; gap:2px; }
 .rune-mod { font-size:11px; color:#c9d4ff; background:rgba(110,160,255,0.08); padding:3px 6px; border:1px solid rgba(110,160,255,0.25); border-radius:4px; }
 

@@ -335,26 +335,52 @@ export function renderHistoryDetail(idx: number): void {
   try {
     const sockets: any[] = Array.isArray(item?.sockets) ? item.sockets : [];
     const socketed: any[] = Array.isArray(item?.socketedItems) ? item.socketedItems : [];
+    // Check if PoE1 mode for colored sockets
+    const isPoe1 = ((window as any).__overlayVersionMode || 'poe2') === 'poe1';
+    
     if (sockets.length) {
       const groups: Record<number, any[]> = {};
       sockets.forEach(s => { groups[s.group] = groups[s.group] || []; groups[s.group].push(s); });
       const byIdx: Record<number, any> = {};
       socketed.forEach(si => { if (si && typeof si.socket === 'number') byIdx[si.socket] = si; });
-      const groupHtml = Object.keys(groups).sort((a,b)=>Number(a)-Number(b)).map(gk => {
+      
+      // Calculate largest link group for badge
+      const largestLinkGroup = Math.max(...Object.values(groups).map(g => g.length), 0);
+      let linkBadge = '';
+      if (isPoe1 && largestLinkGroup >= 2) {
+        linkBadge = `<span class=\"socket-link-badge\">${largestLinkGroup}-Link</span>`;
+      }
+      
+      const groupHtml = Object.keys(groups).sort((a,b)=>Number(a)-Number(b)).map((gk, groupIdx) => {
         const arr = groups[Number(gk)] || [];
         const cells = arr.map((s, idx) => {
           const rune = byIdx[s.group];
           const rItem = rune || socketed.find(r => r.socket === s.group || r.socket === idx) || null;
+          
+          // Get socket color for PoE1
+          let colorClass = '';
+          if (isPoe1 && !rItem) {
+            const sColour = s.sColour || s.colour || s.color || '';
+            if (sColour) {
+              const c = sColour.charAt(0).toUpperCase();
+              if (c === 'R') colorClass = ' red';
+              else if (c === 'G') colorClass = ' green';
+              else if (c === 'B') colorClass = ' blue';
+              else if (c === 'W') colorClass = ' white';
+            }
+          }
+          
           if (rItem) {
             const rIcon = rItem.icon || '';
             const title = (rItem.name || rItem.typeLine || '').trim();
             return `<div class=\"socket rune\" title=\"${escapeHtml(title)}\">${rIcon ? `<img src='${rIcon}' loading='lazy'/>` : '<span class=\"rune-placeholder\">R</span>'}</div>`;
           }
-          return `<div class=\"socket empty\"></div>`;
-        }).join('');
+          return `<div class=\"socket empty${colorClass}\"></div>`;
+        }).join(arr.length > 1 ? '<div class=\"socket-link socket-link-connected\"></div>' : '');
         return `<div class=\"socket-group\">${cells}</div>`;
-      }).join('<div class=\"socket-link\"></div>');
-      socketsHtml = `<div class=\"sockets-row\" title=\"Sockets & Runes\">${groupHtml}</div>`;
+      }).join('<div class=\"socket-link socket-link-gap\"></div>');
+      
+      socketsHtml = `<div class=\"sockets-row\" title=\"Sockets & Runes\">${groupHtml}${linkBadge}</div>`;
     }
   } catch {}
 
