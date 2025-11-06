@@ -3593,21 +3593,11 @@
                 });
             }
 
-            if (loginBtn) {
-                loginBtn.addEventListener('click', async () => {
-                    // Check if logged in - if yes, open trade history page; if no, show login window
-                    const session = await window.electronAPI.poeGetSession();
-                    if (session?.loggedIn) {
-                        await window.electronAPI.poeOpenHistoryWindow();
-                    } else {
-                        const res = await window.electronAPI.poeLogin();
-                        if (res?.loggedIn) {
-                            await updateSessionUI();
-                            // Do not auto-refresh on login; user controls refresh explicitly
-                        }
-                    }
-                });
-            }
+            // Login button logic now handled by modular history system (sessionManager.ts)
+            // attachLoginButtonLogic() (called in history/module.ts) wires the login/logout logic.
+            // This block is intentionally empty to prevent duplicate event listeners.
+            // Previous duplicate listener was causing multiple login windows to open.
+            
             // Refresh button logic now handled by modular history system (refreshButton.ts)
             // Legacy confirm() popup removed to avoid duplicate dialogs and native alert.
             // attachRefreshButtonLogic() (called in history/module.ts) wires the styled confirmation dialog.
