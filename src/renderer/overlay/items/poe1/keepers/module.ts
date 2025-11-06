@@ -377,8 +377,17 @@ function renderItemsSection(sectionEl: HTMLElement, payload: KeepersPayload): vo
           typeEl.textContent = item.type;
           body.appendChild(typeEl);
         }
-        grid.appendChild(card);
+        if (item.description) {
+          const descEl = document.createElement('div');
+          descEl.className = 'keepers-item-subtitle';
+          descEl.style.marginTop = '4px';
+          descEl.style.fontSize = '11px';
+          descEl.style.lineHeight = '1.4';
+          descEl.innerHTML = highlightNumbers(escapeHtml(item.description));
+          body.appendChild(descEl);
+        }
         card.appendChild(body);
+        grid.appendChild(card);
       });
 
       bucket.appendChild(grid);
@@ -853,7 +862,7 @@ function renderPassiveDataset(sectionEl: HTMLElement, payload: PassiveDataset | 
 
 function filterContent(searchQuery: string): void {
   const query = searchQuery.toLowerCase().trim();
-  const allCards = document.querySelectorAll<HTMLElement>('.keepers-group, .keepers-item-card, .keepers-gem-card, .keepers-variant-entry, .keepers-passive-card');
+  const allCards = document.querySelectorAll<HTMLElement>('.keepers-group, .keepers-card, .keepers-detail-card, .keepers-gem-card, .keepers-variant-entry, .keepers-passive-card');
   
   if (!query) {
     // Show all

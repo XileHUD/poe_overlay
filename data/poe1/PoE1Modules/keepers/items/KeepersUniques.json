@@ -198,9 +198,18 @@
     {
       "name": "The Golden Charlatan",
       "slug": "The_Golden_Charlatan",
-      "baseType": null,
-      "implicitMods": [],
-      "explicitMods": [],
+      "baseType": "Lion Sword",
+      "implicitMods": [
+        "+50 to Strength and Dexterity"
+      ],
+      "explicitMods": [
+        "+200 Intelligence Requirement",
+        "(200-300)% increased Physical Damage",
+        "(10-16)% increased Attack Speed",
+        "(100-200)% increased Critical Strike Chance",
+        "Critical Strikes with this Weapon do not deal extra Damage",
+        "Gain a random Shrine Buff for 30 seconds when you Kill a Rare or Unique Enemy"
+      ],
       "flavourText": [],
       "imageLocal": "keepers-uniques/the_golden_charlatan.webp"
     },
@@ -403,9 +412,20 @@
     {
       "name": "Wing of the Wyvern",
       "slug": "Wing_of_the_Wyvern",
-      "baseType": null,
-      "implicitMods": [],
-      "explicitMods": [],
+      "baseType": "Imperial Bow",
+      "implicitMods": [
+        "(20-24)% increased Elemental Damage with Attack Skills"
+      ],
+      "explicitMods": [
+        "Trigger a Socketed Spell when a Hit from thisWeapon Freezes a Target, with a 0.25 second Cooldown",
+        "Adds (164-204) to (250-300) Cold Damage",
+        "Adds (163-199) to (241-293) Chaos Damage",
+        "(20-30)% increased Attack Speed",
+        "Your Chaos Damage can Freeze",
+        "Battlemage",
+        "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
+        "(Gain Added Spell Damage equal to the Damage of your Main Hand Weapon)"
+      ],
       "flavourText": [],
       "imageLocal": "keepers-uniques/wing_of_the_wyvern.webp"
     },
