@@ -862,23 +862,132 @@ function renderPassiveDataset(sectionEl: HTMLElement, payload: PassiveDataset | 
 
 function filterContent(searchQuery: string): void {
   const query = searchQuery.toLowerCase().trim();
-  const allCards = document.querySelectorAll<HTMLElement>('.keepers-group, .keepers-card, .keepers-detail-card, .keepers-gem-card, .keepers-variant-entry, .keepers-passive-card');
+  
+  // Get all sections and their containers
+  const sections = document.querySelectorAll<HTMLElement>('.keepers-section');
+  const categoryBlocks = document.querySelectorAll<HTMLElement>('.keepers-category-block');
+  const groups = document.querySelectorAll<HTMLElement>('.keepers-group');
+  const detailGrids = document.querySelectorAll<HTMLElement>('.keepers-detail-grid');
+  const gemGrids = document.querySelectorAll<HTMLElement>('.keepers-gem-grid');
+  
+  // Get all individual items
+  const cards = document.querySelectorAll<HTMLElement>('.keepers-card');
+  const detailCards = document.querySelectorAll<HTMLElement>('.keepers-detail-card');
+  const gemCards = document.querySelectorAll<HTMLElement>('.keepers-gem-card');
+  const variantEntries = document.querySelectorAll<HTMLElement>('.keepers-variant-entry');
+  const passiveCards = document.querySelectorAll<HTMLElement>('.keepers-passive-card');
   
   if (!query) {
     // Show all
-    allCards.forEach(card => {
-      card.style.display = '';
+    [sections, categoryBlocks, groups, detailGrids, gemGrids, cards, detailCards, gemCards, variantEntries, passiveCards].forEach(collection => {
+      collection.forEach(el => {
+        el.style.display = '';
+      });
     });
     return;
   }
   
-  allCards.forEach(card => {
+  // First pass: mark all items as hidden
+  cards.forEach(card => card.style.display = 'none');
+  detailCards.forEach(card => card.style.display = 'none');
+  gemCards.forEach(card => card.style.display = 'none');
+  passiveCards.forEach(card => card.style.display = 'none');
+  
+  // Second pass: show matching items
+  cards.forEach(card => {
     const text = card.textContent?.toLowerCase() || '';
     if (text.includes(query)) {
       card.style.display = '';
-    } else {
-      card.style.display = 'none';
     }
+  });
+  
+  detailCards.forEach(card => {
+    const text = card.textContent?.toLowerCase() || '';
+    if (text.includes(query)) {
+      card.style.display = '';
+    }
+  });
+  
+  gemCards.forEach(card => {
+    const text = card.textContent?.toLowerCase() || '';
+    if (text.includes(query)) {
+      card.style.display = '';
+    }
+  });
+  
+  passiveCards.forEach(card => {
+    const text = card.textContent?.toLowerCase() || '';
+    if (text.includes(query)) {
+      card.style.display = '';
+    }
+  });
+  
+  // Handle groups (like Foulborn Uniques) - these contain variant entries
+  groups.forEach(group => {
+    const summary = group.querySelector('summary');
+    const summaryText = summary?.textContent?.toLowerCase() || '';
+    const variantsInGroup = group.querySelectorAll<HTMLElement>('.keepers-variant-entry');
+    
+    let hasMatch = false;
+    
+    // Check if group name matches
+    if (summaryText.includes(query)) {
+      hasMatch = true;
+      // Show all variants in this group
+      variantsInGroup.forEach(variant => {
+        variant.style.display = '';
+      });
+    } else {
+      // Check each variant
+      variantsInGroup.forEach(variant => {
+        const variantText = variant.textContent?.toLowerCase() || '';
+        if (variantText.includes(query)) {
+          variant.style.display = '';
+          hasMatch = true;
+        } else {
+          variant.style.display = 'none';
+        }
+      });
+    }
+    
+    // Show/hide the entire group
+    group.style.display = hasMatch ? '' : 'none';
+  });
+  
+  // Handle category blocks - hide if all children are hidden
+  categoryBlocks.forEach(block => {
+    const grid = block.querySelector('.keepers-card-grid');
+    if (grid) {
+      const visibleCards = Array.from(grid.querySelectorAll<HTMLElement>('.keepers-card')).filter(
+        card => card.style.display !== 'none'
+      );
+      block.style.display = visibleCards.length > 0 ? '' : 'none';
+    }
+  });
+  
+  // Handle detail grids - hide if all children are hidden
+  detailGrids.forEach(grid => {
+    const visibleCards = Array.from(grid.querySelectorAll<HTMLElement>('.keepers-detail-card')).filter(
+      card => card.style.display !== 'none'
+    );
+    grid.style.display = visibleCards.length > 0 ? '' : 'none';
+  });
+  
+  // Handle gem grids - hide if all children are hidden
+  gemGrids.forEach(grid => {
+    const visibleCards = Array.from(grid.querySelectorAll<HTMLElement>('.keepers-gem-card')).filter(
+      card => card.style.display !== 'none'
+    );
+    grid.style.display = visibleCards.length > 0 ? '' : 'none';
+  });
+  
+  // Hide sections that have no visible content
+  sections.forEach(section => {
+    const hasVisibleCards = Array.from(section.querySelectorAll<HTMLElement>(
+      '.keepers-card, .keepers-detail-card, .keepers-gem-card, .keepers-variant-entry, .keepers-passive-card, .keepers-group'
+    )).some(el => el.style.display !== 'none');
+    
+    section.style.display = hasVisibleCards ? '' : 'none';
   });
 }
 
