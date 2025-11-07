@@ -305,7 +305,7 @@ This project is not affiliated with or endorsed by Grinding Gear Games.
 - [OmegaK2](https://github.com/OmegaK2) – The original developer of PyPoE.
 - [brather1ng](https://github.com/brather1ng) – For the updated PyPoE fork.
 - Chriskang – For the original VisualGGPK2.
-- [POEDB](http://poedb.tw/us/) & [POE2.RE](https://poe2.re/) – Invaluable data and references.
+- [POEDB](http://poedb.tw/us/), [POE2.RE](https://poe2.re/) & [PoE Wiki](https://www.poewiki.net/) – Invaluable data and references.
 - [Siveran](https://github.com/Siveran/siveran.github.io)
 - [UIOHook](https://github.com/kwhat/libuiohook)
 - [SnosMe](https://github.com/SnosMe/uiohook-napi)

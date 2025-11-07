@@ -3386,6 +3386,48 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 this.pendingItemData = null;
             }
         });
+        
+        // Show gem details in main overlay
+        ipcMain.on('show-gem-details', (_event, gemName: string) => {
+            console.log('[IPC] Request to show gem details:', gemName);
+            console.log('[IPC] overlayWindow exists:', !!this.overlayWindow);
+            console.log('[IPC] overlayWindow destroyed:', this.overlayWindow?.isDestroyed());
+            console.log('[IPC] overlayLoaded:', this.overlayLoaded);
+
+            if (!gemName) {
+                console.warn('[IPC] Received show-gem-details without a gem name');
+                return;
+            }
+
+            if (this.overlayWindow && !this.overlayWindow.isDestroyed() && this.overlayLoaded) {
+                const detailChannel = this.overlayVersion === 'poe1'
+                    ? 'show-poe1-gem-detail'
+                    : 'show-gem-detail';
+
+                const payload = this.overlayVersion === 'poe1'
+                    ? { gemName }
+                    : gemName;
+
+                // First, send the navigation commands to prepare the loading state
+                console.log('[IPC] Preparing gem navigation sequence');
+                this.safeSendToOverlay('set-active-tab', 'characterTab');
+                this.safeSendToOverlay('invoke-action', 'gems');
+                
+                if (detailChannel === 'show-poe1-gem-detail') {
+                    console.log('[IPC] Forwarding to existing gem-detail handler with payload:', payload);
+                    this.safeSendToOverlay(detailChannel, payload);
+                }
+
+                // Then show the overlay after a small delay to ensure loading state is rendered
+                setTimeout(() => {
+                    console.log('[IPC] Showing overlay after loading state prepared');
+                    this.showOverlay(undefined, { focus: true });
+                }, 50);
+            } else {
+                console.log('[IPC] Cannot process show-gem-details - overlay not ready');
+            }
+        });
+        
         // Pinned toggle
         ipcMain.on('set-pinned', (_event, pinned: boolean) => {
             this.pinned = !!pinned;

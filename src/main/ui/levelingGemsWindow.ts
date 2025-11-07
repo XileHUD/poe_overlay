@@ -5,7 +5,7 @@ import type { SettingsService } from '../services/settingsService.js';
 import { getActiveBuild } from '../../shared/pob/buildManager.js';
 import gemsData from '../../data/leveling-data/gems.json';
 import gemColoursData from '../../data/leveling-data/gem-colours.json';
-import questsData from '../../data/leveling-data/quests.json';
+import gemAcquisitionData from '../../data/leveling-data/gem-acquisition.json';
 
 interface LevelingGemsWindowOptions {
   settingsService: SettingsService;
@@ -195,10 +195,56 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
   const ascendancy = pobBuild?.ascendancyName || '';
   const level = pobBuild?.level || 0;
 
+  // Extract unique gem names from the PoB build
+  const uniqueGemNames = new Set<string>();
+  if (pobBuild?.skillSets) {
+    for (const skillSet of pobBuild.skillSets) {
+      if (skillSet?.socketGroups) {
+        for (const group of skillSet.socketGroups) {
+          if (group?.gems) {
+            for (const gem of group.gems) {
+              const gemName = (gem.nameSpec || gem.gemId || '').replace(/^Support:\s*/, '').trim();
+              if (gemName) {
+                uniqueGemNames.add(gemName);
+                // Also add the "X Support" variant for supports
+                if (gem.supportGem || gem.isSupport || /support/i.test(gem.skillId || '')) {
+                  uniqueGemNames.add(gemName + ' Support');
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  } else if (pobBuild?.socketGroups) {
+    for (const group of pobBuild.socketGroups) {
+      if (group?.gems) {
+        for (const gem of group.gems) {
+          const gemName = (gem.nameSpec || gem.gemId || '').replace(/^Support:\s*/, '').trim();
+          if (gemName) {
+            uniqueGemNames.add(gemName);
+            if (gem.supportGem || gem.isSupport || /support/i.test(gem.skillId || '')) {
+              uniqueGemNames.add(gemName + ' Support');
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Filter acquisition data to only include gems used in this build
+  const filteredAcquisition: Record<string, any> = {};
+  const acquisitionDataAsRecord = gemAcquisitionData as Record<string, any>;
+  for (const gemName of uniqueGemNames) {
+    if (acquisitionDataAsRecord[gemName]) {
+      filteredAcquisition[gemName] = acquisitionDataAsRecord[gemName];
+    }
+  }
+
   // Inject JSON data
   const gemsJSON = JSON.stringify(gemsData);
   const gemColoursJSON = JSON.stringify(gemColoursData);
-  const questsJSON = JSON.stringify(questsData);
+  const gemAcquisitionJSON = JSON.stringify(filteredAcquisition);
 
   return `
 <!DOCTYPE html>
@@ -644,24 +690,290 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
       padding: 4px;
     }
     
-    #gem-tooltip {
-      position: fixed;
-      background: rgba(30, 30, 40, 0.98);
-      color: #e0e0e0;
-      padding: 8px 12px;
-      border-radius: 4px;
-      font-size: 11px;
-      line-height: 1.5;
-      pointer-events: none;
-      z-index: 100000;
-      display: none;
-      max-width: 300px;
-      border: 1px solid rgba(74, 158, 255, 0.3);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    .gem-info-btn {
+      width: 16px;
+      height: 16px;
+      background: transparent;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      flex-shrink: 0;
+      transition: all 0.15s;
+      margin-left: 4px;
+      opacity: 0.5;
     }
     
-    .gem-item {
-      cursor: help;
+    .gem-info-btn svg {
+      width: 16px;
+      height: 16px;
+      display: block;
+    }
+    
+    .gem-info-btn:hover {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+    
+    .gem-info-btn:active {
+      transform: scale(0.95);
+    }
+    
+    /* Modal overlay */
+    #gem-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100000;
+      backdrop-filter: blur(3px);
+    }
+    
+    #gem-modal-overlay.active {
+      display: flex;
+    }
+    
+    #gem-modal {
+      background: rgba(20, 20, 28, 0.98);
+      border: 1px solid rgba(74, 158, 255, 0.4);
+      border-radius: 6px;
+      max-width: 700px;
+      max-height: 80vh;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+    }
+    
+    .modal-header {
+      padding: 12px 16px;
+      background: rgba(74, 158, 255, 0.15);
+      border-bottom: 1px solid rgba(74, 158, 255, 0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .modal-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+    
+    .modal-close {
+      width: 24px;
+      height: 24px;
+      border-radius: 3px;
+      background: rgba(217, 83, 79, 0.15);
+      border: 1px solid rgba(217, 83, 79, 0.3);
+      color: #d9534f;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+    
+    .modal-close:hover {
+      background: rgba(217, 83, 79, 0.25);
+      border-color: rgba(217, 83, 79, 0.5);
+    }
+    
+    .modal-body {
+      padding: 16px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    
+    .gem-description {
+      padding: 12px;
+      margin-bottom: 16px;
+      background: rgba(74, 158, 255, 0.08);
+      border-left: 3px solid rgba(74, 158, 255, 0.5);
+      border-radius: 4px;
+      font-size: 11px;
+      line-height: 1.6;
+      color: #b8d4f1;
+    }
+    
+    .details-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      margin-bottom: 16px;
+      background: rgba(74, 158, 255, 0.15);
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      border-radius: 4px;
+      color: #4A9EFF;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    
+    .details-button:hover {
+      background: rgba(74, 158, 255, 0.25);
+      border-color: rgba(74, 158, 255, 0.5);
+      transform: translateY(-1px);
+    }
+    
+    .modal-section {
+      margin-bottom: 20px;
+    }
+    
+    .modal-section:last-child {
+      margin-bottom: 0;
+    }
+    
+    .modal-section-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: #aaaaaa;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(74, 158, 255, 0.2);
+    }
+    
+    .modal-section-desc {
+      font-size: 10px;
+      color: #b0b0b0;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 2px solid rgba(74, 158, 255, 0.3);
+      border-radius: 3px;
+    }
+    
+    .modal-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10px;
+    }
+    
+    .modal-table thead th {
+      padding: 6px 8px;
+      text-align: center;
+      font-weight: 600;
+      color: #999;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 2px solid rgba(74, 158, 255, 0.2);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    
+    .modal-table tbody td {
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    
+    .modal-table tbody tr:hover {
+      background: rgba(74, 158, 255, 0.05);
+    }
+    
+    .modal-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .quest-cell {
+      text-align: left !important;
+      padding-left: 12px !important;
+    }
+    
+    .quest-name {
+      font-weight: 600;
+      color: #e0e0e0;
+      font-size: 10px;
+      margin-bottom: 2px;
+    }
+    
+    .quest-act {
+      font-size: 9px;
+      color: #888;
+    }
+    
+    .quest-npc {
+      font-size: 8px;
+      color: #666;
+      font-style: italic;
+    }
+    
+    .availability-yes {
+      color: #5cb85c;
+      font-size: 14px;
+    }
+    
+    .availability-no {
+      color: #d9534f;
+      opacity: 0.3;
+      font-size: 14px;
+    }
+    
+    .availability-partial {
+      color: #f0ad4e;
+      font-size: 14px;
+    }
+    
+    .availability-na {
+      color: #666;
+      font-size: 14px;
+    }
+    
+    .availability-unknown {
+      color: #888;
+    }
+    
+    /* Highlight the active character class column */
+    .modal-table thead th.active-class {
+      background: rgba(74, 158, 255, 0.25);
+      color: #4A9EFF;
+      font-weight: 700;
+    }
+    
+    .modal-table tbody td.active-class {
+      background: rgba(74, 158, 255, 0.15);
+      font-weight: 600;
+    }
+    
+    .modal-subsection {
+      margin-top: 16px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .modal-subsection-title {
+      font-size: 10px;
+      font-weight: 600;
+      color: #aaa;
+      margin-bottom: 8px;
+    }
+    
+    .modal-list {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 9px;
+      color: #b0b0b0;
+      line-height: 1.6;
+    }
+    
+    .modal-list li {
+      margin-bottom: 4px;
     }
   </style>
 </head>
@@ -682,8 +994,18 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
     <!-- Content will be rendered by JavaScript -->
   </div>
   
-  <!-- Custom tooltip for gem info -->
-  <div id="gem-tooltip"></div>
+  <!-- Modal for gem acquisition info -->
+  <div id="gem-modal-overlay">
+    <div id="gem-modal">
+      <div class="modal-header">
+        <div class="modal-title" id="modal-title">Gem Acquisition</div>
+        <button class="modal-close" onclick="closeGemModal()">×</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Content injected by JS -->
+      </div>
+    </div>
+  </div>
   
   <script>
     const { ipcRenderer } = require('electron');
@@ -708,15 +1030,15 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
     let isPinned = ${pinned};
     let autoDetectEnabled = ${autoDetectEnabled};
     let savedGemsIndex = ${savedGemsIndex};
-    let gemDatabase = {};
-    let gemColours = {};
-    let questData = {};
+  let gemDatabase = {};
+  let gemColours = {};
+  let gemAcquisition = {};
     const overlayVersion = '${overlayVersion}';
     
     // Injected JSON data from main process
-    const INJECTED_GEMS_DATA = ${gemsJSON};
-    const INJECTED_GEM_COLOURS = ${gemColoursJSON};
-    const INJECTED_QUESTS_DATA = ${questsJSON};
+  const INJECTED_GEMS_DATA = ${gemsJSON};
+  const INJECTED_GEM_COLOURS = ${gemColoursJSON};
+  const INJECTED_GEM_ACQUISITION = ${gemAcquisitionJSON};
     
     // Load gem database
     async function loadGemDatabase() {
@@ -745,13 +1067,14 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
       }
     }
     
-    // Load quest data for gem rewards
-    async function loadQuestData() {
+    // Load acquisition dataset scraped from PoE Wiki
+    async function loadGemAcquisition() {
       try {
-        questData = INJECTED_QUESTS_DATA;
-        console.log('[GemsWindow] Loaded quests data from injected data');
+        gemAcquisition = INJECTED_GEM_ACQUISITION || {};
+        console.log('[GemsWindow] Loaded acquisition dataset with', Object.keys(gemAcquisition).length, 'entries');
       } catch (err) {
-        console.error('Failed to load quest data:', err);
+        console.error('[GemsWindow] Failed to load acquisition data:', err);
+        gemAcquisition = {};
       }
     }
     
@@ -865,79 +1188,261 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
       }
     }
     
-    function getGemQuestInfo(gem, actNum) {
-      // Look up quest info from the database for this gem
-      const gemName = gem.nameSpec || gem.gemId || gem.name || '';
-      
-      console.log('[GemsWindow] Looking up gem:', gemName, 'for act', actNum);
-      
-      // Try to find gem in database
-      let gemEntry = Object.entries(gemDatabase).find(
-        ([, gemData]) => gemData.name.toLowerCase() === gemName.toLowerCase()
-      );
-      
-      // If not found and gem doesn't have "support" in name, try with " Support" suffix
-      if (!gemEntry && !gemName.toLowerCase().includes('support')) {
-        const withSupport = gemName + ' Support';
-        gemEntry = Object.entries(gemDatabase).find(
-          ([, gemData]) => gemData.name.toLowerCase() === withSupport.toLowerCase()
-        );
-        if (gemEntry) {
-          console.log('[GemsWindow] Found gem with Support suffix:', withSupport);
+    function escapeHtml(value) {
+      if (value === null || value === undefined) return '';
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function escapeAttr(value) {
+      return escapeHtml(value);
+    }
+
+    function resolveAcquisitionEntry(rawName, isSupport) {
+      const baseName = (rawName || '').replace(/^Support:\s*/, '').trim();
+      const candidates = [];
+      if (baseName) candidates.push(baseName);
+      if (isSupport) {
+        const supportName = baseName.endsWith('Support') ? baseName : (baseName ? baseName + ' Support' : '');
+        if (supportName && !candidates.includes(supportName)) {
+          candidates.unshift(supportName);
         }
       }
-      
-      if (!gemEntry) {
-        console.log('[GemsWindow] Gem not found in database:', gemName);
-        return null;
-      }
-      
-      const [gemId, gemData] = gemEntry;
-      console.log('[GemsWindow] Found gem in database:', gemId, gemData.name);
-      
-      // Look through quests for this act to find where this gem is available
-      for (const [questId, questDataEntry] of Object.entries(questData)) {
-        if (questDataEntry.act !== 'Act ' + actNum && questDataEntry.act !== actNum.toString()) {
-          continue;
+
+      for (const candidate of candidates) {
+        const entry = gemAcquisition[candidate];
+        if (entry) {
+          return { entry, lookupName: candidate };
         }
-        
-        const rewardOffers = Object.values(questDataEntry.reward_offers || {});
-        for (const offer of rewardOffers) {
-          // Check quest rewards first (TAKE)
-          const questReward = offer.quest?.[gemId];
-          if (questReward) {
-            console.log('[GemsWindow] Found quest reward for', gemName, ':', questDataEntry.name);
-            return {
-              type: 'TAKE',
-              quest: questDataEntry.name,
-              npc: offer.quest_npc
-            };
+      }
+
+      return { entry: null, lookupName: candidates[0] || baseName };
+    }
+
+    function entryHasContent(entry) {
+      if (!entry) return false;
+      if (entry.questRewards && Array.isArray(entry.questRewards.rows) && entry.questRewards.rows.length) return true;
+      if (entry.vendorRewards && Array.isArray(entry.vendorRewards.rows) && entry.vendorRewards.rows.length) return true;
+      if (entry.itemAcquisition) {
+        if (entry.itemAcquisition.summary) return true;
+        if (Array.isArray(entry.itemAcquisition.sections) && entry.itemAcquisition.sections.length) return true;
+      }
+      return false;
+    }
+
+    function renderAvailabilitySymbol(value) {
+      switch (value) {
+        case 'yes':
+          return '✔';
+        case 'no':
+          return '✖';
+        case 'partial':
+          return '◐';
+        case 'na':
+          return '—';
+        case 'unknown':
+          return '?';
+        default:
+          return escapeHtml(value || '?');
+      }
+    }
+
+    function buildQuestVendorSection(title, data, characterClass) {
+      if (!data || !Array.isArray(data.rows) || data.rows.length === 0) return '';
+      const classes = Array.isArray(data.classes) && data.classes.length ? data.classes : [];
+      let html = '<div class="modal-section">';
+      html += '<div class="modal-section-title">' + escapeHtml(title) + '</div>';
+      if (data.description) {
+        html += '<div class="modal-section-desc">' + escapeHtml(data.description) + '</div>';
+      }
+      html += '<table class="modal-table">';
+      html += '<thead><tr><th class="quest-cell">Quest / Act / NPC</th>';
+      for (const cls of classes) {
+        // Highlight the class column that matches the character's class
+        const isActiveClass = characterClass && cls.toLowerCase() === characterClass.toLowerCase();
+        const classAttr = isActiveClass ? ' class="active-class"' : '';
+        html += '<th' + classAttr + '>' + escapeHtml(cls) + '</th>';
+      }
+      html += '</tr></thead><tbody>';
+
+      for (const row of data.rows) {
+        html += '<tr>';
+        html += '<td class="quest-cell">';
+        html += '<div class="quest-name">' + escapeHtml(row.quest || 'Unknown quest') + '</div>';
+        if (row.act) {
+          html += '<div class="quest-act">' + escapeHtml(row.act) + '</div>';
+        }
+        if (row.npc) {
+          html += '<div class="quest-npc">' + escapeHtml(row.npc) + '</div>';
+        }
+        if (Array.isArray(row.extra)) {
+          for (const line of row.extra) {
+            html += '<div class="quest-npc">' + escapeHtml(line) + '</div>';
           }
-          
-          // Check vendor rewards (BUY)
-          const vendorReward = offer.vendor?.[gemId];
-          if (vendorReward) {
-            console.log('[GemsWindow] Found vendor reward for', gemName, ':', vendorReward.npc);
-            return {
-              type: 'BUY',
-              quest: questDataEntry.name,
-              npc: vendorReward.npc
-            };
+        }
+        html += '</td>';
+
+        const availability = Array.isArray(row.availability) ? row.availability : [];
+        for (let i = 0; i < classes.length; i += 1) {
+          const value = availability[i] || 'unknown';
+          const isActiveClass = characterClass && classes[i] && classes[i].toLowerCase() === characterClass.toLowerCase();
+          const cellClass = 'availability-' + value + (isActiveClass ? ' active-class' : '');
+          html += '<td class="' + cellClass + '">' + renderAvailabilitySymbol(value) + '</td>';
+        }
+
+        html += '</tr>';
+      }
+
+      html += '</tbody></table></div>';
+      return html;
+    }
+
+    function buildItemAcquisitionSection(data) {
+      if (!data) return '';
+      const hasSummary = typeof data.summary === 'string' && data.summary.length > 0;
+      const hasSections = Array.isArray(data.sections) && data.sections.length > 0;
+      if (!hasSummary && !hasSections) return '';
+
+      let html = '<div class="modal-section">';
+      html += '<div class="modal-section-title">Item acquisition (recipes, divination cards)</div>';
+      if (hasSummary) {
+        html += '<div class="modal-section-desc">' + escapeHtml(data.summary) + '</div>';
+      }
+
+      if (hasSections) {
+        for (const section of data.sections) {
+          html += '<div class="modal-subsection">';
+          html += '<div class="modal-subsection-title">' + escapeHtml(section.title || '') + '</div>';
+          if (Array.isArray(section.blocks)) {
+            for (const block of section.blocks) {
+              if (!block) continue;
+              if (block.type === 'paragraph' && block.text) {
+                html += '<div class="modal-section-desc">' + escapeHtml(block.text) + '</div>';
+              } else if (block.type === 'list' && Array.isArray(block.items)) {
+                html += '<ul class="modal-list">';
+                for (const item of block.items) {
+                  html += '<li>' + escapeHtml(item) + '</li>';
+                }
+                html += '</ul>';
+              } else if (block.type === 'table' && Array.isArray(block.rows)) {
+                // Filter out META column
+                const columns = Array.isArray(block.columns) ? block.columns.filter(col => col.toUpperCase() !== 'META') : [];
+                const metaIndex = Array.isArray(block.columns) ? block.columns.findIndex(col => col.toUpperCase() === 'META') : -1;
+                
+                html += '<table class="modal-table">';
+                if (columns.length > 0) {
+                  html += '<thead><tr>';
+                  for (const column of columns) {
+                    html += '<th>' + escapeHtml(column) + '</th>';
+                  }
+                  html += '</tr></thead>';
+                }
+                html += '<tbody>';
+                for (const row of block.rows) {
+                  html += '<tr>';
+                  const cells = Array.isArray(row) ? row : [];
+                  for (let i = 0; i < cells.length; i++) {
+                    // Skip META column
+                    if (i === metaIndex) continue;
+                    html += '<td>' + escapeHtml(cells[i]) + '</td>';
+                  }
+                  html += '</tr>';
+                }
+                html += '</tbody></table>';
+              }
+            }
           }
+          html += '</div>';
         }
       }
+
+      html += '</div>';
+      return html;
+    }
+
+    function buildGemModalHtml(displayName, entry, lookupName) {
+      if (!entryHasContent(entry)) return '';
+      const characterClass = currentBuild?.className || '';
+      let html = '';
       
-      console.log('[GemsWindow] No quest/vendor found for', gemName, 'in act', actNum);
-      return null;
+      // Add gem description at the top if available
+      if (entry.description) {
+        html += '<div class="gem-description">' + escapeHtml(entry.description) + '</div>';
+      }
+      
+      // Add Details button to open main overlay - use lookupName for accurate matching
+      const gemNameForDetails = lookupName || displayName;
+      html += '<button class="details-button" onclick="openGemInMainOverlay(&quot;' + escapeAttr(gemNameForDetails) + '&quot;)">';
+      html += '<span>📖</span>';
+      html += '<span>View Details in Main Overlay</span>';
+      html += '</button>';
+      
+      if (entry.questRewards && Array.isArray(entry.questRewards.rows) && entry.questRewards.rows.length) {
+        html += buildQuestVendorSection('Quest rewards', entry.questRewards, characterClass);
+      }
+      if (entry.vendorRewards && Array.isArray(entry.vendorRewards.rows) && entry.vendorRewards.rows.length) {
+        html += buildQuestVendorSection('Vendor rewards', entry.vendorRewards, characterClass);
+      }
+      html += buildItemAcquisitionSection(entry.itemAcquisition);
+      
+      // Add References section
+      const gemSlug = displayName.replace(/\s+/g, '_');
+      const wikiUrl = \`https://www.poewiki.net/wiki/\${encodeURIComponent(gemSlug)}\`;
+      html += \`
+        <div class="modal-section" style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(144, 164, 174, 0.2);">
+          <h3 class="modal-section-title">References</h3>
+          <div style="margin-top: 8px;">
+            <a href="#" class="wiki-link" data-wiki-url="\${wikiUrl}" style="color: #4A9EFF; text-decoration: none; font-size: 13px; display: inline-flex; align-items: center; gap: 6px;">
+              <span style="font-size: 14px;">🌐</span>
+              <span>PoE Wiki - \${displayName}</span>
+            </a>
+          </div>
+        </div>
+      \`;
+      
+      return html;
     }
     
-    // Helper to parse level range from set title
-    // Examples: "1-14 level", "15-23", "Level 1-12", "Act1 level 1-23"
+    function openGemModal(displayName, lookupName) {
+      const entry = lookupName ? gemAcquisition[lookupName] : null;
+      if (!entry || !entryHasContent(entry)) {
+        console.log('[GemsWindow] No acquisition data for:', lookupName);
+        return;
+      }
+      
+      const modalOverlay = document.getElementById('gem-modal-overlay');
+      const modalTitle = document.getElementById('modal-title');
+      const modalBody = document.getElementById('modal-body');
+      
+      modalTitle.textContent = displayName;
+      modalBody.innerHTML = buildGemModalHtml(displayName, entry, lookupName);
+      modalOverlay.classList.add('active');
+    }
+    
+    function closeGemModal() {
+      const modalOverlay = document.getElementById('gem-modal-overlay');
+      modalOverlay.classList.remove('active');
+    }
+    
+    function openGemInMainOverlay(gemName) {
+      try {
+        // Send IPC message to main process to open gem details in main overlay
+        ipcRenderer.send('show-gem-details', gemName);
+        console.log('[GemsWindow] Requested gem details for:', gemName);
+      } catch (err) {
+        console.error('[GemsWindow] Failed to open gem details:', err);
+      }
+    }
+
     function parseLevelRange(title) {
       if (!title) return null;
       
-      // Match patterns like: "1-14", "level 1-14", "1-14 level", "Level 1-14"
-      const rangeMatch = title.match(/(\d+)\s*[-–—]\s*(\d+)/);
+      // Match level ranges like "Level 10-15" or "10-15"
+      const rangeMatch = title.match(/(\d+)\s*-\s*(\d+)/);
       if (rangeMatch) {
         const min = parseInt(rangeMatch[1], 10);
         const max = parseInt(rangeMatch[2], 10);
@@ -1123,29 +1628,26 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
           const colorHex = colorClass === 'str' ? '#ff4444' : 
                           colorClass === 'dex' ? '#44ff44' : '#4444ff';
           
-          const questInfo = getGemQuestInfo(gem, currentAct);
-          
-          // Build tooltip text
-          let tooltipText = '';
-          if (questInfo) {
-            const tooltipParts = [];
-            tooltipParts.push(questInfo.type + ' from ' + questInfo.npc);
-            if (questInfo.quest) tooltipParts.push('Quest: ' + questInfo.quest);
-            tooltipText = tooltipParts.join(' | ');
-          }
-          
+          const displayName = gemName.replace('Support: ', '');
+          const acquisitionLookup = resolveAcquisitionEntry(gemName, isSupport);
+          const hasAcquisition = entryHasContent(acquisitionLookup.entry);
+
           // Get gem image path - EXACT same logic as working task list
           const imagePath = getGemImagePath(gemName, isSupport);
           const imageClass = overlayVersion === 'poe2' ? 'gem-image poe2' : 'gem-image';
-          
-          // Build gem item HTML with tooltip (only add data-tooltip if we have info)
-          html += '<div class="gem-item ' + colorClass + (isSupport ? ' support' : '') + '"' + (tooltipText ? ' data-tooltip="' + tooltipText.replace(/"/g, '&quot;') + '"' : '') + '>';
+
+          html += '<div class="gem-item ' + colorClass + (isSupport ? ' support' : '') + '">';
           if (imagePath) {
             html += '<img data-gem-img="' + imagePath + '" class="' + imageClass + '" style="display:none;" />';
           }
           
-          html += '<span class="gem-name ' + (isSupport ? 'support' : '') + '">' + gemName.replace('Support: ', '') + '</span>';
+          html += '<span class="gem-name ' + (isSupport ? 'support' : '') + '">' + displayName + '</span>';
+          html += '<div class="gem-meta">';
           html += '<span class="gem-level">L' + level + (quality > 0 ? ' Q' + quality : '') + '</span>';
+          if (hasAcquisition) {
+            html += '<button class="gem-info-btn" data-gem-info="' + escapeAttr(acquisitionLookup.lookupName || displayName) + '" data-gem-display="' + escapeAttr(displayName) + '" title="Show acquisition info"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22ZM12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75ZM12 7C12.5523 7 13 7.44772 13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7Z" fill="#4A9EFF"></path></svg></button>';
+          }
+          html += '</div>';
           
           html += '</div>';
         }
@@ -1170,42 +1672,50 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
         }
       });
       
-      // Setup tooltip handlers
-      setupGemTooltips();
+  // Setup acquisition tooltip handlers
+  setupGemInfoButtons();
     }
     
-    function setupGemTooltips() {
-      const tooltip = document.getElementById('gem-tooltip');
-      const gemItems = document.querySelectorAll('.gem-item[data-tooltip]');
+    function setupGemInfoButtons() {
+      const buttons = document.querySelectorAll('.gem-info-btn');
+      console.log('[GemsWindow] Setting up acquisition modals for', buttons.length, 'gems');
+
+      buttons.forEach((button) => {
+        const lookupName = button.getAttribute('data-gem-info');
+        const displayName = button.getAttribute('data-gem-display') || lookupName || 'Unknown gem';
+        const entry = lookupName ? gemAcquisition[lookupName] : null;
+
+        if (!entryHasContent(entry)) {
+          button.style.display = 'none';
+          return;
+        }
+
+        button.addEventListener('click', (event) => {
+          event.stopPropagation();
+          openGemModal(displayName, lookupName);
+        });
+      });
       
-      console.log('[GemsWindow] Setting up tooltips. Found', gemItems.length, 'gems with tooltip data');
-      
-      if (!tooltip) {
-        console.error('[GemsWindow] Tooltip element not found!');
-        return;
+      // Close modal on overlay click
+      const modalOverlay = document.getElementById('gem-modal-overlay');
+      if (modalOverlay) {
+        modalOverlay.addEventListener('click', (event) => {
+          if (event.target === modalOverlay) {
+            closeGemModal();
+          }
+        });
       }
       
-      gemItems.forEach((item, index) => {
-        const tooltipText = item.getAttribute('data-tooltip');
-        if (!tooltipText) return;
-        
-        console.log('[GemsWindow] Adding tooltip to gem', index, ':', tooltipText);
-        
-        item.addEventListener('mouseenter', () => {
-          console.log('[GemsWindow] Mouse enter, showing tooltip:', tooltipText);
-          tooltip.textContent = tooltipText;
-          tooltip.style.display = 'block';
-        });
-        
-        item.addEventListener('mousemove', (e) => {
-          tooltip.style.left = (e.clientX + 10) + 'px';
-          tooltip.style.top = (e.clientY + 10) + 'px';
-        });
-        
-        item.addEventListener('mouseleave', () => {
-          console.log('[GemsWindow] Mouse leave, hiding tooltip');
-          tooltip.style.display = 'none';
-        });
+      // Handle wiki link clicks (delegated from modal body)
+      document.addEventListener('click', (event) => {
+        const target = event.target;
+        if (target.classList && target.classList.contains('wiki-link')) {
+          event.preventDefault();
+          const wikiUrl = target.getAttribute('data-wiki-url');
+          if (wikiUrl) {
+            require('electron').shell.openExternal(wikiUrl);
+          }
+        }
       });
     }
     
@@ -1314,8 +1824,8 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
         }
       });
       
-      // Setup tooltips
-      setupGemTooltips();
+  // Setup acquisition tooltips
+  setupGemInfoButtons();
     }
     
     function smoothRenderGems() {
@@ -1398,9 +1908,9 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
     
     // Initialize
     (async () => {
-      await loadGemDatabase();
-      await loadGemColors();
-      await loadQuestData();
+  await loadGemDatabase();
+  await loadGemColors();
+  await loadGemAcquisition();
       renderGems();
       
       // Apply saved minimal mode state

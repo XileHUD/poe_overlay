@@ -84,22 +84,54 @@ function setCharacterTabActive(): void {
   document.body.classList.add("crafting-mode");
 }
 
+// Show a loading overlay to prevent flicker during async operations
+function showLoadingOverlay(message = 'Loading...') {
+  const panel = ensurePanel();
+  panel.style.display = '';
+  panel.innerHTML = `
+    <div style='
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 400px;
+      gap: 16px;
+    '>
+      <div style='
+        width: 48px;
+        height: 48px;
+        border: 4px solid var(--bg-tertiary);
+        border-top: 4px solid var(--accent-blue);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      '></div>
+      <div style='color: var(--text-secondary); font-size: 14px;'>${message}</div>
+    </div>
+    <style>
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  `;
+}
+
 export async function showList(): Promise<void> {
   (window as any).__lastPanel = 'poe1-gems-list';
   setCharacterTabActive();
-  const panel = ensurePanel();
-  panel.style.display='';
-  panel.innerHTML = `<div class='no-mods'>Loading Gems...</div>`;
-  setTimeout(()=>{ panel.scrollTop=0; }, 10);
+  showLoadingOverlay('Loading Gems...');
+  setTimeout(()=>{ ensurePanel().scrollTop=0; }, 10);
   try {
     const data = await (window as any).electronAPI.getPoe1Gems?.();
     if (!data || data.error) { 
+      const panel = ensurePanel();
       panel.innerHTML = `<div style='color:var(--accent-red);'>Failed to load Gems (${data?.error||'unknown'})</div>`; 
       return; 
     }
     state.cache = data.gems || {};
     renderList();
   } catch (e) {
+    const panel = ensurePanel();
     panel.innerHTML = `<div style='color:var(--accent-red);'>Exception loading Gems: ${e}</div>`;
   }
 }
@@ -107,13 +139,12 @@ export async function showList(): Promise<void> {
 export async function showDetail(gemSlug: string): Promise<void> {
   (window as any).__lastPanel = `poe1-gem-detail:${gemSlug}`;
   setCharacterTabActive();
-  const panel = ensurePanel();
-  panel.style.display='';
-  panel.innerHTML = `<div class='no-mods'>Loading ${gemSlug}...</div>`;
-  setTimeout(()=>{ panel.scrollTop=0; }, 10);
+  showLoadingOverlay(`Loading gem details...`);
+  setTimeout(()=>{ ensurePanel().scrollTop=0; }, 10);
   try {
     const detail = await (window as any).electronAPI.getPoe1GemDetail?.(gemSlug);
-    if (!detail || detail.error) { 
+    if (!detail || detail.error) {
+      const panel = ensurePanel();
       panel.innerHTML = `<div style='color:var(--accent-red);'>Failed to load gem detail for ${gemSlug} (${detail?.error||'unknown'})</div>`; 
       return; 
     }
@@ -121,6 +152,7 @@ export async function showDetail(gemSlug: string): Promise<void> {
     state.currentGemDetail = detail;
     renderDetail();
   } catch (e) {
+    const panel = ensurePanel();
     panel.innerHTML = `<div style='color:var(--accent-red);'>Exception loading gem detail: ${e}</div>`;
   }
 }
@@ -1295,6 +1327,18 @@ async function findGemSlugByName(gemName: string): Promise<string | null> {
       return caseInsensitiveMatch.slug;
     }
 
+    // Try matching with " Support" suffix added (for support gems in leveling data that may omit it)
+    if (!gemName.toLowerCase().endsWith(' support')) {
+      const withSupport = gemName + ' Support';
+      const supportMatch = allGems.find(gem => 
+        gem.name?.toLowerCase() === withSupport.toLowerCase()
+      );
+      if (supportMatch && supportMatch.slug) {
+        console.log('[Gems] Found support gem by adding suffix:', withSupport);
+        return supportMatch.slug;
+      }
+    }
+
     // Fallback: convert name to slug format
     return gemNameToSlug(gemName);
   } catch (e) {
@@ -1313,6 +1357,11 @@ export async function showDetailByName(gemName: string): Promise<void> {
   }
 
   console.log('[Gems] Looking up gem:', gemName);
+  
+  // Show loading immediately to prevent flicker
+  setCharacterTabActive();
+  showLoadingOverlay(`Finding ${gemName}...`);
+  
   const slug = await findGemSlugByName(gemName);
   
   if (!slug) {
