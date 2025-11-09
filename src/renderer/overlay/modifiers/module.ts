@@ -1979,7 +1979,7 @@ export function renderFilteredContent(data: any){
         </div>
         <div style="display:flex; flex-direction:column; align-items:center; gap:2px; flex-shrink:0;">
           <span style="font-size:0.625rem; color:var(--text-secondary); white-space:nowrap;">Quick:</span>
-          <button id="quickHomogenize" style="padding:3px 10px; font-size:0.688rem; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-primary); cursor:pointer; font-weight:600;">Homogenize</button>
+          <button id="quickHomogenize" style="padding:3px 10px; font-size:0.688rem; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-primary); cursor:pointer; font-weight:600;"  title="Include or exclude modifier tags currently on your item">Homogenize</button>
         </div>
       </div>
     </div>`;
