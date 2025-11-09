@@ -49,6 +49,8 @@ const historyPopoutDebugLogPath = path.join(app.getPath('userData'), 'history-po
 
 const OVERLAY_RELEASE_URL = 'https://github.com/XileHUD/poe_overlay/releases/latest';
 
+const isLinux = process.platform === 'linux';
+
 interface GithubReleaseInfo {
     version: string | null;
     url?: string;
@@ -184,6 +186,11 @@ async function checkOverlayUpdateStatus(currentVersion: string): Promise<Overlay
             url: OVERLAY_RELEASE_URL
         };
     }
+}
+
+// Ensure a stable app name early so Linux WM_CLASS matches our desktop entry (KDE taskbar icon)
+if (isLinux) {
+    try { app.setName('XileHUD'); } catch {}
 }
 
 // Configure Electron userData and Chromium caches to a writable directory before app is ready
@@ -1691,7 +1698,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             resizable: true, // allow height-only resize (width constrained below)
             transparent: true,
             show: false,
-            focusable: false,  // Start as non-focusable to avoid intercepting game input
+            focusable: isLinux ? true : false,  // Start as non-focusable on windows to avoid intercepting game input
             icon: windowIcon,
             // Critical for windowed fullscreen games: ensure overlay stays above game
             type: process.platform === 'win32' ? 'toolbar' : undefined
