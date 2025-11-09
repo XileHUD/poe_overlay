@@ -47,6 +47,13 @@ let currentOverlayVersionMode: OverlayVersionMode = 'poe2';
 let myModsFeatureEnabled: boolean = false;
 let myModsFeatureLoaded: boolean = false; // Track if we've loaded the setting
 
+// Side filter state (for Show/Hide Prefixes and Suffixes)
+let prefixVisibility: 'show' | 'hide' = 'show';
+let suffixVisibility: 'show' | 'hide' = 'show';
+
+// Homogenize state: 'none' | 'include' | 'exclude'
+let homogenizeMode: 'none' | 'include' | 'exclude' = 'none';
+
 // Cache for item matching to avoid re-computing on every render
 let lastItemModifiersHash: string = '';
 let lastMatchedSectionsCache: WeakMap<any, boolean> = new WeakMap();
@@ -314,6 +321,11 @@ function renderSection(section: any, domainId?: string){
   const hasItemMatches = mods.some((mod: any) => Boolean(mod?.__isOnItem));
   const sectionClasses = ['section-group', `domain-${section.domain}`];
   if (hasItemMatches) sectionClasses.push('has-my-mod');
+  
+  // Check if this section's side should be hidden
+  const shouldHideMods = (side === 'prefix' && prefixVisibility === 'hide') || 
+                         (side === 'suffix' && suffixVisibility === 'hide');
+  
   // Prefer an effective precomputed total if provided (post-filter recalculation)
   const totalWeight = typeof section._effectiveTotalWeight === 'number'
     ? section._effectiveTotalWeight
@@ -333,7 +345,7 @@ function renderSection(section: any, domainId?: string){
     </div>
     <div class="section-content" id="${sectionId}">
       <div class="mod-list">
-        ${mods.map((mod: any, modIndex: number) => {
+        ${shouldHideMods ? '' : mods.map((mod: any, modIndex: number) => {
           // Special handling for Eldritch mods with many tiers - show only first tier text
           const isEldritch = section.domain && (section.domain.toLowerCase().includes('eldritch_eater') || section.domain.toLowerCase().includes('eldritch_searing'));
           const hasManyTiers = mod.tiers && mod.tiers.length > 15; // Threshold for "many"
@@ -427,13 +439,13 @@ function renderSection(section: any, domainId?: string){
           </div>
         `;
         }).join('')}
-        <div class="total-row">
+        ${shouldHideMods ? '' : `<div class="total-row">
           <div class="total-text">Total</div>
           <div class="total-meta">
             <span class="total-summary-tag" style="background: var(--accent-blue); color: #fff;">${maxIlvl}</span>
             <span class="total-summary-tag weight">${totalWeight}</span>
           </div>
-        </div>
+        </div>`}
       </div>
     </div>
   </div>`;
@@ -1955,6 +1967,8 @@ export function renderFilteredContent(data: any){
           <button id="toggleMyMods" data-domain="myMods" style="padding:3px 10px; font-size:0.688rem; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-primary); cursor:pointer; font-weight:600; display:flex; align-items:center; justify-content:center;" title="Show only modifiers currently on your item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </button>
+          <button id="togglePrefixes" style="padding:3px 10px; font-size:0.688rem; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-primary); cursor:pointer; font-weight:600;">Prefixes</button>
+          <button id="toggleSuffixes" style="padding:3px 10px; font-size:0.688rem; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-primary); cursor:pointer; font-weight:600;">Suffixes</button>
         </div>
         <div style="display:flex; flex-wrap:wrap; gap:4px; justify-content:center; align-items:flex-start; flex:1;">
           ${sortedTags.map(t=>{
@@ -1962,6 +1976,10 @@ export function renderFilteredContent(data: any){
             const count = tagCounts[t] || 0;
             return `<div class="filter-tag${mode?' active':''}" data-tag="${t}" data-filter-mode="${mode}" data-count="${count}"></div>`;
           }).join('')}
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:2px; flex-shrink:0;">
+          <span style="font-size:0.625rem; color:var(--text-secondary); white-space:nowrap;">Quick:</span>
+          <button id="quickHomogenize" style="padding:3px 10px; font-size:0.688rem; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-primary); cursor:pointer; font-weight:600;"  title="Include or exclude modifier tags currently on your item">Homogenize</button>
         </div>
       </div>
     </div>`;
@@ -2114,6 +2132,11 @@ export function renderFilteredContent(data: any){
       
       filtersWrapper.querySelectorAll('.filter-tag').forEach(chip => {
         chip.addEventListener('click', () => {
+          // Reset homogenize mode when clicking any tag filter
+          if (homogenizeMode !== 'none') {
+            homogenizeMode = 'none';
+          }
+          
           // Cycle through states: none → include → exclude → none
           const currentMode = chip.getAttribute('data-filter-mode') || '';
           const tag = chip.getAttribute('data-tag') || '';
@@ -2142,6 +2165,109 @@ export function renderFilteredContent(data: any){
           if ((window as any).originalData) renderFilteredContent((window as any).originalData);
         });
       });
+      
+      // Quick filter buttons for showing/hiding prefixes and suffixes
+      const prefixesToggle = document.getElementById('togglePrefixes');
+      const suffixesToggle = document.getElementById('toggleSuffixes');
+      
+      if (prefixesToggle) {
+        prefixesToggle.addEventListener('click', () => {
+          prefixVisibility = prefixVisibility === 'show' ? 'hide' : 'show';
+          const isActive = prefixVisibility === 'show';
+          prefixesToggle.classList.toggle('active', isActive);
+          // Mirror My Mods button styling for active/inactive
+          (prefixesToggle as HTMLElement).style.background = isActive ? 'var(--accent-orange)' : 'var(--bg-tertiary)';
+          (prefixesToggle as HTMLElement).style.color = isActive ? '#1b1b1b' : 'var(--text-primary)';
+          if ((window as any).originalData) renderFilteredContent((window as any).originalData);
+        });
+      }
+
+      if (suffixesToggle) {
+        suffixesToggle.addEventListener('click', () => {
+          suffixVisibility = suffixVisibility === 'show' ? 'hide' : 'show';
+          const isActive = suffixVisibility === 'show';
+          suffixesToggle.classList.toggle('active', isActive);
+          (suffixesToggle as HTMLElement).style.background = isActive ? 'var(--accent-orange)' : 'var(--bg-tertiary)';
+          (suffixesToggle as HTMLElement).style.color = isActive ? '#1b1b1b' : 'var(--text-primary)';
+          if ((window as any).originalData) renderFilteredContent((window as any).originalData);
+        });
+      }
+      
+      // Homogenize button - selects/excludes all tags from "MY MOD" items
+      const quickHomogenize = document.getElementById('quickHomogenize');
+      if (quickHomogenize) {
+        quickHomogenize.addEventListener('click', () => {
+          // Cycle through states: none → include → exclude → none
+          if (homogenizeMode === 'none') {
+            homogenizeMode = 'include';
+          } else if (homogenizeMode === 'include') {
+            homogenizeMode = 'exclude';
+          } else {
+            homogenizeMode = 'none';
+          }
+          
+          // Update button styling
+          if (homogenizeMode === 'include') {
+            quickHomogenize.textContent = 'Homogenize';
+            quickHomogenize.style.background = 'var(--accent-blue)';
+            quickHomogenize.style.color = '#fff';
+          } else if (homogenizeMode === 'exclude') {
+            quickHomogenize.textContent = 'NOT Homogenize';
+            quickHomogenize.style.background = 'rgba(200,60,60,0.85)';
+            quickHomogenize.style.color = '#fff';
+          } else {
+            quickHomogenize.textContent = 'Homogenize';
+            quickHomogenize.style.background = 'var(--bg-tertiary)';
+            quickHomogenize.style.color = 'var(--text-primary)';
+          }
+          
+          // Collect all tags from MY MOD items
+          const myModTags = new Set<string>();
+          const sections = Array.isArray((window as any).originalData?.modifiers) 
+            ? (window as any).originalData.modifiers 
+            : [];
+          
+          sections.forEach((section: any) => {
+            if (!section || !Array.isArray(section.mods)) return;
+            section.mods.forEach((mod: any) => {
+              if (!mod || !(mod as any).__isOnItem) return;
+              
+              // Collect explicit tags
+              const explicit = Array.isArray(mod.tags) ? mod.tags : [];
+              // Collect derived tags
+              const derived = deriveTagsFromMod(mod);
+              const allTags = [...explicit, ...derived];
+              
+              allTags.forEach(tag => myModTags.add(tag));
+            });
+          });
+          
+          // Apply the tags to filter chips
+          const filtersWrapper = document.getElementById('modFiltersWrapper');
+          if (filtersWrapper) {
+            filtersWrapper.querySelectorAll('.filter-tag').forEach(chip => {
+              const tag = chip.getAttribute('data-tag') || '';
+              if (!tag) return;
+              
+              if (myModTags.has(tag)) {
+                // Set to include or exclude based on homogenize mode
+                if (homogenizeMode === 'include') {
+                  chip.setAttribute('data-filter-mode', 'include');
+                } else if (homogenizeMode === 'exclude') {
+                  chip.setAttribute('data-filter-mode', 'exclude');
+                } else {
+                  chip.setAttribute('data-filter-mode', '');
+                }
+              } else if (homogenizeMode !== 'none') {
+                // Clear non-MY MOD tags when homogenize is active
+                chip.setAttribute('data-filter-mode', '');
+              }
+            });
+          }
+          
+          if ((window as any).originalData) renderFilteredContent((window as any).originalData);
+        });
+      }
     } catch {}
   }
 
@@ -2167,6 +2293,44 @@ export function renderFilteredContent(data: any){
       el.style.color = isActive ? '#fff' : 'var(--text-primary)';
       el.style.cursor = 'pointer';
     });
+    
+    // Update Quick filter button states on every render
+    const prefixesToggle = document.getElementById('togglePrefixes') as HTMLButtonElement | null;
+    const suffixesToggle = document.getElementById('toggleSuffixes') as HTMLButtonElement | null;
+    
+    if (prefixesToggle) {
+      const isActive = prefixVisibility === 'show';
+      prefixesToggle.classList.toggle('active', isActive);
+      prefixesToggle.style.background = isActive ? 'var(--accent-orange)' : 'var(--bg-tertiary)';
+      prefixesToggle.style.color = isActive ? '#1b1b1b' : 'var(--text-primary)';
+      prefixesToggle.textContent = 'Prefixes';
+    }
+
+    if (suffixesToggle) {
+      const isActive = suffixVisibility === 'show';
+      suffixesToggle.classList.toggle('active', isActive);
+      suffixesToggle.style.background = isActive ? 'var(--accent-orange)' : 'var(--bg-tertiary)';
+      suffixesToggle.style.color = isActive ? '#1b1b1b' : 'var(--text-primary)';
+      suffixesToggle.textContent = 'Suffixes';
+    }
+    
+    // Update Homogenize button state
+    const quickHomogenize = document.getElementById('quickHomogenize') as HTMLButtonElement | null;
+    if (quickHomogenize) {
+      if (homogenizeMode === 'include') {
+        quickHomogenize.textContent = 'Homogenize';
+        quickHomogenize.style.background = 'var(--accent-blue)';
+        quickHomogenize.style.color = '#fff';
+      } else if (homogenizeMode === 'exclude') {
+        quickHomogenize.textContent = 'NOT Homogenize';
+        quickHomogenize.style.background = 'rgba(200,60,60,0.85)';
+        quickHomogenize.style.color = '#fff';
+      } else {
+        quickHomogenize.textContent = 'Homogenize';
+        quickHomogenize.style.background = 'var(--bg-tertiary)';
+        quickHomogenize.style.color = 'var(--text-primary)';
+      }
+    }
     
     // Update My Mods button state on every render
     const myModsBtn = document.getElementById('toggleMyMods') as HTMLButtonElement | null;
@@ -2467,6 +2631,13 @@ export function clearAllFilters(){
       }
     }
   });
+  
+  // Reset homogenize mode
+  homogenizeMode = 'none';
+  
+  // Reset prefix and suffix visibility
+  prefixVisibility = 'show';
+  suffixVisibility = 'show';
   
   if((window as any).originalData) renderFilteredContent((window as any).originalData);
 }
