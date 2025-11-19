@@ -749,14 +749,18 @@
         const isPoe1 = overlayVersionMode === 'poe1';
         const primaryToggles = isPoe1 ? POE1_PRIMARY_TOGGLES : POE2_TOGGLES;
         const overflowToggles = isPoe1 ? POE1_OVERFLOW_TOGGLES : [];
+        const preferredDefaultId = isPoe1 ? 'toggleNormal' : 'toggleBase';
+        const defaultToggleId = primaryToggles.some(toggle => toggle.id === preferredDefaultId)
+            ? preferredDefaultId
+            : (primaryToggles[0]?.id || '');
 
         allDomainButtonIds = [];
 
         // Render primary toggles
-        primaryToggles.forEach((toggle, index) => {
+        primaryToggles.forEach((toggle) => {
             const btn = document.createElement('button');
             btn.id = toggle.id;
-            btn.className = 'domain-toggle' + (index === 0 ? ' active' : '');
+            btn.className = 'domain-toggle' + (toggle.id === defaultToggleId ? ' active' : '');
             btn.type = 'button';
             // Store domain as JSON if it's an array
             btn.dataset.domain = Array.isArray(toggle.domain) ? JSON.stringify(toggle.domain) : toggle.domain;
@@ -843,8 +847,9 @@
             return btn && btn.classList.contains('active');
         });
         if (!hasActive) {
-            const toggleAll = document.getElementById('toggleAll');
-            if (toggleAll) toggleAll.classList.add('active');
+            const fallbackId = defaultToggleId || 'toggleAll';
+            const fallbackBtn = document.getElementById(fallbackId) || document.getElementById('toggleAll');
+            if (fallbackBtn) fallbackBtn.classList.add('active');
         }
     }
 
@@ -3115,14 +3120,16 @@
             if (clear) clear.addEventListener('click', () => {
                 const s = document.getElementById('search-input'); if (s) s.value = '';
                 try { window.OverlayModifiers?.clearAllFilters?.(); } catch {}
-                // Auto-select "All" toggle
-                const toggleAll = document.getElementById('toggleAll');
-                if (toggleAll && !toggleAll.classList.contains('active')) {
+                // Auto-select default domain toggle (Normal/Base)
+                const preferredDefaultId = overlayVersionMode === 'poe1' ? 'toggleNormal' : 'toggleBase';
+                const defaultId = allDomainButtonIds.includes(preferredDefaultId) ? preferredDefaultId : 'toggleAll';
+                const defaultBtn = document.getElementById(defaultId) || document.getElementById('toggleAll');
+                if (defaultBtn && !defaultBtn.classList.contains('active')) {
                     allDomainButtonIds.forEach(id => {
                         const btn = document.getElementById(id);
                         if (btn) btn.classList.remove('active');
                     });
-                    toggleAll.classList.add('active');
+                    defaultBtn.classList.add('active');
                 }
                 if (window.originalData) try { renderFilteredContent(window.originalData); } catch {}
             });
@@ -4418,6 +4425,16 @@ function switchCategory(){
     }
     // Store current category globally for use in render functions
     window.currentModifierCategory = cat;
+    
+    // Clear manual selections when switching categories
+    try {
+        if (window.OverlayModifiers?.clearManualSelections) {
+            window.OverlayModifiers.clearManualSelections();
+        }
+    } catch (err) {
+        console.warn('Failed to clear manual selections:', err);
+    }
+    
     // Ensure we're in Modifiers view; hide other panels and menus
     try {
         setActiveTab('tabModifier');

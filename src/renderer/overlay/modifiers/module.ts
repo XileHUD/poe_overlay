@@ -47,6 +47,15 @@ let currentOverlayVersionMode: OverlayVersionMode = 'poe2';
 let myModsFeatureEnabled: boolean = false;
 let myModsFeatureLoaded: boolean = false; // Track if we've loaded the setting
 
+// Homogenize state: 'none' (off) | 'include' (on) for PoE2 quick select
+let homogenizeMode: 'none' | 'include' = 'none';
+let lastManualTagFilterMode: 'and' | 'or' = 'and';
+let tagFilterModeBeforeHomogenize: 'and' | 'or' = 'and';
+let manualSelectionMode: boolean = false;
+const manualSelectedModKeys: Set<string> = new Set();
+let manualSelectionKeyCounter = 0;
+let manualSelectMessageTimeout: number | null = null;
+
 // Cache for item matching to avoid re-computing on every render
 let lastItemModifiersHash: string = '';
 let lastMatchedSectionsCache: WeakMap<any, boolean> = new WeakMap();
@@ -304,6 +313,167 @@ function renderTierBadge(mod: any): string {
   return `<span class="mod-badge badge-tier"${tooltip}>T${displayTier}</span>`;
 }
 
+function getModSelectionKey(section: any, mod: any, fallbackIndex?: number): string {
+  if (mod && typeof mod.__manualSelectionKey === 'string') {
+    return mod.__manualSelectionKey;
+  }
+  const category = (window as any).currentModifierCategory || 'unknown';
+  const domain = section?.domain ?? 'unknown';
+  const side = section?.side ?? section?.type ?? 'none';
+  const identifier = mod?.id ?? mod?.hash ?? mod?.group ?? mod?.text_plain ?? mod?.text ?? `idx-${fallbackIndex ?? manualSelectionKeyCounter++}`;
+  const key = `${category}|${domain}|${side}|${identifier}`;
+  if (mod) {
+    mod.__manualSelectionKey = key;
+  }
+  return key;
+}
+
+function applyManualSelectionsToSections(sections: any[] | undefined): void {
+  if (!Array.isArray(sections)) return;
+  let appliedCount = 0;
+  sections.forEach(section => {
+    if (!section || !Array.isArray(section.mods)) return;
+    section.mods.forEach((mod: any, index: number) => {
+      const key = getModSelectionKey(section, mod, index);
+      const isManuallySelected = manualSelectedModKeys.has(key);
+      const hasClipboardMatch = Boolean(mod?.__clipboardMatch);
+
+      // Clear old manual selection flag
+      if (mod && Object.prototype.hasOwnProperty.call(mod, '__manualSelection')) {
+        delete mod.__manualSelection;
+      }
+
+      // Clear __isOnItem only if it's not from clipboard AND not manually selected
+      if (!hasClipboardMatch && !isManuallySelected && Object.prototype.hasOwnProperty.call(mod || {}, '__isOnItem')) {
+        delete mod.__isOnItem;
+      }
+
+      // Set __isOnItem for clipboard matches
+      if (hasClipboardMatch) {
+        mod.__isOnItem = true;
+      }
+
+      // Set __isOnItem and __manualSelection for manually selected mods
+      if (isManuallySelected) {
+        mod.__isOnItem = true;
+        mod.__manualSelection = true;
+        appliedCount++;
+      }
+    });
+  });
+  if (appliedCount > 0) {
+    console.log('[ManualSelect] Applied', appliedCount, 'manual selections to sections');
+  }
+}
+
+function hasAnyManualSelections(): boolean {
+  return manualSelectedModKeys.size > 0;
+}
+
+export function clearManualSelections(): void {
+  manualSelectedModKeys.clear();
+  manualSelectionMode = false;
+  const manualSelectBtn = document.getElementById('manualSelectMods') as HTMLButtonElement | null;
+  if (manualSelectBtn) {
+    manualSelectBtn.classList.remove('active');
+    manualSelectBtn.textContent = 'Select Mods';
+    manualSelectBtn.style.background = 'var(--bg-tertiary)';
+    manualSelectBtn.style.color = 'var(--text-primary)';
+  }
+  syncManualSelectionHint();
+  hideManualSelectionMessage();
+}
+
+function handleManualSelectionClick(modItem: HTMLElement | null): boolean {
+  if (!manualSelectionMode || !modItem) return false;
+  const key = modItem.getAttribute('data-selection-key');
+  console.log('[ManualSelect] Click received. Key:', key, 'Mode:', manualSelectionMode);
+  if (!key) {
+    console.warn('[ManualSelect] No selection key found on mod element');
+    return false;
+  }
+  const wasSelected = manualSelectedModKeys.has(key);
+  if (wasSelected) {
+    manualSelectedModKeys.delete(key);
+    console.log('[ManualSelect] Deselected key:', key, 'Remaining:', manualSelectedModKeys.size);
+  } else {
+    manualSelectedModKeys.add(key);
+    console.log('[ManualSelect] Selected key:', key, 'Total:', manualSelectedModKeys.size);
+  }
+  hideManualSelectionMessage();
+  if ((window as any).originalData) {
+    console.log('[ManualSelect] Triggering re-render');
+    renderFilteredContent((window as any).originalData);
+  }
+  return true;
+}
+
+function getCurrentTagFilterMode(): 'and' | 'or' {
+  if (typeof document === 'undefined') return lastManualTagFilterMode;
+  const btn = document.getElementById('tagFilterModeToggle');
+  const mode = (btn?.getAttribute('data-mode') as 'and' | 'or') || lastManualTagFilterMode || 'and';
+  return mode === 'or' ? 'or' : 'and';
+}
+
+function setTagFilterModeUI(mode: 'and' | 'or', options?: { rememberManual?: boolean }): void {
+  if (typeof document === 'undefined') {
+    if (options?.rememberManual !== false) lastManualTagFilterMode = mode;
+    return;
+  }
+  const btn = document.getElementById('tagFilterModeToggle') as HTMLButtonElement | null;
+  if (!btn) return;
+  btn.setAttribute('data-mode', mode);
+  btn.textContent = mode.toUpperCase();
+  btn.style.background = mode === 'or' ? 'var(--accent-blue)' : 'var(--bg-tertiary)';
+  btn.style.color = mode === 'or' ? '#fff' : 'var(--text-primary)';
+  if (options?.rememberManual !== false) {
+    lastManualTagFilterMode = mode;
+  }
+}
+
+function setTagFilterToggleDisabled(disabled: boolean, reason?: string): void {
+  if (typeof document === 'undefined') return;
+  const btn = document.getElementById('tagFilterModeToggle') as HTMLButtonElement | null;
+  if (!btn) return;
+  btn.disabled = disabled;
+  btn.style.opacity = disabled ? '0.45' : '1';
+  btn.style.cursor = disabled ? 'not-allowed' : 'pointer';
+  if (reason) btn.title = reason;
+  else btn.removeAttribute('title');
+}
+
+function showManualSelectionMessage(message: string, durationMs = 3000): void {
+  if (typeof document === 'undefined') return;
+  const el = document.getElementById('manualSelectMessage');
+  if (!el) return;
+  el.textContent = message;
+  el.style.display = 'block';
+  if (manualSelectMessageTimeout) {
+    clearTimeout(manualSelectMessageTimeout);
+  }
+  manualSelectMessageTimeout = window.setTimeout(() => {
+    el.style.display = 'none';
+    manualSelectMessageTimeout = null;
+  }, durationMs);
+}
+
+function hideManualSelectionMessage(): void {
+  if (typeof document === 'undefined') return;
+  const el = document.getElementById('manualSelectMessage');
+  if (el) el.style.display = 'none';
+  if (manualSelectMessageTimeout) {
+    clearTimeout(manualSelectMessageTimeout);
+    manualSelectMessageTimeout = null;
+  }
+}
+
+function syncManualSelectionHint(): void {
+  if (typeof document === 'undefined') return;
+  const hint = document.getElementById('manualSelectHint');
+  if (!hint) return;
+  hint.style.display = manualSelectionMode ? 'block' : 'none';
+}
+
 // --- Helpers for multimod rendering ---
 
 function renderSection(section: any, domainId?: string){
@@ -340,6 +510,7 @@ function renderSection(section: any, domainId?: string){
           
           let displayText = mod.text || mod.text_plain;
           let variantBadge = '';
+          const selectionKey = getModSelectionKey(section, mod, modIndex);
           const onItem = Boolean((mod as any).__isOnItem);
           const matchCanonical = (mod as any).__itemMatchCanonical ? String((mod as any).__itemMatchCanonical) : '';
           const modClasses = ['mod-item'];
@@ -351,6 +522,7 @@ function renderSection(section: any, domainId?: string){
           ];
           if (onItem) modAttributes.push('data-on-item="true"');
           if (matchCanonical) modAttributes.push(`data-item-canonical="${escapeHtml(matchCanonical)}"`);
+          if (selectionKey) modAttributes.push(`data-selection-key="${escapeHtml(selectionKey)}"`);
           
           if (isEldritch && hasManyTiers && mod.tiers.length > 0) {
             // Show only first tier's text for Eldritch mods with many variants
@@ -751,8 +923,9 @@ function applyItemMatchesToSections(sections: any[] | undefined, catalog: ItemMo
       if (!section || !Array.isArray(section.mods)) return;
       section.mods.forEach((mod: any) => {
         if (!mod) return;
-        if (Object.prototype.hasOwnProperty.call(mod, '__isOnItem')) delete mod.__isOnItem;
-        if (Object.prototype.hasOwnProperty.call(mod, '__itemMatchCanonical')) delete mod.__itemMatchCanonical;
+          if (Object.prototype.hasOwnProperty.call(mod, '__isOnItem')) delete mod.__isOnItem;
+          if (Object.prototype.hasOwnProperty.call(mod, '__itemMatchCanonical')) delete mod.__itemMatchCanonical;
+          if (Object.prototype.hasOwnProperty.call(mod, '__clipboardMatch')) delete mod.__clipboardMatch;
       });
     });
     return 0;
@@ -774,6 +947,7 @@ function applyItemMatchesToSections(sections: any[] | undefined, catalog: ItemMo
 
       if (Object.prototype.hasOwnProperty.call(mod, '__isOnItem')) delete mod.__isOnItem;
       if (Object.prototype.hasOwnProperty.call(mod, '__itemMatchCanonical')) delete mod.__itemMatchCanonical;
+        if (Object.prototype.hasOwnProperty.call(mod, '__clipboardMatch')) delete mod.__clipboardMatch;
 
       // Early exit: if we've matched all item mods, no need to continue
       if (matchCount >= catalog.total) return;
@@ -786,9 +960,10 @@ function applyItemMatchesToSections(sections: any[] | undefined, catalog: ItemMo
       const match = resolveItemMatch(candidates, side, catalog, usage);
       if (!match) return;
 
-      mod.__isOnItem = true;
-      mod.__itemMatchCanonical = match;
-      matchCount += 1;
+  mod.__isOnItem = true;
+  mod.__itemMatchCanonical = match;
+  mod.__clipboardMatch = true;
+  matchCount += 1;
     });
   });
 
@@ -1524,6 +1699,7 @@ export function renderFilteredContent(data: any){
   const itemCatalog = buildItemModCatalog(clipboardLines);
   const catalogForMatching = itemCatalog.total > 0 ? itemCatalog : null;
   const baseSections = Array.isArray(data?.modifiers) ? data.modifiers : [];
+  applyManualSelectionsToSections(baseSections);
   
   // Collect filter tags by mode (include/exclude)
   const includeTags: string[] = [];
@@ -1551,6 +1727,8 @@ export function renderFilteredContent(data: any){
   const allToggles = getDomainToggles(gameVersion);
   const myModsButton = document.getElementById('toggleMyMods') as HTMLButtonElement | null;
   const hasClipboardMods = itemCatalog.total > 0;
+  const hasManualSelections = hasAnyManualSelections();
+  const hasMyModSources = hasClipboardMods || hasManualSelections;
   
   // Check for My Mods toggle first (in filters section)
   // But only allow it if the feature is enabled
@@ -1572,7 +1750,7 @@ export function renderFilteredContent(data: any){
   // Default to 'all' if no button is active
   let activeDomain: any = myModsFilterActive ? 'myMods' : (activeToggle ? activeToggle.domain : 'all');
   // Fallback to 'all' if My Mods is active but either feature is disabled or no items in clipboard
-  if (((myModsFeatureLoaded && !myModsFeatureEnabled) || !hasClipboardMods) && activeDomain === 'myMods') {
+  if (((myModsFeatureLoaded && !myModsFeatureEnabled) || !hasMyModSources) && activeDomain === 'myMods') {
     activeDomain = 'all';
     if (myModsButton) {
       myModsButton.classList.remove('active');
@@ -1681,13 +1859,16 @@ export function renderFilteredContent(data: any){
       }
     }
   } else {
-    // No item to match - clear all flags
+    // No item to match - clear all clipboard match flags BUT preserve manual selections
     lastItemModifiersHash = '';
     domainFilteredSections.forEach(section => {
       if (!section || !Array.isArray(section.mods)) return;
       section.mods.forEach((mod: any) => {
         if (!mod) return;
-        if (Object.prototype.hasOwnProperty.call(mod, '__isOnItem')) delete mod.__isOnItem;
+        // Only clear __isOnItem if it's NOT a manual selection
+        if (Object.prototype.hasOwnProperty.call(mod, '__isOnItem') && !mod.__manualSelection) {
+          delete mod.__isOnItem;
+        }
         if (Object.prototype.hasOwnProperty.call(mod, '__itemMatchCanonical')) delete mod.__itemMatchCanonical;
       });
     });
@@ -1972,6 +2153,13 @@ export function renderFilteredContent(data: any){
             return `<div class="filter-tag${mode?' active':''}" data-tag="${t}" data-filter-mode="${mode}" data-count="${count}"></div>`;
           }).join('')}
         </div>
+        ${currentOverlayVersionMode === 'poe2' ? `<div style="display:flex; flex-direction:column; align-items:center; gap:4px; flex-shrink:0; min-width:120px;">
+          <span style="font-size:0.625rem; color:var(--text-secondary); white-space:nowrap;">Quick:</span>
+          <button id="quickHomogenize" style="padding:3px 10px; font-size:0.688rem; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-primary); cursor:pointer; font-weight:600; width:100%;" title="Include all tags from modifiers on your item">Homogenize</button>
+          <button id="manualSelectMods" style="padding:3px 10px; font-size:0.688rem; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-tertiary); color:var(--text-primary); cursor:pointer; font-weight:600; width:100%;" title="Manually mark modifiers as on your item">Select Mods</button>
+          <span id="manualSelectHint" style="font-size:0.625rem; color:var(--text-secondary); display:none; text-align:center;">Click mod rows to toggle</span>
+          <span id="manualSelectMessage" style="font-size:0.625rem; color:var(--accent-orange); display:none; text-align:center;"></span>
+        </div>` : ''}
       </div>
     </div>`;
 
@@ -1982,7 +2170,9 @@ export function renderFilteredContent(data: any){
   const filterSignature = JSON.stringify({
     tags: sortedTags,
     attr: attrButtons,
-    counts: sortedTags.map(tag => tagCounts[tag] || 0)
+    counts: sortedTags.map(tag => tagCounts[tag] || 0),
+    version: currentOverlayVersionMode,
+    hasMyModSources: Boolean(hasMyModSources)
   });
 
   if (!filtersWrapper || !resultsWrapper) {
@@ -2010,12 +2200,14 @@ export function renderFilteredContent(data: any){
       const modeToggle = document.getElementById('tagFilterModeToggle');
       if (modeToggle) {
         modeToggle.addEventListener('click', () => {
-          const currentMode = modeToggle.getAttribute('data-mode') || 'and';
+          if (homogenizeMode !== 'none') {
+            showManualSelectionMessage('Homogenize locks OR mode');
+            return;
+          }
+          const currentMode = getCurrentTagFilterMode();
           const nextMode = currentMode === 'and' ? 'or' : 'and';
-          modeToggle.setAttribute('data-mode', nextMode);
-          modeToggle.textContent = nextMode.toUpperCase();
-          modeToggle.style.background = nextMode === 'or' ? 'var(--accent-blue)' : 'var(--bg-tertiary)';
-          modeToggle.style.color = nextMode === 'or' ? '#fff' : 'var(--text-primary)';
+          setTagFilterModeUI(nextMode);
+          hideManualSelectionMessage();
           if ((window as any).originalData) renderFilteredContent((window as any).originalData);
         });
       }
@@ -2038,11 +2230,11 @@ export function renderFilteredContent(data: any){
               myModsToggle.style.background = 'var(--bg-tertiary)';
               myModsToggle.style.color = 'var(--text-primary)';
             }
-          } else if (!hasClipboardMods) {
+          } else if (!hasMyModSources) {
             (myModsToggle as HTMLButtonElement).disabled = true;
             myModsToggle.style.opacity = '0.45';
             myModsToggle.style.cursor = 'not-allowed';
-            myModsToggle.title = 'Copy an item to clipboard to use this feature';
+            myModsToggle.title = 'Copy an item or manually select mods to use this feature';
           } else {
             (myModsToggle as HTMLButtonElement).disabled = false;
             myModsToggle.style.opacity = '1';
@@ -2123,6 +2315,23 @@ export function renderFilteredContent(data: any){
       
       filtersWrapper.querySelectorAll('.filter-tag').forEach(chip => {
         chip.addEventListener('click', () => {
+          // Reset homogenize mode when clicking any tag filter
+          if (homogenizeMode !== 'none') {
+            filtersWrapper.querySelectorAll('.filter-tag').forEach(other => {
+              other.setAttribute('data-filter-mode', '');
+            });
+            homogenizeMode = 'none';
+            setTagFilterModeUI(tagFilterModeBeforeHomogenize);
+            setTagFilterToggleDisabled(false);
+            hideManualSelectionMessage();
+            const quickHomogenizeBtn = document.getElementById('quickHomogenize') as HTMLButtonElement | null;
+            if (quickHomogenizeBtn) {
+              quickHomogenizeBtn.textContent = 'Homogenize';
+              quickHomogenizeBtn.style.background = 'var(--bg-tertiary)';
+              quickHomogenizeBtn.style.color = 'var(--text-primary)';
+            }
+          }
+          
           // Cycle through states: none → include → exclude → none
           const currentMode = chip.getAttribute('data-filter-mode') || '';
           const tag = chip.getAttribute('data-tag') || '';
@@ -2151,6 +2360,100 @@ export function renderFilteredContent(data: any){
           if ((window as any).originalData) renderFilteredContent((window as any).originalData);
         });
       });
+
+      // Homogenize button - selects/excludes all tags from "MY MOD" items (PoE2 only)
+      if (currentOverlayVersionMode === 'poe2') {
+        const quickHomogenize = document.getElementById('quickHomogenize');
+        if (quickHomogenize) {
+          quickHomogenize.addEventListener('click', () => {
+            const activating = homogenizeMode === 'none';
+            if (activating) {
+              if (!hasMyModSources) {
+                showManualSelectionMessage('Please select mods first');
+                return;
+              }
+              hideManualSelectionMessage();
+              homogenizeMode = 'include';
+              tagFilterModeBeforeHomogenize = getCurrentTagFilterMode();
+              setTagFilterModeUI('or', { rememberManual: false });
+              setTagFilterToggleDisabled(true, 'Homogenize enforces OR mode');
+            } else {
+              homogenizeMode = 'none';
+              hideManualSelectionMessage();
+              setTagFilterModeUI(tagFilterModeBeforeHomogenize);
+              setTagFilterToggleDisabled(false);
+            }
+
+            // Update button styling
+            if (homogenizeMode === 'include') {
+              quickHomogenize.textContent = 'Homogenize';
+              (quickHomogenize as HTMLElement).style.background = 'var(--accent-blue)';
+              (quickHomogenize as HTMLElement).style.color = '#fff';
+            } else {
+              quickHomogenize.textContent = 'Homogenize';
+              (quickHomogenize as HTMLElement).style.background = 'var(--bg-tertiary)';
+              (quickHomogenize as HTMLElement).style.color = 'var(--text-primary)';
+            }
+
+            // Collect all tags from MY MOD items
+            const myModTags = new Set<string>();
+            const sections = Array.isArray((window as any).originalData?.modifiers)  
+              ? (window as any).originalData.modifiers  
+              : [];
+
+            sections.forEach((section: any) => {
+              if (!section || !Array.isArray(section.mods)) return;
+              section.mods.forEach((mod: any) => {
+                if (!mod || !(mod as any).__isOnItem) return;
+
+                // Collect explicit tags
+                const explicit = Array.isArray(mod.tags) ? mod.tags : [];
+                // Collect derived tags
+                const derived = deriveTagsFromMod(mod);
+                const allTags = [...explicit, ...derived];
+
+                allTags.forEach(tag => myModTags.add(tag));
+              });
+            });
+
+            // Apply the tags to filter chips
+            if (filtersWrapper) {
+              filtersWrapper.querySelectorAll('.filter-tag').forEach(chip => {
+                const tag = chip.getAttribute('data-tag') || '';
+                if (!tag) return;
+
+                if (myModTags.has(tag)) {
+                  // Set to include when homogenize is active, otherwise clear
+                  if (homogenizeMode === 'include') {
+                    chip.setAttribute('data-filter-mode', 'include');
+                  } else {
+                    chip.setAttribute('data-filter-mode', '');
+                  }
+                } else if (homogenizeMode !== 'none') {
+                  // Clear non-MY MOD tags when homogenize is active
+                  chip.setAttribute('data-filter-mode', '');
+                }
+              });
+            }
+
+            if ((window as any).originalData) renderFilteredContent((window as any).originalData);
+          });
+        }
+
+        const manualSelectBtn = document.getElementById('manualSelectMods');
+        if (manualSelectBtn) {
+          manualSelectBtn.addEventListener('click', () => {
+            manualSelectionMode = !manualSelectionMode;
+            manualSelectBtn.classList.toggle('active', manualSelectionMode);
+            manualSelectBtn.textContent = manualSelectionMode ? 'Done Selecting' : 'Select Mods';
+            manualSelectBtn.style.background = manualSelectionMode ? 'var(--accent-orange)' : 'var(--bg-tertiary)';
+            manualSelectBtn.style.color = manualSelectionMode ? '#1b1b1b' : 'var(--text-primary)';
+            manualSelectBtn.title = manualSelectionMode ? 'Click mod rows to add/remove MY MOD markers' : 'Manually mark modifiers as on your item';
+            syncManualSelectionHint();
+            hideManualSelectionMessage();
+          });
+        }
+      }
     } catch {}
   }
 
@@ -2194,12 +2497,12 @@ export function renderFilteredContent(data: any){
           myModsBtn.style.background = 'var(--bg-tertiary)';
           myModsBtn.style.color = 'var(--text-primary)';
         }
-      } else if (!hasClipboardMods) {
+      } else if (!hasMyModSources) {
         // Feature enabled (or not loaded yet) but no clipboard item parsed yet
         myModsBtn.disabled = true;
         myModsBtn.style.opacity = '0.45';
         myModsBtn.style.cursor = 'not-allowed';
-        myModsBtn.title = 'Copy an item to clipboard to use this feature';
+        myModsBtn.title = 'Copy an item or manually select mods to use this feature';
         if (isActive) {
           myModsBtn.classList.remove('active');
           myModsBtn.style.background = 'var(--bg-tertiary)';
@@ -2211,6 +2514,42 @@ export function renderFilteredContent(data: any){
         myModsBtn.style.opacity = '1';
         myModsBtn.style.cursor = 'pointer';
         myModsBtn.title = 'Show only modifiers currently on your item';
+      }
+    }
+
+    // Update Homogenize button state on every render (PoE2 only)
+    if (currentOverlayVersionMode === 'poe2') {
+      const quickHomogenize = document.getElementById('quickHomogenize') as HTMLButtonElement | null;
+      if (quickHomogenize) {
+        if (homogenizeMode === 'include') {
+          quickHomogenize.textContent = 'Homogenize';
+          quickHomogenize.style.background = 'var(--accent-blue)';
+          quickHomogenize.style.color = '#fff';
+        } else {
+          quickHomogenize.textContent = 'Homogenize';
+          quickHomogenize.style.background = 'var(--bg-tertiary)';
+          quickHomogenize.style.color = 'var(--text-primary)';
+        }
+      }
+
+      const manualSelectBtn = document.getElementById('manualSelectMods') as HTMLButtonElement | null;
+      if (manualSelectBtn) {
+        manualSelectBtn.classList.toggle('active', manualSelectionMode);
+        manualSelectBtn.textContent = manualSelectionMode ? 'Done Selecting' : 'Select Mods';
+        manualSelectBtn.style.background = manualSelectionMode ? 'var(--accent-orange)' : 'var(--bg-tertiary)';
+        manualSelectBtn.style.color = manualSelectionMode ? '#1b1b1b' : 'var(--text-primary)';
+        manualSelectBtn.title = manualSelectionMode ? 'Click mod rows to add/remove MY MOD markers' : 'Manually mark modifiers as on your item';
+        syncManualSelectionHint();
+      }
+    }
+
+    const tagModeBtn = document.getElementById('tagFilterModeToggle') as HTMLButtonElement | null;
+    if (tagModeBtn) {
+      if (homogenizeMode !== 'none') {
+        setTagFilterToggleDisabled(true, 'Homogenize enforces OR mode');
+      } else {
+        setTagFilterToggleDisabled(false);
+        tagModeBtn.title = 'Toggle between AND/OR filter logic';
       }
     }
   } catch {}
@@ -2261,6 +2600,27 @@ export function renderFilteredContent(data: any){
   };
 
   ensurePinDelegation();
+
+  const ensureManualSelectionDelegation = () => {
+    const marker = '__manualSelectDelegateBound';
+    if ((resultsWrapper as any)[marker]) return;
+    resultsWrapper.addEventListener('click', (event) => {
+      if (!manualSelectionMode) return;
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+      const modItem = target.closest('.mod-item') as HTMLElement | null;
+      if (!modItem) return;
+      const handled = handleManualSelectionClick(modItem);
+      if (handled) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+      }
+    }, true);
+    (resultsWrapper as any)[marker] = true;
+  };
+
+  ensureManualSelectionDelegation();
 
   const buildDomainId = (domain: string) => `domain-${String(domain ?? 'other')}`.replace(/[^a-zA-Z0-9_-]+/g, '-');
 
@@ -2331,13 +2691,13 @@ export function renderFilteredContent(data: any){
           const featureDisabled = (myModsFeatureLoaded && !myModsFeatureEnabled);
           if (!featureDisabled) {
             const hasRenderedMyMods = !!resultsWrapper.querySelector('[data-on-item="true"]');
-            const enable = hasRenderedMyMods || (typeof hasClipboardMods === 'boolean' ? hasClipboardMods : false);
+            const enable = hasRenderedMyMods || (typeof hasMyModSources === 'boolean' ? hasMyModSources : false);
             myModsBtn.disabled = !enable;
             myModsBtn.style.opacity = enable ? '1' : '0.45';
             myModsBtn.style.cursor = enable ? 'pointer' : 'not-allowed';
             myModsBtn.title = enable
               ? 'Show only modifiers currently on your item'
-              : (hasClipboardMods ? 'No matching modifiers found for this item' : 'Copy an item to clipboard to use this feature');
+              : (hasMyModSources ? 'No matching modifiers found for this item' : 'Copy an item or manually select mods to use this feature');
           }
         }
       } catch {}
@@ -2352,13 +2712,13 @@ export function renderFilteredContent(data: any){
       const featureDisabled = (myModsFeatureLoaded && !myModsFeatureEnabled);
       if (featureDisabled) return; // respect explicit OFF
       const hasRenderedMyMods = !!resultsWrapper.querySelector('[data-on-item="true"]');
-      const enable = hasRenderedMyMods || (typeof hasClipboardMods === 'boolean' ? hasClipboardMods : false);
+      const enable = hasRenderedMyMods || (typeof hasMyModSources === 'boolean' ? hasMyModSources : false);
       myModsBtn.disabled = !enable;
       myModsBtn.style.opacity = enable ? '1' : '0.45';
       myModsBtn.style.cursor = enable ? 'pointer' : 'not-allowed';
       myModsBtn.title = enable
         ? 'Show only modifiers currently on your item'
-        : (hasClipboardMods ? 'No matching modifiers found for this item' : 'Copy an item to clipboard to use this feature');
+        : (hasMyModSources ? 'No matching modifiers found for this item' : 'Copy an item or manually select mods to use this feature');
     });
   } catch {}
 }
@@ -2455,27 +2815,41 @@ export function clearAllFilters(){
   // Clear attribute filters
   document.querySelectorAll('.attribute-btn.active').forEach(btn=> btn.classList.remove('active'));
   
-  // Reset tag filter mode to AND
-  const tagFilterModeToggle = document.getElementById('tagFilterModeToggle');
-  if (tagFilterModeToggle) {
-    tagFilterModeToggle.setAttribute('data-mode', 'and');
-    tagFilterModeToggle.textContent = 'AND';
-  }
+  // Reset tag filter mode to last manual state
+  setTagFilterModeUI(lastManualTagFilterMode);
+  setTagFilterToggleDisabled(false);
+  hideManualSelectionMessage();
   
   // Clear domain filters - reset to "All" using version-aware config
   const gameVersion = currentOverlayVersionMode;
   const allToggles = getDomainToggles(gameVersion);
+  const preferredDefaultId = gameVersion === 'poe1' ? 'toggleNormal' : 'toggleBase';
+  const defaultToggleId = allToggles.some(toggle => toggle.id === preferredDefaultId)
+    ? preferredDefaultId
+    : 'toggleAll';
   
   allToggles.forEach(toggle => {
     const btn = document.getElementById(toggle.id);
     if (btn) {
-      if (toggle.id === 'toggleAll') {
+      if (toggle.id === defaultToggleId) {
         btn.classList.add('active');
       } else {
         btn.classList.remove('active');
       }
     }
   });
+
+  // Reset homogenize mode (PoE2 only)
+  homogenizeMode = 'none';
+  const quickHomogenizeBtn = document.getElementById('quickHomogenize') as HTMLButtonElement | null;
+  if (quickHomogenizeBtn) {
+    quickHomogenizeBtn.textContent = 'Homogenize';
+    quickHomogenizeBtn.style.background = 'var(--bg-tertiary)';
+    quickHomogenizeBtn.style.color = 'var(--text-primary)';
+  }
+  
+  // Clear manual selections
+  clearManualSelections();
   
   if((window as any).originalData) renderFilteredContent((window as any).originalData);
 }
@@ -2511,6 +2885,12 @@ export function toggleDomainFromSection(domainId: string, arrowId: string){
   ensureDomainCollapseStyles();
 }
 export function toggleTiers(domain: string, side: string, modIndex: number){
+  if (manualSelectionMode) {
+    const modEl = document.getElementById(`mod-${domain}-${side}-${modIndex}`) as HTMLElement | null;
+    if (handleManualSelectionClick(modEl)) {
+      return;
+    }
+  }
   const id = `tiers-${domain}-${side}-${modIndex}`;
   const el = document.getElementById(id) as HTMLElement | null; if(!el) return;
   const isHidden = el.style.display==='none';
